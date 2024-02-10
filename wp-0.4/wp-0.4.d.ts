@@ -1,0 +1,3511 @@
+/*
+ * Type Definitions for Gjs (https://gjs.guide/)
+ *
+ * These type definitions are automatically generated, do not edit them by hand.
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ */
+
+import './wp-0.4-ambient.d.ts';
+import './wp-0.4-import.d.ts';
+/**
+ * Wp-0.4
+ */
+
+import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+
+export namespace Wp {
+    enum ConstraintType {
+        NONE,
+        PW_GLOBAL_PROPERTY,
+        PW_PROPERTY,
+        G_PROPERTY,
+    }
+    enum ConstraintVerb {
+        EQUALS,
+        NOT_EQUALS,
+        IN_LIST,
+        IN_RANGE,
+        MATCHES,
+        IS_PRESENT,
+        IS_ABSENT,
+    }
+    /**
+     * The state of the dbus connection.
+     */
+    enum DBusState {
+        CLOSED,
+        CONNECTING,
+        CONNECTED,
+    }
+    enum Direction {
+        INPUT,
+        OUTPUT,
+    }
+    enum LibraryErrorEnum {
+        INVARIANT,
+        INVALID_ARGUMENT,
+        OPERATION_FAILED,
+    }
+    enum LinkState {
+        ERROR,
+        UNLINKED,
+        INIT,
+        NEGOTIATING,
+        ALLOCATING,
+        PAUSED,
+        ACTIVE,
+    }
+    enum NodeState {
+        ERROR,
+        CREATING,
+        SUSPENDED,
+        IDLE,
+        RUNNING,
+    }
+    enum SiAdapterPortsState {
+        NONE,
+        CONFIGURING,
+        CONFIGURED,
+    }
+    enum TransitionStep {
+        NONE,
+        ERROR,
+        CUSTOM_START,
+    }
+    const INTEREST_MATCH_ALL: number;
+    const ITERATOR_METHODS_VERSION: number;
+    const LOG_LEVEL_TRACE: number;
+    /**
+     * Special value that can be used to activate all the supported features in any given object.
+     */
+    const OBJECT_FEATURES_ALL: ObjectFeatures;
+    const OBJECT_FORMAT: string;
+    const PIPEWIRE_OBJECT_FEATURES_ALL: number;
+    const PIPEWIRE_OBJECT_FEATURES_MINIMAL: number;
+    /**
+     * Type id representing an invalid SPA type.
+     */
+    const SPA_TYPE_INVALID: SpaType;
+    function domain_library_quark(): GLib.Quark;
+    /**
+     * Returns the full path of `filename` as found in the hierarchy of configuration and data directories.
+     * @param dirs the directories to look into
+     * @param filename the name of the file to search for
+     * @param subdir the name of the subdirectory to search in, inside the configuration directories
+     * @returns An allocated string with the configuration file path or NULL if the file was not found.
+     */
+    function find_file(dirs: LookupDirs, filename: string, subdir?: string | null): string;
+    /**
+     * Gets the full path to the WirePlumber configuration directory.
+     * @returns The WirePlumber configuration directory
+     */
+    function get_config_dir(): string;
+    /**
+     * Gets full path to the WirePlumber data directory.
+     * @returns The WirePlumber data directory
+     */
+    function get_data_dir(): string;
+    /**
+     * Gets the WirePlumber library API version.
+     * @returns WirePlumber library API version
+     */
+    function get_library_api_version(): string;
+    /**
+     * Gets the WirePlumber library version.
+     * @returns WirePlumber library version
+     */
+    function get_library_version(): string;
+    /**
+     * Gets the WirePlumber module directory.
+     * @returns WirePlumber's module directory
+     */
+    function get_module_dir(): string;
+    /**
+     * Initializes WirePlumber and PipeWire underneath.
+     *
+     *
+     * `flags` can modify which parts are initialized, in cases where you want to handle part of this initialization externally.
+     * @param flags initialization flags
+     */
+    function init(flags: InitFlags): void;
+    /**
+     * Use this to figure out if a debug message is going to be printed or not, so that you can avoid allocating resources just for debug logging purposes.
+     * @param log_level a log level
+     * @returns whether the log level is currently enabled
+     */
+    function log_level_is_enabled(log_level: GLib.LogLevelFlags): boolean;
+    /**
+     * Configures the log level and enabled categories.
+     * @param level_str a log level description string as it would appear in the WIREPLUMBER_DEBUG environment variable "level:category1,category2"
+     */
+    function log_set_level(level_str: string): void;
+    /**
+     * WirePlumber's GLogWriterFunc.
+     *
+     *
+     * This is installed automatically when you call wp_init() with WP_INIT_SET_GLIB_LOG set in the flags
+     * @param log_level
+     * @param fields
+     * @param n_fields
+     * @param user_data
+     */
+    function log_writer_default(
+        log_level: GLib.LogLevelFlags,
+        fields: GLib.LogField,
+        n_fields: number,
+        user_data?: any | null,
+    ): GLib.LogWriterOutput;
+    /**
+     * Creates an iterator to iterate over configuration files in the `subdir` of the configuration directories.
+     *
+     *
+     * Files are sorted across the hierarchy of configuration and data directories with files in higher-priority directories shadowing files in lower-priority directories. Files are only checked for existence, a caller must be able to handle read errors.
+     * the iterator may contain directories too; it is the responsibility of the caller to ignore or recurse into those.
+     * @param dirs the directories to look into
+     * @param subdir the name of the subdirectory to search in, inside the configuration directories
+     * @param suffix The filename suffix, NULL matches all entries
+     * @returns a new iterator iterating over strings which are absolute paths to the configuration files found
+     */
+    function new_files_iterator(dirs: LookupDirs, subdir?: string | null, suffix?: string | null): Iterator;
+    /**
+     * Gets the key from a properties iterator item.
+     * @param item a GValue that was returned from the WpIterator of wp_properties_new_iterator()
+     * @returns the property key of the @item
+     */
+    function properties_iterator_item_get_key(item: GObject.Value): string;
+    /**
+     * Gets the value from a properties iterator item.
+     * @param item a GValue that was returned from the WpIterator of wp_properties_new_iterator()
+     * @returns the property value of the @item
+     */
+    function properties_iterator_item_get_value(item: GObject.Value): string;
+    /**
+     * Registers an additional WpSpaIdTable in the spa type system.
+     *
+     *
+     * This is useful to add custom enumeration types.
+     * Note that both `name` and `values` must be statically allocated, or otherwise guaranteed to be kept in memory until wp_spa_dynamic_type_deinit() is called. No memory copy is done by this function.
+     * @param name the name of the id table
+     * @param values an array of spa_type_info that contains the values of the table
+     * @returns the new table
+     */
+    function spa_dynamic_id_table_register(name: string, values?: any | null): SpaIdTable;
+    /**
+     * Deinitializes the spa type registry.
+     *
+     *
+     * You do not need to ever call this, unless you want to free memory at the end of the execution of a test, so that it doesn't show as leaked in the memory profiler.
+     */
+    function spa_dynamic_type_deinit(): void;
+    /**
+     * Initializes the spa dynamic type registry.
+     *
+     *
+     * This allows registering new spa types at runtime. The spa type system still works if this function is not called.
+     * Normally called by wp_init() when WP_INIT_SPA_TYPES is passed in its flags.
+     */
+    function spa_dynamic_type_init(): void;
+    /**
+     * Registers an additional type in the spa type system.
+     *
+     *
+     * This is useful to add a custom pod object type.
+     * Note that both `name` and `values` must be statically allocated, or otherwise guaranteed to be kept in memory until wp_spa_dynamic_type_deinit() is called. No memory copy is done by this function.
+     * @param name the name of the type
+     * @param parent the parent type
+     * @param values an array of spa_type_info that contains the values of the type, used only for Object types
+     * @returns the new type
+     */
+    function spa_dynamic_type_register(name: string, parent: SpaType, values?: any | null): SpaType;
+    /**
+     * Finds a value in an SPA Id table.
+     * @param table the id table
+     * @param value a numeric value that is contained in the table
+     * @returns the WpSpaIdValue associated with @value, or NULL
+     */
+    function spa_id_table_find_value(table: SpaIdTable, value: number): SpaIdValue | null;
+    /**
+     * Finds a named value in an SPA Id table.
+     * @param table the id table
+     * @param name the full name of a value that is contained in the table
+     * @returns the WpSpaIdValue associated with @name, or NULL
+     */
+    function spa_id_table_find_value_from_name(table: SpaIdTable, name: string): SpaIdValue | null;
+    /**
+     * Finds a short named value in an SPA Id table.
+     * @param table the id table
+     * @param short_name the short name of a value that is contained in the table
+     * @returns the WpSpaIdValue associated with @short_name, or NULL
+     */
+    function spa_id_table_find_value_from_short_name(table: SpaIdTable, short_name: string): SpaIdValue | null;
+    /**
+     * Finds a WpSpaIdTable given its name.
+     *
+     *
+     * This name can either be the full type name of an object type, or the name of an enum (which is (!!) a type). For example, "Spa:Pod:Object:Param:Format" and "Spa:Enum:ParamId" are both valid table names.
+     * @param name the full name of an id table
+     * @returns the associated table, or NULL
+     */
+    function spa_id_table_from_name(name: string): SpaIdTable | null;
+    function spa_id_table_get_type(): GObject.GType;
+    /**
+     * This function returns an iterator that allows you to iterate through the values associated with this table.
+     *
+     *
+     * The items in the iterator are of type WpSpaIdValue.
+     * @param table the id table
+     * @returns a WpIterator that iterates over WpSpaIdValue items
+     */
+    function spa_id_table_new_iterator(table: SpaIdTable): Iterator;
+    /**
+     * If the value type of `id` is SPA_TYPE_Array, this function returns the type that is allowed to be contained inside the array.
+     *
+     *
+     * When the returned type is (or is derived from) SPA_TYPE_Id or SPA_TYPE_Object, `table` is set to point to the WpSpaIdTable that contains the possible Id values / object fields.
+     * @param id an id value
+     * @returns the type that is allowed in the array, if @id represents an object field that takes an array as value
+     */
+    function spa_id_value_array_get_item_type(id: SpaIdValue): SpaType;
+    /**
+     * Looks up an id value (enum, flag or object field) directly from its full name.
+     *
+     *
+     * For instance, "Spa:Enum:Direction:Input" will resolve to the id value that represents "Input" in the "Spa:Enum:Direction" enum.
+     * @param name the full name of an id value
+     * @returns the id value for @name, or NULL if no such id value was found
+     */
+    function spa_id_value_from_name(name: string): SpaIdValue;
+    /**
+     * Looks up an id value given its container `table_name` and its numeric representation, `id`.
+     * @param table_name the name of the WpSpaIdTable to look up the value in
+     * @param id the numeric representation of the value to look up
+     * @returns the id value or NULL if it was not found
+     */
+    function spa_id_value_from_number(table_name: string, id: number): SpaIdValue;
+    /**
+     * Looks up an id value given its container `table_name` and its `short_name`.
+     * @param table_name the name of the WpSpaIdTable to look up the value in
+     * @param short_name the short name of the value to look up
+     * @returns the id value or NULL if it was not found
+     */
+    function spa_id_value_from_short_name(table_name: string, short_name: string): SpaIdValue;
+    function spa_id_value_get_type(): GObject.GType;
+    /**
+     * Returns the value type associated with this WpSpaIdValue.
+     *
+     *
+     * This information is useful when `id` represents an object field, which can take a value of an arbitrary type.
+     * When the returned type is (or is derived from) SPA_TYPE_Id or SPA_TYPE_Object, `table` is set to point to the WpSpaIdTable that contains the possible Id values / object fields.
+     * @param id an id value
+     * @returns the value type associated with @id
+     */
+    function spa_id_value_get_value_type(id: SpaIdValue): SpaType;
+    /**
+     * Gets the name of an id value.
+     * @param id an id value
+     * @returns the full name of this id value
+     */
+    function spa_id_value_name(id: SpaIdValue): string;
+    /**
+     * Gets the numeric value of an id value.
+     * @param id an id value
+     * @returns the numeric representation of this id value
+     */
+    function spa_id_value_number(id: SpaIdValue): number;
+    /**
+     * Gets the short name of an id value.
+     * @param id an id value
+     * @returns the short name of this id value
+     */
+    function spa_id_value_short_name(id: SpaIdValue): string;
+    /**
+     * Gets WirePlumber's instance of spa_log
+     * @returns WirePlumber's instance of spa_log, which can be used to redirect PipeWire's log messages to the currently installed GLogWriterFunc. This is installed automatically when you call wp_init() with WP_INIT_SET_PW_LOG set in the flags
+     */
+    function spa_log_get_instance(): any | null;
+    interface IteratorFoldFunc {
+        (item: GObject.Value, ret: GObject.Value, data?: any | null): boolean;
+    }
+    interface IteratorForeachFunc {
+        (item: GObject.Value, data?: any | null): void;
+    }
+    /**
+     * Flags to be used as WpObjectFeatures for WpDbus.
+     */
+    enum DbusFeatures {
+        ENABLED,
+    }
+    enum InitFlags {
+        PIPEWIRE,
+        SPA_TYPES,
+        SET_PW_LOG,
+        SET_GLIB_LOG,
+        ALL,
+    }
+    enum InterestMatch {
+        NONE,
+        GTYPE,
+        PW_GLOBAL_PROPERTIES,
+        PW_PROPERTIES,
+        G_PROPERTIES,
+    }
+    enum InterestMatchFlags {
+        NONE,
+        CHECK_ALL,
+    }
+    enum LinkFeatures {
+        ESTABLISHED,
+    }
+    enum LookupDirs {
+        ENV_CONFIG,
+        ENV_DATA,
+        XDG_CONFIG_HOME,
+        ETC,
+        PREFIX_SHARE,
+    }
+    enum MetadataFeatures {
+        DATA,
+    }
+    enum NodeFeatures {
+        PORTS,
+    }
+    enum PluginFeatures {
+        ENABLED,
+    }
+    enum ProxyFeatures {
+        PROXY_FEATURE_BOUND,
+        PIPEWIRE_OBJECT_FEATURE_INFO,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PROPS,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_FORMAT,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PROFILE,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PORT_CONFIG,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_ROUTE,
+    }
+    enum SessionItemFeatures {
+        ACTIVE,
+        EXPORTED,
+    }
+    enum SpaDeviceFeatures {
+        ENABLED,
+    }
+    module Client {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpClient class allows accessing the properties and methods of a PipeWire client object (struct pw_client). A WpClient is constructed internally when a new client connects to PipeWire and it is made available through the WpObjectManager API.
+     */
+    class Client extends GlobalProxy {
+        // Owm methods of Wp-0.4.Client
+
+        /**
+         * Send an error to the client.
+         * @param id the global id to report the error on
+         * @param res an errno style error code
+         * @param message the error message string
+         */
+        send_error(id: number, res: number, message: string): void;
+    }
+
+    module ComponentLoader {
+        // Constructor properties interface
+    }
+
+    /**
+     * The component loader is a plugin that provides the ability to load components.
+     * Components can be:
+     *  - WirePlumber modules (libraries that provide WpPlugin and WpSiFactory objects)
+     *  - PipeWire modules (libraries that extend libpipewire)
+     *  - Scripts (ex. lua scripts)
+     *  - Configuration files
+     *
+     * The WirePlumber library provides built-in support for loading WirePlumber and PipeWire modules, without a component loader. For other kinds of components, like the lua scripts and config files, a component loader is provided in by external WirePlumber module.
+     */
+    abstract class ComponentLoader extends Plugin {}
+
+    module Core {
+        // Signal callback interfaces
+
+        interface Connected {
+            (): void;
+        }
+
+        interface Disconnected {
+            (): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * The core is the central object around which everything operates. It is essential to create a WpCore before using any other WirePlumber API.
+     * The core object has the following responsibilities:
+     *  - it initializes the PipeWire library
+     *  - it creates a pw_context and allows connecting to the PipeWire server, creating a local pw_core
+     *  - it glues the PipeWire library's event loop system with GMainLoop
+     *  - it maintains a list of registered objects, which other classes use to keep objects loaded permanently into memory
+     *  - it watches the PipeWire registry and keeps track of remote and local objects that appear in the registry, making them accessible through the WpObjectManager API.
+     */
+    class Core extends GObject.Object {
+        // Own properties of Wp-0.4.Core
+
+        g_main_context: GLib.MainContext;
+        gMainContext: GLib.MainContext;
+        properties: Properties;
+        pw_context: any;
+        pwContext: any;
+        readonly pw_core: any;
+        readonly pwCore: any;
+
+        // Constructors of Wp-0.4.Core
+
+        static ['new'](context?: GLib.MainContext | null, properties?: Properties | null): Core;
+
+        // Owm methods of Wp-0.4.Core
+
+        /**
+         * Clones a core with the same context as `self`.
+         * @returns the clone WpCore
+         */
+        clone(): Core;
+        /**
+         * Connects this core to the PipeWire server.
+         *
+         *
+         * When connection succeeds, the WpCore "connected" signal is emitted.
+         * @returns TRUE if the core is effectively connected or FALSE if connection failed
+         */
+        connect(): boolean;
+        /**
+         * Disconnects this core from the PipeWire server.
+         *
+         *
+         * This also effectively destroys all WpCore objects that were created through the registry, destroys the pw_core and finally emits the WpCore "disconnected" signal.
+         */
+        disconnect(): void;
+        /**
+         * Gets the GMainContext of the core.
+         * @returns the GMainContext that is in use by this core for events
+         */
+        get_g_main_context(): GLib.MainContext | null;
+        /**
+         * Gets the bound id of the client object that is created as a result of this core being connected to the PipeWire daemon.
+         * @returns the bound id of this client
+         */
+        get_own_bound_id(): number;
+        /**
+         * Gets the properties of the core.
+         * @returns the properties of @self
+         */
+        get_properties(): Properties;
+        /**
+         * Gets the internal PipeWire context of the core.
+         * @returns the internal pw_context object
+         */
+        get_pw_context(): any | null;
+        /**
+         * Gets the internal PipeWire core of the core.
+         * @returns the internal pw_core object, or NULL if the core is not connected to PipeWire
+         */
+        get_pw_core(): any | null;
+        /**
+         * Gets the cookie of the core's connected PipeWire instance.
+         * @returns The cookie of the PipeWire instance that @self is connected to. The cookie is a unique random number for identifying an instance of PipeWire
+         */
+        get_remote_cookie(): number;
+        /**
+         * Gets the host name of the core's connected PipeWire instance.
+         * @returns The name of the host where the PipeWire instance that @self is connected to is running on
+         */
+        get_remote_host_name(): string;
+        /**
+         * Gets the name of the core's connected PipeWire instance.
+         * @returns The name of the PipeWire instance that @self is connected to
+         */
+        get_remote_name(): string;
+        /**
+         * Gets the properties of the core's connected PipeWire instance.
+         * @returns the properties of the PipeWire instance that @self is connected to
+         */
+        get_remote_properties(): Properties;
+        /**
+         * Gets the user name of the core's connected PipeWire instance.
+         * @returns The name of the user that started the PipeWire instance that @self is connected to
+         */
+        get_remote_user_name(): string;
+        /**
+         * Gets the version of the core's connected PipeWire instance.
+         * @returns The version of the PipeWire instance that @self is connected to
+         */
+        get_remote_version(): string;
+        /**
+         * Gets the virtual machine type of the core.
+         * @returns a comma separated string with all the virtual machine types that this core matches, or NULL if the core is not running in a virtual machine.
+         */
+        get_vm_type(): string | null;
+        /**
+         * Adds an idle callback to be called in the same GMainContext as the one used by this core.
+         *
+         *
+         * This is essentially the same as g_idle_add_full(), but it adds the created GSource on the GMainContext used by this core instead of the default context.
+         * @param _function the function to call
+         * @param destroy a function to destroy @data
+         */
+        idle_add(_function: GLib.SourceFunc, destroy?: GLib.DestroyNotify | null): void;
+        /**
+         * Adds an idle callback to be called in the same GMainContext as the one used by this core.
+         *
+         *
+         * This is the same as wp_core_idle_add(), but it allows you to specify a GClosure instead of a C callback.
+         * @param closure the closure to invoke
+         */
+        idle_add_closure(closure: GObject.Closure): void;
+        /**
+         * Installs the object manager on this core, activating its internal management engine.
+         *
+         *
+         * This will immediately emit signals about objects added on `om` if objects that the `om` is interested in were in existence already.
+         * @param om a WpObjectManager
+         */
+        install_object_manager(om: ObjectManager): void;
+        /**
+         * Checks if the core is connected to PipeWire.
+         * @returns TRUE if the core is connected to PipeWire, FALSE otherwise
+         */
+        is_connected(): boolean;
+        /**
+         * Loads the specified `component` on `self`.
+         *
+         *
+         * The `type` will determine which component loader to use. The following types are built-in and will always work without a component loader:
+         *  - "module" - Loads a WirePlumber module
+         *  - "pw_module" - Loads a PipeWire module
+         * @param component the module name or file name
+         * @param type the type of the component
+         * @param args additional arguments for the component, usually a dict or a string
+         * @returns TRUE if loaded, FALSE if there was an error
+         */
+        load_component(component: string, type: string, args?: GLib.Variant | null): boolean;
+        /**
+         * Asks the PipeWire server to call the `callback` via an event.
+         *
+         *
+         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
+         * In both success and error cases, `callback` is always called. Use wp_core_sync_finish() from within the `callback` to determine whether the operation completed successfully or if an error occurred.
+         * @param cancellable a GCancellable to cancel the operation
+         * @param callback a function to call when the operation is done
+         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         */
+        sync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): boolean;
+        /**
+         * Asks the PipeWire server to invoke the `closure` via an event.
+         *
+         *
+         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
+         * In both success and error cases, `closure` is always invoked. Use wp_core_sync_finish() from within the `closure` to determine whether the operation completed successfully or if an error occurred.
+         * @param cancellable a GCancellable to cancel the operation
+         * @param closure a closure to invoke when the operation is done
+         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         */
+        sync_closure(cancellable: Gio.Cancellable | null, closure: GObject.Closure): boolean;
+        /**
+         * This function is meant to be called from within the callback of wp_core_sync() in order to determine the success or failure of the operation.
+         * @param res a GAsyncResult
+         * @returns TRUE if the operation succeeded, FALSE otherwise
+         */
+        sync_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
+         *
+         *
+         * The function is called repeatedly until it returns FALSE, at which point the timeout is automatically destroyed and the function will not be called again. The first call to the function will be at the end of the first interval.
+         * This is essentially the same as g_timeout_add_full(), but it adds the created GSource on the GMainContext used by this core instead of the default context.
+         * @param timeout_ms the timeout in milliseconds
+         * @param _function the function to call
+         * @param destroy a function to destroy @data
+         */
+        timeout_add(timeout_ms: number, _function: GLib.SourceFunc, destroy?: GLib.DestroyNotify | null): void;
+        /**
+         * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
+         *
+         *
+         * This is the same as wp_core_timeout_add(), but it allows you to specify a GClosure instead of a C callback.
+         * @param timeout_ms the timeout in milliseconds
+         * @param closure the closure to invoke
+         */
+        timeout_add_closure(timeout_ms: number, closure: GObject.Closure): void;
+        /**
+         * Updates the properties of `self` on the connection, making them appear on the client object that represents this connection.
+         *
+         *
+         * If `self` is not connected yet, these properties are stored and passed to pw_context_connect() when connecting.
+         * @param updates updates to apply to the properties of @self; this does not need to include properties that have not changed
+         */
+        update_properties(updates: Properties): void;
+    }
+
+    module Dbus {
+        // Constructor properties interface
+    }
+
+    class Dbus extends Object {
+        // Own properties of Wp-0.4.Dbus
+
+        bus_type: Gio.BusType;
+        busType: Gio.BusType;
+        readonly state: DBusState;
+
+        // Owm methods of Wp-0.4.Dbus
+
+        get_bus_type(): Gio.BusType;
+        get_state(): DBusState;
+    }
+
+    module Device {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpDevice class allows accessing the properties and methods of a PipeWire device object (struct pw_device).
+     * A WpDevice is constructed internally when a new device appears on the PipeWire registry and it is made available through the WpObjectManager API. Alternatively, a WpDevice can also be constructed using wp_device_new_from_factory(), which creates a new device object on the remote PipeWire server by calling into a factory.
+     */
+    class Device extends GlobalProxy {
+        // Constructors of Wp-0.4.Device
+
+        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Device;
+    }
+
+    module Endpoint {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpEndpoint class allows accessing the properties and methods of a PipeWire endpoint object (struct pw_endpoint from the session-manager extension).
+     * A WpEndpoint is constructed internally when a new endpoint appears on the PipeWire registry and it is made available through the WpObjectManager API.
+     */
+    class Endpoint extends GlobalProxy {
+        // Own properties of Wp-0.4.Endpoint
+
+        readonly direction: Direction;
+        readonly media_class: string;
+        readonly mediaClass: string;
+        readonly name: string;
+
+        // Owm methods of Wp-0.4.Endpoint
+
+        /**
+         * Gets the direction of the endpoint.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the direction of this endpoint
+         */
+        get_direction(): Direction;
+        /**
+         * Gets the media class of the endpoint (ex. "Audio/Sink")
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the media class of the endpoint
+         */
+        get_media_class(): string;
+        /**
+         * Gets the name of the endpoint.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the name of the endpoint
+         */
+        get_name(): string;
+    }
+
+    module Factory {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpFactory class allows accessing the properties and methods of PipeWire Factory objects (struct pw_factory).
+     * A WpFactory is constructed internally by wireplumber, when the pipewire constructed factory objects are reported in by PipeWire registry and it is made available for wireplumber clients through the WpObjectManager API.
+     */
+    class Factory extends GlobalProxy {}
+
+    module FeatureActivationTransition {
+        // Constructor properties interface
+    }
+
+    /**
+     * A WpTransition that is used by WpObject to implement feature activation.
+     */
+    class FeatureActivationTransition extends Transition {
+        // Owm methods of Wp-0.4.FeatureActivationTransition
+
+        /**
+         * Gets the features requested to be activated in this transition.
+         * @returns the features that were requested to be activated in this transition; this contains the features as they were passed in wp_object_activate() and therefore it may contain unsupported or already active features
+         */
+        get_requested_features(): ObjectFeatures;
+    }
+
+    module GlobalProxy {
+        // Constructor properties interface
+    }
+
+    /**
+     * A proxy that represents a PipeWire global object, i.e. an object that is made available through the PipeWire registry.
+     */
+    class GlobalProxy extends Proxy {
+        // Own properties of Wp-0.4.GlobalProxy
+
+        factory_name: string;
+        factoryName: string;
+        global_properties: Properties;
+        globalProperties: Properties;
+        readonly permissions: number;
+
+        // Owm methods of Wp-0.4.GlobalProxy
+
+        /**
+         * Binds to the global and creates the underlying pw_proxy.
+         *
+         *
+         * This is mostly meant to be called internally. It will create the pw_proxy and will activate the WP_PROXY_FEATURE_BOUND feature.
+         * This may only be called if there is no pw_proxy associated with this object yet.
+         * @returns TRUE on success, FALSE if there is no global to bind to
+         */
+        bind(): boolean;
+        /**
+         * Gets the global properties of a pipewire global.
+         * @returns the global (immutable) properties of this pipewire object
+         */
+        get_global_properties(): Properties;
+        /**
+         * Gets the permissions of a pipewire global.
+         * @returns the permissions that wireplumber has on this object
+         */
+        get_permissions(): number;
+        /**
+         * Requests the PipeWire server to destroy the object represented by this proxy.
+         *
+         *
+         * If the server allows it, the object will be destroyed and the WpProxy's pw-proxy-destroyed signal will be emitted. If the server does not allow it, nothing will happen.
+         * This is mostly useful for destroying WpLink objects.
+         */
+        request_destroy(): void;
+    }
+
+    module ImplEndpoint {
+        // Constructor properties interface
+    }
+
+    class ImplEndpoint extends Endpoint {
+        // Own properties of Wp-0.4.ImplEndpoint
+
+        item: SiEndpoint;
+
+        // Constructors of Wp-0.4.ImplEndpoint
+
+        static ['new'](core: Core, item: SiEndpoint): ImplEndpoint;
+    }
+
+    module ImplMetadata {
+        // Constructor properties interface
+    }
+
+    /**
+     * Implementation of the metadata object.
+     * Activate this object with at least WP_PROXY_FEATURE_BOUND to export it to PipeWire.
+     */
+    class ImplMetadata extends Metadata {
+        // Own properties of Wp-0.4.ImplMetadata
+
+        name: string;
+        properties: Properties;
+
+        // Constructors of Wp-0.4.ImplMetadata
+
+        static ['new'](core: Core): ImplMetadata;
+
+        static new_full(core: Core, name?: string | null, properties?: Properties | null): ImplMetadata;
+    }
+
+    module ImplModule {
+        // Constructor properties interface
+    }
+
+    /**
+     * Used to load PipeWire modules within the WirePlumber process. This is slightly different from other objects in that the module is not exported to PipeWire, but it may create an export objects itself.
+     */
+    class ImplModule extends GObject.Object {
+        // Own properties of Wp-0.4.ImplModule
+
+        'arguments': string;
+        core: any;
+        name: string;
+        properties: Properties;
+        readonly pw_impl_module: any;
+        readonly pwImplModule: any;
+
+        // Owm methods of Wp-0.4.ImplModule
+
+        /**
+         * Loads a PipeWire module into the WirePlumber process.
+         * @param core The WirePlumber core
+         * @param name the name of the module to load
+         * @param _arguments arguments to be passed to the module
+         * @param properties additional properties to be provided to the module
+         */
+        static load(
+            core: Core,
+            name: string,
+            _arguments?: string | null,
+            properties?: Properties | null,
+        ): ImplModule | null;
+        /**
+         * Loads a PipeWire module with arguments from file into the WirePlumber process.
+         * @param core The WirePlumber core
+         * @param name the name of the module to load
+         * @param filename filename to be used as arguments
+         * @param properties additional properties to be provided to the module
+         */
+        static load_file(core: Core, name: string, filename: string, properties?: Properties | null): ImplModule | null;
+    }
+
+    module ImplNode {
+        // Constructor properties interface
+    }
+
+    /**
+     * A WpImplNode allows running a node implementation (struct pw_impl_node) locally, loading the implementation from factory or wrapping a manually constructed pw_impl_node. This object can then be exported to PipeWire by requesting WP_PROXY_FEATURE_BOUND.
+     */
+    class ImplNode extends Proxy {
+        // Own properties of Wp-0.4.ImplNode
+
+        pw_impl_node: any;
+        pwImplNode: any;
+
+        // Constructors of Wp-0.4.ImplNode
+
+        static new_from_pw_factory(core: Core, factory_name: string, properties?: Properties | null): ImplNode;
+
+        static new_wrap(core: Core, node?: any | null): ImplNode;
+    }
+
+    module Link {
+        // Signal callback interfaces
+
+        interface StateChanged {
+            (object: LinkState, p0: LinkState): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpLink class allows accessing the properties and methods of a PipeWire link object (struct pw_link).
+     * A WpLink is constructed internally when a new link appears on the PipeWire registry and it is made available through the WpObjectManager API. Alternatively, a WpLink can also be constructed using wp_link_new_from_factory(), which creates a new link object on the remote PipeWire server by calling into a factory.
+     */
+    class Link extends GlobalProxy {
+        // Own properties of Wp-0.4.Link
+
+        readonly state: LinkState;
+
+        // Constructors of Wp-0.4.Link
+
+        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Link;
+
+        // Owm methods of Wp-0.4.Link
+
+        /**
+         * Retrieves the ids of the objects that are linked by this link.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        get_linked_object_ids(): void;
+        /**
+         * Gets the current state of the link.
+         * @returns the current state of the link
+         */
+        get_state(): LinkState;
+    }
+
+    module Metadata {
+        // Signal callback interfaces
+
+        interface Changed {
+            (object: number, p0: string, p1: string, p2: string): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpMetadata class allows accessing the properties and methods of PipeWire metadata object (struct pw_metadata).
+     * A WpMetadata is constructed internally when a new metadata object appears on the PipeWire registry and it is made available through the WpObjectManager API.
+     */
+    class Metadata extends GlobalProxy {
+        // Owm methods of Wp-0.4.Metadata
+
+        /**
+         * Extracts the metadata subject, key, type and value out of a GValue that was returned from the WpIterator of wp_metadata_find()
+         * @param item a GValue that was returned from the WpIterator of wp_metadata_find()
+         */
+        static iterator_item_extract(item: GObject.Value): void;
+
+        // Owm methods of Wp-0.4.Metadata
+
+        /**
+         * Clears permanently all stored metadata.
+         */
+        clear(): void;
+        /**
+         * Finds the metadata value given its `subject` and `key`.
+         * @param subject the metadata subject id
+         * @param key the metadata key name
+         * @returns the metadata string value, or NULL if not found.
+         */
+        find(subject: number, key: string): string;
+        /**
+         * Iterates over metadata items that matches the given `subject`.
+         *
+         *
+         * If no constraints are specified, the returned iterator iterates over all the stored metadata.
+         * Note that this method works on cached metadata. When you change metadata with wp_metadata_set(), this cache will be updated on the next round-trip with the pipewire server.
+         * @param subject the metadata subject id, or -1 (PW_ID_ANY)
+         * @returns an iterator that iterates over the found metadata. Use wp_metadata_iterator_item_extract() to parse the items returned by this iterator.
+         */
+        new_iterator(subject: number): Iterator;
+        /**
+         * Sets the metadata associated with the given `subject` and `key`. Use NULL as a value to unset the given `key` and use NULL in both `key` and `value` to remove all metadata associated with the given `subject`.
+         * @param subject the subject id for which this metadata property is being set
+         * @param key the key to set, or NULL to remove all metadata for @subject
+         * @param type the type of the value; NULL is synonymous to "string"
+         * @param value the value to set, or NULL to unset the given @key
+         */
+        set(subject: number, key?: string | null, type?: string | null, value?: string | null): void;
+    }
+
+    module Node {
+        // Signal callback interfaces
+
+        interface PortsChanged {
+            (): void;
+        }
+
+        interface StateChanged {
+            (object: NodeState, p0: NodeState): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpNode class allows accessing the properties and methods of a PipeWire node object (struct pw_node).
+     * A WpNode is constructed internally when a new node appears on the PipeWire registry and it is made available through the WpObjectManager API. Alternatively, a WpNode can also be constructed using wp_node_new_from_factory(), which creates a new node object on the remote PipeWire server by calling into a factory.
+     */
+    class Node extends GlobalProxy {
+        // Own properties of Wp-0.4.Node
+
+        readonly max_input_ports: number;
+        readonly maxInputPorts: number;
+        readonly max_output_ports: number;
+        readonly maxOutputPorts: number;
+        readonly n_input_ports: number;
+        readonly nInputPorts: number;
+        readonly n_output_ports: number;
+        readonly nOutputPorts: number;
+        readonly state: NodeState;
+
+        // Constructors of Wp-0.4.Node
+
+        static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Node;
+
+        // Owm methods of Wp-0.4.Node
+
+        /**
+         * Gets the number of input ports of this node.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the number of input ports of this node, as reported by the node info
+         */
+        get_n_input_ports(): number;
+        /**
+         * Gets the number of output ports of this node.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the number of output ports of this node, as reported by the node info
+         */
+        get_n_output_ports(): number;
+        /**
+         * Gets the number of ports of this node.
+         *
+         *
+         * Note that this number may not add up to wp_node_get_n_input_ports() + wp_node_get_n_output_ports() because it is discovered by looking at the number of available ports in the registry, however ports may appear there with a delay or may not appear at all if this client does not have permission to read them
+         * Requires WP_NODE_FEATURE_PORTS
+         * @returns the number of ports of this node.
+         */
+        get_n_ports(): number;
+        /**
+         * Gets the current state of the node.
+         * @returns the current state of the node
+         */
+        get_state(): NodeState;
+        /**
+         * Retrieves the first port that matches the `interest`.
+         *
+         *
+         * Requires WP_NODE_FEATURE_PORTS
+         * @param interest the interest
+         * @returns the first port that matches the @interest, or NULL if there is no such port
+         */
+        lookup_port_full(interest: ObjectInterest): Port | null;
+        /**
+         * Gets a new iterator that iterates over all the ports that belong to this node and match the `interest`.
+         *
+         *
+         * Requires WP_NODE_FEATURE_PORTS
+         * @param interest the interest
+         * @returns a WpIterator that iterates over WpPort objects
+         */
+        new_ports_filtered_iterator_full(interest: ObjectInterest): Iterator;
+        /**
+         * Gets a new iterator that iterates over all the ports that belong to this node.
+         *
+         *
+         * Requires WP_NODE_FEATURE_PORTS
+         * @returns a WpIterator that iterates over WpPort objects
+         */
+        new_ports_iterator(): Iterator;
+        /**
+         * Sends a command to a node.
+         *
+         *
+         * Valid commands are the short string reprepsentations of enum spa_node_command. For example, "Suspend" or "Flush" are valid commands
+         * @param command the command
+         */
+        send_command(command: string): void;
+    }
+
+    module Object {
+        // Constructor properties interface
+    }
+
+    /**
+     * Base class for objects that have activatable features.
+     */
+    abstract class Object extends GObject.Object {
+        // Own properties of Wp-0.4.Object
+
+        readonly active_features: number;
+        readonly activeFeatures: number;
+        core: Core;
+        readonly supported_features: number;
+        readonly supportedFeatures: number;
+
+        // Owm methods of Wp-0.4.Object
+
+        /**
+         * Aborts the current object activation by returning a transition error if any transitions are pending.
+         *
+         *
+         * This is usually used to stop any pending activation if an error happened.
+         * @param msg the message used in the transition error
+         */
+        abort_activation(msg: string): void;
+        /**
+         * Callback version of wp_object_activate_closure()
+         * @param features the features to enable
+         * @param cancellable a cancellable for the async operation
+         * @param callback a function to call when activation is complete
+         */
+        activate(
+            features: ObjectFeatures,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Activates the requested `features` and invokes `closure` when this is done. `features` may contain unsupported or already active features. The operation will filter them and activate only ones that are supported and inactive.
+         *
+         *
+         * If multiple calls to this method is done, the operations will be executed one after the other to ensure features only get activated once.
+         * `closure` may be invoked in sync while this method is being called, if there are no features to activate.
+         * @param features the features to enable
+         * @param cancellable a cancellable for the async operation
+         * @param closure the closure to use when activation is completed
+         */
+        activate_closure(features: ObjectFeatures, cancellable: Gio.Cancellable | null, closure: GObject.Closure): void;
+        /**
+         * Finishes the async operation that was started with wp_object_activate()
+         * @param res the async operation result
+         * @returns TRUE if the requested features were activated, FALSE if there was an error
+         */
+        activate_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Deactivates the given `features,` leaving the object in the state it was before they were enabled.
+         *
+         *
+         * This is seldom needed to call manually, but it can be used to save resources if some features are no longer needed.
+         * @param features the features to deactivate
+         */
+        deactivate(features: ObjectFeatures): void;
+        /**
+         * Gets the active features of this object.
+         * @returns A bitset containing the active features of this object
+         */
+        get_active_features(): ObjectFeatures;
+        /**
+         * Gets the core associated with this object.
+         * @returns the core associated with this object
+         */
+        get_core(): Core;
+        /**
+         * Gets the supported features of this object.
+         * @returns A bitset containing the supported features of this object; note that supported features may change at runtime
+         */
+        get_supported_features(): ObjectFeatures;
+        /**
+         * Allows subclasses to update the currently active features.
+         *
+         *
+         * `activated` should contain new features and `deactivated` should contain features that were just deactivated. Calling this method also advances the activation transitions.
+         * Private method to be called by subclasses only.
+         * @param activated the features that were activated, or 0
+         * @param deactivated the features that were deactivated, or 0
+         */
+        update_features(activated: ObjectFeatures, deactivated: ObjectFeatures): void;
+    }
+
+    module ObjectManager {
+        // Signal callback interfaces
+
+        interface Installed {
+            (): void;
+        }
+
+        interface ObjectAdded {
+            (object: GObject.Object): void;
+        }
+
+        interface ObjectRemoved {
+            (object: GObject.Object): void;
+        }
+
+        interface ObjectsChanged {
+            (): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpObjectManager class provides a way to collect a set of objects and be notified when objects that fulfill a certain set of criteria are created or destroyed.
+     * There are 4 kinds of objects that can be managed by a WpObjectManager:
+     *  - remote PipeWire global objects that are advertised on the registry; these are bound locally to subclasses of WpGlobalProxy
+     *  - remote PipeWire global objects that are created by calling a remote factory through the WirePlumber API; these are very similar to other global objects but it should be noted that the same WpGlobalProxy instance that created them appears in the WpObjectManager (as soon as its WP_PROXY_FEATURE_BOUND is enabled)
+     *  - local PipeWire objects that are being exported to PipeWire (WpImplMetadata, WpImplEndpoint, etc); these appear in the WpObjectManager as soon as they are exported (so, when their WP_PROXY_FEATURE_BOUND is enabled)
+     *  - WirePlumber-specific objects, such as plugins, factories and session items
+     *
+     * To start an object manager, you first need to declare interest in a certain kind of object by calling wp_object_manager_add_interest() and then install it on the WpCore with wp_core_install_object_manager().
+     * Upon installing a WpObjectManager on a WpCore, any pre-existing objects that match the interests of this WpObjectManager will immediately become available to get through wp_object_manager_new_iterator() and the WpObjectManager object-added signal will be emitted for all of them. However, note that if these objects need to be prepared (to activate some features on them), the emission of object-added will be delayed. To know when it is safe to access the initial set of objects, wait until the installed signal has been emitted. That signal is emitted asynchronously after all the initial objects have been prepared.
+     */
+    class ObjectManager extends GObject.Object {
+        // Own properties of Wp-0.4.ObjectManager
+
+        readonly core: Core;
+
+        // Constructors of Wp-0.4.ObjectManager
+
+        static ['new'](): ObjectManager;
+
+        // Owm methods of Wp-0.4.ObjectManager
+
+        /**
+         * Declares interest in a certain kind of object.
+         *
+         *
+         * Interest consists of a GType that the object must be an ancestor of (g_type_is_a() must match) and optionally, a set of additional constraints on certain properties of the object. Refer to WpObjectInterest for more details.
+         * @param interest the interest
+         */
+        add_interest_full(interest: ObjectInterest): void;
+        /**
+         * Gets the number of objects managed by the object manager.
+         * @returns the number of objects managed by this WpObjectManager
+         */
+        get_n_objects(): number;
+        /**
+         * Checks if an object manager is installed.
+         * @returns TRUE if the object manager is installed (i.e. the WpObjectManager installed signal has been emitted), FALSE otherwise
+         */
+        is_installed(): boolean;
+        /**
+         * Searches for an object that matches the specified `interest` and returns it, if found.
+         *
+         *
+         * If more than one objects match, only the first one is returned. To find multiple objects that match certain criteria, wp_object_manager_new_filtered_iterator() is more suitable.
+         * @param interest the interst
+         * @returns the first managed object that matches the lookup interest, or NULL if no object matches
+         */
+        lookup_full<T = GObject.Object>(interest: ObjectInterest): T;
+        /**
+         * Iterates through all the objects managed by this object manager that match the specified `interest`.
+         * @param interest the interest
+         * @returns a WpIterator that iterates over all the matching objects of this object manager
+         */
+        new_filtered_iterator_full(interest: ObjectInterest): Iterator;
+        /**
+         * Iterates through all the objects managed by this object manager.
+         * @returns a WpIterator that iterates over all the managed objects of this object manager
+         */
+        new_iterator(): Iterator;
+        /**
+         * Requests the object manager to automatically prepare the `wanted_features` on any managed object that is of the specified `object_type`.
+         *
+         *
+         * These features will always be prepared before the object appears on the object manager.
+         * @param object_type the WpProxy descendant type
+         * @param wanted_features the features to enable on this kind of object
+         */
+        request_object_features(object_type: GObject.GType, wanted_features: ObjectFeatures): void;
+    }
+
+    module Plugin {
+        // Constructor properties interface
+    }
+
+    /**
+     * WpPlugin is a base class for objects that provide functionality to the WirePlumber daemon.
+     * Typically, a plugin is created within a module and then registered to make it available for use by the daemon. The daemon is responsible for calling wp_object_activate() on it after all modules have been loaded, the core is connected and the initial discovery of global objects is done.
+     * Being a WpObject subclass, the plugin inherits WpObject's activation system. For most implementations, there is only need for activating one feature, WP_PLUGIN_FEATURE_ENABLED, and this can be done by implementing only WpPluginClass::enable() and WpPluginClass::disable(). For more advanced plugins that need to have more features, you may implement directly the functions of WpObjectClass and ignore the ones of WpPluginClass.
+     */
+    abstract class Plugin extends Object {
+        // Own properties of Wp-0.4.Plugin
+
+        name: string;
+
+        // Owm methods of Wp-0.4.Plugin
+
+        /**
+         * Looks up a plugin.
+         * @param core the core
+         * @param plugin_name the lookup name
+         */
+        static find(core: Core, plugin_name: string): Plugin | null;
+
+        // Owm methods of Wp-0.4.Plugin
+
+        /**
+         * Retreives the name of a plugin.
+         * @returns the name of this plugin
+         */
+        get_name(): string;
+        /**
+         * Registers the plugin to its associated core, making it available for use.
+         */
+        register(): void;
+    }
+
+    module Port {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpPort class allows accessing the properties and methods of a PipeWire port object (struct pw_port).
+     * A WpPort is constructed internally when a new port appears on the PipeWire registry and it is made available through the WpObjectManager API.
+     */
+    class Port extends GlobalProxy {
+        // Owm methods of Wp-0.4.Port
+
+        /**
+         * Gets the current direction of the port.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the current direction of the port
+         */
+        get_direction(): Direction;
+    }
+
+    module Proxy {
+        // Signal callback interfaces
+
+        interface Bound {
+            (object: number): void;
+        }
+
+        interface Error {
+            (object: number, p0: number, p1: string): void;
+        }
+
+        interface PwProxyCreated {
+            (object?: any | null): void;
+        }
+
+        interface PwProxyDestroyed {
+            (): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * Base class for all objects that expose PipeWire objects using pw_proxy underneath.
+     * This base class cannot be instantiated. It provides handling of pw_proxy's events and exposes common functionality.
+     */
+    abstract class Proxy extends Object {
+        // Own properties of Wp-0.4.Proxy
+
+        readonly bound_id: number;
+        readonly boundId: number;
+        readonly pw_proxy: any;
+        readonly pwProxy: any;
+
+        // Owm methods of Wp-0.4.Proxy
+
+        /**
+         * Returns the proxy bound id.
+         *
+         *
+         * The bound id is the id that this object has on the PipeWire registry (a.k.a. the global id). The object must have the WP_PROXY_FEATURE_BOUND feature before this method can be called.
+         * Requires WP_PROXY_FEATURE_BOUND
+         * @returns the bound id of this object
+         */
+        get_bound_id(): number;
+        /**
+         * Gets the interface type of the proxied object.
+         * @returns the PipeWire type of the interface that is being proxied
+         */
+        get_interface_type(): string;
+        /**
+         * Gets the pw_proxy wrapped by this proxy object.
+         * @returns a pointer to the underlying pw_proxy object
+         */
+        get_pw_proxy(): any | null;
+        /**
+         * Private method to be used by subclasses to set the pw_proxy pointer when it is available.
+         *
+         *
+         * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
+         * @param proxy
+         */
+        set_pw_proxy(proxy?: any | null): void;
+    }
+
+    module SessionItem {
+        // Constructor properties interface
+    }
+
+    abstract class SessionItem extends Object {
+        // Own properties of Wp-0.4.SessionItem
+
+        readonly id: number;
+        readonly properties: Properties;
+
+        // Owm methods of Wp-0.4.SessionItem
+
+        /**
+         * Helper callback for sub-classes that deffers and unexports the session item.
+         *
+         *
+         * Only meant to be used when the pipewire proxy destroyed signal is triggered.
+         * @param proxy the proxy that was destroyed by the server
+         * @param item the associated session item
+         */
+        static handle_proxy_destroyed(proxy: Proxy, item: SessionItem): void;
+        /**
+         * Finds the factory associated with the given `name` from the `core` and uses it to construct a new WpSessionItem.
+         * @param core the WpCore
+         * @param factory_name the name of the factory to be used for constructing the object
+         */
+        static make(core: Core, factory_name: string): SessionItem | null;
+
+        // Owm methods of Wp-0.4.SessionItem
+
+        /**
+         * Configures the session item with a set of properties.
+         * @param props the properties used to configure the item
+         * @returns TRUE on success, FALSE if the item could not be configured
+         */
+        configure(props: Properties): boolean;
+        /**
+         * An associated proxy is a WpProxy subclass instance that is somehow related to this item. For example:
+         *
+         *
+         *
+         *  - An exported WpSiEndpoint should have at least:
+         *  - an associated WpSiEndpoint
+         *  - an associated WpSession
+         *
+         *  - In cases where the item wraps a single PipeWire node, it should also have an associated WpNode
+         * @param proxy_type a WpProxy subclass GType
+         * @returns the associated proxy of the specified @proxy_type, or NULL if there is no association to such a proxy
+         */
+        get_associated_proxy(proxy_type: GObject.GType): Proxy | null;
+        /**
+         * Gets the bound id of a proxy associated with the session item.
+         * @param proxy_type a WpProxy subclass GType
+         * @returns the bound id of the associated proxy of the specified @proxy_type, or SPA_ID_INVALID if there is no association to such a proxy
+         */
+        get_associated_proxy_id(proxy_type: GObject.GType): number;
+        /**
+         * Gets the unique Id of the session item.
+         */
+        get_id(): number;
+        /**
+         * Gets the properties of a session item.
+         * @returns the item's properties.
+         */
+        get_properties(): Properties;
+        /**
+         * Looks up a named session item property value for a given key.
+         * @param key the property key
+         * @returns the item property value for the given key.
+         */
+        get_property(key: string): string;
+        /**
+         * Checks if the session item is configured.
+         * @returns TRUE if the item is configured, FALSE otherwise
+         */
+        is_configured(): boolean;
+        /**
+         * Registers the session item to its associated core.
+         */
+        register(): void;
+        /**
+         * Removes the session item from the registry.
+         */
+        remove(): void;
+        /**
+         * Resets the session item.
+         *
+         *
+         * This essentially removes the configuration and deactivates all active features.
+         */
+        reset(): void;
+        /**
+         * Sets the item's properties.
+         *
+         *
+         * This should only be done by sub-classes after the configuration has been done.
+         * @param props the new properties to set
+         */
+        set_properties(props: Properties): void;
+    }
+
+    module SiFactory {
+        // Constructor properties interface
+    }
+
+    /**
+     * A factory for session items.
+     * The most simple way to register a new item implementation would be:
+     *
+     * ```&lt;!-- language="C" --&gt;
+     *   wp_si_factory_register (core,
+     *      wp_si_factory_new_simple (
+     * ```
+     *
+     * And the most simple way to construct an item from a registered factory:
+     *
+     * ```&lt;!-- language="C" --&gt;
+     *   item = wp_session_item_make (core,
+     * ```
+     *
+     */
+    abstract class SiFactory extends GObject.Object {
+        // Own properties of Wp-0.4.SiFactory
+
+        name: string;
+
+        // Constructors of Wp-0.4.SiFactory
+
+        static new_simple(factory_name: string, si_type: GObject.GType): SiFactory;
+
+        // Owm methods of Wp-0.4.SiFactory
+
+        /**
+         * Looks up a factory matching a name.
+         * @param core the core
+         * @param factory_name the lookup name
+         */
+        static find(core: Core, factory_name: string): SiFactory | null;
+        /**
+         * Registers the `factory` on the `core`.
+         * @param core the core
+         * @param factory the factory to register
+         */
+        static register(core: Core, factory: SiFactory): void;
+
+        // Owm methods of Wp-0.4.SiFactory
+
+        /**
+         * Creates a new instance of the session item that is constructed by this factory.
+         * @param core the core
+         * @returns a new session item instance
+         */
+        construct(core: Core): SessionItem;
+        /**
+         * Gets the name of the factory.
+         * @returns the factory name
+         */
+        get_name(): string;
+    }
+
+    module SpaDevice {
+        // Signal callback interfaces
+
+        interface CreateObject {
+            (object: number, p0: string, p1: string, p2: Properties): void;
+        }
+
+        interface ObjectRemoved {
+            (object: number): void;
+        }
+
+        // Constructor properties interface
+    }
+
+    /**
+     * A WpSpaDevice allows running a spa_device object locally, loading the implementation from a SPA factory. This is useful to run device monitors inside the session manager and have control over creating the actual nodes that the spa_device requests to create.
+     * To enable the spa device, call wp_object_activate() requesting WP_SPA_DEVICE_FEATURE_ENABLED.
+     * For actual devices (not device monitors) it also possible and desirable to export the device to PipeWire, which can be done by requesting WP_PROXY_FEATURE_BOUND from wp_object_activate(). When exporting, the export should be done before enabling the device, by requesting both features at the same time.
+     */
+    class SpaDevice extends Proxy {
+        // Own properties of Wp-0.4.SpaDevice
+
+        properties: Properties;
+        spa_device_handle: any;
+        spaDeviceHandle: any;
+
+        // Constructors of Wp-0.4.SpaDevice
+
+        static new_from_spa_factory(core: Core, factory_name: string, properties?: Properties | null): SpaDevice;
+
+        static new_wrap(core: Core, spa_device_handle?: any | null, properties?: Properties | null): SpaDevice;
+
+        // Owm methods of Wp-0.4.SpaDevice
+
+        /**
+         * Gets one of the objects managed by this device.
+         * @param id the (device-internal) id of the object to get
+         * @returns the managed object associated with @id
+         */
+        get_managed_object<T = GObject.Object>(id: number): T;
+        /**
+         * Gets the properties of this device.
+         * @returns the device properties
+         */
+        get_properties(): Properties;
+        /**
+         * Iterates through all the objects managed by this device.
+         * @returns a WpIterator that iterates over all the objects managed by this device
+         */
+        new_managed_object_iterator(): Iterator;
+        /**
+         * Stores or removes a managed object into/from a device.
+         * @param id the (device-internal) id of the object
+         * @param object the object to store or NULL to remove the managed object associated with @id
+         */
+        store_managed_object(id: number, object?: GObject.Object | null): void;
+    }
+
+    class SpaType {
+        // Owm methods of Wp-0.4.SpaType
+
+        /**
+         * Looks up the type id from a given type name.
+         * @param name the name to look up
+         */
+        static from_name(name: string): SpaType;
+
+        // Owm methods of Wp-0.4.SpaType
+
+        /**
+         * Gets the table with the values that can be stored in the special "id" field of an object of the given `type`.
+         *
+         *
+         * Object pods (see WpSpaPod) always have a special "id" field along with other fields that can be defined. This "id" field can only store values of a specific SPA_TYPE_Id type. This function returns the table that contains the possible values for that field.
+         * @returns the table with the values that can be stored in the special "id" field of an object of the given @type
+         */
+        get_object_id_values_table(): SpaIdTable;
+        /**
+         * Gets the values table of an SPA type.
+         * @returns the associated WpSpaIdTable that contains possible values or object fields for this type, or NULL
+         */
+        get_values_table(): SpaIdTable;
+        /**
+         * Checks if an SPA type is a fundamental type.
+         * @returns TRUE if the @type has no parent, FALSE otherwise
+         */
+        is_fundamental(): boolean;
+        /**
+         * Checks if an SPA type is an Id type.
+         * @returns TRUE if the @type is a SPA_TYPE_Id, FALSE otherwise
+         */
+        is_id(): boolean;
+        /**
+         * Checks if an SPA type is an Object type.
+         * @returns TRUE if the @type is a SPA_TYPE_Object, FALSE otherwise
+         */
+        is_object(): boolean;
+        /**
+         * Gets the name of an SPA type.
+         * @returns the complete name of the given @type or NULL if @type is invalid
+         */
+        name(): string;
+        /**
+         * Gets the parent type of an SPA type.
+         * @returns the direct parent type of the given @type; if the type is fundamental (i.e. has no parent), the returned type is the same as @type
+         */
+        parent(): SpaType;
+    }
+
+    module State {
+        // Constructor properties interface
+    }
+
+    /**
+     * The WpState class saves and loads properties from a file
+     */
+    class State extends GObject.Object {
+        // Own properties of Wp-0.4.State
+
+        name: string;
+
+        // Constructors of Wp-0.4.State
+
+        static ['new'](name: string): State;
+
+        // Owm methods of Wp-0.4.State
+
+        /**
+         * Clears the state removing its file.
+         */
+        clear(): void;
+        /**
+         * Gets the location of a state object.
+         * @returns the location of this state
+         */
+        get_location(): string;
+        /**
+         * Gets the name of a state object.
+         * @returns the name of this state
+         */
+        get_name(): string;
+        /**
+         * Loads the state data from the file system.
+         *
+         *
+         * This function will never fail. If it cannot load the state, for any reason, it will simply return an empty WpProperties, behaving as if there was no previous state stored.
+         * @returns a new WpProperties containing the state data
+         */
+        load(): Properties;
+        /**
+         * Saves new properties in the state, overwriting all previous data.
+         * @param props the properties to save
+         * @returns TRUE if the properties could be saved, FALSE otherwise
+         */
+        save(props: Properties): boolean;
+    }
+
+    module Transition {
+        // Constructor properties interface
+    }
+
+    /**
+     * A transition is an asynchronous operation, like GTask, that contains an internal state machine, where a series of 'steps' are executed in order to complete the operation.
+     * For every step, _WpTransitionClass::get_next_step() is called in order to determine the next step to execute. Afterwards, _WpTransitionClass::execute_step() is called to perform any actions necessary to complete this step. When execution of the step is done, the operation's code must call wp_transition_advance() in order to continue to the next step. If an error occurs, the operation's code must call wp_transition_return_error() instead, in which case the transition completes immediately and wp_transition_had_error() returns TRUE.
+     * Typically, every step will start an asynchronous operation. Although is is possible, the WpTransition base class does not expect _WpTransitionClass::execute_step() to call wp_transition_advance() directly. Instead, it is expected that wp_transition_advance() will be called from the callback that the step's asynchronous operation will call when it is completed.
+     */
+    abstract class Transition extends GObject.Object {
+        // Own properties of Wp-0.4.Transition
+
+        readonly completed: boolean;
+
+        // Constructors of Wp-0.4.Transition
+
+        static ['new'](
+            type: GObject.GType,
+            source_object?: GObject.Object | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback | null,
+        ): Transition;
+
+        static new_closure(
+            type: GObject.GType,
+            source_object?: GObject.Object | null,
+            cancellable?: Gio.Cancellable | null,
+            closure?: GObject.Closure | null,
+        ): Transition;
+
+        // Owm methods of Wp-0.4.Transition
+
+        /**
+         * Returns the final return status of the transition and its error, if there was one.
+         *
+         *
+         * This is meant to be called from within the GAsyncReadyCallback that was specified in wp_transition_new().
+         * @param res a transition, as a GAsyncResult
+         */
+        static finish(res: Gio.AsyncResult): boolean;
+
+        // Owm methods of Wp-0.4.Transition
+
+        /**
+         * Advances the transition to the next step.
+         *
+         *
+         * This initially calls _WpTransitionClass::get_next_step() in order to determine what the next step is. If _WpTransitionClass::get_next_step() returns a step different than the previous one, it calls _WpTransitionClass::execute_step() to execute it.
+         * The very first time that _WpTransitionClass::get_next_step() is called, its `step` parameter equals WP_TRANSITION_STEP_NONE.
+         * When _WpTransitionClass::get_next_step() returns WP_TRANSITION_STEP_NONE this function completes the transition, calling the transition's callback and then unref-ing the transition.
+         * When _WpTransitionClass::get_next_step() returns WP_TRANSITION_STEP_ERROR, this function calls wp_transition_return_error(), unless it has already been called directly by _WpTransitionClass::get_next_step().
+         * In error conditions, _WpTransitionClass::execute_step() is called once with `step` being WP_TRANSITION_STEP_ERROR, allowing the implementation to rollback any changes or cancel underlying jobs, if necessary.
+         */
+        advance(): void;
+        /**
+         * Checks if the transition completed.
+         * @returns TRUE if the transition has completed (with or without an error), FALSE otherwise
+         */
+        get_completed(): boolean;
+        /**
+         * Gets `self` 's data.
+         *
+         *
+         * See wp_transition_set_data().
+         * @returns the transition's data
+         */
+        get_data(): any | null;
+        /**
+         * Gets the source object from the transition.
+         *
+         *
+         * Like g_async_result_get_source_object(), but does not ref the object.
+         * @returns the source object
+         */
+        get_source_object<T = GObject.Object>(): T;
+        /**
+         * Gets `self` 's source tag.
+         *
+         *
+         * See wp_transition_set_source_tag().
+         * @returns the transition's source tag
+         */
+        get_source_tag(): any | null;
+        /**
+         * Checks if the transition completed with an error.
+         * @returns TRUE if the transition completed with an error, FALSE otherwise
+         */
+        had_error(): boolean;
+        /**
+         * Checks if `self` has the given `tag` (generally a function pointer indicating the function `self` was created by).
+         * @param tag a tag
+         * @returns TRUE if @self has the indicated @tag , FALSE if not.
+         */
+        is_tagged(tag?: any | null): boolean;
+        /**
+         * Completes the transition with an error.
+         *
+         *
+         * This can be called anytime from within any virtual function or an async job handler.
+         * In most cases this will also unref the transition, so it is not safe to access it after this function has been called.
+         * @param error a GError
+         */
+        return_error(error: GLib.Error): void;
+        /**
+         * Sets `self` 's data (freeing the existing data, if any). This can be an arbitrary user structure that holds data associated with this transition.
+         * @param data transition-specific user data
+         * @param data_destroy GDestroyNotify for @data
+         */
+        set_data(data?: any | null, data_destroy?: GLib.DestroyNotify | null): void;
+        /**
+         * Sets `self` 's source tag.
+         *
+         *
+         * You can use this to tag a transition's return value with a particular pointer (usually a pointer to the function doing the tagging) and then later check it using wp_transition_get_source_tag() (or g_async_result_is_tagged()) in the transition's "finish" function, to figure out if the response came from a particular place.
+         * @param tag an opaque pointer indicating the source of this transition
+         */
+        set_source_tag(tag?: any | null): void;
+    }
+
+    class ClientClass {}
+
+    class ComponentLoaderClass {}
+
+    class CoreClass {}
+
+    class DbusClass {}
+
+    class DeviceClass {}
+
+    class EndpointClass {}
+
+    class FactoryClass {}
+
+    class FeatureActivationTransitionClass {}
+
+    class GlobalProxyClass {}
+
+    class ImplEndpointClass {}
+
+    class ImplMetadataClass {}
+
+    class ImplModuleClass {}
+
+    class ImplNodeClass {}
+
+    /**
+     * A generic iterator API
+     */
+    class Iterator {
+        // Constructors of Wp-0.4.Iterator
+
+        constructor(methods: IteratorMethods, user_size: number);
+
+        static ['new'](methods: IteratorMethods, user_size: number): Iterator;
+
+        // Owm methods of Wp-0.4.Iterator
+
+        /**
+         * Fold a function over the items of the iterator.
+         * @param func the fold function
+         * @param ret the accumulator data
+         * @returns TRUE if all the items were processed, FALSE otherwise.
+         */
+        fold(func: IteratorFoldFunc, ret: GObject.Value): boolean;
+        /**
+         * Iterates over all items of the iterator calling a function.
+         * @param func the foreach function
+         * @returns TRUE if all the items were processed, FALSE otherwise.
+         */
+        foreach(func: IteratorForeachFunc): boolean;
+        /**
+         * Gets the implementation-specific storage of an iterator.
+         *
+         *
+         * this only for use by implementations of WpIterator
+         * @returns a pointer to the implementation-specific storage area
+         */
+        get_user_data(): any | null;
+        /**
+         * Gets the next item of the iterator.
+         * @returns TRUE if next iterator was obtained, FALSE when the iterator has no more items to iterate through.
+         */
+        next(): boolean;
+        /**
+         * Increases the reference count of an iterator.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): Iterator;
+        /**
+         * Resets the iterator so we can iterate again from the beginning.
+         */
+        reset(): void;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class IteratorMethods {
+        // Own fields of Wp-0.4.IteratorMethods
+
+        version: number;
+
+        // Constructors of Wp-0.4.IteratorMethods
+
+        constructor(
+            properties?: Partial<{
+                version: number;
+            }>,
+        );
+    }
+
+    class LinkClass {}
+
+    class MetadataClass {}
+
+    class NodeClass {}
+
+    class ObjectClass {}
+
+    /**
+     * An object interest is a helper that is used in WpObjectManager to declare interest in certain kinds of objects.
+     * An interest is defined by a GType and a set of constraints on the object's properties. An object "matches" the interest if it is of the specified GType (either the same type or a descendant of it) and all the constraints are satisfied.
+     */
+    class ObjectInterest {
+        // Constructors of Wp-0.4.ObjectInterest
+
+        constructor(gtype: GObject.GType, ___: any[]);
+
+        static new_type(gtype: GObject.GType): ObjectInterest;
+
+        // Owm methods of Wp-0.4.ObjectInterest
+
+        /**
+         * Adds a constraint to this interest. Constraints consist of a `type,` a `subject,` a `verb` and, depending on the `verb,` a `value`.
+         *
+         *
+         * Constraints are almost like a spoken language sentence that declare a condition that must be true in order to consider that an object can match this interest. For instance, a constraint can be "pipewire property
+         * 'object.id' equals 10". This would be translated to:
+         *
+         * ```&lt;!-- language="C" --&gt;
+         *   wp_object_interest_add_constraint (i,
+         *      WP_CONSTRAINT_TYPE_PW_PROPERTY, "object.id",
+         *      WP_CONSTRAINT_VERB_EQUALS, g_variant_new_int (10));
+         * ```
+         *
+         * Some verbs require a `value` and some others do not. For those that do, the `value` must be of a specific type:
+         *  - WP_CONSTRAINT_VERB_EQUALS: `value` can be a string, a (u)int32, a (u)int64, a double or a boolean. The `subject` value must equal this value for the constraint to be satisfied
+         *  - WP_CONSTRAINT_VERB_IN_LIST: `value` must be a tuple that contains any number of items of the same type; the items can be string, (u)int32, (u)int64 or double. These items make a list that the `subject'`s value will be checked against. If any of the items equals the `subject` value, the constraint is satisfied
+         *  - WP_CONSTRAINT_VERB_IN_RANGE: `value` must be a tuple that contains exactly 2 numbers of the same type ((u)int32, (u)int64 or double), meaning the minimum and maximum (inclusive) of the range. If the `subject` value is a number within this range, the constraint is satisfied
+         *  - WP_CONSTRAINT_VERB_MATCHES: `value` must be a string that defines a pattern usable with GPatternSpec If the `subject` value matches this pattern, the constraint is satisfied
+         *
+         * In case the type of the `subject` value is not the same type as the one requested by the type of the `value,` the `subject` value is converted. For GObject properties, this conversion is done using g_value_transform(), so limitations of this function apply. In the case of PipeWire properties, which are `always` strings, conversion is done as follows:
+         *  - to boolean: "true" or "1" means TRUE, "false" or "0" means FALSE
+         *  - to int / uint / int64 / uint64: One of the strtol() family of functions is used to convert, using base 10
+         *  - to double: strtod() is used
+         *
+         * This method does not fail if invalid arguments are given. However, wp_object_interest_validate() should be called after adding all the constraints on an interest in order to catch errors.
+         * @param type the constraint type
+         * @param subject the subject that the constraint applies to
+         * @param verb the operation that is performed to check the constraint
+         * @param value the value to check for
+         */
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value?: GLib.Variant | null): void;
+        /**
+         * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
+         *
+         *
+         * If `self` is configured to match GObject subclasses, this is equivalent to wp_object_interest_matches_full (self, G_OBJECT_TYPE (object), object, NULL, NULL) and if it is configured to match WpProperties, this is equivalent to wp_object_interest_matches_full (self, self-&gt;gtype, NULL, (WpProperties *) object, NULL);
+         * @param object the target object to check for a match
+         * @returns TRUE if the object matches, FALSE otherwise
+         */
+        matches(object?: any | null): boolean;
+        /**
+         * A low-level version of wp_object_interest_matches().
+         *
+         *
+         * In this version, the object's type is directly given in `object_type` and is not inferred from the `object`. `object` is only used to check for constraints against GObject properties.
+         * `pw_props` and `pw_global_props` are used to check constraints against PipeWire object properties and global properties, respectively.
+         * `object,` `pw_props` and `pw_global_props` may be NULL, but in case there are any constraints that require them, the match will fail. As a special case, if `object` is not NULL and is a subclass of WpProxy, then `pw_props` and `pw_global_props,` if required, will be internally retrieved from `object` by calling wp_pipewire_object_get_properties() and wp_global_proxy_get_global_properties() respectively.
+         * When `flags` contains WP_INTEREST_MATCH_FLAGS_CHECK_ALL, all the constraints are checked and the returned value contains accurate information about which types of constraints have failed to match, if any. When this flag is not present, this function returns after the first failure has been encountered. This means that the returned flags set will contain all but one flag, which will indicate the kind of constraint that failed (more could have failed, but they are not checked...)
+         * @param flags flags to alter the behavior of this function
+         * @param object_type the type to be checked against the interest's type
+         * @param object the object to be used for checking constraints of type WP_CONSTRAINT_TYPE_G_PROPERTY
+         * @param pw_props the properties to be used for checking constraints of type WP_CONSTRAINT_TYPE_PW_PROPERTY
+         * @param pw_global_props the properties to be used for checking constraints of type WP_CONSTRAINT_TYPE_PW_GLOBAL_PROPERTY
+         * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
+         */
+        matches_full(
+            flags: InterestMatchFlags,
+            object_type: GObject.GType,
+            object?: GObject.Object | null,
+            pw_props?: Properties | null,
+            pw_global_props?: Properties | null,
+        ): InterestMatch;
+        /**
+         * Increases the reference count of an object interest.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): ObjectInterest;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+        /**
+         * Validates the interest, ensuring that the interest GType is a valid object and that all the constraints have been expressed properly.
+         *
+         *
+         * This is called internally when `self` is first used to find a match, so it is not necessary to call it explicitly
+         * @returns TRUE if the interest is valid and can be used in a match, FALSE otherwise
+         */
+        validate(): boolean;
+    }
+
+    class ObjectManagerClass {}
+
+    class PipewireObjectInterface {}
+
+    class PluginClass {}
+
+    class PortClass {}
+
+    /**
+     * WpProperties is a data structure that contains string key-value pairs, which are used to send/receive/attach arbitrary properties to PipeWire objects.
+     * This could be thought of as a hash table with strings as both keys and values. However, the reason that this class exists instead of using GHashTable directly is that in reality it wraps the PipeWire native struct spa_dict and struct pw_properties and therefore it can be easily passed to PipeWire function calls that require a struct spa_dict * or a struct pw_properties * as arguments. Or alternatively, it can easily wrap a struct spa_dict * or a struct pw_properties * that was given from the PipeWire API without necessarily doing an expensive copy operation.
+     * WpProperties normally wraps a struct pw_properties, unless it was created with wp_properties_new_wrap_dict(), in which case it wraps a struct spa_dict and it is immutable (you cannot add/remove/modify any key-value pair).
+     * In most cases, it actually owns the struct pw_properties internally and manages its lifetime. The exception to that rule is when WpProperties is constructed with wp_properties_new_wrap(), in which case the ownership of the struct pw_properties remains outside. This must be used with care, as the struct pw_properties may be free'ed externally.
+     * WpProperties is reference-counted with wp_properties_ref() and wp_properties_unref().
+     */
+    class Properties {
+        // Constructors of Wp-0.4.Properties
+
+        constructor(properties?: Partial<{}>);
+
+        static new_copy(props?: any | null): Properties;
+
+        static new_copy_dict(dict?: any | null): Properties;
+
+        static new_empty(): Properties;
+
+        static new_string(str: string): Properties;
+
+        static new_take(props?: any | null): Properties;
+
+        static new_wrap(props?: any | null): Properties;
+
+        static new_wrap_dict(dict?: any | null): Properties;
+
+        // Owm methods of Wp-0.4.Properties
+
+        /**
+         * Gets the key from a properties iterator item.
+         * @param item a GValue that was returned from the WpIterator of wp_properties_new_iterator()
+         */
+        static iterator_item_get_key(item: GObject.Value): string;
+        /**
+         * Gets the value from a properties iterator item.
+         * @param item a GValue that was returned from the WpIterator of wp_properties_new_iterator()
+         */
+        static iterator_item_get_value(item: GObject.Value): string;
+
+        // Owm methods of Wp-0.4.Properties
+
+        /**
+         * Adds new properties in `self,` using the given `props` as a source.
+         *
+         *
+         * Properties (keys) from `props` that are already contained in `self` are not modified, unlike what happens with wp_properties_update(). Properties in `self` that are not contained in `props` are left untouched.
+         * @param props a properties set that contains properties to add
+         * @returns the number of properties that were changed
+         */
+        add(props: Properties): number;
+        /**
+         * Adds new properties in `self,` using the given `dict` as a source.
+         *
+         *
+         * Properties (keys) from `dict` that are already contained in `self` are not modified, unlike what happens with wp_properties_update_from_dict(). Properties in `self` that are not contained in `dict` are left untouched.
+         * @param dict a spa_dict that contains properties to add
+         * @returns the number of properties that were changed
+         */
+        add_from_dict(dict?: any | null): number;
+        /**
+         * The same as wp_properties_add_keys(), using a NULL-terminated array for specifying the keys to add.
+         * @param props a properties set that contains properties to add
+         * @param keys the properties to add
+         * @returns the number of properties that were changed
+         */
+        add_keys_array(props: Properties, keys: string[]): number;
+        /**
+         * Constructs and returns a new WpProperties object that contains a copy of all the properties contained in `other`.
+         * @returns the newly constructed properties set
+         */
+        copy(): Properties;
+        /**
+         * Ensures that the given properties set is uniquely owned.
+         *
+         *
+         * "Uniquely owned" means that:
+         *  - its reference count is 1
+         *  - it is not wrapping a native spa_dict or pw_properties object
+         *
+         * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
+         * @returns the uniquely owned properties object
+         */
+        ensure_unique_owner(): Properties;
+        /**
+         * Looks up a given property value from a key.
+         * @param key a property key
+         * @returns the value of the property identified with @key, or NULL if this property is not contained in @self
+         */
+        get(key: string): string | null;
+        /**
+         * Gets the number of properties contained in this object.
+         * @returns the number of properties contained in this object
+         */
+        get_count(): number;
+        /**
+         * Checks if all property values contained in `other` are matching with the values in `self`.
+         *
+         *
+         * If a property is contained in `other` and not in `self,` the result is not matched. If a property is contained in both sets, then the value of the property in `other` is interpreted as a glob-style pattern (using g_pattern_match_simple()) and the value in `self` is checked to see if it matches with this pattern.
+         * @param other a set of properties to match
+         * @returns TRUE if all matches were successfull, FALSE if at least one property value did not match
+         */
+        matches(other: Properties): boolean;
+        /**
+         * Iterates through all the properties in the properties object.
+         * @returns an iterator that iterates over the properties. The items in the iterator are of type WpPropertiesItem. Use wp_properties_item_get_key() and wp_properties_item_get_value() to retrieve their contents.
+         */
+        new_iterator(): Iterator;
+        /**
+         * Gets the dictionary wrapped by a properties object.
+         * @returns the internal properties set as a struct spa_dict *
+         */
+        peek_dict(): any | null;
+        ref(): Properties;
+        /**
+         * Sets the given property `key` - `value` pair on `self`.
+         *
+         *
+         * If the property already existed, the value is overwritten with the new one.
+         * If the `value` is NULL, then the specified property is removed from `self`
+         * @param key a property key
+         * @param value a property value
+         * @returns 1 if the property was changed. 0 if nothing was changed because the property already existed with the same value or because the key to remove did not exist.
+         */
+        set(key: string, value?: string | null): number;
+        /**
+         * Sorts the keys in alphabetical order.
+         */
+        sort(): void;
+        /**
+         * Gets a copy of the properties object as a struct pw_properties
+         * @returns a copy of the properties in @self as a struct pw_properties
+         */
+        to_pw_properties(): any | null;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+        /**
+         * Similar to wp_properties_to_pw_properties(), but this method avoids making a copy of the properties by returning the struct pw_properties that is stored internally and then freeing the WpProperties wrapper.
+         *
+         *
+         * If `self` is not uniquely owned (see wp_properties_ensure_unique_owner()), then this method does make a copy and is the same as wp_properties_to_pw_properties(), performance-wise.
+         * @returns the properties in @self as a struct pw_properties
+         */
+        unref_and_take_pw_properties(): any | null;
+        /**
+         * Updates (adds new or modifies existing) properties in `self,` using the given `props` as a source.
+         *
+         *
+         * Any properties that are not contained in `props` are left untouched.
+         * @param props a properties set that contains properties to update
+         * @returns the number of properties that were changed
+         */
+        update(props: Properties): number;
+        /**
+         * Updates (adds new or modifies existing) properties in `self,` using the given `dict` as a source.
+         *
+         *
+         * Any properties that are not contained in `dict` are left untouched.
+         * @param dict a spa_dict that contains properties to update
+         * @returns the number of properties that were changed
+         */
+        update_from_dict(dict?: any | null): number;
+        /**
+         * The same as wp_properties_update_keys(), using a NULL-terminated array for specifying the keys to update.
+         * @param props a properties set that contains properties to update
+         * @param keys the properties to update
+         * @returns the number of properties that were changed
+         */
+        update_keys_array(props: Properties, keys: string[]): number;
+    }
+
+    class PropertiesItem {
+        // Owm methods of Wp-0.4.PropertiesItem
+
+        /**
+         * Gets the key from a properties item.
+         * @returns the property key of the @item
+         */
+        get_key(): string;
+        /**
+         * Gets the value from a properties item.
+         * @returns the property value of the @item
+         */
+        get_value(): string;
+        /**
+         * Increases the reference count of a properties item object.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): PropertiesItem;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class ProxyClass {
+        // Own fields of Wp-0.4.ProxyClass
+
+        pw_iface_type: string;
+        pw_iface_version: number;
+    }
+
+    class SessionItemClass {}
+
+    class SiAcquisitionInterface {}
+
+    class SiAdapterInterface {}
+
+    class SiEndpointInterface {}
+
+    class SiFactoryClass {}
+
+    class SiLinkInterface {}
+
+    class SiLinkableInterface {}
+
+    class SpaDeviceClass {}
+
+    class SpaJson {
+        // Constructors of Wp-0.4.SpaJson
+
+        constructor(properties?: Partial<{}>);
+
+        static new_boolean(value: boolean): SpaJson;
+
+        static new_float(value: number): SpaJson;
+
+        static new_from_string(json_str: string): SpaJson;
+
+        static new_from_stringn(json_str: string, len: number): SpaJson;
+
+        static new_int(value: number): SpaJson;
+
+        static new_null(): SpaJson;
+
+        static new_string(value: string): SpaJson;
+
+        static new_wrap(json?: any | null): SpaJson;
+
+        // Owm methods of Wp-0.4.SpaJson
+
+        /**
+         * Copies a spa json object.
+         * @returns The newly copied spa json
+         */
+        copy(): SpaJson;
+        /**
+         * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
+         * @returns the uniquely owned spa json object which may or may not be the same as @self.
+         */
+        ensure_unique_owner(): SpaJson;
+        /**
+         * Returns the json data.
+         * @returns a const pointer to the json data
+         */
+        get_data(): string;
+        /**
+         * Returns the json data size.
+         * @returns the json data size
+         */
+        get_size(): number;
+        /**
+         * Converts a WpSpaJson pointer to a struct spa_json one, for use with native pipewire &amp; spa functions. The returned pointer is owned by WpSpaJson and may not be modified or freed.
+         * @returns a const pointer to the underlying spa_json structure
+         */
+        get_spa_json(): any | null;
+        /**
+         * Checks wether the spa json is of type array or not.
+         * @returns TRUE if it is of type array, FALSE otherwise
+         */
+        is_array(): boolean;
+        /**
+         * Checks wether the spa json is of type boolean or not.
+         * @returns TRUE if it is of type boolean, FALSE otherwise
+         */
+        is_boolean(): boolean;
+        /**
+         * Checks wether the spa json is of type float or not.
+         * @returns TRUE if it is of type float, FALSE otherwise
+         */
+        is_float(): boolean;
+        /**
+         * Checks wether the spa json is of type int or not.
+         * @returns TRUE if it is of type int, FALSE otherwise
+         */
+        is_int(): boolean;
+        /**
+         * Checks wether the spa json is of type null or not.
+         * @returns TRUE if it is of type null, FALSE otherwise
+         */
+        is_null(): boolean;
+        /**
+         * Checks wether the spa json is of type object or not.
+         * @returns TRUE if it is of type object, FALSE otherwise
+         */
+        is_object(): boolean;
+        /**
+         * Checks wether the spa json is of type string or not.
+         * @returns TRUE if it is of type string, FALSE otherwise
+         */
+        is_string(): boolean;
+        /**
+         * Checks if the json is the unique owner of its data or not.
+         * @returns TRUE if the json owns the data, FALSE otherwise.
+         */
+        is_unique_owner(): boolean;
+        /**
+         * Creates a new iterator for a spa json object.
+         * @returns the new spa json iterator
+         */
+        new_iterator(): Iterator;
+        /**
+         * Parses the boolean value of a spa json object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        parse_boolean(): boolean;
+        /**
+         * Parses the float value of a spa json object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        parse_float(): boolean;
+        /**
+         * Parses the int value of a spa json object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        parse_int(): boolean;
+        /**
+         * Parses the string value of a spa json object.
+         * @returns The newly allocated parsed string
+         */
+        parse_string(): string;
+        /**
+         * Increases the reference count of a spa json object.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaJson;
+        /**
+         * Returns a newly allocated json string with length matching the size.
+         * @returns the json string with length matching the size
+         */
+        to_string(): string;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class SpaJsonBuilder {
+        // Constructors of Wp-0.4.SpaJsonBuilder
+
+        constructor(properties?: Partial<{}>);
+
+        static new_array(): SpaJsonBuilder;
+
+        static new_object(): SpaJsonBuilder;
+
+        // Owm methods of Wp-0.4.SpaJsonBuilder
+
+        /**
+         * Adds a boolean value into the builder.
+         * @param value the boolean value
+         */
+        add_boolean(value: boolean): void;
+        /**
+         * Adds a float value into the builder.
+         * @param value the float value
+         */
+        add_float(value: number): void;
+        /**
+         * Adds a int value into the builder.
+         * @param value the int value
+         */
+        add_int(value: number): void;
+        /**
+         * Adds a json value into the builder.
+         * @param json the json value
+         */
+        add_json(json: SpaJson): void;
+        /**
+         * Adds a null value into the builder.
+         */
+        add_null(): void;
+        /**
+         * Adds a property into the builder.
+         * @param key the name of the property
+         */
+        add_property(key: string): void;
+        /**
+         * Adds a string value into the builder.
+         * @param value the string value
+         */
+        add_string(value: string): void;
+        /**
+         * Ends the builder process and returns the constructed spa json object.
+         * @returns the constructed spa json object
+         */
+        end(): SpaJson;
+        /**
+         * Increases the reference count of a spa json builder.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaJsonBuilder;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class SpaJsonParser {
+        // Constructors of Wp-0.4.SpaJsonParser
+
+        constructor(json: SpaJson);
+
+        static new_array(json: SpaJson): SpaJsonParser;
+
+        static new_object(json: SpaJson): SpaJsonParser;
+
+        // Owm methods of Wp-0.4.SpaJsonParser
+
+        end(): void;
+        /**
+         * Gets the boolean value from a spa json parser.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_boolean(): boolean;
+        /**
+         * Gets the float value from a spa json parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_float(): boolean;
+        /**
+         * Gets the int value from a spa json parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_int(): boolean;
+        /**
+         * Gets the spa json value from a spa json parser object.
+         * @returns The spa json value or NULL if it could not be obtained
+         */
+        get_json(): SpaJson;
+        /**
+         * Gets the null value from a spa json parser.
+         * @returns TRUE if the null value is present, FALSE otherwise
+         */
+        get_null(): boolean;
+        /**
+         * Gets the string value from a spa json parser object.
+         * @returns The newly allocated parsed string
+         */
+        get_string(): string;
+        /**
+         * Increases the reference count of a spa json parser.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaJsonParser;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class SpaPod {
+        // Constructors of Wp-0.4.SpaPod
+
+        constructor(properties?: Partial<{}>);
+
+        static new_boolean(value: boolean): SpaPod;
+
+        static new_bytes(value: any | null, len: number): SpaPod;
+
+        static new_double(value: number): SpaPod;
+
+        static new_fd(value: number): SpaPod;
+
+        static new_float(value: number): SpaPod;
+
+        static new_fraction(num: number, denom: number): SpaPod;
+
+        static new_id(value: number): SpaPod;
+
+        static new_int(value: number): SpaPod;
+
+        static new_long(value: number): SpaPod;
+
+        static new_none(): SpaPod;
+
+        static new_pointer(type_name: string, value?: any | null): SpaPod;
+
+        static new_rectangle(width: number, height: number): SpaPod;
+
+        static new_string(value: string): SpaPod;
+
+        static new_wrap(pod?: any | null): SpaPod;
+
+        static new_wrap_const(pod?: any | null): SpaPod;
+
+        // Owm methods of Wp-0.4.SpaPod
+
+        /**
+         * Copies a spa pod object.
+         * @returns The newly copied spa pod
+         */
+        copy(): SpaPod;
+        /**
+         * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
+         * @returns the uniquely owned spa pod object which may or may not be the same as @self.
+         */
+        ensure_unique_owner(): SpaPod;
+        /**
+         * Checks whether two spa pod objects have the same value or not.
+         * @param pod the pod with the value to be compared with
+         * @returns TRUE if both spa pod objects have the same values, FALSE othewrise.
+         */
+        equal(pod: SpaPod): boolean;
+        filter(filter: SpaPod): SpaPod;
+        /**
+         * Fixates choices in an object pod so that they only have one value.
+         * @returns TRUE if the pod was an object and it went through the fixation procedure, FALSE otherwise
+         */
+        fixate(): boolean;
+        /**
+         * Gets the child of a spa pod array object.
+         * @returns the child of the spa pod array object
+         */
+        get_array_child(): SpaPod;
+        /**
+         * Gets the boolean value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_boolean(): boolean;
+        /**
+         * Gets the bytes value and its len of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_bytes(): boolean;
+        /**
+         * Gets the child of a spa pod choice object.
+         * @returns the child of the spa pod choice object
+         */
+        get_choice_child(): SpaPod;
+        /**
+         * If the pod is a Choice, this gets the choice type (Range, Step, Enum, ...)
+         * @returns the choice type of the choice pod
+         */
+        get_choice_type(): SpaIdValue;
+        /**
+         * Gets the offset, type name and spa pod value of a spa pod control.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_control(): boolean;
+        /**
+         * Gets the double value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_double(): boolean;
+        /**
+         * Gets the Fd value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_fd(): boolean;
+        /**
+         * Gets the float value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_float(): boolean;
+        /**
+         * Gets the fractions's numerator and denominator value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_fraction(): boolean;
+        /**
+         * Gets the Id value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_id(): boolean;
+        /**
+         * Gets the int value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_int(): boolean;
+        /**
+         * Gets the long value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_long(): boolean;
+        /**
+         * Gets the pointer value and its type name of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_pointer(): boolean;
+        /**
+         * Gets the name, flags and spa pod value of a spa pod property.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_property(): boolean;
+        /**
+         * Gets the rectangle's width and height value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_rectangle(): boolean;
+        /**
+         * Converts a WpSpaPod pointer to a struct spa_pod one, for use with native pipewire &amp; spa functions. The returned pointer is owned by WpSpaPod and may not be modified or freed.
+         * @returns a const pointer to the underlying spa_pod structure
+         */
+        get_spa_pod(): any | null;
+        /**
+         * Gets the SPA type of the spa pod.
+         *
+         *
+         * If the pod is an object or pointer, this will return the derived object/pointer type directly. If the pod is an object property or a control, this will return the type of the contained value.
+         * @returns the type of the spa pod
+         */
+        get_spa_type(): SpaType;
+        /**
+         * Gets the string value of a spa pod object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_string(): boolean;
+        /**
+         * Checks wether the spa pod is of type array or not.
+         * @returns TRUE if it is of type array, FALSE otherwise
+         */
+        is_array(): boolean;
+        /**
+         * Checks wether the spa pod is of type boolean or not.
+         * @returns TRUE if it is of type boolean, FALSE otherwise
+         */
+        is_boolean(): boolean;
+        /**
+         * Checks wether the spa pod is of type bytes or not.
+         * @returns TRUE if it is of type bytes, FALSE otherwise
+         */
+        is_bytes(): boolean;
+        /**
+         * Checks wether the spa pod is of type choice or not.
+         * @returns TRUE if it is of type choice, FALSE otherwise
+         */
+        is_choice(): boolean;
+        /**
+         * Checks wether the spa pod is of type control or not.
+         * @returns TRUE if it is of type control, FALSE otherwise
+         */
+        is_control(): boolean;
+        /**
+         * Checks wether the spa pod is of type double or not.
+         * @returns TRUE if it is of type double, FALSE otherwise
+         */
+        is_double(): boolean;
+        /**
+         * Checks wether the spa pod is of type Fd or not.
+         * @returns TRUE if it is of type Fd, FALSE otherwise
+         */
+        is_fd(): boolean;
+        /**
+         * Checks wether the spa pod is of type float or not.
+         * @returns TRUE if it is of type float, FALSE otherwise
+         */
+        is_float(): boolean;
+        /**
+         * Checks wether the spa pod is of type fraction or not.
+         * @returns TRUE if it is of type fraction, FALSE otherwise
+         */
+        is_fraction(): boolean;
+        /**
+         * Checks wether the spa pod is of type Id or not.
+         * @returns TRUE if it is of type Id, FALSE otherwise
+         */
+        is_id(): boolean;
+        /**
+         * Checks wether the spa pod is of type int or not.
+         * @returns TRUE if it is of type int, FALSE otherwise
+         */
+        is_int(): boolean;
+        /**
+         * Checks wether the spa pod is of type long or not.
+         * @returns TRUE if it is of type long, FALSE otherwise
+         */
+        is_long(): boolean;
+        /**
+         * Checks wether the spa pod is of type none or not.
+         * @returns TRUE if it is of type none, FALSE otherwise
+         */
+        is_none(): boolean;
+        /**
+         * Checks wether the spa pod is of type object or not.
+         * @returns TRUE if it is of type object, FALSE otherwise
+         */
+        is_object(): boolean;
+        /**
+         * Checks wether the spa pod is of type pointer or not.
+         * @returns TRUE if it is of type pointer, FALSE otherwise
+         */
+        is_pointer(): boolean;
+        /**
+         * Checks wether the spa pod is of type property or not.
+         * @returns TRUE if it is of type property, FALSE otherwise
+         */
+        is_property(): boolean;
+        /**
+         * Checks wether the spa pod is of type rectangle or not.
+         * @returns TRUE if it is of type rectangle, FALSE otherwise
+         */
+        is_rectangle(): boolean;
+        /**
+         * Checks wether the spa pod is of type sequence or not.
+         * @returns TRUE if it is of type sequence, FALSE otherwise
+         */
+        is_sequence(): boolean;
+        /**
+         * Checks wether the spa pod is of type string or not.
+         * @returns TRUE if it is of type string, FALSE otherwise
+         */
+        is_string(): boolean;
+        /**
+         * Checks wether the spa pod is of type struct or not.
+         * @returns TRUE if it is of type struct, FALSE otherwise
+         */
+        is_struct(): boolean;
+        /**
+         * Checks if the pod is the unique owner of its data or not.
+         * @returns TRUE if the pod owns the data, FALSE otherwise.
+         */
+        is_unique_owner(): boolean;
+        /**
+         * Creates a new iterator for a spa pod object.
+         * @returns the new spa pod iterator
+         */
+        new_iterator(): Iterator;
+        /**
+         * Increases the reference count of a spa pod object.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaPod;
+        /**
+         * Sets a boolean value in the spa pod object.
+         * @param value the boolean value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_boolean(value: boolean): boolean;
+        /**
+         * Sets a double value in the spa pod object.
+         * @param value the double value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_double(value: number): boolean;
+        /**
+         * Sets a Fd value in the spa pod object.
+         * @param value the Fd value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_fd(value: number): boolean;
+        /**
+         * Sets a float value in the spa pod object.
+         * @param value the float value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_float(value: number): boolean;
+        /**
+         * Sets the numerator and denominator values of a fraction in the spa pod object.
+         * @param num the numerator value of the farction
+         * @param denom the denominator value of the fraction
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_fraction(num: number, denom: number): boolean;
+        /**
+         * Sets an Id value in the spa pod object.
+         * @param value the Id value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_id(value: number): boolean;
+        /**
+         * Sets an int value in the spa pod object.
+         * @param value the int value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_int(value: number): boolean;
+        /**
+         * Sets a long value in the spa pod object.
+         * @param value the long value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_long(value: number): boolean;
+        /**
+         * Sets the value of a spa pod object in the current spa pod object. The spa pod objects must be of the same value.
+         * @param pod the pod with the value to be set
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_pod(pod: SpaPod): boolean;
+        /**
+         * Sets a pointer value with its type name in the spa pod object.
+         * @param type_name the name of the type of the pointer
+         * @param value the pointer value
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_pointer(type_name: string, value?: any | null): boolean;
+        /**
+         * Sets the width and height values of a rectangle in the spa pod object.
+         * @param width the width value of the rectangle
+         * @param height the height value of the rectangle
+         * @returns TRUE if the value could be set, FALSE othewrise.
+         */
+        set_rectangle(width: number, height: number): boolean;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class SpaPodBuilder {
+        // Constructors of Wp-0.4.SpaPodBuilder
+
+        constructor(properties?: Partial<{}>);
+
+        static new_array(): SpaPodBuilder;
+
+        static new_choice(choice_type: string): SpaPodBuilder;
+
+        static new_object(type_name: string, id_name: string): SpaPodBuilder;
+
+        static new_sequence(unit: number): SpaPodBuilder;
+
+        static new_struct(): SpaPodBuilder;
+
+        // Owm methods of Wp-0.4.SpaPodBuilder
+
+        /**
+         * Adds a boolean value into the builder.
+         * @param value the boolean value
+         */
+        add_boolean(value: boolean): void;
+        /**
+         * Adds a bytes value with its length into the builder.
+         * @param value the bytes value
+         * @param len the length of the bytes value
+         */
+        add_bytes(value: any | null, len: number): void;
+        /**
+         * Adds a control into the builder.
+         * @param offset the offset of the control
+         * @param ctl_type the type name of the control
+         */
+        add_control(offset: number, ctl_type: string): void;
+        /**
+         * Adds a double value into the builder.
+         * @param value the double value
+         */
+        add_double(value: number): void;
+        /**
+         * Adds a Fd value into the builder.
+         * @param value the Fd value
+         */
+        add_fd(value: number): void;
+        /**
+         * Adds a float value into the builder.
+         * @param value the float value
+         */
+        add_float(value: number): void;
+        /**
+         * Adds the numerator and denominator values of a fraction into the builder.
+         * @param num the numerator value of the fraction
+         * @param denom the denominator value of the fraction
+         */
+        add_fraction(num: number, denom: number): void;
+        /**
+         * Adds a Id value into the builder.
+         * @param value the Id value
+         */
+        add_id(value: number): void;
+        /**
+         * Adds a int value into the builder.
+         * @param value the int value
+         */
+        add_int(value: number): void;
+        /**
+         * Adds a long value into the builder.
+         * @param value the long value
+         */
+        add_long(value: number): void;
+        /**
+         * Adds a none value into the builder.
+         */
+        add_none(): void;
+        /**
+         * Adds a pod value into the builder.
+         * @param pod the pod value
+         */
+        add_pod(pod: SpaPod): void;
+        /**
+         * Adds a pointer value with its type name into the builder.
+         * @param type_name the type name that the pointer points to
+         * @param value the pointer vaue
+         */
+        add_pointer(type_name: string, value?: any | null): void;
+        /**
+         * Adds a property into the builder.
+         * @param key the name of the property
+         */
+        add_property(key: string): void;
+        /**
+         * Adds a property into the builder.
+         * @param id the id of the property
+         */
+        add_property_id(id: number): void;
+        /**
+         * Adds the width and height values of a rectangle into the builder.
+         * @param width the width value of the rectangle
+         * @param height the height value of the rectangle
+         */
+        add_rectangle(width: number, height: number): void;
+        /**
+         * Adds a string value into the builder.
+         * @param value the string value
+         */
+        add_string(value: string): void;
+        /**
+         * Ends the builder process and returns the constructed spa pod object.
+         * @returns the constructed spa pod object
+         */
+        end(): SpaPod;
+        /**
+         * Increases the reference count of a spa pod builder.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaPodBuilder;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class SpaPodParser {
+        // Constructors of Wp-0.4.SpaPodParser
+
+        constructor(pod: SpaPod, id_name: string);
+
+        static new_object(pod: SpaPod, id_name: string): SpaPodParser;
+
+        static new_struct(pod: SpaPod): SpaPodParser;
+
+        // Owm methods of Wp-0.4.SpaPodParser
+
+        /**
+         * Ends the parser process.
+         */
+        end(): void;
+        /**
+         * Gets the boolean value from a spa pod parser.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_boolean(): boolean;
+        /**
+         * Gets the bytes value and its length from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_bytes(): boolean;
+        /**
+         * Gets the double value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_double(): boolean;
+        /**
+         * Gets the Fd value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_fd(): boolean;
+        /**
+         * Gets the float value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_float(): boolean;
+        /**
+         * Gets the fractions's numerator and denominator value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_fraction(): boolean;
+        /**
+         * Gets the Id value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_id(): boolean;
+        /**
+         * Gets the int value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_int(): boolean;
+        /**
+         * Gets the long value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_long(): boolean;
+        /**
+         * Gets the spa pod value from a spa pod parser object.
+         * @returns The spa pod value or NULL if it could not be obtained
+         */
+        get_pod(): SpaPod;
+        /**
+         * Gets the pointer value and its type name from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_pointer(): boolean;
+        /**
+         * Gets the rectangle's width and height value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_rectangle(): boolean;
+        /**
+         * Gets the string value from a spa pod parser object.
+         * @returns TRUE if the value was obtained, FALSE otherwise
+         */
+        get_string(): boolean;
+        /**
+         * Increases the reference count of a spa pod parser.
+         * @returns @self with an additional reference count on it
+         */
+        ref(): SpaPodParser;
+        /**
+         * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         */
+        unref(): void;
+    }
+
+    class StateClass {}
+
+    class TransitionClass {}
+
+    interface PipewireObject {
+        // Own properties of Wp-0.4.PipewireObject
+
+        readonly native_info: any;
+        readonly nativeInfo: any;
+        readonly param_info: GLib.Variant;
+        readonly paramInfo: GLib.Variant;
+        readonly properties: Properties;
+
+        // Owm methods of Wp-0.4.PipewireObject
+
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous parameter enumeration operation.
+         * @param res the async result
+         * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         */
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        /**
+         * This method can be used to retrieve object parameters in a synchronous way (in contrast with wp_pipewire_object_enum_params(), which is async).
+         *
+         *
+         * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_&lt;something&gt; feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
+         * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on wp_pipewire_object_enum_params() instead.
+         * @param id the parameter id to enumerate
+         * @param filter a param filter or NULL
+         * @returns an iterator to iterate over cached parameters, or NULL if parameters for this @id are not cached; the items in the iterator are WpSpaPod
+         */
+        enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        /**
+         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the native pipewire info structure of this object
+         */
+        get_native_info(): any | null;
+        /**
+         * Returns the available parameters of this pipewire object.
+         *
+         *
+         * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in wp_pipewire_object_enum_params()) and the value is a string that can contain the following letters, each of them representing a flag:
+         *  - r: the param is readable (SPA_PARAM_INFO_READ)
+         *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
+         *
+         * For params that are readable, you can query them with wp_pipewire_object_enum_params()
+         * Params that are writable can be set with wp_pipewire_object_set_param()
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns a variant of type a{ss} or NULL if the object does not support params at all
+         */
+        get_param_info(): GLib.Variant | null;
+        /**
+         * Retrieves the PipeWire properties of this object.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
+         */
+        get_properties(): Properties;
+        /**
+         * Returns the value of a single pipewire property.
+         *
+         *
+         * This is the same as getting the whole properties structure with wp_pipewire_object_get_properties() and accessing a single property with wp_properties_get(), but saves one call and having to clean up the WpProperties reference count afterwards.
+         * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @param key the property name
+         * @returns the value of the pipewire property @key or NULL if the property doesn't exist
+         */
+        get_property(key: string): string | null;
+        /**
+         * Iterates over the object's PipeWire properties.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         * @returns an iterator that iterates over the pipewire properties of this object. Use wp_properties_iterator_item_get_key() and wp_properties_iterator_item_get_value() to parse the items returned by this iterator.
+         */
+        new_properties_iterator(): Iterator;
+        /**
+         * Sets a parameter on the object.
+         * @param id the parameter id to set
+         * @param flags optional flags or 0
+         * @param param the parameter to set
+         * @returns TRUE on success, FALSE if setting the param failed
+         */
+        set_param(id: string, flags: number, param: SpaPod): boolean;
+
+        // Own virtual methods of Wp-0.4.PipewireObject
+
+        /**
+         * Enumerate object parameters.
+         *
+         *
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with wp_pipewire_object_enum_params_finish().
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        vfunc_enum_params(
+            id?: string | null,
+            filter?: SpaPod | null,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous parameter enumeration operation.
+         * @param res the async result
+         */
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        /**
+         * This method can be used to retrieve object parameters in a synchronous way (in contrast with wp_pipewire_object_enum_params(), which is async).
+         *
+         *
+         * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_&lt;something&gt; feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
+         * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on wp_pipewire_object_enum_params() instead.
+         * @param id the parameter id to enumerate
+         * @param filter a param filter or NULL
+         */
+        vfunc_enum_params_sync(id: string, filter?: SpaPod | null): Iterator | null;
+        /**
+         * Retrieves the native infor structure of this object (pw_node_info, pw_port_info, etc...)
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_native_info(): any | null;
+        /**
+         * Returns the available parameters of this pipewire object.
+         *
+         *
+         * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in wp_pipewire_object_enum_params()) and the value is a string that can contain the following letters, each of them representing a flag:
+         *  - r: the param is readable (SPA_PARAM_INFO_READ)
+         *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
+         *
+         * For params that are readable, you can query them with wp_pipewire_object_enum_params()
+         * Params that are writable can be set with wp_pipewire_object_set_param()
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_param_info(): GLib.Variant | null;
+        /**
+         * Retrieves the PipeWire properties of this object.
+         *
+         *
+         * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
+         */
+        vfunc_get_properties(): Properties;
+        /**
+         * Sets a parameter on the object.
+         * @param id the parameter id to set
+         * @param flags optional flags or 0
+         * @param param the parameter to set
+         */
+        vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
+    }
+
+    interface SiAcquisition {
+        // Owm methods of Wp-0.4.SiAcquisition
+
+        /**
+         * Acquires the `item` for linking by `acquisitor`.
+         *
+         *
+         * When a link is not allowed by policy, this operation should return an error.
+         * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
+         * @param acquisitor the link that is trying to acquire a port info item
+         * @param item the item that is being acquired
+         * @param callback the callback to call when the operation is done
+         */
+        acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         * @returns TRUE on success, FALSE if there was an error
+         */
+        acquire_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Releases the `item,` which means that it is being unlinked.
+         * @param acquisitor the link that had previously acquired the item
+         * @param item the port info that is being released
+         */
+        release(acquisitor: SiLink, item: SiLinkable): void;
+
+        // Own virtual methods of Wp-0.4.SiAcquisition
+
+        /**
+         * Acquires the `item` for linking by `acquisitor`.
+         *
+         *
+         * When a link is not allowed by policy, this operation should return an error.
+         * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
+         * @param acquisitor the link that is trying to acquire a port info item
+         * @param item the item that is being acquired
+         * @param callback the callback to call when the operation is done
+         */
+        vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes the operation started by wp_si_acquisition_acquire(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         */
+        vfunc_acquire_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Releases the `item,` which means that it is being unlinked.
+         * @param acquisitor the link that had previously acquired the item
+         * @param item the port info that is being released
+         */
+        vfunc_release(acquisitor: SiLink, item: SiLinkable): void;
+    }
+
+    interface SiAdapter {
+        // Owm methods of Wp-0.4.SiAdapter
+
+        /**
+         * Gets the format used to configure the adapter session item's ports.
+         * @returns The format used to configure the ports of the adapter session item. Some items automatically choose a format when being activated, others never set a format on activation and the user needs to manually set it externally with wp_si_adapter_set_ports_format().
+         */
+        get_ports_format(): SpaPod;
+        /**
+         * Gets the ports state.
+         * @returns The state of the ports
+         */
+        get_ports_state(): SiAdapterPortsState;
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         *
+         *
+         * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
+         * @param callback the callback to call when the operation is done
+         */
+        set_ports_format(
+            format?: SpaPod | null,
+            mode?: string | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         * @returns TRUE on success, FALSE if there was an error
+         */
+        set_ports_format_finish(res: Gio.AsyncResult): boolean;
+
+        // Own virtual methods of Wp-0.4.SiAdapter
+
+        /**
+         * Gets the format used to configure the adapter session item's ports.
+         */
+        vfunc_get_ports_format(): SpaPod;
+        /**
+         * Gets the ports state.
+         */
+        vfunc_get_ports_state(): SiAdapterPortsState;
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         *
+         *
+         * The result of the operation can be checked using the wp_si_adapter_set_ports_format_finish() API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
+         * @param callback the callback to call when the operation is done
+         */
+        vfunc_set_ports_format(
+            format?: SpaPod | null,
+            mode?: string | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes the operation started by wp_si_adapter_set_format(). This is meant to be called in the callback that was passed to that method.
+         * @param res the async result
+         */
+        vfunc_set_ports_format_finish(res: Gio.AsyncResult): boolean;
+    }
+
+    interface SiEndpoint {
+        // Owm methods of Wp-0.4.SiEndpoint
+
+        /**
+         * Gets the properties of the endpoint.
+         * @returns the properties of the endpoint
+         */
+        get_properties(): Properties | null;
+        /**
+         * This should return information that is used for registering the endpoint.
+         *
+         *
+         * The return value should be a GVariant tuple of type (ssya{ss}) that contains, in order:
+         *  - s: the endpoint's name
+         *  - s: the media class
+         *  - y: the direction
+         *  - a{ss}: additional properties to be added to the list of global properties
+         * @returns registration info for the endpoint
+         */
+        get_registration_info(): GLib.Variant;
+
+        // Own virtual methods of Wp-0.4.SiEndpoint
+
+        /**
+         * Gets the properties of the endpoint.
+         */
+        vfunc_get_properties(): Properties | null;
+        /**
+         * This should return information that is used for registering the endpoint.
+         *
+         *
+         * The return value should be a GVariant tuple of type (ssya{ss}) that contains, in order:
+         *  - s: the endpoint's name
+         *  - s: the media class
+         *  - y: the direction
+         *  - a{ss}: additional properties to be added to the list of global properties
+         */
+        vfunc_get_registration_info(): GLib.Variant;
+    }
+
+    interface SiLink {
+        // Owm methods of Wp-0.4.SiLink
+
+        /**
+         * Gets the input item linked by the link.
+         * @returns the input item that is linked by this link
+         */
+        get_in_item(): SiLinkable;
+        /**
+         * Gets the output item linked by the link.
+         * @returns the output item that is linked by this link
+         */
+        get_out_item(): SiLinkable;
+        /**
+         * Gets the properties of the link.
+         * @returns the properties of the link
+         */
+        get_properties(): Properties | null;
+        /**
+         * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
+         * @returns registration info for the link
+         */
+        get_registration_info(): GLib.Variant;
+
+        // Own virtual methods of Wp-0.4.SiLink
+
+        /**
+         * Gets the input item linked by the link.
+         */
+        vfunc_get_in_item(): SiLinkable;
+        /**
+         * Gets the output item linked by the link.
+         */
+        vfunc_get_out_item(): SiLinkable;
+        /**
+         * Gets the properties of the link.
+         */
+        vfunc_get_properties(): Properties | null;
+        /**
+         * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
+         */
+        vfunc_get_registration_info(): GLib.Variant;
+    }
+
+    interface SiLinkable {
+        // Owm methods of Wp-0.4.SiLinkable
+
+        /**
+         * Gets the acquisition interface associated with the item.
+         * @returns the acquisition interface associated with this item, or NULL if this item does not require acquiring items before linking them
+         */
+        get_acquisition(): SiAcquisition | null;
+        /**
+         * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
+         *
+         *
+         *
+         *  - u: (guint32) node id
+         *  - u: (guint32) port id (the port must belong on the node specified above)
+         *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
+         *
+         * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
+         * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
+         *  - NULL: get the standard ports to be linked
+         *  - "monitor": get the monitor ports
+         *  - "control": get the control port
+         *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
+         *
+         * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
+         * @param context an optional context for the ports
+         * @returns a GVariant containing information about the ports of this item
+         */
+        get_ports(context?: string | null): GLib.Variant;
+
+        // Own virtual methods of Wp-0.4.SiLinkable
+
+        /**
+         * Gets the acquisition interface associated with the item.
+         */
+        vfunc_get_acquisition(): SiAcquisition | null;
+        /**
+         * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
+         *
+         *
+         *
+         *  - u: (guint32) node id
+         *  - u: (guint32) port id (the port must belong on the node specified above)
+         *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
+         *
+         * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
+         * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
+         *  - NULL: get the standard ports to be linked
+         *  - "monitor": get the monitor ports
+         *  - "control": get the control port
+         *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
+         *
+         * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
+         * @param context an optional context for the ports
+         */
+        vfunc_get_ports(context?: string | null): GLib.Variant;
+    }
+
+    type ObjectFeatures = number;
+    type SpaIdTable = any;
+    type SpaIdValue = any;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
+}
+
+export default Wp;
+// END

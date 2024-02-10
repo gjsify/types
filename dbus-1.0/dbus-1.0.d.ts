@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,72 +14,31 @@ import './dbus-1.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace DBus {
+    enum BusType {
+        SESSION,
+        SYSTEM,
+        STARTER,
+    }
+    class Connection {}
 
-enum BusType {
-    SESSION,
-    SYSTEM,
-    STARTER,
-}
-interface Connection {
-}
+    class Error {}
 
-class Connection {
+    class Message {}
 
-    // Own properties of DBus-1.0.DBus.Connection
+    class MessageIter {}
 
-    static name: string
-}
+    class PendingCall {}
 
-interface Error {
-}
-
-class Error {
-
-    // Own properties of DBus-1.0.DBus.Error
-
-    static name: string
-}
-
-interface Message {
-}
-
-class Message {
-
-    // Own properties of DBus-1.0.DBus.Message
-
-    static name: string
-}
-
-interface MessageIter {
-}
-
-class MessageIter {
-
-    // Own properties of DBus-1.0.DBus.MessageIter
-
-    static name: string
-}
-
-interface PendingCall {
-}
-
-class PendingCall {
-
-    // Own properties of DBus-1.0.DBus.PendingCall
-
-    static name: string
-}
-
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default DBus;

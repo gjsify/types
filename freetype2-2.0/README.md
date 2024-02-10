@@ -4,9 +4,9 @@
 ![version](https://img.shields.io/npm/v/@girs/freetype2-2.0)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/freetype2-2.0)
 
-
 GJS TypeScript type definitions for freetype2-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.3.
 
+[GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in JavaScript or TypeScript with type checking, better autocompletion and inline documentations.
 
 ## Install
 
@@ -14,6 +14,7 @@ To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/freetype2-2.0
 ```
+
 
 ## Usage
 
@@ -27,11 +28,47 @@ Or if you prefer CommonJS, you can also use this:
 const freetype2 = require('@girs/freetype2-2.0');
 ```
 
+### Global types
+
+After the import, the global types of GJS are also available:
+
+```ts
+import '@girs/gjs';
+
+print('Hello World from print');
+
+const ByteArray = imports.byteArray;
+
+// And so on...
+```
+
+### Global DOM types
+
+Some types that conflict with the DOM are outsourced to allow frameworks like Gjsify to rebuild the DOM API without causing type conflicts.
+But you can easily import them:
+
+```ts
+import '@girs/gjs/dom';
+
+console.log('Hello World from console');
+
+const encoder = new TextEncoder();
+const encoded = encoder.encode('𝓽𝓮𝔁𝓽');
+
+setTimeout(() => {
+  // ...
+}, 1000);
+
+// And so on...
+```
+
+To avoid a type conflict with the DOM types it is recommended to either modify your `tsconfig.json` or `jsconfig.json` file to exclude the DOM lib, or to enable the `noLib` property.
+
 ### Ambient Modules
 
-You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
-For this you need to include `@girs/freetype2-2.0` or `@girs/freetype2-2.0/ambient` in your `tsconfig` or entry point Typescript file:
-
+You can import the built in [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) of GJS.
+For this you need to include the `@girs/freetype2-2.0` or `@girs/freetype2-2.0/ambient` in your `tsconfig` or entry point Typescript file:
+    
 `index.ts`:
 ```ts
 import '@girs/freetype2-2.0'
@@ -48,37 +85,35 @@ import '@girs/freetype2-2.0'
 }
 ```
 
-Now you can import the ambient module with TypeScript support: 
+Now you can import `gettext`, `system` and `cairo` in ESM style with Typescript support:
 
 ```ts
-import freetype2 from 'gi://freetype2?version=2.0';
+import gettext from 'gettext';
+import system from 'system';
+import cairo from 'cairo';
 ```
 
-### Global import
+### GIR modules
 
-You can also import the module with Typescript support using the global `imports.gi` object of GJS.
-For this you need to include `@girs/freetype2-2.0` or `@girs/freetype2-2.0/import` in your `tsconfig` or entry point Typescript file:
+If you want to have types for [GObject Introspection](https://gi.readthedocs.io/en/latest/) modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [gtk-4.0](https://www.npmjs.com/package/@girs/gtk-4.0), [gio-2.0](https://www.npmjs.com/package/@girs/gio-2.0), [adw-1](https://www.npmjs.com/package/@girs/adw-1) and [much more](https://github.com/gjsify/types).
 
-`index.ts`:
-```ts
-import '@girs/freetype2-2.0'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/freetype2-2.0"],
-  ...
-}
-```
-
-Now you have also type support for this, too:
+These types will then be available to you:
 
 ```ts
-const freetype2 = imports.gi.freetype2;
+import '@girs/gjs'
+import '@girs/gjs/dom'
+import '@girs/gio-2.0'
+import '@girs/gtk-4.0'
+import '@girs/adw-1'
+
+import Gio from 'gi://Gio?version=2.0';
+import Gtk from 'gi://Gtk?version=4.0';
+import Adwaita from 'gi://adw?version=1';
+
+const button = new Gtk.Button();
+
+// ...
+
 ```
 
 ### Bundle

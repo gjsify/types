@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,131 +14,50 @@ import './xlib-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xlib {
+    function open_display(): void;
+    class Display {}
 
-function open_display(): void
-interface Display {
-}
+    class Screen {}
 
-class Display {
+    class Visual {}
 
-    // Own properties of xlib-2.0.xlib.Display
+    class XConfigureEvent {}
 
-    static name: string
-}
+    class XImage {}
 
-interface Screen {
-}
+    class XFontStruct {}
 
-class Screen {
+    class XTrapezoid {}
 
-    // Own properties of xlib-2.0.xlib.Screen
+    class XVisualInfo {}
 
-    static name: string
-}
+    class XWindowAttributes {}
 
-interface Visual {
-}
+    class XEvent {}
 
-class Visual {
-
-    // Own properties of xlib-2.0.xlib.Visual
-
-    static name: string
-}
-
-interface XConfigureEvent {
-}
-
-class XConfigureEvent {
-
-    // Own properties of xlib-2.0.xlib.XConfigureEvent
-
-    static name: string
-}
-
-interface XImage {
-}
-
-class XImage {
-
-    // Own properties of xlib-2.0.xlib.XImage
-
-    static name: string
-}
-
-interface XFontStruct {
-}
-
-class XFontStruct {
-
-    // Own properties of xlib-2.0.xlib.XFontStruct
-
-    static name: string
-}
-
-interface XTrapezoid {
-}
-
-class XTrapezoid {
-
-    // Own properties of xlib-2.0.xlib.XTrapezoid
-
-    static name: string
-}
-
-interface XVisualInfo {
-}
-
-class XVisualInfo {
-
-    // Own properties of xlib-2.0.xlib.XVisualInfo
-
-    static name: string
-}
-
-interface XWindowAttributes {
-}
-
-class XWindowAttributes {
-
-    // Own properties of xlib-2.0.xlib.XWindowAttributes
-
-    static name: string
-}
-
-interface XEvent {
-}
-
-class XEvent {
-
-    // Own properties of xlib-2.0.xlib.XEvent
-
-    static name: string
-}
-
-    type Atom = number
-    type Colormap = number
-    type Cursor = number
-    type Drawable = number
-    type GC = any
-    type KeyCode = number
-    type KeySym = number
-    type Picture = number
-    type Time = number
-    type VisualID = number
-    type Window = number
-    type XID = number
-    type Pixmap = number
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    type Atom = number;
+    type Colormap = number;
+    type Cursor = number;
+    type Drawable = number;
+    type GC = any;
+    type KeyCode = number;
+    type KeySym = number;
+    type Picture = number;
+    type Time = number;
+    type VisualID = number;
+    type Window = number;
+    type XID = number;
+    type Pixmap = number;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default xlib;

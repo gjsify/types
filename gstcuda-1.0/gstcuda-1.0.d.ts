@@ -1,0 +1,249 @@
+/*
+ * Type Definitions for Gjs (https://gjs.guide/)
+ *
+ * These type definitions are automatically generated, do not edit them by hand.
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ */
+
+import './gstcuda-1.0-ambient.d.ts';
+import './gstcuda-1.0-import.d.ts';
+/**
+ * GstCuda-1.0
+ */
+
+import type GstVideo from '@girs/gstvideo-1.0';
+import type GstBase from '@girs/gstbase-1.0';
+import type Gst from '@girs/gst-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type GstGL from '@girs/gstgl-1.0';
+import type CudaGst from '@girs/cudagst-1.0';
+
+export namespace GstCuda {
+    enum CudaGraphicsResourceType {
+        NONE,
+        GL_BUFFER,
+        D3D11_RESOURCE,
+    }
+    enum CudaQuarkId {
+        GRAPHICS_RESOURCE,
+        MAX,
+    }
+    /**
+     * Name of the caps feature for indicating the use of #GstCudaMemory
+     */
+    const CAPS_FEATURE_MEMORY_CUDA_MEMORY: string;
+    const CUDA_CONTEXT_TYPE: string;
+    /**
+     * Name of cuda memory type
+     */
+    const CUDA_MEMORY_TYPE_NAME: string;
+    /**
+     * Flag indicating that we should map the CUDA device memory
+     * instead of to system memory.
+     *
+     * Combining #GST_MAP_CUDA with #GST_MAP_WRITE has the same semantics as though
+     * you are writing to CUDA device/host memory.
+     * Conversely, combining #GST_MAP_CUDA with
+     * #GST_MAP_READ has the same semantics as though you are reading from
+     * CUDA device/host memory
+     */
+    const MAP_CUDA: number;
+    function context_new_cuda_context(cuda_ctx: CudaContext): Gst.Context;
+    /**
+     * Perform the steps necessary for retrieving a #GstCudaContext from the
+     * surrounding elements or from the application using the #GstContext mechanism.
+     *
+     * If the content of `cuda_ctx` is not %NULL, then no #GstContext query is
+     * necessary for #GstCudaContext.
+     * @param element the #GstElement running the query
+     * @param device_id preferred device-id, pass device_id &gt;=0 when             the device_id explicitly required. Otherwise, set -1.
+     * @param cuda_ctx the resulting #GstCudaContext
+     * @returns whether a #GstCudaContext exists in @cuda_ctx
+     */
+    function cuda_ensure_element_context(element: Gst.Element, device_id: number, cuda_ctx: CudaContext): boolean;
+    function cuda_handle_context_query(element: Gst.Element, query: Gst.Query, cuda_ctx?: CudaContext | null): boolean;
+    /**
+     * Helper function for implementing #GstElementClass.set_context() in
+     * CUDA capable elements.
+     *
+     * Retrieves the #GstCudaContext in `context` and places the result in `cuda_ctx`.
+     * @param element a #GstElement
+     * @param context a #GstContext
+     * @param device_id preferred device-id, pass device_id &gt;=0 when             the device_id explicitly required. Otherwise, set -1.
+     * @param cuda_ctx location of a #GstCudaContext
+     * @returns whether the @cuda_ctx could be set successfully
+     */
+    function cuda_handle_set_context(
+        element: Gst.Element,
+        context: Gst.Context,
+        device_id: number,
+        cuda_ctx: CudaContext,
+    ): boolean;
+    /**
+     * Loads the cuda library
+     * @returns %TRUE if the libcuda could be loaded %FALSE otherwise
+     */
+    function cuda_load_library(): boolean;
+    /**
+     * Ensures that the #GstCudaAllocator is initialized and ready to be used.
+     */
+    function cuda_memory_init_once(): void;
+    function cuda_nvrtc_compile(source: string): string;
+    /**
+     * Loads the nvrtc library.
+     * @returns %TRUE if the library could be loaded, %FALSE otherwise
+     */
+    function cuda_nvrtc_load_library(): boolean;
+    /**
+     * Check if `mem` is a cuda memory
+     * @param mem A #GstMemory
+     */
+    function is_cuda_memory(mem: Gst.Memory): boolean;
+    enum CudaMemoryTransfer {
+        /**
+         * the device memory needs downloading
+         *                                          to the staging memory
+         */
+        DOWNLOAD,
+        /**
+         * the staging memory needs uploading
+         *                                          to the device memory
+         */
+        UPLOAD,
+    }
+    module CudaAllocator {
+        // Constructor properties interface
+    }
+
+    /**
+     * A #GstAllocator subclass for cuda memory
+     */
+    class CudaAllocator extends Gst.Allocator {
+        // Owm methods of GstCuda-1.0.CudaAllocator
+
+        alloc(context: CudaContext, info: GstVideo.VideoInfo): Gst.Memory;
+    }
+
+    module CudaBufferPool {
+        // Constructor properties interface
+    }
+
+    class CudaBufferPool extends Gst.BufferPool {
+        // Own fields of GstCuda-1.0.CudaBufferPool
+
+        context: CudaContext;
+
+        // Constructors of GstCuda-1.0.CudaBufferPool
+
+        static ['new'](context: CudaContext): CudaBufferPool;
+    }
+
+    module CudaContext {
+        // Constructor properties interface
+    }
+
+    class CudaContext extends Gst.Object {
+        // Own properties of GstCuda-1.0.CudaContext
+
+        cuda_device_id: number;
+        cudaDeviceId: number;
+
+        // Own fields of GstCuda-1.0.CudaContext
+
+        object: Gst.Object;
+
+        // Constructors of GstCuda-1.0.CudaContext
+
+        static ['new'](device_id: number): CudaContext;
+
+        static new_wrapped(handler: CudaGst.context, device: CudaGst.device): CudaContext;
+
+        // Owm methods of GstCuda-1.0.CudaContext
+
+        /**
+         * Pops the current CUDA context from CPU thread
+         * @param cuda_ctx
+         */
+        static pop(cuda_ctx: CudaGst.context): boolean;
+
+        // Owm methods of GstCuda-1.0.CudaContext
+
+        /**
+         * Query whether `ctx` can access any memory which belongs to `peer` directly.
+         * @param peer a #GstCudaContext
+         * @returns %TRUE if @ctx can access @peer directly
+         */
+        can_access_peer(peer: CudaContext): boolean;
+        /**
+         * Get CUDA device context. Caller must not modify and/or destroy
+         * returned device context.
+         * @returns the `CUcontext` of @ctx
+         */
+        get_handle(): any | null;
+        /**
+         * Get required texture alignment by device
+         * @returns the `CUcontext` of @ctx
+         */
+        get_texture_alignment(): number;
+        /**
+         * Pushes the given `ctx` onto the CPU thread's stack of current contexts.
+         * The specified context becomes the CPU thread's current context,
+         * so all CUDA functions that operate on the current context are affected.
+         * @returns %TRUE if @ctx was pushed without error.
+         */
+        push(): boolean;
+    }
+
+    class CudaAllocatorClass {}
+
+    class CudaBufferPoolClass {}
+
+    class CudaBufferPoolPrivate {}
+
+    class CudaContextClass {}
+
+    class CudaContextPrivate {}
+
+    class CudaGraphicsResource {
+        // Own fields of GstCuda-1.0.CudaGraphicsResource
+
+        cuda_context: CudaContext;
+        graphics_context: Gst.Object;
+        type: CudaGraphicsResourceType;
+        resource: CudaGst.graphicsResource;
+        flags: CudaGst.graphicsRegisterFlags;
+        registered: boolean;
+        mapped: boolean;
+    }
+
+    class CudaMemory {
+        // Own fields of GstCuda-1.0.CudaMemory
+
+        context: CudaContext;
+
+        // Owm methods of GstCuda-1.0.CudaMemory
+
+        /**
+         * Ensures that the #GstCudaAllocator is initialized and ready to be used.
+         */
+        static init_once(): void;
+    }
+
+    class CudaMemoryPrivate {}
+
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
+}
+
+export default GstCuda;
+// END

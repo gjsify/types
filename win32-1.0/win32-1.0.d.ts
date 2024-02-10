@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,31 +14,22 @@ import './win32-1.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace win32 {
+    class MSG {}
 
-interface MSG {
-}
-
-class MSG {
-
-    // Own properties of win32-1.0.win32.MSG
-
-    static name: string
-}
-
-    type HWND = number
-    type HICON = number
-    type HCURSOR = number
-    type HGDIOBJ = number
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    type HWND = number;
+    type HICON = number;
+    type HCURSOR = number;
+    type HGDIOBJ = number;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default win32;

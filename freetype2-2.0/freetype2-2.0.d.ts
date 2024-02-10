@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,48 +14,23 @@ import './freetype2-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace freetype2 {
+    class Bitmap {}
 
-interface Bitmap {
-}
+    class Face {}
 
-class Bitmap {
+    class Library {}
 
-    // Own properties of freetype2-2.0.freetype2.Bitmap
-
-    static name: string
-}
-
-interface Face {
-}
-
-class Face {
-
-    // Own properties of freetype2-2.0.freetype2.Face
-
-    static name: string
-}
-
-interface Library {
-}
-
-class Library {
-
-    // Own properties of freetype2-2.0.freetype2.Library
-
-    static name: string
-}
-
-    type Int32 = number
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    type Int32 = number;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default freetype2;

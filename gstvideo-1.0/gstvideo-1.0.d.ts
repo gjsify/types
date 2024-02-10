@@ -322,13 +322,13 @@ enum VideoAFDValue {
      *      at top of the coded frame. For 16:9 coded frame, full frame 16:9 image,
      *      the same as the coded frame.
      */
-    TODO_16_9_TOP_ALIGNED,
+    "16_9_TOP_ALIGNED",
     /**
      * For 4:3 coded frame, letterbox 14:9 image,
      *      at top of the coded frame. For 16:9 coded frame, pillarbox 14:9 image,
      *      horizontally centered in the coded frame.
      */
-    TODO_14_9_TOP_ALIGNED,
+    "14_9_TOP_ALIGNED",
     /**
      * For 4:3 coded frame, letterbox image with an aspect ratio
      *      greater than 16:9, vertically centered in the coded frame. For 16:9 coded frame,
@@ -340,40 +340,40 @@ enum VideoAFDValue {
      *      the same as the coded frame. For 16:9 coded frame, full frame 16:9 image, the same as
      *      the coded frame.
      */
-    TODO_4_3_FULL_16_9_FULL,
+    "4_3_FULL_16_9_FULL",
     /**
      * For 4:3 coded frame, full frame 4:3 image, the same as
      *      the coded frame. For 16:9 coded frame, pillarbox 4:3 image, horizontally centered in the
      *      coded frame.
      */
-    TODO_4_3_FULL_4_3_PILLAR,
+    "4_3_FULL_4_3_PILLAR",
     /**
      * For 4:3 coded frame, letterbox 16:9 image, vertically centered in
      *      the coded frame with all image areas protected. For 16:9 coded frame, full frame 16:9 image,
      *      with all image areas protected.
      */
-    TODO_16_9_LETTER_16_9_FULL,
+    "16_9_LETTER_16_9_FULL",
     /**
      * For 4:3 coded frame, letterbox 14:9 image, vertically centered in
      *      the coded frame. For 16:9 coded frame, pillarbox 14:9 image, horizontally centered in the
      *      coded frame.
      */
-    TODO_14_9_LETTER_14_9_PILLAR,
+    "14_9_LETTER_14_9_PILLAR",
     /**
      * For 4:3 coded frame, full frame 4:3 image, with alternative 14:9
      *      center. For 16:9 coded frame, pillarbox 4:3 image, with alternative 14:9 center.
      */
-    TODO_4_3_FULL_14_9_CENTER,
+    "4_3_FULL_14_9_CENTER",
     /**
      * For 4:3 coded frame, letterbox 16:9 image, with alternative 14:9
      *      center. For 16:9 coded frame, full frame 16:9 image, with alternative 14:9 center.
      */
-    TODO_16_9_LETTER_14_9_CENTER,
+    "16_9_LETTER_14_9_CENTER",
     /**
      * For 4:3 coded frame, letterbox 16:9 image, with alternative 4:3
      *      center. For 16:9 coded frame, full frame 16:9 image, with alternative 4:3 center.
      */
-    TODO_16_9_LETTER_4_3_CENTER,
+    "16_9_LETTER_4_3_CENTER",
 }
 /**
  * Different alpha modes.
@@ -564,7 +564,7 @@ enum VideoColorPrimaries {
     BT470M,
     /**
      * BT470BG primaries, also ITU-R BT601-6
-     * 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM
+     * 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL &amp; SECAM
      */
     BT470BG,
     /**
@@ -622,12 +622,12 @@ enum VideoColorRange {
     /**
      * [0..255] for 8 bit components
      */
-    TODO_0_255,
+    "0_255",
     /**
      * [16..235] for 8 bit components. Chroma has
      *                 [16..240] range.
      */
-    TODO_16_235,
+    "16_235",
 }
 /**
  * Different dithering methods to use.
@@ -1146,11 +1146,6 @@ enum VideoFormat {
      * NV12 10bit big endian with 8x128 tiles in linear order.
      */
     NV12_10BE_8L128,
-    /**
-     * `GST_VIDEO_FORMAT_NV1`2_10LE40 with 4x4 pixels tiles (5 bytes
-     *  per tile row). This format is produced by Verisilicon/Hantro decoders.
-     */
-    NV12_10LE40_4L4,
 }
 /**
  * The orientation of the GL texture.
@@ -1239,7 +1234,7 @@ enum VideoInterlaceMode {
     /**
      * 2 fields are stored in one buffer, use the
      *     frame ID to get access to the required field. For multiview (the
-     *     'views' property > 1) the fields of view N can be found at frame ID
+     *     'views' property &gt; 1) the fields of view N can be found at frame ID
      *     (N * 2) and (N * 2) + 1.
      *     Each field has only half the amount of lines as noted in the
      *     height property. This mode requires multiple GstVideoMeta metadata
@@ -1431,15 +1426,15 @@ enum VideoOrientationMethod {
     /**
      * Rotate clockwise 90 degrees
      */
-    TODO_90R,
+    "90R",
     /**
      * Rotate 180 degrees
      */
-    TODO_180,
+    "180",
     /**
      * Rotate counter-clockwise 90 degrees
      */
-    TODO_90L,
+    "90L",
     /**
      * Flip horizontally
      */
@@ -1568,7 +1563,7 @@ enum VideoTransferFunction {
     GAMMA22,
     /**
      * Gamma 2.2 curve with a linear segment in the lower
-     *                           range, also ITU-R BT470M / ITU-R BT1700 625 PAL &
+     *                           range, also ITU-R BT470M / ITU-R BT1700 625 PAL &amp;
      *                           SECAM / ITU-R BT1361
      */
     BT709,
@@ -1647,575 +1642,7 @@ enum VideoVBIParserResult {
      */
     ERROR,
 }
-/**
- * Flags to indicate the state of modifier keys and mouse buttons
- * in events.
- * 
- * Typical modifier keys are Shift, Control, Meta, Super, Hyper, Alt, Compose,
- * Apple, CapsLock or ShiftLock.
- * @bitfield 
- */
-enum NavigationModifierType {
-    NONE,
-    /**
-     * the Shift key.
-     */
-    SHIFT_MASK,
-    LOCK_MASK,
-    /**
-     * the Control key.
-     */
-    CONTROL_MASK,
-    /**
-     * the third modifier key
-     */
-    MOD1_MASK,
-    /**
-     * the fourth modifier key
-     */
-    MOD2_MASK,
-    /**
-     * the fifth modifier key
-     */
-    MOD3_MASK,
-    /**
-     * the sixth modifier key
-     */
-    MOD4_MASK,
-    /**
-     * the seventh modifier key
-     */
-    MOD5_MASK,
-    /**
-     * the first mouse button (usually the left button).
-     */
-    BUTTON1_MASK,
-    /**
-     * the second mouse button (usually the right button).
-     */
-    BUTTON2_MASK,
-    /**
-     * the third mouse button (usually the mouse wheel button or middle button).
-     */
-    BUTTON3_MASK,
-    /**
-     * the fourth mouse button (typically the "Back" button).
-     */
-    BUTTON4_MASK,
-    /**
-     * the fifth mouse button (typically the "forward" button).
-     */
-    BUTTON5_MASK,
-    /**
-     * the Super modifier
-     */
-    SUPER_MASK,
-    /**
-     * the Hyper modifier
-     */
-    HYPER_MASK,
-    /**
-     * the Meta modifier
-     */
-    META_MASK,
-    /**
-     * A mask covering all entries in #GdkModifierType.
-     */
-    MASK,
-    /**
-     * the Meta modifier
-     */
-    _META_MASK,
-}
-/**
- * Additional video buffer flags. These flags can potentially be used on any
- * buffers carrying closed caption data, or video data - even encoded data.
- * 
- * Note that these are only valid for #GstCaps of type: video/... and caption/...
- * They can conflict with other extended buffer flags.
- * @bitfield 
- */
-enum VideoBufferFlags {
-    /**
-     * If the #GstBuffer is interlaced. In mixed
-     *                                     interlace-mode, this flags specifies if the frame is
-     *                                     interlaced or progressive.
-     */
-    INTERLACED,
-    /**
-     * If the #GstBuffer is interlaced, then the first field
-     *                                     in the video frame is the top field.  If unset, the
-     *                                     bottom field is first.
-     */
-    TFF,
-    /**
-     * If the #GstBuffer is interlaced, then the first field
-     *                                     (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF flag setting)
-     *                                     is repeated.
-     */
-    RFF,
-    /**
-     * If the #GstBuffer is interlaced, then only the
-     *                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
-     *                                     flag setting) is to be displayed (Since: 1.16).
-     */
-    ONEFIELD,
-    /**
-     * The #GstBuffer contains one or more specific views,
-     *                                     such as left or right eye view. This flags is set on
-     *                                     any buffer that contains non-mono content - even for
-     *                                     streams that contain only a single viewpoint. In mixed
-     *                                     mono / non-mono streams, the absence of the flag marks
-     *                                     mono buffers.
-     */
-    MULTIPLE_VIEW,
-    /**
-     * When conveying stereo/multiview content with
-     *                                     frame-by-frame methods, this flag marks the first buffer
-     *                                      in a bundle of frames that belong together.
-     */
-    FIRST_IN_BUNDLE,
-    /**
-     * The video frame has the top field only. This is the
-     *                                     same as GST_VIDEO_BUFFER_FLAG_TFF |
-     *                                     GST_VIDEO_BUFFER_FLAG_ONEFIELD (Since: 1.16).
-     *                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
-     */
-    TOP_FIELD,
-    /**
-     * If the #GstBuffer is interlaced, then only the
-     *                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
-     *                                     flag setting) is to be displayed (Since: 1.16).
-     */
-    _ONEFIELD,
-    /**
-     * The video frame has the bottom field only. This is
-     *                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
-     *                                     (GST_VIDEO_BUFFER_FLAG_TFF flag unset) (Since: 1.16).
-     *                                     Use GST_VIDEO_BUFFER_IS_BOTTOM_FIELD() to check for this flag.
-     */
-    BOTTOM_FIELD,
-    /**
-     * The #GstBuffer contains the end of a video field or frame
-     *                                     boundary such as the last subframe or packet (Since: 1.18).
-     */
-    MARKER,
-    /**
-     * Offset to define more flags
-     */
-    LAST,
-}
-/**
- * Extra flags that influence the result from gst_video_chroma_resample_new().
- * @bitfield 
- */
-enum VideoChromaFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * the input is interlaced
-     */
-    INTERLACED,
-}
-/**
- * Various Chroma sitings.
- * @bitfield 
- */
-enum VideoChromaSite {
-    /**
-     * unknown cositing
-     */
-    UNKNOWN,
-    /**
-     * no cositing
-     */
-    NONE,
-    /**
-     * chroma is horizontally cosited
-     */
-    H_COSITED,
-    /**
-     * chroma is vertically cosited
-     */
-    V_COSITED,
-    /**
-     * choma samples are sited on alternate lines
-     */
-    ALT_LINE,
-    /**
-     * chroma samples cosited with luma samples
-     */
-    COSITED,
-    /**
-     * jpeg style cositing, also for mpeg1 and mjpeg
-     */
-    JPEG,
-    /**
-     * mpeg2 style cositing
-     */
-    MPEG2,
-    /**
-     * DV style cositing
-     */
-    DV,
-}
-/**
- * Flags for #GstVideoCodecFrame
- * @bitfield 
- */
-enum VideoCodecFrameFlags {
-    /**
-     * is the frame only meant to be decoded
-     */
-    DECODE_ONLY,
-    /**
-     * is the frame a synchronization point (keyframe)
-     */
-    SYNC_POINT,
-    /**
-     * should the output frame be made a keyframe
-     */
-    FORCE_KEYFRAME,
-    /**
-     * should the encoder output stream headers
-     */
-    FORCE_KEYFRAME_HEADERS,
-    /**
-     * The buffer data is corrupted.
-     */
-    CORRUPTED,
-}
-/**
- * Flags to be used in combination with gst_video_decoder_request_sync_point().
- * See the function documentation for more details.
- * @bitfield 
- */
-enum VideoDecoderRequestSyncPointFlags {
-    /**
-     * discard all following
-     *     input until the next sync point.
-     */
-    DISCARD_INPUT,
-    /**
-     * discard all following
-     *     output until the next sync point.
-     */
-    CORRUPT_OUTPUT,
-}
-/**
- * Extra flags that influence the result from gst_video_chroma_resample_new().
- * @bitfield 
- */
-enum VideoDitherFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * the input is interlaced
-     */
-    INTERLACED,
-    /**
-     * quantize values in addition to adding dither.
-     */
-    QUANTIZE,
-}
-/**
- * Extra video flags
- * @bitfield 
- */
-enum VideoFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * a variable fps is selected, fps_n and fps_d
-     *     denote the maximum fps of the video
-     */
-    VARIABLE_FPS,
-    /**
-     * Each color has been scaled by the alpha
-     *     value.
-     */
-    PREMULTIPLIED_ALPHA,
-}
-/**
- * The different video flags that a format info can have.
- * @bitfield 
- */
-enum VideoFormatFlags {
-    /**
-     * The video format is YUV, components are numbered
-     *   0=Y, 1=U, 2=V.
-     */
-    YUV,
-    /**
-     * The video format is RGB, components are numbered
-     *   0=R, 1=G, 2=B.
-     */
-    RGB,
-    /**
-     * The video is gray, there is one gray component
-     *   with index 0.
-     */
-    GRAY,
-    /**
-     * The video format has an alpha components with
-     *   the number 3.
-     */
-    ALPHA,
-    /**
-     * The video format has data stored in little
-     *   endianness.
-     */
-    LE,
-    /**
-     * The video format has a palette. The palette
-     *   is stored in the second plane and indexes are stored in the first plane.
-     */
-    PALETTE,
-    /**
-     * The video format has a complex layout that
-     *   can't be described with the usual information in the #GstVideoFormatInfo.
-     */
-    COMPLEX,
-    /**
-     * This format can be used in a
-     *   #GstVideoFormatUnpack and #GstVideoFormatPack function.
-     */
-    UNPACK,
-    /**
-     * The format is tiled, there is tiling information
-     *   in the last plane.
-     */
-    TILED,
-    /**
-     * The tile size varies per plane according to the subsampling.
-     */
-    SUBTILES,
-}
-/**
- * Extra video frame flags
- * @bitfield 
- */
-enum VideoFrameFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * The video frame is interlaced. In mixed
-     *           interlace-mode, this flag specifies if the frame is interlaced or
-     *           progressive.
-     */
-    INTERLACED,
-    /**
-     * The video frame has the top field first
-     */
-    TFF,
-    /**
-     * The video frame has the repeat flag
-     */
-    RFF,
-    /**
-     * The video frame has one field
-     */
-    ONEFIELD,
-    /**
-     * The video contains one or
-     *     more non-mono views
-     */
-    MULTIPLE_VIEW,
-    /**
-     * The video frame is the first
-     *     in a set of corresponding views provided as sequential frames.
-     */
-    FIRST_IN_BUNDLE,
-    /**
-     * The video frame has the top field only. This
-     *     is the same as GST_VIDEO_FRAME_FLAG_TFF | GST_VIDEO_FRAME_FLAG_ONEFIELD
-     *     (Since: 1.16).
-     */
-    TOP_FIELD,
-    /**
-     * The video frame has one field
-     */
-    _ONEFIELD,
-    /**
-     * The video frame has the bottom field
-     *     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
-     *     (GST_VIDEO_FRAME_FLAG_TFF flag unset) (Since: 1.16).
-     */
-    BOTTOM_FIELD,
-}
-/**
- * Additional mapping flags for gst_video_frame_map().
- * @bitfield 
- */
-enum VideoFrameMapFlags {
-    /**
-     * Don't take another reference of the buffer and store it in
-     *                                    the GstVideoFrame. This makes sure that the buffer stays
-     *                                    writable while the frame is mapped, but requires that the
-     *                                    buffer reference stays valid until the frame is unmapped again.
-     */
-    NO_REF,
-    /**
-     * Offset to define more flags
-     */
-    LAST,
-}
-/**
- * GstVideoMultiviewFlags are used to indicate extra properties of a
- * stereo/multiview stream beyond the frame layout and buffer mapping
- * that is conveyed in the #GstVideoMultiviewMode.
- * @bitfield 
- */
-enum VideoMultiviewFlags {
-    /**
-     * No flags
-     */
-    NONE,
-    /**
-     * For stereo streams, the
-     *     normal arrangement of left and right views is reversed.
-     */
-    RIGHT_VIEW_FIRST,
-    /**
-     * The left view is vertically
-     *     mirrored.
-     */
-    LEFT_FLIPPED,
-    /**
-     * The left view is horizontally
-     *     mirrored.
-     */
-    LEFT_FLOPPED,
-    /**
-     * The right view is
-     *     vertically mirrored.
-     */
-    RIGHT_FLIPPED,
-    /**
-     * The right view is
-     *     horizontally mirrored.
-     */
-    RIGHT_FLOPPED,
-    /**
-     * For frame-packed
-     *     multiview modes, indicates that the individual
-     *     views have been encoded with half the true width or height
-     *     and should be scaled back up for display. This flag
-     *     is used for overriding input layout interpretation
-     *     by adjusting pixel-aspect-ratio.
-     *     For side-by-side, column interleaved or checkerboard packings, the
-     *     pixel width will be doubled. For row interleaved and top-bottom
-     *     encodings, pixel height will be doubled.
-     */
-    HALF_ASPECT,
-    /**
-     * The video stream contains both
-     *     mono and multiview portions, signalled on each buffer by the
-     *     absence or presence of the `GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW`
-     *     buffer flag.
-     */
-    MIXED_MONO,
-}
-/**
- * Overlay format flags.
- * @bitfield 
- */
-enum VideoOverlayFormatFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * RGB are premultiplied by A/255.
-     */
-    PREMULTIPLIED_ALPHA,
-    /**
-     * a global-alpha value != 1 is set.
-     */
-    GLOBAL_ALPHA,
-}
-/**
- * The different flags that can be used when packing and unpacking.
- * @bitfield 
- */
-enum VideoPackFlags {
-    /**
-     * No flag
-     */
-    NONE,
-    /**
-     * When the source has a smaller depth
-     *   than the target format, set the least significant bits of the target
-     *   to 0. This is likely slightly faster but less accurate. When this flag
-     *   is not specified, the most significant bits of the source are duplicated
-     *   in the least significant bits of the destination.
-     */
-    TRUNCATE_RANGE,
-    /**
-     * The source is interlaced. The unpacked
-     *   format will be interlaced as well with each line containing
-     *   information from alternating fields. (Since: 1.2)
-     */
-    INTERLACED,
-}
-/**
- * Different resampler flags.
- * @bitfield 
- */
-enum VideoResamplerFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * when no taps are given, half the
-     *              number of calculated taps. This can be used when making scalers
-     *              for the different fields of an interlaced picture. Since: 1.10
-     */
-    HALF_TAPS,
-}
-/**
- * Different scale flags.
- * @bitfield 
- */
-enum VideoScalerFlags {
-    /**
-     * no flags
-     */
-    NONE,
-    /**
-     * Set up a scaler for interlaced content
-     */
-    INTERLACED,
-}
-/**
- * Flags related to the time code information.
- * For drop frame, only 30000/1001 and 60000/1001 frame rates are supported.
- * @bitfield 
- */
-enum VideoTimeCodeFlags {
-    /**
-     * No flags
-     */
-    NONE,
-    /**
-     * Whether we have drop frame rate
-     */
-    DROP_FRAME,
-    /**
-     * Whether we have interlaced video
-     */
-    INTERLACED,
-}
-const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string | null
+const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string
 /**
  * A bufferpool option to enable extra padding. When a bufferpool supports this
  * option, gst_buffer_pool_config_set_video_alignment() can be called.
@@ -2223,7 +1650,7 @@ const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string | null
  * When this option is enabled on the bufferpool,
  * #GST_BUFFER_POOL_OPTION_VIDEO_META should also be enabled.
  */
-const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string | null
+const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string
 /**
  * An option that can be activated on a bufferpool to request gl texture upload
  * meta on buffers from the pool.
@@ -2231,12 +1658,12 @@ const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string | null
  * When this option is enabled on the bufferpool,
  * `GST_BUFFER_POOL_OPTION_VIDEO_META` should also be enabled.
  */
-const BUFFER_POOL_OPTION_VIDEO_GL_TEXTURE_UPLOAD_META: string | null
+const BUFFER_POOL_OPTION_VIDEO_GL_TEXTURE_UPLOAD_META: string
 /**
  * An option that can be activated on bufferpool to request video metadata
  * on buffers from the pool.
  */
-const BUFFER_POOL_OPTION_VIDEO_META: string | null
+const BUFFER_POOL_OPTION_VIDEO_META: string
 /**
  * Name of the caps feature indicating that the stream is interlaced.
  * 
@@ -2252,35 +1679,35 @@ const BUFFER_POOL_OPTION_VIDEO_META: string | null
  * rate will be twice the frame rate from the caps
  * (see `GST_VIDEO_INFO_FIELD_RATE_N)`.
  */
-const CAPS_FEATURE_FORMAT_INTERLACED: string | null
-const CAPS_FEATURE_META_GST_VIDEO_AFFINE_TRANSFORMATION_META: string | null
-const CAPS_FEATURE_META_GST_VIDEO_GL_TEXTURE_UPLOAD_META: string | null
-const CAPS_FEATURE_META_GST_VIDEO_META: string | null
-const CAPS_FEATURE_META_GST_VIDEO_OVERLAY_COMPOSITION: string | null
+const CAPS_FEATURE_FORMAT_INTERLACED: string
+const CAPS_FEATURE_META_GST_VIDEO_AFFINE_TRANSFORMATION_META: string
+const CAPS_FEATURE_META_GST_VIDEO_GL_TEXTURE_UPLOAD_META: string
+const CAPS_FEATURE_META_GST_VIDEO_META: string
+const CAPS_FEATURE_META_GST_VIDEO_OVERLAY_COMPOSITION: string
 /**
  * This metadata stays relevant as long as video colorspace is unchanged.
  */
-const META_TAG_VIDEO_COLORSPACE_STR: string | null
+const META_TAG_VIDEO_COLORSPACE_STR: string
 /**
  * This metadata stays relevant as long as video orientation is unchanged.
  */
-const META_TAG_VIDEO_ORIENTATION_STR: string | null
+const META_TAG_VIDEO_ORIENTATION_STR: string
 /**
  * This metadata stays relevant as long as video size is unchanged.
  */
-const META_TAG_VIDEO_SIZE_STR: string | null
+const META_TAG_VIDEO_SIZE_STR: string
 /**
  * This metadata is relevant for video streams.
  */
-const META_TAG_VIDEO_STR: string | null
-const VIDEO_COLORIMETRY_BT2020: string | null
-const VIDEO_COLORIMETRY_BT2020_10: string | null
-const VIDEO_COLORIMETRY_BT2100_HLG: string | null
-const VIDEO_COLORIMETRY_BT2100_PQ: string | null
-const VIDEO_COLORIMETRY_BT601: string | null
-const VIDEO_COLORIMETRY_BT709: string | null
-const VIDEO_COLORIMETRY_SMPTE240M: string | null
-const VIDEO_COLORIMETRY_SRGB: string | null
+const META_TAG_VIDEO_STR: string
+const VIDEO_COLORIMETRY_BT2020: string
+const VIDEO_COLORIMETRY_BT2020_10: string
+const VIDEO_COLORIMETRY_BT2100_HLG: string
+const VIDEO_COLORIMETRY_BT2100_PQ: string
+const VIDEO_COLORIMETRY_BT601: string
+const VIDEO_COLORIMETRY_BT709: string
+const VIDEO_COLORIMETRY_SMPTE240M: string
+const VIDEO_COLORIMETRY_SRGB: string
 const VIDEO_COMP_A: number
 const VIDEO_COMP_B: number
 const VIDEO_COMP_G: number
@@ -2294,119 +1721,119 @@ const VIDEO_COMP_Y: number
  * #GstVideoAlphaMode, the alpha mode to use.
  * Default is #GST_VIDEO_ALPHA_MODE_COPY.
  */
-const VIDEO_CONVERTER_OPT_ALPHA_MODE: string | null
+const VIDEO_CONVERTER_OPT_ALPHA_MODE: string
 /**
  * #G_TYPE_DOUBLE, the alpha color value to use.
  * Default to 1.0
  */
-const VIDEO_CONVERTER_OPT_ALPHA_VALUE: string | null
+const VIDEO_CONVERTER_OPT_ALPHA_VALUE: string
 /**
  * #G_TYPE_BOOLEAN, whether gst_video_converter_frame() will return immediately
  * without waiting for the conversion to complete.  A subsequent
  * gst_video_converter_frame_finish() must be performed to ensure completion of the
  * conversion before subsequent use.  Default %FALSE
  */
-const VIDEO_CONVERTER_OPT_ASYNC_TASKS: string | null
+const VIDEO_CONVERTER_OPT_ASYNC_TASKS: string
 /**
  * #G_TYPE_UINT, the border color to use if #GST_VIDEO_CONVERTER_OPT_FILL_BORDER
  * is set to %TRUE. The color is in ARGB format.
  * Default 0xff000000
  */
-const VIDEO_CONVERTER_OPT_BORDER_ARGB: string | null
+const VIDEO_CONVERTER_OPT_BORDER_ARGB: string
 /**
  * #GstVideoChromaMode, set the chroma resample mode subsampled
  * formats. Default is #GST_VIDEO_CHROMA_MODE_FULL.
  */
-const VIDEO_CONVERTER_OPT_CHROMA_MODE: string | null
+const VIDEO_CONVERTER_OPT_CHROMA_MODE: string
 /**
  * #GstVideoChromaMethod, The resampler method to use for
  * chroma resampling. Other options for the resampler can be used, see
  * the #GstVideoResampler. Default is #GST_VIDEO_RESAMPLER_METHOD_LINEAR
  */
-const VIDEO_CONVERTER_OPT_CHROMA_RESAMPLER_METHOD: string | null
+const VIDEO_CONVERTER_OPT_CHROMA_RESAMPLER_METHOD: string
 /**
  * #G_TYPE_INT, height in the destination frame, default destination height
  */
-const VIDEO_CONVERTER_OPT_DEST_HEIGHT: string | null
+const VIDEO_CONVERTER_OPT_DEST_HEIGHT: string
 /**
  * #G_TYPE_INT, width in the destination frame, default destination width
  */
-const VIDEO_CONVERTER_OPT_DEST_WIDTH: string | null
+const VIDEO_CONVERTER_OPT_DEST_WIDTH: string
 /**
  * #G_TYPE_INT, x position in the destination frame, default 0
  */
-const VIDEO_CONVERTER_OPT_DEST_X: string | null
+const VIDEO_CONVERTER_OPT_DEST_X: string
 /**
  * #G_TYPE_INT, y position in the destination frame, default 0
  */
-const VIDEO_CONVERTER_OPT_DEST_Y: string | null
+const VIDEO_CONVERTER_OPT_DEST_Y: string
 /**
  * #GstVideoDitherMethod, The dither method to use when
  * changing bit depth.
  * Default is #GST_VIDEO_DITHER_BAYER.
  */
-const VIDEO_CONVERTER_OPT_DITHER_METHOD: string | null
+const VIDEO_CONVERTER_OPT_DITHER_METHOD: string
 /**
  * #G_TYPE_UINT, The quantization amount to dither to. Components will be
  * quantized to multiples of this value.
  * Default is 1
  */
-const VIDEO_CONVERTER_OPT_DITHER_QUANTIZATION: string | null
+const VIDEO_CONVERTER_OPT_DITHER_QUANTIZATION: string
 /**
  * #G_TYPE_BOOLEAN, if the destination rectangle does not fill the complete
  * destination image, render a border with
  * #GST_VIDEO_CONVERTER_OPT_BORDER_ARGB. Otherwise the unusded pixels in the
  * destination are untouched. Default %TRUE.
  */
-const VIDEO_CONVERTER_OPT_FILL_BORDER: string | null
+const VIDEO_CONVERTER_OPT_FILL_BORDER: string
 /**
  * #GstVideoGammaMode, set the gamma mode.
  * Default is #GST_VIDEO_GAMMA_MODE_NONE.
  */
-const VIDEO_CONVERTER_OPT_GAMMA_MODE: string | null
+const VIDEO_CONVERTER_OPT_GAMMA_MODE: string
 /**
  * #GstVideoMatrixMode, set the color matrix conversion mode for
  * converting between Y'PbPr and non-linear RGB (R'G'B').
  * Default is #GST_VIDEO_MATRIX_MODE_FULL.
  */
-const VIDEO_CONVERTER_OPT_MATRIX_MODE: string | null
+const VIDEO_CONVERTER_OPT_MATRIX_MODE: string
 /**
  * #GstVideoPrimariesMode, set the primaries conversion mode.
  * Default is #GST_VIDEO_PRIMARIES_MODE_NONE.
  */
-const VIDEO_CONVERTER_OPT_PRIMARIES_MODE: string | null
+const VIDEO_CONVERTER_OPT_PRIMARIES_MODE: string
 /**
  * #GstVideoResamplerMethod, The resampler method to use for
  * resampling. Other options for the resampler can be used, see
  * the #GstVideoResampler. Default is #GST_VIDEO_RESAMPLER_METHOD_CUBIC
  */
-const VIDEO_CONVERTER_OPT_RESAMPLER_METHOD: string | null
+const VIDEO_CONVERTER_OPT_RESAMPLER_METHOD: string
 /**
  * #G_TYPE_UINT, The number of taps for the resampler.
  * Default is 0: let the resampler choose a good value.
  */
-const VIDEO_CONVERTER_OPT_RESAMPLER_TAPS: string | null
+const VIDEO_CONVERTER_OPT_RESAMPLER_TAPS: string
 /**
  * #G_TYPE_INT, source height to convert, default source height
  */
-const VIDEO_CONVERTER_OPT_SRC_HEIGHT: string | null
+const VIDEO_CONVERTER_OPT_SRC_HEIGHT: string
 /**
  * #G_TYPE_INT, source width to convert, default source width
  */
-const VIDEO_CONVERTER_OPT_SRC_WIDTH: string | null
+const VIDEO_CONVERTER_OPT_SRC_WIDTH: string
 /**
  * #G_TYPE_INT, source x position to start conversion, default 0
  */
-const VIDEO_CONVERTER_OPT_SRC_X: string | null
+const VIDEO_CONVERTER_OPT_SRC_X: string
 /**
  * #G_TYPE_INT, source y position to start conversion, default 0
  */
-const VIDEO_CONVERTER_OPT_SRC_Y: string | null
+const VIDEO_CONVERTER_OPT_SRC_Y: string
 /**
  * #G_TYPE_UINT, maximum number of threads to use. Default 1, 0 for the number
  * of cores.
  */
-const VIDEO_CONVERTER_OPT_THREADS: string | null
+const VIDEO_CONVERTER_OPT_THREADS: string
 /**
  * Default maximum number of errors tolerated before signaling error.
  */
@@ -2414,19 +1841,19 @@ const VIDEO_DECODER_MAX_ERRORS: number
 /**
  * The name of the templates for the sink pad.
  */
-const VIDEO_DECODER_SINK_NAME: string | null
+const VIDEO_DECODER_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-const VIDEO_DECODER_SRC_NAME: string | null
+const VIDEO_DECODER_SRC_NAME: string
 /**
  * The name of the templates for the sink pad.
  */
-const VIDEO_ENCODER_SINK_NAME: string | null
+const VIDEO_ENCODER_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-const VIDEO_ENCODER_SRC_NAME: string | null
+const VIDEO_ENCODER_SRC_NAME: string
 /**
  * List of all video formats, for use in template caps strings.
  * 
@@ -2444,8 +1871,8 @@ const VIDEO_ENCODER_SRC_NAME: string | null
  *   - prefer I420 over YV12
  *   - format name
  */
-const VIDEO_FORMATS_ALL: string | null
-const VIDEO_FPS_RANGE: string | null
+const VIDEO_FORMATS_ALL: string
+const VIDEO_FPS_RANGE: string
 const VIDEO_MAX_COMPONENTS: number
 const VIDEO_MAX_PLANES: number
 /**
@@ -2465,7 +1892,7 @@ const VIDEO_MAX_PLANES: number
  * Robidoux
  *  Soft             0.6796  0.1602
  */
-const VIDEO_RESAMPLER_OPT_CUBIC_B: string | null
+const VIDEO_RESAMPLER_OPT_CUBIC_B: string
 /**
  * G_TYPE_DOUBLE, C parameter of the cubic filter. The C
  * parameter controls the Keys alpha value. Values between 0.0 and
@@ -2473,36 +1900,36 @@ const VIDEO_RESAMPLER_OPT_CUBIC_B: string | null
  * 
  * See #GST_VIDEO_RESAMPLER_OPT_CUBIC_B for some more common values
  */
-const VIDEO_RESAMPLER_OPT_CUBIC_C: string | null
+const VIDEO_RESAMPLER_OPT_CUBIC_C: string
 /**
  * G_TYPE_DOUBLE, specifies the size of filter envelope for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 1.0 and 5.0. 2.0 is the default.
  */
-const VIDEO_RESAMPLER_OPT_ENVELOPE: string | null
+const VIDEO_RESAMPLER_OPT_ENVELOPE: string
 /**
  * G_TYPE_INT, limits the maximum number of taps to use.
  * 16 is the default.
  */
-const VIDEO_RESAMPLER_OPT_MAX_TAPS: string | null
+const VIDEO_RESAMPLER_OPT_MAX_TAPS: string
 /**
  * G_TYPE_DOUBLE, specifies sharpening of the filter for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 0.0 and 1.0. 0.0 is the default.
  */
-const VIDEO_RESAMPLER_OPT_SHARPEN: string | null
+const VIDEO_RESAMPLER_OPT_SHARPEN: string
 /**
  * G_TYPE_DOUBLE, specifies sharpness of the filter for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 0.5 and 1.5. 1.0 is the default.
  */
-const VIDEO_RESAMPLER_OPT_SHARPNESS: string | null
+const VIDEO_RESAMPLER_OPT_SHARPNESS: string
 /**
  * #GstVideoDitherMethod, The dither method to use for propagating
  * quatization errors.
  */
-const VIDEO_SCALER_OPT_DITHER_METHOD: string | null
-const VIDEO_SIZE_RANGE: string | null
+const VIDEO_SCALER_OPT_DITHER_METHOD: string
+const VIDEO_SIZE_RANGE: string
 const VIDEO_TILE_TYPE_MASK: number
 const VIDEO_TILE_TYPE_SHIFT: number
 const VIDEO_TILE_X_TILES_MASK: number
@@ -2530,8 +1957,8 @@ function buffer_add_video_affine_transformation_meta(buffer: Gst.Buffer): VideoA
  * @param buffer a #GstBuffer
  * @param field 0 for progressive or field 1 and 1 for field 2
  * @param is_letterbox if true then bar data specifies letterbox, otherwise pillarbox
- * @param bar_data1 If `is_letterbox` is true, then the value specifies the      last line of a horizontal letterbox bar area at top of reconstructed frame.      Otherwise, it specifies the last horizontal luminance sample of a vertical pillarbox      bar area at the left side of the reconstructed frame
- * @param bar_data2 If `is_letterbox` is true, then the value specifies the      first line of a horizontal letterbox bar area at bottom of reconstructed frame.      Otherwise, it specifies the first horizontal      luminance sample of a vertical pillarbox bar area at the right side of the reconstructed frame.
+ * @param bar_data1 If @is_letterbox is true, then the value specifies the      last line of a horizontal letterbox bar area at top of reconstructed frame.      Otherwise, it specifies the last horizontal luminance sample of a vertical pillarbox      bar area at the left side of the reconstructed frame
+ * @param bar_data2 If @is_letterbox is true, then the value specifies the      first line of a horizontal letterbox bar area at bottom of reconstructed frame.      Otherwise, it specifies the first horizontal      luminance sample of a vertical pillarbox bar area at the right side of the reconstructed frame.
  * @returns the #GstVideoBarMeta on @buffer. See Table 6.11 Bar Data Syntax https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
  */
 function buffer_add_video_bar_meta(buffer: Gst.Buffer, field: number, is_letterbox: boolean, bar_data1: number, bar_data2: number): VideoBarMeta
@@ -2560,8 +1987,8 @@ function buffer_add_video_codec_alpha_meta(buffer: Gst.Buffer, alpha_buffer: Gst
  * @param n_textures the number of textures
  * @param texture_type array of #GstVideoGLTextureType
  * @param upload the function to upload the buffer to a specific texture ID
- * @param user_data_copy function to copy `user_data`
- * @param user_data_free function to free `user_data`
+ * @param user_data_copy function to copy @user_data
+ * @param user_data_free function to free @user_data
  * @returns the #GstVideoGLTextureUploadMeta on @buffer.
  */
 function buffer_add_video_gl_texture_upload_meta(buffer: Gst.Buffer, texture_orientation: VideoGLTextureOrientation, n_textures: number, texture_type: VideoGLTextureType, upload: VideoGLTextureUpload, user_data_copy: GObject.BoxedCopyFunc, user_data_free: GObject.BoxedFreeFunc): VideoGLTextureUploadMeta
@@ -2600,7 +2027,7 @@ function buffer_add_video_meta_full(buffer: Gst.Buffer, flags: VideoFrameFlags, 
  * @param comp a #GstVideoOverlayComposition
  * @returns a #GstVideoOverlayCompositionMeta
  */
-function buffer_add_video_overlay_composition_meta(buf: Gst.Buffer, comp: VideoOverlayComposition | null): VideoOverlayCompositionMeta
+function buffer_add_video_overlay_composition_meta(buf: Gst.Buffer, comp?: (VideoOverlayComposition | null)): VideoOverlayCompositionMeta
 /**
  * Attaches #GstVideoRegionOfInterestMeta metadata to `buffer` with the given
  * parameters.
@@ -2612,7 +2039,7 @@ function buffer_add_video_overlay_composition_meta(buf: Gst.Buffer, comp: VideoO
  * @param h height
  * @returns the #GstVideoRegionOfInterestMeta on @buffer.
  */
-function buffer_add_video_region_of_interest_meta(buffer: Gst.Buffer, roi_type: string | null, x: number, y: number, w: number, h: number): VideoRegionOfInterestMeta
+function buffer_add_video_region_of_interest_meta(buffer: Gst.Buffer, roi_type: string, x: number, y: number, w: number, h: number): VideoRegionOfInterestMeta
 /**
  * Attaches #GstVideoRegionOfInterestMeta metadata to `buffer` with the given
  * parameters.
@@ -2642,7 +2069,7 @@ function buffer_add_video_sei_user_data_unregistered_meta(buffer: Gst.Buffer, uu
  * @param tc a #GstVideoTimeCode
  * @returns the #GstVideoTimeCodeMeta on @buffer, or (since 1.16) %NULL if the timecode was invalid.
  */
-function buffer_add_video_time_code_meta(buffer: Gst.Buffer, tc: VideoTimeCode): VideoTimeCodeMeta | null
+function buffer_add_video_time_code_meta(buffer: Gst.Buffer, tc: VideoTimeCode): (VideoTimeCodeMeta | null)
 /**
  * Attaches #GstVideoTimeCodeMeta metadata to `buffer` with the given
  * parameters.
@@ -2658,7 +2085,7 @@ function buffer_add_video_time_code_meta(buffer: Gst.Buffer, tc: VideoTimeCode):
  * @param field_count fields since the daily jam
  * @returns the #GstVideoTimeCodeMeta on @buffer, or (since 1.16) %NULL if the timecode was invalid.
  */
-function buffer_add_video_time_code_meta_full(buffer: Gst.Buffer, fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): VideoTimeCodeMeta | null
+function buffer_add_video_time_code_meta_full(buffer: Gst.Buffer, fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): (VideoTimeCodeMeta | null)
 /**
  * Find the #GstVideoMeta on `buffer` with the lowest `id`.
  * 
@@ -2667,7 +2094,7 @@ function buffer_add_video_time_code_meta_full(buffer: Gst.Buffer, fps_n: number,
  * @param buffer a #GstBuffer
  * @returns the #GstVideoMeta with lowest id (usually 0) or %NULL when there is no such metadata on @buffer.
  */
-function buffer_get_video_meta(buffer: Gst.Buffer): VideoMeta | null
+function buffer_get_video_meta(buffer: Gst.Buffer): (VideoMeta | null)
 /**
  * Find the #GstVideoMeta on `buffer` with the given `id`.
  * 
@@ -2677,7 +2104,7 @@ function buffer_get_video_meta(buffer: Gst.Buffer): VideoMeta | null
  * @param id a metadata id
  * @returns the #GstVideoMeta with @id or %NULL when there is no such metadata on @buffer.
  */
-function buffer_get_video_meta_id(buffer: Gst.Buffer, id: number): VideoMeta | null
+function buffer_get_video_meta_id(buffer: Gst.Buffer, id: number): (VideoMeta | null)
 /**
  * Find the #GstVideoRegionOfInterestMeta on `buffer` with the given `id`.
  * 
@@ -2687,7 +2114,7 @@ function buffer_get_video_meta_id(buffer: Gst.Buffer, id: number): VideoMeta | n
  * @param id a metadata id
  * @returns the #GstVideoRegionOfInterestMeta with @id or %NULL when there is no such metadata on @buffer.
  */
-function buffer_get_video_region_of_interest_meta_id(buffer: Gst.Buffer, id: number): VideoRegionOfInterestMeta | null
+function buffer_get_video_region_of_interest_meta_id(buffer: Gst.Buffer, id: number): (VideoRegionOfInterestMeta | null)
 /**
  * Get the video alignment from the bufferpool configuration `config` in
  * in `align`
@@ -2715,7 +2142,7 @@ function is_video_overlay_prepare_window_handle_message(msg: Gst.Message): boole
  * @param event The #GstEvent to inspect.
  * @returns A boolean indicating success.
  */
-function navigation_event_get_coordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
+function navigation_event_get_coordinates(event: Gst.Event): boolean
 /**
  * Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
  * #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
@@ -2734,14 +2161,14 @@ function navigation_event_new_command(command: NavigationCommand): Gst.Event
  * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
  * @returns a new #GstEvent
  */
-function navigation_event_new_key_press(key: string | null, state: NavigationModifierType): Gst.Event
+function navigation_event_new_key_press(key: string, state: NavigationModifierType): Gst.Event
 /**
  * Create a new navigation event for the given key release.
  * @param key A string identifying the released key.
  * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
  * @returns a new #GstEvent
  */
-function navigation_event_new_key_release(key: string | null, state: NavigationModifierType): Gst.Event
+function navigation_event_new_key_release(key: string, state: NavigationModifierType): Gst.Event
 /**
  * Create a new navigation event for the given key mouse button press.
  * @param button The number of the pressed mouse button.
@@ -2830,7 +2257,7 @@ function navigation_event_new_touch_up(identifier: number, x: number, y: number,
  * @param event A #GstEvent to inspect.
  * @returns TRUE if the navigation command could be extracted, otherwise FALSE.
  */
-function navigation_event_parse_command(event: Gst.Event): [ /* returnType */ boolean, /* command */ NavigationCommand ]
+function navigation_event_parse_command(event: Gst.Event): boolean
 /**
  * Note: Modifier keys (as defined in #GstNavigationModifierType)
  * [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
@@ -2838,7 +2265,7 @@ function navigation_event_parse_command(event: Gst.Event): [ /* returnType */ bo
  * present on all other related events
  * @param event A #GstEvent to inspect.
  */
-function navigation_event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
+function navigation_event_parse_key_event(event: Gst.Event): boolean
 function navigation_event_parse_modifier_state(event: Gst.Event, state: NavigationModifierType): boolean
 /**
  * Retrieve the details of either a #GstNavigation mouse button press event or
@@ -2847,21 +2274,21 @@ function navigation_event_parse_modifier_state(event: Gst.Event, state: Navigati
  * @param event A #GstEvent to inspect.
  * @returns TRUE if the button number and both coordinates could be extracted,     otherwise FALSE.
  */
-function navigation_event_parse_mouse_button_event(event: Gst.Event): [ /* returnType */ boolean, /* button */ number, /* x */ number, /* y */ number ]
+function navigation_event_parse_mouse_button_event(event: Gst.Event): boolean
 /**
  * Inspect a #GstNavigation mouse movement event and extract the coordinates
  * of the event.
  * @param event A #GstEvent to inspect.
  * @returns TRUE if both coordinates could be extracted, otherwise FALSE.
  */
-function navigation_event_parse_mouse_move_event(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
+function navigation_event_parse_mouse_move_event(event: Gst.Event): boolean
 /**
  * Inspect a #GstNavigation mouse scroll event and extract the coordinates
  * of the event.
  * @param event A #GstEvent to inspect.
  * @returns TRUE if all coordinates could be extracted, otherwise FALSE.
  */
-function navigation_event_parse_mouse_scroll_event(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number, /* delta_x */ number, /* delta_y */ number ]
+function navigation_event_parse_mouse_scroll_event(event: Gst.Event): boolean
 /**
  * Retrieve the details of a #GstNavigation touch-down or touch-motion event.
  * Determine which type the event is using gst_navigation_event_get_type()
@@ -2869,13 +2296,13 @@ function navigation_event_parse_mouse_scroll_event(event: Gst.Event): [ /* retur
  * @param event A #GstEvent to inspect.
  * @returns TRUE if all details could be extracted, otherwise FALSE.
  */
-function navigation_event_parse_touch_event(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number, /* x */ number, /* y */ number, /* pressure */ number ]
+function navigation_event_parse_touch_event(event: Gst.Event): boolean
 /**
  * Retrieve the details of a #GstNavigation touch-up event.
  * @param event A #GstEvent to inspect.
  * @returns TRUE if all details could be extracted, otherwise FALSE.
  */
-function navigation_event_parse_touch_up_event(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number, /* x */ number, /* y */ number ]
+function navigation_event_parse_touch_up_event(event: Gst.Event): boolean
 /**
  * Try to set x and y coordinates on a #GstNavigation event. The event must
  * be writable.
@@ -2932,7 +2359,7 @@ function navigation_message_new_mouse_over(src: Gst.Object, active: boolean): Gs
  * @param message A #GstMessage to inspect.
  * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
  */
-function navigation_message_parse_angles_changed(message: Gst.Message): [ /* returnType */ boolean, /* cur_angle */ number, /* n_angles */ number ]
+function navigation_message_parse_angles_changed(message: Gst.Message): boolean
 /**
  * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
  * and extract contained #GstEvent. The caller must unref the `event` when done
@@ -2940,7 +2367,7 @@ function navigation_message_parse_angles_changed(message: Gst.Message): [ /* ret
  * @param message A #GstMessage to inspect.
  * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
  */
-function navigation_message_parse_event(message: Gst.Message): [ /* returnType */ boolean, /* event */ Gst.Event ]
+function navigation_message_parse_event(message: Gst.Message): boolean
 /**
  * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
  * and extract the active/inactive flag. If the mouse over event is marked
@@ -2948,7 +2375,7 @@ function navigation_message_parse_event(message: Gst.Message): [ /* returnType *
  * @param message A #GstMessage to inspect.
  * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
  */
-function navigation_message_parse_mouse_over(message: Gst.Message): [ /* returnType */ boolean, /* active */ boolean ]
+function navigation_message_parse_mouse_over(message: Gst.Message): boolean
 /**
  * Inspect a #GstQuery and return the #GstNavigationQueryType associated with
  * it if it is a #GstNavigation query.
@@ -2976,13 +2403,13 @@ function navigation_query_new_commands(): Gst.Query
  * @param query a #GstQuery
  * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
  */
-function navigation_query_parse_angles(query: Gst.Query): [ /* returnType */ boolean, /* cur_angle */ number, /* n_angles */ number ]
+function navigation_query_parse_angles(query: Gst.Query): boolean
 /**
  * Parse the number of commands in the #GstNavigation commands `query`.
  * @param query a #GstQuery
  * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
  */
-function navigation_query_parse_commands_length(query: Gst.Query): [ /* returnType */ boolean, /* n_cmds */ number ]
+function navigation_query_parse_commands_length(query: Gst.Query): boolean
 /**
  * Parse the #GstNavigation command query and retrieve the `nth` command from
  * it into `cmd`. If the list contains less elements than `nth,` `cmd` will be
@@ -2991,7 +2418,7 @@ function navigation_query_parse_commands_length(query: Gst.Query): [ /* returnTy
  * @param nth the nth command to retrieve.
  * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
  */
-function navigation_query_parse_commands_nth(query: Gst.Query, nth: number): [ /* returnType */ boolean, /* cmd */ NavigationCommand ]
+function navigation_query_parse_commands_nth(query: Gst.Query, nth: number): boolean
 /**
  * Set the #GstNavigation angles query result field in `query`.
  * @param query a #GstQuery
@@ -3003,7 +2430,7 @@ function navigation_query_set_angles(query: Gst.Query, cur_angle: number, n_angl
  * Set the #GstNavigation command query result fields in `query`. The number
  * of commands passed must be equal to `n_commands`.
  * @param query a #GstQuery
- * @param cmds An array containing `n_cmds`     `GstNavigationCommand` values.
+ * @param cmds An array containing @n_cmds     @GstNavigationCommand values.
  */
 function navigation_query_set_commandsv(query: Gst.Query, cmds: NavigationCommand[]): void
 function video_afd_meta_api_get_type(): GObject.GType
@@ -3014,10 +2441,10 @@ function video_bar_meta_api_get_type(): GObject.GType
 function video_bar_meta_get_info(): Gst.MetaInfo
 /**
  * Lets you blend the `src` image into the `dest` image
- * @param dest The #GstVideoFrame where to blend `src` in
+ * @param dest The #GstVideoFrame where to blend @src in
  * @param src the #GstVideoFrame that we want to blend into
- * @param x The x offset in pixel where the `src` image should be blended
- * @param y the y offset in pixel where the `src` image should be blended
+ * @param x The x offset in pixel where the @src image should be blended
+ * @param y the y offset in pixel where the @src image should be blended
  * @param global_alpha the global_alpha each per-pixel alpha value is multiplied                with
  */
 function video_blend(dest: VideoFrame, src: VideoFrame, x: number, y: number, global_alpha: number): boolean
@@ -3026,12 +2453,12 @@ function video_blend(dest: VideoFrame, src: VideoFrame, x: number, y: number, gl
  * helper function which is used to scale subtitle overlays, and may be
  * deprecated in the near future. Use #GstVideoScaler to scale video buffers
  * instead.
- * @param src the #GstVideoInfo describing the video data in `src_buffer`
+ * @param src the #GstVideoInfo describing the video data in @src_buffer
  * @param src_buffer the source buffer containing video pixels to scale
- * @param dest_height the height in pixels to scale the video data in `src_buffer` to
- * @param dest_width the width in pixels to scale the video data in `src_buffer` to
+ * @param dest_height the height in pixels to scale the video data in @src_buffer to
+ * @param dest_width the width in pixels to scale the video data in @src_buffer to
  */
-function video_blend_scale_linear_RGBA(src: VideoInfo, src_buffer: Gst.Buffer, dest_height: number, dest_width: number): [ /* dest */ VideoInfo, /* dest_buffer */ Gst.Buffer ]
+function video_blend_scale_linear_RGBA(src: VideoInfo, src_buffer: Gst.Buffer, dest_height: number, dest_width: number): void
 /**
  * Given the Pixel Aspect Ratio and size of an input video frame, and the
  * pixel aspect ratio of the intended display device, calculates the actual
@@ -3044,7 +2471,7 @@ function video_blend_scale_linear_RGBA(src: VideoInfo, src_buffer: Gst.Buffer, d
  * @param display_par_d Denominator of the pixel aspect ratio of the display device
  * @returns A boolean indicating success and a calculated Display Ratio in the dar_n and dar_d parameters. The return value is FALSE in the case of integer overflow or other error.
  */
-function video_calculate_display_ratio(video_width: number, video_height: number, video_par_n: number, video_par_d: number, display_par_n: number, display_par_d: number): [ /* returnType */ boolean, /* dar_n */ number, /* dar_d */ number ]
+function video_calculate_display_ratio(video_width: number, video_height: number, video_par_n: number, video_par_d: number, display_par_n: number, display_par_d: number): boolean
 function video_caption_meta_api_get_type(): GObject.GType
 function video_caption_meta_get_info(): Gst.MetaInfo
 /**
@@ -3068,38 +2495,38 @@ function video_caption_type_to_caps(type: VideoCaptionType): Gst.Caps
  * @param dst a pointer to #GstVideoRectangle describing the destination area
  * @param scaling a #gboolean indicating if scaling should be applied or not
  */
-function video_center_rect(src: VideoRectangle, dst: VideoRectangle, scaling: boolean): /* result */ VideoRectangle
+function video_center_rect(src: VideoRectangle, dst: VideoRectangle, scaling: boolean): void
 /**
  * Convert `s` to a #GstVideoChromaSite
  * @param s a chromasite string
  * @returns a #GstVideoChromaSite or %GST_VIDEO_CHROMA_SITE_UNKNOWN when @s does not contain a valid chroma description.
  */
-function video_chroma_from_string(s: string | null): VideoChromaSite
+function video_chroma_from_string(s: string): VideoChromaSite
 /**
  * Perform resampling of `width` chroma pixels in `lines`.
  * @param resample a #GstVideoChromaResample
  * @param lines pixel lines
  * @param width the number of pixels on one line
  */
-function video_chroma_resample(resample: VideoChromaResample, lines: any | null, width: number): void
+function video_chroma_resample(resample: VideoChromaResample, lines: (any | null), width: number): void
 /**
  * Convert `s` to a #GstVideoChromaSite
  * @param s a chromasite string
  * @returns a #GstVideoChromaSite or %GST_VIDEO_CHROMA_SITE_UNKNOWN when @s does not contain a valid chroma-site description.
  */
-function video_chroma_site_from_string(s: string | null): VideoChromaSite
+function video_chroma_site_from_string(s: string): VideoChromaSite
 /**
  * Converts `site` to its string representation.
  * @param site a #GstVideoChromaSite
  * @returns a string representation of @site          or %NULL if @site contains undefined value or          is equal to %GST_VIDEO_CHROMA_SITE_UNKNOWN
  */
-function video_chroma_site_to_string(site: VideoChromaSite): string | null
+function video_chroma_site_to_string(site: VideoChromaSite): (string | null)
 /**
  * Converts `site` to its string representation.
  * @param site a #GstVideoChromaSite
  * @returns a string describing @site.
  */
-function video_chroma_to_string(site: VideoChromaSite): string | null
+function video_chroma_to_string(site: VideoChromaSite): string
 function video_codec_alpha_meta_api_get_type(): GObject.GType
 function video_codec_alpha_meta_get_info(): Gst.MetaInfo
 /**
@@ -3119,8 +2546,8 @@ function video_color_matrix_from_iso(value: number): VideoColorMatrix
  * 
  * 
  * ```
- *   0.0 <= [Y',R',G',B'] <= 1.0)
- *   (-0.5 <= [Pb,Pr] <= 0.5)
+ *   0.0 &lt;= [Y',R',G',B'] &lt;= 1.0)
+ *   (-0.5 &lt;= [Pb,Pr] &lt;= 0.5)
  * ```
  * 
  * 
@@ -3146,7 +2573,7 @@ function video_color_matrix_from_iso(value: number): VideoColorMatrix
  * @param matrix a #GstVideoColorMatrix
  * @returns TRUE if @matrix was a YUV color format and @Kr and @Kb contain valid    values.
  */
-function video_color_matrix_get_Kr_Kb(matrix: VideoColorMatrix): [ /* returnType */ boolean, /* Kr */ number, /* Kb */ number ]
+function video_color_matrix_get_Kr_Kb(matrix: VideoColorMatrix): boolean
 /**
  * Converts #GstVideoColorMatrix to the "matrix coefficients"
  * (MatrixCoefficients) value defined by "ISO/IEC 23001-8 Section 7.3 Table 4"
@@ -3198,7 +2625,7 @@ function video_color_primaries_to_iso(primaries: VideoColorPrimaries): number
  * @param range a #GstVideoColorRange
  * @param info a #GstVideoFormatInfo
  */
-function video_color_range_offsets(range: VideoColorRange, info: VideoFormatInfo): [ /* offset */ number[], /* scale */ number[] ]
+function video_color_range_offsets(range: VideoColorRange, info: VideoFormatInfo): void
 function video_color_transfer_decode(func: VideoTransferFunction, val: number): number
 function video_color_transfer_encode(func: VideoTransferFunction, val: number): number
 /**
@@ -3212,7 +2639,7 @@ function video_color_transfer_encode(func: VideoTransferFunction, val: number): 
  * @param timeout the maximum amount of time allowed for the processing.
  * @returns The converted #GstSample, or %NULL if an error happened (in which case @err will point to the #GError).
  */
-function video_convert_sample(sample: Gst.Sample, to_caps: Gst.Caps, timeout: Gst.ClockTime): Gst.Sample | null
+function video_convert_sample(sample: Gst.Sample, to_caps: Gst.Caps, timeout: Gst.ClockTime): Gst.Sample
 /**
  * Converts a raw video buffer into the specified output caps.
  * 
@@ -3235,36 +2662,6 @@ function video_convert_sample(sample: Gst.Sample, to_caps: Gst.Caps, timeout: Gs
 function video_convert_sample_async(sample: Gst.Sample, to_caps: Gst.Caps, timeout: Gst.ClockTime, callback: VideoConvertSampleCallback): void
 function video_crop_meta_api_get_type(): GObject.GType
 function video_crop_meta_get_info(): Gst.MetaInfo
-/**
- * Converting the video format into dma drm fourcc. If no
- * matching fourcc found, then DRM_FORMAT_INVALID is returned.
- * @param format a #GstVideoFormat
- * @returns the DRM_FORMAT_* corresponding to the @format.
- */
-function video_dma_drm_fourcc_from_format(format: VideoFormat): number
-/**
- * Convert the `format_str` string into the drm fourcc value. The `modifier` is
- * also parsed if we want. Please note that the `format_str` should follow the
- * fourcc:modifier kind style, such as NV12:0x0100000000000002
- * @param format_str a drm format string
- * @returns The drm fourcc value or DRM_FORMAT_INVALID if @format_str is invalid.
- */
-function video_dma_drm_fourcc_from_string(format_str: string | null): [ /* returnType */ number, /* modifier */ number ]
-/**
- * Converting a dma drm fourcc into the video format. If no matching
- * video format found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
- * @param fourcc the dma drm value.
- * @returns the GST_VIDEO_FORMAT_* corresponding to the @fourcc.
- */
-function video_dma_drm_fourcc_to_format(fourcc: number): VideoFormat
-/**
- * Returns a string containing drm kind format, such as
- * NV12:0x0100000000000002, or NULL otherwise.
- * @param fourcc a drm fourcc value.
- * @param modifier the associated modifier value.
- * @returns the drm kind string composed   of to @fourcc and @modifier.
- */
-function video_dma_drm_fourcc_to_string(fourcc: number, modifier: number): string | null
 /**
  * Checks if an event is a force key unit event. Returns true for both upstream
  * and downstream force key unit events.
@@ -3325,7 +2722,7 @@ function video_event_new_upstream_force_key_unit(running_time: Gst.ClockTime, al
  * @param event A #GstEvent to parse
  * @returns %TRUE if the event is a valid downstream force key unit event.
  */
-function video_event_parse_downstream_force_key_unit(event: Gst.Event): [ /* returnType */ boolean, /* timestamp */ Gst.ClockTime, /* stream_time */ Gst.ClockTime, /* running_time */ Gst.ClockTime, /* all_headers */ boolean, /* count */ number ]
+function video_event_parse_downstream_force_key_unit(event: Gst.Event): boolean
 /**
  * Parse a #GstEvent, identify if it is a Still Frame event, and
  * return the still-frame state from the event if it is.
@@ -3338,7 +2735,7 @@ function video_event_parse_downstream_force_key_unit(event: Gst.Event): [ /* ret
  * @param event A #GstEvent to parse
  * @returns %TRUE if the event is a valid still-frame event. %FALSE if not
  */
-function video_event_parse_still_frame(event: Gst.Event): [ /* returnType */ boolean, /* in_still */ boolean ]
+function video_event_parse_still_frame(event: Gst.Event): boolean
 /**
  * Get running-time, all-headers and count in the force key unit event. See
  * gst_video_event_new_upstream_force_key_unit() for a full description of the
@@ -3350,19 +2747,19 @@ function video_event_parse_still_frame(event: Gst.Event): [ /* returnType */ boo
  * @param event A #GstEvent to parse
  * @returns %TRUE if the event is a valid upstream force-key-unit event. %FALSE if not
  */
-function video_event_parse_upstream_force_key_unit(event: Gst.Event): [ /* returnType */ boolean, /* running_time */ Gst.ClockTime, /* all_headers */ boolean, /* count */ number ]
+function video_event_parse_upstream_force_key_unit(event: Gst.Event): boolean
 /**
  * Convert `order` to a #GstVideoFieldOrder
  * @param order a field order
  * @returns the #GstVideoFieldOrder of @order or    #GST_VIDEO_FIELD_ORDER_UNKNOWN when @order is not a valid    string representation for a #GstVideoFieldOrder.
  */
-function video_field_order_from_string(order: string | null): VideoFieldOrder
+function video_field_order_from_string(order: string): VideoFieldOrder
 /**
  * Convert `order` to its string representation.
  * @param order a #GstVideoFieldOrder
  * @returns @order as a string.
  */
-function video_field_order_to_string(order: VideoFieldOrder): string | null
+function video_field_order_to_string(order: VideoFieldOrder): string
 /**
  * Converts a FOURCC value into the corresponding #GstVideoFormat.
  * If the FOURCC cannot be represented by #GstVideoFormat,
@@ -3374,7 +2771,7 @@ function video_format_from_fourcc(fourcc: number): VideoFormat
 /**
  * Find the #GstVideoFormat for the given parameters.
  * @param depth the amount of bits used for a pixel
- * @param bpp the amount of bits used to store a pixel. This value is bigger than   `depth`
+ * @param bpp the amount of bits used to store a pixel. This value is bigger than   @depth
  * @param endianness the endianness of the masks, #G_LITTLE_ENDIAN or #G_BIG_ENDIAN
  * @param red_mask the red mask
  * @param green_mask the green mask
@@ -3388,7 +2785,7 @@ function video_format_from_masks(depth: number, bpp: number, endianness: number,
  * @param format a format string
  * @returns the #GstVideoFormat for @format or GST_VIDEO_FORMAT_UNKNOWN when the string is not a known format.
  */
-function video_format_from_string(format: string | null): VideoFormat
+function video_format_from_string(format: string): VideoFormat
 /**
  * Get the #GstVideoFormatInfo for `format`
  * @param format a #GstVideoFormat
@@ -3401,7 +2798,7 @@ function video_format_get_info(format: VideoFormat): VideoFormatInfo
  * @param format a #GstVideoFormat
  * @returns the default palette of @format or %NULL when @format does not have a palette.
  */
-function video_format_get_palette(format: VideoFormat): [ /* returnType */ any | null, /* size */ number ]
+function video_format_get_palette(format: VideoFormat): (any | null)
 /**
  * Converts a #GstVideoFormat value into the corresponding FOURCC.  Only
  * a few YUV formats have corresponding FOURCC values.  If `format` has
@@ -3416,7 +2813,7 @@ function video_format_to_fourcc(format: VideoFormat): number
  * @param format a #GstVideoFormat video format
  * @returns the name corresponding to @format
  */
-function video_format_to_string(format: VideoFormat): string | null
+function video_format_to_string(format: VideoFormat): string
 /**
  * Return all the raw video formats supported by GStreamer.
  * @returns an array of #GstVideoFormat
@@ -3433,31 +2830,31 @@ function video_formats_raw(): VideoFormat[]
  * to get to the pixels.
  * 
  * 
- * ```c
+ * ```&lt;!-- language="C" --&gt;
  *   GstVideoFrame vframe;
  *   ...
  *   // set RGB pixels to black one at a time
- *   if (gst_video_frame_map (&vframe, video_info, video_buffer, GST_MAP_WRITE)) {
+ *   if (gst_video_frame_map (&amp;vframe, video_info, video_buffer, GST_MAP_WRITE)) {
  *     guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (vframe, 0);
  *     guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (vframe, 0);
  *     guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (vframe, 0);
  * 
- *     for (h = 0; h < height; ++h) {
- *       for (w = 0; w < width; ++w) {
+ *     for (h = 0; h &lt; height; ++h) {
+ *       for (w = 0; w &lt; width; ++w) {
  *         guint8 *pixel = pixels + h * stride + w * pixel_stride;
  * 
  *         memset (pixel, 0, pixel_stride);
  *       }
  *     }
  * 
- *     gst_video_frame_unmap (&vframe);
+ *     gst_video_frame_unmap (&amp;vframe);
  *   }
  *   ...
  * ```
  * 
  * 
  * All video planes of `buffer` will be mapped and the pointers will be set in
- * `frame->`data.
+ * `frame-&`gt;data.
  * 
  * The purpose of this function is to make it easy for you to get to the video
  * pixels in a generic way, without you having to worry too much about details
@@ -3473,7 +2870,7 @@ function video_formats_raw(): VideoFormat[]
  * @param flags #GstMapFlags
  * @returns %TRUE on success.
  */
-function video_frame_map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
+function video_frame_map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlags): boolean
 /**
  * Use `info` and `buffer` to fill in the values of `frame` with the video frame
  * information of frame `id`.
@@ -3482,14 +2879,14 @@ function video_frame_map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlag
  * will return %FALSE when there is no GstVideoMeta with that id.
  * 
  * All video planes of `buffer` will be mapped and the pointers will be set in
- * `frame->`data.
+ * `frame-&`gt;data.
  * @param info a #GstVideoInfo
  * @param buffer the buffer to map
  * @param id the frame id to map
  * @param flags #GstMapFlags
  * @returns %TRUE on success.
  */
-function video_frame_map_id(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
+function video_frame_map_id(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): boolean
 function video_gl_texture_upload_meta_api_get_type(): GObject.GType
 function video_gl_texture_upload_meta_get_info(): Gst.MetaInfo
 /**
@@ -3504,49 +2901,29 @@ function video_gl_texture_upload_meta_get_info(): Gst.MetaInfo
  * @param duration Nominal duration of one frame
  * @returns %TRUE if a close "standard" framerate was recognised, and %FALSE otherwise.
  */
-function video_guess_framerate(duration: Gst.ClockTime): [ /* returnType */ boolean, /* dest_n */ number, /* dest_d */ number ]
-/**
- * Parse `caps` and update `info`. Please note that the `caps` should be
- * a dma drm caps. The gst_video_is_dma_drm_caps() can be used to verify
- * it before calling this function.
- * @param caps a #GstCaps
- * @returns TRUE if @caps could be parsed
- */
-function video_info_dma_drm_from_caps(caps: Gst.Caps): [ /* returnType */ boolean, /* drm_info */ VideoInfoDmaDrm ]
-/**
- * Fills `drm_info` if `info'`s format has a valid drm format and `modifier` is also
- * valid
- * @param info a #GstVideoInfo
- * @param modifier the associated modifier value.
- * @returns %TRUE if @drm_info is filled correctly.
- */
-function video_info_dma_drm_from_video_info(info: VideoInfo, modifier: number): [ /* returnType */ boolean, /* drm_info */ VideoInfoDmaDrm ]
-/**
- * Initialize `drm_info` with default values.
- */
-function video_info_dma_drm_init(): /* drm_info */ VideoInfoDmaDrm
+function video_guess_framerate(duration: Gst.ClockTime): boolean
 /**
  * Parse `caps` and update `info`.
  * @param caps a #GstCaps
  * @returns TRUE if @caps could be parsed
  */
-function video_info_from_caps(caps: Gst.Caps): [ /* returnType */ boolean, /* info */ VideoInfo ]
+function video_info_from_caps(caps: Gst.Caps): boolean
 /**
  * Initialize `info` with default values.
  */
-function video_info_init(): /* info */ VideoInfo
+function video_info_init(): void
 /**
  * Convert `mode` to a #GstVideoInterlaceMode
  * @param mode a mode
  * @returns the #GstVideoInterlaceMode of @mode or    #GST_VIDEO_INTERLACE_MODE_PROGRESSIVE when @mode is not a valid    string representation for a #GstVideoInterlaceMode.
  */
-function video_interlace_mode_from_string(mode: string | null): VideoInterlaceMode
+function video_interlace_mode_from_string(mode: string): VideoInterlaceMode
 /**
  * Convert `mode` to its string representation.
  * @param mode a #GstVideoInterlaceMode
  * @returns @mode as a string.
  */
-function video_interlace_mode_to_string(mode: VideoInterlaceMode): string | null
+function video_interlace_mode_to_string(mode: VideoInterlaceMode): string
 /**
  * Given a frame's dimensions and pixel aspect ratio, this function will
  * calculate the frame's aspect ratio and compare it against a set of
@@ -3559,20 +2936,13 @@ function video_interlace_mode_to_string(mode: VideoInterlaceMode): string | null
  */
 function video_is_common_aspect_ratio(width: number, height: number, par_n: number, par_d: number): boolean
 /**
- * Check whether the `caps` is a dma drm kind caps. Please note that
- * the caps should be fixed.
- * @param caps a #GstCaps
- * @returns %TRUE if the caps is a dma drm caps.
- */
-function video_is_dma_drm_caps(caps: Gst.Caps): boolean
-/**
  * Return a generic raw video caps for formats defined in `formats`.
  * If `formats` is %NULL returns a caps for all the supported raw video formats,
  * see gst_video_formats_raw().
  * @param formats an array of raw #GstVideoFormat, or %NULL
  * @returns a video @GstCaps
  */
-function video_make_raw_caps(formats: VideoFormat[] | null): Gst.Caps
+function video_make_raw_caps(formats?: (VideoFormat[] | null)): Gst.Caps
 /**
  * Return a generic raw video caps for formats defined in `formats` with features
  * `features`.
@@ -3582,13 +2952,13 @@ function video_make_raw_caps(formats: VideoFormat[] | null): Gst.Caps
  * @param features the #GstCapsFeatures to set on the caps
  * @returns a video @GstCaps
  */
-function video_make_raw_caps_with_features(formats: VideoFormat[] | null, features: Gst.CapsFeatures | null): Gst.Caps
+function video_make_raw_caps_with_features(formats?: (VideoFormat[] | null), features?: (Gst.CapsFeatures | null)): Gst.Caps
 /**
  * Extract #GstVideoMasteringDisplayInfo from `mastering`
  * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
  * @returns %TRUE if @minfo was filled with @mastering
  */
-function video_mastering_display_info_from_string(mastering: string | null): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
+function video_mastering_display_info_from_string(mastering: string): boolean
 function video_meta_api_get_type(): GObject.GType
 function video_meta_get_info(): Gst.MetaInfo
 /**
@@ -3596,20 +2966,20 @@ function video_meta_get_info(): Gst.MetaInfo
  * @returns a #GQuark
  */
 function video_meta_transform_scale_get_quark(): GLib.Quark
-function video_multiview_get_doubled_height_modes(): any
-function video_multiview_get_doubled_size_modes(): any
-function video_multiview_get_doubled_width_modes(): any
-function video_multiview_get_mono_modes(): any
-function video_multiview_get_unpacked_modes(): any
+function video_multiview_get_doubled_height_modes(): GObject.Value
+function video_multiview_get_doubled_size_modes(): GObject.Value
+function video_multiview_get_doubled_width_modes(): GObject.Value
+function video_multiview_get_mono_modes(): GObject.Value
+function video_multiview_get_unpacked_modes(): GObject.Value
 function video_multiview_guess_half_aspect(mv_mode: VideoMultiviewMode, width: number, height: number, par_n: number, par_d: number): boolean
-function video_multiview_mode_from_caps_string(caps_mview_mode: string | null): VideoMultiviewMode
+function video_multiview_mode_from_caps_string(caps_mview_mode: string): VideoMultiviewMode
 /**
  * Given a #GstVideoMultiviewMode returns the multiview-mode caps string
  * for insertion into a caps structure
  * @param mview_mode A #GstVideoMultiviewMode value
  * @returns The caps string representation of the mode, or NULL if invalid.
  */
-function video_multiview_mode_to_caps_string(mview_mode: VideoMultiviewMode): string | null
+function video_multiview_mode_to_caps_string(mview_mode: VideoMultiviewMode): (string | null)
 /**
  * Utility function that transforms the width/height/PAR
  * and multiview mode and flags of a #GstVideoInfo into
@@ -3625,7 +2995,7 @@ function video_multiview_video_info_change_mode(info: VideoInfo, out_mview_mode:
  * @param taglist A #GstTagList
  * @returns TRUE if there was a valid "image-orientation" tag in the taglist.
  */
-function video_orientation_from_tag(taglist: Gst.TagList): [ /* returnType */ boolean, /* method */ VideoOrientationMethod ]
+function video_orientation_from_tag(taglist: Gst.TagList): boolean
 function video_overlay_composition_meta_api_get_type(): GObject.GType
 function video_overlay_composition_meta_get_info(): Gst.MetaInfo
 /**
@@ -3648,7 +3018,7 @@ function video_overlay_install_properties(oclass: GObject.ObjectClass, last_prop
  * @param value The #GValue to be set
  * @returns %TRUE if the @property_id matches the GstVideoOverlay property
  */
-function video_overlay_set_property(object: GObject.Object, last_prop_id: number, property_id: number, value: any): boolean
+function video_overlay_set_property(object: GObject.Object, last_prop_id: number, property_id: number, value: GObject.Value): boolean
 function video_region_of_interest_meta_api_get_type(): GObject.GType
 function video_region_of_interest_meta_get_info(): Gst.MetaInfo
 function video_sei_user_data_unregistered_meta_api_get_type(): GObject.GType
@@ -3658,7 +3028,7 @@ function video_sei_user_data_unregistered_meta_get_info(): Gst.MetaInfo
  * @param user_data a #GstVideoSEIUserDataUnregisteredMeta
  * @returns True if data is a Precision Time Stamp and it was parsed correctly
  */
-function video_sei_user_data_unregistered_parse_precision_time_stamp(user_data: VideoSEIUserDataUnregisteredMeta): [ /* returnType */ boolean, /* status */ number, /* precision_time_stamp */ number ]
+function video_sei_user_data_unregistered_parse_precision_time_stamp(user_data: VideoSEIUserDataUnregisteredMeta): boolean
 /**
  * Get the tile index of the tile at coordinates `x` and `y` in the tiled
  * image of `x_tiles` by `y_tiles`.
@@ -3751,1428 +3121,583 @@ interface VideoAffineTransformationGetMatrix {
 interface VideoConvertSampleCallback {
     (sample: Gst.Sample, error: GLib.Error): void
 }
-/**
- * Packs `width` pixels from `src` to the given planes and strides in the
- * format `info`. The pixels from source have each component interleaved
- * and will be packed into the planes in `data`.
- * 
- * This function operates on pack_lines lines, meaning that `src` should
- * contain at least pack_lines lines with a stride of `sstride` and `y`
- * should be a multiple of pack_lines.
- * 
- * Subsampled formats will use the horizontally and vertically cosited
- * component from the source. Subsampling should be performed before
- * packing.
- * 
- * Because this function does not have a x coordinate, it is not possible to
- * pack pixels starting from an unaligned position. For tiled images this
- * means that packing should start from a tile coordinate. For subsampled
- * formats this means that a complete pixel needs to be packed.
- * @callback 
- * @param info a #GstVideoFormatInfo
- * @param flags flags to control the packing
- * @param src a source array
- * @param sstride the source array stride
- * @param data pointers to the destination data planes
- * @param stride strides of the destination planes
- * @param chroma_site the chroma siting of the target when subsampled (not used)
- * @param y the y position in the image to pack to
- * @param width the amount of pixels to pack.
- */
 interface VideoFormatPack {
-    (info: VideoFormatInfo, flags: VideoPackFlags, src: any | null, sstride: number, data: any | null, stride: number, chroma_site: VideoChromaSite, y: number, width: number): void
+    (info: VideoFormatInfo, flags: VideoPackFlags, src: (any | null), sstride: number, data: (any | null), stride: number, chroma_site: VideoChromaSite, y: number, width: number): void
 }
-/**
- * Unpacks `width` pixels from the given planes and strides containing data of
- * format `info`. The pixels will be unpacked into `dest` with each component
- * interleaved as per `info'`s unpack_format, which will usually be one of
- * #GST_VIDEO_FORMAT_ARGB, #GST_VIDEO_FORMAT_AYUV, #GST_VIDEO_FORMAT_ARGB64 or
- * #GST_VIDEO_FORMAT_AYUV64 depending on the format to unpack.
- * `dest` should at least be big enough to hold `width` * bytes_per_pixel bytes
- * where bytes_per_pixel relates to the unpack format and will usually be
- * either 4 or 8 depending on the unpack format. bytes_per_pixel will be
- * the same as the pixel stride for plane 0 for the above formats.
- * 
- * For subsampled formats, the components will be duplicated in the destination
- * array. Reconstruction of the missing components can be performed in a
- * separate step after unpacking.
- * @callback 
- * @param info a #GstVideoFormatInfo
- * @param flags flags to control the unpacking
- * @param dest a destination array
- * @param data pointers to the data planes
- * @param stride strides of the planes
- * @param x the x position in the image to start from
- * @param y the y position in the image to start from
- * @param width the amount of pixels to unpack.
- */
 interface VideoFormatUnpack {
-    (info: VideoFormatInfo, flags: VideoPackFlags, dest: any | null, data: any | null, stride: number, x: number, y: number, width: number): void
+    (info: VideoFormatInfo, flags: VideoPackFlags, dest: (any | null), data: (any | null), stride: number, x: number, y: number, width: number): void
 }
 interface VideoGLTextureUpload {
     (meta: VideoGLTextureUploadMeta, texture_id: number): boolean
 }
-module ColorBalance {
-
-    // Signal callback interfaces
-
-    /**
-     * Signal callback interface for `value-changed`
-     */
-    interface ValueChangedSignalCallback {
-        ($obj: ColorBalance, channel: ColorBalanceChannel, value: number): void
-    }
-
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface ColorBalance {
-
-    // Owm methods of GstVideo-1.0.GstVideo.ColorBalance
-
-    /**
-     * Get the #GstColorBalanceType of this implementation.
-     * @returns A the #GstColorBalanceType.
-     */
-    get_balance_type(): ColorBalanceType
-    /**
-     * Retrieve the current value of the indicated channel, between min_value
-     * and max_value.
-     * 
-     * See Also: The #GstColorBalanceChannel.min_value and
-     *         #GstColorBalanceChannel.max_value members of the
-     *         #GstColorBalanceChannel object.
-     * @param channel A #GstColorBalanceChannel instance
-     * @returns The current value of the channel.
-     */
-    get_value(channel: ColorBalanceChannel): number
-    /**
-     * Retrieve a list of the available channels.
-     * @returns A          GList containing pointers to #GstColorBalanceChannel          objects. The list is owned by the #GstColorBalance          instance and must not be freed.
-     */
-    list_channels(): ColorBalanceChannel[]
-    /**
-     * Sets the current value of the channel to the passed value, which must
-     * be between min_value and max_value.
-     * 
-     * See Also: The #GstColorBalanceChannel.min_value and
-     *         #GstColorBalanceChannel.max_value members of the
-     *         #GstColorBalanceChannel object.
-     * @param channel A #GstColorBalanceChannel instance
-     * @param value The new value for the channel.
-     */
-    set_value(channel: ColorBalanceChannel, value: number): void
-    /**
-     * A helper function called by implementations of the GstColorBalance
-     * interface. It fires the #GstColorBalance::value-changed signal on the
-     * instance, and the #GstColorBalanceChannel::value-changed signal on the
-     * channel object.
-     * @param channel A #GstColorBalanceChannel whose value has changed
-     * @param value The new value of the channel
-     */
-    value_changed(channel: ColorBalanceChannel, value: number): void
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.ColorBalance
-
-    /**
-     * Get the #GstColorBalanceType of this implementation.
-     * @virtual 
-     * @returns A the #GstColorBalanceType.
-     */
-    vfunc_get_balance_type(): ColorBalanceType
-    /**
-     * Retrieve the current value of the indicated channel, between min_value
-     * and max_value.
-     * 
-     * See Also: The #GstColorBalanceChannel.min_value and
-     *         #GstColorBalanceChannel.max_value members of the
-     *         #GstColorBalanceChannel object.
-     * @virtual 
-     * @param channel A #GstColorBalanceChannel instance
-     * @returns The current value of the channel.
-     */
-    vfunc_get_value(channel: ColorBalanceChannel): number
-    /**
-     * Retrieve a list of the available channels.
-     * @virtual 
-     * @returns A          GList containing pointers to #GstColorBalanceChannel          objects. The list is owned by the #GstColorBalance          instance and must not be freed.
-     */
-    vfunc_list_channels(): ColorBalanceChannel[]
-    /**
-     * Sets the current value of the channel to the passed value, which must
-     * be between min_value and max_value.
-     * 
-     * See Also: The #GstColorBalanceChannel.min_value and
-     *         #GstColorBalanceChannel.max_value members of the
-     *         #GstColorBalanceChannel object.
-     * @virtual 
-     * @param channel A #GstColorBalanceChannel instance
-     * @param value The new value for the channel.
-     */
-    vfunc_set_value(channel: ColorBalanceChannel, value: number): void
-    /**
-     * A helper function called by implementations of the GstColorBalance
-     * interface. It fires the #GstColorBalance::value-changed signal on the
-     * instance, and the #GstColorBalanceChannel::value-changed signal on the
-     * channel object.
-     * @virtual 
-     * @param channel A #GstColorBalanceChannel whose value has changed
-     * @param value The new value of the channel
-     */
-    vfunc_value_changed(channel: ColorBalanceChannel, value: number): void
-
-    // Own signals of GstVideo-1.0.GstVideo.ColorBalance
-
-    connect(sigName: "value-changed", callback: ColorBalance.ValueChangedSignalCallback): number
-    connect_after(sigName: "value-changed", callback: ColorBalance.ValueChangedSignalCallback): number
-    emit(sigName: "value-changed", channel: ColorBalanceChannel, value: number, ...args: any[]): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.ColorBalance
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
 /**
- * This interface is implemented by elements which can perform some color
- * balance operation on video frames they process. For example, modifying
- * the brightness, contrast, hue or saturation.
+ * Flags to indicate the state of modifier keys and mouse buttons
+ * in events.
  * 
- * Example elements are 'xvimagesink' and 'colorbalance'
- * @interface 
+ * Typical modifier keys are Shift, Control, Meta, Super, Hyper, Alt, Compose,
+ * Apple, CapsLock or ShiftLock.
  */
-class ColorBalance extends GObject.Object {
-
-    // Own properties of GstVideo-1.0.GstVideo.ColorBalance
-
-    static name: string
-    static $gtype: GObject.GType<ColorBalance>
-
-    // Constructors of GstVideo-1.0.GstVideo.ColorBalance
-
-    constructor(config?: ColorBalance.ConstructorProperties) 
-    _init(config?: ColorBalance.ConstructorProperties): void
+enum NavigationModifierType {
+    NONE,
+    /**
+     * the Shift key.
+     */
+    SHIFT_MASK,
+    LOCK_MASK,
+    /**
+     * the Control key.
+     */
+    CONTROL_MASK,
+    /**
+     * the third modifier key
+     */
+    MOD1_MASK,
+    /**
+     * the fourth modifier key
+     */
+    MOD2_MASK,
+    /**
+     * the fifth modifier key
+     */
+    MOD3_MASK,
+    /**
+     * the sixth modifier key
+     */
+    MOD4_MASK,
+    /**
+     * the seventh modifier key
+     */
+    MOD5_MASK,
+    /**
+     * the first mouse button (usually the left button).
+     */
+    BUTTON1_MASK,
+    /**
+     * the second mouse button (usually the right button).
+     */
+    BUTTON2_MASK,
+    /**
+     * the third mouse button (usually the mouse wheel button or middle button).
+     */
+    BUTTON3_MASK,
+    /**
+     * the fourth mouse button (typically the "Back" button).
+     */
+    BUTTON4_MASK,
+    /**
+     * the fifth mouse button (typically the "forward" button).
+     */
+    BUTTON5_MASK,
+    /**
+     * the Super modifier
+     */
+    SUPER_MASK,
+    /**
+     * the Hyper modifier
+     */
+    HYPER_MASK,
+    /**
+     * the Meta modifier
+     */
+    META_MASK,
+    /**
+     * A mask covering all entries in #GdkModifierType.
+     */
+    MASK,
 }
-
-module Navigation {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface Navigation {
-
-    // Owm methods of GstVideo-1.0.GstVideo.Navigation
-
-    /**
-     * Sends the indicated command to the navigation interface.
-     * @param command The command to issue
-     */
-    send_command(command: NavigationCommand): void
-    send_event(structure: Gst.Structure): void
-    /**
-     * Sends an event to the navigation interface.
-     * @param event The event to send
-     */
-    send_event_simple(event: Gst.Event): void
-    send_key_event(event: string | null, key: string | null): void
-    /**
-     * Sends a mouse event to the navigation interface. Mouse event coordinates
-     * are sent relative to the display space of the related output area. This is
-     * usually the size in pixels of the window associated with the element
-     * implementing the #GstNavigation interface.
-     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
-     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
-     * @param x The x coordinate of the mouse event.
-     * @param y The y coordinate of the mouse event.
-     */
-    send_mouse_event(event: string | null, button: number, x: number, y: number): void
-    /**
-     * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
-     * are sent relative to the display space of the related output area. This is
-     * usually the size in pixels of the window associated with the element
-     * implementing the #GstNavigation interface.
-     * @param x The x coordinate of the mouse event.
-     * @param y The y coordinate of the mouse event.
-     * @param delta_x The delta_x coordinate of the mouse event.
-     * @param delta_y The delta_y coordinate of the mouse event.
-     */
-    send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.Navigation
-
-    /**
-     * sending a navigation event.
-     * @virtual 
-     * @param structure 
-     */
-    vfunc_send_event(structure: Gst.Structure): void
-    /**
-     * Sends an event to the navigation interface.
-     * @virtual 
-     * @param event The event to send
-     */
-    vfunc_send_event_simple(event: Gst.Event): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.Navigation
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
 /**
- * The Navigation interface is used for creating and injecting navigation
- * related events such as mouse button presses, cursor motion and key presses.
- * The associated library also provides methods for parsing received events, and
- * for sending and receiving navigation related bus events. One main usecase is
- * DVD menu navigation.
+ * Additional video buffer flags. These flags can potentially be used on any
+ * buffers carrying closed caption data, or video data - even encoded data.
  * 
- * The main parts of the API are:
- * 
- * * The GstNavigation interface, implemented by elements which provide an
- *   application with the ability to create and inject navigation events into
- *   the pipeline.
- * * GstNavigation event handling API. GstNavigation events are created in
- *   response to calls on a GstNavigation interface implementation, and sent in
- *   the pipeline. Upstream elements can use the navigation event API functions
- *   to parse the contents of received messages.
- * 
- * * GstNavigation message handling API. GstNavigation messages may be sent on
- *   the message bus to inform applications of navigation related changes in the
- *   pipeline, such as the mouse moving over a clickable region, or the set of
- *   available angles changing.
- * 
- * The GstNavigation message functions provide functions for creating and
- * parsing custom bus messages for signaling GstNavigation changes.
- * @interface 
+ * Note that these are only valid for #GstCaps of type: video/... and caption/...
+ * They can conflict with other extended buffer flags.
  */
-class Navigation extends GObject.Object {
-
-    // Own properties of GstVideo-1.0.GstVideo.Navigation
-
-    static name: string
-    static $gtype: GObject.GType<Navigation>
-
-    // Constructors of GstVideo-1.0.GstVideo.Navigation
-
-    constructor(config?: Navigation.ConstructorProperties) 
-    _init(config?: Navigation.ConstructorProperties): void
+enum VideoBufferFlags {
     /**
-     * Try to retrieve x and y coordinates of a #GstNavigation event.
-     * @param event The #GstEvent to inspect.
-     * @returns A boolean indicating success.
+     * If the #GstBuffer is interlaced. In mixed
+     *                                     interlace-mode, this flags specifies if the frame is
+     *                                     interlaced or progressive.
      */
-    static event_get_coordinates(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
+    INTERLACED,
     /**
-     * Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
-     * #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
-     * @param event A #GstEvent to inspect.
+     * If the #GstBuffer is interlaced, then the first field
+     *                                     in the video frame is the top field.  If unset, the
+     *                                     bottom field is first.
      */
-    static event_get_type(event: Gst.Event): NavigationEventType
+    TFF,
     /**
-     * Create a new navigation event given navigation command..
-     * @param command The navigation command to use.
-     * @returns a new #GstEvent
+     * If the #GstBuffer is interlaced, then the first field
+     *                                     (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF flag setting)
+     *                                     is repeated.
      */
-    static event_new_command(command: NavigationCommand): Gst.Event
+    RFF,
     /**
-     * Create a new navigation event for the given key press.
-     * @param key A string identifying the key press.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * If the #GstBuffer is interlaced, then only the
+     *                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
+     *                                     flag setting) is to be displayed (Since: 1.16).
      */
-    static event_new_key_press(key: string | null, state: NavigationModifierType): Gst.Event
+    ONEFIELD,
     /**
-     * Create a new navigation event for the given key release.
-     * @param key A string identifying the released key.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * The #GstBuffer contains one or more specific views,
+     *                                     such as left or right eye view. This flags is set on
+     *                                     any buffer that contains non-mono content - even for
+     *                                     streams that contain only a single viewpoint. In mixed
+     *                                     mono / non-mono streams, the absence of the flag marks
+     *                                     mono buffers.
      */
-    static event_new_key_release(key: string | null, state: NavigationModifierType): Gst.Event
+    MULTIPLE_VIEW,
     /**
-     * Create a new navigation event for the given key mouse button press.
-     * @param button The number of the pressed mouse button.
-     * @param x The x coordinate of the mouse cursor.
-     * @param y The y coordinate of the mouse cursor.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * When conveying stereo/multiview content with
+     *                                     frame-by-frame methods, this flag marks the first buffer
+     *                                      in a bundle of frames that belong together.
      */
-    static event_new_mouse_button_press(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
+    FIRST_IN_BUNDLE,
     /**
-     * Create a new navigation event for the given key mouse button release.
-     * @param button The number of the released mouse button.
-     * @param x The x coordinate of the mouse cursor.
-     * @param y The y coordinate of the mouse cursor.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * The video frame has the top field only. This is the
+     *                                     same as GST_VIDEO_BUFFER_FLAG_TFF |
+     *                                     GST_VIDEO_BUFFER_FLAG_ONEFIELD (Since: 1.16).
+     *                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
      */
-    static event_new_mouse_button_release(button: number, x: number, y: number, state: NavigationModifierType): Gst.Event
+    TOP_FIELD,
     /**
-     * Create a new navigation event for the new mouse location.
-     * @param x The x coordinate of the mouse cursor.
-     * @param y The y coordinate of the mouse cursor.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * The video frame has the bottom field only. This is
+     *                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
+     *                                     (GST_VIDEO_BUFFER_FLAG_TFF flag unset) (Since: 1.16).
+     *                                     Use GST_VIDEO_BUFFER_IS_BOTTOM_FIELD() to check for this flag.
      */
-    static event_new_mouse_move(x: number, y: number, state: NavigationModifierType): Gst.Event
+    BOTTOM_FIELD,
     /**
-     * Create a new navigation event for the mouse scroll.
-     * @param x The x coordinate of the mouse cursor.
-     * @param y The y coordinate of the mouse cursor.
-     * @param delta_x The x component of the scroll movement.
-     * @param delta_y The y component of the scroll movement.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * The #GstBuffer contains the end of a video field or frame
+     *                                     boundary such as the last subframe or packet (Since: 1.18).
      */
-    static event_new_mouse_scroll(x: number, y: number, delta_x: number, delta_y: number, state: NavigationModifierType): Gst.Event
+    MARKER,
     /**
-     * Create a new navigation event signalling that all currently active touch
-     * points are cancelled and should be discarded. For example, under Wayland
-     * this event might be sent when a swipe passes the threshold to be recognized
-     * as a gesture by the compositor.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
+     * Offset to define more flags
      */
-    static event_new_touch_cancel(state: NavigationModifierType): Gst.Event
-    /**
-     * Create a new navigation event for an added touch point.
-     * @param identifier A number uniquely identifying this touch point. It must stay    unique to this touch point at least until an up event is sent for    the same identifier, or all touch points are cancelled.
-     * @param x The x coordinate of the new touch point.
-     * @param y The y coordinate of the new touch point.
-     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
-     */
-    static event_new_touch_down(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
-    /**
-     * Create a new navigation event signalling the end of a touch frame. Touch
-     * frames signal that all previous down, motion and up events not followed by
-     * another touch frame event already should be considered simultaneous.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
-     */
-    static event_new_touch_frame(state: NavigationModifierType): Gst.Event
-    /**
-     * Create a new navigation event for a moved touch point.
-     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous touch_start event.
-     * @param x The x coordinate of the touch point.
-     * @param y The y coordinate of the touch point.
-     * @param pressure Pressure data of the touch point, from 0.0 to 1.0, or NaN if no    data is available.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
-     */
-    static event_new_touch_motion(identifier: number, x: number, y: number, pressure: number, state: NavigationModifierType): Gst.Event
-    /**
-     * Create a new navigation event for a removed touch point.
-     * @param identifier A number uniquely identifying this touch point. It must    correlate to exactly one previous down event, but can be reused    after sending this event.
-     * @param x The x coordinate of the touch point.
-     * @param y The y coordinate of the touch point.
-     * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
-     * @returns a new #GstEvent
-     */
-    static event_new_touch_up(identifier: number, x: number, y: number, state: NavigationModifierType): Gst.Event
-    /**
-     * Inspect a #GstNavigation command event and retrieve the enum value of the
-     * associated command.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if the navigation command could be extracted, otherwise FALSE.
-     */
-    static event_parse_command(event: Gst.Event): [ /* returnType */ boolean, /* command */ NavigationCommand ]
-    /**
-     * Note: Modifier keys (as defined in #GstNavigationModifierType)
-     * [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
-     * [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
-     * present on all other related events
-     * @param event A #GstEvent to inspect.
-     */
-    static event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
-    static event_parse_modifier_state(event: Gst.Event, state: NavigationModifierType): boolean
-    /**
-     * Retrieve the details of either a #GstNavigation mouse button press event or
-     * a mouse button release event. Determine which type the event is using
-     * gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if the button number and both coordinates could be extracted,     otherwise FALSE.
-     */
-    static event_parse_mouse_button_event(event: Gst.Event): [ /* returnType */ boolean, /* button */ number, /* x */ number, /* y */ number ]
-    /**
-     * Inspect a #GstNavigation mouse movement event and extract the coordinates
-     * of the event.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if both coordinates could be extracted, otherwise FALSE.
-     */
-    static event_parse_mouse_move_event(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number ]
-    /**
-     * Inspect a #GstNavigation mouse scroll event and extract the coordinates
-     * of the event.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if all coordinates could be extracted, otherwise FALSE.
-     */
-    static event_parse_mouse_scroll_event(event: Gst.Event): [ /* returnType */ boolean, /* x */ number, /* y */ number, /* delta_x */ number, /* delta_y */ number ]
-    /**
-     * Retrieve the details of a #GstNavigation touch-down or touch-motion event.
-     * Determine which type the event is using gst_navigation_event_get_type()
-     * to retrieve the #GstNavigationEventType.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if all details could be extracted, otherwise FALSE.
-     */
-    static event_parse_touch_event(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number, /* x */ number, /* y */ number, /* pressure */ number ]
-    /**
-     * Retrieve the details of a #GstNavigation touch-up event.
-     * @param event A #GstEvent to inspect.
-     * @returns TRUE if all details could be extracted, otherwise FALSE.
-     */
-    static event_parse_touch_up_event(event: Gst.Event): [ /* returnType */ boolean, /* identifier */ number, /* x */ number, /* y */ number ]
-    /**
-     * Try to set x and y coordinates on a #GstNavigation event. The event must
-     * be writable.
-     * @param event The #GstEvent to modify.
-     * @param x The x coordinate to set.
-     * @param y The y coordinate to set.
-     * @returns A boolean indicating success.
-     */
-    static event_set_coordinates(event: Gst.Event, x: number, y: number): boolean
-    /**
-     * Check a bus message to see if it is a #GstNavigation event, and return
-     * the #GstNavigationMessageType identifying the type of the message if so.
-     * @param message A #GstMessage to inspect.
-     * @returns The type of the #GstMessage, or #GST_NAVIGATION_MESSAGE_INVALID if the message is not a #GstNavigation notification.
-     */
-    static message_get_type(message: Gst.Message): NavigationMessageType
-    /**
-     * Creates a new #GstNavigation message with type
-     * #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
-     * that the current angle, or current number of angles available in a
-     * multiangle video has changed.
-     * @param src A #GstObject to set as source of the new message.
-     * @param cur_angle The currently selected angle.
-     * @param n_angles The number of viewing angles now available.
-     * @returns The new #GstMessage.
-     */
-    static message_new_angles_changed(src: Gst.Object, cur_angle: number, n_angles: number): Gst.Message
-    /**
-     * Creates a new #GstNavigation message with type
-     * #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
-     * @param src A #GstObject to set as source of the new message.
-     * @returns The new #GstMessage.
-     */
-    static message_new_commands_changed(src: Gst.Object): Gst.Message
-    /**
-     * Creates a new #GstNavigation message with type
-     * #GST_NAVIGATION_MESSAGE_EVENT.
-     * @param src A #GstObject to set as source of the new message.
-     * @param event A navigation #GstEvent
-     * @returns The new #GstMessage.
-     */
-    static message_new_event(src: Gst.Object, event: Gst.Event): Gst.Message
-    /**
-     * Creates a new #GstNavigation message with type
-     * #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
-     * @param src A #GstObject to set as source of the new message.
-     * @param active %TRUE if the mouse has entered a clickable area of the display. %FALSE if it over a non-clickable area.
-     * @returns The new #GstMessage.
-     */
-    static message_new_mouse_over(src: Gst.Object, active: boolean): Gst.Message
-    /**
-     * Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
-     * and extract the `cur_angle` and `n_angles` parameters.
-     * @param message A #GstMessage to inspect.
-     * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
-     */
-    static message_parse_angles_changed(message: Gst.Message): [ /* returnType */ boolean, /* cur_angle */ number, /* n_angles */ number ]
-    /**
-     * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
-     * and extract contained #GstEvent. The caller must unref the `event` when done
-     * with it.
-     * @param message A #GstMessage to inspect.
-     * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
-     */
-    static message_parse_event(message: Gst.Message): [ /* returnType */ boolean, /* event */ Gst.Event ]
-    /**
-     * Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
-     * and extract the active/inactive flag. If the mouse over event is marked
-     * active, it indicates that the mouse is over a clickable area.
-     * @param message A #GstMessage to inspect.
-     * @returns %TRUE if the message could be successfully parsed. %FALSE if not.
-     */
-    static message_parse_mouse_over(message: Gst.Message): [ /* returnType */ boolean, /* active */ boolean ]
-    /**
-     * Inspect a #GstQuery and return the #GstNavigationQueryType associated with
-     * it if it is a #GstNavigation query.
-     * @param query The query to inspect
-     * @returns The #GstNavigationQueryType of the query, or #GST_NAVIGATION_QUERY_INVALID
-     */
-    static query_get_type(query: Gst.Query): NavigationQueryType
-    /**
-     * Create a new #GstNavigation angles query. When executed, it will
-     * query the pipeline for the set of currently available angles, which may be
-     * greater than one in a multiangle video.
-     * @returns The new query.
-     */
-    static query_new_angles(): Gst.Query
-    /**
-     * Create a new #GstNavigation commands query. When executed, it will
-     * query the pipeline for the set of currently available commands.
-     * @returns The new query.
-     */
-    static query_new_commands(): Gst.Query
-    /**
-     * Parse the current angle number in the #GstNavigation angles `query` into the
-     * #guint pointed to by the `cur_angle` variable, and the number of available
-     * angles into the #guint pointed to by the `n_angles` variable.
-     * @param query a #GstQuery
-     * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
-     */
-    static query_parse_angles(query: Gst.Query): [ /* returnType */ boolean, /* cur_angle */ number, /* n_angles */ number ]
-    /**
-     * Parse the number of commands in the #GstNavigation commands `query`.
-     * @param query a #GstQuery
-     * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
-     */
-    static query_parse_commands_length(query: Gst.Query): [ /* returnType */ boolean, /* n_cmds */ number ]
-    /**
-     * Parse the #GstNavigation command query and retrieve the `nth` command from
-     * it into `cmd`. If the list contains less elements than `nth,` `cmd` will be
-     * set to #GST_NAVIGATION_COMMAND_INVALID.
-     * @param query a #GstQuery
-     * @param nth the nth command to retrieve.
-     * @returns %TRUE if the query could be successfully parsed. %FALSE if not.
-     */
-    static query_parse_commands_nth(query: Gst.Query, nth: number): [ /* returnType */ boolean, /* cmd */ NavigationCommand ]
-    /**
-     * Set the #GstNavigation angles query result field in `query`.
-     * @param query a #GstQuery
-     * @param cur_angle the current viewing angle to set.
-     * @param n_angles the number of viewing angles to set.
-     */
-    static query_set_angles(query: Gst.Query, cur_angle: number, n_angles: number): void
-    /**
-     * Set the #GstNavigation command query result fields in `query`. The number
-     * of commands passed must be equal to `n_commands`.
-     * @param query a #GstQuery
-     * @param cmds An array containing `n_cmds`     `GstNavigationCommand` values.
-     */
-    static query_set_commandsv(query: Gst.Query, cmds: NavigationCommand[]): void
+    LAST,
 }
-
-module VideoDirection {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoDirection
-
-        video_direction?: VideoOrientationMethod | null
-    }
-
-}
-
-interface VideoDirection {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDirection
-
-    video_direction: VideoOrientationMethod
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoDirection
-
-    connect(sigName: "notify::video-direction", callback: (($obj: VideoDirection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::video-direction", callback: (($obj: VideoDirection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::video-direction", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
 /**
- * The interface allows unified access to control flipping and rotation
- * operations of video-sources or operators.
- * @interface 
+ * Extra flags that influence the result from gst_video_chroma_resample_new().
  */
-class VideoDirection extends GObject.Object {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDirection
-
-    static name: string
-    static $gtype: GObject.GType<VideoDirection>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoDirection
-
-    constructor(config?: VideoDirection.ConstructorProperties) 
-    _init(config?: VideoDirection.ConstructorProperties): void
+enum VideoChromaFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * the input is interlaced
+     */
+    INTERLACED,
 }
-
-module VideoOrientation {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface VideoOrientation {
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoOrientation
-
-    /**
-     * Get the horizontal centering offset from the given object.
-     * @returns %TRUE in case the element supports centering
-     */
-    get_hcenter(): [ /* returnType */ boolean, /* center */ number ]
-    /**
-     * Get the horizontal flipping state (%TRUE for flipped) from the given object.
-     * @returns %TRUE in case the element supports flipping
-     */
-    get_hflip(): [ /* returnType */ boolean, /* flip */ boolean ]
-    /**
-     * Get the vertical centering offset from the given object.
-     * @returns %TRUE in case the element supports centering
-     */
-    get_vcenter(): [ /* returnType */ boolean, /* center */ number ]
-    /**
-     * Get the vertical flipping state (%TRUE for flipped) from the given object.
-     * @returns %TRUE in case the element supports flipping
-     */
-    get_vflip(): [ /* returnType */ boolean, /* flip */ boolean ]
-    /**
-     * Set the horizontal centering offset for the given object.
-     * @param center centering offset
-     * @returns %TRUE in case the element supports centering
-     */
-    set_hcenter(center: number): boolean
-    /**
-     * Set the horizontal flipping state (%TRUE for flipped) for the given object.
-     * @param flip use flipping
-     * @returns %TRUE in case the element supports flipping
-     */
-    set_hflip(flip: boolean): boolean
-    /**
-     * Set the vertical centering offset for the given object.
-     * @param center centering offset
-     * @returns %TRUE in case the element supports centering
-     */
-    set_vcenter(center: number): boolean
-    /**
-     * Set the vertical flipping state (%TRUE for flipped) for the given object.
-     * @param flip use flipping
-     * @returns %TRUE in case the element supports flipping
-     */
-    set_vflip(flip: boolean): boolean
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoOrientation
-
-    /**
-     * Get the horizontal centering offset from the given object.
-     * @virtual 
-     * @returns %TRUE in case the element supports centering
-     */
-    vfunc_get_hcenter(): [ /* returnType */ boolean, /* center */ number ]
-    /**
-     * Get the horizontal flipping state (%TRUE for flipped) from the given object.
-     * @virtual 
-     * @returns %TRUE in case the element supports flipping
-     */
-    vfunc_get_hflip(): [ /* returnType */ boolean, /* flip */ boolean ]
-    /**
-     * Get the vertical centering offset from the given object.
-     * @virtual 
-     * @returns %TRUE in case the element supports centering
-     */
-    vfunc_get_vcenter(): [ /* returnType */ boolean, /* center */ number ]
-    /**
-     * Get the vertical flipping state (%TRUE for flipped) from the given object.
-     * @virtual 
-     * @returns %TRUE in case the element supports flipping
-     */
-    vfunc_get_vflip(): [ /* returnType */ boolean, /* flip */ boolean ]
-    /**
-     * Set the horizontal centering offset for the given object.
-     * @virtual 
-     * @param center centering offset
-     * @returns %TRUE in case the element supports centering
-     */
-    vfunc_set_hcenter(center: number): boolean
-    /**
-     * Set the horizontal flipping state (%TRUE for flipped) for the given object.
-     * @virtual 
-     * @param flip use flipping
-     * @returns %TRUE in case the element supports flipping
-     */
-    vfunc_set_hflip(flip: boolean): boolean
-    /**
-     * Set the vertical centering offset for the given object.
-     * @virtual 
-     * @param center centering offset
-     * @returns %TRUE in case the element supports centering
-     */
-    vfunc_set_vcenter(center: number): boolean
-    /**
-     * Set the vertical flipping state (%TRUE for flipped) for the given object.
-     * @virtual 
-     * @param flip use flipping
-     * @returns %TRUE in case the element supports flipping
-     */
-    vfunc_set_vflip(flip: boolean): boolean
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoOrientation
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
 /**
- * The interface allows unified access to control flipping and autocenter
- * operation of video-sources or operators.
- * @interface 
+ * Various Chroma sitings.
  */
-class VideoOrientation extends GObject.Object {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoOrientation
-
-    static name: string
-    static $gtype: GObject.GType<VideoOrientation>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoOrientation
-
-    constructor(config?: VideoOrientation.ConstructorProperties) 
-    _init(config?: VideoOrientation.ConstructorProperties): void
+enum VideoChromaSite {
     /**
-     * Parses the "image-orientation" tag and transforms it into the
-     * #GstVideoOrientationMethod enum.
-     * @param taglist A #GstTagList
-     * @returns TRUE if there was a valid "image-orientation" tag in the taglist.
+     * unknown cositing
      */
-    static from_tag(taglist: Gst.TagList): [ /* returnType */ boolean, /* method */ VideoOrientationMethod ]
+    UNKNOWN,
+    /**
+     * no cositing
+     */
+    NONE,
+    /**
+     * chroma is horizontally cosited
+     */
+    H_COSITED,
+    /**
+     * chroma is vertically cosited
+     */
+    V_COSITED,
+    /**
+     * choma samples are sited on alternate lines
+     */
+    ALT_LINE,
+    /**
+     * chroma samples cosited with luma samples
+     */
+    COSITED,
+    /**
+     * jpeg style cositing, also for mpeg1 and mjpeg
+     */
+    JPEG,
+    /**
+     * mpeg2 style cositing
+     */
+    MPEG2,
+    /**
+     * DV style cositing
+     */
+    DV,
 }
-
-module VideoOverlay {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface VideoOverlay {
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoOverlay
-
-    /**
-     * Tell an overlay that it has been exposed. This will redraw the current frame
-     * in the drawable even if the pipeline is PAUSED.
-     */
-    expose(): void
-    /**
-     * This will post a "have-window-handle" element message on the bus.
-     * 
-     * This function should only be used by video overlay plugin developers.
-     * @param handle a platform-specific handle referencing the window
-     */
-    got_window_handle(handle: never): void
-    /**
-     * Tell an overlay that it should handle events from the window system. These
-     * events are forwarded upstream as navigation events. In some window system,
-     * events are not propagated in the window hierarchy if a client is listening
-     * for them. This method allows you to disable events handling completely
-     * from the #GstVideoOverlay.
-     * @param handle_events a #gboolean indicating if events should be handled or not.
-     */
-    handle_events(handle_events: boolean): void
-    /**
-     * This will post a "prepare-window-handle" element message on the bus
-     * to give applications an opportunity to call
-     * gst_video_overlay_set_window_handle() before a plugin creates its own
-     * window.
-     * 
-     * This function should only be used by video overlay plugin developers.
-     */
-    prepare_window_handle(): void
-    /**
-     * Configure a subregion as a video target within the window set by
-     * gst_video_overlay_set_window_handle(). If this is not used or not supported
-     * the video will fill the area of the window set as the overlay to 100%.
-     * By specifying the rectangle, the video can be overlayed to a specific region
-     * of that window only. After setting the new rectangle one should call
-     * gst_video_overlay_expose() to force a redraw. To unset the region pass -1 for
-     * the `width` and `height` parameters.
-     * 
-     * This method is needed for non fullscreen video overlay in UI toolkits that
-     * do not support subwindows.
-     * @param x the horizontal offset of the render area inside the window
-     * @param y the vertical offset of the render area inside the window
-     * @param width the width of the render area inside the window
-     * @param height the height of the render area inside the window
-     * @returns %FALSE if not supported by the sink.
-     */
-    set_render_rectangle(x: number, y: number, width: number, height: number): boolean
-    /**
-     * This will call the video overlay's set_window_handle method. You
-     * should use this method to tell to an overlay to display video output to a
-     * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
-     * tell the overlay to stop using that window and create an internal one.
-     * @param handle a handle referencing the window.
-     */
-    set_window_handle(handle: never): void
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoOverlay
-
-    /**
-     * Tell an overlay that it has been exposed. This will redraw the current frame
-     * in the drawable even if the pipeline is PAUSED.
-     * @virtual 
-     */
-    vfunc_expose(): void
-    /**
-     * Tell an overlay that it should handle events from the window system. These
-     * events are forwarded upstream as navigation events. In some window system,
-     * events are not propagated in the window hierarchy if a client is listening
-     * for them. This method allows you to disable events handling completely
-     * from the #GstVideoOverlay.
-     * @virtual 
-     * @param handle_events a #gboolean indicating if events should be handled or not.
-     */
-    vfunc_handle_events(handle_events: boolean): void
-    vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void
-    /**
-     * This will call the video overlay's set_window_handle method. You
-     * should use this method to tell to an overlay to display video output to a
-     * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
-     * tell the overlay to stop using that window and create an internal one.
-     * @virtual 
-     * @param handle a handle referencing the window.
-     */
-    vfunc_set_window_handle(handle: never): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoOverlay
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
 /**
- * The #GstVideoOverlay interface is used for 2 main purposes :
- * 
- * * To get a grab on the Window where the video sink element is going to render.
- *   This is achieved by either being informed about the Window identifier that
- *   the video sink element generated, or by forcing the video sink element to use
- *   a specific Window identifier for rendering.
- * * To force a redrawing of the latest video frame the video sink element
- *   displayed on the Window. Indeed if the #GstPipeline is in #GST_STATE_PAUSED
- *   state, moving the Window around will damage its content. Application
- *   developers will want to handle the Expose events themselves and force the
- *   video sink element to refresh the Window's content.
- * 
- * Using the Window created by the video sink is probably the simplest scenario,
- * in some cases, though, it might not be flexible enough for application
- * developers if they need to catch events such as mouse moves and button
- * clicks.
- * 
- * Setting a specific Window identifier on the video sink element is the most
- * flexible solution but it has some issues. Indeed the application needs to set
- * its Window identifier at the right time to avoid internal Window creation
- * from the video sink element. To solve this issue a #GstMessage is posted on
- * the bus to inform the application that it should set the Window identifier
- * immediately. Here is an example on how to do that correctly:
- * 
- * ```
- * static GstBusSyncReply
- * create_window (GstBus * bus, GstMessage * message, GstPipeline * pipeline)
- * {
- *  // ignore anything but 'prepare-window-handle' element messages
- *  if (!gst_is_video_overlay_prepare_window_handle_message (message))
- *    return GST_BUS_PASS;
- * 
- *  win = XCreateSimpleWindow (disp, root, 0, 0, 320, 240, 0, 0, 0);
- * 
- *  XSetWindowBackgroundPixmap (disp, win, None);
- * 
- *  XMapRaised (disp, win);
- * 
- *  XSync (disp, FALSE);
- * 
- *  gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (GST_MESSAGE_SRC (message)),
- *      win);
- * 
- *  gst_message_unref (message);
- * 
- *  return GST_BUS_DROP;
- * }
- * ...
- * int
- * main (int argc, char **argv)
- * {
- * ...
- *  bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
- *  gst_bus_set_sync_handler (bus, (GstBusSyncHandler) create_window, pipeline,
- *         NULL);
- * ...
- * }
- * ```
- * 
- * 
- * ## Two basic usage scenarios
- * 
- * There are two basic usage scenarios: in the simplest case, the application
- * uses #playbin or #playsink or knows exactly what particular element is used
- * for video output, which is usually the case when the application creates
- * the videosink to use (e.g. #xvimagesink, #ximagesink, etc.) itself; in this
- * case, the application can just create the videosink element, create and
- * realize the window to render the video on and then
- * call gst_video_overlay_set_window_handle() directly with the XID or native
- * window handle, before starting up the pipeline.
- * As #playbin and #playsink implement the video overlay interface and proxy
- * it transparently to the actual video sink even if it is created later, this
- * case also applies when using these elements.
- * 
- * In the other and more common case, the application does not know in advance
- * what GStreamer video sink element will be used for video output. This is
- * usually the case when an element such as #autovideosink is used.
- * In this case, the video sink element itself is created
- * asynchronously from a GStreamer streaming thread some time after the
- * pipeline has been started up. When that happens, however, the video sink
- * will need to know right then whether to render onto an already existing
- * application window or whether to create its own window. This is when it
- * posts a prepare-window-handle message, and that is also why this message needs
- * to be handled in a sync bus handler which will be called from the streaming
- * thread directly (because the video sink will need an answer right then).
- * 
- * As response to the prepare-window-handle element message in the bus sync
- * handler, the application may use gst_video_overlay_set_window_handle() to tell
- * the video sink to render onto an existing window surface. At this point the
- * application should already have obtained the window handle / XID, so it
- * just needs to set it. It is generally not advisable to call any GUI toolkit
- * functions or window system functions from the streaming thread in which the
- * prepare-window-handle message is handled, because most GUI toolkits and
- * windowing systems are not thread-safe at all and a lot of care would be
- * required to co-ordinate the toolkit and window system calls of the
- * different threads (Gtk+ users please note: prior to Gtk+ 2.18
- * `GDK_WINDOW_XID` was just a simple structure access, so generally fine to do
- * within the bus sync handler; this macro was changed to a function call in
- * Gtk+ 2.18 and later, which is likely to cause problems when called from a
- * sync handler; see below for a better approach without `GDK_WINDOW_XID`
- * used in the callback).
- * 
- * ## GstVideoOverlay and Gtk+
- * 
- * 
- * ```
- * #include <gst/video/videooverlay.h>
- * #include <gtk/gtk.h>
- * #ifdef GDK_WINDOWING_X11
- * #include <gdk/gdkx.h>  // for GDK_WINDOW_XID
- * #endif
- * #ifdef GDK_WINDOWING_WIN32
- * #include <gdk/gdkwin32.h>  // for GDK_WINDOW_HWND
- * #endif
- * ...
- * static guintptr video_window_handle = 0;
- * ...
- * static GstBusSyncReply
- * bus_sync_handler (GstBus * bus, GstMessage * message, gpointer user_data)
- * {
- *  // ignore anything but 'prepare-window-handle' element messages
- *  if (!gst_is_video_overlay_prepare_window_handle_message (message))
- *    return GST_BUS_PASS;
- * 
- *  if (video_window_handle != 0) {
- *    GstVideoOverlay *overlay;
- * 
- *    // GST_MESSAGE_SRC (message) will be the video sink element
- *    overlay = GST_VIDEO_OVERLAY (GST_MESSAGE_SRC (message));
- *    gst_video_overlay_set_window_handle (overlay, video_window_handle);
- *  } else {
- *    g_warning ("Should have obtained video_window_handle by now!");
- *  }
- * 
- *  gst_message_unref (message);
- *  return GST_BUS_DROP;
- * }
- * ...
- * static void
- * video_widget_realize_cb (GtkWidget * widget, gpointer data)
- * {
- * #if GTK_CHECK_VERSION(2,18,0)
- *   // Tell Gtk+/Gdk to create a native window for this widget instead of
- *   // drawing onto the parent widget.
- *   // This is here just for pedagogical purposes, GDK_WINDOW_XID will call
- *   // it as well in newer Gtk versions
- *   if (!gdk_window_ensure_native (widget->window))
- *     g_error ("Couldn't create native window needed for GstVideoOverlay!");
- * #endif
- * 
- * #ifdef GDK_WINDOWING_X11
- *   {
- *     gulong xid = GDK_WINDOW_XID (gtk_widget_get_window (video_window));
- *     video_window_handle = xid;
- *   }
- * #endif
- * #ifdef GDK_WINDOWING_WIN32
- *   {
- *     HWND wnd = GDK_WINDOW_HWND (gtk_widget_get_window (video_window));
- *     video_window_handle = (guintptr) wnd;
- *   }
- * #endif
- * }
- * ...
- * int
- * main (int argc, char **argv)
- * {
- *   GtkWidget *video_window;
- *   GtkWidget *app_window;
- *   ...
- *   app_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
- *   ...
- *   video_window = gtk_drawing_area_new ();
- *   g_signal_connect (video_window, "realize",
- *       G_CALLBACK (video_widget_realize_cb), NULL);
- *   gtk_widget_set_double_buffered (video_window, FALSE);
- *   ...
- *   // usually the video_window will not be directly embedded into the
- *   // application window like this, but there will be many other widgets
- *   // and the video window will be embedded in one of them instead
- *   gtk_container_add (GTK_CONTAINER (ap_window), video_window);
- *   ...
- *   // show the GUI
- *   gtk_widget_show_all (app_window);
- * 
- *   // realize window now so that the video window gets created and we can
- *   // obtain its XID/HWND before the pipeline is started up and the videosink
- *   // asks for the XID/HWND of the window to render onto
- *   gtk_widget_realize (video_window);
- * 
- *   // we should have the XID/HWND now
- *   g_assert (video_window_handle != 0);
- *   ...
- *   // set up sync handler for setting the xid once the pipeline is started
- *   bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
- *   gst_bus_set_sync_handler (bus, (GstBusSyncHandler) bus_sync_handler, NULL,
- *       NULL);
- *   gst_object_unref (bus);
- *   ...
- *   gst_element_set_state (pipeline, GST_STATE_PLAYING);
- *   ...
- * }
- * ```
- * 
- * 
- * ## GstVideoOverlay and Qt
- * 
- * 
- * ```
- * #include <glib.h>;
- * #include <gst/gst.h>;
- * #include <gst/video/videooverlay.h>;
- * 
- * #include <QApplication>;
- * #include <QTimer>;
- * #include <QWidget>;
- * 
- * int main(int argc, char *argv[])
- * {
- *   if (!g_thread_supported ())
- *     g_thread_init (NULL);
- * 
- *   gst_init (&argc, &argv);
- *   QApplication app(argc, argv);
- *   app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit ()));
- * 
- *   // prepare the pipeline
- * 
- *   GstElement *pipeline = gst_pipeline_new ("xvoverlay");
- *   GstElement *src = gst_element_factory_make ("videotestsrc", NULL);
- *   GstElement *sink = gst_element_factory_make ("xvimagesink", NULL);
- *   gst_bin_add_many (GST_BIN (pipeline), src, sink, NULL);
- *   gst_element_link (src, sink);
- * 
- *   // prepare the ui
- * 
- *   QWidget window;
- *   window.resize(320, 240);
- *   window.show();
- * 
- *   WId xwinid = window.winId();
- *   gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (sink), xwinid);
- * 
- *   // run the pipeline
- * 
- *   GstStateChangeReturn sret = gst_element_set_state (pipeline,
- *       GST_STATE_PLAYING);
- *   if (sret == GST_STATE_CHANGE_FAILURE) {
- *     gst_element_set_state (pipeline, GST_STATE_NULL);
- *     gst_object_unref (pipeline);
- *     // Exit application
- *     QTimer::singleShot(0, QApplication::activeWindow(), SLOT(quit()));
- *   }
- * 
- *   int ret = app.exec();
- * 
- *   window.hide();
- *   gst_element_set_state (pipeline, GST_STATE_NULL);
- *   gst_object_unref (pipeline);
- * 
- *   return ret;
- * }
- * ```
- * 
- * @interface 
+ * Flags for #GstVideoCodecFrame
  */
-class VideoOverlay extends GObject.Object {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoOverlay
-
-    static name: string
-    static $gtype: GObject.GType<VideoOverlay>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoOverlay
-
-    constructor(config?: VideoOverlay.ConstructorProperties) 
-    _init(config?: VideoOverlay.ConstructorProperties): void
+enum VideoCodecFrameFlags {
     /**
-     * This helper shall be used by classes implementing the #GstVideoOverlay
-     * interface that want the render rectangle to be controllable using
-     * properties. This helper will install "render-rectangle" property into the
-     * class.
-     * @param oclass The class on which the properties will be installed
-     * @param last_prop_id The first free property ID to use
+     * is the frame only meant to be decoded
      */
-    static install_properties(oclass: GObject.ObjectClass, last_prop_id: number): void
+    DECODE_ONLY,
     /**
-     * This helper shall be used by classes implementing the #GstVideoOverlay
-     * interface that want the render rectangle to be controllable using
-     * properties. This helper will parse and set the render rectangle calling
-     * gst_video_overlay_set_render_rectangle().
-     * @param object The instance on which the property is set
-     * @param last_prop_id The highest property ID.
-     * @param property_id The property ID
-     * @param value The #GValue to be set
-     * @returns %TRUE if the @property_id matches the GstVideoOverlay property
+     * is the frame a synchronization point (keyframe)
      */
-    static set_property(object: GObject.Object, last_prop_id: number, property_id: number, value: any): boolean
+    SYNC_POINT,
+    /**
+     * should the output frame be made a keyframe
+     */
+    FORCE_KEYFRAME,
+    /**
+     * should the encoder output stream headers
+     */
+    FORCE_KEYFRAME_HEADERS,
+    /**
+     * The buffer data is corrupted.
+     */
+    CORRUPTED,
 }
-
+/**
+ * Flags to be used in combination with gst_video_decoder_request_sync_point().
+ * See the function documentation for more details.
+ */
+enum VideoDecoderRequestSyncPointFlags {
+    /**
+     * discard all following
+     *     input until the next sync point.
+     */
+    DISCARD_INPUT,
+    /**
+     * discard all following
+     *     output until the next sync point.
+     */
+    CORRUPT_OUTPUT,
+}
+/**
+ * Extra flags that influence the result from gst_video_chroma_resample_new().
+ */
+enum VideoDitherFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * the input is interlaced
+     */
+    INTERLACED,
+    /**
+     * quantize values in addition to adding dither.
+     */
+    QUANTIZE,
+}
+/**
+ * Extra video flags
+ */
+enum VideoFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * a variable fps is selected, fps_n and fps_d
+     *     denote the maximum fps of the video
+     */
+    VARIABLE_FPS,
+    /**
+     * Each color has been scaled by the alpha
+     *     value.
+     */
+    PREMULTIPLIED_ALPHA,
+}
+/**
+ * The different video flags that a format info can have.
+ */
+enum VideoFormatFlags {
+    /**
+     * The video format is YUV, components are numbered
+     *   0=Y, 1=U, 2=V.
+     */
+    YUV,
+    /**
+     * The video format is RGB, components are numbered
+     *   0=R, 1=G, 2=B.
+     */
+    RGB,
+    /**
+     * The video is gray, there is one gray component
+     *   with index 0.
+     */
+    GRAY,
+    /**
+     * The video format has an alpha components with
+     *   the number 3.
+     */
+    ALPHA,
+    /**
+     * The video format has data stored in little
+     *   endianness.
+     */
+    LE,
+    /**
+     * The video format has a palette. The palette
+     *   is stored in the second plane and indexes are stored in the first plane.
+     */
+    PALETTE,
+    /**
+     * The video format has a complex layout that
+     *   can't be described with the usual information in the #GstVideoFormatInfo.
+     */
+    COMPLEX,
+    /**
+     * This format can be used in a
+     *   #GstVideoFormatUnpack and #GstVideoFormatPack function.
+     */
+    UNPACK,
+    /**
+     * The format is tiled, there is tiling information
+     *   in the last plane.
+     */
+    TILED,
+    /**
+     * The tile size varies per plane according to the subsampling.
+     */
+    SUBTILES,
+}
+/**
+ * Extra video frame flags
+ */
+enum VideoFrameFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * The video frame is interlaced. In mixed
+     *           interlace-mode, this flag specifies if the frame is interlaced or
+     *           progressive.
+     */
+    INTERLACED,
+    /**
+     * The video frame has the top field first
+     */
+    TFF,
+    /**
+     * The video frame has the repeat flag
+     */
+    RFF,
+    /**
+     * The video frame has one field
+     */
+    ONEFIELD,
+    /**
+     * The video contains one or
+     *     more non-mono views
+     */
+    MULTIPLE_VIEW,
+    /**
+     * The video frame is the first
+     *     in a set of corresponding views provided as sequential frames.
+     */
+    FIRST_IN_BUNDLE,
+    /**
+     * The video frame has the top field only. This
+     *     is the same as GST_VIDEO_FRAME_FLAG_TFF | GST_VIDEO_FRAME_FLAG_ONEFIELD
+     *     (Since: 1.16).
+     */
+    TOP_FIELD,
+    /**
+     * The video frame has the bottom field
+     *     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
+     *     (GST_VIDEO_FRAME_FLAG_TFF flag unset) (Since: 1.16).
+     */
+    BOTTOM_FIELD,
+}
+/**
+ * Additional mapping flags for gst_video_frame_map().
+ */
+enum VideoFrameMapFlags {
+    /**
+     * Don't take another reference of the buffer and store it in
+     *                                    the GstVideoFrame. This makes sure that the buffer stays
+     *                                    writable while the frame is mapped, but requires that the
+     *                                    buffer reference stays valid until the frame is unmapped again.
+     */
+    NO_REF,
+    /**
+     * Offset to define more flags
+     */
+    LAST,
+}
+/**
+ * GstVideoMultiviewFlags are used to indicate extra properties of a
+ * stereo/multiview stream beyond the frame layout and buffer mapping
+ * that is conveyed in the #GstVideoMultiviewMode.
+ */
+enum VideoMultiviewFlags {
+    /**
+     * No flags
+     */
+    NONE,
+    /**
+     * For stereo streams, the
+     *     normal arrangement of left and right views is reversed.
+     */
+    RIGHT_VIEW_FIRST,
+    /**
+     * The left view is vertically
+     *     mirrored.
+     */
+    LEFT_FLIPPED,
+    /**
+     * The left view is horizontally
+     *     mirrored.
+     */
+    LEFT_FLOPPED,
+    /**
+     * The right view is
+     *     vertically mirrored.
+     */
+    RIGHT_FLIPPED,
+    /**
+     * The right view is
+     *     horizontally mirrored.
+     */
+    RIGHT_FLOPPED,
+    /**
+     * For frame-packed
+     *     multiview modes, indicates that the individual
+     *     views have been encoded with half the true width or height
+     *     and should be scaled back up for display. This flag
+     *     is used for overriding input layout interpretation
+     *     by adjusting pixel-aspect-ratio.
+     *     For side-by-side, column interleaved or checkerboard packings, the
+     *     pixel width will be doubled. For row interleaved and top-bottom
+     *     encodings, pixel height will be doubled.
+     */
+    HALF_ASPECT,
+    /**
+     * The video stream contains both
+     *     mono and multiview portions, signalled on each buffer by the
+     *     absence or presence of the `GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW`
+     *     buffer flag.
+     */
+    MIXED_MONO,
+}
+/**
+ * Overlay format flags.
+ */
+enum VideoOverlayFormatFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * RGB are premultiplied by A/255.
+     */
+    PREMULTIPLIED_ALPHA,
+    /**
+     * a global-alpha value != 1 is set.
+     */
+    GLOBAL_ALPHA,
+}
+/**
+ * The different flags that can be used when packing and unpacking.
+ */
+enum VideoPackFlags {
+    /**
+     * No flag
+     */
+    NONE,
+    /**
+     * When the source has a smaller depth
+     *   than the target format, set the least significant bits of the target
+     *   to 0. This is likely slightly faster but less accurate. When this flag
+     *   is not specified, the most significant bits of the source are duplicated
+     *   in the least significant bits of the destination.
+     */
+    TRUNCATE_RANGE,
+    /**
+     * The source is interlaced. The unpacked
+     *   format will be interlaced as well with each line containing
+     *   information from alternating fields. (Since: 1.2)
+     */
+    INTERLACED,
+}
+/**
+ * Different resampler flags.
+ */
+enum VideoResamplerFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * when no taps are given, half the
+     *              number of calculated taps. This can be used when making scalers
+     *              for the different fields of an interlaced picture. Since: 1.10
+     */
+    HALF_TAPS,
+}
+/**
+ * Different scale flags.
+ */
+enum VideoScalerFlags {
+    /**
+     * no flags
+     */
+    NONE,
+    /**
+     * Set up a scaler for interlaced content
+     */
+    INTERLACED,
+}
+/**
+ * Flags related to the time code information.
+ * For drop frame, only 30000/1001 and 60000/1001 frame rates are supported.
+ */
+enum VideoTimeCodeFlags {
+    /**
+     * No flags
+     */
+    NONE,
+    /**
+     * Whether we have drop frame rate
+     */
+    DROP_FRAME,
+    /**
+     * Whether we have interlaced video
+     */
+    INTERLACED,
+}
 module ColorBalanceChannel {
 
     // Signal callback interfaces
 
-    /**
-     * Signal callback interface for `value-changed`
-     */
-    interface ValueChangedSignalCallback {
-        ($obj: ColorBalanceChannel, value: number): void
+    interface ValueChanged {
+        (value: number): void
     }
 
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface ColorBalanceChannel {
-
-    // Own fields of GstVideo-1.0.GstVideo.ColorBalanceChannel
-
-    parent: GObject.Object
-    /**
-     * A string containing a descriptive name for this channel
-     * @field 
-     */
-    label: string | null
-    /**
-     * The minimum valid value for this channel.
-     * @field 
-     */
-    min_value: number
-    /**
-     * The maximum valid value for this channel.
-     * @field 
-     */
-    max_value: number
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.ColorBalanceChannel
-
-    vfunc_value_changed(value: number): void
-
-    // Own signals of GstVideo-1.0.GstVideo.ColorBalanceChannel
-
-    connect(sigName: "value-changed", callback: ColorBalanceChannel.ValueChangedSignalCallback): number
-    connect_after(sigName: "value-changed", callback: ColorBalanceChannel.ValueChangedSignalCallback): number
-    emit(sigName: "value-changed", value: number, ...args: any[]): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.ColorBalanceChannel
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
  * The #GstColorBalanceChannel object represents a parameter
  * for modifying the color balance implemented by an element providing the
  * #GstColorBalance interface. For example, Hue or Saturation.
- * @class 
  */
 class ColorBalanceChannel extends GObject.Object {
 
-    // Own properties of GstVideo-1.0.GstVideo.ColorBalanceChannel
+    // Own fields of GstVideo-1.0.ColorBalanceChannel
 
-    static name: string
-    static $gtype: GObject.GType<ColorBalanceChannel>
-
-    // Constructors of GstVideo-1.0.GstVideo.ColorBalanceChannel
-
-    constructor(config?: ColorBalanceChannel.ConstructorProperties) 
-    _init(config?: ColorBalanceChannel.ConstructorProperties): void
+label: string
+min_value: number
+max_value: number
 }
 
 module VideoAggregator {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends GstBase.Aggregator.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregator
-
-        /**
-         * Causes the element to aggregate on a timeout even when no live source is
-         * connected to its sinks. See #GstAggregator:min-upstream-latency for a
-         * companion property: in the vast majority of cases where you plan to plug in
-         * live sources with a non-zero latency, you should set it to a non-zero value.
-         */
-        force_live?: boolean | null
-    }
-
-}
-
-interface VideoAggregator {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregator
-
-    /**
-     * Causes the element to aggregate on a timeout even when no live source is
-     * connected to its sinks. See #GstAggregator:min-upstream-latency for a
-     * companion property: in the vast majority of cases where you plan to plug in
-     * live sources with a non-zero latency, you should set it to a non-zero value.
-     */
-    readonly force_live: boolean
-
-    // Conflicting properties
-
-    start_time: any
-    parent: Gst.Element & Gst.Object & Gst.Object
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregator
-
-    aggregator: GstBase.Aggregator
-    /**
-     * The #GstVideoInfo representing the currently set
-     * srcpad caps.
-     * @field 
-     */
-    info: VideoInfo
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoAggregator
-
-    /**
-     * The returned #GstTaskPool is used internally for performing parallel
-     * video format conversions/scaling/etc during the
-     * #GstVideoAggregatorPadClass::prepare_frame_start() process.
-     * Subclasses can add their own operation to perform using the returned
-     * #GstTaskPool during #GstVideoAggregatorClass::aggregate_frames().
-     * @returns the #GstTaskPool that can be used by subclasses     for performing concurrent operations
-     */
-    get_execution_task_pool(): Gst.TaskPool
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoAggregator
-
-    vfunc_aggregate_frames(outbuffer: Gst.Buffer): Gst.FlowReturn
-    vfunc_create_output_buffer(outbuffer: Gst.Buffer): Gst.FlowReturn
-    vfunc_find_best_format(downstream_caps: Gst.Caps, best_info: VideoInfo): /* at_least_one_alpha */ boolean
-    vfunc_update_caps(caps: Gst.Caps): Gst.Caps
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoAggregator
-
-    connect(sigName: "notify::force-live", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::force-live", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::force-live", ...args: any[]): void
-    connect(sigName: "notify::emit-signals", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::emit-signals", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::emit-signals", ...args: any[]): void
-    connect(sigName: "notify::latency", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::latency", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::latency", ...args: any[]): void
-    connect(sigName: "notify::min-upstream-latency", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::min-upstream-latency", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::min-upstream-latency", ...args: any[]): void
-    connect(sigName: "notify::start-time", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::start-time", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::start-time", ...args: any[]): void
-    connect(sigName: "notify::start-time-selection", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::start-time-selection", callback: (($obj: VideoAggregator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::start-time-selection", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
@@ -5185,182 +3710,87 @@ interface VideoAggregator {
  * 
  * Zorder for each input stream can be configured on the
  * #GstVideoAggregatorPad.
- * @class 
  */
-class VideoAggregator extends GstBase.Aggregator {
+abstract class VideoAggregator extends GstBase.Aggregator {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregator
+    // Own properties of GstVideo-1.0.VideoAggregator
 
-    static name: string
-    static $gtype: GObject.GType<VideoAggregator>
+    /**
+     * Causes the element to aggregate on a timeout even when no live source is
+     * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+     * companion property: in the vast majority of cases where you plan to plug in
+     * live sources with a non-zero latency, you should set it to a non-zero value.
+     */
+    force_live: boolean
+    /**
+     * Causes the element to aggregate on a timeout even when no live source is
+     * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+     * companion property: in the vast majority of cases where you plan to plug in
+     * live sources with a non-zero latency, you should set it to a non-zero value.
+     */
+    forceLive: boolean
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoAggregator
+    // Own fields of GstVideo-1.0.VideoAggregator
 
-    constructor(config?: VideoAggregator.ConstructorProperties) 
-    _init(config?: VideoAggregator.ConstructorProperties): void
+aggregator: GstBase.Aggregator
+
+    // Owm methods of GstVideo-1.0.VideoAggregator
+
+    /**
+     * The returned #GstTaskPool is used internally for performing parallel
+     * video format conversions/scaling/etc during the
+     * #GstVideoAggregatorPadClass::prepare_frame_start() process.
+     * Subclasses can add their own operation to perform using the returned
+     * #GstTaskPool during #GstVideoAggregatorClass::aggregate_frames().
+     * @returns the #GstTaskPool that can be used by subclasses     for performing concurrent operations
+     */
+    get_execution_task_pool(): Gst.TaskPool
 }
 
 module VideoAggregatorConvertPad {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends VideoAggregatorPad.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
-
-        converter_config?: Gst.Structure | null
-    }
-
-}
-
-interface VideoAggregatorConvertPad {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
-
-    converter_config: Gst.Structure
-
-    // Conflicting properties
-
-    parent: GstBase.AggregatorPad & Gst.Pad & Gst.Object
-    object: any
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
-
-    /**
-     * Requests the pad to check and update the converter before the next usage to
-     * update for any changes that have happened.
-     */
-    update_conversion_info(): void
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
-
-    vfunc_create_conversion_info(agg: VideoAggregator, conversion_info: VideoInfo): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
-
-    connect(sigName: "notify::converter-config", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::converter-config", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::converter-config", ...args: any[]): void
-    connect(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-last-buffer-repeat", ...args: any[]): void
-    connect(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::repeat-after-eos", ...args: any[]): void
-    connect(sigName: "notify::zorder", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::zorder", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::zorder", ...args: any[]): void
-    connect(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::emit-signals", ...args: any[]): void
-    connect(sigName: "notify::caps", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::caps", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::caps", ...args: any[]): void
-    connect(sigName: "notify::offset", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::offset", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::offset", ...args: any[]): void
-    connect(sigName: "notify::template", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::template", callback: (($obj: VideoAggregatorConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::template", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
  * An implementation of GstPad that can be used with #GstVideoAggregator.
  * 
  * See #GstVideoAggregator for more details.
- * @class 
  */
 class VideoAggregatorConvertPad extends VideoAggregatorPad {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
+    // Own properties of GstVideo-1.0.VideoAggregatorConvertPad
 
-    static name: string
-    static $gtype: GObject.GType<VideoAggregatorConvertPad>
+    converter_config: Gst.Structure
+    converterConfig: Gst.Structure
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
+    // Owm methods of GstVideo-1.0.VideoAggregatorConvertPad
 
-    constructor(config?: VideoAggregatorConvertPad.ConstructorProperties) 
-    _init(config?: VideoAggregatorConvertPad.ConstructorProperties): void
+    /**
+     * Requests the pad to check and update the converter before the next usage to
+     * update for any changes that have happened.
+     */
+    update_conversion_info(): void
 }
 
 module VideoAggregatorPad {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends GstBase.AggregatorPad.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-        max_last_buffer_repeat?: number | null
-        repeat_after_eos?: boolean | null
-        zorder?: number | null
-    }
-
 }
 
-interface VideoAggregatorPad {
+class VideoAggregatorPad extends GstBase.AggregatorPad {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPad
+    // Own properties of GstVideo-1.0.VideoAggregatorPad
 
     max_last_buffer_repeat: number
+    maxLastBufferRepeat: number
     repeat_after_eos: boolean
+    repeatAfterEos: boolean
     zorder: number
 
-    // Conflicting properties
-
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-    parent: GstBase.AggregatorPad & Gst.Pad & Gst.Object & Gst.Object
-    /**
-     * The #GstVideoInfo currently set on the pad
-     * @field 
-     */
-    info: VideoInfo
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoAggregatorPad
+    // Owm methods of GstVideo-1.0.VideoAggregatorPad
 
     /**
      * Returns the currently queued buffer that is going to be used
@@ -5400,854 +3830,44 @@ interface VideoAggregatorPad {
      * @param needs_alpha %TRUE if this pad requires alpha output
      */
     set_needs_alpha(needs_alpha: boolean): void
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-    vfunc_clean_frame(videoaggregator: VideoAggregator, prepared_frame: VideoFrame): void
-    vfunc_prepare_frame(videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame): boolean
-    /**
-     * Finish preparing `prepared_frame`.
-     * 
-     * If overriden, `prepare_frame_start` must also be overriden.
-     * @virtual 
-     * @param videoaggregator the parent #GstVideoAggregator
-     * @param prepared_frame the #GstVideoFrame to prepare into
-     */
-    vfunc_prepare_frame_finish(videoaggregator: VideoAggregator, prepared_frame: VideoFrame): void
-    /**
-     * Begin preparing the frame from the pad buffer and sets it to prepared_frame.
-     * 
-     * If overriden, `prepare_frame_finish` must also be overriden.
-     * @virtual 
-     * @param videoaggregator the parent #GstVideoAggregator
-     * @param buffer the input #GstBuffer to prepare
-     * @param prepared_frame the #GstVideoFrame to prepare into
-     */
-    vfunc_prepare_frame_start(videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame): void
-    vfunc_update_conversion_info(): void
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-    connect(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-last-buffer-repeat", ...args: any[]): void
-    connect(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::repeat-after-eos", ...args: any[]): void
-    connect(sigName: "notify::zorder", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::zorder", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::zorder", ...args: any[]): void
-    connect(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::emit-signals", ...args: any[]): void
-    connect(sigName: "notify::caps", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::caps", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::caps", ...args: any[]): void
-    connect(sigName: "notify::offset", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::offset", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::offset", ...args: any[]): void
-    connect(sigName: "notify::template", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::template", callback: (($obj: VideoAggregatorPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::template", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-class VideoAggregatorPad extends GstBase.AggregatorPad {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-    static name: string
-    static $gtype: GObject.GType<VideoAggregatorPad>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoAggregatorPad
-
-    constructor(config?: VideoAggregatorPad.ConstructorProperties) 
-    _init(config?: VideoAggregatorPad.ConstructorProperties): void
 }
 
 module VideoAggregatorParallelConvertPad {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends VideoAggregatorConvertPad.ConstructorProperties {
-    }
-
-}
-
-interface VideoAggregatorParallelConvertPad {
-
-    // Conflicting properties
-
-    parent: GstBase.AggregatorPad & Gst.Pad & Gst.Object
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPad
-
-    parent_instance: VideoAggregatorConvertPad
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPad
-
-    connect(sigName: "notify::converter-config", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::converter-config", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::converter-config", ...args: any[]): void
-    connect(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-last-buffer-repeat", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-last-buffer-repeat", ...args: any[]): void
-    connect(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::repeat-after-eos", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::repeat-after-eos", ...args: any[]): void
-    connect(sigName: "notify::zorder", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::zorder", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::zorder", ...args: any[]): void
-    connect(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::emit-signals", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::emit-signals", ...args: any[]): void
-    connect(sigName: "notify::caps", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::caps", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::caps", ...args: any[]): void
-    connect(sigName: "notify::offset", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::offset", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::offset", ...args: any[]): void
-    connect(sigName: "notify::template", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::template", callback: (($obj: VideoAggregatorParallelConvertPad, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::template", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
  * An implementation of GstPad that can be used with #GstVideoAggregator.
  * 
  * See #GstVideoAggregator for more details.
- * @class 
  */
 class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPad
-
-    static name: string
-    static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPad
-
-    constructor(config?: VideoAggregatorParallelConvertPad.ConstructorProperties) 
-    _init(config?: VideoAggregatorParallelConvertPad.ConstructorProperties): void
 }
 
 module VideoBufferPool {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends Gst.BufferPool.ConstructorProperties {
-    }
-
-}
-
-interface VideoBufferPool {
-
-    // Conflicting properties
-
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoBufferPool
-
-    bufferpool: Gst.BufferPool
-    priv: VideoBufferPoolPrivate
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoBufferPool
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 class VideoBufferPool extends Gst.BufferPool {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoBufferPool
+    // Own fields of GstVideo-1.0.VideoBufferPool
 
-    static name: string
-    static $gtype: GObject.GType<VideoBufferPool>
+bufferpool: Gst.BufferPool
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoBufferPool
+    // Constructors of GstVideo-1.0.VideoBufferPool
 
-    constructor(config?: VideoBufferPool.ConstructorProperties) 
-    /**
-     * Create a new bufferpool that can allocate video frames. This bufferpool
-     * supports all the video bufferpool options.
-     * @constructor 
-     * @returns a new #GstBufferPool to allocate video frames
-     */
-    constructor() 
-    /**
-     * Create a new bufferpool that can allocate video frames. This bufferpool
-     * supports all the video bufferpool options.
-     * @constructor 
-     * @returns a new #GstBufferPool to allocate video frames
-     */
-    static new(): VideoBufferPool
-    _init(config?: VideoBufferPool.ConstructorProperties): void
+
+static ["new"](): VideoBufferPool;
 }
 
 module VideoDecoder {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends Gst.Element.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoDecoder
-
-        /**
-         * GstVideoDecoderRequestSyncPointFlags to use for the automatically
-         * requested sync points if `automatic-request-sync-points` is enabled.
-         */
-        automatic_request_sync_point_flags?: VideoDecoderRequestSyncPointFlags | null
-        /**
-         * If set to %TRUE the decoder will automatically request sync points when
-         * it seems like a good idea, e.g. if the first frames are not key frames or
-         * if packet loss was reported by upstream.
-         */
-        automatic_request_sync_points?: boolean | null
-        /**
-         * If set to %TRUE the decoder will discard frames that are marked as
-         * corrupted instead of outputting them.
-         */
-        discard_corrupted_frames?: boolean | null
-        /**
-         * Maximum number of tolerated consecutive decode errors. See
-         * gst_video_decoder_set_max_errors() for more details.
-         */
-        max_errors?: number | null
-        /**
-         * Minimum interval between force-key-unit events sent upstream by the
-         * decoder. Setting this to 0 will cause every event to be handled, setting
-         * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
-         * 
-         * See gst_video_event_new_upstream_force_key_unit() for more details about
-         * force-key-unit events.
-         */
-        min_force_key_unit_interval?: number | null
-        /**
-         * If set to %TRUE the decoder will handle QoS events received
-         * from downstream elements.
-         * This includes dropping output frames which are detected as late
-         * using the metrics reported by those events.
-         */
-        qos?: boolean | null
-    }
-
-}
-
-interface VideoDecoder {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDecoder
-
-    /**
-     * GstVideoDecoderRequestSyncPointFlags to use for the automatically
-     * requested sync points if `automatic-request-sync-points` is enabled.
-     */
-    automatic_request_sync_point_flags: VideoDecoderRequestSyncPointFlags
-    /**
-     * If set to %TRUE the decoder will automatically request sync points when
-     * it seems like a good idea, e.g. if the first frames are not key frames or
-     * if packet loss was reported by upstream.
-     */
-    automatic_request_sync_points: boolean
-    /**
-     * If set to %TRUE the decoder will discard frames that are marked as
-     * corrupted instead of outputting them.
-     */
-    discard_corrupted_frames: boolean
-    /**
-     * Maximum number of tolerated consecutive decode errors. See
-     * gst_video_decoder_set_max_errors() for more details.
-     */
-    max_errors: number
-    /**
-     * Minimum interval between force-key-unit events sent upstream by the
-     * decoder. Setting this to 0 will cause every event to be handled, setting
-     * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
-     * 
-     * See gst_video_event_new_upstream_force_key_unit() for more details about
-     * force-key-unit events.
-     */
-    min_force_key_unit_interval: number
-    /**
-     * If set to %TRUE the decoder will handle QoS events received
-     * from downstream elements.
-     * This includes dropping output frames which are detected as late
-     * using the metrics reported by those events.
-     */
-    qos: boolean
-
-    // Conflicting properties
-
-    object: any
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoDecoder
-
-    /**
-     * Removes next `n_bytes` of input data and adds it to currently parsed frame.
-     * @param n_bytes the number of bytes to add
-     */
-    add_to_frame(n_bytes: number): void
-    /**
-     * Helper function that allocates a buffer to hold a video frame for `decoder'`s
-     * current #GstVideoCodecState.
-     * 
-     * You should use gst_video_decoder_allocate_output_frame() instead of this
-     * function, if possible at all.
-     * @returns allocated buffer, or NULL if no buffer could be     allocated (e.g. when downstream is flushing or shutting down)
-     */
-    allocate_output_buffer(): Gst.Buffer | null
-    /**
-     * Helper function that allocates a buffer to hold a video frame for `decoder'`s
-     * current #GstVideoCodecState.  Subclass should already have configured video
-     * state and set src pad caps.
-     * 
-     * The buffer allocated here is owned by the frame and you should only
-     * keep references to the frame, not the buffer.
-     * @param frame a #GstVideoCodecFrame
-     * @returns %GST_FLOW_OK if an output buffer could be allocated
-     */
-    allocate_output_frame(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Same as #gst_video_decoder_allocate_output_frame except it allows passing
-     * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
-     * @param frame a #GstVideoCodecFrame
-     * @param params a #GstBufferPoolAcquireParams
-     * @returns %GST_FLOW_OK if an output buffer could be allocated
-     */
-    allocate_output_frame_with_params(frame: VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
-    /**
-     * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
-     * case and posts a QoS message with the frame's details on the bus.
-     * In any case, the frame is considered finished and released.
-     * @param frame the #GstVideoCodecFrame to drop
-     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
-     */
-    drop_frame(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Drops input data.
-     * The frame is not considered finished until the whole frame
-     * is finished or dropped by the subclass.
-     * @param frame the #GstVideoCodecFrame
-     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
-     */
-    drop_subframe(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * `frame` should have a valid decoded data buffer, whose metadata fields
-     * are then appropriately set according to frame data and pushed downstream.
-     * If no output data is provided, `frame` is considered skipped.
-     * In any case, the frame is considered finished and released.
-     * 
-     * After calling this function the output buffer of the frame is to be
-     * considered read-only. This function will also change the metadata
-     * of the buffer.
-     * @param frame a decoded #GstVideoCodecFrame
-     * @returns a #GstFlowReturn resulting from sending data downstream
-     */
-    finish_frame(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Indicate that a subframe has been finished to be decoded
-     * by the subclass. This method should be called for all subframes
-     * except the last subframe where `gst_video_decoder_finish_frame`
-     * should be called instead.
-     * @param frame the #GstVideoCodecFrame
-     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
-     */
-    finish_subframe(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Lets #GstVideoDecoder sub-classes to know the memory `allocator`
-     * used by the base class and its `params`.
-     * 
-     * Unref the `allocator` after use it.
-     */
-    get_allocator(): [ /* allocator */ Gst.Allocator | null, /* params */ Gst.AllocationParams ]
-    get_buffer_pool(): Gst.BufferPool | null
-    get_estimate_rate(): number
-    /**
-     * Get a pending unfinished #GstVideoCodecFrame
-     * @param frame_number system_frame_number of a frame
-     * @returns pending unfinished #GstVideoCodecFrame identified by @frame_number.
-     */
-    get_frame(frame_number: number): VideoCodecFrame | null
-    /**
-     * Get all pending unfinished #GstVideoCodecFrame
-     * @returns pending unfinished #GstVideoCodecFrame.
-     */
-    get_frames(): VideoCodecFrame[]
-    /**
-     * Queries the number of the last subframe received by
-     * the decoder baseclass in the `frame`.
-     * @param frame the #GstVideoCodecFrame to update
-     * @returns the current subframe index received in subframe mode, 1 otherwise.
-     */
-    get_input_subframe_index(frame: VideoCodecFrame): number
-    /**
-     * Query the configured decoder latency. Results will be returned via
-     * `min_latency` and `max_latency`.
-     */
-    get_latency(): [ /* min_latency */ Gst.ClockTime, /* max_latency */ Gst.ClockTime ]
-    /**
-     * Determines maximum possible decoding time for `frame` that will
-     * allow it to decode and arrive in time (as determined by QoS events).
-     * In particular, a negative result means decoding in time is no longer possible
-     * and should therefore occur as soon/skippy as possible.
-     * @param frame a #GstVideoCodecFrame
-     * @returns max decoding time.
-     */
-    get_max_decode_time(frame: VideoCodecFrame): Gst.ClockTimeDiff
-    get_max_errors(): number
-    /**
-     * Queries decoder required format handling.
-     * @returns %TRUE if required format handling is enabled.
-     */
-    get_needs_format(): boolean
-    /**
-     * Queries if the decoder requires a sync point before it starts outputting
-     * data in the beginning.
-     * @returns %TRUE if a sync point is required in the beginning.
-     */
-    get_needs_sync_point(): boolean
-    /**
-     * Get the oldest pending unfinished #GstVideoCodecFrame
-     * @returns oldest pending unfinished #GstVideoCodecFrame.
-     */
-    get_oldest_frame(): VideoCodecFrame | null
-    /**
-     * Get the #GstVideoCodecState currently describing the output stream.
-     * @returns #GstVideoCodecState describing format of video data.
-     */
-    get_output_state(): VideoCodecState | null
-    /**
-     * Queries whether input data is considered packetized or not by the
-     * base class.
-     * @returns TRUE if input data is considered packetized.
-     */
-    get_packetized(): boolean
-    /**
-     * Returns the number of bytes previously added to the current frame
-     * by calling gst_video_decoder_add_to_frame().
-     * @returns The number of bytes pending for the current frame
-     */
-    get_pending_frame_size(): number
-    /**
-     * Queries the number of subframes in the frame processed by
-     * the decoder baseclass.
-     * @param frame the #GstVideoCodecFrame to update
-     * @returns the current subframe processed received in subframe mode.
-     */
-    get_processed_subframe_index(frame: VideoCodecFrame): number
-    get_qos_proportion(): number
-    /**
-     * Queries whether input data is considered as subframes or not by the
-     * base class. If FALSE, each input buffer will be considered as a full
-     * frame.
-     * @returns TRUE if input data is considered as sub frames.
-     */
-    get_subframe_mode(): boolean
-    /**
-     * Gathers all data collected for currently parsed frame, gathers corresponding
-     * metadata and passes it along for further processing, i.e. `handle_frame`.
-     * @returns a #GstFlowReturn
-     */
-    have_frame(): Gst.FlowReturn
-    /**
-     * Indicates that the last subframe has been processed by the decoder
-     * in `frame`. This will release the current frame in video decoder
-     * allowing to receive new frames from upstream elements. This method
-     * must be called in the subclass `handle_frame` callback.
-     * @param frame the #GstVideoCodecFrame to update
-     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
-     */
-    have_last_subframe(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Sets the audio decoder tags and how they should be merged with any
-     * upstream stream tags. This will override any tags previously-set
-     * with gst_audio_decoder_merge_tags().
-     * 
-     * Note that this is provided for convenience, and the subclass is
-     * not required to use this and can still do tag handling on its own.
-     * 
-     * MT safe.
-     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
-     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
-     */
-    merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
-    /**
-     * Negotiate with downstream elements to currently configured #GstVideoCodecState.
-     * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-     * negotiate fails.
-     * @returns %TRUE if the negotiation succeeded, else %FALSE.
-     */
-    negotiate(): boolean
-    /**
-     * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
-     * restricted to resolution/format/... combinations supported by downstream
-     * elements.
-     * @param caps initial caps
-     * @param filter filter caps
-     * @returns a #GstCaps owned by caller
-     */
-    proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps
-    /**
-     * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
-     * without any processing other than removing it from list of pending frames,
-     * after which it is considered finished and released.
-     * @param frame the #GstVideoCodecFrame to release
-     */
-    release_frame(frame: VideoCodecFrame): void
-    /**
-     * Allows the #GstVideoDecoder subclass to request from the base class that
-     * a new sync should be requested from upstream, and that `frame` was the frame
-     * when the subclass noticed that a new sync point is required. A reason for
-     * the subclass to do this could be missing reference frames, for example.
-     * 
-     * The base class will then request a new sync point from upstream as long as
-     * the time that passed since the last one is exceeding
-     * #GstVideoDecoder:min-force-key-unit-interval.
-     * 
-     * The subclass can signal via `flags` how the frames until the next sync point
-     * should be handled:
-     * 
-     *   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT is selected then
-     *     all following input frames until the next sync point are discarded.
-     *     This can be useful if the lack of a sync point will prevent all further
-     *     decoding and the decoder implementation is not very robust in handling
-     *     missing references frames.
-     *   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT is selected
-     *     then all output frames following `frame` are marked as corrupted via
-     *     %GST_BUFFER_FLAG_CORRUPTED. Corrupted frames can be automatically
-     *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
-     *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
-     *     before calling gst_video_decoder_finish_frame().
-     * @param frame a #GstVideoCodecFrame
-     * @param flags #GstVideoDecoderRequestSyncPointFlags
-     */
-    request_sync_point(frame: VideoCodecFrame, flags: VideoDecoderRequestSyncPointFlags): void
-    /**
-     * Allows baseclass to perform byte to time estimated conversion.
-     * @param enabled whether to enable byte to time conversion
-     */
-    set_estimate_rate(enabled: boolean): void
-    /**
-     * Same as #gst_video_decoder_set_output_state() but also allows you to also set
-     * the interlacing mode.
-     * @param fmt a #GstVideoFormat
-     * @param interlace_mode A #GstVideoInterlaceMode
-     * @param width The width in pixels
-     * @param height The height in pixels
-     * @param reference An optional reference #GstVideoCodecState
-     * @returns the newly configured output state.
-     */
-    set_interlaced_output_state(fmt: VideoFormat, interlace_mode: VideoInterlaceMode, width: number, height: number, reference: VideoCodecState | null): VideoCodecState | null
-    /**
-     * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder latency
-     * is. If the provided values changed from previously provided ones, this will
-     * also post a LATENCY message on the bus so the pipeline can reconfigure its
-     * global latency.
-     * @param min_latency minimum latency
-     * @param max_latency maximum latency
-     */
-    set_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): void
-    /**
-     * Sets numbers of tolerated decoder errors, where a tolerated one is then only
-     * warned about, but more than tolerated will lead to fatal error.  You can set
-     * -1 for never returning fatal errors. Default is set to
-     * GST_VIDEO_DECODER_MAX_ERRORS.
-     * 
-     * The '-1' option was added in 1.4
-     * @param num max tolerated errors
-     */
-    set_max_errors(num: number): void
-    /**
-     * Configures decoder format needs.  If enabled, subclass needs to be
-     * negotiated with format caps before it can process any data.  It will then
-     * never be handed any data before it has been configured.
-     * Otherwise, it might be handed data without having been configured and
-     * is then expected being able to do so either by default
-     * or based on the input data.
-     * @param enabled new state
-     */
-    set_needs_format(enabled: boolean): void
-    /**
-     * Configures whether the decoder requires a sync point before it starts
-     * outputting data in the beginning. If enabled, the base class will discard
-     * all non-sync point frames in the beginning and after a flush and does not
-     * pass it to the subclass.
-     * 
-     * If the first frame is not a sync point, the base class will request a sync
-     * point via the force-key-unit event.
-     * @param enabled new state
-     */
-    set_needs_sync_point(enabled: boolean): void
-    /**
-     * Creates a new #GstVideoCodecState with the specified `fmt,` `width` and `height`
-     * as the output state for the decoder.
-     * Any previously set output state on `decoder` will be replaced by the newly
-     * created one.
-     * 
-     * If the subclass wishes to copy over existing fields (like pixel aspec ratio,
-     * or framerate) from an existing #GstVideoCodecState, it can be provided as a
-     * `reference`.
-     * 
-     * If the subclass wishes to override some fields from the output state (like
-     * pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
-     * 
-     * The new output state will only take effect (set on pads and buffers) starting
-     * from the next call to #gst_video_decoder_finish_frame().
-     * @param fmt a #GstVideoFormat
-     * @param width The width in pixels
-     * @param height The height in pixels
-     * @param reference An optional reference #GstVideoCodecState
-     * @returns the newly configured output state.
-     */
-    set_output_state(fmt: VideoFormat, width: number, height: number, reference: VideoCodecState | null): VideoCodecState | null
-    /**
-     * Allows baseclass to consider input data as packetized or not. If the
-     * input is packetized, then the `parse` method will not be called.
-     * @param packetized whether the input data should be considered as packetized.
-     */
-    set_packetized(packetized: boolean): void
-    /**
-     * If this is set to TRUE, it informs the base class that the subclass
-     * can receive the data at a granularity lower than one frame.
-     * 
-     * Note that in this mode, the subclass has two options. It can either
-     * require the presence of a GST_VIDEO_BUFFER_FLAG_MARKER to mark the
-     * end of a frame. Or it can operate in such a way that it will decode
-     * a single frame at a time. In this second case, every buffer that
-     * arrives to the element is considered part of the same frame until
-     * gst_video_decoder_finish_frame() is called.
-     * 
-     * In either case, the same #GstVideoCodecFrame will be passed to the
-     * GstVideoDecoderClass:handle_frame vmethod repeatedly with a
-     * different GstVideoCodecFrame:input_buffer every time until the end of the
-     * frame has been signaled using either method.
-     * This method must be called during the decoder subclass `set_format` call.
-     * @param subframe_mode whether the input data should be considered as subframes.
-     */
-    set_subframe_mode(subframe_mode: boolean): void
-    /**
-     * Lets #GstVideoDecoder sub-classes decide if they want the sink pad
-     * to use the default pad query handler to reply to accept-caps queries.
-     * 
-     * By setting this to true it is possible to further customize the default
-     * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-     * %GST_PAD_SET_ACCEPT_TEMPLATE
-     * @param use if the default pad accept-caps query handling should be used
-     */
-    set_use_default_pad_acceptcaps(use: boolean): void
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoDecoder
-
-    vfunc_close(): boolean
-    vfunc_decide_allocation(query: Gst.Query): boolean
-    vfunc_drain(): Gst.FlowReturn
-    vfunc_finish(): Gst.FlowReturn
-    vfunc_flush(): boolean
-    vfunc_getcaps(filter: Gst.Caps): Gst.Caps
-    vfunc_handle_frame(frame: VideoCodecFrame): Gst.FlowReturn
-    vfunc_handle_missing_data(timestamp: Gst.ClockTime, duration: Gst.ClockTime): boolean
-    /**
-     * Negotiate with downstream elements to currently configured #GstVideoCodecState.
-     * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-     * negotiate fails.
-     * @virtual 
-     * @returns %TRUE if the negotiation succeeded, else %FALSE.
-     */
-    vfunc_negotiate(): boolean
-    vfunc_open(): boolean
-    vfunc_parse(frame: VideoCodecFrame, adapter: GstBase.Adapter, at_eos: boolean): Gst.FlowReturn
-    vfunc_propose_allocation(query: Gst.Query): boolean
-    vfunc_reset(hard: boolean): boolean
-    vfunc_set_format(state: VideoCodecState): boolean
-    vfunc_sink_event(event: Gst.Event): boolean
-    vfunc_sink_query(query: Gst.Query): boolean
-    vfunc_src_event(event: Gst.Event): boolean
-    vfunc_src_query(query: Gst.Query): boolean
-    vfunc_start(): boolean
-    vfunc_stop(): boolean
-    vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoDecoder
-
-    connect(sigName: "notify::automatic-request-sync-point-flags", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::automatic-request-sync-point-flags", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::automatic-request-sync-point-flags", ...args: any[]): void
-    connect(sigName: "notify::automatic-request-sync-points", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::automatic-request-sync-points", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::automatic-request-sync-points", ...args: any[]): void
-    connect(sigName: "notify::discard-corrupted-frames", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::discard-corrupted-frames", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::discard-corrupted-frames", ...args: any[]): void
-    connect(sigName: "notify::max-errors", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-errors", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-errors", ...args: any[]): void
-    connect(sigName: "notify::min-force-key-unit-interval", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::min-force-key-unit-interval", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::min-force-key-unit-interval", ...args: any[]): void
-    connect(sigName: "notify::qos", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::qos", callback: (($obj: VideoDecoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::qos", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
@@ -6369,164 +3989,261 @@ interface VideoDecoder {
  * 
  *   * Accept data in `handle_frame` and provide decoded results to
  *      `gst_video_decoder_finish_frame,` or call `gst_video_decoder_drop_frame`.
- * @class 
  */
-class VideoDecoder extends Gst.Element {
+abstract class VideoDecoder extends Gst.Element {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoDecoder
-
-    static name: string
-    static $gtype: GObject.GType<VideoDecoder>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoDecoder
-
-    constructor(config?: VideoDecoder.ConstructorProperties) 
-    _init(config?: VideoDecoder.ConstructorProperties): void
-}
-
-module VideoEncoder {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends Gst.Preset.ConstructorProperties, Gst.Element.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoEncoder
-
-        /**
-         * Minimum interval between force-keyunit requests in nanoseconds. See
-         * gst_video_encoder_set_min_force_key_unit_interval() for more details.
-         */
-        min_force_key_unit_interval?: number | null
-        qos?: boolean | null
-    }
-
-}
-
-interface VideoEncoder extends Gst.Preset {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoEncoder
+    // Own properties of GstVideo-1.0.VideoDecoder
 
     /**
-     * Minimum interval between force-keyunit requests in nanoseconds. See
-     * gst_video_encoder_set_min_force_key_unit_interval() for more details.
+     * GstVideoDecoderRequestSyncPointFlags to use for the automatically
+     * requested sync points if `automatic-request-sync-points` is enabled.
+     */
+    automatic_request_sync_point_flags: VideoDecoderRequestSyncPointFlags
+    /**
+     * GstVideoDecoderRequestSyncPointFlags to use for the automatically
+     * requested sync points if `automatic-request-sync-points` is enabled.
+     */
+    automaticRequestSyncPointFlags: VideoDecoderRequestSyncPointFlags
+    /**
+     * If set to %TRUE the decoder will automatically request sync points when
+     * it seems like a good idea, e.g. if the first frames are not key frames or
+     * if packet loss was reported by upstream.
+     */
+    automatic_request_sync_points: boolean
+    /**
+     * If set to %TRUE the decoder will automatically request sync points when
+     * it seems like a good idea, e.g. if the first frames are not key frames or
+     * if packet loss was reported by upstream.
+     */
+    automaticRequestSyncPoints: boolean
+    /**
+     * If set to %TRUE the decoder will discard frames that are marked as
+     * corrupted instead of outputting them.
+     */
+    discard_corrupted_frames: boolean
+    /**
+     * If set to %TRUE the decoder will discard frames that are marked as
+     * corrupted instead of outputting them.
+     */
+    discardCorruptedFrames: boolean
+    /**
+     * Maximum number of tolerated consecutive decode errors. See
+     * gst_video_decoder_set_max_errors() for more details.
+     */
+    max_errors: number
+    /**
+     * Maximum number of tolerated consecutive decode errors. See
+     * gst_video_decoder_set_max_errors() for more details.
+     */
+    maxErrors: number
+    /**
+     * Minimum interval between force-key-unit events sent upstream by the
+     * decoder. Setting this to 0 will cause every event to be handled, setting
+     * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
+     * 
+     * See gst_video_event_new_upstream_force_key_unit() for more details about
+     * force-key-unit events.
      */
     min_force_key_unit_interval: number
+    /**
+     * Minimum interval between force-key-unit events sent upstream by the
+     * decoder. Setting this to 0 will cause every event to be handled, setting
+     * this to %GST_CLOCK_TIME_NONE will cause every event to be ignored.
+     * 
+     * See gst_video_event_new_upstream_force_key_unit() for more details about
+     * force-key-unit events.
+     */
+    minForceKeyUnitInterval: number
+    /**
+     * If set to %TRUE the decoder will handle QoS events received
+     * from downstream elements.
+     * This includes dropping output frames which are detected as late
+     * using the metrics reported by those events.
+     */
     qos: boolean
 
-    // Conflicting properties
-
-    object: any
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoEncoder
+    // Owm methods of GstVideo-1.0.VideoDecoder
 
     /**
-     * Helper function that allocates a buffer to hold an encoded video frame
-     * for `encoder'`s current #GstVideoCodecState.
-     * @param size size of the buffer
-     * @returns allocated buffer
+     * Removes next `n_bytes` of input data and adds it to currently parsed frame.
+     * @param n_bytes the number of bytes to add
      */
-    allocate_output_buffer(size: number): Gst.Buffer
+    add_to_frame(n_bytes: number): void
     /**
-     * Helper function that allocates a buffer to hold an encoded video frame for `encoder'`s
+     * Helper function that allocates a buffer to hold a video frame for `decoder'`s
+     * current #GstVideoCodecState.
+     * 
+     * You should use gst_video_decoder_allocate_output_frame() instead of this
+     * function, if possible at all.
+     * @returns allocated buffer, or NULL if no buffer could be     allocated (e.g. when downstream is flushing or shutting down)
+     */
+    allocate_output_buffer(): (Gst.Buffer | null)
+    /**
+     * Helper function that allocates a buffer to hold a video frame for `decoder'`s
      * current #GstVideoCodecState.  Subclass should already have configured video
      * state and set src pad caps.
      * 
      * The buffer allocated here is owned by the frame and you should only
      * keep references to the frame, not the buffer.
      * @param frame a #GstVideoCodecFrame
-     * @param size size of the buffer
      * @returns %GST_FLOW_OK if an output buffer could be allocated
      */
-    allocate_output_frame(frame: VideoCodecFrame, size: number): Gst.FlowReturn
+    allocate_output_frame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
-     * `frame` must have a valid encoded data buffer, whose metadata fields
-     * are then appropriately set according to frame data or no buffer at
-     * all if the frame should be dropped.
-     * It is subsequently pushed downstream or provided to `pre_push`.
+     * Same as #gst_video_decoder_allocate_output_frame except it allows passing
+     * #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param params a #GstBufferPoolAcquireParams
+     * @returns %GST_FLOW_OK if an output buffer could be allocated
+     */
+    allocate_output_frame_with_params(frame: VideoCodecFrame, params: Gst.BufferPoolAcquireParams): Gst.FlowReturn
+    /**
+     * Similar to gst_video_decoder_finish_frame(), but drops `frame` in any
+     * case and posts a QoS message with the frame's details on the bus.
+     * In any case, the frame is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to drop
+     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
+     */
+    drop_frame(frame: VideoCodecFrame): Gst.FlowReturn
+    /**
+     * Drops input data.
+     * The frame is not considered finished until the whole frame
+     * is finished or dropped by the subclass.
+     * @param frame the #GstVideoCodecFrame
+     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
+     */
+    drop_subframe(frame: VideoCodecFrame): Gst.FlowReturn
+    /**
+     * `frame` should have a valid decoded data buffer, whose metadata fields
+     * are then appropriately set according to frame data and pushed downstream.
+     * If no output data is provided, `frame` is considered skipped.
      * In any case, the frame is considered finished and released.
      * 
      * After calling this function the output buffer of the frame is to be
      * considered read-only. This function will also change the metadata
      * of the buffer.
-     * @param frame an encoded #GstVideoCodecFrame
+     * @param frame a decoded #GstVideoCodecFrame
      * @returns a #GstFlowReturn resulting from sending data downstream
      */
     finish_frame(frame: VideoCodecFrame): Gst.FlowReturn
     /**
-     * If multiple subframes are produced for one input frame then use this method
-     * for each subframe, except for the last one. Before calling this function,
-     * you need to fill frame->output_buffer with the encoded buffer to push.
-     * 
-     * You must call #gst_video_encoder_finish_frame() for the last sub-frame
-     * to tell the encoder that the frame has been fully encoded.
-     * 
-     * This function will change the metadata of `frame` and frame->output_buffer
-     * will be pushed downstream.
-     * @param frame a #GstVideoCodecFrame being encoded
-     * @returns a #GstFlowReturn resulting from pushing the buffer downstream.
+     * Indicate that a subframe has been finished to be decoded
+     * by the subclass. This method should be called for all subframes
+     * except the last subframe where `gst_video_decoder_finish_frame`
+     * should be called instead.
+     * @param frame the #GstVideoCodecFrame
+     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
      */
     finish_subframe(frame: VideoCodecFrame): Gst.FlowReturn
     /**
-     * Lets #GstVideoEncoder sub-classes to know the memory `allocator`
+     * Lets #GstVideoDecoder sub-classes to know the memory `allocator`
      * used by the base class and its `params`.
      * 
      * Unref the `allocator` after use it.
      */
-    get_allocator(): [ /* allocator */ Gst.Allocator | null, /* params */ Gst.AllocationParams ]
+    get_allocator(): void
+    get_buffer_pool(): (Gst.BufferPool | null)
+    get_estimate_rate(): number
     /**
      * Get a pending unfinished #GstVideoCodecFrame
      * @param frame_number system_frame_number of a frame
      * @returns pending unfinished #GstVideoCodecFrame identified by @frame_number.
      */
-    get_frame(frame_number: number): VideoCodecFrame | null
+    get_frame(frame_number: number): (VideoCodecFrame | null)
     /**
      * Get all pending unfinished #GstVideoCodecFrame
      * @returns pending unfinished #GstVideoCodecFrame.
      */
     get_frames(): VideoCodecFrame[]
     /**
-     * Query the configured encoding latency. Results will be returned via
+     * Queries the number of the last subframe received by
+     * the decoder baseclass in the `frame`.
+     * @param frame the #GstVideoCodecFrame to update
+     * @returns the current subframe index received in subframe mode, 1 otherwise.
+     */
+    get_input_subframe_index(frame: VideoCodecFrame): number
+    /**
+     * Query the configured decoder latency. Results will be returned via
      * `min_latency` and `max_latency`.
      */
-    get_latency(): [ /* min_latency */ Gst.ClockTime, /* max_latency */ Gst.ClockTime ]
+    get_latency(): void
     /**
-     * Determines maximum possible encoding time for `frame` that will
-     * allow it to encode and arrive in time (as determined by QoS events).
-     * In particular, a negative result means encoding in time is no longer possible
+     * Determines maximum possible decoding time for `frame` that will
+     * allow it to decode and arrive in time (as determined by QoS events).
+     * In particular, a negative result means decoding in time is no longer possible
      * and should therefore occur as soon/skippy as possible.
-     * 
-     * If no QoS events have been received from downstream, or if
-     * #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
      * @param frame a #GstVideoCodecFrame
      * @returns max decoding time.
      */
-    get_max_encode_time(frame: VideoCodecFrame): Gst.ClockTimeDiff
+    get_max_decode_time(frame: VideoCodecFrame): Gst.ClockTimeDiff
+    get_max_errors(): number
     /**
-     * Returns the minimum force-keyunit interval, see gst_video_encoder_set_min_force_key_unit_interval()
-     * for more details.
-     * @returns the minimum force-keyunit interval
+     * Queries decoder required format handling.
+     * @returns %TRUE if required format handling is enabled.
      */
-    get_min_force_key_unit_interval(): Gst.ClockTime
+    get_needs_format(): boolean
     /**
-     * Get the oldest unfinished pending #GstVideoCodecFrame
-     * @returns oldest unfinished pending #GstVideoCodecFrame
+     * Queries if the decoder requires a sync point before it starts outputting
+     * data in the beginning.
+     * @returns %TRUE if a sync point is required in the beginning.
      */
-    get_oldest_frame(): VideoCodecFrame | null
+    get_needs_sync_point(): boolean
     /**
-     * Get the current #GstVideoCodecState
+     * Get the oldest pending unfinished #GstVideoCodecFrame
+     * @returns oldest pending unfinished #GstVideoCodecFrame.
+     */
+    get_oldest_frame(): (VideoCodecFrame | null)
+    /**
+     * Get the #GstVideoCodecState currently describing the output stream.
      * @returns #GstVideoCodecState describing format of video data.
      */
-    get_output_state(): VideoCodecState | null
+    get_output_state(): (VideoCodecState | null)
     /**
-     * Checks if `encoder` is currently configured to handle Quality-of-Service
-     * events from downstream.
-     * @returns %TRUE if the encoder is configured to perform Quality-of-Service.
+     * Queries whether input data is considered packetized or not by the
+     * base class.
+     * @returns TRUE if input data is considered packetized.
      */
-    is_qos_enabled(): boolean
+    get_packetized(): boolean
     /**
-     * Sets the video encoder tags and how they should be merged with any
+     * Returns the number of bytes previously added to the current frame
+     * by calling gst_video_decoder_add_to_frame().
+     * @returns The number of bytes pending for the current frame
+     */
+    get_pending_frame_size(): number
+    /**
+     * Queries the number of subframes in the frame processed by
+     * the decoder baseclass.
+     * @param frame the #GstVideoCodecFrame to update
+     * @returns the current subframe processed received in subframe mode.
+     */
+    get_processed_subframe_index(frame: VideoCodecFrame): number
+    get_qos_proportion(): number
+    /**
+     * Queries whether input data is considered as subframes or not by the
+     * base class. If FALSE, each input buffer will be considered as a full
+     * frame.
+     * @returns TRUE if input data is considered as sub frames.
+     */
+    get_subframe_mode(): boolean
+    /**
+     * Gathers all data collected for currently parsed frame, gathers corresponding
+     * metadata and passes it along for further processing, i.e. `handle_frame`.
+     * @returns a #GstFlowReturn
+     */
+    have_frame(): Gst.FlowReturn
+    /**
+     * Indicates that the last subframe has been processed by the decoder
+     * in `frame`. This will release the current frame in video decoder
+     * allowing to receive new frames from upstream elements. This method
+     * must be called in the subclass `handle_frame` callback.
+     * @param frame the #GstVideoCodecFrame to update
+     * @returns a #GstFlowReturn, usually GST_FLOW_OK.
+     */
+    have_last_subframe(frame: VideoCodecFrame): Gst.FlowReturn
+    /**
+     * Sets the audio decoder tags and how they should be merged with any
      * upstream stream tags. This will override any tags previously-set
-     * with gst_video_encoder_merge_tags().
+     * with gst_audio_decoder_merge_tags().
      * 
      * Note that this is provided for convenience, and the subclass is
      * not required to use this and can still do tag handling on its own.
@@ -6535,7 +4252,7 @@ interface VideoEncoder extends Gst.Preset {
      * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
      * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
      */
-    merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void
+    merge_tags(tags: (Gst.TagList | null), mode: Gst.TagMergeMode): void
     /**
      * Negotiate with downstream elements to currently configured #GstVideoCodecState.
      * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
@@ -6546,51 +4263,110 @@ interface VideoEncoder extends Gst.Preset {
     /**
      * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
      * restricted to resolution/format/... combinations supported by downstream
-     * elements (e.g. muxers).
+     * elements.
      * @param caps initial caps
      * @param filter filter caps
      * @returns a #GstCaps owned by caller
      */
-    proxy_getcaps(caps: Gst.Caps | null, filter: Gst.Caps | null): Gst.Caps
+    proxy_getcaps(caps?: (Gst.Caps | null), filter?: (Gst.Caps | null)): Gst.Caps
     /**
-     * Set the codec headers to be sent downstream whenever requested.
-     * @param headers a list of #GstBuffer containing the codec header
+     * Similar to gst_video_decoder_drop_frame(), but simply releases `frame`
+     * without any processing other than removing it from list of pending frames,
+     * after which it is considered finished and released.
+     * @param frame the #GstVideoCodecFrame to release
      */
-    set_headers(headers: Gst.Buffer[]): void
+    release_frame(frame: VideoCodecFrame): void
     /**
-     * Informs baseclass of encoding latency. If the provided values changed from
-     * previously provided ones, this will also post a LATENCY message on the bus
-     * so the pipeline can reconfigure its global latency.
+     * Allows the #GstVideoDecoder subclass to request from the base class that
+     * a new sync should be requested from upstream, and that `frame` was the frame
+     * when the subclass noticed that a new sync point is required. A reason for
+     * the subclass to do this could be missing reference frames, for example.
+     * 
+     * The base class will then request a new sync point from upstream as long as
+     * the time that passed since the last one is exceeding
+     * #GstVideoDecoder:min-force-key-unit-interval.
+     * 
+     * The subclass can signal via `flags` how the frames until the next sync point
+     * should be handled:
+     * 
+     *   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT is selected then
+     *     all following input frames until the next sync point are discarded.
+     *     This can be useful if the lack of a sync point will prevent all further
+     *     decoding and the decoder implementation is not very robust in handling
+     *     missing references frames.
+     *   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT is selected
+     *     then all output frames following `frame` are marked as corrupted via
+     *     %GST_BUFFER_FLAG_CORRUPTED. Corrupted frames can be automatically
+     *     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
+     *     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
+     *     before calling gst_video_decoder_finish_frame().
+     * @param frame a #GstVideoCodecFrame
+     * @param flags #GstVideoDecoderRequestSyncPointFlags
+     */
+    request_sync_point(frame: VideoCodecFrame, flags: VideoDecoderRequestSyncPointFlags): void
+    /**
+     * Allows baseclass to perform byte to time estimated conversion.
+     * @param enabled whether to enable byte to time conversion
+     */
+    set_estimate_rate(enabled: boolean): void
+    /**
+     * Same as #gst_video_decoder_set_output_state() but also allows you to also set
+     * the interlacing mode.
+     * @param fmt a #GstVideoFormat
+     * @param interlace_mode A #GstVideoInterlaceMode
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
+     * @returns the newly configured output state.
+     */
+    set_interlaced_output_state(fmt: VideoFormat, interlace_mode: VideoInterlaceMode, width: number, height: number, reference?: (VideoCodecState | null)): (VideoCodecState | null)
+    /**
+     * Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder latency
+     * is. If the provided values changed from previously provided ones, this will
+     * also post a LATENCY message on the bus so the pipeline can reconfigure its
+     * global latency.
      * @param min_latency minimum latency
      * @param max_latency maximum latency
      */
     set_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): void
     /**
-     * Sets the minimum interval for requesting keyframes based on force-keyunit
-     * events. Setting this to 0 will allow to handle every event, setting this to
-     * %GST_CLOCK_TIME_NONE causes force-keyunit events to be ignored.
-     * @param interval minimum interval
-     */
-    set_min_force_key_unit_interval(interval: Gst.ClockTime): void
-    /**
-     * Request minimal value for PTS passed to handle_frame.
+     * Sets numbers of tolerated decoder errors, where a tolerated one is then only
+     * warned about, but more than tolerated will lead to fatal error.  You can set
+     * -1 for never returning fatal errors. Default is set to
+     * GST_VIDEO_DECODER_MAX_ERRORS.
      * 
-     * For streams with reordered frames this can be used to ensure that there
-     * is enough time to accommodate first DTS, which may be less than first PTS
-     * @param min_pts minimal PTS that will be passed to handle_frame
+     * The '-1' option was added in 1.4
+     * @param num max tolerated errors
      */
-    set_min_pts(min_pts: Gst.ClockTime): void
+    set_max_errors(num: number): void
     /**
-     * Creates a new #GstVideoCodecState with the specified caps as the output state
-     * for the encoder.
-     * Any previously set output state on `encoder` will be replaced by the newly
+     * Configures decoder format needs.  If enabled, subclass needs to be
+     * negotiated with format caps before it can process any data.  It will then
+     * never be handed any data before it has been configured.
+     * Otherwise, it might be handed data without having been configured and
+     * is then expected being able to do so either by default
+     * or based on the input data.
+     * @param enabled new state
+     */
+    set_needs_format(enabled: boolean): void
+    /**
+     * Configures whether the decoder requires a sync point before it starts
+     * outputting data in the beginning. If enabled, the base class will discard
+     * all non-sync point frames in the beginning and after a flush and does not
+     * pass it to the subclass.
+     * 
+     * If the first frame is not a sync point, the base class will request a sync
+     * point via the force-key-unit event.
+     * @param enabled new state
+     */
+    set_needs_sync_point(enabled: boolean): void
+    /**
+     * Creates a new #GstVideoCodecState with the specified `fmt,` `width` and `height`
+     * as the output state for the decoder.
+     * Any previously set output state on `decoder` will be replaced by the newly
      * created one.
      * 
-     * The specified `caps` should not contain any resolution, pixel-aspect-ratio,
-     * framerate, codec-data, .... Those should be specified instead in the returned
-     * #GstVideoCodecState.
-     * 
-     * If the subclass wishes to copy over existing fields (like pixel aspect ratio,
+     * If the subclass wishes to copy over existing fields (like pixel aspec ratio,
      * or framerate) from an existing #GstVideoCodecState, it can be provided as a
      * `reference`.
      * 
@@ -6598,96 +4374,55 @@ interface VideoEncoder extends Gst.Preset {
      * pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
      * 
      * The new output state will only take effect (set on pads and buffers) starting
-     * from the next call to #gst_video_encoder_finish_frame().
-     * @param caps the #GstCaps to use for the output
-     * @param reference An optional reference `GstVideoCodecState`
+     * from the next call to #gst_video_decoder_finish_frame().
+     * @param fmt a #GstVideoFormat
+     * @param width The width in pixels
+     * @param height The height in pixels
+     * @param reference An optional reference #GstVideoCodecState
      * @returns the newly configured output state.
      */
-    set_output_state(caps: Gst.Caps, reference: VideoCodecState | null): VideoCodecState | null
+    set_output_state(fmt: VideoFormat, width: number, height: number, reference?: (VideoCodecState | null)): (VideoCodecState | null)
     /**
-     * Configures `encoder` to handle Quality-of-Service events from downstream.
-     * @param enabled the new qos value.
+     * Allows baseclass to consider input data as packetized or not. If the
+     * input is packetized, then the `parse` method will not be called.
+     * @param packetized whether the input data should be considered as packetized.
      */
-    set_qos_enabled(enabled: boolean): void
-
-    // Conflicting methods
-
+    set_packetized(packetized: boolean): void
     /**
-     * Increases the reference count of `object`.
+     * If this is set to TRUE, it informs the base class that the subclass
+     * can receive the data at a granularity lower than one frame.
      * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
+     * Note that in this mode, the subclass has two options. It can either
+     * require the presence of a GST_VIDEO_BUFFER_FLAG_MARKER to mark the
+     * end of a frame. Or it can operate in such a way that it will decode
+     * a single frame at a time. In this second case, every buffer that
+     * arrives to the element is considered part of the same frame until
+     * gst_video_decoder_finish_frame() is called.
      * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
+     * In either case, the same #GstVideoCodecFrame will be passed to the
+     * GstVideoDecoderClass:handle_frame vmethod repeatedly with a
+     * different GstVideoCodecFrame:input_buffer every time until the end of the
+     * frame has been signaled using either method.
+     * This method must be called during the decoder subclass `set_format` call.
+     * @param subframe_mode whether the input data should be considered as subframes.
      */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
+    set_subframe_mode(subframe_mode: boolean): void
     /**
-     * Increases the reference count of `object`.
+     * Lets #GstVideoDecoder sub-classes decide if they want the sink pad
+     * to use the default pad query handler to reply to accept-caps queries.
      * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
+     * By setting this to true it is possible to further customize the default
+     * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
+     * %GST_PAD_SET_ACCEPT_TEMPLATE
+     * @param use if the default pad accept-caps query handling should be used
      */
-    ref(): GObject.Object
+    set_use_default_pad_acceptcaps(use: boolean): void
+}
 
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoEncoder
+module VideoEncoder {
 
-    vfunc_close(): boolean
-    vfunc_decide_allocation(query: Gst.Query): boolean
-    vfunc_finish(): Gst.FlowReturn
-    vfunc_flush(): boolean
-    vfunc_getcaps(filter: Gst.Caps): Gst.Caps
-    vfunc_handle_frame(frame: VideoCodecFrame): Gst.FlowReturn
-    /**
-     * Negotiate with downstream elements to currently configured #GstVideoCodecState.
-     * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-     * negotiate fails.
-     * @virtual 
-     * @returns %TRUE if the negotiation succeeded, else %FALSE.
-     */
-    vfunc_negotiate(): boolean
-    vfunc_open(): boolean
-    vfunc_pre_push(frame: VideoCodecFrame): Gst.FlowReturn
-    vfunc_propose_allocation(query: Gst.Query): boolean
-    vfunc_reset(hard: boolean): boolean
-    vfunc_set_format(state: VideoCodecState): boolean
-    vfunc_sink_event(event: Gst.Event): boolean
-    vfunc_sink_query(query: Gst.Query): boolean
-    vfunc_src_event(event: Gst.Event): boolean
-    vfunc_src_query(query: Gst.Query): boolean
-    vfunc_start(): boolean
-    vfunc_stop(): boolean
-    vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean
+    // Constructor properties interface
 
-    // Class property signals of GstVideo-1.0.GstVideo.VideoEncoder
-
-    connect(sigName: "notify::min-force-key-unit-interval", callback: (($obj: VideoEncoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::min-force-key-unit-interval", callback: (($obj: VideoEncoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::min-force-key-unit-interval", ...args: any[]): void
-    connect(sigName: "notify::qos", callback: (($obj: VideoEncoder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::qos", callback: (($obj: VideoEncoder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::qos", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
@@ -6749,125 +4484,221 @@ interface VideoEncoder extends Gst.Preset {
  * use gst_video_encoder_get_max_encode_time() to check if input frames
  * are already late and drop them right away to give a chance to the
  * pipeline to catch up.
- * @class 
  */
-class VideoEncoder extends Gst.Element {
+abstract class VideoEncoder extends Gst.Element {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoEncoder
+    // Own properties of GstVideo-1.0.VideoEncoder
 
-    static name: string
-    static $gtype: GObject.GType<VideoEncoder>
+    /**
+     * Minimum interval between force-keyunit requests in nanoseconds. See
+     * gst_video_encoder_set_min_force_key_unit_interval() for more details.
+     */
+    min_force_key_unit_interval: number
+    /**
+     * Minimum interval between force-keyunit requests in nanoseconds. See
+     * gst_video_encoder_set_min_force_key_unit_interval() for more details.
+     */
+    minForceKeyUnitInterval: number
+    qos: boolean
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoEncoder
+    // Owm methods of GstVideo-1.0.VideoEncoder
 
-    constructor(config?: VideoEncoder.ConstructorProperties) 
-    _init(config?: VideoEncoder.ConstructorProperties): void
+    /**
+     * Helper function that allocates a buffer to hold an encoded video frame
+     * for `encoder'`s current #GstVideoCodecState.
+     * @param size size of the buffer
+     * @returns allocated buffer
+     */
+    allocate_output_buffer(size: number): Gst.Buffer
+    /**
+     * Helper function that allocates a buffer to hold an encoded video frame for `encoder'`s
+     * current #GstVideoCodecState.  Subclass should already have configured video
+     * state and set src pad caps.
+     * 
+     * The buffer allocated here is owned by the frame and you should only
+     * keep references to the frame, not the buffer.
+     * @param frame a #GstVideoCodecFrame
+     * @param size size of the buffer
+     * @returns %GST_FLOW_OK if an output buffer could be allocated
+     */
+    allocate_output_frame(frame: VideoCodecFrame, size: number): Gst.FlowReturn
+    /**
+     * `frame` must have a valid encoded data buffer, whose metadata fields
+     * are then appropriately set according to frame data or no buffer at
+     * all if the frame should be dropped.
+     * It is subsequently pushed downstream or provided to `pre_push`.
+     * In any case, the frame is considered finished and released.
+     * 
+     * After calling this function the output buffer of the frame is to be
+     * considered read-only. This function will also change the metadata
+     * of the buffer.
+     * @param frame an encoded #GstVideoCodecFrame
+     * @returns a #GstFlowReturn resulting from sending data downstream
+     */
+    finish_frame(frame: VideoCodecFrame): Gst.FlowReturn
+    /**
+     * If multiple subframes are produced for one input frame then use this method
+     * for each subframe, except for the last one. Before calling this function,
+     * you need to fill frame-&gt;output_buffer with the encoded buffer to push.
+     * 
+     * You must call #gst_video_encoder_finish_frame() for the last sub-frame
+     * to tell the encoder that the frame has been fully encoded.
+     * 
+     * This function will change the metadata of `frame` and frame-&gt;output_buffer
+     * will be pushed downstream.
+     * @param frame a #GstVideoCodecFrame being encoded
+     * @returns a #GstFlowReturn resulting from pushing the buffer downstream.
+     */
+    finish_subframe(frame: VideoCodecFrame): Gst.FlowReturn
+    /**
+     * Lets #GstVideoEncoder sub-classes to know the memory `allocator`
+     * used by the base class and its `params`.
+     * 
+     * Unref the `allocator` after use it.
+     */
+    get_allocator(): void
+    /**
+     * Get a pending unfinished #GstVideoCodecFrame
+     * @param frame_number system_frame_number of a frame
+     * @returns pending unfinished #GstVideoCodecFrame identified by @frame_number.
+     */
+    get_frame(frame_number: number): (VideoCodecFrame | null)
+    /**
+     * Get all pending unfinished #GstVideoCodecFrame
+     * @returns pending unfinished #GstVideoCodecFrame.
+     */
+    get_frames(): VideoCodecFrame[]
+    /**
+     * Query the configured encoding latency. Results will be returned via
+     * `min_latency` and `max_latency`.
+     */
+    get_latency(): void
+    /**
+     * Determines maximum possible encoding time for `frame` that will
+     * allow it to encode and arrive in time (as determined by QoS events).
+     * In particular, a negative result means encoding in time is no longer possible
+     * and should therefore occur as soon/skippy as possible.
+     * 
+     * If no QoS events have been received from downstream, or if
+     * #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
+     * @param frame a #GstVideoCodecFrame
+     * @returns max decoding time.
+     */
+    get_max_encode_time(frame: VideoCodecFrame): Gst.ClockTimeDiff
+    /**
+     * Returns the minimum force-keyunit interval, see gst_video_encoder_set_min_force_key_unit_interval()
+     * for more details.
+     * @returns the minimum force-keyunit interval
+     */
+    get_min_force_key_unit_interval(): Gst.ClockTime
+    /**
+     * Get the oldest unfinished pending #GstVideoCodecFrame
+     * @returns oldest unfinished pending #GstVideoCodecFrame
+     */
+    get_oldest_frame(): (VideoCodecFrame | null)
+    /**
+     * Get the current #GstVideoCodecState
+     * @returns #GstVideoCodecState describing format of video data.
+     */
+    get_output_state(): (VideoCodecState | null)
+    /**
+     * Checks if `encoder` is currently configured to handle Quality-of-Service
+     * events from downstream.
+     * @returns %TRUE if the encoder is configured to perform Quality-of-Service.
+     */
+    is_qos_enabled(): boolean
+    /**
+     * Sets the video encoder tags and how they should be merged with any
+     * upstream stream tags. This will override any tags previously-set
+     * with gst_video_encoder_merge_tags().
+     * 
+     * Note that this is provided for convenience, and the subclass is
+     * not required to use this and can still do tag handling on its own.
+     * 
+     * MT safe.
+     * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
+     * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
+     */
+    merge_tags(tags: (Gst.TagList | null), mode: Gst.TagMergeMode): void
+    /**
+     * Negotiate with downstream elements to currently configured #GstVideoCodecState.
+     * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+     * negotiate fails.
+     * @returns %TRUE if the negotiation succeeded, else %FALSE.
+     */
+    negotiate(): boolean
+    /**
+     * Returns caps that express `caps` (or sink template caps if `caps` == NULL)
+     * restricted to resolution/format/... combinations supported by downstream
+     * elements (e.g. muxers).
+     * @param caps initial caps
+     * @param filter filter caps
+     * @returns a #GstCaps owned by caller
+     */
+    proxy_getcaps(caps?: (Gst.Caps | null), filter?: (Gst.Caps | null)): Gst.Caps
+    /**
+     * Set the codec headers to be sent downstream whenever requested.
+     * @param headers a list of #GstBuffer containing the codec header
+     */
+    set_headers(headers: Gst.Buffer[]): void
+    /**
+     * Informs baseclass of encoding latency. If the provided values changed from
+     * previously provided ones, this will also post a LATENCY message on the bus
+     * so the pipeline can reconfigure its global latency.
+     * @param min_latency minimum latency
+     * @param max_latency maximum latency
+     */
+    set_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): void
+    /**
+     * Sets the minimum interval for requesting keyframes based on force-keyunit
+     * events. Setting this to 0 will allow to handle every event, setting this to
+     * %GST_CLOCK_TIME_NONE causes force-keyunit events to be ignored.
+     * @param interval minimum interval
+     */
+    set_min_force_key_unit_interval(interval: Gst.ClockTime): void
+    /**
+     * Request minimal value for PTS passed to handle_frame.
+     * 
+     * For streams with reordered frames this can be used to ensure that there
+     * is enough time to accommodate first DTS, which may be less than first PTS
+     * @param min_pts minimal PTS that will be passed to handle_frame
+     */
+    set_min_pts(min_pts: Gst.ClockTime): void
+    /**
+     * Creates a new #GstVideoCodecState with the specified caps as the output state
+     * for the encoder.
+     * Any previously set output state on `encoder` will be replaced by the newly
+     * created one.
+     * 
+     * The specified `caps` should not contain any resolution, pixel-aspect-ratio,
+     * framerate, codec-data, .... Those should be specified instead in the returned
+     * #GstVideoCodecState.
+     * 
+     * If the subclass wishes to copy over existing fields (like pixel aspect ratio,
+     * or framerate) from an existing #GstVideoCodecState, it can be provided as a
+     * `reference`.
+     * 
+     * If the subclass wishes to override some fields from the output state (like
+     * pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
+     * 
+     * The new output state will only take effect (set on pads and buffers) starting
+     * from the next call to #gst_video_encoder_finish_frame().
+     * @param caps the #GstCaps to use for the output
+     * @param reference An optional reference @GstVideoCodecState
+     * @returns the newly configured output state.
+     */
+    set_output_state(caps: Gst.Caps, reference?: (VideoCodecState | null)): (VideoCodecState | null)
+    /**
+     * Configures `encoder` to handle Quality-of-Service events from downstream.
+     * @param enabled the new qos value.
+     */
+    set_qos_enabled(enabled: boolean): void
 }
 
 module VideoFilter {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends GstBase.BaseTransform.ConstructorProperties {
-    }
-
-}
-
-interface VideoFilter {
-
-    // Conflicting properties
-
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoFilter
-
-    element: any
-    negotiated: boolean
-    in_info: VideoInfo
-    out_info: VideoInfo
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    vfunc_query(direction: Gst.PadDirection, query: Gst.Query): boolean
-
-    // Overloads of vfunc_query
-
-    /**
-     * Performs a query on the given element.
-     * 
-     * For elements that don't implement a query handler, this function
-     * forwards the query to a random srcpad or to the peer of a
-     * random linked sinkpad of this element.
-     * 
-     * Please note that some queries might need a running pipeline to work.
-     * @virtual 
-     * @param query the #GstQuery.
-     * @returns %TRUE if the query could be performed. MT safe.
-     */
-    vfunc_query(query: Gst.Query): boolean
-    /**
-     * Performs a query on the given element.
-     * 
-     * For elements that don't implement a query handler, this function
-     * forwards the query to a random srcpad or to the peer of a
-     * random linked sinkpad of this element.
-     * 
-     * Please note that some queries might need a running pipeline to work.
-     * @virtual 
-     * @param query the #GstQuery.
-     * @returns %TRUE if the query could be performed. MT safe.
-     */
-    vfunc_query(query: Gst.Query): boolean
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoFilter
-
-    vfunc_set_info(incaps: Gst.Caps, in_info: VideoInfo, outcaps: Gst.Caps, out_info: VideoInfo): boolean
-    vfunc_transform_frame(inframe: VideoFrame, outframe: VideoFrame): Gst.FlowReturn
-    vfunc_transform_frame_ip(frame: VideoFrame): Gst.FlowReturn
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoFilter
-
-    connect(sigName: "notify::qos", callback: (($obj: VideoFilter, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::qos", callback: (($obj: VideoFilter, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::qos", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
@@ -6875,176 +4706,25 @@ interface VideoFilter {
  * 
  * The videofilter will by default enable QoS on the parent GstBaseTransform
  * to implement frame dropping.
- * @class 
  */
-class VideoFilter extends GstBase.BaseTransform {
+abstract class VideoFilter extends GstBase.BaseTransform {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoFilter
+    // Own fields of GstVideo-1.0.VideoFilter
 
-    static name: string
-    static $gtype: GObject.GType<VideoFilter>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoFilter
-
-    constructor(config?: VideoFilter.ConstructorProperties) 
-    _init(config?: VideoFilter.ConstructorProperties): void
-}
-
-interface VideoMultiviewFlagsSet {
+element: GstBase.BaseTransform
+negotiated: boolean
 }
 
 /**
  * See #GstVideoMultiviewFlags.
- * @class 
  */
 class VideoMultiviewFlagsSet extends Gst.FlagSet {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoMultiviewFlagsSet
-
-    static name: string
 }
 
 module VideoSink {
 
     // Constructor properties interface
 
-    interface ConstructorProperties extends GstBase.BaseSink.ConstructorProperties {
-
-        // Own constructor properties of GstVideo-1.0.GstVideo.VideoSink
-
-        /**
-         * Whether to show video frames during preroll. If set to %FALSE, video
-         * frames will only be rendered in PLAYING state.
-         */
-        show_preroll_frame?: boolean | null
-    }
-
-}
-
-interface VideoSink {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoSink
-
-    /**
-     * Whether to show video frames during preroll. If set to %FALSE, video
-     * frames will only be rendered in PLAYING state.
-     */
-    show_preroll_frame: boolean
-
-    // Conflicting properties
-
-    object: any
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoSink
-
-    element: any
-    /**
-     * video width (derived class needs to set this)
-     * @field 
-     */
-    width: number
-    /**
-     * video height (derived class needs to set this)
-     * @field 
-     */
-    height: number
-
-    // Conflicting methods
-
-    /**
-     * Increments the reference count on `object`. This function
-     * does not take the lock on `object` because it relies on
-     * atomic refcounting.
-     * 
-     * This object returns the input parameter to ease writing
-     * constructs like :
-     *  result = gst_object_ref (object->parent);
-     * @returns A pointer to @object
-     */
-    ref(): Gst.Object
-
-    // Overloads of ref
-
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     * @returns the same @object
-     */
-    ref(): GObject.Object
-
-    // Own virtual methods of GstVideo-1.0.GstVideo.VideoSink
-
-    /**
-     * Notifies the subclass of changed #GstVideoInfo.
-     * @virtual 
-     * @param caps A #GstCaps.
-     * @param info A #GstVideoInfo corresponding to `caps`.
-     */
-    vfunc_set_info(caps: Gst.Caps, info: VideoInfo): boolean
-    vfunc_show_frame(buf: Gst.Buffer): Gst.FlowReturn
-
-    // Class property signals of GstVideo-1.0.GstVideo.VideoSink
-
-    connect(sigName: "notify::show-preroll-frame", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::show-preroll-frame", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::show-preroll-frame", ...args: any[]): void
-    connect(sigName: "notify::async", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::async", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::async", ...args: any[]): void
-    connect(sigName: "notify::blocksize", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::blocksize", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::blocksize", ...args: any[]): void
-    connect(sigName: "notify::enable-last-sample", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::enable-last-sample", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::enable-last-sample", ...args: any[]): void
-    connect(sigName: "notify::last-sample", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::last-sample", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::last-sample", ...args: any[]): void
-    connect(sigName: "notify::max-bitrate", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-bitrate", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-bitrate", ...args: any[]): void
-    connect(sigName: "notify::max-lateness", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::max-lateness", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::max-lateness", ...args: any[]): void
-    connect(sigName: "notify::processing-deadline", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::processing-deadline", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::processing-deadline", ...args: any[]): void
-    connect(sigName: "notify::qos", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::qos", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::qos", ...args: any[]): void
-    connect(sigName: "notify::render-delay", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::render-delay", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::render-delay", ...args: any[]): void
-    connect(sigName: "notify::stats", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::stats", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::stats", ...args: any[]): void
-    connect(sigName: "notify::sync", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sync", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sync", ...args: any[]): void
-    connect(sigName: "notify::throttle-time", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::throttle-time", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::throttle-time", ...args: any[]): void
-    connect(sigName: "notify::ts-offset", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::ts-offset", callback: (($obj: VideoSink, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::ts-offset", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
 }
 
 /**
@@ -7053,120 +4733,49 @@ interface VideoSink {
  * GstVideoSink will configure the default base sink to drop frames that
  * arrive later than 20ms as this is considered the default threshold for
  * observing out-of-sync frames.
- * @class 
  */
 class VideoSink extends GstBase.BaseSink {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoSink
-
-    static name: string
-    static $gtype: GObject.GType<VideoSink>
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoSink
-
-    constructor(config?: VideoSink.ConstructorProperties) 
-    _init(config?: VideoSink.ConstructorProperties): void
-    static center_rect(src: VideoRectangle, dst: VideoRectangle, scaling: boolean): /* result */ VideoRectangle
-}
-
-interface ColorBalanceChannelClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.ColorBalanceChannelClass
+    // Own properties of GstVideo-1.0.VideoSink
 
     /**
-     * the parent class
-     * @field 
+     * Whether to show video frames during preroll. If set to %FALSE, video
+     * frames will only be rendered in PLAYING state.
      */
-    parent: GObject.ObjectClass
-    value_changed: (channel: ColorBalanceChannel, value: number) => void
+    show_preroll_frame: boolean
+    /**
+     * Whether to show video frames during preroll. If set to %FALSE, video
+     * frames will only be rendered in PLAYING state.
+     */
+    showPrerollFrame: boolean
+
+    // Own fields of GstVideo-1.0.VideoSink
+
+element: GstBase.BaseSink
+width: number
+height: number
+
+    // Owm methods of GstVideo-1.0.VideoSink
+
+    static center_rect(src: VideoRectangle, dst: VideoRectangle, scaling: boolean): void
 }
 
 /**
  * Color-balance channel class.
- * @record 
  */
-abstract class ColorBalanceChannelClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.ColorBalanceChannelClass
-
-    static name: string
-}
-
-interface ColorBalanceInterface {
-
-    // Own fields of GstVideo-1.0.GstVideo.ColorBalanceInterface
-
-    /**
-     * the parent interface
-     * @field 
-     */
-    iface: GObject.TypeInterface
-    list_channels: (balance: ColorBalance) => ColorBalanceChannel[]
-    set_value: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
-    get_value: (balance: ColorBalance, channel: ColorBalanceChannel) => number
-    get_balance_type: (balance: ColorBalance) => ColorBalanceType
-    value_changed: (balance: ColorBalance, channel: ColorBalanceChannel, value: number) => void
+class ColorBalanceChannelClass {
 }
 
 /**
  * Color-balance interface.
- * @record 
  */
-abstract class ColorBalanceInterface {
-
-    // Own properties of GstVideo-1.0.GstVideo.ColorBalanceInterface
-
-    static name: string
-}
-
-interface NavigationInterface {
-
-    // Own fields of GstVideo-1.0.GstVideo.NavigationInterface
-
-    /**
-     * the parent interface
-     * @field 
-     */
-    iface: GObject.TypeInterface
-    send_event: (navigation: Navigation, structure: Gst.Structure) => void
-    send_event_simple: (navigation: Navigation, event: Gst.Event) => void
+class ColorBalanceInterface {
 }
 
 /**
  * Navigation interface.
- * @record 
  */
-abstract class NavigationInterface {
-
-    // Own properties of GstVideo-1.0.GstVideo.NavigationInterface
-
-    static name: string
-}
-
-interface VideoAFDMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAFDMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * 0 for progressive or field 1 and 1 for field 2
-     * @field 
-     */
-    field: number
-    /**
-     * #GstVideoAFDSpec that applies to `afd`
-     * @field 
-     */
-    spec: VideoAFDSpec
-    /**
-     * #GstVideoAFDValue AFD value
-     * @field 
-     */
-    afd: VideoAFDValue
+class NavigationInterface {
 }
 
 /**
@@ -7184,42 +4793,18 @@ interface VideoAFDMeta {
  * https://en.wikipedia.org/wiki/Active_Format_Description#Complete_list_of_AFD_codes
  * 
  * and SMPTE ST2016-1
- * @record 
  */
 class VideoAFDMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAFDMeta
+    // Own fields of GstVideo-1.0.VideoAFDMeta
 
-    static name: string
+field: number
+spec: VideoAFDSpec
+afd: VideoAFDValue
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoAFDMeta
+    // Owm methods of GstVideo-1.0.VideoAFDMeta
 
     static get_info(): Gst.MetaInfo
-}
-
-interface VideoAffineTransformationMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAffineTransformationMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the column-major 4x4 transformation matrix
-     * @field 
-     */
-    matrix: number[]
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoAffineTransformationMeta
-
-    /**
-     * Apply a transformation using the given 4x4 transformation matrix.
-     * Performs the multiplication, meta->matrix X matrix.
-     * @param matrix a 4x4 transformation matrix to be applied
-     */
-    apply_matrix(matrix: number[]): void
 }
 
 /**
@@ -7233,146 +4818,75 @@ interface VideoAffineTransformationMeta {
  * system with the x-axis moving horizontally (positive values to the right),
  * the y-axis moving vertically (positive values up the screen) and the z-axis
  * perpendicular to the screen (positive values into the screen).
- * @record 
  */
 class VideoAffineTransformationMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAffineTransformationMeta
+    // Own fields of GstVideo-1.0.VideoAffineTransformationMeta
 
-    static name: string
+matrix: number[]
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoAffineTransformationMeta
+    // Owm methods of GstVideo-1.0.VideoAffineTransformationMeta
 
     static get_info(): Gst.MetaInfo
+
+    // Owm methods of GstVideo-1.0.VideoAffineTransformationMeta
+
+    /**
+     * Apply a transformation using the given 4x4 transformation matrix.
+     * Performs the multiplication, meta-&gt;matrix X matrix.
+     * @param matrix a 4x4 transformation matrix to be applied
+     */
+    apply_matrix(matrix: number[]): void
 }
 
-interface VideoAggregatorClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorClass
-
-    update_caps: (videoaggregator: VideoAggregator, caps: Gst.Caps) => Gst.Caps
-    aggregate_frames: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
-    create_output_buffer: (videoaggregator: VideoAggregator, outbuffer: Gst.Buffer) => Gst.FlowReturn
-    find_best_format: (vagg: VideoAggregator, downstream_caps: Gst.Caps, best_info: VideoInfo) => /* at_least_one_alpha */ boolean
+class VideoAggregatorClass {
 }
 
-abstract class VideoAggregatorClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorClass
-
-    static name: string
-}
-
-interface VideoAggregatorConvertPadClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorConvertPadClass
-
-    parent_class: VideoAggregatorPadClass
-    create_conversion_info: (pad: VideoAggregatorConvertPad, agg: VideoAggregator, conversion_info: VideoInfo) => void
-}
-
-abstract class VideoAggregatorConvertPadClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPadClass
-
-    static name: string
-}
-
-interface VideoAggregatorConvertPadPrivate {
+class VideoAggregatorConvertPadClass {
 }
 
 class VideoAggregatorConvertPadPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPadPrivate
-
-    static name: string
 }
 
-interface VideoAggregatorPadClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorPadClass
-
-    parent_class: GstBase.AggregatorPadClass
-    update_conversion_info: (pad: VideoAggregatorPad) => void
-    prepare_frame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame) => boolean
-    clean_frame: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, prepared_frame: VideoFrame) => void
-    prepare_frame_start: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame) => void
-    prepare_frame_finish: (pad: VideoAggregatorPad, videoaggregator: VideoAggregator, prepared_frame: VideoFrame) => void
-    _gst_reserved: any[]
-}
-
-abstract class VideoAggregatorPadClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPadClass
-
-    static name: string
-}
-
-interface VideoAggregatorPadPrivate {
+class VideoAggregatorPadClass {
 }
 
 class VideoAggregatorPadPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPadPrivate
-
-    static name: string
 }
 
-interface VideoAggregatorParallelConvertPadClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPadClass
-
-    parent_class: VideoAggregatorConvertPadClass
-}
-
-abstract class VideoAggregatorParallelConvertPadClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorParallelConvertPadClass
-
-    static name: string
-}
-
-interface VideoAggregatorPrivate {
+class VideoAggregatorParallelConvertPadClass {
 }
 
 class VideoAggregatorPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAggregatorPrivate
-
-    static name: string
 }
 
-interface VideoAlignment {
+/**
+ * Extra alignment parameters for the memory of video buffers. This
+ * structure is usually used to configure the bufferpool if it supports the
+ * #GST_BUFFER_POOL_OPTION_VIDEO_ALIGNMENT.
+ */
+class VideoAlignment {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoAlignment
+    // Own fields of GstVideo-1.0.VideoAlignment
 
-    /**
-     * extra pixels on the top
-     * @field 
-     */
-    padding_top: number
-    /**
-     * extra pixels on the bottom
-     * @field 
-     */
-    padding_bottom: number
-    /**
-     * extra pixels on the left side
-     * @field 
-     */
-    padding_left: number
-    /**
-     * extra pixels on the right side
-     * @field 
-     */
-    padding_right: number
-    /**
-     * array with extra alignment requirements for the strides
-     * @field 
-     */
-    stride_align: number[]
+padding_top: number
+padding_bottom: number
+padding_left: number
+padding_right: number
+stride_align: number[]
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoAlignment
+    // Constructors of GstVideo-1.0.VideoAlignment
+
+
+    constructor(properties?: Partial<{
+      padding_top: number
+padding_bottom: number
+padding_left: number
+padding_right: number
+stride_align: number[]
+    }>);
+
+    // Owm methods of GstVideo-1.0.VideoAlignment
 
     /**
      * Set `align` to its default values with no padding and no alignment.
@@ -7381,95 +4895,29 @@ interface VideoAlignment {
 }
 
 /**
- * Extra alignment parameters for the memory of video buffers. This
- * structure is usually used to configure the bufferpool if it supports the
- * #GST_BUFFER_POOL_OPTION_VIDEO_ALIGNMENT.
- * @record 
- */
-class VideoAlignment {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoAlignment
-
-    static name: string
-}
-
-interface VideoAncillary {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoAncillary
-
-    /**
-     * The Data Identifier
-     * @field 
-     */
-    DID: number
-    /**
-     * The Secondary Data Identifier (if type 2) or the Data
-     *                     Block Number (if type 1)
-     * @field 
-     */
-    SDID_block_number: number
-    /**
-     * The amount of data (in bytes) in `data` (max 255 bytes)
-     * @field 
-     */
-    data_count: number
-    /**
-     * The user data content of the Ancillary packet.
-     *    Does not contain the ADF, DID, SDID nor CS.
-     * @field 
-     */
-    data: Uint8Array
-}
-
-/**
  * Video Ancillary data, according to SMPTE-291M specification.
  * 
  * Note that the contents of the data are always stored as 8bit data (i.e. do not contain
  * the parity check bits).
- * @record 
  */
 class VideoAncillary {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoAncillary
+    // Own fields of GstVideo-1.0.VideoAncillary
 
-    static name: string
-}
+DID: number
+SDID_block_number: number
+data_count: number
+data: Uint8Array
 
-interface VideoBarMeta {
+    // Constructors of GstVideo-1.0.VideoAncillary
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoBarMeta
 
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * 0 for progressive or field 1 and 1 for field 2
-     * @field 
-     */
-    field: number
-    /**
-     * if true then bar data specifies letterbox, otherwise pillarbox
-     * @field 
-     */
-    is_letterbox: boolean
-    /**
-     * If `is_letterbox` is true, then the value specifies the
-     *      last line of a horizontal letterbox bar area at top of reconstructed frame.
-     *      Otherwise, it specifies the last horizontal luminance sample of a vertical pillarbox
-     *      bar area at the left side of the reconstructed frame
-     * @field 
-     */
-    bar_data1: number
-    /**
-     * If `is_letterbox` is true, then the value specifies the
-     *      first line of a horizontal letterbox bar area at bottom of reconstructed frame.
-     *      Otherwise, it specifies the first horizontal
-     *      luminance sample of a vertical pillarbox bar area at the right side of the reconstructed frame.
-     * @field 
-     */
-    bar_data2: number
+    constructor(properties?: Partial<{
+      DID: number
+SDID_block_number: number
+data_count: number
+data: Uint8Array
+    }>);
 }
 
 /**
@@ -7485,88 +4933,53 @@ interface VideoBarMeta {
  * https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
  * 
  * and SMPTE ST2016-1
- * @record 
  */
 class VideoBarMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoBarMeta
+    // Own fields of GstVideo-1.0.VideoBarMeta
 
-    static name: string
+field: number
+is_letterbox: boolean
+bar_data1: number
+bar_data2: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoBarMeta
+    // Owm methods of GstVideo-1.0.VideoBarMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoBufferPoolClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoBufferPoolClass
-
-    parent_class: Gst.BufferPoolClass
-}
-
-abstract class VideoBufferPoolClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoBufferPoolClass
-
-    static name: string
-}
-
-interface VideoBufferPoolPrivate {
+class VideoBufferPoolClass {
 }
 
 class VideoBufferPoolPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoBufferPoolPrivate
-
-    static name: string
-}
-
-interface VideoCaptionMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoCaptionMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * The type of Closed Caption contained in the meta.
-     * @field 
-     */
-    caption_type: VideoCaptionType
-    /**
-     * The Closed Caption data.
-     * @field 
-     */
-    data: Uint8Array
-    /**
-     * The size in bytes of `data`
-     * @field 
-     */
-    size: number
 }
 
 /**
  * Extra buffer metadata providing Closed Caption.
- * @record 
  */
 class VideoCaptionMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoCaptionMeta
+    // Own fields of GstVideo-1.0.VideoCaptionMeta
 
-    static name: string
+caption_type: VideoCaptionType
+data: Uint8Array
+size: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoCaptionMeta
+    // Owm methods of GstVideo-1.0.VideoCaptionMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoChromaResample {
+class VideoChromaResample {
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoChromaResample
+    // Owm methods of GstVideo-1.0.VideoChromaResample
 
+    /**
+     * Perform resampling of `width` chroma pixels in `lines`.
+     * @param lines pixel lines
+     * @param width the number of pixels on one line
+     */
+    (lines: (any | null), width: number): void
     /**
      * Free `resample`
      */
@@ -7575,30 +4988,7 @@ interface VideoChromaResample {
      * The resampler must be fed `n_lines` at a time. The first line should be
      * at `offset`.
      */
-    get_info(): [ /* n_lines */ number, /* offset */ number ]
-}
-
-class VideoChromaResample {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoChromaResample
-
-    static name: string
-}
-
-interface VideoCodecAlphaMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoCodecAlphaMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the encoded alpha frame
-     * @field 
-     */
-    buffer: Gst.Buffer
+    get_info(): void
 }
 
 /**
@@ -7608,82 +4998,37 @@ interface VideoCodecAlphaMeta {
  * for custom purposes, but it generally can't be used to easily to add support
  * for alpha channels to CODECs or formats that don't support that out of the
  * box.
- * @record 
  */
 class VideoCodecAlphaMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoCodecAlphaMeta
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoCodecAlphaMeta
+    // Owm methods of GstVideo-1.0.VideoCodecAlphaMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoCodecFrame {
+/**
+ * A #GstVideoCodecFrame represents a video frame both in raw and
+ * encoded form.
+ */
+class VideoCodecFrame {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoCodecFrame
+    // Own fields of GstVideo-1.0.VideoCodecFrame
 
-    /**
-     * Unique identifier for the frame. Use this if you need
-     *       to get hold of the frame later (like when data is being decoded).
-     *       Typical usage in decoders is to set this on the opaque value provided
-     *       to the library and get back the frame using gst_video_decoder_get_frame()
-     * @field 
-     */
-    system_frame_number: number
-    /**
-     * Decoding timestamp
-     * @field 
-     */
-    dts: Gst.ClockTime
-    /**
-     * Presentation timestamp
-     * @field 
-     */
-    pts: Gst.ClockTime
-    /**
-     * Duration of the frame
-     * @field 
-     */
-    duration: Gst.ClockTime
-    /**
-     * Distance in frames from the last synchronization point.
-     * @field 
-     */
-    distance_from_sync: number
-    /**
-     * the input #GstBuffer that created this frame. The buffer is owned
-     *           by the frame and references to the frame instead of the buffer should
-     *           be kept.
-     * @field 
-     */
-    input_buffer: Gst.Buffer
-    /**
-     * the output #GstBuffer. Implementations should set this either
-     *           directly, or by using the
-     *           gst_video_decoder_allocate_output_frame() or
-     *           gst_video_decoder_allocate_output_buffer() methods. The buffer is
-     *           owned by the frame and references to the frame instead of the
-     *           buffer should be kept.
-     * @field 
-     */
-    output_buffer: Gst.Buffer
-    /**
-     * Running time when the frame will be used.
-     * @field 
-     */
-    deadline: Gst.ClockTime
+system_frame_number: number
+dts: Gst.ClockTime
+pts: Gst.ClockTime
+duration: Gst.ClockTime
+distance_from_sync: number
+deadline: Gst.ClockTime
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoCodecFrame
+    // Owm methods of GstVideo-1.0.VideoCodecFrame
 
     /**
      * Gets private data set on the frame by the subclass via
      * gst_video_codec_frame_set_user_data() previously.
      * @returns The previously set user_data
      */
-    get_user_data(): any | null
+    get_user_data(): (any | null)
     /**
      * Increases the refcount of the given frame by one.
      * @returns @buf
@@ -7706,55 +5051,24 @@ interface VideoCodecFrame {
 }
 
 /**
- * A #GstVideoCodecFrame represents a video frame both in raw and
- * encoded form.
- * @record 
+ * Structure representing the state of an incoming or outgoing video
+ * stream for encoders and decoders.
+ * 
+ * Decoders and encoders will receive such a state through their
+ * respective `set_format` vmethods.
+ * 
+ * Decoders and encoders can set the downstream state, by using the
+ * gst_video_decoder_set_output_state() or
+ * gst_video_encoder_set_output_state() methods.
  */
-class VideoCodecFrame {
+class VideoCodecState {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoCodecFrame
+    // Own fields of GstVideo-1.0.VideoCodecState
 
-    static name: string
-}
+mastering_display_info: VideoMasteringDisplayInfo
+content_light_level: VideoContentLightLevel
 
-interface VideoCodecState {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoCodecState
-
-    /**
-     * The #GstVideoInfo describing the stream
-     * @field 
-     */
-    info: VideoInfo
-    /**
-     * The #GstCaps used in the caps negotiation of the pad.
-     * @field 
-     */
-    caps: Gst.Caps
-    /**
-     * a #GstBuffer corresponding to the
-     *     'codec_data' field of a stream, or NULL.
-     * @field 
-     */
-    codec_data: Gst.Buffer
-    /**
-     * The #GstCaps for allocation query and pool
-     *     negotiation. Since: 1.10
-     * @field 
-     */
-    allocation_caps: Gst.Caps
-    /**
-     * Mastering display color volume information (HDR metadata) for the stream.
-     * @field 
-     */
-    mastering_display_info: VideoMasteringDisplayInfo
-    /**
-     * Content light level information for the stream.
-     * @field 
-     */
-    content_light_level: VideoContentLightLevel
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoCodecState
+    // Owm methods of GstVideo-1.0.VideoCodecState
 
     /**
      * Increases the refcount of the given state by one.
@@ -7769,116 +5083,38 @@ interface VideoCodecState {
 }
 
 /**
- * Structure representing the state of an incoming or outgoing video
- * stream for encoders and decoders.
- * 
- * Decoders and encoders will receive such a state through their
- * respective `set_format` vmethods.
- * 
- * Decoders and encoders can set the downstream state, by using the
- * gst_video_decoder_set_output_state() or
- * gst_video_encoder_set_output_state() methods.
- * @record 
- */
-class VideoCodecState {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoCodecState
-
-    static name: string
-}
-
-interface VideoColorPrimariesInfo {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoColorPrimariesInfo
-
-    /**
-     * a #GstVideoColorPrimaries
-     * @field 
-     */
-    primaries: VideoColorPrimaries
-    /**
-     * reference white x coordinate
-     * @field 
-     */
-    Wx: number
-    /**
-     * reference white y coordinate
-     * @field 
-     */
-    Wy: number
-    /**
-     * red x coordinate
-     * @field 
-     */
-    Rx: number
-    /**
-     * red y coordinate
-     * @field 
-     */
-    Ry: number
-    /**
-     * green x coordinate
-     * @field 
-     */
-    Gx: number
-    /**
-     * green y coordinate
-     * @field 
-     */
-    Gy: number
-    /**
-     * blue x coordinate
-     * @field 
-     */
-    Bx: number
-    /**
-     * blue y coordinate
-     * @field 
-     */
-    By: number
-}
-
-/**
  * Structure describing the chromaticity coordinates of an RGB system. These
  * values can be used to construct a matrix to transform RGB to and from the
  * XYZ colorspace.
- * @record 
  */
 class VideoColorPrimariesInfo {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoColorPrimariesInfo
+    // Own fields of GstVideo-1.0.VideoColorPrimariesInfo
 
-    static name: string
+primaries: VideoColorPrimaries
+Wx: number
+Wy: number
+Rx: number
+Ry: number
+Gx: number
+Gy: number
+Bx: number
+By: number
 }
 
-interface VideoColorimetry {
+/**
+ * Structure describing the color info.
+ */
+class VideoColorimetry {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoColorimetry
+    // Own fields of GstVideo-1.0.VideoColorimetry
 
-    /**
-     * the color range. This is the valid range for the samples.
-     *         It is used to convert the samples to Y'PbPr values.
-     * @field 
-     */
-    range: VideoColorRange
-    /**
-     * the color matrix. Used to convert between Y'PbPr and
-     *          non-linear RGB (R'G'B')
-     * @field 
-     */
-    matrix: VideoColorMatrix
-    /**
-     * the transfer function. used to convert between R'G'B' and RGB
-     * @field 
-     */
-    transfer: VideoTransferFunction
-    /**
-     * color primaries. used to convert between R'G'B' and CIE XYZ
-     * @field 
-     */
-    primaries: VideoColorPrimaries
+range: VideoColorRange
+matrix: VideoColorMatrix
+transfer: VideoTransferFunction
+primaries: VideoColorPrimaries
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoColorimetry
+    // Owm methods of GstVideo-1.0.VideoColorimetry
 
     /**
      * Parse the colorimetry string and update `cinfo` with the parsed
@@ -7886,7 +5122,7 @@ interface VideoColorimetry {
      * @param color a colorimetry string
      * @returns %TRUE if @color points to valid colorimetry info.
      */
-    from_string(color: string | null): boolean
+    from_string(color: string): boolean
     /**
      * Compare the 2 colorimetry sets for equality
      * @param other another #GstVideoColorimetry
@@ -7895,9 +5131,9 @@ interface VideoColorimetry {
     is_equal(other: VideoColorimetry): boolean
     /**
      * Compare the 2 colorimetry sets for functionally equality
-     * @param bitdepth bitdepth of a format associated with `cinfo`
+     * @param bitdepth bitdepth of a format associated with @cinfo
      * @param other another #GstVideoColorimetry
-     * @param other_bitdepth bitdepth of a format associated with `other`
+     * @param other_bitdepth bitdepth of a format associated with @other
      * @returns %TRUE if @cinfo and @other are equivalent.
      */
     is_equivalent(bitdepth: number, other: VideoColorimetry, other_bitdepth: number): boolean
@@ -7907,43 +5143,33 @@ interface VideoColorimetry {
      * @param color a colorimetry string
      * @returns %TRUE if @color conveys the same colorimetry info as the color information in @info.
      */
-    matches(color: string | null): boolean
+    matches(color: string): boolean
     /**
      * Make a string representation of `cinfo`.
      * @returns a string representation of @cinfo or %NULL if all the entries of @cinfo are unknown values.
      */
-    to_string(): string | null
+    to_string(): (string | null)
 }
 
 /**
- * Structure describing the color info.
- * @record 
+ * Content light level information specified in CEA-861.3, Appendix A.
  */
-class VideoColorimetry {
+class VideoContentLightLevel {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoColorimetry
+    // Own fields of GstVideo-1.0.VideoContentLightLevel
 
-    static name: string
-}
+max_content_light_level: number
+max_frame_average_light_level: number
 
-interface VideoContentLightLevel {
+    // Constructors of GstVideo-1.0.VideoContentLightLevel
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoContentLightLevel
 
-    /**
-     * the maximum content light level
-     *   (abbreviated to MaxCLL) in candelas per square meter (cd/m^2 and nit)
-     * @field 
-     */
-    max_content_light_level: number
-    /**
-     * the maximum frame average light level
-     *   (abbreviated to MaxFLL) in candelas per square meter (cd/m^2 and nit)
-     * @field 
-     */
-    max_frame_average_light_level: number
+    constructor(properties?: Partial<{
+      max_content_light_level: number
+max_frame_average_light_level: number
+    }>);
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoContentLightLevel
+    // Owm methods of GstVideo-1.0.VideoContentLightLevel
 
     /**
      * Parse `caps` and update `linfo`
@@ -7963,7 +5189,7 @@ interface VideoContentLightLevel {
      * @param level a content-light-level string from caps
      * @returns %TRUE if @linfo points to valid #GstVideoContentLightLevel.
      */
-    from_string(level: string | null): boolean
+    from_string(level: string): boolean
     /**
      * Initialize `linfo`
      */
@@ -7978,23 +5204,12 @@ interface VideoContentLightLevel {
      * Convert `linfo` to its string representation.
      * @returns a string representation of @linfo.
      */
-    to_string(): string | null
+    to_string(): string
 }
 
-/**
- * Content light level information specified in CEA-861.3, Appendix A.
- * @record 
- */
-class VideoContentLightLevel {
+class VideoConverter {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoContentLightLevel
-
-    static name: string
-}
-
-interface VideoConverter {
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoConverter
+    // Owm methods of GstVideo-1.0.VideoConverter
 
     /**
      * Convert the pixels of `src` into `dest` using `convert`.
@@ -8045,84 +5260,21 @@ interface VideoConverter {
     set_config(config: Gst.Structure): boolean
 }
 
-class VideoConverter {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoConverter
-
-    static name: string
-}
-
-interface VideoCropMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoCropMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the horizontal offset
-     * @field 
-     */
-    x: number
-    /**
-     * the vertical offset
-     * @field 
-     */
-    y: number
-    /**
-     * the cropped width
-     * @field 
-     */
-    width: number
-    /**
-     * the cropped height
-     * @field 
-     */
-    height: number
-}
-
 /**
  * Extra buffer metadata describing image cropping.
- * @record 
  */
 class VideoCropMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoCropMeta
+    // Own fields of GstVideo-1.0.VideoCropMeta
 
-    static name: string
+x: number
+y: number
+width: number
+height: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoCropMeta
+    // Owm methods of GstVideo-1.0.VideoCropMeta
 
     static get_info(): Gst.MetaInfo
-}
-
-interface VideoDecoderClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoDecoderClass
-
-    open: (decoder: VideoDecoder) => boolean
-    close: (decoder: VideoDecoder) => boolean
-    start: (decoder: VideoDecoder) => boolean
-    stop: (decoder: VideoDecoder) => boolean
-    parse: (decoder: VideoDecoder, frame: VideoCodecFrame, adapter: GstBase.Adapter, at_eos: boolean) => Gst.FlowReturn
-    set_format: (decoder: VideoDecoder, state: VideoCodecState) => boolean
-    reset: (decoder: VideoDecoder, hard: boolean) => boolean
-    finish: (decoder: VideoDecoder) => Gst.FlowReturn
-    handle_frame: (decoder: VideoDecoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    sink_event: (decoder: VideoDecoder, event: Gst.Event) => boolean
-    src_event: (decoder: VideoDecoder, event: Gst.Event) => boolean
-    negotiate: (decoder: VideoDecoder) => boolean
-    decide_allocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    propose_allocation: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    flush: (decoder: VideoDecoder) => boolean
-    sink_query: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    src_query: (decoder: VideoDecoder, query: Gst.Query) => boolean
-    getcaps: (decoder: VideoDecoder, filter: Gst.Caps) => Gst.Caps
-    drain: (decoder: VideoDecoder) => Gst.FlowReturn
-    transform_meta: (decoder: VideoDecoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
-    handle_missing_data: (decoder: VideoDecoder, timestamp: Gst.ClockTime, duration: Gst.ClockTime) => boolean
 }
 
 /**
@@ -8130,50 +5282,26 @@ interface VideoDecoderClass {
  * needed. At minimum `handle_frame` needs to be overridden, and `set_format`
  * and likely as well.  If non-packetized input is supported or expected,
  * `parse` needs to be overridden as well.
- * @record 
  */
-abstract class VideoDecoderClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDecoderClass
-
-    static name: string
-}
-
-interface VideoDecoderPrivate {
+class VideoDecoderClass {
 }
 
 class VideoDecoderPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDecoderPrivate
-
-    static name: string
-}
-
-interface VideoDirectionInterface {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoDirectionInterface
-
-    /**
-     * parent interface type.
-     * @field 
-     */
-    iface: GObject.TypeInterface
 }
 
 /**
  * #GstVideoDirectionInterface interface.
- * @record 
  */
-abstract class VideoDirectionInterface {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDirectionInterface
-
-    static name: string
+class VideoDirectionInterface {
 }
 
-interface VideoDither {
+/**
+ * GstVideoDither provides implementations of several dithering algorithms
+ * that can be applied to lines of video pixels to quantize and dither them.
+ */
+class VideoDither {
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoDither
+    // Owm methods of GstVideo-1.0.VideoDither
 
     /**
      * Free `dither`
@@ -8188,224 +5316,57 @@ interface VideoDither {
      * @param y y coordinate
      * @param width the width
      */
-    line(line: any | null, x: number, y: number, width: number): void
-}
-
-/**
- * GstVideoDither provides implementations of several dithering algorithms
- * that can be applied to lines of video pixels to quantize and dither them.
- * @record 
- */
-class VideoDither {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoDither
-
-    static name: string
-}
-
-interface VideoEncoderClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoEncoderClass
-
-    open: (encoder: VideoEncoder) => boolean
-    close: (encoder: VideoEncoder) => boolean
-    start: (encoder: VideoEncoder) => boolean
-    stop: (encoder: VideoEncoder) => boolean
-    set_format: (encoder: VideoEncoder, state: VideoCodecState) => boolean
-    handle_frame: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    reset: (encoder: VideoEncoder, hard: boolean) => boolean
-    finish: (encoder: VideoEncoder) => Gst.FlowReturn
-    pre_push: (encoder: VideoEncoder, frame: VideoCodecFrame) => Gst.FlowReturn
-    getcaps: (enc: VideoEncoder, filter: Gst.Caps) => Gst.Caps
-    sink_event: (encoder: VideoEncoder, event: Gst.Event) => boolean
-    src_event: (encoder: VideoEncoder, event: Gst.Event) => boolean
-    negotiate: (encoder: VideoEncoder) => boolean
-    decide_allocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    propose_allocation: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    flush: (encoder: VideoEncoder) => boolean
-    sink_query: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    src_query: (encoder: VideoEncoder, query: Gst.Query) => boolean
-    transform_meta: (encoder: VideoEncoder, frame: VideoCodecFrame, meta: Gst.Meta) => boolean
+    line(line: (any | null), x: number, y: number, width: number): void
 }
 
 /**
  * Subclasses can override any of the available virtual methods or not, as
  * needed. At minimum `handle_frame` needs to be overridden, and `set_format`
  * and `get_caps` are likely needed as well.
- * @record 
  */
-abstract class VideoEncoderClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoEncoderClass
-
-    static name: string
-}
-
-interface VideoEncoderPrivate {
+class VideoEncoderClass {
 }
 
 class VideoEncoderPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoEncoderPrivate
-
-    static name: string
-}
-
-interface VideoFilterClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoFilterClass
-
-    /**
-     * the parent class structure
-     * @field 
-     */
-    parent_class: GstBase.BaseTransformClass
-    set_info: (filter: VideoFilter, incaps: Gst.Caps, in_info: VideoInfo, outcaps: Gst.Caps, out_info: VideoInfo) => boolean
-    transform_frame: (filter: VideoFilter, inframe: VideoFrame, outframe: VideoFrame) => Gst.FlowReturn
-    transform_frame_ip: (trans: VideoFilter, frame: VideoFrame) => Gst.FlowReturn
 }
 
 /**
  * The video filter class structure.
- * @record 
  */
-abstract class VideoFilterClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoFilterClass
-
-    static name: string
+class VideoFilterClass {
 }
 
-interface VideoFormatInfo {
+/**
+ * Information for a video format.
+ */
+class VideoFormatInfo {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoFormatInfo
+    // Own fields of GstVideo-1.0.VideoFormatInfo
 
-    /**
-     * #GstVideoFormat
-     * @field 
-     */
-    format: VideoFormat
-    /**
-     * string representation of the format
-     * @field 
-     */
-    name: string | null
-    /**
-     * use readable description of the format
-     * @field 
-     */
-    description: string | null
-    /**
-     * #GstVideoFormatFlags
-     * @field 
-     */
-    flags: VideoFormatFlags
-    /**
-     * The number of bits used to pack data items. This can be less than 8
-     *    when multiple pixels are stored in a byte. for values > 8 multiple bytes
-     *    should be read according to the endianness flag before applying the shift
-     *    and mask.
-     * @field 
-     */
-    bits: number
-    /**
-     * the number of components in the video format.
-     * @field 
-     */
-    n_components: number
-    /**
-     * the number of bits to shift away to get the component data
-     * @field 
-     */
-    shift: number[]
-    /**
-     * the depth in bits for each component
-     * @field 
-     */
-    depth: number[]
-    /**
-     * the pixel stride of each component. This is the amount of
-     *    bytes to the pixel immediately to the right. When bits < 8, the stride is
-     *    expressed in bits. For 24-bit RGB, this would be 3 bytes, for example,
-     *    while it would be 4 bytes for RGBx or ARGB.
-     * @field 
-     */
-    pixel_stride: number[]
-    /**
-     * the number of planes for this format. The number of planes can be
-     *    less than the amount of components when multiple components are packed into
-     *    one plane.
-     * @field 
-     */
-    n_planes: number
-    /**
-     * the plane number where a component can be found
-     * @field 
-     */
-    plane: number[]
-    /**
-     * the offset in the plane where the first pixel of the components
-     *    can be found.
-     * @field 
-     */
-    poffset: number[]
-    /**
-     * subsampling factor of the width for the component. Use
-     *     GST_VIDEO_SUB_SCALE to scale a width.
-     * @field 
-     */
-    w_sub: number[]
-    /**
-     * subsampling factor of the height for the component. Use
-     *     GST_VIDEO_SUB_SCALE to scale a height.
-     * @field 
-     */
-    h_sub: number[]
-    /**
-     * the format of the unpacked pixels. This format must have the
-     *     #GST_VIDEO_FORMAT_FLAG_UNPACK flag set.
-     * @field 
-     */
-    unpack_format: VideoFormat
-    /**
-     * an unpack function for this format
-     * @field 
-     */
-    unpack_func: VideoFormatUnpack
-    /**
-     * the amount of lines that will be packed
-     * @field 
-     */
-    pack_lines: number
-    /**
-     * an pack function for this format
-     * @field 
-     */
-    pack_func: VideoFormatPack
-    /**
-     * The tiling mode
-     * @field 
-     */
-    tile_mode: VideoTileMode
-    /**
-     * The width of a tile, in bytes, represented as a shift. DEPRECATED,
-     * use tile_info[] array instead.
-     * @field 
-     */
-    tile_ws: number
-    /**
-     * The height of a tile, in bytes, represented as a shift. DEPREACTED,
-     * use tile_info[] array instead.
-     * @field 
-     */
-    tile_hs: number
-    /**
-     * Information about the tiles for each of the planes.
-     * @field 
-     */
-    tile_info: VideoTileInfo[]
+format: VideoFormat
+name: string
+description: string
+flags: VideoFormatFlags
+bits: number
+n_components: number
+shift: number[]
+depth: number[]
+pixel_stride: number[]
+n_planes: number
+plane: number[]
+poffset: number[]
+w_sub: number[]
+h_sub: number[]
+unpack_format: VideoFormat
+unpack_func: VideoFormatUnpack
+pack_lines: number
+pack_func: VideoFormatPack
+tile_mode: VideoTileMode
+tile_ws: number
+tile_hs: number
+tile_info: VideoTileInfo[]
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoFormatInfo
+    // Owm methods of GstVideo-1.0.VideoFormatInfo
 
     /**
      * Fill `components` with the number of all the components packed in plane `p`
@@ -8413,7 +5374,7 @@ interface VideoFormatInfo {
      * components are packed in the plane.
      * @param plane a plane number
      */
-    component(plane: number): /* components */ number
+    component(plane: number): void
     /**
      * Extrapolate `plane` stride from the first stride of an image. This helper is
      * useful to support legacy API were only one stride is supported.
@@ -8425,58 +5386,87 @@ interface VideoFormatInfo {
 }
 
 /**
- * Information for a video format.
- * @record 
+ * A video frame obtained from gst_video_frame_map()
  */
-class VideoFormatInfo {
+class VideoFrame {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoFormatInfo
+    // Own fields of GstVideo-1.0.VideoFrame
 
-    static name: string
-}
+flags: VideoFrameFlags
+meta: any
+id: number
+data: any[]
 
-interface VideoFrame {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoFrame
+    // Owm methods of GstVideo-1.0.VideoFrame
 
     /**
-     * the #GstVideoInfo
-     * @field 
+     * Use `info` and `buffer` to fill in the values of `frame`. `frame` is usually
+     * allocated on the stack, and you will pass the address to the #GstVideoFrame
+     * structure allocated on the stack; gst_video_frame_map() will then fill in
+     * the structures with the various video-specific information you need to access
+     * the pixels of the video buffer. You can then use accessor macros such as
+     * GST_VIDEO_FRAME_COMP_DATA(), GST_VIDEO_FRAME_PLANE_DATA(),
+     * GST_VIDEO_FRAME_COMP_STRIDE(), GST_VIDEO_FRAME_PLANE_STRIDE() etc.
+     * to get to the pixels.
+     * 
+     * 
+     * ```&lt;!-- language="C" --&gt;
+     *   GstVideoFrame vframe;
+     *   ...
+     *   // set RGB pixels to black one at a time
+     *   if (gst_video_frame_map (&amp;vframe, video_info, video_buffer, GST_MAP_WRITE)) {
+     *     guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (vframe, 0);
+     *     guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (vframe, 0);
+     *     guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (vframe, 0);
+     * 
+     *     for (h = 0; h &lt; height; ++h) {
+     *       for (w = 0; w &lt; width; ++w) {
+     *         guint8 *pixel = pixels + h * stride + w * pixel_stride;
+     * 
+     *         memset (pixel, 0, pixel_stride);
+     *       }
+     *     }
+     * 
+     *     gst_video_frame_unmap (&amp;vframe);
+     *   }
+     *   ...
+     * ```
+     * 
+     * 
+     * All video planes of `buffer` will be mapped and the pointers will be set in
+     * `frame-&`gt;data.
+     * 
+     * The purpose of this function is to make it easy for you to get to the video
+     * pixels in a generic way, without you having to worry too much about details
+     * such as whether the video data is allocated in one contiguous memory chunk
+     * or multiple memory chunks (e.g. one for each plane); or if custom strides
+     * and custom plane offsets are used or not (as signalled by GstVideoMeta on
+     * each buffer). This function will just fill the #GstVideoFrame structure
+     * with the right values and if you use the accessor macros everything will
+     * just work and you can access the data easily. It also maps the underlying
+     * memory chunks for you.
+     * @param info a #GstVideoInfo
+     * @param buffer the buffer to map
+     * @param flags #GstMapFlags
      */
-    info: VideoInfo
+    static map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlags): boolean
     /**
-     * #GstVideoFrameFlags for the frame
-     * @field 
+     * Use `info` and `buffer` to fill in the values of `frame` with the video frame
+     * information of frame `id`.
+     * 
+     * When `id` is -1, the default frame is mapped. When `id` != -1, this function
+     * will return %FALSE when there is no GstVideoMeta with that id.
+     * 
+     * All video planes of `buffer` will be mapped and the pointers will be set in
+     * `frame-&`gt;data.
+     * @param info a #GstVideoInfo
+     * @param buffer the buffer to map
+     * @param id the frame id to map
+     * @param flags #GstMapFlags
      */
-    flags: VideoFrameFlags
-    /**
-     * the mapped buffer
-     * @field 
-     */
-    buffer: Gst.Buffer
-    /**
-     * pointer to metadata if any
-     * @field 
-     */
-    meta: any
-    /**
-     * id of the mapped frame. the id can for example be used to
-     *   identify the frame in case of multiview video.
-     * @field 
-     */
-    id: number
-    /**
-     * pointers to the plane data
-     * @field 
-     */
-    data: any[]
-    /**
-     * mappings of the planes
-     * @field 
-     */
-    map: Gst.MapInfo[]
+    static map_id(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): boolean
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoFrame
+    // Owm methods of GstVideo-1.0.VideoFrame
 
     /**
      * Copy the contents from `src` to `dest`.
@@ -8504,113 +5494,24 @@ interface VideoFrame {
 }
 
 /**
- * A video frame obtained from gst_video_frame_map()
- * @record 
+ * Extra buffer metadata for uploading a buffer to an OpenGL texture
+ * ID. The caller of gst_video_gl_texture_upload_meta_upload() must
+ * have OpenGL set up and call this from a thread where it is valid
+ * to upload something to an OpenGL texture.
  */
-class VideoFrame {
+class VideoGLTextureUploadMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoFrame
+    // Own fields of GstVideo-1.0.VideoGLTextureUploadMeta
 
-    static name: string
+texture_orientation: VideoGLTextureOrientation
+n_textures: number
+texture_type: VideoGLTextureType[]
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoFrame
+    // Owm methods of GstVideo-1.0.VideoGLTextureUploadMeta
 
-    /**
-     * Use `info` and `buffer` to fill in the values of `frame`. `frame` is usually
-     * allocated on the stack, and you will pass the address to the #GstVideoFrame
-     * structure allocated on the stack; gst_video_frame_map() will then fill in
-     * the structures with the various video-specific information you need to access
-     * the pixels of the video buffer. You can then use accessor macros such as
-     * GST_VIDEO_FRAME_COMP_DATA(), GST_VIDEO_FRAME_PLANE_DATA(),
-     * GST_VIDEO_FRAME_COMP_STRIDE(), GST_VIDEO_FRAME_PLANE_STRIDE() etc.
-     * to get to the pixels.
-     * 
-     * 
-     * ```c
-     *   GstVideoFrame vframe;
-     *   ...
-     *   // set RGB pixels to black one at a time
-     *   if (gst_video_frame_map (&vframe, video_info, video_buffer, GST_MAP_WRITE)) {
-     *     guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (vframe, 0);
-     *     guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (vframe, 0);
-     *     guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (vframe, 0);
-     * 
-     *     for (h = 0; h < height; ++h) {
-     *       for (w = 0; w < width; ++w) {
-     *         guint8 *pixel = pixels + h * stride + w * pixel_stride;
-     * 
-     *         memset (pixel, 0, pixel_stride);
-     *       }
-     *     }
-     * 
-     *     gst_video_frame_unmap (&vframe);
-     *   }
-     *   ...
-     * ```
-     * 
-     * 
-     * All video planes of `buffer` will be mapped and the pointers will be set in
-     * `frame->`data.
-     * 
-     * The purpose of this function is to make it easy for you to get to the video
-     * pixels in a generic way, without you having to worry too much about details
-     * such as whether the video data is allocated in one contiguous memory chunk
-     * or multiple memory chunks (e.g. one for each plane); or if custom strides
-     * and custom plane offsets are used or not (as signalled by GstVideoMeta on
-     * each buffer). This function will just fill the #GstVideoFrame structure
-     * with the right values and if you use the accessor macros everything will
-     * just work and you can access the data easily. It also maps the underlying
-     * memory chunks for you.
-     * @param info a #GstVideoInfo
-     * @param buffer the buffer to map
-     * @param flags #GstMapFlags
-     * @returns %TRUE on success.
-     */
-    static map(info: VideoInfo, buffer: Gst.Buffer, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
-    /**
-     * Use `info` and `buffer` to fill in the values of `frame` with the video frame
-     * information of frame `id`.
-     * 
-     * When `id` is -1, the default frame is mapped. When `id` != -1, this function
-     * will return %FALSE when there is no GstVideoMeta with that id.
-     * 
-     * All video planes of `buffer` will be mapped and the pointers will be set in
-     * `frame->`data.
-     * @param info a #GstVideoInfo
-     * @param buffer the buffer to map
-     * @param id the frame id to map
-     * @param flags #GstMapFlags
-     * @returns %TRUE on success.
-     */
-    static map_id(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): [ /* returnType */ boolean, /* frame */ VideoFrame ]
-}
+    static get_info(): Gst.MetaInfo
 
-interface VideoGLTextureUploadMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoGLTextureUploadMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * Orientation of the textures
-     * @field 
-     */
-    texture_orientation: VideoGLTextureOrientation
-    /**
-     * Number of textures that are generated
-     * @field 
-     */
-    n_textures: number
-    /**
-     * Type of each texture
-     * @field 
-     */
-    texture_type: VideoGLTextureType[]
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoGLTextureUploadMeta
+    // Owm methods of GstVideo-1.0.VideoGLTextureUploadMeta
 
     /**
      * Uploads the buffer which owns the meta to a specific texture ID.
@@ -8621,104 +5522,68 @@ interface VideoGLTextureUploadMeta {
 }
 
 /**
- * Extra buffer metadata for uploading a buffer to an OpenGL texture
- * ID. The caller of gst_video_gl_texture_upload_meta_upload() must
- * have OpenGL set up and call this from a thread where it is valid
- * to upload something to an OpenGL texture.
- * @record 
+ * Information describing image properties. This information can be filled
+ * in from GstCaps with gst_video_info_from_caps(). The information is also used
+ * to store the specific video info when mapping a video frame with
+ * gst_video_frame_map().
+ * 
+ * Use the provided macros to access the info in this structure.
  */
-class VideoGLTextureUploadMeta {
+class VideoInfo {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoGLTextureUploadMeta
+    // Own fields of GstVideo-1.0.VideoInfo
 
-    static name: string
+interlace_mode: VideoInterlaceMode
+flags: VideoFlags
+width: number
+height: number
+size: number
+views: number
+chroma_site: VideoChromaSite
+par_n: number
+par_d: number
+fps_n: number
+fps_d: number
+offset: number[]
+stride: number[]
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoGLTextureUploadMeta
+    // Constructors of GstVideo-1.0.VideoInfo
 
-    static get_info(): Gst.MetaInfo
-}
 
-interface VideoInfo {
+    constructor(properties?: Partial<{
+      interlace_mode: VideoInterlaceMode
+flags: VideoFlags
+width: number
+height: number
+size: number
+views: number
+chroma_site: VideoChromaSite
+colorimetry: VideoColorimetry
+par_n: number
+par_d: number
+fps_n: number
+fps_d: number
+offset: number[]
+stride: number[]
+    }>);
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoInfo
+static ["new"](): VideoInfo;
+
+static new_from_caps(caps: Gst.Caps): VideoInfo;
+
+    // Owm methods of GstVideo-1.0.VideoInfo
 
     /**
-     * the format info of the video
-     * @field 
+     * Parse `caps` and update `info`.
+     * @param caps a #GstCaps
      */
-    finfo: VideoFormatInfo
+    static from_caps(caps: Gst.Caps): boolean
     /**
-     * the interlace mode
-     * @field 
+     * Initialize `info` with default values.
      */
-    interlace_mode: VideoInterlaceMode
-    /**
-     * additional video flags
-     * @field 
-     */
-    flags: VideoFlags
-    /**
-     * the width of the video
-     * @field 
-     */
-    width: number
-    /**
-     * the height of the video
-     * @field 
-     */
-    height: number
-    /**
-     * the default size of one frame
-     * @field 
-     */
-    size: number
-    /**
-     * the number of views for multiview video
-     * @field 
-     */
-    views: number
-    /**
-     * a #GstVideoChromaSite.
-     * @field 
-     */
-    chroma_site: VideoChromaSite
-    /**
-     * the colorimetry info
-     * @field 
-     */
-    colorimetry: VideoColorimetry
-    /**
-     * the pixel-aspect-ratio numerator
-     * @field 
-     */
-    par_n: number
-    /**
-     * the pixel-aspect-ratio denominator
-     * @field 
-     */
-    par_d: number
-    /**
-     * the framerate numerator
-     * @field 
-     */
-    fps_n: number
-    /**
-     * the framerate denominator
-     * @field 
-     */
-    fps_d: number
-    /**
-     * offsets of the planes
-     * @field 
-     */
-    offset: number[]
-    /**
-     * strides of the planes
-     * @field 
-     */
-    stride: number[]
+    static init(): void
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoInfo
+    // Owm methods of GstVideo-1.0.VideoInfo
 
     /**
      * Adjust the offset and stride fields in `info` so that the padding and
@@ -8743,18 +5608,18 @@ interface VideoInfo {
      * @param align alignment parameters
      * @returns %FALSE if alignment could not be applied, e.g. because the   size of a frame can't be represented as a 32 bit integer
      */
-    align_full(align: VideoAlignment): [ /* returnType */ boolean, /* plane_size */ number ]
+    align_full(align: VideoAlignment): boolean
     /**
      * Converts among various #GstFormat types.  This function handles
      * GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
      * raw video, GST_FORMAT_DEFAULT corresponds to video frames.  This
      * function can be used to handle pad queries of the type GST_QUERY_CONVERT.
-     * @param src_format #GstFormat of the `src_value`
+     * @param src_format #GstFormat of the @src_value
      * @param src_value value to convert
-     * @param dest_format #GstFormat of the `dest_value`
+     * @param dest_format #GstFormat of the @dest_value
      * @returns TRUE if the conversion was successful.
      */
-    convert(src_format: Gst.Format, src_value: number, dest_format: Gst.Format): [ /* returnType */ boolean, /* dest_value */ number ]
+    convert(src_format: Gst.Format, src_value: number, dest_format: Gst.Format): boolean
     /**
      * Copy a GstVideoInfo structure.
      * @returns a new #GstVideoInfo. free with gst_video_info_free.
@@ -8801,182 +5666,37 @@ interface VideoInfo {
 }
 
 /**
- * Information describing image properties. This information can be filled
- * in from GstCaps with gst_video_info_from_caps(). The information is also used
- * to store the specific video info when mapping a video frame with
- * gst_video_frame_map().
- * 
- * Use the provided macros to access the info in this structure.
- * @record 
+ * Mastering display color volume information defined by SMPTE ST 2086
+ * (a.k.a static HDR metadata).
  */
-class VideoInfo {
+class VideoMasteringDisplayInfo {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoInfo
+    // Own fields of GstVideo-1.0.VideoMasteringDisplayInfo
 
-    static name: string
+display_primaries: VideoMasteringDisplayInfoCoordinates[]
+white_point: VideoMasteringDisplayInfoCoordinates
+max_display_mastering_luminance: number
+min_display_mastering_luminance: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoInfo
+    // Constructors of GstVideo-1.0.VideoMasteringDisplayInfo
 
-    /**
-     * Allocate a new #GstVideoInfo that is also initialized with
-     * gst_video_info_init().
-     * @constructor 
-     * @returns a new #GstVideoInfo. free with gst_video_info_free().
-     */
-    constructor() 
-    /**
-     * Allocate a new #GstVideoInfo that is also initialized with
-     * gst_video_info_init().
-     * @constructor 
-     * @returns a new #GstVideoInfo. free with gst_video_info_free().
-     */
-    static new(): VideoInfo
-    /**
-     * Parse `caps` to generate a #GstVideoInfo.
-     * @constructor 
-     * @param caps a #GstCaps
-     * @returns A #GstVideoInfo, or %NULL if @caps couldn't be parsed
-     */
-    static new_from_caps(caps: Gst.Caps): VideoInfo
-    /**
-     * Parse `caps` and update `info`.
-     * @param caps a #GstCaps
-     * @returns TRUE if @caps could be parsed
-     */
-    static from_caps(caps: Gst.Caps): [ /* returnType */ boolean, /* info */ VideoInfo ]
-    /**
-     * Initialize `info` with default values.
-     */
-    static init(): /* info */ VideoInfo
-}
 
-interface VideoInfoDmaDrm {
+    constructor(properties?: Partial<{
+      display_primaries: VideoMasteringDisplayInfoCoordinates[]
+white_point: VideoMasteringDisplayInfoCoordinates
+max_display_mastering_luminance: number
+min_display_mastering_luminance: number
+    }>);
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
+    // Owm methods of GstVideo-1.0.VideoMasteringDisplayInfo
 
     /**
-     * the associated #GstVideoInfo
-     * @field 
+     * Extract #GstVideoMasteringDisplayInfo from `mastering`
+     * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
      */
-    vinfo: VideoInfo
-    /**
-     * the fourcc defined by drm
-     * @field 
-     */
-    drm_fourcc: number
-    /**
-     * the drm modifier
-     * @field 
-     */
-    drm_modifier: number
+    static from_string(mastering: string): boolean
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
-
-    /**
-     * Free a #GstVideoInfoDmaDrm structure previously allocated with
-     * gst_video_info_dma_drm_new()
-     */
-    free(): void
-    /**
-     * Convert the values of `drm_info` into a #GstCaps. Please note that the
-     * `caps` returned will be a dma drm caps which does not contain format field,
-     * but contains a drm-format field instead. The value of drm-format field is
-     * composed of a drm fourcc and a modifier, such as NV12:0x0100000000000002.
-     * @returns a new #GstCaps containing the info in @drm_info.
-     */
-    to_caps(): Gst.Caps | null
-}
-
-/**
- * Information describing a DMABuf image properties. It wraps #GstVideoInfo and
- * adds DRM information such as drm-fourcc and drm-modifier, required for
- * negotiation and mapping.
- * @record 
- */
-class VideoInfoDmaDrm {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoInfoDmaDrm
-
-    /**
-     * Allocate a new #GstVideoInfoDmaDrm that is also initialized with
-     * gst_video_info_dma_drm_init().
-     * @constructor 
-     * @returns a new #GstVideoInfoDmaDrm. Free it with gst_video_info_dma_drm_free().
-     */
-    constructor() 
-    /**
-     * Allocate a new #GstVideoInfoDmaDrm that is also initialized with
-     * gst_video_info_dma_drm_init().
-     * @constructor 
-     * @returns a new #GstVideoInfoDmaDrm. Free it with gst_video_info_dma_drm_free().
-     */
-    static new(): VideoInfoDmaDrm
-    /**
-     * Parse `caps` to generate a #GstVideoInfoDmaDrm. Please note that the
-     * `caps` should be a dma drm caps. The gst_video_is_dma_drm_caps() can
-     * be used to verify it before calling this function.
-     * @constructor 
-     * @param caps a #GstCaps
-     * @returns A #GstVideoInfoDmaDrm,   or %NULL if @caps couldn't be parsed.
-     */
-    static new_from_caps(caps: Gst.Caps): VideoInfoDmaDrm
-    /**
-     * Parse `caps` and update `info`. Please note that the `caps` should be
-     * a dma drm caps. The gst_video_is_dma_drm_caps() can be used to verify
-     * it before calling this function.
-     * @param caps a #GstCaps
-     * @returns TRUE if @caps could be parsed
-     */
-    static from_caps(caps: Gst.Caps): [ /* returnType */ boolean, /* drm_info */ VideoInfoDmaDrm ]
-    /**
-     * Fills `drm_info` if `info'`s format has a valid drm format and `modifier` is also
-     * valid
-     * @param info a #GstVideoInfo
-     * @param modifier the associated modifier value.
-     * @returns %TRUE if @drm_info is filled correctly.
-     */
-    static from_video_info(info: VideoInfo, modifier: number): [ /* returnType */ boolean, /* drm_info */ VideoInfoDmaDrm ]
-    /**
-     * Initialize `drm_info` with default values.
-     */
-    static init(): /* drm_info */ VideoInfoDmaDrm
-}
-
-interface VideoMasteringDisplayInfo {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfo
-
-    /**
-     * the xy coordinates of primaries in the CIE 1931 color space.
-     *   the index 0 contains red, 1 is for green and 2 is for blue.
-     *   each value is normalized to 50000 (meaning that in unit of 0.00002)
-     * @field 
-     */
-    display_primaries: VideoMasteringDisplayInfoCoordinates[]
-    /**
-     * the xy coordinates of white point in the CIE 1931 color space.
-     *   each value is normalized to 50000 (meaning that in unit of 0.00002)
-     * @field 
-     */
-    white_point: VideoMasteringDisplayInfoCoordinates
-    /**
-     * the maximum value of display luminance
-     *   in unit of 0.0001 candelas per square metre (cd/m^2 and nit)
-     * @field 
-     */
-    max_display_mastering_luminance: number
-    /**
-     * the minimum value of display luminance
-     *   in unit of 0.0001 candelas per square metre (cd/m^2 and nit)
-     * @field 
-     */
-    min_display_mastering_luminance: number
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfo
+    // Owm methods of GstVideo-1.0.VideoMasteringDisplayInfo
 
     /**
      * Set string representation of `minfo` to `caps`
@@ -9004,150 +5724,27 @@ interface VideoMasteringDisplayInfo {
      * Convert `minfo` to its string representation
      * @returns a string representation of @minfo
      */
-    to_string(): string | null
-}
-
-/**
- * Mastering display color volume information defined by SMPTE ST 2086
- * (a.k.a static HDR metadata).
- * @record 
- */
-class VideoMasteringDisplayInfo {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfo
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfo
-
-    /**
-     * Extract #GstVideoMasteringDisplayInfo from `mastering`
-     * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
-     * @returns %TRUE if @minfo was filled with @mastering
-     */
-    static from_string(mastering: string | null): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
-}
-
-interface VideoMasteringDisplayInfoCoordinates {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfoCoordinates
-
-    /**
-     * the x coordinate of CIE 1931 color space in unit of 0.00002.
-     * @field 
-     */
-    x: number
-    /**
-     * the y coordinate of CIE 1931 color space in unit of 0.00002.
-     * @field 
-     */
-    y: number
+    to_string(): string
 }
 
 /**
  * Used to represent display_primaries and white_point of
  * #GstVideoMasteringDisplayInfo struct. See #GstVideoMasteringDisplayInfo
- * @record 
  */
 class VideoMasteringDisplayInfoCoordinates {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoMasteringDisplayInfoCoordinates
+    // Own fields of GstVideo-1.0.VideoMasteringDisplayInfoCoordinates
 
-    static name: string
-}
+x: number
+y: number
 
-interface VideoMeta {
+    // Constructors of GstVideo-1.0.VideoMasteringDisplayInfoCoordinates
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoMeta
 
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the buffer this metadata belongs to
-     * @field 
-     */
-    buffer: Gst.Buffer
-    /**
-     * additional video flags
-     * @field 
-     */
-    flags: VideoFrameFlags
-    /**
-     * the video format
-     * @field 
-     */
-    format: VideoFormat
-    /**
-     * identifier of the frame
-     * @field 
-     */
-    id: number
-    /**
-     * the video width
-     * @field 
-     */
-    width: number
-    /**
-     * the video height
-     * @field 
-     */
-    height: number
-    /**
-     * the number of planes in the image
-     * @field 
-     */
-    n_planes: number
-    /**
-     * array of offsets for the planes. This field might not always be
-     *          valid, it is used by the default implementation of `map`.
-     * @field 
-     */
-    offset: number[]
-    /**
-     * array of strides for the planes. This field might not always be
-     *          valid, it is used by the default implementation of `map`.
-     * @field 
-     */
-    stride: number[]
-    map: (meta: VideoMeta, plane: number, info: Gst.MapInfo, data: any, stride: number, flags: Gst.MapFlags) => boolean
-    unmap: (meta: VideoMeta, plane: number, info: Gst.MapInfo) => boolean
-    /**
-     * the paddings and alignment constraints of the video buffer.
-     * It is up to the caller of `gst_buffer_add_video_meta_full()` to set it
-     * using gst_video_meta_set_alignment(), if they did not it defaults
-     * to no padding and no alignment. Since: 1.18
-     * @field 
-     */
-    alignment: VideoAlignment
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoMeta
-
-    /**
-     * Compute the padded height of each plane from `meta` (padded size
-     * divided by stride).
-     * 
-     * It is not valid to call this function with a meta associated to a
-     * TILED video format.
-     * @returns %TRUE if @meta's alignment is valid and @plane_height has been updated, %FALSE otherwise
-     */
-    get_plane_height(): [ /* returnType */ boolean, /* plane_height */ number[] ]
-    /**
-     * Compute the size, in bytes, of each video plane described in `meta` including
-     * any padding and alignment constraint defined in `meta->`alignment.
-     * @returns %TRUE if @meta's alignment is valid and @plane_size has been updated, %FALSE otherwise
-     */
-    get_plane_size(): [ /* returnType */ boolean, /* plane_size */ number[] ]
-    /**
-     * Set the alignment of `meta` to `alignment`. This function checks that
-     * the paddings defined in `alignment` are compatible with the strides
-     * defined in `meta` and will fail to update if they are not.
-     * @param alignment a #GstVideoAlignment
-     * @returns %TRUE if @alignment's meta has been updated, %FALSE if not
-     */
-    set_alignment(alignment: VideoAlignment): boolean
+    constructor(properties?: Partial<{
+      x: number
+y: number
+    }>);
 }
 
 /**
@@ -9167,88 +5764,121 @@ interface VideoMeta {
  * - padding-right (uint): extra pixels on the right side
  * The padding fields have the same semantic as #GstVideoMeta.alignment
  * and so represent the paddings requested on produced video buffers.
- * @record 
  */
 class VideoMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoMeta
+    // Own fields of GstVideo-1.0.VideoMeta
 
-    static name: string
+flags: VideoFrameFlags
+format: VideoFormat
+id: number
+width: number
+height: number
+n_planes: number
+offset: number[]
+stride: number[]
+alignment: VideoAlignment
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoMeta
+    // Owm methods of GstVideo-1.0.VideoMeta
 
     static get_info(): Gst.MetaInfo
-}
 
-interface VideoMetaTransform {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoMetaTransform
+    // Owm methods of GstVideo-1.0.VideoMeta
 
     /**
-     * the input #GstVideoInfo
-     * @field 
+     * Compute the padded height of each plane from `meta` (padded size
+     * divided by stride).
+     * 
+     * It is not valid to call this function with a meta associated to a
+     * TILED video format.
+     * @returns %TRUE if @meta's alignment is valid and @plane_height has been updated, %FALSE otherwise
      */
-    in_info: VideoInfo
+    get_plane_height(): boolean
     /**
-     * the output #GstVideoInfo
-     * @field 
+     * Compute the size, in bytes, of each video plane described in `meta` including
+     * any padding and alignment constraint defined in `meta-&`gt;alignment.
+     * @returns %TRUE if @meta's alignment is valid and @plane_size has been updated, %FALSE otherwise
      */
-    out_info: VideoInfo
+    get_plane_size(): boolean
+    /**
+     * Map the video plane with index `plane` in `meta` and return a pointer to the
+     * first byte of the plane and the stride of the plane.
+     * @param plane a plane
+     * @param info a #GstMapInfo
+     * @param flags @GstMapFlags
+     * @returns TRUE if the map operation was successful.
+     */
+    map(plane: number, info: Gst.MapInfo, flags: Gst.MapFlags): boolean
+    /**
+     * Set the alignment of `meta` to `alignment`. This function checks that
+     * the paddings defined in `alignment` are compatible with the strides
+     * defined in `meta` and will fail to update if they are not.
+     * @param alignment a #GstVideoAlignment
+     * @returns %TRUE if @alignment's meta has been updated, %FALSE if not
+     */
+    set_alignment(alignment: VideoAlignment): boolean
+    /**
+     * Unmap a previously mapped plane with gst_video_meta_map().
+     * @param plane a plane
+     * @param info a #GstMapInfo
+     * @returns TRUE if the memory was successfully unmapped.
+     */
+    unmap(plane: number, info: Gst.MapInfo): boolean
 }
 
 /**
  * Extra data passed to a video transform #GstMetaTransformFunction such as:
  * "gst-video-scale".
- * @record 
  */
 class VideoMetaTransform {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoMetaTransform
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoMetaTransform
+    // Owm methods of GstVideo-1.0.VideoMetaTransform
 
     /**
      * Get the #GQuark for the "gst-video-scale" metadata transform operation.
-     * @returns a #GQuark
      */
     static scale_get_quark(): GLib.Quark
 }
 
-interface VideoOrientationInterface {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoOrientationInterface
-
-    /**
-     * parent interface type.
-     * @field 
-     */
-    iface: GObject.TypeInterface
-    get_hflip: (video_orientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
-    get_vflip: (video_orientation: VideoOrientation) => [ /* returnType */ boolean, /* flip */ boolean ]
-    get_hcenter: (video_orientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
-    get_vcenter: (video_orientation: VideoOrientation) => [ /* returnType */ boolean, /* center */ number ]
-    set_hflip: (video_orientation: VideoOrientation, flip: boolean) => boolean
-    set_vflip: (video_orientation: VideoOrientation, flip: boolean) => boolean
-    set_hcenter: (video_orientation: VideoOrientation, center: number) => boolean
-    set_vcenter: (video_orientation: VideoOrientation, center: number) => boolean
+/**
+ * #GstVideoOrientationInterface interface.
+ */
+class VideoOrientationInterface {
 }
 
 /**
- * #GstVideoOrientationInterface interface.
- * @record 
+ * Functions to create and handle overlay compositions on video buffers.
+ * 
+ * An overlay composition describes one or more overlay rectangles to be
+ * blended on top of a video buffer.
+ * 
+ * This API serves two main purposes:
+ * 
+ * * it can be used to attach overlay information (subtitles or logos)
+ *   to non-raw video buffers such as GL/VAAPI/VDPAU surfaces. The actual
+ *   blending of the overlay can then be done by e.g. the video sink that
+ *   processes these non-raw buffers.
+ * 
+ * * it can also be used to blend overlay rectangles on top of raw video
+ *   buffers, thus consolidating blending functionality for raw video in
+ *   one place.
+ * 
+ * Together, this allows existing overlay elements to easily handle raw
+ * and non-raw video as input in without major changes (once the overlays
+ * have been put into a #GstVideoOverlayComposition object anyway) - for raw
+ * video the overlay can just use the blending function to blend the data
+ * on top of the video, and for surface buffers it can just attach them to
+ * the buffer and let the sink render the overlays.
  */
-abstract class VideoOrientationInterface {
+class VideoOverlayComposition {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoOrientationInterface
+    // Constructors of GstVideo-1.0.VideoOverlayComposition
 
-    static name: string
-}
+constructor(rectangle?: (VideoOverlayRectangle | null));
 
-interface VideoOverlayComposition {
+static ["new"](rectangle?: (VideoOverlayRectangle | null)): VideoOverlayComposition;
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoOverlayComposition
+    // Owm methods of GstVideo-1.0.VideoOverlayComposition
 
     /**
      * Adds an overlay rectangle to an existing overlay composition object. This
@@ -9280,7 +5910,7 @@ interface VideoOverlayComposition {
      * @param n number of the rectangle to get
      * @returns the @n-th rectangle, or NULL if @n is out of     bounds. Will not return a new reference, the caller will need to     obtain her own reference using gst_video_overlay_rectangle_ref()     if needed.
      */
-    get_rectangle(n: number): VideoOverlayRectangle | null
+    get_rectangle(n: number): (VideoOverlayRectangle | null)
     /**
      * Returns the sequence number of this composition. Sequence numbers are
      * monotonically increasing and unique for overlay compositions and rectangles
@@ -9299,127 +5929,41 @@ interface VideoOverlayComposition {
      */
     make_writable(): VideoOverlayComposition
     /**
-     * Returns the number of #GstVideoOverlayRectangle<!-- -->s contained in `comp`.
+     * Returns the number of #GstVideoOverlayRectangle&lt;!-- --&gt;s contained in `comp`.
      * @returns the number of rectangles
      */
     n_rectangles(): number
 }
 
 /**
- * Functions to create and handle overlay compositions on video buffers.
- * 
- * An overlay composition describes one or more overlay rectangles to be
- * blended on top of a video buffer.
- * 
- * This API serves two main purposes:
- * 
- * * it can be used to attach overlay information (subtitles or logos)
- *   to non-raw video buffers such as GL/VAAPI/VDPAU surfaces. The actual
- *   blending of the overlay can then be done by e.g. the video sink that
- *   processes these non-raw buffers.
- * 
- * * it can also be used to blend overlay rectangles on top of raw video
- *   buffers, thus consolidating blending functionality for raw video in
- *   one place.
- * 
- * Together, this allows existing overlay elements to easily handle raw
- * and non-raw video as input in without major changes (once the overlays
- * have been put into a #GstVideoOverlayComposition object anyway) - for raw
- * video the overlay can just use the blending function to blend the data
- * on top of the video, and for surface buffers it can just attach them to
- * the buffer and let the sink render the overlays.
- * @record 
- */
-class VideoOverlayComposition {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoOverlayComposition
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoOverlayComposition
-
-    /**
-     * Creates a new video overlay composition object to hold one or more
-     * overlay rectangles.
-     * 
-     * Note that since 1.20 this allows to pass %NULL for `rectangle`.
-     * @constructor 
-     * @param rectangle a #GstVideoOverlayRectangle to add to the     composition
-     * @returns a new #GstVideoOverlayComposition. Unref with     gst_video_overlay_composition_unref() when no longer needed.
-     */
-    constructor(rectangle: VideoOverlayRectangle | null) 
-    /**
-     * Creates a new video overlay composition object to hold one or more
-     * overlay rectangles.
-     * 
-     * Note that since 1.20 this allows to pass %NULL for `rectangle`.
-     * @constructor 
-     * @param rectangle a #GstVideoOverlayRectangle to add to the     composition
-     * @returns a new #GstVideoOverlayComposition. Unref with     gst_video_overlay_composition_unref() when no longer needed.
-     */
-    static new(rectangle: VideoOverlayRectangle | null): VideoOverlayComposition
-}
-
-interface VideoOverlayCompositionMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoOverlayCompositionMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the attached #GstVideoOverlayComposition
-     * @field 
-     */
-    overlay: VideoOverlayComposition
-}
-
-/**
  * Extra buffer metadata describing image overlay data.
- * @record 
  */
 class VideoOverlayCompositionMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoOverlayCompositionMeta
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoOverlayCompositionMeta
+    // Owm methods of GstVideo-1.0.VideoOverlayCompositionMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoOverlayInterface {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoOverlayInterface
-
-    /**
-     * parent interface type.
-     * @field 
-     */
-    iface: GObject.TypeInterface
-    expose: (overlay: VideoOverlay) => void
-    handle_events: (overlay: VideoOverlay, handle_events: boolean) => void
-    set_render_rectangle: (overlay: VideoOverlay, x: number, y: number, width: number, height: number) => void
-    set_window_handle: (overlay: VideoOverlay, handle: never) => void
+/**
+ * #GstVideoOverlay interface
+ */
+class VideoOverlayInterface {
 }
 
 /**
- * #GstVideoOverlay interface
- * @record 
+ * An opaque video overlay rectangle object. A rectangle contains a single
+ * overlay rectangle which can be added to a composition.
  */
-abstract class VideoOverlayInterface {
+class VideoOverlayRectangle {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoOverlayInterface
+    // Constructors of GstVideo-1.0.VideoOverlayRectangle
 
-    static name: string
-}
+constructor(pixels: Gst.Buffer, render_x: number, render_y: number, render_width: number, render_height: number, flags: VideoOverlayFormatFlags);
 
-interface VideoOverlayRectangle {
+static new_raw(pixels: Gst.Buffer, render_x: number, render_y: number, render_width: number, render_height: number, flags: VideoOverlayFormatFlags): VideoOverlayRectangle;
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoOverlayRectangle
+    // Owm methods of GstVideo-1.0.VideoOverlayRectangle
 
     /**
      * Makes a copy of `rectangle,` so that it is possible to modify it
@@ -9478,7 +6022,7 @@ interface VideoOverlayRectangle {
      * rectangle on the video.
      * @returns TRUE if valid render dimensions were retrieved.
      */
-    get_render_rectangle(): [ /* returnType */ boolean, /* render_x */ number, /* render_y */ number, /* render_width */ number, /* render_height */ number ]
+    get_render_rectangle(): boolean
     /**
      * Returns the sequence number of this rectangle. Sequence numbers are
      * monotonically increasing and unique for overlay compositions and rectangles
@@ -9500,7 +6044,7 @@ interface VideoOverlayRectangle {
     /**
      * Sets the global alpha value associated with a #GstVideoOverlayRectangle. Per-
      * pixel alpha values are multiplied with this value. Valid
-     * values: 0 <= global_alpha <= 1; 1 to deactivate.
+     * values: 0 &lt;= global_alpha &lt;= 1; 1 to deactivate.
      * 
      * `rectangle` must be writable, meaning its refcount must be 1. You can
      * make the rectangles inside a #GstVideoOverlayComposition writable using
@@ -9528,131 +6072,49 @@ interface VideoOverlayRectangle {
 }
 
 /**
- * An opaque video overlay rectangle object. A rectangle contains a single
- * overlay rectangle which can be added to a composition.
- * @record 
- */
-class VideoOverlayRectangle {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoOverlayRectangle
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoOverlayRectangle
-
-    /**
-     * Creates a new video overlay rectangle with ARGB or AYUV pixel data.
-     * The layout in case of ARGB of the components in memory is B-G-R-A
-     * on little-endian platforms
-     * (corresponding to #GST_VIDEO_FORMAT_BGRA) and A-R-G-B on big-endian
-     * platforms (corresponding to #GST_VIDEO_FORMAT_ARGB). In other words,
-     * pixels are treated as 32-bit words and the lowest 8 bits then contain
-     * the blue component value and the highest 8 bits contain the alpha
-     * component value. Unless specified in the flags, the RGB values are
-     * non-premultiplied. This is the format that is used by most hardware,
-     * and also many rendering libraries such as Cairo, for example.
-     * The pixel data buffer must have #GstVideoMeta set.
-     * @constructor 
-     * @param pixels a #GstBuffer pointing to the pixel memory
-     * @param render_x the X co-ordinate on the video where the top-left corner of this     overlay rectangle should be rendered to
-     * @param render_y the Y co-ordinate on the video where the top-left corner of this     overlay rectangle should be rendered to
-     * @param render_width the render width of this rectangle on the video
-     * @param render_height the render height of this rectangle on the video
-     * @param flags flags
-     * @returns a new #GstVideoOverlayRectangle. Unref with     gst_video_overlay_rectangle_unref() when no longer needed.
-     */
-    static new_raw(pixels: Gst.Buffer, render_x: number, render_y: number, render_width: number, render_height: number, flags: VideoOverlayFormatFlags): VideoOverlayRectangle
-}
-
-interface VideoRectangle {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoRectangle
-
-    /**
-     * X coordinate of rectangle's top-left point
-     * @field 
-     */
-    x: number
-    /**
-     * Y coordinate of rectangle's top-left point
-     * @field 
-     */
-    y: number
-    /**
-     * width of the rectangle
-     * @field 
-     */
-    w: number
-    /**
-     * height of the rectangle
-     * @field 
-     */
-    h: number
-}
-
-/**
  * Helper structure representing a rectangular area.
- * @record 
  */
 class VideoRectangle {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoRectangle
+    // Own fields of GstVideo-1.0.VideoRectangle
 
-    static name: string
+x: number
+y: number
+w: number
+h: number
+
+    // Constructors of GstVideo-1.0.VideoRectangle
+
+
+    constructor(properties?: Partial<{
+      x: number
+y: number
+w: number
+h: number
+    }>);
 }
 
-interface VideoRegionOfInterestMeta {
+/**
+ * Extra buffer metadata describing an image region of interest
+ */
+class VideoRegionOfInterestMeta {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoRegionOfInterestMeta
+    // Own fields of GstVideo-1.0.VideoRegionOfInterestMeta
 
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * GQuark describing the semantic of the Roi (f.i. a face, a pedestrian)
-     * @field 
-     */
-    roi_type: GLib.Quark
-    /**
-     * identifier of this particular ROI
-     * @field 
-     */
-    id: number
-    /**
-     * identifier of its parent ROI, used f.i. for ROI hierarchisation.
-     * @field 
-     */
-    parent_id: number
-    /**
-     * x component of upper-left corner
-     * @field 
-     */
-    x: number
-    /**
-     * y component of upper-left corner
-     * @field 
-     */
-    y: number
-    /**
-     * bounding box width
-     * @field 
-     */
-    w: number
-    /**
-     * bounding box height
-     * @field 
-     */
-    h: number
-    /**
-     * list of #GstStructure containing element-specific params for downstream,
-     *          see gst_video_region_of_interest_meta_add_param(). (Since: 1.14)
-     * @field 
-     */
-    params: any[]
+roi_type: GLib.Quark
+id: number
+parent_id: number
+x: number
+y: number
+w: number
+h: number
+params: any[]
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoRegionOfInterestMeta
+    // Owm methods of GstVideo-1.0.VideoRegionOfInterestMeta
+
+    static get_info(): Gst.MetaInfo
+
+    // Owm methods of GstVideo-1.0.VideoRegionOfInterestMeta
 
     /**
      * Attach element-specific parameters to `meta` meant to be used by downstream
@@ -9673,70 +6135,41 @@ interface VideoRegionOfInterestMeta {
      * @param name a name.
      * @returns a #GstStructure
      */
-    get_param(name: string | null): Gst.Structure | null
+    get_param(name: string): (Gst.Structure | null)
 }
 
 /**
- * Extra buffer metadata describing an image region of interest
- * @record 
+ * #GstVideoResampler is a structure which holds the information
+ * required to perform various kinds of resampling filtering.
  */
-class VideoRegionOfInterestMeta {
+class VideoResampler {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoRegionOfInterestMeta
+    // Own fields of GstVideo-1.0.VideoResampler
 
-    static name: string
+in_size: number
+out_size: number
+max_taps: number
+n_phases: number
+offset: number
+phase: number
+n_taps: number
+taps: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoRegionOfInterestMeta
+    // Constructors of GstVideo-1.0.VideoResampler
 
-    static get_info(): Gst.MetaInfo
-}
 
-interface VideoResampler {
+    constructor(properties?: Partial<{
+      in_size: number
+out_size: number
+max_taps: number
+n_phases: number
+offset: number
+phase: number
+n_taps: number
+taps: number
+    }>);
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoResampler
-
-    /**
-     * the input size
-     * @field 
-     */
-    in_size: number
-    /**
-     * the output size
-     * @field 
-     */
-    out_size: number
-    /**
-     * the maximum number of taps
-     * @field 
-     */
-    max_taps: number
-    /**
-     * the number of phases
-     * @field 
-     */
-    n_phases: number
-    /**
-     * array with the source offset for each output element
-     * @field 
-     */
-    offset: number
-    /**
-     * array with the phase to use for each output element
-     * @field 
-     */
-    phase: number
-    /**
-     * array with new number of taps for each phase
-     * @field 
-     */
-    n_taps: number
-    /**
-     * the taps for all phases
-     * @field 
-     */
-    taps: number
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoResampler
+    // Owm methods of GstVideo-1.0.VideoResampler
 
     /**
      * Clear a previously initialized #GstVideoResampler `resampler`.
@@ -9746,61 +6179,28 @@ interface VideoResampler {
 }
 
 /**
- * #GstVideoResampler is a structure which holds the information
- * required to perform various kinds of resampling filtering.
- * @record 
- */
-class VideoResampler {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoResampler
-
-    static name: string
-}
-
-interface VideoSEIUserDataUnregisteredMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoSEIUserDataUnregisteredMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * User Data Unregistered UUID
-     * @field 
-     */
-    uuid: Uint8Array
-    /**
-     * Unparsed data buffer
-     * @field 
-     */
-    data: number
-    /**
-     * Size of the data buffer
-     * @field 
-     */
-    size: number
-}
-
-/**
  * H.264 H.265 metadata from SEI User Data Unregistered messages
- * @record 
  */
 class VideoSEIUserDataUnregisteredMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoSEIUserDataUnregisteredMeta
+    // Own fields of GstVideo-1.0.VideoSEIUserDataUnregisteredMeta
 
-    static name: string
+uuid: Uint8Array
+data: number
+size: number
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoSEIUserDataUnregisteredMeta
+    // Owm methods of GstVideo-1.0.VideoSEIUserDataUnregisteredMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoScaler {
+/**
+ * #GstVideoScaler is a utility object for rescaling and resampling
+ * video frames using various interpolation / sampling methods.
+ */
+class VideoScaler {
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoScaler
+    // Owm methods of GstVideo-1.0.VideoScaler
 
     /**
      * Scale a rectangle of pixels in `src` with `src_stride` to `dest` with
@@ -9812,7 +6212,7 @@ interface VideoScaler {
      * 
      * `x` and `y` are the coordinates in the destination image to process.
      * @param vscale a vertical #GstVideoScaler
-     * @param format a #GstVideoFormat for `srcs` and `dest`
+     * @param format a #GstVideoFormat for @srcs and @dest
      * @param src source pixels
      * @param src_stride source pixels stride
      * @param dest destination pixels
@@ -9822,7 +6222,7 @@ interface VideoScaler {
      * @param width the number of output pixels to scale
      * @param height the number of output lines to scale
      */
-    TODO_2d(vscale: VideoScaler, format: VideoFormat, src: any | null, src_stride: number, dest: any | null, dest_stride: number, x: number, y: number, width: number, height: number): void
+    2d(vscale: VideoScaler, format: VideoFormat, src: (any | null), src_stride: number, dest: (any | null), dest_stride: number, x: number, y: number, width: number, height: number): void
     /**
      * Free a previously allocated #GstVideoScaler `scale`.
      */
@@ -9836,7 +6236,7 @@ interface VideoScaler {
      * @param out_offset an output offset
      * @returns an array of @n_tap gdouble values with filter coefficients.
      */
-    get_coeff(out_offset: number): [ /* returnType */ number, /* in_offset */ number, /* n_taps */ number ]
+    get_coeff(out_offset: number): number
     /**
      * Get the maximum number of taps for `scale`.
      * @returns the maximum number of taps
@@ -9845,148 +6245,103 @@ interface VideoScaler {
     /**
      * Horizontally scale the pixels in `src` to `dest,` starting from `dest_offset`
      * for `width` samples.
-     * @param format a #GstVideoFormat for `src` and `dest`
+     * @param format a #GstVideoFormat for @src and @dest
      * @param src source pixels
      * @param dest destination pixels
      * @param dest_offset the horizontal destination offset
      * @param width the number of pixels to scale
      */
-    horizontal(format: VideoFormat, src: any | null, dest: any | null, dest_offset: number, width: number): void
+    horizontal(format: VideoFormat, src: (any | null), dest: (any | null), dest_offset: number, width: number): void
     /**
      * Vertically combine `width` pixels in the lines in `src_lines` to `dest`.
      * `dest` is the location of the target line at `dest_offset` and
      * `srcs` are the input lines for `dest_offset`.
-     * @param format a #GstVideoFormat for `srcs` and `dest`
+     * @param format a #GstVideoFormat for @srcs and @dest
      * @param src_lines source pixels lines
      * @param dest destination pixels
      * @param dest_offset the vertical destination offset
      * @param width the number of pixels to scale
      */
-    vertical(format: VideoFormat, src_lines: any | null, dest: any | null, dest_offset: number, width: number): void
-}
-
-/**
- * #GstVideoScaler is a utility object for rescaling and resampling
- * video frames using various interpolation / sampling methods.
- * @record 
- */
-class VideoScaler {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoScaler
-
-    static name: string
-}
-
-interface VideoSinkClass {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoSinkClass
-
-    /**
-     * the parent class structure
-     * @field 
-     */
-    parent_class: GstBase.BaseSinkClass
-    show_frame: (video_sink: VideoSink, buf: Gst.Buffer) => Gst.FlowReturn
-    set_info: (video_sink: VideoSink, caps: Gst.Caps, info: VideoInfo) => boolean
+    vertical(format: VideoFormat, src_lines: (any | null), dest: (any | null), dest_offset: number, width: number): void
 }
 
 /**
  * The video sink class structure. Derived classes should override the
  * `show_frame` virtual function.
- * @record 
  */
-abstract class VideoSinkClass {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoSinkClass
-
-    static name: string
-}
-
-interface VideoSinkPrivate {
+class VideoSinkClass {
 }
 
 class VideoSinkPrivate {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoSinkPrivate
-
-    static name: string
-}
-
-interface VideoTileInfo {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoTileInfo
-
-    /**
-     * The width in pixels of a tile. This value can be zero if the number of
-     * pixels per line is not an integer value.
-     * @field 
-     */
-    width: number
-    height: number
-    /**
-     * The stride (in bytes) of a tile line. Regardless if the tile have sub-tiles
-     * this stride multiplied by the height should be equal to
-     * #GstVideoTileInfo.size. This value is used to translate into linear stride
-     * when older APIs are being used to expose this format.
-     * @field 
-     */
-    stride: number
-    /**
-     * The size in bytes of a tile. This value must be divisible by
-     * #GstVideoTileInfo.stride.
-     * @field 
-     */
-    size: number
 }
 
 /**
  * Description of a tile. This structure allow to describe arbitrary tile
  * dimensions and sizes.
- * @record 
  */
 class VideoTileInfo {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoTileInfo
+    // Own fields of GstVideo-1.0.VideoTileInfo
 
-    static name: string
+width: number
+height: number
+stride: number
+size: number
+
+    // Constructors of GstVideo-1.0.VideoTileInfo
+
+
+    constructor(properties?: Partial<{
+      width: number
+height: number
+stride: number
+size: number
+    }>);
 }
 
-interface VideoTimeCode {
+/**
+ * `field_count` must be 0 for progressive video and 1 or 2 for interlaced.
+ * 
+ * A representation of a SMPTE time code.
+ * 
+ * `hours` must be positive and less than 24. Will wrap around otherwise.
+ * `minutes` and `seconds` must be positive and less than 60.
+ * `frames` must be less than or equal to `config`.fps_n / `config`.fps_d
+ * These values are *NOT* automatically normalized.
+ */
+class VideoTimeCode {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoTimeCode
+    // Own fields of GstVideo-1.0.VideoTimeCode
 
-    /**
-     * the corresponding #GstVideoTimeCodeConfig
-     * @field 
-     */
-    config: VideoTimeCodeConfig
-    /**
-     * the hours field of #GstVideoTimeCode
-     * @field 
-     */
-    hours: number
-    /**
-     * the minutes field of #GstVideoTimeCode
-     * @field 
-     */
-    minutes: number
-    /**
-     * the seconds field of #GstVideoTimeCode
-     * @field 
-     */
-    seconds: number
-    /**
-     * the frames field of #GstVideoTimeCode
-     * @field 
-     */
-    frames: number
-    /**
-     * Interlaced video field count
-     * @field 
-     */
-    field_count: number
+hours: number
+minutes: number
+seconds: number
+frames: number
+field_count: number
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoTimeCode
+    // Constructors of GstVideo-1.0.VideoTimeCode
+
+
+    constructor(properties?: Partial<{
+      config: VideoTimeCodeConfig
+hours: number
+minutes: number
+seconds: number
+frames: number
+field_count: number
+    }>);
+
+static ["new"](fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): VideoTimeCode;
+
+static new_empty(): VideoTimeCode;
+
+static new_from_date_time(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): VideoTimeCode;
+
+static new_from_date_time_full(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): VideoTimeCode;
+
+static new_from_string(tc_str: string): VideoTimeCode;
+
+    // Owm methods of GstVideo-1.0.VideoTimeCode
 
     /**
      * Adds or subtracts `frames` amount of frames to `tc`. tc needs to
@@ -10002,10 +6357,10 @@ interface VideoTimeCode {
      * because of drop-frame oddities. However,
      * adding ("00:09:00;02", "00:01:00:00") will return "00:10:00;00"
      * because this time we can have an exact minute.
-     * @param tc_inter The #GstVideoTimeCodeInterval to add to `tc`. The interval must contain valid values, except that for drop-frame timecode, it may also contain timecodes which would normally be dropped. These are then corrected to the next reasonable timecode.
+     * @param tc_inter The #GstVideoTimeCodeInterval to add to @tc. The interval must contain valid values, except that for drop-frame timecode, it may also contain timecodes which would normally be dropped. These are then corrected to the next reasonable timecode.
      * @returns A new #GstVideoTimeCode with @tc_inter added or %NULL   if the interval can't be added.
      */
-    add_interval(tc_inter: VideoTimeCodeInterval): VideoTimeCode | null
+    add_interval(tc_inter: VideoTimeCodeInterval): (VideoTimeCode | null)
     /**
      * Initializes `tc` with empty/zero/NULL values and frees any memory
      * it might currently use.
@@ -10046,9 +6401,9 @@ interface VideoTimeCode {
      * @param frames the frames field of #GstVideoTimeCode
      * @param field_count Interlaced video field count
      */
-    init(fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime | null, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): void
+    init(fps_n: number, fps_d: number, latest_daily_jam: (GLib.DateTime | null), flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): void
     /**
-     * The resulting config->latest_daily_jam is set to midnight, and timecode is
+     * The resulting config-&gt;latest_daily_jam is set to midnight, and timecode is
      * set to the given time.
      * 
      * Will assert on invalid parameters, use gst_video_time_code_init_from_date_time_full()
@@ -10061,7 +6416,7 @@ interface VideoTimeCode {
      */
     init_from_date_time(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): void
     /**
-     * The resulting config->latest_daily_jam is set to
+     * The resulting config-&gt;latest_daily_jam is set to
      * midnight, and timecode is set to the given time.
      * @param fps_n Numerator of the frame rate
      * @param fps_d Denominator of the frame rate
@@ -10074,120 +6429,11 @@ interface VideoTimeCode {
     is_valid(): boolean
     nsec_since_daily_jam(): number
     /**
-     * The `tc`.config->latest_daily_jam is required to be non-NULL.
+     * The `tc`.config-&gt;latest_daily_jam is required to be non-NULL.
      * @returns the #GDateTime representation of @tc or %NULL if @tc   has no daily jam.
      */
-    to_date_time(): GLib.DateTime | null
-    to_string(): string | null
-}
-
-/**
- * `field_count` must be 0 for progressive video and 1 or 2 for interlaced.
- * 
- * A representation of a SMPTE time code.
- * 
- * `hours` must be positive and less than 24. Will wrap around otherwise.
- * `minutes` and `seconds` must be positive and less than 60.
- * `frames` must be less than or equal to `config`.fps_n / `config`.fps_d
- * These values are *NOT* automatically normalized.
- * @record 
- */
-class VideoTimeCode {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoTimeCode
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoTimeCode
-
-    /**
-     * `field_count` is 0 for progressive, 1 or 2 for interlaced.
-     * `latest_daiy_jam` reference is stolen from caller.
-     * @constructor 
-     * @param fps_n Numerator of the frame rate
-     * @param fps_d Denominator of the frame rate
-     * @param latest_daily_jam The latest daily jam of the #GstVideoTimeCode
-     * @param flags #GstVideoTimeCodeFlags
-     * @param hours the hours field of #GstVideoTimeCode
-     * @param minutes the minutes field of #GstVideoTimeCode
-     * @param seconds the seconds field of #GstVideoTimeCode
-     * @param frames the frames field of #GstVideoTimeCode
-     * @param field_count Interlaced video field count
-     * @returns a new #GstVideoTimeCode with the given values. The values are not checked for being in a valid range. To see if your timecode actually has valid content, use gst_video_time_code_is_valid().
-     */
-    constructor(fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number) 
-    /**
-     * `field_count` is 0 for progressive, 1 or 2 for interlaced.
-     * `latest_daiy_jam` reference is stolen from caller.
-     * @constructor 
-     * @param fps_n Numerator of the frame rate
-     * @param fps_d Denominator of the frame rate
-     * @param latest_daily_jam The latest daily jam of the #GstVideoTimeCode
-     * @param flags #GstVideoTimeCodeFlags
-     * @param hours the hours field of #GstVideoTimeCode
-     * @param minutes the minutes field of #GstVideoTimeCode
-     * @param seconds the seconds field of #GstVideoTimeCode
-     * @param frames the frames field of #GstVideoTimeCode
-     * @param field_count Interlaced video field count
-     * @returns a new #GstVideoTimeCode with the given values. The values are not checked for being in a valid range. To see if your timecode actually has valid content, use gst_video_time_code_is_valid().
-     */
-    static new(fps_n: number, fps_d: number, latest_daily_jam: GLib.DateTime, flags: VideoTimeCodeFlags, hours: number, minutes: number, seconds: number, frames: number, field_count: number): VideoTimeCode
-    static new_empty(): VideoTimeCode
-    /**
-     * The resulting config->latest_daily_jam is set to
-     * midnight, and timecode is set to the given time.
-     * 
-     * This might return a completely invalid timecode, use
-     * gst_video_time_code_new_from_date_time_full() to ensure
-     * that you would get %NULL instead in that case.
-     * @constructor 
-     * @param fps_n Numerator of the frame rate
-     * @param fps_d Denominator of the frame rate
-     * @param dt #GDateTime to convert
-     * @param flags #GstVideoTimeCodeFlags
-     * @param field_count Interlaced video field count
-     * @returns the #GstVideoTimeCode representation of @dt.
-     */
-    static new_from_date_time(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): VideoTimeCode
-    /**
-     * The resulting config->latest_daily_jam is set to
-     * midnight, and timecode is set to the given time.
-     * @constructor 
-     * @param fps_n Numerator of the frame rate
-     * @param fps_d Denominator of the frame rate
-     * @param dt #GDateTime to convert
-     * @param flags #GstVideoTimeCodeFlags
-     * @param field_count Interlaced video field count
-     * @returns the #GstVideoTimeCode representation of @dt, or %NULL if   no valid timecode could be created.
-     */
-    static new_from_date_time_full(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): VideoTimeCode
-    static new_from_string(tc_str: string | null): VideoTimeCode
-}
-
-interface VideoTimeCodeConfig {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoTimeCodeConfig
-
-    /**
-     * Numerator of the frame rate
-     * @field 
-     */
-    fps_n: number
-    /**
-     * Denominator of the frame rate
-     * @field 
-     */
-    fps_d: number
-    /**
-     * the corresponding #GstVideoTimeCodeFlags
-     * @field 
-     */
-    flags: VideoTimeCodeFlags
-    /**
-     * The latest daily jam information, if present, or NULL
-     * @field 
-     */
-    latest_daily_jam: GLib.DateTime
+    to_date_time(): (GLib.DateTime | null)
+    to_string(): string
 }
 
 /**
@@ -10195,41 +6441,44 @@ interface VideoTimeCodeConfig {
  * frame), and integer frame rates e.g. 25/1, 30/1, 50/1, 60/1.
  * 
  * The configuration of the time code.
- * @record 
  */
 class VideoTimeCodeConfig {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoTimeCodeConfig
+    // Own fields of GstVideo-1.0.VideoTimeCodeConfig
 
-    static name: string
+fps_n: number
+fps_d: number
+flags: VideoTimeCodeFlags
 }
 
-interface VideoTimeCodeInterval {
+/**
+ * A representation of a difference between two #GstVideoTimeCode instances.
+ * Will not necessarily correspond to a real timecode (e.g. 00:00:10;00)
+ */
+class VideoTimeCodeInterval {
 
-    // Own fields of GstVideo-1.0.GstVideo.VideoTimeCodeInterval
+    // Own fields of GstVideo-1.0.VideoTimeCodeInterval
 
-    /**
-     * the hours field of #GstVideoTimeCodeInterval
-     * @field 
-     */
-    hours: number
-    /**
-     * the minutes field of #GstVideoTimeCodeInterval
-     * @field 
-     */
-    minutes: number
-    /**
-     * the seconds field of #GstVideoTimeCodeInterval
-     * @field 
-     */
-    seconds: number
-    /**
-     * the frames field of #GstVideoTimeCodeInterval
-     * @field 
-     */
-    frames: number
+hours: number
+minutes: number
+seconds: number
+frames: number
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoTimeCodeInterval
+    // Constructors of GstVideo-1.0.VideoTimeCodeInterval
+
+
+    constructor(properties?: Partial<{
+      hours: number
+minutes: number
+seconds: number
+frames: number
+    }>);
+
+static ["new"](hours: number, minutes: number, seconds: number, frames: number): VideoTimeCodeInterval;
+
+static new_from_string(tc_inter_str: string): VideoTimeCodeInterval;
+
+    // Owm methods of GstVideo-1.0.VideoTimeCodeInterval
 
     /**
      * Initializes `tc` with empty/zero/NULL values.
@@ -10251,66 +6500,35 @@ interface VideoTimeCodeInterval {
 }
 
 /**
- * A representation of a difference between two #GstVideoTimeCode instances.
- * Will not necessarily correspond to a real timecode (e.g. 00:00:10;00)
- * @record 
- */
-class VideoTimeCodeInterval {
-
-    // Own properties of GstVideo-1.0.GstVideo.VideoTimeCodeInterval
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoTimeCodeInterval
-
-    constructor(hours: number, minutes: number, seconds: number, frames: number) 
-    static new(hours: number, minutes: number, seconds: number, frames: number): VideoTimeCodeInterval
-    /**
-     * `tc_inter_str` must only have ":" as separators.
-     * @constructor 
-     * @param tc_inter_str The string that represents the #GstVideoTimeCodeInterval
-     * @returns a new #GstVideoTimeCodeInterval from the given string   or %NULL if the string could not be passed.
-     */
-    static new_from_string(tc_inter_str: string | null): VideoTimeCodeInterval
-}
-
-interface VideoTimeCodeMeta {
-
-    // Own fields of GstVideo-1.0.GstVideo.VideoTimeCodeMeta
-
-    /**
-     * parent #GstMeta
-     * @field 
-     */
-    meta: Gst.Meta
-    /**
-     * the GstVideoTimeCode to attach
-     * @field 
-     */
-    tc: VideoTimeCode
-}
-
-/**
  * Extra buffer metadata describing the GstVideoTimeCode of the frame.
  * 
  * Each frame is assumed to have its own timecode, i.e. they are not
  * automatically incremented/interpolated.
- * @record 
  */
 class VideoTimeCodeMeta {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoTimeCodeMeta
+    // Own fields of GstVideo-1.0.VideoTimeCodeMeta
 
-    static name: string
+tc: VideoTimeCode
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoTimeCodeMeta
+    // Owm methods of GstVideo-1.0.VideoTimeCodeMeta
 
     static get_info(): Gst.MetaInfo
 }
 
-interface VideoVBIEncoder {
+/**
+ * An encoder for writing ancillary data to the
+ * Vertical Blanking Interval lines of component signals.
+ */
+class VideoVBIEncoder {
 
-    // Owm methods of GstVideo-1.0.GstVideo.VideoVBIEncoder
+    // Constructors of GstVideo-1.0.VideoVBIEncoder
+
+constructor(format: VideoFormat, pixel_width: number);
+
+static ["new"](format: VideoFormat, pixel_width: number): VideoVBIEncoder;
+
+    // Owm methods of GstVideo-1.0.VideoVBIEncoder
 
     /**
      * Stores Video Ancillary data, according to SMPTE-291M specification.
@@ -10333,39 +6551,18 @@ interface VideoVBIEncoder {
 }
 
 /**
- * An encoder for writing ancillary data to the
+ * A parser for detecting and extracting `GstVideoAncillary` data from
  * Vertical Blanking Interval lines of component signals.
- * @record 
  */
-class VideoVBIEncoder {
+class VideoVBIParser {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoVBIEncoder
+    // Constructors of GstVideo-1.0.VideoVBIParser
 
-    static name: string
+constructor(format: VideoFormat, pixel_width: number);
 
-    // Constructors of GstVideo-1.0.GstVideo.VideoVBIEncoder
+static ["new"](format: VideoFormat, pixel_width: number): VideoVBIParser;
 
-    /**
-     * Create a new #GstVideoVBIEncoder for the specified `format` and `pixel_width`.
-     * @constructor 
-     * @param format a #GstVideoFormat
-     * @param pixel_width The width in pixel to use
-     * @returns The new #GstVideoVBIEncoder or %NULL if the @format and/or @pixel_width is not supported.
-     */
-    constructor(format: VideoFormat, pixel_width: number) 
-    /**
-     * Create a new #GstVideoVBIEncoder for the specified `format` and `pixel_width`.
-     * @constructor 
-     * @param format a #GstVideoFormat
-     * @param pixel_width The width in pixel to use
-     * @returns The new #GstVideoVBIEncoder or %NULL if the @format and/or @pixel_width is not supported.
-     */
-    static new(format: VideoFormat, pixel_width: number): VideoVBIEncoder
-}
-
-interface VideoVBIParser {
-
-    // Owm methods of GstVideo-1.0.GstVideo.VideoVBIParser
+    // Owm methods of GstVideo-1.0.VideoVBIParser
 
     /**
      * Provide a new line of data to the `parser`. Call gst_video_vbi_parser_get_ancillary()
@@ -10382,48 +6579,343 @@ interface VideoVBIParser {
      * Parse the line provided previously by gst_video_vbi_parser_add_line().
      * @returns %GST_VIDEO_VBI_PARSER_RESULT_OK if ancillary data was found and @anc was filled. %GST_VIDEO_VBI_PARSER_RESULT_DONE if there wasn't any data.
      */
-    get_ancillary(): [ /* returnType */ VideoVBIParserResult, /* anc */ VideoAncillary ]
+    get_ancillary(): VideoVBIParserResult
 }
 
-/**
- * A parser for detecting and extracting `GstVideoAncillary` data from
- * Vertical Blanking Interval lines of component signals.
- * @record 
- */
-class VideoVBIParser {
+interface ColorBalance {
 
-    // Own properties of GstVideo-1.0.GstVideo.VideoVBIParser
-
-    static name: string
-
-    // Constructors of GstVideo-1.0.GstVideo.VideoVBIParser
+    // Owm methods of GstVideo-1.0.ColorBalance
 
     /**
-     * Create a new #GstVideoVBIParser for the specified `format` and `pixel_width`.
-     * @constructor 
-     * @param format a #GstVideoFormat
-     * @param pixel_width The width in pixel to use
-     * @returns The new #GstVideoVBIParser or %NULL if the @format and/or @pixel_width is not supported.
+     * Get the #GstColorBalanceType of this implementation.
+     * @returns A the #GstColorBalanceType.
      */
-    constructor(format: VideoFormat, pixel_width: number) 
+    get_balance_type(): ColorBalanceType
     /**
-     * Create a new #GstVideoVBIParser for the specified `format` and `pixel_width`.
-     * @constructor 
-     * @param format a #GstVideoFormat
-     * @param pixel_width The width in pixel to use
-     * @returns The new #GstVideoVBIParser or %NULL if the @format and/or @pixel_width is not supported.
+     * Retrieve the current value of the indicated channel, between min_value
+     * and max_value.
+     * 
+     * See Also: The #GstColorBalanceChannel.min_value and
+     *         #GstColorBalanceChannel.max_value members of the
+     *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @returns The current value of the channel.
      */
-    static new(format: VideoFormat, pixel_width: number): VideoVBIParser
+    get_value(channel: ColorBalanceChannel): number
+    /**
+     * Retrieve a list of the available channels.
+     * @returns A          GList containing pointers to #GstColorBalanceChannel          objects. The list is owned by the #GstColorBalance          instance and must not be freed.
+     */
+    list_channels(): ColorBalanceChannel[]
+    /**
+     * Sets the current value of the channel to the passed value, which must
+     * be between min_value and max_value.
+     * 
+     * See Also: The #GstColorBalanceChannel.min_value and
+     *         #GstColorBalanceChannel.max_value members of the
+     *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @param value The new value for the channel.
+     */
+    set_value(channel: ColorBalanceChannel, value: number): void
+    /**
+     * A helper function called by implementations of the GstColorBalance
+     * interface. It fires the #GstColorBalance::value-changed signal on the
+     * instance, and the #GstColorBalanceChannel::value-changed signal on the
+     * channel object.
+     * @param channel A #GstColorBalanceChannel whose value has changed
+     * @param value The new value of the channel
+     */
+    value_changed(channel: ColorBalanceChannel, value: number): void
+
+    // Own virtual methods of GstVideo-1.0.ColorBalance
+
+    /**
+     * Get the #GstColorBalanceType of this implementation.
+     */
+    vfunc_get_balance_type(): ColorBalanceType
+    /**
+     * Retrieve the current value of the indicated channel, between min_value
+     * and max_value.
+     * 
+     * See Also: The #GstColorBalanceChannel.min_value and
+     *         #GstColorBalanceChannel.max_value members of the
+     *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     */
+    vfunc_get_value(channel: ColorBalanceChannel): number
+    /**
+     * Retrieve a list of the available channels.
+     */
+    vfunc_list_channels(): ColorBalanceChannel[]
+    /**
+     * Sets the current value of the channel to the passed value, which must
+     * be between min_value and max_value.
+     * 
+     * See Also: The #GstColorBalanceChannel.min_value and
+     *         #GstColorBalanceChannel.max_value members of the
+     *         #GstColorBalanceChannel object.
+     * @param channel A #GstColorBalanceChannel instance
+     * @param value The new value for the channel.
+     */
+    vfunc_set_value(channel: ColorBalanceChannel, value: number): void
+    /**
+     * A helper function called by implementations of the GstColorBalance
+     * interface. It fires the #GstColorBalance::value-changed signal on the
+     * instance, and the #GstColorBalanceChannel::value-changed signal on the
+     * channel object.
+     * @param channel A #GstColorBalanceChannel whose value has changed
+     * @param value The new value of the channel
+     */
+    vfunc_value_changed(channel: ColorBalanceChannel, value: number): void
+}
+
+interface Navigation {
+
+    // Owm methods of GstVideo-1.0.Navigation
+
+    /**
+     * Sends the indicated command to the navigation interface.
+     * @param command The command to issue
+     */
+    send_command(command: NavigationCommand): void
+    send_event(structure: Gst.Structure): void
+    /**
+     * Sends an event to the navigation interface.
+     * @param event The event to send
+     */
+    send_event_simple(event: Gst.Event): void
+    send_key_event(event: string, key: string): void
+    /**
+     * Sends a mouse event to the navigation interface. Mouse event coordinates
+     * are sent relative to the display space of the related output area. This is
+     * usually the size in pixels of the window associated with the element
+     * implementing the #GstNavigation interface.
+     * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+     * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
+     */
+    send_mouse_event(event: string, button: number, x: number, y: number): void
+    /**
+     * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
+     * are sent relative to the display space of the related output area. This is
+     * usually the size in pixels of the window associated with the element
+     * implementing the #GstNavigation interface.
+     * @param x The x coordinate of the mouse event.
+     * @param y The y coordinate of the mouse event.
+     * @param delta_x The delta_x coordinate of the mouse event.
+     * @param delta_y The delta_y coordinate of the mouse event.
+     */
+    send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void
+
+    // Own virtual methods of GstVideo-1.0.Navigation
+
+    /**
+     * sending a navigation event.
+     * @param structure 
+     */
+    vfunc_send_event(structure: Gst.Structure): void
+    /**
+     * Sends an event to the navigation interface.
+     * @param event The event to send
+     */
+    vfunc_send_event_simple(event: Gst.Event): void
+}
+
+interface VideoDirection {
+
+    // Own properties of GstVideo-1.0.VideoDirection
+
+    video_direction: VideoOrientationMethod
+    videoDirection: VideoOrientationMethod
+}
+
+interface VideoOrientation {
+
+    // Owm methods of GstVideo-1.0.VideoOrientation
+
+    /**
+     * Get the horizontal centering offset from the given object.
+     * @returns %TRUE in case the element supports centering
+     */
+    get_hcenter(): boolean
+    /**
+     * Get the horizontal flipping state (%TRUE for flipped) from the given object.
+     * @returns %TRUE in case the element supports flipping
+     */
+    get_hflip(): boolean
+    /**
+     * Get the vertical centering offset from the given object.
+     * @returns %TRUE in case the element supports centering
+     */
+    get_vcenter(): boolean
+    /**
+     * Get the vertical flipping state (%TRUE for flipped) from the given object.
+     * @returns %TRUE in case the element supports flipping
+     */
+    get_vflip(): boolean
+    /**
+     * Set the horizontal centering offset for the given object.
+     * @param center centering offset
+     * @returns %TRUE in case the element supports centering
+     */
+    set_hcenter(center: number): boolean
+    /**
+     * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
+     * @returns %TRUE in case the element supports flipping
+     */
+    set_hflip(flip: boolean): boolean
+    /**
+     * Set the vertical centering offset for the given object.
+     * @param center centering offset
+     * @returns %TRUE in case the element supports centering
+     */
+    set_vcenter(center: number): boolean
+    /**
+     * Set the vertical flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
+     * @returns %TRUE in case the element supports flipping
+     */
+    set_vflip(flip: boolean): boolean
+
+    // Own virtual methods of GstVideo-1.0.VideoOrientation
+
+    /**
+     * Get the horizontal centering offset from the given object.
+     */
+    vfunc_get_hcenter(): boolean
+    /**
+     * Get the horizontal flipping state (%TRUE for flipped) from the given object.
+     */
+    vfunc_get_hflip(): boolean
+    /**
+     * Get the vertical centering offset from the given object.
+     */
+    vfunc_get_vcenter(): boolean
+    /**
+     * Get the vertical flipping state (%TRUE for flipped) from the given object.
+     */
+    vfunc_get_vflip(): boolean
+    /**
+     * Set the horizontal centering offset for the given object.
+     * @param center centering offset
+     */
+    vfunc_set_hcenter(center: number): boolean
+    /**
+     * Set the horizontal flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
+     */
+    vfunc_set_hflip(flip: boolean): boolean
+    /**
+     * Set the vertical centering offset for the given object.
+     * @param center centering offset
+     */
+    vfunc_set_vcenter(center: number): boolean
+    /**
+     * Set the vertical flipping state (%TRUE for flipped) for the given object.
+     * @param flip use flipping
+     */
+    vfunc_set_vflip(flip: boolean): boolean
+}
+
+interface VideoOverlay {
+
+    // Owm methods of GstVideo-1.0.VideoOverlay
+
+    /**
+     * Tell an overlay that it has been exposed. This will redraw the current frame
+     * in the drawable even if the pipeline is PAUSED.
+     */
+    expose(): void
+    /**
+     * This will post a "have-window-handle" element message on the bus.
+     * 
+     * This function should only be used by video overlay plugin developers.
+     * @param handle a platform-specific handle referencing the window
+     */
+    got_window_handle(handle: never): void
+    /**
+     * Tell an overlay that it should handle events from the window system. These
+     * events are forwarded upstream as navigation events. In some window system,
+     * events are not propagated in the window hierarchy if a client is listening
+     * for them. This method allows you to disable events handling completely
+     * from the #GstVideoOverlay.
+     * @param handle_events a #gboolean indicating if events should be handled or not.
+     */
+    handle_events(handle_events: boolean): void
+    /**
+     * This will post a "prepare-window-handle" element message on the bus
+     * to give applications an opportunity to call
+     * gst_video_overlay_set_window_handle() before a plugin creates its own
+     * window.
+     * 
+     * This function should only be used by video overlay plugin developers.
+     */
+    prepare_window_handle(): void
+    /**
+     * Configure a subregion as a video target within the window set by
+     * gst_video_overlay_set_window_handle(). If this is not used or not supported
+     * the video will fill the area of the window set as the overlay to 100%.
+     * By specifying the rectangle, the video can be overlayed to a specific region
+     * of that window only. After setting the new rectangle one should call
+     * gst_video_overlay_expose() to force a redraw. To unset the region pass -1 for
+     * the `width` and `height` parameters.
+     * 
+     * This method is needed for non fullscreen video overlay in UI toolkits that
+     * do not support subwindows.
+     * @param x the horizontal offset of the render area inside the window
+     * @param y the vertical offset of the render area inside the window
+     * @param width the width of the render area inside the window
+     * @param height the height of the render area inside the window
+     * @returns %FALSE if not supported by the sink.
+     */
+    set_render_rectangle(x: number, y: number, width: number, height: number): boolean
+    /**
+     * This will call the video overlay's set_window_handle method. You
+     * should use this method to tell to an overlay to display video output to a
+     * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
+     * tell the overlay to stop using that window and create an internal one.
+     * @param handle a handle referencing the window.
+     */
+    set_window_handle(handle: never): void
+
+    // Own virtual methods of GstVideo-1.0.VideoOverlay
+
+    /**
+     * Tell an overlay that it has been exposed. This will redraw the current frame
+     * in the drawable even if the pipeline is PAUSED.
+     */
+    vfunc_expose(): void
+    /**
+     * Tell an overlay that it should handle events from the window system. These
+     * events are forwarded upstream as navigation events. In some window system,
+     * events are not propagated in the window hierarchy if a client is listening
+     * for them. This method allows you to disable events handling completely
+     * from the #GstVideoOverlay.
+     * @param handle_events a #gboolean indicating if events should be handled or not.
+     */
+    vfunc_handle_events(handle_events: boolean): void
+    vfunc_set_render_rectangle(x: number, y: number, width: number, height: number): void
+    /**
+     * This will call the video overlay's set_window_handle method. You
+     * should use this method to tell to an overlay to display video output to a
+     * specific window (e.g. an XWindow on X11). Passing 0 as the  `handle` will
+     * tell the overlay to stop using that window and create an internal one.
+     * @param handle a handle referencing the window.
+     */
+    vfunc_set_window_handle(handle: never): void
 }
 
 /**
  * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
  */
 const __name__: string
 /**
  * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
  */
 const __version__: string
 }
