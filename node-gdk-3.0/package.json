@@ -1,7 +1,7 @@
 {
     "name": "@girs/node-gdk-3.0",
-    "version": "3.24.38-3.2.7",
-    "description": "Node.js TypeScript type definitions for Gdk-3.0, generated from library version 3.24.38",
+    "version": "3.24.41-3.2.7",
+    "description": "Node.js TypeScript type definitions for Gdk-3.0, generated from library version 3.24.41",
     "type": "module",
     "module": "node-gdk-3.0.js",
     "main": "node-gdk-3.0.js",
@@ -55,7 +55,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"

@@ -17101,7 +17101,15 @@ module PreferencesWindow {
          * Whether search is enabled.
          */
         search_enabled?: boolean | null
+        /**
+         * The currently visible page.
+         */
         visible_page?: Gtk.Widget | null
+        /**
+         * The name of the currently visible page.
+         * 
+         * See [property`PreferencesWindow:`visible-page].
+         */
         visible_page_name?: string | null
         /**
          * Whether gestures and shortcuts for closing subpages are enabled.
@@ -17122,7 +17130,15 @@ module PreferencesWindow {
          * Whether search is enabled.
          */
         searchEnabled?: boolean | null
+        /**
+         * The currently visible page.
+         */
         visiblePage?: Gtk.Widget | null
+        /**
+         * The name of the currently visible page.
+         * 
+         * See [property`PreferencesWindow:`visible-page].
+         */
         visiblePageName?: string | null
     }
 
@@ -17170,9 +17186,25 @@ interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * Whether search is enabled.
      */
     searchEnabled: boolean
+    /**
+     * The currently visible page.
+     */
     visible_page: Gtk.Widget
+    /**
+     * The currently visible page.
+     */
     visiblePage: Gtk.Widget
+    /**
+     * The name of the currently visible page.
+     * 
+     * See [property`PreferencesWindow:`visible-page].
+     */
     visible_page_name: string | null
+    /**
+     * The name of the currently visible page.
+     * 
+     * See [property`PreferencesWindow:`visible-page].
+     */
     visiblePageName: string | null
 
     // Own fields of Adw-1.Adw.PreferencesWindow
@@ -17273,7 +17305,7 @@ interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
     /**
      * Makes the page with the given name visible.
      * 
-     * See [property`ViewStack:`visible-child].
+     * See [property`PreferencesWindow:`visible-page].
      * @param name the name of the page to make visible
      */
     set_visible_page_name(name: string): void

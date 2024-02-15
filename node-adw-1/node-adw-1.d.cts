@@ -18894,7 +18894,15 @@ export module PreferencesWindow {
          * Whether search is enabled.
          */
         searchEnabled?: boolean | null
+        /**
+         * The currently visible page.
+         */
         visiblePage?: Gtk.Widget | null
+        /**
+         * The name of the currently visible page.
+         * 
+         * See [property`PreferencesWindow:`visible-page].
+         */
         visiblePageName?: string | null
     }
 
@@ -18923,7 +18931,15 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
      * Whether search is enabled.
      */
     searchEnabled: boolean
+    /**
+     * The currently visible page.
+     */
     visiblePage: Gtk.Widget
+    /**
+     * The name of the currently visible page.
+     * 
+     * See [property`PreferencesWindow:`visible-page].
+     */
     visiblePageName: string | null
     __gtype__: number
 
@@ -19025,7 +19041,7 @@ export interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Co
     /**
      * Makes the page with the given name visible.
      * 
-     * See [property`ViewStack:`visible-child].
+     * See [property`PreferencesWindow:`visible-page].
      * @param name the name of the page to make visible
      */
     setVisiblePageName(name: string): void

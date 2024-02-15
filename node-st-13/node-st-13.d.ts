@@ -2028,7 +2028,7 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      */
     setLabel(text: string | null): void
     /**
-     * Enables or disables toggle mode for the button. In toggle mode, the active
+     * Enables or disables toggle mode for the button. In toggle mode, the checked
      * state will be "toggled" when the user clicks the button.
      * @param toggle %TRUE or %FALSE
      */

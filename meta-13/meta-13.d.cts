@@ -4601,7 +4601,7 @@ export interface RemoteAccessController {
     inhibit_remote_access(): void
     /**
      * Uninhibits remote access sessions from being created and running. If this was
-     * the last inhibitation that was inhibited, new remote access sessions can now
+     * the last inhibition that was inhibited, new remote access sessions can now
      * be created.
      */
     uninhibit_remote_access(): void
@@ -5672,6 +5672,11 @@ export interface WaylandClient {
     // Owm methods of Meta-13.Meta.WaylandClient
 
     hide_from_window_list(window: Window): void
+    /**
+     * Mark window as DESKTOP window
+     * @param window a MetaWindow
+     */
+    make_desktop(window: Window): void
     owns_window(window: Window): boolean
     /**
      * Shows again this window in window lists, like taskbars, pagers...

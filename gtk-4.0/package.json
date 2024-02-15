@@ -1,7 +1,7 @@
 {
     "name": "@girs/gtk-4.0",
-    "version": "4.12.4-3.2.7",
-    "description": "GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.12.4",
+    "version": "4.12.5-3.2.7",
+    "description": "GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.12.5",
     "type": "module",
     "module": "gtk-4.0.js",
     "main": "gtk-4.0.js",
@@ -55,7 +55,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"

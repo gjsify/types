@@ -9771,6 +9771,9 @@ export interface WebContext {
     add_path_to_sandbox(path: string, read_only: boolean): void
     /**
      * Ignore further TLS errors on the `host` for the certificate present in `info`.
+     * 
+     * If `host` is an IPv6 address, it should not be surrounded by brackets. This
+     * expectation matches g_uri_get_host().
      * @param certificate a #GTlsCertificate
      * @param host the host for which a certificate is to be allowed
      */

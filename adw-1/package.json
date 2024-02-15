@@ -1,7 +1,7 @@
 {
     "name": "@girs/adw-1",
-    "version": "1.4.2-3.2.7",
-    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.2",
+    "version": "1.4.3-3.2.7",
+    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.3",
     "type": "module",
     "module": "adw-1.js",
     "main": "adw-1.js",
@@ -56,7 +56,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
