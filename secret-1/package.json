@@ -1,13 +1,19 @@
 {
     "name": "@girs/secret-1",
-    "version": "0.21.0-3.2.7",
+    "version": "0.21.0-3.2.8",
     "description": "GJS TypeScript type definitions for Secret-1, generated from library version 0.21.0",
     "type": "module",
     "module": "secret-1.js",
     "main": "secret-1.js",
     "exports": {
-        "./ambient": "./secret-1-ambient.d.ts",
-        "./import": "./secret-1-import.d.ts",
+        "./ambient": {
+            "types": "./secret-1-ambient.d.ts",
+            "default": "./secret-1-ambient.js"
+        },
+        "./import": {
+            "types": "./secret-1-import.d.ts",
+            "default": "./secret-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./secret-1.d.ts",

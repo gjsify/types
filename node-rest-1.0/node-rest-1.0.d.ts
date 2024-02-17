@@ -239,14 +239,14 @@ module OAuth2Proxy {
 
         // Own constructor properties of Rest-1.0.Rest.OAuth2Proxy
 
-        accessToken?: string | null
-        authUrl?: string | null
-        clientId?: string | null
-        clientSecret?: string | null
-        expirationDate?: GLib.DateTime | null
-        redirectUri?: string | null
-        refreshToken?: string | null
-        tokenUrl?: string | null
+        access_token?: string | null
+        auth_url?: string | null
+        client_id?: string | null
+        client_secret?: string | null
+        expiration_date?: GLib.DateTime | null
+        redirect_uri?: string | null
+        refresh_token?: string | null
+        token_url?: string | null
     }
 
 }
@@ -504,13 +504,13 @@ module Proxy {
 
         // Own constructor properties of Rest-1.0.Rest.Proxy
 
-        bindingRequired?: boolean | null
-        disableCookies?: boolean | null
+        binding_required?: boolean | null
+        disable_cookies?: boolean | null
         password?: string | null
-        sslCaFile?: string | null
-        sslStrict?: boolean | null
-        urlFormat?: string | null
-        userAgent?: string | null
+        ssl_ca_file?: string | null
+        ssl_strict?: boolean | null
+        url_format?: string | null
+        user_agent?: string | null
         username?: string | null
     }
 

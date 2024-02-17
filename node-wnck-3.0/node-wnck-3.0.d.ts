@@ -1331,7 +1331,7 @@ module Handle {
 
         // Own constructor properties of Wnck-3.0.Wnck.Handle
 
-        clientType?: ClientType | null
+        client_type?: ClientType | null
     }
 
 }
@@ -3257,7 +3257,7 @@ module Tasklist {
         // Own constructor properties of Wnck-3.0.Wnck.Tasklist
 
         handle?: Handle | null
-        tooltipsEnabled?: boolean | null
+        tooltips_enabled?: boolean | null
     }
 
 }

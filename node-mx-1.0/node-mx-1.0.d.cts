@@ -349,9 +349,9 @@ export module Draggable {
         // Own constructor properties of Mx-1.0.Mx.Draggable
 
         axis?: DragAxis | null
-        dragActor?: Clutter.Actor | null
-        dragEnabled?: boolean | null
-        dragThreshold?: number | null
+        drag_actor?: Clutter.Actor | null
+        drag_enabled?: boolean | null
+        drag_threshold?: number | null
     }
 
 }
@@ -974,7 +974,7 @@ export module Droppable {
 
         // Own constructor properties of Mx-1.0.Mx.Droppable
 
-        dropEnabled?: boolean | null
+        drop_enabled?: boolean | null
     }
 
 }
@@ -1675,8 +1675,8 @@ export module Scrollable {
 
         // Own constructor properties of Mx-1.0.Mx.Scrollable
 
-        horizontalAdjustment?: Adjustment | null
-        verticalAdjustment?: Adjustment | null
+        horizontal_adjustment?: Adjustment | null
+        vertical_adjustment?: Adjustment | null
     }
 
 }
@@ -1764,8 +1764,8 @@ export module Stylable {
         // Own constructor properties of Mx-1.0.Mx.Stylable
 
         style?: Style | null
-        styleClass?: string | null
-        stylePseudoClass?: string | null
+        style_class?: string | null
+        style_pseudo_class?: string | null
     }
 
 }
@@ -2033,7 +2033,7 @@ export module Action {
         // Own constructor properties of Mx-1.0.Mx.Action
 
         active?: boolean | null
-        displayName?: string | null
+        display_name?: string | null
         icon?: string | null
     }
 
@@ -2293,7 +2293,7 @@ export module ActorManager {
         // Own constructor properties of Mx-1.0.Mx.ActorManager
 
         stage?: Clutter.Stage | null
-        timeSlice?: number | null
+        time_slice?: number | null
     }
 
 }
@@ -2541,12 +2541,12 @@ export module Adjustment {
 
         // Own constructor properties of Mx-1.0.Mx.Adjustment
 
-        clampValue?: boolean | null
+        clamp_value?: boolean | null
         elastic?: boolean | null
         lower?: number | null
-        pageIncrement?: number | null
-        pageSize?: number | null
-        stepIncrement?: number | null
+        page_increment?: number | null
+        page_size?: number | null
+        step_increment?: number | null
         upper?: number | null
         value?: number | null
     }
@@ -2819,7 +2819,7 @@ export module Application {
 
         // Own constructor properties of Mx-1.0.Mx.Application
 
-        applicationName?: string | null
+        application_name?: string | null
         flags?: number | null
     }
 
@@ -3010,19 +3010,19 @@ export module Bin {
         /**
          * The horizontal alignment of the #MxBin child.
          */
-        xAlign: any
+        x_align: any
         /**
          * Whether the child should fill the horizontal allocation
          */
-        xFill?: boolean | null
+        x_fill?: boolean | null
         /**
          * The vertical alignment of the #MxBin child.
          */
-        yAlign: any
+        y_align: any
         /**
          * Whether the child should fill the vertical allocation
          */
-        yFill?: boolean | null
+        y_fill?: boolean | null
     }
 
 }
@@ -3741,9 +3741,9 @@ export module BoxLayout {
 
         // Own constructor properties of Mx-1.0.Mx.BoxLayout
 
-        enableAnimations?: boolean | null
+        enable_animations?: boolean | null
         orientation?: Orientation | null
-        scrollToFocused?: boolean | null
+        scroll_to_focused?: boolean | null
         spacing?: number | null
     }
 
@@ -4549,10 +4549,10 @@ export module BoxLayoutChild {
         // Own constructor properties of Mx-1.0.Mx.BoxLayoutChild
 
         expand?: boolean | null
-        xAlign?: Align | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yFill?: boolean | null
+        x_align?: Align | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_fill?: boolean | null
     }
 
 }
@@ -4644,13 +4644,13 @@ export module Button {
         // Own constructor properties of Mx-1.0.Mx.Button
 
         action?: Action | null
-        iconName?: string | null
-        iconPosition?: Position | null
-        iconSize?: number | null
-        iconVisible?: boolean | null
-        isToggle?: boolean | null
+        icon_name?: string | null
+        icon_position?: Position | null
+        icon_size?: number | null
+        icon_visible?: boolean | null
+        is_toggle?: boolean | null
         label?: string | null
-        labelVisible?: boolean | null
+        label_visible?: boolean | null
         toggled?: boolean | null
     }
 
@@ -4675,6 +4675,8 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.Button
 
@@ -5500,8 +5502,8 @@ export module ButtonGroup {
 
         // Own constructor properties of Mx-1.0.Mx.ButtonGroup
 
-        activeButton?: Button | null
-        allowNoActive?: boolean | null
+        active_button?: Button | null
+        allow_no_active?: boolean | null
     }
 
 }
@@ -5691,8 +5693,8 @@ export module ComboBox {
 
         // Own constructor properties of Mx-1.0.Mx.ComboBox
 
-        activeIconName?: string | null
-        activeText?: string | null
+        active_icon_name?: string | null
+        active_text?: string | null
         index?: number | null
     }
 
@@ -6422,7 +6424,7 @@ export module DeformBowTie {
 
         // Own constructor properties of Mx-1.0.Mx.DeformBowTie
 
-        flipBack?: boolean | null
+        flip_back?: boolean | null
         period?: number | null
     }
 
@@ -7795,8 +7797,8 @@ export module DeformTexture {
 
         back?: Clutter.Texture | null
         front?: Clutter.Texture | null
-        tilesX?: number | null
-        tilesY?: number | null
+        tiles_x?: number | null
+        tiles_y?: number | null
     }
 
 }
@@ -9203,6 +9205,8 @@ export interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutte
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.Dialog
 
@@ -9927,11 +9931,11 @@ export module Entry {
 
         // Own constructor properties of Mx-1.0.Mx.Entry
 
-        hintText?: string | null
-        iconHighlightSuffix?: string | null
-        passwordChar?: number | null
-        primaryIconTooltipText?: string | null
-        secondaryIconTooltipText?: string | null
+        hint_text?: string | null
+        icon_highlight_suffix?: string | null
+        password_char?: number | null
+        primary_icon_tooltip_text?: string | null
+        secondary_icon_tooltip_text?: string | null
         text?: string | null
     }
 
@@ -10740,6 +10744,8 @@ export interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clut
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.Expander
 
@@ -11432,16 +11438,16 @@ export module FadeEffect {
 
         // Own constructor properties of Mx-1.0.Mx.FadeEffect
 
-        borderBottom?: number | null
-        borderLeft?: number | null
-        borderRight?: number | null
-        borderTop?: number | null
-        boundsHeight?: number | null
-        boundsWidth?: number | null
-        boundsX?: number | null
-        boundsY?: number | null
+        border_bottom?: number | null
+        border_left?: number | null
+        border_right?: number | null
+        border_top?: number | null
+        bounds_height?: number | null
+        bounds_width?: number | null
+        bounds_x?: number | null
+        bounds_y?: number | null
         color?: Clutter.Color | null
-        freezeUpdate?: boolean | null
+        freeze_update?: boolean | null
     }
 
 }
@@ -12378,6 +12384,8 @@ export interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Own fields of Mx-1.0.Mx.Frame
 
@@ -13034,15 +13042,15 @@ export module Grid {
 
         // Own constructor properties of Mx-1.0.Mx.Grid
 
-        childXAlign?: Align | null
-        childYAlign?: Align | null
-        columnSpacing?: number | null
-        homogenousColumns?: boolean | null
-        homogenousRows?: boolean | null
-        lineAlignment?: Align | null
-        maxStride?: number | null
+        child_x_align?: Align | null
+        child_y_align?: Align | null
+        column_spacing?: number | null
+        homogenous_columns?: boolean | null
+        homogenous_rows?: boolean | null
+        line_alignment?: Align | null
+        max_stride?: number | null
         orientation?: Orientation | null
-        rowSpacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -13763,8 +13771,8 @@ export module Icon {
 
         // Own constructor properties of Mx-1.0.Mx.Icon
 
-        iconName?: string | null
-        iconSize?: number | null
+        icon_name?: string | null
+        icon_size?: number | null
     }
 
 }
@@ -14429,7 +14437,7 @@ export module IconTheme {
 
         // Own constructor properties of Mx-1.0.Mx.IconTheme
 
-        themeName?: string | null
+        theme_name?: string | null
     }
 
 }
@@ -14573,13 +14581,13 @@ export module Image {
 
         // Own constructor properties of Mx-1.0.Mx.Image
 
-        allowUpscale?: boolean | null
-        imageRotation?: number | null
-        loadAsync?: boolean | null
-        scaleHeightThreshold?: number | null
-        scaleMode?: ImageScaleMode | null
-        scaleWidthThreshold?: number | null
-        transitionDuration?: number | null
+        allow_upscale?: boolean | null
+        image_rotation?: number | null
+        load_async?: boolean | null
+        scale_height_threshold?: number | null
+        scale_mode?: ImageScaleMode | null
+        scale_width_threshold?: number | null
+        transition_duration?: number | null
     }
 
 }
@@ -15450,7 +15458,7 @@ export module ItemView {
         // Own constructor properties of Mx-1.0.Mx.ItemView
 
         factory?: GObject.Object | null
-        itemType?: GObject.GType | null
+        item_type?: GObject.GType | null
         model?: Clutter.Model | null
     }
 
@@ -16221,15 +16229,15 @@ export module KineticScrollView {
 
         // Own constructor properties of Mx-1.0.Mx.KineticScrollView
 
-        accelerationFactor?: number | null
-        clampDuration?: number | null
-        clampMode?: number | null
-        clampToCenter?: boolean | null
+        acceleration_factor?: number | null
+        clamp_duration?: number | null
+        clamp_mode?: number | null
+        clamp_to_center?: boolean | null
         deceleration?: number | null
-        mouseButton?: number | null
+        mouse_button?: number | null
         overshoot?: number | null
-        scrollPolicy?: ScrollPolicy | null
-        useCaptured?: boolean | null
+        scroll_policy?: ScrollPolicy | null
+        use_captured?: boolean | null
     }
 
 }
@@ -16254,6 +16262,8 @@ export interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animata
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.KineticScrollView
 
@@ -17073,22 +17083,22 @@ export module Label {
 
         // Own constructor properties of Mx-1.0.Mx.Label
 
-        fadeOut?: boolean | null
+        fade_out?: boolean | null
         /**
          * Whether to wrap the lines of #MxLabel:text if the contents
          * exceed the available allocation.
          */
-        lineWrap?: boolean | null
+        line_wrap?: boolean | null
         /**
          * Show a tooltip when there is not enough space to display the text. If set
          * to %TRUE, this will also cause the #ClutterActor:reactive property to be
          * enabled.
          */
-        showTooltip?: boolean | null
+        show_tooltip?: boolean | null
         text?: string | null
-        useMarkup?: boolean | null
-        xAlign: any
-        yAlign: any
+        use_markup?: boolean | null
+        x_align: any
+        y_align: any
     }
 
 }
@@ -17889,7 +17899,7 @@ export module ListView {
         // Own constructor properties of Mx-1.0.Mx.ListView
 
         factory?: GObject.Object | null
-        itemType?: GObject.GType | null
+        item_type?: GObject.GType | null
         model?: Clutter.Model | null
     }
 
@@ -19379,8 +19389,8 @@ export module Notebook {
 
         // Own constructor properties of Mx-1.0.Mx.Notebook
 
-        currentPage?: Clutter.Actor | null
-        enableGestures?: boolean | null
+        current_page?: Clutter.Actor | null
+        enable_gestures?: boolean | null
     }
 
 }
@@ -20044,11 +20054,11 @@ export module Offscreen {
 
         // Own constructor properties of Mx-1.0.Mx.Offscreen
 
-        accumulationEnabled?: boolean | null
-        autoUpdate?: boolean | null
+        accumulation_enabled?: boolean | null
+        auto_update?: boolean | null
         child?: Clutter.Actor | null
-        pickChild?: boolean | null
-        redirectEnabled?: boolean | null
+        pick_child?: boolean | null
+        redirect_enabled?: boolean | null
     }
 
 }
@@ -20787,7 +20797,7 @@ export module PathBar {
 
         // Own constructor properties of Mx-1.0.Mx.PathBar
 
-        clearOnChange?: boolean | null
+        clear_on_change?: boolean | null
         editable?: boolean | null
     }
 
@@ -22201,6 +22211,8 @@ export interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clu
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.ScrollBar
 
@@ -22899,9 +22911,9 @@ export module ScrollView {
 
         // Own constructor properties of Mx-1.0.Mx.ScrollView
 
-        enableGestures?: boolean | null
-        enableMouseScrolling?: boolean | null
-        scrollPolicy?: ScrollPolicy | null
+        enable_gestures?: boolean | null
+        enable_mouse_scrolling?: boolean | null
+        scroll_policy?: ScrollPolicy | null
     }
 
 }
@@ -22919,6 +22931,8 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.ScrollView
 
@@ -23590,11 +23604,11 @@ export module Settings {
 
         // Own constructor properties of Mx-1.0.Mx.Settings
 
-        dragThreshold?: number | null
-        fontName?: string | null
-        iconTheme?: string | null
-        longPressTimeout?: number | null
-        smallScreen?: boolean | null
+        drag_threshold?: number | null
+        font_name?: string | null
+        icon_theme?: string | null
+        long_press_timeout?: number | null
+        small_screen?: boolean | null
     }
 
 }
@@ -23680,7 +23694,7 @@ export module Slider {
 
         // Own constructor properties of Mx-1.0.Mx.Slider
 
-        bufferValue?: number | null
+        buffer_value?: number | null
         value?: number | null
     }
 
@@ -25769,10 +25783,10 @@ export module StackChild {
 
         crop?: boolean | null
         fit?: boolean | null
-        xAlign?: Align | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yFill?: boolean | null
+        x_align?: Align | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_fill?: boolean | null
     }
 
 }
@@ -25987,8 +26001,8 @@ export module Table {
 
         // Own constructor properties of Mx-1.0.Mx.Table
 
-        columnSpacing?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -26844,15 +26858,15 @@ export module TableChild {
         // Own constructor properties of Mx-1.0.Mx.TableChild
 
         column?: number | null
-        columnSpan?: number | null
+        column_span?: number | null
         row?: number | null
-        rowSpan?: number | null
-        xAlign?: Align | null
-        xExpand?: boolean | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yExpand?: boolean | null
-        yFill?: boolean | null
+        row_span?: number | null
+        x_align?: Align | null
+        x_expand?: boolean | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_expand?: boolean | null
+        y_fill?: boolean | null
     }
 
 }
@@ -27115,7 +27129,7 @@ export module TextureFrame {
 
         bottom?: number | null
         left?: number | null
-        parentTexture?: Clutter.Texture | null
+        parent_texture?: Clutter.Texture | null
         right?: number | null
         top?: number | null
     }
@@ -28417,7 +28431,7 @@ export module Toolbar {
 
         // Own constructor properties of Mx-1.0.Mx.Toolbar
 
-        hasCloseButton?: boolean | null
+        has_close_button?: boolean | null
     }
 
 }
@@ -28433,6 +28447,8 @@ export interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Own fields of Mx-1.0.Mx.Toolbar
 
@@ -29122,7 +29138,7 @@ export module Tooltip {
         // Own constructor properties of Mx-1.0.Mx.Tooltip
 
         text?: string | null
-        tipArea?: Clutter.Geometry | null
+        tip_area?: Clutter.Geometry | null
     }
 
 }
@@ -29844,10 +29860,10 @@ export module Viewport {
 
         // Own constructor properties of Mx-1.0.Mx.Viewport
 
-        syncAdjustments?: boolean | null
-        xOrigin?: number | null
-        yOrigin?: number | null
-        zOrigin?: number | null
+        sync_adjustments?: boolean | null
+        x_origin?: number | null
+        y_origin?: number | null
+        z_origin?: number | null
     }
 
 }
@@ -29866,6 +29882,8 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-1.0.Mx.Viewport
 
@@ -30559,11 +30577,11 @@ export module Widget {
          * #MxMenu associated with the widget.
          */
         menu?: Menu | null
-        tooltipDelay?: number | null
+        tooltip_delay?: number | null
         /**
          * text displayed on the tooltip
          */
-        tooltipText?: string | null
+        tooltip_text?: string | null
     }
 
 }
@@ -31333,15 +31351,15 @@ export module Window {
         // Own constructor properties of Mx-1.0.Mx.Window
 
         child?: Clutter.Actor | null
-        clutterStage?: Clutter.Stage | null
+        clutter_stage?: Clutter.Stage | null
         fullscreen?: boolean | null
-        hasToolbar?: boolean | null
-        iconCoglTexture?: string | null
-        iconName?: string | null
-        smallScreen?: boolean | null
+        has_toolbar?: boolean | null
+        icon_cogl_texture?: string | null
+        icon_name?: string | null
+        small_screen?: boolean | null
         title?: string | null
         toolbar?: Toolbar | null
-        windowRotation?: WindowRotation | null
+        window_rotation?: WindowRotation | null
     }
 
 }

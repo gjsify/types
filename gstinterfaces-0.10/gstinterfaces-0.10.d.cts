@@ -1441,7 +1441,6 @@ export module MixerTrack {
         // Own constructor properties of GstInterfaces-0.10.GstInterfaces.MixerTrack
 
         index?: number | null
-        untranslated_label?: string | null
         untranslatedLabel?: string | null
     }
 
@@ -1455,7 +1454,6 @@ export interface MixerTrack {
     readonly maxVolume: number
     readonly minVolume: number
     readonly numChannels: number
-    readonly untranslated_label: string
     readonly untranslatedLabel: string
 
     // Own fields of GstInterfaces-0.10.GstInterfaces.MixerTrack

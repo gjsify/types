@@ -946,22 +946,8 @@ export module Aggregator {
         /**
          * Enables the emission of signals such as #GstAggregator::samples-selected
          */
-        emit_signals?: boolean | null
-        latency?: number | null
-        /**
-         * Force minimum upstream latency (in nanoseconds). When sources with a
-         * higher latency are expected to be plugged in dynamically after the
-         * aggregator has started playing, this allows overriding the minimum
-         * latency reported by the initial source(s). This is only taken into
-         * account when larger than the actually reported minimum latency.
-         */
-        min_upstream_latency?: number | null
-        start_time?: number | null
-        start_time_selection?: AggregatorStartTimeSelection | null
-        /**
-         * Enables the emission of signals such as #GstAggregator::samples-selected
-         */
         emitSignals?: boolean | null
+        latency?: number | null
         /**
          * Force minimum upstream latency (in nanoseconds). When sources with a
          * higher latency are expected to be plugged in dynamically after the
@@ -983,10 +969,6 @@ export interface Aggregator {
     /**
      * Enables the emission of signals such as #GstAggregator::samples-selected
      */
-    emit_signals: boolean
-    /**
-     * Enables the emission of signals such as #GstAggregator::samples-selected
-     */
     emitSignals: boolean
     latency: number
     /**
@@ -996,18 +978,8 @@ export interface Aggregator {
      * latency reported by the initial source(s). This is only taken into
      * account when larger than the actually reported minimum latency.
      */
-    min_upstream_latency: number
-    /**
-     * Force minimum upstream latency (in nanoseconds). When sources with a
-     * higher latency are expected to be plugged in dynamically after the
-     * aggregator has started playing, this allows overriding the minimum
-     * latency reported by the initial source(s). This is only taken into
-     * account when larger than the actually reported minimum latency.
-     */
     minUpstreamLatency: number
-    start_time: any
     startTime: number
-    start_time_selection: AggregatorStartTimeSelection
     startTimeSelection: AggregatorStartTimeSelection
 
     // Conflicting properties
@@ -1366,10 +1338,6 @@ export module AggregatorPad {
         /**
          * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
          */
-        emit_signals?: boolean | null
-        /**
-         * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
-         */
         emitSignals?: boolean | null
     }
 
@@ -1379,10 +1347,6 @@ export interface AggregatorPad {
 
     // Own properties of GstBase-1.0.GstBase.AggregatorPad
 
-    /**
-     * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
-     */
-    emit_signals: boolean
     /**
      * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
      */
@@ -1531,15 +1495,6 @@ export module BaseParse {
          * If set to %FALSE, decision of whether to parse the data or not is up to
          * the implementation (standard behaviour).
          */
-        disable_passthrough?: boolean | null
-        /**
-         * If set to %TRUE, baseparse will unconditionally force parsing of the
-         * incoming data. This can be required in the rare cases where the incoming
-         * side-data (caps, pts, dts, ...) is not trusted by the user and wants to
-         * force validation and parsing of the incoming data.
-         * If set to %FALSE, decision of whether to parse the data or not is up to
-         * the implementation (standard behaviour).
-         */
         disablePassthrough?: boolean | null
     }
 
@@ -1549,15 +1504,6 @@ export interface BaseParse {
 
     // Own properties of GstBase-1.0.GstBase.BaseParse
 
-    /**
-     * If set to %TRUE, baseparse will unconditionally force parsing of the
-     * incoming data. This can be required in the rare cases where the incoming
-     * side-data (caps, pts, dts, ...) is not trusted by the user and wants to
-     * force validation and parsing of the incoming data.
-     * If set to %FALSE, decision of whether to parse the data or not is up to
-     * the implementation (standard behaviour).
-     */
-    disable_passthrough: boolean
     /**
      * If set to %TRUE, baseparse will unconditionally force parsing of the
      * incoming data. This can be required in the rare cases where the incoming
@@ -2009,46 +1955,6 @@ export module BaseSink {
          * set to %NULL. This can be useful if you need buffers to be released as soon
          * as possible, eg. if you're using a buffer pool.
          */
-        enable_last_sample?: boolean | null
-        /**
-         * Control the maximum amount of bits that will be rendered per second.
-         * Setting this property to a value bigger than 0 will make the sink delay
-         * rendering of the buffers when it would exceed to max-bitrate.
-         */
-        max_bitrate?: number | null
-        max_lateness?: number | null
-        /**
-         * Maximum amount of time (in nanoseconds) that the pipeline can take
-         * for processing the buffer. This is added to the latency of live
-         * pipelines.
-         */
-        processing_deadline?: number | null
-        qos?: boolean | null
-        /**
-         * The additional delay between synchronisation and actual rendering of the
-         * media. This property will add additional latency to the device in order to
-         * make other sinks compensate for the delay.
-         */
-        render_delay?: number | null
-        sync?: boolean | null
-        /**
-         * The time to insert between buffers. This property can be used to control
-         * the maximum amount of buffers per second to render. Setting this property
-         * to a value bigger than 0 will make the sink create THROTTLE QoS events.
-         */
-        throttle_time?: number | null
-        /**
-         * Controls the final synchronisation, a negative value will render the buffer
-         * earlier while a positive value delays playback. This property can be
-         * used to fix synchronisation in bad files.
-         */
-        ts_offset?: number | null
-        /**
-         * Enable the last-sample property. If %FALSE, basesink doesn't keep a
-         * reference to the last buffer arrived and the last-sample property is always
-         * set to %NULL. This can be useful if you need buffers to be released as soon
-         * as possible, eg. if you're using a buffer pool.
-         */
         enableLastSample?: boolean | null
         /**
          * Control the maximum amount of bits that will be rendered per second.
@@ -2063,12 +1969,14 @@ export module BaseSink {
          * pipelines.
          */
         processingDeadline?: number | null
+        qos?: boolean | null
         /**
          * The additional delay between synchronisation and actual rendering of the
          * media. This property will add additional latency to the device in order to
          * make other sinks compensate for the delay.
          */
         renderDelay?: number | null
+        sync?: boolean | null
         /**
          * The time to insert between buffers. This property can be used to control
          * the maximum amount of buffers per second to render. Setting this property
@@ -2106,20 +2014,7 @@ export interface BaseSink {
      * set to %NULL. This can be useful if you need buffers to be released as soon
      * as possible, eg. if you're using a buffer pool.
      */
-    enable_last_sample: boolean
-    /**
-     * Enable the last-sample property. If %FALSE, basesink doesn't keep a
-     * reference to the last buffer arrived and the last-sample property is always
-     * set to %NULL. This can be useful if you need buffers to be released as soon
-     * as possible, eg. if you're using a buffer pool.
-     */
     enableLastSample: boolean
-    /**
-     * The last buffer that arrived in the sink and was used for preroll or for
-     * rendering. This property can be used to generate thumbnails. This property
-     * can be %NULL when the sink has not yet received a buffer.
-     */
-    readonly last_sample: Gst.Sample
     /**
      * The last buffer that arrived in the sink and was used for preroll or for
      * rendering. This property can be used to generate thumbnails. This property
@@ -2131,21 +2026,8 @@ export interface BaseSink {
      * Setting this property to a value bigger than 0 will make the sink delay
      * rendering of the buffers when it would exceed to max-bitrate.
      */
-    max_bitrate: number
-    /**
-     * Control the maximum amount of bits that will be rendered per second.
-     * Setting this property to a value bigger than 0 will make the sink delay
-     * rendering of the buffers when it would exceed to max-bitrate.
-     */
     maxBitrate: number
-    max_lateness: number
     maxLateness: number
-    /**
-     * Maximum amount of time (in nanoseconds) that the pipeline can take
-     * for processing the buffer. This is added to the latency of live
-     * pipelines.
-     */
-    processing_deadline: number
     /**
      * Maximum amount of time (in nanoseconds) that the pipeline can take
      * for processing the buffer. This is added to the latency of live
@@ -2153,12 +2035,6 @@ export interface BaseSink {
      */
     processingDeadline: number
     qos: boolean
-    /**
-     * The additional delay between synchronisation and actual rendering of the
-     * media. This property will add additional latency to the device in order to
-     * make other sinks compensate for the delay.
-     */
-    render_delay: number
     /**
      * The additional delay between synchronisation and actual rendering of the
      * media. This property will add additional latency to the device in order to
@@ -2180,19 +2056,7 @@ export interface BaseSink {
      * the maximum amount of buffers per second to render. Setting this property
      * to a value bigger than 0 will make the sink create THROTTLE QoS events.
      */
-    throttle_time: number
-    /**
-     * The time to insert between buffers. This property can be used to control
-     * the maximum amount of buffers per second to render. Setting this property
-     * to a value bigger than 0 will make the sink create THROTTLE QoS events.
-     */
     throttleTime: number
-    /**
-     * Controls the final synchronisation, a negative value will render the buffer
-     * earlier while a positive value delays playback. This property can be
-     * used to fix synchronisation in bad files.
-     */
-    ts_offset: number
     /**
      * Controls the final synchronisation, a negative value will render the buffer
      * earlier while a positive value delays playback. This property can be
@@ -2747,11 +2611,9 @@ export module BaseSrc {
         // Own constructor properties of GstBase-1.0.GstBase.BaseSrc
 
         blocksize?: number | null
-        do_timestamp?: boolean | null
-        num_buffers?: number | null
-        typefind?: boolean | null
         doTimestamp?: boolean | null
         numBuffers?: number | null
+        typefind?: boolean | null
     }
 
 }
@@ -2760,7 +2622,6 @@ export interface BaseSrc {
 
     // Own properties of GstBase-1.0.GstBase.BaseSrc
 
-    do_timestamp: boolean
     doTimestamp: boolean
     numBuffers: number
 
@@ -4043,11 +3904,8 @@ export interface DataQueue {
 
     // Own properties of GstBase-1.0.GstBase.DataQueue
 
-    readonly current_level_bytes: number
     readonly currentLevelBytes: number
-    readonly current_level_time: number
     readonly currentLevelTime: number
-    readonly current_level_visible: number
     readonly currentLevelVisible: number
 
     // Own fields of GstBase-1.0.GstBase.DataQueue

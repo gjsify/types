@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gst-1.0",
-    "version": "1.23.0-3.2.7",
+    "version": "1.23.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gst-1.0, generated from library version 1.23.0",
     "type": "module",
     "module": "node-gst-1.0.js",
     "main": "node-gst-1.0.js",
     "exports": {
-        "./ambient": "./node-gst-1.0-ambient.d.ts",
-        "./import": "./node-gst-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-gst-1.0-ambient.d.ts",
+            "default": "./node-gst-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gst-1.0-import.d.ts",
+            "default": "./node-gst-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gst-1.0.d.ts",

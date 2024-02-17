@@ -86,76 +86,6 @@ module Client {
          * the call to [method`Glib`.Initable.init]. Use %G_SOCKET_FAMILY_INVALID
          * to specifiy using the default socket family (legacy IP)
          */
-        address_family?: Gio.SocketFamily | null
-        /**
-         * The value of the BOOTID.UPNP.ORG header
-         * 
-         * Since 1.2.0
-         */
-        boot_id?: number | null
-        /**
-         * The value of the CONFIGID.UPNP.ORG header
-         * 
-         * Since 1.2.0
-         */
-        config_id?: number | null
-        /**
-         * The IP address of the assoicated network interface.
-         */
-        host_ip?: string | null
-        /**
-         * The network mask of the assoicated network interface.
-         */
-        host_mask?: Gio.InetAddressMask | null
-        /**
-         * The name of the network interface this client is associated with.
-         * Set to NULL to autodetect.
-         */
-        interface?: string | null
-        /**
-         * UDP port to use for sending multicast M-SEARCH requests on the
-         * network. If not set (or set to 0) a random port will be used.
-         * This property can be only set during object construction.
-         */
-        msearch_port?: number | null
-        /**
-         * The network this client is currently connected to. You could set this
-         * to anything you want to identify the network this client is
-         * associated with. If you are using #GUPnPContextManager and associated
-         * interface is a WiFi interface, this property is set to the ESSID of
-         * the network. Otherwise, expect this to be the network IP address by
-         * default.
-         */
-        network?: string | null
-        /**
-         * UDP port to use for sending multicast M-SEARCH requests on the
-         * network. If not set (or set to 0) a random port will be used.
-         * This property can be only set during object construction.
-         */
-        port?: number | null
-        /**
-         * The SSDP server's identifier.
-         */
-        server_id?: string | null
-        /**
-         * Time-to-live value to use for all sockets created by this client.
-         * If not set (or set to 0) the value recommended by UPnP will be used.
-         * This property can only be set during object construction.
-         */
-        socket_ttl?: number | null
-        /**
-         * The UPnP version the client adheres to.
-         */
-        uda_version?: UDAVersion | null
-        /**
-         * The IP protocol address family this client works on. When specified
-         * during construction without giving a concrete address, it will be
-         * used to determine the proper address.
-         * 
-         * If not specified, will contain the currrent address family after
-         * the call to [method`Glib`.Initable.init]. Use %G_SOCKET_FAMILY_INVALID
-         * to specifiy using the default socket family (legacy IP)
-         */
         addressFamily?: Gio.SocketFamily | null
         /**
          * The value of the BOOTID.UPNP.ORG header
@@ -178,11 +108,31 @@ module Client {
          */
         hostMask?: Gio.InetAddressMask | null
         /**
+         * The name of the network interface this client is associated with.
+         * Set to NULL to autodetect.
+         */
+        interface?: string | null
+        /**
          * UDP port to use for sending multicast M-SEARCH requests on the
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
          */
         msearchPort?: number | null
+        /**
+         * The network this client is currently connected to. You could set this
+         * to anything you want to identify the network this client is
+         * associated with. If you are using #GUPnPContextManager and associated
+         * interface is a WiFi interface, this property is set to the ESSID of
+         * the network. Otherwise, expect this to be the network IP address by
+         * default.
+         */
+        network?: string | null
+        /**
+         * UDP port to use for sending multicast M-SEARCH requests on the
+         * network. If not set (or set to 0) a random port will be used.
+         * This property can be only set during object construction.
+         */
+        port?: number | null
         /**
          * The SSDP server's identifier.
          */
@@ -224,23 +174,7 @@ interface Client extends Gio.Initable {
      * the call to [method`Glib`.Initable.init]. Use %G_SOCKET_FAMILY_INVALID
      * to specifiy using the default socket family (legacy IP)
      */
-    readonly address_family: Gio.SocketFamily
-    /**
-     * The IP protocol address family this client works on. When specified
-     * during construction without giving a concrete address, it will be
-     * used to determine the proper address.
-     * 
-     * If not specified, will contain the currrent address family after
-     * the call to [method`Glib`.Initable.init]. Use %G_SOCKET_FAMILY_INVALID
-     * to specifiy using the default socket family (legacy IP)
-     */
     readonly addressFamily: Gio.SocketFamily
-    /**
-     * The value of the BOOTID.UPNP.ORG header
-     * 
-     * Since 1.2.0
-     */
-    boot_id: number
     /**
      * The value of the BOOTID.UPNP.ORG header
      * 
@@ -252,25 +186,11 @@ interface Client extends Gio.Initable {
      * 
      * Since 1.2.0
      */
-    config_id: number
-    /**
-     * The value of the CONFIGID.UPNP.ORG header
-     * 
-     * Since 1.2.0
-     */
     configId: number
     /**
      * The IP address of the assoicated network interface.
      */
-    readonly host_ip: string | null
-    /**
-     * The IP address of the assoicated network interface.
-     */
     readonly hostIp: string | null
-    /**
-     * The network mask of the assoicated network interface.
-     */
-    readonly host_mask: Gio.InetAddressMask
     /**
      * The network mask of the assoicated network interface.
      */
@@ -280,12 +200,6 @@ interface Client extends Gio.Initable {
      * Set to NULL to autodetect.
      */
     readonly interface: string | null
-    /**
-     * UDP port to use for sending multicast M-SEARCH requests on the
-     * network. If not set (or set to 0) a random port will be used.
-     * This property can be only set during object construction.
-     */
-    readonly msearch_port: number
     /**
      * UDP port to use for sending multicast M-SEARCH requests on the
      * network. If not set (or set to 0) a random port will be used.
@@ -310,27 +224,13 @@ interface Client extends Gio.Initable {
     /**
      * The SSDP server's identifier.
      */
-    server_id: string | null
-    /**
-     * The SSDP server's identifier.
-     */
     serverId: string | null
     /**
      * Time-to-live value to use for all sockets created by this client.
      * If not set (or set to 0) the value recommended by UPnP will be used.
      * This property can only be set during object construction.
      */
-    readonly socket_ttl: number
-    /**
-     * Time-to-live value to use for all sockets created by this client.
-     * If not set (or set to 0) the value recommended by UPnP will be used.
-     * This property can only be set during object construction.
-     */
     readonly socketTtl: number
-    /**
-     * The UPnP version the client adheres to.
-     */
-    readonly uda_version: UDAVersion
     /**
      * The UPnP version the client adheres to.
      */
@@ -823,15 +723,6 @@ module ResourceGroup {
         /**
          * The number of seconds our advertisements are valid.
          */
-        max_age?: number | null
-        /**
-         * The minimum number of milliseconds between SSDP messages.
-         * The default is 120 based on DLNA specification.
-         */
-        message_delay?: number | null
-        /**
-         * The number of seconds our advertisements are valid.
-         */
         maxAge?: number | null
         /**
          * The minimum number of milliseconds between SSDP messages.
@@ -857,16 +748,7 @@ interface ResourceGroup {
     /**
      * The number of seconds our advertisements are valid.
      */
-    max_age: number
-    /**
-     * The number of seconds our advertisements are valid.
-     */
     maxAge: number
-    /**
-     * The minimum number of milliseconds between SSDP messages.
-     * The default is 120 based on DLNA specification.
-     */
-    message_delay: number
     /**
      * The minimum number of milliseconds between SSDP messages.
      * The default is 120 based on DLNA specification.

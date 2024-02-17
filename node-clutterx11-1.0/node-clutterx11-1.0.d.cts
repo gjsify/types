@@ -248,10 +248,10 @@ export module TexturePixmap {
 
         // Own constructor properties of ClutterX11-1.0.ClutterX11.TexturePixmap
 
-        automaticUpdates?: boolean | null
+        automatic_updates?: boolean | null
         pixmap?: number | null
         window?: number | null
-        windowRedirectAutomatic?: boolean | null
+        window_redirect_automatic?: boolean | null
     }
 
 }

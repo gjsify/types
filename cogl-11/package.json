@@ -1,13 +1,19 @@
 {
     "name": "@girs/cogl-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Cogl-11, generated from library version 11.0.0",
     "type": "module",
     "module": "cogl-11.js",
     "main": "cogl-11.js",
     "exports": {
-        "./ambient": "./cogl-11-ambient.d.ts",
-        "./import": "./cogl-11-import.d.ts",
+        "./ambient": {
+            "types": "./cogl-11-ambient.d.ts",
+            "default": "./cogl-11-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-11-import.d.ts",
+            "default": "./cogl-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./cogl-11.d.ts",

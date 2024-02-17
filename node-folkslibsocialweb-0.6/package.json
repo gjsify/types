@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-folkslibsocialweb-0.6",
-    "version": "0.6.0-3.2.7",
+    "version": "0.6.0-3.2.8",
     "description": "Node.js TypeScript type definitions for FolksLibsocialweb-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "node-folkslibsocialweb-0.6.js",
     "main": "node-folkslibsocialweb-0.6.js",
     "exports": {
-        "./ambient": "./node-folkslibsocialweb-0.6-ambient.d.ts",
-        "./import": "./node-folkslibsocialweb-0.6-import.d.ts",
+        "./ambient": {
+            "types": "./node-folkslibsocialweb-0.6-ambient.d.ts",
+            "default": "./node-folkslibsocialweb-0.6-ambient.js"
+        },
+        "./import": {
+            "types": "./node-folkslibsocialweb-0.6-import.d.ts",
+            "default": "./node-folkslibsocialweb-0.6-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-folkslibsocialweb-0.6.d.ts",

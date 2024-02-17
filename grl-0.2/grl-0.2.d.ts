@@ -2927,7 +2927,7 @@ module Source {
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
          */
-        auto_split_threshold?: number | null
+        autoSplitThreshold?: number | null
         /**
          * Plugin the source belongs to
          */
@@ -2936,89 +2936,6 @@ module Source {
          * Source rank
          */
         rank?: number | null
-        /**
-         * A description of the source
-         */
-        source_desc?: string | null
-        /**
-         * #GIcon representing the source
-         */
-        source_icon?: Gio.Icon | null
-        /**
-         * The identifier of the source.
-         */
-        source_id?: string | null
-        /**
-         * The name of the source.
-         */
-        source_name?: string | null
-        /**
-         * A string array of tags relevant this source.
-         * 
-         * The tags are arbitrary, and applications should just pass over the tags
-         * it does not understand. Applications would usually use this to either
-         * group sources together, or hide certain sources: a radio application
-         * would filter for %GRL_MEDIA_TYPE_AUDIO in GrlSource::supported-media as
-         * well as "radio" being listed in the tags.
-         * 
-         * To avoid irrelevant content being listed in applications, sources
-         * such as generic video sites should not be tagged as "cinema" or
-         * "tv" as they contain a lot of content that's not either of those.
-         * 
-         * This is a list of commonly used values:
-         * 
-         * - "cinema", or "tv"
-         *   The content served is from cinema or TV sources. For example, a
-         *   source for movie trailers would select the former, a source for
-         *   streaming live TV would select the latter.
-         * 
-         * - "radio"
-         *   The content served is from streaming radios.
-         * 
-         * - "music"
-         *   The content served is music, for example, music stores such as
-         *   Jamendo or Magnatune.
-         * 
-         * - "country:country-code"
-         *   The content is mostly relevant to users from a particular country,
-         *   such as a national broadcaster. For example, BBC content would be
-         *   tagged as "country:uk". Country codes should be an ISO-639-1 or
-         *   ISO-639-2 code.
-         * 
-         * - "protocol:protocol-name"
-         *   The content browsing or searching uses a particular protocol, such
-         *   as DLNA/UPnP or DMAP/DAAP. This makes it easier to whitelist or
-         *   blacklist sources rather than matching the implementation specific
-         *   source ID. Examples are "protocol:dlna" and "protocol:dmap".
-         * 
-         * - "localhost", or "localuser"
-         *   The content is served from the machine the application is running on,
-         *   or by an application the user is running. Applications might choose to
-         *   avoid showing the user's own data in their interfaces, or integrate it
-         *   in the user's local collection.
-         * 
-         *   "net:local", or "net:internet"
-         *   The source requires a connection to the local network, or a connection
-         *   to the Internet. Sources with those tags will be automatically hidden
-         *   from the application's reach when such networks aren't available, or
-         *   we're not connected to a network.
-         * 
-         *   "net:plaintext"
-         *   The source makes requests over plain text, non-encrypted, network channels,
-         *   such as using HTTP to do searches or lookups. Applications would usually
-         *   disable those by default, so that privacy is respected by default, and no
-         *   data is leaked unintentionally.
-         */
-        source_tags?: string[] | null
-        /**
-         * List of supported media types by this source.
-         */
-        supported_media?: MediaType | null
-        /**
-         * Transparently split queries with count requests
-         * bigger than a certain threshold into smaller queries.
-         */
-        autoSplitThreshold?: number | null
         /**
          * A description of the source
          */
@@ -3109,11 +3026,6 @@ interface Source {
      * Transparently split queries with count requests
      * bigger than a certain threshold into smaller queries.
      */
-    auto_split_threshold: number
-    /**
-     * Transparently split queries with count requests
-     * bigger than a certain threshold into smaller queries.
-     */
     autoSplitThreshold: number
     /**
      * Plugin the source belongs to
@@ -3126,15 +3038,7 @@ interface Source {
     /**
      * A description of the source
      */
-    source_desc: string | null
-    /**
-     * A description of the source
-     */
     sourceDesc: string | null
-    /**
-     * #GIcon representing the source
-     */
-    source_icon: Gio.Icon
     /**
      * #GIcon representing the source
      */
@@ -3142,15 +3046,7 @@ interface Source {
     /**
      * The identifier of the source.
      */
-    source_id: string | null
-    /**
-     * The identifier of the source.
-     */
     sourceId: string | null
-    /**
-     * The name of the source.
-     */
-    source_name: string | null
     /**
      * The name of the source.
      */
@@ -3212,69 +3108,7 @@ interface Source {
      *   disable those by default, so that privacy is respected by default, and no
      *   data is leaked unintentionally.
      */
-    source_tags: string[]
-    /**
-     * A string array of tags relevant this source.
-     * 
-     * The tags are arbitrary, and applications should just pass over the tags
-     * it does not understand. Applications would usually use this to either
-     * group sources together, or hide certain sources: a radio application
-     * would filter for %GRL_MEDIA_TYPE_AUDIO in GrlSource::supported-media as
-     * well as "radio" being listed in the tags.
-     * 
-     * To avoid irrelevant content being listed in applications, sources
-     * such as generic video sites should not be tagged as "cinema" or
-     * "tv" as they contain a lot of content that's not either of those.
-     * 
-     * This is a list of commonly used values:
-     * 
-     * - "cinema", or "tv"
-     *   The content served is from cinema or TV sources. For example, a
-     *   source for movie trailers would select the former, a source for
-     *   streaming live TV would select the latter.
-     * 
-     * - "radio"
-     *   The content served is from streaming radios.
-     * 
-     * - "music"
-     *   The content served is music, for example, music stores such as
-     *   Jamendo or Magnatune.
-     * 
-     * - "country:country-code"
-     *   The content is mostly relevant to users from a particular country,
-     *   such as a national broadcaster. For example, BBC content would be
-     *   tagged as "country:uk". Country codes should be an ISO-639-1 or
-     *   ISO-639-2 code.
-     * 
-     * - "protocol:protocol-name"
-     *   The content browsing or searching uses a particular protocol, such
-     *   as DLNA/UPnP or DMAP/DAAP. This makes it easier to whitelist or
-     *   blacklist sources rather than matching the implementation specific
-     *   source ID. Examples are "protocol:dlna" and "protocol:dmap".
-     * 
-     * - "localhost", or "localuser"
-     *   The content is served from the machine the application is running on,
-     *   or by an application the user is running. Applications might choose to
-     *   avoid showing the user's own data in their interfaces, or integrate it
-     *   in the user's local collection.
-     * 
-     *   "net:local", or "net:internet"
-     *   The source requires a connection to the local network, or a connection
-     *   to the Internet. Sources with those tags will be automatically hidden
-     *   from the application's reach when such networks aren't available, or
-     *   we're not connected to a network.
-     * 
-     *   "net:plaintext"
-     *   The source makes requests over plain text, non-encrypted, network channels,
-     *   such as using HTTP to do searches or lookups. Applications would usually
-     *   disable those by default, so that privacy is respected by default, and no
-     *   data is leaked unintentionally.
-     */
     sourceTags: string[]
-    /**
-     * List of supported media types by this source.
-     */
-    supported_media: MediaType
     /**
      * List of supported media types by this source.
      */

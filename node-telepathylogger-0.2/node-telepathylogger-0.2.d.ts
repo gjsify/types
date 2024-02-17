@@ -75,10 +75,10 @@ module CallEvent {
 
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
-        detailedEndReason?: string | null
+        detailed_end_reason?: string | null
         duration?: number | null
-        endActor?: Entity | null
-        endReason?: number | null
+        end_actor?: Entity | null
+        end_reason?: number | null
     }
 
 }
@@ -196,7 +196,7 @@ module Entity {
         /**
          * The entity's avatar token
          */
-        avatarToken?: string | null
+        avatar_token?: string | null
         /**
          * The entity's identifier
          */
@@ -307,7 +307,7 @@ module Event {
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.Event
 
         account?: TelepathyGLib.Account | null
-        channelPath?: string | null
+        channel_path?: string | null
         receiver?: Entity | null
         sender?: Entity | null
         timestamp?: number | null
@@ -567,7 +567,7 @@ module LogWalker {
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.LogWalker
 
         filter?: any | null
-        filterData?: any | null
+        filter_data?: any | null
     }
 
 }
@@ -665,11 +665,11 @@ module TextEvent {
 
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 
-        editTimestamp?: number | null
+        edit_timestamp?: number | null
         message?: string | null
-        messageToken?: string | null
-        messageType?: number | null
-        supersedesToken?: string | null
+        message_token?: string | null
+        message_type?: number | null
+        supersedes_token?: string | null
     }
 
 }

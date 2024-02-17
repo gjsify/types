@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/wnck-3.0)
 
 
-GJS TypeScript type definitions for Wnck-3.0, generated from library version 43.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+GJS TypeScript type definitions for Wnck-3.0, generated from library version 43.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 Library to manage X windows and workspaces (via pagers, tasklists, etc.)
 

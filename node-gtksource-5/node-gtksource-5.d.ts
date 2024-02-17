@@ -949,7 +949,7 @@ module StyleSchemeChooser {
          * 
          * The property can be set to change the current selection programmatically.
          */
-        styleScheme?: StyleScheme | null
+        style_scheme?: StyleScheme | null
     }
 
 }
@@ -1070,23 +1070,23 @@ module Buffer {
         /**
          * Whether to highlight matching brackets in the buffer.
          */
-        highlightMatchingBrackets?: boolean | null
+        highlight_matching_brackets?: boolean | null
         /**
          * Whether to highlight syntax in the buffer.
          */
-        highlightSyntax?: boolean | null
+        highlight_syntax?: boolean | null
         /**
          * Whether the buffer has an implicit trailing newline. See
          * [method`Buffer`.set_implicit_trailing_newline].
          */
-        implicitTrailingNewline?: boolean | null
+        implicit_trailing_newline?: boolean | null
         language?: Language | null
         /**
          * Style scheme. It contains styles for syntax highlighting, optionally
          * foreground, background, cursor color, current line color, and matching
          * brackets style.
          */
-        styleScheme?: StyleScheme | null
+        style_scheme?: StyleScheme | null
     }
 
 }
@@ -1644,22 +1644,22 @@ module Completion {
         /**
          * The number of rows to display to the user before scrolling.
          */
-        pageSize?: number | null
+        page_size?: number | null
         /**
          * Determines whether the visibility of the info window should be saved when the
          * completion is hidden, and restored when the completion is shown again.
          */
-        rememberInfoVisibility?: boolean | null
+        remember_info_visibility?: boolean | null
         /**
          * Determines whether the first proposal should be selected when the completion
          * is first shown.
          */
-        selectOnShow?: boolean | null
+        select_on_show?: boolean | null
         /**
          * The "show-icons" property denotes if icons should be displayed within
          * the list of completions presented to the user.
          */
-        showIcons?: boolean | null
+        show_icons?: boolean | null
         /**
          * The "view" property is the #GtkTextView for which this #GtkSourceCompletion
          * is providing completion features.
@@ -2459,10 +2459,10 @@ module CompletionWords {
 
         // Own constructor properties of GtkSource-5.GtkSource.CompletionWords
 
-        minimumWordSize?: number | null
+        minimum_word_size?: number | null
         priority?: number | null
-        proposalsBatchSize?: number | null
-        scanBatchSize?: number | null
+        proposals_batch_size?: number | null
+        scan_batch_size?: number | null
         title?: string | null
     }
 
@@ -2756,7 +2756,7 @@ module FileLoader {
          * The #GInputStream to load. Useful for reading stdin. If this property
          * is set, the #GtkSourceFileLoader:location property is ignored.
          */
-        inputStream?: Gio.InputStream | null
+        input_stream?: Gio.InputStream | null
         /**
          * The #GFile to load. If the #GtkSourceFileLoader:input-stream is
          * %NULL, by default the location is taken from the #GtkSourceFile at
@@ -2959,7 +2959,7 @@ module FileSaver {
         /**
          * The compression type.
          */
-        compressionType?: CompressionType | null
+        compression_type?: CompressionType | null
         /**
          * The file's encoding.
          */
@@ -2981,7 +2981,7 @@ module FileSaver {
         /**
          * The newline type.
          */
-        newlineType?: NewlineType | null
+        newline_type?: NewlineType | null
     }
 
 }
@@ -3204,7 +3204,7 @@ module Gutter {
         /**
          * The text window type on which the window is placed.
          */
-        windowType?: Gtk.TextWindowType | null
+        window_type?: Gtk.TextWindowType | null
     }
 
 }
@@ -3693,7 +3693,7 @@ module GutterRenderer {
          * This can be used to indicate that in the case a cell spans multiple lines (due to text wrapping)
          * the alignment should work on either the full cell, the first line or the last line.
          */
-        alignmentMode?: GutterRendererAlignmentMode | null
+        alignment_mode?: GutterRendererAlignmentMode | null
         /**
          * The horizontal alignment of the renderer.
          * 
@@ -4226,7 +4226,7 @@ module GutterRendererPixbuf {
         // Own constructor properties of GtkSource-5.GtkSource.GutterRendererPixbuf
 
         gicon?: Gio.Icon | null
-        iconName?: string | null
+        icon_name?: string | null
         paintable?: Gdk.Paintable | null
         pixbuf?: GdkPixbuf.Pixbuf | null
     }
@@ -4997,7 +4997,7 @@ module Hover {
         /**
          * Contains the number of milliseconds to delay before showing the hover assistant.
          */
-        hoverDelay?: number | null
+        hover_delay?: number | null
     }
 
 }
@@ -5553,7 +5553,7 @@ module LanguageManager {
 
         // Own constructor properties of GtkSource-5.GtkSource.LanguageManager
 
-        searchPath?: string[] | null
+        search_path?: string[] | null
     }
 
 }
@@ -5743,7 +5743,7 @@ module Map {
 
         // Own constructor properties of GtkSource-5.GtkSource.Map
 
-        fontDesc?: Pango.FontDescription | null
+        font_desc?: Pango.FontDescription | null
         view?: View | null
     }
 
@@ -6481,7 +6481,7 @@ module MarkAttributes {
         /**
          * An icon name that may be a base of a rendered icon.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * A #GdkPixbuf that may be a base of a rendered icon.
          */
@@ -6716,7 +6716,7 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        bodyFontName?: string | null
+        body_font_name?: string | null
         /**
          * The [class`Buffer]` object to print.
          */
@@ -6732,7 +6732,7 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        footerFontName?: string | null
+        footer_font_name?: string | null
         /**
          * Name of the font used to print page header.
          * If this property is unspecified, the text body font is used.
@@ -6744,14 +6744,14 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        headerFontName?: string | null
+        header_font_name?: string | null
         /**
          * Whether to print the document with highlighted syntax.
          * 
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        highlightSyntax?: boolean | null
+        highlight_syntax?: boolean | null
         /**
          * Name of the font used to print line numbers on the left margin.
          * If this property is unspecified, the text body font is used.
@@ -6763,7 +6763,7 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        lineNumbersFontName?: string | null
+        line_numbers_font_name?: string | null
         /**
          * Whether to print a footer in each page.
          * 
@@ -6774,7 +6774,7 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        printFooter?: boolean | null
+        print_footer?: boolean | null
         /**
          * Whether to print a header in each page.
          * 
@@ -6785,7 +6785,7 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        printHeader?: boolean | null
+        print_header?: boolean | null
         /**
          * Interval of printed line numbers.
          * 
@@ -6796,21 +6796,21 @@ module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        printLineNumbers?: number | null
+        print_line_numbers?: number | null
         /**
          * Width of a tab character expressed in spaces.
          * 
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        tabWidth?: number | null
+        tab_width?: number | null
         /**
          * Whether to wrap lines never, at word boundaries, or at character boundaries.
          * 
          * The value of this property cannot be changed anymore after the first
          * call to the [method`PrintCompositor`.paginate] function.
          */
-        wrapMode?: Gtk.WrapMode | null
+        wrap_mode?: Gtk.WrapMode | null
     }
 
 }
@@ -7679,7 +7679,7 @@ module SearchContext {
         /**
          * A [class`Style]`, or %NULL for theme's scheme default style.
          */
-        matchStyle?: Style | null
+        match_style?: Style | null
         /**
          * The [class`SearchSettings]` associated to the search context.
          * 
@@ -8034,29 +8034,29 @@ module SearchSettings {
          * If %TRUE, a search match must start and end a word. The match can
          * span multiple words.
          */
-        atWordBoundaries?: boolean | null
+        at_word_boundaries?: boolean | null
         /**
          * Whether the search is case sensitive.
          */
-        caseSensitive?: boolean | null
+        case_sensitive?: boolean | null
         /**
          * Search by regular expressions with
          * [property`SearchSettings:`search-text] as the pattern.
          */
-        regexEnabled?: boolean | null
+        regex_enabled?: boolean | null
         /**
          * A search string, or %NULL if the search is disabled.
          * 
          * If the regular expression search is enabled, [property`SearchSettings:`search-text] is
          * the pattern.
          */
-        searchText?: string | null
+        search_text?: string | null
         /**
          * For a forward search, continue at the beginning of the buffer if no
          * search occurrence is found. For a backward search, continue at the
          * end of the buffer.
          */
-        wrapAround?: boolean | null
+        wrap_around?: boolean | null
     }
 
 }
@@ -8242,7 +8242,7 @@ module Snippet {
         // Own constructor properties of GtkSource-5.GtkSource.Snippet
 
         description?: string | null
-        languageId?: string | null
+        language_id?: string | null
         name?: string | null
         trigger?: string | null
     }
@@ -8452,11 +8452,11 @@ module SnippetChunk {
         // Own constructor properties of GtkSource-5.GtkSource.SnippetChunk
 
         context?: SnippetContext | null
-        focusPosition?: number | null
+        focus_position?: number | null
         spec?: string | null
         text?: string | null
-        textSet?: boolean | null
-        tooltipText?: string | null
+        text_set?: boolean | null
+        tooltip_text?: string | null
     }
 
 }
@@ -8783,7 +8783,7 @@ module SnippetManager {
         /**
          * Contains a list of directories to search for files containing snippets (*.snippets).
          */
-        searchPath?: string[] | null
+        search_path?: string[] | null
     }
 
 }
@@ -8923,7 +8923,7 @@ module SpaceDrawer {
         /**
          * Whether the [property`SpaceDrawer:`matrix] property is enabled.
          */
-        enableMatrix?: boolean | null
+        enable_matrix?: boolean | null
         /**
          * The property is a [struct`GLib`.Variant] property to specify where and
          * what kind of white spaces to draw.
@@ -9147,25 +9147,25 @@ module Style {
         // Own constructor properties of GtkSource-5.GtkSource.Style
 
         background?: string | null
-        backgroundSet?: boolean | null
+        background_set?: boolean | null
         bold?: boolean | null
-        boldSet?: boolean | null
+        bold_set?: boolean | null
         foreground?: string | null
-        foregroundSet?: boolean | null
+        foreground_set?: boolean | null
         italic?: boolean | null
-        italicSet?: boolean | null
-        lineBackground?: string | null
-        lineBackgroundSet?: boolean | null
-        pangoUnderline?: Pango.Underline | null
+        italic_set?: boolean | null
+        line_background?: string | null
+        line_background_set?: boolean | null
+        pango_underline?: Pango.Underline | null
         scale?: string | null
-        scaleSet?: boolean | null
+        scale_set?: boolean | null
         strikethrough?: boolean | null
-        strikethroughSet?: boolean | null
-        underlineColor?: string | null
-        underlineColorSet?: boolean | null
-        underlineSet?: boolean | null
+        strikethrough_set?: boolean | null
+        underline_color?: string | null
+        underline_color_set?: boolean | null
+        underline_set?: boolean | null
         weight?: Pango.Weight | null
-        weightSet?: boolean | null
+        weight_set?: boolean | null
     }
 
 }
@@ -10060,7 +10060,7 @@ module StyleSchemeManager {
 
         // Own constructor properties of GtkSource-5.GtkSource.StyleSchemeManager
 
-        searchPath?: string[] | null
+        search_path?: string[] | null
     }
 
 }
@@ -10503,12 +10503,12 @@ module Tag {
          * Setting this property also changes [property`Tag:`draw-spaces-set] to
          * %TRUE.
          */
-        drawSpaces?: boolean | null
+        draw_spaces?: boolean | null
         /**
          * Whether the [property`Tag:`draw-spaces] property is set and must be
          * taken into account.
          */
-        drawSpacesSet?: boolean | null
+        draw_spaces_set?: boolean | null
     }
 
 }
@@ -11135,11 +11135,11 @@ module View {
 
         // Own constructor properties of GtkSource-5.GtkSource.View
 
-        autoIndent?: boolean | null
+        auto_indent?: boolean | null
         /**
          * Draw a specific background pattern on the view.
          */
-        backgroundPattern?: BackgroundPatternType | null
+        background_pattern?: BackgroundPatternType | null
         /**
          * The property denotes if snippets should be
          * expanded when the user presses Tab after having typed a word
@@ -11149,47 +11149,47 @@ module View {
          * are available by pressing Tab repeatedly until the desired focus
          * position is selected.
          */
-        enableSnippets?: boolean | null
-        highlightCurrentLine?: boolean | null
-        indentOnTab?: boolean | null
+        enable_snippets?: boolean | null
+        highlight_current_line?: boolean | null
+        indent_on_tab?: boolean | null
         /**
          * Width of an indentation step expressed in number of spaces.
          */
-        indentWidth?: number | null
+        indent_width?: number | null
         /**
          * The property is a [iface`Indenter]` to use to indent
          * as the user types into the [class`View]`.
          */
         indenter?: Indenter | null
-        insertSpacesInsteadOfTabs?: boolean | null
+        insert_spaces_instead_of_tabs?: boolean | null
         /**
          * Position of the right margin.
          */
-        rightMarginPosition?: number | null
+        right_margin_position?: number | null
         /**
          * Whether to display line mark pixbufs
          */
-        showLineMarks?: boolean | null
+        show_line_marks?: boolean | null
         /**
          * Whether to display line numbers
          */
-        showLineNumbers?: boolean | null
+        show_line_numbers?: boolean | null
         /**
          * Whether to display the right margin.
          */
-        showRightMargin?: boolean | null
+        show_right_margin?: boolean | null
         /**
          * Whether smart Backspace should be used.
          */
-        smartBackspace?: boolean | null
+        smart_backspace?: boolean | null
         /**
          * Set the behavior of the HOME and END keys.
          */
-        smartHomeEnd?: SmartHomeEndType | null
+        smart_home_end?: SmartHomeEndType | null
         /**
          * Width of a tab character expressed in number of spaces.
          */
-        tabWidth?: number | null
+        tab_width?: number | null
     }
 
 }

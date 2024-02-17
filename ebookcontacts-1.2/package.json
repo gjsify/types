@@ -1,13 +1,19 @@
 {
     "name": "@girs/ebookcontacts-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for EBookContacts-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "ebookcontacts-1.2.js",
     "main": "ebookcontacts-1.2.js",
     "exports": {
-        "./ambient": "./ebookcontacts-1.2-ambient.d.ts",
-        "./import": "./ebookcontacts-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./ebookcontacts-1.2-ambient.d.ts",
+            "default": "./ebookcontacts-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./ebookcontacts-1.2-import.d.ts",
+            "default": "./ebookcontacts-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./ebookcontacts-1.2.d.ts",

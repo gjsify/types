@@ -1502,20 +1502,20 @@ module CheckoutOptions {
 
         // Own constructor properties of Ggit-1.0.Ggit.CheckoutOptions
 
-        ancestorLabel?: string | null
+        ancestor_label?: string | null
         baseline?: Tree | null
-        dirMode?: number | null
-        disableFilters?: boolean | null
-        fileMode?: number | null
-        fileOpenFlags?: number | null
+        dir_mode?: number | null
+        disable_filters?: boolean | null
+        file_mode?: number | null
+        file_open_flags?: number | null
         /**
          * The checkout notify flags.
          */
-        notifyFlags?: CheckoutNotifyFlags | null
-        ourLabel?: string | null
+        notify_flags?: CheckoutNotifyFlags | null
+        our_label?: string | null
         strategy?: CheckoutStrategy | null
-        targetDirectory?: string | null
-        theirLabel?: string | null
+        target_directory?: string | null
+        their_label?: string | null
     }
 
 }
@@ -1800,9 +1800,9 @@ module CherryPickOptions {
 
         // Own constructor properties of Ggit-1.0.Ggit.CherryPickOptions
 
-        checkoutOptions?: CheckoutOptions | null
+        checkout_options?: CheckoutOptions | null
         mainline?: number | null
-        mergeOptions?: MergeOptions | null
+        merge_options?: MergeOptions | null
     }
 
 }
@@ -2986,15 +2986,15 @@ module DiffFindOptions {
 
         // Own constructor properties of Ggit-1.0.Ggit.DiffFindOptions
 
-        copyThreshold?: number | null
+        copy_threshold?: number | null
         /**
          * The diff option flags.
          */
         flags?: DiffFindFlags | null
         metric?: DiffSimilarityMetric | null
-        renameFromRewriteThreshold?: number | null
-        renameLimit?: number | null
-        renameThreshold?: number | null
+        rename_from_rewrite_threshold?: number | null
+        rename_limit?: number | null
+        rename_threshold?: number | null
     }
 
 }
@@ -3166,9 +3166,9 @@ module DiffFormatEmailOptions {
         body?: string | null
         flags?: DiffFormatEmailFlags | null
         id?: OId | null
-        patchNumber?: number | null
+        patch_number?: number | null
         summary?: string | null
-        totalPatches?: number | null
+        total_patches?: number | null
     }
 
 }
@@ -3349,10 +3349,10 @@ module DiffOptions {
          * The diff option flags.
          */
         flags?: DiffOption | null
-        nContextLines?: number | null
-        nInterhunkLines?: number | null
-        newPrefix?: string | null
-        oldPrefix?: string | null
+        n_context_lines?: number | null
+        n_interhunk_lines?: number | null
+        new_prefix?: string | null
+        old_prefix?: string | null
         pathspec?: string[] | null
     }
 
@@ -4826,9 +4826,9 @@ module Repository {
 
         // Own constructor properties of Ggit-1.0.Ggit.Repository
 
-        cloneOptions?: CloneOptions | null
+        clone_options?: CloneOptions | null
         init?: boolean | null
-        isBare?: boolean | null
+        is_bare?: boolean | null
         location?: Gio.File | null
         url?: string | null
         workdir?: Gio.File | null
@@ -6070,8 +6070,8 @@ module SubmoduleUpdateOptions {
 
         // Own constructor properties of Ggit-1.0.Ggit.SubmoduleUpdateOptions
 
-        checkoutOptions?: CheckoutOptions | null
-        fetchOptions?: FetchOptions | null
+        checkout_options?: CheckoutOptions | null
+        fetch_options?: FetchOptions | null
     }
 
 }

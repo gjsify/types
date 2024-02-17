@@ -137,12 +137,12 @@ export module AppSink {
 
         // Own constructor properties of GstApp-1.0.GstApp.AppSink
 
-        bufferList?: boolean | null
+        buffer_list?: boolean | null
         caps?: Gst.Caps | null
         drop?: boolean | null
-        emitSignals?: boolean | null
-        maxBuffers?: number | null
-        waitOnEos?: boolean | null
+        emit_signals?: boolean | null
+        max_buffers?: number | null
+        wait_on_eos?: boolean | null
     }
 
 }
@@ -725,7 +725,7 @@ export module AppSrc {
          * This option is by default enabled for backwards compatibility reasons but
          * can disabled when needed because signal emission is expensive.
          */
-        emitSignals?: boolean | null
+        emit_signals?: boolean | null
         /**
          * The format to use for segment events. When the source is producing
          * timestamped buffers this property should be set to GST_FORMAT_TIME.
@@ -741,48 +741,48 @@ export module AppSrc {
          * GstAppSrc::format should be time. However, possibly #GstAppSrc can support
          * other formats.
          */
-        handleSegmentChange?: boolean | null
+        handle_segment_change?: boolean | null
         /**
          * Instruct the source to behave like a live source. This includes that it
          * will only push out buffers in the PLAYING state.
          */
-        isLive?: boolean | null
+        is_live?: boolean | null
         /**
          * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsrc
          * will drop any buffers that are pushed into it once its internal queue is
          * full. The selected type defines whether to drop the oldest or new
          * buffers.
          */
-        leakyType?: AppLeakyType | null
+        leaky_type?: AppLeakyType | null
         /**
          * The maximum amount of buffers that can be queued internally.
          * After the maximum amount of buffers are queued, appsrc will emit the
          * "enough-data" signal.
          */
-        maxBuffers?: number | null
+        max_buffers?: number | null
         /**
          * The maximum amount of bytes that can be queued internally.
          * After the maximum amount of bytes are queued, appsrc will emit the
          * "enough-data" signal.
          */
-        maxBytes?: number | null
-        maxLatency?: number | null
+        max_bytes?: number | null
+        max_latency?: number | null
         /**
          * The maximum amount of time that can be queued internally.
          * After the maximum amount of time are queued, appsrc will emit the
          * "enough-data" signal.
          */
-        maxTime?: number | null
+        max_time?: number | null
         /**
          * The minimum latency of the source. A value of -1 will use the default
          * latency calculations of #GstBaseSrc.
          */
-        minLatency?: number | null
+        min_latency?: number | null
         /**
          * Make appsrc emit the "need-data" signal when the amount of bytes in the
          * queue drops below this percentage of max-bytes.
          */
-        minPercent?: number | null
+        min_percent?: number | null
         /**
          * The total size in bytes of the data stream. If the total size is known, it
          * is recommended to configure it with this property.
@@ -792,7 +792,7 @@ export module AppSrc {
          * The type of stream that this source is producing.  For seekable streams the
          * application should connect to the seek-data signal.
          */
-        streamType?: AppStreamType | null
+        stream_type?: AppStreamType | null
     }
 
 }

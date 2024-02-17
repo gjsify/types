@@ -78,9 +78,7 @@ interface Channel extends Gio.AsyncInitable {
     // Own properties of TelepathyFarstream-0.6.TelepathyFarstream.Channel
 
     readonly channel: TelepathyGLib.Channel
-    readonly fs_conferences: any[]
     readonly fsConferences: any[]
-    readonly object_path: string | null
     readonly objectPath: string | null
 
     // Owm methods of TelepathyFarstream-0.6.TelepathyFarstream.Channel
@@ -221,17 +219,11 @@ interface Content {
 
     // Own properties of TelepathyFarstream-0.6.TelepathyFarstream.Content
 
-    readonly fs_conference: Farstream.Conference
     readonly fsConference: Farstream.Conference
-    readonly fs_session: Farstream.Session
     readonly fsSession: Farstream.Session
-    readonly media_type: Farstream.MediaType
     readonly mediaType: Farstream.MediaType
-    readonly object_path: string | null
     readonly objectPath: string | null
-    readonly sink_pad: Gst.Pad
     readonly sinkPad: Gst.Pad
-    readonly tf_channel: Channel
     readonly tfChannel: Channel
 
     // Owm methods of TelepathyFarstream-0.6.TelepathyFarstream.Content

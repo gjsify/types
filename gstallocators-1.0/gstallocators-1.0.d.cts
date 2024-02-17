@@ -197,8 +197,6 @@ export module DRMDumbAllocator {
 
         // Own constructor properties of GstAllocators-1.0.GstAllocators.DRMDumbAllocator
 
-        drm_device_path?: string | null
-        drm_fd?: number | null
         drmDevicePath?: string | null
         drmFd?: number | null
     }
@@ -209,9 +207,7 @@ export interface DRMDumbAllocator {
 
     // Own properties of GstAllocators-1.0.GstAllocators.DRMDumbAllocator
 
-    readonly drm_device_path: string | null
     readonly drmDevicePath: string | null
-    readonly drm_fd: number
     readonly drmFd: number
 
     // Conflicting properties

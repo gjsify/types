@@ -1249,7 +1249,7 @@ export module Animation {
          * animation should run before being completed.
          */
         duration?: number | null
-        frameClock?: Gdk.FrameClock | null
+        frame_clock?: Gdk.FrameClock | null
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
@@ -3209,7 +3209,7 @@ export module Box {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Box
 
-        maxWidthRequest?: number | null
+        max_width_request?: number | null
     }
 
 }
@@ -3726,7 +3726,7 @@ export module CenteringBin {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CenteringBin
 
-        maxWidthRequest?: number | null
+        max_width_request?: number | null
     }
 
 }
@@ -4198,10 +4198,10 @@ export module ColumnLayout {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ColumnLayout
 
-        columnSpacing?: number | null
-        columnWidth?: number | null
-        maxColumns?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        column_width?: number | null
+        max_columns?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -5181,7 +5181,7 @@ export module CpuGraph {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CpuGraph
 
-        maxSamples?: number | null
+        max_samples?: number | null
         timespan?: number | null
     }
 
@@ -5569,7 +5569,7 @@ export module CssProvider {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CssProvider
 
-        basePath?: string | null
+        base_path?: string | null
     }
 
 }
@@ -5771,10 +5771,10 @@ export module DockBin {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.DockBin
 
-        bottomVisible?: boolean | null
-        leftVisible?: boolean | null
-        rightVisible?: boolean | null
-        topVisible?: boolean | null
+        bottom_visible?: boolean | null
+        left_visible?: boolean | null
+        right_visible?: boolean | null
+        top_visible?: boolean | null
     }
 
 }
@@ -8286,10 +8286,10 @@ export module DockRevealer {
         // Own constructor properties of Dazzle-1.0.Dazzle.DockRevealer
 
         position?: number | null
-        positionSet?: boolean | null
-        revealChild?: boolean | null
-        transitionDuration?: number | null
-        transitionType?: DockRevealerTransitionType | null
+        position_set?: boolean | null
+        reveal_child?: boolean | null
+        transition_duration?: number | null
+        transition_type?: DockRevealerTransitionType | null
     }
 
 }
@@ -8719,7 +8719,7 @@ export module DockStack {
         // Own constructor properties of Dazzle-1.0.Dazzle.DockStack
 
         edge?: Gtk.PositionType | null
-        showPinnedButton?: boolean | null
+        show_pinned_button?: boolean | null
         style: any
     }
 
@@ -9306,9 +9306,9 @@ export module DockWidget {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.DockWidget
 
-        canClose?: boolean | null
+        can_close?: boolean | null
         gicon?: Gio.Icon | null
-        iconName?: string | null
+        icon_name?: string | null
         manager?: DockManager | null
         title?: string | null
     }
@@ -10865,8 +10865,8 @@ export module EmptyState {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.EmptyState
 
-        iconName?: string | null
-        pixelSize?: number | null
+        icon_name?: string | null
+        pixel_size?: number | null
         resource?: string | null
         subtitle?: string | null
         title?: string | null
@@ -11270,7 +11270,7 @@ export module EntryBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.EntryBox
 
-        maxWidthChars?: number | null
+        max_width_chars?: number | null
     }
 
 }
@@ -11665,13 +11665,13 @@ export module FileChooserEntry {
         // Own constructor properties of Dazzle-1.0.Dazzle.FileChooserEntry
 
         action?: Gtk.FileChooserAction | null
-        createFolders?: boolean | null
-        doOverwriteConfirmation?: boolean | null
+        create_folders?: boolean | null
+        do_overwrite_confirmation?: boolean | null
         file?: Gio.File | null
         filter?: Gtk.FileFilter | null
-        localOnly?: boolean | null
-        maxWidthChars?: number | null
-        showHidden?: boolean | null
+        local_only?: boolean | null
+        max_width_chars?: number | null
+        show_hidden?: boolean | null
         title?: string | null
     }
 
@@ -12245,7 +12245,7 @@ export module FuzzyIndexBuilder {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.FuzzyIndexBuilder
 
-        caseSensitive?: boolean | null
+        case_sensitive?: boolean | null
     }
 
 }
@@ -12343,9 +12343,9 @@ export module FuzzyIndexCursor {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.FuzzyIndexCursor
 
-        caseSensitive?: boolean | null
+        case_sensitive?: boolean | null
         index?: FuzzyIndex | null
-        maxMatches?: number | null
+        max_matches?: number | null
         query?: string | null
         tables?: GLib.VariantDict | null
     }
@@ -12512,7 +12512,7 @@ export module GraphColumn {
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphColumn
 
         name?: string | null
-        valueType?: GObject.GType | null
+        value_type?: GObject.GType | null
     }
 
 }
@@ -12578,9 +12578,9 @@ export module GraphLineRenderer {
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphLineRenderer
 
         column?: number | null
-        lineWidth?: number | null
-        strokeColor?: string | null
-        strokeColorRgba?: Gdk.RGBA | null
+        line_width?: number | null
+        stroke_color?: string | null
+        stroke_color_rgba?: Gdk.RGBA | null
     }
 
 }
@@ -12668,10 +12668,10 @@ export module GraphModel {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphModel
 
-        maxSamples?: number | null
+        max_samples?: number | null
         timespan?: number | null
-        valueMax?: number | null
-        valueMin?: number | null
+        value_max?: number | null
+        value_min?: number | null
     }
 
 }
@@ -13156,9 +13156,9 @@ export module ListBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ListBox
 
-        propertyName?: string | null
-        rowType?: GObject.GType | null
-        rowTypeName?: string | null
+        property_name?: string | null
+        row_type?: GObject.GType | null
+        row_type_name?: string | null
     }
 
 }
@@ -14091,18 +14091,18 @@ export module MenuButton {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.MenuButton
 
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The "menu-id" property can be used to automatically load a
          * #GMenuModel from the applications merged menus. This is
          * performed via dzl_application_get_menu_by_id().
          */
-        menuId?: string | null
+        menu_id?: string | null
         model?: Gio.MenuModel | null
-        showAccels?: boolean | null
-        showArrow?: boolean | null
-        showIcons?: boolean | null
-        transitionsEnabled?: boolean | null
+        show_accels?: boolean | null
+        show_arrow?: boolean | null
+        show_icons?: boolean | null
+        transitions_enabled?: boolean | null
     }
 
 }
@@ -15772,7 +15772,7 @@ export module PathElement {
          * The icon-name of the icon to display next to the path element
          * in the path bar. Set to %NULL for no icon.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The id property is an application specific identifier for the
          * element within the path.
@@ -16299,7 +16299,7 @@ export module PreferencesBin {
         keywords?: string | null
         path?: string | null
         priority?: number | null
-        schemaId?: string | null
+        schema_id?: string | null
     }
 
 }
@@ -18948,7 +18948,7 @@ export module PreferencesGroup {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesGroup
 
-        isList?: boolean | null
+        is_list?: boolean | null
         mode?: Gtk.SelectionMode | null
         priority?: number | null
         title?: string | null
@@ -20376,7 +20376,7 @@ export module PreferencesSwitch {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesSwitch
 
-        isRadio?: boolean | null
+        is_radio?: boolean | null
         key?: string | null
         subtitle?: string | null
         target?: GLib.Variant | null
@@ -21017,8 +21017,8 @@ export module PreferencesView {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesView
 
-        showSearchEntry?: boolean | null
-        useSidebar?: boolean | null
+        show_search_entry?: boolean | null
+        use_sidebar?: boolean | null
     }
 
 }
@@ -21792,7 +21792,7 @@ export module ProgressButton {
         // Own constructor properties of Dazzle-1.0.Dazzle.ProgressButton
 
         progress?: number | null
-        showProgress?: boolean | null
+        show_progress?: boolean | null
     }
 
 }
@@ -22572,10 +22572,10 @@ export module ProgressMenuButton {
         // Own constructor properties of Dazzle-1.0.Dazzle.ProgressMenuButton
 
         progress?: number | null
-        showProgress?: boolean | null
-        showTheatric?: boolean | null
-        theatricIconName?: string | null
-        transitionDuration?: number | null
+        show_progress?: boolean | null
+        show_theatric?: boolean | null
+        theatric_icon_name?: string | null
+        transition_duration?: number | null
     }
 
 }
@@ -23187,7 +23187,7 @@ export module PropertiesGroup {
         // Own constructor properties of Dazzle-1.0.Dazzle.PropertiesGroup
 
         object?: GObject.Object | null
-        objectType?: GObject.GType | null
+        object_type?: GObject.GType | null
     }
 
 }
@@ -23331,8 +23331,8 @@ export module RadioBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.RadioBox
 
-        activeId?: string | null
-        showMore?: boolean | null
+        active_id?: string | null
+        show_more?: boolean | null
     }
 
 }
@@ -23735,7 +23735,7 @@ export module ReadOnlyListModel {
          * to introspect on the type and mutate it without your knowledge (such as
          * with #GListStore).
          */
-        baseModel?: Gio.ListModel | null
+        base_model?: Gio.ListModel | null
     }
 
 }
@@ -24348,8 +24348,8 @@ export module SearchBar {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SearchBar
 
-        searchModeEnabled?: boolean | null
-        showCloseButton?: boolean | null
+        search_mode_enabled?: boolean | null
+        show_close_button?: boolean | null
     }
 
 }
@@ -24743,9 +24743,9 @@ export module SettingsFlagAction {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SettingsFlagAction
 
-        flagNick?: string | null
-        schemaId?: string | null
-        schemaKey?: string | null
+        flag_nick?: string | null
+        schema_id?: string | null
+        schema_key?: string | null
     }
 
 }
@@ -24844,7 +24844,7 @@ export module SettingsSandwich {
         // Own constructor properties of Dazzle-1.0.Dazzle.SettingsSandwich
 
         path?: string | null
-        schemaId?: string | null
+        schema_id?: string | null
     }
 
 }
@@ -24936,7 +24936,7 @@ export module ShortcutAccelDialog {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutAccelDialog
 
         accelerator?: string | null
-        shortcutTitle?: string | null
+        shortcut_title?: string | null
     }
 
 }
@@ -25570,7 +25570,7 @@ export module ShortcutContext {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutContext
 
         name?: string | null
-        useBindingSets?: boolean | null
+        use_binding_sets?: boolean | null
     }
 
 }
@@ -26255,8 +26255,8 @@ export module ShortcutManager {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutManager
 
         theme?: ShortcutTheme | null
-        themeName?: string | null
-        userDir?: string | null
+        theme_name?: string | null
+        user_dir?: string | null
     }
 
 }
@@ -26487,7 +26487,7 @@ export module ShortcutSimpleLabel {
         accel?: string | null
         action?: string | null
         command?: string | null
-        showAccel?: boolean | null
+        show_accel?: boolean | null
         title?: string | null
     }
 
@@ -26918,7 +26918,7 @@ export module ShortcutTheme {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutTheme
 
         name?: string | null
-        parentName?: string | null
+        parent_name?: string | null
         subtitle?: string | null
         title?: string | null
     }
@@ -27458,7 +27458,7 @@ export module ShortcutTooltip {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutTooltip
 
         accel?: string | null
-        commandId?: string | null
+        command_id?: string | null
         /**
          * The "title" property contains an alternate title for the tooltip
          * instead of discovering the title from the shortcut manager.
@@ -27606,7 +27606,7 @@ export module ShortcutsGroup {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        accelSizeGroup?: Gtk.SizeGroup | null
+        accel_size_group?: Gtk.SizeGroup | null
         /**
          * The title for this group of shortcuts.
          */
@@ -27616,7 +27616,7 @@ export module ShortcutsGroup {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        titleSizeGroup?: Gtk.SizeGroup | null
+        title_size_group?: Gtk.SizeGroup | null
         /**
          * An optional view that the shortcuts in this group are relevant for.
          * The group will be hidden if the #DzlShortcutsWindow:view-name property
@@ -28070,14 +28070,14 @@ export module ShortcutsSection {
          * across pages and columns. The default value of 15 should work in
          * for most cases.
          */
-        maxHeight?: number | null
+        max_height?: number | null
         /**
          * A unique name to identify this section among the sections
          * added to the DzlShortcutsWindow. Setting the #DzlShortcutsWindow:section-name
          * property to this string will make this section shown in the
          * DzlShortcutsWindow.
          */
-        sectionName?: string | null
+        section_name?: string | null
         /**
          * The string to show in the section selector of the DzlShortcutsWindow
          * for this section. If there is only one section, you don't need to
@@ -28091,7 +28091,7 @@ export module ShortcutsSection {
          * Applications are expected to use the #DzlShortcutsWindow:view-name
          * property for this purpose.
          */
-        viewName?: string | null
+        view_name?: string | null
     }
 
 }
@@ -28527,7 +28527,7 @@ export module ShortcutsShortcut {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        accelSizeGroup?: Gtk.SizeGroup | null
+        accel_size_group?: Gtk.SizeGroup | null
         /**
          * The accelerator(s) represented by this object. This property is used
          * if #DzlShortcutsShortcut:shortcut-type is set to #GTK_SHORTCUT_ACCELERATOR.
@@ -28559,7 +28559,7 @@ export module ShortcutsShortcut {
          * via gtk_application_set_accels_for_action(), and setting
          * #DzlShortcutsShortcut::accelerator is not necessary.
          */
-        actionName?: string | null
+        action_name?: string | null
         /**
          * The text direction for which this shortcut is active. If the shortcut
          * is used regardless of the text direction, set this property to
@@ -28575,11 +28575,11 @@ export module ShortcutsShortcut {
         /**
          * %TRUE if an icon has been set.
          */
-        iconSet?: boolean | null
+        icon_set?: boolean | null
         /**
          * The type of shortcut that is represented.
          */
-        shortcutType?: Gtk.ShortcutType | null
+        shortcut_type?: Gtk.ShortcutType | null
         /**
          * The subtitle for the shortcut or gesture.
          * 
@@ -28591,7 +28591,7 @@ export module ShortcutsShortcut {
         /**
          * %TRUE if a subtitle has been set.
          */
-        subtitleSet?: boolean | null
+        subtitle_set?: boolean | null
         /**
          * The textual description for the shortcut or gesture represented by
          * this object. This should be a short string that can fit in a single line.
@@ -28602,7 +28602,7 @@ export module ShortcutsShortcut {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        titleSizeGroup?: Gtk.SizeGroup | null
+        title_size_group?: Gtk.SizeGroup | null
     }
 
 }
@@ -29136,7 +29136,7 @@ export module ShortcutsWindow {
          * This should be the section-name of one of the #DzlShortcutsSection
          * objects that are in this shortcuts window.
          */
-        sectionName?: string | null
+        section_name?: string | null
         /**
          * The view name by which to filter the contents.
          * 
@@ -29145,7 +29145,7 @@ export module ShortcutsWindow {
          * 
          * Set this to %NULL to show all groups.
          */
-        viewName?: string | null
+        view_name?: string | null
     }
 
 }
@@ -29772,7 +29772,7 @@ export module SignalGroup {
         /**
          * The GType of the target property.
          */
-        targetType?: GObject.GType | null
+        target_type?: GObject.GType | null
     }
 
 }
@@ -29944,7 +29944,7 @@ export module SimpleLabel {
         // Own constructor properties of Dazzle-1.0.Dazzle.SimpleLabel
 
         label?: string | null
-        widthChars?: number | null
+        width_chars?: number | null
         xalign?: number | null
     }
 
@@ -30299,7 +30299,7 @@ export module SimplePopover {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SimplePopover
 
-        buttonText?: string | null
+        button_text?: string | null
         message?: string | null
         ready?: boolean | null
         text?: string | null
@@ -31674,9 +31674,9 @@ export module Suggestion {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Suggestion
 
-        iconName?: string | null
+        icon_name?: string | null
         id?: string | null
-        secondaryIconName?: string | null
+        secondary_icon_name?: string | null
         subtitle?: string | null
         title?: string | null
     }
@@ -32341,7 +32341,7 @@ export module SuggestionEntry {
          * activated simply by clicking on them. You may want to set this to
          * %FALSE if you want the behavior to only select the item.
          */
-        activateOnSingleClick?: boolean | null
+        activate_on_single_click?: boolean | null
         /**
          * The "compact" property denotes if an alternate style should be used to
          * reduce the width of the rows. This may be ideal in size contrained
@@ -33242,10 +33242,10 @@ export module SuggestionPopover {
         // Own constructor properties of Dazzle-1.0.Dazzle.SuggestionPopover
 
         model?: Suggestion | null
-        relativeTo?: Gtk.Widget | null
+        relative_to?: Gtk.Widget | null
         selected?: Suggestion | null
-        subtitleEllipsize?: Pango.EllipsizeMode | null
-        titleEllipsize?: Pango.EllipsizeMode | null
+        subtitle_ellipsize?: Pango.EllipsizeMode | null
+        title_ellipsize?: Pango.EllipsizeMode | null
     }
 
 }
@@ -34313,7 +34313,7 @@ export module Tab {
         // Own constructor properties of Dazzle-1.0.Dazzle.Tab
 
         active?: boolean | null
-        canClose?: boolean | null
+        can_close?: boolean | null
         edge?: Gtk.PositionType | null
         style: any
         title?: string | null
@@ -35194,22 +35194,22 @@ export module TaskCache {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.TaskCache
 
-        keyCopyFunc?: any | null
-        keyDestroyFunc?: any | null
-        keyEqualFunc?: any | null
-        keyHashFunc?: any | null
-        populateCallback?: any | null
-        populateCallbackData?: any | null
-        populateCallbackDataDestroy?: any | null
+        key_copy_func?: any | null
+        key_destroy_func?: any | null
+        key_equal_func?: any | null
+        key_hash_func?: any | null
+        populate_callback?: any | null
+        populate_callback_data?: any | null
+        populate_callback_data_destroy?: any | null
         /**
          * This is the number of milliseconds before an item should be evicted
          * from the cache.
          * 
          * A value of zero indicates no eviction.
          */
-        timeToLive?: number | null
-        valueCopyFunc?: any | null
-        valueDestroyFunc?: any | null
+        time_to_live?: number | null
+        value_copy_func?: any | null
+        value_destroy_func?: any | null
     }
 
 }
@@ -35422,8 +35422,8 @@ export module ThreeGrid {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ThreeGrid
 
-        columnSpacing?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -35813,11 +35813,11 @@ export module Tree {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Tree
 
-        alwaysExpand?: boolean | null
-        contextMenu?: Gio.MenuModel | null
+        always_expand?: boolean | null
+        context_menu?: Gio.MenuModel | null
         root?: TreeNode | null
         selection?: TreeNode | null
-        showIcons?: boolean | null
+        show_icons?: boolean | null
     }
 
 }
@@ -36701,8 +36701,8 @@ export module TreeNode {
          * and simply hide the arrow if there were in fact no children (upon
          * expansion).
          */
-        childrenPossible?: boolean | null
-        expandedIconName?: string | null
+        children_possible?: boolean | null
+        expanded_icon_name?: string | null
         /**
          * The cached GIcon to display.
          */
@@ -36710,7 +36710,7 @@ export module TreeNode {
         /**
          * An icon-name to display on the row.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * An optional #GObject to associate with the node.
          */
@@ -36722,7 +36722,7 @@ export module TreeNode {
          * children. This is useful for situations where you want to ensure the nodes
          * are up to date (refreshed) on every expansion.
          */
-        resetOnCollapse?: boolean | null
+        reset_on_collapse?: boolean | null
         /**
          * Text to display on the tree node.
          */
@@ -36731,11 +36731,11 @@ export module TreeNode {
          * The tree the node belongs to.
          */
         tree?: Tree | null
-        useDimLabel?: boolean | null
+        use_dim_label?: boolean | null
         /**
          * If the "text" property includes #GMarkup.
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }

@@ -242,8 +242,8 @@ module Ref {
 
         // Own constructor properties of Gitg-1.0.Gitg.Ref
 
-        dParsedName?: ParsedRefName | null
-        dPushes?: Ref[] | null
+        d_parsed_name?: ParsedRefName | null
+        d_pushes?: Ref[] | null
         state?: RefState | null
         working?: boolean | null
     }
@@ -1386,9 +1386,9 @@ module CellRendererLanes {
         // Own constructor properties of Gitg-1.0.Gitg.CellRendererLanes
 
         commit?: Commit | null
-        nextCommit?: Commit | null
-        laneWidth?: number | null
-        dotWidth?: number | null
+        next_commit?: Commit | null
+        lane_width?: number | null
+        dot_width?: number | null
         labels?: Ref[] | null
     }
 
@@ -2389,7 +2389,7 @@ module CommitModel {
         // Own constructor properties of Gitg-1.0.Gitg.CommitModel
 
         limit?: number | null
-        sortMode?: Ggit.SortMode | null
+        sort_mode?: Ggit.SortMode | null
         repository?: Repository | null
     }
 
@@ -2638,7 +2638,7 @@ module Date {
 
         // Own constructor properties of Gitg-1.0.Gitg.Date
 
-        dateString?: string | null
+        date_string?: string | null
     }
 
 }
@@ -3039,7 +3039,7 @@ module DiffViewOptions {
 
         // Own constructor properties of Gitg-1.0.Gitg.DiffViewOptions
 
-        contextLines?: number | null
+        context_lines?: number | null
         view?: DiffView | null
     }
 
@@ -3564,23 +3564,23 @@ module DiffView {
 
         // Own constructor properties of Gitg-1.0.Gitg.DiffView
 
-        hasSelection?: boolean | null
+        has_selection?: boolean | null
         diff?: Ggit.Diff | null
         commit?: Commit | null
-        wrapLines?: boolean | null
+        wrap_lines?: boolean | null
         staged?: boolean | null
         unstaged?: boolean | null
-        showParents?: boolean | null
-        defaultCollapseAll?: boolean | null
-        useGravatar?: boolean | null
-        tabWidth?: number | null
-        handleSelection?: boolean | null
+        show_parents?: boolean | null
+        default_collapse_all?: boolean | null
+        use_gravatar?: boolean | null
+        tab_width?: number | null
+        handle_selection?: boolean | null
         highlight?: boolean | null
         repository?: Repository | null
-        newIsWorkdir?: boolean | null
-        ignoreWhitespace?: boolean | null
-        changesInline?: boolean | null
-        contextLines?: number | null
+        new_is_workdir?: boolean | null
+        ignore_whitespace?: boolean | null
+        changes_inline?: boolean | null
+        context_lines?: number | null
     }
 
 }
@@ -4198,7 +4198,7 @@ module Hook {
 
         environment?: Gee.HashMap | null
         name?: string | null
-        workingDirectory?: Gio.File | null
+        working_directory?: Gio.File | null
     }
 
 }
@@ -4308,11 +4308,11 @@ module Lanes {
 
         // Own constructor properties of Gitg-1.0.Gitg.Lanes
 
-        inactiveMax?: number | null
-        inactiveCollapse?: number | null
-        inactiveGap?: number | null
-        inactiveEnabled?: boolean | null
-        missCommits?: Gee.LinkedList | null
+        inactive_max?: number | null
+        inactive_collapse?: number | null
+        inactive_gap?: number | null
+        inactive_enabled?: boolean | null
+        miss_commits?: Gee.LinkedList | null
     }
 
 }
@@ -5024,9 +5024,9 @@ module Remote {
         // Own constructor properties of Gitg-1.0.Gitg.Remote
 
         state?: RemoteState | null
-        fetchSpecs?: string[] | null
-        pushSpecs?: string[] | null
-        credentialsProvider?: CredentialsProvider | null
+        fetch_specs?: string[] | null
+        push_specs?: string[] | null
+        credentials_provider?: CredentialsProvider | null
     }
 
 }
@@ -5353,7 +5353,7 @@ module RepositoryListBox {
         // Own constructor properties of Gitg-1.0.Gitg.RepositoryListBox
 
         mode?: SelectionMode | null
-        bookmarksFromRecentFiles?: boolean | null
+        bookmarks_from_recent_files?: boolean | null
         location?: Gio.File | null
     }
 
@@ -5807,12 +5807,12 @@ module RepositoryListBoxRow {
         mode?: SelectionMode | null
         selected?: boolean | null
         repository?: Repository | null
-        canRemove?: boolean | null
+        can_remove?: boolean | null
         time?: GLib.DateTime | null
         fraction?: number | null
-        repositoryName?: string | null
+        repository_name?: string | null
         dirname?: string | null
-        branchName?: string | null
+        branch_name?: string | null
         loading?: boolean | null
     }
 

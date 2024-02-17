@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstinterfaces-0.10",
-    "version": "0.10.0-3.2.7",
+    "version": "0.10.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstInterfaces-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstinterfaces-0.10.js",
     "main": "gstinterfaces-0.10.js",
     "exports": {
-        "./ambient": "./gstinterfaces-0.10-ambient.d.ts",
-        "./import": "./gstinterfaces-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./gstinterfaces-0.10-ambient.d.ts",
+            "default": "./gstinterfaces-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstinterfaces-0.10-import.d.ts",
+            "default": "./gstinterfaces-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstinterfaces-0.10.d.ts",

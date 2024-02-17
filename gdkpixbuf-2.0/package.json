@@ -1,13 +1,19 @@
 {
     "name": "@girs/gdkpixbuf-2.0",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GdkPixbuf-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "gdkpixbuf-2.0.js",
     "main": "gdkpixbuf-2.0.js",
     "exports": {
-        "./ambient": "./gdkpixbuf-2.0-ambient.d.ts",
-        "./import": "./gdkpixbuf-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./gdkpixbuf-2.0-ambient.d.ts",
+            "default": "./gdkpixbuf-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gdkpixbuf-2.0-import.d.ts",
+            "default": "./gdkpixbuf-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gdkpixbuf-2.0.d.ts",

@@ -56,7 +56,7 @@ module Client {
         /**
          * The IP address of the assoicated network interface.
          */
-        hostIp?: string | null
+        host_ip?: string | null
         /**
          * The name of the network interface this client is associated with.
          * Set to NULL to autodetect.
@@ -67,7 +67,7 @@ module Client {
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
          */
-        msearchPort?: number | null
+        msearch_port?: number | null
         /**
          * The network this client is currently connected to. You could set this
          * to anything you want to identify the network this client is
@@ -80,13 +80,13 @@ module Client {
         /**
          * The SSDP server's identifier.
          */
-        serverId?: string | null
+        server_id?: string | null
         /**
          * Time-to-live value to use for all sockets created by this client.
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
          */
-        socketTtl?: number | null
+        socket_ttl?: number | null
     }
 
 }
@@ -491,12 +491,12 @@ module ResourceGroup {
         /**
          * The number of seconds our advertisements are valid.
          */
-        maxAge?: number | null
+        max_age?: number | null
         /**
          * The minimum number of milliseconds between SSDP messages.
          * The default is 120 based on DLNA specification.
          */
-        messageDelay?: number | null
+        message_delay?: number | null
     }
 
 }

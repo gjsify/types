@@ -256,8 +256,8 @@ module Screen {
 
         // Own constructor properties of GnomeRR-4.0.GnomeRR.Screen
 
-        dpmsMode?: DpmsModeType | null
-        gdkDisplay?: Gdk.Display | null
+        dpms_mode?: DpmsModeType | null
+        gdk_display?: Gdk.Display | null
     }
 
 }

@@ -42,10 +42,9 @@ module Wc {
         // Own constructor properties of GrlNet-0.1.GrlNet.Wc
 
         cache?: boolean | null
-        cache_size?: number | null
+        cacheSize?: number | null
         loglevel?: number | null
         throttling?: number | null
-        cacheSize?: number | null
     }
 
 }
@@ -55,7 +54,6 @@ interface Wc {
     // Own properties of GrlNet-0.1.GrlNet.Wc
 
     cache: boolean
-    cache_size: number
     cacheSize: number
     loglevel: number
     throttling: number

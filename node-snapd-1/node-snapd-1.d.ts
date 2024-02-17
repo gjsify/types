@@ -641,8 +641,8 @@ module Alias {
 
         // Own constructor properties of Snapd-1.Snapd.Alias
 
-        appAuto?: string | null
-        appManual?: string | null
+        app_auto?: string | null
+        app_manual?: string | null
         command?: string | null
         name?: string | null
         snap?: string | null
@@ -776,9 +776,9 @@ module App {
 
         active?: boolean | null
         aliases?: string[] | null
-        commonId?: string | null
-        daemonType?: DaemonType | null
-        desktopFile?: string | null
+        common_id?: string | null
+        daemon_type?: DaemonType | null
+        desktop_file?: string | null
         enabled?: boolean | null
         name?: string | null
         snap?: string | null
@@ -1119,8 +1119,8 @@ module Change {
         id?: string | null
         kind?: string | null
         ready?: boolean | null
-        readyTime?: GLib.DateTime | null
-        spawnTime?: GLib.DateTime | null
+        ready_time?: GLib.DateTime | null
+        spawn_time?: GLib.DateTime | null
         status?: string | null
         summary?: string | null
         tasks?: any[] | null
@@ -1278,7 +1278,7 @@ module Channel {
         confinement?: Confinement | null
         epoch?: string | null
         name?: string | null
-        releasedAt?: GLib.DateTime | null
+        released_at?: GLib.DateTime | null
         revision?: string | null
         size?: number | null
         version?: string | null
@@ -2877,9 +2877,9 @@ module Connection {
         manual?: boolean | null
         name?: string | null
         plug?: PlugRef | null
-        plugAttrs?: GLib.HashTable | null
+        plug_attrs?: GLib.HashTable | null
         slot?: SlotRef | null
-        slotAttrs?: GLib.HashTable | null
+        slot_attrs?: GLib.HashTable | null
         snap?: string | null
     }
 
@@ -3057,7 +3057,7 @@ module Icon {
         // Own constructor properties of Snapd-1.Snapd.Icon
 
         data?: any | null
-        mimeType?: string | null
+        mime_type?: string | null
     }
 
 }
@@ -3141,7 +3141,7 @@ module Interface {
 
         // Own constructor properties of Snapd-1.Snapd.Interface
 
-        docUrl?: string | null
+        doc_url?: string | null
         name?: string | null
         plugs?: any[] | null
         slots?: any[] | null
@@ -3335,7 +3335,7 @@ module MarkdownNode {
         // Own constructor properties of Snapd-1.Snapd.MarkdownNode
 
         children?: any[] | null
-        nodeType?: MarkdownNodeType | null
+        node_type?: MarkdownNodeType | null
         text?: string | null
     }
 
@@ -4210,35 +4210,35 @@ module Snap {
         broken?: string | null
         channel?: string | null
         channels?: any[] | null
-        commonIds?: string[] | null
+        common_ids?: string[] | null
         confinement?: Confinement | null
         contact?: string | null
         description?: string | null
         developer?: string | null
         devmode?: boolean | null
-        downloadSize?: number | null
+        download_size?: number | null
         icon?: string | null
         id?: string | null
-        installDate?: GLib.DateTime | null
-        installedSize?: number | null
+        install_date?: GLib.DateTime | null
+        installed_size?: number | null
         jailmode?: boolean | null
         license?: string | null
         media?: any[] | null
-        mountedFrom?: string | null
+        mounted_from?: string | null
         name?: string | null
         prices?: any[] | null
         private?: boolean | null
-        publisherDisplayName?: string | null
-        publisherId?: string | null
-        publisherUsername?: string | null
-        publisherValidation?: PublisherValidation | null
+        publisher_display_name?: string | null
+        publisher_id?: string | null
+        publisher_username?: string | null
+        publisher_validation?: PublisherValidation | null
         revision?: string | null
         screenshots?: any[] | null
-        snapType?: SnapType | null
+        snap_type?: SnapType | null
         status?: SnapStatus | null
         summary?: string | null
         title?: string | null
-        trackingChannel?: string | null
+        tracking_channel?: string | null
         tracks?: string[] | null
         trymode?: boolean | null
         version?: string | null
@@ -4727,21 +4727,21 @@ module SystemInformation {
 
         // Own constructor properties of Snapd-1.Snapd.SystemInformation
 
-        binariesDirectory?: string | null
-        buildId?: string | null
+        binaries_directory?: string | null
+        build_id?: string | null
         confinement?: SystemConfinement | null
-        kernelVersion?: string | null
+        kernel_version?: string | null
         managed?: boolean | null
-        mountDirectory?: string | null
-        onClassic?: boolean | null
-        osId?: string | null
-        osVersion?: string | null
-        refreshHold?: GLib.DateTime | null
-        refreshLast?: GLib.DateTime | null
-        refreshNext?: GLib.DateTime | null
-        refreshSchedule?: string | null
-        refreshTimer?: string | null
-        sandboxFeatures?: any | null
+        mount_directory?: string | null
+        on_classic?: boolean | null
+        os_id?: string | null
+        os_version?: string | null
+        refresh_hold?: GLib.DateTime | null
+        refresh_last?: GLib.DateTime | null
+        refresh_next?: GLib.DateTime | null
+        refresh_schedule?: string | null
+        refresh_timer?: string | null
+        sandbox_features?: any | null
         series?: string | null
         store?: string | null
         version?: string | null
@@ -4999,12 +4999,12 @@ module Task {
 
         id?: string | null
         kind?: string | null
-        progressDone?: number | null
-        progressLabel?: string | null
-        progressTotal?: number | null
+        progress_done?: number | null
+        progress_label?: string | null
+        progress_total?: number | null
         ready?: boolean | null
-        readyTime?: GLib.DateTime | null
-        spawnTime?: GLib.DateTime | null
+        ready_time?: GLib.DateTime | null
+        spawn_time?: GLib.DateTime | null
         status?: string | null
         summary?: string | null
     }
@@ -5169,10 +5169,10 @@ module UserInformation {
 
         // Own constructor properties of Snapd-1.Snapd.UserInformation
 
-        authData?: AuthData | null
+        auth_data?: AuthData | null
         email?: string | null
         id?: number | null
-        sshKeys?: string[] | null
+        ssh_keys?: string[] | null
         username?: string | null
     }
 

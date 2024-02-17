@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-pango-1.0",
-    "version": "1.51.0-3.2.7",
+    "version": "1.51.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Pango-1.0, generated from library version 1.51.0",
     "type": "module",
     "module": "node-pango-1.0.js",
     "main": "node-pango-1.0.js",
     "exports": {
-        "./ambient": "./node-pango-1.0-ambient.d.ts",
-        "./import": "./node-pango-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-pango-1.0-ambient.d.ts",
+            "default": "./node-pango-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-pango-1.0-import.d.ts",
+            "default": "./node-pango-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-pango-1.0.d.ts",

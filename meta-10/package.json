@@ -1,13 +1,19 @@
 {
     "name": "@girs/meta-10",
-    "version": "10.0.0-3.2.7",
+    "version": "10.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Meta-10, generated from library version 10.0.0",
     "type": "module",
     "module": "meta-10.js",
     "main": "meta-10.js",
     "exports": {
-        "./ambient": "./meta-10-ambient.d.ts",
-        "./import": "./meta-10-import.d.ts",
+        "./ambient": {
+            "types": "./meta-10-ambient.d.ts",
+            "default": "./meta-10-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-10-import.d.ts",
+            "default": "./meta-10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./meta-10.d.ts",

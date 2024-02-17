@@ -1475,8 +1475,6 @@ export module Client {
 
         // Own constructor properties of ECal-2.0.ECal.Client
 
-        default_timezone?: ICalGLib.Timezone | null
-        source_type?: ClientSourceType | null
         defaultTimezone?: ICalGLib.Timezone | null
         sourceType?: ClientSourceType | null
     }
@@ -1487,9 +1485,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of ECal-2.0.ECal.Client
 
-    default_timezone: ICalGLib.Timezone
     defaultTimezone: ICalGLib.Timezone
-    readonly source_type: ClientSourceType
     readonly sourceType: ClientSourceType
 
     // Owm methods of ECal-2.0.ECal.Client
@@ -2507,10 +2503,6 @@ export module ClientView {
         /**
          * The object path used to create the D-Bus proxy
          */
-        object_path?: string | null
-        /**
-         * The object path used to create the D-Bus proxy
-         */
         objectPath?: string | null
     }
 
@@ -2528,10 +2520,6 @@ export interface ClientView extends Gio.Initable {
      * The GDBusConnection used to create the D-Bus proxy
      */
     readonly connection: Gio.DBusConnection
-    /**
-     * The object path used to create the D-Bus proxy
-     */
-    readonly object_path: string | null
     /**
      * The object path used to create the D-Bus proxy
      */
@@ -3407,23 +3395,11 @@ export module ReminderWatcher {
         /**
          * An #ICalTimezone to be used as the default time zone.
          */
-        default_zone?: ICalGLib.Timezone | null
+        defaultZone?: ICalGLib.Timezone | null
         /**
          * The #ESourceRegistry which manages #ESource instances.
          */
         registry?: EDataServer.SourceRegistry | null
-        /**
-         * Whether timers are enabled for the #EReminderWatcher. See
-         * e_reminder_watcher_set_timers_enabled() for more information
-         * what it means.
-         * 
-         * Default: %TRUE
-         */
-        timers_enabled?: boolean | null
-        /**
-         * An #ICalTimezone to be used as the default time zone.
-         */
-        defaultZone?: ICalGLib.Timezone | null
         /**
          * Whether timers are enabled for the #EReminderWatcher. See
          * e_reminder_watcher_set_timers_enabled() for more information
@@ -3443,23 +3419,11 @@ export interface ReminderWatcher {
     /**
      * An #ICalTimezone to be used as the default time zone.
      */
-    default_zone: ICalGLib.Timezone
-    /**
-     * An #ICalTimezone to be used as the default time zone.
-     */
     defaultZone: ICalGLib.Timezone
     /**
      * The #ESourceRegistry which manages #ESource instances.
      */
     readonly registry: EDataServer.SourceRegistry
-    /**
-     * Whether timers are enabled for the #EReminderWatcher. See
-     * e_reminder_watcher_set_timers_enabled() for more information
-     * what it means.
-     * 
-     * Default: %TRUE
-     */
-    timers_enabled: boolean
     /**
      * Whether timers are enabled for the #EReminderWatcher. See
      * e_reminder_watcher_set_timers_enabled() for more information

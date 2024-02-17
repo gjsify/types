@@ -8487,8 +8487,8 @@ export module Editor {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.Editor
 
-        showBoder?: boolean | null
-        showClassField?: boolean | null
+        show_boder?: boolean | null
+        show_class_field?: boolean | null
         widget?: Widget | null
     }
 
@@ -8953,10 +8953,10 @@ export module EditorProperty {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.EditorProperty
 
-        customText?: string | null
-        disableCheck?: boolean | null
-        propertyDef?: any | null
-        useCommand?: boolean | null
+        custom_text?: string | null
+        disable_check?: boolean | null
+        property_def?: any | null
+        use_command?: boolean | null
     }
 
 }
@@ -9849,7 +9849,7 @@ export module EditorTable {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.EditorTable
 
-        pageType?: EditorPageType | null
+        page_type?: EditorPageType | null
     }
 
 }
@@ -11384,10 +11384,10 @@ export module Palette {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.Palette
 
-        itemAppearance?: ItemAppearance | null
+        item_appearance?: ItemAppearance | null
         project?: Project | null
-        showSelectorButton?: boolean | null
-        useSmallItemIcons?: boolean | null
+        show_selector_button?: boolean | null
+        use_small_item_icons?: boolean | null
     }
 
 }
@@ -12306,11 +12306,11 @@ export module Project {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.Project
 
-        cssProviderPath?: string | null
+        css_provider_path?: string | null
         license?: string | null
-        resourcePath?: string | null
+        resource_path?: string | null
         template?: Widget | null
-        translationDomain?: string | null
+        translation_domain?: string | null
     }
 
 }
@@ -12827,9 +12827,9 @@ export module Property {
 
         "class"?: any | null
         enabled?: boolean | null
-        i18nComment?: string | null
-        i18nContext?: string | null
-        i18nTranslatable?: boolean | null
+        i18n_comment?: string | null
+        i18n_context?: string | null
+        i18n_translatable?: boolean | null
         precision?: number | null
         sensitive?: boolean | null
     }
@@ -13087,12 +13087,12 @@ export module PropertyLabel {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.PropertyLabel
 
-        appendColon?: boolean | null
-        customText?: string | null
-        customTooltip?: string | null
+        append_colon?: boolean | null
+        custom_text?: string | null
+        custom_tooltip?: string | null
         packing?: boolean | null
         property?: Property | null
-        propertyName?: string | null
+        property_name?: string | null
     }
 
 }
@@ -13560,12 +13560,12 @@ export module PropertyShell {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.PropertyShell
 
-        customText?: string | null
-        disableCheck?: boolean | null
-        editorType?: string | null
+        custom_text?: string | null
+        disable_check?: boolean | null
+        editor_type?: string | null
         packing?: boolean | null
-        propertyName?: string | null
-        useCommand?: boolean | null
+        property_name?: string | null
+        use_command?: boolean | null
     }
 
 }
@@ -14019,7 +14019,7 @@ export module Signal {
         "class"?: any | null
         detail?: string | null
         handler?: string | null
-        supportWarning?: string | null
+        support_warning?: string | null
         swapped?: boolean | null
         userdata?: string | null
     }
@@ -14242,7 +14242,7 @@ export module SignalEditor {
 
         // Own constructor properties of Gladeui-2.0.Gladeui.SignalEditor
 
-        gladeWidget?: Gtk.TreeModel | null
+        glade_widget?: Gtk.TreeModel | null
     }
 
 }
@@ -14804,7 +14804,7 @@ export module Widget {
         anarchist?: boolean | null
         composite?: boolean | null
         internal?: string | null
-        internalName?: string | null
+        internal_name?: string | null
         name?: string | null
         object?: GObject.Object | null
         parent?: Widget | null
@@ -14812,9 +14812,9 @@ export module Widget {
         properties?: any | null
         reason?: number | null
         template?: Widget | null
-        templateExact?: boolean | null
-        toplevelHeight?: number | null
-        toplevelWidth?: number | null
+        template_exact?: boolean | null
+        toplevel_height?: number | null
+        toplevel_width?: number | null
     }
 
 }
@@ -15653,11 +15653,11 @@ export module WidgetAdaptor {
 
         book?: string | null
         catalog?: string | null
-        genericName?: string | null
-        iconName?: string | null
+        generic_name?: string | null
+        icon_name?: string | null
         name?: string | null
         query?: boolean | null
-        specialChildType?: string | null
+        special_child_type?: string | null
         title?: string | null
         type?: GObject.GType | null
     }

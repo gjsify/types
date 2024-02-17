@@ -498,7 +498,6 @@ export module IPCMemoryHandle {
 
         // Own constructor properties of ArrowCUDA-1.0.ArrowCUDA.IPCMemoryHandle
 
-        ipc_memory_handle?: any | null
         ipcMemoryHandle?: any | null
     }
 
@@ -508,7 +507,6 @@ export interface IPCMemoryHandle {
 
     // Own properties of ArrowCUDA-1.0.ArrowCUDA.IPCMemoryHandle
 
-    readonly ipc_memory_handle: any
     readonly ipcMemoryHandle: any
 
     // Own fields of ArrowCUDA-1.0.ArrowCUDA.IPCMemoryHandle

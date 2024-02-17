@@ -306,16 +306,13 @@ module SettingsPage {
 
         // Own constructor properties of Granite-7.0.Granite.SettingsPage
 
-        status_type?: SettingsPageStatusType | null
-        display_widget?: Gtk.Widget | null
-        header?: string | null
-        status?: string | null
-        icon_name?: string | null
-        title?: string | null
-        child?: Gtk.Widget | null
         statusType?: SettingsPageStatusType | null
         displayWidget?: Gtk.Widget | null
+        header?: string | null
+        status?: string | null
         iconName?: string | null
+        title?: string | null
+        child?: Gtk.Widget | null
     }
 
 }
@@ -324,13 +321,10 @@ interface SettingsPage {
 
     // Own properties of Granite-7.0.Granite.SettingsPage
 
-    status_type: SettingsPageStatusType
     statusType: SettingsPageStatusType
-    readonly display_widget: Gtk.Widget
     readonly displayWidget: Gtk.Widget
     readonly header: string | null
     status: string | null
-    icon_name: string | null
     iconName: string | null
     title: string | null
     child: Gtk.Widget
@@ -523,14 +517,11 @@ module SimpleSettingsPage {
 
         // Own constructor properties of Granite-7.0.Granite.SimpleSettingsPage
 
-        action_area?: Gtk.Box | null
-        content_area?: Gtk.Grid | null
-        status_switch?: Gtk.Switch | null
-        activatable?: boolean | null
-        description?: string | null
         actionArea?: Gtk.Box | null
         contentArea?: Gtk.Grid | null
         statusSwitch?: Gtk.Switch | null
+        activatable?: boolean | null
+        description?: string | null
     }
 
 }
@@ -539,11 +530,8 @@ interface SimpleSettingsPage {
 
     // Own properties of Granite-7.0.Granite.SimpleSettingsPage
 
-    readonly action_area: Gtk.Box
     readonly actionArea: Gtk.Box
-    readonly content_area: Gtk.Grid
     readonly contentArea: Gtk.Grid
-    readonly status_switch: Gtk.Switch
     readonly statusSwitch: Gtk.Switch
     readonly activatable: boolean
     description: string | null
@@ -740,11 +728,9 @@ module AccelLabel {
 
         // Own constructor properties of Granite-7.0.Granite.AccelLabel
 
-        action_name?: string | null
-        accel_string?: string | null
-        label?: string | null
         actionName?: string | null
         accelString?: string | null
+        label?: string | null
     }
 
 }
@@ -753,9 +739,7 @@ interface AccelLabel {
 
     // Own properties of Granite-7.0.Granite.AccelLabel
 
-    action_name: string | null
     actionName: string | null
-    accel_string: string | null
     accelString: string | null
     label: string | null
 
@@ -1455,7 +1439,6 @@ module HeaderLabel {
         // Own constructor properties of Granite-7.0.Granite.HeaderLabel
 
         label?: string | null
-        secondary_text?: string | null
         secondaryText?: string | null
     }
 
@@ -1466,7 +1449,6 @@ interface HeaderLabel {
     // Own properties of Granite-7.0.Granite.HeaderLabel
 
     label: string | null
-    secondary_text: string | null
     secondaryText: string | null
 
     // Owm methods of Granite-7.0.Granite.HeaderLabel
@@ -1832,20 +1814,13 @@ module MessageDialog {
 
         // Own constructor properties of Granite-7.0.Granite.MessageDialog
 
-        primary_text?: string | null
-        secondary_text?: string | null
-        image_icon?: Gio.Icon | null
-        badge_icon?: Gio.Icon | null
-        primary_label?: Gtk.Label | null
-        secondary_label?: Gtk.Label | null
-        buttons?: Gtk.ButtonsType | null
-        custom_bin?: Gtk.Box | null
         primaryText?: string | null
         secondaryText?: string | null
         imageIcon?: Gio.Icon | null
         badgeIcon?: Gio.Icon | null
         primaryLabel?: Gtk.Label | null
         secondaryLabel?: Gtk.Label | null
+        buttons?: Gtk.ButtonsType | null
         customBin?: Gtk.Box | null
     }
 
@@ -1855,20 +1830,13 @@ interface MessageDialog {
 
     // Own properties of Granite-7.0.Granite.MessageDialog
 
-    primary_text: string | null
     primaryText: string | null
-    secondary_text: string | null
     secondaryText: string | null
-    image_icon: Gio.Icon
     imageIcon: Gio.Icon
-    badge_icon: Gio.Icon
     badgeIcon: Gio.Icon
-    readonly primary_label: Gtk.Label
     readonly primaryLabel: Gtk.Label
-    readonly secondary_label: Gtk.Label
     readonly secondaryLabel: Gtk.Label
     readonly buttons: Gtk.ButtonsType
-    readonly custom_bin: Gtk.Box
     readonly customBin: Gtk.Box
 
     // Conflicting properties
@@ -2141,12 +2109,6 @@ module ModeSwitch {
         // Own constructor properties of Granite-7.0.Granite.ModeSwitch
 
         active?: boolean | null
-        primary_icon_gicon?: Gio.Icon | null
-        primary_icon_name?: string | null
-        primary_icon_tooltip_text?: string | null
-        secondary_icon_gicon?: Gio.Icon | null
-        secondary_icon_name?: string | null
-        secondary_icon_tooltip_text?: string | null
         primaryIconGicon?: Gio.Icon | null
         primaryIconName?: string | null
         primaryIconTooltipText?: string | null
@@ -2162,17 +2124,11 @@ interface ModeSwitch {
     // Own properties of Granite-7.0.Granite.ModeSwitch
 
     active: boolean
-    primary_icon_gicon: Gio.Icon
     primaryIconGicon: Gio.Icon
-    primary_icon_name: string | null
     primaryIconName: string | null
-    primary_icon_tooltip_text: string | null
     primaryIconTooltipText: string | null
-    secondary_icon_gicon: Gio.Icon
     secondaryIconGicon: Gio.Icon
-    secondary_icon_name: string | null
     secondaryIconName: string | null
-    secondary_icon_tooltip_text: string | null
     secondaryIconTooltipText: string | null
 
     // Conflicting properties
@@ -2707,7 +2663,6 @@ module SettingsSidebar {
         // Own constructor properties of Granite-7.0.Granite.SettingsSidebar
 
         stack?: Gtk.Stack | null
-        visible_child_name?: string | null
         visibleChildName?: string | null
     }
 
@@ -2718,7 +2673,6 @@ interface SettingsSidebar {
     // Own properties of Granite-7.0.Granite.SettingsSidebar
 
     readonly stack: Gtk.Stack
-    visible_child_name: string | null
     visibleChildName: string | null
 
     // Owm methods of Granite-7.0.Granite.SettingsSidebar
@@ -2866,7 +2820,6 @@ module Settings {
 
         // Own constructor properties of Granite-7.0.Granite.Settings
 
-        prefers_color_scheme?: SettingsColorScheme | null
         prefersColorScheme?: SettingsColorScheme | null
     }
 
@@ -2876,7 +2829,6 @@ interface Settings {
 
     // Own properties of Granite-7.0.Granite.Settings
 
-    prefers_color_scheme: SettingsColorScheme
     prefersColorScheme: SettingsColorScheme
 
     // Owm methods of Granite-7.0.Granite.Settings
@@ -3120,11 +3072,9 @@ module TimePicker {
 
         // Own constructor properties of Granite-7.0.Granite.TimePicker
 
-        format_12?: string | null
-        format_24?: string | null
-        time?: GLib.DateTime | null
         format12?: string | null
         format24?: string | null
+        time?: GLib.DateTime | null
     }
 
 }
@@ -3133,9 +3083,7 @@ interface TimePicker {
 
     // Own properties of Granite-7.0.Granite.TimePicker
 
-    readonly format_12: string | null
     readonly format12: string | null
-    readonly format_24: string | null
     readonly format24: string | null
     time: GLib.DateTime
 
@@ -3601,11 +3549,9 @@ module ValidatedEntry {
 
         // Own constructor properties of Granite-7.0.Granite.ValidatedEntry
 
-        is_valid?: boolean | null
-        min_length?: number | null
-        regex?: GLib.Regex | null
         isValid?: boolean | null
         minLength?: number | null
+        regex?: GLib.Regex | null
     }
 
 }
@@ -3614,9 +3560,7 @@ interface ValidatedEntry {
 
     // Own properties of Granite-7.0.Granite.ValidatedEntry
 
-    is_valid: boolean
     isValid: boolean
-    min_length: number
     minLength: number
     regex: GLib.Regex
 

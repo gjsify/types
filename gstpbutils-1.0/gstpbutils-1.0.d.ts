@@ -890,9 +890,8 @@ module AudioVisualizer {
 
         // Own constructor properties of GstPbutils-1.0.GstPbutils.AudioVisualizer
 
-        shade_amount?: number | null
-        shader?: AudioVisualizerShader | null
         shadeAmount?: number | null
+        shader?: AudioVisualizerShader | null
     }
 
 }
@@ -901,7 +900,6 @@ interface AudioVisualizer {
 
     // Own properties of GstPbutils-1.0.GstPbutils.AudioVisualizer
 
-    shade_amount: number
     shadeAmount: number
     shader: AudioVisualizerShader
 
@@ -1050,7 +1048,6 @@ module Discoverer {
          * set on the result flags.
          */
         timeout?: number | null
-        use_cache?: boolean | null
         useCache?: boolean | null
     }
 
@@ -1068,7 +1065,6 @@ interface Discoverer {
      * set on the result flags.
      */
     timeout: number
-    use_cache: boolean
     useCache: boolean
 
     // Own fields of GstPbutils-1.0.GstPbutils.Discoverer
@@ -1714,18 +1710,6 @@ module EncodingProfile {
          * element-properties,row-mt=true, end-usage=vbr
          * ```
          */
-        element_properties?: Gst.Structure | null
-        restriction_caps?: Gst.Caps | null
-        /**
-         * A #GstStructure defining the properties to be set to the element
-         * the profile represents.
-         * 
-         * For example for `av1enc`:
-         * 
-         * ```
-         * element-properties,row-mt=true, end-usage=vbr
-         * ```
-         */
         elementProperties?: Gst.Structure | null
         restrictionCaps?: Gst.Caps | null
     }
@@ -1746,19 +1730,7 @@ interface EncodingProfile {
      * element-properties,row-mt=true, end-usage=vbr
      * ```
      */
-    element_properties: Gst.Structure
-    /**
-     * A #GstStructure defining the properties to be set to the element
-     * the profile represents.
-     * 
-     * For example for `av1enc`:
-     * 
-     * ```
-     * element-properties,row-mt=true, end-usage=vbr
-     * ```
-     */
     elementProperties: Gst.Structure
-    restriction_caps: Gst.Caps
     restrictionCaps: Gst.Caps
 
     // Owm methods of GstPbutils-1.0.GstPbutils.EncodingProfile

@@ -291,26 +291,6 @@ enum KeySynthType {
     UNLOCKMODIFIERS,
 }
 /**
- * Enumeration used to indicate a type of live region and how assertive it
- * should be in terms of speaking notifications. Currently, this is only used
- * for "announcement" events, but it may be used for additional purposes
- * in the future.
- */
-enum Live {
-    /**
-     * No live region.
-     */
-    NONE,
-    /**
-     * This live region should be considered polite.
-     */
-    POLITE,
-    /**
-     * This live region should be considered assertive.
-     */
-    ASSERTIVE,
-}
-/**
  * Used by interfaces #AtspiText and #AtspiDocument, this
  * enumeration corresponds to the POSIX 'setlocale' enum values.
  */
@@ -625,7 +605,7 @@ enum Role {
      */
     DATE_EDITOR,
     /**
-     * An inconifed internal frame within a DESKTOP_FRAME.
+     * An inconifed internal frame within a DESKTOP_PANE.
      */
     DESKTOP_ICON,
     /**
@@ -648,14 +628,14 @@ enum Role {
      */
     DIRECTORY_PANE,
     /**
-     * An object used for drawing custom user interface
-     * elements.
-     */
-    DRAWING_AREA,
-    /**
      * A specialized dialog that displays the files in
      * the directory and lets the user select a file, browse a different
      * directory, or specify a filename.
+     */
+    DRAWING_AREA,
+    /**
+     * An object used for drawing custom user interface
+     * elements.
      */
     FILE_CHOOSER,
     /**
@@ -815,13 +795,14 @@ enum Role {
     SEPARATOR,
     /**
      * An object that allows the user to select from a bounded
-     * range.  Unlike `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
-     * 'viewport'-like objects.
+     * range.
      */
     SLIDER,
     /**
      * An object which allows one of a set of choices to
-     * be selected, and which displays the current choice.
+     * be selected, and which displays the current choice.  Unlike
+     * `ATSPI_ROLE_SCROLL_BAR,` `ATSPI_ROLE_SLIDER` objects need not control
+     * 'viewport'-like objects.
      */
     SPIN_BUTTON,
     /**
@@ -944,7 +925,7 @@ enum Role {
     /**
      * An object corresponding to the toplevel accessible
      * of an application, which may contain `ATSPI_ROLE_FRAME` objects or other
-     * accessible objects. Children of objects with the #ATSPI_ROLE_DESKTOP_FRAME role are generally
+     * accessible objects. Children of #AccessibleDesktop objects  are generally
      * `ATSPI_ROLE_APPLICATION` objects.
      */
     APPLICATION,
@@ -1280,18 +1261,14 @@ enum Role {
     /**
      * A container for content that is called out as a proposed
      * change from the current version of the document, such as by a reviewer of the
-     * content. An object with this role should include children with %ATSPI_ROLE_CONTENT_DELETION and/or
-     * %ATSPI_ROLE_CONTENT_INSERTION, in any order, to indicate what the
+     * content. This role should include either %ATSPI_ROLE_CONTENT_DELETION and/or
+     * %ATSPI_ROLE_CONTENT_INSERTION children, in any order, to indicate what the
      * actual change is. `Since:` 2.36
      */
     SUGGESTION,
     /**
-     * A specialized push button to open a menu. `Since` 2.46
-     */
-    PUSH_BUTTON_MENU,
-    /**
      * Not a valid role, used for finding end of
-     * enumeration.
+     *  enumeration.
      */
     LAST_DEFINED,
 }
@@ -1794,7 +1771,7 @@ enum KeyListenerSyncType {
     NOSYNC,
     /**
      * Events are delivered synchronously, before the
-     * currently focused application sees them.
+     * currently focussed application sees them.
      */
     SYNCHRONOUS,
     /**
@@ -1964,14 +1941,6 @@ function generate_keyboard_event(keyval: number, keystring: string | null, synth
  */
 function generate_mouse_event(x: number, y: number, name: string): boolean
 /**
- * Like atspi_generate_mouse_event, but asynchronous.
- * @param x a #glong indicating the screen x coordinate of the mouse event.
- * @param y a #glong indicating the screen y coordinate of the mouse event.
- * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
- * @param callback a callback to be called when a reply is received. May be NULL.
- */
-function generate_mouse_event_async(x: number, y: number, name: string, callback: GenerateMouseEventCB | null): void
-/**
  * Gets the virtual desktop indicated by index `i`.
  * NOTE: currently multiple virtual desktops are not implemented;
  * as a consequence, any `i` value different from 0 will not return a
@@ -2000,10 +1969,6 @@ function get_desktop_count(): number
  */
 function get_desktop_list(): Accessible[]
 /**
- * Returns the version of the AT-SPI library being used at runtime.
- */
-function get_version(): [ /* major */ number, /* minor */ number, /* micro */ number ]
-/**
  * Connects to the accessibility registry and initializes the SPI.
  * @returns 0 on success, 1 if already initialized, or an integer error code.
  */
@@ -2014,11 +1979,11 @@ function init(): number
  */
 function is_initialized(): boolean
 /**
- * This function does nothing and should not be called.
- * @param listener 
- * @param event_types 
- * @param filter 
- * @returns Always returns %FALSE.
+ * Registers a listener for device events, for instance button events.
+ * @param listener a pointer to the #AtspiDeviceListener which requests             the events.
+ * @param event_types an #AtspiDeviceEventMask mask indicating which             types of key events are requested (%ATSPI_KEY_PRESSED, etc.).
+ * @param filter Unused parameter.
+ * @returns %TRUE if successful, otherwise %FALSE.
  */
 function register_device_event_listener(listener: DeviceListener, event_types: DeviceEventMask, filter: any | null): boolean
 /**
@@ -2038,13 +2003,8 @@ function register_device_event_listener(listener: DeviceListener, event_types: D
  */
 function register_keystroke_listener(listener: DeviceListener, key_set: KeyDefinition[] | null, modmask: KeyMaskType, event_types: KeyEventMask, sync_type: KeyListenerSyncType): boolean
 /**
- * Gets the localized description string describing the #AtspiRole `role`.
- * @param role an #AtspiRole object to query.
- * @returns the localized string describing the AtspiRole
- */
-function role_get_localized_name(role: Role): string | null
-/**
  * Gets a localizable string that indicates the name of an #AtspiRole.
+ * <em>DEPRECATED.</em>
  * @param role an #AtspiRole object to query.
  * @returns a localizable string name for an #AtspiRole enumerated type.
  */
@@ -2058,13 +2018,18 @@ function role_get_name(role: Role): string | null
  */
 function set_main_context(cnx: GLib.MainContext): void
 /**
- * Deprecated. This function no longer does anything and should not be used.
+ * Sets the reference window that will be used when atspi_generate_mouse_event
+ * is called. Coordinates will be assumed to be relative to this window. This
+ * is needed because, due to Wayland's security model, it is not currently
+ * possible to retrieve global coordinates.
+ * If NULL is passed, then AT-SPI will use the window that has focus at the
+ * time that atspi_generate_mouse_event is called.
  * @param accessible the #AtspiAccessible corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
  */
 function set_reference_window(accessible: Accessible): void
 /**
  * Set the timeout used for method calls. If this is not set explicitly,
- * a default of 800 ms is used.
+ * a default of 0.8 ms is used.
  * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
  * sending a keyboard event notification. This means that, if an AT makes
  * a call in response to the keyboard notification and the application
@@ -2113,9 +2078,6 @@ interface EventListenerCB {
  */
 interface EventListenerSimpleCB {
     (event: Event): void
-}
-interface GenerateMouseEventCB {
-    (): void
 }
 /**
  * A callback that will be invoked when a key is pressed.
@@ -2286,15 +2248,6 @@ interface Collection {
     disconnect(id: number): void
 }
 
-/**
- * An interface designed to allow accessibles which satisfy a set of
- * criteria to be returned.
- * 
- * An interface designed to allow accessibles which satisfy a set of
- * criteria to be returned. This interface can be used to avoid iteration
- * or client-side search of the object tree.
- * @interface 
- */
 class Collection extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Collection
@@ -2401,8 +2354,8 @@ interface Component {
     scroll_to_point(coords: CoordType, x: number, y: number): boolean
     /**
      * Moves and resizes the specified component.
-     * @param x the new horizontal position to which the component should be moved.
-     * @param y the new vertical position to which the component should be moved.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
      * @param width the width to which the component should be resized.
      * @param height the height to which the component should be resized.
      * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -2411,14 +2364,14 @@ interface Component {
     set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean
     /**
      * Moves the component to the specified position.
-     * @param x the new horizontal position to which the component should be moved.
-     * @param y the new vertical position to which the component should be moved.
+     * @param x the new vertical position to which the component should be moved.
+     * @param y the new horizontal position to which the component should be moved.
      * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
      * @returns #TRUE if successful; #FALSE otherwise.
      */
     set_position(x: number, y: number, ctype: CoordType): boolean
     /**
-     * Resizes the specified component to the given pixel dimensions.
+     * Resizes the specified component to the given coordinates.
      * @param width the width to which the component should be resized.
      * @param height the height to which the component should be resized.
      * @returns #TRUE if successful; #FALSE otherwise.
@@ -2433,20 +2386,6 @@ interface Component {
     disconnect(id: number): void
 }
 
-/**
- * An interface implemented by objects which have onscreen visual
- * representations.
- * 
- * The Component interface is implemented by objects which occupy on-screen
- * space, e.g. objects which have onscreen visual representations. The methods
- * in Component allow clients to identify where the objects lie in the onscreen
- * coordinate system, their relative size, stacking order, and position. It
- * also provides a mechanism whereby keyboard focus may be transferred to
- * specific user interface elements programmatically.  This is a 2D API.
- * Coordinates of 3D objects are projected into the 2-dimensional screen view
- * for purposes of this interface.
- * @interface 
- */
 class Component extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Component
@@ -2478,7 +2417,7 @@ interface Document {
      * @param attribute a string indicating the name of a specific attribute.
      * @returns a string corresponding to the value of the specified attribute, or an empty string if the attribute is unspecified for the object.
      */
-    get_document_attribute_value(attribute: string): string | null
+    get_document_attribute_value(attribute: string | null): string | null
     /**
      * Gets all constant attributes for the document as a whole. For attributes
      * that change within the document content, see `atspi_text_get_attribute_run` instead.
@@ -2654,17 +2593,6 @@ interface Hypertext {
     disconnect(id: number): void
 }
 
-/**
- * An interface used for objects which implement linking between
- * multiple resource locations.
- * 
- * An interface used for objects which implement linking between
- * multiple resource or content locations, or multiple 'markers'
- * within a single document. A hypertext instance is associated
- * with one or more hyperlinks which are associated with particular
- * offsets within the hypertext's content.
- * @interface 
- */
 class Hypertext extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Hypertext
@@ -2838,17 +2766,6 @@ interface Selection {
     disconnect(id: number): void
 }
 
-/**
- * An interface which indicates that an object exposes a 'selection' model,
- * allowing the selection of one or more of its children.
- * 
- * An interface which indicates that an object exposes a 'selection'
- * model, allowing the selection of one or more of its children.
- * Read-only Selection instances are possible, in which case the
- * interface is used to programmatically determine the selected-ness
- * of its children.
- * @interface 
- */
 class Selection extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Selection
@@ -3096,20 +3013,6 @@ interface Table {
     disconnect(id: number): void
 }
 
-/**
- * An interface used by containers whose data is arranged in a tabular form.
- * 
- * An interface used by containers whose contained data is arranged
- * in a tabular (i.e. row-column) form. Tables may resemble
- * a two-dimensional grid, as in a spreadsheet, or may feature objects
- * which span multiple rows and/or columns, but whose bounds are
- * aligned on a row/column matrix. Objects within tables are children
- * of the table object, and they may be referenced either via a child
- * index or via a row/column pair. Table 'cells' may implement other
- * interfaces, such as Text, Action, Image, and Component, and should do
- * so as appropriate to their onscreen presentation and/or behavior.
- * @interface 
- */
 class Table extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Table
@@ -3233,11 +3136,12 @@ interface Text {
      * @param attribute_name The attribute to query.
      * @returns the value of a given attribute at the given offset, or %NULL if not present.
      */
-    get_text_attribute_value(offset: number, attribute_name: string): string | null
+    get_text_attribute_value(offset: number, attribute_name: string | null): string | null
     /**
      * Gets the attributes applied to a range of text from an #AtspiText
      * object. The text attributes correspond to CSS attributes
      * where possible.
+     * <em>DEPRECATED</em>
      * @param offset a #gint indicating the offset from which the attribute        search is based.
      * @returns a #GHashTable describing the attributes at the given character offset.
      */
@@ -3438,18 +3342,6 @@ interface Text {
     disconnect(id: number): void
 }
 
-/**
- * An interface implemented by objects which place textual
- * information onscreen.
- * 
- * The text interface should be implemented by objects which place textual
- * information onscreen as character strings or glyphs. The text interface
- * allows access to textual content including display attributes and
- * semantic hints associated with runs of text, and to bounding
- * information for glyphs and substrings. It also allows portions of text to
- * be selected, if the objects StateSet includes STATE_SELECTABLE_TEXT.
- * @interface 
- */
 class Text extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Text
@@ -3517,16 +3409,6 @@ interface Value {
     disconnect(id: number): void
 }
 
-/**
- * An interface supporting a one-dimensional scalar
- * to be modified, or which reflects its value.
- * 
- * An interface supporting a one-dimensional scalar
- * to be modified, or which reflects its value. If
- * STATE_EDITABLE is not present, the value is
- * treated as "read only".
- * @interface 
- */
 class Value extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Value
@@ -3589,10 +3471,6 @@ interface Accessible extends Action, Collection, Component, Document, EditableTe
      * descendants.
      */
     clear_cache(): void
-    /**
-     * Clears the cached information only for the given accessible.
-     */
-    clear_cache_single(): void
     /**
      * Gets the accessible id of the accessible.  This is not meant to be presented
      * to the user, but to be an id which is stable over application development.
@@ -3853,14 +3731,6 @@ interface Accessible extends Action, Collection, Component, Document, EditableTe
     disconnect(id: number): void
 }
 
-/**
- * The base interface which is implemented by all accessible objects.
- * 
- * All objects support interfaces for querying their contained 'children'
- * and position in the accessible-object hierarchy, whether or not they
- * actually have children.
- * @class 
- */
 class Accessible extends Object {
 
     // Own properties of Atspi-2.0.Atspi.Accessible
@@ -3906,14 +3776,6 @@ interface Application {
     disconnect(id: number): void
 }
 
-/**
- * An interface identifying the root object associated
- * with a running application.
- * 
- * An interface identifying an object which is the root of the
- * hierarchy associated with a running application.
- * @class 
- */
 class Application extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Application
@@ -3958,7 +3820,7 @@ interface Device {
      */
     get_locked_modifiers(): number
     /**
-     * Gets the modifier for a given keycode, if one exists. Does not create a new
+     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
@@ -4013,7 +3875,7 @@ interface Device {
      */
     vfunc_get_locked_modifiers(): number
     /**
-     * Gets the modifier for a given keycode, if one exists. Does not create a new
+     * Gets the modifier for a given keycode, if one exists. Does not creatt a new
      * mapping. This function should be used when the intention is to query a
      * locking modifier such as num lock via atspi_device_get_locked_modifiers,
      * rather than to add key grabs.
@@ -4343,7 +4205,6 @@ interface EventListener {
      *            object:column-deleted
      *            object:model-changed
      *            object:active-descendant-changed
-     *            object:announcement
      * 
      *  (screen reader events)
      *             screen-reader:region-changed
@@ -4418,16 +4279,6 @@ interface EventListener {
     disconnect(id: number): void
 }
 
-/**
- * A generic interface implemented by objects for the receipt of event
- * notifications.
- * 
- * A generic interface implemented by objects for the receipt of event
- * notifications. atspi-event-listener is the interface via which clients of
- * the atspi-registry receive notification of changes to an application's user
- * interface and content.
- * @class 
- */
 class EventListener extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.EventListener
@@ -4542,19 +4393,6 @@ interface Hyperlink {
     disconnect(id: number): void
 }
 
-/**
- * Instances of atspi-hyperlink are the means by which end users
- * and clients interact with linked content.
- * 
- *  Instances of atspi-hyperlink are returned by
- * atspi-hypertext objects, and are the means by
- * which end users and clients interact with linked,
- * and in some cases embedded, content. These instances
- * may have multiple "anchors", where an anchor corresponds to a
- * reference to a particular resource with a corresponding resource
- * identified (URI).
- * @class 
- */
 class Hyperlink extends Object {
 
     // Own properties of Atspi-2.0.Atspi.Hyperlink
@@ -4600,11 +4438,6 @@ interface MatchRule {
     disconnect(id: number): void
 }
 
-/**
- * An interface that allows the definition of match rules
- * for accessible objects.
- * @class 
- */
 class MatchRule extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.MatchRule
@@ -4625,7 +4458,7 @@ class MatchRule extends GObject.Object {
      * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
      * @param roles A #GArray of roles to match, or NULL if          not applicable.
      * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
-     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by the final component of their DBus names (Accessible,          Component, etc).
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
      * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
      * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
      * @returns A new #AtspiMatchRule.
@@ -4641,7 +4474,7 @@ class MatchRule extends GObject.Object {
      * @param attributematchtype An #AtspiCollectionMatchType specifying how to          interpret `attributes`.
      * @param roles A #GArray of roles to match, or NULL if          not applicable.
      * @param rolematchtype An #AtspiCollectionMatchType specifying how to          interpret `roles`.
-     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by the final component of their DBus names (Accessible,          Component, etc).
+     * @param interfaces An array of interfaces to match, or          NULL if not applicable.  Interface names should be specified          by their DBus names (org.a11y.Atspi.Accessible,          org.a11y.Atspi.Component, etc).
      * @param interfacematchtype An #AtspiCollectionMatchType specifying how to          interpret `interfaces`.
      * @param invert if #TRUE, the match rule should be denied (inverted); if #FALSE,          it should not. For example, if the match rule defines that a match is          an object of ROLE_HEADING which has STATE_FOCUSABLE and a click action,          inverting it would match all objects that are not of ROLE_HEADING,          focusable and clickable at the same time.
      * @returns A new #AtspiMatchRule.
@@ -4734,15 +4567,6 @@ interface Relation {
     disconnect(id: number): void
 }
 
-/**
- * An interface via which non-hierarchical relationships
- * are indicated.
- * 
- * An interface via which non-hierarchical relationships
- * are indicated. An instance of this interface represents
- * a "one-to-many" correspondence.
- * @class 
- */
 class Relation extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.Relation
@@ -4833,11 +4657,6 @@ interface StateSet {
     disconnect(id: number): void
 }
 
-/**
- * The atspi-stateset objects implement wrappers around a
- * bitmap of accessible states.
- * @class 
- */
 class StateSet extends GObject.Object {
 
     // Own properties of Atspi-2.0.Atspi.StateSet

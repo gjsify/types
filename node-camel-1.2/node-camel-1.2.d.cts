@@ -3167,10 +3167,10 @@ export module NetworkSettings {
 
         // Own constructor properties of Camel-1.2.Camel.NetworkSettings
 
-        authMechanism?: string | null
+        auth_mechanism?: string | null
         host?: string | null
         port?: number | null
-        securityMethod?: NetworkSecurityMethod | null
+        security_method?: NetworkSecurityMethod | null
         user?: string | null
     }
 
@@ -4483,7 +4483,7 @@ export module DataCache {
 
         // Own constructor properties of Camel-1.2.Camel.DataCache
 
-        expireEnabled?: boolean | null
+        expire_enabled?: boolean | null
         path?: string | null
     }
 
@@ -5376,25 +5376,25 @@ export module Folder {
         /**
          * The folder's display name.
          */
-        displayName?: string | null
+        display_name?: string | null
         /**
          * The folder's fully qualified name.
          */
-        fullName?: string | null
+        full_name?: string | null
         /**
          * A #CamelThreeState persistent option of the folder,
          * which can override global option to mark messages
          * as seen after certain interval.
          */
-        markSeen?: ThreeState | null
+        mark_seen?: ThreeState | null
         /**
          * Timeout in milliseconds for marking messages as seen.
          */
-        markSeenTimeout?: number | null
+        mark_seen_timeout?: number | null
         /**
          * The #CamelStore to which the folder belongs.
          */
-        parentStore?: Store | null
+        parent_store?: Store | null
     }
 
 }
@@ -6724,9 +6724,9 @@ export module GpgContext {
 
         // Own constructor properties of Camel-1.2.Camel.GpgContext
 
-        alwaysTrust?: boolean | null
-        locateKeys?: boolean | null
-        preferInline?: boolean | null
+        always_trust?: boolean | null
+        locate_keys?: boolean | null
+        prefer_inline?: boolean | null
     }
 
 }
@@ -7503,9 +7503,9 @@ export module LocalSettings {
 
         // Own constructor properties of Camel-1.2.Camel.LocalSettings
 
-        filterAll?: boolean | null
-        filterJunk?: boolean | null
-        maildirAltFlagSep?: boolean | null
+        filter_all?: boolean | null
+        filter_junk?: boolean | null
+        maildir_alt_flag_sep?: boolean | null
         path?: string | null
     }
 
@@ -7794,7 +7794,7 @@ export module MessageInfo {
          * associated folder's "changed" signal.
          * f
          */
-        abortNotifications?: boolean | null
+        abort_notifications?: boolean | null
         /**
          * CC address of the associated message.
          */
@@ -7802,11 +7802,11 @@ export module MessageInfo {
         /**
          * Received date of the associated message.
          */
-        dateReceived?: number | null
+        date_received?: number | null
         /**
          * Sent Date of the associated message.
          */
-        dateSent?: number | null
+        date_sent?: number | null
         /**
          * Flag, whether the info is changed and requires save to disk.
          * Compare with CamelMessageInfo:folder-flagged
@@ -7822,7 +7822,7 @@ export module MessageInfo {
          * the CamelMessageInfo:dirty, which takes care of the local
          * information only.
          */
-        folderFlagged?: boolean | null
+        folder_flagged?: boolean | null
         /**
          * From address of the associated message.
          */
@@ -7835,7 +7835,7 @@ export module MessageInfo {
          * Encoded Message-ID of the associated message as a guint64 number,
          * partial MD5 sum. The value can be cast to #CamelSummaryMessageID.
          */
-        messageId?: number | null
+        message_id?: number | null
         /**
          * Mailing list address of the associated message.
          */
@@ -7876,17 +7876,17 @@ export module MessageInfo {
          * Unlike user-tags, which can contain various values, the user-flags
          * can only be set or not.
          */
-        userFlags?: NamedFlags | null
+        user_flags?: NamedFlags | null
         /**
          * User-defined headers of the associated message. Can be %NULL.
          */
-        userHeaders?: NameValueArray | null
+        user_headers?: NameValueArray | null
         /**
          * User tags for the associated message. Can be %NULL.
          * Unlike user-flags, which can be set or not, the user-tags
          * can contain various values.
          */
-        userTags?: NameValueArray | null
+        user_tags?: NameValueArray | null
     }
 
 }
@@ -10698,8 +10698,8 @@ export module MimePart {
 
         // Own constructor properties of Camel-1.2.Camel.MimePart
 
-        contentId?: string | null
-        contentMd5?: string | null
+        content_id?: string | null
+        content_md5?: string | null
         description?: string | null
         disposition?: string | null
     }
@@ -11459,7 +11459,7 @@ export module Object {
          * The file in which to store persistent property values for this
          * instance.
          */
-        stateFilename?: string | null
+        state_filename?: string | null
     }
 
 }
@@ -11544,7 +11544,7 @@ export module OfflineFolder {
 
         // Own constructor properties of Camel-1.2.Camel.OfflineFolder
 
-        offlineSync?: ThreeState | null
+        offline_sync?: ThreeState | null
     }
 
 }
@@ -11684,10 +11684,10 @@ export module OfflineSettings {
 
         // Own constructor properties of Camel-1.2.Camel.OfflineSettings
 
-        limitByAge?: boolean | null
-        limitUnit?: TimeUnit | null
-        limitValue?: number | null
-        staySynchronized?: boolean | null
+        limit_by_age?: boolean | null
+        limit_unit?: TimeUnit | null
+        limit_value?: number | null
+        stay_synchronized?: boolean | null
     }
 
 }
@@ -12856,7 +12856,7 @@ export module Sasl {
         authenticated?: boolean | null
         mechanism?: string | null
         service?: Service | null
-        serviceName?: string | null
+        service_name?: string | null
     }
 
 }
@@ -13872,10 +13872,10 @@ export module Service {
 
         // Own constructor properties of Camel-1.2.Camel.Service
 
-        displayName?: string | null
+        display_name?: string | null
         password?: string | null
         provider?: Provider | null
-        proxyResolver?: Gio.ProxyResolver | null
+        proxy_resolver?: Gio.ProxyResolver | null
         session?: Session | null
         settings?: Settings | null
         uid?: string | null
@@ -14329,11 +14329,11 @@ export module Session {
 
         // Own constructor properties of Camel-1.2.Camel.Session
 
-        junkFilter?: JunkFilter | null
-        networkMonitor?: Gio.NetworkMonitor | null
+        junk_filter?: JunkFilter | null
+        network_monitor?: Gio.NetworkMonitor | null
         online?: boolean | null
-        userCacheDir?: string | null
-        userDataDir?: string | null
+        user_cache_dir?: string | null
+        user_data_dir?: string | null
     }
 
 }
@@ -15890,8 +15890,8 @@ export module StoreSettings {
 
         // Own constructor properties of Camel-1.2.Camel.StoreSettings
 
-        filterInbox?: boolean | null
-        storeChangesInterval?: number | null
+        filter_inbox?: boolean | null
+        store_changes_interval?: number | null
     }
 
 }
@@ -16151,7 +16151,7 @@ export module Stream {
 
         // Own constructor properties of Camel-1.2.Camel.Stream
 
-        baseStream?: Gio.IOStream | null
+        base_stream?: Gio.IOStream | null
     }
 
 }
@@ -17713,7 +17713,7 @@ export module VeeFolder {
 
         // Own constructor properties of Camel-1.2.Camel.VeeFolder
 
-        autoUpdate?: boolean | null
+        auto_update?: boolean | null
     }
 
 }
@@ -18180,7 +18180,7 @@ export module VeeStore {
 
         // Own constructor properties of Camel-1.2.Camel.VeeStore
 
-        unmatchedEnabled?: boolean | null
+        unmatched_enabled?: boolean | null
     }
 
 }

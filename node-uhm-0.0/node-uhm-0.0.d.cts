@@ -158,12 +158,12 @@ export module Server {
          * of whether traffic is online or being handled locally by the mock server.
          * Use this in conjunction with #UhmServer:enable-online to either log online traffic, or replay logged traffic locally.
          */
-        enableLogging?: boolean | null
+        enable_logging?: boolean | null
         /**
          * %TRUE if network traffic should reach the Internet as normal; %FALSE to redirect it to the local mock server.
          * Use this in conjunction with #UhmServer:enable-logging to either log online traffic, or replay logged traffic locally.
          */
-        enableOnline?: boolean | null
+        enable_online?: boolean | null
         /**
          * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-%NULL, the server will always use HTTPS. If it is %NULL,
          * the server will always use HTTP. The TLS certificate may be changed after constructing the #UhmServer, but changes to the property will not
@@ -177,12 +177,12 @@ export module Server {
          * calling uhm_server_set_default_tls_certificate(). This may be used as the #UhmServer:tls-certificate if the code under test has no specific
          * requirements of the certificate used by the mock server it's tested against.
          */
-        tlsCertificate?: Gio.TlsCertificate | null
+        tls_certificate?: Gio.TlsCertificate | null
         /**
          * Directory relative to which all trace files specified in calls to uhm_server_start_trace() will be resolved.
          * This is not used for any other methods, but must be non-%NULL if uhm_server_start_trace() is called.
          */
-        traceDirectory?: Gio.File | null
+        trace_directory?: Gio.File | null
     }
 
 }

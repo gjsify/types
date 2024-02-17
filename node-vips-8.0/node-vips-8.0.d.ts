@@ -3212,7 +3212,7 @@ module ForeignLoad {
         access?: Access | null
         disc?: boolean | null
         fail?: boolean | null
-        failOn?: FailOn | null
+        fail_on?: FailOn | null
         flags?: ForeignFlags | null
         memory?: boolean | null
         out?: Image | null
@@ -3328,7 +3328,7 @@ module ForeignSave {
 
         background?: ArrayDouble | null
         "in"?: Image | null
-        pageHeight?: number | null
+        page_height?: number | null
         strip?: boolean | null
     }
 
@@ -3443,13 +3443,13 @@ module Image {
         coding?: Coding | null
         demand?: DemandStyle | null
         filename?: string | null
-        foreignBuffer?: any | null
+        foreign_buffer?: any | null
         format?: BandFormat | null
         height?: number | null
         interpretation?: Interpretation | null
         kill?: boolean | null
         mode?: string | null
-        sizeofHeader?: number | null
+        sizeof_header?: number | null
         width?: number | null
         xoffset?: number | null
         xres?: number | null

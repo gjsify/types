@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-clutter-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Clutter-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-clutter-12.js",
     "main": "node-clutter-12.js",
     "exports": {
-        "./ambient": "./node-clutter-12-ambient.d.ts",
-        "./import": "./node-clutter-12-import.d.ts",
+        "./ambient": {
+            "types": "./node-clutter-12-ambient.d.ts",
+            "default": "./node-clutter-12-ambient.js"
+        },
+        "./import": {
+            "types": "./node-clutter-12-import.d.ts",
+            "default": "./node-clutter-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-clutter-12.d.ts",

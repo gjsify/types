@@ -42,7 +42,6 @@ export module ArrowFileReader {
 
         // Own constructor properties of Parquet-1.0.Parquet.ArrowFileReader
 
-        arrow_file_reader?: any | null
         arrowFileReader?: any | null
     }
 
@@ -52,7 +51,6 @@ export interface ArrowFileReader {
 
     // Own properties of Parquet-1.0.Parquet.ArrowFileReader
 
-    readonly arrow_file_reader: any
     readonly arrowFileReader: any
 
     // Own fields of Parquet-1.0.Parquet.ArrowFileReader
@@ -102,7 +100,6 @@ export module ArrowFileWriter {
 
         // Own constructor properties of Parquet-1.0.Parquet.ArrowFileWriter
 
-        arrow_file_writer?: any | null
         arrowFileWriter?: any | null
     }
 
@@ -112,7 +109,6 @@ export interface ArrowFileWriter {
 
     // Own properties of Parquet-1.0.Parquet.ArrowFileWriter
 
-    readonly arrow_file_writer: any
     readonly arrowFileWriter: any
 
     // Own fields of Parquet-1.0.Parquet.ArrowFileWriter

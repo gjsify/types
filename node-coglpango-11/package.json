@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-coglpango-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for CoglPango-11, generated from library version 11.0.0",
     "type": "module",
     "module": "node-coglpango-11.js",
     "main": "node-coglpango-11.js",
     "exports": {
-        "./ambient": "./node-coglpango-11-ambient.d.ts",
-        "./import": "./node-coglpango-11-import.d.ts",
+        "./ambient": {
+            "types": "./node-coglpango-11-ambient.d.ts",
+            "default": "./node-coglpango-11-ambient.js"
+        },
+        "./import": {
+            "types": "./node-coglpango-11-import.d.ts",
+            "default": "./node-coglpango-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-coglpango-11.d.ts",

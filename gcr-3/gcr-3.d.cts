@@ -1717,78 +1717,6 @@ export module Prompt {
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
          */
-        caller_window?: string | null
-        /**
-         * The label for the cancel button in the prompt.
-         */
-        cancel_label?: string | null
-        /**
-         * Whether the additional choice is chosen or not.
-         * 
-         * The additional choice would have been setup using #GcrPrompt:choice-label.
-         */
-        choice_chosen?: boolean | null
-        /**
-         * The label for the additional choice.
-         * 
-         * If this is a non-%NULL value then an additional boolean choice will be
-         * displayed by the prompt allowing the user to select or deselect it.
-         * 
-         * If %NULL, then no additional choice is displayed.
-         * 
-         * The initial value of the choice can be set with #GcrPrompt:choice-chosen.
-         */
-        choice_label?: string | null
-        /**
-         * The label for the continue button in the prompt.
-         */
-        continue_label?: string | null
-        /**
-         * The detailed description of the prompt.
-         * 
-         * A prompt implementation may choose not to display this detailed description.
-         * The prompt message should contain relevant information.
-         */
-        description?: string | null
-        /**
-         * The prompt message for the user.
-         * 
-         * A prompt implementation should always display this message.
-         */
-        message?: string | null
-        /**
-         * Whether the prompt will prompt for a new password.
-         * 
-         * This will cause the prompt implementation to ask the user to confirm the
-         * password and/or display other relevant user interface for creating a new
-         * password.
-         */
-        password_new?: boolean | null
-        /**
-         * The title of the prompt.
-         * 
-         * A prompt implementation may choose not to display the prompt title. The
-         * #GcrPrompt:message should contain relevant information.
-         */
-        title?: string | null
-        /**
-         * A prompt warning displayed on the prompt, or %NULL for no warning.
-         * 
-         * This is a warning like "The password is incorrect." usually displayed to the
-         * user about a previous 'unsuccessful' prompt.
-         */
-        warning?: string | null
-        /**
-         * The string handle of the caller's window.
-         * 
-         * The caller window indicates to the prompt which window is prompting the
-         * user. The prompt may choose to ignore this information or use it in whatever
-         * way it sees fit.
-         * 
-         * In X11, this will be a stringified version of the XWindow handle; in
-         * Wayland this is the result of an export using the XDG foreign
-         * protocol.
-         */
         callerWindow?: string | null
         /**
          * The label for the cancel button in the prompt.
@@ -1816,6 +1744,19 @@ export module Prompt {
          */
         continueLabel?: string | null
         /**
+         * The detailed description of the prompt.
+         * 
+         * A prompt implementation may choose not to display this detailed description.
+         * The prompt message should contain relevant information.
+         */
+        description?: string | null
+        /**
+         * The prompt message for the user.
+         * 
+         * A prompt implementation should always display this message.
+         */
+        message?: string | null
+        /**
          * Whether the prompt will prompt for a new password.
          * 
          * This will cause the prompt implementation to ask the user to confirm the
@@ -1823,6 +1764,20 @@ export module Prompt {
          * password.
          */
         passwordNew?: boolean | null
+        /**
+         * The title of the prompt.
+         * 
+         * A prompt implementation may choose not to display the prompt title. The
+         * #GcrPrompt:message should contain relevant information.
+         */
+        title?: string | null
+        /**
+         * A prompt warning displayed on the prompt, or %NULL for no warning.
+         * 
+         * This is a warning like "The password is incorrect." usually displayed to the
+         * user about a previous 'unsuccessful' prompt.
+         */
+        warning?: string | null
     }
 
 }
@@ -1842,33 +1797,11 @@ export interface Prompt {
      * Wayland this is the result of an export using the XDG foreign
      * protocol.
      */
-    caller_window: string | null
-    /**
-     * The string handle of the caller's window.
-     * 
-     * The caller window indicates to the prompt which window is prompting the
-     * user. The prompt may choose to ignore this information or use it in whatever
-     * way it sees fit.
-     * 
-     * In X11, this will be a stringified version of the XWindow handle; in
-     * Wayland this is the result of an export using the XDG foreign
-     * protocol.
-     */
     callerWindow: string | null
     /**
      * The label for the cancel button in the prompt.
      */
-    cancel_label: string | null
-    /**
-     * The label for the cancel button in the prompt.
-     */
     cancelLabel: string | null
-    /**
-     * Whether the additional choice is chosen or not.
-     * 
-     * The additional choice would have been setup using #GcrPrompt:choice-label.
-     */
-    choice_chosen: boolean
     /**
      * Whether the additional choice is chosen or not.
      * 
@@ -1885,22 +1818,7 @@ export interface Prompt {
      * 
      * The initial value of the choice can be set with #GcrPrompt:choice-chosen.
      */
-    choice_label: string | null
-    /**
-     * The label for the additional choice.
-     * 
-     * If this is a non-%NULL value then an additional boolean choice will be
-     * displayed by the prompt allowing the user to select or deselect it.
-     * 
-     * If %NULL, then no additional choice is displayed.
-     * 
-     * The initial value of the choice can be set with #GcrPrompt:choice-chosen.
-     */
     choiceLabel: string | null
-    /**
-     * The label for the continue button in the prompt.
-     */
-    continue_label: string | null
     /**
      * The label for the continue button in the prompt.
      */
@@ -1925,24 +1843,7 @@ export interface Prompt {
      * password and/or display other relevant user interface for creating a new
      * password.
      */
-    password_new: boolean
-    /**
-     * Whether the prompt will prompt for a new password.
-     * 
-     * This will cause the prompt implementation to ask the user to confirm the
-     * password and/or display other relevant user interface for creating a new
-     * password.
-     */
     passwordNew: boolean
-    /**
-     * Indication of the password strength.
-     * 
-     * Prompts will return a zero value if the password is empty, and a value
-     * greater than zero if the password has any characters.
-     * 
-     * This is only valid after a successful prompt for a password.
-     */
-    readonly password_strength: number
     /**
      * Indication of the password strength.
      * 
@@ -2708,10 +2609,6 @@ export module CertificateRequest {
         /**
          * The private key that this certificate request is for.
          */
-        private_key?: Gck.Object | null
-        /**
-         * The private key that this certificate request is for.
-         */
         privateKey?: Gck.Object | null
     }
 
@@ -2721,10 +2618,6 @@ export interface CertificateRequest {
 
     // Own properties of Gcr-3.Gcr.CertificateRequest
 
-    /**
-     * The private key that this certificate request is for.
-     */
-    readonly private_key: Gck.Object
     /**
      * The private key that this certificate request is for.
      */
@@ -2995,27 +2888,12 @@ export interface Parser {
      * Get the attributes that make up the currently parsed item. This is
      * generally only valid during a #GcrParser::parsed signal.
      */
-    readonly parsed_attributes: Gck.Attributes
-    /**
-     * Get the attributes that make up the currently parsed item. This is
-     * generally only valid during a #GcrParser::parsed signal.
-     */
     readonly parsedAttributes: Gck.Attributes
     /**
      * The description of the type of the currently parsed item. This is generally
      * only valid during a #GcrParser::parsed signal.
      */
-    readonly parsed_description: string | null
-    /**
-     * The description of the type of the currently parsed item. This is generally
-     * only valid during a #GcrParser::parsed signal.
-     */
     readonly parsedDescription: string | null
-    /**
-     * The label of the currently parsed item. This is generally
-     * only valid during a #GcrParser::parsed signal.
-     */
-    readonly parsed_label: string | null
     /**
      * The label of the currently parsed item. This is generally
      * only valid during a #GcrParser::parsed signal.
@@ -3822,20 +3700,6 @@ export module SystemPrompt {
          * The DBus bus name of the prompter to use for prompting, or %NULL
          * for the default prompter.
          */
-        bus_name?: string | null
-        /**
-         * The #GcrSecretExchange to use when transferring passwords. A default
-         * secret exchange will be used if this is not set.
-         */
-        secret_exchange?: SecretExchange | null
-        /**
-         * The timeout in seconds to wait when opening the prompt.
-         */
-        timeout_seconds?: number | null
-        /**
-         * The DBus bus name of the prompter to use for prompting, or %NULL
-         * for the default prompter.
-         */
         busName?: string | null
         /**
          * The #GcrSecretExchange to use when transferring passwords. A default
@@ -3858,26 +3722,12 @@ export interface SystemPrompt extends Prompt, Gio.AsyncInitable, Gio.Initable {
      * The DBus bus name of the prompter to use for prompting, or %NULL
      * for the default prompter.
      */
-    readonly bus_name: string | null
-    /**
-     * The DBus bus name of the prompter to use for prompting, or %NULL
-     * for the default prompter.
-     */
     readonly busName: string | null
     /**
      * The #GcrSecretExchange to use when transferring passwords. A default
      * secret exchange will be used if this is not set.
      */
-    secret_exchange: SecretExchange
-    /**
-     * The #GcrSecretExchange to use when transferring passwords. A default
-     * secret exchange will be used if this is not set.
-     */
     secretExchange: SecretExchange
-    /**
-     * The timeout in seconds to wait when opening the prompt.
-     */
-    readonly timeout_seconds: number
     /**
      * The timeout in seconds to wait when opening the prompt.
      */
@@ -4121,11 +3971,6 @@ export module SystemPrompter {
          * The #GType for prompts created by this prompter. This must be a
          * #GcrPrompt implementation.
          */
-        prompt_type?: GObject.GType | null
-        /**
-         * The #GType for prompts created by this prompter. This must be a
-         * #GcrPrompt implementation.
-         */
         promptType?: GObject.GType | null
     }
 
@@ -4135,11 +3980,6 @@ export interface SystemPrompter {
 
     // Own properties of Gcr-3.Gcr.SystemPrompter
 
-    /**
-     * The #GType for prompts created by this prompter. This must be a
-     * #GcrPrompt implementation.
-     */
-    readonly prompt_type: GObject.GType
     /**
      * The #GType for prompts created by this prompter. This must be a
      * #GcrPrompt implementation.

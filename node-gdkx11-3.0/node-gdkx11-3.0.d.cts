@@ -586,7 +586,7 @@ export module X11DeviceXI2 {
 
         // Own constructor properties of GdkX11-3.0.GdkX11.X11DeviceXI2
 
-        deviceId?: number | null
+        device_id?: number | null
     }
 
 }

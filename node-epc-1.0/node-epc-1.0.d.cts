@@ -309,7 +309,7 @@ export module Dispatcher {
 
         // Own constructor properties of Epc-1.0.Epc.Dispatcher
 
-        collisionHandling?: CollisionHandling | null
+        collision_handling?: CollisionHandling | null
         cookie?: string | null
         name?: string | null
     }
@@ -394,15 +394,15 @@ export module Publisher {
         // Own constructor properties of Epc-1.0.Epc.Publisher
 
         application?: string | null
-        authFlags?: AuthFlags | null
-        certificateFile?: string | null
-        collisionHandling?: CollisionHandling | null
-        contentsPath?: string | null
-        privateKeyFile?: string | null
+        auth_flags?: AuthFlags | null
+        certificate_file?: string | null
+        collision_handling?: CollisionHandling | null
+        contents_path?: string | null
+        private_key_file?: string | null
         protocol?: Protocol | null
-        serviceCookie?: string | null
-        serviceDomain?: string | null
-        serviceName?: string | null
+        service_cookie?: string | null
+        service_domain?: string | null
+        service_name?: string | null
     }
 
 }
@@ -572,8 +572,8 @@ export module ServiceMonitor {
 
         application?: string | null
         domain?: string | null
-        serviceTypes?: string[] | null
-        skipOurOwn?: boolean | null
+        service_types?: string[] | null
+        skip_our_own?: boolean | null
     }
 
 }

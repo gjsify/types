@@ -663,7 +663,7 @@ module Animation {
          * animation should run before being completed.
          */
         duration?: number | null
-        frameClock?: Gdk.FrameClock | null
+        frame_clock?: Gdk.FrameClock | null
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
@@ -3257,10 +3257,10 @@ module DockRevealer {
         // Own constructor properties of Pnl-1.0.Pnl.DockRevealer
 
         position?: number | null
-        positionSet?: boolean | null
-        revealChild?: boolean | null
-        transitionDuration?: number | null
-        transitionType?: DockRevealerTransitionType | null
+        position_set?: boolean | null
+        reveal_child?: boolean | null
+        transition_duration?: number | null
+        transition_type?: DockRevealerTransitionType | null
     }
 
 }

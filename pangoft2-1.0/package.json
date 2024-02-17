@@ -1,13 +1,19 @@
 {
     "name": "@girs/pangoft2-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for PangoFT2-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "pangoft2-1.0.js",
     "main": "pangoft2-1.0.js",
     "exports": {
-        "./ambient": "./pangoft2-1.0-ambient.d.ts",
-        "./import": "./pangoft2-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./pangoft2-1.0-ambient.d.ts",
+            "default": "./pangoft2-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./pangoft2-1.0-import.d.ts",
+            "default": "./pangoft2-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./pangoft2-1.0.d.ts",

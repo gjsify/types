@@ -30,11 +30,9 @@ export module FlickrProxy {
 
         // Own constructor properties of RestExtras-0.7.RestExtras.FlickrProxy
 
-        api_key?: string | null
-        shared_secret?: string | null
-        token?: string | null
         apiKey?: string | null
         sharedSecret?: string | null
+        token?: string | null
     }
 
 }
@@ -43,9 +41,7 @@ export interface FlickrProxy {
 
     // Own properties of RestExtras-0.7.RestExtras.FlickrProxy
 
-    readonly api_key: string | null
     readonly apiKey: string | null
-    readonly shared_secret: string | null
     readonly sharedSecret: string | null
     token: string | null
 
@@ -250,10 +246,8 @@ export module LastfmProxy {
 
         // Own constructor properties of RestExtras-0.7.RestExtras.LastfmProxy
 
-        api_key?: string | null
-        secret?: string | null
-        session_key?: string | null
         apiKey?: string | null
+        secret?: string | null
         sessionKey?: string | null
     }
 
@@ -263,10 +257,8 @@ export interface LastfmProxy {
 
     // Own properties of RestExtras-0.7.RestExtras.LastfmProxy
 
-    readonly api_key: string | null
     readonly apiKey: string | null
     readonly secret: string | null
-    session_key: string | null
     sessionKey: string | null
 
     // Own fields of RestExtras-0.7.RestExtras.LastfmProxy
@@ -434,8 +426,6 @@ export module YoutubeProxy {
 
         // Own constructor properties of RestExtras-0.7.RestExtras.YoutubeProxy
 
-        developer_key?: string | null
-        user_auth?: string | null
         developerKey?: string | null
         userAuth?: string | null
     }
@@ -446,9 +436,7 @@ export interface YoutubeProxy {
 
     // Own properties of RestExtras-0.7.RestExtras.YoutubeProxy
 
-    readonly developer_key: string | null
     readonly developerKey: string | null
-    user_auth: string | null
     userAuth: string | null
 
     // Own fields of RestExtras-0.7.RestExtras.YoutubeProxy

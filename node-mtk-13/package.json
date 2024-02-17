@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-mtk-13",
-    "version": "13.0.0-3.2.7",
+    "version": "13.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Mtk-13, generated from library version 13.0.0",
     "type": "module",
     "module": "node-mtk-13.js",
     "main": "node-mtk-13.js",
     "exports": {
-        "./ambient": "./node-mtk-13-ambient.d.ts",
-        "./import": "./node-mtk-13-import.d.ts",
+        "./ambient": {
+            "types": "./node-mtk-13-ambient.d.ts",
+            "default": "./node-mtk-13-ambient.js"
+        },
+        "./import": {
+            "types": "./node-mtk-13-import.d.ts",
+            "default": "./node-mtk-13-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-mtk-13.d.ts",

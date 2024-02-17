@@ -3050,7 +3050,7 @@ export module Source {
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
          */
-        autoSplitThreshold?: number | null
+        auto_split_threshold?: number | null
         /**
          * Plugin the source belongs to
          */
@@ -3062,19 +3062,19 @@ export module Source {
         /**
          * A description of the source
          */
-        sourceDesc?: string | null
+        source_desc?: string | null
         /**
          * #GIcon representing the source
          */
-        sourceIcon?: Gio.Icon | null
+        source_icon?: Gio.Icon | null
         /**
          * The identifier of the source.
          */
-        sourceId?: string | null
+        source_id?: string | null
         /**
          * The name of the source.
          */
-        sourceName?: string | null
+        source_name?: string | null
         /**
          * A string array of tags relevant this source.
          * 
@@ -3132,11 +3132,11 @@ export module Source {
          *   disable those by default, so that privacy is respected by default, and no
          *   data is leaked unintentionally.
          */
-        sourceTags?: string[] | null
+        source_tags?: string[] | null
         /**
          * List of supported media types by this source.
          */
-        supportedMedia?: MediaType | null
+        supported_media?: MediaType | null
     }
 
 }

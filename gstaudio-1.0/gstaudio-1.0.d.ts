@@ -1536,31 +1536,6 @@ module AudioAggregator {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioAggregator
 
-        alignment_threshold?: number | null
-        discont_wait?: number | null
-        /**
-         * Causes the element to aggregate on a timeout even when no live source is
-         * connected to its sinks. See #GstAggregator:min-upstream-latency for a
-         * companion property: in the vast majority of cases where you plan to plug in
-         * live sources with a non-zero latency, you should set it to a non-zero value.
-         */
-        force_live?: boolean | null
-        /**
-         * Don't wait for inactive pads when live. An inactive pad
-         * is a pad that hasn't yet received a buffer, but that has
-         * been waited on at least once.
-         * 
-         * The purpose of this property is to avoid aggregating on
-         * timeout when new pads are requested in advance of receiving
-         * data flow, for example the user may decide to connect it later,
-         * but wants to configure it already.
-         */
-        ignore_inactive_pads?: boolean | null
-        output_buffer_duration?: number | null
-        /**
-         * Output block size in nanoseconds, expressed as a fraction.
-         */
-        output_buffer_duration_fraction?: Gst.Fraction | null
         alignmentThreshold?: number | null
         discontWait?: number | null
         /**
@@ -1594,17 +1569,8 @@ interface AudioAggregator {
 
     // Own properties of GstAudio-1.0.GstAudio.AudioAggregator
 
-    alignment_threshold: number
     alignmentThreshold: number
-    discont_wait: number
     discontWait: number
-    /**
-     * Causes the element to aggregate on a timeout even when no live source is
-     * connected to its sinks. See #GstAggregator:min-upstream-latency for a
-     * companion property: in the vast majority of cases where you plan to plug in
-     * live sources with a non-zero latency, you should set it to a non-zero value.
-     */
-    readonly force_live: boolean
     /**
      * Causes the element to aggregate on a timeout even when no live source is
      * connected to its sinks. See #GstAggregator:min-upstream-latency for a
@@ -1622,24 +1588,8 @@ interface AudioAggregator {
      * data flow, for example the user may decide to connect it later,
      * but wants to configure it already.
      */
-    ignore_inactive_pads: boolean
-    /**
-     * Don't wait for inactive pads when live. An inactive pad
-     * is a pad that hasn't yet received a buffer, but that has
-     * been waited on at least once.
-     * 
-     * The purpose of this property is to avoid aggregating on
-     * timeout when new pads are requested in advance of receiving
-     * data flow, for example the user may decide to connect it later,
-     * but wants to configure it already.
-     */
     ignoreInactivePads: boolean
-    output_buffer_duration: number
     outputBufferDuration: number
-    /**
-     * Output block size in nanoseconds, expressed as a fraction.
-     */
-    output_buffer_duration_fraction: Gst.Fraction
     /**
      * Output block size in nanoseconds, expressed as a fraction.
      */
@@ -1647,7 +1597,6 @@ interface AudioAggregator {
 
     // Conflicting properties
 
-    start_time: any
     object: any
 
     // Own fields of GstAudio-1.0.GstAudio.AudioAggregator
@@ -1814,7 +1763,6 @@ module AudioAggregatorConvertPad {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioAggregatorConvertPad
 
-        converter_config?: Gst.Structure | null
         converterConfig?: Gst.Structure | null
     }
 
@@ -1824,7 +1772,6 @@ interface AudioAggregatorConvertPad {
 
     // Own properties of GstAudio-1.0.GstAudio.AudioAggregatorConvertPad
 
-    converter_config: Gst.Structure
     converterConfig: Gst.Structure
 
     // Conflicting properties
@@ -1925,10 +1872,6 @@ module AudioAggregatorPad {
         /**
          * Emit QoS messages when dropping buffers.
          */
-        qos_messages?: boolean | null
-        /**
-         * Emit QoS messages when dropping buffers.
-         */
         qosMessages?: boolean | null
     }
 
@@ -1938,10 +1881,6 @@ interface AudioAggregatorPad {
 
     // Own properties of GstAudio-1.0.GstAudio.AudioAggregatorPad
 
-    /**
-     * Emit QoS messages when dropping buffers.
-     */
-    qos_messages: boolean
     /**
      * Emit QoS messages when dropping buffers.
      */
@@ -2050,22 +1989,6 @@ module AudioBaseSink {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioBaseSink
 
-        alignment_threshold?: number | null
-        buffer_time?: number | null
-        can_activate_pull?: boolean | null
-        /**
-         * A window of time in nanoseconds to wait before creating a discontinuity as
-         * a result of breaching the drift-tolerance.
-         */
-        discont_wait?: number | null
-        /**
-         * Controls the amount of time in microseconds that clocks are allowed
-         * to drift before resynchronisation happens.
-         */
-        drift_tolerance?: number | null
-        latency_time?: number | null
-        provide_clock?: boolean | null
-        slave_method?: AudioBaseSinkSlaveMethod | null
         alignmentThreshold?: number | null
         bufferTime?: number | null
         canActivatePull?: boolean | null
@@ -2090,16 +2013,9 @@ interface AudioBaseSink {
 
     // Own properties of GstAudio-1.0.GstAudio.AudioBaseSink
 
-    alignment_threshold: number
     alignmentThreshold: number
     bufferTime: number
-    can_activate_pull: boolean
     canActivatePull: boolean
-    /**
-     * A window of time in nanoseconds to wait before creating a discontinuity as
-     * a result of breaching the drift-tolerance.
-     */
-    discont_wait: number
     /**
      * A window of time in nanoseconds to wait before creating a discontinuity as
      * a result of breaching the drift-tolerance.
@@ -2109,16 +2025,9 @@ interface AudioBaseSink {
      * Controls the amount of time in microseconds that clocks are allowed
      * to drift before resynchronisation happens.
      */
-    drift_tolerance: number
-    /**
-     * Controls the amount of time in microseconds that clocks are allowed
-     * to drift before resynchronisation happens.
-     */
     driftTolerance: number
     latencyTime: number
-    // Has conflict: provide_clock: boolean
     provideClock: boolean
-    slave_method: AudioBaseSinkSlaveMethod
     slaveMethod: AudioBaseSinkSlaveMethod
 
     // Conflicting properties
@@ -2366,10 +2275,6 @@ module AudioBaseSrc {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioBaseSrc
 
-        buffer_time?: number | null
-        latency_time?: number | null
-        provide_clock?: boolean | null
-        slave_method?: AudioBaseSrcSlaveMethod | null
         bufferTime?: number | null
         latencyTime?: number | null
         provideClock?: boolean | null
@@ -2385,24 +2290,14 @@ interface AudioBaseSrc {
     /**
      * Actual configured size of audio buffer in microseconds.
      */
-    readonly actual_buffer_time: number
-    /**
-     * Actual configured size of audio buffer in microseconds.
-     */
     readonly actualBufferTime: number
-    /**
-     * Actual configured audio latency in microseconds.
-     */
-    readonly actual_latency_time: number
     /**
      * Actual configured audio latency in microseconds.
      */
     readonly actualLatencyTime: number
     bufferTime: number
     latencyTime: number
-    // Has conflict: provide_clock: boolean
     provideClock: boolean
-    slave_method: AudioBaseSrcSlaveMethod
     slaveMethod: AudioBaseSrcSlaveMethod
 
     // Conflicting properties
@@ -3000,16 +2895,10 @@ module AudioDecoder {
          * Maximum number of tolerated consecutive decode errors. See
          * gst_audio_decoder_set_max_errors() for more details.
          */
-        max_errors?: number | null
-        min_latency?: number | null
-        plc?: boolean | null
-        tolerance?: number | null
-        /**
-         * Maximum number of tolerated consecutive decode errors. See
-         * gst_audio_decoder_set_max_errors() for more details.
-         */
         maxErrors?: number | null
         minLatency?: number | null
+        plc?: boolean | null
+        tolerance?: number | null
     }
 
 }
@@ -3022,13 +2911,7 @@ interface AudioDecoder {
      * Maximum number of tolerated consecutive decode errors. See
      * gst_audio_decoder_set_max_errors() for more details.
      */
-    max_errors: number
-    /**
-     * Maximum number of tolerated consecutive decode errors. See
-     * gst_audio_decoder_set_max_errors() for more details.
-     */
     maxErrors: number
-    min_latency: number
     minLatency: number
     plc: boolean
     tolerance: number
@@ -3464,11 +3347,9 @@ module AudioEncoder {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioEncoder
 
-        hard_resync?: boolean | null
-        perfect_timestamp?: boolean | null
-        tolerance?: number | null
         hardResync?: boolean | null
         perfectTimestamp?: boolean | null
+        tolerance?: number | null
     }
 
 }
@@ -3477,11 +3358,8 @@ interface AudioEncoder extends Gst.Preset {
 
     // Own properties of GstAudio-1.0.GstAudio.AudioEncoder
 
-    hard_resync: boolean
     hardResync: boolean
-    readonly mark_granule: boolean
     readonly markGranule: boolean
-    perfect_timestamp: boolean
     perfectTimestamp: boolean
     tolerance: number
 

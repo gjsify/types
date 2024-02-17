@@ -5681,7 +5681,7 @@ module Actor {
          * 
          * The #ClutterActor:background-color property is animatable.
          */
-        backgroundColor?: Color | null
+        background_color?: Color | null
         /**
          * Applies a transformation matrix on each child of an actor.
          * 
@@ -5692,7 +5692,7 @@ module Actor {
          * 
          * The #ClutterActor:child-transform property is animatable.
          */
-        childTransform?: Graphene.Matrix | null
+        child_transform?: Graphene.Matrix | null
         /**
          * The visible region of the actor, in actor-relative coordinates,
          * expressed as a #graphene_rect_t.
@@ -5702,7 +5702,7 @@ module Actor {
          * Setting this property will change the #ClutterActor:has-clip
          * property as a side effect.
          */
-        clipRect?: Graphene.Rect | null
+        clip_rect?: Graphene.Rect | null
         /**
          * Whether the clip region should track the allocated area
          * of the actor.
@@ -5710,12 +5710,12 @@ module Actor {
          * This property is ignored if a clip area has been explicitly
          * set using clutter_actor_set_clip().
          */
-        clipToAllocation?: boolean | null
+        clip_to_allocation?: boolean | null
         /**
          * The #ClutterColorState contains the properties like colorspace for each
          * actors.
          */
-        colorState?: ColorState | null
+        color_state?: ColorState | null
         /**
          * Adds a #ClutterConstraint to the actor
          */
@@ -5740,11 +5740,11 @@ module Actor {
          * 
          * The #ClutterActor:content-gravity property is animatable.
          */
-        contentGravity?: ContentGravity | null
+        content_gravity?: ContentGravity | null
         /**
          * The repeat policy for the actor's #ClutterActor:content.
          */
-        contentRepeat?: ContentRepeat | null
+        content_repeat?: ContentRepeat | null
         /**
          * Adds #ClutterEffect to the list of effects be applied on a #ClutterActor
          */
@@ -5753,21 +5753,21 @@ module Actor {
          * This flag controls whether the #ClutterActor:fixed-x and
          * #ClutterActor:fixed-y properties are used
          */
-        fixedPositionSet?: boolean | null
+        fixed_position_set?: boolean | null
         /**
          * The fixed X position of the actor in pixels.
          * 
          * Writing this property sets #ClutterActor:fixed-position-set
          * property as well, as a side effect
          */
-        fixedX?: number | null
+        fixed_x?: number | null
         /**
          * The fixed Y position of the actor in pixels.
          * 
          * Writing this property sets the #ClutterActor:fixed-position-set
          * property as well, as a side effect
          */
-        fixedY?: number | null
+        fixed_y?: number | null
         /**
          * Height of the actor (in pixels).  If written, forces the minimum and
          * natural size request of the actor to the given height. If read, returns
@@ -5780,8 +5780,8 @@ module Actor {
          * A delegate object for controlling the layout of the children of
          * an actor.
          */
-        layoutManager?: LayoutManager | null
-        magnificationFilter?: ScalingFilter | null
+        layout_manager?: LayoutManager | null
+        magnification_filter?: ScalingFilter | null
         /**
          * The margin (in pixels) from the bottom of the actor.
          * 
@@ -5790,7 +5790,7 @@ module Actor {
          * 
          * The #ClutterActor:margin-bottom property is animatable.
          */
-        marginBottom?: number | null
+        margin_bottom?: number | null
         /**
          * The margin (in pixels) from the left of the actor.
          * 
@@ -5799,7 +5799,7 @@ module Actor {
          * 
          * The #ClutterActor:margin-left property is animatable.
          */
-        marginLeft?: number | null
+        margin_left?: number | null
         /**
          * The margin (in pixels) from the right of the actor.
          * 
@@ -5808,7 +5808,7 @@ module Actor {
          * 
          * The #ClutterActor:margin-right property is animatable.
          */
-        marginRight?: number | null
+        margin_right?: number | null
         /**
          * The margin (in pixels) from the top of the actor.
          * 
@@ -5817,7 +5817,7 @@ module Actor {
          * 
          * The #ClutterActor:margin-top property is animatable.
          */
-        marginTop?: number | null
+        margin_top?: number | null
         /**
          * A forced minimum height request for the actor, in pixels
          * 
@@ -5825,12 +5825,12 @@ module Actor {
          * as well, as a side effect. This property overrides the usual height
          * request of the actor.
          */
-        minHeight?: number | null
+        min_height?: number | null
         /**
          * This flag controls whether the #ClutterActor:min-height property
          * is used
          */
-        minHeightSet?: boolean | null
+        min_height_set?: boolean | null
         /**
          * A forced minimum width request for the actor, in pixels
          * 
@@ -5839,13 +5839,13 @@ module Actor {
          * 
          * This property overrides the usual width request of the actor.
          */
-        minWidth?: number | null
+        min_width?: number | null
         /**
          * This flag controls whether the #ClutterActor:min-width property
          * is used
          */
-        minWidthSet?: boolean | null
-        minificationFilter?: ScalingFilter | null
+        min_width_set?: boolean | null
+        minification_filter?: ScalingFilter | null
         /**
          * The name of the actor
          */
@@ -5857,12 +5857,12 @@ module Actor {
          * property as well, as a side effect. This property overrides the
          * usual height request of the actor
          */
-        naturalHeight?: number | null
+        natural_height?: number | null
         /**
          * This flag controls whether the #ClutterActor:natural-height property
          * is used
          */
-        naturalHeightSet?: boolean | null
+        natural_height_set?: boolean | null
         /**
          * A forced natural width request for the actor, in pixels
          * 
@@ -5870,12 +5870,12 @@ module Actor {
          * property as well, as a side effect. This property overrides the
          * usual width request of the actor
          */
-        naturalWidth?: number | null
+        natural_width?: number | null
         /**
          * This flag controls whether the #ClutterActor:natural-width property
          * is used
          */
-        naturalWidthSet?: boolean | null
+        natural_width_set?: boolean | null
         /**
          * Determines the conditions in which the actor will be redirected
          * to an offscreen framebuffer while being painted. For example this
@@ -5883,7 +5883,7 @@ module Actor {
          * handling of transparent actors. See
          * clutter_actor_set_offscreen_redirect() for details.
          */
-        offscreenRedirect?: OffscreenRedirect | null
+        offscreen_redirect?: OffscreenRedirect | null
         /**
          * Opacity of an actor, between 0 (fully transparent) and
          * 255 (fully opaque)
@@ -5902,14 +5902,14 @@ module Actor {
          * 
          * The #ClutterActor:pivot-point property is animatable.
          */
-        pivotPoint?: Graphene.Point | null
+        pivot_point?: Graphene.Point | null
         /**
          * The Z component of the #ClutterActor:pivot-point, expressed as a value
          * along the Z axis.
          * 
          * The #ClutterActor:pivot-point-z property is animatable.
          */
-        pivotPointZ?: number | null
+        pivot_point_z?: number | null
         /**
          * The position of the origin of the actor.
          * 
@@ -5981,50 +5981,50 @@ module Actor {
          * The clutter_actor_get_preferred_size() function will implement this
          * check for you.
          */
-        requestMode?: RequestMode | null
+        request_mode?: RequestMode | null
         /**
          * The rotation angle on the X axis.
          * 
          * The #ClutterActor:rotation-angle-x property is animatable.
          */
-        rotationAngleX?: number | null
+        rotation_angle_x?: number | null
         /**
          * The rotation angle on the Y axis
          * 
          * The #ClutterActor:rotation-angle-y property is animatable.
          */
-        rotationAngleY?: number | null
+        rotation_angle_y?: number | null
         /**
          * The rotation angle on the Z axis
          * 
          * The #ClutterActor:rotation-angle-z property is animatable.
          */
-        rotationAngleZ?: number | null
+        rotation_angle_z?: number | null
         /**
          * The horizontal scale of the actor.
          * 
          * The #ClutterActor:scale-x property is animatable.
          */
-        scaleX?: number | null
+        scale_x?: number | null
         /**
          * The vertical scale of the actor.
          * 
          * The #ClutterActor:scale-y property is animatable.
          */
-        scaleY?: number | null
+        scale_y?: number | null
         /**
          * The scale factor of the actor along the Z axis.
          * 
          * The #ClutterActor:scale-y property is animatable.
          */
-        scaleZ?: number | null
+        scale_z?: number | null
         /**
          * If %TRUE, the actor is automatically shown when parented.
          * 
          * Calling clutter_actor_hide() on an actor which has not been
          * parented will set this property to %FALSE as a side effect.
          */
-        showOnSetParent?: boolean | null
+        show_on_set_parent?: boolean | null
         /**
          * The size of the actor.
          * 
@@ -6037,7 +6037,7 @@ module Actor {
         /**
          * The direction of the text inside a #ClutterActor.
          */
-        textDirection?: TextDirection | null
+        text_direction?: TextDirection | null
         /**
          * Overrides the transformations of a #ClutterActor with a custom
          * matrix.
@@ -6062,21 +6062,21 @@ module Actor {
          * 
          * The #ClutterActor:translation-x property is animatable.
          */
-        translationX?: number | null
+        translation_x?: number | null
         /**
          * An additional translation applied along the Y axis, relative
          * to the actor's #ClutterActor:pivot-point.
          * 
          * The #ClutterActor:translation-y property is animatable.
          */
-        translationY?: number | null
+        translation_y?: number | null
         /**
          * An additional translation applied along the Z axis, relative
          * to the actor's #ClutterActor:pivot-point.
          * 
          * The #ClutterActor:translation-z property is animatable.
          */
-        translationZ?: number | null
+        translation_z?: number | null
         /**
          * Whether the actor is set to be visible or not
          * 
@@ -6104,12 +6104,12 @@ module Actor {
          * extra space for its allocation. See also the #ClutterActor:x-expand
          * property.
          */
-        xAlign?: ActorAlign | null
+        x_align?: ActorAlign | null
         /**
          * Whether a layout manager should assign more space to the actor on
          * the X axis.
          */
-        xExpand?: boolean | null
+        x_expand?: boolean | null
         /**
          * Y coordinate of the actor in pixels. If written, forces a fixed
          * position for the actor.  If read, returns the fixed position if
@@ -6122,12 +6122,12 @@ module Actor {
          * The alignment of an actor on the Y axis, if the actor has been given
          * extra space for its allocation.
          */
-        yAlign?: ActorAlign | null
+        y_align?: ActorAlign | null
         /**
          * Whether a layout manager should assign more space to the actor on
          * the Y axis.
          */
-        yExpand?: boolean | null
+        y_expand?: boolean | null
         /**
          * The actor's position on the Z axis, relative to the parent's
          * transformations.
@@ -6141,7 +6141,7 @@ module Actor {
          * 
          * The #ClutterActor:z-position property is animatable.
          */
-        zPosition?: number | null
+        z_position?: number | null
     }
 
 }
@@ -10021,7 +10021,7 @@ module AlignConstraint {
         /**
          * The axis to be used to compute the alignment
          */
-        alignAxis?: AlignAxis | null
+        align_axis?: AlignAxis | null
         /**
          * The alignment factor, as a normalized value between 0.0 and 1.0
          * 
@@ -10045,7 +10045,7 @@ module AlignConstraint {
          * used and the constrained actor will be aligned to always stay inside
          * the source actor.
          */
-        pivotPoint?: Graphene.Point | null
+        pivot_point?: Graphene.Point | null
         /**
          * The #ClutterActor used as the source for the alignment.
          * 
@@ -10421,12 +10421,12 @@ module BinLayout {
          * The default horizontal alignment policy for actors managed
          * by the #ClutterBinLayout
          */
-        xAlign?: BinAlignment | null
+        x_align?: BinAlignment | null
         /**
          * The default vertical alignment policy for actors managed
          * by the #ClutterBinLayout
          */
-        yAlign?: BinAlignment | null
+        y_align?: BinAlignment | null
     }
 
 }
@@ -11553,7 +11553,7 @@ module Canvas {
         /**
          * The height of the canvas.
          */
-        scaleFactor?: number | null
+        scale_factor?: number | null
         /**
          * The width of the canvas.
          */
@@ -11833,7 +11833,7 @@ module ClickAction {
          * A value of -1 will make the #ClutterClickAction use the value of
          * the [property`Settings:`long-press-duration] property.
          */
-        longPressDuration?: number | null
+        long_press_duration?: number | null
         /**
          * The maximum allowed distance that can be covered (on both axes) before
          * a long press gesture is cancelled, in pixels.
@@ -11841,7 +11841,7 @@ module ClickAction {
          * A value of -1 will make the #ClutterClickAction use the value of
          * the [property`Settings:`dnd-drag-threshold] property.
          */
-        longPressThreshold?: number | null
+        long_press_threshold?: number | null
     }
 
 }
@@ -12991,12 +12991,12 @@ module DeformEffect {
          * The number of horizontal tiles. The bigger the number, the
          * smaller the tiles
          */
-        xTiles?: number | null
+        x_tiles?: number | null
         /**
          * The number of vertical tiles. The bigger the number, the
          * smaller the tiles
          */
-        yTiles?: number | null
+        y_tiles?: number | null
     }
 
 }
@@ -13561,7 +13561,7 @@ module FlowLayout {
          * property is honoured by horizontal non-overflowing layouts
          * and by vertical overflowing layouts
          */
-        columnSpacing?: number | null
+        column_spacing?: number | null
         /**
          * Whether each child inside the #ClutterFlowLayout should receive
          * the same allocation
@@ -13571,20 +13571,20 @@ module FlowLayout {
          * Maximum width for each column in the layout, in pixels. If
          * set to -1 the width will be the maximum child width
          */
-        maxColumnWidth?: number | null
+        max_column_width?: number | null
         /**
          * Maximum height for each row in the layout, in pixels. If
          * set to -1 the width will be the maximum child height
          */
-        maxRowHeight?: number | null
+        max_row_height?: number | null
         /**
          * Minimum width for each column in the layout, in pixels
          */
-        minColumnWidth?: number | null
+        min_column_width?: number | null
         /**
          * Minimum height for each row in the layout, in pixels
          */
-        minRowHeight?: number | null
+        min_row_height?: number | null
         /**
          * The orientation of the #ClutterFlowLayout. The children
          * of the layout will be laid out following the orientation.
@@ -13597,12 +13597,12 @@ module FlowLayout {
          * property is honoured by vertical non-overflowing layouts and
          * by horizontal overflowing layouts
          */
-        rowSpacing?: number | null
+        row_spacing?: number | null
         /**
          * Whether the #ClutterFlowLayout should arrange its children
          * on a grid
          */
-        snapToGrid?: boolean | null
+        snap_to_grid?: boolean | null
     }
 
 }
@@ -13967,7 +13967,7 @@ module GestureAction {
         /**
          * Number of touch points to trigger a gesture action.
          */
-        nTouchPoints?: number | null
+        n_touch_points?: number | null
         /**
          * The horizontal trigger distance to be used by the action to either
          * emit the [signal`GestureAction:`:gesture-begin] signal or to emit
@@ -13975,7 +13975,7 @@ module GestureAction {
          * 
          * A negative value will be interpreted as the default drag threshold.
          */
-        thresholdTriggerDistanceX?: number | null
+        threshold_trigger_distance_x?: number | null
         /**
          * The vertical trigger distance to be used by the action to either
          * emit the [signal`GestureAction:`:gesture-begin] signal or to emit
@@ -13983,13 +13983,13 @@ module GestureAction {
          * 
          * A negative value will be interpreted as the default drag threshold.
          */
-        thresholdTriggerDistanceY?: number | null
+        threshold_trigger_distance_y?: number | null
         /**
          * The trigger edge to be used by the action to either emit the
          * [signal`GestureAction:`:gesture-begin] signal or to emit the
          * [signal`GestureAction:`:gesture-cancel] signal.
          */
-        thresholdTriggerEdge?: GestureTriggerEdge | null
+        threshold_trigger_edge?: GestureTriggerEdge | null
     }
 
 }
@@ -14307,11 +14307,11 @@ module GridLayout {
         /**
          * Whether all columns of the layout should have the same width
          */
-        columnHomogeneous?: boolean | null
+        column_homogeneous?: boolean | null
         /**
          * The amount of space in pixels between two consecutive columns
          */
-        columnSpacing?: number | null
+        column_spacing?: number | null
         /**
          * The orientation of the layout, either horizontal or vertical
          */
@@ -14319,11 +14319,11 @@ module GridLayout {
         /**
          * Whether all rows of the layout should have the same height
          */
-        rowHomogeneous?: boolean | null
+        row_homogeneous?: boolean | null
         /**
          * The amount of space in pixels between two consecutive rows
          */
-        rowSpacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -14744,20 +14744,20 @@ module InputDevice {
          * The capabilities of the device
          */
         capabilities?: InputCapabilities | null
-        deviceMode?: InputMode | null
-        deviceNode?: string | null
+        device_mode?: InputMode | null
+        device_node?: string | null
         /**
          * The type of the device
          */
-        deviceType?: InputDeviceType | null
+        device_type?: InputDeviceType | null
         /**
          * Whether the device has an on screen cursor following its movement.
          */
-        hasCursor?: boolean | null
-        nButtons?: number | null
-        nModeGroups?: number | null
-        nRings?: number | null
-        nStrips?: number | null
+        has_cursor?: boolean | null
+        n_buttons?: number | null
+        n_mode_groups?: number | null
+        n_rings?: number | null
+        n_strips?: number | null
         /**
          * The name of the device
          */
@@ -14765,7 +14765,7 @@ module InputDevice {
         /**
          * Product ID of this device.2
          */
-        productId?: string | null
+        product_id?: string | null
         /**
          * The #ClutterSeat instance which owns the device
          */
@@ -14773,7 +14773,7 @@ module InputDevice {
         /**
          * Vendor ID of this device.2
          */
-        vendorId?: string | null
+        vendor_id?: string | null
     }
 
 }
@@ -15194,9 +15194,9 @@ module InputMethod {
 
         // Own constructor properties of Clutter-13.Clutter.InputMethod
 
-        canShowPreedit?: boolean | null
-        contentHints?: InputContentHintFlags | null
-        contentPurpose?: InputContentPurpose | null
+        can_show_preedit?: boolean | null
+        content_hints?: InputContentHintFlags | null
+        content_purpose?: InputContentPurpose | null
     }
 
 }
@@ -15333,7 +15333,7 @@ module Interval {
         /**
          * The type of the values in the interval.
          */
-        valueType?: GObject.GType | null
+        value_type?: GObject.GType | null
     }
 
 }
@@ -16692,7 +16692,7 @@ module PanAction {
          * be multiplied by the factor specified by this property before being used
          * to generate interpolated ::pan events.
          */
-        accelerationFactor?: number | null
+        acceleration_factor?: number | null
         /**
          * The rate at which the interpolated panning will decelerate in
          * 
@@ -16707,7 +16707,7 @@ module PanAction {
         /**
          * Constraints the panning action to the specified axis
          */
-        panAxis?: PanAxis | null
+        pan_axis?: PanAxis | null
     }
 
 }
@@ -17486,7 +17486,7 @@ module PropertyTransition {
         /**
          * The name of the property of a [iface`Animatable]` to animate.
          */
-        propertyName?: string | null
+        property_name?: string | null
     }
 
 }
@@ -17800,7 +17800,7 @@ module Script {
          * If [property`Script:`translation-domain] is set to %NULL, #ClutterScript
          * will use gettext(), otherwise g_dgettext() will be used.
          */
-        translationDomain?: string | null
+        translation_domain?: string | null
     }
 
 }
@@ -18109,7 +18109,7 @@ module ScrollActor {
         /**
          * The scrolling direction.
          */
-        scrollMode?: ScrollMode | null
+        scroll_mode?: ScrollMode | null
     }
 
 }
@@ -18853,29 +18853,29 @@ module Settings {
          * The default distance that the cursor of a pointer device
          * should travel before a drag operation should start.
          */
-        dndDragThreshold?: number | null
+        dnd_drag_threshold?: number | null
         /**
          * The maximum distance, in pixels, between button-press events that
          * determines whether or not to increase the click count by 1.
          */
-        doubleClickDistance?: number | null
+        double_click_distance?: number | null
         /**
          * The time, in milliseconds, that should elapse between button-press
          * events in order to increase the click count by 1.
          */
-        doubleClickTime?: number | null
+        double_click_time?: number | null
         /**
          * Whether or not to use antialiasing when rendering text; a value
          * of 1 enables it unconditionally; a value of 0 disables it
          * unconditionally; and -1 will use the system's default.
          */
-        fontAntialias?: number | null
+        font_antialias?: number | null
         /**
          * The DPI used when rendering text, as a value of 1024 * dots/inch.
          * 
          * If set to -1, the system's default will be used instead
          */
-        fontDpi?: number | null
+        font_dpi?: number | null
         /**
          * The style of the hinting used when rendering text. Valid values
          * are:
@@ -18885,18 +18885,18 @@ module Settings {
          *   - hintmedium
          *   - hintfull
          */
-        fontHintStyle?: string | null
+        font_hint_style?: string | null
         /**
          * Whether or not to use hinting when rendering text; a value of 1
          * unconditionally enables it; a value of 0 unconditionally disables
          * it; and a value of -1 will use the system's default.
          */
-        fontHinting?: number | null
+        font_hinting?: number | null
         /**
          * The default font name that should be used by text actors, as
          * a string that can be passed to [func`Pango`.FontDescription.from_string].
          */
-        fontName?: string | null
+        font_name?: string | null
         /**
          * The type of sub-pixel antialiasing used when rendering text. Valid
          * values are:
@@ -18907,17 +18907,17 @@ module Settings {
          *   - vrgb
          *   - vbgr
          */
-        fontSubpixelOrder?: string | null
-        fontconfigTimestamp?: number | null
+        font_subpixel_order?: string | null
+        fontconfig_timestamp?: number | null
         /**
          * Sets the minimum duration for a press to be recognized as a long press
          * gesture. The duration is expressed in milliseconds.
          * 
          * See also [property`ClickAction:`long-press-duration].
          */
-        longPressDuration?: number | null
-        passwordHintTime?: number | null
-        unscaledFontDpi?: number | null
+        long_press_duration?: number | null
+        password_hint_time?: number | null
+        unscaled_font_dpi?: number | null
     }
 
 }
@@ -19122,7 +19122,7 @@ module ShaderEffect {
          * should be set by the constructor of #ClutterShaderEffect
          * sub-classes.
          */
-        shaderType?: ShaderType | null
+        shader_type?: ShaderType | null
     }
 
 }
@@ -19379,7 +19379,7 @@ module SnapConstraint {
         /**
          * The edge of the [class`Actor]` that should be snapped
          */
-        fromEdge?: SnapEdge | null
+        from_edge?: SnapEdge | null
         /**
          * The offset, in pixels, between [property`SnapConstraint:`from-edge]
          * and [property`SnapConstraint:`to-edge]
@@ -19392,7 +19392,7 @@ module SnapConstraint {
         /**
          * The edge of the [property`SnapConstraint:`source] that should be snapped
          */
-        toEdge?: SnapEdge | null
+        to_edge?: SnapEdge | null
     }
 
 }
@@ -19625,7 +19625,7 @@ module Stage {
          * 
          * If %NULL, the #ClutterStage will receive the events.
          */
-        keyFocus?: Actor | null
+        key_focus?: Actor | null
         /**
          * The stage's title - usually displayed in stage windows title decorations.
          */
@@ -20434,11 +20434,11 @@ module StageView {
         layout?: Mtk.Rectangle | null
         name?: string | null
         offscreen?: Cogl.Offscreen | null
-        refreshRate?: number | null
+        refresh_rate?: number | null
         scale?: number | null
         stage?: Stage | null
-        useShadowfb?: boolean | null
-        vblankDurationUs?: number | null
+        use_shadowfb?: boolean | null
+        vblank_duration_us?: number | null
     }
 
 }
@@ -20915,16 +20915,16 @@ module Text {
         /**
          * The color of the cursor.
          */
-        cursorColor?: Color | null
+        cursor_color?: Color | null
         /**
          * The current input cursor position. -1 is taken to be the end of the text
          */
-        cursorPosition?: number | null
+        cursor_position?: number | null
         /**
          * The size of the cursor, in pixels. If set to -1 the size used will
          * be the default cursor size of 2 pixels.
          */
-        cursorSize?: number | null
+        cursor_size?: number | null
         /**
          * Whether the input cursor is visible or not.
          * 
@@ -20932,7 +20932,7 @@ module Text {
          * the [property`Text:`editable] or the [property`Text:`selectable] properties
          * are set to %TRUE.
          */
-        cursorVisible?: boolean | null
+        cursor_visible?: boolean | null
         /**
          * Whether key events delivered to the actor causes editing.
          */
@@ -20947,16 +20947,16 @@ module Text {
          * If you have a string describing the font then you should look at
          * [property`Text:`font-name] instead
          */
-        fontDescription?: Pango.FontDescription | null
+        font_description?: Pango.FontDescription | null
         /**
          * The font to be used by the #ClutterText, as a string
          * that can be parsed by [func`Pango`.FontDescription.from_string].
          * 
          * If set to %NULL, the default system font will be used instead.
          */
-        fontName?: string | null
-        inputHints?: InputContentHintFlags | null
-        inputPurpose?: InputContentPurpose | null
+        font_name?: string | null
+        input_hints?: InputContentHintFlags | null
+        input_purpose?: InputContentPurpose | null
         /**
          * Whether the contents of the #ClutterText should be justified
          * on both margins.
@@ -20966,27 +20966,27 @@ module Text {
          * The preferred alignment for the text. This property controls
          * the alignment of multi-line paragraphs.
          */
-        lineAlignment?: Pango.Alignment | null
+        line_alignment?: Pango.Alignment | null
         /**
          * Whether to wrap the lines of [property`Text:`text] if the contents
          * exceed the available allocation. The wrapping strategy is
          * controlled by the [property`Text:`line-wrap-mode] property.
          */
-        lineWrap?: boolean | null
+        line_wrap?: boolean | null
         /**
          * If [property`Text:`line-wrap] is set to %TRUE, this property will
          * control how the text is wrapped.
          */
-        lineWrapMode?: Pango.WrapMode | null
+        line_wrap_mode?: Pango.WrapMode | null
         /**
          * The maximum length of the contents of the #ClutterText actor.
          */
-        maxLength?: number | null
+        max_length?: number | null
         /**
          * If non-zero, the character that should be used in place of
          * the actual text in a password text actor.
          */
-        passwordChar?: number | null
+        password_char?: number | null
         /**
          * The current input cursor position. -1 is taken to be the end of the text
          */
@@ -21002,15 +21002,15 @@ module Text {
         /**
          * The color of selected text.
          */
-        selectedTextColor?: Color | null
+        selected_text_color?: Color | null
         /**
          * The current input cursor position. -1 is taken to be the end of the text
          */
-        selectionBound?: number | null
+        selection_bound?: number | null
         /**
          * The color of the selection.
          */
-        selectionColor?: Color | null
+        selection_color?: Color | null
         /**
          * Whether the #ClutterText actor should be in single line mode
          * or not. A single line #ClutterText actor will only contain a
@@ -21023,7 +21023,7 @@ module Text {
          * The [property`Text:`single-line-mode] property is used only if the
          * [property`Text:`editable] property is set to %TRUE.
          */
-        singleLineMode?: boolean | null
+        single_line_mode?: boolean | null
         /**
          * The text to render inside the actor.
          */
@@ -21039,7 +21039,7 @@ module Text {
          * a #ClutterText actor with [property`Text:`use-markup] set to %TRUE, the markup
          * is stripped from the string.
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }
@@ -22386,7 +22386,7 @@ module TextBuffer {
         /**
          * The maximum length (in characters) of the text in the buffer.
          */
-        maxLength?: number | null
+        max_length?: number | null
     }
 
 }
@@ -22821,7 +22821,7 @@ module Timeline {
          * If the direction of the timeline should be automatically reversed
          * when reaching the end.
          */
-        autoReverse?: boolean | null
+        auto_reverse?: boolean | null
         /**
          * A delay, in milliseconds, that should be observed by the
          * timeline before actually starting.
@@ -22840,11 +22840,11 @@ module Timeline {
         /**
          * The frame clock driving the timeline.
          */
-        frameClock?: FrameClock | null
+        frame_clock?: FrameClock | null
         /**
          * Controls the way a #ClutterTimeline computes the normalized progress.
          */
-        progressMode?: AnimationMode | null
+        progress_mode?: AnimationMode | null
         /**
          * Defines how many times the timeline should repeat.
          * 
@@ -22853,7 +22853,7 @@ module Timeline {
          * If the repeat count is set to -1, the timeline will repeat until it is
          * stopped.
          */
-        repeatCount?: number | null
+        repeat_count?: number | null
     }
 
 }
@@ -23462,7 +23462,7 @@ module Transition {
          * and it only detaches the transition if the transition is not
          * repeating.
          */
-        removeOnComplete?: boolean | null
+        remove_on_complete?: boolean | null
     }
 
 }
@@ -23834,7 +23834,7 @@ module VirtualInputDevice {
 
         // Own constructor properties of Clutter-13.Clutter.VirtualInputDevice
 
-        deviceType?: InputDeviceType | null
+        device_type?: InputDeviceType | null
         seat?: Seat | null
     }
 

@@ -319,21 +319,21 @@ module Display {
 
         // Own constructor properties of GtkVnc-2.0.GtkVnc.Display
 
-        allowResize?: boolean | null
+        allow_resize?: boolean | null
         depth?: DisplayDepthColor | null
-        forceSize?: boolean | null
-        grabKeyboard?: boolean | null
-        grabKeys?: GrabSequence | null
-        grabPointer?: boolean | null
-        keepAspectRatio?: boolean | null
-        localPointer?: boolean | null
-        lossyEncoding?: boolean | null
-        readOnly?: boolean | null
+        force_size?: boolean | null
+        grab_keyboard?: boolean | null
+        grab_keys?: GrabSequence | null
+        grab_pointer?: boolean | null
+        keep_aspect_ratio?: boolean | null
+        local_pointer?: boolean | null
+        lossy_encoding?: boolean | null
+        read_only?: boolean | null
         rotation?: number | null
         scaling?: boolean | null
-        sharedFlag?: boolean | null
+        shared_flag?: boolean | null
         smoothing?: boolean | null
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }

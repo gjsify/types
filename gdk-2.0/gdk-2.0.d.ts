@@ -4966,7 +4966,6 @@ module DisplayManager {
 
         // Own constructor properties of Gdk-2.0.Gdk.DisplayManager
 
-        default_display?: Display | null
         defaultDisplay?: Display | null
     }
 
@@ -4976,7 +4975,6 @@ interface DisplayManager {
 
     // Own properties of Gdk-2.0.Gdk.DisplayManager
 
-    default_display: Display
     defaultDisplay: Display
 
     // Owm methods of Gdk-2.0.Gdk.DisplayManager
@@ -6281,9 +6279,8 @@ module Screen {
 
         // Own constructor properties of Gdk-2.0.Gdk.Screen
 
-        font_options?: any | null
-        resolution?: number | null
         fontOptions?: any | null
+        resolution?: number | null
     }
 
 }

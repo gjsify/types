@@ -1,13 +1,19 @@
 {
     "name": "@girs/goa-1.0",
-    "version": "3.49.0-3.2.7",
+    "version": "3.49.0-3.2.8",
     "description": "GJS TypeScript type definitions for Goa-1.0, generated from library version 3.49.0",
     "type": "module",
     "module": "goa-1.0.js",
     "main": "goa-1.0.js",
     "exports": {
-        "./ambient": "./goa-1.0-ambient.d.ts",
-        "./import": "./goa-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./goa-1.0-ambient.d.ts",
+            "default": "./goa-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./goa-1.0-import.d.ts",
+            "default": "./goa-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./goa-1.0.d.ts",

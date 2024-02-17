@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-champlain-0.12",
-    "version": "0.12.22-3.2.7",
+    "version": "0.12.22-3.2.8",
     "description": "Node.js TypeScript type definitions for Champlain-0.12, generated from library version 0.12.22",
     "type": "module",
     "module": "node-champlain-0.12.js",
     "main": "node-champlain-0.12.js",
     "exports": {
-        "./ambient": "./node-champlain-0.12-ambient.d.ts",
-        "./import": "./node-champlain-0.12-import.d.ts",
+        "./ambient": {
+            "types": "./node-champlain-0.12-ambient.d.ts",
+            "default": "./node-champlain-0.12-ambient.js"
+        },
+        "./import": {
+            "types": "./node-champlain-0.12-import.d.ts",
+            "default": "./node-champlain-0.12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-champlain-0.12.d.ts",

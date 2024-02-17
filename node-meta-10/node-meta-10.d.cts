@@ -2018,7 +2018,7 @@ export module Background {
 
         // Own constructor properties of Meta-10.Meta.Background
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
     }
 
 }
@@ -2099,7 +2099,7 @@ export module BackgroundActor {
 
         // Own constructor properties of Meta-10.Meta.BackgroundActor
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
         monitor?: number | null
     }
 
@@ -2545,13 +2545,13 @@ export module BackgroundContent {
         background?: Background | null
         brightness?: number | null
         gradient?: boolean | null
-        gradientHeight?: number | null
-        gradientMaxDarkness?: number | null
-        metaDisplay?: Display | null
+        gradient_height?: number | null
+        gradient_max_darkness?: number | null
+        meta_display?: Display | null
         monitor?: number | null
-        roundedClipRadius?: number | null
+        rounded_clip_radius?: number | null
         vignette?: boolean | null
-        vignetteSharpness?: number | null
+        vignette_sharpness?: number | null
     }
 
 }
@@ -3458,7 +3458,7 @@ export module Context {
         // Own constructor properties of Meta-10.Meta.Context
 
         name?: string | null
-        unsafeMode?: boolean | null
+        unsafe_mode?: boolean | null
     }
 
 }
@@ -4873,7 +4873,7 @@ export module RemoteAccessHandle {
 
         // Own constructor properties of Meta-10.Meta.RemoteAccessHandle
 
-        isRecording?: boolean | null
+        is_recording?: boolean | null
     }
 
 }
@@ -5967,8 +5967,8 @@ export module StartupSequence {
 
         // Own constructor properties of Meta-10.Meta.StartupSequence
 
-        applicationId?: string | null
-        iconName?: string | null
+        application_id?: string | null
+        icon_name?: string | null
         id?: string | null
         name?: string | null
         timestamp?: number | null
@@ -6862,7 +6862,7 @@ export module WindowActor {
 
         // Own constructor properties of Meta-10.Meta.WindowActor
 
-        metaWindow?: Window | null
+        meta_window?: Window | null
     }
 
 }

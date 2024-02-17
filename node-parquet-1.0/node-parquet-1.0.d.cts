@@ -42,7 +42,7 @@ export module ArrowFileReader {
 
         // Own constructor properties of Parquet-1.0.Parquet.ArrowFileReader
 
-        arrowFileReader?: any | null
+        arrow_file_reader?: any | null
     }
 
 }
@@ -109,7 +109,7 @@ export module ArrowFileWriter {
 
         // Own constructor properties of Parquet-1.0.Parquet.ArrowFileWriter
 
-        arrowFileWriter?: any | null
+        arrow_file_writer?: any | null
     }
 
 }

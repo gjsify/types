@@ -1545,15 +1545,15 @@ export module AudioAggregator {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioAggregator
 
-        alignmentThreshold?: number | null
-        discontWait?: number | null
+        alignment_threshold?: number | null
+        discont_wait?: number | null
         /**
          * Causes the element to aggregate on a timeout even when no live source is
          * connected to its sinks. See #GstAggregator:min-upstream-latency for a
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          */
-        forceLive?: boolean | null
+        force_live?: boolean | null
         /**
          * Don't wait for inactive pads when live. An inactive pad
          * is a pad that hasn't yet received a buffer, but that has
@@ -1564,12 +1564,12 @@ export module AudioAggregator {
          * data flow, for example the user may decide to connect it later,
          * but wants to configure it already.
          */
-        ignoreInactivePads?: boolean | null
-        outputBufferDuration?: number | null
+        ignore_inactive_pads?: boolean | null
+        output_buffer_duration?: number | null
         /**
          * Output block size in nanoseconds, expressed as a fraction.
          */
-        outputBufferDurationFraction?: Gst.Fraction | null
+        output_buffer_duration_fraction?: Gst.Fraction | null
     }
 
 }
@@ -1802,7 +1802,7 @@ export module AudioAggregatorConvertPad {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioAggregatorConvertPad
 
-        converterConfig?: Gst.Structure | null
+        converter_config?: Gst.Structure | null
     }
 
 }
@@ -1930,7 +1930,7 @@ export module AudioAggregatorPad {
         /**
          * Emit QoS messages when dropping buffers.
          */
-        qosMessages?: boolean | null
+        qos_messages?: boolean | null
     }
 
 }
@@ -2064,22 +2064,22 @@ export module AudioBaseSink {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioBaseSink
 
-        alignmentThreshold?: number | null
-        bufferTime?: number | null
-        canActivatePull?: boolean | null
+        alignment_threshold?: number | null
+        buffer_time?: number | null
+        can_activate_pull?: boolean | null
         /**
          * A window of time in nanoseconds to wait before creating a discontinuity as
          * a result of breaching the drift-tolerance.
          */
-        discontWait?: number | null
+        discont_wait?: number | null
         /**
          * Controls the amount of time in microseconds that clocks are allowed
          * to drift before resynchronisation happens.
          */
-        driftTolerance?: number | null
-        latencyTime?: number | null
-        provideClock?: boolean | null
-        slaveMethod?: AudioBaseSinkSlaveMethod | null
+        drift_tolerance?: number | null
+        latency_time?: number | null
+        provide_clock?: boolean | null
+        slave_method?: AudioBaseSinkSlaveMethod | null
     }
 
 }
@@ -2411,10 +2411,10 @@ export module AudioBaseSrc {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioBaseSrc
 
-        bufferTime?: number | null
-        latencyTime?: number | null
-        provideClock?: boolean | null
-        slaveMethod?: AudioBaseSrcSlaveMethod | null
+        buffer_time?: number | null
+        latency_time?: number | null
+        provide_clock?: boolean | null
+        slave_method?: AudioBaseSrcSlaveMethod | null
     }
 
 }
@@ -3121,8 +3121,8 @@ export module AudioDecoder {
          * Maximum number of tolerated consecutive decode errors. See
          * gst_audio_decoder_set_max_errors() for more details.
          */
-        maxErrors?: number | null
-        minLatency?: number | null
+        max_errors?: number | null
+        min_latency?: number | null
         plc?: boolean | null
         tolerance?: number | null
     }
@@ -3582,8 +3582,8 @@ export module AudioEncoder {
 
         // Own constructor properties of GstAudio-1.0.GstAudio.AudioEncoder
 
-        hardResync?: boolean | null
-        perfectTimestamp?: boolean | null
+        hard_resync?: boolean | null
+        perfect_timestamp?: boolean | null
         tolerance?: number | null
     }
 

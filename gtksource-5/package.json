@@ -1,13 +1,19 @@
 {
     "name": "@girs/gtksource-5",
-    "version": "5.9.0-3.2.7",
+    "version": "5.9.0-3.2.8",
     "description": "GJS TypeScript type definitions for GtkSource-5, generated from library version 5.9.0",
     "type": "module",
     "module": "gtksource-5.js",
     "main": "gtksource-5.js",
     "exports": {
-        "./ambient": "./gtksource-5-ambient.d.ts",
-        "./import": "./gtksource-5-import.d.ts",
+        "./ambient": {
+            "types": "./gtksource-5-ambient.d.ts",
+            "default": "./gtksource-5-ambient.js"
+        },
+        "./import": {
+            "types": "./gtksource-5-import.d.ts",
+            "default": "./gtksource-5-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gtksource-5.d.ts",

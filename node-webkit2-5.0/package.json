@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-webkit2-5.0",
-    "version": "2.38.5-3.2.7",
+    "version": "2.38.5-3.2.8",
     "description": "Node.js TypeScript type definitions for WebKit2-5.0, generated from library version 2.38.5",
     "type": "module",
     "module": "node-webkit2-5.0.js",
     "main": "node-webkit2-5.0.js",
     "exports": {
-        "./ambient": "./node-webkit2-5.0-ambient.d.ts",
-        "./import": "./node-webkit2-5.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-webkit2-5.0-ambient.d.ts",
+            "default": "./node-webkit2-5.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-webkit2-5.0-import.d.ts",
+            "default": "./node-webkit2-5.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-webkit2-5.0.d.ts",

@@ -395,7 +395,7 @@ export module OSMChangeset {
          * The comment of the changes.
          */
         comment?: string | null
-        createdBy?: string | null
+        created_by?: string | null
     }
 
 }

@@ -795,35 +795,35 @@ module Terminal {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          */
-        allowBold?: boolean | null
+        allow_bold?: boolean | null
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
          */
-        allowHyperlink?: boolean | null
+        allow_hyperlink?: boolean | null
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
          */
-        audibleBell?: boolean | null
+        audible_bell?: boolean | null
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
          */
-        backspaceBinding?: EraseBinding | null
+        backspace_binding?: EraseBinding | null
         /**
          * Whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          */
-        boldIsBright?: boolean | null
+        bold_is_bright?: boolean | null
         /**
          * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
          */
-        cellHeightScale?: number | null
+        cell_height_scale?: number | null
         /**
          * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
          */
-        cellWidthScale?: number | null
+        cell_width_scale?: number | null
         /**
          * This setting controls whether ambiguous-width characters are narrow or wide.
          * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
@@ -833,34 +833,34 @@ module Terminal {
          * This setting only takes effect the next time the terminal is reset, either
          * via escape sequence or with vte_terminal_reset().
          */
-        cjkAmbiguousWidth?: number | null
+        cjk_ambiguous_width?: number | null
         /**
          * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
          * will use the #GtkSettings:gtk-cursor-blink setting.
          */
-        cursorBlinkMode?: CursorBlinkMode | null
+        cursor_blink_mode?: CursorBlinkMode | null
         /**
          * Controls the shape of the cursor.
          */
-        cursorShape?: CursorShape | null
+        cursor_shape?: CursorShape | null
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
          */
-        deleteBinding?: EraseBinding | null
+        delete_binding?: EraseBinding | null
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          */
-        enableBidi?: boolean | null
-        enableFallbackScrolling?: boolean | null
+        enable_bidi?: boolean | null
+        enable_fallback_scrolling?: boolean | null
         /**
          * Controls whether or not the terminal will shape Arabic text.
          */
-        enableShaping?: boolean | null
+        enable_shaping?: boolean | null
         /**
          * Controls whether SIXEL image support is enabled.
          */
-        enableSixel?: boolean | null
+        enable_sixel?: boolean | null
         /**
          * Controls the encoding the terminal will expect data from the child to
          * be encoded with.  For certain terminal types, applications executing in the
@@ -875,7 +875,7 @@ module Terminal {
          * metrics, and attempt to resize itself to keep the same number of rows
          * and columns.
          */
-        fontDesc?: Pango.FontDescription | null
+        font_desc?: Pango.FontDescription | null
         /**
          * The terminal's font options, or %NULL to use the default font options.
          * 
@@ -884,23 +884,23 @@ module Terminal {
          * function to set a #cairo_font_options_t that has
          * %CAIRO_HINT_METRICS_OFF set.
          */
-        fontOptions?: cairo.FontOptions | null
+        font_options?: cairo.FontOptions | null
         /**
          * The terminal's font scale.
          */
-        fontScale?: number | null
+        font_scale?: number | null
         /**
          * Controls whether the terminal allows user input. When user input is disabled,
          * key press and mouse button press and motion events are not sent to the
          * terminal's child.
          */
-        inputEnabled?: boolean | null
+        input_enabled?: boolean | null
         /**
          * Controls the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.
          */
-        pointerAutohide?: boolean | null
+        pointer_autohide?: boolean | null
         /**
          * The PTY object for the terminal.
          */
@@ -909,24 +909,24 @@ module Terminal {
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
          */
-        rewrapOnResize?: boolean | null
+        rewrap_on_resize?: boolean | null
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          */
-        scrollOnKeystroke?: boolean | null
+        scroll_on_keystroke?: boolean | null
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
          */
-        scrollOnOutput?: boolean | null
+        scroll_on_output?: boolean | null
         /**
          * Controls whether the terminal's GtkAdjustment values unit is lines
          * or pixels. This can be enabled when the terminal is the child of a
          * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
          */
-        scrollUnitIsPixels?: boolean | null
+        scroll_unit_is_pixels?: boolean | null
         /**
          * The length of the scrollback buffer used by the terminal.  The size of
          * the scrollback buffer will be set to the larger of this value and the number
@@ -935,11 +935,11 @@ module Terminal {
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
          */
-        scrollbackLines?: number | null
+        scrollback_lines?: number | null
         /**
          * Controls whether or not the terminal will allow blinking text.
          */
-        textBlinkMode?: TextBlinkMode | null
+        text_blink_mode?: TextBlinkMode | null
         /**
          * The horizontal alignment of `terminal` within its allocation.
          */

@@ -47,8 +47,6 @@ module IScannableItem {
 
         // Own constructor properties of Caribou-1.0.Caribou.IScannableItem
 
-        scan_stepping?: boolean | null
-        scan_selected?: boolean | null
         scanStepping?: boolean | null
         scanSelected?: boolean | null
     }
@@ -59,9 +57,7 @@ interface IScannableItem extends GObject.Object {
 
     // Own properties of Caribou-1.0.Caribou.IScannableItem
 
-    scan_stepping: boolean
     scanStepping: boolean
-    scan_selected: boolean
     scanSelected: boolean
 
     // Owm methods of Caribou-1.0.Caribou.IScannableItem
@@ -137,7 +133,6 @@ module IScannableGroup {
 
         // Own constructor properties of Caribou-1.0.Caribou.IScannableGroup
 
-        scan_grouping?: ScanGrouping | null
         scanGrouping?: ScanGrouping | null
     }
 
@@ -147,7 +142,6 @@ interface IScannableGroup extends GObject.Object {
 
     // Own properties of Caribou-1.0.Caribou.IScannableGroup
 
-    scan_grouping: ScanGrouping
     scanGrouping: ScanGrouping
 
     // Owm methods of Caribou-1.0.Caribou.IScannableGroup
@@ -493,9 +487,6 @@ module KeyboardModel {
 
         // Own constructor properties of Caribou-1.0.Caribou.KeyboardModel
 
-        active_group?: string | null
-        keyboard_type?: string | null
-        keyboard_file?: string | null
         activeGroup?: string | null
         keyboardType?: string | null
         keyboardFile?: string | null
@@ -507,11 +498,8 @@ interface KeyboardModel extends IKeyboardObject {
 
     // Own properties of Caribou-1.0.Caribou.KeyboardModel
 
-    active_group: string | null
     activeGroup: string | null
-    readonly keyboard_type: string | null
     readonly keyboardType: string | null
-    readonly keyboard_file: string | null
     readonly keyboardFile: string | null
 
     // Owm methods of Caribou-1.0.Caribou.KeyboardModel
@@ -620,7 +608,6 @@ module GroupModel {
 
         // Own constructor properties of Caribou-1.0.Caribou.GroupModel
 
-        active_level?: string | null
         activeLevel?: string | null
     }
 
@@ -630,7 +617,6 @@ interface GroupModel extends IKeyboardObject {
 
     // Own properties of Caribou-1.0.Caribou.GroupModel
 
-    active_level: string | null
     activeLevel: string | null
 
     // Own fields of Caribou-1.0.Caribou.GroupModel
@@ -810,14 +796,12 @@ module KeyModel {
         width?: number | null
         toggle?: string | null
         repeatable?: boolean | null
-        is_modifier?: boolean | null
-        show_subkeys?: boolean | null
+        isModifier?: boolean | null
+        showSubkeys?: boolean | null
         name?: string | null
         keyval?: number | null
         text?: string | null
         label?: string | null
-        isModifier?: boolean | null
-        showSubkeys?: boolean | null
     }
 
 }
@@ -830,9 +814,7 @@ interface KeyModel extends IScannableItem, IKeyboardObject {
     width: number
     toggle: string | null
     repeatable: boolean
-    is_modifier: boolean
     isModifier: boolean
-    show_subkeys: boolean
     showSubkeys: boolean
     name: string | null
     keyval: number
@@ -987,16 +969,6 @@ module Scanner {
 
         // Own constructor properties of Caribou-1.0.Caribou.Scanner
 
-        bind_settings?: boolean | null
-        scan_grouping?: number | null
-        scan_enabled?: boolean | null
-        step_time?: number | null
-        switch_device?: string | null
-        keyboard_key?: string | null
-        mouse_button?: number | null
-        scan_cycles?: number | null
-        autorestart?: boolean | null
-        inverse_scanning?: boolean | null
         bindSettings?: boolean | null
         scanGrouping?: number | null
         scanEnabled?: boolean | null
@@ -1005,6 +977,7 @@ module Scanner {
         keyboardKey?: string | null
         mouseButton?: number | null
         scanCycles?: number | null
+        autorestart?: boolean | null
         inverseScanning?: boolean | null
     }
 
@@ -1014,24 +987,15 @@ interface Scanner {
 
     // Own properties of Caribou-1.0.Caribou.Scanner
 
-    readonly bind_settings: boolean
     readonly bindSettings: boolean
-    scan_grouping: number
     scanGrouping: number
-    scan_enabled: boolean
     scanEnabled: boolean
-    step_time: number
     stepTime: number
-    switch_device: string | null
     switchDevice: string | null
-    keyboard_key: string | null
     keyboardKey: string | null
-    mouse_button: number
     mouseButton: number
-    scan_cycles: number
     scanCycles: number
     autorestart: boolean
-    inverse_scanning: boolean
     inverseScanning: boolean
 
     // Owm methods of Caribou-1.0.Caribou.Scanner

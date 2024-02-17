@@ -259,21 +259,16 @@ module Play {
 
         // Own constructor properties of GstPlay-1.0.GstPlay.Play
 
-        audio_video_offset?: number | null
+        audioVideoOffset?: number | null
         mute?: boolean | null
         rate?: number | null
-        subtitle_video_offset?: number | null
+        subtitleVideoOffset?: number | null
         suburi?: string | null
         uri?: string | null
-        video_multiview_flags?: GstVideo.VideoMultiviewFlags | null
-        video_multiview_mode?: GstVideo.VideoMultiviewFramePacking | null
-        video_renderer?: PlayVideoRenderer | null
-        volume?: number | null
-        audioVideoOffset?: number | null
-        subtitleVideoOffset?: number | null
         videoMultiviewFlags?: GstVideo.VideoMultiviewFlags | null
         videoMultiviewMode?: GstVideo.VideoMultiviewFramePacking | null
         videoRenderer?: PlayVideoRenderer | null
+        volume?: number | null
     }
 
 }
@@ -282,30 +277,21 @@ interface Play {
 
     // Own properties of GstPlay-1.0.GstPlay.Play
 
-    audio_video_offset: number
     audioVideoOffset: number
-    readonly current_audio_track: PlayAudioInfo
     readonly currentAudioTrack: PlayAudioInfo
-    readonly current_subtitle_track: PlaySubtitleInfo
     readonly currentSubtitleTrack: PlaySubtitleInfo
-    readonly current_video_track: PlayVideoInfo
     readonly currentVideoTrack: PlayVideoInfo
     readonly duration: number
-    readonly media_info: PlayMediaInfo
     readonly mediaInfo: PlayMediaInfo
     mute: boolean
     readonly pipeline: Gst.Element
     readonly position: number
     rate: number
-    subtitle_video_offset: number
     subtitleVideoOffset: number
     suburi: string | null
     uri: string | null
-    video_multiview_flags: GstVideo.VideoMultiviewFlags
     videoMultiviewFlags: GstVideo.VideoMultiviewFlags
-    video_multiview_mode: GstVideo.VideoMultiviewFramePacking
     videoMultiviewMode: GstVideo.VideoMultiviewFramePacking
-    video_renderer: PlayVideoRenderer
     videoRenderer: PlayVideoRenderer
     volume: number
 
@@ -1193,8 +1179,6 @@ module PlayVideoOverlayVideoRenderer {
 
         // Own constructor properties of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer
 
-        video_sink?: Gst.Element | null
-        window_handle?: any | null
         videoSink?: Gst.Element | null
         windowHandle?: any | null
     }
@@ -1205,9 +1189,7 @@ interface PlayVideoOverlayVideoRenderer extends PlayVideoRenderer {
 
     // Own properties of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer
 
-    video_sink: Gst.Element
     videoSink: Gst.Element
-    window_handle: any
     windowHandle: any
 
     // Owm methods of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer

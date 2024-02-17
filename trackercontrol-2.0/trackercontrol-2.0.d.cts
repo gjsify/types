@@ -78,8 +78,6 @@ export module MinerManager {
 
         // Own constructor properties of TrackerControl-2.0.TrackerControl.MinerManager
 
-        auto_start?: boolean | null
-        domain_ontology?: string | null
         autoStart?: boolean | null
         domainOntology?: string | null
     }
@@ -90,9 +88,7 @@ export interface MinerManager extends Gio.Initable {
 
     // Own properties of TrackerControl-2.0.TrackerControl.MinerManager
 
-    readonly auto_start: boolean
     readonly autoStart: boolean
-    readonly domain_ontology: string | null
     readonly domainOntology: string | null
 
     // Own fields of TrackerControl-2.0.TrackerControl.MinerManager

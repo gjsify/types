@@ -553,15 +553,12 @@ module BaseFramebuffer {
         // Own constructor properties of GVnc-1.0.GVnc.BaseFramebuffer
 
         buffer?: any | null
-        color_map?: ColorMap | null
-        height?: number | null
-        local_format?: PixelFormat | null
-        remote_format?: PixelFormat | null
-        rowstride?: number | null
-        width?: number | null
         colorMap?: ColorMap | null
+        height?: number | null
         localFormat?: PixelFormat | null
         remoteFormat?: PixelFormat | null
+        rowstride?: number | null
+        width?: number | null
     }
 
 }
@@ -571,12 +568,9 @@ interface BaseFramebuffer extends Framebuffer {
     // Own properties of GVnc-1.0.GVnc.BaseFramebuffer
 
     readonly buffer: any
-    color_map: ColorMap
     colorMap: ColorMap
     readonly height: number
-    readonly local_format: PixelFormat
     readonly localFormat: PixelFormat
-    readonly remote_format: PixelFormat
     readonly remoteFormat: PixelFormat
     readonly rowstride: number
     readonly width: number

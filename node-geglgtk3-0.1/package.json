@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-geglgtk3-0.1",
-    "version": "0.1.0-3.2.7",
+    "version": "0.1.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GeglGtk3-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "node-geglgtk3-0.1.js",
     "main": "node-geglgtk3-0.1.js",
     "exports": {
-        "./ambient": "./node-geglgtk3-0.1-ambient.d.ts",
-        "./import": "./node-geglgtk3-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./node-geglgtk3-0.1-ambient.d.ts",
+            "default": "./node-geglgtk3-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-geglgtk3-0.1-import.d.ts",
+            "default": "./node-geglgtk3-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-geglgtk3-0.1.d.ts",

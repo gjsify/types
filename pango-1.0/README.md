@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/pango-1.0)
 
 
-GJS TypeScript type definitions for Pango-1.0, generated from library version 1.51.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+GJS TypeScript type definitions for Pango-1.0, generated from library version 1.51.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 Pango is the core text and font handling library used in GNOME applications. It has extensive support for the different writing systems used throughout the world.
 

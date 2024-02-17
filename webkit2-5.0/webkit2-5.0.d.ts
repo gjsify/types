@@ -2637,12 +2637,6 @@ module Download {
          * disk. If this property is %FALSE and the destination already exists,
          * the download will fail.
          */
-        allow_overwrite?: boolean | null
-        /**
-         * Whether or not the download is allowed to overwrite an existing file on
-         * disk. If this property is %FALSE and the destination already exists,
-         * the download will fail.
-         */
         allowOverwrite?: boolean | null
     }
 
@@ -2657,26 +2651,11 @@ interface Download {
      * disk. If this property is %FALSE and the destination already exists,
      * the download will fail.
      */
-    allow_overwrite: boolean
-    /**
-     * Whether or not the download is allowed to overwrite an existing file on
-     * disk. If this property is %FALSE and the destination already exists,
-     * the download will fail.
-     */
     allowOverwrite: boolean
     /**
      * The local URI to where the download will be saved.
      */
     readonly destination: string | null
-    /**
-     * An estimate of the percent completion for the download operation.
-     * This value will range from 0.0 to 1.0. The value is an estimate
-     * based on the total number of bytes expected to be received for
-     * a download.
-     * If you need a more accurate progress information you can connect to
-     * #WebKitDownload::received-data signal to track the progress.
-     */
-    readonly estimated_progress: number
     /**
      * An estimate of the percent completion for the download operation.
      * This value will range from 0.0 to 1.0. The value is an estimate
@@ -2875,11 +2854,6 @@ interface EditorState {
 
     // Own properties of WebKit2-5.0.WebKit2.EditorState
 
-    /**
-     * Bitmask of #WebKitEditorTypingAttributes flags.
-     * See webkit_editor_state_get_typing_attributes() for more information.
-     */
-    readonly typing_attributes: number
     /**
      * Bitmask of #WebKitEditorTypingAttributes flags.
      * See webkit_editor_state_get_typing_attributes() for more information.
@@ -3090,12 +3064,6 @@ interface FileChooserRequest {
      * types the file chooser dialog should handle. See
      * webkit_file_chooser_request_get_mime_types() for more details.
      */
-    readonly mime_types: string[]
-    /**
-     * A %NULL-terminated array of strings containing the list of MIME
-     * types the file chooser dialog should handle. See
-     * webkit_file_chooser_request_get_mime_types() for more details.
-     */
     readonly mimeTypes: string[]
     /**
      * Whether the file chooser should allow selecting multiple
@@ -3103,20 +3071,7 @@ interface FileChooserRequest {
      * webkit_file_chooser_request_get_select_multiple() for
      * more details.
      */
-    readonly select_multiple: boolean
-    /**
-     * Whether the file chooser should allow selecting multiple
-     * files. See
-     * webkit_file_chooser_request_get_select_multiple() for
-     * more details.
-     */
     readonly selectMultiple: boolean
-    /**
-     * A %NULL-terminated array of strings containing the list of
-     * selected files associated to the current request. See
-     * webkit_file_chooser_request_get_selected_files() for more details.
-     */
-    readonly selected_files: string[]
     /**
      * A %NULL-terminated array of strings containing the list of
      * selected files associated to the current request. See
@@ -3286,10 +3241,6 @@ module FindController {
         /**
          * The #WebKitWebView this controller is associated to.
          */
-        web_view?: WebView | null
-        /**
-         * The #WebKitWebView this controller is associated to.
-         */
         webView?: WebView | null
     }
 
@@ -3302,10 +3253,6 @@ interface FindController {
     /**
      * The maximum number of matches to report for a given search.
      */
-    readonly max_match_count: number
-    /**
-     * The maximum number of matches to report for a given search.
-     */
     readonly maxMatchCount: number
     /**
      * The options to be used in the search operation.
@@ -3315,10 +3262,6 @@ interface FindController {
      * The current search text for this #WebKitFindController.
      */
     readonly text: string | null
-    /**
-     * The #WebKitWebView this controller is associated to.
-     */
-    readonly web_view: WebView
     /**
      * The #WebKitWebView this controller is associated to.
      */
@@ -3602,12 +3545,6 @@ interface GeolocationManager {
      * set to %TRUE when a #WebKitGeolocationManager needs to get accurate position updates.
      * You can connect to notify::enable-high-accuracy signal to monitor it.
      */
-    readonly enable_high_accuracy: boolean
-    /**
-     * Whether high accuracy is enabled. This is a read-only property that will be
-     * set to %TRUE when a #WebKitGeolocationManager needs to get accurate position updates.
-     * You can connect to notify::enable-high-accuracy signal to monitor it.
-     */
     readonly enableHighAccuracy: boolean
 
     // Own fields of WebKit2-5.0.WebKit2.GeolocationManager
@@ -3756,31 +3693,6 @@ module HitTestResult {
          * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
          * is present in #WebKitHitTestResult:context
          */
-        image_uri?: string | null
-        /**
-         * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_label?: string | null
-        /**
-         * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_title?: string | null
-        /**
-         * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_uri?: string | null
-        /**
-         * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-         * is present in #WebKitHitTestResult:context
-         */
-        media_uri?: string | null
-        /**
-         * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-         * is present in #WebKitHitTestResult:context
-         */
         imageUri?: string | null
         /**
          * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
@@ -3819,17 +3731,7 @@ interface HitTestResult {
      * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
      * is present in #WebKitHitTestResult:context
      */
-    readonly image_uri: string | null
-    /**
-     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-     * is present in #WebKitHitTestResult:context
-     */
     readonly imageUri: string | null
-    /**
-     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
-    readonly link_label: string | null
     /**
      * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
@@ -3839,27 +3741,12 @@ interface HitTestResult {
      * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
-    readonly link_title: string | null
-    /**
-     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
     readonly linkTitle: string | null
     /**
      * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
-    readonly link_uri: string | null
-    /**
-     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
     readonly linkUri: string | null
-    /**
-     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-     * is present in #WebKitHitTestResult:context
-     */
-    readonly media_uri: string | null
     /**
      * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
      * is present in #WebKitHitTestResult:context
@@ -4050,14 +3937,6 @@ module InputMethodContext {
         /**
          * The #WebKitInputHints of the input associated with this context.
          */
-        input_hints?: InputHints | null
-        /**
-         * The #WebKitInputPurpose of the input associated with this context.
-         */
-        input_purpose?: InputPurpose | null
-        /**
-         * The #WebKitInputHints of the input associated with this context.
-         */
         inputHints?: InputHints | null
         /**
          * The #WebKitInputPurpose of the input associated with this context.
@@ -4074,15 +3953,7 @@ interface InputMethodContext {
     /**
      * The #WebKitInputHints of the input associated with this context.
      */
-    input_hints: InputHints
-    /**
-     * The #WebKitInputHints of the input associated with this context.
-     */
     inputHints: InputHints
-    /**
-     * The #WebKitInputPurpose of the input associated with this context.
-     */
-    input_purpose: InputPurpose
     /**
      * The #WebKitInputPurpose of the input associated with this context.
      */
@@ -4422,13 +4293,6 @@ interface NavigationPolicyDecision {
      * link with a target attribute equal to "_blank", this property will contain the
      * value of that attribute. In all other cases, this value will be %NULL.
      */
-    readonly frame_name: string | null
-    /**
-     * If this navigation request targets a new frame, this property contains
-     * the name of that frame. For example if the decision was triggered by clicking a
-     * link with a target attribute equal to "_blank", this property will contain the
-     * value of that attribute. In all other cases, this value will be %NULL.
-     */
     readonly frameName: string | null
     /**
      * If the navigation associated with this policy decision was originally
@@ -4445,29 +4309,11 @@ interface NavigationPolicyDecision {
      * If the navigation was not triggered by a mouse event, the value of this
      * property will be 0.
      */
-    readonly mouse_button: number
-    /**
-     * If the navigation associated with this policy decision was originally
-     * triggered by a mouse event, this property contains non-zero button number
-     * of the button triggering that event. The button numbers match those from GDK.
-     * If the navigation was not triggered by a mouse event, the value of this
-     * property will be 0.
-     */
     readonly mouseButton: number
     /**
      * The #WebKitNavigationAction that triggered this policy decision.
      */
-    readonly navigation_action: NavigationAction
-    /**
-     * The #WebKitNavigationAction that triggered this policy decision.
-     */
     readonly navigationAction: NavigationAction
-    /**
-     * The type of navigation that triggered this policy decision. This is
-     * useful for enacting different policies depending on what type of user
-     * action caused the navigation.
-     */
-    readonly navigation_type: NavigationType
     /**
      * The type of navigation that triggered this policy decision. This is
      * useful for enacting different policies depending on what type of user
@@ -5235,18 +5081,6 @@ module PrintOperation {
         /**
          * The initial #GtkPageSetup for the print operation.
          */
-        page_setup?: Gtk.PageSetup | null
-        /**
-         * The initial #GtkPrintSettings for the print operation.
-         */
-        print_settings?: Gtk.PrintSettings | null
-        /**
-         * The #WebKitWebView that will be printed.
-         */
-        web_view?: WebView | null
-        /**
-         * The initial #GtkPageSetup for the print operation.
-         */
         pageSetup?: Gtk.PageSetup | null
         /**
          * The initial #GtkPrintSettings for the print operation.
@@ -5267,23 +5101,11 @@ interface PrintOperation {
     /**
      * The initial #GtkPageSetup for the print operation.
      */
-    page_setup: Gtk.PageSetup
-    /**
-     * The initial #GtkPageSetup for the print operation.
-     */
     pageSetup: Gtk.PageSetup
     /**
      * The initial #GtkPrintSettings for the print operation.
      */
-    print_settings: Gtk.PrintSettings
-    /**
-     * The initial #GtkPrintSettings for the print operation.
-     */
     printSettings: Gtk.PrintSettings
-    /**
-     * The #WebKitWebView that will be printed.
-     */
-    readonly web_view: WebView
     /**
      * The #WebKitWebView that will be printed.
      */
@@ -5680,381 +5502,6 @@ module Settings {
          * setting allows you to change that behaviour, so that it would be
          * possible to do a XMLHttpRequest of a local file, for example.
          */
-        allow_file_access_from_file_urls?: boolean | null
-        /**
-         * Determine whether it's allowed to create and run modal dialogs
-         * from a #WebKitWebView through JavaScript with
-         * <function>window.showModalDialog</function>. If it's set to
-         * %FALSE, the associated #WebKitWebView won't be able to create
-         * new modal dialogs, so not even the #WebKitWebView::create
-         * signal will be emitted.
-         */
-        allow_modal_dialogs?: boolean | null
-        /**
-         * Whether or not the top frame is allowed to navigate to data URLs. It is disabled by default
-         * due to the risk it poses when loading untrusted URLs, with data URLs being used in scamming
-         * and phishing attacks. In contrast, a scenario where it could be enabled could be an app that
-         * embeds a WebView and you have control of the pages being show instead of a generic browser.
-         */
-        allow_top_navigation_to_data_urls?: boolean | null
-        /**
-         * Whether or not JavaScript running in the context of a file scheme URL
-         * should be allowed to access content from any origin.  By default, when
-         * something is loaded in a #WebKitWebView using a file scheme URL,
-         * access to the local file system and arbitrary local storage is not
-         * allowed. This setting allows you to change that behaviour, so that
-         * it would be possible to use local storage, for example.
-         */
-        allow_universal_access_from_file_urls?: boolean | null
-        /**
-         * Determines whether images should be automatically loaded or not.
-         * On devices where network bandwidth is of concern, it might be
-         * useful to turn this property off.
-         */
-        auto_load_images?: boolean | null
-        /**
-         * The font family used as the default for content using a cursive font.
-         */
-        cursive_font_family?: string | null
-        /**
-         * The default text charset used when interpreting content with an unspecified charset.
-         */
-        default_charset?: string | null
-        /**
-         * The font family to use as the default for content that does not specify a font.
-         */
-        default_font_family?: string | null
-        /**
-         * The default font size in pixels to use for content displayed if
-         * no font size is specified.
-         */
-        default_font_size?: number | null
-        /**
-         * The default font size in pixels to use for content displayed in
-         * monospace font if no font size is specified.
-         */
-        default_monospace_font_size?: number | null
-        /**
-         * Whether to draw compositing borders and repaint counters on layers drawn
-         * with accelerated compositing. This is useful for debugging issues related
-         * to web content that is composited with the GPU.
-         */
-        draw_compositing_indicators?: boolean | null
-        /**
-         * Enable or disable accelerated 2D canvas. Accelerated 2D canvas is only available
-         * if WebKit was compiled with a version of Cairo including the unstable CairoGL API.
-         * When accelerated 2D canvas is enabled, WebKit may render some 2D canvas content
-         * using hardware accelerated drawing operations.
-         */
-        enable_accelerated_2d_canvas?: boolean | null
-        /**
-         * Enable or disable horizontal swipe gesture for back-forward navigation.
-         */
-        enable_back_forward_navigation_gestures?: boolean | null
-        /**
-         * Whether to enable accessibility enhanced keyboard navigation.
-         */
-        enable_caret_browsing?: boolean | null
-        /**
-         * Determines whether or not developer tools, such as the Web Inspector, are enabled.
-         */
-        enable_developer_extras?: boolean | null
-        /**
-         * Determines whether or not to prefetch domain names. DNS prefetching attempts
-         * to resolve domain names before a user tries to follow a link.
-         */
-        enable_dns_prefetching?: boolean | null
-        /**
-         * Enable or disable support for Encrypted Media API on pages.
-         * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
-         * This property will only work as intended if the EncryptedMedia feature is enabled at build time
-         * with the ENABLE_ENCRYPTED_MEDIA flag.
-         * 
-         * See https://www.w3.org/TR/encrypted-media/
-         */
-        enable_encrypted_media?: boolean | null
-        /**
-         * Whether to enable the frame flattening. With this setting each subframe is expanded
-         * to its contents, which will flatten all the frames to become one scrollable page.
-         * On touch devices scrollable subframes on a page can result in a confusing user experience.
-         */
-        enable_frame_flattening?: boolean | null
-        /**
-         * Whether to enable the Javascript Fullscreen API. The API
-         * allows any HTML element to request fullscreen display. See also
-         * the current draft of the spec:
-         * http://www.w3.org/TR/fullscreen/
-         */
-        enable_fullscreen?: boolean | null
-        /**
-         * Whether to enable HTML5 client-side SQL database support (IndexedDB).
-         */
-        enable_html5_database?: boolean | null
-        /**
-         * Whether to enable HTML5 local storage support. Local storage provides
-         * simple synchronous storage access.
-         * 
-         * HTML5 local storage specification is available at
-         * http://dev.w3.org/html5/webstorage/.
-         */
-        enable_html5_local_storage?: boolean | null
-        /**
-         * Determines whether or not hyperlink auditing is enabled.
-         * 
-         * The hyperlink auditing specification is available at
-         * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
-         */
-        enable_hyperlink_auditing?: boolean | null
-        /**
-         * Determines whether or not Java is enabled on the page.
-         */
-        enable_java?: boolean | null
-        /**
-         * Determines whether or not JavaScript executes within a page.
-         */
-        enable_javascript?: boolean | null
-        /**
-         * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
-         * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
-         * executing JavaScript is still allowed if #WebKitSettings:enable-javascript is %TRUE.
-         */
-        enable_javascript_markup?: boolean | null
-        /**
-         * Enable or disable support for media playback on pages. This setting is enabled by
-         * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
-         * playback support disabled.
-         */
-        enable_media?: boolean | null
-        /**
-         * Enable or disable support for MediaCapabilities on pages. This
-         * specification intends to provide APIs to allow websites to make an optimal
-         * decision when picking media content for the user. The APIs will expose
-         * information about the decoding and encoding capabilities for a given format
-         * but also output capabilities to find the best match based on the device’s
-         * display.
-         * 
-         * See also https://wicg.github.io/media-capabilities/
-         */
-        enable_media_capabilities?: boolean | null
-        /**
-         * Enable or disable support for MediaStream on pages. MediaStream
-         * is an experimental proposal for allowing web pages to access
-         * audio and video devices for capture.
-         * 
-         * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
-         */
-        enable_media_stream?: boolean | null
-        /**
-         * Enable or disable support for MediaSource on pages. MediaSource
-         * extends HTMLMediaElement to allow JavaScript to generate media
-         * streams for playback.
-         * 
-         * See also http://www.w3.org/TR/media-source/
-         */
-        enable_mediasource?: boolean | null
-        /**
-         * Enable or disable the Mock Capture Devices. Those are fake
-         * Microphone and Camera devices to be used as MediaStream
-         * sources.
-         */
-        enable_mock_capture_devices?: boolean | null
-        /**
-         * Whether to enable HTML5 offline web application cache support. Offline
-         * web application cache allows web applications to run even when
-         * the user is not connected to the network.
-         * 
-         * HTML5 offline web application specification is available at
-         * http://dev.w3.org/html5/spec/offline.html.
-         */
-        enable_offline_web_application_cache?: boolean | null
-        /**
-         * Enable or disable the page cache. Disabling the page cache is
-         * generally only useful for special circumstances like low-memory
-         * scenarios or special purpose applications like static HTML
-         * viewers. This setting only controls the Page Cache, this cache
-         * is different than the disk-based or memory-based traditional
-         * resource caches, its point is to make going back and forth
-         * between pages much faster. For details about the different types
-         * of caches and their purposes see:
-         * http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
-         */
-        enable_page_cache?: boolean | null
-        /**
-         * Determines whether or not plugins on the page are enabled.
-         */
-        enable_plugins?: boolean | null
-        /**
-         * Determines whether or not private browsing is enabled. Private browsing
-         * will disable history, cache and form auto-fill for any pages visited.
-         */
-        enable_private_browsing?: boolean | null
-        /**
-         * Determines whether or not text areas can be resized.
-         */
-        enable_resizable_text_areas?: boolean | null
-        /**
-         * Whether to turn on site-specific quirks. Turning this on will
-         * tell WebKit to use some site-specific workarounds for
-         * better web compatibility. For example, older versions of
-         * MediaWiki will incorrectly send to WebKit a CSS file with KHTML
-         * workarounds. By turning on site-specific quirks, WebKit will
-         * special-case this and other cases to make some specific sites work.
-         */
-        enable_site_specific_quirks?: boolean | null
-        /**
-         * Enable or disable smooth scrolling.
-         */
-        enable_smooth_scrolling?: boolean | null
-        /**
-         * Whether to enable Spatial Navigation. This feature consists in the ability
-         * to navigate between focusable elements in a Web page, such as hyperlinks
-         * and form controls, by using Left, Right, Up and Down arrow keys.
-         * For example, if an user presses the Right key, heuristics determine whether
-         * there is an element they might be trying to reach towards the right, and if
-         * there are multiple elements, which element they probably wants.
-         */
-        enable_spatial_navigation?: boolean | null
-        /**
-         * Determines whether the tab key cycles through the elements on the page.
-         * When this setting is enabled, users will be able to focus the next element
-         * in the page by pressing the tab key. If the selected element is editable,
-         * then pressing tab key will insert the tab character.
-         */
-        enable_tabs_to_links?: boolean | null
-        /**
-         * Enable or disable support for WebAudio on pages. WebAudio is an
-         * API for processing and synthesizing audio in web applications
-         * 
-         * See also https://webaudio.github.io/web-audio-api
-         */
-        enable_webaudio?: boolean | null
-        /**
-         * Enable or disable support for WebGL on pages. WebGL enables web
-         * content to use an API based on OpenGL ES 2.0.
-         */
-        enable_webgl?: boolean | null
-        /**
-         * Enable WebRTC support for loaded pages.
-         * 
-         * Enabling this setting implies that [property`Settings:`enable-media-stream]
-         * will be enabled as well.
-         * 
-         * See also https://www.w3.org/TR/webrtc/
-         */
-        enable_webrtc?: boolean | null
-        /**
-         * Enable or disable writing console messages to stdout. These are messages
-         * sent to the console with console.log and related methods.
-         */
-        enable_write_console_messages_to_stdout?: boolean | null
-        /**
-         * Whether to enable the XSS auditor. This feature filters some kinds of
-         * reflective XSS attacks on vulnerable web sites.
-         */
-        enable_xss_auditor?: boolean | null
-        /**
-         * The font family used as the default for content using a fantasy font.
-         */
-        fantasy_font_family?: string | null
-        /**
-         * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
-         * hardware acceleration. The default value %WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
-         * enables the hardware acceleration when the web contents request it.
-         * It's possible to enforce hardware acceleration to be always enabled
-         * by using %WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS. And it's also possible to disable it
-         * completely using %WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER. Note that disabling hardware
-         * acceleration might cause some websites to not render correctly or consume more CPU.
-         * 
-         * Note that changing this setting might not be possible if hardware acceleration is not
-         * supported by the hardware or the system. In that case you can get the value to know the
-         * actual policy being used, but changing the setting will not have any effect.
-         */
-        hardware_acceleration_policy?: HardwareAccelerationPolicy | null
-        /**
-         * Whether JavaScript can access the clipboard. The default value is %FALSE. If
-         * set to %TRUE, document.execCommand() allows cut, copy and paste commands.
-         */
-        javascript_can_access_clipboard?: boolean | null
-        /**
-         * Whether JavaScript can open popup windows automatically without user
-         * intervention.
-         */
-        javascript_can_open_windows_automatically?: boolean | null
-        /**
-         * Determines whether a site can load favicons irrespective
-         * of the value of #WebKitSettings:auto-load-images.
-         */
-        load_icons_ignoring_image_load_setting?: boolean | null
-        /**
-         * List of media content types requiring hardware support, split by semicolons (:).
-         * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
-         */
-        media_content_types_requiring_hardware_support?: string | null
-        /**
-         * Whether media playback is full-screen only or inline playback is allowed.
-         * This is %TRUE by default, so media playback can be inline. Setting it to
-         * %FALSE allows specifying that media playback should be always fullscreen.
-         */
-        media_playback_allows_inline?: boolean | null
-        /**
-         * Whether a user gesture (such as clicking the play button)
-         * would be required to start media playback or load media. This is off
-         * by default, so media playback could start automatically.
-         * Setting it on requires a gesture by the user to start playback, or to
-         * load the media.
-         */
-        media_playback_requires_user_gesture?: boolean | null
-        /**
-         * The minimum font size in pixels used to display text. This setting
-         * controls the absolute smallest size. Values other than 0 can
-         * potentially break page layouts.
-         */
-        minimum_font_size?: number | null
-        /**
-         * The font family used as the default for content using a monospace font.
-         */
-        monospace_font_family?: string | null
-        /**
-         * The font family used as the default for content using a pictograph font.
-         */
-        pictograph_font_family?: string | null
-        /**
-         * Whether background images should be drawn during printing.
-         */
-        print_backgrounds?: boolean | null
-        /**
-         * The font family used as the default for content using a sans-serif font.
-         */
-        sans_serif_font_family?: string | null
-        /**
-         * The font family used as the default for content using a serif font.
-         */
-        serif_font_family?: string | null
-        /**
-         * The user-agent string used by WebKit. Unusual user-agent strings may cause web
-         * content to render incorrectly or fail to run, as many web pages are written to
-         * parse the user-agent strings of only the most popular browsers. Therefore, it's
-         * typically better to not completely override the standard user-agent, but to use
-         * webkit_settings_set_user_agent_with_application_details() instead.
-         * 
-         * If this property is set to the empty string or %NULL, it will revert to the standard
-         * user-agent.
-         */
-        user_agent?: string | null
-        /**
-         * Whether #WebKitWebView:zoom-level affects only the
-         * text of the page or all the contents. Other contents containing text
-         * like form controls will be also affected by zoom factor when
-         * this property is enabled.
-         */
-        zoom_text_only?: boolean | null
-        /**
-         * Whether file access is allowed from file URLs. By default, when
-         * something is loaded in a #WebKitWebView using a file URI, cross
-         * origin requests to other file resources are not allowed. This
-         * setting allows you to change that behaviour, so that it would be
-         * possible to do a XMLHttpRequest of a local file, for example.
-         */
         allowFileAccessFromFileUrls?: boolean | null
         /**
          * Determine whether it's allowed to create and run modal dialogs
@@ -6438,24 +5885,7 @@ interface Settings {
      * setting allows you to change that behaviour, so that it would be
      * possible to do a XMLHttpRequest of a local file, for example.
      */
-    allow_file_access_from_file_urls: boolean
-    /**
-     * Whether file access is allowed from file URLs. By default, when
-     * something is loaded in a #WebKitWebView using a file URI, cross
-     * origin requests to other file resources are not allowed. This
-     * setting allows you to change that behaviour, so that it would be
-     * possible to do a XMLHttpRequest of a local file, for example.
-     */
     allowFileAccessFromFileUrls: boolean
-    /**
-     * Determine whether it's allowed to create and run modal dialogs
-     * from a #WebKitWebView through JavaScript with
-     * <function>window.showModalDialog</function>. If it's set to
-     * %FALSE, the associated #WebKitWebView won't be able to create
-     * new modal dialogs, so not even the #WebKitWebView::create
-     * signal will be emitted.
-     */
-    allow_modal_dialogs: boolean
     /**
      * Determine whether it's allowed to create and run modal dialogs
      * from a #WebKitWebView through JavaScript with
@@ -6471,23 +5901,7 @@ interface Settings {
      * and phishing attacks. In contrast, a scenario where it could be enabled could be an app that
      * embeds a WebView and you have control of the pages being show instead of a generic browser.
      */
-    allow_top_navigation_to_data_urls: boolean
-    /**
-     * Whether or not the top frame is allowed to navigate to data URLs. It is disabled by default
-     * due to the risk it poses when loading untrusted URLs, with data URLs being used in scamming
-     * and phishing attacks. In contrast, a scenario where it could be enabled could be an app that
-     * embeds a WebView and you have control of the pages being show instead of a generic browser.
-     */
     allowTopNavigationToDataUrls: boolean
-    /**
-     * Whether or not JavaScript running in the context of a file scheme URL
-     * should be allowed to access content from any origin.  By default, when
-     * something is loaded in a #WebKitWebView using a file scheme URL,
-     * access to the local file system and arbitrary local storage is not
-     * allowed. This setting allows you to change that behaviour, so that
-     * it would be possible to use local storage, for example.
-     */
-    allow_universal_access_from_file_urls: boolean
     /**
      * Whether or not JavaScript running in the context of a file scheme URL
      * should be allowed to access content from any origin.  By default, when
@@ -6502,17 +5916,7 @@ interface Settings {
      * On devices where network bandwidth is of concern, it might be
      * useful to turn this property off.
      */
-    auto_load_images: boolean
-    /**
-     * Determines whether images should be automatically loaded or not.
-     * On devices where network bandwidth is of concern, it might be
-     * useful to turn this property off.
-     */
     autoLoadImages: boolean
-    /**
-     * The font family used as the default for content using a cursive font.
-     */
-    cursive_font_family: string | null
     /**
      * The font family used as the default for content using a cursive font.
      */
@@ -6520,24 +5924,11 @@ interface Settings {
     /**
      * The default text charset used when interpreting content with an unspecified charset.
      */
-    default_charset: string | null
-    /**
-     * The default text charset used when interpreting content with an unspecified charset.
-     */
     defaultCharset: string | null
     /**
      * The font family to use as the default for content that does not specify a font.
      */
-    default_font_family: string | null
-    /**
-     * The font family to use as the default for content that does not specify a font.
-     */
     defaultFontFamily: string | null
-    /**
-     * The default font size in pixels to use for content displayed if
-     * no font size is specified.
-     */
-    default_font_size: number
     /**
      * The default font size in pixels to use for content displayed if
      * no font size is specified.
@@ -6547,18 +5938,7 @@ interface Settings {
      * The default font size in pixels to use for content displayed in
      * monospace font if no font size is specified.
      */
-    default_monospace_font_size: number
-    /**
-     * The default font size in pixels to use for content displayed in
-     * monospace font if no font size is specified.
-     */
     defaultMonospaceFontSize: number
-    /**
-     * Whether to draw compositing borders and repaint counters on layers drawn
-     * with accelerated compositing. This is useful for debugging issues related
-     * to web content that is composited with the GPU.
-     */
-    draw_compositing_indicators: boolean
     /**
      * Whether to draw compositing borders and repaint counters on layers drawn
      * with accelerated compositing. This is useful for debugging issues related
@@ -6571,18 +5951,7 @@ interface Settings {
      * When accelerated 2D canvas is enabled, WebKit may render some 2D canvas content
      * using hardware accelerated drawing operations.
      */
-    enable_accelerated_2d_canvas: boolean
-    /**
-     * Enable or disable accelerated 2D canvas. Accelerated 2D canvas is only available
-     * if WebKit was compiled with a version of Cairo including the unstable CairoGL API.
-     * When accelerated 2D canvas is enabled, WebKit may render some 2D canvas content
-     * using hardware accelerated drawing operations.
-     */
     enableAccelerated2dCanvas: boolean
-    /**
-     * Enable or disable horizontal swipe gesture for back-forward navigation.
-     */
-    enable_back_forward_navigation_gestures: boolean
     /**
      * Enable or disable horizontal swipe gesture for back-forward navigation.
      */
@@ -6590,15 +5959,7 @@ interface Settings {
     /**
      * Whether to enable accessibility enhanced keyboard navigation.
      */
-    enable_caret_browsing: boolean
-    /**
-     * Whether to enable accessibility enhanced keyboard navigation.
-     */
     enableCaretBrowsing: boolean
-    /**
-     * Determines whether or not developer tools, such as the Web Inspector, are enabled.
-     */
-    enable_developer_extras: boolean
     /**
      * Determines whether or not developer tools, such as the Web Inspector, are enabled.
      */
@@ -6607,21 +5968,7 @@ interface Settings {
      * Determines whether or not to prefetch domain names. DNS prefetching attempts
      * to resolve domain names before a user tries to follow a link.
      */
-    enable_dns_prefetching: boolean
-    /**
-     * Determines whether or not to prefetch domain names. DNS prefetching attempts
-     * to resolve domain names before a user tries to follow a link.
-     */
     enableDnsPrefetching: boolean
-    /**
-     * Enable or disable support for Encrypted Media API on pages.
-     * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
-     * This property will only work as intended if the EncryptedMedia feature is enabled at build time
-     * with the ENABLE_ENCRYPTED_MEDIA flag.
-     * 
-     * See https://www.w3.org/TR/encrypted-media/
-     */
-    enable_encrypted_media: boolean
     /**
      * Enable or disable support for Encrypted Media API on pages.
      * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
@@ -6636,20 +5983,7 @@ interface Settings {
      * to its contents, which will flatten all the frames to become one scrollable page.
      * On touch devices scrollable subframes on a page can result in a confusing user experience.
      */
-    enable_frame_flattening: boolean
-    /**
-     * Whether to enable the frame flattening. With this setting each subframe is expanded
-     * to its contents, which will flatten all the frames to become one scrollable page.
-     * On touch devices scrollable subframes on a page can result in a confusing user experience.
-     */
     enableFrameFlattening: boolean
-    /**
-     * Whether to enable the Javascript Fullscreen API. The API
-     * allows any HTML element to request fullscreen display. See also
-     * the current draft of the spec:
-     * http://www.w3.org/TR/fullscreen/
-     */
-    enable_fullscreen: boolean
     /**
      * Whether to enable the Javascript Fullscreen API. The API
      * allows any HTML element to request fullscreen display. See also
@@ -6660,19 +5994,7 @@ interface Settings {
     /**
      * Whether to enable HTML5 client-side SQL database support (IndexedDB).
      */
-    enable_html5_database: boolean
-    /**
-     * Whether to enable HTML5 client-side SQL database support (IndexedDB).
-     */
     enableHtml5Database: boolean
-    /**
-     * Whether to enable HTML5 local storage support. Local storage provides
-     * simple synchronous storage access.
-     * 
-     * HTML5 local storage specification is available at
-     * http://dev.w3.org/html5/webstorage/.
-     */
-    enable_html5_local_storage: boolean
     /**
      * Whether to enable HTML5 local storage support. Local storage provides
      * simple synchronous storage access.
@@ -6687,18 +6009,7 @@ interface Settings {
      * The hyperlink auditing specification is available at
      * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
      */
-    enable_hyperlink_auditing: boolean
-    /**
-     * Determines whether or not hyperlink auditing is enabled.
-     * 
-     * The hyperlink auditing specification is available at
-     * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
-     */
     enableHyperlinkAuditing: boolean
-    /**
-     * Determines whether or not Java is enabled on the page.
-     */
-    enable_java: boolean
     /**
      * Determines whether or not Java is enabled on the page.
      */
@@ -6706,17 +6017,7 @@ interface Settings {
     /**
      * Determines whether or not JavaScript executes within a page.
      */
-    enable_javascript: boolean
-    /**
-     * Determines whether or not JavaScript executes within a page.
-     */
     enableJavascript: boolean
-    /**
-     * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
-     * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
-     * executing JavaScript is still allowed if #WebKitSettings:enable-javascript is %TRUE.
-     */
-    enable_javascript_markup: boolean
     /**
      * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
      * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
@@ -6728,24 +6029,7 @@ interface Settings {
      * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
      * playback support disabled.
      */
-    enable_media: boolean
-    /**
-     * Enable or disable support for media playback on pages. This setting is enabled by
-     * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
-     * playback support disabled.
-     */
     enableMedia: boolean
-    /**
-     * Enable or disable support for MediaCapabilities on pages. This
-     * specification intends to provide APIs to allow websites to make an optimal
-     * decision when picking media content for the user. The APIs will expose
-     * information about the decoding and encoding capabilities for a given format
-     * but also output capabilities to find the best match based on the device’s
-     * display.
-     * 
-     * See also https://wicg.github.io/media-capabilities/
-     */
-    enable_media_capabilities: boolean
     /**
      * Enable or disable support for MediaCapabilities on pages. This
      * specification intends to provide APIs to allow websites to make an optimal
@@ -6764,23 +6048,7 @@ interface Settings {
      * 
      * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
      */
-    enable_media_stream: boolean
-    /**
-     * Enable or disable support for MediaStream on pages. MediaStream
-     * is an experimental proposal for allowing web pages to access
-     * audio and video devices for capture.
-     * 
-     * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
-     */
     enableMediaStream: boolean
-    /**
-     * Enable or disable support for MediaSource on pages. MediaSource
-     * extends HTMLMediaElement to allow JavaScript to generate media
-     * streams for playback.
-     * 
-     * See also http://www.w3.org/TR/media-source/
-     */
-    enable_mediasource: boolean
     /**
      * Enable or disable support for MediaSource on pages. MediaSource
      * extends HTMLMediaElement to allow JavaScript to generate media
@@ -6794,22 +6062,7 @@ interface Settings {
      * Microphone and Camera devices to be used as MediaStream
      * sources.
      */
-    enable_mock_capture_devices: boolean
-    /**
-     * Enable or disable the Mock Capture Devices. Those are fake
-     * Microphone and Camera devices to be used as MediaStream
-     * sources.
-     */
     enableMockCaptureDevices: boolean
-    /**
-     * Whether to enable HTML5 offline web application cache support. Offline
-     * web application cache allows web applications to run even when
-     * the user is not connected to the network.
-     * 
-     * HTML5 offline web application specification is available at
-     * http://dev.w3.org/html5/spec/offline.html.
-     */
-    enable_offline_web_application_cache: boolean
     /**
      * Whether to enable HTML5 offline web application cache support. Offline
      * web application cache allows web applications to run even when
@@ -6830,23 +6083,7 @@ interface Settings {
      * of caches and their purposes see:
      * http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
      */
-    enable_page_cache: boolean
-    /**
-     * Enable or disable the page cache. Disabling the page cache is
-     * generally only useful for special circumstances like low-memory
-     * scenarios or special purpose applications like static HTML
-     * viewers. This setting only controls the Page Cache, this cache
-     * is different than the disk-based or memory-based traditional
-     * resource caches, its point is to make going back and forth
-     * between pages much faster. For details about the different types
-     * of caches and their purposes see:
-     * http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
-     */
     enablePageCache: boolean
-    /**
-     * Determines whether or not plugins on the page are enabled.
-     */
-    enable_plugins: boolean
     /**
      * Determines whether or not plugins on the page are enabled.
      */
@@ -6855,16 +6092,7 @@ interface Settings {
      * Determines whether or not private browsing is enabled. Private browsing
      * will disable history, cache and form auto-fill for any pages visited.
      */
-    enable_private_browsing: boolean
-    /**
-     * Determines whether or not private browsing is enabled. Private browsing
-     * will disable history, cache and form auto-fill for any pages visited.
-     */
     enablePrivateBrowsing: boolean
-    /**
-     * Determines whether or not text areas can be resized.
-     */
-    enable_resizable_text_areas: boolean
     /**
      * Determines whether or not text areas can be resized.
      */
@@ -6877,33 +6105,11 @@ interface Settings {
      * workarounds. By turning on site-specific quirks, WebKit will
      * special-case this and other cases to make some specific sites work.
      */
-    enable_site_specific_quirks: boolean
-    /**
-     * Whether to turn on site-specific quirks. Turning this on will
-     * tell WebKit to use some site-specific workarounds for
-     * better web compatibility. For example, older versions of
-     * MediaWiki will incorrectly send to WebKit a CSS file with KHTML
-     * workarounds. By turning on site-specific quirks, WebKit will
-     * special-case this and other cases to make some specific sites work.
-     */
     enableSiteSpecificQuirks: boolean
     /**
      * Enable or disable smooth scrolling.
      */
-    enable_smooth_scrolling: boolean
-    /**
-     * Enable or disable smooth scrolling.
-     */
     enableSmoothScrolling: boolean
-    /**
-     * Whether to enable Spatial Navigation. This feature consists in the ability
-     * to navigate between focusable elements in a Web page, such as hyperlinks
-     * and form controls, by using Left, Right, Up and Down arrow keys.
-     * For example, if an user presses the Right key, heuristics determine whether
-     * there is an element they might be trying to reach towards the right, and if
-     * there are multiple elements, which element they probably wants.
-     */
-    enable_spatial_navigation: boolean
     /**
      * Whether to enable Spatial Navigation. This feature consists in the ability
      * to navigate between focusable elements in a Web page, such as hyperlinks
@@ -6919,13 +6125,6 @@ interface Settings {
      * in the page by pressing the tab key. If the selected element is editable,
      * then pressing tab key will insert the tab character.
      */
-    enable_tabs_to_links: boolean
-    /**
-     * Determines whether the tab key cycles through the elements on the page.
-     * When this setting is enabled, users will be able to focus the next element
-     * in the page by pressing the tab key. If the selected element is editable,
-     * then pressing tab key will insert the tab character.
-     */
     enableTabsToLinks: boolean
     /**
      * Enable or disable support for WebAudio on pages. WebAudio is an
@@ -6933,19 +6132,7 @@ interface Settings {
      * 
      * See also https://webaudio.github.io/web-audio-api
      */
-    enable_webaudio: boolean
-    /**
-     * Enable or disable support for WebAudio on pages. WebAudio is an
-     * API for processing and synthesizing audio in web applications
-     * 
-     * See also https://webaudio.github.io/web-audio-api
-     */
     enableWebaudio: boolean
-    /**
-     * Enable or disable support for WebGL on pages. WebGL enables web
-     * content to use an API based on OpenGL ES 2.0.
-     */
-    enable_webgl: boolean
     /**
      * Enable or disable support for WebGL on pages. WebGL enables web
      * content to use an API based on OpenGL ES 2.0.
@@ -6959,21 +6146,7 @@ interface Settings {
      * 
      * See also https://www.w3.org/TR/webrtc/
      */
-    enable_webrtc: boolean
-    /**
-     * Enable WebRTC support for loaded pages.
-     * 
-     * Enabling this setting implies that [property`Settings:`enable-media-stream]
-     * will be enabled as well.
-     * 
-     * See also https://www.w3.org/TR/webrtc/
-     */
     enableWebrtc: boolean
-    /**
-     * Enable or disable writing console messages to stdout. These are messages
-     * sent to the console with console.log and related methods.
-     */
-    enable_write_console_messages_to_stdout: boolean
     /**
      * Enable or disable writing console messages to stdout. These are messages
      * sent to the console with console.log and related methods.
@@ -6983,34 +6156,11 @@ interface Settings {
      * Whether to enable the XSS auditor. This feature filters some kinds of
      * reflective XSS attacks on vulnerable web sites.
      */
-    enable_xss_auditor: boolean
-    /**
-     * Whether to enable the XSS auditor. This feature filters some kinds of
-     * reflective XSS attacks on vulnerable web sites.
-     */
     enableXssAuditor: boolean
     /**
      * The font family used as the default for content using a fantasy font.
      */
-    fantasy_font_family: string | null
-    /**
-     * The font family used as the default for content using a fantasy font.
-     */
     fantasyFontFamily: string | null
-    /**
-     * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
-     * hardware acceleration. The default value %WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
-     * enables the hardware acceleration when the web contents request it.
-     * It's possible to enforce hardware acceleration to be always enabled
-     * by using %WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS. And it's also possible to disable it
-     * completely using %WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER. Note that disabling hardware
-     * acceleration might cause some websites to not render correctly or consume more CPU.
-     * 
-     * Note that changing this setting might not be possible if hardware acceleration is not
-     * supported by the hardware or the system. In that case you can get the value to know the
-     * actual policy being used, but changing the setting will not have any effect.
-     */
-    hardware_acceleration_policy: HardwareAccelerationPolicy
     /**
      * The #WebKitHardwareAccelerationPolicy to decide how to enable and disable
      * hardware acceleration. The default value %WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
@@ -7029,17 +6179,7 @@ interface Settings {
      * Whether JavaScript can access the clipboard. The default value is %FALSE. If
      * set to %TRUE, document.execCommand() allows cut, copy and paste commands.
      */
-    javascript_can_access_clipboard: boolean
-    /**
-     * Whether JavaScript can access the clipboard. The default value is %FALSE. If
-     * set to %TRUE, document.execCommand() allows cut, copy and paste commands.
-     */
     javascriptCanAccessClipboard: boolean
-    /**
-     * Whether JavaScript can open popup windows automatically without user
-     * intervention.
-     */
-    javascript_can_open_windows_automatically: boolean
     /**
      * Whether JavaScript can open popup windows automatically without user
      * intervention.
@@ -7049,28 +6189,12 @@ interface Settings {
      * Determines whether a site can load favicons irrespective
      * of the value of #WebKitSettings:auto-load-images.
      */
-    load_icons_ignoring_image_load_setting: boolean
-    /**
-     * Determines whether a site can load favicons irrespective
-     * of the value of #WebKitSettings:auto-load-images.
-     */
     loadIconsIgnoringImageLoadSetting: boolean
     /**
      * List of media content types requiring hardware support, split by semicolons (:).
      * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
      */
-    media_content_types_requiring_hardware_support: string | null
-    /**
-     * List of media content types requiring hardware support, split by semicolons (:).
-     * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
-     */
     mediaContentTypesRequiringHardwareSupport: string | null
-    /**
-     * Whether media playback is full-screen only or inline playback is allowed.
-     * This is %TRUE by default, so media playback can be inline. Setting it to
-     * %FALSE allows specifying that media playback should be always fullscreen.
-     */
-    media_playback_allows_inline: boolean
     /**
      * Whether media playback is full-screen only or inline playback is allowed.
      * This is %TRUE by default, so media playback can be inline. Setting it to
@@ -7084,21 +6208,7 @@ interface Settings {
      * Setting it on requires a gesture by the user to start playback, or to
      * load the media.
      */
-    media_playback_requires_user_gesture: boolean
-    /**
-     * Whether a user gesture (such as clicking the play button)
-     * would be required to start media playback or load media. This is off
-     * by default, so media playback could start automatically.
-     * Setting it on requires a gesture by the user to start playback, or to
-     * load the media.
-     */
     mediaPlaybackRequiresUserGesture: boolean
-    /**
-     * The minimum font size in pixels used to display text. This setting
-     * controls the absolute smallest size. Values other than 0 can
-     * potentially break page layouts.
-     */
-    minimum_font_size: number
     /**
      * The minimum font size in pixels used to display text. This setting
      * controls the absolute smallest size. Values other than 0 can
@@ -7108,15 +6218,7 @@ interface Settings {
     /**
      * The font family used as the default for content using a monospace font.
      */
-    monospace_font_family: string | null
-    /**
-     * The font family used as the default for content using a monospace font.
-     */
     monospaceFontFamily: string | null
-    /**
-     * The font family used as the default for content using a pictograph font.
-     */
-    pictograph_font_family: string | null
     /**
      * The font family used as the default for content using a pictograph font.
      */
@@ -7124,23 +6226,11 @@ interface Settings {
     /**
      * Whether background images should be drawn during printing.
      */
-    print_backgrounds: boolean
-    /**
-     * Whether background images should be drawn during printing.
-     */
     printBackgrounds: boolean
     /**
      * The font family used as the default for content using a sans-serif font.
      */
-    sans_serif_font_family: string | null
-    /**
-     * The font family used as the default for content using a sans-serif font.
-     */
     sansSerifFontFamily: string | null
-    /**
-     * The font family used as the default for content using a serif font.
-     */
-    serif_font_family: string | null
     /**
      * The font family used as the default for content using a serif font.
      */
@@ -7155,25 +6245,7 @@ interface Settings {
      * If this property is set to the empty string or %NULL, it will revert to the standard
      * user-agent.
      */
-    user_agent: string | null
-    /**
-     * The user-agent string used by WebKit. Unusual user-agent strings may cause web
-     * content to render incorrectly or fail to run, as many web pages are written to
-     * parse the user-agent strings of only the most popular browsers. Therefore, it's
-     * typically better to not completely override the standard user-agent, but to use
-     * webkit_settings_set_user_agent_with_application_details() instead.
-     * 
-     * If this property is set to the empty string or %NULL, it will revert to the standard
-     * user-agent.
-     */
     userAgent: string | null
-    /**
-     * Whether #WebKitWebView:zoom-level affects only the
-     * text of the page or all the contents. Other contents containing text
-     * like form controls will be also affected by zoom factor when
-     * this property is enabled.
-     */
-    zoom_text_only: boolean
     /**
      * Whether #WebKitWebView:zoom-level affects only the
      * text of the page or all the contents. Other contents containing text
@@ -8173,15 +7245,7 @@ interface URIResponse {
     /**
      * The expected content length of the response.
      */
-    readonly content_length: number
-    /**
-     * The expected content length of the response.
-     */
     readonly contentLength: number
-    /**
-     * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
-     */
-    readonly http_headers: Soup.MessageHeaders
     /**
      * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
      */
@@ -8189,23 +7253,11 @@ interface URIResponse {
     /**
      * The MIME type of the response.
      */
-    readonly mime_type: string | null
-    /**
-     * The MIME type of the response.
-     */
     readonly mimeType: string | null
     /**
      * The status code of the response as returned by the server.
      */
-    readonly status_code: number
-    /**
-     * The status code of the response as returned by the server.
-     */
     readonly statusCode: number
-    /**
-     * The suggested filename for the URI response.
-     */
-    readonly suggested_filename: string | null
     /**
      * The suggested filename for the URI response.
      */
@@ -8424,10 +7476,6 @@ module URISchemeResponse {
         /**
          * The input stream length in bytes, `-1` for unknown length.
          */
-        stream_length?: number | null
-        /**
-         * The input stream length in bytes, `-1` for unknown length.
-         */
         streamLength?: number | null
     }
 
@@ -8441,10 +7489,6 @@ interface URISchemeResponse {
      * The input stream to read from.
      */
     readonly stream: Gio.InputStream
-    /**
-     * The input stream length in bytes, `-1` for unknown length.
-     */
-    readonly stream_length: number
     /**
      * The input stream length in bytes, `-1` for unknown length.
      */
@@ -8972,15 +8016,7 @@ interface UserMediaPermissionRequest extends PermissionRequest {
     /**
      * Whether the media device to which the permission was requested has a microphone or not.
      */
-    readonly is_for_audio_device: boolean
-    /**
-     * Whether the media device to which the permission was requested has a microphone or not.
-     */
     readonly isForAudioDevice: boolean
-    /**
-     * Whether the media device to which the permission was requested has a video capture capability or not.
-     */
-    readonly is_for_video_device: boolean
     /**
      * Whether the media device to which the permission was requested has a video capture capability or not.
      */
@@ -9039,7 +8075,7 @@ module UserMessage {
         /**
          * The UNIX file descriptors of the user message.
          */
-        fd_list?: Gio.UnixFDList | null
+        fdList?: Gio.UnixFDList | null
         /**
          * The name of the user message.
          */
@@ -9050,10 +8086,6 @@ module UserMessage {
          * allowed.
          */
         parameters?: GLib.Variant | null
-        /**
-         * The UNIX file descriptors of the user message.
-         */
-        fdList?: Gio.UnixFDList | null
     }
 
 }
@@ -9062,10 +8094,6 @@ interface UserMessage {
 
     // Own properties of WebKit2-5.0.WebKit2.UserMessage
 
-    /**
-     * The UNIX file descriptors of the user message.
-     */
-    readonly fd_list: Gio.UnixFDList
     /**
      * The UNIX file descriptors of the user message.
      */
@@ -9227,39 +8255,6 @@ module WebContext {
         /**
          * The directory where local storage data will be saved.
          */
-        local_storage_directory?: string | null
-        /**
-         * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
-         */
-        memory_pressure_settings?: MemoryPressureSettings | null
-        /**
-         * Whether swap Web processes on cross-site navigations is enabled.
-         * 
-         * When enabled, pages from each security origin will be handled by
-         * their own separate Web processes, which are started (and
-         * terminated) on demand as the user navigates across different
-         * domains. This is an important security measure which helps prevent
-         * websites stealing data from other visited pages.
-         */
-        process_swap_on_cross_site_navigation_enabled?: boolean | null
-        /**
-         * The timezone override for this web context. Setting this property provides a better
-         * alternative to configure the timezone information for all webviews managed by the WebContext.
-         * The other, less optimal, approach is to globally set the TZ environment variable in the
-         * process before creating the context. However this approach might not be very convenient and
-         * can have side-effects in your application.
-         * 
-         * The expected values for this property are defined in the IANA timezone database. See this
-         * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
-         */
-        time_zone_override?: string | null
-        /**
-         * The #WebKitWebsiteDataManager associated with this context.
-         */
-        website_data_manager?: WebsiteDataManager | null
-        /**
-         * The directory where local storage data will be saved.
-         */
         localStorageDirectory?: string | null
         /**
          * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
@@ -9301,29 +8296,11 @@ interface WebContext {
     /**
      * The directory where local storage data will be saved.
      */
-    readonly local_storage_directory: string | null
-    /**
-     * The directory where local storage data will be saved.
-     */
     readonly localStorageDirectory: string | null
     /**
      * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
      */
-    readonly memory_pressure_settings: MemoryPressureSettings
-    /**
-     * The #WebKitMemoryPressureSettings applied to the web processes created by this context.
-     */
     readonly memoryPressureSettings: MemoryPressureSettings
-    /**
-     * Whether swap Web processes on cross-site navigations is enabled.
-     * 
-     * When enabled, pages from each security origin will be handled by
-     * their own separate Web processes, which are started (and
-     * terminated) on demand as the user navigates across different
-     * domains. This is an important security measure which helps prevent
-     * websites stealing data from other visited pages.
-     */
-    readonly process_swap_on_cross_site_navigation_enabled: boolean
     /**
      * Whether swap Web processes on cross-site navigations is enabled.
      * 
@@ -9344,22 +8321,7 @@ interface WebContext {
      * The expected values for this property are defined in the IANA timezone database. See this
      * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
      */
-    readonly time_zone_override: string | null
-    /**
-     * The timezone override for this web context. Setting this property provides a better
-     * alternative to configure the timezone information for all webviews managed by the WebContext.
-     * The other, less optimal, approach is to globally set the TZ environment variable in the
-     * process before creating the context. However this approach might not be very convenient and
-     * can have side-effects in your application.
-     * 
-     * The expected values for this property are defined in the IANA timezone database. See this
-     * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
-     */
     readonly timeZoneOverride: string | null
-    /**
-     * The #WebKitWebsiteDataManager associated with this context.
-     */
-    readonly website_data_manager: WebsiteDataManager
     /**
      * The #WebKitWebsiteDataManager associated with this context.
      */
@@ -9990,25 +8952,12 @@ interface WebInspector {
     /**
      * The height that the inspector view should have when it is attached.
      */
-    readonly attached_height: number
-    /**
-     * The height that the inspector view should have when it is attached.
-     */
     readonly attachedHeight: number
     /**
      * Whether the `inspector` can be attached to the same window that contains
      * the inspected view.
      */
-    readonly can_attach: boolean
-    /**
-     * Whether the `inspector` can be attached to the same window that contains
-     * the inspected view.
-     */
     readonly canAttach: boolean
-    /**
-     * The URI that is currently being inspected.
-     */
-    readonly inspected_uri: string | null
     /**
      * The URI that is currently being inspected.
      */
@@ -10553,136 +9502,6 @@ module WebView {
          * signal request. If the new WebView was added to a new tab of current browsing context window
          * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
          */
-        automation_presentation_type?: AutomationBrowsingContextPresentation | null
-        /**
-         * Capture state of the camera device. Whenever the user grants a media-request sent by the web
-         * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
-         * true})`) this property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-         * 
-         * The application can monitor this property and provide a visual indicator allowing to optionally
-         * deactivate or mute the capture device by setting this property respectively to
-         * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-         * 
-         * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-         * can still re-request the permission to the user. Permission desision caching is left to the
-         * application.
-         */
-        camera_capture_state?: MediaCaptureState | null
-        /**
-         * The default Content-Security-Policy used by the webview as if it were set
-         * by an HTTP header.
-         * 
-         * This applies to all content loaded including through navigation or via the various
-         * webkit_web_view_load_\* APIs. However do note that many WebKit APIs bypass
-         * Content-Security-Policy in general such as #WebKitUserContentManager and
-         * webkit_web_view_run_javascript().
-         * 
-         * Policies are additive so if a website sets its own policy it still applies
-         * on top of the policy set here.
-         */
-        default_content_security_policy?: string | null
-        /**
-         * Capture state of the display device. Whenever the user grants a media-request sent by the web
-         * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
-         * property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-         * 
-         * The application can monitor this property and provide a visual indicator allowing to
-         * optionally deactivate or mute the capture device by setting this property respectively to
-         * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-         * 
-         * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-         * can still re-request the permission to the user. Permission desision caching is left to the
-         * application.
-         */
-        display_capture_state?: MediaCaptureState | null
-        /**
-         * Whether the pages loaded inside #WebKitWebView are editable. For more
-         * information see webkit_web_view_set_editable().
-         */
-        editable?: boolean | null
-        /**
-         * Whether the #WebKitWebView is controlled by automation. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request.
-         */
-        is_controlled_by_automation?: boolean | null
-        /**
-         * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
-         * website data to the client storage, no matter what #WebKitWebsiteDataManager
-         * its context is using. This is normally used to implement private browsing mode.
-         * This is a %G_PARAM_CONSTRUCT_ONLY property, so you have to create an ephemeral
-         * #WebKitWebView and it can't be changed. The ephemeral #WebKitWebsiteDataManager
-         * created for the #WebKitWebView will inherit the network settings from the
-         * #WebKitWebContext<!-- -->'s #WebKitWebsiteDataManager. To use different settings
-         * you can get the #WebKitWebsiteDataManager with webkit_web_view_get_website_data_manager()
-         * and set the new ones.
-         * Note that all #WebKitWebView<!-- -->s created with an ephemeral #WebKitWebContext
-         * will be ephemeral automatically.
-         * See also webkit_web_context_new_ephemeral().
-         */
-        is_ephemeral?: boolean | null
-        /**
-         * Whether the #WebKitWebView audio is muted. When %TRUE, audio is silenced.
-         * It may still be playing, i.e. #WebKitWebView:is-playing-audio may be %TRUE.
-         */
-        is_muted?: boolean | null
-        /**
-         * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
-         * page, requesting audio capture capabilities (`navigator.mediaDevices.getUserMedia({audio:
-         * true})`) this property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-         * 
-         * The application can monitor this property and provide a visual indicator allowing to
-         * optionally deactivate or mute the capture device by setting this property respectively to
-         * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-         * 
-         * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-         * can still re-request the permission to the user. Permission desision caching is left to the
-         * application.
-         */
-        microphone_capture_state?: MediaCaptureState | null
-        /**
-         * The related #WebKitWebView used when creating the view to share the
-         * same web process. This property is not readable because the related
-         * web view is only valid during the object construction.
-         */
-        related_view?: WebView | null
-        /**
-         * The #WebKitSettings of the view.
-         */
-        settings?: Settings | null
-        /**
-         * The #WebKitUserContentManager of the view.
-         */
-        user_content_manager?: UserContentManager | null
-        /**
-         * The #WebKitWebContext of the view.
-         */
-        web_context?: WebContext | null
-        /**
-         * This configures `web_view` to treat the content as a WebExtension.
-         * 
-         * Note that this refers to the web standard [WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-         * and not WebKitWebExtensions.
-         * 
-         * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
-         * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
-         */
-        web_extension_mode?: WebExtensionMode | null
-        /**
-         * The #WebKitWebsitePolicies for the view.
-         */
-        website_policies?: WebsitePolicies | null
-        /**
-         * The zoom level of the #WebKitWebView content.
-         * See webkit_web_view_set_zoom_level() for more details.
-         */
-        zoom_level?: number | null
-        /**
-         * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request. If the new WebView was added to a new tab of current browsing context window
-         * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
-         */
         automationPresentationType?: AutomationBrowsingContextPresentation | null
         /**
          * Capture state of the camera device. Whenever the user grants a media-request sent by the web
@@ -10725,6 +9544,11 @@ module WebView {
          * application.
          */
         displayCaptureState?: MediaCaptureState | null
+        /**
+         * Whether the pages loaded inside #WebKitWebView are editable. For more
+         * information see webkit_web_view_set_editable().
+         */
+        editable?: boolean | null
         /**
          * Whether the #WebKitWebView is controlled by automation. This should only be used when
          * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
@@ -10772,6 +9596,10 @@ module WebView {
          */
         relatedView?: WebView | null
         /**
+         * The #WebKitSettings of the view.
+         */
+        settings?: Settings | null
+        /**
          * The #WebKitUserContentManager of the view.
          */
         userContentManager?: UserContentManager | null
@@ -10812,28 +9640,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * signal request. If the new WebView was added to a new tab of current browsing context window
      * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
      */
-    readonly automation_presentation_type: AutomationBrowsingContextPresentation
-    /**
-     * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
-     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-     * signal request. If the new WebView was added to a new tab of current browsing context window
-     * %WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB should be used.
-     */
     readonly automationPresentationType: AutomationBrowsingContextPresentation
-    /**
-     * Capture state of the camera device. Whenever the user grants a media-request sent by the web
-     * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
-     * true})`) this property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-     * 
-     * The application can monitor this property and provide a visual indicator allowing to optionally
-     * deactivate or mute the capture device by setting this property respectively to
-     * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-     * 
-     * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-     * can still re-request the permission to the user. Permission desision caching is left to the
-     * application.
-     */
-    camera_capture_state: MediaCaptureState
     /**
      * Capture state of the camera device. Whenever the user grants a media-request sent by the web
      * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
@@ -10860,34 +9667,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * Policies are additive so if a website sets its own policy it still applies
      * on top of the policy set here.
      */
-    readonly default_content_security_policy: string | null
-    /**
-     * The default Content-Security-Policy used by the webview as if it were set
-     * by an HTTP header.
-     * 
-     * This applies to all content loaded including through navigation or via the various
-     * webkit_web_view_load_\* APIs. However do note that many WebKit APIs bypass
-     * Content-Security-Policy in general such as #WebKitUserContentManager and
-     * webkit_web_view_run_javascript().
-     * 
-     * Policies are additive so if a website sets its own policy it still applies
-     * on top of the policy set here.
-     */
     readonly defaultContentSecurityPolicy: string | null
-    /**
-     * Capture state of the display device. Whenever the user grants a media-request sent by the web
-     * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
-     * property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-     * 
-     * The application can monitor this property and provide a visual indicator allowing to
-     * optionally deactivate or mute the capture device by setting this property respectively to
-     * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-     * 
-     * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-     * can still re-request the permission to the user. Permission desision caching is left to the
-     * application.
-     */
-    display_capture_state: MediaCaptureState
     /**
      * Capture state of the display device. Whenever the user grants a media-request sent by the web
      * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
@@ -10916,16 +9696,6 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * to be received for a document, including all its possible subresources
      * and child documents.
      */
-    readonly estimated_load_progress: number
-    /**
-     * An estimate of the percent completion for the current loading operation.
-     * This value will range from 0.0 to 1.0 and, once a load completes,
-     * will remain at 1.0 until a new load starts, at which point it
-     * will be reset to 0.0.
-     * The value is an estimate based on the total number of bytes expected
-     * to be received for a document, including all its possible subresources
-     * and child documents.
-     */
     readonly estimatedLoadProgress: number
     /**
      * The favicon currently associated to the #WebKitWebView.
@@ -10937,28 +9707,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
      * signal request.
      */
-    readonly is_controlled_by_automation: boolean
-    /**
-     * Whether the #WebKitWebView is controlled by automation. This should only be used when
-     * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-     * signal request.
-     */
     readonly isControlledByAutomation: boolean
-    /**
-     * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
-     * website data to the client storage, no matter what #WebKitWebsiteDataManager
-     * its context is using. This is normally used to implement private browsing mode.
-     * This is a %G_PARAM_CONSTRUCT_ONLY property, so you have to create an ephemeral
-     * #WebKitWebView and it can't be changed. The ephemeral #WebKitWebsiteDataManager
-     * created for the #WebKitWebView will inherit the network settings from the
-     * #WebKitWebContext<!-- -->'s #WebKitWebsiteDataManager. To use different settings
-     * you can get the #WebKitWebsiteDataManager with webkit_web_view_get_website_data_manager()
-     * and set the new ones.
-     * Note that all #WebKitWebView<!-- -->s created with an ephemeral #WebKitWebContext
-     * will be ephemeral automatically.
-     * See also webkit_web_context_new_ephemeral().
-     */
-    readonly is_ephemeral: boolean
     /**
      * Whether the #WebKitWebView is ephemeral. An ephemeral web view never writes
      * website data to the client storage, no matter what #WebKitWebsiteDataManager
@@ -10982,21 +9731,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * When the load operation finishes the property is set to %FALSE before
      * #WebKitWebView::load-changed is emitted with %WEBKIT_LOAD_FINISHED.
      */
-    readonly is_loading: boolean
-    /**
-     * Whether the #WebKitWebView is currently loading a page. This property becomes
-     * %TRUE as soon as a new load operation is requested and before the
-     * #WebKitWebView::load-changed signal is emitted with %WEBKIT_LOAD_STARTED and
-     * at that point the active URI is the requested one.
-     * When the load operation finishes the property is set to %FALSE before
-     * #WebKitWebView::load-changed is emitted with %WEBKIT_LOAD_FINISHED.
-     */
     readonly isLoading: boolean
-    /**
-     * Whether the #WebKitWebView audio is muted. When %TRUE, audio is silenced.
-     * It may still be playing, i.e. #WebKitWebView:is-playing-audio may be %TRUE.
-     */
-    is_muted: boolean
     /**
      * Whether the #WebKitWebView audio is muted. When %TRUE, audio is silenced.
      * It may still be playing, i.e. #WebKitWebView:is-playing-audio may be %TRUE.
@@ -11008,18 +9743,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * kind of audio. When a page is no longer playing any kind of sound,
      * the property is set back to %FALSE.
      */
-    readonly is_playing_audio: boolean
-    /**
-     * Whether the #WebKitWebView is currently playing audio from a page.
-     * This property becomes %TRUE as soon as web content starts playing any
-     * kind of audio. When a page is no longer playing any kind of sound,
-     * the property is set back to %FALSE.
-     */
     readonly isPlayingAudio: boolean
-    /**
-     * Whether the web process currently associated to the #WebKitWebView is responsive.
-     */
-    readonly is_web_process_responsive: boolean
     /**
      * Whether the web process currently associated to the #WebKitWebView is responsive.
      */
@@ -11037,35 +9761,11 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * can still re-request the permission to the user. Permission desision caching is left to the
      * application.
      */
-    microphone_capture_state: MediaCaptureState
-    /**
-     * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
-     * page, requesting audio capture capabilities (`navigator.mediaDevices.getUserMedia({audio:
-     * true})`) this property will be set to %WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE.
-     * 
-     * The application can monitor this property and provide a visual indicator allowing to
-     * optionally deactivate or mute the capture device by setting this property respectively to
-     * %WEBKIT_MEDIA_CAPTURE_STATE_NONE or %WEBKIT_MEDIA_CAPTURE_STATE_MUTED.
-     * 
-     * If the capture state of the device is set to %WEBKIT_MEDIA_CAPTURE_STATE_NONE the web-page
-     * can still re-request the permission to the user. Permission desision caching is left to the
-     * application.
-     */
     microphoneCaptureState: MediaCaptureState
     /**
      * The identifier of the #WebKitWebPage corresponding to the #WebKitWebView.
      */
-    readonly page_id: number
-    /**
-     * The identifier of the #WebKitWebPage corresponding to the #WebKitWebView.
-     */
     readonly pageId: number
-    /**
-     * The related #WebKitWebView used when creating the view to share the
-     * same web process. This property is not readable because the related
-     * web view is only valid during the object construction.
-     */
-    readonly related_view: WebView
     /**
      * The related #WebKitWebView used when creating the view to share the
      * same web process. This property is not readable because the related
@@ -11089,15 +9789,7 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
     /**
      * The #WebKitUserContentManager of the view.
      */
-    readonly user_content_manager: UserContentManager
-    /**
-     * The #WebKitUserContentManager of the view.
-     */
     readonly userContentManager: UserContentManager
-    /**
-     * The #WebKitWebContext of the view.
-     */
-    readonly web_context: WebContext
     /**
      * The #WebKitWebContext of the view.
      */
@@ -11111,30 +9803,11 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
      * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
      */
-    readonly web_extension_mode: WebExtensionMode
-    /**
-     * This configures `web_view` to treat the content as a WebExtension.
-     * 
-     * Note that this refers to the web standard [WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-     * and not WebKitWebExtensions.
-     * 
-     * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
-     * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
-     */
     readonly webExtensionMode: WebExtensionMode
     /**
      * The #WebKitWebsitePolicies for the view.
      */
-    readonly website_policies: WebsitePolicies
-    /**
-     * The #WebKitWebsitePolicies for the view.
-     */
     readonly websitePolicies: WebsitePolicies
-    /**
-     * The zoom level of the #WebKitWebView content.
-     * See webkit_web_view_set_zoom_level() for more details.
-     */
-    zoom_level: number
     /**
      * The zoom level of the #WebKitWebView content.
      * See webkit_web_view_set_zoom_level() for more details.
@@ -11525,6 +10198,15 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      */
     go_to_back_forward_list_item(list_item: BackForwardListItem): void
     /**
+     * Get whether a #WebKitWebView was created with #WebKitWebView:is-controlled-by-automation
+     * property enabled.
+     * 
+     * Only #WebKitWebView<!-- -->s controlled by automation can be used in an
+     * automation session.
+     * @returns %TRUE if @web_view is controlled by automation, or %FALSE otherwise.
+     */
+    is_controlled_by_automation(): boolean
+    /**
      * Gets whether the user is allowed to edit the HTML document.
      * 
      * When `web_view` is not editable an element in the HTML document can only be edited if the
@@ -11533,6 +10215,38 @@ interface WebView extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * @returns %TRUE if the user is allowed to edit the HTML document, or %FALSE otherwise.
      */
     is_editable(): boolean
+    /**
+     * Get whether a #WebKitWebView is ephemeral.
+     * 
+     * To create an ephemeral #WebKitWebView you need to
+     * use g_object_new() and pass is-ephemeral property with %TRUE value. See
+     * #WebKitWebView:is-ephemeral for more details.
+     * If `web_view` was created with a ephemeral #WebKitWebView:related-view or an
+     * ephemeral #WebKitWebView:web-context it will also be ephemeral.
+     * @returns %TRUE if @web_view is ephemeral or %FALSE otherwise.
+     */
+    is_ephemeral(): boolean
+    /**
+     * Gets the value of the #WebKitWebView:is-loading property.
+     * 
+     * You can monitor when a #WebKitWebView is loading a page by connecting to
+     * notify::is-loading signal of `web_view`. This is useful when you are
+     * interesting in knowing when the view is loading something but not in the
+     * details about the status of the load operation, for example to start a spinner
+     * when the view is loading a page and stop it when it finishes.
+     * @returns %TRUE if @web_view is loading a page or %FALSE otherwise.
+     */
+    is_loading(): boolean
+    /**
+     * Gets the value of the #WebKitWebView:is-playing-audio property.
+     * 
+     * You can monitor when a page in a #WebKitWebView is playing audio by
+     * connecting to the notify::is-playing-audio signal of `web_view`. This
+     * is useful when the application wants to provide visual feedback when a
+     * page is producing sound.
+     * @returns %TRUE if a page in @web_view is playing audio or %FALSE otherwise.
+     */
+    is_playing_audio(): boolean
     /**
      * Load the given `content` string for the URI `content_uri`.
      * 
@@ -12555,59 +11269,6 @@ module WebsiteDataManager {
          * The base directory for Website cache. This is used as a base directory
          * for any Website cache when no specific cache directory has been provided.
          */
-        base_cache_directory?: string | null
-        /**
-         * The base directory for Website data. This is used as a base directory
-         * for any Website data when no specific data directory has been provided.
-         */
-        base_data_directory?: string | null
-        /**
-         * The directory where HTTP disk cache will be stored.
-         */
-        disk_cache_directory?: string | null
-        /**
-         * The directory where DOM cache will be stored.
-         */
-        dom_cache_directory?: string | null
-        /**
-         * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
-         */
-        hsts_cache_directory?: string | null
-        /**
-         * The directory where IndexedDB databases will be stored.
-         */
-        indexeddb_directory?: string | null
-        /**
-         * Whether the #WebKitWebsiteDataManager is ephemeral. An ephemeral #WebKitWebsiteDataManager
-         * handles all websites data as non-persistent, and nothing will be written to the client
-         * storage. Note that if you create an ephemeral #WebKitWebsiteDataManager all other construction
-         * parameters to configure data directories will be ignored.
-         */
-        is_ephemeral?: boolean | null
-        /**
-         * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
-         */
-        itp_directory?: string | null
-        /**
-         * The directory where local storage data will be stored.
-         */
-        local_storage_directory?: string | null
-        /**
-         * The directory where offline web application cache will be stored.
-         */
-        offline_application_cache_directory?: string | null
-        /**
-         * The directory where service workers registrations will be stored.
-         */
-        service_worker_registrations_directory?: string | null
-        /**
-         * The directory where WebSQL databases will be stored.
-         */
-        websql_directory?: string | null
-        /**
-         * The base directory for Website cache. This is used as a base directory
-         * for any Website cache when no specific cache directory has been provided.
-         */
         baseCacheDirectory?: string | null
         /**
          * The base directory for Website data. This is used as a base directory
@@ -12669,17 +11330,7 @@ interface WebsiteDataManager {
      * The base directory for Website cache. This is used as a base directory
      * for any Website cache when no specific cache directory has been provided.
      */
-    readonly base_cache_directory: string | null
-    /**
-     * The base directory for Website cache. This is used as a base directory
-     * for any Website cache when no specific cache directory has been provided.
-     */
     readonly baseCacheDirectory: string | null
-    /**
-     * The base directory for Website data. This is used as a base directory
-     * for any Website data when no specific data directory has been provided.
-     */
-    readonly base_data_directory: string | null
     /**
      * The base directory for Website data. This is used as a base directory
      * for any Website data when no specific data directory has been provided.
@@ -12688,15 +11339,7 @@ interface WebsiteDataManager {
     /**
      * The directory where HTTP disk cache will be stored.
      */
-    readonly disk_cache_directory: string | null
-    /**
-     * The directory where HTTP disk cache will be stored.
-     */
     readonly diskCacheDirectory: string | null
-    /**
-     * The directory where DOM cache will be stored.
-     */
-    readonly dom_cache_directory: string | null
     /**
      * The directory where DOM cache will be stored.
      */
@@ -12704,15 +11347,7 @@ interface WebsiteDataManager {
     /**
      * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
      */
-    readonly hsts_cache_directory: string | null
-    /**
-     * The directory where the HTTP Strict-Transport-Security (HSTS) cache will be stored.
-     */
     readonly hstsCacheDirectory: string | null
-    /**
-     * The directory where IndexedDB databases will be stored.
-     */
-    readonly indexeddb_directory: string | null
     /**
      * The directory where IndexedDB databases will be stored.
      */
@@ -12723,18 +11358,7 @@ interface WebsiteDataManager {
      * storage. Note that if you create an ephemeral #WebKitWebsiteDataManager all other construction
      * parameters to configure data directories will be ignored.
      */
-    readonly is_ephemeral: boolean
-    /**
-     * Whether the #WebKitWebsiteDataManager is ephemeral. An ephemeral #WebKitWebsiteDataManager
-     * handles all websites data as non-persistent, and nothing will be written to the client
-     * storage. Note that if you create an ephemeral #WebKitWebsiteDataManager all other construction
-     * parameters to configure data directories will be ignored.
-     */
     readonly isEphemeral: boolean
-    /**
-     * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
-     */
-    readonly itp_directory: string | null
     /**
      * The directory where Intelligent Tracking Prevention (ITP) data will be stored.
      */
@@ -12742,15 +11366,7 @@ interface WebsiteDataManager {
     /**
      * The directory where local storage data will be stored.
      */
-    readonly local_storage_directory: string | null
-    /**
-     * The directory where local storage data will be stored.
-     */
     readonly localStorageDirectory: string | null
-    /**
-     * The directory where offline web application cache will be stored.
-     */
-    readonly offline_application_cache_directory: string | null
     /**
      * The directory where offline web application cache will be stored.
      */
@@ -12758,15 +11374,7 @@ interface WebsiteDataManager {
     /**
      * The directory where service workers registrations will be stored.
      */
-    readonly service_worker_registrations_directory: string | null
-    /**
-     * The directory where service workers registrations will be stored.
-     */
     readonly serviceWorkerRegistrationsDirectory: string | null
-    /**
-     * The directory where WebSQL databases will be stored.
-     */
-    readonly websql_directory: string | null
     /**
      * The directory where WebSQL databases will be stored.
      */
@@ -12912,6 +11520,13 @@ interface WebsiteDataManager {
      * @returns the directory where WebSQL databases are stored or %NULL if @manager is ephemeral.
      */
     get_websql_directory(): string | null
+    /**
+     * Get whether a #WebKitWebsiteDataManager is ephemeral.
+     * 
+     * See #WebKitWebsiteDataManager:is-ephemeral for more details.
+     * @returns %TRUE if @manager is ephemeral or %FALSE otherwise.
+     */
+    is_ephemeral(): boolean
     /**
      * Asynchronously removes the website data in the given `website_data` list.
      * 
@@ -13186,35 +11801,15 @@ module WindowProperties {
         /**
          * Whether the locationbar should be visible for the window.
          */
-        locationbar_visible?: boolean | null
-        /**
-         * Whether the menubar should be visible for the window.
-         */
-        menubar_visible?: boolean | null
-        /**
-         * Whether the window can be resized.
-         */
-        resizable?: boolean | null
-        /**
-         * Whether the scrollbars should be visible for the window.
-         */
-        scrollbars_visible?: boolean | null
-        /**
-         * Whether the statusbar should be visible for the window.
-         */
-        statusbar_visible?: boolean | null
-        /**
-         * Whether the toolbar should be visible for the window.
-         */
-        toolbar_visible?: boolean | null
-        /**
-         * Whether the locationbar should be visible for the window.
-         */
         locationbarVisible?: boolean | null
         /**
          * Whether the menubar should be visible for the window.
          */
         menubarVisible?: boolean | null
+        /**
+         * Whether the window can be resized.
+         */
+        resizable?: boolean | null
         /**
          * Whether the scrollbars should be visible for the window.
          */
@@ -13246,15 +11841,7 @@ interface WindowProperties {
     /**
      * Whether the locationbar should be visible for the window.
      */
-    readonly locationbar_visible: boolean
-    /**
-     * Whether the locationbar should be visible for the window.
-     */
     readonly locationbarVisible: boolean
-    /**
-     * Whether the menubar should be visible for the window.
-     */
-    readonly menubar_visible: boolean
     /**
      * Whether the menubar should be visible for the window.
      */
@@ -13266,23 +11853,11 @@ interface WindowProperties {
     /**
      * Whether the scrollbars should be visible for the window.
      */
-    readonly scrollbars_visible: boolean
-    /**
-     * Whether the scrollbars should be visible for the window.
-     */
     readonly scrollbarsVisible: boolean
     /**
      * Whether the statusbar should be visible for the window.
      */
-    readonly statusbar_visible: boolean
-    /**
-     * Whether the statusbar should be visible for the window.
-     */
     readonly statusbarVisible: boolean
-    /**
-     * Whether the toolbar should be visible for the window.
-     */
-    readonly toolbar_visible: boolean
     /**
      * Whether the toolbar should be visible for the window.
      */

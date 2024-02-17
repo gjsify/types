@@ -664,7 +664,7 @@ export module Document {
         /**
          * The document's content type.
          */
-        contentType?: string | null
+        content_type?: string | null
     }
 
 }
@@ -939,7 +939,7 @@ export module EncodingsComboBox {
          * %FALSE, the combo box is used for loading a content (e.g. a file)
          * and the row "Automatically Detected" is added.
          */
-        saveMode?: boolean | null
+        save_mode?: boolean | null
     }
 
 }
@@ -1496,7 +1496,7 @@ export module Message {
          * The messages method.
          */
         method?: string | null
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -2289,7 +2289,7 @@ export module Tab {
         // Own constructor properties of Gedit-3.0.Gedit.Tab
 
         autosave?: boolean | null
-        autosaveInterval?: number | null
+        autosave_interval?: number | null
     }
 
 }

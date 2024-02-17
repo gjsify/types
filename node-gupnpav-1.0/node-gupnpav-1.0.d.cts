@@ -402,11 +402,11 @@ export module DIDLLiteContainer {
         /**
          * The child count of this container.
          */
-        childCount?: number | null
+        child_count?: number | null
         /**
          * Update ID of this container.
          */
-        containerUpdateId?: number | null
+        container_update_id?: number | null
         /**
          * Whether this container is searchable.
          */
@@ -414,11 +414,11 @@ export module DIDLLiteContainer {
         /**
          * The number of bytes used by all child items of this container.
          */
-        storageUsed?: number | null
+        storage_used?: number | null
         /**
          * Total deleted child count of this container.
          */
-        totalDeletedChildCount?: number | null
+        total_deleted_child_count?: number | null
     }
 
 }
@@ -744,7 +744,7 @@ export module DIDLLiteContributor {
         /**
          * The pointer to object node in XML document.
          */
-        xmlNode?: any | null
+        xml_node?: any | null
     }
 
 }
@@ -856,15 +856,15 @@ export module DIDLLiteCreateClass {
         /**
          * The friendly name of this create Class.
          */
-        friendlyName?: string | null
+        friendly_name?: string | null
         /**
          * Whether this create Class can be derived.
          */
-        includeDerived?: boolean | null
+        include_derived?: boolean | null
         /**
          * The pointer to desc node in XML document.
          */
-        xmlNode?: any | null
+        xml_node?: any | null
     }
 
 }
@@ -999,15 +999,15 @@ export module DIDLLiteDescriptor {
         /**
          * The type of this descriptor.
          */
-        metadataType?: string | null
+        metadata_type?: string | null
         /**
          * The name space associated with this descriptor.
          */
-        nameSpace?: string | null
+        name_space?: string | null
         /**
          * The pointer to desc node in XML document.
          */
-        xmlNode?: any | null
+        xml_node?: any | null
     }
 
 }
@@ -1159,7 +1159,7 @@ export module DIDLLiteItem {
         /**
          * The ref ID of this item.
          */
-        refId?: string | null
+        ref_id?: string | null
     }
 
 }
@@ -1359,7 +1359,7 @@ export module DIDLLiteObject {
         /**
          * The URI to album art of this object.
          */
-        albumArt?: string | null
+        album_art?: string | null
         /**
          * The artist of this object.
          */
@@ -1380,7 +1380,7 @@ export module DIDLLiteObject {
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
          */
-        dcNamespace?: any | null
+        dc_namespace?: any | null
         /**
          * The description of this object.
          */
@@ -1388,12 +1388,12 @@ export module DIDLLiteObject {
         /**
          * The 'dlna:dlnaManaged' attribute.
          */
-        dlnaManaged?: OCMFlags | null
+        dlna_managed?: OCMFlags | null
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
          */
-        dlnaNamespace?: any | null
+        dlna_namespace?: any | null
         /**
          * The genre of this object.
          */
@@ -1405,12 +1405,12 @@ export module DIDLLiteObject {
         /**
          * The ID of the parent container of this object.
          */
-        parentId?: string | null
+        parent_id?: string | null
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
          */
-        pvNamespace?: any | null
+        pv_namespace?: any | null
         /**
          * Whether this object is restricted.
          */
@@ -1422,28 +1422,28 @@ export module DIDLLiteObject {
         /**
          * The original track number of this object.
          */
-        trackNumber?: number | null
+        track_number?: number | null
         /**
          * Update ID of this object.
          */
-        updateId?: number | null
+        update_id?: number | null
         /**
          * The UPnP class of this object.
          */
-        upnpClass?: string | null
+        upnp_class?: string | null
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
          */
-        upnpNamespace?: any | null
+        upnp_namespace?: any | null
         /**
          * The write status of this object.
          */
-        writeStatus?: string | null
+        write_status?: string | null
         /**
          * The pointer to object node in XML document.
          */
-        xmlNode?: any | null
+        xml_node?: any | null
     }
 
 }
@@ -2149,7 +2149,7 @@ export module DIDLLiteResource {
         /**
          * The number of audio channels in this resource.
          */
-        audioChannels?: number | null
+        audio_channels?: number | null
         /**
          * The bitrate of this resource.
          */
@@ -2157,17 +2157,17 @@ export module DIDLLiteResource {
         /**
          * The sample size of this resource.
          */
-        bitsPerSample?: number | null
-        cleartextSize?: number | null
+        bits_per_sample?: number | null
+        cleartext_size?: number | null
         /**
          * The color-depth of this image/video resource.
          */
-        colorDepth?: number | null
+        color_depth?: number | null
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
          */
-        dlnaNamespace?: any | null
+        dlna_namespace?: any | null
         /**
          * The duration (in seconds) of this resource.
          */
@@ -2179,7 +2179,7 @@ export module DIDLLiteResource {
         /**
          * The Import URI associated with this resource.
          */
-        importUri?: string | null
+        import_uri?: string | null
         /**
          * The protection system used for this resource.
          */
@@ -2187,16 +2187,16 @@ export module DIDLLiteResource {
         /**
          * The protocol info associated with this resource.
          */
-        protocolInfo?: ProtocolInfo | null
+        protocol_info?: ProtocolInfo | null
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
          */
-        pvNamespace?: any | null
+        pv_namespace?: any | null
         /**
          * The sample frequency of this resource.
          */
-        sampleFreq?: number | null
+        sample_freq?: number | null
         /**
          * The size (in bytes) of this resource.
          */
@@ -2208,16 +2208,16 @@ export module DIDLLiteResource {
         /**
          * Type of external subtitle file. Usually SRT or SMI.
          */
-        subtitleFileType?: string | null
+        subtitle_file_type?: string | null
         /**
          * Uri to external subtitle file.
          */
-        subtitleFileUri?: string | null
+        subtitle_file_uri?: string | null
         /**
          * Number of tracks in a DIDL_S or DIDL_V resource.
          */
-        trackTotal?: number | null
-        updateCount?: number | null
+        track_total?: number | null
+        update_count?: number | null
         /**
          * The URI associated with this resource.
          */
@@ -2229,7 +2229,7 @@ export module DIDLLiteResource {
         /**
          * The pointer to res node in XML document.
          */
-        xmlNode?: any | null
+        xml_node?: any | null
     }
 
 }
@@ -2845,7 +2845,7 @@ export module Feature {
         /**
          * The object IDs related to this feature.
          */
-        objectIds?: string | null
+        object_ids?: string | null
         /**
          * The version of this feature.
          */
@@ -3188,23 +3188,23 @@ export module ProtocolInfo {
         /**
          * The DLNA conversion flags.
          */
-        dlnaConversion?: DLNAConversion | null
+        dlna_conversion?: DLNAConversion | null
         /**
          * Various generic DLNA flags.
          */
-        dlnaFlags?: DLNAFlags | null
+        dlna_flags?: DLNAFlags | null
         /**
          * The DLNA operation flags.
          */
-        dlnaOperation?: DLNAOperation | null
+        dlna_operation?: DLNAOperation | null
         /**
          * The DLNA profile of this info.
          */
-        dlnaProfile?: string | null
+        dlna_profile?: string | null
         /**
          * The MIME-type of this info.
          */
-        mimeType?: string | null
+        mime_type?: string | null
         /**
          * The network this info is associated with.
          */
@@ -3213,7 +3213,7 @@ export module ProtocolInfo {
          * The allowed play speeds on this info in the form of array of
          * strings.
          */
-        playSpeeds?: string[] | null
+        play_speeds?: string[] | null
         /**
          * The protocol of this info.
          */

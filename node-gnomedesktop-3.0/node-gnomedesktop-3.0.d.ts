@@ -108,21 +108,6 @@ function getCountryFromCode(code: string, translation: string | null): string | 
  */
 function getCountryFromLocale(locale: string, translation: string | null): string | null
 /**
- * Asynchronously fetches a list of of default input sources based on locale and system
- * configuration. This is for when a user has no input sources configured
- * in GSettings.
- * @param cancellable a #GCancellable
- * @param callback a #GAsyncReadyCallback
- */
-function getDefaultInputSources(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-/**
- * Returns a whether or not a list of default input sources based on locale and system
- * configuration could be retrieved. This is for when a user has no input sources configured
- * in GSettings.
- * @param result 
- */
-function getDefaultInputSourcesFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ids */ string[], /* types */ string[], /* options */ string[] ]
-/**
  * Gets the default input source's type and identifier for a given
  * locale.
  * @param locale a locale string
@@ -162,13 +147,6 @@ function getPlatformVersion(): number
  * @returns the translated modifier string. Caller takes ownership.
  */
 function getTranslatedModifier(modifier: string, translation: string | null): string | null
-/**
- * Returns whether or not the input source has the ability to enter latin characters.
- * @param type an input source type (e.g., "xkb" or "ibus")
- * @param id an input source id (e.g., "us+dvorak" or "anthy")
- * @returns %TRUE if it can't enter latin characters
- */
-function inputSourceIsNonLatin(type: string, id: string): boolean
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string
@@ -1133,8 +1111,8 @@ module RRScreen {
 
         // Own constructor properties of GnomeDesktop-3.0.GnomeDesktop.RRScreen
 
-        dpmsMode?: RRDpmsModeType | null
-        gdkScreen?: Gdk.Screen | null
+        dpms_mode?: RRDpmsModeType | null
+        gdk_screen?: Gdk.Screen | null
     }
 
 }
@@ -1280,12 +1258,12 @@ module WallClock {
          * 'clock' property will always be updated every second, irrespective of
          * system configuration.
          */
-        forceSeconds?: boolean | null
+        force_seconds?: boolean | null
         /**
          * If %TRUE, the formatted clock will never include a date or the
          * day of the week, irrespective of configuration.
          */
-        timeOnly?: boolean | null
+        time_only?: boolean | null
     }
 
 }

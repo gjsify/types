@@ -256,7 +256,7 @@ module X11DeviceXI2 {
 
         // Own constructor properties of GdkX11-4.0.GdkX11.X11DeviceXI2
 
-        deviceId?: number | null
+        device_id?: number | null
     }
 
 }

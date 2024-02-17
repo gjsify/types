@@ -1,13 +1,19 @@
 {
     "name": "@girs/cally-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Cally-11, generated from library version 11.0.0",
     "type": "module",
     "module": "cally-11.js",
     "main": "cally-11.js",
     "exports": {
-        "./ambient": "./cally-11-ambient.d.ts",
-        "./import": "./cally-11-import.d.ts",
+        "./ambient": {
+            "types": "./cally-11-ambient.d.ts",
+            "default": "./cally-11-ambient.js"
+        },
+        "./import": {
+            "types": "./cally-11-import.d.ts",
+            "default": "./cally-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./cally-11.d.ts",

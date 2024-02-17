@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-adw-1)
 
 
-Node.js TypeScript type definitions for Adw-1, generated from library version 1.4.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for Adw-1, generated from library version 1.4.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 Building blocks for modern GNOME applications
 

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-handy-1)
 
 
-Node.js TypeScript type definitions for Handy-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for Handy-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 Building blocks for modern adaptive GNOME apps
 

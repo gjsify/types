@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gucharmap-2.90",
-    "version": "2.90.0-3.2.7",
+    "version": "2.90.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gucharmap-2.90, generated from library version 2.90.0",
     "type": "module",
     "module": "node-gucharmap-2.90.js",
     "main": "node-gucharmap-2.90.js",
     "exports": {
-        "./ambient": "./node-gucharmap-2.90-ambient.d.ts",
-        "./import": "./node-gucharmap-2.90-import.d.ts",
+        "./ambient": {
+            "types": "./node-gucharmap-2.90-ambient.d.ts",
+            "default": "./node-gucharmap-2.90-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gucharmap-2.90-import.d.ts",
+            "default": "./node-gucharmap-2.90-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gucharmap-2.90.d.ts",

@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-folkseds-0.7",
-    "version": "0.7.0-3.2.7",
+    "version": "0.7.0-3.2.8",
     "description": "Node.js TypeScript type definitions for FolksEds-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "node-folkseds-0.7.js",
     "main": "node-folkseds-0.7.js",
     "exports": {
-        "./ambient": "./node-folkseds-0.7-ambient.d.ts",
-        "./import": "./node-folkseds-0.7-import.d.ts",
+        "./ambient": {
+            "types": "./node-folkseds-0.7-ambient.d.ts",
+            "default": "./node-folkseds-0.7-ambient.js"
+        },
+        "./import": {
+            "types": "./node-folkseds-0.7-import.d.ts",
+            "default": "./node-folkseds-0.7-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-folkseds-0.7.d.ts",

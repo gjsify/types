@@ -1908,10 +1908,10 @@ export module Category {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Category
 
-        catId?: string | null
+        cat_id?: string | null
         icon?: string | null
         name?: string | null
-        parentId?: string | null
+        parent_id?: string | null
         summary?: string | null
     }
 
@@ -2063,8 +2063,8 @@ export module Client {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Client
 
         background?: boolean | null
-        cacheAge?: number | null
-        detailsWithDepsSize?: boolean | null
+        cache_age?: number | null
+        details_with_deps_size?: boolean | null
         interactive?: boolean | null
         locale?: string | null
     }
@@ -3103,16 +3103,16 @@ export module Control {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Control
 
-        backendAuthor?: string | null
-        backendDescription?: string | null
-        backendName?: string | null
+        backend_author?: string | null
+        backend_description?: string | null
+        backend_name?: string | null
         connected?: boolean | null
-        distroId?: string | null
+        distro_id?: string | null
         filters?: number | null
         groups?: number | null
         locked?: boolean | null
-        mimeTypes?: string[] | null
-        networkState?: NetworkEnum | null
+        mime_types?: string[] | null
+        network_state?: NetworkEnum | null
         provides?: number | null
         roles?: number | null
     }
@@ -3547,10 +3547,10 @@ export module Details {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Details
 
         description?: string | null
-        downloadSize?: number | null
+        download_size?: number | null
         group?: GroupEnum | null
         license?: string | null
-        packageId?: string | null
+        package_id?: string | null
         size?: number | null
         summary?: string | null
         url?: string | null
@@ -3914,19 +3914,19 @@ export module EulaRequired {
         /**
          * ID for this EULA.
          */
-        eulaId?: string | null
+        eula_id?: string | null
         /**
          * The text of the license agreement.
          */
-        licenseAgreement?: string | null
+        license_agreement?: string | null
         /**
          * PackageID this EULA is for.
          */
-        packageId?: string | null
+        package_id?: string | null
         /**
          * Vendor this EULA is from.
          */
-        vendorName?: string | null
+        vendor_name?: string | null
     }
 
 }
@@ -4053,7 +4053,7 @@ export module Files {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Files
 
         files?: string[] | null
-        packageId?: string | null
+        package_id?: string | null
     }
 
 }
@@ -4145,7 +4145,7 @@ export module ItemProgress {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.ItemProgress
 
-        packageId?: string | null
+        package_id?: string | null
         percentage?: number | null
         status?: number | null
     }
@@ -4260,9 +4260,9 @@ export module MediaChangeRequired {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.MediaChangeRequired
 
-        mediaId?: string | null
-        mediaText?: string | null
-        mediaType?: MediaTypeEnum | null
+        media_id?: string | null
+        media_text?: string | null
+        media_type?: MediaTypeEnum | null
     }
 
 }
@@ -4363,22 +4363,22 @@ export module Package {
         license?: string | null
         size?: number | null
         summary?: string | null
-        updateBugzillaUrls?: string[] | null
-        updateChangelog?: string | null
-        updateCveUrls?: string[] | null
-        updateIssued?: string | null
-        updateObsoletes?: string | null
-        updateRestart?: RestartEnum | null
+        update_bugzilla_urls?: string[] | null
+        update_changelog?: string | null
+        update_cve_urls?: string[] | null
+        update_issued?: string | null
+        update_obsoletes?: string | null
+        update_restart?: RestartEnum | null
         /**
          * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
          * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
          */
-        updateSeverity?: InfoEnum | null
-        updateState?: UpdateStateEnum | null
-        updateText?: string | null
-        updateUpdated?: string | null
-        updateUpdates?: string | null
-        updateVendorUrls?: string[] | null
+        update_severity?: InfoEnum | null
+        update_state?: UpdateStateEnum | null
+        update_text?: string | null
+        update_updated?: string | null
+        update_updates?: string | null
+        update_vendor_urls?: string[] | null
         url?: string | null
     }
 
@@ -4984,23 +4984,23 @@ export module Progress {
         /**
          * %TRUE if this transaction can be cancelled.
          */
-        allowCancel?: boolean | null
+        allow_cancel?: boolean | null
         /**
          * %TRUE if the transaction caller is still connected.
          */
-        callerActive?: boolean | null
+        caller_active?: boolean | null
         /**
          * Number of bytes remaining to download.
          */
-        downloadSizeRemaining?: number | null
+        download_size_remaining?: number | null
         /**
          * Amount of time the transaction has taken in seconds.
          */
-        elapsedTime?: number | null
+        elapsed_time?: number | null
         /**
          * Item progress associated with this transaction.
          */
-        itemProgress?: ItemProgress | null
+        item_progress?: ItemProgress | null
         /**
          * The package this transaction is acting on.
          */
@@ -5008,7 +5008,7 @@ export module Progress {
         /**
          * Package ID this transaction is acting on.
          */
-        packageId?: string | null
+        package_id?: string | null
         /**
          * Percentage complete of this transaction.
          */
@@ -5016,7 +5016,7 @@ export module Progress {
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
          */
-        remainingTime?: number | null
+        remaining_time?: number | null
         /**
          * Role of this transaction.
          */
@@ -5036,11 +5036,11 @@ export module Progress {
         /**
          * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
          */
-        transactionFlags?: number | null
+        transaction_flags?: number | null
         /**
          * ID used by this transaction.
          */
-        transactionId?: string | null
+        transaction_id?: string | null
         /**
          * The UID that started this transaction.
          */
@@ -5434,7 +5434,7 @@ export module RepoDetail {
 
         description?: string | null
         enabled?: boolean | null
-        repoId?: string | null
+        repo_id?: string | null
     }
 
 }
@@ -5537,13 +5537,13 @@ export module RepoSignatureRequired {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.RepoSignatureRequired
 
-        keyFingerprint?: string | null
-        keyId?: string | null
-        keyTimestamp?: string | null
-        keyUrl?: string | null
-        keyUserid?: string | null
-        packageId?: string | null
-        repositoryName?: string | null
+        key_fingerprint?: string | null
+        key_id?: string | null
+        key_timestamp?: string | null
+        key_url?: string | null
+        key_userid?: string | null
+        package_id?: string | null
+        repository_name?: string | null
         type?: SigTypeEnum | null
     }
 
@@ -5659,7 +5659,7 @@ export module RequireRestart {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.RequireRestart
 
-        packageId?: string | null
+        package_id?: string | null
         restart?: RestartEnum | null
     }
 
@@ -5748,7 +5748,7 @@ export module Results {
         /**
          * A #PkBitfield containing #PkTransactionFlagEnum for this result.
          */
-        transactionFlags?: number | null
+        transaction_flags?: number | null
     }
 
 }
@@ -6022,7 +6022,7 @@ export module Source {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Source
 
         role?: RoleEnum | null
-        transactionId?: string | null
+        transaction_id?: string | null
     }
 
 }
@@ -6090,19 +6090,19 @@ export module Task {
         /**
          * %TRUE if package downgrades are allowed.
          */
-        allowDowngrade?: boolean | null
+        allow_downgrade?: boolean | null
         /**
          * %TRUE if package reinstallation shall be allowed during transaction.
          */
-        allowReinstall?: boolean | null
+        allow_reinstall?: boolean | null
         /**
          * %TRUE if we are just preparing the transaction for later.
          */
-        onlyDownload?: boolean | null
+        only_download?: boolean | null
         /**
          * %TRUE if only authenticated packages should be allowed in the transaction.
          */
-        onlyTrusted?: boolean | null
+        only_trusted?: boolean | null
         /**
          * %TRUE if we are simulating.
          */
@@ -7123,18 +7123,18 @@ export module UpdateDetail {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.UpdateDetail
 
-        bugzillaUrls?: string[] | null
+        bugzilla_urls?: string[] | null
         changelog?: string | null
-        cveUrls?: string[] | null
+        cve_urls?: string[] | null
         issued?: string | null
         obsoletes?: string[] | null
-        packageId?: string | null
+        package_id?: string | null
         restart?: RestartEnum | null
         state?: UpdateStateEnum | null
-        updateText?: string | null
+        update_text?: string | null
         updated?: string | null
         updates?: string[] | null
-        vendorUrls?: string[] | null
+        vendor_urls?: string[] | null
     }
 
 }

@@ -538,7 +538,7 @@ export module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        applicationWindow?: Gtk.ApplicationWindow | null
+        application_window?: Gtk.ApplicationWindow | null
         /**
          * The #GtkStatusbar. %NULL by default.
          */
@@ -687,7 +687,7 @@ export module Buffer {
          * When the #GtkSourceBuffer:style-scheme is %NULL,
          * #GtefBuffer:gtef-style-scheme-id contains the empty string.
          */
-        gtefStyleSchemeId?: string | null
+        gtef_style_scheme_id?: string | null
     }
 
 }
@@ -1106,7 +1106,7 @@ export module FileLoader {
          * A small chunk size is better when loading a remote file with a slow
          * connection. For local files, the chunk size can be larger.
          */
-        chunkSize?: number | null
+        chunk_size?: number | null
         /**
          * The #GtefFile. The #GtefFileLoader object has a weak
          * reference to the file.
@@ -1124,7 +1124,7 @@ export module FileLoader {
          * 
          * Set to -1 for unlimited size.
          */
-        maxSize?: number | null
+        max_size?: number | null
     }
 
 }
@@ -1444,7 +1444,7 @@ export module FileSaver {
         /**
          * The compression type.
          */
-        compressionType?: GtkSource.CompressionType | null
+        compression_type?: GtkSource.CompressionType | null
         /**
          * The file's encoding.
          */
@@ -1466,7 +1466,7 @@ export module FileSaver {
         /**
          * The newline type.
          */
-        newlineType?: GtkSource.NewlineType | null
+        newline_type?: GtkSource.NewlineType | null
     }
 
 }
@@ -2378,7 +2378,7 @@ export module MenuShell {
         /**
          * The #GtkMenuShell.
          */
-        menuShell?: Gtk.MenuShell | null
+        menu_shell?: Gtk.MenuShell | null
     }
 
 }

@@ -2321,11 +2321,11 @@ module Document {
         /**
          * The date the document was created as seconds since the Epoch, or -1
          */
-        creationDate?: number | null
+        creation_date?: number | null
         /**
          * The #GDateTime the document was created.
          */
-        creationDatetime?: GLib.DateTime | null
+        creation_datetime?: GLib.DateTime | null
         /**
          * The creator of the document. See also poppler_document_get_creator()
          */
@@ -2337,11 +2337,11 @@ module Document {
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
          */
-        modDate?: number | null
+        mod_date?: number | null
         /**
          * The #GDateTime the document was most recently modified.
          */
-        modDatetime?: GLib.DateTime | null
+        mod_datetime?: GLib.DateTime | null
         /**
          * The producer of the document. See also poppler_document_get_producer()
          */

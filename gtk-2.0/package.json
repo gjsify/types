@@ -1,13 +1,19 @@
 {
     "name": "@girs/gtk-2.0",
-    "version": "2.24.33-3.2.7",
+    "version": "2.24.33-3.2.8",
     "description": "GJS TypeScript type definitions for Gtk-2.0, generated from library version 2.24.33",
     "type": "module",
     "module": "gtk-2.0.js",
     "main": "gtk-2.0.js",
     "exports": {
-        "./ambient": "./gtk-2.0-ambient.d.ts",
-        "./import": "./gtk-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./gtk-2.0-ambient.d.ts",
+            "default": "./gtk-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gtk-2.0-import.d.ts",
+            "default": "./gtk-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gtk-2.0.d.ts",

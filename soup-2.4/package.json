@@ -1,13 +1,19 @@
 {
     "name": "@girs/soup-2.4",
-    "version": "2.74.3-3.2.7",
+    "version": "2.74.3-3.2.8",
     "description": "GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
     "type": "module",
     "module": "soup-2.4.js",
     "main": "soup-2.4.js",
     "exports": {
-        "./ambient": "./soup-2.4-ambient.d.ts",
-        "./import": "./soup-2.4-import.d.ts",
+        "./ambient": {
+            "types": "./soup-2.4-ambient.d.ts",
+            "default": "./soup-2.4-ambient.js"
+        },
+        "./import": {
+            "types": "./soup-2.4-import.d.ts",
+            "default": "./soup-2.4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./soup-2.4.d.ts",

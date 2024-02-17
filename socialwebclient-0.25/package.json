@@ -1,13 +1,19 @@
 {
     "name": "@girs/socialwebclient-0.25",
-    "version": "0.25.0-3.2.7",
+    "version": "0.25.0-3.2.8",
     "description": "GJS TypeScript type definitions for SocialWebClient-0.25, generated from library version 0.25.0",
     "type": "module",
     "module": "socialwebclient-0.25.js",
     "main": "socialwebclient-0.25.js",
     "exports": {
-        "./ambient": "./socialwebclient-0.25-ambient.d.ts",
-        "./import": "./socialwebclient-0.25-import.d.ts",
+        "./ambient": {
+            "types": "./socialwebclient-0.25-ambient.d.ts",
+            "default": "./socialwebclient-0.25-ambient.js"
+        },
+        "./import": {
+            "types": "./socialwebclient-0.25-import.d.ts",
+            "default": "./socialwebclient-0.25-import.js"
+        },
         ".": {
             "import": {
                 "types": "./socialwebclient-0.25.d.ts",

@@ -427,7 +427,7 @@ module Column {
         // Own constructor properties of Nautilus-3.0.Nautilus.Column
 
         attribute?: string | null
-        defaultSortOrder?: Gtk.SortType | null
+        default_sort_order?: Gtk.SortType | null
         description?: string | null
         label?: string | null
         name?: string | null

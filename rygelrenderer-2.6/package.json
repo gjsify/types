@@ -1,13 +1,19 @@
 {
     "name": "@girs/rygelrenderer-2.6",
-    "version": "2.6.0-3.2.7",
+    "version": "2.6.0-3.2.8",
     "description": "GJS TypeScript type definitions for RygelRenderer-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "rygelrenderer-2.6.js",
     "main": "rygelrenderer-2.6.js",
     "exports": {
-        "./ambient": "./rygelrenderer-2.6-ambient.d.ts",
-        "./import": "./rygelrenderer-2.6-import.d.ts",
+        "./ambient": {
+            "types": "./rygelrenderer-2.6-ambient.d.ts",
+            "default": "./rygelrenderer-2.6-ambient.js"
+        },
+        "./import": {
+            "types": "./rygelrenderer-2.6-import.d.ts",
+            "default": "./rygelrenderer-2.6-import.js"
+        },
         ".": {
             "import": {
                 "types": "./rygelrenderer-2.6.d.ts",

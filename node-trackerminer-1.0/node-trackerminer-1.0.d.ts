@@ -434,10 +434,10 @@ module Decorator {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.Decorator
 
-        classNames?: string[] | null
-        commitBatchSize?: number | null
-        dataSource?: string | null
-        priorityRdfTypes?: string[] | null
+        class_names?: string[] | null
+        commit_batch_size?: number | null
+        data_source?: string | null
+        priority_rdf_types?: string[] | null
     }
 
 }
@@ -778,7 +778,7 @@ module IndexingTree {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.IndexingTree
 
-        filterHidden?: boolean | null
+        filter_hidden?: boolean | null
         root?: Gio.File | null
     }
 
@@ -1097,11 +1097,11 @@ module Miner {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.Miner
 
-        introspectionHandler?: any | null
-        introspectionXml?: string | null
+        introspection_handler?: any | null
+        introspection_xml?: string | null
         name?: string | null
         progress?: number | null
-        remainingTime?: number | null
+        remaining_time?: number | null
         status?: string | null
     }
 
@@ -1362,11 +1362,11 @@ module MinerFS {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.MinerFS
 
-        dataProvider?: DataProvider | null
-        initialCrawling?: boolean | null
-        mtimeChecking?: boolean | null
-        processingPoolReadyLimit?: number | null
-        processingPoolWaitLimit?: number | null
+        data_provider?: DataProvider | null
+        initial_crawling?: boolean | null
+        mtime_checking?: boolean | null
+        processing_pool_ready_limit?: number | null
+        processing_pool_wait_limit?: number | null
         root?: Gio.File | null
         throttle?: number | null
     }

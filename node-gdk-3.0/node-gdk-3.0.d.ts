@@ -6243,7 +6243,7 @@ module Cursor {
 
         // Own constructor properties of Gdk-3.0.Gdk.Cursor
 
-        cursorType?: CursorType | null
+        cursor_type?: CursorType | null
         display?: Display | null
     }
 
@@ -6504,7 +6504,7 @@ module Device {
         /**
          * The #GdkDeviceManager the #GdkDevice pertains to.
          */
-        deviceManager?: DeviceManager | null
+        device_manager?: DeviceManager | null
         /**
          * The #GdkDisplay the #GdkDevice pertains to.
          */
@@ -6513,12 +6513,12 @@ module Device {
          * Whether the device is represented by a cursor on the screen. Devices of type
          * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
          */
-        hasCursor?: boolean | null
-        inputMode?: InputMode | null
+        has_cursor?: boolean | null
+        input_mode?: InputMode | null
         /**
          * Source type for the device.
          */
-        inputSource?: InputSource | null
+        input_source?: InputSource | null
         /**
          * The device name.
          */
@@ -6528,11 +6528,11 @@ module Device {
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
          */
-        numTouches?: number | null
+        num_touches?: number | null
         /**
          * Product ID of this device, see gdk_device_get_product_id().
          */
-        productId?: string | null
+        product_id?: string | null
         /**
          * #GdkSeat of this device.
          */
@@ -6544,7 +6544,7 @@ module Device {
         /**
          * Vendor ID of this device, see gdk_device_get_vendor_id().
          */
-        vendorId?: string | null
+        vendor_id?: string | null
     }
 
 }
@@ -7246,9 +7246,9 @@ module DeviceTool {
         // Own constructor properties of Gdk-3.0.Gdk.DeviceTool
 
         axes?: AxisFlags | null
-        hardwareId?: number | null
+        hardware_id?: number | null
         serial?: number | null
-        toolType?: DeviceToolType | null
+        tool_type?: DeviceToolType | null
     }
 
 }
@@ -7834,7 +7834,7 @@ module DisplayManager {
 
         // Own constructor properties of Gdk-3.0.Gdk.DisplayManager
 
-        defaultDisplay?: Display | null
+        default_display?: Display | null
     }
 
 }
@@ -8525,7 +8525,7 @@ module GLContext {
         /**
          * The #GdkGLContext that this context is sharing data with, or %NULL
          */
-        sharedContext?: GLContext | null
+        shared_context?: GLContext | null
         /**
          * The #GdkWindow the gl context is bound to.
          */
@@ -9311,7 +9311,7 @@ module Screen {
 
         // Own constructor properties of Gdk-3.0.Gdk.Screen
 
-        fontOptions?: any | null
+        font_options?: any | null
         resolution?: number | null
     }
 

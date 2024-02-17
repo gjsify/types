@@ -921,19 +921,12 @@ export module BasicForm {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.BasicForm
 
-        entries_auto_default?: boolean | null
-        /**
-         * Deprecated
-         */
-        headers_sensitive?: boolean | null
-        paramlist?: any | null
-        show_actions?: boolean | null
-        xml_layout?: any | null
         entriesAutoDefault?: boolean | null
         /**
          * Deprecated
          */
         headersSensitive?: boolean | null
+        paramlist?: any | null
         showActions?: boolean | null
         xmlLayout?: any | null
     }
@@ -944,22 +937,14 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
 
     // Own properties of Gdaui-5.0.Gdaui.BasicForm
 
-    readonly can_expand_v: boolean
     readonly canExpandV: boolean
-    entries_auto_default: boolean
     entriesAutoDefault: boolean
-    /**
-     * Deprecated
-     */
-    headers_sensitive: boolean
     /**
      * Deprecated
      */
     headersSensitive: boolean
     paramlist: any
-    show_actions: boolean
     showActions: boolean
-    xml_layout: any
     xmlLayout: any
 
     // Own fields of Gdaui-5.0.Gdaui.BasicForm
@@ -1375,14 +1360,10 @@ export module Cloud {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.Cloud
 
-        label_column?: number | null
-        max_scale?: number | null
-        min_scale?: number | null
-        model?: Gda.DataModel | null
-        weight_column?: number | null
         labelColumn?: number | null
         maxScale?: number | null
         minScale?: number | null
+        model?: Gda.DataModel | null
         weightColumn?: number | null
     }
 
@@ -1392,14 +1373,10 @@ export interface Cloud extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
 
     // Own properties of Gdaui-5.0.Gdaui.Cloud
 
-    label_column: number
     labelColumn: number
-    max_scale: number
     maxScale: number
-    min_scale: number
     minScale: number
     model: Gda.DataModel
-    weight_column: number
     weightColumn: number
 
     // Own fields of Gdaui-5.0.Gdaui.Cloud
@@ -1691,9 +1668,8 @@ export module Combo {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.Combo
 
-        as_list?: boolean | null
-        model: any
         asList?: boolean | null
+        model: any
     }
 
 }
@@ -1702,7 +1678,6 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
 
     // Own properties of Gdaui-5.0.Gdaui.Combo
 
-    as_list: boolean
     asList: boolean
     model: any
 
@@ -2076,13 +2051,11 @@ export module DataCellRendererBin {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataCellRendererBin
 
-        data_handler?: Gda.DataHandler | null
+        dataHandler?: Gda.DataHandler | null
         editable?: boolean | null
-        to_be_deleted?: boolean | null
+        toBeDeleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
-        dataHandler?: Gda.DataHandler | null
-        toBeDeleted?: boolean | null
     }
 
 }
@@ -2091,10 +2064,8 @@ export interface DataCellRendererBin {
 
     // Own properties of Gdaui-5.0.Gdaui.DataCellRendererBin
 
-    readonly data_handler: Gda.DataHandler
     readonly dataHandler: Gda.DataHandler
     editable: boolean
-    to_be_deleted: boolean
     toBeDeleted: boolean
     readonly type: GObject.GType
     value: any
@@ -2289,13 +2260,11 @@ export module DataCellRendererBoolean {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataCellRendererBoolean
 
-        data_handler?: Gda.DataHandler | null
+        dataHandler?: Gda.DataHandler | null
         editable?: boolean | null
-        to_be_deleted?: boolean | null
+        toBeDeleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
-        dataHandler?: Gda.DataHandler | null
-        toBeDeleted?: boolean | null
     }
 
 }
@@ -2304,10 +2273,8 @@ export interface DataCellRendererBoolean {
 
     // Own properties of Gdaui-5.0.Gdaui.DataCellRendererBoolean
 
-    readonly data_handler: Gda.DataHandler
     readonly dataHandler: Gda.DataHandler
     editable: boolean
-    to_be_deleted: boolean
     toBeDeleted: boolean
     readonly type: GObject.GType
     value: any
@@ -2487,18 +2454,12 @@ export module DataCellRendererCombo {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataCellRendererCombo
 
-        data_set?: Set | null
-        data_set_source?: any | null
-        set_default_if_invalid?: boolean | null
-        show_expander?: boolean | null
-        to_be_deleted?: boolean | null
-        values?: any | null
-        values_display?: any | null
         dataSet?: Set | null
         dataSetSource?: any | null
         setDefaultIfInvalid?: boolean | null
         showExpander?: boolean | null
         toBeDeleted?: boolean | null
+        values?: any | null
         valuesDisplay?: any | null
     }
 
@@ -2508,18 +2469,12 @@ export interface DataCellRendererCombo {
 
     // Own properties of Gdaui-5.0.Gdaui.DataCellRendererCombo
 
-    readonly data_set: Set
     readonly dataSet: Set
-    readonly data_set_source: any
     readonly dataSetSource: any
-    set_default_if_invalid: boolean
     setDefaultIfInvalid: boolean
-    show_expander: boolean
     showExpander: boolean
-    to_be_deleted: boolean
     toBeDeleted: boolean
     values: any
-    values_display: any
     valuesDisplay: any
 
     // Own fields of Gdaui-5.0.Gdaui.DataCellRendererCombo
@@ -2816,7 +2771,6 @@ export module DataCellRendererInfo {
         group?: any | null
         iter?: Gda.DataModelIter | null
         store?: DataStore | null
-        to_be_deleted?: boolean | null
         toBeDeleted?: boolean | null
     }
 
@@ -2830,7 +2784,6 @@ export interface DataCellRendererInfo {
     readonly group: any
     readonly iter: Gda.DataModelIter
     readonly store: DataStore
-    to_be_deleted: boolean
     toBeDeleted: boolean
 
     // Own fields of Gdaui-5.0.Gdaui.DataCellRendererInfo
@@ -2980,13 +2933,11 @@ export module DataCellRendererTextual {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataCellRendererTextual
 
-        data_handler?: Gda.DataHandler | null
+        dataHandler?: Gda.DataHandler | null
         options?: string | null
-        to_be_deleted?: boolean | null
+        toBeDeleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
-        dataHandler?: Gda.DataHandler | null
-        toBeDeleted?: boolean | null
     }
 
 }
@@ -2995,10 +2946,8 @@ export interface DataCellRendererTextual {
 
     // Own properties of Gdaui-5.0.Gdaui.DataCellRendererTextual
 
-    readonly data_handler: Gda.DataHandler
     readonly dataHandler: Gda.DataHandler
     options: string | null
-    to_be_deleted: boolean
     toBeDeleted: boolean
     readonly type: GObject.GType
     value: any
@@ -3299,7 +3248,6 @@ export module DataFilter {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataFilter
 
-        data_widget?: DataProxy | null
         dataWidget?: DataProxy | null
     }
 
@@ -3309,7 +3257,6 @@ export interface DataFilter extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
 
     // Own properties of Gdaui-5.0.Gdaui.DataFilter
 
-    data_widget: DataProxy
     dataWidget: DataProxy
 
     // Own fields of Gdaui-5.0.Gdaui.DataFilter
@@ -3554,7 +3501,6 @@ export module DataProxyInfo {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.DataProxyInfo
 
-        data_proxy?: DataProxy | null
         dataProxy?: DataProxy | null
     }
 
@@ -3564,13 +3510,7 @@ export interface DataProxyInfo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
 
     // Own properties of Gdaui-5.0.Gdaui.DataProxyInfo
 
-    data_proxy: DataProxy
     dataProxy: DataProxy
-    /**
-     * Use this property to obtain the #GtkUIManager object internally used (to add new actions
-     * for example).
-     */
-    readonly ui_manager: Gtk.UIManager
     /**
      * Use this property to obtain the #GtkUIManager object internally used (to add new actions
      * for example).
@@ -3823,7 +3763,6 @@ export module DataStore {
         // Own constructor properties of Gdaui-5.0.Gdaui.DataStore
 
         model?: any | null
-        prepend_null_entry?: boolean | null
         prependNullEntry?: boolean | null
     }
 
@@ -3834,7 +3773,6 @@ export interface DataStore extends Gtk.TreeModel {
     // Own properties of Gdaui-5.0.Gdaui.DataStore
 
     readonly model: any
-    prepend_null_entry: boolean
     prependNullEntry: boolean
     readonly proxy: any
 
@@ -4902,7 +4840,6 @@ export module EntryCombo {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.EntryCombo
 
-        set_default_if_invalid?: boolean | null
         setDefaultIfInvalid?: boolean | null
     }
 
@@ -4912,7 +4849,6 @@ export interface EntryCombo extends Atk.ImplementorIface, DataEntry, Gtk.Buildab
 
     // Own properties of Gdaui-5.0.Gdaui.EntryCombo
 
-    set_default_if_invalid: boolean
     setDefaultIfInvalid: boolean
 
     // Own fields of Gdaui-5.0.Gdaui.EntryCombo
@@ -5227,9 +5163,8 @@ export module EntryCommonTime {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.EntryCommonTime
 
-        editing_canceled?: boolean | null
-        type?: number | null
         editingCanceled?: boolean | null
+        type?: number | null
     }
 
 }
@@ -5238,7 +5173,6 @@ export interface EntryCommonTime extends Atk.ImplementorIface, DataEntry, Gtk.Bu
 
     // Own properties of Gdaui-5.0.Gdaui.EntryCommonTime
 
-    editing_canceled: boolean
     editingCanceled: boolean
     type: number
 
@@ -5996,9 +5930,8 @@ export module EntryNumber {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.EntryNumber
 
-        editing_canceled?: boolean | null
-        options?: string | null
         editingCanceled?: boolean | null
+        options?: string | null
     }
 
 }
@@ -6007,7 +5940,6 @@ export interface EntryNumber extends Atk.ImplementorIface, DataEntry, Gtk.Builda
 
     // Own properties of Gdaui-5.0.Gdaui.EntryNumber
 
-    editing_canceled: boolean
     editingCanceled: boolean
     options: string | null
 
@@ -6277,7 +6209,6 @@ export module EntryShell {
 
         actions?: boolean | null
         handler?: Gda.DataHandler | null
-        is_cell_renderer?: boolean | null
         isCellRenderer?: boolean | null
     }
 
@@ -6289,7 +6220,6 @@ export interface EntryShell extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
 
     actions: boolean
     handler: Gda.DataHandler
-    is_cell_renderer: boolean
     isCellRenderer: boolean
 
     // Own fields of Gdaui-5.0.Gdaui.EntryShell
@@ -6543,10 +6473,9 @@ export module EntryString {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.EntryString
 
-        editing_canceled?: boolean | null
+        editingCanceled?: boolean | null
         multiline?: boolean | null
         options?: string | null
-        editingCanceled?: boolean | null
     }
 
 }
@@ -6555,7 +6484,6 @@ export interface EntryString extends Atk.ImplementorIface, DataEntry, Gtk.Builda
 
     // Own properties of Gdaui-5.0.Gdaui.EntryString
 
-    editing_canceled: boolean
     editingCanceled: boolean
     multiline: boolean
     options: string | null
@@ -7356,7 +7284,6 @@ export module EntryWrapper {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.EntryWrapper
 
-        set_default_if_invalid?: boolean | null
         setDefaultIfInvalid?: boolean | null
     }
 
@@ -7366,7 +7293,6 @@ export interface EntryWrapper extends Atk.ImplementorIface, DataEntry, Gtk.Build
 
     // Own properties of Gdaui-5.0.Gdaui.EntryWrapper
 
-    set_default_if_invalid: boolean
     setDefaultIfInvalid: boolean
 
     // Own fields of Gdaui-5.0.Gdaui.EntryWrapper
@@ -7630,7 +7556,6 @@ export interface Form extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
 
     readonly info: DataProxyInfo
     readonly model: Gda.DataModel
-    readonly raw_form: RawForm
     readonly rawForm: RawForm
 
     // Own fields of Gdaui-5.0.Gdaui.Form
@@ -8384,7 +8309,6 @@ export interface Grid extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
 
     readonly info: DataProxyInfo
     model: Gda.DataModel
-    readonly raw_grid: RawGrid
     readonly rawGrid: RawGrid
 
     // Own fields of Gdaui-5.0.Gdaui.Grid
@@ -8955,13 +8879,10 @@ export module NumericEntry {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.NumericEntry
 
-        decimal_sep?: number | null
-        n_decimals?: number | null
-        thousands_sep?: number | null
-        type?: GObject.GType | null
         decimalSep?: number | null
         nDecimals?: number | null
         thousandsSep?: number | null
+        type?: GObject.GType | null
     }
 
 }
@@ -8970,11 +8891,8 @@ export interface NumericEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.C
 
     // Own properties of Gdaui-5.0.Gdaui.NumericEntry
 
-    decimal_sep: number
     decimalSep: number
-    n_decimals: number
     nDecimals: number
-    thousands_sep: number
     thousandsSep: number
     type: GObject.GType
 
@@ -10084,12 +10002,9 @@ export module RawGrid {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.RawGrid
 
-        global_actions_visible?: boolean | null
-        info_cell_visible?: boolean | null
-        model: any
-        xml_layout?: any | null
         globalActionsVisible?: boolean | null
         infoCellVisible?: boolean | null
+        model: any
         xmlLayout?: any | null
     }
 
@@ -10099,12 +10014,9 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
 
     // Own properties of Gdaui-5.0.Gdaui.RawGrid
 
-    global_actions_visible: boolean
     globalActionsVisible: boolean
-    info_cell_visible: boolean
     infoCellVisible: boolean
     model: any
-    xml_layout: any
     xmlLayout: any
 
     // Own fields of Gdaui-5.0.Gdaui.RawGrid
@@ -10486,22 +10398,6 @@ export module RtEditor {
         /**
          * Determines if the contents of the widget appears in a scrolled window or not.
          */
-        in_scrolled_window?: boolean | null
-        /**
-         * If set to %TRUE, then the default text background is removed
-         * and thus the textbackground is the default widget's background.
-         * 
-         * This property has to be set before the widget is realized, and is taken into account only
-         * if the widget is not editable (when it's realized).
-         */
-        no_background?: boolean | null
-        /**
-         * Instead of showing the formatted text, display the raw text (in the txt2tags syntax)
-         */
-        show_markup?: boolean | null
-        /**
-         * Determines if the contents of the widget appears in a scrolled window or not.
-         */
         inScrolledWindow?: boolean | null
         /**
          * If set to %TRUE, then the default text background is removed
@@ -10530,10 +10426,6 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
     /**
      * Determines if the contents of the widget appears in a scrolled window or not.
      */
-    in_scrolled_window: boolean
-    /**
-     * Determines if the contents of the widget appears in a scrolled window or not.
-     */
     inScrolledWindow: boolean
     /**
      * If set to %TRUE, then the default text background is removed
@@ -10542,19 +10434,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * This property has to be set before the widget is realized, and is taken into account only
      * if the widget is not editable (when it's realized).
      */
-    no_background: boolean
-    /**
-     * If set to %TRUE, then the default text background is removed
-     * and thus the textbackground is the default widget's background.
-     * 
-     * This property has to be set before the widget is realized, and is taken into account only
-     * if the widget is not editable (when it's realized).
-     */
     noBackground: boolean
-    /**
-     * Instead of showing the formatted text, display the raw text (in the txt2tags syntax)
-     */
-    show_markup: boolean
     /**
      * Instead of showing the formatted text, display the raw text (in the txt2tags syntax)
      */
@@ -10836,8 +10716,6 @@ export module ServerOperation {
 
         // Own constructor properties of Gdaui-5.0.Gdaui.ServerOperation
 
-        hide_single_header?: boolean | null
-        server_operation?: Gda.ServerOperation | null
         hideSingleHeader?: boolean | null
         serverOperation?: Gda.ServerOperation | null
     }
@@ -10848,9 +10726,7 @@ export interface ServerOperation extends Atk.ImplementorIface, Gtk.Buildable, Gt
 
     // Own properties of Gdaui-5.0.Gdaui.ServerOperation
 
-    hide_single_header: boolean
     hideSingleHeader: boolean
-    readonly server_operation: Gda.ServerOperation
     readonly serverOperation: Gda.ServerOperation
 
     // Own fields of Gdaui-5.0.Gdaui.ServerOperation

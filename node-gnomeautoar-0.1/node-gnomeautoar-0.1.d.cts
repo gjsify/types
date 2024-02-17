@@ -327,11 +327,11 @@ export module Compressor {
 
         // Own constructor properties of GnomeAutoar-0.1.GnomeAutoar.Compressor
 
-        createTopLevelDirectory?: boolean | null
-        notifyInterval?: number | null
-        outputFile?: Gio.File | null
-        outputIsDest?: boolean | null
-        sourceFiles?: any | null
+        create_top_level_directory?: boolean | null
+        notify_interval?: number | null
+        output_file?: Gio.File | null
+        output_is_dest?: boolean | null
+        source_files?: any | null
     }
 
 }
@@ -651,11 +651,11 @@ export module Extractor {
 
         // Own constructor properties of GnomeAutoar-0.1.GnomeAutoar.Extractor
 
-        deleteAfterExtraction?: boolean | null
-        notifyInterval?: number | null
-        outputFile?: Gio.File | null
-        outputIsDest?: boolean | null
-        sourceFile?: Gio.File | null
+        delete_after_extraction?: boolean | null
+        notify_interval?: number | null
+        output_file?: Gio.File | null
+        output_is_dest?: boolean | null
+        source_file?: Gio.File | null
     }
 
 }

@@ -393,15 +393,11 @@ export module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        application_window?: Gtk.ApplicationWindow | null
+        applicationWindow?: Gtk.ApplicationWindow | null
         /**
          * The #GtkStatusbar. %NULL by default.
          */
         statusbar?: Gtk.Statusbar | null
-        /**
-         * The #GtkApplicationWindow.
-         */
-        applicationWindow?: Gtk.ApplicationWindow | null
     }
 
 }
@@ -410,10 +406,6 @@ export interface ApplicationWindow {
 
     // Own properties of Amtk-5.Amtk.ApplicationWindow
 
-    /**
-     * The #GtkApplicationWindow.
-     */
-    readonly application_window: Gtk.ApplicationWindow
     /**
      * The #GtkApplicationWindow.
      */
@@ -541,10 +533,6 @@ export module Factory {
         /**
          * The default #AmtkFactoryFlags.
          */
-        default_flags?: FactoryFlags | null
-        /**
-         * The default #AmtkFactoryFlags.
-         */
         defaultFlags?: FactoryFlags | null
     }
 
@@ -559,10 +547,6 @@ export interface Factory {
      * #AmtkFactory has a weak reference to the #GtkApplication.
      */
     readonly application: Gtk.Application
-    /**
-     * The default #AmtkFactoryFlags.
-     */
-    default_flags: FactoryFlags
     /**
      * The default #AmtkFactoryFlags.
      */
@@ -813,10 +797,6 @@ export module MenuShell {
         /**
          * The #GtkMenuShell.
          */
-        menu_shell?: Gtk.MenuShell | null
-        /**
-         * The #GtkMenuShell.
-         */
         menuShell?: Gtk.MenuShell | null
     }
 
@@ -826,10 +806,6 @@ export interface MenuShell {
 
     // Own properties of Amtk-5.Amtk.MenuShell
 
-    /**
-     * The #GtkMenuShell.
-     */
-    readonly menu_shell: Gtk.MenuShell
     /**
      * The #GtkMenuShell.
      */

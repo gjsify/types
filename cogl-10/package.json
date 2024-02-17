@@ -1,13 +1,19 @@
 {
     "name": "@girs/cogl-10",
-    "version": "10.0.0-3.2.7",
+    "version": "10.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Cogl-10, generated from library version 10.0.0",
     "type": "module",
     "module": "cogl-10.js",
     "main": "cogl-10.js",
     "exports": {
-        "./ambient": "./cogl-10-ambient.d.ts",
-        "./import": "./cogl-10-import.d.ts",
+        "./ambient": {
+            "types": "./cogl-10-ambient.d.ts",
+            "default": "./cogl-10-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-10-import.d.ts",
+            "default": "./cogl-10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./cogl-10.d.ts",

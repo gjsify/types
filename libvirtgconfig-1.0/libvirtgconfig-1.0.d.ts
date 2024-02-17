@@ -933,7 +933,7 @@ module Domain {
 
         // Own constructor properties of LibvirtGConfig-1.0.LibvirtGConfig.Domain
 
-        current_memory?: number | null
+        currentMemory?: number | null
         description?: string | null
         features?: string[] | null
         memory?: number | null
@@ -941,7 +941,6 @@ module Domain {
         title?: string | null
         uuid?: string | null
         vcpu?: number | null
-        currentMemory?: number | null
     }
 
 }
@@ -950,7 +949,6 @@ interface Domain {
 
     // Own properties of LibvirtGConfig-1.0.LibvirtGConfig.Domain
 
-    current_memory: number
     currentMemory: number
     description: string | null
     features: string[]

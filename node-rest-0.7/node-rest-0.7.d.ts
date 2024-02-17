@@ -248,9 +248,9 @@ module OAuth2Proxy {
 
         // Own constructor properties of Rest-0.7.Rest.OAuth2Proxy
 
-        accessToken?: string | null
-        authEndpoint?: string | null
-        clientId?: string | null
+        access_token?: string | null
+        auth_endpoint?: string | null
+        client_id?: string | null
     }
 
 }
@@ -546,12 +546,12 @@ module OAuthProxy {
 
         // Own constructor properties of Rest-0.7.Rest.OAuthProxy
 
-        consumerKey?: string | null
-        consumerSecret?: string | null
-        signatureHost?: string | null
-        signatureMethod?: OAuthSignatureMethod | null
+        consumer_key?: string | null
+        consumer_secret?: string | null
+        signature_host?: string | null
+        signature_method?: OAuthSignatureMethod | null
         token?: string | null
-        tokenSecret?: string | null
+        token_secret?: string | null
     }
 
 }
@@ -959,13 +959,13 @@ module Proxy {
 
         // Own constructor properties of Rest-0.7.Rest.Proxy
 
-        bindingRequired?: boolean | null
-        disableCookies?: boolean | null
+        binding_required?: boolean | null
+        disable_cookies?: boolean | null
         password?: string | null
-        sslCaFile?: string | null
-        sslStrict?: boolean | null
-        urlFormat?: string | null
-        userAgent?: string | null
+        ssl_ca_file?: string | null
+        ssl_strict?: boolean | null
+        url_format?: string | null
+        user_agent?: string | null
         username?: string | null
     }
 

@@ -872,10 +872,8 @@ module Array {
         array?: any | null
         buffer1?: Buffer | null
         buffer2?: Buffer | null
-        null_bitmap?: Buffer | null
-        parent?: Array | null
-        value_data_type?: DataType | null
         nullBitmap?: Buffer | null
+        parent?: Array | null
         valueDataType?: DataType | null
     }
 
@@ -888,10 +886,8 @@ interface Array {
     readonly array: any
     readonly buffer1: Buffer
     readonly buffer2: Buffer
-    readonly null_bitmap: Buffer
     readonly nullBitmap: Buffer
     readonly parent: Array
-    readonly value_data_type: DataType
     readonly valueDataType: DataType
 
     // Own fields of Arrow-1.0.Arrow.Array
@@ -979,7 +975,6 @@ module ArrayBuilder {
 
         // Own constructor properties of Arrow-1.0.Arrow.ArrayBuilder
 
-        array_builder?: any | null
         arrayBuilder?: any | null
     }
 
@@ -989,7 +984,6 @@ interface ArrayBuilder {
 
     // Own properties of Arrow-1.0.Arrow.ArrayBuilder
 
-    readonly array_builder: any
     readonly arrayBuilder: any
 
     // Own fields of Arrow-1.0.Arrow.ArrayBuilder
@@ -2043,66 +2037,6 @@ module CSVReadOptions {
         /**
          * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
          */
-        allow_newlines_in_values?: boolean | null
-        /**
-         * Whether string / binary columns can have null values.
-         * If %TRUE, then strings in "null_values" are considered null for string columns.
-         * If %FALSE, then all strings are valid string values.
-         */
-        allow_null_strings?: boolean | null
-        /**
-         * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
-         */
-        block_size?: number | null
-        /**
-         * Whether to check UTF8 validity of string columns.
-         */
-        check_utf8?: boolean | null
-        /**
-         * Field delimiter character.
-         */
-        delimiter?: number | null
-        /**
-         * Escaping character. This is used only when
-         * #GArrowCSVReadOptions:is-escaped is %TRUE.
-         */
-        escape_character?: number | null
-        generate_column_names?: boolean | null
-        /**
-         * Whether empty lines are ignored. If %FALSE, an empty line
-         * represents a simple empty value (assuming a one-column CSV file).
-         */
-        ignore_empty_lines?: boolean | null
-        /**
-         * Whether a quote inside a value is double quoted.
-         */
-        is_double_quoted?: boolean | null
-        /**
-         * Whether escaping is used.
-         */
-        is_escaped?: boolean | null
-        /**
-         * Whether quoting is used.
-         */
-        is_quoted?: boolean | null
-        /**
-         * The number of header rows to skip (not including
-         * the row of column names, if any)
-         */
-        n_skip_rows?: number | null
-        /**
-         * Quoting character. This is used only when
-         * #GArrowCSVReadOptions:is-quoted is %TRUE.
-         */
-        quote_character?: number | null
-        /**
-         * Whether to use the global CPU thread pool.
-         */
-        use_threads?: boolean | null
-        /**
-         * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
-         */
         allowNewlinesInValues?: boolean | null
         /**
          * Whether string / binary columns can have null values.
@@ -2119,6 +2053,10 @@ module CSVReadOptions {
          * Whether to check UTF8 validity of string columns.
          */
         checkUtf8?: boolean | null
+        /**
+         * Field delimiter character.
+         */
+        delimiter?: number | null
         /**
          * Escaping character. This is used only when
          * #GArrowCSVReadOptions:is-escaped is %TRUE.
@@ -2167,17 +2105,7 @@ interface CSVReadOptions {
     /**
      * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
      */
-    allow_newlines_in_values: boolean
-    /**
-     * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
-     */
     allowNewlinesInValues: boolean
-    /**
-     * Whether string / binary columns can have null values.
-     * If %TRUE, then strings in "null_values" are considered null for string columns.
-     * If %FALSE, then all strings are valid string values.
-     */
-    allow_null_strings: boolean
     /**
      * Whether string / binary columns can have null values.
      * If %TRUE, then strings in "null_values" are considered null for string columns.
@@ -2188,16 +2116,7 @@ interface CSVReadOptions {
      * Block size we request from the IO layer; also determines the size
      * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
      */
-    block_size: number
-    /**
-     * Block size we request from the IO layer; also determines the size
-     * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
-     */
     blockSize: number
-    /**
-     * Whether to check UTF8 validity of string columns.
-     */
-    check_utf8: boolean
     /**
      * Whether to check UTF8 validity of string columns.
      */
@@ -2210,19 +2129,8 @@ interface CSVReadOptions {
      * Escaping character. This is used only when
      * #GArrowCSVReadOptions:is-escaped is %TRUE.
      */
-    escape_character: number
-    /**
-     * Escaping character. This is used only when
-     * #GArrowCSVReadOptions:is-escaped is %TRUE.
-     */
     escapeCharacter: number
-    generate_column_names: boolean
     generateColumnNames: boolean
-    /**
-     * Whether empty lines are ignored. If %FALSE, an empty line
-     * represents a simple empty value (assuming a one-column CSV file).
-     */
-    ignore_empty_lines: boolean
     /**
      * Whether empty lines are ignored. If %FALSE, an empty line
      * represents a simple empty value (assuming a one-column CSV file).
@@ -2231,15 +2139,7 @@ interface CSVReadOptions {
     /**
      * Whether a quote inside a value is double quoted.
      */
-    is_double_quoted: boolean
-    /**
-     * Whether a quote inside a value is double quoted.
-     */
     isDoubleQuoted: boolean
-    /**
-     * Whether escaping is used.
-     */
-    is_escaped: boolean
     /**
      * Whether escaping is used.
      */
@@ -2247,16 +2147,7 @@ interface CSVReadOptions {
     /**
      * Whether quoting is used.
      */
-    is_quoted: boolean
-    /**
-     * Whether quoting is used.
-     */
     isQuoted: boolean
-    /**
-     * The number of header rows to skip (not including
-     * the row of column names, if any)
-     */
-    n_skip_rows: number
     /**
      * The number of header rows to skip (not including
      * the row of column names, if any)
@@ -2266,16 +2157,7 @@ interface CSVReadOptions {
      * Quoting character. This is used only when
      * #GArrowCSVReadOptions:is-quoted is %TRUE.
      */
-    quote_character: number
-    /**
-     * Quoting character. This is used only when
-     * #GArrowCSVReadOptions:is-quoted is %TRUE.
-     */
     quoteCharacter: number
-    /**
-     * Whether to use the global CPU thread pool.
-     */
-    use_threads: boolean
     /**
      * Whether to use the global CPU thread pool.
      */
@@ -2385,9 +2267,8 @@ module CSVReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.CSVReader
 
-        csv_table_reader?: any | null
-        input?: InputStream | null
         csvTableReader?: any | null
+        input?: InputStream | null
     }
 
 }
@@ -2396,7 +2277,6 @@ interface CSVReader {
 
     // Own properties of Arrow-1.0.Arrow.CSVReader
 
-    readonly csv_table_reader: any
     readonly csvTableReader: any
     readonly input: InputStream
 
@@ -2486,34 +2366,6 @@ module CastOptions {
         /**
          * Whether truncating decimal value is allowed or not.
          */
-        allow_decimal_truncate?: boolean | null
-        /**
-         * Whether truncating float value is allowed or not.
-         */
-        allow_float_truncate?: boolean | null
-        /**
-         * Whether integer overflow is allowed or not.
-         */
-        allow_int_overflow?: boolean | null
-        /**
-         * Whether invalid UTF-8 string value is allowed or not.
-         */
-        allow_invalid_utf8?: boolean | null
-        /**
-         * Whether time overflow is allowed or not.
-         */
-        allow_time_overflow?: boolean | null
-        /**
-         * Whether truncating time value is allowed or not.
-         */
-        allow_time_truncate?: boolean | null
-        /**
-         * The #GArrowDataType being casted to.
-         */
-        to_data_type?: DataType | null
-        /**
-         * Whether truncating decimal value is allowed or not.
-         */
         allowDecimalTruncate?: boolean | null
         /**
          * Whether truncating float value is allowed or not.
@@ -2550,15 +2402,7 @@ interface CastOptions {
     /**
      * Whether truncating decimal value is allowed or not.
      */
-    allow_decimal_truncate: boolean
-    /**
-     * Whether truncating decimal value is allowed or not.
-     */
     allowDecimalTruncate: boolean
-    /**
-     * Whether truncating float value is allowed or not.
-     */
-    allow_float_truncate: boolean
     /**
      * Whether truncating float value is allowed or not.
      */
@@ -2566,15 +2410,7 @@ interface CastOptions {
     /**
      * Whether integer overflow is allowed or not.
      */
-    allow_int_overflow: boolean
-    /**
-     * Whether integer overflow is allowed or not.
-     */
     allowIntOverflow: boolean
-    /**
-     * Whether invalid UTF-8 string value is allowed or not.
-     */
-    allow_invalid_utf8: boolean
     /**
      * Whether invalid UTF-8 string value is allowed or not.
      */
@@ -2582,23 +2418,11 @@ interface CastOptions {
     /**
      * Whether time overflow is allowed or not.
      */
-    allow_time_overflow: boolean
-    /**
-     * Whether time overflow is allowed or not.
-     */
     allowTimeOverflow: boolean
     /**
      * Whether truncating time value is allowed or not.
      */
-    allow_time_truncate: boolean
-    /**
-     * Whether truncating time value is allowed or not.
-     */
     allowTimeTruncate: boolean
-    /**
-     * The #GArrowDataType being casted to.
-     */
-    to_data_type: DataType
     /**
      * The #GArrowDataType being casted to.
      */
@@ -2660,7 +2484,6 @@ module ChunkedArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.ChunkedArray
 
-        chunked_array?: any | null
         chunkedArray?: any | null
     }
 
@@ -2670,7 +2493,6 @@ interface ChunkedArray {
 
     // Own properties of Arrow-1.0.Arrow.ChunkedArray
 
-    readonly chunked_array: any
     readonly chunkedArray: any
 
     // Own fields of Arrow-1.0.Arrow.ChunkedArray
@@ -3090,7 +2912,6 @@ module DataType {
 
         // Own constructor properties of Arrow-1.0.Arrow.DataType
 
-        data_type?: any | null
         dataType?: any | null
     }
 
@@ -3100,7 +2921,6 @@ interface DataType {
 
     // Own properties of Arrow-1.0.Arrow.DataType
 
-    readonly data_type: any
     readonly dataType: any
 
     // Own fields of Arrow-1.0.Arrow.DataType
@@ -4348,7 +4168,6 @@ module DenseUnionArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.DenseUnionArray
 
-        value_offsets?: Int32Array | null
         valueOffsets?: Int32Array | null
     }
 
@@ -4358,7 +4177,6 @@ interface DenseUnionArray {
 
     // Own properties of Arrow-1.0.Arrow.DenseUnionArray
 
-    readonly value_offsets: Int32Array
     readonly valueOffsets: Int32Array
 
     // Own fields of Arrow-1.0.Arrow.DenseUnionArray
@@ -4843,20 +4661,11 @@ module EqualOptions {
          * The absolute tolerance for approximate comparison of
          * floating-point values.
          */
-        absolute_tolerance?: number | null
+        absoluteTolerance?: number | null
         /**
          * Whether or not approximate comparison is used.
          */
         approx?: boolean | null
-        /**
-         * Whether or not NaNs are considered equal.
-         */
-        nans_equal?: boolean | null
-        /**
-         * The absolute tolerance for approximate comparison of
-         * floating-point values.
-         */
-        absoluteTolerance?: number | null
         /**
          * Whether or not NaNs are considered equal.
          */
@@ -4873,20 +4682,11 @@ interface EqualOptions {
      * The absolute tolerance for approximate comparison of
      * floating-point values.
      */
-    absolute_tolerance: number
-    /**
-     * The absolute tolerance for approximate comparison of
-     * floating-point values.
-     */
     absoluteTolerance: number
     /**
      * Whether or not approximate comparison is used.
      */
     approx: boolean
-    /**
-     * Whether or not NaNs are considered equal.
-     */
-    nans_equal: boolean
     /**
      * Whether or not NaNs are considered equal.
      */
@@ -5286,7 +5086,6 @@ module ExtensionDataType {
 
         // Own constructor properties of Arrow-1.0.Arrow.ExtensionDataType
 
-        storage_data_type?: DataType | null
         storageDataType?: DataType | null
     }
 
@@ -5296,7 +5095,6 @@ interface ExtensionDataType {
 
     // Own properties of Arrow-1.0.Arrow.ExtensionDataType
 
-    readonly storage_data_type: DataType
     readonly storageDataType: DataType
 
     // Own fields of Arrow-1.0.Arrow.ExtensionDataType
@@ -5458,7 +5256,6 @@ module FeatherFileReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.FeatherFileReader
 
-        feather_reader?: any | null
         featherReader?: any | null
     }
 
@@ -5468,7 +5265,6 @@ interface FeatherFileReader {
 
     // Own properties of Arrow-1.0.Arrow.FeatherFileReader
 
-    readonly feather_reader: any
     readonly featherReader: any
 
     // Own fields of Arrow-1.0.Arrow.FeatherFileReader
@@ -5585,9 +5381,8 @@ module Field {
 
         // Own constructor properties of Arrow-1.0.Arrow.Field
 
-        data_type?: DataType | null
-        field?: any | null
         dataType?: DataType | null
+        field?: any | null
     }
 
 }
@@ -5596,7 +5391,6 @@ interface Field {
 
     // Own properties of Arrow-1.0.Arrow.Field
 
-    readonly data_type: DataType
     readonly dataType: DataType
     readonly field: any
 
@@ -5724,15 +5518,7 @@ interface FileInfo {
     /**
      * The file base name (component after the last directory separator).
      */
-    readonly base_name: string | null
-    /**
-     * The file base name (component after the last directory separator).
-     */
     readonly baseName: string | null
-    /**
-     * The directory base name (component before the file base name).
-     */
-    readonly dir_name: string | null
     /**
      * The directory base name (component before the file base name).
      */
@@ -6002,25 +5788,6 @@ module FileSelector {
          * The behavior if `base_dir` isn't found in the file system.
          * If false, an error is returned.  If true, an empty selection is returned.
          */
-        allow_not_found?: boolean | null
-        /**
-         * The directory in which to select files.
-         * If the path exists but doesn't point to a directory, this should
-         * be an error.
-         */
-        base_dir?: string | null
-        /**
-         * The maximum number of subdirectories to recurse into.
-         */
-        max_recursion?: number | null
-        /**
-         * Whether to recurse into subdirectories.
-         */
-        recursive?: boolean | null
-        /**
-         * The behavior if `base_dir` isn't found in the file system.
-         * If false, an error is returned.  If true, an empty selection is returned.
-         */
         allowNotFound?: boolean | null
         /**
          * The directory in which to select files.
@@ -6032,6 +5799,10 @@ module FileSelector {
          * The maximum number of subdirectories to recurse into.
          */
         maxRecursion?: number | null
+        /**
+         * Whether to recurse into subdirectories.
+         */
+        recursive?: boolean | null
     }
 
 }
@@ -6044,28 +5815,13 @@ interface FileSelector {
      * The behavior if `base_dir` isn't found in the file system.
      * If false, an error is returned.  If true, an empty selection is returned.
      */
-    allow_not_found: boolean
-    /**
-     * The behavior if `base_dir` isn't found in the file system.
-     * If false, an error is returned.  If true, an empty selection is returned.
-     */
     allowNotFound: boolean
     /**
      * The directory in which to select files.
      * If the path exists but doesn't point to a directory, this should
      * be an error.
      */
-    base_dir: string | null
-    /**
-     * The directory in which to select files.
-     * If the path exists but doesn't point to a directory, this should
-     * be an error.
-     */
     baseDir: string | null
-    /**
-     * The maximum number of subdirectories to recurse into.
-     */
-    max_recursion: number
     /**
      * The maximum number of subdirectories to recurse into.
      */
@@ -6120,7 +5876,6 @@ module FileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.FileSystem
 
-        file_system?: any | null
         fileSystem?: any | null
     }
 
@@ -6130,7 +5885,6 @@ interface FileSystem {
 
     // Own properties of Arrow-1.0.Arrow.FileSystem
 
-    readonly file_system: any
     readonly fileSystem: any
 
     // Own fields of Arrow-1.0.Arrow.FileSystem
@@ -6293,10 +6047,6 @@ module FilterOptions {
         /**
          * How to handle filtered values.
          */
-        null_selection_behavior?: FilterNullSelectionBehavior | null
-        /**
-         * How to handle filtered values.
-         */
         nullSelectionBehavior?: FilterNullSelectionBehavior | null
     }
 
@@ -6306,10 +6056,6 @@ interface FilterOptions {
 
     // Own properties of Arrow-1.0.Arrow.FilterOptions
 
-    /**
-     * How to handle filtered values.
-     */
-    null_selection_behavior: FilterNullSelectionBehavior
     /**
      * How to handle filtered values.
      */
@@ -7303,7 +7049,6 @@ module InputStream {
 
         // Own constructor properties of Arrow-1.0.Arrow.InputStream
 
-        input_stream?: any | null
         inputStream?: any | null
     }
 
@@ -7313,7 +7058,6 @@ interface InputStream extends File, Readable {
 
     // Own properties of Arrow-1.0.Arrow.InputStream
 
-    readonly input_stream: any
     readonly inputStream: any
 
     // Own fields of Arrow-1.0.Arrow.InputStream
@@ -8412,34 +8156,16 @@ module JSONReadOptions {
          * Whether objects may be printed across multiple lines (for example pretty printed).
          * if %FALSE, input must end with an empty line.
          */
-        allow_newlines_in_values?: boolean | null
-        /**
-         * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
-         */
-        block_size?: number | null
-        /**
-         * Schema for passing custom conversion rules.
-         */
-        schema?: Schema | null
-        /**
-         * How to parse handle fields outside the explicit schema.
-         */
-        unexpected_field_behavior?: JSONReadUnexpectedFieldBehavior | null
-        /**
-         * Whether to use the global CPU thread pool.
-         */
-        use_threads?: boolean | null
-        /**
-         * Whether objects may be printed across multiple lines (for example pretty printed).
-         * if %FALSE, input must end with an empty line.
-         */
         allowNewlinesInValues?: boolean | null
         /**
          * Block size we request from the IO layer; also determines the size
          * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
          */
         blockSize?: number | null
+        /**
+         * Schema for passing custom conversion rules.
+         */
+        schema?: Schema | null
         /**
          * How to parse handle fields outside the explicit schema.
          */
@@ -8460,17 +8186,7 @@ interface JSONReadOptions {
      * Whether objects may be printed across multiple lines (for example pretty printed).
      * if %FALSE, input must end with an empty line.
      */
-    allow_newlines_in_values: boolean
-    /**
-     * Whether objects may be printed across multiple lines (for example pretty printed).
-     * if %FALSE, input must end with an empty line.
-     */
     allowNewlinesInValues: boolean
-    /**
-     * Block size we request from the IO layer; also determines the size
-     * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
-     */
-    block_size: number
     /**
      * Block size we request from the IO layer; also determines the size
      * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
@@ -8483,15 +8199,7 @@ interface JSONReadOptions {
     /**
      * How to parse handle fields outside the explicit schema.
      */
-    unexpected_field_behavior: JSONReadUnexpectedFieldBehavior
-    /**
-     * How to parse handle fields outside the explicit schema.
-     */
     unexpectedFieldBehavior: JSONReadUnexpectedFieldBehavior
-    /**
-     * Whether to use the global CPU thread pool.
-     */
-    use_threads: boolean
     /**
      * Whether to use the global CPU thread pool.
      */
@@ -8548,7 +8256,6 @@ module JSONReader {
         // Own constructor properties of Arrow-1.0.Arrow.JSONReader
 
         input?: InputStream | null
-        json_table_reader?: any | null
         jsonTableReader?: any | null
     }
 
@@ -8559,7 +8266,6 @@ interface JSONReader {
     // Own properties of Arrow-1.0.Arrow.JSONReader
 
     readonly input: InputStream
-    readonly json_table_reader: any
     readonly jsonTableReader: any
 
     // Own fields of Arrow-1.0.Arrow.JSONReader
@@ -8812,7 +8518,6 @@ module LargeListArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.LargeListArray
 
-        raw_values?: Array | null
         rawValues?: Array | null
     }
 
@@ -8822,7 +8527,6 @@ interface LargeListArray {
 
     // Own properties of Arrow-1.0.Arrow.LargeListArray
 
-    readonly raw_values: Array
     readonly rawValues: Array
 
     // Own fields of Arrow-1.0.Arrow.LargeListArray
@@ -9241,7 +8945,6 @@ module ListArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.ListArray
 
-        raw_values?: Array | null
         rawValues?: Array | null
     }
 
@@ -9251,7 +8954,6 @@ interface ListArray {
 
     // Own properties of Arrow-1.0.Arrow.ListArray
 
-    readonly raw_values: Array
     readonly rawValues: Array
 
     // Own fields of Arrow-1.0.Arrow.ListArray
@@ -9546,11 +9248,6 @@ module LocalFileSystemOptions {
          * Whether open_input_stream and open_input_file return a mmap'ed file,
          * or a regular one.
          */
-        use_mmap?: boolean | null
-        /**
-         * Whether open_input_stream and open_input_file return a mmap'ed file,
-         * or a regular one.
-         */
         useMmap?: boolean | null
     }
 
@@ -9560,11 +9257,6 @@ interface LocalFileSystemOptions {
 
     // Own properties of Arrow-1.0.Arrow.LocalFileSystemOptions
 
-    /**
-     * Whether open_input_stream and open_input_file return a mmap'ed file,
-     * or a regular one.
-     */
-    use_mmap: boolean
     /**
      * Whether open_input_stream and open_input_file return a mmap'ed file,
      * or a regular one.
@@ -10492,7 +10184,6 @@ module OutputStream {
 
         // Own constructor properties of Arrow-1.0.Arrow.OutputStream
 
-        output_stream?: any | null
         outputStream?: any | null
     }
 
@@ -10502,7 +10193,6 @@ interface OutputStream extends File, Writable {
 
     // Own properties of Arrow-1.0.Arrow.OutputStream
 
-    readonly output_stream: any
     readonly outputStream: any
 
     // Own fields of Arrow-1.0.Arrow.OutputStream
@@ -10609,14 +10299,6 @@ module ReadOptions {
         /**
          * The maximum permitted schema nesting depth.
          */
-        max_recursion_depth?: number | null
-        /**
-         * Whether to use the global CPU thread pool.
-         */
-        use_threads?: boolean | null
-        /**
-         * The maximum permitted schema nesting depth.
-         */
         maxRecursionDepth?: number | null
         /**
          * Whether to use the global CPU thread pool.
@@ -10633,15 +10315,7 @@ interface ReadOptions {
     /**
      * The maximum permitted schema nesting depth.
      */
-    max_recursion_depth: number
-    /**
-     * The maximum permitted schema nesting depth.
-     */
     maxRecursionDepth: number
-    /**
-     * Whether to use the global CPU thread pool.
-     */
-    use_threads: boolean
     /**
      * Whether to use the global CPU thread pool.
      */
@@ -10693,7 +10367,6 @@ module RecordBatch {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatch
 
-        record_batch?: any | null
         recordBatch?: any | null
     }
 
@@ -10703,7 +10376,6 @@ interface RecordBatch {
 
     // Own properties of Arrow-1.0.Arrow.RecordBatch
 
-    readonly record_batch: any
     readonly recordBatch: any
 
     // Own fields of Arrow-1.0.Arrow.RecordBatch
@@ -10764,7 +10436,6 @@ module RecordBatchBuilder {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchBuilder
 
-        record_batch_builder?: any | null
         recordBatchBuilder?: any | null
     }
 
@@ -10774,7 +10445,6 @@ interface RecordBatchBuilder {
 
     // Own properties of Arrow-1.0.Arrow.RecordBatchBuilder
 
-    readonly record_batch_builder: any
     readonly recordBatchBuilder: any
 
     // Own fields of Arrow-1.0.Arrow.RecordBatchBuilder
@@ -10878,7 +10548,6 @@ module RecordBatchFileReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchFileReader
 
-        record_batch_file_reader?: any | null
         recordBatchFileReader?: any | null
     }
 
@@ -10888,7 +10557,6 @@ interface RecordBatchFileReader {
 
     // Own properties of Arrow-1.0.Arrow.RecordBatchFileReader
 
-    readonly record_batch_file_reader: any
     readonly recordBatchFileReader: any
 
     // Owm methods of Arrow-1.0.Arrow.RecordBatchFileReader
@@ -11037,7 +10705,6 @@ module RecordBatchReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchReader
 
-        record_batch_reader?: any | null
         recordBatchReader?: any | null
     }
 
@@ -11047,7 +10714,6 @@ interface RecordBatchReader {
 
     // Own properties of Arrow-1.0.Arrow.RecordBatchReader
 
-    readonly record_batch_reader: any
     readonly recordBatchReader: any
 
     // Own fields of Arrow-1.0.Arrow.RecordBatchReader
@@ -11184,7 +10850,6 @@ module RecordBatchWriter {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchWriter
 
-        record_batch_writer?: any | null
         recordBatchWriter?: any | null
     }
 
@@ -11194,7 +10859,6 @@ interface RecordBatchWriter {
 
     // Own properties of Arrow-1.0.Arrow.RecordBatchWriter
 
-    readonly record_batch_writer: any
     readonly recordBatchWriter: any
 
     // Owm methods of Arrow-1.0.Arrow.RecordBatchWriter
@@ -11366,10 +11030,6 @@ module RoundOptions {
         /**
          * The rounding precision (number of digits to round to).
          */
-        n_digits?: number | null
-        /**
-         * The rounding precision (number of digits to round to).
-         */
         nDigits?: number | null
     }
 
@@ -11383,10 +11043,6 @@ interface RoundOptions {
      * The rounding and tie-breaking mode.
      */
     mode: RoundMode
-    /**
-     * The rounding precision (number of digits to round to).
-     */
-    n_digits: number
     /**
      * The rounding precision (number of digits to round to).
      */
@@ -11551,10 +11207,6 @@ module S3GlobalOptions {
         /**
          * The log level of S3 APIs.
          */
-        log_level?: S3LogLevel | null
-        /**
-         * The log level of S3 APIs.
-         */
         logLevel?: S3LogLevel | null
     }
 
@@ -11564,10 +11216,6 @@ interface S3GlobalOptions {
 
     // Own properties of Arrow-1.0.Arrow.S3GlobalOptions
 
-    /**
-     * The log level of S3 APIs.
-     */
-    log_level: S3LogLevel
     /**
      * The log level of S3 APIs.
      */
@@ -11614,12 +11262,8 @@ module Scalar {
         /**
          * The data type of the scalar.
          */
-        data_type?: DataType | null
-        scalar?: any | null
-        /**
-         * The data type of the scalar.
-         */
         dataType?: DataType | null
+        scalar?: any | null
     }
 
 }
@@ -11628,10 +11272,6 @@ interface Scalar {
 
     // Own properties of Arrow-1.0.Arrow.Scalar
 
-    /**
-     * The data type of the scalar.
-     */
-    readonly data_type: DataType
     /**
      * The data type of the scalar.
      */
@@ -11690,14 +11330,6 @@ module ScalarAggregateOptions {
         /**
          * The minimum required number of values.
          */
-        min_count?: number | null
-        /**
-         * Whether NULLs are skipped or not.
-         */
-        skip_nulls?: boolean | null
-        /**
-         * The minimum required number of values.
-         */
         minCount?: number | null
         /**
          * Whether NULLs are skipped or not.
@@ -11714,15 +11346,7 @@ interface ScalarAggregateOptions {
     /**
      * The minimum required number of values.
      */
-    min_count: number
-    /**
-     * The minimum required number of values.
-     */
     minCount: number
-    /**
-     * Whether NULLs are skipped or not.
-     */
-    skip_nulls: boolean
     /**
      * Whether NULLs are skipped or not.
      */
@@ -12028,14 +11652,6 @@ module SetLookupOptions {
         /**
          * Whether NULLs are skipped or not.
          */
-        skip_nulls?: boolean | null
-        /**
-         * The set of values to look up input values into.
-         */
-        value_set?: Datum | null
-        /**
-         * Whether NULLs are skipped or not.
-         */
         skipNulls?: boolean | null
         /**
          * The set of values to look up input values into.
@@ -12052,15 +11668,7 @@ interface SetLookupOptions {
     /**
      * Whether NULLs are skipped or not.
      */
-    skip_nulls: boolean
-    /**
-     * Whether NULLs are skipped or not.
-     */
     skipNulls: boolean
-    /**
-     * The set of values to look up input values into.
-     */
-    value_set: Datum
     /**
      * The set of values to look up input values into.
      */
@@ -12152,7 +11760,6 @@ module SlowFileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.SlowFileSystem
 
-        base_file_system?: FileSystem | null
         baseFileSystem?: FileSystem | null
     }
 
@@ -12162,7 +11769,6 @@ interface SlowFileSystem {
 
     // Own properties of Arrow-1.0.Arrow.SlowFileSystem
 
-    readonly base_file_system: FileSystem
     readonly baseFileSystem: FileSystem
 
     // Own fields of Arrow-1.0.Arrow.SlowFileSystem
@@ -12353,7 +11959,6 @@ module SourceNodeOptions {
         // Own constructor properties of Arrow-1.0.Arrow.SourceNodeOptions
 
         reader?: RecordBatchReader | null
-        record_batch?: RecordBatch | null
         recordBatch?: RecordBatch | null
     }
 
@@ -12364,7 +11969,6 @@ interface SourceNodeOptions {
     // Own properties of Arrow-1.0.Arrow.SourceNodeOptions
 
     readonly reader: RecordBatchReader
-    readonly record_batch: RecordBatch
     readonly recordBatch: RecordBatch
 
     // Own fields of Arrow-1.0.Arrow.SourceNodeOptions
@@ -13041,7 +12645,6 @@ module SubTreeFileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.SubTreeFileSystem
 
-        base_file_system?: FileSystem | null
         baseFileSystem?: FileSystem | null
     }
 
@@ -13051,7 +12654,6 @@ interface SubTreeFileSystem {
 
     // Own properties of Arrow-1.0.Arrow.SubTreeFileSystem
 
-    readonly base_file_system: FileSystem
     readonly baseFileSystem: FileSystem
 
     // Own fields of Arrow-1.0.Arrow.SubTreeFileSystem
@@ -13224,25 +12826,6 @@ module TableConcatenateOptions {
          * the other type and become nullable. Nullability will be promoted
          * to the looser option (nullable if one is not nullable).
          */
-        promote_nullability?: boolean | null
-        /**
-         * If true, the schemas of the tables will be first unified with
-         * fields of the same name being merged, according to
-         * #GArrowTableConcatenateOptions:promote-nullability, then each
-         * table will be promoted to the unified schema before being
-         * concatenated.
-         * 
-         * Otherwise, all tables should have the same schema. Each column in
-         * the output table is the result of concatenating the corresponding
-         * columns in all input tables.
-         */
-        unify_schemas?: boolean | null
-        /**
-         * If true, a #GArrowField of #GArrowNullDataType can be unified
-         * with a #GArrowField of another type. The unified field will be of
-         * the other type and become nullable. Nullability will be promoted
-         * to the looser option (nullable if one is not nullable).
-         */
         promoteNullability?: boolean | null
         /**
          * If true, the schemas of the tables will be first unified with
@@ -13270,26 +12853,7 @@ interface TableConcatenateOptions {
      * the other type and become nullable. Nullability will be promoted
      * to the looser option (nullable if one is not nullable).
      */
-    promote_nullability: boolean
-    /**
-     * If true, a #GArrowField of #GArrowNullDataType can be unified
-     * with a #GArrowField of another type. The unified field will be of
-     * the other type and become nullable. Nullability will be promoted
-     * to the looser option (nullable if one is not nullable).
-     */
     promoteNullability: boolean
-    /**
-     * If true, the schemas of the tables will be first unified with
-     * fields of the same name being merged, according to
-     * #GArrowTableConcatenateOptions:promote-nullability, then each
-     * table will be promoted to the unified schema before being
-     * concatenated.
-     * 
-     * Otherwise, all tables should have the same schema. Each column in
-     * the output table is the result of concatenating the corresponding
-     * columns in all input tables.
-     */
-    unify_schemas: boolean
     /**
      * If true, the schemas of the tables will be first unified with
      * fields of the same name being merged, according to
@@ -15131,7 +14695,6 @@ module UnionArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.UnionArray
 
-        type_ids?: Int8Array | null
         typeIds?: Int8Array | null
     }
 
@@ -15141,7 +14704,6 @@ interface UnionArray {
 
     // Own properties of Arrow-1.0.Arrow.UnionArray
 
-    readonly type_ids: Int8Array
     readonly typeIds: Int8Array
 
     // Own fields of Arrow-1.0.Arrow.UnionArray
@@ -15319,14 +14881,6 @@ module VarianceOptions {
         /**
          * If less than this many non-null values are observed, emit null.
          */
-        min_count?: number | null
-        /**
-         * Whether NULLs are skipped or not.
-         */
-        skip_nulls?: boolean | null
-        /**
-         * If less than this many non-null values are observed, emit null.
-         */
         minCount?: number | null
         /**
          * Whether NULLs are skipped or not.
@@ -15347,15 +14901,7 @@ interface VarianceOptions {
     /**
      * If less than this many non-null values are observed, emit null.
      */
-    min_count: number
-    /**
-     * If less than this many non-null values are observed, emit null.
-     */
     minCount: number
-    /**
-     * Whether NULLs are skipped or not.
-     */
-    skip_nulls: boolean
     /**
      * Whether NULLs are skipped or not.
      */
@@ -15414,7 +14960,7 @@ module WriteOptions {
          * Whether to allow field lengths that don't fit in a signed 32-bit
          * int. Some implementations may not be able to parse such streams.
          */
-        allow_64bit?: boolean | null
+        allow64bit?: boolean | null
         /**
          * Codec to use for compressing and decompressing record batch body
          * buffers. This is not part of the Arrow IPC protocol and only for
@@ -15423,24 +14969,6 @@ module WriteOptions {
          * May only be UNCOMPRESSED, LZ4_FRAME and ZSTD.
          */
         codec?: Codec | null
-        /**
-         * The maximum permitted schema nesting depth.
-         */
-        max_recursion_depth?: number | null
-        /**
-         * Whether to use the global CPU thread pool.
-         */
-        use_threads?: boolean | null
-        /**
-         * Whether to write the pre-0.15.0 encapsulated IPC message format
-         * consisting of a 4-byte prefix instead of 8 byte.
-         */
-        write_legacy_ipc_format?: boolean | null
-        /**
-         * Whether to allow field lengths that don't fit in a signed 32-bit
-         * int. Some implementations may not be able to parse such streams.
-         */
-        allow64bit?: boolean | null
         /**
          * The maximum permitted schema nesting depth.
          */
@@ -15471,11 +14999,6 @@ interface WriteOptions {
      * Whether to allow field lengths that don't fit in a signed 32-bit
      * int. Some implementations may not be able to parse such streams.
      */
-    allow_64bit: boolean
-    /**
-     * Whether to allow field lengths that don't fit in a signed 32-bit
-     * int. Some implementations may not be able to parse such streams.
-     */
     allow64bit: boolean
     /**
      * Codec to use for compressing and decompressing record batch body
@@ -15488,24 +15011,11 @@ interface WriteOptions {
     /**
      * The maximum permitted schema nesting depth.
      */
-    max_recursion_depth: number
-    /**
-     * The maximum permitted schema nesting depth.
-     */
     maxRecursionDepth: number
     /**
      * Whether to use the global CPU thread pool.
      */
-    use_threads: boolean
-    /**
-     * Whether to use the global CPU thread pool.
-     */
     useThreads: boolean
-    /**
-     * Whether to write the pre-0.15.0 encapsulated IPC message format
-     * consisting of a 4-byte prefix instead of 8 byte.
-     */
-    write_legacy_ipc_format: boolean
     /**
      * Whether to write the pre-0.15.0 encapsulated IPC message format
      * consisting of a 4-byte prefix instead of 8 byte.

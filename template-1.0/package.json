@@ -1,13 +1,19 @@
 {
     "name": "@girs/template-1.0",
-    "version": "3.36.2-3.2.7",
+    "version": "3.36.2-3.2.8",
     "description": "GJS TypeScript type definitions for Template-1.0, generated from library version 3.36.2",
     "type": "module",
     "module": "template-1.0.js",
     "main": "template-1.0.js",
     "exports": {
-        "./ambient": "./template-1.0-ambient.d.ts",
-        "./import": "./template-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./template-1.0-ambient.d.ts",
+            "default": "./template-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./template-1.0-import.d.ts",
+            "default": "./template-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./template-1.0.d.ts",

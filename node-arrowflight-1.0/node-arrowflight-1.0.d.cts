@@ -857,7 +857,7 @@ export module ServerCallContext {
 
         // Own constructor properties of ArrowFlight-1.0.ArrowFlight.ServerCallContext
 
-        callContext?: any | null
+        call_context?: any | null
     }
 
 }

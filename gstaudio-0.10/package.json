@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstaudio-0.10",
-    "version": "0.10.0-3.2.7",
+    "version": "0.10.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstAudio-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstaudio-0.10.js",
     "main": "gstaudio-0.10.js",
     "exports": {
-        "./ambient": "./gstaudio-0.10-ambient.d.ts",
-        "./import": "./gstaudio-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./gstaudio-0.10-ambient.d.ts",
+            "default": "./gstaudio-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstaudio-0.10-import.d.ts",
+            "default": "./gstaudio-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstaudio-0.10.d.ts",

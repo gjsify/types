@@ -72,13 +72,12 @@ module View {
 
         // Own constructor properties of GeglGtk3-0.1.GeglGtk3.View
 
-        autoscale_policy?: ViewAutoscale | null
+        autoscalePolicy?: ViewAutoscale | null
         block?: boolean | null
         node?: GObject.Object | null
         scale?: number | null
         x?: number | null
         y?: number | null
-        autoscalePolicy?: ViewAutoscale | null
     }
 
 }
@@ -87,7 +86,6 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of GeglGtk3-0.1.GeglGtk3.View
 
-    autoscale_policy: ViewAutoscale
     autoscalePolicy: ViewAutoscale
     block: boolean
     node: GObject.Object

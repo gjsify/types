@@ -1906,15 +1906,11 @@ export function type_parent(type: GType): GType
 export function type_qname(type: GType): GLib.Quark
 /**
  * Queries the type system for information about a specific type.
- * 
  * This function will fill in a user-provided structure to hold
  * type-specific information. If an invalid #GType is passed in, the
  * `type` member of the #GTypeQuery is 0. All members filled into the
  * #GTypeQuery structure should be considered constant and have to be
  * left untouched.
- * 
- * Since GLib 2.78, this function allows queries on dynamic types. Previously
- * it only supported static types.
  * @param type #GType of a static, classed type
  */
 export function type_query(type: GType): /* query */ TypeQuery
@@ -3042,27 +3038,11 @@ export module Binding {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          */
-        source_property?: string | null
+        sourceProperty?: string | null
         /**
          * The #GObject that should be used as the target of the binding
          */
         target?: Object | null
-        /**
-         * The name of the property of #GBinding:target that should be used
-         * as the target of the binding.
-         * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
-         * best performance.
-         */
-        target_property?: string | null
-        /**
-         * The name of the property of #GBinding:source that should be used
-         * as the source of the binding.
-         * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
-         * best performance.
-         */
-        sourceProperty?: string | null
         /**
          * The name of the property of #GBinding:target that should be used
          * as the target of the binding.
@@ -3094,27 +3074,11 @@ export interface Binding {
      * This should be in [canonical form][canonical-parameter-names] to get the
      * best performance.
      */
-    readonly source_property: string | null
-    /**
-     * The name of the property of #GBinding:source that should be used
-     * as the source of the binding.
-     * 
-     * This should be in [canonical form][canonical-parameter-names] to get the
-     * best performance.
-     */
     readonly sourceProperty: string | null
     /**
      * The #GObject that should be used as the target of the binding
      */
     readonly target: Object
-    /**
-     * The name of the property of #GBinding:target that should be used
-     * as the target of the binding.
-     * 
-     * This should be in [canonical form][canonical-parameter-names] to get the
-     * best performance.
-     */
-    readonly target_property: string | null
     /**
      * The name of the property of #GBinding:target that should be used
      * as the target of the binding.
@@ -4930,10 +4894,6 @@ export module SignalGroup {
         /**
          * The #GType of the target property.
          */
-        target_type?: GType | null
-        /**
-         * The #GType of the target property.
-         */
         targetType?: GType | null
     }
 
@@ -4947,10 +4907,6 @@ export interface SignalGroup {
      * The target instance used when connecting signals.
      */
     target: Object
-    /**
-     * The #GType of the target property.
-     */
-    readonly target_type: GType
     /**
      * The #GType of the target property.
      */

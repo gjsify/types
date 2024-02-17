@@ -1,13 +1,19 @@
 {
     "name": "@girs/gmime-3.0",
-    "version": "3.2.8-3.2.7",
+    "version": "3.2.8-3.2.8",
     "description": "GJS TypeScript type definitions for GMime-3.0, generated from library version 3.2.8",
     "type": "module",
     "module": "gmime-3.0.js",
     "main": "gmime-3.0.js",
     "exports": {
-        "./ambient": "./gmime-3.0-ambient.d.ts",
-        "./import": "./gmime-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./gmime-3.0-ambient.d.ts",
+            "default": "./gmime-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gmime-3.0-import.d.ts",
+            "default": "./gmime-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gmime-3.0.d.ts",

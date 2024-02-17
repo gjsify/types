@@ -383,37 +383,37 @@ export module Account {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        attentionNeeded?: boolean | null
+        attention_needed?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.CalendarDisabled">"CalendarDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        calendarDisabled?: boolean | null
+        calendar_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ChatDisabled">"ChatDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        chatDisabled?: boolean | null
+        chat_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ContactsDisabled">"ContactsDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        contactsDisabled?: boolean | null
+        contacts_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.DocumentsDisabled">"DocumentsDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        documentsDisabled?: boolean | null
+        documents_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.FilesDisabled">"FilesDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        filesDisabled?: boolean | null
+        files_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.Id">"Id"</link>.
          * 
@@ -431,85 +431,85 @@ export module Account {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        isLocked?: boolean | null
+        is_locked?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.IsTemporary">"IsTemporary"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        isTemporary?: boolean | null
+        is_temporary?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MailDisabled">"MailDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        mailDisabled?: boolean | null
+        mail_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MapsDisabled">"MapsDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        mapsDisabled?: boolean | null
+        maps_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.MusicDisabled">"MusicDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        musicDisabled?: boolean | null
+        music_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PhotosDisabled">"PhotosDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        photosDisabled?: boolean | null
+        photos_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PresentationIdentity">"PresentationIdentity"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        presentationIdentity?: string | null
+        presentation_identity?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.PrintersDisabled">"PrintersDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        printersDisabled?: boolean | null
+        printers_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderIcon">"ProviderIcon"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        providerIcon?: string | null
+        provider_icon?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderName">"ProviderName"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        providerName?: string | null
+        provider_name?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ProviderType">"ProviderType"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        providerType?: string | null
+        provider_type?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.ReadLaterDisabled">"ReadLaterDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        readLaterDisabled?: boolean | null
+        read_later_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TicketingDisabled">"TicketingDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        ticketingDisabled?: boolean | null
+        ticketing_disabled?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.TodoDisabled">"TodoDisabled"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        todoDisabled?: boolean | null
+        todo_disabled?: boolean | null
     }
 
 }
@@ -903,7 +903,7 @@ export module Calendar {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        acceptSslErrors?: boolean | null
+        accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.Uri">"Uri"</link>.
          * 
@@ -1058,7 +1058,7 @@ export module Contacts {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        acceptSslErrors?: boolean | null
+        accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.Uri">"Uri"</link>.
          * 
@@ -1213,7 +1213,7 @@ export module Exchange {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        acceptSslErrors?: boolean | null
+        accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Exchange.Host">"Host"</link>.
          * 
@@ -1309,7 +1309,7 @@ export module Files {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        acceptSslErrors?: boolean | null
+        accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Files.Uri">"Uri"</link>.
          * 
@@ -1405,43 +1405,43 @@ export module Mail {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        emailAddress?: string | null
+        email_address?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapAcceptSslErrors">"ImapAcceptSslErrors"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapAcceptSslErrors?: boolean | null
+        imap_accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapHost">"ImapHost"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapHost?: string | null
+        imap_host?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapSupported">"ImapSupported"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapSupported?: boolean | null
+        imap_supported?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseSsl">"ImapUseSsl"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapUseSsl?: boolean | null
+        imap_use_ssl?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUseTls">"ImapUseTls"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapUseTls?: boolean | null
+        imap_use_tls?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.ImapUserName">"ImapUserName"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        imapUserName?: string | null
+        imap_user_name?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.Name">"Name"</link>.
          * 
@@ -1453,61 +1453,61 @@ export module Mail {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpAcceptSslErrors?: boolean | null
+        smtp_accept_ssl_errors?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthLogin">"SmtpAuthLogin"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpAuthLogin?: boolean | null
+        smtp_auth_login?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthPlain">"SmtpAuthPlain"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpAuthPlain?: boolean | null
+        smtp_auth_plain?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpAuthXoauth2">"SmtpAuthXoauth2"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpAuthXoauth2?: boolean | null
+        smtp_auth_xoauth2?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpHost">"SmtpHost"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpHost?: string | null
+        smtp_host?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpSupported">"SmtpSupported"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpSupported?: boolean | null
+        smtp_supported?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseAuth">"SmtpUseAuth"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpUseAuth?: boolean | null
+        smtp_use_auth?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseSsl">"SmtpUseSsl"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpUseSsl?: boolean | null
+        smtp_use_ssl?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUseTls">"SmtpUseTls"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpUseTls?: boolean | null
+        smtp_use_tls?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.SmtpUserName">"SmtpUserName"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        smtpUserName?: string | null
+        smtp_user_name?: string | null
     }
 
 }
@@ -2005,7 +2005,7 @@ export module MediaServer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        dlnaSupported?: boolean | null
+        dlna_supported?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-MediaServer.Udn">"Udn"</link>.
          * 
@@ -2170,13 +2170,13 @@ export module OAuth2Based {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        clientId?: string | null
+        client_id?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientSecret">"ClientSecret"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        clientSecret?: string | null
+        client_secret?: string | null
     }
 
 }
@@ -2324,13 +2324,13 @@ export module OAuthBased {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        consumerKey?: string | null
+        consumer_key?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerSecret">"ConsumerSecret"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        consumerSecret?: string | null
+        consumer_secret?: string | null
     }
 
 }
@@ -2529,7 +2529,7 @@ export module Object {
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        mediaServer?: MediaServer | null
+        media_server?: MediaServer | null
         /**
          * The #GoaMusic instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>, if any.
          * 
@@ -2541,19 +2541,19 @@ export module Object {
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        oauthBased?: OAuthBased | null
+        oauth_based?: OAuthBased | null
         /**
          * The #GoaOAuth2Based instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        oauth2Based?: OAuth2Based | null
+        oauth2_based?: OAuth2Based | null
         /**
          * The #GoaPasswordBased instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        passwordBased?: PasswordBased | null
+        password_based?: PasswordBased | null
         /**
          * The #GoaPhotos instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>, if any.
          * 
@@ -2571,7 +2571,7 @@ export module Object {
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        readLater?: ReadLater | null
+        read_later?: ReadLater | null
         /**
          * The #GoaTicketing instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>, if any.
          * 

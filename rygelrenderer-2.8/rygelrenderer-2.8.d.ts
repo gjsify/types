@@ -33,16 +33,11 @@ module MediaPlayer {
 
         // Own constructor properties of RygelRenderer-2.8.RygelRenderer.MediaPlayer
 
-        playback_state?: string | null
-        playback_speed?: string | null
+        playbackState?: string | null
+        playbackSpeed?: string | null
         uri?: string | null
         volume?: number | null
         metadata?: string | null
-        mime_type?: string | null
-        content_features?: string | null
-        user_agent?: string | null
-        playbackState?: string | null
-        playbackSpeed?: string | null
         mimeType?: string | null
         contentFeatures?: string | null
         userAgent?: string | null
@@ -54,29 +49,20 @@ interface MediaPlayer extends GObject.Object {
 
     // Own properties of RygelRenderer-2.8.RygelRenderer.MediaPlayer
 
-    playback_state: string | null
     playbackState: string | null
-    readonly allowed_playback_speeds: string[]
     readonly allowedPlaybackSpeeds: string[]
-    playback_speed: string | null
     playbackSpeed: string | null
     uri: string | null
     volume: number
     readonly duration: number
     readonly size: number
     metadata: string | null
-    mime_type: string | null
     mimeType: string | null
-    readonly can_seek: boolean
     readonly canSeek: boolean
-    readonly can_seek_bytes: boolean
     readonly canSeekBytes: boolean
-    content_features: string | null
     contentFeatures: string | null
     readonly position: number
-    readonly byte_position: number
     readonly bytePosition: number
-    user_agent: string | null
     userAgent: string | null
 
     // Owm methods of RygelRenderer-2.8.RygelRenderer.MediaPlayer
@@ -217,18 +203,11 @@ module PlayerController {
 
         // Own constructor properties of RygelRenderer-2.8.RygelRenderer.PlayerController
 
-        playback_state?: string | null
-        n_tracks?: number | null
+        playbackState?: string | null
+        nTracks?: number | null
         track?: number | null
         uri?: string | null
         metadata?: string | null
-        track_uri?: string | null
-        track_metadata?: string | null
-        next_uri?: string | null
-        next_metadata?: string | null
-        play_mode?: string | null
-        playbackState?: string | null
-        nTracks?: number | null
         trackUri?: string | null
         trackMetadata?: string | null
         nextUri?: string | null
@@ -242,26 +221,17 @@ interface PlayerController extends GObject.Object {
 
     // Own properties of RygelRenderer-2.8.RygelRenderer.PlayerController
 
-    playback_state: string | null
     playbackState: string | null
-    n_tracks: number
     nTracks: number
     track: number
     uri: string | null
     metadata: string | null
-    track_uri: string | null
     trackUri: string | null
-    track_metadata: string | null
     trackMetadata: string | null
-    next_uri: string | null
     nextUri: string | null
-    next_metadata: string | null
     nextMetadata: string | null
-    readonly current_transport_actions: string | null
     readonly currentTransportActions: string | null
-    play_mode: string | null
     playMode: string | null
-    readonly can_pause: boolean
     readonly canPause: boolean
 
     // Owm methods of RygelRenderer-2.8.RygelRenderer.PlayerController
@@ -394,7 +364,6 @@ module MediaRendererPlugin {
 
         // Own constructor properties of RygelRenderer-2.8.RygelRenderer.MediaRendererPlugin
 
-        supported_profiles?: RygelCore.DLNAProfile[] | null
         supportedProfiles?: RygelCore.DLNAProfile[] | null
     }
 
@@ -404,7 +373,6 @@ interface MediaRendererPlugin {
 
     // Own properties of RygelRenderer-2.8.RygelRenderer.MediaRendererPlugin
 
-    supported_profiles: RygelCore.DLNAProfile[]
     supportedProfiles: RygelCore.DLNAProfile[]
 
     // Owm methods of RygelRenderer-2.8.RygelRenderer.MediaRendererPlugin

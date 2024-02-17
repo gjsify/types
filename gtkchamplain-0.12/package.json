@@ -1,13 +1,19 @@
 {
     "name": "@girs/gtkchamplain-0.12",
-    "version": "0.12.0-3.2.7",
+    "version": "0.12.0-3.2.8",
     "description": "GJS TypeScript type definitions for GtkChamplain-0.12, generated from library version 0.12.0",
     "type": "module",
     "module": "gtkchamplain-0.12.js",
     "main": "gtkchamplain-0.12.js",
     "exports": {
-        "./ambient": "./gtkchamplain-0.12-ambient.d.ts",
-        "./import": "./gtkchamplain-0.12-import.d.ts",
+        "./ambient": {
+            "types": "./gtkchamplain-0.12-ambient.d.ts",
+            "default": "./gtkchamplain-0.12-ambient.js"
+        },
+        "./import": {
+            "types": "./gtkchamplain-0.12-import.d.ts",
+            "default": "./gtkchamplain-0.12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gtkchamplain-0.12.d.ts",

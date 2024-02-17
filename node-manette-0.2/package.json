@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-manette-0.2",
-    "version": "0.2.0-3.2.7",
+    "version": "0.2.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Manette-0.2, generated from library version 0.2.0",
     "type": "module",
     "module": "node-manette-0.2.js",
     "main": "node-manette-0.2.js",
     "exports": {
-        "./ambient": "./node-manette-0.2-ambient.d.ts",
-        "./import": "./node-manette-0.2-import.d.ts",
+        "./ambient": {
+            "types": "./node-manette-0.2-ambient.d.ts",
+            "default": "./node-manette-0.2-ambient.js"
+        },
+        "./import": {
+            "types": "./node-manette-0.2-import.d.ts",
+            "default": "./node-manette-0.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-manette-0.2.d.ts",

@@ -1,13 +1,19 @@
 {
     "name": "@girs/unity-6.0",
-    "version": "6.0.0-3.2.7",
+    "version": "6.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Unity-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "unity-6.0.js",
     "main": "unity-6.0.js",
     "exports": {
-        "./ambient": "./unity-6.0-ambient.d.ts",
-        "./import": "./unity-6.0-import.d.ts",
+        "./ambient": {
+            "types": "./unity-6.0-ambient.d.ts",
+            "default": "./unity-6.0-ambient.js"
+        },
+        "./import": {
+            "types": "./unity-6.0-import.d.ts",
+            "default": "./unity-6.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./unity-6.0.d.ts",

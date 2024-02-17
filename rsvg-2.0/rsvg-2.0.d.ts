@@ -278,23 +278,6 @@ module Handle {
          * Base URI, to be used to resolve relative references for resources.  See the section
          * "Security and locations of referenced files" for details.
          */
-        base_uri?: string | null
-        /**
-         * Horizontal resolution in dots per inch.
-         */
-        dpi_x?: number | null
-        /**
-         * Horizontal resolution in dots per inch.
-         */
-        dpi_y?: number | null
-        /**
-         * Flags from [flags`Rsvg`.HandleFlags].
-         */
-        flags?: HandleFlags | null
-        /**
-         * Base URI, to be used to resolve relative references for resources.  See the section
-         * "Security and locations of referenced files" for details.
-         */
         baseUri?: string | null
         /**
          * Horizontal resolution in dots per inch.
@@ -304,6 +287,10 @@ module Handle {
          * Horizontal resolution in dots per inch.
          */
         dpiY?: number | null
+        /**
+         * Flags from [flags`Rsvg`.HandleFlags].
+         */
+        flags?: HandleFlags | null
     }
 
 }
@@ -316,11 +303,6 @@ interface Handle {
      * Base URI, to be used to resolve relative references for resources.  See the section
      * "Security and locations of referenced files" for details.
      */
-    base_uri: string | null
-    /**
-     * Base URI, to be used to resolve relative references for resources.  See the section
-     * "Security and locations of referenced files" for details.
-     */
     baseUri: string | null
     /**
      * SVG's description.
@@ -329,15 +311,7 @@ interface Handle {
     /**
      * Horizontal resolution in dots per inch.
      */
-    dpi_x: number
-    /**
-     * Horizontal resolution in dots per inch.
-     */
     dpiX: number
-    /**
-     * Horizontal resolution in dots per inch.
-     */
-    dpi_y: number
     /**
      * Horizontal resolution in dots per inch.
      */

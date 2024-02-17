@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-cally-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Cally-11, generated from library version 11.0.0",
     "type": "module",
     "module": "node-cally-11.js",
     "main": "node-cally-11.js",
     "exports": {
-        "./ambient": "./node-cally-11-ambient.d.ts",
-        "./import": "./node-cally-11-import.d.ts",
+        "./ambient": {
+            "types": "./node-cally-11-ambient.d.ts",
+            "default": "./node-cally-11-ambient.js"
+        },
+        "./import": {
+            "types": "./node-cally-11-import.d.ts",
+            "default": "./node-cally-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-cally-11.d.ts",

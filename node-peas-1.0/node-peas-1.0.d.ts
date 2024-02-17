@@ -213,13 +213,13 @@ module Engine {
          * 
          * Note: notify will not be called when the engine is being destroyed.
          */
-        loadedPlugins?: string[] | null
+        loaded_plugins?: string[] | null
         /**
          * If non-global plugin loaders should be used.
          * 
          * See [ctor`Engine`.new_with_nonglobal_loaders] for more information.
          */
-        nonglobalLoaders?: boolean | null
+        nonglobal_loaders?: boolean | null
     }
 
 }
@@ -520,7 +520,7 @@ module ExtensionBase {
         /**
          * The [struct`PluginInfo]` related to the current plugin.
          */
-        pluginInfo?: PluginInfo | null
+        plugin_info?: PluginInfo | null
     }
 
 }
@@ -628,9 +628,9 @@ module ExtensionSet {
 
         // Own constructor properties of Peas-1.0.Peas.ExtensionSet
 
-        constructProperties?: any | null
+        construct_properties?: any | null
         engine?: Engine | null
-        extensionType?: GObject.GType | null
+        extension_type?: GObject.GType | null
     }
 
 }
@@ -778,8 +778,8 @@ module ObjectModule {
          * 
          * Since 1.14
          */
-        localLinkage?: boolean | null
-        moduleName?: string | null
+        local_linkage?: boolean | null
+        module_name?: string | null
         path?: string | null
         resident?: boolean | null
         symbol?: string | null

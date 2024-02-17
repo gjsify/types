@@ -372,7 +372,7 @@ export module Adjustment {
         // Own constructor properties of Champlain-0.12.Champlain.Adjustment
 
         lower?: number | null
-        stepIncrement?: number | null
+        step_increment?: number | null
         upper?: number | null
         value?: number | null
     }
@@ -1132,7 +1132,7 @@ export module ErrorTileRenderer {
         /**
          * The size of the rendered tile.
          */
-        tileSize?: number | null
+        tile_size?: number | null
     }
 
 }
@@ -1269,13 +1269,13 @@ export module FileCache {
         /**
          * The directory where the tile database is stored.
          */
-        cacheDir?: string | null
+        cache_dir?: string | null
         /**
          * The cache size limit in bytes.
          * 
          * Note: this new value will not be applied until you call champlain_file_cache_purge()
          */
-        sizeLimit?: number | null
+        size_limit?: number | null
     }
 
 }
@@ -1647,9 +1647,9 @@ export module KineticScrollView {
 
         // Own constructor properties of Champlain-0.12.Champlain.KineticScrollView
 
-        decelRate?: number | null
+        decel_rate?: number | null
         mode?: boolean | null
-        motionBuffer?: number | null
+        motion_buffer?: number | null
     }
 
 }
@@ -2233,11 +2233,11 @@ export module Label {
         /**
          * If the label has a background
          */
-        drawBackground?: boolean | null
+        draw_background?: boolean | null
         /**
          * If the label background has a shadow
          */
-        drawShadow?: boolean | null
+        draw_shadow?: boolean | null
         /**
          * The label's ellipsize mode
          */
@@ -2245,7 +2245,7 @@ export module Label {
         /**
          * The label's text font name
          */
-        fontName?: string | null
+        font_name?: string | null
         /**
          * The image of the label
          */
@@ -2253,7 +2253,7 @@ export module Label {
         /**
          * If the label is in single line mode
          */
-        singleLineMode?: boolean | null
+        single_line_mode?: boolean | null
         /**
          * The text of the label
          */
@@ -2261,11 +2261,11 @@ export module Label {
         /**
          * The label's text color
          */
-        textColor?: Clutter.Color | null
+        text_color?: Clutter.Color | null
         /**
          * If the label's text uses markup
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
         /**
          * If the label's text wrap is set
          */
@@ -2273,7 +2273,7 @@ export module Label {
         /**
          * The label's text wrap mode
          */
-        wrapMode?: Pango.WrapMode | null
+        wrap_mode?: Pango.WrapMode | null
     }
 
 }
@@ -3708,7 +3708,7 @@ export module License {
          * license will be added below it. Your text can have multiple lines, just use
          * "\n" in between.
          */
-        extraText?: string | null
+        extra_text?: string | null
     }
 
 }
@@ -4316,7 +4316,7 @@ export module MapSource {
         /**
          * Next source in the loading chain.
          */
-        nextSource?: MapSource | null
+        next_source?: MapSource | null
         /**
          * Renderer used for tiles rendering.
          */
@@ -4642,15 +4642,15 @@ export module MapSourceDesc {
         /**
          * The license's uri for more information
          */
-        licenseUri?: string | null
+        license_uri?: string | null
         /**
          * The maximum zoom level
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The minimum zoom level
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
         /**
          * The name of the map source
          */
@@ -4662,11 +4662,11 @@ export module MapSourceDesc {
         /**
          * The tile size of the map source
          */
-        tileSize?: number | null
+        tile_size?: number | null
         /**
          * The URI format of a network map source
          */
-        uriFormat?: string | null
+        uri_format?: string | null
     }
 
 }
@@ -5714,7 +5714,7 @@ export module MarkerLayer {
         /**
          * Determines the type of selection that will be performed.
          */
-        selectionMode?: SelectionMode | null
+        selection_mode?: SelectionMode | null
     }
 
 }
@@ -6374,7 +6374,7 @@ export module MemoryCache {
         /**
          * The maximum number of tiles that are stored in the cache.
          */
-        sizeLimit?: number | null
+        size_limit?: number | null
     }
 
 }
@@ -6477,11 +6477,11 @@ export module NetworkBboxTileSource {
         /**
          * The URI of an OpenStreetMap API server
          */
-        apiUri?: string | null
+        api_uri?: string | null
         /**
          * Used to override the default proxy for accessing the network.
          */
-        proxyUri?: string | null
+        proxy_uri?: string | null
         /**
          * The map source's state. Useful to know if the data source is loading
          * or not.
@@ -6490,7 +6490,7 @@ export module NetworkBboxTileSource {
         /**
          * The HTTP user agent used for requests
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -6693,7 +6693,7 @@ export module NetworkTileSource {
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          */
-        maxConns?: number | null
+        max_conns?: number | null
         /**
          * Specifies whether the network tile source can access network
          */
@@ -6701,15 +6701,15 @@ export module NetworkTileSource {
         /**
          * Used to override the default proxy for accessing the network.
          */
-        proxyUri?: string | null
+        proxy_uri?: string | null
         /**
          * The uri format of the tile source, see #champlain_network_tile_source_set_uri_format
          */
-        uriFormat?: string | null
+        uri_format?: string | null
         /**
          * The HTTP user agent used for requests
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -7073,7 +7073,7 @@ export module PathLayer {
         /**
          * The path's fill color
          */
-        fillColor?: Clutter.Color | null
+        fill_color?: Clutter.Color | null
         /**
          * The shape should be stroked
          */
@@ -7081,11 +7081,11 @@ export module PathLayer {
         /**
          * The path's stroke color
          */
-        strokeColor?: Clutter.Color | null
+        stroke_color?: Clutter.Color | null
         /**
          * The path's stroke width (in pixels)
          */
-        strokeWidth?: number | null
+        stroke_width?: number | null
         /**
          * Wether the path is visible
          */
@@ -8577,7 +8577,7 @@ export module Scale {
         /**
          * The size of the map scale on screen in pixels.
          */
-        maxWidth?: number | null
+        max_width?: number | null
         /**
          * The scale's units.
          */
@@ -9207,7 +9207,7 @@ export module Tile {
         /**
          * Specifies whether the tile should fade in when loading
          */
-        fadeIn?: boolean | null
+        fade_in?: boolean | null
         /**
          * The size of the tile in pixels
          */
@@ -9227,7 +9227,7 @@ export module Tile {
         /**
          * The zoom level of the tile
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }
@@ -10127,15 +10127,15 @@ export module TileSource {
         /**
          * The usage license's uri for more information
          */
-        licenseUri?: string | null
+        license_uri?: string | null
         /**
          * The maximum zoom level
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The minimum zoom level
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
         /**
          * The name of the tile source
          */
@@ -10147,7 +10147,7 @@ export module TileSource {
         /**
          * The tile size of the tile source
          */
-        tileSize?: number | null
+        tile_size?: number | null
     }
 
 }
@@ -10367,11 +10367,11 @@ export module View {
         /**
          * Animate zoom change when zooming in/out.
          */
-        animateZoom?: boolean | null
+        animate_zoom?: boolean | null
         /**
          * The pattern displayed in the background of the map.
          */
-        backgroundPattern?: Clutter.Actor | null
+        background_pattern?: Clutter.Actor | null
         /**
          * The deceleration rate for the kinetic mode. The default value is 1.1.
          */
@@ -10383,26 +10383,26 @@ export module View {
          * Please note that animation of #champlain_view_ensure_visible also
          * involves a 'goto' animation.
          */
-        gotoAnimationDuration?: number | null
+        goto_animation_duration?: number | null
         /**
          * The mode of animation when going to a location.
          * 
          * Please note that animation of #champlain_view_ensure_visible also
          * involves a 'goto' animation.
          */
-        gotoAnimationMode?: Clutter.AnimationMode | null
+        goto_animation_mode?: Clutter.AnimationMode | null
         /**
          * Determines whether the view should wrap horizontally.
          */
-        horizontalWrap?: boolean | null
+        horizontal_wrap?: boolean | null
         /**
          * Keep the current centered position when resizing the view.
          */
-        keepCenterOnResize?: boolean | null
+        keep_center_on_resize?: boolean | null
         /**
          * Determines whether the view should use kinetic mode.
          */
-        kineticMode?: boolean | null
+        kinetic_mode?: boolean | null
         /**
          * The latitude coordonate of the map
          */
@@ -10414,15 +10414,15 @@ export module View {
         /**
          * The #ChamplainMapSource being displayed
          */
-        mapSource?: MapSource | null
+        map_source?: MapSource | null
         /**
          * The highest allowed level of zoom of the content.
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The lowest allowed level of zoom of the content.
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
         /**
          * Set a bounding box to limit the world to. No tiles will be loaded
          * outside of this bounding box. It will not be possible to scroll outside
@@ -10434,11 +10434,11 @@ export module View {
         /**
          * The level of zoom of the content.
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          */
-        zoomOnDoubleClick?: boolean | null
+        zoom_on_double_click?: boolean | null
     }
 
 }
@@ -11467,8 +11467,8 @@ export module Viewport {
 
         hadjustment?: Adjustment | null
         vadjustment?: Adjustment | null
-        xOrigin?: number | null
-        yOrigin?: number | null
+        x_origin?: number | null
+        y_origin?: number | null
     }
 
 }

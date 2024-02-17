@@ -1,13 +1,19 @@
 {
     "name": "@girs/gxps-1.0",
-    "version": "0.2.5-3.2.7",
+    "version": "0.2.5-3.2.8",
     "description": "GJS TypeScript type definitions for Gxps-1.0, generated from library version 0.2.5",
     "type": "module",
     "module": "gxps-1.0.js",
     "main": "gxps-1.0.js",
     "exports": {
-        "./ambient": "./gxps-1.0-ambient.d.ts",
-        "./import": "./gxps-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gxps-1.0-ambient.d.ts",
+            "default": "./gxps-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gxps-1.0-import.d.ts",
+            "default": "./gxps-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gxps-1.0.d.ts",

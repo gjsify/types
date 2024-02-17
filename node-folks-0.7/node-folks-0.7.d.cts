@@ -199,7 +199,7 @@ export module AntiLinkable {
 
         // Own constructor properties of Folks-0.7.Folks.AntiLinkable
 
-        antiLinks?: Gee.Set | null
+        anti_links?: Gee.Set | null
     }
 
 }
@@ -382,7 +382,7 @@ export module BirthdayDetails {
         // Own constructor properties of Folks-0.7.Folks.BirthdayDetails
 
         birthday?: GLib.DateTime | null
-        calendarEventId?: string | null
+        calendar_event_id?: string | null
     }
 
 }
@@ -462,7 +462,7 @@ export module EmailDetails {
 
         // Own constructor properties of Folks-0.7.Folks.EmailDetails
 
-        emailAddresses?: Gee.Set | null
+        email_addresses?: Gee.Set | null
     }
 
 }
@@ -586,7 +586,7 @@ export module FavouriteDetails {
 
         // Own constructor properties of Folks-0.7.Folks.FavouriteDetails
 
-        isFavourite?: boolean | null
+        is_favourite?: boolean | null
     }
 
 }
@@ -806,7 +806,7 @@ export module ImDetails {
 
         // Own constructor properties of Folks-0.7.Folks.ImDetails
 
-        imAddresses?: Gee.MultiMap | null
+        im_addresses?: Gee.MultiMap | null
     }
 
 }
@@ -953,7 +953,7 @@ export module LocalIdDetails {
 
         // Own constructor properties of Folks-0.7.Folks.LocalIdDetails
 
-        localIds?: Gee.Set | null
+        local_ids?: Gee.Set | null
     }
 
 }
@@ -1085,8 +1085,8 @@ export module NameDetails {
 
         // Own constructor properties of Folks-0.7.Folks.NameDetails
 
-        structuredName?: StructuredName | null
-        fullName?: string | null
+        structured_name?: StructuredName | null
+        full_name?: string | null
         nickname?: string | null
     }
 
@@ -1247,7 +1247,7 @@ export module PhoneDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PhoneDetails
 
-        phoneNumbers?: Gee.Set | null
+        phone_numbers?: Gee.Set | null
     }
 
 }
@@ -1313,7 +1313,7 @@ export module PostalAddressDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PostalAddressDetails
 
-        postalAddresses?: Gee.Set | null
+        postal_addresses?: Gee.Set | null
     }
 
 }
@@ -1379,10 +1379,10 @@ export module PresenceDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PresenceDetails
 
-        presenceType?: PresenceType | null
-        presenceMessage?: string | null
-        clientTypes?: string[] | null
-        presenceStatus?: string | null
+        presence_type?: PresenceType | null
+        presence_message?: string | null
+        client_types?: string[] | null
+        presence_status?: string | null
     }
 
 }
@@ -1609,7 +1609,7 @@ export module WebServiceDetails {
 
         // Own constructor properties of Folks-0.7.Folks.WebServiceDetails
 
-        webServiceAddresses?: Gee.MultiMap | null
+        web_service_addresses?: Gee.MultiMap | null
     }
 
 }
@@ -1675,9 +1675,9 @@ export module AbstractFieldDetails {
 
         // Own constructor properties of Folks-0.7.Folks.AbstractFieldDetails
 
-        tType?: GObject.GType | null
-        tDupFunc?: GObject.BoxedCopyFunc | null
-        tDestroyFunc?: GLib.DestroyNotify | null
+        t_type?: GObject.GType | null
+        t_dup_func?: GObject.BoxedCopyFunc | null
+        t_destroy_func?: GLib.DestroyNotify | null
         value?: any | null
         id?: string | null
         parameters?: Gee.MultiMap | null
@@ -1865,8 +1865,8 @@ export module BackendStore {
 
         // Own constructor properties of Folks-0.7.Folks.BackendStore
 
-        enabledBackends?: Gee.Map | null
-        isPrepared?: boolean | null
+        enabled_backends?: Gee.Map | null
+        is_prepared?: boolean | null
     }
 
 }
@@ -2087,8 +2087,8 @@ export module Debug {
 
         // Own constructor properties of Folks-0.7.Folks.Debug
 
-        colourEnabled?: boolean | null
-        debugOutputEnabled?: boolean | null
+        colour_enabled?: boolean | null
+        debug_output_enabled?: boolean | null
     }
 
 }
@@ -2420,7 +2420,7 @@ export module IndividualAggregator {
 
         // Own constructor properties of Folks-0.7.Folks.IndividualAggregator
 
-        backendStore?: BackendStore | null
+        backend_store?: BackendStore | null
         individuals?: Gee.Map | null
         user?: Individual | null
     }
@@ -2568,8 +2568,8 @@ export module Individual {
 
         // Own constructor properties of Folks-0.7.Folks.Individual
 
-        trustLevel?: TrustLevel | null
-        isUser?: boolean | null
+        trust_level?: TrustLevel | null
+        is_user?: boolean | null
         id?: string | null
         personas?: Gee.Set | null
     }
@@ -2867,9 +2867,9 @@ export module StructuredName {
 
         // Own constructor properties of Folks-0.7.Folks.StructuredName
 
-        familyName?: string | null
-        givenName?: string | null
-        additionalNames?: string | null
+        family_name?: string | null
+        given_name?: string | null
+        additional_names?: string | null
         prefixes?: string | null
         suffixes?: string | null
     }
@@ -3061,10 +3061,10 @@ export module ObjectCache {
 
         // Own constructor properties of Folks-0.7.Folks.ObjectCache
 
-        tType?: GObject.GType | null
-        tDupFunc?: GObject.BoxedCopyFunc | null
-        tDestroyFunc?: GLib.DestroyNotify | null
-        typeId?: string | null
+        t_type?: GObject.GType | null
+        t_dup_func?: GObject.BoxedCopyFunc | null
+        t_destroy_func?: GLib.DestroyNotify | null
+        type_id?: string | null
         id?: string | null
     }
 
@@ -3180,12 +3180,12 @@ export module PersonaStore {
 
         // Own constructor properties of Folks-0.7.Folks.PersonaStore
 
-        displayName?: string | null
+        display_name?: string | null
         id?: string | null
-        isWriteable?: boolean | null
-        trustLevel?: PersonaStoreTrust | null
-        isPrimaryStore?: boolean | null
-        isUserSetDefault?: boolean | null
+        is_writeable?: boolean | null
+        trust_level?: PersonaStoreTrust | null
+        is_primary_store?: boolean | null
+        is_user_set_default?: boolean | null
     }
 
 }
@@ -3386,8 +3386,8 @@ export module Persona {
 
         iid?: string | null
         uid?: string | null
-        displayId?: string | null
-        isUser?: boolean | null
+        display_id?: string | null
+        is_user?: boolean | null
         store?: PersonaStore | null
         individual?: Individual | null
     }
@@ -3586,14 +3586,14 @@ export module PostalAddress {
 
         // Own constructor properties of Folks-0.7.Folks.PostalAddress
 
-        poBox?: string | null
+        po_box?: string | null
         extension?: string | null
         street?: string | null
         locality?: string | null
         region?: string | null
-        postalCode?: string | null
+        postal_code?: string | null
         country?: string | null
-        addressFormat?: string | null
+        address_format?: string | null
         uid?: string | null
     }
 
@@ -3851,7 +3851,7 @@ export module Query {
 
         // Own constructor properties of Folks-0.7.Folks.Query
 
-        matchFields?: string[] | null
+        match_fields?: string[] | null
     }
 
 }
@@ -3913,7 +3913,7 @@ export module Role {
 
         // Own constructor properties of Folks-0.7.Folks.Role
 
-        organisationName?: string | null
+        organisation_name?: string | null
         title?: string | null
         role?: string | null
         uid?: string | null
@@ -4193,8 +4193,8 @@ export module SimpleQuery {
 
         // Own constructor properties of Folks-0.7.Folks.SimpleQuery
 
-        queryString?: string | null
-        queryLocale?: string | null
+        query_string?: string | null
+        query_locale?: string | null
     }
 
 }

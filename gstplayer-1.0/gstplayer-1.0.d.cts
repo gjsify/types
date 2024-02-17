@@ -265,23 +265,17 @@ export module Player {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.Player
 
-        audio_video_offset?: number | null
+        audioVideoOffset?: number | null
         mute?: boolean | null
         rate?: number | null
-        signal_dispatcher?: PlayerSignalDispatcher | null
-        subtitle_video_offset?: number | null
-        suburi?: string | null
-        uri?: string | null
-        video_multiview_flags?: GstVideo.VideoMultiviewFlags | null
-        video_multiview_mode?: GstVideo.VideoMultiviewFramePacking | null
-        video_renderer?: PlayerVideoRenderer | null
-        volume?: number | null
-        audioVideoOffset?: number | null
         signalDispatcher?: PlayerSignalDispatcher | null
         subtitleVideoOffset?: number | null
+        suburi?: string | null
+        uri?: string | null
         videoMultiviewFlags?: GstVideo.VideoMultiviewFlags | null
         videoMultiviewMode?: GstVideo.VideoMultiviewFramePacking | null
         videoRenderer?: PlayerVideoRenderer | null
+        volume?: number | null
     }
 
 }
@@ -290,32 +284,22 @@ export interface Player {
 
     // Own properties of GstPlayer-1.0.GstPlayer.Player
 
-    audio_video_offset: number
     audioVideoOffset: number
-    readonly current_audio_track: PlayerAudioInfo
     readonly currentAudioTrack: PlayerAudioInfo
-    readonly current_subtitle_track: PlayerSubtitleInfo
     readonly currentSubtitleTrack: PlayerSubtitleInfo
-    readonly current_video_track: PlayerVideoInfo
     readonly currentVideoTrack: PlayerVideoInfo
     readonly duration: number
-    readonly media_info: PlayerMediaInfo
     readonly mediaInfo: PlayerMediaInfo
     mute: boolean
     readonly pipeline: Gst.Element
     readonly position: number
     rate: number
-    readonly signal_dispatcher: PlayerSignalDispatcher
     readonly signalDispatcher: PlayerSignalDispatcher
-    subtitle_video_offset: number
     subtitleVideoOffset: number
     suburi: string | null
     uri: string | null
-    video_multiview_flags: GstVideo.VideoMultiviewFlags
     videoMultiviewFlags: GstVideo.VideoMultiviewFlags
-    video_multiview_mode: GstVideo.VideoMultiviewFramePacking
     videoMultiviewMode: GstVideo.VideoMultiviewFramePacking
-    readonly video_renderer: PlayerVideoRenderer
     readonly videoRenderer: PlayerVideoRenderer
     volume: number
 
@@ -820,7 +804,6 @@ export module PlayerGMainContextSignalDispatcher {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
-        application_context?: GLib.MainContext | null
         applicationContext?: GLib.MainContext | null
     }
 
@@ -830,7 +813,6 @@ export interface PlayerGMainContextSignalDispatcher extends PlayerSignalDispatch
 
     // Own properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
-    readonly application_context: GLib.MainContext
     readonly applicationContext: GLib.MainContext
 
     // Class property signals of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
@@ -1080,8 +1062,6 @@ export module PlayerVideoOverlayVideoRenderer {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 
-        video_sink?: Gst.Element | null
-        window_handle?: any | null
         videoSink?: Gst.Element | null
         windowHandle?: any | null
     }
@@ -1092,9 +1072,7 @@ export interface PlayerVideoOverlayVideoRenderer extends PlayerVideoRenderer {
 
     // Own properties of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 
-    video_sink: Gst.Element
     videoSink: Gst.Element
-    window_handle: any
     windowHandle: any
 
     // Owm methods of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer

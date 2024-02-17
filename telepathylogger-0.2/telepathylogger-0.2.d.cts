@@ -73,11 +73,8 @@ export module CallEvent {
 
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
-        detailed_end_reason?: string | null
-        duration?: number | null
-        end_actor?: Entity | null
-        end_reason?: number | null
         detailedEndReason?: string | null
+        duration?: number | null
         endActor?: Entity | null
         endReason?: number | null
     }
@@ -88,12 +85,9 @@ export interface CallEvent {
 
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
-    readonly detailed_end_reason: string | null
     readonly detailedEndReason: string | null
     readonly duration: number
-    readonly end_actor: Entity
     readonly endActor: Entity
-    readonly end_reason: number
     readonly endReason: number
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.CallEvent
@@ -173,7 +167,7 @@ export module Entity {
         /**
          * The entity's avatar token
          */
-        avatar_token?: string | null
+        avatarToken?: string | null
         /**
          * The entity's identifier
          */
@@ -182,10 +176,6 @@ export module Entity {
          * The entity's type (see #TplEntityType).
          */
         type?: number | null
-        /**
-         * The entity's avatar token
-         */
-        avatarToken?: string | null
     }
 
 }
@@ -198,10 +188,6 @@ export interface Entity {
      * The entity's alias
      */
     readonly alias: string | null
-    /**
-     * The entity's avatar token
-     */
-    readonly avatar_token: string | null
     /**
      * The entity's avatar token
      */
@@ -277,11 +263,10 @@ export module Event {
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.Event
 
         account?: TelepathyGLib.Account | null
-        channel_path?: string | null
+        channelPath?: string | null
         receiver?: Entity | null
         sender?: Entity | null
         timestamp?: number | null
-        channelPath?: string | null
     }
 
 }
@@ -291,9 +276,7 @@ export interface Event {
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.Event
 
     readonly account: TelepathyGLib.Account
-    readonly account_path: string | null
     readonly accountPath: string | null
-    readonly channel_path: string | null
     readonly channelPath: string | null
     readonly receiver: Entity
     readonly sender: Entity
@@ -580,7 +563,6 @@ export module LogWalker {
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.LogWalker
 
         filter?: any | null
-        filter_data?: any | null
         filterData?: any | null
     }
 
@@ -591,7 +573,6 @@ export interface LogWalker {
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.LogWalker
 
     readonly filter: any
-    readonly filter_data: any
     readonly filterData: any
 
     // Own fields of TelepathyLogger-0.2.TelepathyLogger.LogWalker
@@ -692,12 +673,8 @@ export module TextEvent {
 
         // Own constructor properties of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 
-        edit_timestamp?: number | null
-        message?: string | null
-        message_token?: string | null
-        message_type?: number | null
-        supersedes_token?: string | null
         editTimestamp?: number | null
+        message?: string | null
         messageToken?: string | null
         messageType?: number | null
         supersedesToken?: string | null
@@ -709,14 +686,10 @@ export interface TextEvent {
 
     // Own properties of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 
-    readonly edit_timestamp: number
     readonly editTimestamp: number
     readonly message: string | null
-    readonly message_token: string | null
     readonly messageToken: string | null
-    readonly message_type: number
     readonly messageType: number
-    readonly supersedes_token: string | null
     readonly supersedesToken: string | null
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.TextEvent

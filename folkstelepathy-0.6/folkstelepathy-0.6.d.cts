@@ -123,9 +123,8 @@ export module Persona {
 
         // Own constructor properties of FolksTelepathy-0.6.FolksTelepathy.Persona
 
-        is_in_contact_list?: boolean | null
-        contact?: TelepathyGLib.Contact | null
         isInContactList?: boolean | null
+        contact?: TelepathyGLib.Contact | null
     }
 
 }
@@ -134,7 +133,6 @@ export interface Persona extends Folks.AliasDetails, Folks.AvatarDetails, Folks.
 
     // Own properties of FolksTelepathy-0.6.FolksTelepathy.Persona
 
-    is_in_contact_list: boolean
     isInContactList: boolean
     readonly contact: TelepathyGLib.Contact
 

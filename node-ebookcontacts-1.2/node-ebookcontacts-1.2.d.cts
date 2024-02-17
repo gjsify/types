@@ -1042,137 +1042,137 @@ export module Contact {
 
         // Own constructor properties of EBookContacts-1.2.EBookContacts.Contact
 
-        rev?: string | null
+        Rev?: string | null
         address?: any | null
-        addressHome?: ContactAddress | null
-        addressLabelHome?: string | null
-        addressLabelOther?: string | null
-        addressLabelWork?: string | null
-        addressOther?: ContactAddress | null
-        addressWork?: ContactAddress | null
+        address_home?: ContactAddress | null
+        address_label_home?: string | null
+        address_label_other?: string | null
+        address_label_work?: string | null
+        address_other?: ContactAddress | null
+        address_work?: ContactAddress | null
         anniversary?: ContactDate | null
         assistant?: string | null
-        assistantPhone?: string | null
-        birthDate?: ContactDate | null
-        blogUrl?: string | null
-        bookUid?: string | null
-        businessFax?: string | null
-        businessPhone?: string | null
-        businessPhone2?: string | null
-        callbackPhone?: string | null
+        assistant_phone?: string | null
+        birth_date?: ContactDate | null
+        blog_url?: string | null
+        book_uid?: string | null
+        business_fax?: string | null
+        business_phone?: string | null
+        business_phone_2?: string | null
+        callback_phone?: string | null
         caluri?: string | null
-        carPhone?: string | null
+        car_phone?: string | null
         categories?: string | null
-        categoryList?: any | null
-        companyPhone?: string | null
+        category_list?: any | null
+        company_phone?: string | null
         email?: any | null
-        email1?: string | null
-        email2?: string | null
-        email3?: string | null
-        email4?: string | null
-        familyName?: string | null
+        email_1?: string | null
+        email_2?: string | null
+        email_3?: string | null
+        email_4?: string | null
+        family_name?: string | null
         fburl?: string | null
-        fileAs?: string | null
-        fullName?: string | null
+        file_as?: string | null
+        full_name?: string | null
         geo?: ContactGeo | null
-        givenName?: string | null
-        homeFax?: string | null
-        homePhone?: string | null
-        homePhone2?: string | null
-        homepageUrl?: string | null
+        given_name?: string | null
+        home_fax?: string | null
+        home_phone?: string | null
+        home_phone_2?: string | null
+        homepage_url?: string | null
         icscalendar?: string | null
         id?: string | null
-        imAim?: any | null
-        imAimHome1?: string | null
-        imAimHome2?: string | null
-        imAimHome3?: string | null
-        imAimWork1?: string | null
-        imAimWork2?: string | null
-        imAimWork3?: string | null
-        imGadugadu?: any | null
-        imGadugaduHome1?: string | null
-        imGadugaduHome2?: string | null
-        imGadugaduHome3?: string | null
-        imGadugaduWork1?: string | null
-        imGadugaduWork2?: string | null
-        imGadugaduWork3?: string | null
-        imGoogleTalk?: any | null
-        imGoogleTalkHome1?: string | null
-        imGoogleTalkHome2?: string | null
-        imGoogleTalkHome3?: string | null
-        imGoogleTalkWork1?: string | null
-        imGoogleTalkWork2?: string | null
-        imGoogleTalkWork3?: string | null
-        imGroupwise?: any | null
-        imGroupwiseHome1?: string | null
-        imGroupwiseHome2?: string | null
-        imGroupwiseHome3?: string | null
-        imGroupwiseWork1?: string | null
-        imGroupwiseWork2?: string | null
-        imGroupwiseWork3?: string | null
-        imIcq?: any | null
-        imIcqHome1?: string | null
-        imIcqHome2?: string | null
-        imIcqHome3?: string | null
-        imIcqWork1?: string | null
-        imIcqWork2?: string | null
-        imIcqWork3?: string | null
-        imJabber?: any | null
-        imJabberHome1?: string | null
-        imJabberHome2?: string | null
-        imJabberHome3?: string | null
-        imJabberWork1?: string | null
-        imJabberWork2?: string | null
-        imJabberWork3?: string | null
-        imMatrix?: any | null
-        imMatrixHome1?: string | null
-        imMatrixHome2?: string | null
-        imMatrixHome3?: string | null
-        imMatrixWork1?: string | null
-        imMatrixWork2?: string | null
-        imMatrixWork3?: string | null
-        imMsn?: any | null
-        imMsnHome1?: string | null
-        imMsnHome2?: string | null
-        imMsnHome3?: string | null
-        imMsnWork1?: string | null
-        imMsnWork2?: string | null
-        imMsnWork3?: string | null
-        imSkype?: any | null
-        imSkypeHome1?: string | null
-        imSkypeHome2?: string | null
-        imSkypeHome3?: string | null
-        imSkypeWork1?: string | null
-        imSkypeWork2?: string | null
-        imSkypeWork3?: string | null
-        imTwitter?: any | null
-        imYahoo?: any | null
-        imYahooHome1?: string | null
-        imYahooHome2?: string | null
-        imYahooHome3?: string | null
-        imYahooWork1?: string | null
-        imYahooWork2?: string | null
-        imYahooWork3?: string | null
-        isdnPhone?: string | null
+        im_aim?: any | null
+        im_aim_home_1?: string | null
+        im_aim_home_2?: string | null
+        im_aim_home_3?: string | null
+        im_aim_work_1?: string | null
+        im_aim_work_2?: string | null
+        im_aim_work_3?: string | null
+        im_gadugadu?: any | null
+        im_gadugadu_home_1?: string | null
+        im_gadugadu_home_2?: string | null
+        im_gadugadu_home_3?: string | null
+        im_gadugadu_work_1?: string | null
+        im_gadugadu_work_2?: string | null
+        im_gadugadu_work_3?: string | null
+        im_google_talk?: any | null
+        im_google_talk_home_1?: string | null
+        im_google_talk_home_2?: string | null
+        im_google_talk_home_3?: string | null
+        im_google_talk_work_1?: string | null
+        im_google_talk_work_2?: string | null
+        im_google_talk_work_3?: string | null
+        im_groupwise?: any | null
+        im_groupwise_home_1?: string | null
+        im_groupwise_home_2?: string | null
+        im_groupwise_home_3?: string | null
+        im_groupwise_work_1?: string | null
+        im_groupwise_work_2?: string | null
+        im_groupwise_work_3?: string | null
+        im_icq?: any | null
+        im_icq_home_1?: string | null
+        im_icq_home_2?: string | null
+        im_icq_home_3?: string | null
+        im_icq_work_1?: string | null
+        im_icq_work_2?: string | null
+        im_icq_work_3?: string | null
+        im_jabber?: any | null
+        im_jabber_home_1?: string | null
+        im_jabber_home_2?: string | null
+        im_jabber_home_3?: string | null
+        im_jabber_work_1?: string | null
+        im_jabber_work_2?: string | null
+        im_jabber_work_3?: string | null
+        im_matrix?: any | null
+        im_matrix_home_1?: string | null
+        im_matrix_home_2?: string | null
+        im_matrix_home_3?: string | null
+        im_matrix_work_1?: string | null
+        im_matrix_work_2?: string | null
+        im_matrix_work_3?: string | null
+        im_msn?: any | null
+        im_msn_home_1?: string | null
+        im_msn_home_2?: string | null
+        im_msn_home_3?: string | null
+        im_msn_work_1?: string | null
+        im_msn_work_2?: string | null
+        im_msn_work_3?: string | null
+        im_skype?: any | null
+        im_skype_home_1?: string | null
+        im_skype_home_2?: string | null
+        im_skype_home_3?: string | null
+        im_skype_work_1?: string | null
+        im_skype_work_2?: string | null
+        im_skype_work_3?: string | null
+        im_twitter?: any | null
+        im_yahoo?: any | null
+        im_yahoo_home_1?: string | null
+        im_yahoo_home_2?: string | null
+        im_yahoo_home_3?: string | null
+        im_yahoo_work_1?: string | null
+        im_yahoo_work_2?: string | null
+        im_yahoo_work_3?: string | null
+        isdn_phone?: string | null
         list?: boolean | null
-        listShowAddresses?: boolean | null
+        list_show_addresses?: boolean | null
         logo?: ContactPhoto | null
         mailer?: string | null
         manager?: string | null
-        mobilePhone?: string | null
+        mobile_phone?: string | null
         name?: ContactName | null
         nickname?: string | null
         note?: string | null
         office?: string | null
         org?: string | null
-        orgUnit?: string | null
-        otherFax?: string | null
-        otherPhone?: string | null
+        org_unit?: string | null
+        other_fax?: string | null
+        other_phone?: string | null
         pager?: string | null
         pgpCert?: ContactCert | null
         phone?: any | null
         photo?: ContactPhoto | null
-        primaryPhone?: string | null
+        primary_phone?: string | null
         radio?: string | null
         role?: string | null
         sip?: any | null
@@ -1180,8 +1180,8 @@ export module Contact {
         telex?: string | null
         title?: string | null
         tty?: string | null
-        videoUrl?: string | null
-        wantsHtml?: boolean | null
+        video_url?: string | null
+        wants_html?: boolean | null
         x509Cert?: ContactCert | null
     }
 
@@ -2228,8 +2228,8 @@ export module SourceBackendSummarySetup {
 
         // Own constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
 
-        indexedFields?: string | null
-        summaryFields?: string | null
+        indexed_fields?: string | null
+        summary_fields?: string | null
     }
 
 }

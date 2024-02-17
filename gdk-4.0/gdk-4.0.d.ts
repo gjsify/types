@@ -3878,8 +3878,7 @@ function keyval_to_upper(keyval: number): number
  * This is often useful for implementing the
  * [vfunc`Gdk`.Paintable.get_current_image] virtual function
  * when the paintable is in an incomplete state (like a
- * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
- * the first frame).
+ * [class`Gtk`.MediaStream] before receiving the first frame).
  * @param intrinsic_width The intrinsic width to report. Can be 0 for no width.
  * @param intrinsic_height The intrinsic height to report. Can be 0 for no height.
  * @returns a `GdkPaintable`
@@ -4523,8 +4522,7 @@ class Paintable extends GObject.Object {
      * This is often useful for implementing the
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
-     * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
-     * the first frame).
+     * [class`Gtk`.MediaStream] before receiving the first frame).
      * @param intrinsic_width The intrinsic width to report. Can be 0 for no width.
      * @param intrinsic_height The intrinsic height to report. Can be 0 for no height.
      * @returns a `GdkPaintable`
@@ -4716,11 +4714,11 @@ module Toplevel {
         /**
          * The fullscreen mode of the surface.
          */
-        fullscreen_mode?: FullscreenMode | null
+        fullscreenMode?: FullscreenMode | null
         /**
          * A list of textures to use as icon.
          */
-        icon_list?: any | null
+        iconList?: any | null
         /**
          * Whether the surface is modal.
          */
@@ -4731,30 +4729,11 @@ module Toplevel {
          * See [class`Gdk`.AppLaunchContext] for more information about
          * startup feedback.
          */
-        startup_id?: string | null
+        startupId?: string | null
         /**
          * The title of the surface.
          */
         title?: string | null
-        /**
-         * The transient parent of the surface.
-         */
-        transient_for?: Surface | null
-        /**
-         * The fullscreen mode of the surface.
-         */
-        fullscreenMode?: FullscreenMode | null
-        /**
-         * A list of textures to use as icon.
-         */
-        iconList?: any | null
-        /**
-         * The startup ID of the surface.
-         * 
-         * See [class`Gdk`.AppLaunchContext] for more information about
-         * startup feedback.
-         */
-        startupId?: string | null
         /**
          * The transient parent of the surface.
          */
@@ -4778,15 +4757,7 @@ interface Toplevel extends Surface {
     /**
      * The fullscreen mode of the surface.
      */
-    fullscreen_mode: FullscreenMode
-    /**
-     * The fullscreen mode of the surface.
-     */
     fullscreenMode: FullscreenMode
-    /**
-     * A list of textures to use as icon.
-     */
-    icon_list: any
     /**
      * A list of textures to use as icon.
      */
@@ -4798,18 +4769,7 @@ interface Toplevel extends Surface {
     /**
      * Whether the surface should inhibit keyboard shortcuts.
      */
-    readonly shortcuts_inhibited: boolean
-    /**
-     * Whether the surface should inhibit keyboard shortcuts.
-     */
     readonly shortcutsInhibited: boolean
-    /**
-     * The startup ID of the surface.
-     * 
-     * See [class`Gdk`.AppLaunchContext] for more information about
-     * startup feedback.
-     */
-    startup_id: string | null
     /**
      * The startup ID of the surface.
      * 
@@ -4825,10 +4785,6 @@ interface Toplevel extends Surface {
      * The title of the surface.
      */
     title: string | null
-    /**
-     * The transient parent of the surface.
-     */
-    transient_for: Surface
     /**
      * The transient parent of the surface.
      */
@@ -4862,9 +4818,8 @@ interface Toplevel extends Surface {
     /**
      * Sets keyboard focus to `surface`.
      * 
-     * In most cases, [gtk_window_present_with_time()](../gtk4/method.Window.present_with_time.html)
-     * should be used on a [GtkWindow](../gtk4/class.Window.html), rather than
-     * calling this function.
+     * In most cases, [method`Gtk`.Window.present_with_time] should be
+     * used on a [class`Gtk`.Window], rather than calling this function.
      * @param timestamp timestamp of the event triggering the surface focus
      */
     focus(timestamp: number): void
@@ -4982,8 +4937,8 @@ interface Toplevel extends Surface {
      * Sets the startup notification ID.
      * 
      * When using GTK, typically you should use
-     * [gtk_window_set_startup_id()](../gtk4/method.Window.set_startup_id.html)
-     * instead of this low-level function.
+     * [method`Gtk`.Window.set_startup_id] instead of this
+     * low-level function.
      * @param startup_id a string with startup-notification identifier
      */
     set_startup_id(startup_id: string): void
@@ -5003,8 +4958,8 @@ interface Toplevel extends Surface {
      * allows the window manager to do things like center `surface`
      * on `parent` and keep `surface` above `parent`.
      * 
-     * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-     * if you’re using [GtkWindow](../gtk4/class.Window.html).
+     * See [method`Gtk`.Window.set_transient_for] if you’re using
+     * [class`Gtk`.Window] or [class`Gtk`.Dialog].
      * @param parent another toplevel `GdkSurface`
      */
     set_transient_for(parent: Surface): void
@@ -5624,9 +5579,8 @@ interface Clipboard {
      * exit. Depending on the platform, the functionality may not be available
      * unless a "clipboard manager" is running.
      * 
-     * This function is called automatically when a
-     * [GtkApplication](../gtk4/class.Application.html)
-     * is shut down, so you likely don't need to call it.
+     * This function is called automatically when a [class`Gtk`.Application] is
+     * shut down, so you likely don't need to call it.
      * @param io_priority the I/O priority of the request
      * @param cancellable optional `GCancellable` object
      * @param callback callback to call when the request is satisfied
@@ -5649,9 +5603,8 @@ interface Clipboard {
      * exit. Depending on the platform, the functionality may not be available
      * unless a "clipboard manager" is running.
      * 
-     * This function is called automatically when a
-     * [GtkApplication](../gtk4/class.Application.html)
-     * is shut down, so you likely don't need to call it.
+     * This function is called automatically when a [class`Gtk`.Application] is
+     * shut down, so you likely don't need to call it.
      * @param io_priority the I/O priority of the request
      * @param cancellable optional `GCancellable` object
      * @returns A Promise of: %TRUE if storing was successful.
@@ -5866,10 +5819,6 @@ interface ContentProvider {
      * The possible formats that the provider can provide its data in.
      */
     readonly formats: ContentFormats
-    /**
-     * The subset of formats that clipboard managers should store this provider's data in.
-     */
-    readonly storable_formats: ContentFormats
     /**
      * The subset of formats that clipboard managers should store this provider's data in.
      */
@@ -6278,11 +6227,11 @@ module Cursor {
         /**
          * X position of the cursor hotspot in the cursor image.
          */
-        hotspot_x?: number | null
+        hotspotX?: number | null
         /**
          * Y position of the cursor hotspot in the cursor image.
          */
-        hotspot_y?: number | null
+        hotspotY?: number | null
         /**
          * Name of this this cursor.
          * 
@@ -6295,14 +6244,6 @@ module Cursor {
          * The texture will be %NULL if the cursor was created from a name.
          */
         texture?: Texture | null
-        /**
-         * X position of the cursor hotspot in the cursor image.
-         */
-        hotspotX?: number | null
-        /**
-         * Y position of the cursor hotspot in the cursor image.
-         */
-        hotspotY?: number | null
     }
 
 }
@@ -6318,15 +6259,7 @@ interface Cursor {
     /**
      * X position of the cursor hotspot in the cursor image.
      */
-    readonly hotspot_x: number
-    /**
-     * X position of the cursor hotspot in the cursor image.
-     */
     readonly hotspotX: number
-    /**
-     * Y position of the cursor hotspot in the cursor image.
-     */
-    readonly hotspot_y: number
     /**
      * Y position of the cursor hotspot in the cursor image.
      */
@@ -6427,8 +6360,7 @@ interface Cursor {
  * Cursors by themselves are not very interesting: they must be bound to a
  * window for users to see them. This is done with [method`Gdk`.Surface.set_cursor]
  * or [method`Gdk`.Surface.set_device_cursor]. Applications will typically
- * use higher-level GTK functions such as [gtk_widget_set_cursor()](../gtk4/method.Widget.set_cursor.html)
- * instead.
+ * use higher-level GTK functions such as [method`Gtk`.Widget.set_cursor] instead.
  * 
  * Cursors are not bound to a given [class`Gdk`.Display], so they can be shared.
  * However, the appearance of cursors may vary when used on different
@@ -6569,42 +6501,11 @@ module Device {
         /**
          * Whether the device is represented by a cursor on the screen.
          */
-        has_cursor?: boolean | null
+        hasCursor?: boolean | null
         /**
          * The device name.
          */
         name?: string | null
-        /**
-         * The maximal number of concurrent touches on a touch device.
-         * 
-         * Will be 0 if the device is not a touch device or if the number
-         * of touches is unknown.
-         */
-        num_touches?: number | null
-        /**
-         * Product ID of this device.
-         * 
-         * See [method`Gdk`.Device.get_product_id].
-         */
-        product_id?: string | null
-        /**
-         * `GdkSeat` of this device.
-         */
-        seat?: Seat | null
-        /**
-         * Source type for the device.
-         */
-        source?: InputSource | null
-        /**
-         * Vendor ID of this device.
-         * 
-         * See [method`Gdk`.Device.get_vendor_id].
-         */
-        vendor_id?: string | null
-        /**
-         * Whether the device is represented by a cursor on the screen.
-         */
-        hasCursor?: boolean | null
         /**
          * The maximal number of concurrent touches on a touch device.
          * 
@@ -6619,6 +6520,14 @@ module Device {
          */
         productId?: string | null
         /**
+         * `GdkSeat` of this device.
+         */
+        seat?: Seat | null
+        /**
+         * Source type for the device.
+         */
+        source?: InputSource | null
+        /**
          * Vendor ID of this device.
          * 
          * See [method`Gdk`.Device.get_vendor_id].
@@ -6632,12 +6541,6 @@ interface Device {
 
     // Own properties of Gdk-4.0.Gdk.Device
 
-    /**
-     * Whether Caps Lock is on.
-     * 
-     * This is only relevant for keyboard devices.
-     */
-    readonly caps_lock_state: boolean
     /**
      * Whether Caps Lock is on.
      * 
@@ -6659,17 +6562,7 @@ interface Device {
      * 
      * This is only relevant for keyboard devices.
      */
-    readonly has_bidi_layouts: boolean
-    /**
-     * Whether the device has both right-to-left and left-to-right layouts.
-     * 
-     * This is only relevant for keyboard devices.
-     */
     readonly hasBidiLayouts: boolean
-    /**
-     * Whether the device is represented by a cursor on the screen.
-     */
-    readonly has_cursor: boolean
     /**
      * Whether the device is represented by a cursor on the screen.
      */
@@ -6679,17 +6572,7 @@ interface Device {
      * 
      * This is only relevant for keyboard devices.
      */
-    readonly modifier_state: ModifierType
-    /**
-     * The current modifier state of the device.
-     * 
-     * This is only relevant for keyboard devices.
-     */
     readonly modifierState: ModifierType
-    /**
-     * Number of axes in the device.
-     */
-    readonly n_axes: number
     /**
      * Number of axes in the device.
      */
@@ -6703,20 +6586,7 @@ interface Device {
      * 
      * This is only relevant for keyboard devices.
      */
-    readonly num_lock_state: boolean
-    /**
-     * Whether Num Lock is on.
-     * 
-     * This is only relevant for keyboard devices.
-     */
     readonly numLockState: boolean
-    /**
-     * The maximal number of concurrent touches on a touch device.
-     * 
-     * Will be 0 if the device is not a touch device or if the number
-     * of touches is unknown.
-     */
-    readonly num_touches: number
     /**
      * The maximal number of concurrent touches on a touch device.
      * 
@@ -6729,19 +6599,7 @@ interface Device {
      * 
      * See [method`Gdk`.Device.get_product_id].
      */
-    readonly product_id: string | null
-    /**
-     * Product ID of this device.
-     * 
-     * See [method`Gdk`.Device.get_product_id].
-     */
     readonly productId: string | null
-    /**
-     * Whether Scroll Lock is on.
-     * 
-     * This is only relevant for keyboard devices.
-     */
-    readonly scroll_lock_state: boolean
     /**
      * Whether Scroll Lock is on.
      * 
@@ -6760,12 +6618,6 @@ interface Device {
      * The `GdkDeviceTool` that is currently used with this device.
      */
     readonly tool: DeviceTool
-    /**
-     * Vendor ID of this device.
-     * 
-     * See [method`Gdk`.Device.get_vendor_id].
-     */
-    readonly vendor_id: string | null
     /**
      * Vendor ID of this device.
      * 
@@ -6909,6 +6761,14 @@ interface Device {
      * @returns the vendor ID
      */
     get_vendor_id(): string | null
+    /**
+     * Determines if layouts for both right-to-left and
+     * left-to-right languages are in use on the keyboard.
+     * 
+     * This is only relevant for keyboard devices.
+     * @returns %TRUE if there are layouts with both directions, %FALSE otherwise
+     */
+    has_bidi_layouts(): boolean
 
     // Own signals of Gdk-4.0.Gdk.Device
 
@@ -7011,19 +6871,11 @@ module DeviceTool {
         /**
          * The hardware ID of the tool.
          */
-        hardware_id?: number | null
+        hardwareId?: number | null
         /**
          * The serial number of the tool.
          */
         serial?: number | null
-        /**
-         * The type of the tool.
-         */
-        tool_type?: DeviceToolType | null
-        /**
-         * The hardware ID of the tool.
-         */
-        hardwareId?: number | null
         /**
          * The type of the tool.
          */
@@ -7043,19 +6895,11 @@ interface DeviceTool {
     /**
      * The hardware ID of the tool.
      */
-    readonly hardware_id: number
-    /**
-     * The hardware ID of the tool.
-     */
     readonly hardwareId: number
     /**
      * The serial number of the tool.
      */
     readonly serial: number
-    /**
-     * The type of the tool.
-     */
-    readonly tool_type: DeviceToolType
     /**
      * The type of the tool.
      */
@@ -7189,10 +7033,6 @@ interface Display {
      * %TRUE if the display properly composites the alpha channel.
      */
     readonly composited: boolean
-    /**
-     * %TRUE if the display supports input shapes.
-     */
-    readonly input_shapes: boolean
     /**
      * %TRUE if the display supports input shapes.
      */
@@ -7387,9 +7227,9 @@ interface Display {
      * Indicates to the GUI environment that the application has
      * finished loading, using a given identifier.
      * 
-     * GTK will call this function automatically for [GtkWindow](../gtk4/class.Window.html)
+     * GTK will call this function automatically for [class`Gtk`.Window]
      * with custom startup-notification identifier unless
-     * [gtk_window_set_auto_startup_notification()](../gtk4/method.Window.set_auto_startup_notification.html)
+     * [method`Gtk`.Window.set_auto_startup_notification]
      * is called to disable that feature.
      * @param startup_id a startup-notification identifier, for which   notification process should be completed
      */
@@ -7413,7 +7253,8 @@ interface Display {
      */
     prepare_gl(): boolean
     /**
-     * Adds the given event to the event queue for `display`.
+     * Appends the given event onto the front of the event
+     * queue for `display`.
      * @param event a `GdkEvent`
      */
     put_event(event: Event): void
@@ -7570,10 +7411,6 @@ module DisplayManager {
         /**
          * The default display.
          */
-        default_display?: Display | null
-        /**
-         * The default display.
-         */
         defaultDisplay?: Display | null
     }
 
@@ -7583,10 +7420,6 @@ interface DisplayManager {
 
     // Own properties of Gdk-4.0.Gdk.DisplayManager
 
-    /**
-     * The default display.
-     */
-    default_display: Display
     /**
      * The default display.
      */
@@ -7755,15 +7588,11 @@ module Drag {
         /**
          * The currently selected action of the drag.
          */
-        selected_action?: DragAction | null
+        selectedAction?: DragAction | null
         /**
          * The surface where the drag originates.
          */
         surface?: Surface | null
-        /**
-         * The currently selected action of the drag.
-         */
-        selectedAction?: DragAction | null
     }
 
 }
@@ -7792,10 +7621,6 @@ interface Drag {
      * The possible formats that the drag can provide its data in.
      */
     readonly formats: ContentFormats
-    /**
-     * The currently selected action of the drag.
-     */
-    selected_action: DragAction
     /**
      * The currently selected action of the drag.
      */
@@ -8027,8 +7852,8 @@ interface DrawContext {
      * 
      * When using GTK, the widget system automatically places calls to
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
-     * use of [GskRenderer](../gsk4/class.Renderer.html)s, so application code
-     * does not need to call these functions explicitly.
+     * use of [class`Gsk`.Renderer]s, so application code does not need to call
+     * these functions explicitly.
      * @param region minimum region that should be drawn
      */
     begin_frame(region: cairo.Region): void
@@ -8843,17 +8668,6 @@ module GLContext {
         /**
          * The allowed APIs.
          */
-        allowed_apis?: GLAPI | null
-        /**
-         * Always %NULL
-         * 
-         * As many contexts can share data now and no single shared context exists
-         * anymore, this function has been deprecated and now always returns %NULL.
-         */
-        shared_context?: GLContext | null
-        /**
-         * The allowed APIs.
-         */
         allowedApis?: GLAPI | null
         /**
          * Always %NULL
@@ -8873,22 +8687,11 @@ interface GLContext {
     /**
      * The allowed APIs.
      */
-    allowed_apis: GLAPI
-    /**
-     * The allowed APIs.
-     */
     allowedApis: GLAPI
     /**
      * The API currently in use.
      */
     readonly api: GLAPI
-    /**
-     * Always %NULL
-     * 
-     * As many contexts can share data now and no single shared context exists
-     * anymore, this function has been deprecated and now always returns %NULL.
-     */
-    readonly shared_context: GLContext
     /**
      * Always %NULL
      * 
@@ -9282,7 +9085,7 @@ module GLTextureBuilder {
         /**
          * If the texture has a mipmap.
          */
-        has_mipmap?: boolean | null
+        hasMipmap?: boolean | null
         /**
          * The height of the texture.
          */
@@ -9300,27 +9103,15 @@ module GLTextureBuilder {
         /**
          * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
          */
-        update_region?: cairo.Region | null
-        /**
-         * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
-         */
-        update_texture?: Texture | null
-        /**
-         * The width of the texture.
-         */
-        width?: number | null
-        /**
-         * If the texture has a mipmap.
-         */
-        hasMipmap?: boolean | null
-        /**
-         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
-         */
         updateRegion?: cairo.Region | null
         /**
          * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
          */
         updateTexture?: Texture | null
+        /**
+         * The width of the texture.
+         */
+        width?: number | null
     }
 
 }
@@ -9337,10 +9128,6 @@ interface GLTextureBuilder {
      * The format when downloading the texture.
      */
     format: MemoryFormat
-    /**
-     * If the texture has a mipmap.
-     */
-    has_mipmap: boolean
     /**
      * If the texture has a mipmap.
      */
@@ -9362,15 +9149,7 @@ interface GLTextureBuilder {
     /**
      * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
      */
-    update_region: cairo.Region
-    /**
-     * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
-     */
     updateRegion: cairo.Region
-    /**
-     * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
-     */
-    update_texture: Texture
     /**
      * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
      */
@@ -9833,10 +9612,6 @@ interface Monitor {
     /**
      * The height of the monitor, in millimeters.
      */
-    readonly height_mm: number
-    /**
-     * The height of the monitor, in millimeters.
-     */
     readonly heightMm: number
     /**
      * The manufacturer name.
@@ -9849,23 +9624,11 @@ interface Monitor {
     /**
      * The refresh rate, in milli-Hertz.
      */
-    readonly refresh_rate: number
-    /**
-     * The refresh rate, in milli-Hertz.
-     */
     readonly refreshRate: number
     /**
      * The scale factor.
      */
-    readonly scale_factor: number
-    /**
-     * The scale factor.
-     */
     readonly scaleFactor: number
-    /**
-     * The subpixel layout.
-     */
-    readonly subpixel_layout: SubpixelLayout
     /**
      * The subpixel layout.
      */
@@ -9874,10 +9637,6 @@ interface Monitor {
      * Whether the object is still valid.
      */
     readonly valid: boolean
-    /**
-     * The width of the monitor, in millimeters.
-     */
-    readonly width_mm: number
     /**
      * The width of the monitor, in millimeters.
      */
@@ -10322,7 +10081,7 @@ interface Snapshot {
 /**
  * Base type for snapshot operations.
  * 
- * The subclass of `GdkSnapshot` used by GTK is [GtkSnapshot](../gtk4/class.Snapshot.html).
+ * The subclass of `GdkSnapshot` used by GTK is [class`Gtk`.Snapshot].
  * @class 
  */
 class Snapshot extends GObject.Object {
@@ -10395,10 +10154,6 @@ module Surface {
         /**
          * The `GdkFrameClock` of the surface.
          */
-        frame_clock?: FrameClock | null
-        /**
-         * The `GdkFrameClock` of the surface.
-         */
         frameClock?: FrameClock | null
     }
 
@@ -10419,10 +10174,6 @@ interface Surface {
     /**
      * The `GdkFrameClock` of the surface.
      */
-    readonly frame_clock: FrameClock
-    /**
-     * The `GdkFrameClock` of the surface.
-     */
     readonly frameClock: FrameClock
     /**
      * The height of the surface, in pixels.
@@ -10436,13 +10187,6 @@ interface Surface {
      * The scale of the surface.
      */
     readonly scale: number
-    /**
-     * The scale factor of the surface.
-     * 
-     * The scale factor is the next larger integer,
-     * compared to [property`Gdk`.Surface:scale].
-     */
-    readonly scale_factor: number
     /**
      * The scale factor of the surface.
      * 
@@ -10625,7 +10369,7 @@ interface Surface {
      * For toplevel surfaces, withdraws them, so they will no longer be
      * known to the window manager; for all surfaces, unmaps them, so
      * they won’t be displayed. Normally done automatically as
-     * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
+     * part of [method`Gtk`.Widget.hide].
      */
     hide(): void
     /**
@@ -10704,7 +10448,7 @@ interface Surface {
      * GTK will update this property automatically if the `surface` background
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
-     * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
+     * [vfunc`Gtk`.Widget.css_changed] handler.
      * @param region a region, or %NULL to make the entire   surface opaque
      */
     set_opaque_region(region: cairo.Region | null): void
@@ -10774,7 +10518,7 @@ interface Surface {
  * A `GdkSurface` is a rectangular region on the screen.
  * 
  * It’s a low-level object, used to implement high-level objects
- * such as [GtkWindow](../gtk4/class.Window.html).
+ * such as [class`Gtk`.Window] or [class`Gtk`.Dialog] in GTK.
  * 
  * The surfaces you see in practice are either [iface`Gdk`.Toplevel] or
  * [iface`Gdk`.Popup], and those interfaces provide much of the required
@@ -11997,9 +11741,9 @@ interface PopupLayout {
  * [method`Gdk`.Popup.get_position_x], [method`Gdk`.Popup.get_position_y],
  * [method`Gdk`.Popup.get_rect_anchor] and [method`Gdk`.Popup.get_surface_anchor]
  * after the popup has been presented. This can be used to adjust the rendering.
- * For example, [GtkPopover](../gtk4/class.Popover.html) changes its arrow position
- * accordingly. But you have to be careful avoid changing the size of the popover,
- * or it has to be presented again.
+ * For example, [class`Gtk`.Popover] changes its arrow position accordingly.
+ * But you have to be careful avoid changing the size of the popover, or it
+ * has to be presented again.
  * @record 
  */
 class PopupLayout {

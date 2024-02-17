@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gnomeautoargtk-0.1",
-    "version": "0.1.0-3.2.7",
+    "version": "0.1.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GnomeAutoarGtk-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "node-gnomeautoargtk-0.1.js",
     "main": "node-gnomeautoargtk-0.1.js",
     "exports": {
-        "./ambient": "./node-gnomeautoargtk-0.1-ambient.d.ts",
-        "./import": "./node-gnomeautoargtk-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./node-gnomeautoargtk-0.1-ambient.d.ts",
+            "default": "./node-gnomeautoargtk-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gnomeautoargtk-0.1-import.d.ts",
+            "default": "./node-gnomeautoargtk-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gnomeautoargtk-0.1.d.ts",

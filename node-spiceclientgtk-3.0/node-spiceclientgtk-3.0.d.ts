@@ -83,13 +83,13 @@ module Display {
         /**
          * channel-id for this #SpiceDisplay
          */
-        channelId?: number | null
+        channel_id?: number | null
         /**
          * Disable all keyboard & mouse inputs.
          */
-        disableInputs?: boolean | null
-        grabKeyboard?: boolean | null
-        grabMouse?: boolean | null
+        disable_inputs?: boolean | null
+        grab_keyboard?: boolean | null
+        grab_mouse?: boolean | null
         /**
          * Delay in ms of non-modifiers key press events. If the key is
          * released before this delay, a single press & release event is
@@ -97,18 +97,18 @@ module Display {
          * keypress-delay, the server will receive the delayed press
          * event, and a following release event when the key is released.
          */
-        keypressDelay?: number | null
+        keypress_delay?: number | null
         /**
          * Select monitor from #SpiceDisplay to show.
          * The value -1 means the whole display is shown.
          * By default, the monitor 0 is selected.
          */
-        monitorId?: number | null
+        monitor_id?: number | null
         /**
          * If scaling, only scale down, never up.
          */
-        onlyDownscale?: boolean | null
-        resizeGuest?: boolean | null
+        only_downscale?: boolean | null
+        resize_guest?: boolean | null
         scaling?: boolean | null
         /**
          * #SpiceSession for this #SpiceDisplay
@@ -119,7 +119,7 @@ module Display {
          * (this option is only supported with cairo backend when scaling
          * is enabled)
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }
@@ -679,13 +679,13 @@ module GtkSession {
          * When this is true the clipboard gets automatically shared between host
          * and guest.
          */
-        autoClipboard?: boolean | null
+        auto_clipboard?: boolean | null
         /**
          * Automatically redirect newly plugged in USB devices. Note the auto
          * redirection only happens when a #SpiceDisplay associated with the
          * session had keyboard focus.
          */
-        autoUsbredir?: boolean | null
+        auto_usbredir?: boolean | null
         /**
          * #SpiceSession this #SpiceGtkSession is associated with
          */
@@ -693,7 +693,7 @@ module GtkSession {
         /**
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
          */
-        syncModifiers?: boolean | null
+        sync_modifiers?: boolean | null
     }
 
 }
@@ -831,7 +831,7 @@ module UsbDeviceWidget {
          * Format string to pass to spice_usb_device_get_description() for getting
          * the device USB descriptions.
          */
-        deviceFormatString?: string | null
+        device_format_string?: string | null
         /**
          * #SpiceSession this #SpiceUsbDeviceWidget is associated with
          */

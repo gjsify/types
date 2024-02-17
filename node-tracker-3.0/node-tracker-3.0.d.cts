@@ -530,7 +530,7 @@ export module Endpoint {
         /**
          * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
          */
-        sparqlConnection?: SparqlConnection | null
+        sparql_connection?: SparqlConnection | null
     }
 
 }
@@ -617,11 +617,11 @@ export module EndpointDBus {
         /**
          * The [class`Gio`.DBusConnection] where the connection is proxied through.
          */
-        dbusConnection?: Gio.DBusConnection | null
+        dbus_connection?: Gio.DBusConnection | null
         /**
          * The DBus object path that this endpoint manages.
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -762,11 +762,11 @@ export module EndpointHttp {
         /**
          * [class`Gio`.TlsCertificate] to encrypt the communication.
          */
-        httpCertificate?: Gio.TlsCertificate | null
+        http_certificate?: Gio.TlsCertificate | null
         /**
          * HTTP port used to listen requests.
          */
-        httpPort?: number | null
+        http_port?: number | null
     }
 
 }

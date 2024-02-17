@@ -242,8 +242,8 @@ export module Menu {
 
         // Own constructor properties of DbusmenuGtk-0.4.DbusmenuGtk.Menu
 
-        dbusName?: string | null
-        dbusObject?: string | null
+        dbus_name?: string | null
+        dbus_object?: string | null
     }
 
 }

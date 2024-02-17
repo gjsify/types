@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gsttag-0.10",
-    "version": "0.10.0-3.2.7",
+    "version": "0.10.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GstTag-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "node-gsttag-0.10.js",
     "main": "node-gsttag-0.10.js",
     "exports": {
-        "./ambient": "./node-gsttag-0.10-ambient.d.ts",
-        "./import": "./node-gsttag-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./node-gsttag-0.10-ambient.d.ts",
+            "default": "./node-gsttag-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gsttag-0.10-import.d.ts",
+            "default": "./node-gsttag-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gsttag-0.10.d.ts",

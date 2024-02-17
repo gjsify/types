@@ -138,10 +138,6 @@ export module AsyncPriorityQueue {
 
         // Own constructor properties of Bump-0.1.Bump.AsyncPriorityQueue
 
-        g_type?: GObject.GType | null
-        g_dup_func?: GObject.BoxedCopyFunc | null
-        g_destroy_func?: GLib.DestroyNotify | null
-        waiting_threads?: number | null
         gType?: GObject.GType | null
         gDupFunc?: GObject.BoxedCopyFunc | null
         gDestroyFunc?: GLib.DestroyNotify | null
@@ -154,13 +150,9 @@ export interface AsyncPriorityQueue {
 
     // Own properties of Bump-0.1.Bump.AsyncPriorityQueue
 
-    readonly g_type: GObject.GType
     readonly gType: GObject.GType
-    readonly g_dup_func: GObject.BoxedCopyFunc
     readonly gDupFunc: GObject.BoxedCopyFunc
-    readonly g_destroy_func: GLib.DestroyNotify
     readonly gDestroyFunc: GLib.DestroyNotify
-    waiting_threads: number
     waitingThreads: number
 
     // Owm methods of Bump-0.1.Bump.AsyncPriorityQueue
@@ -245,8 +237,6 @@ export module Claim {
 
         // Own constructor properties of Bump-0.1.Bump.Claim
 
-        time_acquired?: number | null
-        time_released?: number | null
         timeAcquired?: number | null
         timeReleased?: number | null
     }
@@ -258,11 +248,8 @@ export interface Claim extends Gio.Initable, Gio.AsyncInitable {
     // Own properties of Bump-0.1.Bump.Claim
 
     readonly active: boolean
-    time_acquired: number
     timeAcquired: number
-    time_released: number
     timeReleased: number
-    readonly duration_held: GLib.TimeSpan
     readonly durationHeld: GLib.TimeSpan
 
     // Owm methods of Bump-0.1.Bump.Claim
@@ -520,16 +507,12 @@ export module Event {
 
         // Own constructor properties of Bump-0.1.Bump.Event
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        pool?: TaskQueue | null
-        auto_reset?: boolean | null
-        triggered?: boolean | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
+        pool?: TaskQueue | null
         autoReset?: boolean | null
+        triggered?: boolean | null
     }
 
 }
@@ -538,14 +521,10 @@ export interface Event {
 
     // Own properties of Bump-0.1.Bump.Event
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
     readonly pool: TaskQueue
-    readonly auto_reset: boolean
     readonly autoReset: boolean
     triggered: boolean
 
@@ -629,9 +608,6 @@ export module Factory {
 
         // Own constructor properties of Bump-0.1.Bump.Factory
 
-        g_type?: GObject.GType | null
-        g_dup_func?: GObject.BoxedCopyFunc | null
-        g_destroy_func?: GLib.DestroyNotify | null
         gType?: GObject.GType | null
         gDupFunc?: GObject.BoxedCopyFunc | null
         gDestroyFunc?: GLib.DestroyNotify | null
@@ -643,11 +619,8 @@ export interface Factory {
 
     // Own properties of Bump-0.1.Bump.Factory
 
-    readonly g_type: GObject.GType
     readonly gType: GObject.GType
-    readonly g_dup_func: GObject.BoxedCopyFunc
     readonly gDupFunc: GObject.BoxedCopyFunc
-    readonly g_destroy_func: GLib.DestroyNotify
     readonly gDestroyFunc: GLib.DestroyNotify
 
     // Owm methods of Bump-0.1.Bump.Factory
@@ -742,13 +715,10 @@ export module Lazy {
 
         // Own constructor properties of Bump-0.1.Bump.Lazy
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        pool?: TaskQueue | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
+        pool?: TaskQueue | null
     }
 
 }
@@ -757,15 +727,11 @@ export interface Lazy {
 
     // Own properties of Bump-0.1.Bump.Lazy
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
     readonly pool: TaskQueue
     readonly value: any
-    readonly is_initialized: boolean
     readonly isInitialized: boolean
 
     // Owm methods of Bump-0.1.Bump.Lazy
@@ -832,13 +798,10 @@ export module ResourceClaim {
 
         // Own constructor properties of Bump-0.1.Bump.ResourceClaim
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        pool?: ResourcePool | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
+        pool?: ResourcePool | null
     }
 
 }
@@ -847,11 +810,8 @@ export interface ResourceClaim {
 
     // Own properties of Bump-0.1.Bump.ResourceClaim
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
     readonly pool: ResourcePool
     readonly resource: any
@@ -1343,19 +1303,13 @@ export module ResourcePool {
 
         // Own constructor properties of Bump-0.1.Bump.ResourcePool
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        max_resources?: number | null
-        max_idle_time?: GLib.TimeSpan | null
-        num_resources?: number | null
-        pool?: TaskQueue | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
         maxResources?: number | null
         maxIdleTime?: GLib.TimeSpan | null
         numResources?: number | null
+        pool?: TaskQueue | null
     }
 
 }
@@ -1364,21 +1318,13 @@ export interface ResourcePool {
 
     // Own properties of Bump-0.1.Bump.ResourcePool
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
-    readonly max_resources: number
     readonly maxResources: number
-    max_idle_time: GLib.TimeSpan
     maxIdleTime: GLib.TimeSpan
-    num_resources: number
     numResources: number
-    readonly idle_resources: number
     readonly idleResources: number
-    readonly active_resources: number
     readonly activeResources: number
     readonly pool: TaskQueue
 
@@ -1502,10 +1448,9 @@ export module Semaphore {
 
         // Own constructor properties of Bump-0.1.Bump.Semaphore
 
-        max_claims?: number | null
+        maxClaims?: number | null
         claims?: number | null
         pool?: TaskQueue | null
-        maxClaims?: number | null
     }
 
 }
@@ -1514,7 +1459,6 @@ export interface Semaphore {
 
     // Own properties of Bump-0.1.Bump.Semaphore
 
-    readonly max_claims: number
     readonly maxClaims: number
     claims: number
     readonly pool: TaskQueue

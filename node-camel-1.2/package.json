@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-camel-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Camel-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "node-camel-1.2.js",
     "main": "node-camel-1.2.js",
     "exports": {
-        "./ambient": "./node-camel-1.2-ambient.d.ts",
-        "./import": "./node-camel-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./node-camel-1.2-ambient.d.ts",
+            "default": "./node-camel-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./node-camel-1.2-import.d.ts",
+            "default": "./node-camel-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-camel-1.2.d.ts",

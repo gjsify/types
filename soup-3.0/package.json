@@ -1,13 +1,19 @@
 {
     "name": "@girs/soup-3.0",
-    "version": "3.4.4-3.2.7",
-    "description": "GJS TypeScript type definitions for Soup-3.0, generated from library version 3.4.4",
+    "version": "3.4.2-3.2.8",
+    "description": "GJS TypeScript type definitions for Soup-3.0, generated from library version 3.4.2",
     "type": "module",
     "module": "soup-3.0.js",
     "main": "soup-3.0.js",
     "exports": {
-        "./ambient": "./soup-3.0-ambient.d.ts",
-        "./import": "./soup-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./soup-3.0-ambient.d.ts",
+            "default": "./soup-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./soup-3.0-import.d.ts",
+            "default": "./soup-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./soup-3.0.d.ts",

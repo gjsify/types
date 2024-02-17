@@ -2038,7 +2038,7 @@ module Background {
 
         // Own constructor properties of Meta-13.Meta.Background
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
     }
 
 }
@@ -2120,7 +2120,7 @@ module BackgroundActor {
 
         // Own constructor properties of Meta-13.Meta.BackgroundActor
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
         monitor?: number | null
     }
 
@@ -2572,13 +2572,13 @@ module BackgroundContent {
         background?: Background | null
         brightness?: number | null
         gradient?: boolean | null
-        gradientHeight?: number | null
-        gradientMaxDarkness?: number | null
-        metaDisplay?: Display | null
+        gradient_height?: number | null
+        gradient_max_darkness?: number | null
+        meta_display?: Display | null
         monitor?: number | null
-        roundedClipRadius?: number | null
+        rounded_clip_radius?: number | null
         vignette?: boolean | null
-        vignetteSharpness?: number | null
+        vignette_sharpness?: number | null
     }
 
 }
@@ -3608,7 +3608,7 @@ module Context {
         // Own constructor properties of Meta-13.Meta.Context
 
         name?: string | null
-        unsafeMode?: boolean | null
+        unsafe_mode?: boolean | null
     }
 
 }
@@ -4778,7 +4778,7 @@ module MonitorManager {
         // Own constructor properties of Meta-13.Meta.MonitorManager
 
         backend?: Backend | null
-        experimentalHdr?: string | null
+        experimental_hdr?: string | null
     }
 
 }
@@ -5208,7 +5208,7 @@ interface RemoteAccessController {
     inhibitRemoteAccess(): void
     /**
      * Uninhibits remote access sessions from being created and running. If this was
-     * the last inhibition that was inhibited, new remote access sessions can now
+     * the last inhibitation that was inhibited, new remote access sessions can now
      * be created.
      */
     uninhibitRemoteAccess(): void
@@ -5266,7 +5266,7 @@ module RemoteAccessHandle {
 
         // Own constructor properties of Meta-13.Meta.RemoteAccessHandle
 
-        isRecording?: boolean | null
+        is_recording?: boolean | null
     }
 
 }
@@ -6362,9 +6362,9 @@ module StartupSequence {
 
         // Own constructor properties of Meta-13.Meta.StartupSequence
 
-        applicationId?: string | null
+        application_id?: string | null
         display?: Display | null
-        iconName?: string | null
+        icon_name?: string | null
         id?: string | null
         name?: string | null
         timestamp?: number | null
@@ -6524,11 +6524,6 @@ interface WaylandClient {
     // Owm methods of Meta-13.Meta.WaylandClient
 
     hideFromWindowList(window: Window): void
-    /**
-     * Mark window as DESKTOP window
-     * @param window a MetaWindow
-     */
-    makeDesktop(window: Window): void
     ownsWindow(window: Window): boolean
     /**
      * Shows again this window in window lists, like taskbars, pagers...
@@ -7419,7 +7414,7 @@ module WindowActor {
 
         // Own constructor properties of Meta-13.Meta.WindowActor
 
-        metaWindow?: Window | null
+        meta_window?: Window | null
     }
 
 }

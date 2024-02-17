@@ -625,7 +625,7 @@ module Session {
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          */
-        mediaType?: MediaType | null
+        media_type?: MediaType | null
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
          */
@@ -1318,8 +1318,8 @@ module StreamTransmitter {
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          */
-        associateOnSource?: boolean | null
-        preferredLocalCandidates?: any | null
+        associate_on_source?: boolean | null
+        preferred_local_candidates?: any | null
         /**
          * A network source #GstElement to be used by the #FsSession
          */

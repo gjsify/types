@@ -520,7 +520,7 @@ module Audio {
 
         // Own constructor properties of SpiceClientGLib-2.0.SpiceClientGLib.Audio
 
-        mainContext?: GLib.MainContext | null
+        main_context?: GLib.MainContext | null
         /**
          * #SpiceSession this #SpiceAudio is associated with
          */
@@ -651,9 +651,9 @@ module Channel {
 
         // Own constructor properties of SpiceClientGLib-2.0.SpiceClientGLib.Channel
 
-        channelId?: number | null
-        channelType?: number | null
-        spiceSession?: Session | null
+        channel_id?: number | null
+        channel_type?: number | null
+        spice_session?: Session | null
     }
 
 }
@@ -1950,20 +1950,20 @@ module MainChannel {
 
         // Own constructor properties of SpiceClientGLib-2.0.SpiceClientGLib.MainChannel
 
-        colorDepth?: number | null
-        disableAnimation?: boolean | null
+        color_depth?: number | null
+        disable_animation?: boolean | null
         /**
          * Disable automatic horizontal display position alignment.
          */
-        disableDisplayAlign?: boolean | null
-        disableDisplayPosition?: boolean | null
-        disableFontSmooth?: boolean | null
-        disableWallpaper?: boolean | null
+        disable_display_align?: boolean | null
+        disable_display_position?: boolean | null
+        disable_font_smooth?: boolean | null
+        disable_wallpaper?: boolean | null
         /**
          * Maximum size of clipboard operations in bytes (default 100MB,
          * -1 for unlimited size);
          */
-        maxClipboard?: number | null
+        max_clipboard?: number | null
     }
 
 }
@@ -2571,7 +2571,7 @@ module PlaybackChannel {
 
         // Own constructor properties of SpiceClientGLib-2.0.SpiceClientGLib.PlaybackChannel
 
-        minLatency?: number | null
+        min_latency?: number | null
         mute?: boolean | null
         nchannels?: number | null
         volume?: any | null
@@ -3496,55 +3496,55 @@ module Session {
          * File holding the CA certificates for the host the client is
          * connecting to
          */
-        caFile?: string | null
+        ca_file?: string | null
         /**
          * Images cache size. If 0, don't set.
          */
-        cacheSize?: number | null
-        certSubject?: string | null
+        cache_size?: number | null
+        cert_subject?: string | null
         ciphers?: string | null
-        clientSockets?: boolean | null
+        client_sockets?: boolean | null
         /**
          * Display color depth to set on new display channels. If 0, don't set.
          */
-        colorDepth?: number | null
+        color_depth?: number | null
         /**
          * A string array of effects to disable. The settings will
          * be applied on new display channels. The following effets can be
          * disabled "wallpaper", "font-smooth", "animation", and "all",
          * which will disable all the effects. If NULL, don't apply changes.
          */
-        disableEffects?: string[] | null
+        disable_effects?: string[] | null
         /**
          * If set to TRUE, the audio channels will be enabled for
          * playback and recording.
          */
-        enableAudio?: boolean | null
+        enable_audio?: boolean | null
         /**
          * If set to TRUE, the smartcard channel will be enabled and smartcard
          * events will be forwarded to the guest
          */
-        enableSmartcard?: boolean | null
+        enable_smartcard?: boolean | null
         /**
          * If set to TRUE, the usbredir channel will be enabled and USB devices
          * can be redirected to the guest
          */
-        enableUsbredir?: boolean | null
+        enable_usbredir?: boolean | null
         /**
          * Whether to enable gl-scanout (Unix only).  Set to TRUE by
          * default on EGL-enabled host, unless SPICE_DISABLE_GL_SCANOUT
          * environment variable is set.
          */
-        glScanout?: boolean | null
+        gl_scanout?: boolean | null
         /**
          * Glz window size. If 0, don't set.
          */
-        glzWindowSize?: number | null
+        glz_window_size?: number | null
         /**
          * URL of the SPICE host to connect to
          */
         host?: string | null
-        inhibitKeyboardGrab?: boolean | null
+        inhibit_keyboard_grab?: boolean | null
         /**
          * TLS password to use
          */
@@ -3566,19 +3566,19 @@ module Session {
         /**
          * Whether this connection is read-only mode.
          */
-        readOnly?: boolean | null
+        read_only?: boolean | null
         /**
          * A string array of channel types to be secured.
          */
-        secureChannels?: string[] | null
+        secure_channels?: string[] | null
         /**
          * Whether to share the directory read-only.
          */
-        shareDirRo?: boolean | null
+        share_dir_ro?: boolean | null
         /**
          * Location of the shared directory
          */
-        sharedDir?: string | null
+        shared_dir?: string | null
         /**
          * This property is used when one wants to simulate a smartcard with no
          * hardware smartcard reader. If it's set to a NULL-terminated string
@@ -3586,20 +3586,20 @@ module Session {
          * used to simulate a smartcard in the guest
          * See also spice_smartcard_manager_insert_card()
          */
-        smartcardCertificates?: string[] | null
+        smartcard_certificates?: string[] | null
         /**
          * Path to the NSS certificate database containing the certificates to
          * use to simulate a software smartcard
          */
-        smartcardDb?: string | null
+        smartcard_db?: string | null
         /**
          * Port to connect to for TLS sessions
          */
-        tlsPort?: string | null
+        tls_port?: string | null
         /**
          * Path of the Unix socket to connect to
          */
-        unixPath?: string | null
+        unix_path?: string | null
         /**
          * URI of the SPICE host to connect to. The URI is of the form
          * spice://hostname?port=XXX or spice://hostname?tls_port=XXX
@@ -4503,7 +4503,7 @@ module UsbDeviceManager {
          * Note when #SpiceGtkSession's auto-usbredir property is TRUE, this
          * property is controlled by #SpiceGtkSession.
          */
-        autoConnect?: boolean | null
+        auto_connect?: boolean | null
         /**
          * Set a string specifying a filter to use to determine which USB devices
          * to autoconnect when plugged in, a filter consists of one or more rules.
@@ -4525,7 +4525,7 @@ module UsbDeviceManager {
          * Filter strings in this format can be easily created with the RHEV-M
          * USB filter editor tool.
          */
-        autoConnectFilter?: string | null
+        auto_connect_filter?: string | null
         /**
          * Set a string specifying a filter selecting USB devices to automatically
          * redirect after a Spice connection has been established.
@@ -4533,7 +4533,7 @@ module UsbDeviceManager {
          * See #SpiceUsbDeviceManager:auto-connect-filter for the filter string
          * format.
          */
-        redirectOnConnect?: string | null
+        redirect_on_connect?: string | null
         /**
          * #SpiceSession this #SpiceUsbDeviceManager is associated with
          */

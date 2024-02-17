@@ -480,12 +480,12 @@ module WallClock {
          * 'clock' property will always be updated every second, irrespective of
          * system configuration.
          */
-        forceSeconds?: boolean | null
+        force_seconds?: boolean | null
         /**
          * If %TRUE, the formatted clock will never include a date or the
          * day of the week, irrespective of configuration.
          */
-        timeOnly?: boolean | null
+        time_only?: boolean | null
     }
 
 }

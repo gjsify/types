@@ -745,11 +745,11 @@ module ActionRow {
          * The target widget will be activated by emitting the
          * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
          */
-        activatableWidget?: Gtk.Widget | null
+        activatable_widget?: Gtk.Widget | null
         /**
          * The icon name for this row.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The subtitle for this row.
          */
@@ -760,20 +760,20 @@ module ActionRow {
          * 
          * If the value is 0, the number of lines won't be limited.
          */
-        subtitleLines?: number | null
+        subtitle_lines?: number | null
         /**
          * The number of lines at the end of which the title label will be ellipsized.
          * 
          * If the value is 0, the number of lines won't be limited.
          */
-        titleLines?: number | null
+        title_lines?: number | null
         /**
          * Whether embedded underlines in the title or subtitle indicates a mnemonic.
          * 
          * If true, an underline in the text of the title or subtitle labels indicates
          * the next character should be used for the mnemonic accelerator key.
          */
-        useUnderline?: boolean | null
+        use_underline?: boolean | null
     }
 
 }
@@ -1999,15 +1999,15 @@ module Avatar {
          * displayed. If the icon theme is changed, the image will be updated
          * automatically.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * A [iface`Gio`.LoadableIcon] used to load the avatar.
          */
-        loadableIcon?: Gio.LoadableIcon | null
+        loadable_icon?: Gio.LoadableIcon | null
         /**
          * Whether to show the initials or the fallback icon on the generated avatar.
          */
-        showInitials?: boolean | null
+        show_initials?: boolean | null
         /**
          * The avatar size of the avatar.
          */
@@ -2530,23 +2530,23 @@ module Carousel {
          * 
          * If the value is `FALSE`, each swipe can only move to the adjacent pages.
          */
-        allowLongSwipes?: boolean | null
+        allow_long_swipes?: boolean | null
         /**
          * Sets whether the [class`Carousel]` can be dragged with mouse pointer.
          * 
          * If the value is `FALSE`, dragging is only available on touch.
          */
-        allowMouseDrag?: boolean | null
+        allow_mouse_drag?: boolean | null
         /**
          * Whether the widget will respond to scroll wheel events.
          * 
          * If the value is `FALSE`, wheel events will be ignored.
          */
-        allowScrollWheel?: boolean | null
+        allow_scroll_wheel?: boolean | null
         /**
          * Animation duration used by [method`Carousel`.scroll_to], in milliseconds.
          */
-        animationDuration?: number | null
+        animation_duration?: number | null
         /**
          * Whether the carousel can be navigated.
          * 
@@ -2557,7 +2557,7 @@ module Carousel {
         /**
          * Page reveal duration, in milliseconds.
          */
-        revealDuration?: number | null
+        reveal_duration?: number | null
         /**
          * Spacing between pages in pixels.
          */
@@ -3907,7 +3907,7 @@ module Clamp {
          * It is the width if the clamp is horizontal, or the height if it is
          * vertical.
          */
-        maximumSize?: number | null
+        maximum_size?: number | null
         /**
          * The size above which the child is clamped.
          * 
@@ -3924,7 +3924,7 @@ module Clamp {
          * Effectively, tightening the grip on a child before it reaches its maximum
          * size makes transitions to and from the maximum size smoother when resizing.
          */
-        tighteningThreshold?: number | null
+        tightening_threshold?: number | null
     }
 
 }
@@ -4376,7 +4376,7 @@ module ComboRow {
         /**
          * The index of the selected item in its [iface`Gio`.ListModel].
          */
-        selectedIndex?: number | null
+        selected_index?: number | null
         /**
          * Whether to use the current value as the subtitle.
          * 
@@ -4385,7 +4385,7 @@ module ComboRow {
          * 
          * If `TRUE`, you should not access [property`ActionRow:`subtitle].
          */
-        useSubtitle?: boolean | null
+        use_subtitle?: boolean | null
     }
 
 }
@@ -4984,11 +4984,11 @@ module Deck {
         /**
          * Whether swipe gestures allow switching to the previous child.
          */
-        canSwipeBack?: boolean | null
+        can_swipe_back?: boolean | null
         /**
          * Whether swipe gestures allow switching to the next child.
          */
-        canSwipeForward?: boolean | null
+        can_swipe_forward?: boolean | null
         /**
          * Horizontally homogeneous sizing.
          */
@@ -4997,11 +4997,11 @@ module Deck {
          * Whether or not the size should smoothly change when changing between
          * differently sized children.
          */
-        interpolateSize?: boolean | null
+        interpolate_size?: boolean | null
         /**
          * The transition animation duration, in milliseconds.
          */
-        transitionDuration?: number | null
+        transition_duration?: number | null
         /**
          * The type of animation that will be used for transitions between children.
          * 
@@ -5009,7 +5009,7 @@ module Deck {
          * possible to change the animation based on the child that is about to become
          * current.
          */
-        transitionType?: DeckTransitionType | null
+        transition_type?: DeckTransitionType | null
         /**
          * Vertically homogeneous sizing.
          */
@@ -5022,11 +5022,11 @@ module Deck {
          * user, in which case visible child will change back to the previously
          * visible child.
          */
-        visibleChild?: Gtk.Widget | null
+        visible_child?: Gtk.Widget | null
         /**
          * The name of the widget currently visible.
          */
-        visibleChildName?: string | null
+        visible_child_name?: string | null
     }
 
 }
@@ -5761,7 +5761,7 @@ module ExpanderRow {
         /**
          * Whether expansion is enabled.
          */
-        enableExpansion?: boolean | null
+        enable_expansion?: boolean | null
         /**
          * Whether the row is expanded.
          */
@@ -5769,11 +5769,11 @@ module ExpanderRow {
         /**
          * The icon name for this row.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * Whether the switch enabling the expansion is visible.
          */
-        showEnableSwitch?: boolean | null
+        show_enable_switch?: boolean | null
         /**
          * The subtitle for this row.
          */
@@ -5782,7 +5782,7 @@ module ExpanderRow {
          * Whether an embedded underline in the title or subtitle labels indicates a
          * mnemonic.
          */
-        useUnderline?: boolean | null
+        use_underline?: boolean | null
     }
 
 }
@@ -6369,17 +6369,17 @@ module Flap {
          * If `GTK_PACK_START`, the flap is displayed before the content, if
          * `GTK_PACK_END`, it's displayed after the content.
          */
-        flapPosition?: Gtk.PackType | null
+        flap_position?: Gtk.PackType | null
         /**
          * The fold transition animation duration, in milliseconds.
          */
-        foldDuration?: number | null
+        fold_duration?: number | null
         /**
          * The current fold policy.
          * 
          * See [enum`FlapFoldPolicy]` for available policies.
          */
-        foldPolicy?: FlapFoldPolicy | null
+        fold_policy?: FlapFoldPolicy | null
         /**
          * Whether the flap is locked.
          * 
@@ -6399,11 +6399,11 @@ module Flap {
         /**
          * The reveal transition animation duration, in milliseconds.
          */
-        revealDuration?: number | null
+        reveal_duration?: number | null
         /**
          * Whether the flap widget is revealed.
          */
-        revealFlap?: boolean | null
+        reveal_flap?: boolean | null
         /**
          * The separator widget.
          * 
@@ -6418,14 +6418,14 @@ module Flap {
          * The area that can be swiped depends on the [property`Flap:`transition-type]
          * value.
          */
-        swipeToClose?: boolean | null
+        swipe_to_close?: boolean | null
         /**
          * Whether the flap can be opened with a swipe gesture.
          * 
          * The area that can be swiped depends on the [property`Flap:`transition-type]
          * value.
          */
-        swipeToOpen?: boolean | null
+        swipe_to_open?: boolean | null
         /**
          * the type of animation used for reveal and fold transitions.
          * 
@@ -6433,7 +6433,7 @@ module Flap {
          * will be seen through it with `HDY_FLAP_TRANSITION_TYPE_OVER` transitions;
          * add the `.background` style class to it if this is unwanted.
          */
-        transitionType?: FlapTransitionType | null
+        transition_type?: FlapTransitionType | null
     }
 
 }
@@ -7188,11 +7188,11 @@ module HeaderBar {
         /**
          * The policy for aligning the center widget.
          */
-        centeringPolicy?: CenteringPolicy | null
+        centering_policy?: CenteringPolicy | null
         /**
          * Custom title widget to display.
          */
-        customTitle?: Gtk.Widget | null
+        custom_title?: Gtk.Widget | null
         /**
          * The decoration layout for buttons.
          * 
@@ -7212,15 +7212,15 @@ module HeaderBar {
          * For example, “menu:minimize,maximize,close” specifies a menu on the left, and
          * minimize, maximize and close buttons on the right.
          */
-        decorationLayout?: string | null
+        decoration_layout?: string | null
         /**
          * Whether [property`HeaderBar:`decoration-layout] is set.
          */
-        decorationLayoutSet?: boolean | null
+        decoration_layout_set?: boolean | null
         /**
          * Whether to reserve space for a subtitle, even if none is currently set.
          */
-        hasSubtitle?: boolean | null
+        has_subtitle?: boolean | null
         /**
          * Whether the size should smoothly change when changing between children.
          * 
@@ -7229,7 +7229,7 @@ module HeaderBar {
          * the set transition duration and the orientation, e.g. if the orientation is
          * horizontal, it will interpolate the its height.
          */
-        interpolateSize?: boolean | null
+        interpolate_size?: boolean | null
         /**
          * Whether to show window decorations.
          * 
@@ -7238,7 +7238,7 @@ module HeaderBar {
          * window (e.g. a close button will not be shown if the window can't be
          * closed).
          */
-        showCloseButton?: boolean | null
+        show_close_button?: boolean | null
         /**
          * The amount of space between children.
          */
@@ -7254,7 +7254,7 @@ module HeaderBar {
         /**
          * The transition duration, in milliseconds.
          */
-        transitionDuration?: number | null
+        transition_duration?: number | null
     }
 
 }
@@ -7928,7 +7928,7 @@ module HeaderGroup {
          * leaflet contains the header bars of the group, as you want them all to
          * display the complete decoration when the leaflet is folded.
          */
-        decorateAll?: boolean | null
+        decorate_all?: boolean | null
     }
 
 }
@@ -8183,11 +8183,11 @@ module Keypad {
         /**
          * The amount of space between two consecutive columns.
          */
-        columnSpacing?: number | null
+        column_spacing?: number | null
         /**
          * The widget for the lower end corner of `self`.
          */
-        endAction?: Gtk.Widget | null
+        end_action?: Gtk.Widget | null
         /**
          * The entry widget connected to the keypad.
          * 
@@ -8198,22 +8198,22 @@ module Keypad {
          * Whether standard letters should be displayed below the digits on the
          * buttons.
          */
-        lettersVisible?: boolean | null
+        letters_visible?: boolean | null
         /**
          * The amount of space between two consecutive rows.
          */
-        rowSpacing?: number | null
+        row_spacing?: number | null
         /**
          * The widget for the lower start corner of `self`.
          */
-        startAction?: Gtk.Widget | null
+        start_action?: Gtk.Widget | null
         /**
          * Whether to display symbols.
          * 
          * This includes hash and asterisk buttons, and the plus symbol at the bottom
          * of its 0 button.
          */
-        symbolsVisible?: boolean | null
+        symbols_visible?: boolean | null
     }
 
 }
@@ -8744,31 +8744,31 @@ module Leaflet {
         /**
          * Whether swipe gestures allow switching to the previous navigatable child.
          */
-        canSwipeBack?: boolean | null
+        can_swipe_back?: boolean | null
         /**
          * Whether swipe gestures allow switching to the next navigatable child.
          */
-        canSwipeForward?: boolean | null
+        can_swipe_forward?: boolean | null
         /**
          * The child transition animation duration, in milliseconds.
          */
-        childTransitionDuration?: number | null
+        child_transition_duration?: number | null
         /**
          * Whether to allocate the same width for all children when folded.
          */
-        hhomogeneousFolded?: boolean | null
+        hhomogeneous_folded?: boolean | null
         /**
          * Whether to allocate the same width for all children when unfolded.
          */
-        hhomogeneousUnfolded?: boolean | null
+        hhomogeneous_unfolded?: boolean | null
         /**
          * Whether the size should smoothly change when changing between children.
          */
-        interpolateSize?: boolean | null
+        interpolate_size?: boolean | null
         /**
          * The mode transition animation duration, in milliseconds.
          */
-        modeTransitionDuration?: number | null
+        mode_transition_duration?: number | null
         /**
          * The animation type used for transitions between modes and children.
          * 
@@ -8776,15 +8776,15 @@ module Leaflet {
          * possible to change the animation based on the mode or child that is about
          * to become current.
          */
-        transitionType?: LeafletTransitionType | null
+        transition_type?: LeafletTransitionType | null
         /**
          * Whether to allocates the same height for all children when folded.
          */
-        vhomogeneousFolded?: boolean | null
+        vhomogeneous_folded?: boolean | null
         /**
          * Whether to allocate the same height for all children when unfolded.
          */
-        vhomogeneousUnfolded?: boolean | null
+        vhomogeneous_unfolded?: boolean | null
         /**
          * The widget currently visible when the leaflet is folded.
          * 
@@ -8793,13 +8793,13 @@ module Leaflet {
          * cancelled by the user, in which case visible child will change back to the
          * previously visible child.
          */
-        visibleChild?: Gtk.Widget | null
+        visible_child?: Gtk.Widget | null
         /**
          * The name of the widget currently visible when the leaflet is folded.
          * 
          * See [property`Leaflet:`visible-child].
          */
-        visibleChildName?: string | null
+        visible_child_name?: string | null
     }
 
 }
@@ -9534,7 +9534,7 @@ module PreferencesGroup {
         /**
          * Whether to use markup for the title and description.
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }
@@ -9979,7 +9979,7 @@ module PreferencesPage {
         /**
          * The icon name for this page of preferences.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The title for this page of preferences.
          */
@@ -10413,7 +10413,7 @@ module PreferencesRow {
         /**
          * Whether an embedded underline in the title indicates a mnemonic.
          */
-        useUnderline?: boolean | null
+        use_underline?: boolean | null
     }
 
 }
@@ -10880,11 +10880,11 @@ module PreferencesWindow {
         /**
          * Whether the window allows closing the subpage via a swipe gesture.
          */
-        canSwipeBack?: boolean | null
+        can_swipe_back?: boolean | null
         /**
          * Whether search is enabled.
          */
-        searchEnabled?: boolean | null
+        search_enabled?: boolean | null
     }
 
 }
@@ -11551,11 +11551,11 @@ module SearchBar {
         /**
          * Whether the search mode is on and the search bar shown.
          */
-        searchModeEnabled?: boolean | null
+        search_mode_enabled?: boolean | null
         /**
          * Whether to show the close button in the toolbar.
          */
-        showCloseButton?: boolean | null
+        show_close_button?: boolean | null
     }
 
 }
@@ -12072,11 +12072,11 @@ module Squeezer {
          * the set transition duration and the orientation, e.g. if the squeezer is
          * horizontal, it will interpolate the its height.
          */
-        interpolateSize?: boolean | null
+        interpolate_size?: boolean | null
         /**
          * The animation duration, in milliseconds.
          */
-        transitionDuration?: number | null
+        transition_duration?: number | null
         /**
          * The type of animation used for transitions between children.
          * 
@@ -12086,7 +12086,7 @@ module Squeezer {
          * possible to change the animation based on the child that is about to become
          * current.
          */
-        transitionType?: SqueezerTransitionType | null
+        transition_type?: SqueezerTransitionType | null
         /**
          * The horizontal alignment, from 0 (start) to 1 (end).
          * 
@@ -12702,7 +12702,7 @@ module StatusPage {
         /**
          * The name of the icon to be used.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The title to be displayed below the icon.
          */
@@ -13177,7 +13177,7 @@ module StyleManager {
          * used to check if the current environment provides a color scheme
          * preference.
          */
-        colorScheme?: ColorScheme | null
+        color_scheme?: ColorScheme | null
         /**
          * The display the style manager is associated with.
          * 
@@ -13534,13 +13534,13 @@ module SwipeTracker {
          * If the value is `FALSE`, each swipe can only move to the adjacent snap
          * points.
          */
-        allowLongSwipes?: boolean | null
+        allow_long_swipes?: boolean | null
         /**
          * Whether to allow dragging with mouse pointer.
          * 
          * This should usually be `FALSE`.
          */
-        allowMouseDrag?: boolean | null
+        allow_mouse_drag?: boolean | null
         /**
          * Whether the swipe tracker is enabled.
          * 
@@ -13799,14 +13799,14 @@ module TabBar {
         /**
          * The widget shown after the tabs.
          */
-        endActionWidget?: Gtk.Widget | null
+        end_action_widget?: Gtk.Widget | null
         /**
          * Whether tabs should expand.
          * 
          * If set to `TRUE`, the tabs will always vary width filling the whole width
          * when possible, otherwise tabs will always have the minimum possible size.
          */
-        expandTabs?: boolean | null
+        expand_tabs?: boolean | null
         /**
          * Extra drag destination targets.
          * 
@@ -13819,7 +13819,7 @@ module TabBar {
          * After content is dropped, the [signal`TabBar:`:extra-drag-data-received]
          * signal can be used to retrieve and process the drag data.
          */
-        extraDragDestTargets?: Gtk.TargetList | null
+        extra_drag_dest_targets?: Gtk.TargetList | null
         /**
          * Whether tabs use inverted layout.
          * 
@@ -13830,7 +13830,7 @@ module TabBar {
         /**
          * The widget shown before the tabs.
          */
-        startActionWidget?: Gtk.Widget | null
+        start_action_widget?: Gtk.Widget | null
         /**
          * The [class`TabView]` the tab bar controls.
          */
@@ -14464,7 +14464,7 @@ module TabPage {
          * 
          * If [property`TabPage:`indicator-icon] is not set, does nothing.
          */
-        indicatorActivatable?: boolean | null
+        indicator_activatable?: boolean | null
         /**
          * An indicator icon for the page.
          * 
@@ -14479,7 +14479,7 @@ module TabPage {
          * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the indicator
          * icon can act as a button.
          */
-        indicatorIcon?: Gio.Icon | null
+        indicator_icon?: Gio.Icon | null
         /**
          * Whether the page is loading.
          * 
@@ -14496,7 +14496,7 @@ module TabPage {
          * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
          * bar will be highlighted.
          */
-        needsAttention?: boolean | null
+        needs_attention?: boolean | null
         /**
          * The parent page of the page.
          * 
@@ -14864,7 +14864,7 @@ module TabView {
          * not loading, doesn't have an icon and an indicator. Default icon is never
          * used for tabs that aren't pinned.
          */
-        defaultIcon?: Gio.Icon | null
+        default_icon?: Gio.Icon | null
         /**
          * Tab context menu model.
          * 
@@ -14872,11 +14872,11 @@ module TabView {
          * provided menu model. Use [signal`TabView:`:setup-menu] signal to set up the
          * menu actions for the particular tab.
          */
-        menuModel?: Gio.MenuModel | null
+        menu_model?: Gio.MenuModel | null
         /**
          * The currently selected page.
          */
-        selectedPage?: TabPage | null
+        selected_page?: TabPage | null
         /**
          * Tab shortcut widget.
          * 
@@ -14903,7 +14903,7 @@ module TabView {
          * These shortcuts are always available on `self,` this property is useful if
          * they should be available globally.
          */
-        shortcutWidget?: Gtk.Widget | null
+        shortcut_widget?: Gtk.Widget | null
     }
 
 }
@@ -15752,7 +15752,7 @@ module TitleBar {
         /**
          * Whether or not the title bar is in selection mode.
          */
-        selectionMode?: boolean | null
+        selection_mode?: boolean | null
     }
 
 }
@@ -16272,7 +16272,7 @@ module ViewSwitcher {
          * `PANGO_ELLIPSIZE_NONE` has the side-effect that the label requests only
          * enough space to display the ellipsis.
          */
-        narrowEllipsize?: Pango.EllipsizeMode | null
+        narrow_ellipsize?: Pango.EllipsizeMode | null
         /**
          * The policy to determine which mode to use.
          */
@@ -17257,7 +17257,7 @@ module ViewSwitcherTitle {
          * This can be used e.g. to ensure the view switcher is hidden below a certain
          * window width, or any other constraint you find suitable.
          */
-        viewSwitcherEnabled?: boolean | null
+        view_switcher_enabled?: boolean | null
     }
 
 }

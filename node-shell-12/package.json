@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-shell-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Shell-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-shell-12.js",
     "main": "node-shell-12.js",
     "exports": {
-        "./ambient": "./node-shell-12-ambient.d.ts",
-        "./import": "./node-shell-12-import.d.ts",
+        "./ambient": {
+            "types": "./node-shell-12-ambient.d.ts",
+            "default": "./node-shell-12-ambient.js"
+        },
+        "./import": {
+            "types": "./node-shell-12-import.d.ts",
+            "default": "./node-shell-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-shell-12.d.ts",

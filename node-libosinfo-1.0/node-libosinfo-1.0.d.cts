@@ -1401,7 +1401,7 @@ export module DeviceLinkFilter {
         /**
          * The operating system to be deployed
          */
-        targetFilter?: Filter | null
+        target_filter?: Filter | null
     }
 
 }
@@ -2229,7 +2229,7 @@ export module Image {
         /**
          * Whether the image supports cloud-init customizations or not.
          */
-        cloudInit?: string | null
+        cloud_init?: string | null
         /**
          * The image format.
          */
@@ -2736,7 +2736,7 @@ export module InstallConfigParam {
          * The mapping between generic values and OS-specific values for this
          * configuration parameter
          */
-        valueMap?: Datamap | null
+        value_map?: Datamap | null
     }
 
 }
@@ -2913,10 +2913,10 @@ export module InstallScript {
 
         // Own constructor properties of Libosinfo-1.0.Libosinfo.InstallScript
 
-        preferredInjectionMethod?: InstallScriptInjectionMethod | null
+        preferred_injection_method?: InstallScriptInjectionMethod | null
         profile?: string | null
-        templateData?: string | null
-        templateUri?: string | null
+        template_data?: string | null
+        template_uri?: string | null
     }
 
 }
@@ -3503,7 +3503,7 @@ export module List {
          * restricted to storing #OsinfoEntity objects of
          * the specified type.
          */
-        elementType?: GObject.GType | null
+        element_type?: GObject.GType | null
     }
 
 }
@@ -3764,7 +3764,7 @@ export module Media {
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
          */
-        applicationId?: string | null
+        application_id?: string | null
         /**
          * The target hardware architecture of this media.
          */
@@ -3777,11 +3777,11 @@ export module Media {
          * reboot (which may cause the media to be ejected, depending on the
          * application).
          */
-        ejectAfterInstall?: boolean | null
+        eject_after_install?: boolean | null
         /**
          * The path to the initrd image in the install tree.
          */
-        initrdPath?: string | null
+        initrd_path?: string | null
         /**
          * Whether media provides an installer for an OS.
          */
@@ -3798,18 +3798,18 @@ export module Media {
          * case number of reboots *alone* is not a reliable method for tracking
          * installation.
          */
-        installerReboots?: number | null
+        installer_reboots?: number | null
         /**
          * Whether the media supports installation via an install-script.
          * 
          * Some distros provide a few different medias and not all the medias support
          * installation via an install script.
          */
-        installerScript?: boolean | null
+        installer_script?: boolean | null
         /**
          * The path to the kernel image in the install tree.
          */
-        kernelPath?: string | null
+        kernel_path?: string | null
         /**
          * Whether media can boot directly an OS without any installations.
          */
@@ -3824,11 +3824,11 @@ export module Media {
         /**
          * Expected publisher ID (regular expression) for ISO9660 image/device.
          */
-        publisherId?: string | null
+        publisher_id?: string | null
         /**
          * Expected system ID (regular expression) for ISO9660 image/device.
          */
-        systemId?: string | null
+        system_id?: string | null
         /**
          * The URL to this media.
          */
@@ -3836,11 +3836,11 @@ export module Media {
         /**
          * Expected volume ID (regular expression) for ISO9660 image/device.
          */
-        volumeId?: string | null
+        volume_id?: string | null
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
          */
-        volumeSize?: number | null
+        volume_size?: number | null
     }
 
 }
@@ -5723,7 +5723,7 @@ export module Resources {
         /**
          * The number of CPUs.
          */
-        nCpus?: number | null
+        n_cpus?: number | null
         /**
          * The amount of Random Access Memory (RAM) in bytes.
          */
@@ -6028,19 +6028,19 @@ export module Tree {
         /**
          * The path to the boot ISO in the install tree
          */
-        bootIsoPath?: string | null
+        boot_iso_path?: string | null
         /**
          * Whether the tree has treeinfo or not
          */
-        hasTreeinfo?: boolean | null
+        has_treeinfo?: boolean | null
         /**
          * The path to the initrd image in the install tree.
          */
-        initrdPath?: string | null
+        initrd_path?: string | null
         /**
          * The path to the kernel image in the install tree.
          */
-        kernelPath?: string | null
+        kernel_path?: string | null
         /**
          * Os information for the current tree. For tree stored in an
          * #OsinfoDb, it will be filled when the database is loaded, otherwise
@@ -6051,19 +6051,19 @@ export module Tree {
         /**
          * The treeinfo arch
          */
-        treeinfoArch?: string | null
+        treeinfo_arch?: string | null
         /**
          * The treeinfo family
          */
-        treeinfoFamily?: string | null
+        treeinfo_family?: string | null
         /**
          * The treeinfo variant
          */
-        treeinfoVariant?: string | null
+        treeinfo_variant?: string | null
         /**
          * The treeinfo version
          */
-        treeinfoVersion?: string | null
+        treeinfo_version?: string | null
         /**
          * The URL to this tree.
          */

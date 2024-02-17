@@ -233,7 +233,7 @@ module Context {
 
         // Own constructor properties of GUsb-1.0.GUsb.Context
 
-        debugLevel?: number | null
+        debug_level?: number | null
     }
 
 }
@@ -449,8 +449,8 @@ module Device {
         // Own constructor properties of GUsb-1.0.GUsb.Device
 
         context?: Context | null
-        libusbDevice?: any | null
-        platformId?: string | null
+        libusb_device?: any | null
+        platform_id?: string | null
     }
 
 }

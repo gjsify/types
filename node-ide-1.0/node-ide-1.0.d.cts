@@ -941,7 +941,7 @@ export module BuildSystem {
         // Own constructor properties of Ide-1.0.Ide.BuildSystem
 
         context?: Context | null
-        projectFile?: Gio.File | null
+        project_file?: Gio.File | null
     }
 
 }
@@ -3891,8 +3891,8 @@ export module Buffer {
 
         context?: Context | null
         file?: File | null
-        highlightDiagnostics?: boolean | null
-        styleSchemeName?: string | null
+        highlight_diagnostics?: boolean | null
+        style_scheme_name?: string | null
         title?: string | null
     }
 
@@ -4446,10 +4446,10 @@ export module BufferManager {
 
         // Own constructor properties of Ide-1.0.Ide.BufferManager
 
-        autoSave?: boolean | null
-        autoSaveTimeout?: number | null
-        focusBuffer?: Buffer | null
-        minimumWordSize?: number | null
+        auto_save?: boolean | null
+        auto_save_timeout?: number | null
+        focus_buffer?: Buffer | null
+        minimum_word_size?: number | null
     }
 
 }
@@ -5275,7 +5275,7 @@ export module BuildStage {
          * 
          * One such example is Ninja.
          */
-        checkStdout?: boolean | null
+        check_stdout?: boolean | null
         /**
          * The "completed" property is set to %TRUE after the pipeline has
          * completed processing the stage. When the pipeline invalidates
@@ -5306,7 +5306,7 @@ export module BuildStage {
          * file and will be redirected to the stdout-path location after the
          * build stage has completed executing.
          */
-        stdoutPath?: string | null
+        stdout_path?: string | null
         /**
          * If the build stage is transient.
          * 
@@ -5521,8 +5521,8 @@ export module BuildStageLauncher {
 
         // Own constructor properties of Ide-1.0.Ide.BuildStageLauncher
 
-        cleanLauncher?: SubprocessLauncher | null
-        ignoreExitStatus?: boolean | null
+        clean_launcher?: SubprocessLauncher | null
+        ignore_exit_status?: boolean | null
         launcher?: SubprocessLauncher | null
     }
 
@@ -5753,7 +5753,7 @@ export module BuildStageTransfer {
 
         // Own constructor properties of Ide-1.0.Ide.BuildStageTransfer
 
-        disableWhenMetered?: boolean | null
+        disable_when_metered?: boolean | null
         transfer?: Transfer | null
     }
 
@@ -6287,20 +6287,20 @@ export module Configuration {
 
         // Own constructor properties of Ide-1.0.Ide.Configuration
 
-        appId?: string | null
-        buildCommands?: string[] | null
-        configOpts?: string | null
+        app_id?: string | null
+        build_commands?: string[] | null
+        config_opts?: string | null
         debug?: boolean | null
         device?: Device | null
-        deviceId?: string | null
+        device_id?: string | null
         dirty?: boolean | null
-        displayName?: string | null
+        display_name?: string | null
         id?: string | null
         parallelism?: number | null
-        postInstallCommands?: string[] | null
+        post_install_commands?: string[] | null
         prefix?: string | null
         runtime?: Runtime | null
-        runtimeId?: string | null
+        runtime_id?: string | null
     }
 
 }
@@ -6691,9 +6691,9 @@ export module Context {
 
         // Own constructor properties of Ide-1.0.Ide.Context
 
-        projectFile?: Gio.File | null
-        rootBuildDir?: string | null
-        snippetsManager?: SourceSnippetsManager | null
+        project_file?: Gio.File | null
+        root_build_dir?: string | null
+        snippets_manager?: SourceSnippetsManager | null
     }
 
 }
@@ -7006,7 +7006,7 @@ export module Cursor {
 
         // Own constructor properties of Ide-1.0.Ide.Cursor
 
-        ideSourceView?: SourceView | null
+        ide_source_view?: SourceView | null
     }
 
 }
@@ -7065,7 +7065,7 @@ export module Device {
 
         // Own constructor properties of Ide-1.0.Ide.Device
 
-        displayName?: string | null
+        display_name?: string | null
         id?: string | null
     }
 
@@ -7367,7 +7367,7 @@ export module DirectoryBuildSystem {
 
         // Own constructor properties of Ide-1.0.Ide.DirectoryBuildSystem
 
-        projectFile?: Gio.File | null
+        project_file?: Gio.File | null
     }
 
 }
@@ -7481,10 +7481,10 @@ export module Doap {
 
         // Own constructor properties of Ide-1.0.Ide.Doap
 
-        bugDatabase?: string | null
+        bug_database?: string | null
         category?: string | null
         description?: string | null
-        downloadPage?: string | null
+        download_page?: string | null
         homepage?: string | null
         languages?: string | null
         name?: string | null
@@ -8801,7 +8801,7 @@ export module ExtensionAdapter {
         // Own constructor properties of Ide-1.0.Ide.ExtensionAdapter
 
         engine?: Peas.Engine | null
-        interfaceType?: GObject.GType | null
+        interface_type?: GObject.GType | null
         key?: string | null
         value?: string | null
     }
@@ -8964,7 +8964,7 @@ export module ExtensionSetAdapter {
         // Own constructor properties of Ide-1.0.Ide.ExtensionSetAdapter
 
         engine?: Peas.Engine | null
-        interfaceType?: GObject.GType | null
+        interface_type?: GObject.GType | null
         key?: string | null
         value?: string | null
     }
@@ -9077,7 +9077,7 @@ export module File {
 
         file?: Gio.File | null
         path?: string | null
-        temporaryId?: number | null
+        temporary_id?: number | null
     }
 
 }
@@ -9220,27 +9220,27 @@ export module FileSettings {
         // Own constructor properties of Ide-1.0.Ide.FileSettings
 
         encoding?: string | null
-        encodingSet?: boolean | null
+        encoding_set?: boolean | null
         file?: File | null
-        indentStyle?: IndentStyle | null
-        indentStyleSet?: boolean | null
-        indentWidth?: number | null
-        indentWidthSet?: boolean | null
-        insertTrailingNewline?: boolean | null
-        insertTrailingNewlineSet?: boolean | null
-        newlineType?: GtkSource.NewlineType | null
-        newlineTypeSet?: boolean | null
-        overwriteBraces?: boolean | null
-        overwriteBracesSet?: boolean | null
-        rightMarginPosition?: number | null
-        rightMarginPositionSet?: boolean | null
+        indent_style?: IndentStyle | null
+        indent_style_set?: boolean | null
+        indent_width?: number | null
+        indent_width_set?: boolean | null
+        insert_trailing_newline?: boolean | null
+        insert_trailing_newline_set?: boolean | null
+        newline_type?: GtkSource.NewlineType | null
+        newline_type_set?: boolean | null
+        overwrite_braces?: boolean | null
+        overwrite_braces_set?: boolean | null
+        right_margin_position?: number | null
+        right_margin_position_set?: boolean | null
         settled?: boolean | null
-        showRightMargin?: boolean | null
-        showRightMarginSet?: boolean | null
-        tabWidth?: number | null
-        tabWidthSet?: boolean | null
-        trimTrailingWhitespace?: boolean | null
-        trimTrailingWhitespaceSet?: boolean | null
+        show_right_margin?: boolean | null
+        show_right_margin_set?: boolean | null
+        tab_width?: number | null
+        tab_width_set?: boolean | null
+        trim_trailing_whitespace?: boolean | null
+        trim_trailing_whitespace_set?: boolean | null
     }
 
 }
@@ -9458,8 +9458,8 @@ export module FormatterOptions {
 
         // Own constructor properties of Ide-1.0.Ide.FormatterOptions
 
-        insertSpaces?: boolean | null
-        tabWidth?: number | null
+        insert_spaces?: boolean | null
+        tab_width?: number | null
     }
 
 }
@@ -9650,7 +9650,7 @@ export module LangservClient {
 
         // Own constructor properties of Ide-1.0.Ide.LangservClient
 
-        ioStream?: Gio.IOStream | null
+        io_stream?: Gio.IOStream | null
     }
 
 }
@@ -11693,7 +11693,7 @@ export module LayoutStack {
 
         // Own constructor properties of Ide-1.0.Ide.LayoutStack
 
-        activeView?: LayoutView | null
+        active_view?: LayoutView | null
     }
 
 }
@@ -14625,7 +14625,7 @@ export module OmniSearchRow {
 
         // Own constructor properties of Ide-1.0.Ide.OmniSearchRow
 
-        iconName?: string | null
+        icon_name?: string | null
         result?: SearchResult | null
     }
 
@@ -15794,7 +15794,7 @@ export module ProjectFile {
         // Own constructor properties of Ide-1.0.Ide.ProjectFile
 
         file?: Gio.File | null
-        fileInfo?: Gio.FileInfo | null
+        file_info?: Gio.FileInfo | null
         path?: string | null
     }
 
@@ -15976,14 +15976,14 @@ export module ProjectInfo {
 
         // Own constructor properties of Ide-1.0.Ide.ProjectInfo
 
-        buildSystemName?: string | null
+        build_system_name?: string | null
         description?: string | null
         directory?: Gio.File | null
         doap?: Doap | null
         file?: Gio.File | null
-        isRecent?: boolean | null
+        is_recent?: boolean | null
         languages?: string[] | null
-        lastModifiedAt?: GLib.DateTime | null
+        last_modified_at?: GLib.DateTime | null
         name?: string | null
         priority?: number | null
     }
@@ -16666,7 +16666,7 @@ export module RunManager {
 
         // Own constructor properties of Ide-1.0.Ide.RunManager
 
-        buildTarget?: BuildTarget | null
+        build_target?: BuildTarget | null
     }
 
 }
@@ -16787,7 +16787,7 @@ export module Runner {
         // Own constructor properties of Ide-1.0.Ide.Runner
 
         argv?: string[] | null
-        clearEnv?: boolean | null
+        clear_env?: boolean | null
         /**
          * If the runner has "failed". This should be set if a plugin can determine
          * that the runner cannot be executed due to an external issue. One such
@@ -16799,7 +16799,7 @@ export module Runner {
          * The "run-on-host" property indicates the program should be run on the
          * host machine rather than inside the application sandbox.
          */
-        runOnHost?: boolean | null
+        run_on_host?: boolean | null
     }
 
 }
@@ -16966,7 +16966,7 @@ export module Runtime {
 
         // Own constructor properties of Ide-1.0.Ide.Runtime
 
-        displayName?: string | null
+        display_name?: string | null
         id?: string | null
     }
 
@@ -17439,9 +17439,9 @@ export module Settings {
 
         // Own constructor properties of Ide-1.0.Ide.Settings
 
-        ignoreProjectSettings?: boolean | null
-        relativePath?: string | null
-        schemaId?: string | null
+        ignore_project_settings?: boolean | null
+        relative_path?: string | null
+        schema_id?: string | null
     }
 
 }
@@ -18194,7 +18194,7 @@ export module SourceSnippet {
 
         description?: string | null
         language?: string | null
-        snippetText?: string | null
+        snippet_text?: string | null
         trigger?: string | null
     }
 
@@ -18313,9 +18313,9 @@ export module SourceSnippetChunk {
 
         context?: SourceSnippetContext | null
         spec?: string | null
-        tabStop?: number | null
+        tab_stop?: number | null
         text?: string | null
-        textSet?: boolean | null
+        text_set?: boolean | null
     }
 
 }
@@ -18985,31 +18985,31 @@ export module SourceView {
 
         // Own constructor properties of Ide-1.0.Ide.SourceView
 
-        backForwardList?: BackForwardList | null
+        back_forward_list?: BackForwardList | null
         count?: number | null
-        enableWordCompletion?: boolean | null
-        fontDesc?: Pango.FontDescription | null
-        fontName?: string | null
-        indentStyle?: IndentStyle | null
-        insertMatchingBrace?: boolean | null
+        enable_word_completion?: boolean | null
+        font_desc?: Pango.FontDescription | null
+        font_name?: string | null
+        indent_style?: IndentStyle | null
+        insert_matching_brace?: boolean | null
         overscroll?: number | null
-        overwriteBraces?: boolean | null
-        rubberbandSearch?: boolean | null
-        scrollOffset?: number | null
-        searchDirection?: Gtk.DirectionType | null
-        showGridLines?: boolean | null
-        showLineChanges?: boolean | null
+        overwrite_braces?: boolean | null
+        rubberband_search?: boolean | null
+        scroll_offset?: number | null
+        search_direction?: Gtk.DirectionType | null
+        show_grid_lines?: boolean | null
+        show_line_changes?: boolean | null
         /**
          * If the diagnostics gutter should be visible.
          * 
          * This also requires that IdeBuffer:highlight-diagnostics is set to %TRUE
          * to generate diagnostics.
          */
-        showLineDiagnostics?: boolean | null
-        showSearchBubbles?: boolean | null
-        showSearchShadow?: boolean | null
-        snippetCompletion?: boolean | null
-        spellChecking?: boolean | null
+        show_line_diagnostics?: boolean | null
+        show_search_bubbles?: boolean | null
+        show_search_shadow?: boolean | null
+        snippet_completion?: boolean | null
+        spell_checking?: boolean | null
     }
 
 }
@@ -21426,11 +21426,11 @@ export module SubprocessLauncher {
 
         // Own constructor properties of Ide-1.0.Ide.SubprocessLauncher
 
-        cleanEnv?: boolean | null
+        clean_env?: boolean | null
         cwd?: string | null
         environ?: string[] | null
         flags?: Gio.SubprocessFlags | null
-        runOnHost?: boolean | null
+        run_on_host?: boolean | null
     }
 
 }
@@ -21683,7 +21683,7 @@ export module SymbolNode {
         flags?: SymbolFlags | null
         kind?: SymbolKind | null
         name?: string | null
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }
@@ -21864,7 +21864,7 @@ export module Transfer {
 
         // Own constructor properties of Ide-1.0.Ide.Transfer
 
-        iconName?: string | null
+        icon_name?: string | null
         progress?: number | null
         status?: string | null
         title?: string | null
@@ -23974,18 +23974,18 @@ export module Workbench {
          * 
          * This should not be used by application plugins.
          */
-        disableGreeter?: boolean | null
+        disable_greeter?: boolean | null
         /**
          * This property contains the #IdePerspective that is currently selected.
          * Connect to the "notify::visible-perspective" signal to be notified when
          * the perspective has been changed.
          */
-        visiblePerspective?: Perspective | null
+        visible_perspective?: Perspective | null
         /**
          * This property is just like #IdeWorkbench:visible-perspective except that
          * it contains the name of the perspective as a string.
          */
-        visiblePerspectiveName?: string | null
+        visible_perspective_name?: string | null
     }
 
 }

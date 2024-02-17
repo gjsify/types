@@ -117,7 +117,7 @@ module Animation {
          * animation should run before being completed.
          */
         duration?: number | null
-        frame_clock?: Gdk.FrameClock | null
+        frameClock?: Gdk.FrameClock | null
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
@@ -129,7 +129,6 @@ module Animation {
          * animated.
          */
         target?: GObject.Object | null
-        frameClock?: Gdk.FrameClock | null
     }
 
 }
@@ -143,7 +142,6 @@ interface Animation {
      * animation should run before being completed.
      */
     readonly duration: number
-    readonly frame_clock: Gdk.FrameClock
     readonly frameClock: Gdk.FrameClock
     /**
      * The "mode" property is the Alpha function that should be used to
@@ -353,7 +351,6 @@ module Box {
 
         // Own constructor properties of Egg-1.0.Egg.Box
 
-        max_width_request?: number | null
         maxWidthRequest?: number | null
     }
 
@@ -363,7 +360,6 @@ interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Own properties of Egg-1.0.Egg.Box
 
-    max_width_request: number
     maxWidthRequest: number
 
     // Own fields of Egg-1.0.Egg.Box
@@ -598,7 +594,6 @@ module CenteringBin {
 
         // Own constructor properties of Egg-1.0.Egg.CenteringBin
 
-        max_width_request?: number | null
         maxWidthRequest?: number | null
     }
 
@@ -608,7 +603,6 @@ interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.CenteringBin
 
-    max_width_request: number
     maxWidthRequest: number
 
     // Own fields of Egg-1.0.Egg.CenteringBin
@@ -825,10 +819,6 @@ module ColumnLayout {
 
         // Own constructor properties of Egg-1.0.Egg.ColumnLayout
 
-        column_spacing?: number | null
-        column_width?: number | null
-        max_columns?: number | null
-        row_spacing?: number | null
         columnSpacing?: number | null
         columnWidth?: number | null
         maxColumns?: number | null
@@ -841,13 +831,9 @@ interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.ColumnLayout
 
-    column_spacing: number
     columnSpacing: number
-    column_width: number
     columnWidth: number
-    max_columns: number
     maxColumns: number
-    row_spacing: number
     rowSpacing: number
 
     // Own fields of Egg-1.0.Egg.ColumnLayout
@@ -1278,13 +1264,11 @@ module EmptyState {
 
         // Own constructor properties of Egg-1.0.Egg.EmptyState
 
-        icon_name?: string | null
-        pixel_size?: number | null
+        iconName?: string | null
+        pixelSize?: number | null
         resource?: string | null
         subtitle?: string | null
         title?: string | null
-        iconName?: string | null
-        pixelSize?: number | null
     }
 
 }
@@ -1293,9 +1277,7 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.EmptyState
 
-    icon_name: string | null
     iconName: string | null
-    pixel_size: number
     pixelSize: number
     resource: string | null
     subtitle: string | null
@@ -1527,7 +1509,6 @@ module EntryBox {
 
         // Own constructor properties of Egg-1.0.Egg.EntryBox
 
-        max_width_chars?: number | null
         maxWidthChars?: number | null
     }
 
@@ -1537,7 +1518,6 @@ interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Own properties of Egg-1.0.Egg.EntryBox
 
-    max_width_chars: number
     maxWidthChars: number
 
     // Conflicting methods
@@ -1764,19 +1744,14 @@ module FileChooserEntry {
         // Own constructor properties of Egg-1.0.Egg.FileChooserEntry
 
         action?: Gtk.FileChooserAction | null
-        create_folders?: boolean | null
-        do_overwrite_confirmation?: boolean | null
-        file?: Gio.File | null
-        filter?: Gtk.FileFilter | null
-        local_only?: boolean | null
-        max_width_chars?: number | null
-        show_hidden?: boolean | null
-        title?: string | null
         createFolders?: boolean | null
         doOverwriteConfirmation?: boolean | null
+        file?: Gio.File | null
+        filter?: Gtk.FileFilter | null
         localOnly?: boolean | null
         maxWidthChars?: number | null
         showHidden?: boolean | null
+        title?: string | null
     }
 
 }
@@ -1786,17 +1761,12 @@ interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Egg-1.0.Egg.FileChooserEntry
 
     action: Gtk.FileChooserAction
-    create_folders: boolean
     createFolders: boolean
-    do_overwrite_confirmation: boolean
     doOverwriteConfirmation: boolean
     file: Gio.File
     filter: Gtk.FileFilter
-    local_only: boolean
     localOnly: boolean
-    max_width_chars: number
     maxWidthChars: number
-    show_hidden: boolean
     showHidden: boolean
     title: string | null
 
@@ -2037,9 +2007,6 @@ module ListBox {
 
         // Own constructor properties of Egg-1.0.Egg.ListBox
 
-        property_name?: string | null
-        row_type?: GObject.GType | null
-        row_type_name?: string | null
         propertyName?: string | null
         rowType?: GObject.GType | null
         rowTypeName?: string | null
@@ -2051,11 +2018,8 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.ListBox
 
-    readonly property_name: string | null
     readonly propertyName: string | null
-    readonly row_type: GObject.GType
     readonly rowType: GObject.GType
-    readonly row_type_name: string | null
     readonly rowTypeName: string | null
 
     // Own fields of Egg-1.0.Egg.ListBox
@@ -2815,7 +2779,6 @@ module ProgressButton {
         // Own constructor properties of Egg-1.0.Egg.ProgressButton
 
         progress?: number | null
-        show_progress?: boolean | null
         showProgress?: boolean | null
     }
 
@@ -2826,7 +2789,6 @@ interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
     // Own properties of Egg-1.0.Egg.ProgressButton
 
     progress: number
-    show_progress: boolean
     showProgress: boolean
 
     // Own fields of Egg-1.0.Egg.ProgressButton
@@ -3092,8 +3054,6 @@ module RadioBox {
 
         // Own constructor properties of Egg-1.0.Egg.RadioBox
 
-        active_id?: string | null
-        show_more?: boolean | null
         activeId?: string | null
         showMore?: boolean | null
     }
@@ -3104,11 +3064,8 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.RadioBox
 
-    active_id: string | null
     activeId: string | null
-    readonly has_more: boolean
     readonly hasMore: boolean
-    show_more: boolean
     showMore: boolean
 
     // Own fields of Egg-1.0.Egg.RadioBox
@@ -3597,8 +3554,6 @@ module SearchBar {
 
         // Own constructor properties of Egg-1.0.Egg.SearchBar
 
-        search_mode_enabled?: boolean | null
-        show_close_button?: boolean | null
         searchModeEnabled?: boolean | null
         showCloseButton?: boolean | null
     }
@@ -3609,9 +3564,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.SearchBar
 
-    search_mode_enabled: boolean
     searchModeEnabled: boolean
-    show_close_button: boolean
     showCloseButton: boolean
 
     // Own fields of Egg-1.0.Egg.SearchBar
@@ -3838,9 +3791,6 @@ module SettingsFlagAction {
 
         // Own constructor properties of Egg-1.0.Egg.SettingsFlagAction
 
-        flag_nick?: string | null
-        schema_id?: string | null
-        schema_key?: string | null
         flagNick?: string | null
         schemaId?: string | null
         schemaKey?: string | null
@@ -3852,11 +3802,8 @@ interface SettingsFlagAction extends Gio.Action {
 
     // Own properties of Egg-1.0.Egg.SettingsFlagAction
 
-    readonly flag_nick: string | null
     readonly flagNick: string | null
-    readonly schema_id: string | null
     readonly schemaId: string | null
-    schema_key: string | null
     schemaKey: string | null
 
     // Class property signals of Egg-1.0.Egg.SettingsFlagAction
@@ -3922,7 +3869,6 @@ module SettingsSandwich {
         // Own constructor properties of Egg-1.0.Egg.SettingsSandwich
 
         path?: string | null
-        schema_id?: string | null
         schemaId?: string | null
     }
 
@@ -3933,7 +3879,6 @@ interface SettingsSandwich {
     // Own properties of Egg-1.0.Egg.SettingsSandwich
 
     readonly path: string | null
-    readonly schema_id: string | null
     readonly schemaId: string | null
 
     // Owm methods of Egg-1.0.Egg.SettingsSandwich
@@ -4028,10 +3973,6 @@ module SignalGroup {
         /**
          * The GType of the target property.
          */
-        target_type?: GObject.GType | null
-        /**
-         * The GType of the target property.
-         */
         targetType?: GObject.GType | null
     }
 
@@ -4045,10 +3986,6 @@ interface SignalGroup {
      * The target instance used when connecting signals.
      */
     target: GObject.Object
-    /**
-     * The GType of the target property.
-     */
-    readonly target_type: GObject.GType
     /**
      * The GType of the target property.
      */
@@ -4193,9 +4130,8 @@ module SimpleLabel {
         // Own constructor properties of Egg-1.0.Egg.SimpleLabel
 
         label?: string | null
-        width_chars?: number | null
-        xalign?: number | null
         widthChars?: number | null
+        xalign?: number | null
     }
 
 }
@@ -4205,7 +4141,6 @@ interface SimpleLabel extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Egg-1.0.Egg.SimpleLabel
 
     label: string | null
-    width_chars: number
     widthChars: number
     xalign: number
 
@@ -4399,12 +4334,11 @@ module SimplePopover {
 
         // Own constructor properties of Egg-1.0.Egg.SimplePopover
 
-        button_text?: string | null
+        buttonText?: string | null
         message?: string | null
         ready?: boolean | null
         text?: string | null
         title?: string | null
-        buttonText?: string | null
     }
 
 }
@@ -4413,7 +4347,6 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.SimplePopover
 
-    button_text: string | null
     buttonText: string | null
     message: string | null
     ready: boolean
@@ -5014,11 +4947,10 @@ module Suggestion {
 
         // Own constructor properties of Egg-1.0.Egg.Suggestion
 
-        icon_name?: string | null
+        iconName?: string | null
         id?: string | null
         subtitle?: string | null
         title?: string | null
-        iconName?: string | null
     }
 
 }
@@ -5027,7 +4959,6 @@ interface Suggestion {
 
     // Own properties of Egg-1.0.Egg.Suggestion
 
-    icon_name: string | null
     iconName: string | null
     id: string | null
     subtitle: string | null
@@ -5193,7 +5124,6 @@ interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
     // Own properties of Egg-1.0.Egg.SuggestionEntry
 
     model: Gio.ListModel
-    readonly typed_text: string | null
     readonly typedText: string | null
 
     // Own fields of Egg-1.0.Egg.SuggestionEntry
@@ -5654,9 +5584,8 @@ module SuggestionPopover {
         // Own constructor properties of Egg-1.0.Egg.SuggestionPopover
 
         model?: Suggestion | null
-        relative_to?: Gtk.Widget | null
-        selected?: Suggestion | null
         relativeTo?: Gtk.Widget | null
+        selected?: Suggestion | null
     }
 
 }
@@ -5666,7 +5595,6 @@ interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Egg-1.0.Egg.SuggestionPopover
 
     model: Suggestion
-    relative_to: Gtk.Widget
     relativeTo: Gtk.Widget
     selected: Suggestion
 
@@ -6283,22 +6211,6 @@ module TaskCache {
 
         // Own constructor properties of Egg-1.0.Egg.TaskCache
 
-        key_copy_func?: any | null
-        key_destroy_func?: any | null
-        key_equal_func?: any | null
-        key_hash_func?: any | null
-        populate_callback?: any | null
-        populate_callback_data?: any | null
-        populate_callback_data_destroy?: any | null
-        /**
-         * This is the number of milliseconds before an item should be evicted
-         * from the cache.
-         * 
-         * A value of zero indicates no eviction.
-         */
-        time_to_live?: number | null
-        value_copy_func?: any | null
-        value_destroy_func?: any | null
         keyCopyFunc?: any | null
         keyDestroyFunc?: any | null
         keyEqualFunc?: any | null
@@ -6323,19 +6235,12 @@ interface TaskCache {
 
     // Own properties of Egg-1.0.Egg.TaskCache
 
-    readonly key_copy_func: any
     readonly keyCopyFunc: any
-    readonly key_destroy_func: any
     readonly keyDestroyFunc: any
-    readonly key_equal_func: any
     readonly keyEqualFunc: any
-    readonly key_hash_func: any
     readonly keyHashFunc: any
-    readonly populate_callback: any
     readonly populateCallback: any
-    readonly populate_callback_data: any
     readonly populateCallbackData: any
-    readonly populate_callback_data_destroy: any
     readonly populateCallbackDataDestroy: any
     /**
      * This is the number of milliseconds before an item should be evicted
@@ -6343,17 +6248,8 @@ interface TaskCache {
      * 
      * A value of zero indicates no eviction.
      */
-    readonly time_to_live: number
-    /**
-     * This is the number of milliseconds before an item should be evicted
-     * from the cache.
-     * 
-     * A value of zero indicates no eviction.
-     */
     readonly timeToLive: number
-    readonly value_copy_func: any
     readonly valueCopyFunc: any
-    readonly value_destroy_func: any
     readonly valueDestroyFunc: any
 
     // Owm methods of Egg-1.0.Egg.TaskCache
@@ -6452,8 +6348,6 @@ module ThreeGrid {
 
         // Own constructor properties of Egg-1.0.Egg.ThreeGrid
 
-        column_spacing?: number | null
-        row_spacing?: number | null
         columnSpacing?: number | null
         rowSpacing?: number | null
     }
@@ -6464,9 +6358,7 @@ interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Egg-1.0.Egg.ThreeGrid
 
-    column_spacing: number
     columnSpacing: number
-    row_spacing: number
     rowSpacing: number
 
     // Own fields of Egg-1.0.Egg.ThreeGrid

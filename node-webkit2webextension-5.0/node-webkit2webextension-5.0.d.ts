@@ -1386,7 +1386,7 @@ module DOMCSSRule {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMCSSRule
 
-        cssText?: string | null
+        css_text?: string | null
     }
 
 }
@@ -1525,7 +1525,7 @@ module DOMCSSStyleDeclaration {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMCSSStyleDeclaration
 
-        cssText?: string | null
+        css_text?: string | null
     }
 
 }
@@ -1725,7 +1725,7 @@ module DOMCSSValue {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMCSSValue
 
-        cssText?: string | null
+        css_text?: string | null
     }
 
 }
@@ -2579,7 +2579,7 @@ module DOMDOMWindow {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMDOMWindow
 
-        defaultStatus?: string | null
+        default_status?: string | null
         name?: string | null
         status?: string | null
     }
@@ -2855,13 +2855,13 @@ module DOMDocument {
 
         charset?: string | null
         cookie?: string | null
-        designMode?: string | null
+        design_mode?: string | null
         dir?: string | null
-        documentUri?: string | null
-        selectedStylesheetSet?: string | null
+        document_uri?: string | null
+        selected_stylesheet_set?: string | null
         title?: string | null
-        xmlStandalone?: boolean | null
-        xmlVersion?: string | null
+        xml_standalone?: boolean | null
+        xml_version?: string | null
     }
 
 }
@@ -3708,12 +3708,12 @@ module DOMElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMElement
 
-        className?: string | null
+        class_name?: string | null
         id?: string | null
-        innerHtml?: string | null
-        outerHtml?: string | null
-        scrollLeft?: number | null
-        scrollTop?: number | null
+        inner_html?: string | null
+        outer_html?: string | null
+        scroll_left?: number | null
+        scroll_top?: number | null
     }
 
 }
@@ -4237,8 +4237,8 @@ module DOMEvent {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMEvent
 
-        cancelBubble?: boolean | null
-        returnValue?: boolean | null
+        cancel_bubble?: boolean | null
+        return_value?: boolean | null
     }
 
 }
@@ -4992,7 +4992,7 @@ module DOMHTMLAppletElement {
         alt?: string | null
         archive?: string | null
         code?: string | null
-        codeBase?: string | null
+        code_base?: string | null
         height?: string | null
         hspace?: number | null
         name?: string | null
@@ -5435,7 +5435,7 @@ module DOMHTMLAreaElement {
         host?: string | null
         hostname?: string | null
         href?: string | null
-        noHref?: boolean | null
+        no_href?: boolean | null
         pathname?: string | null
         port?: string | null
         protocol?: string | null
@@ -6968,12 +6968,12 @@ module DOMHTMLBodyElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLBodyElement
 
-        aLink?: string | null
+        a_link?: string | null
         background?: string | null
-        bgColor?: string | null
+        bg_color?: string | null
         link?: string | null
         text?: string | null
-        vLink?: string | null
+        v_link?: string | null
     }
 
 }
@@ -9236,12 +9236,12 @@ module DOMHTMLDocument {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLDocument
 
-        alinkColor?: string | null
-        bgColor?: string | null
+        alink_color?: string | null
+        bg_color?: string | null
         dir?: string | null
-        fgColor?: string | null
-        linkColor?: string | null
-        vlinkColor?: string | null
+        fg_color?: string | null
+        link_color?: string | null
+        vlink_color?: string | null
     }
 
 }
@@ -9681,16 +9681,16 @@ module DOMHTMLElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLElement
 
-        accessKey?: string | null
-        contentEditable?: string | null
+        access_key?: string | null
+        content_editable?: string | null
         dir?: string | null
         draggable?: boolean | null
         hidden?: boolean | null
-        innerText?: string | null
+        inner_text?: string | null
         lang?: string | null
-        outerText?: string | null
+        outer_text?: string | null
         spellcheck?: boolean | null
-        tabIndex?: number | null
+        tab_index?: number | null
         title?: string | null
         translate?: boolean | null
         webkitdropzone?: string | null
@@ -11194,7 +11194,7 @@ module DOMHTMLFormElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLFormElement
 
-        acceptCharset?: string | null
+        accept_charset?: string | null
         action?: string | null
         encoding?: string | null
         enctype?: string | null
@@ -11615,12 +11615,12 @@ module DOMHTMLFrameElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLFrameElement
 
-        frameBorder?: string | null
-        longDesc?: string | null
-        marginHeight?: string | null
-        marginWidth?: string | null
+        frame_border?: string | null
+        long_desc?: string | null
+        margin_height?: string | null
+        margin_width?: string | null
         name?: string | null
-        noResize?: boolean | null
+        no_resize?: boolean | null
         scrolling?: string | null
         src?: string | null
     }
@@ -12418,7 +12418,7 @@ module DOMHTMLHRElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLHRElement
 
         align?: string | null
-        noShade?: boolean | null
+        no_shade?: boolean | null
         size?: string | null
         width?: string | null
     }
@@ -13849,11 +13849,11 @@ module DOMHTMLIFrameElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLIFrameElement
 
         align?: string | null
-        frameBorder?: string | null
+        frame_border?: string | null
         height?: string | null
-        longDesc?: string | null
-        marginHeight?: string | null
-        marginWidth?: string | null
+        long_desc?: string | null
+        margin_height?: string | null
+        margin_width?: string | null
         name?: string | null
         scrolling?: string | null
         src?: string | null
@@ -14299,12 +14299,12 @@ module DOMHTMLImageElement {
         border?: string | null
         height?: number | null
         hspace?: number | null
-        isMap?: boolean | null
-        longDesc?: string | null
+        is_map?: boolean | null
+        long_desc?: string | null
         lowsrc?: string | null
         name?: string | null
         src?: string | null
-        useMap?: string | null
+        use_map?: string | null
         vspace?: number | null
         width?: number | null
     }
@@ -14794,19 +14794,19 @@ module DOMHTMLInputElement {
         autofocus?: boolean | null
         capture?: string | null
         checked?: boolean | null
-        defaultChecked?: boolean | null
-        defaultValue?: string | null
+        default_checked?: boolean | null
+        default_value?: string | null
         disabled?: boolean | null
         height?: number | null
         indeterminate?: boolean | null
-        maxLength?: number | null
+        max_length?: number | null
         multiple?: boolean | null
         name?: string | null
-        readOnly?: boolean | null
+        read_only?: boolean | null
         size?: number | null
         src?: string | null
         type?: string | null
-        useMap?: string | null
+        use_map?: string | null
         value?: string | null
         width?: number | null
     }
@@ -15707,7 +15707,7 @@ module DOMHTMLLabelElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLLabelElement
 
-        htmlFor?: string | null
+        html_for?: string | null
     }
 
 }
@@ -17912,7 +17912,7 @@ module DOMHTMLMetaElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLMetaElement
 
         content?: string | null
-        httpEquiv?: string | null
+        http_equiv?: string | null
         name?: string | null
         scheme?: string | null
     }
@@ -18290,7 +18290,7 @@ module DOMHTMLModElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLModElement
 
         cite?: string | null
-        dateTime?: string | null
+        date_time?: string | null
     }
 
 }
@@ -19022,8 +19022,8 @@ module DOMHTMLObjectElement {
         archive?: string | null
         border?: string | null
         code?: string | null
-        codeBase?: string | null
-        codeType?: string | null
+        code_base?: string | null
+        code_type?: string | null
         data?: string | null
         declare?: boolean | null
         height?: string | null
@@ -19031,7 +19031,7 @@ module DOMHTMLObjectElement {
         name?: string | null
         standby?: string | null
         type?: string | null
-        useMap?: string | null
+        use_map?: string | null
         vspace?: number | null
         width?: string | null
     }
@@ -19905,7 +19905,7 @@ module DOMHTMLOptionElement {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLOptionElement
 
-        defaultSelected?: boolean | null
+        default_selected?: boolean | null
         disabled?: boolean | null
         label?: string | null
         selected?: boolean | null
@@ -20313,7 +20313,7 @@ module DOMHTMLOptionsCollection {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLOptionsCollection
 
-        selectedIndex?: number | null
+        selected_index?: number | null
     }
 
 }
@@ -20736,7 +20736,7 @@ module DOMHTMLParamElement {
         name?: string | null
         type?: string | null
         value?: string | null
-        valueType?: string | null
+        value_type?: string | null
     }
 
 }
@@ -21825,7 +21825,7 @@ module DOMHTMLScriptElement {
         charset?: string | null
         defer?: boolean | null
         event?: string | null
-        htmlFor?: string | null
+        html_for?: string | null
         src?: string | null
         text?: string | null
         type?: string | null
@@ -22232,7 +22232,7 @@ module DOMHTMLSelectElement {
         length?: number | null
         multiple?: boolean | null
         name?: string | null
-        selectedIndex?: number | null
+        selected_index?: number | null
         size?: number | null
         value?: string | null
     }
@@ -23407,16 +23407,16 @@ module DOMHTMLTableCellElement {
         abbr?: string | null
         align?: string | null
         axis?: string | null
-        bgColor?: string | null
+        bg_color?: string | null
         ch?: string | null
-        chOff?: string | null
-        colSpan?: number | null
+        ch_off?: string | null
+        col_span?: number | null
         headers?: string | null
         height?: string | null
-        noWrap?: boolean | null
-        rowSpan?: number | null
+        no_wrap?: boolean | null
+        row_span?: number | null
         scope?: string | null
-        vAlign?: string | null
+        v_align?: string | null
         width?: string | null
     }
 
@@ -23881,9 +23881,9 @@ module DOMHTMLTableColElement {
 
         align?: string | null
         ch?: string | null
-        chOff?: string | null
+        ch_off?: string | null
         span?: number | null
-        vAlign?: string | null
+        v_align?: string | null
         width?: string | null
     }
 
@@ -24276,10 +24276,10 @@ module DOMHTMLTableElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLTableElement
 
         align?: string | null
-        bgColor?: string | null
+        bg_color?: string | null
         border?: string | null
-        cellPadding?: string | null
-        cellSpacing?: string | null
+        cell_padding?: string | null
+        cell_spacing?: string | null
         rules?: string | null
         summary?: string | null
         width?: string | null
@@ -24736,10 +24736,10 @@ module DOMHTMLTableRowElement {
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMHTMLTableRowElement
 
         align?: string | null
-        bgColor?: string | null
+        bg_color?: string | null
         ch?: string | null
-        chOff?: string | null
-        vAlign?: string | null
+        ch_off?: string | null
+        v_align?: string | null
     }
 
 }
@@ -25147,8 +25147,8 @@ module DOMHTMLTableSectionElement {
 
         align?: string | null
         ch?: string | null
-        chOff?: string | null
-        vAlign?: string | null
+        ch_off?: string | null
+        v_align?: string | null
     }
 
 }
@@ -25534,13 +25534,13 @@ module DOMHTMLTextAreaElement {
 
         autofocus?: boolean | null
         cols?: number | null
-        defaultValue?: string | null
+        default_value?: string | null
         disabled?: boolean | null
         name?: string | null
-        readOnly?: boolean | null
+        read_only?: boolean | null
         rows?: number | null
-        selectionEnd?: number | null
-        selectionStart?: number | null
+        selection_end?: number | null
+        selection_start?: number | null
         value?: string | null
     }
 
@@ -26889,7 +26889,7 @@ module DOMMediaList {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMMediaList
 
-        mediaText?: string | null
+        media_text?: string | null
     }
 
 }
@@ -27275,8 +27275,8 @@ module DOMNode {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMNode
 
-        nodeValue?: string | null
-        textContent?: string | null
+        node_value?: string | null
+        text_content?: string | null
     }
 
 }
@@ -27597,7 +27597,7 @@ module DOMObject {
 
         // Own constructor properties of WebKit2WebExtension-5.0.WebKit2WebExtension.DOMObject
 
-        coreObject?: any | null
+        core_object?: any | null
     }
 
 }
@@ -29053,27 +29053,27 @@ module HitTestResult {
          * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
          * is present in #WebKitHitTestResult:context
          */
-        imageUri?: string | null
+        image_uri?: string | null
         /**
          * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkLabel?: string | null
+        link_label?: string | null
         /**
          * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkTitle?: string | null
+        link_title?: string | null
         /**
          * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkUri?: string | null
+        link_uri?: string | null
         /**
          * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
          * is present in #WebKitHitTestResult:context
          */
-        mediaUri?: string | null
+        media_uri?: string | null
     }
 
 }
@@ -29655,7 +29655,7 @@ module UserMessage {
         /**
          * The UNIX file descriptors of the user message.
          */
-        fdList?: Gio.UnixFDList | null
+        fd_list?: Gio.UnixFDList | null
         /**
          * The name of the user message.
          */

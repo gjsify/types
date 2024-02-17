@@ -2401,15 +2401,7 @@ interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buildable {
     /**
      * Whether the choice check box is visible or not.
      */
-    readonly choice_visible: boolean
-    /**
-     * Whether the choice check box is visible or not.
-     */
     readonly choiceVisible: boolean
-    /**
-     * Whether the password confirm entry is visible or not.
-     */
-    readonly confirm_visible: boolean
     /**
      * Whether the password confirm entry is visible or not.
      */
@@ -2417,15 +2409,7 @@ interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buildable {
     /**
      * Whether the password entry is visible or not.
      */
-    readonly password_visible: boolean
-    /**
-     * Whether the password entry is visible or not.
-     */
     readonly passwordVisible: boolean
-    /**
-     * Whether the warning label is visible or not.
-     */
-    readonly warning_visible: boolean
     /**
      * Whether the warning label is visible or not.
      */
@@ -3548,14 +3532,6 @@ module ViewerWidget {
          * Used as a hint when displaying a title for the data, but may be
          * overridden by the parsed data.
          */
-        display_name?: string | null
-        /**
-         * Display name for data being displayed. This is automatically
-         * calculated from a loaded file, or can be explicitly set.
-         * 
-         * Used as a hint when displaying a title for the data, but may be
-         * overridden by the parsed data.
-         */
         displayName?: string | null
     }
 
@@ -3565,14 +3541,6 @@ interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
 
     // Own properties of GcrUi-3.GcrUi.ViewerWidget
 
-    /**
-     * Display name for data being displayed. This is automatically
-     * calculated from a loaded file, or can be explicitly set.
-     * 
-     * Used as a hint when displaying a title for the data, but may be
-     * overridden by the parsed data.
-     */
-    display_name: string | null
     /**
      * Display name for data being displayed. This is automatically
      * calculated from a loaded file, or can be explicitly set.

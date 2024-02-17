@@ -642,7 +642,7 @@ module Context {
         /**
          * The #JSCVirtualMachine in which the context was created.
          */
-        virtualMachine?: VirtualMachine | null
+        virtual_machine?: VirtualMachine | null
     }
 
 }

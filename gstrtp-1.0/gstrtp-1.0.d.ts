@@ -852,7 +852,6 @@ module RTPBaseAudioPayload {
 
         // Own constructor properties of GstRtp-1.0.GstRtp.RTPBaseAudioPayload
 
-        buffer_list?: boolean | null
         bufferList?: boolean | null
     }
 
@@ -862,7 +861,6 @@ interface RTPBaseAudioPayload {
 
     // Own properties of GstRtp-1.0.GstRtp.RTPBaseAudioPayload
 
-    buffer_list: boolean
     bufferList: boolean
 
     // Conflicting properties
@@ -1153,24 +1151,6 @@ module RTPBaseDepayload {
          * the need to handle these extensions manually using the
          * GstRTPBaseDepayload::request-extension: signal.
          */
-        auto_header_extension?: boolean | null
-        /**
-         * Max seqnum reorder before the sender is assumed to have restarted.
-         * 
-         * When max-reorder is set to 0 all reordered/duplicate packets are
-         * considered coming from a restarted sender.
-         */
-        max_reorder?: number | null
-        /**
-         * Add RTP source information found in RTP header as meta to output buffer.
-         */
-        source_info?: boolean | null
-        /**
-         * If enabled, the depayloader will automatically try to enable all the
-         * RTP header extensions provided in the sink caps, saving the application
-         * the need to handle these extensions manually using the
-         * GstRTPBaseDepayload::request-extension: signal.
-         */
         autoHeaderExtension?: boolean | null
         /**
          * Max seqnum reorder before the sender is assumed to have restarted.
@@ -1197,13 +1177,6 @@ interface RTPBaseDepayload {
      * the need to handle these extensions manually using the
      * GstRTPBaseDepayload::request-extension: signal.
      */
-    auto_header_extension: boolean
-    /**
-     * If enabled, the depayloader will automatically try to enable all the
-     * RTP header extensions provided in the sink caps, saving the application
-     * the need to handle these extensions manually using the
-     * GstRTPBaseDepayload::request-extension: signal.
-     */
     autoHeaderExtension: boolean
     /**
      * Max seqnum reorder before the sender is assumed to have restarted.
@@ -1211,18 +1184,7 @@ interface RTPBaseDepayload {
      * When max-reorder is set to 0 all reordered/duplicate packets are
      * considered coming from a restarted sender.
      */
-    max_reorder: number
-    /**
-     * Max seqnum reorder before the sender is assumed to have restarted.
-     * 
-     * When max-reorder is set to 0 all reordered/duplicate packets are
-     * considered coming from a restarted sender.
-     */
     maxReorder: number
-    /**
-     * Add RTP source information found in RTP header as meta to output buffer.
-     */
-    source_info: boolean
     /**
      * Add RTP source information found in RTP header as meta to output buffer.
      */
@@ -1422,72 +1384,13 @@ module RTPBasePayload {
          * the need to handle these extensions manually using the
          * GstRTPBasePayload::request-extension: signal.
          */
-        auto_header_extension?: boolean | null
-        max_ptime?: number | null
-        /**
-         * Minimum duration of the packet data in ns (can't go above MTU)
-         */
-        min_ptime?: number | null
-        mtu?: number | null
-        /**
-         * Make the payloader timestamp packets according to the Rate-Control=no
-         * behaviour specified in the ONVIF replay spec.
-         */
-        onvif_no_rate_control?: boolean | null
-        /**
-         * Try to use the offset fields to generate perfect RTP timestamps. When this
-         * option is disabled, RTP timestamps are generated from GST_BUFFER_PTS of
-         * each payloaded buffer. The PTSes of buffers may not necessarily increment
-         * with the amount of data in each input buffer, consider e.g. the case where
-         * the buffer arrives from a network which means that the PTS is unrelated to
-         * the amount of data. Because the RTP timestamps are generated from
-         * GST_BUFFER_PTS this can result in RTP timestamps that also don't increment
-         * with the amount of data in the payloaded packet. To circumvent this it is
-         * possible to set the perfect rtptime option enabled. When this option is
-         * enabled the payloader will increment the RTP timestamps based on
-         * GST_BUFFER_OFFSET which relates to the amount of data in each packet
-         * rather than the GST_BUFFER_PTS of each buffer and therefore the RTP
-         * timestamps will more closely correlate with the amount of data in each
-         * buffer. Currently GstRTPBasePayload is limited to handling perfect RTP
-         * timestamps for audio streams.
-         */
-        perfect_rtptime?: boolean | null
-        pt?: number | null
-        /**
-         * Force buffers to be multiples of this duration in ns (0 disables)
-         */
-        ptime_multiple?: number | null
-        /**
-         * Make the RTP packets' timestamps be scaled with the segment's rate
-         * (corresponding to RTSP speed parameter). Disabling this property means
-         * the timestamps will not be affected by the set delivery speed (RTSP speed).
-         * 
-         * Example: A server wants to allow streaming a recorded video in double
-         * speed but still have the timestamps correspond to the position in the
-         * video. This is achieved by the client setting RTSP Speed to 2 while the
-         * server has this property disabled.
-         */
-        scale_rtptime?: boolean | null
-        seqnum_offset?: number | null
-        /**
-         * Enable writing the CSRC field in allocated RTP header based on RTP source
-         * information found in the input buffer's #GstRTPSourceMeta.
-         */
-        source_info?: boolean | null
-        ssrc?: number | null
-        timestamp_offset?: number | null
-        /**
-         * If enabled, the payloader will automatically try to enable all the
-         * RTP header extensions provided in the src caps, saving the application
-         * the need to handle these extensions manually using the
-         * GstRTPBasePayload::request-extension: signal.
-         */
         autoHeaderExtension?: boolean | null
         maxPtime?: number | null
         /**
          * Minimum duration of the packet data in ns (can't go above MTU)
          */
         minPtime?: number | null
+        mtu?: number | null
         /**
          * Make the payloader timestamp packets according to the Rate-Control=no
          * behaviour specified in the ONVIF replay spec.
@@ -1511,6 +1414,7 @@ module RTPBasePayload {
          * timestamps for audio streams.
          */
         perfectRtptime?: boolean | null
+        pt?: number | null
         /**
          * Force buffers to be multiples of this duration in ns (0 disables)
          */
@@ -1532,6 +1436,7 @@ module RTPBasePayload {
          * information found in the input buffer's #GstRTPSourceMeta.
          */
         sourceInfo?: boolean | null
+        ssrc?: number | null
         timestampOffset?: number | null
     }
 
@@ -1547,30 +1452,13 @@ interface RTPBasePayload {
      * the need to handle these extensions manually using the
      * GstRTPBasePayload::request-extension: signal.
      */
-    auto_header_extension: boolean
-    /**
-     * If enabled, the payloader will automatically try to enable all the
-     * RTP header extensions provided in the src caps, saving the application
-     * the need to handle these extensions manually using the
-     * GstRTPBasePayload::request-extension: signal.
-     */
     autoHeaderExtension: boolean
-    max_ptime: number
     maxPtime: number
-    /**
-     * Minimum duration of the packet data in ns (can't go above MTU)
-     */
-    min_ptime: number
     /**
      * Minimum duration of the packet data in ns (can't go above MTU)
      */
     minPtime: number
     mtu: number
-    /**
-     * Make the payloader timestamp packets according to the Rate-Control=no
-     * behaviour specified in the ONVIF replay spec.
-     */
-    onvif_no_rate_control: boolean
     /**
      * Make the payloader timestamp packets according to the Rate-Control=no
      * behaviour specified in the ONVIF replay spec.
@@ -1593,30 +1481,8 @@ interface RTPBasePayload {
      * buffer. Currently GstRTPBasePayload is limited to handling perfect RTP
      * timestamps for audio streams.
      */
-    perfect_rtptime: boolean
-    /**
-     * Try to use the offset fields to generate perfect RTP timestamps. When this
-     * option is disabled, RTP timestamps are generated from GST_BUFFER_PTS of
-     * each payloaded buffer. The PTSes of buffers may not necessarily increment
-     * with the amount of data in each input buffer, consider e.g. the case where
-     * the buffer arrives from a network which means that the PTS is unrelated to
-     * the amount of data. Because the RTP timestamps are generated from
-     * GST_BUFFER_PTS this can result in RTP timestamps that also don't increment
-     * with the amount of data in the payloaded packet. To circumvent this it is
-     * possible to set the perfect rtptime option enabled. When this option is
-     * enabled the payloader will increment the RTP timestamps based on
-     * GST_BUFFER_OFFSET which relates to the amount of data in each packet
-     * rather than the GST_BUFFER_PTS of each buffer and therefore the RTP
-     * timestamps will more closely correlate with the amount of data in each
-     * buffer. Currently GstRTPBasePayload is limited to handling perfect RTP
-     * timestamps for audio streams.
-     */
     perfectRtptime: boolean
     pt: number
-    /**
-     * Force buffers to be multiples of this duration in ns (0 disables)
-     */
-    ptime_multiple: number
     /**
      * Force buffers to be multiples of this duration in ns (0 disables)
      */
@@ -1631,26 +1497,9 @@ interface RTPBasePayload {
      * video. This is achieved by the client setting RTSP Speed to 2 while the
      * server has this property disabled.
      */
-    scale_rtptime: boolean
-    /**
-     * Make the RTP packets' timestamps be scaled with the segment's rate
-     * (corresponding to RTSP speed parameter). Disabling this property means
-     * the timestamps will not be affected by the set delivery speed (RTSP speed).
-     * 
-     * Example: A server wants to allow streaming a recorded video in double
-     * speed but still have the timestamps correspond to the position in the
-     * video. This is achieved by the client setting RTSP Speed to 2 while the
-     * server has this property disabled.
-     */
     scaleRtptime: boolean
     readonly seqnum: number
-    seqnum_offset: number
     seqnumOffset: number
-    /**
-     * Enable writing the CSRC field in allocated RTP header based on RTP source
-     * information found in the input buffer's #GstRTPSourceMeta.
-     */
-    source_info: boolean
     /**
      * Enable writing the CSRC field in allocated RTP header based on RTP source
      * information found in the input buffer's #GstRTPSourceMeta.
@@ -1675,7 +1524,6 @@ interface RTPBasePayload {
      */
     readonly stats: Gst.Structure
     readonly timestamp: number
-    timestamp_offset: number
     timestampOffset: number
 
     // Conflicting properties

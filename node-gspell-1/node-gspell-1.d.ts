@@ -67,7 +67,7 @@ module LanguageChooser {
          * hasn't changed. Or the language code if an explicit language was set
          * or if the selection has changed.
          */
-        languageCode?: string | null
+        language_code?: string | null
     }
 
 }
@@ -416,7 +416,7 @@ module CheckerDialog {
         /**
          * The #GspellNavigator to use.
          */
-        spellNavigator?: Navigator | null
+        spell_navigator?: Navigator | null
     }
 
 }
@@ -1057,7 +1057,7 @@ module Entry {
          * inline spell checking in case the #GtkEntry:visibility property is
          * %FALSE.
          */
-        inlineSpellChecking?: boolean | null
+        inline_spell_checking?: boolean | null
     }
 
 }
@@ -1187,7 +1187,7 @@ module EntryBuffer {
         /**
          * The #GspellChecker.
          */
-        spellChecker?: Checker | null
+        spell_checker?: Checker | null
     }
 
 }
@@ -2431,7 +2431,7 @@ module TextBuffer {
         /**
          * The #GspellChecker.
          */
-        spellChecker?: Checker | null
+        spell_checker?: Checker | null
     }
 
 }
@@ -2518,11 +2518,11 @@ module TextView {
          * When the context menu is shown, whether to add a sub-menu to select
          * the language for the spell checking.
          */
-        enableLanguageMenu?: boolean | null
+        enable_language_menu?: boolean | null
         /**
          * Whether the inline spell checking is enabled.
          */
-        inlineSpellChecking?: boolean | null
+        inline_spell_checking?: boolean | null
         /**
          * The #GtkTextView.
          */

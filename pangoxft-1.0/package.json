@@ -1,13 +1,19 @@
 {
     "name": "@girs/pangoxft-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for PangoXft-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "pangoxft-1.0.js",
     "main": "pangoxft-1.0.js",
     "exports": {
-        "./ambient": "./pangoxft-1.0-ambient.d.ts",
-        "./import": "./pangoxft-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./pangoxft-1.0-ambient.d.ts",
+            "default": "./pangoxft-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./pangoxft-1.0-import.d.ts",
+            "default": "./pangoxft-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./pangoxft-1.0.d.ts",

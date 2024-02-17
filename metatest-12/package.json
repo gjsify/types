@@ -1,13 +1,19 @@
 {
     "name": "@girs/metatest-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for MetaTest-12, generated from library version 12.0.0",
     "type": "module",
     "module": "metatest-12.js",
     "main": "metatest-12.js",
     "exports": {
-        "./ambient": "./metatest-12-ambient.d.ts",
-        "./import": "./metatest-12-import.d.ts",
+        "./ambient": {
+            "types": "./metatest-12-ambient.d.ts",
+            "default": "./metatest-12-ambient.js"
+        },
+        "./import": {
+            "types": "./metatest-12-import.d.ts",
+            "default": "./metatest-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./metatest-12.d.ts",

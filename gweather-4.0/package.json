@@ -1,13 +1,19 @@
 {
     "name": "@girs/gweather-4.0",
-    "version": "4.0.0-3.2.7",
+    "version": "4.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GWeather-4.0, generated from library version 4.0.0",
     "type": "module",
     "module": "gweather-4.0.js",
     "main": "gweather-4.0.js",
     "exports": {
-        "./ambient": "./gweather-4.0-ambient.d.ts",
-        "./import": "./gweather-4.0-import.d.ts",
+        "./ambient": {
+            "types": "./gweather-4.0-ambient.d.ts",
+            "default": "./gweather-4.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gweather-4.0-import.d.ts",
+            "default": "./gweather-4.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gweather-4.0.d.ts",

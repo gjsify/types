@@ -1,13 +1,19 @@
 {
     "name": "@girs/vgpg-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgpg-1.js",
     "main": "vgpg-1.js",
     "exports": {
-        "./ambient": "./vgpg-1-ambient.d.ts",
-        "./import": "./vgpg-1-import.d.ts",
+        "./ambient": {
+            "types": "./vgpg-1-ambient.d.ts",
+            "default": "./vgpg-1-ambient.js"
+        },
+        "./import": {
+            "types": "./vgpg-1-import.d.ts",
+            "default": "./vgpg-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./vgpg-1.d.ts",

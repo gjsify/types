@@ -1008,15 +1008,7 @@ interface Client {
     /**
      * The daemon version number.
      */
-    readonly daemon_version: string | null
-    /**
-     * The daemon version number.
-     */
     readonly daemonVersion: string | null
-    /**
-     * The host machine-id string
-     */
-    readonly host_machine_id: string | null
     /**
      * The host machine-id string
      */
@@ -1024,15 +1016,7 @@ interface Client {
     /**
      * The host product string
      */
-    readonly host_product: string | null
-    /**
-     * The host product string
-     */
     readonly hostProduct: string | null
-    /**
-     * The host machine-id string
-     */
-    readonly host_security_id: string | null
     /**
      * The host machine-id string
      */
@@ -1045,10 +1029,6 @@ interface Client {
      * The last-reported percentage of the daemon.
      */
     percentage: number
-    /**
-     * The libsoup session, now unused.
-     */
-    readonly soup_session: GObject.Object
     /**
      * The libsoup session, now unused.
      */
@@ -2699,8 +2679,6 @@ module Device {
         parent?: Device | null
         protocol?: string | null
         status?: number | null
-        update_state?: number | null
-        version_format?: number | null
         updateState?: number | null
         versionFormat?: number | null
     }
@@ -2715,9 +2693,7 @@ interface Device {
     parent: Device
     protocol: string | null
     status: number
-    update_state: number
     updateState: number
-    version_format: number
     versionFormat: number
 
     // Own fields of Fwupd-2.0.Fwupd.Device
@@ -3853,27 +3829,6 @@ module Remote {
          * If firmware from the remote should be checked against the system
          * list of approved firmware.
          */
-        approval_required?: boolean | null
-        /**
-         * The behavior for auto-uploading reports.
-         */
-        automatic_reports?: boolean | null
-        /**
-         * The behavior for auto-uploading security reports.
-         */
-        automatic_security_reports?: boolean | null
-        /**
-         * If the remote is enabled and should be used.
-         */
-        enabled?: boolean | null
-        /**
-         * The remote ID.
-         */
-        id?: string | null
-        /**
-         * If firmware from the remote should be checked against the system
-         * list of approved firmware.
-         */
         approvalRequired?: boolean | null
         /**
          * The behavior for auto-uploading reports.
@@ -3883,6 +3838,14 @@ module Remote {
          * The behavior for auto-uploading security reports.
          */
         automaticSecurityReports?: boolean | null
+        /**
+         * If the remote is enabled and should be used.
+         */
+        enabled?: boolean | null
+        /**
+         * The remote ID.
+         */
+        id?: string | null
     }
 
 }
@@ -3895,24 +3858,11 @@ interface Remote {
      * If firmware from the remote should be checked against the system
      * list of approved firmware.
      */
-    approval_required: boolean
-    /**
-     * If firmware from the remote should be checked against the system
-     * list of approved firmware.
-     */
     approvalRequired: boolean
     /**
      * The behavior for auto-uploading reports.
      */
-    automatic_reports: boolean
-    /**
-     * The behavior for auto-uploading reports.
-     */
     automaticReports: boolean
-    /**
-     * The behavior for auto-uploading security reports.
-     */
-    automatic_security_reports: boolean
     /**
      * The behavior for auto-uploading security reports.
      */

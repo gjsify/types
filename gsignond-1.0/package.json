@@ -1,13 +1,19 @@
 {
     "name": "@girs/gsignond-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GSignond-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gsignond-1.0.js",
     "main": "gsignond-1.0.js",
     "exports": {
-        "./ambient": "./gsignond-1.0-ambient.d.ts",
-        "./import": "./gsignond-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gsignond-1.0-ambient.d.ts",
+            "default": "./gsignond-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gsignond-1.0-import.d.ts",
+            "default": "./gsignond-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gsignond-1.0.d.ts",

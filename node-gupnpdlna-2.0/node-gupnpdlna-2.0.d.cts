@@ -416,13 +416,13 @@ export module Profile {
 
         // Own constructor properties of GUPnPDLNA-2.0.GUPnPDLNA.Profile
 
-        audioRestrictions?: any | null
-        containerRestrictions?: any | null
+        audio_restrictions?: any | null
+        container_restrictions?: any | null
         /**
          * Whether the DLNA profile is not a part of DLNA specification.
          */
         extended?: boolean | null
-        imageRestrictions?: any | null
+        image_restrictions?: any | null
         /**
          * MIME type of the DLNA profile.
          */
@@ -431,7 +431,7 @@ export module Profile {
          * Name of the DLNA profile.
          */
         name?: string | null
-        videoRestrictions?: any | null
+        video_restrictions?: any | null
     }
 
 }
@@ -577,12 +577,12 @@ export module ProfileGuesser {
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
          */
-        extendedMode?: boolean | null
+        extended_mode?: boolean | null
         /**
          * Whether profile matching should not be strictly compliant
          * with the DLNA specification.
          */
-        relaxedMode?: boolean | null
+        relaxed_mode?: boolean | null
     }
 
 }

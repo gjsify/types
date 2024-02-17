@@ -487,20 +487,11 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The features of the currently used Authority backend.
      */
-    readonly backend_features: AuthorityFeatures
-    /**
-     * The features of the currently used Authority backend.
-     */
     readonly backendFeatures: AuthorityFeatures
     /**
      * The name of the currently used Authority backend.
      */
-    readonly backend_name: string | null
-    /**
-     * The name of the currently used Authority backend.
-     */
     readonly backendName: string | null
-    readonly backend_version: string | null
     readonly backendVersion: string | null
     /**
      * The unique name of the owner of the org.freedesktop.PolicyKit1
@@ -1166,16 +1157,12 @@ export module Permission {
         /**
          * The action identifier to use for the permission.
          */
-        action_id?: string | null
+        actionId?: string | null
         /**
          * The #PolkitSubject to use for the permission. If not set during
          * construction, it will be set to match the current process.
          */
         subject?: Subject | null
-        /**
-         * The action identifier to use for the permission.
-         */
-        actionId?: string | null
     }
 
 }
@@ -1184,10 +1171,6 @@ export interface Permission extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of Polkit-1.0.Polkit.Permission
 
-    /**
-     * The action identifier to use for the permission.
-     */
-    readonly action_id: string | null
     /**
      * The action identifier to use for the permission.
      */
@@ -1611,17 +1594,13 @@ export module UnixProcess {
         /**
          * The start time of the process.
          */
-        start_time?: number | null
+        startTime?: number | null
         /**
          * The UNIX user id of the process or -1 if unknown.
          * 
          * Note that this is the real user-id, not the effective user-id.
          */
         uid?: number | null
-        /**
-         * The start time of the process.
-         */
-        startTime?: number | null
     }
 
 }
@@ -1634,10 +1613,6 @@ export interface UnixProcess extends Subject {
      * The UNIX process id.
      */
     pid: number
-    /**
-     * The start time of the process.
-     */
-    start_time: number
     /**
      * The start time of the process.
      */
@@ -1786,10 +1761,6 @@ export module UnixSession {
         /**
          * The UNIX session id.
          */
-        session_id?: string | null
-        /**
-         * The UNIX session id.
-         */
         sessionId?: string | null
     }
 
@@ -1803,10 +1774,6 @@ export interface UnixSession extends Gio.AsyncInitable, Gio.Initable, Subject {
      * The UNIX process id to look up the session.
      */
     readonly pid: number
-    /**
-     * The UNIX session id.
-     */
-    session_id: string | null
     /**
      * The UNIX session id.
      */

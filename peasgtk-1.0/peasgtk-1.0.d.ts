@@ -409,10 +409,6 @@ module PluginManagerView {
         /**
          * If builtin plugins should be shown.
          */
-        show_builtin?: boolean | null
-        /**
-         * If builtin plugins should be shown.
-         */
         showBuiltin?: boolean | null
     }
 
@@ -423,10 +419,6 @@ interface PluginManagerView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     // Own properties of PeasGtk-1.0.PeasGtk.PluginManagerView
 
     readonly engine: Peas.Engine
-    /**
-     * If builtin plugins should be shown.
-     */
-    show_builtin: boolean
     /**
      * If builtin plugins should be shown.
      */

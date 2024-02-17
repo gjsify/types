@@ -2064,26 +2064,6 @@ export module Settings {
          * 
          * This property is independent of #DhSettings:use-system-fonts.
          */
-        fixed_font?: string | null
-        /**
-         * Whether books should be grouped by programming language in the UI.
-         */
-        group_books_by_language?: boolean | null
-        /**
-         * Whether to use the system default fonts.
-         */
-        use_system_fonts?: boolean | null
-        /**
-         * Font for text with variable width.
-         * 
-         * This property is independent of #DhSettings:use-system-fonts.
-         */
-        variable_font?: string | null
-        /**
-         * Font for text with fixed width, such as code examples.
-         * 
-         * This property is independent of #DhSettings:use-system-fonts.
-         */
         fixedFont?: string | null
         /**
          * Whether books should be grouped by programming language in the UI.
@@ -2112,17 +2092,7 @@ export interface Settings {
      * 
      * This property is independent of #DhSettings:use-system-fonts.
      */
-    fixed_font: string | null
-    /**
-     * Font for text with fixed width, such as code examples.
-     * 
-     * This property is independent of #DhSettings:use-system-fonts.
-     */
     fixedFont: string | null
-    /**
-     * Whether books should be grouped by programming language in the UI.
-     */
-    group_books_by_language: boolean
     /**
      * Whether books should be grouped by programming language in the UI.
      */
@@ -2130,17 +2100,7 @@ export interface Settings {
     /**
      * Whether to use the system default fonts.
      */
-    use_system_fonts: boolean
-    /**
-     * Whether to use the system default fonts.
-     */
     useSystemFonts: boolean
-    /**
-     * Font for text with variable width.
-     * 
-     * This property is independent of #DhSettings:use-system-fonts.
-     */
-    variable_font: string | null
     /**
      * Font for text with variable width.
      * 
@@ -2660,11 +2620,6 @@ export module Tab {
          * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
          * with the default #DhProfile.
          */
-        web_view?: WebView | null
-        /**
-         * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
-         * with the default #DhProfile.
-         */
         webView?: WebView | null
     }
 
@@ -2674,11 +2629,6 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
 
     // Own properties of Devhelp-3.0.Devhelp.Tab
 
-    /**
-     * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
-     * with the default #DhProfile.
-     */
-    readonly web_view: WebView
     /**
      * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
      * with the default #DhProfile.

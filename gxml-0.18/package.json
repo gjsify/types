@@ -1,13 +1,19 @@
 {
     "name": "@girs/gxml-0.18",
-    "version": "0.18.0-3.2.7",
+    "version": "0.18.0-3.2.8",
     "description": "GJS TypeScript type definitions for GXml-0.18, generated from library version 0.18.0",
     "type": "module",
     "module": "gxml-0.18.js",
     "main": "gxml-0.18.js",
     "exports": {
-        "./ambient": "./gxml-0.18-ambient.d.ts",
-        "./import": "./gxml-0.18-import.d.ts",
+        "./ambient": {
+            "types": "./gxml-0.18-ambient.d.ts",
+            "default": "./gxml-0.18-ambient.js"
+        },
+        "./import": {
+            "types": "./gxml-0.18-import.d.ts",
+            "default": "./gxml-0.18-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gxml-0.18.d.ts",

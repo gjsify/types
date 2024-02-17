@@ -125,10 +125,6 @@ export module Camera {
         /**
          * The video texture for the #CheeseCamera to render into.
          */
-        video_texture?: any | null
-        /**
-         * The video texture for the #CheeseCamera to render into.
-         */
         videoTexture?: any | null
     }
 
@@ -149,15 +145,7 @@ export interface Camera {
     /**
      * The currently number of camera devices available for being used.
      */
-    readonly num_camera_devices: number
-    /**
-     * The currently number of camera devices available for being used.
-     */
     readonly numCameraDevices: number
-    /**
-     * The video texture for the #CheeseCamera to render into.
-     */
-    video_texture: any
     /**
      * The video texture for the #CheeseCamera to render into.
      */
@@ -605,20 +593,11 @@ export module Effect {
          * If the control valve is active, then the effect is currently connected to
          * a video stream, for previews.
          */
-        control_valve?: Gst.Element | null
+        controlValve?: Gst.Element | null
         /**
          * Name of the effect, for display in a UI.
          */
         name?: string | null
-        /**
-         * Description of the GStreamer pipeline associated with the effect.
-         */
-        pipeline_desc?: string | null
-        /**
-         * If the control valve is active, then the effect is currently connected to
-         * a video stream, for previews.
-         */
-        controlValve?: Gst.Element | null
         /**
          * Description of the GStreamer pipeline associated with the effect.
          */
@@ -635,20 +614,11 @@ export interface Effect {
      * If the control valve is active, then the effect is currently connected to
      * a video stream, for previews.
      */
-    control_valve: Gst.Element
-    /**
-     * If the control valve is active, then the effect is currently connected to
-     * a video stream, for previews.
-     */
     controlValve: Gst.Element
     /**
      * Name of the effect, for display in a UI.
      */
     readonly name: string | null
-    /**
-     * Description of the GStreamer pipeline associated with the effect.
-     */
-    readonly pipeline_desc: string | null
     /**
      * Description of the GStreamer pipeline associated with the effect.
      */

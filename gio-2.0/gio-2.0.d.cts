@@ -5993,22 +5993,11 @@ export interface Action {
      * action. This is immutable, and may be %NULL if no parameter is needed when
      * activating the action.
      */
-    readonly parameter_type: GLib.VariantType
-    /**
-     * The type of the parameter that must be given when activating the
-     * action. This is immutable, and may be %NULL if no parameter is needed when
-     * activating the action.
-     */
     readonly parameterType: GLib.VariantType
     /**
      * The state of the action, or %NULL if the action is stateless.
      */
     readonly state: GLib.Variant
-    /**
-     * The #GVariantType of the state that the action has, or %NULL if the
-     * action is stateless. This is immutable.
-     */
-    readonly state_type: GLib.VariantType
     /**
      * The #GVariantType of the state that the action has, or %NULL if the
      * action is stateless. This is immutable.
@@ -9362,11 +9351,6 @@ export module DebugController {
          * %TRUE if debug output should be exposed (for example by forwarding it to
          * the journal), %FALSE otherwise.
          */
-        debug_enabled?: boolean | null
-        /**
-         * %TRUE if debug output should be exposed (for example by forwarding it to
-         * the journal), %FALSE otherwise.
-         */
         debugEnabled?: boolean | null
     }
 
@@ -9376,11 +9360,6 @@ export interface DebugController extends Initable {
 
     // Own properties of Gio-2.0.Gio.DebugController
 
-    /**
-     * %TRUE if debug output should be exposed (for example by forwarding it to
-     * the journal), %FALSE otherwise.
-     */
-    debug_enabled: boolean
     /**
      * %TRUE if debug output should be exposed (for example by forwarding it to
      * the journal), %FALSE otherwise.
@@ -10055,42 +10034,6 @@ export module DtlsClientConnection {
          * certificate we expect, which is useful for servers that serve
          * virtual hosts.
          */
-        server_identity?: SocketConnectable | null
-        /**
-         * What steps to perform when validating a certificate received from
-         * a server. Server certificates that fail to validate in any of the
-         * ways indicated here will be rejected unless the application
-         * overrides the default via #GDtlsConnection::accept-certificate.
-         * 
-         * GLib guarantees that if certificate verification fails, at least one
-         * flag will be set, but it does not guarantee that all possible flags
-         * will be set. Accordingly, you may not safely decide to ignore any
-         * particular type of error. For example, it would be incorrect to mask
-         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-         * because this could potentially be the only error flag set even if
-         * other problems exist with the certificate. Therefore, there is no
-         * safe way to use this property. This is not a horrible problem,
-         * though, because you should not be attempting to ignore validation
-         * errors anyway. If you really must ignore TLS certificate errors,
-         * connect to #GDtlsConnection::accept-certificate.
-         */
-        validation_flags?: TlsCertificateFlags | null
-        /**
-         * A #GSocketConnectable describing the identity of the server that
-         * is expected on the other end of the connection.
-         * 
-         * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
-         * #GDtlsClientConnection:validation-flags, this object will be used
-         * to determine the expected identify of the remote end of the
-         * connection; if #GDtlsClientConnection:server-identity is not set,
-         * or does not match the identity presented by the server, then the
-         * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
-         * 
-         * In addition to its use in verifying the server certificate,
-         * this is also used to give a hint to the server about what
-         * certificate we expect, which is useful for servers that serve
-         * virtual hosts.
-         */
         serverIdentity?: SocketConnectable | null
         /**
          * What steps to perform when validating a certificate received from
@@ -10128,16 +10071,6 @@ export interface DtlsClientConnection extends DatagramBased, DtlsConnection {
      * Each item in the list is a #GByteArray which contains the complete
      * subject DN of the certificate authority.
      */
-    readonly accepted_cas: any[]
-    /**
-     * A list of the distinguished names of the Certificate Authorities
-     * that the server will accept client certificates signed by. If the
-     * server requests a client certificate during the handshake, then
-     * this property will be set after the handshake completes.
-     * 
-     * Each item in the list is a #GByteArray which contains the complete
-     * subject DN of the certificate authority.
-     */
     readonly acceptedCas: any[]
     /**
      * A #GSocketConnectable describing the identity of the server that
@@ -10155,43 +10088,7 @@ export interface DtlsClientConnection extends DatagramBased, DtlsConnection {
      * certificate we expect, which is useful for servers that serve
      * virtual hosts.
      */
-    server_identity: SocketConnectable
-    /**
-     * A #GSocketConnectable describing the identity of the server that
-     * is expected on the other end of the connection.
-     * 
-     * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
-     * #GDtlsClientConnection:validation-flags, this object will be used
-     * to determine the expected identify of the remote end of the
-     * connection; if #GDtlsClientConnection:server-identity is not set,
-     * or does not match the identity presented by the server, then the
-     * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
-     * 
-     * In addition to its use in verifying the server certificate,
-     * this is also used to give a hint to the server about what
-     * certificate we expect, which is useful for servers that serve
-     * virtual hosts.
-     */
     serverIdentity: SocketConnectable
-    /**
-     * What steps to perform when validating a certificate received from
-     * a server. Server certificates that fail to validate in any of the
-     * ways indicated here will be rejected unless the application
-     * overrides the default via #GDtlsConnection::accept-certificate.
-     * 
-     * GLib guarantees that if certificate verification fails, at least one
-     * flag will be set, but it does not guarantee that all possible flags
-     * will be set. Accordingly, you may not safely decide to ignore any
-     * particular type of error. For example, it would be incorrect to mask
-     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-     * because this could potentially be the only error flag set even if
-     * other problems exist with the certificate. Therefore, there is no
-     * safe way to use this property. This is not a horrible problem,
-     * though, because you should not be attempting to ignore validation
-     * errors anyway. If you really must ignore TLS certificate errors,
-     * connect to #GDtlsConnection::accept-certificate.
-     */
-    validation_flags: TlsCertificateFlags
     /**
      * What steps to perform when validating a certificate received from
      * a server. Server certificates that fail to validate in any of the
@@ -10361,12 +10258,12 @@ export module DtlsConnection {
          * advertises that it is willing to speak. See
          * g_dtls_connection_set_advertised_protocols().
          */
-        advertised_protocols?: string[] | null
+        advertisedProtocols?: string[] | null
         /**
          * The #GDatagramBased that the connection wraps. Note that this may be any
          * implementation of #GDatagramBased, not just a #GSocket.
          */
-        base_socket?: DatagramBased | null
+        baseSocket?: DatagramBased | null
         /**
          * The connection's certificate; see
          * g_dtls_connection_set_certificate().
@@ -10401,27 +10298,6 @@ export module DtlsConnection {
          * The rehandshaking mode. See
          * g_dtls_connection_set_rehandshake_mode().
          */
-        rehandshake_mode?: TlsRehandshakeMode | null
-        /**
-         * Whether or not proper TLS close notification is required.
-         * See g_dtls_connection_set_require_close_notify().
-         */
-        require_close_notify?: boolean | null
-        /**
-         * The list of application-layer protocols that the connection
-         * advertises that it is willing to speak. See
-         * g_dtls_connection_set_advertised_protocols().
-         */
-        advertisedProtocols?: string[] | null
-        /**
-         * The #GDatagramBased that the connection wraps. Note that this may be any
-         * implementation of #GDatagramBased, not just a #GSocket.
-         */
-        baseSocket?: DatagramBased | null
-        /**
-         * The rehandshaking mode. See
-         * g_dtls_connection_set_rehandshake_mode().
-         */
         rehandshakeMode?: TlsRehandshakeMode | null
         /**
          * Whether or not proper TLS close notification is required.
@@ -10441,18 +10317,7 @@ export interface DtlsConnection extends DatagramBased {
      * advertises that it is willing to speak. See
      * g_dtls_connection_set_advertised_protocols().
      */
-    advertised_protocols: string[]
-    /**
-     * The list of application-layer protocols that the connection
-     * advertises that it is willing to speak. See
-     * g_dtls_connection_set_advertised_protocols().
-     */
     advertisedProtocols: string[]
-    /**
-     * The #GDatagramBased that the connection wraps. Note that this may be any
-     * implementation of #GDatagramBased, not just a #GSocket.
-     */
-    readonly base_socket: DatagramBased
     /**
      * The #GDatagramBased that the connection wraps. Note that this may be any
      * implementation of #GDatagramBased, not just a #GSocket.
@@ -10463,10 +10328,6 @@ export interface DtlsConnection extends DatagramBased {
      * g_dtls_connection_set_certificate().
      */
     certificate: TlsCertificate
-    /**
-     * The name of the DTLS ciphersuite in use. See g_dtls_connection_get_ciphersuite_name().
-     */
-    readonly ciphersuite_name: string | null
     /**
      * The name of the DTLS ciphersuite in use. See g_dtls_connection_get_ciphersuite_name().
      */
@@ -10500,21 +10361,7 @@ export interface DtlsConnection extends DatagramBased {
      * The application-layer protocol negotiated during the TLS
      * handshake. See g_dtls_connection_get_negotiated_protocol().
      */
-    readonly negotiated_protocol: string | null
-    /**
-     * The application-layer protocol negotiated during the TLS
-     * handshake. See g_dtls_connection_get_negotiated_protocol().
-     */
     readonly negotiatedProtocol: string | null
-    /**
-     * The connection's peer's certificate, after the TLS handshake has
-     * completed or failed. Note in particular that this is not yet set
-     * during the emission of #GDtlsConnection::accept-certificate.
-     * 
-     * (You can watch for a #GObject::notify signal on this property to
-     * detect when a handshake has occurred.)
-     */
-    readonly peer_certificate: TlsCertificate
     /**
      * The connection's peer's certificate, after the TLS handshake has
      * completed or failed. Note in particular that this is not yet set
@@ -10540,28 +10387,7 @@ export interface DtlsConnection extends DatagramBased {
      * expired certificates, because this could potentially be the only
      * error flag set even if other problems exist with the certificate.
      */
-    readonly peer_certificate_errors: TlsCertificateFlags
-    /**
-     * The errors noticed while verifying
-     * #GDtlsConnection:peer-certificate. Normally this should be 0, but
-     * it may not be if #GDtlsClientConnection:validation-flags is not
-     * %G_TLS_CERTIFICATE_VALIDATE_ALL, or if
-     * #GDtlsConnection::accept-certificate overrode the default
-     * behavior.
-     * 
-     * GLib guarantees that if certificate verification fails, at least
-     * one error will be set, but it does not guarantee that all possible
-     * errors will be set. Accordingly, you may not safely decide to
-     * ignore any particular type of error. For example, it would be
-     * incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if you want to allow
-     * expired certificates, because this could potentially be the only
-     * error flag set even if other problems exist with the certificate.
-     */
     readonly peerCertificateErrors: TlsCertificateFlags
-    /**
-     * The DTLS protocol version in use. See g_dtls_connection_get_protocol_version().
-     */
-    readonly protocol_version: TlsProtocolVersion
     /**
      * The DTLS protocol version in use. See g_dtls_connection_get_protocol_version().
      */
@@ -10570,17 +10396,7 @@ export interface DtlsConnection extends DatagramBased {
      * The rehandshaking mode. See
      * g_dtls_connection_set_rehandshake_mode().
      */
-    rehandshake_mode: TlsRehandshakeMode
-    /**
-     * The rehandshaking mode. See
-     * g_dtls_connection_set_rehandshake_mode().
-     */
     rehandshakeMode: TlsRehandshakeMode
-    /**
-     * Whether or not proper TLS close notification is required.
-     * See g_dtls_connection_set_require_close_notify().
-     */
-    require_close_notify: boolean
     /**
      * Whether or not proper TLS close notification is required.
      * See g_dtls_connection_set_require_close_notify().
@@ -11179,12 +10995,6 @@ export module DtlsServerConnection {
          * before calling g_dtls_connection_handshake() if you want to
          * rehandshake with a different mode from the initial handshake.
          */
-        authentication_mode?: TlsAuthenticationMode | null
-        /**
-         * The #GTlsAuthenticationMode for the server. This can be changed
-         * before calling g_dtls_connection_handshake() if you want to
-         * rehandshake with a different mode from the initial handshake.
-         */
         authenticationMode?: TlsAuthenticationMode | null
     }
 
@@ -11194,12 +11004,6 @@ export interface DtlsServerConnection extends DatagramBased, DtlsConnection {
 
     // Own properties of Gio-2.0.Gio.DtlsServerConnection
 
-    /**
-     * The #GTlsAuthenticationMode for the server. This can be changed
-     * before calling g_dtls_connection_handshake() if you want to
-     * rehandshake with a different mode from the initial handshake.
-     */
-    authentication_mode: TlsAuthenticationMode
     /**
      * The #GTlsAuthenticationMode for the server. This can be changed
      * before calling g_dtls_connection_handshake() if you want to
@@ -11327,7 +11131,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11435,34 +11239,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
-
-    // Overloads of copy_async
-
-    /**
-     * Promisified version of {@link copy_async}
-     * 
-     * Copies the file `source` to the location specified by `destination`
-     * asynchronously. For details of the behaviour, see g_file_copy().
-     * 
-     * If `progress_callback` is not %NULL, then that function that will be called
-     * just like in g_file_copy(). The callback will run in the default main context
-     * of the thread calling g_file_copy_async() — the same context as `callback` is
-     * run in.
-     * 
-     * When the operation is finished, `callback` will be called. You can then call
-     * g_file_copy_finish() to get the result of the operation.
-     * @param destination destination #GFile
-     * @param flags set of #GFileCopyFlags
-     * @param io_priority the [I/O priority][io-priority] of the request
-     * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
-     * @returns A Promise of: a %TRUE on success, %FALSE on error.
-     */
-    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
+    copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null): void
     /**
      * Copies the file attributes from `source` to `destination`.
      * 
@@ -11522,7 +11300,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11595,7 +11373,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11708,7 +11486,7 @@ export interface File {
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     eject_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -11730,7 +11508,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     eject_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -11787,7 +11565,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     enumerate_children_async(attributes: string, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -11857,7 +11635,7 @@ export interface File {
      * get the result of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12082,7 +11860,7 @@ export interface File {
      * 
      * See g_file_load_bytes() for more information.
      * @param cancellable a #GCancellable or %NULL
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     load_bytes_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12394,7 +12172,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     mount_mountable(flags: MountMountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -12461,8 +12239,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param progress_callback #GFileProgressCallback   function for updates
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12484,7 +12262,7 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param progress_callback #GFileProgressCallback   function for updates
      * @returns A Promise of: %TRUE on successful file move, %FALSE otherwise.
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
@@ -12527,7 +12305,7 @@ export interface File {
      * the result of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     open_readwrite_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12710,7 +12488,7 @@ export interface File {
      * @param attributes an attribute query string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     query_filesystem_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12794,7 +12572,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     query_info_async(attributes: string, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12880,7 +12658,7 @@ export interface File {
      * of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -12973,7 +12751,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13124,7 +12902,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13284,7 +13062,7 @@ export interface File {
      * @param flags a #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback
      */
     set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13366,7 +13144,7 @@ export interface File {
      * @param display_name a string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     set_display_name_async(display_name: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -13509,7 +13287,7 @@ export interface File {
      * the result of the operation.
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     unmount_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13534,7 +13312,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     unmount_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13615,7 +13393,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_append_to_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13691,10 +13469,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    vfunc_copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
+    vfunc_copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null): void
     /**
      * Finishes copying the file started with g_file_copy_async().
      * @virtual 
@@ -13742,7 +13518,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_create_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13797,7 +13573,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_create_readwrite_async(flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13881,7 +13657,7 @@ export interface File {
      * @virtual 
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_eject_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13905,7 +13681,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_eject_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -13965,7 +13741,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     vfunc_enumerate_children_async(attributes: string, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14016,7 +13792,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_find_enclosing_mount_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14322,7 +14098,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_mount_mountable(flags: MountMountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14392,8 +14168,8 @@ export interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param progress_callback #GFileProgressCallback   function for updates
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14438,7 +14214,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_open_readwrite_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14542,7 +14318,7 @@ export interface File {
      * @param attributes an attribute query string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_query_filesystem_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14606,7 +14382,7 @@ export interface File {
      * @param flags a set of #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the   request is satisfied
      */
     vfunc_query_info_async(attributes: string, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14658,7 +14434,7 @@ export interface File {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14752,7 +14528,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_replace_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14799,7 +14575,7 @@ export interface File {
      * @param flags a set of #GFileCreateFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_replace_readwrite_async(etag: string | null, make_backup: boolean, flags: FileCreateFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14854,7 +14630,7 @@ export interface File {
      * @param flags a #GFileQueryInfoFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback
      */
     vfunc_set_attributes_async(info: FileInfo, flags: FileQueryInfoFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -14919,7 +14695,7 @@ export interface File {
      * @param display_name a string
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
      */
     vfunc_set_display_name_async(display_name: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -15031,7 +14807,7 @@ export interface File {
      * @virtual 
      * @param flags flags affecting the operation
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_unmount_mountable(flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -15058,7 +14834,7 @@ export interface File {
      * @param flags flags affecting the operation
      * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
      */
     vfunc_unmount_mountable_with_operation(flags: MountUnmountFlags, mount_operation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -15783,8 +15559,6 @@ export interface ListModel {
      * 
      * %NULL is never returned for an index that is smaller than the length
      * of the list.  See g_list_model_get_n_items().
-     * 
-     * The same #GObject instance may not appear more than once in a #GListModel.
      * @virtual 
      * @param position the position of the item to fetch
      * @returns the object at @position.
@@ -15935,7 +15709,7 @@ export interface LoadableIcon extends Icon {
      * version of this function, see g_loadable_icon_load().
      * @param size an integer.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -15977,7 +15751,7 @@ export interface LoadableIcon extends Icon {
      * @virtual 
      * @param size an integer.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the            request is satisfied
      */
     vfunc_load_async(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -16722,64 +16496,16 @@ export interface NetworkMonitor extends Initable {
      * 
      * See also #GNetworkMonitor::network-changed.
      */
-    readonly network_available: boolean
-    /**
-     * Whether the network is considered available. That is, whether the
-     * system has a default route for at least one of IPv4 or IPv6.
-     * 
-     * Real-world networks are of course much more complicated than
-     * this; the machine may be connected to a wifi hotspot that
-     * requires payment before allowing traffic through, or may be
-     * connected to a functioning router that has lost its own upstream
-     * connectivity. Some hosts might only be accessible when a VPN is
-     * active. Other hosts might only be accessible when the VPN is
-     * not active. Thus, it is best to use g_network_monitor_can_reach()
-     * or g_network_monitor_can_reach_async() to test for reachability
-     * on a host-by-host basis. (On the other hand, when the property is
-     * %FALSE, the application can reasonably expect that no remote
-     * hosts at all are reachable, and should indicate this to the user
-     * in its UI.)
-     * 
-     * See also #GNetworkMonitor::network-changed.
-     */
     readonly networkAvailable: boolean
     /**
-     * Whether the network is considered metered.
-     * 
-     * That is, whether the
+     * Whether the network is considered metered. That is, whether the
      * system has traffic flowing through the default connection that is
      * subject to limitations set by service providers. For example, traffic
      * might be billed by the amount of data transmitted, or there might be a
      * quota on the amount of traffic per month. This is typical with tethered
      * connections (3G and 4G) and in such situations, bandwidth intensive
      * applications may wish to avoid network activity where possible if it will
-     * cost the user money or use up their limited quota. Anything more than a
-     * few hundreds of kilobytes of data usage per hour should be avoided without
-     * asking permission from the user.
-     * 
-     * If more information is required about specific devices then the
-     * system network management API should be used instead (for example,
-     * NetworkManager or ConnMan).
-     * 
-     * If this information is not available then no networks will be
-     * marked as metered.
-     * 
-     * See also #GNetworkMonitor:network-available.
-     */
-    readonly network_metered: boolean
-    /**
-     * Whether the network is considered metered.
-     * 
-     * That is, whether the
-     * system has traffic flowing through the default connection that is
-     * subject to limitations set by service providers. For example, traffic
-     * might be billed by the amount of data transmitted, or there might be a
-     * quota on the amount of traffic per month. This is typical with tethered
-     * connections (3G and 4G) and in such situations, bandwidth intensive
-     * applications may wish to avoid network activity where possible if it will
-     * cost the user money or use up their limited quota. Anything more than a
-     * few hundreds of kilobytes of data usage per hour should be avoided without
-     * asking permission from the user.
+     * cost the user money or use up their limited quota.
      * 
      * If more information is required about specific devices then the
      * system network management API should be used instead (for example,
@@ -16829,7 +16555,7 @@ export interface NetworkMonitor extends Initable {
      * to get the result of the operation.
      * @param connectable a #GSocketConnectable
      * @param cancellable a #GCancellable, or %NULL
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
      */
     can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -16936,7 +16662,7 @@ export interface NetworkMonitor extends Initable {
      * @virtual 
      * @param connectable a #GSocketConnectable
      * @param cancellable a #GCancellable, or %NULL
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the     request is satisfied
      */
     vfunc_can_reach_async(connectable: SocketConnectable, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -17422,10 +17148,6 @@ export interface PowerProfileMonitor extends Initable {
 
     // Own properties of Gio-2.0.Gio.PowerProfileMonitor
 
-    /**
-     * Whether “Power Saver” mode is enabled on the system.
-     */
-    readonly power_saver_enabled: boolean
     /**
      * Whether “Power Saver” mode is enabled on the system.
      */
@@ -18393,47 +18115,6 @@ export module TlsClientConnection {
          * certificate we expect, which is useful for servers that serve
          * virtual hosts.
          */
-        server_identity?: SocketConnectable | null
-        /**
-         * SSL 3.0 is no longer supported. See
-         * g_tls_client_connection_set_use_ssl3() for details.
-         */
-        use_ssl3?: boolean | null
-        /**
-         * What steps to perform when validating a certificate received from
-         * a server. Server certificates that fail to validate in any of the
-         * ways indicated here will be rejected unless the application
-         * overrides the default via #GTlsConnection::accept-certificate.
-         * 
-         * GLib guarantees that if certificate verification fails, at least one
-         * flag will be set, but it does not guarantee that all possible flags
-         * will be set. Accordingly, you may not safely decide to ignore any
-         * particular type of error. For example, it would be incorrect to mask
-         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-         * because this could potentially be the only error flag set even if
-         * other problems exist with the certificate. Therefore, there is no
-         * safe way to use this property. This is not a horrible problem,
-         * though, because you should not be attempting to ignore validation
-         * errors anyway. If you really must ignore TLS certificate errors,
-         * connect to #GTlsConnection::accept-certificate.
-         */
-        validation_flags?: TlsCertificateFlags | null
-        /**
-         * A #GSocketConnectable describing the identity of the server that
-         * is expected on the other end of the connection.
-         * 
-         * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
-         * #GTlsClientConnection:validation-flags, this object will be used
-         * to determine the expected identify of the remote end of the
-         * connection; if #GTlsClientConnection:server-identity is not set,
-         * or does not match the identity presented by the server, then the
-         * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
-         * 
-         * In addition to its use in verifying the server certificate,
-         * this is also used to give a hint to the server about what
-         * certificate we expect, which is useful for servers that serve
-         * virtual hosts.
-         */
         serverIdentity?: SocketConnectable | null
         /**
          * SSL 3.0 is no longer supported. See
@@ -18476,34 +18157,7 @@ export interface TlsClientConnection extends TlsConnection {
      * Each item in the list is a #GByteArray which contains the complete
      * subject DN of the certificate authority.
      */
-    readonly accepted_cas: any[]
-    /**
-     * A list of the distinguished names of the Certificate Authorities
-     * that the server will accept client certificates signed by. If the
-     * server requests a client certificate during the handshake, then
-     * this property will be set after the handshake completes.
-     * 
-     * Each item in the list is a #GByteArray which contains the complete
-     * subject DN of the certificate authority.
-     */
     readonly acceptedCas: any[]
-    /**
-     * A #GSocketConnectable describing the identity of the server that
-     * is expected on the other end of the connection.
-     * 
-     * If the %G_TLS_CERTIFICATE_BAD_IDENTITY flag is set in
-     * #GTlsClientConnection:validation-flags, this object will be used
-     * to determine the expected identify of the remote end of the
-     * connection; if #GTlsClientConnection:server-identity is not set,
-     * or does not match the identity presented by the server, then the
-     * %G_TLS_CERTIFICATE_BAD_IDENTITY validation will fail.
-     * 
-     * In addition to its use in verifying the server certificate,
-     * this is also used to give a hint to the server about what
-     * certificate we expect, which is useful for servers that serve
-     * virtual hosts.
-     */
-    server_identity: SocketConnectable
     /**
      * A #GSocketConnectable describing the identity of the server that
      * is expected on the other end of the connection.
@@ -18525,31 +18179,7 @@ export interface TlsClientConnection extends TlsConnection {
      * SSL 3.0 is no longer supported. See
      * g_tls_client_connection_set_use_ssl3() for details.
      */
-    use_ssl3: boolean
-    /**
-     * SSL 3.0 is no longer supported. See
-     * g_tls_client_connection_set_use_ssl3() for details.
-     */
     useSsl3: boolean
-    /**
-     * What steps to perform when validating a certificate received from
-     * a server. Server certificates that fail to validate in any of the
-     * ways indicated here will be rejected unless the application
-     * overrides the default via #GTlsConnection::accept-certificate.
-     * 
-     * GLib guarantees that if certificate verification fails, at least one
-     * flag will be set, but it does not guarantee that all possible flags
-     * will be set. Accordingly, you may not safely decide to ignore any
-     * particular type of error. For example, it would be incorrect to mask
-     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-     * because this could potentially be the only error flag set even if
-     * other problems exist with the certificate. Therefore, there is no
-     * safe way to use this property. This is not a horrible problem,
-     * though, because you should not be attempting to ignore validation
-     * errors anyway. If you really must ignore TLS certificate errors,
-     * connect to #GTlsConnection::accept-certificate.
-     */
-    validation_flags: TlsCertificateFlags
     /**
      * What steps to perform when validating a certificate received from
      * a server. Server certificates that fail to validate in any of the
@@ -18882,12 +18512,6 @@ export module TlsServerConnection {
          * before calling g_tls_connection_handshake() if you want to
          * rehandshake with a different mode from the initial handshake.
          */
-        authentication_mode?: TlsAuthenticationMode | null
-        /**
-         * The #GTlsAuthenticationMode for the server. This can be changed
-         * before calling g_tls_connection_handshake() if you want to
-         * rehandshake with a different mode from the initial handshake.
-         */
         authenticationMode?: TlsAuthenticationMode | null
     }
 
@@ -18897,12 +18521,6 @@ export interface TlsServerConnection extends TlsConnection {
 
     // Own properties of Gio-2.0.Gio.TlsServerConnection
 
-    /**
-     * The #GTlsAuthenticationMode for the server. This can be changed
-     * before calling g_tls_connection_handshake() if you want to
-     * rehandshake with a different mode from the initial handshake.
-     */
-    authentication_mode: TlsAuthenticationMode
     /**
      * The #GTlsAuthenticationMode for the server. This can be changed
      * before calling g_tls_connection_handshake() if you want to
@@ -19710,7 +19328,7 @@ export interface AppLaunchContext {
      * 
      * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @param info a #GAppInfo
-     * @param files a #GList of #GFile objects
+     * @param files a #GList of of #GFile objects
      * @returns a startup notification ID for the application, or %NULL if     not supported.
      */
     get_startup_notify_id(info: AppInfo, files: File[]): string | null
@@ -19762,7 +19380,7 @@ export interface AppLaunchContext {
      * Support for the XDG Activation Protocol was added in GLib 2.76.
      * @virtual 
      * @param info a #GAppInfo
-     * @param files a #GList of #GFile objects
+     * @param files a #GList of of #GFile objects
      * @returns a startup notification ID for the application, or %NULL if     not supported.
      */
     vfunc_get_startup_notify_id(info: AppInfo, files: File[]): string | null
@@ -19889,13 +19507,9 @@ export module Application {
 
         // Own constructor properties of Gio-2.0.Gio.Application
 
-        action_group?: ActionGroup | null
-        application_id?: string | null
-        flags?: ApplicationFlags | null
-        inactivity_timeout?: number | null
-        resource_base_path?: string | null
         actionGroup?: ActionGroup | null
         applicationId?: string | null
+        flags?: ApplicationFlags | null
         inactivityTimeout?: number | null
         resourceBasePath?: string | null
     }
@@ -19906,28 +19520,17 @@ export interface Application extends ActionGroup, ActionMap {
 
     // Own properties of Gio-2.0.Gio.Application
 
-    action_group: ActionGroup
     actionGroup: ActionGroup
-    application_id: string | null
     applicationId: string | null
     flags: ApplicationFlags
-    inactivity_timeout: number
     inactivityTimeout: number
     /**
      * Whether the application is currently marked as busy through
      * g_application_mark_busy() or g_application_bind_busy_property().
      */
-    readonly is_busy: boolean
-    /**
-     * Whether the application is currently marked as busy through
-     * g_application_mark_busy() or g_application_bind_busy_property().
-     */
     readonly isBusy: boolean
-    readonly is_registered: boolean
     readonly isRegistered: boolean
-    readonly is_remote: boolean
     readonly isRemote: boolean
-    resource_base_path: string | null
     resourceBasePath: string | null
 
     // Owm methods of Gio-2.0.Gio.Application
@@ -20676,8 +20279,8 @@ export interface Application extends ActionGroup, ActionMap {
  * instance and g_application_run() promptly returns. See the code
  * examples below.
  * 
- * If used, the expected form of an application identifier is the
- * same as that of a
+ * If used, the expected form of an application identifier is the same as
+ * that of of a
  * [D-Bus well-known bus name](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-names-bus).
  * Examples include: `com.example.MyApp`, `org.example.internal_apps.Calculator`,
  * `org._7_zip.Archiver`.
@@ -20870,7 +20473,6 @@ export module ApplicationCommandLine {
 
         "arguments"?: GLib.Variant | null
         options?: GLib.Variant | null
-        platform_data?: GLib.Variant | null
         platformData?: GLib.Variant | null
     }
 
@@ -20881,10 +20483,8 @@ export interface ApplicationCommandLine {
     // Own properties of Gio-2.0.Gio.ApplicationCommandLine
 
     readonly "arguments": GLib.Variant
-    readonly is_remote: boolean
     readonly isRemote: boolean
     readonly options: GLib.Variant
-    readonly platform_data: GLib.Variant
     readonly platformData: GLib.Variant
 
     // Owm methods of Gio-2.0.Gio.ApplicationCommandLine
@@ -21274,7 +20874,6 @@ export module BufferedInputStream {
 
         // Own constructor properties of Gio-2.0.Gio.BufferedInputStream
 
-        buffer_size?: number | null
         bufferSize?: number | null
     }
 
@@ -21284,7 +20883,6 @@ export interface BufferedInputStream extends Seekable {
 
     // Own properties of Gio-2.0.Gio.BufferedInputStream
 
-    buffer_size: number
     bufferSize: number
 
     // Own fields of Gio-2.0.Gio.BufferedInputStream
@@ -21546,8 +21144,6 @@ export module BufferedOutputStream {
 
         // Own constructor properties of Gio-2.0.Gio.BufferedOutputStream
 
-        auto_grow?: boolean | null
-        buffer_size?: number | null
         autoGrow?: boolean | null
         bufferSize?: number | null
     }
@@ -21558,9 +21154,7 @@ export interface BufferedOutputStream extends Seekable {
 
     // Own properties of Gio-2.0.Gio.BufferedOutputStream
 
-    auto_grow: boolean
     autoGrow: boolean
-    buffer_size: number
     bufferSize: number
 
     // Own fields of Gio-2.0.Gio.BufferedOutputStream
@@ -22018,9 +21612,6 @@ export module CharsetConverter {
 
         // Own constructor properties of Gio-2.0.Gio.CharsetConverter
 
-        from_charset?: string | null
-        to_charset?: string | null
-        use_fallback?: boolean | null
         fromCharset?: string | null
         toCharset?: string | null
         useFallback?: boolean | null
@@ -22032,11 +21623,8 @@ export interface CharsetConverter extends Converter, Initable {
 
     // Own properties of Gio-2.0.Gio.CharsetConverter
 
-    readonly from_charset: string | null
     readonly fromCharset: string | null
-    readonly to_charset: string | null
     readonly toCharset: string | null
-    use_fallback: boolean
     useFallback: boolean
 
     // Owm methods of Gio-2.0.Gio.CharsetConverter
@@ -22665,7 +22253,7 @@ export module DBusConnection {
         /**
          * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
          */
-        authentication_observer?: DBusAuthObserver | null
+        authenticationObserver?: DBusAuthObserver | null
         /**
          * A boolean specifying whether the process will be terminated (by
          * calling `raise(SIGTERM)`) if the connection is closed by the
@@ -22674,7 +22262,7 @@ export module DBusConnection {
          * Note that #GDBusConnection objects returned by g_bus_get_finish()
          * and g_bus_get_sync() will (usually) have this property set to %TRUE.
          */
-        exit_on_close?: boolean | null
+        exitOnClose?: boolean | null
         /**
          * Flags from the #GDBusConnectionFlags enumeration.
          */
@@ -22715,19 +22303,6 @@ export module DBusConnection {
          * the stream directly.
          */
         stream?: IOStream | null
-        /**
-         * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
-         */
-        authenticationObserver?: DBusAuthObserver | null
-        /**
-         * A boolean specifying whether the process will be terminated (by
-         * calling `raise(SIGTERM)`) if the connection is closed by the
-         * remote peer.
-         * 
-         * Note that #GDBusConnection objects returned by g_bus_get_finish()
-         * and g_bus_get_sync() will (usually) have this property set to %TRUE.
-         */
-        exitOnClose?: boolean | null
     }
 
 }
@@ -22744,10 +22319,6 @@ export interface DBusConnection extends AsyncInitable, Initable {
     /**
      * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
      */
-    readonly authentication_observer: DBusAuthObserver
-    /**
-     * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
-     */
     readonly authenticationObserver: DBusAuthObserver
     /**
      * Flags from the #GDBusCapabilityFlags enumeration
@@ -22758,15 +22329,6 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * A boolean specifying whether the connection has been closed.
      */
     readonly closed: boolean
-    /**
-     * A boolean specifying whether the process will be terminated (by
-     * calling `raise(SIGTERM)`) if the connection is closed by the
-     * remote peer.
-     * 
-     * Note that #GDBusConnection objects returned by g_bus_get_finish()
-     * and g_bus_get_sync() will (usually) have this property set to %TRUE.
-     */
-    exit_on_close: boolean
     /**
      * A boolean specifying whether the process will be terminated (by
      * calling `raise(SIGTERM)`) if the connection is closed by the
@@ -22816,11 +22378,6 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * the stream directly.
      */
     readonly stream: IOStream
-    /**
-     * The unique name as assigned by the message bus or %NULL if the
-     * connection is not open or not a message bus connection.
-     */
-    readonly unique_name: string | null
     /**
      * The unique name as assigned by the message bus or %NULL if the
      * connection is not open or not a message bus connection.
@@ -23820,10 +23377,6 @@ export module DBusInterfaceSkeleton {
         /**
          * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
          */
-        g_flags?: DBusInterfaceSkeletonFlags | null
-        /**
-         * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
-         */
         gFlags?: DBusInterfaceSkeletonFlags | null
     }
 
@@ -23833,10 +23386,6 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
 
     // Own properties of Gio-2.0.Gio.DBusInterfaceSkeleton
 
-    /**
-     * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
-     */
-    g_flags: DBusInterfaceSkeletonFlags
     /**
      * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
      */
@@ -23901,13 +23450,6 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
      */
     get_properties(): GLib.Variant
     /**
-     * Gets the interface vtable for the D-Bus interface implemented by
-     * `interface_`. The returned function pointers should expect `interface_`
-     * itself to be passed as `user_data`.
-     * @returns the vtable of the D-Bus interface implemented by the skeleton
-     */
-    get_vtable(): DBusInterfaceVTable
-    /**
      * Checks if `interface_` is exported on `connection`.
      * @param connection A #GDBusConnection.
      * @returns %TRUE if @interface_ is exported on @connection, %FALSE otherwise.
@@ -23962,14 +23504,6 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
      * @returns A #GVariant of type ['a{sv}'][G-VARIANT-TYPE-VARDICT:CAPS]. Free with g_variant_unref().
      */
     vfunc_get_properties(): GLib.Variant
-    /**
-     * Gets the interface vtable for the D-Bus interface implemented by
-     * `interface_`. The returned function pointers should expect `interface_`
-     * itself to be passed as `user_data`.
-     * @virtual 
-     * @returns the vtable of the D-Bus interface implemented by the skeleton
-     */
-    vfunc_get_vtable(): DBusInterfaceVTable
 
     // Own signals of Gio-2.0.Gio.DBusInterfaceSkeleton
 
@@ -24679,7 +24213,7 @@ export module DBusObjectManagerClient {
          * #GDBusConnection obtained by calling g_bus_get() with the value
          * of this property.
          */
-        bus_type?: BusType | null
+        busType?: BusType | null
         /**
          * The #GDBusConnection to use.
          */
@@ -24688,34 +24222,6 @@ export module DBusObjectManagerClient {
          * Flags from the #GDBusObjectManagerClientFlags enumeration.
          */
         flags?: DBusObjectManagerClientFlags | null
-        /**
-         * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
-         */
-        get_proxy_type_destroy_notify?: any | null
-        /**
-         * The #GDBusProxyTypeFunc to use when determining what #GType to
-         * use for interface proxies or %NULL.
-         */
-        get_proxy_type_func?: any | null
-        /**
-         * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
-         */
-        get_proxy_type_user_data?: any | null
-        /**
-         * The well-known name or unique name that the manager is for.
-         */
-        name?: string | null
-        /**
-         * The object path the manager is for.
-         */
-        object_path?: string | null
-        /**
-         * If this property is not %G_BUS_TYPE_NONE, then
-         * #GDBusObjectManagerClient:connection must be %NULL and will be set to the
-         * #GDBusConnection obtained by calling g_bus_get() with the value
-         * of this property.
-         */
-        busType?: BusType | null
         /**
          * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
          */
@@ -24729,6 +24235,10 @@ export module DBusObjectManagerClient {
          * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
          */
         getProxyTypeUserData?: any | null
+        /**
+         * The well-known name or unique name that the manager is for.
+         */
+        name?: string | null
         /**
          * The object path the manager is for.
          */
@@ -24747,13 +24257,6 @@ export interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManage
      * #GDBusConnection obtained by calling g_bus_get() with the value
      * of this property.
      */
-    readonly bus_type: BusType
-    /**
-     * If this property is not %G_BUS_TYPE_NONE, then
-     * #GDBusObjectManagerClient:connection must be %NULL and will be set to the
-     * #GDBusConnection obtained by calling g_bus_get() with the value
-     * of this property.
-     */
     readonly busType: BusType
     /**
      * The #GDBusConnection to use.
@@ -24766,25 +24269,12 @@ export interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManage
     /**
      * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
      */
-    readonly get_proxy_type_destroy_notify: any
-    /**
-     * A #GDestroyNotify for the #gpointer user_data in #GDBusObjectManagerClient:get-proxy-type-user-data.
-     */
     readonly getProxyTypeDestroyNotify: any
     /**
      * The #GDBusProxyTypeFunc to use when determining what #GType to
      * use for interface proxies or %NULL.
      */
-    readonly get_proxy_type_func: any
-    /**
-     * The #GDBusProxyTypeFunc to use when determining what #GType to
-     * use for interface proxies or %NULL.
-     */
     readonly getProxyTypeFunc: any
-    /**
-     * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
-     */
-    readonly get_proxy_type_user_data: any
     /**
      * The #gpointer user_data to pass to #GDBusObjectManagerClient:get-proxy-type-func.
      */
@@ -24798,17 +24288,7 @@ export interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManage
      * no-one is currently owning the name. Connect to the
      * #GObject::notify signal to track changes to this property.
      */
-    readonly name_owner: string | null
-    /**
-     * The unique name that owns #GDBusObjectManagerClient:name or %NULL if
-     * no-one is currently owning the name. Connect to the
-     * #GObject::notify signal to track changes to this property.
-     */
     readonly nameOwner: string | null
-    /**
-     * The object path the manager is for.
-     */
-    readonly object_path: string | null
     /**
      * The object path the manager is for.
      */
@@ -25080,10 +24560,6 @@ export module DBusObjectManagerServer {
         /**
          * The object path to register the manager object at.
          */
-        object_path?: string | null
-        /**
-         * The object path to register the manager object at.
-         */
         objectPath?: string | null
     }
 
@@ -25097,10 +24573,6 @@ export interface DBusObjectManagerServer extends DBusObjectManager {
      * The #GDBusConnection to export objects on.
      */
     connection: DBusConnection
-    /**
-     * The object path to register the manager object at.
-     */
-    readonly object_path: string | null
     /**
      * The object path to register the manager object at.
      */
@@ -25247,14 +24719,6 @@ export module DBusObjectProxy {
         /**
          * The connection of the proxy.
          */
-        g_connection?: DBusConnection | null
-        /**
-         * The object path of the proxy.
-         */
-        g_object_path?: string | null
-        /**
-         * The connection of the proxy.
-         */
         gConnection?: DBusConnection | null
         /**
          * The object path of the proxy.
@@ -25271,15 +24735,7 @@ export interface DBusObjectProxy extends DBusObject {
     /**
      * The connection of the proxy.
      */
-    readonly g_connection: DBusConnection
-    /**
-     * The connection of the proxy.
-     */
     readonly gConnection: DBusConnection
-    /**
-     * The object path of the proxy.
-     */
-    readonly g_object_path: string | null
     /**
      * The object path of the proxy.
      */
@@ -25366,10 +24822,6 @@ export module DBusObjectSkeleton {
         /**
          * The object path where the object is exported.
          */
-        g_object_path?: string | null
-        /**
-         * The object path where the object is exported.
-         */
         gObjectPath?: string | null
     }
 
@@ -25379,10 +24831,6 @@ export interface DBusObjectSkeleton extends DBusObject {
 
     // Own properties of Gio-2.0.Gio.DBusObjectSkeleton
 
-    /**
-     * The object path where the object is exported.
-     */
-    g_object_path: string | null
     /**
      * The object path where the object is exported.
      */
@@ -25513,71 +24961,6 @@ export module DBusProxy {
          * #GDBusConnection obtained by calling g_bus_get() with the value
          * of this property.
          */
-        g_bus_type?: BusType | null
-        /**
-         * The #GDBusConnection the proxy is for.
-         */
-        g_connection?: DBusConnection | null
-        /**
-         * The timeout to use if -1 (specifying default timeout) is passed
-         * as `timeout_msec` in the g_dbus_proxy_call() and
-         * g_dbus_proxy_call_sync() functions.
-         * 
-         * This allows applications to set a proxy-wide timeout for all
-         * remote method invocations on the proxy. If this property is -1,
-         * the default timeout (typically 25 seconds) is used. If set to
-         * %G_MAXINT, then no timeout is used.
-         */
-        g_default_timeout?: number | null
-        /**
-         * Flags from the #GDBusProxyFlags enumeration.
-         */
-        g_flags?: DBusProxyFlags | null
-        /**
-         * Ensure that interactions with this proxy conform to the given
-         * interface. This is mainly to ensure that malformed data received
-         * from the other peer is ignored. The given #GDBusInterfaceInfo is
-         * said to be the "expected interface".
-         * 
-         * The checks performed are:
-         * - When completing a method call, if the type signature of
-         *   the reply message isn't what's expected, the reply is
-         *   discarded and the #GError is set to %G_IO_ERROR_INVALID_ARGUMENT.
-         * 
-         * - Received signals that have a type signature mismatch are dropped and
-         *   a warning is logged via g_warning().
-         * 
-         * - Properties received via the initial `GetAll()` call or via the
-         *   `::PropertiesChanged` signal (on the
-         *   [org.freedesktop.DBus.Properties](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties)
-         *   interface) or set using g_dbus_proxy_set_cached_property()
-         *   with a type signature mismatch are ignored and a warning is
-         *   logged via g_warning().
-         * 
-         * Note that these checks are never done on methods, signals and
-         * properties that are not referenced in the given
-         * #GDBusInterfaceInfo, since extending a D-Bus interface on the
-         * service-side is not considered an ABI break.
-         */
-        g_interface_info?: DBusInterfaceInfo | null
-        /**
-         * The D-Bus interface name the proxy is for.
-         */
-        g_interface_name?: string | null
-        /**
-         * The well-known or unique name that the proxy is for.
-         */
-        g_name?: string | null
-        /**
-         * The object path the proxy is for.
-         */
-        g_object_path?: string | null
-        /**
-         * If this property is not %G_BUS_TYPE_NONE, then
-         * #GDBusProxy:g-connection must be %NULL and will be set to the
-         * #GDBusConnection obtained by calling g_bus_get() with the value
-         * of this property.
-         */
         gBusType?: BusType | null
         /**
          * The #GDBusConnection the proxy is for.
@@ -25651,18 +25034,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * #GDBusConnection obtained by calling g_bus_get() with the value
      * of this property.
      */
-    readonly g_bus_type: BusType
-    /**
-     * If this property is not %G_BUS_TYPE_NONE, then
-     * #GDBusProxy:g-connection must be %NULL and will be set to the
-     * #GDBusConnection obtained by calling g_bus_get() with the value
-     * of this property.
-     */
     readonly gBusType: BusType
-    /**
-     * The #GDBusConnection the proxy is for.
-     */
-    readonly g_connection: DBusConnection
     /**
      * The #GDBusConnection the proxy is for.
      */
@@ -25677,22 +25049,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * the default timeout (typically 25 seconds) is used. If set to
      * %G_MAXINT, then no timeout is used.
      */
-    g_default_timeout: number
-    /**
-     * The timeout to use if -1 (specifying default timeout) is passed
-     * as `timeout_msec` in the g_dbus_proxy_call() and
-     * g_dbus_proxy_call_sync() functions.
-     * 
-     * This allows applications to set a proxy-wide timeout for all
-     * remote method invocations on the proxy. If this property is -1,
-     * the default timeout (typically 25 seconds) is used. If set to
-     * %G_MAXINT, then no timeout is used.
-     */
     gDefaultTimeout: number
-    /**
-     * Flags from the #GDBusProxyFlags enumeration.
-     */
-    readonly g_flags: DBusProxyFlags
     /**
      * Flags from the #GDBusProxyFlags enumeration.
      */
@@ -25723,46 +25080,11 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * #GDBusInterfaceInfo, since extending a D-Bus interface on the
      * service-side is not considered an ABI break.
      */
-    g_interface_info: DBusInterfaceInfo
-    /**
-     * Ensure that interactions with this proxy conform to the given
-     * interface. This is mainly to ensure that malformed data received
-     * from the other peer is ignored. The given #GDBusInterfaceInfo is
-     * said to be the "expected interface".
-     * 
-     * The checks performed are:
-     * - When completing a method call, if the type signature of
-     *   the reply message isn't what's expected, the reply is
-     *   discarded and the #GError is set to %G_IO_ERROR_INVALID_ARGUMENT.
-     * 
-     * - Received signals that have a type signature mismatch are dropped and
-     *   a warning is logged via g_warning().
-     * 
-     * - Properties received via the initial `GetAll()` call or via the
-     *   `::PropertiesChanged` signal (on the
-     *   [org.freedesktop.DBus.Properties](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties)
-     *   interface) or set using g_dbus_proxy_set_cached_property()
-     *   with a type signature mismatch are ignored and a warning is
-     *   logged via g_warning().
-     * 
-     * Note that these checks are never done on methods, signals and
-     * properties that are not referenced in the given
-     * #GDBusInterfaceInfo, since extending a D-Bus interface on the
-     * service-side is not considered an ABI break.
-     */
     gInterfaceInfo: DBusInterfaceInfo
     /**
      * The D-Bus interface name the proxy is for.
      */
-    readonly g_interface_name: string | null
-    /**
-     * The D-Bus interface name the proxy is for.
-     */
     readonly gInterfaceName: string | null
-    /**
-     * The well-known or unique name that the proxy is for.
-     */
-    readonly g_name: string | null
     /**
      * The well-known or unique name that the proxy is for.
      */
@@ -25772,17 +25094,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * currently owns that name. You may connect to #GObject::notify signal to
      * track changes to this property.
      */
-    readonly g_name_owner: string | null
-    /**
-     * The unique name that owns #GDBusProxy:g-name or %NULL if no-one
-     * currently owns that name. You may connect to #GObject::notify signal to
-     * track changes to this property.
-     */
     readonly gNameOwner: string | null
-    /**
-     * The object path the proxy is for.
-     */
-    readonly g_object_path: string | null
     /**
      * The object path the proxy is for.
      */
@@ -26304,7 +25616,7 @@ export module DBusServer {
         /**
          * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
          */
-        authentication_observer?: DBusAuthObserver | null
+        authenticationObserver?: DBusAuthObserver | null
         /**
          * Flags from the #GDBusServerFlags enumeration.
          */
@@ -26315,10 +25627,6 @@ export module DBusServer {
          * See #GDBusConnection:guid for more details.
          */
         guid?: string | null
-        /**
-         * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
-         */
-        authenticationObserver?: DBusAuthObserver | null
     }
 
 }
@@ -26338,15 +25646,7 @@ export interface DBusServer extends Initable {
     /**
      * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
      */
-    readonly authentication_observer: DBusAuthObserver
-    /**
-     * A #GDBusAuthObserver object to assist in the authentication process or %NULL.
-     */
     readonly authenticationObserver: DBusAuthObserver
-    /**
-     * The D-Bus address that clients can use.
-     */
-    readonly client_address: string | null
     /**
      * The D-Bus address that clients can use.
      */
@@ -26506,17 +25806,6 @@ export module DataInputStream {
          * is used when reading multi-byte entities (such as integers)
          * from the stream.
          */
-        byte_order?: DataStreamByteOrder | null
-        /**
-         * The :newline-type property determines what is considered
-         * as a line ending when reading complete lines from the stream.
-         */
-        newline_type?: DataStreamNewlineType | null
-        /**
-         * The :byte-order property determines the byte ordering that
-         * is used when reading multi-byte entities (such as integers)
-         * from the stream.
-         */
         byteOrder?: DataStreamByteOrder | null
         /**
          * The :newline-type property determines what is considered
@@ -26536,18 +25825,7 @@ export interface DataInputStream extends Seekable {
      * is used when reading multi-byte entities (such as integers)
      * from the stream.
      */
-    byte_order: DataStreamByteOrder
-    /**
-     * The :byte-order property determines the byte ordering that
-     * is used when reading multi-byte entities (such as integers)
-     * from the stream.
-     */
     byteOrder: DataStreamByteOrder
-    /**
-     * The :newline-type property determines what is considered
-     * as a line ending when reading complete lines from the stream.
-     */
-    newline_type: DataStreamNewlineType
     /**
      * The :newline-type property determines what is considered
      * as a line ending when reading complete lines from the stream.
@@ -26961,11 +26239,6 @@ export module DataOutputStream {
          * Determines the byte ordering that is used when writing
          * multi-byte entities (such as integers) to the stream.
          */
-        byte_order?: DataStreamByteOrder | null
-        /**
-         * Determines the byte ordering that is used when writing
-         * multi-byte entities (such as integers) to the stream.
-         */
         byteOrder?: DataStreamByteOrder | null
     }
 
@@ -26975,11 +26248,6 @@ export interface DataOutputStream extends Seekable {
 
     // Own properties of Gio-2.0.Gio.DataOutputStream
 
-    /**
-     * Determines the byte ordering that is used when writing
-     * multi-byte entities (such as integers) to the stream.
-     */
-    byte_order: DataStreamByteOrder
     /**
      * Determines the byte ordering that is used when writing
      * multi-byte entities (such as integers) to the stream.
@@ -27913,7 +27181,7 @@ export interface FileEnumerator {
      * g_file_enumerator_close_finish().
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -28113,7 +27381,7 @@ export interface FileEnumerator {
      * @param num_files the number of file info objects to request
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -28218,7 +27486,7 @@ export interface FileEnumerator {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -28326,7 +27594,7 @@ export interface FileEnumerator {
      * @param num_files the number of file info objects to request
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_next_files_async(num_files: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -28447,7 +27715,7 @@ export interface FileIOStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     query_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -28523,7 +27791,7 @@ export interface FileIOStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][gio-GIOScheduler] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_query_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -28737,17 +28005,6 @@ export interface FileInfo {
      * @returns %TRUE if @info has an attribute named @attribute,      %FALSE otherwise.
      */
     get_attribute_data(attribute: string): [ /* returnType */ boolean, /* type */ FileAttributeType, /* value_pp */ any, /* status */ FileAttributeStatus ]
-    /**
-     * Gets the value of a byte string attribute as a file path.
-     * 
-     * If the attribute does not contain a byte string, `NULL` will be returned.
-     * 
-     * This function is meant to be used by language bindings that have specific
-     * handling for Unix paths.
-     * @param attribute a file attribute key.
-     * @returns the contents of the @attribute value as a file path, or %NULL otherwise.
-     */
-    get_attribute_file_path(attribute: string): string | null
     /**
      * Gets a signed 32-bit integer contained within the attribute. If the
      * attribute does not contain a signed 32-bit integer, or is invalid,
@@ -29029,16 +28286,6 @@ export interface FileInfo {
      * @param attr_value a byte string.
      */
     set_attribute_byte_string(attribute: string, attr_value: string): void
-    /**
-     * Sets the `attribute` to contain the given `attr_value,`
-     * if possible.
-     * 
-     * This function is meant to be used by language bindings that have specific
-     * handling for Unix paths.
-     * @param attribute a file attribute key.
-     * @param attr_value a file path.
-     */
-    set_attribute_file_path(attribute: string, attr_value: string): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
@@ -29325,7 +28572,7 @@ export interface FileInputStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     query_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -29389,7 +28636,7 @@ export interface FileInputStream extends Seekable {
      * @param attributes a file attribute query string.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_query_info_async(attributes: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -29453,7 +28700,6 @@ export module FileMonitor {
 
         // Own constructor properties of Gio-2.0.Gio.FileMonitor
 
-        rate_limit?: number | null
         rateLimit?: number | null
     }
 
@@ -29464,7 +28710,6 @@ export interface FileMonitor {
     // Own properties of Gio-2.0.Gio.FileMonitor
 
     readonly cancelled: boolean
-    rate_limit: number
     rateLimit: number
 
     // Own fields of Gio-2.0.Gio.FileMonitor
@@ -29848,8 +29093,6 @@ export module FilterInputStream {
 
         // Own constructor properties of Gio-2.0.Gio.FilterInputStream
 
-        base_stream?: InputStream | null
-        close_base_stream?: boolean | null
         baseStream?: InputStream | null
         closeBaseStream?: boolean | null
     }
@@ -29861,7 +29104,6 @@ export interface FilterInputStream {
     // Own properties of Gio-2.0.Gio.FilterInputStream
 
     readonly baseStream: InputStream
-    close_base_stream: boolean
     closeBaseStream: boolean
 
     // Own fields of Gio-2.0.Gio.FilterInputStream
@@ -29930,8 +29172,6 @@ export module FilterOutputStream {
 
         // Own constructor properties of Gio-2.0.Gio.FilterOutputStream
 
-        base_stream?: OutputStream | null
-        close_base_stream?: boolean | null
         baseStream?: OutputStream | null
         closeBaseStream?: boolean | null
     }
@@ -29943,7 +29183,6 @@ export interface FilterOutputStream {
     // Own properties of Gio-2.0.Gio.FilterOutputStream
 
     readonly baseStream: OutputStream
-    readonly close_base_stream: boolean
     readonly closeBaseStream: boolean
 
     // Own fields of Gio-2.0.Gio.FilterOutputStream
@@ -30133,9 +29372,7 @@ export interface IOStream {
     // Own properties of Gio-2.0.Gio.IOStream
 
     readonly closed: boolean
-    readonly input_stream: InputStream
     readonly inputStream: InputStream
-    readonly output_stream: OutputStream
     readonly outputStream: OutputStream
 
     // Own fields of Gio-2.0.Gio.IOStream
@@ -30199,7 +29436,7 @@ export interface IOStream {
      * classes. However, if you override one you must override all.
      * @param io_priority the io priority of the request
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -30270,7 +29507,7 @@ export interface IOStream {
      * @param flags a set of #GIOStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback.
      */
     splice_async(stream2: IOStream, flags: IOStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -30290,7 +29527,7 @@ export interface IOStream {
      * @virtual 
      * @param io_priority the io priority of the request
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -30425,17 +29662,7 @@ export interface InetAddress {
      * Whether this is the "any" address for its family.
      * See g_inet_address_get_is_any().
      */
-    readonly is_any: boolean
-    /**
-     * Whether this is the "any" address for its family.
-     * See g_inet_address_get_is_any().
-     */
     readonly isAny: boolean
-    /**
-     * Whether this is a link-local address.
-     * See g_inet_address_get_is_link_local().
-     */
-    readonly is_link_local: boolean
     /**
      * Whether this is a link-local address.
      * See g_inet_address_get_is_link_local().
@@ -30445,17 +29672,7 @@ export interface InetAddress {
      * Whether this is the loopback address for its family.
      * See g_inet_address_get_is_loopback().
      */
-    readonly is_loopback: boolean
-    /**
-     * Whether this is the loopback address for its family.
-     * See g_inet_address_get_is_loopback().
-     */
     readonly isLoopback: boolean
-    /**
-     * Whether this is a global multicast address.
-     * See g_inet_address_get_is_mc_global().
-     */
-    readonly is_mc_global: boolean
     /**
      * Whether this is a global multicast address.
      * See g_inet_address_get_is_mc_global().
@@ -30465,17 +29682,7 @@ export interface InetAddress {
      * Whether this is a link-local multicast address.
      * See g_inet_address_get_is_mc_link_local().
      */
-    readonly is_mc_link_local: boolean
-    /**
-     * Whether this is a link-local multicast address.
-     * See g_inet_address_get_is_mc_link_local().
-     */
     readonly isMcLinkLocal: boolean
-    /**
-     * Whether this is a node-local multicast address.
-     * See g_inet_address_get_is_mc_node_local().
-     */
-    readonly is_mc_node_local: boolean
     /**
      * Whether this is a node-local multicast address.
      * See g_inet_address_get_is_mc_node_local().
@@ -30485,17 +29692,7 @@ export interface InetAddress {
      * Whether this is an organization-local multicast address.
      * See g_inet_address_get_is_mc_org_local().
      */
-    readonly is_mc_org_local: boolean
-    /**
-     * Whether this is an organization-local multicast address.
-     * See g_inet_address_get_is_mc_org_local().
-     */
     readonly isMcOrgLocal: boolean
-    /**
-     * Whether this is a site-local multicast address.
-     * See g_inet_address_get_is_mc_site_local().
-     */
-    readonly is_mc_site_local: boolean
     /**
      * Whether this is a site-local multicast address.
      * See g_inet_address_get_is_mc_site_local().
@@ -30505,17 +29702,7 @@ export interface InetAddress {
      * Whether this is a multicast address.
      * See g_inet_address_get_is_multicast().
      */
-    readonly is_multicast: boolean
-    /**
-     * Whether this is a multicast address.
-     * See g_inet_address_get_is_multicast().
-     */
     readonly isMulticast: boolean
-    /**
-     * Whether this is a site-local address.
-     * See g_inet_address_get_is_loopback().
-     */
-    readonly is_site_local: boolean
     /**
      * Whether this is a site-local address.
      * See g_inet_address_get_is_loopback().
@@ -30857,7 +30044,6 @@ export module InetSocketAddress {
          */
         flowinfo?: number | null
         port?: number | null
-        scope_id?: number | null
         scopeId?: number | null
     }
 
@@ -30873,7 +30059,6 @@ export interface InetSocketAddress extends SocketConnectable {
      */
     readonly flowinfo: number
     readonly port: number
-    readonly scope_id: number
     readonly scopeId: number
 
     // Own fields of Gio-2.0.Gio.InetSocketAddress
@@ -31035,7 +30220,7 @@ export interface InputStream {
      * override one you must override all.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -31138,7 +30323,7 @@ export interface InputStream {
      * priority. Default priority is %G_PRIORITY_DEFAULT.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     read_all_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
 
@@ -31202,7 +30387,7 @@ export interface InputStream {
      * override one you must override all.
      * @param io_priority the [I/O priority][io-priority] of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array
 
@@ -31292,7 +30477,7 @@ export interface InputStream {
      * @param count the number of bytes that will be read from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     read_bytes_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -31393,7 +30578,7 @@ export interface InputStream {
      * @param count the number of bytes that will be skipped from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     skip_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -31454,7 +30639,7 @@ export interface InputStream {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -31492,7 +30677,7 @@ export interface InputStream {
      * @virtual 
      * @param io_priority the [I/O priority][io-priority] of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_read_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): /* buffer */ Uint8Array | null
     /**
@@ -31552,7 +30737,7 @@ export interface InputStream {
      * @param count the number of bytes that will be skipped from the stream
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_skip_async(count: number, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -31583,7 +30768,7 @@ export interface InputStream {
  * streaming APIs.
  * 
  * All of these functions have async variants too.
- * @interface 
+ * @class 
  */
 export class InputStream extends GObject.Object {
 
@@ -31610,11 +30795,6 @@ export module ListStore {
          * The type of items contained in this list store. Items must be
          * subclasses of #GObject.
          */
-        item_type?: GObject.GType | null
-        /**
-         * The type of items contained in this list store. Items must be
-         * subclasses of #GObject.
-         */
         itemType?: GObject.GType | null
     }
 
@@ -31628,16 +30808,7 @@ export interface ListStore<A extends GObject.Object = GObject.Object> extends Li
      * The type of items contained in this list store. Items must be
      * subclasses of #GObject.
      */
-    readonly item_type: GObject.GType
-    /**
-     * The type of items contained in this list store. Items must be
-     * subclasses of #GObject.
-     */
     readonly itemType: GObject.GType
-    /**
-     * The number of items contained in this list store.
-     */
-    readonly n_items: number
     /**
      * The number of items contained in this list store.
      */
@@ -31923,10 +31094,6 @@ export interface MemoryOutputStream extends PollableOutputStream, Seekable {
      * Pointer to buffer where data will be written.
      */
     readonly data: any
-    /**
-     * Size of data written to the buffer.
-     */
-    readonly data_size: number
     /**
      * Size of data written to the buffer.
      */
@@ -33209,38 +32376,6 @@ export module MountOperation {
          * Whether the device to be unlocked is a TCRYPT hidden volume.
          * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
          */
-        is_tcrypt_hidden_volume?: boolean | null
-        /**
-         * Whether the device to be unlocked is a TCRYPT system volume.
-         * In this context, a system volume is a volume with a bootloader
-         * and operating system installed. This is only supported for Windows
-         * operating systems. For further documentation, see
-         * [the VeraCrypt documentation](https://www.veracrypt.fr/en/System%20Encryption.html).
-         */
-        is_tcrypt_system_volume?: boolean | null
-        /**
-         * The password that is used for authentication when carrying out
-         * the mount operation.
-         */
-        password?: string | null
-        /**
-         * Determines if and how the password information should be saved.
-         */
-        password_save?: PasswordSave | null
-        /**
-         * The VeraCrypt PIM value, when unlocking a VeraCrypt volume. See
-         * [the VeraCrypt documentation](https://www.veracrypt.fr/en/Personal%20Iterations%20Multiplier%20(PIM).html).
-         */
-        pim?: number | null
-        /**
-         * The user name that is used for authentication when carrying out
-         * the mount operation.
-         */
-        username?: string | null
-        /**
-         * Whether the device to be unlocked is a TCRYPT hidden volume.
-         * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
-         */
         isTcryptHiddenVolume?: boolean | null
         /**
          * Whether the device to be unlocked is a TCRYPT system volume.
@@ -33251,9 +32386,24 @@ export module MountOperation {
          */
         isTcryptSystemVolume?: boolean | null
         /**
+         * The password that is used for authentication when carrying out
+         * the mount operation.
+         */
+        password?: string | null
+        /**
          * Determines if and how the password information should be saved.
          */
         passwordSave?: PasswordSave | null
+        /**
+         * The VeraCrypt PIM value, when unlocking a VeraCrypt volume. See
+         * [the VeraCrypt documentation](https://www.veracrypt.fr/en/Personal%20Iterations%20Multiplier%20(PIM).html).
+         */
+        pim?: number | null
+        /**
+         * The user name that is used for authentication when carrying out
+         * the mount operation.
+         */
+        username?: string | null
     }
 
 }
@@ -33279,20 +32429,7 @@ export interface MountOperation {
      * Whether the device to be unlocked is a TCRYPT hidden volume.
      * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
      */
-    is_tcrypt_hidden_volume: boolean
-    /**
-     * Whether the device to be unlocked is a TCRYPT hidden volume.
-     * See [the VeraCrypt documentation](https://www.veracrypt.fr/en/Hidden%20Volume.html).
-     */
     isTcryptHiddenVolume: boolean
-    /**
-     * Whether the device to be unlocked is a TCRYPT system volume.
-     * In this context, a system volume is a volume with a bootloader
-     * and operating system installed. This is only supported for Windows
-     * operating systems. For further documentation, see
-     * [the VeraCrypt documentation](https://www.veracrypt.fr/en/System%20Encryption.html).
-     */
-    is_tcrypt_system_volume: boolean
     /**
      * Whether the device to be unlocked is a TCRYPT system volume.
      * In this context, a system volume is a volume with a bootloader
@@ -33306,10 +32443,6 @@ export interface MountOperation {
      * the mount operation.
      */
     password: string | null
-    /**
-     * Determines if and how the password information should be saved.
-     */
-    password_save: PasswordSave
     /**
      * Determines if and how the password information should be saved.
      */
@@ -34226,7 +33359,7 @@ export interface OutputStream {
      * classes. However, if you override one you must override all.
      * @param io_priority the io priority of the request.
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34280,7 +33413,7 @@ export interface OutputStream {
      * result of the operation.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     flush_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34352,7 +33485,7 @@ export interface OutputStream {
      * @param flags a set of #GOutputStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback.
      */
     splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34451,7 +33584,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write
      * @param io_priority the io priority of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     write_all_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34535,7 +33668,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     write_async(buffer: Uint8Array, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34619,7 +33752,7 @@ export interface OutputStream {
      * @param bytes The bytes to write
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     write_bytes_async(bytes: GLib.Bytes, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34736,7 +33869,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     writev_all_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34816,7 +33949,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -34884,7 +34017,7 @@ export interface OutputStream {
      * @virtual 
      * @param io_priority the io priority of the request.
      * @param cancellable optional cancellable object
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_close_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -34921,7 +34054,7 @@ export interface OutputStream {
      * @virtual 
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     vfunc_flush_async(io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -34953,7 +34086,7 @@ export interface OutputStream {
      * @param flags a set of #GOutputStreamSpliceFlags.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback.
      */
     vfunc_splice_async(source: InputStream, flags: OutputStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -35003,7 +34136,7 @@ export interface OutputStream {
      * @param buffer the buffer containing the data to write.
      * @param io_priority the io priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_write_async(buffer: Uint8Array | null, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -35075,7 +34208,7 @@ export interface OutputStream {
      * @param vectors the buffer containing the #GOutputVectors to write.
      * @param io_priority the I/O priority of the request.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+     * @param callback callback to call when the request is satisfied
      */
     vfunc_writev_async(vectors: OutputVector[], io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -35136,7 +34269,7 @@ export interface OutputStream {
  * streaming APIs.
  * 
  * All of these functions have async variants too.
- * @interface 
+ * @class 
  */
 export class OutputStream extends GObject.Object {
 
@@ -35173,17 +34306,7 @@ export interface Permission {
      * %TRUE if it is generally possible to acquire the permission by calling
      * g_permission_acquire().
      */
-    readonly can_acquire: boolean
-    /**
-     * %TRUE if it is generally possible to acquire the permission by calling
-     * g_permission_acquire().
-     */
     readonly canAcquire: boolean
-    /**
-     * %TRUE if it is generally possible to release the permission by calling
-     * g_permission_release().
-     */
-    readonly can_release: boolean
     /**
      * %TRUE if it is generally possible to release the permission by calling
      * g_permission_release().
@@ -35482,7 +34605,7 @@ export module PropertyAction {
          * If %TRUE, the state of the action will be the negation of the
          * property value, provided the property is boolean.
          */
-        invert_boolean?: boolean | null
+        invertBoolean?: boolean | null
         /**
          * The name of the action.  This is mostly meaningful for identifying
          * the action once it has been added to a #GActionMap.
@@ -35494,18 +34617,6 @@ export module PropertyAction {
          * The object must be a non-%NULL #GObject with properties.
          */
         object?: GObject.Object | null
-        /**
-         * The name of the property to wrap on the object.
-         * 
-         * The property must exist on the passed-in object and it must be
-         * readable and writable (and not construct-only).
-         */
-        property_name?: string | null
-        /**
-         * If %TRUE, the state of the action will be the negation of the
-         * property value, provided the property is boolean.
-         */
-        invertBoolean?: boolean | null
         /**
          * The name of the property to wrap on the object.
          * 
@@ -35532,11 +34643,6 @@ export interface PropertyAction extends Action {
      * If %TRUE, the state of the action will be the negation of the
      * property value, provided the property is boolean.
      */
-    readonly invert_boolean: boolean
-    /**
-     * If %TRUE, the state of the action will be the negation of the
-     * property value, provided the property is boolean.
-     */
     readonly invertBoolean: boolean
     /**
      * The name of the action.  This is mostly meaningful for identifying
@@ -35553,19 +34659,7 @@ export interface PropertyAction extends Action {
      * The type of the parameter that must be given when activating the
      * action.
      */
-    readonly parameter_type: GLib.VariantType
-    /**
-     * The type of the parameter that must be given when activating the
-     * action.
-     */
     readonly parameterType: GLib.VariantType
-    /**
-     * The name of the property to wrap on the object.
-     * 
-     * The property must exist on the passed-in object and it must be
-     * readable and writable (and not construct-only).
-     */
-    readonly property_name: string | null
     /**
      * The name of the property to wrap on the object.
      * 
@@ -35577,11 +34671,6 @@ export interface PropertyAction extends Action {
      * The state of the action, or %NULL if the action is stateless.
      */
     readonly state: GLib.Variant
-    /**
-     * The #GVariantType of the state that the action has, or %NULL if the
-     * action is stateless.
-     */
-    readonly state_type: GLib.VariantType
     /**
      * The #GVariantType of the state that the action has, or %NULL if the
      * action is stateless.
@@ -35727,13 +34816,13 @@ export module ProxyAddress {
 
         // Own constructor properties of Gio-2.0.Gio.ProxyAddress
 
-        destination_hostname?: string | null
-        destination_port?: number | null
+        destinationHostname?: string | null
+        destinationPort?: number | null
         /**
          * The protocol being spoke to the destination host, or %NULL if
          * the #GProxyAddress doesn't know.
          */
-        destination_protocol?: string | null
+        destinationProtocol?: string | null
         password?: string | null
         protocol?: string | null
         /**
@@ -35742,13 +34831,6 @@ export module ProxyAddress {
          */
         uri?: string | null
         username?: string | null
-        destinationHostname?: string | null
-        destinationPort?: number | null
-        /**
-         * The protocol being spoke to the destination host, or %NULL if
-         * the #GProxyAddress doesn't know.
-         */
-        destinationProtocol?: string | null
     }
 
 }
@@ -35757,15 +34839,8 @@ export interface ProxyAddress extends SocketConnectable {
 
     // Own properties of Gio-2.0.Gio.ProxyAddress
 
-    readonly destination_hostname: string | null
     readonly destinationHostname: string | null
-    readonly destination_port: number
     readonly destinationPort: number
-    /**
-     * The protocol being spoke to the destination host, or %NULL if
-     * the #GProxyAddress doesn't know.
-     */
-    readonly destination_protocol: string | null
     /**
      * The protocol being spoke to the destination host, or %NULL if
      * the #GProxyAddress doesn't know.
@@ -35948,21 +35023,12 @@ export module ProxyAddressEnumerator {
          * The default port to use if #GProxyAddressEnumerator:uri does not
          * specify one.
          */
-        default_port?: number | null
-        /**
-         * The proxy resolver to use.
-         */
-        proxy_resolver?: ProxyResolver | null
-        uri?: string | null
-        /**
-         * The default port to use if #GProxyAddressEnumerator:uri does not
-         * specify one.
-         */
         defaultPort?: number | null
         /**
          * The proxy resolver to use.
          */
         proxyResolver?: ProxyResolver | null
+        uri?: string | null
     }
 
 }
@@ -35976,16 +35042,7 @@ export interface ProxyAddressEnumerator {
      * The default port to use if #GProxyAddressEnumerator:uri does not
      * specify one.
      */
-    readonly default_port: number
-    /**
-     * The default port to use if #GProxyAddressEnumerator:uri does not
-     * specify one.
-     */
     readonly defaultPort: number
-    /**
-     * The proxy resolver to use.
-     */
-    proxy_resolver: ProxyResolver
     /**
      * The proxy resolver to use.
      */
@@ -36712,21 +35769,6 @@ export module Settings {
          * The name of the schema that describes the types of keys
          * for this #GSettings object.
          */
-        schema_id?: string | null
-        /**
-         * The #GSettingsSchema describing the types of keys for this
-         * #GSettings object.
-         * 
-         * Ideally, this property would be called 'schema'.  #GSettingsSchema
-         * has only existed since version 2.32, however, and before then the
-         * 'schema' property was used to refer to the ID of the schema rather
-         * than the schema itself.  Take care.
-         */
-        settings_schema?: SettingsSchema | null
-        /**
-         * The name of the schema that describes the types of keys
-         * for this #GSettings object.
-         */
         schemaId?: string | null
         /**
          * The #GSettingsSchema describing the types of keys for this
@@ -36754,17 +35796,7 @@ export interface Settings {
      * Whether the #GSettings object is in 'delay-apply' mode. See
      * g_settings_delay() for details.
      */
-    readonly delay_apply: boolean
-    /**
-     * Whether the #GSettings object is in 'delay-apply' mode. See
-     * g_settings_delay() for details.
-     */
     readonly delayApply: boolean
-    /**
-     * If this property is %TRUE, the #GSettings object has outstanding
-     * changes that will be applied when g_settings_apply() is called.
-     */
-    readonly has_unapplied: boolean
     /**
      * If this property is %TRUE, the #GSettings object has outstanding
      * changes that will be applied when g_settings_apply() is called.
@@ -36790,22 +35822,7 @@ export interface Settings {
      * The name of the schema that describes the types of keys
      * for this #GSettings object.
      */
-    readonly schema_id: string | null
-    /**
-     * The name of the schema that describes the types of keys
-     * for this #GSettings object.
-     */
     readonly schemaId: string | null
-    /**
-     * The #GSettingsSchema describing the types of keys for this
-     * #GSettings object.
-     * 
-     * Ideally, this property would be called 'schema'.  #GSettingsSchema
-     * has only existed since version 2.32, however, and before then the
-     * 'schema' property was used to refer to the ID of the schema rather
-     * than the schema itself.  Take care.
-     */
-    readonly settings_schema: SettingsSchema
     /**
      * The #GSettingsSchema describing the types of keys for this
      * #GSettings object.
@@ -38118,16 +37135,11 @@ export module SimpleAction {
          * The type of the parameter that must be given when activating the
          * action.
          */
-        parameter_type?: GLib.VariantType | null
+        parameterType?: GLib.VariantType | null
         /**
          * The state of the action, or %NULL if the action is stateless.
          */
         state?: GLib.Variant | null
-        /**
-         * The type of the parameter that must be given when activating the
-         * action.
-         */
-        parameterType?: GLib.VariantType | null
     }
 
 }
@@ -38152,21 +37164,11 @@ export interface SimpleAction extends Action {
      * The type of the parameter that must be given when activating the
      * action.
      */
-    readonly parameter_type: GLib.VariantType
-    /**
-     * The type of the parameter that must be given when activating the
-     * action.
-     */
     readonly parameterType: GLib.VariantType
     /**
      * The state of the action, or %NULL if the action is stateless.
      */
     state: any
-    /**
-     * The #GVariantType of the state that the action has, or %NULL if the
-     * action is stateless.
-     */
-    readonly state_type: GLib.VariantType
     /**
      * The #GVariantType of the state that the action has, or %NULL if the
      * action is stateless.
@@ -38743,8 +37745,6 @@ export module SimpleIOStream {
 
         // Own constructor properties of Gio-2.0.Gio.SimpleIOStream
 
-        input_stream?: InputStream | null
-        output_stream?: OutputStream | null
         inputStream?: InputStream | null
         outputStream?: OutputStream | null
     }
@@ -38755,9 +37755,7 @@ export interface SimpleIOStream {
 
     // Own properties of Gio-2.0.Gio.SimpleIOStream
 
-    readonly input_stream: InputStream
     readonly inputStream: InputStream
-    readonly output_stream: OutputStream
     readonly outputStream: OutputStream
 
     // Class property signals of Gio-2.0.Gio.SimpleIOStream
@@ -38901,53 +37899,6 @@ export module SimpleProxyResolver {
          * "socks://", #GSimpleProxyResolver will treat it as referring
          * to all three of the socks5, socks4a, and socks4 proxy types.
          */
-        default_proxy?: string | null
-        /**
-         * A list of hostnames and IP addresses that the resolver should
-         * allow direct connections to.
-         * 
-         * Entries can be in one of 4 formats:
-         * 
-         * - A hostname, such as "example.com", ".example.com", or
-         *   "*.example.com", any of which match "example.com" or
-         *   any subdomain of it.
-         * 
-         * - An IPv4 or IPv6 address, such as "192.168.1.1",
-         *   which matches only that address.
-         * 
-         * - A hostname or IP address followed by a port, such as
-         *   "example.com:80", which matches whatever the hostname or IP
-         *   address would match, but only for URLs with the (explicitly)
-         *   indicated port. In the case of an IPv6 address, the address
-         *   part must appear in brackets: "[::1]:443"
-         * 
-         * - An IP address range, given by a base address and prefix length,
-         *   such as "fe80::/10", which matches any address in that range.
-         * 
-         * Note that when dealing with Unicode hostnames, the matching is
-         * done against the ASCII form of the name.
-         * 
-         * Also note that hostname exclusions apply only to connections made
-         * to hosts identified by name, and IP address exclusions apply only
-         * to connections made to hosts identified by address. That is, if
-         * example.com has an address of 192.168.1.1, and the :ignore-hosts list
-         * contains only "192.168.1.1", then a connection to "example.com"
-         * (eg, via a #GNetworkAddress) will use the proxy, and a connection to
-         * "192.168.1.1" (eg, via a #GInetSocketAddress) will not.
-         * 
-         * These rules match the "ignore-hosts"/"noproxy" rules most
-         * commonly used by other applications.
-         */
-        ignore_hosts?: string[] | null
-        /**
-         * The default proxy URI that will be used for any URI that doesn't
-         * match #GSimpleProxyResolver:ignore-hosts, and doesn't match any
-         * of the schemes set with g_simple_proxy_resolver_set_uri_proxy().
-         * 
-         * Note that as a special case, if this URI starts with
-         * "socks://", #GSimpleProxyResolver will treat it as referring
-         * to all three of the socks5, socks4a, and socks4 proxy types.
-         */
         defaultProxy?: string | null
         /**
          * A list of hostnames and IP addresses that the resolver should
@@ -39003,54 +37954,7 @@ export interface SimpleProxyResolver extends ProxyResolver {
      * "socks://", #GSimpleProxyResolver will treat it as referring
      * to all three of the socks5, socks4a, and socks4 proxy types.
      */
-    default_proxy: string | null
-    /**
-     * The default proxy URI that will be used for any URI that doesn't
-     * match #GSimpleProxyResolver:ignore-hosts, and doesn't match any
-     * of the schemes set with g_simple_proxy_resolver_set_uri_proxy().
-     * 
-     * Note that as a special case, if this URI starts with
-     * "socks://", #GSimpleProxyResolver will treat it as referring
-     * to all three of the socks5, socks4a, and socks4 proxy types.
-     */
     defaultProxy: string | null
-    /**
-     * A list of hostnames and IP addresses that the resolver should
-     * allow direct connections to.
-     * 
-     * Entries can be in one of 4 formats:
-     * 
-     * - A hostname, such as "example.com", ".example.com", or
-     *   "*.example.com", any of which match "example.com" or
-     *   any subdomain of it.
-     * 
-     * - An IPv4 or IPv6 address, such as "192.168.1.1",
-     *   which matches only that address.
-     * 
-     * - A hostname or IP address followed by a port, such as
-     *   "example.com:80", which matches whatever the hostname or IP
-     *   address would match, but only for URLs with the (explicitly)
-     *   indicated port. In the case of an IPv6 address, the address
-     *   part must appear in brackets: "[::1]:443"
-     * 
-     * - An IP address range, given by a base address and prefix length,
-     *   such as "fe80::/10", which matches any address in that range.
-     * 
-     * Note that when dealing with Unicode hostnames, the matching is
-     * done against the ASCII form of the name.
-     * 
-     * Also note that hostname exclusions apply only to connections made
-     * to hosts identified by name, and IP address exclusions apply only
-     * to connections made to hosts identified by address. That is, if
-     * example.com has an address of 192.168.1.1, and the :ignore-hosts list
-     * contains only "192.168.1.1", then a connection to "example.com"
-     * (eg, via a #GNetworkAddress) will use the proxy, and a connection to
-     * "192.168.1.1" (eg, via a #GInetSocketAddress) will not.
-     * 
-     * These rules match the "ignore-hosts"/"noproxy" rules most
-     * commonly used by other applications.
-     */
-    ignore_hosts: string[]
     /**
      * A list of hostnames and IP addresses that the resolver should
      * allow direct connections to.
@@ -39192,15 +38096,15 @@ export module Socket {
         family?: SocketFamily | null
         fd?: number | null
         keepalive?: boolean | null
-        listen_backlog?: number | null
+        listenBacklog?: number | null
         /**
          * Whether outgoing multicast packets loop back to the local host.
          */
-        multicast_loopback?: boolean | null
+        multicastLoopback?: boolean | null
         /**
          * Time-to-live out outgoing multicast packets
          */
-        multicast_ttl?: number | null
+        multicastTtl?: number | null
         protocol?: SocketProtocol | null
         /**
          * The timeout in seconds on socket I/O
@@ -39211,15 +38115,6 @@ export module Socket {
          */
         ttl?: number | null
         type?: SocketType | null
-        listenBacklog?: number | null
-        /**
-         * Whether outgoing multicast packets loop back to the local host.
-         */
-        multicastLoopback?: boolean | null
-        /**
-         * Time-to-live out outgoing multicast packets
-         */
-        multicastTtl?: number | null
     }
 
 }
@@ -39236,14 +38131,8 @@ export interface Socket extends DatagramBased, Initable {
     readonly family: SocketFamily
     readonly fd: number
     keepalive: boolean
-    listen_backlog: number
     listenBacklog: number
-    readonly local_address: SocketAddress
     readonly localAddress: SocketAddress
-    /**
-     * Whether outgoing multicast packets loop back to the local host.
-     */
-    multicast_loopback: boolean
     /**
      * Whether outgoing multicast packets loop back to the local host.
      */
@@ -39251,13 +38140,8 @@ export interface Socket extends DatagramBased, Initable {
     /**
      * Time-to-live out outgoing multicast packets
      */
-    multicast_ttl: number
-    /**
-     * Time-to-live out outgoing multicast packets
-     */
     multicastTtl: number
     readonly protocol: SocketProtocol
-    readonly remote_address: SocketAddress
     readonly remoteAddress: SocketAddress
     /**
      * The timeout in seconds on socket I/O
@@ -40620,7 +39504,7 @@ export interface SocketAddressEnumerator {
      * 
      * It is an error to call this multiple times before the previous callback has finished.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
      */
     next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -40677,7 +39561,7 @@ export interface SocketAddressEnumerator {
      * It is an error to call this multiple times before the previous callback has finished.
      * @virtual 
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request     is satisfied
      */
     vfunc_next_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
     /**
@@ -40747,14 +39631,14 @@ export module SocketClient {
 
         // Own constructor properties of Gio-2.0.Gio.SocketClient
 
-        enable_proxy?: boolean | null
+        enableProxy?: boolean | null
         family?: SocketFamily | null
-        local_address?: SocketAddress | null
+        localAddress?: SocketAddress | null
         protocol?: SocketProtocol | null
         /**
          * The proxy resolver to use
          */
-        proxy_resolver?: ProxyResolver | null
+        proxyResolver?: ProxyResolver | null
         timeout?: number | null
         tls?: boolean | null
         /**
@@ -40775,33 +39659,8 @@ export module SocketClient {
          * emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, and use that to
          * connect to #GTlsConnection::accept-certificate.
          */
-        tls_validation_flags?: TlsCertificateFlags | null
-        type?: SocketType | null
-        enableProxy?: boolean | null
-        localAddress?: SocketAddress | null
-        /**
-         * The proxy resolver to use
-         */
-        proxyResolver?: ProxyResolver | null
-        /**
-         * The TLS validation flags used when creating TLS connections. The
-         * default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
-         * 
-         * GLib guarantees that if certificate verification fails, at least one
-         * flag will be set, but it does not guarantee that all possible flags
-         * will be set. Accordingly, you may not safely decide to ignore any
-         * particular type of error. For example, it would be incorrect to mask
-         * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-         * because this could potentially be the only error flag set even if
-         * other problems exist with the certificate. Therefore, there is no
-         * safe way to use this property. This is not a horrible problem,
-         * though, because you should not be attempting to ignore validation
-         * errors anyway. If you really must ignore TLS certificate errors,
-         * connect to the #GSocketClient::event signal, wait for it to be
-         * emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, and use that to
-         * connect to #GTlsConnection::accept-certificate.
-         */
         tlsValidationFlags?: TlsCertificateFlags | null
+        type?: SocketType | null
     }
 
 }
@@ -40810,41 +39669,16 @@ export interface SocketClient {
 
     // Own properties of Gio-2.0.Gio.SocketClient
 
-    enable_proxy: boolean
     enableProxy: boolean
     family: SocketFamily
-    local_address: SocketAddress
     localAddress: SocketAddress
     protocol: SocketProtocol
-    /**
-     * The proxy resolver to use
-     */
-    proxy_resolver: ProxyResolver
     /**
      * The proxy resolver to use
      */
     proxyResolver: ProxyResolver
     timeout: number
     tls: boolean
-    /**
-     * The TLS validation flags used when creating TLS connections. The
-     * default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
-     * 
-     * GLib guarantees that if certificate verification fails, at least one
-     * flag will be set, but it does not guarantee that all possible flags
-     * will be set. Accordingly, you may not safely decide to ignore any
-     * particular type of error. For example, it would be incorrect to mask
-     * %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
-     * because this could potentially be the only error flag set even if
-     * other problems exist with the certificate. Therefore, there is no
-     * safe way to use this property. This is not a horrible problem,
-     * though, because you should not be attempting to ignore validation
-     * errors anyway. If you really must ignore TLS certificate errors,
-     * connect to the #GSocketClient::event signal, wait for it to be
-     * emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, and use that to
-     * connect to #GTlsConnection::accept-certificate.
-     */
-    tls_validation_flags: TlsCertificateFlags
     /**
      * The TLS validation flags used when creating TLS connections. The
      * default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
@@ -41737,7 +40571,6 @@ export module SocketListener {
 
         // Own constructor properties of Gio-2.0.Gio.SocketListener
 
-        listen_backlog?: number | null
         listenBacklog?: number | null
     }
 
@@ -41747,7 +40580,6 @@ export interface SocketListener {
 
     // Own properties of Gio-2.0.Gio.SocketListener
 
-    listen_backlog: number
     listenBacklog: number
 
     // Own fields of Gio-2.0.Gio.SocketListener
@@ -43940,7 +42772,6 @@ export module TcpConnection {
 
         // Own constructor properties of Gio-2.0.Gio.TcpConnection
 
-        graceful_disconnect?: boolean | null
         gracefulDisconnect?: boolean | null
     }
 
@@ -43950,7 +42781,6 @@ export interface TcpConnection {
 
     // Own properties of Gio-2.0.Gio.TcpConnection
 
-    graceful_disconnect: boolean
     gracefulDisconnect: boolean
 
     // Own fields of Gio-2.0.Gio.TcpConnection
@@ -44089,7 +42919,6 @@ export module TcpWrapperConnection {
 
         // Own constructor properties of Gio-2.0.Gio.TcpWrapperConnection
 
-        base_io_stream?: IOStream | null
         baseIoStream?: IOStream | null
     }
 
@@ -44099,7 +42928,6 @@ export interface TcpWrapperConnection {
 
     // Own properties of Gio-2.0.Gio.TcpWrapperConnection
 
-    readonly base_io_stream: IOStream
     readonly baseIoStream: IOStream
 
     // Own fields of Gio-2.0.Gio.TcpWrapperConnection
@@ -44485,26 +43313,6 @@ export module ThemedIcon {
          * ```
          * 
          */
-        use_default_fallbacks?: boolean | null
-        /**
-         * Whether to use the default fallbacks found by shortening the icon name
-         * at '-' characters. If the "names" array has more than one element,
-         * ignores any past the first.
-         * 
-         * For example, if the icon name was "gnome-dev-cdrom-audio", the array
-         * would become
-         * 
-         * ```c
-         * {
-         *   "gnome-dev-cdrom-audio",
-         *   "gnome-dev-cdrom",
-         *   "gnome-dev",
-         *   "gnome",
-         *   NULL
-         * };
-         * ```
-         * 
-         */
         useDefaultFallbacks?: boolean | null
     }
 
@@ -44522,26 +43330,6 @@ export interface ThemedIcon extends Icon {
      * A %NULL-terminated array of icon names.
      */
     readonly names: string[]
-    /**
-     * Whether to use the default fallbacks found by shortening the icon name
-     * at '-' characters. If the "names" array has more than one element,
-     * ignores any past the first.
-     * 
-     * For example, if the icon name was "gnome-dev-cdrom-audio", the array
-     * would become
-     * 
-     * ```c
-     * {
-     *   "gnome-dev-cdrom-audio",
-     *   "gnome-dev-cdrom",
-     *   "gnome-dev",
-     *   "gnome",
-     *   NULL
-     * };
-     * ```
-     * 
-     */
-    readonly use_default_fallbacks: boolean
     /**
      * Whether to use the default fallbacks found by shortening the icon name
      * at '-' characters. If the "names" array has more than one element,
@@ -44689,7 +43477,6 @@ export module ThreadedSocketService {
 
         // Own constructor properties of Gio-2.0.Gio.ThreadedSocketService
 
-        max_threads?: number | null
         maxThreads?: number | null
     }
 
@@ -44699,7 +43486,6 @@ export interface ThreadedSocketService {
 
     // Own properties of Gio-2.0.Gio.ThreadedSocketService
 
-    readonly max_threads: number
     readonly maxThreads: number
 
     // Own fields of Gio-2.0.Gio.ThreadedSocketService
@@ -44823,7 +43609,7 @@ export module TlsCertificate {
          * This property and the #GTlsCertificate:certificate
          * property represent the same data, just in different forms.
          */
-        certificate_pem?: string | null
+        certificatePem?: string | null
         /**
          * A #GTlsCertificate representing the entity that issued this
          * certificate. If %NULL, this means that the certificate is either
@@ -44847,72 +43633,6 @@ export module TlsCertificate {
          * An optional password used when constructed with GTlsCertificate:pkcs12-data.
          */
         password?: string | null
-        /**
-         * A URI referencing the [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
-         * objects containing an X.509 certificate and optionally a private key.
-         * 
-         * If %NULL, the certificate is either not backed by PKCS \#11 or the
-         * #GTlsBackend does not support PKCS \#11.
-         */
-        pkcs11_uri?: string | null
-        /**
-         * The PKCS #12 formatted data used to construct the object.
-         * 
-         * See also: g_tls_certificate_new_from_pkcs12()
-         */
-        pkcs12_data?: Uint8Array | null
-        /**
-         * The DER (binary) encoded representation of the certificate's
-         * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
-         * or unencrypted [PKCS \#8 format.](https://datatracker.ietf.org/doc/html/rfc5208)
-         * PKCS \#8 format is supported since 2.32; earlier releases only
-         * support PKCS \#1. You can use the `openssl rsa` tool to convert
-         * PKCS \#8 keys to PKCS \#1.
-         * 
-         * This property (or the #GTlsCertificate:private-key-pem property)
-         * can be set when constructing a key (for example, from a file).
-         * Since GLib 2.70, it is now also readable; however, be aware that if
-         * the private key is backed by a PKCS \#11 URI – for example, if it
-         * is stored on a smartcard – then this property will be %NULL. If so,
-         * the private key must be referenced via its PKCS \#11 URI,
-         * #GTlsCertificate:private-key-pkcs11-uri. You must check both
-         * properties to see if the certificate really has a private key.
-         * When this property is read, the output format will be unencrypted
-         * PKCS \#8.
-         */
-        private_key?: Uint8Array | null
-        /**
-         * The PEM (ASCII) encoded representation of the certificate's
-         * private key in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
-         * ("`BEGIN RSA PRIVATE KEY`") or unencrypted
-         * [PKCS \#8 format](https://datatracker.ietf.org/doc/html/rfc5208)
-         * ("`BEGIN PRIVATE KEY`"). PKCS \#8 format is supported since 2.32;
-         * earlier releases only support PKCS \#1. You can use the `openssl rsa`
-         * tool to convert PKCS \#8 keys to PKCS \#1.
-         * 
-         * This property (or the #GTlsCertificate:private-key property)
-         * can be set when constructing a key (for example, from a file).
-         * Since GLib 2.70, it is now also readable; however, be aware that if
-         * the private key is backed by a PKCS \#11 URI - for example, if it
-         * is stored on a smartcard - then this property will be %NULL. If so,
-         * the private key must be referenced via its PKCS \#11 URI,
-         * #GTlsCertificate:private-key-pkcs11-uri. You must check both
-         * properties to see if the certificate really has a private key.
-         * When this property is read, the output format will be unencrypted
-         * PKCS \#8.
-         */
-        private_key_pem?: string | null
-        /**
-         * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
-         * object containing a private key.
-         */
-        private_key_pkcs11_uri?: string | null
-        /**
-         * The PEM (ASCII) encoded representation of the certificate.
-         * This property and the #GTlsCertificate:certificate
-         * property represent the same data, just in different forms.
-         */
-        certificatePem?: string | null
         /**
          * A URI referencing the [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
          * objects containing an X.509 certificate and optionally a private key.
@@ -44992,28 +43712,12 @@ export interface TlsCertificate {
      * This property and the #GTlsCertificate:certificate
      * property represent the same data, just in different forms.
      */
-    readonly certificate_pem: string | null
-    /**
-     * The PEM (ASCII) encoded representation of the certificate.
-     * This property and the #GTlsCertificate:certificate
-     * property represent the same data, just in different forms.
-     */
     readonly certificatePem: string | null
     /**
      * The DNS names from the certificate's Subject Alternative Names (SANs),
      * %NULL if unavailable.
      */
-    readonly dns_names: any[]
-    /**
-     * The DNS names from the certificate's Subject Alternative Names (SANs),
-     * %NULL if unavailable.
-     */
     readonly dnsNames: any[]
-    /**
-     * The IP addresses from the certificate's Subject Alternative Names (SANs),
-     * %NULL if unavailable.
-     */
-    readonly ip_addresses: any[]
     /**
      * The IP addresses from the certificate's Subject Alternative Names (SANs),
      * %NULL if unavailable.
@@ -45042,27 +43746,12 @@ export interface TlsCertificate {
      * The issuer from the certificate,
      * %NULL if unavailable.
      */
-    readonly issuer_name: string | null
-    /**
-     * The issuer from the certificate,
-     * %NULL if unavailable.
-     */
     readonly issuerName: string | null
     /**
      * The time at which this cert is no longer valid,
      * %NULL if unavailable.
      */
-    readonly not_valid_after: GLib.DateTime
-    /**
-     * The time at which this cert is no longer valid,
-     * %NULL if unavailable.
-     */
     readonly notValidAfter: GLib.DateTime
-    /**
-     * The time at which this cert is considered to be valid,
-     * %NULL if unavailable.
-     */
-    readonly not_valid_before: GLib.DateTime
     /**
      * The time at which this cert is considered to be valid,
      * %NULL if unavailable.
@@ -45079,47 +43768,13 @@ export interface TlsCertificate {
      * If %NULL, the certificate is either not backed by PKCS \#11 or the
      * #GTlsBackend does not support PKCS \#11.
      */
-    readonly pkcs11_uri: string | null
-    /**
-     * A URI referencing the [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
-     * objects containing an X.509 certificate and optionally a private key.
-     * 
-     * If %NULL, the certificate is either not backed by PKCS \#11 or the
-     * #GTlsBackend does not support PKCS \#11.
-     */
     readonly pkcs11Uri: string | null
     /**
      * The PKCS #12 formatted data used to construct the object.
      * 
      * See also: g_tls_certificate_new_from_pkcs12()
      */
-    readonly pkcs12_data: Uint8Array
-    /**
-     * The PKCS #12 formatted data used to construct the object.
-     * 
-     * See also: g_tls_certificate_new_from_pkcs12()
-     */
     readonly pkcs12Data: Uint8Array
-    /**
-     * The DER (binary) encoded representation of the certificate's
-     * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
-     * or unencrypted [PKCS \#8 format.](https://datatracker.ietf.org/doc/html/rfc5208)
-     * PKCS \#8 format is supported since 2.32; earlier releases only
-     * support PKCS \#1. You can use the `openssl rsa` tool to convert
-     * PKCS \#8 keys to PKCS \#1.
-     * 
-     * This property (or the #GTlsCertificate:private-key-pem property)
-     * can be set when constructing a key (for example, from a file).
-     * Since GLib 2.70, it is now also readable; however, be aware that if
-     * the private key is backed by a PKCS \#11 URI – for example, if it
-     * is stored on a smartcard – then this property will be %NULL. If so,
-     * the private key must be referenced via its PKCS \#11 URI,
-     * #GTlsCertificate:private-key-pkcs11-uri. You must check both
-     * properties to see if the certificate really has a private key.
-     * When this property is read, the output format will be unencrypted
-     * PKCS \#8.
-     */
-    readonly private_key: Uint8Array
     /**
      * The DER (binary) encoded representation of the certificate's
      * private key, in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
@@ -45160,43 +43815,12 @@ export interface TlsCertificate {
      * When this property is read, the output format will be unencrypted
      * PKCS \#8.
      */
-    readonly private_key_pem: string | null
-    /**
-     * The PEM (ASCII) encoded representation of the certificate's
-     * private key in either [PKCS \#1 format](https://datatracker.ietf.org/doc/html/rfc8017)
-     * ("`BEGIN RSA PRIVATE KEY`") or unencrypted
-     * [PKCS \#8 format](https://datatracker.ietf.org/doc/html/rfc5208)
-     * ("`BEGIN PRIVATE KEY`"). PKCS \#8 format is supported since 2.32;
-     * earlier releases only support PKCS \#1. You can use the `openssl rsa`
-     * tool to convert PKCS \#8 keys to PKCS \#1.
-     * 
-     * This property (or the #GTlsCertificate:private-key property)
-     * can be set when constructing a key (for example, from a file).
-     * Since GLib 2.70, it is now also readable; however, be aware that if
-     * the private key is backed by a PKCS \#11 URI - for example, if it
-     * is stored on a smartcard - then this property will be %NULL. If so,
-     * the private key must be referenced via its PKCS \#11 URI,
-     * #GTlsCertificate:private-key-pkcs11-uri. You must check both
-     * properties to see if the certificate really has a private key.
-     * When this property is read, the output format will be unencrypted
-     * PKCS \#8.
-     */
     readonly privateKeyPem: string | null
     /**
      * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
      * object containing a private key.
      */
-    readonly private_key_pkcs11_uri: string | null
-    /**
-     * A URI referencing a [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html)
-     * object containing a private key.
-     */
     readonly privateKeyPkcs11Uri: string | null
-    /**
-     * The subject from the cert,
-     * %NULL if unavailable.
-     */
-    readonly subject_name: string | null
     /**
      * The subject from the cert,
      * %NULL if unavailable.
@@ -45574,7 +44198,7 @@ export module TlsConnection {
          * advertises that it is willing to speak. See
          * g_tls_connection_set_advertised_protocols().
          */
-        advertised_protocols?: string[] | null
+        advertisedProtocols?: string[] | null
         /**
          * The #GIOStream that the connection wraps. The connection holds a reference
          * to this stream, and may run operations on the stream from other threads
@@ -45582,7 +44206,7 @@ export module TlsConnection {
          * constructed, application code may only run its own operations on this
          * stream when no #GIOStream operations are running.
          */
-        base_io_stream?: IOStream | null
+        baseIoStream?: IOStream | null
         /**
          * The connection's certificate; see
          * g_tls_connection_set_certificate().
@@ -45617,36 +44241,6 @@ export module TlsConnection {
          * The rehandshaking mode. See
          * g_tls_connection_set_rehandshake_mode().
          */
-        rehandshake_mode?: TlsRehandshakeMode | null
-        /**
-         * Whether or not proper TLS close notification is required.
-         * See g_tls_connection_set_require_close_notify().
-         */
-        require_close_notify?: boolean | null
-        /**
-         * Whether or not the system certificate database will be used to
-         * verify peer certificates. See
-         * g_tls_connection_set_use_system_certdb().
-         */
-        use_system_certdb?: boolean | null
-        /**
-         * The list of application-layer protocols that the connection
-         * advertises that it is willing to speak. See
-         * g_tls_connection_set_advertised_protocols().
-         */
-        advertisedProtocols?: string[] | null
-        /**
-         * The #GIOStream that the connection wraps. The connection holds a reference
-         * to this stream, and may run operations on the stream from other threads
-         * throughout its lifetime. Consequently, after the #GIOStream has been
-         * constructed, application code may only run its own operations on this
-         * stream when no #GIOStream operations are running.
-         */
-        baseIoStream?: IOStream | null
-        /**
-         * The rehandshaking mode. See
-         * g_tls_connection_set_rehandshake_mode().
-         */
         rehandshakeMode?: TlsRehandshakeMode | null
         /**
          * Whether or not proper TLS close notification is required.
@@ -45672,21 +44266,7 @@ export interface TlsConnection {
      * advertises that it is willing to speak. See
      * g_tls_connection_set_advertised_protocols().
      */
-    advertised_protocols: string[]
-    /**
-     * The list of application-layer protocols that the connection
-     * advertises that it is willing to speak. See
-     * g_tls_connection_set_advertised_protocols().
-     */
     advertisedProtocols: string[]
-    /**
-     * The #GIOStream that the connection wraps. The connection holds a reference
-     * to this stream, and may run operations on the stream from other threads
-     * throughout its lifetime. Consequently, after the #GIOStream has been
-     * constructed, application code may only run its own operations on this
-     * stream when no #GIOStream operations are running.
-     */
-    readonly base_io_stream: IOStream
     /**
      * The #GIOStream that the connection wraps. The connection holds a reference
      * to this stream, and may run operations on the stream from other threads
@@ -45700,10 +44280,6 @@ export interface TlsConnection {
      * g_tls_connection_set_certificate().
      */
     certificate: TlsCertificate
-    /**
-     * The name of the TLS ciphersuite in use. See g_tls_connection_get_ciphersuite_name().
-     */
-    readonly ciphersuite_name: string | null
     /**
      * The name of the TLS ciphersuite in use. See g_tls_connection_get_ciphersuite_name().
      */
@@ -45737,21 +44313,7 @@ export interface TlsConnection {
      * The application-layer protocol negotiated during the TLS
      * handshake. See g_tls_connection_get_negotiated_protocol().
      */
-    readonly negotiated_protocol: string | null
-    /**
-     * The application-layer protocol negotiated during the TLS
-     * handshake. See g_tls_connection_get_negotiated_protocol().
-     */
     readonly negotiatedProtocol: string | null
-    /**
-     * The connection's peer's certificate, after the TLS handshake has
-     * completed or failed. Note in particular that this is not yet set
-     * during the emission of #GTlsConnection::accept-certificate.
-     * 
-     * (You can watch for a #GObject::notify signal on this property to
-     * detect when a handshake has occurred.)
-     */
-    readonly peer_certificate: TlsCertificate
     /**
      * The connection's peer's certificate, after the TLS handshake has
      * completed or failed. Note in particular that this is not yet set
@@ -45777,37 +44339,11 @@ export interface TlsConnection {
      * expired certificates, because this could potentially be the only
      * error flag set even if other problems exist with the certificate.
      */
-    readonly peer_certificate_errors: TlsCertificateFlags
-    /**
-     * The errors noticed while verifying
-     * #GTlsConnection:peer-certificate. Normally this should be 0, but
-     * it may not be if #GTlsClientConnection:validation-flags is not
-     * %G_TLS_CERTIFICATE_VALIDATE_ALL, or if
-     * #GTlsConnection::accept-certificate overrode the default
-     * behavior.
-     * 
-     * GLib guarantees that if certificate verification fails, at least
-     * one error will be set, but it does not guarantee that all possible
-     * errors will be set. Accordingly, you may not safely decide to
-     * ignore any particular type of error. For example, it would be
-     * incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if you want to allow
-     * expired certificates, because this could potentially be the only
-     * error flag set even if other problems exist with the certificate.
-     */
     readonly peerCertificateErrors: TlsCertificateFlags
     /**
      * The TLS protocol version in use. See g_tls_connection_get_protocol_version().
      */
-    readonly protocol_version: TlsProtocolVersion
-    /**
-     * The TLS protocol version in use. See g_tls_connection_get_protocol_version().
-     */
     readonly protocolVersion: TlsProtocolVersion
-    /**
-     * The rehandshaking mode. See
-     * g_tls_connection_set_rehandshake_mode().
-     */
-    rehandshake_mode: TlsRehandshakeMode
     /**
      * The rehandshaking mode. See
      * g_tls_connection_set_rehandshake_mode().
@@ -45817,18 +44353,7 @@ export interface TlsConnection {
      * Whether or not proper TLS close notification is required.
      * See g_tls_connection_set_require_close_notify().
      */
-    require_close_notify: boolean
-    /**
-     * Whether or not proper TLS close notification is required.
-     * See g_tls_connection_set_require_close_notify().
-     */
     requireCloseNotify: boolean
-    /**
-     * Whether or not the system certificate database will be used to
-     * verify peer certificates. See
-     * g_tls_connection_set_use_system_certdb().
-     */
-    use_system_certdb: boolean
     /**
      * Whether or not the system certificate database will be used to
      * verify peer certificates. See
@@ -46448,7 +44973,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of this asynchronous operation. The byte array should not be modified during
+     * of of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
      * @param interaction used to interact with the user if necessary
@@ -46467,7 +44992,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of this asynchronous operation. The byte array should not be modified during
+     * of of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
      * @param interaction used to interact with the user if necessary
@@ -46726,7 +45251,7 @@ export interface TlsDatabase {
      * g_tls_database_lookup_certificates_issued_by() for more information.
      * 
      * The database may choose to hold a reference to the issuer byte array for the duration
-     * of this asynchronous operation. The byte array should not be modified during
+     * of of this asynchronous operation. The byte array should not be modified during
      * this time.
      * @virtual 
      * @param issuer_raw_dn a #GByteArray which holds the DER encoded issuer DN.
@@ -47487,7 +46012,7 @@ export interface UnixConnection {
      * When the operation is finished, `callback` will be called. You can then call
      * g_unix_connection_receive_credentials_finish() to get the result of the operation.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     receive_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -47559,7 +46084,7 @@ export interface UnixConnection {
      * When the operation is finished, `callback` will be called. You can then call
      * g_unix_connection_send_credentials_finish() to get the result of the operation.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
     send_credentials_async(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void
 
@@ -47974,7 +46499,6 @@ export module UnixFDMessage {
 
         // Own constructor properties of Gio-2.0.Gio.UnixFDMessage
 
-        fd_list?: UnixFDList | null
         fdList?: UnixFDList | null
     }
 
@@ -47984,7 +46508,6 @@ export interface UnixFDMessage {
 
     // Own properties of Gio-2.0.Gio.UnixFDMessage
 
-    readonly fd_list: UnixFDList
     readonly fdList: UnixFDList
 
     // Own fields of Gio-2.0.Gio.UnixFDMessage
@@ -48108,15 +46631,11 @@ export module UnixInputStream {
         /**
          * Whether to close the file descriptor when the stream is closed.
          */
-        close_fd?: boolean | null
+        closeFd?: boolean | null
         /**
          * The file descriptor that the stream reads from.
          */
         fd?: number | null
-        /**
-         * Whether to close the file descriptor when the stream is closed.
-         */
-        closeFd?: boolean | null
     }
 
 }
@@ -48125,10 +46644,6 @@ export interface UnixInputStream extends FileDescriptorBased, PollableInputStrea
 
     // Own properties of Gio-2.0.Gio.UnixInputStream
 
-    /**
-     * Whether to close the file descriptor when the stream is closed.
-     */
-    close_fd: boolean
     /**
      * Whether to close the file descriptor when the stream is closed.
      */
@@ -48341,15 +46856,11 @@ export module UnixOutputStream {
         /**
          * Whether to close the file descriptor when the stream is closed.
          */
-        close_fd?: boolean | null
+        closeFd?: boolean | null
         /**
          * The file descriptor that the stream writes to.
          */
         fd?: number | null
-        /**
-         * Whether to close the file descriptor when the stream is closed.
-         */
-        closeFd?: boolean | null
     }
 
 }
@@ -48358,10 +46869,6 @@ export interface UnixOutputStream extends FileDescriptorBased, PollableOutputStr
 
     // Own properties of Gio-2.0.Gio.UnixOutputStream
 
-    /**
-     * Whether to close the file descriptor when the stream is closed.
-     */
-    close_fd: boolean
     /**
      * Whether to close the file descriptor when the stream is closed.
      */
@@ -48468,10 +46975,8 @@ export module UnixSocketAddress {
          * Whether or not this is an abstract address
          */
         abstract?: boolean | null
-        address_type?: UnixSocketAddressType | null
-        path?: string | null
-        path_as_array?: Uint8Array | null
         addressType?: UnixSocketAddressType | null
+        path?: string | null
         pathAsArray?: Uint8Array | null
     }
 
@@ -48485,10 +46990,8 @@ export interface UnixSocketAddress extends SocketConnectable {
      * Whether or not this is an abstract address
      */
     readonly abstract: boolean
-    readonly address_type: UnixSocketAddressType
     readonly addressType: UnixSocketAddressType
     readonly path: string | null
-    readonly path_as_array: Uint8Array
     readonly pathAsArray: Uint8Array
 
     // Own fields of Gio-2.0.Gio.UnixSocketAddress
@@ -49143,15 +47646,9 @@ export module ZlibCompressor {
          * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
          * and modification time from the file info to the GZIP header.
          */
-        file_info?: FileInfo | null
+        fileInfo?: FileInfo | null
         format?: ZlibCompressorFormat | null
         level?: number | null
-        /**
-         * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-         * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-         * and modification time from the file info to the GZIP header.
-         */
-        fileInfo?: FileInfo | null
     }
 
 }
@@ -49160,12 +47657,6 @@ export interface ZlibCompressor extends Converter {
 
     // Own properties of Gio-2.0.Gio.ZlibCompressor
 
-    /**
-     * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-     * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-     * and modification time from the file info to the GZIP header.
-     */
-    file_info: FileInfo
     /**
      * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
      * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
@@ -49263,13 +47754,6 @@ export interface ZlibDecompressor extends Converter {
 
     // Own properties of Gio-2.0.Gio.ZlibDecompressor
 
-    /**
-     * A #GFileInfo containing the information found in the GZIP header
-     * of the data stream processed, or %NULL if the header was not yet
-     * fully processed, is not present at all, or the compressor's
-     * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
-     */
-    readonly file_info: FileInfo
     /**
      * A #GFileInfo containing the information found in the GZIP header
      * of the data stream processed, or %NULL if the header was not yet
@@ -50140,7 +48624,6 @@ export interface DBusInterfaceSkeletonClass {
      */
     parent_class: GObject.ObjectClass
     get_info: (interface_: DBusInterfaceSkeleton) => DBusInterfaceInfo
-    get_vtable: (interface_: DBusInterfaceSkeleton) => DBusInterfaceVTable
     get_properties: (interface_: DBusInterfaceSkeleton) => GLib.Variant
     flush: (interface_: DBusInterfaceSkeleton) => void
     g_authorize_method: (interface_: DBusInterfaceSkeleton, invocation: DBusMethodInvocation) => boolean
@@ -51465,7 +49948,7 @@ export interface FileIface {
     make_symbolic_link_async: (file: File, symlink_value: string, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     make_symbolic_link_finish: (file: File, result: AsyncResult) => boolean
     copy: (source: File, destination: File, flags: FileCopyFlags, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null) => boolean
-    copy_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback | null) => void
+    copy_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null) => void
     copy_finish: (file: File, res: AsyncResult) => boolean
     move: (source: File, destination: File, flags: FileCopyFlags, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null) => boolean
     move_async: (source: File, destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback | null) => void

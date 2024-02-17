@@ -1954,7 +1954,7 @@ export module GdbusBearer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        bearerType?: number | null
+        bearer_type?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Connected">"Connected"</link>.
          * 
@@ -1966,7 +1966,7 @@ export module GdbusBearer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        connectionError?: GLib.Variant | null
+        connection_error?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Interface">"Interface"</link>.
          * 
@@ -1978,19 +1978,19 @@ export module GdbusBearer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        ipTimeout?: number | null
+        ip_timeout?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Ip4Config">"Ip4Config"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        ip4Config?: GLib.Variant | null
+        ip4_config?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Ip6Config">"Ip6Config"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        ip6Config?: GLib.Variant | null
+        ip6_config?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Multiplexed">"Multiplexed"</link>.
          * 
@@ -2002,7 +2002,7 @@ export module GdbusBearer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        profileId?: number | null
+        profile_id?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Properties">"Properties"</link>.
          * 
@@ -2014,7 +2014,7 @@ export module GdbusBearer {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        reloadStatsSupported?: boolean | null
+        reload_stats_supported?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.Stats">"Stats"</link>.
          * 
@@ -2386,13 +2386,13 @@ export module GdbusCall {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        audioFormat?: GLib.Variant | null
+        audio_format?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Call.AudioPort">"AudioPort"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        audioPort?: string | null
+        audio_port?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Call.Direction">"Direction"</link>.
          * 
@@ -2422,7 +2422,7 @@ export module GdbusCall {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        stateReason?: number | null
+        state_reason?: number | null
     }
 
 }
@@ -2964,7 +2964,7 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        accessTechnologies?: number | null
+        access_technologies?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Bearers">"Bearers"</link>.
          * 
@@ -2976,31 +2976,31 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        carrierConfiguration?: string | null
+        carrier_configuration?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.CarrierConfigurationRevision">"CarrierConfigurationRevision"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        carrierConfigurationRevision?: string | null
+        carrier_configuration_revision?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.CurrentBands">"CurrentBands"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        currentBands?: GLib.Variant | null
+        current_bands?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.CurrentCapabilities">"CurrentCapabilities"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        currentCapabilities?: number | null
+        current_capabilities?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.CurrentModes">"CurrentModes"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        currentModes?: GLib.Variant | null
+        current_modes?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Device">"Device"</link>.
          * 
@@ -3012,7 +3012,7 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        deviceIdentifier?: string | null
+        device_identifier?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Drivers">"Drivers"</link>.
          * 
@@ -3024,13 +3024,13 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        equipmentIdentifier?: string | null
+        equipment_identifier?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.HardwareRevision">"HardwareRevision"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        hardwareRevision?: string | null
+        hardware_revision?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Manufacturer">"Manufacturer"</link>.
          * 
@@ -3042,19 +3042,19 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        maxActiveBearers?: number | null
+        max_active_bearers?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.MaxActiveMultiplexedBearers">"MaxActiveMultiplexedBearers"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        maxActiveMultiplexedBearers?: number | null
+        max_active_multiplexed_bearers?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.MaxBearers">"MaxBearers"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        maxBearers?: number | null
+        max_bearers?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Model">"Model"</link>.
          * 
@@ -3066,7 +3066,7 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        ownNumbers?: string[] | null
+        own_numbers?: string[] | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Plugin">"Plugin"</link>.
          * 
@@ -3084,19 +3084,19 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        powerState?: number | null
+        power_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.PrimaryPort">"PrimaryPort"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        primaryPort?: string | null
+        primary_port?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.PrimarySimSlot">"PrimarySimSlot"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        primarySimSlot?: number | null
+        primary_sim_slot?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Revision">"Revision"</link>.
          * 
@@ -3108,7 +3108,7 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        signalQuality?: GLib.Variant | null
+        signal_quality?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.Sim">"Sim"</link>.
          * 
@@ -3120,7 +3120,7 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        simSlots?: string[] | null
+        sim_slots?: string[] | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.State">"State"</link>.
          * 
@@ -3132,43 +3132,43 @@ export module GdbusModem {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        stateFailedReason?: number | null
+        state_failed_reason?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.SupportedBands">"SupportedBands"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedBands?: GLib.Variant | null
+        supported_bands?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.SupportedCapabilities">"SupportedCapabilities"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedCapabilities?: GLib.Variant | null
+        supported_capabilities?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.SupportedIpFamilies">"SupportedIpFamilies"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedIpFamilies?: number | null
+        supported_ip_families?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.SupportedModes">"SupportedModes"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedModes?: GLib.Variant | null
+        supported_modes?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.UnlockRequired">"UnlockRequired"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        unlockRequired?: number | null
+        unlock_required?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.UnlockRetries">"UnlockRetries"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        unlockRetries?: GLib.Variant | null
+        unlock_retries?: GLib.Variant | null
     }
 
 }
@@ -4209,13 +4209,13 @@ export module GdbusModem3gpp {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        enabledFacilityLocks?: number | null
+        enabled_facility_locks?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.EpsUeModeOperation">"EpsUeModeOperation"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        epsUeModeOperation?: number | null
+        eps_ue_mode_operation?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.Imei">"Imei"</link>.
          * 
@@ -4227,37 +4227,37 @@ export module GdbusModem3gpp {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        initialEpsBearer?: string | null
+        initial_eps_bearer?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.InitialEpsBearerSettings">"InitialEpsBearerSettings"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        initialEpsBearerSettings?: GLib.Variant | null
+        initial_eps_bearer_settings?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.Nr5gRegistrationSettings">"Nr5gRegistrationSettings"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        nr5gRegistrationSettings?: GLib.Variant | null
+        nr5g_registration_settings?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.OperatorCode">"OperatorCode"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        operatorCode?: string | null
+        operator_code?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.OperatorName">"OperatorName"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        operatorName?: string | null
+        operator_name?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.PacketServiceState">"PacketServiceState"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        packetServiceState?: number | null
+        packet_service_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.Pco">"Pco"</link>.
          * 
@@ -4269,13 +4269,13 @@ export module GdbusModem3gpp {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        registrationState?: number | null
+        registration_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.SubscriptionState">"SubscriptionState"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        subscriptionState?: number | null
+        subscription_state?: number | null
     }
 
 }
@@ -4826,7 +4826,7 @@ export module GdbusModem3gppProfileManager {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        indexField?: string | null
+        index_field?: string | null
     }
 
 }
@@ -5065,13 +5065,13 @@ export module GdbusModem3gppUssd {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        networkNotification?: string | null
+        network_notification?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.NetworkRequest">"NetworkRequest"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        networkRequest?: string | null
+        network_request?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.State">"State"</link>.
          * 
@@ -5328,13 +5328,13 @@ export module GdbusModemCdma {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        activationState?: number | null
+        activation_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-ModemCdma.Cdma1xRegistrationState">"Cdma1xRegistrationState"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        cdma1xRegistrationState?: number | null
+        cdma1x_registration_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-ModemCdma.Esn">"Esn"</link>.
          * 
@@ -5346,7 +5346,7 @@ export module GdbusModemCdma {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        evdoRegistrationState?: number | null
+        evdo_registration_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-ModemCdma.Meid">"Meid"</link>.
          * 
@@ -5626,7 +5626,7 @@ export module GdbusModemFirmware {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        updateSettings?: GLib.Variant | null
+        update_settings?: GLib.Variant | null
     }
 
 }
@@ -5830,7 +5830,7 @@ export module GdbusModemLocation {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        assistanceDataServers?: string[] | null
+        assistance_data_servers?: string[] | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.Capabilities">"Capabilities"</link>.
          * 
@@ -5848,7 +5848,7 @@ export module GdbusModemLocation {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        gpsRefreshRate?: number | null
+        gps_refresh_rate?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.Location">"Location"</link>.
          * 
@@ -5860,19 +5860,19 @@ export module GdbusModemLocation {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        signalsLocation?: boolean | null
+        signals_location?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.SuplServer">"SuplServer"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        suplServer?: string | null
+        supl_server?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.SupportedAssistanceData">"SupportedAssistanceData"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedAssistanceData?: number | null
+        supported_assistance_data?: number | null
     }
 
 }
@@ -6266,7 +6266,7 @@ export module GdbusModemMessaging {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        defaultStorage?: number | null
+        default_storage?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Messaging.Messages">"Messages"</link>.
          * 
@@ -6278,7 +6278,7 @@ export module GdbusModemMessaging {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        supportedStorages?: GLib.Variant | null
+        supported_storages?: GLib.Variant | null
     }
 
 }
@@ -6572,19 +6572,19 @@ export module GdbusModemOma {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        pendingNetworkInitiatedSessions?: GLib.Variant | null
+        pending_network_initiated_sessions?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Oma.SessionState">"SessionState"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        sessionState?: number | null
+        session_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Oma.SessionType">"SessionType"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        sessionType?: number | null
+        session_type?: number | null
     }
 
 }
@@ -6891,7 +6891,7 @@ export module GdbusModemSar {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        powerLevel?: number | null
+        power_level?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Sar.State">"State"</link>.
          * 
@@ -7097,7 +7097,7 @@ export module GdbusModemSignal {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        errorRateThreshold?: boolean | null
+        error_rate_threshold?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Signal.Evdo">"Evdo"</link>.
          * 
@@ -7133,7 +7133,7 @@ export module GdbusModemSignal {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        rssiThreshold?: number | null
+        rssi_threshold?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Signal.Umts">"Umts"</link>.
          * 
@@ -7619,7 +7619,7 @@ export module GdbusModemTime {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        networkTimezone?: GLib.Variant | null
+        network_timezone?: GLib.Variant | null
     }
 
 }
@@ -7842,7 +7842,7 @@ export module GdbusModemVoice {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        emergencyOnly?: boolean | null
+        emergency_only?: boolean | null
     }
 
 }
@@ -8311,61 +8311,61 @@ export module GdbusObject {
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemCdma?: GdbusModemCdma | null
+        modem_cdma?: GdbusModemCdma | null
         /**
          * The #MmGdbusModemFirmware instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Firmware.top_of_page">org.freedesktop.ModemManager1.Modem.Firmware</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemFirmware?: GdbusModemFirmware | null
+        modem_firmware?: GdbusModemFirmware | null
         /**
          * The #MmGdbusModemLocation instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Location.top_of_page">org.freedesktop.ModemManager1.Modem.Location</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemLocation?: GdbusModemLocation | null
+        modem_location?: GdbusModemLocation | null
         /**
          * The #MmGdbusModemMessaging instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Messaging.top_of_page">org.freedesktop.ModemManager1.Modem.Messaging</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemMessaging?: GdbusModemMessaging | null
+        modem_messaging?: GdbusModemMessaging | null
         /**
          * The #MmGdbusModemOma instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Oma.top_of_page">org.freedesktop.ModemManager1.Modem.Oma</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemOma?: GdbusModemOma | null
+        modem_oma?: GdbusModemOma | null
         /**
          * The #MmGdbusModemSar instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Sar.top_of_page">org.freedesktop.ModemManager1.Modem.Sar</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemSar?: GdbusModemSar | null
+        modem_sar?: GdbusModemSar | null
         /**
          * The #MmGdbusModemSignal instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Signal.top_of_page">org.freedesktop.ModemManager1.Modem.Signal</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemSignal?: GdbusModemSignal | null
+        modem_signal?: GdbusModemSignal | null
         /**
          * The #MmGdbusModemSimple instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Simple.top_of_page">org.freedesktop.ModemManager1.Modem.Simple</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemSimple?: GdbusModemSimple | null
+        modem_simple?: GdbusModemSimple | null
         /**
          * The #MmGdbusModemTime instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Time.top_of_page">org.freedesktop.ModemManager1.Modem.Time</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemTime?: GdbusModemTime | null
+        modem_time?: GdbusModemTime | null
         /**
          * The #MmGdbusModemVoice instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Voice.top_of_page">org.freedesktop.ModemManager1.Modem.Voice</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modemVoice?: GdbusModemVoice | null
+        modem_voice?: GdbusModemVoice | null
         /**
          * The #MmGdbusModem3gpp instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp</link>, if any.
          * 
@@ -8377,13 +8377,13 @@ export module GdbusObject {
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modem3gppProfileManager?: GdbusModem3gppProfileManager | null
+        modem3gpp_profile_manager?: GdbusModem3gppProfileManager | null
         /**
          * The #MmGdbusModem3gppUssd instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd</link>, if any.
          * 
          * Connect to the #GObject::notify signal to get informed of property changes.
          */
-        modem3gppUssd?: GdbusModem3gppUssd | null
+        modem3gpp_ussd?: GdbusModem3gppUssd | null
     }
 
 }
@@ -8990,13 +8990,13 @@ export module GdbusSim {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        emergencyNumbers?: string[] | null
+        emergency_numbers?: string[] | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.EsimStatus">"EsimStatus"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        esimStatus?: number | null
+        esim_status?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.Gid1">"Gid1"</link>.
          * 
@@ -9020,19 +9020,19 @@ export module GdbusSim {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        operatorIdentifier?: string | null
+        operator_identifier?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.OperatorName">"OperatorName"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        operatorName?: string | null
+        operator_name?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.PreferredNetworks">"PreferredNetworks"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        preferredNetworks?: GLib.Variant | null
+        preferred_networks?: GLib.Variant | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.Removability">"Removability"</link>.
          * 
@@ -9044,13 +9044,13 @@ export module GdbusSim {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        simIdentifier?: string | null
+        sim_identifier?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.SimType">"SimType"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        simType?: number | null
+        sim_type?: number | null
     }
 
 }
@@ -9500,25 +9500,25 @@ export module GdbusSms {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        deliveryReportRequest?: boolean | null
+        delivery_report_request?: boolean | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.DeliveryState">"DeliveryState"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        deliveryState?: number | null
+        delivery_state?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.DischargeTimestamp">"DischargeTimestamp"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        dischargeTimestamp?: string | null
+        discharge_timestamp?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.MessageReference">"MessageReference"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        messageReference?: number | null
+        message_reference?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.Number">"Number"</link>.
          * 
@@ -9530,13 +9530,13 @@ export module GdbusSms {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        pduType?: number | null
+        pdu_type?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.ServiceCategory">"ServiceCategory"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        serviceCategory?: number | null
+        service_category?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.SMSC">"SMSC"</link>.
          * 
@@ -9560,7 +9560,7 @@ export module GdbusSms {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        teleserviceId?: number | null
+        teleservice_id?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.Text">"Text"</link>.
          * 
@@ -31943,17 +31943,17 @@ export module SimpleStatus {
 
         // Own constructor properties of ModemManager-1.0.ModemManager.SimpleStatus
 
-        accessTechnologies?: ModemAccessTechnology | null
-        cdmaCdma1xRegistrationState?: ModemCdmaRegistrationState | null
-        cdmaEvdoRegistrationState?: ModemCdmaRegistrationState | null
-        cdmaNid?: number | null
-        cdmaSid?: number | null
-        currentBands?: GLib.Variant | null
-        m3gppOperatorCode?: string | null
-        m3gppOperatorName?: string | null
-        m3gppRegistrationState?: Modem3gppRegistrationState | null
-        m3gppSubscriptionState?: Modem3gppSubscriptionState | null
-        signalQuality?: GLib.Variant | null
+        access_technologies?: ModemAccessTechnology | null
+        cdma_cdma1x_registration_state?: ModemCdmaRegistrationState | null
+        cdma_evdo_registration_state?: ModemCdmaRegistrationState | null
+        cdma_nid?: number | null
+        cdma_sid?: number | null
+        current_bands?: GLib.Variant | null
+        m3gpp_operator_code?: string | null
+        m3gpp_operator_name?: string | null
+        m3gpp_registration_state?: Modem3gppRegistrationState | null
+        m3gpp_subscription_state?: Modem3gppSubscriptionState | null
+        signal_quality?: GLib.Variant | null
         state?: ModemState | null
     }
 

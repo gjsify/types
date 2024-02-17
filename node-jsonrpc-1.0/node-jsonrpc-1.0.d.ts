@@ -81,7 +81,7 @@ module Client {
          * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
          * with a JSON-RPC peer.
          */
-        ioStream?: Gio.IOStream | null
+        io_stream?: Gio.IOStream | null
         /**
          * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
          * communicate with the peer instead of JSON. You should only set this
@@ -92,7 +92,7 @@ module Client {
          * expensive memory allocations and parsing costs associated with JSON.
          * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
          */
-        useGvariant?: boolean | null
+        use_gvariant?: boolean | null
     }
 
 }
@@ -510,7 +510,7 @@ module OutputStream {
 
         // Own constructor properties of Jsonrpc-1.0.Jsonrpc.OutputStream
 
-        useGvariant?: boolean | null
+        use_gvariant?: boolean | null
     }
 
 }

@@ -1516,7 +1516,7 @@ module Device {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3209,7 +3209,7 @@ module Profile {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3676,7 +3676,7 @@ module Sensor {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }

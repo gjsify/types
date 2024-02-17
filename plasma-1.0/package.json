@@ -1,13 +1,19 @@
 {
     "name": "@girs/plasma-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Plasma-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "plasma-1.0.js",
     "main": "plasma-1.0.js",
     "exports": {
-        "./ambient": "./plasma-1.0-ambient.d.ts",
-        "./import": "./plasma-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./plasma-1.0-ambient.d.ts",
+            "default": "./plasma-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./plasma-1.0-import.d.ts",
+            "default": "./plasma-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./plasma-1.0.d.ts",

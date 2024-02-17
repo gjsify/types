@@ -2867,21 +2867,21 @@ module Settings {
          * 
          * This property is independent of #DhSettings:use-system-fonts.
          */
-        fixedFont?: string | null
+        fixed_font?: string | null
         /**
          * Whether books should be grouped by programming language in the UI.
          */
-        groupBooksByLanguage?: boolean | null
+        group_books_by_language?: boolean | null
         /**
          * Whether to use the system default fonts.
          */
-        useSystemFonts?: boolean | null
+        use_system_fonts?: boolean | null
         /**
          * Font for text with variable width.
          * 
          * This property is independent of #DhSettings:use-system-fonts.
          */
-        variableFont?: string | null
+        variable_font?: string | null
     }
 
 }
@@ -3618,7 +3618,7 @@ module Tab {
          * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
          * with the default #DhProfile.
          */
-        webView?: WebView | null
+        web_view?: WebView | null
     }
 
 }

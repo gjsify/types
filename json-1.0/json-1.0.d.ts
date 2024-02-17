@@ -986,7 +986,7 @@ module Generator {
         /**
          * The character that should be used when indenting in pretty print.
          */
-        indent_char?: number | null
+        indentChar?: number | null
         /**
          * Whether the output should be "pretty-printed", with indentation and
          * newlines.
@@ -1000,10 +1000,6 @@ module Generator {
          * stream.
          */
         root?: Node | null
-        /**
-         * The character that should be used when indenting in pretty print.
-         */
-        indentChar?: number | null
     }
 
 }
@@ -1016,10 +1012,6 @@ interface Generator {
      * Number of spaces to be used to indent when pretty printing.
      */
     indent: number
-    /**
-     * The character that should be used when indenting in pretty print.
-     */
-    indent_char: number
     /**
      * The character that should be used when indenting in pretty print.
      */

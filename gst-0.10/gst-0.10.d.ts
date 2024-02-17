@@ -2211,17 +2211,12 @@ module BaseSink {
 
         async?: boolean | null
         blocksize?: number | null
-        enable_last_buffer?: boolean | null
-        max_lateness?: number | null
-        preroll_queue_len?: number | null
-        qos?: boolean | null
-        render_delay?: number | null
-        sync?: boolean | null
-        ts_offset?: number | null
         enableLastBuffer?: boolean | null
         maxLateness?: number | null
         prerollQueueLen?: number | null
+        qos?: boolean | null
         renderDelay?: number | null
+        sync?: boolean | null
         tsOffset?: number | null
     }
 
@@ -2233,18 +2228,12 @@ interface BaseSink {
 
     async: boolean
     blocksize: number
-    enable_last_buffer: boolean
     enableLastBuffer: boolean
-    readonly last_buffer: Buffer
     readonly lastBuffer: Buffer
-    max_lateness: number
     maxLateness: number
-    preroll_queue_len: number
     prerollQueueLen: number
     qos: boolean
-    render_delay: number
     renderDelay: number
-    ts_offset: number
     tsOffset: number
 
     // Conflicting properties
@@ -2382,11 +2371,9 @@ module BaseSrc {
         // Own constructor properties of Gst-0.10.Gst.BaseSrc
 
         blocksize?: number | null
-        do_timestamp?: boolean | null
-        num_buffers?: number | null
-        typefind?: boolean | null
         doTimestamp?: boolean | null
         numBuffers?: number | null
+        typefind?: boolean | null
     }
 
 }
@@ -2395,7 +2382,6 @@ interface BaseSrc {
 
     // Own properties of Gst-0.10.Gst.BaseSrc
 
-    do_timestamp: boolean
     doTimestamp: boolean
     numBuffers: number
     typefind: boolean
@@ -2628,7 +2614,6 @@ module Bin {
 
         // Own constructor properties of Gst-0.10.Gst.Bin
 
-        async_handling?: boolean | null
         asyncHandling?: boolean | null
     }
 
@@ -2638,7 +2623,6 @@ interface Bin extends ChildProxy {
 
     // Own properties of Gst-0.10.Gst.Bin
 
-    async_handling: boolean
     asyncHandling: boolean
 
     // Conflicting properties
@@ -2917,8 +2901,6 @@ module Clock {
 
         stats?: boolean | null
         timeout?: number | null
-        window_size?: number | null
-        window_threshold?: number | null
         windowSize?: number | null
         windowThreshold?: number | null
     }
@@ -3124,11 +3106,8 @@ interface DataQueue {
 
     // Own properties of Gst-0.10.Gst.DataQueue
 
-    readonly current_level_bytes: number
     readonly currentLevelBytes: number
-    readonly current_level_time: number
     readonly currentLevelTime: number
-    readonly current_level_visible: number
     readonly currentLevelVisible: number
 
     // Own fields of Gst-0.10.Gst.DataQueue
@@ -4281,9 +4260,8 @@ module PadTemplate {
 
         caps?: Caps | null
         direction?: PadDirection | null
-        name_template?: string | null
-        presence?: PadPresence | null
         nameTemplate?: string | null
+        presence?: PadPresence | null
     }
 
 }
@@ -4384,9 +4362,8 @@ module Pipeline {
 
         // Own constructor properties of Gst-0.10.Gst.Pipeline
 
-        auto_flush_bus?: boolean | null
-        delay?: number | null
         autoFlushBus?: boolean | null
+        delay?: number | null
     }
 
 }
@@ -4395,7 +4372,6 @@ interface Pipeline extends ChildProxy {
 
     // Own properties of Gst-0.10.Gst.Pipeline
 
-    auto_flush_bus: boolean
     autoFlushBus: boolean
 
     // Conflicting properties
@@ -4870,7 +4846,6 @@ module SystemClock {
 
         // Own constructor properties of Gst-0.10.Gst.SystemClock
 
-        clock_type?: ClockType | null
         clockType?: ClockType | null
     }
 
@@ -4880,7 +4855,6 @@ interface SystemClock {
 
     // Own properties of Gst-0.10.Gst.SystemClock
 
-    clock_type: ClockType
     clockType: ClockType
 
     // Conflicting properties

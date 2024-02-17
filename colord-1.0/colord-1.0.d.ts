@@ -889,23 +889,11 @@ interface Client {
     /**
      * The daemon version.
      */
-    readonly daemon_version: string | null
-    /**
-     * The daemon version.
-     */
     readonly daemonVersion: string | null
     /**
      * The system model.
      */
-    readonly system_model: string | null
-    /**
-     * The system model.
-     */
     readonly systemModel: string | null
-    /**
-     * The system vendor.
-     */
-    readonly system_vendor: string | null
     /**
      * The system vendor.
      */
@@ -1493,10 +1481,6 @@ module Device {
         /**
          * The object path of the remote object
          */
-        object_path?: string | null
-        /**
-         * The object path of the remote object
-         */
         objectPath?: string | null
     }
 
@@ -1553,16 +1537,11 @@ interface Device {
     /**
      * The object path of the remote object
      */
-    object_path: string | null
-    /**
-     * The object path of the remote object
-     */
     objectPath: string | null
     /**
      * The device owner, e.g. 500.
      */
     readonly owner: number
-    readonly profiling_inhibitors: string[]
     readonly profilingInhibitors: string[]
     /**
      * The device scope, e.g. %CD_OBJECT_SCOPE_TEMP.
@@ -2308,7 +2287,6 @@ interface Icc {
     // Own properties of Colord-1.0.Colord.Icc
 
     readonly blue: ColorXYZ
-    readonly can_delete: boolean
     readonly canDelete: boolean
     readonly checksum: string | null
     colorspace: number
@@ -3089,10 +3067,6 @@ module Profile {
         /**
          * The object path of the remote object
          */
-        object_path?: string | null
-        /**
-         * The object path of the remote object
-         */
         objectPath?: string | null
     }
 
@@ -3125,10 +3099,6 @@ interface Profile {
     /**
      * If the profile has a VCGT table.
      */
-    readonly has_vcgt: string | null
-    /**
-     * If the profile has a VCGT table.
-     */
     readonly hasVcgt: string | null
     /**
      * The profile ID.
@@ -3137,19 +3107,11 @@ interface Profile {
     /**
      * If the profile is installed system wide for all users.
      */
-    readonly is_system_wide: string | null
-    /**
-     * If the profile is installed system wide for all users.
-     */
     readonly isSystemWide: string | null
     /**
      * The profile kind.
      */
     readonly kind: string | null
-    /**
-     * The object path of the remote object
-     */
-    object_path: string | null
     /**
      * The object path of the remote object
      */
@@ -3533,10 +3495,6 @@ module Sensor {
         /**
          * The object path of the remote object
          */
-        object_path?: string | null
-        /**
-         * The object path of the remote object
-         */
         objectPath?: string | null
     }
 
@@ -3578,10 +3536,6 @@ interface Sensor {
      * If the sensor has a native driver.
      */
     readonly native: string | null
-    /**
-     * The object path of the remote object
-     */
-    object_path: string | null
     /**
      * The object path of the remote object
      */

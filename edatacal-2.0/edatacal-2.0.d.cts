@@ -116,11 +116,10 @@ export module CalBackend {
 
         // Own constructor properties of EDataCal-2.0.EDataCal.CalBackend
 
-        cache_dir?: string | null
+        cacheDir?: string | null
         kind?: number | null
         registry?: EDataServer.SourceRegistry | null
         writable?: boolean | null
-        cacheDir?: string | null
     }
 
 }
@@ -129,10 +128,8 @@ export interface CalBackend extends ECal.TimezoneCache {
 
     // Own properties of EDataCal-2.0.EDataCal.CalBackend
 
-    cache_dir: string | null
     cacheDir: string | null
     readonly kind: number
-    readonly proxy_resolver: Gio.ProxyResolver
     readonly proxyResolver: Gio.ProxyResolver
     readonly registry: EDataServer.SourceRegistry
     writable: boolean
@@ -3325,7 +3322,6 @@ export module DataCal {
 
         backend?: CalBackend | null
         connection?: Gio.DBusConnection | null
-        object_path?: string | null
         objectPath?: string | null
     }
 
@@ -3337,7 +3333,6 @@ export interface DataCal extends Gio.Initable {
 
     readonly backend: CalBackend
     readonly connection: Gio.DBusConnection
-    readonly object_path: string | null
     readonly objectPath: string | null
 
     // Own fields of EDataCal-2.0.EDataCal.DataCal
@@ -3598,9 +3593,8 @@ export module DataCalView {
 
         backend?: CalBackend | null
         connection?: Gio.DBusConnection | null
-        object_path?: string | null
-        sexp?: CalBackendSExp | null
         objectPath?: string | null
+        sexp?: CalBackendSExp | null
     }
 
 }
@@ -3611,7 +3605,6 @@ export interface DataCalView extends Gio.Initable {
 
     readonly backend: CalBackend
     readonly connection: Gio.DBusConnection
-    readonly object_path: string | null
     readonly objectPath: string | null
     readonly sexp: CalBackendSExp
 

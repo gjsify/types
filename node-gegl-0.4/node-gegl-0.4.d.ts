@@ -774,19 +774,19 @@ module Buffer {
 
         // Own constructor properties of Gegl-0.4.Gegl.Buffer
 
-        abyssHeight?: number | null
-        abyssWidth?: number | null
-        abyssX?: number | null
-        abyssY?: number | null
+        abyss_height?: number | null
+        abyss_width?: number | null
+        abyss_x?: number | null
+        abyss_y?: number | null
         backend?: TileBackend | null
         format?: any | null
         height?: number | null
         initialized?: boolean | null
         path?: string | null
-        shiftX?: number | null
-        shiftY?: number | null
-        tileHeight?: number | null
-        tileWidth?: number | null
+        shift_x?: number | null
+        shift_y?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
         width?: number | null
         x?: number | null
         y?: number | null
@@ -1305,18 +1305,18 @@ module Config {
 
         // Own constructor properties of Gegl-0.4.Gegl.Config
 
-        applicationLicense?: string | null
-        chunkSize?: number | null
-        mipmapRendering?: boolean | null
+        application_license?: string | null
+        chunk_size?: number | null
+        mipmap_rendering?: boolean | null
         quality?: number | null
-        queueSize?: number | null
+        queue_size?: number | null
         swap?: string | null
-        swapCompression?: string | null
+        swap_compression?: string | null
         threads?: number | null
-        tileCacheSize?: number | null
-        tileHeight?: number | null
-        tileWidth?: number | null
-        useOpencl?: boolean | null
+        tile_cache_size?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
+        use_opencl?: boolean | null
     }
 
 }
@@ -1784,15 +1784,15 @@ module MetadataStore {
         /**
          * A #GeglResolutionUnit specifying units for the image resolution (density).
          */
-        resolutionUnit?: ResolutionUnit | null
+        resolution_unit?: ResolutionUnit | null
         /**
          * X resolution or density in dots per unit.
          */
-        resolutionX?: number | null
+        resolution_x?: number | null
         /**
          * Y resolution or density in dots per unit.
          */
-        resolutionY?: number | null
+        resolution_y?: number | null
         /**
          * Software used to create the image.
          */
@@ -2259,13 +2259,13 @@ module Node {
 
         // Own constructor properties of Gegl-0.4.Gegl.Node
 
-        cachePolicy?: CachePolicy | null
-        dontCache?: boolean | null
-        geglOperation?: Operation | null
+        cache_policy?: CachePolicy | null
+        dont_cache?: boolean | null
+        gegl_operation?: Operation | null
         name?: string | null
         operation?: string | null
         passthrough?: boolean | null
-        useOpencl?: boolean | null
+        use_opencl?: boolean | null
     }
 
 }
@@ -3312,10 +3312,10 @@ module TileBackend {
 
         // Own constructor properties of Gegl-0.4.Gegl.TileBackend
 
-        flushOnDestroy?: boolean | null
+        flush_on_destroy?: boolean | null
         format?: any | null
-        tileHeight?: number | null
-        tileWidth?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
     }
 
 }

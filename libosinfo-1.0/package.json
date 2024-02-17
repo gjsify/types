@@ -1,13 +1,19 @@
 {
     "name": "@girs/libosinfo-1.0",
-    "version": "1.11.0-3.2.7",
+    "version": "1.11.0-3.2.8",
     "description": "GJS TypeScript type definitions for Libosinfo-1.0, generated from library version 1.11.0",
     "type": "module",
     "module": "libosinfo-1.0.js",
     "main": "libosinfo-1.0.js",
     "exports": {
-        "./ambient": "./libosinfo-1.0-ambient.d.ts",
-        "./import": "./libosinfo-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./libosinfo-1.0-ambient.d.ts",
+            "default": "./libosinfo-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./libosinfo-1.0-import.d.ts",
+            "default": "./libosinfo-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./libosinfo-1.0.d.ts",

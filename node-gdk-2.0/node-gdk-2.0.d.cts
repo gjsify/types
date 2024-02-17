@@ -5002,7 +5002,7 @@ export module DisplayManager {
 
         // Own constructor properties of Gdk-2.0.Gdk.DisplayManager
 
-        defaultDisplay?: Display | null
+        default_display?: Display | null
     }
 
 }
@@ -6358,7 +6358,7 @@ export module Screen {
 
         // Own constructor properties of Gdk-2.0.Gdk.Screen
 
-        fontOptions?: any | null
+        font_options?: any | null
         resolution?: number | null
     }
 

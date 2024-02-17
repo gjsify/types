@@ -190,7 +190,6 @@ export module AntiLinkable {
 
         // Own constructor properties of Folks-0.7.Folks.AntiLinkable
 
-        anti_links?: Gee.Set | null
         antiLinks?: Gee.Set | null
     }
 
@@ -200,7 +199,6 @@ export interface AntiLinkable extends Persona {
 
     // Own properties of Folks-0.7.Folks.AntiLinkable
 
-    anti_links: Gee.Set
     antiLinks: Gee.Set
 
     // Owm methods of Folks-0.7.Folks.AntiLinkable
@@ -341,7 +339,6 @@ export module BirthdayDetails {
         // Own constructor properties of Folks-0.7.Folks.BirthdayDetails
 
         birthday?: GLib.DateTime | null
-        calendar_event_id?: string | null
         calendarEventId?: string | null
     }
 
@@ -352,7 +349,6 @@ export interface BirthdayDetails extends GObject.Object {
     // Own properties of Folks-0.7.Folks.BirthdayDetails
 
     birthday: GLib.DateTime
-    calendar_event_id: string | null
     calendarEventId: string | null
 
     // Owm methods of Folks-0.7.Folks.BirthdayDetails
@@ -412,7 +408,6 @@ export module EmailDetails {
 
         // Own constructor properties of Folks-0.7.Folks.EmailDetails
 
-        email_addresses?: Gee.Set | null
         emailAddresses?: Gee.Set | null
     }
 
@@ -422,7 +417,6 @@ export interface EmailDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.EmailDetails
 
-    email_addresses: Gee.Set
     emailAddresses: Gee.Set
 
     // Owm methods of Folks-0.7.Folks.EmailDetails
@@ -519,7 +513,6 @@ export module FavouriteDetails {
 
         // Own constructor properties of Folks-0.7.Folks.FavouriteDetails
 
-        is_favourite?: boolean | null
         isFavourite?: boolean | null
     }
 
@@ -529,7 +522,6 @@ export interface FavouriteDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.FavouriteDetails
 
-    is_favourite: boolean
     isFavourite: boolean
 
     // Owm methods of Folks-0.7.Folks.FavouriteDetails
@@ -712,7 +704,6 @@ export module ImDetails {
 
         // Own constructor properties of Folks-0.7.Folks.ImDetails
 
-        im_addresses?: Gee.MultiMap | null
         imAddresses?: Gee.MultiMap | null
     }
 
@@ -722,7 +713,6 @@ export interface ImDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.ImDetails
 
-    im_addresses: Gee.MultiMap
     imAddresses: Gee.MultiMap
 
     // Owm methods of Folks-0.7.Folks.ImDetails
@@ -777,13 +767,9 @@ export interface InteractionDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.InteractionDetails
 
-    readonly im_interaction_count: number
     readonly imInteractionCount: number
-    readonly last_im_interaction_datetime: GLib.DateTime
     readonly lastImInteractionDatetime: GLib.DateTime
-    readonly call_interaction_count: number
     readonly callInteractionCount: number
-    readonly last_call_interaction_datetime: GLib.DateTime
     readonly lastCallInteractionDatetime: GLib.DateTime
 
     // Owm methods of Folks-0.7.Folks.InteractionDetails
@@ -841,7 +827,6 @@ export module LocalIdDetails {
 
         // Own constructor properties of Folks-0.7.Folks.LocalIdDetails
 
-        local_ids?: Gee.Set | null
         localIds?: Gee.Set | null
     }
 
@@ -851,7 +836,6 @@ export interface LocalIdDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.LocalIdDetails
 
-    local_ids: Gee.Set
     localIds: Gee.Set
 
     // Owm methods of Folks-0.7.Folks.LocalIdDetails
@@ -957,11 +941,9 @@ export module NameDetails {
 
         // Own constructor properties of Folks-0.7.Folks.NameDetails
 
-        structured_name?: StructuredName | null
-        full_name?: string | null
-        nickname?: string | null
         structuredName?: StructuredName | null
         fullName?: string | null
+        nickname?: string | null
     }
 
 }
@@ -970,9 +952,7 @@ export interface NameDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.NameDetails
 
-    structured_name: StructuredName
     structuredName: StructuredName
-    full_name: string | null
     fullName: string | null
     nickname: string | null
 
@@ -1101,7 +1081,6 @@ export module PhoneDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PhoneDetails
 
-        phone_numbers?: Gee.Set | null
         phoneNumbers?: Gee.Set | null
     }
 
@@ -1111,7 +1090,6 @@ export interface PhoneDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.PhoneDetails
 
-    phone_numbers: Gee.Set
     phoneNumbers: Gee.Set
 
     // Owm methods of Folks-0.7.Folks.PhoneDetails
@@ -1160,7 +1138,6 @@ export module PostalAddressDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PostalAddressDetails
 
-        postal_addresses?: Gee.Set | null
         postalAddresses?: Gee.Set | null
     }
 
@@ -1170,7 +1147,6 @@ export interface PostalAddressDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.PostalAddressDetails
 
-    postal_addresses: Gee.Set
     postalAddresses: Gee.Set
 
     // Owm methods of Folks-0.7.Folks.PostalAddressDetails
@@ -1219,10 +1195,6 @@ export module PresenceDetails {
 
         // Own constructor properties of Folks-0.7.Folks.PresenceDetails
 
-        presence_type?: PresenceType | null
-        presence_message?: string | null
-        client_types?: string[] | null
-        presence_status?: string | null
         presenceType?: PresenceType | null
         presenceMessage?: string | null
         clientTypes?: string[] | null
@@ -1235,13 +1207,9 @@ export interface PresenceDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.PresenceDetails
 
-    presence_type: PresenceType
     presenceType: PresenceType
-    presence_message: string | null
     presenceMessage: string | null
-    client_types: string[]
     clientTypes: string[]
-    presence_status: string | null
     presenceStatus: string | null
 
     // Owm methods of Folks-0.7.Folks.PresenceDetails
@@ -1424,7 +1392,6 @@ export module WebServiceDetails {
 
         // Own constructor properties of Folks-0.7.Folks.WebServiceDetails
 
-        web_service_addresses?: Gee.MultiMap | null
         webServiceAddresses?: Gee.MultiMap | null
     }
 
@@ -1434,7 +1401,6 @@ export interface WebServiceDetails extends GObject.Object {
 
     // Own properties of Folks-0.7.Folks.WebServiceDetails
 
-    web_service_addresses: Gee.MultiMap
     webServiceAddresses: Gee.MultiMap
 
     // Owm methods of Folks-0.7.Folks.WebServiceDetails
@@ -1483,15 +1449,12 @@ export module AbstractFieldDetails {
 
         // Own constructor properties of Folks-0.7.Folks.AbstractFieldDetails
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        value?: any | null
-        id?: string | null
-        parameters?: Gee.MultiMap | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
+        value?: any | null
+        id?: string | null
+        parameters?: Gee.MultiMap | null
     }
 
 }
@@ -1500,14 +1463,10 @@ export interface AbstractFieldDetails {
 
     // Own properties of Folks-0.7.Folks.AbstractFieldDetails
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
     value: any
-    readonly value_type: GObject.GType
     readonly valueType: GObject.GType
     id: string | null
     parameters: Gee.MultiMap
@@ -1649,8 +1608,6 @@ export module BackendStore {
 
         // Own constructor properties of Folks-0.7.Folks.BackendStore
 
-        enabled_backends?: Gee.Map | null
-        is_prepared?: boolean | null
         enabledBackends?: Gee.Map | null
         isPrepared?: boolean | null
     }
@@ -1661,9 +1618,7 @@ export interface BackendStore {
 
     // Own properties of Folks-0.7.Folks.BackendStore
 
-    enabled_backends: Gee.Map
     enabledBackends: Gee.Map
-    is_prepared: boolean
     isPrepared: boolean
 
     // Own fields of Folks-0.7.Folks.BackendStore
@@ -1750,12 +1705,9 @@ export interface Backend {
 
     // Own properties of Folks-0.7.Folks.Backend
 
-    readonly is_prepared: boolean
     readonly isPrepared: boolean
-    readonly is_quiescent: boolean
     readonly isQuiescent: boolean
     readonly name: string | null
-    readonly persona_stores: Gee.Map
     readonly personaStores: Gee.Map
 
     // Owm methods of Folks-0.7.Folks.Backend
@@ -1846,8 +1798,6 @@ export module Debug {
 
         // Own constructor properties of Folks-0.7.Folks.Debug
 
-        colour_enabled?: boolean | null
-        debug_output_enabled?: boolean | null
         colourEnabled?: boolean | null
         debugOutputEnabled?: boolean | null
     }
@@ -1858,9 +1808,7 @@ export interface Debug {
 
     // Own properties of Folks-0.7.Folks.Debug
 
-    colour_enabled: boolean
     colourEnabled: boolean
-    debug_output_enabled: boolean
     debugOutputEnabled: boolean
 
     // Owm methods of Folks-0.7.Folks.Debug
@@ -2098,10 +2046,9 @@ export module IndividualAggregator {
 
         // Own constructor properties of Folks-0.7.Folks.IndividualAggregator
 
-        backend_store?: BackendStore | null
+        backendStore?: BackendStore | null
         individuals?: Gee.Map | null
         user?: Individual | null
-        backendStore?: BackendStore | null
     }
 
 }
@@ -2110,13 +2057,9 @@ export interface IndividualAggregator {
 
     // Own properties of Folks-0.7.Folks.IndividualAggregator
 
-    readonly is_prepared: boolean
     readonly isPrepared: boolean
-    readonly is_quiescent: boolean
     readonly isQuiescent: boolean
-    readonly primary_store: PersonaStore
     readonly primaryStore: PersonaStore
-    readonly backend_store: BackendStore
     readonly backendStore: BackendStore
     individuals: Gee.Map
     user: Individual
@@ -2228,12 +2171,10 @@ export module Individual {
 
         // Own constructor properties of Folks-0.7.Folks.Individual
 
-        trust_level?: TrustLevel | null
-        is_user?: boolean | null
-        id?: string | null
-        personas?: Gee.Set | null
         trustLevel?: TrustLevel | null
         isUser?: boolean | null
+        id?: string | null
+        personas?: Gee.Set | null
     }
 
 }
@@ -2242,12 +2183,9 @@ export interface Individual extends AliasDetails, AvatarDetails, BirthdayDetails
 
     // Own properties of Folks-0.7.Folks.Individual
 
-    trust_level: TrustLevel
     trustLevel: TrustLevel
-    is_user: boolean
     isUser: boolean
     id: string | null
-    readonly display_name: string | null
     readonly displayName: string | null
     personas: Gee.Set
 
@@ -2445,14 +2383,11 @@ export module StructuredName {
 
         // Own constructor properties of Folks-0.7.Folks.StructuredName
 
-        family_name?: string | null
-        given_name?: string | null
-        additional_names?: string | null
-        prefixes?: string | null
-        suffixes?: string | null
         familyName?: string | null
         givenName?: string | null
         additionalNames?: string | null
+        prefixes?: string | null
+        suffixes?: string | null
     }
 
 }
@@ -2461,11 +2396,8 @@ export interface StructuredName {
 
     // Own properties of Folks-0.7.Folks.StructuredName
 
-    family_name: string | null
     familyName: string | null
-    given_name: string | null
     givenName: string | null
-    additional_names: string | null
     additionalNames: string | null
     prefixes: string | null
     suffixes: string | null
@@ -2605,15 +2537,11 @@ export module ObjectCache {
 
         // Own constructor properties of Folks-0.7.Folks.ObjectCache
 
-        t_type?: GObject.GType | null
-        t_dup_func?: GObject.BoxedCopyFunc | null
-        t_destroy_func?: GLib.DestroyNotify | null
-        type_id?: string | null
-        id?: string | null
         tType?: GObject.GType | null
         tDupFunc?: GObject.BoxedCopyFunc | null
         tDestroyFunc?: GLib.DestroyNotify | null
         typeId?: string | null
+        id?: string | null
     }
 
 }
@@ -2622,13 +2550,9 @@ export interface ObjectCache {
 
     // Own properties of Folks-0.7.Folks.ObjectCache
 
-    readonly t_type: GObject.GType
     readonly tType: GObject.GType
-    readonly t_dup_func: GObject.BoxedCopyFunc
     readonly tDupFunc: GObject.BoxedCopyFunc
-    readonly t_destroy_func: GLib.DestroyNotify
     readonly tDestroyFunc: GLib.DestroyNotify
-    readonly type_id: string | null
     readonly typeId: string | null
     readonly id: string | null
 
@@ -2715,13 +2639,8 @@ export module PersonaStore {
 
         // Own constructor properties of Folks-0.7.Folks.PersonaStore
 
-        display_name?: string | null
-        id?: string | null
-        is_writeable?: boolean | null
-        trust_level?: PersonaStoreTrust | null
-        is_primary_store?: boolean | null
-        is_user_set_default?: boolean | null
         displayName?: string | null
+        id?: string | null
         isWriteable?: boolean | null
         trustLevel?: PersonaStoreTrust | null
         isPrimaryStore?: boolean | null
@@ -2734,33 +2653,20 @@ export interface PersonaStore {
 
     // Own properties of Folks-0.7.Folks.PersonaStore
 
-    readonly type_id: string | null
     readonly typeId: string | null
-    readonly display_name: string | null
     readonly displayName: string | null
     readonly id: string | null
     readonly personas: Gee.Map
-    readonly can_add_personas: MaybeBool
     readonly canAddPersonas: MaybeBool
-    readonly can_alias_personas: MaybeBool
     readonly canAliasPersonas: MaybeBool
-    readonly can_group_personas: MaybeBool
     readonly canGroupPersonas: MaybeBool
-    readonly can_remove_personas: MaybeBool
     readonly canRemovePersonas: MaybeBool
-    readonly is_prepared: boolean
     readonly isPrepared: boolean
-    readonly is_quiescent: boolean
     readonly isQuiescent: boolean
-    is_writeable: boolean
     isWriteable: boolean
-    trust_level: PersonaStoreTrust
     trustLevel: PersonaStoreTrust
-    readonly always_writeable_properties: string[]
     readonly alwaysWriteableProperties: string[]
-    is_primary_store: boolean
     isPrimaryStore: boolean
-    is_user_set_default: boolean
     isUserSetDefault: boolean
 
     // Owm methods of Folks-0.7.Folks.PersonaStore
@@ -2898,12 +2804,10 @@ export module Persona {
 
         iid?: string | null
         uid?: string | null
-        display_id?: string | null
-        is_user?: boolean | null
-        store?: PersonaStore | null
-        individual?: Individual | null
         displayId?: string | null
         isUser?: boolean | null
+        store?: PersonaStore | null
+        individual?: Individual | null
     }
 
 }
@@ -2914,15 +2818,11 @@ export interface Persona {
 
     readonly iid: string | null
     readonly uid: string | null
-    readonly display_id: string | null
     readonly displayId: string | null
-    readonly is_user: boolean
     readonly isUser: boolean
     readonly store: PersonaStore
     individual: Individual
-    readonly linkable_properties: string[]
     readonly linkableProperties: string[]
-    readonly writeable_properties: string[]
     readonly writeableProperties: string[]
 
     // Owm methods of Folks-0.7.Folks.Persona
@@ -3057,18 +2957,15 @@ export module PostalAddress {
 
         // Own constructor properties of Folks-0.7.Folks.PostalAddress
 
-        po_box?: string | null
+        poBox?: string | null
         extension?: string | null
         street?: string | null
         locality?: string | null
         region?: string | null
-        postal_code?: string | null
-        country?: string | null
-        address_format?: string | null
-        uid?: string | null
-        poBox?: string | null
         postalCode?: string | null
+        country?: string | null
         addressFormat?: string | null
+        uid?: string | null
     }
 
 }
@@ -3077,16 +2974,13 @@ export interface PostalAddress {
 
     // Own properties of Folks-0.7.Folks.PostalAddress
 
-    po_box: string | null
     poBox: string | null
     extension: string | null
     street: string | null
     locality: string | null
     region: string | null
-    postal_code: string | null
     postalCode: string | null
     country: string | null
-    address_format: string | null
     addressFormat: string | null
     uid: string | null
 
@@ -3269,7 +3163,6 @@ export module Query {
 
         // Own constructor properties of Folks-0.7.Folks.Query
 
-        match_fields?: string[] | null
         matchFields?: string[] | null
     }
 
@@ -3279,7 +3172,6 @@ export interface Query {
 
     // Own properties of Folks-0.7.Folks.Query
 
-    readonly match_fields: string[]
     readonly matchFields: string[]
 
     // Owm methods of Folks-0.7.Folks.Query
@@ -3324,11 +3216,10 @@ export module Role {
 
         // Own constructor properties of Folks-0.7.Folks.Role
 
-        organisation_name?: string | null
+        organisationName?: string | null
         title?: string | null
         role?: string | null
         uid?: string | null
-        organisationName?: string | null
     }
 
 }
@@ -3337,7 +3228,6 @@ export interface Role {
 
     // Own properties of Folks-0.7.Folks.Role
 
-    organisation_name: string | null
     organisationName: string | null
     title: string | null
     role: string | null
@@ -3478,9 +3368,7 @@ export interface SearchView {
     readonly aggregator: IndividualAggregator
     query: Query
     readonly individuals: Gee.SortedSet
-    readonly is_prepared: boolean
     readonly isPrepared: boolean
-    readonly is_quiescent: boolean
     readonly isQuiescent: boolean
 
     // Owm methods of Folks-0.7.Folks.SearchView
@@ -3550,8 +3438,6 @@ export module SimpleQuery {
 
         // Own constructor properties of Folks-0.7.Folks.SimpleQuery
 
-        query_string?: string | null
-        query_locale?: string | null
         queryString?: string | null
         queryLocale?: string | null
     }
@@ -3562,9 +3448,7 @@ export interface SimpleQuery {
 
     // Own properties of Folks-0.7.Folks.SimpleQuery
 
-    query_string: string | null
     queryString: string | null
-    query_locale: string | null
     queryLocale: string | null
 
     // Owm methods of Folks-0.7.Folks.SimpleQuery

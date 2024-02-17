@@ -36,11 +36,10 @@ export module PasswordDialog {
         // Own constructor properties of EpcUi-1.0.EpcUi.PasswordDialog
 
         anonymous?: boolean | null
-        anonymous_allowed?: boolean | null
+        anonymousAllowed?: boolean | null
         password?: string | null
         realm?: string | null
         username?: string | null
-        anonymousAllowed?: boolean | null
     }
 
 }
@@ -50,7 +49,6 @@ export interface PasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of EpcUi-1.0.EpcUi.PasswordDialog
 
     anonymous: boolean
-    anonymous_allowed: boolean
     anonymousAllowed: boolean
     password: string
     realm: string

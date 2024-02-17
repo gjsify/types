@@ -269,15 +269,15 @@ module Play {
 
         // Own constructor properties of GstPlay-1.0.GstPlay.Play
 
-        audioVideoOffset?: number | null
+        audio_video_offset?: number | null
         mute?: boolean | null
         rate?: number | null
-        subtitleVideoOffset?: number | null
+        subtitle_video_offset?: number | null
         suburi?: string | null
         uri?: string | null
-        videoMultiviewFlags?: GstVideo.VideoMultiviewFlags | null
-        videoMultiviewMode?: GstVideo.VideoMultiviewFramePacking | null
-        videoRenderer?: PlayVideoRenderer | null
+        video_multiview_flags?: GstVideo.VideoMultiviewFlags | null
+        video_multiview_mode?: GstVideo.VideoMultiviewFramePacking | null
+        video_renderer?: PlayVideoRenderer | null
         volume?: number | null
     }
 
@@ -1315,8 +1315,8 @@ module PlayVideoOverlayVideoRenderer {
 
         // Own constructor properties of GstPlay-1.0.GstPlay.PlayVideoOverlayVideoRenderer
 
-        videoSink?: Gst.Element | null
-        windowHandle?: any | null
+        video_sink?: Gst.Element | null
+        window_handle?: any | null
     }
 
 }

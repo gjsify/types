@@ -1516,19 +1516,19 @@ module Client {
         /**
          * Whether networking is enabled.
          */
-        networkingEnabled?: boolean | null
+        networking_enabled?: boolean | null
         /**
          * Whether WiMAX functionality is enabled.
          */
-        wimaxEnabled?: boolean | null
+        wimax_enabled?: boolean | null
         /**
          * Whether wireless is enabled.
          */
-        wirelessEnabled?: boolean | null
+        wireless_enabled?: boolean | null
         /**
          * Whether WWAN functionality is enabled.
          */
-        wwanEnabled?: boolean | null
+        wwan_enabled?: boolean | null
     }
 
 }
@@ -6507,7 +6507,7 @@ module Object {
 
         // Own constructor properties of NMClient-1.0.NMClient.Object
 
-        dbusPath?: string | null
+        dbus_path?: string | null
     }
 
 }
@@ -6612,7 +6612,7 @@ module RemoteConnection {
 
         // Own constructor properties of NMClient-1.0.NMClient.RemoteConnection
 
-        dbusPath?: string | null
+        dbus_path?: string | null
     }
 
 }
@@ -7011,7 +7011,7 @@ module SecretAgent {
          * will suppress auto-registration until nm_secret_agent_register() is
          * called, which re-enables auto-registration.
          */
-        autoRegister?: boolean | null
+        auto_register?: boolean | null
         /**
          * A bitfield of %NMSecretAgentCapabilities.
          */

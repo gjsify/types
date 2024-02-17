@@ -1,13 +1,19 @@
 {
     "name": "@girs/webkit2-4.0",
-    "version": "2.42.5-3.2.7",
-    "description": "GJS TypeScript type definitions for WebKit2-4.0, generated from library version 2.42.5",
+    "version": "2.41.90-3.2.8",
+    "description": "GJS TypeScript type definitions for WebKit2-4.0, generated from library version 2.41.90",
     "type": "module",
     "module": "webkit2-4.0.js",
     "main": "webkit2-4.0.js",
     "exports": {
-        "./ambient": "./webkit2-4.0-ambient.d.ts",
-        "./import": "./webkit2-4.0-import.d.ts",
+        "./ambient": {
+            "types": "./webkit2-4.0-ambient.d.ts",
+            "default": "./webkit2-4.0-ambient.js"
+        },
+        "./import": {
+            "types": "./webkit2-4.0-import.d.ts",
+            "default": "./webkit2-4.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./webkit2-4.0.d.ts",

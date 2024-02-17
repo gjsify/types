@@ -1019,9 +1019,7 @@ function icalparameter_string_to_enum(str: string): number
 function icalparameter_string_to_kind(string: string): parameter_kind
 function icalparameter_value_to_value_kind(value: parameter_value): value_kind
 function icalparser_free(parser: parser): void
-function icalparser_get_ctrl(): any | null
 function icalparser_get_state(parser: parser): parser_state
-function icalparser_set_ctrl(ctrl: any | null): void
 function icalparser_set_gen_data(parser: parser, data: any | null): void
 function icalparser_string_line_generator(out: string | null, buf_size: number, d: any | null): string | null
 function icalperiodtype_as_ical_string(p: any | null): string

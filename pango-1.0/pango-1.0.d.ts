@@ -3533,15 +3533,7 @@ interface FontFamily extends Gio.ListModel {
     /**
      * The type of items contained in this list.
      */
-    readonly item_type: GObject.GType
-    /**
-     * The type of items contained in this list.
-     */
     readonly itemType: GObject.GType
-    /**
-     * The number of items contained in this list.
-     */
-    readonly n_items: number
     /**
      * The number of items contained in this list.
      */
@@ -3723,15 +3715,7 @@ interface FontMap extends Gio.ListModel {
     /**
      * The type of items contained in this list.
      */
-    readonly item_type: GObject.GType
-    /**
-     * The type of items contained in this list.
-     */
     readonly itemType: GObject.GType
-    /**
-     * The number of items contained in this list.
-     */
-    readonly n_items: number
     /**
      * The number of items contained in this list.
      */

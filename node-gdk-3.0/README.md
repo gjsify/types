@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gdk-3.0)
 
 
-Node.js TypeScript type definitions for Gdk-3.0, generated from library version 3.24.41 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for Gdk-3.0, generated from library version 3.24.39 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 An intermediate layer which isolates GTK+ from the details of the windowing system.
 

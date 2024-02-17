@@ -1514,7 +1514,7 @@ export module Device {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3207,7 +3207,7 @@ export module Profile {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3674,7 +3674,7 @@ export module Sensor {
         /**
          * The object path of the remote object
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }

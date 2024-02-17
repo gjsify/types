@@ -490,53 +490,13 @@ enum FormatStyle {
  */
 enum FormatVersion {
     /**
-     * 0.6
-     */
-    V0_6,
-    /**
-     * 0.7
-     */
-    V0_7,
-    /**
-     * 0.8
-     */
-    V0_8,
-    /**
-     * 0.9
-     */
-    V0_9,
-    /**
-     * 0.10
-     */
-    V0_10,
-    /**
-     * 0.11
-     */
-    V0_11,
-    /**
-     * 0.12
-     */
-    V0_12,
-    /**
-     * 0.13
-     */
-    V0_13,
-    /**
-     * 0.14
-     */
-    V0_14,
-    /**
-     * 0.15
-     */
-    V0_15,
-    /**
-     * 0.16
-     */
-    V0_16,
-    /**
-     * Unknown
+     * Unknown format version
      */
     UNKNOWN,
+    /**
+     * 1.0
+     */
+    V1_0,
 }
 /**
  * The icon type.
@@ -1408,12 +1368,6 @@ enum VercmpFlags {
      */
     IGNORE_EPOCH,
 }
-const IMAGE_LARGE_HEIGHT: number
-const IMAGE_LARGE_WIDTH: number
-const IMAGE_NORMAL_HEIGHT: number
-const IMAGE_NORMAL_WIDTH: number
-const IMAGE_THUMBNAIL_HEIGHT: number
-const IMAGE_THUMBNAIL_WIDTH: number
 const MAJOR_VERSION: number
 const MICRO_VERSION: number
 const MINOR_VERSION: number
@@ -1624,12 +1578,6 @@ function formatVersionFromString(versionStr: string): FormatVersion
  */
 function formatVersionToString(version: FormatVersion): string
 /**
- * Get the version of the AppStream library that is currently used
- * as a string.
- * @returns The AppStream version.
- */
-function getAppstreamVersion(): string
-/**
  * Returns the component-ID of the current distribution based on contents
  * of the `/etc/os-release` file.
  * This function is a shorthand for %as_distro_details_get_cid
@@ -1654,14 +1602,6 @@ function getDefaultCategories(withSpecial: boolean): Category[]
  */
 function getLicenseUrl(license: string): string | null
 /**
- * Replaces all occurences of `find` with the string `replace` in a #GString.
- * @param string a #GString
- * @param find the string to find in `string`
- * @param replace the string to insert in place of `find`
- * @returns the number of find and replace operations performed.
- */
-function gstringReplace(string: GLib.String, find: string, replace: string): number
-/**
  * Replaces the string `find` with the string `replace` in a #GString up to
  * `limit` times. If the number of instances of `find` in the #GString is
  * less than `limit,` all instances are replaced. If `limit` is `0`,
@@ -1672,7 +1612,7 @@ function gstringReplace(string: GLib.String, find: string, replace: string): num
  * @param limit the maximum instances of `find` to replace with `replace,` or `0` for no limit
  * @returns the number of find and replace operations performed.
  */
-function gstringReplace2(string: GLib.String, find: string, replace: string, limit: number): number
+function gstringReplace(string: GLib.String, find: string, replace: string, limit: number): number
 /**
  * Converts the text representation to an enumerated value.
  * @param kindStr the string.
@@ -2037,14 +1977,6 @@ function urlKindToString(urlKind: UrlKind): string
  */
 function utilsBuildDataId(scope: ComponentScope, bundleKind: BundleKind, origin: string, cid: string, branch: string): string | null
 /**
- * Compare alpha and numeric segments of two versions.
- * The version compare algorithm is also used by RPM.
- * @param a 
- * @param b 
- * @returns 1: a is newer than b     0: a and b are the same version    -1: b is newer than a
- */
-function utilsCompareVersions(a: string, b: string): number
-/**
  * Checks two component data IDs for equality allowing globs to match.
  * @param dataId1 a data ID
  * @param dataId2 another data ID
@@ -2130,11 +2062,18 @@ function utilsIsTld(tld: string): boolean
  * Calculates if one locale is compatible with another.
  * When doing the calculation the locale and language code is taken into
  * account if possible.
- * @param locale1 a locale string, or %NULL
- * @param locale2 a locale string, or %NULL
+ * @param locale1 a BCP47 or POSIX locale string, or %NULL
+ * @param locale2 a BCP47 or POSIX locale string, or %NULL
  * @returns %TRUE if the locale is compatible.
  */
-function utilsLocaleIsCompatible(locale1: string, locale2: string): boolean
+function utilsLocaleIsCompatible(locale1: string | null, locale2: string | null): boolean
+/**
+ * Converts a POSIX locale string to the corresponding IETF BCP47 format.
+ * If the given locale is already in BCP47 format, no change will be done.
+ * @param locale 
+ * @returns A locale string, free with g_free()
+ */
+function utilsPosixLocaleToBcp47(locale: string): string | null
 /**
  * Sorts all components in `cpts` into the #AsCategory categories listed in `categories`.
  * @param cpts List of components.
@@ -2334,13 +2273,13 @@ interface AgreementSection {
     /**
      * Set the current active locale, which
      * is used to get localized messages.
-     * @param locale 
+     * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
      */
-    setActiveLocale(locale: string): void
+    setActiveLocale(locale: string | null): void
     /**
      * Sets the agreement section desc.
      * @param desc the agreement description, e.g. "GDPR"
-     * @param locale the locale. e.g. "en_GB"
+     * @param locale the locale in BCP47 format. e.g. "en-GB"
      */
     setDescription(desc: string, locale: string | null): void
     /**
@@ -2976,7 +2915,7 @@ module Component {
         /**
          * the developer name
          */
-        developerName?: string | null
+        developer_name?: string | null
         /**
          * the unique identifier
          */
@@ -3000,11 +2939,11 @@ module Component {
         /**
          * the project group
          */
-        projectGroup?: string | null
+        project_group?: string | null
         /**
          * the project license
          */
-        projectLicense?: string | null
+        project_license?: string | null
         /**
          * the summary
          */
@@ -3117,8 +3056,15 @@ interface Component {
      */
     addIcon(icon: Icon): void
     /**
+     * Add a new keyword to the keywords list for the given locale. This function does not
+     * check for duplicate keywords.
+     * @param keyword The new keyword to add.
+     * @param locale BCP47 locale of the values, or %NULL to use current locale.
+     */
+    addKeyword(keyword: string, locale: string | null): void
+    /**
      * Adds a language to the component.
-     * @param locale the locale, or %NULL. e.g. "en_GB"
+     * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
      * @param percentage the percentage completion of the translation, 0 for locales with unknown amount of translation
      */
     addLanguage(locale: string | null, percentage: number): void
@@ -3189,6 +3135,11 @@ interface Component {
      * @param url the full URL.
      */
     addUrl(urlKind: UrlKind, url: string): void
+    /**
+     * Remove all keywords for the given locale.
+     * @param locale BCP47 locale of the values, or %NULL to use current locale.
+     */
+    clearKeywords(locale: string | null): void
     /**
      * Remove all registered language translation information.
      */
@@ -3296,17 +3247,6 @@ interface Component {
      */
     getDescription(): string
     /**
-     * Get the Desktop Entry ID for this component, if it is
-     * of type "desktop-application".
-     * For most desktop-application components, this is the name
-     * of the .desktop file.
-     * 
-     * Refer to https://specifications.freedesktop.org/desktop-entry-spec/latest/ape.html for more
-     * information.
-     * @returns The desktop file id.
-     */
-    getDesktopId(): string
-    /**
      * Get the component's developer or development team name.
      * @returns the developer name.
      */
@@ -3364,7 +3304,7 @@ interface Component {
     getKind(): ComponentKind
     /**
      * Gets the translation coverage in percent for a specific locale
-     * @param locale the locale, or %NULL. e.g. "en_GB"
+     * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
      * @returns a percentage value, -1 if locale was not found
      */
     getLanguage(locale: string | null): number
@@ -3628,15 +3568,6 @@ interface Component {
      */
     loadFromBytes(context: Context, format: FormatKind, bytes: any): boolean
     /**
-     * Load metadata for this component from an XML string.
-     * You normally do not want to use this method directly and instead use the more
-     * convenient API of #AsMetadata to create and update components.
-     * @param context an #AsContext instance.
-     * @param data The XML data to load.
-     * @returns %TRUE on success.
-     */
-    loadFromXmlData(context: Context, data: string): boolean
-    /**
      * Load data from an external source, possibly a local file
      * or a network resource.
      * @param reload set to %TRUE to discard existing data and reload.
@@ -3674,7 +3605,7 @@ interface Component {
      * is used to get localized messages.
      * If the #AsComponent was fetched from a localized database, usually only
      * one locale is available.
-     * @param locale the locale, or %NULL. e.g. "en_GB"
+     * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "en_GB"
      */
     setActiveLocale(locale: string | null): void
     /**
@@ -3709,13 +3640,13 @@ interface Component {
     /**
      * Set long description for this component.
      * @param value The long description
-     * @param locale The locale the used for this value, or %NULL to use the current active one.
+     * @param locale The BCP47 locale for this value, or %NULL to use the current active one.
      */
     setDescription(value: string, locale: string | null): void
     /**
      * Set the the component's developer or development team name.
      * @param value the developer or developer team name
-     * @param locale the locale, or %NULL. e.g. "en_GB"
+     * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
      */
     setDeveloperName(value: string, locale: string | null): void
     /**
@@ -3724,11 +3655,12 @@ interface Component {
      */
     setId(value: string): void
     /**
-     * Set keywords for this component.
-     * @param value String-array of keywords
-     * @param locale Locale of the values, or %NULL to use current locale.
+     * Set keywords for this component, replacing all existing ones for the selected locale.
+     * @param newKeywords Array of keywords
+     * @param locale BCP47 locale of the values, or %NULL to use current locale.
+     * @param deepCopy Set to %TRUE if the keywords array should be copied, %FALSE to set by reference.
      */
-    setKeywords(value: string[], locale: string | null): void
+    setKeywords(newKeywords: string[], locale: string | null, deepCopy: boolean): void
     /**
      * Sets the #AsComponentKind of this component.
      * @param value the #AsComponentKind.
@@ -3747,14 +3679,14 @@ interface Component {
     /**
      * Set a human-readable name for this component.
      * @param value The name
-     * @param locale The locale the used for this value, or %NULL to use the current active one.
+     * @param locale The BCP47 locale for this value, or %NULL to use the current active one.
      */
     setName(value: string, locale: string | null): void
     /**
      * Set a variant suffix for the component name
      * (only to be displayed if components have the same name).
      * @param value the developer or developer team name
-     * @param locale the locale, or %NULL. e.g. "en_GB"
+     * @param locale the BCP47 locale, or %NULL. e.g. "en-GB"
      */
     setNameVariantSuffix(value: string, locale: string | null): void
     setOrigin(origin: string): void
@@ -3810,7 +3742,7 @@ interface Component {
     /**
      * Set a short description for this component.
      * @param value The summary
-     * @param locale The locale the used for this value, or %NULL to use the current active one.
+     * @param locale The BCP47 locale for this value, or %NULL to use the current active one.
      */
     setSummary(value: string, locale: string | null): void
     setValueFlags(flags: ValueFlags): void
@@ -4192,98 +4124,6 @@ class Context extends GObject.Object {
     _init(config?: Context.ConstructorProperties): void
 }
 
-module DistroDetails {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-interface DistroDetails {
-
-    // Own properties of AppStream-1.0.AppStream.DistroDetails
-
-    readonly homepage: string | null
-    readonly id: string | null
-    readonly name: string | null
-    readonly version: string | null
-    __gtype__: number
-
-    // Own fields of AppStream-1.0.AppStream.DistroDetails
-
-    parentInstance: GObject.Object
-
-    // Owm methods of AppStream-1.0.AppStream.DistroDetails
-
-    getBool(key: string, defaultVal: boolean): boolean
-    getCid(): string
-    getHomepage(): string
-    getId(): string
-    getName(): string
-    getStr(key: string): string | null
-    getVersion(): string
-
-    // Class property signals of AppStream-1.0.AppStream.DistroDetails
-
-    connect(sigName: "notify::homepage", callback: (...args: any[]) => void): number
-    on(sigName: "notify::homepage", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::homepage", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::homepage", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::homepage", ...args: any[]): void
-    connect(sigName: "notify::id", callback: (...args: any[]) => void): number
-    on(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::id", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::id", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::id", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (...args: any[]) => void): number
-    on(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::name", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::name", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::version", callback: (...args: any[]) => void): number
-    on(sigName: "notify::version", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::version", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::version", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::version", ...args: any[]): void
-    connect(sigName: "notify::__gtype__", callback: (...args: any[]) => void): number
-    on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: "notify::__gtype__", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
-    off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-class DistroDetails extends GObject.Object {
-
-    // Own properties of AppStream-1.0.AppStream.DistroDetails
-
-    static name: string
-
-    // Constructors of AppStream-1.0.AppStream.DistroDetails
-
-    constructor(config?: DistroDetails.ConstructorProperties) 
-    /**
-     * Creates a new instance of #AsDistroDetails.
-     * @constructor 
-     * @returns a #AsDistroDetails.
-     */
-    constructor() 
-    /**
-     * Creates a new instance of #AsDistroDetails.
-     * @constructor 
-     * @returns a #AsDistroDetails.
-     */
-    static new(): DistroDetails
-    _init(config?: DistroDetails.ConstructorProperties): void
-}
-
 module Icon {
 
     // Constructor properties interface
@@ -4454,7 +4294,7 @@ interface Image {
     setKind(kind: ImageKind): void
     /**
      * Sets the locale for this image.
-     * @param locale the locale string.
+     * @param locale the BCP47 locale string.
      */
     setLocale(locale: string): void
     /**
@@ -4732,12 +4572,6 @@ interface Metadata {
      * @returns A string containing the YAML or XML data. Free with g_free()
      */
     componentsToCatalog(format: FormatKind): string | null
-    /**
-     * Deprecated, use %as_metadata_components_to_catalog instead.
-     * @param format The format to serialize the data to (XML or YAML).
-     * @returns A string containing the YAML or XML data. Free with g_free()
-     */
-    componentsToCollection(format: FormatKind): string | null
     getArchitecture(): string
     /**
      * Gets the #AsComponent which has been parsed from the XML.
@@ -4768,29 +4602,31 @@ interface Metadata {
     getWriteHeader(): boolean
     /**
      * Parses any AppStream metadata into one or more #AsComponent instances.
-     * @param data Metadata describing one or more software components as null-terminated string.
-     * @param format The format of the data (XML or YAML).
-     * @returns %TRUE on success.
-     */
-    parse(data: string, format: FormatKind): boolean
-    /**
-     * Parses any AppStream metadata into one or more #AsComponent instances.
      * @param bytes Metadata describing one or more software components.
      * @param format The format of the data (XML or YAML).
      * @returns %TRUE on success.
      */
     parseBytes(bytes: any, format: FormatKind): boolean
     /**
+     * Parses any AppStream metadata into one or more #AsComponent instances.
+     * @param data Metadata describing one or more software components as string.
+     * @param dataLen Length of `data,` or -1 if length is unknown and `data` is NULL-terminated.
+     * @param format The format of the data (XML or YAML).
+     * @returns %TRUE on success.
+     */
+    parseData(data: string, dataLen: number, format: FormatKind): boolean
+    /**
      * Parses XDG Desktop Entry metadata and adds it to the list of parsed entities.
      * 
      * Please note that not every desktop-entry file will result in a valid component
      * being generated, even if parsing succeeds without error (The desktiop-entry file
      * may be valid but not generate a component on purpose).
-     * @param data Metadata describing one or more software components.
      * @param cid The component-id the new #AsComponent should have.
+     * @param data Metadata describing one or more software components.
+     * @param dataLen The data length, or -1 if unknown and null-terminated.
      * @returns %TRUE if the file was parsed without error.
      */
-    parseDesktopData(data: string, cid: string): boolean
+    parseDesktopData(cid: string, data: string, dataLen: number): boolean
     /**
      * Parses an AppStream upstream metadata file.
      * 
@@ -4830,13 +4666,6 @@ interface Metadata {
      */
     saveCatalog(fname: string, format: FormatKind): boolean
     /**
-     * Deprecated, use %as_metadata_save_catalog instead.
-     * @param fname The filename for the new metadata file.
-     * @param format 
-     * @returns %TRUE if the file was written without error.
-     */
-    saveCollection(fname: string, format: FormatKind): boolean
-    /**
      * Serialize #AsComponent instance to XML and save it to file.
      * An existing file at the same location will be overridden.
      * @param fname The filename for the new metadata file.
@@ -4865,7 +4694,7 @@ interface Metadata {
      * All other locales are ignored, which increases parsing speed and
      * reduces memory usage.
      * If you set the locale to "ALL", all locales will be read.
-     * @param locale the locale.
+     * @param locale the BCP47 locale.
      */
     setLocale(locale: string): void
     /**
@@ -4983,12 +4812,6 @@ interface Pool {
     // Owm methods of AppStream-1.0.AppStream.Pool
 
     /**
-     * Register a new component in the AppStream metadata pool.
-     * @param cpt The #AsComponent to add to the pool.
-     * @returns %TRUE if the new component was successfully added to the pool.
-     */
-    addComponent(cpt: Component): boolean
-    /**
      * Register a set of components with the pool temporarily.
      * Data from components added like this will not be cached.
      * @param cpts Array of components to add to the pool.
@@ -5010,13 +4833,6 @@ interface Pool {
      */
     addFlags(flags: PoolFlags): void
     /**
-     * Add a location for the data pool to read data from.
-     * If `directory` contains a "xml", "xmls", "yaml" or "icons" subdirectory (or all of them),
-     * those paths will be added to the search paths instead.
-     * @param directory An existing filesystem location.
-     */
-    addMetadataLocation(directory: string): void
-    /**
      * Splits up a string into an array of tokens that are suitable for searching.
      * This includes stripping whitespaces, casefolding the terms and removing greylist words.
      * 
@@ -5032,23 +4848,6 @@ interface Pool {
      * once %as_pool_load is called again.
      */
     clear(): void
-    /**
-     * Remove all metadata from the pool.
-     */
-    clear2(): boolean
-    /**
-     * Remove all metadata locations from the list of watched locations.
-     */
-    clearMetadataLocations(): void
-    /**
-     * Get the #AsCacheFlags for this data pool.
-     */
-    getCacheFlags(): CacheFlags
-    /**
-     * Gets the location of the session cache.
-     * @returns Location of the cache, or %NULL if unknown.
-     */
-    getCacheLocation(): string
     /**
      * Find components that are provided by a bundle with a specific ID by its prefix.
      * For example, given a AS_BUNDLE_KIND_FLATPAK and a bundle_id "org.kde.dolphin/",
@@ -5144,6 +4943,11 @@ interface Pool {
      */
     getLocale(): string
     /**
+     * Check if this pool contains any data.
+     * @returns %TRUE if the pool is empty.
+     */
+    isEmpty(): boolean
+    /**
      * Builds an index of all found components in the watched locations.
      * The function will try to get as much data into the pool as possible, so even if
      * the update completes with %FALSE, it might still have added components to the pool.
@@ -5162,23 +4966,11 @@ interface Pool {
      */
     loadAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
-     * Load AppStream metadata from a cache file.
-     * @param fname Filename of the cache file to load into the pool.
-     */
-    loadCacheFile(fname: string): boolean
-    /**
      * Retrieve the result of as_pool_load_async().
      * @param result A #GAsyncResult
      * @returns %TRUE for success
      */
     loadFinish(result: Gio.AsyncResult): boolean
-    /**
-     * Update the AppStream cache. There is normally no need to call this function manually, because cache updates are handled
-     * transparently in the background.
-     * @param force Enforce refresh, even if source data has not changed.
-     * @returns %TRUE on success, %FALSE on error.
-     */
-    refreshCache(force: boolean): boolean
     /**
      * Convenience function to remove one or multiple #AsPoolFlags from
      * the flag set of this data pool.
@@ -5190,11 +4982,6 @@ interface Pool {
      */
     resetExtraDataLocations(): void
     /**
-     * Serialize AppStream metadata to a cache file.
-     * @param fname Filename of the cache file the pool contents should be dumped to.
-     */
-    saveCacheFile(fname: string): boolean
-    /**
      * Search for a list of components matching the search term.
      * The list will be ordered by match score.
      * 
@@ -5204,18 +4991,6 @@ interface Pool {
      * @returns an array of the found #AsComponent objects.
      */
     search(search: string): Component[]
-    /**
-     * Set the #AsCacheFlags for this data pool.
-     * @param flags The new #AsCacheFlags.
-     */
-    setCacheFlags(flags: CacheFlags): void
-    /**
-     * Sets the name of the cache file. If `fname` is ":memory", the cache will be
-     * kept in memory, if it is set to ":temporary", the cache will be stored in
-     * a temporary directory. In any other case, the given filename is used.
-     * @param fname Filename of the cache file, or special identifier.
-     */
-    setCacheLocation(fname: string): void
     /**
      * Set the #AsPoolFlags for this data pool.
      * @param flags The new #AsPoolFlags.
@@ -5233,7 +5008,7 @@ interface Pool {
     setLoadStdDataLocations(enabled: boolean): void
     /**
      * Sets the current locale which should be used when parsing metadata.
-     * @param locale the locale.
+     * @param locale the BCP47 or POSIX locale to use for this pool.
      */
     setLocale(locale: string): void
 
@@ -5419,10 +5194,6 @@ interface Relation {
      */
     getKind(): RelationKind
     /**
-     * Deprecated method. Use %as_relation_get_value_str instead.
-     */
-    getValue(): string
-    /**
      * Get the value of this #AsRelation item as #AsControlKind if the
      * type of this relation is %AS_RELATION_ITEM_KIND_CONTROL.
      * Otherwise return %AS_CONTROL_KIND_UNKNOWN
@@ -5491,11 +5262,6 @@ interface Relation {
      * @param kind the new #AsRelationKind
      */
     setKind(kind: RelationKind): void
-    /**
-     * Deprecated method. Use %as_relation_set_value_str instead.
-     * @param value the new value.
-     */
-    setValue(value: string): void
     /**
      * Set relation item value from an #AsControlKind.
      * @param kind an #AsControlKind
@@ -5611,20 +5377,10 @@ interface Release {
      */
     addArtifact(artifact: Artifact): void
     /**
-     * Add a checksum for the file associated with this release.
-     * @param cs The #AsChecksum.
-     */
-    addChecksum(cs: Checksum): void
-    /**
      * Add information about a (resolved) issue to this release.
      * @param issue The #AsIssue.
      */
     addIssue(issue: Issue): void
-    /**
-     * Adds a release location.
-     * @param location An URL of the download location
-     */
-    addLocation(location: string): void
     /**
      * Get the current active locale, which
      * is used to get localized messages.
@@ -5637,17 +5393,6 @@ interface Release {
      * @returns an array of #AsArtifact objects.
      */
     getArtifacts(): Artifact[]
-    /**
-     * Gets the release checksum
-     * @param kind 
-     * @returns an #AsChecksum, or %NULL for not set or invalid
-     */
-    getChecksum(kind: ChecksumKind): Checksum | null
-    /**
-     * Get a list of all checksums we have for this release.
-     * @returns an array of #AsChecksum objects.
-     */
-    getChecksums(): Checksum[]
     /**
      * Gets the release date.
      * @returns The date in ISO8601 format.
@@ -5673,17 +5418,6 @@ interface Release {
      * (development or stable release)
      */
     getKind(): ReleaseKind
-    /**
-     * Gets the release locations, typically URLs.
-     * @returns list of locations
-     */
-    getLocations(): string[]
-    /**
-     * Gets the release size.
-     * @param kind a #AsSizeKind
-     * @returns The size of the given kind of this release.
-     */
-    getSize(kind: SizeKind): number
     /**
      * Gets the release timestamp.
      * @returns timestamp, or 0 for unset
@@ -5718,9 +5452,9 @@ interface Release {
      * If the #AsComponent linking this #AsRelease was fetched
      * from a localized database, usually only
      * one locale is available.
-     * @param locale the locale. e.g. "en_GB".
+     * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
      */
-    setActiveLocale(locale: string): void
+    setActiveLocale(locale: string | null): void
     /**
      * Sets the release date.
      * @param date the date in ISO8601 format.
@@ -5734,7 +5468,7 @@ interface Release {
     /**
      * Sets the description release markup.
      * @param description the description markup.
-     * @param locale the locale, or %NULL. e.g. "en_GB".
+     * @param locale the BCP47 locale, or %NULL. e.g. "en-GB".
      */
     setDescription(description: string, locale: string | null): void
     /**
@@ -5743,12 +5477,6 @@ interface Release {
      * @param kind the #AsReleaseKind
      */
     setKind(kind: ReleaseKind): void
-    /**
-     * Sets the release size for the given kind.
-     * @param size a size in bytes, or 0 for unknown
-     * @param kind a #AsSizeKind
-     */
-    setSize(size: number, kind: SizeKind): void
     /**
      * Sets the release timestamp.
      * @param timestamp the timestamp value.
@@ -5841,8 +5569,8 @@ module Review {
          */
         priority?: number | null
         rating?: number | null
-        reviewerId?: string | null
-        reviewerName?: string | null
+        reviewer_id?: string | null
+        reviewer_name?: string | null
         summary?: string | null
         version?: string | null
     }
@@ -5983,7 +5711,7 @@ interface Review {
     setId(id: string): void
     /**
      * Sets the locale for the review.
-     * @param locale locale, e.g. "en_GB"
+     * @param locale a BCP47 locale, e.g. "en-GB"
      */
     setLocale(locale: string): void
     /**
@@ -6213,9 +5941,9 @@ interface Screenshot {
      * If the #AsComponent linking this #AsScreenshot was fetched
      * from a localized database, usually only
      * one locale is available.
-     * @param locale 
+     * @param locale a POSIX or BCP47 locale, or %NULL. e.g. "de_DE"
      */
-    setActiveLocale(locale: string): void
+    setActiveLocale(locale: string | null): void
     /**
      * Sets a caption on the screenshot
      * @param caption the caption text.
@@ -6563,7 +6291,7 @@ interface Translation {
      * Set the locale of the source strings for this component. In gettext, this is
      * referred to as the `C` locale. It’s almost always `en_US`, but for some
      * components it may not be.
-     * @param locale The locale that the source strings are in, or %NULL if    unknown or default.
+     * @param locale The POSIX locale that the source strings are in, or %NULL if unknown or default.
      */
     setSourceLocale(locale: string | null): void
 
@@ -6821,11 +6549,6 @@ interface ValidatorIssue {
      */
     getHint(): string
     /**
-     * This function is deprecated and should not be used in new code.
-     * @returns a #AsIssueSeverity
-     */
-    getImportance(): IssueSeverity
-    /**
      * Gets the line number where this issue was found.
      * @returns the line number where this issue occured, or -1 if unknown.
      */
@@ -6836,11 +6559,6 @@ interface ValidatorIssue {
      * @returns the location hint as string.
      */
     getLocation(): string | null
-    /**
-     * This function is deprecated.
-     * @returns the message
-     */
-    getMessage(): string
     /**
      * Gets the severity of this issue.
      * @returns a #AsIssueSeverity
@@ -6872,20 +6590,10 @@ interface ValidatorIssue {
      */
     setHint(hint: string): void
     /**
-     * This function is deprecated and should not be used in new code.
-     * @param importance the #AsIssueSeverity.
-     */
-    setImportance(importance: IssueSeverity): void
-    /**
      * Sets the line number where this issue was found.
      * @param line the line number.
      */
     setLine(line: number): void
-    /**
-     * This function is deprecated.
-     * @param message the message text.
-     */
-    setMessage(message: string): void
     /**
      * Sets the severity for this issue.
      * @param severity the #AsIssueSeverity.
@@ -7004,7 +6712,7 @@ interface Video {
     setHeight(height: number): void
     /**
      * Sets the locale for this video.
-     * @param locale the locale string.
+     * @param locale the BCP47 locale string.
      */
     setLocale(locale: string): void
     /**
@@ -7240,20 +6948,6 @@ interface ContextClass {
 abstract class ContextClass {
 
     // Own properties of AppStream-1.0.AppStream.ContextClass
-
-    static name: string
-}
-
-interface DistroDetailsClass {
-
-    // Own fields of AppStream-1.0.AppStream.DistroDetailsClass
-
-    parentClass: GObject.ObjectClass
-}
-
-abstract class DistroDetailsClass {
-
-    // Own properties of AppStream-1.0.AppStream.DistroDetailsClass
 
     static name: string
 }

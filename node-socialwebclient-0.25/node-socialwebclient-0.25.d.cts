@@ -138,7 +138,7 @@ export module ClientContactView {
 
         // Own constructor properties of SocialWebClient-0.25.SocialWebClient.ClientContactView
 
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -243,7 +243,7 @@ export module ClientItemView {
 
         // Own constructor properties of SocialWebClient-0.25.SocialWebClient.ClientItemView
 
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }

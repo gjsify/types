@@ -588,7 +588,7 @@ module CredentialsPrompter {
          * Whether the #ECredentialsPrompter can response to credential
          * requests automatically.
          */
-        autoPrompt?: boolean | null
+        auto_prompt?: boolean | null
         /**
          * The #ESourceRegistry object, to whose credential requests the prompter listens.
          */

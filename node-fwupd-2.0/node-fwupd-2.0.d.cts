@@ -2175,8 +2175,8 @@ export module Device {
         parent?: Device | null
         protocol?: string | null
         status?: number | null
-        updateState?: number | null
-        versionFormat?: number | null
+        update_state?: number | null
+        version_format?: number | null
     }
 
 }
@@ -3365,15 +3365,15 @@ export module Remote {
          * If firmware from the remote should be checked against the system
          * list of approved firmware.
          */
-        approvalRequired?: boolean | null
+        approval_required?: boolean | null
         /**
          * The behavior for auto-uploading reports.
          */
-        automaticReports?: boolean | null
+        automatic_reports?: boolean | null
         /**
          * The behavior for auto-uploading security reports.
          */
-        automaticSecurityReports?: boolean | null
+        automatic_security_reports?: boolean | null
         /**
          * If the remote is enabled and should be used.
          */

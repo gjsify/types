@@ -4688,9 +4688,6 @@ export module Device {
 
         // Own constructor properties of Mbim-1.0.Mbim.Device
 
-        device_file?: Gio.File | null
-        device_in_session?: boolean | null
-        device_transaction_id?: number | null
         deviceFile?: Gio.File | null
         deviceInSession?: boolean | null
         deviceTransactionId?: number | null
@@ -4702,13 +4699,9 @@ export interface Device extends Gio.AsyncInitable {
 
     // Own properties of Mbim-1.0.Mbim.Device
 
-    readonly device_consecutive_timeouts: number
     readonly deviceConsecutiveTimeouts: number
-    readonly device_file: Gio.File
     readonly deviceFile: Gio.File
-    device_in_session: boolean
     deviceInSession: boolean
-    device_transaction_id: number
     deviceTransactionId: number
 
     // Owm methods of Mbim-1.0.Mbim.Device
@@ -5025,9 +5018,7 @@ export interface Proxy {
 
     // Own properties of Mbim-1.0.Mbim.Proxy
 
-    readonly mbim_proxy_n_clients: number
     readonly mbimProxyNClients: number
-    readonly mbim_proxy_n_devices: number
     readonly mbimProxyNDevices: number
 
     // Own fields of Mbim-1.0.Mbim.Proxy

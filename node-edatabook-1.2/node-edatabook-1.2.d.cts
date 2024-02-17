@@ -522,7 +522,7 @@ export module BookBackend {
 
         // Own constructor properties of EDataBook-1.2.EDataBook.BookBackend
 
-        cacheDir?: string | null
+        cache_dir?: string | null
         registry?: EDataServer.SourceRegistry | null
         writable?: boolean | null
     }
@@ -3804,7 +3804,7 @@ export module DataBook {
 
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -4160,7 +4160,7 @@ export module DataBookCursorCache {
 
         // Own constructor properties of EDataBook-1.2.EDataBook.DataBookCursorCache
 
-        bookCache?: BookCache | null
+        book_cache?: BookCache | null
         cursor?: any | null
     }
 
@@ -4268,7 +4268,7 @@ export module DataBookCursorSqlite {
 
         cursor?: any | null
         ebsql?: BookSqlite | null
-        revisionKey?: string | null
+        revision_key?: string | null
     }
 
 }
@@ -4554,8 +4554,8 @@ export module DataBookView {
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
         indices?: any | null
-        nTotal?: number | null
-        objectPath?: string | null
+        n_total?: number | null
+        object_path?: string | null
         sexp?: BookBackendSExp | null
     }
 

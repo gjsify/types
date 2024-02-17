@@ -877,8 +877,6 @@ export module Monitor {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.Monitor
 
-        time_range?: TimeRange | null
-        event_templates?: Event[] | null
         timeRange?: TimeRange | null
         eventTemplates?: Event[] | null
     }
@@ -889,9 +887,7 @@ export interface Monitor extends RemoteMonitor {
 
     // Own properties of Zeitgeist-2.0.Zeitgeist.Monitor
 
-    time_range: TimeRange
     timeRange: TimeRange
-    event_templates: Event[]
     eventTemplates: Event[]
 
     // Owm methods of Zeitgeist-2.0.Zeitgeist.Monitor
@@ -949,8 +945,6 @@ export module QueuedProxyWrapper {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.QueuedProxyWrapper
 
-        proxy_created?: boolean | null
-        is_connected?: boolean | null
         proxyCreated?: boolean | null
         isConnected?: boolean | null
     }
@@ -961,9 +955,7 @@ export interface QueuedProxyWrapper {
 
     // Own properties of Zeitgeist-2.0.Zeitgeist.QueuedProxyWrapper
 
-    proxy_created: boolean
     proxyCreated: boolean
-    is_connected: boolean
     isConnected: boolean
 
     // Owm methods of Zeitgeist-2.0.Zeitgeist.QueuedProxyWrapper
@@ -1042,15 +1034,13 @@ export module DataSource {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.DataSource
 
-        unique_id?: string | null
+        uniqueId?: string | null
         name?: string | null
         description?: string | null
-        event_templates?: Event[] | null
+        eventTemplates?: Event[] | null
         enabled?: boolean | null
         running?: boolean | null
         timestamp?: number | null
-        uniqueId?: string | null
-        eventTemplates?: Event[] | null
     }
 
 }
@@ -1059,11 +1049,9 @@ export interface DataSource {
 
     // Own properties of Zeitgeist-2.0.Zeitgeist.DataSource
 
-    unique_id: string | null
     uniqueId: string | null
     name: string | null
     description: string | null
-    event_templates: Event[]
     eventTemplates: Event[]
     enabled: boolean
     running: boolean
@@ -1253,13 +1241,11 @@ export module Subject {
         origin?: string | null
         text?: string | null
         storage?: string | null
-        current_uri?: string | null
-        current_origin?: string | null
+        currentUri?: string | null
+        currentOrigin?: string | null
         mimetype?: string | null
         interpretation?: string | null
         manifestation?: string | null
-        currentUri?: string | null
-        currentOrigin?: string | null
     }
 
 }
@@ -1272,9 +1258,7 @@ export interface Subject {
     origin: string | null
     text: string | null
     storage: string | null
-    current_uri: string | null
     currentUri: string | null
-    current_origin: string | null
     currentOrigin: string | null
     mimetype: string | null
     interpretation: string | null

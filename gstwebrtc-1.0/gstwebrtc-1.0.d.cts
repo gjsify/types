@@ -487,7 +487,6 @@ export module WebRTCDTLSTransport {
 
         certificate?: string | null
         client?: boolean | null
-        session_id?: number | null
         sessionId?: number | null
     }
 
@@ -499,9 +498,7 @@ export interface WebRTCDTLSTransport {
 
     certificate: string | null
     client: boolean
-    readonly remote_certificate: string | null
     readonly remoteCertificate: string | null
-    readonly session_id: number
     readonly sessionId: number
     readonly state: WebRTCDTLSTransportState
     readonly transport: WebRTCICETransport
@@ -656,18 +653,15 @@ export module WebRTCDataChannel {
 
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
 
-        buffered_amount_low_threshold?: number | null
+        bufferedAmountLowThreshold?: number | null
         id?: number | null
         label?: string | null
-        max_packet_lifetime?: number | null
-        max_retransmits?: number | null
+        maxPacketLifetime?: number | null
+        maxRetransmits?: number | null
         negotiated?: boolean | null
         ordered?: boolean | null
         priority?: WebRTCPriorityType | null
         protocol?: string | null
-        bufferedAmountLowThreshold?: number | null
-        maxPacketLifetime?: number | null
-        maxRetransmits?: number | null
     }
 
 }
@@ -676,21 +670,16 @@ export interface WebRTCDataChannel {
 
     // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
 
-    readonly buffered_amount: number
     readonly bufferedAmount: number
-    buffered_amount_low_threshold: number
     bufferedAmountLowThreshold: number
     readonly id: number
     readonly label: string | null
-    readonly max_packet_lifetime: number
     readonly maxPacketLifetime: number
-    readonly max_retransmits: number
     readonly maxRetransmits: number
     readonly negotiated: boolean
     readonly ordered: boolean
     readonly priority: WebRTCPriorityType
     readonly protocol: string | null
-    readonly ready_state: WebRTCDataChannelState
     readonly readyState: WebRTCDataChannelState
 
     // Owm methods of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
@@ -824,16 +813,6 @@ export module WebRTCICE {
 
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
-        /**
-         * Maximum port for local rtp port range.
-         * min-rtp-port must be <= max-rtp-port
-         */
-        max_rtp_port?: number | null
-        /**
-         * Minimum port for local rtp port range.
-         * min-rtp-port must be <= max-rtp-port
-         */
-        min_rtp_port?: number | null
         /**
          * Maximum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
@@ -1012,7 +991,6 @@ export module WebRTCICEStream {
 
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
 
-        stream_id?: number | null
         streamId?: number | null
     }
 
@@ -1433,7 +1411,7 @@ export module WebRTCRTPTransceiver {
         /**
          * Caps representing the codec preferences.
          */
-        codec_preferences?: Gst.Caps | null
+        codecPreferences?: Gst.Caps | null
         /**
          * Direction of the transceiver.
          */
@@ -1441,10 +1419,6 @@ export module WebRTCRTPTransceiver {
         mlineindex?: number | null
         receiver?: WebRTCRTPReceiver | null
         sender?: WebRTCRTPSender | null
-        /**
-         * Caps representing the codec preferences.
-         */
-        codecPreferences?: Gst.Caps | null
     }
 
 }
@@ -1456,18 +1430,7 @@ export interface WebRTCRTPTransceiver {
     /**
      * Caps representing the codec preferences.
      */
-    codec_preferences: Gst.Caps
-    /**
-     * Caps representing the codec preferences.
-     */
     codecPreferences: Gst.Caps
-    /**
-     * The transceiver's current directionality, or none if the
-     * transceiver is stopped or has never participated in an exchange
-     * of offers and answers. To change the transceiver's
-     * directionality, set the value of the direction property.
-     */
-    readonly current_direction: WebRTCRTPTransceiverDirection
     /**
      * The transceiver's current directionality, or none if the
      * transceiver is stopped or has never participated in an exchange
@@ -1595,9 +1558,7 @@ export interface WebRTCSCTPTransport {
 
     // Own properties of GstWebRTC-1.0.GstWebRTC.WebRTCSCTPTransport
 
-    readonly max_channels: number
     readonly maxChannels: number
-    readonly max_message_size: number
     readonly maxMessageSize: number
     readonly state: WebRTCSCTPTransportState
     readonly transport: WebRTCDTLSTransport

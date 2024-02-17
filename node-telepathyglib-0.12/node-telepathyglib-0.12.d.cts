@@ -4502,7 +4502,7 @@ export module HandleRepoIface {
 
         // Own constructor properties of TelepathyGLib-0.12.TelepathyGLib.HandleRepoIface
 
-        handleType?: number | null
+        handle_type?: number | null
     }
 
 }
@@ -5910,7 +5910,7 @@ export module AccountChannelRequest {
          * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
          * value, and the other must remain unspecified.
          */
-        requestVardict?: GLib.Variant | null
+        request_vardict?: GLib.Variant | null
         /**
          * The user action time that will be passed to the channel dispatcher when
          * requesting the channel.
@@ -5936,7 +5936,7 @@ export module AccountChannelRequest {
          * tp_user_action_time_should_present() to decide whether to bring its
          * window to the foreground.
          */
-        userActionTime?: number | null
+        user_action_time?: number | null
     }
 
 }
@@ -7065,16 +7065,16 @@ export module AccountRequest {
         /**
          * The #TpAccountManager to create the account on.
          */
-        accountManager?: AccountManager | null
+        account_manager?: AccountManager | null
         /**
          * The account's connection manager name.
          */
-        connectionManager?: string | null
+        connection_manager?: string | null
         /**
          * The account's display name. To change this property use
          * tp_account_request_set_display_name().
          */
-        displayName?: string | null
+        display_name?: string | null
         /**
          * The account's machine-readable protocol name, such as "jabber", "msn" or
          * "local-xmpp". Recommended names for most protocols can be found in the
@@ -7550,7 +7550,7 @@ export module AddDispatchOperationContext {
          * 
          * This property can't be %NULL.
          */
-        dispatchOperation?: ChannelDispatchOperation | null
+        dispatch_operation?: ChannelDispatchOperation | null
     }
 
 }
@@ -7861,7 +7861,7 @@ export module BaseClient {
          * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
          * account manager's #TpProxy:dbus-daemon.
          */
-        accountManager?: AccountManager | null
+        account_manager?: AccountManager | null
         /**
          * The object implementing the #TpClientChannelFactoryInterface interface
          * that will be used to create channel proxies. While
@@ -7870,7 +7870,7 @@ export module BaseClient {
          * 
          * If no channel factory is specified then #TpAutomaticProxyFactory is used.
          */
-        channelFactory?: GObject.Object | null
+        channel_factory?: GObject.Object | null
         /**
          * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
          * Read-only except during construction.
@@ -7882,7 +7882,7 @@ export module BaseClient {
          * instead, in which case its #TpProxy:dbus-daemon property will be
          * used.
          */
-        dbusDaemon?: DBusDaemon | null
+        dbus_daemon?: DBusDaemon | null
         /**
          * Factory for this base client, used to look up or create
          * #TpAccount objects.
@@ -7899,7 +7899,7 @@ export module BaseClient {
          * If %TRUE, tp_base_client_register() will append an unique token to the
          * service bus name and object path to ensure they are unique.
          */
-        uniquifyName?: boolean | null
+        uniquify_name?: boolean | null
     }
 
 }
@@ -8428,7 +8428,7 @@ export module BaseConnection {
          * It is given by the AccountManager in the connection parameters. Or %NULL if
          * the ConnectionManager or the AccountManager are too old.
          */
-        accountPathSuffix?: string | null
+        account_path_suffix?: string | null
     }
 
 }
@@ -9692,7 +9692,7 @@ export module Capabilities {
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
          */
-        contactSpecific?: boolean | null
+        contact_specific?: boolean | null
     }
 
 }
@@ -11385,7 +11385,7 @@ export module ChannelRequest {
          * 
          * If no channel factory is specified then #TpAutomaticProxyFactory is used.
          */
-        channelFactory?: GObject.Object | null
+        channel_factory?: GObject.Object | null
     }
 
 }
@@ -12980,7 +12980,7 @@ export module ConnectionManager {
          * If %TRUE, always introspect the connection manager as it comes online,
          * even if we already have its info from a .manager file. Default %FALSE.
          */
-        alwaysIntrospect?: boolean | null
+        always_introspect?: boolean | null
         /**
          * The absolute path of the .manager file. If set to %NULL (the default),
          * the XDG data directories will be searched for a .manager file of the
@@ -12988,7 +12988,7 @@ export module ConnectionManager {
          * 
          * If set to the empty string, no .manager file will be read.
          */
-        managerFile?: string | null
+        manager_file?: string | null
     }
 
 }
@@ -15434,7 +15434,7 @@ export module HandleChannelsContext {
          * 
          * This property can't be %NULL.
          */
-        requestsSatisfied?: any[] | null
+        requests_satisfied?: any[] | null
         /**
          * The time at which user action occurred, or one of the
          * special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
@@ -15443,7 +15443,7 @@ export module HandleChannelsContext {
          * 
          * Read-only except during construction.
          */
-        userActionTime?: number | null
+        user_action_time?: number | null
     }
 
 }
@@ -15933,7 +15933,7 @@ export module ObserveChannelsContext {
          * or %NULL if none has been passed.
          * Read-only except during construction.
          */
-        dispatchOperation?: ChannelDispatchOperation | null
+        dispatch_operation?: ChannelDispatchOperation | null
         /**
          * A #GPtrArray containing #TpChannelRequest objects representing the
          * requests that have been passed to ObserveChannels.
@@ -16095,12 +16095,12 @@ export module Protocol {
         /**
          * The name of the connection manager this protocol is on.
          */
-        cmName?: string | null
+        cm_name?: string | null
         /**
          * The machine-readable name of the protocol, taken from the Telepathy
          * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
          */
-        protocolName?: string | null
+        protocol_name?: string | null
     }
 
 }
@@ -16561,12 +16561,12 @@ export module Proxy {
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
          */
-        busName?: string | null
+        bus_name?: string | null
         /**
          * The D-Bus daemon for this object (this object itself, if it is a
          * TpDBusDaemon). Read-only except during construction.
          */
-        dbusDaemon?: DBusDaemon | null
+        dbus_daemon?: DBusDaemon | null
         /**
          * The #TpSimpleClientFactory used to create this proxy,
          * or %NULL if this proxy was not created through a factory.
@@ -16576,7 +16576,7 @@ export module Proxy {
          * The D-Bus object path for this object. Read-only except during
          * construction.
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -17174,7 +17174,7 @@ export module SimpleApprover {
         /**
          * The user-data pointer passed to #TpSimpleApprover:callback.
          */
-        userData?: any | null
+        user_data?: any | null
     }
 
 }
@@ -17341,7 +17341,7 @@ export module SimpleClientFactory {
         /**
          * The D-Bus daemon for this object.
          */
-        dbusDaemon?: DBusDaemon | null
+        dbus_daemon?: DBusDaemon | null
     }
 
 }
@@ -17616,7 +17616,7 @@ export module SimpleHandler {
         /**
          * The value of the Handler.BypassApproval D-Bus property.
          */
-        bypassApproval?: boolean | null
+        bypass_approval?: boolean | null
         /**
          * The #TpSimpleHandlerHandleChannelsImpl callback implementing the
          * HandleChannels D-Bus method.
@@ -17636,7 +17636,7 @@ export module SimpleHandler {
         /**
          * The user-data pointer passed to #TpSimpleHandler:callback.
          */
-        userData?: any | null
+        user_data?: any | null
     }
 
 }
@@ -17846,7 +17846,7 @@ export module SimpleObserver {
          * The user-data pointer passed to the callback implementing the
          * ObserveChannels D-Bus method.
          */
-        userData?: any | null
+        user_data?: any | null
     }
 
 }
@@ -18316,7 +18316,7 @@ export module StreamTubeConnection {
          * 
          * This property can't be %NULL.
          */
-        socketConnection?: Gio.SocketConnection | null
+        socket_connection?: Gio.SocketConnection | null
     }
 
 }
@@ -18682,7 +18682,7 @@ export module TLSCertificateRejection {
         /**
          * The D-Bus error name of the rejection
          */
-        dbusError?: string | null
+        dbus_error?: string | null
         /**
          * A #G_VARIANT_TYPE_VARDICT containing the details of the rejection
          */

@@ -5169,7 +5169,7 @@ module Bus {
         /**
          * Whether the #IBusBus object should connect asynchronously to the bus.
          */
-        connectAsync?: boolean | null
+        connect_async?: boolean | null
     }
 
 }
@@ -5737,7 +5737,7 @@ module Component {
         /**
          * The exec path of component
          */
-        commandLine?: string | null
+        command_line?: string | null
         /**
          * The description of component
          */
@@ -6676,7 +6676,7 @@ module Engine {
 
         // Own constructor properties of IBus-1.0.IBus.Engine
 
-        engineName?: string | null
+        engine_name?: string | null
     }
 
 }
@@ -7111,7 +7111,7 @@ module EngineDesc {
         /**
          * The key of IBusProperty to change panel icon dynamically.
          */
-        iconPropKey?: string | null
+        icon_prop_key?: string | null
         /**
          * The language of engine description
          */
@@ -7123,11 +7123,11 @@ module EngineDesc {
         /**
          * The keyboard option of engine description
          */
-        layoutOption?: string | null
+        layout_option?: string | null
         /**
          * The keyboard variant of engine description
          */
-        layoutVariant?: string | null
+        layout_variant?: string | null
         /**
          * The license of engine description
          */
@@ -9687,10 +9687,10 @@ module Property {
         icon?: string | null
         key?: string | null
         label?: Text | null
-        propType?: PropType | null
+        prop_type?: PropType | null
         sensitive?: boolean | null
         state?: PropState | null
-        subProps?: PropList | null
+        sub_props?: PropList | null
         symbol?: Text | null
         tooltip?: Text | null
         visible?: boolean | null
@@ -10384,7 +10384,7 @@ module Service {
         /**
          * The path of service object.
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }

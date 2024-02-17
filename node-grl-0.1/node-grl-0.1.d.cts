@@ -1666,7 +1666,7 @@ export module MediaSource {
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
          */
-        autoSplitThreshold?: number | null
+        auto_split_threshold?: number | null
     }
 
 }
@@ -2179,15 +2179,15 @@ export module MetadataSource {
         /**
          * A description of the source
          */
-        sourceDesc?: string | null
+        source_desc?: string | null
         /**
          * The identifier of the source.
          */
-        sourceId?: string | null
+        source_id?: string | null
         /**
          * The name of the source.
          */
-        sourceName?: string | null
+        source_name?: string | null
     }
 
 }

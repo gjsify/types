@@ -273,7 +273,7 @@ module App {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        appInfo?: Gio.DesktopAppInfo | null
+        app_info?: Gio.DesktopAppInfo | null
     }
 
 }
@@ -1432,10 +1432,10 @@ module Global {
 
         // Own constructor properties of Shell-0.1.Shell.Global
 
-        debugFlags?: string | null
-        frameFinishTimestamp?: boolean | null
-        frameTimestamps?: boolean | null
-        sessionMode?: string | null
+        debug_flags?: string | null
+        frame_finish_timestamp?: boolean | null
+        frame_timestamps?: boolean | null
+        session_mode?: string | null
     }
 
 }
@@ -2274,11 +2274,11 @@ module KeyringPrompt {
         /**
          * Text field for confirmation password
          */
-        confirmActor?: Clutter.Text | null
+        confirm_actor?: Clutter.Text | null
         /**
          * Text field for password
          */
-        passwordActor?: Clutter.Text | null
+        password_actor?: Clutter.Text | null
     }
 
 }
@@ -4569,7 +4569,7 @@ module TrayManager {
 
         // Own constructor properties of Shell-0.1.Shell.TrayManager
 
-        bgColor?: Clutter.Color | null
+        bg_color?: Clutter.Color | null
     }
 
 }
@@ -4929,7 +4929,7 @@ module WindowPreview {
 
         // Own constructor properties of Shell-0.1.Shell.WindowPreview
 
-        windowContainer?: Clutter.Actor | null
+        window_container?: Clutter.Actor | null
     }
 
 }
@@ -5544,8 +5544,8 @@ module WorkspaceBackground {
 
         // Own constructor properties of Shell-0.1.Shell.WorkspaceBackground
 
-        monitorIndex?: number | null
-        stateAdjustmentValue?: number | null
+        monitor_index?: number | null
+        state_adjustment_value?: number | null
     }
 
 }

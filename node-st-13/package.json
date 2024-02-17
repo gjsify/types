@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-st-13",
-    "version": "13.0.0-3.2.7",
+    "version": "13.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for St-13, generated from library version 13.0.0",
     "type": "module",
     "module": "node-st-13.js",
     "main": "node-st-13.js",
     "exports": {
-        "./ambient": "./node-st-13-ambient.d.ts",
-        "./import": "./node-st-13-import.d.ts",
+        "./ambient": {
+            "types": "./node-st-13-ambient.d.ts",
+            "default": "./node-st-13-ambient.js"
+        },
+        "./import": {
+            "types": "./node-st-13-import.d.ts",
+            "default": "./node-st-13-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-st-13.d.ts",

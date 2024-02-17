@@ -89,7 +89,7 @@ module DbusAccount {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        statusDetails?: string | null
+        status_details?: string | null
     }
 
 }
@@ -520,14 +520,14 @@ module AccountExporter {
 
         // Own constructor properties of CloudProviders-0.3.CloudProviders.AccountExporter
 
-        actionGroup?: Gio.ActionGroup | null
-        busName?: string | null
+        action_group?: Gio.ActionGroup | null
+        bus_name?: string | null
         icon?: Gio.Icon | null
-        menuModel?: Gio.MenuModel | null
+        menu_model?: Gio.MenuModel | null
         name?: string | null
         path?: string | null
         provider?: ProviderExporter | null
-        statusDetails?: string | null
+        status_details?: string | null
     }
 
 }
@@ -2130,8 +2130,8 @@ module ProviderExporter {
         // Own constructor properties of CloudProviders-0.3.CloudProviders.ProviderExporter
 
         bus?: Gio.DBusConnection | null
-        busName?: string | null
-        busPath?: string | null
+        bus_name?: string | null
+        bus_path?: string | null
         name?: string | null
     }
 

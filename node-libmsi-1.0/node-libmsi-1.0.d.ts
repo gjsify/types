@@ -463,7 +463,7 @@ module SummaryInfo {
         // Own constructor properties of Libmsi-1.0.Libmsi.SummaryInfo
 
         database?: Database | null
-        updateCount?: number | null
+        update_count?: number | null
     }
 
 }

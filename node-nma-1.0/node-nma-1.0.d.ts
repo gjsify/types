@@ -1214,8 +1214,8 @@ module MobileProvidersDatabase {
 
         // Own constructor properties of NMA-1.0.NMA.MobileProvidersDatabase
 
-        countryCodes?: string | null
-        serviceProviders?: string | null
+        country_codes?: string | null
+        service_providers?: string | null
     }
 
 }

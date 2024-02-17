@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-tepl-5",
-    "version": "5.0.0-3.2.7",
+    "version": "5.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Tepl-5, generated from library version 5.0.0",
     "type": "module",
     "module": "node-tepl-5.js",
     "main": "node-tepl-5.js",
     "exports": {
-        "./ambient": "./node-tepl-5-ambient.d.ts",
-        "./import": "./node-tepl-5-import.d.ts",
+        "./ambient": {
+            "types": "./node-tepl-5-ambient.d.ts",
+            "default": "./node-tepl-5-ambient.js"
+        },
+        "./import": {
+            "types": "./node-tepl-5-import.d.ts",
+            "default": "./node-tepl-5-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-tepl-5.d.ts",

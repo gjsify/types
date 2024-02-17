@@ -1363,7 +1363,7 @@ module Session {
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
          */
-        appData?: any | null
+        app_data?: any | null
         /**
          * The raw CK_SESSION_HANDLE handle of this session.
          */
@@ -1377,7 +1377,7 @@ module Session {
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
          */
-        openingFlags?: number | null
+        opening_flags?: number | null
         /**
          * The options this session was opened with.
          */

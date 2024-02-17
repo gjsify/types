@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-nma-1.0",
-    "version": "1.10.7-3.2.7",
+    "version": "1.10.7-3.2.8",
     "description": "Node.js TypeScript type definitions for NMA-1.0, generated from library version 1.10.7",
     "type": "module",
     "module": "node-nma-1.0.js",
     "main": "node-nma-1.0.js",
     "exports": {
-        "./ambient": "./node-nma-1.0-ambient.d.ts",
-        "./import": "./node-nma-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-nma-1.0-ambient.d.ts",
+            "default": "./node-nma-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-nma-1.0-import.d.ts",
+            "default": "./node-nma-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-nma-1.0.d.ts",

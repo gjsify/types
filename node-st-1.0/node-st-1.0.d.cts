@@ -456,18 +456,18 @@ export module Adjustment {
         /**
          * The page increment of the adjustment.
          */
-        pageIncrement?: number | null
+        page_increment?: number | null
         /**
          * The page size of the adjustment.
          * 
          * Note that the page-size is irrelevant and should be set to zero if the
          * adjustment is used for a simple scalar value.
          */
-        pageSize?: number | null
+        page_size?: number | null
         /**
          * The step increment of the adjustment.
          */
-        stepIncrement?: number | null
+        step_increment?: number | null
         /**
          * The maximum value of the adjustment.
          * 
@@ -1287,7 +1287,7 @@ export module BoxLayout {
          * A convenience property for the #ClutterBoxLayout:pack-start property of the
          * internal layout for #StBoxLayout.
          */
-        packStart?: boolean | null
+        pack_start?: boolean | null
         /**
          * A convenience property for the #ClutterBoxLayout:vertical property of the
          * internal layout for #StBoxLayout.
@@ -1834,7 +1834,7 @@ export module Button {
         /**
          * Which buttons will trigger the #StButton::clicked signal.
          */
-        buttonMask?: ButtonMask | null
+        button_mask?: ButtonMask | null
         /**
          * If #StButton:toggle-mode is %TRUE, indicates if the #StButton is toggled
          * "on" or "off".
@@ -1846,7 +1846,7 @@ export module Button {
         /**
          * The icon name of the #StButton.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The label of the #StButton.
          */
@@ -1854,7 +1854,7 @@ export module Button {
         /**
          * Whether the #StButton is operating in toggle mode (on/off).
          */
-        toggleMode?: boolean | null
+        toggle_mode?: boolean | null
     }
 
 }
@@ -3112,31 +3112,31 @@ export module Entry {
          * A #ClutterActor to display when the entry is empty and unfocused. Setting
          * this will replace the actor displaying #StEntry:hint-text.
          */
-        hintActor?: Clutter.Actor | null
+        hint_actor?: Clutter.Actor | null
         /**
          * The text to display when the entry is empty and unfocused. Setting this
          * will replace the actor of #StEntry::hint-actor.
          */
-        hintText?: string | null
+        hint_text?: string | null
         /**
          * The #ClutterInputContentHintFlags providing additional hints (beyond
          * #StEntry:input-purpose) that allow input methods to fine-tune their
          * behaviour.
          */
-        inputHints?: Clutter.InputContentHintFlags | null
+        input_hints?: Clutter.InputContentHintFlags | null
         /**
          * The #ClutterInputContentPurpose that helps on-screen keyboards and similar
          * input methods to decide which keys should be presented to the user.
          */
-        inputPurpose?: Clutter.InputContentPurpose | null
+        input_purpose?: Clutter.InputContentPurpose | null
         /**
          * The #ClutterActor acting as the primary icon at the start of the #StEntry.
          */
-        primaryIcon?: Clutter.Actor | null
+        primary_icon?: Clutter.Actor | null
         /**
          * The #ClutterActor acting as the secondary icon at the end of the #StEntry.
          */
-        secondaryIcon?: Clutter.Actor | null
+        secondary_icon?: Clutter.Actor | null
         /**
          * The current text value of the #StEntry.
          */
@@ -4163,12 +4163,12 @@ export module Icon {
         /**
          * The fallback #GIcon to display if #StIcon:gicon fails to load.
          */
-        fallbackGicon?: Gio.Icon | null
+        fallback_gicon?: Gio.Icon | null
         /**
          * The fallback icon name of the #StIcon. See st_icon_set_fallback_icon_name()
          * for details.
          */
-        fallbackIconName?: string | null
+        fallback_icon_name?: string | null
         /**
          * The #GIcon being displayed by this #StIcon.
          */
@@ -4176,12 +4176,12 @@ export module Icon {
         /**
          * The name of the icon if the icon being displayed is a #GThemedIcon.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The size of the icon, if greater than `0`. Other the icon size is derived
          * from the current style.
          */
-        iconSize?: number | null
+        icon_size?: number | null
     }
 
 }
@@ -4756,8 +4756,8 @@ export module ImageContent {
 
         // Own constructor properties of St-1.0.St.ImageContent
 
-        preferredHeight?: number | null
-        preferredWidth?: number | null
+        preferred_height?: number | null
+        preferred_width?: number | null
     }
 
 }
@@ -5420,12 +5420,12 @@ export module PasswordEntry {
         /**
          * Whether the text in the entry is masked for privacy.
          */
-        passwordVisible?: boolean | null
+        password_visible?: boolean | null
         /**
          * Whether to display an icon button to toggle the masking enabled by the
          * #StPasswordEntry:password-visible property.
          */
-        showPeekIcon?: boolean | null
+        show_peek_icon?: boolean | null
     }
 
 }
@@ -6526,19 +6526,19 @@ export module ScrollView {
         /**
          * Whether to enable automatic mouse wheel scrolling.
          */
-        enableMouseScrolling?: boolean | null
+        enable_mouse_scrolling?: boolean | null
         /**
          * The #StPolicyType for when to show the horizontal #StScrollBar.
          */
-        hscrollbarPolicy?: PolicyType | null
+        hscrollbar_policy?: PolicyType | null
         /**
          * Whether scrollbars are painted on top of the content.
          */
-        overlayScrollbars?: boolean | null
+        overlay_scrollbars?: boolean | null
         /**
          * The #StPolicyType for when to show the vertical #StScrollBar.
          */
-        vscrollbarPolicy?: PolicyType | null
+        vscrollbar_policy?: PolicyType | null
     }
 
 }
@@ -7168,15 +7168,15 @@ export module ScrollViewFade {
         /**
          * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
          */
-        extendFadeArea?: boolean | null
+        extend_fade_area?: boolean | null
         /**
          * Whether the faded area should extend to the edges of the #StScrollViewFade.
          */
-        fadeEdges?: boolean | null
+        fade_edges?: boolean | null
         /**
          * The margins widths that are faded.
          */
-        fadeMargins?: Clutter.Margin | null
+        fade_margins?: Clutter.Margin | null
     }
 
 }
@@ -7298,7 +7298,7 @@ export module Settings {
         /**
          * The slow-down factor applied to all animation durations.
          */
-        slowDownFactor?: number | null
+        slow_down_factor?: number | null
     }
 
 }
@@ -7629,17 +7629,17 @@ export module Theme {
          * The highest priority stylesheet, representing application-specific
          * styling; this is associated with the CSS "author" stylesheet.
          */
-        applicationStylesheet?: Gio.File | null
+        application_stylesheet?: Gio.File | null
         /**
          * The lowest priority stylesheet, representing global default
          * styling; this is associated with the CSS "user agent" stylesheet.
          */
-        defaultStylesheet?: Gio.File | null
+        default_stylesheet?: Gio.File | null
         /**
          * The second priority stylesheet, representing theme-specific styling;
          * this is associated with the CSS "user" stylesheet.
          */
-        themeStylesheet?: Gio.File | null
+        theme_stylesheet?: Gio.File | null
     }
 
 }
@@ -7758,7 +7758,7 @@ export module ThemeContext {
         /**
          * The scaling factor used for HiDPI scaling.
          */
-        scaleFactor?: number | null
+        scale_factor?: number | null
     }
 
 }
@@ -8394,7 +8394,7 @@ export module Viewport {
 
         // Own constructor properties of St-1.0.St.Viewport
 
-        clipToView?: boolean | null
+        clip_to_view?: boolean | null
     }
 
 }
@@ -8880,15 +8880,15 @@ export module Widget {
         /**
          * Object instance's name for assistive technology access.
          */
-        accessibleName?: string | null
+        accessible_name?: string | null
         /**
          * The accessible role of this object
          */
-        accessibleRole?: Atk.Role | null
+        accessible_role?: Atk.Role | null
         /**
          * Whether or not the widget can be focused via keyboard navigation.
          */
-        canFocus?: boolean | null
+        can_focus?: boolean | null
         /**
          * Whether or not the pointer is currently hovering over the widget. This is
          * only tracked automatically if #StWidget:track-hover is %TRUE, but you can
@@ -8898,12 +8898,12 @@ export module Widget {
         /**
          * An actor that labels this widget.
          */
-        labelActor?: Clutter.Actor | null
+        label_actor?: Clutter.Actor | null
         /**
          * The pseudo-class of the actor. Typical values include "hover", "active",
          * "focus".
          */
-        pseudoClass?: string | null
+        pseudo_class?: string | null
         /**
          * Inline style information for the actor as a ';'-separated list of
          * CSS properties.
@@ -8912,7 +8912,7 @@ export module Widget {
         /**
          * The style-class of the actor for use in styling.
          */
-        styleClass?: string | null
+        style_class?: string | null
         /**
          * Determines whether the widget tracks pointer hover state. If
          * %TRUE (and the widget is visible and reactive), the
@@ -8920,7 +8920,7 @@ export module Widget {
          * adjusted automatically as the pointer moves in and out of the
          * widget.
          */
-        trackHover?: boolean | null
+        track_hover?: boolean | null
     }
 
 }

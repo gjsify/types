@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-adw-1",
-    "version": "1.4.3-3.2.7",
-    "description": "Node.js TypeScript type definitions for Adw-1, generated from library version 1.4.3",
+    "version": "1.4.0-3.2.8",
+    "description": "Node.js TypeScript type definitions for Adw-1, generated from library version 1.4.0",
     "type": "module",
     "module": "node-adw-1.js",
     "main": "node-adw-1.js",
     "exports": {
-        "./ambient": "./node-adw-1-ambient.d.ts",
-        "./import": "./node-adw-1-import.d.ts",
+        "./ambient": {
+            "types": "./node-adw-1-ambient.d.ts",
+            "default": "./node-adw-1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-adw-1-import.d.ts",
+            "default": "./node-adw-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-adw-1.d.ts",

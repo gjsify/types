@@ -4355,7 +4355,7 @@ export module VideoDirection {
 
         // Own constructor properties of GstVideo-1.0.GstVideo.VideoDirection
 
-        videoDirection?: VideoOrientationMethod | null
+        video_direction?: VideoOrientationMethod | null
     }
 
 }
@@ -5009,7 +5009,7 @@ export module VideoAggregator {
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
          */
-        forceLive?: boolean | null
+        force_live?: boolean | null
     }
 
 }
@@ -5176,7 +5176,7 @@ export module VideoAggregatorConvertPad {
 
         // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregatorConvertPad
 
-        converterConfig?: Gst.Structure | null
+        converter_config?: Gst.Structure | null
     }
 
 }
@@ -5327,8 +5327,8 @@ export module VideoAggregatorPad {
 
         // Own constructor properties of GstVideo-1.0.GstVideo.VideoAggregatorPad
 
-        maxLastBufferRepeat?: number | null
-        repeatAfterEos?: boolean | null
+        max_last_buffer_repeat?: number | null
+        repeat_after_eos?: boolean | null
         zorder?: number | null
     }
 
@@ -5779,23 +5779,23 @@ export module VideoDecoder {
          * GstVideoDecoderRequestSyncPointFlags to use for the automatically
          * requested sync points if `automatic-request-sync-points` is enabled.
          */
-        automaticRequestSyncPointFlags?: VideoDecoderRequestSyncPointFlags | null
+        automatic_request_sync_point_flags?: VideoDecoderRequestSyncPointFlags | null
         /**
          * If set to %TRUE the decoder will automatically request sync points when
          * it seems like a good idea, e.g. if the first frames are not key frames or
          * if packet loss was reported by upstream.
          */
-        automaticRequestSyncPoints?: boolean | null
+        automatic_request_sync_points?: boolean | null
         /**
          * If set to %TRUE the decoder will discard frames that are marked as
          * corrupted instead of outputting them.
          */
-        discardCorruptedFrames?: boolean | null
+        discard_corrupted_frames?: boolean | null
         /**
          * Maximum number of tolerated consecutive decode errors. See
          * gst_video_decoder_set_max_errors() for more details.
          */
-        maxErrors?: number | null
+        max_errors?: number | null
         /**
          * Minimum interval between force-key-unit events sent upstream by the
          * decoder. Setting this to 0 will cause every event to be handled, setting
@@ -5804,7 +5804,7 @@ export module VideoDecoder {
          * See gst_video_event_new_upstream_force_key_unit() for more details about
          * force-key-unit events.
          */
-        minForceKeyUnitInterval?: number | null
+        min_force_key_unit_interval?: number | null
         /**
          * If set to %TRUE the decoder will handle QoS events received
          * from downstream elements.
@@ -6471,7 +6471,7 @@ export module VideoEncoder {
          * Minimum interval between force-keyunit requests in nanoseconds. See
          * gst_video_encoder_set_min_force_key_unit_interval() for more details.
          */
-        minForceKeyUnitInterval?: number | null
+        min_force_key_unit_interval?: number | null
         qos?: boolean | null
     }
 
@@ -7008,7 +7008,7 @@ export module VideoSink {
          * Whether to show video frames during preroll. If set to %FALSE, video
          * frames will only be rendered in PLAYING state.
          */
-        showPrerollFrame?: boolean | null
+        show_preroll_frame?: boolean | null
     }
 
 }

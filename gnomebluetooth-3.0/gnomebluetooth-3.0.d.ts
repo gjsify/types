@@ -225,14 +225,6 @@ module Client {
         /**
          * %TRUE if the default Bluetooth adapter is powered.
          */
-        default_adapter_powered?: boolean | null
-        /**
-         * %TRUE if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
-         */
-        default_adapter_setup_mode?: boolean | null
-        /**
-         * %TRUE if the default Bluetooth adapter is powered.
-         */
         defaultAdapterPowered?: boolean | null
         /**
          * %TRUE if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
@@ -249,15 +241,7 @@ interface Client {
     /**
      * The D-Bus path of the default Bluetooth adapter or %NULL.
      */
-    readonly default_adapter: string | null
-    /**
-     * The D-Bus path of the default Bluetooth adapter or %NULL.
-     */
     readonly defaultAdapter: string | null
-    /**
-     * The address of the default Bluetooth adapter or %NULL.
-     */
-    readonly default_adapter_address: string | null
     /**
      * The address of the default Bluetooth adapter or %NULL.
      */
@@ -265,23 +249,11 @@ interface Client {
     /**
      * The name of the default Bluetooth adapter or %NULL.
      */
-    readonly default_adapter_name: string | null
-    /**
-     * The name of the default Bluetooth adapter or %NULL.
-     */
     readonly defaultAdapterName: string | null
     /**
      * %TRUE if the default Bluetooth adapter is powered.
      */
-    default_adapter_powered: boolean
-    /**
-     * %TRUE if the default Bluetooth adapter is powered.
-     */
     defaultAdapterPowered: boolean
-    /**
-     * %TRUE if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
-     */
-    default_adapter_setup_mode: boolean
     /**
      * %TRUE if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
      */
@@ -290,16 +262,7 @@ interface Client {
      * The #BluetoothAdapterState of the default Bluetooth adapter. More precise than
      * #BluetoothClient:default-adapter-powered.
      */
-    readonly default_adapter_state: AdapterState
-    /**
-     * The #BluetoothAdapterState of the default Bluetooth adapter. More precise than
-     * #BluetoothClient:default-adapter-powered.
-     */
     readonly defaultAdapterState: AdapterState
-    /**
-     * The number of detected Bluetooth adapters.
-     */
-    readonly num_adapters: number
     /**
      * The number of detected Bluetooth adapters.
      */
@@ -418,22 +381,18 @@ module Device {
 
         address?: string | null
         alias?: string | null
-        battery_level?: number | null
-        battery_percentage?: number | null
-        battery_type?: BatteryType | null
+        batteryLevel?: number | null
+        batteryPercentage?: number | null
+        batteryType?: BatteryType | null
         connected?: boolean | null
         icon?: string | null
-        legacy_pairing?: boolean | null
+        legacyPairing?: boolean | null
         name?: string | null
         paired?: boolean | null
         proxy?: Gio.DBusProxy | null
         trusted?: boolean | null
         type?: Type | null
         uuids?: string[] | null
-        batteryLevel?: number | null
-        batteryPercentage?: number | null
-        batteryType?: BatteryType | null
-        legacyPairing?: boolean | null
     }
 
 }
@@ -444,16 +403,12 @@ interface Device {
 
     address: string | null
     alias: string | null
-    battery_level: number
     batteryLevel: number
-    battery_percentage: number
     batteryPercentage: number
-    battery_type: BatteryType
     batteryType: BatteryType
     readonly connectable: boolean
     connected: boolean
     icon: string | null
-    legacy_pairing: boolean
     legacyPairing: boolean
     name: string | null
     paired: boolean

@@ -1,13 +1,19 @@
 {
     "name": "@girs/vulkan-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Vulkan-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "vulkan-1.0.js",
     "main": "vulkan-1.0.js",
     "exports": {
-        "./ambient": "./vulkan-1.0-ambient.d.ts",
-        "./import": "./vulkan-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./vulkan-1.0-ambient.d.ts",
+            "default": "./vulkan-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./vulkan-1.0-import.d.ts",
+            "default": "./vulkan-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./vulkan-1.0.d.ts",

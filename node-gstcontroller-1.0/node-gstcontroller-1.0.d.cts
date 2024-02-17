@@ -99,10 +99,10 @@ export module ARGBControlBinding {
 
         // Own constructor properties of GstController-1.0.GstController.ARGBControlBinding
 
-        controlSourceA?: Gst.ControlSource | null
-        controlSourceB?: Gst.ControlSource | null
-        controlSourceG?: Gst.ControlSource | null
-        controlSourceR?: Gst.ControlSource | null
+        control_source_a?: Gst.ControlSource | null
+        control_source_b?: Gst.ControlSource | null
+        control_source_g?: Gst.ControlSource | null
+        control_source_r?: Gst.ControlSource | null
     }
 
 }
@@ -360,7 +360,7 @@ export module DirectControlBinding {
         // Own constructor properties of GstController-1.0.GstController.DirectControlBinding
 
         absolute?: boolean | null
-        controlSource?: Gst.ControlSource | null
+        control_source?: Gst.ControlSource | null
     }
 
 }

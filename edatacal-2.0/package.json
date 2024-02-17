@@ -1,13 +1,19 @@
 {
     "name": "@girs/edatacal-2.0",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for EDataCal-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "edatacal-2.0.js",
     "main": "edatacal-2.0.js",
     "exports": {
-        "./ambient": "./edatacal-2.0-ambient.d.ts",
-        "./import": "./edatacal-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./edatacal-2.0-ambient.d.ts",
+            "default": "./edatacal-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./edatacal-2.0-import.d.ts",
+            "default": "./edatacal-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./edatacal-2.0.d.ts",

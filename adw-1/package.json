@@ -1,13 +1,19 @@
 {
     "name": "@girs/adw-1",
-    "version": "1.4.3-3.2.7",
-    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.3",
+    "version": "1.4.0-3.2.8",
+    "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.4.0",
     "type": "module",
     "module": "adw-1.js",
     "main": "adw-1.js",
     "exports": {
-        "./ambient": "./adw-1-ambient.d.ts",
-        "./import": "./adw-1-import.d.ts",
+        "./ambient": {
+            "types": "./adw-1-ambient.d.ts",
+            "default": "./adw-1-ambient.js"
+        },
+        "./import": {
+            "types": "./adw-1-import.d.ts",
+            "default": "./adw-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./adw-1.d.ts",

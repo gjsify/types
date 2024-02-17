@@ -1,13 +1,19 @@
 {
     "name": "@girs/meta-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Meta-11, generated from library version 11.0.0",
     "type": "module",
     "module": "meta-11.js",
     "main": "meta-11.js",
     "exports": {
-        "./ambient": "./meta-11-ambient.d.ts",
-        "./import": "./meta-11-import.d.ts",
+        "./ambient": {
+            "types": "./meta-11-ambient.d.ts",
+            "default": "./meta-11-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-11-import.d.ts",
+            "default": "./meta-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./meta-11.d.ts",

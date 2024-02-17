@@ -3371,7 +3371,7 @@ enum glyph_flags_t {
      * 				   layout, by avoiding re-shaping of each line
      * 				   after line-breaking, by limiting the
      * 				   reshaping to a small piece around the
-     * 				   breaking position only, even if the breaking
+     * 				   breaking positin only, even if the breaking
      * 				   position carries the
      * 				   #HB_GLYPH_FLAG_UNSAFE_TO_BREAK or when
      * 				   hyphenation or other text transformation
@@ -3544,21 +3544,9 @@ const UNICODE_MAX: number
  * See Unicode 6.1 for details on the maximum decomposition length.
  */
 const UNICODE_MAX_DECOMPOSITION_LEN: number
-/**
- * The major component of the library version available at compile-time.
- */
 const VERSION_MAJOR: number
-/**
- * The micro component of the library version available at compile-time.
- */
 const VERSION_MICRO: number
-/**
- * The minor component of the library version available at compile-time.
- */
 const VERSION_MINOR: number
-/**
- * A string literal containing the library version available at compile-time.
- */
 const VERSION_STRING: string
 /**
  * Fetches the name identifier of the specified feature type in the face's `name` table.
@@ -3821,7 +3809,7 @@ function bufferDeserializeUnicode(buffer: buffer_t, buf: string[], format: buffe
  * callers if just comparing two buffers is needed.
  * @param buffer a buffer.
  * @param reference other buffer to compare to.
- * @param dottedcircleGlyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepoint_t) -1.
+ * @param dottedcircleGlyph glyph id of U+25CC DOTTED CIRCLE, or (hb_codepont_t) -1.
  * @param positionFuzz allowed absolute difference in position values.
  */
 function bufferDiff(buffer: buffer_t, reference: buffer_t, dottedcircleGlyph: codepoint_t, positionFuzz: number): buffer_diff_flags_t
@@ -4225,7 +4213,7 @@ function bufferSetMessageFunc(buffer: buffer_t, func: buffer_message_func_t): vo
  * Sets the #hb_codepoint_t that replaces characters not found in
  * the font during shaping.
  * 
- * The not-found glyph defaults to zero, sometimes known as the
+ * The not-found glyph defaults to zero, sometimes knows as the
  * ".notdef" glyph.  This API allows for differentiating the two.
  * @param buffer An #hb_buffer_t
  * @param notFound the not-found #hb_codepoint_t
@@ -5099,7 +5087,7 @@ function fontGetHExtents(font: font_t): [ /* returnType */ bool_t, /* extents */
 function fontGetNominalGlyph(font: font_t, unicode: codepoint_t): [ /* returnType */ bool_t, /* glyph */ codepoint_t ]
 /**
  * Fetches the nominal glyph IDs for a sequence of Unicode code points. Glyph
- * IDs must be returned in a #hb_codepoint_t output parameter. Stops at the
+ * IDs must be returned in a #hb_codepoint_t output parameter. Stopes at the
  * first unsupported glyph ID.
  * @param font #hb_font_t to work upon
  * @param count number of code points to query
@@ -5742,7 +5730,7 @@ function mapIsEqual(map: map_t, other: map_t): bool_t
  */
 function mapKeys(map: map_t, keys: set_t): void
 /**
- * Fetches the next key/value pair in `map`.
+ * Fetches the next key/value paire in `map`.
  * 
  * Set `idx` to -1 to get started.
  * 
@@ -6745,14 +6733,6 @@ function otVarNormalizeVariations(face: face_t, variations: variation_t, variati
  */
 function paintColor(funcs: paint_funcs_t, paintData: any | null, isForeground: bool_t, color: color_t): void
 /**
- * Perform a "color-glyph" paint operation.
- * @param funcs paint functions
- * @param paintData associated data passed by the caller
- * @param glyph the glyph ID
- * @param font the font
- */
-function paintColorGlyph(funcs: paint_funcs_t, paintData: any | null, glyph: codepoint_t, font: font_t): bool_t
-/**
  * Gets the custom palette color for `color_index`.
  * @param funcs paint functions
  * @param paintData associated data passed by the caller
@@ -6795,12 +6775,6 @@ function paintFuncsMakeImmutable(funcs: paint_funcs_t): void
  * @param func The paint-color callback
  */
 function paintFuncsSetColorFunc(funcs: paint_funcs_t, func: paint_color_func_t): void
-/**
- * Sets the color-glyph callback on the paint functions struct.
- * @param funcs A paint functions struct
- * @param func The color-glyph callback
- */
-function paintFuncsSetColorGlyphFunc(funcs: paint_funcs_t, func: paint_color_glyph_func_t): void
 /**
  * Sets the custom-palette-color callback on the paint functions struct.
  * @param funcs A paint functions struct
@@ -7557,24 +7531,6 @@ function variationFromString(str: number[]): [ /* returnType */ bool_t, /* varia
  */
 function variationToString(variation: variation_t): /* buf */ string[]
 /**
- * Returns library version as three integer components.
- */
-function version(): [ /* major */ number, /* minor */ number, /* micro */ number ]
-/**
- * Tests the library version against a minimum value,
- * as three integer components.
- * @param major Library major version component
- * @param minor Library minor version component
- * @param micro Library micro version component
- * @returns `true` if the library is equal to or greater than the test value, `false` otherwise
- */
-function versionAtleast(major: number, minor: number, micro: number): bool_t
-/**
- * Returns library version as a string with three components.
- * @returns Library version string
- */
-function versionString(): string
-/**
  * A callback method for #hb_buffer_t. The method gets called with the
  * #hb_buffer_t it was set on, the #hb_font_t the buffer is shaped with and a
  * message describing what step of the shaping process will be performed.
@@ -7921,18 +7877,6 @@ interface font_paint_glyph_func_t {
  */
 interface paint_color_func_t {
     (funcs: paint_funcs_t, paintData: any | null, isForeground: bool_t, color: color_t): void
-}
-/**
- * A virtual method for the #hb_paint_funcs_t to render a color glyph by glyph index.
- * @callback 
- * @param funcs paint functions object
- * @param paintData The data accompanying the paint functions in hb_font_paint_glyph()
- * @param glyph the glyph ID
- * @param font the font
- * @returns %true if the glyph was painted, %false otherwise.
- */
-interface paint_color_glyph_func_t {
-    (funcs: paint_funcs_t, paintData: any | null, glyph: codepoint_t, font: font_t): bool_t
 }
 /**
  * A virtual method for the #hb_paint_funcs_t to fetch a color from the custom

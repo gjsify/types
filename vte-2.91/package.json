@@ -1,13 +1,19 @@
 {
     "name": "@girs/vte-2.91",
-    "version": "0.75.0-3.2.7",
+    "version": "0.75.0-3.2.8",
     "description": "GJS TypeScript type definitions for Vte-2.91, generated from library version 0.75.0",
     "type": "module",
     "module": "vte-2.91.js",
     "main": "vte-2.91.js",
     "exports": {
-        "./ambient": "./vte-2.91-ambient.d.ts",
-        "./import": "./vte-2.91-import.d.ts",
+        "./ambient": {
+            "types": "./vte-2.91-ambient.d.ts",
+            "default": "./vte-2.91-ambient.js"
+        },
+        "./import": {
+            "types": "./vte-2.91-import.d.ts",
+            "default": "./vte-2.91-import.js"
+        },
         ".": {
             "import": {
                 "types": "./vte-2.91.d.ts",

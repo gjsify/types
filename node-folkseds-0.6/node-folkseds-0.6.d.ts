@@ -173,9 +173,9 @@ module Persona {
         // Own constructor properties of FolksEds-0.6.FolksEds.Persona
 
         contact?: EBookContacts.Contact | null
-        contactId?: string | null
-        systemGroups?: Gee.Set | null
-        inGooglePersonalGroup?: boolean | null
+        contact_id?: string | null
+        system_groups?: Gee.Set | null
+        in_google_personal_group?: boolean | null
     }
 
 }

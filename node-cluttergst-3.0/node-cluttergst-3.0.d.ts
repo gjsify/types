@@ -167,7 +167,7 @@ module Player {
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          */
-        audioVolume?: number | null
+        audio_volume?: number | null
         /**
          * Whether the #ClutterGstPlayer actor is playing.
          */
@@ -356,11 +356,11 @@ module Aspectratio {
          * Whether the content should fill its allocation with video rather
          * than adding borders.
          */
-        fillAllocation?: boolean | null
+        fill_allocation?: boolean | null
         /**
          * Whether or not paint borders on the sides of the video
          */
-        paintBorders?: boolean | null
+        paint_borders?: boolean | null
     }
 
 }
@@ -805,7 +805,7 @@ module CameraDevice {
         /**
          * The GstElementFactory for this device.
          */
-        elementFactory?: Gst.ElementFactory | null
+        element_factory?: Gst.ElementFactory | null
         /**
          * The device name.
          */
@@ -1039,8 +1039,8 @@ module Content {
         // Own constructor properties of ClutterGst-3.0.ClutterGst.Content
 
         frame?: Frame | null
-        paintFrame?: boolean | null
-        paintOverlays?: boolean | null
+        paint_frame?: boolean | null
+        paint_overlays?: boolean | null
         player?: GObject.Object | null
         sink?: VideoSink | null
     }
@@ -1154,19 +1154,19 @@ module Crop {
         /**
          * Whether to cull the backface of the actor
          */
-        cullBackface?: boolean | null
+        cull_backface?: boolean | null
         /**
          * Input region in the video frame (all values between 0 and 1).
          */
-        inputRegion?: Box | null
+        input_region?: Box | null
         /**
          * Output region in the actor's allocation (all values between 0 and 1).
          */
-        outputRegion?: Box | null
+        output_region?: Box | null
         /**
          * Whether or not paint borders on the sides of the video
          */
-        paintBorders?: boolean | null
+        paint_borders?: boolean | null
     }
 
 }
@@ -1300,7 +1300,7 @@ module Playback {
         /**
          * Index of the current audio stream.
          */
-        audioStream?: number | null
+        audio_stream?: number | null
         /**
          * The current progress of the playback, as a normalized
          * value between 0.0 and 1.0.
@@ -1309,21 +1309,21 @@ module Playback {
         /**
          * Flags to use when seeking.
          */
-        seekFlags?: SeekFlags | null
+        seek_flags?: SeekFlags | null
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
          * pango_font_description_from_string().
          */
-        subtitleFontName?: string | null
+        subtitle_font_name?: string | null
         /**
          * Current subtitle track being displayed.
          */
-        subtitleTrack?: number | null
+        subtitle_track?: number | null
         /**
          * The location of a subtitle file, expressed as a valid URI.
          */
-        subtitleUri?: string | null
+        subtitle_uri?: string | null
         /**
          * The location of a media file, expressed as a valid URI.
          */
@@ -1331,7 +1331,7 @@ module Playback {
         /**
          * The User Agent used by #ClutterGstPlayback with network protocols.
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -1741,7 +1741,7 @@ module VideoSink {
 
         // Own constructor properties of ClutterGst-3.0.ClutterGst.VideoSink
 
-        updatePriority?: number | null
+        update_priority?: number | null
     }
 
 }

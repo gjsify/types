@@ -1192,15 +1192,15 @@ export module CacheKeys {
         /**
          * The column name for the keys.
          */
-        keyColumnName?: string | null
+        key_column_name?: string | null
         /**
          * The table name of this keys table.
          */
-        tableName?: string | null
+        table_name?: string | null
         /**
          * The column name for the values.
          */
-        valueColumnName?: string | null
+        value_column_name?: string | null
     }
 
 }
@@ -2140,8 +2140,8 @@ export module DataFactory {
 
         // Own constructor properties of EBackend-1.2.EBackend.DataFactory
 
-        backendPerProcess?: number | null
-        reloadSupported?: boolean | null
+        backend_per_process?: number | null
+        reload_supported?: boolean | null
     }
 
 }
@@ -2436,13 +2436,13 @@ export module ServerSideSource {
         // Own constructor properties of EBackend-1.2.EBackend.ServerSideSource
 
         file?: Gio.File | null
-        oauth2Support?: OAuth2Support | null
-        remoteCreatable?: boolean | null
-        remoteDeletable?: boolean | null
+        oauth2_support?: OAuth2Support | null
+        remote_creatable?: boolean | null
+        remote_deletable?: boolean | null
         removable?: boolean | null
         server?: SourceRegistryServer | null
         writable?: boolean | null
-        writeDirectory?: string | null
+        write_directory?: string | null
     }
 
 }

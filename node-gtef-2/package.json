@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gtef-2",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gtef-2, generated from library version 2.0.0",
     "type": "module",
     "module": "node-gtef-2.js",
     "main": "node-gtef-2.js",
     "exports": {
-        "./ambient": "./node-gtef-2-ambient.d.ts",
-        "./import": "./node-gtef-2-import.d.ts",
+        "./ambient": {
+            "types": "./node-gtef-2-ambient.d.ts",
+            "default": "./node-gtef-2-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gtef-2-import.d.ts",
+            "default": "./node-gtef-2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gtef-2.d.ts",

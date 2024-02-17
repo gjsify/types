@@ -6194,9 +6194,8 @@ module Cursor {
 
         // Own constructor properties of Gdk-3.0.Gdk.Cursor
 
-        cursor_type?: CursorType | null
-        display?: Display | null
         cursorType?: CursorType | null
+        display?: Display | null
     }
 
 }
@@ -6205,7 +6204,6 @@ interface Cursor {
 
     // Own properties of Gdk-3.0.Gdk.Cursor
 
-    readonly cursor_type: CursorType
     readonly cursorType: CursorType
     readonly display: Display
 
@@ -6446,51 +6444,11 @@ module Device {
         /**
          * The #GdkDeviceManager the #GdkDevice pertains to.
          */
-        device_manager?: DeviceManager | null
+        deviceManager?: DeviceManager | null
         /**
          * The #GdkDisplay the #GdkDevice pertains to.
          */
         display?: Display | null
-        /**
-         * Whether the device is represented by a cursor on the screen. Devices of type
-         * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
-         */
-        has_cursor?: boolean | null
-        input_mode?: InputMode | null
-        /**
-         * Source type for the device.
-         */
-        input_source?: InputSource | null
-        /**
-         * The device name.
-         */
-        name?: string | null
-        /**
-         * The maximal number of concurrent touches on a touch device.
-         * Will be 0 if the device is not a touch device or if the number
-         * of touches is unknown.
-         */
-        num_touches?: number | null
-        /**
-         * Product ID of this device, see gdk_device_get_product_id().
-         */
-        product_id?: string | null
-        /**
-         * #GdkSeat of this device.
-         */
-        seat?: Seat | null
-        /**
-         * Device role in the device manager.
-         */
-        type?: DeviceType | null
-        /**
-         * Vendor ID of this device, see gdk_device_get_vendor_id().
-         */
-        vendor_id?: string | null
-        /**
-         * The #GdkDeviceManager the #GdkDevice pertains to.
-         */
-        deviceManager?: DeviceManager | null
         /**
          * Whether the device is represented by a cursor on the screen. Devices of type
          * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
@@ -6502,6 +6460,10 @@ module Device {
          */
         inputSource?: InputSource | null
         /**
+         * The device name.
+         */
+        name?: string | null
+        /**
          * The maximal number of concurrent touches on a touch device.
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
@@ -6511,6 +6473,14 @@ module Device {
          * Product ID of this device, see gdk_device_get_product_id().
          */
         productId?: string | null
+        /**
+         * #GdkSeat of this device.
+         */
+        seat?: Seat | null
+        /**
+         * Device role in the device manager.
+         */
+        type?: DeviceType | null
         /**
          * Vendor ID of this device, see gdk_device_get_vendor_id().
          */
@@ -6527,20 +6497,11 @@ interface Device {
      * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
      * always come in keyboard/pointer pairs. Other device types will have a %NULL associated device.
      */
-    readonly associated_device: Device
-    /**
-     * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
-     * always come in keyboard/pointer pairs. Other device types will have a %NULL associated device.
-     */
     readonly associatedDevice: Device
     /**
      * The axes currently available for this device.
      */
     readonly axes: AxisFlags
-    /**
-     * The #GdkDeviceManager the #GdkDevice pertains to.
-     */
-    readonly device_manager: DeviceManager
     /**
      * The #GdkDeviceManager the #GdkDevice pertains to.
      */
@@ -6553,26 +6514,12 @@ interface Device {
      * Whether the device is represented by a cursor on the screen. Devices of type
      * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
      */
-    readonly has_cursor: boolean
-    /**
-     * Whether the device is represented by a cursor on the screen. Devices of type
-     * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
-     */
     readonly hasCursor: boolean
-    input_mode: InputMode
     inputMode: InputMode
     /**
      * Source type for the device.
      */
-    readonly input_source: InputSource
-    /**
-     * Source type for the device.
-     */
     readonly inputSource: InputSource
-    /**
-     * Number of axes in the device.
-     */
-    readonly n_axes: number
     /**
      * Number of axes in the device.
      */
@@ -6586,17 +6533,7 @@ interface Device {
      * Will be 0 if the device is not a touch device or if the number
      * of touches is unknown.
      */
-    readonly num_touches: number
-    /**
-     * The maximal number of concurrent touches on a touch device.
-     * Will be 0 if the device is not a touch device or if the number
-     * of touches is unknown.
-     */
     readonly numTouches: number
-    /**
-     * Product ID of this device, see gdk_device_get_product_id().
-     */
-    readonly product_id: string | null
     /**
      * Product ID of this device, see gdk_device_get_product_id().
      */
@@ -6610,10 +6547,6 @@ interface Device {
      * Device role in the device manager.
      */
     readonly type: DeviceType
-    /**
-     * Vendor ID of this device, see gdk_device_get_vendor_id().
-     */
-    readonly vendor_id: string | null
     /**
      * Vendor ID of this device, see gdk_device_get_vendor_id().
      */
@@ -7197,10 +7130,8 @@ module DeviceTool {
         // Own constructor properties of Gdk-3.0.Gdk.DeviceTool
 
         axes?: AxisFlags | null
-        hardware_id?: number | null
-        serial?: number | null
-        tool_type?: DeviceToolType | null
         hardwareId?: number | null
+        serial?: number | null
         toolType?: DeviceToolType | null
     }
 
@@ -7211,10 +7142,8 @@ interface DeviceTool {
     // Own properties of Gdk-3.0.Gdk.DeviceTool
 
     readonly axes: AxisFlags
-    readonly hardware_id: number
     readonly hardwareId: number
     readonly serial: number
-    readonly tool_type: DeviceToolType
     readonly toolType: DeviceToolType
 
     // Owm methods of Gdk-3.0.Gdk.DeviceTool
@@ -7752,7 +7681,6 @@ module DisplayManager {
 
         // Own constructor properties of Gdk-3.0.Gdk.DisplayManager
 
-        default_display?: Display | null
         defaultDisplay?: Display | null
     }
 
@@ -7762,7 +7690,6 @@ interface DisplayManager {
 
     // Own properties of Gdk-3.0.Gdk.DisplayManager
 
-    default_display: Display
     defaultDisplay: Display
 
     // Owm methods of Gdk-3.0.Gdk.DisplayManager
@@ -8381,15 +8308,11 @@ module GLContext {
         /**
          * The #GdkGLContext that this context is sharing data with, or %NULL
          */
-        shared_context?: GLContext | null
+        sharedContext?: GLContext | null
         /**
          * The #GdkWindow the gl context is bound to.
          */
         window?: Window | null
-        /**
-         * The #GdkGLContext that this context is sharing data with, or %NULL
-         */
-        sharedContext?: GLContext | null
     }
 
 }
@@ -8402,10 +8325,6 @@ interface GLContext {
      * The #GdkDisplay used to create the #GdkGLContext.
      */
     readonly display: Display
-    /**
-     * The #GdkGLContext that this context is sharing data with, or %NULL
-     */
-    readonly shared_context: GLContext
     /**
      * The #GdkGLContext that this context is sharing data with, or %NULL
      */
@@ -8923,17 +8842,12 @@ interface Monitor {
 
     readonly display: Display
     readonly geometry: Rectangle
-    readonly height_mm: number
     readonly heightMm: number
     readonly manufacturer: string | null
     readonly model: string | null
-    readonly refresh_rate: number
     readonly refreshRate: number
-    readonly scale_factor: number
     readonly scaleFactor: number
-    readonly subpixel_layout: SubpixelLayout
     readonly subpixelLayout: SubpixelLayout
-    readonly width_mm: number
     readonly widthMm: number
     readonly workarea: Rectangle
 
@@ -9122,9 +9036,8 @@ module Screen {
 
         // Own constructor properties of Gdk-3.0.Gdk.Screen
 
-        font_options?: any | null
-        resolution?: number | null
         fontOptions?: any | null
+        resolution?: number | null
     }
 
 }
@@ -9133,7 +9046,6 @@ interface Screen {
 
     // Own properties of Gdk-3.0.Gdk.Screen
 
-    font_options: any
     fontOptions: any
     resolution: number
 

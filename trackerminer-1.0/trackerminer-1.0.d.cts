@@ -644,10 +644,6 @@ export module Decorator {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.Decorator
 
-        class_names?: string[] | null
-        commit_batch_size?: number | null
-        data_source?: string | null
-        priority_rdf_types?: string[] | null
         classNames?: string[] | null
         commitBatchSize?: number | null
         dataSource?: string | null
@@ -660,13 +656,9 @@ export interface Decorator extends Gio.Initable {
 
     // Own properties of TrackerMiner-1.0.TrackerMiner.Decorator
 
-    class_names: string[]
     classNames: string[]
-    commit_batch_size: number
     commitBatchSize: number
-    readonly data_source: string | null
     readonly dataSource: string | null
-    priority_rdf_types: string[]
     priorityRdfTypes: string[]
 
     // Own fields of TrackerMiner-1.0.TrackerMiner.Decorator
@@ -935,9 +927,8 @@ export module IndexingTree {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.IndexingTree
 
-        filter_hidden?: boolean | null
-        root?: Gio.File | null
         filterHidden?: boolean | null
+        root?: Gio.File | null
     }
 
 }
@@ -946,7 +937,6 @@ export interface IndexingTree {
 
     // Own properties of TrackerMiner-1.0.TrackerMiner.IndexingTree
 
-    filter_hidden: boolean
     filterHidden: boolean
     readonly root: Gio.File
 
@@ -1237,15 +1227,12 @@ export module Miner {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.Miner
 
-        introspection_handler?: any | null
-        introspection_xml?: string | null
-        name?: string | null
-        progress?: number | null
-        remaining_time?: number | null
-        status?: string | null
         introspectionHandler?: any | null
         introspectionXml?: string | null
+        name?: string | null
+        progress?: number | null
         remainingTime?: number | null
+        status?: string | null
     }
 
 }
@@ -1254,13 +1241,10 @@ export interface Miner extends Gio.Initable {
 
     // Own properties of TrackerMiner-1.0.TrackerMiner.Miner
 
-    introspection_handler: any
     introspectionHandler: any
-    introspection_xml: string | null
     introspectionXml: string | null
     readonly name: string | null
     progress: number
-    remaining_time: number
     remainingTime: number
     status: string | null
 
@@ -1481,18 +1465,13 @@ export module MinerFS {
 
         // Own constructor properties of TrackerMiner-1.0.TrackerMiner.MinerFS
 
-        data_provider?: DataProvider | null
-        initial_crawling?: boolean | null
-        mtime_checking?: boolean | null
-        processing_pool_ready_limit?: number | null
-        processing_pool_wait_limit?: number | null
-        root?: Gio.File | null
-        throttle?: number | null
         dataProvider?: DataProvider | null
         initialCrawling?: boolean | null
         mtimeChecking?: boolean | null
         processingPoolReadyLimit?: number | null
         processingPoolWaitLimit?: number | null
+        root?: Gio.File | null
+        throttle?: number | null
     }
 
 }
@@ -1501,15 +1480,10 @@ export interface MinerFS extends Gio.Initable {
 
     // Own properties of TrackerMiner-1.0.TrackerMiner.MinerFS
 
-    readonly data_provider: DataProvider
     readonly dataProvider: DataProvider
-    initial_crawling: boolean
     initialCrawling: boolean
-    mtime_checking: boolean
     mtimeChecking: boolean
-    processing_pool_ready_limit: number
     processingPoolReadyLimit: number
-    processing_pool_wait_limit: number
     processingPoolWaitLimit: number
     readonly root: Gio.File
     throttle: number
@@ -1871,7 +1845,6 @@ export interface MinerOnline extends Gio.Initable {
 
     // Own properties of TrackerMiner-1.0.TrackerMiner.MinerOnline
 
-    readonly network_type: NetworkType
     readonly networkType: NetworkType
 
     // Own fields of TrackerMiner-1.0.TrackerMiner.MinerOnline

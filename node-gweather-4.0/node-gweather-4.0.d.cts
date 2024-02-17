@@ -538,17 +538,17 @@ export module Info {
          * 
          * Weather providers require this information.
          */
-        applicationId?: string | null
+        application_id?: string | null
         /**
          * An email address or any other contact form URL.
          * 
          * Weather providers require this information.
          */
-        contactInfo?: string | null
+        contact_info?: string | null
         /**
          * The enabled weather providers.
          */
-        enabledProviders?: Provider | null
+        enabled_providers?: Provider | null
         /**
          * The location of the weather information.
          */

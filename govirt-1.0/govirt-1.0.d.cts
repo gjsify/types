@@ -46,7 +46,6 @@ export module Proxy {
         // Own constructor properties of GoVirt-1.0.GoVirt.Proxy
 
         admin?: boolean | null
-        ca_cert?: any[] | null
         caCert?: any[] | null
     }
 
@@ -57,7 +56,6 @@ export interface Proxy {
     // Own properties of GoVirt-1.0.GoVirt.Proxy
 
     admin: boolean
-    ca_cert: any[]
     caCert: any[]
 
     // Own fields of GoVirt-1.0.GoVirt.Proxy
@@ -310,13 +308,11 @@ export module VmDisplay {
 
         address?: string | null
         expiry?: number | null
-        monitor_count?: number | null
+        monitorCount?: number | null
         port?: number | null
-        secure_port?: number | null
+        securePort?: number | null
         ticket?: string | null
         type?: VmDisplayType | null
-        monitorCount?: number | null
-        securePort?: number | null
     }
 
 }
@@ -327,10 +323,8 @@ export interface VmDisplay {
 
     address: string
     expiry: number
-    monitor_count: number
     monitorCount: number
     port: number
-    secure_port: number
     securePort: number
     ticket: string
     type: VmDisplayType

@@ -2875,8 +2875,8 @@ export module RemotePresenter {
 
         // Own constructor properties of Eog-3.0.Eog.RemotePresenter
 
-        nextAction?: string | null
-        prevAction?: string | null
+        next_action?: string | null
+        prev_action?: string | null
         thumbview?: ThumbView | null
     }
 
@@ -3534,18 +3534,18 @@ export module ScrollView {
          * If %TRUE the displayed image will be filtered in a second pass
          * while being zoomed in.
          */
-        antialiasingIn?: boolean | null
+        antialiasing_in?: boolean | null
         /**
          * If %TRUE the displayed image will be filtered in a second pass
          * while being zoomed out.
          */
-        antialiasingOut?: boolean | null
+        antialiasing_out?: boolean | null
         /**
          * This is the default background color used for painting the background
          * of the image view. If set to %NULL the color is determined by the
          * active GTK theme.
          */
-        backgroundColor?: Gdk.RGBA | null
+        background_color?: Gdk.RGBA | null
         /**
          * This is the currently display #EogImage.
          */
@@ -3554,23 +3554,23 @@ export module ScrollView {
          * If %TRUE the scrollwheel will zoom the view, otherwise it will be
          * used for scrolling a zoomed image.
          */
-        scrollwheelZoom?: boolean | null
+        scrollwheel_zoom?: boolean | null
         /**
          * This is the color used to fill the transparent parts of an image
          * if #EogScrollView:transparency-style is set to %EOG_TRANSP_COLOR.
          */
-        transparencyColor?: Gdk.RGBA | null
+        transparency_color?: Gdk.RGBA | null
         /**
          * Determines how to fill the shown image's transparent areas.
          */
-        transparencyStyle?: TransparencyStyle | null
-        useBackgroundColor?: boolean | null
-        zoomMode?: ZoomMode | null
+        transparency_style?: TransparencyStyle | null
+        use_background_color?: boolean | null
+        zoom_mode?: ZoomMode | null
         /**
          * The current zoom factor is multiplied with this value + 1.0 when
          * scrolling with the scrollwheel to determine the next zoom factor.
          */
-        zoomMultiplier?: number | null
+        zoom_multiplier?: number | null
     }
 
 }
@@ -4135,7 +4135,7 @@ export module Sidebar {
 
         // Own constructor properties of Eog-3.0.Eog.Sidebar
 
-        currentPage?: Gtk.Widget | null
+        current_page?: Gtk.Widget | null
     }
 
 }
@@ -5001,7 +5001,7 @@ export module ThumbNav {
         // Own constructor properties of Eog-3.0.Eog.ThumbNav
 
         mode?: number | null
-        showButtons?: boolean | null
+        show_buttons?: boolean | null
         thumbview?: ThumbView | null
     }
 
@@ -6064,11 +6064,11 @@ export module URIConverter {
 
         // Own constructor properties of Eog-3.0.Eog.URIConverter
 
-        convertSpaces?: boolean | null
-        counterNDigits?: number | null
-        counterStart?: number | null
-        nImages?: number | null
-        spaceCharacter?: number | null
+        convert_spaces?: boolean | null
+        counter_n_digits?: number | null
+        counter_start?: number | null
+        n_images?: number | null
+        space_character?: number | null
     }
 
 }
@@ -6173,17 +6173,17 @@ export module Window {
          * Determines the position of the image gallery in the window
          * relative to the image.
          */
-        galleryPosition?: WindowGalleryPos | null
+        gallery_position?: WindowGalleryPos | null
         /**
          * If %TRUE the gallery will be resizable by the user otherwise it will be
          * in single column/row mode.
          */
-        galleryResizable?: boolean | null
+        gallery_resizable?: boolean | null
         /**
          * A bitwise OR of #EogStartupFlags elements, indicating how the window
          * should behave upon creation.
          */
-        startupFlags?: StartupFlags | null
+        startup_flags?: StartupFlags | null
     }
 
 }

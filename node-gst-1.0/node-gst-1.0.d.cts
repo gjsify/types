@@ -7440,7 +7440,7 @@ export module Bin {
          * This should be used only if the bin subclass is modifying the state
          * of its children on its own.
          */
-        asyncHandling?: boolean | null
+        async_handling?: boolean | null
         /**
          * Forward all children messages, even those that would normally be filtered by
          * the bin. This can be interesting when one wants to be notified of the EOS
@@ -7450,7 +7450,7 @@ export module Bin {
          * source. The structure of the message is named `GstBinForwarded` and contains
          * a field named `message` that contains the original forwarded #GstMessage.
          */
-        messageForward?: boolean | null
+        message_forward?: boolean | null
     }
 
 }
@@ -8453,7 +8453,7 @@ export module Bus {
          * This property is used to create the child element buses
          * in #GstBin.
          */
-        enableAsync?: boolean | null
+        enable_async?: boolean | null
     }
 
 }
@@ -8907,8 +8907,8 @@ export module Clock {
         // Own constructor properties of Gst-1.0.Gst.Clock
 
         timeout?: number | null
-        windowSize?: number | null
-        windowThreshold?: number | null
+        window_size?: number | null
+        window_threshold?: number | null
     }
 
 }
@@ -9808,8 +9808,8 @@ export module Device {
         // Own constructor properties of Gst-1.0.Gst.Device
 
         caps?: Caps | null
-        deviceClass?: string | null
-        displayName?: string | null
+        device_class?: string | null
+        display_name?: string | null
         properties?: Structure | null
     }
 
@@ -10004,7 +10004,7 @@ export module DeviceMonitor {
 
         // Own constructor properties of Gst-1.0.Gst.DeviceMonitor
 
-        showAll?: boolean | null
+        show_all?: boolean | null
     }
 
 }
@@ -14003,7 +14003,7 @@ export module PadTemplate {
         /**
          * The name template of the pad template.
          */
-        nameTemplate?: string | null
+        name_template?: string | null
         /**
          * When the pad described by the pad template will become available.
          */
@@ -14290,7 +14290,7 @@ export module Pipeline {
          * pipeline's bus when going from READY to NULL state. Please see
          * gst_pipeline_set_auto_flush_bus() for more information on this option.
          */
-        autoFlushBus?: boolean | null
+        auto_flush_bus?: boolean | null
         /**
          * The expected delay needed for elements to spin up to the
          * PLAYING state expressed in nanoseconds.
@@ -15749,16 +15749,16 @@ export module Stream {
          * The #GstCaps of the #GstStream.
          */
         caps?: Caps | null
-        streamFlags?: StreamFlags | null
+        stream_flags?: StreamFlags | null
         /**
          * The unique identifier of the #GstStream. Can only be set at construction
          * time.
          */
-        streamId?: string | null
+        stream_id?: string | null
         /**
          * The #GstStreamType of the #GstStream. Can only be set at construction time.
          */
-        streamType?: StreamType | null
+        stream_type?: StreamType | null
         /**
          * The #GstTagList of the #GstStream.
          */
@@ -15981,7 +15981,7 @@ export module StreamCollection {
 
         // Own constructor properties of Gst-1.0.Gst.StreamCollection
 
-        upstreamId?: string | null
+        upstream_id?: string | null
     }
 
 }
@@ -16142,7 +16142,7 @@ export module SystemClock {
 
         // Own constructor properties of Gst-1.0.Gst.SystemClock
 
-        clockType?: ClockType | null
+        clock_type?: ClockType | null
     }
 
 }

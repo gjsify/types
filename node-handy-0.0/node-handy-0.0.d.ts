@@ -622,11 +622,11 @@ module ActionRow {
         /**
          * The activatable widget for this row.
          */
-        activatableWidget?: Gtk.Widget | null
+        activatable_widget?: Gtk.Widget | null
         /**
          * The icon name for this row.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The subtitle for this row.
          */
@@ -639,7 +639,7 @@ module ActionRow {
          * Whether an embedded underline in the text of the title and subtitle labels
          * indicates a mnemonic.
          */
-        useUnderline?: boolean | null
+        use_underline?: boolean | null
     }
 
 }
@@ -1596,8 +1596,8 @@ module Column {
 
         // Own constructor properties of Handy-0.0.Handy.Column
 
-        linearGrowthWidth?: number | null
-        maximumWidth?: number | null
+        linear_growth_width?: number | null
+        maximum_width?: number | null
     }
 
 }
@@ -2006,7 +2006,7 @@ module ComboRow {
         /**
          * The index of the selected item in its #GListModel.
          */
-        selectedIndex?: number | null
+        selected_index?: number | null
         /**
          * %TRUE to set the current value as the subtitle.
          * 
@@ -2015,7 +2015,7 @@ module ComboRow {
          * 
          * If %TRUE, you should not access HdyActionRow:subtitle.
          */
-        useSubtitle?: boolean | null
+        use_subtitle?: boolean | null
     }
 
 }
@@ -2649,14 +2649,14 @@ module Dialer {
 
         // Own constructor properties of Handy-0.0.Handy.Dialer
 
-        columnSpacing?: number | null
+        column_spacing?: number | null
         number?: string | null
         /**
          * The relief style of the edges of the main buttons.
          */
         relief?: Gtk.ReliefStyle | null
-        rowSpacing?: number | null
-        showActionButtons?: boolean | null
+        row_spacing?: number | null
+        show_action_buttons?: boolean | null
     }
 
 }
@@ -3638,7 +3638,7 @@ module DialerCycleButton {
 
         // Own constructor properties of Handy-0.0.Handy.DialerCycleButton
 
-        cycleTimeout?: number | null
+        cycle_timeout?: number | null
     }
 
 }
@@ -4914,7 +4914,7 @@ module ExpanderRow {
         /**
          * %TRUE if the expansion is enabled.
          */
-        enableExpansion?: boolean | null
+        enable_expansion?: boolean | null
         /**
          * %TRUE if the row is expanded.
          */
@@ -4922,7 +4922,7 @@ module ExpanderRow {
         /**
          * %TRUE if the switch enabling the expansion is visible.
          */
-        showEnableSwitch?: boolean | null
+        show_enable_switch?: boolean | null
     }
 
 }
@@ -5480,8 +5480,8 @@ module HeaderBar {
 
         // Own constructor properties of Handy-0.0.Handy.HeaderBar
 
-        centeringPolicy?: CenteringPolicy | null
-        customTitle?: Gtk.Widget | null
+        centering_policy?: CenteringPolicy | null
+        custom_title?: Gtk.Widget | null
         /**
          * The decoration layout for buttons. If this property is
          * not set, the #GtkSettings:gtk-decoration-layout setting
@@ -5490,17 +5490,17 @@ module HeaderBar {
          * See hdy_header_bar_set_decoration_layout() for information
          * about the format of this string.
          */
-        decorationLayout?: string | null
+        decoration_layout?: string | null
         /**
          * Set to %TRUE if #HdyHeaderBar:decoration-layout is set.
          */
-        decorationLayoutSet?: boolean | null
+        decoration_layout_set?: boolean | null
         /**
          * If %TRUE, reserve space for a subtitle, even if none
          * is currently set.
          */
-        hasSubtitle?: boolean | null
-        interpolateSize?: boolean | null
+        has_subtitle?: boolean | null
+        interpolate_size?: boolean | null
         /**
          * Whether to show window decorations.
          * 
@@ -5509,11 +5509,11 @@ module HeaderBar {
          * the state of the window (e.g. a close button will not be
          * shown if the window can't be closed).
          */
-        showCloseButton?: boolean | null
+        show_close_button?: boolean | null
         spacing?: number | null
         subtitle?: string | null
         title?: string | null
-        transitionDuration?: number | null
+        transition_duration?: number | null
     }
 
 }
@@ -6239,10 +6239,10 @@ module Keypad {
         // Own constructor properties of Handy-0.0.Handy.Keypad
 
         entry?: Gtk.Widget | null
-        leftAction?: Gtk.Widget | null
-        onlyDigits?: boolean | null
-        rightAction?: Gtk.Widget | null
-        showSymbols?: boolean | null
+        left_action?: Gtk.Widget | null
+        only_digits?: boolean | null
+        right_action?: Gtk.Widget | null
+        show_symbols?: boolean | null
     }
 
 }
@@ -6714,25 +6714,25 @@ module Leaflet {
          * Whether or not `self` allows switching to the previous child that has
          * 'allow-visible' child property set to %TRUE via a swipe gesture.
          */
-        canSwipeBack?: boolean | null
+        can_swipe_back?: boolean | null
         /**
          * Whether or not `self` allows switching to the next child that has
          * 'allow-visible' child property set to %TRUE via a swipe gesture.
          */
-        canSwipeForward?: boolean | null
-        childTransitionDuration?: number | null
+        can_swipe_forward?: boolean | null
+        child_transition_duration?: number | null
         /**
          * The type of animation used to transition between children
          */
-        childTransitionType?: LeafletChildTransitionType | null
-        hhomogeneousFolded?: boolean | null
-        hhomogeneousUnfolded?: boolean | null
-        interpolateSize?: boolean | null
-        modeTransitionDuration?: number | null
+        child_transition_type?: LeafletChildTransitionType | null
+        hhomogeneous_folded?: boolean | null
+        hhomogeneous_unfolded?: boolean | null
+        interpolate_size?: boolean | null
+        mode_transition_duration?: number | null
         /**
          * The type of animation used to transition between mode
          */
-        modeTransitionType?: LeafletModeTransitionType | null
+        mode_transition_type?: LeafletModeTransitionType | null
         /**
          * The type of animation that will be used for transitions between modes and
          * children.
@@ -6741,11 +6741,11 @@ module Leaflet {
          * possible to change the animation based on the mode or child that is about
          * to become current.
          */
-        transitionType?: LeafletTransitionType | null
-        vhomogeneousFolded?: boolean | null
-        vhomogeneousUnfolded?: boolean | null
-        visibleChild?: Gtk.Widget | null
-        visibleChildName?: string | null
+        transition_type?: LeafletTransitionType | null
+        vhomogeneous_folded?: boolean | null
+        vhomogeneous_unfolded?: boolean | null
+        visible_child?: Gtk.Widget | null
+        visible_child_name?: string | null
     }
 
 }
@@ -7421,29 +7421,29 @@ module Paginator {
          * 
          * This should usually be %FALSE.
          */
-        allowMouseDrag?: boolean | null
+        allow_mouse_drag?: boolean | null
         /**
          * Animation duration in milliseconds, used by hdy_paginator_scroll_to().
          */
-        animationDuration?: number | null
+        animation_duration?: number | null
         /**
          * Whether the #HdyPaginator is centering pages. If
          * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE,`
          * centering does nothing, otherwise it adds whitespace to the left or above
          * the pages to compensate for the indicators.
          */
-        centerContent?: boolean | null
+        center_content?: boolean | null
         /**
          * Spacing between content and page indicators. Does nothing if
          * #HdyPaginator:indicator-style is `HDY_PAGINATOR_INDICATOR_STYLE_NONE`.
          */
-        indicatorSpacing?: number | null
+        indicator_spacing?: number | null
         /**
          * The style of page indicators. Depending on orientation, they are displayed
          * below or besides the pages. If the pages are meant to be centered,
          * #HdyPaginator:center-content can be used to compensate for that.
          */
-        indicatorStyle?: PaginatorIndicatorStyle | null
+        indicator_style?: PaginatorIndicatorStyle | null
         /**
          * Whether `self` can be navigated. This can be used to temporarily disable
          * a #HdyPaginator to only allow navigating it in a certain state.
@@ -8521,7 +8521,7 @@ module PreferencesPage {
         /**
          * The icon name for this page of preferences.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The title for this page of preferences.
          */
@@ -9040,7 +9040,7 @@ module PreferencesRow {
          * Whether an embedded underline in the text of the title indicates a
          * mnemonic.
          */
-        useUnderline?: boolean | null
+        use_underline?: boolean | null
     }
 
 }
@@ -10094,11 +10094,11 @@ module SearchBar {
          * 
          * See hdy_search_bar_set_search_mode() for details.
          */
-        searchModeEnabled?: boolean | null
+        search_mode_enabled?: boolean | null
         /**
          * Whether to show the close button in the toolbar.
          */
-        showCloseButton?: boolean | null
+        show_close_button?: boolean | null
     }
 
 }
@@ -10573,9 +10573,9 @@ module Squeezer {
         // Own constructor properties of Handy-0.0.Handy.Squeezer
 
         homogeneous?: boolean | null
-        interpolateSize?: boolean | null
-        transitionDuration?: number | null
-        transitionType?: SqueezerTransitionType | null
+        interpolate_size?: boolean | null
+        transition_duration?: number | null
+        transition_type?: SqueezerTransitionType | null
     }
 
 }
@@ -11153,7 +11153,7 @@ module TitleBar {
 
         // Own constructor properties of Handy-0.0.Handy.TitleBar
 
-        selectionMode?: boolean | null
+        selection_mode?: boolean | null
     }
 
 }
@@ -11633,7 +11633,7 @@ module ViewSwitcher {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as %GTK_ICON_SIZE_BUTTON.
          */
-        iconSize?: number | null
+        icon_size?: number | null
         /**
          * The preferred place to ellipsize the string, if the narrow mode label does
          * not have enough room to display the entire string, specified as a
@@ -11643,7 +11643,7 @@ module ViewSwitcher {
          * has the side-effect that the label requests only enough space to display
          * the ellipsis.
          */
-        narrowEllipsize?: Pango.EllipsizeMode | null
+        narrow_ellipsize?: Pango.EllipsizeMode | null
         /**
          * The #HdyViewSwitcherPolicy the view switcher should use to determine which
          * mode to use.
@@ -12151,7 +12151,7 @@ module ViewSwitcherBar {
          * Use the "icon-size" property to hint the icons to use, you almost certainly
          * want to leave this as %GTK_ICON_SIZE_BUTTON.
          */
-        iconSize?: number | null
+        icon_size?: number | null
         /**
          * The #HdyViewSwitcherPolicy the #HdyViewSwitcher should use to determine
          * which mode to use.

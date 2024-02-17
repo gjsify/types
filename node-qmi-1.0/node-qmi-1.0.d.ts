@@ -16482,11 +16482,11 @@ module Client {
 
         // Own constructor properties of Qmi-1.0.Qmi.Client
 
-        clientCid?: number | null
-        clientDevice?: Device | null
-        clientService?: Service | null
-        clientVersionMajor?: number | null
-        clientVersionMinor?: number | null
+        client_cid?: number | null
+        client_device?: Device | null
+        client_service?: Service | null
+        client_version_major?: number | null
+        client_version_minor?: number | null
     }
 
 }
@@ -23539,10 +23539,10 @@ module Device {
 
         // Own constructor properties of Qmi-1.0.Qmi.Device
 
-        deviceFile?: Gio.File | null
-        deviceNoFileCheck?: boolean | null
-        deviceNode?: Qrtr.Node | null
-        deviceProxyPath?: string | null
+        device_file?: Gio.File | null
+        device_no_file_check?: boolean | null
+        device_node?: Qrtr.Node | null
+        device_proxy_path?: string | null
     }
 
 }

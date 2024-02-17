@@ -241,47 +241,6 @@ interface PixbufModuleFillVtableFunc {
     (module: PixbufModule): void
 }
 /**
- * Incrementally loads a buffer into the image data.
- * @callback 
- * @param context the state object created by [callback`GdkPixbuf`.PixbufModuleBeginLoadFunc]
- * @param buf the data to load
- * @returns `TRUE` if the incremental load was successful
- */
-interface PixbufModuleIncrementLoadFunc {
-    (context: any | null, buf: Uint8Array): boolean
-}
-/**
- * Loads a file from a standard C file stream into a new `GdkPixbufAnimation`.
- * 
- * In case of error, this function should return `NULL` and set the `error` argument.
- * @callback 
- * @param f the file stream from which the image should be loaded
- * @returns a newly created `GdkPixbufAnimation` for the contents of the file
- */
-interface PixbufModuleLoadAnimationFunc {
-    (f: any | null): PixbufAnimation
-}
-/**
- * Loads a file from a standard C file stream into a new `GdkPixbuf`.
- * 
- * In case of error, this function should return `NULL` and set the `error` argument.
- * @callback 
- * @param f the file stream from which the image should be loaded
- * @returns a newly created `GdkPixbuf` for the contents of the file
- */
-interface PixbufModuleLoadFunc {
-    (f: any | null): Pixbuf
-}
-/**
- * Loads XPM data into a new `GdkPixbuf`.
- * @callback 
- * @param data the XPM data
- * @returns a newly created `GdkPixbuf` for the XPM data
- */
-interface PixbufModuleLoadXpmDataFunc {
-    (data: string[]): Pixbuf
-}
-/**
  * Defines the type of the function that gets called once the initial
  * setup of `pixbuf` is done.
  * 
@@ -294,31 +253,6 @@ interface PixbufModuleLoadXpmDataFunc {
  */
 interface PixbufModulePreparedFunc {
     (pixbuf: Pixbuf, anim: PixbufAnimation): void
-}
-/**
- * Saves a `GdkPixbuf` into a standard C file stream.
- * 
- * The optional `param_keys` and `param_values` arrays contain the keys and
- * values (in the same order) for attributes to be saved alongside the image
- * data.
- * @callback 
- * @param f the file stream into which the image should be saved
- * @param pixbuf the image to save
- * @param param_keys parameter keys to save
- * @param param_values parameter values to save
- * @returns `TRUE` on success; in case of failure, `FALSE` is returned and   the `error` is set
- */
-interface PixbufModuleSaveFunc {
-    (f: any | null, pixbuf: Pixbuf, param_keys: string[] | null, param_values: string[] | null): boolean
-}
-/**
- * Checks whether the given `option_key` is supported when saving.
- * @callback 
- * @param option_key the option key to check
- * @returns `TRUE` if the option is supported
- */
-interface PixbufModuleSaveOptionSupportedFunc {
-    (option_key: string): boolean
 }
 /**
  * Defines the type of the function that gets called once the size
@@ -340,17 +274,6 @@ interface PixbufModuleSaveOptionSupportedFunc {
  */
 interface PixbufModuleSizeFunc {
     (width: number, height: number): void
-}
-/**
- * Finalizes the image loading state.
- * 
- * This function is called on success and error states.
- * @callback 
- * @param context the state object created by [callback`GdkPixbuf`.PixbufModuleBeginLoadFunc]
- * @returns `TRUE` if the loading operation was successful
- */
-interface PixbufModuleStopLoadFunc {
-    (context: any | null): boolean
 }
 /**
  * Defines the type of the function that gets called every time a region
@@ -398,7 +321,7 @@ module Pixbuf {
          * 
          * Currently only 8 bit per sample are supported.
          */
-        bits_per_sample?: number | null
+        bitsPerSample?: number | null
         /**
          * The color space of the pixbuf.
          * 
@@ -408,7 +331,7 @@ module Pixbuf {
         /**
          * Whether the pixbuf has an alpha channel.
          */
-        has_alpha?: boolean | null
+        hasAlpha?: boolean | null
         /**
          * The number of rows of the pixbuf.
          */
@@ -418,8 +341,8 @@ module Pixbuf {
          * 
          * Currently, only 3 or 4 samples per pixel are supported.
          */
-        n_channels?: number | null
-        pixel_bytes?: GLib.Bytes | null
+        nChannels?: number | null
+        pixelBytes?: GLib.Bytes | null
         /**
          * A pointer to the pixel data of the pixbuf.
          */
@@ -436,23 +359,6 @@ module Pixbuf {
          * The number of columns of the pixbuf.
          */
         width?: number | null
-        /**
-         * The number of bits per sample.
-         * 
-         * Currently only 8 bit per sample are supported.
-         */
-        bitsPerSample?: number | null
-        /**
-         * Whether the pixbuf has an alpha channel.
-         */
-        hasAlpha?: boolean | null
-        /**
-         * The number of samples per pixel.
-         * 
-         * Currently, only 3 or 4 samples per pixel are supported.
-         */
-        nChannels?: number | null
-        pixelBytes?: GLib.Bytes | null
     }
 
 }
@@ -461,12 +367,6 @@ interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
 
     // Own properties of GdkPixbuf-2.0.GdkPixbuf.Pixbuf
 
-    /**
-     * The number of bits per sample.
-     * 
-     * Currently only 8 bit per sample are supported.
-     */
-    readonly bits_per_sample: number
     /**
      * The number of bits per sample.
      * 
@@ -482,10 +382,6 @@ interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
     /**
      * Whether the pixbuf has an alpha channel.
      */
-    readonly has_alpha: boolean
-    /**
-     * Whether the pixbuf has an alpha channel.
-     */
     readonly hasAlpha: boolean
     /**
      * The number of rows of the pixbuf.
@@ -496,14 +392,7 @@ interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * 
      * Currently, only 3 or 4 samples per pixel are supported.
      */
-    readonly n_channels: number
-    /**
-     * The number of samples per pixel.
-     * 
-     * Currently, only 3 or 4 samples per pixel are supported.
-     */
     readonly nChannels: number
-    readonly pixel_bytes: GLib.Bytes
     readonly pixelBytes: GLib.Bytes
     /**
      * A pointer to the pixel data of the pixbuf.
@@ -2677,41 +2566,10 @@ interface PixbufModule {
      * @field 
      */
     info: PixbufFormat
-    /**
-     * loads an image from a file.
-     * @field 
-     */
-    load: PixbufModuleLoadFunc
-    /**
-     * loads an image from data in memory.
-     * @field 
-     */
-    load_xpm_data: PixbufModuleLoadXpmDataFunc
-    /**
-     * stops an incremental load.
-     * @field 
-     */
-    stop_load: PixbufModuleStopLoadFunc
-    /**
-     * continues an incremental load.
-     * @field 
-     */
-    load_increment: PixbufModuleIncrementLoadFunc
-    /**
-     * loads an animation from a file.
-     * @field 
-     */
-    load_animation: PixbufModuleLoadAnimationFunc
-    /**
-     * saves a `GdkPixbuf` to a file.
-     * @field 
-     */
-    save: PixbufModuleSaveFunc
-    /**
-     * returns whether a save option key is supported by the module
-     * @field 
-     */
-    is_save_option_supported: PixbufModuleSaveOptionSupportedFunc
+    stop_load: (context: any) => boolean
+    load_increment: (context: any, buf: number, size: number) => boolean
+    save: (f: any, pixbuf: Pixbuf, param_keys: string | null, param_values: string | null) => boolean
+    is_save_option_supported: (option_key: string) => boolean
 }
 
 /**

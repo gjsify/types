@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/shew-0)
 
 
-GJS TypeScript type definitions for Shew-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+GJS TypeScript type definitions for Shew-0, generated from library version 0.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 
 ## Install

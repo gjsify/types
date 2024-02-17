@@ -958,7 +958,7 @@ module Aggregator {
         /**
          * Enables the emission of signals such as #GstAggregator::samples-selected
          */
-        emitSignals?: boolean | null
+        emit_signals?: boolean | null
         latency?: number | null
         /**
          * Force minimum upstream latency (in nanoseconds). When sources with a
@@ -967,9 +967,9 @@ module Aggregator {
          * latency reported by the initial source(s). This is only taken into
          * account when larger than the actually reported minimum latency.
          */
-        minUpstreamLatency?: number | null
-        startTime?: number | null
-        startTimeSelection?: AggregatorStartTimeSelection | null
+        min_upstream_latency?: number | null
+        start_time?: number | null
+        start_time_selection?: AggregatorStartTimeSelection | null
     }
 
 }
@@ -1343,7 +1343,7 @@ module AggregatorPad {
         /**
          * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
          */
-        emitSignals?: boolean | null
+        emit_signals?: boolean | null
     }
 
 }
@@ -1517,7 +1517,7 @@ module BaseParse {
          * If set to %FALSE, decision of whether to parse the data or not is up to
          * the implementation (standard behaviour).
          */
-        disablePassthrough?: boolean | null
+        disable_passthrough?: boolean | null
     }
 
 }
@@ -1986,40 +1986,40 @@ module BaseSink {
          * set to %NULL. This can be useful if you need buffers to be released as soon
          * as possible, eg. if you're using a buffer pool.
          */
-        enableLastSample?: boolean | null
+        enable_last_sample?: boolean | null
         /**
          * Control the maximum amount of bits that will be rendered per second.
          * Setting this property to a value bigger than 0 will make the sink delay
          * rendering of the buffers when it would exceed to max-bitrate.
          */
-        maxBitrate?: number | null
-        maxLateness?: number | null
+        max_bitrate?: number | null
+        max_lateness?: number | null
         /**
          * Maximum amount of time (in nanoseconds) that the pipeline can take
          * for processing the buffer. This is added to the latency of live
          * pipelines.
          */
-        processingDeadline?: number | null
+        processing_deadline?: number | null
         qos?: boolean | null
         /**
          * The additional delay between synchronisation and actual rendering of the
          * media. This property will add additional latency to the device in order to
          * make other sinks compensate for the delay.
          */
-        renderDelay?: number | null
+        render_delay?: number | null
         sync?: boolean | null
         /**
          * The time to insert between buffers. This property can be used to control
          * the maximum amount of buffers per second to render. Setting this property
          * to a value bigger than 0 will make the sink create THROTTLE QoS events.
          */
-        throttleTime?: number | null
+        throttle_time?: number | null
         /**
          * Controls the final synchronisation, a negative value will render the buffer
          * earlier while a positive value delays playback. This property can be
          * used to fix synchronisation in bad files.
          */
-        tsOffset?: number | null
+        ts_offset?: number | null
     }
 
 }
@@ -2691,8 +2691,8 @@ module BaseSrc {
         // Own constructor properties of GstBase-1.0.GstBase.BaseSrc
 
         blocksize?: number | null
-        doTimestamp?: boolean | null
-        numBuffers?: number | null
+        do_timestamp?: boolean | null
+        num_buffers?: number | null
         typefind?: boolean | null
     }
 

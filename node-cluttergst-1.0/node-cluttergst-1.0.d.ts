@@ -137,16 +137,16 @@ module Player {
         /**
          * Index of the current audio stream.
          */
-        audioStream?: number | null
+        audio_stream?: number | null
         /**
          * Flags to use when seeking.
          */
-        seekFlags?: SeekFlags | null
-        subtitleTrack?: number | null
+        seek_flags?: SeekFlags | null
+        subtitle_track?: number | null
         /**
          * The User Agent used by #ClutterGstPlayer with network protocols.
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -461,7 +461,7 @@ module VideoSink {
          * 
          * Since 1.0
          */
-        updatePriority?: number | null
+        update_priority?: number | null
     }
 
 }
@@ -619,7 +619,7 @@ module VideoTexture {
 
         // Own constructor properties of ClutterGst-1.0.ClutterGst.VideoTexture
 
-        pixelAspectRatio?: any | null
+        pixel_aspect_ratio?: any | null
     }
 
 }

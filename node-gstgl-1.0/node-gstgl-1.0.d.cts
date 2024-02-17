@@ -1508,7 +1508,7 @@ export module GLBaseSrc {
 
         // Own constructor properties of GstGL-1.0.GstGL.GLBaseSrc
 
-        timestampOffset?: number | null
+        timestamp_offset?: number | null
     }
 
 }
@@ -4505,11 +4505,11 @@ export module GLViewConvert {
 
         // Own constructor properties of GstGL-1.0.GstGL.GLViewConvert
 
-        downmixMode?: GLStereoDownmix | null
-        inputFlagsOverride?: GstVideo.VideoMultiviewFlags | null
-        inputModeOverride?: GstVideo.VideoMultiviewMode | null
-        outputFlagsOverride?: GstVideo.VideoMultiviewFlags | null
-        outputModeOverride?: GstVideo.VideoMultiviewMode | null
+        downmix_mode?: GLStereoDownmix | null
+        input_flags_override?: GstVideo.VideoMultiviewFlags | null
+        input_mode_override?: GstVideo.VideoMultiviewMode | null
+        output_flags_override?: GstVideo.VideoMultiviewFlags | null
+        output_mode_override?: GstVideo.VideoMultiviewMode | null
     }
 
 }

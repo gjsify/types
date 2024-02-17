@@ -590,16 +590,11 @@ module Session {
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          */
-        media_type?: MediaType | null
+        mediaType?: MediaType | null
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
          */
         tos?: number | null
-        /**
-         * The media-type of the session. This is either Audio, Video or both.
-         * This is a constructor parameter that cannot be changed.
-         */
-        mediaType?: MediaType | null
     }
 
 }
@@ -608,19 +603,6 @@ interface Session {
 
     // Own properties of Farstream-0.1.Farstream.Session
 
-    /**
-     * This is the current preferences list for the local codecs. It is
-     * set by the user to specify the codec options and priorities. The user may
-     * change its value with fs_session_set_codec_preferences() at any time
-     * during a session. It is a #GList of #FsCodec.
-     * The user must free this codec list using fs_codec_list_destroy() when done.
-     * 
-     * The payload type may be a valid dynamic PT (96-127), %FS_CODEC_ID_DISABLE
-     * or %FS_CODEC_ID_ANY. If the encoding name is "reserve-pt", then the
-     * payload type of the codec will be "reserved" and not be used by any
-     * dynamically assigned payload type.
-     */
-    readonly codec_preferences: Codec[]
     /**
      * This is the current preferences list for the local codecs. It is
      * set by the user to specify the codec options and priorities. The user may
@@ -672,40 +654,12 @@ interface Session {
      * It is a #GList of #FsCodec. User must free this codec list using
      * fs_codec_list_destroy() when done.
      */
-    readonly codecs_without_config: Codec[]
-    /**
-     * This is the same list of codecs as #FsSession:codecs without
-     * the configuration information that describes the data sent. It is suitable
-     * for configurations where a list of codecs is shared by many senders.
-     * If one is using codecs such as Theora, Vorbis or H.264 that require
-     * such information to be transmitted, the configuration data should be
-     * included in the stream and retransmitted regularly.
-     * 
-     * It may change when the codec preferences are set, when codecs are set
-     * on a #FsStream in this session, when a #FsStream is destroyed or
-     * asynchronously when new config data is discovered.
-     * 
-     * The "farstream-codecs-changed" message will be emitted whenever the value
-     * of this property changes.
-     * 
-     * It is a #GList of #FsCodec. User must free this codec list using
-     * fs_codec_list_destroy() when done.
-     */
     readonly codecsWithoutConfig: Codec[]
     /**
      * The #FsConference parent of this session. This property is a
      * construct param and is read-only.
      */
     readonly conference: Conference
-    /**
-     * Indicates the currently active send codec. A user can change the active
-     * send codec by calling fs_session_set_send_codec(). The send codec could
-     * also be automatically changed by Farstream. This property is an
-     * #FsCodec. User must free the codec using fs_codec_destroy() when done.
-     * The "farstream-send-codec-changed" message is emitted on the bus when
-     * the value of this property changes.
-     */
-    readonly current_send_codec: Codec
     /**
      * Indicates the currently active send codec. A user can change the active
      * send codec by calling fs_session_set_send_codec(). The send codec could
@@ -724,17 +678,7 @@ interface Session {
      * The media-type of the session. This is either Audio, Video or both.
      * This is a constructor parameter that cannot be changed.
      */
-    readonly media_type: MediaType
-    /**
-     * The media-type of the session. This is either Audio, Video or both.
-     * This is a constructor parameter that cannot be changed.
-     */
     readonly mediaType: MediaType
-    /**
-     * The Gstreamer sink pad that must be used to send media data on this
-     * session. User must unref this GstPad when done with it.
-     */
-    readonly sink_pad: Gst.Pad
     /**
      * The Gstreamer sink pad that must be used to send media data on this
      * session. User must unref this GstPad when done with it.
@@ -1087,17 +1031,6 @@ interface Stream {
      * also be emitted if the pad already exists, but the source material that
      * will come to it is different.
      */
-    readonly current_recv_codecs: Codec[]
-    /**
-     * This is the list of codecs that have been received by this stream.
-     * The user must free the list if fs_codec_list_destroy().
-     * The "farstream-recv-codecs-changed" message is send on the #GstBus
-     * when the value of this property changes.
-     * It is normally emitted right after #FsStream::src-pad-added
-     * only if that codec was not previously received in this stream, but it can
-     * also be emitted if the pad already exists, but the source material that
-     * will come to it is different.
-     */
     readonly currentRecvCodecs: Codec[]
     /**
      * The direction of the stream. This property is set initially as a parameter
@@ -1112,26 +1045,12 @@ interface Stream {
      * This is the list of #FsCodec used to receive data from this stream.
      * It is a #GList of #FsCodec.
      */
-    readonly negotiated_codecs: Codec[]
-    /**
-     * This is the list of negotiatied codecs, it is the same list as the list
-     * of #FsCodec from the parent #FsSession, except that the codec config data
-     * has been replaced with the data from the remote codecs for this stream.
-     * This is the list of #FsCodec used to receive data from this stream.
-     * It is a #GList of #FsCodec.
-     */
     readonly negotiatedCodecs: Codec[]
     /**
      * The #FsParticipant for this stream. This property is a construct param and
      * is read-only construction.
      */
     readonly participant: Participant
-    /**
-     * This is the list of remote codecs for this stream. They must be set by the
-     * user as soon as they are known using fs_stream_set_remote_codecs()
-     * (generally through external signaling). It is a #GList of #FsCodec.
-     */
-    readonly remote_codecs: Codec[]
     /**
      * This is the list of remote codecs for this stream. They must be set by the
      * user as soon as they are known using fs_stream_set_remote_codecs()
@@ -1438,18 +1357,12 @@ module StreamTransmitter {
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          */
-        associate_on_source?: boolean | null
-        preferred_local_candidates?: any | null
+        associateOnSource?: boolean | null
+        preferredLocalCandidates?: any | null
         /**
          * A network source #GstElement to be used by the #FsSession
          */
         sending?: boolean | null
-        /**
-         * This tells the stream transmitter to associate incoming data with this
-         * based on the source without looking at the content if possible.
-         */
-        associateOnSource?: boolean | null
-        preferredLocalCandidates?: any | null
     }
 
 }
@@ -1462,13 +1375,7 @@ interface StreamTransmitter {
      * This tells the stream transmitter to associate incoming data with this
      * based on the source without looking at the content if possible.
      */
-    readonly associate_on_source: boolean
-    /**
-     * This tells the stream transmitter to associate incoming data with this
-     * based on the source without looking at the content if possible.
-     */
     readonly associateOnSource: boolean
-    readonly preferred_local_candidates: any
     readonly preferredLocalCandidates: any
     /**
      * A network source #GstElement to be used by the #FsSession
@@ -1656,24 +1563,7 @@ interface Transmitter {
      * number).
      * These pads MUST be static pads.
      */
-    readonly gst_sink: Gst.Element
-    /**
-     * A network source #GstElement to be used by the #FsSession
-     * These element's sink must have async=FALSE
-     * This element MUST provide a pad named "sink\%d" per component.
-     * These pads number must start at 1 (the \%d corresponds to the component
-     * number).
-     * These pads MUST be static pads.
-     */
     readonly gstSink: Gst.Element
-    /**
-     * A network source #GstElement to be used by the #FsSession
-     * This element MUST provide a source pad named "src%d" per component.
-     * These pads number must start at 1 (the %d corresponds to the component
-     * number).
-     * These pads MUST be static pads.
-     */
-    readonly gst_src: Gst.Element
     /**
      * A network source #GstElement to be used by the #FsSession
      * This element MUST provide a source pad named "src%d" per component.

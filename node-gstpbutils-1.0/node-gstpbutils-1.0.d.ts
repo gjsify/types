@@ -890,7 +890,7 @@ module AudioVisualizer {
 
         // Own constructor properties of GstPbutils-1.0.GstPbutils.AudioVisualizer
 
-        shadeAmount?: number | null
+        shade_amount?: number | null
         shader?: AudioVisualizerShader | null
     }
 
@@ -1059,7 +1059,7 @@ module Discoverer {
          * set on the result flags.
          */
         timeout?: number | null
-        useCache?: boolean | null
+        use_cache?: boolean | null
     }
 
 }
@@ -1830,8 +1830,8 @@ module EncodingProfile {
          * element-properties,row-mt=true, end-usage=vbr
          * ```
          */
-        elementProperties?: Gst.Structure | null
-        restrictionCaps?: Gst.Caps | null
+        element_properties?: Gst.Structure | null
+        restriction_caps?: Gst.Caps | null
     }
 
 }

@@ -1,13 +1,19 @@
 {
     "name": "@girs/edataserver-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for EDataServer-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edataserver-1.2.js",
     "main": "edataserver-1.2.js",
     "exports": {
-        "./ambient": "./edataserver-1.2-ambient.d.ts",
-        "./import": "./edataserver-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./edataserver-1.2-ambient.d.ts",
+            "default": "./edataserver-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./edataserver-1.2-import.d.ts",
+            "default": "./edataserver-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./edataserver-1.2.d.ts",

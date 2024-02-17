@@ -4219,27 +4219,6 @@ module Activatable {
          * <note><para>#GtkActivatable implementors need to handle the this property and
          * call gtk_activatable_do_set_related_action() when it changes.</para></note>
          */
-        related_action?: Action | null
-        /**
-         * Whether this activatable should reset its layout
-         * and appearance when setting the related action or when
-         * the action changes appearance.
-         * 
-         * See the #GtkAction documentation directly to find which properties
-         * should be ignored by the #GtkActivatable when this property is %FALSE.
-         * 
-         * <note><para>#GtkActivatable implementors need to handle this property
-         * and call gtk_activatable_sync_action_properties() on the activatable
-         * widget when it changes.</para></note>
-         */
-        use_action_appearance?: boolean | null
-        /**
-         * The action that this activatable will activate and receive
-         * updates from for various states and possibly appearance.
-         * 
-         * <note><para>#GtkActivatable implementors need to handle the this property and
-         * call gtk_activatable_do_set_related_action() when it changes.</para></note>
-         */
         relatedAction?: Action | null
         /**
          * Whether this activatable should reset its layout
@@ -4269,28 +4248,7 @@ interface Activatable {
      * <note><para>#GtkActivatable implementors need to handle the this property and
      * call gtk_activatable_do_set_related_action() when it changes.</para></note>
      */
-    related_action: Action
-    /**
-     * The action that this activatable will activate and receive
-     * updates from for various states and possibly appearance.
-     * 
-     * <note><para>#GtkActivatable implementors need to handle the this property and
-     * call gtk_activatable_do_set_related_action() when it changes.</para></note>
-     */
     relatedAction: Action
-    /**
-     * Whether this activatable should reset its layout
-     * and appearance when setting the related action or when
-     * the action changes appearance.
-     * 
-     * See the #GtkAction documentation directly to find which properties
-     * should be ignored by the #GtkActivatable when this property is %FALSE.
-     * 
-     * <note><para>#GtkActivatable implementors need to handle this property
-     * and call gtk_activatable_sync_action_properties() on the activatable
-     * widget when it changes.</para></note>
-     */
-    use_action_appearance: boolean
     /**
      * Whether this activatable should reset its layout
      * and appearance when setting the related action or when
@@ -4896,10 +4854,6 @@ module CellEditable {
         /**
          * Indicates whether editing on the cell has been canceled.
          */
-        editing_canceled?: boolean | null
-        /**
-         * Indicates whether editing on the cell has been canceled.
-         */
         editingCanceled?: boolean | null
     }
 
@@ -4909,10 +4863,6 @@ interface CellEditable extends Widget {
 
     // Own properties of Gtk-2.0.Gtk.CellEditable
 
-    /**
-     * Indicates whether editing on the cell has been canceled.
-     */
-    editing_canceled: boolean
     /**
      * Indicates whether editing on the cell has been canceled.
      */
@@ -5447,26 +5397,6 @@ module FileChooser {
          * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
          * will offer the user to create new folders.
          */
-        create_folders?: boolean | null
-        /**
-         * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
-         * will present an overwrite confirmation dialog if the user
-         * selects a file name that already exists.
-         */
-        do_overwrite_confirmation?: boolean | null
-        extra_widget?: Widget | null
-        file_system_backend?: string | null
-        filter?: FileFilter | null
-        local_only?: boolean | null
-        preview_widget?: Widget | null
-        preview_widget_active?: boolean | null
-        select_multiple?: boolean | null
-        show_hidden?: boolean | null
-        use_preview_label?: boolean | null
-        /**
-         * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
-         * will offer the user to create new folders.
-         */
         createFolders?: boolean | null
         /**
          * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
@@ -5476,6 +5406,7 @@ module FileChooser {
         doOverwriteConfirmation?: boolean | null
         extraWidget?: Widget | null
         fileSystemBackend?: string | null
+        filter?: FileFilter | null
         localOnly?: boolean | null
         previewWidget?: Widget | null
         previewWidgetActive?: boolean | null
@@ -5495,40 +5426,21 @@ interface FileChooser extends Widget {
      * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
      * will offer the user to create new folders.
      */
-    create_folders: boolean
-    /**
-     * Whether a file chooser not in %GTK_FILE_CHOOSER_ACTION_OPEN mode
-     * will offer the user to create new folders.
-     */
     createFolders: boolean
     /**
      * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
      * will present an overwrite confirmation dialog if the user
      * selects a file name that already exists.
      */
-    do_overwrite_confirmation: boolean
-    /**
-     * Whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode
-     * will present an overwrite confirmation dialog if the user
-     * selects a file name that already exists.
-     */
     doOverwriteConfirmation: boolean
-    extra_widget: Widget
     extraWidget: Widget
-    readonly file_system_backend: string | null
     readonly fileSystemBackend: string | null
     filter: FileFilter
-    local_only: boolean
     localOnly: boolean
-    preview_widget: Widget
     previewWidget: Widget
-    preview_widget_active: boolean
     previewWidgetActive: boolean
-    select_multiple: boolean
     selectMultiple: boolean
-    show_hidden: boolean
     showHidden: boolean
-    use_preview_label: boolean
     usePreviewLabel: boolean
 
     // Owm methods of Gtk-2.0.Gtk.FileChooser
@@ -7030,41 +6942,6 @@ module RecentChooser {
          * Whether this #GtkRecentChooser should display only local (file:)
          * resources.
          */
-        local_only?: boolean | null
-        /**
-         * The #GtkRecentManager instance used by the #GtkRecentChooser to
-         * display the list of recently used resources.
-         */
-        recent_manager?: RecentManager | null
-        /**
-         * Allow the user to select multiple resources.
-         */
-        select_multiple?: boolean | null
-        /**
-         * Whether this #GtkRecentChooser should display an icon near the item.
-         */
-        show_icons?: boolean | null
-        /**
-         * Whether this #GtkRecentChooser should display the recently used resources
-         * even if not present anymore. Setting this to %FALSE will perform a
-         * potentially expensive check on every local resource (every remote
-         * resource will always be displayed).
-         */
-        show_not_found?: boolean | null
-        show_private?: boolean | null
-        /**
-         * Whether this #GtkRecentChooser should display a tooltip containing the
-         * full path of the recently used resources.
-         */
-        show_tips?: boolean | null
-        /**
-         * Sorting order to be used when displaying the recently used resources.
-         */
-        sort_type?: RecentSortType | null
-        /**
-         * Whether this #GtkRecentChooser should display only local (file:)
-         * resources.
-         */
         localOnly?: boolean | null
         /**
          * The #GtkRecentManager instance used by the #GtkRecentChooser to
@@ -7121,17 +6998,7 @@ interface RecentChooser {
      * Whether this #GtkRecentChooser should display only local (file:)
      * resources.
      */
-    local_only: boolean
-    /**
-     * Whether this #GtkRecentChooser should display only local (file:)
-     * resources.
-     */
     localOnly: boolean
-    /**
-     * The #GtkRecentManager instance used by the #GtkRecentChooser to
-     * display the list of recently used resources.
-     */
-    readonly recent_manager: RecentManager
     /**
      * The #GtkRecentManager instance used by the #GtkRecentChooser to
      * display the list of recently used resources.
@@ -7140,15 +7007,7 @@ interface RecentChooser {
     /**
      * Allow the user to select multiple resources.
      */
-    select_multiple: boolean
-    /**
-     * Allow the user to select multiple resources.
-     */
     selectMultiple: boolean
-    /**
-     * Whether this #GtkRecentChooser should display an icon near the item.
-     */
-    show_icons: boolean
     /**
      * Whether this #GtkRecentChooser should display an icon near the item.
      */
@@ -7159,30 +7018,13 @@ interface RecentChooser {
      * potentially expensive check on every local resource (every remote
      * resource will always be displayed).
      */
-    show_not_found: boolean
-    /**
-     * Whether this #GtkRecentChooser should display the recently used resources
-     * even if not present anymore. Setting this to %FALSE will perform a
-     * potentially expensive check on every local resource (every remote
-     * resource will always be displayed).
-     */
     showNotFound: boolean
-    show_private: boolean
     showPrivate: boolean
     /**
      * Whether this #GtkRecentChooser should display a tooltip containing the
      * full path of the recently used resources.
      */
-    show_tips: boolean
-    /**
-     * Whether this #GtkRecentChooser should display a tooltip containing the
-     * full path of the recently used resources.
-     */
     showTips: boolean
-    /**
-     * Sorting order to be used when displaying the recently used resources.
-     */
-    sort_type: RecentSortType
     /**
      * Sorting order to be used when displaying the recently used resources.
      */
@@ -8654,40 +8496,6 @@ module AboutDialog {
          * A named icon to use as the logo for the about box. This property
          * overrides the #GtkAboutDialog:logo property.
          */
-        logo_icon_name?: string | null
-        /**
-         * The name of the program.
-         * If this is not set, it defaults to g_get_application_name().
-         */
-        program_name?: string | null
-        /**
-         * Credits to the translators. This string should be marked as translatable.
-         * The string may contain email addresses and URLs, which will be displayed
-         * as links, see the introduction for more details.
-         */
-        translator_credits?: string | null
-        /**
-         * The version of the program.
-         */
-        version?: string | null
-        /**
-         * The URL for the link to the website of the program.
-         * This should be a string starting with "http://.
-         */
-        website?: string | null
-        /**
-         * The label for the link to the website of the program. If this is not set,
-         * it defaults to the URL specified in the #GtkAboutDialog:website property.
-         */
-        website_label?: string | null
-        /**
-         * Whether to wrap the text in the license dialog.
-         */
-        wrap_license?: boolean | null
-        /**
-         * A named icon to use as the logo for the about box. This property
-         * overrides the #GtkAboutDialog:logo property.
-         */
         logoIconName?: string | null
         /**
          * The name of the program.
@@ -8700,6 +8508,15 @@ module AboutDialog {
          * as links, see the introduction for more details.
          */
         translatorCredits?: string | null
+        /**
+         * The version of the program.
+         */
+        version?: string | null
+        /**
+         * The URL for the link to the website of the program.
+         * This should be a string starting with "http://.
+         */
+        website?: string | null
         /**
          * The label for the link to the website of the program. If this is not set,
          * it defaults to the URL specified in the #GtkAboutDialog:website property.
@@ -8762,28 +8579,12 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * A named icon to use as the logo for the about box. This property
      * overrides the #GtkAboutDialog:logo property.
      */
-    logo_icon_name: string | null
-    /**
-     * A named icon to use as the logo for the about box. This property
-     * overrides the #GtkAboutDialog:logo property.
-     */
     logoIconName: string | null
     /**
      * The name of the program.
      * If this is not set, it defaults to g_get_application_name().
      */
-    program_name: string | null
-    /**
-     * The name of the program.
-     * If this is not set, it defaults to g_get_application_name().
-     */
     programName: string | null
-    /**
-     * Credits to the translators. This string should be marked as translatable.
-     * The string may contain email addresses and URLs, which will be displayed
-     * as links, see the introduction for more details.
-     */
-    translator_credits: string | null
     /**
      * Credits to the translators. This string should be marked as translatable.
      * The string may contain email addresses and URLs, which will be displayed
@@ -8803,16 +8604,7 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * The label for the link to the website of the program. If this is not set,
      * it defaults to the URL specified in the #GtkAboutDialog:website property.
      */
-    website_label: string | null
-    /**
-     * The label for the link to the website of the program. If this is not set,
-     * it defaults to the URL specified in the #GtkAboutDialog:website property.
-     */
     websiteLabel: string | null
-    /**
-     * Whether to wrap the text in the license dialog.
-     */
-    wrap_license: boolean
     /**
      * Whether to wrap the text in the license dialog.
      */
@@ -8820,7 +8612,6 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.AboutDialog
@@ -9391,7 +9182,6 @@ interface AccelGroup {
 
     // Own properties of Gtk-2.0.Gtk.AccelGroup
 
-    readonly is_locked: boolean
     readonly isLocked: boolean
     readonly modifierMask: Gdk.ModifierType
 
@@ -9582,8 +9372,6 @@ module AccelLabel {
 
         // Own constructor properties of Gtk-2.0.Gtk.AccelLabel
 
-        accel_closure?: GObject.TClosure | null
-        accel_widget?: Widget | null
         accelClosure?: GObject.TClosure | null
         accelWidget?: Widget | null
     }
@@ -10146,7 +9934,7 @@ module Action {
 
         // Own constructor properties of Gtk-2.0.Gtk.Action
 
-        action_group?: ActionGroup | null
+        actionGroup?: ActionGroup | null
         /**
          * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
          * setting and always show their image, if available.
@@ -10154,7 +9942,7 @@ module Action {
          * Use this property if the menu item would be useless or hard to use
          * without their image.
          */
-        always_show_image?: boolean | null
+        alwaysShowImage?: boolean | null
         /**
          * The #GIcon displayed in the #GtkAction.
          * 
@@ -10165,7 +9953,7 @@ module Action {
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
         gicon?: Gio.Icon | null
-        hide_if_empty?: boolean | null
+        hideIfEmpty?: boolean | null
         /**
          * The name of the icon from the icon theme.
          * 
@@ -10176,8 +9964,8 @@ module Action {
          * This is an appearance property and thus only applies if
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
-        icon_name?: string | null
-        is_important?: boolean | null
+        iconName?: string | null
+        isImportant?: boolean | null
         /**
          * The label used for menu items and buttons that activate
          * this action. If the label is %NULL, GTK+ uses the stock
@@ -10195,51 +9983,6 @@ module Action {
          * This is an appearance property and thus only applies if
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
-        short_label?: string | null
-        /**
-         * The stock icon displayed in widgets representing this action.
-         * 
-         * This is an appearance property and thus only applies if
-         * #GtkActivatable:use-action-appearance is %TRUE.
-         */
-        stock_id?: string | null
-        tooltip?: string | null
-        visible?: boolean | null
-        visible_horizontal?: boolean | null
-        /**
-         * When %TRUE, toolitem proxies for this action are represented in the
-         * toolbar overflow menu.
-         */
-        visible_overflown?: boolean | null
-        visible_vertical?: boolean | null
-        actionGroup?: ActionGroup | null
-        /**
-         * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
-         * setting and always show their image, if available.
-         * 
-         * Use this property if the menu item would be useless or hard to use
-         * without their image.
-         */
-        alwaysShowImage?: boolean | null
-        hideIfEmpty?: boolean | null
-        /**
-         * The name of the icon from the icon theme.
-         * 
-         * Note that the stock icon is preferred, if the #GtkAction:stock-id
-         * property holds the id of an existing stock icon, and the #GIcon is
-         * preferred if the #GtkAction:gicon property is set.
-         * 
-         * This is an appearance property and thus only applies if
-         * #GtkActivatable:use-action-appearance is %TRUE.
-         */
-        iconName?: string | null
-        isImportant?: boolean | null
-        /**
-         * A shorter label that may be used on toolbar buttons.
-         * 
-         * This is an appearance property and thus only applies if
-         * #GtkActivatable:use-action-appearance is %TRUE.
-         */
         shortLabel?: string | null
         /**
          * The stock icon displayed in widgets representing this action.
@@ -10248,6 +9991,8 @@ module Action {
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
         stockId?: string | null
+        tooltip?: string | null
+        visible?: boolean | null
         visibleHorizontal?: boolean | null
         /**
          * When %TRUE, toolitem proxies for this action are represented in the
@@ -10263,16 +10008,7 @@ interface Action extends Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Action
 
-    action_group: ActionGroup
     actionGroup: ActionGroup
-    /**
-     * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
-     * setting and always show their image, if available.
-     * 
-     * Use this property if the menu item would be useless or hard to use
-     * without their image.
-     */
-    always_show_image: boolean
     /**
      * If %TRUE, the action's menu item proxies will ignore the #GtkSettings:gtk-menu-images
      * setting and always show their image, if available.
@@ -10291,7 +10027,6 @@ interface Action extends Buildable {
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
     gicon: Gio.Icon
-    hide_if_empty: boolean
     hideIfEmpty: boolean
     /**
      * The name of the icon from the icon theme.
@@ -10303,19 +10038,7 @@ interface Action extends Buildable {
      * This is an appearance property and thus only applies if
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
-    icon_name: string | null
-    /**
-     * The name of the icon from the icon theme.
-     * 
-     * Note that the stock icon is preferred, if the #GtkAction:stock-id
-     * property holds the id of an existing stock icon, and the #GIcon is
-     * preferred if the #GtkAction:gicon property is set.
-     * 
-     * This is an appearance property and thus only applies if
-     * #GtkActivatable:use-action-appearance is %TRUE.
-     */
     iconName: string | null
-    is_important: boolean
     isImportant: boolean
     /**
      * The label used for menu items and buttons that activate
@@ -10334,21 +10057,7 @@ interface Action extends Buildable {
      * This is an appearance property and thus only applies if
      * #GtkActivatable:use-action-appearance is %TRUE.
      */
-    short_label: string | null
-    /**
-     * A shorter label that may be used on toolbar buttons.
-     * 
-     * This is an appearance property and thus only applies if
-     * #GtkActivatable:use-action-appearance is %TRUE.
-     */
     shortLabel: string | null
-    /**
-     * The stock icon displayed in widgets representing this action.
-     * 
-     * This is an appearance property and thus only applies if
-     * #GtkActivatable:use-action-appearance is %TRUE.
-     */
-    stock_id: string | null
     /**
      * The stock icon displayed in widgets representing this action.
      * 
@@ -10358,19 +10067,12 @@ interface Action extends Buildable {
     stockId: string | null
     tooltip: string | null
     visible: boolean
-    visible_horizontal: boolean
     visibleHorizontal: boolean
     /**
      * When %TRUE, toolitem proxies for this action are represented in the
      * toolbar overflow menu.
      */
-    visible_overflown: boolean
-    /**
-     * When %TRUE, toolitem proxies for this action are represented in the
-     * toolbar overflow menu.
-     */
     visibleOverflown: boolean
-    visible_vertical: boolean
     visibleVertical: boolean
 
     // Own fields of Gtk-2.0.Gtk.Action
@@ -11161,32 +10863,6 @@ module Adjustment {
         /**
          * The page increment of the adjustment.
          */
-        page_increment?: number | null
-        /**
-         * The page size of the adjustment.
-         * Note that the page-size is irrelevant and should be set to zero
-         * if the adjustment is used for a simple scalar value, e.g. in a
-         * #GtkSpinButton.
-         */
-        page_size?: number | null
-        /**
-         * The step increment of the adjustment.
-         */
-        step_increment?: number | null
-        /**
-         * The maximum value of the adjustment.
-         * Note that values will be restricted by
-         * <literal>upper - page-size</literal> if the page-size
-         * property is nonzero.
-         */
-        upper?: number | null
-        /**
-         * The value of the adjustment.
-         */
-        value?: number | null
-        /**
-         * The page increment of the adjustment.
-         */
         pageIncrement?: number | null
         /**
          * The page size of the adjustment.
@@ -11199,6 +10875,17 @@ module Adjustment {
          * The step increment of the adjustment.
          */
         stepIncrement?: number | null
+        /**
+         * The maximum value of the adjustment.
+         * Note that values will be restricted by
+         * <literal>upper - page-size</literal> if the page-size
+         * property is nonzero.
+         */
+        upper?: number | null
+        /**
+         * The value of the adjustment.
+         */
+        value?: number | null
     }
 
 }
@@ -11402,26 +11089,6 @@ module Alignment {
         /**
          * The padding to insert at the bottom of the widget.
          */
-        bottom_padding?: number | null
-        /**
-         * The padding to insert at the left of the widget.
-         */
-        left_padding?: number | null
-        /**
-         * The padding to insert at the right of the widget.
-         */
-        right_padding?: number | null
-        /**
-         * The padding to insert at the top of the widget.
-         */
-        top_padding?: number | null
-        xalign?: number | null
-        xscale?: number | null
-        yalign?: number | null
-        yscale?: number | null
-        /**
-         * The padding to insert at the bottom of the widget.
-         */
         bottomPadding?: number | null
         /**
          * The padding to insert at the left of the widget.
@@ -11435,6 +11102,10 @@ module Alignment {
          * The padding to insert at the top of the widget.
          */
         topPadding?: number | null
+        xalign?: number | null
+        xscale?: number | null
+        yalign?: number | null
+        yscale?: number | null
     }
 
 }
@@ -11446,15 +11117,7 @@ interface Alignment extends Atk.ImplementorIface, Buildable {
     /**
      * The padding to insert at the bottom of the widget.
      */
-    bottom_padding: number
-    /**
-     * The padding to insert at the bottom of the widget.
-     */
     bottomPadding: number
-    /**
-     * The padding to insert at the left of the widget.
-     */
-    left_padding: number
     /**
      * The padding to insert at the left of the widget.
      */
@@ -11462,15 +11125,7 @@ interface Alignment extends Atk.ImplementorIface, Buildable {
     /**
      * The padding to insert at the right of the widget.
      */
-    right_padding: number
-    /**
-     * The padding to insert at the right of the widget.
-     */
     rightPadding: number
-    /**
-     * The padding to insert at the top of the widget.
-     */
-    top_padding: number
     /**
      * The padding to insert at the top of the widget.
      */
@@ -11656,8 +11311,6 @@ module Arrow {
 
         // Own constructor properties of Gtk-2.0.Gtk.Arrow
 
-        arrow_type?: ArrowType | null
-        shadow_type?: ShadowType | null
         arrowType?: ArrowType | null
         shadowType?: ShadowType | null
     }
@@ -11812,11 +11465,10 @@ module AspectFrame {
 
         // Own constructor properties of Gtk-2.0.Gtk.AspectFrame
 
-        obey_child?: boolean | null
+        obeyChild?: boolean | null
         ratio?: number | null
         xalign?: number | null
         yalign?: number | null
-        obeyChild?: boolean | null
     }
 
 }
@@ -12042,10 +11694,6 @@ module Assistant {
 }
 
 interface Assistant extends Atk.ImplementorIface, Buildable {
-
-    // Conflicting properties
-
-    has_focus: any
 
     // Own fields of Gtk-2.0.Gtk.Assistant
 
@@ -12832,13 +12480,6 @@ module Builder {
          * If the translation domain is %NULL, #GtkBuilder uses gettext(),
          * otherwise g_dgettext().
          */
-        translation_domain?: string | null
-        /**
-         * The translation domain used when translating property values that
-         * have been marked as translatable in interface descriptions.
-         * If the translation domain is %NULL, #GtkBuilder uses gettext(),
-         * otherwise g_dgettext().
-         */
         translationDomain?: string | null
     }
 
@@ -12848,13 +12489,6 @@ interface Builder {
 
     // Own properties of Gtk-2.0.Gtk.Builder
 
-    /**
-     * The translation domain used when translating property values that
-     * have been marked as translatable in interface descriptions.
-     * If the translation domain is %NULL, #GtkBuilder uses gettext(),
-     * otherwise g_dgettext().
-     */
-    translation_domain: string | null
     /**
      * The translation domain used when translating property values that
      * have been marked as translatable in interface descriptions.
@@ -13120,16 +12754,16 @@ module Button {
 
         // Own constructor properties of Gtk-2.0.Gtk.Button
 
-        focus_on_click?: boolean | null
+        focusOnClick?: boolean | null
         image?: Widget | null
         /**
          * The position of the image relative to the text inside the button.
          */
-        image_position?: PositionType | null
+        imagePosition?: PositionType | null
         label?: string | null
         relief?: ReliefStyle | null
-        use_stock?: boolean | null
-        use_underline?: boolean | null
+        useStock?: boolean | null
+        useUnderline?: boolean | null
         /**
          * If the child of the button is a #GtkMisc or #GtkAlignment, this property
          * can be used to control it's horizontal alignment. 0.0 is left aligned,
@@ -13142,13 +12776,6 @@ module Button {
          * 1.0 is bottom aligned.
          */
         yalign?: number | null
-        focusOnClick?: boolean | null
-        /**
-         * The position of the image relative to the text inside the button.
-         */
-        imagePosition?: PositionType | null
-        useStock?: boolean | null
-        useUnderline?: boolean | null
     }
 
 }
@@ -13159,10 +12786,6 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
 
     focusOnClick: boolean
     image: Widget
-    /**
-     * The position of the image relative to the text inside the button.
-     */
-    image_position: PositionType
     /**
      * The position of the image relative to the text inside the button.
      */
@@ -13493,7 +13116,6 @@ module ButtonBox {
 
         // Own constructor properties of Gtk-2.0.Gtk.ButtonBox
 
-        layout_style?: ButtonBoxStyle | null
         layoutStyle?: ButtonBoxStyle | null
     }
 
@@ -13772,15 +13394,8 @@ module CList {
 
         // Own constructor properties of Gtk-2.0.Gtk.CList
 
-        n_columns?: number | null
-        reorderable?: boolean | null
-        row_height?: number | null
-        selection_mode?: SelectionMode | null
-        shadow_type?: ShadowType | null
-        sort_type?: SortType | null
-        titles_active?: boolean | null
-        use_drag_icons?: boolean | null
         nColumns?: number | null
+        reorderable?: boolean | null
         rowHeight?: number | null
         selectionMode?: SelectionMode | null
         shadowType?: ShadowType | null
@@ -13795,16 +13410,13 @@ interface CList extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.CList
 
-    readonly n_columns: number
     readonly nColumns: number
     reorderable: boolean
     rowHeight: number
     selectionMode: SelectionMode
     shadowType: ShadowType
     sortType: SortType
-    titles_active: boolean
     titlesActive: boolean
-    use_drag_icons: boolean
     useDragIcons: boolean
 
     // Own fields of Gtk-2.0.Gtk.CList
@@ -14166,17 +13778,12 @@ module CTree {
 
         // Own constructor properties of Gtk-2.0.Gtk.CTree
 
-        expander_style?: CTreeExpanderStyle | null
-        indent?: number | null
-        line_style?: CTreeLineStyle | null
-        n_columns?: number | null
-        show_stub?: boolean | null
-        spacing?: number | null
-        tree_column?: number | null
         expanderStyle?: CTreeExpanderStyle | null
+        indent?: number | null
         lineStyle?: CTreeLineStyle | null
         nColumns?: number | null
         showStub?: boolean | null
+        spacing?: number | null
         treeColumn?: number | null
     }
 
@@ -14189,7 +13796,6 @@ interface CTree extends Atk.ImplementorIface, Buildable {
     expanderStyle: CTreeExpanderStyle
     indent: number
     lineStyle: CTreeLineStyle
-    readonly n_columns: number
     readonly nColumns: number
     showStub: boolean
     spacing: number
@@ -14543,54 +14149,17 @@ module Calendar {
          * Height of a detail cell, in rows.
          * A value of 0 allows any width. See gtk_calendar_set_detail_func().
          */
-        detail_height_rows?: number | null
-        /**
-         * Width of a detail cell, in characters.
-         * A value of 0 allows any width. See gtk_calendar_set_detail_func().
-         */
-        detail_width_chars?: number | null
-        /**
-         * The selected month (as a number between 0 and 11).
-         * This property gets initially set to the current month.
-         */
-        month?: number | null
-        /**
-         * Determines whether the selected month can be changed.
-         */
-        no_month_change?: boolean | null
-        /**
-         * Determines whether day names are displayed.
-         */
-        show_day_names?: boolean | null
-        /**
-         * Determines whether details are shown directly in the widget, or if they are
-         * available only as tooltip. When this property is set days with details are
-         * marked.
-         */
-        show_details?: boolean | null
-        /**
-         * Determines whether a heading is displayed.
-         */
-        show_heading?: boolean | null
-        /**
-         * Determines whether week numbers are displayed.
-         */
-        show_week_numbers?: boolean | null
-        /**
-         * The selected year.
-         * This property gets initially set to the current year.
-         */
-        year?: number | null
-        /**
-         * Height of a detail cell, in rows.
-         * A value of 0 allows any width. See gtk_calendar_set_detail_func().
-         */
         detailHeightRows?: number | null
         /**
          * Width of a detail cell, in characters.
          * A value of 0 allows any width. See gtk_calendar_set_detail_func().
          */
         detailWidthChars?: number | null
+        /**
+         * The selected month (as a number between 0 and 11).
+         * This property gets initially set to the current month.
+         */
+        month?: number | null
         /**
          * Determines whether the selected month can be changed.
          */
@@ -14613,6 +14182,11 @@ module Calendar {
          * Determines whether week numbers are displayed.
          */
         showWeekNumbers?: boolean | null
+        /**
+         * The selected year.
+         * This property gets initially set to the current year.
+         */
+        year?: number | null
     }
 
 }
@@ -14625,17 +14199,7 @@ interface Calendar extends Atk.ImplementorIface, Buildable {
      * Height of a detail cell, in rows.
      * A value of 0 allows any width. See gtk_calendar_set_detail_func().
      */
-    detail_height_rows: number
-    /**
-     * Height of a detail cell, in rows.
-     * A value of 0 allows any width. See gtk_calendar_set_detail_func().
-     */
     detailHeightRows: number
-    /**
-     * Width of a detail cell, in characters.
-     * A value of 0 allows any width. See gtk_calendar_set_detail_func().
-     */
-    detail_width_chars: number
     /**
      * Width of a detail cell, in characters.
      * A value of 0 allows any width. See gtk_calendar_set_detail_func().
@@ -14644,15 +14208,7 @@ interface Calendar extends Atk.ImplementorIface, Buildable {
     /**
      * Determines whether the selected month can be changed.
      */
-    no_month_change: boolean
-    /**
-     * Determines whether the selected month can be changed.
-     */
     noMonthChange: boolean
-    /**
-     * Determines whether day names are displayed.
-     */
-    show_day_names: boolean
     /**
      * Determines whether day names are displayed.
      */
@@ -14662,25 +14218,11 @@ interface Calendar extends Atk.ImplementorIface, Buildable {
      * available only as tooltip. When this property is set days with details are
      * marked.
      */
-    show_details: boolean
-    /**
-     * Determines whether details are shown directly in the widget, or if they are
-     * available only as tooltip. When this property is set days with details are
-     * marked.
-     */
     showDetails: boolean
     /**
      * Determines whether a heading is displayed.
      */
-    show_heading: boolean
-    /**
-     * Determines whether a heading is displayed.
-     */
     showHeading: boolean
-    /**
-     * Determines whether week numbers are displayed.
-     */
-    show_week_numbers: boolean
     /**
      * Determines whether week numbers are displayed.
      */
@@ -14993,12 +14535,12 @@ module CellRenderer {
 
         // Own constructor properties of Gtk-2.0.Gtk.CellRenderer
 
-        cell_background?: string | null
-        cell_background_gdk?: Gdk.Color | null
-        cell_background_set?: boolean | null
+        cellBackground?: string | null
+        cellBackgroundGdk?: Gdk.Color | null
+        cellBackgroundSet?: boolean | null
         height?: number | null
-        is_expanded?: boolean | null
-        is_expander?: boolean | null
+        isExpanded?: boolean | null
+        isExpander?: boolean | null
         mode?: CellRendererMode | null
         sensitive?: boolean | null
         visible?: boolean | null
@@ -15007,11 +14549,6 @@ module CellRenderer {
         xpad?: number | null
         yalign?: number | null
         ypad?: number | null
-        cellBackground?: string | null
-        cellBackgroundGdk?: Gdk.Color | null
-        cellBackgroundSet?: boolean | null
-        isExpanded?: boolean | null
-        isExpander?: boolean | null
     }
 
 }
@@ -15020,9 +14557,7 @@ interface CellRenderer {
 
     // Own properties of Gtk-2.0.Gtk.CellRenderer
 
-    cell_background: string | null
     cellBackground: string | null
-    cell_background_gdk: Gdk.Color
     cellBackgroundGdk: Gdk.Color
     cellBackgroundSet: boolean
     isExpanded: boolean
@@ -15316,27 +14851,6 @@ module CellRendererAccel {
         /**
          * The keyval of the accelerator.
          */
-        accel_key?: number | null
-        /**
-         * Determines if the edited accelerators are GTK+ accelerators. If
-         * they are, consumed modifiers are suppressed, only accelerators
-         * accepted by GTK+ are allowed, and the accelerators are rendered
-         * in the same way as they are in menus.
-         */
-        accel_mode?: CellRendererAccelMode | null
-        /**
-         * The modifier mask of the accelerator.
-         */
-        accel_mods?: Gdk.ModifierType | null
-        /**
-         * The hardware keycode of the accelerator. Note that the hardware keycode is
-         * only relevant if the key does not have a keyval. Normally, the keyboard
-         * configuration should assign keyvals to all keys.
-         */
-        keycode?: number | null
-        /**
-         * The keyval of the accelerator.
-         */
         accelKey?: number | null
         /**
          * Determines if the edited accelerators are GTK+ accelerators. If
@@ -15349,6 +14863,12 @@ module CellRendererAccel {
          * The modifier mask of the accelerator.
          */
         accelMods?: Gdk.ModifierType | null
+        /**
+         * The hardware keycode of the accelerator. Note that the hardware keycode is
+         * only relevant if the key does not have a keyval. Normally, the keyboard
+         * configuration should assign keyvals to all keys.
+         */
+        keycode?: number | null
     }
 
 }
@@ -15360,10 +14880,6 @@ interface CellRendererAccel {
     /**
      * The keyval of the accelerator.
      */
-    accel_key: number
-    /**
-     * The keyval of the accelerator.
-     */
     accelKey: number
     /**
      * Determines if the edited accelerators are GTK+ accelerators. If
@@ -15371,18 +14887,7 @@ interface CellRendererAccel {
      * accepted by GTK+ are allowed, and the accelerators are rendered
      * in the same way as they are in menus.
      */
-    accel_mode: CellRendererAccelMode
-    /**
-     * Determines if the edited accelerators are GTK+ accelerators. If
-     * they are, consumed modifiers are suppressed, only accelerators
-     * accepted by GTK+ are allowed, and the accelerators are rendered
-     * in the same way as they are in menus.
-     */
     accelMode: CellRendererAccelMode
-    /**
-     * The modifier mask of the accelerator.
-     */
-    accel_mods: Gdk.ModifierType
     /**
      * The modifier mask of the accelerator.
      */
@@ -15629,29 +15134,12 @@ module CellRendererCombo {
          * If %TRUE, the cell renderer will include an entry and allow to enter
          * values other than the ones in the popup list.
          */
-        has_entry?: boolean | null
+        hasEntry?: boolean | null
         /**
          * Holds a tree model containing the possible values for the combo box.
          * Use the text_column property to specify the column holding the values.
          */
         model?: TreeModel | null
-        /**
-         * Specifies the model column which holds the possible values for the
-         * combo box.
-         * 
-         * Note that this refers to the model specified in the model property,
-         * <emphasis>not</emphasis> the model backing the tree view to which
-         * this cell renderer is attached.
-         * 
-         * #GtkCellRendererCombo automatically adds a text cell renderer for
-         * this column to its combo box.
-         */
-        text_column?: number | null
-        /**
-         * If %TRUE, the cell renderer will include an entry and allow to enter
-         * values other than the ones in the popup list.
-         */
-        hasEntry?: boolean | null
         /**
          * Specifies the model column which holds the possible values for the
          * combo box.
@@ -15916,7 +15404,7 @@ module CellRendererPixbuf {
          * Specifies whether the rendered pixbuf should be colorized
          * according to the #GtkCellRendererState.
          */
-        follow_state?: boolean | null
+        followState?: boolean | null
         /**
          * The GIcon representing the icon to display.
          * If the icon theme is changed, the image will be updated
@@ -15928,24 +15416,8 @@ module CellRendererPixbuf {
          * This property only has an effect if not overridden by "stock_id"
          * or "pixbuf" properties.
          */
-        icon_name?: string | null
-        pixbuf?: GdkPixbuf.Pixbuf | null
-        pixbuf_expander_closed?: GdkPixbuf.Pixbuf | null
-        pixbuf_expander_open?: GdkPixbuf.Pixbuf | null
-        stock_detail?: string | null
-        stock_id?: string | null
-        stock_size?: number | null
-        /**
-         * Specifies whether the rendered pixbuf should be colorized
-         * according to the #GtkCellRendererState.
-         */
-        followState?: boolean | null
-        /**
-         * The name of the themed icon to display.
-         * This property only has an effect if not overridden by "stock_id"
-         * or "pixbuf" properties.
-         */
         iconName?: string | null
+        pixbuf?: GdkPixbuf.Pixbuf | null
         pixbufExpanderClosed?: GdkPixbuf.Pixbuf | null
         pixbufExpanderOpen?: GdkPixbuf.Pixbuf | null
         stockDetail?: string | null
@@ -15963,11 +15435,6 @@ interface CellRendererPixbuf {
      * Specifies whether the rendered pixbuf should be colorized
      * according to the #GtkCellRendererState.
      */
-    follow_state: boolean
-    /**
-     * Specifies whether the rendered pixbuf should be colorized
-     * according to the #GtkCellRendererState.
-     */
     followState: boolean
     /**
      * The GIcon representing the icon to display.
@@ -15980,23 +15447,12 @@ interface CellRendererPixbuf {
      * This property only has an effect if not overridden by "stock_id"
      * or "pixbuf" properties.
      */
-    icon_name: string | null
-    /**
-     * The name of the themed icon to display.
-     * This property only has an effect if not overridden by "stock_id"
-     * or "pixbuf" properties.
-     */
     iconName: string | null
     pixbuf: GdkPixbuf.Pixbuf
-    pixbuf_expander_closed: GdkPixbuf.Pixbuf
     pixbufExpanderClosed: GdkPixbuf.Pixbuf
-    pixbuf_expander_open: GdkPixbuf.Pixbuf
     pixbufExpanderOpen: GdkPixbuf.Pixbuf
-    stock_detail: string | null
     stockDetail: string | null
-    stock_id: string | null
     stockId: string | null
-    stock_size: number
     stockSize: number
 
     // Own fields of Gtk-2.0.Gtk.CellRendererPixbuf
@@ -16132,23 +15588,6 @@ module CellRendererProgress {
          * text in the progress bar.  Valid values range from 0 (left) to 1
          * (right).  Reserved for RTL layouts.
          */
-        text_xalign?: number | null
-        /**
-         * The "text-yalign" property controls the vertical alignment of the
-         * text in the progress bar.  Valid values range from 0 (top) to 1
-         * (bottom).
-         */
-        text_yalign?: number | null
-        /**
-         * The "value" property determines the percentage to which the
-         * progress bar will be "filled in".
-         */
-        value?: number | null
-        /**
-         * The "text-xalign" property controls the horizontal alignment of the
-         * text in the progress bar.  Valid values range from 0 (left) to 1
-         * (right).  Reserved for RTL layouts.
-         */
         textXalign?: number | null
         /**
          * The "text-yalign" property controls the vertical alignment of the
@@ -16156,6 +15595,11 @@ module CellRendererProgress {
          * (bottom).
          */
         textYalign?: number | null
+        /**
+         * The "value" property determines the percentage to which the
+         * progress bar will be "filled in".
+         */
+        value?: number | null
     }
 
 }
@@ -16195,19 +15639,7 @@ interface CellRendererProgress {
      * text in the progress bar.  Valid values range from 0 (left) to 1
      * (right).  Reserved for RTL layouts.
      */
-    text_xalign: number
-    /**
-     * The "text-xalign" property controls the horizontal alignment of the
-     * text in the progress bar.  Valid values range from 0 (left) to 1
-     * (right).  Reserved for RTL layouts.
-     */
     textXalign: number
-    /**
-     * The "text-yalign" property controls the vertical alignment of the
-     * text in the progress bar.  Valid values range from 0 (top) to 1
-     * (bottom).
-     */
-    text_yalign: number
     /**
      * The "text-yalign" property controls the vertical alignment of the
      * text in the progress bar.  Valid values range from 0 (top) to 1
@@ -16309,15 +15741,11 @@ module CellRendererSpin {
         /**
          * The acceleration rate when you hold down a button.
          */
-        climb_rate?: number | null
+        climbRate?: number | null
         /**
          * The number of decimal places to display.
          */
         digits?: number | null
-        /**
-         * The acceleration rate when you hold down a button.
-         */
-        climbRate?: number | null
     }
 
 }
@@ -16331,10 +15759,6 @@ interface CellRendererSpin {
      * This must be non-%NULL for the cell renderer to be editable.
      */
     adjustment: Adjustment
-    /**
-     * The acceleration rate when you hold down a button.
-     */
-    climb_rate: number
     /**
      * The acceleration rate when you hold down a button.
      */
@@ -16685,7 +16109,7 @@ module CellRendererText {
 
         // Own constructor properties of Gtk-2.0.Gtk.CellRendererText
 
-        align_set?: boolean | null
+        alignSet?: boolean | null
         /**
          * Specifies how to align the lines of text with respect to each other.
          * 
@@ -16696,10 +16120,10 @@ module CellRendererText {
         alignment?: Pango.Alignment | null
         attributes?: Pango.AttrList | null
         background?: string | null
-        background_gdk?: Gdk.Color | null
-        background_set?: boolean | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
         editable?: boolean | null
-        editable_set?: boolean | null
+        editableSet?: boolean | null
         /**
          * Specifies the preferred place to ellipsize the string, if the cell renderer
          * does not have enough room to display the entire string. Setting it to
@@ -16707,76 +16131,37 @@ module CellRendererText {
          * for another way of making the text fit into a given width.
          */
         ellipsize?: Pango.EllipsizeMode | null
-        ellipsize_set?: boolean | null
-        family?: string | null
-        family_set?: boolean | null
-        font?: string | null
-        font_desc?: Pango.FontDescription | null
-        foreground?: string | null
-        foreground_gdk?: Gdk.Color | null
-        foreground_set?: boolean | null
-        language?: string | null
-        language_set?: boolean | null
-        markup?: string | null
-        rise?: number | null
-        rise_set?: boolean | null
-        scale?: number | null
-        scale_set?: boolean | null
-        single_paragraph_mode?: boolean | null
-        size?: number | null
-        size_points?: number | null
-        size_set?: boolean | null
-        stretch?: Pango.Stretch | null
-        stretch_set?: boolean | null
-        strikethrough?: boolean | null
-        strikethrough_set?: boolean | null
-        style?: Pango.Style | null
-        style_set?: boolean | null
-        text?: string | null
-        underline?: Pango.Underline | null
-        underline_set?: boolean | null
-        variant?: Pango.Variant | null
-        variant_set?: boolean | null
-        weight?: number | null
-        weight_set?: boolean | null
-        /**
-         * The desired width of the cell, in characters. If this property is set to
-         * -1, the width will be calculated automatically, otherwise the cell will
-         * request either 3 characters or the property value, whichever is greater.
-         */
-        width_chars?: number | null
-        /**
-         * Specifies how to break the string into multiple lines, if the cell
-         * renderer does not have enough room to display the entire string.
-         * This property has no effect unless the wrap-width property is set.
-         */
-        wrap_mode?: Pango.WrapMode | null
-        /**
-         * Specifies the width at which the text is wrapped. The wrap-mode property can
-         * be used to influence at what character positions the line breaks can be placed.
-         * Setting wrap-width to -1 turns wrapping off.
-         */
-        wrap_width?: number | null
-        alignSet?: boolean | null
-        backgroundGdk?: Gdk.Color | null
-        backgroundSet?: boolean | null
-        editableSet?: boolean | null
         ellipsizeSet?: boolean | null
+        family?: string | null
         familySet?: boolean | null
+        font?: string | null
         fontDesc?: Pango.FontDescription | null
+        foreground?: string | null
         foregroundGdk?: Gdk.Color | null
         foregroundSet?: boolean | null
+        language?: string | null
         languageSet?: boolean | null
+        markup?: string | null
+        rise?: number | null
         riseSet?: boolean | null
+        scale?: number | null
         scaleSet?: boolean | null
         singleParagraphMode?: boolean | null
+        size?: number | null
         sizePoints?: number | null
         sizeSet?: boolean | null
+        stretch?: Pango.Stretch | null
         stretchSet?: boolean | null
+        strikethrough?: boolean | null
         strikethroughSet?: boolean | null
+        style?: Pango.Style | null
         styleSet?: boolean | null
+        text?: string | null
+        underline?: Pango.Underline | null
         underlineSet?: boolean | null
+        variant?: Pango.Variant | null
         variantSet?: boolean | null
+        weight?: number | null
         weightSet?: boolean | null
         /**
          * The desired width of the cell, in characters. If this property is set to
@@ -16804,7 +16189,6 @@ interface CellRendererText {
 
     // Own properties of Gtk-2.0.Gtk.CellRendererText
 
-    align_set: boolean
     alignSet: boolean
     /**
      * Specifies how to align the lines of text with respect to each other.
@@ -16816,12 +16200,9 @@ interface CellRendererText {
     alignment: Pango.Alignment
     attributes: Pango.AttrList
     background: string | null
-    background_gdk: Gdk.Color
     backgroundGdk: Gdk.Color
-    background_set: boolean
     backgroundSet: boolean
     editable: boolean
-    editable_set: boolean
     editableSet: boolean
     /**
      * Specifies the preferred place to ellipsize the string, if the cell renderer
@@ -16830,61 +16211,38 @@ interface CellRendererText {
      * for another way of making the text fit into a given width.
      */
     ellipsize: Pango.EllipsizeMode
-    ellipsize_set: boolean
     ellipsizeSet: boolean
     family: string | null
-    family_set: boolean
     familySet: boolean
     font: string | null
-    font_desc: Pango.FontDescription
     fontDesc: Pango.FontDescription
     foreground: string | null
-    foreground_gdk: Gdk.Color
     foregroundGdk: Gdk.Color
-    foreground_set: boolean
     foregroundSet: boolean
     language: string | null
-    language_set: boolean
     languageSet: boolean
     markup: string | null
     rise: number
-    rise_set: boolean
     riseSet: boolean
     scale: number
-    scale_set: boolean
     scaleSet: boolean
-    single_paragraph_mode: boolean
     singleParagraphMode: boolean
     size: number
-    size_points: number
     sizePoints: number
-    size_set: boolean
     sizeSet: boolean
     stretch: Pango.Stretch
-    stretch_set: boolean
     stretchSet: boolean
     strikethrough: boolean
-    strikethrough_set: boolean
     strikethroughSet: boolean
     style: Pango.Style
-    style_set: boolean
     styleSet: boolean
     text: string | null
     underline: Pango.Underline
-    underline_set: boolean
     underlineSet: boolean
     variant: Pango.Variant
-    variant_set: boolean
     variantSet: boolean
     weight: number
-    weight_set: boolean
     weightSet: boolean
-    /**
-     * The desired width of the cell, in characters. If this property is set to
-     * -1, the width will be calculated automatically, otherwise the cell will
-     * request either 3 characters or the property value, whichever is greater.
-     */
-    width_chars: number
     /**
      * The desired width of the cell, in characters. If this property is set to
      * -1, the width will be calculated automatically, otherwise the cell will
@@ -16896,19 +16254,7 @@ interface CellRendererText {
      * renderer does not have enough room to display the entire string.
      * This property has no effect unless the wrap-width property is set.
      */
-    wrap_mode: Pango.WrapMode
-    /**
-     * Specifies how to break the string into multiple lines, if the cell
-     * renderer does not have enough room to display the entire string.
-     * This property has no effect unless the wrap-width property is set.
-     */
     wrapMode: Pango.WrapMode
-    /**
-     * Specifies the width at which the text is wrapped. The wrap-mode property can
-     * be used to influence at what character positions the line breaks can be placed.
-     * Setting wrap-width to -1 turns wrapping off.
-     */
-    wrap_width: number
     /**
      * Specifies the width at which the text is wrapped. The wrap-mode property can
      * be used to influence at what character positions the line breaks can be placed.
@@ -17160,9 +16506,8 @@ module CellRendererToggle {
         activatable?: boolean | null
         active?: boolean | null
         inconsistent?: boolean | null
-        indicator_size?: number | null
-        radio?: boolean | null
         indicatorSize?: number | null
+        radio?: boolean | null
     }
 
 }
@@ -17174,7 +16519,6 @@ interface CellRendererToggle {
     activatable: boolean
     active: boolean
     inconsistent: boolean
-    indicator_size: number
     indicatorSize: number
     radio: boolean
 
@@ -17320,16 +16664,14 @@ module CellView {
         // Own constructor properties of Gtk-2.0.Gtk.CellView
 
         background?: string | null
-        background_gdk?: Gdk.Color | null
-        background_set?: boolean | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
         /**
          * The model for cell view
          * 
          * since 2.10
          */
         model?: TreeModel | null
-        backgroundGdk?: Gdk.Color | null
-        backgroundSet?: boolean | null
     }
 
 }
@@ -17339,9 +16681,7 @@ interface CellView extends Atk.ImplementorIface, Buildable, CellLayout {
     // Own properties of Gtk-2.0.Gtk.CellView
 
     background: string | null
-    background_gdk: Gdk.Color
     backgroundGdk: Gdk.Color
-    background_set: boolean
     backgroundSet: boolean
     /**
      * The model for cell view
@@ -17703,9 +17043,8 @@ module CheckMenuItem {
         // Own constructor properties of Gtk-2.0.Gtk.CheckMenuItem
 
         active?: boolean | null
-        draw_as_radio?: boolean | null
-        inconsistent?: boolean | null
         drawAsRadio?: boolean | null
+        inconsistent?: boolean | null
     }
 
 }
@@ -18287,12 +17626,6 @@ module ColorButton {
          * checkerboard background to show its opacity and the opacity slider is displayed in the
          * color selection dialog.
          */
-        use_alpha?: boolean | null
-        /**
-         * If this property is set to %TRUE, the color swatch on the button is rendered against a
-         * checkerboard background to show its opacity and the opacity slider is displayed in the
-         * color selection dialog.
-         */
         useAlpha?: boolean | null
     }
 
@@ -18314,12 +17647,6 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
      * The title of the color selection dialog
      */
     title: string | null
-    /**
-     * If this property is set to %TRUE, the color swatch on the button is rendered against a
-     * checkerboard background to show its opacity and the opacity slider is displayed in the
-     * color selection dialog.
-     */
-    use_alpha: boolean
     /**
      * If this property is set to %TRUE, the color swatch on the button is rendered against a
      * checkerboard background to show its opacity and the opacity slider is displayed in the
@@ -18560,10 +17887,6 @@ module ColorSelection {
 
         // Own constructor properties of Gtk-2.0.Gtk.ColorSelection
 
-        current_alpha?: number | null
-        current_color?: Gdk.Color | null
-        has_opacity_control?: boolean | null
-        has_palette?: boolean | null
         currentAlpha?: number | null
         currentColor?: Gdk.Color | null
         hasOpacityControl?: boolean | null
@@ -18576,13 +17899,9 @@ interface ColorSelection extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Own properties of Gtk-2.0.Gtk.ColorSelection
 
-    current_alpha: number
     currentAlpha: number
-    current_color: Gdk.Color
     currentColor: Gdk.Color
-    has_opacity_control: boolean
     hasOpacityControl: boolean
-    has_palette: boolean
     hasPalette: boolean
 
     // Own fields of Gtk-2.0.Gtk.ColorSelection
@@ -18839,14 +18158,12 @@ interface ColorSelectionDialog extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.ColorSelectionDialog
 
     readonly cancelButton: Widget
-    readonly color_selection: Widget
     readonly colorSelection: Widget
     readonly helpButton: Widget
     readonly okButton: Widget
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.ColorSelectionDialog
@@ -19104,11 +18421,6 @@ module Combo {
 
         // Own constructor properties of Gtk-2.0.Gtk.Combo
 
-        allow_empty?: boolean | null
-        case_sensitive?: boolean | null
-        enable_arrow_keys?: boolean | null
-        enable_arrows_always?: boolean | null
-        value_in_list?: boolean | null
         allowEmpty?: boolean | null
         caseSensitive?: boolean | null
         enableArrowKeys?: boolean | null
@@ -19122,15 +18434,10 @@ interface Combo extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Own properties of Gtk-2.0.Gtk.Combo
 
-    allow_empty: boolean
     allowEmpty: boolean
-    case_sensitive: boolean
     caseSensitive: boolean
-    enable_arrow_keys: boolean
     enableArrowKeys: boolean
-    enable_arrows_always: boolean
     enableArrowsAlways: boolean
-    value_in_list: boolean
     valueInList: boolean
 
     // Own fields of Gtk-2.0.Gtk.Combo
@@ -19322,63 +18629,6 @@ module ComboBox {
          * 
          * Note that this only affects menu style combo boxes.
          */
-        add_tearoffs?: boolean | null
-        /**
-         * Whether the dropdown button is sensitive when
-         * the model is empty.
-         */
-        button_sensitivity?: SensitivityType | null
-        /**
-         * If this is set to a non-negative value, it must be the index of a column
-         * of type %G_TYPE_INT in the model. The value in that column for each item
-         * will determine how many columns that item will span in the popup.
-         * Therefore, values in this column must be greater than zero, and the sum of
-         * an item’s column position + span should not exceed #GtkComboBox:wrap-width.
-         */
-        column_span_column?: number | null
-        /**
-         * The column in the combo box's model to associate with strings from the entry
-         * if the combo was created with #GtkComboBox:has-entry = %TRUE.
-         */
-        entry_text_column?: number | null
-        focus_on_click?: boolean | null
-        /**
-         * Whether the combo box has an entry.
-         */
-        has_entry?: boolean | null
-        /**
-         * The has-frame property controls whether a frame
-         * is drawn around the entry.
-         */
-        has_frame?: boolean | null
-        /**
-         * The model from which the combo box takes the values shown
-         * in the list.
-         */
-        model?: TreeModel | null
-        /**
-         * If this is set to a non-negative value, it must be the index of a column
-         * of type %G_TYPE_INT in the model. The value in that column for each item
-         * will determine how many rows that item will span in the popup. Therefore,
-         * values in this column must be greater than zero.
-         */
-        row_span_column?: number | null
-        /**
-         * A title that may be displayed by the window manager
-         * when the popup is torn-off.
-         */
-        tearoff_title?: string | null
-        /**
-         * If wrap-width is set to a positive value, items in the popup will be laid
-         * out along multiple columns, starting a new row on reaching the wrap width.
-         */
-        wrap_width?: number | null
-        /**
-         * The add-tearoffs property controls whether generated menus
-         * have tearoff menu items.
-         * 
-         * Note that this only affects menu style combo boxes.
-         */
         addTearoffs?: boolean | null
         /**
          * Whether the dropdown button is sensitive when
@@ -19408,6 +18658,11 @@ module ComboBox {
          * is drawn around the entry.
          */
         hasFrame?: boolean | null
+        /**
+         * The model from which the combo box takes the values shown
+         * in the list.
+         */
+        model?: TreeModel | null
         /**
          * If this is set to a non-negative value, it must be the index of a column
          * of type %G_TYPE_INT in the model. The value in that column for each item
@@ -19447,19 +18702,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * 
      * Note that this only affects menu style combo boxes.
      */
-    add_tearoffs: boolean
-    /**
-     * The add-tearoffs property controls whether generated menus
-     * have tearoff menu items.
-     * 
-     * Note that this only affects menu style combo boxes.
-     */
     addTearoffs: boolean
-    /**
-     * Whether the dropdown button is sensitive when
-     * the model is empty.
-     */
-    button_sensitivity: SensitivityType
     /**
      * Whether the dropdown button is sensitive when
      * the model is empty.
@@ -19472,40 +18715,17 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * Therefore, values in this column must be greater than zero, and the sum of
      * an item’s column position + span should not exceed #GtkComboBox:wrap-width.
      */
-    column_span_column: number
-    /**
-     * If this is set to a non-negative value, it must be the index of a column
-     * of type %G_TYPE_INT in the model. The value in that column for each item
-     * will determine how many columns that item will span in the popup.
-     * Therefore, values in this column must be greater than zero, and the sum of
-     * an item’s column position + span should not exceed #GtkComboBox:wrap-width.
-     */
     columnSpanColumn: number
     /**
      * The column in the combo box's model to associate with strings from the entry
      * if the combo was created with #GtkComboBox:has-entry = %TRUE.
      */
-    entry_text_column: number
-    /**
-     * The column in the combo box's model to associate with strings from the entry
-     * if the combo was created with #GtkComboBox:has-entry = %TRUE.
-     */
     entryTextColumn: number
-    focus_on_click: boolean
     focusOnClick: boolean
     /**
      * Whether the combo box has an entry.
      */
-    readonly has_entry: boolean
-    /**
-     * Whether the combo box has an entry.
-     */
     readonly hasEntry: boolean
-    /**
-     * The has-frame property controls whether a frame
-     * is drawn around the entry.
-     */
-    has_frame: boolean
     /**
      * The has-frame property controls whether a frame
      * is drawn around the entry.
@@ -19521,20 +18741,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * Note that this property is mainly useful, because
      * it allows you to connect to notify::popup-shown.
      */
-    readonly popup_shown: boolean
-    /**
-     * Whether the combo boxes dropdown is popped up.
-     * Note that this property is mainly useful, because
-     * it allows you to connect to notify::popup-shown.
-     */
     readonly popupShown: boolean
-    /**
-     * If this is set to a non-negative value, it must be the index of a column
-     * of type %G_TYPE_INT in the model. The value in that column for each item
-     * will determine how many rows that item will span in the popup. Therefore,
-     * values in this column must be greater than zero.
-     */
-    row_span_column: number
     /**
      * If this is set to a non-negative value, it must be the index of a column
      * of type %G_TYPE_INT in the model. The value in that column for each item
@@ -19546,17 +18753,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * A title that may be displayed by the window manager
      * when the popup is torn-off.
      */
-    tearoff_title: string | null
-    /**
-     * A title that may be displayed by the window manager
-     * when the popup is torn-off.
-     */
     tearoffTitle: string | null
-    /**
-     * If wrap-width is set to a positive value, items in the popup will be laid
-     * out along multiple columns, starting a new row on reaching the wrap width.
-     */
-    wrap_width: number
     /**
      * If wrap-width is set to a positive value, items in the popup will be laid
      * out along multiple columns, starting a new row on reaching the wrap width.
@@ -20022,7 +19219,6 @@ module ComboBoxEntry {
 
         // Own constructor properties of Gtk-2.0.Gtk.ComboBoxEntry
 
-        text_column?: number | null
         textColumn?: number | null
     }
 
@@ -20032,7 +19228,6 @@ interface ComboBoxEntry extends Atk.ImplementorIface, Buildable, CellEditable, C
 
     // Own properties of Gtk-2.0.Gtk.ComboBoxEntry
 
-    text_column: number
     textColumn: number
 
     // Own fields of Gtk-2.0.Gtk.ComboBoxEntry
@@ -20533,10 +19728,8 @@ module Container {
 
         // Own constructor properties of Gtk-2.0.Gtk.Container
 
-        border_width?: number | null
-        child?: Widget | null
-        resize_mode?: ResizeMode | null
         borderWidth?: number | null
+        child?: Widget | null
         resizeMode?: ResizeMode | null
     }
 
@@ -20548,7 +19741,6 @@ interface Container extends Atk.ImplementorIface, Buildable {
 
     borderWidth: number
     child: Widget
-    resize_mode: ResizeMode
     resizeMode: ResizeMode
 
     // Own fields of Gtk-2.0.Gtk.Container
@@ -20952,11 +20144,6 @@ module Curve {
 
         // Own constructor properties of Gtk-2.0.Gtk.Curve
 
-        curve_type?: CurveType | null
-        max_x?: number | null
-        max_y?: number | null
-        min_x?: number | null
-        min_y?: number | null
         curveType?: CurveType | null
         maxX?: number | null
         maxY?: number | null
@@ -21139,10 +20326,6 @@ module Dialog {
         /**
          * When %TRUE, the dialog has a separator bar above its buttons.
          */
-        has_separator?: boolean | null
-        /**
-         * When %TRUE, the dialog has a separator bar above its buttons.
-         */
         hasSeparator?: boolean | null
     }
 
@@ -21155,15 +20338,7 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
     /**
      * When %TRUE, the dialog has a separator bar above its buttons.
      */
-    has_separator: boolean
-    /**
-     * When %TRUE, the dialog has a separator bar above its buttons.
-     */
     hasSeparator: boolean
-
-    // Conflicting properties
-
-    has_focus: any
 
     // Own fields of Gtk-2.0.Gtk.Dialog
 
@@ -21758,7 +20933,7 @@ module Entry {
 
         // Own constructor properties of Gtk-2.0.Gtk.Entry
 
-        activates_default?: boolean | null
+        activatesDefault?: boolean | null
         buffer?: EntryBuffer | null
         /**
          * Whether password entries will show a warning when Caps Lock is on.
@@ -21767,179 +20942,8 @@ module Entry {
          * does not work if you are using the secondary icon position for some
          * other purpose.
          */
-        caps_lock_warning?: boolean | null
-        editable?: boolean | null
-        has_frame?: boolean | null
-        /**
-         * Which IM (input method) module should be used for this entry.
-         * See #GtkIMContext.
-         * 
-         * Setting this to a non-%NULL value overrides the
-         * system-wide IM module setting. See the GtkSettings
-         * #GtkSettings:gtk-im-module property.
-         */
-        im_module?: string | null
-        /**
-         * Sets the text area's border between the text and the frame.
-         */
-        inner_border?: Border | null
-        /**
-         * The invisible character is used when masking entry contents (in
-         * \"password mode\")"). When it is not explicitly set with the
-         * #GtkEntry::invisible-char property, GTK+ determines the character
-         * to use from a list of possible candidates, depending on availability
-         * in the current font.
-         * 
-         * This style property allows the theme to prepend a character
-         * to the list of candidates.
-         */
-        invisible_char?: number | null
-        /**
-         * Whether the invisible char has been set for the #GtkEntry.
-         */
-        invisible_char_set?: boolean | null
-        max_length?: number | null
-        /**
-         * If text is overwritten when typing in the #GtkEntry.
-         */
-        overwrite_mode?: boolean | null
-        /**
-         * Whether the primary icon is activatable.
-         * 
-         * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
-         * signals only on sensitive, activatable icons.
-         * 
-         * Sensitive, but non-activatable icons can be used for purely
-         * informational purposes.
-         */
-        primary_icon_activatable?: boolean | null
-        /**
-         * The #GIcon to use for the primary icon for the entry.
-         */
-        primary_icon_gicon?: Gio.Icon | null
-        /**
-         * The icon name to use for the primary icon for the entry.
-         */
-        primary_icon_name?: string | null
-        /**
-         * A pixbuf to use as the primary icon for the entry.
-         */
-        primary_icon_pixbuf?: GdkPixbuf.Pixbuf | null
-        /**
-         * Whether the primary icon is sensitive.
-         * 
-         * An insensitive icon appears grayed out. GTK+ does not emit the
-         * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
-         * does not allow DND from insensitive icons.
-         * 
-         * An icon should be set insensitive if the action that would trigger
-         * when clicked is currently not available.
-         */
-        primary_icon_sensitive?: boolean | null
-        /**
-         * The stock id to use for the primary icon for the entry.
-         */
-        primary_icon_stock?: string | null
-        /**
-         * The contents of the tooltip on the primary icon, which is marked up
-         * with the <link linkend="PangoMarkupFormat">Pango text markup
-         * language</link>.
-         * 
-         * Also see gtk_entry_set_icon_tooltip_markup().
-         */
-        primary_icon_tooltip_markup?: string | null
-        /**
-         * The contents of the tooltip on the primary icon.
-         * 
-         * Also see gtk_entry_set_icon_tooltip_text().
-         */
-        primary_icon_tooltip_text?: string | null
-        /**
-         * The current fraction of the task that's been completed.
-         */
-        progress_fraction?: number | null
-        /**
-         * The fraction of total entry width to move the progress
-         * bouncing block for each call to gtk_entry_progress_pulse().
-         */
-        progress_pulse_step?: number | null
-        /**
-         * Whether the secondary icon is activatable.
-         * 
-         * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
-         * signals only on sensitive, activatable icons.
-         * 
-         * Sensitive, but non-activatable icons can be used for purely
-         * informational purposes.
-         */
-        secondary_icon_activatable?: boolean | null
-        /**
-         * The #GIcon to use for the secondary icon for the entry.
-         */
-        secondary_icon_gicon?: Gio.Icon | null
-        /**
-         * The icon name to use for the secondary icon for the entry.
-         */
-        secondary_icon_name?: string | null
-        /**
-         * An pixbuf to use as the secondary icon for the entry.
-         */
-        secondary_icon_pixbuf?: GdkPixbuf.Pixbuf | null
-        /**
-         * Whether the secondary icon is sensitive.
-         * 
-         * An insensitive icon appears grayed out. GTK+ does not emit the
-         * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
-         * does not allow DND from insensitive icons.
-         * 
-         * An icon should be set insensitive if the action that would trigger
-         * when clicked is currently not available.
-         */
-        secondary_icon_sensitive?: boolean | null
-        /**
-         * The stock id to use for the secondary icon for the entry.
-         */
-        secondary_icon_stock?: string | null
-        /**
-         * The contents of the tooltip on the secondary icon, which is marked up
-         * with the <link linkend="PangoMarkupFormat">Pango text markup
-         * language</link>.
-         * 
-         * Also see gtk_entry_set_icon_tooltip_markup().
-         */
-        secondary_icon_tooltip_markup?: string | null
-        /**
-         * The contents of the tooltip on the secondary icon.
-         * 
-         * Also see gtk_entry_set_icon_tooltip_text().
-         */
-        secondary_icon_tooltip_text?: string | null
-        /**
-         * Which kind of shadow to draw around the entry when
-         * #GtkEntry:has-frame is set to %TRUE.
-         */
-        shadow_type?: ShadowType | null
-        text?: string | null
-        /**
-         * When %TRUE, pasted multi-line text is truncated to the first line.
-         */
-        truncate_multiline?: boolean | null
-        visibility?: boolean | null
-        width_chars?: number | null
-        /**
-         * The horizontal alignment, from 0 (left) to 1 (right).
-         * Reversed for RTL layouts.
-         */
-        xalign?: number | null
-        activatesDefault?: boolean | null
-        /**
-         * Whether password entries will show a warning when Caps Lock is on.
-         * 
-         * Note that the warning is shown using a secondary icon, and thus
-         * does not work if you are using the secondary icon position for some
-         * other purpose.
-         */
         capsLockWarning?: boolean | null
+        editable?: boolean | null
         hasFrame?: boolean | null
         /**
          * Which IM (input method) module should be used for this entry.
@@ -22090,11 +21094,18 @@ module Entry {
          * #GtkEntry:has-frame is set to %TRUE.
          */
         shadowType?: ShadowType | null
+        text?: string | null
         /**
          * When %TRUE, pasted multi-line text is truncated to the first line.
          */
         truncateMultiline?: boolean | null
+        visibility?: boolean | null
         widthChars?: number | null
+        /**
+         * The horizontal alignment, from 0 (left) to 1 (right).
+         * Reversed for RTL layouts.
+         */
+        xalign?: number | null
     }
 
 }
@@ -22103,7 +21114,6 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
 
     // Own properties of Gtk-2.0.Gtk.Entry
 
-    activates_default: boolean
     activatesDefault: boolean
     buffer: EntryBuffer
     /**
@@ -22113,18 +21123,8 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * does not work if you are using the secondary icon position for some
      * other purpose.
      */
-    caps_lock_warning: boolean
-    /**
-     * Whether password entries will show a warning when Caps Lock is on.
-     * 
-     * Note that the warning is shown using a secondary icon, and thus
-     * does not work if you are using the secondary icon position for some
-     * other purpose.
-     */
     capsLockWarning: boolean
-    readonly cursor_position: number
     readonly cursorPosition: number
-    has_frame: boolean
     hasFrame: boolean
     /**
      * Which IM (input method) module should be used for this entry.
@@ -22134,20 +21134,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * system-wide IM module setting. See the GtkSettings
      * #GtkSettings:gtk-im-module property.
      */
-    im_module: string | null
-    /**
-     * Which IM (input method) module should be used for this entry.
-     * See #GtkIMContext.
-     * 
-     * Setting this to a non-%NULL value overrides the
-     * system-wide IM module setting. See the GtkSettings
-     * #GtkSettings:gtk-im-module property.
-     */
     imModule: string | null
-    /**
-     * Sets the text area's border between the text and the frame.
-     */
-    inner_border: Border
     /**
      * Sets the text area's border between the text and the frame.
      */
@@ -22162,27 +21149,11 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * This style property allows the theme to prepend a character
      * to the list of candidates.
      */
-    invisible_char: number
-    /**
-     * The invisible character is used when masking entry contents (in
-     * \"password mode\")"). When it is not explicitly set with the
-     * #GtkEntry::invisible-char property, GTK+ determines the character
-     * to use from a list of possible candidates, depending on availability
-     * in the current font.
-     * 
-     * This style property allows the theme to prepend a character
-     * to the list of candidates.
-     */
     invisibleChar: number
     /**
      * Whether the invisible char has been set for the #GtkEntry.
      */
-    invisible_char_set: boolean
-    /**
-     * Whether the invisible char has been set for the #GtkEntry.
-     */
     invisibleCharSet: boolean
-    max_length: number
     maxLength: number
     /**
      * If text is overwritten when typing in the #GtkEntry.
@@ -22197,21 +21168,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * Sensitive, but non-activatable icons can be used for purely
      * informational purposes.
      */
-    primary_icon_activatable: boolean
-    /**
-     * Whether the primary icon is activatable.
-     * 
-     * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
-     * signals only on sensitive, activatable icons.
-     * 
-     * Sensitive, but non-activatable icons can be used for purely
-     * informational purposes.
-     */
     primaryIconActivatable: boolean
-    /**
-     * The #GIcon to use for the primary icon for the entry.
-     */
-    primary_icon_gicon: Gio.Icon
     /**
      * The #GIcon to use for the primary icon for the entry.
      */
@@ -22219,15 +21176,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     /**
      * The icon name to use for the primary icon for the entry.
      */
-    primary_icon_name: string | null
-    /**
-     * The icon name to use for the primary icon for the entry.
-     */
     primaryIconName: string | null
-    /**
-     * A pixbuf to use as the primary icon for the entry.
-     */
-    primary_icon_pixbuf: GdkPixbuf.Pixbuf
     /**
      * A pixbuf to use as the primary icon for the entry.
      */
@@ -22242,22 +21191,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * An icon should be set insensitive if the action that would trigger
      * when clicked is currently not available.
      */
-    primary_icon_sensitive: boolean
-    /**
-     * Whether the primary icon is sensitive.
-     * 
-     * An insensitive icon appears grayed out. GTK+ does not emit the
-     * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
-     * does not allow DND from insensitive icons.
-     * 
-     * An icon should be set insensitive if the action that would trigger
-     * when clicked is currently not available.
-     */
     primaryIconSensitive: boolean
-    /**
-     * The stock id to use for the primary icon for the entry.
-     */
-    primary_icon_stock: string | null
     /**
      * The stock id to use for the primary icon for the entry.
      */
@@ -22265,19 +21199,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     /**
      * The representation which is used for the primary icon of the entry.
      */
-    readonly primary_icon_storage_type: ImageType
-    /**
-     * The representation which is used for the primary icon of the entry.
-     */
     readonly primaryIconStorageType: ImageType
-    /**
-     * The contents of the tooltip on the primary icon, which is marked up
-     * with the <link linkend="PangoMarkupFormat">Pango text markup
-     * language</link>.
-     * 
-     * Also see gtk_entry_set_icon_tooltip_markup().
-     */
-    primary_icon_tooltip_markup: string | null
     /**
      * The contents of the tooltip on the primary icon, which is marked up
      * with the <link linkend="PangoMarkupFormat">Pango text markup
@@ -22291,17 +21213,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * 
      * Also see gtk_entry_set_icon_tooltip_text().
      */
-    primary_icon_tooltip_text: string | null
-    /**
-     * The contents of the tooltip on the primary icon.
-     * 
-     * Also see gtk_entry_set_icon_tooltip_text().
-     */
     primaryIconTooltipText: string | null
-    /**
-     * The current fraction of the task that's been completed.
-     */
-    progress_fraction: number
     /**
      * The current fraction of the task that's been completed.
      */
@@ -22310,24 +21222,8 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * The fraction of total entry width to move the progress
      * bouncing block for each call to gtk_entry_progress_pulse().
      */
-    progress_pulse_step: number
-    /**
-     * The fraction of total entry width to move the progress
-     * bouncing block for each call to gtk_entry_progress_pulse().
-     */
     progressPulseStep: number
-    readonly scroll_offset: number
     readonly scrollOffset: number
-    /**
-     * Whether the secondary icon is activatable.
-     * 
-     * GTK+ emits the #GtkEntry::icon-press and #GtkEntry::icon-release
-     * signals only on sensitive, activatable icons.
-     * 
-     * Sensitive, but non-activatable icons can be used for purely
-     * informational purposes.
-     */
-    secondary_icon_activatable: boolean
     /**
      * Whether the secondary icon is activatable.
      * 
@@ -22341,23 +21237,11 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     /**
      * The #GIcon to use for the secondary icon for the entry.
      */
-    secondary_icon_gicon: Gio.Icon
-    /**
-     * The #GIcon to use for the secondary icon for the entry.
-     */
     secondaryIconGicon: Gio.Icon
     /**
      * The icon name to use for the secondary icon for the entry.
      */
-    secondary_icon_name: string | null
-    /**
-     * The icon name to use for the secondary icon for the entry.
-     */
     secondaryIconName: string | null
-    /**
-     * An pixbuf to use as the secondary icon for the entry.
-     */
-    secondary_icon_pixbuf: GdkPixbuf.Pixbuf
     /**
      * An pixbuf to use as the secondary icon for the entry.
      */
@@ -22372,22 +21256,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * An icon should be set insensitive if the action that would trigger
      * when clicked is currently not available.
      */
-    secondary_icon_sensitive: boolean
-    /**
-     * Whether the secondary icon is sensitive.
-     * 
-     * An insensitive icon appears grayed out. GTK+ does not emit the
-     * #GtkEntry::icon-press and #GtkEntry::icon-release signals and
-     * does not allow DND from insensitive icons.
-     * 
-     * An icon should be set insensitive if the action that would trigger
-     * when clicked is currently not available.
-     */
     secondaryIconSensitive: boolean
-    /**
-     * The stock id to use for the secondary icon for the entry.
-     */
-    secondary_icon_stock: string | null
     /**
      * The stock id to use for the secondary icon for the entry.
      */
@@ -22395,19 +21264,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     /**
      * The representation which is used for the secondary icon of the entry.
      */
-    readonly secondary_icon_storage_type: ImageType
-    /**
-     * The representation which is used for the secondary icon of the entry.
-     */
     readonly secondaryIconStorageType: ImageType
-    /**
-     * The contents of the tooltip on the secondary icon, which is marked up
-     * with the <link linkend="PangoMarkupFormat">Pango text markup
-     * language</link>.
-     * 
-     * Also see gtk_entry_set_icon_tooltip_markup().
-     */
-    secondary_icon_tooltip_markup: string | null
     /**
      * The contents of the tooltip on the secondary icon, which is marked up
      * with the <link linkend="PangoMarkupFormat">Pango text markup
@@ -22421,20 +21278,8 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * 
      * Also see gtk_entry_set_icon_tooltip_text().
      */
-    secondary_icon_tooltip_text: string | null
-    /**
-     * The contents of the tooltip on the secondary icon.
-     * 
-     * Also see gtk_entry_set_icon_tooltip_text().
-     */
     secondaryIconTooltipText: string | null
-    readonly selection_bound: number
     readonly selectionBound: number
-    /**
-     * Which kind of shadow to draw around the entry when
-     * #GtkEntry:has-frame is set to %TRUE.
-     */
-    shadow_type: ShadowType
     /**
      * Which kind of shadow to draw around the entry when
      * #GtkEntry:has-frame is set to %TRUE.
@@ -22447,13 +21292,8 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     /**
      * When %TRUE, pasted multi-line text is truncated to the first line.
      */
-    truncate_multiline: boolean
-    /**
-     * When %TRUE, pasted multi-line text is truncated to the first line.
-     */
     truncateMultiline: boolean
     visibility: boolean
-    width_chars: number
     widthChars: number
     /**
      * The horizontal alignment, from 0 (left) to 1 (right).
@@ -23362,15 +22202,11 @@ module EntryBuffer {
         /**
          * The maximum length (in characters) of the text in the buffer.
          */
-        max_length?: number | null
+        maxLength?: number | null
         /**
          * The contents of the buffer.
          */
         text?: string | null
-        /**
-         * The maximum length (in characters) of the text in the buffer.
-         */
-        maxLength?: number | null
     }
 
 }
@@ -23383,10 +22219,6 @@ interface EntryBuffer {
      * The length (in characters) of the text in buffer.
      */
     readonly length: number
-    /**
-     * The maximum length (in characters) of the text in the buffer.
-     */
-    max_length: number
     /**
      * The maximum length (in characters) of the text in the buffer.
      */
@@ -23651,43 +22483,6 @@ module EntryCompletion {
          * requires text-column to be set, even if you are using a custom
          * match function.
          */
-        inline_completion?: boolean | null
-        /**
-         * Determines whether the possible completions on the popup
-         * will appear in the entry as you navigate through them.
-         */
-        inline_selection?: boolean | null
-        minimum_key_length?: number | null
-        model?: TreeModel | null
-        /**
-         * Determines whether the possible completions should be
-         * shown in a popup window.
-         */
-        popup_completion?: boolean | null
-        /**
-         * Determines whether the completions popup window will be
-         * resized to the width of the entry.
-         */
-        popup_set_width?: boolean | null
-        /**
-         * Determines whether the completions popup window will shown
-         * for a single possible completion. You probably want to set
-         * this to %FALSE if you are using
-         * <link linkend="GtkEntryCompletion--inline-completion">inline
-         * completion</link>.
-         */
-        popup_single_match?: boolean | null
-        /**
-         * The column of the model containing the strings.
-         * Note that the strings must be UTF-8.
-         */
-        text_column?: number | null
-        /**
-         * Determines whether the common prefix of the possible completions
-         * should be inserted automatically in the entry. Note that this
-         * requires text-column to be set, even if you are using a custom
-         * match function.
-         */
         inlineCompletion?: boolean | null
         /**
          * Determines whether the possible completions on the popup
@@ -23695,6 +22490,7 @@ module EntryCompletion {
          */
         inlineSelection?: boolean | null
         minimumKeyLength?: number | null
+        model?: TreeModel | null
         /**
          * Determines whether the possible completions should be
          * shown in a popup window.
@@ -23732,42 +22528,19 @@ interface EntryCompletion extends Buildable, CellLayout {
      * requires text-column to be set, even if you are using a custom
      * match function.
      */
-    inline_completion: boolean
-    /**
-     * Determines whether the common prefix of the possible completions
-     * should be inserted automatically in the entry. Note that this
-     * requires text-column to be set, even if you are using a custom
-     * match function.
-     */
     inlineCompletion: boolean
     /**
      * Determines whether the possible completions on the popup
      * will appear in the entry as you navigate through them.
      */
-    inline_selection: boolean
-    /**
-     * Determines whether the possible completions on the popup
-     * will appear in the entry as you navigate through them.
-     */
     inlineSelection: boolean
-    minimum_key_length: number
     minimumKeyLength: number
     model: TreeModel
     /**
      * Determines whether the possible completions should be
      * shown in a popup window.
      */
-    popup_completion: boolean
-    /**
-     * Determines whether the possible completions should be
-     * shown in a popup window.
-     */
     popupCompletion: boolean
-    /**
-     * Determines whether the completions popup window will be
-     * resized to the width of the entry.
-     */
-    popup_set_width: boolean
     /**
      * Determines whether the completions popup window will be
      * resized to the width of the entry.
@@ -23780,20 +22553,7 @@ interface EntryCompletion extends Buildable, CellLayout {
      * <link linkend="GtkEntryCompletion--inline-completion">inline
      * completion</link>.
      */
-    popup_single_match: boolean
-    /**
-     * Determines whether the completions popup window will shown
-     * for a single possible completion. You probably want to set
-     * this to %FALSE if you are using
-     * <link linkend="GtkEntryCompletion--inline-completion">inline
-     * completion</link>.
-     */
     popupSingleMatch: boolean
-    /**
-     * The column of the model containing the strings.
-     * Note that the strings must be UTF-8.
-     */
-    text_column: number
     /**
      * The column of the model containing the strings.
      * Note that the strings must be UTF-8.
@@ -24044,8 +22804,6 @@ module EventBox {
 
         // Own constructor properties of Gtk-2.0.Gtk.EventBox
 
-        above_child?: boolean | null
-        visible_window?: boolean | null
         aboveChild?: boolean | null
         visibleWindow?: boolean | null
     }
@@ -24056,9 +22814,7 @@ interface EventBox extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.EventBox
 
-    above_child: boolean
     aboveChild: boolean
-    visible_window: boolean
     visibleWindow: boolean
 
     // Own fields of Gtk-2.0.Gtk.EventBox
@@ -24249,13 +23005,9 @@ module Expander {
 
         expanded?: boolean | null
         label?: string | null
-        label_fill?: boolean | null
-        label_widget?: Widget | null
-        spacing?: number | null
-        use_markup?: boolean | null
-        use_underline?: boolean | null
         labelFill?: boolean | null
         labelWidget?: Widget | null
+        spacing?: number | null
         useMarkup?: boolean | null
         useUnderline?: boolean | null
     }
@@ -24268,14 +23020,10 @@ interface Expander extends Atk.ImplementorIface, Buildable {
 
     expanded: boolean
     label: string | null
-    label_fill: boolean
     labelFill: boolean
-    label_widget: Widget
     labelWidget: Widget
     spacing: number
-    use_markup: boolean
     useMarkup: boolean
-    use_underline: boolean
     useUnderline: boolean
 
     // Own fields of Gtk-2.0.Gtk.Expander
@@ -24557,20 +23305,11 @@ module FileChooserButton {
          * Whether the #GtkFileChooserButton button grabs focus when it is clicked
          * with the mouse.
          */
-        focus_on_click?: boolean | null
+        focusOnClick?: boolean | null
         /**
          * Title to put on the #GtkFileChooserDialog associated with the button.
          */
         title?: string | null
-        /**
-         * The width of the entry and label inside the button, in characters.
-         */
-        width_chars?: number | null
-        /**
-         * Whether the #GtkFileChooserButton button grabs focus when it is clicked
-         * with the mouse.
-         */
-        focusOnClick?: boolean | null
         /**
          * The width of the entry and label inside the button, in characters.
          */
@@ -24591,20 +23330,11 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
      * Whether the #GtkFileChooserButton button grabs focus when it is clicked
      * with the mouse.
      */
-    focus_on_click: boolean
-    /**
-     * Whether the #GtkFileChooserButton button grabs focus when it is clicked
-     * with the mouse.
-     */
     focusOnClick: boolean
     /**
      * Title to put on the #GtkFileChooserDialog associated with the button.
      */
     title: string | null
-    /**
-     * The width of the entry and label inside the button, in characters.
-     */
-    width_chars: number
     /**
      * The width of the entry and label inside the button, in characters.
      */
@@ -24864,7 +23594,6 @@ interface FileChooserDialog extends Atk.ImplementorIface, Buildable, FileChooser
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.FileChooserDialog
@@ -25433,8 +24162,6 @@ module FileSelection {
         // Own constructor properties of Gtk-2.0.Gtk.FileSelection
 
         filename?: string | null
-        select_multiple?: boolean | null
-        show_fileops?: boolean | null
         selectMultiple?: boolean | null
         showFileops?: boolean | null
     }
@@ -25446,14 +24173,11 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.FileSelection
 
     filename: string | null
-    select_multiple: boolean
     selectMultiple: boolean
-    show_fileops: boolean
     showFileops: boolean
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.FileSelection
@@ -25901,36 +24625,6 @@ module FontButton {
         /**
          * The name of the currently selected font.
          */
-        font_name?: string | null
-        /**
-         * If this property is set to %TRUE, the selected font size will be shown
-         * in the label. For a more WYSIWYG way to show the selected size, see the
-         * ::use-size property.
-         */
-        show_size?: boolean | null
-        /**
-         * If this property is set to %TRUE, the name of the selected font style
-         * will be shown in the label. For a more WYSIWYG way to show the selected
-         * style, see the ::use-font property.
-         */
-        show_style?: boolean | null
-        /**
-         * The title of the font selection dialog.
-         */
-        title?: string | null
-        /**
-         * If this property is set to %TRUE, the label will be drawn
-         * in the selected font.
-         */
-        use_font?: boolean | null
-        /**
-         * If this property is set to %TRUE, the label will be drawn
-         * with the selected font size.
-         */
-        use_size?: boolean | null
-        /**
-         * The name of the currently selected font.
-         */
         fontName?: string | null
         /**
          * If this property is set to %TRUE, the selected font size will be shown
@@ -25944,6 +24638,10 @@ module FontButton {
          * style, see the ::use-font property.
          */
         showStyle?: boolean | null
+        /**
+         * The title of the font selection dialog.
+         */
+        title?: string | null
         /**
          * If this property is set to %TRUE, the label will be drawn
          * in the selected font.
@@ -25965,29 +24663,13 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
     /**
      * The name of the currently selected font.
      */
-    font_name: string | null
-    /**
-     * The name of the currently selected font.
-     */
     fontName: string | null
     /**
      * If this property is set to %TRUE, the selected font size will be shown
      * in the label. For a more WYSIWYG way to show the selected size, see the
      * ::use-size property.
      */
-    show_size: boolean
-    /**
-     * If this property is set to %TRUE, the selected font size will be shown
-     * in the label. For a more WYSIWYG way to show the selected size, see the
-     * ::use-size property.
-     */
     showSize: boolean
-    /**
-     * If this property is set to %TRUE, the name of the selected font style
-     * will be shown in the label. For a more WYSIWYG way to show the selected
-     * style, see the ::use-font property.
-     */
-    show_style: boolean
     /**
      * If this property is set to %TRUE, the name of the selected font style
      * will be shown in the label. For a more WYSIWYG way to show the selected
@@ -26002,17 +24684,7 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      * If this property is set to %TRUE, the label will be drawn
      * in the selected font.
      */
-    use_font: boolean
-    /**
-     * If this property is set to %TRUE, the label will be drawn
-     * in the selected font.
-     */
     useFont: boolean
-    /**
-     * If this property is set to %TRUE, the label will be drawn
-     * with the selected font size.
-     */
-    use_size: boolean
     /**
      * If this property is set to %TRUE, the label will be drawn
      * with the selected font size.
@@ -26267,8 +24939,6 @@ module FontSelection {
 
         // Own constructor properties of Gtk-2.0.Gtk.FontSelection
 
-        font_name?: string | null
-        preview_text?: string | null
         fontName?: string | null
         previewText?: string | null
     }
@@ -26279,9 +24949,7 @@ interface FontSelection extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Own properties of Gtk-2.0.Gtk.FontSelection
 
-    font_name: string | null
     fontName: string | null
-    preview_text: string | null
     previewText: string | null
 
     // Own fields of Gtk-2.0.Gtk.FontSelection
@@ -26522,7 +25190,6 @@ interface FontSelectionDialog extends Atk.ImplementorIface, Buildable {
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.FontSelectionDialog
@@ -26823,14 +25490,10 @@ module Frame {
         // Own constructor properties of Gtk-2.0.Gtk.Frame
 
         label?: string | null
-        label_widget?: Widget | null
-        label_xalign?: number | null
-        label_yalign?: number | null
-        shadow?: ShadowType | null
-        shadow_type?: ShadowType | null
         labelWidget?: Widget | null
         labelXalign?: number | null
         labelYalign?: number | null
+        shadow?: ShadowType | null
         shadowType?: ShadowType | null
     }
 
@@ -28227,12 +26890,8 @@ module HandleBox {
 
         // Own constructor properties of Gtk-2.0.Gtk.HandleBox
 
-        handle_position?: PositionType | null
-        shadow?: ShadowType | null
-        shadow_type?: ShadowType | null
-        snap_edge?: PositionType | null
-        snap_edge_set?: boolean | null
         handlePosition?: PositionType | null
+        shadow?: ShadowType | null
         shadowType?: ShadowType | null
         snapEdge?: PositionType | null
         snapEdgeSet?: boolean | null
@@ -28249,7 +26908,6 @@ interface HandleBox extends Atk.ImplementorIface, Buildable {
     shadow: ShadowType
     shadowType: ShadowType
     snapEdge: PositionType
-    snap_edge_set: boolean
     snapEdgeSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.HandleBox
@@ -29444,89 +28102,13 @@ module IconView {
          * The column-spacing property specifies the space which is inserted between
          * the columns of the icon view.
          */
-        column_spacing?: number | null
+        columnSpacing?: number | null
         /**
          * The columns property contains the number of the columns in which the
          * items should be displayed. If it is -1, the number of columns will
          * be chosen automatically to fill the available area.
          */
         columns?: number | null
-        /**
-         * The item-orientation property specifies how the cells (i.e. the icon and
-         * the text) of the item are positioned relative to each other.
-         */
-        item_orientation?: Orientation | null
-        /**
-         * The item-padding property specifies the padding around each
-         * of the icon view's item.
-         */
-        item_padding?: number | null
-        /**
-         * The item-width property specifies the width to use for each item.
-         * If it is set to -1, the icon view will automatically determine a
-         * suitable item size.
-         */
-        item_width?: number | null
-        /**
-         * The margin property specifies the space which is inserted
-         * at the edges of the icon view.
-         */
-        margin?: number | null
-        /**
-         * The ::markup-column property contains the number of the model column
-         * containing markup information to be displayed. The markup column must be
-         * of type #G_TYPE_STRING. If this property and the :text-column property
-         * are both set to column numbers, it overrides the text column.
-         * If both are set to -1, no texts are displayed.
-         */
-        markup_column?: number | null
-        model?: TreeModel | null
-        /**
-         * The orientation property specifies how the cells (i.e. the icon and
-         * the text) of the item are positioned relative to each other.
-         */
-        orientation?: Orientation | null
-        /**
-         * The ::pixbuf-column property contains the number of the model column
-         * containing the pixbufs which are displayed. The pixbuf column must be
-         * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
-         * display of pixbufs.
-         */
-        pixbuf_column?: number | null
-        /**
-         * The reorderable property specifies if the items can be reordered
-         * by DND.
-         */
-        reorderable?: boolean | null
-        /**
-         * The row-spacing property specifies the space which is inserted between
-         * the rows of the icon view.
-         */
-        row_spacing?: number | null
-        /**
-         * The ::selection-mode property specifies the selection mode of
-         * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
-         * is enabled, for the other modes, only keyboard selection is possible.
-         */
-        selection_mode?: SelectionMode | null
-        /**
-         * The spacing property specifies the space which is inserted between
-         * the cells (i.e. the icon and the text) of an item.
-         */
-        spacing?: number | null
-        /**
-         * The ::text-column property contains the number of the model column
-         * containing the texts which are displayed. The text column must be
-         * of type #G_TYPE_STRING. If this property and the :markup-column
-         * property are both set to -1, no texts are displayed.
-         */
-        text_column?: number | null
-        tooltip_column?: number | null
-        /**
-         * The column-spacing property specifies the space which is inserted between
-         * the columns of the icon view.
-         */
-        columnSpacing?: number | null
         /**
          * The item-orientation property specifies how the cells (i.e. the icon and
          * the text) of the item are positioned relative to each other.
@@ -29544,6 +28126,11 @@ module IconView {
          */
         itemWidth?: number | null
         /**
+         * The margin property specifies the space which is inserted
+         * at the edges of the icon view.
+         */
+        margin?: number | null
+        /**
          * The ::markup-column property contains the number of the model column
          * containing markup information to be displayed. The markup column must be
          * of type #G_TYPE_STRING. If this property and the :text-column property
@@ -29551,6 +28138,12 @@ module IconView {
          * If both are set to -1, no texts are displayed.
          */
         markupColumn?: number | null
+        model?: TreeModel | null
+        /**
+         * The orientation property specifies how the cells (i.e. the icon and
+         * the text) of the item are positioned relative to each other.
+         */
+        orientation?: Orientation | null
         /**
          * The ::pixbuf-column property contains the number of the model column
          * containing the pixbufs which are displayed. The pixbuf column must be
@@ -29558,6 +28151,11 @@ module IconView {
          * display of pixbufs.
          */
         pixbufColumn?: number | null
+        /**
+         * The reorderable property specifies if the items can be reordered
+         * by DND.
+         */
+        reorderable?: boolean | null
         /**
          * The row-spacing property specifies the space which is inserted between
          * the rows of the icon view.
@@ -29569,6 +28167,11 @@ module IconView {
          * is enabled, for the other modes, only keyboard selection is possible.
          */
         selectionMode?: SelectionMode | null
+        /**
+         * The spacing property specifies the space which is inserted between
+         * the cells (i.e. the icon and the text) of an item.
+         */
+        spacing?: number | null
         /**
          * The ::text-column property contains the number of the model column
          * containing the texts which are displayed. The text column must be
@@ -29589,11 +28192,6 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * The column-spacing property specifies the space which is inserted between
      * the columns of the icon view.
      */
-    column_spacing: number
-    /**
-     * The column-spacing property specifies the space which is inserted between
-     * the columns of the icon view.
-     */
     columnSpacing: number
     /**
      * The columns property contains the number of the columns in which the
@@ -29605,28 +28203,12 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * The item-orientation property specifies how the cells (i.e. the icon and
      * the text) of the item are positioned relative to each other.
      */
-    item_orientation: Orientation
-    /**
-     * The item-orientation property specifies how the cells (i.e. the icon and
-     * the text) of the item are positioned relative to each other.
-     */
     itemOrientation: Orientation
     /**
      * The item-padding property specifies the padding around each
      * of the icon view's item.
      */
-    item_padding: number
-    /**
-     * The item-padding property specifies the padding around each
-     * of the icon view's item.
-     */
     itemPadding: number
-    /**
-     * The item-width property specifies the width to use for each item.
-     * If it is set to -1, the icon view will automatically determine a
-     * suitable item size.
-     */
-    item_width: number
     /**
      * The item-width property specifies the width to use for each item.
      * If it is set to -1, the icon view will automatically determine a
@@ -29638,14 +28220,6 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * at the edges of the icon view.
      */
     margin: number
-    /**
-     * The ::markup-column property contains the number of the model column
-     * containing markup information to be displayed. The markup column must be
-     * of type #G_TYPE_STRING. If this property and the :text-column property
-     * are both set to column numbers, it overrides the text column.
-     * If both are set to -1, no texts are displayed.
-     */
-    markup_column: number
     /**
      * The ::markup-column property contains the number of the model column
      * containing markup information to be displayed. The markup column must be
@@ -29666,13 +28240,6 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
      * display of pixbufs.
      */
-    pixbuf_column: number
-    /**
-     * The ::pixbuf-column property contains the number of the model column
-     * containing the pixbufs which are displayed. The pixbuf column must be
-     * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
-     * display of pixbufs.
-     */
     pixbufColumn: number
     /**
      * The reorderable property specifies if the items can be reordered
@@ -29683,18 +28250,7 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * The row-spacing property specifies the space which is inserted between
      * the rows of the icon view.
      */
-    row_spacing: number
-    /**
-     * The row-spacing property specifies the space which is inserted between
-     * the rows of the icon view.
-     */
     rowSpacing: number
-    /**
-     * The ::selection-mode property specifies the selection mode of
-     * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
-     * is enabled, for the other modes, only keyboard selection is possible.
-     */
-    selection_mode: SelectionMode
     /**
      * The ::selection-mode property specifies the selection mode of
      * icon view. If the mode is #GTK_SELECTION_MULTIPLE, rubberband selection
@@ -29712,15 +28268,7 @@ interface IconView extends Atk.ImplementorIface, Buildable, CellLayout {
      * of type #G_TYPE_STRING. If this property and the :markup-column
      * property are both set to -1, no texts are displayed.
      */
-    text_column: number
-    /**
-     * The ::text-column property contains the number of the model column
-     * containing the texts which are displayed. The text column must be
-     * of type #G_TYPE_STRING. If this property and the :markup-column
-     * property are both set to -1, no texts are displayed.
-     */
     textColumn: number
-    tooltip_column: number
     tooltipColumn: number
 
     // Own fields of Gtk-2.0.Gtk.IconView
@@ -30424,28 +28972,12 @@ module Image {
          * The name of the icon in the icon theme. If the icon theme is
          * changed, the image will be updated automatically.
          */
-        icon_name?: string | null
-        icon_set?: IconSet | null
-        icon_size?: number | null
-        image?: Gdk.Image | null
-        mask?: Gdk.Pixmap | null
-        pixbuf?: GdkPixbuf.Pixbuf | null
-        pixbuf_animation?: GdkPixbuf.PixbufAnimation | null
-        /**
-         * The "pixel-size" property can be used to specify a fixed size
-         * overriding the #GtkImage:icon-size property for images of type
-         * %GTK_IMAGE_ICON_NAME.
-         */
-        pixel_size?: number | null
-        pixmap?: Gdk.Pixmap | null
-        stock?: string | null
-        /**
-         * The name of the icon in the icon theme. If the icon theme is
-         * changed, the image will be updated automatically.
-         */
         iconName?: string | null
         iconSet?: IconSet | null
         iconSize?: number | null
+        image?: Gdk.Image | null
+        mask?: Gdk.Pixmap | null
+        pixbuf?: GdkPixbuf.Pixbuf | null
         pixbufAnimation?: GdkPixbuf.PixbufAnimation | null
         /**
          * The "pixel-size" property can be used to specify a fixed size
@@ -30453,6 +28985,8 @@ module Image {
          * %GTK_IMAGE_ICON_NAME.
          */
         pixelSize?: number | null
+        pixmap?: Gdk.Pixmap | null
+        stock?: string | null
     }
 
 }
@@ -30472,25 +29006,12 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * The name of the icon in the icon theme. If the icon theme is
      * changed, the image will be updated automatically.
      */
-    icon_name: string | null
-    /**
-     * The name of the icon in the icon theme. If the icon theme is
-     * changed, the image will be updated automatically.
-     */
     iconName: string | null
-    icon_set: IconSet
     iconSet: IconSet
     iconSize: number
     image: Gdk.Image
     pixbuf: GdkPixbuf.Pixbuf
-    pixbuf_animation: GdkPixbuf.PixbufAnimation
     pixbufAnimation: GdkPixbuf.PixbufAnimation
-    /**
-     * The "pixel-size" property can be used to specify a fixed size
-     * overriding the #GtkImage:icon-size property for images of type
-     * %GTK_IMAGE_ICON_NAME.
-     */
-    pixel_size: number
     /**
      * The "pixel-size" property can be used to specify a fixed size
      * overriding the #GtkImage:icon-size property for images of type
@@ -31015,24 +29536,6 @@ module ImageMenuItem {
         /**
          * The Accel Group to use for stock accelerator keys
          */
-        accel_group?: AccelGroup | null
-        /**
-         * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
-         * setting and always show the image, if available.
-         * 
-         * Use this property if the menuitem would be useless or hard to use
-         * without the image.
-         */
-        always_show_image?: boolean | null
-        image?: Widget | null
-        /**
-         * If %TRUE, the label set in the menuitem is used as a
-         * stock id to select the stock item for the item.
-         */
-        use_stock?: boolean | null
-        /**
-         * The Accel Group to use for stock accelerator keys
-         */
         accelGroup?: AccelGroup | null
         /**
          * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
@@ -31042,6 +29545,7 @@ module ImageMenuItem {
          * without the image.
          */
         alwaysShowImage?: boolean | null
+        image?: Widget | null
         /**
          * If %TRUE, the label set in the menuitem is used as a
          * stock id to select the stock item for the item.
@@ -31058,19 +29562,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     /**
      * The Accel Group to use for stock accelerator keys
      */
-    accel_group: AccelGroup
-    /**
-     * The Accel Group to use for stock accelerator keys
-     */
     accelGroup: AccelGroup
-    /**
-     * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
-     * setting and always show the image, if available.
-     * 
-     * Use this property if the menuitem would be useless or hard to use
-     * without the image.
-     */
-    always_show_image: boolean
     /**
      * If %TRUE, the menu item will ignore the #GtkSettings:gtk-menu-images
      * setting and always show the image, if available.
@@ -31080,11 +29572,6 @@ interface ImageMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      */
     alwaysShowImage: boolean
     image: Widget
-    /**
-     * If %TRUE, the label set in the menuitem is used as a
-     * stock id to select the stock item for the item.
-     */
-    use_stock: boolean
     /**
      * If %TRUE, the label set in the menuitem is used as a
      * stock id to select the stock item for the item.
@@ -31453,22 +29940,6 @@ module InfoBar {
          * If the type is #GTK_MESSAGE_OTHER, no info bar is painted but the
          * colors are still set.
          */
-        message_type?: MessageType | null
-        /**
-         * The type of the message.
-         * 
-         * The type is used to determine the colors to use in the info bar.
-         * The following symbolic color names can by used to customize
-         * these colors:
-         * "info_fg_color", "info_bg_color",
-         * "warning_fg_color", "warning_bg_color",
-         * "question_fg_color", "question_bg_color",
-         * "error_fg_color", "error_bg_color".
-         * "other_fg_color", "other_bg_color".
-         * 
-         * If the type is #GTK_MESSAGE_OTHER, no info bar is painted but the
-         * colors are still set.
-         */
         messageType?: MessageType | null
     }
 
@@ -31478,22 +29949,6 @@ interface InfoBar extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Own properties of Gtk-2.0.Gtk.InfoBar
 
-    /**
-     * The type of the message.
-     * 
-     * The type is used to determine the colors to use in the info bar.
-     * The following symbolic color names can by used to customize
-     * these colors:
-     * "info_fg_color", "info_bg_color",
-     * "warning_fg_color", "warning_bg_color",
-     * "question_fg_color", "question_bg_color",
-     * "error_fg_color", "error_bg_color".
-     * "other_fg_color", "other_bg_color".
-     * 
-     * If the type is #GTK_MESSAGE_OTHER, no info bar is painted but the
-     * colors are still set.
-     */
-    message_type: MessageType
     /**
      * The type of the message.
      * 
@@ -31816,7 +30271,6 @@ interface InputDialog extends Atk.ImplementorIface, Buildable {
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Own fields of Gtk-2.0.Gtk.InputDialog
@@ -32649,50 +31103,10 @@ module Label {
          * characters. If the #GtkLabel:width-chars property is set to a positive
          * value, then the "max-width-chars" property is ignored.
          */
-        max_width_chars?: number | null
-        mnemonic_widget?: Widget | null
-        pattern?: string | null
-        selectable?: boolean | null
-        /**
-         * Whether the label is in single line mode. In single line mode,
-         * the height of the label does not depend on the actual text, it
-         * is always set to ascent + descent of the font. This can be an
-         * advantage in situations where resizing the label because of text
-         * changes would be distracting, e.g. in a statusbar.
-         */
-        single_line_mode?: boolean | null
-        /**
-         * Set this property to %TRUE to make the label track which links
-         * have been clicked. It will then apply the ::visited-link-color
-         * color, instead of ::link-color.
-         */
-        track_visited_links?: boolean | null
-        use_markup?: boolean | null
-        use_underline?: boolean | null
-        /**
-         * The desired width of the label, in characters. If this property is set to
-         * -1, the width will be calculated automatically, otherwise the label will
-         * request either 3 characters or the property value, whichever is greater.
-         * If the "width-chars" property is set to a positive value, then the
-         * #GtkLabel:max-width-chars property is ignored.
-         */
-        width_chars?: number | null
-        wrap?: boolean | null
-        /**
-         * If line wrapping is on (see the #GtkLabel:wrap property) this controls
-         * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
-         * means wrap on word boundaries.
-         */
-        wrap_mode?: Pango.WrapMode | null
-        /**
-         * The desired maximum width of the label, in characters. If this property
-         * is set to -1, the width will be calculated automatically, otherwise the
-         * label will request space for no more than the requested number of
-         * characters. If the #GtkLabel:width-chars property is set to a positive
-         * value, then the "max-width-chars" property is ignored.
-         */
         maxWidthChars?: number | null
         mnemonicWidget?: Widget | null
+        pattern?: string | null
+        selectable?: boolean | null
         /**
          * Whether the label is in single line mode. In single line mode,
          * the height of the label does not depend on the actual text, it
@@ -32717,6 +31131,7 @@ module Label {
          * #GtkLabel:max-width-chars property is ignored.
          */
         widthChars?: number | null
+        wrap?: boolean | null
         /**
          * If line wrapping is on (see the #GtkLabel:wrap property) this controls
          * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
@@ -32739,7 +31154,6 @@ interface Label extends Atk.ImplementorIface, Buildable {
      */
     angle: number
     attributes: Pango.AttrList
-    readonly cursor_position: number
     readonly cursorPosition: number
     /**
      * The preferred place to ellipsize the string, if the label does
@@ -32764,31 +31178,12 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * characters. If the #GtkLabel:width-chars property is set to a positive
      * value, then the "max-width-chars" property is ignored.
      */
-    max_width_chars: number
-    /**
-     * The desired maximum width of the label, in characters. If this property
-     * is set to -1, the width will be calculated automatically, otherwise the
-     * label will request space for no more than the requested number of
-     * characters. If the #GtkLabel:width-chars property is set to a positive
-     * value, then the "max-width-chars" property is ignored.
-     */
     maxWidthChars: number
-    readonly mnemonic_keyval: number
     readonly mnemonicKeyval: number
-    mnemonic_widget: Widget
     mnemonicWidget: Widget
     pattern: string | null
     selectable: boolean
-    readonly selection_bound: number
     readonly selectionBound: number
-    /**
-     * Whether the label is in single line mode. In single line mode,
-     * the height of the label does not depend on the actual text, it
-     * is always set to ascent + descent of the font. This can be an
-     * advantage in situations where resizing the label because of text
-     * changes would be distracting, e.g. in a statusbar.
-     */
-    single_line_mode: boolean
     /**
      * Whether the label is in single line mode. In single line mode,
      * the height of the label does not depend on the actual text, it
@@ -32802,25 +31197,9 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * have been clicked. It will then apply the ::visited-link-color
      * color, instead of ::link-color.
      */
-    track_visited_links: boolean
-    /**
-     * Set this property to %TRUE to make the label track which links
-     * have been clicked. It will then apply the ::visited-link-color
-     * color, instead of ::link-color.
-     */
     trackVisitedLinks: boolean
-    use_markup: boolean
     useMarkup: boolean
-    use_underline: boolean
     useUnderline: boolean
-    /**
-     * The desired width of the label, in characters. If this property is set to
-     * -1, the width will be calculated automatically, otherwise the label will
-     * request either 3 characters or the property value, whichever is greater.
-     * If the "width-chars" property is set to a positive value, then the
-     * #GtkLabel:max-width-chars property is ignored.
-     */
-    width_chars: number
     /**
      * The desired width of the label, in characters. If this property is set to
      * -1, the width will be calculated automatically, otherwise the label will
@@ -32830,12 +31209,6 @@ interface Label extends Atk.ImplementorIface, Buildable {
      */
     widthChars: number
     wrap: boolean
-    /**
-     * If line wrapping is on (see the #GtkLabel:wrap property) this controls
-     * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
-     * means wrap on word boundaries.
-     */
-    wrap_mode: Pango.WrapMode
     /**
      * If line wrapping is on (see the #GtkLabel:wrap property) this controls
      * how the line wrapping is done. The default is %PANGO_WRAP_WORD, which
@@ -33864,7 +32237,6 @@ module List {
 
         // Own constructor properties of Gtk-2.0.Gtk.List
 
-        selection_mode?: SelectionMode | null
         selectionMode?: SelectionMode | null
     }
 
@@ -34466,11 +32838,11 @@ module Menu {
         /**
          * The accel group holding accelerators for the menu.
          */
-        accel_group?: AccelGroup | null
+        accelGroup?: AccelGroup | null
         /**
          * An accel path used to conveniently construct accel paths of child items.
          */
-        accel_path?: string | null
+        accelPath?: string | null
         /**
          * The index of the currently selected menu item, or -1 if no
          * menu item is selected.
@@ -34481,40 +32853,11 @@ module Menu {
          * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
          * use gtk_menu_attach_to_widget() directly.
          */
-        attach_widget?: Widget | null
+        attachWidget?: Widget | null
         /**
          * The monitor the menu will be popped up on.
          */
         monitor?: number | null
-        /**
-         * A boolean that indicates whether the menu reserves space for
-         * toggles and icons, regardless of their actual presence.
-         * 
-         * This property should only be changed from its default value
-         * for special-purposes such as tabular menus. Regular menus that
-         * are connected to a menu bar or context menus should reserve
-         * toggle space for consistency.
-         */
-        reserve_toggle_size?: boolean | null
-        /**
-         * A boolean that indicates whether the menu is torn-off.
-         */
-        tearoff_state?: boolean | null
-        tearoff_title?: string | null
-        /**
-         * The accel group holding accelerators for the menu.
-         */
-        accelGroup?: AccelGroup | null
-        /**
-         * An accel path used to conveniently construct accel paths of child items.
-         */
-        accelPath?: string | null
-        /**
-         * The widget the menu is attached to. Setting this property attaches
-         * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
-         * use gtk_menu_attach_to_widget() directly.
-         */
-        attachWidget?: Widget | null
         /**
          * A boolean that indicates whether the menu reserves space for
          * toggles and icons, regardless of their actual presence.
@@ -34556,12 +32899,6 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
      * use gtk_menu_attach_to_widget() directly.
      */
-    attach_widget: Widget
-    /**
-     * The widget the menu is attached to. Setting this property attaches
-     * the menu without a #GtkMenuDetachFunc. If you need to use a detacher,
-     * use gtk_menu_attach_to_widget() directly.
-     */
     attachWidget: Widget
     /**
      * The monitor the menu will be popped up on.
@@ -34576,26 +32913,11 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * are connected to a menu bar or context menus should reserve
      * toggle space for consistency.
      */
-    reserve_toggle_size: boolean
-    /**
-     * A boolean that indicates whether the menu reserves space for
-     * toggles and icons, regardless of their actual presence.
-     * 
-     * This property should only be changed from its default value
-     * for special-purposes such as tabular menus. Regular menus that
-     * are connected to a menu bar or context menus should reserve
-     * toggle space for consistency.
-     */
     reserveToggleSize: boolean
     /**
      * A boolean that indicates whether the menu is torn-off.
      */
-    tearoff_state: boolean
-    /**
-     * A boolean that indicates whether the menu is torn-off.
-     */
     tearoffState: boolean
-    tearoff_title: string | null
     tearoffTitle: string | null
 
     // Own fields of Gtk-2.0.Gtk.Menu
@@ -34927,16 +33249,6 @@ module MenuBar {
          * The child pack direction of the menubar. It determines how
          * the widgets contained in child menuitems are arranged.
          */
-        child_pack_direction?: PackDirection | null
-        /**
-         * The pack direction of the menubar. It determines how
-         * menuitems are arranged in the menubar.
-         */
-        pack_direction?: PackDirection | null
-        /**
-         * The child pack direction of the menubar. It determines how
-         * the widgets contained in child menuitems are arranged.
-         */
         childPackDirection?: PackDirection | null
         /**
          * The pack direction of the menubar. It determines how
@@ -34955,17 +33267,7 @@ interface MenuBar extends Atk.ImplementorIface, Buildable {
      * The child pack direction of the menubar. It determines how
      * the widgets contained in child menuitems are arranged.
      */
-    child_pack_direction: PackDirection
-    /**
-     * The child pack direction of the menubar. It determines how
-     * the widgets contained in child menuitems are arranged.
-     */
     childPackDirection: PackDirection
-    /**
-     * The pack direction of the menubar. It determines how
-     * menuitems are arranged in the menubar.
-     */
-    pack_direction: PackDirection
     /**
      * The pack direction of the menubar. It determines how
      * menuitems are arranged in the menubar.
@@ -35146,7 +33448,7 @@ module MenuItem {
          * changes of the menu item's accelerator caused by the user can be
          * identified and saved to persistant storage.
          */
-        accel_path?: string | null
+        accelPath?: string | null
         /**
          * The text for the child label.
          */
@@ -35154,25 +33456,11 @@ module MenuItem {
         /**
          * Sets whether the menu item appears justified at the right side of a menu bar.
          */
-        right_justified?: boolean | null
+        rightJustified?: boolean | null
         /**
          * The submenu attached to the menu item, or NULL if it has none.
          */
         submenu?: Menu | null
-        /**
-         * %TRUE if underlines in the text indicate mnemonics
-         */
-        use_underline?: boolean | null
-        /**
-         * Sets the accelerator path of the menu item, through which runtime
-         * changes of the menu item's accelerator caused by the user can be
-         * identified and saved to persistant storage.
-         */
-        accelPath?: string | null
-        /**
-         * Sets whether the menu item appears justified at the right side of a menu bar.
-         */
-        rightJustified?: boolean | null
         /**
          * %TRUE if underlines in the text indicate mnemonics
          */
@@ -35198,15 +33486,7 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
     /**
      * Sets whether the menu item appears justified at the right side of a menu bar.
      */
-    right_justified: boolean
-    /**
-     * Sets whether the menu item appears justified at the right side of a menu bar.
-     */
     rightJustified: boolean
-    /**
-     * %TRUE if underlines in the text indicate mnemonics
-     */
-    use_underline: boolean
     /**
      * %TRUE if underlines in the text indicate mnemonics
      */
@@ -35584,12 +33864,6 @@ module MenuShell {
          * keyboard focus. See gtk_menu_shell_set_take_focus() and
          * gtk_menu_shell_get_take_focus().
          */
-        take_focus?: boolean | null
-        /**
-         * A boolean that determines whether the menu and its submenus grab the
-         * keyboard focus. See gtk_menu_shell_set_take_focus() and
-         * gtk_menu_shell_get_take_focus().
-         */
         takeFocus?: boolean | null
     }
 
@@ -35599,12 +33873,6 @@ interface MenuShell extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.MenuShell
 
-    /**
-     * A boolean that determines whether the menu and its submenus grab the
-     * keyboard focus. See gtk_menu_shell_set_take_focus() and
-     * gtk_menu_shell_get_take_focus().
-     */
-    take_focus: boolean
     /**
      * A boolean that determines whether the menu and its submenus grab the
      * keyboard focus. See gtk_menu_shell_set_take_focus() and
@@ -36124,31 +34392,6 @@ module MessageDialog {
          * the image that is shown in the dialog, unless the image is
          * explicitly set by the ::image property.
          */
-        message_type?: MessageType | null
-        /**
-         * The secondary text of the message dialog.
-         */
-        secondary_text?: string | null
-        /**
-         * %TRUE if the secondary text of the dialog includes Pango markup.
-         * See pango_parse_markup().
-         */
-        secondary_use_markup?: boolean | null
-        /**
-         * The primary text of the message dialog. If the dialog has
-         * a secondary text, this will appear as the title.
-         */
-        text?: string | null
-        /**
-         * %TRUE if the primary text of the dialog includes Pango markup.
-         * See pango_parse_markup().
-         */
-        use_markup?: boolean | null
-        /**
-         * The type of the message. The type is used to determine
-         * the image that is shown in the dialog, unless the image is
-         * explicitly set by the ::image property.
-         */
         messageType?: MessageType | null
         /**
          * The secondary text of the message dialog.
@@ -36159,6 +34402,11 @@ module MessageDialog {
          * See pango_parse_markup().
          */
         secondaryUseMarkup?: boolean | null
+        /**
+         * The primary text of the message dialog. If the dialog has
+         * a secondary text, this will appear as the title.
+         */
+        text?: string | null
         /**
          * %TRUE if the primary text of the dialog includes Pango markup.
          * See pango_parse_markup().
@@ -36182,19 +34430,7 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
      * gtk_message_dialog_get_message_area() for a detailed description of this
      * area.
      */
-    readonly message_area: Widget
-    /**
-     * The #GtkVBox that corresponds to the message area of this dialog.  See
-     * gtk_message_dialog_get_message_area() for a detailed description of this
-     * area.
-     */
     readonly messageArea: Widget
-    /**
-     * The type of the message. The type is used to determine
-     * the image that is shown in the dialog, unless the image is
-     * explicitly set by the ::image property.
-     */
-    message_type: MessageType
     /**
      * The type of the message. The type is used to determine
      * the image that is shown in the dialog, unless the image is
@@ -36204,16 +34440,7 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
     /**
      * The secondary text of the message dialog.
      */
-    secondary_text: string | null
-    /**
-     * The secondary text of the message dialog.
-     */
     secondaryText: string | null
-    /**
-     * %TRUE if the secondary text of the dialog includes Pango markup.
-     * See pango_parse_markup().
-     */
-    secondary_use_markup: boolean
     /**
      * %TRUE if the secondary text of the dialog includes Pango markup.
      * See pango_parse_markup().
@@ -36228,16 +34455,10 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
      * %TRUE if the primary text of the dialog includes Pango markup.
      * See pango_parse_markup().
      */
-    use_markup: boolean
-    /**
-     * %TRUE if the primary text of the dialog includes Pango markup.
-     * See pango_parse_markup().
-     */
     useMarkup: boolean
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Owm methods of Gtk-2.0.Gtk.MessageDialog
@@ -36683,7 +34904,6 @@ interface MountOperation {
 
     // Own properties of Gtk-2.0.Gtk.MountOperation
 
-    readonly is_showing: boolean
     readonly isShowing: boolean
     parent: Window
     screen: Gdk.Screen
@@ -36706,6 +34926,12 @@ interface MountOperation {
      * @returns the screen on which windows of @op are shown
      */
     get_screen(): Gdk.Screen
+    /**
+     * Returns whether the #GtkMountOperation is currently displaying
+     * a window.
+     * @returns %TRUE if @op is currently displaying a window
+     */
+    is_showing(): boolean
     /**
      * Sets the transient parent for windows shown by the
      * #GtkMountOperation.
@@ -36883,31 +35109,19 @@ module Notebook {
 
         // Own constructor properties of Gtk-2.0.Gtk.Notebook
 
-        enable_popup?: boolean | null
+        enablePopup?: boolean | null
         /**
          * Group for tabs drag and drop.
          */
         group?: any | null
-        group_id?: number | null
-        /**
-         * Group name for tabs drag and drop.
-         */
-        group_name?: string | null
-        homogeneous?: boolean | null
-        page?: number | null
-        scrollable?: boolean | null
-        show_border?: boolean | null
-        show_tabs?: boolean | null
-        tab_border?: number | null
-        tab_hborder?: number | null
-        tab_pos?: PositionType | null
-        tab_vborder?: number | null
-        enablePopup?: boolean | null
         groupId?: number | null
         /**
          * Group name for tabs drag and drop.
          */
         groupName?: string | null
+        homogeneous?: boolean | null
+        page?: number | null
+        scrollable?: boolean | null
         showBorder?: boolean | null
         showTabs?: boolean | null
         tabBorder?: number | null
@@ -36922,18 +35136,12 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Notebook
 
-    enable_popup: boolean
     enablePopup: boolean
     /**
      * Group for tabs drag and drop.
      */
     group: any
-    group_id: number
     groupId: number
-    /**
-     * Group name for tabs drag and drop.
-     */
-    group_name: string | null
     /**
      * Group name for tabs drag and drop.
      */
@@ -36941,7 +35149,6 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
     page: number
     showBorder: boolean
     showTabs: boolean
-    tab_border: number
     tabBorder: number
     tabHborder: number
     tabPos: PositionType
@@ -37571,7 +35778,6 @@ module Object {
 
         // Own constructor properties of Gtk-2.0.Gtk.Object
 
-        user_data?: any | null
         userData?: any | null
     }
 
@@ -37581,7 +35787,6 @@ interface Object {
 
     // Own properties of Gtk-2.0.Gtk.Object
 
-    user_data: any
     userData: any
 
     // Own fields of Gtk-2.0.Gtk.Object
@@ -37656,10 +35861,6 @@ module OffscreenWindow {
 }
 
 interface OffscreenWindow extends Atk.ImplementorIface, Buildable {
-
-    // Conflicting properties
-
-    has_focus: any
 
     // Own fields of Gtk-2.0.Gtk.OffscreenWindow
 
@@ -38039,7 +36240,6 @@ module OldEditable {
         // Own constructor properties of Gtk-2.0.Gtk.OldEditable
 
         editable?: boolean | null
-        text_position?: number | null
         textPosition?: number | null
     }
 
@@ -38050,7 +36250,6 @@ interface OldEditable extends Atk.ImplementorIface, Buildable, Editable {
     // Own properties of Gtk-2.0.Gtk.OldEditable
 
     editable: boolean
-    text_position: number
     textPosition: number
 
     // Own fields of Gtk-2.0.Gtk.OldEditable
@@ -38668,7 +36867,6 @@ module Paned {
         // Own constructor properties of Gtk-2.0.Gtk.Paned
 
         position?: number | null
-        position_set?: boolean | null
         positionSet?: boolean | null
     }
 
@@ -38682,24 +36880,13 @@ interface Paned extends Atk.ImplementorIface, Buildable, Orientable {
      * The largest possible value for the position property. This property is derived from the
      * size and shrinkability of the widget's children.
      */
-    readonly max_position: number
-    /**
-     * The largest possible value for the position property. This property is derived from the
-     * size and shrinkability of the widget's children.
-     */
     readonly maxPosition: number
-    /**
-     * The smallest possible value for the position property. This property is derived from the
-     * size and shrinkability of the widget's children.
-     */
-    readonly min_position: number
     /**
      * The smallest possible value for the position property. This property is derived from the
      * size and shrinkability of the widget's children.
      */
     readonly minPosition: number
     position: number
-    position_set: boolean
     positionSet: boolean
 
     // Own fields of Gtk-2.0.Gtk.Paned
@@ -39021,10 +37208,6 @@ interface Plug extends Atk.ImplementorIface, Buildable {
      * The window of the socket the plug is embedded in.
      */
     readonly socketWindow: Gdk.Window
-
-    // Conflicting properties
-
-    has_focus: any
 
     // Own fields of Gtk-2.0.Gtk.Plug
 
@@ -39668,129 +37851,6 @@ module PrintOperation {
          * is unlikely to change). On other platforms, all actions except for
          * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
          */
-        allow_async?: boolean | null
-        /**
-         * The current page in the document.
-         * 
-         * If this is set before gtk_print_operation_run(),
-         * the user will be able to select to print only the current page.
-         * 
-         * Note that this only makes sense for pre-paginated documents.
-         */
-        current_page?: number | null
-        /**
-         * Used as the label of the tab containing custom widgets.
-         * Note that this property may be ignored on some platforms.
-         * 
-         * If this is %NULL, GTK+ uses a default label.
-         */
-        custom_tab_label?: string | null
-        /**
-         * The #GtkPageSetup used by default.
-         * 
-         * This page setup will be used by gtk_print_operation_run(),
-         * but it can be overridden on a per-page basis by connecting
-         * to the #GtkPrintOperation::request-page-setup signal.
-         */
-        default_page_setup?: PageSetup | null
-        /**
-         * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
-         */
-        embed_page_setup?: boolean | null
-        /**
-         * The name of a file to generate instead of showing the print dialog.
-         * Currently, PDF is the only supported format.
-         * 
-         * The intended use of this property is for implementing
-         * "Export to PDF" actions.
-         * 
-         * "Print to PDF" support is independent of this and is done
-         * by letting the user pick the "Print to PDF" item from the
-         * list of printers in the print dialog.
-         */
-        export_filename?: string | null
-        /**
-         * Determines whether there is a selection in your application.
-         * This can allow your application to print the selection.
-         * This is typically used to make a "Selection" button sensitive.
-         */
-        has_selection?: boolean | null
-        /**
-         * A string used to identify the job (e.g. in monitoring
-         * applications like eggcups).
-         * 
-         * If you don't set a job name, GTK+ picks a default one
-         * by numbering successive print jobs.
-         */
-        job_name?: string | null
-        /**
-         * The number of pages in the document.
-         * 
-         * This <emphasis>must</emphasis> be set to a positive number
-         * before the rendering starts. It may be set in a
-         * #GtkPrintOperation::begin-print signal hander.
-         * 
-         * Note that the page numbers passed to the
-         * #GtkPrintOperation::request-page-setup and
-         * #GtkPrintOperation::draw-page signals are 0-based, i.e. if
-         * the user chooses to print all pages, the last ::draw-page signal
-         * will be for page `n_pages` - 1.
-         */
-        n_pages?: number | null
-        /**
-         * The #GtkPrintSettings used for initializing the dialog.
-         * 
-         * Setting this property is typically used to re-establish
-         * print settings from a previous print operation, see
-         * gtk_print_operation_run().
-         */
-        print_settings?: PrintSettings | null
-        /**
-         * Determines whether to show a progress dialog during the
-         * print operation.
-         */
-        show_progress?: boolean | null
-        /**
-         * If %TRUE, the print operation will support print of selection.
-         * This allows the print dialog to show a "Selection" button.
-         */
-        support_selection?: boolean | null
-        /**
-         * If %TRUE, the print operation will try to continue report on
-         * the status of the print job in the printer queues and printer.
-         * This can allow your application to show things like "out of paper"
-         * issues, and when the print job actually reaches the printer.
-         * However, this is often implemented using polling, and should
-         * not be enabled unless needed.
-         */
-        track_print_status?: boolean | null
-        /**
-         * The transformation for the cairo context obtained from
-         * #GtkPrintContext is set up in such a way that distances
-         * are measured in units of `unit`.
-         */
-        unit?: Unit | null
-        /**
-         * If %TRUE, the transformation for the cairo context obtained
-         * from #GtkPrintContext puts the origin at the top left corner
-         * of the page (which may not be the top left corner of the sheet,
-         * depending on page orientation and the number of pages per sheet).
-         * Otherwise, the origin is at the top left corner of the imageable
-         * area (i.e. inside the margins).
-         */
-        use_full_page?: boolean | null
-        /**
-         * Determines whether the print operation may run asynchronously or not.
-         * 
-         * Some systems don't support asynchronous printing, but those that do
-         * will return %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
-         * emit the #GtkPrintOperation::done signal when the operation is actually
-         * done.
-         * 
-         * The Windows port does not support asynchronous operation at all (this
-         * is unlikely to change). On other platforms, all actions except for
-         * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
-         */
         allowAsync?: boolean | null
         /**
          * The current page in the document.
@@ -39888,6 +37948,12 @@ module PrintOperation {
          */
         trackPrintStatus?: boolean | null
         /**
+         * The transformation for the cairo context obtained from
+         * #GtkPrintContext is set up in such a way that distances
+         * are measured in units of `unit`.
+         */
+        unit?: Unit | null
+        /**
          * If %TRUE, the transformation for the cairo context obtained
          * from #GtkPrintContext puts the origin at the top left corner
          * of the page (which may not be the top left corner of the sheet,
@@ -39916,29 +37982,7 @@ interface PrintOperation extends PrintOperationPreview {
      * is unlikely to change). On other platforms, all actions except for
      * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
      */
-    allow_async: boolean
-    /**
-     * Determines whether the print operation may run asynchronously or not.
-     * 
-     * Some systems don't support asynchronous printing, but those that do
-     * will return %GTK_PRINT_OPERATION_RESULT_IN_PROGRESS as the status, and
-     * emit the #GtkPrintOperation::done signal when the operation is actually
-     * done.
-     * 
-     * The Windows port does not support asynchronous operation at all (this
-     * is unlikely to change). On other platforms, all actions except for
-     * %GTK_PRINT_OPERATION_ACTION_EXPORT support asynchronous operation.
-     */
     allowAsync: boolean
-    /**
-     * The current page in the document.
-     * 
-     * If this is set before gtk_print_operation_run(),
-     * the user will be able to select to print only the current page.
-     * 
-     * Note that this only makes sense for pre-paginated documents.
-     */
-    current_page: number
     /**
      * The current page in the document.
      * 
@@ -39954,22 +37998,7 @@ interface PrintOperation extends PrintOperationPreview {
      * 
      * If this is %NULL, GTK+ uses a default label.
      */
-    custom_tab_label: string | null
-    /**
-     * Used as the label of the tab containing custom widgets.
-     * Note that this property may be ignored on some platforms.
-     * 
-     * If this is %NULL, GTK+ uses a default label.
-     */
     customTabLabel: string | null
-    /**
-     * The #GtkPageSetup used by default.
-     * 
-     * This page setup will be used by gtk_print_operation_run(),
-     * but it can be overridden on a per-page basis by connecting
-     * to the #GtkPrintOperation::request-page-setup signal.
-     */
-    default_page_setup: PageSetup
     /**
      * The #GtkPageSetup used by default.
      * 
@@ -39981,23 +38010,7 @@ interface PrintOperation extends PrintOperationPreview {
     /**
      * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
      */
-    embed_page_setup: boolean
-    /**
-     * If %TRUE, page size combo box and orientation combo box are embedded into page setup page.
-     */
     embedPageSetup: boolean
-    /**
-     * The name of a file to generate instead of showing the print dialog.
-     * Currently, PDF is the only supported format.
-     * 
-     * The intended use of this property is for implementing
-     * "Export to PDF" actions.
-     * 
-     * "Print to PDF" support is independent of this and is done
-     * by letting the user pick the "Print to PDF" item from the
-     * list of printers in the print dialog.
-     */
-    export_filename: string | null
     /**
      * The name of a file to generate instead of showing the print dialog.
      * Currently, PDF is the only supported format.
@@ -40015,12 +38028,6 @@ interface PrintOperation extends PrintOperationPreview {
      * This can allow your application to print the selection.
      * This is typically used to make a "Selection" button sensitive.
      */
-    has_selection: boolean
-    /**
-     * Determines whether there is a selection in your application.
-     * This can allow your application to print the selection.
-     * This is typically used to make a "Selection" button sensitive.
-     */
     hasSelection: boolean
     /**
      * A string used to identify the job (e.g. in monitoring
@@ -40029,29 +38036,7 @@ interface PrintOperation extends PrintOperationPreview {
      * If you don't set a job name, GTK+ picks a default one
      * by numbering successive print jobs.
      */
-    job_name: string | null
-    /**
-     * A string used to identify the job (e.g. in monitoring
-     * applications like eggcups).
-     * 
-     * If you don't set a job name, GTK+ picks a default one
-     * by numbering successive print jobs.
-     */
     jobName: string | null
-    /**
-     * The number of pages in the document.
-     * 
-     * This <emphasis>must</emphasis> be set to a positive number
-     * before the rendering starts. It may be set in a
-     * #GtkPrintOperation::begin-print signal hander.
-     * 
-     * Note that the page numbers passed to the
-     * #GtkPrintOperation::request-page-setup and
-     * #GtkPrintOperation::draw-page signals are 0-based, i.e. if
-     * the user chooses to print all pages, the last ::draw-page signal
-     * will be for page `n_pages` - 1.
-     */
-    n_pages: number
     /**
      * The number of pages in the document.
      * 
@@ -40077,18 +38062,6 @@ interface PrintOperation extends PrintOperationPreview {
      * print status is %GTK_PRINT_STATUS_GENERATING_DATA.
      * This is typically used to track the progress of print operation.
      */
-    readonly n_pages_to_print: number
-    /**
-     * The number of pages that will be printed.
-     * 
-     * Note that this value is set during print preparation phase
-     * (%GTK_PRINT_STATUS_PREPARING), so this value should never be
-     * get before the data generation phase (%GTK_PRINT_STATUS_GENERATING_DATA).
-     * You can connect to the #GtkPrintOperation::status-changed signal
-     * and call gtk_print_operation_get_n_pages_to_print() when
-     * print status is %GTK_PRINT_STATUS_GENERATING_DATA.
-     * This is typically used to track the progress of print operation.
-     */
     readonly nPagesToPrint: number
     /**
      * The #GtkPrintSettings used for initializing the dialog.
@@ -40097,20 +38070,7 @@ interface PrintOperation extends PrintOperationPreview {
      * print settings from a previous print operation, see
      * gtk_print_operation_run().
      */
-    print_settings: PrintSettings
-    /**
-     * The #GtkPrintSettings used for initializing the dialog.
-     * 
-     * Setting this property is typically used to re-establish
-     * print settings from a previous print operation, see
-     * gtk_print_operation_run().
-     */
     printSettings: PrintSettings
-    /**
-     * Determines whether to show a progress dialog during the
-     * print operation.
-     */
-    show_progress: boolean
     /**
      * Determines whether to show a progress dialog during the
      * print operation.
@@ -40128,35 +38088,12 @@ interface PrintOperation extends PrintOperationPreview {
      * See the #GtkPrintOperation:status property for a status value that
      * is suitable for programmatic use.
      */
-    readonly status_string: string | null
-    /**
-     * A string representation of the status of the print operation.
-     * The string is translated and suitable for displaying the print
-     * status e.g. in a #GtkStatusbar.
-     * 
-     * See the #GtkPrintOperation:status property for a status value that
-     * is suitable for programmatic use.
-     */
     readonly statusString: string | null
     /**
      * If %TRUE, the print operation will support print of selection.
      * This allows the print dialog to show a "Selection" button.
      */
-    support_selection: boolean
-    /**
-     * If %TRUE, the print operation will support print of selection.
-     * This allows the print dialog to show a "Selection" button.
-     */
     supportSelection: boolean
-    /**
-     * If %TRUE, the print operation will try to continue report on
-     * the status of the print job in the printer queues and printer.
-     * This can allow your application to show things like "out of paper"
-     * issues, and when the print job actually reaches the printer.
-     * However, this is often implemented using polling, and should
-     * not be enabled unless needed.
-     */
-    track_print_status: boolean
     /**
      * If %TRUE, the print operation will try to continue report on
      * the status of the print job in the printer queues and printer.
@@ -40172,15 +38109,6 @@ interface PrintOperation extends PrintOperationPreview {
      * are measured in units of `unit`.
      */
     unit: Unit
-    /**
-     * If %TRUE, the transformation for the cairo context obtained
-     * from #GtkPrintContext puts the origin at the top left corner
-     * of the page (which may not be the top left corner of the sheet,
-     * depending on page orientation and the number of pages per sheet).
-     * Otherwise, the origin is at the top left corner of the imageable
-     * area (i.e. inside the margins).
-     */
-    use_full_page: boolean
     /**
      * If %TRUE, the transformation for the cairo context obtained
      * from #GtkPrintContext puts the origin at the top left corner
@@ -41122,10 +39050,6 @@ module Progress {
 
         // Own constructor properties of Gtk-2.0.Gtk.Progress
 
-        activity_mode?: boolean | null
-        show_text?: boolean | null
-        text_xalign?: number | null
-        text_yalign?: number | null
         activityMode?: boolean | null
         showText?: boolean | null
         textXalign?: number | null
@@ -41140,9 +39064,7 @@ interface Progress extends Atk.ImplementorIface, Buildable {
 
     activityMode: boolean
     showText: boolean
-    text_xalign: number
     textXalign: number
-    text_yalign: number
     textYalign: number
 
     // Own fields of Gtk-2.0.Gtk.Progress
@@ -41280,11 +39202,11 @@ module ProgressBar {
 
         // Own constructor properties of Gtk-2.0.Gtk.ProgressBar
 
-        activity_blocks?: number | null
-        activity_step?: number | null
+        activityBlocks?: number | null
+        activityStep?: number | null
         adjustment?: Adjustment | null
-        bar_style?: ProgressBarStyle | null
-        discrete_blocks?: number | null
+        barStyle?: ProgressBarStyle | null
+        discreteBlocks?: number | null
         /**
          * The preferred place to ellipsize the string, if the progressbar does
          * not have enough room to display the entire string, specified as a
@@ -41298,13 +39220,8 @@ module ProgressBar {
         ellipsize?: Pango.EllipsizeMode | null
         fraction?: number | null
         orientation?: ProgressBarOrientation | null
-        pulse_step?: number | null
-        text?: string | null
-        activityBlocks?: number | null
-        activityStep?: number | null
-        barStyle?: ProgressBarStyle | null
-        discreteBlocks?: number | null
         pulseStep?: number | null
+        text?: string | null
     }
 
 }
@@ -41317,10 +39234,8 @@ interface ProgressBar extends Atk.ImplementorIface, Buildable {
     activityStep: number
     adjustment: Adjustment
     barStyle: ProgressBarStyle
-    discrete_blocks: number
     discreteBlocks: number
     fraction: number
-    pulse_step: number
     pulseStep: number
     text: string | null
 
@@ -41572,7 +39487,7 @@ module RadioAction {
          * The value property of the currently active member of the group to which
          * this action belongs.
          */
-        current_value?: number | null
+        currentValue?: number | null
         /**
          * Sets a new group for a radio action.
          */
@@ -41585,11 +39500,6 @@ module RadioAction {
          * for convenient ways to get and set this property.
          */
         value?: number | null
-        /**
-         * The value property of the currently active member of the group to which
-         * this action belongs.
-         */
-        currentValue?: number | null
     }
 
 }
@@ -41598,11 +39508,6 @@ interface RadioAction extends Buildable {
 
     // Own properties of Gtk-2.0.Gtk.RadioAction
 
-    /**
-     * The value property of the currently active member of the group to which
-     * this action belongs.
-     */
-    current_value: number
     /**
      * The value property of the currently active member of the group to which
      * this action belongs.
@@ -42566,33 +40471,8 @@ module Range {
          * The fill level (e.g. prebuffering of a network stream).
          * See gtk_range_set_fill_level().
          */
-        fill_level?: number | null
-        inverted?: boolean | null
-        lower_stepper_sensitivity?: SensitivityType | null
-        /**
-         * The restrict-to-fill-level property controls whether slider
-         * movement is restricted to an upper boundary set by the
-         * fill level. See gtk_range_set_restrict_to_fill_level().
-         */
-        restrict_to_fill_level?: boolean | null
-        /**
-         * The number of digits to round the value to when
-         * it changes, or -1. See #GtkRange::change-value.
-         */
-        round_digits?: number | null
-        /**
-         * The show-fill-level property controls whether fill level indicator
-         * graphics are displayed on the trough. See
-         * gtk_range_set_show_fill_level().
-         */
-        show_fill_level?: boolean | null
-        update_policy?: UpdateType | null
-        upper_stepper_sensitivity?: SensitivityType | null
-        /**
-         * The fill level (e.g. prebuffering of a network stream).
-         * See gtk_range_set_fill_level().
-         */
         fillLevel?: number | null
+        inverted?: boolean | null
         lowerStepperSensitivity?: SensitivityType | null
         /**
          * The restrict-to-fill-level property controls whether slider
@@ -42625,20 +40505,8 @@ interface Range extends Atk.ImplementorIface, Buildable, Orientable {
      * The fill level (e.g. prebuffering of a network stream).
      * See gtk_range_set_fill_level().
      */
-    fill_level: number
-    /**
-     * The fill level (e.g. prebuffering of a network stream).
-     * See gtk_range_set_fill_level().
-     */
     fillLevel: number
-    lower_stepper_sensitivity: SensitivityType
     lowerStepperSensitivity: SensitivityType
-    /**
-     * The restrict-to-fill-level property controls whether slider
-     * movement is restricted to an upper boundary set by the
-     * fill level. See gtk_range_set_restrict_to_fill_level().
-     */
-    restrict_to_fill_level: boolean
     /**
      * The restrict-to-fill-level property controls whether slider
      * movement is restricted to an upper boundary set by the
@@ -42655,15 +40523,8 @@ interface Range extends Atk.ImplementorIface, Buildable, Orientable {
      * graphics are displayed on the trough. See
      * gtk_range_set_show_fill_level().
      */
-    show_fill_level: boolean
-    /**
-     * The show-fill-level property controls whether fill level indicator
-     * graphics are displayed on the trough. See
-     * gtk_range_set_show_fill_level().
-     */
     showFillLevel: boolean
     updatePolicy: UpdateType
-    upper_stepper_sensitivity: SensitivityType
     upperStepperSensitivity: SensitivityType
 
     // Own fields of Gtk-2.0.Gtk.Range
@@ -43124,7 +40985,6 @@ module RecentAction {
 
         // Own constructor properties of Gtk-2.0.Gtk.RecentAction
 
-        show_numbers?: boolean | null
         showNumbers?: boolean | null
     }
 
@@ -43134,7 +40994,6 @@ interface RecentAction extends Buildable, RecentChooser {
 
     // Own properties of Gtk-2.0.Gtk.RecentAction
 
-    show_numbers: boolean
     showNumbers: boolean
 
     // Own fields of Gtk-2.0.Gtk.RecentAction
@@ -43309,7 +41168,6 @@ interface RecentChooserDialog extends Atk.ImplementorIface, Buildable, RecentCho
 
     // Conflicting properties
 
-    has_focus: any
     window: Window & Gdk.Window & Gdk.Window
 
     // Conflicting methods
@@ -43553,11 +41411,6 @@ module RecentChooserMenu {
          * Whether the first ten items in the menu should be prepended by
          * a number acting as a unique mnemonic.
          */
-        show_numbers?: boolean | null
-        /**
-         * Whether the first ten items in the menu should be prepended by
-         * a number acting as a unique mnemonic.
-         */
         showNumbers?: boolean | null
     }
 
@@ -43567,11 +41420,6 @@ interface RecentChooserMenu extends Atk.ImplementorIface, Activatable, Buildable
 
     // Own properties of Gtk-2.0.Gtk.RecentChooserMenu
 
-    /**
-     * Whether the first ten items in the menu should be prepended by
-     * a number acting as a unique mnemonic.
-     */
-    show_numbers: boolean
     /**
      * Whether the first ten items in the menu should be prepended by
      * a number acting as a unique mnemonic.
@@ -44433,14 +42281,13 @@ module Ruler {
         // Own constructor properties of Gtk-2.0.Gtk.Ruler
 
         lower?: number | null
-        max_size?: number | null
+        maxSize?: number | null
         /**
          * The metric used for the ruler.
          */
         metric?: MetricType | null
         position?: number | null
         upper?: number | null
-        maxSize?: number | null
     }
 
 }
@@ -44604,8 +42451,6 @@ module Scale {
         // Own constructor properties of Gtk-2.0.Gtk.Scale
 
         digits?: number | null
-        draw_value?: boolean | null
-        value_pos?: PositionType | null
         drawValue?: boolean | null
         valuePos?: PositionType | null
     }
@@ -45308,19 +43153,9 @@ module ScrolledWindow {
         // Own constructor properties of Gtk-2.0.Gtk.ScrolledWindow
 
         hadjustment?: Adjustment | null
-        hscrollbar_policy?: PolicyType | null
-        shadow_type?: ShadowType | null
-        vadjustment?: Adjustment | null
-        vscrollbar_policy?: PolicyType | null
-        window_placement?: CornerType | null
-        /**
-         * Whether "window-placement" should be used to determine the location
-         * of the contents with respect to the scrollbars. Otherwise, the
-         * "gtk-scrolled-window-placement" setting is used.
-         */
-        window_placement_set?: boolean | null
         hscrollbarPolicy?: PolicyType | null
         shadowType?: ShadowType | null
+        vadjustment?: Adjustment | null
         vscrollbarPolicy?: PolicyType | null
         windowPlacement?: CornerType | null
         /**
@@ -45338,21 +43173,11 @@ interface ScrolledWindow extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.ScrolledWindow
 
     hadjustment: Adjustment
-    hscrollbar_policy: PolicyType
     hscrollbarPolicy: PolicyType
-    shadow_type: ShadowType
     shadowType: ShadowType
     vadjustment: Adjustment
-    vscrollbar_policy: PolicyType
     vscrollbarPolicy: PolicyType
-    window_placement: CornerType
     windowPlacement: CornerType
-    /**
-     * Whether "window-placement" should be used to determine the location
-     * of the contents with respect to the scrollbars. Otherwise, the
-     * "gtk-scrolled-window-placement" setting is used.
-     */
-    window_placement_set: boolean
     /**
      * Whether "window-placement" should be used to determine the location
      * of the contents with respect to the scrollbars. Otherwise, the
@@ -46160,260 +43985,6 @@ module Settings {
 
         // Own constructor properties of Gtk-2.0.Gtk.Settings
 
-        gtk_alternative_button_order?: boolean | null
-        /**
-         * Controls the direction of the sort indicators in sorted list and tree
-         * views. By default an arrow pointing down means the column is sorted
-         * in ascending order. When set to %TRUE, this order will be inverted.
-         */
-        gtk_alternative_sort_arrows?: boolean | null
-        /**
-         * Whether mnemonics should be automatically shown and hidden when the user
-         * presses the mnemonic activator.
-         */
-        gtk_auto_mnemonics?: boolean | null
-        gtk_button_images?: boolean | null
-        gtk_can_change_accels?: boolean | null
-        gtk_color_palette?: string | null
-        /**
-         * A palette of named colors for use in themes. The format of the string is
-         * <programlisting>
-         * name1: color1
-         * name2: color2
-         * ...
-         * </programlisting>
-         * Color names must be acceptable as identifiers in the
-         * <link linkend="gtk-Resource-Files">gtkrc</link> syntax, and
-         * color specifications must be in the format accepted by
-         * gdk_color_parse().
-         * 
-         * Note that due to the way the color tables from different sources are
-         * merged, color specifications will be converted to hexadecimal form
-         * when getting this property.
-         * 
-         * Starting with GTK+ 2.12, the entries can alternatively be separated
-         * by ';' instead of newlines:
-         * <programlisting>
-         * name1: color1; name2: color2; ...
-         * </programlisting>
-         */
-        gtk_color_scheme?: string | null
-        /**
-         * Whether the cursor should blink.
-         * 
-         * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
-         * which allows more flexible control over cursor blinking.
-         */
-        gtk_cursor_blink?: boolean | null
-        gtk_cursor_blink_time?: number | null
-        /**
-         * Time after which the cursor stops blinking, in seconds.
-         * The timer is reset after each user interaction.
-         * 
-         * Setting this to zero has the same effect as setting
-         * #GtkSettings:gtk-cursor-blink to %FALSE.
-         */
-        gtk_cursor_blink_timeout?: number | null
-        gtk_cursor_theme_name?: string | null
-        gtk_cursor_theme_size?: number | null
-        gtk_dnd_drag_threshold?: number | null
-        gtk_double_click_distance?: number | null
-        gtk_double_click_time?: number | null
-        /**
-         * Whether menu items should have visible accelerators which can be
-         * activated.
-         */
-        gtk_enable_accels?: boolean | null
-        gtk_enable_animations?: boolean | null
-        /**
-         * Whether to play any event sounds at all.
-         * 
-         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-         * for more information on event sounds and sound themes.
-         * 
-         * GTK+ itself does not support event sounds, you have to use a loadable
-         * module like the one that comes with libcanberra.
-         */
-        gtk_enable_event_sounds?: boolean | null
-        /**
-         * Whether to play event sounds as feedback to user input.
-         * 
-         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-         * for more information on event sounds and sound themes.
-         * 
-         * GTK+ itself does not support event sounds, you have to use a loadable
-         * module like the one that comes with libcanberra.
-         */
-        gtk_enable_input_feedback_sounds?: boolean | null
-        /**
-         * Whether labels and menu items should have visible mnemonics which
-         * can be activated.
-         */
-        gtk_enable_mnemonics?: boolean | null
-        /**
-         * Whether tooltips should be shown on widgets.
-         */
-        gtk_enable_tooltips?: boolean | null
-        /**
-         * How long to show the last input character in hidden
-         * entries. This value is in milliseconds. 0 disables showing the
-         * last char. 600 is a good value for enabling it.
-         */
-        gtk_entry_password_hint_timeout?: number | null
-        gtk_entry_select_on_focus?: boolean | null
-        /**
-         * When %TRUE, keyboard navigation and other input-related errors
-         * will cause a beep. Since the error bell is implemented using
-         * gdk_window_beep(), the windowing system may offer ways to
-         * configure the error bell in many ways, such as flashing the
-         * window or similar visual effects.
-         */
-        gtk_error_bell?: boolean | null
-        gtk_fallback_icon_theme?: string | null
-        gtk_file_chooser_backend?: string | null
-        gtk_font_name?: string | null
-        gtk_fontconfig_timestamp?: number | null
-        /**
-         * A list of icon sizes. The list is separated by colons, and
-         * item has the form:
-         * 
-         * <replaceable>size-name</replaceable> = <replaceable>width</replaceable> , <replaceable>height</replaceable>
-         * 
-         * E.g. "gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48".
-         * GTK+ itself use the following named icon sizes: gtk-menu,
-         * gtk-button, gtk-small-toolbar, gtk-large-toolbar, gtk-dnd,
-         * gtk-dialog. Applications can register their own named icon
-         * sizes with gtk_icon_size_register().
-         */
-        gtk_icon_sizes?: string | null
-        gtk_icon_theme_name?: string | null
-        /**
-         * Which IM (input method) module should be used by default. This is the
-         * input method that will be used if the user has not explicitly chosen
-         * another input method from the IM context menu.
-         * This also can be a colon-separated list of input methods, which GTK+
-         * will try in turn until it finds one available on the system.
-         * 
-         * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
-         */
-        gtk_im_module?: string | null
-        gtk_im_preedit_style?: IMPreeditStyle | null
-        gtk_im_status_style?: IMStatusStyle | null
-        gtk_key_theme_name?: string | null
-        /**
-         * When %TRUE, keyboard navigation should be able to reach all widgets
-         * by using the cursor keys only. Tab, Shift etc. keys can't be expected
-         * to be present on the used input device.
-         */
-        gtk_keynav_cursor_only?: boolean | null
-        /**
-         * When %TRUE, some widgets will wrap around when doing keyboard
-         * navigation, such as menus, menubars and notebooks.
-         */
-        gtk_keynav_wrap_around?: boolean | null
-        gtk_label_select_on_focus?: boolean | null
-        gtk_menu_bar_accel?: string | null
-        gtk_menu_bar_popup_delay?: number | null
-        gtk_menu_images?: boolean | null
-        gtk_menu_popdown_delay?: number | null
-        gtk_menu_popup_delay?: number | null
-        gtk_modules?: string | null
-        /**
-         * Whether a click in a #GtkRange trough should scroll to the click position or
-         * scroll by a single page in the respective direction.
-         */
-        gtk_primary_button_warps_slider?: boolean | null
-        /**
-         * A comma-separated list of print backends to use in the print
-         * dialog. Available print backends depend on the GTK+ installation,
-         * and may include "file", "cups", "lpr" or "papi".
-         */
-        gtk_print_backends?: string | null
-        /**
-         * A command to run for displaying the print preview. The command
-         * should contain a %f placeholder, which will get replaced by
-         * the path to the pdf file. The command may also contain a %s
-         * placeholder, which will get replaced by the path to a file
-         * containing the print settings in the format produced by
-         * gtk_print_settings_to_file().
-         * 
-         * The preview application is responsible for removing the pdf file
-         * and the print settings file when it is done.
-         */
-        gtk_print_preview_command?: string | null
-        /**
-         * The number of recently used files that should be displayed by default by
-         * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
-         * -1 means every recently used file stored.
-         */
-        gtk_recent_files_limit?: number | null
-        /**
-         * The maximum age, in days, of the items inside the recently used
-         * resources list. Items older than this setting will be excised
-         * from the list. If set to 0, the list will always be empty; if
-         * set to -1, no item will be removed.
-         */
-        gtk_recent_files_max_age?: number | null
-        /**
-         * Where the contents of scrolled windows are located with respect to the
-         * scrollbars, if not overridden by the scrolled window's own placement.
-         */
-        gtk_scrolled_window_placement?: CornerType | null
-        gtk_show_input_method_menu?: boolean | null
-        gtk_show_unicode_menu?: boolean | null
-        /**
-         * The XDG sound theme to use for event sounds.
-         * 
-         * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-         * for more information on event sounds and sound themes.
-         * 
-         * GTK+ itself does not support event sounds, you have to use a loadable
-         * module like the one that comes with libcanberra.
-         */
-        gtk_sound_theme_name?: string | null
-        gtk_split_cursor?: boolean | null
-        gtk_theme_name?: string | null
-        gtk_timeout_expand?: number | null
-        gtk_timeout_initial?: number | null
-        gtk_timeout_repeat?: number | null
-        gtk_toolbar_icon_size?: IconSize | null
-        gtk_toolbar_style?: ToolbarStyle | null
-        /**
-         * Amount of time, in milliseconds, after which the browse mode
-         * will be disabled.
-         * 
-         * See #GtkSettings:gtk-tooltip-browse-timeout for more information
-         * about browse mode.
-         */
-        gtk_tooltip_browse_mode_timeout?: number | null
-        /**
-         * Controls the time after which tooltips will appear when
-         * browse mode is enabled, in milliseconds.
-         * 
-         * Browse mode is enabled when the mouse pointer moves off an object
-         * where a tooltip was currently being displayed. If the mouse pointer
-         * hits another object before the browse mode timeout expires (see
-         * #GtkSettings:gtk-tooltip-browse-mode-timeout), it will take the
-         * amount of milliseconds specified by this setting to popup the tooltip
-         * for the new object.
-         */
-        gtk_tooltip_browse_timeout?: number | null
-        /**
-         * Time, in milliseconds, after which a tooltip could appear if the
-         * cursor is hovering on top of a widget.
-         */
-        gtk_tooltip_timeout?: number | null
-        /**
-         * When %TRUE, there are no motion notify events delivered on this screen,
-         * and widgets can't use the pointer hovering them for any essential
-         * functionality.
-         */
-        gtk_touchscreen_mode?: boolean | null
-        gtk_xft_antialias?: number | null
-        gtk_xft_dpi?: number | null
-        gtk_xft_hinting?: number | null
-        gtk_xft_hintstyle?: string | null
-        gtk_xft_rgba?: string | null
         gtkAlternativeButtonOrder?: boolean | null
         /**
          * Controls the direction of the sort indicators in sorted list and tree
@@ -46680,20 +44251,8 @@ interface Settings {
      * Holds a hash table representation of the #GtkSettings:gtk-color-scheme
      * setting, mapping color names to #GdkColor<!-- -->s.
      */
-    readonly color_hash: GLib.HashTable
-    /**
-     * Holds a hash table representation of the #GtkSettings:gtk-color-scheme
-     * setting, mapping color names to #GdkColor<!-- -->s.
-     */
     readonly colorHash: GLib.HashTable
-    gtk_alternative_button_order: boolean
     gtkAlternativeButtonOrder: boolean
-    /**
-     * Controls the direction of the sort indicators in sorted list and tree
-     * views. By default an arrow pointing down means the column is sorted
-     * in ascending order. When set to %TRUE, this order will be inverted.
-     */
-    gtk_alternative_sort_arrows: boolean
     /**
      * Controls the direction of the sort indicators in sorted list and tree
      * views. By default an arrow pointing down means the column is sorted
@@ -46704,41 +44263,10 @@ interface Settings {
      * Whether mnemonics should be automatically shown and hidden when the user
      * presses the mnemonic activator.
      */
-    gtk_auto_mnemonics: boolean
-    /**
-     * Whether mnemonics should be automatically shown and hidden when the user
-     * presses the mnemonic activator.
-     */
     gtkAutoMnemonics: boolean
-    gtk_button_images: boolean
     gtkButtonImages: boolean
-    gtk_can_change_accels: boolean
     gtkCanChangeAccels: boolean
-    gtk_color_palette: string | null
     gtkColorPalette: string | null
-    /**
-     * A palette of named colors for use in themes. The format of the string is
-     * <programlisting>
-     * name1: color1
-     * name2: color2
-     * ...
-     * </programlisting>
-     * Color names must be acceptable as identifiers in the
-     * <link linkend="gtk-Resource-Files">gtkrc</link> syntax, and
-     * color specifications must be in the format accepted by
-     * gdk_color_parse().
-     * 
-     * Note that due to the way the color tables from different sources are
-     * merged, color specifications will be converted to hexadecimal form
-     * when getting this property.
-     * 
-     * Starting with GTK+ 2.12, the entries can alternatively be separated
-     * by ';' instead of newlines:
-     * <programlisting>
-     * name1: color1; name2: color2; ...
-     * </programlisting>
-     */
-    gtk_color_scheme: string | null
     /**
      * A palette of named colors for use in themes. The format of the string is
      * <programlisting>
@@ -46768,15 +44296,7 @@ interface Settings {
      * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
      * which allows more flexible control over cursor blinking.
      */
-    gtk_cursor_blink: boolean
-    /**
-     * Whether the cursor should blink.
-     * 
-     * Also see the #GtkSettings:gtk-cursor-blink-timeout setting,
-     * which allows more flexible control over cursor blinking.
-     */
     gtkCursorBlink: boolean
-    gtk_cursor_blink_time: number
     gtkCursorBlinkTime: number
     /**
      * Time after which the cursor stops blinking, in seconds.
@@ -46785,47 +44305,18 @@ interface Settings {
      * Setting this to zero has the same effect as setting
      * #GtkSettings:gtk-cursor-blink to %FALSE.
      */
-    gtk_cursor_blink_timeout: number
-    /**
-     * Time after which the cursor stops blinking, in seconds.
-     * The timer is reset after each user interaction.
-     * 
-     * Setting this to zero has the same effect as setting
-     * #GtkSettings:gtk-cursor-blink to %FALSE.
-     */
     gtkCursorBlinkTimeout: number
-    gtk_cursor_theme_name: string | null
     gtkCursorThemeName: string | null
-    gtk_cursor_theme_size: number
     gtkCursorThemeSize: number
-    gtk_dnd_drag_threshold: number
     gtkDndDragThreshold: number
-    gtk_double_click_distance: number
     gtkDoubleClickDistance: number
-    gtk_double_click_time: number
     gtkDoubleClickTime: number
     /**
      * Whether menu items should have visible accelerators which can be
      * activated.
      */
-    gtk_enable_accels: boolean
-    /**
-     * Whether menu items should have visible accelerators which can be
-     * activated.
-     */
     gtkEnableAccels: boolean
-    gtk_enable_animations: boolean
     gtkEnableAnimations: boolean
-    /**
-     * Whether to play any event sounds at all.
-     * 
-     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-     * for more information on event sounds and sound themes.
-     * 
-     * GTK+ itself does not support event sounds, you have to use a loadable
-     * module like the one that comes with libcanberra.
-     */
-    gtk_enable_event_sounds: boolean
     /**
      * Whether to play any event sounds at all.
      * 
@@ -46845,31 +44336,12 @@ interface Settings {
      * GTK+ itself does not support event sounds, you have to use a loadable
      * module like the one that comes with libcanberra.
      */
-    gtk_enable_input_feedback_sounds: boolean
-    /**
-     * Whether to play event sounds as feedback to user input.
-     * 
-     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-     * for more information on event sounds and sound themes.
-     * 
-     * GTK+ itself does not support event sounds, you have to use a loadable
-     * module like the one that comes with libcanberra.
-     */
     gtkEnableInputFeedbackSounds: boolean
     /**
      * Whether labels and menu items should have visible mnemonics which
      * can be activated.
      */
-    gtk_enable_mnemonics: boolean
-    /**
-     * Whether labels and menu items should have visible mnemonics which
-     * can be activated.
-     */
     gtkEnableMnemonics: boolean
-    /**
-     * Whether tooltips should be shown on widgets.
-     */
-    gtk_enable_tooltips: boolean
     /**
      * Whether tooltips should be shown on widgets.
      */
@@ -46879,14 +44351,7 @@ interface Settings {
      * entries. This value is in milliseconds. 0 disables showing the
      * last char. 600 is a good value for enabling it.
      */
-    gtk_entry_password_hint_timeout: number
-    /**
-     * How long to show the last input character in hidden
-     * entries. This value is in milliseconds. 0 disables showing the
-     * last char. 600 is a good value for enabling it.
-     */
     gtkEntryPasswordHintTimeout: number
-    gtk_entry_select_on_focus: boolean
     gtkEntrySelectOnFocus: boolean
     /**
      * When %TRUE, keyboard navigation and other input-related errors
@@ -46895,22 +44360,10 @@ interface Settings {
      * configure the error bell in many ways, such as flashing the
      * window or similar visual effects.
      */
-    gtk_error_bell: boolean
-    /**
-     * When %TRUE, keyboard navigation and other input-related errors
-     * will cause a beep. Since the error bell is implemented using
-     * gdk_window_beep(), the windowing system may offer ways to
-     * configure the error bell in many ways, such as flashing the
-     * window or similar visual effects.
-     */
     gtkErrorBell: boolean
-    gtk_fallback_icon_theme: string | null
     gtkFallbackIconTheme: string | null
-    gtk_file_chooser_backend: string | null
     gtkFileChooserBackend: string | null
-    gtk_font_name: string | null
     gtkFontName: string | null
-    gtk_fontconfig_timestamp: number
     gtkFontconfigTimestamp: number
     /**
      * A list of icon sizes. The list is separated by colons, and
@@ -46924,21 +44377,7 @@ interface Settings {
      * gtk-dialog. Applications can register their own named icon
      * sizes with gtk_icon_size_register().
      */
-    gtk_icon_sizes: string | null
-    /**
-     * A list of icon sizes. The list is separated by colons, and
-     * item has the form:
-     * 
-     * <replaceable>size-name</replaceable> = <replaceable>width</replaceable> , <replaceable>height</replaceable>
-     * 
-     * E.g. "gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48".
-     * GTK+ itself use the following named icon sizes: gtk-menu,
-     * gtk-button, gtk-small-toolbar, gtk-large-toolbar, gtk-dnd,
-     * gtk-dialog. Applications can register their own named icon
-     * sizes with gtk_icon_size_register().
-     */
     gtkIconSizes: string | null
-    gtk_icon_theme_name: string | null
     gtkIconThemeName: string | null
     /**
      * Which IM (input method) module should be used by default. This is the
@@ -46949,29 +44388,10 @@ interface Settings {
      * 
      * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
      */
-    gtk_im_module: string | null
-    /**
-     * Which IM (input method) module should be used by default. This is the
-     * input method that will be used if the user has not explicitly chosen
-     * another input method from the IM context menu.
-     * This also can be a colon-separated list of input methods, which GTK+
-     * will try in turn until it finds one available on the system.
-     * 
-     * See #GtkIMContext and see the #GtkSettings:gtk-show-input-method-menu property.
-     */
     gtkImModule: string | null
-    gtk_im_preedit_style: IMPreeditStyle
     gtkImPreeditStyle: IMPreeditStyle
-    gtk_im_status_style: IMStatusStyle
     gtkImStatusStyle: IMStatusStyle
-    gtk_key_theme_name: string | null
     gtkKeyThemeName: string | null
-    /**
-     * When %TRUE, keyboard navigation should be able to reach all widgets
-     * by using the cursor keys only. Tab, Shift etc. keys can't be expected
-     * to be present on the used input device.
-     */
-    gtk_keynav_cursor_only: boolean
     /**
      * When %TRUE, keyboard navigation should be able to reach all widgets
      * by using the cursor keys only. Tab, Shift etc. keys can't be expected
@@ -46982,42 +44402,19 @@ interface Settings {
      * When %TRUE, some widgets will wrap around when doing keyboard
      * navigation, such as menus, menubars and notebooks.
      */
-    gtk_keynav_wrap_around: boolean
-    /**
-     * When %TRUE, some widgets will wrap around when doing keyboard
-     * navigation, such as menus, menubars and notebooks.
-     */
     gtkKeynavWrapAround: boolean
-    gtk_label_select_on_focus: boolean
     gtkLabelSelectOnFocus: boolean
-    gtk_menu_bar_accel: string | null
     gtkMenuBarAccel: string | null
-    gtk_menu_bar_popup_delay: number
     gtkMenuBarPopupDelay: number
-    gtk_menu_images: boolean
     gtkMenuImages: boolean
-    gtk_menu_popdown_delay: number
     gtkMenuPopdownDelay: number
-    gtk_menu_popup_delay: number
     gtkMenuPopupDelay: number
-    gtk_modules: string | null
     gtkModules: string | null
     /**
      * Whether a click in a #GtkRange trough should scroll to the click position or
      * scroll by a single page in the respective direction.
      */
-    gtk_primary_button_warps_slider: boolean
-    /**
-     * Whether a click in a #GtkRange trough should scroll to the click position or
-     * scroll by a single page in the respective direction.
-     */
     gtkPrimaryButtonWarpsSlider: boolean
-    /**
-     * A comma-separated list of print backends to use in the print
-     * dialog. Available print backends depend on the GTK+ installation,
-     * and may include "file", "cups", "lpr" or "papi".
-     */
-    gtk_print_backends: string | null
     /**
      * A comma-separated list of print backends to use in the print
      * dialog. Available print backends depend on the GTK+ installation,
@@ -47035,25 +44432,7 @@ interface Settings {
      * The preview application is responsible for removing the pdf file
      * and the print settings file when it is done.
      */
-    gtk_print_preview_command: string | null
-    /**
-     * A command to run for displaying the print preview. The command
-     * should contain a %f placeholder, which will get replaced by
-     * the path to the pdf file. The command may also contain a %s
-     * placeholder, which will get replaced by the path to a file
-     * containing the print settings in the format produced by
-     * gtk_print_settings_to_file().
-     * 
-     * The preview application is responsible for removing the pdf file
-     * and the print settings file when it is done.
-     */
     gtkPrintPreviewCommand: string | null
-    /**
-     * The number of recently used files that should be displayed by default by
-     * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
-     * -1 means every recently used file stored.
-     */
-    gtk_recent_files_limit: number
     /**
      * The number of recently used files that should be displayed by default by
      * #GtkRecentChooser implementations and by the #GtkFileChooser. A value of
@@ -47066,27 +44445,13 @@ interface Settings {
      * from the list. If set to 0, the list will always be empty; if
      * set to -1, no item will be removed.
      */
-    gtk_recent_files_max_age: number
-    /**
-     * The maximum age, in days, of the items inside the recently used
-     * resources list. Items older than this setting will be excised
-     * from the list. If set to 0, the list will always be empty; if
-     * set to -1, no item will be removed.
-     */
     gtkRecentFilesMaxAge: number
     /**
      * Where the contents of scrolled windows are located with respect to the
      * scrollbars, if not overridden by the scrolled window's own placement.
      */
-    gtk_scrolled_window_placement: CornerType
-    /**
-     * Where the contents of scrolled windows are located with respect to the
-     * scrollbars, if not overridden by the scrolled window's own placement.
-     */
     gtkScrolledWindowPlacement: CornerType
-    gtk_show_input_method_menu: boolean
     gtkShowInputMethodMenu: boolean
-    gtk_show_unicode_menu: boolean
     gtkShowUnicodeMenu: boolean
     /**
      * The XDG sound theme to use for event sounds.
@@ -47097,39 +44462,14 @@ interface Settings {
      * GTK+ itself does not support event sounds, you have to use a loadable
      * module like the one that comes with libcanberra.
      */
-    gtk_sound_theme_name: string | null
-    /**
-     * The XDG sound theme to use for event sounds.
-     * 
-     * See the <ulink url="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec">Sound Theme spec</ulink>
-     * for more information on event sounds and sound themes.
-     * 
-     * GTK+ itself does not support event sounds, you have to use a loadable
-     * module like the one that comes with libcanberra.
-     */
     gtkSoundThemeName: string | null
-    gtk_split_cursor: boolean
     gtkSplitCursor: boolean
-    gtk_theme_name: string | null
     gtkThemeName: string | null
-    gtk_timeout_expand: number
     gtkTimeoutExpand: number
-    gtk_timeout_initial: number
     gtkTimeoutInitial: number
-    gtk_timeout_repeat: number
     gtkTimeoutRepeat: number
-    gtk_toolbar_icon_size: IconSize
     gtkToolbarIconSize: IconSize
-    gtk_toolbar_style: ToolbarStyle
     gtkToolbarStyle: ToolbarStyle
-    /**
-     * Amount of time, in milliseconds, after which the browse mode
-     * will be disabled.
-     * 
-     * See #GtkSettings:gtk-tooltip-browse-timeout for more information
-     * about browse mode.
-     */
-    gtk_tooltip_browse_mode_timeout: number
     /**
      * Amount of time, in milliseconds, after which the browse mode
      * will be disabled.
@@ -47149,24 +44489,7 @@ interface Settings {
      * amount of milliseconds specified by this setting to popup the tooltip
      * for the new object.
      */
-    gtk_tooltip_browse_timeout: number
-    /**
-     * Controls the time after which tooltips will appear when
-     * browse mode is enabled, in milliseconds.
-     * 
-     * Browse mode is enabled when the mouse pointer moves off an object
-     * where a tooltip was currently being displayed. If the mouse pointer
-     * hits another object before the browse mode timeout expires (see
-     * #GtkSettings:gtk-tooltip-browse-mode-timeout), it will take the
-     * amount of milliseconds specified by this setting to popup the tooltip
-     * for the new object.
-     */
     gtkTooltipBrowseTimeout: number
-    /**
-     * Time, in milliseconds, after which a tooltip could appear if the
-     * cursor is hovering on top of a widget.
-     */
-    gtk_tooltip_timeout: number
     /**
      * Time, in milliseconds, after which a tooltip could appear if the
      * cursor is hovering on top of a widget.
@@ -47177,22 +44500,11 @@ interface Settings {
      * and widgets can't use the pointer hovering them for any essential
      * functionality.
      */
-    gtk_touchscreen_mode: boolean
-    /**
-     * When %TRUE, there are no motion notify events delivered on this screen,
-     * and widgets can't use the pointer hovering them for any essential
-     * functionality.
-     */
     gtkTouchscreenMode: boolean
-    gtk_xft_antialias: number
     gtkXftAntialias: number
-    gtk_xft_dpi: number
     gtkXftDpi: number
-    gtk_xft_hinting: number
     gtkXftHinting: number
-    gtk_xft_hintstyle: string | null
     gtkXftHintstyle: string | null
-    gtk_xft_rgba: string | null
     gtkXftRgba: string | null
 
     // Own fields of Gtk-2.0.Gtk.Settings
@@ -47463,13 +44775,8 @@ module SizeGroup {
          * If %TRUE, unmapped widgets are ignored when determining
          * the size of the group.
          */
-        ignore_hidden?: boolean | null
-        mode?: SizeGroupMode | null
-        /**
-         * If %TRUE, unmapped widgets are ignored when determining
-         * the size of the group.
-         */
         ignoreHidden?: boolean | null
+        mode?: SizeGroupMode | null
     }
 
 }
@@ -47478,11 +44785,6 @@ interface SizeGroup extends Buildable {
 
     // Own properties of Gtk-2.0.Gtk.SizeGroup
 
-    /**
-     * If %TRUE, unmapped widgets are ignored when determining
-     * the size of the group.
-     */
-    ignore_hidden: boolean
     /**
      * If %TRUE, unmapped widgets are ignored when determining
      * the size of the group.
@@ -47908,16 +45210,13 @@ module SpinButton {
         // Own constructor properties of Gtk-2.0.Gtk.SpinButton
 
         adjustment?: Adjustment | null
-        climb_rate?: number | null
+        climbRate?: number | null
         digits?: number | null
         numeric?: boolean | null
-        snap_to_ticks?: boolean | null
-        update_policy?: SpinButtonUpdatePolicy | null
-        value?: number | null
-        wrap?: boolean | null
-        climbRate?: number | null
         snapToTicks?: boolean | null
         updatePolicy?: SpinButtonUpdatePolicy | null
+        value?: number | null
+        wrap?: boolean | null
     }
 
 }
@@ -48576,8 +45875,8 @@ module StatusIcon {
          * Whether this property is respected is platform dependent.
          * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
          */
-        has_tooltip?: boolean | null
-        icon_name?: string | null
+        hasTooltip?: boolean | null
+        iconName?: string | null
         pixbuf?: GdkPixbuf.Pixbuf | null
         screen?: Gdk.Screen | null
         stock?: string | null
@@ -48587,54 +45886,6 @@ module StatusIcon {
          * like screen readers to render the tray icon.
          */
         title?: string | null
-        /**
-         * Sets the text of tooltip to be the given string, which is marked up
-         * with the <link linkend="PangoMarkupFormat">Pango text markup
-         * language</link>. Also see gtk_tooltip_set_markup().
-         * 
-         * This is a convenience property which will take care of getting the
-         * tooltip shown if the given string is not %NULL.
-         * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-         * the default handler for the #GtkStatusIcon::query-tooltip signal
-         * will take care of displaying the tooltip.
-         * 
-         * On some platforms, embedded markup will be ignored.
-         */
-        tooltip_markup?: string | null
-        /**
-         * Sets the text of tooltip to be the given string.
-         * 
-         * Also see gtk_tooltip_set_text().
-         * 
-         * This is a convenience property which will take care of getting the
-         * tooltip shown if the given string is not %NULL.
-         * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-         * the default handler for the #GtkStatusIcon::query-tooltip signal
-         * will take care of displaying the tooltip.
-         * 
-         * Note that some platforms have limitations on the length of tooltips
-         * that they allow on status icons, e.g. Windows only shows the first
-         * 64 characters.
-         */
-        tooltip_text?: string | null
-        visible?: boolean | null
-        /**
-         * Enables or disables the emission of #GtkStatusIcon::query-tooltip on
-         * `status_icon`.  A value of %TRUE indicates that `status_icon` can have a
-         * tooltip, in this case the status icon will be queried using
-         * #GtkStatusIcon::query-tooltip to determine whether it will provide a
-         * tooltip or not.
-         * 
-         * Note that setting this property to %TRUE for the first time will change
-         * the event masks of the windows of this status icon to include leave-notify
-         * and motion-notify events. This will not be undone when the property is set
-         * to %FALSE again.
-         * 
-         * Whether this property is respected is platform dependent.
-         * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
-         */
-        hasTooltip?: boolean | null
-        iconName?: string | null
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the <link linkend="PangoMarkupFormat">Pango text markup
@@ -48665,6 +45916,7 @@ module StatusIcon {
          * 64 characters.
          */
         tooltipText?: string | null
+        visible?: boolean | null
     }
 
 }
@@ -48702,24 +45954,7 @@ interface StatusIcon {
      * Whether this property is respected is platform dependent.
      * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
      */
-    has_tooltip: boolean
-    /**
-     * Enables or disables the emission of #GtkStatusIcon::query-tooltip on
-     * `status_icon`.  A value of %TRUE indicates that `status_icon` can have a
-     * tooltip, in this case the status icon will be queried using
-     * #GtkStatusIcon::query-tooltip to determine whether it will provide a
-     * tooltip or not.
-     * 
-     * Note that setting this property to %TRUE for the first time will change
-     * the event masks of the windows of this status icon to include leave-notify
-     * and motion-notify events. This will not be undone when the property is set
-     * to %FALSE again.
-     * 
-     * Whether this property is respected is platform dependent.
-     * For plain text tooltips, use #GtkStatusIcon:tooltip-text in preference.
-     */
     hasTooltip: boolean
-    icon_name: string | null
     iconName: string | null
     /**
      * The orientation of the tray in which the statusicon
@@ -48730,7 +45965,6 @@ interface StatusIcon {
     screen: Gdk.Screen
     readonly size: number
     stock: string | null
-    readonly storage_type: ImageType
     readonly storageType: ImageType
     /**
      * The title of this tray icon. This should be a short, human-readable,
@@ -48751,37 +45985,7 @@ interface StatusIcon {
      * 
      * On some platforms, embedded markup will be ignored.
      */
-    tooltip_markup: string | null
-    /**
-     * Sets the text of tooltip to be the given string, which is marked up
-     * with the <link linkend="PangoMarkupFormat">Pango text markup
-     * language</link>. Also see gtk_tooltip_set_markup().
-     * 
-     * This is a convenience property which will take care of getting the
-     * tooltip shown if the given string is not %NULL.
-     * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-     * the default handler for the #GtkStatusIcon::query-tooltip signal
-     * will take care of displaying the tooltip.
-     * 
-     * On some platforms, embedded markup will be ignored.
-     */
     tooltipMarkup: string | null
-    /**
-     * Sets the text of tooltip to be the given string.
-     * 
-     * Also see gtk_tooltip_set_text().
-     * 
-     * This is a convenience property which will take care of getting the
-     * tooltip shown if the given string is not %NULL.
-     * #GtkStatusIcon:has-tooltip will automatically be set to %TRUE and
-     * the default handler for the #GtkStatusIcon::query-tooltip signal
-     * will take care of displaying the tooltip.
-     * 
-     * Note that some platforms have limitations on the length of tooltips
-     * that they allow on status icons, e.g. Windows only shows the first
-     * 64 characters.
-     */
-    tooltip_text: string | null
     /**
      * Sets the text of tooltip to be the given string.
      * 
@@ -49240,10 +46444,6 @@ module Statusbar {
 
         // Own constructor properties of Gtk-2.0.Gtk.Statusbar
 
-        /**
-         * Whether the statusbar has a grip for resizing the toplevel window.
-         */
-        has_resize_grip?: boolean | null
         /**
          * Whether the statusbar has a grip for resizing the toplevel window.
          */
@@ -49716,12 +46916,8 @@ module Table {
 
         // Own constructor properties of Gtk-2.0.Gtk.Table
 
-        column_spacing?: number | null
-        homogeneous?: boolean | null
-        n_columns?: number | null
-        n_rows?: number | null
-        row_spacing?: number | null
         columnSpacing?: number | null
+        homogeneous?: boolean | null
         nColumns?: number | null
         nRows?: number | null
         rowSpacing?: number | null
@@ -49734,9 +46930,7 @@ interface Table extends Atk.ImplementorIface, Buildable {
     // Own properties of Gtk-2.0.Gtk.Table
 
     columnSpacing: number
-    n_columns: number
     nColumns: number
-    n_rows: number
     nRows: number
     rowSpacing: number
 
@@ -50233,13 +47427,12 @@ module TextBuffer {
 
         // Own constructor properties of Gtk-2.0.Gtk.TextBuffer
 
-        tag_table?: TextTagTable | null
+        tagTable?: TextTagTable | null
         /**
          * The text content of the buffer. Without child widgets and images,
          * see gtk_text_buffer_get_text() for more information.
          */
         text?: string | null
-        tagTable?: TextTagTable | null
     }
 
 }
@@ -50252,18 +47445,7 @@ interface TextBuffer {
      * The list of targets this buffer supports for clipboard copying
      * and as DND source.
      */
-    readonly copy_target_list: TargetList
-    /**
-     * The list of targets this buffer supports for clipboard copying
-     * and as DND source.
-     */
     readonly copyTargetList: TargetList
-    /**
-     * The position of the insert mark (as offset from the beginning
-     * of the buffer). It is useful for getting notified when the
-     * cursor moves.
-     */
-    readonly cursor_position: number
     /**
      * The position of the insert mark (as offset from the beginning
      * of the buffer). It is useful for getting notified when the
@@ -50274,11 +47456,6 @@ interface TextBuffer {
      * Whether the buffer has some text currently selected.
      */
     readonly hasSelection: boolean
-    /**
-     * The list of targets this buffer supports for clipboard pasting
-     * and as DND destination.
-     */
-    readonly paste_target_list: TargetList
     /**
      * The list of targets this buffer supports for clipboard pasting
      * and as DND destination.
@@ -51538,9 +48715,8 @@ module TextMark {
 
         // Own constructor properties of Gtk-2.0.Gtk.TextMark
 
-        left_gravity?: boolean | null
-        name?: string | null
         leftGravity?: boolean | null
+        name?: string | null
     }
 
 }
@@ -51549,7 +48725,6 @@ interface TextMark {
 
     // Own properties of Gtk-2.0.Gtk.TextMark
 
-    readonly left_gravity: boolean
     readonly leftGravity: boolean
     readonly name: string | null
 
@@ -51683,19 +48858,19 @@ module TextTag {
          * of any other non-accumulative margins present. When set to %FALSE
          * the margins override one another (the default).
          */
-        accumulative_margin?: boolean | null
+        accumulativeMargin?: boolean | null
         background?: string | null
-        background_full_height?: boolean | null
-        background_full_height_set?: boolean | null
-        background_gdk?: Gdk.Color | null
-        background_set?: boolean | null
-        background_stipple?: Gdk.Pixmap | null
-        background_stipple_set?: boolean | null
+        backgroundFullHeight?: boolean | null
+        backgroundFullHeightSet?: boolean | null
+        backgroundGdk?: Gdk.Color | null
+        backgroundSet?: boolean | null
+        backgroundStipple?: Gdk.Pixmap | null
+        backgroundStippleSet?: boolean | null
         direction?: TextDirection | null
         editable?: boolean | null
-        editable_set?: boolean | null
+        editableSet?: boolean | null
         family?: string | null
-        family_set?: boolean | null
+        familySet?: boolean | null
         /**
          * Font description as string, e.g. \"Sans Italic 12\".
          * 
@@ -51703,14 +48878,14 @@ module TextTag {
          * the internals of #PangoFontDescription.
          */
         font?: string | null
-        font_desc?: Pango.FontDescription | null
+        fontDesc?: Pango.FontDescription | null
         foreground?: string | null
-        foreground_gdk?: Gdk.Color | null
-        foreground_set?: boolean | null
-        foreground_stipple?: Gdk.Pixmap | null
-        foreground_stipple_set?: boolean | null
+        foregroundGdk?: Gdk.Color | null
+        foregroundSet?: boolean | null
+        foregroundStipple?: Gdk.Pixmap | null
+        foregroundStippleSet?: boolean | null
         indent?: number | null
-        indent_set?: boolean | null
+        indentSet?: boolean | null
         /**
          * Whether this text is hidden.
          * 
@@ -51719,9 +48894,9 @@ module TextTag {
          * containing invisible segments.
          */
         invisible?: boolean | null
-        invisible_set?: boolean | null
+        invisibleSet?: boolean | null
         justification?: Justification | null
-        justification_set?: boolean | null
+        justificationSet?: boolean | null
         /**
          * The language this text is in, as an ISO code. Pango can use this as a
          * hint when rendering the text. If not set, an appropriate default will be
@@ -51731,78 +48906,10 @@ module TextTag {
          * locale, see also gtk_get_default_language().
          */
         language?: string | null
-        language_set?: boolean | null
-        left_margin?: number | null
-        left_margin_set?: boolean | null
-        name?: string | null
-        /**
-         * The paragraph background color as a string.
-         */
-        paragraph_background?: string | null
-        /**
-         * The paragraph background color as a as a (possibly unallocated)
-         * #GdkColor.
-         */
-        paragraph_background_gdk?: Gdk.Color | null
-        paragraph_background_set?: boolean | null
-        pixels_above_lines?: number | null
-        pixels_above_lines_set?: boolean | null
-        pixels_below_lines?: number | null
-        pixels_below_lines_set?: boolean | null
-        pixels_inside_wrap?: number | null
-        pixels_inside_wrap_set?: boolean | null
-        right_margin?: number | null
-        right_margin_set?: boolean | null
-        rise?: number | null
-        rise_set?: boolean | null
-        scale?: number | null
-        scale_set?: boolean | null
-        size?: number | null
-        size_points?: number | null
-        size_set?: boolean | null
-        stretch?: Pango.Stretch | null
-        stretch_set?: boolean | null
-        strikethrough?: boolean | null
-        strikethrough_set?: boolean | null
-        style?: Pango.Style | null
-        style_set?: boolean | null
-        tabs?: Pango.TabArray | null
-        tabs_set?: boolean | null
-        underline?: Pango.Underline | null
-        underline_set?: boolean | null
-        variant?: Pango.Variant | null
-        variant_set?: boolean | null
-        weight?: number | null
-        weight_set?: boolean | null
-        wrap_mode?: WrapMode | null
-        wrap_mode_set?: boolean | null
-        /**
-         * Whether the margins accumulate or override each other.
-         * 
-         * When set to %TRUE the margins of this tag are added to the margins
-         * of any other non-accumulative margins present. When set to %FALSE
-         * the margins override one another (the default).
-         */
-        accumulativeMargin?: boolean | null
-        backgroundFullHeight?: boolean | null
-        backgroundFullHeightSet?: boolean | null
-        backgroundGdk?: Gdk.Color | null
-        backgroundSet?: boolean | null
-        backgroundStipple?: Gdk.Pixmap | null
-        backgroundStippleSet?: boolean | null
-        editableSet?: boolean | null
-        familySet?: boolean | null
-        fontDesc?: Pango.FontDescription | null
-        foregroundGdk?: Gdk.Color | null
-        foregroundSet?: boolean | null
-        foregroundStipple?: Gdk.Pixmap | null
-        foregroundStippleSet?: boolean | null
-        indentSet?: boolean | null
-        invisibleSet?: boolean | null
-        justificationSet?: boolean | null
         languageSet?: boolean | null
         leftMargin?: number | null
         leftMarginSet?: boolean | null
+        name?: string | null
         /**
          * The paragraph background color as a string.
          */
@@ -51821,16 +48928,26 @@ module TextTag {
         pixelsInsideWrapSet?: boolean | null
         rightMargin?: number | null
         rightMarginSet?: boolean | null
+        rise?: number | null
         riseSet?: boolean | null
+        scale?: number | null
         scaleSet?: boolean | null
+        size?: number | null
         sizePoints?: number | null
         sizeSet?: boolean | null
+        stretch?: Pango.Stretch | null
         stretchSet?: boolean | null
+        strikethrough?: boolean | null
         strikethroughSet?: boolean | null
+        style?: Pango.Style | null
         styleSet?: boolean | null
+        tabs?: Pango.TabArray | null
         tabsSet?: boolean | null
+        underline?: Pango.Underline | null
         underlineSet?: boolean | null
+        variant?: Pango.Variant | null
         variantSet?: boolean | null
+        weight?: number | null
         weightSet?: boolean | null
         wrapMode?: WrapMode | null
         wrapModeSet?: boolean | null
@@ -51851,23 +48968,16 @@ interface TextTag {
      */
     accumulativeMargin: boolean
     background: string | null
-    background_full_height: boolean
     backgroundFullHeight: boolean
-    background_full_height_set: boolean
     backgroundFullHeightSet: boolean
-    background_gdk: Gdk.Color
     backgroundGdk: Gdk.Color
-    background_set: boolean
     backgroundSet: boolean
-    background_stipple: Gdk.Pixmap
     backgroundStipple: Gdk.Pixmap
-    background_stipple_set: boolean
     backgroundStippleSet: boolean
     direction: TextDirection
     editable: boolean
     editableSet: boolean
     family: string | null
-    family_set: boolean
     familySet: boolean
     /**
      * Font description as string, e.g. \"Sans Italic 12\".
@@ -51876,16 +48986,11 @@ interface TextTag {
      * the internals of #PangoFontDescription.
      */
     font: string | null
-    font_desc: Pango.FontDescription
     fontDesc: Pango.FontDescription
     foreground: string | null
-    foreground_gdk: Gdk.Color
     foregroundGdk: Gdk.Color
-    foreground_set: boolean
     foregroundSet: boolean
-    foreground_stipple: Gdk.Pixmap
     foregroundStipple: Gdk.Pixmap
-    foreground_stipple_set: boolean
     foregroundStippleSet: boolean
     indent: number
     indentSet: boolean
@@ -51910,13 +49015,8 @@ interface TextTag {
      */
     language: string | null
     languageSet: boolean
-    left_margin: number
     leftMargin: number
     leftMarginSet: boolean
-    /**
-     * The paragraph background color as a string.
-     */
-    paragraph_background: string | null
     /**
      * The paragraph background color as a string.
      */
@@ -51925,24 +49025,14 @@ interface TextTag {
      * The paragraph background color as a as a (possibly unallocated)
      * #GdkColor.
      */
-    paragraph_background_gdk: Gdk.Color
-    /**
-     * The paragraph background color as a as a (possibly unallocated)
-     * #GdkColor.
-     */
     paragraphBackgroundGdk: Gdk.Color
-    paragraph_background_set: boolean
     paragraphBackgroundSet: boolean
-    pixels_above_lines: number
     pixelsAboveLines: number
     pixelsAboveLinesSet: boolean
-    pixels_below_lines: number
     pixelsBelowLines: number
     pixelsBelowLinesSet: boolean
-    pixels_inside_wrap: number
     pixelsInsideWrap: number
     pixelsInsideWrapSet: boolean
-    right_margin: number
     rightMargin: number
     rightMarginSet: boolean
     rise: number
@@ -51950,29 +49040,22 @@ interface TextTag {
     scale: number
     scaleSet: boolean
     size: number
-    size_points: number
     sizePoints: number
-    size_set: boolean
     sizeSet: boolean
     stretch: Pango.Stretch
-    stretch_set: boolean
     stretchSet: boolean
     strikethrough: boolean
     strikethroughSet: boolean
     style: Pango.Style
-    style_set: boolean
     styleSet: boolean
     tabs: Pango.TabArray
     tabsSet: boolean
     underline: Pango.Underline
     underlineSet: boolean
     variant: Pango.Variant
-    variant_set: boolean
     variantSet: boolean
     weight: number
-    weight_set: boolean
     weightSet: boolean
-    wrap_mode: WrapMode
     wrapMode: WrapMode
     wrapModeSet: boolean
 
@@ -52567,9 +49650,9 @@ module TextView {
 
         // Own constructor properties of Gtk-2.0.Gtk.TextView
 
-        accepts_tab?: boolean | null
+        acceptsTab?: boolean | null
         buffer?: TextBuffer | null
-        cursor_visible?: boolean | null
+        cursorVisible?: boolean | null
         editable?: boolean | null
         /**
          * Which IM (input method) module should be used for this entry.
@@ -52579,33 +49662,16 @@ module TextView {
          * system-wide IM module setting. See the GtkSettings
          * #GtkSettings:gtk-im-module property.
          */
-        im_module?: string | null
+        imModule?: string | null
         indent?: number | null
         justification?: Justification | null
-        left_margin?: number | null
-        overwrite?: boolean | null
-        pixels_above_lines?: number | null
-        pixels_below_lines?: number | null
-        pixels_inside_wrap?: number | null
-        right_margin?: number | null
-        tabs?: Pango.TabArray | null
-        wrap_mode?: WrapMode | null
-        acceptsTab?: boolean | null
-        cursorVisible?: boolean | null
-        /**
-         * Which IM (input method) module should be used for this entry.
-         * See #GtkIMContext.
-         * 
-         * Setting this to a non-%NULL value overrides the
-         * system-wide IM module setting. See the GtkSettings
-         * #GtkSettings:gtk-im-module property.
-         */
-        imModule?: string | null
         leftMargin?: number | null
+        overwrite?: boolean | null
         pixelsAboveLines?: number | null
         pixelsBelowLines?: number | null
         pixelsInsideWrap?: number | null
         rightMargin?: number | null
+        tabs?: Pango.TabArray | null
         wrapMode?: WrapMode | null
     }
 
@@ -52617,15 +49683,6 @@ interface TextView extends Atk.ImplementorIface, Buildable {
 
     acceptsTab: boolean
     cursorVisible: boolean
-    /**
-     * Which IM (input method) module should be used for this entry.
-     * See #GtkIMContext.
-     * 
-     * Setting this to a non-%NULL value overrides the
-     * system-wide IM module setting. See the GtkSettings
-     * #GtkSettings:gtk-im-module property.
-     */
-    im_module: string | null
     /**
      * Which IM (input method) module should be used for this entry.
      * See #GtkIMContext.
@@ -53487,9 +50544,6 @@ module TipsQuery {
         // Own constructor properties of Gtk-2.0.Gtk.TipsQuery
 
         caller?: Widget | null
-        emit_always?: boolean | null
-        label_inactive?: string | null
-        label_no_tip?: string | null
         emitAlways?: boolean | null
         labelInactive?: string | null
         labelNoTip?: string | null
@@ -53733,13 +50787,6 @@ module ToggleAction {
          * This is an appearance property and thus only applies if
          * #GtkActivatable:use-action-appearance is %TRUE.
          */
-        draw_as_radio?: boolean | null
-        /**
-         * Whether the proxies for this action look like radio action proxies.
-         * 
-         * This is an appearance property and thus only applies if
-         * #GtkActivatable:use-action-appearance is %TRUE.
-         */
         drawAsRadio?: boolean | null
     }
 
@@ -53753,13 +50800,6 @@ interface ToggleAction extends Buildable {
      * If the toggle action should be active in or not.
      */
     active: boolean
-    /**
-     * Whether the proxies for this action look like radio action proxies.
-     * 
-     * This is an appearance property and thus only applies if
-     * #GtkActivatable:use-action-appearance is %TRUE.
-     */
-    draw_as_radio: boolean
     /**
      * Whether the proxies for this action look like radio action proxies.
      * 
@@ -53948,9 +50988,8 @@ module ToggleButton {
         // Own constructor properties of Gtk-2.0.Gtk.ToggleButton
 
         active?: boolean | null
-        draw_indicator?: boolean | null
-        inconsistent?: boolean | null
         drawIndicator?: boolean | null
+        inconsistent?: boolean | null
     }
 
 }
@@ -54444,19 +51483,9 @@ module ToolButton {
          * This property only has an effect if not overridden by "label",
          * "icon_widget" or "stock_id" properties.
          */
-        icon_name?: string | null
-        icon_widget?: Widget | null
-        label?: string | null
-        label_widget?: Widget | null
-        stock_id?: string | null
-        use_underline?: boolean | null
-        /**
-         * The name of the themed icon displayed on the item.
-         * This property only has an effect if not overridden by "label",
-         * "icon_widget" or "stock_id" properties.
-         */
         iconName?: string | null
         iconWidget?: Widget | null
+        label?: string | null
         labelWidget?: Widget | null
         stockId?: string | null
         useUnderline?: boolean | null
@@ -54473,21 +51502,11 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * This property only has an effect if not overridden by "label",
      * "icon_widget" or "stock_id" properties.
      */
-    icon_name: string | null
-    /**
-     * The name of the themed icon displayed on the item.
-     * This property only has an effect if not overridden by "label",
-     * "icon_widget" or "stock_id" properties.
-     */
     iconName: string | null
-    icon_widget: Widget
     iconWidget: Widget
     label: string | null
-    label_widget: Widget
     labelWidget: Widget
-    stock_id: string | null
     stockId: string | null
-    use_underline: boolean
     useUnderline: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToolButton
@@ -54826,9 +51845,6 @@ module ToolItem {
 
         // Own constructor properties of Gtk-2.0.Gtk.ToolItem
 
-        is_important?: boolean | null
-        visible_horizontal?: boolean | null
-        visible_vertical?: boolean | null
         isImportant?: boolean | null
         visibleHorizontal?: boolean | null
         visibleVertical?: boolean | null
@@ -54840,11 +51856,8 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.ToolItem
 
-    is_important: boolean
     isImportant: boolean
-    visible_horizontal: boolean
     visibleHorizontal: boolean
-    visible_vertical: boolean
     visibleVertical: boolean
 
     // Own fields of Gtk-2.0.Gtk.ToolItem
@@ -55253,10 +52266,8 @@ module ToolItemGroup {
 
         collapsed?: boolean | null
         ellipsize?: Pango.EllipsizeMode | null
-        header_relief?: ReliefStyle | null
-        label?: string | null
-        label_widget?: Widget | null
         headerRelief?: ReliefStyle | null
+        label?: string | null
         labelWidget?: Widget | null
     }
 
@@ -55268,10 +52279,8 @@ interface ToolItemGroup extends Atk.ImplementorIface, Buildable, ToolShell {
 
     collapsed: boolean
     ellipsize: Pango.EllipsizeMode
-    header_relief: ReliefStyle
     headerRelief: ReliefStyle
     label: string | null
-    label_widget: Widget
     labelWidget: Widget
 
     // Own fields of Gtk-2.0.Gtk.ToolItemGroup
@@ -55548,24 +52557,6 @@ module ToolPalette {
          * application tool palettes should respect the user preferences for the
          * size of icons.
          */
-        icon_size?: IconSize | null
-        /**
-         * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
-         */
-        icon_size_set?: boolean | null
-        /**
-         * The style of items in the tool palette.
-         */
-        toolbar_style?: ToolbarStyle | null
-        /**
-         * The size of the icons in a tool palette is normally determined by
-         * the #GtkSettings:toolbar-icon-size setting. When this property is set,
-         * it overrides the setting.
-         * 
-         * This should only be used for special-purpose tool palettes, normal
-         * application tool palettes should respect the user preferences for the
-         * size of icons.
-         */
         iconSize?: IconSize | null
         /**
          * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
@@ -55592,29 +52583,11 @@ interface ToolPalette extends Atk.ImplementorIface, Buildable, Orientable {
      * application tool palettes should respect the user preferences for the
      * size of icons.
      */
-    icon_size: IconSize
-    /**
-     * The size of the icons in a tool palette is normally determined by
-     * the #GtkSettings:toolbar-icon-size setting. When this property is set,
-     * it overrides the setting.
-     * 
-     * This should only be used for special-purpose tool palettes, normal
-     * application tool palettes should respect the user preferences for the
-     * size of icons.
-     */
     iconSize: IconSize
     /**
      * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
      */
-    icon_size_set: boolean
-    /**
-     * Is %TRUE if the #GtkToolPalette:icon-size property has been set.
-     */
     iconSizeSet: boolean
-    /**
-     * The style of items in the tool palette.
-     */
-    toolbar_style: ToolbarStyle
     /**
      * The style of items in the tool palette.
      */
@@ -56019,26 +52992,6 @@ module Toolbar {
          * application toolbars should respect the user preferences for the
          * size of icons.
          */
-        icon_size?: number | null
-        /**
-         * Is %TRUE if the icon-size property has been set.
-         */
-        icon_size_set?: boolean | null
-        show_arrow?: boolean | null
-        toolbar_style?: ToolbarStyle | null
-        /**
-         * If the tooltips of the toolbar should be active or not.
-         */
-        tooltips?: boolean | null
-        /**
-         * The size of the icons in a toolbar is normally determined by
-         * the toolbar-icon-size setting. When this property is set, it
-         * overrides the setting.
-         * 
-         * This should only be used for special-purpose toolbars, normal
-         * application toolbars should respect the user preferences for the
-         * size of icons.
-         */
         iconSize?: number | null
         /**
          * Is %TRUE if the icon-size property has been set.
@@ -56046,6 +52999,10 @@ module Toolbar {
         iconSizeSet?: boolean | null
         showArrow?: boolean | null
         toolbarStyle?: ToolbarStyle | null
+        /**
+         * If the tooltips of the toolbar should be active or not.
+         */
+        tooltips?: boolean | null
     }
 
 }
@@ -56067,14 +53024,8 @@ interface Toolbar extends Atk.ImplementorIface, Buildable, Orientable, ToolShell
     /**
      * Is %TRUE if the icon-size property has been set.
      */
-    icon_size_set: boolean
-    /**
-     * Is %TRUE if the icon-size property has been set.
-     */
     iconSizeSet: boolean
-    show_arrow: boolean
     showArrow: boolean
-    toolbar_style: ToolbarStyle
     toolbarStyle: ToolbarStyle
 
     // Own fields of Gtk-2.0.Gtk.Toolbar
@@ -56613,8 +53564,6 @@ module TreeModelFilter {
 
         // Own constructor properties of Gtk-2.0.Gtk.TreeModelFilter
 
-        child_model?: TreeModel | null
-        virtual_root?: TreePath | null
         childModel?: TreeModel | null
         virtualRoot?: TreePath | null
     }
@@ -56625,9 +53574,7 @@ interface TreeModelFilter extends TreeDragSource, TreeModel {
 
     // Own properties of Gtk-2.0.Gtk.TreeModelFilter
 
-    readonly child_model: TreeModel
     readonly childModel: TreeModel
-    readonly virtual_root: TreePath
     readonly virtualRoot: TreePath
 
     // Own fields of Gtk-2.0.Gtk.TreeModelFilter
@@ -57420,55 +54367,6 @@ module TreeView {
 
         // Own constructor properties of Gtk-2.0.Gtk.TreeView
 
-        enable_grid_lines?: TreeViewGridLines | null
-        enable_search?: boolean | null
-        enable_tree_lines?: boolean | null
-        expander_column?: TreeViewColumn | null
-        /**
-         * Setting the ::fixed-height-mode property to %TRUE speeds up
-         * #GtkTreeView by assuming that all rows have the same height.
-         * Only enable this option if all rows are the same height.
-         * Please see gtk_tree_view_set_fixed_height_mode() for more
-         * information on this option.
-         */
-        fixed_height_mode?: boolean | null
-        hadjustment?: Adjustment | null
-        headers_clickable?: boolean | null
-        headers_visible?: boolean | null
-        /**
-         * Enables of disables the hover expansion mode of `tree_view`.
-         * Hover expansion makes rows expand or collapse if the pointer moves
-         * over them.
-         * 
-         * This mode is primarily intended for treeviews in popups, e.g.
-         * in #GtkComboBox or #GtkEntryCompletion.
-         */
-        hover_expand?: boolean | null
-        /**
-         * Enables of disables the hover selection mode of `tree_view`.
-         * Hover selection makes the selected row follow the pointer.
-         * Currently, this works only for the selection modes
-         * %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
-         * 
-         * This mode is primarily intended for treeviews in popups, e.g.
-         * in #GtkComboBox or #GtkEntryCompletion.
-         */
-        hover_selection?: boolean | null
-        /**
-         * Extra indentation for each level.
-         */
-        level_indentation?: number | null
-        model?: TreeModel | null
-        reorderable?: boolean | null
-        rubber_banding?: boolean | null
-        rules_hint?: boolean | null
-        search_column?: number | null
-        /**
-         * %TRUE if the view has expanders.
-         */
-        show_expanders?: boolean | null
-        tooltip_column?: number | null
-        vadjustment?: Adjustment | null
         enableGridLines?: TreeViewGridLines | null
         enableSearch?: boolean | null
         enableTreeLines?: boolean | null
@@ -57481,6 +54379,7 @@ module TreeView {
          * information on this option.
          */
         fixedHeightMode?: boolean | null
+        hadjustment?: Adjustment | null
         headersClickable?: boolean | null
         headersVisible?: boolean | null
         /**
@@ -57506,6 +54405,8 @@ module TreeView {
          * Extra indentation for each level.
          */
         levelIndentation?: number | null
+        model?: TreeModel | null
+        reorderable?: boolean | null
         rubberBanding?: boolean | null
         rulesHint?: boolean | null
         searchColumn?: number | null
@@ -57514,6 +54415,7 @@ module TreeView {
          */
         showExpanders?: boolean | null
         tooltipColumn?: number | null
+        vadjustment?: Adjustment | null
     }
 
 }
@@ -57522,22 +54424,10 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.TreeView
 
-    enable_grid_lines: TreeViewGridLines
     enableGridLines: TreeViewGridLines
-    enable_search: boolean
     enableSearch: boolean
-    enable_tree_lines: boolean
     enableTreeLines: boolean
-    expander_column: TreeViewColumn
     expanderColumn: TreeViewColumn
-    /**
-     * Setting the ::fixed-height-mode property to %TRUE speeds up
-     * #GtkTreeView by assuming that all rows have the same height.
-     * Only enable this option if all rows are the same height.
-     * Please see gtk_tree_view_set_fixed_height_mode() for more
-     * information on this option.
-     */
-    fixed_height_mode: boolean
     /**
      * Setting the ::fixed-height-mode property to %TRUE speeds up
      * #GtkTreeView by assuming that all rows have the same height.
@@ -57547,19 +54437,8 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      */
     fixedHeightMode: boolean
     hadjustment: Adjustment
-    headers_clickable: boolean
     headersClickable: boolean
-    headers_visible: boolean
     headersVisible: boolean
-    /**
-     * Enables of disables the hover expansion mode of `tree_view`.
-     * Hover expansion makes rows expand or collapse if the pointer moves
-     * over them.
-     * 
-     * This mode is primarily intended for treeviews in popups, e.g.
-     * in #GtkComboBox or #GtkEntryCompletion.
-     */
-    hover_expand: boolean
     /**
      * Enables of disables the hover expansion mode of `tree_view`.
      * Hover expansion makes rows expand or collapse if the pointer moves
@@ -57578,42 +54457,20 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      * This mode is primarily intended for treeviews in popups, e.g.
      * in #GtkComboBox or #GtkEntryCompletion.
      */
-    hover_selection: boolean
-    /**
-     * Enables of disables the hover selection mode of `tree_view`.
-     * Hover selection makes the selected row follow the pointer.
-     * Currently, this works only for the selection modes
-     * %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
-     * 
-     * This mode is primarily intended for treeviews in popups, e.g.
-     * in #GtkComboBox or #GtkEntryCompletion.
-     */
     hoverSelection: boolean
-    /**
-     * Extra indentation for each level.
-     */
-    level_indentation: number
     /**
      * Extra indentation for each level.
      */
     levelIndentation: number
     model: TreeModel
     reorderable: boolean
-    rubber_banding: boolean
     rubberBanding: boolean
-    rules_hint: boolean
     rulesHint: boolean
-    search_column: number
     searchColumn: number
     /**
      * %TRUE if the view has expanders.
      */
-    show_expanders: boolean
-    /**
-     * %TRUE if the view has expanders.
-     */
     showExpanders: boolean
-    tooltip_column: number
     tooltipColumn: number
     vadjustment: Adjustment
 
@@ -58646,9 +55503,9 @@ module TreeViewColumn {
         alignment?: number | null
         clickable?: boolean | null
         expand?: boolean | null
-        fixed_width?: number | null
-        max_width?: number | null
-        min_width?: number | null
+        fixedWidth?: number | null
+        maxWidth?: number | null
+        minWidth?: number | null
         reorderable?: boolean | null
         resizable?: boolean | null
         sizing?: TreeViewColumnSizing | null
@@ -58656,23 +55513,13 @@ module TreeViewColumn {
          * Logical sort column ID this column sorts on when selected for sorting. Setting the sort column ID makes the column header
          * clickable. Set to %-1 to make the column unsortable.
          */
-        sort_column_id?: number | null
-        sort_indicator?: boolean | null
-        sort_order?: SortType | null
+        sortColumnId?: number | null
+        sortIndicator?: boolean | null
+        sortOrder?: SortType | null
         spacing?: number | null
         title?: string | null
         visible?: boolean | null
         widget?: Widget | null
-        fixedWidth?: number | null
-        maxWidth?: number | null
-        minWidth?: number | null
-        /**
-         * Logical sort column ID this column sorts on when selected for sorting. Setting the sort column ID makes the column header
-         * clickable. Set to %-1 to make the column unsortable.
-         */
-        sortColumnId?: number | null
-        sortIndicator?: boolean | null
-        sortOrder?: SortType | null
     }
 
 }
@@ -58690,7 +55537,6 @@ interface TreeViewColumn extends Buildable, CellLayout {
      * clickable. Set to %-1 to make the column unsortable.
      */
     sortColumnId: number
-    sort_indicator: boolean
     sortIndicator: boolean
     sortOrder: SortType
     widget: Widget
@@ -59196,14 +56042,6 @@ module UIManager {
          * Note that this only affects regular menus. Generated popup
          * menus never have tearoff menu items.
          */
-        add_tearoffs?: boolean | null
-        /**
-         * The "add-tearoffs" property controls whether generated menus
-         * have tearoff menu items.
-         * 
-         * Note that this only affects regular menus. Generated popup
-         * menus never have tearoff menu items.
-         */
         addTearoffs?: boolean | null
     }
 
@@ -59213,14 +56051,6 @@ interface UIManager extends Buildable {
 
     // Own properties of Gtk-2.0.Gtk.UIManager
 
-    /**
-     * The "add-tearoffs" property controls whether generated menus
-     * have tearoff menu items.
-     * 
-     * Note that this only affects regular menus. Generated popup
-     * menus never have tearoff menu items.
-     */
-    add_tearoffs: boolean
     /**
      * The "add-tearoffs" property controls whether generated menus
      * have tearoff menu items.
@@ -60464,9 +57294,8 @@ module Viewport {
         // Own constructor properties of Gtk-2.0.Gtk.Viewport
 
         hadjustment?: Adjustment | null
-        shadow_type?: ShadowType | null
-        vadjustment?: Adjustment | null
         shadowType?: ShadowType | null
+        vadjustment?: Adjustment | null
     }
 
 }
@@ -61338,61 +58167,6 @@ module Widget {
 
         // Own constructor properties of Gtk-2.0.Gtk.Widget
 
-        app_paintable?: boolean | null
-        can_default?: boolean | null
-        can_focus?: boolean | null
-        /**
-         * Whether or not the widget is double buffered.
-         */
-        double_buffered?: boolean | null
-        events?: Gdk.EventMask | null
-        extension_events?: Gdk.ExtensionMode | null
-        has_default?: boolean | null
-        has_focus?: boolean | null
-        /**
-         * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
-         * A value of %TRUE indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using #GtkWidget::query-tooltip to determine
-         * whether it will provide a tooltip or not.
-         * 
-         * Note that setting this property to %TRUE for the first time will change
-         * the event masks of the GdkWindows of this widget to include leave-notify
-         * and motion-notify events.  This cannot and will not be undone when the
-         * property is set to %FALSE again.
-         */
-        has_tooltip?: boolean | null
-        height_request?: number | null
-        is_focus?: boolean | null
-        name?: string | null
-        no_show_all?: boolean | null
-        parent?: Container | null
-        receives_default?: boolean | null
-        sensitive?: boolean | null
-        style?: Style | null
-        /**
-         * Sets the text of tooltip to be the given string, which is marked up
-         * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
-         * Also see gtk_tooltip_set_markup().
-         * 
-         * This is a convenience property which will take care of getting the
-         * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
-         * will automatically be set to %TRUE and there will be taken care of
-         * #GtkWidget::query-tooltip in the default signal handler.
-         */
-        tooltip_markup?: string | null
-        /**
-         * Sets the text of tooltip to be the given string.
-         * 
-         * Also see gtk_tooltip_set_text().
-         * 
-         * This is a convenience property which will take care of getting the
-         * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
-         * will automatically be set to %TRUE and there will be taken care of
-         * #GtkWidget::query-tooltip in the default signal handler.
-         */
-        tooltip_text?: string | null
-        visible?: boolean | null
-        width_request?: number | null
         appPaintable?: boolean | null
         canDefault?: boolean | null
         canFocus?: boolean | null
@@ -61400,6 +58174,7 @@ module Widget {
          * Whether or not the widget is double buffered.
          */
         doubleBuffered?: boolean | null
+        events?: Gdk.EventMask | null
         extensionEvents?: Gdk.ExtensionMode | null
         hasDefault?: boolean | null
         hasFocus?: boolean | null
@@ -61417,8 +58192,12 @@ module Widget {
         hasTooltip?: boolean | null
         heightRequest?: number | null
         isFocus?: boolean | null
+        name?: string | null
         noShowAll?: boolean | null
+        parent?: Container | null
         receivesDefault?: boolean | null
+        sensitive?: boolean | null
+        style?: Style | null
         /**
          * Sets the text of tooltip to be the given string, which is marked up
          * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
@@ -61441,6 +58220,7 @@ module Widget {
          * #GtkWidget::query-tooltip in the default signal handler.
          */
         tooltipText?: string | null
+        visible?: boolean | null
         widthRequest?: number | null
     }
 
@@ -61450,28 +58230,17 @@ interface Widget extends Atk.ImplementorIface, Buildable {
 
     // Own properties of Gtk-2.0.Gtk.Widget
 
-    app_paintable: boolean
     appPaintable: boolean
-    can_default: boolean
     canDefault: boolean
-    can_focus: boolean
     canFocus: boolean
-    readonly composite_child: boolean
     readonly compositeChild: boolean
-    /**
-     * Whether or not the widget is double buffered.
-     */
-    double_buffered: boolean
     /**
      * Whether or not the widget is double buffered.
      */
     doubleBuffered: boolean
     events: Gdk.EventMask
-    extension_events: Gdk.ExtensionMode
     extensionEvents: Gdk.ExtensionMode
-    has_default: boolean
     hasDefault: boolean
-    has_focus: boolean
     hasFocus: boolean
     /**
      * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
@@ -61484,39 +58253,12 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * and motion-notify events.  This cannot and will not be undone when the
      * property is set to %FALSE again.
      */
-    has_tooltip: boolean
-    /**
-     * Enables or disables the emission of #GtkWidget::query-tooltip on `widget`.
-     * A value of %TRUE indicates that `widget` can have a tooltip, in this case
-     * the widget will be queried using #GtkWidget::query-tooltip to determine
-     * whether it will provide a tooltip or not.
-     * 
-     * Note that setting this property to %TRUE for the first time will change
-     * the event masks of the GdkWindows of this widget to include leave-notify
-     * and motion-notify events.  This cannot and will not be undone when the
-     * property is set to %FALSE again.
-     */
     hasTooltip: boolean
-    height_request: number
     heightRequest: number
-    is_focus: boolean
     isFocus: boolean
-    no_show_all: boolean
     noShowAll: boolean
-    receives_default: boolean
     receivesDefault: boolean
     sensitive: boolean
-    /**
-     * Sets the text of tooltip to be the given string, which is marked up
-     * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
-     * Also see gtk_tooltip_set_markup().
-     * 
-     * This is a convenience property which will take care of getting the
-     * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
-     * will automatically be set to %TRUE and there will be taken care of
-     * #GtkWidget::query-tooltip in the default signal handler.
-     */
-    tooltip_markup: string | null
     /**
      * Sets the text of tooltip to be the given string, which is marked up
      * with the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
@@ -61538,20 +58280,8 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * will automatically be set to %TRUE and there will be taken care of
      * #GtkWidget::query-tooltip in the default signal handler.
      */
-    tooltip_text: string | null
-    /**
-     * Sets the text of tooltip to be the given string.
-     * 
-     * Also see gtk_tooltip_set_text().
-     * 
-     * This is a convenience property which will take care of getting the
-     * tooltip shown if the given string is not %NULL: #GtkWidget:has-tooltip
-     * will automatically be set to %TRUE and there will be taken care of
-     * #GtkWidget::query-tooltip in the default signal handler.
-     */
     tooltipText: string | null
     visible: boolean
-    width_request: number
     widthRequest: number
 
     // Own fields of Gtk-2.0.Gtk.Widget
@@ -62163,6 +58893,19 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      */
     grab_focus(): void
     /**
+     * Determines whether `widget` is the current default widget within its
+     * toplevel. See gtk_widget_set_can_default().
+     * @returns %TRUE if @widget is the current default widget within     its toplevel, %FALSE otherwise
+     */
+    has_default(): boolean
+    /**
+     * Determines if the widget has the global input focus. See
+     * gtk_widget_is_focus() for the difference between having the global
+     * input focus, and only having the focus within a toplevel.
+     * @returns %TRUE if the widget has the global input focus.
+     */
+    has_focus(): boolean
+    /**
      * Determines whether the widget is currently grabbing events, so it
      * is the only widget receiving input events (keyboard and mouse).
      * 
@@ -62246,6 +58989,14 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * @returns %TRUE if @widget is drawable, %FALSE otherwise
      */
     is_drawable(): boolean
+    /**
+     * Determines if the widget is the focus widget within its
+     * toplevel. (This does not mean that the %HAS_FOCUS flag is
+     * necessarily set; %HAS_FOCUS will only be set if the
+     * toplevel widget additionally has the global input focus.)
+     * @returns %TRUE if the widget is the focus widget.
+     */
+    is_focus(): boolean
     /**
      * Returns the widget's effective sensitivity, which means
      * it is sensitive itself and also its parent widget is sensntive
@@ -63882,73 +60633,6 @@ module Window {
         /**
          * Whether the window should receive the input focus.
          */
-        accept_focus?: boolean | null
-        /**
-         * If %TRUE, users can expand the window beyond its minimum size.
-         */
-        allow_grow?: boolean | null
-        /**
-         * If %TRUE, the window has no mimimum size. Setting this to %TRUE is
-         * 99&percnt; of the time a bad idea.
-         */
-        allow_shrink?: boolean | null
-        /**
-         * Whether the window should be decorated by the window manager.
-         */
-        decorated?: boolean | null
-        default_height?: number | null
-        default_width?: number | null
-        /**
-         * Whether the window frame should have a close button.
-         */
-        deletable?: boolean | null
-        destroy_with_parent?: boolean | null
-        /**
-         * Whether the window should receive the input focus when mapped.
-         */
-        focus_on_map?: boolean | null
-        /**
-         * The window gravity of the window. See gtk_window_move() and #GdkGravity for
-         * more details about window gravity.
-         */
-        gravity?: Gdk.Gravity | null
-        icon?: GdkPixbuf.Pixbuf | null
-        /**
-         * The :icon-name property specifies the name of the themed icon to
-         * use as the window icon. See #GtkIconTheme for more details.
-         */
-        icon_name?: string | null
-        mnemonics_visible?: boolean | null
-        modal?: boolean | null
-        /**
-         * The requested opacity of the window. See gtk_window_set_opacity() for
-         * more details about window opacity.
-         */
-        opacity?: number | null
-        resizable?: boolean | null
-        role?: string | null
-        screen?: Gdk.Screen | null
-        skip_pager_hint?: boolean | null
-        skip_taskbar_hint?: boolean | null
-        /**
-         * The :startup-id is a write-only property for setting window's
-         * startup notification identifier. See gtk_window_set_startup_id()
-         * for more details.
-         */
-        startup_id?: string | null
-        title?: string | null
-        /**
-         * The transient parent of the window. See gtk_window_set_transient_for() for
-         * more details about transient windows.
-         */
-        transient_for?: Window | null
-        type?: WindowType | null
-        type_hint?: Gdk.WindowTypeHint | null
-        urgency_hint?: boolean | null
-        window_position?: WindowPosition | null
-        /**
-         * Whether the window should receive the input focus.
-         */
         acceptFocus?: boolean | null
         /**
          * If %TRUE, users can expand the window beyond its minimum size.
@@ -63959,19 +60643,42 @@ module Window {
          * 99&percnt; of the time a bad idea.
          */
         allowShrink?: boolean | null
+        /**
+         * Whether the window should be decorated by the window manager.
+         */
+        decorated?: boolean | null
         defaultHeight?: number | null
         defaultWidth?: number | null
+        /**
+         * Whether the window frame should have a close button.
+         */
+        deletable?: boolean | null
         destroyWithParent?: boolean | null
         /**
          * Whether the window should receive the input focus when mapped.
          */
         focusOnMap?: boolean | null
         /**
+         * The window gravity of the window. See gtk_window_move() and #GdkGravity for
+         * more details about window gravity.
+         */
+        gravity?: Gdk.Gravity | null
+        icon?: GdkPixbuf.Pixbuf | null
+        /**
          * The :icon-name property specifies the name of the themed icon to
          * use as the window icon. See #GtkIconTheme for more details.
          */
         iconName?: string | null
         mnemonicsVisible?: boolean | null
+        modal?: boolean | null
+        /**
+         * The requested opacity of the window. See gtk_window_set_opacity() for
+         * more details about window opacity.
+         */
+        opacity?: number | null
+        resizable?: boolean | null
+        role?: string | null
+        screen?: Gdk.Screen | null
         skipPagerHint?: boolean | null
         skipTaskbarHint?: boolean | null
         /**
@@ -63980,11 +60687,13 @@ module Window {
          * for more details.
          */
         startupId?: string | null
+        title?: string | null
         /**
          * The transient parent of the window. See gtk_window_set_transient_for() for
          * more details about transient windows.
          */
         transientFor?: Window | null
+        type?: WindowType | null
         typeHint?: Gdk.WindowTypeHint | null
         urgencyHint?: boolean | null
         windowPosition?: WindowPosition | null
@@ -63999,10 +60708,6 @@ interface Window extends Atk.ImplementorIface, Buildable {
     /**
      * Whether the window should receive the input focus.
      */
-    accept_focus: boolean
-    /**
-     * Whether the window should receive the input focus.
-     */
     acceptFocus: boolean
     /**
      * If %TRUE, users can expand the window beyond its minimum size.
@@ -64013,19 +60718,13 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * 99&percnt; of the time a bad idea.
      */
     allowShrink: boolean
-    default_height: number
     defaultHeight: number
-    default_width: number
     defaultWidth: number
     /**
      * Whether the window frame should have a close button.
      */
     deletable: boolean
     destroyWithParent: boolean
-    /**
-     * Whether the window should receive the input focus when mapped.
-     */
-    focus_on_map: boolean
     /**
      * Whether the window should receive the input focus when mapped.
      */
@@ -64036,14 +60735,8 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * The :icon-name property specifies the name of the themed icon to
      * use as the window icon. See #GtkIconTheme for more details.
      */
-    icon_name: string | null
-    /**
-     * The :icon-name property specifies the name of the themed icon to
-     * use as the window icon. See #GtkIconTheme for more details.
-     */
     iconName: string | null
     readonly isActive: boolean
-    mnemonics_visible: boolean
     mnemonicsVisible: boolean
     /**
      * The requested opacity of the window. See gtk_window_set_opacity() for
@@ -64052,16 +60745,8 @@ interface Window extends Atk.ImplementorIface, Buildable {
     opacity: number
     resizable: boolean
     role: string | null
-    skip_pager_hint: boolean
     skipPagerHint: boolean
-    skip_taskbar_hint: boolean
     skipTaskbarHint: boolean
-    /**
-     * The :startup-id is a write-only property for setting window's
-     * startup notification identifier. See gtk_window_set_startup_id()
-     * for more details.
-     */
-    startup_id: string | null
     /**
      * The :startup-id is a write-only property for setting window's
      * startup notification identifier. See gtk_window_set_startup_id()
@@ -64072,16 +60757,9 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * The transient parent of the window. See gtk_window_set_transient_for() for
      * more details about transient windows.
      */
-    transient_for: Window
-    /**
-     * The transient parent of the window. See gtk_window_set_transient_for() for
-     * more details about transient windows.
-     */
     transientFor: Window
     typeHint: Gdk.WindowTypeHint
-    urgency_hint: boolean
     urgencyHint: boolean
-    window_position: WindowPosition
     windowPosition: WindowPosition
 
     // Own fields of Gtk-2.0.Gtk.Window
@@ -64106,7 +60784,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
     position: number
     type: number
     has_user_ref_count: number
-    has_focus: any
+    // Has conflict: has_focus: number
     modal: number
     destroy_with_parent: number
     has_frame: number

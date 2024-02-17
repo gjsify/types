@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-cogl-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Cogl-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-cogl-12.js",
     "main": "node-cogl-12.js",
     "exports": {
-        "./ambient": "./node-cogl-12-ambient.d.ts",
-        "./import": "./node-cogl-12-import.d.ts",
+        "./ambient": {
+            "types": "./node-cogl-12-ambient.d.ts",
+            "default": "./node-cogl-12-ambient.js"
+        },
+        "./import": {
+            "types": "./node-cogl-12-import.d.ts",
+            "default": "./node-cogl-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-cogl-12.d.ts",

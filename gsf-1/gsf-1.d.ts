@@ -1295,9 +1295,8 @@ module InfileZip {
 
         // Own constructor properties of Gsf-1.Gsf.InfileZip
 
-        internal_parent?: InfileZip | null
-        source?: Input | null
         internalParent?: InfileZip | null
+        source?: Input | null
     }
 
 }
@@ -1309,12 +1308,7 @@ interface InfileZip {
     /**
      * Controls the level of compression used for new members.
      */
-    readonly compression_level: number
-    /**
-     * Controls the level of compression used for new members.
-     */
     readonly compressionLevel: number
-    readonly internal_parent: InfileZip
     readonly internalParent: InfileZip
     readonly source: Input
     readonly zip64: boolean
@@ -1585,7 +1579,6 @@ module InputGZip {
 
         raw?: boolean | null
         source?: Input | null
-        uncompressed_size?: number | null
         uncompressedSize?: number | null
     }
 
@@ -1597,7 +1590,6 @@ interface InputGZip {
 
     readonly raw: boolean
     readonly source: Input
-    readonly uncompressed_size: number
     readonly uncompressedSize: number
 
     // Class property signals of Gsf-1.Gsf.InputGZip
@@ -1712,9 +1704,8 @@ module InputHTTP {
 
         // Own constructor properties of Gsf-1.Gsf.InputHTTP
 
-        content_type?: string | null
-        url?: string | null
         contentType?: string | null
+        url?: string | null
     }
 
 }
@@ -1723,7 +1714,6 @@ interface InputHTTP {
 
     // Own properties of Gsf-1.Gsf.InputHTTP
 
-    readonly content_type: string | null
     readonly contentType: string | null
     readonly url: string | null
 
@@ -2037,7 +2027,6 @@ module ODFOut {
 
         // Own constructor properties of Gsf-1.Gsf.ODFOut
 
-        odf_version?: number | null
         odfVersion?: number | null
     }
 
@@ -2047,7 +2036,6 @@ interface ODFOut {
 
     // Own properties of Gsf-1.Gsf.ODFOut
 
-    readonly odf_version: number
     readonly odfVersion: number
 
     // Own fields of Gsf-1.Gsf.ODFOut
@@ -2164,10 +2152,8 @@ module OutfileMSOle {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileMSOle
 
-        big_block_size?: number | null
-        sink?: Output | null
-        small_block_size?: number | null
         bigBlockSize?: number | null
+        sink?: Output | null
         smallBlockSize?: number | null
     }
 
@@ -2177,10 +2163,8 @@ interface OutfileMSOle {
 
     // Own properties of Gsf-1.Gsf.OutfileMSOle
 
-    readonly big_block_size: number
     readonly bigBlockSize: number
     readonly sink: Output
-    readonly small_block_size: number
     readonly smallBlockSize: number
 
     // Owm methods of Gsf-1.Gsf.OutfileMSOle
@@ -2274,11 +2258,9 @@ module OutfileOpenPkg {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileOpenPkg
 
-        content_type?: string | null
-        is_dir?: boolean | null
-        sink?: Outfile | null
         contentType?: string | null
         isDir?: boolean | null
+        sink?: Outfile | null
     }
 
 }
@@ -2287,9 +2269,7 @@ interface OutfileOpenPkg {
 
     // Own properties of Gsf-1.Gsf.OutfileOpenPkg
 
-    readonly content_type: string | null
     readonly contentType: string | null
-    readonly is_dir: boolean
     readonly isDir: boolean
     readonly sink: Outfile
 
@@ -2426,14 +2406,11 @@ module OutfileZip {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileZip
 
-        compression_level?: number | null
-        deflate_level?: number | null
-        entry_name?: string | null
-        sink?: Output | null
-        zip64?: number | null
         compressionLevel?: number | null
         deflateLevel?: number | null
         entryName?: string | null
+        sink?: Output | null
+        zip64?: number | null
     }
 
 }
@@ -2442,11 +2419,8 @@ interface OutfileZip {
 
     // Own properties of Gsf-1.Gsf.OutfileZip
 
-    readonly compression_level: number
     readonly compressionLevel: number
-    readonly deflate_level: number
     readonly deflateLevel: number
-    readonly entry_name: string | null
     readonly entryName: string | null
     readonly sink: Output
     readonly zip64: number
@@ -2784,14 +2758,11 @@ module OutputCsv {
 
         eol?: string | null
         quote?: string | null
-        quoting_mode?: OutputCsvQuotingMode | null
-        quoting_on_whitespace?: boolean | null
-        quoting_triggers?: string | null
-        separator?: string | null
-        sink?: Output | null
         quotingMode?: OutputCsvQuotingMode | null
         quotingOnWhitespace?: boolean | null
         quotingTriggers?: string | null
+        separator?: string | null
+        sink?: Output | null
     }
 
 }
@@ -2801,7 +2772,6 @@ interface OutputCsv {
     // Own properties of Gsf-1.Gsf.OutputCsv
 
     quotingMode: OutputCsvQuotingMode
-    quoting_on_whitespace: boolean
     quotingOnWhitespace: boolean
     quotingTriggers: string | null
 
@@ -2875,10 +2845,9 @@ module OutputGZip {
 
         // Own constructor properties of Gsf-1.Gsf.OutputGZip
 
-        deflate_level?: number | null
+        deflateLevel?: number | null
         raw?: boolean | null
         sink?: Output | null
-        deflateLevel?: number | null
     }
 
 }
@@ -2887,7 +2856,6 @@ interface OutputGZip {
 
     // Own properties of Gsf-1.Gsf.OutputGZip
 
-    deflate_level: number
     deflateLevel: number
     readonly raw: boolean
     readonly sink: Output
@@ -3056,11 +3024,9 @@ module OutputIconv {
          * in the target encoding.  NULL means use \u1234 or \U12345678 format.
          */
         fallback?: string | null
-        input_charset?: string | null
-        output_charset?: string | null
-        sink?: Output | null
         inputCharset?: string | null
         outputCharset?: string | null
+        sink?: Output | null
     }
 
 }
@@ -3075,9 +3041,7 @@ interface OutputIconv {
      * in the target encoding.  NULL means use \u1234 or \U12345678 format.
      */
     fallback: string | null
-    readonly input_charset: string | null
     readonly inputCharset: string | null
-    readonly output_charset: string | null
     readonly outputCharset: string | null
     readonly sink: Output
 
@@ -3353,9 +3317,8 @@ module XMLOut {
 
         // Own constructor properties of Gsf-1.Gsf.XMLOut
 
-        pretty_print?: boolean | null
-        sink?: Output | null
         prettyPrint?: boolean | null
+        sink?: Output | null
     }
 
 }
@@ -3364,7 +3327,6 @@ interface XMLOut {
 
     // Own properties of Gsf-1.Gsf.XMLOut
 
-    pretty_print: boolean
     prettyPrint: boolean
     readonly sink: Output
 

@@ -656,14 +656,12 @@ module Alias {
 
         // Own constructor properties of Snapd-1.Snapd.Alias
 
-        app_auto?: string | null
-        app_manual?: string | null
+        appAuto?: string | null
+        appManual?: string | null
         command?: string | null
         name?: string | null
         snap?: string | null
         status?: AliasStatus | null
-        appAuto?: string | null
-        appManual?: string | null
     }
 
 }
@@ -672,9 +670,7 @@ interface Alias {
 
     // Own properties of Snapd-1.Snapd.Alias
 
-    readonly app_auto: string | null
     readonly appAuto: string | null
-    readonly app_manual: string | null
     readonly appManual: string | null
     readonly command: string | null
     readonly name: string | null
@@ -776,15 +772,12 @@ module App {
 
         active?: boolean | null
         aliases?: string[] | null
-        common_id?: string | null
-        daemon_type?: DaemonType | null
-        desktop_file?: string | null
-        enabled?: boolean | null
-        name?: string | null
-        snap?: string | null
         commonId?: string | null
         daemonType?: DaemonType | null
         desktopFile?: string | null
+        enabled?: boolean | null
+        name?: string | null
+        snap?: string | null
     }
 
 }
@@ -795,11 +788,8 @@ interface App {
 
     readonly active: boolean
     readonly aliases: string[]
-    readonly common_id: string | null
     readonly commonId: string | null
-    readonly daemon_type: DaemonType
     readonly daemonType: DaemonType
-    readonly desktop_file: string | null
     readonly desktopFile: string | null
     readonly enabled: boolean
     readonly name: string | null
@@ -1082,13 +1072,11 @@ module Change {
         id?: string | null
         kind?: string | null
         ready?: boolean | null
-        ready_time?: GLib.DateTime | null
-        spawn_time?: GLib.DateTime | null
+        readyTime?: GLib.DateTime | null
+        spawnTime?: GLib.DateTime | null
         status?: string | null
         summary?: string | null
         tasks?: any[] | null
-        readyTime?: GLib.DateTime | null
-        spawnTime?: GLib.DateTime | null
     }
 
 }
@@ -1101,9 +1089,7 @@ interface Change {
     readonly id: string | null
     readonly kind: string | null
     readonly ready: boolean
-    readonly ready_time: GLib.DateTime
     readonly readyTime: GLib.DateTime
-    readonly spawn_time: GLib.DateTime
     readonly spawnTime: GLib.DateTime
     readonly status: string | null
     readonly summary: string | null
@@ -1220,11 +1206,10 @@ module Channel {
         confinement?: Confinement | null
         epoch?: string | null
         name?: string | null
-        released_at?: GLib.DateTime | null
+        releasedAt?: GLib.DateTime | null
         revision?: string | null
         size?: number | null
         version?: string | null
-        releasedAt?: GLib.DateTime | null
     }
 
 }
@@ -1236,7 +1221,6 @@ interface Channel {
     readonly confinement: Confinement
     readonly epoch: string | null
     readonly name: string | null
-    readonly released_at: GLib.DateTime
     readonly releasedAt: GLib.DateTime
     readonly revision: string | null
     readonly size: number
@@ -3539,12 +3523,10 @@ module Connection {
         manual?: boolean | null
         name?: string | null
         plug?: PlugRef | null
-        plug_attrs?: GLib.HashTable | null
-        slot?: SlotRef | null
-        slot_attrs?: GLib.HashTable | null
-        snap?: string | null
         plugAttrs?: GLib.HashTable | null
+        slot?: SlotRef | null
         slotAttrs?: GLib.HashTable | null
+        snap?: string | null
     }
 
 }
@@ -3558,10 +3540,8 @@ interface Connection {
     readonly manual: boolean
     readonly name: string | null
     readonly plug: PlugRef
-    readonly plug_attrs: GLib.HashTable
     readonly plugAttrs: GLib.HashTable
     readonly slot: SlotRef
-    readonly slot_attrs: GLib.HashTable
     readonly slotAttrs: GLib.HashTable
     readonly snap: string | null
 
@@ -3698,7 +3678,6 @@ module Icon {
         // Own constructor properties of Snapd-1.Snapd.Icon
 
         data?: GLib.Bytes | null
-        mime_type?: string | null
         mimeType?: string | null
     }
 
@@ -3709,7 +3688,6 @@ interface Icon {
     // Own properties of Snapd-1.Snapd.Icon
 
     readonly data: GLib.Bytes
-    readonly mime_type: string | null
     readonly mimeType: string | null
 
     // Owm methods of Snapd-1.Snapd.Icon
@@ -3773,12 +3751,11 @@ module Interface {
 
         // Own constructor properties of Snapd-1.Snapd.Interface
 
-        doc_url?: string | null
+        docUrl?: string | null
         name?: string | null
         plugs?: any[] | null
         slots?: any[] | null
         summary?: string | null
-        docUrl?: string | null
     }
 
 }
@@ -3787,7 +3764,6 @@ interface Interface {
 
     // Own properties of Snapd-1.Snapd.Interface
 
-    readonly doc_url: string | null
     readonly docUrl: string | null
     readonly name: string | null
     readonly plugs: any[]
@@ -3941,9 +3917,8 @@ module MarkdownNode {
         // Own constructor properties of Snapd-1.Snapd.MarkdownNode
 
         children?: any[] | null
-        node_type?: MarkdownNodeType | null
-        text?: string | null
         nodeType?: MarkdownNodeType | null
+        text?: string | null
     }
 
 }
@@ -3953,7 +3928,6 @@ interface MarkdownNode {
     // Own properties of Snapd-1.Snapd.MarkdownNode
 
     readonly children: any[]
-    readonly node_type: MarkdownNodeType
     readonly nodeType: MarkdownNodeType
     readonly text: string | null
 
@@ -4696,50 +4670,39 @@ module Snap {
         broken?: string | null
         channel?: string | null
         channels?: any[] | null
-        common_ids?: string[] | null
+        commonIds?: string[] | null
         confinement?: Confinement | null
         contact?: string | null
         description?: string | null
         developer?: string | null
         devmode?: boolean | null
-        download_size?: number | null
+        downloadSize?: number | null
         icon?: string | null
         id?: string | null
-        install_date?: GLib.DateTime | null
-        installed_size?: number | null
+        installDate?: GLib.DateTime | null
+        installedSize?: number | null
         jailmode?: boolean | null
         license?: string | null
         media?: any[] | null
-        mounted_from?: string | null
+        mountedFrom?: string | null
         name?: string | null
         prices?: any[] | null
         private?: boolean | null
-        publisher_display_name?: string | null
-        publisher_id?: string | null
-        publisher_username?: string | null
-        publisher_validation?: PublisherValidation | null
-        revision?: string | null
-        screenshots?: any[] | null
-        snap_type?: SnapType | null
-        status?: SnapStatus | null
-        summary?: string | null
-        title?: string | null
-        tracking_channel?: string | null
-        tracks?: string[] | null
-        trymode?: boolean | null
-        version?: string | null
-        website?: string | null
-        commonIds?: string[] | null
-        downloadSize?: number | null
-        installDate?: GLib.DateTime | null
-        installedSize?: number | null
-        mountedFrom?: string | null
         publisherDisplayName?: string | null
         publisherId?: string | null
         publisherUsername?: string | null
         publisherValidation?: PublisherValidation | null
+        revision?: string | null
+        screenshots?: any[] | null
         snapType?: SnapType | null
+        status?: SnapStatus | null
+        summary?: string | null
+        title?: string | null
         trackingChannel?: string | null
+        tracks?: string[] | null
+        trymode?: boolean | null
+        version?: string | null
+        website?: string | null
     }
 
 }
@@ -4753,45 +4716,34 @@ interface Snap {
     readonly broken: string | null
     readonly channel: string | null
     readonly channels: any[]
-    readonly common_ids: string[]
     readonly commonIds: string[]
     readonly confinement: Confinement
     readonly contact: string | null
     readonly description: string | null
     readonly developer: string | null
     readonly devmode: boolean
-    readonly download_size: number
     readonly downloadSize: number
     readonly icon: string | null
     readonly id: string | null
-    readonly install_date: GLib.DateTime
     readonly installDate: GLib.DateTime
-    readonly installed_size: number
     readonly installedSize: number
     readonly jailmode: boolean
     readonly license: string | null
     readonly media: any[]
-    readonly mounted_from: string | null
     readonly mountedFrom: string | null
     readonly name: string | null
     readonly prices: any[]
     readonly private: boolean
-    readonly publisher_display_name: string | null
     readonly publisherDisplayName: string | null
-    readonly publisher_id: string | null
     readonly publisherId: string | null
-    readonly publisher_username: string | null
     readonly publisherUsername: string | null
-    readonly publisher_validation: PublisherValidation
     readonly publisherValidation: PublisherValidation
     readonly revision: string | null
     readonly screenshots: any[]
-    readonly snap_type: SnapType
     readonly snapType: SnapType
     readonly status: SnapStatus
     readonly summary: string | null
     readonly title: string | null
-    readonly tracking_channel: string | null
     readonly trackingChannel: string | null
     readonly tracks: string[]
     readonly trymode: boolean
@@ -5152,27 +5104,11 @@ module SystemInformation {
 
         // Own constructor properties of Snapd-1.Snapd.SystemInformation
 
-        binaries_directory?: string | null
-        build_id?: string | null
-        confinement?: SystemConfinement | null
-        kernel_version?: string | null
-        managed?: boolean | null
-        mount_directory?: string | null
-        on_classic?: boolean | null
-        os_id?: string | null
-        os_version?: string | null
-        refresh_hold?: GLib.DateTime | null
-        refresh_last?: GLib.DateTime | null
-        refresh_next?: GLib.DateTime | null
-        refresh_schedule?: string | null
-        refresh_timer?: string | null
-        sandbox_features?: any | null
-        series?: string | null
-        store?: string | null
-        version?: string | null
         binariesDirectory?: string | null
         buildId?: string | null
+        confinement?: SystemConfinement | null
         kernelVersion?: string | null
+        managed?: boolean | null
         mountDirectory?: string | null
         onClassic?: boolean | null
         osId?: string | null
@@ -5183,6 +5119,9 @@ module SystemInformation {
         refreshSchedule?: string | null
         refreshTimer?: string | null
         sandboxFeatures?: any | null
+        series?: string | null
+        store?: string | null
+        version?: string | null
     }
 
 }
@@ -5191,33 +5130,20 @@ interface SystemInformation {
 
     // Own properties of Snapd-1.Snapd.SystemInformation
 
-    readonly binaries_directory: string | null
     readonly binariesDirectory: string | null
-    readonly build_id: string | null
     readonly buildId: string | null
     readonly confinement: SystemConfinement
-    readonly kernel_version: string | null
     readonly kernelVersion: string | null
     readonly managed: boolean
-    readonly mount_directory: string | null
     readonly mountDirectory: string | null
-    readonly on_classic: boolean
     readonly onClassic: boolean
-    readonly os_id: string | null
     readonly osId: string | null
-    readonly os_version: string | null
     readonly osVersion: string | null
-    readonly refresh_hold: GLib.DateTime
     readonly refreshHold: GLib.DateTime
-    readonly refresh_last: GLib.DateTime
     readonly refreshLast: GLib.DateTime
-    readonly refresh_next: GLib.DateTime
     readonly refreshNext: GLib.DateTime
-    readonly refresh_schedule: string | null
     readonly refreshSchedule: string | null
-    readonly refresh_timer: string | null
     readonly refreshTimer: string | null
-    readonly sandbox_features: any
     readonly sandboxFeatures: any
     readonly series: string | null
     readonly store: string | null
@@ -5407,19 +5333,14 @@ module Task {
 
         id?: string | null
         kind?: string | null
-        progress_done?: number | null
-        progress_label?: string | null
-        progress_total?: number | null
-        ready?: boolean | null
-        ready_time?: GLib.DateTime | null
-        spawn_time?: GLib.DateTime | null
-        status?: string | null
-        summary?: string | null
         progressDone?: number | null
         progressLabel?: string | null
         progressTotal?: number | null
+        ready?: boolean | null
         readyTime?: GLib.DateTime | null
         spawnTime?: GLib.DateTime | null
+        status?: string | null
+        summary?: string | null
     }
 
 }
@@ -5430,16 +5351,11 @@ interface Task {
 
     readonly id: string | null
     readonly kind: string | null
-    readonly progress_done: number
     readonly progressDone: number
-    readonly progress_label: string | null
     readonly progressLabel: string | null
-    readonly progress_total: number
     readonly progressTotal: number
     readonly ready: boolean
-    readonly ready_time: GLib.DateTime
     readonly readyTime: GLib.DateTime
-    readonly spawn_time: GLib.DateTime
     readonly spawnTime: GLib.DateTime
     readonly status: string | null
     readonly summary: string | null
@@ -5560,13 +5476,11 @@ module UserInformation {
 
         // Own constructor properties of Snapd-1.Snapd.UserInformation
 
-        auth_data?: AuthData | null
+        authData?: AuthData | null
         email?: string | null
         id?: number | null
-        ssh_keys?: string[] | null
-        username?: string | null
-        authData?: AuthData | null
         sshKeys?: string[] | null
+        username?: string | null
     }
 
 }
@@ -5575,11 +5489,9 @@ interface UserInformation {
 
     // Own properties of Snapd-1.Snapd.UserInformation
 
-    readonly auth_data: AuthData
     readonly authData: AuthData
     readonly email: string | null
     readonly id: number
-    readonly ssh_keys: string[]
     readonly sshKeys: string[]
     readonly username: string | null
 

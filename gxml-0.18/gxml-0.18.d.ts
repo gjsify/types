@@ -215,7 +215,6 @@ module Collection {
         // Own constructor properties of GXml-0.18.GXml.Collection
 
         element?: DomElement | null
-        items_type?: GObject.GType | null
         itemsType?: GObject.GType | null
     }
 
@@ -225,12 +224,9 @@ interface Collection extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.Collection
 
-    readonly nodes_index: GLib.Queue
     readonly nodesIndex: GLib.Queue
     element: DomElement
-    readonly items_name: string | null
     readonly itemsName: string | null
-    items_type: GObject.GType
     itemsType: GObject.GType
     readonly length: number
 
@@ -480,7 +476,6 @@ module Map {
 
         // Own constructor properties of GXml-0.18.GXml.Map
 
-        attribute_key?: string | null
         attributeKey?: string | null
     }
 
@@ -490,9 +485,7 @@ interface Map extends GObject.Object, Collection, Gee.Traversable, Gee.Iterable 
 
     // Own properties of GXml-0.18.GXml.Map
 
-    attribute_key: string | null
     attributeKey: string | null
-    readonly keys_set: Gee.Set
     readonly keysSet: Gee.Set
 
     // Owm methods of GXml-0.18.GXml.Map
@@ -684,8 +677,6 @@ module PairedMap {
 
         // Own constructor properties of GXml-0.18.GXml.PairedMap
 
-        attribute_primary_key?: string | null
-        attribute_secondary_key?: string | null
         attributePrimaryKey?: string | null
         attributeSecondaryKey?: string | null
     }
@@ -696,11 +687,8 @@ interface PairedMap extends GObject.Object, Collection, Gee.Traversable, Gee.Ite
 
     // Own properties of GXml-0.18.GXml.PairedMap
 
-    attribute_primary_key: string | null
     attributePrimaryKey: string | null
-    attribute_secondary_key: string | null
     attributeSecondaryKey: string | null
-    readonly primary_keys_set: Gee.Set
     readonly primaryKeysSet: Gee.Set
 
     // Owm methods of GXml-0.18.GXml.PairedMap
@@ -905,9 +893,6 @@ module ThreeMap {
 
         // Own constructor properties of GXml-0.18.GXml.ThreeMap
 
-        attribute_primary_key?: string | null
-        attribute_secondary_key?: string | null
-        attribute_third_key?: string | null
         attributePrimaryKey?: string | null
         attributeSecondaryKey?: string | null
         attributeThirdKey?: string | null
@@ -919,13 +904,9 @@ interface ThreeMap extends GObject.Object, Collection, Gee.Traversable, Gee.Iter
 
     // Own properties of GXml-0.18.GXml.ThreeMap
 
-    attribute_primary_key: string | null
     attributePrimaryKey: string | null
-    attribute_secondary_key: string | null
     attributeSecondaryKey: string | null
-    attribute_third_key: string | null
     attributeThirdKey: string | null
-    readonly primary_keys_set: Gee.Set
     readonly primaryKeysSet: Gee.Set
 
     // Owm methods of GXml-0.18.GXml.ThreeMap
@@ -1333,12 +1314,10 @@ module Document {
         // Own constructor properties of GXml-0.18.GXml.Document
 
         indent?: boolean | null
-        ns_top?: boolean | null
-        prefix_default_ns?: boolean | null
-        backup?: boolean | null
-        file?: Gio.File | null
         nsTop?: boolean | null
         prefixDefaultNs?: boolean | null
+        backup?: boolean | null
+        file?: Gio.File | null
     }
 
 }
@@ -1348,9 +1327,7 @@ interface Document extends GObject.Object, Node {
     // Own properties of GXml-0.18.GXml.Document
 
     indent: boolean
-    ns_top: boolean
     nsTop: boolean
-    prefix_default_ns: boolean
     prefixDefaultNs: boolean
     backup: boolean
     readonly root: Node
@@ -1537,10 +1514,8 @@ interface DomAttr extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.DomAttr
 
-    readonly namespace_uri: string | null
     readonly namespaceUri: string | null
     readonly prefix: string | null
-    readonly local_name: string | null
     readonly localName: string | null
     readonly name: string | null
     value: string | null
@@ -1759,7 +1734,6 @@ interface DomText extends DomCharacterData {
 
     // Own properties of GXml-0.18.GXml.DomText
 
-    readonly whole_text: string | null
     readonly wholeText: string | null
 
     // Owm methods of GXml-0.18.GXml.DomText
@@ -2241,11 +2215,8 @@ interface DomParentNode extends GObject.Object {
     // Own properties of GXml-0.18.GXml.DomParentNode
 
     readonly children: DomHTMLCollection
-    readonly first_element_child: DomElement
     readonly firstElementChild: DomElement
-    readonly last_element_child: DomElement
     readonly lastElementChild: DomElement
-    readonly child_element_count: number
     readonly childElementCount: number
 
     // Owm methods of GXml-0.18.GXml.DomParentNode
@@ -2314,9 +2285,7 @@ interface DomNonDocumentTypeChildNode extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.DomNonDocumentTypeChildNode
 
-    readonly previous_element_sibling: DomElement
     readonly previousElementSibling: DomElement
-    readonly next_element_sibling: DomElement
     readonly nextElementSibling: DomElement
 
     // Owm methods of GXml-0.18.GXml.DomNonDocumentTypeChildNode
@@ -2413,7 +2382,6 @@ interface DomNodeList extends GObject.Object, Gee.BidirList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Owm methods of GXml-0.18.GXml.DomNodeList
@@ -2512,7 +2480,6 @@ interface DomHTMLCollection extends GObject.Object, Gee.BidirList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Owm methods of GXml-0.18.GXml.DomHTMLCollection
@@ -2622,11 +2589,8 @@ interface DomNodeIterator {
     // Own properties of GXml-0.18.GXml.DomNodeIterator
 
     readonly root: DomNode
-    readonly reference_node: DomNode
     readonly referenceNode: DomNode
-    readonly pointer_before_reference_node: boolean
     readonly pointerBeforeReferenceNode: boolean
-    readonly what_to_show: number
     readonly whatToShow: number
     readonly filter: DomNodeFilter
 
@@ -2702,10 +2666,8 @@ interface DomTreeWalker extends GObject.Object {
     // Own properties of GXml-0.18.GXml.DomTreeWalker
 
     readonly root: DomNode
-    readonly what_to_show: number
     readonly whatToShow: number
     readonly filter: DomNodeFilter
-    readonly current_node: DomNode
     readonly currentNode: DomNode
 
     // Owm methods of GXml-0.18.GXml.DomTreeWalker
@@ -2865,7 +2827,6 @@ interface DomTokenList extends GObject.Object, Gee.BidirList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Owm methods of GXml-0.18.GXml.DomTokenList
@@ -3002,7 +2963,6 @@ interface DomSettableTokenList extends DomTokenList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Owm methods of GXml-0.18.GXml.DomSettableTokenList
@@ -3138,17 +3098,12 @@ interface DomDocument extends GObject.Object, DomNode, DomParentNode, DomNonElem
 
     readonly implementation: DomImplementation
     readonly url: string | null
-    readonly document_uri: string | null
     readonly documentUri: string | null
     readonly origin: string | null
-    readonly compat_mode: string | null
     readonly compatMode: string | null
-    readonly character_set: string | null
     readonly characterSet: string | null
-    readonly content_type: string | null
     readonly contentType: string | null
     readonly doctype: DomDocumentType
-    readonly document_element: DomElement
     readonly documentElement: DomElement
 
     // Owm methods of GXml-0.18.GXml.DomDocument
@@ -3557,9 +3512,7 @@ interface DomDocumentType extends GObject.Object, DomNode, DomChildNode {
     // Own properties of GXml-0.18.GXml.DomDocumentType
 
     readonly name: string | null
-    readonly public_id: string | null
     readonly publicId: string | null
-    readonly system_id: string | null
     readonly systemId: string | null
 
     // Owm methods of GXml-0.18.GXml.DomDocumentType
@@ -3774,7 +3727,6 @@ module DomElement {
         // Own constructor properties of GXml-0.18.GXml.DomElement
 
         id?: string | null
-        class_name?: string | null
         className?: string | null
     }
 
@@ -3784,17 +3736,12 @@ interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNonDocume
 
     // Own properties of GXml-0.18.GXml.DomElement
 
-    readonly namespace_uri: string | null
     readonly namespaceUri: string | null
     readonly prefix: string | null
-    readonly local_name: string | null
     readonly localName: string | null
-    readonly tag_name: string | null
     readonly tagName: string | null
     id: string | null
-    class_name: string | null
     className: string | null
-    readonly class_list: DomTokenList
     readonly classList: DomTokenList
     readonly attributes: DomNamedNodeMap
 
@@ -4046,19 +3993,13 @@ interface DomEvent extends GObject.Object {
     // Own properties of GXml-0.18.GXml.DomEvent
 
     readonly etype: string | null
-    readonly event_target: DomEventTarget
     readonly eventTarget: DomEventTarget
-    readonly current_target: DomEventTarget
     readonly currentTarget: DomEventTarget
     readonly bubbles: boolean
     readonly cancelable: boolean
-    readonly is_trusted: boolean
     readonly isTrusted: boolean
-    readonly time_stamp: DomTimeStamp
     readonly timeStamp: DomTimeStamp
-    readonly default_prevented: boolean
     readonly defaultPrevented: boolean
-    readonly event_phase: DomEventPhase
     readonly eventPhase: DomEventPhase
 
     // Owm methods of GXml-0.18.GXml.DomEvent
@@ -4269,8 +4210,6 @@ module DomMutationRecord {
 
         // Own constructor properties of GXml-0.18.GXml.DomMutationRecord
 
-        added_nodes?: DomNodeList | null
-        removed_nodes?: DomNodeList | null
         addedNodes?: DomNodeList | null
         removedNodes?: DomNodeList | null
     }
@@ -4283,19 +4222,12 @@ interface DomMutationRecord extends GObject.Object {
 
     readonly mtype: string | null
     readonly target: DomNode
-    added_nodes: DomNodeList
     addedNodes: DomNodeList
-    removed_nodes: DomNodeList
     removedNodes: DomNodeList
-    readonly previous_sibling: DomNode
     readonly previousSibling: DomNode
-    readonly next_sibling: DomNode
     readonly nextSibling: DomNode
-    readonly attribute_name: string | null
     readonly attributeName: string | null
-    readonly attribute_namespace: string | null
     readonly attributeNamespace: string | null
-    readonly old_value: string | null
     readonly oldValue: string | null
 
     // Owm methods of GXml-0.18.GXml.DomMutationRecord
@@ -4382,9 +4314,6 @@ module DomNode {
 
         // Own constructor properties of GXml-0.18.GXml.DomNode
 
-        owner_document?: DomDocument | null
-        node_value?: string | null
-        text_content?: string | null
         ownerDocument?: DomDocument | null
         nodeValue?: string | null
         textContent?: string | null
@@ -4396,31 +4325,18 @@ interface DomNode extends GObject.Object, DomEventTarget {
 
     // Own properties of GXml-0.18.GXml.DomNode
 
-    readonly node_type: DomNodeNodeType
     readonly nodeType: DomNodeNodeType
-    readonly node_name: string | null
     readonly nodeName: string | null
-    readonly base_uri: string | null
     readonly baseUri: string | null
-    owner_document: DomDocument
     ownerDocument: DomDocument
-    readonly parent_node: DomNode
     readonly parentNode: DomNode
-    readonly parent_element: DomElement
     readonly parentElement: DomElement
-    readonly child_nodes: DomNodeList
     readonly childNodes: DomNodeList
-    readonly first_child: DomNode
     readonly firstChild: DomNode
-    readonly last_child: DomNode
     readonly lastChild: DomNode
-    readonly previous_sibling: DomNode
     readonly previousSibling: DomNode
-    readonly next_sibling: DomNode
     readonly nextSibling: DomNode
-    node_value: string | null
     nodeValue: string | null
-    text_content: string | null
     textContent: string | null
 
     // Owm methods of GXml-0.18.GXml.DomNode
@@ -4561,16 +4477,11 @@ interface DomRange extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.DomRange
 
-    readonly start_container: DomNode
     readonly startContainer: DomNode
-    readonly start_offset: number
     readonly startOffset: number
-    readonly end_container: DomNode
     readonly endContainer: DomNode
-    readonly end_offset: number
     readonly endOffset: number
     readonly collapsed: boolean
-    readonly common_ancestor_container: DomNode
     readonly commonAncestorContainer: DomNode
 
     // Owm methods of GXml-0.18.GXml.DomRange
@@ -4689,7 +4600,6 @@ interface Element extends GObject.Object, Node {
 
     // Own properties of GXml-0.18.GXml.Element
 
-    readonly tag_name: string | null
     readonly tagName: string | null
     content: string | null
 
@@ -5055,12 +4965,10 @@ interface Node extends GObject.Object {
     // Own properties of GXml-0.18.GXml.Node
 
     readonly namespaces: Gee.List
-    readonly children_nodes: Gee.BidirList
     readonly childrenNodes: Gee.BidirList
     readonly attrs: Gee.Map
     readonly name: string | null
     value: string | null
-    readonly type_node: NodeType
     readonly typeNode: NodeType
     readonly document: Document
     readonly parent: Node
@@ -5164,9 +5072,7 @@ interface Notation extends GObject.Object, Node {
 
     // Own properties of GXml-0.18.GXml.Notation
 
-    readonly public_id: string | null
     readonly publicId: string | null
-    readonly external_id: string | null
     readonly externalId: string | null
 
     // Owm methods of GXml-0.18.GXml.Notation
@@ -5648,9 +5554,6 @@ module IXsdSchema {
 
         // Own constructor properties of GXml-0.18.GXml.IXsdSchema
 
-        element_definitions?: IXsdListElements | null
-        simple_type_definitions?: IXsdListSimpleTypes | null
-        complex_type_definitions?: IXsdListComplexTypes | null
         elementDefinitions?: IXsdListElements | null
         simpleTypeDefinitions?: IXsdListSimpleTypes | null
         complexTypeDefinitions?: IXsdListComplexTypes | null
@@ -5662,11 +5565,8 @@ interface IXsdSchema extends GObject.Object, DomElement {
 
     // Own properties of GXml-0.18.GXml.IXsdSchema
 
-    element_definitions: IXsdListElements
     elementDefinitions: IXsdListElements
-    simple_type_definitions: IXsdListSimpleTypes
     simpleTypeDefinitions: IXsdListSimpleTypes
-    complex_type_definitions: IXsdListComplexTypes
     complexTypeDefinitions: IXsdListComplexTypes
 
     // Owm methods of GXml-0.18.GXml.IXsdSchema
@@ -6097,10 +5997,8 @@ module IXsdTypeRestriction {
 
         base?: string | null
         id?: string | null
-        simple_type?: IXsdSimpleType | null
-        enumerations?: IXsdListTypeRestrictionEnumerations | null
-        white_spaces?: IXsdListTypeRestrictionWhiteSpaces | null
         simpleType?: IXsdSimpleType | null
+        enumerations?: IXsdListTypeRestrictionEnumerations | null
         whiteSpaces?: IXsdListTypeRestrictionWhiteSpaces | null
     }
 
@@ -6112,10 +6010,8 @@ interface IXsdTypeRestriction extends GObject.Object, IXsdTypeDef {
 
     base: string | null
     id: string | null
-    simple_type: IXsdSimpleType
     simpleType: IXsdSimpleType
     enumerations: IXsdListTypeRestrictionEnumerations
-    white_spaces: IXsdListTypeRestrictionWhiteSpaces
     whiteSpaces: IXsdListTypeRestrictionWhiteSpaces
 
     // Owm methods of GXml-0.18.GXml.IXsdTypeRestriction
@@ -6869,8 +6765,6 @@ module IXsdComplexType {
         final?: string | null
         mixed?: boolean | null
         name?: string | null
-        default_attributes_apply?: boolean | null
-        content_type?: IXsdBaseContent | null
         defaultAttributesApply?: boolean | null
         contentType?: IXsdBaseContent | null
     }
@@ -6886,13 +6780,9 @@ interface IXsdComplexType extends GObject.Object, DomElement, IXsdBaseType {
     final: string | null
     mixed: boolean
     name: string | null
-    default_attributes_apply: boolean
     defaultAttributesApply: boolean
-    content_type: IXsdBaseContent
     contentType: IXsdBaseContent
-    readonly type_attributes: IXsdListAttributes
     readonly typeAttributes: IXsdListAttributes
-    readonly group_attributes: IXsdListAttributesGroup
     readonly groupAttributes: IXsdListAttributesGroup
 
     // Owm methods of GXml-0.18.GXml.IXsdComplexType
@@ -7219,15 +7109,10 @@ module IXsdElement {
         name?: string | null
         nillable?: boolean | null
         ref?: string | null
-        substitution_group?: DomTokenList | null
-        target_namespace?: string | null
-        object_type?: string | null
-        anotation?: IXsdAnnotation | null
-        simple_type?: IXsdSimpleType | null
-        complex_type?: IXsdComplexType | null
         substitutionGroup?: DomTokenList | null
         targetNamespace?: string | null
         objectType?: string | null
+        anotation?: IXsdAnnotation | null
         simpleType?: IXsdSimpleType | null
         complexType?: IXsdComplexType | null
     }
@@ -7250,16 +7135,11 @@ interface IXsdElement extends GObject.Object, DomElement {
     name: string | null
     nillable: boolean
     // Has conflict: ref: string | null
-    substitution_group: DomTokenList
     substitutionGroup: DomTokenList
-    target_namespace: string | null
     targetNamespace: string | null
-    object_type: string | null
     objectType: string | null
     anotation: IXsdAnnotation
-    simple_type: IXsdSimpleType
     simpleType: IXsdSimpleType
-    complex_type: IXsdComplexType
     complexType: IXsdComplexType
 
     // Owm methods of GXml-0.18.GXml.IXsdElement
@@ -7809,8 +7689,6 @@ module IXsdList {
         // Own constructor properties of GXml-0.18.GXml.IXsdList
 
         element?: DomElement | null
-        items_type?: GObject.GType | null
-        items_name?: GObject.GType | null
         itemsType?: GObject.GType | null
         itemsName?: GObject.GType | null
     }
@@ -7822,9 +7700,7 @@ interface IXsdList extends GObject.Object, Collection {
     // Own properties of GXml-0.18.GXml.IXsdList
 
     element: DomElement
-    items_type: GObject.GType
     itemsType: GObject.GType
-    items_name: any
     itemsName: any
     readonly length: number
 
@@ -7913,7 +7789,6 @@ interface IXsdListElements extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -7980,7 +7855,6 @@ interface IXsdListSimpleTypes extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8047,7 +7921,6 @@ interface IXsdListComplexTypes extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8114,7 +7987,6 @@ interface IXsdListAttributes extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8181,7 +8053,6 @@ interface IXsdListAttributesGroup extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8248,7 +8119,6 @@ interface IXsdListTypeRestrictionEnumerations extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8315,7 +8185,6 @@ interface IXsdListTypeRestrictionWhiteSpaces extends GObject.Object, IXsdList {
 
     // Conflicting properties
 
-    items_name: any
     itemsName: any
 
     // Conflicting methods
@@ -8408,7 +8277,6 @@ module Serializable {
 
         // Own constructor properties of GXml-0.18.GXml.Serializable
 
-        serialized_xml_node_value?: string | null
         serializedXmlNodeValue?: string | null
     }
 
@@ -8418,11 +8286,8 @@ interface Serializable extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.Serializable
 
-    readonly unknown_serializable_properties: Gee.Map
     readonly unknownSerializableProperties: Gee.Map
-    readonly unknown_serializable_nodes: Gee.Collection
     readonly unknownSerializableNodes: Gee.Collection
-    serialized_xml_node_value: string | null
     serializedXmlNodeValue: string | null
 
     // Owm methods of GXml-0.18.GXml.Serializable
@@ -8829,13 +8694,9 @@ interface XPathObject extends GObject.Object {
 
     // Own properties of GXml-0.18.GXml.XPathObject
 
-    readonly object_type: XPathObjectType
     readonly objectType: XPathObjectType
-    readonly boolean_value: boolean
     readonly booleanValue: boolean
-    readonly string_value: string | null
     readonly stringValue: string | null
-    readonly number_value: number
     readonly numberValue: number
     readonly nodeset: DomHTMLCollection
 
@@ -8899,10 +8760,9 @@ module CssSelectorData {
 
         // Own constructor properties of GXml-0.18.GXml.CssSelectorData
 
-        selector_type?: CssSelectorType | null
+        selectorType?: CssSelectorType | null
         data?: string | null
         value?: string | null
-        selectorType?: CssSelectorType | null
     }
 
 }
@@ -8911,7 +8771,6 @@ interface CssSelectorData {
 
     // Own properties of GXml-0.18.GXml.CssSelectorData
 
-    selector_type: CssSelectorType
     selectorType: CssSelectorType
     data: string | null
     value: string | null
@@ -9094,7 +8953,6 @@ interface DomElementList extends DomHTMLCollection {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.DomElementList
@@ -9417,15 +9275,10 @@ module DomMutationObserverInit {
 
         // Own constructor properties of GXml-0.18.GXml.DomMutationObserverInit
 
-        child_list?: boolean | null
-        attributes?: boolean | null
-        character_data?: boolean | null
-        subtree?: boolean | null
-        attribute_old_value?: boolean | null
-        character_data_old_value?: boolean | null
-        attribute_filter?: Gee.List | null
         childList?: boolean | null
+        attributes?: boolean | null
         characterData?: boolean | null
+        subtree?: boolean | null
         attributeOldValue?: boolean | null
         characterDataOldValue?: boolean | null
         attributeFilter?: Gee.List | null
@@ -9437,17 +9290,12 @@ interface DomMutationObserverInit {
 
     // Own properties of GXml-0.18.GXml.DomMutationObserverInit
 
-    child_list: boolean
     childList: boolean
     attributes: boolean
-    character_data: boolean
     characterData: boolean
     subtree: boolean
-    attribute_old_value: boolean
     attributeOldValue: boolean
-    character_data_old_value: boolean
     characterDataOldValue: boolean
-    attribute_filter: Gee.List
     attributeFilter: Gee.List
 
     // Own fields of GXml-0.18.GXml.DomMutationObserverInit
@@ -9573,7 +9421,6 @@ interface ElementList extends DomHTMLCollection {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.ElementList
@@ -9718,7 +9565,6 @@ interface GHtmlDocument extends DomHtmlDocument {
 
     // Own properties of GXml-0.18.GXml.GHtmlDocument
 
-    readonly default_options: number
     readonly defaultOptions: number
 
     // Own fields of GXml-0.18.GXml.GHtmlDocument
@@ -10768,9 +10614,8 @@ module GomElement {
 
         // Own constructor properties of GXml-0.18.GXml.GomElement
 
-        parse_children?: boolean | null
-        unparsed?: string | null
         parseChildren?: boolean | null
+        unparsed?: string | null
     }
 
 }
@@ -10779,7 +10624,6 @@ interface GomElement extends DomChildNode, DomNonDocumentTypeChildNode, DomParen
 
     // Own properties of GXml-0.18.GXml.GomElement
 
-    parse_children: boolean
     parseChildren: boolean
     unparsed: string | null
 
@@ -11247,7 +11091,6 @@ interface GomNodeList extends DomNodeList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GomNodeList
@@ -11530,9 +11373,8 @@ module GomXsdArrayString {
 
         // Own constructor properties of GXml-0.18.GXml.GomXsdArrayString
 
-        simple_type?: string | null
-        source?: Gio.File | null
         simpleType?: string | null
+        source?: Gio.File | null
     }
 
 }
@@ -11541,7 +11383,6 @@ interface GomXsdArrayString {
 
     // Own properties of GXml-0.18.GXml.GomXsdArrayString
 
-    simple_type: string | null
     simpleType: string | null
     source: Gio.File
 
@@ -11815,7 +11656,6 @@ module GomEnum {
 
         // Own constructor properties of GXml-0.18.GXml.GomEnum
 
-        enum_type?: GObject.GType | null
         enumType?: GObject.GType | null
     }
 
@@ -11825,7 +11665,6 @@ interface GomEnum {
 
     // Own properties of GXml-0.18.GXml.GomEnum
 
-    enum_type: GObject.GType
     enumType: GObject.GType
 
     // Own fields of GXml-0.18.GXml.GomEnum
@@ -11989,9 +11828,6 @@ module GomXsdSchema {
 
         // Own constructor properties of GXml-0.18.GXml.GomXsdSchema
 
-        element_definitions?: GomXsdListElements | null
-        simple_type_definitions?: GomXsdListSimpleTypes | null
-        complex_type_definitions?: GomXsdListComplexTypes | null
         elementDefinitions?: GomXsdListElements | null
         simpleTypeDefinitions?: GomXsdListSimpleTypes | null
         complexTypeDefinitions?: GomXsdListComplexTypes | null
@@ -12003,11 +11839,8 @@ interface GomXsdSchema {
 
     // Own properties of GXml-0.18.GXml.GomXsdSchema
 
-    element_definitions: GomXsdListElements
     elementDefinitions: GomXsdListElements
-    simple_type_definitions: GomXsdListSimpleTypes
     simpleTypeDefinitions: GomXsdListSimpleTypes
-    complex_type_definitions: GomXsdListComplexTypes
     complexTypeDefinitions: GomXsdListComplexTypes
 
     // Own fields of GXml-0.18.GXml.GomXsdSchema
@@ -12486,10 +12319,8 @@ module GomXsdTypeRestriction {
         // Own constructor properties of GXml-0.18.GXml.GomXsdTypeRestriction
 
         base?: string | null
-        simple_type?: GomXsdSimpleType | null
-        enumerations?: GomXsdListTypeRestrictionEnumerations | null
-        white_spaces?: GomXsdListTypeRestrictionWhiteSpaces | null
         simpleType?: GomXsdSimpleType | null
+        enumerations?: GomXsdListTypeRestrictionEnumerations | null
         whiteSpaces?: GomXsdListTypeRestrictionWhiteSpaces | null
     }
 
@@ -12500,10 +12331,8 @@ interface GomXsdTypeRestriction {
     // Own properties of GXml-0.18.GXml.GomXsdTypeRestriction
 
     base: string | null
-    simple_type: GomXsdSimpleType
     simpleType: GomXsdSimpleType
     enumerations: GomXsdListTypeRestrictionEnumerations
-    white_spaces: GomXsdListTypeRestrictionWhiteSpaces
     whiteSpaces: GomXsdListTypeRestrictionWhiteSpaces
 
     // Own fields of GXml-0.18.GXml.GomXsdTypeRestriction
@@ -13924,8 +13753,6 @@ module GomXsdComplexType {
         final?: string | null
         mixed?: boolean | null
         name?: string | null
-        default_attributes_apply?: boolean | null
-        content_type?: GomXsdBaseContent | null
         defaultAttributesApply?: boolean | null
         contentType?: GomXsdBaseContent | null
     }
@@ -13941,13 +13768,9 @@ interface GomXsdComplexType {
     final: string | null
     mixed: boolean
     name: string | null
-    default_attributes_apply: boolean
     defaultAttributesApply: boolean
-    content_type: GomXsdBaseContent
     contentType: GomXsdBaseContent
-    readonly type_attributes: GomXsdList
     readonly typeAttributes: GomXsdList
-    readonly group_attributes: GomXsdList
     readonly groupAttributes: GomXsdList
 
     // Own fields of GXml-0.18.GXml.GomXsdComplexType
@@ -14175,22 +13998,15 @@ module GomXsdElement {
         final?: string | null
         fixed?: string | null
         form?: string | null
-        max_occurs?: string | null
-        min_occurs?: string | null
+        maxOccurs?: string | null
+        minOccurs?: string | null
         name?: string | null
         nillable?: boolean | null
         ref?: string | null
-        substitution_group?: DomTokenList | null
-        target_namespace?: string | null
-        object_type?: string | null
-        anotation?: GomXsdAnnotation | null
-        simple_type?: GomXsdSimpleType | null
-        complex_type?: GomXsdComplexType | null
-        maxOccurs?: string | null
-        minOccurs?: string | null
         substitutionGroup?: DomTokenList | null
         targetNamespace?: string | null
         objectType?: string | null
+        anotation?: GomXsdAnnotation | null
         simpleType?: GomXsdSimpleType | null
         complexType?: GomXsdComplexType | null
     }
@@ -14207,23 +14023,16 @@ interface GomXsdElement {
     final: string | null
     fixed: string | null
     form: string | null
-    max_occurs: string | null
     maxOccurs: string | null
-    min_occurs: string | null
     minOccurs: string | null
     name: string | null
     nillable: boolean
     // Has conflict: ref: string | null
-    substitution_group: DomTokenList
     substitutionGroup: DomTokenList
-    target_namespace: string | null
     targetNamespace: string | null
-    object_type: string | null
     objectType: string | null
     anotation: GomXsdAnnotation
-    simple_type: GomXsdSimpleType
     simpleType: GomXsdSimpleType
-    complex_type: GomXsdComplexType
     complexType: GomXsdComplexType
 
     // Own fields of GXml-0.18.GXml.GomXsdElement
@@ -17347,7 +17156,6 @@ interface GDomTokenList extends DomTokenList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GDomTokenList
@@ -17528,7 +17336,6 @@ interface GDomSettableTokenList extends DomSettableTokenList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GDomSettableTokenList
@@ -17707,7 +17514,6 @@ interface GDomHTMLCollection extends DomHTMLCollection {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GDomHTMLCollection
@@ -18404,7 +18210,6 @@ interface GListChildren extends DomNodeList, DomHTMLCollection {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GListChildren
@@ -18594,7 +18399,6 @@ interface GListNamespaces {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.GListNamespaces
@@ -18793,12 +18597,10 @@ interface GNode extends DomEventTarget, DomNode, Node {
     // Own properties of GXml-0.18.GXml.GNode
 
     readonly attrs: Gee.Map
-    readonly children_nodes: Gee.BidirList
     readonly childrenNodes: Gee.BidirList
     readonly namespaces: Gee.List
     readonly document: Document
     readonly parent: Node
-    readonly type_node: NodeType
     readonly typeNode: NodeType
     readonly name: string | null
     value: string | null
@@ -19391,7 +19193,6 @@ interface NodeList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.NodeList
@@ -19771,7 +19572,6 @@ module SerializableArrayList {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableArrayList
 
-        ignored_serializable_properties?: GLib.HashTable | null
         ignoredSerializableProperties?: GLib.HashTable | null
     }
 
@@ -19781,12 +19581,10 @@ interface SerializableArrayList extends Serializable, SerializableCollection {
 
     // Own properties of GXml-0.18.GXml.SerializableArrayList
 
-    ignored_serializable_properties: GLib.HashTable
     ignoredSerializableProperties: GLib.HashTable
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.SerializableArrayList
@@ -19965,7 +19763,6 @@ module SerializableDualKeyMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableDualKeyMap
 
-        ignored_serializable_properties?: GLib.HashTable | null
         ignoredSerializableProperties?: GLib.HashTable | null
     }
 
@@ -19975,16 +19772,11 @@ interface SerializableDualKeyMap extends Gee.Traversable, Serializable, Serializ
 
     // Own properties of GXml-0.18.GXml.SerializableDualKeyMap
 
-    readonly value_type: GObject.GType
     readonly valueType: GObject.GType
-    readonly primary_key_type: GObject.GType
     readonly primaryKeyType: GObject.GType
-    readonly secondary_key_type: GObject.GType
     readonly secondaryKeyType: GObject.GType
-    readonly primary_keys: Gee.Collection
     readonly primaryKeys: Gee.Collection
     readonly size: number
-    ignored_serializable_properties: GLib.HashTable
     ignoredSerializableProperties: GLib.HashTable
 
     // Own fields of GXml-0.18.GXml.SerializableDualKeyMap
@@ -20105,7 +19897,6 @@ module SerializableHashMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableHashMap
 
-        ignored_serializable_properties?: GLib.HashTable | null
         ignoredSerializableProperties?: GLib.HashTable | null
     }
 
@@ -20115,7 +19906,6 @@ interface SerializableHashMap extends Serializable, SerializableCollection {
 
     // Own properties of GXml-0.18.GXml.SerializableHashMap
 
-    ignored_serializable_properties: GLib.HashTable
     ignoredSerializableProperties: GLib.HashTable
 
     // Own fields of GXml-0.18.GXml.SerializableHashMap
@@ -20250,7 +20040,6 @@ module SerializableTreeMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableTreeMap
 
-        ignored_serializable_properties?: GLib.HashTable | null
         ignoredSerializableProperties?: GLib.HashTable | null
     }
 
@@ -20260,12 +20049,10 @@ interface SerializableTreeMap extends Serializable, SerializableCollection {
 
     // Own properties of GXml-0.18.GXml.SerializableTreeMap
 
-    ignored_serializable_properties: GLib.HashTable
     ignoredSerializableProperties: GLib.HashTable
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.SerializableTreeMap
@@ -20505,7 +20292,6 @@ module SerializableObjectModel {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableObjectModel
 
-        ignored_serializable_properties?: GLib.HashTable | null
         ignoredSerializableProperties?: GLib.HashTable | null
     }
 
@@ -20515,7 +20301,6 @@ interface SerializableObjectModel extends Serializable {
 
     // Own properties of GXml-0.18.GXml.SerializableObjectModel
 
-    ignored_serializable_properties: GLib.HashTable
     ignoredSerializableProperties: GLib.HashTable
 
     // Own fields of GXml-0.18.GXml.SerializableObjectModel
@@ -21135,12 +20920,10 @@ interface TNode extends Node {
     // Own properties of GXml-0.18.GXml.TNode
 
     readonly attrs: Gee.Map
-    readonly children_nodes: Gee.BidirList
     readonly childrenNodes: Gee.BidirList
     readonly document: Document
     readonly name: string | null
     readonly namespaces: Gee.List
-    readonly type_node: NodeType
     readonly typeNode: NodeType
     value: string | null
     readonly parent: Node
@@ -21243,7 +21026,6 @@ interface TNodeTChildrenList {
 
     // Conflicting properties
 
-    read_only_view: any
     readOnlyView: any
 
     // Own fields of GXml-0.18.GXml.TNodeTChildrenList

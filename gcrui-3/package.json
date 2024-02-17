@@ -1,13 +1,19 @@
 {
     "name": "@girs/gcrui-3",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GcrUi-3, generated from library version 3.0.0",
     "type": "module",
     "module": "gcrui-3.js",
     "main": "gcrui-3.js",
     "exports": {
-        "./ambient": "./gcrui-3-ambient.d.ts",
-        "./import": "./gcrui-3-import.d.ts",
+        "./ambient": {
+            "types": "./gcrui-3-ambient.d.ts",
+            "default": "./gcrui-3-ambient.js"
+        },
+        "./import": {
+            "types": "./gcrui-3-import.d.ts",
+            "default": "./gcrui-3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gcrui-3.d.ts",

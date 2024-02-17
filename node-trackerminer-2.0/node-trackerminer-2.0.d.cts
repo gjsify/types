@@ -374,10 +374,10 @@ export module Decorator {
 
         // Own constructor properties of TrackerMiner-2.0.TrackerMiner.Decorator
 
-        classNames?: string[] | null
-        commitBatchSize?: number | null
-        dataSource?: string | null
-        priorityRdfTypes?: string[] | null
+        class_names?: string[] | null
+        commit_batch_size?: number | null
+        data_source?: string | null
+        priority_rdf_types?: string[] | null
     }
 
 }
@@ -688,7 +688,7 @@ export module IndexingTree {
 
         // Own constructor properties of TrackerMiner-2.0.TrackerMiner.IndexingTree
 
-        filterHidden?: boolean | null
+        filter_hidden?: boolean | null
         root?: Gio.File | null
     }
 
@@ -1001,7 +1001,7 @@ export module Miner {
         // Own constructor properties of TrackerMiner-2.0.TrackerMiner.Miner
 
         progress?: number | null
-        remainingTime?: number | null
+        remaining_time?: number | null
         status?: string | null
     }
 
@@ -1205,9 +1205,9 @@ export module MinerFS {
 
         // Own constructor properties of TrackerMiner-2.0.TrackerMiner.MinerFS
 
-        dataProvider?: DataProvider | null
-        processingPoolReadyLimit?: number | null
-        processingPoolWaitLimit?: number | null
+        data_provider?: DataProvider | null
+        processing_pool_ready_limit?: number | null
+        processing_pool_wait_limit?: number | null
         root?: Gio.File | null
         throttle?: number | null
     }
@@ -1546,8 +1546,8 @@ export module MinerProxy {
 
         // Own constructor properties of TrackerMiner-2.0.TrackerMiner.MinerProxy
 
-        dbusConnection?: Gio.DBusConnection | null
-        dbusPath?: string | null
+        dbus_connection?: Gio.DBusConnection | null
+        dbus_path?: string | null
         miner?: Miner | null
     }
 

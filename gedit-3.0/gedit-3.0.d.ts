@@ -643,10 +643,6 @@ module Document {
         /**
          * The document's content type.
          */
-        content_type?: string | null
-        /**
-         * The document's content type.
-         */
         contentType?: string | null
     }
 
@@ -659,10 +655,6 @@ interface Document {
     /**
      * The document's content type.
      */
-    content_type: string | null
-    /**
-     * The document's content type.
-     */
     contentType: string | null
     /**
      * <warning>
@@ -670,18 +662,7 @@ interface Document {
      * gedit plugin. The property can be modified or removed at any time.
      * </warning>
      */
-    readonly empty_search: boolean
-    /**
-     * <warning>
-     * The property is used internally by gedit. It must not be used in a
-     * gedit plugin. The property can be modified or removed at any time.
-     * </warning>
-     */
     readonly emptySearch: boolean
-    /**
-     * The document's MIME type.
-     */
-    readonly mime_type: string | null
     /**
      * The document's MIME type.
      */
@@ -886,12 +867,6 @@ module EncodingsComboBox {
          * %FALSE, the combo box is used for loading a content (e.g. a file)
          * and the row "Automatically Detected" is added.
          */
-        save_mode?: boolean | null
-        /**
-         * Whether the combo box should be used for saving a content. If
-         * %FALSE, the combo box is used for loading a content (e.g. a file)
-         * and the row "Automatically Detected" is added.
-         */
         saveMode?: boolean | null
     }
 
@@ -901,12 +876,6 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
 
     // Own properties of Gedit-3.0.Gedit.EncodingsComboBox
 
-    /**
-     * Whether the combo box should be used for saving a content. If
-     * %FALSE, the combo box is used for loading a content (e.g. a file)
-     * and the row "Automatically Detected" is added.
-     */
-    save_mode: boolean
     /**
      * Whether the combo box should be used for saving a content. If
      * %FALSE, the combo box is used for loading a content (e.g. a file)
@@ -1260,7 +1229,6 @@ module Message {
          * The messages method.
          */
         method?: string | null
-        object_path?: string | null
         objectPath?: string | null
     }
 
@@ -1274,7 +1242,6 @@ interface Message {
      * The messages method.
      */
     method: string | null
-    object_path: string | null
     objectPath: string | null
 
     // Own fields of Gedit-3.0.Gedit.Message
@@ -1865,7 +1832,6 @@ module Tab {
         // Own constructor properties of Gedit-3.0.Gedit.Tab
 
         autosave?: boolean | null
-        autosave_interval?: number | null
         autosaveInterval?: number | null
     }
 
@@ -1876,9 +1842,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own properties of Gedit-3.0.Gedit.Tab
 
     autosave: boolean
-    autosave_interval: number
     autosaveInterval: number
-    readonly can_close: boolean
     readonly canClose: boolean
     readonly name: any
     readonly state: TabState

@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-devhelp-3.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Devhelp-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "node-devhelp-3.0.js",
     "main": "node-devhelp-3.0.js",
     "exports": {
-        "./ambient": "./node-devhelp-3.0-ambient.d.ts",
-        "./import": "./node-devhelp-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-devhelp-3.0-ambient.d.ts",
+            "default": "./node-devhelp-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-devhelp-3.0-import.d.ts",
+            "default": "./node-devhelp-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-devhelp-3.0.d.ts",

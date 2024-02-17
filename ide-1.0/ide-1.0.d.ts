@@ -978,7 +978,6 @@ module BuildSystem {
         // Own constructor properties of Ide-1.0.Ide.BuildSystem
 
         context?: Context | null
-        project_file?: Gio.File | null
         projectFile?: Gio.File | null
     }
 
@@ -989,7 +988,6 @@ interface BuildSystem extends Object {
     // Own properties of Ide-1.0.Ide.BuildSystem
 
     readonly context: Context
-    readonly project_file: Gio.File
     readonly projectFile: Gio.File
 
     // Owm methods of Ide-1.0.Ide.BuildSystem
@@ -1612,7 +1610,6 @@ interface GenesisAddin {
 
     // Own properties of Ide-1.0.Ide.GenesisAddin
 
-    readonly is_ready: boolean
     readonly isReady: boolean
 
     // Owm methods of Ide-1.0.Ide.GenesisAddin
@@ -3331,10 +3328,8 @@ interface Vcs extends Object {
 
     // Own properties of Ide-1.0.Ide.Vcs
 
-    readonly branch_name: string | null
     readonly branchName: string | null
     readonly context: Context
-    readonly working_directory: Gio.File
     readonly workingDirectory: Gio.File
 
     // Owm methods of Ide-1.0.Ide.Vcs
@@ -4061,11 +4056,8 @@ interface BackForwardList {
 
     // Own properties of Ide-1.0.Ide.BackForwardList
 
-    readonly can_go_backward: boolean
     readonly canGoBackward: boolean
-    readonly can_go_forward: boolean
     readonly canGoForward: boolean
-    readonly current_item: BackForwardItem
     readonly currentItem: BackForwardItem
 
     // Owm methods of Ide-1.0.Ide.BackForwardList
@@ -4186,11 +4178,9 @@ module Buffer {
 
         context?: Context | null
         file?: File | null
-        highlight_diagnostics?: boolean | null
-        style_scheme_name?: string | null
-        title?: string | null
         highlightDiagnostics?: boolean | null
         styleSchemeName?: string | null
+        title?: string | null
     }
 
 }
@@ -4200,17 +4190,12 @@ interface Buffer {
     // Own properties of Ide-1.0.Ide.Buffer
 
     readonly busy: boolean
-    readonly changed_on_volume: boolean
     readonly changedOnVolume: boolean
     readonly context: Context
     file: File
-    readonly has_diagnostics: boolean
     readonly hasDiagnostics: boolean
-    highlight_diagnostics: boolean
     highlightDiagnostics: boolean
-    readonly read_only: boolean
     readonly readOnly: boolean
-    style_scheme_name: string | null
     styleSchemeName: string | null
     title: string | null
 
@@ -4692,10 +4677,6 @@ module BufferManager {
 
         // Own constructor properties of Ide-1.0.Ide.BufferManager
 
-        auto_save?: boolean | null
-        auto_save_timeout?: number | null
-        focus_buffer?: Buffer | null
-        minimum_word_size?: number | null
         autoSave?: boolean | null
         autoSaveTimeout?: number | null
         focusBuffer?: Buffer | null
@@ -4708,13 +4689,9 @@ interface BufferManager extends Gio.ListModel {
 
     // Own properties of Ide-1.0.Ide.BufferManager
 
-    auto_save: boolean
     autoSave: boolean
-    auto_save_timeout: number
     autoSaveTimeout: number
-    focus_buffer: Buffer
     focusBuffer: Buffer
-    minimum_word_size: number
     minimumWordSize: number
 
     // Owm methods of Ide-1.0.Ide.BufferManager
@@ -5009,29 +4986,12 @@ interface BuildManager extends Gio.ActionGroup, Gio.Initable {
      * This might be false if the required runtime is not available or other
      * errors in setting up the build pipeline.
      */
-    readonly can_build: boolean
-    /**
-     * Gets if the build manager can queue a build request.
-     * 
-     * This might be false if the required runtime is not available or other
-     * errors in setting up the build pipeline.
-     */
     readonly canBuild: boolean
     /**
      * The "has-diagnostics" property indicates that there have been
      * diagnostics found during the last execution of the build pipeline.
      */
-    readonly has_diagnostics: boolean
-    /**
-     * The "has-diagnostics" property indicates that there have been
-     * diagnostics found during the last execution of the build pipeline.
-     */
     readonly hasDiagnostics: boolean
-    /**
-     * The "last-build-time" property contains a #GDateTime of the time
-     * the last build request was submitted.
-     */
-    readonly last_build_time: GLib.DateTime
     /**
      * The "last-build-time" property contains a #GDateTime of the time
      * the last build request was submitted.
@@ -5044,17 +5004,6 @@ interface BuildManager extends Gio.ActionGroup, Gio.Initable {
      */
     readonly message: string | null
     readonly pipeline: BuildPipeline
-    /**
-     * The "running-time" property can be bound by UI elements that
-     * want to track how long the current build has taken. g_object_notify()
-     * is called on a regular interval during the build so that the UI
-     * elements may automatically update.
-     * 
-     * The value of this property is a #GTimeSpan, which are 64-bit signed
-     * integers with microsecond precision. See %G_USEC_PER_SEC for a constant
-     * to tranform this to seconds.
-     */
-    readonly running_time: number
     /**
      * The "running-time" property can be bound by UI elements that
      * want to track how long the current build has taken. g_object_notify()
@@ -5617,7 +5566,7 @@ module BuildStage {
          * 
          * One such example is Ninja.
          */
-        check_stdout?: boolean | null
+        checkStdout?: boolean | null
         /**
          * The "completed" property is set to %TRUE after the pipeline has
          * completed processing the stage. When the pipeline invalidates
@@ -5648,7 +5597,7 @@ module BuildStage {
          * file and will be redirected to the stdout-path location after the
          * build stage has completed executing.
          */
-        stdout_path?: string | null
+        stdoutPath?: string | null
         /**
          * If the build stage is transient.
          * 
@@ -5658,25 +5607,6 @@ module BuildStage {
          * be immediately discarded.
          */
         transient?: boolean | null
-        /**
-         * Most build systems will preserve stderr for the processes they call, such
-         * as gcc, clang, and others. However, if your build system redirects all
-         * output to stdout, you may need to set this property to %TRUE to ensure
-         * that Builder will extract errors from stdout.
-         * 
-         * One such example is Ninja.
-         */
-        checkStdout?: boolean | null
-        /**
-         * The "stdout-path" property allows a build stage to redirect its log
-         * messages to a stdout file. Instead of passing stdout along to the
-         * build pipeline, they will be redirected to this file.
-         * 
-         * For safety reasons, the contents are first redirected to a temporary
-         * file and will be redirected to the stdout-path location after the
-         * build stage has completed executing.
-         */
-        stdoutPath?: string | null
     }
 
 }
@@ -5685,15 +5615,6 @@ interface BuildStage {
 
     // Own properties of Ide-1.0.Ide.BuildStage
 
-    /**
-     * Most build systems will preserve stderr for the processes they call, such
-     * as gcc, clang, and others. However, if your build system redirects all
-     * output to stdout, you may need to set this property to %TRUE to ensure
-     * that Builder will extract errors from stdout.
-     * 
-     * One such example is Ninja.
-     */
-    check_stdout: boolean
     /**
      * Most build systems will preserve stderr for the processes they call, such
      * as gcc, clang, and others. However, if your build system redirects all
@@ -5724,16 +5645,6 @@ interface BuildStage {
      * the build pipeline.
      */
     name: string | null
-    /**
-     * The "stdout-path" property allows a build stage to redirect its log
-     * messages to a stdout file. Instead of passing stdout along to the
-     * build pipeline, they will be redirected to this file.
-     * 
-     * For safety reasons, the contents are first redirected to a temporary
-     * file and will be redirected to the stdout-path location after the
-     * build stage has completed executing.
-     */
-    stdout_path: string | null
     /**
      * The "stdout-path" property allows a build stage to redirect its log
      * messages to a stdout file. Instead of passing stdout along to the
@@ -5898,11 +5809,9 @@ module BuildStageLauncher {
 
         // Own constructor properties of Ide-1.0.Ide.BuildStageLauncher
 
-        clean_launcher?: SubprocessLauncher | null
-        ignore_exit_status?: boolean | null
-        launcher?: SubprocessLauncher | null
         cleanLauncher?: SubprocessLauncher | null
         ignoreExitStatus?: boolean | null
+        launcher?: SubprocessLauncher | null
     }
 
 }
@@ -5911,9 +5820,7 @@ interface BuildStageLauncher {
 
     // Own properties of Ide-1.0.Ide.BuildStageLauncher
 
-    clean_launcher: SubprocessLauncher
     cleanLauncher: SubprocessLauncher
-    ignore_exit_status: boolean
     ignoreExitStatus: boolean
     launcher: SubprocessLauncher
 
@@ -6083,9 +5990,8 @@ module BuildStageTransfer {
 
         // Own constructor properties of Ide-1.0.Ide.BuildStageTransfer
 
-        disable_when_metered?: boolean | null
-        transfer?: Transfer | null
         disableWhenMetered?: boolean | null
+        transfer?: Transfer | null
     }
 
 }
@@ -6094,7 +6000,6 @@ interface BuildStageTransfer {
 
     // Own properties of Ide-1.0.Ide.BuildStageTransfer
 
-    disable_when_metered: boolean
     disableWhenMetered: boolean
     readonly transfer: Transfer
 
@@ -6494,26 +6399,19 @@ module Configuration {
 
         // Own constructor properties of Ide-1.0.Ide.Configuration
 
-        app_id?: string | null
-        build_commands?: string[] | null
-        config_opts?: string | null
-        debug?: boolean | null
-        device?: Device | null
-        device_id?: string | null
-        dirty?: boolean | null
-        display_name?: string | null
-        id?: string | null
-        parallelism?: number | null
-        post_install_commands?: string[] | null
-        prefix?: string | null
-        runtime?: Runtime | null
-        runtime_id?: string | null
         appId?: string | null
         buildCommands?: string[] | null
         configOpts?: string | null
+        debug?: boolean | null
+        device?: Device | null
         deviceId?: string | null
+        dirty?: boolean | null
         displayName?: string | null
+        id?: string | null
+        parallelism?: number | null
         postInstallCommands?: string[] | null
+        prefix?: string | null
+        runtime?: Runtime | null
         runtimeId?: string | null
     }
 
@@ -6523,28 +6421,21 @@ interface Configuration {
 
     // Own properties of Ide-1.0.Ide.Configuration
 
-    app_id: string | null
     appId: string | null
-    build_commands: string[]
     buildCommands: string[]
-    config_opts: string | null
     configOpts: string | null
     debug: boolean
     device: Device
-    device_id: string | null
     deviceId: string | null
     dirty: boolean
-    display_name: string | null
     displayName: string | null
     readonly environ: string[]
     readonly id: string | null
     parallelism: number
-    post_install_commands: string[]
     postInstallCommands: string[]
     prefix: string | null
     readonly ready: boolean
     runtime: Runtime
-    runtime_id: string | null
     runtimeId: string | null
 
     // Own fields of Ide-1.0.Ide.Configuration
@@ -6782,7 +6673,6 @@ interface ConfigurationManager extends Gio.AsyncInitable, Gio.ListModel {
     // Own properties of Ide-1.0.Ide.ConfigurationManager
 
     current: Configuration
-    readonly current_display_name: string | null
     readonly currentDisplayName: string | null
 
     // Owm methods of Ide-1.0.Ide.ConfigurationManager
@@ -6874,9 +6764,6 @@ module Context {
 
         // Own constructor properties of Ide-1.0.Ide.Context
 
-        project_file?: Gio.File | null
-        root_build_dir?: string | null
-        snippets_manager?: SourceSnippetsManager | null
         projectFile?: Gio.File | null
         rootBuildDir?: string | null
         snippetsManager?: SourceSnippetsManager | null
@@ -6888,28 +6775,17 @@ interface Context extends Gio.AsyncInitable {
 
     // Own properties of Ide-1.0.Ide.Context
 
-    readonly back_forward_list: BackForwardList
     readonly backForwardList: BackForwardList
-    readonly buffer_manager: BufferManager
     readonly bufferManager: BufferManager
-    readonly build_system: BuildSystem
     readonly buildSystem: BuildSystem
-    readonly configuration_manager: ConfigurationManager
     readonly configurationManager: ConfigurationManager
-    readonly device_manager: DeviceManager
     readonly deviceManager: DeviceManager
     readonly project: Project
-    readonly project_file: Gio.File
     readonly projectFile: Gio.File
-    root_build_dir: string | null
     rootBuildDir: string | null
-    readonly runtime_manager: RuntimeManager
     readonly runtimeManager: RuntimeManager
-    readonly search_engine: SearchEngine
     readonly searchEngine: SearchEngine
-    snippets_manager: SourceSnippetsManager
     snippetsManager: SourceSnippetsManager
-    readonly unsaved_files: UnsavedFiles
     readonly unsavedFiles: UnsavedFiles
     readonly vcs: Vcs
 
@@ -7197,7 +7073,6 @@ module Cursor {
 
         // Own constructor properties of Ide-1.0.Ide.Cursor
 
-        ide_source_view?: SourceView | null
         ideSourceView?: SourceView | null
     }
 
@@ -7207,7 +7082,6 @@ interface Cursor {
 
     // Own properties of Ide-1.0.Ide.Cursor
 
-    ide_source_view: SourceView
     ideSourceView: SourceView
 
     // Owm methods of Ide-1.0.Ide.Cursor
@@ -7249,9 +7123,8 @@ module Device {
 
         // Own constructor properties of Ide-1.0.Ide.Device
 
-        display_name?: string | null
-        id?: string | null
         displayName?: string | null
+        id?: string | null
     }
 
 }
@@ -7260,10 +7133,8 @@ interface Device {
 
     // Own properties of Ide-1.0.Ide.Device
 
-    display_name: string | null
     displayName: string | null
     id: string | null
-    readonly system_type: string | null
     readonly systemType: string | null
 
     // Own fields of Ide-1.0.Ide.Device
@@ -7519,7 +7390,6 @@ module DirectoryBuildSystem {
 
         // Own constructor properties of Ide-1.0.Ide.DirectoryBuildSystem
 
-        project_file?: Gio.File | null
         projectFile?: Gio.File | null
     }
 
@@ -7529,7 +7399,6 @@ interface DirectoryBuildSystem extends Gio.AsyncInitable, BuildSystem {
 
     // Own properties of Ide-1.0.Ide.DirectoryBuildSystem
 
-    readonly project_file: Gio.File
     readonly projectFile: Gio.File
 
     // Class property signals of Ide-1.0.Ide.DirectoryBuildSystem
@@ -7608,16 +7477,14 @@ module Doap {
 
         // Own constructor properties of Ide-1.0.Ide.Doap
 
-        bug_database?: string | null
+        bugDatabase?: string | null
         category?: string | null
         description?: string | null
-        download_page?: string | null
+        downloadPage?: string | null
         homepage?: string | null
         languages?: string | null
         name?: string | null
         shortdesc?: string | null
-        bugDatabase?: string | null
-        downloadPage?: string | null
     }
 
 }
@@ -7626,11 +7493,9 @@ interface Doap {
 
     // Own properties of Ide-1.0.Ide.Doap
 
-    bug_database: string | null
     bugDatabase: string | null
     category: string | null
     description: string | null
-    download_page: string | null
     downloadPage: string | null
     homepage: string | null
     languages: string | null
@@ -7785,7 +7650,6 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
 
     // Own properties of Ide-1.0.Ide.EditorPerspective
 
-    readonly active_view: Gtk.Widget
     readonly activeView: Gtk.Widget
 
     // Conflicting properties
@@ -8508,10 +8372,9 @@ module ExtensionAdapter {
         // Own constructor properties of Ide-1.0.Ide.ExtensionAdapter
 
         engine?: Peas.Engine | null
-        interface_type?: GObject.GType | null
+        interfaceType?: GObject.GType | null
         key?: string | null
         value?: string | null
-        interfaceType?: GObject.GType | null
     }
 
 }
@@ -8522,7 +8385,6 @@ interface ExtensionAdapter {
 
     readonly engine: Peas.Engine
     readonly extension: GObject.Object
-    readonly interface_type: GObject.GType
     readonly interfaceType: GObject.GType
     key: string | null
     value: string | null
@@ -8654,10 +8516,9 @@ module ExtensionSetAdapter {
         // Own constructor properties of Ide-1.0.Ide.ExtensionSetAdapter
 
         engine?: Peas.Engine | null
-        interface_type?: GObject.GType | null
+        interfaceType?: GObject.GType | null
         key?: string | null
         value?: string | null
-        interfaceType?: GObject.GType | null
     }
 
 }
@@ -8667,7 +8528,6 @@ interface ExtensionSetAdapter {
     // Own properties of Ide-1.0.Ide.ExtensionSetAdapter
 
     readonly engine: Peas.Engine
-    readonly interface_type: GObject.GType
     readonly interfaceType: GObject.GType
     key: string | null
     value: string | null
@@ -8748,7 +8608,6 @@ module File {
 
         file?: Gio.File | null
         path?: string | null
-        temporary_id?: number | null
         temporaryId?: number | null
     }
 
@@ -8759,11 +8618,9 @@ interface File {
     // Own properties of Ide-1.0.Ide.File
 
     readonly file: Gio.File
-    readonly is_temporary: boolean
     readonly isTemporary: boolean
     readonly language: GtkSource.Language
     readonly path: string | null
-    readonly temporary_id: number
     readonly temporaryId: number
 
     // Owm methods of Ide-1.0.Ide.File
@@ -8897,28 +8754,8 @@ module FileSettings {
         // Own constructor properties of Ide-1.0.Ide.FileSettings
 
         encoding?: string | null
-        encoding_set?: boolean | null
-        file?: File | null
-        indent_style?: IndentStyle | null
-        indent_style_set?: boolean | null
-        indent_width?: number | null
-        indent_width_set?: boolean | null
-        insert_trailing_newline?: boolean | null
-        insert_trailing_newline_set?: boolean | null
-        newline_type?: GtkSource.NewlineType | null
-        newline_type_set?: boolean | null
-        overwrite_braces?: boolean | null
-        overwrite_braces_set?: boolean | null
-        right_margin_position?: number | null
-        right_margin_position_set?: boolean | null
-        settled?: boolean | null
-        show_right_margin?: boolean | null
-        show_right_margin_set?: boolean | null
-        tab_width?: number | null
-        tab_width_set?: boolean | null
-        trim_trailing_whitespace?: boolean | null
-        trim_trailing_whitespace_set?: boolean | null
         encodingSet?: boolean | null
+        file?: File | null
         indentStyle?: IndentStyle | null
         indentStyleSet?: boolean | null
         indentWidth?: number | null
@@ -8931,6 +8768,7 @@ module FileSettings {
         overwriteBracesSet?: boolean | null
         rightMarginPosition?: number | null
         rightMarginPositionSet?: boolean | null
+        settled?: boolean | null
         showRightMargin?: boolean | null
         showRightMarginSet?: boolean | null
         tabWidth?: number | null
@@ -8946,45 +8784,26 @@ interface FileSettings {
     // Own properties of Ide-1.0.Ide.FileSettings
 
     encoding: string | null
-    encoding_set: boolean
     encodingSet: boolean
     readonly file: File
-    indent_style: IndentStyle
     indentStyle: IndentStyle
-    indent_style_set: boolean
     indentStyleSet: boolean
-    indent_width: number
     indentWidth: number
-    indent_width_set: boolean
     indentWidthSet: boolean
-    insert_trailing_newline: boolean
     insertTrailingNewline: boolean
-    insert_trailing_newline_set: boolean
     insertTrailingNewlineSet: boolean
-    newline_type: GtkSource.NewlineType
     newlineType: GtkSource.NewlineType
-    newline_type_set: boolean
     newlineTypeSet: boolean
-    overwrite_braces: boolean
     overwriteBraces: boolean
-    overwrite_braces_set: boolean
     overwriteBracesSet: boolean
-    right_margin_position: number
     rightMarginPosition: number
-    right_margin_position_set: boolean
     rightMarginPositionSet: boolean
     settled: boolean
-    show_right_margin: boolean
     showRightMargin: boolean
-    show_right_margin_set: boolean
     showRightMarginSet: boolean
-    tab_width: number
     tabWidth: number
-    tab_width_set: boolean
     tabWidthSet: boolean
-    trim_trailing_whitespace: boolean
     trimTrailingWhitespace: boolean
-    trim_trailing_whitespace_set: boolean
     trimTrailingWhitespaceSet: boolean
 
     // Own fields of Ide-1.0.Ide.FileSettings
@@ -9120,8 +8939,6 @@ module FormatterOptions {
 
         // Own constructor properties of Ide-1.0.Ide.FormatterOptions
 
-        insert_spaces?: boolean | null
-        tab_width?: number | null
         insertSpaces?: boolean | null
         tabWidth?: number | null
     }
@@ -9132,9 +8949,7 @@ interface FormatterOptions {
 
     // Own properties of Ide-1.0.Ide.FormatterOptions
 
-    insert_spaces: boolean
     insertSpaces: boolean
-    tab_width: number
     tabWidth: number
 
     // Owm methods of Ide-1.0.Ide.FormatterOptions
@@ -9292,7 +9107,6 @@ module LangservClient {
 
         // Own constructor properties of Ide-1.0.Ide.LangservClient
 
-        io_stream?: Gio.IOStream | null
         ioStream?: Gio.IOStream | null
     }
 
@@ -9302,7 +9116,6 @@ interface LangservClient {
 
     // Own properties of Ide-1.0.Ide.LangservClient
 
-    readonly io_stream: Gio.IOStream
     readonly ioStream: Gio.IOStream
 
     // Own fields of Ide-1.0.Ide.LangservClient
@@ -9899,7 +9712,6 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
 
     // Own properties of Ide-1.0.Ide.Layout
 
-    readonly active_view: Gtk.Widget
     readonly activeView: Gtk.Widget
 
     // Own fields of Ide-1.0.Ide.Layout
@@ -10778,7 +10590,6 @@ module LayoutStack {
 
         // Own constructor properties of Ide-1.0.Ide.LayoutStack
 
-        active_view?: LayoutView | null
         activeView?: LayoutView | null
     }
 
@@ -10788,7 +10599,6 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Ide-1.0.Ide.LayoutStack
 
-    active_view: LayoutView
     activeView: LayoutView
 
     // Owm methods of Ide-1.0.Ide.LayoutStack
@@ -11013,10 +10823,8 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
 
     // Own properties of Ide-1.0.Ide.LayoutView
 
-    readonly can_split: boolean
     readonly canSplit: boolean
     readonly modified: boolean
-    readonly special_title: string | null
     readonly specialTitle: string | null
     readonly title: string | null
 
@@ -12562,9 +12370,8 @@ module OmniSearchRow {
 
         // Own constructor properties of Ide-1.0.Ide.OmniSearchRow
 
-        icon_name?: string | null
-        result?: SearchResult | null
         iconName?: string | null
+        result?: SearchResult | null
     }
 
 }
@@ -12573,7 +12380,6 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Ide-1.0.Ide.OmniSearchRow
 
-    icon_name: string | null
     iconName: string | null
     result: SearchResult
 
@@ -13359,9 +13165,8 @@ module ProjectFile {
         // Own constructor properties of Ide-1.0.Ide.ProjectFile
 
         file?: Gio.File | null
-        file_info?: Gio.FileInfo | null
-        path?: string | null
         fileInfo?: Gio.FileInfo | null
+        path?: string | null
     }
 
 }
@@ -13371,9 +13176,7 @@ interface ProjectFile {
     // Own properties of Ide-1.0.Ide.ProjectFile
 
     file: Gio.File
-    file_info: Gio.FileInfo
     fileInfo: Gio.FileInfo
-    readonly is_directory: boolean
     readonly isDirectory: boolean
     readonly name: string | null
     path: string | null
@@ -13509,19 +13312,16 @@ module ProjectInfo {
 
         // Own constructor properties of Ide-1.0.Ide.ProjectInfo
 
-        build_system_name?: string | null
+        buildSystemName?: string | null
         description?: string | null
         directory?: Gio.File | null
         doap?: Doap | null
         file?: Gio.File | null
-        is_recent?: boolean | null
+        isRecent?: boolean | null
         languages?: string[] | null
-        last_modified_at?: GLib.DateTime | null
+        lastModifiedAt?: GLib.DateTime | null
         name?: string | null
         priority?: number | null
-        buildSystemName?: string | null
-        isRecent?: boolean | null
-        lastModifiedAt?: GLib.DateTime | null
     }
 
 }
@@ -13530,16 +13330,13 @@ interface ProjectInfo {
 
     // Own properties of Ide-1.0.Ide.ProjectInfo
 
-    build_system_name: string | null
     buildSystemName: string | null
     description: string | null
     directory: Gio.File
     doap: Doap
     file: Gio.File
-    is_recent: boolean
     isRecent: boolean
     languages: string[]
-    last_modified_at: GLib.DateTime
     lastModifiedAt: GLib.DateTime
     name: string | null
     priority: number
@@ -14008,7 +13805,6 @@ module RunManager {
 
         // Own constructor properties of Ide-1.0.Ide.RunManager
 
-        build_target?: BuildTarget | null
         buildTarget?: BuildTarget | null
     }
 
@@ -14018,7 +13814,6 @@ interface RunManager extends Gio.ActionGroup, Gio.Initable {
 
     // Own properties of Ide-1.0.Ide.RunManager
 
-    build_target: BuildTarget
     buildTarget: BuildTarget
     readonly busy: boolean
     readonly handler: string | null
@@ -14135,7 +13930,7 @@ module Runner {
         // Own constructor properties of Ide-1.0.Ide.Runner
 
         argv?: string[] | null
-        clear_env?: boolean | null
+        clearEnv?: boolean | null
         /**
          * If the runner has "failed". This should be set if a plugin can determine
          * that the runner cannot be executed due to an external issue. One such
@@ -14143,12 +13938,6 @@ module Runner {
          * to run the program.
          */
         failed?: boolean | null
-        /**
-         * The "run-on-host" property indicates the program should be run on the
-         * host machine rather than inside the application sandbox.
-         */
-        run_on_host?: boolean | null
-        clearEnv?: boolean | null
         /**
          * The "run-on-host" property indicates the program should be run on the
          * host machine rather than inside the application sandbox.
@@ -14163,7 +13952,6 @@ interface Runner {
     // Own properties of Ide-1.0.Ide.Runner
 
     argv: string[]
-    clear_env: boolean
     clearEnv: boolean
     readonly environment: Environment
     /**
@@ -14173,11 +13961,6 @@ interface Runner {
      * to run the program.
      */
     failed: boolean
-    /**
-     * The "run-on-host" property indicates the program should be run on the
-     * host machine rather than inside the application sandbox.
-     */
-    run_on_host: boolean
     /**
      * The "run-on-host" property indicates the program should be run on the
      * host machine rather than inside the application sandbox.
@@ -14320,9 +14103,8 @@ module Runtime {
 
         // Own constructor properties of Ide-1.0.Ide.Runtime
 
-        display_name?: string | null
-        id?: string | null
         displayName?: string | null
+        id?: string | null
     }
 
 }
@@ -14331,7 +14113,6 @@ interface Runtime {
 
     // Own properties of Ide-1.0.Ide.Runtime
 
-    display_name: string | null
     displayName: string | null
     id: string | null
 
@@ -14762,9 +14543,6 @@ module Settings {
 
         // Own constructor properties of Ide-1.0.Ide.Settings
 
-        ignore_project_settings?: boolean | null
-        relative_path?: string | null
-        schema_id?: string | null
         ignoreProjectSettings?: boolean | null
         relativePath?: string | null
         schemaId?: string | null
@@ -14776,11 +14554,8 @@ interface Settings {
 
     // Own properties of Ide-1.0.Ide.Settings
 
-    readonly ignore_project_settings: boolean
     readonly ignoreProjectSettings: boolean
-    readonly relative_path: string | null
     readonly relativePath: string | null
-    readonly schema_id: string | null
     readonly schemaId: string | null
 
     // Owm methods of Ide-1.0.Ide.Settings
@@ -15263,9 +15038,8 @@ module SourceSnippet {
 
         description?: string | null
         language?: string | null
-        snippet_text?: string | null
-        trigger?: string | null
         snippetText?: string | null
+        trigger?: string | null
     }
 
 }
@@ -15277,13 +15051,9 @@ interface SourceSnippet {
     readonly buffer: Gtk.TextBuffer
     description: string | null
     language: string | null
-    readonly mark_begin: Gtk.TextMark
     readonly markBegin: Gtk.TextMark
-    readonly mark_end: Gtk.TextMark
     readonly markEnd: Gtk.TextMark
-    snippet_text: string | null
     snippetText: string | null
-    readonly tab_stop: number
     readonly tabStop: number
     trigger: string | null
 
@@ -15364,10 +15134,8 @@ module SourceSnippetChunk {
 
         context?: SourceSnippetContext | null
         spec?: string | null
-        tab_stop?: number | null
-        text?: string | null
-        text_set?: boolean | null
         tabStop?: number | null
+        text?: string | null
         textSet?: boolean | null
     }
 
@@ -15379,10 +15147,8 @@ interface SourceSnippetChunk {
 
     context: SourceSnippetContext
     spec: string | null
-    tab_stop: number
     tabStop: number
     text: string | null
-    text_set: boolean
     textSet: boolean
 
     // Owm methods of Ide-1.0.Ide.SourceSnippetChunk
@@ -16002,37 +15768,14 @@ module SourceView {
 
         // Own constructor properties of Ide-1.0.Ide.SourceView
 
-        back_forward_list?: BackForwardList | null
-        count?: number | null
-        enable_word_completion?: boolean | null
-        font_desc?: Pango.FontDescription | null
-        font_name?: string | null
-        indent_style?: IndentStyle | null
-        insert_matching_brace?: boolean | null
-        overscroll?: number | null
-        overwrite_braces?: boolean | null
-        rubberband_search?: boolean | null
-        scroll_offset?: number | null
-        search_direction?: Gtk.DirectionType | null
-        show_grid_lines?: boolean | null
-        show_line_changes?: boolean | null
-        /**
-         * If the diagnostics gutter should be visible.
-         * 
-         * This also requires that IdeBuffer:highlight-diagnostics is set to %TRUE
-         * to generate diagnostics.
-         */
-        show_line_diagnostics?: boolean | null
-        show_search_bubbles?: boolean | null
-        show_search_shadow?: boolean | null
-        snippet_completion?: boolean | null
-        spell_checking?: boolean | null
         backForwardList?: BackForwardList | null
+        count?: number | null
         enableWordCompletion?: boolean | null
         fontDesc?: Pango.FontDescription | null
         fontName?: string | null
         indentStyle?: IndentStyle | null
         insertMatchingBrace?: boolean | null
+        overscroll?: number | null
         overwriteBraces?: boolean | null
         rubberbandSearch?: boolean | null
         scrollOffset?: number | null
@@ -16058,38 +15801,23 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
 
     // Own properties of Ide-1.0.Ide.SourceView
 
-    back_forward_list: BackForwardList
     backForwardList: BackForwardList
     count: number
-    enable_word_completion: boolean
     enableWordCompletion: boolean
-    readonly file_settings: FileSettings
     readonly fileSettings: FileSettings
-    font_desc: Pango.FontDescription
     fontDesc: Pango.FontDescription
-    font_name: string | null
     fontName: string | null
-    indent_style: IndentStyle
     indentStyle: IndentStyle
     readonly indenter: Indenter
-    insert_matching_brace: boolean
     insertMatchingBrace: boolean
-    readonly mode_display_name: string | null
     readonly modeDisplayName: string | null
     overscroll: number
-    overwrite_braces: boolean
     overwriteBraces: boolean
-    rubberband_search: boolean
     rubberbandSearch: boolean
-    scroll_offset: number
     scrollOffset: number
-    readonly search_context: GtkSource.SearchContext
     readonly searchContext: GtkSource.SearchContext
-    search_direction: Gtk.DirectionType
     searchDirection: Gtk.DirectionType
-    show_grid_lines: boolean
     showGridLines: boolean
-    show_line_changes: boolean
     showLineChanges: boolean
     /**
      * If the diagnostics gutter should be visible.
@@ -16097,21 +15825,10 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * This also requires that IdeBuffer:highlight-diagnostics is set to %TRUE
      * to generate diagnostics.
      */
-    show_line_diagnostics: boolean
-    /**
-     * If the diagnostics gutter should be visible.
-     * 
-     * This also requires that IdeBuffer:highlight-diagnostics is set to %TRUE
-     * to generate diagnostics.
-     */
     showLineDiagnostics: boolean
-    show_search_bubbles: boolean
     showSearchBubbles: boolean
-    show_search_shadow: boolean
     showSearchShadow: boolean
-    snippet_completion: boolean
     snippetCompletion: boolean
-    spell_checking: boolean
     spellChecking: boolean
 
     // Conflicting properties
@@ -17823,12 +17540,10 @@ module SubprocessLauncher {
 
         // Own constructor properties of Ide-1.0.Ide.SubprocessLauncher
 
-        clean_env?: boolean | null
+        cleanEnv?: boolean | null
         cwd?: string | null
         environ?: string[] | null
         flags?: Gio.SubprocessFlags | null
-        run_on_host?: boolean | null
-        cleanEnv?: boolean | null
         runOnHost?: boolean | null
     }
 
@@ -17838,12 +17553,10 @@ interface SubprocessLauncher {
 
     // Own properties of Ide-1.0.Ide.SubprocessLauncher
 
-    clean_env: boolean
     cleanEnv: boolean
     cwd: string | null
     environ: string[]
     flags: Gio.SubprocessFlags
-    run_on_host: boolean
     runOnHost: boolean
 
     // Own fields of Ide-1.0.Ide.SubprocessLauncher
@@ -18056,7 +17769,6 @@ module SymbolNode {
         flags?: SymbolFlags | null
         kind?: SymbolKind | null
         name?: string | null
-        use_markup?: boolean | null
         useMarkup?: boolean | null
     }
 
@@ -18069,7 +17781,6 @@ interface SymbolNode {
     flags: SymbolFlags
     kind: SymbolKind
     name: string | null
-    use_markup: boolean
     useMarkup: boolean
 
     // Own fields of Ide-1.0.Ide.SymbolNode
@@ -18240,11 +17951,10 @@ module Transfer {
 
         // Own constructor properties of Ide-1.0.Ide.Transfer
 
-        icon_name?: string | null
+        iconName?: string | null
         progress?: number | null
         status?: string | null
         title?: string | null
-        iconName?: string | null
     }
 
 }
@@ -18255,7 +17965,6 @@ interface Transfer {
 
     readonly active: boolean
     readonly completed: boolean
-    icon_name: string | null
     iconName: string | null
     progress: number
     status: string | null
@@ -18638,10 +18347,6 @@ interface TransferManager extends Gio.ListModel {
 
     // Own properties of Ide-1.0.Ide.TransferManager
 
-    /**
-     * If there are transfers active, this will be set.
-     */
-    readonly has_active: boolean
     /**
      * If there are transfers active, this will be set.
      */
@@ -19610,25 +19315,6 @@ module Workbench {
          * 
          * This should not be used by application plugins.
          */
-        disable_greeter?: boolean | null
-        /**
-         * This property contains the #IdePerspective that is currently selected.
-         * Connect to the "notify::visible-perspective" signal to be notified when
-         * the perspective has been changed.
-         */
-        visible_perspective?: Perspective | null
-        /**
-         * This property is just like #IdeWorkbench:visible-perspective except that
-         * it contains the name of the perspective as a string.
-         */
-        visible_perspective_name?: string | null
-        /**
-         * This property is used internally by Builder to avoid creating the
-         * greeter when opening a new workspace that is only for loading a
-         * project.
-         * 
-         * This should not be used by application plugins.
-         */
         disableGreeter?: boolean | null
         /**
          * This property contains the #IdePerspective that is currently selected.
@@ -19670,32 +19356,13 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * 
      * This should not be used by application plugins.
      */
-    readonly disable_greeter: boolean
-    /**
-     * This property is used internally by Builder to avoid creating the
-     * greeter when opening a new workspace that is only for loading a
-     * project.
-     * 
-     * This should not be used by application plugins.
-     */
     readonly disableGreeter: boolean
     /**
      * This property contains the #IdePerspective that is currently selected.
      * Connect to the "notify::visible-perspective" signal to be notified when
      * the perspective has been changed.
      */
-    visible_perspective: Perspective
-    /**
-     * This property contains the #IdePerspective that is currently selected.
-     * Connect to the "notify::visible-perspective" signal to be notified when
-     * the perspective has been changed.
-     */
     visiblePerspective: Perspective
-    /**
-     * This property is just like #IdeWorkbench:visible-perspective except that
-     * it contains the name of the perspective as a string.
-     */
-    visible_perspective_name: string | null
     /**
      * This property is just like #IdeWorkbench:visible-perspective except that
      * it contains the name of the perspective as a string.

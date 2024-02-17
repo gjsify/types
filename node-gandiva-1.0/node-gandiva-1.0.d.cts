@@ -367,8 +367,8 @@ export module Expression {
         // Own constructor properties of Gandiva-1.0.Gandiva.Expression
 
         expression?: any | null
-        resultField?: Arrow.Field | null
-        rootNode?: Node | null
+        result_field?: Arrow.Field | null
+        root_node?: Node | null
     }
 
 }
@@ -697,7 +697,7 @@ export module FunctionSignature {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.FunctionSignature
 
-        functionSignature?: any | null
+        function_signature?: any | null
     }
 
 }
@@ -763,9 +763,9 @@ export module IfNode {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.IfNode
 
-        conditionNode?: Node | null
-        elseNode?: Node | null
-        thenNode?: Node | null
+        condition_node?: Node | null
+        else_node?: Node | null
+        then_node?: Node | null
     }
 
 }
@@ -1149,7 +1149,7 @@ export module NativeFunction {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.NativeFunction
 
-        nativeFunction?: any | null
+        native_function?: any | null
     }
 
 }
@@ -1216,7 +1216,7 @@ export module Node {
         // Own constructor properties of Gandiva-1.0.Gandiva.Node
 
         node?: any | null
-        returnType?: Arrow.DataType | null
+        return_type?: Arrow.DataType | null
     }
 
 }

@@ -950,27 +950,13 @@ interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware address of the access point.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware address of the access point.
-     */
     readonly hwAddress: string | null
     /**
      * The timestamp (in CLOCK_BOOTTIME seconds) for the last time the
      * access point was found in scan results.  A value of -1 means the
      * access point has not been found in a scan.
      */
-    readonly last_seen: number
-    /**
-     * The timestamp (in CLOCK_BOOTTIME seconds) for the last time the
-     * access point was found in scan results.  A value of -1 means the
-     * access point has not been found in a scan.
-     */
     readonly lastSeen: number
-    /**
-     * The maximum bit rate of the access point in kbit/s.
-     */
-    readonly max_bitrate: number
     /**
      * The maximum bit rate of the access point in kbit/s.
      */
@@ -984,10 +970,6 @@ interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The RSN flags of the access point.
      */
-    readonly rsn_flags: number
-    /**
-     * The RSN flags of the access point.
-     */
     readonly rsnFlags: number
     /**
      * The SSID of the access point.
@@ -997,10 +979,6 @@ interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
      * The current signal strength of the access point.
      */
     readonly strength: number
-    /**
-     * The WPA flags of the access point.
-     */
-    readonly wpa_flags: number
     /**
      * The WPA flags of the access point.
      */
@@ -1196,15 +1174,7 @@ interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The #NMDHCP4Config of the connection.
      */
-    readonly dhcp4_config: DHCP4Config
-    /**
-     * The #NMDHCP4Config of the connection.
-     */
     readonly dhcp4Config: DHCP4Config
-    /**
-     * The #NMDHCP6Config of the connection.
-     */
-    readonly dhcp6_config: DHCP6Config
     /**
      * The #NMDHCP6Config of the connection.
      */
@@ -1216,15 +1186,7 @@ interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The #NMIP4Config of the connection.
      */
-    readonly ip4_config: IP4Config
-    /**
-     * The #NMIP4Config of the connection.
-     */
     readonly ip4Config: IP4Config
-    /**
-     * The #NMIP6Config of the connection.
-     */
-    readonly ip6_config: IP6Config
     /**
      * The #NMIP6Config of the connection.
      */
@@ -1233,10 +1195,6 @@ interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * The path of the master device if one exists.
      */
     readonly master: string | null
-    /**
-     * The specific object's path of the active connection.
-     */
-    readonly specific_object: string | null
     /**
      * The specific object's path of the active connection.
      */
@@ -1488,22 +1446,6 @@ module Client {
         /**
          * Whether networking is enabled.
          */
-        networking_enabled?: boolean | null
-        /**
-         * Whether WiMAX functionality is enabled.
-         */
-        wimax_enabled?: boolean | null
-        /**
-         * Whether wireless is enabled.
-         */
-        wireless_enabled?: boolean | null
-        /**
-         * Whether WWAN functionality is enabled.
-         */
-        wwan_enabled?: boolean | null
-        /**
-         * Whether networking is enabled.
-         */
         networkingEnabled?: boolean | null
         /**
          * Whether WiMAX functionality is enabled.
@@ -1529,24 +1471,11 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
      * The #NMActiveConnection of the activating connection that is
      * likely to become the new #NMClient:primary-connection.
      */
-    readonly activating_connection: ActiveConnection
-    /**
-     * The #NMActiveConnection of the activating connection that is
-     * likely to become the new #NMClient:primary-connection.
-     */
     readonly activatingConnection: ActiveConnection
     /**
      * The active connections.
      */
-    readonly active_connections: any[]
-    /**
-     * The active connections.
-     */
     readonly activeConnections: any[]
-    /**
-     * List of both real devices and device placeholders.
-     */
-    readonly all_devices: any
     /**
      * List of both real devices and device placeholders.
      */
@@ -1562,24 +1491,11 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
     /**
      * Whether the daemon is running.
      */
-    readonly manager_running: boolean
-    /**
-     * Whether the daemon is running.
-     */
     readonly managerRunning: boolean
     /**
      * Whether networking is enabled.
      */
-    networking_enabled: boolean
-    /**
-     * Whether networking is enabled.
-     */
     networkingEnabled: boolean
-    /**
-     * The #NMActiveConnection of the device with the default route;
-     * see nm_client_get_primary_connection() for more details.
-     */
-    readonly primary_connection: ActiveConnection
     /**
      * The #NMActiveConnection of the device with the default route;
      * see nm_client_get_primary_connection() for more details.
@@ -1600,15 +1516,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
     /**
      * Whether WiMAX functionality is enabled.
      */
-    wimax_enabled: boolean
-    /**
-     * Whether WiMAX functionality is enabled.
-     */
     wimaxEnabled: boolean
-    /**
-     * Whether the WiMAX hardware is enabled.
-     */
-    readonly wimax_hardware_enabled: boolean
     /**
      * Whether the WiMAX hardware is enabled.
      */
@@ -1616,15 +1524,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
     /**
      * Whether wireless is enabled.
      */
-    wireless_enabled: boolean
-    /**
-     * Whether wireless is enabled.
-     */
     wirelessEnabled: boolean
-    /**
-     * Whether the wireless hardware is enabled.
-     */
-    readonly wireless_hardware_enabled: boolean
     /**
      * Whether the wireless hardware is enabled.
      */
@@ -1632,15 +1532,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
     /**
      * Whether WWAN functionality is enabled.
      */
-    wwan_enabled: boolean
-    /**
-     * Whether WWAN functionality is enabled.
-     */
     wwanEnabled: boolean
-    /**
-     * Whether the WWAN hardware is enabled.
-     */
-    readonly wwan_hardware_enabled: boolean
     /**
      * Whether the WWAN hardware is enabled.
      */
@@ -2247,19 +2139,11 @@ interface Device extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The #NMActiveConnection object that "owns" this device during activation.
      */
-    readonly active_connection: ActiveConnection
-    /**
-     * The #NMActiveConnection object that "owns" this device during activation.
-     */
     readonly activeConnection: ActiveConnection
     /**
      * Whether the device can auto-activate a connection.
      */
     autoconnect: boolean
-    /**
-     * The available connections (#NMRemoteConnection) of the device
-     */
-    readonly available_connections: any
     /**
      * The available connections (#NMRemoteConnection) of the device
      */
@@ -2271,23 +2155,11 @@ interface Device extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The numeric type of the device.
      */
-    readonly device_type: number
-    /**
-     * The numeric type of the device.
-     */
     readonly deviceType: number
     /**
      * The #NMDHCP4Config of the device.
      */
-    readonly dhcp4_config: DHCP4Config
-    /**
-     * The #NMDHCP4Config of the device.
-     */
     readonly dhcp4Config: DHCP4Config
-    /**
-     * The #NMDHCP6Config of the device.
-     */
-    readonly dhcp6_config: DHCP6Config
     /**
      * The #NMDHCP6Config of the device.
      */
@@ -2299,25 +2171,12 @@ interface Device extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The version of the device driver.
      */
-    readonly driver_version: string | null
-    /**
-     * The version of the device driver.
-     */
     readonly driverVersion: string | null
     /**
      * When %TRUE indicates the device is likely missing firmware required
      * for its operation.
      */
-    readonly firmware_missing: boolean
-    /**
-     * When %TRUE indicates the device is likely missing firmware required
-     * for its operation.
-     */
     readonly firmwareMissing: boolean
-    /**
-     * The firmware version of the device.
-     */
-    readonly firmware_version: string | null
     /**
      * The firmware version of the device.
      */
@@ -2330,24 +2189,11 @@ interface Device extends Gio.AsyncInitable, Gio.Initable {
      * The IP interface of the device which should be used for all IP-related
      * operations like addressing and routing.
      */
-    readonly ip_interface: string | null
-    /**
-     * The IP interface of the device which should be used for all IP-related
-     * operations like addressing and routing.
-     */
     readonly ipInterface: string | null
     /**
      * The #NMIP4Config of the device.
      */
-    readonly ip4_config: IP4Config
-    /**
-     * The #NMIP4Config of the device.
-     */
     readonly ip4Config: IP4Config
-    /**
-     * The #NMIP6Config of the device.
-     */
-    readonly ip6_config: IP6Config
     /**
      * The #NMIP6Config of the device.
      */
@@ -2360,11 +2206,6 @@ interface Device extends Gio.AsyncInitable, Gio.Initable {
      * The MTU of the device.
      */
     readonly mtu: number
-    /**
-     * The physical port ID of the device. (See
-     * nm_device_get_physical_port_id().)
-     */
-    readonly physical_port_id: string | null
     /**
      * The physical port ID of the device. (See
      * nm_device_get_physical_port_id().)
@@ -2969,10 +2810,6 @@ interface DeviceBond extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
     /**
      * The devices (#NMDevice) enslaved to the bond device.
@@ -3149,10 +2986,6 @@ interface DeviceBridge extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
     /**
      * The devices (#NMDevice) enslaved to the bridge device.
@@ -3325,15 +3158,7 @@ interface DeviceBt extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The device's bluetooth capabilities, a combination of #NMBluetoothCapabilities.
      */
-    readonly bt_capabilities: number
-    /**
-     * The device's bluetooth capabilities, a combination of #NMBluetoothCapabilities.
-     */
     readonly btCapabilities: number
-    /**
-     * The hardware (MAC) address of the device.
-     */
-    readonly hw_address: string | null
     /**
      * The hardware (MAC) address of the device.
      */
@@ -3521,15 +3346,7 @@ interface DeviceEthernet extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The active hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The active hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
-    /**
-     * The permanent hardware (MAC) address of the device.
-     */
-    readonly perm_hw_address: string | null
     /**
      * The permanent hardware (MAC) address of the device.
      */
@@ -3713,16 +3530,7 @@ interface DeviceGeneric extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware address of the device.
-     */
     readonly hwAddress: string | null
-    /**
-     * A description of the specific type of device this is, or %NULL
-     * if not known.
-     */
-    readonly type_description: string | null
     /**
      * A description of the specific type of device this is, or %NULL
      * if not known.
@@ -3883,10 +3691,6 @@ interface DeviceInfiniband extends Gio.AsyncInitable, Gio.Initable {
      * Whether the device has carrier.
      */
     readonly carrier: boolean
-    /**
-     * The hardware (MAC) address of the device.
-     */
-    readonly hw_address: string | null
     /**
      * The hardware (MAC) address of the device.
      */
@@ -4051,19 +3855,7 @@ interface DeviceModem extends Gio.AsyncInitable, Gio.Initable {
      * The generic family of access technologies the modem currently supports
      * without a firmware reload or reinitialization.
      */
-    readonly current_capabilities: number
-    /**
-     * The generic family of access technologies the modem currently supports
-     * without a firmware reload or reinitialization.
-     */
     readonly currentCapabilities: number
-    /**
-     * The generic family of access technologies the modem supports.  Not all
-     * capabilities are available at the same time however; some modems require
-     * a firmware reload or other reinitialization to switch between eg
-     * CDMA/EVDO and GSM/UMTS.
-     */
-    readonly modem_capabilities: number
     /**
      * The generic family of access technologies the modem supports.  Not all
      * capabilities are available at the same time however; some modems require
@@ -4218,19 +4010,11 @@ interface DeviceOlpcMesh extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The device's active channel.
      */
-    readonly active_channel: number
-    /**
-     * The device's active channel.
-     */
     readonly activeChannel: number
     /**
      * The companion device.
      */
     readonly companion: DeviceWifi
-    /**
-     * The hardware (MAC) address of the device.
-     */
-    readonly hw_address: string | null
     /**
      * The hardware (MAC) address of the device.
      */
@@ -4403,10 +4187,6 @@ interface DeviceTeam extends Gio.AsyncInitable, Gio.Initable {
      * Whether the device has carrier.
      */
     readonly carrier: boolean
-    /**
-     * The hardware (MAC) address of the device.
-     */
-    readonly hw_address: string | null
     /**
      * The hardware (MAC) address of the device.
      */
@@ -4586,15 +4366,7 @@ interface DeviceVlan extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
-    /**
-     * The device's VLAN ID.
-     */
-    readonly vlan_id: number
     /**
      * The device's VLAN ID.
      */
@@ -4780,15 +4552,7 @@ interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
     /**
      * List of all Wi-Fi access points the device can see.
      */
-    readonly access_points: any
-    /**
-     * List of all Wi-Fi access points the device can see.
-     */
     readonly accessPoints: any
-    /**
-     * The active #NMAccessPoint of the device.
-     */
-    readonly active_access_point: AccessPoint
     /**
      * The active #NMAccessPoint of the device.
      */
@@ -4800,10 +4564,6 @@ interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
     /**
      * The mode of the device.
@@ -4812,15 +4572,7 @@ interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly perm_hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly permHwAddress: string | null
-    /**
-     * The wireless capabilities of the device.
-     */
-    readonly wireless_capabilities: number
     /**
      * The wireless capabilities of the device.
      */
@@ -5076,22 +4828,12 @@ interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The active #NMWimaxNsp of the device.
      */
-    readonly active_nsp: WimaxNsp
-    /**
-     * The active #NMWimaxNsp of the device.
-     */
     readonly activeNsp: WimaxNsp
     /**
      * The ID of the serving base station as received from the network.  Has
      * no meaning when the device is not connected.
      */
     readonly bsid: string | null
-    /**
-     * The center frequency (in KHz) of the radio channel the device is using to
-     * communicate with the network when connected.  Has no meaning when the
-     * device is not connected.
-     */
-    readonly center_frequency: number
     /**
      * The center frequency (in KHz) of the radio channel the device is using to
      * communicate with the network when connected.  Has no meaning when the
@@ -5107,10 +4849,6 @@ interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The hardware (MAC) address of the device.
      */
-    readonly hw_address: string | null
-    /**
-     * The hardware (MAC) address of the device.
-     */
     readonly hwAddress: string | null
     /**
      * List of all WiMAX Network Service Providers the device can see.
@@ -5123,12 +4861,6 @@ interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
      * device is not connected.
      */
     readonly rssi: number
-    /**
-     * Average power of the last burst transmitted by the device, in units of
-     * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
-     * -5.5 dBm.  Has no meaning when the device is not connected.
-     */
-    readonly tx_power: number
     /**
      * Average power of the last burst transmitted by the device, in units of
      * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
@@ -5392,10 +5124,6 @@ interface IP4Config extends Gio.AsyncInitable, Gio.Initable {
      * The #GPtrArray containing dns search strings of the configuration.
      */
     readonly searches: any
-    /**
-     * The #GArray containing WINS servers (#guint32s) of the configuration.
-     */
-    readonly wins_servers: any
     /**
      * The #GArray containing WINS servers (#guint32s) of the configuration.
      */
@@ -5666,7 +5394,6 @@ module Object {
 
         // Own constructor properties of NMClient-1.0.NMClient.Object
 
-        dbus_path?: string | null
         dbusPath?: string | null
     }
 
@@ -5676,7 +5403,6 @@ interface Object extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of NMClient-1.0.NMClient.Object
 
-    readonly dbus_path: string | null
     readonly dbusPath: string | null
 
     // Own fields of NMClient-1.0.NMClient.Object
@@ -5762,7 +5488,6 @@ module RemoteConnection {
 
         // Own constructor properties of NMClient-1.0.NMClient.RemoteConnection
 
-        dbus_path?: string | null
         dbusPath?: string | null
     }
 
@@ -5772,7 +5497,6 @@ interface RemoteConnection extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of NMClient-1.0.NMClient.RemoteConnection
 
-    readonly dbus_path: string | null
     readonly dbusPath: string | null
     /**
      * %TRUE if the remote connection contains changes that have not been saved
@@ -5924,20 +5648,12 @@ interface RemoteSettings extends Gio.AsyncInitable, Gio.Initable {
     /**
      * If %TRUE, adding and modifying connections is supported.
      */
-    readonly can_modify: boolean
-    /**
-     * If %TRUE, adding and modifying connections is supported.
-     */
     readonly canModify: boolean
     /**
      * The machine hostname stored in persistent configuration. This can be
      * modified by calling nm_remote_settings_save_hostname().
      */
     readonly hostname: string | null
-    /**
-     * Whether the settings service is running.
-     */
-    readonly service_running: boolean
     /**
      * Whether the settings service is running.
      */
@@ -6135,7 +5851,7 @@ module SecretAgent {
          * will suppress auto-registration until nm_secret_agent_register() is
          * called, which re-enables auto-registration.
          */
-        auto_register?: boolean | null
+        autoRegister?: boolean | null
         /**
          * A bitfield of %NMSecretAgentCapabilities.
          */
@@ -6150,16 +5866,6 @@ module SecretAgent {
          * (without quotes).
          */
         identifier?: string | null
-        /**
-         * If TRUE, the agent will attempt to automatically register itself after
-         * it is created (via an idle handler) and to re-register itself if
-         * NetworkManager restarts.  If FALSE, the agent does not automatically
-         * register with NetworkManager, and nm_secret_agent_register() must be
-         * called.  If 'auto-register' is TRUE, calling nm_secret_agent_unregister()
-         * will suppress auto-registration until nm_secret_agent_register() is
-         * called, which re-enables auto-registration.
-         */
-        autoRegister?: boolean | null
     }
 
 }
@@ -6168,16 +5874,6 @@ interface SecretAgent {
 
     // Own properties of NMClient-1.0.NMClient.SecretAgent
 
-    /**
-     * If TRUE, the agent will attempt to automatically register itself after
-     * it is created (via an idle handler) and to re-register itself if
-     * NetworkManager restarts.  If FALSE, the agent does not automatically
-     * register with NetworkManager, and nm_secret_agent_register() must be
-     * called.  If 'auto-register' is TRUE, calling nm_secret_agent_unregister()
-     * will suppress auto-registration until nm_secret_agent_register() is
-     * called, which re-enables auto-registration.
-     */
-    auto_register: boolean
     /**
      * If TRUE, the agent will attempt to automatically register itself after
      * it is created (via an idle handler) and to re-register itself if
@@ -6365,10 +6061,6 @@ interface VPNConnection extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The VPN state of the active VPN connection.
      */
-    readonly vpn_state: number
-    /**
-     * The VPN state of the active VPN connection.
-     */
     readonly vpnState: number
 
     // Own fields of NMClient-1.0.NMClient.VPNConnection
@@ -6532,15 +6224,7 @@ interface WimaxNsp extends Gio.AsyncInitable, Gio.Initable {
     /**
      * The network type of the WiMAX NSP.
      */
-    readonly network_type: number
-    /**
-     * The network type of the WiMAX NSP.
-     */
     readonly networkType: number
-    /**
-     * The signal quality of the WiMAX NSP.
-     */
-    readonly signal_quality: number
     /**
      * The signal quality of the WiMAX NSP.
      */

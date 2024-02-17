@@ -330,16 +330,16 @@ module Chooser {
 
         // Own constructor properties of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
-        deviceSelected?: string | null
-        deviceServiceFilter?: string | null
-        deviceTypeFilter?: number | null
-        hasInternalDeviceFilter?: boolean | null
-        showConnected?: boolean | null
-        showDeviceCategory?: boolean | null
-        showDeviceType?: boolean | null
-        showDeviceTypeColumn?: boolean | null
-        showPairing?: boolean | null
-        showSearching?: boolean | null
+        device_selected?: string | null
+        device_service_filter?: string | null
+        device_type_filter?: number | null
+        has_internal_device_filter?: boolean | null
+        show_connected?: boolean | null
+        show_device_category?: boolean | null
+        show_device_type?: boolean | null
+        show_device_type_column?: boolean | null
+        show_pairing?: boolean | null
+        show_searching?: boolean | null
     }
 
 }
@@ -1858,11 +1858,11 @@ module Client {
         /**
          * %TRUE if the default Bluetooth adapter is discoverable.
          */
-        defaultAdapterDiscoverable?: boolean | null
+        default_adapter_discoverable?: boolean | null
         /**
          * %TRUE if the default Bluetooth adapter is discovering.
          */
-        defaultAdapterDiscovering?: boolean | null
+        default_adapter_discovering?: boolean | null
     }
 
 }
@@ -2025,10 +2025,10 @@ module FilterWidget {
 
         // Own constructor properties of GnomeBluetooth-1.0.GnomeBluetooth.FilterWidget
 
-        deviceServiceFilter?: string | null
-        deviceTypeFilter?: number | null
-        showDeviceCategory?: boolean | null
-        showDeviceType?: boolean | null
+        device_service_filter?: string | null
+        device_type_filter?: number | null
+        show_device_category?: boolean | null
+        show_device_type?: boolean | null
     }
 
 }

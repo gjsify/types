@@ -1065,7 +1065,6 @@ module WidgetsAlertView {
 
         title?: string | null
         description?: string | null
-        icon_name?: string | null
         iconName?: string | null
     }
 
@@ -1077,7 +1076,6 @@ interface WidgetsAlertView {
 
     title: string | null
     description: string | null
-    icon_name: string | null
     iconName: string | null
 
     // Owm methods of Granite-1.0.Granite.WidgetsAlertView
@@ -1660,7 +1658,6 @@ module WidgetsCellRendererExpander {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsCellRendererExpander
 
-        is_category_expander?: boolean | null
         isCategoryExpander?: boolean | null
     }
 
@@ -1670,7 +1667,6 @@ interface WidgetsCellRendererExpander {
 
     // Own properties of Granite-1.0.Granite.WidgetsCellRendererExpander
 
-    is_category_expander: boolean
     isCategoryExpander: boolean
 
     // Owm methods of Granite-1.0.Granite.WidgetsCellRendererExpander
@@ -1765,7 +1761,6 @@ module WidgetsCollapsiblePaned {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsCollapsiblePaned
 
-        collapse_mode?: CollapseMode | null
         collapseMode?: CollapseMode | null
     }
 
@@ -1775,7 +1770,6 @@ interface WidgetsCollapsiblePaned {
 
     // Own properties of Granite-1.0.Granite.WidgetsCollapsiblePaned
 
-    collapse_mode: CollapseMode
     collapseMode: CollapseMode
 
     // Owm methods of Granite-1.0.Granite.WidgetsCollapsiblePaned
@@ -2724,20 +2718,15 @@ module WidgetsTab {
         tooltip?: string | null
         pinned?: boolean | null
         pinnable?: boolean | null
-        restore_data?: string | null
-        close_tab_label?: AccelLabel | null
-        duplicate_tab_label?: AccelLabel | null
-        new_window_label?: AccelLabel | null
-        page?: Gtk.Widget | null
-        icon?: Gio.Icon | null
-        working?: boolean | null
-        ellipsize_mode?: Pango.EllipsizeMode | null
-        menu?: Gtk.Menu | null
         restoreData?: string | null
         closeTabLabel?: AccelLabel | null
         duplicateTabLabel?: AccelLabel | null
         newWindowLabel?: AccelLabel | null
+        page?: Gtk.Widget | null
+        icon?: Gio.Icon | null
+        working?: boolean | null
         ellipsizeMode?: Pango.EllipsizeMode | null
+        menu?: Gtk.Menu | null
     }
 
 }
@@ -2750,18 +2739,13 @@ interface WidgetsTab {
     tooltip: string | null
     pinned: boolean
     pinnable: boolean
-    restore_data: string | null
     restoreData: string | null
-    readonly close_tab_label: AccelLabel
     readonly closeTabLabel: AccelLabel
-    readonly duplicate_tab_label: AccelLabel
     readonly duplicateTabLabel: AccelLabel
-    readonly new_window_label: AccelLabel
     readonly newWindowLabel: AccelLabel
     page: Gtk.Widget
     icon: Gio.Icon
     working: boolean
-    ellipsize_mode: Pango.EllipsizeMode
     ellipsizeMode: Pango.EllipsizeMode
     menu: Gtk.Menu
 
@@ -3120,23 +3104,6 @@ module WidgetsDynamicNotebook {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsDynamicNotebook
 
-        show_tabs?: boolean | null
-        tabs_closable?: boolean | null
-        allow_drag?: boolean | null
-        allow_new_window?: boolean | null
-        allow_duplication?: boolean | null
-        allow_restoring?: boolean | null
-        max_restorable_tabs?: number | null
-        add_button_visible?: boolean | null
-        allow_pinning?: boolean | null
-        force_left?: boolean | null
-        add_button_tooltip?: string | null
-        new_tab_label?: AccelLabel | null
-        restore_tab_label?: AccelLabel | null
-        current?: WidgetsTab | null
-        group_name?: string | null
-        tab_bar_behavior?: WidgetsDynamicNotebookTabBarBehavior | null
-        menu?: Gtk.Menu | null
         showTabs?: boolean | null
         tabsClosable?: boolean | null
         allowDrag?: boolean | null
@@ -3150,8 +3117,10 @@ module WidgetsDynamicNotebook {
         addButtonTooltip?: string | null
         newTabLabel?: AccelLabel | null
         restoreTabLabel?: AccelLabel | null
+        current?: WidgetsTab | null
         groupName?: string | null
         tabBarBehavior?: WidgetsDynamicNotebookTabBarBehavior | null
+        menu?: Gtk.Menu | null
     }
 
 }
@@ -3160,39 +3129,23 @@ interface WidgetsDynamicNotebook {
 
     // Own properties of Granite-1.0.Granite.WidgetsDynamicNotebook
 
-    readonly n_tabs: number
     readonly nTabs: number
-    show_tabs: boolean
     showTabs: boolean
-    tabs_closable: boolean
     tabsClosable: boolean
-    allow_drag: boolean
     allowDrag: boolean
-    allow_new_window: boolean
     allowNewWindow: boolean
-    allow_duplication: boolean
     allowDuplication: boolean
-    allow_restoring: boolean
     allowRestoring: boolean
-    max_restorable_tabs: number
     maxRestorableTabs: number
-    add_button_visible: boolean
     addButtonVisible: boolean
-    allow_pinning: boolean
     allowPinning: boolean
-    force_left: boolean
     forceLeft: boolean
-    add_button_tooltip: string | null
     addButtonTooltip: string | null
-    readonly new_tab_label: AccelLabel
     readonly newTabLabel: AccelLabel
-    readonly restore_tab_label: AccelLabel
     readonly restoreTabLabel: AccelLabel
     current: WidgetsTab
     readonly tabs: WidgetsTab[]
-    group_name: string | null
     groupName: string | null
-    tab_bar_behavior: WidgetsDynamicNotebookTabBarBehavior
     tabBarBehavior: WidgetsDynamicNotebookTabBarBehavior
     menu: Gtk.Menu
 
@@ -3576,7 +3529,6 @@ interface WidgetsModeButton {
     // Own properties of Granite-1.0.Granite.WidgetsModeButton
 
     selected: number
-    readonly n_items: number
     readonly nItems: number
 
     // Owm methods of Granite-1.0.Granite.WidgetsModeButton
@@ -4107,7 +4059,6 @@ module WidgetsSourceList {
 
         root?: WidgetsSourceListExpandableItem | null
         selected?: WidgetsSourceListItem | null
-        ellipsize_mode?: Pango.EllipsizeMode | null
         ellipsizeMode?: Pango.EllipsizeMode | null
     }
 
@@ -4119,7 +4070,6 @@ interface WidgetsSourceList {
 
     root: WidgetsSourceListExpandableItem
     selected: WidgetsSourceListItem
-    ellipsize_mode: Pango.EllipsizeMode
     ellipsizeMode: Pango.EllipsizeMode
     readonly editing: boolean
 
@@ -4467,7 +4417,6 @@ module WidgetsSourceListItem {
         selectable?: boolean | null
         icon?: Gio.Icon | null
         activatable?: Gio.Icon | null
-        activatable_tooltip?: string | null
         activatableTooltip?: string | null
     }
 
@@ -4487,7 +4436,6 @@ interface WidgetsSourceListItem {
     selectable: boolean
     icon: Gio.Icon
     activatable: Gio.Icon
-    activatable_tooltip: string | null
     activatableTooltip: string | null
 
     // Owm methods of Granite-1.0.Granite.WidgetsSourceListItem
@@ -4634,7 +4582,6 @@ interface WidgetsSourceListExpandableItem {
 
     collapsible: boolean
     expanded: boolean
-    readonly n_children: number
     readonly nChildren: number
     readonly children: Gee.Collection
 
@@ -4752,8 +4699,6 @@ module WidgetsStorageBar {
         // Own constructor properties of Granite-1.0.Granite.WidgetsStorageBar
 
         storage?: number | null
-        total_usage?: number | null
-        inner_margin_sides?: number | null
         totalUsage?: number | null
         innerMarginSides?: number | null
     }
@@ -4765,9 +4710,7 @@ interface WidgetsStorageBar {
     // Own properties of Granite-1.0.Granite.WidgetsStorageBar
 
     storage: number
-    total_usage: number
     totalUsage: number
-    inner_margin_sides: number
     innerMarginSides: number
 
     // Owm methods of Granite-1.0.Granite.WidgetsStorageBar
@@ -5017,11 +4960,9 @@ module WidgetsTimePicker {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsTimePicker
 
-        format_12?: string | null
-        format_24?: string | null
-        time?: GLib.DateTime | null
         format12?: string | null
         format24?: string | null
+        time?: GLib.DateTime | null
     }
 
 }
@@ -5030,9 +4971,7 @@ interface WidgetsTimePicker {
 
     // Own properties of Granite-1.0.Granite.WidgetsTimePicker
 
-    readonly format_12: string | null
     readonly format12: string | null
-    readonly format_24: string | null
     readonly format24: string | null
     time: GLib.DateTime
 
@@ -6372,15 +6311,12 @@ module SettingsPage {
 
         // Own constructor properties of Granite-1.0.Granite.SettingsPage
 
-        status_type?: SettingsPageStatusType | null
-        display_widget?: Gtk.Widget | null
-        header?: string | null
-        status?: string | null
-        icon_name?: string | null
-        title?: string | null
         statusType?: SettingsPageStatusType | null
         displayWidget?: Gtk.Widget | null
+        header?: string | null
+        status?: string | null
         iconName?: string | null
+        title?: string | null
     }
 
 }
@@ -6389,13 +6325,10 @@ interface SettingsPage {
 
     // Own properties of Granite-1.0.Granite.SettingsPage
 
-    status_type: SettingsPageStatusType
     statusType: SettingsPageStatusType
-    readonly display_widget: Gtk.Widget
     readonly displayWidget: Gtk.Widget
     readonly header: string | null
     status: string | null
-    icon_name: string | null
     iconName: string | null
     title: string | null
 
@@ -6679,17 +6612,13 @@ module SimpleSettingsPage {
 
         // Own constructor properties of Granite-1.0.Granite.SimpleSettingsPage
 
-        action_area?: Gtk.ButtonBox | null
-        content_area?: Gtk.Grid | null
-        status_switch?: Gtk.Switch | null
-        activatable?: boolean | null
-        description?: string | null
-        icon_name?: string | null
-        title?: string | null
         actionArea?: Gtk.ButtonBox | null
         contentArea?: Gtk.Grid | null
         statusSwitch?: Gtk.Switch | null
+        activatable?: boolean | null
+        description?: string | null
         iconName?: string | null
+        title?: string | null
     }
 
 }
@@ -6698,15 +6627,11 @@ interface SimpleSettingsPage {
 
     // Own properties of Granite-1.0.Granite.SimpleSettingsPage
 
-    readonly action_area: Gtk.ButtonBox
     readonly actionArea: Gtk.ButtonBox
-    readonly content_area: Gtk.Grid
     readonly contentArea: Gtk.Grid
-    readonly status_switch: Gtk.Switch
     readonly statusSwitch: Gtk.Switch
     readonly activatable: boolean
     description: string | null
-    icon_name: string | null
     iconName: string | null
     title: string | null
 
@@ -7008,11 +6933,9 @@ module AccelLabel {
 
         // Own constructor properties of Granite-1.0.Granite.AccelLabel
 
-        action_name?: string | null
-        accel_string?: string | null
-        label?: string | null
         actionName?: string | null
         accelString?: string | null
+        label?: string | null
     }
 
 }
@@ -7021,9 +6944,7 @@ interface AccelLabel {
 
     // Own properties of Granite-1.0.Granite.AccelLabel
 
-    action_name: string | null
     actionName: string | null
-    accel_string: string | null
     accelString: string | null
     label: string | null
 
@@ -7267,10 +7188,6 @@ module AsyncImage {
 
         // Own constructor properties of Granite-1.0.Granite.AsyncImage
 
-        load_on_realize?: boolean | null
-        auto_size_request?: boolean | null
-        gicon_async?: Gio.Icon | null
-        size_async?: number | null
         loadOnRealize?: boolean | null
         autoSizeRequest?: boolean | null
         giconAsync?: Gio.Icon | null
@@ -7283,13 +7200,9 @@ interface AsyncImage {
 
     // Own properties of Granite-1.0.Granite.AsyncImage
 
-    readonly load_on_realize: boolean
     readonly loadOnRealize: boolean
-    readonly auto_size_request: boolean
     readonly autoSizeRequest: boolean
-    gicon_async: Gio.Icon
     giconAsync: Gio.Icon
-    size_async: number
     sizeAsync: number
 
     // Owm methods of Granite-1.0.Granite.AsyncImage
@@ -8472,20 +8385,13 @@ module MessageDialog {
 
         // Own constructor properties of Granite-1.0.Granite.MessageDialog
 
-        primary_text?: string | null
-        secondary_text?: string | null
-        image_icon?: Gio.Icon | null
-        badge_icon?: Gio.Icon | null
-        primary_label?: Gtk.Label | null
-        secondary_label?: Gtk.Label | null
-        buttons?: Gtk.ButtonsType | null
-        custom_bin?: Gtk.Bin | null
         primaryText?: string | null
         secondaryText?: string | null
         imageIcon?: Gio.Icon | null
         badgeIcon?: Gio.Icon | null
         primaryLabel?: Gtk.Label | null
         secondaryLabel?: Gtk.Label | null
+        buttons?: Gtk.ButtonsType | null
         customBin?: Gtk.Bin | null
     }
 
@@ -8495,20 +8401,13 @@ interface MessageDialog {
 
     // Own properties of Granite-1.0.Granite.MessageDialog
 
-    primary_text: string | null
     primaryText: string | null
-    secondary_text: string | null
     secondaryText: string | null
-    image_icon: Gio.Icon
     imageIcon: Gio.Icon
-    badge_icon: Gio.Icon
     badgeIcon: Gio.Icon
-    readonly primary_label: Gtk.Label
     readonly primaryLabel: Gtk.Label
-    readonly secondary_label: Gtk.Label
     readonly secondaryLabel: Gtk.Label
     readonly buttons: Gtk.ButtonsType
-    readonly custom_bin: Gtk.Bin
     readonly customBin: Gtk.Bin
 
     // Conflicting properties
@@ -8916,12 +8815,6 @@ module ModeSwitch {
         // Own constructor properties of Granite-1.0.Granite.ModeSwitch
 
         active?: boolean | null
-        primary_icon_gicon?: Gio.Icon | null
-        primary_icon_name?: string | null
-        primary_icon_tooltip_text?: string | null
-        secondary_icon_gicon?: Gio.Icon | null
-        secondary_icon_name?: string | null
-        secondary_icon_tooltip_text?: string | null
         primaryIconGicon?: Gio.Icon | null
         primaryIconName?: string | null
         primaryIconTooltipText?: string | null
@@ -8937,17 +8830,11 @@ interface ModeSwitch {
     // Own properties of Granite-1.0.Granite.ModeSwitch
 
     active: boolean
-    primary_icon_gicon: Gio.Icon
     primaryIconGicon: Gio.Icon
-    primary_icon_name: string | null
     primaryIconName: string | null
-    primary_icon_tooltip_text: string | null
     primaryIconTooltipText: string | null
-    secondary_icon_gicon: Gio.Icon
     secondaryIconGicon: Gio.Icon
-    secondary_icon_name: string | null
     secondaryIconName: string | null
-    secondary_icon_tooltip_text: string | null
     secondaryIconTooltipText: string | null
 
     // Owm methods of Granite-1.0.Granite.ModeSwitch
@@ -9210,19 +9097,13 @@ module SeekBar {
 
         // Own constructor properties of Granite-1.0.Granite.SeekBar
 
-        playback_duration?: number | null
-        playback_progress?: number | null
-        is_grabbing?: boolean | null
-        is_hovering?: boolean | null
-        progression_label?: Gtk.Label | null
-        duration_label?: Gtk.Label | null
-        scale?: Gtk.Scale | null
         playbackDuration?: number | null
         playbackProgress?: number | null
         isGrabbing?: boolean | null
         isHovering?: boolean | null
         progressionLabel?: Gtk.Label | null
         durationLabel?: Gtk.Label | null
+        scale?: Gtk.Scale | null
     }
 
 }
@@ -9231,17 +9112,11 @@ interface SeekBar {
 
     // Own properties of Granite-1.0.Granite.SeekBar
 
-    playback_duration: number
     playbackDuration: number
-    playback_progress: number
     playbackProgress: number
-    is_grabbing: boolean
     isGrabbing: boolean
-    is_hovering: boolean
     isHovering: boolean
-    progression_label: Gtk.Label
     progressionLabel: Gtk.Label
-    duration_label: Gtk.Label
     durationLabel: Gtk.Label
     scale: Gtk.Scale
 
@@ -9503,7 +9378,6 @@ module SettingsSidebar {
         // Own constructor properties of Granite-1.0.Granite.SettingsSidebar
 
         stack?: Gtk.Stack | null
-        visible_child_name?: string | null
         visibleChildName?: string | null
     }
 
@@ -9514,7 +9388,6 @@ interface SettingsSidebar {
     // Own properties of Granite-1.0.Granite.SettingsSidebar
 
     readonly stack: Gtk.Stack
-    visible_child_name: string | null
     visibleChildName: string | null
 
     // Conflicting properties
@@ -9791,7 +9664,6 @@ module Settings {
 
         // Own constructor properties of Granite-1.0.Granite.Settings
 
-        prefers_color_scheme?: SettingsColorScheme | null
         prefersColorScheme?: SettingsColorScheme | null
     }
 
@@ -9801,7 +9673,6 @@ interface Settings {
 
     // Own properties of Granite-1.0.Granite.Settings
 
-    prefers_color_scheme: SettingsColorScheme
     prefersColorScheme: SettingsColorScheme
 
     // Owm methods of Granite-1.0.Granite.Settings
@@ -10109,11 +9980,9 @@ module ValidatedEntry {
 
         // Own constructor properties of Granite-1.0.Granite.ValidatedEntry
 
-        is_valid?: boolean | null
-        min_length?: number | null
-        regex?: GLib.Regex | null
         isValid?: boolean | null
         minLength?: number | null
+        regex?: GLib.Regex | null
     }
 
 }
@@ -10122,9 +9991,7 @@ interface ValidatedEntry {
 
     // Own properties of Granite-1.0.Granite.ValidatedEntry
 
-    is_valid: boolean
     isValid: boolean
-    min_length: number
     minLength: number
     regex: GLib.Regex
 

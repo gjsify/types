@@ -125,24 +125,17 @@ module DocumentModel {
 
         continuous?: boolean | null
         document?: EvinceDocument.Document | null
-        dual_odd_left?: boolean | null
-        dual_page?: boolean | null
-        fullscreen?: boolean | null
-        inverted_colors?: boolean | null
-        max_scale?: number | null
-        min_scale?: number | null
-        page?: number | null
-        page_layout?: PageLayout | null
-        rotation?: number | null
-        rtl?: boolean | null
-        scale?: number | null
-        sizing_mode?: SizingMode | null
         dualOddLeft?: boolean | null
         dualPage?: boolean | null
+        fullscreen?: boolean | null
         invertedColors?: boolean | null
         maxScale?: number | null
         minScale?: number | null
+        page?: number | null
         pageLayout?: PageLayout | null
+        rotation?: number | null
+        rtl?: boolean | null
+        scale?: number | null
         sizingMode?: SizingMode | null
     }
 
@@ -154,24 +147,17 @@ interface DocumentModel {
 
     continuous: boolean
     document: EvinceDocument.Document
-    dual_odd_left: boolean
     dualOddLeft: boolean
-    dual_page: boolean
     dualPage: boolean
     fullscreen: boolean
-    inverted_colors: boolean
     invertedColors: boolean
-    max_scale: number
     maxScale: number
-    min_scale: number
     minScale: number
     page: number
-    page_layout: PageLayout
     pageLayout: PageLayout
     rotation: number
     rtl: boolean
     scale: number
-    sizing_mode: SizingMode
     sizingMode: SizingMode
 
     // Owm methods of EvinceView-3.0.EvinceView.DocumentModel
@@ -1430,14 +1416,8 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
 
     // Own properties of EvinceView-3.0.EvinceView.View
 
-    readonly can_zoom_in: boolean
     readonly canZoomIn: boolean
-    readonly can_zoom_out: boolean
     readonly canZoomOut: boolean
-    /**
-     * Allows to implement a custom notification system.
-     */
-    readonly is_loading: boolean
     /**
      * Allows to implement a custom notification system.
      */
@@ -1457,6 +1437,8 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     autoscroll_start(): void
     autoscroll_stop(): void
     begin_add_annotation(annot_type: EvinceDocument.AnnotationType): void
+    can_zoom_in(): boolean
+    can_zoom_out(): boolean
     cancel_add_annotation(): void
     copy(): void
     copy_link_address(action: EvinceDocument.LinkAction): void
@@ -1496,6 +1478,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     hide_cursor(): void
     highlight_forward_search(link: EvinceDocument.SourceLink): void
     is_caret_navigation_enabled(): boolean
+    is_loading(): boolean
     next_page(): boolean
     previous_page(): boolean
     reload(): void
@@ -1814,12 +1797,10 @@ module ViewPresentation {
 
         // Own constructor properties of EvinceView-3.0.EvinceView.ViewPresentation
 
-        current_page?: number | null
-        document?: EvinceDocument.Document | null
-        inverted_colors?: boolean | null
-        rotation?: number | null
         currentPage?: number | null
+        document?: EvinceDocument.Document | null
         invertedColors?: boolean | null
+        rotation?: number | null
     }
 
 }
@@ -1828,10 +1809,8 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of EvinceView-3.0.EvinceView.ViewPresentation
 
-    current_page: number
     currentPage: number
     readonly document: EvinceDocument.Document
-    readonly inverted_colors: boolean
     readonly invertedColors: boolean
     rotation: number
 

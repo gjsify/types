@@ -2207,7 +2207,7 @@ module ArrayList {
 
         // Own constructor properties of Gee-1.0.Gee.ArrayList
 
-        equalFunc?: GLib.EqualFunc | null
+        equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -2421,9 +2421,9 @@ module HashMap {
 
         // Own constructor properties of Gee-1.0.Gee.HashMap
 
-        keyHashFunc?: GLib.HashFunc | null
-        keyEqualFunc?: GLib.EqualFunc | null
-        valueEqualFunc?: GLib.EqualFunc | null
+        key_hash_func?: GLib.HashFunc | null
+        key_equal_func?: GLib.EqualFunc | null
+        value_equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -2587,8 +2587,8 @@ module HashMultiMap {
 
         // Own constructor properties of Gee-1.0.Gee.HashMultiMap
 
-        valueHashFunc?: GLib.HashFunc | null
-        valueEqualFunc?: GLib.EqualFunc | null
+        value_hash_func?: GLib.HashFunc | null
+        value_equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -2804,8 +2804,8 @@ module HashSet {
 
         // Own constructor properties of Gee-1.0.Gee.HashSet
 
-        hashFunc?: GLib.HashFunc | null
-        equalFunc?: GLib.EqualFunc | null
+        hash_func?: GLib.HashFunc | null
+        equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -2961,7 +2961,7 @@ module LinkedList {
 
         // Own constructor properties of Gee-1.0.Gee.LinkedList
 
-        equalFunc?: GLib.EqualFunc | null
+        equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -3191,7 +3191,7 @@ module PriorityQueue {
 
         // Own constructor properties of Gee-1.0.Gee.PriorityQueue
 
-        compareFunc?: GLib.CompareFunc | null
+        compare_func?: GLib.CompareFunc | null
     }
 
 }
@@ -3367,8 +3367,8 @@ module TreeMap {
 
         // Own constructor properties of Gee-1.0.Gee.TreeMap
 
-        keyCompareFunc?: GLib.CompareFunc | null
-        valueEqualFunc?: GLib.EqualFunc | null
+        key_compare_func?: GLib.CompareFunc | null
+        value_equal_func?: GLib.EqualFunc | null
     }
 
 }
@@ -3526,7 +3526,7 @@ module TreeMultiMap {
 
         // Own constructor properties of Gee-1.0.Gee.TreeMultiMap
 
-        valueCompareFunc?: GLib.CompareFunc | null
+        value_compare_func?: GLib.CompareFunc | null
     }
 
 }
@@ -3724,7 +3724,7 @@ module TreeSet {
 
         // Own constructor properties of Gee-1.0.Gee.TreeSet
 
-        compareFunc?: GLib.CompareFunc | null
+        compare_func?: GLib.CompareFunc | null
     }
 
 }

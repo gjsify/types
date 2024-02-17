@@ -426,7 +426,7 @@ export module CommitAction {
 
         // Own constructor properties of GitgExt-1.0.GitgExt.CommitAction
 
-        actionInterface?: RefActionInterface | null
+        action_interface?: RefActionInterface | null
         commit?: Gitg.Commit | null
     }
 
@@ -989,7 +989,7 @@ export module RefAction {
 
         // Own constructor properties of GitgExt-1.0.GitgExt.RefAction
 
-        actionInterface?: RefActionInterface | null
+        action_interface?: RefActionInterface | null
         reference?: Gitg.Ref | null
     }
 
@@ -1140,9 +1140,9 @@ export module Searchable {
 
         // Own constructor properties of GitgExt-1.0.GitgExt.Searchable
 
-        searchText?: string | null
-        searchVisible?: boolean | null
-        searchEntry?: Gtk.Entry | null
+        search_text?: string | null
+        search_visible?: boolean | null
+        search_entry?: Gtk.Entry | null
     }
 
 }
@@ -1250,7 +1250,7 @@ export module Selectable {
 
         // Own constructor properties of GitgExt-1.0.GitgExt.Selectable
 
-        selectableMode?: SelectionMode | null
+        selectable_mode?: SelectionMode | null
     }
 
 }
@@ -1627,7 +1627,7 @@ export module MessageId {
 
         // Own constructor properties of GitgExt-1.0.GitgExt.MessageId
 
-        objectPath?: string | null
+        object_path?: string | null
         method?: string | null
     }
 
@@ -1853,10 +1853,10 @@ export module UserQuery {
 
         title?: string | null
         message?: string | null
-        messageType?: Gtk.MessageType | null
-        defaultResponse?: Gtk.ResponseType | null
-        defaultIsDestructive?: boolean | null
-        messageUseMarkup?: boolean | null
+        message_type?: Gtk.MessageType | null
+        default_response?: Gtk.ResponseType | null
+        default_is_destructive?: boolean | null
+        message_use_markup?: boolean | null
     }
 
 }

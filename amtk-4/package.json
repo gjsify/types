@@ -1,13 +1,19 @@
 {
     "name": "@girs/amtk-4",
-    "version": "4.0.0-3.2.7",
+    "version": "4.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Amtk-4, generated from library version 4.0.0",
     "type": "module",
     "module": "amtk-4.js",
     "main": "amtk-4.js",
     "exports": {
-        "./ambient": "./amtk-4-ambient.d.ts",
-        "./import": "./amtk-4-import.d.ts",
+        "./ambient": {
+            "types": "./amtk-4-ambient.d.ts",
+            "default": "./amtk-4-ambient.js"
+        },
+        "./import": {
+            "types": "./amtk-4-import.d.ts",
+            "default": "./amtk-4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./amtk-4.d.ts",

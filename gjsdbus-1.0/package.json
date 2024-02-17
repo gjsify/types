@@ -1,13 +1,19 @@
 {
     "name": "@girs/gjsdbus-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GjsDBus-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gjsdbus-1.0.js",
     "main": "gjsdbus-1.0.js",
     "exports": {
-        "./ambient": "./gjsdbus-1.0-ambient.d.ts",
-        "./import": "./gjsdbus-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gjsdbus-1.0-ambient.d.ts",
+            "default": "./gjsdbus-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gjsdbus-1.0-import.d.ts",
+            "default": "./gjsdbus-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gjsdbus-1.0.d.ts",

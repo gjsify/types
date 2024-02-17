@@ -448,19 +448,6 @@ export enum DiffType {
     REMOVE_ROW,
     MODIFY_ROW,
 }
-export enum ForeignKeyMatch {
-    NONE,
-    FULL,
-    PARTIAL,
-}
-export enum ForeignKeyRule {
-    NONE,
-    CASCADE,
-    SET_NULL,
-    SET_DEFAULT,
-    RESTRICT,
-    NO_ACTION,
-}
 export enum HolderError {
     STRING_CONVERSION_ERROR,
     VALUE_TYPE_ERROR,
@@ -973,16 +960,6 @@ export enum XaType {
     ROLLBACK,
     RECOVER,
 }
-export enum ColumnAttributes {
-    NONE,
-    PRIMARY_KEY,
-    UNIQUE,
-    FOREIGN_KEY,
-    CHECK,
-    HAVE_DEFAULT,
-    CAN_BE_NULL,
-    AUTO_INCREMENT,
-}
 /**
  * Specifies some aspects of a connection when opening it.
  * 
@@ -1242,9 +1219,6 @@ export const TIMEZONE_INVALID: number
  * @returns @text if conversion succeeded or %NULL if an error occurred
  */
 export function alphanum_to_text(text: string | null): string | null
-export function column_attributes_from_string(str: string): ColumnAttributes
-export function column_attributes_items(result_length1: number): ColumnAttributes
-export function column_attributes_to_string(self: ColumnAttributes): string | null
 /**
  * Creates an array of strings (terminated by a %NULL) corresponding to possible completions.
  * If no completion is available, then the returned array contains just one NULL entry, and
@@ -1336,12 +1310,6 @@ export function default_unescape_string(string: string): string | null
  * @param out_password a place to store the new string containing the &lt;password&gt; part
  */
 export function dsn_split(string: string, out_dsn: string | null, out_username: string | null, out_password: string | null): void
-export function foreign_key_match_from_string(str: string): ForeignKeyMatch
-export function foreign_key_match_items(result_length1: number): ForeignKeyMatch
-export function foreign_key_match_to_string(self: ForeignKeyMatch): string | null
-export function foreign_key_rule_from_string(str: string): ForeignKeyRule
-export function foreign_key_rule_items(result_length1: number): ForeignKeyRule
-export function foreign_key_rule_to_string(self: ForeignKeyRule): string | null
 /**
  * Converts a named type to ts GType type (also see the gda_g_type_to_string() function).
  * 
@@ -2163,397 +2131,6 @@ export interface WorkerCallback {
 export interface WorkerFunc {
     (): any | null
 }
-export module AfectedRows {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends Result.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface AfectedRows extends Result {
-
-    // Own properties of Gda-6.0.Gda.AfectedRows
-
-    readonly number: number
-
-    // Owm methods of Gda-6.0.Gda.AfectedRows
-
-    get_number(): number
-
-    // Own virtual methods of Gda-6.0.Gda.AfectedRows
-
-    vfunc_get_number(): number
-
-    // Class property signals of Gda-6.0.Gda.AfectedRows
-
-    connect(sigName: "notify::number", callback: (($obj: AfectedRows, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::number", callback: (($obj: AfectedRows, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::number", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class AfectedRows extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.AfectedRows
-
-    static name: string
-    static $gtype: GObject.GType<AfectedRows>
-
-    // Constructors of Gda-6.0.Gda.AfectedRows
-
-    constructor(config?: AfectedRows.ConstructorProperties) 
-    _init(config?: AfectedRows.ConstructorProperties): void
-}
-
-export module ColumnModel {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.ColumnModel
-
-        attributes?: ColumnAttributes | null
-        foreign_key?: ForeignKey | null
-        value?: any | null
-        foreignKey?: ForeignKey | null
-    }
-
-}
-
-export interface ColumnModel {
-
-    // Own properties of Gda-6.0.Gda.ColumnModel
-
-    attributes: ColumnAttributes
-    readonly data_type: GObject.GType
-    readonly dataType: GObject.GType
-    foreign_key: ForeignKey
-    foreignKey: ForeignKey
-    readonly index: number
-    readonly name: string | null
-    value: any
-
-    // Owm methods of Gda-6.0.Gda.ColumnModel
-
-    get_attributes(): ColumnAttributes
-    get_data_type(): GObject.GType
-    get_index(): number
-    get_name(): string
-    get_value(): any
-    set_attributes(value: ColumnAttributes): void
-    set_foreign_key(value: ForeignKey): void
-    set_value(value: any): void
-
-    // Own virtual methods of Gda-6.0.Gda.ColumnModel
-
-    vfunc_get_attributes(): ColumnAttributes
-    vfunc_get_data_type(): GObject.GType
-    vfunc_get_index(): number
-    vfunc_get_name(): string
-    vfunc_get_value(): any
-    vfunc_set_attributes(value: ColumnAttributes): void
-    vfunc_set_foreign_key(value: ForeignKey): void
-    vfunc_set_value(value: any): void
-
-    // Class property signals of Gda-6.0.Gda.ColumnModel
-
-    connect(sigName: "notify::attributes", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::attributes", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::attributes", ...args: any[]): void
-    connect(sigName: "notify::data-type", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::data-type", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::data-type", ...args: any[]): void
-    connect(sigName: "notify::foreign-key", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::foreign-key", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::foreign-key", ...args: any[]): void
-    connect(sigName: "notify::index", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::index", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::index", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::value", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::value", callback: (($obj: ColumnModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::value", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ColumnModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ColumnModel
-
-    static name: string
-    static $gtype: GObject.GType<ColumnModel>
-
-    // Constructors of Gda-6.0.Gda.ColumnModel
-
-    constructor(config?: ColumnModel.ConstructorProperties) 
-    _init(config?: ColumnModel.ConstructorProperties): void
-}
-
-export module ConnectionModel {
-
-    // Signal callback interfaces
-
-    /**
-     * Signal callback interface for `closed`
-     */
-    export interface ClosedSignalCallback {
-        ($obj: ConnectionModel): void
-    }
-
-    /**
-     * Signal callback interface for `closing`
-     */
-    export interface ClosingSignalCallback {
-        ($obj: ConnectionModel): void
-    }
-
-    /**
-     * Signal callback interface for `opened`
-     */
-    export interface OpenedSignalCallback {
-        ($obj: ConnectionModel): void
-    }
-
-    /**
-     * Signal callback interface for `opening`
-     */
-    export interface OpeningSignalCallback {
-        ($obj: ConnectionModel): void
-    }
-
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.ConnectionModel
-
-        cnc_params?: ConnectionModelParams | null
-        cncParams?: ConnectionModelParams | null
-    }
-
-}
-
-export interface ConnectionModel {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModel
-
-    cnc_params: ConnectionModelParams
-    cncParams: ConnectionModelParams
-    readonly is_opened: boolean
-    readonly isOpened: boolean
-
-    // Owm methods of Gda-6.0.Gda.ConnectionModel
-
-    close(): void
-    close_no_warning(): void
-    get_is_opened(): boolean
-    open(): boolean
-    set_cnc_params(value: ConnectionModelParams): void
-
-    // Own virtual methods of Gda-6.0.Gda.ConnectionModel
-
-    vfunc_close(): void
-    vfunc_close_no_warning(): void
-    vfunc_get_is_opened(): boolean
-    vfunc_open(): boolean
-    vfunc_set_cnc_params(value: ConnectionModelParams): void
-
-    // Own signals of Gda-6.0.Gda.ConnectionModel
-
-    connect(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback): number
-    connect_after(sigName: "closed", callback: ConnectionModel.ClosedSignalCallback): number
-    emit(sigName: "closed", ...args: any[]): void
-    connect(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback): number
-    connect_after(sigName: "closing", callback: ConnectionModel.ClosingSignalCallback): number
-    emit(sigName: "closing", ...args: any[]): void
-    connect(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback): number
-    connect_after(sigName: "opened", callback: ConnectionModel.OpenedSignalCallback): number
-    emit(sigName: "opened", ...args: any[]): void
-    connect(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback): number
-    connect_after(sigName: "opening", callback: ConnectionModel.OpeningSignalCallback): number
-    emit(sigName: "opening", ...args: any[]): void
-
-    // Class property signals of Gda-6.0.Gda.ConnectionModel
-
-    connect(sigName: "notify::cnc-params", callback: (($obj: ConnectionModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::cnc-params", callback: (($obj: ConnectionModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::cnc-params", ...args: any[]): void
-    connect(sigName: "notify::is-opened", callback: (($obj: ConnectionModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::is-opened", callback: (($obj: ConnectionModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::is-opened", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ConnectionModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModel
-
-    static name: string
-    static $gtype: GObject.GType<ConnectionModel>
-
-    // Constructors of Gda-6.0.Gda.ConnectionModel
-
-    constructor(config?: ConnectionModel.ConstructorProperties) 
-    _init(config?: ConnectionModel.ConstructorProperties): void
-}
-
-export module CreateDatabaseBuilder {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.CreateDatabaseBuilder
-
-        database_name?: string | null
-        databaseName?: string | null
-    }
-
-}
-
-export interface CreateDatabaseBuilder extends QueryBuilder {
-
-    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    database_name: string | null
-    databaseName: string | null
-
-    // Owm methods of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    get_database_name(): string
-    set_database_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    vfunc_get_database_name(): string
-    vfunc_set_database_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    connect(sigName: "notify::database-name", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::database-name", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::database-name", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: CreateDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class CreateDatabaseBuilder extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    static name: string
-    static $gtype: GObject.GType<CreateDatabaseBuilder>
-
-    // Constructors of Gda-6.0.Gda.CreateDatabaseBuilder
-
-    constructor(config?: CreateDatabaseBuilder.ConstructorProperties) 
-    _init(config?: CreateDatabaseBuilder.ConstructorProperties): void
-}
-
-export module CreateTableBuilder {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.CreateTableBuilder
-
-        columns?: Gio.ListModel | null
-        contraints?: Gio.ListModel | null
-        table_name?: string | null
-        tableName?: string | null
-    }
-
-}
-
-export interface CreateTableBuilder extends QueryBuilder {
-
-    // Own properties of Gda-6.0.Gda.CreateTableBuilder
-
-    columns: Gio.ListModel
-    contraints: Gio.ListModel
-    table_name: string | null
-    tableName: string | null
-
-    // Owm methods of Gda-6.0.Gda.CreateTableBuilder
-
-    get_table_name(): string
-    set_columns(value: Gio.ListModel): void
-    set_contraints(value: Gio.ListModel): void
-    set_table_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.CreateTableBuilder
-
-    vfunc_get_table_name(): string
-    vfunc_set_columns(value: Gio.ListModel): void
-    vfunc_set_contraints(value: Gio.ListModel): void
-    vfunc_set_table_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.CreateTableBuilder
-
-    connect(sigName: "notify::columns", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::contraints", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::contraints", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::contraints", ...args: any[]): void
-    connect(sigName: "notify::table-name", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::table-name", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::table-name", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: CreateTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class CreateTableBuilder extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.CreateTableBuilder
-
-    static name: string
-    static $gtype: GObject.GType<CreateTableBuilder>
-
-    // Constructors of Gda-6.0.Gda.CreateTableBuilder
-
-    constructor(config?: CreateTableBuilder.ConstructorProperties) 
-    _init(config?: CreateTableBuilder.ConstructorProperties): void
-}
-
 export module DataHandler {
 
     // Constructor properties interface
@@ -3418,304 +2995,6 @@ export class DdlModifiable extends GObject.Object {
     static error_quark(): GLib.Quark
 }
 
-export module DropDatabaseBuilder {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.DropDatabaseBuilder
-
-        database_name?: string | null
-        databaseName?: string | null
-    }
-
-}
-
-export interface DropDatabaseBuilder extends QueryBuilder {
-
-    // Own properties of Gda-6.0.Gda.DropDatabaseBuilder
-
-    database_name: string | null
-    databaseName: string | null
-
-    // Owm methods of Gda-6.0.Gda.DropDatabaseBuilder
-
-    get_database_name(): string
-    set_database_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.DropDatabaseBuilder
-
-    vfunc_get_database_name(): string
-    vfunc_set_database_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.DropDatabaseBuilder
-
-    connect(sigName: "notify::database-name", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::database-name", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::database-name", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: DropDatabaseBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class DropDatabaseBuilder extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.DropDatabaseBuilder
-
-    static name: string
-    static $gtype: GObject.GType<DropDatabaseBuilder>
-
-    // Constructors of Gda-6.0.Gda.DropDatabaseBuilder
-
-    constructor(config?: DropDatabaseBuilder.ConstructorProperties) 
-    _init(config?: DropDatabaseBuilder.ConstructorProperties): void
-}
-
-export module DropTableBuilder {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends QueryBuilder.ConstructorProperties, GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.DropTableBuilder
-
-        cascade?: boolean | null
-        table_name?: string | null
-        tableName?: string | null
-    }
-
-}
-
-export interface DropTableBuilder extends QueryBuilder {
-
-    // Own properties of Gda-6.0.Gda.DropTableBuilder
-
-    cascade: boolean
-    table_name: string | null
-    tableName: string | null
-
-    // Owm methods of Gda-6.0.Gda.DropTableBuilder
-
-    get_cascade(): boolean
-    get_table_name(): string
-    set_cascade(value: boolean): void
-    set_table_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.DropTableBuilder
-
-    vfunc_get_cascade(): boolean
-    vfunc_get_table_name(): string
-    vfunc_set_cascade(value: boolean): void
-    vfunc_set_table_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.DropTableBuilder
-
-    connect(sigName: "notify::cascade", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::cascade", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::cascade", ...args: any[]): void
-    connect(sigName: "notify::table-name", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::table-name", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::table-name", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: DropTableBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class DropTableBuilder extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.DropTableBuilder
-
-    static name: string
-    static $gtype: GObject.GType<DropTableBuilder>
-
-    // Constructors of Gda-6.0.Gda.DropTableBuilder
-
-    constructor(config?: DropTableBuilder.ConstructorProperties) 
-    _init(config?: DropTableBuilder.ConstructorProperties): void
-}
-
-export module ForeignKey {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.ForeignKey
-
-        delete_rule?: ForeignKeyRule | null
-        match?: ForeignKeyMatch | null
-        name?: string | null
-        refcol?: Gio.ListModel | null
-        refname?: string | null
-        reftable?: TableModel | null
-        update_rule?: ForeignKeyRule | null
-        deleteRule?: ForeignKeyRule | null
-        updateRule?: ForeignKeyRule | null
-    }
-
-}
-
-export interface ForeignKey {
-
-    // Own properties of Gda-6.0.Gda.ForeignKey
-
-    delete_rule: ForeignKeyRule
-    deleteRule: ForeignKeyRule
-    match: ForeignKeyMatch
-    name: string | null
-    refcol: Gio.ListModel
-    refname: string | null
-    reftable: TableModel
-    update_rule: ForeignKeyRule
-    updateRule: ForeignKeyRule
-
-    // Owm methods of Gda-6.0.Gda.ForeignKey
-
-    equal(fkey: ForeignKey): boolean
-    get_delete_rule(): ForeignKeyRule
-    get_match(): ForeignKeyMatch
-    get_name(): string
-    get_refname(): string
-    get_update_rule(): ForeignKeyRule
-    set_delete_rule(value: ForeignKeyRule): void
-    set_match(value: ForeignKeyMatch): void
-    set_name(value: string): void
-    set_refcol(value: Gio.ListModel): void
-    set_refname(value: string): void
-    set_reftable(value: TableModel): void
-    set_update_rule(value: ForeignKeyRule): void
-    to_string(): string | null
-
-    // Own virtual methods of Gda-6.0.Gda.ForeignKey
-
-    vfunc_get_delete_rule(): ForeignKeyRule
-    vfunc_get_match(): ForeignKeyMatch
-    vfunc_get_name(): string
-    vfunc_get_refname(): string
-    vfunc_get_update_rule(): ForeignKeyRule
-    vfunc_set_delete_rule(value: ForeignKeyRule): void
-    vfunc_set_match(value: ForeignKeyMatch): void
-    vfunc_set_name(value: string): void
-    vfunc_set_refcol(value: Gio.ListModel): void
-    vfunc_set_refname(value: string): void
-    vfunc_set_reftable(value: TableModel): void
-    vfunc_set_update_rule(value: ForeignKeyRule): void
-
-    // Class property signals of Gda-6.0.Gda.ForeignKey
-
-    connect(sigName: "notify::delete-rule", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::delete-rule", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::delete-rule", ...args: any[]): void
-    connect(sigName: "notify::match", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::match", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::match", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::refcol", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::refcol", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::refcol", ...args: any[]): void
-    connect(sigName: "notify::refname", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::refname", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::refname", ...args: any[]): void
-    connect(sigName: "notify::reftable", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::reftable", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::reftable", ...args: any[]): void
-    connect(sigName: "notify::update-rule", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::update-rule", callback: (($obj: ForeignKey, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::update-rule", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ForeignKey extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ForeignKey
-
-    static name: string
-    static $gtype: GObject.GType<ForeignKey>
-
-    // Constructors of Gda-6.0.Gda.ForeignKey
-
-    constructor(config?: ForeignKey.ConstructorProperties) 
-    _init(config?: ForeignKey.ConstructorProperties): void
-}
-
-export module Inserted {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends Result.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface Inserted extends Result {
-
-    // Own properties of Gda-6.0.Gda.Inserted
-
-    readonly last_insertd: RowModel
-    readonly lastInsertd: RowModel
-    readonly number: number
-
-    // Owm methods of Gda-6.0.Gda.Inserted
-
-    get_number(): number
-
-    // Own virtual methods of Gda-6.0.Gda.Inserted
-
-    vfunc_get_number(): number
-
-    // Class property signals of Gda-6.0.Gda.Inserted
-
-    connect(sigName: "notify::last-insertd", callback: (($obj: Inserted, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::last-insertd", callback: (($obj: Inserted, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::last-insertd", ...args: any[]): void
-    connect(sigName: "notify::number", callback: (($obj: Inserted, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::number", callback: (($obj: Inserted, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::number", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class Inserted extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.Inserted
-
-    static name: string
-    static $gtype: GObject.GType<Inserted>
-
-    // Constructors of Gda-6.0.Gda.Inserted
-
-    constructor(config?: Inserted.ConstructorProperties) 
-    _init(config?: Inserted.ConstructorProperties): void
-}
-
 export module Lockable {
 
     // Constructor properties interface
@@ -3799,307 +3078,6 @@ export class Lockable extends GObject.Object {
 
     constructor(config?: Lockable.ConstructorProperties) 
     _init(config?: Lockable.ConstructorProperties): void
-}
-
-export module MetaCatalog {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.MetaCatalog
-
-        connection?: ConnectionModel | null
-    }
-
-}
-
-export interface MetaCatalog {
-
-    // Own properties of Gda-6.0.Gda.MetaCatalog
-
-    connection: ConnectionModel
-
-    // Owm methods of Gda-6.0.Gda.MetaCatalog
-
-    set_connection(value: ConnectionModel): void
-
-    // Own virtual methods of Gda-6.0.Gda.MetaCatalog
-
-    vfunc_set_connection(value: ConnectionModel): void
-
-    // Class property signals of Gda-6.0.Gda.MetaCatalog
-
-    connect(sigName: "notify::connection", callback: (($obj: MetaCatalog, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection", callback: (($obj: MetaCatalog, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::connection", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class MetaCatalog extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.MetaCatalog
-
-    static name: string
-    static $gtype: GObject.GType<MetaCatalog>
-
-    // Constructors of Gda-6.0.Gda.MetaCatalog
-
-    constructor(config?: MetaCatalog.ConstructorProperties) 
-    _init(config?: MetaCatalog.ConstructorProperties): void
-}
-
-export module MetaColumn {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.MetaColumn
-
-        name?: string | null
-    }
-
-}
-
-export interface MetaColumn {
-
-    // Own properties of Gda-6.0.Gda.MetaColumn
-
-    readonly column_type: GObject.GType
-    readonly columnType: GObject.GType
-    readonly column_type_name: string | null
-    readonly columnTypeName: string | null
-    name: string | null
-
-    // Owm methods of Gda-6.0.Gda.MetaColumn
-
-    get_column_type(): GObject.GType
-    get_column_type_name(): string
-    get_name(): string
-    set_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.MetaColumn
-
-    vfunc_get_column_type(): GObject.GType
-    vfunc_get_column_type_name(): string
-    vfunc_get_name(): string
-    vfunc_set_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.MetaColumn
-
-    connect(sigName: "notify::column-type", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::column-type", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::column-type", ...args: any[]): void
-    connect(sigName: "notify::column-type-name", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::column-type-name", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::column-type-name", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: MetaColumn, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class MetaColumn extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.MetaColumn
-
-    static name: string
-    static $gtype: GObject.GType<MetaColumn>
-
-    // Constructors of Gda-6.0.Gda.MetaColumn
-
-    constructor(config?: MetaColumn.ConstructorProperties) 
-    _init(config?: MetaColumn.ConstructorProperties): void
-}
-
-export module MetaTable {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.MetaTable
-
-        catalog?: string | null
-        name?: string | null
-        schema?: string | null
-    }
-
-}
-
-export interface MetaTable {
-
-    // Own properties of Gda-6.0.Gda.MetaTable
-
-    catalog: string | null
-    readonly columns: Gio.ListModel
-    name: string | null
-    schema: string | null
-
-    // Owm methods of Gda-6.0.Gda.MetaTable
-
-    get_catalog(): string
-    get_name(): string
-    get_schema(): string
-    set_catalog(value: string): void
-    set_name(value: string): void
-    set_schema(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.MetaTable
-
-    vfunc_get_catalog(): string
-    vfunc_get_name(): string
-    vfunc_get_schema(): string
-    vfunc_set_catalog(value: string): void
-    vfunc_set_name(value: string): void
-    vfunc_set_schema(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.MetaTable
-
-    connect(sigName: "notify::catalog", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::catalog", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::catalog", ...args: any[]): void
-    connect(sigName: "notify::columns", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::schema", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::schema", callback: (($obj: MetaTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::schema", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-/**
- * This structure specifies a #GdaMetaDbObject to represent a table's specific attributes,
- * its contents must not be modified.
- * 
- * Note that in some cases, the columns cannot be determined for views, and in this case the
- * `columns` will be %NULL (this can be the case for example with SQLite where a view
- * uses a function which is not natively provided by SQLite.
- * @interface 
- */
-export class MetaTable extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.MetaTable
-
-    static name: string
-    static $gtype: GObject.GType<MetaTable>
-
-    // Constructors of Gda-6.0.Gda.MetaTable
-
-    constructor(config?: MetaTable.ConstructorProperties) 
-    _init(config?: MetaTable.ConstructorProperties): void
-}
-
-export module Parameters {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends Gio.ListModel.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface Parameters extends Gio.ListModel {
-
-    // Owm methods of Gda-6.0.Gda.Parameters
-
-    get_value(name: string): any
-    set_value(name: string, val: any): void
-
-    // Own virtual methods of Gda-6.0.Gda.Parameters
-
-    vfunc_get_value(name: string): any
-    vfunc_set_value(name: string, val: any): void
-
-    // Class property signals of Gda-6.0.Gda.Parameters
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class Parameters extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.Parameters
-
-    static name: string
-    static $gtype: GObject.GType<Parameters>
-
-    // Constructors of Gda-6.0.Gda.Parameters
-
-    constructor(config?: Parameters.ConstructorProperties) 
-    _init(config?: Parameters.ConstructorProperties): void
-}
-
-export module PreparedQuery {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends Query.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface PreparedQuery extends Query {
-
-    // Own properties of Gda-6.0.Gda.PreparedQuery
-
-    readonly name: string | null
-    readonly parameters: Parameters
-
-    // Owm methods of Gda-6.0.Gda.PreparedQuery
-
-    get_name(): string
-
-    // Own virtual methods of Gda-6.0.Gda.PreparedQuery
-
-    vfunc_get_name(): string
-
-    // Class property signals of Gda-6.0.Gda.PreparedQuery
-
-    connect(sigName: "notify::name", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::connection", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::connection", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: PreparedQuery, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class PreparedQuery extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.PreparedQuery
-
-    static name: string
-    static $gtype: GObject.GType<PreparedQuery>
-
-    // Constructors of Gda-6.0.Gda.PreparedQuery
-
-    constructor(config?: PreparedQuery.ConstructorProperties) 
-    _init(config?: PreparedQuery.ConstructorProperties): void
 }
 
 export module Provider {
@@ -4380,539 +3358,6 @@ export class ProviderMeta extends GObject.Object {
     constructor(config?: ProviderMeta.ConstructorProperties) 
     _init(config?: ProviderMeta.ConstructorProperties): void
     static error_quark(): GLib.Quark
-}
-
-export module Query {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface Query {
-
-    // Own properties of Gda-6.0.Gda.Query
-
-    readonly connection: ConnectionModel
-    readonly name: string | null
-    readonly sql: string | null
-
-    // Owm methods of Gda-6.0.Gda.Query
-
-    cancel(_callback_: Gio.AsyncReadyCallback<this> | null, _user_data_: any | null): void
-    cancel_finish(_res_: Gio.AsyncResult): void
-    execute(_callback_: Gio.AsyncReadyCallback<this> | null, _user_data_: any | null): void
-    get_name(): string
-    get_sql(): string
-
-    // Own virtual methods of Gda-6.0.Gda.Query
-
-    vfunc_cancel(_callback_: Gio.AsyncReadyCallback<this> | null, _user_data_: any | null): void
-    vfunc_cancel_finish(_res_: Gio.AsyncResult): void
-    vfunc_execute(_callback_: Gio.AsyncReadyCallback<this> | null, _user_data_: any | null): void
-    vfunc_get_name(): string
-    vfunc_get_sql(): string
-
-    // Class property signals of Gda-6.0.Gda.Query
-
-    connect(sigName: "notify::connection", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::connection", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: Query, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class Query extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.Query
-
-    static name: string
-    static $gtype: GObject.GType<Query>
-
-    // Constructors of Gda-6.0.Gda.Query
-
-    constructor(config?: Query.ConstructorProperties) 
-    _init(config?: Query.ConstructorProperties): void
-}
-
-export module QueryBuilder {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.QueryBuilder
-
-        name?: string | null
-        sql?: string | null
-    }
-
-}
-
-export interface QueryBuilder {
-
-    // Own properties of Gda-6.0.Gda.QueryBuilder
-
-    name: string | null
-    readonly parameters: Parameters
-    sql: string | null
-
-    // Owm methods of Gda-6.0.Gda.QueryBuilder
-
-    add_savepoint(name: string): boolean
-    begin_transaction(name: string): boolean
-    commit_transaction(name: string): boolean
-    delete_savepoint(name: string): boolean
-    get_name(): string
-    get_sql(): string
-    rollback_savepoint(name: string): boolean
-    rollback_transaction(name: string): boolean
-    set_name(value: string): void
-    set_sql(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.QueryBuilder
-
-    vfunc_add_savepoint(name: string): boolean
-    vfunc_begin_transaction(name: string): boolean
-    vfunc_commit_transaction(name: string): boolean
-    vfunc_delete_savepoint(name: string): boolean
-    vfunc_get_name(): string
-    vfunc_get_sql(): string
-    vfunc_rollback_savepoint(name: string): boolean
-    vfunc_rollback_transaction(name: string): boolean
-    vfunc_set_name(value: string): void
-    vfunc_set_sql(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.QueryBuilder
-
-    connect(sigName: "notify::name", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::sql", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::sql", callback: (($obj: QueryBuilder, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::sql", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class QueryBuilder extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.QueryBuilder
-
-    static name: string
-    static $gtype: GObject.GType<QueryBuilder>
-
-    // Constructors of Gda-6.0.Gda.QueryBuilder
-
-    constructor(config?: QueryBuilder.ConstructorProperties) 
-    _init(config?: QueryBuilder.ConstructorProperties): void
-}
-
-export module ReadonlyTableModel {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends MetaTable.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface ReadonlyTableModel extends MetaTable, TableModel {
-
-    // Own properties of Gda-6.0.Gda.ReadonlyTableModel
-
-    readonly rows: Gio.ListModel
-
-    // Owm methods of Gda-6.0.Gda.ReadonlyTableModel
-
-    get_value(row: number, column: string, result: any): void
-    get_value_at(row: number, column: number, result: any): void
-
-    // Own virtual methods of Gda-6.0.Gda.ReadonlyTableModel
-
-    vfunc_get_value(row: number, column: string, result: any): void
-    vfunc_get_value_at(row: number, column: number, result: any): void
-
-    // Class property signals of Gda-6.0.Gda.ReadonlyTableModel
-
-    connect(sigName: "notify::rows", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::rows", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::rows", ...args: any[]): void
-    connect(sigName: "notify::catalog", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::catalog", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::catalog", ...args: any[]): void
-    connect(sigName: "notify::columns", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::schema", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::schema", callback: (($obj: ReadonlyTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::schema", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ReadonlyTableModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ReadonlyTableModel
-
-    static name: string
-    static $gtype: GObject.GType<ReadonlyTableModel>
-
-    // Constructors of Gda-6.0.Gda.ReadonlyTableModel
-
-    constructor(config?: ReadonlyTableModel.ConstructorProperties) 
-    _init(config?: ReadonlyTableModel.ConstructorProperties): void
-}
-
-export module ReferencedColumn {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.ReferencedColumn
-
-        table_name?: string | null
-        tableName?: string | null
-    }
-
-}
-
-export interface ReferencedColumn {
-
-    // Own properties of Gda-6.0.Gda.ReferencedColumn
-
-    readonly name: string | null
-    table_name: string | null
-    tableName: string | null
-
-    // Owm methods of Gda-6.0.Gda.ReferencedColumn
-
-    get_name(): string
-    set_table_name(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.ReferencedColumn
-
-    vfunc_get_name(): string
-    vfunc_set_table_name(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.ReferencedColumn
-
-    connect(sigName: "notify::name", callback: (($obj: ReferencedColumn, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: ReferencedColumn, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::table-name", callback: (($obj: ReferencedColumn, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::table-name", callback: (($obj: ReferencedColumn, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::table-name", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ReferencedColumn extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ReferencedColumn
-
-    static name: string
-    static $gtype: GObject.GType<ReferencedColumn>
-
-    // Constructors of Gda-6.0.Gda.ReferencedColumn
-
-    constructor(config?: ReferencedColumn.ConstructorProperties) 
-    _init(config?: ReferencedColumn.ConstructorProperties): void
-}
-
-export module Result {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface Result {
-
-    // Class property signals of Gda-6.0.Gda.Result
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class Result extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.Result
-
-    static name: string
-    static $gtype: GObject.GType<Result>
-
-    // Constructors of Gda-6.0.Gda.Result
-
-    constructor(config?: Result.ConstructorProperties) 
-    _init(config?: Result.ConstructorProperties): void
-}
-
-export module ResultTable {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends MetaTable.ConstructorProperties, ReadonlyTableModel.ConstructorProperties, Result.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface ResultTable extends MetaTable, ReadonlyTableModel, Result, TableModel {
-
-    // Class property signals of Gda-6.0.Gda.ResultTable
-
-    connect(sigName: "notify::catalog", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::catalog", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::catalog", ...args: any[]): void
-    connect(sigName: "notify::columns", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::schema", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::schema", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::schema", ...args: any[]): void
-    connect(sigName: "notify::rows", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::rows", callback: (($obj: ResultTable, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::rows", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ResultTable extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ResultTable
-
-    static name: string
-    static $gtype: GObject.GType<ResultTable>
-
-    // Constructors of Gda-6.0.Gda.ResultTable
-
-    constructor(config?: ResultTable.ConstructorProperties) 
-    _init(config?: ResultTable.ConstructorProperties): void
-}
-
-export module RowModel {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends Gio.ListModel.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface RowModel extends Gio.ListModel {
-
-    // Own properties of Gda-6.0.Gda.RowModel
-
-    readonly n_columns: number
-    readonly nColumns: number
-
-    // Owm methods of Gda-6.0.Gda.RowModel
-
-    get_n_columns(): number
-
-    // Own virtual methods of Gda-6.0.Gda.RowModel
-
-    vfunc_get_n_columns(): number
-
-    // Class property signals of Gda-6.0.Gda.RowModel
-
-    connect(sigName: "notify::n-columns", callback: (($obj: RowModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::n-columns", callback: (($obj: RowModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::n-columns", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class RowModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.RowModel
-
-    static name: string
-    static $gtype: GObject.GType<RowModel>
-
-    // Constructors of Gda-6.0.Gda.RowModel
-
-    constructor(config?: RowModel.ConstructorProperties) 
-    _init(config?: RowModel.ConstructorProperties): void
-}
-
-export module TableConstraint {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface TableConstraint {
-
-    // Owm methods of Gda-6.0.Gda.TableConstraint
-
-    get_definition(): string
-    set_definition(value: string): void
-
-    // Own virtual methods of Gda-6.0.Gda.TableConstraint
-
-    vfunc_get_definition(): string
-    vfunc_set_definition(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.TableConstraint
-
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class TableConstraint extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.TableConstraint
-
-    static name: string
-    static $gtype: GObject.GType<TableConstraint>
-
-    // Constructors of Gda-6.0.Gda.TableConstraint
-
-    constructor(config?: TableConstraint.ConstructorProperties) 
-    _init(config?: TableConstraint.ConstructorProperties): void
-}
-
-export module TableModel {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends MetaTable.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface TableModel extends MetaTable {
-
-    // Class property signals of Gda-6.0.Gda.TableModel
-
-    connect(sigName: "notify::catalog", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::catalog", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::catalog", ...args: any[]): void
-    connect(sigName: "notify::columns", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::schema", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::schema", callback: (($obj: TableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::schema", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class TableModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.TableModel
-
-    static name: string
-    static $gtype: GObject.GType<TableModel>
-
-    // Constructors of Gda-6.0.Gda.TableModel
-
-    constructor(config?: TableModel.ConstructorProperties) 
-    _init(config?: TableModel.ConstructorProperties): void
-}
-
-export module WritableTableModel {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends MetaTable.ConstructorProperties, ReadonlyTableModel.ConstructorProperties, TableModel.ConstructorProperties, GObject.Object.ConstructorProperties {
-    }
-
-}
-
-export interface WritableTableModel extends MetaTable, ReadonlyTableModel, TableModel {
-
-    // Owm methods of Gda-6.0.Gda.WritableTableModel
-
-    insert_row(new_row: RowModel): void
-    set_value(row: number, column: string, value: any): void
-    set_value_at(row: number, column: number, value: any): void
-
-    // Own virtual methods of Gda-6.0.Gda.WritableTableModel
-
-    vfunc_insert_row(new_row: RowModel): void
-    vfunc_set_value(row: number, column: string, value: any): void
-    vfunc_set_value_at(row: number, column: number, value: any): void
-
-    // Class property signals of Gda-6.0.Gda.WritableTableModel
-
-    connect(sigName: "notify::catalog", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::catalog", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::catalog", ...args: any[]): void
-    connect(sigName: "notify::columns", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::columns", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::columns", ...args: any[]): void
-    connect(sigName: "notify::name", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::name", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::name", ...args: any[]): void
-    connect(sigName: "notify::schema", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::schema", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::schema", ...args: any[]): void
-    connect(sigName: "notify::rows", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::rows", callback: (($obj: WritableTableModel, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::rows", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class WritableTableModel extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.WritableTableModel
-
-    static name: string
-    static $gtype: GObject.GType<WritableTableModel>
-
-    // Constructors of Gda-6.0.Gda.WritableTableModel
-
-    constructor(config?: WritableTableModel.ConstructorProperties) 
-    _init(config?: WritableTableModel.ConstructorProperties): void
 }
 
 export module Batch {
@@ -5300,14 +3745,6 @@ export module Config {
         /**
          * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
          */
-        system_filename?: string | null
-        /**
-         * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
-         */
-        user_filename?: string | null
-        /**
-         * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
-         */
         systemFilename?: string | null
         /**
          * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
@@ -5324,15 +3761,7 @@ export interface Config {
     /**
      * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
      */
-    system_filename: string | null
-    /**
-     * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
-     */
     systemFilename: string | null
-    /**
-     * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
-     */
-    user_filename: string | null
     /**
      * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
      */
@@ -5552,30 +3981,9 @@ export module Connection {
 
         // Own constructor properties of Gda-6.0.Gda.Connection
 
-        auth_string?: string | null
-        cnc_string?: string | null
-        dsn?: string | null
-        /**
-         * Defines the number of #GdaConnectionEvent objects kept in memory which can
-         * be fetched using gda_connection_get_events().
-         */
-        events_history_size?: number | null
-        /**
-         * Artificially slows down the execution of queries. This property can be used to
-         * debug some problems. If non zero, this value is the number of microseconds waited before actually
-         * executing each query.
-         * NB: this parameter is ignored during the meta store update (it is set to 0 before the meta data update
-         * and restored to its state after).
-         */
-        execution_slowdown?: number | null
-        /**
-         * Computes execution times for each statement executed.
-         */
-        execution_timer?: boolean | null
-        meta_store?: MetaStore | null
-        provider?: ServerProvider | null
         authString?: string | null
         cncString?: string | null
+        dsn?: string | null
         /**
          * Defines the number of #GdaConnectionEvent objects kept in memory which can
          * be fetched using gda_connection_get_events().
@@ -5594,6 +4002,7 @@ export module Connection {
          */
         executionTimer?: boolean | null
         metaStore?: MetaStore | null
+        provider?: ServerProvider | null
     }
 
 }
@@ -5602,16 +4011,9 @@ export interface Connection extends Lockable {
 
     // Own properties of Gda-6.0.Gda.Connection
 
-    auth_string: string | null
     authString: string | null
-    cnc_string: string | null
     cncString: string | null
     dsn: string | null
-    /**
-     * Defines the number of #GdaConnectionEvent objects kept in memory which can
-     * be fetched using gda_connection_get_events().
-     */
-    events_history_size: number
     /**
      * Defines the number of #GdaConnectionEvent objects kept in memory which can
      * be fetched using gda_connection_get_events().
@@ -5624,24 +4026,11 @@ export interface Connection extends Lockable {
      * NB: this parameter is ignored during the meta store update (it is set to 0 before the meta data update
      * and restored to its state after).
      */
-    execution_slowdown: number
-    /**
-     * Artificially slows down the execution of queries. This property can be used to
-     * debug some problems. If non zero, this value is the number of microseconds waited before actually
-     * executing each query.
-     * NB: this parameter is ignored during the meta store update (it is set to 0 before the meta data update
-     * and restored to its state after).
-     */
     executionSlowdown: number
     /**
      * Computes execution times for each statement executed.
      */
-    execution_timer: boolean
-    /**
-     * Computes execution times for each statement executed.
-     */
     executionTimer: boolean
-    meta_store: MetaStore
     metaStore: MetaStore
     provider: ServerProvider
 
@@ -6766,77 +5155,6 @@ export class ConnectionEvent extends GObject.Object {
     _init(config?: ConnectionEvent.ConstructorProperties): void
 }
 
-export module ConnectionModelParams {
-
-    // Constructor properties interface
-
-    export interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Gda-6.0.Gda.ConnectionModelParams
-
-        cnc_string?: string | null
-        pasword?: string | null
-        user?: string | null
-        cncString?: string | null
-    }
-
-}
-
-export interface ConnectionModelParams {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModelParams
-
-    cnc_string: string | null
-    cncString: string | null
-    pasword: string | null
-    user: string | null
-
-    // Own fields of Gda-6.0.Gda.ConnectionModelParams
-
-    parent_instance: GObject.Object
-    priv: ConnectionModelParamsPrivate
-
-    // Owm methods of Gda-6.0.Gda.ConnectionModelParams
-
-    get_cnc_string(): string
-    get_pasword(): string
-    get_user(): string
-    set_cnc_string(value: string): void
-    set_pasword(value: string): void
-    set_user(value: string): void
-
-    // Class property signals of Gda-6.0.Gda.ConnectionModelParams
-
-    connect(sigName: "notify::cnc-string", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::cnc-string", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::cnc-string", ...args: any[]): void
-    connect(sigName: "notify::pasword", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::pasword", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::pasword", ...args: any[]): void
-    connect(sigName: "notify::user", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::user", callback: (($obj: ConnectionModelParams, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::user", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-export class ConnectionModelParams extends GObject.Object {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModelParams
-
-    static name: string
-    static $gtype: GObject.GType<ConnectionModelParams>
-
-    // Constructors of Gda-6.0.Gda.ConnectionModelParams
-
-    constructor(config?: ConnectionModelParams.ConstructorProperties) 
-    constructor() 
-    static new(): ConnectionModelParams
-    _init(config?: ConnectionModelParams.ConstructorProperties): void
-}
-
 export module DataAccessWrapper {
 
     // Constructor properties interface
@@ -6933,8 +5251,6 @@ export module DataComparator {
 
         // Own constructor properties of Gda-6.0.Gda.DataComparator
 
-        new_model?: DataModel | null
-        old_model?: DataModel | null
         newModel?: DataModel | null
         oldModel?: DataModel | null
     }
@@ -6945,9 +5261,7 @@ export interface DataComparator {
 
     // Own properties of Gda-6.0.Gda.DataComparator
 
-    new_model: DataModel
     newModel: DataModel
-    old_model: DataModel
     oldModel: DataModel
 
     // Own fields of Gda-6.0.Gda.DataComparator
@@ -7049,8 +5363,6 @@ export module DataModelArray {
 
         // Own constructor properties of Gda-6.0.Gda.DataModelArray
 
-        n_columns?: number | null
-        read_only?: boolean | null
         nColumns?: number | null
         readOnly?: boolean | null
     }
@@ -7061,9 +5373,7 @@ export interface DataModelArray extends DataModel {
 
     // Own properties of Gda-6.0.Gda.DataModelArray
 
-    n_columns: number
     nColumns: number
-    read_only: boolean
     readOnly: boolean
 
     // Own fields of Gda-6.0.Gda.DataModelArray
@@ -7209,7 +5519,7 @@ export module DataModelImport {
         /**
          * Data to import, as a string.
          */
-        data_string?: string | null
+        dataString?: string | null
         /**
          * Name of the file to import.
          */
@@ -7222,26 +5532,13 @@ export module DataModelImport {
          * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
          * access will have to be done using a cursor.
          */
-        random_access?: boolean | null
+        randomAccess?: boolean | null
         /**
          * Defines the behaviour in case the imported data contains recoverable errors (usually too
          * many or too few data per row). If set to %TRUE, an error will be reported and the import
          * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
          */
         strict?: boolean | null
-        /**
-         * Data to import, as a pointer to an XML node (a #xmlNodePtr).
-         */
-        xml_node?: any | null
-        /**
-         * Data to import, as a string.
-         */
-        dataString?: string | null
-        /**
-         * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
-         * access will have to be done using a cursor.
-         */
-        randomAccess?: boolean | null
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          */
@@ -7254,10 +5551,6 @@ export interface DataModelImport extends DataModel {
 
     // Own properties of Gda-6.0.Gda.DataModelImport
 
-    /**
-     * Data to import, as a string.
-     */
-    readonly data_string: string | null
     /**
      * Data to import, as a string.
      */
@@ -7274,11 +5567,6 @@ export interface DataModelImport extends DataModel {
      * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
      * access will have to be done using a cursor.
      */
-    readonly random_access: boolean
-    /**
-     * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
-     * access will have to be done using a cursor.
-     */
     readonly randomAccess: boolean
     /**
      * Defines the behaviour in case the imported data contains recoverable errors (usually too
@@ -7286,10 +5574,6 @@ export interface DataModelImport extends DataModel {
      * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
      */
     strict: boolean
-    /**
-     * Data to import, as a pointer to an XML node (a #xmlNodePtr).
-     */
-    readonly xml_node: any
     /**
      * Data to import, as a pointer to an XML node (a #xmlNodePtr).
      */
@@ -7478,9 +5762,6 @@ export module DataModelIter {
 
         // Own constructor properties of Gda-6.0.Gda.DataModelIter
 
-        current_row?: number | null
-        data_model?: DataModel | null
-        update_model?: boolean | null
         currentRow?: number | null
         dataModel?: DataModel | null
         updateModel?: boolean | null
@@ -7492,11 +5773,8 @@ export interface DataModelIter {
 
     // Own properties of Gda-6.0.Gda.DataModelIter
 
-    current_row: number
     currentRow: number
-    data_model: DataModel
     dataModel: DataModel
-    update_model: boolean
     updateModel: boolean
 
     // Own fields of Gda-6.0.Gda.DataModelIter
@@ -7974,25 +6252,9 @@ export module DataProxy {
          *   <listitem><para>the inserts are always kept</para></listitem>
          * </itemizedlist>
          */
-        cache_changes?: boolean | null
-        defer_sync?: boolean | null
-        model?: DataModel | null
-        prepend_null_entry?: boolean | null
-        sample_size?: number | null
-        /**
-         * Defines how changes kept in the data proxy are handled when the proxied data model
-         * is changed (using the "model" property). The default is to silently discard all the
-         * changes, but if this property is set to %TRUE, then the changes are cached.
-         * 
-         * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
-         * the change's number of columns match the proxied data model's number of columns and based on:
-         * <itemizedlist>
-         *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
-         *   <listitem><para>the inserts are always kept</para></listitem>
-         * </itemizedlist>
-         */
         cacheChanges?: boolean | null
         deferSync?: boolean | null
+        model?: DataModel | null
         prependNullEntry?: boolean | null
         sampleSize?: number | null
     }
@@ -8015,26 +6277,10 @@ export interface DataProxy extends DataModel {
      *   <listitem><para>the inserts are always kept</para></listitem>
      * </itemizedlist>
      */
-    cache_changes: boolean
-    /**
-     * Defines how changes kept in the data proxy are handled when the proxied data model
-     * is changed (using the "model" property). The default is to silently discard all the
-     * changes, but if this property is set to %TRUE, then the changes are cached.
-     * 
-     * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
-     * the change's number of columns match the proxied data model's number of columns and based on:
-     * <itemizedlist>
-     *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
-     *   <listitem><para>the inserts are always kept</para></listitem>
-     * </itemizedlist>
-     */
     cacheChanges: boolean
-    defer_sync: boolean
     deferSync: boolean
     model: DataModel
-    prepend_null_entry: boolean
     prependNullEntry: boolean
-    sample_size: number
     sampleSize: number
 
     // Own fields of Gda-6.0.Gda.DataProxy
@@ -8334,17 +6580,6 @@ export module DataSelect {
         // Own constructor properties of Gda-6.0.Gda.DataSelect
 
         connection?: Connection | null
-        delete_stmt?: Statement | null
-        exec_params?: Set | null
-        /**
-         * This property stores the execution delay which has been necessary to obtain the data
-         */
-        execution_delay?: number | null
-        insert_stmt?: Statement | null
-        model_usage?: number | null
-        prepared_stmt?: PStmt | null
-        store_all_rows?: boolean | null
-        update_stmt?: Statement | null
         deleteStmt?: Statement | null
         execParams?: Set | null
         /**
@@ -8365,29 +6600,17 @@ export interface DataSelect extends DataModel {
     // Own properties of Gda-6.0.Gda.DataSelect
 
     readonly connection: Connection
-    delete_stmt: Statement
     deleteStmt: Statement
-    readonly exec_params: Set
     readonly execParams: Set
     /**
      * This property stores the execution delay which has been necessary to obtain the data
      */
-    execution_delay: number
-    /**
-     * This property stores the execution delay which has been necessary to obtain the data
-     */
     executionDelay: number
-    insert_stmt: Statement
     insertStmt: Statement
-    readonly model_usage: number
     readonly modelUsage: number
-    prepared_stmt: PStmt
     preparedStmt: PStmt
-    readonly select_stmt: Statement
     readonly selectStmt: Statement
-    store_all_rows: boolean
     storeAllRows: boolean
-    update_stmt: Statement
     updateStmt: Statement
 
     // Own fields of Gda-6.0.Gda.DataSelect
@@ -8682,9 +6905,11 @@ export interface DbBase {
     // Owm methods of Gda-6.0.Gda.DbBase
 
     /**
-     * Compares two objects similar to g_strcmp().
+     * Compares two objects similar to g_strcmp(). In general, catalog and schema can be %NULL. In this case
+     * those pairs are ignored. If we represent a full name as catalog.schema.name then two objects
+     * null.null.customer and main.main.customer are identical.
      * @param b second #GdaDbBase object
-     * @returns 0 if catalog, schema and name are the same
+     * @returns 0 if two objects are identical or -1 or 1 otherwise.
      */
     compare(b: DbBase): number
     /**
@@ -8778,7 +7003,6 @@ export module DbCatalog {
         // Own constructor properties of Gda-6.0.Gda.DbCatalog
 
         connection?: Connection | null
-        schema_name?: string | null
         schemaName?: string | null
     }
 
@@ -8789,7 +7013,6 @@ export interface DbCatalog {
     // Own properties of Gda-6.0.Gda.DbCatalog
 
     connection: Connection
-    schema_name: string | null
     schemaName: string | null
 
     // Own fields of Gda-6.0.Gda.DbCatalog
@@ -8810,7 +7033,57 @@ export interface DbCatalog {
      * @param view view to append
      */
     append_view(view: DbView): void
+    /**
+     * Convenient function to get a table based on `name`. The coller is responsible
+     * for calling gda_db_catalog_parse_cnc() before calling this function.
+     * @param catalog 
+     * @param schema 
+     * @param name table name
+     * @returns table as #GdaDbTable or %NULL if the table is not found. The returned pointer should not be freed and belongs to the @self.
+     */
+    get_table(catalog: string, schema: string, name: string): DbTable
     get_tables(): DbTable[]
+    /**
+     * Convenient function to get a view based on name. The coller is responsible
+     * for calling gda_db_catalog_parse_cnc() before calling this function. This
+     * code is equivalent to the following code:
+     * 
+     * 
+     * ```c
+     *  GdaDbBase *iobj;
+     *  GList *it;
+     * 
+     *  GdaDbCatalogPrivate *priv = gda_db_catalog_get_instance_private (self);
+     * 
+     *  if (gda_db_catalog_parse_cnc (self, error))
+     *    return NULL;
+     * 
+     *  iobj = gda_db_base_new ();
+     *  gda_db_base_set_names (iobj, catalog, schema, name);
+     * 
+     *  for (it = priv->mp_views; it; it = it->next)
+     *    {
+     *      if (!gda_db_base_compare (iobj, GDA_DB_BASE (it->data)))
+     *        {
+     *          if (iobj)
+     *            g_object_unref (iobj);
+     * 
+     *          return GDA_DB_VIEW (it->data);
+     *        }
+     *    }
+     * 
+     *  if (iobj)
+     *    g_object_unref (iobj);
+     * 
+     *  return NULL;
+     * ```
+     * 
+     * @param catalog a catalog name or %NULL
+     * @param schema a schema name or %NULL
+     * @param name view name. Can't be %NULL
+     * @returns View as #GdaDbView or %NULL if the view is not found. The returned pointer should not be freed and belongs to @self
+     */
+    get_view(catalog: string, schema: string, name: string): DbView
     get_views(): DbView[]
     /**
      * Parse internal cnc to populate `self` object. This method should be called every time after
@@ -10065,23 +8338,12 @@ export module Holder {
         // Own constructor properties of Gda-6.0.Gda.Holder
 
         description?: string | null
-        full_bind?: Holder | null
-        g_type?: GObject.GType | null
-        id?: string | null
-        name?: string | null
-        not_null?: boolean | null
-        plugin?: string | null
-        simple_bind?: Holder | null
-        source_column?: number | null
-        source_model?: DataModel | null
-        /**
-         * Defines if the "validate-change" signal gets emitted when
-         * the holder's value changes.
-         */
-        validate_changes?: boolean | null
         fullBind?: Holder | null
         gType?: GObject.GType | null
+        id?: string | null
+        name?: string | null
         notNull?: boolean | null
+        plugin?: string | null
         simpleBind?: Holder | null
         sourceColumn?: number | null
         sourceModel?: DataModel | null
@@ -10099,26 +8361,15 @@ export interface Holder extends Lockable {
     // Own properties of Gda-6.0.Gda.Holder
 
     description: string | null
-    full_bind: Holder
     fullBind: Holder
-    g_type: GObject.GType
     gType: GObject.GType
     id: string | null
     name: string | null
-    not_null: boolean
     notNull: boolean
     plugin: string | null
-    simple_bind: Holder
     simpleBind: Holder
-    source_column: number
     sourceColumn: number
-    source_model: DataModel
     sourceModel: DataModel
-    /**
-     * Defines if the "validate-change" signal gets emitted when
-     * the holder's value changes.
-     */
-    validate_changes: boolean
     /**
      * Defines if the "validate-change" signal gets emitted when
      * the holder's value changes.
@@ -10485,9 +8736,8 @@ export module MetaStore {
 
         catalog?: string | null
         cnc?: Connection | null
-        cnc_string?: string | null
-        schema?: string | null
         cncString?: string | null
+        schema?: string | null
     }
 
 }
@@ -10498,7 +8748,6 @@ export interface MetaStore {
 
     readonly catalog: string | null
     readonly cnc: Connection
-    readonly cnc_string: string | null
     readonly cncString: string | null
     readonly schema: string | null
 
@@ -10830,7 +9079,6 @@ export module MetaStruct {
         // Own constructor properties of Gda-6.0.Gda.MetaStruct
 
         features?: number | null
-        meta_store?: MetaStore | null
         metaStore?: MetaStore | null
     }
 
@@ -10841,7 +9089,6 @@ export interface MetaStruct {
     // Own properties of Gda-6.0.Gda.MetaStruct
 
     readonly features: number
-    readonly meta_store: MetaStore
     readonly metaStore: MetaStore
 
     // Own fields of Gda-6.0.Gda.MetaStruct
@@ -11195,8 +9442,6 @@ export module Row {
         // Own constructor properties of Gda-6.0.Gda.Row
 
         model?: DataModel | null
-        model_row?: number | null
-        nb_values?: number | null
         modelRow?: number | null
         nbValues?: number | null
     }
@@ -11208,9 +9453,7 @@ export interface Row {
     // Own properties of Gda-6.0.Gda.Row
 
     readonly model: DataModel
-    readonly model_row: number
     readonly modelRow: number
-    readonly nb_values: number
     readonly nbValues: number
 
     // Own fields of Gda-6.0.Gda.Row
@@ -11337,11 +9580,8 @@ export module ServerOperation {
         // Own constructor properties of Gda-6.0.Gda.ServerOperation
 
         connection?: Connection | null
-        op_type?: number | null
-        provider?: ServerProvider | null
-        spec_filename?: string | null
-        spec_resource?: string | null
         opType?: number | null
+        provider?: ServerProvider | null
         specFilename?: string | null
         specResource?: string | null
     }
@@ -11353,12 +9593,9 @@ export interface ServerOperation {
     // Own properties of Gda-6.0.Gda.ServerOperation
 
     readonly connection: Connection
-    readonly op_type: number
     readonly opType: number
     readonly provider: ServerProvider
-    readonly spec_filename: string | null
     readonly specFilename: string | null
-    readonly spec_resource: string | null
     readonly specResource: string | null
 
     // Own fields of Gda-6.0.Gda.ServerOperation
@@ -11934,12 +10171,6 @@ export module Set {
          * any holder in the data set changes. This property also affects the
          * GdaHolder:validate-changes property.
          */
-        validate_changes?: boolean | null
-        /**
-         * Defines if the "validate-set" signal gets emitted when
-         * any holder in the data set changes. This property also affects the
-         * GdaHolder:validate-changes property.
-         */
         validateChanges?: boolean | null
     }
 
@@ -11953,12 +10184,6 @@ export interface Set {
     readonly holders: any
     id: string | null
     name: string | null
-    /**
-     * Defines if the "validate-set" signal gets emitted when
-     * any holder in the data set changes. This property also affects the
-     * GdaHolder:validate-changes property.
-     */
-    validate_changes: boolean
     /**
      * Defines if the "validate-set" signal gets emitted when
      * any holder in the data set changes. This property also affects the
@@ -12555,8 +10780,8 @@ export module SqlParser {
 
         // Own constructor properties of Gda-6.0.Gda.SqlParser
 
+        debug?: boolean | null
         mode?: number | null
-        tokenizer_flavour?: number | null
         tokenizerFlavour?: number | null
     }
 
@@ -12566,12 +10791,10 @@ export interface SqlParser extends Lockable {
 
     // Own properties of Gda-6.0.Gda.SqlParser
 
-    readonly column_error: number
     readonly columnError: number
-    readonly line_error: number
+    debug: boolean
     readonly lineError: number
     mode: number
-    tokenizer_flavour: number
     tokenizerFlavour: number
 
     // Own fields of Gda-6.0.Gda.SqlParser
@@ -12627,6 +10850,9 @@ export interface SqlParser extends Lockable {
     connect(sigName: "notify::column-error", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::column-error", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::column-error", ...args: any[]): void
+    connect(sigName: "notify::debug", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::debug", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify::debug", ...args: any[]): void
     connect(sigName: "notify::line-error", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::line-error", callback: (($obj: SqlParser, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::line-error", ...args: any[]): void
@@ -12963,10 +11189,6 @@ export interface Tree {
     /**
      * Tells if the GdaTree is a list or a tree.
      */
-    readonly is_list: boolean
-    /**
-     * Tells if the GdaTree is a list or a tree.
-     */
     readonly isList: boolean
 
     // Own fields of Gda-6.0.Gda.Tree
@@ -13256,21 +11478,11 @@ export module TreeMgrColumns {
          * the #GdaTreeMgrColumns:connection property is specified instead. This property has
          * priority over the GdaTreeMgrColumns:connection property.
          */
-        meta_store?: MetaStore | null
+        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute
          */
         schema?: string | null
-        /**
-         * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
-         */
-        table_name?: string | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrColumns:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrColumns:connection property.
-         */
-        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
          */
@@ -13293,21 +11505,11 @@ export interface TreeMgrColumns {
      * the #GdaTreeMgrColumns:connection property is specified instead. This property has
      * priority over the GdaTreeMgrColumns:connection property.
      */
-    readonly meta_store: MetaStore
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrColumns:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrColumns:connection property.
-     */
     readonly metaStore: MetaStore
     /**
      * If no set, then the table name will be fetched from the parent node using the "schema" attribute
      */
     readonly schema: string | null
-    /**
-     * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
-     */
-    readonly table_name: string | null
     /**
      * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
      */
@@ -13461,12 +11663,6 @@ export module TreeMgrSchemas {
          * the #GdaTreeMgrSchema:connection property is specified instead. This property has
          * priority over the GdaTreeMgrSchema:connection property.
          */
-        meta_store?: MetaStore | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrSchema:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrSchema:connection property.
-         */
         metaStore?: MetaStore | null
     }
 
@@ -13481,12 +11677,6 @@ export interface TreeMgrSchemas {
      * the #GdaTreeMgrSchema:meta-store property is specified instead.
      */
     readonly connection: Connection
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrSchema:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrSchema:connection property.
-     */
-    readonly meta_store: MetaStore
     /**
      * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
      * the #GdaTreeMgrSchema:connection property is specified instead. This property has
@@ -13648,19 +11838,13 @@ export module TreeMgrTables {
          * the #GdaTreeMgrTables:connection property is specified instead. This property has
          * priority over the GdaTreeMgrTables:connection property.
          */
-        meta_store?: MetaStore | null
+        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
          * found that way, then the list of visible tables (tables which can be identified without having to specify
          * a schema) will be used
          */
         schema?: string | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrTables:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrTables:connection property.
-         */
-        metaStore?: MetaStore | null
     }
 
 }
@@ -13674,12 +11858,6 @@ export interface TreeMgrTables {
      * the #GdaTreeMgrTables:meta-store property is specified instead.
      */
     readonly connection: Connection
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrTables:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrTables:connection property.
-     */
-    readonly meta_store: MetaStore
     /**
      * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
      * the #GdaTreeMgrTables:connection property is specified instead. This property has
@@ -13956,8 +12134,6 @@ export module XaTransaction {
 
         // Own constructor properties of Gda-6.0.Gda.XaTransaction
 
-        format_id?: number | null
-        transaction_id?: string | null
         formatId?: number | null
         transactionId?: string | null
     }
@@ -13968,9 +12144,7 @@ export interface XaTransaction {
 
     // Own properties of Gda-6.0.Gda.XaTransaction
 
-    readonly format_id: number
     readonly formatId: number
-    readonly transaction_id: string | null
     readonly transactionId: string | null
 
     // Own fields of Gda-6.0.Gda.XaTransaction
@@ -14082,21 +12256,6 @@ export class XaTransaction extends GObject.Object {
      * @returns a new #GdaXaTransactionId structure, or %NULL in @str has a wrong format Free-function: g_free
      */
     static string_to_id(str: string): XaTransactionId
-}
-
-export interface AfectedRowsIface {
-
-    // Own fields of Gda-6.0.Gda.AfectedRowsIface
-
-    parent_iface: GObject.TypeInterface
-    get_number: (self: AfectedRows) => number
-}
-
-export abstract class AfectedRowsIface {
-
-    // Own properties of Gda-6.0.Gda.AfectedRowsIface
-
-    static name: string
 }
 
 export interface BatchClass {
@@ -14290,28 +12449,6 @@ export abstract class ColumnClass {
     static name: string
 }
 
-export interface ColumnModelIface {
-
-    // Own fields of Gda-6.0.Gda.ColumnModelIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: ColumnModel) => string
-    get_index: (self: ColumnModel) => number
-    get_data_type: (self: ColumnModel) => GObject.GType
-    get_value: (self: ColumnModel) => any
-    set_value: (self: ColumnModel, value: any) => void
-    get_attributes: (self: ColumnModel) => ColumnAttributes
-    set_attributes: (self: ColumnModel, value: ColumnAttributes) => void
-    set_foreign_key: (self: ColumnModel, value: ForeignKey) => void
-}
-
-export abstract class ColumnModelIface {
-
-    // Own properties of Gda-6.0.Gda.ColumnModelIface
-
-    static name: string
-}
-
 export interface ConfigClass {
 
     // Own fields of Gda-6.0.Gda.ConfigClass
@@ -14361,83 +12498,6 @@ export interface ConnectionEventClass {
 export abstract class ConnectionEventClass {
 
     // Own properties of Gda-6.0.Gda.ConnectionEventClass
-
-    static name: string
-}
-
-export interface ConnectionModelIface {
-
-    // Own fields of Gda-6.0.Gda.ConnectionModelIface
-
-    parent_iface: GObject.TypeInterface
-    set_cnc_params: (self: ConnectionModel, value: ConnectionModelParams) => void
-    get_is_opened: (self: ConnectionModel) => boolean
-    close: (self: ConnectionModel) => void
-    close_no_warning: (self: ConnectionModel) => void
-    open: (self: ConnectionModel) => boolean
-}
-
-export abstract class ConnectionModelIface {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModelIface
-
-    static name: string
-}
-
-export interface ConnectionModelParamsClass {
-
-    // Own fields of Gda-6.0.Gda.ConnectionModelParamsClass
-
-    parent_class: GObject.ObjectClass
-}
-
-export abstract class ConnectionModelParamsClass {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModelParamsClass
-
-    static name: string
-}
-
-export interface ConnectionModelParamsPrivate {
-}
-
-export class ConnectionModelParamsPrivate {
-
-    // Own properties of Gda-6.0.Gda.ConnectionModelParamsPrivate
-
-    static name: string
-}
-
-export interface CreateDatabaseBuilderIface {
-
-    // Own fields of Gda-6.0.Gda.CreateDatabaseBuilderIface
-
-    parent_iface: GObject.TypeInterface
-    get_database_name: (self: CreateDatabaseBuilder) => string
-    set_database_name: (self: CreateDatabaseBuilder, value: string) => void
-}
-
-export abstract class CreateDatabaseBuilderIface {
-
-    // Own properties of Gda-6.0.Gda.CreateDatabaseBuilderIface
-
-    static name: string
-}
-
-export interface CreateTableBuilderIface {
-
-    // Own fields of Gda-6.0.Gda.CreateTableBuilderIface
-
-    parent_iface: GObject.TypeInterface
-    get_table_name: (self: CreateTableBuilder) => string
-    set_table_name: (self: CreateTableBuilder, value: string) => void
-    set_columns: (self: CreateTableBuilder, value: Gio.ListModel) => void
-    set_contraints: (self: CreateTableBuilder, value: Gio.ListModel) => void
-}
-
-export abstract class CreateTableBuilderIface {
-
-    // Own properties of Gda-6.0.Gda.CreateTableBuilderIface
 
     static name: string
 }
@@ -14856,40 +12916,6 @@ export class Diff {
     static name: string
 }
 
-export interface DropDatabaseBuilderIface {
-
-    // Own fields of Gda-6.0.Gda.DropDatabaseBuilderIface
-
-    parent_iface: GObject.TypeInterface
-    get_database_name: (self: DropDatabaseBuilder) => string
-    set_database_name: (self: DropDatabaseBuilder, value: string) => void
-}
-
-export abstract class DropDatabaseBuilderIface {
-
-    // Own properties of Gda-6.0.Gda.DropDatabaseBuilderIface
-
-    static name: string
-}
-
-export interface DropTableBuilderIface {
-
-    // Own fields of Gda-6.0.Gda.DropTableBuilderIface
-
-    parent_iface: GObject.TypeInterface
-    get_table_name: (self: DropTableBuilder) => string
-    set_table_name: (self: DropTableBuilder, value: string) => void
-    get_cascade: (self: DropTableBuilder) => boolean
-    set_cascade: (self: DropTableBuilder, value: boolean) => void
-}
-
-export abstract class DropTableBuilderIface {
-
-    // Own properties of Gda-6.0.Gda.DropTableBuilderIface
-
-    static name: string
-}
-
 export interface DsnInfo {
 
     // Own fields of Gda-6.0.Gda.DsnInfo
@@ -14971,32 +12997,6 @@ export class DsnInfo {
      * @returns a new #GdaDsnInfo struct.
      */
     static new(): DsnInfo
-}
-
-export interface ForeignKeyIface {
-
-    // Own fields of Gda-6.0.Gda.ForeignKeyIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: ForeignKey) => string
-    set_name: (self: ForeignKey, value: string) => void
-    get_refname: (self: ForeignKey) => string
-    set_refname: (self: ForeignKey, value: string) => void
-    set_reftable: (self: ForeignKey, value: TableModel) => void
-    set_refcol: (self: ForeignKey, value: Gio.ListModel) => void
-    get_match: (self: ForeignKey) => ForeignKeyMatch
-    set_match: (self: ForeignKey, value: ForeignKeyMatch) => void
-    get_update_rule: (self: ForeignKey) => ForeignKeyRule
-    set_update_rule: (self: ForeignKey, value: ForeignKeyRule) => void
-    get_delete_rule: (self: ForeignKey) => ForeignKeyRule
-    set_delete_rule: (self: ForeignKey, value: ForeignKeyRule) => void
-}
-
-export abstract class ForeignKeyIface {
-
-    // Own properties of Gda-6.0.Gda.ForeignKeyIface
-
-    static name: string
 }
 
 export interface GeometricPoint {
@@ -15139,21 +13139,6 @@ export abstract class HolderClass {
     static name: string
 }
 
-export interface InsertedIface {
-
-    // Own fields of Gda-6.0.Gda.InsertedIface
-
-    parent_iface: GObject.TypeInterface
-    get_number: (self: Inserted) => number
-}
-
-export abstract class InsertedIface {
-
-    // Own properties of Gda-6.0.Gda.InsertedIface
-
-    static name: string
-}
-
 export interface LockableInterface {
 
     // Own fields of Gda-6.0.Gda.LockableInterface
@@ -15167,39 +13152,6 @@ export interface LockableInterface {
 export abstract class LockableInterface {
 
     // Own properties of Gda-6.0.Gda.LockableInterface
-
-    static name: string
-}
-
-export interface MetaCatalogIface {
-
-    // Own fields of Gda-6.0.Gda.MetaCatalogIface
-
-    parent_iface: GObject.TypeInterface
-    set_connection: (self: MetaCatalog, value: ConnectionModel) => void
-}
-
-export abstract class MetaCatalogIface {
-
-    // Own properties of Gda-6.0.Gda.MetaCatalogIface
-
-    static name: string
-}
-
-export interface MetaColumnIface {
-
-    // Own fields of Gda-6.0.Gda.MetaColumnIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: MetaColumn) => string
-    set_name: (self: MetaColumn, value: string) => void
-    get_column_type: (self: MetaColumn) => GObject.GType
-    get_column_type_name: (self: MetaColumn) => string
-}
-
-export abstract class MetaColumnIface {
-
-    // Own properties of Gda-6.0.Gda.MetaColumnIface
 
     static name: string
 }
@@ -15456,6 +13408,54 @@ export abstract class MetaStructClass {
     static name: string
 }
 
+export interface MetaTable {
+
+    // Own fields of Gda-6.0.Gda.MetaTable
+
+    /**
+     * list of #GdaMetaTableColumn structures, one for each column in the table
+     * @field 
+     */
+    columns: MetaTableColumn[]
+    /**
+     * index of the columns part of the primary key for the table (WARNING: columns numbering
+     *                 here start at 0)
+     * @field 
+     */
+    pk_cols_array: number
+    /**
+     * size of the `pk_cols_array` array
+     * @field 
+     */
+    pk_cols_nb: number
+    /**
+     * list of #GdaMetaTableForeignKey where the referenced table is this table
+     * @field 
+     */
+    reverse_fk_list: MetaTableForeignKey[]
+    /**
+     * list of #GdaMetaTableForeignKey for this table
+     * @field 
+     */
+    fk_list: MetaTableForeignKey[]
+}
+
+/**
+ * This structure specifies a #GdaMetaDbObject to represent a table's specific attributes,
+ * its contents must not be modified.
+ * 
+ * Note that in some cases, the columns cannot be determined for views, and in this case the
+ * `columns` will be %NULL (this can be the case for example with SQLite where a view
+ * uses a function which is not natively provided by SQLite.
+ * @record 
+ */
+export class MetaTable {
+
+    // Own properties of Gda-6.0.Gda.MetaTable
+
+    static name: string
+}
+
 export interface MetaTableColumn {
 
     // Own fields of Gda-6.0.Gda.MetaTableColumn
@@ -15556,26 +13556,6 @@ export interface MetaTableForeignKey {
 export class MetaTableForeignKey {
 
     // Own properties of Gda-6.0.Gda.MetaTableForeignKey
-
-    static name: string
-}
-
-export interface MetaTableIface {
-
-    // Own fields of Gda-6.0.Gda.MetaTableIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: MetaTable) => string
-    set_name: (self: MetaTable, value: string) => void
-    get_schema: (self: MetaTable) => string
-    set_schema: (self: MetaTable, value: string) => void
-    get_catalog: (self: MetaTable) => string
-    set_catalog: (self: MetaTable, value: string) => void
-}
-
-export abstract class MetaTableIface {
-
-    // Own properties of Gda-6.0.Gda.MetaTableIface
 
     static name: string
 }
@@ -15703,37 +13683,6 @@ export interface PStmtClass {
 export abstract class PStmtClass {
 
     // Own properties of Gda-6.0.Gda.PStmtClass
-
-    static name: string
-}
-
-export interface ParametersIface {
-
-    // Own fields of Gda-6.0.Gda.ParametersIface
-
-    parent_iface: GObject.TypeInterface
-    set_value: (self: Parameters, name: string, val: any) => void
-    get_value: (self: Parameters, name: string) => any
-}
-
-export abstract class ParametersIface {
-
-    // Own properties of Gda-6.0.Gda.ParametersIface
-
-    static name: string
-}
-
-export interface PreparedQueryIface {
-
-    // Own fields of Gda-6.0.Gda.PreparedQueryIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: PreparedQuery) => string
-}
-
-export abstract class PreparedQueryIface {
-
-    // Own properties of Gda-6.0.Gda.PreparedQueryIface
 
     static name: string
 }
@@ -16004,81 +13953,6 @@ export class QuarkList {
     static new_from_string(string: string): QuarkList
 }
 
-export interface QueryBuilderIface {
-
-    // Own fields of Gda-6.0.Gda.QueryBuilderIface
-
-    parent_iface: GObject.TypeInterface
-    get_sql: (self: QueryBuilder) => string
-    set_sql: (self: QueryBuilder, value: string) => void
-    get_name: (self: QueryBuilder) => string
-    set_name: (self: QueryBuilder, value: string) => void
-    add_savepoint: (self: QueryBuilder, name: string) => boolean
-    delete_savepoint: (self: QueryBuilder, name: string) => boolean
-    rollback_savepoint: (self: QueryBuilder, name: string) => boolean
-    begin_transaction: (self: QueryBuilder, name: string) => boolean
-    commit_transaction: (self: QueryBuilder, name: string) => boolean
-    rollback_transaction: (self: QueryBuilder, name: string) => boolean
-}
-
-export abstract class QueryBuilderIface {
-
-    // Own properties of Gda-6.0.Gda.QueryBuilderIface
-
-    static name: string
-}
-
-export interface QueryIface {
-
-    // Own fields of Gda-6.0.Gda.QueryIface
-
-    parent_iface: GObject.TypeInterface
-    get_name: (self: Query) => string
-    get_sql: (self: Query) => string
-    execute: (self: Query, _callback_: Gio.AsyncReadyCallback | null, _user_data_: any | null) => void
-    cancel: (self: Query, _callback_: Gio.AsyncReadyCallback | null, _user_data_: any | null) => void
-    cancel_finish: (self: Query, _res_: Gio.AsyncResult) => void
-}
-
-export abstract class QueryIface {
-
-    // Own properties of Gda-6.0.Gda.QueryIface
-
-    static name: string
-}
-
-export interface ReadonlyTableModelIface {
-
-    // Own fields of Gda-6.0.Gda.ReadonlyTableModelIface
-
-    parent_iface: GObject.TypeInterface
-    get_value: (self: ReadonlyTableModel, row: number, column: string, result: any) => void
-    get_value_at: (self: ReadonlyTableModel, row: number, column: number, result: any) => void
-}
-
-export abstract class ReadonlyTableModelIface {
-
-    // Own properties of Gda-6.0.Gda.ReadonlyTableModelIface
-
-    static name: string
-}
-
-export interface ReferencedColumnIface {
-
-    // Own fields of Gda-6.0.Gda.ReferencedColumnIface
-
-    parent_iface: GObject.TypeInterface
-    set_table_name: (self: ReferencedColumn, value: string) => void
-    get_name: (self: ReferencedColumn) => string
-}
-
-export abstract class ReferencedColumnIface {
-
-    // Own properties of Gda-6.0.Gda.ReferencedColumnIface
-
-    static name: string
-}
-
 export interface RepetitiveStatementClass {
 
     // Own fields of Gda-6.0.Gda.RepetitiveStatementClass
@@ -16093,34 +13967,6 @@ export abstract class RepetitiveStatementClass {
     static name: string
 }
 
-export interface ResultIface {
-
-    // Own fields of Gda-6.0.Gda.ResultIface
-
-    parent_iface: GObject.TypeInterface
-}
-
-export abstract class ResultIface {
-
-    // Own properties of Gda-6.0.Gda.ResultIface
-
-    static name: string
-}
-
-export interface ResultTableIface {
-
-    // Own fields of Gda-6.0.Gda.ResultTableIface
-
-    parent_iface: GObject.TypeInterface
-}
-
-export abstract class ResultTableIface {
-
-    // Own properties of Gda-6.0.Gda.ResultTableIface
-
-    static name: string
-}
-
 export interface RowClass {
 
     // Own fields of Gda-6.0.Gda.RowClass
@@ -16131,21 +13977,6 @@ export interface RowClass {
 export abstract class RowClass {
 
     // Own properties of Gda-6.0.Gda.RowClass
-
-    static name: string
-}
-
-export interface RowModelIface {
-
-    // Own fields of Gda-6.0.Gda.RowModelIface
-
-    parent_iface: GObject.TypeInterface
-    get_n_columns: (self: RowModel) => number
-}
-
-export abstract class RowModelIface {
-
-    // Own properties of Gda-6.0.Gda.RowModelIface
 
     static name: string
 }
@@ -18307,36 +16138,6 @@ export abstract class StatementClass {
     static name: string
 }
 
-export interface TableConstraintIface {
-
-    // Own fields of Gda-6.0.Gda.TableConstraintIface
-
-    parent_iface: GObject.TypeInterface
-    get_definition: (self: TableConstraint) => string
-    set_definition: (self: TableConstraint, value: string) => void
-}
-
-export abstract class TableConstraintIface {
-
-    // Own properties of Gda-6.0.Gda.TableConstraintIface
-
-    static name: string
-}
-
-export interface TableModelIface {
-
-    // Own fields of Gda-6.0.Gda.TableModelIface
-
-    parent_iface: GObject.TypeInterface
-}
-
-export abstract class TableModelIface {
-
-    // Own properties of Gda-6.0.Gda.TableModelIface
-
-    static name: string
-}
-
 export interface Text {
 
     // Owm methods of Gda-6.0.Gda.Text
@@ -18869,23 +16670,6 @@ export class Worker {
      */
     static new_unique(location: Worker, allow_destroy: boolean): Worker
     static error_quark(): GLib.Quark
-}
-
-export interface WritableTableModelIface {
-
-    // Own fields of Gda-6.0.Gda.WritableTableModelIface
-
-    parent_iface: GObject.TypeInterface
-    set_value: (self: WritableTableModel, row: number, column: string, value: any) => void
-    set_value_at: (self: WritableTableModel, row: number, column: number, value: any) => void
-    insert_row: (self: WritableTableModel, new_row: RowModel) => void
-}
-
-export abstract class WritableTableModelIface {
-
-    // Own properties of Gda-6.0.Gda.WritableTableModelIface
-
-    static name: string
 }
 
 export interface XaTransactionClass {

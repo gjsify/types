@@ -577,21 +577,21 @@ export module Agent {
          * Setting this property to %TRUE implies that 'keepalive-conncheck' should
          * be %TRUE as well.
          */
-        consentFreshness?: boolean | null
+        consent_freshness?: boolean | null
         /**
          * Whether the agent has the controlling role. This property should
          * be modified before gathering candidates, any modification occuring
          * later will be hold until ICE is restarted.
          */
-        controllingMode?: boolean | null
+        controlling_mode?: boolean | null
         /**
          * Force all traffic to go through a relay for added privacy, this
          * allows hiding the local IP address. When this is enabled, so
          * local candidates are available before relay servers have been set
          * with nice_agent_set_relay_info().
          */
-        forceRelay?: boolean | null
-        fullMode?: boolean | null
+        force_relay?: boolean | null
+        full_mode?: boolean | null
         /**
          * Whether the agent should use ICE-TCP when gathering candidates.
          * If the option is disabled, no TCP candidates will be generated. If the
@@ -613,14 +613,14 @@ export module Agent {
          *    </para>
          * </note>
          */
-        iceTcp?: boolean | null
+        ice_tcp?: boolean | null
         /**
          * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
          * When %TRUE, the agent will postpone changing a component state to
          * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
          * has been called with the ID of the component's stream.
          */
-        iceTrickle?: boolean | null
+        ice_trickle?: boolean | null
         /**
          * Whether the agent should use ICE-UDP when gathering candidates.
          * If the option is disabled, no UDP candidates will be generated. If the
@@ -635,7 +635,7 @@ export module Agent {
          * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
          * to %FALSE as well.
          */
-        iceUdp?: boolean | null
+        ice_udp?: boolean | null
         /**
          * A final timeout in msec, launched when the agent becomes idle,
          * before stopping its activity.
@@ -665,7 +665,7 @@ export module Agent {
          * slow down the behaviour of the agent when the peer agent works
          * in a timely manner.
          */
-        idleTimeout?: number | null
+        idle_timeout?: number | null
         /**
          * Use binding requests as keepalives instead of binding
          * indications. This means that the keepalives may time out which
@@ -679,33 +679,33 @@ export module Agent {
          * 
          * This is always enabled if the 'consent-freshness' property is %TRUE
          */
-        keepaliveConncheck?: boolean | null
+        keepalive_conncheck?: boolean | null
         /**
          * A GLib main context is needed for all timeouts used by libnice.
          * This is a property being set by the nice_agent_new() call.
          */
-        mainContext?: any | null
-        maxConnectivityChecks?: number | null
+        main_context?: any | null
+        max_connectivity_checks?: number | null
         /**
          * The proxy server IP used to bypass a proxy firewall
          */
-        proxyIp?: string | null
+        proxy_ip?: string | null
         /**
          * The password used to authenticate with the proxy
          */
-        proxyPassword?: string | null
+        proxy_password?: string | null
         /**
          * The proxy server port used to bypass a proxy firewall
          */
-        proxyPort?: number | null
+        proxy_port?: number | null
         /**
          * The type of proxy set in the proxy-ip property
          */
-        proxyType?: number | null
+        proxy_type?: number | null
         /**
          * The username used to authenticate with the proxy
          */
-        proxyUsername?: string | null
+        proxy_username?: string | null
         /**
          * Whether the agent is providing a reliable transport of messages (through
          * ICE-TCP or PseudoTCP over ICE-UDP)
@@ -721,7 +721,7 @@ export module Agent {
          * divided by two instead (RFC 5389 indicates that a customisable
          * multiplier 'Rm' to 'RTO' should be used).
          */
-        stunInitialTimeout?: number | null
+        stun_initial_timeout?: number | null
         /**
          * The maximum number of retransmissions of the STUN binding requests
          * used in the gathering stage, to find our local candidates, and used
@@ -733,15 +733,15 @@ export module Agent {
          * to the READY state, and on the time needed to complete the GATHERING
          * state.
          */
-        stunMaxRetransmissions?: number | null
-        stunPacingTimer?: number | null
+        stun_max_retransmissions?: number | null
+        stun_pacing_timer?: number | null
         /**
          * The initial timeout of the STUN binding requests used
          * for a reliable timer.
          */
-        stunReliableTimeout?: number | null
-        stunServer?: string | null
-        stunServerPort?: number | null
+        stun_reliable_timeout?: number | null
+        stun_server?: string | null
+        stun_server_port?: number | null
         /**
          * Support RENOMINATION STUN attribute proposed here:
          * https://tools.ietf.org/html/draft-thatcher-ice-renomination-00 As
@@ -749,7 +749,7 @@ export module Agent {
          * candidate's address, corresponding candidates pair gets
          * selected. This is specific to Google Chrome/libWebRTC.
          */
-        supportRenomination?: boolean | null
+        support_renomination?: boolean | null
         /**
          * Whether the agent should use UPnP to open a port in the router and
          * get the external IP
@@ -759,7 +759,7 @@ export module Agent {
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
          * finish before signaling the #NiceAgent::candidate-gathering-done signal
          */
-        upnpTimeout?: number | null
+        upnp_timeout?: number | null
     }
 
 }
@@ -1949,12 +1949,12 @@ export module PseudoTcpSocket {
 
         // Own constructor properties of Nice-0.1.Nice.PseudoTcpSocket
 
-        ackDelay?: number | null
+        ack_delay?: number | null
         callbacks?: any | null
         conversation?: number | null
-        noDelay?: boolean | null
-        rcvBuf?: number | null
-        sndBuf?: number | null
+        no_delay?: boolean | null
+        rcv_buf?: number | null
+        snd_buf?: number | null
         /**
          * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
          * this socket. The extension is only compatible with other libnice pseudo-TCP
@@ -1965,7 +1965,7 @@ export module PseudoTcpSocket {
          * 
          * Support is enabled by default.
          */
-        supportFinAck?: boolean | null
+        support_fin_ack?: boolean | null
     }
 
 }

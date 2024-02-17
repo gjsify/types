@@ -1,13 +1,19 @@
 {
     "name": "@girs/anthy-9000",
-    "version": "9000.0.0-3.2.7",
+    "version": "9000.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0",
     "type": "module",
     "module": "anthy-9000.js",
     "main": "anthy-9000.js",
     "exports": {
-        "./ambient": "./anthy-9000-ambient.d.ts",
-        "./import": "./anthy-9000-import.d.ts",
+        "./ambient": {
+            "types": "./anthy-9000-ambient.d.ts",
+            "default": "./anthy-9000-ambient.js"
+        },
+        "./import": {
+            "types": "./anthy-9000-import.d.ts",
+            "default": "./anthy-9000-import.js"
+        },
         ".": {
             "import": {
                 "types": "./anthy-9000.d.ts",

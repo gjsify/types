@@ -276,15 +276,15 @@ export module Handle {
          * Base URI, to be used to resolve relative references for resources.  See the section
          * "Security and locations of referenced files" for details.
          */
-        baseUri?: string | null
+        base_uri?: string | null
         /**
          * Horizontal resolution in dots per inch.
          */
-        dpiX?: number | null
+        dpi_x?: number | null
         /**
          * Horizontal resolution in dots per inch.
          */
-        dpiY?: number | null
+        dpi_y?: number | null
         /**
          * Flags from [flags`Rsvg`.HandleFlags].
          */

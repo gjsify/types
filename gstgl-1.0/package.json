@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstgl-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstGL-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstgl-1.0.js",
     "main": "gstgl-1.0.js",
     "exports": {
-        "./ambient": "./gstgl-1.0-ambient.d.ts",
-        "./import": "./gstgl-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gstgl-1.0-ambient.d.ts",
+            "default": "./gstgl-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstgl-1.0-import.d.ts",
+            "default": "./gstgl-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstgl-1.0.d.ts",

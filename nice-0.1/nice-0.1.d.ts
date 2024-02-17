@@ -579,199 +579,6 @@ module Agent {
          * Setting this property to %TRUE implies that 'keepalive-conncheck' should
          * be %TRUE as well.
          */
-        consent_freshness?: boolean | null
-        /**
-         * Whether the agent has the controlling role. This property should
-         * be modified before gathering candidates, any modification occuring
-         * later will be hold until ICE is restarted.
-         */
-        controlling_mode?: boolean | null
-        /**
-         * Force all traffic to go through a relay for added privacy, this
-         * allows hiding the local IP address. When this is enabled, so
-         * local candidates are available before relay servers have been set
-         * with nice_agent_set_relay_info().
-         */
-        force_relay?: boolean | null
-        full_mode?: boolean | null
-        /**
-         * Whether the agent should use ICE-TCP when gathering candidates.
-         * If the option is disabled, no TCP candidates will be generated. If the
-         * agent is in reliable mode, then pseudotcp will need to be used over UDP
-         * candidates.
-         * <para>
-         * This option should be set before gathering candidates and should not be
-         * modified afterwards.
-         * </para>
-         * The #NiceAgent:ice-tcp property can be set at the same time as the
-         * #NiceAgent:ice-udp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-udp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
-         * <note>
-         *    <para>
-         *    ICE-TCP is only supported for %NICE_COMPATIBILITY_RFC5245,
-         *    %NICE_COMPATIBILITY_OC2007 and %NICE_COMPATIBILITY_OC2007R2 compatibility
-         *    modes.
-         *    </para>
-         * </note>
-         */
-        ice_tcp?: boolean | null
-        /**
-         * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
-         * When %TRUE, the agent will postpone changing a component state to
-         * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
-         * has been called with the ID of the component's stream.
-         */
-        ice_trickle?: boolean | null
-        /**
-         * Whether the agent should use ICE-UDP when gathering candidates.
-         * If the option is disabled, no UDP candidates will be generated. If the
-         * agent is in reliable mode, then pseudotcp will not be used since pseudotcp
-         * works on top of UDP candidates.
-         * <para>
-         * This option should be set before gathering candidates and should not be
-         * modified afterwards.
-         * </para>
-         * The #NiceAgent:ice-udp property can be set at the same time as the
-         * #NiceAgent:ice-tcp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
-         */
-        ice_udp?: boolean | null
-        /**
-         * A final timeout in msec, launched when the agent becomes idle,
-         * before stopping its activity.
-         * 
-         * This timer will delay the decision to set a component as failed.
-         * This delay is added to reduce the chance to see the agent receiving
-         * new stun activity just after the conncheck list has been declared
-         * failed (some valid pairs, no nominated pair, and no in-progress
-         * pairs), reactiviting conncheck activity, and causing a (valid)
-         * state transitions like that: connecting -> failed -> connecting ->
-         * connected -> ready.  Such transitions are not buggy per-se, but may
-         * break the test-suite, that counts precisely the number of time each
-         * state has been set, and doesnt expect these transcient failed
-         * states.
-         * 
-         * This timer is also useful when the agent is in controlled mode and
-         * the other controlling peer takes some time to elect its nominated
-         * pair (this may be the case for SfB peers).
-         * 
-         * This timer is *NOT* part if the RFC5245, as this situation is not
-         * covered in sect 8.1.2 "Updating States", but deals with a real
-         * use-case, where a controlled agent can not wait forever for the
-         * other peer to make a nomination decision.
-         * 
-         * Also note that the value of this timeout will not delay the
-         * emission of 'connected' and 'ready' agent signals, and will not
-         * slow down the behaviour of the agent when the peer agent works
-         * in a timely manner.
-         */
-        idle_timeout?: number | null
-        /**
-         * Use binding requests as keepalives instead of binding
-         * indications. This means that the keepalives may time out which
-         * will change the component state to %NICE_COMPONENT_STATE_FAILED.
-         * 
-         * Enabing this is a slight violation of RFC 5245 section 10 which
-         * recommends using Binding Indications for keepalives.
-         * 
-         * This is always enabled if the compatibility mode is
-         * %NICE_COMPATIBILITY_GOOGLE.
-         * 
-         * This is always enabled if the 'consent-freshness' property is %TRUE
-         */
-        keepalive_conncheck?: boolean | null
-        /**
-         * A GLib main context is needed for all timeouts used by libnice.
-         * This is a property being set by the nice_agent_new() call.
-         */
-        main_context?: any | null
-        max_connectivity_checks?: number | null
-        /**
-         * The proxy server IP used to bypass a proxy firewall
-         */
-        proxy_ip?: string | null
-        /**
-         * The password used to authenticate with the proxy
-         */
-        proxy_password?: string | null
-        /**
-         * The proxy server port used to bypass a proxy firewall
-         */
-        proxy_port?: number | null
-        /**
-         * The type of proxy set in the proxy-ip property
-         */
-        proxy_type?: number | null
-        /**
-         * The username used to authenticate with the proxy
-         */
-        proxy_username?: string | null
-        /**
-         * Whether the agent is providing a reliable transport of messages (through
-         * ICE-TCP or PseudoTCP over ICE-UDP)
-         */
-        reliable?: boolean | null
-        /**
-         * The initial timeout (msecs) of the STUN binding requests
-         * used in the gathering stage, to find our local candidates.
-         * This property is described as 'RTO' in the RFC 5389 and RFC 5245.
-         * This timeout is doubled for each retransmission, until
-         * #NiceAgent:stun-max-retransmissions have been done,
-         * with an exception for the last restransmission, where the timeout is
-         * divided by two instead (RFC 5389 indicates that a customisable
-         * multiplier 'Rm' to 'RTO' should be used).
-         */
-        stun_initial_timeout?: number | null
-        /**
-         * The maximum number of retransmissions of the STUN binding requests
-         * used in the gathering stage, to find our local candidates, and used
-         * in the connection check stage, to test the validity of each
-         * constructed pair. This property is described as 'Rc' in the RFC
-         * 5389, with a default value of 7. The timeout of each STUN request
-         * is doubled for each retransmission, so the choice of this value has
-         * a direct impact on the time needed to move from the CONNECTED state
-         * to the READY state, and on the time needed to complete the GATHERING
-         * state.
-         */
-        stun_max_retransmissions?: number | null
-        stun_pacing_timer?: number | null
-        /**
-         * The initial timeout of the STUN binding requests used
-         * for a reliable timer.
-         */
-        stun_reliable_timeout?: number | null
-        stun_server?: string | null
-        stun_server_port?: number | null
-        /**
-         * Support RENOMINATION STUN attribute proposed here:
-         * https://tools.ietf.org/html/draft-thatcher-ice-renomination-00 As
-         * soon as RENOMINATION attribute is received from remote
-         * candidate's address, corresponding candidates pair gets
-         * selected. This is specific to Google Chrome/libWebRTC.
-         */
-        support_renomination?: boolean | null
-        /**
-         * Whether the agent should use UPnP to open a port in the router and
-         * get the external IP
-         */
-        upnp?: boolean | null
-        /**
-         * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
-         * finish before signaling the #NiceAgent::candidate-gathering-done signal
-         */
-        upnp_timeout?: number | null
-        /**
-         * Whether to perform periodic consent freshness checks as specified in
-         * RFC 7675.  When %TRUE, the agent will periodically send binding requests
-         * to the peer to maintain the consent to send with the peer.  On receipt
-         * of any authenticated error response, a component will immediately move
-         * to the failed state.
-         * 
-         * Setting this property to %TRUE implies that 'keepalive-conncheck' should
-         * be %TRUE as well.
-         */
         consentFreshness?: boolean | null
         /**
          * Whether the agent has the controlling role. This property should
@@ -902,6 +709,11 @@ module Agent {
          */
         proxyUsername?: string | null
         /**
+         * Whether the agent is providing a reliable transport of messages (through
+         * ICE-TCP or PseudoTCP over ICE-UDP)
+         */
+        reliable?: boolean | null
+        /**
          * The initial timeout (msecs) of the STUN binding requests
          * used in the gathering stage, to find our local candidates.
          * This property is described as 'RTO' in the RFC 5389 and RFC 5245.
@@ -941,6 +753,11 @@ module Agent {
          */
         supportRenomination?: boolean | null
         /**
+         * Whether the agent should use UPnP to open a port in the router and
+         * get the external IP
+         */
+        upnp?: boolean | null
+        /**
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
          * finish before signaling the #NiceAgent::candidate-gathering-done signal
          */
@@ -953,28 +770,6 @@ interface Agent {
 
     // Own properties of Nice-0.1.Nice.Agent
 
-    /**
-     * This property defines whether receive/send over a TCP or pseudo-TCP, in
-     * reliable mode, are considered as packetized or as bytestream.
-     * In unreliable mode, every send/recv is considered as packetized, and
-     * this property is ignored and cannot be set.
-     * <para>
-     * In reliable mode, this property will always return %TRUE in the
-     * %NICE_COMPATIBILITY_GOOGLE compatibility mode.
-     * </para>
-     * If the property is %TRUE, the stream is considered in bytestream mode
-     * and data can be read with any receive size. If the property is %FALSE, then
-     * the stream is considred packetized and each receive will return one packet
-     * of the same size as what was sent from the peer. If in packetized mode,
-     * then doing a receive with a size smaller than the packet, will cause the
-     * remaining bytes in the packet to be dropped, breaking the reliability
-     * of the stream.
-     * <para>
-     * This property is currently read-only, and will become read/write once
-     * bytestream mode will be supported.
-     * </para>
-     */
-    readonly bytestream_tcp: boolean
     /**
      * This property defines whether receive/send over a TCP or pseudo-TCP, in
      * reliable mode, are considered as packetized or as bytestream.
@@ -1013,24 +808,7 @@ interface Agent {
      * Setting this property to %TRUE implies that 'keepalive-conncheck' should
      * be %TRUE as well.
      */
-    readonly consent_freshness: boolean
-    /**
-     * Whether to perform periodic consent freshness checks as specified in
-     * RFC 7675.  When %TRUE, the agent will periodically send binding requests
-     * to the peer to maintain the consent to send with the peer.  On receipt
-     * of any authenticated error response, a component will immediately move
-     * to the failed state.
-     * 
-     * Setting this property to %TRUE implies that 'keepalive-conncheck' should
-     * be %TRUE as well.
-     */
     readonly consentFreshness: boolean
-    /**
-     * Whether the agent has the controlling role. This property should
-     * be modified before gathering candidates, any modification occuring
-     * later will be hold until ICE is restarted.
-     */
-    controlling_mode: boolean
     /**
      * Whether the agent has the controlling role. This property should
      * be modified before gathering candidates, any modification occuring
@@ -1043,38 +821,8 @@ interface Agent {
      * local candidates are available before relay servers have been set
      * with nice_agent_set_relay_info().
      */
-    force_relay: boolean
-    /**
-     * Force all traffic to go through a relay for added privacy, this
-     * allows hiding the local IP address. When this is enabled, so
-     * local candidates are available before relay servers have been set
-     * with nice_agent_set_relay_info().
-     */
     forceRelay: boolean
-    readonly full_mode: boolean
     readonly fullMode: boolean
-    /**
-     * Whether the agent should use ICE-TCP when gathering candidates.
-     * If the option is disabled, no TCP candidates will be generated. If the
-     * agent is in reliable mode, then pseudotcp will need to be used over UDP
-     * candidates.
-     * <para>
-     * This option should be set before gathering candidates and should not be
-     * modified afterwards.
-     * </para>
-     * The #NiceAgent:ice-tcp property can be set at the same time as the
-     * #NiceAgent:ice-udp property, but both cannot be unset at the same time.
-     * If #NiceAgent:ice-udp is set to %FALSE, then this property cannot be set
-     * to %FALSE as well.
-     * <note>
-     *    <para>
-     *    ICE-TCP is only supported for %NICE_COMPATIBILITY_RFC5245,
-     *    %NICE_COMPATIBILITY_OC2007 and %NICE_COMPATIBILITY_OC2007R2 compatibility
-     *    modes.
-     *    </para>
-     * </note>
-     */
-    ice_tcp: boolean
     /**
      * Whether the agent should use ICE-TCP when gathering candidates.
      * If the option is disabled, no TCP candidates will be generated. If the
@@ -1103,29 +851,7 @@ interface Agent {
      * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
      * has been called with the ID of the component's stream.
      */
-    ice_trickle: boolean
-    /**
-     * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
-     * When %TRUE, the agent will postpone changing a component state to
-     * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
-     * has been called with the ID of the component's stream.
-     */
     iceTrickle: boolean
-    /**
-     * Whether the agent should use ICE-UDP when gathering candidates.
-     * If the option is disabled, no UDP candidates will be generated. If the
-     * agent is in reliable mode, then pseudotcp will not be used since pseudotcp
-     * works on top of UDP candidates.
-     * <para>
-     * This option should be set before gathering candidates and should not be
-     * modified afterwards.
-     * </para>
-     * The #NiceAgent:ice-udp property can be set at the same time as the
-     * #NiceAgent:ice-tcp property, but both cannot be unset at the same time.
-     * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
-     * to %FALSE as well.
-     */
-    ice_udp: boolean
     /**
      * Whether the agent should use ICE-UDP when gathering candidates.
      * If the option is disabled, no UDP candidates will be generated. If the
@@ -1170,51 +896,7 @@ interface Agent {
      * slow down the behaviour of the agent when the peer agent works
      * in a timely manner.
      */
-    idle_timeout: number
-    /**
-     * A final timeout in msec, launched when the agent becomes idle,
-     * before stopping its activity.
-     * 
-     * This timer will delay the decision to set a component as failed.
-     * This delay is added to reduce the chance to see the agent receiving
-     * new stun activity just after the conncheck list has been declared
-     * failed (some valid pairs, no nominated pair, and no in-progress
-     * pairs), reactiviting conncheck activity, and causing a (valid)
-     * state transitions like that: connecting -> failed -> connecting ->
-     * connected -> ready.  Such transitions are not buggy per-se, but may
-     * break the test-suite, that counts precisely the number of time each
-     * state has been set, and doesnt expect these transcient failed
-     * states.
-     * 
-     * This timer is also useful when the agent is in controlled mode and
-     * the other controlling peer takes some time to elect its nominated
-     * pair (this may be the case for SfB peers).
-     * 
-     * This timer is *NOT* part if the RFC5245, as this situation is not
-     * covered in sect 8.1.2 "Updating States", but deals with a real
-     * use-case, where a controlled agent can not wait forever for the
-     * other peer to make a nomination decision.
-     * 
-     * Also note that the value of this timeout will not delay the
-     * emission of 'connected' and 'ready' agent signals, and will not
-     * slow down the behaviour of the agent when the peer agent works
-     * in a timely manner.
-     */
     idleTimeout: number
-    /**
-     * Use binding requests as keepalives instead of binding
-     * indications. This means that the keepalives may time out which
-     * will change the component state to %NICE_COMPONENT_STATE_FAILED.
-     * 
-     * Enabing this is a slight violation of RFC 5245 section 10 which
-     * recommends using Binding Indications for keepalives.
-     * 
-     * This is always enabled if the compatibility mode is
-     * %NICE_COMPATIBILITY_GOOGLE.
-     * 
-     * This is always enabled if the 'consent-freshness' property is %TRUE
-     */
-    keepalive_conncheck: boolean
     /**
      * Use binding requests as keepalives instead of binding
      * indications. This means that the keepalives may time out which
@@ -1233,18 +915,8 @@ interface Agent {
      * A GLib main context is needed for all timeouts used by libnice.
      * This is a property being set by the nice_agent_new() call.
      */
-    readonly main_context: any
-    /**
-     * A GLib main context is needed for all timeouts used by libnice.
-     * This is a property being set by the nice_agent_new() call.
-     */
     readonly mainContext: any
-    max_connectivity_checks: number
     maxConnectivityChecks: number
-    /**
-     * The proxy server IP used to bypass a proxy firewall
-     */
-    proxy_ip: string | null
     /**
      * The proxy server IP used to bypass a proxy firewall
      */
@@ -1252,15 +924,7 @@ interface Agent {
     /**
      * The password used to authenticate with the proxy
      */
-    proxy_password: string | null
-    /**
-     * The password used to authenticate with the proxy
-     */
     proxyPassword: string | null
-    /**
-     * The proxy server port used to bypass a proxy firewall
-     */
-    proxy_port: number
     /**
      * The proxy server port used to bypass a proxy firewall
      */
@@ -1268,15 +932,7 @@ interface Agent {
     /**
      * The type of proxy set in the proxy-ip property
      */
-    proxy_type: number
-    /**
-     * The type of proxy set in the proxy-ip property
-     */
     proxyType: number
-    /**
-     * The username used to authenticate with the proxy
-     */
-    proxy_username: string | null
     /**
      * The username used to authenticate with the proxy
      */
@@ -1286,17 +942,6 @@ interface Agent {
      * ICE-TCP or PseudoTCP over ICE-UDP)
      */
     readonly reliable: boolean
-    /**
-     * The initial timeout (msecs) of the STUN binding requests
-     * used in the gathering stage, to find our local candidates.
-     * This property is described as 'RTO' in the RFC 5389 and RFC 5245.
-     * This timeout is doubled for each retransmission, until
-     * #NiceAgent:stun-max-retransmissions have been done,
-     * with an exception for the last restransmission, where the timeout is
-     * divided by two instead (RFC 5389 indicates that a customisable
-     * multiplier 'Rm' to 'RTO' should be used).
-     */
-    stun_initial_timeout: number
     /**
      * The initial timeout (msecs) of the STUN binding requests
      * used in the gathering stage, to find our local candidates.
@@ -1319,43 +964,15 @@ interface Agent {
      * to the READY state, and on the time needed to complete the GATHERING
      * state.
      */
-    stun_max_retransmissions: number
-    /**
-     * The maximum number of retransmissions of the STUN binding requests
-     * used in the gathering stage, to find our local candidates, and used
-     * in the connection check stage, to test the validity of each
-     * constructed pair. This property is described as 'Rc' in the RFC
-     * 5389, with a default value of 7. The timeout of each STUN request
-     * is doubled for each retransmission, so the choice of this value has
-     * a direct impact on the time needed to move from the CONNECTED state
-     * to the READY state, and on the time needed to complete the GATHERING
-     * state.
-     */
     stunMaxRetransmissions: number
-    stun_pacing_timer: number
     stunPacingTimer: number
     /**
      * The initial timeout of the STUN binding requests used
      * for a reliable timer.
      */
-    stun_reliable_timeout: number
-    /**
-     * The initial timeout of the STUN binding requests used
-     * for a reliable timer.
-     */
     stunReliableTimeout: number
-    stun_server: string | null
     stunServer: string | null
-    stun_server_port: number
     stunServerPort: number
-    /**
-     * Support RENOMINATION STUN attribute proposed here:
-     * https://tools.ietf.org/html/draft-thatcher-ice-renomination-00 As
-     * soon as RENOMINATION attribute is received from remote
-     * candidate's address, corresponding candidates pair gets
-     * selected. This is specific to Google Chrome/libWebRTC.
-     */
-    support_renomination: boolean
     /**
      * Support RENOMINATION STUN attribute proposed here:
      * https://tools.ietf.org/html/draft-thatcher-ice-renomination-00 As
@@ -1369,11 +986,6 @@ interface Agent {
      * get the external IP
      */
     upnp: boolean
-    /**
-     * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
-     * finish before signaling the #NiceAgent::candidate-gathering-done signal
-     */
-    upnp_timeout: number
     /**
      * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
      * finish before signaling the #NiceAgent::candidate-gathering-done signal
@@ -2254,24 +1866,9 @@ module PseudoTcpSocket {
 
         // Own constructor properties of Nice-0.1.Nice.PseudoTcpSocket
 
-        ack_delay?: number | null
+        ackDelay?: number | null
         callbacks?: any | null
         conversation?: number | null
-        no_delay?: boolean | null
-        rcv_buf?: number | null
-        snd_buf?: number | null
-        /**
-         * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
-         * this socket. The extension is only compatible with other libnice pseudo-TCP
-         * stacks, and not with Jingle pseudo-TCP stacks. If enabled, support is
-         * negotiatied on connection setup, so it is safe for a #PseudoTcpSocket with
-         * support enabled to be used with one with it disabled, or with a Jingle
-         * pseudo-TCP socket which doesn’t support it at all.
-         * 
-         * Support is enabled by default.
-         */
-        support_fin_ack?: boolean | null
-        ackDelay?: number | null
         noDelay?: boolean | null
         rcvBuf?: number | null
         sndBuf?: number | null
@@ -2294,28 +1891,13 @@ interface PseudoTcpSocket {
 
     // Own properties of Nice-0.1.Nice.PseudoTcpSocket
 
-    ack_delay: number
     ackDelay: number
     callbacks: any
     readonly conversation: number
-    no_delay: boolean
     noDelay: boolean
-    rcv_buf: number
     rcvBuf: number
-    snd_buf: number
     sndBuf: number
     readonly state: number
-    /**
-     * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
-     * this socket. The extension is only compatible with other libnice pseudo-TCP
-     * stacks, and not with Jingle pseudo-TCP stacks. If enabled, support is
-     * negotiatied on connection setup, so it is safe for a #PseudoTcpSocket with
-     * support enabled to be used with one with it disabled, or with a Jingle
-     * pseudo-TCP socket which doesn’t support it at all.
-     * 
-     * Support is enabled by default.
-     */
-    readonly support_fin_ack: boolean
     /**
      * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
      * this socket. The extension is only compatible with other libnice pseudo-TCP

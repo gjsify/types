@@ -561,13 +561,10 @@ export module Info {
 
         // Own constructor properties of GWeather-3.0.GWeather.Info
 
-        application_id?: string | null
-        contact_info?: string | null
-        enabled_providers?: Provider | null
-        location?: Location | null
         applicationId?: string | null
         contactInfo?: string | null
         enabledProviders?: Provider | null
+        location?: Location | null
     }
 
 }
@@ -576,11 +573,8 @@ export interface Info {
 
     // Own properties of GWeather-3.0.GWeather.Info
 
-    application_id: string | null
     applicationId: string | null
-    contact_info: string | null
     contactInfo: string | null
-    enabled_providers: Provider
     enabledProviders: Provider
     location: Location
 
@@ -804,9 +798,8 @@ export module LocationEntry {
         // Own constructor properties of GWeather-3.0.GWeather.LocationEntry
 
         location?: Location | null
-        show_named_timezones?: boolean | null
-        top?: Location | null
         showNamedTimezones?: boolean | null
+        top?: Location | null
     }
 
 }
@@ -816,7 +809,6 @@ export interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
     // Own properties of GWeather-3.0.GWeather.LocationEntry
 
     location: Location
-    readonly show_named_timezones: boolean
     readonly showNamedTimezones: boolean
     readonly top: Location
 

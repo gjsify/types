@@ -1,13 +1,19 @@
 {
     "name": "@girs/vgda-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Vgda-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgda-1.js",
     "main": "vgda-1.js",
     "exports": {
-        "./ambient": "./vgda-1-ambient.d.ts",
-        "./import": "./vgda-1-import.d.ts",
+        "./ambient": {
+            "types": "./vgda-1-ambient.d.ts",
+            "default": "./vgda-1-ambient.js"
+        },
+        "./import": {
+            "types": "./vgda-1-import.d.ts",
+            "default": "./vgda-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./vgda-1.d.ts",

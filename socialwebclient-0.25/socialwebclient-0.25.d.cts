@@ -126,7 +126,6 @@ export module ClientContactView {
 
         // Own constructor properties of SocialWebClient-0.25.SocialWebClient.ClientContactView
 
-        object_path?: string | null
         objectPath?: string | null
     }
 
@@ -136,7 +135,6 @@ export interface ClientContactView {
 
     // Own properties of SocialWebClient-0.25.SocialWebClient.ClientContactView
 
-    readonly object_path: string | null
     readonly objectPath: string | null
 
     // Own fields of SocialWebClient-0.25.SocialWebClient.ClientContactView
@@ -218,7 +216,6 @@ export module ClientItemView {
 
         // Own constructor properties of SocialWebClient-0.25.SocialWebClient.ClientItemView
 
-        object_path?: string | null
         objectPath?: string | null
     }
 
@@ -228,7 +225,6 @@ export interface ClientItemView {
 
     // Own properties of SocialWebClient-0.25.SocialWebClient.ClientItemView
 
-    readonly object_path: string | null
     readonly objectPath: string | null
 
     // Own fields of SocialWebClient-0.25.SocialWebClient.ClientItemView

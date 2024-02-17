@@ -1,13 +1,19 @@
 {
     "name": "@girs/javascriptcore-4.1",
-    "version": "2.40.0-3.2.7",
+    "version": "2.40.0-3.2.8",
     "description": "GJS TypeScript type definitions for JavaScriptCore-4.1, generated from library version 2.40.0",
     "type": "module",
     "module": "javascriptcore-4.1.js",
     "main": "javascriptcore-4.1.js",
     "exports": {
-        "./ambient": "./javascriptcore-4.1-ambient.d.ts",
-        "./import": "./javascriptcore-4.1-import.d.ts",
+        "./ambient": {
+            "types": "./javascriptcore-4.1-ambient.d.ts",
+            "default": "./javascriptcore-4.1-ambient.js"
+        },
+        "./import": {
+            "types": "./javascriptcore-4.1-import.d.ts",
+            "default": "./javascriptcore-4.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./javascriptcore-4.1.d.ts",

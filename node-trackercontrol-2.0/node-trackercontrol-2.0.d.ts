@@ -80,8 +80,8 @@ module MinerManager {
 
         // Own constructor properties of TrackerControl-2.0.TrackerControl.MinerManager
 
-        autoStart?: boolean | null
-        domainOntology?: string | null
+        auto_start?: boolean | null
+        domain_ontology?: string | null
     }
 
 }

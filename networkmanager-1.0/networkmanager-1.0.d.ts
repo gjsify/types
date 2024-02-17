@@ -3620,148 +3620,6 @@ module Setting8021x {
          * unencrypted identity with EAP types that support different tunneled
          * identity like EAP-TTLS.
          */
-        anonymous_identity?: string | null
-        /**
-         * UTF-8 encoded path to a directory containing PEM or DER formatted
-         * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:ca-cert property.
-         */
-        ca_path?: string | null
-        /**
-         * Identity string for EAP authentication methods.  Often the user's user or
-         * login name.
-         */
-        identity?: string | null
-        /**
-         * UTF-8 encoded file path containing PAC for EAP-FAST.
-         */
-        pac_file?: string | null
-        /**
-         * UTF-8 encoded password used for EAP authentication methods. If both the
-         * #NMSetting8021x:password property and the #NMSetting8021x:password-raw
-         * property are specified, #NMSetting8021x:password is preferred.
-         */
-        password?: string | null
-        /**
-         * Flags indicating how to handle the #NMSetting8021x:password property.
-         */
-        password_flags?: number | null
-        /**
-         * Flags indicating how to handle the #NMSetting8021x:password-raw property.
-         */
-        password_raw_flags?: number | null
-        /**
-         * Enables or disables in-line provisioning of EAP-FAST credentials when
-         * FAST is specified as the EAP method in the #NMSetting8021x:eap property.
-         * Recognized values are "0" (disabled), "1" (allow unauthenticated
-         * provisioning), "2" (allow authenticated provisioning), and "3" (allow
-         * both authenticated and unauthenticated provisioning).  See the
-         * wpa_supplicant documentation for more details.
-         */
-        phase1_fast_provisioning?: string | null
-        /**
-         * Forces use of the new PEAP label during key derivation.  Some RADIUS
-         * servers may require forcing the new PEAP label to interoperate with
-         * PEAPv1.  Set to "1" to force use of the new PEAP label.  See the
-         * wpa_supplicant documentation for more details.
-         */
-        phase1_peaplabel?: string | null
-        /**
-         * Forces which PEAP version is used when PEAP is set as the EAP method in
-         * the #NMSetting8021x:eap property.  When unset, the version reported by
-         * the server will be used.  Sometimes when using older RADIUS servers, it
-         * is necessary to force the client to use a particular PEAP version.  To do
-         * so, this property may be set to "0" or "1" to force that specific PEAP
-         * version.
-         */
-        phase1_peapver?: string | null
-        /**
-         * Specifies the allowed "phase 2" inner non-EAP authentication methods when
-         * an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized non-EAP "phase 2" methods are
-         * "pap", "chap", "mschap", "mschapv2", "gtc", "otp", "md5", and "tls".
-         * Each "phase 2" inner method requires specific parameters for successful
-         * authentication; see the wpa_supplicant documentation for more details.
-         */
-        phase2_auth?: string | null
-        /**
-         * Specifies the allowed "phase 2" inner EAP-based authentication methods
-         * when an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized EAP-based "phase 2" methods are
-         * "md5", "mschapv2", "otp", "gtc", and "tls". Each "phase 2" inner method
-         * requires specific parameters for successful authentication; see the
-         * wpa_supplicant documentation for more details.
-         */
-        phase2_autheap?: string | null
-        /**
-         * UTF-8 encoded path to a directory containing PEM or DER formatted
-         * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:phase2-ca-cert property.
-         */
-        phase2_ca_path?: string | null
-        /**
-         * The password used to decrypt the "phase 2" private key specified in the
-         * #NMSetting8021x:phase2-private-key property when the private key either
-         * uses the path scheme, or is a PKCS#<!-- -->12 format key.  Setting this property
-         * directly is not generally necessary except when returning secrets to
-         * NetworkManager; it is generally set automatically when setting the
-         * private key by the nm_setting_802_1x_set_phase2_private_key() function.
-         */
-        phase2_private_key_password?: string | null
-        /**
-         * Flags indicating how to handle the
-         * #NMSetting8021x:phase2-private-key-password property.
-         */
-        phase2_private_key_password_flags?: number | null
-        /**
-         * Substring to be matched against the subject of the certificate presented
-         * by the authentication server during the inner "phase 2"
-         * authentication. When unset, no verification of the authentication server
-         * certificate's subject is performed.
-         */
-        phase2_subject_match?: string | null
-        /**
-         * PIN used for EAP authentication methods.
-         */
-        pin?: string | null
-        /**
-         * Flags indicating how to handle the #NMSetting8021x:pin property.
-         */
-        pin_flags?: number | null
-        /**
-         * The password used to decrypt the private key specified in the
-         * #NMSetting8021x:private-key property when the private key either uses the
-         * path scheme, or if the private key is a PKCS#<!-- -->12 format key.  Setting this
-         * property directly is not generally necessary except when returning
-         * secrets to NetworkManager; it is generally set automatically when setting
-         * the private key by the nm_setting_802_1x_set_private_key() function.
-         */
-        private_key_password?: string | null
-        /**
-         * Flags indicating how to handle the #NMSetting8021x:private-key-password
-         * property.
-         */
-        private_key_password_flags?: number | null
-        /**
-         * Substring to be matched against the subject of the certificate presented
-         * by the authentication server. When unset, no verification of the
-         * authentication server certificate's subject is performed.
-         */
-        subject_match?: string | null
-        /**
-         * When %TRUE, overrides the #NMSetting8021x:ca-path and
-         * #NMSetting8021x:phase2-ca-path properties using the system CA directory
-         * specified at configure time with the --system-ca-path switch.  The
-         * certificates in this directory are added to the verification chain in
-         * addition to any certificates specified by the #NMSetting8021x:ca-cert and
-         * #NMSetting8021x:phase2-ca-cert properties.
-         */
-        system_ca_certs?: boolean | null
-        /**
-         * Anonymous identity string for EAP authentication methods.  Used as the
-         * unencrypted identity with EAP types that support different tunneled
-         * identity like EAP-TTLS.
-         */
         anonymousIdentity?: string | null
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
@@ -3770,9 +3628,20 @@ module Setting8021x {
          */
         caPath?: string | null
         /**
+         * Identity string for EAP authentication methods.  Often the user's user or
+         * login name.
+         */
+        identity?: string | null
+        /**
          * UTF-8 encoded file path containing PAC for EAP-FAST.
          */
         pacFile?: string | null
+        /**
+         * UTF-8 encoded password used for EAP authentication methods. If both the
+         * #NMSetting8021x:password property and the #NMSetting8021x:password-raw
+         * property are specified, #NMSetting8021x:password is preferred.
+         */
+        password?: string | null
         /**
          * Flags indicating how to handle the #NMSetting8021x:password property.
          */
@@ -3852,6 +3721,10 @@ module Setting8021x {
          */
         phase2SubjectMatch?: string | null
         /**
+         * PIN used for EAP authentication methods.
+         */
+        pin?: string | null
+        /**
          * Flags indicating how to handle the #NMSetting8021x:pin property.
          */
         pinFlags?: number | null
@@ -3897,19 +3770,7 @@ interface Setting8021x {
      * unencrypted identity with EAP types that support different tunneled
      * identity like EAP-TTLS.
      */
-    anonymous_identity: string | null
-    /**
-     * Anonymous identity string for EAP authentication methods.  Used as the
-     * unencrypted identity with EAP types that support different tunneled
-     * identity like EAP-TTLS.
-     */
     anonymousIdentity: string | null
-    /**
-     * UTF-8 encoded path to a directory containing PEM or DER formatted
-     * certificates to be added to the verification chain in addition to the
-     * certificate specified in the #NMSetting8021x:ca-cert property.
-     */
-    ca_path: string | null
     /**
      * UTF-8 encoded path to a directory containing PEM or DER formatted
      * certificates to be added to the verification chain in addition to the
@@ -3924,10 +3785,6 @@ interface Setting8021x {
     /**
      * UTF-8 encoded file path containing PAC for EAP-FAST.
      */
-    pac_file: string | null
-    /**
-     * UTF-8 encoded file path containing PAC for EAP-FAST.
-     */
     pacFile: string | null
     /**
      * UTF-8 encoded password used for EAP authentication methods. If both the
@@ -3938,28 +3795,11 @@ interface Setting8021x {
     /**
      * Flags indicating how to handle the #NMSetting8021x:password property.
      */
-    password_flags: number
-    /**
-     * Flags indicating how to handle the #NMSetting8021x:password property.
-     */
     passwordFlags: number
     /**
      * Flags indicating how to handle the #NMSetting8021x:password-raw property.
      */
-    password_raw_flags: number
-    /**
-     * Flags indicating how to handle the #NMSetting8021x:password-raw property.
-     */
     passwordRawFlags: number
-    /**
-     * Enables or disables in-line provisioning of EAP-FAST credentials when
-     * FAST is specified as the EAP method in the #NMSetting8021x:eap property.
-     * Recognized values are "0" (disabled), "1" (allow unauthenticated
-     * provisioning), "2" (allow authenticated provisioning), and "3" (allow
-     * both authenticated and unauthenticated provisioning).  See the
-     * wpa_supplicant documentation for more details.
-     */
-    phase1_fast_provisioning: string | null
     /**
      * Enables or disables in-line provisioning of EAP-FAST credentials when
      * FAST is specified as the EAP method in the #NMSetting8021x:eap property.
@@ -3975,23 +3815,7 @@ interface Setting8021x {
      * PEAPv1.  Set to "1" to force use of the new PEAP label.  See the
      * wpa_supplicant documentation for more details.
      */
-    phase1_peaplabel: string | null
-    /**
-     * Forces use of the new PEAP label during key derivation.  Some RADIUS
-     * servers may require forcing the new PEAP label to interoperate with
-     * PEAPv1.  Set to "1" to force use of the new PEAP label.  See the
-     * wpa_supplicant documentation for more details.
-     */
     phase1Peaplabel: string | null
-    /**
-     * Forces which PEAP version is used when PEAP is set as the EAP method in
-     * the #NMSetting8021x:eap property.  When unset, the version reported by
-     * the server will be used.  Sometimes when using older RADIUS servers, it
-     * is necessary to force the client to use a particular PEAP version.  To do
-     * so, this property may be set to "0" or "1" to force that specific PEAP
-     * version.
-     */
-    phase1_peapver: string | null
     /**
      * Forces which PEAP version is used when PEAP is set as the EAP method in
      * the #NMSetting8021x:eap property.  When unset, the version reported by
@@ -4009,25 +3833,7 @@ interface Setting8021x {
      * Each "phase 2" inner method requires specific parameters for successful
      * authentication; see the wpa_supplicant documentation for more details.
      */
-    phase2_auth: string | null
-    /**
-     * Specifies the allowed "phase 2" inner non-EAP authentication methods when
-     * an EAP method that uses an inner TLS tunnel is specified in the
-     * #NMSetting8021x:eap property.  Recognized non-EAP "phase 2" methods are
-     * "pap", "chap", "mschap", "mschapv2", "gtc", "otp", "md5", and "tls".
-     * Each "phase 2" inner method requires specific parameters for successful
-     * authentication; see the wpa_supplicant documentation for more details.
-     */
     phase2Auth: string | null
-    /**
-     * Specifies the allowed "phase 2" inner EAP-based authentication methods
-     * when an EAP method that uses an inner TLS tunnel is specified in the
-     * #NMSetting8021x:eap property.  Recognized EAP-based "phase 2" methods are
-     * "md5", "mschapv2", "otp", "gtc", and "tls". Each "phase 2" inner method
-     * requires specific parameters for successful authentication; see the
-     * wpa_supplicant documentation for more details.
-     */
-    phase2_autheap: string | null
     /**
      * Specifies the allowed "phase 2" inner EAP-based authentication methods
      * when an EAP method that uses an inner TLS tunnel is specified in the
@@ -4042,22 +3848,7 @@ interface Setting8021x {
      * certificates to be added to the verification chain in addition to the
      * certificate specified in the #NMSetting8021x:phase2-ca-cert property.
      */
-    phase2_ca_path: string | null
-    /**
-     * UTF-8 encoded path to a directory containing PEM or DER formatted
-     * certificates to be added to the verification chain in addition to the
-     * certificate specified in the #NMSetting8021x:phase2-ca-cert property.
-     */
     phase2CaPath: string | null
-    /**
-     * The password used to decrypt the "phase 2" private key specified in the
-     * #NMSetting8021x:phase2-private-key property when the private key either
-     * uses the path scheme, or is a PKCS#<!-- -->12 format key.  Setting this property
-     * directly is not generally necessary except when returning secrets to
-     * NetworkManager; it is generally set automatically when setting the
-     * private key by the nm_setting_802_1x_set_phase2_private_key() function.
-     */
-    phase2_private_key_password: string | null
     /**
      * The password used to decrypt the "phase 2" private key specified in the
      * #NMSetting8021x:phase2-private-key property when the private key either
@@ -4071,19 +3862,7 @@ interface Setting8021x {
      * Flags indicating how to handle the
      * #NMSetting8021x:phase2-private-key-password property.
      */
-    phase2_private_key_password_flags: number
-    /**
-     * Flags indicating how to handle the
-     * #NMSetting8021x:phase2-private-key-password property.
-     */
     phase2PrivateKeyPasswordFlags: number
-    /**
-     * Substring to be matched against the subject of the certificate presented
-     * by the authentication server during the inner "phase 2"
-     * authentication. When unset, no verification of the authentication server
-     * certificate's subject is performed.
-     */
-    phase2_subject_match: string | null
     /**
      * Substring to be matched against the subject of the certificate presented
      * by the authentication server during the inner "phase 2"
@@ -4098,20 +3877,7 @@ interface Setting8021x {
     /**
      * Flags indicating how to handle the #NMSetting8021x:pin property.
      */
-    pin_flags: number
-    /**
-     * Flags indicating how to handle the #NMSetting8021x:pin property.
-     */
     pinFlags: number
-    /**
-     * The password used to decrypt the private key specified in the
-     * #NMSetting8021x:private-key property when the private key either uses the
-     * path scheme, or if the private key is a PKCS#<!-- -->12 format key.  Setting this
-     * property directly is not generally necessary except when returning
-     * secrets to NetworkManager; it is generally set automatically when setting
-     * the private key by the nm_setting_802_1x_set_private_key() function.
-     */
-    private_key_password: string | null
     /**
      * The password used to decrypt the private key specified in the
      * #NMSetting8021x:private-key property when the private key either uses the
@@ -4125,33 +3891,13 @@ interface Setting8021x {
      * Flags indicating how to handle the #NMSetting8021x:private-key-password
      * property.
      */
-    private_key_password_flags: number
-    /**
-     * Flags indicating how to handle the #NMSetting8021x:private-key-password
-     * property.
-     */
     privateKeyPasswordFlags: number
     /**
      * Substring to be matched against the subject of the certificate presented
      * by the authentication server. When unset, no verification of the
      * authentication server certificate's subject is performed.
      */
-    subject_match: string | null
-    /**
-     * Substring to be matched against the subject of the certificate presented
-     * by the authentication server. When unset, no verification of the
-     * authentication server certificate's subject is performed.
-     */
     subjectMatch: string | null
-    /**
-     * When %TRUE, overrides the #NMSetting8021x:ca-path and
-     * #NMSetting8021x:phase2-ca-path properties using the system CA directory
-     * specified at configure time with the --system-ca-path switch.  The
-     * certificates in this directory are added to the verification chain in
-     * addition to any certificates specified by the #NMSetting8021x:ca-cert and
-     * #NMSetting8021x:phase2-ca-cert properties.
-     */
-    system_ca_certs: boolean
     /**
      * When %TRUE, overrides the #NMSetting8021x:ca-path and
      * #NMSetting8021x:phase2-ca-path properties using the system CA directory
@@ -4727,7 +4473,7 @@ module SettingAdsl {
         /**
          * Flags indicating how to handle the #NMSettingAdsl:password property.
          */
-        password_flags?: number | null
+        passwordFlags?: number | null
         /**
          * ADSL connection protocol.  Can be "pppoa", "pppoe" or "ipoatm".
          */
@@ -4744,10 +4490,6 @@ module SettingAdsl {
          * VPI of ADSL connection
          */
         vpi?: number | null
-        /**
-         * Flags indicating how to handle the #NMSettingAdsl:password property.
-         */
-        passwordFlags?: number | null
     }
 
 }
@@ -4764,10 +4506,6 @@ interface SettingAdsl {
      * Password used to authenticate with the ADSL service.
      */
     password: string | null
-    /**
-     * Flags indicating how to handle the #NMSettingAdsl:password property.
-     */
-    password_flags: number
     /**
      * Flags indicating how to handle the #NMSettingAdsl:password property.
      */
@@ -4956,10 +4694,6 @@ module SettingBond {
         /**
          * The name of the virtual in-kernel bonding network interface
          */
-        interface_name?: string | null
-        /**
-         * The name of the virtual in-kernel bonding network interface
-         */
         interfaceName?: string | null
     }
 
@@ -4969,10 +4703,6 @@ interface SettingBond {
 
     // Own properties of NetworkManager-1.0.NetworkManager.SettingBond
 
-    /**
-     * The name of the virtual in-kernel bonding network interface
-     */
-    interface_name: string | null
     /**
      * The name of the virtual in-kernel bonding network interface
      */
@@ -5094,36 +4824,6 @@ module SettingBridge {
         /**
          * The Ethernet MAC address aging time, in seconds.
          */
-        ageing_time?: number | null
-        /**
-         * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
-         */
-        forward_delay?: number | null
-        /**
-         * The Spanning Tree Protocol (STP) hello time, in seconds.
-         */
-        hello_time?: number | null
-        /**
-         * The name of the virtual in-kernel bridging network interface
-         */
-        interface_name?: string | null
-        /**
-         * The Spanning Tree Protocol (STP) maximum message age, in seconds.
-         */
-        max_age?: number | null
-        /**
-         * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
-         * values are "better"; the lowest priority bridge will be elected the root
-         * bridge.
-         */
-        priority?: number | null
-        /**
-         * Controls whether Spanning Tree Protocol (STP) is enabled for this bridge.
-         */
-        stp?: boolean | null
-        /**
-         * The Ethernet MAC address aging time, in seconds.
-         */
         ageingTime?: number | null
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
@@ -5141,6 +4841,16 @@ module SettingBridge {
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
          */
         maxAge?: number | null
+        /**
+         * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
+         * values are "better"; the lowest priority bridge will be elected the root
+         * bridge.
+         */
+        priority?: number | null
+        /**
+         * Controls whether Spanning Tree Protocol (STP) is enabled for this bridge.
+         */
+        stp?: boolean | null
     }
 
 }
@@ -5152,15 +4862,7 @@ interface SettingBridge {
     /**
      * The Ethernet MAC address aging time, in seconds.
      */
-    ageing_time: number
-    /**
-     * The Ethernet MAC address aging time, in seconds.
-     */
     ageingTime: number
-    /**
-     * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
-     */
-    forward_delay: number
     /**
      * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
      */
@@ -5168,23 +4870,11 @@ interface SettingBridge {
     /**
      * The Spanning Tree Protocol (STP) hello time, in seconds.
      */
-    hello_time: number
-    /**
-     * The Spanning Tree Protocol (STP) hello time, in seconds.
-     */
     helloTime: number
     /**
      * The name of the virtual in-kernel bridging network interface
      */
-    interface_name: string | null
-    /**
-     * The name of the virtual in-kernel bridging network interface
-     */
     interfaceName: string | null
-    /**
-     * The Spanning Tree Protocol (STP) maximum message age, in seconds.
-     */
-    max_age: number
     /**
      * The Spanning Tree Protocol (STP) maximum message age, in seconds.
      */
@@ -5284,26 +4974,16 @@ module SettingBridgePort {
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
          */
-        hairpin_mode?: boolean | null
-        /**
-         * The Spanning Tree Protocol (STP) port cost for destinations via this
-         * port.
-         */
-        path_cost?: number | null
-        /**
-         * The Spanning Tree Protocol (STP) priority of this bridge port.
-         */
-        priority?: number | null
-        /**
-         * Enables or disables "hairpin mode" for the port, which allows frames to
-         * be sent back out through the port the frame was received on.
-         */
         hairpinMode?: boolean | null
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
          */
         pathCost?: number | null
+        /**
+         * The Spanning Tree Protocol (STP) priority of this bridge port.
+         */
+        priority?: number | null
     }
 
 }
@@ -5316,17 +4996,7 @@ interface SettingBridgePort {
      * Enables or disables "hairpin mode" for the port, which allows frames to
      * be sent back out through the port the frame was received on.
      */
-    hairpin_mode: boolean
-    /**
-     * Enables or disables "hairpin mode" for the port, which allows frames to
-     * be sent back out through the port the frame was received on.
-     */
     hairpinMode: boolean
-    /**
-     * The Spanning Tree Protocol (STP) port cost for destinations via this
-     * port.
-     */
-    path_cost: number
     /**
      * The Spanning Tree Protocol (STP) port cost for destinations via this
      * port.
@@ -5415,17 +5085,13 @@ module SettingCdma {
         /**
          * Flags indicating how to handle the #NMSettingCdma:password property.
          */
-        password_flags?: number | null
+        passwordFlags?: number | null
         /**
          * The username used to authenticate with the network, if required.  Many
          * providers do not require a username, or accept any username.  But if a
          * username is required, it is specified here.
          */
         username?: string | null
-        /**
-         * Flags indicating how to handle the #NMSettingCdma:password property.
-         */
-        passwordFlags?: number | null
     }
 
 }
@@ -5446,10 +5112,6 @@ interface SettingCdma {
      * password is required, it is specified here.
      */
     password: string | null
-    /**
-     * Flags indicating how to handle the #NMSettingCdma:password property.
-     */
-    password_flags: number
     /**
      * Flags indicating how to handle the #NMSettingCdma:password property.
      */
@@ -5539,7 +5201,7 @@ module SettingConnection {
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
          */
-        gateway_ping_timeout?: number | null
+        gatewayPingTimeout?: number | null
         /**
          * A human readable unique identifier for the connection, like "Work Wi-Fi"
          * or "T-Mobile 3G".
@@ -5558,7 +5220,7 @@ module SettingConnection {
          * can be used with, and if interface names change or are reordered the
          * connection may be applied to the wrong interface.
          */
-        interface_name?: string | null
+        interfaceName?: string | null
         /**
          * Interface name of the master device or UUID of the master connection.
          */
@@ -5568,13 +5230,13 @@ module SettingConnection {
          * service's D-Bus interface with the right privileges, or %TRUE if the
          * connection is read-only and cannot be modified.
          */
-        read_only?: boolean | null
+        readOnly?: boolean | null
         /**
          * Setting name of the device type of this slave's master connection (eg,
          * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
          * slave.
          */
-        slave_type?: string | null
+        slaveType?: string | null
         /**
          * The time, in seconds since the Unix Epoch, that the connection was last
          * _successfully_ fully activated.
@@ -5615,37 +5277,6 @@ module SettingConnection {
          * firewall.
          */
         zone?: string | null
-        /**
-         * If greater than zero, delay success of IP addressing until either the
-         * timeout is reached, or an IP gateway replies to a ping.
-         */
-        gatewayPingTimeout?: number | null
-        /**
-         * The name of the network interface this connection is bound to. If not
-         * set, then the connection can be attached to any interface of the
-         * appropriate type (subject to restrictions imposed by other settings).
-         * 
-         * For software devices this specifies the name of the created device.
-         * 
-         * For connection types where interface names cannot easily be made
-         * persistent (e.g. mobile broadband or USB Ethernet), this property should
-         * not be used. Setting this property restricts the interfaces a connection
-         * can be used with, and if interface names change or are reordered the
-         * connection may be applied to the wrong interface.
-         */
-        interfaceName?: string | null
-        /**
-         * %FALSE if the connection can be modified using the provided settings
-         * service's D-Bus interface with the right privileges, or %TRUE if the
-         * connection is read-only and cannot be modified.
-         */
-        readOnly?: boolean | null
-        /**
-         * Setting name of the device type of this slave's master connection (eg,
-         * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
-         * slave.
-         */
-        slaveType?: string | null
     }
 
 }
@@ -5661,11 +5292,6 @@ interface SettingConnection {
      * intervention to activate the connection.
      */
     autoconnect: boolean
-    /**
-     * If greater than zero, delay success of IP addressing until either the
-     * timeout is reached, or an IP gateway replies to a ping.
-     */
-    gateway_ping_timeout: number
     /**
      * If greater than zero, delay success of IP addressing until either the
      * timeout is reached, or an IP gateway replies to a ping.
@@ -5689,20 +5315,6 @@ interface SettingConnection {
      * can be used with, and if interface names change or are reordered the
      * connection may be applied to the wrong interface.
      */
-    interface_name: string | null
-    /**
-     * The name of the network interface this connection is bound to. If not
-     * set, then the connection can be attached to any interface of the
-     * appropriate type (subject to restrictions imposed by other settings).
-     * 
-     * For software devices this specifies the name of the created device.
-     * 
-     * For connection types where interface names cannot easily be made
-     * persistent (e.g. mobile broadband or USB Ethernet), this property should
-     * not be used. Setting this property restricts the interfaces a connection
-     * can be used with, and if interface names change or are reordered the
-     * connection may be applied to the wrong interface.
-     */
     interfaceName: string | null
     /**
      * Interface name of the master device or UUID of the master connection.
@@ -5713,19 +5325,7 @@ interface SettingConnection {
      * service's D-Bus interface with the right privileges, or %TRUE if the
      * connection is read-only and cannot be modified.
      */
-    read_only: boolean
-    /**
-     * %FALSE if the connection can be modified using the provided settings
-     * service's D-Bus interface with the right privileges, or %TRUE if the
-     * connection is read-only and cannot be modified.
-     */
     readOnly: boolean
-    /**
-     * Setting name of the device type of this slave's master connection (eg,
-     * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
-     * slave.
-     */
-    slave_type: string | null
     /**
      * Setting name of the device type of this slave's master connection (eg,
      * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
@@ -5985,59 +5585,6 @@ module SettingDcb {
          * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
          * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
          */
-        app_fcoe_flags?: number | null
-        /**
-         * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
-         * (default) or %NM_SETTING_DCB_FCOE_MODE_VN2VN.
-         */
-        app_fcoe_mode?: string | null
-        /**
-         * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fcoe-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-         */
-        app_fcoe_priority?: number | null
-        /**
-         * Specifies the #NMSettingDcbFlags for the DCB FIP application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-         */
-        app_fip_flags?: number | null
-        /**
-         * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fip-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-         */
-        app_fip_priority?: number | null
-        /**
-         * Specifies the #NMSettingDcbFlags for the DCB iSCSI application.  Flags
-         * may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-         */
-        app_iscsi_flags?: number | null
-        /**
-         * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
-         * for default priority. Only used when the #NMSettingDcb:app-iscsi-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-         */
-        app_iscsi_priority?: number | null
-        /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Flow Control (PFC).
-         * Flags may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-         */
-        priority_flow_control_flags?: number | null
-        /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Groups.  Flags may be
-         * any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-         */
-        priority_group_flags?: number | null
-        /**
-         * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-         */
         appFcoeFlags?: number | null
         /**
          * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
@@ -6099,29 +5646,12 @@ interface SettingDcb {
      * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
      * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
      */
-    app_fcoe_flags: number
-    /**
-     * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
-     * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-     * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-     */
     appFcoeFlags: number
     /**
      * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
      * (default) or %NM_SETTING_DCB_FCOE_MODE_VN2VN.
      */
-    app_fcoe_mode: string | null
-    /**
-     * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
-     * (default) or %NM_SETTING_DCB_FCOE_MODE_VN2VN.
-     */
     appFcoeMode: string | null
-    /**
-     * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
-     * default priority.  Only used when the #NMSettingDcb:app-fcoe-flags
-     * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-     */
-    app_fcoe_priority: number
     /**
      * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
      * default priority.  Only used when the #NMSettingDcb:app-fcoe-flags
@@ -6133,19 +5663,7 @@ interface SettingDcb {
      * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
      * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
      */
-    app_fip_flags: number
-    /**
-     * Specifies the #NMSettingDcbFlags for the DCB FIP application.  Flags may
-     * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-     * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-     */
     appFipFlags: number
-    /**
-     * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
-     * default priority.  Only used when the #NMSettingDcb:app-fip-flags
-     * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-     */
-    app_fip_priority: number
     /**
      * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
      * default priority.  Only used when the #NMSettingDcb:app-fip-flags
@@ -6157,19 +5675,7 @@ interface SettingDcb {
      * may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
      * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
      */
-    app_iscsi_flags: number
-    /**
-     * Specifies the #NMSettingDcbFlags for the DCB iSCSI application.  Flags
-     * may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-     * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-     */
     appIscsiFlags: number
-    /**
-     * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
-     * for default priority. Only used when the #NMSettingDcb:app-iscsi-flags
-     * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
-     */
-    app_iscsi_priority: number
     /**
      * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
      * for default priority. Only used when the #NMSettingDcb:app-iscsi-flags
@@ -6181,19 +5687,7 @@ interface SettingDcb {
      * Flags may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
      * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
      */
-    priority_flow_control_flags: number
-    /**
-     * Specifies the #NMSettingDcbFlags for DCB Priority Flow Control (PFC).
-     * Flags may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-     * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-     */
     priorityFlowControlFlags: number
-    /**
-     * Specifies the #NMSettingDcbFlags for DCB Priority Groups.  Flags may be
-     * any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-     * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
-     */
-    priority_group_flags: number
     /**
      * Specifies the #NMSettingDcbFlags for DCB Priority Groups.  Flags may be
      * any combination of %NM_SETTING_DCB_FLAG_ENABLE,
@@ -6386,7 +5880,7 @@ module SettingGsm {
          * frequency band control.  Permitted values are those specified by
          * #NMSettingGsmNetworkBand.
          */
-        allowed_bands?: number | null
+        allowedBands?: number | null
         /**
          * The GPRS Access Point Name specifying the APN used when establishing a
          * data session with the GSM-based network.  The APN often determines how
@@ -6397,70 +5891,6 @@ module SettingGsm {
          * 03.60 Section 14.9.
          */
         apn?: string | null
-        /**
-         * When %TRUE, only connections to the home network will be allowed.
-         * Connections to roaming networks will not be made.
-         */
-        home_only?: boolean | null
-        /**
-         * The Network ID (GSM LAI format, ie MCC-MNC) to force specific network
-         * registration.  If the Network ID is specified, NetworkManager will
-         * attempt to force the device to register only on the specified network.
-         * This can be used to ensure that the device does not roam when direct
-         * roaming control of the device is not otherwise possible.
-         */
-        network_id?: string | null
-        /**
-         * Network preference to force the device to only use specific network
-         * technologies. The permitted values are %NM_SETTING_GSM_NETWORK_TYPE_ANY,
-         * %NM_SETTING_GSM_NETWORK_TYPE_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_4G, and
-         * %NM_SETTING_GSM_NETWORK_TYPE_4G.  Note that not all devices allow network
-         * preference control.
-         */
-        network_type?: number | null
-        /**
-         * Number to dial when establishing a PPP data session with the GSM-based
-         * mobile broadband network.  Many modems do not require PPP for connections
-         * to the mobile network and thus this property should be left blank, which
-         * allows NetworkManager to select the appropriate settings automatically.
-         */
-        number?: string | null
-        /**
-         * The password used to authenticate with the network, if required.  Many
-         * providers do not require a password, or accept any password.  But if a
-         * password is required, it is specified here.
-         */
-        password?: string | null
-        /**
-         * Flags indicating how to handle the #NMSettingGsm:password property.
-         */
-        password_flags?: number | null
-        /**
-         * If the SIM is locked with a PIN it must be unlocked before any other
-         * operations are requested.  Specify the PIN here to allow operation of the
-         * device.
-         */
-        pin?: string | null
-        /**
-         * Flags indicating how to handle the #NMSettingGsm:pin property.
-         */
-        pin_flags?: number | null
-        /**
-         * The username used to authenticate with the network, if required.  Many
-         * providers do not require a username, or accept any username.  But if a
-         * username is required, it is specified here.
-         */
-        username?: string | null
-        /**
-         * Bitfield of allowed frequency bands.  Note that not all devices allow
-         * frequency band control.  Permitted values are those specified by
-         * #NMSettingGsmNetworkBand.
-         */
-        allowedBands?: number | null
         /**
          * When %TRUE, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
@@ -6487,13 +5917,38 @@ module SettingGsm {
          */
         networkType?: number | null
         /**
+         * Number to dial when establishing a PPP data session with the GSM-based
+         * mobile broadband network.  Many modems do not require PPP for connections
+         * to the mobile network and thus this property should be left blank, which
+         * allows NetworkManager to select the appropriate settings automatically.
+         */
+        number?: string | null
+        /**
+         * The password used to authenticate with the network, if required.  Many
+         * providers do not require a password, or accept any password.  But if a
+         * password is required, it is specified here.
+         */
+        password?: string | null
+        /**
          * Flags indicating how to handle the #NMSettingGsm:password property.
          */
         passwordFlags?: number | null
         /**
+         * If the SIM is locked with a PIN it must be unlocked before any other
+         * operations are requested.  Specify the PIN here to allow operation of the
+         * device.
+         */
+        pin?: string | null
+        /**
          * Flags indicating how to handle the #NMSettingGsm:pin property.
          */
         pinFlags?: number | null
+        /**
+         * The username used to authenticate with the network, if required.  Many
+         * providers do not require a username, or accept any username.  But if a
+         * username is required, it is specified here.
+         */
+        username?: string | null
     }
 
 }
@@ -6502,12 +5957,6 @@ interface SettingGsm {
 
     // Own properties of NetworkManager-1.0.NetworkManager.SettingGsm
 
-    /**
-     * Bitfield of allowed frequency bands.  Note that not all devices allow
-     * frequency band control.  Permitted values are those specified by
-     * #NMSettingGsmNetworkBand.
-     */
-    allowed_bands: number
     /**
      * Bitfield of allowed frequency bands.  Note that not all devices allow
      * frequency band control.  Permitted values are those specified by
@@ -6528,11 +5977,6 @@ interface SettingGsm {
      * When %TRUE, only connections to the home network will be allowed.
      * Connections to roaming networks will not be made.
      */
-    home_only: boolean
-    /**
-     * When %TRUE, only connections to the home network will be allowed.
-     * Connections to roaming networks will not be made.
-     */
     homeOnly: boolean
     /**
      * The Network ID (GSM LAI format, ie MCC-MNC) to force specific network
@@ -6541,27 +5985,7 @@ interface SettingGsm {
      * This can be used to ensure that the device does not roam when direct
      * roaming control of the device is not otherwise possible.
      */
-    network_id: string | null
-    /**
-     * The Network ID (GSM LAI format, ie MCC-MNC) to force specific network
-     * registration.  If the Network ID is specified, NetworkManager will
-     * attempt to force the device to register only on the specified network.
-     * This can be used to ensure that the device does not roam when direct
-     * roaming control of the device is not otherwise possible.
-     */
     networkId: string | null
-    /**
-     * Network preference to force the device to only use specific network
-     * technologies. The permitted values are %NM_SETTING_GSM_NETWORK_TYPE_ANY,
-     * %NM_SETTING_GSM_NETWORK_TYPE_UMTS_HSPA,
-     * %NM_SETTING_GSM_NETWORK_TYPE_GPRS_EDGE,
-     * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_UMTS_HSPA,
-     * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_GPRS_EDGE,
-     * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_4G, and
-     * %NM_SETTING_GSM_NETWORK_TYPE_4G.  Note that not all devices allow network
-     * preference control.
-     */
-    network_type: number
     /**
      * Network preference to force the device to only use specific network
      * technologies. The permitted values are %NM_SETTING_GSM_NETWORK_TYPE_ANY,
@@ -6590,10 +6014,6 @@ interface SettingGsm {
     /**
      * Flags indicating how to handle the #NMSettingGsm:password property.
      */
-    password_flags: number
-    /**
-     * Flags indicating how to handle the #NMSettingGsm:password property.
-     */
     passwordFlags: number
     /**
      * If the SIM is locked with a PIN it must be unlocked before any other
@@ -6601,10 +6021,6 @@ interface SettingGsm {
      * device.
      */
     pin: string | null
-    /**
-     * Flags indicating how to handle the #NMSettingGsm:pin property.
-     */
-    pin_flags: number
     /**
      * Flags indicating how to handle the #NMSettingGsm:pin property.
      */
@@ -6715,83 +6131,6 @@ module SettingIP4Config {
          * A string sent to the DHCP server to identify the local machine which the
          * DHCP server may use to customize the DHCP lease and options.
          */
-        dhcp_client_id?: string | null
-        /**
-         * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
-         * specified name will be sent to the DHCP server when acquiring a lease.
-         */
-        dhcp_hostname?: string | null
-        /**
-         * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
-         * Some DHCP servers use this hostname to update DNS databases, essentially
-         * providing a static hostname for the computer.  If the
-         * #NMSettingIP4Config:dhcp-hostname property is empty and this property is
-         * %TRUE, the current persistent hostname of the computer is sent.
-         */
-        dhcp_send_hostname?: boolean | null
-        /**
-         * Number of seconds after which the unfinished DHCP transaction fails
-         * or zero for default.
-         */
-        dhcp_timeout?: number | null
-        /**
-         * When the method is set to "auto" and this property to %TRUE,
-         * automatically configured nameservers and search domains are ignored and
-         * only nameservers and search domains specified in the
-         * #NMSettingIP4Config:dns and #NMSettingIP4Config:dns-search properties, if
-         * any, are used.
-         */
-        ignore_auto_dns?: boolean | null
-        /**
-         * When the method is set to "auto" and this property to %TRUE,
-         * automatically configured routes are ignored and only routes specified in
-         * the #NMSettingIP4Config:routes property, if any, are used.
-         */
-        ignore_auto_routes?: boolean | null
-        /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv4
-         * configuration times out.  Note that at least one IP configuration must
-         * succeed or overall network configuration will still fail.  For example,
-         * in IPv6-only networks, setting this property to %TRUE allows the overall
-         * network configuration to succeed if IPv4 configuration fails but IPv6
-         * configuration completes successfully.
-         */
-        may_fail?: boolean | null
-        /**
-         * IPv4 configuration method.  If "auto" is specified then the appropriate
-         * automatic method (DHCP, PPP, etc) is used for the interface and most
-         * other properties can be left unset.  If "link-local" is specified, then a
-         * link-local address in the 169.254/16 range will be assigned to the
-         * interface.  If "manual" is specified, static IP addressing is used and at
-         * least one IP address must be given in the "addresses" property.  If
-         * "shared" is specified (indicating that this connection will provide
-         * network access to other computers) then the interface is assigned an
-         * address in the 10.42.x.1/24 range and a DHCP and forwarding DNS server
-         * are started, and the interface is NAT-ed to the current default network
-         * connection.  "disabled" means IPv4 will not be used on this connection.
-         * This property must be set.
-         */
-        method?: string | null
-        /**
-         * If %TRUE, this connection will never be the default IPv4 connection,
-         * meaning it will never be assigned the default route by NetworkManager.
-         */
-        never_default?: boolean | null
-        /**
-         * The default metric for routes that don't explicitly specify a metric.
-         * The default value -1 means that the metric is chosen automatically
-         * based on the device type.
-         * The metric applies to dynamic routes, manual (static) routes that
-         * don't have an explicit metric setting, address prefix routes, and
-         * the default route.
-         * As the linux kernel accepts zero (0) as a valid metric, zero is
-         * a valid value.
-         */
-        route_metric?: number | null
-        /**
-         * A string sent to the DHCP server to identify the local machine which the
-         * DHCP server may use to customize the DHCP lease and options.
-         */
         dhcpClientId?: string | null
         /**
          * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
@@ -6835,6 +6174,21 @@ module SettingIP4Config {
          */
         mayFail?: boolean | null
         /**
+         * IPv4 configuration method.  If "auto" is specified then the appropriate
+         * automatic method (DHCP, PPP, etc) is used for the interface and most
+         * other properties can be left unset.  If "link-local" is specified, then a
+         * link-local address in the 169.254/16 range will be assigned to the
+         * interface.  If "manual" is specified, static IP addressing is used and at
+         * least one IP address must be given in the "addresses" property.  If
+         * "shared" is specified (indicating that this connection will provide
+         * network access to other computers) then the interface is assigned an
+         * address in the 10.42.x.1/24 range and a DHCP and forwarding DNS server
+         * are started, and the interface is NAT-ed to the current default network
+         * connection.  "disabled" means IPv4 will not be used on this connection.
+         * This property must be set.
+         */
+        method?: string | null
+        /**
          * If %TRUE, this connection will never be the default IPv4 connection,
          * meaning it will never be assigned the default route by NetworkManager.
          */
@@ -6862,17 +6216,7 @@ interface SettingIP4Config {
      * A string sent to the DHCP server to identify the local machine which the
      * DHCP server may use to customize the DHCP lease and options.
      */
-    dhcp_client_id: string | null
-    /**
-     * A string sent to the DHCP server to identify the local machine which the
-     * DHCP server may use to customize the DHCP lease and options.
-     */
     dhcpClientId: string | null
-    /**
-     * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
-     * specified name will be sent to the DHCP server when acquiring a lease.
-     */
-    dhcp_hostname: string | null
     /**
      * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
      * specified name will be sent to the DHCP server when acquiring a lease.
@@ -6885,33 +6229,12 @@ interface SettingIP4Config {
      * #NMSettingIP4Config:dhcp-hostname property is empty and this property is
      * %TRUE, the current persistent hostname of the computer is sent.
      */
-    dhcp_send_hostname: boolean
-    /**
-     * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
-     * Some DHCP servers use this hostname to update DNS databases, essentially
-     * providing a static hostname for the computer.  If the
-     * #NMSettingIP4Config:dhcp-hostname property is empty and this property is
-     * %TRUE, the current persistent hostname of the computer is sent.
-     */
     dhcpSendHostname: boolean
     /**
      * Number of seconds after which the unfinished DHCP transaction fails
      * or zero for default.
      */
-    dhcp_timeout: number
-    /**
-     * Number of seconds after which the unfinished DHCP transaction fails
-     * or zero for default.
-     */
     dhcpTimeout: number
-    /**
-     * When the method is set to "auto" and this property to %TRUE,
-     * automatically configured nameservers and search domains are ignored and
-     * only nameservers and search domains specified in the
-     * #NMSettingIP4Config:dns and #NMSettingIP4Config:dns-search properties, if
-     * any, are used.
-     */
-    ignore_auto_dns: boolean
     /**
      * When the method is set to "auto" and this property to %TRUE,
      * automatically configured nameservers and search domains are ignored and
@@ -6925,22 +6248,7 @@ interface SettingIP4Config {
      * automatically configured routes are ignored and only routes specified in
      * the #NMSettingIP4Config:routes property, if any, are used.
      */
-    ignore_auto_routes: boolean
-    /**
-     * When the method is set to "auto" and this property to %TRUE,
-     * automatically configured routes are ignored and only routes specified in
-     * the #NMSettingIP4Config:routes property, if any, are used.
-     */
     ignoreAutoRoutes: boolean
-    /**
-     * If %TRUE, allow overall network configuration to proceed even if IPv4
-     * configuration times out.  Note that at least one IP configuration must
-     * succeed or overall network configuration will still fail.  For example,
-     * in IPv6-only networks, setting this property to %TRUE allows the overall
-     * network configuration to succeed if IPv4 configuration fails but IPv6
-     * configuration completes successfully.
-     */
-    may_fail: boolean
     /**
      * If %TRUE, allow overall network configuration to proceed even if IPv4
      * configuration times out.  Note that at least one IP configuration must
@@ -6969,23 +6277,7 @@ interface SettingIP4Config {
      * If %TRUE, this connection will never be the default IPv4 connection,
      * meaning it will never be assigned the default route by NetworkManager.
      */
-    never_default: boolean
-    /**
-     * If %TRUE, this connection will never be the default IPv4 connection,
-     * meaning it will never be assigned the default route by NetworkManager.
-     */
     neverDefault: boolean
-    /**
-     * The default metric for routes that don't explicitly specify a metric.
-     * The default value -1 means that the metric is chosen automatically
-     * based on the device type.
-     * The metric applies to dynamic routes, manual (static) routes that
-     * don't have an explicit metric setting, address prefix routes, and
-     * the default route.
-     * As the linux kernel accepts zero (0) as a valid metric, zero is
-     * a valid value.
-     */
-    route_metric: number
     /**
      * The default metric for routes that don't explicitly specify a metric.
      * The default value -1 means that the metric is chosen automatically
@@ -7232,74 +6524,6 @@ module SettingIP6Config {
          * The specified name will be sent to the DHCP server when acquiring a
          * lease.
          */
-        dhcp_hostname?: string | null
-        /**
-         * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured nameservers and search domains are
-         * ignored and only nameservers and search domains specified in the
-         * #NMSettingIP6Config:dns and #NMSettingIP6Config:dns-search properties, if
-         * any, are used.
-         */
-        ignore_auto_dns?: boolean | null
-        /**
-         * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured routes are ignored and only routes
-         * specified in the #NMSettingIP6Config:routes property, if any, are used.
-         */
-        ignore_auto_routes?: boolean | null
-        /**
-         * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
-         * enabled, it makes the kernel generate a temporary IPv6 address in
-         * addition to the public one generated from MAC address via modified
-         * EUI-64.  This enhances privacy, but could cause problems in some
-         * applications, on the other hand.  The permitted values are: 0: disabled,
-         * 1: enabled (prefer public address), 2: enabled (prefer temporary
-         * addresses).
-         */
-        ip6_privacy?: number | null
-        /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv6
-         * configuration times out.  Note that at least one IP configuration must
-         * succeed or overall network configuration will still fail.  For example,
-         * in IPv4-only networks, setting this property to %TRUE allows the overall
-         * network configuration to succeed if IPv6 configuration fails but IPv4
-         * configuration completes successfully.
-         */
-        may_fail?: boolean | null
-        /**
-         * IPv6 configuration method.  If "auto" is specified then the appropriate
-         * automatic method (PPP, router advertisement, etc) is used for the device
-         * and most other properties can be left unset.  To force the use of DHCP
-         * only, specify "dhcp"; this method is only valid for Ethernet- based
-         * hardware.  If "link-local" is specified, then an IPv6 link-local address
-         * will be assigned to the interface.  If "manual" is specified, static IP
-         * addressing is used and at least one IP address must be given in the
-         * "addresses" property.  If "ignore" is specified, IPv6 configuration is
-         * not done. This property must be set.  Note: the "shared" method is not
-         * yet supported.
-         */
-        method?: string | null
-        /**
-         * If %TRUE, this connection will never be the default IPv6 connection,
-         * meaning it will never be assigned the default IPv6 route by
-         * NetworkManager.
-         */
-        never_default?: boolean | null
-        /**
-         * The default metric for routes that don't explicitly specify a metric.
-         * The default value -1 means that the metric is chosen automatically
-         * based on the device type.
-         * The metric applies to dynamic routes, manual (static) routes that
-         * don't have an explicit metric setting, address prefix routes, and
-         * the default route.
-         * As the linux kernel replaces zero (0) by 1024 (user-default), setting
-         * this property to 0 means effectively setting it to 1024.
-         */
-        route_metric?: number | null
-        /**
-         * The specified name will be sent to the DHCP server when acquiring a
-         * lease.
-         */
         dhcpHostname?: string | null
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
@@ -7335,6 +6559,19 @@ module SettingIP6Config {
          */
         mayFail?: boolean | null
         /**
+         * IPv6 configuration method.  If "auto" is specified then the appropriate
+         * automatic method (PPP, router advertisement, etc) is used for the device
+         * and most other properties can be left unset.  To force the use of DHCP
+         * only, specify "dhcp"; this method is only valid for Ethernet- based
+         * hardware.  If "link-local" is specified, then an IPv6 link-local address
+         * will be assigned to the interface.  If "manual" is specified, static IP
+         * addressing is used and at least one IP address must be given in the
+         * "addresses" property.  If "ignore" is specified, IPv6 configuration is
+         * not done. This property must be set.  Note: the "shared" method is not
+         * yet supported.
+         */
+        method?: string | null
+        /**
          * If %TRUE, this connection will never be the default IPv6 connection,
          * meaning it will never be assigned the default IPv6 route by
          * NetworkManager.
@@ -7363,11 +6600,6 @@ interface SettingIP6Config {
      * The specified name will be sent to the DHCP server when acquiring a
      * lease.
      */
-    dhcp_hostname: string | null
-    /**
-     * The specified name will be sent to the DHCP server when acquiring a
-     * lease.
-     */
     dhcpHostname: string | null
     /**
      * When the method is set to "auto" or "dhcp" and this property is set to
@@ -7376,21 +6608,7 @@ interface SettingIP6Config {
      * #NMSettingIP6Config:dns and #NMSettingIP6Config:dns-search properties, if
      * any, are used.
      */
-    ignore_auto_dns: boolean
-    /**
-     * When the method is set to "auto" or "dhcp" and this property is set to
-     * %TRUE, automatically configured nameservers and search domains are
-     * ignored and only nameservers and search domains specified in the
-     * #NMSettingIP6Config:dns and #NMSettingIP6Config:dns-search properties, if
-     * any, are used.
-     */
     ignoreAutoDns: boolean
-    /**
-     * When the method is set to "auto" or "dhcp" and this property is set to
-     * %TRUE, automatically configured routes are ignored and only routes
-     * specified in the #NMSettingIP6Config:routes property, if any, are used.
-     */
-    ignore_auto_routes: boolean
     /**
      * When the method is set to "auto" or "dhcp" and this property is set to
      * %TRUE, automatically configured routes are ignored and only routes
@@ -7406,26 +6624,7 @@ interface SettingIP6Config {
      * 1: enabled (prefer public address), 2: enabled (prefer temporary
      * addresses).
      */
-    ip6_privacy: number
-    /**
-     * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
-     * enabled, it makes the kernel generate a temporary IPv6 address in
-     * addition to the public one generated from MAC address via modified
-     * EUI-64.  This enhances privacy, but could cause problems in some
-     * applications, on the other hand.  The permitted values are: 0: disabled,
-     * 1: enabled (prefer public address), 2: enabled (prefer temporary
-     * addresses).
-     */
     ip6Privacy: number
-    /**
-     * If %TRUE, allow overall network configuration to proceed even if IPv6
-     * configuration times out.  Note that at least one IP configuration must
-     * succeed or overall network configuration will still fail.  For example,
-     * in IPv4-only networks, setting this property to %TRUE allows the overall
-     * network configuration to succeed if IPv6 configuration fails but IPv4
-     * configuration completes successfully.
-     */
-    may_fail: boolean
     /**
      * If %TRUE, allow overall network configuration to proceed even if IPv6
      * configuration times out.  Note that at least one IP configuration must
@@ -7453,24 +6652,7 @@ interface SettingIP6Config {
      * meaning it will never be assigned the default IPv6 route by
      * NetworkManager.
      */
-    never_default: boolean
-    /**
-     * If %TRUE, this connection will never be the default IPv6 connection,
-     * meaning it will never be assigned the default IPv6 route by
-     * NetworkManager.
-     */
     neverDefault: boolean
-    /**
-     * The default metric for routes that don't explicitly specify a metric.
-     * The default value -1 means that the metric is chosen automatically
-     * based on the device type.
-     * The metric applies to dynamic routes, manual (static) routes that
-     * don't have an explicit metric setting, address prefix routes, and
-     * the default route.
-     * As the linux kernel replaces zero (0) by 1024 (user-default), setting
-     * this property to 0 means effectively setting it to 1024.
-     */
-    route_metric: number
     /**
      * The default metric for routes that don't explicitly specify a metric.
      * The default value -1 means that the metric is chosen automatically
@@ -7706,7 +6888,7 @@ module SettingInfiniband {
          * unsigned integer, whose high bit is set if it is a "full membership"
          * P_Key.
          */
-        p_key?: number | null
+        pKey?: number | null
         /**
          * The interface name of the parent device of this device. Normally %NULL,
          * but if the #NMSettingInfiniband:p_key property is set, then you must
@@ -7714,18 +6896,6 @@ module SettingInfiniband {
          * #NMSettingInfiniband:mac-address.
          */
         parent?: string | null
-        /**
-         * The IP-over-InfiniBand transport mode. Either "datagram" or
-         * "connected".
-         */
-        transport_mode?: string | null
-        /**
-         * The InfiniBand P_Key to use for this device. A value of -1 means to use
-         * the default P_Key (aka "the P_Key at index 0").  Otherwise it is a 16-bit
-         * unsigned integer, whose high bit is set if it is a "full membership"
-         * P_Key.
-         */
-        pKey?: number | null
         /**
          * The IP-over-InfiniBand transport mode. Either "datagram" or
          * "connected".
@@ -7750,19 +6920,7 @@ interface SettingInfiniband {
      * unsigned integer, whose high bit is set if it is a "full membership"
      * P_Key.
      */
-    p_key: number
-    /**
-     * The InfiniBand P_Key to use for this device. A value of -1 means to use
-     * the default P_Key (aka "the P_Key at index 0").  Otherwise it is a 16-bit
-     * unsigned integer, whose high bit is set if it is a "full membership"
-     * P_Key.
-     */
     pKey: number
-    /**
-     * The IP-over-InfiniBand transport mode. Either "datagram" or
-     * "connected".
-     */
-    transport_mode: string | null
     /**
      * The IP-over-InfiniBand transport mode. Either "datagram" or
      * "connected".
@@ -7941,87 +7099,6 @@ module SettingPPP {
          * peer.  The "lcp-echo-interval" property must also be set to a non-zero
          * value if this property is used.
          */
-        lcp_echo_failure?: number | null
-        /**
-         * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
-         * every n seconds (where n is the specified value).  Note that some PPP
-         * peers will respond to echo requests and some will not, and it is not
-         * possible to autodetect this.
-         */
-        lcp_echo_interval?: number | null
-        /**
-         * If %TRUE, stateful MPPE is used.  See pppd documentation for more
-         * information on stateful MPPE.
-         */
-        mppe_stateful?: boolean | null
-        /**
-         * If non-zero, instruct pppd to request that the peer send packets no
-         * larger than the specified size.  If non-zero, the MRU should be between
-         * 128 and 16384.
-         */
-        mru?: number | null
-        /**
-         * If non-zero, instruct pppd to send packets no larger than the specified
-         * size.
-         */
-        mtu?: number | null
-        /**
-         * If %TRUE, Van Jacobsen TCP header compression will not be requested.
-         */
-        no_vj_comp?: boolean | null
-        /**
-         * If %TRUE, do not require the other side (usually the PPP server) to
-         * authenticate itself to the client.  If %FALSE, require authentication
-         * from the remote side.  In almost all cases, this should be %TRUE.
-         */
-        noauth?: boolean | null
-        /**
-         * If %TRUE, BSD compression will not be requested.
-         */
-        nobsdcomp?: boolean | null
-        /**
-         * If %TRUE, "deflate" compression will not be requested.
-         */
-        nodeflate?: boolean | null
-        /**
-         * If %TRUE, the CHAP authentication method will not be used.
-         */
-        refuse_chap?: boolean | null
-        /**
-         * If %TRUE, the EAP authentication method will not be used.
-         */
-        refuse_eap?: boolean | null
-        /**
-         * If %TRUE, the MSCHAP authentication method will not be used.
-         */
-        refuse_mschap?: boolean | null
-        /**
-         * If %TRUE, the MSCHAPv2 authentication method will not be used.
-         */
-        refuse_mschapv2?: boolean | null
-        /**
-         * If %TRUE, the PAP authentication method will not be used.
-         */
-        refuse_pap?: boolean | null
-        /**
-         * If %TRUE, MPPE (Microsoft Point-to-Point Encryption) will be required for
-         * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
-         * session will fail.  Note that MPPE is not used on mobile broadband
-         * connections.
-         */
-        require_mppe?: boolean | null
-        /**
-         * If %TRUE, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
-         * required for the PPP session, and the "require-mppe" property must also
-         * be set to %TRUE.  If 128-bit MPPE is not available the session will fail.
-         */
-        require_mppe_128?: boolean | null
-        /**
-         * If non-zero, instruct pppd to presume the connection to the peer has
-         * failed if the specified number of LCP echo-requests go unanswered by the
-         * peer.  The "lcp-echo-interval" property must also be set to a non-zero
-         * value if this property is used.
-         */
         lcpEchoFailure?: number | null
         /**
          * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
@@ -8036,9 +7113,34 @@ module SettingPPP {
          */
         mppeStateful?: boolean | null
         /**
+         * If non-zero, instruct pppd to request that the peer send packets no
+         * larger than the specified size.  If non-zero, the MRU should be between
+         * 128 and 16384.
+         */
+        mru?: number | null
+        /**
+         * If non-zero, instruct pppd to send packets no larger than the specified
+         * size.
+         */
+        mtu?: number | null
+        /**
          * If %TRUE, Van Jacobsen TCP header compression will not be requested.
          */
         noVjComp?: boolean | null
+        /**
+         * If %TRUE, do not require the other side (usually the PPP server) to
+         * authenticate itself to the client.  If %FALSE, require authentication
+         * from the remote side.  In almost all cases, this should be %TRUE.
+         */
+        noauth?: boolean | null
+        /**
+         * If %TRUE, BSD compression will not be requested.
+         */
+        nobsdcomp?: boolean | null
+        /**
+         * If %TRUE, "deflate" compression will not be requested.
+         */
+        nodeflate?: boolean | null
         /**
          * If %TRUE, the CHAP authentication method will not be used.
          */
@@ -8098,13 +7200,6 @@ interface SettingPPP {
      * peer.  The "lcp-echo-interval" property must also be set to a non-zero
      * value if this property is used.
      */
-    lcp_echo_failure: number
-    /**
-     * If non-zero, instruct pppd to presume the connection to the peer has
-     * failed if the specified number of LCP echo-requests go unanswered by the
-     * peer.  The "lcp-echo-interval" property must also be set to a non-zero
-     * value if this property is used.
-     */
     lcpEchoFailure: number
     /**
      * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
@@ -8112,19 +7207,7 @@ interface SettingPPP {
      * peers will respond to echo requests and some will not, and it is not
      * possible to autodetect this.
      */
-    lcp_echo_interval: number
-    /**
-     * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
-     * every n seconds (where n is the specified value).  Note that some PPP
-     * peers will respond to echo requests and some will not, and it is not
-     * possible to autodetect this.
-     */
     lcpEchoInterval: number
-    /**
-     * If %TRUE, stateful MPPE is used.  See pppd documentation for more
-     * information on stateful MPPE.
-     */
-    mppe_stateful: boolean
     /**
      * If %TRUE, stateful MPPE is used.  See pppd documentation for more
      * information on stateful MPPE.
@@ -8141,10 +7224,6 @@ interface SettingPPP {
      * size.
      */
     mtu: number
-    /**
-     * If %TRUE, Van Jacobsen TCP header compression will not be requested.
-     */
-    no_vj_comp: boolean
     /**
      * If %TRUE, Van Jacobsen TCP header compression will not be requested.
      */
@@ -8166,15 +7245,7 @@ interface SettingPPP {
     /**
      * If %TRUE, the CHAP authentication method will not be used.
      */
-    refuse_chap: boolean
-    /**
-     * If %TRUE, the CHAP authentication method will not be used.
-     */
     refuseChap: boolean
-    /**
-     * If %TRUE, the EAP authentication method will not be used.
-     */
-    refuse_eap: boolean
     /**
      * If %TRUE, the EAP authentication method will not be used.
      */
@@ -8182,23 +7253,11 @@ interface SettingPPP {
     /**
      * If %TRUE, the MSCHAP authentication method will not be used.
      */
-    refuse_mschap: boolean
-    /**
-     * If %TRUE, the MSCHAP authentication method will not be used.
-     */
     refuseMschap: boolean
     /**
      * If %TRUE, the MSCHAPv2 authentication method will not be used.
      */
-    refuse_mschapv2: boolean
-    /**
-     * If %TRUE, the MSCHAPv2 authentication method will not be used.
-     */
     refuseMschapv2: boolean
-    /**
-     * If %TRUE, the PAP authentication method will not be used.
-     */
-    refuse_pap: boolean
     /**
      * If %TRUE, the PAP authentication method will not be used.
      */
@@ -8209,20 +7268,7 @@ interface SettingPPP {
      * session will fail.  Note that MPPE is not used on mobile broadband
      * connections.
      */
-    require_mppe: boolean
-    /**
-     * If %TRUE, MPPE (Microsoft Point-to-Point Encryption) will be required for
-     * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
-     * session will fail.  Note that MPPE is not used on mobile broadband
-     * connections.
-     */
     requireMppe: boolean
-    /**
-     * If %TRUE, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
-     * required for the PPP session, and the "require-mppe" property must also
-     * be set to %TRUE.  If 128-bit MPPE is not available the session will fail.
-     */
-    require_mppe_128: boolean
     /**
      * If %TRUE, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
      * required for the PPP session, and the "require-mppe" property must also
@@ -8360,7 +7406,7 @@ module SettingPPPOE {
         /**
          * Flags indicating how to handle the #NMSettingPPPOE:password property.
          */
-        password_flags?: number | null
+        passwordFlags?: number | null
         /**
          * If specified, instruct PPPoE to only initiate sessions with access
          * concentrators that provide the specified service.  For most providers,
@@ -8372,10 +7418,6 @@ module SettingPPPOE {
          * Username used to authenticate with the PPPoE service.
          */
         username?: string | null
-        /**
-         * Flags indicating how to handle the #NMSettingPPPOE:password property.
-         */
-        passwordFlags?: number | null
     }
 
 }
@@ -8388,10 +7430,6 @@ interface SettingPPPOE {
      * Password used to authenticate with the PPPoE service.
      */
     password: string | null
-    /**
-     * Flags indicating how to handle the #NMSettingPPPOE:password property.
-     */
-    password_flags: number
     /**
      * Flags indicating how to handle the #NMSettingPPPOE:password property.
      */
@@ -8493,16 +7531,12 @@ module SettingSerial {
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
-        send_delay?: number | null
+        sendDelay?: number | null
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
          * The 1 in "8n1" for example.
          */
         stopbits?: number | null
-        /**
-         * Time to delay between each byte sent to the modem, in microseconds.
-         */
-        sendDelay?: number | null
     }
 
 }
@@ -8526,10 +7560,6 @@ interface SettingSerial {
      * odd parity, or 'n' for no parity.
      */
     parity: number
-    /**
-     * Time to delay between each byte sent to the modem, in microseconds.
-     */
-    send_delay: number
     /**
      * Time to delay between each byte sent to the modem, in microseconds.
      */
@@ -8621,10 +7651,6 @@ module SettingTeam {
         /**
          * The name of the virtual in-kernel team network interface
          */
-        interface_name?: string | null
-        /**
-         * The name of the virtual in-kernel team network interface
-         */
         interfaceName?: string | null
     }
 
@@ -8641,10 +7667,6 @@ interface SettingTeam {
      * configuration is used.  See man teamd.conf for the format details.
      */
     config: string | null
-    /**
-     * The name of the virtual in-kernel team network interface
-     */
-    interface_name: string | null
     /**
      * The name of the virtual in-kernel team network interface
      */
@@ -8798,21 +7820,6 @@ module SettingVPN {
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
          * plugin.
          */
-        service_type?: string | null
-        /**
-         * If the VPN connection requires a user name for authentication, that name
-         * should be provided here.  If the connection is available to more than one
-         * user, and the VPN requires each user to supply a different name, then
-         * leave this property empty.  If this property is empty, NetworkManager
-         * will automatically supply the username of the user which requested the
-         * VPN connection.
-         */
-        user_name?: string | null
-        /**
-         * D-Bus service name of the VPN plugin that this setting uses to connect to
-         * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
-         * plugin.
-         */
         serviceType?: string | null
         /**
          * If the VPN connection requires a user name for authentication, that name
@@ -8842,22 +7849,7 @@ interface SettingVPN {
      * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
      * plugin.
      */
-    service_type: string | null
-    /**
-     * D-Bus service name of the VPN plugin that this setting uses to connect to
-     * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
-     * plugin.
-     */
     serviceType: string | null
-    /**
-     * If the VPN connection requires a user name for authentication, that name
-     * should be provided here.  If the connection is available to more than one
-     * user, and the VPN requires each user to supply a different name, then
-     * leave this property empty.  If this property is empty, NetworkManager
-     * will automatically supply the username of the user which requested the
-     * VPN connection.
-     */
-    user_name: string | null
     /**
      * If the VPN connection requires a user name for authentication, that name
      * should be provided here.  If the connection is available to more than one
@@ -9024,7 +8016,7 @@ module SettingVlan {
          * parent interface may be given by the #NMSettingVlan:parent property or by
          * the #NMSettingWired:mac-address property of an #NMSettingWired setting.
          */
-        interface_name?: string | null
+        interfaceName?: string | null
         /**
          * If given, specifies the parent interface name or parent connection UUID
          * from which this VLAN interface should be created.  If this property is
@@ -9032,14 +8024,6 @@ module SettingVlan {
          * with a #NMSettingWired:mac-address property.
          */
         parent?: string | null
-        /**
-         * If given, specifies the kernel name of the VLAN interface. If not given,
-         * a default name will be constructed from the interface described by the
-         * parent interface and the #NMSettingVlan:id property, eg "eth2.1". The
-         * parent interface may be given by the #NMSettingVlan:parent property or by
-         * the #NMSettingWired:mac-address property of an #NMSettingWired setting.
-         */
-        interfaceName?: string | null
     }
 
 }
@@ -9062,14 +8046,6 @@ interface SettingVlan {
      * be assigned.
      */
     id: number
-    /**
-     * If given, specifies the kernel name of the VLAN interface. If not given,
-     * a default name will be constructed from the interface described by the
-     * parent interface and the #NMSettingVlan:id property, eg "eth2.1". The
-     * parent interface may be given by the #NMSettingVlan:parent property or by
-     * the #NMSettingWired:mac-address property of an #NMSettingWired setting.
-     */
-    interface_name: string | null
     /**
      * If given, specifies the kernel name of the VLAN interface. If not given,
      * a default name will be constructed from the interface described by the
@@ -9222,11 +8198,6 @@ module SettingWimax {
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
          */
-        network_name?: string | null
-        /**
-         * Network Service Provider (NSP) name of the WiMAX network this connection
-         * should use.
-         */
         networkName?: string | null
     }
 
@@ -9236,11 +8207,6 @@ interface SettingWimax {
 
     // Own properties of NetworkManager-1.0.NetworkManager.SettingWimax
 
-    /**
-     * Network Service Provider (NSP) name of the WiMAX network this connection
-     * should use.
-     */
-    network_name: string | null
     /**
      * Network Service Provider (NSP) name of the WiMAX network this connection
      * should use.
@@ -9318,7 +8284,7 @@ module SettingWired {
          * %FALSE, do not allow auto-negotiation, in which case the "speed" and
          * "duplex" properties should be set.
          */
-        auto_negotiate?: boolean | null
+        autoNegotiate?: boolean | null
         /**
          * If specified, request that the device only use the specified duplex mode.
          * Either "half" or "full".
@@ -9340,23 +8306,12 @@ module SettingWired {
          * s390 network device type; one of "qeth", "lcs", or "ctc", representing
          * the different types of virtual network devices available on s390 systems.
          */
-        s390_nettype?: string | null
+        s390Nettype?: string | null
         /**
          * If non-zero, request that the device use only the specified speed.  In
          * Mbit/s, ie 100 == 100Mbit/s.
          */
         speed?: number | null
-        /**
-         * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
-         * %FALSE, do not allow auto-negotiation, in which case the "speed" and
-         * "duplex" properties should be set.
-         */
-        autoNegotiate?: boolean | null
-        /**
-         * s390 network device type; one of "qeth", "lcs", or "ctc", representing
-         * the different types of virtual network devices available on s390 systems.
-         */
-        s390Nettype?: string | null
     }
 
 }
@@ -9365,12 +8320,6 @@ interface SettingWired {
 
     // Own properties of NetworkManager-1.0.NetworkManager.SettingWired
 
-    /**
-     * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
-     * %FALSE, do not allow auto-negotiation, in which case the "speed" and
-     * "duplex" properties should be set.
-     */
-    auto_negotiate: boolean
     /**
      * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
      * %FALSE, do not allow auto-negotiation, in which case the "speed" and
@@ -9394,11 +8343,6 @@ interface SettingWired {
      * If the device supports only one port type, this setting is ignored.
      */
     port: string | null
-    /**
-     * s390 network device type; one of "qeth", "lcs", or "ctc", representing
-     * the different types of virtual network devices available on s390 systems.
-     */
-    s390_nettype: string | null
     /**
      * s390 network device type; one of "qeth", "lcs", or "ctc", representing
      * the different types of virtual network devices available on s390 systems.
@@ -9629,12 +8573,6 @@ module SettingWireless {
          * Units are dBm.  This property is highly driver dependent and not all
          * devices support setting a static transmit power.
          */
-        tx_power?: number | null
-        /**
-         * If non-zero, directs the device to use the specified transmit power.
-         * Units are dBm.  This property is highly driver dependent and not all
-         * devices support setting a static transmit power.
-         */
         txPower?: number | null
     }
 
@@ -9699,12 +8637,6 @@ interface SettingWireless {
      * contains a valid #NMSettingWirelessSecurity setting.
      */
     security: string | null
-    /**
-     * If non-zero, directs the device to use the specified transmit power.
-     * Units are dBm.  This property is highly driver dependent and not all
-     * devices support setting a static transmit power.
-     */
-    tx_power: number
     /**
      * If non-zero, directs the device to use the specified transmit power.
      * Units are dBm.  This property is highly driver dependent and not all
@@ -9860,92 +8792,6 @@ module SettingWirelessSecurity {
          * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
          * "leap-username" and "leap-password" properties must be specified.
          */
-        auth_alg?: string | null
-        /**
-         * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
-         * (Dynamic WEP), "wpa-none" (Ad-Hoc WPA-PSK), "wpa-psk" (infrastructure
-         * WPA-PSK), or "wpa-eap" (WPA-Enterprise).  This property must be set for
-         * any Wi-Fi connection that uses security.
-         */
-        key_mgmt?: string | null
-        /**
-         * The login password for legacy LEAP connections (ie, key-mgmt =
-         * "ieee8021x" and auth-alg = "leap").
-         */
-        leap_password?: string | null
-        /**
-         * Flags indicating how to handle the
-         * #NMSettingWirelessSecurity:leap-password property.
-         */
-        leap_password_flags?: number | null
-        /**
-         * The login username for legacy LEAP connections (ie, key-mgmt =
-         * "ieee8021x" and auth-alg = "leap").
-         */
-        leap_username?: string | null
-        /**
-         * Pre-Shared-Key for WPA networks.  If the key is 64-characters long, it
-         * must contain only hexadecimal characters and is interpreted as a
-         * hexadecimal WPA key.  Otherwise, the key must be between 8 and 63 ASCII
-         * characters (as specified in the 802.11i standard) and is interpreted as a
-         * WPA passphrase, and is hashed to derive the actual WPA-PSK used when
-         * connecting to the Wi-Fi network.
-         */
-        psk?: string | null
-        /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
-         * property.
-         */
-        psk_flags?: number | null
-        /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:wep-key0,
-         * #NMSettingWirelessSecurity:wep-key1, #NMSettingWirelessSecurity:wep-key2,
-         * and #NMSettingWirelessSecurity:wep-key3 properties.
-         */
-        wep_key_flags?: number | null
-        /**
-         * Controls the interpretation of WEP keys.  Allowed values are
-         * %NM_WEP_KEY_TYPE_KEY, in which case the key is either a 10- or
-         * 26-character hexadecimal string, or a 5- or 13-character ASCII password;
-         * or %NM_WEP_KEY_TYPE_PASSPHRASE, in which case the passphrase is provided
-         * as a string and will be hashed using the de-facto MD5 method to derive
-         * the actual WEP key.
-         */
-        wep_key_type?: number | null
-        /**
-         * Index 0 WEP key.  This is the WEP key used in most networks.  See the
-         * "wep-key-type" property for a description of how this key is interpreted.
-         */
-        wep_key0?: string | null
-        /**
-         * Index 1 WEP key.  This WEP index is not used by most networks.  See the
-         * "wep-key-type" property for a description of how this key is interpreted.
-         */
-        wep_key1?: string | null
-        /**
-         * Index 2 WEP key.  This WEP index is not used by most networks.  See the
-         * "wep-key-type" property for a description of how this key is interpreted.
-         */
-        wep_key2?: string | null
-        /**
-         * Index 3 WEP key.  This WEP index is not used by most networks.  See the
-         * "wep-key-type" property for a description of how this key is interpreted.
-         */
-        wep_key3?: string | null
-        /**
-         * When static WEP is used (ie, key-mgmt = "none") and a non-default WEP key
-         * index is used by the AP, put that WEP key index here.  Valid values are 0
-         * (default key) through 3.  Note that some consumer access points (like the
-         * Linksys WRT54G) number the keys 1 - 4.
-         */
-        wep_tx_keyidx?: number | null
-        /**
-         * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
-         * 802.11 authentication algorithm required by the AP here.  One of "open"
-         * for Open System, "shared" for Shared Key, or "leap" for Cisco LEAP.  When
-         * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
-         * "leap-username" and "leap-password" properties must be specified.
-         */
         authAlg?: string | null
         /**
          * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
@@ -9969,6 +8815,15 @@ module SettingWirelessSecurity {
          * "ieee8021x" and auth-alg = "leap").
          */
         leapUsername?: string | null
+        /**
+         * Pre-Shared-Key for WPA networks.  If the key is 64-characters long, it
+         * must contain only hexadecimal characters and is interpreted as a
+         * hexadecimal WPA key.  Otherwise, the key must be between 8 and 63 ASCII
+         * characters (as specified in the 802.11i standard) and is interpreted as a
+         * WPA passphrase, and is hashed to derive the actual WPA-PSK used when
+         * connecting to the Wi-Fi network.
+         */
+        psk?: string | null
         /**
          * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
          * property.
@@ -10031,22 +8886,7 @@ interface SettingWirelessSecurity {
      * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
      * "leap-username" and "leap-password" properties must be specified.
      */
-    auth_alg: string | null
-    /**
-     * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
-     * 802.11 authentication algorithm required by the AP here.  One of "open"
-     * for Open System, "shared" for Shared Key, or "leap" for Cisco LEAP.  When
-     * using Cisco LEAP (ie, key-mgmt = "ieee8021x" and auth-alg = "leap") the
-     * "leap-username" and "leap-password" properties must be specified.
-     */
     authAlg: string | null
-    /**
-     * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
-     * (Dynamic WEP), "wpa-none" (Ad-Hoc WPA-PSK), "wpa-psk" (infrastructure
-     * WPA-PSK), or "wpa-eap" (WPA-Enterprise).  This property must be set for
-     * any Wi-Fi connection that uses security.
-     */
-    key_mgmt: string | null
     /**
      * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
      * (Dynamic WEP), "wpa-none" (Ad-Hoc WPA-PSK), "wpa-psk" (infrastructure
@@ -10058,27 +8898,12 @@ interface SettingWirelessSecurity {
      * The login password for legacy LEAP connections (ie, key-mgmt =
      * "ieee8021x" and auth-alg = "leap").
      */
-    leap_password: string | null
-    /**
-     * The login password for legacy LEAP connections (ie, key-mgmt =
-     * "ieee8021x" and auth-alg = "leap").
-     */
     leapPassword: string | null
     /**
      * Flags indicating how to handle the
      * #NMSettingWirelessSecurity:leap-password property.
      */
-    leap_password_flags: number
-    /**
-     * Flags indicating how to handle the
-     * #NMSettingWirelessSecurity:leap-password property.
-     */
     leapPasswordFlags: number
-    /**
-     * The login username for legacy LEAP connections (ie, key-mgmt =
-     * "ieee8021x" and auth-alg = "leap").
-     */
-    leap_username: string | null
     /**
      * The login username for legacy LEAP connections (ie, key-mgmt =
      * "ieee8021x" and auth-alg = "leap").
@@ -10097,18 +8922,7 @@ interface SettingWirelessSecurity {
      * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
      * property.
      */
-    psk_flags: number
-    /**
-     * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
-     * property.
-     */
     pskFlags: number
-    /**
-     * Flags indicating how to handle the #NMSettingWirelessSecurity:wep-key0,
-     * #NMSettingWirelessSecurity:wep-key1, #NMSettingWirelessSecurity:wep-key2,
-     * and #NMSettingWirelessSecurity:wep-key3 properties.
-     */
-    wep_key_flags: number
     /**
      * Flags indicating how to handle the #NMSettingWirelessSecurity:wep-key0,
      * #NMSettingWirelessSecurity:wep-key1, #NMSettingWirelessSecurity:wep-key2,
@@ -10123,21 +8937,7 @@ interface SettingWirelessSecurity {
      * as a string and will be hashed using the de-facto MD5 method to derive
      * the actual WEP key.
      */
-    wep_key_type: number
-    /**
-     * Controls the interpretation of WEP keys.  Allowed values are
-     * %NM_WEP_KEY_TYPE_KEY, in which case the key is either a 10- or
-     * 26-character hexadecimal string, or a 5- or 13-character ASCII password;
-     * or %NM_WEP_KEY_TYPE_PASSPHRASE, in which case the passphrase is provided
-     * as a string and will be hashed using the de-facto MD5 method to derive
-     * the actual WEP key.
-     */
     wepKeyType: number
-    /**
-     * Index 0 WEP key.  This is the WEP key used in most networks.  See the
-     * "wep-key-type" property for a description of how this key is interpreted.
-     */
-    wep_key0: string | null
     /**
      * Index 0 WEP key.  This is the WEP key used in most networks.  See the
      * "wep-key-type" property for a description of how this key is interpreted.
@@ -10147,17 +8947,7 @@ interface SettingWirelessSecurity {
      * Index 1 WEP key.  This WEP index is not used by most networks.  See the
      * "wep-key-type" property for a description of how this key is interpreted.
      */
-    wep_key1: string | null
-    /**
-     * Index 1 WEP key.  This WEP index is not used by most networks.  See the
-     * "wep-key-type" property for a description of how this key is interpreted.
-     */
     wepKey1: string | null
-    /**
-     * Index 2 WEP key.  This WEP index is not used by most networks.  See the
-     * "wep-key-type" property for a description of how this key is interpreted.
-     */
-    wep_key2: string | null
     /**
      * Index 2 WEP key.  This WEP index is not used by most networks.  See the
      * "wep-key-type" property for a description of how this key is interpreted.
@@ -10167,19 +8957,7 @@ interface SettingWirelessSecurity {
      * Index 3 WEP key.  This WEP index is not used by most networks.  See the
      * "wep-key-type" property for a description of how this key is interpreted.
      */
-    wep_key3: string | null
-    /**
-     * Index 3 WEP key.  This WEP index is not used by most networks.  See the
-     * "wep-key-type" property for a description of how this key is interpreted.
-     */
     wepKey3: string | null
-    /**
-     * When static WEP is used (ie, key-mgmt = "none") and a non-default WEP key
-     * index is used by the AP, put that WEP key index here.  Valid values are 0
-     * (default key) through 3.  Note that some consumer access points (like the
-     * Linksys WRT54G) number the keys 1 - 4.
-     */
-    wep_tx_keyidx: number
     /**
      * When static WEP is used (ie, key-mgmt = "none") and a non-default WEP key
      * index is used by the AP, put that WEP key index here.  Valid values are 0

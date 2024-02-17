@@ -489,7 +489,7 @@ module WebRTCDTLSTransport {
 
         certificate?: string | null
         client?: boolean | null
-        sessionId?: number | null
+        session_id?: number | null
     }
 
 }
@@ -674,11 +674,11 @@ module WebRTCDataChannel {
 
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCDataChannel
 
-        bufferedAmountLowThreshold?: number | null
+        buffered_amount_low_threshold?: number | null
         id?: number | null
         label?: string | null
-        maxPacketLifetime?: number | null
-        maxRetransmits?: number | null
+        max_packet_lifetime?: number | null
+        max_retransmits?: number | null
         negotiated?: boolean | null
         ordered?: boolean | null
         priority?: WebRTCPriorityType | null
@@ -885,12 +885,12 @@ module WebRTCICE {
          * Maximum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          */
-        maxRtpPort?: number | null
+        max_rtp_port?: number | null
         /**
          * Minimum port for local rtp port range.
          * min-rtp-port must be <= max-rtp-port
          */
-        minRtpPort?: number | null
+        min_rtp_port?: number | null
     }
 
 }
@@ -1048,7 +1048,7 @@ module WebRTCICEStream {
 
         // Own constructor properties of GstWebRTC-1.0.GstWebRTC.WebRTCICEStream
 
-        streamId?: number | null
+        stream_id?: number | null
     }
 
 }
@@ -1498,7 +1498,7 @@ module WebRTCRTPTransceiver {
         /**
          * Caps representing the codec preferences.
          */
-        codecPreferences?: Gst.Caps | null
+        codec_preferences?: Gst.Caps | null
         /**
          * Direction of the transceiver.
          */

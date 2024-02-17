@@ -1,12 +1,15 @@
 {
     "name": "@girs/gjs",
-    "version": "3.2.7",
+    "version": "3.2.8",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
     "main": "gjs.js",
     "exports": {
-        "./ambient": "./ambient.d.ts",
+        "./ambient": {
+            "types": "./ambient.d.ts",
+            "default": "./ambient.js"
+        },
         "./gettext": {
             "import": {
                 "types": "./gettext.d.ts",
@@ -37,7 +40,10 @@
                 "default": "./cairo.cjs"
             }
         },
-        "./dom": "./dom.d.ts",
+        "./dom": {
+            "types": "./dom.d.ts",
+            "default": "./dom.js"
+        },
         ".": {
             "import": {
                 "types": "./gjs.d.ts",

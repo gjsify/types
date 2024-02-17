@@ -2070,10 +2070,9 @@ export module Framebuffer {
 
         // Own constructor properties of Cogl-13.Cogl.Framebuffer
 
-        driver_config?: any | null
+        driverConfig?: any | null
         height?: number | null
         width?: number | null
-        driverConfig?: any | null
     }
 
 }
@@ -2082,7 +2081,6 @@ export interface Framebuffer {
 
     // Own properties of Cogl-13.Cogl.Framebuffer
 
-    readonly driver_config: any
     readonly driverConfig: any
     height: number
     width: number

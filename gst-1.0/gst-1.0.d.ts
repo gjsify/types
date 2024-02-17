@@ -7477,22 +7477,6 @@ module Bin {
          * This should be used only if the bin subclass is modifying the state
          * of its children on its own.
          */
-        async_handling?: boolean | null
-        /**
-         * Forward all children messages, even those that would normally be filtered by
-         * the bin. This can be interesting when one wants to be notified of the EOS
-         * state of individual elements, for example.
-         * 
-         * The messages are converted to an ELEMENT message with the bin as the
-         * source. The structure of the message is named `GstBinForwarded` and contains
-         * a field named `message` that contains the original forwarded #GstMessage.
-         */
-        message_forward?: boolean | null
-        /**
-         * If set to %TRUE, the bin will handle asynchronous state changes.
-         * This should be used only if the bin subclass is modifying the state
-         * of its children on its own.
-         */
         asyncHandling?: boolean | null
         /**
          * Forward all children messages, even those that would normally be filtered by
@@ -7517,23 +7501,7 @@ interface Bin extends ChildProxy {
      * This should be used only if the bin subclass is modifying the state
      * of its children on its own.
      */
-    async_handling: boolean
-    /**
-     * If set to %TRUE, the bin will handle asynchronous state changes.
-     * This should be used only if the bin subclass is modifying the state
-     * of its children on its own.
-     */
     asyncHandling: boolean
-    /**
-     * Forward all children messages, even those that would normally be filtered by
-     * the bin. This can be interesting when one wants to be notified of the EOS
-     * state of individual elements, for example.
-     * 
-     * The messages are converted to an ELEMENT message with the bin as the
-     * source. The structure of the message is named `GstBinForwarded` and contains
-     * a field named `message` that contains the original forwarded #GstMessage.
-     */
-    message_forward: boolean
     /**
      * Forward all children messages, even those that would normally be filtered by
      * the bin. This can be interesting when one wants to be notified of the EOS
@@ -8514,15 +8482,6 @@ module Bus {
          * This property is used to create the child element buses
          * in #GstBin.
          */
-        enable_async?: boolean | null
-        /**
-         * Enables async message delivery support for bus watches,
-         * gst_bus_pop() and similar API. Without this only the
-         * synchronous message handlers are called.
-         * 
-         * This property is used to create the child element buses
-         * in #GstBin.
-         */
         enableAsync?: boolean | null
     }
 
@@ -8532,15 +8491,6 @@ interface Bus {
 
     // Own properties of Gst-1.0.Gst.Bus
 
-    /**
-     * Enables async message delivery support for bus watches,
-     * gst_bus_pop() and similar API. Without this only the
-     * synchronous message handlers are called.
-     * 
-     * This property is used to create the child element buses
-     * in #GstBin.
-     */
-    readonly enable_async: boolean
     /**
      * Enables async message delivery support for bus watches,
      * gst_bus_pop() and similar API. Without this only the
@@ -8973,8 +8923,6 @@ module Clock {
         // Own constructor properties of Gst-1.0.Gst.Clock
 
         timeout?: number | null
-        window_size?: number | null
-        window_threshold?: number | null
         windowSize?: number | null
         windowThreshold?: number | null
     }
@@ -8986,9 +8934,7 @@ interface Clock {
     // Own properties of Gst-1.0.Gst.Clock
 
     timeout: number
-    window_size: number
     windowSize: number
-    window_threshold: number
     windowThreshold: number
 
     // Own fields of Gst-1.0.Gst.Clock
@@ -9882,11 +9828,9 @@ module Device {
         // Own constructor properties of Gst-1.0.Gst.Device
 
         caps?: Caps | null
-        device_class?: string | null
-        display_name?: string | null
-        properties?: Structure | null
         deviceClass?: string | null
         displayName?: string | null
+        properties?: Structure | null
     }
 
 }
@@ -9896,9 +9840,7 @@ interface Device {
     // Own properties of Gst-1.0.Gst.Device
 
     readonly caps: Caps
-    readonly device_class: string | null
     readonly deviceClass: string | null
-    readonly display_name: string | null
     readonly displayName: string | null
     readonly properties: Structure
 
@@ -10081,7 +10023,6 @@ module DeviceMonitor {
 
         // Own constructor properties of Gst-1.0.Gst.DeviceMonitor
 
-        show_all?: boolean | null
         showAll?: boolean | null
     }
 
@@ -10091,7 +10032,6 @@ interface DeviceMonitor {
 
     // Own properties of Gst-1.0.Gst.DeviceMonitor
 
-    show_all: boolean
     showAll: boolean
 
     // Own fields of Gst-1.0.Gst.DeviceMonitor
@@ -14104,15 +14044,11 @@ module PadTemplate {
         /**
          * The name template of the pad template.
          */
-        name_template?: string | null
+        nameTemplate?: string | null
         /**
          * When the pad described by the pad template will become available.
          */
         presence?: PadPresence | null
-        /**
-         * The name template of the pad template.
-         */
-        nameTemplate?: string | null
     }
 
 }
@@ -14395,7 +14331,7 @@ module Pipeline {
          * pipeline's bus when going from READY to NULL state. Please see
          * gst_pipeline_set_auto_flush_bus() for more information on this option.
          */
-        auto_flush_bus?: boolean | null
+        autoFlushBus?: boolean | null
         /**
          * The expected delay needed for elements to spin up to the
          * PLAYING state expressed in nanoseconds.
@@ -14406,12 +14342,6 @@ module Pipeline {
          * Latency to configure on the pipeline. See gst_pipeline_set_latency().
          */
         latency?: number | null
-        /**
-         * Whether or not to automatically flush all messages on the
-         * pipeline's bus when going from READY to NULL state. Please see
-         * gst_pipeline_set_auto_flush_bus() for more information on this option.
-         */
-        autoFlushBus?: boolean | null
     }
 
 }
@@ -14420,12 +14350,6 @@ interface Pipeline extends ChildProxy {
 
     // Own properties of Gst-1.0.Gst.Pipeline
 
-    /**
-     * Whether or not to automatically flush all messages on the
-     * pipeline's bus when going from READY to NULL state. Please see
-     * gst_pipeline_set_auto_flush_bus() for more information on this option.
-     */
-    auto_flush_bus: boolean
     /**
      * Whether or not to automatically flush all messages on the
      * pipeline's bus when going from READY to NULL state. Please see
@@ -15770,20 +15694,6 @@ module Stream {
          * The #GstCaps of the #GstStream.
          */
         caps?: Caps | null
-        stream_flags?: StreamFlags | null
-        /**
-         * The unique identifier of the #GstStream. Can only be set at construction
-         * time.
-         */
-        stream_id?: string | null
-        /**
-         * The #GstStreamType of the #GstStream. Can only be set at construction time.
-         */
-        stream_type?: StreamType | null
-        /**
-         * The #GstTagList of the #GstStream.
-         */
-        tags?: TagList | null
         streamFlags?: StreamFlags | null
         /**
          * The unique identifier of the #GstStream. Can only be set at construction
@@ -15794,6 +15704,10 @@ module Stream {
          * The #GstStreamType of the #GstStream. Can only be set at construction time.
          */
         streamType?: StreamType | null
+        /**
+         * The #GstTagList of the #GstStream.
+         */
+        tags?: TagList | null
     }
 
 }
@@ -15806,17 +15720,12 @@ interface Stream {
      * The #GstCaps of the #GstStream.
      */
     caps: Caps
-    stream_flags: StreamFlags
     streamFlags: StreamFlags
     /**
      * The unique identifier of the #GstStream. Can only be set at construction
      * time.
      */
     readonly streamId: string | null
-    /**
-     * The #GstStreamType of the #GstStream. Can only be set at construction time.
-     */
-    stream_type: StreamType
     /**
      * The #GstStreamType of the #GstStream. Can only be set at construction time.
      */
@@ -16010,7 +15919,6 @@ module StreamCollection {
 
         // Own constructor properties of Gst-1.0.Gst.StreamCollection
 
-        upstream_id?: string | null
         upstreamId?: string | null
     }
 
@@ -16020,7 +15928,6 @@ interface StreamCollection {
 
     // Own properties of Gst-1.0.Gst.StreamCollection
 
-    upstream_id: string | null
     upstreamId: string | null
 
     // Owm methods of Gst-1.0.Gst.StreamCollection
@@ -16162,7 +16069,6 @@ module SystemClock {
 
         // Own constructor properties of Gst-1.0.Gst.SystemClock
 
-        clock_type?: ClockType | null
         clockType?: ClockType | null
     }
 
@@ -16172,7 +16078,6 @@ interface SystemClock {
 
     // Own properties of Gst-1.0.Gst.SystemClock
 
-    clock_type: ClockType
     clockType: ClockType
 
     // Conflicting properties

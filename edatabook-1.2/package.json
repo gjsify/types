@@ -1,13 +1,19 @@
 {
     "name": "@girs/edatabook-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for EDataBook-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edatabook-1.2.js",
     "main": "edatabook-1.2.js",
     "exports": {
-        "./ambient": "./edatabook-1.2-ambient.d.ts",
-        "./import": "./edatabook-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./edatabook-1.2-ambient.d.ts",
+            "default": "./edatabook-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./edatabook-1.2-import.d.ts",
+            "default": "./edatabook-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./edatabook-1.2.d.ts",

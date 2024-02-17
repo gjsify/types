@@ -114,14 +114,12 @@ export module MixerCard {
 
         // Own constructor properties of Gvc-1.0.Gvc.MixerCard
 
-        icon_name?: string | null
+        iconName?: string | null
         id?: number | null
         index?: number | null
         name?: string | null
-        pa_context?: any | null
-        profile?: string | null
-        iconName?: string | null
         paContext?: any | null
+        profile?: string | null
     }
 
 }
@@ -130,14 +128,11 @@ export interface MixerCard {
 
     // Own properties of Gvc-1.0.Gvc.MixerCard
 
-    readonly human_profile: string | null
     readonly humanProfile: string | null
-    icon_name: string | null
     iconName: string | null
     readonly id: number
     readonly index: number
     name: string | null
-    readonly pa_context: any
     readonly paContext: any
     profile: string | null
 
@@ -951,36 +946,25 @@ export module MixerStream {
 
         // Own constructor properties of Gvc-1.0.Gvc.MixerStream
 
-        application_id?: string | null
-        can_decibel?: boolean | null
-        card_index?: number | null
-        channel_map?: ChannelMap | null
-        decibel?: number | null
-        description?: string | null
-        form_factor?: string | null
-        icon_name?: string | null
-        id?: number | null
-        index?: number | null
-        is_event_stream?: boolean | null
-        is_muted?: boolean | null
-        is_virtual?: boolean | null
-        name?: string | null
-        pa_context?: any | null
-        port?: string | null
-        state?: MixerStreamState | null
-        sysfs_path?: string | null
-        volume?: number | null
         applicationId?: string | null
         canDecibel?: boolean | null
         cardIndex?: number | null
         channelMap?: ChannelMap | null
+        decibel?: number | null
+        description?: string | null
         formFactor?: string | null
         iconName?: string | null
+        id?: number | null
+        index?: number | null
         isEventStream?: boolean | null
         isMuted?: boolean | null
         isVirtual?: boolean | null
+        name?: string | null
         paContext?: any | null
+        port?: string | null
+        state?: MixerStreamState | null
         sysfsPath?: string | null
+        volume?: number | null
     }
 
 }
@@ -989,34 +973,23 @@ export interface MixerStream {
 
     // Own properties of Gvc-1.0.Gvc.MixerStream
 
-    application_id: string | null
     applicationId: string | null
-    can_decibel: boolean
     canDecibel: boolean
-    card_index: number
     cardIndex: number
-    channel_map: ChannelMap
     channelMap: ChannelMap
     decibel: number
     description: string | null
-    form_factor: string | null
     formFactor: string | null
-    icon_name: string | null
     iconName: string | null
     readonly id: number
     readonly index: number
-    is_event_stream: boolean
     isEventStream: boolean
-    is_muted: boolean
     isMuted: boolean
-    is_virtual: boolean
     isVirtual: boolean
     name: string | null
-    readonly pa_context: any
     readonly paContext: any
     port: string | null
     state: MixerStreamState
-    sysfs_path: string | null
     sysfsPath: string | null
     volume: number
 
@@ -1048,7 +1021,9 @@ export interface MixerStream {
     get_state(): MixerStreamState
     get_sysfs_path(): string
     get_volume(): number
+    is_event_stream(): boolean
     is_running(): boolean
+    is_virtual(): boolean
     push_volume(): boolean
     set_application_id(application_id: string): boolean
     set_base_volume(base_volume: number): boolean
@@ -1162,16 +1137,12 @@ export module MixerUIDevice {
 
         card?: any | null
         description?: string | null
-        icon_name?: string | null
-        origin?: string | null
-        port_available?: boolean | null
-        port_name?: string | null
-        stream_id?: number | null
-        type?: number | null
         iconName?: string | null
+        origin?: string | null
         portAvailable?: boolean | null
         portName?: string | null
         streamId?: number | null
+        type?: number | null
     }
 
 }
@@ -1182,14 +1153,10 @@ export interface MixerUIDevice {
 
     card: any
     description: string | null
-    icon_name: string | null
     iconName: string | null
     origin: string | null
-    port_available: boolean
     portAvailable: boolean
-    port_name: string | null
     portName: string | null
-    stream_id: number
     streamId: number
     type: number
 

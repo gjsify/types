@@ -651,9 +651,9 @@ module UserManager {
 
         // Own constructor properties of AccountsService-1.0.AccountsService.UserManager
 
-        excludeUsernamesList?: any | null
-        hasMultipleUsers?: boolean | null
-        includeUsernamesList?: any | null
+        exclude_usernames_list?: any | null
+        has_multiple_users?: boolean | null
+        include_usernames_list?: any | null
     }
 
 }

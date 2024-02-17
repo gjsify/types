@@ -1,13 +1,19 @@
 {
     "name": "@girs/folkseds-0.6",
-    "version": "0.6.0-3.2.7",
+    "version": "0.6.0-3.2.8",
     "description": "GJS TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "folkseds-0.6.js",
     "main": "folkseds-0.6.js",
     "exports": {
-        "./ambient": "./folkseds-0.6-ambient.d.ts",
-        "./import": "./folkseds-0.6-import.d.ts",
+        "./ambient": {
+            "types": "./folkseds-0.6-ambient.d.ts",
+            "default": "./folkseds-0.6-ambient.js"
+        },
+        "./import": {
+            "types": "./folkseds-0.6-import.d.ts",
+            "default": "./folkseds-0.6-import.js"
+        },
         ".": {
             "import": {
                 "types": "./folkseds-0.6.d.ts",

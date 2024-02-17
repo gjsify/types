@@ -1,13 +1,19 @@
 {
     "name": "@girs/atk-1.0",
-    "version": "2.50.1-3.2.7",
-    "description": "GJS TypeScript type definitions for Atk-1.0, generated from library version 2.50.1",
+    "version": "2.45.1-3.2.8",
+    "description": "GJS TypeScript type definitions for Atk-1.0, generated from library version 2.45.1",
     "type": "module",
     "module": "atk-1.0.js",
     "main": "atk-1.0.js",
     "exports": {
-        "./ambient": "./atk-1.0-ambient.d.ts",
-        "./import": "./atk-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./atk-1.0-ambient.d.ts",
+            "default": "./atk-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./atk-1.0-import.d.ts",
+            "default": "./atk-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./atk-1.0.d.ts",

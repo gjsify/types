@@ -47,8 +47,8 @@ module IScannableItem {
 
         // Own constructor properties of Caribou-1.0.Caribou.IScannableItem
 
-        scanStepping?: boolean | null
-        scanSelected?: boolean | null
+        scan_stepping?: boolean | null
+        scan_selected?: boolean | null
     }
 
 }
@@ -144,7 +144,7 @@ module IScannableGroup {
 
         // Own constructor properties of Caribou-1.0.Caribou.IScannableGroup
 
-        scanGrouping?: ScanGrouping | null
+        scan_grouping?: ScanGrouping | null
     }
 
 }
@@ -568,9 +568,9 @@ module KeyboardModel {
 
         // Own constructor properties of Caribou-1.0.Caribou.KeyboardModel
 
-        activeGroup?: string | null
-        keyboardType?: string | null
-        keyboardFile?: string | null
+        active_group?: string | null
+        keyboard_type?: string | null
+        keyboard_file?: string | null
     }
 
 }
@@ -716,7 +716,7 @@ module GroupModel {
 
         // Own constructor properties of Caribou-1.0.Caribou.GroupModel
 
-        activeLevel?: string | null
+        active_level?: string | null
     }
 
 }
@@ -968,8 +968,8 @@ module KeyModel {
         width?: number | null
         toggle?: string | null
         repeatable?: boolean | null
-        isModifier?: boolean | null
-        showSubkeys?: boolean | null
+        is_modifier?: boolean | null
+        show_subkeys?: boolean | null
         name?: string | null
         keyval?: number | null
         text?: string | null
@@ -1205,16 +1205,16 @@ module Scanner {
 
         // Own constructor properties of Caribou-1.0.Caribou.Scanner
 
-        bindSettings?: boolean | null
-        scanGrouping?: number | null
-        scanEnabled?: boolean | null
-        stepTime?: number | null
-        switchDevice?: string | null
-        keyboardKey?: string | null
-        mouseButton?: number | null
-        scanCycles?: number | null
+        bind_settings?: boolean | null
+        scan_grouping?: number | null
+        scan_enabled?: boolean | null
+        step_time?: number | null
+        switch_device?: string | null
+        keyboard_key?: string | null
+        mouse_button?: number | null
+        scan_cycles?: number | null
         autorestart?: boolean | null
-        inverseScanning?: boolean | null
+        inverse_scanning?: boolean | null
     }
 
 }

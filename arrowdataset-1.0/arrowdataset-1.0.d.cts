@@ -132,7 +132,6 @@ export module DatasetFactory {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.DatasetFactory
 
-        dataset_factory?: any | null
         datasetFactory?: any | null
     }
 
@@ -142,7 +141,6 @@ export interface DatasetFactory {
 
     // Own properties of ArrowDataset-1.0.ArrowDataset.DatasetFactory
 
-    readonly dataset_factory: any
     readonly datasetFactory: any
 
     // Own fields of ArrowDataset-1.0.ArrowDataset.DatasetFactory
@@ -287,7 +285,7 @@ export module FileSystemDataset {
         /**
          * File system of the dataset.
          */
-        file_system?: Arrow.FileSystem | null
+        fileSystem?: Arrow.FileSystem | null
         /**
          * Format of the dataset.
          */
@@ -296,10 +294,6 @@ export module FileSystemDataset {
          * Partitioning of the dataset.
          */
         partitioning?: Partitioning | null
-        /**
-         * File system of the dataset.
-         */
-        fileSystem?: Arrow.FileSystem | null
     }
 
 }
@@ -308,10 +302,6 @@ export interface FileSystemDataset {
 
     // Own properties of ArrowDataset-1.0.ArrowDataset.FileSystemDataset
 
-    /**
-     * File system of the dataset.
-     */
-    readonly file_system: Arrow.FileSystem
     /**
      * File system of the dataset.
      */
@@ -378,15 +368,11 @@ export module FileSystemDatasetFactory {
         /**
          * Partition base directory used by #GADatasetFileSystemDataset.
          */
-        partition_base_dir?: string | null
+        partitionBaseDir?: string | null
         /**
          * Partitioning used by #GADatasetFileSystemDataset.
          */
         partitioning?: Partitioning | null
-        /**
-         * Partition base directory used by #GADatasetFileSystemDataset.
-         */
-        partitionBaseDir?: string | null
     }
 
 }
@@ -398,19 +384,11 @@ export interface FileSystemDatasetFactory {
     /**
      * File system passed to #GADatasetFileSystemDataset.
      */
-    readonly file_system: Arrow.FileSystem
-    /**
-     * File system passed to #GADatasetFileSystemDataset.
-     */
     readonly fileSystem: Arrow.FileSystem
     /**
      * Format passed to #GADatasetFileSystemDataset.
      */
     readonly format: FileFormat
-    /**
-     * Partition base directory used by #GADatasetFileSystemDataset.
-     */
-    partition_base_dir: string | null
     /**
      * Partition base directory used by #GADatasetFileSystemDataset.
      */
@@ -481,22 +459,6 @@ export module FileSystemDatasetWriteOptions {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.FileSystemDatasetWriteOptions
 
-        base_dir?: string | null
-        /**
-         * Template string used to generate fragment base names. {i} will be
-         * replaced by an auto incremented integer.
-         */
-        base_name_template?: string | null
-        file_system?: Arrow.FileSystem | null
-        file_write_options?: FileWriteOptions | null
-        /**
-         * Maximum number of partitions any batch may be written into.
-         */
-        max_partitions?: number | null
-        /**
-         * #GADatasetPartitioning used to generate fragment paths.
-         */
-        partitioning?: Partitioning | null
         baseDir?: string | null
         /**
          * Template string used to generate fragment base names. {i} will be
@@ -509,6 +471,10 @@ export module FileSystemDatasetWriteOptions {
          * Maximum number of partitions any batch may be written into.
          */
         maxPartitions?: number | null
+        /**
+         * #GADatasetPartitioning used to generate fragment paths.
+         */
+        partitioning?: Partitioning | null
     }
 
 }
@@ -517,26 +483,14 @@ export interface FileSystemDatasetWriteOptions {
 
     // Own properties of ArrowDataset-1.0.ArrowDataset.FileSystemDatasetWriteOptions
 
-    base_dir: string | null
     baseDir: string | null
     /**
      * Template string used to generate fragment base names. {i} will be
      * replaced by an auto incremented integer.
      */
-    base_name_template: string | null
-    /**
-     * Template string used to generate fragment base names. {i} will be
-     * replaced by an auto incremented integer.
-     */
     baseNameTemplate: string | null
-    file_system: Arrow.FileSystem
     fileSystem: Arrow.FileSystem
-    file_write_options: FileWriteOptions
     fileWriteOptions: FileWriteOptions
-    /**
-     * Maximum number of partitions any batch may be written into.
-     */
-    max_partitions: number
     /**
      * Maximum number of partitions any batch may be written into.
      */
@@ -968,26 +922,13 @@ export module PartitioningOptions {
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
          */
-        infer_dictionary?: boolean | null
+        inferDictionary?: boolean | null
         /**
          * Optionally, an expected schema can be provided, in which case
          * inference will only check discovered fields against the schema
          * and update internal state (such as dictionaries).
          */
         schema?: Arrow.Schema | null
-        /**
-         * After splitting a path into components, decode the path
-         * components before parsing according to this scheme.
-         */
-        segment_encoding?: SegmentEncoding | null
-        /**
-         * When inferring a schema for partition fields, yield dictionary
-         * encoded types instead of plain. This can be more efficient when
-         * materializing virtual columns, and Expressions parsed by the
-         * finished Partitioning will include dictionaries of all unique
-         * inspected values for each field.
-         */
-        inferDictionary?: boolean | null
         /**
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
@@ -1008,14 +949,6 @@ export interface PartitioningOptions {
      * finished Partitioning will include dictionaries of all unique
      * inspected values for each field.
      */
-    infer_dictionary: boolean
-    /**
-     * When inferring a schema for partition fields, yield dictionary
-     * encoded types instead of plain. This can be more efficient when
-     * materializing virtual columns, and Expressions parsed by the
-     * finished Partitioning will include dictionaries of all unique
-     * inspected values for each field.
-     */
     inferDictionary: boolean
     /**
      * Optionally, an expected schema can be provided, in which case
@@ -1023,11 +956,6 @@ export interface PartitioningOptions {
      * and update internal state (such as dictionaries).
      */
     schema: Arrow.Schema
-    /**
-     * After splitting a path into components, decode the path
-     * components before parsing according to this scheme.
-     */
-    segment_encoding: SegmentEncoding
     /**
      * After splitting a path into components, decode the path
      * components before parsing according to this scheme.
@@ -1129,7 +1057,6 @@ export module ScannerBuilder {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.ScannerBuilder
 
-        scanner_builder?: any | null
         scannerBuilder?: any | null
     }
 
@@ -1139,7 +1066,6 @@ export interface ScannerBuilder {
 
     // Own properties of ArrowDataset-1.0.ArrowDataset.ScannerBuilder
 
-    readonly scanner_builder: any
     readonly scannerBuilder: any
 
     // Own fields of ArrowDataset-1.0.ArrowDataset.ScannerBuilder

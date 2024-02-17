@@ -85,10 +85,6 @@ export interface Contact {
     /**
      * The bounding box for the contact.
      */
-    readonly bounding_box: Champlain.BoundingBox
-    /**
-     * The bounding box for the contact.
-     */
     readonly boundingBox: Champlain.BoundingBox
     /**
      * The icon of the contact.
@@ -230,15 +226,7 @@ export interface FileTileSource {
     /**
      * The maximum zoom level of the tile source.
      */
-    readonly max_zoom: number
-    /**
-     * The maximum zoom level of the tile source.
-     */
     readonly maxZoom: number
-    /**
-     * The minimum zoom level of the tile source.
-     */
-    readonly min_zoom: number
     /**
      * The minimum zoom level of the tile source.
      */
@@ -346,7 +334,6 @@ export module OSMChangeset {
          * The comment of the changes.
          */
         comment?: string | null
-        created_by?: string | null
         createdBy?: string | null
     }
 
@@ -360,7 +347,6 @@ export interface OSMChangeset {
      * The comment of the changes.
      */
     comment: string | null
-    created_by: string | null
     createdBy: string | null
 
     // Own fields of GnomeMaps-1.0.GnomeMaps.OSMChangeset

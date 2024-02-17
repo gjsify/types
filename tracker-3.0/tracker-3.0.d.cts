@@ -533,10 +533,6 @@ export module Endpoint {
         /**
          * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
          */
-        sparql_connection?: SparqlConnection | null
-        /**
-         * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
-         */
         sparqlConnection?: SparqlConnection | null
     }
 
@@ -546,10 +542,6 @@ export interface Endpoint {
 
     // Own properties of Tracker-3.0.Tracker.Endpoint
 
-    /**
-     * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
-     */
-    readonly sparql_connection: SparqlConnection
     /**
      * The [class`Tracker`.SparqlConnection] being proxied by this endpoint.
      */
@@ -619,14 +611,6 @@ export module EndpointDBus {
         /**
          * The [class`Gio`.DBusConnection] where the connection is proxied through.
          */
-        dbus_connection?: Gio.DBusConnection | null
-        /**
-         * The DBus object path that this endpoint manages.
-         */
-        object_path?: string | null
-        /**
-         * The [class`Gio`.DBusConnection] where the connection is proxied through.
-         */
         dbusConnection?: Gio.DBusConnection | null
         /**
          * The DBus object path that this endpoint manages.
@@ -643,15 +627,7 @@ export interface EndpointDBus extends Gio.Initable {
     /**
      * The [class`Gio`.DBusConnection] where the connection is proxied through.
      */
-    readonly dbus_connection: Gio.DBusConnection
-    /**
-     * The [class`Gio`.DBusConnection] where the connection is proxied through.
-     */
     readonly dbusConnection: Gio.DBusConnection
-    /**
-     * The DBus object path that this endpoint manages.
-     */
-    readonly object_path: string | null
     /**
      * The DBus object path that this endpoint manages.
      */
@@ -767,14 +743,6 @@ export module EndpointHttp {
         /**
          * [class`Gio`.TlsCertificate] to encrypt the communication.
          */
-        http_certificate?: Gio.TlsCertificate | null
-        /**
-         * HTTP port used to listen requests.
-         */
-        http_port?: number | null
-        /**
-         * [class`Gio`.TlsCertificate] to encrypt the communication.
-         */
         httpCertificate?: Gio.TlsCertificate | null
         /**
          * HTTP port used to listen requests.
@@ -791,15 +759,7 @@ export interface EndpointHttp extends Gio.Initable {
     /**
      * [class`Gio`.TlsCertificate] to encrypt the communication.
      */
-    readonly http_certificate: Gio.TlsCertificate
-    /**
-     * [class`Gio`.TlsCertificate] to encrypt the communication.
-     */
     readonly httpCertificate: Gio.TlsCertificate
-    /**
-     * HTTP port used to listen requests.
-     */
-    readonly http_port: number
     /**
      * HTTP port used to listen requests.
      */
@@ -2425,10 +2385,6 @@ export interface SparqlCursor {
      * The [class`Tracker`.SparqlConnection] used to retrieve the results.
      */
     readonly connection: SparqlConnection
-    /**
-     * Number of columns available in the result set.
-     */
-    readonly n_columns: number
     /**
      * Number of columns available in the result set.
      */

@@ -1274,18 +1274,18 @@ export module InstalledRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.InstalledRef
 
-        appdataContentRating?: GLib.HashTable | null
-        appdataContentRatingType?: string | null
-        appdataLicense?: string | null
-        appdataName?: string | null
-        appdataSummary?: string | null
-        appdataVersion?: string | null
-        deployDir?: string | null
-        endOfLife?: string | null
-        endOfLifeRebase?: string | null
-        installedSize?: number | null
-        isCurrent?: boolean | null
-        latestCommit?: string | null
+        appdata_content_rating?: GLib.HashTable | null
+        appdata_content_rating_type?: string | null
+        appdata_license?: string | null
+        appdata_name?: string | null
+        appdata_summary?: string | null
+        appdata_version?: string | null
+        deploy_dir?: string | null
+        end_of_life?: string | null
+        end_of_life_rebase?: string | null
+        installed_size?: number | null
+        is_current?: boolean | null
+        latest_commit?: string | null
         origin?: string | null
         subpaths?: string[] | null
     }
@@ -1673,7 +1673,7 @@ export module Ref {
 
         arch?: string | null
         branch?: string | null
-        collectionId?: string | null
+        collection_id?: string | null
         commit?: string | null
         kind?: RefKind | null
         name?: string | null
@@ -1808,9 +1808,9 @@ export module RelatedRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.RelatedRef
 
-        shouldAutoprune?: boolean | null
-        shouldDelete?: boolean | null
-        shouldDownload?: boolean | null
+        should_autoprune?: boolean | null
+        should_delete?: boolean | null
+        should_download?: boolean | null
         subpaths?: string[] | null
     }
 
@@ -2297,12 +2297,12 @@ export module RemoteRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.RemoteRef
 
-        downloadSize?: number | null
-        endOfLife?: string | null
-        endOfLifeRebase?: string | null
-        installedSize?: number | null
+        download_size?: number | null
+        end_of_life?: string | null
+        end_of_life_rebase?: string | null
+        installed_size?: number | null
         metadata?: any | null
-        remoteName?: string | null
+        remote_name?: string | null
     }
 
 }

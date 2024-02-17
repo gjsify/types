@@ -1211,7 +1211,6 @@ interface GLBaseMixer {
 
     // Conflicting properties
 
-    start_time: any
     object: any
 
     // Own fields of GstGL-1.0.GstGL.GLBaseMixer
@@ -1442,7 +1441,6 @@ module GLBaseSrc {
 
         // Own constructor properties of GstGL-1.0.GstGL.GLBaseSrc
 
-        timestamp_offset?: number | null
         timestampOffset?: number | null
     }
 
@@ -1452,7 +1450,6 @@ interface GLBaseSrc {
 
     // Own properties of GstGL-1.0.GstGL.GLBaseSrc
 
-    timestamp_offset: number
     timestampOffset: number
 
     // Conflicting properties
@@ -3233,7 +3230,6 @@ interface GLMixer {
 
     // Conflicting properties
 
-    start_time: any
     object: any
 
     // Own fields of GstGL-1.0.GstGL.GLMixer
@@ -4292,11 +4288,6 @@ module GLViewConvert {
 
         // Own constructor properties of GstGL-1.0.GstGL.GLViewConvert
 
-        downmix_mode?: GLStereoDownmix | null
-        input_flags_override?: GstVideo.VideoMultiviewFlags | null
-        input_mode_override?: GstVideo.VideoMultiviewMode | null
-        output_flags_override?: GstVideo.VideoMultiviewFlags | null
-        output_mode_override?: GstVideo.VideoMultiviewMode | null
         downmixMode?: GLStereoDownmix | null
         inputFlagsOverride?: GstVideo.VideoMultiviewFlags | null
         inputModeOverride?: GstVideo.VideoMultiviewMode | null

@@ -1,13 +1,19 @@
 {
     "name": "@girs/grlnet-0.3",
-    "version": "0.3.0-3.2.7",
+    "version": "0.3.0-3.2.8",
     "description": "GJS TypeScript type definitions for GrlNet-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "grlnet-0.3.js",
     "main": "grlnet-0.3.js",
     "exports": {
-        "./ambient": "./grlnet-0.3-ambient.d.ts",
-        "./import": "./grlnet-0.3-import.d.ts",
+        "./ambient": {
+            "types": "./grlnet-0.3-ambient.d.ts",
+            "default": "./grlnet-0.3-ambient.js"
+        },
+        "./import": {
+            "types": "./grlnet-0.3-import.d.ts",
+            "default": "./grlnet-0.3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./grlnet-0.3.d.ts",

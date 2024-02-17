@@ -1,13 +1,19 @@
 {
     "name": "@girs/gnomekeyring-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GnomeKeyring-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gnomekeyring-1.0.js",
     "main": "gnomekeyring-1.0.js",
     "exports": {
-        "./ambient": "./gnomekeyring-1.0-ambient.d.ts",
-        "./import": "./gnomekeyring-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gnomekeyring-1.0-ambient.d.ts",
+            "default": "./gnomekeyring-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gnomekeyring-1.0-import.d.ts",
+            "default": "./gnomekeyring-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gnomekeyring-1.0.d.ts",

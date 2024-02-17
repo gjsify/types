@@ -1285,7 +1285,7 @@ module WidgetsAlertView {
 
         title?: string | null
         description?: string | null
-        iconName?: string | null
+        icon_name?: string | null
     }
 
 }
@@ -2243,7 +2243,7 @@ module WidgetsCellRendererExpander {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsCellRendererExpander
 
-        isCategoryExpander?: boolean | null
+        is_category_expander?: boolean | null
     }
 
 }
@@ -2387,7 +2387,7 @@ module WidgetsCollapsiblePaned {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsCollapsiblePaned
 
-        collapseMode?: CollapseMode | null
+        collapse_mode?: CollapseMode | null
     }
 
 }
@@ -4042,14 +4042,14 @@ module WidgetsTab {
         tooltip?: string | null
         pinned?: boolean | null
         pinnable?: boolean | null
-        restoreData?: string | null
-        closeTabLabel?: AccelLabel | null
-        duplicateTabLabel?: AccelLabel | null
-        newWindowLabel?: AccelLabel | null
+        restore_data?: string | null
+        close_tab_label?: AccelLabel | null
+        duplicate_tab_label?: AccelLabel | null
+        new_window_label?: AccelLabel | null
         page?: Gtk.Widget | null
         icon?: Gio.Icon | null
         working?: boolean | null
-        ellipsizeMode?: Pango.EllipsizeMode | null
+        ellipsize_mode?: Pango.EllipsizeMode | null
         menu?: Gtk.Menu | null
     }
 
@@ -4602,22 +4602,22 @@ module WidgetsDynamicNotebook {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsDynamicNotebook
 
-        showTabs?: boolean | null
-        tabsClosable?: boolean | null
-        allowDrag?: boolean | null
-        allowNewWindow?: boolean | null
-        allowDuplication?: boolean | null
-        allowRestoring?: boolean | null
-        maxRestorableTabs?: number | null
-        addButtonVisible?: boolean | null
-        allowPinning?: boolean | null
-        forceLeft?: boolean | null
-        addButtonTooltip?: string | null
-        newTabLabel?: AccelLabel | null
-        restoreTabLabel?: AccelLabel | null
+        show_tabs?: boolean | null
+        tabs_closable?: boolean | null
+        allow_drag?: boolean | null
+        allow_new_window?: boolean | null
+        allow_duplication?: boolean | null
+        allow_restoring?: boolean | null
+        max_restorable_tabs?: number | null
+        add_button_visible?: boolean | null
+        allow_pinning?: boolean | null
+        force_left?: boolean | null
+        add_button_tooltip?: string | null
+        new_tab_label?: AccelLabel | null
+        restore_tab_label?: AccelLabel | null
         current?: WidgetsTab | null
-        groupName?: string | null
-        tabBarBehavior?: WidgetsDynamicNotebookTabBarBehavior | null
+        group_name?: string | null
+        tab_bar_behavior?: WidgetsDynamicNotebookTabBarBehavior | null
         menu?: Gtk.Menu | null
     }
 
@@ -6096,7 +6096,7 @@ module WidgetsSourceList {
 
         root?: WidgetsSourceListExpandableItem | null
         selected?: WidgetsSourceListItem | null
-        ellipsizeMode?: Pango.EllipsizeMode | null
+        ellipsize_mode?: Pango.EllipsizeMode | null
     }
 
 }
@@ -6644,7 +6644,7 @@ module WidgetsSourceListItem {
         selectable?: boolean | null
         icon?: Gio.Icon | null
         activatable?: Gio.Icon | null
-        activatableTooltip?: string | null
+        activatable_tooltip?: string | null
     }
 
 }
@@ -7004,8 +7004,8 @@ module WidgetsStorageBar {
         // Own constructor properties of Granite-1.0.Granite.WidgetsStorageBar
 
         storage?: number | null
-        totalUsage?: number | null
-        innerMarginSides?: number | null
+        total_usage?: number | null
+        inner_margin_sides?: number | null
     }
 
 }
@@ -7427,8 +7427,8 @@ module WidgetsTimePicker {
 
         // Own constructor properties of Granite-1.0.Granite.WidgetsTimePicker
 
-        format12?: string | null
-        format24?: string | null
+        format_12?: string | null
+        format_24?: string | null
         time?: GLib.DateTime | null
     }
 
@@ -9649,11 +9649,11 @@ module SettingsPage {
 
         // Own constructor properties of Granite-1.0.Granite.SettingsPage
 
-        statusType?: SettingsPageStatusType | null
-        displayWidget?: Gtk.Widget | null
+        status_type?: SettingsPageStatusType | null
+        display_widget?: Gtk.Widget | null
         header?: string | null
         status?: string | null
-        iconName?: string | null
+        icon_name?: string | null
         title?: string | null
     }
 
@@ -10130,12 +10130,12 @@ module SimpleSettingsPage {
 
         // Own constructor properties of Granite-1.0.Granite.SimpleSettingsPage
 
-        actionArea?: Gtk.ButtonBox | null
-        contentArea?: Gtk.Grid | null
-        statusSwitch?: Gtk.Switch | null
+        action_area?: Gtk.ButtonBox | null
+        content_area?: Gtk.Grid | null
+        status_switch?: Gtk.Switch | null
         activatable?: boolean | null
         description?: string | null
-        iconName?: string | null
+        icon_name?: string | null
         title?: string | null
     }
 
@@ -10653,8 +10653,8 @@ module AccelLabel {
 
         // Own constructor properties of Granite-1.0.Granite.AccelLabel
 
-        actionName?: string | null
-        accelString?: string | null
+        action_name?: string | null
+        accel_string?: string | null
         label?: string | null
     }
 
@@ -11074,10 +11074,10 @@ module AsyncImage {
 
         // Own constructor properties of Granite-1.0.Granite.AsyncImage
 
-        loadOnRealize?: boolean | null
-        autoSizeRequest?: boolean | null
-        giconAsync?: Gio.Icon | null
-        sizeAsync?: number | null
+        load_on_realize?: boolean | null
+        auto_size_request?: boolean | null
+        gicon_async?: Gio.Icon | null
+        size_async?: number | null
     }
 
 }
@@ -13048,14 +13048,14 @@ module MessageDialog {
 
         // Own constructor properties of Granite-1.0.Granite.MessageDialog
 
-        primaryText?: string | null
-        secondaryText?: string | null
-        imageIcon?: Gio.Icon | null
-        badgeIcon?: Gio.Icon | null
-        primaryLabel?: Gtk.Label | null
-        secondaryLabel?: Gtk.Label | null
+        primary_text?: string | null
+        secondary_text?: string | null
+        image_icon?: Gio.Icon | null
+        badge_icon?: Gio.Icon | null
+        primary_label?: Gtk.Label | null
+        secondary_label?: Gtk.Label | null
         buttons?: Gtk.ButtonsType | null
-        customBin?: Gtk.Bin | null
+        custom_bin?: Gtk.Bin | null
     }
 
 }
@@ -13734,12 +13734,12 @@ module ModeSwitch {
         // Own constructor properties of Granite-1.0.Granite.ModeSwitch
 
         active?: boolean | null
-        primaryIconGicon?: Gio.Icon | null
-        primaryIconName?: string | null
-        primaryIconTooltipText?: string | null
-        secondaryIconGicon?: Gio.Icon | null
-        secondaryIconName?: string | null
-        secondaryIconTooltipText?: string | null
+        primary_icon_gicon?: Gio.Icon | null
+        primary_icon_name?: string | null
+        primary_icon_tooltip_text?: string | null
+        secondary_icon_gicon?: Gio.Icon | null
+        secondary_icon_name?: string | null
+        secondary_icon_tooltip_text?: string | null
     }
 
 }
@@ -14190,12 +14190,12 @@ module SeekBar {
 
         // Own constructor properties of Granite-1.0.Granite.SeekBar
 
-        playbackDuration?: number | null
-        playbackProgress?: number | null
-        isGrabbing?: boolean | null
-        isHovering?: boolean | null
-        progressionLabel?: Gtk.Label | null
-        durationLabel?: Gtk.Label | null
+        playback_duration?: number | null
+        playback_progress?: number | null
+        is_grabbing?: boolean | null
+        is_hovering?: boolean | null
+        progression_label?: Gtk.Label | null
+        duration_label?: Gtk.Label | null
         scale?: Gtk.Scale | null
     }
 
@@ -14645,7 +14645,7 @@ module SettingsSidebar {
         // Own constructor properties of Granite-1.0.Granite.SettingsSidebar
 
         stack?: Gtk.Stack | null
-        visibleChildName?: string | null
+        visible_child_name?: string | null
     }
 
 }
@@ -15115,7 +15115,7 @@ module Settings {
 
         // Own constructor properties of Granite-1.0.Granite.Settings
 
-        prefersColorScheme?: SettingsColorScheme | null
+        prefers_color_scheme?: SettingsColorScheme | null
     }
 
 }
@@ -15638,8 +15638,8 @@ module ValidatedEntry {
 
         // Own constructor properties of Granite-1.0.Granite.ValidatedEntry
 
-        isValid?: boolean | null
-        minLength?: number | null
+        is_valid?: boolean | null
+        min_length?: number | null
         regex?: GLib.Regex | null
     }
 

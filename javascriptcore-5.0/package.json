@@ -1,13 +1,19 @@
 {
     "name": "@girs/javascriptcore-5.0",
-    "version": "2.38.5-3.2.7",
+    "version": "2.38.5-3.2.8",
     "description": "GJS TypeScript type definitions for JavaScriptCore-5.0, generated from library version 2.38.5",
     "type": "module",
     "module": "javascriptcore-5.0.js",
     "main": "javascriptcore-5.0.js",
     "exports": {
-        "./ambient": "./javascriptcore-5.0-ambient.d.ts",
-        "./import": "./javascriptcore-5.0-import.d.ts",
+        "./ambient": {
+            "types": "./javascriptcore-5.0-ambient.d.ts",
+            "default": "./javascriptcore-5.0-ambient.js"
+        },
+        "./import": {
+            "types": "./javascriptcore-5.0-import.d.ts",
+            "default": "./javascriptcore-5.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./javascriptcore-5.0.d.ts",

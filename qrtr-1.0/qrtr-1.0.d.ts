@@ -100,7 +100,6 @@ module Bus {
 
         // Own constructor properties of Qrtr-1.0.Qrtr.Bus
 
-        lookup_timeout?: number | null
         lookupTimeout?: number | null
     }
 
@@ -110,7 +109,6 @@ interface Bus extends Gio.AsyncInitable {
 
     // Own properties of Qrtr-1.0.Qrtr.Bus
 
-    readonly lookup_timeout: number
     readonly lookupTimeout: number
 
     // Owm methods of Qrtr-1.0.Qrtr.Bus
@@ -243,8 +241,6 @@ module Client {
 
         // Own constructor properties of Qrtr-1.0.Qrtr.Client
 
-        client_node?: Node | null
-        client_port?: number | null
         clientNode?: Node | null
         clientPort?: number | null
     }
@@ -255,9 +251,7 @@ interface Client extends Gio.Initable {
 
     // Own properties of Qrtr-1.0.Qrtr.Client
 
-    readonly client_node: Node
     readonly clientNode: Node
-    readonly client_port: number
     readonly clientPort: number
 
     // Owm methods of Qrtr-1.0.Qrtr.Client
@@ -375,7 +369,6 @@ module Node {
         // Own constructor properties of Qrtr-1.0.Qrtr.Node
 
         bus?: Bus | null
-        node_id?: number | null
         nodeId?: number | null
     }
 
@@ -386,7 +379,6 @@ interface Node {
     // Own properties of Qrtr-1.0.Qrtr.Node
 
     readonly bus: Bus
-    readonly node_id: number
     readonly nodeId: number
 
     // Owm methods of Qrtr-1.0.Qrtr.Node

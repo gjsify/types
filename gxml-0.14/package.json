@@ -1,13 +1,19 @@
 {
     "name": "@girs/gxml-0.14",
-    "version": "0.14.0-3.2.7",
+    "version": "0.14.0-3.2.8",
     "description": "GJS TypeScript type definitions for GXml-0.14, generated from library version 0.14.0",
     "type": "module",
     "module": "gxml-0.14.js",
     "main": "gxml-0.14.js",
     "exports": {
-        "./ambient": "./gxml-0.14-ambient.d.ts",
-        "./import": "./gxml-0.14-import.d.ts",
+        "./ambient": {
+            "types": "./gxml-0.14-ambient.d.ts",
+            "default": "./gxml-0.14-ambient.js"
+        },
+        "./import": {
+            "types": "./gxml-0.14-import.d.ts",
+            "default": "./gxml-0.14-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gxml-0.14.d.ts",

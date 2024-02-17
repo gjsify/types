@@ -1,13 +1,19 @@
 {
     "name": "@girs/arrowdataset-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for ArrowDataset-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "arrowdataset-1.0.js",
     "main": "arrowdataset-1.0.js",
     "exports": {
-        "./ambient": "./arrowdataset-1.0-ambient.d.ts",
-        "./import": "./arrowdataset-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./arrowdataset-1.0-ambient.d.ts",
+            "default": "./arrowdataset-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./arrowdataset-1.0-import.d.ts",
+            "default": "./arrowdataset-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./arrowdataset-1.0.d.ts",

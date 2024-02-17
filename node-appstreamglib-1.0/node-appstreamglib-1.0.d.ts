@@ -5261,8 +5261,8 @@ module Review {
         id?: string | null
         locale?: string | null
         rating?: number | null
-        reviewerId?: string | null
-        reviewerName?: string | null
+        reviewer_id?: string | null
+        reviewer_name?: string | null
         summary?: string | null
         version?: string | null
     }

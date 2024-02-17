@@ -1,13 +1,19 @@
 {
     "name": "@girs/tepl-4",
-    "version": "4.0.0-3.2.7",
+    "version": "4.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Tepl-4, generated from library version 4.0.0",
     "type": "module",
     "module": "tepl-4.js",
     "main": "tepl-4.js",
     "exports": {
-        "./ambient": "./tepl-4-ambient.d.ts",
-        "./import": "./tepl-4-import.d.ts",
+        "./ambient": {
+            "types": "./tepl-4-ambient.d.ts",
+            "default": "./tepl-4-ambient.js"
+        },
+        "./import": {
+            "types": "./tepl-4-import.d.ts",
+            "default": "./tepl-4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./tepl-4.d.ts",

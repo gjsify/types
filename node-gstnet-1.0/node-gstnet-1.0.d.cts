@@ -167,12 +167,12 @@ export module NetClientClock {
         // Own constructor properties of GstNet-1.0.GstNet.NetClientClock
 
         address?: string | null
-        baseTime?: number | null
+        base_time?: number | null
         bus?: Gst.Bus | null
-        minimumUpdateInterval?: number | null
+        minimum_update_interval?: number | null
         port?: number | null
-        qosDscp?: number | null
-        roundTripLimit?: number | null
+        qos_dscp?: number | null
+        round_trip_limit?: number | null
     }
 
 }
@@ -384,7 +384,7 @@ export module NetTimeProvider {
         address?: string | null
         clock?: Gst.Clock | null
         port?: number | null
-        qosDscp?: number | null
+        qos_dscp?: number | null
     }
 
 }

@@ -567,7 +567,7 @@ module PluginManagerView {
         /**
          * If builtin plugins should be shown.
          */
-        showBuiltin?: boolean | null
+        show_builtin?: boolean | null
     }
 
 }

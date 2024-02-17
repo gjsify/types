@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-dex-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Dex-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-dex-1.js",
     "main": "node-dex-1.js",
     "exports": {
-        "./ambient": "./node-dex-1-ambient.d.ts",
-        "./import": "./node-dex-1-import.d.ts",
+        "./ambient": {
+            "types": "./node-dex-1-ambient.d.ts",
+            "default": "./node-dex-1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-dex-1-import.d.ts",
+            "default": "./node-dex-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-dex-1.d.ts",

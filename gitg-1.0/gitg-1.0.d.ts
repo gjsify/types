@@ -224,12 +224,10 @@ module Ref {
 
         // Own constructor properties of Gitg-1.0.Gitg.Ref
 
-        d_parsed_name?: ParsedRefName | null
-        d_pushes?: Ref[] | null
-        state?: RefState | null
-        working?: boolean | null
         dParsedName?: ParsedRefName | null
         dPushes?: Ref[] | null
+        state?: RefState | null
+        working?: boolean | null
     }
 
 }
@@ -238,9 +236,7 @@ interface Ref extends Ggit.Ref {
 
     // Own properties of Gitg-1.0.Gitg.Ref
 
-    d_parsed_name: ParsedRefName
     dParsedName: ParsedRefName
-    d_pushes: Ref[]
     dPushes: Ref[]
     state: RefState
     working: boolean
@@ -380,7 +376,6 @@ interface SidebarItem extends GObject.Object {
     // Own properties of Gitg-1.0.Gitg.SidebarItem
 
     readonly text: string | null
-    readonly icon_name: string | null
     readonly iconName: string | null
 
     // Owm methods of Gitg-1.0.Gitg.SidebarItem
@@ -442,13 +437,9 @@ interface StageStatusItem extends GObject.Object {
     // Own properties of Gitg-1.0.Gitg.StageStatusItem
 
     readonly path: string | null
-    readonly is_staged: boolean
     readonly isStaged: boolean
-    readonly is_unstaged: boolean
     readonly isUnstaged: boolean
-    readonly is_untracked: boolean
     readonly isUntracked: boolean
-    readonly icon_name: string | null
     readonly iconName: string | null
 
     // Owm methods of Gitg-1.0.Gitg.StageStatusItem
@@ -541,7 +532,6 @@ interface AuthenticationDialog {
 
     readonly username: string | null
     readonly password: string | null
-    readonly life_time: AuthenticationLifeTime
     readonly lifeTime: AuthenticationLifeTime
 
     // Conflicting properties
@@ -1047,13 +1037,10 @@ module CellRendererLanes {
         // Own constructor properties of Gitg-1.0.Gitg.CellRendererLanes
 
         commit?: Commit | null
-        next_commit?: Commit | null
-        lane_width?: number | null
-        dot_width?: number | null
-        labels?: Ref[] | null
         nextCommit?: Commit | null
         laneWidth?: number | null
         dotWidth?: number | null
+        labels?: Ref[] | null
     }
 
 }
@@ -1063,11 +1050,8 @@ interface CellRendererLanes {
     // Own properties of Gitg-1.0.Gitg.CellRendererLanes
 
     commit: Commit
-    next_commit: Commit
     nextCommit: Commit
-    lane_width: number
     laneWidth: number
-    dot_width: number
     dotWidth: number
     labels: Ref[]
 
@@ -1709,9 +1693,8 @@ module CommitModel {
         // Own constructor properties of Gitg-1.0.Gitg.CommitModel
 
         limit?: number | null
-        sort_mode?: Ggit.SortMode | null
-        repository?: Repository | null
         sortMode?: Ggit.SortMode | null
+        repository?: Repository | null
     }
 
 }
@@ -1721,7 +1704,6 @@ interface CommitModel extends Gtk.TreeModel {
     // Own properties of Gitg-1.0.Gitg.CommitModel
 
     limit: number
-    sort_mode: Ggit.SortMode
     sortMode: Ggit.SortMode
     repository: Repository
 
@@ -1816,11 +1798,8 @@ interface Commit {
     tag: LaneTag
     mylane: number
     readonly lane: Lane
-    readonly format_patch_name: string | null
     readonly formatPatchName: string | null
-    readonly committer_date_for_display: string | null
     readonly committerDateForDisplay: string | null
-    readonly author_date_for_display: string | null
     readonly authorDateForDisplay: string | null
 
     // Conflicting properties
@@ -1919,7 +1898,6 @@ module Date {
 
         // Own constructor properties of Gitg-1.0.Gitg.Date
 
-        date_string?: string | null
         dateString?: string | null
     }
 
@@ -1929,7 +1907,6 @@ interface Date extends Gio.Initable {
 
     // Own properties of Gitg-1.0.Gitg.Date
 
-    date_string: string | null
     dateString: string | null
     readonly date: GLib.DateTime
 
@@ -2162,9 +2139,8 @@ module DiffViewOptions {
 
         // Own constructor properties of Gitg-1.0.Gitg.DiffViewOptions
 
-        context_lines?: number | null
-        view?: DiffView | null
         contextLines?: number | null
+        view?: DiffView | null
     }
 
 }
@@ -2173,7 +2149,6 @@ interface DiffViewOptions {
 
     // Own properties of Gitg-1.0.Gitg.DiffViewOptions
 
-    context_lines: number
     contextLines: number
     view: DiffView
 
@@ -2499,30 +2474,19 @@ module DiffView {
 
         // Own constructor properties of Gitg-1.0.Gitg.DiffView
 
-        has_selection?: boolean | null
+        hasSelection?: boolean | null
         diff?: Ggit.Diff | null
         commit?: Commit | null
-        wrap_lines?: boolean | null
+        wrapLines?: boolean | null
         staged?: boolean | null
         unstaged?: boolean | null
-        show_parents?: boolean | null
-        default_collapse_all?: boolean | null
-        use_gravatar?: boolean | null
-        tab_width?: number | null
-        handle_selection?: boolean | null
-        highlight?: boolean | null
-        repository?: Repository | null
-        new_is_workdir?: boolean | null
-        ignore_whitespace?: boolean | null
-        changes_inline?: boolean | null
-        context_lines?: number | null
-        hasSelection?: boolean | null
-        wrapLines?: boolean | null
         showParents?: boolean | null
         defaultCollapseAll?: boolean | null
         useGravatar?: boolean | null
         tabWidth?: number | null
         handleSelection?: boolean | null
+        highlight?: boolean | null
+        repository?: Repository | null
         newIsWorkdir?: boolean | null
         ignoreWhitespace?: boolean | null
         changesInline?: boolean | null
@@ -2536,33 +2500,22 @@ interface DiffView {
     // Own properties of Gitg-1.0.Gitg.DiffView
 
     readonly options: Ggit.DiffOptions
-    has_selection: boolean
     hasSelection: boolean
     diff: Ggit.Diff
     commit: Commit
-    wrap_lines: boolean
     wrapLines: boolean
     staged: boolean
     unstaged: boolean
-    show_parents: boolean
     showParents: boolean
-    default_collapse_all: boolean
     defaultCollapseAll: boolean
-    use_gravatar: boolean
     useGravatar: boolean
-    tab_width: number
     tabWidth: number
-    handle_selection: boolean
     handleSelection: boolean
     highlight: boolean
     repository: Repository
-    new_is_workdir: boolean
     newIsWorkdir: boolean
-    ignore_whitespace: boolean
     ignoreWhitespace: boolean
-    changes_inline: boolean
     changesInline: boolean
-    context_lines: number
     contextLines: number
 
     // Owm methods of Gitg-1.0.Gitg.DiffView
@@ -2947,7 +2900,6 @@ module Hook {
 
         environment?: Gee.HashMap | null
         name?: string | null
-        working_directory?: Gio.File | null
         workingDirectory?: Gio.File | null
     }
 
@@ -2959,7 +2911,6 @@ interface Hook {
 
     environment: Gee.HashMap
     name: string | null
-    working_directory: Gio.File
     workingDirectory: Gio.File
     readonly output: string[]
 
@@ -3044,11 +2995,6 @@ module Lanes {
 
         // Own constructor properties of Gitg-1.0.Gitg.Lanes
 
-        inactive_max?: number | null
-        inactive_collapse?: number | null
-        inactive_gap?: number | null
-        inactive_enabled?: boolean | null
-        miss_commits?: Gee.LinkedList | null
         inactiveMax?: number | null
         inactiveCollapse?: number | null
         inactiveGap?: number | null
@@ -3062,15 +3008,10 @@ interface Lanes {
 
     // Own properties of Gitg-1.0.Gitg.Lanes
 
-    inactive_max: number
     inactiveMax: number
-    inactive_collapse: number
     inactiveCollapse: number
-    inactive_gap: number
     inactiveGap: number
-    inactive_enabled: boolean
     inactiveEnabled: boolean
-    miss_commits: Gee.LinkedList
     missCommits: Gee.LinkedList
 
     // Owm methods of Gitg-1.0.Gitg.Lanes
@@ -3479,9 +3420,7 @@ interface ParsedRefName {
     rtype: RefType
     readonly name: string | null
     readonly shortname: string | null
-    readonly remote_name: string | null
     readonly remoteName: string | null
-    readonly remote_branch: string | null
     readonly remoteBranch: string | null
     readonly prefix: string | null
 
@@ -3554,9 +3493,6 @@ module Remote {
         // Own constructor properties of Gitg-1.0.Gitg.Remote
 
         state?: RemoteState | null
-        fetch_specs?: string[] | null
-        push_specs?: string[] | null
-        credentials_provider?: CredentialsProvider | null
         fetchSpecs?: string[] | null
         pushSpecs?: string[] | null
         credentialsProvider?: CredentialsProvider | null
@@ -3568,14 +3504,10 @@ interface Remote {
 
     // Own properties of Gitg-1.0.Gitg.Remote
 
-    readonly transfer_progress: number
     readonly transferProgress: number
     state: RemoteState
-    fetch_specs: string[]
     fetchSpecs: string[]
-    push_specs: string[]
     pushSpecs: string[]
-    credentials_provider: CredentialsProvider
     credentialsProvider: CredentialsProvider
 
     // Conflicting properties
@@ -3855,9 +3787,8 @@ module RepositoryListBox {
         // Own constructor properties of Gitg-1.0.Gitg.RepositoryListBox
 
         mode?: SelectionMode | null
-        bookmarks_from_recent_files?: boolean | null
-        location?: Gio.File | null
         bookmarksFromRecentFiles?: boolean | null
+        location?: Gio.File | null
     }
 
 }
@@ -3867,10 +3798,8 @@ interface RepositoryListBox {
     // Own properties of Gitg-1.0.Gitg.RepositoryListBox
 
     mode: SelectionMode
-    bookmarks_from_recent_files: boolean
     bookmarksFromRecentFiles: boolean
     location: Gio.File
-    readonly has_selection: boolean
     readonly hasSelection: boolean
 
     // Conflicting properties
@@ -4146,16 +4075,13 @@ module RepositoryListBoxRow {
         mode?: SelectionMode | null
         selected?: boolean | null
         repository?: Repository | null
-        can_remove?: boolean | null
+        canRemove?: boolean | null
         time?: GLib.DateTime | null
         fraction?: number | null
-        repository_name?: string | null
-        dirname?: string | null
-        branch_name?: string | null
-        loading?: boolean | null
-        canRemove?: boolean | null
         repositoryName?: string | null
+        dirname?: string | null
         branchName?: string | null
+        loading?: boolean | null
     }
 
 }
@@ -4167,14 +4093,11 @@ interface RepositoryListBoxRow {
     mode: SelectionMode
     selected: boolean
     repository: Repository
-    can_remove: boolean
     canRemove: boolean
     time: GLib.DateTime
     fraction: number
-    repository_name: string | null
     repositoryName: string | null
     dirname: string | null
-    branch_name: string | null
     branchName: string | null
     loading: boolean
 
@@ -5226,7 +5149,6 @@ interface StageStatusSubmodule extends StageStatusItem {
     // Own properties of Gitg-1.0.Gitg.StageStatusSubmodule
 
     readonly submodule: Ggit.Submodule
-    readonly is_dirty: boolean
     readonly isDirty: boolean
     readonly flags: Ggit.SubmoduleStatus
 

@@ -81,12 +81,6 @@ export module App {
          * notification sequence. If not set, a default id will be
          * automatically given.
          */
-        startup_id?: string | null
-        /**
-         * The startup notification id, needed to complete the startup
-         * notification sequence. If not set, a default id will be
-         * automatically given.
-         */
         startupId?: string | null
     }
 
@@ -96,10 +90,6 @@ export interface App {
 
     // Own properties of Unique-3.0.Unique.App
 
-    /**
-     * Whether another instance of the application is running.
-     */
-    readonly is_running: boolean
     /**
      * Whether another instance of the application is running.
      */
@@ -113,12 +103,6 @@ export interface App {
      * The #GdkScreen of the application.
      */
     screen: Gdk.Screen
-    /**
-     * The startup notification id, needed to complete the startup
-     * notification sequence. If not set, a default id will be
-     * automatically given.
-     */
-    readonly startup_id: string
     /**
      * The startup notification id, needed to complete the startup
      * notification sequence. If not set, a default id will be
@@ -140,6 +124,11 @@ export interface App {
      * @param command_id command logical id
      */
     add_command(command_name: string | null, command_id: number): void
+    /**
+     * Checks whether another instance of `app` is running.
+     * @returns %TRUE if there already is an instance running
+     */
+    is_running(): boolean
     /**
      * Sends `command` to a running instance of `app`. If you need to pass data
      * to the instance, you should create a #UniqueMessageData object using

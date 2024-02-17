@@ -166,12 +166,12 @@ module Indicator {
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
          * then this textual description of the icon shown.
          */
-        attention_icon_desc?: string | null
+        attentionIconDesc?: string | null
         /**
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
          * then this icon is shown.
          */
-        attention_icon_name?: string | null
+        attentionIconName?: string | null
         /**
          * The type of indicator that this represents.  Please don't use 'Other'.
          * Defaults to 'ApplicationStatus'.
@@ -180,16 +180,16 @@ module Indicator {
         /**
          * The description of the regular icon that is shown for the indicator.
          */
-        icon_desc?: string | null
+        iconDesc?: string | null
         /**
          * The name of the regular icon that is shown for the indicator.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
          */
-        icon_theme_path?: string | null
+        iconThemePath?: string | null
         /**
          * The ID for this indicator, which should be unique, but used consistently
          * by this program and its indicator.
@@ -213,62 +213,6 @@ module Indicator {
          * set this string to "100% thrust" to ensure space when Scotty can
          * get you enough power.
          */
-        label_guide?: string | null
-        /**
-         * The ordering index is an odd parameter, and if you think you don't need
-         * it you're probably right.  In general, the application indicator try
-         * to place the applications in a recreatable place taking into account
-         * which category they're in to try and group them.  But, there are some
-         * cases where you'd want to ensure indicators are next to each other.
-         * To do that you can override the generated ordering index and replace it
-         * with a new one.  Again, you probably don't want to be doing this, but
-         * in case you do, this is the way.
-         */
-        ordering_index?: number | null
-        /**
-         * Whether the indicator is shown or requests attention. Defaults to
-         * 'Passive'.
-         */
-        status?: string | null
-        /**
-         * Provides a way to refer to this application indicator in a human
-         * readable form.  This is used in the Unity desktop in the HUD as
-         * the first part of the menu entries to distinguish them from the
-         * focused application's entries.
-         */
-        title?: string | null
-        /**
-         * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
-         * then this textual description of the icon shown.
-         */
-        attentionIconDesc?: string | null
-        /**
-         * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
-         * then this icon is shown.
-         */
-        attentionIconName?: string | null
-        /**
-         * The description of the regular icon that is shown for the indicator.
-         */
-        iconDesc?: string | null
-        /**
-         * The name of the regular icon that is shown for the indicator.
-         */
-        iconName?: string | null
-        /**
-         * An additional place to look for icon names that may be installed by the
-         * application.
-         */
-        iconThemePath?: string | null
-        /**
-         * An optional string to provide guidance to the panel on how big
-         * the #AppIndicator:label string could get.  If this is set correctly
-         * then the panel should never 'jiggle' as the string adjusts through
-         * out the range of options.  For instance, if you were providing a
-         * percentage like "54% thrust" in #AppIndicator:label you'd want to
-         * set this string to "100% thrust" to ensure space when Scotty can
-         * get you enough power.
-         */
         labelGuide?: string | null
         /**
          * The ordering index is an odd parameter, and if you think you don't need
@@ -281,6 +225,18 @@ module Indicator {
          * in case you do, this is the way.
          */
         orderingIndex?: number | null
+        /**
+         * Whether the indicator is shown or requests attention. Defaults to
+         * 'Passive'.
+         */
+        status?: string | null
+        /**
+         * Provides a way to refer to this application indicator in a human
+         * readable form.  This is used in the Unity desktop in the HUD as
+         * the first part of the menu entries to distinguish them from the
+         * focused application's entries.
+         */
+        title?: string | null
     }
 
 }
@@ -293,17 +249,7 @@ interface Indicator {
      * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
      * then this textual description of the icon shown.
      */
-    attention_icon_desc: string | null
-    /**
-     * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
-     * then this textual description of the icon shown.
-     */
     attentionIconDesc: string | null
-    /**
-     * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
-     * then this icon is shown.
-     */
-    attention_icon_name: string | null
     /**
      * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
      * then this icon is shown.
@@ -322,24 +268,11 @@ interface Indicator {
     /**
      * The description of the regular icon that is shown for the indicator.
      */
-    icon_desc: string | null
-    /**
-     * The description of the regular icon that is shown for the indicator.
-     */
     iconDesc: string | null
     /**
      * The name of the regular icon that is shown for the indicator.
      */
-    icon_name: string | null
-    /**
-     * The name of the regular icon that is shown for the indicator.
-     */
     iconName: string | null
-    /**
-     * An additional place to look for icon names that may be installed by the
-     * application.
-     */
-    icon_theme_path: string | null
     /**
      * An additional place to look for icon names that may be installed by the
      * application.
@@ -368,28 +301,7 @@ interface Indicator {
      * set this string to "100% thrust" to ensure space when Scotty can
      * get you enough power.
      */
-    label_guide: string | null
-    /**
-     * An optional string to provide guidance to the panel on how big
-     * the #AppIndicator:label string could get.  If this is set correctly
-     * then the panel should never 'jiggle' as the string adjusts through
-     * out the range of options.  For instance, if you were providing a
-     * percentage like "54% thrust" in #AppIndicator:label you'd want to
-     * set this string to "100% thrust" to ensure space when Scotty can
-     * get you enough power.
-     */
     labelGuide: string | null
-    /**
-     * The ordering index is an odd parameter, and if you think you don't need
-     * it you're probably right.  In general, the application indicator try
-     * to place the applications in a recreatable place taking into account
-     * which category they're in to try and group them.  But, there are some
-     * cases where you'd want to ensure indicators are next to each other.
-     * To do that you can override the generated ordering index and replace it
-     * with a new one.  Again, you probably don't want to be doing this, but
-     * in case you do, this is the way.
-     */
-    ordering_index: number
     /**
      * The ordering index is an odd parameter, and if you think you don't need
      * it you're probably right.  In general, the application indicator try

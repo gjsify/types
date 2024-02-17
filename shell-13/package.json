@@ -1,13 +1,19 @@
 {
     "name": "@girs/shell-13",
-    "version": "13.0.0-3.2.7",
+    "version": "13.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Shell-13, generated from library version 13.0.0",
     "type": "module",
     "module": "shell-13.js",
     "main": "shell-13.js",
     "exports": {
-        "./ambient": "./shell-13-ambient.d.ts",
-        "./import": "./shell-13-import.d.ts",
+        "./ambient": {
+            "types": "./shell-13-ambient.d.ts",
+            "default": "./shell-13-ambient.js"
+        },
+        "./import": {
+            "types": "./shell-13-import.d.ts",
+            "default": "./shell-13-import.js"
+        },
         ".": {
             "import": {
                 "types": "./shell-13.d.ts",

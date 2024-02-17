@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gtksource-4",
-    "version": "4.0.0-3.2.7",
+    "version": "4.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GtkSource-4, generated from library version 4.0.0",
     "type": "module",
     "module": "node-gtksource-4.js",
     "main": "node-gtksource-4.js",
     "exports": {
-        "./ambient": "./node-gtksource-4-ambient.d.ts",
-        "./import": "./node-gtksource-4-import.d.ts",
+        "./ambient": {
+            "types": "./node-gtksource-4-ambient.d.ts",
+            "default": "./node-gtksource-4-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gtksource-4-import.d.ts",
+            "default": "./node-gtksource-4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gtksource-4.d.ts",

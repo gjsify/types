@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-anjuta-3.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Anjuta-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "node-anjuta-3.0.js",
     "main": "node-anjuta-3.0.js",
     "exports": {
-        "./ambient": "./node-anjuta-3.0-ambient.d.ts",
-        "./import": "./node-anjuta-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-anjuta-3.0-ambient.d.ts",
+            "default": "./node-anjuta-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-anjuta-3.0-import.d.ts",
+            "default": "./node-anjuta-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-anjuta-3.0.d.ts",

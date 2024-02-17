@@ -236,7 +236,7 @@ export module Album {
          * The number of photos in the album.
          */
         count?: number | null
-        cover_photo?: string | null
+        coverPhoto?: string | null
         /**
          * The album description given by the owner.
          */
@@ -245,7 +245,6 @@ export module Album {
          * The album name.
          */
         name?: string | null
-        coverPhoto?: string | null
     }
 
 }
@@ -258,7 +257,6 @@ export interface Album extends Connectable {
      * The number of photos in the album.
      */
     count: number
-    cover_photo: string | null
     coverPhoto: string | null
     /**
      * The album description given by the owner.
@@ -420,7 +418,7 @@ export module Node {
 
         // Own constructor properties of GFBGraph-0.3.GFBGraph.Node
 
-        created_time?: string | null
+        createdTime?: string | null
         /**
          * The node ID. All nodes have one of this.
          */
@@ -429,8 +427,6 @@ export module Node {
          * The node link. An URL to the node on Facebook.
          */
         link?: string | null
-        updated_time?: string | null
-        createdTime?: string | null
         updatedTime?: string | null
     }
 
@@ -440,7 +436,6 @@ export interface Node {
 
     // Own properties of GFBGraph-0.3.GFBGraph.Node
 
-    created_time: string | null
     createdTime: string | null
     /**
      * The node ID. All nodes have one of this.
@@ -450,7 +445,6 @@ export interface Node {
      * The node link. An URL to the node on Facebook.
      */
     link: string | null
-    updated_time: string | null
     updatedTime: string | null
 
     // Own fields of GFBGraph-0.3.GFBGraph.Node
@@ -854,7 +848,6 @@ export module SimpleAuthorizer {
 
         // Own constructor properties of GFBGraph-0.3.GFBGraph.SimpleAuthorizer
 
-        access_token?: string | null
         accessToken?: string | null
     }
 
@@ -864,7 +857,6 @@ export interface SimpleAuthorizer extends Authorizer {
 
     // Own properties of GFBGraph-0.3.GFBGraph.SimpleAuthorizer
 
-    access_token: string | null
     accessToken: string | null
 
     // Own fields of GFBGraph-0.3.GFBGraph.SimpleAuthorizer

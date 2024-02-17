@@ -1,13 +1,19 @@
 {
     "name": "@girs/appindicator3-0.1",
-    "version": "0.1.0-3.2.7",
+    "version": "0.1.0-3.2.8",
     "description": "GJS TypeScript type definitions for AppIndicator3-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "appindicator3-0.1.js",
     "main": "appindicator3-0.1.js",
     "exports": {
-        "./ambient": "./appindicator3-0.1-ambient.d.ts",
-        "./import": "./appindicator3-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./appindicator3-0.1-ambient.d.ts",
+            "default": "./appindicator3-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./appindicator3-0.1-import.d.ts",
+            "default": "./appindicator3-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./appindicator3-0.1.d.ts",

@@ -81,22 +81,6 @@ module Client {
          * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
          * with a JSON-RPC peer.
          */
-        io_stream?: Gio.IOStream | null
-        /**
-         * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
-         * communicate with the peer instead of JSON. You should only set this
-         * if you know the peer is also a Jsonrpc-GLib based client.
-         * 
-         * Setting this property allows the peers to communicate using GVariant
-         * instead of JSON. This means that we can access the messages without
-         * expensive memory allocations and parsing costs associated with JSON.
-         * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
-         */
-        use_gvariant?: boolean | null
-        /**
-         * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
-         * with a JSON-RPC peer.
-         */
         ioStream?: Gio.IOStream | null
         /**
          * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
@@ -121,23 +105,7 @@ interface Client {
      * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
      * with a JSON-RPC peer.
      */
-    readonly io_stream: Gio.IOStream
-    /**
-     * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
-     * with a JSON-RPC peer.
-     */
     readonly ioStream: Gio.IOStream
-    /**
-     * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
-     * communicate with the peer instead of JSON. You should only set this
-     * if you know the peer is also a Jsonrpc-GLib based client.
-     * 
-     * Setting this property allows the peers to communicate using GVariant
-     * instead of JSON. This means that we can access the messages without
-     * expensive memory allocations and parsing costs associated with JSON.
-     * [struct`GLib`.Variant] is much more optimal for memory-bassed message passing.
-     */
-    use_gvariant: boolean
     /**
      * The "use-gvariant" property denotes if [struct`GLib`.Variant] should be used to
      * communicate with the peer instead of JSON. You should only set this
@@ -606,7 +574,6 @@ module OutputStream {
 
         // Own constructor properties of Jsonrpc-1.0.Jsonrpc.OutputStream
 
-        use_gvariant?: boolean | null
         useGvariant?: boolean | null
     }
 
@@ -616,7 +583,6 @@ interface OutputStream extends Gio.Seekable {
 
     // Own properties of Jsonrpc-1.0.Jsonrpc.OutputStream
 
-    use_gvariant: boolean
     useGvariant: boolean
 
     // Own fields of Jsonrpc-1.0.Jsonrpc.OutputStream

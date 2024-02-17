@@ -1,13 +1,19 @@
 {
     "name": "@girs/geoclue-2.0",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Geoclue-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "geoclue-2.0.js",
     "main": "geoclue-2.0.js",
     "exports": {
-        "./ambient": "./geoclue-2.0-ambient.d.ts",
-        "./import": "./geoclue-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./geoclue-2.0-ambient.d.ts",
+            "default": "./geoclue-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./geoclue-2.0-import.d.ts",
+            "default": "./geoclue-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./geoclue-2.0.d.ts",

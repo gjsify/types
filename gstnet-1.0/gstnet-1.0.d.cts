@@ -167,14 +167,10 @@ export module NetClientClock {
         // Own constructor properties of GstNet-1.0.GstNet.NetClientClock
 
         address?: string | null
-        base_time?: number | null
-        bus?: Gst.Bus | null
-        minimum_update_interval?: number | null
-        port?: number | null
-        qos_dscp?: number | null
-        round_trip_limit?: number | null
         baseTime?: number | null
+        bus?: Gst.Bus | null
         minimumUpdateInterval?: number | null
+        port?: number | null
         qosDscp?: number | null
         roundTripLimit?: number | null
     }
@@ -186,17 +182,12 @@ export interface NetClientClock {
     // Own properties of GstNet-1.0.GstNet.NetClientClock
 
     address: string | null
-    readonly base_time: number
     readonly baseTime: number
     bus: Gst.Bus
-    readonly internal_clock: Gst.Clock
     readonly internalClock: Gst.Clock
-    minimum_update_interval: number
     minimumUpdateInterval: number
     port: number
-    qos_dscp: number
     qosDscp: number
-    round_trip_limit: number
     roundTripLimit: number
 
     // Conflicting properties
@@ -362,7 +353,6 @@ export module NetTimeProvider {
         address?: string | null
         clock?: Gst.Clock | null
         port?: number | null
-        qos_dscp?: number | null
         qosDscp?: number | null
     }
 
@@ -376,7 +366,6 @@ export interface NetTimeProvider extends Gio.Initable {
     readonly address: string | null
     readonly clock: Gst.Clock
     readonly port: number
-    qos_dscp: number
     qosDscp: number
 
     // Own fields of GstNet-1.0.GstNet.NetTimeProvider
@@ -639,11 +628,8 @@ export interface PtpClock {
     // Own properties of GstNet-1.0.GstNet.PtpClock
 
     readonly domain: number
-    readonly grandmaster_clock_id: number
     readonly grandmasterClockId: number
-    readonly internal_clock: Gst.Clock
     readonly internalClock: Gst.Clock
-    readonly master_clock_id: number
     readonly masterClockId: number
 
     // Conflicting properties

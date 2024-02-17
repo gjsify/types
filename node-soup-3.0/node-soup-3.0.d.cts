@@ -1690,7 +1690,7 @@ export module Auth {
         /**
          * Whether or not the auth is for a proxy server.
          */
-        isForProxy?: boolean | null
+        is_for_proxy?: boolean | null
         /**
          * The authentication realm.
          */
@@ -2115,15 +2115,15 @@ export module AuthDomain {
         /**
          * Data to pass to the [callback`AuthDomainFilter]`.
          */
-        filterData?: any | null
+        filter_data?: any | null
         /**
          * The [callback`AuthDomainGenericAuthCallback]`.
          */
-        genericAuthCallback?: AuthDomainGenericAuthCallback | null
+        generic_auth_callback?: AuthDomainGenericAuthCallback | null
         /**
          * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
          */
-        genericAuthData?: any | null
+        generic_auth_data?: any | null
         /**
          * Whether or not this is a proxy auth domain.
          */
@@ -2375,11 +2375,11 @@ export module AuthDomainBasic {
         /**
          * The [callback`AuthDomainBasicAuthCallback]`.
          */
-        authCallback?: AuthDomainBasicAuthCallback | null
+        auth_callback?: AuthDomainBasicAuthCallback | null
         /**
          * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
          */
-        authData?: any | null
+        auth_data?: any | null
     }
 
 }
@@ -2501,11 +2501,11 @@ export module AuthDomainDigest {
         /**
          * The [callback`AuthDomainDigestAuthCallback]`.
          */
-        authCallback?: AuthDomainDigestAuthCallback | null
+        auth_callback?: AuthDomainDigestAuthCallback | null
         /**
          * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
          */
-        authData?: any | null
+        auth_data?: any | null
     }
 
 }
@@ -2907,11 +2907,11 @@ export module Cache {
         /**
          * The directory to store the cache files.
          */
-        cacheDir?: string | null
+        cache_dir?: string | null
         /**
          * Whether the cache is private or shared.
          */
-        cacheType?: CacheType | null
+        cache_type?: CacheType | null
     }
 
 }
@@ -3210,11 +3210,11 @@ export module CookieJar {
         /**
          * The policy the jar should follow to accept or reject cookies.
          */
-        acceptPolicy?: CookieJarAcceptPolicy | null
+        accept_policy?: CookieJarAcceptPolicy | null
         /**
          * Whether or not the cookie jar is read-only.
          */
-        readOnly?: boolean | null
+        read_only?: boolean | null
     }
 
 }
@@ -3991,7 +3991,7 @@ export module Logger {
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          */
-        maxBodySize?: number | null
+        max_body_size?: number | null
     }
 
 }
@@ -4305,7 +4305,7 @@ export module Message {
          * The [struct`GLib`.Uri] loaded in the application when the message was
          * queued.
          */
-        firstParty?: GLib.Uri | null
+        first_party?: GLib.Uri | null
         /**
          * Various message options.
          */
@@ -4318,11 +4318,11 @@ export module Message {
          * path of [property`Message:`uri] will be ignored and
          * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
          */
-        isOptionsPing?: boolean | null
+        is_options_ping?: boolean | null
         /**
          * Set when the message is navigating between top level domains.
          */
-        isTopLevelNavigation?: boolean | null
+        is_top_level_navigation?: boolean | null
         /**
          * The message's HTTP method.
          */
@@ -4335,7 +4335,7 @@ export module Message {
         /**
          * Site used to compare cookies against. Used for SameSite cookie support.
          */
-        siteForCookies?: GLib.Uri | null
+        site_for_cookies?: GLib.Uri | null
         /**
          * The message's Request-URI.
          */
@@ -5219,7 +5219,7 @@ export module Server {
          * If %TRUE, percent-encoding in the Request-URI path will not be
          * automatically decoded.
          */
-        rawPaths?: boolean | null
+        raw_paths?: boolean | null
         /**
          * Server header.
          * 
@@ -5247,11 +5247,11 @@ export module Server {
          * whitespace, #SoupServer will append its own product token (eg,
          * `libsoup/2.3.2`) to the end of the header for you.
          */
-        serverHeader?: string | null
+        server_header?: string | null
         /**
          * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
          */
-        tlsAuthMode?: Gio.TlsAuthenticationMode | null
+        tls_auth_mode?: Gio.TlsAuthenticationMode | null
         /**
          * A [class`Gio`.TlsCertificate[] that has a
          * [property`Gio`.TlsCertificate:private-key] set.
@@ -5259,12 +5259,12 @@ export module Server {
          * If this is set, then the server will be able to speak
          * https in addition to (or instead of) plain http.
          */
-        tlsCertificate?: Gio.TlsCertificate | null
+        tls_certificate?: Gio.TlsCertificate | null
         /**
          * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
          * certificates.
          */
-        tlsDatabase?: Gio.TlsDatabase | null
+        tls_database?: Gio.TlsDatabase | null
     }
 
 }
@@ -6235,7 +6235,7 @@ export module Session {
          * 
          * Setting this will disable [property`Session:`accept-language-auto].
          */
-        acceptLanguage?: string | null
+        accept_language?: string | null
         /**
          * If %TRUE, #SoupSession will automatically set the string
          * for the "Accept-Language" header on every [class`Message]`
@@ -6244,7 +6244,7 @@ export module Session {
          * Setting this will override any previous value of
          * [property`Session:`accept-language].
          */
-        acceptLanguageAuto?: boolean | null
+        accept_language_auto?: boolean | null
         /**
          * Connection lifetime (in seconds) when idle. Any connection
          * left idle longer than this will be closed.
@@ -6255,7 +6255,7 @@ export module Session {
          * if you want to ensure that all future connections will have
          * this timeout value.
          */
-        idleTimeout?: number | null
+        idle_timeout?: number | null
         /**
          * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
          * the connection.
@@ -6263,16 +6263,16 @@ export module Session {
          * Use this property if you want for instance to bind the
          * local socket to a specific IP address.
          */
-        localAddress?: Gio.InetSocketAddress | null
+        local_address?: Gio.InetSocketAddress | null
         /**
          * The maximum number of connections that the session can open at once.
          */
-        maxConns?: number | null
+        max_conns?: number | null
         /**
          * The maximum number of connections that the session can open at once
          * to a given host.
          */
-        maxConnsPerHost?: number | null
+        max_conns_per_host?: number | null
         /**
          * A [iface`Gio`.ProxyResolver] to use with this session.
          * 
@@ -6282,7 +6282,7 @@ export module Session {
          * set it to your own [iface`Gio`.ProxyResolver] if you want to control
          * what proxies get used.
          */
-        proxyResolver?: Gio.ProxyResolver | null
+        proxy_resolver?: Gio.ProxyResolver | null
         /**
          * Sets a socket to make outgoing connections on. This will override the default
          * behaviour of opening TCP/IP sockets to the hosts specified in the URIs.
@@ -6292,7 +6292,7 @@ export module Session {
          * this is a local service that uses HTTP over UNIX-domain sockets, in that case
          * a [class`Gio`.UnixSocketAddress] can be passed to this function.
          */
-        remoteConnectable?: Gio.SocketConnectable | null
+        remote_connectable?: Gio.SocketConnectable | null
         /**
          * The timeout (in seconds) for socket I/O operations
          * (including connecting to a server, and waiting for a reply
@@ -6316,14 +6316,14 @@ export module Session {
          * If no certificate database is set, then the default database will be
          * used. See [method`Gio`.TlsBackend.get_default_database].
          */
-        tlsDatabase?: Gio.TlsDatabase | null
+        tls_database?: Gio.TlsDatabase | null
         /**
          * A [class`Gio`.TlsInteraction] object that will be passed on to any
          * [class`Gio`.TlsConnection]s created by the session.
          * 
          * This can be used to provide client-side certificates, for example.
          */
-        tlsInteraction?: Gio.TlsInteraction | null
+        tls_interaction?: Gio.TlsInteraction | null
         /**
          * User-Agent string.
          * 
@@ -6351,7 +6351,7 @@ export module Session {
          * (eg, `libsoup/2.3.2`) to the end of the
          * header for you.
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -7079,7 +7079,7 @@ export module WebsocketConnection {
         /**
          * The type of connection (client/server).
          */
-        connectionType?: WebsocketConnectionType | null
+        connection_type?: WebsocketConnectionType | null
         /**
          * List of [class`WebsocketExtension]` objects that are active in the connection.
          */
@@ -7090,20 +7090,20 @@ export module WebsocketConnection {
          * 
          * The input and output streams must be pollable streams.
          */
-        ioStream?: Gio.IOStream | null
+        io_stream?: Gio.IOStream | null
         /**
          * Interval in seconds on when to send a ping message which will
          * serve as a keepalive message.
          * 
          * If set to 0 the keepalive message is disabled.
          */
-        keepaliveInterval?: number | null
+        keepalive_interval?: number | null
         /**
          * The maximum payload size for incoming packets.
          * 
          * The protocol expects or 0 to not limit it.
          */
-        maxIncomingPayloadSize?: number | null
+        max_incoming_payload_size?: number | null
         /**
          * The client's Origin.
          */

@@ -31,14 +31,14 @@ export module MediaPlayer {
 
         // Own constructor properties of RygelRenderer-2.6.RygelRenderer.MediaPlayer
 
-        playbackState?: string | null
-        playbackSpeed?: string | null
+        playback_state?: string | null
+        playback_speed?: string | null
         uri?: string | null
         volume?: number | null
         metadata?: string | null
-        mimeType?: string | null
-        contentFeatures?: string | null
-        userAgent?: string | null
+        mime_type?: string | null
+        content_features?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -238,16 +238,16 @@ export module PlayerController {
 
         // Own constructor properties of RygelRenderer-2.6.RygelRenderer.PlayerController
 
-        playbackState?: string | null
-        nTracks?: number | null
+        playback_state?: string | null
+        n_tracks?: number | null
         track?: number | null
         uri?: string | null
         metadata?: string | null
-        trackUri?: string | null
-        trackMetadata?: string | null
-        nextUri?: string | null
-        nextMetadata?: string | null
-        playMode?: string | null
+        track_uri?: string | null
+        track_metadata?: string | null
+        next_uri?: string | null
+        next_metadata?: string | null
+        play_mode?: string | null
     }
 
 }
@@ -430,7 +430,7 @@ export module MediaRendererPlugin {
 
         // Own constructor properties of RygelRenderer-2.6.RygelRenderer.MediaRendererPlugin
 
-        supportedProfiles?: RygelCore.DLNAProfile[] | null
+        supported_profiles?: RygelCore.DLNAProfile[] | null
     }
 
 }

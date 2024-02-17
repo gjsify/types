@@ -2189,11 +2189,11 @@ export module Document {
         /**
          * The date the document was created as seconds since the Epoch, or -1
          */
-        creation_date?: number | null
+        creationDate?: number | null
         /**
          * The #GDateTime the document was created.
          */
-        creation_datetime?: GLib.DateTime | null
+        creationDatetime?: GLib.DateTime | null
         /**
          * The creator of the document. See also poppler_document_get_creator()
          */
@@ -2205,11 +2205,11 @@ export module Document {
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
          */
-        mod_date?: number | null
+        modDate?: number | null
         /**
          * The #GDateTime the document was most recently modified.
          */
-        mod_datetime?: GLib.DateTime | null
+        modDatetime?: GLib.DateTime | null
         /**
          * The producer of the document. See also poppler_document_get_producer()
          */
@@ -2222,22 +2222,6 @@ export module Document {
          * The document's title or %NULL
          */
         title?: string | null
-        /**
-         * The date the document was created as seconds since the Epoch, or -1
-         */
-        creationDate?: number | null
-        /**
-         * The #GDateTime the document was created.
-         */
-        creationDatetime?: GLib.DateTime | null
-        /**
-         * The date the document was most recently modified as seconds since the Epoch, or -1
-         */
-        modDate?: number | null
-        /**
-         * The #GDateTime the document was most recently modified.
-         */
-        modDatetime?: GLib.DateTime | null
     }
 
 }
@@ -2253,15 +2237,7 @@ export interface Document {
     /**
      * The date the document was created as seconds since the Epoch, or -1
      */
-    creation_date: number
-    /**
-     * The date the document was created as seconds since the Epoch, or -1
-     */
     creationDate: number
-    /**
-     * The #GDateTime the document was created.
-     */
-    creation_datetime: GLib.DateTime
     /**
      * The #GDateTime the document was created.
      */
@@ -2277,15 +2253,7 @@ export interface Document {
     /**
      * The PDF major version number. See also poppler_document_get_pdf_version()
      */
-    readonly format_major: number
-    /**
-     * The PDF major version number. See also poppler_document_get_pdf_version()
-     */
     readonly formatMajor: number
-    /**
-     * The PDF minor version number. See also poppler_document_get_pdf_version()
-     */
-    readonly format_minor: number
     /**
      * The PDF minor version number. See also poppler_document_get_pdf_version()
      */
@@ -2305,15 +2273,7 @@ export interface Document {
     /**
      * The date the document was most recently modified as seconds since the Epoch, or -1
      */
-    mod_date: number
-    /**
-     * The date the document was most recently modified as seconds since the Epoch, or -1
-     */
     modDate: number
-    /**
-     * The #GDateTime the document was most recently modified.
-     */
-    mod_datetime: GLib.DateTime
     /**
      * The #GDateTime the document was most recently modified.
      */
@@ -2321,15 +2281,7 @@ export interface Document {
     /**
      * The page layout that should be used when the document is opened
      */
-    readonly page_layout: PageLayout
-    /**
-     * The page layout that should be used when the document is opened
-     */
     readonly pageLayout: PageLayout
-    /**
-     * The mode that should be used when the document is opened
-     */
-    readonly page_mode: PageMode
     /**
      * The mode that should be used when the document is opened
      */
@@ -2338,17 +2290,11 @@ export interface Document {
      * Flags specifying which operations are permitted when the document is opened
      */
     readonly permissions: Permissions
-    readonly print_duplex: PrintDuplex
     readonly printDuplex: PrintDuplex
     /**
      * Suggested number of copies to be printed for this document
      */
-    readonly print_n_copies: number
-    /**
-     * Suggested number of copies to be printed for this document
-     */
     readonly printNCopies: number
-    readonly print_scaling: PrintScaling
     readonly printScaling: PrintScaling
     /**
      * The producer of the document. See also poppler_document_get_producer()
@@ -2365,23 +2311,11 @@ export interface Document {
     /**
      * Document PDF subtype conformance
      */
-    readonly subtype_conformance: PDFConformance
-    /**
-     * Document PDF subtype conformance
-     */
     readonly subtypeConformance: PDFConformance
     /**
      * Document PDF subtype part
      */
-    readonly subtype_part: PDFPart
-    /**
-     * Document PDF subtype part
-     */
     readonly subtypePart: PDFPart
-    /**
-     * Document PDF subtype. See also poppler_document_get_pdf_subtype_string()
-     */
-    readonly subtype_string: string | null
     /**
      * Document PDF subtype. See also poppler_document_get_pdf_subtype_string()
      */
@@ -2390,7 +2324,6 @@ export interface Document {
      * The document's title or %NULL
      */
     title: string | null
-    readonly viewer_preferences: ViewerPreferences
     readonly viewerPreferences: ViewerPreferences
 
     // Owm methods of Poppler-0.18.Poppler.Document

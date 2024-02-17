@@ -110,13 +110,13 @@ export module Client {
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        desktopId?: string | null
+        desktop_id?: string | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        distanceThreshold?: number | null
+        distance_threshold?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.Location">"Location"</link>.
          * 
@@ -128,13 +128,13 @@ export module Client {
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        requestedAccuracyLevel?: number | null
+        requested_accuracy_level?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.TimeThreshold">"TimeThreshold"</link>.
          * 
          * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
-        timeThreshold?: number | null
+        time_threshold?: number | null
     }
 
 }
@@ -592,13 +592,13 @@ export module Manager {
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        availableAccuracyLevel?: number | null
+        available_accuracy_level?: number | null
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.InUse">"InUse"</link>.
          * 
          * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        inUse?: boolean | null
+        in_use?: boolean | null
     }
 
 }
@@ -2246,11 +2246,11 @@ export module Simple {
         /**
          * The requested maximum accuracy level.
          */
-        accuracyLevel?: AccuracyLevel | null
+        accuracy_level?: AccuracyLevel | null
         /**
          * The Desktop ID of the application.
          */
-        desktopId?: string | null
+        desktop_id?: string | null
         /**
          * The current distance threshold in meters. This value is used by the
          * service when it gets new location info. If the distance moved is
@@ -2258,7 +2258,7 @@ export module Simple {
          * 
          * When set to 0 (default), it always emits the signal.
          */
-        distanceThreshold?: number | null
+        distance_threshold?: number | null
         /**
          * The current time threshold in seconds. This value is used by the
          * service when it gets new location info. If the time passed is
@@ -2266,7 +2266,7 @@ export module Simple {
          * 
          * When set to 0 (default), it always emits the signal.
          */
-        timeThreshold?: number | null
+        time_threshold?: number | null
     }
 
 }

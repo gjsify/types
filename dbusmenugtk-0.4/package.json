@@ -1,13 +1,19 @@
 {
     "name": "@girs/dbusmenugtk-0.4",
-    "version": "0.4.0-3.2.7",
+    "version": "0.4.0-3.2.8",
     "description": "GJS TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "dbusmenugtk-0.4.js",
     "main": "dbusmenugtk-0.4.js",
     "exports": {
-        "./ambient": "./dbusmenugtk-0.4-ambient.d.ts",
-        "./import": "./dbusmenugtk-0.4-import.d.ts",
+        "./ambient": {
+            "types": "./dbusmenugtk-0.4-ambient.d.ts",
+            "default": "./dbusmenugtk-0.4-ambient.js"
+        },
+        "./import": {
+            "types": "./dbusmenugtk-0.4-import.d.ts",
+            "default": "./dbusmenugtk-0.4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./dbusmenugtk-0.4.d.ts",

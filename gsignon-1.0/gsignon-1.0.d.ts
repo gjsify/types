@@ -689,9 +689,8 @@ module Identity {
 
         // Own constructor properties of gSignon-1.0.gSignon.Identity
 
-        app_ctx?: string | null
-        id?: number | null
         appCtx?: string | null
+        id?: number | null
     }
 
 }
@@ -700,7 +699,6 @@ interface Identity {
 
     // Own properties of gSignon-1.0.gSignon.Identity
 
-    app_ctx: string | null
     appCtx: string | null
     id: number
 

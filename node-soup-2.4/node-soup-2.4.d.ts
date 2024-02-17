@@ -3202,7 +3202,7 @@ module Auth {
         // Own constructor properties of Soup-2.4.Soup.Auth
 
         host?: string | null
-        isForProxy?: boolean | null
+        is_for_proxy?: boolean | null
         realm?: string | null
     }
 
@@ -3537,20 +3537,20 @@ module AuthDomain {
 
         // Own constructor properties of Soup-2.4.Soup.AuthDomain
 
-        addPath?: string | null
+        add_path?: string | null
         /**
          * The #SoupAuthDomainFilter for the domain
          */
         filter?: AuthDomainFilter | null
-        filterData?: any | null
+        filter_data?: any | null
         /**
          * The #SoupAuthDomainGenericAuthCallback for the domain
          */
-        genericAuthCallback?: AuthDomainGenericAuthCallback | null
-        genericAuthData?: any | null
+        generic_auth_callback?: AuthDomainGenericAuthCallback | null
+        generic_auth_data?: any | null
         proxy?: boolean | null
         realm?: string | null
-        removePath?: string | null
+        remove_path?: string | null
     }
 
 }
@@ -3745,11 +3745,11 @@ module AuthDomainBasic {
         /**
          * The #SoupAuthDomainBasicAuthCallback
          */
-        authCallback?: AuthDomainBasicAuthCallback | null
+        auth_callback?: AuthDomainBasicAuthCallback | null
         /**
          * The data to pass to the #SoupAuthDomainBasicAuthCallback
          */
-        authData?: any | null
+        auth_data?: any | null
     }
 
 }
@@ -3876,11 +3876,11 @@ module AuthDomainDigest {
         /**
          * The #SoupAuthDomainDigestAuthCallback
          */
-        authCallback?: AuthDomainDigestAuthCallback | null
+        auth_callback?: AuthDomainDigestAuthCallback | null
         /**
          * The data to pass to the #SoupAuthDomainDigestAuthCallback
          */
-        authData?: any | null
+        auth_data?: any | null
     }
 
 }
@@ -4245,8 +4245,8 @@ module Cache {
 
         // Own constructor properties of Soup-2.4.Soup.Cache
 
-        cacheDir?: string | null
-        cacheType?: CacheType | null
+        cache_dir?: string | null
+        cache_type?: CacheType | null
     }
 
 }
@@ -4512,8 +4512,8 @@ module CookieJar {
         /**
          * The policy the jar should follow to accept or reject cookies
          */
-        acceptPolicy?: CookieJarAcceptPolicy | null
-        readOnly?: boolean | null
+        accept_policy?: CookieJarAcceptPolicy | null
+        read_only?: boolean | null
     }
 
 }
@@ -5226,7 +5226,7 @@ module Logger {
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          */
-        maxBodySize?: number | null
+        max_body_size?: number | null
     }
 
 }
@@ -5479,27 +5479,27 @@ module Message {
          * The #SoupURI loaded in the application when the message was
          * queued.
          */
-        firstParty?: URI | null
+        first_party?: URI | null
         flags?: MessageFlags | null
-        httpVersion?: HTTPVersion | null
+        http_version?: HTTPVersion | null
         /**
          * Set when the message is navigating between top level domains.
          */
-        isTopLevelNavigation?: boolean | null
+        is_top_level_navigation?: boolean | null
         method?: string | null
         priority?: MessagePriority | null
-        reasonPhrase?: string | null
-        serverSide?: boolean | null
-        siteForCookies?: URI | null
-        statusCode?: number | null
+        reason_phrase?: string | null
+        server_side?: boolean | null
+        site_for_cookies?: URI | null
+        status_code?: number | null
         /**
          * The #GTlsCertificate associated with the message
          */
-        tlsCertificate?: Gio.TlsCertificate | null
+        tls_certificate?: Gio.TlsCertificate | null
         /**
          * The verification errors on #SoupMessage:tls-certificate
          */
-        tlsErrors?: Gio.TlsCertificateFlags | null
+        tls_errors?: Gio.TlsCertificateFlags | null
         uri?: URI | null
     }
 
@@ -6198,7 +6198,7 @@ module ProxyResolverDefault {
 
         // Own constructor properties of Soup-2.4.Soup.ProxyResolverDefault
 
-        gproxyResolver?: Gio.ProxyResolver | null
+        gproxy_resolver?: Gio.ProxyResolver | null
     }
 
 }
@@ -6682,7 +6682,7 @@ module Server {
          * the #GMainContext that was the thread-default context at
          * the time soup_server_listen() was called.
          */
-        asyncContext?: any | null
+        async_context?: any | null
         /**
          * A %NULL-terminated array of URI schemes that should be
          * considered to be aliases for "http". Eg, if this included
@@ -6700,7 +6700,7 @@ module Server {
          * 
          * See also #SoupServer:https-aliases.
          */
-        httpAliases?: string[] | null
+        http_aliases?: string[] | null
         /**
          * A comma-delimited list of URI schemes that should be
          * considered to be aliases for "https". See
@@ -6709,7 +6709,7 @@ module Server {
          * The default value is %NULL, meaning that no URI schemes
          * are considered aliases for "https".
          */
-        httpsAliases?: string[] | null
+        https_aliases?: string[] | null
         /**
          * The address of the network interface the server is
          * listening on, if you are using the old #SoupServer API.
@@ -6723,7 +6723,7 @@ module Server {
          * soup_server_listen(), etc.)
          */
         port?: number | null
-        rawPaths?: boolean | null
+        raw_paths?: boolean | null
         /**
          * If non-%NULL, the value to use for the "Server" header on
          * #SoupMessage<!-- -->s processed by this server.
@@ -6750,7 +6750,7 @@ module Server {
          * "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
          */
-        serverHeader?: string | null
+        server_header?: string | null
         /**
          * Path to a file containing a PEM-encoded certificate.
          * 
@@ -6761,13 +6761,13 @@ module Server {
          * newer versions of glib, since returning %NULL from a
          * constructor is illegal).
          */
-        sslCertFile?: string | null
+        ssl_cert_file?: string | null
         /**
          * Path to a file containing a PEM-encoded private key. See
          * #SoupServer:ssl-cert-file for more information about how this
          * is used.
          */
-        sslKeyFile?: string | null
+        ssl_key_file?: string | null
         /**
          * A #GTlsCertificate that has a #GTlsCertificate:private-key
          * set. If this is set, then the server will be able to speak
@@ -6776,7 +6776,7 @@ module Server {
          * Alternatively, you can call soup_server_set_ssl_cert_file()
          * to have #SoupServer read in a a certificate from a file.
          */
-        tlsCertificate?: Gio.TlsCertificate | null
+        tls_certificate?: Gio.TlsCertificate | null
     }
 
 }
@@ -7440,7 +7440,7 @@ module Session {
          * Setting this will disable
          * #SoupSession:accept-language-auto.
          */
-        acceptLanguage?: string | null
+        accept_language?: string | null
         /**
          * If %TRUE, #SoupSession will automatically set the string
          * for the "Accept-Language" header on every #SoupMessage
@@ -7449,7 +7449,7 @@ module Session {
          * Setting this will override any previous value of
          * #SoupSession:accept-language.
          */
-        acceptLanguageAuto?: boolean | null
+        accept_language_auto?: boolean | null
         /**
          * The #GMainContext that miscellaneous session-related
          * asynchronous callbacks are invoked on. (Eg, setting
@@ -7465,7 +7465,7 @@ module Session {
          * If #SoupSession:use-thread-context is %FALSE, this context
          * will also be used for asynchronous HTTP I/O.
          */
-        asyncContext?: any | null
+        async_context?: any | null
         /**
          * A %NULL-terminated array of URI schemes that should be
          * considered to be aliases for "http". Eg, if this included
@@ -7483,7 +7483,7 @@ module Session {
          * 
          * See also #SoupSession:https-aliases.
          */
-        httpAliases?: string[] | null
+        http_aliases?: string[] | null
         /**
          * A comma-delimited list of URI schemes that should be
          * considered to be aliases for "https". See
@@ -7492,7 +7492,7 @@ module Session {
          * The default value is %NULL, meaning that no URI schemes
          * are considered aliases for "https".
          */
-        httpsAliases?: string[] | null
+        https_aliases?: string[] | null
         /**
          * Connection lifetime (in seconds) when idle. Any connection
          * left idle longer than this will be closed.
@@ -7508,7 +7508,7 @@ module Session {
          * #SoupSessionSync, the default value is 0 (meaning idle
          * connections will never time out).
          */
-        idleTimeout?: number | null
+        idle_timeout?: number | null
         /**
          * Sets the #SoupAddress to use for the client side of
          * the connection.
@@ -7516,9 +7516,9 @@ module Session {
          * Use this property if you want for instance to bind the
          * local socket to a specific IP address.
          */
-        localAddress?: Address | null
-        maxConns?: number | null
-        maxConnsPerHost?: number | null
+        local_address?: Address | null
+        max_conns?: number | null
+        max_conns_per_host?: number | null
         /**
          * A #GProxyResolver to use with this session. Setting this
          * will clear the #SoupSession:proxy-uri property, and remove
@@ -7531,7 +7531,7 @@ module Session {
          * #GProxyResolver if you want to control what proxies get
          * used.
          */
-        proxyResolver?: Gio.ProxyResolver | null
+        proxy_resolver?: Gio.ProxyResolver | null
         /**
          * A proxy to use for all http and https requests in this
          * session. Setting this will clear the
@@ -7551,7 +7551,7 @@ module Session {
          * proxies, you can create a #GSimpleProxyResolver and set the
          * #SoupSession:proxy-resolver property.
          */
-        proxyUri?: URI | null
+        proxy_uri?: URI | null
         /**
          * File containing SSL CA certificates.
          * 
@@ -7560,7 +7560,7 @@ module Session {
          * though it had read in a empty CA file, meaning that all SSL
          * certificates will be considered invalid.
          */
-        sslCaFile?: string | null
+        ssl_ca_file?: string | null
         /**
          * Normally, if #SoupSession:tls-database is set (including if
          * it was set via #SoupSession:ssl-use-system-ca-file or
@@ -7585,7 +7585,7 @@ module Session {
          * no CA file or TLS database, then all certificates are always
          * accepted, and this property has no effect.
          */
-        sslStrict?: boolean | null
+        ssl_strict?: boolean | null
         /**
          * Setting this to %TRUE is equivalent to setting
          * #SoupSession:tls-database to the default system CA database.
@@ -7603,7 +7603,7 @@ module Session {
          * #SoupSessionSync, on libsoup older than 2.74.0, the default value
          * is %FALSE, for backward compatibility.
          */
-        sslUseSystemCaFile?: boolean | null
+        ssl_use_system_ca_file?: boolean | null
         /**
          * The timeout (in seconds) for socket I/O operations
          * (including connecting to a server, and waiting for a reply
@@ -7644,17 +7644,17 @@ module Session {
          * #SoupSessionSync, on libsoup older than 2.74.0, this property
          * will be %NULL by default.
          */
-        tlsDatabase?: Gio.TlsDatabase | null
+        tls_database?: Gio.TlsDatabase | null
         /**
          * A #GTlsInteraction object that will be passed on to any
          * #GTlsConnections created by the session. (This can be used to
          * provide client-side certificates, for example.)
          */
-        tlsInteraction?: Gio.TlsInteraction | null
+        tls_interaction?: Gio.TlsInteraction | null
         /**
          * Whether or not to use NTLM authentication.
          */
-        useNtlm?: boolean | null
+        use_ntlm?: boolean | null
         /**
          * If %TRUE (which it always is on a plain #SoupSession),
          * asynchronous HTTP requests in this session will run in
@@ -7662,7 +7662,7 @@ module Session {
          * they are started, rather than always occurring in
          * #SoupSession:async-context.
          */
-        useThreadContext?: boolean | null
+        use_thread_context?: boolean | null
         /**
          * If non-%NULL, the value to use for the "User-Agent" header
          * on #SoupMessage<!-- -->s sent from this session.
@@ -7688,7 +7688,7 @@ module Session {
          * (eg, "<literal>libsoup/2.3.2</literal>") to the end of the
          * header for you.
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -8917,12 +8917,12 @@ module Socket {
 
         // Own constructor properties of Soup-2.4.Soup.Socket
 
-        asyncContext?: any | null
+        async_context?: any | null
         fd?: number | null
         gsocket?: Gio.Socket | null
         iostream?: Gio.IOStream | null
-        ipv6Only?: boolean | null
-        localAddress?: Address | null
+        ipv6_only?: boolean | null
+        local_address?: Address | null
         /**
          * Whether or not the socket uses non-blocking I/O.
          * 
@@ -8945,16 +8945,16 @@ module Socket {
          * simply never return %SOUP_SOCKET_WOULD_BLOCK, and so the
          * code that handles that case just won't get used for them.
          */
-        nonBlocking?: boolean | null
-        remoteAddress?: Address | null
-        sslCreds?: any | null
-        sslFallback?: boolean | null
-        sslStrict?: boolean | null
+        non_blocking?: boolean | null
+        remote_address?: Address | null
+        ssl_creds?: any | null
+        ssl_fallback?: boolean | null
+        ssl_strict?: boolean | null
         timeout?: number | null
         /**
          * Use g_main_context_get_thread_default().
          */
-        useThreadContext?: boolean | null
+        use_thread_context?: boolean | null
     }
 
 }
@@ -9356,7 +9356,7 @@ module WebsocketConnection {
         /**
          * The type of connection (client/server).
          */
-        connectionType?: WebsocketConnectionType | null
+        connection_type?: WebsocketConnectionType | null
         /**
          * List of #SoupWebsocketExtension objects that are active in the connection.
          */
@@ -9367,18 +9367,18 @@ module WebsocketConnection {
          * 
          * The input and output streams must be pollable streams.
          */
-        ioStream?: Gio.IOStream | null
+        io_stream?: Gio.IOStream | null
         /**
          * Interval in seconds on when to send a ping message which will
          * serve as a keepalive message. If set to 0 the keepalive message is
          * disabled.
          */
-        keepaliveInterval?: number | null
+        keepalive_interval?: number | null
         /**
          * The maximum payload size for incoming packets the protocol expects
          * or 0 to not limit it.
          */
-        maxIncomingPayloadSize?: number | null
+        max_incoming_payload_size?: number | null
         /**
          * The client's Origin.
          */

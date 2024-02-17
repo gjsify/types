@@ -693,8 +693,8 @@ export module DataObject {
 
         // Own constructor properties of Vda-1.Vda.DataObject
 
-        databaseConnection?: Connection | null
-        databaseTableName?: string | null
+        database_connection?: Connection | null
+        database_table_name?: string | null
         cancellable?: Gio.Cancellable | null
     }
 
@@ -824,7 +824,7 @@ export module DataCollection {
 
         // Own constructor properties of Vda-1.Vda.DataCollection
 
-        databaseConnection?: Connection | null
+        database_connection?: Connection | null
         cancellable?: Gio.Cancellable | null
     }
 
@@ -2235,7 +2235,7 @@ export module SqlExpressionField {
 
         // Own constructor properties of Vda-1.Vda.SqlExpressionField
 
-        tableRef?: string | null
+        table_ref?: string | null
         name?: string | null
         allias?: string | null
     }

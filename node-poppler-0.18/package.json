@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-poppler-0.18",
-    "version": "22.12.0-3.2.7",
+    "version": "22.12.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Poppler-0.18, generated from library version 22.12.0",
     "type": "module",
     "module": "node-poppler-0.18.js",
     "main": "node-poppler-0.18.js",
     "exports": {
-        "./ambient": "./node-poppler-0.18-ambient.d.ts",
-        "./import": "./node-poppler-0.18-import.d.ts",
+        "./ambient": {
+            "types": "./node-poppler-0.18-ambient.d.ts",
+            "default": "./node-poppler-0.18-ambient.js"
+        },
+        "./import": {
+            "types": "./node-poppler-0.18-import.d.ts",
+            "default": "./node-poppler-0.18-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-poppler-0.18.d.ts",

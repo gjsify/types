@@ -2009,7 +2009,6 @@ module Background {
 
         // Own constructor properties of Meta-13.Meta.Background
 
-        meta_display?: Display | null
         metaDisplay?: Display | null
     }
 
@@ -2019,7 +2018,6 @@ interface Background {
 
     // Own properties of Meta-13.Meta.Background
 
-    readonly meta_display: Display
     readonly metaDisplay: Display
 
     // Owm methods of Meta-13.Meta.Background
@@ -2082,9 +2080,8 @@ module BackgroundActor {
 
         // Own constructor properties of Meta-13.Meta.BackgroundActor
 
-        meta_display?: Display | null
-        monitor?: number | null
         metaDisplay?: Display | null
+        monitor?: number | null
     }
 
 }
@@ -2093,7 +2090,6 @@ interface BackgroundActor extends Atk.ImplementorIface, Clutter.Animatable, Clut
 
     // Own properties of Meta-13.Meta.BackgroundActor
 
-    readonly meta_display: Display
     readonly metaDisplay: Display
     readonly monitor: number
 
@@ -2383,17 +2379,12 @@ module BackgroundContent {
         background?: Background | null
         brightness?: number | null
         gradient?: boolean | null
-        gradient_height?: number | null
-        gradient_max_darkness?: number | null
-        meta_display?: Display | null
-        monitor?: number | null
-        rounded_clip_radius?: number | null
-        vignette?: boolean | null
-        vignette_sharpness?: number | null
         gradientHeight?: number | null
         gradientMaxDarkness?: number | null
         metaDisplay?: Display | null
+        monitor?: number | null
         roundedClipRadius?: number | null
+        vignette?: boolean | null
         vignetteSharpness?: number | null
     }
 
@@ -2406,17 +2397,12 @@ interface BackgroundContent extends Clutter.Content {
     background: Background
     brightness: number
     gradient: boolean
-    gradient_height: number
     gradientHeight: number
-    gradient_max_darkness: number
     gradientMaxDarkness: number
-    readonly meta_display: Display
     readonly metaDisplay: Display
     readonly monitor: number
-    rounded_clip_radius: number
     roundedClipRadius: number
     vignette: boolean
-    vignette_sharpness: number
     vignetteSharpness: number
 
     // Owm methods of Meta-13.Meta.BackgroundContent
@@ -3190,7 +3176,6 @@ module Context {
         // Own constructor properties of Meta-13.Meta.Context
 
         name?: string | null
-        unsafe_mode?: boolean | null
         unsafeMode?: boolean | null
     }
 
@@ -3201,7 +3186,6 @@ interface Context {
     // Own properties of Meta-13.Meta.Context
 
     readonly name: string | null
-    unsafe_mode: boolean
     unsafeMode: boolean
 
     // Own fields of Meta-13.Meta.Context
@@ -3617,9 +3601,7 @@ interface Display {
 
     // Own properties of Meta-13.Meta.Display
 
-    readonly compositor_modifiers: Clutter.ModifierType
     readonly compositorModifiers: Clutter.ModifierType
-    readonly focus_window: Window
     readonly focusWindow: Window
 
     // Owm methods of Meta-13.Meta.Display
@@ -4219,7 +4201,6 @@ module MonitorManager {
         // Own constructor properties of Meta-13.Meta.MonitorManager
 
         backend?: Backend | null
-        experimental_hdr?: string | null
         experimentalHdr?: string | null
     }
 
@@ -4230,13 +4211,9 @@ interface MonitorManager {
     // Own properties of Meta-13.Meta.MonitorManager
 
     readonly backend: Backend
-    experimental_hdr: string | null
     experimentalHdr: string | null
-    readonly has_builtin_panel: boolean
     readonly hasBuiltinPanel: boolean
-    readonly night_light_supported: boolean
     readonly nightLightSupported: boolean
-    readonly panel_orientation_managed: boolean
     readonly panelOrientationManaged: boolean
 
     // Owm methods of Meta-13.Meta.MonitorManager
@@ -4603,7 +4580,7 @@ interface RemoteAccessController {
     inhibit_remote_access(): void
     /**
      * Uninhibits remote access sessions from being created and running. If this was
-     * the last inhibition that was inhibited, new remote access sessions can now
+     * the last inhibitation that was inhibited, new remote access sessions can now
      * be created.
      */
     uninhibit_remote_access(): void
@@ -4653,7 +4630,6 @@ module RemoteAccessHandle {
 
         // Own constructor properties of Meta-13.Meta.RemoteAccessHandle
 
-        is_recording?: boolean | null
         isRecording?: boolean | null
     }
 
@@ -4663,7 +4639,6 @@ interface RemoteAccessHandle {
 
     // Own properties of Meta-13.Meta.RemoteAccessHandle
 
-    readonly is_recording: boolean
     readonly isRecording: boolean
 
     // Own fields of Meta-13.Meta.RemoteAccessHandle
@@ -5539,16 +5514,14 @@ module StartupSequence {
 
         // Own constructor properties of Meta-13.Meta.StartupSequence
 
-        application_id?: string | null
+        applicationId?: string | null
         display?: Display | null
-        icon_name?: string | null
+        iconName?: string | null
         id?: string | null
         name?: string | null
         timestamp?: number | null
         wmclass?: string | null
         workspace?: number | null
-        applicationId?: string | null
-        iconName?: string | null
     }
 
 }
@@ -5557,10 +5530,8 @@ interface StartupSequence {
 
     // Own properties of Meta-13.Meta.StartupSequence
 
-    readonly application_id: string | null
     readonly applicationId: string | null
     readonly display: Display
-    readonly icon_name: string | null
     readonly iconName: string | null
     readonly id: string | null
     readonly name: string | null
@@ -5674,11 +5645,6 @@ interface WaylandClient {
     // Owm methods of Meta-13.Meta.WaylandClient
 
     hide_from_window_list(window: Window): void
-    /**
-     * Mark window as DESKTOP window
-     * @param window a MetaWindow
-     */
-    make_desktop(window: Window): void
     owns_window(window: Window): boolean
     /**
      * Shows again this window in window lists, like taskbars, pagers...
@@ -5879,50 +5845,32 @@ interface Window extends Gio.Initable {
     // Own properties of Meta-13.Meta.Window
 
     readonly above: boolean
-    readonly appears_focused: boolean
     readonly appearsFocused: boolean
     readonly decorated: boolean
-    readonly demands_attention: boolean
     readonly demandsAttention: boolean
     readonly display: Display
     readonly effect: number
     readonly fullscreen: boolean
-    readonly gtk_app_menu_object_path: string | null
     readonly gtkAppMenuObjectPath: string | null
-    readonly gtk_application_id: string | null
     readonly gtkApplicationId: string | null
-    readonly gtk_application_object_path: string | null
     readonly gtkApplicationObjectPath: string | null
-    readonly gtk_menubar_object_path: string | null
     readonly gtkMenubarObjectPath: string | null
-    readonly gtk_unique_bus_name: string | null
     readonly gtkUniqueBusName: string | null
-    readonly gtk_window_object_path: string | null
     readonly gtkWindowObjectPath: string | null
     readonly icon: any
-    readonly is_alive: boolean
     readonly isAlive: boolean
-    readonly maximized_horizontally: boolean
     readonly maximizedHorizontally: boolean
-    readonly maximized_vertically: boolean
     readonly maximizedVertically: boolean
-    readonly mini_icon: any
     readonly miniIcon: any
     readonly minimized: boolean
-    readonly mutter_hints: string | null
     readonly mutterHints: string | null
-    readonly on_all_workspaces: boolean
     readonly onAllWorkspaces: boolean
     readonly resizeable: boolean
-    readonly skip_taskbar: boolean
     readonly skipTaskbar: boolean
     readonly title: string | null
     readonly urgent: boolean
-    readonly user_time: number
     readonly userTime: number
-    readonly window_type: WindowType
     readonly windowType: WindowType
-    readonly wm_class: string | null
     readonly wmClass: string | null
     readonly xwindow: number
 
@@ -5932,6 +5880,14 @@ interface Window extends Gio.Initable {
     activate_with_workspace(current_time: number, workspace: Workspace): void
     allows_move(): boolean
     allows_resize(): boolean
+    /**
+     * Determines if the window should be drawn with a focused appearance.
+     * 
+     * This is true for focused windows but also true for windows with a focused modal
+     * dialog attached.
+     * @returns %TRUE if the window should be drawn with a focused frame
+     */
+    appears_focused(): boolean
     begin_grab_op(op: GrabOp, device: Clutter.InputDevice | null, sequence: Clutter.EventSequence | null, timestamp: number): boolean
     can_close(): boolean
     can_maximize(): boolean
@@ -6484,7 +6440,6 @@ module WindowActor {
 
         // Own constructor properties of Meta-13.Meta.WindowActor
 
-        meta_window?: Window | null
         metaWindow?: Window | null
     }
 
@@ -6494,7 +6449,6 @@ interface WindowActor extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
 
     // Own properties of Meta-13.Meta.WindowActor
 
-    readonly meta_window: Window
     readonly metaWindow: Window
 
     // Own fields of Meta-13.Meta.WindowActor
@@ -7085,9 +7039,7 @@ interface Workspace {
     // Own properties of Meta-13.Meta.Workspace
 
     readonly active: boolean
-    readonly n_windows: number
     readonly nWindows: number
-    readonly workspace_index: number
     readonly workspaceIndex: number
 
     // Owm methods of Meta-13.Meta.Workspace
@@ -7255,11 +7207,8 @@ interface WorkspaceManager {
 
     // Own properties of Meta-13.Meta.WorkspaceManager
 
-    readonly layout_columns: number
     readonly layoutColumns: number
-    readonly layout_rows: number
     readonly layoutRows: number
-    readonly n_workspaces: number
     readonly nWorkspaces: number
 
     // Owm methods of Meta-13.Meta.WorkspaceManager

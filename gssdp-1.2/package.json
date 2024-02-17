@@ -1,13 +1,19 @@
 {
     "name": "@girs/gssdp-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for GSSDP-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "gssdp-1.2.js",
     "main": "gssdp-1.2.js",
     "exports": {
-        "./ambient": "./gssdp-1.2-ambient.d.ts",
-        "./import": "./gssdp-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./gssdp-1.2-ambient.d.ts",
+            "default": "./gssdp-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./gssdp-1.2-import.d.ts",
+            "default": "./gssdp-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gssdp-1.2.d.ts",

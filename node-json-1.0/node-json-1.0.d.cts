@@ -948,7 +948,7 @@ export module Generator {
         /**
          * The character that should be used when indenting in pretty print.
          */
-        indentChar?: number | null
+        indent_char?: number | null
         /**
          * Whether the output should be "pretty-printed", with indentation and
          * newlines.

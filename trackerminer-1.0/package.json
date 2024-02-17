@@ -1,13 +1,19 @@
 {
     "name": "@girs/trackerminer-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for TrackerMiner-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "trackerminer-1.0.js",
     "main": "trackerminer-1.0.js",
     "exports": {
-        "./ambient": "./trackerminer-1.0-ambient.d.ts",
-        "./import": "./trackerminer-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./trackerminer-1.0-ambient.d.ts",
+            "default": "./trackerminer-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./trackerminer-1.0-import.d.ts",
+            "default": "./trackerminer-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./trackerminer-1.0.d.ts",

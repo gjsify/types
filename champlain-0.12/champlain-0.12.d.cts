@@ -373,10 +373,9 @@ export module Adjustment {
         // Own constructor properties of Champlain-0.12.Champlain.Adjustment
 
         lower?: number | null
-        step_increment?: number | null
+        stepIncrement?: number | null
         upper?: number | null
         value?: number | null
-        stepIncrement?: number | null
     }
 
 }
@@ -386,7 +385,6 @@ export interface Adjustment {
     // Own properties of Champlain-0.12.Champlain.Adjustment
 
     lower: number
-    step_increment: number
     stepIncrement: number
     upper: number
     value: number
@@ -847,10 +845,6 @@ export module ErrorTileRenderer {
         /**
          * The size of the rendered tile.
          */
-        tile_size?: number | null
-        /**
-         * The size of the rendered tile.
-         */
         tileSize?: number | null
     }
 
@@ -860,10 +854,6 @@ export interface ErrorTileRenderer {
 
     // Own properties of Champlain-0.12.Champlain.ErrorTileRenderer
 
-    /**
-     * The size of the rendered tile.
-     */
-    tile_size: number
     /**
      * The size of the rendered tile.
      */
@@ -982,16 +972,6 @@ export module FileCache {
         /**
          * The directory where the tile database is stored.
          */
-        cache_dir?: string | null
-        /**
-         * The cache size limit in bytes.
-         * 
-         * Note: this new value will not be applied until you call champlain_file_cache_purge()
-         */
-        size_limit?: number | null
-        /**
-         * The directory where the tile database is stored.
-         */
         cacheDir?: string | null
         /**
          * The cache size limit in bytes.
@@ -1010,17 +990,7 @@ export interface FileCache {
     /**
      * The directory where the tile database is stored.
      */
-    readonly cache_dir: string | null
-    /**
-     * The directory where the tile database is stored.
-     */
     readonly cacheDir: string | null
-    /**
-     * The cache size limit in bytes.
-     * 
-     * Note: this new value will not be applied until you call champlain_file_cache_purge()
-     */
-    size_limit: number
     /**
      * The cache size limit in bytes.
      * 
@@ -1322,10 +1292,8 @@ export module KineticScrollView {
 
         // Own constructor properties of Champlain-0.12.Champlain.KineticScrollView
 
-        decel_rate?: number | null
-        mode?: boolean | null
-        motion_buffer?: number | null
         decelRate?: number | null
+        mode?: boolean | null
         motionBuffer?: number | null
     }
 
@@ -1335,10 +1303,8 @@ export interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animata
 
     // Own properties of Champlain-0.12.Champlain.KineticScrollView
 
-    decel_rate: number
     decelRate: number
     mode: boolean
-    motion_buffer: number
     motionBuffer: number
 
     // Owm methods of Champlain-0.12.Champlain.KineticScrollView
@@ -1660,11 +1626,11 @@ export module Label {
         /**
          * If the label has a background
          */
-        draw_background?: boolean | null
+        drawBackground?: boolean | null
         /**
          * If the label background has a shadow
          */
-        draw_shadow?: boolean | null
+        drawShadow?: boolean | null
         /**
          * The label's ellipsize mode
          */
@@ -1672,7 +1638,7 @@ export module Label {
         /**
          * The label's text font name
          */
-        font_name?: string | null
+        fontName?: string | null
         /**
          * The image of the label
          */
@@ -1680,43 +1646,11 @@ export module Label {
         /**
          * If the label is in single line mode
          */
-        single_line_mode?: boolean | null
+        singleLineMode?: boolean | null
         /**
          * The text of the label
          */
         text?: string | null
-        /**
-         * The label's text color
-         */
-        text_color?: Clutter.Color | null
-        /**
-         * If the label's text uses markup
-         */
-        use_markup?: boolean | null
-        /**
-         * If the label's text wrap is set
-         */
-        wrap?: boolean | null
-        /**
-         * The label's text wrap mode
-         */
-        wrap_mode?: Pango.WrapMode | null
-        /**
-         * If the label has a background
-         */
-        drawBackground?: boolean | null
-        /**
-         * If the label background has a shadow
-         */
-        drawShadow?: boolean | null
-        /**
-         * The label's text font name
-         */
-        fontName?: string | null
-        /**
-         * If the label is in single line mode
-         */
-        singleLineMode?: boolean | null
         /**
          * The label's text color
          */
@@ -1725,6 +1659,10 @@ export module Label {
          * If the label's text uses markup
          */
         useMarkup?: boolean | null
+        /**
+         * If the label's text wrap is set
+         */
+        wrap?: boolean | null
         /**
          * The label's text wrap mode
          */
@@ -1748,15 +1686,7 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
     /**
      * If the label has a background
      */
-    draw_background: boolean
-    /**
-     * If the label has a background
-     */
     drawBackground: boolean
-    /**
-     * If the label background has a shadow
-     */
-    draw_shadow: boolean
     /**
      * If the label background has a shadow
      */
@@ -1768,19 +1698,11 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
     /**
      * The label's text font name
      */
-    font_name: string | null
-    /**
-     * The label's text font name
-     */
     fontName: string | null
     /**
      * The image of the label
      */
     image: Clutter.Actor
-    /**
-     * If the label is in single line mode
-     */
-    single_line_mode: boolean
     /**
      * If the label is in single line mode
      */
@@ -1792,15 +1714,7 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
     /**
      * The label's text color
      */
-    text_color: Clutter.Color
-    /**
-     * The label's text color
-     */
     textColor: Clutter.Color
-    /**
-     * If the label's text uses markup
-     */
-    use_markup: boolean
     /**
      * If the label's text uses markup
      */
@@ -1809,10 +1723,6 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
      * If the label's text wrap is set
      */
     wrap: boolean
-    /**
-     * The label's text wrap mode
-     */
-    wrap_mode: Pango.WrapMode
     /**
      * The label's text wrap mode
      */
@@ -2676,12 +2586,6 @@ export module License {
          * license will be added below it. Your text can have multiple lines, just use
          * "\n" in between.
          */
-        extra_text?: string | null
-        /**
-         * Sets additional text to be displayed in the license area.  The map's
-         * license will be added below it. Your text can have multiple lines, just use
-         * "\n" in between.
-         */
         extraText?: string | null
     }
 
@@ -2695,12 +2599,6 @@ export interface License extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * The license's alignment
      */
     alignment: Pango.Alignment
-    /**
-     * Sets additional text to be displayed in the license area.  The map's
-     * license will be added below it. Your text can have multiple lines, just use
-     * "\n" in between.
-     */
-    extra_text: string | null
     /**
      * Sets additional text to be displayed in the license area.  The map's
      * license will be added below it. Your text can have multiple lines, just use
@@ -3048,15 +2946,11 @@ export module MapSource {
         /**
          * Next source in the loading chain.
          */
-        next_source?: MapSource | null
+        nextSource?: MapSource | null
         /**
          * Renderer used for tiles rendering.
          */
         renderer?: Renderer | null
-        /**
-         * Next source in the loading chain.
-         */
-        nextSource?: MapSource | null
     }
 
 }
@@ -3065,10 +2959,6 @@ export interface MapSource {
 
     // Own properties of Champlain-0.12.Champlain.MapSource
 
-    /**
-     * Next source in the loading chain.
-     */
-    next_source: MapSource
     /**
      * Next source in the loading chain.
      */
@@ -3394,38 +3284,6 @@ export module MapSourceDesc {
         /**
          * The license's uri for more information
          */
-        license_uri?: string | null
-        /**
-         * The maximum zoom level
-         */
-        max_zoom_level?: number | null
-        /**
-         * The minimum zoom level
-         */
-        min_zoom_level?: number | null
-        /**
-         * The name of the map source
-         */
-        name?: string | null
-        /**
-         * The map projection of the map source
-         */
-        projection?: MapProjection | null
-        /**
-         * The tile size of the map source
-         */
-        tile_size?: number | null
-        /**
-         * The URI format of a network map source
-         */
-        uri_format?: string | null
-        /**
-         * The map source constructor
-         */
-        constructor?: any | null
-        /**
-         * The license's uri for more information
-         */
         licenseUri?: string | null
         /**
          * The maximum zoom level
@@ -3435,6 +3293,14 @@ export module MapSourceDesc {
          * The minimum zoom level
          */
         minZoomLevel?: number | null
+        /**
+         * The name of the map source
+         */
+        name?: string | null
+        /**
+         * The map projection of the map source
+         */
+        projection?: MapProjection | null
         /**
          * The tile size of the map source
          */
@@ -3456,10 +3322,6 @@ export interface MapSourceDesc {
      */
     readonly constructor_: any
     /**
-     * The map source constructor
-     */
-    readonly constructor: any
-    /**
      * User data passed to the constructor
      */
     readonly data: any
@@ -3474,23 +3336,11 @@ export interface MapSourceDesc {
     /**
      * The license's uri for more information
      */
-    readonly license_uri: string | null
-    /**
-     * The license's uri for more information
-     */
     readonly licenseUri: string | null
     /**
      * The maximum zoom level
      */
-    readonly max_zoom_level: number
-    /**
-     * The maximum zoom level
-     */
     readonly maxZoomLevel: number
-    /**
-     * The minimum zoom level
-     */
-    readonly min_zoom_level: number
     /**
      * The minimum zoom level
      */
@@ -3506,15 +3356,7 @@ export interface MapSourceDesc {
     /**
      * The tile size of the map source
      */
-    readonly tile_size: number
-    /**
-     * The tile size of the map source
-     */
     readonly tileSize: number
-    /**
-     * The URI format of a network map source
-     */
-    readonly uri_format: string | null
     /**
      * The URI format of a network map source
      */
@@ -4213,10 +4055,6 @@ export module MarkerLayer {
         /**
          * Determines the type of selection that will be performed.
          */
-        selection_mode?: SelectionMode | null
-        /**
-         * Determines the type of selection that will be performed.
-         */
         selectionMode?: SelectionMode | null
     }
 
@@ -4226,10 +4064,6 @@ export interface MarkerLayer extends Atk.ImplementorIface, Exportable, Clutter.A
 
     // Own properties of Champlain-0.12.Champlain.MarkerLayer
 
-    /**
-     * Determines the type of selection that will be performed.
-     */
-    selection_mode: SelectionMode
     /**
      * Determines the type of selection that will be performed.
      */
@@ -4633,10 +4467,6 @@ export module MemoryCache {
         /**
          * The maximum number of tiles that are stored in the cache.
          */
-        size_limit?: number | null
-        /**
-         * The maximum number of tiles that are stored in the cache.
-         */
         sizeLimit?: number | null
     }
 
@@ -4646,10 +4476,6 @@ export interface MemoryCache {
 
     // Own properties of Champlain-0.12.Champlain.MemoryCache
 
-    /**
-     * The maximum number of tiles that are stored in the cache.
-     */
-    size_limit: number
     /**
      * The maximum number of tiles that are stored in the cache.
      */
@@ -4731,28 +4557,16 @@ export module NetworkBboxTileSource {
         /**
          * The URI of an OpenStreetMap API server
          */
-        api_uri?: string | null
-        /**
-         * Used to override the default proxy for accessing the network.
-         */
-        proxy_uri?: string | null
-        /**
-         * The map source's state. Useful to know if the data source is loading
-         * or not.
-         */
-        state?: State | null
-        /**
-         * The HTTP user agent used for requests
-         */
-        user_agent?: string | null
-        /**
-         * The URI of an OpenStreetMap API server
-         */
         apiUri?: string | null
         /**
          * Used to override the default proxy for accessing the network.
          */
         proxyUri?: string | null
+        /**
+         * The map source's state. Useful to know if the data source is loading
+         * or not.
+         */
+        state?: State | null
         /**
          * The HTTP user agent used for requests
          */
@@ -4768,15 +4582,7 @@ export interface NetworkBboxTileSource {
     /**
      * The URI of an OpenStreetMap API server
      */
-    api_uri: string | null
-    /**
-     * The URI of an OpenStreetMap API server
-     */
     apiUri: string | null
-    /**
-     * Used to override the default proxy for accessing the network.
-     */
-    proxy_uri: string | null
     /**
      * Used to override the default proxy for accessing the network.
      */
@@ -4786,10 +4592,6 @@ export interface NetworkBboxTileSource {
      * or not.
      */
     state: State
-    /**
-     * The HTTP user agent used for requests
-     */
-    user_agent: string | null
     /**
      * The HTTP user agent used for requests
      */
@@ -4934,31 +4736,11 @@ export module NetworkTileSource {
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          */
-        max_conns?: number | null
+        maxConns?: number | null
         /**
          * Specifies whether the network tile source can access network
          */
         offline?: boolean | null
-        /**
-         * Used to override the default proxy for accessing the network.
-         */
-        proxy_uri?: string | null
-        /**
-         * The uri format of the tile source, see #champlain_network_tile_source_set_uri_format
-         */
-        uri_format?: string | null
-        /**
-         * The HTTP user agent used for requests
-         */
-        user_agent?: string | null
-        /**
-         * Specifies the max number of allowed simultaneous connections for this tile
-         * source.
-         * 
-         * Before changing this remember to verify how many simultaneous connections
-         * your tile provider allows you to make.
-         */
-        maxConns?: number | null
         /**
          * Used to override the default proxy for accessing the network.
          */
@@ -4986,14 +4768,6 @@ export interface NetworkTileSource {
      * Before changing this remember to verify how many simultaneous connections
      * your tile provider allows you to make.
      */
-    max_conns: number
-    /**
-     * Specifies the max number of allowed simultaneous connections for this tile
-     * source.
-     * 
-     * Before changing this remember to verify how many simultaneous connections
-     * your tile provider allows you to make.
-     */
     maxConns: number
     /**
      * Specifies whether the network tile source can access network
@@ -5002,23 +4776,11 @@ export interface NetworkTileSource {
     /**
      * Used to override the default proxy for accessing the network.
      */
-    proxy_uri: string | null
-    /**
-     * Used to override the default proxy for accessing the network.
-     */
     proxyUri: string | null
     /**
      * The uri format of the tile source, see #champlain_network_tile_source_set_uri_format
      */
-    uri_format: string | null
-    /**
-     * The uri format of the tile source, see #champlain_network_tile_source_set_uri_format
-     */
     uriFormat: string | null
-    /**
-     * The HTTP user agent used for requests
-     */
-    user_agent: string | null
     /**
      * The HTTP user agent used for requests
      */
@@ -5283,27 +5045,11 @@ export module PathLayer {
         /**
          * The path's fill color
          */
-        fill_color?: Clutter.Color | null
+        fillColor?: Clutter.Color | null
         /**
          * The shape should be stroked
          */
         stroke?: boolean | null
-        /**
-         * The path's stroke color
-         */
-        stroke_color?: Clutter.Color | null
-        /**
-         * The path's stroke width (in pixels)
-         */
-        stroke_width?: number | null
-        /**
-         * Wether the path is visible
-         */
-        visible?: boolean | null
-        /**
-         * The path's fill color
-         */
-        fillColor?: Clutter.Color | null
         /**
          * The path's stroke color
          */
@@ -5312,6 +5058,10 @@ export module PathLayer {
          * The path's stroke width (in pixels)
          */
         strokeWidth?: number | null
+        /**
+         * Wether the path is visible
+         */
+        visible?: boolean | null
     }
 
 }
@@ -5331,10 +5081,6 @@ export interface PathLayer extends Atk.ImplementorIface, Exportable, Clutter.Ani
     /**
      * The path's fill color
      */
-    fill_color: Clutter.Color
-    /**
-     * The path's fill color
-     */
     fillColor: Clutter.Color
     /**
      * The shape should be stroked
@@ -5343,15 +5089,7 @@ export interface PathLayer extends Atk.ImplementorIface, Exportable, Clutter.Ani
     /**
      * The path's stroke color
      */
-    stroke_color: Clutter.Color
-    /**
-     * The path's stroke color
-     */
     strokeColor: Clutter.Color
-    /**
-     * The path's stroke width (in pixels)
-     */
-    stroke_width: number
     /**
      * The path's stroke width (in pixels)
      */
@@ -6296,15 +6034,11 @@ export module Scale {
         /**
          * The size of the map scale on screen in pixels.
          */
-        max_width?: number | null
+        maxWidth?: number | null
         /**
          * The scale's units.
          */
         unit?: Unit | null
-        /**
-         * The size of the map scale on screen in pixels.
-         */
-        maxWidth?: number | null
     }
 
 }
@@ -6313,10 +6047,6 @@ export interface Scale extends Atk.ImplementorIface, Clutter.Animatable, Clutter
 
     // Own properties of Champlain-0.12.Champlain.Scale
 
-    /**
-     * The size of the map scale on screen in pixels.
-     */
-    max_width: number
     /**
      * The size of the map scale on screen in pixels.
      */
@@ -6686,7 +6416,7 @@ export module Tile {
         /**
          * Specifies whether the tile should fade in when loading
          */
-        fade_in?: boolean | null
+        fadeIn?: boolean | null
         /**
          * The size of the tile in pixels
          */
@@ -6703,14 +6433,6 @@ export module Tile {
          * The y position of the tile
          */
         y?: number | null
-        /**
-         * The zoom level of the tile
-         */
-        zoom_level?: number | null
-        /**
-         * Specifies whether the tile should fade in when loading
-         */
-        fadeIn?: boolean | null
         /**
          * The zoom level of the tile
          */
@@ -6737,10 +6459,6 @@ export interface Tile extends Atk.ImplementorIface, Exportable, Clutter.Animatab
     /**
      * Specifies whether the tile should fade in when loading
      */
-    fade_in: boolean
-    /**
-     * Specifies whether the tile should fade in when loading
-     */
     fadeIn: boolean
     /**
      * The size of the tile in pixels
@@ -6758,10 +6476,6 @@ export interface Tile extends Atk.ImplementorIface, Exportable, Clutter.Animatab
      * The y position of the tile
      */
     y: number
-    /**
-     * The zoom level of the tile
-     */
-    zoom_level: number
     /**
      * The zoom level of the tile
      */
@@ -7372,30 +7086,6 @@ export module TileSource {
         /**
          * The usage license's uri for more information
          */
-        license_uri?: string | null
-        /**
-         * The maximum zoom level
-         */
-        max_zoom_level?: number | null
-        /**
-         * The minimum zoom level
-         */
-        min_zoom_level?: number | null
-        /**
-         * The name of the tile source
-         */
-        name?: string | null
-        /**
-         * The map projection of the tile source
-         */
-        projection?: MapProjection | null
-        /**
-         * The tile size of the tile source
-         */
-        tile_size?: number | null
-        /**
-         * The usage license's uri for more information
-         */
         licenseUri?: string | null
         /**
          * The maximum zoom level
@@ -7405,6 +7095,14 @@ export module TileSource {
          * The minimum zoom level
          */
         minZoomLevel?: number | null
+        /**
+         * The name of the tile source
+         */
+        name?: string | null
+        /**
+         * The map projection of the tile source
+         */
+        projection?: MapProjection | null
         /**
          * The tile size of the tile source
          */
@@ -7432,23 +7130,11 @@ export interface TileSource {
     /**
      * The usage license's uri for more information
      */
-    license_uri: string | null
-    /**
-     * The usage license's uri for more information
-     */
     licenseUri: string | null
     /**
      * The maximum zoom level
      */
-    max_zoom_level: number
-    /**
-     * The maximum zoom level
-     */
     maxZoomLevel: number
-    /**
-     * The minimum zoom level
-     */
-    min_zoom_level: number
     /**
      * The minimum zoom level
      */
@@ -7461,10 +7147,6 @@ export interface TileSource {
      * The map projection of the tile source
      */
     projection: MapProjection
-    /**
-     * The tile size of the tile source
-     */
-    tile_size: number
     /**
      * The tile size of the tile source
      */
@@ -7615,86 +7297,15 @@ export module View {
         /**
          * Animate zoom change when zooming in/out.
          */
-        animate_zoom?: boolean | null
-        /**
-         * The pattern displayed in the background of the map.
-         */
-        background_pattern?: Clutter.Actor | null
-        /**
-         * The deceleration rate for the kinetic mode. The default value is 1.1.
-         */
-        deceleration?: number | null
-        /**
-         * The duration of an animation when going to a location.
-         * A value of 0 means that the duration is calculated automatically for you.
-         * 
-         * Please note that animation of #champlain_view_ensure_visible also
-         * involves a 'goto' animation.
-         */
-        goto_animation_duration?: number | null
-        /**
-         * The mode of animation when going to a location.
-         * 
-         * Please note that animation of #champlain_view_ensure_visible also
-         * involves a 'goto' animation.
-         */
-        goto_animation_mode?: Clutter.AnimationMode | null
-        /**
-         * Determines whether the view should wrap horizontally.
-         */
-        horizontal_wrap?: boolean | null
-        /**
-         * Keep the current centered position when resizing the view.
-         */
-        keep_center_on_resize?: boolean | null
-        /**
-         * Determines whether the view should use kinetic mode.
-         */
-        kinetic_mode?: boolean | null
-        /**
-         * The latitude coordonate of the map
-         */
-        latitude?: number | null
-        /**
-         * The longitude coordonate of the map
-         */
-        longitude?: number | null
-        /**
-         * The #ChamplainMapSource being displayed
-         */
-        map_source?: MapSource | null
-        /**
-         * The highest allowed level of zoom of the content.
-         */
-        max_zoom_level?: number | null
-        /**
-         * The lowest allowed level of zoom of the content.
-         */
-        min_zoom_level?: number | null
-        /**
-         * Set a bounding box to limit the world to. No tiles will be loaded
-         * outside of this bounding box. It will not be possible to scroll outside
-         * of this bounding box.
-         * 
-         * Default world is the actual world.
-         */
-        world?: BoundingBox | null
-        /**
-         * The level of zoom of the content.
-         */
-        zoom_level?: number | null
-        /**
-         * Should the view zoom in and recenter when the user double click on the map.
-         */
-        zoom_on_double_click?: boolean | null
-        /**
-         * Animate zoom change when zooming in/out.
-         */
         animateZoom?: boolean | null
         /**
          * The pattern displayed in the background of the map.
          */
         backgroundPattern?: Clutter.Actor | null
+        /**
+         * The deceleration rate for the kinetic mode. The default value is 1.1.
+         */
+        deceleration?: number | null
         /**
          * The duration of an animation when going to a location.
          * A value of 0 means that the duration is calculated automatically for you.
@@ -7723,6 +7334,14 @@ export module View {
          */
         kineticMode?: boolean | null
         /**
+         * The latitude coordonate of the map
+         */
+        latitude?: number | null
+        /**
+         * The longitude coordonate of the map
+         */
+        longitude?: number | null
+        /**
          * The #ChamplainMapSource being displayed
          */
         mapSource?: MapSource | null
@@ -7734,6 +7353,14 @@ export module View {
          * The lowest allowed level of zoom of the content.
          */
         minZoomLevel?: number | null
+        /**
+         * Set a bounding box to limit the world to. No tiles will be loaded
+         * outside of this bounding box. It will not be possible to scroll outside
+         * of this bounding box.
+         * 
+         * Default world is the actual world.
+         */
+        world?: BoundingBox | null
         /**
          * The level of zoom of the content.
          */
@@ -7753,15 +7380,7 @@ export interface View extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
     /**
      * Animate zoom change when zooming in/out.
      */
-    animate_zoom: boolean
-    /**
-     * Animate zoom change when zooming in/out.
-     */
     animateZoom: boolean
-    /**
-     * The pattern displayed in the background of the map.
-     */
-    background_pattern: Clutter.Actor
     /**
      * The pattern displayed in the background of the map.
      */
@@ -7777,22 +7396,7 @@ export interface View extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * Please note that animation of #champlain_view_ensure_visible also
      * involves a 'goto' animation.
      */
-    goto_animation_duration: number
-    /**
-     * The duration of an animation when going to a location.
-     * A value of 0 means that the duration is calculated automatically for you.
-     * 
-     * Please note that animation of #champlain_view_ensure_visible also
-     * involves a 'goto' animation.
-     */
     gotoAnimationDuration: number
-    /**
-     * The mode of animation when going to a location.
-     * 
-     * Please note that animation of #champlain_view_ensure_visible also
-     * involves a 'goto' animation.
-     */
-    goto_animation_mode: Clutter.AnimationMode
     /**
      * The mode of animation when going to a location.
      * 
@@ -7803,23 +7407,11 @@ export interface View extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
     /**
      * Determines whether the view should wrap horizontally.
      */
-    horizontal_wrap: boolean
-    /**
-     * Determines whether the view should wrap horizontally.
-     */
     horizontalWrap: boolean
     /**
      * Keep the current centered position when resizing the view.
      */
-    keep_center_on_resize: boolean
-    /**
-     * Keep the current centered position when resizing the view.
-     */
     keepCenterOnResize: boolean
-    /**
-     * Determines whether the view should use kinetic mode.
-     */
-    kinetic_mode: boolean
     /**
      * Determines whether the view should use kinetic mode.
      */
@@ -7835,23 +7427,11 @@ export interface View extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
     /**
      * The #ChamplainMapSource being displayed
      */
-    map_source: MapSource
-    /**
-     * The #ChamplainMapSource being displayed
-     */
     mapSource: MapSource
     /**
      * The highest allowed level of zoom of the content.
      */
-    max_zoom_level: number
-    /**
-     * The highest allowed level of zoom of the content.
-     */
     maxZoomLevel: number
-    /**
-     * The lowest allowed level of zoom of the content.
-     */
-    min_zoom_level: number
     /**
      * The lowest allowed level of zoom of the content.
      */
@@ -7872,15 +7452,7 @@ export interface View extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
     /**
      * The level of zoom of the content.
      */
-    zoom_level: number
-    /**
-     * The level of zoom of the content.
-     */
     zoomLevel: number
-    /**
-     * Should the view zoom in and recenter when the user double click on the map.
-     */
-    zoom_on_double_click: boolean
     /**
      * Should the view zoom in and recenter when the user double click on the map.
      */
@@ -8543,8 +8115,6 @@ export module Viewport {
 
         hadjustment?: Adjustment | null
         vadjustment?: Adjustment | null
-        x_origin?: number | null
-        y_origin?: number | null
         xOrigin?: number | null
         yOrigin?: number | null
     }
@@ -8557,9 +8127,7 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
 
     hadjustment: Adjustment
     vadjustment: Adjustment
-    x_origin: number
     xOrigin: number
-    y_origin: number
     yOrigin: number
 
     // Own fields of Champlain-0.12.Champlain.Viewport

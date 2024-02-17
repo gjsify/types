@@ -1,13 +1,19 @@
 {
     "name": "@girs/dbusglib-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for DBusGLib-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "dbusglib-1.0.js",
     "main": "dbusglib-1.0.js",
     "exports": {
-        "./ambient": "./dbusglib-1.0-ambient.d.ts",
-        "./import": "./dbusglib-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./dbusglib-1.0-ambient.d.ts",
+            "default": "./dbusglib-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./dbusglib-1.0-import.d.ts",
+            "default": "./dbusglib-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./dbusglib-1.0.d.ts",

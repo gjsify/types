@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gstrtspserver-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GstRtspServer-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gstrtspserver-1.0.js",
     "main": "node-gstrtspserver-1.0.js",
     "exports": {
-        "./ambient": "./node-gstrtspserver-1.0-ambient.d.ts",
-        "./import": "./node-gstrtspserver-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-gstrtspserver-1.0-ambient.d.ts",
+            "default": "./node-gstrtspserver-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gstrtspserver-1.0-import.d.ts",
+            "default": "./node-gstrtspserver-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gstrtspserver-1.0.d.ts",

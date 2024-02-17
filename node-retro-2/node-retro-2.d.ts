@@ -562,7 +562,7 @@ module Core {
 
         // Own constructor properties of Retro-2.Retro.Core
 
-        coreAssetsDirectory?: string | null
+        core_assets_directory?: string | null
         /**
          * The filename of the core.
          */
@@ -583,22 +583,22 @@ module Core {
          * 
          * The core will save some data here.
          */
-        saveDirectory?: string | null
+        save_directory?: string | null
         /**
          * The speed ratio at wich the core will run.
          */
-        speedRate?: number | null
+        speed_rate?: number | null
         /**
          * The system directory of the core.
          * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          */
-        systemDirectory?: string | null
+        system_directory?: string | null
         /**
          * The name of the user.
          */
-        userName?: string | null
+        user_name?: string | null
     }
 
 }
@@ -1192,8 +1192,8 @@ module CoreView {
 
         // Own constructor properties of Retro-2.Retro.CoreView
 
-        canGrabPointer?: boolean | null
-        snapPointerToBorders?: boolean | null
+        can_grab_pointer?: boolean | null
+        snap_pointer_to_borders?: boolean | null
     }
 
 }

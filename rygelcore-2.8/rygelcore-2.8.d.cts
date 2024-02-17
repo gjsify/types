@@ -422,7 +422,6 @@ export module BasicManagement {
 
         // Own constructor properties of RygelCore-2.8.RygelCore.BasicManagement
 
-        max_history_size?: number | null
         maxHistorySize?: number | null
     }
 
@@ -432,7 +431,6 @@ export interface BasicManagement {
 
     // Own properties of RygelCore-2.8.RygelCore.BasicManagement
 
-    max_history_size: number
     maxHistorySize: number
 
     // Conflicting properties
@@ -928,7 +926,6 @@ export module RecursiveModuleLoader {
 
         // Own constructor properties of RygelCore-2.8.RygelCore.RecursiveModuleLoader
 
-        base_path?: string | null
         basePath?: string | null
     }
 
@@ -938,7 +935,6 @@ export interface RecursiveModuleLoader {
 
     // Own properties of RygelCore-2.8.RygelCore.RecursiveModuleLoader
 
-    base_path: string | null
     basePath: string | null
 
     // Owm methods of RygelCore-2.8.RygelCore.RecursiveModuleLoader
@@ -991,12 +987,8 @@ export module Plugin {
         name?: string | null
         title?: string | null
         description?: string | null
-        desc_path?: string | null
-        active?: boolean | null
-        resource_infos?: Gee.ArrayList | null
-        icon_infos?: Gee.ArrayList | null
-        default_icons?: Gee.ArrayList | null
         descPath?: string | null
+        active?: boolean | null
         resourceInfos?: Gee.ArrayList | null
         iconInfos?: Gee.ArrayList | null
         defaultIcons?: Gee.ArrayList | null
@@ -1012,14 +1004,10 @@ export interface Plugin {
     readonly name: string | null
     title: string | null
     readonly description: string | null
-    readonly desc_path: string | null
     readonly descPath: string | null
     active: boolean
-    resource_infos: Gee.ArrayList
     resourceInfos: Gee.ArrayList
-    icon_infos: Gee.ArrayList
     iconInfos: Gee.ArrayList
-    default_icons: Gee.ArrayList
     defaultIcons: Gee.ArrayList
 
     // Owm methods of RygelCore-2.8.RygelCore.Plugin
@@ -1395,8 +1383,6 @@ export module V1Hacks {
 
         // Own constructor properties of RygelCore-2.8.RygelCore.V1Hacks
 
-        device_type?: string | null
-        service_types?: string[] | null
         deviceType?: string | null
         serviceTypes?: string[] | null
     }
@@ -1407,9 +1393,7 @@ export interface V1Hacks {
 
     // Own properties of RygelCore-2.8.RygelCore.V1Hacks
 
-    device_type: string | null
     deviceType: string | null
-    readonly service_types: string[]
     readonly serviceTypes: string[]
 
     // Own fields of RygelCore-2.8.RygelCore.V1Hacks
@@ -1550,11 +1534,9 @@ export module PluginInformation {
 
         // Own constructor properties of RygelCore-2.8.RygelCore.PluginInformation
 
-        module_path?: string | null
+        modulePath?: string | null
         name?: string | null
         conflicts?: any | null
-        module_loaded?: boolean | null
-        modulePath?: string | null
         moduleLoaded?: boolean | null
     }
 
@@ -1564,11 +1546,9 @@ export interface PluginInformation {
 
     // Own properties of RygelCore-2.8.RygelCore.PluginInformation
 
-    readonly module_path: string | null
     readonly modulePath: string | null
     readonly name: string | null
     readonly conflicts: any
-    module_loaded: boolean
     moduleLoaded: boolean
 
     // Owm methods of RygelCore-2.8.RygelCore.PluginInformation

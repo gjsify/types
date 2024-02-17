@@ -523,7 +523,7 @@ export module TabGroup {
         /**
          * The #TeplTab currently shown.
          */
-        activeTab?: Tab | null
+        active_tab?: Tab | null
     }
 
 }
@@ -891,7 +891,7 @@ export module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        applicationWindow?: Gtk.ApplicationWindow | null
+        application_window?: Gtk.ApplicationWindow | null
         /**
          * Whether to handle the #GtkWindow:title. The title is probably not
          * appropriate if a #GtkHeaderBar is used, the title is meant to be used
@@ -906,7 +906,7 @@ export module ApplicationWindow {
          * If the active view is %NULL, the title contains only the application
          * name.
          */
-        handleTitle?: boolean | null
+        handle_title?: boolean | null
     }
 
 }
@@ -1075,7 +1075,7 @@ export module Buffer {
          * When the #GtkSourceBuffer:style-scheme is %NULL,
          * #TeplBuffer:tepl-style-scheme-id contains the empty string.
          */
-        teplStyleSchemeId?: string | null
+        tepl_style_scheme_id?: string | null
     }
 
 }
@@ -1635,7 +1635,7 @@ export module FileSaver {
         /**
          * The newline type.
          */
-        newlineType?: NewlineType | null
+        newline_type?: NewlineType | null
     }
 
 }
@@ -2439,7 +2439,7 @@ export module InfoBar {
          * gtk_widget_destroy() when the #GtkInfoBar::response signal is
          * received with the `response_id` %GTK_RESPONSE_CLOSE.
          */
-        handleCloseResponse?: boolean | null
+        handle_close_response?: boolean | null
         /**
          * If this property is %TRUE, then an icon is shown on the left, based
          * on the value of the #GtkInfoBar:message-type property. For
@@ -2451,7 +2451,7 @@ export module InfoBar {
          * Note that setting this property doesn't change the value of the
          * #TeplInfoBar:icon-name property; the two properties are separate.
          */
-        iconFromMessageType?: boolean | null
+        icon_from_message_type?: boolean | null
         /**
          * If set to a non-%NULL value, then an icon is shown on the left.
          * 
@@ -2459,7 +2459,7 @@ export module InfoBar {
          * #TeplInfoBar:icon-from-message-type property is not taken into
          * account.
          */
-        iconName?: string | null
+        icon_name?: string | null
     }
 
 }
@@ -5060,7 +5060,7 @@ export module ProgressInfoBar {
          * Whether to add a Cancel button in the action area of the #GtkInfoBar,
          * with the %GTK_RESPONSE_CANCEL response.
          */
-        hasCancelButton?: boolean | null
+        has_cancel_button?: boolean | null
     }
 
 }
@@ -6402,7 +6402,7 @@ export module StyleSchemeChooserWidget {
          * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
          * property contains the empty string.
          */
-        teplStyleSchemeId?: string | null
+        tepl_style_scheme_id?: string | null
     }
 
 }

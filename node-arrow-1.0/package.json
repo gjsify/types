@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-arrow-1.0",
-    "version": "7.0.0-3.2.7",
+    "version": "7.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Arrow-1.0, generated from library version 7.0.0",
     "type": "module",
     "module": "node-arrow-1.0.js",
     "main": "node-arrow-1.0.js",
     "exports": {
-        "./ambient": "./node-arrow-1.0-ambient.d.ts",
-        "./import": "./node-arrow-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-arrow-1.0-ambient.d.ts",
+            "default": "./node-arrow-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-arrow-1.0-import.d.ts",
+            "default": "./node-arrow-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-arrow-1.0.d.ts",

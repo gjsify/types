@@ -90,7 +90,7 @@ export module ClientCreateOptions {
 
         // Own constructor properties of Plasma-1.0.Plasma.ClientCreateOptions
 
-        gpuDevice?: number | null
+        gpu_device?: number | null
     }
 
 }
@@ -153,7 +153,7 @@ export module ClientOptions {
 
         // Own constructor properties of Plasma-1.0.Plasma.ClientOptions
 
-        nRetries?: number | null
+        n_retries?: number | null
     }
 
 }
@@ -314,11 +314,11 @@ export module Object {
 
         client?: Client | null
         data?: Arrow.Buffer | null
-        gpuDevice?: number | null
+        gpu_device?: number | null
         id?: ObjectID | null
         metadata?: Arrow.Buffer | null
-        rawData?: any | null
-        rawMetadata?: any | null
+        raw_data?: any | null
+        raw_metadata?: any | null
     }
 
 }

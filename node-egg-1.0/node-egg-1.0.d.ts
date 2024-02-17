@@ -117,7 +117,7 @@ module Animation {
          * animation should run before being completed.
          */
         duration?: number | null
-        frameClock?: Gdk.FrameClock | null
+        frame_clock?: Gdk.FrameClock | null
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
@@ -377,7 +377,7 @@ module Box {
 
         // Own constructor properties of Egg-1.0.Egg.Box
 
-        maxWidthRequest?: number | null
+        max_width_request?: number | null
     }
 
 }
@@ -780,7 +780,7 @@ module CenteringBin {
 
         // Own constructor properties of Egg-1.0.Egg.CenteringBin
 
-        maxWidthRequest?: number | null
+        max_width_request?: number | null
     }
 
 }
@@ -1157,10 +1157,10 @@ module ColumnLayout {
 
         // Own constructor properties of Egg-1.0.Egg.ColumnLayout
 
-        columnSpacing?: number | null
-        columnWidth?: number | null
-        maxColumns?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        column_width?: number | null
+        max_columns?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -1913,8 +1913,8 @@ module EmptyState {
 
         // Own constructor properties of Egg-1.0.Egg.EmptyState
 
-        iconName?: string | null
-        pixelSize?: number | null
+        icon_name?: string | null
+        pixel_size?: number | null
         resource?: string | null
         subtitle?: string | null
         title?: string | null
@@ -2318,7 +2318,7 @@ module EntryBox {
 
         // Own constructor properties of Egg-1.0.Egg.EntryBox
 
-        maxWidthChars?: number | null
+        max_width_chars?: number | null
     }
 
 }
@@ -2713,13 +2713,13 @@ module FileChooserEntry {
         // Own constructor properties of Egg-1.0.Egg.FileChooserEntry
 
         action?: Gtk.FileChooserAction | null
-        createFolders?: boolean | null
-        doOverwriteConfirmation?: boolean | null
+        create_folders?: boolean | null
+        do_overwrite_confirmation?: boolean | null
         file?: Gio.File | null
         filter?: Gtk.FileFilter | null
-        localOnly?: boolean | null
-        maxWidthChars?: number | null
-        showHidden?: boolean | null
+        local_only?: boolean | null
+        max_width_chars?: number | null
+        show_hidden?: boolean | null
         title?: string | null
     }
 
@@ -3144,9 +3144,9 @@ module ListBox {
 
         // Own constructor properties of Egg-1.0.Egg.ListBox
 
-        propertyName?: string | null
-        rowType?: GObject.GType | null
-        rowTypeName?: string | null
+        property_name?: string | null
+        row_type?: GObject.GType | null
+        row_type_name?: string | null
     }
 
 }
@@ -4403,7 +4403,7 @@ module ProgressButton {
         // Own constructor properties of Egg-1.0.Egg.ProgressButton
 
         progress?: number | null
-        showProgress?: boolean | null
+        show_progress?: boolean | null
     }
 
 }
@@ -4878,8 +4878,8 @@ module RadioBox {
 
         // Own constructor properties of Egg-1.0.Egg.RadioBox
 
-        activeId?: string | null
-        showMore?: boolean | null
+        active_id?: string | null
+        show_more?: boolean | null
     }
 
 }
@@ -5719,8 +5719,8 @@ module SearchBar {
 
         // Own constructor properties of Egg-1.0.Egg.SearchBar
 
-        searchModeEnabled?: boolean | null
-        showCloseButton?: boolean | null
+        search_mode_enabled?: boolean | null
+        show_close_button?: boolean | null
     }
 
 }
@@ -6114,9 +6114,9 @@ module SettingsFlagAction {
 
         // Own constructor properties of Egg-1.0.Egg.SettingsFlagAction
 
-        flagNick?: string | null
-        schemaId?: string | null
-        schemaKey?: string | null
+        flag_nick?: string | null
+        schema_id?: string | null
+        schema_key?: string | null
     }
 
 }
@@ -6215,7 +6215,7 @@ module SettingsSandwich {
         // Own constructor properties of Egg-1.0.Egg.SettingsSandwich
 
         path?: string | null
-        schemaId?: string | null
+        schema_id?: string | null
     }
 
 }
@@ -6330,7 +6330,7 @@ module SignalGroup {
         /**
          * The GType of the target property.
          */
-        targetType?: GObject.GType | null
+        target_type?: GObject.GType | null
     }
 
 }
@@ -6502,7 +6502,7 @@ module SimpleLabel {
         // Own constructor properties of Egg-1.0.Egg.SimpleLabel
 
         label?: string | null
-        widthChars?: number | null
+        width_chars?: number | null
         xalign?: number | null
     }
 
@@ -6857,7 +6857,7 @@ module SimplePopover {
 
         // Own constructor properties of Egg-1.0.Egg.SimplePopover
 
-        buttonText?: string | null
+        button_text?: string | null
         message?: string | null
         ready?: boolean | null
         text?: string | null
@@ -7820,7 +7820,7 @@ module Suggestion {
 
         // Own constructor properties of Egg-1.0.Egg.Suggestion
 
-        iconName?: string | null
+        icon_name?: string | null
         id?: string | null
         subtitle?: string | null
         title?: string | null
@@ -8798,7 +8798,7 @@ module SuggestionPopover {
         // Own constructor properties of Egg-1.0.Egg.SuggestionPopover
 
         model?: Suggestion | null
-        relativeTo?: Gtk.Widget | null
+        relative_to?: Gtk.Widget | null
         selected?: Suggestion | null
     }
 
@@ -9827,22 +9827,22 @@ module TaskCache {
 
         // Own constructor properties of Egg-1.0.Egg.TaskCache
 
-        keyCopyFunc?: any | null
-        keyDestroyFunc?: any | null
-        keyEqualFunc?: any | null
-        keyHashFunc?: any | null
-        populateCallback?: any | null
-        populateCallbackData?: any | null
-        populateCallbackDataDestroy?: any | null
+        key_copy_func?: any | null
+        key_destroy_func?: any | null
+        key_equal_func?: any | null
+        key_hash_func?: any | null
+        populate_callback?: any | null
+        populate_callback_data?: any | null
+        populate_callback_data_destroy?: any | null
         /**
          * This is the number of milliseconds before an item should be evicted
          * from the cache.
          * 
          * A value of zero indicates no eviction.
          */
-        timeToLive?: number | null
-        valueCopyFunc?: any | null
-        valueDestroyFunc?: any | null
+        time_to_live?: number | null
+        value_copy_func?: any | null
+        value_destroy_func?: any | null
     }
 
 }
@@ -9978,8 +9978,8 @@ module ThreeGrid {
 
         // Own constructor properties of Egg-1.0.Egg.ThreeGrid
 
-        columnSpacing?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        row_spacing?: number | null
     }
 
 }

@@ -3836,8 +3836,7 @@ function keyvalToUpper(keyval: number): number
  * This is often useful for implementing the
  * [vfunc`Gdk`.Paintable.get_current_image] virtual function
  * when the paintable is in an incomplete state (like a
- * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
- * the first frame).
+ * [class`Gtk`.MediaStream] before receiving the first frame).
  * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
  * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
  * @returns a `GdkPaintable`
@@ -4492,8 +4491,7 @@ class Paintable extends GObject.Object {
      * This is often useful for implementing the
      * [vfunc`Gdk`.Paintable.get_current_image] virtual function
      * when the paintable is in an incomplete state (like a
-     * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
-     * the first frame).
+     * [class`Gtk`.MediaStream] before receiving the first frame).
      * @param intrinsicWidth The intrinsic width to report. Can be 0 for no width.
      * @param intrinsicHeight The intrinsic height to report. Can be 0 for no height.
      * @returns a `GdkPaintable`
@@ -4712,11 +4710,11 @@ module Toplevel {
         /**
          * The fullscreen mode of the surface.
          */
-        fullscreenMode?: FullscreenMode | null
+        fullscreen_mode?: FullscreenMode | null
         /**
          * A list of textures to use as icon.
          */
-        iconList?: any | null
+        icon_list?: any | null
         /**
          * Whether the surface is modal.
          */
@@ -4727,7 +4725,7 @@ module Toplevel {
          * See [class`Gdk`.AppLaunchContext] for more information about
          * startup feedback.
          */
-        startupId?: string | null
+        startup_id?: string | null
         /**
          * The title of the surface.
          */
@@ -4735,7 +4733,7 @@ module Toplevel {
         /**
          * The transient parent of the surface.
          */
-        transientFor?: Surface | null
+        transient_for?: Surface | null
     }
 
 }
@@ -4817,9 +4815,8 @@ interface Toplevel extends Surface {
     /**
      * Sets keyboard focus to `surface`.
      * 
-     * In most cases, [gtk_window_present_with_time()](../gtk4/method.Window.present_with_time.html)
-     * should be used on a [GtkWindow](../gtk4/class.Window.html), rather than
-     * calling this function.
+     * In most cases, [method`Gtk`.Window.present_with_time] should be
+     * used on a [class`Gtk`.Window], rather than calling this function.
      * @param timestamp timestamp of the event triggering the surface focus
      */
     focus(timestamp: number): void
@@ -4937,8 +4934,8 @@ interface Toplevel extends Surface {
      * Sets the startup notification ID.
      * 
      * When using GTK, typically you should use
-     * [gtk_window_set_startup_id()](../gtk4/method.Window.set_startup_id.html)
-     * instead of this low-level function.
+     * [method`Gtk`.Window.set_startup_id] instead of this
+     * low-level function.
      * @param startupId a string with startup-notification identifier
      */
     setStartupId(startupId: string): void
@@ -4958,8 +4955,8 @@ interface Toplevel extends Surface {
      * allows the window manager to do things like center `surface`
      * on `parent` and keep `surface` above `parent`.
      * 
-     * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-     * if you’re using [GtkWindow](../gtk4/class.Window.html).
+     * See [method`Gtk`.Window.set_transient_for] if you’re using
+     * [class`Gtk`.Window] or [class`Gtk`.Dialog].
      * @param parent another toplevel `GdkSurface`
      */
     setTransientFor(parent: Surface): void
@@ -5571,9 +5568,8 @@ interface Clipboard {
      * exit. Depending on the platform, the functionality may not be available
      * unless a "clipboard manager" is running.
      * 
-     * This function is called automatically when a
-     * [GtkApplication](../gtk4/class.Application.html)
-     * is shut down, so you likely don't need to call it.
+     * This function is called automatically when a [class`Gtk`.Application] is
+     * shut down, so you likely don't need to call it.
      * @param ioPriority the I/O priority of the request
      * @param cancellable optional `GCancellable` object
      * @param callback callback to call when the request is satisfied
@@ -6186,11 +6182,11 @@ module Cursor {
         /**
          * X position of the cursor hotspot in the cursor image.
          */
-        hotspotX?: number | null
+        hotspot_x?: number | null
         /**
          * Y position of the cursor hotspot in the cursor image.
          */
-        hotspotY?: number | null
+        hotspot_y?: number | null
         /**
          * Name of this this cursor.
          * 
@@ -6337,8 +6333,7 @@ interface Cursor {
  * Cursors by themselves are not very interesting: they must be bound to a
  * window for users to see them. This is done with [method`Gdk`.Surface.set_cursor]
  * or [method`Gdk`.Surface.set_device_cursor]. Applications will typically
- * use higher-level GTK functions such as [gtk_widget_set_cursor()](../gtk4/method.Widget.set_cursor.html)
- * instead.
+ * use higher-level GTK functions such as [method`Gtk`.Widget.set_cursor] instead.
  * 
  * Cursors are not bound to a given [class`Gdk`.Display], so they can be shared.
  * However, the appearance of cursors may vary when used on different
@@ -6478,7 +6473,7 @@ module Device {
         /**
          * Whether the device is represented by a cursor on the screen.
          */
-        hasCursor?: boolean | null
+        has_cursor?: boolean | null
         /**
          * The device name.
          */
@@ -6489,13 +6484,13 @@ module Device {
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
          */
-        numTouches?: number | null
+        num_touches?: number | null
         /**
          * Product ID of this device.
          * 
          * See [method`Gdk`.Device.get_product_id].
          */
-        productId?: string | null
+        product_id?: string | null
         /**
          * `GdkSeat` of this device.
          */
@@ -6509,7 +6504,7 @@ module Device {
          * 
          * See [method`Gdk`.Device.get_vendor_id].
          */
-        vendorId?: string | null
+        vendor_id?: string | null
     }
 
 }
@@ -6883,7 +6878,7 @@ module DeviceTool {
         /**
          * The hardware ID of the tool.
          */
-        hardwareId?: number | null
+        hardware_id?: number | null
         /**
          * The serial number of the tool.
          */
@@ -6891,7 +6886,7 @@ module DeviceTool {
         /**
          * The type of the tool.
          */
-        toolType?: DeviceToolType | null
+        tool_type?: DeviceToolType | null
     }
 
 }
@@ -7255,9 +7250,9 @@ interface Display {
      * Indicates to the GUI environment that the application has
      * finished loading, using a given identifier.
      * 
-     * GTK will call this function automatically for [GtkWindow](../gtk4/class.Window.html)
+     * GTK will call this function automatically for [class`Gtk`.Window]
      * with custom startup-notification identifier unless
-     * [gtk_window_set_auto_startup_notification()](../gtk4/method.Window.set_auto_startup_notification.html)
+     * [method`Gtk`.Window.set_auto_startup_notification]
      * is called to disable that feature.
      * @param startupId a startup-notification identifier, for which   notification process should be completed
      */
@@ -7281,7 +7276,8 @@ interface Display {
      */
     prepareGl(): boolean
     /**
-     * Adds the given event to the event queue for `display`.
+     * Appends the given event onto the front of the event
+     * queue for `display`.
      * @param event a `GdkEvent`
      */
     putEvent(event: Event): void
@@ -7460,7 +7456,7 @@ module DisplayManager {
         /**
          * The default display.
          */
-        defaultDisplay?: Display | null
+        default_display?: Display | null
     }
 
 }
@@ -7648,7 +7644,7 @@ module Drag {
         /**
          * The currently selected action of the drag.
          */
-        selectedAction?: DragAction | null
+        selected_action?: DragAction | null
         /**
          * The surface where the drag originates.
          */
@@ -7940,8 +7936,8 @@ interface DrawContext {
      * 
      * When using GTK, the widget system automatically places calls to
      * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
-     * use of [GskRenderer](../gsk4/class.Renderer.html)s, so application code
-     * does not need to call these functions explicitly.
+     * use of [class`Gsk`.Renderer]s, so application code does not need to call
+     * these functions explicitly.
      * @param region minimum region that should be drawn
      */
     beginFrame(region: cairo.Region): void
@@ -8773,14 +8769,14 @@ module GLContext {
         /**
          * The allowed APIs.
          */
-        allowedApis?: GLAPI | null
+        allowed_apis?: GLAPI | null
         /**
          * Always %NULL
          * 
          * As many contexts can share data now and no single shared context exists
          * anymore, this function has been deprecated and now always returns %NULL.
          */
-        sharedContext?: GLContext | null
+        shared_context?: GLContext | null
     }
 
 }
@@ -9221,7 +9217,7 @@ module GLTextureBuilder {
         /**
          * If the texture has a mipmap.
          */
-        hasMipmap?: boolean | null
+        has_mipmap?: boolean | null
         /**
          * The height of the texture.
          */
@@ -9239,11 +9235,11 @@ module GLTextureBuilder {
         /**
          * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
          */
-        updateRegion?: cairo.Region | null
+        update_region?: cairo.Region | null
         /**
          * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
          */
-        updateTexture?: Texture | null
+        update_texture?: Texture | null
         /**
          * The width of the texture.
          */
@@ -10317,7 +10313,7 @@ interface Snapshot {
 /**
  * Base type for snapshot operations.
  * 
- * The subclass of `GdkSnapshot` used by GTK is [GtkSnapshot](../gtk4/class.Snapshot.html).
+ * The subclass of `GdkSnapshot` used by GTK is [class`Gtk`.Snapshot].
  * @class 
  */
 class Snapshot extends GObject.Object {
@@ -10389,7 +10385,7 @@ module Surface {
         /**
          * The `GdkFrameClock` of the surface.
          */
-        frameClock?: FrameClock | null
+        frame_clock?: FrameClock | null
     }
 
 }
@@ -10605,7 +10601,7 @@ interface Surface {
      * For toplevel surfaces, withdraws them, so they will no longer be
      * known to the window manager; for all surfaces, unmaps them, so
      * they won’t be displayed. Normally done automatically as
-     * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
+     * part of [method`Gtk`.Widget.hide].
      */
     hide(): void
     /**
@@ -10684,7 +10680,7 @@ interface Surface {
      * GTK will update this property automatically if the `surface` background
      * is opaque, as we know where the opaque regions are. If your surface
      * background is not opaque, please update this property in your
-     * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
+     * [vfunc`Gtk`.Widget.css_changed] handler.
      * @param region a region, or %NULL to make the entire   surface opaque
      */
     setOpaqueRegion(region: cairo.Region | null): void
@@ -10787,7 +10783,7 @@ interface Surface {
  * A `GdkSurface` is a rectangular region on the screen.
  * 
  * It’s a low-level object, used to implement high-level objects
- * such as [GtkWindow](../gtk4/class.Window.html).
+ * such as [class`Gtk`.Window] or [class`Gtk`.Dialog] in GTK.
  * 
  * The surfaces you see in practice are either [iface`Gdk`.Toplevel] or
  * [iface`Gdk`.Popup], and those interfaces provide much of the required
@@ -12036,9 +12032,9 @@ interface PopupLayout {
  * [method`Gdk`.Popup.get_position_x], [method`Gdk`.Popup.get_position_y],
  * [method`Gdk`.Popup.get_rect_anchor] and [method`Gdk`.Popup.get_surface_anchor]
  * after the popup has been presented. This can be used to adjust the rendering.
- * For example, [GtkPopover](../gtk4/class.Popover.html) changes its arrow position
- * accordingly. But you have to be careful avoid changing the size of the popover,
- * or it has to be presented again.
+ * For example, [class`Gtk`.Popover] changes its arrow position accordingly.
+ * But you have to be careful avoid changing the size of the popover, or it
+ * has to be presented again.
  * @record 
  */
 class PopupLayout {

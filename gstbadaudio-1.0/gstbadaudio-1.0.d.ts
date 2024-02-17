@@ -69,8 +69,6 @@ module NonstreamAudioDecoder {
 
         // Own constructor properties of GstBadAudio-1.0.GstBadAudio.NonstreamAudioDecoder
 
-        current_subsong?: number | null
-        num_loops?: number | null
         currentSubsong?: number | null
         numLoops?: number | null
     }

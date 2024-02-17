@@ -719,7 +719,6 @@ export module ServerCallContext {
 
         // Own constructor properties of ArrowFlight-1.0.ArrowFlight.ServerCallContext
 
-        call_context?: any | null
         callContext?: any | null
     }
 
@@ -729,7 +728,6 @@ export interface ServerCallContext {
 
     // Own properties of ArrowFlight-1.0.ArrowFlight.ServerCallContext
 
-    readonly call_context: any
     readonly callContext: any
 
     // Own fields of ArrowFlight-1.0.ArrowFlight.ServerCallContext

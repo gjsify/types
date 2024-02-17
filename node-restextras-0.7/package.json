@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-restextras-0.7",
-    "version": "0.7.0-3.2.7",
+    "version": "0.7.0-3.2.8",
     "description": "Node.js TypeScript type definitions for RestExtras-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "node-restextras-0.7.js",
     "main": "node-restextras-0.7.js",
     "exports": {
-        "./ambient": "./node-restextras-0.7-ambient.d.ts",
-        "./import": "./node-restextras-0.7-import.d.ts",
+        "./ambient": {
+            "types": "./node-restextras-0.7-ambient.d.ts",
+            "default": "./node-restextras-0.7-ambient.js"
+        },
+        "./import": {
+            "types": "./node-restextras-0.7-import.d.ts",
+            "default": "./node-restextras-0.7-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-restextras-0.7.d.ts",

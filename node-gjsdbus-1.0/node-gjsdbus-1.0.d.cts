@@ -48,7 +48,7 @@ export module Implementation {
 
         // Own constructor properties of GjsDBus-1.0.GjsDBus.Implementation
 
-        gInterfaceInfo?: Gio.DBusInterfaceInfo | null
+        g_interface_info?: Gio.DBusInterfaceInfo | null
     }
 
 }

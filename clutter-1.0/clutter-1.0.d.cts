@@ -8397,7 +8397,7 @@ export module Media {
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          */
-        audio_volume?: number | null
+        audioVolume?: number | null
         /**
          * Whether the #ClutterMedia actor is playing.
          */
@@ -8412,30 +8412,15 @@ export module Media {
          * follow the same grammar as the one recognized by
          * pango_font_description_from_string().
          */
-        subtitle_font_name?: string | null
-        /**
-         * The location of a subtitle file, expressed as a valid URI.
-         */
-        subtitle_uri?: string | null
-        /**
-         * The location of a media file, expressed as a valid URI.
-         */
-        uri?: string | null
-        /**
-         * The volume of the audio, as a normalized value between
-         * 0.0 and 1.0.
-         */
-        audioVolume?: number | null
-        /**
-         * The font used to display subtitles. The font description has to
-         * follow the same grammar as the one recognized by
-         * pango_font_description_from_string().
-         */
         subtitleFontName?: string | null
         /**
          * The location of a subtitle file, expressed as a valid URI.
          */
         subtitleUri?: string | null
+        /**
+         * The location of a media file, expressed as a valid URI.
+         */
+        uri?: string | null
     }
 
 }
@@ -8448,26 +8433,12 @@ export interface Media {
      * The volume of the audio, as a normalized value between
      * 0.0 and 1.0.
      */
-    audio_volume: number
-    /**
-     * The volume of the audio, as a normalized value between
-     * 0.0 and 1.0.
-     */
     audioVolume: number
     /**
      * The fill level of the buffer for the current stream,
      * as a value between 0.0 and 1.0.
      */
-    readonly buffer_fill: number
-    /**
-     * The fill level of the buffer for the current stream,
-     * as a value between 0.0 and 1.0.
-     */
     readonly bufferFill: number
-    /**
-     * Whether the current stream is seekable.
-     */
-    readonly can_seek: boolean
     /**
      * Whether the current stream is seekable.
      */
@@ -8490,17 +8461,7 @@ export interface Media {
      * follow the same grammar as the one recognized by
      * pango_font_description_from_string().
      */
-    subtitle_font_name: string | null
-    /**
-     * The font used to display subtitles. The font description has to
-     * follow the same grammar as the one recognized by
-     * pango_font_description_from_string().
-     */
     subtitleFontName: string | null
-    /**
-     * The location of a subtitle file, expressed as a valid URI.
-     */
-    subtitle_uri: string | null
     /**
      * The location of a subtitle file, expressed as a valid URI.
      */
@@ -9044,555 +9005,6 @@ export module Actor {
          * recommended to use the #ClutterActor:pivot-point property instead,
          * as it will affect only the transformations.
          */
-        anchor_gravity?: Gravity | null
-        /**
-         * The X coordinate of an actor's anchor point, relative to
-         * the actor coordinate space, in pixels.
-         * 
-         * It is highly recommended not to use #ClutterActor:anchor-x,
-         * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-         * written code; the anchor point adds an additional translation that
-         * will affect the actor's relative position with regards to its
-         * parent, as well as the position of its children. This change needs
-         * to always be taken into account when positioning the actor. It is
-         * recommended to use the #ClutterActor:pivot-point property instead,
-         * as it will affect only the transformations.
-         */
-        anchor_x?: number | null
-        /**
-         * The Y coordinate of an actor's anchor point, relative to
-         * the actor coordinate space, in pixels
-         * 
-         * It is highly recommended not to use #ClutterActor:anchor-x,
-         * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-         * written code; the anchor point adds an additional translation that
-         * will affect the actor's relative position with regards to its
-         * parent, as well as the position of its children. This change needs
-         * to always be taken into account when positioning the actor. It is
-         * recommended to use the #ClutterActor:pivot-point property instead,
-         * as it will affect only the transformations.
-         */
-        anchor_y?: number | null
-        /**
-         * Paints a solid fill of the actor's allocation using the specified
-         * color.
-         * 
-         * The #ClutterActor:background-color property is animatable.
-         */
-        background_color?: Color | null
-        /**
-         * Applies a transformation matrix on each child of an actor.
-         * 
-         * Setting this property with a #ClutterMatrix will set the
-         * #ClutterActor:child-transform-set property to %TRUE as a side effect;
-         * setting this property with %NULL will set the
-         * #ClutterActor:child-transform-set property to %FALSE.
-         * 
-         * The #ClutterActor:child-transform property is animatable.
-         */
-        child_transform?: Matrix | null
-        /**
-         * The visible region of the actor, in actor-relative coordinates
-         */
-        clip?: Geometry | null
-        /**
-         * The visible region of the actor, in actor-relative coordinates,
-         * expressed as a #ClutterRect.
-         * 
-         * Setting this property to %NULL will unset the existing clip.
-         * 
-         * Setting this property will change the #ClutterActor:has-clip
-         * property as a side effect.
-         */
-        clip_rect?: Rect | null
-        /**
-         * Whether the clip region should track the allocated area
-         * of the actor.
-         * 
-         * This property is ignored if a clip area has been explicitly
-         * set using clutter_actor_set_clip().
-         */
-        clip_to_allocation?: boolean | null
-        /**
-         * Adds a #ClutterConstraint to the actor
-         */
-        constraints?: Constraint | null
-        /**
-         * The #ClutterContent implementation that controls the content
-         * of the actor.
-         */
-        content?: Content | null
-        /**
-         * The alignment that should be honoured by the #ClutterContent
-         * set with the #ClutterActor:content property.
-         * 
-         * Changing the value of this property will change the bounding box of
-         * the content; you can use the #ClutterActor:content-box property to
-         * get the position and size of the content within the actor's
-         * allocation.
-         * 
-         * This property is meaningful only for #ClutterContent implementations
-         * that have a preferred size, and if the preferred size is smaller than
-         * the actor's allocation.
-         * 
-         * The #ClutterActor:content-gravity property is animatable.
-         */
-        content_gravity?: ContentGravity | null
-        /**
-         * The repeat policy for the actor's #ClutterActor:content.
-         */
-        content_repeat?: ContentRepeat | null
-        /**
-         * The position of the actor on the Z axis.
-         * 
-         * The #ClutterActor:depth property is relative to the parent's
-         * modelview matrix.
-         * 
-         * Setting this property will call #ClutterContainerIface.sort_depth_order()
-         * which is usually a no-op, and it's most likely not what you want.
-         * 
-         * The #ClutterActor:depth property is animatable.
-         */
-        depth?: number | null
-        /**
-         * Adds #ClutterEffect to the list of effects be applied on a #ClutterActor
-         */
-        effect?: Effect | null
-        /**
-         * This flag controls whether the #ClutterActor:fixed-x and
-         * #ClutterActor:fixed-y properties are used
-         */
-        fixed_position_set?: boolean | null
-        /**
-         * The fixed X position of the actor in pixels.
-         * 
-         * Writing this property sets #ClutterActor:fixed-position-set
-         * property as well, as a side effect
-         */
-        fixed_x?: number | null
-        /**
-         * The fixed Y position of the actor in pixels.
-         * 
-         * Writing this property sets the #ClutterActor:fixed-position-set
-         * property as well, as a side effect
-         */
-        fixed_y?: number | null
-        /**
-         * Height of the actor (in pixels).  If written, forces the minimum and
-         * natural size request of the actor to the given height. If read, returns
-         * the allocated height if available, otherwise the height request.
-         * 
-         * The #ClutterActor:height property is animatable.
-         */
-        height?: number | null
-        /**
-         * A delegate object for controlling the layout of the children of
-         * an actor.
-         */
-        layout_manager?: LayoutManager | null
-        magnification_filter?: ScalingFilter | null
-        /**
-         * The margin (in pixels) from the bottom of the actor.
-         * 
-         * This property adds a margin to the actor's preferred size; the margin
-         * will be automatically taken into account when allocating the actor.
-         * 
-         * The #ClutterActor:margin-bottom property is animatable.
-         */
-        margin_bottom?: number | null
-        /**
-         * The margin (in pixels) from the left of the actor.
-         * 
-         * This property adds a margin to the actor's preferred size; the margin
-         * will be automatically taken into account when allocating the actor.
-         * 
-         * The #ClutterActor:margin-left property is animatable.
-         */
-        margin_left?: number | null
-        /**
-         * The margin (in pixels) from the right of the actor.
-         * 
-         * This property adds a margin to the actor's preferred size; the margin
-         * will be automatically taken into account when allocating the actor.
-         * 
-         * The #ClutterActor:margin-right property is animatable.
-         */
-        margin_right?: number | null
-        /**
-         * The margin (in pixels) from the top of the actor.
-         * 
-         * This property adds a margin to the actor's preferred size; the margin
-         * will be automatically taken into account when allocating the actor.
-         * 
-         * The #ClutterActor:margin-top property is animatable.
-         */
-        margin_top?: number | null
-        /**
-         * A forced minimum height request for the actor, in pixels
-         * 
-         * Writing this property sets the #ClutterActor:min-height-set property
-         * as well, as a side effect. This property overrides the usual height
-         * request of the actor.
-         */
-        min_height?: number | null
-        /**
-         * This flag controls whether the #ClutterActor:min-height property
-         * is used
-         */
-        min_height_set?: boolean | null
-        /**
-         * A forced minimum width request for the actor, in pixels
-         * 
-         * Writing this property sets the #ClutterActor:min-width-set property
-         * as well, as a side effect.
-         * 
-         * This property overrides the usual width request of the actor.
-         */
-        min_width?: number | null
-        /**
-         * This flag controls whether the #ClutterActor:min-width property
-         * is used
-         */
-        min_width_set?: boolean | null
-        minification_filter?: ScalingFilter | null
-        /**
-         * The name of the actor
-         */
-        name?: string | null
-        /**
-         * A forced natural height request for the actor, in pixels
-         * 
-         * Writing this property sets the #ClutterActor:natural-height-set
-         * property as well, as a side effect. This property overrides the
-         * usual height request of the actor
-         */
-        natural_height?: number | null
-        /**
-         * This flag controls whether the #ClutterActor:natural-height property
-         * is used
-         */
-        natural_height_set?: boolean | null
-        /**
-         * A forced natural width request for the actor, in pixels
-         * 
-         * Writing this property sets the #ClutterActor:natural-width-set
-         * property as well, as a side effect. This property overrides the
-         * usual width request of the actor
-         */
-        natural_width?: number | null
-        /**
-         * This flag controls whether the #ClutterActor:natural-width property
-         * is used
-         */
-        natural_width_set?: boolean | null
-        /**
-         * Determines the conditions in which the actor will be redirected
-         * to an offscreen framebuffer while being painted. For example this
-         * can be used to cache an actor in a framebuffer or for improved
-         * handling of transparent actors. See
-         * clutter_actor_set_offscreen_redirect() for details.
-         */
-        offscreen_redirect?: OffscreenRedirect | null
-        /**
-         * Opacity of an actor, between 0 (fully transparent) and
-         * 255 (fully opaque)
-         * 
-         * The #ClutterActor:opacity property is animatable.
-         */
-        opacity?: number | null
-        /**
-         * The point around which the scaling and rotation transformations occur.
-         * 
-         * The pivot point is expressed in normalized coordinates space, with (0, 0)
-         * being the top left corner of the actor and (1, 1) the bottom right corner
-         * of the actor.
-         * 
-         * The default pivot point is located at (0, 0).
-         * 
-         * The #ClutterActor:pivot-point property is animatable.
-         */
-        pivot_point?: Point | null
-        /**
-         * The Z component of the #ClutterActor:pivot-point, expressed as a value
-         * along the Z axis.
-         * 
-         * The #ClutterActor:pivot-point-z property is animatable.
-         */
-        pivot_point_z?: number | null
-        /**
-         * The position of the origin of the actor.
-         * 
-         * This property is a shorthand for setting and getting the
-         * #ClutterActor:x and #ClutterActor:y properties at the same
-         * time.
-         * 
-         * The #ClutterActor:position property is animatable.
-         */
-        position?: Point | null
-        /**
-         * Whether the actor is reactive to events or not
-         * 
-         * Only reactive actors will emit event-related signals
-         */
-        reactive?: boolean | null
-        /**
-         * Request mode for the #ClutterActor. The request mode determines the
-         * type of geometry management used by the actor, either height for width
-         * (the default) or width for height.
-         * 
-         * For actors implementing height for width, the parent container should get
-         * the preferred width first, and then the preferred height for that width.
-         * 
-         * For actors implementing width for height, the parent container should get
-         * the preferred height first, and then the preferred width for that height.
-         * 
-         * For instance:
-         * 
-         * 
-         * ```c
-         *   ClutterRequestMode mode;
-         *   gfloat natural_width, min_width;
-         *   gfloat natural_height, min_height;
-         * 
-         *   mode = clutter_actor_get_request_mode (child);
-         *   if (mode == CLUTTER_REQUEST_HEIGHT_FOR_WIDTH)
-         *     {
-         *       clutter_actor_get_preferred_width (child, -1,
-         *                                          &min_width,
-         *                                          &natural_width);
-         *       clutter_actor_get_preferred_height (child, natural_width,
-         *                                           &min_height,
-         *                                           &natural_height);
-         *     }
-         *   else if (mode == CLUTTER_REQUEST_WIDTH_FOR_HEIGHT)
-         *     {
-         *       clutter_actor_get_preferred_height (child, -1,
-         *                                           &min_height,
-         *                                           &natural_height);
-         *       clutter_actor_get_preferred_width (child, natural_height,
-         *                                          &min_width,
-         *                                          &natural_width);
-         *     }
-         *   else if (mode == CLUTTER_REQUEST_CONTENT_SIZE)
-         *     {
-         *       ClutterContent *content = clutter_actor_get_content (child);
-         * 
-         *       min_width, min_height = 0;
-         *       natural_width = natural_height = 0;
-         * 
-         *       if (content != NULL)
-         *         clutter_content_get_preferred_size (content, &natural_width, &natural_height);
-         *     }
-         * ```
-         * 
-         * 
-         * will retrieve the minimum and natural width and height depending on the
-         * preferred request mode of the #ClutterActor "child".
-         * 
-         * The clutter_actor_get_preferred_size() function will implement this
-         * check for you.
-         */
-        request_mode?: RequestMode | null
-        /**
-         * The rotation angle on the X axis.
-         * 
-         * The #ClutterActor:rotation-angle-x property is animatable.
-         */
-        rotation_angle_x?: number | null
-        /**
-         * The rotation angle on the Y axis
-         * 
-         * The #ClutterActor:rotation-angle-y property is animatable.
-         */
-        rotation_angle_y?: number | null
-        /**
-         * The rotation angle on the Z axis
-         * 
-         * The #ClutterActor:rotation-angle-z property is animatable.
-         */
-        rotation_angle_z?: number | null
-        /**
-         * The rotation center on the X axis.
-         */
-        rotation_center_x?: Vertex | null
-        /**
-         * The rotation center on the Y axis.
-         */
-        rotation_center_y?: Vertex | null
-        /**
-         * The rotation center on the Z axis.
-         */
-        rotation_center_z?: Vertex | null
-        /**
-         * The rotation center on the Z axis expressed as a #ClutterGravity.
-         */
-        rotation_center_z_gravity?: Gravity | null
-        /**
-         * The horizontal center point for scaling
-         */
-        scale_center_x?: number | null
-        /**
-         * The vertical center point for scaling
-         */
-        scale_center_y?: number | null
-        /**
-         * The center point for scaling expressed as a #ClutterGravity
-         */
-        scale_gravity?: Gravity | null
-        /**
-         * The horizontal scale of the actor.
-         * 
-         * The #ClutterActor:scale-x property is animatable.
-         */
-        scale_x?: number | null
-        /**
-         * The vertical scale of the actor.
-         * 
-         * The #ClutterActor:scale-y property is animatable.
-         */
-        scale_y?: number | null
-        /**
-         * The scale factor of the actor along the Z axis.
-         * 
-         * The #ClutterActor:scale-y property is animatable.
-         */
-        scale_z?: number | null
-        /**
-         * If %TRUE, the actor is automatically shown when parented.
-         * 
-         * Calling clutter_actor_hide() on an actor which has not been
-         * parented will set this property to %FALSE as a side effect.
-         */
-        show_on_set_parent?: boolean | null
-        /**
-         * The size of the actor.
-         * 
-         * This property is a shorthand for setting and getting the
-         * #ClutterActor:width and #ClutterActor:height at the same time.
-         * 
-         * The #ClutterActor:size property is animatable.
-         */
-        size?: Size | null
-        /**
-         * The direction of the text inside a #ClutterActor.
-         */
-        text_direction?: TextDirection | null
-        /**
-         * Overrides the transformations of a #ClutterActor with a custom
-         * matrix.
-         * 
-         * The matrix specified by the #ClutterActor:transform property is
-         * applied to the actor and its children relative to the actor's
-         * #ClutterActor:allocation and #ClutterActor:pivot-point.
-         * 
-         * Application code should rarely need to use this function directly.
-         * 
-         * Setting this property with a #ClutterMatrix will set the
-         * #ClutterActor:transform-set property to %TRUE as a side effect;
-         * setting this property with %NULL will set the
-         * #ClutterActor:transform-set property to %FALSE.
-         * 
-         * The #ClutterActor:transform property is animatable.
-         */
-        transform?: Matrix | null
-        /**
-         * An additional translation applied along the X axis, relative
-         * to the actor's #ClutterActor:pivot-point.
-         * 
-         * The #ClutterActor:translation-x property is animatable.
-         */
-        translation_x?: number | null
-        /**
-         * An additional translation applied along the Y axis, relative
-         * to the actor's #ClutterActor:pivot-point.
-         * 
-         * The #ClutterActor:translation-y property is animatable.
-         */
-        translation_y?: number | null
-        /**
-         * An additional translation applied along the Z axis, relative
-         * to the actor's #ClutterActor:pivot-point.
-         * 
-         * The #ClutterActor:translation-z property is animatable.
-         */
-        translation_z?: number | null
-        /**
-         * Whether the actor is set to be visible or not
-         * 
-         * See also #ClutterActor:mapped
-         */
-        visible?: boolean | null
-        /**
-         * Width of the actor (in pixels). If written, forces the minimum and
-         * natural size request of the actor to the given width. If read, returns
-         * the allocated width if available, otherwise the width request.
-         * 
-         * The #ClutterActor:width property is animatable.
-         */
-        width?: number | null
-        /**
-         * X coordinate of the actor in pixels. If written, forces a fixed
-         * position for the actor. If read, returns the fixed position if any,
-         * otherwise the allocation if available, otherwise 0.
-         * 
-         * The #ClutterActor:x property is animatable.
-         */
-        x?: number | null
-        /**
-         * The alignment of an actor on the X axis, if the actor has been given
-         * extra space for its allocation. See also the #ClutterActor:x-expand
-         * property.
-         */
-        x_align?: ActorAlign | null
-        /**
-         * Whether a layout manager should assign more space to the actor on
-         * the X axis.
-         */
-        x_expand?: boolean | null
-        /**
-         * Y coordinate of the actor in pixels. If written, forces a fixed
-         * position for the actor.  If read, returns the fixed position if
-         * any, otherwise the allocation if available, otherwise 0.
-         * 
-         * The #ClutterActor:y property is animatable.
-         */
-        y?: number | null
-        /**
-         * The alignment of an actor on the Y axis, if the actor has been given
-         * extra space for its allocation.
-         */
-        y_align?: ActorAlign | null
-        /**
-         * Whether a layout manager should assign more space to the actor on
-         * the Y axis.
-         */
-        y_expand?: boolean | null
-        /**
-         * The actor's position on the Z axis, relative to the parent's
-         * transformations.
-         * 
-         * Positive values will bring the actor's position nearer to the user,
-         * whereas negative values will bring the actor's position farther from
-         * the user.
-         * 
-         * The #ClutterActor:z-position does not affect the paint or allocation
-         * order.
-         * 
-         * The #ClutterActor:z-position property is animatable.
-         */
-        z_position?: number | null
-        /**
-         * The anchor point expressed as a #ClutterGravity
-         * 
-         * It is highly recommended not to use #ClutterActor:anchor-x,
-         * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-         * written code; the anchor point adds an additional translation that
-         * will affect the actor's relative position with regards to its
-         * parent, as well as the position of its children. This change needs
-         * to always be taken into account when positioning the actor. It is
-         * recommended to use the #ClutterActor:pivot-point property instead,
-         * as it will affect only the transformations.
-         */
         anchorGravity?: Gravity | null
         /**
          * The X coordinate of an actor's anchor point, relative to
@@ -9641,6 +9053,10 @@ export module Actor {
          */
         childTransform?: Matrix | null
         /**
+         * The visible region of the actor, in actor-relative coordinates
+         */
+        clip?: Geometry | null
+        /**
          * The visible region of the actor, in actor-relative coordinates,
          * expressed as a #ClutterRect.
          * 
@@ -9658,6 +9074,15 @@ export module Actor {
          * set using clutter_actor_set_clip().
          */
         clipToAllocation?: boolean | null
+        /**
+         * Adds a #ClutterConstraint to the actor
+         */
+        constraints?: Constraint | null
+        /**
+         * The #ClutterContent implementation that controls the content
+         * of the actor.
+         */
+        content?: Content | null
         /**
          * The alignment that should be honoured by the #ClutterContent
          * set with the #ClutterActor:content property.
@@ -9679,6 +9104,22 @@ export module Actor {
          */
         contentRepeat?: ContentRepeat | null
         /**
+         * The position of the actor on the Z axis.
+         * 
+         * The #ClutterActor:depth property is relative to the parent's
+         * modelview matrix.
+         * 
+         * Setting this property will call #ClutterContainerIface.sort_depth_order()
+         * which is usually a no-op, and it's most likely not what you want.
+         * 
+         * The #ClutterActor:depth property is animatable.
+         */
+        depth?: number | null
+        /**
+         * Adds #ClutterEffect to the list of effects be applied on a #ClutterActor
+         */
+        effect?: Effect | null
+        /**
          * This flag controls whether the #ClutterActor:fixed-x and
          * #ClutterActor:fixed-y properties are used
          */
@@ -9697,6 +9138,14 @@ export module Actor {
          * property as well, as a side effect
          */
         fixedY?: number | null
+        /**
+         * Height of the actor (in pixels).  If written, forces the minimum and
+         * natural size request of the actor to the given height. If read, returns
+         * the allocated height if available, otherwise the height request.
+         * 
+         * The #ClutterActor:height property is animatable.
+         */
+        height?: number | null
         /**
          * A delegate object for controlling the layout of the children of
          * an actor.
@@ -9768,6 +9217,10 @@ export module Actor {
         minWidthSet?: boolean | null
         minificationFilter?: ScalingFilter | null
         /**
+         * The name of the actor
+         */
+        name?: string | null
+        /**
          * A forced natural height request for the actor, in pixels
          * 
          * Writing this property sets the #ClutterActor:natural-height-set
@@ -9802,6 +9255,13 @@ export module Actor {
          */
         offscreenRedirect?: OffscreenRedirect | null
         /**
+         * Opacity of an actor, between 0 (fully transparent) and
+         * 255 (fully opaque)
+         * 
+         * The #ClutterActor:opacity property is animatable.
+         */
+        opacity?: number | null
+        /**
          * The point around which the scaling and rotation transformations occur.
          * 
          * The pivot point is expressed in normalized coordinates space, with (0, 0)
@@ -9820,6 +9280,22 @@ export module Actor {
          * The #ClutterActor:pivot-point-z property is animatable.
          */
         pivotPointZ?: number | null
+        /**
+         * The position of the origin of the actor.
+         * 
+         * This property is a shorthand for setting and getting the
+         * #ClutterActor:x and #ClutterActor:y properties at the same
+         * time.
+         * 
+         * The #ClutterActor:position property is animatable.
+         */
+        position?: Point | null
+        /**
+         * Whether the actor is reactive to events or not
+         * 
+         * Only reactive actors will emit event-related signals
+         */
+        reactive?: boolean | null
         /**
          * Request mode for the #ClutterActor. The request mode determines the
          * type of geometry management used by the actor, either height for width
@@ -9950,9 +9426,36 @@ export module Actor {
          */
         showOnSetParent?: boolean | null
         /**
+         * The size of the actor.
+         * 
+         * This property is a shorthand for setting and getting the
+         * #ClutterActor:width and #ClutterActor:height at the same time.
+         * 
+         * The #ClutterActor:size property is animatable.
+         */
+        size?: Size | null
+        /**
          * The direction of the text inside a #ClutterActor.
          */
         textDirection?: TextDirection | null
+        /**
+         * Overrides the transformations of a #ClutterActor with a custom
+         * matrix.
+         * 
+         * The matrix specified by the #ClutterActor:transform property is
+         * applied to the actor and its children relative to the actor's
+         * #ClutterActor:allocation and #ClutterActor:pivot-point.
+         * 
+         * Application code should rarely need to use this function directly.
+         * 
+         * Setting this property with a #ClutterMatrix will set the
+         * #ClutterActor:transform-set property to %TRUE as a side effect;
+         * setting this property with %NULL will set the
+         * #ClutterActor:transform-set property to %FALSE.
+         * 
+         * The #ClutterActor:transform property is animatable.
+         */
+        transform?: Matrix | null
         /**
          * An additional translation applied along the X axis, relative
          * to the actor's #ClutterActor:pivot-point.
@@ -9975,6 +9478,28 @@ export module Actor {
          */
         translationZ?: number | null
         /**
+         * Whether the actor is set to be visible or not
+         * 
+         * See also #ClutterActor:mapped
+         */
+        visible?: boolean | null
+        /**
+         * Width of the actor (in pixels). If written, forces the minimum and
+         * natural size request of the actor to the given width. If read, returns
+         * the allocated width if available, otherwise the width request.
+         * 
+         * The #ClutterActor:width property is animatable.
+         */
+        width?: number | null
+        /**
+         * X coordinate of the actor in pixels. If written, forces a fixed
+         * position for the actor. If read, returns the fixed position if any,
+         * otherwise the allocation if available, otherwise 0.
+         * 
+         * The #ClutterActor:x property is animatable.
+         */
+        x?: number | null
+        /**
          * The alignment of an actor on the X axis, if the actor has been given
          * extra space for its allocation. See also the #ClutterActor:x-expand
          * property.
@@ -9985,6 +9510,14 @@ export module Actor {
          * the X axis.
          */
         xExpand?: boolean | null
+        /**
+         * Y coordinate of the actor in pixels. If written, forces a fixed
+         * position for the actor.  If read, returns the fixed position if
+         * any, otherwise the allocation if available, otherwise 0.
+         * 
+         * The #ClutterActor:y property is animatable.
+         */
+        y?: number | null
         /**
          * The alignment of an actor on the Y axis, if the actor has been given
          * extra space for its allocation.
@@ -10040,34 +9573,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * recommended to use the #ClutterActor:pivot-point property instead,
      * as it will affect only the transformations.
      */
-    anchor_gravity: Gravity
-    /**
-     * The anchor point expressed as a #ClutterGravity
-     * 
-     * It is highly recommended not to use #ClutterActor:anchor-x,
-     * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-     * written code; the anchor point adds an additional translation that
-     * will affect the actor's relative position with regards to its
-     * parent, as well as the position of its children. This change needs
-     * to always be taken into account when positioning the actor. It is
-     * recommended to use the #ClutterActor:pivot-point property instead,
-     * as it will affect only the transformations.
-     */
     anchorGravity: Gravity
-    /**
-     * The X coordinate of an actor's anchor point, relative to
-     * the actor coordinate space, in pixels.
-     * 
-     * It is highly recommended not to use #ClutterActor:anchor-x,
-     * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-     * written code; the anchor point adds an additional translation that
-     * will affect the actor's relative position with regards to its
-     * parent, as well as the position of its children. This change needs
-     * to always be taken into account when positioning the actor. It is
-     * recommended to use the #ClutterActor:pivot-point property instead,
-     * as it will affect only the transformations.
-     */
-    anchor_x: number
     /**
      * The X coordinate of an actor's anchor point, relative to
      * the actor coordinate space, in pixels.
@@ -10095,20 +9601,6 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * recommended to use the #ClutterActor:pivot-point property instead,
      * as it will affect only the transformations.
      */
-    anchor_y: number
-    /**
-     * The Y coordinate of an actor's anchor point, relative to
-     * the actor coordinate space, in pixels
-     * 
-     * It is highly recommended not to use #ClutterActor:anchor-x,
-     * #ClutterActor:anchor-y, and #ClutterActor:anchor-gravity in newly
-     * written code; the anchor point adds an additional translation that
-     * will affect the actor's relative position with regards to its
-     * parent, as well as the position of its children. This change needs
-     * to always be taken into account when positioning the actor. It is
-     * recommended to use the #ClutterActor:pivot-point property instead,
-     * as it will affect only the transformations.
-     */
     anchorY: number
     /**
      * Paints a solid fill of the actor's allocation using the specified
@@ -10116,18 +9608,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:background-color property is animatable.
      */
-    background_color: Color
-    /**
-     * Paints a solid fill of the actor's allocation using the specified
-     * color.
-     * 
-     * The #ClutterActor:background-color property is animatable.
-     */
     backgroundColor: Color
-    /**
-     * Whether the #ClutterActor:background-color property has been set.
-     */
-    readonly background_color_set: boolean
     /**
      * Whether the #ClutterActor:background-color property has been set.
      */
@@ -10142,22 +9623,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:child-transform property is animatable.
      */
-    child_transform: Matrix
-    /**
-     * Applies a transformation matrix on each child of an actor.
-     * 
-     * Setting this property with a #ClutterMatrix will set the
-     * #ClutterActor:child-transform-set property to %TRUE as a side effect;
-     * setting this property with %NULL will set the
-     * #ClutterActor:child-transform-set property to %FALSE.
-     * 
-     * The #ClutterActor:child-transform property is animatable.
-     */
     childTransform: Matrix
-    /**
-     * Whether the #ClutterActor:child-transform property is set.
-     */
-    readonly child_transform_set: boolean
     /**
      * Whether the #ClutterActor:child-transform property is set.
      */
@@ -10175,25 +9641,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * Setting this property will change the #ClutterActor:has-clip
      * property as a side effect.
      */
-    clip_rect: Rect
-    /**
-     * The visible region of the actor, in actor-relative coordinates,
-     * expressed as a #ClutterRect.
-     * 
-     * Setting this property to %NULL will unset the existing clip.
-     * 
-     * Setting this property will change the #ClutterActor:has-clip
-     * property as a side effect.
-     */
     clipRect: Rect
-    /**
-     * Whether the clip region should track the allocated area
-     * of the actor.
-     * 
-     * This property is ignored if a clip area has been explicitly
-     * set using clutter_actor_set_clip().
-     */
-    clip_to_allocation: boolean
     /**
      * Whether the clip region should track the allocated area
      * of the actor.
@@ -10220,16 +9668,6 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * The bounding box for the content is guaranteed to never exceed the
      * allocation's of the actor.
      */
-    readonly content_box: ActorBox
-    /**
-     * The bounding box for the #ClutterContent used by the actor.
-     * 
-     * The value of this property is controlled by the #ClutterActor:allocation
-     * and #ClutterActor:content-gravity properties of #ClutterActor.
-     * 
-     * The bounding box for the content is guaranteed to never exceed the
-     * allocation's of the actor.
-     */
     readonly contentBox: ActorBox
     /**
      * The alignment that should be honoured by the #ClutterContent
@@ -10246,27 +9684,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:content-gravity property is animatable.
      */
-    content_gravity: ContentGravity
-    /**
-     * The alignment that should be honoured by the #ClutterContent
-     * set with the #ClutterActor:content property.
-     * 
-     * Changing the value of this property will change the bounding box of
-     * the content; you can use the #ClutterActor:content-box property to
-     * get the position and size of the content within the actor's
-     * allocation.
-     * 
-     * This property is meaningful only for #ClutterContent implementations
-     * that have a preferred size, and if the preferred size is smaller than
-     * the actor's allocation.
-     * 
-     * The #ClutterActor:content-gravity property is animatable.
-     */
     contentGravity: ContentGravity
-    /**
-     * The repeat policy for the actor's #ClutterActor:content.
-     */
-    content_repeat: ContentRepeat
     /**
      * The repeat policy for the actor's #ClutterActor:content.
      */
@@ -10290,28 +9708,12 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The actor's first child.
      */
-    readonly first_child: Actor
-    /**
-     * The actor's first child.
-     */
     readonly firstChild: Actor
     /**
      * This flag controls whether the #ClutterActor:fixed-x and
      * #ClutterActor:fixed-y properties are used
      */
-    fixed_position_set: boolean
-    /**
-     * This flag controls whether the #ClutterActor:fixed-x and
-     * #ClutterActor:fixed-y properties are used
-     */
     fixedPositionSet: boolean
-    /**
-     * The fixed X position of the actor in pixels.
-     * 
-     * Writing this property sets #ClutterActor:fixed-position-set
-     * property as well, as a side effect
-     */
-    fixed_x: number
     /**
      * The fixed X position of the actor in pixels.
      * 
@@ -10325,27 +9727,11 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * Writing this property sets the #ClutterActor:fixed-position-set
      * property as well, as a side effect
      */
-    fixed_y: number
-    /**
-     * The fixed Y position of the actor in pixels.
-     * 
-     * Writing this property sets the #ClutterActor:fixed-position-set
-     * property as well, as a side effect
-     */
     fixedY: number
     /**
      * Whether the actor has the #ClutterActor:clip property set or not
      */
-    readonly has_clip: boolean
-    /**
-     * Whether the actor has the #ClutterActor:clip property set or not
-     */
     readonly hasClip: boolean
-    /**
-     * Whether the actor contains the pointer of a #ClutterInputDevice
-     * or not.
-     */
-    readonly has_pointer: boolean
     /**
      * Whether the actor contains the pointer of a #ClutterInputDevice
      * or not.
@@ -10362,37 +9748,18 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The actor's last child.
      */
-    readonly last_child: Actor
-    /**
-     * The actor's last child.
-     */
     readonly lastChild: Actor
     /**
      * A delegate object for controlling the layout of the children of
      * an actor.
      */
-    layout_manager: LayoutManager
-    /**
-     * A delegate object for controlling the layout of the children of
-     * an actor.
-     */
     layoutManager: LayoutManager
-    magnification_filter: ScalingFilter
     magnificationFilter: ScalingFilter
     /**
      * Whether the actor is mapped (will be painted when the stage
      * to which it belongs is mapped)
      */
     readonly mapped: boolean
-    /**
-     * The margin (in pixels) from the bottom of the actor.
-     * 
-     * This property adds a margin to the actor's preferred size; the margin
-     * will be automatically taken into account when allocating the actor.
-     * 
-     * The #ClutterActor:margin-bottom property is animatable.
-     */
-    margin_bottom: number
     /**
      * The margin (in pixels) from the bottom of the actor.
      * 
@@ -10410,25 +9777,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:margin-left property is animatable.
      */
-    margin_left: number
-    /**
-     * The margin (in pixels) from the left of the actor.
-     * 
-     * This property adds a margin to the actor's preferred size; the margin
-     * will be automatically taken into account when allocating the actor.
-     * 
-     * The #ClutterActor:margin-left property is animatable.
-     */
     marginLeft: number
-    /**
-     * The margin (in pixels) from the right of the actor.
-     * 
-     * This property adds a margin to the actor's preferred size; the margin
-     * will be automatically taken into account when allocating the actor.
-     * 
-     * The #ClutterActor:margin-right property is animatable.
-     */
-    margin_right: number
     /**
      * The margin (in pixels) from the right of the actor.
      * 
@@ -10446,15 +9795,6 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:margin-top property is animatable.
      */
-    margin_top: number
-    /**
-     * The margin (in pixels) from the top of the actor.
-     * 
-     * This property adds a margin to the actor's preferred size; the margin
-     * will be automatically taken into account when allocating the actor.
-     * 
-     * The #ClutterActor:margin-top property is animatable.
-     */
     marginTop: number
     /**
      * A forced minimum height request for the actor, in pixels
@@ -10463,20 +9803,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * as well, as a side effect. This property overrides the usual height
      * request of the actor.
      */
-    min_height: number
-    /**
-     * A forced minimum height request for the actor, in pixels
-     * 
-     * Writing this property sets the #ClutterActor:min-height-set property
-     * as well, as a side effect. This property overrides the usual height
-     * request of the actor.
-     */
     minHeight: number
-    /**
-     * This flag controls whether the #ClutterActor:min-height property
-     * is used
-     */
-    min_height_set: boolean
     /**
      * This flag controls whether the #ClutterActor:min-height property
      * is used
@@ -10490,27 +9817,12 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * This property overrides the usual width request of the actor.
      */
-    min_width: number
-    /**
-     * A forced minimum width request for the actor, in pixels
-     * 
-     * Writing this property sets the #ClutterActor:min-width-set property
-     * as well, as a side effect.
-     * 
-     * This property overrides the usual width request of the actor.
-     */
     minWidth: number
     /**
      * This flag controls whether the #ClutterActor:min-width property
      * is used
      */
-    min_width_set: boolean
-    /**
-     * This flag controls whether the #ClutterActor:min-width property
-     * is used
-     */
     minWidthSet: boolean
-    minification_filter: ScalingFilter
     minificationFilter: ScalingFilter
     /**
      * The name of the actor
@@ -10523,20 +9835,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * property as well, as a side effect. This property overrides the
      * usual height request of the actor
      */
-    natural_height: number
-    /**
-     * A forced natural height request for the actor, in pixels
-     * 
-     * Writing this property sets the #ClutterActor:natural-height-set
-     * property as well, as a side effect. This property overrides the
-     * usual height request of the actor
-     */
     naturalHeight: number
-    /**
-     * This flag controls whether the #ClutterActor:natural-height property
-     * is used
-     */
-    natural_height_set: boolean
     /**
      * This flag controls whether the #ClutterActor:natural-height property
      * is used
@@ -10549,33 +9848,12 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * property as well, as a side effect. This property overrides the
      * usual width request of the actor
      */
-    natural_width: number
-    /**
-     * A forced natural width request for the actor, in pixels
-     * 
-     * Writing this property sets the #ClutterActor:natural-width-set
-     * property as well, as a side effect. This property overrides the
-     * usual width request of the actor
-     */
     naturalWidth: number
     /**
      * This flag controls whether the #ClutterActor:natural-width property
      * is used
      */
-    natural_width_set: boolean
-    /**
-     * This flag controls whether the #ClutterActor:natural-width property
-     * is used
-     */
     naturalWidthSet: boolean
-    /**
-     * Determines the conditions in which the actor will be redirected
-     * to an offscreen framebuffer while being painted. For example this
-     * can be used to cache an actor in a framebuffer or for improved
-     * handling of transparent actors. See
-     * clutter_actor_set_offscreen_redirect() for details.
-     */
-    offscreen_redirect: OffscreenRedirect
     /**
      * Determines the conditions in which the actor will be redirected
      * to an offscreen framebuffer while being painted. For example this
@@ -10602,26 +9880,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:pivot-point property is animatable.
      */
-    pivot_point: Point
-    /**
-     * The point around which the scaling and rotation transformations occur.
-     * 
-     * The pivot point is expressed in normalized coordinates space, with (0, 0)
-     * being the top left corner of the actor and (1, 1) the bottom right corner
-     * of the actor.
-     * 
-     * The default pivot point is located at (0, 0).
-     * 
-     * The #ClutterActor:pivot-point property is animatable.
-     */
     pivotPoint: Point
-    /**
-     * The Z component of the #ClutterActor:pivot-point, expressed as a value
-     * along the Z axis.
-     * 
-     * The #ClutterActor:pivot-point-z property is animatable.
-     */
-    pivot_point_z: number
     /**
      * The Z component of the #ClutterActor:pivot-point, expressed as a value
      * along the Z axis.
@@ -10706,71 +9965,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * The clutter_actor_get_preferred_size() function will implement this
      * check for you.
      */
-    request_mode: RequestMode
-    /**
-     * Request mode for the #ClutterActor. The request mode determines the
-     * type of geometry management used by the actor, either height for width
-     * (the default) or width for height.
-     * 
-     * For actors implementing height for width, the parent container should get
-     * the preferred width first, and then the preferred height for that width.
-     * 
-     * For actors implementing width for height, the parent container should get
-     * the preferred height first, and then the preferred width for that height.
-     * 
-     * For instance:
-     * 
-     * 
-     * ```c
-     *   ClutterRequestMode mode;
-     *   gfloat natural_width, min_width;
-     *   gfloat natural_height, min_height;
-     * 
-     *   mode = clutter_actor_get_request_mode (child);
-     *   if (mode == CLUTTER_REQUEST_HEIGHT_FOR_WIDTH)
-     *     {
-     *       clutter_actor_get_preferred_width (child, -1,
-     *                                          &min_width,
-     *                                          &natural_width);
-     *       clutter_actor_get_preferred_height (child, natural_width,
-     *                                           &min_height,
-     *                                           &natural_height);
-     *     }
-     *   else if (mode == CLUTTER_REQUEST_WIDTH_FOR_HEIGHT)
-     *     {
-     *       clutter_actor_get_preferred_height (child, -1,
-     *                                           &min_height,
-     *                                           &natural_height);
-     *       clutter_actor_get_preferred_width (child, natural_height,
-     *                                          &min_width,
-     *                                          &natural_width);
-     *     }
-     *   else if (mode == CLUTTER_REQUEST_CONTENT_SIZE)
-     *     {
-     *       ClutterContent *content = clutter_actor_get_content (child);
-     * 
-     *       min_width, min_height = 0;
-     *       natural_width = natural_height = 0;
-     * 
-     *       if (content != NULL)
-     *         clutter_content_get_preferred_size (content, &natural_width, &natural_height);
-     *     }
-     * ```
-     * 
-     * 
-     * will retrieve the minimum and natural width and height depending on the
-     * preferred request mode of the #ClutterActor "child".
-     * 
-     * The clutter_actor_get_preferred_size() function will implement this
-     * check for you.
-     */
     requestMode: RequestMode
-    /**
-     * The rotation angle on the X axis.
-     * 
-     * The #ClutterActor:rotation-angle-x property is animatable.
-     */
-    rotation_angle_x: number
     /**
      * The rotation angle on the X axis.
      * 
@@ -10782,19 +9977,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:rotation-angle-y property is animatable.
      */
-    rotation_angle_y: number
-    /**
-     * The rotation angle on the Y axis
-     * 
-     * The #ClutterActor:rotation-angle-y property is animatable.
-     */
     rotationAngleY: number
-    /**
-     * The rotation angle on the Z axis
-     * 
-     * The #ClutterActor:rotation-angle-z property is animatable.
-     */
-    rotation_angle_z: number
     /**
      * The rotation angle on the Z axis
      * 
@@ -10804,15 +9987,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The rotation center on the X axis.
      */
-    rotation_center_x: Vertex
-    /**
-     * The rotation center on the X axis.
-     */
     rotationCenterX: Vertex
-    /**
-     * The rotation center on the Y axis.
-     */
-    rotation_center_y: Vertex
     /**
      * The rotation center on the Y axis.
      */
@@ -10820,15 +9995,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The rotation center on the Z axis.
      */
-    rotation_center_z: Vertex
-    /**
-     * The rotation center on the Z axis.
-     */
     rotationCenterZ: Vertex
-    /**
-     * The rotation center on the Z axis expressed as a #ClutterGravity.
-     */
-    rotation_center_z_gravity: Gravity
     /**
      * The rotation center on the Z axis expressed as a #ClutterGravity.
      */
@@ -10836,15 +10003,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The horizontal center point for scaling
      */
-    scale_center_x: number
-    /**
-     * The horizontal center point for scaling
-     */
     scaleCenterX: number
-    /**
-     * The vertical center point for scaling
-     */
-    scale_center_y: number
     /**
      * The vertical center point for scaling
      */
@@ -10852,17 +10011,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * The center point for scaling expressed as a #ClutterGravity
      */
-    scale_gravity: Gravity
-    /**
-     * The center point for scaling expressed as a #ClutterGravity
-     */
     scaleGravity: Gravity
-    /**
-     * The horizontal scale of the actor.
-     * 
-     * The #ClutterActor:scale-x property is animatable.
-     */
-    scale_x: number
     /**
      * The horizontal scale of the actor.
      * 
@@ -10874,32 +10023,13 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:scale-y property is animatable.
      */
-    scale_y: number
-    /**
-     * The vertical scale of the actor.
-     * 
-     * The #ClutterActor:scale-y property is animatable.
-     */
     scaleY: number
     /**
      * The scale factor of the actor along the Z axis.
      * 
      * The #ClutterActor:scale-y property is animatable.
      */
-    scale_z: number
-    /**
-     * The scale factor of the actor along the Z axis.
-     * 
-     * The #ClutterActor:scale-y property is animatable.
-     */
     scaleZ: number
-    /**
-     * If %TRUE, the actor is automatically shown when parented.
-     * 
-     * Calling clutter_actor_hide() on an actor which has not been
-     * parented will set this property to %FALSE as a side effect.
-     */
-    show_on_set_parent: boolean
     /**
      * If %TRUE, the actor is automatically shown when parented.
      * 
@@ -10916,10 +10046,6 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * The #ClutterActor:size property is animatable.
      */
     size: Size
-    /**
-     * The direction of the text inside a #ClutterActor.
-     */
-    text_direction: TextDirection
     /**
      * The direction of the text inside a #ClutterActor.
      */
@@ -10945,18 +10071,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * Whether the #ClutterActor:transform property is set.
      */
-    readonly transform_set: boolean
-    /**
-     * Whether the #ClutterActor:transform property is set.
-     */
     readonly transformSet: boolean
-    /**
-     * An additional translation applied along the X axis, relative
-     * to the actor's #ClutterActor:pivot-point.
-     * 
-     * The #ClutterActor:translation-x property is animatable.
-     */
-    translation_x: number
     /**
      * An additional translation applied along the X axis, relative
      * to the actor's #ClutterActor:pivot-point.
@@ -10970,21 +10085,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * The #ClutterActor:translation-y property is animatable.
      */
-    translation_y: number
-    /**
-     * An additional translation applied along the Y axis, relative
-     * to the actor's #ClutterActor:pivot-point.
-     * 
-     * The #ClutterActor:translation-y property is animatable.
-     */
     translationY: number
-    /**
-     * An additional translation applied along the Z axis, relative
-     * to the actor's #ClutterActor:pivot-point.
-     * 
-     * The #ClutterActor:translation-z property is animatable.
-     */
-    translation_z: number
     /**
      * An additional translation applied along the Z axis, relative
      * to the actor's #ClutterActor:pivot-point.
@@ -11019,18 +10120,7 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * extra space for its allocation. See also the #ClutterActor:x-expand
      * property.
      */
-    x_align: ActorAlign
-    /**
-     * The alignment of an actor on the X axis, if the actor has been given
-     * extra space for its allocation. See also the #ClutterActor:x-expand
-     * property.
-     */
     xAlign: ActorAlign
-    /**
-     * Whether a layout manager should assign more space to the actor on
-     * the X axis.
-     */
-    x_expand: boolean
     /**
      * Whether a layout manager should assign more space to the actor on
      * the X axis.
@@ -11048,36 +10138,12 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * The alignment of an actor on the Y axis, if the actor has been given
      * extra space for its allocation.
      */
-    y_align: ActorAlign
-    /**
-     * The alignment of an actor on the Y axis, if the actor has been given
-     * extra space for its allocation.
-     */
     yAlign: ActorAlign
     /**
      * Whether a layout manager should assign more space to the actor on
      * the Y axis.
      */
-    y_expand: boolean
-    /**
-     * Whether a layout manager should assign more space to the actor on
-     * the Y axis.
-     */
     yExpand: boolean
-    /**
-     * The actor's position on the Z axis, relative to the parent's
-     * transformations.
-     * 
-     * Positive values will bring the actor's position nearer to the user,
-     * whereas negative values will bring the actor's position farther from
-     * the user.
-     * 
-     * The #ClutterActor:z-position does not affect the paint or allocation
-     * order.
-     * 
-     * The #ClutterActor:z-position property is animatable.
-     */
-    z_position: number
     /**
      * The actor's position on the Z axis, relative to the parent's
      * transformations.
@@ -12323,6 +11389,11 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      */
     has_allocation(): boolean
     /**
+     * Determines whether the actor has a clip area set or not.
+     * @returns %TRUE if the actor has a clip area set.
+     */
+    has_clip(): boolean
+    /**
      * Returns whether the actor has any constraints applied.
      * @returns %TRUE if the actor has any constraints,   %FALSE otherwise
      */
@@ -12351,6 +11422,12 @@ export interface Actor extends Atk.ImplementorIface, Animatable, Container, Scri
      * @returns %TRUE if the actor may have overlapping primitives, and   %FALSE otherwise
      */
     has_overlaps(): boolean
+    /**
+     * Checks whether an actor contains the pointer of a
+     * #ClutterInputDevice
+     * @returns %TRUE if the actor contains the pointer, and   %FALSE otherwise
+     */
+    has_pointer(): boolean
     /**
      * Flags an actor to be hidden. A hidden actor will not be
      * rendered on the stage.
@@ -14334,7 +13411,7 @@ export module AlignConstraint {
         /**
          * The axis to be used to compute the alignment
          */
-        align_axis?: AlignAxis | null
+        alignAxis?: AlignAxis | null
         /**
          * The alignment factor, as a normalized value between 0.0 and 1.0
          * 
@@ -14351,10 +13428,6 @@ export module AlignConstraint {
          * using the constraint.
          */
         source?: Actor | null
-        /**
-         * The axis to be used to compute the alignment
-         */
-        alignAxis?: AlignAxis | null
     }
 
 }
@@ -14363,10 +13436,6 @@ export interface AlignConstraint {
 
     // Own properties of Clutter-1.0.Clutter.AlignConstraint
 
-    /**
-     * The axis to be used to compute the alignment
-     */
-    align_axis: AlignAxis
     /**
      * The axis to be used to compute the alignment
      */
@@ -15537,14 +14606,6 @@ export module BehaviourDepth {
         /**
          * End depth level to apply to the actors.
          */
-        depth_end?: number | null
-        /**
-         * Start depth level to apply to the actors.
-         */
-        depth_start?: number | null
-        /**
-         * End depth level to apply to the actors.
-         */
         depthEnd?: number | null
         /**
          * Start depth level to apply to the actors.
@@ -15561,15 +14622,7 @@ export interface BehaviourDepth extends Scriptable {
     /**
      * End depth level to apply to the actors.
      */
-    depth_end: number
-    /**
-     * End depth level to apply to the actors.
-     */
     depthEnd: number
-    /**
-     * Start depth level to apply to the actors.
-     */
-    depth_start: number
     /**
      * Start depth level to apply to the actors.
      */
@@ -15662,42 +14715,6 @@ export module BehaviourEllipse {
         /**
          * The final angle to where the rotation should end.
          */
-        angle_end?: number | null
-        /**
-         * The initial angle from where the rotation should start.
-         */
-        angle_start?: number | null
-        /**
-         * The tilt angle for the rotation around center in X axis
-         */
-        angle_tilt_x?: number | null
-        /**
-         * The tilt angle for the rotation around center in Y axis
-         */
-        angle_tilt_y?: number | null
-        /**
-         * The tilt angle for the rotation on the Z axis
-         */
-        angle_tilt_z?: number | null
-        /**
-         * The center of the ellipse.
-         */
-        center?: Knot | null
-        /**
-         * The direction of the rotation.
-         */
-        direction?: RotateDirection | null
-        /**
-         * Height of the ellipse, in pixels
-         */
-        height?: number | null
-        /**
-         * Width of the ellipse, in pixels
-         */
-        width?: number | null
-        /**
-         * The final angle to where the rotation should end.
-         */
         angleEnd?: number | null
         /**
          * The initial angle from where the rotation should start.
@@ -15715,6 +14732,22 @@ export module BehaviourEllipse {
          * The tilt angle for the rotation on the Z axis
          */
         angleTiltZ?: number | null
+        /**
+         * The center of the ellipse.
+         */
+        center?: Knot | null
+        /**
+         * The direction of the rotation.
+         */
+        direction?: RotateDirection | null
+        /**
+         * Height of the ellipse, in pixels
+         */
+        height?: number | null
+        /**
+         * Width of the ellipse, in pixels
+         */
+        width?: number | null
     }
 
 }
@@ -15726,15 +14759,7 @@ export interface BehaviourEllipse extends Scriptable {
     /**
      * The final angle to where the rotation should end.
      */
-    angle_end: number
-    /**
-     * The final angle to where the rotation should end.
-     */
     angleEnd: number
-    /**
-     * The initial angle from where the rotation should start.
-     */
-    angle_start: number
     /**
      * The initial angle from where the rotation should start.
      */
@@ -15742,23 +14767,11 @@ export interface BehaviourEllipse extends Scriptable {
     /**
      * The tilt angle for the rotation around center in X axis
      */
-    angle_tilt_x: number
-    /**
-     * The tilt angle for the rotation around center in X axis
-     */
     angleTiltX: number
     /**
      * The tilt angle for the rotation around center in Y axis
      */
-    angle_tilt_y: number
-    /**
-     * The tilt angle for the rotation around center in Y axis
-     */
     angleTiltY: number
-    /**
-     * The tilt angle for the rotation on the Z axis
-     */
-    angle_tilt_z: number
     /**
      * The tilt angle for the rotation on the Z axis
      */
@@ -15981,14 +14994,6 @@ export module BehaviourOpacity {
         /**
          * Final opacity level of the behaviour.
          */
-        opacity_end?: number | null
-        /**
-         * Initial opacity level of the behaviour.
-         */
-        opacity_start?: number | null
-        /**
-         * Final opacity level of the behaviour.
-         */
         opacityEnd?: number | null
         /**
          * Initial opacity level of the behaviour.
@@ -16005,15 +15010,7 @@ export interface BehaviourOpacity extends Scriptable {
     /**
      * Final opacity level of the behaviour.
      */
-    opacity_end: number
-    /**
-     * Final opacity level of the behaviour.
-     */
     opacityEnd: number
-    /**
-     * Initial opacity level of the behaviour.
-     */
-    opacity_start: number
     /**
      * Initial opacity level of the behaviour.
      */
@@ -16258,39 +15255,15 @@ export module BehaviourRotate {
         /**
          * The final angle to where the rotation should end.
          */
-        angle_end?: number | null
-        /**
-         * The initial angle from whence the rotation should start.
-         */
-        angle_start?: number | null
-        /**
-         * The axis of rotation.
-         */
-        axis?: RotateAxis | null
-        /**
-         * The x center of rotation.
-         */
-        center_x?: number | null
-        /**
-         * The y center of rotation.
-         */
-        center_y?: number | null
-        /**
-         * The z center of rotation.
-         */
-        center_z?: number | null
-        /**
-         * The direction of the rotation.
-         */
-        direction?: RotateDirection | null
-        /**
-         * The final angle to where the rotation should end.
-         */
         angleEnd?: number | null
         /**
          * The initial angle from whence the rotation should start.
          */
         angleStart?: number | null
+        /**
+         * The axis of rotation.
+         */
+        axis?: RotateAxis | null
         /**
          * The x center of rotation.
          */
@@ -16303,6 +15276,10 @@ export module BehaviourRotate {
          * The z center of rotation.
          */
         centerZ?: number | null
+        /**
+         * The direction of the rotation.
+         */
+        direction?: RotateDirection | null
     }
 
 }
@@ -16314,15 +15291,7 @@ export interface BehaviourRotate extends Scriptable {
     /**
      * The final angle to where the rotation should end.
      */
-    angle_end: number
-    /**
-     * The final angle to where the rotation should end.
-     */
     angleEnd: number
-    /**
-     * The initial angle from whence the rotation should start.
-     */
-    angle_start: number
     /**
      * The initial angle from whence the rotation should start.
      */
@@ -16334,23 +15303,11 @@ export interface BehaviourRotate extends Scriptable {
     /**
      * The x center of rotation.
      */
-    center_x: number
-    /**
-     * The x center of rotation.
-     */
     centerX: number
     /**
      * The y center of rotation.
      */
-    center_y: number
-    /**
-     * The y center of rotation.
-     */
     centerY: number
-    /**
-     * The z center of rotation.
-     */
-    center_z: number
     /**
      * The z center of rotation.
      */
@@ -16506,22 +15463,6 @@ export module BehaviourScale {
         /**
          * The final scaling factor on the X axis for the actors.
          */
-        x_scale_end?: number | null
-        /**
-         * The initial scaling factor on the X axis for the actors.
-         */
-        x_scale_start?: number | null
-        /**
-         * The final scaling factor on the Y axis for the actors.
-         */
-        y_scale_end?: number | null
-        /**
-         * The initial scaling factor on the Y axis for the actors.
-         */
-        y_scale_start?: number | null
-        /**
-         * The final scaling factor on the X axis for the actors.
-         */
         xScaleEnd?: number | null
         /**
          * The initial scaling factor on the X axis for the actors.
@@ -16546,15 +15487,7 @@ export interface BehaviourScale extends Scriptable {
     /**
      * The final scaling factor on the X axis for the actors.
      */
-    x_scale_end: number
-    /**
-     * The final scaling factor on the X axis for the actors.
-     */
     xScaleEnd: number
-    /**
-     * The initial scaling factor on the X axis for the actors.
-     */
-    x_scale_start: number
     /**
      * The initial scaling factor on the X axis for the actors.
      */
@@ -16562,15 +15495,7 @@ export interface BehaviourScale extends Scriptable {
     /**
      * The final scaling factor on the Y axis for the actors.
      */
-    y_scale_end: number
-    /**
-     * The final scaling factor on the Y axis for the actors.
-     */
     yScaleEnd: number
-    /**
-     * The initial scaling factor on the Y axis for the actors.
-     */
-    y_scale_start: number
     /**
      * The initial scaling factor on the Y axis for the actors.
      */
@@ -16674,16 +15599,6 @@ export module BinLayout {
          * The default horizontal alignment policy for actors managed
          * by the #ClutterBinLayout
          */
-        x_align?: BinAlignment | null
-        /**
-         * The default vertical alignment policy for actors managed
-         * by the #ClutterBinLayout
-         */
-        y_align?: BinAlignment | null
-        /**
-         * The default horizontal alignment policy for actors managed
-         * by the #ClutterBinLayout
-         */
         xAlign?: BinAlignment | null
         /**
          * The default vertical alignment policy for actors managed
@@ -16702,17 +15617,7 @@ export interface BinLayout {
      * The default horizontal alignment policy for actors managed
      * by the #ClutterBinLayout
      */
-    x_align: BinAlignment
-    /**
-     * The default horizontal alignment policy for actors managed
-     * by the #ClutterBinLayout
-     */
     xAlign: BinAlignment
-    /**
-     * The default vertical alignment policy for actors managed
-     * by the #ClutterBinLayout
-     */
-    y_align: BinAlignment
     /**
      * The default vertical alignment policy for actors managed
      * by the #ClutterBinLayout
@@ -17260,13 +16165,6 @@ export module Box {
          * This property reads the #ClutterActor:background-color-set property
          * internally.
          */
-        color_set?: boolean | null
-        /**
-         * Whether the #ClutterBox:color property has been set.
-         * 
-         * This property reads the #ClutterActor:background-color-set property
-         * internally.
-         */
         colorSet?: boolean | null
     }
 
@@ -17285,13 +16183,6 @@ export interface Box extends Atk.ImplementorIface, Animatable, Container, Script
      * internally.
      */
     color: Color
-    /**
-     * Whether the #ClutterBox:color property has been set.
-     * 
-     * This property reads the #ClutterActor:background-color-set property
-     * internally.
-     */
-    color_set: boolean
     /**
      * Whether the #ClutterBox:color property has been set.
      * 
@@ -17669,54 +16560,6 @@ export module BoxLayout {
          * 
          * The duration is expressed in milliseconds.
          */
-        easing_duration?: number | null
-        /**
-         * The easing mode for the animations, in case
-         * #ClutterBoxLayout:use-animations is set to %TRUE.
-         * 
-         * The easing mode has the same semantics of #ClutterAnimation:mode: it can
-         * either be a value from the #ClutterAnimationMode enumeration, like
-         * %CLUTTER_EASE_OUT_CUBIC, or a logical id as returned by
-         * clutter_alpha_register_func().
-         * 
-         * The default value is %CLUTTER_EASE_OUT_CUBIC.
-         */
-        easing_mode?: number | null
-        /**
-         * Whether the #ClutterBoxLayout should arrange its children
-         * homogeneously, i.e. all children get the same size
-         */
-        homogeneous?: boolean | null
-        /**
-         * The orientation of the #ClutterBoxLayout, either horizontal
-         * or vertical
-         */
-        orientation?: Orientation | null
-        /**
-         * Whether the #ClutterBoxLayout should pack items at the start
-         * or append them at the end
-         */
-        pack_start?: boolean | null
-        /**
-         * The spacing between children of the #ClutterBoxLayout, in pixels
-         */
-        spacing?: number | null
-        /**
-         * Whether the #ClutterBoxLayout should animate changes in the
-         * layout, overriding the easing state of the children.
-         */
-        use_animations?: boolean | null
-        /**
-         * Whether the #ClutterBoxLayout should arrange its children
-         * alongside the Y axis, instead of alongside the X axis
-         */
-        vertical?: boolean | null
-        /**
-         * The duration of the animations, in case #ClutterBoxLayout:use-animations
-         * is set to %TRUE.
-         * 
-         * The duration is expressed in milliseconds.
-         */
         easingDuration?: number | null
         /**
          * The easing mode for the animations, in case
@@ -17731,15 +16574,34 @@ export module BoxLayout {
          */
         easingMode?: number | null
         /**
+         * Whether the #ClutterBoxLayout should arrange its children
+         * homogeneously, i.e. all children get the same size
+         */
+        homogeneous?: boolean | null
+        /**
+         * The orientation of the #ClutterBoxLayout, either horizontal
+         * or vertical
+         */
+        orientation?: Orientation | null
+        /**
          * Whether the #ClutterBoxLayout should pack items at the start
          * or append them at the end
          */
         packStart?: boolean | null
         /**
+         * The spacing between children of the #ClutterBoxLayout, in pixels
+         */
+        spacing?: number | null
+        /**
          * Whether the #ClutterBoxLayout should animate changes in the
          * layout, overriding the easing state of the children.
          */
         useAnimations?: boolean | null
+        /**
+         * Whether the #ClutterBoxLayout should arrange its children
+         * alongside the Y axis, instead of alongside the X axis
+         */
+        vertical?: boolean | null
     }
 
 }
@@ -17754,26 +16616,7 @@ export interface BoxLayout {
      * 
      * The duration is expressed in milliseconds.
      */
-    easing_duration: number
-    /**
-     * The duration of the animations, in case #ClutterBoxLayout:use-animations
-     * is set to %TRUE.
-     * 
-     * The duration is expressed in milliseconds.
-     */
     easingDuration: number
-    /**
-     * The easing mode for the animations, in case
-     * #ClutterBoxLayout:use-animations is set to %TRUE.
-     * 
-     * The easing mode has the same semantics of #ClutterAnimation:mode: it can
-     * either be a value from the #ClutterAnimationMode enumeration, like
-     * %CLUTTER_EASE_OUT_CUBIC, or a logical id as returned by
-     * clutter_alpha_register_func().
-     * 
-     * The default value is %CLUTTER_EASE_OUT_CUBIC.
-     */
-    easing_mode: number
     /**
      * The easing mode for the animations, in case
      * #ClutterBoxLayout:use-animations is set to %TRUE.
@@ -17800,21 +16643,11 @@ export interface BoxLayout {
      * Whether the #ClutterBoxLayout should pack items at the start
      * or append them at the end
      */
-    pack_start: boolean
-    /**
-     * Whether the #ClutterBoxLayout should pack items at the start
-     * or append them at the end
-     */
     packStart: boolean
     /**
      * The spacing between children of the #ClutterBoxLayout, in pixels
      */
     spacing: number
-    /**
-     * Whether the #ClutterBoxLayout should animate changes in the
-     * layout, overriding the easing state of the children.
-     */
-    use_animations: boolean
     /**
      * Whether the #ClutterBoxLayout should animate changes in the
      * layout, overriding the easing state of the children.
@@ -18222,23 +17055,6 @@ export module CairoTexture {
          * If :auto-resize is set to %TRUE the surface contents will also
          * be invalidated automatically.
          */
-        auto_resize?: boolean | null
-        /**
-         * The height of the Cairo surface used by the #ClutterCairoTexture
-         * actor, in pixels.
-         */
-        surface_height?: number | null
-        /**
-         * The width of the Cairo surface used by the #ClutterCairoTexture
-         * actor, in pixels.
-         */
-        surface_width?: number | null
-        /**
-         * Controls whether the #ClutterCairoTexture should automatically
-         * resize the Cairo surface whenever the actor's allocation changes.
-         * If :auto-resize is set to %TRUE the surface contents will also
-         * be invalidated automatically.
-         */
         autoResize?: boolean | null
         /**
          * The height of the Cairo surface used by the #ClutterCairoTexture
@@ -18264,29 +17080,12 @@ export interface CairoTexture extends Atk.ImplementorIface, Animatable, Containe
      * If :auto-resize is set to %TRUE the surface contents will also
      * be invalidated automatically.
      */
-    auto_resize: boolean
-    /**
-     * Controls whether the #ClutterCairoTexture should automatically
-     * resize the Cairo surface whenever the actor's allocation changes.
-     * If :auto-resize is set to %TRUE the surface contents will also
-     * be invalidated automatically.
-     */
     autoResize: boolean
     /**
      * The height of the Cairo surface used by the #ClutterCairoTexture
      * actor, in pixels.
      */
-    surface_height: number
-    /**
-     * The height of the Cairo surface used by the #ClutterCairoTexture
-     * actor, in pixels.
-     */
     surfaceHeight: number
-    /**
-     * The width of the Cairo surface used by the #ClutterCairoTexture
-     * actor, in pixels.
-     */
-    surface_width: number
     /**
      * The width of the Cairo surface used by the #ClutterCairoTexture
      * actor, in pixels.
@@ -18768,23 +17567,11 @@ export module Canvas {
          * Use #ClutterCanvas:scale-factor-set to check if the scale factor
          * is set.
          */
-        scale_factor?: number | null
+        scaleFactor?: number | null
         /**
          * The width of the canvas.
          */
         width?: number | null
-        /**
-         * The scaling factor to be applied to the Cairo surface used for
-         * drawing.
-         * 
-         * If #ClutterCanvas:scale-factor is set to a negative value, the
-         * value of the #ClutterSettings:window-scaling-factor property is
-         * used instead.
-         * 
-         * Use #ClutterCanvas:scale-factor-set to check if the scale factor
-         * is set.
-         */
-        scaleFactor?: number | null
     }
 
 }
@@ -18808,27 +17595,7 @@ export interface Canvas extends Content {
      * Use #ClutterCanvas:scale-factor-set to check if the scale factor
      * is set.
      */
-    scale_factor: number
-    /**
-     * The scaling factor to be applied to the Cairo surface used for
-     * drawing.
-     * 
-     * If #ClutterCanvas:scale-factor is set to a negative value, the
-     * value of the #ClutterSettings:window-scaling-factor property is
-     * used instead.
-     * 
-     * Use #ClutterCanvas:scale-factor-set to check if the scale factor
-     * is set.
-     */
     scaleFactor: number
-    /**
-     * Whether the #ClutterCanvas:scale-factor property is set.
-     * 
-     * If the #ClutterCanvas:scale-factor-set property is %FALSE
-     * then #ClutterCanvas will use the #ClutterSettings:window-scaling-factor
-     * property.
-     */
-    readonly scale_factor_set: boolean
     /**
      * Whether the #ClutterCanvas:scale-factor property is set.
      * 
@@ -19083,22 +17850,6 @@ export module ClickAction {
          * A value of -1 will make the #ClutterClickAction use the value of
          * the #ClutterSettings:long-press-duration property.
          */
-        long_press_duration?: number | null
-        /**
-         * The maximum allowed distance that can be covered (on both axes) before
-         * a long press gesture is cancelled, in pixels.
-         * 
-         * A value of -1 will make the #ClutterClickAction use the value of
-         * the #ClutterSettings:dnd-drag-threshold property.
-         */
-        long_press_threshold?: number | null
-        /**
-         * The minimum duration of a press for it to be recognized as a long
-         * press gesture, in milliseconds.
-         * 
-         * A value of -1 will make the #ClutterClickAction use the value of
-         * the #ClutterSettings:long-press-duration property.
-         */
         longPressDuration?: number | null
         /**
          * The maximum allowed distance that can be covered (on both axes) before
@@ -19127,23 +17878,7 @@ export interface ClickAction {
      * A value of -1 will make the #ClutterClickAction use the value of
      * the #ClutterSettings:long-press-duration property.
      */
-    long_press_duration: number
-    /**
-     * The minimum duration of a press for it to be recognized as a long
-     * press gesture, in milliseconds.
-     * 
-     * A value of -1 will make the #ClutterClickAction use the value of
-     * the #ClutterSettings:long-press-duration property.
-     */
     longPressDuration: number
-    /**
-     * The maximum allowed distance that can be covered (on both axes) before
-     * a long press gesture is cancelled, in pixels.
-     * 
-     * A value of -1 will make the #ClutterClickAction use the value of
-     * the #ClutterSettings:dnd-drag-threshold property.
-     */
-    long_press_threshold: number
     /**
      * The maximum allowed distance that can be covered (on both axes) before
      * a long press gesture is cancelled, in pixels.
@@ -19817,16 +18552,6 @@ export module DeformEffect {
          * The number of horizontal tiles. The bigger the number, the
          * smaller the tiles
          */
-        x_tiles?: number | null
-        /**
-         * The number of vertical tiles. The bigger the number, the
-         * smaller the tiles
-         */
-        y_tiles?: number | null
-        /**
-         * The number of horizontal tiles. The bigger the number, the
-         * smaller the tiles
-         */
         xTiles?: number | null
         /**
          * The number of vertical tiles. The bigger the number, the
@@ -19845,17 +18570,7 @@ export interface DeformEffect {
      * The number of horizontal tiles. The bigger the number, the
      * smaller the tiles
      */
-    x_tiles: number
-    /**
-     * The number of horizontal tiles. The bigger the number, the
-     * smaller the tiles
-     */
     xTiles: number
-    /**
-     * The number of vertical tiles. The bigger the number, the
-     * smaller the tiles
-     */
-    y_tiles: number
     /**
      * The number of vertical tiles. The bigger the number, the
      * smaller the tiles
@@ -20212,61 +18927,6 @@ export module DragAction {
          * actor position) to the specified #ClutterRect, in parent's
          * coordinates.
          */
-        drag_area?: Rect | null
-        /**
-         * Constraints the dragging action to the specified axis
-         */
-        drag_axis?: DragAxis | null
-        /**
-         * The #ClutterActor that is effectively being dragged
-         * 
-         * A #ClutterDragAction will, be default, use the #ClutterActor that
-         * has been attached to the action; it is possible to create a
-         * separate #ClutterActor and use it instead.
-         * 
-         * Setting this property has no effect on the #ClutterActor argument
-         * passed to the #ClutterDragAction signals
-         */
-        drag_handle?: Actor | null
-        /**
-         * The horizontal threshold, in pixels, that the cursor must travel
-         * in order to begin a drag action.
-         * 
-         * When set to a positive value, #ClutterDragAction will only emit
-         * #ClutterDragAction::drag-begin if the pointer has moved
-         * horizontally at least of the given amount of pixels since
-         * the button press event.
-         * 
-         * When set to -1, #ClutterDragAction will use the default threshold
-         * stored in the #ClutterSettings:dnd-drag-threshold property of
-         * #ClutterSettings.
-         * 
-         * When read, this property will always return a valid drag
-         * threshold, either as set or the default one.
-         */
-        x_drag_threshold?: number | null
-        /**
-         * The vertical threshold, in pixels, that the cursor must travel
-         * in order to begin a drag action.
-         * 
-         * When set to a positive value, #ClutterDragAction will only emit
-         * #ClutterDragAction::drag-begin if the pointer has moved
-         * vertically at least of the given amount of pixels since
-         * the button press event.
-         * 
-         * When set to -1, #ClutterDragAction will use the value stored
-         * in the #ClutterSettings:dnd-drag-threshold property of
-         * #ClutterSettings.
-         * 
-         * When read, this property will always return a valid drag
-         * threshold, either as set or the default one.
-         */
-        y_drag_threshold?: number | null
-        /**
-         * Constains the dragging action (or in particular, the resulting
-         * actor position) to the specified #ClutterRect, in parent's
-         * coordinates.
-         */
         dragArea?: Rect | null
         /**
          * Constraints the dragging action to the specified axis
@@ -20330,17 +18990,7 @@ export interface DragAction {
      * actor position) to the specified #ClutterRect, in parent's
      * coordinates.
      */
-    drag_area: Rect
-    /**
-     * Constains the dragging action (or in particular, the resulting
-     * actor position) to the specified #ClutterRect, in parent's
-     * coordinates.
-     */
     dragArea: Rect
-    /**
-     * Whether the #ClutterDragAction:drag-area property has been set.
-     */
-    readonly drag_area_set: boolean
     /**
      * Whether the #ClutterDragAction:drag-area property has been set.
      */
@@ -20348,22 +18998,7 @@ export interface DragAction {
     /**
      * Constraints the dragging action to the specified axis
      */
-    drag_axis: DragAxis
-    /**
-     * Constraints the dragging action to the specified axis
-     */
     dragAxis: DragAxis
-    /**
-     * The #ClutterActor that is effectively being dragged
-     * 
-     * A #ClutterDragAction will, be default, use the #ClutterActor that
-     * has been attached to the action; it is possible to create a
-     * separate #ClutterActor and use it instead.
-     * 
-     * Setting this property has no effect on the #ClutterActor argument
-     * passed to the #ClutterDragAction signals
-     */
-    drag_handle: Actor
     /**
      * The #ClutterActor that is effectively being dragged
      * 
@@ -20391,41 +19026,7 @@ export interface DragAction {
      * When read, this property will always return a valid drag
      * threshold, either as set or the default one.
      */
-    x_drag_threshold: number
-    /**
-     * The horizontal threshold, in pixels, that the cursor must travel
-     * in order to begin a drag action.
-     * 
-     * When set to a positive value, #ClutterDragAction will only emit
-     * #ClutterDragAction::drag-begin if the pointer has moved
-     * horizontally at least of the given amount of pixels since
-     * the button press event.
-     * 
-     * When set to -1, #ClutterDragAction will use the default threshold
-     * stored in the #ClutterSettings:dnd-drag-threshold property of
-     * #ClutterSettings.
-     * 
-     * When read, this property will always return a valid drag
-     * threshold, either as set or the default one.
-     */
     xDragThreshold: number
-    /**
-     * The vertical threshold, in pixels, that the cursor must travel
-     * in order to begin a drag action.
-     * 
-     * When set to a positive value, #ClutterDragAction will only emit
-     * #ClutterDragAction::drag-begin if the pointer has moved
-     * vertically at least of the given amount of pixels since
-     * the button press event.
-     * 
-     * When set to -1, #ClutterDragAction will use the value stored
-     * in the #ClutterSettings:dnd-drag-threshold property of
-     * #ClutterSettings.
-     * 
-     * When read, this property will always return a valid drag
-     * threshold, either as set or the default one.
-     */
-    y_drag_threshold: number
     /**
      * The vertical threshold, in pixels, that the cursor must travel
      * in order to begin a drag action.
@@ -20881,54 +19482,12 @@ export module FlowLayout {
          * property is honoured by horizontal non-overflowing layouts
          * and by vertical overflowing layouts
          */
-        column_spacing?: number | null
+        columnSpacing?: number | null
         /**
          * Whether each child inside the #ClutterFlowLayout should receive
          * the same allocation
          */
         homogeneous?: boolean | null
-        /**
-         * Maximum width for each column in the layout, in pixels. If
-         * set to -1 the width will be the maximum child width
-         */
-        max_column_width?: number | null
-        /**
-         * Maximum height for each row in the layout, in pixels. If
-         * set to -1 the width will be the maximum child height
-         */
-        max_row_height?: number | null
-        /**
-         * Minimum width for each column in the layout, in pixels
-         */
-        min_column_width?: number | null
-        /**
-         * Minimum height for each row in the layout, in pixels
-         */
-        min_row_height?: number | null
-        /**
-         * The orientation of the #ClutterFlowLayout. The children
-         * of the layout will be layed out following the orientation.
-         * 
-         * This property also controls the overflowing directions
-         */
-        orientation?: FlowOrientation | null
-        /**
-         * The spacing between rows, in pixels; the value of this
-         * property is honoured by vertical non-overflowing layouts and
-         * by horizontal overflowing layouts
-         */
-        row_spacing?: number | null
-        /**
-         * Whether the #ClutterFlowLayout should arrange its children
-         * on a grid
-         */
-        snap_to_grid?: boolean | null
-        /**
-         * The spacing between columns, in pixels; the value of this
-         * property is honoured by horizontal non-overflowing layouts
-         * and by vertical overflowing layouts
-         */
-        columnSpacing?: number | null
         /**
          * Maximum width for each column in the layout, in pixels. If
          * set to -1 the width will be the maximum child width
@@ -20947,6 +19506,13 @@ export module FlowLayout {
          * Minimum height for each row in the layout, in pixels
          */
         minRowHeight?: number | null
+        /**
+         * The orientation of the #ClutterFlowLayout. The children
+         * of the layout will be layed out following the orientation.
+         * 
+         * This property also controls the overflowing directions
+         */
+        orientation?: FlowOrientation | null
         /**
          * The spacing between rows, in pixels; the value of this
          * property is honoured by vertical non-overflowing layouts and
@@ -20971,12 +19537,6 @@ export interface FlowLayout {
      * property is honoured by horizontal non-overflowing layouts
      * and by vertical overflowing layouts
      */
-    column_spacing: number
-    /**
-     * The spacing between columns, in pixels; the value of this
-     * property is honoured by horizontal non-overflowing layouts
-     * and by vertical overflowing layouts
-     */
     columnSpacing: number
     /**
      * Whether each child inside the #ClutterFlowLayout should receive
@@ -20987,17 +19547,7 @@ export interface FlowLayout {
      * Maximum width for each column in the layout, in pixels. If
      * set to -1 the width will be the maximum child width
      */
-    max_column_width: number
-    /**
-     * Maximum width for each column in the layout, in pixels. If
-     * set to -1 the width will be the maximum child width
-     */
     maxColumnWidth: number
-    /**
-     * Maximum height for each row in the layout, in pixels. If
-     * set to -1 the width will be the maximum child height
-     */
-    max_row_height: number
     /**
      * Maximum height for each row in the layout, in pixels. If
      * set to -1 the width will be the maximum child height
@@ -21006,15 +19556,7 @@ export interface FlowLayout {
     /**
      * Minimum width for each column in the layout, in pixels
      */
-    min_column_width: number
-    /**
-     * Minimum width for each column in the layout, in pixels
-     */
     minColumnWidth: number
-    /**
-     * Minimum height for each row in the layout, in pixels
-     */
-    min_row_height: number
     /**
      * Minimum height for each row in the layout, in pixels
      */
@@ -21031,18 +19573,7 @@ export interface FlowLayout {
      * property is honoured by vertical non-overflowing layouts and
      * by horizontal overflowing layouts
      */
-    row_spacing: number
-    /**
-     * The spacing between rows, in pixels; the value of this
-     * property is honoured by vertical non-overflowing layouts and
-     * by horizontal overflowing layouts
-     */
     rowSpacing: number
-    /**
-     * Whether the #ClutterFlowLayout should arrange its children
-     * on a grid
-     */
-    snap_to_grid: boolean
     /**
      * Whether the #ClutterFlowLayout should arrange its children
      * on a grid
@@ -21236,32 +19767,6 @@ export module GestureAction {
         /**
          * Number of touch points to trigger a gesture action.
          */
-        n_touch_points?: number | null
-        /**
-         * The horizontal trigger distance to be used by the action to either
-         * emit the #ClutterGestureAction::gesture-begin signal or to emit
-         * the #ClutterGestureAction::gesture-cancel signal.
-         * 
-         * A negative value will be interpreted as the default drag threshold.
-         */
-        threshold_trigger_distance_x?: number | null
-        /**
-         * The vertical trigger distance to be used by the action to either
-         * emit the #ClutterGestureAction::gesture-begin signal or to emit
-         * the #ClutterGestureAction::gesture-cancel signal.
-         * 
-         * A negative value will be interpreted as the default drag threshold.
-         */
-        threshold_trigger_distance_y?: number | null
-        /**
-         * The trigger edge to be used by the action to either emit the
-         * #ClutterGestureAction::gesture-begin signal or to emit the
-         * #ClutterGestureAction::gesture-cancel signal.
-         */
-        threshold_trigger_edge?: GestureTriggerEdge | null
-        /**
-         * Number of touch points to trigger a gesture action.
-         */
         nTouchPoints?: number | null
         /**
          * The horizontal trigger distance to be used by the action to either
@@ -21296,19 +19801,7 @@ export interface GestureAction {
     /**
      * Number of touch points to trigger a gesture action.
      */
-    n_touch_points: number
-    /**
-     * Number of touch points to trigger a gesture action.
-     */
     nTouchPoints: number
-    /**
-     * The horizontal trigger distance to be used by the action to either
-     * emit the #ClutterGestureAction::gesture-begin signal or to emit
-     * the #ClutterGestureAction::gesture-cancel signal.
-     * 
-     * A negative value will be interpreted as the default drag threshold.
-     */
-    readonly threshold_trigger_distance_x: number
     /**
      * The horizontal trigger distance to be used by the action to either
      * emit the #ClutterGestureAction::gesture-begin signal or to emit
@@ -21324,21 +19817,7 @@ export interface GestureAction {
      * 
      * A negative value will be interpreted as the default drag threshold.
      */
-    readonly threshold_trigger_distance_y: number
-    /**
-     * The vertical trigger distance to be used by the action to either
-     * emit the #ClutterGestureAction::gesture-begin signal or to emit
-     * the #ClutterGestureAction::gesture-cancel signal.
-     * 
-     * A negative value will be interpreted as the default drag threshold.
-     */
     readonly thresholdTriggerDistanceY: number
-    /**
-     * The trigger edge to be used by the action to either emit the
-     * #ClutterGestureAction::gesture-begin signal or to emit the
-     * #ClutterGestureAction::gesture-cancel signal.
-     */
-    readonly threshold_trigger_edge: GestureTriggerEdge
     /**
      * The trigger edge to be used by the action to either emit the
      * #ClutterGestureAction::gesture-begin signal or to emit the
@@ -21545,31 +20024,15 @@ export module GridLayout {
         /**
          * Whether all columns of the layout should have the same width
          */
-        column_homogeneous?: boolean | null
-        /**
-         * The amount of space in pixels between two consecutive columns
-         */
-        column_spacing?: number | null
-        /**
-         * The orientation of the layout, either horizontal or vertical
-         */
-        orientation?: Orientation | null
-        /**
-         * Whether all rows of the layout should have the same height
-         */
-        row_homogeneous?: boolean | null
-        /**
-         * The amount of space in pixels between two consecutive rows
-         */
-        row_spacing?: number | null
-        /**
-         * Whether all columns of the layout should have the same width
-         */
         columnHomogeneous?: boolean | null
         /**
          * The amount of space in pixels between two consecutive columns
          */
         columnSpacing?: number | null
+        /**
+         * The orientation of the layout, either horizontal or vertical
+         */
+        orientation?: Orientation | null
         /**
          * Whether all rows of the layout should have the same height
          */
@@ -21589,15 +20052,7 @@ export interface GridLayout {
     /**
      * Whether all columns of the layout should have the same width
      */
-    column_homogeneous: boolean
-    /**
-     * Whether all columns of the layout should have the same width
-     */
     columnHomogeneous: boolean
-    /**
-     * The amount of space in pixels between two consecutive columns
-     */
-    column_spacing: number
     /**
      * The amount of space in pixels between two consecutive columns
      */
@@ -21609,15 +20064,7 @@ export interface GridLayout {
     /**
      * Whether all rows of the layout should have the same height
      */
-    row_homogeneous: boolean
-    /**
-     * Whether all rows of the layout should have the same height
-     */
     rowHomogeneous: boolean
-    /**
-     * The amount of space in pixels between two consecutive rows
-     */
-    row_spacing: number
     /**
      * The amount of space in pixels between two consecutive rows
      */
@@ -22275,12 +20722,12 @@ export module InputDevice {
         /**
          * The #ClutterDeviceManager instance which owns the device
          */
-        device_manager?: DeviceManager | null
-        device_mode?: InputMode | null
+        deviceManager?: DeviceManager | null
+        deviceMode?: InputMode | null
         /**
          * The type of the device
          */
-        device_type?: InputDeviceType | null
+        deviceType?: InputDeviceType | null
         /**
          * Whether the device is enabled.
          * 
@@ -22293,7 +20740,7 @@ export module InputDevice {
         /**
          * Whether the device has an on screen cursor following its movement.
          */
-        has_cursor?: boolean | null
+        hasCursor?: boolean | null
         /**
          * The unique identifier of the device
          */
@@ -22302,27 +20749,6 @@ export module InputDevice {
          * The name of the device
          */
         name?: string | null
-        /**
-         * Product ID of this device.
-         */
-        product_id?: string | null
-        /**
-         * Vendor ID of this device.
-         */
-        vendor_id?: string | null
-        /**
-         * The #ClutterDeviceManager instance which owns the device
-         */
-        deviceManager?: DeviceManager | null
-        deviceMode?: InputMode | null
-        /**
-         * The type of the device
-         */
-        deviceType?: InputDeviceType | null
-        /**
-         * Whether the device has an on screen cursor following its movement.
-         */
-        hasCursor?: boolean | null
         /**
          * Product ID of this device.
          */
@@ -22346,17 +20772,8 @@ export interface InputDevice {
     /**
      * The #ClutterDeviceManager instance which owns the device
      */
-    readonly device_manager: DeviceManager
-    /**
-     * The #ClutterDeviceManager instance which owns the device
-     */
     readonly deviceManager: DeviceManager
-    readonly device_mode: InputMode
     readonly deviceMode: InputMode
-    /**
-     * The type of the device
-     */
-    readonly device_type: InputDeviceType
     /**
      * The type of the device
      */
@@ -22373,19 +20790,11 @@ export interface InputDevice {
     /**
      * Whether the device has an on screen cursor following its movement.
      */
-    readonly has_cursor: boolean
-    /**
-     * Whether the device has an on screen cursor following its movement.
-     */
     readonly hasCursor: boolean
     /**
      * The unique identifier of the device
      */
     readonly id: number
-    /**
-     * The number of axes of the device.
-     */
-    readonly n_axes: number
     /**
      * The number of axes of the device.
      */
@@ -22397,15 +20806,7 @@ export interface InputDevice {
     /**
      * Product ID of this device.
      */
-    readonly product_id: string | null
-    /**
-     * Product ID of this device.
-     */
     readonly productId: string | null
-    /**
-     * Vendor ID of this device.
-     */
-    readonly vendor_id: string | null
     /**
      * Vendor ID of this device.
      */
@@ -22762,10 +21163,6 @@ export module Interval {
         /**
          * The type of the values in the interval.
          */
-        value_type?: GObject.GType | null
-        /**
-         * The type of the values in the interval.
-         */
         valueType?: GObject.GType | null
     }
 
@@ -22783,10 +21180,6 @@ export interface Interval extends Scriptable {
      * The initial value of the interval.
      */
     initial: any
-    /**
-     * The type of the values in the interval.
-     */
-    readonly value_type: GObject.GType
     /**
      * The type of the values in the interval.
      */
@@ -23533,13 +21926,6 @@ export interface Model extends Scriptable {
 
     // Own properties of Clutter-1.0.Clutter.Model
 
-    /**
-     * Whether the #ClutterModel has a filter set
-     * 
-     * This property is set to %TRUE if a filter function has been
-     * set using clutter_model_set_filter()
-     */
-    readonly filter_set: boolean
     /**
      * Whether the #ClutterModel has a filter set
      * 
@@ -24343,7 +22729,7 @@ export module PanAction {
          * be multiplied by the factor specified by this property before being used
          * to generate interpolated ::pan events.
          */
-        acceleration_factor?: number | null
+        accelerationFactor?: number | null
         /**
          * The rate at which the interpolated panning will decelerate in
          * 
@@ -24355,18 +22741,6 @@ export module PanAction {
          * Whether interpolated events emission is enabled.
          */
         interpolate?: boolean | null
-        /**
-         * Constraints the panning action to the specified axis
-         */
-        pan_axis?: PanAxis | null
-        /**
-         * The initial acceleration factor
-         * 
-         * The kinetic momentum measured at the time of releasing the pointer will
-         * be multiplied by the factor specified by this property before being used
-         * to generate interpolated ::pan events.
-         */
-        accelerationFactor?: number | null
         /**
          * Constraints the panning action to the specified axis
          */
@@ -24386,14 +22760,6 @@ export interface PanAction {
      * be multiplied by the factor specified by this property before being used
      * to generate interpolated ::pan events.
      */
-    acceleration_factor: number
-    /**
-     * The initial acceleration factor
-     * 
-     * The kinetic momentum measured at the time of releasing the pointer will
-     * be multiplied by the factor specified by this property before being used
-     * to generate interpolated ::pan events.
-     */
     accelerationFactor: number
     /**
      * The rate at which the interpolated panning will decelerate in
@@ -24406,10 +22772,6 @@ export interface PanAction {
      * Whether interpolated events emission is enabled.
      */
     interpolate: boolean
-    /**
-     * Constraints the panning action to the specified axis
-     */
-    pan_axis: PanAxis
     /**
      * Constraints the panning action to the specified axis
      */
@@ -25078,10 +23440,6 @@ export module PropertyTransition {
         /**
          * The name of the property of a #ClutterAnimatable to animate.
          */
-        property_name?: string | null
-        /**
-         * The name of the property of a #ClutterAnimatable to animate.
-         */
         propertyName?: string | null
     }
 
@@ -25091,10 +23449,6 @@ export interface PropertyTransition extends Scriptable {
 
     // Own properties of Clutter-1.0.Clutter.PropertyTransition
 
-    /**
-     * The name of the property of a #ClutterAnimatable to animate.
-     */
-    property_name: string | null
     /**
      * The name of the property of a #ClutterAnimatable to animate.
      */
@@ -25208,27 +23562,15 @@ export module Rectangle {
         /**
          * The color of the border of the rectangle.
          */
-        border_color?: Color | null
-        /**
-         * The width of the border of the rectangle, in pixels.
-         */
-        border_width?: number | null
-        /**
-         * The color of the rectangle.
-         */
-        color?: Color | null
-        /**
-         * Whether the #ClutterRectangle should be displayed with a border.
-         */
-        has_border?: boolean | null
-        /**
-         * The color of the border of the rectangle.
-         */
         borderColor?: Color | null
         /**
          * The width of the border of the rectangle, in pixels.
          */
         borderWidth?: number | null
+        /**
+         * The color of the rectangle.
+         */
+        color?: Color | null
         /**
          * Whether the #ClutterRectangle should be displayed with a border.
          */
@@ -25244,15 +23586,7 @@ export interface Rectangle extends Atk.ImplementorIface, Animatable, Container, 
     /**
      * The color of the border of the rectangle.
      */
-    border_color: Color
-    /**
-     * The color of the border of the rectangle.
-     */
     borderColor: Color
-    /**
-     * The width of the border of the rectangle, in pixels.
-     */
-    border_width: number
     /**
      * The width of the border of the rectangle, in pixels.
      */
@@ -25261,10 +23595,6 @@ export interface Rectangle extends Atk.ImplementorIface, Animatable, Container, 
      * The color of the rectangle.
      */
     color: Color
-    /**
-     * Whether the #ClutterRectangle should be displayed with a border.
-     */
-    has_border: boolean
     /**
      * Whether the #ClutterRectangle should be displayed with a border.
      */
@@ -25928,14 +24258,6 @@ export module Script {
          * If #ClutterScript:translation-domain is set to %NULL, #ClutterScript
          * will use gettext(), otherwise g_dgettext() will be used.
          */
-        translation_domain?: string | null
-        /**
-         * The translation domain, used to localize strings marked as translatable
-         * inside a UI definition.
-         * 
-         * If #ClutterScript:translation-domain is set to %NULL, #ClutterScript
-         * will use gettext(), otherwise g_dgettext() will be used.
-         */
         translationDomain?: string | null
     }
 
@@ -25955,21 +24277,7 @@ export interface Script {
      * is %TRUE then the currently parsed data comes from a file, and the
      * file name is stored inside the #ClutterScript:filename property.
      */
-    readonly filename_set: boolean
-    /**
-     * Whether the #ClutterScript:filename property is set. If this property
-     * is %TRUE then the currently parsed data comes from a file, and the
-     * file name is stored inside the #ClutterScript:filename property.
-     */
     readonly filenameSet: boolean
-    /**
-     * The translation domain, used to localize strings marked as translatable
-     * inside a UI definition.
-     * 
-     * If #ClutterScript:translation-domain is set to %NULL, #ClutterScript
-     * will use gettext(), otherwise g_dgettext() will be used.
-     */
-    translation_domain: string | null
     /**
      * The translation domain, used to localize strings marked as translatable
      * inside a UI definition.
@@ -26191,10 +24499,6 @@ export module ScrollActor {
         /**
          * The scrollin direction.
          */
-        scroll_mode?: ScrollMode | null
-        /**
-         * The scrollin direction.
-         */
         scrollMode?: ScrollMode | null
     }
 
@@ -26204,10 +24508,6 @@ export interface ScrollActor extends Atk.ImplementorIface, Animatable, Container
 
     // Own properties of Clutter-1.0.Clutter.ScrollActor
 
-    /**
-     * The scrollin direction.
-     */
-    scroll_mode: ScrollMode
     /**
      * The scrollin direction.
      */
@@ -26545,76 +24845,6 @@ export module Settings {
          * The default distance that the cursor of a pointer device
          * should travel before a drag operation should start.
          */
-        dnd_drag_threshold?: number | null
-        /**
-         * The maximum distance, in pixels, between button-press events that
-         * determines whether or not to increase the click count by 1.
-         */
-        double_click_distance?: number | null
-        /**
-         * The time, in milliseconds, that should elapse between button-press
-         * events in order to increase the click count by 1.
-         */
-        double_click_time?: number | null
-        /**
-         * Whether or not to use antialiasing when rendering text; a value
-         * of 1 enables it unconditionally; a value of 0 disables it
-         * unconditionally; and -1 will use the system's default.
-         */
-        font_antialias?: number | null
-        /**
-         * The DPI used when rendering text, as a value of 1024 * dots/inch.
-         * 
-         * If set to -1, the system's default will be used instead
-         */
-        font_dpi?: number | null
-        /**
-         * The style of the hinting used when rendering text. Valid values
-         * are:
-         * 
-         *   - hintnone
-         *   - hintslight
-         *   - hintmedium
-         *   - hintfull
-         */
-        font_hint_style?: string | null
-        /**
-         * Whether or not to use hinting when rendering text; a value of 1
-         * unconditionally enables it; a value of 0 unconditionally disables
-         * it; and a value of -1 will use the system's default.
-         */
-        font_hinting?: number | null
-        /**
-         * The default font name that should be used by text actors, as
-         * a string that can be passed to pango_font_description_from_string().
-         */
-        font_name?: string | null
-        /**
-         * The type of sub-pixel antialiasing used when rendering text. Valid
-         * values are:
-         * 
-         *   - none
-         *   - rgb
-         *   - bgr
-         *   - vrgb
-         *   - vbgr
-         */
-        font_subpixel_order?: string | null
-        fontconfig_timestamp?: number | null
-        /**
-         * Sets the minimum duration for a press to be recognized as a long press
-         * gesture. The duration is expressed in milliseconds.
-         * 
-         * See also #ClutterClickAction:long-press-duration.
-         */
-        long_press_duration?: number | null
-        password_hint_time?: number | null
-        unscaled_font_dpi?: number | null
-        window_scaling_factor?: number | null
-        /**
-         * The default distance that the cursor of a pointer device
-         * should travel before a drag operation should start.
-         */
         dndDragThreshold?: number | null
         /**
          * The maximum distance, in pixels, between button-press events that
@@ -26697,27 +24927,12 @@ export interface Settings {
      * The default distance that the cursor of a pointer device
      * should travel before a drag operation should start.
      */
-    dnd_drag_threshold: number
-    /**
-     * The default distance that the cursor of a pointer device
-     * should travel before a drag operation should start.
-     */
     dndDragThreshold: number
     /**
      * The maximum distance, in pixels, between button-press events that
      * determines whether or not to increase the click count by 1.
      */
-    double_click_distance: number
-    /**
-     * The maximum distance, in pixels, between button-press events that
-     * determines whether or not to increase the click count by 1.
-     */
     doubleClickDistance: number
-    /**
-     * The time, in milliseconds, that should elapse between button-press
-     * events in order to increase the click count by 1.
-     */
-    double_click_time: number
     /**
      * The time, in milliseconds, that should elapse between button-press
      * events in order to increase the click count by 1.
@@ -26728,19 +24943,7 @@ export interface Settings {
      * of 1 enables it unconditionally; a value of 0 disables it
      * unconditionally; and -1 will use the system's default.
      */
-    font_antialias: number
-    /**
-     * Whether or not to use antialiasing when rendering text; a value
-     * of 1 enables it unconditionally; a value of 0 disables it
-     * unconditionally; and -1 will use the system's default.
-     */
     fontAntialias: number
-    /**
-     * The DPI used when rendering text, as a value of 1024 * dots/inch.
-     * 
-     * If set to -1, the system's default will be used instead
-     */
-    font_dpi: number
     /**
      * The DPI used when rendering text, as a value of 1024 * dots/inch.
      * 
@@ -26756,34 +24959,13 @@ export interface Settings {
      *   - hintmedium
      *   - hintfull
      */
-    font_hint_style: string | null
-    /**
-     * The style of the hinting used when rendering text. Valid values
-     * are:
-     * 
-     *   - hintnone
-     *   - hintslight
-     *   - hintmedium
-     *   - hintfull
-     */
     fontHintStyle: string | null
     /**
      * Whether or not to use hinting when rendering text; a value of 1
      * unconditionally enables it; a value of 0 unconditionally disables
      * it; and a value of -1 will use the system's default.
      */
-    font_hinting: number
-    /**
-     * Whether or not to use hinting when rendering text; a value of 1
-     * unconditionally enables it; a value of 0 unconditionally disables
-     * it; and a value of -1 will use the system's default.
-     */
     fontHinting: number
-    /**
-     * The default font name that should be used by text actors, as
-     * a string that can be passed to pango_font_description_from_string().
-     */
-    font_name: string | null
     /**
      * The default font name that should be used by text actors, as
      * a string that can be passed to pango_font_description_from_string().
@@ -26799,19 +24981,7 @@ export interface Settings {
      *   - vrgb
      *   - vbgr
      */
-    font_subpixel_order: string | null
-    /**
-     * The type of sub-pixel antialiasing used when rendering text. Valid
-     * values are:
-     * 
-     *   - none
-     *   - rgb
-     *   - bgr
-     *   - vrgb
-     *   - vbgr
-     */
     fontSubpixelOrder: string | null
-    fontconfig_timestamp: number
     fontconfigTimestamp: number
     /**
      * Sets the minimum duration for a press to be recognized as a long press
@@ -26819,19 +24989,9 @@ export interface Settings {
      * 
      * See also #ClutterClickAction:long-press-duration.
      */
-    long_press_duration: number
-    /**
-     * Sets the minimum duration for a press to be recognized as a long press
-     * gesture. The duration is expressed in milliseconds.
-     * 
-     * See also #ClutterClickAction:long-press-duration.
-     */
     longPressDuration: number
-    password_hint_time: number
     passwordHintTime: number
-    unscaled_font_dpi: number
     unscaledFontDpi: number
-    window_scaling_factor: number
     windowScalingFactor: number
 
     // Class property signals of Clutter-1.0.Clutter.Settings
@@ -26925,15 +25085,6 @@ export module Shader {
         /**
          * GLSL source code for the fragment shader part of the shader program.
          */
-        fragment_source?: string | null
-        /**
-         * GLSL source code for the vertex shader part of the shader
-         * program, if any
-         */
-        vertex_source?: string | null
-        /**
-         * GLSL source code for the fragment shader part of the shader program.
-         */
         fragmentSource?: string | null
         /**
          * GLSL source code for the vertex shader part of the shader
@@ -26960,16 +25111,7 @@ export interface Shader {
     /**
      * GLSL source code for the fragment shader part of the shader program.
      */
-    fragment_source: string | null
-    /**
-     * GLSL source code for the fragment shader part of the shader program.
-     */
     fragmentSource: string | null
-    /**
-     * GLSL source code for the vertex shader part of the shader
-     * program, if any
-     */
-    vertex_source: string | null
     /**
      * GLSL source code for the vertex shader part of the shader
      * program, if any
@@ -27119,12 +25261,6 @@ export module ShaderEffect {
          * should be set by the constructor of #ClutterShaderEffect
          * sub-classes.
          */
-        shader_type?: ShaderType | null
-        /**
-         * The type of shader that is used by the effect. This property
-         * should be set by the constructor of #ClutterShaderEffect
-         * sub-classes.
-         */
         shaderType?: ShaderType | null
     }
 
@@ -27134,12 +25270,6 @@ export interface ShaderEffect {
 
     // Own properties of Clutter-1.0.Clutter.ShaderEffect
 
-    /**
-     * The type of shader that is used by the effect. This property
-     * should be set by the constructor of #ClutterShaderEffect
-     * sub-classes.
-     */
-    readonly shader_type: ShaderType
     /**
      * The type of shader that is used by the effect. This property
      * should be set by the constructor of #ClutterShaderEffect
@@ -27292,7 +25422,7 @@ export module SnapConstraint {
         /**
          * The edge of the #ClutterActor that should be snapped
          */
-        from_edge?: SnapEdge | null
+        fromEdge?: SnapEdge | null
         /**
          * The offset, in pixels, between #ClutterSnapConstraint:from-edge
          * and #ClutterSnapConstraint:to-edge
@@ -27302,14 +25432,6 @@ export module SnapConstraint {
          * The #ClutterActor used as the source for the constraint
          */
         source?: Actor | null
-        /**
-         * The edge of the #ClutterSnapConstraint:source that should be snapped
-         */
-        to_edge?: SnapEdge | null
-        /**
-         * The edge of the #ClutterActor that should be snapped
-         */
-        fromEdge?: SnapEdge | null
         /**
          * The edge of the #ClutterSnapConstraint:source that should be snapped
          */
@@ -27325,10 +25447,6 @@ export interface SnapConstraint {
     /**
      * The edge of the #ClutterActor that should be snapped
      */
-    from_edge: SnapEdge
-    /**
-     * The edge of the #ClutterActor that should be snapped
-     */
     fromEdge: SnapEdge
     /**
      * The offset, in pixels, between #ClutterSnapConstraint:from-edge
@@ -27339,10 +25457,6 @@ export interface SnapConstraint {
      * The #ClutterActor used as the source for the constraint
      */
     source: Actor
-    /**
-     * The edge of the #ClutterSnapConstraint:source that should be snapped
-     */
-    to_edge: SnapEdge
     /**
      * The edge of the #ClutterSnapConstraint:source that should be snapped
      */
@@ -27510,7 +25624,7 @@ export module Stage {
         /**
          * Whether the #ClutterStage should accept key focus when shown.
          */
-        accept_focus?: boolean | null
+        acceptFocus?: boolean | null
         /**
          * The background color of the main stage.
          */
@@ -27518,64 +25632,12 @@ export module Stage {
         /**
          * Whether the mouse pointer should be visible
          */
-        cursor_visible?: boolean | null
+        cursorVisible?: boolean | null
         /**
          * The settings for the GL "fog", used only if #ClutterStage:use-fog
          * is set to %TRUE
          */
         fog?: Fog | null
-        /**
-         * The #ClutterActor that will receive key events from the underlying
-         * windowing system.
-         * 
-         * If %NULL, the #ClutterStage will receive the events.
-         */
-        key_focus?: Actor | null
-        /**
-         * Whether or not the #ClutterStage should clear its contents
-         * before each paint cycle.
-         * 
-         * See clutter_stage_set_no_clear_hint() for further information.
-         */
-        no_clear_hint?: boolean | null
-        /**
-         * Whether the stage should be rendered in an offscreen buffer.
-         */
-        offscreen?: boolean | null
-        /**
-         * The parameters used for the perspective projection from 3D
-         * coordinates to 2D
-         */
-        perspective?: Perspective | null
-        /**
-         * The stage's title - usually displayed in stage windows title decorations.
-         */
-        title?: string | null
-        /**
-         * Whether the #ClutterStage should honour the alpha component of the
-         * #ClutterStage:color property when painting. If Clutter is run under
-         * a compositing manager this will result in the stage being blended
-         * with the underlying window(s)
-         */
-        use_alpha?: boolean | null
-        /**
-         * Whether the stage should use a linear GL "fog" in creating the
-         * depth-cueing effect, to enhance the perception of depth by fading
-         * actors farther from the viewpoint.
-         */
-        use_fog?: boolean | null
-        /**
-         * Whether the stage is resizable via user interaction.
-         */
-        user_resizable?: boolean | null
-        /**
-         * Whether the #ClutterStage should accept key focus when shown.
-         */
-        acceptFocus?: boolean | null
-        /**
-         * Whether the mouse pointer should be visible
-         */
-        cursorVisible?: boolean | null
         /**
          * The #ClutterActor that will receive key events from the underlying
          * windowing system.
@@ -27590,6 +25652,19 @@ export module Stage {
          * See clutter_stage_set_no_clear_hint() for further information.
          */
         noClearHint?: boolean | null
+        /**
+         * Whether the stage should be rendered in an offscreen buffer.
+         */
+        offscreen?: boolean | null
+        /**
+         * The parameters used for the perspective projection from 3D
+         * coordinates to 2D
+         */
+        perspective?: Perspective | null
+        /**
+         * The stage's title - usually displayed in stage windows title decorations.
+         */
+        title?: string | null
         /**
          * Whether the #ClutterStage should honour the alpha component of the
          * #ClutterStage:color property when painting. If Clutter is run under
@@ -27618,19 +25693,11 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
     /**
      * Whether the #ClutterStage should accept key focus when shown.
      */
-    accept_focus: boolean
-    /**
-     * Whether the #ClutterStage should accept key focus when shown.
-     */
     acceptFocus: boolean
     /**
      * The background color of the main stage.
      */
     color: Color
-    /**
-     * Whether the mouse pointer should be visible
-     */
-    cursor_visible: boolean
     /**
      * Whether the mouse pointer should be visible
      */
@@ -27640,7 +25707,6 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
      * is set to %TRUE
      */
     fog: Fog
-    readonly fullscreen_set: boolean
     readonly fullscreenSet: boolean
     /**
      * The #ClutterActor that will receive key events from the underlying
@@ -27648,21 +25714,7 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
      * 
      * If %NULL, the #ClutterStage will receive the events.
      */
-    key_focus: Actor
-    /**
-     * The #ClutterActor that will receive key events from the underlying
-     * windowing system.
-     * 
-     * If %NULL, the #ClutterStage will receive the events.
-     */
     keyFocus: Actor
-    /**
-     * Whether or not the #ClutterStage should clear its contents
-     * before each paint cycle.
-     * 
-     * See clutter_stage_set_no_clear_hint() for further information.
-     */
-    no_clear_hint: boolean
     /**
      * Whether or not the #ClutterStage should clear its contents
      * before each paint cycle.
@@ -27689,30 +25741,13 @@ export interface Stage extends Atk.ImplementorIface, Animatable, Container, Scri
      * a compositing manager this will result in the stage being blended
      * with the underlying window(s)
      */
-    use_alpha: boolean
-    /**
-     * Whether the #ClutterStage should honour the alpha component of the
-     * #ClutterStage:color property when painting. If Clutter is run under
-     * a compositing manager this will result in the stage being blended
-     * with the underlying window(s)
-     */
     useAlpha: boolean
     /**
      * Whether the stage should use a linear GL "fog" in creating the
      * depth-cueing effect, to enhance the perception of depth by fading
      * actors farther from the viewpoint.
      */
-    use_fog: boolean
-    /**
-     * Whether the stage should use a linear GL "fog" in creating the
-     * depth-cueing effect, to enhance the perception of depth by fading
-     * actors farther from the viewpoint.
-     */
     useFog: boolean
-    /**
-     * Whether the stage is resizable via user interaction.
-     */
-    user_resizable: boolean
     /**
      * Whether the stage is resizable via user interaction.
      */
@@ -28516,10 +26551,6 @@ export interface StageManager {
     /**
      * The default stage used by Clutter.
      */
-    readonly default_stage: Stage
-    /**
-     * The default stage used by Clutter.
-     */
     readonly defaultStage: Stage
 
     // Owm methods of Clutter-1.0.Clutter.StageManager
@@ -28934,44 +26965,6 @@ export module TableLayout {
         /**
          * The spacing between columns of the #ClutterTableLayout, in pixels
          */
-        column_spacing?: number | null
-        /**
-         * The duration of the animations, in case #ClutterTableLayout:use-animations
-         * is set to %TRUE.
-         * 
-         * The duration is expressed in milliseconds.
-         */
-        easing_duration?: number | null
-        /**
-         * The easing mode for the animations, in case
-         * #ClutterTableLayout:use-animations is set to %TRUE.
-         * 
-         * The easing mode has the same semantics of #ClutterAnimation:mode: it can
-         * either be a value from the #ClutterAnimationMode enumeration, like
-         * %CLUTTER_EASE_OUT_CUBIC, or a logical id as returned by
-         * clutter_alpha_register_func().
-         * 
-         * The default value is %CLUTTER_EASE_OUT_CUBIC.
-         */
-        easing_mode?: number | null
-        /**
-         * The spacing between rows of the #ClutterTableLayout, in pixels
-         */
-        row_spacing?: number | null
-        /**
-         * Whether the #ClutterTableLayout should animate changes in the
-         * layout properties.
-         * 
-         * By default, #ClutterTableLayout will honour the easing state of
-         * the children when allocating them. Setting this property to
-         * %TRUE will override the easing state with the layout manager's
-         * #ClutterTableLayout:easing-mode and #ClutterTableLayout:easing-duration
-         * properties.
-         */
-        use_animations?: boolean | null
-        /**
-         * The spacing between columns of the #ClutterTableLayout, in pixels
-         */
         columnSpacing?: number | null
         /**
          * The duration of the animations, in case #ClutterTableLayout:use-animations
@@ -29018,18 +27011,7 @@ export interface TableLayout {
     /**
      * The spacing between columns of the #ClutterTableLayout, in pixels
      */
-    column_spacing: number
-    /**
-     * The spacing between columns of the #ClutterTableLayout, in pixels
-     */
     columnSpacing: number
-    /**
-     * The duration of the animations, in case #ClutterTableLayout:use-animations
-     * is set to %TRUE.
-     * 
-     * The duration is expressed in milliseconds.
-     */
-    easing_duration: number
     /**
      * The duration of the animations, in case #ClutterTableLayout:use-animations
      * is set to %TRUE.
@@ -29048,38 +27030,11 @@ export interface TableLayout {
      * 
      * The default value is %CLUTTER_EASE_OUT_CUBIC.
      */
-    easing_mode: number
-    /**
-     * The easing mode for the animations, in case
-     * #ClutterTableLayout:use-animations is set to %TRUE.
-     * 
-     * The easing mode has the same semantics of #ClutterAnimation:mode: it can
-     * either be a value from the #ClutterAnimationMode enumeration, like
-     * %CLUTTER_EASE_OUT_CUBIC, or a logical id as returned by
-     * clutter_alpha_register_func().
-     * 
-     * The default value is %CLUTTER_EASE_OUT_CUBIC.
-     */
     easingMode: number
     /**
      * The spacing between rows of the #ClutterTableLayout, in pixels
      */
-    row_spacing: number
-    /**
-     * The spacing between rows of the #ClutterTableLayout, in pixels
-     */
     rowSpacing: number
-    /**
-     * Whether the #ClutterTableLayout should animate changes in the
-     * layout properties.
-     * 
-     * By default, #ClutterTableLayout will honour the easing state of
-     * the children when allocating them. Setting this property to
-     * %TRUE will override the easing state with the layout manager's
-     * #ClutterTableLayout:easing-mode and #ClutterTableLayout:easing-duration
-     * properties.
-     */
-    use_animations: boolean
     /**
      * Whether the #ClutterTableLayout should animate changes in the
      * layout properties.
@@ -29452,132 +27407,6 @@ export module Text {
         /**
          * The color of the cursor.
          */
-        cursor_color?: Color | null
-        /**
-         * The current input cursor position. -1 is taken to be the end of the text
-         */
-        cursor_position?: number | null
-        /**
-         * The size of the cursor, in pixels. If set to -1 the size used will
-         * be the default cursor size of 2 pixels.
-         */
-        cursor_size?: number | null
-        /**
-         * Whether the input cursor is visible or not.
-         * 
-         * The cursor will only be visible if this property and either
-         * the #ClutterText:editable or the #ClutterText:selectable properties
-         * are set to %TRUE.
-         */
-        cursor_visible?: boolean | null
-        /**
-         * Whether key events delivered to the actor causes editing.
-         */
-        editable?: boolean | null
-        /**
-         * The preferred place to ellipsize the contents of the #ClutterText actor
-         */
-        ellipsize?: Pango.EllipsizeMode | null
-        /**
-         * The #PangoFontDescription that should be used by the #ClutterText
-         * 
-         * If you have a string describing the font then you should look at
-         * #ClutterText:font-name instead
-         */
-        font_description?: Pango.FontDescription | null
-        /**
-         * The font to be used by the #ClutterText, as a string
-         * that can be parsed by pango_font_description_from_string().
-         * 
-         * If set to %NULL, the default system font will be used instead.
-         */
-        font_name?: string | null
-        /**
-         * Whether the contents of the #ClutterText should be justified
-         * on both margins.
-         */
-        justify?: boolean | null
-        /**
-         * The preferred alignment for the text. This property controls
-         * the alignment of multi-line paragraphs.
-         */
-        line_alignment?: Pango.Alignment | null
-        /**
-         * Whether to wrap the lines of #ClutterText:text if the contents
-         * exceed the available allocation. The wrapping strategy is
-         * controlled by the #ClutterText:line-wrap-mode property.
-         */
-        line_wrap?: boolean | null
-        /**
-         * If #ClutterText:line-wrap is set to %TRUE, this property will
-         * control how the text is wrapped.
-         */
-        line_wrap_mode?: Pango.WrapMode | null
-        /**
-         * The maximum length of the contents of the #ClutterText actor.
-         */
-        max_length?: number | null
-        /**
-         * If non-zero, the character that should be used in place of
-         * the actual text in a password text actor.
-         */
-        password_char?: number | null
-        /**
-         * The current input cursor position. -1 is taken to be the end of the text
-         */
-        position: any
-        /**
-         * Whether it is possible to select text, either using the pointer
-         * or the keyboard.
-         * 
-         * This property depends on the #ClutterActor:reactive property being
-         * set to %TRUE.
-         */
-        selectable?: boolean | null
-        /**
-         * The color of selected text.
-         */
-        selected_text_color?: Color | null
-        /**
-         * The current input cursor position. -1 is taken to be the end of the text
-         */
-        selection_bound?: number | null
-        /**
-         * The color of the selection.
-         */
-        selection_color?: Color | null
-        /**
-         * Whether the #ClutterText actor should be in single line mode
-         * or not. A single line #ClutterText actor will only contain a
-         * single line of text, scrolling it in case its length is bigger
-         * than the allocated size.
-         * 
-         * Setting this property will also set the #ClutterText:activatable
-         * property as a side-effect.
-         * 
-         * The #ClutterText:single-line-mode property is used only if the
-         * #ClutterText:editable property is set to %TRUE.
-         */
-        single_line_mode?: boolean | null
-        /**
-         * The text to render inside the actor.
-         */
-        text?: string | null
-        /**
-         * Whether the text includes Pango markup.
-         * 
-         * For more informations about the Pango markup format, see
-         * pango_layout_set_markup() in the Pango documentation.
-         * 
-         * It is not possible to round-trip this property between
-         * %TRUE and %FALSE. Once a string with markup has been set on
-         * a #ClutterText actor with :use-markup set to %TRUE, the markup
-         * is stripped from the string.
-         */
-        use_markup?: boolean | null
-        /**
-         * The color of the cursor.
-         */
         cursorColor?: Color | null
         /**
          * The current input cursor position. -1 is taken to be the end of the text
@@ -29597,6 +27426,14 @@ export module Text {
          */
         cursorVisible?: boolean | null
         /**
+         * Whether key events delivered to the actor causes editing.
+         */
+        editable?: boolean | null
+        /**
+         * The preferred place to ellipsize the contents of the #ClutterText actor
+         */
+        ellipsize?: Pango.EllipsizeMode | null
+        /**
          * The #PangoFontDescription that should be used by the #ClutterText
          * 
          * If you have a string describing the font then you should look at
@@ -29610,6 +27447,11 @@ export module Text {
          * If set to %NULL, the default system font will be used instead.
          */
         fontName?: string | null
+        /**
+         * Whether the contents of the #ClutterText should be justified
+         * on both margins.
+         */
+        justify?: boolean | null
         /**
          * The preferred alignment for the text. This property controls
          * the alignment of multi-line paragraphs.
@@ -29636,6 +27478,18 @@ export module Text {
          */
         passwordChar?: number | null
         /**
+         * The current input cursor position. -1 is taken to be the end of the text
+         */
+        position: any
+        /**
+         * Whether it is possible to select text, either using the pointer
+         * or the keyboard.
+         * 
+         * This property depends on the #ClutterActor:reactive property being
+         * set to %TRUE.
+         */
+        selectable?: boolean | null
+        /**
          * The color of selected text.
          */
         selectedTextColor?: Color | null
@@ -29660,6 +27514,10 @@ export module Text {
          * #ClutterText:editable property is set to %TRUE.
          */
         singleLineMode?: boolean | null
+        /**
+         * The text to render inside the actor.
+         */
+        text?: string | null
         /**
          * Whether the text includes Pango markup.
          * 
@@ -29702,23 +27560,11 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
     /**
      * The color of the cursor.
      */
-    cursor_color: Color
-    /**
-     * The color of the cursor.
-     */
     cursorColor: Color
     /**
      * Will be set to %TRUE if #ClutterText:cursor-color has been set.
      */
-    readonly cursor_color_set: boolean
-    /**
-     * Will be set to %TRUE if #ClutterText:cursor-color has been set.
-     */
     readonly cursorColorSet: boolean
-    /**
-     * The current input cursor position. -1 is taken to be the end of the text
-     */
-    cursor_position: number
     /**
      * The current input cursor position. -1 is taken to be the end of the text
      */
@@ -29727,20 +27573,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
      * The size of the cursor, in pixels. If set to -1 the size used will
      * be the default cursor size of 2 pixels.
      */
-    cursor_size: number
-    /**
-     * The size of the cursor, in pixels. If set to -1 the size used will
-     * be the default cursor size of 2 pixels.
-     */
     cursorSize: number
-    /**
-     * Whether the input cursor is visible or not.
-     * 
-     * The cursor will only be visible if this property and either
-     * the #ClutterText:editable or the #ClutterText:selectable properties
-     * are set to %TRUE.
-     */
-    cursor_visible: boolean
     /**
      * Whether the input cursor is visible or not.
      * 
@@ -29763,21 +27596,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
      * If you have a string describing the font then you should look at
      * #ClutterText:font-name instead
      */
-    font_description: Pango.FontDescription
-    /**
-     * The #PangoFontDescription that should be used by the #ClutterText
-     * 
-     * If you have a string describing the font then you should look at
-     * #ClutterText:font-name instead
-     */
     fontDescription: Pango.FontDescription
-    /**
-     * The font to be used by the #ClutterText, as a string
-     * that can be parsed by pango_font_description_from_string().
-     * 
-     * If set to %NULL, the default system font will be used instead.
-     */
-    font_name: string | null
     /**
      * The font to be used by the #ClutterText, as a string
      * that can be parsed by pango_font_description_from_string().
@@ -29794,18 +27613,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
      * The preferred alignment for the text. This property controls
      * the alignment of multi-line paragraphs.
      */
-    line_alignment: Pango.Alignment
-    /**
-     * The preferred alignment for the text. This property controls
-     * the alignment of multi-line paragraphs.
-     */
     lineAlignment: Pango.Alignment
-    /**
-     * Whether to wrap the lines of #ClutterText:text if the contents
-     * exceed the available allocation. The wrapping strategy is
-     * controlled by the #ClutterText:line-wrap-mode property.
-     */
-    line_wrap: boolean
     /**
      * Whether to wrap the lines of #ClutterText:text if the contents
      * exceed the available allocation. The wrapping strategy is
@@ -29816,25 +27624,11 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
      * If #ClutterText:line-wrap is set to %TRUE, this property will
      * control how the text is wrapped.
      */
-    line_wrap_mode: Pango.WrapMode
-    /**
-     * If #ClutterText:line-wrap is set to %TRUE, this property will
-     * control how the text is wrapped.
-     */
     lineWrapMode: Pango.WrapMode
     /**
      * The maximum length of the contents of the #ClutterText actor.
      */
-    max_length: number
-    /**
-     * The maximum length of the contents of the #ClutterText actor.
-     */
     maxLength: number
-    /**
-     * If non-zero, the character that should be used in place of
-     * the actual text in a password text actor.
-     */
-    password_char: number
     /**
      * If non-zero, the character that should be used in place of
      * the actual text in a password text actor.
@@ -29855,15 +27649,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
     /**
      * The color of selected text.
      */
-    selected_text_color: Color
-    /**
-     * The color of selected text.
-     */
     selectedTextColor: Color
-    /**
-     * Will be set to %TRUE if #ClutterText:selected-text-color has been set.
-     */
-    readonly selected_text_color_set: boolean
     /**
      * Will be set to %TRUE if #ClutterText:selected-text-color has been set.
      */
@@ -29871,15 +27657,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
     /**
      * The current input cursor position. -1 is taken to be the end of the text
      */
-    selection_bound: number
-    /**
-     * The current input cursor position. -1 is taken to be the end of the text
-     */
     selectionBound: number
-    /**
-     * The color of the selection.
-     */
-    selection_color: Color
     /**
      * The color of the selection.
      */
@@ -29887,24 +27665,7 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
     /**
      * Will be set to %TRUE if #ClutterText:selection-color has been set.
      */
-    readonly selection_color_set: boolean
-    /**
-     * Will be set to %TRUE if #ClutterText:selection-color has been set.
-     */
     readonly selectionColorSet: boolean
-    /**
-     * Whether the #ClutterText actor should be in single line mode
-     * or not. A single line #ClutterText actor will only contain a
-     * single line of text, scrolling it in case its length is bigger
-     * than the allocated size.
-     * 
-     * Setting this property will also set the #ClutterText:activatable
-     * property as a side-effect.
-     * 
-     * The #ClutterText:single-line-mode property is used only if the
-     * #ClutterText:editable property is set to %TRUE.
-     */
-    single_line_mode: boolean
     /**
      * Whether the #ClutterText actor should be in single line mode
      * or not. A single line #ClutterText actor will only contain a
@@ -29922,18 +27683,6 @@ export interface Text extends Atk.ImplementorIface, Animatable, Container, Scrip
      * The text to render inside the actor.
      */
     text: string | null
-    /**
-     * Whether the text includes Pango markup.
-     * 
-     * For more informations about the Pango markup format, see
-     * pango_layout_set_markup() in the Pango documentation.
-     * 
-     * It is not possible to round-trip this property between
-     * %TRUE and %FALSE. Once a string with markup has been set on
-     * a #ClutterText actor with :use-markup set to %TRUE, the markup
-     * is stripped from the string.
-     */
-    use_markup: boolean
     /**
      * Whether the text includes Pango markup.
      * 
@@ -30933,10 +28682,6 @@ export module TextBuffer {
         /**
          * The maximum length (in characters) of the text in the buffer.
          */
-        max_length?: number | null
-        /**
-         * The maximum length (in characters) of the text in the buffer.
-         */
         maxLength?: number | null
     }
 
@@ -30950,10 +28695,6 @@ export interface TextBuffer {
      * The length (in characters) of the text in buffer.
      */
     readonly length: number
-    /**
-     * The maximum length (in characters) of the text in the buffer.
-     */
-    max_length: number
     /**
      * The maximum length (in characters) of the text in the buffer.
      */
@@ -31238,7 +28979,7 @@ export module Texture {
 
         // Own constructor properties of Clutter-1.0.Clutter.Texture
 
-        disable_slicing?: boolean | null
+        disableSlicing?: boolean | null
         /**
          * The path of the file containing the image data to be displayed by
          * the texture.
@@ -31247,34 +28988,6 @@ export module Texture {
          * family of functions.
          */
         filename?: string | null
-        filter_quality?: TextureQuality | null
-        keep_aspect_ratio?: boolean | null
-        /**
-         * Tries to load a texture from a filename by using a local thread to perform
-         * the read operations. The initially created texture has dimensions 0x0 when
-         * the true size becomes available the #ClutterTexture::size-change signal is
-         * emitted and when the image has completed loading the
-         * #ClutterTexture::load-finished signal is emitted.
-         * 
-         * Threading is only enabled if g_thread_init() has been called prior to
-         * clutter_init(), otherwise #ClutterTexture will use the main loop to load
-         * the image.
-         * 
-         * The upload of the texture data on the GL pipeline is not asynchronous, as
-         * it must be performed from within the same thread that called
-         * clutter_main().
-         */
-        load_async?: boolean | null
-        /**
-         * Like #ClutterTexture:load-async but loads the width and height
-         * synchronously causing some blocking.
-         */
-        load_data_async?: boolean | null
-        pick_with_alpha?: boolean | null
-        repeat_x?: boolean | null
-        repeat_y?: boolean | null
-        sync_size?: boolean | null
-        disableSlicing?: boolean | null
         filterQuality?: TextureQuality | null
         keepAspectRatio?: boolean | null
         /**
@@ -31310,7 +29023,6 @@ export interface Texture extends Atk.ImplementorIface, Animatable, Container, Sc
 
     // Own properties of Clutter-1.0.Clutter.Texture
 
-    readonly disable_slicing: boolean
     readonly disableSlicing: boolean
     /**
      * The path of the file containing the image data to be displayed by
@@ -31320,26 +29032,8 @@ export interface Texture extends Atk.ImplementorIface, Animatable, Container, Sc
      * family of functions.
      */
     filename: string | null
-    filter_quality: TextureQuality
     filterQuality: TextureQuality
-    keep_aspect_ratio: boolean
     keepAspectRatio: boolean
-    /**
-     * Tries to load a texture from a filename by using a local thread to perform
-     * the read operations. The initially created texture has dimensions 0x0 when
-     * the true size becomes available the #ClutterTexture::size-change signal is
-     * emitted and when the image has completed loading the
-     * #ClutterTexture::load-finished signal is emitted.
-     * 
-     * Threading is only enabled if g_thread_init() has been called prior to
-     * clutter_init(), otherwise #ClutterTexture will use the main loop to load
-     * the image.
-     * 
-     * The upload of the texture data on the GL pipeline is not asynchronous, as
-     * it must be performed from within the same thread that called
-     * clutter_main().
-     */
-    load_async: boolean
     /**
      * Tries to load a texture from a filename by using a local thread to perform
      * the read operations. The initially created texture has dimensions 0x0 when
@@ -31360,23 +29054,12 @@ export interface Texture extends Atk.ImplementorIface, Animatable, Container, Sc
      * Like #ClutterTexture:load-async but loads the width and height
      * synchronously causing some blocking.
      */
-    load_data_async: boolean
-    /**
-     * Like #ClutterTexture:load-async but loads the width and height
-     * synchronously causing some blocking.
-     */
     loadDataAsync: boolean
-    pick_with_alpha: boolean
     pickWithAlpha: boolean
-    readonly pixel_format: Cogl.PixelFormat
     readonly pixelFormat: Cogl.PixelFormat
-    repeat_x: boolean
     repeatX: boolean
-    repeat_y: boolean
     repeatY: boolean
-    sync_size: boolean
     syncSize: boolean
-    readonly tile_waste: number
     readonly tileWaste: number
 
     // Owm methods of Clutter-1.0.Clutter.Texture
@@ -32114,7 +29797,7 @@ export module Timeline {
          * If the direction of the timeline should be automatically reversed
          * when reaching the end.
          */
-        auto_reverse?: boolean | null
+        autoReverse?: boolean | null
         /**
          * A delay, in milliseconds, that should be observed by the
          * timeline before actually starting.
@@ -32142,24 +29825,6 @@ export module Timeline {
         /**
          * Controls the way a #ClutterTimeline computes the normalized progress.
          */
-        progress_mode?: AnimationMode | null
-        /**
-         * Defines how many times the timeline should repeat.
-         * 
-         * If the repeat count is 0, the timeline does not repeat.
-         * 
-         * If the repeat count is set to -1, the timeline will repeat until it is
-         * stopped.
-         */
-        repeat_count?: number | null
-        /**
-         * If the direction of the timeline should be automatically reversed
-         * when reaching the end.
-         */
-        autoReverse?: boolean | null
-        /**
-         * Controls the way a #ClutterTimeline computes the normalized progress.
-         */
         progressMode?: AnimationMode | null
         /**
          * Defines how many times the timeline should repeat.
@@ -32178,11 +29843,6 @@ export interface Timeline extends Scriptable {
 
     // Own properties of Clutter-1.0.Clutter.Timeline
 
-    /**
-     * If the direction of the timeline should be automatically reversed
-     * when reaching the end.
-     */
-    auto_reverse: boolean
     /**
      * If the direction of the timeline should be automatically reversed
      * when reaching the end.
@@ -32215,20 +29875,7 @@ export interface Timeline extends Scriptable {
     /**
      * Controls the way a #ClutterTimeline computes the normalized progress.
      */
-    progress_mode: AnimationMode
-    /**
-     * Controls the way a #ClutterTimeline computes the normalized progress.
-     */
     progressMode: AnimationMode
-    /**
-     * Defines how many times the timeline should repeat.
-     * 
-     * If the repeat count is 0, the timeline does not repeat.
-     * 
-     * If the repeat count is set to -1, the timeline will repeat until it is
-     * stopped.
-     */
-    repeat_count: number
     /**
      * Defines how many times the timeline should repeat.
      * 
@@ -32688,17 +30335,6 @@ export module Transition {
          * and it only detaches the transition if the transition is not
          * repeating.
          */
-        remove_on_complete?: boolean | null
-        /**
-         * Whether the #ClutterTransition should be automatically detached
-         * from the #ClutterTransition:animatable instance whenever the
-         * #ClutterTimeline::stopped signal is emitted.
-         * 
-         * The #ClutterTransition:remove-on-complete property takes into
-         * account the value of the #ClutterTimeline:repeat-count property,
-         * and it only detaches the transition if the transition is not
-         * repeating.
-         */
         removeOnComplete?: boolean | null
     }
 
@@ -32717,17 +30353,6 @@ export interface Transition extends Scriptable {
      * of the transition.
      */
     interval: Interval
-    /**
-     * Whether the #ClutterTransition should be automatically detached
-     * from the #ClutterTransition:animatable instance whenever the
-     * #ClutterTimeline::stopped signal is emitted.
-     * 
-     * The #ClutterTransition:remove-on-complete property takes into
-     * account the value of the #ClutterTimeline:repeat-count property,
-     * and it only detaches the transition if the transition is not
-     * repeating.
-     */
-    remove_on_complete: boolean
     /**
      * Whether the #ClutterTransition should be automatically detached
      * from the #ClutterTransition:animatable instance whenever the
@@ -33019,10 +30644,6 @@ export module ZoomAction {
         /**
          * Constraints the zooming action to the specified axis
          */
-        zoom_axis?: ZoomAxis | null
-        /**
-         * Constraints the zooming action to the specified axis
-         */
         zoomAxis?: ZoomAxis | null
     }
 
@@ -33032,10 +30653,6 @@ export interface ZoomAction {
 
     // Own properties of Clutter-1.0.Clutter.ZoomAction
 
-    /**
-     * Constraints the zooming action to the specified axis
-     */
-    zoom_axis: ZoomAxis
     /**
      * Constraints the zooming action to the specified axis
      */

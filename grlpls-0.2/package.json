@@ -1,13 +1,19 @@
 {
     "name": "@girs/grlpls-0.2",
-    "version": "0.2.0-3.2.7",
+    "version": "0.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for GrlPls-0.2, generated from library version 0.2.0",
     "type": "module",
     "module": "grlpls-0.2.js",
     "main": "grlpls-0.2.js",
     "exports": {
-        "./ambient": "./grlpls-0.2-ambient.d.ts",
-        "./import": "./grlpls-0.2-import.d.ts",
+        "./ambient": {
+            "types": "./grlpls-0.2-ambient.d.ts",
+            "default": "./grlpls-0.2-ambient.js"
+        },
+        "./import": {
+            "types": "./grlpls-0.2-import.d.ts",
+            "default": "./grlpls-0.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./grlpls-0.2.d.ts",

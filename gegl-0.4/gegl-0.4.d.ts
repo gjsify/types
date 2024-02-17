@@ -816,30 +816,22 @@ module Buffer {
 
         // Own constructor properties of Gegl-0.4.Gegl.Buffer
 
-        abyss_height?: number | null
-        abyss_width?: number | null
-        abyss_x?: number | null
-        abyss_y?: number | null
+        abyssHeight?: number | null
+        abyssWidth?: number | null
+        abyssX?: number | null
+        abyssY?: number | null
         backend?: TileBackend | null
         format?: any | null
         height?: number | null
         initialized?: boolean | null
         path?: string | null
-        shift_x?: number | null
-        shift_y?: number | null
-        tile_height?: number | null
-        tile_width?: number | null
-        width?: number | null
-        x?: number | null
-        y?: number | null
-        abyssHeight?: number | null
-        abyssWidth?: number | null
-        abyssX?: number | null
-        abyssY?: number | null
         shiftX?: number | null
         shiftY?: number | null
         tileHeight?: number | null
         tileWidth?: number | null
+        width?: number | null
+        x?: number | null
+        y?: number | null
     }
 
 }
@@ -848,13 +840,9 @@ interface Buffer {
 
     // Own properties of Gegl-0.4.Gegl.Buffer
 
-    readonly abyss_height: number
     readonly abyssHeight: number
-    readonly abyss_width: number
     readonly abyssWidth: number
-    readonly abyss_x: number
     readonly abyssX: number
-    readonly abyss_y: number
     readonly abyssY: number
     readonly backend: TileBackend
     format: any
@@ -862,15 +850,10 @@ interface Buffer {
     readonly initialized: boolean
     readonly path: string | null
     readonly pixels: number
-    readonly px_size: number
     readonly pxSize: number
-    readonly shift_x: number
     readonly shiftX: number
-    readonly shift_y: number
     readonly shiftY: number
-    readonly tile_height: number
     readonly tileHeight: number
-    readonly tile_width: number
     readonly tileWidth: number
     width: number
     x: number
@@ -1310,23 +1293,14 @@ module Config {
 
         // Own constructor properties of Gegl-0.4.Gegl.Config
 
-        application_license?: string | null
-        chunk_size?: number | null
-        mipmap_rendering?: boolean | null
-        quality?: number | null
-        queue_size?: number | null
-        swap?: string | null
-        swap_compression?: string | null
-        threads?: number | null
-        tile_cache_size?: number | null
-        tile_height?: number | null
-        tile_width?: number | null
-        use_opencl?: boolean | null
         applicationLicense?: string | null
         chunkSize?: number | null
         mipmapRendering?: boolean | null
+        quality?: number | null
         queueSize?: number | null
+        swap?: string | null
         swapCompression?: string | null
+        threads?: number | null
         tileCacheSize?: number | null
         tileHeight?: number | null
         tileWidth?: number | null
@@ -1339,26 +1313,17 @@ interface Config {
 
     // Own properties of Gegl-0.4.Gegl.Config
 
-    application_license: string | null
     applicationLicense: string | null
-    chunk_size: number
     chunkSize: number
-    mipmap_rendering: boolean
     mipmapRendering: boolean
     quality: number
-    queue_size: number
     queueSize: number
     swap: string | null
-    swap_compression: string | null
     swapCompression: string | null
     threads: number
-    tile_cache_size: number
     tileCacheSize: number
-    tile_height: number
     tileHeight: number
-    tile_width: number
     tileWidth: number
-    use_opencl: boolean
     useOpencl: boolean
 
     // Class property signals of Gegl-0.4.Gegl.Config
@@ -1726,15 +1691,15 @@ module MetadataStore {
         /**
          * A #GeglResolutionUnit specifying units for the image resolution (density).
          */
-        resolution_unit?: ResolutionUnit | null
+        resolutionUnit?: ResolutionUnit | null
         /**
          * X resolution or density in dots per unit.
          */
-        resolution_x?: number | null
+        resolutionX?: number | null
         /**
          * Y resolution or density in dots per unit.
          */
-        resolution_y?: number | null
+        resolutionY?: number | null
         /**
          * Software used to create the image.
          */
@@ -1755,18 +1720,6 @@ module MetadataStore {
          * Warning of nature of content.
          */
         warning?: string | null
-        /**
-         * A #GeglResolutionUnit specifying units for the image resolution (density).
-         */
-        resolutionUnit?: ResolutionUnit | null
-        /**
-         * X resolution or density in dots per unit.
-         */
-        resolutionX?: number | null
-        /**
-         * Y resolution or density in dots per unit.
-         */
-        resolutionY?: number | null
     }
 
 }
@@ -1800,17 +1753,7 @@ interface MetadataStore extends Metadata {
      * mapping is registered. This property is mainly provided for use in signal
      * handlers.
      */
-    readonly file_module_name: string | null
-    /**
-     * Current file loader/saver module name. Valid only while a #GeglMetadata
-     * mapping is registered. This property is mainly provided for use in signal
-     * handlers.
-     */
     readonly fileModuleName: string | null
-    /**
-     * A #GeglResolutionUnit specifying units for the image resolution (density).
-     */
-    resolution_unit: ResolutionUnit
     /**
      * A #GeglResolutionUnit specifying units for the image resolution (density).
      */
@@ -1818,15 +1761,7 @@ interface MetadataStore extends Metadata {
     /**
      * X resolution or density in dots per unit.
      */
-    resolution_x: number
-    /**
-     * X resolution or density in dots per unit.
-     */
     resolutionX: number
-    /**
-     * Y resolution or density in dots per unit.
-     */
-    resolution_y: number
     /**
      * Y resolution or density in dots per unit.
      */
@@ -2210,16 +2145,12 @@ module Node {
 
         // Own constructor properties of Gegl-0.4.Gegl.Node
 
-        cache_policy?: CachePolicy | null
-        dont_cache?: boolean | null
-        gegl_operation?: Operation | null
-        name?: string | null
-        operation?: string | null
-        passthrough?: boolean | null
-        use_opencl?: boolean | null
         cachePolicy?: CachePolicy | null
         dontCache?: boolean | null
         geglOperation?: Operation | null
+        name?: string | null
+        operation?: string | null
+        passthrough?: boolean | null
         useOpencl?: boolean | null
     }
 
@@ -2229,16 +2160,12 @@ interface Node {
 
     // Own properties of Gegl-0.4.Gegl.Node
 
-    cache_policy: CachePolicy
     cachePolicy: CachePolicy
-    dont_cache: boolean
     dontCache: boolean
-    gegl_operation: Operation
     geglOperation: Operation
     name: string | null
     operation: string | null
     passthrough: boolean
-    use_opencl: boolean
     useOpencl: boolean
 
     // Owm methods of Gegl-0.4.Gegl.Node
@@ -3035,47 +2962,26 @@ interface Stats {
 
     // Own properties of Gegl-0.4.Gegl.Stats
 
-    readonly active_threads: number
     readonly activeThreads: number
-    readonly assigned_threads: number
     readonly assignedThreads: number
-    readonly scratch_total: number
     readonly scratchTotal: number
-    readonly swap_busy: boolean
     readonly swapBusy: boolean
-    readonly swap_file_size: number
     readonly swapFileSize: number
-    readonly swap_queue_full: boolean
     readonly swapQueueFull: boolean
-    readonly swap_queue_stalls: number
     readonly swapQueueStalls: number
-    readonly swap_queued_total: number
     readonly swapQueuedTotal: number
-    readonly swap_read_total: number
     readonly swapReadTotal: number
-    readonly swap_reading: boolean
     readonly swapReading: boolean
-    readonly swap_total: number
     readonly swapTotal: number
-    readonly swap_total_uncompressed: number
     readonly swapTotalUncompressed: number
-    readonly swap_write_total: number
     readonly swapWriteTotal: number
-    readonly swap_writing: boolean
     readonly swapWriting: boolean
-    readonly tile_alloc_total: number
     readonly tileAllocTotal: number
-    readonly tile_cache_hits: number
     readonly tileCacheHits: number
-    readonly tile_cache_misses: number
     readonly tileCacheMisses: number
-    readonly tile_cache_total: number
     readonly tileCacheTotal: number
-    readonly tile_cache_total_max: number
     readonly tileCacheTotalMax: number
-    readonly tile_cache_total_uncompressed: number
     readonly tileCacheTotalUncompressed: number
-    readonly zoom_total: number
     readonly zoomTotal: number
 
     // Class property signals of Gegl-0.4.Gegl.Stats
@@ -3170,11 +3076,8 @@ module TileBackend {
 
         // Own constructor properties of Gegl-0.4.Gegl.TileBackend
 
-        flush_on_destroy?: boolean | null
-        format?: any | null
-        tile_height?: number | null
-        tile_width?: number | null
         flushOnDestroy?: boolean | null
+        format?: any | null
         tileHeight?: number | null
         tileWidth?: number | null
     }
@@ -3185,16 +3088,11 @@ interface TileBackend {
 
     // Own properties of Gegl-0.4.Gegl.TileBackend
 
-    flush_on_destroy: boolean
     flushOnDestroy: boolean
     readonly format: any
-    readonly px_size: number
     readonly pxSize: number
-    readonly tile_height: number
     readonly tileHeight: number
-    readonly tile_size: number
     readonly tileSize: number
-    readonly tile_width: number
     readonly tileWidth: number
 
     // Own fields of Gegl-0.4.Gegl.TileBackend

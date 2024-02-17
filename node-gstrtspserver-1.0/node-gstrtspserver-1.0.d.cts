@@ -985,10 +985,10 @@ export module RTSPClient {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPClient
 
-        dropBacklog?: boolean | null
-        mountPoints?: RTSPMountPoints | null
-        postSessionTimeout?: number | null
-        sessionPool?: RTSPSessionPool | null
+        drop_backlog?: boolean | null
+        mount_points?: RTSPMountPoints | null
+        post_session_timeout?: number | null
+        session_pool?: RTSPSessionPool | null
     }
 
 }
@@ -1454,22 +1454,22 @@ export module RTSPMedia {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPMedia
 
-        bindMcastAddress?: boolean | null
-        bufferSize?: number | null
+        bind_mcast_address?: boolean | null
+        buffer_size?: number | null
         clock?: Gst.Clock | null
-        dscpQos?: number | null
+        dscp_qos?: number | null
         element?: Gst.Element | null
-        eosShutdown?: boolean | null
+        eos_shutdown?: boolean | null
         latency?: number | null
-        maxMcastTtl?: number | null
+        max_mcast_ttl?: number | null
         profiles?: GstRtsp.RTSPProfile | null
         protocols?: GstRtsp.RTSPLowerTrans | null
         reusable?: boolean | null
         shared?: boolean | null
-        stopOnDisconnect?: boolean | null
-        suspendMode?: RTSPSuspendMode | null
-        timeProvider?: boolean | null
-        transportMode?: RTSPTransportMode | null
+        stop_on_disconnect?: boolean | null
+        suspend_mode?: RTSPSuspendMode | null
+        time_provider?: boolean | null
+        transport_mode?: RTSPTransportMode | null
     }
 
 }
@@ -2179,24 +2179,24 @@ export module RTSPMediaFactory {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactory
 
-        bindMcastAddress?: boolean | null
-        bufferSize?: number | null
+        bind_mcast_address?: boolean | null
+        buffer_size?: number | null
         clock?: Gst.Clock | null
-        dscpQos?: number | null
+        dscp_qos?: number | null
         /**
          * Whether the created media should send and receive RTCP
          */
-        enableRtcp?: boolean | null
-        eosShutdown?: boolean | null
+        enable_rtcp?: boolean | null
+        eos_shutdown?: boolean | null
         latency?: number | null
         launch?: string | null
-        maxMcastTtl?: number | null
+        max_mcast_ttl?: number | null
         profiles?: GstRtsp.RTSPProfile | null
         protocols?: GstRtsp.RTSPLowerTrans | null
         shared?: boolean | null
-        stopOnDisconnect?: boolean | null
-        suspendMode?: RTSPSuspendMode | null
-        transportMode?: RTSPTransportMode | null
+        stop_on_disconnect?: boolean | null
+        suspend_mode?: RTSPSuspendMode | null
+        transport_mode?: RTSPTransportMode | null
     }
 
 }
@@ -2650,7 +2650,7 @@ export module RTSPMediaFactoryURI {
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactoryURI
 
         uri?: string | null
-        useGstpay?: boolean | null
+        use_gstpay?: boolean | null
     }
 
 }
@@ -3460,10 +3460,10 @@ export module RTSPServer {
 
         address?: string | null
         backlog?: number | null
-        contentLengthLimit?: number | null
-        mountPoints?: RTSPMountPoints | null
+        content_length_limit?: number | null
+        mount_points?: RTSPMountPoints | null
         service?: string | null
-        sessionPool?: RTSPSessionPool | null
+        session_pool?: RTSPSessionPool | null
     }
 
 }
@@ -3764,10 +3764,10 @@ export module RTSPSession {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPSession
 
-        extraTimeout?: number | null
+        extra_timeout?: number | null
         sessionid?: string | null
         timeout?: number | null
-        timeoutAlwaysVisible?: boolean | null
+        timeout_always_visible?: boolean | null
     }
 
 }
@@ -4119,7 +4119,7 @@ export module RTSPSessionPool {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPSessionPool
 
-        maxSessions?: number | null
+        max_sessions?: number | null
     }
 
 }
@@ -5112,7 +5112,7 @@ export module RTSPThreadPool {
 
         // Own constructor properties of GstRtspServer-1.0.GstRtspServer.RTSPThreadPool
 
-        maxThreads?: number | null
+        max_threads?: number | null
     }
 
 }

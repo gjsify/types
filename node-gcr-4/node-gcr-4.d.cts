@@ -1341,17 +1341,17 @@ export module Prompt {
          * Wayland this is the result of an export using the XDG foreign
          * protocol.
          */
-        callerWindow?: string | null
+        caller_window?: string | null
         /**
          * The label for the cancel button in the prompt.
          */
-        cancelLabel?: string | null
+        cancel_label?: string | null
         /**
          * Whether the additional choice is chosen or not.
          * 
          * The additional choice would have been setup using #GcrPrompt:choice-label.
          */
-        choiceChosen?: boolean | null
+        choice_chosen?: boolean | null
         /**
          * The label for the additional choice.
          * 
@@ -1362,11 +1362,11 @@ export module Prompt {
          * 
          * The initial value of the choice can be set with #GcrPrompt:choice-chosen.
          */
-        choiceLabel?: string | null
+        choice_label?: string | null
         /**
          * The label for the continue button in the prompt.
          */
-        continueLabel?: string | null
+        continue_label?: string | null
         /**
          * The detailed description of the prompt.
          * 
@@ -1387,7 +1387,7 @@ export module Prompt {
          * password and/or display other relevant user interface for creating a new
          * password.
          */
-        passwordNew?: boolean | null
+        password_new?: boolean | null
         /**
          * The title of the prompt.
          * 
@@ -2293,7 +2293,7 @@ export module CertificateRequest {
         /**
          * The private key that this certificate request is for.
          */
-        privateKey?: Gck.Object | null
+        private_key?: Gck.Object | null
     }
 
 }
@@ -3377,16 +3377,16 @@ export module SystemPrompt {
          * The DBus bus name of the prompter to use for prompting, or %NULL
          * for the default prompter.
          */
-        busName?: string | null
+        bus_name?: string | null
         /**
          * The #GcrSecretExchange to use when transferring passwords. A default
          * secret exchange will be used if this is not set.
          */
-        secretExchange?: SecretExchange | null
+        secret_exchange?: SecretExchange | null
         /**
          * The timeout in seconds to wait when opening the prompt.
          */
-        timeoutSeconds?: number | null
+        timeout_seconds?: number | null
     }
 
 }
@@ -3668,7 +3668,7 @@ export module SystemPrompter {
          * The #GType for prompts created by this prompter. This must be a
          * #GcrPrompt implementation.
          */
-        promptType?: GObject.GType | null
+        prompt_type?: GObject.GType | null
     }
 
 }

@@ -708,11 +708,11 @@ module DataSource {
         /**
          * The maximum zoom level
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The minimum zoom level
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
     }
 
 }
@@ -865,7 +865,7 @@ module DataSourceRequest {
         /**
          * The zoom level of the requested tile.
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }
@@ -1090,18 +1090,18 @@ module FileCache {
         /**
          * The directory where the tile database is stored.
          */
-        cacheDir?: string | null
+        cache_dir?: string | null
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
          */
-        cacheKey?: string | null
+        cache_key?: string | null
         /**
          * The cache size limit in bytes.
          * 
          * Note: this new value will not be applied until you call shumate_file_cache_purge()
          */
-        sizeLimit?: number | null
+        size_limit?: number | null
     }
 
 }
@@ -1542,7 +1542,7 @@ module License {
          * license will be added below it. Your text can have multiple lines, just use
          * "\n" in between.
          */
-        extraText?: string | null
+        extra_text?: string | null
         /**
          * The license's horizontal alignment
          */
@@ -1843,7 +1843,7 @@ module Map {
         /**
          * Animate zoom change when zooming in/out.
          */
-        animateZoom?: boolean | null
+        animate_zoom?: boolean | null
         /**
          * The duration of an animation when going to a location, in milliseconds.
          * A value of 0 means that the duration is calculated automatically for you.
@@ -1851,11 +1851,11 @@ module Map {
          * Please note that animation of #shumate_map_ensure_visible also
          * involves a 'go-to' animation.
          */
-        goToDuration?: number | null
+        go_to_duration?: number | null
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          */
-        zoomOnDoubleClick?: boolean | null
+        zoom_on_double_click?: boolean | null
     }
 
 }
@@ -2294,7 +2294,7 @@ module MapLayer {
 
         // Own constructor properties of Shumate-1.0.Shumate.MapLayer
 
-        mapSource?: MapSource | null
+        map_source?: MapSource | null
     }
 
 }
@@ -2556,15 +2556,15 @@ module MapSource {
         /**
          * The usage license's uri for more information
          */
-        licenseUri?: string | null
+        license_uri?: string | null
         /**
          * The maximum zoom level
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The minimum zoom level
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
         /**
          * The name of the map source
          */
@@ -2576,7 +2576,7 @@ module MapSource {
         /**
          * The tile size of the map source
          */
-        tileSize?: number | null
+        tile_size?: number | null
     }
 
 }
@@ -3308,7 +3308,7 @@ module MarkerLayer {
         /**
          * Determines the type of selection that will be performed.
          */
-        selectionMode?: Gtk.SelectionMode | null
+        selection_mode?: Gtk.SelectionMode | null
     }
 
 }
@@ -3666,15 +3666,15 @@ module PathLayer {
         /**
          * The path's fill color
          */
-        fillColor?: Gdk.RGBA | null
+        fill_color?: Gdk.RGBA | null
         /**
          * The path's outline color
          */
-        outlineColor?: Gdk.RGBA | null
+        outline_color?: Gdk.RGBA | null
         /**
          * The path's outline width (in pixels)
          */
-        outlineWidth?: number | null
+        outline_width?: number | null
         /**
          * The shape should be stroked
          */
@@ -3682,11 +3682,11 @@ module PathLayer {
         /**
          * The path's stroke color
          */
-        strokeColor?: Gdk.RGBA | null
+        stroke_color?: Gdk.RGBA | null
         /**
          * The path's stroke width (in pixels)
          */
-        strokeWidth?: number | null
+        stroke_width?: number | null
     }
 
 }
@@ -4407,7 +4407,7 @@ module RasterRenderer {
          * The data source that provides image tiles to display. In most cases,
          * a [class`TileDownloader]` is sufficient.
          */
-        dataSource?: DataSource | null
+        data_source?: DataSource | null
     }
 
 }
@@ -4567,7 +4567,7 @@ module Scale {
         /**
          * The size of the map scale on screen in pixels.
          */
-        maxWidth?: number | null
+        max_width?: number | null
         /**
          * The scale's units.
          */
@@ -4894,8 +4894,8 @@ module SimpleMap {
 
         // Own constructor properties of Shumate-1.0.Shumate.SimpleMap
 
-        mapSource?: MapSource | null
-        showZoomButtons?: boolean | null
+        map_source?: MapSource | null
+        show_zoom_buttons?: boolean | null
     }
 
 }
@@ -5375,7 +5375,7 @@ module Tile {
         /**
          * Specifies whether the tile should fade in when loading
          */
-        fadeIn?: boolean | null
+        fade_in?: boolean | null
         /**
          * The [iface`Gdk`.Paintable] backing the tile
          */
@@ -5383,7 +5383,7 @@ module Tile {
         /**
          * The scale factor of the widget the tile will be displayed in.
          */
-        scaleFactor?: number | null
+        scale_factor?: number | null
         /**
          * The size of the tile in pixels
          */
@@ -5403,7 +5403,7 @@ module Tile {
         /**
          * The zoom level of the tile
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }
@@ -5644,7 +5644,7 @@ module TileDownloader {
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
          */
-        urlTemplate?: string | null
+        url_template?: string | null
     }
 
 }
@@ -5749,7 +5749,7 @@ module VectorRenderer {
          * 
          * Note that not all features of the specification are supported.
          */
-        styleJson?: string | null
+        style_json?: string | null
     }
 
 }
@@ -5904,15 +5904,15 @@ module Viewport {
         /**
          * The highest allowed level of zoom of the content.
          */
-        maxZoomLevel?: number | null
+        max_zoom_level?: number | null
         /**
          * The lowest allowed level of zoom of the content.
          */
-        minZoomLevel?: number | null
+        min_zoom_level?: number | null
         /**
          * The reference #ShumateMapSource being displayed
          */
-        referenceMapSource?: MapSource | null
+        reference_map_source?: MapSource | null
         /**
          * The rotation of the map view, in radians clockwise from up being due north
          */
@@ -5920,7 +5920,7 @@ module Viewport {
         /**
          * The level of zoom of the content.
          */
-        zoomLevel?: number | null
+        zoom_level?: number | null
     }
 
 }

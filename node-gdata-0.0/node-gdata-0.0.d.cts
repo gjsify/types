@@ -2055,14 +2055,14 @@ export module AccessRule {
         /**
          * Specifies to whom this access rule applies. For example, %GDATA_ACCESS_SCOPE_USER or %GDATA_ACCESS_SCOPE_DEFAULT.
          */
-        scopeType?: string | null
+        scope_type?: string | null
         /**
          * A value representing the user who is represented by the access rule, such as an
          * e-mail address for users, or a domain name for domains.
          * 
          * This must be %NULL if and only if #GDataAccessRule:scope-type is %GDATA_ACCESS_SCOPE_DEFAULT.
          */
-        scopeValue?: string | null
+        scope_value?: string | null
     }
 
 }
@@ -2299,7 +2299,7 @@ export module Author {
          * For more information, see the
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
          */
-        emailAddress?: string | null
+        email_address?: string | null
         /**
          * A human-readable name for the person.
          * 
@@ -2479,7 +2479,7 @@ export module AuthorizationDomain {
          * The name of the service which contains the authorization domain, as enumerated in the
          * <ulink type="http" url="http://code.google.com/apis/documents/faq_gdata.html#clientlogin">online documentation</ulink>.
          */
-        serviceName?: string | null
+        service_name?: string | null
     }
 
 }
@@ -2569,11 +2569,11 @@ export module BatchOperation {
          * All requests in the batch operation must be authorizable under this single authorization domain. If requests need different authorization
          * domains, they must be performed in different batch operations.
          */
-        authorizationDomain?: AuthorizationDomain | null
+        authorization_domain?: AuthorizationDomain | null
         /**
          * The feed URI that this batch operation will be sent to.
          */
-        feedUri?: string | null
+        feed_uri?: string | null
         /**
          * The service this batch operation is attached to.
          */
@@ -2953,11 +2953,11 @@ export module CalendarCalendar {
         /**
          * Indicates whether the calendar is visible.
          */
-        isHidden?: boolean | null
+        is_hidden?: boolean | null
         /**
          * Indicates whether the calendar is selected.
          */
-        isSelected?: boolean | null
+        is_selected?: boolean | null
         /**
          * The timezone in which the calendar's times are given. This is a timezone name in tz database notation: <ulink type="http"
          * url="http://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones">reference</ulink>.
@@ -3188,14 +3188,14 @@ export module CalendarEvent {
         /**
          * Indicates whether anyone can invite themselves to the event, by adding themselves to the attendee list.
          */
-        anyoneCanAddSelf?: boolean | null
+        anyone_can_add_self?: boolean | null
         /**
          * Indicates whether attendees may invite others to the event.
          * 
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">GData specification</ulink>.
          */
-        guestsCanInviteOthers?: boolean | null
+        guests_can_invite_others?: boolean | null
         /**
          * Indicates whether attendees may modify the original event, so that changes are visible to organizers and other attendees.
          * Otherwise, any changes made by attendees will be restricted to that attendee's calendar.
@@ -3204,7 +3204,7 @@ export module CalendarEvent {
          * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanInviteOthers">
          * GData specification</ulink>.
          */
-        guestsCanModify?: boolean | null
+        guests_can_modify?: boolean | null
         /**
          * Indicates whether attendees can see other people invited to the event.
          * 
@@ -3212,7 +3212,7 @@ export module CalendarEvent {
          * <ulink type="http" url="https://developers.google.com/google-apps/calendar/v3/reference/events#guestsCanSeeOtherGuests">
          * GData specification</ulink>.
          */
-        guestsCanSeeGuests?: boolean | null
+        guests_can_see_guests?: boolean | null
         /**
          * Represents the dates and times when a recurring event takes place. The returned string is in iCal format, as a list of properties.
          * 
@@ -3855,26 +3855,26 @@ export module CalendarQuery {
          * A shortcut to request all events scheduled for the future. Overrides the
          * #GDataCalendarQuery:start-min and #GDataCalendarQuery:start-max properties.
          */
-        futureEvents?: boolean | null
+        future_events?: boolean | null
         /**
          * Specifies the maximum number of attendees to list for an event. If the actual number of attendees for an event is greater than this value,
          * only the current user and the event organiser are listed.
          */
-        maxAttendees?: number | null
+        max_attendees?: number | null
         /**
          * Specifies order of entries in a feed. Supported values are <literal>lastmodified</literal> and
          * <literal>starttime</literal>.
          */
-        orderBy?: string | null
+        order_by?: string | null
         /**
          * Whether to include deleted/cancelled events in the query feed. Deleted events have their #GDataCalendarEvent:status property set to
          * %GDATA_GD_EVENT_STATUS_CANCELED. They do not normally appear in query results.
          */
-        showDeleted?: boolean | null
+        show_deleted?: boolean | null
         /**
          * Indicates whether recurring events should be expanded or represented as a single event.
          */
-        singleEvents?: boolean | null
+        single_events?: boolean | null
         /**
          * Together with #GDataCalendarQuery:start-min, creates a timespan such that only events within the timespan are returned
          * 
@@ -3883,7 +3883,7 @@ export module CalendarQuery {
          * 
          * If not specified, the default #GDataCalendarQuery:start-max is <literal>2031-01-01</literal>.
          */
-        startMax?: number | null
+        start_max?: number | null
         /**
          * Together with #GDataCalendarQuery:start-max, creates a timespan such that only events within the timespan are returned.
          * 
@@ -3892,7 +3892,7 @@ export module CalendarQuery {
          * 
          * If not specified, the default #GDataCalendarQuery:start-min is <literal>1970-01-01</literal>.
          */
-        startMin?: number | null
+        start_min?: number | null
         /**
          * The current timezone. If this is not specified, all times are returned in UTC.
          */
@@ -5583,11 +5583,11 @@ export module DocumentsEntry {
          * Indicates whether the document entry has been deleted (moved to the trash). Deleted documents will only
          * appear in query results if the #GDataDocumentsQuery:show-deleted property is %TRUE.
          */
-        isDeleted?: boolean | null
+        is_deleted?: boolean | null
         /**
          * Indicates whether the document entry writers can invite others to edit the document.
          */
-        writersCanInvite?: boolean | null
+        writers_can_invite?: boolean | null
     }
 
 }
@@ -6800,19 +6800,19 @@ export module DocumentsQuery {
         /**
          * Specifies whether the query should search for an exact title match for the #GDataDocumentsQuery:title parameter.
          */
-        exactTitle?: boolean | null
+        exact_title?: boolean | null
         /**
          * Specifies the ID of the folder in which to search.
          */
-        folderId?: string | null
+        folder_id?: string | null
         /**
          * A shortcut to request all documents that have been deleted.
          */
-        showDeleted?: boolean | null
+        show_deleted?: boolean | null
         /**
          * Specifies if the request also returns folders.
          */
-        showFolders?: boolean | null
+        show_folders?: boolean | null
         /**
          * A title (or title fragment) to be searched for. If #GDataDocumentsQuery:exact-title is %TRUE, an exact
          * title match will be searched for, otherwise substring matches will also be returned.
@@ -8035,7 +8035,7 @@ export module DownloadStream {
          * The authorization domain for the download, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
          * authorized. This may be %NULL if authorization is not needed for the download.
          */
-        authorizationDomain?: AuthorizationDomain | null
+        authorization_domain?: AuthorizationDomain | null
         /**
          * An optional cancellable used to cancel the entire download operation. If a #GCancellable instance isn't provided for this property at
          * construction time (i.e. to gdata_download_stream_new()), one will be created internally and can be retrieved using
@@ -8051,7 +8051,7 @@ export module DownloadStream {
         /**
          * The URI of the file to download. This must be HTTPS.
          */
-        downloadUri?: string | null
+        download_uri?: string | null
         /**
          * The service which is used to authorize the download, and to which the download relates.
          */
@@ -8270,7 +8270,7 @@ export module Entry {
          * For more information, see the
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.content">Atom specification</ulink>.
          */
-        contentUri?: string | null
+        content_uri?: string | null
         /**
          * An identifier for a particular version of the entry. This changes every time the entry on the server changes, and can be used
          * for conditional retrieval and locking.
@@ -8959,7 +8959,7 @@ export module GContactCalendar {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A free-form string that identifies the type of calendar. It is mutually exclusive with #GDataGContactCalendar:relation-type.
          * 
@@ -8974,7 +8974,7 @@ export module GContactCalendar {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * The URI of the calendar.
          * 
@@ -9183,7 +9183,7 @@ export module GContactEvent {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
     }
 
 }
@@ -9358,7 +9358,7 @@ export module GContactExternalID {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * The value of the external ID.
          * 
@@ -9539,7 +9539,7 @@ export module GContactJot {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
     }
 
 }
@@ -9834,7 +9834,7 @@ export module GContactRelation {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
     }
 
 }
@@ -10001,7 +10001,7 @@ export module GContactWebsite {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A simple string value used to name this website. It allows UIs to display a label such as "Work", "Travel blog", "Personal blog", etc.
          * It is mutually exclusive with #GDataGContactWebsite:relation-type.
@@ -10017,7 +10017,7 @@ export module GContactWebsite {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * The URI of the website.
          * 
@@ -10218,14 +10218,14 @@ export module GDEmailAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
          */
-        displayName?: string | null
+        display_name?: string | null
         /**
          * Indicates which e-mail address out of a group is primary.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A simple string value used to name this e-mail address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
          * 
@@ -10239,7 +10239,7 @@ export module GDEmailAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
     }
 
 }
@@ -10448,7 +10448,7 @@ export module GDIMAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A simple string value used to name this IM address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
          * 
@@ -10469,7 +10469,7 @@ export module GDIMAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
     }
 
 }
@@ -10671,14 +10671,14 @@ export module GDName {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
          */
-        additionalName?: string | null
+        additional_name?: string | null
         /**
          * The person's family name.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
          */
-        familyName?: string | null
+        family_name?: string | null
         /**
          * An unstructured representation of the person's full name. It's generally advised to use the other individual properties in preference
          * to this one, which can fall out of synchronisation with the other properties.
@@ -10686,14 +10686,14 @@ export module GDName {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
          */
-        fullName?: string | null
+        full_name?: string | null
         /**
          * The person's given name.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdName">GData specification</ulink>.
          */
-        givenName?: string | null
+        given_name?: string | null
         /**
          * An honorific prefix (e.g. <literal>Mr</literal> or <literal>Mrs</literal>).
          * 
@@ -10934,14 +10934,14 @@ export module GDOrganization {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * Description of a job within the organization.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
          */
-        jobDescription?: string | null
+        job_description?: string | null
         /**
          * A simple string value used to name this organization. It allows UIs to display a label such as "Work", "Volunteer",
          * "Professional Society", etc.
@@ -10970,7 +10970,7 @@ export module GDOrganization {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdOrganization">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * Stock symbol of the organization.
          * 
@@ -11287,7 +11287,7 @@ export module GDPhoneNumber {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A simple string value used to name this phone number. It allows UIs to display a label such as "Mobile", "Home", "Work", etc.
          * 
@@ -11308,7 +11308,7 @@ export module GDPhoneNumber {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * An optional "tel URI" used to represent the number in a formal way. Useful for programmatic access, such as a VoIP/PSTN bridge.
          * 
@@ -11540,14 +11540,14 @@ export module GDPostalAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
-        houseName?: string | null
+        house_name?: string | null
         /**
          * Indicates which postal address out of a group is primary.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
-        isPrimary?: boolean | null
+        is_primary?: boolean | null
         /**
          * A simple string value used to name this postal address. It allows UIs to display a label such as "Work", "Personal", "Preferred", etc.
          * 
@@ -11561,7 +11561,7 @@ export module GDPostalAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
-        mailClass?: string | null
+        mail_class?: string | null
         /**
          * This is used to disambiguate a street address when a city contains more than one street with the same name, or to specify a small place
          * whose mail is routed through a larger postal town. In China it could be a county or a minor city.
@@ -11576,7 +11576,7 @@ export module GDPostalAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
-        poBox?: string | null
+        po_box?: string | null
         /**
          * Postal code. Usually country-wide, but sometimes specific to the city (e.g. "2" in "Dublin 2, Ireland" addresses).
          * 
@@ -11598,7 +11598,7 @@ export module GDPostalAddress {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdStructuredPostalAddress">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * Can be street, avenue, road, etc. This element also includes the house number and room/apartment/flat/floor number.
          * 
@@ -12109,7 +12109,7 @@ export module GDReminder {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
          */
-        absoluteTime?: number | null
+        absolute_time?: number | null
         /**
          * The notification method the reminder should use. For example: %GDATA_GD_REMINDER_ALERT or %GDATA_GD_REMINDER_EMAIL.
          * 
@@ -12123,7 +12123,7 @@ export module GDReminder {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdReminder">GData specification</ulink>.
          */
-        relativeTime?: number | null
+        relative_time?: number | null
     }
 
 }
@@ -12296,21 +12296,21 @@ export module GDWhen {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
          */
-        endTime?: number | null
+        end_time?: number | null
         /**
          * A programmatic value that identifies the type of when.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
          */
-        isDate?: boolean | null
+        is_date?: boolean | null
         /**
          * The name of the when.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
          */
-        startTime?: number | null
+        start_time?: number | null
         /**
          * A simple string value used to name this when. It allows UIs to display a label such as "Work", "Volunteer",
          * "Professional Society", etc.
@@ -12318,7 +12318,7 @@ export module GDWhen {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhen">GData specification</ulink>.
          */
-        valueString?: string | null
+        value_string?: string | null
     }
 
 }
@@ -12517,14 +12517,14 @@ export module GDWhere {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * A simple string representation of this location.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWhere">GData specification</ulink>.
          */
-        valueString?: string | null
+        value_string?: string | null
     }
 
 }
@@ -12690,7 +12690,7 @@ export module GDWho {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
          */
-        emailAddress?: string | null
+        email_address?: string | null
         /**
          * Specifies the relationship between the containing entity and the contained person. For example: %GDATA_GD_WHO_EVENT_PERFORMER or
          * %GDATA_GD_WHO_EVENT_ATTENDEE.
@@ -12698,14 +12698,14 @@ export module GDWho {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * A simple string representation of this person.
          * 
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdWho">GData specification</ulink>.
          */
-        valueString?: string | null
+        value_string?: string | null
     }
 
 }
@@ -12981,7 +12981,7 @@ export module GoaAuthorizer {
         /**
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
          */
-        goaObject?: Goa.Object | null
+        goa_object?: Goa.Object | null
     }
 
 }
@@ -13069,7 +13069,7 @@ export module Link {
          * For more information, see the
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
          */
-        contentType?: string | null
+        content_type?: string | null
         /**
          * Describes the language of the resource pointed to by the #GDataLink:uri property.
          * 
@@ -13090,7 +13090,7 @@ export module Link {
          * For more information, see the
          * <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
          */
-        relationType?: string | null
+        relation_type?: string | null
         /**
          * Conveys human-readable information about the link.
          * 
@@ -13981,7 +13981,7 @@ export module OAuth2Authorizer {
          * <replaceable>application name</replaceable>-
          * <replaceable>version ID</replaceable></literal>.
          */
-        clientId?: string | null
+        client_id?: string | null
         /**
          * Client secret provided by Google. This is unique for each application
          * and is accessible from Google’s Developer Console when registering
@@ -13992,7 +13992,7 @@ export module OAuth2Authorizer {
          * <ulink url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#handlingtheresponse" type="http">reference
          * documentation</ulink> for details.
          */
-        clientSecret?: string | null
+        client_secret?: string | null
         /**
          * The locale to use for network requests, in UNIX locale format.
          * (e.g. "en_GB", "cs", "de_DE".) Use %NULL for the default "C" locale
@@ -14009,7 +14009,7 @@ export module OAuth2Authorizer {
         /**
          * The #GProxyResolver used to determine a proxy URI.
          */
-        proxyResolver?: Gio.ProxyResolver | null
+        proxy_resolver?: Gio.ProxyResolver | null
         /**
          * Redirect URI to send the response from the authorisation request to.
          * This must either be %GDATA_OAUTH2_REDIRECT_URI_OOB,
@@ -14039,7 +14039,7 @@ export module OAuth2Authorizer {
          * See the <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
          * documentation</ulink> for details about choosing a redirect URI.
          */
-        redirectUri?: string | null
+        redirect_uri?: string | null
         /**
          * The server provided refresh token, which can be stored and passed in
          * to new #GDataOAuth2Authorizer instances before calling
@@ -14048,7 +14048,7 @@ export module OAuth2Authorizer {
          * 
          * The refresh token is opaque data and must not be parsed.
          */
-        refreshToken?: string | null
+        refresh_token?: string | null
         /**
          * A timeout, in seconds, for network operations. If the timeout is
          * exceeded, the operation will be cancelled and
@@ -14404,7 +14404,7 @@ export module Parsable {
         /**
          * Specifies whether the object was constructed by parsing XML or manually.
          */
-        constructedFromXml?: boolean | null
+        constructed_from_xml?: boolean | null
     }
 
 }
@@ -14534,8 +14534,8 @@ export module PicasaWebAlbum {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          */
-        albumId?: string | null
-        isCommentingEnabled?: boolean | null
+        album_id?: string | null
+        is_commenting_enabled?: boolean | null
         /**
          * The location as a latitude coordinate associated with this album. Valid latitudes range from <code class="literal">-90.0</code>
          * to <code class="literal">90.0</code> inclusive.
@@ -15285,7 +15285,7 @@ export module PicasaWebFile {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_albumid">
          * gphoto specification</ulink>.
          */
-        albumId?: string | null
+        album_id?: string | null
         /**
          * The file's descriptive caption.
          */
@@ -15306,11 +15306,11 @@ export module PicasaWebFile {
          * For more information, see the <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#gphoto_id">
          * gphoto specification</ulink>.
          */
-        fileId?: string | null
+        file_id?: string | null
         /**
          * Whether commenting is enabled for this file.
          */
-        isCommentingEnabled?: boolean | null
+        is_commenting_enabled?: boolean | null
         /**
          * The location as a latitude coordinate associated with this file. Valid latitudes range from <code class="literal">-90.0</code>
          * to <code class="literal">90.0</code> inclusive.
@@ -16024,7 +16024,7 @@ export module PicasaWebQuery {
          * cropped or scaled can be specified; for more information, see the
          * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
          */
-        imageSize?: string | null
+        image_size?: string | null
         /**
          * A location to search for photos, e.g. "London".
          */
@@ -16038,7 +16038,7 @@ export module PicasaWebQuery {
          * cropped or scaled can be specified; for more information, see the
          * <ulink type="http" url="http://code.google.com/apis/picasaweb/reference.html#Parameters">online documentation</ulink>.
          */
-        thumbnailSize?: string | null
+        thumbnail_size?: string | null
         /**
          * Specifies which albums should be listed, in terms of their visibility (#GDataPicasaWebAlbum:visibility).
          * 
@@ -16831,22 +16831,22 @@ export module Query {
          * Strict query parameter checking. If this is enabled, an error will be returned by the online service if a parameter is
          * not recognised.
          */
-        isStrict?: boolean | null
+        is_strict?: boolean | null
         /**
          * Maximum number of results to be retrieved. Most services have a default #GDataQuery:max-results size imposed by the server; if you wish
          * to receive the entire feed, specify a large number such as %G_MAXUINT for this property.
          * 
          * Use <code class="literal">0</code> to not specify a maximum number of results.
          */
-        maxResults?: number | null
+        max_results?: number | null
         /**
          * Upper bound on the entry publish date, exclusive.
          */
-        publishedMax?: number | null
+        published_max?: number | null
         /**
          * Lower bound on the entry publish date, inclusive.
          */
-        publishedMin?: number | null
+        published_min?: number | null
         /**
          * A full-text query string.
          * 
@@ -16871,15 +16871,15 @@ export module Query {
          * 
          * Use <code class="literal">0</code> to not specify a start index.
          */
-        startIndex?: number | null
+        start_index?: number | null
         /**
          * Upper bound on the entry update date, exclusive.
          */
-        updatedMax?: number | null
+        updated_max?: number | null
         /**
          * Lower bound on the entry update date, inclusive.
          */
-        updatedMin?: number | null
+        updated_min?: number | null
     }
 
 }
@@ -17280,7 +17280,7 @@ export module Service {
         /**
          * The #GProxyResolver used to determine a proxy URI.
          */
-        proxyResolver?: Gio.ProxyResolver | null
+        proxy_resolver?: Gio.ProxyResolver | null
         /**
          * A timeout, in seconds, for network operations. If the timeout is exceeded, the operation will be cancelled and
          * %GDATA_SERVICE_ERROR_NETWORK_ERROR will be returned.
@@ -17699,34 +17699,34 @@ export module TasksQuery {
          * Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          */
-        completedMax?: number | null
+        completed_max?: number | null
         /**
          * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          */
-        completedMin?: number | null
+        completed_min?: number | null
         /**
          * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          */
-        dueMax?: number | null
+        due_max?: number | null
         /**
          * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          */
-        dueMin?: number | null
+        due_min?: number | null
         /**
          * Flag indicating whether completed tasks are returned in the result. Optional. The default is %FALSE.
          */
-        showCompleted?: boolean | null
+        show_completed?: boolean | null
         /**
          * Flag indicating whether deleted tasks are returned in the result. Optional. The default is %FALSE.
          */
-        showDeleted?: boolean | null
+        show_deleted?: boolean | null
         /**
          * Flag indicating whether hidden tasks are returned in the result. Optional. The default is %FALSE.
          */
-        showHidden?: boolean | null
+        show_hidden?: boolean | null
     }
 
 }
@@ -18317,7 +18317,7 @@ export module TasksTask {
         /**
          * Flag indicating whether the task has been deleted. The default is %FALSE.
          */
-        isDeleted?: boolean | null
+        is_deleted?: boolean | null
         /**
          * This is where the description of what needs to be done in the task is stored.
          */
@@ -18767,7 +18767,7 @@ export module UploadStream {
          * The authorization domain for the upload, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
          * authorized. This may be %NULL if authorization is not needed for the upload.
          */
-        authorizationDomain?: AuthorizationDomain | null
+        authorization_domain?: AuthorizationDomain | null
         /**
          * An optional cancellable used to cancel the entire upload operation. If a #GCancellable instance isn't provided for this property at
          * construction time (i.e. to gdata_upload_stream_new()), one will be created internally and can be retrieved using
@@ -18786,11 +18786,11 @@ export module UploadStream {
          * 
          * If this is <code class="literal">-1</code> the upload will be non-resumable; if it is non-negative, the upload will be resumable.
          */
-        contentLength?: number | null
+        content_length?: number | null
         /**
          * The content type of the file being uploaded (i.e. as returned by g_file_info_get_content_type()).
          */
-        contentType?: string | null
+        content_type?: string | null
         /**
          * The entry used for metadata to upload.
          */
@@ -18810,7 +18810,7 @@ export module UploadStream {
         /**
          * The URI to upload the data and metadata to. This must be HTTPS.
          */
-        uploadUri?: string | null
+        upload_uri?: string | null
     }
 
 }
@@ -19238,7 +19238,7 @@ export module YouTubeComment {
          * 
          * See the documentation for #GDataYouTubeComment for an explanation of the semantics of parent comment URIs.
          */
-        parentCommentUri?: string | null
+        parent_comment_uri?: string | null
     }
 
 }
@@ -19553,7 +19553,7 @@ export module YouTubeQuery {
          * 
          * For more information, see the documentation for #GDataYouTubeQuery:latitude.
          */
-        locationRadius?: number | null
+        location_radius?: number | null
         /**
          * The longitude of a particular location of which videos should be found. This should be used in conjunction with
          * #GDataYouTubeQuery:latitude; if either property is outside the valid range, neither will be used. Valid longitudes
@@ -19574,7 +19574,7 @@ export module YouTubeQuery {
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/search/list#order">online documentation</ulink>.
          */
-        orderBy?: string | null
+        order_by?: string | null
         /**
          * An ISO 3166 two-letter country code that should be used to filter
          * videos playable only in specific countries.
@@ -19594,7 +19594,7 @@ export module YouTubeQuery {
          * For more information, see the <ulink type="http"
          * url="https://developers.google.com/youtube/v3/docs/search/list#safeSearch">online documentation</ulink>.
          */
-        safeSearch?: YouTubeSafeSearch | null
+        safe_search?: YouTubeSafeSearch | null
     }
 
 }
@@ -19924,7 +19924,7 @@ export module YouTubeService {
          * 0.17.0, it might be necessary to update your application’s
          * developer key.
          */
-        developerKey?: string | null
+        developer_key?: string | null
     }
 
 }
@@ -20198,7 +20198,7 @@ export module YouTubeState {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          */
-        helpUri?: string | null
+        help_uri?: string | null
         /**
          * A human-readable description of why the video failed to upload.
          * 
@@ -20219,7 +20219,7 @@ export module YouTubeState {
          * For more information, see the
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state">online documentation</ulink>.
          */
-        reasonCode?: string | null
+        reason_code?: string | null
     }
 
 }
@@ -20355,7 +20355,7 @@ export module YouTubeVideo {
          * The aspect ratio of the video. A %NULL value means the aspect ratio is unknown (it could still be a widescreen video). A value of
          * %GDATA_YOUTUBE_ASPECT_RATIO_WIDESCREEN means the video is definitely widescreen.
          */
-        aspectRatio?: string | null
+        aspect_ratio?: string | null
         /**
          * Specifies a genre or developer tag that describes the video.
          * 
@@ -20370,7 +20370,7 @@ export module YouTubeVideo {
          * url="https://developers.google.com/youtube/v3/docs/videos#snippet.description">online documentation</ulink>.
          */
         description?: string | null
-        isPrivate?: boolean | null
+        is_private?: boolean | null
         /**
          * A %NULL-terminated array of words associated with the video.
          * 

@@ -1495,7 +1495,7 @@ export module MixerTrack {
         // Own constructor properties of GstInterfaces-0.10.GstInterfaces.MixerTrack
 
         index?: number | null
-        untranslatedLabel?: string | null
+        untranslated_label?: string | null
     }
 
 }

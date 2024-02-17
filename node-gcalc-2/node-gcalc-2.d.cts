@@ -844,7 +844,7 @@ export module MathFunction {
         // Own constructor properties of GCalc-2.GCalc.MathFunction
 
         name?: string | null
-        nParams?: number | null
+        n_params?: number | null
         closed?: boolean | null
     }
 
@@ -4650,7 +4650,7 @@ export module Solver {
 
         // Own constructor properties of GCalc-2.GCalc.Solver
 
-        equationManager?: MathEquationManager | null
+        equation_manager?: MathEquationManager | null
     }
 
 }

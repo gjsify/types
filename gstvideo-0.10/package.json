@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstvideo-0.10",
-    "version": "0.10.0-3.2.7",
+    "version": "0.10.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstVideo-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstvideo-0.10.js",
     "main": "gstvideo-0.10.js",
     "exports": {
-        "./ambient": "./gstvideo-0.10-ambient.d.ts",
-        "./import": "./gstvideo-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./gstvideo-0.10-ambient.d.ts",
+            "default": "./gstvideo-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstvideo-0.10-import.d.ts",
+            "default": "./gstvideo-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstvideo-0.10.d.ts",

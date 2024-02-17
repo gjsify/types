@@ -40,8 +40,6 @@ export module Discoverer {
 
         // Own constructor properties of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer
 
-        extended_mode?: boolean | null
-        relaxed_mode?: boolean | null
         extendedMode?: boolean | null
         relaxedMode?: boolean | null
     }
@@ -52,9 +50,7 @@ export interface Discoverer {
 
     // Own properties of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer
 
-    readonly extended_mode: boolean
     readonly extendedMode: boolean
-    readonly relaxed_mode: boolean
     readonly relaxedMode: boolean
 
     // Own fields of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer
@@ -280,7 +276,6 @@ export interface Profile {
 
     // Own properties of GUPnPDLNA-1.0.GUPnPDLNA.Profile
 
-    readonly encoding_profile: GstPbutils.EncodingProfile
     readonly encodingProfile: GstPbutils.EncodingProfile
     readonly extended: boolean
     readonly mime: string

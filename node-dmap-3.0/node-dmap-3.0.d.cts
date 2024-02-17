@@ -593,17 +593,17 @@ export module Connection {
 
         // Own constructor properties of DMAP-3.0.DMAP.Connection
 
-        baseUri?: any | null
-        databaseId?: number | null
+        base_uri?: any | null
+        database_id?: number | null
         db?: any | null
-        dmapVersion?: number | null
+        dmap_version?: number | null
         factory?: any | null
         host?: string | null
         name?: string | null
         password?: string | null
         port?: number | null
-        revisionNumber?: number | null
-        sessionId?: number | null
+        revision_number?: number | null
+        session_id?: number | null
         username?: string | null
     }
 
@@ -1036,14 +1036,14 @@ export module Share {
 
         // Own constructor properties of DMAP-3.0.DMAP.Share
 
-        authMethod?: number | null
-        containerDb?: any | null
+        auth_method?: number | null
+        container_db?: any | null
         db?: any | null
         name?: string | null
         password?: string | null
-        revisionNumber?: number | null
-        transcodeMimetype?: string | null
-        txtRecords?: string[] | null
+        revision_number?: number | null
+        transcode_mimetype?: string | null
+        txt_records?: string[] | null
     }
 
 }

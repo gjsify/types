@@ -1,13 +1,19 @@
 {
     "name": "@girs/gupnpigd-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GUPnPIgd-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gupnpigd-1.0.js",
     "main": "gupnpigd-1.0.js",
     "exports": {
-        "./ambient": "./gupnpigd-1.0-ambient.d.ts",
-        "./import": "./gupnpigd-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gupnpigd-1.0-ambient.d.ts",
+            "default": "./gupnpigd-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gupnpigd-1.0-import.d.ts",
+            "default": "./gupnpigd-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gupnpigd-1.0.d.ts",

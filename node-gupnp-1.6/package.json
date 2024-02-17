@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gupnp-1.6",
-    "version": "1.6.0-3.2.7",
+    "version": "1.6.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "node-gupnp-1.6.js",
     "main": "node-gupnp-1.6.js",
     "exports": {
-        "./ambient": "./node-gupnp-1.6-ambient.d.ts",
-        "./import": "./node-gupnp-1.6-import.d.ts",
+        "./ambient": {
+            "types": "./node-gupnp-1.6-ambient.d.ts",
+            "default": "./node-gupnp-1.6-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gupnp-1.6-import.d.ts",
+            "default": "./node-gupnp-1.6-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gupnp-1.6.d.ts",

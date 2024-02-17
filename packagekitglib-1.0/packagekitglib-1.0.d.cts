@@ -1908,13 +1908,11 @@ export module Category {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Category
 
-        cat_id?: string | null
+        catId?: string | null
         icon?: string | null
         name?: string | null
-        parent_id?: string | null
-        summary?: string | null
-        catId?: string | null
         parentId?: string | null
+        summary?: string | null
     }
 
 }
@@ -1923,11 +1921,9 @@ export interface Category {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Category
 
-    cat_id: string | null
     catId: string | null
     icon: string | null
     name: string | null
-    parent_id: string | null
     parentId: string | null
     summary: string | null
 
@@ -2046,12 +2042,10 @@ export module Client {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Client
 
         background?: boolean | null
-        cache_age?: number | null
-        details_with_deps_size?: boolean | null
-        interactive?: boolean | null
-        locale?: string | null
         cacheAge?: number | null
         detailsWithDepsSize?: boolean | null
+        interactive?: boolean | null
+        locale?: string | null
     }
 
 }
@@ -2061,9 +2055,7 @@ export interface Client {
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Client
 
     background: boolean
-    cache_age: number
     cacheAge: number
-    details_with_deps_size: boolean
     detailsWithDepsSize: boolean
     readonly idle: boolean
     interactive: boolean
@@ -3074,24 +3066,18 @@ export module Control {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Control
 
-        backend_author?: string | null
-        backend_description?: string | null
-        backend_name?: string | null
-        connected?: boolean | null
-        distro_id?: string | null
-        filters?: number | null
-        groups?: number | null
-        locked?: boolean | null
-        mime_types?: string[] | null
-        network_state?: NetworkEnum | null
-        provides?: number | null
-        roles?: number | null
         backendAuthor?: string | null
         backendDescription?: string | null
         backendName?: string | null
+        connected?: boolean | null
         distroId?: string | null
+        filters?: number | null
+        groups?: number | null
+        locked?: boolean | null
         mimeTypes?: string[] | null
         networkState?: NetworkEnum | null
+        provides?: number | null
+        roles?: number | null
     }
 
 }
@@ -3100,29 +3086,20 @@ export interface Control {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Control
 
-    backend_author: string | null
     backendAuthor: string | null
-    backend_description: string | null
     backendDescription: string | null
-    backend_name: string | null
     backendName: string | null
     connected: boolean
-    distro_id: string | null
     distroId: string | null
     filters: number
     groups: number
     locked: boolean
-    mime_types: string[]
     mimeTypes: string[]
-    network_state: NetworkEnum
     networkState: NetworkEnum
     provides: number
     roles: number
-    readonly version_major: number
     readonly versionMajor: number
-    readonly version_micro: number
     readonly versionMicro: number
-    readonly version_minor: number
     readonly versionMinor: number
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.Control
@@ -3575,15 +3552,13 @@ export module Details {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Details
 
         description?: string | null
-        download_size?: number | null
+        downloadSize?: number | null
         group?: GroupEnum | null
         license?: string | null
-        package_id?: string | null
+        packageId?: string | null
         size?: number | null
         summary?: string | null
         url?: string | null
-        downloadSize?: number | null
-        packageId?: string | null
     }
 
 }
@@ -3593,11 +3568,9 @@ export interface Details {
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Details
 
     description: string | null
-    download_size: number
     downloadSize: number
     group: GroupEnum
     license: string | null
-    package_id: string | null
     packageId: string | null
     size: number
     summary: string | null
@@ -3887,22 +3860,6 @@ export module EulaRequired {
         /**
          * ID for this EULA.
          */
-        eula_id?: string | null
-        /**
-         * The text of the license agreement.
-         */
-        license_agreement?: string | null
-        /**
-         * PackageID this EULA is for.
-         */
-        package_id?: string | null
-        /**
-         * Vendor this EULA is from.
-         */
-        vendor_name?: string | null
-        /**
-         * ID for this EULA.
-         */
         eulaId?: string | null
         /**
          * The text of the license agreement.
@@ -3927,15 +3884,7 @@ export interface EulaRequired {
     /**
      * ID for this EULA.
      */
-    eula_id: string | null
-    /**
-     * ID for this EULA.
-     */
     eulaId: string | null
-    /**
-     * The text of the license agreement.
-     */
-    license_agreement: string | null
     /**
      * The text of the license agreement.
      */
@@ -3943,15 +3892,7 @@ export interface EulaRequired {
     /**
      * PackageID this EULA is for.
      */
-    package_id: string | null
-    /**
-     * PackageID this EULA is for.
-     */
     packageId: string | null
-    /**
-     * Vendor this EULA is from.
-     */
-    vendor_name: string | null
     /**
      * Vendor this EULA is from.
      */
@@ -4039,7 +3980,6 @@ export module Files {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Files
 
         files?: string[] | null
-        package_id?: string | null
         packageId?: string | null
     }
 
@@ -4050,7 +3990,6 @@ export interface Files {
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Files
 
     files: string[]
-    package_id: string | null
     packageId: string | null
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.Files
@@ -4118,10 +4057,9 @@ export module ItemProgress {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.ItemProgress
 
-        package_id?: string | null
+        packageId?: string | null
         percentage?: number | null
         status?: number | null
-        packageId?: string | null
     }
 
 }
@@ -4130,7 +4068,6 @@ export interface ItemProgress {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.ItemProgress
 
-    package_id: string | null
     packageId: string | null
     percentage: number
     status: number
@@ -4218,9 +4155,6 @@ export module MediaChangeRequired {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.MediaChangeRequired
 
-        media_id?: string | null
-        media_text?: string | null
-        media_type?: MediaTypeEnum | null
         mediaId?: string | null
         mediaText?: string | null
         mediaType?: MediaTypeEnum | null
@@ -4232,11 +4166,8 @@ export interface MediaChangeRequired {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.MediaChangeRequired
 
-    media_id: string | null
     mediaId: string | null
-    media_text: string | null
     mediaText: string | null
-    media_type: MediaTypeEnum
     mediaType: MediaTypeEnum
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.MediaChangeRequired
@@ -4310,23 +4241,6 @@ export module Package {
         license?: string | null
         size?: number | null
         summary?: string | null
-        update_bugzilla_urls?: string[] | null
-        update_changelog?: string | null
-        update_cve_urls?: string[] | null
-        update_issued?: string | null
-        update_obsoletes?: string | null
-        update_restart?: RestartEnum | null
-        /**
-         * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
-         * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
-         */
-        update_severity?: InfoEnum | null
-        update_state?: UpdateStateEnum | null
-        update_text?: string | null
-        update_updated?: string | null
-        update_updates?: string | null
-        update_vendor_urls?: string[] | null
-        url?: string | null
         updateBugzillaUrls?: string[] | null
         updateChangelog?: string | null
         updateCveUrls?: string[] | null
@@ -4343,6 +4257,7 @@ export module Package {
         updateUpdated?: string | null
         updateUpdates?: string | null
         updateVendorUrls?: string[] | null
+        url?: string | null
     }
 
 }
@@ -4355,41 +4270,24 @@ export interface Package {
     group: GroupEnum
     info: InfoEnum
     license: string | null
-    readonly package_id: string | null
     readonly packageId: string | null
     size: number
     summary: string | null
-    update_bugzilla_urls: string[]
     updateBugzillaUrls: string[]
-    update_changelog: string | null
     updateChangelog: string | null
-    update_cve_urls: string[]
     updateCveUrls: string[]
-    update_issued: string | null
     updateIssued: string | null
-    update_obsoletes: string | null
     updateObsoletes: string | null
-    update_restart: RestartEnum
     updateRestart: RestartEnum
     /**
      * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
      * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
      */
-    update_severity: InfoEnum
-    /**
-     * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
-     * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
-     */
     updateSeverity: InfoEnum
-    update_state: UpdateStateEnum
     updateState: UpdateStateEnum
-    update_text: string | null
     updateText: string | null
-    update_updated: string | null
     updateUpdated: string | null
-    update_updates: string | null
     updateUpdates: string | null
-    update_vendor_urls: string[]
     updateVendorUrls: string[]
     url: string | null
 
@@ -4901,23 +4799,23 @@ export module Progress {
         /**
          * %TRUE if this transaction can be cancelled.
          */
-        allow_cancel?: boolean | null
+        allowCancel?: boolean | null
         /**
          * %TRUE if the transaction caller is still connected.
          */
-        caller_active?: boolean | null
+        callerActive?: boolean | null
         /**
          * Number of bytes remaining to download.
          */
-        download_size_remaining?: number | null
+        downloadSizeRemaining?: number | null
         /**
          * Amount of time the transaction has taken in seconds.
          */
-        elapsed_time?: number | null
+        elapsedTime?: number | null
         /**
          * Item progress associated with this transaction.
          */
-        item_progress?: ItemProgress | null
+        itemProgress?: ItemProgress | null
         /**
          * The package this transaction is acting on.
          */
@@ -4925,7 +4823,7 @@ export module Progress {
         /**
          * Package ID this transaction is acting on.
          */
-        package_id?: string | null
+        packageId?: string | null
         /**
          * Percentage complete of this transaction.
          */
@@ -4933,7 +4831,7 @@ export module Progress {
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
          */
-        remaining_time?: number | null
+        remainingTime?: number | null
         /**
          * Role of this transaction.
          */
@@ -4953,51 +4851,15 @@ export module Progress {
         /**
          * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
          */
-        transaction_flags?: number | null
-        /**
-         * ID used by this transaction.
-         */
-        transaction_id?: string | null
-        /**
-         * The UID that started this transaction.
-         */
-        uid?: number | null
-        /**
-         * %TRUE if this transaction can be cancelled.
-         */
-        allowCancel?: boolean | null
-        /**
-         * %TRUE if the transaction caller is still connected.
-         */
-        callerActive?: boolean | null
-        /**
-         * Number of bytes remaining to download.
-         */
-        downloadSizeRemaining?: number | null
-        /**
-         * Amount of time the transaction has taken in seconds.
-         */
-        elapsedTime?: number | null
-        /**
-         * Item progress associated with this transaction.
-         */
-        itemProgress?: ItemProgress | null
-        /**
-         * Package ID this transaction is acting on.
-         */
-        packageId?: string | null
-        /**
-         * Amount of time the transaction will take to complete in seconds or 0 if unknown.
-         */
-        remainingTime?: number | null
-        /**
-         * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
-         */
         transactionFlags?: number | null
         /**
          * ID used by this transaction.
          */
         transactionId?: string | null
+        /**
+         * The UID that started this transaction.
+         */
+        uid?: number | null
     }
 
 }
@@ -5009,15 +4871,7 @@ export interface Progress {
     /**
      * %TRUE if this transaction can be cancelled.
      */
-    allow_cancel: boolean
-    /**
-     * %TRUE if this transaction can be cancelled.
-     */
     allowCancel: boolean
-    /**
-     * %TRUE if the transaction caller is still connected.
-     */
-    caller_active: boolean
     /**
      * %TRUE if the transaction caller is still connected.
      */
@@ -5025,23 +4879,11 @@ export interface Progress {
     /**
      * Number of bytes remaining to download.
      */
-    download_size_remaining: number
-    /**
-     * Number of bytes remaining to download.
-     */
     downloadSizeRemaining: number
     /**
      * Amount of time the transaction has taken in seconds.
      */
-    elapsed_time: number
-    /**
-     * Amount of time the transaction has taken in seconds.
-     */
     elapsedTime: number
-    /**
-     * Item progress associated with this transaction.
-     */
-    item_progress: ItemProgress
     /**
      * Item progress associated with this transaction.
      */
@@ -5053,19 +4895,11 @@ export interface Progress {
     /**
      * Package ID this transaction is acting on.
      */
-    package_id: string | null
-    /**
-     * Package ID this transaction is acting on.
-     */
     packageId: string | null
     /**
      * Percentage complete of this transaction.
      */
     percentage: number
-    /**
-     * Amount of time the transaction will take to complete in seconds or 0 if unknown.
-     */
-    remaining_time: number
     /**
      * Amount of time the transaction will take to complete in seconds or 0 if unknown.
      */
@@ -5089,15 +4923,7 @@ export interface Progress {
     /**
      * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
      */
-    transaction_flags: number
-    /**
-     * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
-     */
     transactionFlags: number
-    /**
-     * ID used by this transaction.
-     */
-    transaction_id: string | null
     /**
      * ID used by this transaction.
      */
@@ -5384,7 +5210,6 @@ export module RepoDetail {
 
         description?: string | null
         enabled?: boolean | null
-        repo_id?: string | null
         repoId?: string | null
     }
 
@@ -5396,7 +5221,6 @@ export interface RepoDetail {
 
     description: string | null
     enabled: boolean
-    repo_id: string | null
     repoId: string | null
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.RepoDetail
@@ -5472,14 +5296,6 @@ export module RepoSignatureRequired {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.RepoSignatureRequired
 
-        key_fingerprint?: string | null
-        key_id?: string | null
-        key_timestamp?: string | null
-        key_url?: string | null
-        key_userid?: string | null
-        package_id?: string | null
-        repository_name?: string | null
-        type?: SigTypeEnum | null
         keyFingerprint?: string | null
         keyId?: string | null
         keyTimestamp?: string | null
@@ -5487,6 +5303,7 @@ export module RepoSignatureRequired {
         keyUserid?: string | null
         packageId?: string | null
         repositoryName?: string | null
+        type?: SigTypeEnum | null
     }
 
 }
@@ -5495,19 +5312,12 @@ export interface RepoSignatureRequired {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.RepoSignatureRequired
 
-    key_fingerprint: string | null
     keyFingerprint: string | null
-    key_id: string | null
     keyId: string | null
-    key_timestamp: string | null
     keyTimestamp: string | null
-    key_url: string | null
     keyUrl: string | null
-    key_userid: string | null
     keyUserid: string | null
-    package_id: string | null
     packageId: string | null
-    repository_name: string | null
     repositoryName: string | null
     type: SigTypeEnum
 
@@ -5581,9 +5391,8 @@ export module RequireRestart {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.RequireRestart
 
-        package_id?: string | null
-        restart?: RestartEnum | null
         packageId?: string | null
+        restart?: RestartEnum | null
     }
 
 }
@@ -5592,7 +5401,6 @@ export interface RequireRestart {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.RequireRestart
 
-    package_id: string | null
     packageId: string | null
     restart: RestartEnum
 
@@ -5657,10 +5465,6 @@ export module Results {
         /**
          * A #PkBitfield containing #PkTransactionFlagEnum for this result.
          */
-        transaction_flags?: number | null
-        /**
-         * A #PkBitfield containing #PkTransactionFlagEnum for this result.
-         */
         transactionFlags?: number | null
     }
 
@@ -5676,10 +5480,6 @@ export interface Results {
      * The #PkRoleEnum or %PK_ROLE_ENUM_UNKNOWN if not set
      */
     role: RoleEnum
-    /**
-     * A #PkBitfield containing #PkTransactionFlagEnum for this result.
-     */
-    transaction_flags: number
     /**
      * A #PkBitfield containing #PkTransactionFlagEnum for this result.
      */
@@ -5924,7 +5724,6 @@ export module Source {
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.Source
 
         role?: RoleEnum | null
-        transaction_id?: string | null
         transactionId?: string | null
     }
 
@@ -5935,7 +5734,6 @@ export interface Source {
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.Source
 
     role: RoleEnum
-    transaction_id: string | null
     transactionId: string | null
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.Source
@@ -5983,26 +5781,6 @@ export module Task {
         /**
          * %TRUE if package downgrades are allowed.
          */
-        allow_downgrade?: boolean | null
-        /**
-         * %TRUE if package reinstallation shall be allowed during transaction.
-         */
-        allow_reinstall?: boolean | null
-        /**
-         * %TRUE if we are just preparing the transaction for later.
-         */
-        only_download?: boolean | null
-        /**
-         * %TRUE if only authenticated packages should be allowed in the transaction.
-         */
-        only_trusted?: boolean | null
-        /**
-         * %TRUE if we are simulating.
-         */
-        simulate?: boolean | null
-        /**
-         * %TRUE if package downgrades are allowed.
-         */
         allowDowngrade?: boolean | null
         /**
          * %TRUE if package reinstallation shall be allowed during transaction.
@@ -6016,6 +5794,10 @@ export module Task {
          * %TRUE if only authenticated packages should be allowed in the transaction.
          */
         onlyTrusted?: boolean | null
+        /**
+         * %TRUE if we are simulating.
+         */
+        simulate?: boolean | null
     }
 
 }
@@ -6027,15 +5809,7 @@ export interface Task {
     /**
      * %TRUE if package downgrades are allowed.
      */
-    allow_downgrade: boolean
-    /**
-     * %TRUE if package downgrades are allowed.
-     */
     allowDowngrade: boolean
-    /**
-     * %TRUE if package reinstallation shall be allowed during transaction.
-     */
-    allow_reinstall: boolean
     /**
      * %TRUE if package reinstallation shall be allowed during transaction.
      */
@@ -6043,15 +5817,7 @@ export interface Task {
     /**
      * %TRUE if we are just preparing the transaction for later.
      */
-    only_download: boolean
-    /**
-     * %TRUE if we are just preparing the transaction for later.
-     */
     onlyDownload: boolean
-    /**
-     * %TRUE if only authenticated packages should be allowed in the transaction.
-     */
-    only_trusted: boolean
     /**
      * %TRUE if only authenticated packages should be allowed in the transaction.
      */
@@ -6980,22 +6746,17 @@ export module UpdateDetail {
 
         // Own constructor properties of PackageKitGlib-1.0.PackageKitGlib.UpdateDetail
 
-        bugzilla_urls?: string[] | null
+        bugzillaUrls?: string[] | null
         changelog?: string | null
-        cve_urls?: string[] | null
+        cveUrls?: string[] | null
         issued?: string | null
         obsoletes?: string[] | null
-        package_id?: string | null
+        packageId?: string | null
         restart?: RestartEnum | null
         state?: UpdateStateEnum | null
-        update_text?: string | null
+        updateText?: string | null
         updated?: string | null
         updates?: string[] | null
-        vendor_urls?: string[] | null
-        bugzillaUrls?: string[] | null
-        cveUrls?: string[] | null
-        packageId?: string | null
-        updateText?: string | null
         vendorUrls?: string[] | null
     }
 
@@ -7005,22 +6766,17 @@ export interface UpdateDetail {
 
     // Own properties of PackageKitGlib-1.0.PackageKitGlib.UpdateDetail
 
-    bugzilla_urls: string[]
     bugzillaUrls: string[]
     changelog: string | null
-    cve_urls: string[]
     cveUrls: string[]
     issued: string | null
     obsoletes: string[]
-    package_id: string | null
     packageId: string | null
     restart: RestartEnum
     state: UpdateStateEnum
-    update_text: string | null
     updateText: string | null
     updated: string | null
     updates: string[]
-    vendor_urls: string[]
     vendorUrls: string[]
 
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.UpdateDetail

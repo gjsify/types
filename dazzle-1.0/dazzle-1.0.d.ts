@@ -1066,7 +1066,7 @@ module Animation {
          * animation should run before being completed.
          */
         duration?: number | null
-        frame_clock?: Gdk.FrameClock | null
+        frameClock?: Gdk.FrameClock | null
         /**
          * The "mode" property is the Alpha function that should be used to
          * determine the offset within the animation based on the current
@@ -1078,7 +1078,6 @@ module Animation {
          * animated.
          */
         target?: GObject.Object | null
-        frameClock?: Gdk.FrameClock | null
     }
 
 }
@@ -1092,7 +1091,6 @@ interface Animation {
      * animation should run before being completed.
      */
     readonly duration: number
-    readonly frame_clock: Gdk.FrameClock
     readonly frameClock: Gdk.FrameClock
     /**
      * The "mode" property is the Alpha function that should be used to
@@ -1186,11 +1184,8 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
 
     // Own properties of Dazzle-1.0.Dazzle.Application
 
-    readonly menu_manager: MenuManager
     readonly menuManager: MenuManager
-    readonly shortcut_manager: ShortcutManager
     readonly shortcutManager: ShortcutManager
-    readonly theme_manager: ThemeManager
     readonly themeManager: ThemeManager
 
     // Own fields of Dazzle-1.0.Dazzle.Application
@@ -1408,7 +1403,6 @@ interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup, Gio.A
     // Own properties of Dazzle-1.0.Dazzle.ApplicationWindow
 
     // Has conflict: fullscreen: boolean
-    readonly titlebar_animation: TitlebarAnimation
     readonly titlebarAnimation: TitlebarAnimation
 
     // Own fields of Dazzle-1.0.Dazzle.ApplicationWindow
@@ -2426,7 +2420,6 @@ module Box {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Box
 
-        max_width_request?: number | null
         maxWidthRequest?: number | null
     }
 
@@ -2436,7 +2429,6 @@ interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Own properties of Dazzle-1.0.Dazzle.Box
 
-    max_width_request: number
     maxWidthRequest: number
 
     // Own fields of Dazzle-1.0.Dazzle.Box
@@ -2760,7 +2752,6 @@ module CenteringBin {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CenteringBin
 
-        max_width_request?: number | null
         maxWidthRequest?: number | null
     }
 
@@ -2770,7 +2761,6 @@ interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.CenteringBin
 
-    max_width_request: number
     maxWidthRequest: number
 
     // Own fields of Dazzle-1.0.Dazzle.CenteringBin
@@ -2993,7 +2983,6 @@ interface ChildPropertyAction extends Gio.Action {
     // Own properties of Dazzle-1.0.Dazzle.ChildPropertyAction
 
     readonly child: Gtk.Widget
-    readonly child_property_name: string | null
     readonly childPropertyName: string | null
     readonly container: Gtk.Container
 
@@ -3060,10 +3049,6 @@ module ColumnLayout {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ColumnLayout
 
-        column_spacing?: number | null
-        column_width?: number | null
-        max_columns?: number | null
-        row_spacing?: number | null
         columnSpacing?: number | null
         columnWidth?: number | null
         maxColumns?: number | null
@@ -3076,13 +3061,9 @@ interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.ColumnLayout
 
-    column_spacing: number
     columnSpacing: number
-    column_width: number
     columnWidth: number
-    max_columns: number
     maxColumns: number
-    row_spacing: number
     rowSpacing: number
 
     // Own fields of Dazzle-1.0.Dazzle.ColumnLayout
@@ -3672,9 +3653,8 @@ module CpuGraph {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CpuGraph
 
-        max_samples?: number | null
-        timespan?: number | null
         maxSamples?: number | null
+        timespan?: number | null
     }
 
 }
@@ -3683,7 +3663,6 @@ interface CpuGraph extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.CpuGraph
 
-    readonly max_samples: number
     readonly maxSamples: number
     readonly timespan: number
 
@@ -3893,7 +3872,6 @@ module CssProvider {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.CssProvider
 
-        base_path?: string | null
         basePath?: string | null
     }
 
@@ -3903,7 +3881,6 @@ interface CssProvider extends Gtk.StyleProvider {
 
     // Own properties of Dazzle-1.0.Dazzle.CssProvider
 
-    readonly base_path: string | null
     readonly basePath: string | null
 
     // Class property signals of Dazzle-1.0.Dazzle.CssProvider
@@ -4078,10 +4055,6 @@ module DockBin {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.DockBin
 
-        bottom_visible?: boolean | null
-        left_visible?: boolean | null
-        right_visible?: boolean | null
-        top_visible?: boolean | null
         bottomVisible?: boolean | null
         leftVisible?: boolean | null
         rightVisible?: boolean | null
@@ -4094,13 +4067,9 @@ interface DockBin extends Atk.ImplementorIface, Dock, DockItem, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.DockBin
 
-    bottom_visible: boolean
     bottomVisible: boolean
-    left_visible: boolean
     leftVisible: boolean
-    right_visible: boolean
     rightVisible: boolean
-    top_visible: boolean
     topVisible: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.DockBin
@@ -5791,10 +5760,6 @@ module DockRevealer {
         // Own constructor properties of Dazzle-1.0.Dazzle.DockRevealer
 
         position?: number | null
-        position_set?: boolean | null
-        reveal_child?: boolean | null
-        transition_duration?: number | null
-        transition_type?: DockRevealerTransitionType | null
         positionSet?: boolean | null
         revealChild?: boolean | null
         transitionDuration?: number | null
@@ -5807,16 +5772,11 @@ interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.DockRevealer
 
-    readonly child_revealed: boolean
     readonly childRevealed: boolean
     position: number
-    position_set: boolean
     positionSet: boolean
-    reveal_child: boolean
     revealChild: boolean
-    transition_duration: number
     transitionDuration: number
-    transition_type: DockRevealerTransitionType
     transitionType: DockRevealerTransitionType
 
     // Own fields of Dazzle-1.0.Dazzle.DockRevealer
@@ -6071,9 +6031,8 @@ module DockStack {
         // Own constructor properties of Dazzle-1.0.Dazzle.DockStack
 
         edge?: Gtk.PositionType | null
-        show_pinned_button?: boolean | null
-        style: any
         showPinnedButton?: boolean | null
+        style: any
     }
 
 }
@@ -6083,7 +6042,6 @@ interface DockStack extends Atk.ImplementorIface, DockItem, Gtk.Buildable, Gtk.O
     // Own properties of Dazzle-1.0.Dazzle.DockStack
 
     edge: Gtk.PositionType
-    show_pinned_button: boolean
     showPinnedButton: boolean
     style: any
 
@@ -6489,13 +6447,11 @@ module DockWidget {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.DockWidget
 
-        can_close?: boolean | null
+        canClose?: boolean | null
         gicon?: Gio.Icon | null
-        icon_name?: string | null
+        iconName?: string | null
         manager?: DockManager | null
         title?: string | null
-        canClose?: boolean | null
-        iconName?: string | null
     }
 
 }
@@ -6504,10 +6460,8 @@ interface DockWidget extends Atk.ImplementorIface, DockItem, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.DockWidget
 
-    can_close: boolean
     canClose: boolean
     gicon: Gio.Icon
-    icon_name: string | null
     iconName: string | null
     manager: DockManager
     title: string | null
@@ -7484,13 +7438,11 @@ module EmptyState {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.EmptyState
 
-        icon_name?: string | null
-        pixel_size?: number | null
+        iconName?: string | null
+        pixelSize?: number | null
         resource?: string | null
         subtitle?: string | null
         title?: string | null
-        iconName?: string | null
-        pixelSize?: number | null
     }
 
 }
@@ -7499,9 +7451,7 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.EmptyState
 
-    icon_name: string | null
     iconName: string | null
-    pixel_size: number
     pixelSize: number
     resource: string | null
     subtitle: string | null
@@ -7733,7 +7683,6 @@ module EntryBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.EntryBox
 
-        max_width_chars?: number | null
         maxWidthChars?: number | null
     }
 
@@ -7743,7 +7692,6 @@ interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Own properties of Dazzle-1.0.Dazzle.EntryBox
 
-    max_width_chars: number
     maxWidthChars: number
 
     // Conflicting methods
@@ -7970,19 +7918,14 @@ module FileChooserEntry {
         // Own constructor properties of Dazzle-1.0.Dazzle.FileChooserEntry
 
         action?: Gtk.FileChooserAction | null
-        create_folders?: boolean | null
-        do_overwrite_confirmation?: boolean | null
-        file?: Gio.File | null
-        filter?: Gtk.FileFilter | null
-        local_only?: boolean | null
-        max_width_chars?: number | null
-        show_hidden?: boolean | null
-        title?: string | null
         createFolders?: boolean | null
         doOverwriteConfirmation?: boolean | null
+        file?: Gio.File | null
+        filter?: Gtk.FileFilter | null
         localOnly?: boolean | null
         maxWidthChars?: number | null
         showHidden?: boolean | null
+        title?: string | null
     }
 
 }
@@ -7992,17 +7935,12 @@ interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Dazzle-1.0.Dazzle.FileChooserEntry
 
     action: Gtk.FileChooserAction
-    create_folders: boolean
     createFolders: boolean
-    do_overwrite_confirmation: boolean
     doOverwriteConfirmation: boolean
     file: Gio.File
     filter: Gtk.FileFilter
-    local_only: boolean
     localOnly: boolean
-    max_width_chars: number
     maxWidthChars: number
-    show_hidden: boolean
     showHidden: boolean
     title: string | null
 
@@ -8408,7 +8346,6 @@ module FuzzyIndexBuilder {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.FuzzyIndexBuilder
 
-        case_sensitive?: boolean | null
         caseSensitive?: boolean | null
     }
 
@@ -8418,7 +8355,6 @@ interface FuzzyIndexBuilder {
 
     // Own properties of Dazzle-1.0.Dazzle.FuzzyIndexBuilder
 
-    case_sensitive: boolean
     caseSensitive: boolean
 
     // Owm methods of Dazzle-1.0.Dazzle.FuzzyIndexBuilder
@@ -8514,13 +8450,11 @@ module FuzzyIndexCursor {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.FuzzyIndexCursor
 
-        case_sensitive?: boolean | null
+        caseSensitive?: boolean | null
         index?: FuzzyIndex | null
-        max_matches?: number | null
+        maxMatches?: number | null
         query?: string | null
         tables?: GLib.VariantDict | null
-        caseSensitive?: boolean | null
-        maxMatches?: number | null
     }
 
 }
@@ -8529,10 +8463,8 @@ interface FuzzyIndexCursor extends Gio.AsyncInitable, Gio.ListModel {
 
     // Own properties of Dazzle-1.0.Dazzle.FuzzyIndexCursor
 
-    readonly case_sensitive: boolean
     readonly caseSensitive: boolean
     readonly index: FuzzyIndex
-    readonly max_matches: number
     readonly maxMatches: number
     readonly query: string | null
     readonly tables: GLib.VariantDict
@@ -8655,7 +8587,6 @@ module GraphColumn {
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphColumn
 
         name?: string | null
-        value_type?: GObject.GType | null
         valueType?: GObject.GType | null
     }
 
@@ -8666,7 +8597,6 @@ interface GraphColumn {
     // Own properties of Dazzle-1.0.Dazzle.GraphColumn
 
     name: string | null
-    readonly value_type: GObject.GType
     readonly valueType: GObject.GType
 
     // Owm methods of Dazzle-1.0.Dazzle.GraphColumn
@@ -8712,9 +8642,6 @@ module GraphLineRenderer {
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphLineRenderer
 
         column?: number | null
-        line_width?: number | null
-        stroke_color?: string | null
-        stroke_color_rgba?: Gdk.RGBA | null
         lineWidth?: number | null
         strokeColor?: string | null
         strokeColorRgba?: Gdk.RGBA | null
@@ -8727,11 +8654,8 @@ interface GraphLineRenderer extends GraphRenderer {
     // Own properties of Dazzle-1.0.Dazzle.GraphLineRenderer
 
     column: number
-    line_width: number
     lineWidth: number
-    stroke_color: string | null
     strokeColor: string | null
-    stroke_color_rgba: Gdk.RGBA
     strokeColorRgba: Gdk.RGBA
 
     // Owm methods of Dazzle-1.0.Dazzle.GraphLineRenderer
@@ -8793,11 +8717,8 @@ module GraphModel {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.GraphModel
 
-        max_samples?: number | null
-        timespan?: number | null
-        value_max?: number | null
-        value_min?: number | null
         maxSamples?: number | null
+        timespan?: number | null
         valueMax?: number | null
         valueMin?: number | null
     }
@@ -8808,12 +8729,9 @@ interface GraphModel {
 
     // Own properties of Dazzle-1.0.Dazzle.GraphModel
 
-    max_samples: number
     maxSamples: number
     timespan: number
-    value_max: number
     valueMax: number
-    value_min: number
     valueMin: number
 
     // Own fields of Dazzle-1.0.Dazzle.GraphModel
@@ -9113,9 +9031,6 @@ module ListBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ListBox
 
-        property_name?: string | null
-        row_type?: GObject.GType | null
-        row_type_name?: string | null
         propertyName?: string | null
         rowType?: GObject.GType | null
         rowTypeName?: string | null
@@ -9127,11 +9042,8 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.ListBox
 
-    readonly property_name: string | null
     readonly propertyName: string | null
-    readonly row_type: GObject.GType
     readonly rowType: GObject.GType
-    readonly row_type_name: string | null
     readonly rowTypeName: string | null
 
     // Own fields of Dazzle-1.0.Dazzle.ListBox
@@ -9591,7 +9503,6 @@ interface ListModelFilter extends Gio.ListModel {
 
     // Own properties of Dazzle-1.0.Dazzle.ListModelFilter
 
-    readonly child_model: Gio.ListModel
     readonly childModel: Gio.ListModel
 
     // Owm methods of Dazzle-1.0.Dazzle.ListModelFilter
@@ -9696,18 +9607,6 @@ module MenuButton {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.MenuButton
 
-        icon_name?: string | null
-        /**
-         * The "menu-id" property can be used to automatically load a
-         * #GMenuModel from the applications merged menus. This is
-         * performed via dzl_application_get_menu_by_id().
-         */
-        menu_id?: string | null
-        model?: Gio.MenuModel | null
-        show_accels?: boolean | null
-        show_arrow?: boolean | null
-        show_icons?: boolean | null
-        transitions_enabled?: boolean | null
         iconName?: string | null
         /**
          * The "menu-id" property can be used to automatically load a
@@ -9715,6 +9614,7 @@ module MenuButton {
          * performed via dzl_application_get_menu_by_id().
          */
         menuId?: string | null
+        model?: Gio.MenuModel | null
         showAccels?: boolean | null
         showArrow?: boolean | null
         showIcons?: boolean | null
@@ -9727,14 +9627,7 @@ interface MenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
 
     // Own properties of Dazzle-1.0.Dazzle.MenuButton
 
-    icon_name: string | null
     iconName: string | null
-    /**
-     * The "menu-id" property can be used to automatically load a
-     * #GMenuModel from the applications merged menus. This is
-     * performed via dzl_application_get_menu_by_id().
-     */
-    menu_id: string | null
     /**
      * The "menu-id" property can be used to automatically load a
      * #GMenuModel from the applications merged menus. This is
@@ -9742,13 +9635,9 @@ interface MenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      */
     menuId: string | null
     model: Gio.MenuModel
-    show_accels: boolean
     showAccels: boolean
-    show_arrow: boolean
     showArrow: boolean
-    show_icons: boolean
     showIcons: boolean
-    transitions_enabled: boolean
     transitionsEnabled: boolean
 
     // Conflicting properties
@@ -10831,7 +10720,7 @@ module PathElement {
          * The icon-name of the icon to display next to the path element
          * in the path bar. Set to %NULL for no icon.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * The id property is an application specific identifier for the
          * element within the path.
@@ -10842,11 +10731,6 @@ module PathElement {
          * be shown to represent the element in the #DzlPathBar.
          */
         title?: string | null
-        /**
-         * The icon-name of the icon to display next to the path element
-         * in the path bar. Set to %NULL for no icon.
-         */
-        iconName?: string | null
     }
 
 }
@@ -10855,11 +10739,6 @@ interface PathElement {
 
     // Own properties of Dazzle-1.0.Dazzle.PathElement
 
-    /**
-     * The icon-name of the icon to display next to the path element
-     * in the path bar. Set to %NULL for no icon.
-     */
-    readonly icon_name: string | null
     /**
      * The icon-name of the icon to display next to the path element
      * in the path bar. Set to %NULL for no icon.
@@ -11199,7 +11078,6 @@ module PreferencesBin {
         keywords?: string | null
         path?: string | null
         priority?: number | null
-        schema_id?: string | null
         schemaId?: string | null
     }
 
@@ -11212,7 +11090,6 @@ interface PreferencesBin extends Atk.ImplementorIface, Gtk.Buildable {
     readonly keywords: string | null
     // Has conflict: readonly path: string | null
     readonly priority: number
-    readonly schema_id: string | null
     readonly schemaId: string | null
 
     // Own fields of Dazzle-1.0.Dazzle.PreferencesBin
@@ -12401,11 +12278,10 @@ module PreferencesGroup {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesGroup
 
-        is_list?: boolean | null
+        isList?: boolean | null
         mode?: Gtk.SelectionMode | null
         priority?: number | null
         title?: string | null
-        isList?: boolean | null
     }
 
 }
@@ -12414,7 +12290,6 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.PreferencesGroup
 
-    readonly is_list: boolean
     readonly isList: boolean
     mode: Gtk.SelectionMode
     readonly priority: number
@@ -13123,12 +12998,11 @@ module PreferencesSwitch {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesSwitch
 
-        is_radio?: boolean | null
+        isRadio?: boolean | null
         key?: string | null
         subtitle?: string | null
         target?: GLib.Variant | null
         title?: string | null
-        isRadio?: boolean | null
     }
 
 }
@@ -13137,7 +13011,6 @@ interface PreferencesSwitch extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.PreferencesSwitch
 
-    readonly is_radio: boolean
     readonly isRadio: boolean
     readonly key: string | null
     subtitle: string | null
@@ -13376,8 +13249,6 @@ module PreferencesView {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.PreferencesView
 
-        show_search_entry?: boolean | null
-        use_sidebar?: boolean | null
         showSearchEntry?: boolean | null
         useSidebar?: boolean | null
     }
@@ -13388,9 +13259,7 @@ interface PreferencesView extends Atk.ImplementorIface, Preferences, Gtk.Buildab
 
     // Own properties of Dazzle-1.0.Dazzle.PreferencesView
 
-    show_search_entry: boolean
     showSearchEntry: boolean
-    use_sidebar: boolean
     useSidebar: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.PreferencesView
@@ -13840,7 +13709,6 @@ module ProgressButton {
         // Own constructor properties of Dazzle-1.0.Dazzle.ProgressButton
 
         progress?: number | null
-        show_progress?: boolean | null
         showProgress?: boolean | null
     }
 
@@ -13851,7 +13719,6 @@ interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
     // Own properties of Dazzle-1.0.Dazzle.ProgressButton
 
     progress: number
-    show_progress: boolean
     showProgress: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.ProgressButton
@@ -14275,10 +14142,6 @@ module ProgressMenuButton {
         // Own constructor properties of Dazzle-1.0.Dazzle.ProgressMenuButton
 
         progress?: number | null
-        show_progress?: boolean | null
-        show_theatric?: boolean | null
-        theatric_icon_name?: string | null
-        transition_duration?: number | null
         showProgress?: boolean | null
         showTheatric?: boolean | null
         theatricIconName?: string | null
@@ -14292,13 +14155,9 @@ interface ProgressMenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.A
     // Own properties of Dazzle-1.0.Dazzle.ProgressMenuButton
 
     progress: number
-    show_progress: boolean
     showProgress: boolean
-    show_theatric: boolean
     showTheatric: boolean
-    theatric_icon_name: string | null
     theatricIconName: string | null
-    transition_duration: number
     transitionDuration: number
 
     // Conflicting properties
@@ -14674,7 +14533,6 @@ module PropertiesGroup {
         // Own constructor properties of Dazzle-1.0.Dazzle.PropertiesGroup
 
         object?: GObject.Object | null
-        object_type?: GObject.GType | null
         objectType?: GObject.GType | null
     }
 
@@ -14685,7 +14543,6 @@ interface PropertiesGroup extends Gio.ActionGroup {
     // Own properties of Dazzle-1.0.Dazzle.PropertiesGroup
 
     object: GObject.Object
-    readonly object_type: GObject.GType
     readonly objectType: GObject.GType
 
     // Owm methods of Dazzle-1.0.Dazzle.PropertiesGroup
@@ -14809,8 +14666,6 @@ module RadioBox {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.RadioBox
 
-        active_id?: string | null
-        show_more?: boolean | null
         activeId?: string | null
         showMore?: boolean | null
     }
@@ -14821,11 +14676,8 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.RadioBox
 
-    active_id: string | null
     activeId: string | null
-    readonly has_more: boolean
     readonly hasMore: boolean
-    show_more: boolean
     showMore: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.RadioBox
@@ -15060,16 +14912,6 @@ module ReadOnlyListModel {
          * to introspect on the type and mutate it without your knowledge (such as
          * with #GListStore).
          */
-        base_model?: Gio.ListModel | null
-        /**
-         * The "base-model" property is the #GListModel that will be wrapped.
-         * 
-         * This base model is not accessible after creation so that API creators can
-         * be sure the consumer cannot mutate the underlying model. That is useful
-         * when you want to give a caller access to a #GListModel without the ability
-         * to introspect on the type and mutate it without your knowledge (such as
-         * with #GListStore).
-         */
         baseModel?: Gio.ListModel | null
     }
 
@@ -15079,16 +14921,6 @@ interface ReadOnlyListModel extends Gio.ListModel {
 
     // Own properties of Dazzle-1.0.Dazzle.ReadOnlyListModel
 
-    /**
-     * The "base-model" property is the #GListModel that will be wrapped.
-     * 
-     * This base model is not accessible after creation so that API creators can
-     * be sure the consumer cannot mutate the underlying model. That is useful
-     * when you want to give a caller access to a #GListModel without the ability
-     * to introspect on the type and mutate it without your knowledge (such as
-     * with #GListStore).
-     */
-    readonly base_model: Gio.ListModel
     /**
      * The "base-model" property is the #GListModel that will be wrapped.
      * 
@@ -15501,8 +15333,6 @@ module SearchBar {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SearchBar
 
-        search_mode_enabled?: boolean | null
-        show_close_button?: boolean | null
         searchModeEnabled?: boolean | null
         showCloseButton?: boolean | null
     }
@@ -15513,9 +15343,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.SearchBar
 
-    search_mode_enabled: boolean
     searchModeEnabled: boolean
-    show_close_button: boolean
     showCloseButton: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.SearchBar
@@ -15742,9 +15570,6 @@ module SettingsFlagAction {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SettingsFlagAction
 
-        flag_nick?: string | null
-        schema_id?: string | null
-        schema_key?: string | null
         flagNick?: string | null
         schemaId?: string | null
         schemaKey?: string | null
@@ -15756,11 +15581,8 @@ interface SettingsFlagAction extends Gio.Action {
 
     // Own properties of Dazzle-1.0.Dazzle.SettingsFlagAction
 
-    readonly flag_nick: string | null
     readonly flagNick: string | null
-    readonly schema_id: string | null
     readonly schemaId: string | null
-    schema_key: string | null
     schemaKey: string | null
 
     // Class property signals of Dazzle-1.0.Dazzle.SettingsFlagAction
@@ -15826,7 +15648,6 @@ module SettingsSandwich {
         // Own constructor properties of Dazzle-1.0.Dazzle.SettingsSandwich
 
         path?: string | null
-        schema_id?: string | null
         schemaId?: string | null
     }
 
@@ -15837,7 +15658,6 @@ interface SettingsSandwich {
     // Own properties of Dazzle-1.0.Dazzle.SettingsSandwich
 
     readonly path: string | null
-    readonly schema_id: string | null
     readonly schemaId: string | null
 
     // Owm methods of Dazzle-1.0.Dazzle.SettingsSandwich
@@ -15909,7 +15729,6 @@ module ShortcutAccelDialog {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutAccelDialog
 
         accelerator?: string | null
-        shortcut_title?: string | null
         shortcutTitle?: string | null
     }
 
@@ -15920,7 +15739,6 @@ interface ShortcutAccelDialog extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutAccelDialog
 
     accelerator: string | null
-    shortcut_title: string | null
     shortcutTitle: string | null
 
     // Conflicting properties
@@ -16301,7 +16119,6 @@ module ShortcutContext {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutContext
 
         name?: string | null
-        use_binding_sets?: boolean | null
         useBindingSets?: boolean | null
     }
 
@@ -16312,7 +16129,6 @@ interface ShortcutContext {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutContext
 
     readonly name: string | null
-    use_binding_sets: boolean
     useBindingSets: boolean
 
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutContext
@@ -16398,7 +16214,6 @@ interface ShortcutController {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutController
 
     readonly context: ShortcutContext
-    readonly current_chord: ShortcutChord
     readonly currentChord: ShortcutChord
     manager: ShortcutManager
     readonly widget: Gtk.Widget
@@ -16797,8 +16612,6 @@ module ShortcutManager {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutManager
 
         theme?: ShortcutTheme | null
-        theme_name?: string | null
-        user_dir?: string | null
         themeName?: string | null
         userDir?: string | null
     }
@@ -16810,9 +16623,7 @@ interface ShortcutManager extends Gio.Initable, Gio.ListModel {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutManager
 
     theme: ShortcutTheme
-    theme_name: string | null
     themeName: string | null
-    user_dir: string | null
     userDir: string | null
 
     // Own fields of Dazzle-1.0.Dazzle.ShortcutManager
@@ -17007,9 +16818,8 @@ module ShortcutSimpleLabel {
         accel?: string | null
         action?: string | null
         command?: string | null
-        show_accel?: boolean | null
-        title?: string | null
         showAccel?: boolean | null
+        title?: string | null
     }
 
 }
@@ -17021,7 +16831,6 @@ interface ShortcutSimpleLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
     accel: string | null
     action: string | null
     command: string | null
-    show_accel: boolean
     showAccel: boolean
     title: string | null
 
@@ -17272,10 +17081,9 @@ module ShortcutTheme {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutTheme
 
         name?: string | null
-        parent_name?: string | null
+        parentName?: string | null
         subtitle?: string | null
         title?: string | null
-        parentName?: string | null
     }
 
 }
@@ -17285,7 +17093,6 @@ interface ShortcutTheme {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutTheme
 
     readonly name: string | null
-    parent_name: string | null
     parentName: string | null
     subtitle: string | null
     title: string | null
@@ -17645,14 +17452,13 @@ module ShortcutTooltip {
         // Own constructor properties of Dazzle-1.0.Dazzle.ShortcutTooltip
 
         accel?: string | null
-        command_id?: string | null
+        commandId?: string | null
         /**
          * The "title" property contains an alternate title for the tooltip
          * instead of discovering the title from the shortcut manager.
          */
         title?: string | null
         widget?: Gtk.Widget | null
-        commandId?: string | null
     }
 
 }
@@ -17662,7 +17468,6 @@ interface ShortcutTooltip {
     // Own properties of Dazzle-1.0.Dazzle.ShortcutTooltip
 
     accel: string | null
-    command_id: string | null
     commandId: string | null
     /**
      * The "title" property contains an alternate title for the tooltip
@@ -17780,7 +17585,7 @@ module ShortcutsGroup {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        accel_size_group?: Gtk.SizeGroup | null
+        accelSizeGroup?: Gtk.SizeGroup | null
         /**
          * The title for this group of shortcuts.
          */
@@ -17790,7 +17595,7 @@ module ShortcutsGroup {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        title_size_group?: Gtk.SizeGroup | null
+        titleSizeGroup?: Gtk.SizeGroup | null
         /**
          * An optional view that the shortcuts in this group are relevant for.
          * The group will be hidden if the #DzlShortcutsWindow:view-name property
@@ -17799,18 +17604,6 @@ module ShortcutsGroup {
          * Set this to %NULL to make the group always visible.
          */
         view?: string | null
-        /**
-         * The size group for the accelerator portion of shortcuts in this group.
-         * 
-         * This is used internally by GTK+, and must not be modified by applications.
-         */
-        accelSizeGroup?: Gtk.SizeGroup | null
-        /**
-         * The size group for the textual portion of shortcuts in this group.
-         * 
-         * This is used internally by GTK+, and must not be modified by applications.
-         */
-        titleSizeGroup?: Gtk.SizeGroup | null
     }
 
 }
@@ -17819,12 +17612,6 @@ interface ShortcutsGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
 
     // Own properties of Dazzle-1.0.Dazzle.ShortcutsGroup
 
-    /**
-     * The size group for the accelerator portion of shortcuts in this group.
-     * 
-     * This is used internally by GTK+, and must not be modified by applications.
-     */
-    accel_size_group: Gtk.SizeGroup
     /**
      * The size group for the accelerator portion of shortcuts in this group.
      * 
@@ -17841,12 +17628,6 @@ interface ShortcutsGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * The title for this group of shortcuts.
      */
     title: string | null
-    /**
-     * The size group for the textual portion of shortcuts in this group.
-     * 
-     * This is used internally by GTK+, and must not be modified by applications.
-     */
-    title_size_group: Gtk.SizeGroup
     /**
      * The size group for the textual portion of shortcuts in this group.
      * 
@@ -18100,34 +17881,6 @@ module ShortcutsSection {
          * across pages and columns. The default value of 15 should work in
          * for most cases.
          */
-        max_height?: number | null
-        /**
-         * A unique name to identify this section among the sections
-         * added to the DzlShortcutsWindow. Setting the #DzlShortcutsWindow:section-name
-         * property to this string will make this section shown in the
-         * DzlShortcutsWindow.
-         */
-        section_name?: string | null
-        /**
-         * The string to show in the section selector of the DzlShortcutsWindow
-         * for this section. If there is only one section, you don't need to
-         * set a title, since the section selector will not be shown in this case.
-         */
-        title?: string | null
-        /**
-         * A view name to filter the groups in this section by.
-         * See #DzlShortcutsGroup:view.
-         * 
-         * Applications are expected to use the #DzlShortcutsWindow:view-name
-         * property for this purpose.
-         */
-        view_name?: string | null
-        /**
-         * The maximum number of lines to allow per column. This property can
-         * be used to influence how the groups in this section are distributed
-         * across pages and columns. The default value of 15 should work in
-         * for most cases.
-         */
         maxHeight?: number | null
         /**
          * A unique name to identify this section among the sections
@@ -18136,6 +17889,12 @@ module ShortcutsSection {
          * DzlShortcutsWindow.
          */
         sectionName?: string | null
+        /**
+         * The string to show in the section selector of the DzlShortcutsWindow
+         * for this section. If there is only one section, you don't need to
+         * set a title, since the section selector will not be shown in this case.
+         */
+        title?: string | null
         /**
          * A view name to filter the groups in this section by.
          * See #DzlShortcutsGroup:view.
@@ -18158,21 +17917,7 @@ interface ShortcutsSection extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * across pages and columns. The default value of 15 should work in
      * for most cases.
      */
-    max_height: number
-    /**
-     * The maximum number of lines to allow per column. This property can
-     * be used to influence how the groups in this section are distributed
-     * across pages and columns. The default value of 15 should work in
-     * for most cases.
-     */
     maxHeight: number
-    /**
-     * A unique name to identify this section among the sections
-     * added to the DzlShortcutsWindow. Setting the #DzlShortcutsWindow:section-name
-     * property to this string will make this section shown in the
-     * DzlShortcutsWindow.
-     */
-    section_name: string | null
     /**
      * A unique name to identify this section among the sections
      * added to the DzlShortcutsWindow. Setting the #DzlShortcutsWindow:section-name
@@ -18186,14 +17931,6 @@ interface ShortcutsSection extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * set a title, since the section selector will not be shown in this case.
      */
     title: string | null
-    /**
-     * A view name to filter the groups in this section by.
-     * See #DzlShortcutsGroup:view.
-     * 
-     * Applications are expected to use the #DzlShortcutsWindow:view-name
-     * property for this purpose.
-     */
-    view_name: string | null
     /**
      * A view name to filter the groups in this section by.
      * See #DzlShortcutsGroup:view.
@@ -18433,7 +18170,7 @@ module ShortcutsShortcut {
          * 
          * This is used internally by GTK+, and must not be modified by applications.
          */
-        accel_size_group?: Gtk.SizeGroup | null
+        accelSizeGroup?: Gtk.SizeGroup | null
         /**
          * The accelerator(s) represented by this object. This property is used
          * if #DzlShortcutsShortcut:shortcut-type is set to #GTK_SHORTCUT_ACCELERATOR.
@@ -18465,7 +18202,7 @@ module ShortcutsShortcut {
          * via gtk_application_set_accels_for_action(), and setting
          * #DzlShortcutsShortcut::accelerator is not necessary.
          */
-        action_name?: string | null
+        actionName?: string | null
         /**
          * The text direction for which this shortcut is active. If the shortcut
          * is used regardless of the text direction, set this property to
@@ -18481,11 +18218,11 @@ module ShortcutsShortcut {
         /**
          * %TRUE if an icon has been set.
          */
-        icon_set?: boolean | null
+        iconSet?: boolean | null
         /**
          * The type of shortcut that is represented.
          */
-        shortcut_type?: Gtk.ShortcutType | null
+        shortcutType?: Gtk.ShortcutType | null
         /**
          * The subtitle for the shortcut or gesture.
          * 
@@ -18497,44 +18234,12 @@ module ShortcutsShortcut {
         /**
          * %TRUE if a subtitle has been set.
          */
-        subtitle_set?: boolean | null
+        subtitleSet?: boolean | null
         /**
          * The textual description for the shortcut or gesture represented by
          * this object. This should be a short string that can fit in a single line.
          */
         title?: string | null
-        /**
-         * The size group for the textual portion of this shortcut.
-         * 
-         * This is used internally by GTK+, and must not be modified by applications.
-         */
-        title_size_group?: Gtk.SizeGroup | null
-        /**
-         * The size group for the accelerator portion of this shortcut.
-         * 
-         * This is used internally by GTK+, and must not be modified by applications.
-         */
-        accelSizeGroup?: Gtk.SizeGroup | null
-        /**
-         * A detailed action name. If this is set for a shortcut
-         * of type %GTK_SHORTCUT_ACCELERATOR, then GTK+ will use
-         * the accelerators that are associated with the action
-         * via gtk_application_set_accels_for_action(), and setting
-         * #DzlShortcutsShortcut::accelerator is not necessary.
-         */
-        actionName?: string | null
-        /**
-         * %TRUE if an icon has been set.
-         */
-        iconSet?: boolean | null
-        /**
-         * The type of shortcut that is represented.
-         */
-        shortcutType?: Gtk.ShortcutType | null
-        /**
-         * %TRUE if a subtitle has been set.
-         */
-        subtitleSet?: boolean | null
         /**
          * The size group for the textual portion of this shortcut.
          * 
@@ -18549,12 +18254,6 @@ interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
 
     // Own properties of Dazzle-1.0.Dazzle.ShortcutsShortcut
 
-    /**
-     * The size group for the accelerator portion of this shortcut.
-     * 
-     * This is used internally by GTK+, and must not be modified by applications.
-     */
-    accel_size_group: Gtk.SizeGroup
     /**
      * The size group for the accelerator portion of this shortcut.
      * 
@@ -18592,14 +18291,6 @@ interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * via gtk_application_set_accels_for_action(), and setting
      * #DzlShortcutsShortcut::accelerator is not necessary.
      */
-    action_name: string | null
-    /**
-     * A detailed action name. If this is set for a shortcut
-     * of type %GTK_SHORTCUT_ACCELERATOR, then GTK+ will use
-     * the accelerators that are associated with the action
-     * via gtk_application_set_accels_for_action(), and setting
-     * #DzlShortcutsShortcut::accelerator is not necessary.
-     */
     actionName: string | null
     /**
      * The text direction for which this shortcut is active. If the shortcut
@@ -18616,15 +18307,7 @@ interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
     /**
      * %TRUE if an icon has been set.
      */
-    icon_set: boolean
-    /**
-     * %TRUE if an icon has been set.
-     */
     iconSet: boolean
-    /**
-     * The type of shortcut that is represented.
-     */
-    shortcut_type: Gtk.ShortcutType
     /**
      * The type of shortcut that is represented.
      */
@@ -18640,22 +18323,12 @@ interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
     /**
      * %TRUE if a subtitle has been set.
      */
-    subtitle_set: boolean
-    /**
-     * %TRUE if a subtitle has been set.
-     */
     subtitleSet: boolean
     /**
      * The textual description for the shortcut or gesture represented by
      * this object. This should be a short string that can fit in a single line.
      */
     title: string | null
-    /**
-     * The size group for the textual portion of this shortcut.
-     * 
-     * This is used internally by GTK+, and must not be modified by applications.
-     */
-    title_size_group: Gtk.SizeGroup
     /**
      * The size group for the textual portion of this shortcut.
      * 
@@ -18926,22 +18599,6 @@ module ShortcutsWindow {
          * This should be the section-name of one of the #DzlShortcutsSection
          * objects that are in this shortcuts window.
          */
-        section_name?: string | null
-        /**
-         * The view name by which to filter the contents.
-         * 
-         * This should correspond to the #DzlShortcutsGroup:view property of some of
-         * the #DzlShortcutsGroup objects that are inside this shortcuts window.
-         * 
-         * Set this to %NULL to show all groups.
-         */
-        view_name?: string | null
-        /**
-         * The name of the section to show.
-         * 
-         * This should be the section-name of one of the #DzlShortcutsSection
-         * objects that are in this shortcuts window.
-         */
         sectionName?: string | null
         /**
          * The view name by which to filter the contents.
@@ -18966,23 +18623,7 @@ interface ShortcutsWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * This should be the section-name of one of the #DzlShortcutsSection
      * objects that are in this shortcuts window.
      */
-    section_name: string | null
-    /**
-     * The name of the section to show.
-     * 
-     * This should be the section-name of one of the #DzlShortcutsSection
-     * objects that are in this shortcuts window.
-     */
     sectionName: string | null
-    /**
-     * The view name by which to filter the contents.
-     * 
-     * This should correspond to the #DzlShortcutsGroup:view property of some of
-     * the #DzlShortcutsGroup objects that are inside this shortcuts window.
-     * 
-     * Set this to %NULL to show all groups.
-     */
-    view_name: string | null
     /**
      * The view name by which to filter the contents.
      * 
@@ -19357,10 +18998,6 @@ module SignalGroup {
         /**
          * The GType of the target property.
          */
-        target_type?: GObject.GType | null
-        /**
-         * The GType of the target property.
-         */
         targetType?: GObject.GType | null
     }
 
@@ -19374,10 +19011,6 @@ interface SignalGroup {
      * The target instance used when connecting signals.
      */
     target: GObject.Object
-    /**
-     * The GType of the target property.
-     */
-    readonly target_type: GObject.GType
     /**
      * The GType of the target property.
      */
@@ -19522,9 +19155,8 @@ module SimpleLabel {
         // Own constructor properties of Dazzle-1.0.Dazzle.SimpleLabel
 
         label?: string | null
-        width_chars?: number | null
-        xalign?: number | null
         widthChars?: number | null
+        xalign?: number | null
     }
 
 }
@@ -19534,7 +19166,6 @@ interface SimpleLabel extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Dazzle-1.0.Dazzle.SimpleLabel
 
     label: string | null
-    width_chars: number
     widthChars: number
     xalign: number
 
@@ -19728,12 +19359,11 @@ module SimplePopover {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.SimplePopover
 
-        button_text?: string | null
+        buttonText?: string | null
         message?: string | null
         ready?: boolean | null
         text?: string | null
         title?: string | null
-        buttonText?: string | null
     }
 
 }
@@ -19742,7 +19372,6 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.SimplePopover
 
-    button_text: string | null
     buttonText: string | null
     message: string | null
     ready: boolean
@@ -20599,13 +20228,11 @@ module Suggestion {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Suggestion
 
-        icon_name?: string | null
+        iconName?: string | null
         id?: string | null
-        secondary_icon_name?: string | null
+        secondaryIconName?: string | null
         subtitle?: string | null
         title?: string | null
-        iconName?: string | null
-        secondaryIconName?: string | null
     }
 
 }
@@ -20615,12 +20242,9 @@ interface Suggestion {
     // Own properties of Dazzle-1.0.Dazzle.Suggestion
 
     readonly icon: Gio.Icon
-    icon_name: string | null
     iconName: string | null
     id: string | null
-    readonly secondary_icon: Gio.Icon
     readonly secondaryIcon: Gio.Icon
-    secondary_icon_name: string | null
     secondaryIconName: string | null
     subtitle: string | null
     title: string | null
@@ -21120,7 +20744,7 @@ module SuggestionEntry {
          * activated simply by clicking on them. You may want to set this to
          * %FALSE if you want the behavior to only select the item.
          */
-        activate_on_single_click?: boolean | null
+        activateOnSingleClick?: boolean | null
         /**
          * The "compact" property denotes if an alternate style should be used to
          * reduce the width of the rows. This may be ideal in size contrained
@@ -21132,12 +20756,6 @@ module SuggestionEntry {
          * The "suggestion" property is the currently selected suggestion, if any.
          */
         suggestion?: Suggestion | null
-        /**
-         * The "activate-on-single-click" property denotes if results should be
-         * activated simply by clicking on them. You may want to set this to
-         * %FALSE if you want the behavior to only select the item.
-         */
-        activateOnSingleClick?: boolean | null
     }
 
 }
@@ -21146,12 +20764,6 @@ interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
 
     // Own properties of Dazzle-1.0.Dazzle.SuggestionEntry
 
-    /**
-     * The "activate-on-single-click" property denotes if results should be
-     * activated simply by clicking on them. You may want to set this to
-     * %FALSE if you want the behavior to only select the item.
-     */
-    activate_on_single_click: boolean
     /**
      * The "activate-on-single-click" property denotes if results should be
      * activated simply by clicking on them. You may want to set this to
@@ -21169,7 +20781,6 @@ interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * The "suggestion" property is the currently selected suggestion, if any.
      */
     suggestion: Suggestion
-    readonly typed_text: string | null
     readonly typedText: string | null
 
     // Own fields of Dazzle-1.0.Dazzle.SuggestionEntry
@@ -21684,11 +21295,8 @@ module SuggestionPopover {
         // Own constructor properties of Dazzle-1.0.Dazzle.SuggestionPopover
 
         model?: Suggestion | null
-        relative_to?: Gtk.Widget | null
-        selected?: Suggestion | null
-        subtitle_ellipsize?: Pango.EllipsizeMode | null
-        title_ellipsize?: Pango.EllipsizeMode | null
         relativeTo?: Gtk.Widget | null
+        selected?: Suggestion | null
         subtitleEllipsize?: Pango.EllipsizeMode | null
         titleEllipsize?: Pango.EllipsizeMode | null
     }
@@ -21700,12 +21308,9 @@ interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
     // Own properties of Dazzle-1.0.Dazzle.SuggestionPopover
 
     model: Suggestion
-    relative_to: Gtk.Widget
     relativeTo: Gtk.Widget
     selected: Suggestion
-    subtitle_ellipsize: Pango.EllipsizeMode
     subtitleEllipsize: Pango.EllipsizeMode
-    title_ellipsize: Pango.EllipsizeMode
     titleEllipsize: Pango.EllipsizeMode
 
     // Owm methods of Dazzle-1.0.Dazzle.SuggestionPopover
@@ -22349,12 +21954,11 @@ module Tab {
         // Own constructor properties of Dazzle-1.0.Dazzle.Tab
 
         active?: boolean | null
-        can_close?: boolean | null
+        canClose?: boolean | null
         edge?: Gtk.PositionType | null
         style: any
         title?: string | null
         widget?: Gtk.Widget | null
-        canClose?: boolean | null
     }
 
 }
@@ -22364,7 +21968,6 @@ interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
     // Own properties of Dazzle-1.0.Dazzle.Tab
 
     active: boolean
-    can_close: boolean
     canClose: boolean
     edge: Gtk.PositionType
     style: any
@@ -22904,22 +22507,6 @@ module TaskCache {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.TaskCache
 
-        key_copy_func?: any | null
-        key_destroy_func?: any | null
-        key_equal_func?: any | null
-        key_hash_func?: any | null
-        populate_callback?: any | null
-        populate_callback_data?: any | null
-        populate_callback_data_destroy?: any | null
-        /**
-         * This is the number of milliseconds before an item should be evicted
-         * from the cache.
-         * 
-         * A value of zero indicates no eviction.
-         */
-        time_to_live?: number | null
-        value_copy_func?: any | null
-        value_destroy_func?: any | null
         keyCopyFunc?: any | null
         keyDestroyFunc?: any | null
         keyEqualFunc?: any | null
@@ -22944,19 +22531,12 @@ interface TaskCache {
 
     // Own properties of Dazzle-1.0.Dazzle.TaskCache
 
-    readonly key_copy_func: any
     readonly keyCopyFunc: any
-    readonly key_destroy_func: any
     readonly keyDestroyFunc: any
-    readonly key_equal_func: any
     readonly keyEqualFunc: any
-    readonly key_hash_func: any
     readonly keyHashFunc: any
-    readonly populate_callback: any
     readonly populateCallback: any
-    readonly populate_callback_data: any
     readonly populateCallbackData: any
-    readonly populate_callback_data_destroy: any
     readonly populateCallbackDataDestroy: any
     /**
      * This is the number of milliseconds before an item should be evicted
@@ -22964,17 +22544,8 @@ interface TaskCache {
      * 
      * A value of zero indicates no eviction.
      */
-    readonly time_to_live: number
-    /**
-     * This is the number of milliseconds before an item should be evicted
-     * from the cache.
-     * 
-     * A value of zero indicates no eviction.
-     */
     readonly timeToLive: number
-    readonly value_copy_func: any
     readonly valueCopyFunc: any
-    readonly value_destroy_func: any
     readonly valueDestroyFunc: any
 
     // Owm methods of Dazzle-1.0.Dazzle.TaskCache
@@ -23140,8 +22711,6 @@ module ThreeGrid {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.ThreeGrid
 
-        column_spacing?: number | null
-        row_spacing?: number | null
         columnSpacing?: number | null
         rowSpacing?: number | null
     }
@@ -23152,9 +22721,7 @@ interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Dazzle-1.0.Dazzle.ThreeGrid
 
-    column_spacing: number
     columnSpacing: number
-    row_spacing: number
     rowSpacing: number
 
     // Own fields of Dazzle-1.0.Dazzle.ThreeGrid
@@ -23381,13 +22948,10 @@ module Tree {
 
         // Own constructor properties of Dazzle-1.0.Dazzle.Tree
 
-        always_expand?: boolean | null
-        context_menu?: Gio.MenuModel | null
-        root?: TreeNode | null
-        selection?: TreeNode | null
-        show_icons?: boolean | null
         alwaysExpand?: boolean | null
         contextMenu?: Gio.MenuModel | null
+        root?: TreeNode | null
+        selection?: TreeNode | null
         showIcons?: boolean | null
     }
 
@@ -23397,13 +22961,10 @@ interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
 
     // Own properties of Dazzle-1.0.Dazzle.Tree
 
-    readonly always_expand: boolean
     readonly alwaysExpand: boolean
-    context_menu: Gio.MenuModel
     contextMenu: Gio.MenuModel
     root: TreeNode
     selection: TreeNode
-    show_icons: boolean
     showIcons: boolean
 
     // Own fields of Dazzle-1.0.Dazzle.Tree
@@ -24022,8 +23583,8 @@ module TreeNode {
          * and simply hide the arrow if there were in fact no children (upon
          * expansion).
          */
-        children_possible?: boolean | null
-        expanded_icon_name?: string | null
+        childrenPossible?: boolean | null
+        expandedIconName?: string | null
         /**
          * The cached GIcon to display.
          */
@@ -24031,7 +23592,7 @@ module TreeNode {
         /**
          * An icon-name to display on the row.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * An optional #GObject to associate with the node.
          */
@@ -24043,7 +23604,7 @@ module TreeNode {
          * children. This is useful for situations where you want to ensure the nodes
          * are up to date (refreshed) on every expansion.
          */
-        reset_on_collapse?: boolean | null
+        resetOnCollapse?: boolean | null
         /**
          * Text to display on the tree node.
          */
@@ -24052,36 +23613,6 @@ module TreeNode {
          * The tree the node belongs to.
          */
         tree?: Tree | null
-        use_dim_label?: boolean | null
-        /**
-         * If the "text" property includes #GMarkup.
-         */
-        use_markup?: boolean | null
-        /**
-         * This property allows for more lazy loading of nodes.
-         * 
-         * When a node becomes visible, we normally build its children nodes
-         * so that we know if we need an expansion arrow. However, that can
-         * be expensive when rendering directories with lots of subdirectories.
-         * 
-         * Using this, you can always show an arrow without building the children
-         * and simply hide the arrow if there were in fact no children (upon
-         * expansion).
-         */
-        childrenPossible?: boolean | null
-        expandedIconName?: string | null
-        /**
-         * An icon-name to display on the row.
-         */
-        iconName?: string | null
-        /**
-         * The "reset-on-collapse" property denotes that all children should be
-         * removed from the node when it's row is collapsed. It will also set
-         * #DzlTreeNode:needs-build to %TRUE so the next expansion rebuilds the
-         * children. This is useful for situations where you want to ensure the nodes
-         * are up to date (refreshed) on every expansion.
-         */
-        resetOnCollapse?: boolean | null
         useDimLabel?: boolean | null
         /**
          * If the "text" property includes #GMarkup.
@@ -24106,29 +23637,12 @@ interface TreeNode {
      * and simply hide the arrow if there were in fact no children (upon
      * expansion).
      */
-    children_possible: boolean
-    /**
-     * This property allows for more lazy loading of nodes.
-     * 
-     * When a node becomes visible, we normally build its children nodes
-     * so that we know if we need an expansion arrow. However, that can
-     * be expensive when rendering directories with lots of subdirectories.
-     * 
-     * Using this, you can always show an arrow without building the children
-     * and simply hide the arrow if there were in fact no children (upon
-     * expansion).
-     */
     childrenPossible: boolean
-    expanded_icon_name: string | null
     expandedIconName: string | null
     /**
      * The cached GIcon to display.
      */
     gicon: Gio.Icon
-    /**
-     * An icon-name to display on the row.
-     */
-    icon_name: string | null
     /**
      * An icon-name to display on the row.
      */
@@ -24148,14 +23662,6 @@ interface TreeNode {
      * children. This is useful for situations where you want to ensure the nodes
      * are up to date (refreshed) on every expansion.
      */
-    reset_on_collapse: boolean
-    /**
-     * The "reset-on-collapse" property denotes that all children should be
-     * removed from the node when it's row is collapsed. It will also set
-     * #DzlTreeNode:needs-build to %TRUE so the next expansion rebuilds the
-     * children. This is useful for situations where you want to ensure the nodes
-     * are up to date (refreshed) on every expansion.
-     */
     resetOnCollapse: boolean
     /**
      * Text to display on the tree node.
@@ -24165,12 +23671,7 @@ interface TreeNode {
      * The tree the node belongs to.
      */
     tree: Tree
-    use_dim_label: boolean
     useDimLabel: boolean
-    /**
-     * If the "text" property includes #GMarkup.
-     */
-    use_markup: boolean
     /**
      * If the "text" property includes #GMarkup.
      */

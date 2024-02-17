@@ -84,27 +84,27 @@ export module Client {
          * the call to [method`Glib`.Initable.init]. Use %G_SOCKET_FAMILY_INVALID
          * to specifiy using the default socket family (legacy IP)
          */
-        addressFamily?: Gio.SocketFamily | null
+        address_family?: Gio.SocketFamily | null
         /**
          * The value of the BOOTID.UPNP.ORG header
          * 
          * Since 1.2.0
          */
-        bootId?: number | null
+        boot_id?: number | null
         /**
          * The value of the CONFIGID.UPNP.ORG header
          * 
          * Since 1.2.0
          */
-        configId?: number | null
+        config_id?: number | null
         /**
          * The IP address of the assoicated network interface.
          */
-        hostIp?: string | null
+        host_ip?: string | null
         /**
          * The network mask of the assoicated network interface.
          */
-        hostMask?: Gio.InetAddressMask | null
+        host_mask?: Gio.InetAddressMask | null
         /**
          * The name of the network interface this client is associated with.
          * Set to NULL to autodetect.
@@ -115,7 +115,7 @@ export module Client {
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
          */
-        msearchPort?: number | null
+        msearch_port?: number | null
         /**
          * The network this client is currently connected to. You could set this
          * to anything you want to identify the network this client is
@@ -134,17 +134,17 @@ export module Client {
         /**
          * The SSDP server's identifier.
          */
-        serverId?: string | null
+        server_id?: string | null
         /**
          * Time-to-live value to use for all sockets created by this client.
          * If not set (or set to 0) the value recommended by UPnP will be used.
          * This property can only be set during object construction.
          */
-        socketTtl?: number | null
+        socket_ttl?: number | null
         /**
          * The UPnP version the client adheres to.
          */
-        udaVersion?: UDAVersion | null
+        uda_version?: UDAVersion | null
     }
 
 }
@@ -779,12 +779,12 @@ export module ResourceGroup {
         /**
          * The number of seconds our advertisements are valid.
          */
-        maxAge?: number | null
+        max_age?: number | null
         /**
          * The minimum number of milliseconds between SSDP messages.
          * The default is 120 based on DLNA specification.
          */
-        messageDelay?: number | null
+        message_delay?: number | null
     }
 
 }

@@ -1,13 +1,19 @@
 {
     "name": "@girs/coglpango-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for CoglPango-12, generated from library version 12.0.0",
     "type": "module",
     "module": "coglpango-12.js",
     "main": "coglpango-12.js",
     "exports": {
-        "./ambient": "./coglpango-12-ambient.d.ts",
-        "./import": "./coglpango-12-import.d.ts",
+        "./ambient": {
+            "types": "./coglpango-12-ambient.d.ts",
+            "default": "./coglpango-12-ambient.js"
+        },
+        "./import": {
+            "types": "./coglpango-12-import.d.ts",
+            "default": "./coglpango-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./coglpango-12.d.ts",

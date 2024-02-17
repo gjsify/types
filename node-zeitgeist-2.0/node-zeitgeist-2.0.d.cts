@@ -1005,8 +1005,8 @@ export module Monitor {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.Monitor
 
-        timeRange?: TimeRange | null
-        eventTemplates?: Event[] | null
+        time_range?: TimeRange | null
+        event_templates?: Event[] | null
     }
 
 }
@@ -1088,8 +1088,8 @@ export module QueuedProxyWrapper {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.QueuedProxyWrapper
 
-        proxyCreated?: boolean | null
-        isConnected?: boolean | null
+        proxy_created?: boolean | null
+        is_connected?: boolean | null
     }
 
 }
@@ -1188,10 +1188,10 @@ export module DataSource {
 
         // Own constructor properties of Zeitgeist-2.0.Zeitgeist.DataSource
 
-        uniqueId?: string | null
+        unique_id?: string | null
         name?: string | null
         description?: string | null
-        eventTemplates?: Event[] | null
+        event_templates?: Event[] | null
         enabled?: boolean | null
         running?: boolean | null
         timestamp?: number | null
@@ -1439,8 +1439,8 @@ export module Subject {
         origin?: string | null
         text?: string | null
         storage?: string | null
-        currentUri?: string | null
-        currentOrigin?: string | null
+        current_uri?: string | null
+        current_origin?: string | null
         mimetype?: string | null
         interpretation?: string | null
         manifestation?: string | null

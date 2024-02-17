@@ -166,12 +166,12 @@ module Indicator {
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
          * then this textual description of the icon shown.
          */
-        attentionIconDesc?: string | null
+        attention_icon_desc?: string | null
         /**
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
          * then this icon is shown.
          */
-        attentionIconName?: string | null
+        attention_icon_name?: string | null
         /**
          * The type of indicator that this represents.  Please don't use 'Other'.
          * Defaults to 'ApplicationStatus'.
@@ -180,16 +180,16 @@ module Indicator {
         /**
          * The description of the regular icon that is shown for the indicator.
          */
-        iconDesc?: string | null
+        icon_desc?: string | null
         /**
          * The name of the regular icon that is shown for the indicator.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
          */
-        iconThemePath?: string | null
+        icon_theme_path?: string | null
         /**
          * The ID for this indicator, which should be unique, but used consistently
          * by this program and its indicator.
@@ -213,7 +213,7 @@ module Indicator {
          * set this string to "100% thrust" to ensure space when Scotty can
          * get you enough power.
          */
-        labelGuide?: string | null
+        label_guide?: string | null
         /**
          * The ordering index is an odd parameter, and if you think you don't need
          * it you're probably right.  In general, the application indicator try
@@ -224,7 +224,7 @@ module Indicator {
          * with a new one.  Again, you probably don't want to be doing this, but
          * in case you do, this is the way.
          */
-        orderingIndex?: number | null
+        ordering_index?: number | null
         /**
          * Whether the indicator is shown or requests attention. Defaults to
          * 'Passive'.

@@ -470,13 +470,13 @@ export module Sink {
 
         async?: boolean | null
         blocksize?: number | null
-        enableLastBuffer?: boolean | null
-        maxLateness?: number | null
-        prerollQueueLen?: number | null
+        enable_last_buffer?: boolean | null
+        max_lateness?: number | null
+        preroll_queue_len?: number | null
         qos?: boolean | null
-        renderDelay?: number | null
+        render_delay?: number | null
         sync?: boolean | null
-        tsOffset?: number | null
+        ts_offset?: number | null
     }
 
 }
@@ -637,8 +637,8 @@ export module Src {
         // Own constructor properties of GstBase-0.10.GstBase.Src
 
         blocksize?: number | null
-        doTimestamp?: boolean | null
-        numBuffers?: number | null
+        do_timestamp?: boolean | null
+        num_buffers?: number | null
         typefind?: boolean | null
     }
 

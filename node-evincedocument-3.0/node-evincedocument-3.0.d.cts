@@ -334,11 +334,11 @@ export module AnnotationMarkup {
 
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
-        canHavePopup?: boolean | null
-        hasPopup?: boolean | null
+        can_have_popup?: boolean | null
+        has_popup?: boolean | null
         label?: string | null
         opacity?: number | null
-        popupIsOpen?: boolean | null
+        popup_is_open?: boolean | null
         rectangle?: Rectangle | null
     }
 
@@ -1750,7 +1750,7 @@ export module AnnotationText {
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.AnnotationText
 
         icon?: AnnotationTextIcon | null
-        isOpen?: boolean | null
+        is_open?: boolean | null
     }
 
 }
@@ -2868,14 +2868,14 @@ export module LinkAction {
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.LinkAction
 
         dest?: LinkDest | null
-        excludeResetFields?: boolean | null
+        exclude_reset_fields?: boolean | null
         filename?: string | null
-        hideList?: any | null
+        hide_list?: any | null
         name?: string | null
         params?: string | null
-        resetFields?: any | null
-        showList?: any | null
-        toggleList?: any | null
+        reset_fields?: any | null
+        show_list?: any | null
+        toggle_list?: any | null
         type?: LinkActionType | null
         uri?: string | null
     }
@@ -3021,7 +3021,7 @@ export module LinkDest {
         left?: number | null
         named?: string | null
         page?: number | null
-        pageLabel?: string | null
+        page_label?: string | null
         right?: number | null
         top?: number | null
         type?: LinkDestType | null
@@ -3330,7 +3330,7 @@ export module TransitionEffect {
         angle?: number | null
         direction?: TransitionEffectDirection | null
         duration?: number | null
-        durationReal?: number | null
+        duration_real?: number | null
         rectangular?: boolean | null
         scale?: number | null
         type?: TransitionEffectType | null

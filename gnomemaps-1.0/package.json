@@ -1,13 +1,19 @@
 {
     "name": "@girs/gnomemaps-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GnomeMaps-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gnomemaps-1.0.js",
     "main": "gnomemaps-1.0.js",
     "exports": {
-        "./ambient": "./gnomemaps-1.0-ambient.d.ts",
-        "./import": "./gnomemaps-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gnomemaps-1.0-ambient.d.ts",
+            "default": "./gnomemaps-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gnomemaps-1.0-import.d.ts",
+            "default": "./gnomemaps-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gnomemaps-1.0.d.ts",

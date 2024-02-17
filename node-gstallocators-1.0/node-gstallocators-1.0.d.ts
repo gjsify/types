@@ -209,8 +209,8 @@ module DRMDumbAllocator {
 
         // Own constructor properties of GstAllocators-1.0.GstAllocators.DRMDumbAllocator
 
-        drmDevicePath?: string | null
-        drmFd?: number | null
+        drm_device_path?: string | null
+        drm_fd?: number | null
     }
 
 }

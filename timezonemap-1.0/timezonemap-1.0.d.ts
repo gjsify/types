@@ -123,13 +123,12 @@ module TimezoneLocation {
 
         // Own constructor properties of TimezoneMap-1.0.TimezoneMap.TimezoneLocation
 
-        Comment?: string | null
+        comment?: string | null
         country?: string | null
         dist?: number | null
         latitude?: number | null
         longitude?: number | null
         zone?: string | null
-        comment?: string | null
     }
 
 }
@@ -138,7 +137,6 @@ interface TimezoneLocation {
 
     // Own properties of TimezoneMap-1.0.TimezoneMap.TimezoneLocation
 
-    Comment: string
     comment: string
     country: string
     dist: number

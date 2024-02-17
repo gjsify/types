@@ -1908,15 +1908,11 @@ function typeParent(type: GType): GType
 function typeQname(type: GType): GLib.Quark
 /**
  * Queries the type system for information about a specific type.
- * 
  * This function will fill in a user-provided structure to hold
  * type-specific information. If an invalid #GType is passed in, the
  * `type` member of the #GTypeQuery is 0. All members filled into the
  * #GTypeQuery structure should be considered constant and have to be
  * left untouched.
- * 
- * Since GLib 2.78, this function allows queries on dynamic types. Previously
- * it only supported static types.
  * @param type #GType of a static, classed type
  */
 function typeQuery(type: GType): /* query */ TypeQuery
@@ -2873,7 +2869,7 @@ module Binding {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          */
-        sourceProperty?: string | null
+        source_property?: string | null
         /**
          * The #GObject that should be used as the target of the binding
          */
@@ -2885,7 +2881,7 @@ module Binding {
          * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          */
-        targetProperty?: string | null
+        target_property?: string | null
     }
 
 }
@@ -4747,7 +4743,7 @@ module SignalGroup {
         /**
          * The #GType of the target property.
          */
-        targetType?: GType | null
+        target_type?: GType | null
     }
 
 }

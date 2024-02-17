@@ -116,7 +116,7 @@ export module CalBackend {
 
         // Own constructor properties of EDataCal-2.0.EDataCal.CalBackend
 
-        cacheDir?: string | null
+        cache_dir?: string | null
         kind?: number | null
         registry?: EDataServer.SourceRegistry | null
         writable?: boolean | null
@@ -3511,7 +3511,7 @@ export module DataCal {
 
         backend?: CalBackend | null
         connection?: Gio.DBusConnection | null
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3811,7 +3811,7 @@ export module DataCalView {
 
         backend?: CalBackend | null
         connection?: Gio.DBusConnection | null
-        objectPath?: string | null
+        object_path?: string | null
         sexp?: CalBackendSExp | null
     }
 

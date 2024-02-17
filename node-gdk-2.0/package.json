@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gdk-2.0",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gdk-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "node-gdk-2.0.js",
     "main": "node-gdk-2.0.js",
     "exports": {
-        "./ambient": "./node-gdk-2.0-ambient.d.ts",
-        "./import": "./node-gdk-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-gdk-2.0-ambient.d.ts",
+            "default": "./node-gdk-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gdk-2.0-import.d.ts",
+            "default": "./node-gdk-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gdk-2.0.d.ts",

@@ -305,7 +305,7 @@ export module PersonaStore {
 
         // Own constructor properties of FolksDummy-0.6.FolksDummy.PersonaStore
 
-        personaType?: GObject.GType | null
+        persona_type?: GObject.GType | null
     }
 
 }
@@ -450,7 +450,7 @@ export module Persona {
 
         // Own constructor properties of FolksDummy-0.6.FolksDummy.Persona
 
-        propertyChangeDelay?: number | null
+        property_change_delay?: number | null
     }
 
 }

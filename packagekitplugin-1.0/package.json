@@ -1,13 +1,19 @@
 {
     "name": "@girs/packagekitplugin-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for PackageKitPlugin-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "packagekitplugin-1.0.js",
     "main": "packagekitplugin-1.0.js",
     "exports": {
-        "./ambient": "./packagekitplugin-1.0-ambient.d.ts",
-        "./import": "./packagekitplugin-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./packagekitplugin-1.0-ambient.d.ts",
+            "default": "./packagekitplugin-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./packagekitplugin-1.0-import.d.ts",
+            "default": "./packagekitplugin-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./packagekitplugin-1.0.d.ts",

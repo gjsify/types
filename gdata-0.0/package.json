@@ -1,13 +1,19 @@
 {
     "name": "@girs/gdata-0.0",
-    "version": "0.19.0-3.2.7",
+    "version": "0.19.0-3.2.8",
     "description": "GJS TypeScript type definitions for GData-0.0, generated from library version 0.19.0",
     "type": "module",
     "module": "gdata-0.0.js",
     "main": "gdata-0.0.js",
     "exports": {
-        "./ambient": "./gdata-0.0-ambient.d.ts",
-        "./import": "./gdata-0.0-import.d.ts",
+        "./ambient": {
+            "types": "./gdata-0.0-ambient.d.ts",
+            "default": "./gdata-0.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gdata-0.0-import.d.ts",
+            "default": "./gdata-0.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gdata-0.0.d.ts",

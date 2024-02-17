@@ -5260,7 +5260,7 @@ export module ViewerWidget {
          * Used as a hint when displaying a title for the data, but may be
          * overridden by the parsed data.
          */
-        displayName?: string | null
+        display_name?: string | null
     }
 
 }

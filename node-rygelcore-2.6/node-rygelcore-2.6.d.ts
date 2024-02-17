@@ -496,7 +496,7 @@ module BasicManagement {
 
         // Own constructor properties of RygelCore-2.6.RygelCore.BasicManagement
 
-        maxHistorySize?: number | null
+        max_history_size?: number | null
     }
 
 }
@@ -1142,7 +1142,7 @@ module RecursiveModuleLoader {
 
         // Own constructor properties of RygelCore-2.6.RygelCore.RecursiveModuleLoader
 
-        basePath?: string | null
+        base_path?: string | null
     }
 
 }
@@ -1212,11 +1212,11 @@ module Plugin {
         name?: string | null
         title?: string | null
         description?: string | null
-        descPath?: string | null
+        desc_path?: string | null
         active?: boolean | null
-        resourceInfos?: Gee.ArrayList | null
-        iconInfos?: Gee.ArrayList | null
-        defaultIcons?: Gee.ArrayList | null
+        resource_infos?: Gee.ArrayList | null
+        icon_infos?: Gee.ArrayList | null
+        default_icons?: Gee.ArrayList | null
     }
 
 }
@@ -1766,8 +1766,8 @@ module V1Hacks {
 
         // Own constructor properties of RygelCore-2.6.RygelCore.V1Hacks
 
-        deviceType?: string | null
-        serviceTypes?: string[] | null
+        device_type?: string | null
+        service_types?: string[] | null
     }
 
 }
@@ -1927,10 +1927,10 @@ module PluginInformation {
 
         // Own constructor properties of RygelCore-2.6.RygelCore.PluginInformation
 
-        modulePath?: string | null
+        module_path?: string | null
         name?: string | null
         conflicts?: any | null
-        moduleLoaded?: boolean | null
+        module_loaded?: boolean | null
     }
 
 }

@@ -1,13 +1,19 @@
 {
     "name": "@girs/mediaart-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for MediaArt-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "mediaart-1.0.js",
     "main": "mediaart-1.0.js",
     "exports": {
-        "./ambient": "./mediaart-1.0-ambient.d.ts",
-        "./import": "./mediaart-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./mediaart-1.0-ambient.d.ts",
+            "default": "./mediaart-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./mediaart-1.0-import.d.ts",
+            "default": "./mediaart-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./mediaart-1.0.d.ts",

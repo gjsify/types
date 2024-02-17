@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-grlpls-0.3",
-    "version": "0.3.0-3.2.7",
+    "version": "0.3.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GrlPls-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "node-grlpls-0.3.js",
     "main": "node-grlpls-0.3.js",
     "exports": {
-        "./ambient": "./node-grlpls-0.3-ambient.d.ts",
-        "./import": "./node-grlpls-0.3-import.d.ts",
+        "./ambient": {
+            "types": "./node-grlpls-0.3-ambient.d.ts",
+            "default": "./node-grlpls-0.3-ambient.js"
+        },
+        "./import": {
+            "types": "./node-grlpls-0.3-import.d.ts",
+            "default": "./node-grlpls-0.3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-grlpls-0.3.d.ts",

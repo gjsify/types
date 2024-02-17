@@ -138,7 +138,6 @@ interface Document {
     // Own properties of Builder-1.0.Builder.Document
 
     readonly modified: boolean
-    readonly read_only: boolean
     readonly readOnly: boolean
     readonly title: string | null
 
@@ -728,7 +727,6 @@ module Tree {
 
         root?: TreeNode | null
         selection?: TreeNode | null
-        show_icons?: boolean | null
         showIcons?: boolean | null
     }
 
@@ -740,7 +738,6 @@ interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
 
     root: TreeNode
     selection: TreeNode
-    show_icons: boolean
     showIcons: boolean
 
     // Own fields of Builder-1.0.Builder.Tree
@@ -1245,11 +1242,11 @@ module TreeNode {
          * and simply hide the arrow if there were in fact no children (upon
          * expansion).
          */
-        children_possible?: boolean | null
+        childrenPossible?: boolean | null
         /**
          * An icon-name to display on the row.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * An optional #GObject to associate with the node.
          */
@@ -1262,27 +1259,6 @@ module TreeNode {
          * The tree the node belongs to.
          */
         tree?: Tree | null
-        use_dim_label?: boolean | null
-        /**
-         * If the "text" property includes #GMarkup.
-         */
-        use_markup?: boolean | null
-        /**
-         * This property allows for more lazy loading of nodes.
-         * 
-         * When a node becomes visible, we normally build it's children nodes
-         * so that we know if we need an expansion arrow. However, that can
-         * be expensive when rendering directories with lots of subdirectories.
-         * 
-         * Using this, you can always show an arrow without building the children
-         * and simply hide the arrow if there were in fact no children (upon
-         * expansion).
-         */
-        childrenPossible?: boolean | null
-        /**
-         * An icon-name to display on the row.
-         */
-        iconName?: string | null
         useDimLabel?: boolean | null
         /**
          * If the "text" property includes #GMarkup.
@@ -1307,23 +1283,7 @@ interface TreeNode {
      * and simply hide the arrow if there were in fact no children (upon
      * expansion).
      */
-    children_possible: boolean
-    /**
-     * This property allows for more lazy loading of nodes.
-     * 
-     * When a node becomes visible, we normally build it's children nodes
-     * so that we know if we need an expansion arrow. However, that can
-     * be expensive when rendering directories with lots of subdirectories.
-     * 
-     * Using this, you can always show an arrow without building the children
-     * and simply hide the arrow if there were in fact no children (upon
-     * expansion).
-     */
     childrenPossible: boolean
-    /**
-     * An icon-name to display on the row.
-     */
-    icon_name: string | null
     /**
      * An icon-name to display on the row.
      */
@@ -1344,12 +1304,7 @@ interface TreeNode {
      * The tree the node belongs to.
      */
     tree: Tree
-    use_dim_label: boolean
     useDimLabel: boolean
-    /**
-     * If the "text" property includes #GMarkup.
-     */
-    use_markup: boolean
     /**
      * If the "text" property includes #GMarkup.
      */
@@ -1514,11 +1469,9 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Own properties of Builder-1.0.Builder.View
 
-    readonly can_split: boolean
     readonly canSplit: boolean
     readonly document: Document
     readonly modified: boolean
-    readonly special_title: string | null
     readonly specialTitle: string | null
     readonly title: string | null
 
@@ -2065,7 +2018,6 @@ module ViewStack {
 
         // Own constructor properties of Builder-1.0.Builder.ViewStack
 
-        active_view?: View | null
         activeView?: View | null
     }
 
@@ -2075,7 +2027,6 @@ interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Builder-1.0.Builder.ViewStack
 
-    active_view: View
     activeView: View
 
     // Owm methods of Builder-1.0.Builder.ViewStack
@@ -2344,7 +2295,6 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
 
     // Own properties of Builder-1.0.Builder.Workbench
 
-    readonly active_view: View
     readonly activeView: View
     readonly building: boolean
     /**

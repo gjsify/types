@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-vgsl-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Vgsl-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-vgsl-1.js",
     "main": "node-vgsl-1.js",
     "exports": {
-        "./ambient": "./node-vgsl-1-ambient.d.ts",
-        "./import": "./node-vgsl-1-import.d.ts",
+        "./ambient": {
+            "types": "./node-vgsl-1-ambient.d.ts",
+            "default": "./node-vgsl-1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-vgsl-1-import.d.ts",
+            "default": "./node-vgsl-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-vgsl-1.d.ts",

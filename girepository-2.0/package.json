@@ -1,13 +1,19 @@
 {
     "name": "@girs/girepository-2.0",
-    "version": "1.78.1-3.2.7",
-    "description": "GJS TypeScript type definitions for GIRepository-2.0, generated from library version 1.78.1",
+    "version": "1.77.1-3.2.8",
+    "description": "GJS TypeScript type definitions for GIRepository-2.0, generated from library version 1.77.1",
     "type": "module",
     "module": "girepository-2.0.js",
     "main": "girepository-2.0.js",
     "exports": {
-        "./ambient": "./girepository-2.0-ambient.d.ts",
-        "./import": "./girepository-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./girepository-2.0-ambient.d.ts",
+            "default": "./girepository-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./girepository-2.0-import.d.ts",
+            "default": "./girepository-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./girepository-2.0.d.ts",

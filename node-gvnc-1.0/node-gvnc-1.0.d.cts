@@ -516,10 +516,10 @@ export module BaseFramebuffer {
         // Own constructor properties of GVnc-1.0.GVnc.BaseFramebuffer
 
         buffer?: any | null
-        colorMap?: ColorMap | null
+        color_map?: ColorMap | null
         height?: number | null
-        localFormat?: PixelFormat | null
-        remoteFormat?: PixelFormat | null
+        local_format?: PixelFormat | null
+        remote_format?: PixelFormat | null
         rowstride?: number | null
         width?: number | null
     }

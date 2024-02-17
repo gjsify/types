@@ -921,7 +921,7 @@ export module Tree {
 
         root?: TreeNode | null
         selection?: TreeNode | null
-        showIcons?: boolean | null
+        show_icons?: boolean | null
     }
 
 }
@@ -1663,11 +1663,11 @@ export module TreeNode {
          * and simply hide the arrow if there were in fact no children (upon
          * expansion).
          */
-        childrenPossible?: boolean | null
+        children_possible?: boolean | null
         /**
          * An icon-name to display on the row.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * An optional #GObject to associate with the node.
          */
@@ -1680,11 +1680,11 @@ export module TreeNode {
          * The tree the node belongs to.
          */
         tree?: Tree | null
-        useDimLabel?: boolean | null
+        use_dim_label?: boolean | null
         /**
          * If the "text" property includes #GMarkup.
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }
@@ -2762,7 +2762,7 @@ export module ViewStack {
 
         // Own constructor properties of Builder-1.0.Builder.ViewStack
 
-        activeView?: View | null
+        active_view?: View | null
     }
 
 }

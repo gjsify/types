@@ -784,162 +784,6 @@ module Terminal {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          */
-        allow_bold?: boolean | null
-        /**
-         * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
-         */
-        allow_hyperlink?: boolean | null
-        /**
-         * Controls whether or not the terminal will beep when the child outputs the
-         * "bl" sequence.
-         */
-        audible_bell?: boolean | null
-        /**
-         * Controls what string or control sequence the terminal sends to its child
-         * when the user presses the backspace key.
-         */
-        backspace_binding?: EraseBinding | null
-        /**
-         * Whether the SGR 1 attribute also switches to the bright counterpart
-         * of the first 8 palette colors, in addition to making them bold (legacy behavior)
-         * or if SGR 1 only enables bold and leaves the color intact.
-         */
-        bold_is_bright?: boolean | null
-        /**
-         * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
-         */
-        cell_height_scale?: number | null
-        /**
-         * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
-         */
-        cell_width_scale?: number | null
-        /**
-         * This setting controls whether ambiguous-width characters are narrow or wide.
-         * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
-         * the width of ambiguous-width characters is fixed and determined by the encoding
-         * itself.)
-         * 
-         * This setting only takes effect the next time the terminal is reset, either
-         * via escape sequence or with vte_terminal_reset().
-         */
-        cjk_ambiguous_width?: number | null
-        /**
-         * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
-         * will use the #GtkSettings:gtk-cursor-blink setting.
-         */
-        cursor_blink_mode?: CursorBlinkMode | null
-        /**
-         * Controls the shape of the cursor.
-         */
-        cursor_shape?: CursorShape | null
-        /**
-         * Controls what string or control sequence the terminal sends to its child
-         * when the user presses the delete key.
-         */
-        delete_binding?: EraseBinding | null
-        /**
-         * Controls whether or not the terminal will perform bidirectional text rendering.
-         */
-        enable_bidi?: boolean | null
-        enable_fallback_scrolling?: boolean | null
-        /**
-         * Controls whether or not the terminal will shape Arabic text.
-         */
-        enable_shaping?: boolean | null
-        /**
-         * Controls whether SIXEL image support is enabled.
-         */
-        enable_sixel?: boolean | null
-        /**
-         * Controls the encoding the terminal will expect data from the child to
-         * be encoded with.  For certain terminal types, applications executing in the
-         * terminal can change the encoding.  The default is defined by the
-         * application's locale settings.
-         */
-        encoding?: string | null
-        /**
-         * Specifies the font used for rendering all text displayed by the terminal,
-         * overriding any fonts set using gtk_widget_modify_font().  The terminal
-         * will immediately attempt to load the desired font, retrieve its
-         * metrics, and attempt to resize itself to keep the same number of rows
-         * and columns.
-         */
-        font_desc?: Pango.FontDescription | null
-        /**
-         * The terminal's font scale.
-         */
-        font_scale?: number | null
-        /**
-         * Controls whether the terminal allows user input. When user input is disabled,
-         * key press and mouse button press and motion events are not sent to the
-         * terminal's child.
-         */
-        input_enabled?: boolean | null
-        /**
-         * Controls the value of the terminal's mouse autohide setting.  When autohiding
-         * is enabled, the mouse cursor will be hidden when the user presses a key and
-         * shown when the user moves the mouse.
-         */
-        pointer_autohide?: boolean | null
-        /**
-         * The PTY object for the terminal.
-         */
-        pty?: Pty | null
-        /**
-         * Controls whether or not the terminal will rewrap its contents, including
-         * the scrollback buffer, whenever the terminal's width changes.
-         */
-        rewrap_on_resize?: boolean | null
-        /**
-         * Controls whether or not the terminal will forcibly scroll to the bottom of
-         * the viewable history when the user presses a key.  Modifier keys do not
-         * trigger this behavior.
-         */
-        scroll_on_keystroke?: boolean | null
-        /**
-         * Controls whether or not the terminal will forcibly scroll to the bottom of
-         * the viewable history when the new data is received from the child.
-         */
-        scroll_on_output?: boolean | null
-        /**
-         * Controls whether the terminal's GtkAdjustment values unit is lines
-         * or pixels. This can be enabled when the terminal is the child of a
-         * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
-         */
-        scroll_unit_is_pixels?: boolean | null
-        /**
-         * The length of the scrollback buffer used by the terminal.  The size of
-         * the scrollback buffer will be set to the larger of this value and the number
-         * of visible rows the widget can display, so 0 can safely be used to disable
-         * scrollback.  Note that this setting only affects the normal screen buffer.
-         * For terminal types which have an alternate screen buffer, no scrollback is
-         * allowed on the alternate screen buffer.
-         */
-        scrollback_lines?: number | null
-        /**
-         * Controls whether or not the terminal will allow blinking text.
-         */
-        text_blink_mode?: TextBlinkMode | null
-        /**
-         * The horizontal alignment of `terminal` within its allocation.
-         */
-        xalign?: Align | null
-        /**
-         * The horizontal fillment of `terminal` within its allocation.
-         */
-        xfill?: boolean | null
-        /**
-         * The vertical alignment of `terminal` within its allocation
-         */
-        yalign?: Align | null
-        /**
-         * The vertical fillment of `terminal` within its allocation
-         */
-        yfill?: boolean | null
-        /**
-         * Controls whether or not the terminal will attempt to draw bold text,
-         * by using a bold font variant.
-         */
         allowBold?: boolean | null
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
@@ -1007,6 +851,13 @@ module Terminal {
          */
         enableSixel?: boolean | null
         /**
+         * Controls the encoding the terminal will expect data from the child to
+         * be encoded with.  For certain terminal types, applications executing in the
+         * terminal can change the encoding.  The default is defined by the
+         * application's locale settings.
+         */
+        encoding?: string | null
+        /**
          * Specifies the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using gtk_widget_modify_font().  The terminal
          * will immediately attempt to load the desired font, retrieve its
@@ -1030,6 +881,10 @@ module Terminal {
          * shown when the user moves the mouse.
          */
         pointerAutohide?: boolean | null
+        /**
+         * The PTY object for the terminal.
+         */
+        pty?: Pty | null
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
@@ -1065,6 +920,22 @@ module Terminal {
          * Controls whether or not the terminal will allow blinking text.
          */
         textBlinkMode?: TextBlinkMode | null
+        /**
+         * The horizontal alignment of `terminal` within its allocation.
+         */
+        xalign?: Align | null
+        /**
+         * The horizontal fillment of `terminal` within its allocation.
+         */
+        xfill?: boolean | null
+        /**
+         * The vertical alignment of `terminal` within its allocation
+         */
+        yalign?: Align | null
+        /**
+         * The vertical fillment of `terminal` within its allocation
+         */
+        yfill?: boolean | null
     }
 
 }
@@ -1077,16 +948,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Controls whether or not the terminal will attempt to draw bold text,
      * by using a bold font variant.
      */
-    allow_bold: boolean
-    /**
-     * Controls whether or not the terminal will attempt to draw bold text,
-     * by using a bold font variant.
-     */
     allowBold: boolean
-    /**
-     * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
-     */
-    allow_hyperlink: boolean
     /**
      * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
      */
@@ -1095,17 +957,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Controls whether or not the terminal will beep when the child outputs the
      * "bl" sequence.
      */
-    audible_bell: boolean
-    /**
-     * Controls whether or not the terminal will beep when the child outputs the
-     * "bl" sequence.
-     */
     audibleBell: boolean
-    /**
-     * Controls what string or control sequence the terminal sends to its child
-     * when the user presses the backspace key.
-     */
-    backspace_binding: EraseBinding
     /**
      * Controls what string or control sequence the terminal sends to its child
      * when the user presses the backspace key.
@@ -1116,25 +968,11 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * of the first 8 palette colors, in addition to making them bold (legacy behavior)
      * or if SGR 1 only enables bold and leaves the color intact.
      */
-    bold_is_bright: boolean
-    /**
-     * Whether the SGR 1 attribute also switches to the bright counterpart
-     * of the first 8 palette colors, in addition to making them bold (legacy behavior)
-     * or if SGR 1 only enables bold and leaves the color intact.
-     */
     boldIsBright: boolean
     /**
      * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
      */
-    cell_height_scale: number
-    /**
-     * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
-     */
     cellHeightScale: number
-    /**
-     * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
-     */
-    cell_width_scale: number
     /**
      * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
      */
@@ -1148,29 +986,11 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * This setting only takes effect the next time the terminal is reset, either
      * via escape sequence or with vte_terminal_reset().
      */
-    cjk_ambiguous_width: number
-    /**
-     * This setting controls whether ambiguous-width characters are narrow or wide.
-     * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
-     * the width of ambiguous-width characters is fixed and determined by the encoding
-     * itself.)
-     * 
-     * This setting only takes effect the next time the terminal is reset, either
-     * via escape sequence or with vte_terminal_reset().
-     */
     cjkAmbiguousWidth: number
     /**
      * The current directory URI, or %NULL if unset.
      */
-    readonly current_directory_uri: string | null
-    /**
-     * The current directory URI, or %NULL if unset.
-     */
     readonly currentDirectoryUri: string | null
-    /**
-     * The current file URI, or %NULL if unset.
-     */
-    readonly current_file_uri: string | null
     /**
      * The current file URI, or %NULL if unset.
      */
@@ -1179,16 +999,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
      * will use the #GtkSettings:gtk-cursor-blink setting.
      */
-    cursor_blink_mode: CursorBlinkMode
-    /**
-     * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
-     * will use the #GtkSettings:gtk-cursor-blink setting.
-     */
     cursorBlinkMode: CursorBlinkMode
-    /**
-     * Controls the shape of the cursor.
-     */
-    cursor_shape: CursorShape
     /**
      * Controls the shape of the cursor.
      */
@@ -1197,34 +1008,16 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Controls what string or control sequence the terminal sends to its child
      * when the user presses the delete key.
      */
-    delete_binding: EraseBinding
-    /**
-     * Controls what string or control sequence the terminal sends to its child
-     * when the user presses the delete key.
-     */
     deleteBinding: EraseBinding
     /**
      * Controls whether or not the terminal will perform bidirectional text rendering.
      */
-    enable_bidi: boolean
-    /**
-     * Controls whether or not the terminal will perform bidirectional text rendering.
-     */
     enableBidi: boolean
-    enable_fallback_scrolling: boolean
     enableFallbackScrolling: boolean
     /**
      * Controls whether or not the terminal will shape Arabic text.
      */
-    enable_shaping: boolean
-    /**
-     * Controls whether or not the terminal will shape Arabic text.
-     */
     enableShaping: boolean
-    /**
-     * Controls whether SIXEL image support is enabled.
-     */
-    enable_sixel: boolean
     /**
      * Controls whether SIXEL image support is enabled.
      */
@@ -1243,19 +1036,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * metrics, and attempt to resize itself to keep the same number of rows
      * and columns.
      */
-    font_desc: Pango.FontDescription
-    /**
-     * Specifies the font used for rendering all text displayed by the terminal,
-     * overriding any fonts set using gtk_widget_modify_font().  The terminal
-     * will immediately attempt to load the desired font, retrieve its
-     * metrics, and attempt to resize itself to keep the same number of rows
-     * and columns.
-     */
     fontDesc: Pango.FontDescription
-    /**
-     * The terminal's font scale.
-     */
-    font_scale: number
     /**
      * The terminal's font scale.
      */
@@ -1263,31 +1044,14 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
     /**
      * The currently hovered hyperlink URI, or %NULL if unset.
      */
-    readonly hyperlink_hover_uri: string | null
-    /**
-     * The currently hovered hyperlink URI, or %NULL if unset.
-     */
     readonly hyperlinkHoverUri: string | null
-    readonly icon_title: string | null
     readonly iconTitle: string | null
     /**
      * Controls whether the terminal allows user input. When user input is disabled,
      * key press and mouse button press and motion events are not sent to the
      * terminal's child.
      */
-    input_enabled: boolean
-    /**
-     * Controls whether the terminal allows user input. When user input is disabled,
-     * key press and mouse button press and motion events are not sent to the
-     * terminal's child.
-     */
     inputEnabled: boolean
-    /**
-     * Controls the value of the terminal's mouse autohide setting.  When autohiding
-     * is enabled, the mouse cursor will be hidden when the user presses a key and
-     * shown when the user moves the mouse.
-     */
-    pointer_autohide: boolean
     /**
      * Controls the value of the terminal's mouse autohide setting.  When autohiding
      * is enabled, the mouse cursor will be hidden when the user presses a key and
@@ -1302,18 +1066,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Controls whether or not the terminal will rewrap its contents, including
      * the scrollback buffer, whenever the terminal's width changes.
      */
-    rewrap_on_resize: boolean
-    /**
-     * Controls whether or not the terminal will rewrap its contents, including
-     * the scrollback buffer, whenever the terminal's width changes.
-     */
     rewrapOnResize: boolean
-    /**
-     * Controls whether or not the terminal will forcibly scroll to the bottom of
-     * the viewable history when the user presses a key.  Modifier keys do not
-     * trigger this behavior.
-     */
-    scroll_on_keystroke: boolean
     /**
      * Controls whether or not the terminal will forcibly scroll to the bottom of
      * the viewable history when the user presses a key.  Modifier keys do not
@@ -1324,18 +1077,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * Controls whether or not the terminal will forcibly scroll to the bottom of
      * the viewable history when the new data is received from the child.
      */
-    scroll_on_output: boolean
-    /**
-     * Controls whether or not the terminal will forcibly scroll to the bottom of
-     * the viewable history when the new data is received from the child.
-     */
     scrollOnOutput: boolean
-    /**
-     * Controls whether the terminal's GtkAdjustment values unit is lines
-     * or pixels. This can be enabled when the terminal is the child of a
-     * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
-     */
-    scroll_unit_is_pixels: boolean
     /**
      * Controls whether the terminal's GtkAdjustment values unit is lines
      * or pixels. This can be enabled when the terminal is the child of a
@@ -1350,20 +1092,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
      * For terminal types which have an alternate screen buffer, no scrollback is
      * allowed on the alternate screen buffer.
      */
-    scrollback_lines: number
-    /**
-     * The length of the scrollback buffer used by the terminal.  The size of
-     * the scrollback buffer will be set to the larger of this value and the number
-     * of visible rows the widget can display, so 0 can safely be used to disable
-     * scrollback.  Note that this setting only affects the normal screen buffer.
-     * For terminal types which have an alternate screen buffer, no scrollback is
-     * allowed on the alternate screen buffer.
-     */
     scrollbackLines: number
-    /**
-     * Controls whether or not the terminal will allow blinking text.
-     */
-    text_blink_mode: TextBlinkMode
     /**
      * Controls whether or not the terminal will allow blinking text.
      */
@@ -1371,19 +1100,7 @@ interface Terminal extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, 
     /**
      * The terminal's title.
      */
-    readonly window_title: string | null
-    /**
-     * The terminal's title.
-     */
     readonly windowTitle: string | null
-    /**
-     * The set of characters which will be considered parts of a word
-     * when doing word-wise selection, in addition to the default which only
-     * considers alphanumeric characters part of a word.
-     * 
-     * If %NULL, a built-in set is used.
-     */
-    readonly word_char_exceptions: string | null
     /**
      * The set of characters which will be considered parts of a word
      * when doing word-wise selection, in addition to the default which only

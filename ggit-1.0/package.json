@@ -1,13 +1,19 @@
 {
     "name": "@girs/ggit-1.0",
-    "version": "1.1.0-3.2.7",
+    "version": "1.1.0-3.2.8",
     "description": "GJS TypeScript type definitions for Ggit-1.0, generated from library version 1.1.0",
     "type": "module",
     "module": "ggit-1.0.js",
     "main": "ggit-1.0.js",
     "exports": {
-        "./ambient": "./ggit-1.0-ambient.d.ts",
-        "./import": "./ggit-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./ggit-1.0-ambient.d.ts",
+            "default": "./ggit-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./ggit-1.0-import.d.ts",
+            "default": "./ggit-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./ggit-1.0.d.ts",

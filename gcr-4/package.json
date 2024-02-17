@@ -1,13 +1,19 @@
 {
     "name": "@girs/gcr-4",
-    "version": "4.1.0-3.2.7",
+    "version": "4.1.0-3.2.8",
     "description": "GJS TypeScript type definitions for Gcr-4, generated from library version 4.1.0",
     "type": "module",
     "module": "gcr-4.js",
     "main": "gcr-4.js",
     "exports": {
-        "./ambient": "./gcr-4-ambient.d.ts",
-        "./import": "./gcr-4-import.d.ts",
+        "./ambient": {
+            "types": "./gcr-4-ambient.d.ts",
+            "default": "./gcr-4-ambient.js"
+        },
+        "./import": {
+            "types": "./gcr-4-import.d.ts",
+            "default": "./gcr-4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gcr-4.d.ts",

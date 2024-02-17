@@ -123,18 +123,18 @@ export module DocumentModel {
 
         continuous?: boolean | null
         document?: EvinceDocument.Document | null
-        dualOddLeft?: boolean | null
-        dualPage?: boolean | null
+        dual_odd_left?: boolean | null
+        dual_page?: boolean | null
         fullscreen?: boolean | null
-        invertedColors?: boolean | null
-        maxScale?: number | null
-        minScale?: number | null
+        inverted_colors?: boolean | null
+        max_scale?: number | null
+        min_scale?: number | null
         page?: number | null
-        pageLayout?: PageLayout | null
+        page_layout?: PageLayout | null
         rotation?: number | null
         rtl?: boolean | null
         scale?: number | null
-        sizingMode?: SizingMode | null
+        sizing_mode?: SizingMode | null
     }
 
 }
@@ -2214,9 +2214,9 @@ export module ViewPresentation {
 
         // Own constructor properties of EvinceView-3.0.EvinceView.ViewPresentation
 
-        currentPage?: number | null
+        current_page?: number | null
         document?: EvinceDocument.Document | null
-        invertedColors?: boolean | null
+        inverted_colors?: boolean | null
         rotation?: number | null
     }
 

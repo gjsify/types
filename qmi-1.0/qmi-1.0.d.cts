@@ -16480,11 +16480,6 @@ export module Client {
 
         // Own constructor properties of Qmi-1.0.Qmi.Client
 
-        client_cid?: number | null
-        client_device?: Device | null
-        client_service?: Service | null
-        client_version_major?: number | null
-        client_version_minor?: number | null
         clientCid?: number | null
         clientDevice?: Device | null
         clientService?: Service | null
@@ -16498,17 +16493,11 @@ export interface Client {
 
     // Own properties of Qmi-1.0.Qmi.Client
 
-    client_cid: number
     clientCid: number
-    client_device: Device
     clientDevice: Device
-    client_service: Service
     clientService: Service
-    readonly client_valid: boolean
     readonly clientValid: boolean
-    client_version_major: number
     clientVersionMajor: number
-    client_version_minor: number
     clientVersionMinor: number
 
     // Owm methods of Qmi-1.0.Qmi.Client
@@ -22979,10 +22968,6 @@ export module Device {
 
         // Own constructor properties of Qmi-1.0.Qmi.Device
 
-        device_file?: Gio.File | null
-        device_no_file_check?: boolean | null
-        device_node?: Qrtr.Node | null
-        device_proxy_path?: string | null
         deviceFile?: Gio.File | null
         deviceNoFileCheck?: boolean | null
         deviceNode?: Qrtr.Node | null
@@ -22995,17 +22980,11 @@ export interface Device extends Gio.AsyncInitable {
 
     // Own properties of Qmi-1.0.Qmi.Device
 
-    readonly device_consecutive_timeouts: number
     readonly deviceConsecutiveTimeouts: number
-    readonly device_file: Gio.File
     readonly deviceFile: Gio.File
-    readonly device_no_file_check: boolean
     readonly deviceNoFileCheck: boolean
-    readonly device_node: Qrtr.Node
     readonly deviceNode: Qrtr.Node
-    readonly device_proxy_path: string | null
     readonly deviceProxyPath: string | null
-    readonly device_wwan_iface: string | null
     readonly deviceWwanIface: string | null
 
     // Owm methods of Qmi-1.0.Qmi.Device
@@ -23539,7 +23518,6 @@ export interface Proxy {
 
     // Own properties of Qmi-1.0.Qmi.Proxy
 
-    readonly qmi_proxy_n_clients: number
     readonly qmiProxyNClients: number
 
     // Own fields of Qmi-1.0.Qmi.Proxy

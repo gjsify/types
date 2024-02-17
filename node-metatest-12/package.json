@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-metatest-12",
-    "version": "12.0.0-3.2.7",
+    "version": "12.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for MetaTest-12, generated from library version 12.0.0",
     "type": "module",
     "module": "node-metatest-12.js",
     "main": "node-metatest-12.js",
     "exports": {
-        "./ambient": "./node-metatest-12-ambient.d.ts",
-        "./import": "./node-metatest-12-import.d.ts",
+        "./ambient": {
+            "types": "./node-metatest-12-ambient.d.ts",
+            "default": "./node-metatest-12-ambient.js"
+        },
+        "./import": {
+            "types": "./node-metatest-12-import.d.ts",
+            "default": "./node-metatest-12-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-metatest-12.d.ts",

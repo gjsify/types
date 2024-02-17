@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gegl-0.4",
-    "version": "0.4.47-3.2.7",
+    "version": "0.4.47-3.2.8",
     "description": "Node.js TypeScript type definitions for Gegl-0.4, generated from library version 0.4.47",
     "type": "module",
     "module": "node-gegl-0.4.js",
     "main": "node-gegl-0.4.js",
     "exports": {
-        "./ambient": "./node-gegl-0.4-ambient.d.ts",
-        "./import": "./node-gegl-0.4-import.d.ts",
+        "./ambient": {
+            "types": "./node-gegl-0.4-ambient.d.ts",
+            "default": "./node-gegl-0.4-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gegl-0.4-import.d.ts",
+            "default": "./node-gegl-0.4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gegl-0.4.d.ts",

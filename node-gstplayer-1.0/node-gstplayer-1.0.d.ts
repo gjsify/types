@@ -287,16 +287,16 @@ module Player {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.Player
 
-        audioVideoOffset?: number | null
+        audio_video_offset?: number | null
         mute?: boolean | null
         rate?: number | null
-        signalDispatcher?: PlayerSignalDispatcher | null
-        subtitleVideoOffset?: number | null
+        signal_dispatcher?: PlayerSignalDispatcher | null
+        subtitle_video_offset?: number | null
         suburi?: string | null
         uri?: string | null
-        videoMultiviewFlags?: GstVideo.VideoMultiviewFlags | null
-        videoMultiviewMode?: GstVideo.VideoMultiviewFramePacking | null
-        videoRenderer?: PlayerVideoRenderer | null
+        video_multiview_flags?: GstVideo.VideoMultiviewFlags | null
+        video_multiview_mode?: GstVideo.VideoMultiviewFramePacking | null
+        video_renderer?: PlayerVideoRenderer | null
         volume?: number | null
     }
 
@@ -905,7 +905,7 @@ module PlayerGMainContextSignalDispatcher {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.PlayerGMainContextSignalDispatcher
 
-        applicationContext?: GLib.MainContext | null
+        application_context?: GLib.MainContext | null
     }
 
 }
@@ -1212,8 +1212,8 @@ module PlayerVideoOverlayVideoRenderer {
 
         // Own constructor properties of GstPlayer-1.0.GstPlayer.PlayerVideoOverlayVideoRenderer
 
-        videoSink?: Gst.Element | null
-        windowHandle?: any | null
+        video_sink?: Gst.Element | null
+        window_handle?: any | null
     }
 
 }

@@ -575,7 +575,7 @@ module Core {
 
         // Own constructor properties of Retro-0.14.Retro.Core
 
-        contentDirectory?: string | null
+        content_directory?: string | null
         /**
          * The number of frame to run ahead of time.
          */
@@ -585,14 +585,14 @@ module Core {
          * 
          * The core will save some data here.
          */
-        saveDirectory?: string | null
+        save_directory?: string | null
         /**
          * The system directory of the core.
          * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          */
-        systemDirectory?: string | null
+        system_directory?: string | null
     }
 
 }
@@ -1118,8 +1118,8 @@ module CoreView {
 
         // Own constructor properties of Retro-0.14.Retro.CoreView
 
-        canGrabPointer?: boolean | null
-        snapPointerToBorders?: boolean | null
+        can_grab_pointer?: boolean | null
+        snap_pointer_to_borders?: boolean | null
     }
 
 }
@@ -1688,7 +1688,7 @@ module MainLoop {
         // Own constructor properties of Retro-0.14.Retro.MainLoop
 
         core?: Core | null
-        speedRate?: number | null
+        speed_rate?: number | null
     }
 
 }

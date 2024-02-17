@@ -731,27 +731,27 @@ export module HitTestResult {
          * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
          * is present in #WebKitHitTestResult:context
          */
-        imageUri?: string | null
+        image_uri?: string | null
         /**
          * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkLabel?: string | null
+        link_label?: string | null
         /**
          * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkTitle?: string | null
+        link_title?: string | null
         /**
          * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
          * is present in #WebKitHitTestResult:context
          */
-        linkUri?: string | null
+        link_uri?: string | null
         /**
          * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
          * is present in #WebKitHitTestResult:context
          */
-        mediaUri?: string | null
+        media_uri?: string | null
     }
 
 }
@@ -1316,7 +1316,7 @@ export module UserMessage {
         /**
          * The UNIX file descriptors of the user message.
          */
-        fdList?: Gio.UnixFDList | null
+        fd_list?: Gio.UnixFDList | null
         /**
          * The name of the user message.
          */

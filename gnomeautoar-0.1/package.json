@@ -1,13 +1,19 @@
 {
     "name": "@girs/gnomeautoar-0.1",
-    "version": "0.1.0-3.2.7",
+    "version": "0.1.0-3.2.8",
     "description": "GJS TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "gnomeautoar-0.1.js",
     "main": "gnomeautoar-0.1.js",
     "exports": {
-        "./ambient": "./gnomeautoar-0.1-ambient.d.ts",
-        "./import": "./gnomeautoar-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./gnomeautoar-0.1-ambient.d.ts",
+            "default": "./gnomeautoar-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./gnomeautoar-0.1-import.d.ts",
+            "default": "./gnomeautoar-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gnomeautoar-0.1.d.ts",

@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gtk-3.0",
-    "version": "3.24.41-3.2.7",
-    "description": "Node.js TypeScript type definitions for Gtk-3.0, generated from library version 3.24.41",
+    "version": "3.24.39-3.2.8",
+    "description": "Node.js TypeScript type definitions for Gtk-3.0, generated from library version 3.24.39",
     "type": "module",
     "module": "node-gtk-3.0.js",
     "main": "node-gtk-3.0.js",
     "exports": {
-        "./ambient": "./node-gtk-3.0-ambient.d.ts",
-        "./import": "./node-gtk-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-gtk-3.0-ambient.d.ts",
+            "default": "./node-gtk-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gtk-3.0-import.d.ts",
+            "default": "./node-gtk-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gtk-3.0.d.ts",

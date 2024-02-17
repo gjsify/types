@@ -1,13 +1,19 @@
 {
     "name": "@girs/clutter-11",
-    "version": "11.0.0-3.2.7",
+    "version": "11.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Clutter-11, generated from library version 11.0.0",
     "type": "module",
     "module": "clutter-11.js",
     "main": "clutter-11.js",
     "exports": {
-        "./ambient": "./clutter-11-ambient.d.ts",
-        "./import": "./clutter-11-import.d.ts",
+        "./ambient": {
+            "types": "./clutter-11-ambient.d.ts",
+            "default": "./clutter-11-ambient.js"
+        },
+        "./import": {
+            "types": "./clutter-11-import.d.ts",
+            "default": "./clutter-11-import.js"
+        },
         ".": {
             "import": {
                 "types": "./clutter-11.d.ts",

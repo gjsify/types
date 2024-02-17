@@ -1,13 +1,19 @@
 {
     "name": "@girs/geocodeglib-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GeocodeGlib-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "geocodeglib-1.0.js",
     "main": "geocodeglib-1.0.js",
     "exports": {
-        "./ambient": "./geocodeglib-1.0-ambient.d.ts",
-        "./import": "./geocodeglib-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./geocodeglib-1.0-ambient.d.ts",
+            "default": "./geocodeglib-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./geocodeglib-1.0-import.d.ts",
+            "default": "./geocodeglib-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./geocodeglib-1.0.d.ts",

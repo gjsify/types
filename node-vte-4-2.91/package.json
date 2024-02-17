@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-vte-4-2.91",
-    "version": "0.69.0-3.2.7",
+    "version": "0.69.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Vte-4-2.91, generated from library version 0.69.0",
     "type": "module",
     "module": "node-vte-4-2.91.js",
     "main": "node-vte-4-2.91.js",
     "exports": {
-        "./ambient": "./node-vte-4-2.91-ambient.d.ts",
-        "./import": "./node-vte-4-2.91-import.d.ts",
+        "./ambient": {
+            "types": "./node-vte-4-2.91-ambient.d.ts",
+            "default": "./node-vte-4-2.91-ambient.js"
+        },
+        "./import": {
+            "types": "./node-vte-4-2.91-import.d.ts",
+            "default": "./node-vte-4-2.91-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-vte-4-2.91.d.ts",

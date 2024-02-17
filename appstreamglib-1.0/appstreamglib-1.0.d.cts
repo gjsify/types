@@ -5119,12 +5119,10 @@ export module Review {
         id?: string | null
         locale?: string | null
         rating?: number | null
-        reviewer_id?: string | null
-        reviewer_name?: string | null
-        summary?: string | null
-        version?: string | null
         reviewerId?: string | null
         reviewerName?: string | null
+        summary?: string | null
+        version?: string | null
     }
 
 }
@@ -5139,9 +5137,7 @@ export interface Review {
     id: string | null
     locale: string | null
     rating: number
-    reviewer_id: string | null
     reviewerId: string | null
-    reviewer_name: string | null
     reviewerName: string | null
     summary: string | null
     version: string | null

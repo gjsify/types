@@ -98,7 +98,7 @@ export module Bus {
 
         // Own constructor properties of Qrtr-1.0.Qrtr.Bus
 
-        lookupTimeout?: number | null
+        lookup_timeout?: number | null
     }
 
 }
@@ -252,8 +252,8 @@ export module Client {
 
         // Own constructor properties of Qrtr-1.0.Qrtr.Client
 
-        clientNode?: Node | null
-        clientPort?: number | null
+        client_node?: Node | null
+        client_port?: number | null
     }
 
 }
@@ -393,7 +393,7 @@ export module Node {
         // Own constructor properties of Qrtr-1.0.Qrtr.Node
 
         bus?: Bus | null
-        nodeId?: number | null
+        node_id?: number | null
     }
 
 }

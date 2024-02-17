@@ -1487,8 +1487,8 @@ export module Client {
 
         // Own constructor properties of ECal-2.0.ECal.Client
 
-        defaultTimezone?: ICalGLib.Timezone | null
-        sourceType?: ClientSourceType | null
+        default_timezone?: ICalGLib.Timezone | null
+        source_type?: ClientSourceType | null
     }
 
 }
@@ -2540,7 +2540,7 @@ export module ClientView {
         /**
          * The object path used to create the D-Bus proxy
          */
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }
@@ -3465,7 +3465,7 @@ export module ReminderWatcher {
         /**
          * An #ICalTimezone to be used as the default time zone.
          */
-        defaultZone?: ICalGLib.Timezone | null
+        default_zone?: ICalGLib.Timezone | null
         /**
          * The #ESourceRegistry which manages #ESource instances.
          */
@@ -3477,7 +3477,7 @@ export module ReminderWatcher {
          * 
          * Default: %TRUE
          */
-        timersEnabled?: boolean | null
+        timers_enabled?: boolean | null
     }
 
 }

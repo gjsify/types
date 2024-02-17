@@ -931,12 +931,6 @@ export module StyleSchemeChooser {
          * scheme. The property can be set to change
          * the current selection programmatically.
          */
-        style_scheme?: StyleScheme | null
-        /**
-         * The :style-scheme property contains the currently selected style
-         * scheme. The property can be set to change
-         * the current selection programmatically.
-         */
         styleScheme?: StyleScheme | null
     }
 
@@ -946,12 +940,6 @@ export interface StyleSchemeChooser {
 
     // Own properties of GtkSource-4.GtkSource.StyleSchemeChooser
 
-    /**
-     * The :style-scheme property contains the currently selected style
-     * scheme. The property can be set to change
-     * the current selection programmatically.
-     */
-    style_scheme: StyleScheme
     /**
      * The :style-scheme property contains the currently selected style
      * scheme. The property can be set to change
@@ -1212,32 +1200,6 @@ export module Buffer {
         /**
          * Whether to highlight matching brackets in the buffer.
          */
-        highlight_matching_brackets?: boolean | null
-        /**
-         * Whether to highlight syntax in the buffer.
-         */
-        highlight_syntax?: boolean | null
-        /**
-         * Whether the buffer has an implicit trailing newline. See
-         * gtk_source_buffer_set_implicit_trailing_newline().
-         */
-        implicit_trailing_newline?: boolean | null
-        language?: Language | null
-        /**
-         * Number of undo levels for the buffer. -1 means no limit. This property
-         * will only affect the default undo manager.
-         */
-        max_undo_levels?: number | null
-        /**
-         * Style scheme. It contains styles for syntax highlighting, optionally
-         * foreground, background, cursor color, current line color, and matching
-         * brackets style.
-         */
-        style_scheme?: StyleScheme | null
-        undo_manager?: UndoManager | null
-        /**
-         * Whether to highlight matching brackets in the buffer.
-         */
         highlightMatchingBrackets?: boolean | null
         /**
          * Whether to highlight syntax in the buffer.
@@ -1248,6 +1210,7 @@ export module Buffer {
          * gtk_source_buffer_set_implicit_trailing_newline().
          */
         implicitTrailingNewline?: boolean | null
+        language?: Language | null
         /**
          * Number of undo levels for the buffer. -1 means no limit. This property
          * will only affect the default undo manager.
@@ -1268,14 +1231,8 @@ export interface Buffer {
 
     // Own properties of GtkSource-4.GtkSource.Buffer
 
-    readonly can_redo: boolean
     readonly canRedo: boolean
-    readonly can_undo: boolean
     readonly canUndo: boolean
-    /**
-     * Whether to highlight matching brackets in the buffer.
-     */
-    highlight_matching_brackets: boolean
     /**
      * Whether to highlight matching brackets in the buffer.
      */
@@ -1283,16 +1240,7 @@ export interface Buffer {
     /**
      * Whether to highlight syntax in the buffer.
      */
-    highlight_syntax: boolean
-    /**
-     * Whether to highlight syntax in the buffer.
-     */
     highlightSyntax: boolean
-    /**
-     * Whether the buffer has an implicit trailing newline. See
-     * gtk_source_buffer_set_implicit_trailing_newline().
-     */
-    implicit_trailing_newline: boolean
     /**
      * Whether the buffer has an implicit trailing newline. See
      * gtk_source_buffer_set_implicit_trailing_newline().
@@ -1303,25 +1251,13 @@ export interface Buffer {
      * Number of undo levels for the buffer. -1 means no limit. This property
      * will only affect the default undo manager.
      */
-    max_undo_levels: number
-    /**
-     * Number of undo levels for the buffer. -1 means no limit. This property
-     * will only affect the default undo manager.
-     */
     maxUndoLevels: number
     /**
      * Style scheme. It contains styles for syntax highlighting, optionally
      * foreground, background, cursor color, current line color, and matching
      * brackets style.
      */
-    style_scheme: StyleScheme
-    /**
-     * Style scheme. It contains styles for syntax highlighting, optionally
-     * foreground, background, cursor color, current line color, and matching
-     * brackets style.
-     */
     styleScheme: StyleScheme
-    undo_manager: UndoManager
     undoManager: UndoManager
 
     // Own fields of GtkSource-4.GtkSource.Buffer
@@ -1350,6 +1286,17 @@ export interface Buffer {
      * gtk_source_buffer_end_not_undoable_action() blocks.
      */
     begin_not_undoable_action(): void
+    /**
+     * Determines whether a source buffer can redo the last action
+     * (i.e. if the last operation was an undo).
+     * @returns %TRUE if a redo is possible.
+     */
+    can_redo(): boolean
+    /**
+     * Determines whether a source buffer can undo the last action.
+     * @returns %TRUE if it's possible to undo the last action.
+     */
+    can_undo(): boolean
     /**
      * Changes the case of the text between the specified iterators.
      * @param case_type how to change the case.
@@ -1829,52 +1776,6 @@ export module Completion {
          * Determines the popup delay (in milliseconds) at which the completion
          * will be shown for interactive completion.
          */
-        auto_complete_delay?: number | null
-        /**
-         * The scroll page size of the proposals in the completion window. In
-         * other words, when <keycap>PageDown</keycap> or
-         * <keycap>PageUp</keycap> is pressed, the selected
-         * proposal becomes the one which is located one page size backward or
-         * forward.
-         * 
-         * See also the #GtkSourceCompletion::move-cursor signal.
-         */
-        proposal_page_size?: number | null
-        /**
-         * The scroll page size of the provider pages in the completion window.
-         * 
-         * See the #GtkSourceCompletion::move-page signal.
-         */
-        provider_page_size?: number | null
-        /**
-         * Determines whether the visibility of the info window should be
-         * saved when the completion is hidden, and restored when the completion
-         * is shown again.
-         */
-        remember_info_visibility?: boolean | null
-        /**
-         * Determines whether the first proposal should be selected when the
-         * completion is first shown.
-         */
-        select_on_show?: boolean | null
-        /**
-         * Determines whether provider headers should be shown in the proposal
-         * list. It can be useful to disable when there is only one provider.
-         */
-        show_headers?: boolean | null
-        /**
-         * Determines whether provider and proposal icons should be shown in
-         * the completion popup.
-         */
-        show_icons?: boolean | null
-        /**
-         * The #GtkSourceView bound to the completion object.
-         */
-        view?: View | null
-        /**
-         * Determines the popup delay (in milliseconds) at which the completion
-         * will be shown for interactive completion.
-         */
         autoCompleteDelay?: number | null
         /**
          * The scroll page size of the proposals in the completion window. In
@@ -1913,6 +1814,10 @@ export module Completion {
          * the completion popup.
          */
         showIcons?: boolean | null
+        /**
+         * The #GtkSourceView bound to the completion object.
+         */
+        view?: View | null
     }
 
 }
@@ -1931,22 +1836,7 @@ export interface Completion extends Gtk.Buildable {
      * Determines the popup delay (in milliseconds) at which the completion
      * will be shown for interactive completion.
      */
-    auto_complete_delay: number
-    /**
-     * Determines the popup delay (in milliseconds) at which the completion
-     * will be shown for interactive completion.
-     */
     autoCompleteDelay: number
-    /**
-     * The scroll page size of the proposals in the completion window. In
-     * other words, when <keycap>PageDown</keycap> or
-     * <keycap>PageUp</keycap> is pressed, the selected
-     * proposal becomes the one which is located one page size backward or
-     * forward.
-     * 
-     * See also the #GtkSourceCompletion::move-cursor signal.
-     */
-    proposal_page_size: number
     /**
      * The scroll page size of the proposals in the completion window. In
      * other words, when <keycap>PageDown</keycap> or
@@ -1962,19 +1852,7 @@ export interface Completion extends Gtk.Buildable {
      * 
      * See the #GtkSourceCompletion::move-page signal.
      */
-    provider_page_size: number
-    /**
-     * The scroll page size of the provider pages in the completion window.
-     * 
-     * See the #GtkSourceCompletion::move-page signal.
-     */
     providerPageSize: number
-    /**
-     * Determines whether the visibility of the info window should be
-     * saved when the completion is hidden, and restored when the completion
-     * is shown again.
-     */
-    remember_info_visibility: boolean
     /**
      * Determines whether the visibility of the info window should be
      * saved when the completion is hidden, and restored when the completion
@@ -1985,27 +1863,12 @@ export interface Completion extends Gtk.Buildable {
      * Determines whether the first proposal should be selected when the
      * completion is first shown.
      */
-    select_on_show: boolean
-    /**
-     * Determines whether the first proposal should be selected when the
-     * completion is first shown.
-     */
     selectOnShow: boolean
     /**
      * Determines whether provider headers should be shown in the proposal
      * list. It can be useful to disable when there is only one provider.
      */
-    show_headers: boolean
-    /**
-     * Determines whether provider headers should be shown in the proposal
-     * list. It can be useful to disable when there is only one provider.
-     */
     showHeaders: boolean
-    /**
-     * Determines whether provider and proposal icons should be shown in
-     * the completion popup.
-     */
-    show_icons: boolean
     /**
      * Determines whether provider and proposal icons should be shown in
      * the completion popup.
@@ -2691,7 +2554,7 @@ export module CompletionItem {
         /**
          * The icon name for the icon to be shown for this proposal.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * Optional extra information to be shown for this proposal.
          */
@@ -2708,10 +2571,6 @@ export module CompletionItem {
          * Proposal text.
          */
         text?: string | null
-        /**
-         * The icon name for the icon to be shown for this proposal.
-         */
-        iconName?: string | null
     }
 
 }
@@ -2728,10 +2587,6 @@ export interface CompletionItem extends CompletionProposal {
      * The #GdkPixbuf for the icon to be shown for this proposal.
      */
     icon: GdkPixbuf.Pixbuf
-    /**
-     * The icon name for the icon to be shown for this proposal.
-     */
-    icon_name: string | null
     /**
      * The icon name for the icon to be shown for this proposal.
      */
@@ -2837,14 +2692,10 @@ export module CompletionWords {
          */
         activation?: CompletionActivation | null
         icon?: GdkPixbuf.Pixbuf | null
-        interactive_delay?: number | null
-        minimum_word_size?: number | null
-        name?: string | null
-        priority?: number | null
-        proposals_batch_size?: number | null
-        scan_batch_size?: number | null
         interactiveDelay?: number | null
         minimumWordSize?: number | null
+        name?: string | null
+        priority?: number | null
         proposalsBatchSize?: number | null
         scanBatchSize?: number | null
     }
@@ -2860,15 +2711,11 @@ export interface CompletionWords extends CompletionProvider {
      */
     activation: CompletionActivation
     icon: GdkPixbuf.Pixbuf
-    interactive_delay: number
     interactiveDelay: number
-    minimum_word_size: number
     minimumWordSize: number
     name: string | null
     priority: number
-    proposals_batch_size: number
     proposalsBatchSize: number
-    scan_batch_size: number
     scanBatchSize: number
 
     // Own fields of GtkSource-4.GtkSource.CompletionWords
@@ -2959,10 +2806,6 @@ export interface File {
     /**
      * The compression type.
      */
-    readonly compression_type: CompressionType
-    /**
-     * The compression type.
-     */
     readonly compressionType: CompressionType
     /**
      * The character encoding, initially %NULL. After a successful file
@@ -2976,16 +2819,7 @@ export interface File {
     /**
      * The line ending type.
      */
-    readonly newline_type: NewlineType
-    /**
-     * The line ending type.
-     */
     readonly newlineType: NewlineType
-    /**
-     * Whether the file is read-only or not. The value of this property is
-     * not updated automatically (there is no file monitors).
-     */
-    readonly read_only: boolean
     /**
      * Whether the file is read-only or not. The value of this property is
      * not updated automatically (there is no file monitors).
@@ -3119,18 +2953,13 @@ export module FileLoader {
          * The #GInputStream to load. Useful for reading stdin. If this property
          * is set, the #GtkSourceFileLoader:location property is ignored.
          */
-        input_stream?: Gio.InputStream | null
+        inputStream?: Gio.InputStream | null
         /**
          * The #GFile to load. If the #GtkSourceFileLoader:input-stream is
          * %NULL, by default the location is taken from the #GtkSourceFile at
          * construction time.
          */
         location?: Gio.File | null
-        /**
-         * The #GInputStream to load. Useful for reading stdin. If this property
-         * is set, the #GtkSourceFileLoader:location property is ignored.
-         */
-        inputStream?: Gio.InputStream | null
     }
 
 }
@@ -3149,11 +2978,6 @@ export interface FileLoader {
      * reference to the file.
      */
     readonly file: File
-    /**
-     * The #GInputStream to load. Useful for reading stdin. If this property
-     * is set, the #GtkSourceFileLoader:location property is ignored.
-     */
-    readonly input_stream: Gio.InputStream
     /**
      * The #GInputStream to load. Useful for reading stdin. If this property
      * is set, the #GtkSourceFileLoader:location property is ignored.
@@ -3313,7 +3137,7 @@ export module FileSaver {
         /**
          * The compression type.
          */
-        compression_type?: CompressionType | null
+        compressionType?: CompressionType | null
         /**
          * The file's encoding.
          */
@@ -3335,14 +3159,6 @@ export module FileSaver {
         /**
          * The newline type.
          */
-        newline_type?: NewlineType | null
-        /**
-         * The compression type.
-         */
-        compressionType?: CompressionType | null
-        /**
-         * The newline type.
-         */
         newlineType?: NewlineType | null
     }
 
@@ -3357,10 +3173,6 @@ export interface FileSaver {
      * weak reference to the buffer.
      */
     readonly buffer: Buffer
-    /**
-     * The compression type.
-     */
-    compression_type: CompressionType
     /**
      * The compression type.
      */
@@ -3383,10 +3195,6 @@ export interface FileSaver {
      * from the #GtkSourceFile at construction time.
      */
     readonly location: Gio.File
-    /**
-     * The newline type.
-     */
-    newline_type: NewlineType
     /**
      * The newline type.
      */
@@ -3558,10 +3366,6 @@ export module Gutter {
         /**
          * The text window type on which the window is placed.
          */
-        window_type?: Gtk.TextWindowType | null
-        /**
-         * The text window type on which the window is placed.
-         */
         windowType?: Gtk.TextWindowType | null
     }
 
@@ -3575,10 +3379,6 @@ export interface Gutter {
      * The #GtkSourceView of the gutter.
      */
     readonly view: View
-    /**
-     * The text window type on which the window is placed.
-     */
-    readonly window_type: Gtk.TextWindowType
     /**
      * The text window type on which the window is placed.
      */
@@ -3705,9 +3505,9 @@ export module GutterRenderer {
          * the alignment should work on either the full cell, the first line
          * or the last line.
          */
-        alignment_mode?: GutterRendererAlignmentMode | null
-        background_rgba?: Gdk.RGBA | null
-        background_set?: boolean | null
+        alignmentMode?: GutterRendererAlignmentMode | null
+        backgroundRgba?: Gdk.RGBA | null
+        backgroundSet?: boolean | null
         size?: number | null
         /**
          * The visibility of the renderer.
@@ -3733,15 +3533,6 @@ export module GutterRenderer {
          * The top and bottom padding of the renderer.
          */
         ypad?: number | null
-        /**
-         * The alignment mode of the renderer. This can be used to indicate
-         * that in the case a cell spans multiple lines (due to text wrapping)
-         * the alignment should work on either the full cell, the first line
-         * or the last line.
-         */
-        alignmentMode?: GutterRendererAlignmentMode | null
-        backgroundRgba?: Gdk.RGBA | null
-        backgroundSet?: boolean | null
     }
 
 }
@@ -3756,17 +3547,8 @@ export interface GutterRenderer {
      * the alignment should work on either the full cell, the first line
      * or the last line.
      */
-    alignment_mode: GutterRendererAlignmentMode
-    /**
-     * The alignment mode of the renderer. This can be used to indicate
-     * that in the case a cell spans multiple lines (due to text wrapping)
-     * the alignment should work on either the full cell, the first line
-     * or the last line.
-     */
     alignmentMode: GutterRendererAlignmentMode
-    background_rgba: Gdk.RGBA
     backgroundRgba: Gdk.RGBA
-    background_set: boolean
     backgroundSet: boolean
     size: number
     /**
@@ -3777,11 +3559,6 @@ export interface GutterRenderer {
      * The visibility of the renderer.
      */
     visible: boolean
-    /**
-     * The window type of the view on which the renderer is placed (left,
-     * or right).
-     */
-    readonly window_type: Gtk.TextWindowType
     /**
      * The window type of the view on which the renderer is placed (left,
      * or right).
@@ -4171,9 +3948,8 @@ export module GutterRendererPixbuf {
         // Own constructor properties of GtkSource-4.GtkSource.GutterRendererPixbuf
 
         gicon?: Gio.Icon | null
-        icon_name?: string | null
-        pixbuf?: GdkPixbuf.Pixbuf | null
         iconName?: string | null
+        pixbuf?: GdkPixbuf.Pixbuf | null
     }
 
 }
@@ -4183,7 +3959,6 @@ export interface GutterRendererPixbuf {
     // Own properties of GtkSource-4.GtkSource.GutterRendererPixbuf
 
     gicon: Gio.Icon
-    icon_name: string | null
     iconName: string | null
     pixbuf: GdkPixbuf.Pixbuf
 
@@ -4518,7 +4293,6 @@ export module LanguageManager {
 
         // Own constructor properties of GtkSource-4.GtkSource.LanguageManager
 
-        search_path?: string[] | null
         searchPath?: string[] | null
     }
 
@@ -4528,9 +4302,7 @@ export interface LanguageManager {
 
     // Own properties of GtkSource-4.GtkSource.LanguageManager
 
-    readonly language_ids: string[]
     readonly languageIds: string[]
-    search_path: string[]
     searchPath: string[]
 
     // Own fields of GtkSource-4.GtkSource.LanguageManager
@@ -4668,9 +4440,8 @@ export module Map {
 
         // Own constructor properties of GtkSource-4.GtkSource.Map
 
-        font_desc?: Pango.FontDescription | null
-        view?: View | null
         fontDesc?: Pango.FontDescription | null
+        view?: View | null
     }
 
 }
@@ -4679,7 +4450,6 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
 
     // Own properties of GtkSource-4.GtkSource.Map
 
-    font_desc: Pango.FontDescription
     fontDesc: Pango.FontDescription
     view: View
 
@@ -5224,15 +4994,11 @@ export module MarkAttributes {
         /**
          * An icon name that may be a base of a rendered icon.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * A #GdkPixbuf that may be a base of a rendered icon.
          */
         pixbuf?: GdkPixbuf.Pixbuf | null
-        /**
-         * An icon name that may be a base of a rendered icon.
-         */
-        iconName?: string | null
     }
 
 }
@@ -5249,10 +5015,6 @@ export interface MarkAttributes {
      * A #GIcon that may be a base of a rendered icon.
      */
     gicon: Gio.Icon
-    /**
-     * An icon name that may be a base of a rendered icon.
-     */
-    icon_name: string | null
     /**
      * An icon name that may be a base of a rendered icon.
      */
@@ -5406,110 +5168,11 @@ export module PrintCompositor {
          * The value of this property cannot be changed anymore after the first
          * call to the gtk_source_print_compositor_paginate() function.
          */
-        body_font_name?: string | null
+        bodyFontName?: string | null
         /**
          * The GtkSourceBuffer object to print.
          */
         buffer?: Buffer | null
-        /**
-         * Name of the font used to print page footer.
-         * If this property is unspecified, the text body font is used.
-         * 
-         * Accepted values are strings representing a font description Pango can understand.
-         * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-         * for a description of the format of the string representation.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        footer_font_name?: string | null
-        /**
-         * Name of the font used to print page header.
-         * If this property is unspecified, the text body font is used.
-         * 
-         * Accepted values are strings representing a font description Pango can understand.
-         * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-         * for a description of the format of the string representation.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        header_font_name?: string | null
-        /**
-         * Whether to print the document with highlighted syntax.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        highlight_syntax?: boolean | null
-        /**
-         * Name of the font used to print line numbers on the left margin.
-         * If this property is unspecified, the text body font is used.
-         * 
-         * Accepted values are strings representing a font description Pango can understand.
-         * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-         * for a description of the format of the string representation.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        line_numbers_font_name?: string | null
-        /**
-         * Whether to print a footer in each page.
-         * 
-         * Note that by default the footer format is unspecified, and if it is
-         * unspecified the footer will not be printed, regardless of the value of
-         * this property.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        print_footer?: boolean | null
-        /**
-         * Whether to print a header in each page.
-         * 
-         * Note that by default the header format is unspecified, and if it is
-         * unspecified the header will not be printed, regardless of the value of
-         * this property.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        print_header?: boolean | null
-        /**
-         * Interval of printed line numbers. If this property is set to 0 no
-         * numbers will be printed.  If greater than 0, a number will be
-         * printed every "print-line-numbers" lines (i.e. 1 will print all line numbers).
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        print_line_numbers?: number | null
-        /**
-         * Width of a tab character expressed in spaces.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        tab_width?: number | null
-        /**
-         * Whether to wrap lines never, at word boundaries, or at character boundaries.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        wrap_mode?: Gtk.WrapMode | null
-        /**
-         * Name of the font used for the text body.
-         * 
-         * Accepted values are strings representing a font description Pango can understand.
-         * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-         * for a description of the format of the string representation.
-         * 
-         * The value of this property cannot be changed anymore after the first
-         * call to the gtk_source_print_compositor_paginate() function.
-         */
-        bodyFontName?: string | null
         /**
          * Name of the font used to print page footer.
          * If this property is unspecified, the text body font is used.
@@ -5616,34 +5279,11 @@ export interface PrintCompositor {
      * The value of this property cannot be changed anymore after the first
      * call to the gtk_source_print_compositor_paginate() function.
      */
-    body_font_name: string | null
-    /**
-     * Name of the font used for the text body.
-     * 
-     * Accepted values are strings representing a font description Pango can understand.
-     * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-     * for a description of the format of the string representation.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
     bodyFontName: string | null
     /**
      * The GtkSourceBuffer object to print.
      */
     readonly buffer: Buffer
-    /**
-     * Name of the font used to print page footer.
-     * If this property is unspecified, the text body font is used.
-     * 
-     * Accepted values are strings representing a font description Pango can understand.
-     * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-     * for a description of the format of the string representation.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
-    footer_font_name: string | null
     /**
      * Name of the font used to print page footer.
      * If this property is unspecified, the text body font is used.
@@ -5667,26 +5307,7 @@ export interface PrintCompositor {
      * The value of this property cannot be changed anymore after the first
      * call to the gtk_source_print_compositor_paginate() function.
      */
-    header_font_name: string | null
-    /**
-     * Name of the font used to print page header.
-     * If this property is unspecified, the text body font is used.
-     * 
-     * Accepted values are strings representing a font description Pango can understand.
-     * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-     * for a description of the format of the string representation.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
     headerFontName: string | null
-    /**
-     * Whether to print the document with highlighted syntax.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
-    highlight_syntax: boolean
     /**
      * Whether to print the document with highlighted syntax.
      * 
@@ -5705,40 +5326,12 @@ export interface PrintCompositor {
      * The value of this property cannot be changed anymore after the first
      * call to the gtk_source_print_compositor_paginate() function.
      */
-    line_numbers_font_name: string | null
-    /**
-     * Name of the font used to print line numbers on the left margin.
-     * If this property is unspecified, the text body font is used.
-     * 
-     * Accepted values are strings representing a font description Pango can understand.
-     * (e.g. &quot;Monospace 10&quot;). See pango_font_description_from_string()
-     * for a description of the format of the string representation.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
     lineNumbersFontName: string | null
     /**
      * The number of pages in the document or <code>-1</code> if the
      * document has not been completely paginated.
      */
-    readonly n_pages: number
-    /**
-     * The number of pages in the document or <code>-1</code> if the
-     * document has not been completely paginated.
-     */
     readonly nPages: number
-    /**
-     * Whether to print a footer in each page.
-     * 
-     * Note that by default the footer format is unspecified, and if it is
-     * unspecified the footer will not be printed, regardless of the value of
-     * this property.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
-    print_footer: boolean
     /**
      * Whether to print a footer in each page.
      * 
@@ -5760,27 +5353,7 @@ export interface PrintCompositor {
      * The value of this property cannot be changed anymore after the first
      * call to the gtk_source_print_compositor_paginate() function.
      */
-    print_header: boolean
-    /**
-     * Whether to print a header in each page.
-     * 
-     * Note that by default the header format is unspecified, and if it is
-     * unspecified the header will not be printed, regardless of the value of
-     * this property.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
     printHeader: boolean
-    /**
-     * Interval of printed line numbers. If this property is set to 0 no
-     * numbers will be printed.  If greater than 0, a number will be
-     * printed every "print-line-numbers" lines (i.e. 1 will print all line numbers).
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
-    print_line_numbers: number
     /**
      * Interval of printed line numbers. If this property is set to 0 no
      * numbers will be printed.  If greater than 0, a number will be
@@ -5796,21 +5369,7 @@ export interface PrintCompositor {
      * The value of this property cannot be changed anymore after the first
      * call to the gtk_source_print_compositor_paginate() function.
      */
-    tab_width: number
-    /**
-     * Width of a tab character expressed in spaces.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
     tabWidth: number
-    /**
-     * Whether to wrap lines never, at word boundaries, or at character boundaries.
-     * 
-     * The value of this property cannot be changed anymore after the first
-     * call to the gtk_source_print_compositor_paginate() function.
-     */
-    wrap_mode: Gtk.WrapMode
     /**
      * Whether to wrap lines never, at word boundaries, or at character boundaries.
      * 
@@ -6435,17 +5994,13 @@ export module SearchContext {
         /**
          * A #GtkSourceStyle, or %NULL for theme's scheme default style.
          */
-        match_style?: Style | null
+        matchStyle?: Style | null
         /**
          * The #GtkSourceSearchSettings associated to the search context.
          * 
          * This property is construct-only since version 4.0.
          */
         settings?: SearchSettings | null
-        /**
-         * A #GtkSourceStyle, or %NULL for theme's scheme default style.
-         */
-        matchStyle?: Style | null
     }
 
 }
@@ -6465,31 +6020,13 @@ export interface SearchContext {
     /**
      * A #GtkSourceStyle, or %NULL for theme's scheme default style.
      */
-    match_style: Style
-    /**
-     * A #GtkSourceStyle, or %NULL for theme's scheme default style.
-     */
     matchStyle: Style
     /**
      * The total number of search occurrences. If the search is disabled,
      * the value is 0. If the buffer is not already fully scanned, the value
      * is -1.
      */
-    readonly occurrences_count: number
-    /**
-     * The total number of search occurrences. If the search is disabled,
-     * the value is 0. If the buffer is not already fully scanned, the value
-     * is -1.
-     */
     readonly occurrencesCount: number
-    /**
-     * If the regex search pattern doesn't follow all the rules, this
-     * #GError property will be set. If the pattern is valid, the value is
-     * %NULL.
-     * 
-     * Free with g_error_free().
-     */
-    readonly regex_error: any
     /**
      * If the regex search pattern doesn't follow all the rules, this
      * #GError property will be set. If the pattern is valid, the value is
@@ -6782,32 +6319,6 @@ export module SearchSettings {
          * If %TRUE, a search match must start and end a word. The match can
          * span multiple words.
          */
-        at_word_boundaries?: boolean | null
-        /**
-         * Whether the search is case sensitive.
-         */
-        case_sensitive?: boolean | null
-        /**
-         * Search by regular expressions with
-         * #GtkSourceSearchSettings:search-text as the pattern.
-         */
-        regex_enabled?: boolean | null
-        /**
-         * A search string, or %NULL if the search is disabled. If the regular
-         * expression search is enabled, #GtkSourceSearchSettings:search-text is
-         * the pattern.
-         */
-        search_text?: string | null
-        /**
-         * For a forward search, continue at the beginning of the buffer if no
-         * search occurrence is found. For a backward search, continue at the
-         * end of the buffer.
-         */
-        wrap_around?: boolean | null
-        /**
-         * If %TRUE, a search match must start and end a word. The match can
-         * span multiple words.
-         */
         atWordBoundaries?: boolean | null
         /**
          * Whether the search is case sensitive.
@@ -6842,25 +6353,11 @@ export interface SearchSettings {
      * If %TRUE, a search match must start and end a word. The match can
      * span multiple words.
      */
-    at_word_boundaries: boolean
-    /**
-     * If %TRUE, a search match must start and end a word. The match can
-     * span multiple words.
-     */
     atWordBoundaries: boolean
     /**
      * Whether the search is case sensitive.
      */
-    case_sensitive: boolean
-    /**
-     * Whether the search is case sensitive.
-     */
     caseSensitive: boolean
-    /**
-     * Search by regular expressions with
-     * #GtkSourceSearchSettings:search-text as the pattern.
-     */
-    regex_enabled: boolean
     /**
      * Search by regular expressions with
      * #GtkSourceSearchSettings:search-text as the pattern.
@@ -6871,19 +6368,7 @@ export interface SearchSettings {
      * expression search is enabled, #GtkSourceSearchSettings:search-text is
      * the pattern.
      */
-    search_text: string | null
-    /**
-     * A search string, or %NULL if the search is disabled. If the regular
-     * expression search is enabled, #GtkSourceSearchSettings:search-text is
-     * the pattern.
-     */
     searchText: string | null
-    /**
-     * For a forward search, continue at the beginning of the buffer if no
-     * search occurrence is found. For a backward search, continue at the
-     * end of the buffer.
-     */
-    wrap_around: boolean
     /**
      * For a forward search, continue at the beginning of the buffer if no
      * search occurrence is found. For a backward search, continue at the
@@ -7012,7 +6497,7 @@ export module SpaceDrawer {
         /**
          * Whether the #GtkSourceSpaceDrawer:matrix property is enabled.
          */
-        enable_matrix?: boolean | null
+        enableMatrix?: boolean | null
         /**
          * The :matrix property is a #GVariant property to specify where and
          * what kind of white spaces to draw.
@@ -7029,10 +6514,6 @@ export module SpaceDrawer {
          * By default, %GTK_SOURCE_SPACE_TYPE_ALL is set for all locations.
          */
         matrix?: GLib.Variant | null
-        /**
-         * Whether the #GtkSourceSpaceDrawer:matrix property is enabled.
-         */
-        enableMatrix?: boolean | null
     }
 
 }
@@ -7041,10 +6522,6 @@ export interface SpaceDrawer {
 
     // Own properties of GtkSource-4.GtkSource.SpaceDrawer
 
-    /**
-     * Whether the #GtkSourceSpaceDrawer:matrix property is enabled.
-     */
-    enable_matrix: boolean
     /**
      * Whether the #GtkSourceSpaceDrawer:matrix property is enabled.
      */
@@ -7185,31 +6662,19 @@ export module Style {
         // Own constructor properties of GtkSource-4.GtkSource.Style
 
         background?: string | null
-        background_set?: boolean | null
-        bold?: boolean | null
-        bold_set?: boolean | null
-        foreground?: string | null
-        foreground_set?: boolean | null
-        italic?: boolean | null
-        italic_set?: boolean | null
-        line_background?: string | null
-        line_background_set?: boolean | null
-        pango_underline?: Pango.Underline | null
-        scale?: string | null
-        scale_set?: boolean | null
-        strikethrough?: boolean | null
-        strikethrough_set?: boolean | null
-        underline_color?: string | null
-        underline_color_set?: boolean | null
-        underline_set?: boolean | null
         backgroundSet?: boolean | null
+        bold?: boolean | null
         boldSet?: boolean | null
+        foreground?: string | null
         foregroundSet?: boolean | null
+        italic?: boolean | null
         italicSet?: boolean | null
         lineBackground?: string | null
         lineBackgroundSet?: boolean | null
         pangoUnderline?: Pango.Underline | null
+        scale?: string | null
         scaleSet?: boolean | null
+        strikethrough?: boolean | null
         strikethroughSet?: boolean | null
         underlineColor?: string | null
         underlineColorSet?: boolean | null
@@ -7223,34 +6688,22 @@ export interface Style {
     // Own properties of GtkSource-4.GtkSource.Style
 
     readonly background: string | null
-    readonly background_set: boolean
     readonly backgroundSet: boolean
     readonly bold: boolean
-    readonly bold_set: boolean
     readonly boldSet: boolean
     readonly foreground: string | null
-    readonly foreground_set: boolean
     readonly foregroundSet: boolean
     readonly italic: boolean
-    readonly italic_set: boolean
     readonly italicSet: boolean
-    readonly line_background: string | null
     readonly lineBackground: string | null
-    readonly line_background_set: boolean
     readonly lineBackgroundSet: boolean
-    readonly pango_underline: Pango.Underline
     readonly pangoUnderline: Pango.Underline
     readonly scale: string | null
-    readonly scale_set: boolean
     readonly scaleSet: boolean
     readonly strikethrough: boolean
-    readonly strikethrough_set: boolean
     readonly strikethroughSet: boolean
-    readonly underline_color: string | null
     readonly underlineColor: string | null
-    readonly underline_color_set: boolean
     readonly underlineColorSet: boolean
-    readonly underline_set: boolean
     readonly underlineSet: boolean
 
     // Owm methods of GtkSource-4.GtkSource.Style
@@ -7915,7 +7368,6 @@ export module StyleSchemeManager {
 
         // Own constructor properties of GtkSource-4.GtkSource.StyleSchemeManager
 
-        search_path?: string[] | null
         searchPath?: string[] | null
     }
 
@@ -7925,9 +7377,7 @@ export interface StyleSchemeManager {
 
     // Own properties of GtkSource-4.GtkSource.StyleSchemeManager
 
-    readonly scheme_ids: string[]
     readonly schemeIds: string[]
-    search_path: string[]
     searchPath: string[]
 
     // Own fields of GtkSource-4.GtkSource.StyleSchemeManager
@@ -8044,20 +7494,6 @@ export module Tag {
          * Setting this property also changes #GtkSourceTag:draw-spaces-set to
          * %TRUE.
          */
-        draw_spaces?: boolean | null
-        /**
-         * Whether the #GtkSourceTag:draw-spaces property is set and must be
-         * taken into account.
-         */
-        draw_spaces_set?: boolean | null
-        /**
-         * Whether to draw white spaces. This property takes precedence over the value
-         * defined by the GtkSourceSpaceDrawer's #GtkSourceSpaceDrawer:matrix property
-         * (only where the tag is applied).
-         * 
-         * Setting this property also changes #GtkSourceTag:draw-spaces-set to
-         * %TRUE.
-         */
         drawSpaces?: boolean | null
         /**
          * Whether the #GtkSourceTag:draw-spaces property is set and must be
@@ -8080,21 +7516,7 @@ export interface Tag {
      * Setting this property also changes #GtkSourceTag:draw-spaces-set to
      * %TRUE.
      */
-    draw_spaces: boolean
-    /**
-     * Whether to draw white spaces. This property takes precedence over the value
-     * defined by the GtkSourceSpaceDrawer's #GtkSourceSpaceDrawer:matrix property
-     * (only where the tag is applied).
-     * 
-     * Setting this property also changes #GtkSourceTag:draw-spaces-set to
-     * %TRUE.
-     */
     drawSpaces: boolean
-    /**
-     * Whether the #GtkSourceTag:draw-spaces property is set and must be
-     * taken into account.
-     */
-    draw_spaces_set: boolean
     /**
      * Whether the #GtkSourceTag:draw-spaces property is set and must be
      * taken into account.
@@ -8464,46 +7886,6 @@ export module View {
 
         // Own constructor properties of GtkSource-4.GtkSource.View
 
-        auto_indent?: boolean | null
-        /**
-         * Draw a specific background pattern on the view.
-         */
-        background_pattern?: BackgroundPatternType | null
-        highlight_current_line?: boolean | null
-        indent_on_tab?: boolean | null
-        /**
-         * Width of an indentation step expressed in number of spaces.
-         */
-        indent_width?: number | null
-        insert_spaces_instead_of_tabs?: boolean | null
-        /**
-         * Position of the right margin.
-         */
-        right_margin_position?: number | null
-        /**
-         * Whether to display line mark pixbufs
-         */
-        show_line_marks?: boolean | null
-        /**
-         * Whether to display line numbers
-         */
-        show_line_numbers?: boolean | null
-        /**
-         * Whether to display the right margin.
-         */
-        show_right_margin?: boolean | null
-        /**
-         * Whether smart Backspace should be used.
-         */
-        smart_backspace?: boolean | null
-        /**
-         * Set the behavior of the HOME and END keys.
-         */
-        smart_home_end?: SmartHomeEndType | null
-        /**
-         * Width of a tab character expressed in number of spaces.
-         */
-        tab_width?: number | null
         autoIndent?: boolean | null
         /**
          * Draw a specific background pattern on the view.
@@ -8552,12 +7934,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
 
     // Own properties of GtkSource-4.GtkSource.View
 
-    auto_indent: boolean
     autoIndent: boolean
-    /**
-     * Draw a specific background pattern on the view.
-     */
-    background_pattern: BackgroundPatternType
     /**
      * Draw a specific background pattern on the view.
      */
@@ -8566,24 +7943,13 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * The completion object associated with the view
      */
     readonly completion: Completion
-    highlight_current_line: boolean
     highlightCurrentLine: boolean
-    indent_on_tab: boolean
     indentOnTab: boolean
     /**
      * Width of an indentation step expressed in number of spaces.
      */
-    indent_width: number
-    /**
-     * Width of an indentation step expressed in number of spaces.
-     */
     indentWidth: number
-    insert_spaces_instead_of_tabs: boolean
     insertSpacesInsteadOfTabs: boolean
-    /**
-     * Position of the right margin.
-     */
-    right_margin_position: number
     /**
      * Position of the right margin.
      */
@@ -8591,15 +7957,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
     /**
      * Whether to display line mark pixbufs
      */
-    show_line_marks: boolean
-    /**
-     * Whether to display line mark pixbufs
-     */
     showLineMarks: boolean
-    /**
-     * Whether to display line numbers
-     */
-    show_line_numbers: boolean
     /**
      * Whether to display line numbers
      */
@@ -8607,15 +7965,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
     /**
      * Whether to display the right margin.
      */
-    show_right_margin: boolean
-    /**
-     * Whether to display the right margin.
-     */
     showRightMargin: boolean
-    /**
-     * Whether smart Backspace should be used.
-     */
-    smart_backspace: boolean
     /**
      * Whether smart Backspace should be used.
      */
@@ -8623,23 +7973,11 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
     /**
      * Set the behavior of the HOME and END keys.
      */
-    smart_home_end: SmartHomeEndType
-    /**
-     * Set the behavior of the HOME and END keys.
-     */
     smartHomeEnd: SmartHomeEndType
     /**
      * The #GtkSourceSpaceDrawer object associated with the view.
      */
-    readonly space_drawer: SpaceDrawer
-    /**
-     * The #GtkSourceSpaceDrawer object associated with the view.
-     */
     readonly spaceDrawer: SpaceDrawer
-    /**
-     * Width of a tab character expressed in number of spaces.
-     */
-    tab_width: number
     /**
      * Width of a tab character expressed in number of spaces.
      */

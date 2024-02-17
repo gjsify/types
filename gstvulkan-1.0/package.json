@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstvulkan-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstVulkan-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstvulkan-1.0.js",
     "main": "gstvulkan-1.0.js",
     "exports": {
-        "./ambient": "./gstvulkan-1.0-ambient.d.ts",
-        "./import": "./gstvulkan-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gstvulkan-1.0-ambient.d.ts",
+            "default": "./gstvulkan-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstvulkan-1.0-import.d.ts",
+            "default": "./gstvulkan-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstvulkan-1.0.d.ts",

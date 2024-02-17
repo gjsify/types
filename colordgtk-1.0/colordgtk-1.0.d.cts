@@ -606,7 +606,6 @@ export interface Window {
 
     // Own properties of ColordGtk-1.0.ColordGtk.Window
 
-    readonly Profile: string | null
     readonly profile: string | null
 
     // Own fields of ColordGtk-1.0.ColordGtk.Window

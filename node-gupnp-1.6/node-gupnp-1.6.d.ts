@@ -318,13 +318,13 @@ module Context {
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
          */
-        defaultLanguage?: string | null
+        default_language?: string | null
         /**
          * The preferred subscription timeout: the number of seconds after
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
          */
-        subscriptionTimeout?: number | null
+        subscription_timeout?: number | null
     }
 
 }
@@ -890,7 +890,7 @@ module ContextManager {
          * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
          * for using the default UDA version.
          */
-        udaVersion?: GSSDP.UDAVersion | null
+        uda_version?: GSSDP.UDAVersion | null
     }
 
 }
@@ -1144,7 +1144,7 @@ module ControlPoint {
         /**
          * The resource factory to use. Set to NULL for default factory.
          */
-        resourceFactory?: ResourceFactory | null
+        resource_factory?: ResourceFactory | null
     }
 
 }
@@ -1372,7 +1372,7 @@ module Device {
          * The containing #GUPnPRootDevice, or NULL if this is the root
          * device.
          */
-        rootDevice?: RootDevice | null
+        root_device?: RootDevice | null
     }
 
 }
@@ -1487,7 +1487,7 @@ module DeviceInfo {
         /**
          * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
          */
-        deviceType?: string | null
+        device_type?: string | null
         /**
          * The description document
          */
@@ -1503,7 +1503,7 @@ module DeviceInfo {
         /**
          * The resource factory to use. Set to NULL for default factory.
          */
-        resourceFactory?: ResourceFactory | null
+        resource_factory?: ResourceFactory | null
         /**
          * The UDN of this device.
          */
@@ -1511,7 +1511,7 @@ module DeviceInfo {
         /**
          * The URL base (#GUri).
          */
-        urlBase?: GLib.Uri | null
+        url_base?: GLib.Uri | null
     }
 
 }
@@ -2052,12 +2052,12 @@ module RootDevice {
         /**
          * The path to a folder where description documents are provided.
          */
-        descriptionDir?: string | null
+        description_dir?: string | null
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          */
-        descriptionPath?: string | null
+        description_path?: string | null
     }
 
 }
@@ -2281,7 +2281,7 @@ module Service {
         /**
          * The containing #GUPnPRootDevice.
          */
-        rootDevice?: RootDevice | null
+        root_device?: RootDevice | null
     }
 
 }
@@ -2476,7 +2476,7 @@ module ServiceInfo {
         /**
          * The service type.
          */
-        serviceType?: string | null
+        service_type?: string | null
         /**
          * The UDN of the containing device.
          */
@@ -2484,7 +2484,7 @@ module ServiceInfo {
         /**
          * The URL base (#SoupURI).
          */
-        urlBase?: GLib.Uri | null
+        url_base?: GLib.Uri | null
     }
 
 }

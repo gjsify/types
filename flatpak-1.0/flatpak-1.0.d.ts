@@ -1245,20 +1245,6 @@ module InstalledRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.InstalledRef
 
-        appdata_content_rating?: GLib.HashTable | null
-        appdata_content_rating_type?: string | null
-        appdata_license?: string | null
-        appdata_name?: string | null
-        appdata_summary?: string | null
-        appdata_version?: string | null
-        deploy_dir?: string | null
-        end_of_life?: string | null
-        end_of_life_rebase?: string | null
-        installed_size?: number | null
-        is_current?: boolean | null
-        latest_commit?: string | null
-        origin?: string | null
-        subpaths?: string[] | null
         appdataContentRating?: GLib.HashTable | null
         appdataContentRatingType?: string | null
         appdataLicense?: string | null
@@ -1271,6 +1257,8 @@ module InstalledRef {
         installedSize?: number | null
         isCurrent?: boolean | null
         latestCommit?: string | null
+        origin?: string | null
+        subpaths?: string[] | null
     }
 
 }
@@ -1279,29 +1267,17 @@ interface InstalledRef {
 
     // Own properties of Flatpak-1.0.Flatpak.InstalledRef
 
-    readonly appdata_content_rating: GLib.HashTable
     readonly appdataContentRating: GLib.HashTable
-    readonly appdata_content_rating_type: string | null
     readonly appdataContentRatingType: string | null
-    readonly appdata_license: string | null
     readonly appdataLicense: string | null
-    readonly appdata_name: string | null
     readonly appdataName: string | null
-    readonly appdata_summary: string | null
     readonly appdataSummary: string | null
-    readonly appdata_version: string | null
     readonly appdataVersion: string | null
-    deploy_dir: string | null
     deployDir: string | null
-    readonly end_of_life: string | null
     readonly endOfLife: string | null
-    readonly end_of_life_rebase: string | null
     readonly endOfLifeRebase: string | null
-    installed_size: number
     installedSize: number
-    is_current: boolean
     isCurrent: boolean
-    latest_commit: string | null
     latestCommit: string | null
     origin: string | null
     subpaths: string[]
@@ -1611,11 +1587,10 @@ module Ref {
 
         arch?: string | null
         branch?: string | null
-        collection_id?: string | null
+        collectionId?: string | null
         commit?: string | null
         kind?: RefKind | null
         name?: string | null
-        collectionId?: string | null
     }
 
 }
@@ -1626,7 +1601,6 @@ interface Ref {
 
     readonly arch: string | null
     readonly branch: string | null
-    readonly collection_id: string | null
     readonly collectionId: string | null
     readonly commit: string | null
     readonly kind: RefKind
@@ -1729,13 +1703,10 @@ module RelatedRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.RelatedRef
 
-        should_autoprune?: boolean | null
-        should_delete?: boolean | null
-        should_download?: boolean | null
-        subpaths?: string[] | null
         shouldAutoprune?: boolean | null
         shouldDelete?: boolean | null
         shouldDownload?: boolean | null
+        subpaths?: string[] | null
     }
 
 }
@@ -1744,11 +1715,8 @@ interface RelatedRef {
 
     // Own properties of Flatpak-1.0.Flatpak.RelatedRef
 
-    readonly should_autoprune: boolean
     readonly shouldAutoprune: boolean
-    readonly should_delete: boolean
     readonly shouldDelete: boolean
-    readonly should_download: boolean
     readonly shouldDownload: boolean
     readonly subpaths: string[]
 
@@ -1764,6 +1732,21 @@ interface RelatedRef {
      * @returns A strv, or %NULL
      */
     get_subpaths(): string[]
+    /**
+     * Returns whether to delete when pruning unused refs.
+     * @returns %TRUE if the ref should be considered unused when pruning.
+     */
+    should_autoprune(): boolean
+    /**
+     * Returns whether to auto-delete the ref with the main ref.
+     * @returns %TRUE if the ref should be deleted with the main ref.
+     */
+    should_delete(): boolean
+    /**
+     * Returns whether to auto-download the ref with the main ref.
+     * @returns %TRUE if the ref should be downloaded with the main ref.
+     */
+    should_download(): boolean
 
     // Class property signals of Flatpak-1.0.Flatpak.RelatedRef
 
@@ -2186,16 +2169,11 @@ module RemoteRef {
 
         // Own constructor properties of Flatpak-1.0.Flatpak.RemoteRef
 
-        download_size?: number | null
-        end_of_life?: string | null
-        end_of_life_rebase?: string | null
-        installed_size?: number | null
-        metadata?: GLib.Bytes | null
-        remote_name?: string | null
         downloadSize?: number | null
         endOfLife?: string | null
         endOfLifeRebase?: string | null
         installedSize?: number | null
+        metadata?: GLib.Bytes | null
         remoteName?: string | null
     }
 
@@ -2205,16 +2183,11 @@ interface RemoteRef {
 
     // Own properties of Flatpak-1.0.Flatpak.RemoteRef
 
-    readonly download_size: number
     readonly downloadSize: number
-    readonly end_of_life: string | null
     readonly endOfLife: string | null
-    readonly end_of_life_rebase: string | null
     readonly endOfLifeRebase: string | null
-    readonly installed_size: number
     readonly installedSize: number
     readonly metadata: GLib.Bytes
-    readonly remote_name: string | null
     readonly remoteName: string | null
 
     // Own fields of Flatpak-1.0.Flatpak.RemoteRef

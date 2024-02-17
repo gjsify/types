@@ -162,7 +162,7 @@ export module Notification {
         /**
          * The name of the application for the notification.
          */
-        app_name?: string | null
+        appName?: string | null
         /**
          * The body of the notification.
          */
@@ -170,7 +170,7 @@ export module Notification {
         /**
          * The icon-name of the icon to be displayed on the notification.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * The Id of the notification.
          */
@@ -179,14 +179,6 @@ export module Notification {
          * The summary of the notification.
          */
         summary?: string | null
-        /**
-         * The name of the application for the notification.
-         */
-        appName?: string | null
-        /**
-         * The icon-name of the icon to be displayed on the notification.
-         */
-        iconName?: string | null
     }
 
 }
@@ -195,10 +187,6 @@ export interface Notification {
 
     // Own properties of Notify-0.7.Notify.Notification
 
-    /**
-     * The name of the application for the notification.
-     */
-    app_name: string | null
     /**
      * The name of the application for the notification.
      */
@@ -212,17 +200,7 @@ export interface Notification {
      * 
      * See [signal`Notification:`:closed].
      */
-    readonly closed_reason: number
-    /**
-     * The closed reason of the notification.
-     * 
-     * See [signal`Notification:`:closed].
-     */
     readonly closedReason: number
-    /**
-     * The icon-name of the icon to be displayed on the notification.
-     */
-    icon_name: string | null
     /**
      * The icon-name of the icon to be displayed on the notification.
      */

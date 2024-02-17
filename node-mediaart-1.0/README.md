@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-mediaart-1.0)
 
 
-Node.js TypeScript type definitions for MediaArt-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for MediaArt-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 The libmediaart library is the foundation for media art caching, extraction and lookup for applications on the desktop.
 

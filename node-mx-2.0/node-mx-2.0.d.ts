@@ -376,9 +376,9 @@ module Draggable {
         // Own constructor properties of Mx-2.0.Mx.Draggable
 
         axis?: DragAxis | null
-        dragActor?: Clutter.Actor | null
-        dragEnabled?: boolean | null
-        dragThreshold?: number | null
+        drag_actor?: Clutter.Actor | null
+        drag_enabled?: boolean | null
+        drag_threshold?: number | null
     }
 
 }
@@ -1001,7 +1001,7 @@ module Droppable {
 
         // Own constructor properties of Mx-2.0.Mx.Droppable
 
-        dropEnabled?: boolean | null
+        drop_enabled?: boolean | null
     }
 
 }
@@ -1702,8 +1702,8 @@ module Scrollable {
 
         // Own constructor properties of Mx-2.0.Mx.Scrollable
 
-        horizontalAdjustment?: Adjustment | null
-        verticalAdjustment?: Adjustment | null
+        horizontal_adjustment?: Adjustment | null
+        vertical_adjustment?: Adjustment | null
     }
 
 }
@@ -1791,8 +1791,8 @@ module Stylable {
         // Own constructor properties of Mx-2.0.Mx.Stylable
 
         style?: Style | null
-        styleClass?: string | null
-        stylePseudoClass?: string | null
+        style_class?: string | null
+        style_pseudo_class?: string | null
     }
 
 }
@@ -2037,7 +2037,7 @@ module Action {
         // Own constructor properties of Mx-2.0.Mx.Action
 
         active?: boolean | null
-        displayName?: string | null
+        display_name?: string | null
         icon?: string | null
     }
 
@@ -2297,7 +2297,7 @@ module ActorManager {
         // Own constructor properties of Mx-2.0.Mx.ActorManager
 
         stage?: Clutter.Stage | null
-        timeSlice?: number | null
+        time_slice?: number | null
     }
 
 }
@@ -2552,12 +2552,12 @@ module Adjustment {
 
         // Own constructor properties of Mx-2.0.Mx.Adjustment
 
-        clampValue?: boolean | null
+        clamp_value?: boolean | null
         elastic?: boolean | null
         lower?: number | null
-        pageIncrement?: number | null
-        pageSize?: number | null
-        stepIncrement?: number | null
+        page_increment?: number | null
+        page_size?: number | null
+        step_increment?: number | null
         upper?: number | null
         value?: number | null
     }
@@ -2984,19 +2984,19 @@ module Bin {
         /**
          * The horizontal alignment of the #MxBin child.
          */
-        xAlign: any
+        x_align: any
         /**
          * Whether the child should fill the horizontal allocation
          */
-        xFill?: boolean | null
+        x_fill?: boolean | null
         /**
          * The vertical alignment of the #MxBin child.
          */
-        yAlign: any
+        y_align: any
         /**
          * Whether the child should fill the vertical allocation
          */
-        yFill?: boolean | null
+        y_fill?: boolean | null
     }
 
 }
@@ -3682,9 +3682,9 @@ module BoxLayout {
 
         // Own constructor properties of Mx-2.0.Mx.BoxLayout
 
-        enableAnimations?: boolean | null
+        enable_animations?: boolean | null
         orientation?: Orientation | null
-        scrollToFocused?: boolean | null
+        scroll_to_focused?: boolean | null
         spacing?: number | null
     }
 
@@ -4443,10 +4443,10 @@ module BoxLayoutChild {
         // Own constructor properties of Mx-2.0.Mx.BoxLayoutChild
 
         expand?: boolean | null
-        xAlign?: Align | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yFill?: boolean | null
+        x_align?: Align | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_fill?: boolean | null
     }
 
 }
@@ -4538,13 +4538,13 @@ module Button {
         // Own constructor properties of Mx-2.0.Mx.Button
 
         action?: Action | null
-        iconName?: string | null
-        iconPosition?: Position | null
-        iconSize?: number | null
-        iconVisible?: boolean | null
-        isToggle?: boolean | null
+        icon_name?: string | null
+        icon_position?: Position | null
+        icon_size?: number | null
+        icon_visible?: boolean | null
+        is_toggle?: boolean | null
         label?: string | null
-        labelVisible?: boolean | null
+        label_visible?: boolean | null
         toggled?: boolean | null
     }
 
@@ -5341,8 +5341,8 @@ module ButtonGroup {
 
         // Own constructor properties of Mx-2.0.Mx.ButtonGroup
 
-        activeButton?: Button | null
-        allowNoActive?: boolean | null
+        active_button?: Button | null
+        allow_no_active?: boolean | null
     }
 
 }
@@ -5532,8 +5532,8 @@ module ComboBox {
 
         // Own constructor properties of Mx-2.0.Mx.ComboBox
 
-        activeIconName?: string | null
-        activeText?: string | null
+        active_icon_name?: string | null
+        active_text?: string | null
         index?: number | null
     }
 
@@ -6912,11 +6912,11 @@ module Entry {
 
         // Own constructor properties of Mx-2.0.Mx.Entry
 
-        iconHighlightSuffix?: string | null
-        passwordChar?: number | null
+        icon_highlight_suffix?: string | null
+        password_char?: number | null
         placeholder?: string | null
-        primaryIconTooltipText?: string | null
-        secondaryIconTooltipText?: string | null
+        primary_icon_tooltip_text?: string | null
+        secondary_icon_tooltip_text?: string | null
         text?: string | null
     }
 
@@ -8331,16 +8331,16 @@ module FadeEffect {
 
         // Own constructor properties of Mx-2.0.Mx.FadeEffect
 
-        borderBottom?: number | null
-        borderLeft?: number | null
-        borderRight?: number | null
-        borderTop?: number | null
-        boundsHeight?: number | null
-        boundsWidth?: number | null
-        boundsX?: number | null
-        boundsY?: number | null
+        border_bottom?: number | null
+        border_left?: number | null
+        border_right?: number | null
+        border_top?: number | null
+        bounds_height?: number | null
+        bounds_width?: number | null
+        bounds_x?: number | null
+        bounds_y?: number | null
         color?: Clutter.Color | null
-        freezeUpdate?: boolean | null
+        freeze_update?: boolean | null
     }
 
 }
@@ -9847,15 +9847,15 @@ module Grid {
 
         // Own constructor properties of Mx-2.0.Mx.Grid
 
-        childXAlign?: Align | null
-        childYAlign?: Align | null
-        columnSpacing?: number | null
-        homogenousColumns?: boolean | null
-        homogenousRows?: boolean | null
-        lineAlignment?: Align | null
-        maxStride?: number | null
+        child_x_align?: Align | null
+        child_y_align?: Align | null
+        column_spacing?: number | null
+        homogenous_columns?: boolean | null
+        homogenous_rows?: boolean | null
+        line_alignment?: Align | null
+        max_stride?: number | null
         orientation?: Orientation | null
-        rowSpacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -10543,8 +10543,8 @@ module Icon {
 
         // Own constructor properties of Mx-2.0.Mx.Icon
 
-        iconName?: string | null
-        iconSize?: number | null
+        icon_name?: string | null
+        icon_size?: number | null
     }
 
 }
@@ -11176,7 +11176,7 @@ module IconTheme {
 
         // Own constructor properties of Mx-2.0.Mx.IconTheme
 
-        themeName?: string | null
+        theme_name?: string | null
     }
 
 }
@@ -11320,14 +11320,14 @@ module Image {
 
         // Own constructor properties of Mx-2.0.Mx.Image
 
-        allowUpscale?: boolean | null
+        allow_upscale?: boolean | null
         filename?: string | null
-        imageRotation?: number | null
-        loadAsync?: boolean | null
-        scaleHeightThreshold?: number | null
-        scaleMode?: ImageScaleMode | null
-        scaleWidthThreshold?: number | null
-        transitionDuration?: number | null
+        image_rotation?: number | null
+        load_async?: boolean | null
+        scale_height_threshold?: number | null
+        scale_mode?: ImageScaleMode | null
+        scale_width_threshold?: number | null
+        transition_duration?: number | null
     }
 
 }
@@ -12171,7 +12171,7 @@ module ItemView {
         // Own constructor properties of Mx-2.0.Mx.ItemView
 
         factory?: GObject.Object | null
-        itemType?: GObject.GType | null
+        item_type?: GObject.GType | null
         model?: Clutter.Model | null
     }
 
@@ -12909,17 +12909,17 @@ module KineticScrollView {
 
         // Own constructor properties of Mx-2.0.Mx.KineticScrollView
 
-        accelerationFactor?: number | null
-        clampDuration?: number | null
-        clampMode?: number | null
-        clampToCenter?: boolean | null
+        acceleration_factor?: number | null
+        clamp_duration?: number | null
+        clamp_mode?: number | null
+        clamp_to_center?: boolean | null
         deceleration?: number | null
-        mouseButton?: number | null
+        mouse_button?: number | null
         overshoot?: number | null
-        scrollPolicy?: ScrollPolicy | null
-        snapOnPage?: boolean | null
-        useCaptured?: boolean | null
-        useGrab?: boolean | null
+        scroll_policy?: ScrollPolicy | null
+        snap_on_page?: boolean | null
+        use_captured?: boolean | null
+        use_grab?: boolean | null
     }
 
 }
@@ -13755,22 +13755,22 @@ module Label {
 
         // Own constructor properties of Mx-2.0.Mx.Label
 
-        fadeOut?: boolean | null
+        fade_out?: boolean | null
         /**
          * Whether to wrap the lines of #MxLabel:text if the contents
          * exceed the available allocation.
          */
-        lineWrap?: boolean | null
+        line_wrap?: boolean | null
         /**
          * Show a tooltip when there is not enough space to display the text. If set
          * to %TRUE, this will also cause the #ClutterActor:reactive property to be
          * enabled.
          */
-        showTooltip?: boolean | null
+        show_tooltip?: boolean | null
         text?: string | null
-        useMarkup?: boolean | null
-        xAlign: any
-        yAlign: any
+        use_markup?: boolean | null
+        x_align: any
+        y_align: any
     }
 
 }
@@ -14548,7 +14548,7 @@ module ListView {
         // Own constructor properties of Mx-2.0.Mx.ListView
 
         factory?: GObject.Object | null
-        itemType?: GObject.GType | null
+        item_type?: GObject.GType | null
         model?: Clutter.Model | null
     }
 
@@ -15939,7 +15939,7 @@ module Notebook {
 
         // Own constructor properties of Mx-2.0.Mx.Notebook
 
-        currentPage?: Clutter.Actor | null
+        current_page?: Clutter.Actor | null
     }
 
 }
@@ -16570,9 +16570,9 @@ module Pager {
 
         // Own constructor properties of Mx-2.0.Mx.Pager
 
-        edgePreviews?: boolean | null
-        pageActor?: Clutter.Actor | null
-        pageNum?: number | null
+        edge_previews?: boolean | null
+        page_actor?: Clutter.Actor | null
+        page_num?: number | null
     }
 
 }
@@ -17236,7 +17236,7 @@ module PathBar {
 
         // Own constructor properties of Mx-2.0.Mx.PathBar
 
-        clearOnChange?: boolean | null
+        clear_on_change?: boolean | null
         editable?: boolean | null
     }
 
@@ -19229,9 +19229,9 @@ module ScrollView {
 
         // Own constructor properties of Mx-2.0.Mx.ScrollView
 
-        enableMouseScrolling?: boolean | null
-        scrollPolicy?: ScrollPolicy | null
-        scrollVisibility?: ScrollPolicy | null
+        enable_mouse_scrolling?: boolean | null
+        scroll_policy?: ScrollPolicy | null
+        scroll_visibility?: ScrollPolicy | null
     }
 
 }
@@ -19867,12 +19867,12 @@ module Settings {
 
         // Own constructor properties of Mx-2.0.Mx.Settings
 
-        dragThreshold?: number | null
-        fontName?: string | null
-        iconTheme?: string | null
-        longPressTimeout?: number | null
-        smallScreen?: boolean | null
-        touchMode?: boolean | null
+        drag_threshold?: number | null
+        font_name?: string | null
+        icon_theme?: string | null
+        long_press_timeout?: number | null
+        small_screen?: boolean | null
+        touch_mode?: boolean | null
     }
 
 }
@@ -19981,7 +19981,7 @@ module Slider {
 
         // Own constructor properties of Mx-2.0.Mx.Slider
 
-        bufferValue?: number | null
+        buffer_value?: number | null
         value?: number | null
     }
 
@@ -21984,10 +21984,10 @@ module StackChild {
 
         crop?: boolean | null
         fit?: boolean | null
-        xAlign?: Align | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yFill?: boolean | null
+        x_align?: Align | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_fill?: boolean | null
     }
 
 }
@@ -22212,8 +22212,8 @@ module Table {
 
         // Own constructor properties of Mx-2.0.Mx.Table
 
-        columnSpacing?: number | null
-        rowSpacing?: number | null
+        column_spacing?: number | null
+        row_spacing?: number | null
     }
 
 }
@@ -23028,15 +23028,15 @@ module TableChild {
         // Own constructor properties of Mx-2.0.Mx.TableChild
 
         column?: number | null
-        columnSpan?: number | null
+        column_span?: number | null
         row?: number | null
-        rowSpan?: number | null
-        xAlign?: Align | null
-        xExpand?: boolean | null
-        xFill?: boolean | null
-        yAlign?: Align | null
-        yExpand?: boolean | null
-        yFill?: boolean | null
+        row_span?: number | null
+        x_align?: Align | null
+        x_expand?: boolean | null
+        x_fill?: boolean | null
+        y_align?: Align | null
+        y_expand?: boolean | null
+        y_fill?: boolean | null
     }
 
 }
@@ -23299,7 +23299,7 @@ module TextureFrame {
 
         bottom?: number | null
         left?: number | null
-        parentTexture?: Clutter.Texture | null
+        parent_texture?: Clutter.Texture | null
         right?: number | null
         top?: number | null
     }
@@ -24570,7 +24570,7 @@ module Toolbar {
 
         // Own constructor properties of Mx-2.0.Mx.Toolbar
 
-        hasCloseButton?: boolean | null
+        has_close_button?: boolean | null
     }
 
 }
@@ -25222,7 +25222,7 @@ module Tooltip {
         // Own constructor properties of Mx-2.0.Mx.Tooltip
 
         text?: string | null
-        tipArea?: Clutter.Geometry | null
+        tip_area?: Clutter.Geometry | null
     }
 
 }
@@ -25911,10 +25911,10 @@ module Viewport {
 
         // Own constructor properties of Mx-2.0.Mx.Viewport
 
-        syncAdjustments?: boolean | null
-        xOrigin?: number | null
-        yOrigin?: number | null
-        zOrigin?: number | null
+        sync_adjustments?: boolean | null
+        x_origin?: number | null
+        y_origin?: number | null
+        z_origin?: number | null
     }
 
 }
@@ -25933,6 +25933,8 @@ interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
 
     xAlign: any
     yAlign: any
+    x_align: any
+    y_align: any
 
     // Owm methods of Mx-2.0.Mx.Viewport
 
@@ -26593,11 +26595,11 @@ module Widget {
          * #MxMenu associated with the widget.
          */
         menu?: Menu | null
-        tooltipDelay?: number | null
+        tooltip_delay?: number | null
         /**
          * text displayed on the tooltip
          */
-        tooltipText?: string | null
+        tooltip_text?: string | null
     }
 
 }
@@ -27319,15 +27321,15 @@ module Window {
         // Own constructor properties of Mx-2.0.Mx.Window
 
         child?: Clutter.Actor | null
-        clutterStage?: Clutter.Stage | null
+        clutter_stage?: Clutter.Stage | null
         fullscreen?: boolean | null
-        hasToolbar?: boolean | null
-        iconCoglTexture?: string | null
-        iconName?: string | null
-        smallScreen?: boolean | null
+        has_toolbar?: boolean | null
+        icon_cogl_texture?: string | null
+        icon_name?: string | null
+        small_screen?: boolean | null
         title?: string | null
         toolbar?: Toolbar | null
-        windowRotation?: WindowRotation | null
+        window_rotation?: WindowRotation | null
     }
 
 }

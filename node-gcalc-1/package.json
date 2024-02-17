@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gcalc-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GCalc-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gcalc-1.js",
     "main": "node-gcalc-1.js",
     "exports": {
-        "./ambient": "./node-gcalc-1-ambient.d.ts",
-        "./import": "./node-gcalc-1-import.d.ts",
+        "./ambient": {
+            "types": "./node-gcalc-1-ambient.d.ts",
+            "default": "./node-gcalc-1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gcalc-1-import.d.ts",
+            "default": "./node-gcalc-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gcalc-1.d.ts",

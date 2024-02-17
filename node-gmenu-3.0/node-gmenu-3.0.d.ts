@@ -62,12 +62,12 @@ module Tree {
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
          */
-        menuBasename?: string | null
+        menu_basename?: string | null
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
          */
-        menuPath?: string | null
+        menu_path?: string | null
     }
 
 }

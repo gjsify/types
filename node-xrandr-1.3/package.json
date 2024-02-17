@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-xrandr-1.3",
-    "version": "1.3.0-3.2.7",
+    "version": "1.3.0-3.2.8",
     "description": "Node.js TypeScript type definitions for xrandr-1.3, generated from library version 1.3.0",
     "type": "module",
     "module": "node-xrandr-1.3.js",
     "main": "node-xrandr-1.3.js",
     "exports": {
-        "./ambient": "./node-xrandr-1.3-ambient.d.ts",
-        "./import": "./node-xrandr-1.3-import.d.ts",
+        "./ambient": {
+            "types": "./node-xrandr-1.3-ambient.d.ts",
+            "default": "./node-xrandr-1.3-ambient.js"
+        },
+        "./import": {
+            "types": "./node-xrandr-1.3-import.d.ts",
+            "default": "./node-xrandr-1.3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-xrandr-1.3.d.ts",

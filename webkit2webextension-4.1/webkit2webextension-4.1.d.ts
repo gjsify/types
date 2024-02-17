@@ -1006,12 +1006,9 @@ interface DOMAttr extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMAttr
 
-    readonly local_name: string | null
     readonly localName: string | null
     readonly name: string | null
-    readonly namespace_uri: string | null
     readonly namespaceUri: string | null
-    readonly owner_element: DOMElement
     readonly ownerElement: DOMElement
     readonly prefix: string | null
     readonly specified: boolean
@@ -1094,9 +1091,6 @@ interface DOMAttr extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMAttr, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMAttr, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMAttr, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMAttr, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1144,9 +1138,6 @@ interface DOMBlob {
     connect(sigName: "notify::size", callback: (($obj: DOMBlob, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: DOMBlob, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::size", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMBlob, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMBlob, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1284,9 +1275,6 @@ interface DOMCDATASection extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMCDATASection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMCDATASection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCDATASection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCDATASection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1314,7 +1302,6 @@ module DOMCSSRule {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSRule
 
-        css_text?: string | null
         cssText?: string | null
     }
 
@@ -1324,11 +1311,8 @@ interface DOMCSSRule {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSRule
 
-    css_text: string | null
     cssText: string | null
-    readonly parent_rule: DOMCSSRule
     readonly parentRule: DOMCSSRule
-    readonly parent_style_sheet: DOMCSSStyleSheet
     readonly parentStyleSheet: DOMCSSStyleSheet
     readonly type: number
 
@@ -1358,9 +1342,6 @@ interface DOMCSSRule {
     connect(sigName: "notify::type", callback: (($obj: DOMCSSRule, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMCSSRule, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCSSRule, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCSSRule, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1409,9 +1390,6 @@ interface DOMCSSRuleList {
     connect(sigName: "notify::length", callback: (($obj: DOMCSSRuleList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMCSSRuleList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCSSRuleList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCSSRuleList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1439,7 +1417,6 @@ module DOMCSSStyleDeclaration {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleDeclaration
 
-        css_text?: string | null
         cssText?: string | null
     }
 
@@ -1449,10 +1426,8 @@ interface DOMCSSStyleDeclaration {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleDeclaration
 
-    css_text: string | null
     cssText: string | null
     readonly length: number
-    readonly parent_rule: DOMCSSRule
     readonly parentRule: DOMCSSRule
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleDeclaration
@@ -1493,9 +1468,6 @@ interface DOMCSSStyleDeclaration {
     connect(sigName: "notify::parent-rule", callback: (($obj: DOMCSSStyleDeclaration, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::parent-rule", callback: (($obj: DOMCSSStyleDeclaration, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::parent-rule", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCSSStyleDeclaration, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCSSStyleDeclaration, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1528,9 +1500,7 @@ interface DOMCSSStyleSheet {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleSheet
 
-    readonly css_rules: DOMCSSRuleList
     readonly cssRules: DOMCSSRuleList
-    readonly owner_rule: DOMCSSRule
     readonly ownerRule: DOMCSSRule
     readonly rules: DOMCSSRuleList
 
@@ -1580,9 +1550,6 @@ interface DOMCSSStyleSheet {
     connect(sigName: "notify::type", callback: (($obj: DOMCSSStyleSheet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMCSSStyleSheet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCSSStyleSheet, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCSSStyleSheet, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1610,7 +1577,6 @@ module DOMCSSValue {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSValue
 
-        css_text?: string | null
         cssText?: string | null
     }
 
@@ -1620,9 +1586,7 @@ interface DOMCSSValue {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSValue
 
-    css_text: string | null
     cssText: string | null
-    readonly css_value_type: number
     readonly cssValueType: number
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSValue
@@ -1643,9 +1607,6 @@ interface DOMCSSValue {
     connect(sigName: "notify::css-value-type", callback: (($obj: DOMCSSValue, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::css-value-type", callback: (($obj: DOMCSSValue, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::css-value-type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCSSValue, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCSSValue, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1774,9 +1735,6 @@ interface DOMCharacterData extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMCharacterData, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMCharacterData, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMCharacterData, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMCharacterData, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1873,9 +1831,6 @@ interface DOMClientRect {
     connect(sigName: "notify::width", callback: (($obj: DOMClientRect, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::width", callback: (($obj: DOMClientRect, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::width", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMClientRect, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMClientRect, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -1933,9 +1888,6 @@ interface DOMClientRectList {
     connect(sigName: "notify::length", callback: (($obj: DOMClientRectList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMClientRectList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMClientRectList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMClientRectList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2070,9 +2022,6 @@ interface DOMComment extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMComment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMComment, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMComment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMComment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2117,9 +2066,6 @@ interface DOMDOMImplementation {
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMImplementation
 
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDOMImplementation, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDOMImplementation, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2152,25 +2098,15 @@ interface DOMDOMSelection {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMSelection
 
-    readonly anchor_node: DOMNode
     readonly anchorNode: DOMNode
-    readonly anchor_offset: number
     readonly anchorOffset: number
-    readonly base_node: DOMNode
     readonly baseNode: DOMNode
-    readonly base_offset: number
     readonly baseOffset: number
-    readonly extent_node: DOMNode
     readonly extentNode: DOMNode
-    readonly extent_offset: number
     readonly extentOffset: number
-    readonly focus_node: DOMNode
     readonly focusNode: DOMNode
-    readonly focus_offset: number
     readonly focusOffset: number
-    readonly is_collapsed: boolean
     readonly isCollapsed: boolean
-    readonly range_count: number
     readonly rangeCount: number
     readonly type: string | null
 
@@ -2241,9 +2177,6 @@ interface DOMDOMSelection {
     connect(sigName: "notify::type", callback: (($obj: DOMDOMSelection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMDOMSelection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDOMSelection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDOMSelection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2305,9 +2238,6 @@ interface DOMDOMTokenList {
     connect(sigName: "notify::value", callback: (($obj: DOMDOMTokenList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::value", callback: (($obj: DOMDOMTokenList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::value", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDOMTokenList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDOMTokenList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2335,10 +2265,9 @@ module DOMDOMWindow {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMWindow
 
-        default_status?: string | null
+        defaultStatus?: string | null
         name?: string | null
         status?: string | null
-        defaultStatus?: string | null
     }
 
 }
@@ -2348,44 +2277,28 @@ interface DOMDOMWindow extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMWindow
 
     readonly closed: boolean
-    default_status: string | null
     defaultStatus: string | null
-    readonly device_pixel_ratio: number
     readonly devicePixelRatio: number
     readonly document: DOMDocument
-    readonly frame_element: DOMElement
     readonly frameElement: DOMElement
     readonly frames: DOMDOMWindow
-    readonly inner_height: number
     readonly innerHeight: number
-    readonly inner_width: number
     readonly innerWidth: number
     readonly length: number
     name: string | null
-    readonly offscreen_buffering: boolean
     readonly offscreenBuffering: boolean
     readonly opener: DOMDOMWindow
     readonly orientation: number
-    readonly outer_height: number
     readonly outerHeight: number
-    readonly outer_width: number
     readonly outerWidth: number
-    readonly page_x_offset: number
     readonly pageXOffset: number
-    readonly page_y_offset: number
     readonly pageYOffset: number
     readonly parent: DOMDOMWindow
-    readonly screen_left: number
     readonly screenLeft: number
-    readonly screen_top: number
     readonly screenTop: number
-    readonly screen_x: number
     readonly screenX: number
-    readonly screen_y: number
     readonly screenY: number
-    readonly scroll_x: number
     readonly scrollX: number
-    readonly scroll_y: number
     readonly scrollY: number
     readonly self: DOMDOMWindow
     status: string | null
@@ -2536,9 +2449,6 @@ interface DOMDOMWindow extends DOMEventTarget {
     connect(sigName: "notify::window", callback: (($obj: DOMDOMWindow, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::window", callback: (($obj: DOMDOMWindow, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::window", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDOMWindow, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDOMWindow, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -2568,16 +2478,11 @@ module DOMDocument {
 
         charset?: string | null
         cookie?: string | null
-        design_mode?: string | null
-        dir?: string | null
-        document_uri?: string | null
-        selected_stylesheet_set?: string | null
-        title?: string | null
-        xml_standalone?: boolean | null
-        xml_version?: string | null
         designMode?: string | null
+        dir?: string | null
         documentUri?: string | null
         selectedStylesheetSet?: string | null
+        title?: string | null
         xmlStandalone?: boolean | null
         xmlVersion?: string | null
     }
@@ -2588,85 +2493,56 @@ interface DOMDocument extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocument
 
-    readonly active_element: DOMElement
     readonly activeElement: DOMElement
     readonly anchors: DOMHTMLCollection
     readonly applets: DOMHTMLCollection
     readonly body: DOMHTMLElement
-    readonly character_set: string | null
     readonly characterSet: string | null
     charset: string | null
-    readonly child_element_count: number
     readonly childElementCount: number
     readonly children: DOMHTMLCollection
-    readonly compat_mode: string | null
     readonly compatMode: string | null
-    readonly content_type: string | null
     readonly contentType: string | null
     cookie: string | null
-    readonly current_script: DOMHTMLScriptElement
     readonly currentScript: DOMHTMLScriptElement
-    readonly default_view: DOMDOMWindow
     readonly defaultView: DOMDOMWindow
-    design_mode: string | null
     designMode: string | null
     dir: string | null
     readonly doctype: DOMDocumentType
-    readonly document_element: DOMElement
     readonly documentElement: DOMElement
-    document_uri: string | null
     documentUri: string | null
     readonly domain: string | null
     readonly embeds: DOMHTMLCollection
-    readonly first_element_child: DOMElement
     readonly firstElementChild: DOMElement
     readonly forms: DOMHTMLCollection
     readonly head: DOMHTMLHeadElement
     readonly hidden: boolean
     readonly images: DOMHTMLCollection
     readonly implementation: DOMDOMImplementation
-    readonly input_encoding: string | null
     readonly inputEncoding: string | null
-    readonly last_element_child: DOMElement
     readonly lastElementChild: DOMElement
-    readonly last_modified: string | null
     readonly lastModified: string | null
     readonly links: DOMHTMLCollection
     readonly origin: string | null
     readonly plugins: DOMHTMLCollection
-    readonly pointer_lock_element: DOMElement
     readonly pointerLockElement: DOMElement
-    readonly preferred_stylesheet_set: string | null
     readonly preferredStylesheetSet: string | null
-    readonly ready_state: string | null
     readonly readyState: string | null
     readonly referrer: string | null
     readonly scripts: DOMHTMLCollection
-    readonly scrolling_element: DOMElement
     readonly scrollingElement: DOMElement
-    selected_stylesheet_set: string | null
     selectedStylesheetSet: string | null
-    readonly style_sheets: DOMStyleSheetList
     readonly styleSheets: DOMStyleSheetList
     title: string | null
     readonly url: string | null
-    readonly visibility_state: string | null
     readonly visibilityState: string | null
-    readonly webkit_current_full_screen_element: DOMElement
     readonly webkitCurrentFullScreenElement: DOMElement
-    readonly webkit_full_screen_keyboard_input_allowed: boolean
     readonly webkitFullScreenKeyboardInputAllowed: boolean
-    readonly webkit_fullscreen_element: DOMElement
     readonly webkitFullscreenElement: DOMElement
-    readonly webkit_fullscreen_enabled: boolean
     readonly webkitFullscreenEnabled: boolean
-    readonly webkit_is_full_screen: boolean
     readonly webkitIsFullScreen: boolean
-    readonly xml_encoding: string | null
     readonly xmlEncoding: string | null
-    xml_standalone: boolean
     xmlStandalone: boolean
-    xml_version: string | null
     xmlVersion: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocument
@@ -2992,9 +2868,6 @@ interface DOMDocument extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMDocument, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMDocument, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDocument, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDocument, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3027,12 +2900,9 @@ interface DOMDocumentFragment extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocumentFragment
 
-    readonly child_element_count: number
     readonly childElementCount: number
     readonly children: DOMHTMLCollection
-    readonly first_element_child: DOMElement
     readonly firstElementChild: DOMElement
-    readonly last_element_child: DOMElement
     readonly lastElementChild: DOMElement
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocumentFragment
@@ -3102,9 +2972,6 @@ interface DOMDocumentFragment extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMDocumentFragment, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMDocumentFragment, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDocumentFragment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDocumentFragment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3138,13 +3005,10 @@ interface DOMDocumentType extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocumentType
 
     readonly entities: DOMNamedNodeMap
-    readonly internal_subset: string | null
     readonly internalSubset: string | null
     readonly name: string | null
     readonly notations: DOMNamedNodeMap
-    readonly public_id: string | null
     readonly publicId: string | null
-    readonly system_id: string | null
     readonly systemId: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocumentType
@@ -3219,9 +3083,6 @@ interface DOMDocumentType extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMDocumentType, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMDocumentType, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMDocumentType, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMDocumentType, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3249,13 +3110,8 @@ module DOMElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMElement
 
-        class_name?: string | null
-        id?: string | null
-        inner_html?: string | null
-        outer_html?: string | null
-        scroll_left?: number | null
-        scroll_top?: number | null
         className?: string | null
+        id?: string | null
         innerHtml?: string | null
         outerHtml?: string | null
         scrollLeft?: number | null
@@ -3269,61 +3125,35 @@ interface DOMElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMElement
 
     readonly attributes: DOMNamedNodeMap
-    readonly child_element_count: number
     readonly childElementCount: number
     readonly children: DOMHTMLCollection
-    readonly class_list: DOMDOMTokenList
     readonly classList: DOMDOMTokenList
-    class_name: string | null
     className: string | null
-    readonly client_height: number
     readonly clientHeight: number
-    readonly client_left: number
     readonly clientLeft: number
-    readonly client_top: number
     readonly clientTop: number
-    readonly client_width: number
     readonly clientWidth: number
-    readonly first_element_child: DOMElement
     readonly firstElementChild: DOMElement
     id: string | null
-    inner_html: string | null
     innerHtml: string | null
-    readonly last_element_child: DOMElement
     readonly lastElementChild: DOMElement
-    readonly local_name: string | null
     readonly localName: string | null
-    readonly namespace_uri: string | null
     readonly namespaceUri: string | null
-    readonly next_element_sibling: DOMElement
     readonly nextElementSibling: DOMElement
-    readonly offset_height: number
     readonly offsetHeight: number
-    readonly offset_left: number
     readonly offsetLeft: number
-    readonly offset_parent: DOMElement
     readonly offsetParent: DOMElement
-    readonly offset_top: number
     readonly offsetTop: number
-    readonly offset_width: number
     readonly offsetWidth: number
-    outer_html: string | null
     outerHtml: string | null
     readonly prefix: string | null
-    readonly previous_element_sibling: DOMElement
     readonly previousElementSibling: DOMElement
-    readonly scroll_height: number
     readonly scrollHeight: number
-    scroll_left: number
     scrollLeft: number
-    scroll_top: number
     scrollTop: number
-    readonly scroll_width: number
     readonly scrollWidth: number
     readonly style: DOMCSSStyleDeclaration
-    readonly tag_name: string | null
     readonly tagName: string | null
-    readonly webkit_region_overset: string | null
     readonly webkitRegionOverset: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMElement
@@ -3580,9 +3410,6 @@ interface DOMElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3658,9 +3485,6 @@ interface DOMEntityReference extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMEntityReference, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMEntityReference, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMEntityReference, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMEntityReference, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3688,8 +3512,6 @@ module DOMEvent {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMEvent
 
-        cancel_bubble?: boolean | null
-        return_value?: boolean | null
         cancelBubble?: boolean | null
         returnValue?: boolean | null
     }
@@ -3701,19 +3523,13 @@ interface DOMEvent {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMEvent
 
     readonly bubbles: boolean
-    cancel_bubble: boolean
     cancelBubble: boolean
     readonly cancelable: boolean
-    readonly current_target: DOMEventTarget
     readonly currentTarget: DOMEventTarget
-    readonly event_phase: number
     readonly eventPhase: number
-    return_value: boolean
     returnValue: boolean
-    readonly src_element: DOMEventTarget
     readonly srcElement: DOMEventTarget
     readonly target: DOMEventTarget
-    readonly time_stamp: number
     readonly timeStamp: number
     readonly type: string | null
 
@@ -3771,9 +3587,6 @@ interface DOMEvent {
     connect(sigName: "notify::type", callback: (($obj: DOMEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMEvent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMEvent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3824,9 +3637,6 @@ interface DOMFile {
     connect(sigName: "notify::size", callback: (($obj: DOMFile, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::size", callback: (($obj: DOMFile, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::size", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMFile, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMFile, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -3875,9 +3685,6 @@ interface DOMFileList {
     connect(sigName: "notify::length", callback: (($obj: DOMFileList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMFileList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMFileList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMFileList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -4223,9 +4030,6 @@ interface DOMHTMLAnchorElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLAnchorElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLAnchorElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLAnchorElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLAnchorElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -4257,14 +4061,13 @@ module DOMHTMLAppletElement {
         alt?: string | null
         archive?: string | null
         code?: string | null
-        code_base?: string | null
+        codeBase?: string | null
         height?: string | null
         hspace?: number | null
         name?: string | null
         object?: string | null
         vspace?: number | null
         width?: string | null
-        codeBase?: string | null
     }
 
 }
@@ -4277,7 +4080,6 @@ interface DOMHTMLAppletElement extends DOMEventTarget {
     alt: string | null
     archive: string | null
     code: string | null
-    code_base: string | null
     codeBase: string | null
     height: string | null
     hspace: number
@@ -4524,9 +4326,6 @@ interface DOMHTMLAppletElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLAppletElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLAppletElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLAppletElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLAppletElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -4560,14 +4359,13 @@ module DOMHTMLAreaElement {
         host?: string | null
         hostname?: string | null
         href?: string | null
-        no_href?: boolean | null
+        noHref?: boolean | null
         pathname?: string | null
         port?: string | null
         protocol?: string | null
         search?: string | null
         shape?: string | null
         target?: string | null
-        noHref?: boolean | null
     }
 
 }
@@ -4582,7 +4380,6 @@ interface DOMHTMLAreaElement extends DOMEventTarget {
     host: string | null
     hostname: string | null
     href: string | null
-    no_href: boolean
     noHref: boolean
     pathname: string | null
     port: string | null
@@ -4839,9 +4636,6 @@ interface DOMHTMLAreaElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLAreaElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLAreaElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLAreaElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLAreaElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -5068,9 +4862,6 @@ interface DOMHTMLBRElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLBRElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLBRElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLBRElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLBRElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -5304,9 +5095,6 @@ interface DOMHTMLBaseElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLBaseElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLBaseElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLBaseElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLBaseElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -5550,9 +5338,6 @@ interface DOMHTMLBaseFontElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLBaseFontElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLBaseFontElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLBaseFontElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLBaseFontElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -5580,14 +5365,11 @@ module DOMHTMLBodyElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBodyElement
 
-        a_link?: string | null
+        aLink?: string | null
         background?: string | null
-        bg_color?: string | null
+        bgColor?: string | null
         link?: string | null
         text?: string | null
-        v_link?: string | null
-        aLink?: string | null
-        bgColor?: string | null
         vLink?: string | null
     }
 
@@ -5597,14 +5379,11 @@ interface DOMHTMLBodyElement extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBodyElement
 
-    a_link: string | null
     aLink: string | null
     background: string | null
-    bg_color: string | null
     bgColor: string | null
     link: string | null
     text: string | null
-    v_link: string | null
     vLink: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBodyElement
@@ -5820,9 +5599,6 @@ interface DOMHTMLBodyElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLBodyElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLBodyElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLBodyElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLBodyElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -5869,7 +5645,6 @@ interface DOMHTMLButtonElement extends DOMEventTarget {
     name: string | null
     type: string | null
     value: string | null
-    readonly will_validate: boolean
     readonly willValidate: boolean
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLButtonElement
@@ -6088,9 +5863,6 @@ interface DOMHTMLButtonElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLButtonElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLButtonElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLButtonElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLButtonElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -6324,9 +6096,6 @@ interface DOMHTMLCanvasElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLCanvasElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLCanvasElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLCanvasElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLCanvasElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -6376,9 +6145,6 @@ interface DOMHTMLCollection {
     connect(sigName: "notify::length", callback: (($obj: DOMHTMLCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMHTMLCollection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLCollection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLCollection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -6605,9 +6371,6 @@ interface DOMHTMLDListElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLDListElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLDListElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLDListElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLDListElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -6834,9 +6597,6 @@ interface DOMHTMLDirectoryElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLDirectoryElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLDirectoryElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLDirectoryElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLDirectoryElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -7063,9 +6823,6 @@ interface DOMHTMLDivElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLDivElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLDivElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLDivElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLDivElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -7093,14 +6850,9 @@ module DOMHTMLDocument {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLDocument
 
-        alink_color?: string | null
-        bg_color?: string | null
-        dir?: string | null
-        fg_color?: string | null
-        link_color?: string | null
-        vlink_color?: string | null
         alinkColor?: string | null
         bgColor?: string | null
+        dir?: string | null
         fgColor?: string | null
         linkColor?: string | null
         vlinkColor?: string | null
@@ -7112,17 +6864,12 @@ interface DOMHTMLDocument extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLDocument
 
-    alink_color: string | null
     alinkColor: string | null
-    bg_color: string | null
     bgColor: string | null
     dir: string | null
-    fg_color: string | null
     fgColor: string | null
     readonly height: number
-    link_color: string | null
     linkColor: string | null
-    vlink_color: string | null
     vlinkColor: string | null
     readonly width: number
 
@@ -7372,9 +7119,6 @@ interface DOMHTMLDocument extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLDocument, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLDocument, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLDocument, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLDocument, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -7402,24 +7146,19 @@ module DOMHTMLElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLElement
 
-        access_key?: string | null
-        content_editable?: string | null
+        accessKey?: string | null
+        contentEditable?: string | null
         dir?: string | null
         draggable?: boolean | null
         hidden?: boolean | null
-        inner_text?: string | null
+        innerText?: string | null
         lang?: string | null
-        outer_text?: string | null
+        outerText?: string | null
         spellcheck?: boolean | null
-        tab_index?: number | null
+        tabIndex?: number | null
         title?: string | null
         translate?: boolean | null
         webkitdropzone?: string | null
-        accessKey?: string | null
-        contentEditable?: string | null
-        innerText?: string | null
-        outerText?: string | null
-        tabIndex?: number | null
     }
 
 }
@@ -7428,22 +7167,16 @@ interface DOMHTMLElement extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLElement
 
-    access_key: string | null
     accessKey: string | null
-    content_editable: string | null
     contentEditable: string | null
     dir: string | null
     draggable: boolean
     hidden: boolean
-    inner_text: string | null
     innerText: string | null
-    readonly is_content_editable: boolean
     readonly isContentEditable: boolean
     lang: string | null
-    outer_text: string | null
     outerText: string | null
     spellcheck: boolean
-    tab_index: number
     tabIndex: number
     title: string | null
     translate: boolean
@@ -7665,9 +7398,6 @@ interface DOMHTMLElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -7929,9 +7659,6 @@ interface DOMHTMLEmbedElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLEmbedElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLEmbedElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLEmbedElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLEmbedElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -8153,9 +7880,6 @@ interface DOMHTMLFieldSetElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLFieldSetElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLFieldSetElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLFieldSetElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLFieldSetElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -8396,9 +8120,6 @@ interface DOMHTMLFontElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLFontElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLFontElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLFontElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLFontElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -8426,14 +8147,13 @@ module DOMHTMLFormElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFormElement
 
-        accept_charset?: string | null
+        acceptCharset?: string | null
         action?: string | null
         encoding?: string | null
         enctype?: string | null
         method?: string | null
         name?: string | null
         target?: string | null
-        acceptCharset?: string | null
     }
 
 }
@@ -8442,7 +8162,6 @@ interface DOMHTMLFormElement extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFormElement
 
-    accept_charset: string | null
     acceptCharset: string | null
     action: string | null
     readonly elements: DOMHTMLCollection
@@ -8681,9 +8400,6 @@ interface DOMHTMLFormElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLFormElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLFormElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLFormElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLFormElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -8711,19 +8427,14 @@ module DOMHTMLFrameElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFrameElement
 
-        frame_border?: string | null
-        long_desc?: string | null
-        margin_height?: string | null
-        margin_width?: string | null
-        name?: string | null
-        no_resize?: boolean | null
-        scrolling?: string | null
-        src?: string | null
         frameBorder?: string | null
         longDesc?: string | null
         marginHeight?: string | null
         marginWidth?: string | null
+        name?: string | null
         noResize?: boolean | null
+        scrolling?: string | null
+        src?: string | null
     }
 
 }
@@ -8732,21 +8443,14 @@ interface DOMHTMLFrameElement extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFrameElement
 
-    readonly content_document: DOMDocument
     readonly contentDocument: DOMDocument
-    readonly content_window: DOMDOMWindow
     readonly contentWindow: DOMDOMWindow
-    frame_border: string | null
     frameBorder: string | null
     readonly height: number
-    long_desc: string | null
     longDesc: string | null
-    margin_height: string | null
     marginHeight: string | null
-    margin_width: string | null
     marginWidth: string | null
     name: string | null
-    no_resize: boolean
     noResize: boolean
     scrolling: string | null
     src: string | null
@@ -8991,9 +8695,6 @@ interface DOMHTMLFrameElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLFrameElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLFrameElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLFrameElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLFrameElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -9227,9 +8928,6 @@ interface DOMHTMLFrameSetElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLFrameSetElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLFrameSetElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLFrameSetElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLFrameSetElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -9258,10 +8956,9 @@ module DOMHTMLHRElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHRElement
 
         align?: string | null
-        no_shade?: boolean | null
+        noShade?: boolean | null
         size?: string | null
         width?: string | null
-        noShade?: boolean | null
     }
 
 }
@@ -9271,7 +8968,6 @@ interface DOMHTMLHRElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHRElement
 
     align: string | null
-    no_shade: boolean
     noShade: boolean
     size: string | null
     width: string | null
@@ -9479,9 +9175,6 @@ interface DOMHTMLHRElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLHRElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLHRElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLHRElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLHRElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -9708,9 +9401,6 @@ interface DOMHTMLHeadElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLHeadElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLHeadElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLHeadElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLHeadElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -9937,9 +9627,6 @@ interface DOMHTMLHeadingElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLHeadingElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLHeadingElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLHeadingElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLHeadingElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -10166,9 +9853,6 @@ interface DOMHTMLHtmlElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLHtmlElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLHtmlElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLHtmlElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLHtmlElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -10197,19 +9881,15 @@ module DOMHTMLIFrameElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLIFrameElement
 
         align?: string | null
-        frame_border?: string | null
+        frameBorder?: string | null
         height?: string | null
-        long_desc?: string | null
-        margin_height?: string | null
-        margin_width?: string | null
+        longDesc?: string | null
+        marginHeight?: string | null
+        marginWidth?: string | null
         name?: string | null
         scrolling?: string | null
         src?: string | null
         width?: string | null
-        frameBorder?: string | null
-        longDesc?: string | null
-        marginHeight?: string | null
-        marginWidth?: string | null
     }
 
 }
@@ -10219,18 +9899,12 @@ interface DOMHTMLIFrameElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLIFrameElement
 
     align: string | null
-    readonly content_document: DOMDocument
     readonly contentDocument: DOMDocument
-    readonly content_window: DOMDOMWindow
     readonly contentWindow: DOMDOMWindow
-    frame_border: string | null
     frameBorder: string | null
     height: string | null
-    long_desc: string | null
     longDesc: string | null
-    margin_height: string | null
     marginHeight: string | null
-    margin_width: string | null
     marginWidth: string | null
     name: string | null
     scrolling: string | null
@@ -10478,9 +10152,6 @@ interface DOMHTMLIFrameElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLIFrameElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLIFrameElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLIFrameElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLIFrameElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -10513,17 +10184,14 @@ module DOMHTMLImageElement {
         border?: string | null
         height?: number | null
         hspace?: number | null
-        is_map?: boolean | null
-        long_desc?: string | null
+        isMap?: boolean | null
+        longDesc?: string | null
         lowsrc?: string | null
         name?: string | null
         src?: string | null
-        use_map?: string | null
+        useMap?: string | null
         vspace?: number | null
         width?: number | null
-        isMap?: boolean | null
-        longDesc?: string | null
-        useMap?: string | null
     }
 
 }
@@ -10538,18 +10206,13 @@ interface DOMHTMLImageElement extends DOMEventTarget {
     readonly complete: boolean
     height: number
     hspace: number
-    is_map: boolean
     isMap: boolean
-    long_desc: string | null
     longDesc: string | null
     lowsrc: string | null
     name: string | null
-    readonly natural_height: number
     readonly naturalHeight: number
-    readonly natural_width: number
     readonly naturalWidth: number
     src: string | null
-    use_map: string | null
     useMap: string | null
     vspace: number
     width: number
@@ -10824,9 +10487,6 @@ interface DOMHTMLImageElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLImageElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLImageElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLImageElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLImageElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -10860,26 +10520,21 @@ module DOMHTMLInputElement {
         autofocus?: boolean | null
         capture?: string | null
         checked?: boolean | null
-        default_checked?: boolean | null
-        default_value?: string | null
+        defaultChecked?: boolean | null
+        defaultValue?: string | null
         disabled?: boolean | null
         height?: number | null
         indeterminate?: boolean | null
-        max_length?: number | null
+        maxLength?: number | null
         multiple?: boolean | null
         name?: string | null
-        read_only?: boolean | null
+        readOnly?: boolean | null
         size?: number | null
         src?: string | null
         type?: string | null
-        use_map?: string | null
+        useMap?: string | null
         value?: string | null
         width?: number | null
-        defaultChecked?: boolean | null
-        defaultValue?: string | null
-        maxLength?: number | null
-        readOnly?: boolean | null
-        useMap?: string | null
     }
 
 }
@@ -10894,29 +10549,23 @@ interface DOMHTMLInputElement extends DOMEventTarget {
     autofocus: boolean
     capture: string | null
     checked: boolean
-    default_checked: boolean
     defaultChecked: boolean
-    default_value: string | null
     defaultValue: string | null
     disabled: boolean
     readonly files: DOMFileList
     readonly form: DOMHTMLFormElement
     height: number
     indeterminate: boolean
-    max_length: number
     maxLength: number
     multiple: boolean
     name: string | null
-    read_only: boolean
     readOnly: boolean
     size: number
     src: string | null
     type: string | null
-    use_map: string | null
     useMap: string | null
     value: string | null
     width: number
-    readonly will_validate: boolean
     readonly willValidate: boolean
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLInputElement
@@ -11226,9 +10875,6 @@ interface DOMHTMLInputElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLInputElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLInputElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLInputElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLInputElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -11462,9 +11108,6 @@ interface DOMHTMLLIElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLLIElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLLIElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLLIElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLLIElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -11492,7 +11135,6 @@ module DOMHTMLLabelElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLabelElement
 
-        html_for?: string | null
         htmlFor?: string | null
     }
 
@@ -11503,7 +11145,6 @@ interface DOMHTMLLabelElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLabelElement
 
     readonly form: DOMHTMLFormElement
-    html_for: string | null
     htmlFor: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLabelElement
@@ -11698,9 +11339,6 @@ interface DOMHTMLLabelElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLLabelElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLLabelElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLLabelElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLLabelElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -11932,9 +11570,6 @@ interface DOMHTMLLegendElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLLegendElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLLegendElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLLegendElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLLegendElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -12228,9 +11863,6 @@ interface DOMHTMLLinkElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLLinkElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLLinkElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLLinkElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLLinkElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -12462,9 +12094,6 @@ interface DOMHTMLMapElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLMapElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLMapElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLMapElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLMapElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -12680,9 +12309,6 @@ interface DOMHTMLMarqueeElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLMarqueeElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLMarqueeElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLMarqueeElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLMarqueeElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -12909,9 +12535,6 @@ interface DOMHTMLMenuElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLMenuElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLMenuElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLMenuElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLMenuElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -12940,10 +12563,9 @@ module DOMHTMLMetaElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLMetaElement
 
         content?: string | null
-        http_equiv?: string | null
+        httpEquiv?: string | null
         name?: string | null
         scheme?: string | null
-        httpEquiv?: string | null
     }
 
 }
@@ -12953,7 +12575,6 @@ interface DOMHTMLMetaElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLMetaElement
 
     content: string | null
-    http_equiv: string | null
     httpEquiv: string | null
     name: string | null
     scheme: string | null
@@ -13161,9 +12782,6 @@ interface DOMHTMLMetaElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLMetaElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLMetaElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLMetaElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLMetaElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -13192,7 +12810,6 @@ module DOMHTMLModElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLModElement
 
         cite?: string | null
-        date_time?: string | null
         dateTime?: string | null
     }
 
@@ -13203,7 +12820,6 @@ interface DOMHTMLModElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLModElement
 
     cite: string | null
-    date_time: string | null
     dateTime: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLModElement
@@ -13399,9 +13015,6 @@ interface DOMHTMLModElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLModElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLModElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLModElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLModElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -13642,9 +13255,6 @@ interface DOMHTMLOListElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLOListElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLOListElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLOListElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLOListElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -13676,8 +13286,8 @@ module DOMHTMLObjectElement {
         archive?: string | null
         border?: string | null
         code?: string | null
-        code_base?: string | null
-        code_type?: string | null
+        codeBase?: string | null
+        codeType?: string | null
         data?: string | null
         declare?: boolean | null
         height?: string | null
@@ -13685,12 +13295,9 @@ module DOMHTMLObjectElement {
         name?: string | null
         standby?: string | null
         type?: string | null
-        use_map?: string | null
+        useMap?: string | null
         vspace?: number | null
         width?: string | null
-        codeBase?: string | null
-        codeType?: string | null
-        useMap?: string | null
     }
 
 }
@@ -13703,11 +13310,8 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
     archive: string | null
     border: string | null
     code: string | null
-    code_base: string | null
     codeBase: string | null
-    code_type: string | null
     codeType: string | null
-    readonly content_document: DOMDocument
     readonly contentDocument: DOMDocument
     data: string | null
     declare: boolean
@@ -13717,7 +13321,6 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
     name: string | null
     standby: string | null
     type: string | null
-    use_map: string | null
     useMap: string | null
     vspace: number
     width: string | null
@@ -14020,9 +13623,6 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLObjectElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLObjectElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLObjectElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLObjectElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14256,9 +13856,6 @@ interface DOMHTMLOptGroupElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLOptGroupElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLOptGroupElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptGroupElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptGroupElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14286,12 +13883,11 @@ module DOMHTMLOptionElement {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionElement
 
-        default_selected?: boolean | null
+        defaultSelected?: boolean | null
         disabled?: boolean | null
         label?: string | null
         selected?: boolean | null
         value?: string | null
-        defaultSelected?: boolean | null
     }
 
 }
@@ -14300,7 +13896,6 @@ interface DOMHTMLOptionElement extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionElement
 
-    default_selected: boolean
     defaultSelected: boolean
     disabled: boolean
     readonly form: DOMHTMLFormElement
@@ -14530,9 +14125,6 @@ interface DOMHTMLOptionElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLOptionElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLOptionElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptionElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptionElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14560,7 +14152,6 @@ module DOMHTMLOptionsCollection {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionsCollection
 
-        selected_index?: number | null
         selectedIndex?: number | null
     }
 
@@ -14571,7 +14162,6 @@ interface DOMHTMLOptionsCollection {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionsCollection
 
     readonly length: number
-    selected_index: number
     selectedIndex: number
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionsCollection
@@ -14593,9 +14183,6 @@ interface DOMHTMLOptionsCollection {
     connect(sigName: "notify::selected-index", callback: (($obj: DOMHTMLOptionsCollection, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::selected-index", callback: (($obj: DOMHTMLOptionsCollection, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::selected-index", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptionsCollection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLOptionsCollection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14822,9 +14409,6 @@ interface DOMHTMLParagraphElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLParagraphElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLParagraphElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLParagraphElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLParagraphElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -14855,7 +14439,6 @@ module DOMHTMLParamElement {
         name?: string | null
         type?: string | null
         value?: string | null
-        value_type?: string | null
         valueType?: string | null
     }
 
@@ -14868,7 +14451,6 @@ interface DOMHTMLParamElement extends DOMEventTarget {
     name: string | null
     type: string | null
     value: string | null
-    value_type: string | null
     valueType: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLParamElement
@@ -15074,9 +14656,6 @@ interface DOMHTMLParamElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLParamElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLParamElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLParamElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLParamElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -15310,9 +14889,6 @@ interface DOMHTMLPreElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLPreElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLPreElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLPreElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLPreElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -15539,9 +15115,6 @@ interface DOMHTMLQuoteElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLQuoteElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLQuoteElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLQuoteElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLQuoteElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -15572,11 +15145,10 @@ module DOMHTMLScriptElement {
         charset?: string | null
         defer?: boolean | null
         event?: string | null
-        html_for?: string | null
+        htmlFor?: string | null
         src?: string | null
         text?: string | null
         type?: string | null
-        htmlFor?: string | null
     }
 
 }
@@ -15588,7 +15160,6 @@ interface DOMHTMLScriptElement extends DOMEventTarget {
     charset: string | null
     defer: boolean
     event: string | null
-    html_for: string | null
     htmlFor: string | null
     src: string | null
     text: string | null
@@ -15812,9 +15383,6 @@ interface DOMHTMLScriptElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLScriptElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLScriptElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLScriptElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLScriptElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -15847,10 +15415,9 @@ module DOMHTMLSelectElement {
         length?: number | null
         multiple?: boolean | null
         name?: string | null
-        selected_index?: number | null
+        selectedIndex?: number | null
         size?: number | null
         value?: string | null
-        selectedIndex?: number | null
     }
 
 }
@@ -15866,12 +15433,10 @@ interface DOMHTMLSelectElement extends DOMEventTarget {
     multiple: boolean
     name: string | null
     readonly options: DOMHTMLOptionsCollection
-    selected_index: number
     selectedIndex: number
     size: number
     readonly type: string | null
     value: string | null
-    readonly will_validate: boolean
     readonly willValidate: boolean
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLSelectElement
@@ -16121,9 +15686,6 @@ interface DOMHTMLSelectElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLSelectElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLSelectElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLSelectElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLSelectElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -16369,9 +15931,6 @@ interface DOMHTMLStyleElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLStyleElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLStyleElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLStyleElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLStyleElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -16598,9 +16157,6 @@ interface DOMHTMLTableCaptionElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableCaptionElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableCaptionElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableCaptionElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableCaptionElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -16631,23 +16187,17 @@ module DOMHTMLTableCellElement {
         abbr?: string | null
         align?: string | null
         axis?: string | null
-        bg_color?: string | null
-        ch?: string | null
-        ch_off?: string | null
-        col_span?: number | null
-        headers?: string | null
-        height?: string | null
-        no_wrap?: boolean | null
-        row_span?: number | null
-        scope?: string | null
-        v_align?: string | null
-        width?: string | null
         bgColor?: string | null
+        ch?: string | null
         chOff?: string | null
         colSpan?: number | null
+        headers?: string | null
+        height?: string | null
         noWrap?: boolean | null
         rowSpan?: number | null
+        scope?: string | null
         vAlign?: string | null
+        width?: string | null
     }
 
 }
@@ -16659,23 +16209,16 @@ interface DOMHTMLTableCellElement extends DOMEventTarget {
     abbr: string | null
     align: string | null
     axis: string | null
-    bg_color: string | null
     bgColor: string | null
-    readonly cell_index: number
     readonly cellIndex: number
     ch: string | null
-    ch_off: string | null
     chOff: string | null
-    col_span: number
     colSpan: number
     headers: string | null
     height: string | null
-    no_wrap: boolean
     noWrap: boolean
-    row_span: number
     rowSpan: number
     scope: string | null
-    v_align: string | null
     vAlign: string | null
     width: string | null
 
@@ -16936,9 +16479,6 @@ interface DOMHTMLTableCellElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableCellElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableCellElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableCellElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableCellElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -16968,12 +16508,10 @@ module DOMHTMLTableColElement {
 
         align?: string | null
         ch?: string | null
-        ch_off?: string | null
-        span?: number | null
-        v_align?: string | null
-        width?: string | null
         chOff?: string | null
+        span?: number | null
         vAlign?: string | null
+        width?: string | null
     }
 
 }
@@ -16984,10 +16522,8 @@ interface DOMHTMLTableColElement extends DOMEventTarget {
 
     align: string | null
     ch: string | null
-    ch_off: string | null
     chOff: string | null
     span: number
-    v_align: string | null
     vAlign: string | null
     width: string | null
 
@@ -17204,9 +16740,6 @@ interface DOMHTMLTableColElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableColElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableColElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableColElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableColElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -17235,16 +16768,13 @@ module DOMHTMLTableElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableElement
 
         align?: string | null
-        bg_color?: string | null
+        bgColor?: string | null
         border?: string | null
-        cell_padding?: string | null
-        cell_spacing?: string | null
+        cellPadding?: string | null
+        cellSpacing?: string | null
         rules?: string | null
         summary?: string | null
         width?: string | null
-        bgColor?: string | null
-        cellPadding?: string | null
-        cellSpacing?: string | null
     }
 
 }
@@ -17254,22 +16784,16 @@ interface DOMHTMLTableElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableElement
 
     align: string | null
-    bg_color: string | null
     bgColor: string | null
     border: string | null
     readonly caption: DOMHTMLTableCaptionElement
-    cell_padding: string | null
     cellPadding: string | null
-    cell_spacing: string | null
     cellSpacing: string | null
     readonly rows: DOMHTMLCollection
     rules: string | null
     summary: string | null
-    readonly t_bodies: DOMHTMLCollection
     readonly tBodies: DOMHTMLCollection
-    readonly t_foot: DOMHTMLTableSectionElement
     readonly tFoot: DOMHTMLTableSectionElement
-    readonly t_head: DOMHTMLTableSectionElement
     readonly tHead: DOMHTMLTableSectionElement
     width: string | null
 
@@ -17527,9 +17051,6 @@ interface DOMHTMLTableElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -17558,11 +17079,8 @@ module DOMHTMLTableRowElement {
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableRowElement
 
         align?: string | null
-        bg_color?: string | null
-        ch?: string | null
-        ch_off?: string | null
-        v_align?: string | null
         bgColor?: string | null
+        ch?: string | null
         chOff?: string | null
         vAlign?: string | null
     }
@@ -17574,17 +17092,12 @@ interface DOMHTMLTableRowElement extends DOMEventTarget {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableRowElement
 
     align: string | null
-    bg_color: string | null
     bgColor: string | null
     readonly cells: DOMHTMLCollection
     ch: string | null
-    ch_off: string | null
     chOff: string | null
-    readonly row_index: number
     readonly rowIndex: number
-    readonly section_row_index: number
     readonly sectionRowIndex: number
-    v_align: string | null
     vAlign: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableRowElement
@@ -17809,9 +17322,6 @@ interface DOMHTMLTableRowElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableRowElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableRowElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableRowElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableRowElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -17841,8 +17351,6 @@ module DOMHTMLTableSectionElement {
 
         align?: string | null
         ch?: string | null
-        ch_off?: string | null
-        v_align?: string | null
         chOff?: string | null
         vAlign?: string | null
     }
@@ -17855,10 +17363,8 @@ interface DOMHTMLTableSectionElement extends DOMEventTarget {
 
     align: string | null
     ch: string | null
-    ch_off: string | null
     chOff: string | null
     readonly rows: DOMHTMLCollection
-    v_align: string | null
     vAlign: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableSectionElement
@@ -18070,9 +17576,6 @@ interface DOMHTMLTableSectionElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableSectionElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTableSectionElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableSectionElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTableSectionElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -18102,18 +17605,14 @@ module DOMHTMLTextAreaElement {
 
         autofocus?: boolean | null
         cols?: number | null
-        default_value?: string | null
+        defaultValue?: string | null
         disabled?: boolean | null
         name?: string | null
-        read_only?: boolean | null
-        rows?: number | null
-        selection_end?: number | null
-        selection_start?: number | null
-        value?: string | null
-        defaultValue?: string | null
         readOnly?: boolean | null
+        rows?: number | null
         selectionEnd?: number | null
         selectionStart?: number | null
+        value?: string | null
     }
 
 }
@@ -18124,21 +17623,16 @@ interface DOMHTMLTextAreaElement extends DOMEventTarget {
 
     autofocus: boolean
     cols: number
-    default_value: string | null
     defaultValue: string | null
     disabled: boolean
     readonly form: DOMHTMLFormElement
     name: string | null
-    read_only: boolean
     readOnly: boolean
     rows: number
-    selection_end: number
     selectionEnd: number
-    selection_start: number
     selectionStart: number
     readonly type: string | null
     value: string | null
-    readonly will_validate: boolean
     readonly willValidate: boolean
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTextAreaElement
@@ -18389,9 +17883,6 @@ interface DOMHTMLTextAreaElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTextAreaElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTextAreaElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTextAreaElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTextAreaElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -18618,9 +18109,6 @@ interface DOMHTMLTitleElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLTitleElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLTitleElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLTitleElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLTitleElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -18854,9 +18342,6 @@ interface DOMHTMLUListElement extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMHTMLUListElement, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMHTMLUListElement, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMHTMLUListElement, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMHTMLUListElement, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -18889,19 +18374,12 @@ interface DOMKeyboardEvent {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMKeyboardEvent
 
-    readonly alt_graph_key: boolean
     readonly altGraphKey: boolean
-    readonly alt_key: boolean
     readonly altKey: boolean
-    readonly ctrl_key: boolean
     readonly ctrlKey: boolean
-    readonly key_identifier: string | null
     readonly keyIdentifier: string | null
-    readonly key_location: number
     readonly keyLocation: number
-    readonly meta_key: boolean
     readonly metaKey: boolean
-    readonly shift_key: boolean
     readonly shiftKey: boolean
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMKeyboardEvent
@@ -18997,9 +18475,6 @@ interface DOMKeyboardEvent {
     connect(sigName: "notify::type", callback: (($obj: DOMKeyboardEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMKeyboardEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMKeyboardEvent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMKeyboardEvent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19027,7 +18502,6 @@ module DOMMediaList {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMediaList
 
-        media_text?: string | null
         mediaText?: string | null
     }
 
@@ -19038,7 +18512,6 @@ interface DOMMediaList {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMediaList
 
     readonly length: number
-    media_text: string | null
     mediaText: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMediaList
@@ -19062,9 +18535,6 @@ interface DOMMediaList {
     connect(sigName: "notify::media-text", callback: (($obj: DOMMediaList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::media-text", callback: (($obj: DOMMediaList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::media-text", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMMediaList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMMediaList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19097,32 +18567,19 @@ interface DOMMouseEvent {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMouseEvent
 
-    readonly alt_key: boolean
     readonly altKey: boolean
     readonly button: number
-    readonly client_x: number
     readonly clientX: number
-    readonly client_y: number
     readonly clientY: number
-    readonly ctrl_key: boolean
     readonly ctrlKey: boolean
-    readonly from_element: DOMNode
     readonly fromElement: DOMNode
-    readonly meta_key: boolean
     readonly metaKey: boolean
-    readonly offset_x: number
     readonly offsetX: number
-    readonly offset_y: number
     readonly offsetY: number
-    readonly related_target: DOMEventTarget
     readonly relatedTarget: DOMEventTarget
-    readonly screen_x: number
     readonly screenX: number
-    readonly screen_y: number
     readonly screenY: number
-    readonly shift_key: boolean
     readonly shiftKey: boolean
-    readonly to_element: DOMNode
     readonly toElement: DOMNode
     readonly x: number
     readonly y: number
@@ -19255,9 +18712,6 @@ interface DOMMouseEvent {
     connect(sigName: "notify::type", callback: (($obj: DOMMouseEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMMouseEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMMouseEvent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMMouseEvent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19312,9 +18766,6 @@ interface DOMNamedNodeMap {
     connect(sigName: "notify::length", callback: (($obj: DOMNamedNodeMap, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMNamedNodeMap, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMNamedNodeMap, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMNamedNodeMap, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19342,8 +18793,6 @@ module DOMNode {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNode
 
-        node_value?: string | null
-        text_content?: string | null
         nodeValue?: string | null
         textContent?: string | null
     }
@@ -19354,31 +18803,18 @@ interface DOMNode extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNode
 
-    readonly base_uri: string | null
     readonly baseUri: string | null
-    readonly child_nodes: DOMNodeList
     readonly childNodes: DOMNodeList
-    readonly first_child: DOMNode
     readonly firstChild: DOMNode
-    readonly last_child: DOMNode
     readonly lastChild: DOMNode
-    readonly next_sibling: DOMNode
     readonly nextSibling: DOMNode
-    readonly node_name: string | null
     readonly nodeName: string | null
-    readonly node_type: number
     readonly nodeType: number
-    node_value: string | null
     nodeValue: string | null
-    readonly owner_document: DOMDocument
     readonly ownerDocument: DOMDocument
-    readonly parent_element: DOMElement
     readonly parentElement: DOMElement
-    readonly parent_node: DOMNode
     readonly parentNode: DOMNode
-    readonly previous_sibling: DOMNode
     readonly previousSibling: DOMNode
-    text_content: string | null
     textContent: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNode
@@ -19464,9 +18900,6 @@ interface DOMNode extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMNode, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMNode, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMNode, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMNode, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19506,12 +18939,9 @@ interface DOMNodeIterator {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNodeIterator
 
     readonly filter: DOMNodeFilter
-    readonly pointer_before_reference_node: boolean
     readonly pointerBeforeReferenceNode: boolean
-    readonly reference_node: DOMNode
     readonly referenceNode: DOMNode
     readonly root: DOMNode
-    readonly what_to_show: number
     readonly whatToShow: number
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNodeIterator
@@ -19551,9 +18981,6 @@ interface DOMNodeIterator {
     connect(sigName: "notify::what-to-show", callback: (($obj: DOMNodeIterator, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::what-to-show", callback: (($obj: DOMNodeIterator, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::what-to-show", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMNodeIterator, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMNodeIterator, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19602,9 +19029,6 @@ interface DOMNodeList {
     connect(sigName: "notify::length", callback: (($obj: DOMNodeList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMNodeList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMNodeList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMNodeList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19632,17 +19056,12 @@ module DOMObject {
 
         // Own constructor properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMObject
 
-        core_object?: any | null
         coreObject?: any | null
     }
 
 }
 
 interface DOMObject {
-
-    // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMObject
-
-    readonly core_object: any
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMObject
 
@@ -19651,9 +19070,6 @@ interface DOMObject {
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMObject
 
-    connect(sigName: "notify::core-object", callback: (($obj: DOMObject, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMObject, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19804,9 +19220,6 @@ interface DOMProcessingInstruction extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMProcessingInstruction, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMProcessingInstruction, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMProcessingInstruction, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMProcessingInstruction, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19840,15 +19253,10 @@ interface DOMRange {
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMRange
 
     readonly collapsed: boolean
-    readonly common_ancestor_container: DOMNode
     readonly commonAncestorContainer: DOMNode
-    readonly end_container: DOMNode
     readonly endContainer: DOMNode
-    readonly end_offset: number
     readonly endOffset: number
-    readonly start_container: DOMNode
     readonly startContainer: DOMNode
-    readonly start_offset: number
     readonly startOffset: number
     readonly text: string | null
 
@@ -19913,9 +19321,6 @@ interface DOMRange {
     connect(sigName: "notify::text", callback: (($obj: DOMRange, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text", callback: (($obj: DOMRange, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMRange, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMRange, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -19955,9 +19360,7 @@ interface DOMStyleSheet {
     disabled: boolean
     readonly href: string | null
     readonly media: DOMMediaList
-    readonly owner_node: DOMNode
     readonly ownerNode: DOMNode
-    readonly parent_style_sheet: DOMStyleSheet
     readonly parentStyleSheet: DOMStyleSheet
     readonly title: string | null
     readonly type: string | null
@@ -20000,9 +19403,6 @@ interface DOMStyleSheet {
     connect(sigName: "notify::type", callback: (($obj: DOMStyleSheet, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMStyleSheet, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMStyleSheet, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMStyleSheet, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20051,9 +19451,6 @@ interface DOMStyleSheetList {
     connect(sigName: "notify::length", callback: (($obj: DOMStyleSheetList, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::length", callback: (($obj: DOMStyleSheetList, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::length", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMStyleSheetList, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMStyleSheetList, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20086,7 +19483,6 @@ interface DOMText extends DOMEventTarget {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMText
 
-    readonly whole_text: string | null
     readonly wholeText: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMText
@@ -20202,9 +19598,6 @@ interface DOMText extends DOMEventTarget {
     connect(sigName: "notify::text-content", callback: (($obj: DOMText, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::text-content", callback: (($obj: DOMText, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::text-content", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMText, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMText, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20237,11 +19630,9 @@ interface DOMTreeWalker {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMTreeWalker
 
-    readonly current_node: DOMNode
     readonly currentNode: DOMNode
     readonly filter: DOMNodeFilter
     readonly root: DOMNode
-    readonly what_to_show: number
     readonly whatToShow: number
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMTreeWalker
@@ -20282,9 +19673,6 @@ interface DOMTreeWalker {
     connect(sigName: "notify::what-to-show", callback: (($obj: DOMTreeWalker, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::what-to-show", callback: (($obj: DOMTreeWalker, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::what-to-show", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMTreeWalker, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMTreeWalker, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20317,18 +19705,12 @@ interface DOMUIEvent {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMUIEvent
 
-    readonly char_code: number
     readonly charCode: number
     readonly detail: number
-    readonly key_code: number
     readonly keyCode: number
-    readonly layer_x: number
     readonly layerX: number
-    readonly layer_y: number
     readonly layerY: number
-    readonly page_x: number
     readonly pageX: number
-    readonly page_y: number
     readonly pageY: number
     readonly view: DOMDOMWindow
 
@@ -20404,9 +19786,6 @@ interface DOMUIEvent {
     connect(sigName: "notify::type", callback: (($obj: DOMUIEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMUIEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMUIEvent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMUIEvent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20439,11 +19818,8 @@ interface DOMWheelEvent {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMWheelEvent
 
-    readonly wheel_delta: number
     readonly wheelDelta: number
-    readonly wheel_delta_x: number
     readonly wheelDeltaX: number
-    readonly wheel_delta_y: number
     readonly wheelDeltaY: number
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMWheelEvent
@@ -20570,9 +19946,6 @@ interface DOMWheelEvent {
     connect(sigName: "notify::type", callback: (($obj: DOMWheelEvent, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::type", callback: (($obj: DOMWheelEvent, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::type", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMWheelEvent, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMWheelEvent, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20613,9 +19986,6 @@ interface DOMXPathExpression {
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathExpression
 
-    connect(sigName: "notify::core-object", callback: (($obj: DOMXPathExpression, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMXPathExpression, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20648,19 +20018,12 @@ interface DOMXPathResult {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathResult
 
-    readonly boolean_value: boolean
     readonly booleanValue: boolean
-    readonly invalid_iterator_state: boolean
     readonly invalidIteratorState: boolean
-    readonly number_value: number
     readonly numberValue: number
-    readonly result_type: number
     readonly resultType: number
-    readonly single_node_value: DOMNode
     readonly singleNodeValue: DOMNode
-    readonly snapshot_length: number
     readonly snapshotLength: number
-    readonly string_value: string | null
     readonly stringValue: string | null
 
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathResult
@@ -20702,9 +20065,6 @@ interface DOMXPathResult {
     connect(sigName: "notify::string-value", callback: (($obj: DOMXPathResult, pspec: GObject.ParamSpec) => void)): number
     connect_after(sigName: "notify::string-value", callback: (($obj: DOMXPathResult, pspec: GObject.ParamSpec) => void)): number
     emit(sigName: "notify::string-value", ...args: any[]): void
-    connect(sigName: "notify::core-object", callback: (($obj: DOMXPathResult, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::core-object", callback: (($obj: DOMXPathResult, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::core-object", ...args: any[]): void
     connect(sigName: string, callback: (...args: any[]) => void): number
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
@@ -20832,31 +20192,6 @@ module HitTestResult {
          * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
          * is present in #WebKitHitTestResult:context
          */
-        image_uri?: string | null
-        /**
-         * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_label?: string | null
-        /**
-         * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_title?: string | null
-        /**
-         * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
-         */
-        link_uri?: string | null
-        /**
-         * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-         * is present in #WebKitHitTestResult:context
-         */
-        media_uri?: string | null
-        /**
-         * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-         * is present in #WebKitHitTestResult:context
-         */
         imageUri?: string | null
         /**
          * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
@@ -20895,17 +20230,7 @@ interface HitTestResult {
      * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
      * is present in #WebKitHitTestResult:context
      */
-    readonly image_uri: string | null
-    /**
-     * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-     * is present in #WebKitHitTestResult:context
-     */
     readonly imageUri: string | null
-    /**
-     * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
-    readonly link_label: string | null
     /**
      * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
@@ -20915,27 +20240,12 @@ interface HitTestResult {
      * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
-    readonly link_title: string | null
-    /**
-     * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
     readonly linkTitle: string | null
     /**
      * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
      * is present in #WebKitHitTestResult:context
      */
-    readonly link_uri: string | null
-    /**
-     * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-     * is present in #WebKitHitTestResult:context
-     */
     readonly linkUri: string | null
-    /**
-     * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-     * is present in #WebKitHitTestResult:context
-     */
-    readonly media_uri: string | null
     /**
      * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
      * is present in #WebKitHitTestResult:context
@@ -21299,15 +20609,7 @@ interface URIResponse {
     /**
      * The expected content length of the response.
      */
-    readonly content_length: number
-    /**
-     * The expected content length of the response.
-     */
     readonly contentLength: number
-    /**
-     * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
-     */
-    readonly http_headers: Soup.MessageHeaders
     /**
      * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
      */
@@ -21315,23 +20617,11 @@ interface URIResponse {
     /**
      * The MIME type of the response.
      */
-    readonly mime_type: string | null
-    /**
-     * The MIME type of the response.
-     */
     readonly mimeType: string | null
     /**
      * The status code of the response as returned by the server.
      */
-    readonly status_code: number
-    /**
-     * The status code of the response as returned by the server.
-     */
     readonly statusCode: number
-    /**
-     * The suggested filename for the URI response.
-     */
-    readonly suggested_filename: string | null
     /**
      * The suggested filename for the URI response.
      */
@@ -21448,7 +20738,7 @@ module UserMessage {
         /**
          * The UNIX file descriptors of the user message.
          */
-        fd_list?: Gio.UnixFDList | null
+        fdList?: Gio.UnixFDList | null
         /**
          * The name of the user message.
          */
@@ -21459,10 +20749,6 @@ module UserMessage {
          * allowed.
          */
         parameters?: GLib.Variant | null
-        /**
-         * The UNIX file descriptors of the user message.
-         */
-        fdList?: Gio.UnixFDList | null
     }
 
 }
@@ -21471,10 +20757,6 @@ interface UserMessage {
 
     // Own properties of WebKit2WebExtension-4.1.WebKit2WebExtension.UserMessage
 
-    /**
-     * The UNIX file descriptors of the user message.
-     */
-    readonly fd_list: Gio.UnixFDList
     /**
      * The UNIX file descriptors of the user message.
      */

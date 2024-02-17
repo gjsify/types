@@ -1,13 +1,19 @@
 {
     "name": "@girs/retro-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Retro-1, generated from library version 1.0.0",
     "type": "module",
     "module": "retro-1.js",
     "main": "retro-1.js",
     "exports": {
-        "./ambient": "./retro-1-ambient.d.ts",
-        "./import": "./retro-1-import.d.ts",
+        "./ambient": {
+            "types": "./retro-1-ambient.d.ts",
+            "default": "./retro-1-ambient.js"
+        },
+        "./import": {
+            "types": "./retro-1-import.d.ts",
+            "default": "./retro-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./retro-1.d.ts",

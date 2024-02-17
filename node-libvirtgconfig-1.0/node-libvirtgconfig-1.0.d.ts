@@ -1083,7 +1083,7 @@ module Domain {
 
         // Own constructor properties of LibvirtGConfig-1.0.LibvirtGConfig.Domain
 
-        currentMemory?: number | null
+        current_memory?: number | null
         description?: string | null
         features?: string[] | null
         memory?: number | null

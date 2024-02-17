@@ -164,7 +164,7 @@ module Persona {
 
         // Own constructor properties of FolksTelepathy-0.6.FolksTelepathy.Persona
 
-        isInContactList?: boolean | null
+        is_in_contact_list?: boolean | null
         contact?: TelepathyGLib.Contact | null
     }
 

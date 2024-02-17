@@ -3721,7 +3721,7 @@ module NetworkMonitor {
         /**
          * The GIO name of the underlying #GNetworkMonitor to use.
          */
-        gioName?: string | null
+        gio_name?: string | null
     }
 
 }
@@ -4250,7 +4250,7 @@ module SoupSession {
          * 
          * See e_soup_session_set_force_http1() for more information about the limitations.
          */
-        forceHttp1?: boolean | null
+        force_http1?: boolean | null
         /**
          * The #ESource being used for this soup session.
          */
@@ -4693,9 +4693,9 @@ module Source {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.Source
 
-        displayName?: string | null
+        display_name?: string | null
         enabled?: boolean | null
-        mainContext?: GLib.MainContext | null
+        main_context?: GLib.MainContext | null
         parent?: string | null
         uid?: string | null
     }
@@ -5831,8 +5831,8 @@ module SourceAlarms {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceAlarms
 
-        includeMe?: boolean | null
-        lastNotified?: string | null
+        include_me?: boolean | null
+        last_notified?: string | null
     }
 
 }
@@ -5951,13 +5951,13 @@ module SourceAuthentication {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceAuthentication
 
-        credentialName?: string | null
+        credential_name?: string | null
         host?: string | null
-        isExternal?: boolean | null
+        is_external?: boolean | null
         method?: string | null
         port?: number | null
-        proxyUid?: string | null
-        rememberPassword?: boolean | null
+        proxy_uid?: string | null
+        remember_password?: boolean | null
         user?: string | null
     }
 
@@ -6243,7 +6243,7 @@ module SourceAutocomplete {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceAutocomplete
 
-        includeMe?: boolean | null
+        include_me?: boolean | null
     }
 
 }
@@ -6422,7 +6422,7 @@ module SourceBackend {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceBackend
 
-        backendName?: string | null
+        backend_name?: string | null
     }
 
 }
@@ -6698,13 +6698,13 @@ module SourceCollection {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceCollection
 
-        allowSourcesRename?: boolean | null
-        calendarEnabled?: boolean | null
-        calendarUrl?: string | null
-        contactsEnabled?: boolean | null
-        contactsUrl?: string | null
+        allow_sources_rename?: boolean | null
+        calendar_enabled?: boolean | null
+        calendar_url?: string | null
+        contacts_enabled?: boolean | null
+        contacts_url?: string | null
         identity?: string | null
-        mailEnabled?: boolean | null
+        mail_enabled?: boolean | null
     }
 
 }
@@ -6958,7 +6958,7 @@ module SourceContacts {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceContacts
 
-        includeMe?: boolean | null
+        include_me?: boolean | null
     }
 
 }
@@ -7566,10 +7566,10 @@ module SourceGoa {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceGoa
 
-        accountId?: string | null
+        account_id?: string | null
         address?: string | null
-        calendarUrl?: string | null
-        contactsUrl?: string | null
+        calendar_url?: string | null
+        contacts_url?: string | null
         name?: string | null
     }
 
@@ -7784,10 +7784,10 @@ module SourceLDAP {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceLDAP
 
         authentication?: SourceLDAPAuthentication | null
-        canBrowse?: boolean | null
+        can_browse?: boolean | null
         filter?: string | null
         limit?: number | null
-        rootDn?: string | null
+        root_dn?: string | null
         scope?: SourceLDAPScope | null
         security?: SourceLDAPSecurity | null
     }
@@ -7901,8 +7901,8 @@ module SourceLocal {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceLocal
 
-        customFile?: Gio.File | null
-        emailAddress?: string | null
+        custom_file?: Gio.File | null
+        email_address?: string | null
         writable?: boolean | null
     }
 
@@ -8028,7 +8028,7 @@ module SourceMDN {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMDN
 
-        responsePolicy?: MdnResponsePolicy | null
+        response_policy?: MdnResponsePolicy | null
     }
 
 }
@@ -8105,12 +8105,12 @@ module SourceMailAccount {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMailAccount
 
-        archiveFolder?: string | null
+        archive_folder?: string | null
         builtin?: boolean | null
-        identityUid?: string | null
-        markSeen?: ThreeState | null
-        markSeenTimeout?: number | null
-        needsInitialSetup?: boolean | null
+        identity_uid?: string | null
+        mark_seen?: ThreeState | null
+        mark_seen_timeout?: number | null
+        needs_initial_setup?: boolean | null
     }
 
 }
@@ -8294,13 +8294,13 @@ module SourceMailComposition {
 
         bcc?: string[] | null
         cc?: string[] | null
-        draftsFolder?: string | null
+        drafts_folder?: string | null
         language?: string | null
-        replyStyle?: SourceMailCompositionReplyStyle | null
-        signImip?: boolean | null
-        startBottom?: ThreeState | null
-        templatesFolder?: string | null
-        topSignature?: ThreeState | null
+        reply_style?: SourceMailCompositionReplyStyle | null
+        sign_imip?: boolean | null
+        start_bottom?: ThreeState | null
+        templates_folder?: string | null
+        top_signature?: ThreeState | null
     }
 
 }
@@ -8592,8 +8592,8 @@ module SourceMailIdentity {
         aliases?: string | null
         name?: string | null
         organization?: string | null
-        replyTo?: string | null
-        signatureUid?: string | null
+        reply_to?: string | null
+        signature_uid?: string | null
     }
 
 }
@@ -8844,7 +8844,7 @@ module SourceMailSignature {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMailSignature
 
-        mimeType?: string | null
+        mime_type?: string | null
     }
 
 }
@@ -8954,10 +8954,10 @@ module SourceMailSubmission {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceMailSubmission
 
-        repliesToOriginFolder?: boolean | null
-        sentFolder?: string | null
-        transportUid?: string | null
-        useSentFolder?: boolean | null
+        replies_to_origin_folder?: boolean | null
+        sent_folder?: string | null
+        transport_uid?: string | null
+        use_sent_folder?: boolean | null
     }
 
 }
@@ -9231,7 +9231,7 @@ module SourceOffline {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceOffline
 
-        staySynchronized?: boolean | null
+        stay_synchronized?: boolean | null
     }
 
 }
@@ -9310,16 +9310,16 @@ module SourceOpenPGP {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceOpenPGP
 
-        alwaysTrust?: boolean | null
-        encryptByDefault?: boolean | null
-        encryptToSelf?: boolean | null
-        keyId?: string | null
-        locateKeys?: boolean | null
-        preferInline?: boolean | null
-        sendPreferEncrypt?: boolean | null
-        sendPublicKey?: boolean | null
-        signByDefault?: boolean | null
-        signingAlgorithm?: string | null
+        always_trust?: boolean | null
+        encrypt_by_default?: boolean | null
+        encrypt_to_self?: boolean | null
+        key_id?: string | null
+        locate_keys?: boolean | null
+        prefer_inline?: boolean | null
+        send_prefer_encrypt?: boolean | null
+        send_public_key?: boolean | null
+        sign_by_default?: boolean | null
+        signing_algorithm?: string | null
     }
 
 }
@@ -9577,20 +9577,20 @@ module SourceProxy {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceProxy
 
-        autoconfigUrl?: string | null
-        ftpHost?: string | null
-        ftpPort?: number | null
-        httpAuthPassword?: string | null
-        httpAuthUser?: string | null
-        httpHost?: string | null
-        httpPort?: number | null
-        httpUseAuth?: boolean | null
-        httpsHost?: string | null
-        httpsPort?: number | null
-        ignoreHosts?: string[] | null
+        autoconfig_url?: string | null
+        ftp_host?: string | null
+        ftp_port?: number | null
+        http_auth_password?: string | null
+        http_auth_user?: string | null
+        http_host?: string | null
+        http_port?: number | null
+        http_use_auth?: boolean | null
+        https_host?: string | null
+        https_port?: number | null
+        ignore_hosts?: string[] | null
         method?: ProxyMethod | null
-        socksHost?: string | null
-        socksPort?: number | null
+        socks_host?: string | null
+        socks_port?: number | null
     }
 
 }
@@ -9989,8 +9989,8 @@ module SourceRefresh {
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceRefresh
 
         enabled?: boolean | null
-        enabledOnMeteredNetwork?: boolean | null
-        intervalMinutes?: number | null
+        enabled_on_metered_network?: boolean | null
+        interval_minutes?: number | null
     }
 
 }
@@ -10165,27 +10165,27 @@ module SourceRegistry {
         /**
          * The default address book #ESource.
          */
-        defaultAddressBook?: Source | null
+        default_address_book?: Source | null
         /**
          * The default calendar #ESource.
          */
-        defaultCalendar?: Source | null
+        default_calendar?: Source | null
         /**
          * The default mail account #ESource.
          */
-        defaultMailAccount?: Source | null
+        default_mail_account?: Source | null
         /**
          * The default mail identity #ESource.
          */
-        defaultMailIdentity?: Source | null
+        default_mail_identity?: Source | null
         /**
          * The default memo list #ESource.
          */
-        defaultMemoList?: Source | null
+        default_memo_list?: Source | null
         /**
          * The default task list #ESource.
          */
-        defaultTaskList?: Source | null
+        default_task_list?: Source | null
     }
 
 }
@@ -10856,7 +10856,7 @@ module SourceRegistryWatcher {
          * a complementary filter to #ESourceRegistryWatcher::filter
          * signal.
          */
-        extensionName?: string | null
+        extension_name?: string | null
         /**
          * The #ESourceRegistry manages #ESource instances.
          */
@@ -11159,12 +11159,12 @@ module SourceSMIME {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceSMIME
 
-        encryptByDefault?: boolean | null
-        encryptToSelf?: boolean | null
-        encryptionCertificate?: string | null
-        signByDefault?: boolean | null
-        signingAlgorithm?: string | null
-        signingCertificate?: string | null
+        encrypt_by_default?: boolean | null
+        encrypt_to_self?: boolean | null
+        encryption_certificate?: string | null
+        sign_by_default?: boolean | null
+        signing_algorithm?: string | null
+        signing_certificate?: string | null
     }
 
 }
@@ -11680,7 +11680,7 @@ module SourceUoa {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceUoa
 
-        accountId?: number | null
+        account_id?: number | null
     }
 
 }
@@ -11829,7 +11829,7 @@ module SourceWebDAVNotes {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceWebDAVNotes
 
-        defaultExt?: string | null
+        default_ext?: string | null
     }
 
 }
@@ -11916,15 +11916,15 @@ module SourceWebdav {
 
         // Own constructor properties of EDataServer-1.2.EDataServer.SourceWebdav
 
-        avoidIfmatch?: boolean | null
-        calendarAutoSchedule?: boolean | null
+        avoid_ifmatch?: boolean | null
+        calendar_auto_schedule?: boolean | null
         color?: string | null
-        displayName?: string | null
-        emailAddress?: string | null
+        display_name?: string | null
+        email_address?: string | null
         order?: number | null
-        resourcePath?: string | null
-        resourceQuery?: string | null
-        sslTrust?: string | null
+        resource_path?: string | null
+        resource_query?: string | null
+        ssl_trust?: string | null
         uri?: GLib.Uri | null
     }
 

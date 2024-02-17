@@ -561,9 +561,9 @@ export module Info {
 
         // Own constructor properties of GWeather-3.0.GWeather.Info
 
-        applicationId?: string | null
-        contactInfo?: string | null
-        enabledProviders?: Provider | null
+        application_id?: string | null
+        contact_info?: string | null
+        enabled_providers?: Provider | null
         location?: Location | null
     }
 
@@ -815,7 +815,7 @@ export module LocationEntry {
         // Own constructor properties of GWeather-3.0.GWeather.LocationEntry
 
         location?: Location | null
-        showNamedTimezones?: boolean | null
+        show_named_timezones?: boolean | null
         top?: Location | null
     }
 

@@ -524,10 +524,9 @@ module BookBackend {
 
         // Own constructor properties of EDataBook-1.2.EDataBook.BookBackend
 
-        cache_dir?: string | null
+        cacheDir?: string | null
         registry?: EDataServer.SourceRegistry | null
         writable?: boolean | null
-        cacheDir?: string | null
     }
 
 }
@@ -536,9 +535,7 @@ interface BookBackend {
 
     // Own properties of EDataBook-1.2.EDataBook.BookBackend
 
-    cache_dir: string | null
     cacheDir: string | null
-    readonly proxy_resolver: Gio.ProxyResolver
     readonly proxyResolver: Gio.ProxyResolver
     readonly registry: EDataServer.SourceRegistry
     writable: boolean
@@ -3764,7 +3761,6 @@ module DataBook {
 
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
-        object_path?: string | null
         objectPath?: string | null
     }
 
@@ -3776,7 +3772,6 @@ interface DataBook extends Gio.Initable {
 
     readonly backend: BookBackend
     readonly connection: Gio.DBusConnection
-    readonly object_path: string | null
     readonly objectPath: string | null
 
     // Owm methods of EDataBook-1.2.EDataBook.DataBook
@@ -4167,9 +4162,8 @@ module DataBookCursorCache {
 
         // Own constructor properties of EDataBook-1.2.EDataBook.DataBookCursorCache
 
-        book_cache?: BookCache | null
-        cursor?: any | null
         bookCache?: BookCache | null
+        cursor?: any | null
     }
 
 }
@@ -4178,7 +4172,6 @@ interface DataBookCursorCache {
 
     // Own properties of EDataBook-1.2.EDataBook.DataBookCursorCache
 
-    readonly book_cache: BookCache
     readonly bookCache: BookCache
     readonly cursor: any
 
@@ -4260,7 +4253,6 @@ module DataBookCursorSqlite {
 
         cursor?: any | null
         ebsql?: BookSqlite | null
-        revision_key?: string | null
         revisionKey?: string | null
     }
 
@@ -4272,7 +4264,6 @@ interface DataBookCursorSqlite {
 
     readonly cursor: any
     readonly ebsql: BookSqlite
-    readonly revision_key: string | null
     readonly revisionKey: string | null
 
     // Class property signals of EDataBook-1.2.EDataBook.DataBookCursorSqlite
@@ -4503,11 +4494,9 @@ module DataBookView {
         backend?: BookBackend | null
         connection?: Gio.DBusConnection | null
         indices?: any | null
-        n_total?: number | null
-        object_path?: string | null
-        sexp?: BookBackendSExp | null
         nTotal?: number | null
         objectPath?: string | null
+        sexp?: BookBackendSExp | null
     }
 
 }
@@ -4519,9 +4508,7 @@ interface DataBookView extends Gio.Initable {
     readonly backend: BookBackend
     readonly connection: Gio.DBusConnection
     indices: any
-    n_total: number
     nTotal: number
-    readonly object_path: string | null
     readonly objectPath: string | null
     readonly sexp: BookBackendSExp
 

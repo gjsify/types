@@ -1,13 +1,19 @@
 {
     "name": "@girs/ibus-1.0",
-    "version": "1.5.11-3.2.7",
+    "version": "1.5.11-3.2.8",
     "description": "GJS TypeScript type definitions for IBus-1.0, generated from library version 1.5.11",
     "type": "module",
     "module": "ibus-1.0.js",
     "main": "ibus-1.0.js",
     "exports": {
-        "./ambient": "./ibus-1.0-ambient.d.ts",
-        "./import": "./ibus-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./ibus-1.0-ambient.d.ts",
+            "default": "./ibus-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./ibus-1.0-import.d.ts",
+            "default": "./ibus-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./ibus-1.0.d.ts",

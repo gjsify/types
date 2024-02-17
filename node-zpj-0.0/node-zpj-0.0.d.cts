@@ -230,7 +230,7 @@ export module AuthorizationDomain {
         // Own constructor properties of Zpj-0.0.Zpj.AuthorizationDomain
 
         scope?: string | null
-        serviceName?: string | null
+        service_name?: string | null
     }
 
 }

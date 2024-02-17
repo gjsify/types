@@ -48,7 +48,7 @@ module Proxy {
         // Own constructor properties of GoVirt-1.0.GoVirt.Proxy
 
         admin?: boolean | null
-        caCert?: any[] | null
+        ca_cert?: any[] | null
     }
 
 }
@@ -296,9 +296,9 @@ module VmDisplay {
 
         address?: string | null
         expiry?: number | null
-        monitorCount?: number | null
+        monitor_count?: number | null
         port?: number | null
-        securePort?: number | null
+        secure_port?: number | null
         ticket?: string | null
         type?: VmDisplayType | null
     }

@@ -1,13 +1,19 @@
 {
     "name": "@girs/colord-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Colord-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "colord-1.0.js",
     "main": "colord-1.0.js",
     "exports": {
-        "./ambient": "./colord-1.0-ambient.d.ts",
-        "./import": "./colord-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./colord-1.0-ambient.d.ts",
+            "default": "./colord-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./colord-1.0-import.d.ts",
+            "default": "./colord-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./colord-1.0.d.ts",

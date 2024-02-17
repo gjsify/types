@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstglwayland-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstGLWayland-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gstglwayland-1.0.js",
     "main": "gstglwayland-1.0.js",
     "exports": {
-        "./ambient": "./gstglwayland-1.0-ambient.d.ts",
-        "./import": "./gstglwayland-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gstglwayland-1.0-ambient.d.ts",
+            "default": "./gstglwayland-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstglwayland-1.0-import.d.ts",
+            "default": "./gstglwayland-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstglwayland-1.0.d.ts",

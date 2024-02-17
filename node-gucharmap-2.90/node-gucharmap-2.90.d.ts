@@ -186,8 +186,8 @@ module BlockCodepointList {
 
         // Own constructor properties of Gucharmap-2.90.Gucharmap.BlockCodepointList
 
-        firstCodepoint?: number | null
-        lastCodepoint?: number | null
+        first_codepoint?: number | null
+        last_codepoint?: number | null
     }
 
 }
@@ -870,16 +870,16 @@ module Charmap {
 
         // Own constructor properties of Gucharmap-2.90.Gucharmap.Charmap
 
-        activeChapter?: string | null
-        activeCharacter?: number | null
-        activePage?: number | null
-        chaptersModel?: ChaptersModel | null
-        fontDesc?: Pango.FontDescription | null
+        active_chapter?: string | null
+        active_character?: number | null
+        active_page?: number | null
+        chapters_model?: ChaptersModel | null
+        font_desc?: Pango.FontDescription | null
         /**
          * Whether font fallback is enabled.
          */
-        fontFallback?: boolean | null
-        snapPower2?: boolean | null
+        font_fallback?: boolean | null
+        snap_power_2?: boolean | null
     }
 
 }
@@ -1441,15 +1441,15 @@ module Chartable {
 
         // Own constructor properties of Gucharmap-2.90.Gucharmap.Chartable
 
-        activeCharacter?: number | null
-        codepointList?: CodepointList | null
-        fontDesc?: Pango.FontDescription | null
+        active_character?: number | null
+        codepoint_list?: CodepointList | null
+        font_desc?: Pango.FontDescription | null
         /**
          * Whether font fallback is enabled.
          */
-        fontFallback?: boolean | null
-        snapPower2?: boolean | null
-        zoomEnabled?: boolean | null
+        font_fallback?: boolean | null
+        snap_power_2?: boolean | null
+        zoom_enabled?: boolean | null
     }
 
 }

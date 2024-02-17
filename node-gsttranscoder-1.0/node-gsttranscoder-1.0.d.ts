@@ -132,11 +132,11 @@ module Transcoder {
         /**
          * See #encodebin:avoid-reencoding
          */
-        avoidReencoding?: boolean | null
-        destUri?: string | null
-        positionUpdateInterval?: number | null
+        avoid_reencoding?: boolean | null
+        dest_uri?: string | null
+        position_update_interval?: number | null
         profile?: GstPbutils.EncodingProfile | null
-        srcUri?: string | null
+        src_uri?: string | null
     }
 
 }

@@ -167,7 +167,7 @@ export module Sink {
 
         // Own constructor properties of GstVideo-0.10.GstVideo.Sink
 
-        showPrerollFrame?: boolean | null
+        show_preroll_frame?: boolean | null
     }
 
 }

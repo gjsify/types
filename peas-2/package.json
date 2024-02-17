@@ -1,13 +1,19 @@
 {
     "name": "@girs/peas-2",
-    "version": "2.0.0-3.2.7",
+    "version": "2.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Peas-2, generated from library version 2.0.0",
     "type": "module",
     "module": "peas-2.js",
     "main": "peas-2.js",
     "exports": {
-        "./ambient": "./peas-2-ambient.d.ts",
-        "./import": "./peas-2-import.d.ts",
+        "./ambient": {
+            "types": "./peas-2-ambient.d.ts",
+            "default": "./peas-2-ambient.js"
+        },
+        "./import": {
+            "types": "./peas-2-import.d.ts",
+            "default": "./peas-2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./peas-2.d.ts",

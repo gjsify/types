@@ -1,13 +1,19 @@
 {
     "name": "@girs/granite-7.0",
-    "version": "7.0.0-3.2.7",
+    "version": "7.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Granite-7.0, generated from library version 7.0.0",
     "type": "module",
     "module": "granite-7.0.js",
     "main": "granite-7.0.js",
     "exports": {
-        "./ambient": "./granite-7.0-ambient.d.ts",
-        "./import": "./granite-7.0-import.d.ts",
+        "./ambient": {
+            "types": "./granite-7.0-ambient.d.ts",
+            "default": "./granite-7.0-ambient.js"
+        },
+        "./import": {
+            "types": "./granite-7.0-import.d.ts",
+            "default": "./granite-7.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./granite-7.0.d.ts",

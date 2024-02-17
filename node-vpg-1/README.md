@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-vpg-1)
 
 
-Node.js TypeScript type definitions for Vpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for Vpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 VDA implementation using to connect directly to PostgreSQL databases
 

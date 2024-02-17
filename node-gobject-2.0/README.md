@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-gobject-2.0)
 
 
-Node.js TypeScript type definitions for GObject-2.0, generated from library version 2.78.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for GObject-2.0, generated from library version 2.77.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 GObject provides the object system used for Pango and GTK+.
 

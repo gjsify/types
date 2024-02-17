@@ -275,7 +275,7 @@ export module Context {
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
          */
-        defaultLanguage?: string | null
+        default_language?: string | null
         /**
          * The port to run on. Set to 0 if you don't care what port to run on.
          */
@@ -285,7 +285,7 @@ export module Context {
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
          */
-        subscriptionTimeout?: number | null
+        subscription_timeout?: number | null
     }
 
 }
@@ -562,7 +562,7 @@ export module ContextManager {
 
         // Own constructor properties of GUPnP-1.0.GUPnP.ContextManager
 
-        mainContext?: any | null
+        main_context?: any | null
         /**
          * Port the contexts listen on, or 0 if you don't care what
          * port is used by #GUPnPContext objects created by this object.
@@ -758,7 +758,7 @@ export module ControlPoint {
         /**
          * The resource factory to use. Set to NULL for default factory.
          */
-        resourceFactory?: ResourceFactory | null
+        resource_factory?: ResourceFactory | null
     }
 
 }
@@ -963,7 +963,7 @@ export module Device {
          * The containing #GUPnPRootDevice, or NULL if this is the root
          * device.
          */
-        rootDevice?: RootDevice | null
+        root_device?: RootDevice | null
     }
 
 }
@@ -1076,7 +1076,7 @@ export module DeviceInfo {
         /**
          * The device type.
          */
-        deviceType?: string | null
+        device_type?: string | null
         /**
          * Private property.
          */
@@ -1092,7 +1092,7 @@ export module DeviceInfo {
         /**
          * The resource factory to use. Set to NULL for default factory.
          */
-        resourceFactory?: ResourceFactory | null
+        resource_factory?: ResourceFactory | null
         /**
          * The UDN of this device.
          */
@@ -1100,7 +1100,7 @@ export module DeviceInfo {
         /**
          * The URL base (#SoupURI).
          */
-        urlBase?: Soup.URI | null
+        url_base?: Soup.URI | null
     }
 
 }
@@ -1613,16 +1613,16 @@ export module RootDevice {
         /**
          * The path to directory where description documents are provided.
          */
-        descriptionDir?: string | null
+        description_dir?: string | null
         /**
          * Device description document. Constructor property.
          */
-        descriptionDoc?: XMLDoc | null
+        description_doc?: XMLDoc | null
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
          */
-        descriptionPath?: string | null
+        description_path?: string | null
     }
 
 }
@@ -1855,7 +1855,7 @@ export module Service {
         /**
          * The containing #GUPnPRootDevice.
          */
-        rootDevice?: RootDevice | null
+        root_device?: RootDevice | null
     }
 
 }
@@ -2043,7 +2043,7 @@ export module ServiceInfo {
         /**
          * The service type.
          */
-        serviceType?: string | null
+        service_type?: string | null
         /**
          * The UDN of the containing device.
          */
@@ -2051,7 +2051,7 @@ export module ServiceInfo {
         /**
          * The URL base (#SoupURI).
          */
-        urlBase?: Soup.URI | null
+        url_base?: Soup.URI | null
     }
 
 }

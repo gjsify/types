@@ -125,7 +125,7 @@ export module Camera {
         /**
          * The video texture for the #CheeseCamera to render into.
          */
-        videoTexture?: any | null
+        video_texture?: any | null
     }
 
 }
@@ -643,7 +643,7 @@ export module Effect {
          * If the control valve is active, then the effect is currently connected to
          * a video stream, for previews.
          */
-        controlValve?: Gst.Element | null
+        control_valve?: Gst.Element | null
         /**
          * Name of the effect, for display in a UI.
          */
@@ -651,7 +651,7 @@ export module Effect {
         /**
          * Description of the GStreamer pipeline associated with the effect.
          */
-        pipelineDesc?: string | null
+        pipeline_desc?: string | null
     }
 
 }

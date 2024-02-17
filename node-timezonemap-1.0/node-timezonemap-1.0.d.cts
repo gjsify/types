@@ -149,7 +149,7 @@ export module TimezoneLocation {
 
         // Own constructor properties of TimezoneMap-1.0.TimezoneMap.TimezoneLocation
 
-        comment?: string | null
+        Comment?: string | null
         country?: string | null
         dist?: number | null
         latitude?: number | null

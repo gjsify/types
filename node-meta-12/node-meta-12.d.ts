@@ -2019,7 +2019,7 @@ module Background {
 
         // Own constructor properties of Meta-12.Meta.Background
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
     }
 
 }
@@ -2100,7 +2100,7 @@ module BackgroundActor {
 
         // Own constructor properties of Meta-12.Meta.BackgroundActor
 
-        metaDisplay?: Display | null
+        meta_display?: Display | null
         monitor?: number | null
     }
 
@@ -2551,13 +2551,13 @@ module BackgroundContent {
         background?: Background | null
         brightness?: number | null
         gradient?: boolean | null
-        gradientHeight?: number | null
-        gradientMaxDarkness?: number | null
-        metaDisplay?: Display | null
+        gradient_height?: number | null
+        gradient_max_darkness?: number | null
+        meta_display?: Display | null
         monitor?: number | null
-        roundedClipRadius?: number | null
+        rounded_clip_radius?: number | null
         vignette?: boolean | null
-        vignetteSharpness?: number | null
+        vignette_sharpness?: number | null
     }
 
 }
@@ -3469,7 +3469,7 @@ module Context {
         // Own constructor properties of Meta-12.Meta.Context
 
         name?: string | null
-        unsafeMode?: boolean | null
+        unsafe_mode?: boolean | null
     }
 
 }
@@ -4616,7 +4616,7 @@ module MonitorManager {
         // Own constructor properties of Meta-12.Meta.MonitorManager
 
         backend?: Backend | null
-        experimentalHdr?: string | null
+        experimental_hdr?: string | null
     }
 
 }
@@ -4969,7 +4969,7 @@ module RemoteAccessHandle {
 
         // Own constructor properties of Meta-12.Meta.RemoteAccessHandle
 
-        isRecording?: boolean | null
+        is_recording?: boolean | null
     }
 
 }
@@ -6068,9 +6068,9 @@ module StartupSequence {
 
         // Own constructor properties of Meta-12.Meta.StartupSequence
 
-        applicationId?: string | null
+        application_id?: string | null
         display?: Display | null
-        iconName?: string | null
+        icon_name?: string | null
         id?: string | null
         name?: string | null
         timestamp?: number | null
@@ -7000,7 +7000,7 @@ module WindowActor {
 
         // Own constructor properties of Meta-12.Meta.WindowActor
 
-        metaWindow?: Window | null
+        meta_window?: Window | null
     }
 
 }

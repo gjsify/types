@@ -1205,9 +1205,9 @@ module BasicForm {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.BasicForm
 
-        entriesAutoDefault?: boolean | null
+        entries_auto_default?: boolean | null
         paramlist?: any | null
-        xmlLayout?: any | null
+        xml_layout?: any | null
     }
 
 }
@@ -1805,11 +1805,11 @@ module Cloud {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.Cloud
 
-        labelColumn?: number | null
-        maxScale?: number | null
-        minScale?: number | null
+        label_column?: number | null
+        max_scale?: number | null
+        min_scale?: number | null
         model?: Gda.DataModel | null
-        weightColumn?: number | null
+        weight_column?: number | null
     }
 
 }
@@ -2293,7 +2293,7 @@ module Combo {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.Combo
 
-        asList?: boolean | null
+        as_list?: boolean | null
         model: any
     }
 
@@ -2859,9 +2859,9 @@ module DataCellRendererBin {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataCellRendererBin
 
-        dataHandler?: Gda.DataHandler | null
+        data_handler?: Gda.DataHandler | null
         editable?: boolean | null
-        toBeDeleted?: boolean | null
+        to_be_deleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
     }
@@ -3138,9 +3138,9 @@ module DataCellRendererBoolean {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataCellRendererBoolean
 
-        dataHandler?: Gda.DataHandler | null
+        data_handler?: Gda.DataHandler | null
         editable?: boolean | null
-        toBeDeleted?: boolean | null
+        to_be_deleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
     }
@@ -3392,13 +3392,13 @@ module DataCellRendererCombo {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataCellRendererCombo
 
-        dataSet?: Set | null
-        dataSetSource?: any | null
-        setDefaultIfInvalid?: boolean | null
-        showExpander?: boolean | null
-        toBeDeleted?: boolean | null
+        data_set?: Set | null
+        data_set_source?: any | null
+        set_default_if_invalid?: boolean | null
+        show_expander?: boolean | null
+        to_be_deleted?: boolean | null
         values?: any | null
-        valuesDisplay?: any | null
+        values_display?: any | null
     }
 
 }
@@ -3865,7 +3865,7 @@ module DataCellRendererInfo {
         group?: any | null
         iter?: Gda.DataModelIter | null
         store?: DataStore | null
-        toBeDeleted?: boolean | null
+        to_be_deleted?: boolean | null
     }
 
 }
@@ -4077,9 +4077,9 @@ module DataCellRendererTextual {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataCellRendererTextual
 
-        dataHandler?: Gda.DataHandler | null
+        data_handler?: Gda.DataHandler | null
         options?: string | null
-        toBeDeleted?: boolean | null
+        to_be_deleted?: boolean | null
         type?: GObject.GType | null
         value?: any | null
     }
@@ -4538,7 +4538,7 @@ module DataFilter {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataFilter
 
-        dataWidget?: DataProxy | null
+        data_widget?: DataProxy | null
     }
 
 }
@@ -4950,7 +4950,7 @@ module DataProxyInfo {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.DataProxyInfo
 
-        dataProxy?: DataProxy | null
+        data_proxy?: DataProxy | null
     }
 
 }
@@ -5484,7 +5484,7 @@ module DataStore {
         // Own constructor properties of Gdaui-6.0.Gdaui.DataStore
 
         model?: any | null
-        prependNullEntry?: boolean | null
+        prepend_null_entry?: boolean | null
     }
 
 }
@@ -7347,7 +7347,7 @@ module EntryCombo {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryCombo
 
-        setDefaultIfInvalid?: boolean | null
+        set_default_if_invalid?: boolean | null
     }
 
 }
@@ -7862,7 +7862,7 @@ module EntryCommonTime {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryCommonTime
 
-        editingCanceled?: boolean | null
+        editing_canceled?: boolean | null
         type?: GObject.GType | null
     }
 
@@ -9322,7 +9322,7 @@ module EntryNumber {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryNumber
 
-        editingCanceled?: boolean | null
+        editing_canceled?: boolean | null
         options?: string | null
     }
 
@@ -9831,7 +9831,7 @@ module EntryShell {
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryShell
 
         handler?: Gda.DataHandler | null
-        isCellRenderer?: boolean | null
+        is_cell_renderer?: boolean | null
     }
 
 }
@@ -10239,7 +10239,7 @@ module EntryString {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryString
 
-        editingCanceled?: boolean | null
+        editing_canceled?: boolean | null
         multiline?: boolean | null
         options?: string | null
     }
@@ -11745,7 +11745,7 @@ module EntryWrapper {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.EntryWrapper
 
-        setDefaultIfInvalid?: boolean | null
+        set_default_if_invalid?: boolean | null
     }
 
 }
@@ -14322,9 +14322,9 @@ module NumericEntry {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.NumericEntry
 
-        decimalSep?: number | null
-        nDecimals?: number | null
-        thousandsSep?: number | null
+        decimal_sep?: number | null
+        n_decimals?: number | null
+        thousands_sep?: number | null
         type?: GObject.GType | null
     }
 
@@ -16115,9 +16115,9 @@ module RawGrid {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.RawGrid
 
-        infoCellVisible?: boolean | null
+        info_cell_visible?: boolean | null
         model: any
-        xmlLayout?: any | null
+        xml_layout?: any | null
     }
 
 }
@@ -16709,7 +16709,7 @@ module RtEditor {
         /**
          * Determines if the contents of the widget appears in a scrolled window or not.
          */
-        inScrolledWindow?: boolean | null
+        in_scrolled_window?: boolean | null
         /**
          * If set to %TRUE, then the default text background is removed
          * and thus the textbackground is the default widget's background.
@@ -16717,11 +16717,11 @@ module RtEditor {
          * This property has to be set before the widget is realized, and is taken into account only
          * if the widget is not editable (when it's realized).
          */
-        noBackground?: boolean | null
+        no_background?: boolean | null
         /**
          * Instead of showing the formatted text, display the raw text (in the txt2tags syntax)
          */
-        showMarkup?: boolean | null
+        show_markup?: boolean | null
     }
 
 }
@@ -17195,8 +17195,8 @@ module ServerOperation {
 
         // Own constructor properties of Gdaui-6.0.Gdaui.ServerOperation
 
-        hideSingleHeader?: boolean | null
-        serverOperation?: Gda.ServerOperation | null
+        hide_single_header?: boolean | null
+        server_operation?: Gda.ServerOperation | null
     }
 
 }

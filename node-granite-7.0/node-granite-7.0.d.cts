@@ -346,11 +346,11 @@ export module SettingsPage {
 
         // Own constructor properties of Granite-7.0.Granite.SettingsPage
 
-        statusType?: SettingsPageStatusType | null
-        displayWidget?: Gtk.Widget | null
+        status_type?: SettingsPageStatusType | null
+        display_widget?: Gtk.Widget | null
         header?: string | null
         status?: string | null
-        iconName?: string | null
+        icon_name?: string | null
         title?: string | null
         child?: Gtk.Widget | null
     }
@@ -642,9 +642,9 @@ export module SimpleSettingsPage {
 
         // Own constructor properties of Granite-7.0.Granite.SimpleSettingsPage
 
-        actionArea?: Gtk.Box | null
-        contentArea?: Gtk.Grid | null
-        statusSwitch?: Gtk.Switch | null
+        action_area?: Gtk.Box | null
+        content_area?: Gtk.Grid | null
+        status_switch?: Gtk.Switch | null
         activatable?: boolean | null
         description?: string | null
     }
@@ -950,8 +950,8 @@ export module AccelLabel {
 
         // Own constructor properties of Granite-7.0.Granite.AccelLabel
 
-        actionName?: string | null
-        accelString?: string | null
+        action_name?: string | null
+        accel_string?: string | null
         label?: string | null
     }
 
@@ -2214,7 +2214,7 @@ export module HeaderLabel {
         // Own constructor properties of Granite-7.0.Granite.HeaderLabel
 
         label?: string | null
-        secondaryText?: string | null
+        secondary_text?: string | null
     }
 
 }
@@ -2788,14 +2788,14 @@ export module MessageDialog {
 
         // Own constructor properties of Granite-7.0.Granite.MessageDialog
 
-        primaryText?: string | null
-        secondaryText?: string | null
-        imageIcon?: Gio.Icon | null
-        badgeIcon?: Gio.Icon | null
-        primaryLabel?: Gtk.Label | null
-        secondaryLabel?: Gtk.Label | null
+        primary_text?: string | null
+        secondary_text?: string | null
+        image_icon?: Gio.Icon | null
+        badge_icon?: Gio.Icon | null
+        primary_label?: Gtk.Label | null
+        secondary_label?: Gtk.Label | null
         buttons?: Gtk.ButtonsType | null
-        customBin?: Gtk.Box | null
+        custom_bin?: Gtk.Box | null
     }
 
 }
@@ -3360,12 +3360,12 @@ export module ModeSwitch {
         // Own constructor properties of Granite-7.0.Granite.ModeSwitch
 
         active?: boolean | null
-        primaryIconGicon?: Gio.Icon | null
-        primaryIconName?: string | null
-        primaryIconTooltipText?: string | null
-        secondaryIconGicon?: Gio.Icon | null
-        secondaryIconName?: string | null
-        secondaryIconTooltipText?: string | null
+        primary_icon_gicon?: Gio.Icon | null
+        primary_icon_name?: string | null
+        primary_icon_tooltip_text?: string | null
+        secondary_icon_gicon?: Gio.Icon | null
+        secondary_icon_name?: string | null
+        secondary_icon_tooltip_text?: string | null
     }
 
 }
@@ -4173,7 +4173,7 @@ export module SettingsSidebar {
         // Own constructor properties of Granite-7.0.Granite.SettingsSidebar
 
         stack?: Gtk.Stack | null
-        visibleChildName?: string | null
+        visible_child_name?: string | null
     }
 
 }
@@ -4409,7 +4409,7 @@ export module Settings {
 
         // Own constructor properties of Granite-7.0.Granite.Settings
 
-        prefersColorScheme?: SettingsColorScheme | null
+        prefers_color_scheme?: SettingsColorScheme | null
     }
 
 }
@@ -4808,8 +4808,8 @@ export module TimePicker {
 
         // Own constructor properties of Granite-7.0.Granite.TimePicker
 
-        format12?: string | null
-        format24?: string | null
+        format_12?: string | null
+        format_24?: string | null
         time?: GLib.DateTime | null
     }
 
@@ -5570,8 +5570,8 @@ export module ValidatedEntry {
 
         // Own constructor properties of Granite-7.0.Granite.ValidatedEntry
 
-        isValid?: boolean | null
-        minLength?: number | null
+        is_valid?: boolean | null
+        min_length?: number | null
         regex?: GLib.Regex | null
     }
 

@@ -277,7 +277,7 @@ export module Parser {
          * and local files if the playlist isn't local. This is useful if the library
          * is parsing a playlist from a remote location such as a website.
          */
-        disableUnsafe?: boolean | null
+        disable_unsafe?: boolean | null
         /**
          * If %TRUE, the parser will attempt to parse a playlist, even if it
          * appears to be unsupported (usually because of its filename extension).

@@ -72,7 +72,7 @@ module View {
 
         // Own constructor properties of GeglGtk3-0.1.GeglGtk3.View
 
-        autoscalePolicy?: ViewAutoscale | null
+        autoscale_policy?: ViewAutoscale | null
         block?: boolean | null
         node?: GObject.Object | null
         scale?: number | null

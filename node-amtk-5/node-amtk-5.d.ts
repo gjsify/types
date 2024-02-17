@@ -415,7 +415,7 @@ module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        applicationWindow?: Gtk.ApplicationWindow | null
+        application_window?: Gtk.ApplicationWindow | null
         /**
          * The #GtkStatusbar. %NULL by default.
          */
@@ -566,7 +566,7 @@ module Factory {
         /**
          * The default #AmtkFactoryFlags.
          */
-        defaultFlags?: FactoryFlags | null
+        default_flags?: FactoryFlags | null
     }
 
 }
@@ -841,7 +841,7 @@ module MenuShell {
         /**
          * The #GtkMenuShell.
          */
-        menuShell?: Gtk.MenuShell | null
+        menu_shell?: Gtk.MenuShell | null
     }
 
 }

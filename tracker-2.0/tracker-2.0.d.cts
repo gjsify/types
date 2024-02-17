@@ -886,7 +886,6 @@ export interface SparqlCursor {
     // Own properties of Tracker-2.0.Tracker.SparqlCursor
 
     connection: any
-    readonly n_columns: number
     readonly nColumns: number
 
     // Owm methods of Tracker-2.0.Tracker.SparqlCursor

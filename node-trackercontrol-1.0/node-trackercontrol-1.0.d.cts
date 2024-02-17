@@ -78,7 +78,7 @@ export module MinerManager {
 
         // Own constructor properties of TrackerControl-1.0.TrackerControl.MinerManager
 
-        autoStart?: boolean | null
+        auto_start?: boolean | null
     }
 
 }

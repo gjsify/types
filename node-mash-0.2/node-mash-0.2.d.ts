@@ -1647,8 +1647,8 @@ module Model {
         // Own constructor properties of Mash-0.2.Mash.Model
 
         data?: Data | null
-        fitToAllocation?: boolean | null
-        lightSet?: LightSet | null
+        fit_to_allocation?: boolean | null
+        light_set?: LightSet | null
     }
 
 }
@@ -2354,9 +2354,9 @@ module PointLight {
 
         // Own constructor properties of Mash-0.2.Mash.PointLight
 
-        constantAttenuation?: number | null
-        linearAttenuation?: number | null
-        quadraticAttenuation?: number | null
+        constant_attenuation?: number | null
+        linear_attenuation?: number | null
+        quadratic_attenuation?: number | null
     }
 
 }
@@ -2963,8 +2963,8 @@ module SpotLight {
 
         // Own constructor properties of Mash-0.2.Mash.SpotLight
 
-        spotCutoff?: number | null
-        spotExponent?: number | null
+        spot_cutoff?: number | null
+        spot_exponent?: number | null
     }
 
 }

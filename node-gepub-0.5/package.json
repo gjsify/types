@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gepub-0.5",
-    "version": "0.5.0-3.2.7",
+    "version": "0.5.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gepub-0.5, generated from library version 0.5.0",
     "type": "module",
     "module": "node-gepub-0.5.js",
     "main": "node-gepub-0.5.js",
     "exports": {
-        "./ambient": "./node-gepub-0.5-ambient.d.ts",
-        "./import": "./node-gepub-0.5-import.d.ts",
+        "./ambient": {
+            "types": "./node-gepub-0.5-ambient.d.ts",
+            "default": "./node-gepub-0.5-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gepub-0.5-import.d.ts",
+            "default": "./node-gepub-0.5-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gepub-0.5.d.ts",

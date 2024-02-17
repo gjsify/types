@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-nice-0.1",
-    "version": "0.1.0-3.2.7",
+    "version": "0.1.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Nice-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "node-nice-0.1.js",
     "main": "node-nice-0.1.js",
     "exports": {
-        "./ambient": "./node-nice-0.1-ambient.d.ts",
-        "./import": "./node-nice-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./node-nice-0.1-ambient.d.ts",
+            "default": "./node-nice-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-nice-0.1-import.d.ts",
+            "default": "./node-nice-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-nice-0.1.d.ts",

@@ -1589,11 +1589,6 @@ export module MediaSource {
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
          */
-        auto_split_threshold?: number | null
-        /**
-         * Transparently split queries with count requests
-         * bigger than a certain threshold into smaller queries.
-         */
         autoSplitThreshold?: number | null
     }
 
@@ -1603,11 +1598,6 @@ export interface MediaSource {
 
     // Own properties of Grl-0.1.Grl.MediaSource
 
-    /**
-     * Transparently split queries with count requests
-     * bigger than a certain threshold into smaller queries.
-     */
-    auto_split_threshold: number
     /**
      * Transparently split queries with count requests
      * bigger than a certain threshold into smaller queries.
@@ -2172,18 +2162,6 @@ export module MetadataSource {
         /**
          * A description of the source
          */
-        source_desc?: string | null
-        /**
-         * The identifier of the source.
-         */
-        source_id?: string | null
-        /**
-         * The name of the source.
-         */
-        source_name?: string | null
-        /**
-         * A description of the source
-         */
         sourceDesc?: string | null
         /**
          * The identifier of the source.
@@ -2204,23 +2182,11 @@ export interface MetadataSource {
     /**
      * A description of the source
      */
-    source_desc: string
-    /**
-     * A description of the source
-     */
     sourceDesc: string
     /**
      * The identifier of the source.
      */
-    source_id: string
-    /**
-     * The identifier of the source.
-     */
     sourceId: string
-    /**
-     * The name of the source.
-     */
-    source_name: string
     /**
      * The name of the source.
      */

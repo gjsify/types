@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-meta-10",
-    "version": "10.0.0-3.2.7",
+    "version": "10.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Meta-10, generated from library version 10.0.0",
     "type": "module",
     "module": "node-meta-10.js",
     "main": "node-meta-10.js",
     "exports": {
-        "./ambient": "./node-meta-10-ambient.d.ts",
-        "./import": "./node-meta-10-import.d.ts",
+        "./ambient": {
+            "types": "./node-meta-10-ambient.d.ts",
+            "default": "./node-meta-10-ambient.js"
+        },
+        "./import": {
+            "types": "./node-meta-10-import.d.ts",
+            "default": "./node-meta-10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-meta-10.d.ts",

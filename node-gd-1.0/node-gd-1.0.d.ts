@@ -69,11 +69,11 @@ module HeaderButton {
         /**
          * The symbolic icon name of the #GdHeaderButton object.
          */
-        symbolicIconName?: string | null
+        symbolic_icon_name?: string | null
         /**
          * Whether the label of the #GdHeaderButton object should use markup.
          */
-        useMarkup?: boolean | null
+        use_markup?: boolean | null
     }
 
 }
@@ -887,7 +887,7 @@ module HeaderBar {
 
         // Own constructor properties of Gd-1.0.Gd.HeaderBar
 
-        customTitle?: Gtk.Widget | null
+        custom_title?: Gtk.Widget | null
         hpadding?: number | null
         spacing?: number | null
         subtitle?: string | null
@@ -4516,7 +4516,7 @@ module MainToolbar {
 
         // Own constructor properties of Gd-1.0.Gd.MainToolbar
 
-        showModes?: boolean | null
+        show_modes?: boolean | null
     }
 
 }
@@ -5056,8 +5056,8 @@ module MainView {
         // Own constructor properties of Gd-1.0.Gd.MainView
 
         model?: Gtk.TreeModel | null
-        selectionMode?: boolean | null
-        viewType?: number | null
+        selection_mode?: boolean | null
+        view_type?: number | null
     }
 
 }
@@ -5564,8 +5564,8 @@ module Revealer {
         // Own constructor properties of Gd-1.0.Gd.Revealer
 
         orientation?: Gtk.Orientation | null
-        revealChild?: boolean | null
-        transitionDuration?: number | null
+        reveal_child?: boolean | null
+        transition_duration?: number | null
     }
 
 }
@@ -5962,10 +5962,10 @@ module Stack {
         // Own constructor properties of Gd-1.0.Gd.Stack
 
         homogeneous?: boolean | null
-        transitionDuration?: number | null
-        transitionType?: number | null
-        visibleChild?: Gtk.Widget | null
-        visibleChildName?: string | null
+        transition_duration?: number | null
+        transition_type?: number | null
+        visible_child?: Gtk.Widget | null
+        visible_child_name?: string | null
     }
 
 }
@@ -7181,7 +7181,7 @@ module TaggedEntry {
 
         // Own constructor properties of Gd-1.0.Gd.TaggedEntry
 
-        tagCloseVisible?: boolean | null
+        tag_close_visible?: boolean | null
     }
 
 }
@@ -7848,7 +7848,7 @@ module TaggedEntryTag {
 
         // Own constructor properties of Gd-1.0.Gd.TaggedEntryTag
 
-        hasCloseButton?: boolean | null
+        has_close_button?: boolean | null
         label?: string | null
         style?: string | null
     }
@@ -7933,7 +7933,7 @@ module TogglePixbufRenderer {
 
         active?: boolean | null
         pulse?: number | null
-        toggleVisible?: boolean | null
+        toggle_visible?: boolean | null
     }
 
 }
@@ -8134,8 +8134,8 @@ module TwoLinesRenderer {
 
         // Own constructor properties of Gd-1.0.Gd.TwoLinesRenderer
 
-        lineTwo?: string | null
-        textLines?: number | null
+        line_two?: string | null
+        text_lines?: number | null
     }
 
 }

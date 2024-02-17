@@ -36,7 +36,7 @@ export module PasswordDialog {
         // Own constructor properties of EpcUi-1.0.EpcUi.PasswordDialog
 
         anonymous?: boolean | null
-        anonymousAllowed?: boolean | null
+        anonymous_allowed?: boolean | null
         password?: string | null
         realm?: string | null
         username?: string | null

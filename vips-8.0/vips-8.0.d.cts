@@ -3200,12 +3200,11 @@ export module ForeignLoad {
         access?: Access | null
         disc?: boolean | null
         fail?: boolean | null
-        fail_on?: FailOn | null
+        failOn?: FailOn | null
         flags?: ForeignFlags | null
         memory?: boolean | null
         out?: Image | null
         sequential?: boolean | null
-        failOn?: FailOn | null
     }
 
 }
@@ -3216,7 +3215,6 @@ export interface ForeignLoad {
 
     access: Access
     fail: boolean
-    fail_on: FailOn
     failOn: FailOn
     flags: ForeignFlags
     memory: boolean
@@ -3299,9 +3297,8 @@ export module ForeignSave {
 
         background?: ArrayDouble | null
         "in"?: Image | null
-        page_height?: number | null
-        strip?: boolean | null
         pageHeight?: number | null
+        strip?: boolean | null
     }
 
 }
@@ -3410,20 +3407,18 @@ export module Image {
         coding?: Coding | null
         demand?: DemandStyle | null
         filename?: string | null
-        foreign_buffer?: any | null
+        foreignBuffer?: any | null
         format?: BandFormat | null
         height?: number | null
         interpretation?: Interpretation | null
         kill?: boolean | null
         mode?: string | null
-        sizeof_header?: number | null
+        sizeofHeader?: number | null
         width?: number | null
         xoffset?: number | null
         xres?: number | null
         yoffset?: number | null
         yres?: number | null
-        foreignBuffer?: any | null
-        sizeofHeader?: number | null
     }
 
 }
@@ -3436,14 +3431,12 @@ export interface Image {
     coding: Coding
     demand: DemandStyle
     filename: string | null
-    foreign_buffer: any
     foreignBuffer: any
     format: BandFormat
     height: number
     interpretation: Interpretation
     kill: boolean
     mode: string | null
-    sizeof_header: number
     sizeofHeader: number
     width: number
     xoffset: number

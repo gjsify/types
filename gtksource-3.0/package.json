@@ -1,13 +1,19 @@
 {
     "name": "@girs/gtksource-3.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GtkSource-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gtksource-3.0.js",
     "main": "gtksource-3.0.js",
     "exports": {
-        "./ambient": "./gtksource-3.0-ambient.d.ts",
-        "./import": "./gtksource-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./gtksource-3.0-ambient.d.ts",
+            "default": "./gtksource-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gtksource-3.0-import.d.ts",
+            "default": "./gtksource-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gtksource-3.0.d.ts",

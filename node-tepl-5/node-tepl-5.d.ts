@@ -476,7 +476,7 @@ module TabGroup {
         /**
          * The #TeplTab currently shown.
          */
-        activeTab?: Tab | null
+        active_tab?: Tab | null
     }
 
 }
@@ -844,7 +844,7 @@ module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        applicationWindow?: Gtk.ApplicationWindow | null
+        application_window?: Gtk.ApplicationWindow | null
         /**
          * Whether to handle the #GtkWindow:title. The title is probably not
          * appropriate if a #GtkHeaderBar is used, the title is meant to be used
@@ -859,7 +859,7 @@ module ApplicationWindow {
          * If the active view is %NULL, the title contains only the application
          * name.
          */
-        handleTitle?: boolean | null
+        handle_title?: boolean | null
     }
 
 }
@@ -1028,7 +1028,7 @@ module Buffer {
          * When the #GtkSourceBuffer:style-scheme is %NULL,
          * #TeplBuffer:tepl-style-scheme-id contains the empty string.
          */
-        teplStyleSchemeId?: string | null
+        tepl_style_scheme_id?: string | null
     }
 
 }
@@ -1579,7 +1579,7 @@ module FileSaver {
         /**
          * The newline type.
          */
-        newlineType?: NewlineType | null
+        newline_type?: NewlineType | null
     }
 
 }
@@ -5799,7 +5799,7 @@ module StyleSchemeChooserWidget {
          * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
          * property contains the empty string.
          */
-        teplStyleSchemeId?: string | null
+        tepl_style_scheme_id?: string | null
     }
 
 }

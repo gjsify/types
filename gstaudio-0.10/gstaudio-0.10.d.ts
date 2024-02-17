@@ -662,12 +662,6 @@ module BaseAudioSink {
 
         // Own constructor properties of GstAudio-0.10.GstAudio.BaseAudioSink
 
-        buffer_time?: number | null
-        can_activate_pull?: boolean | null
-        drift_tolerance?: number | null
-        latency_time?: number | null
-        provide_clock?: boolean | null
-        slave_method?: BaseAudioSinkSlaveMethod | null
         bufferTime?: number | null
         canActivatePull?: boolean | null
         driftTolerance?: number | null
@@ -683,13 +677,10 @@ interface BaseAudioSink {
     // Own properties of GstAudio-0.10.GstAudio.BaseAudioSink
 
     bufferTime: number
-    can_activate_pull: boolean
     canActivatePull: boolean
-    drift_tolerance: number
     driftTolerance: number
     latencyTime: number
     provideClock: boolean
-    slave_method: BaseAudioSinkSlaveMethod
     slaveMethod: BaseAudioSinkSlaveMethod
 
     // Conflicting properties
@@ -818,10 +809,6 @@ module BaseAudioSrc {
 
         // Own constructor properties of GstAudio-0.10.GstAudio.BaseAudioSrc
 
-        buffer_time?: number | null
-        latency_time?: number | null
-        provide_clock?: boolean | null
-        slave_method?: BaseAudioSrcSlaveMethod | null
         bufferTime?: number | null
         latencyTime?: number | null
         provideClock?: boolean | null
@@ -837,24 +824,14 @@ interface BaseAudioSrc {
     /**
      * Actual configured size of audio buffer in microseconds.
      */
-    readonly actual_buffer_time: number
-    /**
-     * Actual configured size of audio buffer in microseconds.
-     */
     readonly actualBufferTime: number
-    /**
-     * Actual configured audio latency in microseconds.
-     */
-    readonly actual_latency_time: number
     /**
      * Actual configured audio latency in microseconds.
      */
     readonly actualLatencyTime: number
     bufferTime: number
     latencyTime: number
-    // Has conflict: provide_clock: boolean
     provideClock: boolean
-    slave_method: BaseAudioSrcSlaveMethod
     slaveMethod: BaseAudioSrcSlaveMethod
 
     // Conflicting properties

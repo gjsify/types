@@ -776,7 +776,7 @@ module VulkanDevice {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanDevice
 
-        physicalDevice?: VulkanPhysicalDevice | null
+        physical_device?: VulkanPhysicalDevice | null
     }
 
 }
@@ -1763,7 +1763,7 @@ module VulkanPhysicalDevice {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice
 
-        deviceIndex?: number | null
+        device_index?: number | null
         instance?: VulkanInstance | null
     }
 
@@ -1999,8 +1999,8 @@ module VulkanSwapper {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanSwapper
 
-        forceAspectRatio?: boolean | null
-        pixelAspectRatio?: Gst.Fraction | null
+        force_aspect_ratio?: boolean | null
+        pixel_aspect_ratio?: Gst.Fraction | null
     }
 
 }

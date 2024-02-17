@@ -727,7 +727,7 @@ module BookClientCursor {
          * cursor, to construct the cursor use e_book_client_get_cursor().
          * </para></note>
          */
-        objectPath?: string | null
+        object_path?: string | null
         /**
          * The #EContactField names to sort this cursor with
          * 
@@ -735,7 +735,7 @@ module BookClientCursor {
          * cursor, to construct the cursor use e_book_client_get_cursor().
          * </para></note>
          */
-        sortFields?: string[] | null
+        sort_fields?: string[] | null
     }
 
 }
@@ -1184,7 +1184,7 @@ module BookClientView {
 
         client?: BookClient | null
         connection?: Gio.DBusConnection | null
-        objectPath?: string | null
+        object_path?: string | null
     }
 
 }

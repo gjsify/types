@@ -223,11 +223,11 @@ export module Client {
         /**
          * %TRUE if the default Bluetooth adapter is powered.
          */
-        defaultAdapterPowered?: boolean | null
+        default_adapter_powered?: boolean | null
         /**
          * %TRUE if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
          */
-        defaultAdapterSetupMode?: boolean | null
+        default_adapter_setup_mode?: boolean | null
     }
 
 }
@@ -404,12 +404,12 @@ export module Device {
 
         address?: string | null
         alias?: string | null
-        batteryLevel?: number | null
-        batteryPercentage?: number | null
-        batteryType?: BatteryType | null
+        battery_level?: number | null
+        battery_percentage?: number | null
+        battery_type?: BatteryType | null
         connected?: boolean | null
         icon?: string | null
-        legacyPairing?: boolean | null
+        legacy_pairing?: boolean | null
         name?: string | null
         paired?: boolean | null
         proxy?: Gio.DBusProxy | null

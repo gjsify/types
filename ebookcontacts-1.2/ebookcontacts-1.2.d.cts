@@ -1032,154 +1032,16 @@ export module Contact {
 
         // Own constructor properties of EBookContacts-1.2.EBookContacts.Contact
 
-        Rev?: string | null
-        address?: any | null
-        address_home?: ContactAddress | null
-        address_label_home?: string | null
-        address_label_other?: string | null
-        address_label_work?: string | null
-        address_other?: ContactAddress | null
-        address_work?: ContactAddress | null
-        anniversary?: ContactDate | null
-        assistant?: string | null
-        assistant_phone?: string | null
-        birth_date?: ContactDate | null
-        blog_url?: string | null
-        book_uid?: string | null
-        business_fax?: string | null
-        business_phone?: string | null
-        business_phone_2?: string | null
-        callback_phone?: string | null
-        caluri?: string | null
-        car_phone?: string | null
-        categories?: string | null
-        category_list?: any | null
-        company_phone?: string | null
-        email?: any | null
-        email_1?: string | null
-        email_2?: string | null
-        email_3?: string | null
-        email_4?: string | null
-        family_name?: string | null
-        fburl?: string | null
-        file_as?: string | null
-        full_name?: string | null
-        geo?: ContactGeo | null
-        given_name?: string | null
-        home_fax?: string | null
-        home_phone?: string | null
-        home_phone_2?: string | null
-        homepage_url?: string | null
-        icscalendar?: string | null
-        id?: string | null
-        im_aim?: any | null
-        im_aim_home_1?: string | null
-        im_aim_home_2?: string | null
-        im_aim_home_3?: string | null
-        im_aim_work_1?: string | null
-        im_aim_work_2?: string | null
-        im_aim_work_3?: string | null
-        im_gadugadu?: any | null
-        im_gadugadu_home_1?: string | null
-        im_gadugadu_home_2?: string | null
-        im_gadugadu_home_3?: string | null
-        im_gadugadu_work_1?: string | null
-        im_gadugadu_work_2?: string | null
-        im_gadugadu_work_3?: string | null
-        im_google_talk?: any | null
-        im_google_talk_home_1?: string | null
-        im_google_talk_home_2?: string | null
-        im_google_talk_home_3?: string | null
-        im_google_talk_work_1?: string | null
-        im_google_talk_work_2?: string | null
-        im_google_talk_work_3?: string | null
-        im_groupwise?: any | null
-        im_groupwise_home_1?: string | null
-        im_groupwise_home_2?: string | null
-        im_groupwise_home_3?: string | null
-        im_groupwise_work_1?: string | null
-        im_groupwise_work_2?: string | null
-        im_groupwise_work_3?: string | null
-        im_icq?: any | null
-        im_icq_home_1?: string | null
-        im_icq_home_2?: string | null
-        im_icq_home_3?: string | null
-        im_icq_work_1?: string | null
-        im_icq_work_2?: string | null
-        im_icq_work_3?: string | null
-        im_jabber?: any | null
-        im_jabber_home_1?: string | null
-        im_jabber_home_2?: string | null
-        im_jabber_home_3?: string | null
-        im_jabber_work_1?: string | null
-        im_jabber_work_2?: string | null
-        im_jabber_work_3?: string | null
-        im_matrix?: any | null
-        im_matrix_home_1?: string | null
-        im_matrix_home_2?: string | null
-        im_matrix_home_3?: string | null
-        im_matrix_work_1?: string | null
-        im_matrix_work_2?: string | null
-        im_matrix_work_3?: string | null
-        im_msn?: any | null
-        im_msn_home_1?: string | null
-        im_msn_home_2?: string | null
-        im_msn_home_3?: string | null
-        im_msn_work_1?: string | null
-        im_msn_work_2?: string | null
-        im_msn_work_3?: string | null
-        im_skype?: any | null
-        im_skype_home_1?: string | null
-        im_skype_home_2?: string | null
-        im_skype_home_3?: string | null
-        im_skype_work_1?: string | null
-        im_skype_work_2?: string | null
-        im_skype_work_3?: string | null
-        im_twitter?: any | null
-        im_yahoo?: any | null
-        im_yahoo_home_1?: string | null
-        im_yahoo_home_2?: string | null
-        im_yahoo_home_3?: string | null
-        im_yahoo_work_1?: string | null
-        im_yahoo_work_2?: string | null
-        im_yahoo_work_3?: string | null
-        isdn_phone?: string | null
-        list?: boolean | null
-        list_show_addresses?: boolean | null
-        logo?: ContactPhoto | null
-        mailer?: string | null
-        manager?: string | null
-        mobile_phone?: string | null
-        name?: ContactName | null
-        nickname?: string | null
-        note?: string | null
-        office?: string | null
-        org?: string | null
-        org_unit?: string | null
-        other_fax?: string | null
-        other_phone?: string | null
-        pager?: string | null
-        pgpCert?: ContactCert | null
-        phone?: any | null
-        photo?: ContactPhoto | null
-        primary_phone?: string | null
-        radio?: string | null
-        role?: string | null
-        sip?: any | null
-        spouse?: string | null
-        telex?: string | null
-        title?: string | null
-        tty?: string | null
-        video_url?: string | null
-        wants_html?: boolean | null
-        x509Cert?: ContactCert | null
         rev?: string | null
+        address?: any | null
         addressHome?: ContactAddress | null
         addressLabelHome?: string | null
         addressLabelOther?: string | null
         addressLabelWork?: string | null
         addressOther?: ContactAddress | null
         addressWork?: ContactAddress | null
+        anniversary?: ContactDate | null
+        assistant?: string | null
         assistantPhone?: string | null
         birthDate?: ContactDate | null
         blogUrl?: string | null
@@ -1188,21 +1050,28 @@ export module Contact {
         businessPhone?: string | null
         businessPhone2?: string | null
         callbackPhone?: string | null
+        caluri?: string | null
         carPhone?: string | null
+        categories?: string | null
         categoryList?: any | null
         companyPhone?: string | null
+        email?: any | null
         email1?: string | null
         email2?: string | null
         email3?: string | null
         email4?: string | null
         familyName?: string | null
+        fburl?: string | null
         fileAs?: string | null
         fullName?: string | null
+        geo?: ContactGeo | null
         givenName?: string | null
         homeFax?: string | null
         homePhone?: string | null
         homePhone2?: string | null
         homepageUrl?: string | null
+        icscalendar?: string | null
+        id?: string | null
         imAim?: any | null
         imAimHome1?: string | null
         imAimHome2?: string | null
@@ -1275,14 +1144,35 @@ export module Contact {
         imYahooWork2?: string | null
         imYahooWork3?: string | null
         isdnPhone?: string | null
+        list?: boolean | null
         listShowAddresses?: boolean | null
+        logo?: ContactPhoto | null
+        mailer?: string | null
+        manager?: string | null
         mobilePhone?: string | null
+        name?: ContactName | null
+        nickname?: string | null
+        note?: string | null
+        office?: string | null
+        org?: string | null
         orgUnit?: string | null
         otherFax?: string | null
         otherPhone?: string | null
+        pager?: string | null
+        pgpCert?: ContactCert | null
+        phone?: any | null
+        photo?: ContactPhoto | null
         primaryPhone?: string | null
+        radio?: string | null
+        role?: string | null
+        sip?: any | null
+        spouse?: string | null
+        telex?: string | null
+        title?: string | null
+        tty?: string | null
         videoUrl?: string | null
         wantsHtml?: boolean | null
+        x509Cert?: ContactCert | null
     }
 
 }
@@ -1291,246 +1181,137 @@ export interface Contact {
 
     // Own properties of EBookContacts-1.2.EBookContacts.Contact
 
-    Rev: string | null
     rev: string | null
     address: any
-    address_home: ContactAddress
     addressHome: ContactAddress
-    address_label_home: string | null
     addressLabelHome: string | null
-    address_label_other: string | null
     addressLabelOther: string | null
-    address_label_work: string | null
     addressLabelWork: string | null
-    address_other: ContactAddress
     addressOther: ContactAddress
-    address_work: ContactAddress
     addressWork: ContactAddress
     anniversary: ContactDate
     assistant: string | null
-    assistant_phone: string | null
     assistantPhone: string | null
-    birth_date: ContactDate
     birthDate: ContactDate
-    blog_url: string | null
     blogUrl: string | null
-    book_uid: string | null
     bookUid: string | null
-    business_fax: string | null
     businessFax: string | null
-    business_phone: string | null
     businessPhone: string | null
-    business_phone_2: string | null
     businessPhone2: string | null
-    callback_phone: string | null
     callbackPhone: string | null
     caluri: string | null
-    car_phone: string | null
     carPhone: string | null
     categories: string | null
-    category_list: any
     categoryList: any
-    company_phone: string | null
     companyPhone: string | null
     email: any
-    email_1: string | null
     email1: string | null
-    email_2: string | null
     email2: string | null
-    email_3: string | null
     email3: string | null
-    email_4: string | null
     email4: string | null
-    family_name: string | null
     familyName: string | null
     fburl: string | null
-    file_as: string | null
     fileAs: string | null
-    full_name: string | null
     fullName: string | null
     geo: ContactGeo
-    given_name: string | null
     givenName: string | null
-    home_fax: string | null
     homeFax: string | null
-    home_phone: string | null
     homePhone: string | null
-    home_phone_2: string | null
     homePhone2: string | null
-    homepage_url: string | null
     homepageUrl: string | null
     icscalendar: string | null
     id: string | null
-    im_aim: any
     imAim: any
-    im_aim_home_1: string | null
     imAimHome1: string | null
-    im_aim_home_2: string | null
     imAimHome2: string | null
-    im_aim_home_3: string | null
     imAimHome3: string | null
-    im_aim_work_1: string | null
     imAimWork1: string | null
-    im_aim_work_2: string | null
     imAimWork2: string | null
-    im_aim_work_3: string | null
     imAimWork3: string | null
-    im_gadugadu: any
     imGadugadu: any
-    im_gadugadu_home_1: string | null
     imGadugaduHome1: string | null
-    im_gadugadu_home_2: string | null
     imGadugaduHome2: string | null
-    im_gadugadu_home_3: string | null
     imGadugaduHome3: string | null
-    im_gadugadu_work_1: string | null
     imGadugaduWork1: string | null
-    im_gadugadu_work_2: string | null
     imGadugaduWork2: string | null
-    im_gadugadu_work_3: string | null
     imGadugaduWork3: string | null
-    im_google_talk: any
     imGoogleTalk: any
-    im_google_talk_home_1: string | null
     imGoogleTalkHome1: string | null
-    im_google_talk_home_2: string | null
     imGoogleTalkHome2: string | null
-    im_google_talk_home_3: string | null
     imGoogleTalkHome3: string | null
-    im_google_talk_work_1: string | null
     imGoogleTalkWork1: string | null
-    im_google_talk_work_2: string | null
     imGoogleTalkWork2: string | null
-    im_google_talk_work_3: string | null
     imGoogleTalkWork3: string | null
-    im_groupwise: any
     imGroupwise: any
-    im_groupwise_home_1: string | null
     imGroupwiseHome1: string | null
-    im_groupwise_home_2: string | null
     imGroupwiseHome2: string | null
-    im_groupwise_home_3: string | null
     imGroupwiseHome3: string | null
-    im_groupwise_work_1: string | null
     imGroupwiseWork1: string | null
-    im_groupwise_work_2: string | null
     imGroupwiseWork2: string | null
-    im_groupwise_work_3: string | null
     imGroupwiseWork3: string | null
-    im_icq: any
     imIcq: any
-    im_icq_home_1: string | null
     imIcqHome1: string | null
-    im_icq_home_2: string | null
     imIcqHome2: string | null
-    im_icq_home_3: string | null
     imIcqHome3: string | null
-    im_icq_work_1: string | null
     imIcqWork1: string | null
-    im_icq_work_2: string | null
     imIcqWork2: string | null
-    im_icq_work_3: string | null
     imIcqWork3: string | null
-    im_jabber: any
     imJabber: any
-    im_jabber_home_1: string | null
     imJabberHome1: string | null
-    im_jabber_home_2: string | null
     imJabberHome2: string | null
-    im_jabber_home_3: string | null
     imJabberHome3: string | null
-    im_jabber_work_1: string | null
     imJabberWork1: string | null
-    im_jabber_work_2: string | null
     imJabberWork2: string | null
-    im_jabber_work_3: string | null
     imJabberWork3: string | null
-    im_matrix: any
     imMatrix: any
-    im_matrix_home_1: string | null
     imMatrixHome1: string | null
-    im_matrix_home_2: string | null
     imMatrixHome2: string | null
-    im_matrix_home_3: string | null
     imMatrixHome3: string | null
-    im_matrix_work_1: string | null
     imMatrixWork1: string | null
-    im_matrix_work_2: string | null
     imMatrixWork2: string | null
-    im_matrix_work_3: string | null
     imMatrixWork3: string | null
-    im_msn: any
     imMsn: any
-    im_msn_home_1: string | null
     imMsnHome1: string | null
-    im_msn_home_2: string | null
     imMsnHome2: string | null
-    im_msn_home_3: string | null
     imMsnHome3: string | null
-    im_msn_work_1: string | null
     imMsnWork1: string | null
-    im_msn_work_2: string | null
     imMsnWork2: string | null
-    im_msn_work_3: string | null
     imMsnWork3: string | null
-    im_skype: any
     imSkype: any
-    im_skype_home_1: string | null
     imSkypeHome1: string | null
-    im_skype_home_2: string | null
     imSkypeHome2: string | null
-    im_skype_home_3: string | null
     imSkypeHome3: string | null
-    im_skype_work_1: string | null
     imSkypeWork1: string | null
-    im_skype_work_2: string | null
     imSkypeWork2: string | null
-    im_skype_work_3: string | null
     imSkypeWork3: string | null
-    im_twitter: any
     imTwitter: any
-    im_yahoo: any
     imYahoo: any
-    im_yahoo_home_1: string | null
     imYahooHome1: string | null
-    im_yahoo_home_2: string | null
     imYahooHome2: string | null
-    im_yahoo_home_3: string | null
     imYahooHome3: string | null
-    im_yahoo_work_1: string | null
     imYahooWork1: string | null
-    im_yahoo_work_2: string | null
     imYahooWork2: string | null
-    im_yahoo_work_3: string | null
     imYahooWork3: string | null
-    isdn_phone: string | null
     isdnPhone: string | null
     list: boolean
-    list_show_addresses: boolean
     listShowAddresses: boolean
     logo: ContactPhoto
     mailer: string | null
     manager: string | null
-    mobile_phone: string | null
     mobilePhone: string | null
     name: ContactName
-    readonly name_or_org: string | null
     readonly nameOrOrg: string | null
     nickname: string | null
     note: string | null
     office: string | null
     org: string | null
-    org_unit: string | null
     orgUnit: string | null
-    other_fax: string | null
     otherFax: string | null
-    other_phone: string | null
     otherPhone: string | null
     pager: string | null
     pgpCert: ContactCert
     phone: any
     photo: ContactPhoto
-    primary_phone: string | null
     primaryPhone: string | null
     radio: string | null
     role: string | null
@@ -1539,9 +1320,7 @@ export interface Contact {
     telex: string | null
     title: string | null
     tty: string | null
-    video_url: string | null
     videoUrl: string | null
-    wants_html: boolean
     wantsHtml: boolean
     x509Cert: ContactCert
 
@@ -2148,8 +1927,6 @@ export module SourceBackendSummarySetup {
 
         // Own constructor properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
 
-        indexed_fields?: string | null
-        summary_fields?: string | null
         indexedFields?: string | null
         summaryFields?: string | null
     }
@@ -2160,9 +1937,7 @@ export interface SourceBackendSummarySetup {
 
     // Own properties of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup
 
-    indexed_fields: string | null
     indexedFields: string | null
-    summary_fields: string | null
     summaryFields: string | null
 
     // Owm methods of EBookContacts-1.2.EBookContacts.SourceBackendSummarySetup

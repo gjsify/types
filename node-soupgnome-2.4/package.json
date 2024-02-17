@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-soupgnome-2.4",
-    "version": "2.4.0-3.2.7",
+    "version": "2.4.0-3.2.8",
     "description": "Node.js TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0",
     "type": "module",
     "module": "node-soupgnome-2.4.js",
     "main": "node-soupgnome-2.4.js",
     "exports": {
-        "./ambient": "./node-soupgnome-2.4-ambient.d.ts",
-        "./import": "./node-soupgnome-2.4-import.d.ts",
+        "./ambient": {
+            "types": "./node-soupgnome-2.4-ambient.d.ts",
+            "default": "./node-soupgnome-2.4-ambient.js"
+        },
+        "./import": {
+            "types": "./node-soupgnome-2.4-import.d.ts",
+            "default": "./node-soupgnome-2.4-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-soupgnome-2.4.d.ts",

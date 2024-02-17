@@ -50,7 +50,6 @@ module Implementation {
 
         // Own constructor properties of GjsDBus-1.0.GjsDBus.Implementation
 
-        g_interface_info?: Gio.DBusInterfaceInfo | null
         gInterfaceInfo?: Gio.DBusInterfaceInfo | null
     }
 
@@ -60,7 +59,6 @@ interface Implementation extends Gio.DBusInterface {
 
     // Own properties of GjsDBus-1.0.GjsDBus.Implementation
 
-    readonly g_interface_info: Gio.DBusInterfaceInfo
     readonly gInterfaceInfo: Gio.DBusInterfaceInfo
 
     // Own fields of GjsDBus-1.0.GjsDBus.Implementation

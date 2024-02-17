@@ -2066,9 +2066,9 @@ export module AbstractBidirList {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractBidirList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2330,9 +2330,9 @@ export module AbstractBidirSortedSet {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractBidirSortedSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2626,12 +2626,12 @@ export module AbstractBidirSortedMap {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractBidirSortedMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2961,9 +2961,9 @@ export module AbstractCollection {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractCollection
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -3125,9 +3125,9 @@ export module AbstractList {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -3382,12 +3382,12 @@ export module AbstractMap {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -3621,12 +3621,12 @@ export module AbstractMultiMap {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractMultiMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -3758,9 +3758,9 @@ export module AbstractMultiSet {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractMultiSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -3970,9 +3970,9 @@ export module AbstractQueue {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractQueue
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -4222,9 +4222,9 @@ export module AbstractSet {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -4437,12 +4437,12 @@ export module AbstractSortedMap {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractSortedMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -4764,9 +4764,9 @@ export module AbstractSortedSet {
 
         // Own constructor properties of Gee-0.8.Gee.AbstractSortedSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -5046,9 +5046,9 @@ export module ArrayList {
 
         // Own constructor properties of Gee-0.8.Gee.ArrayList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -5397,9 +5397,9 @@ export module ArrayQueue {
 
         // Own constructor properties of Gee-0.8.Gee.ArrayQueue
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -5657,9 +5657,9 @@ export module ConcurrentList {
 
         // Own constructor properties of Gee-0.8.Gee.ConcurrentList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -5938,9 +5938,9 @@ export module ConcurrentSet {
 
         // Own constructor properties of Gee-0.8.Gee.ConcurrentSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -6291,12 +6291,12 @@ export module HashMap {
 
         // Own constructor properties of Gee-0.8.Gee.HashMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -6509,12 +6509,12 @@ export module HashMultiMap {
 
         // Own constructor properties of Gee-0.8.Gee.HashMultiMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -6618,9 +6618,9 @@ export module HashMultiSet {
 
         // Own constructor properties of Gee-0.8.Gee.HashMultiSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -6838,9 +6838,9 @@ export module HashSet {
 
         // Own constructor properties of Gee-0.8.Gee.HashSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -7094,9 +7094,9 @@ export module LinkedList {
 
         // Own constructor properties of Gee-0.8.Gee.LinkedList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -7458,9 +7458,9 @@ export module PriorityQueue {
 
         // Own constructor properties of Gee-0.8.Gee.PriorityQueue
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -7742,12 +7742,12 @@ export module TreeMap {
 
         // Own constructor properties of Gee-0.8.Gee.TreeMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -8147,12 +8147,12 @@ export module TreeMultiMap {
 
         // Own constructor properties of Gee-0.8.Gee.TreeMultiMap
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -8250,9 +8250,9 @@ export module TreeMultiSet {
 
         // Own constructor properties of Gee-0.8.Gee.TreeMultiSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -8468,9 +8468,9 @@ export module TreeSet {
 
         // Own constructor properties of Gee-0.8.Gee.TreeSet
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -8903,9 +8903,9 @@ export module UnrolledLinkedList {
 
         // Own constructor properties of Gee-0.8.Gee.UnrolledLinkedList
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -9257,12 +9257,12 @@ export module MapEntry {
 
         // Own constructor properties of Gee-0.8.Gee.MapEntry
 
-        kType?: GObject.GType | null
-        kDupFunc?: GObject.BoxedCopyFunc | null
-        kDestroyFunc?: GLib.DestroyNotify | null
-        vType?: GObject.GType | null
-        vDupFunc?: GObject.BoxedCopyFunc | null
-        vDestroyFunc?: GLib.DestroyNotify | null
+        k_type?: GObject.GType | null
+        k_dup_func?: GObject.BoxedCopyFunc | null
+        k_destroy_func?: GLib.DestroyNotify | null
+        v_type?: GObject.GType | null
+        v_dup_func?: GObject.BoxedCopyFunc | null
+        v_destroy_func?: GLib.DestroyNotify | null
         value?: any | null
     }
 

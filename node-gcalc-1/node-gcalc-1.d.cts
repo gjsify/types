@@ -461,7 +461,7 @@ export module Function {
         // Own constructor properties of GCalc-1.GCalc.Function
 
         name?: string | null
-        nParams?: number | null
+        n_params?: number | null
         closed?: boolean | null
     }
 
@@ -1272,7 +1272,7 @@ export module Solver {
 
         // Own constructor properties of GCalc-1.GCalc.Solver
 
-        equationManager?: MathEquationManager | null
+        equation_manager?: MathEquationManager | null
     }
 
 }

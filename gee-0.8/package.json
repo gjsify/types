@@ -1,13 +1,19 @@
 {
     "name": "@girs/gee-0.8",
-    "version": "0.8.0-3.2.7",
+    "version": "0.8.0-3.2.8",
     "description": "GJS TypeScript type definitions for Gee-0.8, generated from library version 0.8.0",
     "type": "module",
     "module": "gee-0.8.js",
     "main": "gee-0.8.js",
     "exports": {
-        "./ambient": "./gee-0.8-ambient.d.ts",
-        "./import": "./gee-0.8-import.d.ts",
+        "./ambient": {
+            "types": "./gee-0.8-ambient.d.ts",
+            "default": "./gee-0.8-ambient.js"
+        },
+        "./import": {
+            "types": "./gee-0.8-import.d.ts",
+            "default": "./gee-0.8-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gee-0.8.d.ts",

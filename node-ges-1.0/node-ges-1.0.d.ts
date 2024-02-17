@@ -1674,7 +1674,7 @@ module Asset {
         /**
          * The #GESExtractable object type that can be extracted from the asset.
          */
-        extractableType?: GObject.GType | null
+        extractable_type?: GObject.GType | null
         /**
          * The ID of the asset. This should be unique amongst all assets with
          * the same #GESAsset:extractable-type. Depending on the associated
@@ -3782,7 +3782,7 @@ module Clip {
          * #GESTrackType flags to indicate support for several
          * #GESTrackElement:track-type elements.
          */
-        supportedFormats?: TrackType | null
+        supported_formats?: TrackType | null
     }
 
 }
@@ -4451,7 +4451,7 @@ module ClipAsset {
         /**
          * The formats supported by the asset.
          */
-        supportedFormats?: TrackType | null
+        supported_formats?: TrackType | null
     }
 
 }
@@ -4862,7 +4862,7 @@ module DiscovererManager {
          * The timeout (in milliseconds) for the #GstDiscoverer operations
          */
         timeout?: number | null
-        useCache?: boolean | null
+        use_cache?: boolean | null
     }
 
 }
@@ -4958,7 +4958,7 @@ module Effect {
          * 
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
-        binDescription?: string | null
+        bin_description?: string | null
     }
 
 }
@@ -5301,14 +5301,14 @@ module EffectClip {
          * 
          * Example: "audiopanorama panorama=1.0"
          */
-        audioBinDescription?: string | null
+        audio_bin_description?: string | null
         /**
          * The description of the video track of the effect bin with a gst-launch-style
          * pipeline description. This should be used for test purposes.
          * 
          * Example: "videobalance saturation=1.5 hue=+0.5"
          */
-        videoBinDescription?: string | null
+        video_bin_description?: string | null
     }
 
 }
@@ -5591,12 +5591,12 @@ module Group {
          * An overwrite of the #GESTimelineElement:in-point property. This has
          * no meaning for a group and should not be set.
          */
-        inPoint?: number | null
+        in_point?: number | null
         /**
          * An overwrite of the #GESTimelineElement:max-duration property. This
          * has no meaning for a group and should not be set.
          */
-        maxDuration?: number | null
+        max_duration?: number | null
         /**
          * An overwrite of the #GESTimelineElement:priority property.
          * Setting #GESTimelineElement priorities is deprecated as all priority
@@ -6042,7 +6042,7 @@ module Layer {
          * %FALSE, but the timeline's #GESTimeline:auto-transition is %TRUE, it
          * will be set to %TRUE as well.
          */
-        autoTransition?: boolean | null
+        auto_transition?: boolean | null
         /**
          * The priority of the layer in the #GESTimeline. 0 is the highest
          * priority. Conceptually, a timeline is a stack of layers,
@@ -7166,12 +7166,12 @@ module Pipeline {
          * immediately before the #GESPipeline:audio-sink. This exposes the
          * #playsink:audio-filter property of the internal #playsink.
          */
-        audioFilter?: Gst.Element | null
+        audio_filter?: Gst.Element | null
         /**
          * The audio sink used for preview. This exposes the
          * #playsink:audio-sink property of the internal #playsink.
          */
-        audioSink?: Gst.Element | null
+        audio_sink?: Gst.Element | null
         /**
          * The pipeline's mode. In preview mode (for audio or video, or both)
          * the pipeline can display the timeline's content to an end user. In
@@ -7192,12 +7192,12 @@ module Pipeline {
          * immediately before the #GESPipeline:video-sink. This exposes the
          * #playsink:video-filter property of the internal #playsink.
          */
-        videoFilter?: Gst.Element | null
+        video_filter?: Gst.Element | null
         /**
          * The video sink used for preview. This exposes the
          * #playsink:video-sink property of the internal #playsink.
          */
-        videoSink?: Gst.Element | null
+        video_sink?: Gst.Element | null
     }
 
 }
@@ -8924,7 +8924,7 @@ module TextOverlayClip {
         /**
          * Pango font description string
          */
-        fontDesc?: string | null
+        font_desc?: string | null
         /**
          * Horizontal alignment of the text
          */
@@ -9305,14 +9305,14 @@ module Timeline {
          * #GESLayer:auto-transition if you want this to only happen in some
          * layers.
          */
-        autoTransition?: boolean | null
+        auto_transition?: boolean | null
         /**
          * The distance (in nanoseconds) at which a #GESTimelineElement being
          * moved within the timeline should snap one of its #GESSource-s with
          * another #GESSource-s edge. See #GESEditMode for which edges can
          * snap during an edit. 0 means no snapping.
          */
-        snappingDistance?: number | null
+        snapping_distance?: number | null
     }
 
 }
@@ -10046,7 +10046,7 @@ module TimelineElement {
          * For elements that have no internal content, this should be kept
          * as 0.
          */
-        inPoint?: number | null
+        in_point?: number | null
         /**
          * The full duration of internal content that is available (a time
          * difference in nanoseconds using the time coordinates of the internal
@@ -10063,7 +10063,7 @@ module TimelineElement {
          * For elements that have no internal content, or whose content is
          * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
          */
-        maxDuration?: number | null
+        max_duration?: number | null
         /**
          * The name of the element. This should be unique within its timeline.
          */
@@ -10798,7 +10798,7 @@ module TitleClip {
         /**
          * Pango font description string
          */
-        fontDesc?: string | null
+        font_desc?: string | null
         /**
          * Horizontal alignment of the text
          */
@@ -11446,7 +11446,7 @@ module Track {
          * 
          * Default value: #GST_CAPS_ANY.
          */
-        restrictionCaps?: Gst.Caps | null
+        restriction_caps?: Gst.Caps | null
         /**
          * The track type of the track. This controls the type of
          * #GESTrackElement-s that can be added to the track. This should
@@ -11455,7 +11455,7 @@ module Track {
          * Once a track has been added to a #GESTimeline, you should not change
          * this.
          */
-        trackType?: TrackType | null
+        track_type?: TrackType | null
     }
 
 }
@@ -11996,7 +11996,7 @@ module TrackElement {
          * 
          * Default value: %TRUE
          */
-        autoClampControlSources?: boolean | null
+        auto_clamp_control_sources?: boolean | null
         /**
          * This property is used to determine whether the 'internal time'
          * properties of the element have any meaning. In particular, unless
@@ -12033,14 +12033,14 @@ module TrackElement {
          * content and manipulate the timing of their data streams (time
          * effects).
          */
-        hasInternalSource?: boolean | null
+        has_internal_source?: boolean | null
         /**
          * The track type of the element, which determines the type of track the
          * element can be added to (see #GESTrack:track-type). This should
          * correspond to the type of data that the element can produce or
          * process.
          */
-        trackType?: TrackType | null
+        track_type?: TrackType | null
     }
 
 }
@@ -12476,7 +12476,7 @@ module TrackElementAsset {
 
         // Own constructor properties of GES-1.0.GES.TrackElementAsset
 
-        trackType?: TrackType | null
+        track_type?: TrackType | null
     }
 
 }
@@ -12929,12 +12929,12 @@ module UriClip {
          * Whether this uri clip represents a still image or not. This must be set
          * before create_track_elements is called.
          */
-        isImage?: boolean | null
+        is_image?: boolean | null
         /**
          * Whether the sound will be played or not.
          */
         mute?: boolean | null
-        supportedFormats?: TrackType | null
+        supported_formats?: TrackType | null
         /**
          * The location of the file/resource to use.
          */
@@ -14142,7 +14142,7 @@ module VideoTransition {
          * This value represents the direction of the transition.
          */
         invert?: boolean | null
-        transitionType?: VideoStandardTransitionType | null
+        transition_type?: VideoStandardTransitionType | null
     }
 
 }

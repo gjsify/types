@@ -428,7 +428,6 @@ export module SummaryInfo {
         // Own constructor properties of Libmsi-1.0.Libmsi.SummaryInfo
 
         database?: Database | null
-        update_count?: number | null
         updateCount?: number | null
     }
 
@@ -439,7 +438,6 @@ export interface SummaryInfo {
     // Own properties of Libmsi-1.0.Libmsi.SummaryInfo
 
     readonly database: Database
-    readonly update_count: number
     readonly updateCount: number
 
     // Owm methods of Libmsi-1.0.Libmsi.SummaryInfo

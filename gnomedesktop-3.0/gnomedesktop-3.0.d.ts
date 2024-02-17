@@ -108,21 +108,6 @@ function get_country_from_code(code: string, translation: string | null): string
  */
 function get_country_from_locale(locale: string, translation: string | null): string | null
 /**
- * Asynchronously fetches a list of of default input sources based on locale and system
- * configuration. This is for when a user has no input sources configured
- * in GSettings.
- * @param cancellable a #GCancellable
- * @param callback a #GAsyncReadyCallback
- */
-function get_default_input_sources<Z = unknown>(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
-/**
- * Returns a whether or not a list of default input sources based on locale and system
- * configuration could be retrieved. This is for when a user has no input sources configured
- * in GSettings.
- * @param result 
- */
-function get_default_input_sources_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ids */ string[], /* types */ string[], /* options */ string[] ]
-/**
  * Gets the default input source's type and identifier for a given
  * locale.
  * @param locale a locale string
@@ -162,13 +147,6 @@ function get_platform_version(): number
  * @returns the translated modifier string. Caller takes ownership.
  */
 function get_translated_modifier(modifier: string, translation: string | null): string | null
-/**
- * Returns whether or not the input source has the ability to enter latin characters.
- * @param type an input source type (e.g., "xkb" or "ibus")
- * @param id an input source id (e.g., "us+dvorak" or "anthy")
- * @returns %TRUE if it can't enter latin characters
- */
-function input_source_is_non_latin(type: string, id: string): boolean
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string
@@ -500,11 +478,8 @@ interface BGSlideShow {
     // Own properties of GnomeDesktop-3.0.GnomeDesktop.BGSlideShow
 
     readonly file: Gio.File
-    readonly has_multiple_sizes: boolean
     readonly hasMultipleSizes: boolean
-    readonly start_time: number
     readonly startTime: number
-    readonly total_duration: number
     readonly totalDuration: number
 
     // Own fields of GnomeDesktop-3.0.GnomeDesktop.BGSlideShow
@@ -1091,8 +1066,6 @@ module RRScreen {
 
         // Own constructor properties of GnomeDesktop-3.0.GnomeDesktop.RRScreen
 
-        dpms_mode?: RRDpmsModeType | null
-        gdk_screen?: Gdk.Screen | null
         dpmsMode?: RRDpmsModeType | null
         gdkScreen?: Gdk.Screen | null
     }
@@ -1103,9 +1076,7 @@ interface RRScreen extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of GnomeDesktop-3.0.GnomeDesktop.RRScreen
 
-    dpms_mode: RRDpmsModeType
     dpmsMode: RRDpmsModeType
-    readonly gdk_screen: Gdk.Screen
     readonly gdkScreen: Gdk.Screen
 
     // Own fields of GnomeDesktop-3.0.GnomeDesktop.RRScreen
@@ -1225,17 +1196,6 @@ module WallClock {
          * 'clock' property will always be updated every second, irrespective of
          * system configuration.
          */
-        force_seconds?: boolean | null
-        /**
-         * If %TRUE, the formatted clock will never include a date or the
-         * day of the week, irrespective of configuration.
-         */
-        time_only?: boolean | null
-        /**
-         * If %TRUE, the formatted clock will always have seconds precision and the
-         * 'clock' property will always be updated every second, irrespective of
-         * system configuration.
-         */
         forceSeconds?: boolean | null
         /**
          * If %TRUE, the formatted clock will never include a date or the
@@ -1259,18 +1219,7 @@ interface WallClock {
      * 'clock' property will always be updated every second, irrespective of
      * system configuration.
      */
-    force_seconds: boolean
-    /**
-     * If %TRUE, the formatted clock will always have seconds precision and the
-     * 'clock' property will always be updated every second, irrespective of
-     * system configuration.
-     */
     forceSeconds: boolean
-    /**
-     * If %TRUE, the formatted clock will never include a date or the
-     * day of the week, irrespective of configuration.
-     */
-    time_only: boolean
     /**
      * If %TRUE, the formatted clock will never include a date or the
      * day of the week, irrespective of configuration.

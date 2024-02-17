@@ -1,13 +1,19 @@
 {
     "name": "@girs/cogl-13",
-    "version": "13.0.0-3.2.7",
+    "version": "13.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Cogl-13, generated from library version 13.0.0",
     "type": "module",
     "module": "cogl-13.js",
     "main": "cogl-13.js",
     "exports": {
-        "./ambient": "./cogl-13-ambient.d.ts",
-        "./import": "./cogl-13-import.d.ts",
+        "./ambient": {
+            "types": "./cogl-13-ambient.d.ts",
+            "default": "./cogl-13-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-13-import.d.ts",
+            "default": "./cogl-13-import.js"
+        },
         ".": {
             "import": {
                 "types": "./cogl-13.d.ts",

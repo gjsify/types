@@ -555,16 +555,11 @@ export module CredentialsPrompter {
          * Whether the #ECredentialsPrompter can response to credential
          * requests automatically.
          */
-        auto_prompt?: boolean | null
+        autoPrompt?: boolean | null
         /**
          * The #ESourceRegistry object, to whose credential requests the prompter listens.
          */
         registry?: EDataServer.SourceRegistry | null
-        /**
-         * Whether the #ECredentialsPrompter can response to credential
-         * requests automatically.
-         */
-        autoPrompt?: boolean | null
     }
 
 }
@@ -573,11 +568,6 @@ export interface CredentialsPrompter extends EDataServer.Extensible {
 
     // Own properties of EDataServerUI-1.2.EDataServerUI.CredentialsPrompter
 
-    /**
-     * Whether the #ECredentialsPrompter can response to credential
-     * requests automatically.
-     */
-    auto_prompt: boolean
     /**
      * Whether the #ECredentialsPrompter can response to credential
      * requests automatically.

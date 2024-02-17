@@ -1613,7 +1613,6 @@ module Client {
 
         // Own constructor properties of Dee-1.0.Dee.Client
 
-        bus_address?: string | null
         busAddress?: string | null
     }
 
@@ -1623,7 +1622,6 @@ interface Client {
 
     // Own properties of Dee-1.0.Dee.Client
 
-    readonly bus_address: string | null
     readonly busAddress: string | null
 
     // Class property signals of Dee-1.0.Dee.Client
@@ -1708,10 +1706,6 @@ module FileResourceManager {
         /**
          * Property holding the primary path used to store and load resources
          */
-        primary_path?: string | null
-        /**
-         * Property holding the primary path used to store and load resources
-         */
         primaryPath?: string | null
     }
 
@@ -1721,10 +1715,6 @@ interface FileResourceManager extends ResourceManager {
 
     // Own properties of Dee-1.0.Dee.FileResourceManager
 
-    /**
-     * Property holding the primary path used to store and load resources
-     */
-    readonly primary_path: string | null
     /**
      * Property holding the primary path used to store and load resources
      */
@@ -2250,8 +2240,6 @@ module Peer {
 
         // Own constructor properties of Dee-1.0.Dee.Peer
 
-        swarm_name?: string | null
-        swarm_owner?: boolean | null
         swarmName?: string | null
         swarmOwner?: boolean | null
     }
@@ -2262,11 +2250,8 @@ interface Peer {
 
     // Own properties of Dee-1.0.Dee.Peer
 
-    readonly swarm_leader: string | null
     readonly swarmLeader: string | null
-    swarm_name: string | null
     swarmName: string | null
-    readonly swarm_owner: boolean
     readonly swarmOwner: boolean
 
     // Owm methods of Dee-1.0.Dee.Peer
@@ -2407,24 +2392,6 @@ module ProxyModel {
         /**
          * The backend model used by this proxy model.
          */
-        back_end?: Model | null
-        /**
-         * Boolean property defining whether sequence numbers will be inherited
-         * from the back end model.
-         * You will most likely want to set this property to false
-         * if the implementation manipulates with the rows in the model and keep
-         * track of seqnums yourself.
-         */
-        inherit_seqnums?: boolean | null
-        /**
-         * Boolean property defining whether or not to automatically forward signals
-         * from the back end model. This is especially useful for sub classes wishing
-         * to do their own more advanced signal forwarding.
-         */
-        proxy_signals?: boolean | null
-        /**
-         * The backend model used by this proxy model.
-         */
         backEnd?: Model | null
         /**
          * Boolean property defining whether sequence numbers will be inherited
@@ -2451,10 +2418,6 @@ interface ProxyModel extends Model, Serializable {
     /**
      * The backend model used by this proxy model.
      */
-    readonly back_end: Model
-    /**
-     * The backend model used by this proxy model.
-     */
     readonly backEnd: Model
     /**
      * Boolean property defining whether sequence numbers will be inherited
@@ -2463,21 +2426,7 @@ interface ProxyModel extends Model, Serializable {
      * if the implementation manipulates with the rows in the model and keep
      * track of seqnums yourself.
      */
-    readonly inherit_seqnums: boolean
-    /**
-     * Boolean property defining whether sequence numbers will be inherited
-     * from the back end model.
-     * You will most likely want to set this property to false
-     * if the implementation manipulates with the rows in the model and keep
-     * track of seqnums yourself.
-     */
     readonly inheritSeqnums: boolean
-    /**
-     * Boolean property defining whether or not to automatically forward signals
-     * from the back end model. This is especially useful for sub classes wishing
-     * to do their own more advanced signal forwarding.
-     */
-    readonly proxy_signals: boolean
     /**
      * Boolean property defining whether or not to automatically forward signals
      * from the back end model. This is especially useful for sub classes wishing
@@ -2629,8 +2578,6 @@ module Server {
 
         // Own constructor properties of Dee-1.0.Dee.Server
 
-        bus_address?: string | null
-        same_user_only?: boolean | null
         busAddress?: string | null
         sameUserOnly?: boolean | null
     }
@@ -2641,9 +2588,7 @@ interface Server {
 
     // Own properties of Dee-1.0.Dee.Server
 
-    readonly bus_address: string | null
     readonly busAddress: string | null
-    readonly same_user_only: boolean
     readonly sameUserOnly: boolean
 
     // Owm methods of Dee-1.0.Dee.Server
@@ -2803,31 +2748,6 @@ module SharedModel {
          * 
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
          */
-        access_mode?: SharedModelAccessMode | null
-        /**
-         * Enumeration defining the flushing behavior.
-         * 
-         * Setting this to #DEE_SHARED_MODEL_FLUSH_MODE_MANUAL will disable
-         * automatic flushing that usually happens when the application's main event
-         * loop is idle. Automatic flushing should be primarily disabled when
-         * a shared model is used from multiple threads, or when not using #GMainLoop.
-         * When disabled, dee_shared_model_flush_revision_queue() needs to be called
-         * explicitely.
-         */
-        flush_mode?: SharedModelFlushMode | null
-        /**
-         * The #DeePeer that this model uses to connect to the swarm
-         */
-        peer?: Peer | null
-        /**
-         * Enumeration defining behavior of this model when trying to write to it.
-         * 
-         * Setting this to #DEE_SHARED_MODEL_ACCESS_MODE_LEADER_WRITABLE is useful
-         * when one process is considered an "owner" of a model and all the other
-         * peers are supposed to only synchronize it for reading.
-         * 
-         * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
-         */
         accessMode?: SharedModelAccessMode | null
         /**
          * Enumeration defining the flushing behavior.
@@ -2840,6 +2760,10 @@ module SharedModel {
          * explicitely.
          */
         flushMode?: SharedModelFlushMode | null
+        /**
+         * The #DeePeer that this model uses to connect to the swarm
+         */
+        peer?: Peer | null
     }
 
 }
@@ -2857,28 +2781,7 @@ interface SharedModel extends Model, Serializable {
      * 
      * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
      */
-    readonly access_mode: SharedModelAccessMode
-    /**
-     * Enumeration defining behavior of this model when trying to write to it.
-     * 
-     * Setting this to #DEE_SHARED_MODEL_ACCESS_MODE_LEADER_WRITABLE is useful
-     * when one process is considered an "owner" of a model and all the other
-     * peers are supposed to only synchronize it for reading.
-     * 
-     * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
-     */
     readonly accessMode: SharedModelAccessMode
-    /**
-     * Enumeration defining the flushing behavior.
-     * 
-     * Setting this to #DEE_SHARED_MODEL_FLUSH_MODE_MANUAL will disable
-     * automatic flushing that usually happens when the application's main event
-     * loop is idle. Automatic flushing should be primarily disabled when
-     * a shared model is used from multiple threads, or when not using #GMainLoop.
-     * When disabled, dee_shared_model_flush_revision_queue() needs to be called
-     * explicitely.
-     */
-    flush_mode: SharedModelFlushMode
     /**
      * Enumeration defining the flushing behavior.
      * 

@@ -1,13 +1,19 @@
 {
     "name": "@girs/folksdummy-0.6",
-    "version": "0.6.0-3.2.7",
+    "version": "0.6.0-3.2.8",
     "description": "GJS TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "folksdummy-0.6.js",
     "main": "folksdummy-0.6.js",
     "exports": {
-        "./ambient": "./folksdummy-0.6-ambient.d.ts",
-        "./import": "./folksdummy-0.6-import.d.ts",
+        "./ambient": {
+            "types": "./folksdummy-0.6-ambient.d.ts",
+            "default": "./folksdummy-0.6-ambient.js"
+        },
+        "./import": {
+            "types": "./folksdummy-0.6-import.d.ts",
+            "default": "./folksdummy-0.6-import.js"
+        },
         ".": {
             "import": {
                 "types": "./folksdummy-0.6.d.ts",

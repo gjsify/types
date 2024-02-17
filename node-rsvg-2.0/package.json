@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-rsvg-2.0",
-    "version": "2.56.92-3.2.7",
+    "version": "2.56.92-3.2.8",
     "description": "Node.js TypeScript type definitions for Rsvg-2.0, generated from library version 2.56.92",
     "type": "module",
     "module": "node-rsvg-2.0.js",
     "main": "node-rsvg-2.0.js",
     "exports": {
-        "./ambient": "./node-rsvg-2.0-ambient.d.ts",
-        "./import": "./node-rsvg-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-rsvg-2.0-ambient.d.ts",
+            "default": "./node-rsvg-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-rsvg-2.0-import.d.ts",
+            "default": "./node-rsvg-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-rsvg-2.0.d.ts",

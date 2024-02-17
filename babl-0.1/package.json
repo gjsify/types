@@ -1,13 +1,19 @@
 {
     "name": "@girs/babl-0.1",
-    "version": "0.1.107-3.2.7",
+    "version": "0.1.107-3.2.8",
     "description": "GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.107",
     "type": "module",
     "module": "babl-0.1.js",
     "main": "babl-0.1.js",
     "exports": {
-        "./ambient": "./babl-0.1-ambient.d.ts",
-        "./import": "./babl-0.1-import.d.ts",
+        "./ambient": {
+            "types": "./babl-0.1-ambient.d.ts",
+            "default": "./babl-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./babl-0.1-import.d.ts",
+            "default": "./babl-0.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./babl-0.1.d.ts",

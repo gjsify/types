@@ -165,23 +165,11 @@ interface Information {
     /**
      * Audio information of a file.
      */
-    readonly audio_information: AudioInformation
-    /**
-     * Audio information of a file.
-     */
     readonly audioInformation: AudioInformation
     /**
      * Container information of a file.
      */
-    readonly container_information: ContainerInformation
-    /**
-     * Container information of a file.
-     */
     readonly containerInformation: ContainerInformation
-    /**
-     * Image information of a file.
-     */
-    readonly image_information: ImageInformation
     /**
      * Image information of a file.
      */
@@ -190,10 +178,6 @@ interface Information {
      * URI of file which metadata this object stores.
      */
     readonly uri: string | null
-    /**
-     * Video information of a file.
-     */
-    readonly video_information: VideoInformation
     /**
      * Video information of a file.
      */
@@ -408,13 +392,13 @@ module Profile {
 
         // Own constructor properties of GUPnPDLNA-2.0.GUPnPDLNA.Profile
 
-        audio_restrictions?: any | null
-        container_restrictions?: any | null
+        audioRestrictions?: any | null
+        containerRestrictions?: any | null
         /**
          * Whether the DLNA profile is not a part of DLNA specification.
          */
         extended?: boolean | null
-        image_restrictions?: any | null
+        imageRestrictions?: any | null
         /**
          * MIME type of the DLNA profile.
          */
@@ -423,10 +407,6 @@ module Profile {
          * Name of the DLNA profile.
          */
         name?: string | null
-        video_restrictions?: any | null
-        audioRestrictions?: any | null
-        containerRestrictions?: any | null
-        imageRestrictions?: any | null
         videoRestrictions?: any | null
     }
 
@@ -436,15 +416,12 @@ interface Profile {
 
     // Own properties of GUPnPDLNA-2.0.GUPnPDLNA.Profile
 
-    readonly audio_restrictions: any
     readonly audioRestrictions: any
-    readonly container_restrictions: any
     readonly containerRestrictions: any
     /**
      * Whether the DLNA profile is not a part of DLNA specification.
      */
     readonly extended: boolean
-    readonly image_restrictions: any
     readonly imageRestrictions: any
     /**
      * MIME type of the DLNA profile.
@@ -454,7 +431,6 @@ interface Profile {
      * Name of the DLNA profile.
      */
     readonly name: string | null
-    readonly video_restrictions: any
     readonly videoRestrictions: any
 
     // Own fields of GUPnPDLNA-2.0.GUPnPDLNA.Profile
@@ -556,16 +532,6 @@ module ProfileGuesser {
          * Whether profile matching should be done also against DLNA
          * profiles not being a part of DLNA specification.
          */
-        extended_mode?: boolean | null
-        /**
-         * Whether profile matching should not be strictly compliant
-         * with the DLNA specification.
-         */
-        relaxed_mode?: boolean | null
-        /**
-         * Whether profile matching should be done also against DLNA
-         * profiles not being a part of DLNA specification.
-         */
         extendedMode?: boolean | null
         /**
          * Whether profile matching should not be strictly compliant
@@ -584,17 +550,7 @@ interface ProfileGuesser {
      * Whether profile matching should be done also against DLNA
      * profiles not being a part of DLNA specification.
      */
-    readonly extended_mode: boolean
-    /**
-     * Whether profile matching should be done also against DLNA
-     * profiles not being a part of DLNA specification.
-     */
     readonly extendedMode: boolean
-    /**
-     * Whether profile matching should not be strictly compliant
-     * with the DLNA specification.
-     */
-    readonly relaxed_mode: boolean
     /**
      * Whether profile matching should not be strictly compliant
      * with the DLNA specification.

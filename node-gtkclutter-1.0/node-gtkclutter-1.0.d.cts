@@ -678,7 +678,7 @@ export module Embed {
          * Whether to use the reported size of the LayoutManager on the stage as the widget size.
          * See gtk_clutter_embed_set_use_layout_size() for details.
          */
-        useLayoutSize?: boolean | null
+        use_layout_size?: boolean | null
     }
 
 }

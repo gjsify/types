@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gdl-3",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gdl-3, generated from library version 3.0.0",
     "type": "module",
     "module": "node-gdl-3.js",
     "main": "node-gdl-3.js",
     "exports": {
-        "./ambient": "./node-gdl-3-ambient.d.ts",
-        "./import": "./node-gdl-3-import.d.ts",
+        "./ambient": {
+            "types": "./node-gdl-3-ambient.d.ts",
+            "default": "./node-gdl-3-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gdl-3-import.d.ts",
+            "default": "./node-gdl-3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gdl-3.d.ts",

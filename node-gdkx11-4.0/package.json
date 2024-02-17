@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gdkx11-4.0",
-    "version": "4.0.0-3.2.7",
+    "version": "4.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for GdkX11-4.0, generated from library version 4.0.0",
     "type": "module",
     "module": "node-gdkx11-4.0.js",
     "main": "node-gdkx11-4.0.js",
     "exports": {
-        "./ambient": "./node-gdkx11-4.0-ambient.d.ts",
-        "./import": "./node-gdkx11-4.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-gdkx11-4.0-ambient.d.ts",
+            "default": "./node-gdkx11-4.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gdkx11-4.0-import.d.ts",
+            "default": "./node-gdkx11-4.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gdkx11-4.0.d.ts",

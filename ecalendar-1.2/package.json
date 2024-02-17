@@ -1,13 +1,19 @@
 {
     "name": "@girs/ecalendar-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "GJS TypeScript type definitions for ECalendar-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "ecalendar-1.2.js",
     "main": "ecalendar-1.2.js",
     "exports": {
-        "./ambient": "./ecalendar-1.2-ambient.d.ts",
-        "./import": "./ecalendar-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./ecalendar-1.2-ambient.d.ts",
+            "default": "./ecalendar-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./ecalendar-1.2-import.d.ts",
+            "default": "./ecalendar-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./ecalendar-1.2.d.ts",

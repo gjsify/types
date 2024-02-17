@@ -29,7 +29,7 @@ module Persona {
 
         // Own constructor properties of FolksLibsocialweb-0.6.FolksLibsocialweb.Persona
 
-        lswContact?: SocialWebClient.Contact | null
+        lsw_contact?: SocialWebClient.Contact | null
     }
 
 }

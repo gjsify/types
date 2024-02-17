@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-ebook-1.2",
-    "version": "1.2.0-3.2.7",
+    "version": "1.2.0-3.2.8",
     "description": "Node.js TypeScript type definitions for EBook-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "node-ebook-1.2.js",
     "main": "node-ebook-1.2.js",
     "exports": {
-        "./ambient": "./node-ebook-1.2-ambient.d.ts",
-        "./import": "./node-ebook-1.2-import.d.ts",
+        "./ambient": {
+            "types": "./node-ebook-1.2-ambient.d.ts",
+            "default": "./node-ebook-1.2-ambient.js"
+        },
+        "./import": {
+            "types": "./node-ebook-1.2-import.d.ts",
+            "default": "./node-ebook-1.2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-ebook-1.2.d.ts",

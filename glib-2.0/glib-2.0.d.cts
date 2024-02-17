@@ -6432,11 +6432,6 @@ export function filename_display_name(filename: string): string | null
 /**
  * Converts an escaped ASCII-encoded URI to a local filename in the
  * encoding used for filenames.
- * 
- * Since GLib 2.78, the query string and fragment can be present in the URI,
- * but are not part of the resulting filename.
- * We take inspiration from https://url.spec.whatwg.org/#file-state,
- * but we don't support the entire standard.
  * @param uri a uri describing a filename (escaped, encoded in ASCII).
  * @returns a newly-allocated string holding               the resulting filename, or %NULL on an error.
  */
@@ -9193,7 +9188,7 @@ export function spaced_primes_closest(num: number): number
  * @param argv      child's argument vector
  * @param envp      child's environment, or %NULL to inherit parent's
  * @param flags flags from #GSpawnFlags
- * @param child_setup function to run     in the child just before `exec()`
+ * @param child_setup function to run in the child just before exec()
  * @returns %TRUE on success, %FALSE if error is set
  */
 export function spawn_async(working_directory: string | null, argv: string[], envp: string[] | null, flags: SpawnFlags, child_setup: SpawnChildSetupFunc | null): [ /* returnType */ boolean, /* child_pid */ Pid ]
@@ -9206,7 +9201,7 @@ export function spawn_async(working_directory: string | null, argv: string[], en
  * @param argv child's argument vector, in the GLib file name encoding;   it must be non-empty and %NULL-terminated
  * @param envp child's environment, or %NULL to inherit parent's, in the GLib file name encoding
  * @param flags flags from #GSpawnFlags
- * @param child_setup function to run   in the child just before `exec()`
+ * @param child_setup function to run in the child just before exec()
  * @param stdin_fd file descriptor to use for child's stdin, or `-1`
  * @param stdout_fd file descriptor to use for child's stdout, or `-1`
  * @param stderr_fd file descriptor to use for child's stderr, or `-1`
@@ -9220,7 +9215,7 @@ export function spawn_async_with_fds(working_directory: string | null, argv: str
  * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
  * @param envp      child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
  * @param flags flags from #GSpawnFlags
- * @param child_setup function to run     in the child just before `exec()`
+ * @param child_setup function to run in the child just before exec()
  * @returns %TRUE on success, %FALSE if an error was set
  */
 export function spawn_async_with_pipes(working_directory: string | null, argv: string[], envp: string[] | null, flags: SpawnFlags, child_setup: SpawnChildSetupFunc | null): [ /* returnType */ boolean, /* child_pid */ Pid, /* standard_input */ number, /* standard_output */ number, /* standard_error */ number ]
@@ -9423,7 +9418,7 @@ export function spawn_async_with_pipes(working_directory: string | null, argv: s
  * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
  * @param envp      child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
  * @param flags flags from #GSpawnFlags
- * @param child_setup function to run     in the child just before `exec()`
+ * @param child_setup function to run in the child just before `exec()`
  * @param stdin_fd file descriptor to use for child's stdin, or `-1`
  * @param stdout_fd file descriptor to use for child's stdout, or `-1`
  * @param stderr_fd file descriptor to use for child's stderr, or `-1`
@@ -9576,7 +9571,7 @@ export function spawn_exit_error_quark(): Quark
  * @param argv      child's argument vector, which must be non-empty and %NULL-terminated
  * @param envp      child's environment, or %NULL to inherit parent's
  * @param flags flags from #GSpawnFlags
- * @param child_setup function to run     in the child just before `exec()`
+ * @param child_setup function to run in the child just before exec()
  * @returns %TRUE on success, %FALSE if an error was set
  */
 export function spawn_sync(working_directory: string | null, argv: string[], envp: string[] | null, flags: SpawnFlags, child_setup: SpawnChildSetupFunc | null): [ /* returnType */ boolean, /* standard_output */ Uint8Array, /* standard_error */ Uint8Array, /* wait_status */ number ]
@@ -10024,55 +10019,6 @@ export function strrstr_len(haystack: string, haystack_len: number, needle: stri
  */
 export function strsignal(signum: number): string
 /**
- * Splits a string into a maximum of `max_tokens` pieces, using the given
- * `delimiter`. If `max_tokens` is reached, the remainder of `string` is
- * appended to the last token.
- * 
- * As an example, the result of g_strsplit (":a:bc::d:", ":", -1) is a
- * %NULL-terminated vector containing the six strings "", "a", "bc", "", "d"
- * and "".
- * 
- * As a special case, the result of splitting the empty string "" is an empty
- * vector, not a vector containing a single string. The reason for this
- * special case is that being able to represent an empty vector is typically
- * more useful than consistent handling of empty elements. If you do need
- * to represent empty elements, you'll need to check for the empty string
- * before calling g_strsplit().
- * @param string a string to split
- * @param delimiter a string which specifies the places at which to split     the string. The delimiter is not included in any of the resulting     strings, unless `max_tokens` is reached.
- * @param max_tokens the maximum number of pieces to split `string` into.     If this is less than 1, the string is split completely.
- * @returns a newly-allocated %NULL-terminated array of    strings. Use g_strfreev() to free it.
- */
-export function strsplit(string: string, delimiter: string, max_tokens: number): string[]
-/**
- * Splits `string` into a number of tokens not containing any of the characters
- * in `delimiter`. A token is the (possibly empty) longest string that does not
- * contain any of the characters in `delimiters`. If `max_tokens` is reached, the
- * remainder is appended to the last token.
- * 
- * For example the result of g_strsplit_set ("abc:def/ghi", ":/", -1) is a
- * %NULL-terminated vector containing the three strings "abc", "def",
- * and "ghi".
- * 
- * The result of g_strsplit_set (":def/ghi:", ":/", -1) is a %NULL-terminated
- * vector containing the four strings "", "def", "ghi", and "".
- * 
- * As a special case, the result of splitting the empty string "" is an empty
- * vector, not a vector containing a single string. The reason for this
- * special case is that being able to represent an empty vector is typically
- * more useful than consistent handling of empty elements. If you do need
- * to represent empty elements, you'll need to check for the empty string
- * before calling g_strsplit_set().
- * 
- * Note that this function works on bytes not characters, so it can't be used
- * to delimit UTF-8 strings for anything but ASCII characters.
- * @param string The string to be tokenized
- * @param delimiters A nul-terminated string containing bytes that are used     to split the string (it can accept an empty string, which will result     in no string splitting).
- * @param max_tokens The maximum number of tokens to split `string` into.     If this is less than 1, the string is split completely
- * @returns a newly-allocated %NULL-terminated array of    strings. Use g_strfreev() to free it.
- */
-export function strsplit_set(string: string, delimiters: string, max_tokens: number): string[]
-/**
  * Searches the string `haystack` for the first occurrence
  * of the string `needle,` limiting the length of the search
  * to `haystack_len` or a nul terminator byte (whichever is reached first).
@@ -10208,14 +10154,6 @@ export function test_bug(bug_uri_snippet: string): void
  * @param uri_pattern the base pattern for bug URIs
  */
 export function test_bug_base(uri_pattern: string): void
-/**
- * Attempt to disable system crash reporting infrastructure.
- * 
- * This function should be called before exercising code paths that are
- * expected or intended to crash, to avoid wasting resources in system-wide
- * crash collection infrastructure such as systemd-coredump or abrt.
- */
-export function test_disable_crash_reporting(): void
 /**
  * Indicates that a message with the given `log_domain` and `log_level,`
  * with text matching `pattern,` is expected to be logged. When this
@@ -10583,11 +10521,6 @@ export function test_trap_reached_timeout(): boolean
  * If your `main ()` needs to behave differently in
  * the subprocess, you can call g_test_subprocess() (after calling
  * g_test_init()) to see whether you are in a subprocess.
- * 
- * Internally, this function tracks the child process using
- * g_child_watch_source_new(), so your process must not ignore `SIGCHLD`, and
- * must not attempt to watch or wait for the child process via another
- * mechanism.
  * 
  * The following example tests that calling
  * `my_object_new(1000000)` will abort with an error
@@ -11045,9 +10978,10 @@ export function unichar_fully_decompose(ch: string, compat: boolean, result_len:
  * glyph and `mirrored_ch` is set, it puts that character in the address
  * pointed to by `mirrored_ch`.  Otherwise the original character is put.
  * @param ch a Unicode character
+ * @param mirrored_ch location to store the mirrored character
  * @returns %TRUE if @ch has a mirrored character, %FALSE otherwise
  */
-export function unichar_get_mirror_char(ch: string): [ /* returnType */ boolean, /* mirrored_ch */ string ]
+export function unichar_get_mirror_char(ch: string, mirrored_ch: string): boolean
 /**
  * Looks up the #GUnicodeScript for a particular character (as defined
  * by Unicode Standard Annex \#24). No check is made for `ch` being a
@@ -11356,18 +11290,15 @@ export function unix_get_passwd_entry(user_name: string): any | null
  * uses the pipe2() system call, which atomically creates a pipe with
  * the configured flags.
  * 
- * As of GLib 2.78, the supported flags are `O_CLOEXEC`/`FD_CLOEXEC` (see below)
- * and `O_NONBLOCK`. Prior to GLib 2.78, only `FD_CLOEXEC` was supported — if
- * you wanted to configure `O_NONBLOCK` then that had to be done separately with
- * `fcntl()`.
+ * As of GLib 2.78, the supported flags are `FD_CLOEXEC` and `O_NONBLOCK`. Prior
+ * to GLib 2.78, only `FD_CLOEXEC` was supported — if you wanted to configure
+ * `O_NONBLOCK` then that had to be done separately with `fcntl()`.
  * 
  * It is a programmer error to call this function with unsupported flags, and a
  * critical warning will be raised.
  * 
- * As of GLib 2.78, it is preferred to pass `O_CLOEXEC` in, rather than
- * `FD_CLOEXEC`, as that matches the underlying `pipe()` API more closely. Prior
- * to 2.78, only `FD_CLOEXEC` was supported. Support for `FD_CLOEXEC` may be
- * deprecated and removed in future.
+ * This function does not take `O_CLOEXEC`, it takes `FD_CLOEXEC` as if
+ * for fcntl(); these are different on Linux/glibc.
  * @param fds Array of two integers
  * @param flags Bitfield of file descriptor flags, as for fcntl()
  * @returns %TRUE on success, %FALSE if not (and errno will be set).
@@ -19207,13 +19138,13 @@ export interface OptionEntry {
      *     called to handle the extra argument. Otherwise, `arg_data` is a
      *     pointer to a location to store the value, the required type of
      *     the location depends on the `arg` type:
-     *      - %G_OPTION_ARG_NONE: %gboolean
-     *      - %G_OPTION_ARG_STRING: %gchar*
-     *      - %G_OPTION_ARG_INT: %gint
-     *      - %G_OPTION_ARG_FILENAME: %gchar*
-     *      - %G_OPTION_ARG_STRING_ARRAY: %gchar**
-     *      - %G_OPTION_ARG_FILENAME_ARRAY: %gchar**
-     *      - %G_OPTION_ARG_DOUBLE: %gdouble
+     *     - %G_OPTION_ARG_NONE: %gboolean
+     *     - %G_OPTION_ARG_STRING: %gchar*
+     *     - %G_OPTION_ARG_INT: %gint
+     *     - %G_OPTION_ARG_FILENAME: %gchar*
+     *     - %G_OPTION_ARG_STRING_ARRAY: %gchar**
+     *     - %G_OPTION_ARG_FILENAME_ARRAY: %gchar**
+     *     - %G_OPTION_ARG_DOUBLE: %gdouble
      *     If `arg` type is %G_OPTION_ARG_STRING or %G_OPTION_ARG_FILENAME,
      *     the location will contain a newly allocated string if the option
      *     was given. That string needs to be freed by the callee using g_free().
@@ -19315,11 +19246,6 @@ export class OptionGroup {
 
     /**
      * Creates a new #GOptionGroup.
-     * 
-     * `description` is typically used to provide a title for the group. If so, it
-     * is recommended that it’s written in title case, and has a trailing colon so
-     * that it matches the style of built-in GLib group titles such as
-     * ‘Application Options:’.
      * @constructor 
      * @param name the name for the option group, this is used to provide   help for the options in this group with `--help-``name`
      * @param description a description for this group to be shown in   `--help`. This string is translated using the translation   domain or translation function of the group
@@ -19331,11 +19257,6 @@ export class OptionGroup {
     constructor(name: string, description: string, help_description: string, user_data: any | null, destroy: DestroyNotify | null) 
     /**
      * Creates a new #GOptionGroup.
-     * 
-     * `description` is typically used to provide a title for the group. If so, it
-     * is recommended that it’s written in title case, and has a trailing colon so
-     * that it matches the style of built-in GLib group titles such as
-     * ‘Application Options:’.
      * @constructor 
      * @param name the name for the option group, this is used to provide   help for the options in this group with `--help-``name`
      * @param description a description for this group to be shown in   `--help`. This string is translated using the translation   domain or translation function of the group
@@ -23565,9 +23486,9 @@ export interface Tree {
      * are O(log(n)).
      * @param key the key to insert
      * @param value the value corresponding to the key
-     * @returns the inserted (or set) node or %NULL if insertion would overflow the tree node counter.
+     * @returns the inserted (or set) node.
      */
-    insert_node(key: any | null, value: any | null): TreeNode | null
+    insert_node(key: any | null, value: any | null): TreeNode
     /**
      * Gets the value corresponding to the given key. Since a #GTree is
      * automatically balanced as key/value pairs are added, key lookup
@@ -23606,7 +23527,7 @@ export interface Tree {
     lower_bound(key: any | null): TreeNode | null
     /**
      * Gets the number of nodes in a #GTree.
-     * @returns the number of nodes in @tree The node counter value type is really a #guint, but it is returned as a #gint due to backward compatibility issues (can be cast back to #guint to support its full range of values).
+     * @returns the number of nodes in @tree
      */
     nnodes(): number
     /**
@@ -23667,9 +23588,9 @@ export interface Tree {
      * so that the distance from the root to every leaf is as small as possible.
      * @param key the key to insert
      * @param value the value corresponding to the key
-     * @returns the inserted (or set) node or %NULL if insertion would overflow the tree node counter.
+     * @returns the inserted (or set) node.
      */
-    replace_node(key: any | null, value: any | null): TreeNode | null
+    replace_node(key: any | null, value: any | null): TreeNode
     /**
      * Removes a key and its associated value from a #GTree without calling
      * the key and value destroy functions.

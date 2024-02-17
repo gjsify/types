@@ -134,8 +134,6 @@ module MobileProvidersDatabase {
 
         // Own constructor properties of NMGtk-1.0.NMGtk.MobileProvidersDatabase
 
-        country_codes?: string | null
-        service_providers?: string | null
         countryCodes?: string | null
         serviceProviders?: string | null
     }
@@ -146,9 +144,7 @@ interface MobileProvidersDatabase extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of NMGtk-1.0.NMGtk.MobileProvidersDatabase
 
-    readonly country_codes: string | null
     readonly countryCodes: string | null
-    readonly service_providers: string | null
     readonly serviceProviders: string | null
 
     // Own fields of NMGtk-1.0.NMGtk.MobileProvidersDatabase

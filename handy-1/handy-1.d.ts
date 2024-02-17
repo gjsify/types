@@ -643,50 +643,15 @@ module ActionRow {
          * The target widget will be activated by emitting the
          * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
          */
-        activatable_widget?: Gtk.Widget | null
-        /**
-         * The icon name for this row.
-         */
-        icon_name?: string | null
-        /**
-         * The subtitle for this row.
-         */
-        subtitle?: string | null
-        /**
-         * The number of lines at the end of which the subtitle label will be
-         * ellipsized.
-         * 
-         * If the value is 0, the number of lines won't be limited.
-         */
-        subtitle_lines?: number | null
-        /**
-         * The number of lines at the end of which the title label will be ellipsized.
-         * 
-         * If the value is 0, the number of lines won't be limited.
-         */
-        title_lines?: number | null
-        /**
-         * Whether embedded underlines in the title or subtitle indicates a mnemonic.
-         * 
-         * If true, an underline in the text of the title or subtitle labels indicates
-         * the next character should be used for the mnemonic accelerator key.
-         */
-        use_underline?: boolean | null
-        /**
-         * The activatable widget for this row.
-         * 
-         * The widget is activated, either by clicking on it, by calling
-         * [method`ActionRow`.activate], or via mnemonics in the title or the subtitle.
-         * See the [property`ActionRow:`use-underline] property to enable mnemonics.
-         * 
-         * The target widget will be activated by emitting the
-         * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
-         */
         activatableWidget?: Gtk.Widget | null
         /**
          * The icon name for this row.
          */
         iconName?: string | null
+        /**
+         * The subtitle for this row.
+         */
+        subtitle?: string | null
         /**
          * The number of lines at the end of which the subtitle label will be
          * ellipsized.
@@ -725,22 +690,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * The target widget will be activated by emitting the
      * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
      */
-    activatable_widget: Gtk.Widget
-    /**
-     * The activatable widget for this row.
-     * 
-     * The widget is activated, either by clicking on it, by calling
-     * [method`ActionRow`.activate], or via mnemonics in the title or the subtitle.
-     * See the [property`ActionRow:`use-underline] property to enable mnemonics.
-     * 
-     * The target widget will be activated by emitting the
-     * [signal`Gtk`.Widget::mnemonic-activate] signal on it.
-     */
     activatableWidget: Gtk.Widget
-    /**
-     * The icon name for this row.
-     */
-    icon_name: string | null
     /**
      * The icon name for this row.
      */
@@ -755,33 +705,13 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * 
      * If the value is 0, the number of lines won't be limited.
      */
-    subtitle_lines: number
-    /**
-     * The number of lines at the end of which the subtitle label will be
-     * ellipsized.
-     * 
-     * If the value is 0, the number of lines won't be limited.
-     */
     subtitleLines: number
     /**
      * The number of lines at the end of which the title label will be ellipsized.
      * 
      * If the value is 0, the number of lines won't be limited.
      */
-    title_lines: number
-    /**
-     * The number of lines at the end of which the title label will be ellipsized.
-     * 
-     * If the value is 0, the number of lines won't be limited.
-     */
     titleLines: number
-    /**
-     * Whether embedded underlines in the title or subtitle indicates a mnemonic.
-     * 
-     * If true, an underline in the text of the title or subtitle labels indicates
-     * the next character should be used for the mnemonic accelerator key.
-     */
-    use_underline: boolean
     /**
      * Whether embedded underlines in the title or subtitle indicates a mnemonic.
      * 
@@ -1572,15 +1502,15 @@ module Avatar {
          * displayed. If the icon theme is changed, the image will be updated
          * automatically.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * A [iface`Gio`.LoadableIcon] used to load the avatar.
          */
-        loadable_icon?: Gio.LoadableIcon | null
+        loadableIcon?: Gio.LoadableIcon | null
         /**
          * Whether to show the initials or the fallback icon on the generated avatar.
          */
-        show_initials?: boolean | null
+        showInitials?: boolean | null
         /**
          * The avatar size of the avatar.
          */
@@ -1592,23 +1522,6 @@ module Avatar {
          * `FALSE`.
          */
         text?: string | null
-        /**
-         * The name of an icon to use as a fallback.
-         * 
-         * If no name is set, the avatar-default-symbolic icon will be used. If the
-         * name doesn't match a valid icon, it is an error and no icon will be
-         * displayed. If the icon theme is changed, the image will be updated
-         * automatically.
-         */
-        iconName?: string | null
-        /**
-         * A [iface`Gio`.LoadableIcon] used to load the avatar.
-         */
-        loadableIcon?: Gio.LoadableIcon | null
-        /**
-         * Whether to show the initials or the fallback icon on the generated avatar.
-         */
-        showInitials?: boolean | null
     }
 
 }
@@ -1625,28 +1538,11 @@ interface Avatar extends Atk.ImplementorIface, Gtk.Buildable {
      * displayed. If the icon theme is changed, the image will be updated
      * automatically.
      */
-    icon_name: string | null
-    /**
-     * The name of an icon to use as a fallback.
-     * 
-     * If no name is set, the avatar-default-symbolic icon will be used. If the
-     * name doesn't match a valid icon, it is an error and no icon will be
-     * displayed. If the icon theme is changed, the image will be updated
-     * automatically.
-     */
     iconName: string | null
     /**
      * A [iface`Gio`.LoadableIcon] used to load the avatar.
      */
-    loadable_icon: Gio.LoadableIcon
-    /**
-     * A [iface`Gio`.LoadableIcon] used to load the avatar.
-     */
     loadableIcon: Gio.LoadableIcon
-    /**
-     * Whether to show the initials or the fallback icon on the generated avatar.
-     */
-    show_initials: boolean
     /**
      * Whether to show the initials or the fallback icon on the generated avatar.
      */
@@ -1997,43 +1893,6 @@ module Carousel {
          * 
          * If the value is `FALSE`, each swipe can only move to the adjacent pages.
          */
-        allow_long_swipes?: boolean | null
-        /**
-         * Sets whether the [class`Carousel]` can be dragged with mouse pointer.
-         * 
-         * If the value is `FALSE`, dragging is only available on touch.
-         */
-        allow_mouse_drag?: boolean | null
-        /**
-         * Whether the widget will respond to scroll wheel events.
-         * 
-         * If the value is `FALSE`, wheel events will be ignored.
-         */
-        allow_scroll_wheel?: boolean | null
-        /**
-         * Animation duration used by [method`Carousel`.scroll_to], in milliseconds.
-         */
-        animation_duration?: number | null
-        /**
-         * Whether the carousel can be navigated.
-         * 
-         * This can be used to temporarily disable a `HdyCarousel` to only allow
-         * navigating it in a certain state.
-         */
-        interactive?: boolean | null
-        /**
-         * Page reveal duration, in milliseconds.
-         */
-        reveal_duration?: number | null
-        /**
-         * Spacing between pages in pixels.
-         */
-        spacing?: number | null
-        /**
-         * Whether to allow swiping for more than one page at a time.
-         * 
-         * If the value is `FALSE`, each swipe can only move to the adjacent pages.
-         */
         allowLongSwipes?: boolean | null
         /**
          * Sets whether the [class`Carousel]` can be dragged with mouse pointer.
@@ -2052,9 +1911,20 @@ module Carousel {
          */
         animationDuration?: number | null
         /**
+         * Whether the carousel can be navigated.
+         * 
+         * This can be used to temporarily disable a `HdyCarousel` to only allow
+         * navigating it in a certain state.
+         */
+        interactive?: boolean | null
+        /**
          * Page reveal duration, in milliseconds.
          */
         revealDuration?: number | null
+        /**
+         * Spacing between pages in pixels.
+         */
+        spacing?: number | null
     }
 
 }
@@ -2068,19 +1938,7 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * 
      * If the value is `FALSE`, each swipe can only move to the adjacent pages.
      */
-    allow_long_swipes: boolean
-    /**
-     * Whether to allow swiping for more than one page at a time.
-     * 
-     * If the value is `FALSE`, each swipe can only move to the adjacent pages.
-     */
     allowLongSwipes: boolean
-    /**
-     * Sets whether the [class`Carousel]` can be dragged with mouse pointer.
-     * 
-     * If the value is `FALSE`, dragging is only available on touch.
-     */
-    allow_mouse_drag: boolean
     /**
      * Sets whether the [class`Carousel]` can be dragged with mouse pointer.
      * 
@@ -2092,17 +1950,7 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * 
      * If the value is `FALSE`, wheel events will be ignored.
      */
-    allow_scroll_wheel: boolean
-    /**
-     * Whether the widget will respond to scroll wheel events.
-     * 
-     * If the value is `FALSE`, wheel events will be ignored.
-     */
     allowScrollWheel: boolean
-    /**
-     * Animation duration used by [method`Carousel`.scroll_to], in milliseconds.
-     */
-    animation_duration: number
     /**
      * Animation duration used by [method`Carousel`.scroll_to], in milliseconds.
      */
@@ -2117,10 +1965,6 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
     /**
      * The number of pages in a [class`Carousel]`.
      */
-    readonly n_pages: number
-    /**
-     * The number of pages in a [class`Carousel]`.
-     */
     readonly nPages: number
     /**
      * Current scrolling position, unitless.
@@ -2128,10 +1972,6 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * 1 matches 1 page. Use [method`Carousel`.scroll_to] for changing it.
      */
     readonly position: number
-    /**
-     * Page reveal duration, in milliseconds.
-     */
-    reveal_duration: number
     /**
      * Page reveal duration, in milliseconds.
      */
@@ -2956,30 +2796,6 @@ module Clamp {
          * It is the width if the clamp is horizontal, or the height if it is
          * vertical.
          */
-        maximum_size?: number | null
-        /**
-         * The size above which the child is clamped.
-         * 
-         * Starting from this size, the layout will tighten its grip on the children,
-         * slowly allocating less and less of the available size up to the maximum
-         * allocated size. Below that threshold and below the maximum size, the
-         * children will be allocated all the available size.
-         * 
-         * If the threshold is greater than the maximum size to allocate to the
-         * children, they will be allocated the whole size up to the maximum. If the
-         * threshold is lower than the minimum size to allocate to the children, that
-         * size will be used as the tightening threshold.
-         * 
-         * Effectively, tightening the grip on a child before it reaches its maximum
-         * size makes transitions to and from the maximum size smoother when resizing.
-         */
-        tightening_threshold?: number | null
-        /**
-         * The maximum size to allocate the children.
-         * 
-         * It is the width if the clamp is horizontal, or the height if it is
-         * vertical.
-         */
         maximumSize?: number | null
         /**
          * The size above which the child is clamped.
@@ -3012,31 +2828,7 @@ interface Clamp extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * It is the width if the clamp is horizontal, or the height if it is
      * vertical.
      */
-    maximum_size: number
-    /**
-     * The maximum size to allocate the children.
-     * 
-     * It is the width if the clamp is horizontal, or the height if it is
-     * vertical.
-     */
     maximumSize: number
-    /**
-     * The size above which the child is clamped.
-     * 
-     * Starting from this size, the layout will tighten its grip on the children,
-     * slowly allocating less and less of the available size up to the maximum
-     * allocated size. Below that threshold and below the maximum size, the
-     * children will be allocated all the available size.
-     * 
-     * If the threshold is greater than the maximum size to allocate to the
-     * children, they will be allocated the whole size up to the maximum. If the
-     * threshold is lower than the minimum size to allocate to the children, that
-     * size will be used as the tightening threshold.
-     * 
-     * Effectively, tightening the grip on a child before it reaches its maximum
-     * size makes transitions to and from the maximum size smoother when resizing.
-     */
-    tightening_threshold: number
     /**
      * The size above which the child is clamped.
      * 
@@ -3317,19 +3109,6 @@ module ComboRow {
         /**
          * The index of the selected item in its [iface`Gio`.ListModel].
          */
-        selected_index?: number | null
-        /**
-         * Whether to use the current value as the subtitle.
-         * 
-         * If you use a custom widget creation function, you will need to give the row
-         * a name conversion closure with [method`ComboRow`.set_get_name_func].
-         * 
-         * If `TRUE`, you should not access [property`ActionRow:`subtitle].
-         */
-        use_subtitle?: boolean | null
-        /**
-         * The index of the selected item in its [iface`Gio`.ListModel].
-         */
         selectedIndex?: number | null
         /**
          * Whether to use the current value as the subtitle.
@@ -3351,20 +3130,7 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
     /**
      * The index of the selected item in its [iface`Gio`.ListModel].
      */
-    selected_index: number
-    /**
-     * The index of the selected item in its [iface`Gio`.ListModel].
-     */
     selectedIndex: number
-    /**
-     * Whether to use the current value as the subtitle.
-     * 
-     * If you use a custom widget creation function, you will need to give the row
-     * a name conversion closure with [method`ComboRow`.set_get_name_func].
-     * 
-     * If `TRUE`, you should not access [property`ActionRow:`subtitle].
-     */
-    use_subtitle: boolean
     /**
      * Whether to use the current value as the subtitle.
      * 
@@ -3761,57 +3527,15 @@ module Deck {
         /**
          * Whether swipe gestures allow switching to the previous child.
          */
-        can_swipe_back?: boolean | null
-        /**
-         * Whether swipe gestures allow switching to the next child.
-         */
-        can_swipe_forward?: boolean | null
-        /**
-         * Horizontally homogeneous sizing.
-         */
-        hhomogeneous?: boolean | null
-        /**
-         * Whether or not the size should smoothly change when changing between
-         * differently sized children.
-         */
-        interpolate_size?: boolean | null
-        /**
-         * The transition animation duration, in milliseconds.
-         */
-        transition_duration?: number | null
-        /**
-         * The type of animation that will be used for transitions between children.
-         * 
-         * The transition type can be changed without problems at runtime, so it is
-         * possible to change the animation based on the child that is about to become
-         * current.
-         */
-        transition_type?: DeckTransitionType | null
-        /**
-         * Vertically homogeneous sizing.
-         */
-        vhomogeneous?: boolean | null
-        /**
-         * The widget currently visible.
-         * 
-         * The transition is determined by [property`Deck:`transition-type] and
-         * [property`Deck:`transition-duration]. The transition can be cancelled by the
-         * user, in which case visible child will change back to the previously
-         * visible child.
-         */
-        visible_child?: Gtk.Widget | null
-        /**
-         * The name of the widget currently visible.
-         */
-        visible_child_name?: string | null
-        /**
-         * Whether swipe gestures allow switching to the previous child.
-         */
         canSwipeBack?: boolean | null
         /**
          * Whether swipe gestures allow switching to the next child.
          */
         canSwipeForward?: boolean | null
+        /**
+         * Horizontally homogeneous sizing.
+         */
+        hhomogeneous?: boolean | null
         /**
          * Whether or not the size should smoothly change when changing between
          * differently sized children.
@@ -3829,6 +3553,10 @@ module Deck {
          * current.
          */
         transitionType?: DeckTransitionType | null
+        /**
+         * Vertically homogeneous sizing.
+         */
+        vhomogeneous?: boolean | null
         /**
          * The widget currently visible.
          * 
@@ -3853,15 +3581,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
     /**
      * Whether swipe gestures allow switching to the previous child.
      */
-    can_swipe_back: boolean
-    /**
-     * Whether swipe gestures allow switching to the previous child.
-     */
     canSwipeBack: boolean
-    /**
-     * Whether swipe gestures allow switching to the next child.
-     */
-    can_swipe_forward: boolean
     /**
      * Whether swipe gestures allow switching to the next child.
      */
@@ -3874,16 +3594,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Whether or not the size should smoothly change when changing between
      * differently sized children.
      */
-    interpolate_size: boolean
-    /**
-     * Whether or not the size should smoothly change when changing between
-     * differently sized children.
-     */
     interpolateSize: boolean
-    /**
-     * The transition animation duration, in milliseconds.
-     */
-    transition_duration: number
     /**
      * The transition animation duration, in milliseconds.
      */
@@ -3891,19 +3602,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
     /**
      * Whether or not the transition is currently running.
      */
-    readonly transition_running: boolean
-    /**
-     * Whether or not the transition is currently running.
-     */
     readonly transitionRunning: boolean
-    /**
-     * The type of animation that will be used for transitions between children.
-     * 
-     * The transition type can be changed without problems at runtime, so it is
-     * possible to change the animation based on the child that is about to become
-     * current.
-     */
-    transition_type: DeckTransitionType
     /**
      * The type of animation that will be used for transitions between children.
      * 
@@ -3924,20 +3623,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * user, in which case visible child will change back to the previously
      * visible child.
      */
-    visible_child: Gtk.Widget
-    /**
-     * The widget currently visible.
-     * 
-     * The transition is determined by [property`Deck:`transition-type] and
-     * [property`Deck:`transition-duration]. The transition can be cancelled by the
-     * user, in which case visible child will change back to the previously
-     * visible child.
-     */
     visibleChild: Gtk.Widget
-    /**
-     * The name of the widget currently visible.
-     */
-    visible_child_name: string | null
     /**
      * The name of the widget currently visible.
      */
@@ -4436,32 +4122,11 @@ module ExpanderRow {
         /**
          * Whether expansion is enabled.
          */
-        enable_expansion?: boolean | null
+        enableExpansion?: boolean | null
         /**
          * Whether the row is expanded.
          */
         expanded?: boolean | null
-        /**
-         * The icon name for this row.
-         */
-        icon_name?: string | null
-        /**
-         * Whether the switch enabling the expansion is visible.
-         */
-        show_enable_switch?: boolean | null
-        /**
-         * The subtitle for this row.
-         */
-        subtitle?: string | null
-        /**
-         * Whether an embedded underline in the title or subtitle labels indicates a
-         * mnemonic.
-         */
-        use_underline?: boolean | null
-        /**
-         * Whether expansion is enabled.
-         */
-        enableExpansion?: boolean | null
         /**
          * The icon name for this row.
          */
@@ -4470,6 +4135,10 @@ module ExpanderRow {
          * Whether the switch enabling the expansion is visible.
          */
         showEnableSwitch?: boolean | null
+        /**
+         * The subtitle for this row.
+         */
+        subtitle?: string | null
         /**
          * Whether an embedded underline in the title or subtitle labels indicates a
          * mnemonic.
@@ -4486,10 +4155,6 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
     /**
      * Whether expansion is enabled.
      */
-    enable_expansion: boolean
-    /**
-     * Whether expansion is enabled.
-     */
     enableExpansion: boolean
     /**
      * Whether the row is expanded.
@@ -4498,15 +4163,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
     /**
      * The icon name for this row.
      */
-    icon_name: string | null
-    /**
-     * The icon name for this row.
-     */
     iconName: string | null
-    /**
-     * Whether the switch enabling the expansion is visible.
-     */
-    show_enable_switch: boolean
     /**
      * Whether the switch enabling the expansion is visible.
      */
@@ -4515,11 +4172,6 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * The subtitle for this row.
      */
     subtitle: string | null
-    /**
-     * Whether an embedded underline in the title or subtitle labels indicates a
-     * mnemonic.
-     */
-    use_underline: boolean
     /**
      * Whether an embedded underline in the title or subtitle labels indicates a
      * mnemonic.
@@ -4886,17 +4538,17 @@ module Flap {
          * If `GTK_PACK_START`, the flap is displayed before the content, if
          * `GTK_PACK_END`, it's displayed after the content.
          */
-        flap_position?: Gtk.PackType | null
+        flapPosition?: Gtk.PackType | null
         /**
          * The fold transition animation duration, in milliseconds.
          */
-        fold_duration?: number | null
+        foldDuration?: number | null
         /**
          * The current fold policy.
          * 
          * See [enum`FlapFoldPolicy]` for available policies.
          */
-        fold_policy?: FlapFoldPolicy | null
+        foldPolicy?: FlapFoldPolicy | null
         /**
          * Whether the flap is locked.
          * 
@@ -4916,11 +4568,11 @@ module Flap {
         /**
          * The reveal transition animation duration, in milliseconds.
          */
-        reveal_duration?: number | null
+        revealDuration?: number | null
         /**
          * Whether the flap widget is revealed.
          */
-        reveal_flap?: boolean | null
+        revealFlap?: boolean | null
         /**
          * The separator widget.
          * 
@@ -4929,53 +4581,6 @@ module Flap {
          * value. If `NULL`, no separator will be used.
          */
         separator?: Gtk.Widget | null
-        /**
-         * Whether the flap can be closed with a swipe gesture.
-         * 
-         * The area that can be swiped depends on the [property`Flap:`transition-type]
-         * value.
-         */
-        swipe_to_close?: boolean | null
-        /**
-         * Whether the flap can be opened with a swipe gesture.
-         * 
-         * The area that can be swiped depends on the [property`Flap:`transition-type]
-         * value.
-         */
-        swipe_to_open?: boolean | null
-        /**
-         * the type of animation used for reveal and fold transitions.
-         * 
-         * [property`Flap:`flap] is transparent by default, which means the content
-         * will be seen through it with `HDY_FLAP_TRANSITION_TYPE_OVER` transitions;
-         * add the `.background` style class to it if this is unwanted.
-         */
-        transition_type?: FlapTransitionType | null
-        /**
-         * The flap position.
-         * 
-         * If `GTK_PACK_START`, the flap is displayed before the content, if
-         * `GTK_PACK_END`, it's displayed after the content.
-         */
-        flapPosition?: Gtk.PackType | null
-        /**
-         * The fold transition animation duration, in milliseconds.
-         */
-        foldDuration?: number | null
-        /**
-         * The current fold policy.
-         * 
-         * See [enum`FlapFoldPolicy]` for available policies.
-         */
-        foldPolicy?: FlapFoldPolicy | null
-        /**
-         * The reveal transition animation duration, in milliseconds.
-         */
-        revealDuration?: number | null
-        /**
-         * Whether the flap widget is revealed.
-         */
-        revealFlap?: boolean | null
         /**
          * Whether the flap can be closed with a swipe gesture.
          * 
@@ -5025,28 +4630,11 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * If `GTK_PACK_START`, the flap is displayed before the content, if
      * `GTK_PACK_END`, it's displayed after the content.
      */
-    flap_position: Gtk.PackType
-    /**
-     * The flap position.
-     * 
-     * If `GTK_PACK_START`, the flap is displayed before the content, if
-     * `GTK_PACK_END`, it's displayed after the content.
-     */
     flapPosition: Gtk.PackType
     /**
      * The fold transition animation duration, in milliseconds.
      */
-    fold_duration: number
-    /**
-     * The fold transition animation duration, in milliseconds.
-     */
     foldDuration: number
-    /**
-     * The current fold policy.
-     * 
-     * See [enum`FlapFoldPolicy]` for available policies.
-     */
-    fold_policy: FlapFoldPolicy
     /**
      * The current fold policy.
      * 
@@ -5078,26 +4666,11 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
     /**
      * The reveal transition animation duration, in milliseconds.
      */
-    reveal_duration: number
-    /**
-     * The reveal transition animation duration, in milliseconds.
-     */
     revealDuration: number
     /**
      * Whether the flap widget is revealed.
      */
-    reveal_flap: boolean
-    /**
-     * Whether the flap widget is revealed.
-     */
     revealFlap: boolean
-    /**
-     * The current reveal transition progress.
-     * 
-     * 0 means fully hidden, 1 means fully revealed. See
-     * [property`Flap:`reveal-flap].
-     */
-    readonly reveal_progress: number
     /**
      * The current reveal transition progress.
      * 
@@ -5119,13 +4692,6 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * The area that can be swiped depends on the [property`Flap:`transition-type]
      * value.
      */
-    swipe_to_close: boolean
-    /**
-     * Whether the flap can be closed with a swipe gesture.
-     * 
-     * The area that can be swiped depends on the [property`Flap:`transition-type]
-     * value.
-     */
     swipeToClose: boolean
     /**
      * Whether the flap can be opened with a swipe gesture.
@@ -5133,22 +4699,7 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * The area that can be swiped depends on the [property`Flap:`transition-type]
      * value.
      */
-    swipe_to_open: boolean
-    /**
-     * Whether the flap can be opened with a swipe gesture.
-     * 
-     * The area that can be swiped depends on the [property`Flap:`transition-type]
-     * value.
-     */
     swipeToOpen: boolean
-    /**
-     * the type of animation used for reveal and fold transitions.
-     * 
-     * [property`Flap:`flap] is transparent by default, which means the content
-     * will be seen through it with `HDY_FLAP_TRANSITION_TYPE_OVER` transitions;
-     * add the `.background` style class to it if this is unwanted.
-     */
-    transition_type: FlapTransitionType
     /**
      * the type of animation used for reveal and fold transitions.
      * 
@@ -5624,76 +5175,6 @@ module HeaderBar {
         /**
          * The policy for aligning the center widget.
          */
-        centering_policy?: CenteringPolicy | null
-        /**
-         * Custom title widget to display.
-         */
-        custom_title?: Gtk.Widget | null
-        /**
-         * The decoration layout for buttons.
-         * 
-         * If this property is not set, the
-         * [property`Gtk`.Settings:gtk-decoration-layout] setting is used.
-         * 
-         * There can be valid reasons for overriding the setting, such as a header bar
-         * design that does not allow for buttons to take room on the right, or only
-         * offers room for a single close button. Split header bars are another example
-         * for overriding the setting.
-         * 
-         * The format of the string is button names, separated by commas. A colon
-         * separates the buttons that should appear on the start from those on the
-         * end. Recognized button names are minimize, maximize, close, icon (the
-         * window icon) and menu (a menu button for the fallback app menu).
-         * 
-         * For example, “menu:minimize,maximize,close” specifies a menu on the left, and
-         * minimize, maximize and close buttons on the right.
-         */
-        decoration_layout?: string | null
-        /**
-         * Whether [property`HeaderBar:`decoration-layout] is set.
-         */
-        decoration_layout_set?: boolean | null
-        /**
-         * Whether to reserve space for a subtitle, even if none is currently set.
-         */
-        has_subtitle?: boolean | null
-        /**
-         * Whether the size should smoothly change when changing between children.
-         * 
-         * If `TRUE`, the header bar will interpolate its size between the one of the
-         * previous visible child and the one of the new visible child, according to
-         * the set transition duration and the orientation, e.g. if the orientation is
-         * horizontal, it will interpolate the its height.
-         */
-        interpolate_size?: boolean | null
-        /**
-         * Whether to show window decorations.
-         * 
-         * Which buttons are actually shown and where is determined by the
-         * [property`HeaderBar:`decoration-layout] property, and by the state of the
-         * window (e.g. a close button will not be shown if the window can't be
-         * closed).
-         */
-        show_close_button?: boolean | null
-        /**
-         * The amount of space between children.
-         */
-        spacing?: number | null
-        /**
-         * The subtitle to display.
-         */
-        subtitle?: string | null
-        /**
-         * The title to display.
-         */
-        title?: string | null
-        /**
-         * The transition duration, in milliseconds.
-         */
-        transition_duration?: number | null
-        /**
-         * The policy for aligning the center widget.
-         */
         centeringPolicy?: CenteringPolicy | null
         /**
          * Custom title widget to display.
@@ -5746,6 +5227,18 @@ module HeaderBar {
          */
         showCloseButton?: boolean | null
         /**
+         * The amount of space between children.
+         */
+        spacing?: number | null
+        /**
+         * The subtitle to display.
+         */
+        subtitle?: string | null
+        /**
+         * The title to display.
+         */
+        title?: string | null
+        /**
          * The transition duration, in milliseconds.
          */
         transitionDuration?: number | null
@@ -5760,15 +5253,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * The policy for aligning the center widget.
      */
-    centering_policy: CenteringPolicy
-    /**
-     * The policy for aligning the center widget.
-     */
     centeringPolicy: CenteringPolicy
-    /**
-     * Custom title widget to display.
-     */
-    custom_title: Gtk.Widget
     /**
      * Custom title widget to display.
      */
@@ -5792,39 +5277,11 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * For example, “menu:minimize,maximize,close” specifies a menu on the left, and
      * minimize, maximize and close buttons on the right.
      */
-    decoration_layout: string | null
-    /**
-     * The decoration layout for buttons.
-     * 
-     * If this property is not set, the
-     * [property`Gtk`.Settings:gtk-decoration-layout] setting is used.
-     * 
-     * There can be valid reasons for overriding the setting, such as a header bar
-     * design that does not allow for buttons to take room on the right, or only
-     * offers room for a single close button. Split header bars are another example
-     * for overriding the setting.
-     * 
-     * The format of the string is button names, separated by commas. A colon
-     * separates the buttons that should appear on the start from those on the
-     * end. Recognized button names are minimize, maximize, close, icon (the
-     * window icon) and menu (a menu button for the fallback app menu).
-     * 
-     * For example, “menu:minimize,maximize,close” specifies a menu on the left, and
-     * minimize, maximize and close buttons on the right.
-     */
     decorationLayout: string | null
     /**
      * Whether [property`HeaderBar:`decoration-layout] is set.
      */
-    decoration_layout_set: boolean
-    /**
-     * Whether [property`HeaderBar:`decoration-layout] is set.
-     */
     decorationLayoutSet: boolean
-    /**
-     * Whether to reserve space for a subtitle, even if none is currently set.
-     */
-    has_subtitle: boolean
     /**
      * Whether to reserve space for a subtitle, even if none is currently set.
      */
@@ -5837,25 +5294,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * the set transition duration and the orientation, e.g. if the orientation is
      * horizontal, it will interpolate the its height.
      */
-    interpolate_size: boolean
-    /**
-     * Whether the size should smoothly change when changing between children.
-     * 
-     * If `TRUE`, the header bar will interpolate its size between the one of the
-     * previous visible child and the one of the new visible child, according to
-     * the set transition duration and the orientation, e.g. if the orientation is
-     * horizontal, it will interpolate the its height.
-     */
     interpolateSize: boolean
-    /**
-     * Whether to show window decorations.
-     * 
-     * Which buttons are actually shown and where is determined by the
-     * [property`HeaderBar:`decoration-layout] property, and by the state of the
-     * window (e.g. a close button will not be shown if the window can't be
-     * closed).
-     */
-    show_close_button: boolean
     /**
      * Whether to show window decorations.
      * 
@@ -5880,15 +5319,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * The transition duration, in milliseconds.
      */
-    transition_duration: number
-    /**
-     * The transition duration, in milliseconds.
-     */
     transitionDuration: number
-    /**
-     * Whether or not the transition is currently running.
-     */
-    readonly transition_running: boolean
     /**
      * Whether or not the transition is currently running.
      */
@@ -6310,14 +5741,6 @@ module HeaderGroup {
          * leaflet contains the header bars of the group, as you want them all to
          * display the complete decoration when the leaflet is folded.
          */
-        decorate_all?: boolean | null
-        /**
-         * Whether the elements of the group should all receive the full decoration.
-         * 
-         * This is useful in conjunction with [property`Leaflet:`folded] when the
-         * leaflet contains the header bars of the group, as you want them all to
-         * display the complete decoration when the leaflet is folded.
-         */
         decorateAll?: boolean | null
     }
 
@@ -6327,14 +5750,6 @@ interface HeaderGroup extends Gtk.Buildable {
 
     // Own properties of Handy-1.Handy.HeaderGroup
 
-    /**
-     * Whether the elements of the group should all receive the full decoration.
-     * 
-     * This is useful in conjunction with [property`Leaflet:`folded] when the
-     * leaflet contains the header bars of the group, as you want them all to
-     * display the complete decoration when the leaflet is folded.
-     */
-    decorate_all: boolean
     /**
      * Whether the elements of the group should all receive the full decoration.
      * 
@@ -6560,45 +5975,17 @@ module Keypad {
         /**
          * The amount of space between two consecutive columns.
          */
-        column_spacing?: number | null
+        columnSpacing?: number | null
         /**
          * The widget for the lower end corner of `self`.
          */
-        end_action?: Gtk.Widget | null
+        endAction?: Gtk.Widget | null
         /**
          * The entry widget connected to the keypad.
          * 
          * The entry will block any input not possible to type with the keypad.
          */
         entry?: Gtk.Entry | null
-        /**
-         * Whether standard letters should be displayed below the digits on the
-         * buttons.
-         */
-        letters_visible?: boolean | null
-        /**
-         * The amount of space between two consecutive rows.
-         */
-        row_spacing?: number | null
-        /**
-         * The widget for the lower start corner of `self`.
-         */
-        start_action?: Gtk.Widget | null
-        /**
-         * Whether to display symbols.
-         * 
-         * This includes hash and asterisk buttons, and the plus symbol at the bottom
-         * of its 0 button.
-         */
-        symbols_visible?: boolean | null
-        /**
-         * The amount of space between two consecutive columns.
-         */
-        columnSpacing?: number | null
-        /**
-         * The widget for the lower end corner of `self`.
-         */
-        endAction?: Gtk.Widget | null
         /**
          * Whether standard letters should be displayed below the digits on the
          * buttons.
@@ -6630,15 +6017,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * The amount of space between two consecutive columns.
      */
-    column_spacing: number
-    /**
-     * The amount of space between two consecutive columns.
-     */
     columnSpacing: number
-    /**
-     * The widget for the lower end corner of `self`.
-     */
-    end_action: Gtk.Widget
     /**
      * The widget for the lower end corner of `self`.
      */
@@ -6653,16 +6032,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
      * Whether standard letters should be displayed below the digits on the
      * buttons.
      */
-    letters_visible: boolean
-    /**
-     * Whether standard letters should be displayed below the digits on the
-     * buttons.
-     */
     lettersVisible: boolean
-    /**
-     * The amount of space between two consecutive rows.
-     */
-    row_spacing: number
     /**
      * The amount of space between two consecutive rows.
      */
@@ -6670,18 +6040,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * The widget for the lower start corner of `self`.
      */
-    start_action: Gtk.Widget
-    /**
-     * The widget for the lower start corner of `self`.
-     */
     startAction: Gtk.Widget
-    /**
-     * Whether to display symbols.
-     * 
-     * This includes hash and asterisk buttons, and the plus symbol at the bottom
-     * of its 0 button.
-     */
-    symbols_visible: boolean
     /**
      * Whether to display symbols.
      * 
@@ -7013,65 +6372,6 @@ module Leaflet {
         /**
          * Whether swipe gestures allow switching to the previous navigatable child.
          */
-        can_swipe_back?: boolean | null
-        /**
-         * Whether swipe gestures allow switching to the next navigatable child.
-         */
-        can_swipe_forward?: boolean | null
-        /**
-         * The child transition animation duration, in milliseconds.
-         */
-        child_transition_duration?: number | null
-        /**
-         * Whether to allocate the same width for all children when folded.
-         */
-        hhomogeneous_folded?: boolean | null
-        /**
-         * Whether to allocate the same width for all children when unfolded.
-         */
-        hhomogeneous_unfolded?: boolean | null
-        /**
-         * Whether the size should smoothly change when changing between children.
-         */
-        interpolate_size?: boolean | null
-        /**
-         * The mode transition animation duration, in milliseconds.
-         */
-        mode_transition_duration?: number | null
-        /**
-         * The animation type used for transitions between modes and children.
-         * 
-         * The transition type can be changed without problems at runtime, so it is
-         * possible to change the animation based on the mode or child that is about
-         * to become current.
-         */
-        transition_type?: LeafletTransitionType | null
-        /**
-         * Whether to allocates the same height for all children when folded.
-         */
-        vhomogeneous_folded?: boolean | null
-        /**
-         * Whether to allocate the same height for all children when unfolded.
-         */
-        vhomogeneous_unfolded?: boolean | null
-        /**
-         * The widget currently visible when the leaflet is folded.
-         * 
-         * The transition is determined by [property`Leaflet:`transition-type] and
-         * [property`Leaflet:`child-transition-duration]. The transition can be
-         * cancelled by the user, in which case visible child will change back to the
-         * previously visible child.
-         */
-        visible_child?: Gtk.Widget | null
-        /**
-         * The name of the widget currently visible when the leaflet is folded.
-         * 
-         * See [property`Leaflet:`visible-child].
-         */
-        visible_child_name?: string | null
-        /**
-         * Whether swipe gestures allow switching to the previous navigatable child.
-         */
         canSwipeBack?: boolean | null
         /**
          * Whether swipe gestures allow switching to the next navigatable child.
@@ -7139,15 +6439,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
     /**
      * Whether swipe gestures allow switching to the previous navigatable child.
      */
-    can_swipe_back: boolean
-    /**
-     * Whether swipe gestures allow switching to the previous navigatable child.
-     */
     canSwipeBack: boolean
-    /**
-     * Whether swipe gestures allow switching to the next navigatable child.
-     */
-    can_swipe_forward: boolean
     /**
      * Whether swipe gestures allow switching to the next navigatable child.
      */
@@ -7155,15 +6447,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
     /**
      * The child transition animation duration, in milliseconds.
      */
-    child_transition_duration: number
-    /**
-     * The child transition animation duration, in milliseconds.
-     */
     childTransitionDuration: number
-    /**
-     * Whether a child transition is currently running.
-     */
-    readonly child_transition_running: boolean
     /**
      * Whether a child transition is currently running.
      */
@@ -7178,15 +6462,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
     /**
      * Whether to allocate the same width for all children when folded.
      */
-    hhomogeneous_folded: boolean
-    /**
-     * Whether to allocate the same width for all children when folded.
-     */
     hhomogeneousFolded: boolean
-    /**
-     * Whether to allocate the same width for all children when unfolded.
-     */
-    hhomogeneous_unfolded: boolean
     /**
      * Whether to allocate the same width for all children when unfolded.
      */
@@ -7194,15 +6470,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
     /**
      * Whether the size should smoothly change when changing between children.
      */
-    interpolate_size: boolean
-    /**
-     * Whether the size should smoothly change when changing between children.
-     */
     interpolateSize: boolean
-    /**
-     * The mode transition animation duration, in milliseconds.
-     */
-    mode_transition_duration: number
     /**
      * The mode transition animation duration, in milliseconds.
      */
@@ -7214,27 +6482,11 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * possible to change the animation based on the mode or child that is about
      * to become current.
      */
-    transition_type: LeafletTransitionType
-    /**
-     * The animation type used for transitions between modes and children.
-     * 
-     * The transition type can be changed without problems at runtime, so it is
-     * possible to change the animation based on the mode or child that is about
-     * to become current.
-     */
     transitionType: LeafletTransitionType
     /**
      * Whether to allocates the same height for all children when folded.
      */
-    vhomogeneous_folded: boolean
-    /**
-     * Whether to allocates the same height for all children when folded.
-     */
     vhomogeneousFolded: boolean
-    /**
-     * Whether to allocate the same height for all children when unfolded.
-     */
-    vhomogeneous_unfolded: boolean
     /**
      * Whether to allocate the same height for all children when unfolded.
      */
@@ -7247,22 +6499,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * cancelled by the user, in which case visible child will change back to the
      * previously visible child.
      */
-    visible_child: Gtk.Widget
-    /**
-     * The widget currently visible when the leaflet is folded.
-     * 
-     * The transition is determined by [property`Leaflet:`transition-type] and
-     * [property`Leaflet:`child-transition-duration]. The transition can be
-     * cancelled by the user, in which case visible child will change back to the
-     * previously visible child.
-     */
     visibleChild: Gtk.Widget
-    /**
-     * The name of the widget currently visible when the leaflet is folded.
-     * 
-     * See [property`Leaflet:`visible-child].
-     */
-    visible_child_name: string | null
     /**
      * The name of the widget currently visible when the leaflet is folded.
      * 
@@ -7745,10 +6982,6 @@ module PreferencesGroup {
         /**
          * Whether to use markup for the title and description.
          */
-        use_markup?: boolean | null
-        /**
-         * Whether to use markup for the title and description.
-         */
         useMarkup?: boolean | null
     }
 
@@ -7766,10 +6999,6 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * The title for this group of preferences.
      */
     title: string | null
-    /**
-     * Whether to use markup for the title and description.
-     */
-    use_markup: boolean
     /**
      * Whether to use markup for the title and description.
      */
@@ -8042,15 +7271,11 @@ module PreferencesPage {
         /**
          * The icon name for this page of preferences.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * The title for this page of preferences.
          */
         title?: string | null
-        /**
-         * The icon name for this page of preferences.
-         */
-        iconName?: string | null
     }
 
 }
@@ -8059,10 +7284,6 @@ interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Handy-1.Handy.PreferencesPage
 
-    /**
-     * The icon name for this page of preferences.
-     */
-    icon_name: string | null
     /**
      * The icon name for this page of preferences.
      */
@@ -8330,10 +7551,6 @@ module PreferencesRow {
         /**
          * Whether an embedded underline in the title indicates a mnemonic.
          */
-        use_underline?: boolean | null
-        /**
-         * Whether an embedded underline in the title indicates a mnemonic.
-         */
         useUnderline?: boolean | null
     }
 
@@ -8347,10 +7564,6 @@ interface PreferencesRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Build
      * The title of the preference represented by this row.
      */
     title: string | null
-    /**
-     * Whether an embedded underline in the title indicates a mnemonic.
-     */
-    use_underline: boolean
     /**
      * Whether an embedded underline in the title indicates a mnemonic.
      */
@@ -8623,14 +7836,6 @@ module PreferencesWindow {
         /**
          * Whether the window allows closing the subpage via a swipe gesture.
          */
-        can_swipe_back?: boolean | null
-        /**
-         * Whether search is enabled.
-         */
-        search_enabled?: boolean | null
-        /**
-         * Whether the window allows closing the subpage via a swipe gesture.
-         */
         canSwipeBack?: boolean | null
         /**
          * Whether search is enabled.
@@ -8647,15 +7852,7 @@ interface PreferencesWindow extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * Whether the window allows closing the subpage via a swipe gesture.
      */
-    can_swipe_back: boolean
-    /**
-     * Whether the window allows closing the subpage via a swipe gesture.
-     */
     canSwipeBack: boolean
-    /**
-     * Whether search is enabled.
-     */
-    search_enabled: boolean
     /**
      * Whether search is enabled.
      */
@@ -9088,14 +8285,6 @@ module SearchBar {
         /**
          * Whether the search mode is on and the search bar shown.
          */
-        search_mode_enabled?: boolean | null
-        /**
-         * Whether to show the close button in the toolbar.
-         */
-        show_close_button?: boolean | null
-        /**
-         * Whether the search mode is on and the search bar shown.
-         */
         searchModeEnabled?: boolean | null
         /**
          * Whether to show the close button in the toolbar.
@@ -9112,15 +8301,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * Whether the search mode is on and the search bar shown.
      */
-    search_mode_enabled: boolean
-    /**
-     * Whether the search mode is on and the search bar shown.
-     */
     searchModeEnabled: boolean
-    /**
-     * Whether to show the close button in the toolbar.
-     */
-    show_close_button: boolean
     /**
      * Whether to show the close button in the toolbar.
      */
@@ -9471,11 +8652,11 @@ module Squeezer {
          * the set transition duration and the orientation, e.g. if the squeezer is
          * horizontal, it will interpolate the its height.
          */
-        interpolate_size?: boolean | null
+        interpolateSize?: boolean | null
         /**
          * The animation duration, in milliseconds.
          */
-        transition_duration?: number | null
+        transitionDuration?: number | null
         /**
          * The type of animation used for transitions between children.
          * 
@@ -9485,7 +8666,7 @@ module Squeezer {
          * possible to change the animation based on the child that is about to become
          * current.
          */
-        transition_type?: SqueezerTransitionType | null
+        transitionType?: SqueezerTransitionType | null
         /**
          * The horizontal alignment, from 0 (start) to 1 (end).
          * 
@@ -9510,29 +8691,6 @@ module Squeezer {
          * as they are fading out.
          */
         yalign?: number | null
-        /**
-         * Whether the squeezer interpolates its size when changing the visible child.
-         * 
-         * If `TRUE`, the squeezer will interpolate its size between the one of the
-         * previous visible child and the one of the new visible child, according to
-         * the set transition duration and the orientation, e.g. if the squeezer is
-         * horizontal, it will interpolate the its height.
-         */
-        interpolateSize?: boolean | null
-        /**
-         * The animation duration, in milliseconds.
-         */
-        transitionDuration?: number | null
-        /**
-         * The type of animation used for transitions between children.
-         * 
-         * Available types include various kinds of fades and slides.
-         * 
-         * The transition type can be changed without problems at runtime, so it is
-         * possible to change the animation based on the child that is about to become
-         * current.
-         */
-        transitionType?: SqueezerTransitionType | null
     }
 
 }
@@ -9557,28 +8715,11 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * the set transition duration and the orientation, e.g. if the squeezer is
      * horizontal, it will interpolate the its height.
      */
-    interpolate_size: boolean
-    /**
-     * Whether the squeezer interpolates its size when changing the visible child.
-     * 
-     * If `TRUE`, the squeezer will interpolate its size between the one of the
-     * previous visible child and the one of the new visible child, according to
-     * the set transition duration and the orientation, e.g. if the squeezer is
-     * horizontal, it will interpolate the its height.
-     */
     interpolateSize: boolean
     /**
      * The animation duration, in milliseconds.
      */
-    transition_duration: number
-    /**
-     * The animation duration, in milliseconds.
-     */
     transitionDuration: number
-    /**
-     * Whether a transition is currently running.
-     */
-    readonly transition_running: boolean
     /**
      * Whether a transition is currently running.
      */
@@ -9592,21 +8733,7 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * possible to change the animation based on the child that is about to become
      * current.
      */
-    transition_type: SqueezerTransitionType
-    /**
-     * The type of animation used for transitions between children.
-     * 
-     * Available types include various kinds of fades and slides.
-     * 
-     * The transition type can be changed without problems at runtime, so it is
-     * possible to change the animation based on the child that is about to become
-     * current.
-     */
     transitionType: SqueezerTransitionType
-    /**
-     * The currently visible child.
-     */
-    readonly visible_child: Gtk.Widget
     /**
      * The currently visible child.
      */
@@ -9987,15 +9114,11 @@ module StatusPage {
         /**
          * The name of the icon to be used.
          */
-        icon_name?: string | null
+        iconName?: string | null
         /**
          * The title to be displayed below the icon.
          */
         title?: string | null
-        /**
-         * The name of the icon to be used.
-         */
-        iconName?: string | null
     }
 
 }
@@ -10008,10 +9131,6 @@ interface StatusPage extends Atk.ImplementorIface, Gtk.Buildable {
      * The description to be displayed below the title.
      */
     description: string | null
-    /**
-     * The name of the icon to be used.
-     */
-    icon_name: string | null
     /**
      * The name of the icon to be used.
      */
@@ -10314,7 +9433,7 @@ module StyleManager {
          * used to check if the current environment provides a color scheme
          * preference.
          */
-        color_scheme?: ColorScheme | null
+        colorScheme?: ColorScheme | null
         /**
          * The display the style manager is associated with.
          * 
@@ -10322,40 +9441,6 @@ module StyleManager {
          * [func`StyleManager`.get_default].
          */
         display?: Gdk.Display | null
-        /**
-         * The requested application color scheme.
-         * 
-         * The effective appearance will be decided based on the application color
-         * scheme and the system preferred color scheme. The
-         * [property`StyleManager:`dark] property can be used to query the current
-         * effective appearance.
-         * 
-         * The `HDY_COLOR_SCHEME_PREFER_LIGHT` color scheme results in the application
-         * using light appearance unless the system prefers dark colors. This is the
-         * default value.
-         * 
-         * The `HDY_COLOR_SCHEME_PREFER_DARK` color scheme results in the application
-         * using dark appearance, but can still switch to the light appearance if the
-         * system can prefers it, for example, when the high contrast preference is
-         * enabled.
-         * 
-         * The `HDY_COLOR_SCHEME_FORCE_LIGHT` and `HDY_COLOR_SCHEME_FORCE_DARK` values
-         * ignore the system preference entirely, they are useful if the application
-         * wants to match its UI to its content or to provide a separate color scheme
-         * switcher.
-         * 
-         * If a per-[class`Gdk`.Display] style manager has its color scheme set to
-         * `HDY_COLOR_SCHEME_DEFAULT`, it will inherit the color scheme from the
-         * default style manager.
-         * 
-         * For the default style manager, `HDY_COLOR_SCHEME_DEFAULT` is equivalent to
-         * `HDY_COLOR_SCHEME_FORCE_LIGHT`.
-         * 
-         * The [property`StyleManager:`system-supports-color-schemes] property can be
-         * used to check if the current environment provides a color scheme
-         * preference.
-         */
-        colorScheme?: ColorScheme | null
     }
 
 }
@@ -10364,40 +9449,6 @@ interface StyleManager {
 
     // Own properties of Handy-1.Handy.StyleManager
 
-    /**
-     * The requested application color scheme.
-     * 
-     * The effective appearance will be decided based on the application color
-     * scheme and the system preferred color scheme. The
-     * [property`StyleManager:`dark] property can be used to query the current
-     * effective appearance.
-     * 
-     * The `HDY_COLOR_SCHEME_PREFER_LIGHT` color scheme results in the application
-     * using light appearance unless the system prefers dark colors. This is the
-     * default value.
-     * 
-     * The `HDY_COLOR_SCHEME_PREFER_DARK` color scheme results in the application
-     * using dark appearance, but can still switch to the light appearance if the
-     * system can prefers it, for example, when the high contrast preference is
-     * enabled.
-     * 
-     * The `HDY_COLOR_SCHEME_FORCE_LIGHT` and `HDY_COLOR_SCHEME_FORCE_DARK` values
-     * ignore the system preference entirely, they are useful if the application
-     * wants to match its UI to its content or to provide a separate color scheme
-     * switcher.
-     * 
-     * If a per-[class`Gdk`.Display] style manager has its color scheme set to
-     * `HDY_COLOR_SCHEME_DEFAULT`, it will inherit the color scheme from the
-     * default style manager.
-     * 
-     * For the default style manager, `HDY_COLOR_SCHEME_DEFAULT` is equivalent to
-     * `HDY_COLOR_SCHEME_FORCE_LIGHT`.
-     * 
-     * The [property`StyleManager:`system-supports-color-schemes] property can be
-     * used to check if the current environment provides a color scheme
-     * preference.
-     */
-    color_scheme: ColorScheme
     /**
      * The requested application color scheme.
      * 
@@ -10451,25 +9502,7 @@ interface StyleManager {
      * 
      * This cannot be overridden by applications.
      */
-    readonly high_contrast: boolean
-    /**
-     * Whether the application is using high contrast appearance.
-     * 
-     * This cannot be overridden by applications.
-     */
     readonly highContrast: boolean
-    /**
-     * Whether the system supports color schemes.
-     * 
-     * This property can be used to check if the current environment provides a
-     * color scheme preference. For example, applications might want to show a
-     * separate appearance switcher if it's set to `FALSE`.
-     * 
-     * It's only set at startup and cannot change its value later.
-     * 
-     * See [property`StyleManager:`color-scheme].
-     */
-    readonly system_supports_color_schemes: boolean
     /**
      * Whether the system supports color schemes.
      * 
@@ -10730,13 +9763,13 @@ module SwipeTracker {
          * If the value is `FALSE`, each swipe can only move to the adjacent snap
          * points.
          */
-        allow_long_swipes?: boolean | null
+        allowLongSwipes?: boolean | null
         /**
          * Whether to allow dragging with mouse pointer.
          * 
          * This should usually be `FALSE`.
          */
-        allow_mouse_drag?: boolean | null
+        allowMouseDrag?: boolean | null
         /**
          * Whether the swipe tracker is enabled.
          * 
@@ -10755,19 +9788,6 @@ module SwipeTracker {
          * The widget the swipe tracker is attached to. Must not be `NULL`.
          */
         swipeable?: Swipeable | null
-        /**
-         * Whether to allow swiping for more than one snap point at a time.
-         * 
-         * If the value is `FALSE`, each swipe can only move to the adjacent snap
-         * points.
-         */
-        allowLongSwipes?: boolean | null
-        /**
-         * Whether to allow dragging with mouse pointer.
-         * 
-         * This should usually be `FALSE`.
-         */
-        allowMouseDrag?: boolean | null
     }
 
 }
@@ -10782,20 +9802,7 @@ interface SwipeTracker extends Gtk.Orientable {
      * If the value is `FALSE`, each swipe can only move to the adjacent snap
      * points.
      */
-    allow_long_swipes: boolean
-    /**
-     * Whether to allow swiping for more than one snap point at a time.
-     * 
-     * If the value is `FALSE`, each swipe can only move to the adjacent snap
-     * points.
-     */
     allowLongSwipes: boolean
-    /**
-     * Whether to allow dragging with mouse pointer.
-     * 
-     * This should usually be `FALSE`.
-     */
-    allow_mouse_drag: boolean
     /**
      * Whether to allow dragging with mouse pointer.
      * 
@@ -10996,45 +10003,6 @@ module TabBar {
         /**
          * The widget shown after the tabs.
          */
-        end_action_widget?: Gtk.Widget | null
-        /**
-         * Whether tabs should expand.
-         * 
-         * If set to `TRUE`, the tabs will always vary width filling the whole width
-         * when possible, otherwise tabs will always have the minimum possible size.
-         */
-        expand_tabs?: boolean | null
-        /**
-         * Extra drag destination targets.
-         * 
-         * Allows to drag arbitrary content onto tabs, for example URLs in a web
-         * browser.
-         * 
-         * If a tab is hovered for a certain period of time while dragging the
-         * content, it will be automatically selected.
-         * 
-         * After content is dropped, the [signal`TabBar:`:extra-drag-data-received]
-         * signal can be used to retrieve and process the drag data.
-         */
-        extra_drag_dest_targets?: Gtk.TargetList | null
-        /**
-         * Whether tabs use inverted layout.
-         * 
-         * If set to `TRUE`, non-pinned tabs will have the close button at the
-         * beginning and the indicator at the end rather than the opposite.
-         */
-        inverted?: boolean | null
-        /**
-         * The widget shown before the tabs.
-         */
-        start_action_widget?: Gtk.Widget | null
-        /**
-         * The [class`TabView]` the tab bar controls.
-         */
-        view?: TabView | null
-        /**
-         * The widget shown after the tabs.
-         */
         endActionWidget?: Gtk.Widget | null
         /**
          * Whether tabs should expand.
@@ -11057,9 +10025,20 @@ module TabBar {
          */
         extraDragDestTargets?: Gtk.TargetList | null
         /**
+         * Whether tabs use inverted layout.
+         * 
+         * If set to `TRUE`, non-pinned tabs will have the close button at the
+         * beginning and the indicator at the end rather than the opposite.
+         */
+        inverted?: boolean | null
+        /**
          * The widget shown before the tabs.
          */
         startActionWidget?: Gtk.Widget | null
+        /**
+         * The [class`TabView]` the tab bar controls.
+         */
+        view?: TabView | null
     }
 
 }
@@ -11081,10 +10060,6 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * The widget shown after the tabs.
      */
-    end_action_widget: Gtk.Widget
-    /**
-     * The widget shown after the tabs.
-     */
     endActionWidget: Gtk.Widget
     /**
      * Whether tabs should expand.
@@ -11092,27 +10067,7 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
      * If set to `TRUE`, the tabs will always vary width filling the whole width
      * when possible, otherwise tabs will always have the minimum possible size.
      */
-    expand_tabs: boolean
-    /**
-     * Whether tabs should expand.
-     * 
-     * If set to `TRUE`, the tabs will always vary width filling the whole width
-     * when possible, otherwise tabs will always have the minimum possible size.
-     */
     expandTabs: boolean
-    /**
-     * Extra drag destination targets.
-     * 
-     * Allows to drag arbitrary content onto tabs, for example URLs in a web
-     * browser.
-     * 
-     * If a tab is hovered for a certain period of time while dragging the
-     * content, it will be automatically selected.
-     * 
-     * After content is dropped, the [signal`TabBar:`:extra-drag-data-received]
-     * signal can be used to retrieve and process the drag data.
-     */
-    extra_drag_dest_targets: Gtk.TargetList
     /**
      * Extra drag destination targets.
      * 
@@ -11139,28 +10094,11 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
      * If set to `TRUE`, all tabs cannot be displayed at once and require
      * scrolling.
      */
-    readonly is_overflowing: boolean
-    /**
-     * Whether the tab bar is overflowing.
-     * 
-     * If set to `TRUE`, all tabs cannot be displayed at once and require
-     * scrolling.
-     */
     readonly isOverflowing: boolean
     /**
      * The widget shown before the tabs.
      */
-    start_action_widget: Gtk.Widget
-    /**
-     * The widget shown before the tabs.
-     */
     startActionWidget: Gtk.Widget
-    /**
-     * Whether tabs are currently revealed.
-     * 
-     * See [property`TabBar:`autohide].
-     */
-    readonly tabs_revealed: boolean
     /**
      * Whether tabs are currently revealed.
      * 
@@ -11560,7 +10498,7 @@ module TabPage {
          * 
          * If [property`TabPage:`indicator-icon] is not set, does nothing.
          */
-        indicator_activatable?: boolean | null
+        indicatorActivatable?: boolean | null
         /**
          * An indicator icon for the page.
          * 
@@ -11575,7 +10513,7 @@ module TabPage {
          * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the indicator
          * icon can act as a button.
          */
-        indicator_icon?: Gio.Icon | null
+        indicatorIcon?: Gio.Icon | null
         /**
          * Whether the page is loading.
          * 
@@ -11592,7 +10530,7 @@ module TabPage {
          * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
          * bar will be highlighted.
          */
-        needs_attention?: boolean | null
+        needsAttention?: boolean | null
         /**
          * The parent page of the page.
          * 
@@ -11615,38 +10553,6 @@ module TabPage {
          * instead.
          */
         tooltip?: string | null
-        /**
-         * Whether the indicator icon is activatable.
-         * 
-         * If set to `TRUE`, [signal`TabView:`:indicator-activated] will be emitted
-         * when the indicator icon is clicked.
-         * 
-         * If [property`TabPage:`indicator-icon] is not set, does nothing.
-         */
-        indicatorActivatable?: boolean | null
-        /**
-         * An indicator icon for the page.
-         * 
-         * A common use case is an audio or camera indicator in a web browser.
-         * 
-         * [class`TabPage]` will show it at the beginning of the tab, alongside icon
-         * representing [property`TabPage:`icon] or loading spinner.
-         * 
-         * If the page is pinned, the indicator will be shown instead of icon or
-         * spinner.
-         * 
-         * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the indicator
-         * icon can act as a button.
-         */
-        indicatorIcon?: Gio.Icon | null
-        /**
-         * Whether the page needs attention.
-         * 
-         * [class`TabBar]` will display a glow under the tab representing the page if
-         * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
-         * bar will be highlighted.
-         */
-        needsAttention?: boolean | null
     }
 
 }
@@ -11676,31 +10582,7 @@ interface TabPage {
      * 
      * If [property`TabPage:`indicator-icon] is not set, does nothing.
      */
-    indicator_activatable: boolean
-    /**
-     * Whether the indicator icon is activatable.
-     * 
-     * If set to `TRUE`, [signal`TabView:`:indicator-activated] will be emitted
-     * when the indicator icon is clicked.
-     * 
-     * If [property`TabPage:`indicator-icon] is not set, does nothing.
-     */
     indicatorActivatable: boolean
-    /**
-     * An indicator icon for the page.
-     * 
-     * A common use case is an audio or camera indicator in a web browser.
-     * 
-     * [class`TabPage]` will show it at the beginning of the tab, alongside icon
-     * representing [property`TabPage:`icon] or loading spinner.
-     * 
-     * If the page is pinned, the indicator will be shown instead of icon or
-     * spinner.
-     * 
-     * If [property`TabPage:`indicator-activatable] is set to `TRUE`, the indicator
-     * icon can act as a button.
-     */
-    indicator_icon: Gio.Icon
     /**
      * An indicator icon for the page.
      * 
@@ -11725,14 +10607,6 @@ interface TabPage {
      * loading status will not be visible.
      */
     loading: boolean
-    /**
-     * Whether the page needs attention.
-     * 
-     * [class`TabBar]` will display a glow under the tab representing the page if
-     * set to `TRUE`. If the tab is not visible, the corresponding edge of the tab
-     * bar will be highlighted.
-     */
-    needs_attention: boolean
     /**
      * Whether the page needs attention.
      * 
@@ -11995,56 +10869,6 @@ module TabView {
          * not loading, doesn't have an icon and an indicator. Default icon is never
          * used for tabs that aren't pinned.
          */
-        default_icon?: Gio.Icon | null
-        /**
-         * Tab context menu model.
-         * 
-         * When a context menu is shown for a tab, it will be constructed from the
-         * provided menu model. Use [signal`TabView:`:setup-menu] signal to set up the
-         * menu actions for the particular tab.
-         */
-        menu_model?: Gio.MenuModel | null
-        /**
-         * The currently selected page.
-         */
-        selected_page?: TabPage | null
-        /**
-         * Tab shortcut widget.
-         * 
-         * Has the following shortcuts:
-         * 
-         * * <kbd>Ctrl</kbd>+<kbd>Page Up</kbd> - switch to the previous page
-         * * <kbd>Ctrl</kbd>+<kbd>Page Down</kbd> - switch to the next page
-         * * <kbd>Ctrl</kbd>+<kbd>Home</kbd> - switch to the first page
-         * * <kbd>Ctrl</kbd>+<kbd>End</kbd> - switch to the last page
-         * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Page Up</kbd> - move the current page
-         *     backward
-         * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Page Down</kbd> - move the current
-         *     page forward
-         * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Home</kbd> - move the current page at
-         *     the start
-         * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>End</kbd> - move the current page at
-         *      the end
-         * * <kbd>Ctrl</kbd>+<kbd>Tab</kbd> - switch to the next page, with looping
-         * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> - switch to the previous
-         *     page, with looping
-         * * <kbd>Alt</kbd>+<kbd>1</kbd>⋯<kbd>9</kbd> - switch to pages 1-9
-         * * <kbd>Alt</kbd>+<kbd>0</kbd> - switch to page 10
-         * 
-         * These shortcuts are always available on `self,` this property is useful if
-         * they should be available globally.
-         */
-        shortcut_widget?: Gtk.Widget | null
-        /**
-         * Default page icon.
-         * 
-         * If a page doesn't provide its own icon via [property`TabPage:`icon], default
-         * icon may be used instead for contexts where having an icon is necessary.
-         * 
-         * [class`TabBar]` will use default icon for pinned tabs in case the page is
-         * not loading, doesn't have an icon and an indicator. Default icon is never
-         * used for tabs that aren't pinned.
-         */
         defaultIcon?: Gio.Icon | null
         /**
          * Tab context menu model.
@@ -12103,28 +10927,7 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * not loading, doesn't have an icon and an indicator. Default icon is never
      * used for tabs that aren't pinned.
      */
-    default_icon: Gio.Icon
-    /**
-     * Default page icon.
-     * 
-     * If a page doesn't provide its own icon via [property`TabPage:`icon], default
-     * icon may be used instead for contexts where having an icon is necessary.
-     * 
-     * [class`TabBar]` will use default icon for pinned tabs in case the page is
-     * not loading, doesn't have an icon and an indicator. Default icon is never
-     * used for tabs that aren't pinned.
-     */
     defaultIcon: Gio.Icon
-    /**
-     * Whether a page is being transferred.
-     * 
-     * This property will be set to `TRUE` when a drag-n-drop tab transfer starts
-     * on any [class`TabView]`, and to `FALSE` after it ends.
-     * 
-     * During the transfer, children cannot receive pointer input and a tab can be
-     * safely dropped on the tab view.
-     */
-    readonly is_transferring_page: boolean
     /**
      * Whether a page is being transferred.
      * 
@@ -12142,19 +10945,7 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * provided menu model. Use [signal`TabView:`:setup-menu] signal to set up the
      * menu actions for the particular tab.
      */
-    menu_model: Gio.MenuModel
-    /**
-     * Tab context menu model.
-     * 
-     * When a context menu is shown for a tab, it will be constructed from the
-     * provided menu model. Use [signal`TabView:`:setup-menu] signal to set up the
-     * menu actions for the particular tab.
-     */
     menuModel: Gio.MenuModel
-    /**
-     * The number of pages in the tab view.
-     */
-    readonly n_pages: number
     /**
      * The number of pages in the tab view.
      */
@@ -12164,48 +10955,11 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * 
      * See [method`TabView`.set_page_pinned].
      */
-    readonly n_pinned_pages: number
-    /**
-     * The number of pinned pages in the tab view.
-     * 
-     * See [method`TabView`.set_page_pinned].
-     */
     readonly nPinnedPages: number
     /**
      * The currently selected page.
      */
-    selected_page: TabPage
-    /**
-     * The currently selected page.
-     */
     selectedPage: TabPage
-    /**
-     * Tab shortcut widget.
-     * 
-     * Has the following shortcuts:
-     * 
-     * * <kbd>Ctrl</kbd>+<kbd>Page Up</kbd> - switch to the previous page
-     * * <kbd>Ctrl</kbd>+<kbd>Page Down</kbd> - switch to the next page
-     * * <kbd>Ctrl</kbd>+<kbd>Home</kbd> - switch to the first page
-     * * <kbd>Ctrl</kbd>+<kbd>End</kbd> - switch to the last page
-     * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Page Up</kbd> - move the current page
-     *     backward
-     * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Page Down</kbd> - move the current
-     *     page forward
-     * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Home</kbd> - move the current page at
-     *     the start
-     * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>End</kbd> - move the current page at
-     *      the end
-     * * <kbd>Ctrl</kbd>+<kbd>Tab</kbd> - switch to the next page, with looping
-     * * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> - switch to the previous
-     *     page, with looping
-     * * <kbd>Alt</kbd>+<kbd>1</kbd>⋯<kbd>9</kbd> - switch to pages 1-9
-     * * <kbd>Alt</kbd>+<kbd>0</kbd> - switch to page 10
-     * 
-     * These shortcuts are always available on `self,` this property is useful if
-     * they should be available globally.
-     */
-    shortcut_widget: Gtk.Widget
     /**
      * Tab shortcut widget.
      * 
@@ -12825,10 +11579,6 @@ module TitleBar {
         /**
          * Whether or not the title bar is in selection mode.
          */
-        selection_mode?: boolean | null
-        /**
-         * Whether or not the title bar is in selection mode.
-         */
         selectionMode?: boolean | null
     }
 
@@ -12838,10 +11588,6 @@ interface TitleBar extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Handy-1.Handy.TitleBar
 
-    /**
-     * Whether or not the title bar is in selection mode.
-     */
-    selection_mode: boolean
     /**
      * Whether or not the title bar is in selection mode.
      */
@@ -13192,7 +11938,7 @@ module ViewSwitcher {
          * `PANGO_ELLIPSIZE_NONE` has the side-effect that the label requests only
          * enough space to display the ellipsis.
          */
-        narrow_ellipsize?: Pango.EllipsizeMode | null
+        narrowEllipsize?: Pango.EllipsizeMode | null
         /**
          * The policy to determine which mode to use.
          */
@@ -13201,17 +11947,6 @@ module ViewSwitcher {
          * The [class`Gtk`.Stack] the view switcher controls.
          */
         stack?: Gtk.Stack | null
-        /**
-         * The preferred place to ellipsize the string.
-         * 
-         * If the narrow mode label does not have enough room to display the entire
-         * string, specified as a [enum`Pango`.EllipsizeMode].
-         * 
-         * Note that setting this property to a value other than
-         * `PANGO_ELLIPSIZE_NONE` has the side-effect that the label requests only
-         * enough space to display the ellipsis.
-         */
-        narrowEllipsize?: Pango.EllipsizeMode | null
     }
 
 }
@@ -13220,17 +11955,6 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of Handy-1.Handy.ViewSwitcher
 
-    /**
-     * The preferred place to ellipsize the string.
-     * 
-     * If the narrow mode label does not have enough room to display the entire
-     * string, specified as a [enum`Pango`.EllipsizeMode].
-     * 
-     * Note that setting this property to a value other than
-     * `PANGO_ELLIPSIZE_NONE` has the side-effect that the label requests only
-     * enough space to display the ellipsis.
-     */
-    narrow_ellipsize: Pango.EllipsizeMode
     /**
      * The preferred place to ellipsize the string.
      * 
@@ -13887,17 +12611,6 @@ module ViewSwitcherTitle {
          * This can be used e.g. to ensure the view switcher is hidden below a certain
          * window width, or any other constraint you find suitable.
          */
-        view_switcher_enabled?: boolean | null
-        /**
-         * Whether the bar should be revealed or hidden.
-         * 
-         * If it is disabled, the title will be displayed instead. This allows to
-         * programmatically hide the view switcher even if it fits in the available
-         * space.
-         * 
-         * This can be used e.g. to ensure the view switcher is hidden below a certain
-         * window width, or any other constraint you find suitable.
-         */
         viewSwitcherEnabled?: boolean | null
     }
 
@@ -13931,22 +12644,7 @@ interface ViewSwitcherTitle extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * Whether the bar should be revealed or hidden.
      */
-    readonly title_visible: boolean
-    /**
-     * Whether the bar should be revealed or hidden.
-     */
     readonly titleVisible: boolean
-    /**
-     * Whether the bar should be revealed or hidden.
-     * 
-     * If it is disabled, the title will be displayed instead. This allows to
-     * programmatically hide the view switcher even if it fits in the available
-     * space.
-     * 
-     * This can be used e.g. to ensure the view switcher is hidden below a certain
-     * window width, or any other constraint you find suitable.
-     */
-    view_switcher_enabled: boolean
     /**
      * Whether the bar should be revealed or hidden.
      * 

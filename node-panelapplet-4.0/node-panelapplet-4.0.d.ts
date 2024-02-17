@@ -104,7 +104,7 @@ module Applet {
         /**
          * Whether the panel the applet is on is locked down.
          */
-        lockedDown?: boolean | null
+        locked_down?: boolean | null
         /**
          * The #PanelAppletOrient of the applet.
          * 
@@ -117,13 +117,13 @@ module Applet {
          * 
          * This property gets set when the applet gets embedded.
          */
-        prefsKey?: string | null
+        prefs_key?: string | null
         /**
          * The GSettings path to the per-instance settings of the applet.
          * 
          * This property gets set when the applet gets embedded.
          */
-        settingsPath?: string | null
+        settings_path?: string | null
         /**
          * The size of the panel the applet is on. For a horizontal panel, the
          * size if the height of the panel; for a vertical panel, the size is
@@ -136,7 +136,7 @@ module Applet {
         /**
          * The size hints set for the applet. See panel_applet_set_size_hints().
          */
-        sizeHints?: any | null
+        size_hints?: any | null
     }
 
 }

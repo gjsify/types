@@ -4690,9 +4690,9 @@ module Device {
 
         // Own constructor properties of Mbim-1.0.Mbim.Device
 
-        deviceFile?: Gio.File | null
-        deviceInSession?: boolean | null
-        deviceTransactionId?: number | null
+        device_file?: Gio.File | null
+        device_in_session?: boolean | null
+        device_transaction_id?: number | null
     }
 
 }

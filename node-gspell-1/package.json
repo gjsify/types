@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gspell-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gspell-1, generated from library version 1.0.0",
     "type": "module",
     "module": "node-gspell-1.js",
     "main": "node-gspell-1.js",
     "exports": {
-        "./ambient": "./node-gspell-1-ambient.d.ts",
-        "./import": "./node-gspell-1-import.d.ts",
+        "./ambient": {
+            "types": "./node-gspell-1-ambient.d.ts",
+            "default": "./node-gspell-1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gspell-1-import.d.ts",
+            "default": "./node-gspell-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gspell-1.d.ts",

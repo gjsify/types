@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-grl-0.3",
-    "version": "0.3.0-3.2.7",
+    "version": "0.3.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Grl-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "node-grl-0.3.js",
     "main": "node-grl-0.3.js",
     "exports": {
-        "./ambient": "./node-grl-0.3-ambient.d.ts",
-        "./import": "./node-grl-0.3-import.d.ts",
+        "./ambient": {
+            "types": "./node-grl-0.3-ambient.d.ts",
+            "default": "./node-grl-0.3-ambient.js"
+        },
+        "./import": {
+            "types": "./node-grl-0.3-import.d.ts",
+            "default": "./node-grl-0.3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-grl-0.3.d.ts",

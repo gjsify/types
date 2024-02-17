@@ -316,7 +316,7 @@ export module AnnotatedIcon {
         icon?: Gio.Icon | null
         ribbon?: string | null
         category?: CategoryType | null
-        sizeHint?: IconSizeHint | null
+        size_hint?: IconSizeHint | null
     }
 
 }
@@ -472,11 +472,11 @@ export module LauncherEntry {
 
         // Own constructor properties of Unity-6.0.Unity.LauncherEntry
 
-        appUri?: string | null
+        app_uri?: string | null
         count?: number | null
-        countVisible?: boolean | null
+        count_visible?: boolean | null
         progress?: number | null
-        progressVisible?: boolean | null
+        progress_visible?: boolean | null
         urgent?: boolean | null
         quicklist?: Dbusmenu.Menuitem | null
     }
@@ -660,7 +660,7 @@ export module ActivationResponse {
         // Own constructor properties of Unity-6.0.Unity.ActivationResponse
 
         handled?: HandledType | null
-        gotoUri?: string | null
+        goto_uri?: string | null
     }
 
 }
@@ -727,8 +727,8 @@ export module Category {
         // Own constructor properties of Unity-6.0.Unity.Category
 
         name?: string | null
-        iconHint?: Gio.Icon | null
-        defaultRenderer?: CategoryRenderer | null
+        icon_hint?: Gio.Icon | null
+        default_renderer?: CategoryRenderer | null
     }
 
 }
@@ -810,8 +810,8 @@ export module Filter {
         // Own constructor properties of Unity-6.0.Unity.Filter
 
         id?: string | null
-        displayName?: string | null
-        iconHint?: Gio.Icon | null
+        display_name?: string | null
+        icon_hint?: Gio.Icon | null
         renderer?: FilterRenderer | null
         visible?: boolean | null
         collapsed?: boolean | null
@@ -917,8 +917,8 @@ export module FilterOption {
         // Own constructor properties of Unity-6.0.Unity.FilterOption
 
         id?: string | null
-        displayName?: string | null
-        iconHint?: Gio.Icon | null
+        display_name?: string | null
+        icon_hint?: Gio.Icon | null
         active?: boolean | null
     }
 
@@ -996,7 +996,7 @@ export module OptionsFilter {
 
         // Own constructor properties of Unity-6.0.Unity.OptionsFilter
 
-        sortType?: OptionsFilterSortType | null
+        sort_type?: OptionsFilterSortType | null
     }
 
 }
@@ -1577,7 +1577,7 @@ export module PreferencesManager {
 
         // Own constructor properties of Unity-6.0.Unity.PreferencesManager
 
-        remoteContentSearch?: PreferencesManagerRemoteContent | null
+        remote_content_search?: PreferencesManagerRemoteContent | null
     }
 
 }
@@ -1652,9 +1652,9 @@ export module LensSearch {
 
         // Own constructor properties of Unity-6.0.Unity.LensSearch
 
-        searchString?: string | null
+        search_string?: string | null
         hints?: GLib.HashTable | null
-        resultsModel?: Dee.SerializableModel | null
+        results_model?: Dee.SerializableModel | null
     }
 
 }
@@ -1743,16 +1743,16 @@ export module Lens {
         visible?: boolean | null
         searching?: boolean | null
         exported?: boolean | null
-        searchInGlobal?: boolean | null
-        homeLensDefaultName?: string | null
+        search_in_global?: boolean | null
+        home_lens_default_name?: string | null
         id?: string | null
-        dbusPath?: string | null
-        searchHint?: string | null
+        dbus_path?: string | null
+        search_hint?: string | null
         filters?: Filter[] | null
         categories?: Category[] | null
-        mergeStrategy?: MergeStrategy | null
-        globalMergeStrategy?: MergeStrategy | null
-        sourcesDisplayName?: string | null
+        merge_strategy?: MergeStrategy | null
+        global_merge_strategy?: MergeStrategy | null
+        sources_display_name?: string | null
     }
 
 }
@@ -1906,8 +1906,8 @@ export module Preview {
 
         title?: string | null
         subtitle?: string | null
-        descriptionMarkup?: string | null
-        imageSourceUri?: string | null
+        description_markup?: string | null
+        image_source_uri?: string | null
         image?: Gio.Icon | null
     }
 
@@ -2013,10 +2013,10 @@ export module PreviewAction {
         // Own constructor properties of Unity-6.0.Unity.PreviewAction
 
         id?: string | null
-        displayName?: string | null
-        extraText?: string | null
-        iconHint?: Gio.Icon | null
-        layoutHint?: LayoutHint | null
+        display_name?: string | null
+        extra_text?: string | null
+        icon_hint?: Gio.Icon | null
+        layout_hint?: LayoutHint | null
     }
 
 }
@@ -2115,8 +2115,8 @@ export module InfoHint {
         // Own constructor properties of Unity-6.0.Unity.InfoHint
 
         id?: string | null
-        displayName?: string | null
-        iconHint?: Gio.Icon | null
+        display_name?: string | null
+        icon_hint?: Gio.Icon | null
         data?: GLib.Variant | null
     }
 
@@ -2269,10 +2269,10 @@ export module ApplicationPreview {
 
         // Own constructor properties of Unity-6.0.Unity.ApplicationPreview
 
-        appIcon?: Gio.Icon | null
+        app_icon?: Gio.Icon | null
         license?: string | null
         copyright?: string | null
-        lastUpdate?: string | null
+        last_update?: string | null
     }
 
 }
@@ -2395,9 +2395,9 @@ export module MusicPreview {
 
         // Own constructor properties of Unity-6.0.Unity.MusicPreview
 
-        currentTrackUri?: string | null
-        currentProgress?: number | null
-        currentTrackState?: MusicPreviewTrackState | null
+        current_track_uri?: string | null
+        current_progress?: number | null
+        current_track_state?: MusicPreviewTrackState | null
     }
 
 }
@@ -2934,9 +2934,9 @@ export module Scope {
 
         active?: boolean | null
         exported?: boolean | null
-        searchInGlobal?: boolean | null
-        providesPersonalContent?: boolean | null
-        dbusPath?: string | null
+        search_in_global?: boolean | null
+        provides_personal_content?: boolean | null
+        dbus_path?: string | null
         sources?: OptionsFilter | null
     }
 
@@ -3098,13 +3098,13 @@ export module TrackMetadata {
         // Own constructor properties of Unity-6.0.Unity.TrackMetadata
 
         uri?: string | null
-        trackNo?: number | null
+        track_no?: number | null
         artist?: string | null
         title?: string | null
         album?: string | null
         length?: number | null
-        artLocation?: Gio.File | null
-        artIcon?: Gio.Icon | null
+        art_location?: Gio.File | null
+        art_icon?: Gio.Icon | null
     }
 
 }
@@ -3209,9 +3209,9 @@ export module Playlist {
         id?: string | null
         name?: string | null
         icon?: Gio.Icon | null
-        creationDate?: GLib.DateTime | null
-        modificationDate?: GLib.DateTime | null
-        lastPlayDate?: GLib.DateTime | null
+        creation_date?: GLib.DateTime | null
+        modification_date?: GLib.DateTime | null
+        last_play_date?: GLib.DateTime | null
     }
 
 }
@@ -3338,19 +3338,19 @@ export module MusicPlayer {
 
         // Own constructor properties of Unity-6.0.Unity.MusicPlayer
 
-        appInfo?: Gio.AppInfo | null
-        desktopFileName?: string | null
-        isBlacklisted?: boolean | null
+        app_info?: Gio.AppInfo | null
+        desktop_file_name?: string | null
+        is_blacklisted?: boolean | null
         title?: string | null
-        canGoNext?: boolean | null
-        canGoPrevious?: boolean | null
-        canPlay?: boolean | null
-        canPause?: boolean | null
-        currentTrack?: TrackMetadata | null
-        playbackState?: PlaybackState | null
-        currentPlaylist?: Playlist | null
-        trackMenu?: Dbusmenu.Menuitem | null
-        playerMenu?: Dbusmenu.Menuitem | null
+        can_go_next?: boolean | null
+        can_go_previous?: boolean | null
+        can_play?: boolean | null
+        can_pause?: boolean | null
+        current_track?: TrackMetadata | null
+        playback_state?: PlaybackState | null
+        current_playlist?: Playlist | null
+        track_menu?: Dbusmenu.Menuitem | null
+        player_menu?: Dbusmenu.Menuitem | null
     }
 
 }

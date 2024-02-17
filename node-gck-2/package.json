@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-gck-2",
-    "version": "4.1.0-3.2.7",
+    "version": "4.1.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Gck-2, generated from library version 4.1.0",
     "type": "module",
     "module": "node-gck-2.js",
     "main": "node-gck-2.js",
     "exports": {
-        "./ambient": "./node-gck-2-ambient.d.ts",
-        "./import": "./node-gck-2-import.d.ts",
+        "./ambient": {
+            "types": "./node-gck-2-ambient.d.ts",
+            "default": "./node-gck-2-ambient.js"
+        },
+        "./import": {
+            "types": "./node-gck-2-import.d.ts",
+            "default": "./node-gck-2-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gck-2.d.ts",

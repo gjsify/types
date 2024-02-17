@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-bamf-3",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Bamf-3, generated from library version 3.0.0",
     "type": "module",
     "module": "node-bamf-3.js",
     "main": "node-bamf-3.js",
     "exports": {
-        "./ambient": "./node-bamf-3-ambient.d.ts",
-        "./import": "./node-bamf-3-import.d.ts",
+        "./ambient": {
+            "types": "./node-bamf-3-ambient.d.ts",
+            "default": "./node-bamf-3-ambient.js"
+        },
+        "./import": {
+            "types": "./node-bamf-3-import.d.ts",
+            "default": "./node-bamf-3-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-bamf-3.d.ts",

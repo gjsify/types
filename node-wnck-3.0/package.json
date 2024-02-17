@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-wnck-3.0",
-    "version": "43.0.0-3.2.7",
+    "version": "43.0.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Wnck-3.0, generated from library version 43.0.0",
     "type": "module",
     "module": "node-wnck-3.0.js",
     "main": "node-wnck-3.0.js",
     "exports": {
-        "./ambient": "./node-wnck-3.0-ambient.d.ts",
-        "./import": "./node-wnck-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-wnck-3.0-ambient.d.ts",
+            "default": "./node-wnck-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-wnck-3.0-import.d.ts",
+            "default": "./node-wnck-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-wnck-3.0.d.ts",

@@ -1,13 +1,19 @@
 {
     "name": "@girs/vsqlite-1",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Vsqlite-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vsqlite-1.js",
     "main": "vsqlite-1.js",
     "exports": {
-        "./ambient": "./vsqlite-1-ambient.d.ts",
-        "./import": "./vsqlite-1-import.d.ts",
+        "./ambient": {
+            "types": "./vsqlite-1-ambient.d.ts",
+            "default": "./vsqlite-1-ambient.js"
+        },
+        "./import": {
+            "types": "./vsqlite-1-import.d.ts",
+            "default": "./vsqlite-1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./vsqlite-1.d.ts",

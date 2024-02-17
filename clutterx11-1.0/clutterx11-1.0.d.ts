@@ -250,11 +250,9 @@ module TexturePixmap {
 
         // Own constructor properties of ClutterX11-1.0.ClutterX11.TexturePixmap
 
-        automatic_updates?: boolean | null
+        automaticUpdates?: boolean | null
         pixmap?: number | null
         window?: number | null
-        window_redirect_automatic?: boolean | null
-        automaticUpdates?: boolean | null
         windowRedirectAutomatic?: boolean | null
     }
 
@@ -264,26 +262,17 @@ interface TexturePixmap extends Atk.ImplementorIface, Clutter.Animatable, Clutte
 
     // Own properties of ClutterX11-1.0.ClutterX11.TexturePixmap
 
-    automatic_updates: boolean
     automaticUpdates: boolean
     readonly destroyed: boolean
     pixmap: number
-    readonly pixmap_depth: number
     readonly pixmapDepth: number
-    readonly pixmap_height: number
     readonly pixmapHeight: number
-    readonly pixmap_width: number
     readonly pixmapWidth: number
     window: number
-    readonly window_mapped: boolean
     readonly windowMapped: boolean
-    readonly window_override_redirect: boolean
     readonly windowOverrideRedirect: boolean
-    window_redirect_automatic: boolean
     windowRedirectAutomatic: boolean
-    readonly window_x: number
     readonly windowX: number
-    readonly window_y: number
     readonly windowY: number
 
     // Owm methods of ClutterX11-1.0.ClutterX11.TexturePixmap

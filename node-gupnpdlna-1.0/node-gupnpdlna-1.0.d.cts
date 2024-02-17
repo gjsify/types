@@ -40,8 +40,8 @@ export module Discoverer {
 
         // Own constructor properties of GUPnPDLNA-1.0.GUPnPDLNA.Discoverer
 
-        extendedMode?: boolean | null
-        relaxedMode?: boolean | null
+        extended_mode?: boolean | null
+        relaxed_mode?: boolean | null
     }
 
 }

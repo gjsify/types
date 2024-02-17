@@ -270,7 +270,7 @@ export module Dock {
 
         // Own constructor properties of Gdl-3.Gdl.Dock
 
-        defaultTitle?: string | null
+        default_title?: string | null
         floating?: boolean | null
         floatx?: number | null
         floaty?: number | null
@@ -281,7 +281,7 @@ export module Dock {
          * after this flag is set; existing windows are not affected.  Usually,
          * this property is used when you create the dock.
          */
-        skipTaskbar?: boolean | null
+        skip_taskbar?: boolean | null
         width?: number | null
     }
 
@@ -947,7 +947,7 @@ export module DockBar {
 
         // Own constructor properties of Gdl-3.Gdl.DockBar
 
-        dockbarStyle?: DockBarStyle | null
+        dockbar_style?: DockBarStyle | null
         /**
          * The #GdlDockMaster object attached to the dockbar.
          */
@@ -1477,8 +1477,8 @@ export module DockItem {
          * widget text direction is set to RTL).
          */
         orientation?: Gtk.Orientation | null
-        preferredHeight?: number | null
-        preferredWidth?: number | null
+        preferred_height?: number | null
+        preferred_width?: number | null
         resize?: boolean | null
     }
 
@@ -3216,11 +3216,11 @@ export module DockMaster {
 
         // Own constructor properties of Gdl-3.Gdl.DockMaster
 
-        defaultTitle?: string | null
+        default_title?: string | null
         locked?: number | null
-        switcherStyle?: SwitcherStyle | null
-        tabPos?: Gtk.PositionType | null
-        tabReorderable?: boolean | null
+        switcher_style?: SwitcherStyle | null
+        tab_pos?: Gtk.PositionType | null
+        tab_reorderable?: boolean | null
     }
 
 }
@@ -3990,7 +3990,7 @@ export module DockObject {
         /**
          * A long descriptive name.
          */
-        longName?: string | null
+        long_name?: string | null
         /**
          * The master which manages all the objects in a dock ring
          */
@@ -4003,11 +4003,11 @@ export module DockObject {
         /**
          * A GdkPixbuf to use for the icon of the dock object.
          */
-        pixbufIcon?: any | null
+        pixbuf_icon?: any | null
         /**
          * A stock id to use for the icon of the dock object.
          */
-        stockId?: string | null
+        stock_id?: string | null
     }
 
 }
@@ -5293,7 +5293,7 @@ export module DockPlaceholder {
         floaty?: number | null
         height?: number | null
         host?: DockObject | null
-        nextPlacement?: DockPlacement | null
+        next_placement?: DockPlacement | null
         sticky?: boolean | null
         width?: number | null
     }
@@ -6915,9 +6915,9 @@ export module Switcher {
 
         // Own constructor properties of Gdl-3.Gdl.Switcher
 
-        switcherStyle?: SwitcherStyle | null
-        tabPos?: Gtk.PositionType | null
-        tabReorderable?: boolean | null
+        switcher_style?: SwitcherStyle | null
+        tab_pos?: Gtk.PositionType | null
+        tab_reorderable?: boolean | null
     }
 
 }

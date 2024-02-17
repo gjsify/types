@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-webkit2-4.1",
-    "version": "2.41.90-3.2.7",
+    "version": "2.41.90-3.2.8",
     "description": "Node.js TypeScript type definitions for WebKit2-4.1, generated from library version 2.41.90",
     "type": "module",
     "module": "node-webkit2-4.1.js",
     "main": "node-webkit2-4.1.js",
     "exports": {
-        "./ambient": "./node-webkit2-4.1-ambient.d.ts",
-        "./import": "./node-webkit2-4.1-import.d.ts",
+        "./ambient": {
+            "types": "./node-webkit2-4.1-ambient.d.ts",
+            "default": "./node-webkit2-4.1-ambient.js"
+        },
+        "./import": {
+            "types": "./node-webkit2-4.1-import.d.ts",
+            "default": "./node-webkit2-4.1-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-webkit2-4.1.d.ts",

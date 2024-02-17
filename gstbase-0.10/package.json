@@ -1,13 +1,19 @@
 {
     "name": "@girs/gstbase-0.10",
-    "version": "0.10.0-3.2.7",
+    "version": "0.10.0-3.2.8",
     "description": "GJS TypeScript type definitions for GstBase-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstbase-0.10.js",
     "main": "gstbase-0.10.js",
     "exports": {
-        "./ambient": "./gstbase-0.10-ambient.d.ts",
-        "./import": "./gstbase-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./gstbase-0.10-ambient.d.ts",
+            "default": "./gstbase-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstbase-0.10-import.d.ts",
+            "default": "./gstbase-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gstbase-0.10.d.ts",

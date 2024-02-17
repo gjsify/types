@@ -1,13 +1,19 @@
 {
     "name": "@girs/gnomebluetooth-3.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for GnomeBluetooth-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gnomebluetooth-3.0.js",
     "main": "gnomebluetooth-3.0.js",
     "exports": {
-        "./ambient": "./gnomebluetooth-3.0-ambient.d.ts",
-        "./import": "./gnomebluetooth-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./gnomebluetooth-3.0-ambient.d.ts",
+            "default": "./gnomebluetooth-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gnomebluetooth-3.0-import.d.ts",
+            "default": "./gnomebluetooth-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gnomebluetooth-3.0.d.ts",

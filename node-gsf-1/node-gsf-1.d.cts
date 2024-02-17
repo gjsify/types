@@ -1422,7 +1422,7 @@ export module InfileZip {
 
         // Own constructor properties of Gsf-1.Gsf.InfileZip
 
-        internalParent?: InfileZip | null
+        internal_parent?: InfileZip | null
         source?: Input | null
     }
 
@@ -1734,7 +1734,7 @@ export module InputGZip {
 
         raw?: boolean | null
         source?: Input | null
-        uncompressedSize?: number | null
+        uncompressed_size?: number | null
     }
 
 }
@@ -1898,7 +1898,7 @@ export module InputHTTP {
 
         // Own constructor properties of Gsf-1.Gsf.InputHTTP
 
-        contentType?: string | null
+        content_type?: string | null
         url?: string | null
     }
 
@@ -2312,7 +2312,7 @@ export module ODFOut {
 
         // Own constructor properties of Gsf-1.Gsf.ODFOut
 
-        odfVersion?: number | null
+        odf_version?: number | null
     }
 
 }
@@ -2463,9 +2463,9 @@ export module OutfileMSOle {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileMSOle
 
-        bigBlockSize?: number | null
+        big_block_size?: number | null
         sink?: Output | null
-        smallBlockSize?: number | null
+        small_block_size?: number | null
     }
 
 }
@@ -2585,8 +2585,8 @@ export module OutfileOpenPkg {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileOpenPkg
 
-        contentType?: string | null
-        isDir?: boolean | null
+        content_type?: string | null
+        is_dir?: boolean | null
         sink?: Outfile | null
     }
 
@@ -2762,9 +2762,9 @@ export module OutfileZip {
 
         // Own constructor properties of Gsf-1.Gsf.OutfileZip
 
-        compressionLevel?: number | null
-        deflateLevel?: number | null
-        entryName?: string | null
+        compression_level?: number | null
+        deflate_level?: number | null
+        entry_name?: string | null
         sink?: Output | null
         zip64?: number | null
     }
@@ -3133,9 +3133,9 @@ export module OutputCsv {
 
         eol?: string | null
         quote?: string | null
-        quotingMode?: OutputCsvQuotingMode | null
-        quotingOnWhitespace?: boolean | null
-        quotingTriggers?: string | null
+        quoting_mode?: OutputCsvQuotingMode | null
+        quoting_on_whitespace?: boolean | null
+        quoting_triggers?: string | null
         separator?: string | null
         sink?: Output | null
     }
@@ -3224,7 +3224,7 @@ export module OutputGZip {
 
         // Own constructor properties of Gsf-1.Gsf.OutputGZip
 
-        deflateLevel?: number | null
+        deflate_level?: number | null
         raw?: boolean | null
         sink?: Output | null
     }
@@ -3445,8 +3445,8 @@ export module OutputIconv {
          * in the target encoding.  NULL means use \u1234 or \U12345678 format.
          */
         fallback?: string | null
-        inputCharset?: string | null
-        outputCharset?: string | null
+        input_charset?: string | null
+        output_charset?: string | null
         sink?: Output | null
     }
 
@@ -3810,7 +3810,7 @@ export module XMLOut {
 
         // Own constructor properties of Gsf-1.Gsf.XMLOut
 
-        prettyPrint?: boolean | null
+        pretty_print?: boolean | null
         sink?: Output | null
     }
 

@@ -1,13 +1,19 @@
 {
     "name": "@girs/ical-3.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for ICal-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "ical-3.0.js",
     "main": "ical-3.0.js",
     "exports": {
-        "./ambient": "./ical-3.0-ambient.d.ts",
-        "./import": "./ical-3.0-import.d.ts",
+        "./ambient": {
+            "types": "./ical-3.0-ambient.d.ts",
+            "default": "./ical-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./ical-3.0-import.d.ts",
+            "default": "./ical-3.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./ical-3.0.d.ts",

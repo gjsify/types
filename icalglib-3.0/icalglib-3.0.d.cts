@@ -2021,29 +2021,6 @@ export module Object {
          * Whether free the native libical structure on #ICalObject's finalize even
          * if the object has set an owner.
          */
-        always_destroy?: boolean | null
-        /**
-         * Whether the native libical structure is from a global shared memory.
-         * If TRUE, then it is not freed on #ICalObject's finalize.
-         */
-        is_global_memory?: boolean | null
-        /**
-         * The native libical structure for this ICalObject.
-         */
-        native?: any | null
-        /**
-         * GDestroyNotify function to use to destroy the native libical pointer.
-         */
-        native_destroy_func?: any | null
-        /**
-         * Owner of the native libical structure. If set, then it is
-         * responsible for a free of the native libical structure.
-         */
-        owner?: GObject.Object | null
-        /**
-         * Whether free the native libical structure on #ICalObject's finalize even
-         * if the object has set an owner.
-         */
         alwaysDestroy?: boolean | null
         /**
          * Whether the native libical structure is from a global shared memory.
@@ -2051,9 +2028,18 @@ export module Object {
          */
         isGlobalMemory?: boolean | null
         /**
+         * The native libical structure for this ICalObject.
+         */
+        native?: any | null
+        /**
          * GDestroyNotify function to use to destroy the native libical pointer.
          */
         nativeDestroyFunc?: any | null
+        /**
+         * Owner of the native libical structure. If set, then it is
+         * responsible for a free of the native libical structure.
+         */
+        owner?: GObject.Object | null
     }
 
 }
@@ -2066,17 +2052,7 @@ export interface Object {
      * Whether free the native libical structure on #ICalObject's finalize even
      * if the object has set an owner.
      */
-    always_destroy: boolean
-    /**
-     * Whether free the native libical structure on #ICalObject's finalize even
-     * if the object has set an owner.
-     */
     alwaysDestroy: boolean
-    /**
-     * Whether the native libical structure is from a global shared memory.
-     * If TRUE, then it is not freed on #ICalObject's finalize.
-     */
-    readonly is_global_memory: boolean
     /**
      * Whether the native libical structure is from a global shared memory.
      * If TRUE, then it is not freed on #ICalObject's finalize.
@@ -2086,10 +2062,6 @@ export interface Object {
      * The native libical structure for this ICalObject.
      */
     readonly native: any
-    /**
-     * GDestroyNotify function to use to destroy the native libical pointer.
-     */
-    native_destroy_func: any
     /**
      * GDestroyNotify function to use to destroy the native libical pointer.
      */

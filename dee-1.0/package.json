@@ -1,13 +1,19 @@
 {
     "name": "@girs/dee-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Dee-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "dee-1.0.js",
     "main": "dee-1.0.js",
     "exports": {
-        "./ambient": "./dee-1.0-ambient.d.ts",
-        "./import": "./dee-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./dee-1.0-ambient.d.ts",
+            "default": "./dee-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./dee-1.0-import.d.ts",
+            "default": "./dee-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./dee-1.0.d.ts",

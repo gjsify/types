@@ -294,22 +294,8 @@ export module Display {
 
         // Own constructor properties of GtkVnc-2.0.GtkVnc.Display
 
-        allow_resize?: boolean | null
-        depth?: DisplayDepthColor | null
-        force_size?: boolean | null
-        grab_keyboard?: boolean | null
-        grab_keys?: GrabSequence | null
-        grab_pointer?: boolean | null
-        keep_aspect_ratio?: boolean | null
-        local_pointer?: boolean | null
-        lossy_encoding?: boolean | null
-        read_only?: boolean | null
-        rotation?: number | null
-        scaling?: boolean | null
-        shared_flag?: boolean | null
-        smoothing?: boolean | null
-        zoom_level?: number | null
         allowResize?: boolean | null
+        depth?: DisplayDepthColor | null
         forceSize?: boolean | null
         grabKeyboard?: boolean | null
         grabKeys?: GrabSequence | null
@@ -318,7 +304,10 @@ export module Display {
         localPointer?: boolean | null
         lossyEncoding?: boolean | null
         readOnly?: boolean | null
+        rotation?: number | null
+        scaling?: boolean | null
         sharedFlag?: boolean | null
+        smoothing?: boolean | null
         zoomLevel?: number | null
     }
 
@@ -328,35 +317,24 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of GtkVnc-2.0.GtkVnc.Display
 
-    allow_resize: boolean
     allowResize: boolean
     readonly connection: GVnc.Connection
     depth: DisplayDepthColor
-    force_size: boolean
     forceSize: boolean
-    grab_keyboard: boolean
     grabKeyboard: boolean
-    grab_keys: GrabSequence
     grabKeys: GrabSequence
-    grab_pointer: boolean
     grabPointer: boolean
     readonly height: number
-    keep_aspect_ratio: boolean
     keepAspectRatio: boolean
-    local_pointer: boolean
     localPointer: boolean
-    lossy_encoding: boolean
     lossyEncoding: boolean
     readonly name: any
-    read_only: boolean
     readOnly: boolean
     rotation: number
     scaling: boolean
-    shared_flag: boolean
     sharedFlag: boolean
     smoothing: boolean
     readonly width: number
-    zoom_level: number
     zoomLevel: number
 
     // Own fields of GtkVnc-2.0.GtkVnc.Display

@@ -4505,7 +4505,6 @@ export module HandleRepoIface {
 
         // Own constructor properties of TelepathyGLib-0.12.TelepathyGLib.HandleRepoIface
 
-        handle_type?: number | null
         handleType?: number | null
     }
 
@@ -4515,7 +4514,6 @@ export interface HandleRepoIface {
 
     // Own properties of TelepathyGLib-0.12.TelepathyGLib.HandleRepoIface
 
-    readonly handle_type: number
     readonly handleType: number
 
     // Class property signals of TelepathyGLib-0.12.TelepathyGLib.HandleRepoIface
@@ -4601,25 +4599,6 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %TP_CONNECTION_PRESENCE_TYPE_UNSET.
      */
-    readonly automatic_presence_type: number
-    /**
-     * The account's automatic presence type (a #TpConnectionPresenceType).
-     * 
-     * When the account is put online automatically, for instance to make a
-     * channel request or because network connectivity becomes available,
-     * the automatic presence type, status and message will be copied to
-     * their "requested" counterparts.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for automatic-presence-type,
-     * automatic-status and automatic-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %TP_CONNECTION_PRESENCE_TYPE_UNSET.
-     */
     readonly automaticPresenceType: number
     /**
      * The string status name to use in conjunction with the
@@ -4635,37 +4614,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly automatic_status: string | null
-    /**
-     * The string status name to use in conjunction with the
-     * #TpAccount:automatic-presence-type.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for automatic-presence-type,
-     * automatic-status and automatic-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly automaticStatus: string | null
-    /**
-     * The user-defined message to use in conjunction with the
-     * #TpAccount:automatic-presence-type.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for automatic-presence-type,
-     * automatic-status and automatic-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
-    readonly automatic_status_message: string | null
     /**
      * The user-defined message to use in conjunction with the
      * #TpAccount:automatic-presence-type.
@@ -4696,44 +4645,11 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %FALSE.
      */
-    readonly changing_presence: boolean
-    /**
-     * %TRUE if an attempt is currently being made to change the account's
-     * presence (#TpAccount:current-presence-type, #TpAccount:current-status
-     * and #TpAccount:current-status-message) to match its requested presence
-     * (#TpAccount:requested-presence-type, #TpAccount:requested-status
-     * and #TpAccount:requested-status-message).
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %FALSE.
-     */
     readonly changingPresence: boolean
     /**
      * The account's connection manager name.
      */
-    readonly cm_name: string | null
-    /**
-     * The account's connection manager name.
-     */
     readonly cmName: string | null
-    /**
-     * Whether the account should connect automatically or not. To change this
-     * property, use tp_account_set_connect_automatically_async().
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %FALSE.
-     */
-    readonly connect_automatically: boolean
     /**
      * Whether the account should connect automatically or not. To change this
      * property, use tp_account_set_connect_automatically_async().
@@ -4777,43 +4693,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly connection_error: string | null
-    /**
-     * The D-Bus error name for the last disconnection or connection failure,
-     * (in particular, %TP_ERROR_STR_CANCELLED if it was disconnected by user
-     * request), or %NULL if the account is connected.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #TpAccount::status-changed signal, or by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly connectionError: string | null
-    /**
-     * A map from string to #GValue containing extensible error details
-     * related to #TpAccount:connection-error. Functions like tp_asv_get_string()
-     * can be used to read from this map.
-     * 
-     * The keys for this map are defined by
-     * <ulink url="http://telepathy.freedesktop.org/spec/">the Telepathy D-Bus
-     * Interface Specification</ulink>. They will typically include
-     * <literal>debug-message</literal>, which is a debugging message in the C
-     * locale, analogous to #GError<!-- -->.message.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #TpAccount::status-changed signal, or by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * an empty map.
-     */
-    readonly connection_error_details: GLib.HashTable
     /**
      * A map from string to #GValue containing extensible error details
      * related to #TpAccount:connection-error. Functions like tp_asv_get_string()
@@ -4838,24 +4718,7 @@ export interface Account {
     /**
      * The account's connection manager name.
      */
-    readonly connection_manager: string | null
-    /**
-     * The account's connection manager name.
-     */
     readonly connectionManager: string | null
-    /**
-     * The account's connection status type (a %TpConnectionStatus).
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #TpAccount::status-changed signal, or by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %TP_CONNECTION_STATUS_DISCONNECTED.
-     */
-    readonly connection_status: number
     /**
      * The account's connection status type (a %TpConnectionStatus).
      * 
@@ -4881,35 +4744,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED.
      */
-    readonly connection_status_reason: number
-    /**
-     * The account's connection status reason (a %TpConnectionStatusReason).
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #TpAccount::status-changed signal, or by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED.
-     */
     readonly connectionStatusReason: number
-    /**
-     * The account connection's current presence type
-     * (a %TpConnectionPresenceType).
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for current-presence-type,
-     * current-status and current-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %TP_CONNECTION_PRESENCE_TYPE_UNSET.
-     */
-    readonly current_presence_type: number
     /**
      * The account connection's current presence type
      * (a %TpConnectionPresenceType).
@@ -4938,20 +4773,6 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly current_status: string | null
-    /**
-     * The current Status string of the account.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for current-presence-type,
-     * current-status and current-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly currentStatus: string | null
     /**
      * The current status message message of the account.
@@ -4966,33 +4787,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly current_status_message: string | null
-    /**
-     * The current status message message of the account.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for current-presence-type,
-     * current-status and current-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly currentStatusMessage: string | null
-    /**
-     * The account's display name, from the DisplayName property.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
-    readonly display_name: string | null
     /**
      * The account's display name, from the DisplayName property.
      * 
@@ -5027,32 +4822,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %FALSE.
      */
-    readonly has_been_online: boolean
-    /**
-     * Whether this account has been online or not.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %FALSE.
-     */
     readonly hasBeenOnline: boolean
-    /**
-     * The account's icon name. To change this propery, use
-     * tp_account_set_icon_name_async().
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
-    readonly icon_name: string | null
     /**
      * The account's icon name. To change this propery, use
      * tp_account_set_icon_name_async().
@@ -5091,20 +4861,6 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly normalized_name: string | null
-    /**
-     * The normalized form of the user's own unique identifier on this
-     * protocol. For example, on XMPP accounts this is the user's JID; on
-     * ICQ this is the user's UIN; and so on.
-     * 
-     * One can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly normalizedName: string | null
     /**
      * The account's machine-readable protocol name, such as "jabber", "msn" or
@@ -5117,28 +4873,7 @@ export interface Account {
      * "local-xmpp". Recommended names for most protocols can be found in the
      * Telepathy D-Bus Interface Specification.
      */
-    readonly protocol_name: string | null
-    /**
-     * The account's machine-readable protocol name, such as "jabber", "msn" or
-     * "local-xmpp". Recommended names for most protocols can be found in the
-     * Telepathy D-Bus Interface Specification.
-     */
     readonly protocolName: string | null
-    /**
-     * The account's requested presence type (a #TpConnectionPresenceType).
-     * 
-     * Since 0.13.8,
-     * one can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for requested-presence-type,
-     * requested-status and requested-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
-    readonly requested_presence_type: number
     /**
      * The account's requested presence type (a #TpConnectionPresenceType).
      * 
@@ -5168,37 +4903,7 @@ export interface Account {
      * tp_proxy_prepare_async() has finished; until then, the value is
      * %NULL.
      */
-    readonly requested_status: string | null
-    /**
-     * The requested Status string of the account.
-     * 
-     * Since 0.13.8,
-     * one can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for requested-presence-type,
-     * requested-status and requested-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
     readonly requestedStatus: string | null
-    /**
-     * The requested status message message of the account.
-     * 
-     * Since 0.13.8,
-     * one can receive change notifications on this property by connecting
-     * to the #GObject::notify signal and using this property as the signal
-     * detail. Change notifications for requested-presence-type,
-     * requested-status and requested-status-message are always emitted together,
-     * so it is sufficient to connect to one of the notification signals.
-     * 
-     * This is not guaranteed to have been retrieved until
-     * tp_proxy_prepare_async() has finished; until then, the value is
-     * %NULL.
-     */
-    readonly requested_status_message: string | null
     /**
      * The requested status message message of the account.
      * 
@@ -5245,37 +4950,7 @@ export interface Account {
      * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
      * the value is %NULL.
      */
-    readonly storage_identifier: any
-    /**
-     * The storage identifier for this account.
-     * 
-     * A provider-specific variant type used to identify this account with the
-     * provider. This value will be %NULL if #TpAccount:storage-provider is
-     * an empty string.
-     * 
-     * This property cannot change once an Account has been created.
-     * 
-     * This is not guaranteed to have been retrieved until the
-     * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
-     * the value is %NULL.
-     */
     readonly storageIdentifier: any
-    /**
-     * Provider-specific information used to identify this
-     * account. Use g_variant_get_type() to check that the type
-     * is what you expect. For instance, if you use a
-     * #TpAccount:storage-provider with numeric identifiers for accounts,
-     * this variant might have type %G_VARIANT_TYPE_UINT32;
-     * if the storage provider has string-based identifiers, it should
-     * have type %G_VARIANT_TYPE_STRING.
-     * 
-     * This property cannot change once an Account has been created.
-     * 
-     * This is not guaranteed to have been retrieved until the
-     * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
-     * the value is %NULL.
-     */
-    readonly storage_identifier_variant: GLib.Variant
     /**
      * Provider-specific information used to identify this
      * account. Use g_variant_get_type() to check that the type
@@ -5304,34 +4979,7 @@ export interface Account {
      * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
      * the value is %NULL.
      */
-    readonly storage_provider: string | null
-    /**
-     * The storage provider for this account.
-     * 
-     * The name of the account storage implementation. When this
-     * is the empty string the account is internally stored.
-     * 
-     * This property cannot change once an Account has been created.
-     * 
-     * This is not guaranteed to have been retrieved until the
-     * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
-     * the value is %NULL.
-     */
     readonly storageProvider: string | null
-    /**
-     * The storage restrictions for this account.
-     * 
-     * A bitfield of #TpStorageRestrictionFlags that give the limitations of
-     * this account imposed by the storage provider. This value will be 0
-     * if #TpAccount:storage-provider is an empty string.
-     * 
-     * This property cannot change once an Account has been created.
-     * 
-     * This is not guaranteed to have been retrieved until the
-     * %TP_ACCOUNT_FEATURE_STORAGE feature has been prepared; until then,
-     * the value is 0.
-     */
-    readonly storage_restrictions: number
     /**
      * The storage restrictions for this account.
      * 
@@ -5356,22 +5004,6 @@ export interface Account {
      * the value is NULL.
      */
     readonly supersedes: string[]
-    /**
-     * If the %TP_ACCOUNT_FEATURE_ADDRESSING feature has been prepared
-     * successfully, a list of additional URI schemes for which this
-     * account should be used if possible. Otherwise %NULL.
-     * 
-     * For instance, a SIP or Skype account might have "tel" in this list if the
-     * user would like to use that account to call phone numbers.
-     * 
-     * This list should not contain the primary URI scheme(s) for the account's
-     * protocol (for instance, "xmpp" for XMPP, or "sip" or "sips" for SIP),
-     * since it should be assumed to be useful for those schemes in any case.
-     * 
-     * The notify::uri-schemes signal cannot be relied on if the Account Manager
-     * is Mission Control version 5.14.0 or older.
-     */
-    readonly uri_schemes: string[]
     /**
      * If the %TP_ACCOUNT_FEATURE_ADDRESSING feature has been prepared
      * successfully, a list of additional URI schemes for which this
@@ -6429,41 +6061,6 @@ export module AccountChannelRequest {
          * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
          * value, and the other must remain unspecified.
          */
-        request_vardict?: GLib.Variant | null
-        /**
-         * The user action time that will be passed to the channel dispatcher when
-         * requesting the channel.
-         * 
-         * This may be the time at which user action occurred, or one of the special
-         * values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
-         * %TP_USER_ACTION_TIME_CURRENT_TIME.
-         * 
-         * If %TP_USER_ACTION_TIME_NOT_USER_ACTION, the action doesn't involve any
-         * user action. Clients should avoid stealing focus when presenting the
-         * channel.
-         * 
-         * If %TP_USER_ACTION_TIME_CURRENT_TIME, clients SHOULD behave as though the
-         * user action happened at the current time, e.g. a client may
-         * request that its window gains focus.
-         * 
-         * On X11-based systems, GDK 2, GDK 3, Clutter 1.0 etc.,
-         * tp_user_action_time_from_x11() can be used to convert an X11 timestamp to
-         * a Telepathy user action time.
-         * 
-         * If the channel request succeeds, this user action time will be passed on
-         * to the channel's handler. If the handler is a GUI, it may use
-         * tp_user_action_time_should_present() to decide whether to bring its
-         * window to the foreground.
-         */
-        user_action_time?: number | null
-        /**
-         * The desired D-Bus properties for the channel.
-         * 
-         * When constructing a new object, one of
-         * #TpAccountChannelRequest:request or
-         * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
-         * value, and the other must remain unspecified.
-         */
         requestVardict?: GLib.Variant | null
         /**
          * The user action time that will be passed to the channel dispatcher when
@@ -6521,22 +6118,6 @@ export interface AccountChannelRequest {
      * 
      * Since 0.13.13
      */
-    readonly channel_request: ChannelRequest
-    /**
-     * The #TpChannelRequest used to request the channel, or %NULL if the
-     * channel has not be requested yet.
-     * 
-     * This can be useful for example to compare with the #TpChannelRequest
-     * objects received from the requests_satisfied argument of
-     * #TpSimpleHandlerHandleChannelsImpl to check if the client is asked to
-     * handle the channel it just requested.
-     * 
-     * Note that the #TpChannelRequest objects may be different while still
-     * representing the same ChannelRequest on D-Bus. You have to compare
-     * them using their object paths (tp_proxy_get_object_path()).
-     * 
-     * Since 0.13.13
-     */
     readonly channelRequest: ChannelRequest
     /**
      * The desired D-Bus properties for the channel.
@@ -6546,42 +6127,7 @@ export interface AccountChannelRequest {
      * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
      * value, and the other must remain unspecified.
      */
-    readonly request_vardict: GLib.Variant
-    /**
-     * The desired D-Bus properties for the channel.
-     * 
-     * When constructing a new object, one of
-     * #TpAccountChannelRequest:request or
-     * #TpAccountChannelRequest:request-vardict must be set to a non-%NULL
-     * value, and the other must remain unspecified.
-     */
     readonly requestVardict: GLib.Variant
-    /**
-     * The user action time that will be passed to the channel dispatcher when
-     * requesting the channel.
-     * 
-     * This may be the time at which user action occurred, or one of the special
-     * values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
-     * %TP_USER_ACTION_TIME_CURRENT_TIME.
-     * 
-     * If %TP_USER_ACTION_TIME_NOT_USER_ACTION, the action doesn't involve any
-     * user action. Clients should avoid stealing focus when presenting the
-     * channel.
-     * 
-     * If %TP_USER_ACTION_TIME_CURRENT_TIME, clients SHOULD behave as though the
-     * user action happened at the current time, e.g. a client may
-     * request that its window gains focus.
-     * 
-     * On X11-based systems, GDK 2, GDK 3, Clutter 1.0 etc.,
-     * tp_user_action_time_from_x11() can be used to convert an X11 timestamp to
-     * a Telepathy user action time.
-     * 
-     * If the channel request succeeds, this user action time will be passed on
-     * to the channel's handler. If the handler is a GUI, it may use
-     * tp_user_action_time_should_present() to decide whether to bring its
-     * window to the foreground.
-     */
-    readonly user_action_time: number
     /**
      * The user action time that will be passed to the channel dispatcher when
      * requesting the channel.
@@ -7799,25 +7345,6 @@ export module AccountRequest {
         /**
          * The #TpAccountManager to create the account on.
          */
-        account_manager?: AccountManager | null
-        /**
-         * The account's connection manager name.
-         */
-        connection_manager?: string | null
-        /**
-         * The account's display name. To change this property use
-         * tp_account_request_set_display_name().
-         */
-        display_name?: string | null
-        /**
-         * The account's machine-readable protocol name, such as "jabber", "msn" or
-         * "local-xmpp". Recommended names for most protocols can be found in the
-         * Telepathy D-Bus Interface Specification.
-         */
-        protocol?: string | null
-        /**
-         * The #TpAccountManager to create the account on.
-         */
         accountManager?: AccountManager | null
         /**
          * The account's connection manager name.
@@ -7828,6 +7355,12 @@ export module AccountRequest {
          * tp_account_request_set_display_name().
          */
         displayName?: string | null
+        /**
+         * The account's machine-readable protocol name, such as "jabber", "msn" or
+         * "local-xmpp". Recommended names for most protocols can be found in the
+         * Telepathy D-Bus Interface Specification.
+         */
+        protocol?: string | null
     }
 
 }
@@ -7839,22 +7372,7 @@ export interface AccountRequest {
     /**
      * The #TpAccountManager to create the account on.
      */
-    readonly account_manager: AccountManager
-    /**
-     * The #TpAccountManager to create the account on.
-     */
     readonly accountManager: AccountManager
-    /**
-     * The account's automatic presence type (a
-     * #TpConnectionPresenceType). To change this property use
-     * tp_account_request_set_automatic_presence().
-     * 
-     * When the account is put online automatically, for instance to
-     * make a channel request or because network connectivity becomes
-     * available, the automatic presence type, status and message will
-     * be copied to their "requested" counterparts.
-     */
-    readonly automatic_presence_type: number
     /**
      * The account's automatic presence type (a
      * #TpConnectionPresenceType). To change this property use
@@ -7871,19 +7389,7 @@ export interface AccountRequest {
      * #TpAccountRequest:automatic-presence-type. To change this property
      * use tp_account_request_set_automatic_presence().
      */
-    readonly automatic_status: string | null
-    /**
-     * The string status name to use in conjunction with the
-     * #TpAccountRequest:automatic-presence-type. To change this property
-     * use tp_account_request_set_automatic_presence().
-     */
     readonly automaticStatus: string | null
-    /**
-     * The user-defined message to use in conjunction with the
-     * #TpAccount:automatic-presence-type. To change this property use
-     * tp_account_request_set_automatic_presence().
-     */
-    readonly automatic_status_message: string | null
     /**
      * The user-defined message to use in conjunction with the
      * #TpAccount:automatic-presence-type. To change this property use
@@ -7900,17 +7406,7 @@ export interface AccountRequest {
      * The mime type of the #TpAccountRequest:avatar property. To change
      * this property, use tp_account_request_set_avatar().
      */
-    readonly avatar_mime_type: string | null
-    /**
-     * The mime type of the #TpAccountRequest:avatar property. To change
-     * this property, use tp_account_request_set_avatar().
-     */
     readonly avatarMimeType: string | null
-    /**
-     * Whether the account should connect automatically or not. To change this
-     * property, use tp_account_request_set_connect_automatically().
-     */
-    readonly connect_automatically: boolean
     /**
      * Whether the account should connect automatically or not. To change this
      * property, use tp_account_request_set_connect_automatically().
@@ -7919,16 +7415,7 @@ export interface AccountRequest {
     /**
      * The account's connection manager name.
      */
-    readonly connection_manager: string | null
-    /**
-     * The account's connection manager name.
-     */
     readonly connectionManager: string | null
-    /**
-     * The account's display name. To change this property use
-     * tp_account_request_set_display_name().
-     */
-    readonly display_name: string | null
     /**
      * The account's display name. To change this property use
      * tp_account_request_set_display_name().
@@ -7939,11 +7426,6 @@ export interface AccountRequest {
      * use tp_account_request_set_enabled().
      */
     readonly enabled: boolean
-    /**
-     * The account's icon name. To change this propery, use
-     * tp_account_request_set_icon_name().
-     */
-    readonly icon_name: string | null
     /**
      * The account's icon name. To change this propery, use
      * tp_account_request_set_icon_name().
@@ -7974,28 +7456,12 @@ export interface AccountRequest {
      * #TpConnectionPresenceType). To change this property use
      * tp_account_request_set_requested_presence().
      */
-    readonly requested_presence_type: number
-    /**
-     * The account's requested presence type (a
-     * #TpConnectionPresenceType). To change this property use
-     * tp_account_request_set_requested_presence().
-     */
     readonly requestedPresenceType: number
     /**
      * The requested Status string of the account. To change this
      * property use tp_account_request_set_requested_presence().
      */
-    readonly requested_status: string | null
-    /**
-     * The requested Status string of the account. To change this
-     * property use tp_account_request_set_requested_presence().
-     */
     readonly requestedStatus: string | null
-    /**
-     * The requested status message message of the account. To change
-     * this property use tp_account_request_set_requested_presence().
-     */
-    readonly requested_status_message: string | null
     /**
      * The requested status message message of the account. To change
      * this property use tp_account_request_set_requested_presence().
@@ -8009,11 +7475,6 @@ export interface AccountRequest {
      * tp_account_request_set_service().
      */
     readonly service: string | null
-    /**
-     * The account's storage provider. To change this property use
-     * tp_account_request_set_storage_provider().
-     */
-    readonly storage_provider: string | null
     /**
      * The account's storage provider. To change this property use
      * tp_account_request_set_storage_provider().
@@ -8336,14 +7797,6 @@ export module AddDispatchOperationContext {
          * 
          * This property can't be %NULL.
          */
-        dispatch_operation?: ChannelDispatchOperation | null
-        /**
-         * A #TpChannelDispatchOperation object representing the
-         * ChannelDispatchOperation that has been passed to AddDispatchOperation.
-         * Read-only except during construction.
-         * 
-         * This property can't be %NULL.
-         */
         dispatchOperation?: ChannelDispatchOperation | null
     }
 
@@ -8377,14 +7830,6 @@ export interface AddDispatchOperationContext {
      * This property can't be %NULL.
      */
     readonly connection: Connection
-    /**
-     * A #TpChannelDispatchOperation object representing the
-     * ChannelDispatchOperation that has been passed to AddDispatchOperation.
-     * Read-only except during construction.
-     * 
-     * This property can't be %NULL.
-     */
-    readonly dispatch_operation: ChannelDispatchOperation
     /**
      * A #TpChannelDispatchOperation object representing the
      * ChannelDispatchOperation that has been passed to AddDispatchOperation.
@@ -8626,71 +8071,6 @@ export module BaseClient {
          * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
          * account manager's #TpProxy:dbus-daemon.
          */
-        account_manager?: AccountManager | null
-        /**
-         * The object implementing the #TpClientChannelFactoryInterface interface
-         * that will be used to create channel proxies. While
-         * tp_base_client_register() has not yet been called, this property can be
-         * changed using tp_base_client_set_channel_factory().
-         * 
-         * If no channel factory is specified then #TpAutomaticProxyFactory is used.
-         */
-        channel_factory?: GObject.Object | null
-        /**
-         * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
-         * Read-only except during construction.
-         * 
-         * This property can't be %NULL after construction.
-         * 
-         * Since 0.11.14 this property may be %NULL or unspecified in
-         * g_object_new(), but only if #TpBaseClient:account-manager is provided
-         * instead, in which case its #TpProxy:dbus-daemon property will be
-         * used.
-         */
-        dbus_daemon?: DBusDaemon | null
-        /**
-         * Factory for this base client, used to look up or create
-         * #TpAccount objects.
-         */
-        factory?: SimpleClientFactory | null
-        /**
-         * The name of the client. This is used to register the D-Bus service name
-         * and object path of the service.
-         * 
-         * This property can't be %NULL.
-         */
-        name?: string | null
-        /**
-         * If %TRUE, tp_base_client_register() will append an unique token to the
-         * service bus name and object path to ensure they are unique.
-         */
-        uniquify_name?: boolean | null
-        /**
-         * Account manager for this base client, used to look up or create
-         * #TpAccount objects. This may be specified in the constructor in order
-         * to get existing #TpAccount objects.
-         * 
-         * It is not guaranteed that any of its features have been prepared, and
-         * it is not necessary to wait for any features before specifying this
-         * property in the constructor.
-         * 
-         * Clients that interact with the #TpAccount should usually
-         * set this property instead of #TpBaseClient:dbus-daemon. Doing this
-         * will ensure that each account, connection or contact is represented by
-         * a single #TpAccount, #TpConnection or #TpContact object, shared between
-         * all the cooperating modules that have the same #TpAccountManager.
-         * 
-         * If the #TpBaseClient:dbus-daemon is set to the result of
-         * tp_dbus_daemon_dup(), then this property defaults to
-         * the result of tp_account_manager_dup().
-         * 
-         * This property may be %NULL initially, but will always be non-%NULL
-         * after the #TpBaseClient has been constructed.
-         * 
-         * It is an error to specify both a non-%NULL account manager, and a
-         * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
-         * account manager's #TpProxy:dbus-daemon.
-         */
         accountManager?: AccountManager | null
         /**
          * The object implementing the #TpClientChannelFactoryInterface interface
@@ -8713,6 +8093,18 @@ export module BaseClient {
          * used.
          */
         dbusDaemon?: DBusDaemon | null
+        /**
+         * Factory for this base client, used to look up or create
+         * #TpAccount objects.
+         */
+        factory?: SimpleClientFactory | null
+        /**
+         * The name of the client. This is used to register the D-Bus service name
+         * and object path of the service.
+         * 
+         * This property can't be %NULL.
+         */
+        name?: string | null
         /**
          * If %TRUE, tp_base_client_register() will append an unique token to the
          * service bus name and object path to ensure they are unique.
@@ -8752,33 +8144,6 @@ export interface BaseClient {
      * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
      * account manager's #TpProxy:dbus-daemon.
      */
-    readonly account_manager: AccountManager
-    /**
-     * Account manager for this base client, used to look up or create
-     * #TpAccount objects. This may be specified in the constructor in order
-     * to get existing #TpAccount objects.
-     * 
-     * It is not guaranteed that any of its features have been prepared, and
-     * it is not necessary to wait for any features before specifying this
-     * property in the constructor.
-     * 
-     * Clients that interact with the #TpAccount should usually
-     * set this property instead of #TpBaseClient:dbus-daemon. Doing this
-     * will ensure that each account, connection or contact is represented by
-     * a single #TpAccount, #TpConnection or #TpContact object, shared between
-     * all the cooperating modules that have the same #TpAccountManager.
-     * 
-     * If the #TpBaseClient:dbus-daemon is set to the result of
-     * tp_dbus_daemon_dup(), then this property defaults to
-     * the result of tp_account_manager_dup().
-     * 
-     * This property may be %NULL initially, but will always be non-%NULL
-     * after the #TpBaseClient has been constructed.
-     * 
-     * It is an error to specify both a non-%NULL account manager, and a
-     * non-%NULL #TpBaseClient:dbus-daemon that is not the same as the
-     * account manager's #TpProxy:dbus-daemon.
-     */
     readonly accountManager: AccountManager
     /**
      * The object implementing the #TpClientChannelFactoryInterface interface
@@ -8788,28 +8153,7 @@ export interface BaseClient {
      * 
      * If no channel factory is specified then #TpAutomaticProxyFactory is used.
      */
-    readonly channel_factory: GObject.Object
-    /**
-     * The object implementing the #TpClientChannelFactoryInterface interface
-     * that will be used to create channel proxies. While
-     * tp_base_client_register() has not yet been called, this property can be
-     * changed using tp_base_client_set_channel_factory().
-     * 
-     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
-     */
     readonly channelFactory: GObject.Object
-    /**
-     * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
-     * Read-only except during construction.
-     * 
-     * This property can't be %NULL after construction.
-     * 
-     * Since 0.11.14 this property may be %NULL or unspecified in
-     * g_object_new(), but only if #TpBaseClient:account-manager is provided
-     * instead, in which case its #TpProxy:dbus-daemon property will be
-     * used.
-     */
-    readonly dbus_daemon: DBusDaemon
     /**
      * #TpDBusDaemon object encapsulating this object's connection to D-Bus.
      * Read-only except during construction.
@@ -8834,11 +8178,6 @@ export interface BaseClient {
      * This property can't be %NULL.
      */
     readonly name: string | null
-    /**
-     * If %TRUE, tp_base_client_register() will append an unique token to the
-     * service bus name and object path to ensure they are unique.
-     */
-    readonly uniquify_name: boolean
     /**
      * If %TRUE, tp_base_client_register() will append an unique token to the
      * service bus name and object path to ensure they are unique.
@@ -9292,16 +8631,6 @@ export module BaseConnection {
          * It is given by the AccountManager in the connection parameters. Or %NULL if
          * the ConnectionManager or the AccountManager are too old.
          */
-        account_path_suffix?: string | null
-        /**
-         * The suffix of the account object path such as
-         * "gabble/jabber/chris_40example_2ecom0" for the account whose object path is
-         * %TP_ACCOUNT_OBJECT_PATH_BASE + "gabble/jabber/chris_40example_2ecom0".
-         * The same as returned by tp_account_get_path_suffix().
-         * 
-         * It is given by the AccountManager in the connection parameters. Or %NULL if
-         * the ConnectionManager or the AccountManager are too old.
-         */
         accountPathSuffix?: string | null
     }
 
@@ -9320,23 +8649,7 @@ export interface BaseConnection {
      * It is given by the AccountManager in the connection parameters. Or %NULL if
      * the ConnectionManager or the AccountManager are too old.
      */
-    readonly account_path_suffix: string | null
-    /**
-     * The suffix of the account object path such as
-     * "gabble/jabber/chris_40example_2ecom0" for the account whose object path is
-     * %TP_ACCOUNT_OBJECT_PATH_BASE + "gabble/jabber/chris_40example_2ecom0".
-     * The same as returned by tp_account_get_path_suffix().
-     * 
-     * It is given by the AccountManager in the connection parameters. Or %NULL if
-     * the ConnectionManager or the AccountManager are too old.
-     */
     readonly accountPathSuffix: string | null
-    /**
-     * This property is not useful to use directly. Its value is %TRUE, to
-     * indicate that this version of telepathy-glib never unreferences handles
-     * until the connection becomes disconnected.
-     */
-    readonly has_immortal_handles: boolean
     /**
      * This property is not useful to use directly. Its value is %TRUE, to
      * indicate that this version of telepathy-glib never unreferences handles
@@ -9682,15 +8995,7 @@ export interface CallChannel {
     /**
      * Whether or not the streaming is done by dedicated hardware.
      */
-    readonly hardware_streaming: boolean
-    /**
-     * Whether or not the streaming is done by dedicated hardware.
-     */
     readonly hardwareStreaming: boolean
-    /**
-     * A #TpLocalHoldState specifying if the Call is currently held
-     */
-    readonly hold_state: number
     /**
      * A #TpLocalHoldState specifying if the Call is currently held
      */
@@ -9698,15 +9003,7 @@ export interface CallChannel {
     /**
      * A #TpLocalHoldStateReason specifying why the Call is currently held.
      */
-    readonly hold_state_reason: number
-    /**
-     * A #TpLocalHoldStateReason specifying why the Call is currently held.
-     */
     readonly holdStateReason: number
-    /**
-     * Whether or not the Call was started with audio.
-     */
-    readonly initial_audio: boolean
     /**
      * Whether or not the Call was started with audio.
      */
@@ -9715,16 +9012,7 @@ export interface CallChannel {
      * If #TpCallChannel:initial-audio is set to %TRUE, then this property will
      * is the name of the intial audio content, %NULL otherwise.
      */
-    readonly initial_audio_name: string | null
-    /**
-     * If #TpCallChannel:initial-audio is set to %TRUE, then this property will
-     * is the name of the intial audio content, %NULL otherwise.
-     */
     readonly initialAudioName: string | null
-    /**
-     * Whether or not the Call was started with video.
-     */
-    readonly initial_video: boolean
     /**
      * Whether or not the Call was started with video.
      */
@@ -9733,16 +9021,7 @@ export interface CallChannel {
      * If #TpCallChannel:initial-video is set to %TRUE, then this property will
      * is the name of the intial video content, %NULL otherwise.
      */
-    readonly initial_video_name: string | null
-    /**
-     * If #TpCallChannel:initial-video is set to %TRUE, then this property will
-     * is the name of the intial video content, %NULL otherwise.
-     */
     readonly initialVideoName: string | null
-    /**
-     * Whether or not call contents can be added or removed.
-     */
-    readonly mutable_contents: boolean
     /**
      * Whether or not call contents can be added or removed.
      */
@@ -9755,16 +9034,7 @@ export interface CallChannel {
      * Detailed infoermation about #TpCallChannel:state. It is a #GHashTable
      * mapping gchar*->GValue, it can be accessed using the tp_asv_* functions.
      */
-    readonly state_details: GLib.HashTable
-    /**
-     * Detailed infoermation about #TpCallChannel:state. It is a #GHashTable
-     * mapping gchar*->GValue, it can be accessed using the tp_asv_* functions.
-     */
     readonly stateDetails: GLib.HashTable
-    /**
-     * Reason why #TpCallChannel:state last changed.
-     */
-    readonly state_reason: CallStateReason
     /**
      * Reason why #TpCallChannel:state last changed.
      */
@@ -10217,10 +9487,6 @@ export interface CallContent {
     /**
      * The media type of this content, from #TpMediaStreamType.
      */
-    readonly media_type: number
-    /**
-     * The media type of this content, from #TpMediaStreamType.
-     */
     readonly mediaType: number
     /**
      * The name of this content.
@@ -10436,11 +9702,6 @@ export interface CallStream {
      * If %TRUE, the user can request that a remote contact starts sending on this
      * stream.
      */
-    readonly can_request_receiving: boolean
-    /**
-     * If %TRUE, the user can request that a remote contact starts sending on this
-     * stream.
-     */
     readonly canRequestReceiving: boolean
     /**
      * The #TpConnection of the call.
@@ -10453,14 +9714,15 @@ export interface CallStream {
     /**
      * The local user's sending state, from #TpSendingState.
      */
-    readonly local_sending_state: number
-    /**
-     * The local user's sending state, from #TpSendingState.
-     */
     readonly localSendingState: number
 
     // Owm methods of TelepathyGLib-0.12.TelepathyGLib.CallStream
 
+    /**
+     * <!-- -->
+     * @returns the value of #TpCallStream:can-request-receiving
+     */
+    can_request_receiving(): boolean
     /**
      * <!-- -->
      * @returns the value of #TpCallStream:local-sending-state
@@ -10629,12 +9891,6 @@ export module Capabilities {
          * contact, or if it's only a guess based on the capabilities of the
          * underlying connection.
          */
-        contact_specific?: boolean | null
-        /**
-         * Whether this object accurately describes the capabilities of a particular
-         * contact, or if it's only a guess based on the capabilities of the
-         * underlying connection.
-         */
         contactSpecific?: boolean | null
     }
 
@@ -10657,27 +9913,7 @@ export interface Capabilities {
      * tp_capabilities_supports_text_chats() are likely to be more useful to
      * the majority of clients.
      */
-    readonly channel_classes_variant: GLib.Variant
-    /**
-     * The underlying data structure used by Telepathy to represent the
-     * requests that can succeed.
-     * 
-     * This can be used by advanced clients to determine whether an unusually
-     * complex request would succeed. See the Telepathy D-Bus API Specification
-     * for details of how to interpret the returned #GVariant of type
-     * a(a{sv}as).
-     * 
-     * The higher-level methods like
-     * tp_capabilities_supports_text_chats() are likely to be more useful to
-     * the majority of clients.
-     */
     readonly channelClassesVariant: GLib.Variant
-    /**
-     * Whether this object accurately describes the capabilities of a particular
-     * contact, or if it's only a guess based on the capabilities of the
-     * underlying connection.
-     */
-    readonly contact_specific: boolean
     /**
      * Whether this object accurately describes the capabilities of a particular
      * contact, or if it's only a guess based on the capabilities of the
@@ -10976,39 +10212,12 @@ export interface Channel {
      * 
      * Change notification is via notify::channel-ready.
      */
-    readonly channel_ready: boolean
-    /**
-     * Initially %FALSE; changes to %TRUE when tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_CORE, and if the channel is a
-     * group, %TP_CHANNEL_FEATURE_GROUP.
-     * 
-     * This is a less general form of tp_proxy_is_prepared(), which should be
-     * used in new code.
-     * 
-     * One important difference is that after #TpProxy::invalidated is
-     * signalled, #TpChannel:channel-ready keeps its current value - which might
-     * be %TRUE, if the channel was successfully prepared before it became
-     * invalidated - but tp_proxy_is_prepared() returns %FALSE for all features.
-     * 
-     * Change notification is via notify::channel-ready.
-     */
     readonly channelReady: boolean
     /**
      * The #TpConnection to which this #TpChannel belongs. Used for e.g.
      * handle manipulation.
      */
     readonly connection: Connection
-    /**
-     * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
-     * #TpChannelGroupFlags indicating the capabilities and behaviour of that
-     * group.
-     * 
-     * Otherwise, this may be 0.
-     * 
-     * Change notification is via notify::group-flags or
-     * TpChannel::group-flags-changed.
-     */
-    readonly group_flags: number
     /**
      * If the %TP_CHANNEL_FEATURE_GROUP feature has been prepared successfully,
      * #TpChannelGroupFlags indicating the capabilities and behaviour of that
@@ -11030,28 +10239,7 @@ export interface Channel {
      * 
      * Change notification is via notify::group-self-contact.
      */
-    readonly group_self_contact: Contact
-    /**
-     * If this channel is a group and %TP_CHANNEL_FEATURE_CONTACTS has been
-     * prepared, and the user is a member of the group, the #TpContact
-     * representing them in this group.
-     * 
-     * Otherwise, the result may be either a contact representing the user,
-     * or %NULL.
-     * 
-     * Change notification is via notify::group-self-contact.
-     */
     readonly groupSelfContact: Contact
-    /**
-     * If this channel is a group and %TP_CHANNEL_FEATURE_GROUP has been
-     * prepared, and the user is a member of the group, the #TpHandle
-     * representing them in this group.
-     * 
-     * Otherwise, the result may be either a handle representing the user, or 0.
-     * 
-     * Change notification is via notify::group-self-handle.
-     */
-    readonly group_self_handle: number
     /**
      * If this channel is a group and %TP_CHANNEL_FEATURE_GROUP has been
      * prepared, and the user is a member of the group, the #TpHandle
@@ -11098,48 +10286,7 @@ export interface Channel {
      * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
      * %NULL.
      */
-    readonly initiator_contact: Contact
-    /**
-     * The #TpContact of the initiator of this channel, or %NULL if there is no
-     * particular initiator.
-     * 
-     * If the channel was initiated by a remote contact, this represents
-     * that contact, and #TpChannel:requested will be %FALSE. For instance,
-     * for an incoming call this property indicates the caller, and for a
-     * chatroom invitation this property indicates who sent the invitation.
-     * 
-     * If the channel was requested by the local user, #TpChannel:requested
-     * will be %TRUE, and this property may be the #TpChannel:group-self-contact
-     * or #TpConnection:self-contact.
-     * 
-     * If the channel appeared for some other reason (for instance as a
-     * side-effect of connecting to the server), this property may be %NULL.
-     * 
-     * This is not guaranteed to be set until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
-     * %NULL.
-     */
     readonly initiatorContact: Contact
-    /**
-     * The %TP_HANDLE_TYPE_CONTACT #TpHandle of the initiator of this
-     * channel, or 0 if there is no particular initiator.
-     * 
-     * If the channel was initiated by a remote contact, this handle represents
-     * that contact, and #TpChannel:requested will be %FALSE. For instance,
-     * for an incoming call this property indicates the caller, and for a
-     * chatroom invitation this property indicates who sent the invitation.
-     * 
-     * If the channel was requested by the local user, #TpChannel:requested
-     * will be %TRUE, and this property may be the #TpChannel:group-self-handle
-     * or #TpConnection:self-handle.
-     * 
-     * If the channel appeared for some other reason (for instance as a
-     * side-effect of connecting to the server), this property may be 0.
-     * 
-     * This is not guaranteed to be set until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_CORE; until then, it may be 0.
-     */
-    readonly initiator_handle: number
     /**
      * The %TP_HANDLE_TYPE_CONTACT #TpHandle of the initiator of this
      * channel, or 0 if there is no particular initiator.
@@ -11169,28 +10316,7 @@ export interface Channel {
      * finished preparing %TP_CHANNEL_FEATURE_CORE; until then, it may be
      * the empty string.
      */
-    readonly initiator_identifier: string | null
-    /**
-     * If #TpChannel:initiator-handle is 0, this will always be "".
-     * Otherwise, this will be the #TpContact:identifier of the contact
-     * with that handle.
-     * 
-     * This is not guaranteed to be set until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_CORE; until then, it may be
-     * the empty string.
-     */
     readonly initiatorIdentifier: string | null
-    /**
-     * If %TRUE, tp_channel_provide_password_async() has to be called
-     * to be able to join the channel.
-     * 
-     * This is not guaranteed to be meaningful until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_PASSWORD; until then, it may return
-     * %FALSE even if the channel is actually protected by a password.
-     * Preparing %TP_CHANNEL_FEATURE_PASSWORD also ensures that the
-     * notify::password-needed signal will be fired when this property changes.
-     */
-    readonly password_needed: boolean
     /**
      * If %TRUE, tp_channel_provide_password_async() has to be called
      * to be able to join the channel.
@@ -11219,17 +10345,6 @@ export interface Channel {
      * %FALSE even if the channel was actually requested.
      */
     readonly requested: boolean
-    /**
-     * If this channel is for communication with a single contact (that is,
-     * #TpChannelIface:handle-type is %TP_HANDLE_TYPE_CONTACT), then a #TpContact
-     * representing the remote contact. For chat rooms, contact search channels and
-     * other channels without a single remote contact, %NULL.
-     * 
-     * This is not guaranteed to be set until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_FEATURE_CONTACTS; until then, it may be
-     * %NULL.
-     */
-    readonly target_contact: Contact
     /**
      * If this channel is for communication with a single contact (that is,
      * #TpChannelIface:handle-type is %TP_HANDLE_TYPE_CONTACT), then a #TpContact
@@ -11701,6 +10816,11 @@ export interface Channel {
      */
     leave_finish(result: Gio.AsyncResult): boolean
     /**
+     * Return the #TpChannel:password-needed property
+     * @returns the value of #TpChannel:password-needed
+     */
+    password_needed(): boolean
+    /**
      * Provide `password` so that `self` can be joined.
      * This function must be called with the correct password in order for
      * channel joining to proceed if the TpChannel:password-needed property
@@ -11964,17 +11084,6 @@ export interface ChannelDispatchOperation {
      * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
      */
     readonly connection: Connection
-    /**
-     * A #GStrv containing the well known bus names (starting
-     * with TP_CLIENT_BUS_NAME_BASE) of the possible Handlers for
-     * the channels
-     * 
-     * Read-only except during construction.
-     * 
-     * This is not guaranteed to be set until tp_proxy_prepare_async() has
-     * finished preparing %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE.
-     */
-    readonly possible_handlers: string[]
     /**
      * A #GStrv containing the well known bus names (starting
      * with TP_CLIENT_BUS_NAME_BASE) of the possible Handlers for
@@ -12647,16 +11756,6 @@ export module ChannelRequest {
          * 
          * If no channel factory is specified then #TpAutomaticProxyFactory is used.
          */
-        channel_factory?: GObject.Object | null
-        /**
-         * The object implementing the #TpClientChannelFactoryInterface interface
-         * that will be used to create channel proxies when the
-         * #TpChannelRequest::succeeded-with-channel signal is fired.
-         * This property can be changed using
-         * tp_channel_request_set_channel_factory().
-         * 
-         * If no channel factory is specified then #TpAutomaticProxyFactory is used.
-         */
         channelFactory?: GObject.Object | null
     }
 
@@ -12682,25 +11781,7 @@ export interface ChannelRequest {
      * 
      * If no channel factory is specified then #TpAutomaticProxyFactory is used.
      */
-    channel_factory: GObject.Object
-    /**
-     * The object implementing the #TpClientChannelFactoryInterface interface
-     * that will be used to create channel proxies when the
-     * #TpChannelRequest::succeeded-with-channel signal is fired.
-     * This property can be changed using
-     * tp_channel_request_set_channel_factory().
-     * 
-     * If no channel factory is specified then #TpAutomaticProxyFactory is used.
-     */
     channelFactory: GObject.Object
-    /**
-     * A %G_VARIANT_TYPE_VARDICT of metadata provided by
-     * the channel requester; or %NULL if #TpChannelRequest:immutable-properties
-     * is not defined or if no hints have been defined.
-     * 
-     * Read-only.
-     */
-    readonly hints_vardict: GLib.Variant
     /**
      * A %G_VARIANT_TYPE_VARDICT of metadata provided by
      * the channel requester; or %NULL if #TpChannelRequest:immutable-properties
@@ -12719,17 +11800,6 @@ export interface ChannelRequest {
      * 
      * Read-only except during construction.
      */
-    readonly immutable_properties_vardict: GLib.Variant
-    /**
-     * The immutable D-Bus properties of this channel request, represented by a
-     * %G_VARIANT_TYPE_VARDICT where the keys are
-     * D-Bus interface name + "." + property name.
-     * 
-     * Note that this property is set only if the immutable properties have been
-     * set during the construction of the #TpChannelRequest.
-     * 
-     * Read-only except during construction.
-     */
     readonly immutablePropertiesVardict: GLib.Variant
     /**
      * Either the well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE)
@@ -12738,23 +11808,7 @@ export interface ChannelRequest {
      * 
      * Read-only.
      */
-    readonly preferred_handler: string | null
-    /**
-     * Either the well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE)
-     * of the preferred handler for this channel request,
-     * or %NULL to indicate that any handler would be acceptable.
-     * 
-     * Read-only.
-     */
     readonly preferredHandler: string | null
-    /**
-     * The time at which user action occurred, or
-     * #TP_USER_ACTION_TIME_NOT_USER_ACTION if this channel request is
-     * for some reason not involving user action.
-     * 
-     * Read-only.
-     */
-    readonly user_action_time: number
     /**
      * The time at which user action occurred, or
      * #TP_USER_ACTION_TIME_NOT_USER_ACTION if this channel request is
@@ -13069,25 +12123,7 @@ export interface Connection {
      * 
      * See Also: tp_connection_get_balance()
      */
-    readonly balance_currency: string | null
-    /**
-     * The Currency field of the Balance.AccountBalance property.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_BALANCE.
-     * 
-     * See Also: tp_connection_get_balance()
-     */
     readonly balanceCurrency: string | null
-    /**
-     * The Scale field of the Balance.AccountBalance property.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_BALANCE.
-     * 
-     * See Also: tp_connection_get_balance()
-     */
-    readonly balance_scale: number
     /**
      * The Scale field of the Balance.AccountBalance property.
      * 
@@ -13103,27 +12139,7 @@ export interface Connection {
      * For this property to be valid, you must first call
      * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_BALANCE.
      */
-    readonly balance_uri: string | null
-    /**
-     * The Balance.ManageCreditURI property.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_BALANCE.
-     */
     readonly balanceUri: string | null
-    /**
-     * A #GPtrArray of blocked #TpContact. Changes are notified using the
-     * #TpConnection::blocked-contacts-changed signal.
-     * 
-     * These TpContact objects have been prepared with the desired features.
-     * See tp_simple_client_factory_add_contact_features() to define which
-     * features needs to be prepared on them.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_BLOCKING.
-     */
-    readonly blocked_contacts: any[]
     /**
      * A #GPtrArray of blocked #TpContact. Changes are notified using the
      * #TpConnection::blocked-contacts-changed signal.
@@ -13149,30 +12165,7 @@ export interface Connection {
      * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
      * %TP_CONNECTION_FEATURE_CONTACT_LIST.
      */
-    readonly can_change_contact_list: boolean
-    /**
-     * If true, presence subscription and publication can be changed using the
-     * RequestSubscription, AuthorizePublication and RemoveContacts methods.
-     * 
-     * Rational: link-local XMPP, presence is implicitly published to everyone in
-     * the local subnet, so the user cannot control their presence publication.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST.
-     */
     readonly canChangeContactList: boolean
-    /**
-     * If this property is %TRUE, contacts may be reported as abusive to the
-     * server administrators by setting report_abusive to %TRUE when calling
-     * tp_connection_block_contacts_async().
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_BLOCKING.
-     */
-    readonly can_report_abusive: boolean
     /**
      * If this property is %TRUE, contacts may be reported as abusive to the
      * server administrators by setting report_abusive to %TRUE when calling
@@ -13194,32 +12187,11 @@ export interface Connection {
     /**
      * This connection's connection manager name.
      */
-    readonly cm_name: string | null
-    /**
-     * This connection's connection manager name.
-     */
     readonly cmName: string | null
     /**
      * This connection's connection manager name.
      */
-    readonly connection_manager_name: string | null
-    /**
-     * This connection's connection manager name.
-     */
     readonly connectionManagerName: string | null
-    /**
-     * Initially %FALSE; changes to %TRUE when the connection has gone to
-     * CONNECTED status, introspection has finished and it's ready for use.
-     * 
-     * By the time this property becomes %TRUE, any extra interfaces will
-     * have been set up and the #TpProxy:interfaces property will have been
-     * populated.
-     * 
-     * This is similar to %TP_CONNECTION_FEATURE_CONNECTED, except that once
-     * it has changed to %TRUE, it remains %TRUE even if the connection has
-     * been invalidated.
-     */
-    readonly connection_ready: boolean
     /**
      * Initially %FALSE; changes to %TRUE when the connection has gone to
      * CONNECTED status, introspection has finished and it's ready for use.
@@ -13246,33 +12218,7 @@ export interface Connection {
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
      */
-    readonly contact_groups: string[]
-    /**
-     * The names of all groups that currently exist. This may be a larger set than
-     * the union of all #TpContact:contact-groups properties, if the connection
-     * allows groups to be empty.
-     * 
-     * This property's value is not meaningful until the
-     * #TpConnection:contact-list-state property has become
-     * %TP_CONTACT_LIST_STATE_SUCCESS.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
-     */
     readonly contactGroups: string[]
-    /**
-     * If true, presence subscriptions (in both directions) on this connection are
-     * stored by the server or other infrastructure.
-     * 
-     * If false, presence subscriptions on this connection are not stored.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST.
-     */
-    readonly contact_list_persists: boolean
     /**
      * If true, presence subscriptions (in both directions) on this connection are
      * stored by the server or other infrastructure.
@@ -13293,29 +12239,7 @@ export interface Connection {
      * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
      * %TP_CONNECTION_FEATURE_CONTACT_LIST.
      */
-    readonly contact_list_state: number
-    /**
-     * The progress made in retrieving the contact list.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST.
-     */
     readonly contactListState: number
-    /**
-     * True if each contact can be in at most one group; false if each contact
-     * can be in many groups.
-     * 
-     * This property cannot change after the connection has moved to the
-     * %TP_CONNECTION_STATUS_CONNECTED state. Until then, its value is undefined,
-     * and it may change at any time, without notification.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
-     */
-    readonly disjoint_groups: boolean
     /**
      * True if each contact can be in at most one group; false if each contact
      * can be in many groups.
@@ -13340,44 +12264,13 @@ export interface Connection {
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
      */
-    readonly group_storage: number
-    /**
-     * Indicates the extent to which contacts' groups can be set and stored.
-     * 
-     * This property cannot change after the connection has moved to the
-     * %TP_CONNECTION_STATUS_CONNECTED state. Until then, its value is undefined,
-     * and it may change at any time, without notification.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_GROUPS.
-     */
     readonly groupStorage: number
     /**
      * The connection's machine-readable protocol name, such as "jabber",
      * "msn" or "local-xmpp". Recommended names for most protocols can be
      * found in the Telepathy D-Bus Interface Specification.
      */
-    readonly protocol_name: string | null
-    /**
-     * The connection's machine-readable protocol name, such as "jabber",
-     * "msn" or "local-xmpp". Recommended names for most protocols can be
-     * found in the Telepathy D-Bus Interface Specification.
-     */
     readonly protocolName: string | null
-    /**
-     * If true, the Message parameter to RequestSubscription is likely to be
-     * significant, and user interfaces SHOULD prompt the user for a message to
-     * send with the request; a message such as "I would like to add you to my
-     * contact list", translated into the local user's language, might make a
-     * suitable default.
-     * 
-     * For this property to be valid, you must first call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST_PROPERTIES or
-     * %TP_CONNECTION_FEATURE_CONTACT_LIST.
-     */
-    readonly request_uses_message: boolean
     /**
      * If true, the Message parameter to RequestSubscription is likely to be
      * significant, and user interfaces SHOULD prompt the user for a message to
@@ -13406,36 +12299,7 @@ export interface Connection {
      * tp_proxy_prepare_async() with the feature
      * %TP_CONNECTION_FEATURE_CONNECTED.
      */
-    readonly self_contact: Contact
-    /**
-     * A #TpContact representing the local user on this connection,
-     * or %NULL if not yet available.
-     * 
-     * If the local user's unique identifier changes (for instance by using
-     * /nick on IRC), this property will change to a different #TpContact object
-     * representing the new identifier, and #GObject::notify will be emitted.
-     * 
-     * The #TpContact object is guaranteed to have all of the features previously
-     * passed to tp_simple_client_factory_add_contact_features() prepared.
-     * 
-     * To wait for a non-%NULL self-contact (and other properties), call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONNECTED.
-     */
     readonly selfContact: Contact
-    /**
-     * The %TP_HANDLE_TYPE_CONTACT handle of the local user on this connection,
-     * or 0 if we don't know yet or if the connection has become invalid.
-     * 
-     * This may change if the local user's unique identifier changes (for
-     * instance by using /nick on IRC), in which case #GObject::notify will be
-     * emitted.
-     * 
-     * To wait for a valid self-handle (and other properties), call
-     * tp_proxy_prepare_async() with the feature
-     * %TP_CONNECTION_FEATURE_CONNECTED.
-     */
-    readonly self_handle: number
     /**
      * The %TP_HANDLE_TYPE_CONTACT handle of the local user on this connection,
      * or 0 if we don't know yet or if the connection has become invalid.
@@ -13461,15 +12325,6 @@ export interface Connection {
      * of the connection has finished.
      */
     readonly status: number
-    /**
-     * To wait for a valid status (and other properties), call
-     * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_CORE.
-     * 
-     * The reason why #TpConnection:status changed to its current value,
-     * or TP_CONNECTION_STATUS_REASON_NONE_SPECIFIED if unknown.
-     * know yet.
-     */
-    readonly status_reason: number
     /**
      * To wait for a valid status (and other properties), call
      * tp_proxy_prepare_async() with the feature %TP_CONNECTION_FEATURE_CORE.
@@ -13597,6 +12452,11 @@ export interface Connection {
      * @returns %TRUE if the operation was successful, otherwise %FALSE.
      */
     block_contacts_finish(result: Gio.AsyncResult): boolean
+    /**
+     * <!-- -->
+     * @returns the value of #TpConnection:can-report-abusive
+     */
+    can_report_abusive(): boolean
     can_set_contact_alias(): boolean
     /**
      * Disconnect the connection.
@@ -14632,19 +13492,6 @@ export module ConnectionManager {
          * If %TRUE, always introspect the connection manager as it comes online,
          * even if we already have its info from a .manager file. Default %FALSE.
          */
-        always_introspect?: boolean | null
-        /**
-         * The absolute path of the .manager file. If set to %NULL (the default),
-         * the XDG data directories will be searched for a .manager file of the
-         * correct name.
-         * 
-         * If set to the empty string, no .manager file will be read.
-         */
-        manager_file?: string | null
-        /**
-         * If %TRUE, always introspect the connection manager as it comes online,
-         * even if we already have its info from a .manager file. Default %FALSE.
-         */
         alwaysIntrospect?: boolean | null
         /**
          * The absolute path of the .manager file. If set to %NULL (the default),
@@ -14666,24 +13513,11 @@ export interface ConnectionManager {
      * If %TRUE, always introspect the connection manager as it comes online,
      * even if we already have its info from a .manager file. Default %FALSE.
      */
-    always_introspect: boolean
-    /**
-     * If %TRUE, always introspect the connection manager as it comes online,
-     * even if we already have its info from a .manager file. Default %FALSE.
-     */
     alwaysIntrospect: boolean
     /**
      * The name of the connection manager, e.g. "gabble" (read-only).
      */
-    readonly cm_name: string | null
-    /**
-     * The name of the connection manager, e.g. "gabble" (read-only).
-     */
     readonly cmName: string | null
-    /**
-     * The name of the connection manager, e.g. "gabble" (read-only).
-     */
-    readonly connection_manager: string | null
     /**
      * The name of the connection manager, e.g. "gabble" (read-only).
      */
@@ -14698,26 +13532,7 @@ export interface ConnectionManager {
      * (Note that this is of type %G_TYPE_UINT, not %TP_TYPE_CM_INFO_SOURCE,
      * for historical reasons.)
      */
-    readonly info_source: number
-    /**
-     * Where we got the current information on supported protocols
-     * (a #TpCMInfoSource).
-     * 
-     * Since 0.7.26, the #GObject::notify signal is emitted for this
-     * property.
-     * 
-     * (Note that this is of type %G_TYPE_UINT, not %TP_TYPE_CM_INFO_SOURCE,
-     * for historical reasons.)
-     */
     readonly infoSource: number
-    /**
-     * The absolute path of the .manager file. If set to %NULL (the default),
-     * the XDG data directories will be searched for a .manager file of the
-     * correct name.
-     * 
-     * If set to the empty string, no .manager file will be read.
-     */
-    manager_file: string | null
     /**
      * The absolute path of the .manager file. If set to %NULL (the default),
      * the XDG data directories will be searched for a .manager file of the
@@ -15025,20 +13840,6 @@ export interface Contact {
      * contact. Note that setting %TP_CONTACT_FEATURE_AVATAR_DATA will also
      * implicitly set %TP_CONTACT_FEATURE_AVATAR_TOKEN.
      */
-    readonly avatar_file: Gio.File
-    /**
-     * #GFile to the latest cached avatar image, or %NULL if this contact has
-     * no avatar, or if the avatar data is not yet retrieved.
-     * 
-     * When #TpContact:avatar-token changes, this property is not updated
-     * immediately, but will be updated when the new avatar data is retrieved and
-     * stored in cache. Until then, the file will keep its old value of the latest
-     * cached avatar image.
-     * 
-     * This is set to %NULL if %TP_CONTACT_FEATURE_AVATAR_DATA is not set on this
-     * contact. Note that setting %TP_CONTACT_FEATURE_AVATAR_DATA will also
-     * implicitly set %TP_CONTACT_FEATURE_AVATAR_TOKEN.
-     */
     readonly avatarFile: Gio.File
     /**
      * MIME type of the latest cached avatar image, or %NULL if this contact has
@@ -15046,24 +13847,7 @@ export interface Contact {
      * 
      * This is always the MIME type of the image given by #TpContact:avatar-file.
      */
-    readonly avatar_mime_type: string | null
-    /**
-     * MIME type of the latest cached avatar image, or %NULL if this contact has
-     * no avatar, or if the avatar data is not yet retrieved.
-     * 
-     * This is always the MIME type of the image given by #TpContact:avatar-file.
-     */
     readonly avatarMimeType: string | null
-    /**
-     * An opaque string representing state of the contact's avatar (depending on
-     * the protocol, this might be a hash, a timestamp or something else), or
-     * an empty string if there is no avatar.
-     * 
-     * This may be %NULL if it is not known whether this contact has an avatar
-     * or not (either for network protocol reasons, or because this #TpContact
-     * has not been set up to track %TP_CONTACT_FEATURE_AVATAR_TOKEN).
-     */
-    readonly avatar_token: string | null
     /**
      * An opaque string representing state of the contact's avatar (depending on
      * the protocol, this might be a hash, a timestamp or something else), or
@@ -15092,14 +13876,6 @@ export interface Contact {
      * set on this contact; it may also be %NULL if that feature is prepared, but
      * the contact's client types are unknown.
      */
-    readonly client_types: string[]
-    /**
-     * A #GStrv containing the client types of this contact.
-     * 
-     * This is set to %NULL if %TP_CONTACT_FEATURE_CLIENT_TYPES is not
-     * set on this contact; it may also be %NULL if that feature is prepared, but
-     * the contact's client types are unknown.
-     */
     readonly clientTypes: string[]
     /**
      * The #TpConnection to which this contact belongs.
@@ -15112,22 +13888,7 @@ export interface Contact {
      * on this contact, or if the connection does not implement ContactGroups
      * interface.
      */
-    readonly contact_groups: string[]
-    /**
-     * a #GStrv with names of groups of which a contact is a member.
-     * 
-     * This is set to %NULL if %TP_CONTACT_FEATURE_CONTACT_GROUPS is not prepared
-     * on this contact, or if the connection does not implement ContactGroups
-     * interface.
-     */
     readonly contactGroups: string[]
-    /**
-     * A #GList of #TpContactInfoField representing the vCard of this contact.
-     * 
-     * This is set to %NULL if %TP_CONTACT_FEATURE_CONTACT_INFO is not set on this
-     * contact.
-     */
-    readonly contact_info: any
     /**
      * A #GList of #TpContactInfoField representing the vCard of this contact.
      * 
@@ -15167,29 +13928,7 @@ export interface Contact {
      * prepared on this contact, or if the connection does not implement
      * ContactBlocking interface.
      */
-    readonly is_blocked: boolean
-    /**
-     * %TRUE if the contact has been blocked.
-     * 
-     * This is set to %FALSE if %TP_CONTACT_FEATURE_CONTACT_BLOCKING is not
-     * prepared on this contact, or if the connection does not implement
-     * ContactBlocking interface.
-     */
     readonly isBlocked: boolean
-    /**
-     * If this contact has set a user-defined location, a string to
-     * variant map containing his location. If not, %NULL.
-     * tp_vardict_get_string() and similar functions can be used to access
-     * the contents.
-     * 
-     * This may be %NULL even if the contact has set a location,
-     * if this #TpContact object has not been set up to track
-     * %TP_CONTACT_FEATURE_LOCATION.
-     * 
-     * This property contains the same information as #TpContact:location,
-     * in a different format.
-     */
-    readonly location_vardict: GLib.Variant
     /**
      * If this contact has set a user-defined location, a string to
      * variant map containing his location. If not, %NULL.
@@ -15214,27 +13953,7 @@ export interface Contact {
      * if this #TpContact object has not been set up to track
      * %TP_CONTACT_FEATURE_PRESENCE. It is never %NULL.
      */
-    readonly presence_message: string | null
-    /**
-     * If this contact has set a user-defined status message, that message;
-     * if not, an empty string (which user interfaces may replace with a
-     * localized form of the #TpContact:presence-status or
-     * #TpContact:presence-type).
-     * 
-     * This may be an empty string even if the contact has set a message,
-     * if this #TpContact object has not been set up to track
-     * %TP_CONTACT_FEATURE_PRESENCE. It is never %NULL.
-     */
     readonly presenceMessage: string | null
-    /**
-     * A string representing the presence status of this contact. This may be
-     * a well-known string from the Telepathy specification, like "available",
-     * or a connection-manager-specific string, like "out-to-lunch".
-     * 
-     * This may be an empty string if this #TpContact object has not been set up
-     * to track %TP_CONTACT_FEATURE_PRESENCE. It is never %NULL.
-     */
-    readonly presence_status: string | null
     /**
      * A string representing the presence status of this contact. This may be
      * a well-known string from the Telepathy specification, like "available",
@@ -15254,27 +13973,7 @@ export interface Contact {
      * This may be %TP_CONNECTION_PRESENCE_TYPE_UNSET if this #TpContact
      * has not been set up to track %TP_CONTACT_FEATURE_PRESENCE.
      */
-    readonly presence_type: number
-    /**
-     * The #TpConnectionPresenceType representing the type of presence status
-     * for this contact.
-     * 
-     * This is provided so even unknown values for #TpContact:presence-status
-     * can be classified into their fundamental types.
-     * 
-     * This may be %TP_CONNECTION_PRESENCE_TYPE_UNSET if this #TpContact
-     * has not been set up to track %TP_CONTACT_FEATURE_PRESENCE.
-     */
     readonly presenceType: number
-    /**
-     * The message that contact sent when they requested permission to see the
-     * local user's presence, if #TpContact:publish-state is
-     * %TP_SUBSCRIPTION_STATE_ASK, an empty string ("") otherwise.
-     * 
-     * This is set to %NULL until %TP_CONTACT_FEATURE_SUBSCRIPTION_STATES has been
-     * prepared, and it is guaranteed to be non-%NULL afterward.
-     */
-    readonly publish_request: string | null
     /**
      * The message that contact sent when they requested permission to see the
      * local user's presence, if #TpContact:publish-state is
@@ -15291,23 +13990,7 @@ export interface Contact {
      * This is set to %TP_SUBSCRIPTION_STATE_UNKNOWN until
      * %TP_CONTACT_FEATURE_SUBSCRIPTION_STATES has been prepared
      */
-    readonly publish_state: number
-    /**
-     * A #TpSubscriptionState indicating the state of this contact's subscription
-     * to the local user's presence.
-     * 
-     * This is set to %TP_SUBSCRIPTION_STATE_UNKNOWN until
-     * %TP_CONTACT_FEATURE_SUBSCRIPTION_STATES has been prepared
-     */
     readonly publishState: number
-    /**
-     * A #TpSubscriptionState indicating the state of the local user's
-     * subscription to this contact's presence.
-     * 
-     * This is set to %TP_SUBSCRIPTION_STATE_UNKNOWN until
-     * %TP_CONTACT_FEATURE_SUBSCRIPTION_STATES has been prepared
-     */
-    readonly subscribe_state: number
     /**
      * A #TpSubscriptionState indicating the state of the local user's
      * subscription to this contact's presence.
@@ -15572,6 +14255,11 @@ export interface Contact {
      * @returns %TRUE if @self has been set up to track the feature @feature
      */
     has_feature(feature: ContactFeature): boolean
+    /**
+     * <!-- -->
+     * @returns the value of #TpContact:is-blocked.
+     */
+    is_blocked(): boolean
     /**
      * Convenience wrapper for tp_connection_remove_contacts_async()
      * on a single contact.
@@ -16374,17 +15062,7 @@ export interface DBusTubeChannel {
      * 
      * Will be %NULL for outgoing tubes until the tube has been offered.
      */
-    readonly parameters_vardict: GLib.Variant
-    /**
-     * A %G_VARIANT_TYPE_VARDICT representing the parameters of the tube.
-     * 
-     * Will be %NULL for outgoing tubes until the tube has been offered.
-     */
     readonly parametersVardict: GLib.Variant
-    /**
-     * A string representing the service name that will be used over the tube.
-     */
-    readonly service_name: string | null
     /**
      * A string representing the service name that will be used over the tube.
      */
@@ -16875,51 +15553,11 @@ export interface FileTransferChannel {
      * The %TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE feature has to be
      * prepared for this property to be meaningful and kept up to date.
      */
-    readonly initial_offset: number
-    /**
-     * The offset in bytes from where the file should be sent.
-     * 
-     * The %TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE feature has to be
-     * prepared for this property to be meaningful and kept up to date.
-     */
     readonly initialOffset: number
     /**
      * The MIME type of the file to be transferred.
      */
-    readonly mime_type: string | null
-    /**
-     * The MIME type of the file to be transferred.
-     */
     readonly mimeType: string | null
-    /**
-     * A string representing the name of the service suggested to handle
-     * this file transfer channel, or %NULL if the initiator did not
-     * provide one.
-     * 
-     * This is a useful way of requesting file transfer channels with a
-     * hint of what handler they should be handled by on the remote
-     * side. If a channel request is made with this property set (to a
-     * contact who also supports the metadata extension; see the
-     * requestable channel classes for said contact), this property will
-     * be set to the same value on the remote incoming channel and
-     * handlers can match on this in their handler filter. For example,
-     * a remote handler could call the following:
-     * 
-     * 
-     * ```
-     * tp_base_client_take_handler_filter (handler, tp_asv_new (
-     *               TP_PROP_CHANNEL_CHANNEL_TYPE, G_TYPE_STRING, TP_IFACE_CHANNEL_TYPE_FILE_TRANSFER,
-     *               TP_PROP_CHANNEL_TARGET_HANDLE_TYPE, G_TYPE_UINT, TP_HANDLE_TYPE_CONTACT,
-     *               TP_PROP_CHANNEL_REQUESTED, G_TYPE_BOOLEAN, FALSE,
-     *               TP_PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_SERVICE_NAME, G_TYPE_STRING, "service.name",
-     *               NULL));
-     * ```
-     * 
-     * 
-     * The %TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE feature has to be
-     * prepared for this property to be meaningful.
-     */
-    readonly service_name: string | null
     /**
      * A string representing the name of the service suggested to handle
      * this file transfer channel, or %NULL if the initiator did not
@@ -16965,14 +15603,6 @@ export interface FileTransferChannel {
      * Since 0.17.1
      */
     readonly state: number
-    /**
-     * The number of bytes transferred so far in this
-     * file transfer.
-     * 
-     * The %TP_FILE_TRANSFER_CHANNEL_FEATURE_CORE feature has to be
-     * prepared for this property to be meaningful and kept up to date.
-     */
-    readonly transferred_bytes: number
     /**
      * The number of bytes transferred so far in this
      * file transfer.
@@ -17302,23 +15932,6 @@ export module HandleChannelsContext {
          * 
          * This property can't be %NULL.
          */
-        requests_satisfied?: any[] | null
-        /**
-         * The time at which user action occurred, or one of the
-         * special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
-         * %TP_USER_ACTION_TIME_CURRENT_TIME
-         * (see #TpAccountChannelRequest:user-action-time for details)
-         * 
-         * Read-only except during construction.
-         */
-        user_action_time?: number | null
-        /**
-         * A #GPtrArray containing #TpChannelRequest objects representing the
-         * requests that have been passed to HandleChannels.
-         * Read-only except during construction.
-         * 
-         * This property can't be %NULL.
-         */
         requestsSatisfied?: any[] | null
         /**
          * The time at which user action occurred, or one of the
@@ -17368,24 +15981,7 @@ export interface HandleChannelsContext {
      * 
      * This property can't be %NULL.
      */
-    readonly requests_satisfied: any[]
-    /**
-     * A #GPtrArray containing #TpChannelRequest objects representing the
-     * requests that have been passed to HandleChannels.
-     * Read-only except during construction.
-     * 
-     * This property can't be %NULL.
-     */
     readonly requestsSatisfied: any[]
-    /**
-     * The time at which user action occurred, or one of the
-     * special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
-     * %TP_USER_ACTION_TIME_CURRENT_TIME
-     * (see #TpAccountChannelRequest:user-action-time for details)
-     * 
-     * Read-only except during construction.
-     */
-    readonly user_action_time: number
     /**
      * The time at which user action occurred, or one of the
      * special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or
@@ -17806,7 +16402,7 @@ export module ObserveChannelsContext {
          * or %NULL if none has been passed.
          * Read-only except during construction.
          */
-        dispatch_operation?: ChannelDispatchOperation | null
+        dispatchOperation?: ChannelDispatchOperation | null
         /**
          * A #GPtrArray containing #TpChannelRequest objects representing the
          * requests that have been passed to ObserveChannels.
@@ -17815,13 +16411,6 @@ export module ObserveChannelsContext {
          * This property can't be %NULL.
          */
         requests?: any[] | null
-        /**
-         * A #TpChannelDispatchOperation object representing the
-         * ChannelDispatchOperation that has been passed to ObserveChannels,
-         * or %NULL if none has been passed.
-         * Read-only except during construction.
-         */
-        dispatchOperation?: ChannelDispatchOperation | null
     }
 
 }
@@ -17854,13 +16443,6 @@ export interface ObserveChannelsContext {
      * This property can't be %NULL.
      */
     readonly connection: Connection
-    /**
-     * A #TpChannelDispatchOperation object representing the
-     * ChannelDispatchOperation that has been passed to ObserveChannels,
-     * or %NULL if none has been passed.
-     * Read-only except during construction.
-     */
-    readonly dispatch_operation: ChannelDispatchOperation
     /**
      * A #TpChannelDispatchOperation object representing the
      * ChannelDispatchOperation that has been passed to ObserveChannels,
@@ -17965,15 +16547,6 @@ export module Protocol {
         /**
          * The name of the connection manager this protocol is on.
          */
-        cm_name?: string | null
-        /**
-         * The machine-readable name of the protocol, taken from the Telepathy
-         * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
-         */
-        protocol_name?: string | null
-        /**
-         * The name of the connection manager this protocol is on.
-         */
         cmName?: string | null
         /**
          * The machine-readable name of the protocol, taken from the Telepathy
@@ -17998,28 +16571,7 @@ export interface Protocol {
      * or telephone number (tel:+1-555-0123) might have
      * { "sip", "sips", "tel", NULL }.
      */
-    readonly addressable_uri_schemes: string[]
-    /**
-     * A non-%NULL #GStrv of URI schemes supported by this protocol.
-     * If this protocol does not support addressing contacts by URI,
-     * the list is empty.
-     * 
-     * For instance, a SIP connection manager that supports calling contacts
-     * by SIP URI (sip:alice&commat;example.com, sips:bob&commat;example.com)
-     * or telephone number (tel:+1-555-0123) might have
-     * { "sip", "sips", "tel", NULL }.
-     */
     readonly addressableUriSchemes: string[]
-    /**
-     * A non-%NULL #GStrv of vCard fields supported by this protocol.
-     * If this protocol does not support addressing contacts by a vCard field,
-     * the list is empty.
-     * 
-     * For instance, a SIP connection manager that supports calling contacts
-     * by SIP URI (vCard field SIP) or telephone number (vCard field TEL)
-     * might have { "sip", "tel", NULL }.
-     */
-    readonly addressable_vcard_fields: string[]
     /**
      * A non-%NULL #GStrv of vCard fields supported by this protocol.
      * If this protocol does not support addressing contacts by a vCard field,
@@ -18036,20 +16588,7 @@ export interface Protocol {
      * the connection reaches the CONNECTED state, or %NULL if
      * %TP_PROTOCOL_FEATURE_CORE has not been prepared.
      */
-    readonly authentication_types: string[]
-    /**
-     * A non-%NULL #GStrv of interfaces which provide information as to
-     * what kind of authentication channels can possibly appear before
-     * the connection reaches the CONNECTED state, or %NULL if
-     * %TP_PROTOCOL_FEATURE_CORE has not been prepared.
-     */
     readonly authenticationTypes: string[]
-    /**
-     * A #TpAvatarRequirements representing the avatar requirements on this
-     * protocol, or %NULL if %TP_PROTOCOL_FEATURE_CORE has not been prepared or
-     * if the protocol doesn't support avatars.
-     */
-    readonly avatar_requirements: any
     /**
      * A #TpAvatarRequirements representing the avatar requirements on this
      * protocol, or %NULL if %TP_PROTOCOL_FEATURE_CORE has not been prepared or
@@ -18065,25 +16604,7 @@ export interface Protocol {
     /**
      * The name of the connection manager this protocol is on.
      */
-    readonly cm_name: string | null
-    /**
-     * The name of the connection manager this protocol is on.
-     */
     readonly cmName: string | null
-    /**
-     * The name of the protocol in a form suitable for display to users,
-     * such as "AIM" or "Yahoo!", or a string based on #TpProtocol:protocol-name
-     * (currently constructed by putting the first character in title case,
-     * but this is not guaranteed) if no better name is available or the
-     * %TP_PROTOCOL_FEATURE_CORE feature has not been prepared.
-     * 
-     * This is effectively in the C locale (international English); user
-     * interfaces requiring a localized protocol name should look one up in their
-     * own message catalog based on either #TpProtocol:protocol-name or
-     * #TpProtocol:english-name, but should use this English version as a
-     * fallback if no translated version can be found.
-     */
-    readonly english_name: string | null
     /**
      * The name of the protocol in a form suitable for display to users,
      * such as "AIM" or "Yahoo!", or a string based on #TpProtocol:protocol-name
@@ -18104,31 +16625,13 @@ export interface Protocol {
      * prepared, a default is used; currently, this is "im-" plus
      * #TpProtocol:protocol-name.
      */
-    readonly icon_name: string | null
-    /**
-     * The name of an icon in the system's icon theme. If none was supplied
-     * by the Protocol, or the %TP_PROTOCOL_FEATURE_CORE feature has not been
-     * prepared, a default is used; currently, this is "im-" plus
-     * #TpProtocol:protocol-name.
-     */
     readonly iconName: string | null
     /**
      * A list of parameter names supported by this connection manager
      * for this protocol, or %NULL if %TP_PROTOCOL_FEATURE_PARAMETERS has not
      * been prepared.
      */
-    readonly param_names: string[]
-    /**
-     * A list of parameter names supported by this connection manager
-     * for this protocol, or %NULL if %TP_PROTOCOL_FEATURE_PARAMETERS has not
-     * been prepared.
-     */
     readonly paramNames: string[]
-    /**
-     * The machine-readable name of the protocol, taken from the Telepathy
-     * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
-     */
-    readonly protocol_name: string | null
     /**
      * The machine-readable name of the protocol, taken from the Telepathy
      * D-Bus Interface Specification, such as "jabber" or "local-xmpp".
@@ -18144,24 +16647,7 @@ export interface Protocol {
      * will both be unavailable, and this #TpProtocol object will only be useful
      * as a way to access lower-level D-Bus calls.
      */
-    readonly protocol_properties_vardict: GLib.Variant
-    /**
-     * The immutable properties of this Protocol, as provided at construction
-     * time. This is a #G_VARIANT_TYPE_VARDICT #GVariant,
-     * which must not be modified.
-     * 
-     * If the immutable properties were not provided at construction time,
-     * the %TP_PROTOCOL_FEATURE_PARAMETERS and %TP_PROTOCOL_FEATURE_CORE features
-     * will both be unavailable, and this #TpProtocol object will only be useful
-     * as a way to access lower-level D-Bus calls.
-     */
     readonly protocolPropertiesVardict: GLib.Variant
-    /**
-     * The most common vCard field used for this protocol's contact
-     * identifiers, normalized to lower case, or %NULL if there is no such field
-     * or the %TP_PROTOCOL_FEATURE_CORE feature has not been prepared.
-     */
-    readonly vcard_field: string | null
     /**
      * The most common vCard field used for this protocol's contact
      * identifiers, normalized to lower case, or %NULL if there is no such field
@@ -18545,31 +17031,17 @@ export module Proxy {
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
          */
-        bus_name?: string | null
-        /**
-         * The D-Bus daemon for this object (this object itself, if it is a
-         * TpDBusDaemon). Read-only except during construction.
-         */
-        dbus_daemon?: DBusDaemon | null
-        /**
-         * The #TpSimpleClientFactory used to create this proxy,
-         * or %NULL if this proxy was not created through a factory.
-         */
-        factory?: SimpleClientFactory | null
-        /**
-         * The D-Bus object path for this object. Read-only except during
-         * construction.
-         */
-        object_path?: string | null
-        /**
-         * The D-Bus bus name for this object. Read-only except during construction.
-         */
         busName?: string | null
         /**
          * The D-Bus daemon for this object (this object itself, if it is a
          * TpDBusDaemon). Read-only except during construction.
          */
         dbusDaemon?: DBusDaemon | null
+        /**
+         * The #TpSimpleClientFactory used to create this proxy,
+         * or %NULL if this proxy was not created through a factory.
+         */
+        factory?: SimpleClientFactory | null
         /**
          * The D-Bus object path for this object. Read-only except during
          * construction.
@@ -18586,16 +17058,7 @@ export interface Proxy {
     /**
      * The D-Bus bus name for this object. Read-only except during construction.
      */
-    readonly bus_name: string | null
-    /**
-     * The D-Bus bus name for this object. Read-only except during construction.
-     */
     readonly busName: string | null
-    /**
-     * The D-Bus daemon for this object (this object itself, if it is a
-     * TpDBusDaemon). Read-only except during construction.
-     */
-    readonly dbus_daemon: DBusDaemon
     /**
      * The D-Bus daemon for this object (this object itself, if it is a
      * TpDBusDaemon). Read-only except during construction.
@@ -18610,11 +17073,6 @@ export interface Proxy {
      * Known D-Bus interface names for this object.
      */
     readonly interfaces: string[]
-    /**
-     * The D-Bus object path for this object. Read-only except during
-     * construction.
-     */
-    readonly object_path: string | null
     /**
      * The D-Bus object path for this object. Read-only except during
      * construction.
@@ -19188,10 +17646,6 @@ export module SimpleApprover {
         /**
          * The user-data pointer passed to #TpSimpleApprover:callback.
          */
-        user_data?: any | null
-        /**
-         * The user-data pointer passed to #TpSimpleApprover:callback.
-         */
         userData?: any | null
     }
 
@@ -19213,10 +17667,6 @@ export interface SimpleApprover {
      * when the #TpSimpleApprover is destroyed.
      */
     readonly destroy: any
-    /**
-     * The user-data pointer passed to #TpSimpleApprover:callback.
-     */
-    readonly user_data: any
     /**
      * The user-data pointer passed to #TpSimpleApprover:callback.
      */
@@ -19338,10 +17788,6 @@ export module SimpleClientFactory {
         /**
          * The D-Bus daemon for this object.
          */
-        dbus_daemon?: DBusDaemon | null
-        /**
-         * The D-Bus daemon for this object.
-         */
         dbusDaemon?: DBusDaemon | null
     }
 
@@ -19351,10 +17797,6 @@ export interface SimpleClientFactory {
 
     // Own properties of TelepathyGLib-0.12.TelepathyGLib.SimpleClientFactory
 
-    /**
-     * The D-Bus daemon for this object.
-     */
-    readonly dbus_daemon: DBusDaemon
     /**
      * The D-Bus daemon for this object.
      */
@@ -19664,7 +18106,7 @@ export module SimpleHandler {
         /**
          * The value of the Handler.BypassApproval D-Bus property.
          */
-        bypass_approval?: boolean | null
+        bypassApproval?: boolean | null
         /**
          * The #TpSimpleHandlerHandleChannelsImpl callback implementing the
          * HandleChannels D-Bus method.
@@ -19684,14 +18126,6 @@ export module SimpleHandler {
         /**
          * The user-data pointer passed to #TpSimpleHandler:callback.
          */
-        user_data?: any | null
-        /**
-         * The value of the Handler.BypassApproval D-Bus property.
-         */
-        bypassApproval?: boolean | null
-        /**
-         * The user-data pointer passed to #TpSimpleHandler:callback.
-         */
         userData?: any | null
     }
 
@@ -19701,10 +18135,6 @@ export interface SimpleHandler {
 
     // Own properties of TelepathyGLib-0.12.TelepathyGLib.SimpleHandler
 
-    /**
-     * The value of the Handler.BypassApproval D-Bus property.
-     */
-    readonly bypass_approval: boolean
     /**
      * The value of the Handler.BypassApproval D-Bus property.
      */
@@ -19725,10 +18155,6 @@ export interface SimpleHandler {
      * If %TRUE, the Handler will implement the Requests interface
      */
     readonly requests: boolean
-    /**
-     * The user-data pointer passed to #TpSimpleHandler:callback.
-     */
-    readonly user_data: any
     /**
      * The user-data pointer passed to #TpSimpleHandler:callback.
      */
@@ -19881,11 +18307,6 @@ export module SimpleObserver {
          * The user-data pointer passed to the callback implementing the
          * ObserveChannels D-Bus method.
          */
-        user_data?: any | null
-        /**
-         * The user-data pointer passed to the callback implementing the
-         * ObserveChannels D-Bus method.
-         */
         userData?: any | null
     }
 
@@ -19911,11 +18332,6 @@ export interface SimpleObserver {
      * The value of the Observer.Recover D-Bus property.
      */
     readonly recover: boolean
-    /**
-     * The user-data pointer passed to the callback implementing the
-     * ObserveChannels D-Bus method.
-     */
-    readonly user_data: any
     /**
      * The user-data pointer passed to the callback implementing the
      * ObserveChannels D-Bus method.
@@ -20057,12 +18473,6 @@ export interface StreamTubeChannel {
 
     // Own properties of TelepathyGLib-0.12.TelepathyGLib.StreamTubeChannel
 
-    /**
-     * A %G_VARIANT_TYPE_VARDICT representing the parameters of the tube.
-     * 
-     * Will be %NULL for outgoing tubes until the tube has been offered.
-     */
-    readonly parameters_vardict: GLib.Variant
     /**
      * A %G_VARIANT_TYPE_VARDICT representing the parameters of the tube.
      * 
@@ -20322,13 +18732,6 @@ export module StreamTubeConnection {
          * 
          * This property can't be %NULL.
          */
-        socket_connection?: Gio.SocketConnection | null
-        /**
-         * The #GSocketConnection used to transfer data through this connection.
-         * Read-only except during construction.
-         * 
-         * This property can't be %NULL.
-         */
         socketConnection?: Gio.SocketConnection | null
     }
 
@@ -20353,13 +18756,6 @@ export interface StreamTubeConnection {
      * tp_simple_client_factory_add_contact_features() prepared.
      */
     readonly contact: Contact
-    /**
-     * The #GSocketConnection used to transfer data through this connection.
-     * Read-only except during construction.
-     * 
-     * This property can't be %NULL.
-     */
-    readonly socket_connection: Gio.SocketConnection
     /**
      * The #GSocketConnection used to transfer data through this connection.
      * Read-only except during construction.
@@ -20461,25 +18857,7 @@ export interface TLSCertificate {
      * 
      * For "pgp" certificates, each certificate is a binary OpenPGP key.
      */
-    readonly cert_data: any[]
-    /**
-     * The raw data of the certificate or certificate chain, represented
-     * as a #GPtrArray of #GBytes. It should be interpreted
-     * according to #TpTLSCertificate:cert-type.
-     * 
-     * The first certificate in this array is the server's certificate,
-     * followed by its issuer, followed by the issuer's issuer and so on.
-     * 
-     * For "x509" certificates, each certificate is an X.509 certificate in
-     * binary (DER) format.
-     * 
-     * For "pgp" certificates, each certificate is a binary OpenPGP key.
-     */
     readonly certData: any[]
-    /**
-     * The type of the certificate, typically either "x509" or "pgp".
-     */
-    readonly cert_type: string | null
     /**
      * The type of the certificate, typically either "x509" or "pgp".
      */
@@ -20715,7 +19093,7 @@ export module TLSCertificateRejection {
         /**
          * The D-Bus error name of the rejection
          */
-        dbus_error?: string | null
+        dbusError?: string | null
         /**
          * A #G_VARIANT_TYPE_VARDICT containing the details of the rejection
          */
@@ -20729,10 +19107,6 @@ export module TLSCertificateRejection {
          * #TpTLSCertificateRejectReason representing the reason of the rejection
          */
         reason?: number | null
-        /**
-         * The D-Bus error name of the rejection
-         */
-        dbusError?: string | null
     }
 
 }
@@ -20741,10 +19115,6 @@ export interface TLSCertificateRejection {
 
     // Own properties of TelepathyGLib-0.12.TelepathyGLib.TLSCertificateRejection
 
-    /**
-     * The D-Bus error name of the rejection
-     */
-    readonly dbus_error: string | null
     /**
      * The D-Bus error name of the rejection
      */
@@ -20877,20 +19247,7 @@ export interface TextChannel {
      * A #TpDeliveryReportingSupportFlags indicating features supported
      * by this channel.
      */
-    readonly delivery_reporting_support: number
-    /**
-     * A #TpDeliveryReportingSupportFlags indicating features supported
-     * by this channel.
-     */
     readonly deliveryReportingSupport: number
-    /**
-     * %TRUE if messages sent and received on this channel are transmitted
-     * via SMS.
-     * 
-     * This property is not guaranteed to have a meaningful value until
-     * TP_TEXT_CHANNEL_FEATURE_SMS has been prepared.
-     */
-    readonly is_sms_channel: boolean
     /**
      * %TRUE if messages sent and received on this channel are transmitted
      * via SMS.
@@ -20903,11 +19260,6 @@ export interface TextChannel {
      * A #TpMessagePartSupportFlags indicating the level of support for
      * message parts on this channel.
      */
-    readonly message_part_support_flags: number
-    /**
-     * A #TpMessagePartSupportFlags indicating the level of support for
-     * message parts on this channel.
-     */
     readonly messagePartSupportFlags: number
     /**
      * %TRUE if this channel is exclusively for receiving class 0 SMSes
@@ -20915,19 +19267,7 @@ export interface TextChannel {
      * on this channel). If %FALSE, no incoming class 0 SMSes will appear
      * on this channel.
      */
-    readonly sms_flash: boolean
-    /**
-     * %TRUE if this channel is exclusively for receiving class 0 SMSes
-     * (and no SMSes can be sent using tp_text_channel_send_message_async()
-     * on this channel). If %FALSE, no incoming class 0 SMSes will appear
-     * on this channel.
-     */
     readonly smsFlash: boolean
-    /**
-     * A #GStrv containing the MIME types supported by this channel, with more
-     * preferred MIME types appearing earlier in the array.
-     */
-    readonly supported_content_types: string[]
     /**
      * A #GStrv containing the MIME types supported by this channel, with more
      * preferred MIME types appearing earlier in the array.
@@ -21164,6 +19504,11 @@ export interface TextChannel {
      * @returns  the value of #TpTextChannel:supported-content-types
      */
     get_supported_content_types(): string[]
+    /**
+     * Return the #TpTextChannel:is-sms-channel property
+     * @returns the value of #TpTextChannel:is-sms-channel property
+     */
+    is_sms_channel(): boolean
     /**
      * Submit a message to the server for sending. Once the message has been
      * submitted to the sever, `callback` will be called. You can then call

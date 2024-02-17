@@ -737,17 +737,17 @@ module Manager {
         /**
          * Whether to abort the application when a database timeout occurs.
          */
-        abortOnDbTimeout?: boolean | null
+        abort_on_db_timeout?: boolean | null
         /**
          * Timeout for database operations, in milliseconds.
          */
-        dbTimeout?: number | null
+        db_timeout?: number | null
         /**
          * If the service type is set, certain operations on the #AgManager, such
          * as ag_manager_list() and ag_manager_list_services(), will be restricted
          * to only affect accounts or services with that service type.
          */
-        serviceType?: string | null
+        service_type?: string | null
         /**
          * Whether to use D-Bus for inter-process change notification. Setting this
          * property to %FALSE causes libaccounts not to emit the change
@@ -755,7 +755,7 @@ module Manager {
          * processes. Disabling D-Bus is only meant to be used for specific cases,
          * such as maintenance programs.
          */
-        useDbus?: boolean | null
+        use_dbus?: boolean | null
     }
 
 }

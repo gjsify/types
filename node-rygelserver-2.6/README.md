@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-rygelserver-2.6)
 
 
-Node.js TypeScript type definitions for RygelServer-2.6, generated from library version 2.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
+Node.js TypeScript type definitions for RygelServer-2.6, generated from library version 2.6.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
 
 
 ## Install

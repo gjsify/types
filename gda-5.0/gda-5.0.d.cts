@@ -3046,14 +3046,6 @@ export module Config {
         /**
          * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
          */
-        system_filename?: string | null
-        /**
-         * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
-         */
-        user_filename?: string | null
-        /**
-         * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
-         */
         systemFilename?: string | null
         /**
          * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
@@ -3070,15 +3062,7 @@ export interface Config {
     /**
      * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
      */
-    system_filename: string | null
-    /**
-     * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
-     */
     systemFilename: string | null
-    /**
-     * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
-     */
-    user_filename: string | null
     /**
      * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
      */
@@ -3299,45 +3283,9 @@ export module Connection {
 
         // Own constructor properties of Gda-5.0.Gda.Connection
 
-        auth_string?: string | null
-        cnc_string?: string | null
-        dsn?: string | null
-        /**
-         * Defines the number of #GdaConnectionEvent objects kept in memory which can
-         * be fetched using gda_connection_get_events().
-         */
-        events_history_size?: number | null
-        /**
-         * Artificially slows down the execution of queries. This property can be used to
-         * debug some problems. If non zero, this value is the number of microseconds waited before actually
-         * executing each query.
-         */
-        execution_slowdown?: number | null
-        /**
-         * Computes execution times for each statement executed.
-         */
-        execution_timer?: boolean | null
-        /**
-         * This property, if set to %TRUE, specifies that the connection is not a real connection, but rather
-         * a #GdaConnection object which "proxies" all the calls to another connection which executes in a sub
-         * thread.
-         * 
-         * Note: this property is used internally by Libgda and should not be directly used by any programs. Setting
-         * this property has no effect, reading it is supported, though.
-         */
-        is_wrapper?: boolean | null
-        meta_store?: MetaStore | null
-        /**
-         * Useful only when there is a mainloop and when the connection acts as a thread wrapper around another connection,
-         * it sets up a timeout to handle signals coming from the wrapped connection.
-         * 
-         * If the connection is not a thread wrapper, then this property has no effect.
-         */
-        monitor_wrapped_in_mainloop?: boolean | null
-        provider?: ServerProvider | null
-        thread_owner?: any | null
         authString?: string | null
         cncString?: string | null
+        dsn?: string | null
         /**
          * Defines the number of #GdaConnectionEvent objects kept in memory which can
          * be fetched using gda_connection_get_events().
@@ -3370,6 +3318,7 @@ export module Connection {
          * If the connection is not a thread wrapper, then this property has no effect.
          */
         monitorWrappedInMainloop?: boolean | null
+        provider?: ServerProvider | null
         threadOwner?: any | null
     }
 
@@ -3379,16 +3328,9 @@ export interface Connection extends Lockable {
 
     // Own properties of Gda-5.0.Gda.Connection
 
-    auth_string: string | null
     authString: string | null
-    cnc_string: string | null
     cncString: string | null
     dsn: string | null
-    /**
-     * Defines the number of #GdaConnectionEvent objects kept in memory which can
-     * be fetched using gda_connection_get_events().
-     */
-    events_history_size: number
     /**
      * Defines the number of #GdaConnectionEvent objects kept in memory which can
      * be fetched using gda_connection_get_events().
@@ -3399,17 +3341,7 @@ export interface Connection extends Lockable {
      * debug some problems. If non zero, this value is the number of microseconds waited before actually
      * executing each query.
      */
-    execution_slowdown: number
-    /**
-     * Artificially slows down the execution of queries. This property can be used to
-     * debug some problems. If non zero, this value is the number of microseconds waited before actually
-     * executing each query.
-     */
     executionSlowdown: number
-    /**
-     * Computes execution times for each statement executed.
-     */
-    execution_timer: boolean
     /**
      * Computes execution times for each statement executed.
      */
@@ -3422,25 +3354,8 @@ export interface Connection extends Lockable {
      * Note: this property is used internally by Libgda and should not be directly used by any programs. Setting
      * this property has no effect, reading it is supported, though.
      */
-    is_wrapper: boolean
-    /**
-     * This property, if set to %TRUE, specifies that the connection is not a real connection, but rather
-     * a #GdaConnection object which "proxies" all the calls to another connection which executes in a sub
-     * thread.
-     * 
-     * Note: this property is used internally by Libgda and should not be directly used by any programs. Setting
-     * this property has no effect, reading it is supported, though.
-     */
     isWrapper: boolean
-    meta_store: MetaStore
     metaStore: MetaStore
-    /**
-     * Useful only when there is a mainloop and when the connection acts as a thread wrapper around another connection,
-     * it sets up a timeout to handle signals coming from the wrapped connection.
-     * 
-     * If the connection is not a thread wrapper, then this property has no effect.
-     */
-    monitor_wrapped_in_mainloop: boolean
     /**
      * Useful only when there is a mainloop and when the connection acts as a thread wrapper around another connection,
      * it sets up a timeout to handle signals coming from the wrapped connection.
@@ -3449,7 +3364,6 @@ export interface Connection extends Lockable {
      */
     monitorWrappedInMainloop: boolean
     provider: ServerProvider
-    thread_owner: any
     threadOwner: any
 
     // Own fields of Gda-5.0.Gda.Connection
@@ -4441,8 +4355,6 @@ export module DataComparator {
 
         // Own constructor properties of Gda-5.0.Gda.DataComparator
 
-        new_model?: DataModel | null
-        old_model?: DataModel | null
         newModel?: DataModel | null
         oldModel?: DataModel | null
     }
@@ -4453,9 +4365,7 @@ export interface DataComparator {
 
     // Own properties of Gda-5.0.Gda.DataComparator
 
-    new_model: DataModel
     newModel: DataModel
-    old_model: DataModel
     oldModel: DataModel
 
     // Own fields of Gda-5.0.Gda.DataComparator
@@ -4558,8 +4468,6 @@ export module DataModelArray {
 
         // Own constructor properties of Gda-5.0.Gda.DataModelArray
 
-        n_columns?: number | null
-        read_only?: boolean | null
         nColumns?: number | null
         readOnly?: boolean | null
     }
@@ -4570,9 +4478,7 @@ export interface DataModelArray extends DataModel {
 
     // Own properties of Gda-5.0.Gda.DataModelArray
 
-    n_columns: number
     nColumns: number
-    read_only: boolean
     readOnly: boolean
 
     // Own fields of Gda-5.0.Gda.DataModelArray
@@ -4712,7 +4618,7 @@ export module DataModelImport {
         /**
          * Data to import, as a string.
          */
-        data_string?: string | null
+        dataString?: string | null
         /**
          * Name of the file to import.
          */
@@ -4725,26 +4631,13 @@ export module DataModelImport {
          * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
          * access will have to be done using a cursor.
          */
-        random_access?: boolean | null
+        randomAccess?: boolean | null
         /**
          * Defines the behaviour in case the imported data contains recoverable errors (usually too
          * many or too few data per row). If set to %TRUE, an error will be reported and the import
          * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
          */
         strict?: boolean | null
-        /**
-         * Data to import, as a pointer to an XML node (a #xmlNodePtr).
-         */
-        xml_node?: any | null
-        /**
-         * Data to import, as a string.
-         */
-        dataString?: string | null
-        /**
-         * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
-         * access will have to be done using a cursor.
-         */
-        randomAccess?: boolean | null
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          */
@@ -4757,10 +4650,6 @@ export interface DataModelImport extends DataModel {
 
     // Own properties of Gda-5.0.Gda.DataModelImport
 
-    /**
-     * Data to import, as a string.
-     */
-    readonly data_string: string | null
     /**
      * Data to import, as a string.
      */
@@ -4777,11 +4666,6 @@ export interface DataModelImport extends DataModel {
      * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
      * access will have to be done using a cursor.
      */
-    readonly random_access: boolean
-    /**
-     * Defines if the data model will be accessed randomly or through a cursor. If set to %FALSE,
-     * access will have to be done using a cursor.
-     */
     readonly randomAccess: boolean
     /**
      * Defines the behaviour in case the imported data contains recoverable errors (usually too
@@ -4789,10 +4673,6 @@ export interface DataModelImport extends DataModel {
      * will stop, and if set to %FALSE, then the error will be reported but the import will not stop.
      */
     strict: boolean
-    /**
-     * Data to import, as a pointer to an XML node (a #xmlNodePtr).
-     */
-    readonly xml_node: any
     /**
      * Data to import, as a pointer to an XML node (a #xmlNodePtr).
      */
@@ -4922,10 +4802,6 @@ export module DataModelIter {
 
         // Own constructor properties of Gda-5.0.Gda.DataModelIter
 
-        current_row?: number | null
-        data_model?: DataModel | null
-        forced_model?: DataModel | null
-        update_model?: boolean | null
         currentRow?: number | null
         dataModel?: DataModel | null
         forcedModel?: DataModel | null
@@ -4938,13 +4814,9 @@ export interface DataModelIter {
 
     // Own properties of Gda-5.0.Gda.DataModelIter
 
-    current_row: number
     currentRow: number
-    data_model: DataModel
     dataModel: DataModel
-    forced_model: DataModel
     forcedModel: DataModel
-    update_model: boolean
     updateModel: boolean
 
     // Own fields of Gda-5.0.Gda.DataModelIter
@@ -5437,25 +5309,9 @@ export module DataProxy {
          *   <listitem><para>the inserts are always kept</para></listitem>
          * </itemizedlist>
          */
-        cache_changes?: boolean | null
-        defer_sync?: boolean | null
-        model?: DataModel | null
-        prepend_null_entry?: boolean | null
-        sample_size?: number | null
-        /**
-         * Defines how changes kept in the data proxy are handled when the proxied data model
-         * is changed (using the "model" property). The default is to silently discard all the
-         * changes, but if this property is set to %TRUE, then the changes are cached.
-         * 
-         * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
-         * the change's number of columns match the proxied data model's number of columns and based on:
-         * <itemizedlist>
-         *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
-         *   <listitem><para>the inserts are always kept</para></listitem>
-         * </itemizedlist>
-         */
         cacheChanges?: boolean | null
         deferSync?: boolean | null
+        model?: DataModel | null
         prependNullEntry?: boolean | null
         sampleSize?: number | null
     }
@@ -5478,26 +5334,10 @@ export interface DataProxy extends DataModel {
      *   <listitem><para>the inserts are always kept</para></listitem>
      * </itemizedlist>
      */
-    cache_changes: boolean
-    /**
-     * Defines how changes kept in the data proxy are handled when the proxied data model
-     * is changed (using the "model" property). The default is to silently discard all the
-     * changes, but if this property is set to %TRUE, then the changes are cached.
-     * 
-     * If set to %TRUE, each cached change will be re-applied to a newly set proxied data model if
-     * the change's number of columns match the proxied data model's number of columns and based on:
-     * <itemizedlist>
-     *   <listitem><para>the contents of the proxied data model's modified row for updates and deletes</para></listitem>
-     *   <listitem><para>the inserts are always kept</para></listitem>
-     * </itemizedlist>
-     */
     cacheChanges: boolean
-    defer_sync: boolean
     deferSync: boolean
     model: DataModel
-    prepend_null_entry: boolean
     prependNullEntry: boolean
-    sample_size: number
     sampleSize: number
 
     // Own fields of Gda-5.0.Gda.DataProxy
@@ -5797,20 +5637,8 @@ export module DataSelect {
 
         // Own constructor properties of Gda-5.0.Gda.DataSelect
 
-        auto_reset?: boolean | null
-        connection?: Connection | null
-        delete_stmt?: Statement | null
-        exec_params?: Set | null
-        /**
-         * This property stores the execution delay which has been necessary to obtain the data
-         */
-        execution_delay?: number | null
-        insert_stmt?: Statement | null
-        model_usage?: number | null
-        prepared_stmt?: PStmt | null
-        store_all_rows?: boolean | null
-        update_stmt?: Statement | null
         autoReset?: boolean | null
+        connection?: Connection | null
         deleteStmt?: Statement | null
         execParams?: Set | null
         /**
@@ -5830,32 +5658,19 @@ export interface DataSelect extends DataModel {
 
     // Own properties of Gda-5.0.Gda.DataSelect
 
-    auto_reset: boolean
     autoReset: boolean
     readonly connection: Connection
-    delete_stmt: Statement
     deleteStmt: Statement
-    readonly exec_params: Set
     readonly execParams: Set
     /**
      * This property stores the execution delay which has been necessary to obtain the data
      */
-    execution_delay: number
-    /**
-     * This property stores the execution delay which has been necessary to obtain the data
-     */
     executionDelay: number
-    insert_stmt: Statement
     insertStmt: Statement
-    readonly model_usage: number
     readonly modelUsage: number
-    prepared_stmt: PStmt
     preparedStmt: PStmt
-    readonly select_stmt: Statement
     readonly selectStmt: Statement
-    store_all_rows: boolean
     storeAllRows: boolean
-    update_stmt: Statement
     updateStmt: Statement
 
     // Own fields of Gda-5.0.Gda.DataSelect
@@ -6420,21 +6235,10 @@ export module Holder {
         // Own constructor properties of Gda-5.0.Gda.Holder
 
         description?: string | null
-        full_bind?: Holder | null
-        g_type?: GObject.GType | null
-        id?: string | null
-        name?: string | null
-        not_null?: boolean | null
-        simple_bind?: Holder | null
-        source_column?: number | null
-        source_model?: DataModel | null
-        /**
-         * Defines if the "validate-change" signal gets emitted when
-         * the holder's value changes.
-         */
-        validate_changes?: boolean | null
         fullBind?: Holder | null
         gType?: GObject.GType | null
+        id?: string | null
+        name?: string | null
         notNull?: boolean | null
         simpleBind?: Holder | null
         sourceColumn?: number | null
@@ -6453,25 +6257,14 @@ export interface Holder extends Lockable {
     // Own properties of Gda-5.0.Gda.Holder
 
     description: string | null
-    full_bind: Holder
     fullBind: Holder
-    g_type: GObject.GType
     gType: GObject.GType
     id: string | null
     name: string | null
-    not_null: boolean
     notNull: boolean
-    simple_bind: Holder
     simpleBind: Holder
-    source_column: number
     sourceColumn: number
-    source_model: DataModel
     sourceModel: DataModel
-    /**
-     * Defines if the "validate-change" signal gets emitted when
-     * the holder's value changes.
-     */
-    validate_changes: boolean
     /**
      * Defines if the "validate-change" signal gets emitted when
      * the holder's value changes.
@@ -6855,9 +6648,8 @@ export module MetaStore {
 
         catalog?: string | null
         cnc?: Connection | null
-        cnc_string?: string | null
-        schema?: string | null
         cncString?: string | null
+        schema?: string | null
     }
 
 }
@@ -6868,7 +6660,6 @@ export interface MetaStore {
 
     readonly catalog: string | null
     readonly cnc: Connection
-    readonly cnc_string: string | null
     readonly cncString: string | null
     readonly schema: string | null
 
@@ -7202,7 +6993,6 @@ export module MetaStruct {
         // Own constructor properties of Gda-5.0.Gda.MetaStruct
 
         features?: number | null
-        meta_store?: MetaStore | null
         metaStore?: MetaStore | null
     }
 
@@ -7213,7 +7003,6 @@ export interface MetaStruct {
     // Own properties of Gda-5.0.Gda.MetaStruct
 
     readonly features: number
-    readonly meta_store: MetaStore
     readonly metaStore: MetaStore
 
     // Own fields of Gda-5.0.Gda.MetaStruct
@@ -7560,7 +7349,6 @@ export module Row {
 
         // Own constructor properties of Gda-5.0.Gda.Row
 
-        nb_values?: number | null
         nbValues?: number | null
     }
 
@@ -7570,7 +7358,6 @@ export interface Row {
 
     // Own properties of Gda-5.0.Gda.Row
 
-    nb_values: number
     nbValues: number
 
     // Own fields of Gda-5.0.Gda.Row
@@ -7684,10 +7471,8 @@ export module ServerOperation {
         // Own constructor properties of Gda-5.0.Gda.ServerOperation
 
         connection?: Connection | null
-        op_type?: number | null
-        provider?: ServerProvider | null
-        spec_filename?: string | null
         opType?: number | null
+        provider?: ServerProvider | null
         specFilename?: string | null
     }
 
@@ -7698,10 +7483,8 @@ export interface ServerOperation {
     // Own properties of Gda-5.0.Gda.ServerOperation
 
     readonly connection: Connection
-    readonly op_type: number
     readonly opType: number
     readonly provider: ServerProvider
-    readonly spec_filename: string | null
     readonly specFilename: string | null
 
     // Own fields of Gda-5.0.Gda.ServerOperation
@@ -8383,12 +8166,6 @@ export module Set {
          * any holder in the data set changes. This property also affects the
          * GdaHolder:validate-changes property.
          */
-        validate_changes?: boolean | null
-        /**
-         * Defines if the "validate-set" signal gets emitted when
-         * any holder in the data set changes. This property also affects the
-         * GdaHolder:validate-changes property.
-         */
         validateChanges?: boolean | null
     }
 
@@ -8401,12 +8178,6 @@ export interface Set {
     description: string | null
     id: string | null
     name: string | null
-    /**
-     * Defines if the "validate-set" signal gets emitted when
-     * any holder in the data set changes. This property also affects the
-     * GdaHolder:validate-changes property.
-     */
-    validate_changes: boolean
     /**
      * Defines if the "validate-set" signal gets emitted when
      * any holder in the data set changes. This property also affects the
@@ -8974,7 +8745,6 @@ export module SqlParser {
         // Own constructor properties of Gda-5.0.Gda.SqlParser
 
         mode?: number | null
-        tokenizer_flavour?: number | null
         tokenizerFlavour?: number | null
     }
 
@@ -8984,12 +8754,9 @@ export interface SqlParser extends Lockable {
 
     // Own properties of Gda-5.0.Gda.SqlParser
 
-    readonly column_error: number
     readonly columnError: number
-    readonly line_error: number
     readonly lineError: number
     mode: number
-    tokenizer_flavour: number
     tokenizerFlavour: number
 
     // Own fields of Gda-5.0.Gda.SqlParser
@@ -9569,10 +9336,6 @@ export interface Tree {
     /**
      * Tells if the GdaTree is a list or a tree.
      */
-    readonly is_list: boolean
-    /**
-     * Tells if the GdaTree is a list or a tree.
-     */
     readonly isList: boolean
 
     // Own fields of Gda-5.0.Gda.Tree
@@ -9847,21 +9610,11 @@ export module TreeMgrColumns {
          * the #GdaTreeMgrColumns:connection property is specified instead. This property has
          * priority over the GdaTreeMgrColumns:connection property.
          */
-        meta_store?: MetaStore | null
+        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute
          */
         schema?: string | null
-        /**
-         * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
-         */
-        table_name?: string | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrColumns:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrColumns:connection property.
-         */
-        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
          */
@@ -9884,21 +9637,11 @@ export interface TreeMgrColumns {
      * the #GdaTreeMgrColumns:connection property is specified instead. This property has
      * priority over the GdaTreeMgrColumns:connection property.
      */
-    readonly meta_store: MetaStore
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrColumns:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrColumns:connection property.
-     */
     readonly metaStore: MetaStore
     /**
      * If no set, then the table name will be fetched from the parent node using the "schema" attribute
      */
     readonly schema: string | null
-    /**
-     * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
-     */
-    readonly table_name: string | null
     /**
      * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
      */
@@ -10134,12 +9877,6 @@ export module TreeMgrSchemas {
          * the #GdaTreeMgrSchema:connection property is specified instead. This property has
          * priority over the GdaTreeMgrSchema:connection property.
          */
-        meta_store?: MetaStore | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrSchema:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrSchema:connection property.
-         */
         metaStore?: MetaStore | null
     }
 
@@ -10154,12 +9891,6 @@ export interface TreeMgrSchemas {
      * the #GdaTreeMgrSchema:meta-store property is specified instead.
      */
     readonly connection: Connection
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrSchema:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrSchema:connection property.
-     */
-    readonly meta_store: MetaStore
     /**
      * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
      * the #GdaTreeMgrSchema:connection property is specified instead. This property has
@@ -10323,19 +10054,13 @@ export module TreeMgrTables {
          * the #GdaTreeMgrTables:connection property is specified instead. This property has
          * priority over the GdaTreeMgrTables:connection property.
          */
-        meta_store?: MetaStore | null
+        metaStore?: MetaStore | null
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
          * found that way, then the list of visible tables (tables which can be identified without having to specify
          * a schema) will be used
          */
         schema?: string | null
-        /**
-         * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-         * the #GdaTreeMgrTables:connection property is specified instead. This property has
-         * priority over the GdaTreeMgrTables:connection property.
-         */
-        metaStore?: MetaStore | null
     }
 
 }
@@ -10349,12 +10074,6 @@ export interface TreeMgrTables {
      * the #GdaTreeMgrTables:meta-store property is specified instead.
      */
     readonly connection: Connection
-    /**
-     * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
-     * the #GdaTreeMgrTables:connection property is specified instead. This property has
-     * priority over the GdaTreeMgrTables:connection property.
-     */
-    readonly meta_store: MetaStore
     /**
      * Defines the #GdaMetaStore to extract information from. Necessary upon construction unless
      * the #GdaTreeMgrTables:connection property is specified instead. This property has
@@ -10633,8 +10352,6 @@ export module XaTransaction {
 
         // Own constructor properties of Gda-5.0.Gda.XaTransaction
 
-        format_id?: number | null
-        transaction_id?: string | null
         formatId?: number | null
         transactionId?: string | null
     }
@@ -10645,9 +10362,7 @@ export interface XaTransaction {
 
     // Own properties of Gda-5.0.Gda.XaTransaction
 
-    readonly format_id: number
     readonly formatId: number
-    readonly transaction_id: string | null
     readonly transactionId: string | null
 
     // Own fields of Gda-5.0.Gda.XaTransaction

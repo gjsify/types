@@ -299,8 +299,6 @@ module Expression {
         // Own constructor properties of Gandiva-1.0.Gandiva.Expression
 
         expression?: any | null
-        result_field?: Arrow.Field | null
-        root_node?: Node | null
         resultField?: Arrow.Field | null
         rootNode?: Node | null
     }
@@ -312,9 +310,7 @@ interface Expression {
     // Own properties of Gandiva-1.0.Gandiva.Expression
 
     readonly expression: any
-    readonly result_field: Arrow.Field
     readonly resultField: Arrow.Field
-    readonly root_node: Node
     readonly rootNode: Node
 
     // Own fields of Gandiva-1.0.Gandiva.Expression
@@ -570,7 +566,6 @@ module FunctionSignature {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.FunctionSignature
 
-        function_signature?: any | null
         functionSignature?: any | null
     }
 
@@ -580,7 +575,6 @@ interface FunctionSignature {
 
     // Own properties of Gandiva-1.0.Gandiva.FunctionSignature
 
-    readonly function_signature: any
     readonly functionSignature: any
 
     // Own fields of Gandiva-1.0.Gandiva.FunctionSignature
@@ -629,9 +623,6 @@ module IfNode {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.IfNode
 
-        condition_node?: Node | null
-        else_node?: Node | null
-        then_node?: Node | null
         conditionNode?: Node | null
         elseNode?: Node | null
         thenNode?: Node | null
@@ -643,11 +634,8 @@ interface IfNode {
 
     // Own properties of Gandiva-1.0.Gandiva.IfNode
 
-    readonly condition_node: Node
     readonly conditionNode: Node
-    readonly else_node: Node
     readonly elseNode: Node
-    readonly then_node: Node
     readonly thenNode: Node
 
     // Own fields of Gandiva-1.0.Gandiva.IfNode
@@ -934,7 +922,6 @@ module NativeFunction {
 
         // Own constructor properties of Gandiva-1.0.Gandiva.NativeFunction
 
-        native_function?: any | null
         nativeFunction?: any | null
     }
 
@@ -944,7 +931,6 @@ interface NativeFunction {
 
     // Own properties of Gandiva-1.0.Gandiva.NativeFunction
 
-    readonly native_function: any
     readonly nativeFunction: any
 
     // Own fields of Gandiva-1.0.Gandiva.NativeFunction
@@ -994,7 +980,6 @@ module Node {
         // Own constructor properties of Gandiva-1.0.Gandiva.Node
 
         node?: any | null
-        return_type?: Arrow.DataType | null
         returnType?: Arrow.DataType | null
     }
 
@@ -1005,7 +990,6 @@ interface Node {
     // Own properties of Gandiva-1.0.Gandiva.Node
 
     readonly node: any
-    readonly return_type: Arrow.DataType
     readonly returnType: Arrow.DataType
 
     // Own fields of Gandiva-1.0.Gandiva.Node

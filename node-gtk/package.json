@@ -1,12 +1,15 @@
 {
     "name": "@girs/node-gtk",
-    "version": "3.2.7",
+    "version": "3.2.8",
     "description": "Node.js TypeScript type definitions for node-gtk",
     "type": "module",
     "module": "node-gtk.js",
     "main": "node-gtk.js",
     "exports": {
-        "./ambient": "./node-ambient.d.ts",
+        "./ambient": {
+            "types": "./node-ambient.d.ts",
+            "default": "./node-ambient.js"
+        },
         ".": {
             "import": {
                 "types": "./node-gtk.d.ts",

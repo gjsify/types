@@ -1,13 +1,19 @@
 {
     "name": "@girs/meta-13",
-    "version": "13.0.0-3.2.7",
+    "version": "13.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Meta-13, generated from library version 13.0.0",
     "type": "module",
     "module": "meta-13.js",
     "main": "meta-13.js",
     "exports": {
-        "./ambient": "./meta-13-ambient.d.ts",
-        "./import": "./meta-13-import.d.ts",
+        "./ambient": {
+            "types": "./meta-13-ambient.d.ts",
+            "default": "./meta-13-ambient.js"
+        },
+        "./import": {
+            "types": "./meta-13-import.d.ts",
+            "default": "./meta-13-import.js"
+        },
         ".": {
             "import": {
                 "types": "./meta-13.d.ts",

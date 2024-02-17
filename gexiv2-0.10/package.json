@@ -1,13 +1,19 @@
 {
     "name": "@girs/gexiv2-0.10",
-    "version": "0.14.2-3.2.7",
+    "version": "0.14.2-3.2.8",
     "description": "GJS TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.2",
     "type": "module",
     "module": "gexiv2-0.10.js",
     "main": "gexiv2-0.10.js",
     "exports": {
-        "./ambient": "./gexiv2-0.10-ambient.d.ts",
-        "./import": "./gexiv2-0.10-import.d.ts",
+        "./ambient": {
+            "types": "./gexiv2-0.10-ambient.d.ts",
+            "default": "./gexiv2-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gexiv2-0.10-import.d.ts",
+            "default": "./gexiv2-0.10-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gexiv2-0.10.d.ts",

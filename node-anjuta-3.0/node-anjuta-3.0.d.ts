@@ -2563,7 +2563,7 @@ module CommandBar {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.CommandBar
 
-        maxTextWidth?: number | null
+        max_text_width?: number | null
     }
 
 }
@@ -3078,7 +3078,7 @@ module Completion {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Completion
 
-        caseSensitive?: boolean | null
+        case_sensitive?: boolean | null
     }
 
 }
@@ -4520,7 +4520,7 @@ module Entry {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Entry
 
-        helpText?: string | null
+        help_text?: string | null
     }
 
 }
@@ -5555,7 +5555,7 @@ module FileDropEntry {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.FileDropEntry
 
-        relativePath?: string | null
+        relative_path?: string | null
     }
 
 }
@@ -6200,8 +6200,8 @@ module FileList {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.FileList
 
-        relativePath?: string | null
-        showAddButton?: boolean | null
+        relative_path?: string | null
+        show_add_button?: boolean | null
     }
 
 }
@@ -8690,9 +8690,9 @@ module Profile {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Profile
 
-        pluginManager?: PluginManager | null
-        profileName?: string | null
-        syncFile?: Gio.File | null
+        plugin_manager?: PluginManager | null
+        profile_name?: string | null
+        sync_file?: Gio.File | null
     }
 
 }
@@ -8885,7 +8885,7 @@ module ProfileManager {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.ProfileManager
 
-        pluginManager?: PluginManager | null
+        plugin_manager?: PluginManager | null
     }
 
 }
@@ -11762,9 +11762,9 @@ module VcsStatusTreeView {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.VcsStatusTreeView
 
-        conflictedSelectable?: boolean | null
-        showStatus?: boolean | null
-        statusCodes?: VcsStatus | null
+        conflicted_selectable?: boolean | null
+        show_status?: boolean | null
+        status_codes?: VcsStatus | null
     }
 
 }

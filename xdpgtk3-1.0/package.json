@@ -1,13 +1,19 @@
 {
     "name": "@girs/xdpgtk3-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for XdpGtk3-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "xdpgtk3-1.0.js",
     "main": "xdpgtk3-1.0.js",
     "exports": {
-        "./ambient": "./xdpgtk3-1.0-ambient.d.ts",
-        "./import": "./xdpgtk3-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./xdpgtk3-1.0-ambient.d.ts",
+            "default": "./xdpgtk3-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./xdpgtk3-1.0-import.d.ts",
+            "default": "./xdpgtk3-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./xdpgtk3-1.0.d.ts",

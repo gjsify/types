@@ -237,8 +237,6 @@ module Screen {
 
         // Own constructor properties of GnomeRR-4.0.GnomeRR.Screen
 
-        dpms_mode?: DpmsModeType | null
-        gdk_display?: Gdk.Display | null
         dpmsMode?: DpmsModeType | null
         gdkDisplay?: Gdk.Display | null
     }
@@ -249,9 +247,7 @@ interface Screen extends Gio.AsyncInitable, Gio.Initable {
 
     // Own properties of GnomeRR-4.0.GnomeRR.Screen
 
-    dpms_mode: DpmsModeType
     dpmsMode: DpmsModeType
-    readonly gdk_display: Gdk.Display
     readonly gdkDisplay: Gdk.Display
 
     // Own fields of GnomeRR-4.0.GnomeRR.Screen

@@ -364,7 +364,7 @@ export module TabGroup {
         /**
          * The #TeplTab currently shown.
          */
-        activeTab?: Tab | null
+        active_tab?: Tab | null
     }
 
 }
@@ -781,7 +781,7 @@ export module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        applicationWindow?: Gtk.ApplicationWindow | null
+        application_window?: Gtk.ApplicationWindow | null
         /**
          * Whether to handle the #GtkWindow:title. The title is probably not
          * appropriate if a #GtkHeaderBar is used, the title is meant to be used
@@ -796,7 +796,7 @@ export module ApplicationWindow {
          * If the active view is %NULL, the title contains only the application
          * name.
          */
-        handleTitle?: boolean | null
+        handle_title?: boolean | null
     }
 
 }
@@ -965,7 +965,7 @@ export module Buffer {
          * When the #GtkSourceBuffer:style-scheme is %NULL,
          * #TeplBuffer:tepl-style-scheme-id contains the empty string.
          */
-        teplStyleSchemeId?: string | null
+        tepl_style_scheme_id?: string | null
     }
 
 }
@@ -1406,7 +1406,7 @@ export module FileLoader {
          * A small chunk size is better when loading a remote file with a slow
          * connection. For local files, the chunk size can be larger.
          */
-        chunkSize?: number | null
+        chunk_size?: number | null
         /**
          * The #TeplFile. The #TeplFileLoader object has a weak
          * reference to the file.
@@ -1424,7 +1424,7 @@ export module FileLoader {
          * 
          * Set to -1 for unlimited size.
          */
-        maxSize?: number | null
+        max_size?: number | null
     }
 
 }
@@ -1744,7 +1744,7 @@ export module FileSaver {
         /**
          * The compression type.
          */
-        compressionType?: GtkSource.CompressionType | null
+        compression_type?: GtkSource.CompressionType | null
         /**
          * The file's encoding.
          */
@@ -1766,7 +1766,7 @@ export module FileSaver {
         /**
          * The newline type.
          */
-        newlineType?: GtkSource.NewlineType | null
+        newline_type?: GtkSource.NewlineType | null
     }
 
 }

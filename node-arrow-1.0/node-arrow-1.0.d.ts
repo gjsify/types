@@ -939,9 +939,9 @@ module Array {
         array?: any | null
         buffer1?: Buffer | null
         buffer2?: Buffer | null
-        nullBitmap?: Buffer | null
+        null_bitmap?: Buffer | null
         parent?: Array | null
-        valueDataType?: DataType | null
+        value_data_type?: DataType | null
     }
 
 }
@@ -1061,7 +1061,7 @@ module ArrayBuilder {
 
         // Own constructor properties of Arrow-1.0.Arrow.ArrayBuilder
 
-        arrayBuilder?: any | null
+        array_builder?: any | null
     }
 
 }
@@ -2348,22 +2348,22 @@ module CSVReadOptions {
         /**
          * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
          */
-        allowNewlinesInValues?: boolean | null
+        allow_newlines_in_values?: boolean | null
         /**
          * Whether string / binary columns can have null values.
          * If %TRUE, then strings in "null_values" are considered null for string columns.
          * If %FALSE, then all strings are valid string values.
          */
-        allowNullStrings?: boolean | null
+        allow_null_strings?: boolean | null
         /**
          * Block size we request from the IO layer; also determines the size
          * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
          */
-        blockSize?: number | null
+        block_size?: number | null
         /**
          * Whether to check UTF8 validity of string columns.
          */
-        checkUtf8?: boolean | null
+        check_utf8?: boolean | null
         /**
          * Field delimiter character.
          */
@@ -2372,39 +2372,39 @@ module CSVReadOptions {
          * Escaping character. This is used only when
          * #GArrowCSVReadOptions:is-escaped is %TRUE.
          */
-        escapeCharacter?: number | null
-        generateColumnNames?: boolean | null
+        escape_character?: number | null
+        generate_column_names?: boolean | null
         /**
          * Whether empty lines are ignored. If %FALSE, an empty line
          * represents a simple empty value (assuming a one-column CSV file).
          */
-        ignoreEmptyLines?: boolean | null
+        ignore_empty_lines?: boolean | null
         /**
          * Whether a quote inside a value is double quoted.
          */
-        isDoubleQuoted?: boolean | null
+        is_double_quoted?: boolean | null
         /**
          * Whether escaping is used.
          */
-        isEscaped?: boolean | null
+        is_escaped?: boolean | null
         /**
          * Whether quoting is used.
          */
-        isQuoted?: boolean | null
+        is_quoted?: boolean | null
         /**
          * The number of header rows to skip (not including
          * the row of column names, if any)
          */
-        nSkipRows?: number | null
+        n_skip_rows?: number | null
         /**
          * Quoting character. This is used only when
          * #GArrowCSVReadOptions:is-quoted is %TRUE.
          */
-        quoteCharacter?: number | null
+        quote_character?: number | null
         /**
          * Whether to use the global CPU thread pool.
          */
-        useThreads?: boolean | null
+        use_threads?: boolean | null
     }
 
 }
@@ -2613,7 +2613,7 @@ module CSVReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.CSVReader
 
-        csvTableReader?: any | null
+        csv_table_reader?: any | null
         input?: InputStream | null
     }
 
@@ -2733,31 +2733,31 @@ module CastOptions {
         /**
          * Whether truncating decimal value is allowed or not.
          */
-        allowDecimalTruncate?: boolean | null
+        allow_decimal_truncate?: boolean | null
         /**
          * Whether truncating float value is allowed or not.
          */
-        allowFloatTruncate?: boolean | null
+        allow_float_truncate?: boolean | null
         /**
          * Whether integer overflow is allowed or not.
          */
-        allowIntOverflow?: boolean | null
+        allow_int_overflow?: boolean | null
         /**
          * Whether invalid UTF-8 string value is allowed or not.
          */
-        allowInvalidUtf8?: boolean | null
+        allow_invalid_utf8?: boolean | null
         /**
          * Whether time overflow is allowed or not.
          */
-        allowTimeOverflow?: boolean | null
+        allow_time_overflow?: boolean | null
         /**
          * Whether truncating time value is allowed or not.
          */
-        allowTimeTruncate?: boolean | null
+        allow_time_truncate?: boolean | null
         /**
          * The #GArrowDataType being casted to.
          */
-        toDataType?: DataType | null
+        to_data_type?: DataType | null
     }
 
 }
@@ -2872,7 +2872,7 @@ module ChunkedArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.ChunkedArray
 
-        chunkedArray?: any | null
+        chunked_array?: any | null
     }
 
 }
@@ -3364,7 +3364,7 @@ module DataType {
 
         // Own constructor properties of Arrow-1.0.Arrow.DataType
 
-        dataType?: any | null
+        data_type?: any | null
     }
 
 }
@@ -4918,7 +4918,7 @@ module DenseUnionArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.DenseUnionArray
 
-        valueOffsets?: Int32Array | null
+        value_offsets?: Int32Array | null
     }
 
 }
@@ -5557,7 +5557,7 @@ module EqualOptions {
          * The absolute tolerance for approximate comparison of
          * floating-point values.
          */
-        absoluteTolerance?: number | null
+        absolute_tolerance?: number | null
         /**
          * Whether or not approximate comparison is used.
          */
@@ -5565,7 +5565,7 @@ module EqualOptions {
         /**
          * Whether or not NaNs are considered equal.
          */
-        nansEqual?: boolean | null
+        nans_equal?: boolean | null
     }
 
 }
@@ -6063,7 +6063,7 @@ module ExtensionDataType {
 
         // Own constructor properties of Arrow-1.0.Arrow.ExtensionDataType
 
-        storageDataType?: DataType | null
+        storage_data_type?: DataType | null
     }
 
 }
@@ -6271,7 +6271,7 @@ module FeatherFileReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.FeatherFileReader
 
-        featherReader?: any | null
+        feather_reader?: any | null
     }
 
 }
@@ -6414,7 +6414,7 @@ module Field {
 
         // Own constructor properties of Arrow-1.0.Arrow.Field
 
-        dataType?: DataType | null
+        data_type?: DataType | null
         field?: any | null
     }
 
@@ -6887,17 +6887,17 @@ module FileSelector {
          * The behavior if `base_dir` isn't found in the file system.
          * If false, an error is returned.  If true, an empty selection is returned.
          */
-        allowNotFound?: boolean | null
+        allow_not_found?: boolean | null
         /**
          * The directory in which to select files.
          * If the path exists but doesn't point to a directory, this should
          * be an error.
          */
-        baseDir?: string | null
+        base_dir?: string | null
         /**
          * The maximum number of subdirectories to recurse into.
          */
-        maxRecursion?: number | null
+        max_recursion?: number | null
         /**
          * Whether to recurse into subdirectories.
          */
@@ -6990,7 +6990,7 @@ module FileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.FileSystem
 
-        fileSystem?: any | null
+        file_system?: any | null
     }
 
 }
@@ -7170,7 +7170,7 @@ module FilterOptions {
         /**
          * How to handle filtered values.
          */
-        nullSelectionBehavior?: FilterNullSelectionBehavior | null
+        null_selection_behavior?: FilterNullSelectionBehavior | null
     }
 
 }
@@ -8401,7 +8401,7 @@ module InputStream {
 
         // Own constructor properties of Arrow-1.0.Arrow.InputStream
 
-        inputStream?: any | null
+        input_stream?: any | null
     }
 
 }
@@ -9793,12 +9793,12 @@ module JSONReadOptions {
          * Whether objects may be printed across multiple lines (for example pretty printed).
          * if %FALSE, input must end with an empty line.
          */
-        allowNewlinesInValues?: boolean | null
+        allow_newlines_in_values?: boolean | null
         /**
          * Block size we request from the IO layer; also determines the size
          * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
          */
-        blockSize?: number | null
+        block_size?: number | null
         /**
          * Schema for passing custom conversion rules.
          */
@@ -9806,11 +9806,11 @@ module JSONReadOptions {
         /**
          * How to parse handle fields outside the explicit schema.
          */
-        unexpectedFieldBehavior?: JSONReadUnexpectedFieldBehavior | null
+        unexpected_field_behavior?: JSONReadUnexpectedFieldBehavior | null
         /**
          * Whether to use the global CPU thread pool.
          */
-        useThreads?: boolean | null
+        use_threads?: boolean | null
     }
 
 }
@@ -9910,7 +9910,7 @@ module JSONReader {
         // Own constructor properties of Arrow-1.0.Arrow.JSONReader
 
         input?: InputStream | null
-        jsonTableReader?: any | null
+        json_table_reader?: any | null
     }
 
 }
@@ -10245,7 +10245,7 @@ module LargeListArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.LargeListArray
 
-        rawValues?: Array | null
+        raw_values?: Array | null
     }
 
 }
@@ -10795,7 +10795,7 @@ module ListArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.ListArray
 
-        rawValues?: Array | null
+        raw_values?: Array | null
     }
 
 }
@@ -11181,7 +11181,7 @@ module LocalFileSystemOptions {
          * Whether open_input_stream and open_input_file return a mmap'ed file,
          * or a regular one.
          */
-        useMmap?: boolean | null
+        use_mmap?: boolean | null
     }
 
 }
@@ -12351,7 +12351,7 @@ module OutputStream {
 
         // Own constructor properties of Arrow-1.0.Arrow.OutputStream
 
-        outputStream?: any | null
+        output_stream?: any | null
     }
 
 }
@@ -12497,11 +12497,11 @@ module ReadOptions {
         /**
          * The maximum permitted schema nesting depth.
          */
-        maxRecursionDepth?: number | null
+        max_recursion_depth?: number | null
         /**
          * Whether to use the global CPU thread pool.
          */
-        useThreads?: boolean | null
+        use_threads?: boolean | null
     }
 
 }
@@ -12576,7 +12576,7 @@ module RecordBatch {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatch
 
-        recordBatch?: any | null
+        record_batch?: any | null
     }
 
 }
@@ -12654,7 +12654,7 @@ module RecordBatchBuilder {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchBuilder
 
-        recordBatchBuilder?: any | null
+        record_batch_builder?: any | null
     }
 
 }
@@ -12786,7 +12786,7 @@ module RecordBatchFileReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchFileReader
 
-        recordBatchFileReader?: any | null
+        record_batch_file_reader?: any | null
     }
 
 }
@@ -12973,7 +12973,7 @@ module RecordBatchReader {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchReader
 
-        recordBatchReader?: any | null
+        record_batch_reader?: any | null
     }
 
 }
@@ -13151,7 +13151,7 @@ module RecordBatchWriter {
 
         // Own constructor properties of Arrow-1.0.Arrow.RecordBatchWriter
 
-        recordBatchWriter?: any | null
+        record_batch_writer?: any | null
     }
 
 }
@@ -13356,7 +13356,7 @@ module RoundOptions {
         /**
          * The rounding precision (number of digits to round to).
          */
-        nDigits?: number | null
+        n_digits?: number | null
     }
 
 }
@@ -13567,7 +13567,7 @@ module S3GlobalOptions {
         /**
          * The log level of S3 APIs.
          */
-        logLevel?: S3LogLevel | null
+        log_level?: S3LogLevel | null
     }
 
 }
@@ -13631,7 +13631,7 @@ module Scalar {
         /**
          * The data type of the scalar.
          */
-        dataType?: DataType | null
+        data_type?: DataType | null
         scalar?: any | null
     }
 
@@ -13710,11 +13710,11 @@ module ScalarAggregateOptions {
         /**
          * The minimum required number of values.
          */
-        minCount?: number | null
+        min_count?: number | null
         /**
          * Whether NULLs are skipped or not.
          */
-        skipNulls?: boolean | null
+        skip_nulls?: boolean | null
     }
 
 }
@@ -14075,11 +14075,11 @@ module SetLookupOptions {
         /**
          * Whether NULLs are skipped or not.
          */
-        skipNulls?: boolean | null
+        skip_nulls?: boolean | null
         /**
          * The set of values to look up input values into.
          */
-        valueSet?: Datum | null
+        value_set?: Datum | null
     }
 
 }
@@ -14206,7 +14206,7 @@ module SlowFileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.SlowFileSystem
 
-        baseFileSystem?: FileSystem | null
+        base_file_system?: FileSystem | null
     }
 
 }
@@ -14437,7 +14437,7 @@ module SourceNodeOptions {
         // Own constructor properties of Arrow-1.0.Arrow.SourceNodeOptions
 
         reader?: RecordBatchReader | null
-        recordBatch?: RecordBatch | null
+        record_batch?: RecordBatch | null
     }
 
 }
@@ -15322,7 +15322,7 @@ module SubTreeFileSystem {
 
         // Own constructor properties of Arrow-1.0.Arrow.SubTreeFileSystem
 
-        baseFileSystem?: FileSystem | null
+        base_file_system?: FileSystem | null
     }
 
 }
@@ -15535,7 +15535,7 @@ module TableConcatenateOptions {
          * the other type and become nullable. Nullability will be promoted
          * to the looser option (nullable if one is not nullable).
          */
-        promoteNullability?: boolean | null
+        promote_nullability?: boolean | null
         /**
          * If true, the schemas of the tables will be first unified with
          * fields of the same name being merged, according to
@@ -15547,7 +15547,7 @@ module TableConcatenateOptions {
          * the output table is the result of concatenating the corresponding
          * columns in all input tables.
          */
-        unifySchemas?: boolean | null
+        unify_schemas?: boolean | null
     }
 
 }
@@ -17912,7 +17912,7 @@ module UnionArray {
 
         // Own constructor properties of Arrow-1.0.Arrow.UnionArray
 
-        typeIds?: Int8Array | null
+        type_ids?: Int8Array | null
     }
 
 }
@@ -18144,11 +18144,11 @@ module VarianceOptions {
         /**
          * If less than this many non-null values are observed, emit null.
          */
-        minCount?: number | null
+        min_count?: number | null
         /**
          * Whether NULLs are skipped or not.
          */
-        skipNulls?: boolean | null
+        skip_nulls?: boolean | null
     }
 
 }
@@ -18236,7 +18236,7 @@ module WriteOptions {
          * Whether to allow field lengths that don't fit in a signed 32-bit
          * int. Some implementations may not be able to parse such streams.
          */
-        allow64bit?: boolean | null
+        allow_64bit?: boolean | null
         /**
          * Codec to use for compressing and decompressing record batch body
          * buffers. This is not part of the Arrow IPC protocol and only for
@@ -18248,16 +18248,16 @@ module WriteOptions {
         /**
          * The maximum permitted schema nesting depth.
          */
-        maxRecursionDepth?: number | null
+        max_recursion_depth?: number | null
         /**
          * Whether to use the global CPU thread pool.
          */
-        useThreads?: boolean | null
+        use_threads?: boolean | null
         /**
          * Whether to write the pre-0.15.0 encapsulated IPC message format
          * consisting of a 4-byte prefix instead of 8 byte.
          */
-        writeLegacyIpcFormat?: boolean | null
+        write_legacy_ipc_format?: boolean | null
     }
 
 }

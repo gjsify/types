@@ -571,7 +571,7 @@ module Forward {
         /**
          * The number of requested results to a search query.
          */
-        answerCount?: number | null
+        answer_count?: number | null
         /**
          * If set to #TRUE then only results in the #GeocodeForward:search-area
          * bounding box are returned.
@@ -584,7 +584,7 @@ module Forward {
          * If #GeocodeForward:bounded property is set to #TRUE only results from
          * this area is returned.
          */
-        searchArea?: BoundingBox | null
+        search_area?: BoundingBox | null
     }
 
 }
@@ -1146,14 +1146,14 @@ module Nominatim {
          * The base URL of the Nominatim service, for example
          * `https://nominatim.example.org`.
          */
-        baseUrl?: string | null
+        base_url?: string | null
         /**
          * E-mail address of the maintainer of the software making the
          * geocoding requests to the  Nominatim server. This is used to contact
          * them in the event of a problem with their usage. See
          * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
          */
-        maintainerEmailAddress?: string | null
+        maintainer_email_address?: string | null
         /**
          * User-Agent string to send with HTTP(S) requests, or %NULL to use the
          * default user agent, which is derived from the geocode-glib version
@@ -1166,7 +1166,7 @@ module Nominatim {
          * [user agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)
          * string.
          */
-        userAgent?: string | null
+        user_agent?: string | null
     }
 
 }
@@ -1297,7 +1297,7 @@ module Place {
         /**
          * The local administrative area.
          */
-        administrativeArea?: string | null
+        administrative_area?: string | null
         /**
          * A named area such as a campus or neighborhood.
          */
@@ -1305,7 +1305,7 @@ module Place {
         /**
          * The bounding box for the place.
          */
-        boundingBox?: BoundingBox | null
+        bounding_box?: BoundingBox | null
         /**
          * A specific building on a street or in an area.
          */
@@ -1321,7 +1321,7 @@ module Place {
         /**
          * The country code.
          */
-        countryCode?: string | null
+        country_code?: string | null
         /**
          * The county.
          */
@@ -1337,19 +1337,19 @@ module Place {
         /**
          * The OpenStreetMap id of the place.
          */
-        osmId?: string | null
+        osm_id?: string | null
         /**
          * The OpenStreetMap type of the place.
          */
-        osmType?: PlaceOsmType | null
+        osm_type?: PlaceOsmType | null
         /**
          * The type of the place.
          */
-        placeType?: PlaceType | null
+        place_type?: PlaceType | null
         /**
          * The postal code.
          */
-        postalCode?: string | null
+        postal_code?: string | null
         /**
          * The state.
          */
@@ -1361,7 +1361,7 @@ module Place {
         /**
          * The street address.
          */
-        streetAddress?: string | null
+        street_address?: string | null
         /**
          * The town.
          */

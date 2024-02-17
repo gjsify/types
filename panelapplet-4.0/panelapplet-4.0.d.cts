@@ -102,7 +102,7 @@ export module Applet {
         /**
          * Whether the panel the applet is on is locked down.
          */
-        locked_down?: boolean | null
+        lockedDown?: boolean | null
         /**
          * The #PanelAppletOrient of the applet.
          * 
@@ -115,13 +115,13 @@ export module Applet {
          * 
          * This property gets set when the applet gets embedded.
          */
-        prefs_key?: string | null
+        prefsKey?: string | null
         /**
          * The GSettings path to the per-instance settings of the applet.
          * 
          * This property gets set when the applet gets embedded.
          */
-        settings_path?: string | null
+        settingsPath?: string | null
         /**
          * The size of the panel the applet is on. For a horizontal panel, the
          * size if the height of the panel; for a vertical panel, the size is
@@ -131,26 +131,6 @@ export module Applet {
          * when the panel size changes.
          */
         size?: number | null
-        /**
-         * The size hints set for the applet. See panel_applet_set_size_hints().
-         */
-        size_hints?: any | null
-        /**
-         * Whether the panel the applet is on is locked down.
-         */
-        lockedDown?: boolean | null
-        /**
-         * The GConf path to the per-instance settings of the applet.
-         * 
-         * This property gets set when the applet gets embedded.
-         */
-        prefsKey?: string | null
-        /**
-         * The GSettings path to the per-instance settings of the applet.
-         * 
-         * This property gets set when the applet gets embedded.
-         */
-        settingsPath?: string | null
         /**
          * The size hints set for the applet. See panel_applet_set_size_hints().
          */
@@ -170,10 +150,6 @@ export interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
     /**
      * Whether the panel the applet is on is locked down.
      */
-    locked_down: boolean
-    /**
-     * Whether the panel the applet is on is locked down.
-     */
     lockedDown: boolean
     /**
      * The #PanelAppletOrient of the applet.
@@ -187,19 +163,7 @@ export interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
      * 
      * This property gets set when the applet gets embedded.
      */
-    prefs_key: string
-    /**
-     * The GConf path to the per-instance settings of the applet.
-     * 
-     * This property gets set when the applet gets embedded.
-     */
     prefsKey: string
-    /**
-     * The GSettings path to the per-instance settings of the applet.
-     * 
-     * This property gets set when the applet gets embedded.
-     */
-    settings_path: string
     /**
      * The GSettings path to the per-instance settings of the applet.
      * 
@@ -215,10 +179,6 @@ export interface Applet extends Atk.ImplementorIface, Gtk.Buildable {
      * when the panel size changes.
      */
     size: number
-    /**
-     * The size hints set for the applet. See panel_applet_set_size_hints().
-     */
-    size_hints: any
     /**
      * The size hints set for the applet. See panel_applet_set_size_hints().
      */

@@ -2561,7 +2561,7 @@ export module CommandBar {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.CommandBar
 
-        maxTextWidth?: number | null
+        max_text_width?: number | null
     }
 
 }
@@ -3076,7 +3076,7 @@ export module Completion {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Completion
 
-        caseSensitive?: boolean | null
+        case_sensitive?: boolean | null
     }
 
 }
@@ -4518,7 +4518,7 @@ export module Entry {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Entry
 
-        helpText?: string | null
+        help_text?: string | null
     }
 
 }
@@ -5553,7 +5553,7 @@ export module FileDropEntry {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.FileDropEntry
 
-        relativePath?: string | null
+        relative_path?: string | null
     }
 
 }
@@ -6198,8 +6198,8 @@ export module FileList {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.FileList
 
-        relativePath?: string | null
-        showAddButton?: boolean | null
+        relative_path?: string | null
+        show_add_button?: boolean | null
     }
 
 }
@@ -8688,9 +8688,9 @@ export module Profile {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.Profile
 
-        pluginManager?: PluginManager | null
-        profileName?: string | null
-        syncFile?: Gio.File | null
+        plugin_manager?: PluginManager | null
+        profile_name?: string | null
+        sync_file?: Gio.File | null
     }
 
 }
@@ -8883,7 +8883,7 @@ export module ProfileManager {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.ProfileManager
 
-        pluginManager?: PluginManager | null
+        plugin_manager?: PluginManager | null
     }
 
 }
@@ -11760,9 +11760,9 @@ export module VcsStatusTreeView {
 
         // Own constructor properties of Anjuta-3.0.Anjuta.VcsStatusTreeView
 
-        conflictedSelectable?: boolean | null
-        showStatus?: boolean | null
-        statusCodes?: VcsStatus | null
+        conflicted_selectable?: boolean | null
+        show_status?: boolean | null
+        status_codes?: VcsStatus | null
     }
 
 }

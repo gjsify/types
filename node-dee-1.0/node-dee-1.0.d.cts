@@ -1289,7 +1289,7 @@ export module Client {
 
         // Own constructor properties of Dee-1.0.Dee.Client
 
-        busAddress?: string | null
+        bus_address?: string | null
     }
 
 }
@@ -1397,7 +1397,7 @@ export module FileResourceManager {
         /**
          * Property holding the primary path used to store and load resources
          */
-        primaryPath?: string | null
+        primary_path?: string | null
     }
 
 }
@@ -1968,8 +1968,8 @@ export module Peer {
 
         // Own constructor properties of Dee-1.0.Dee.Peer
 
-        swarmName?: string | null
-        swarmOwner?: boolean | null
+        swarm_name?: string | null
+        swarm_owner?: boolean | null
     }
 
 }
@@ -2128,7 +2128,7 @@ export module ProxyModel {
         /**
          * The backend model used by this proxy model.
          */
-        backEnd?: Model | null
+        back_end?: Model | null
         /**
          * Boolean property defining whether sequence numbers will be inherited
          * from the back end model.
@@ -2136,13 +2136,13 @@ export module ProxyModel {
          * if the implementation manipulates with the rows in the model and keep
          * track of seqnums yourself.
          */
-        inheritSeqnums?: boolean | null
+        inherit_seqnums?: boolean | null
         /**
          * Boolean property defining whether or not to automatically forward signals
          * from the back end model. This is especially useful for sub classes wishing
          * to do their own more advanced signal forwarding.
          */
-        proxySignals?: boolean | null
+        proxy_signals?: boolean | null
     }
 
 }
@@ -2347,8 +2347,8 @@ export module Server {
 
         // Own constructor properties of Dee-1.0.Dee.Server
 
-        busAddress?: string | null
-        sameUserOnly?: boolean | null
+        bus_address?: string | null
+        same_user_only?: boolean | null
     }
 
 }
@@ -2534,7 +2534,7 @@ export module SharedModel {
          * 
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
          */
-        accessMode?: SharedModelAccessMode | null
+        access_mode?: SharedModelAccessMode | null
         /**
          * Enumeration defining the flushing behavior.
          * 
@@ -2545,7 +2545,7 @@ export module SharedModel {
          * When disabled, dee_shared_model_flush_revision_queue() needs to be called
          * explicitely.
          */
-        flushMode?: SharedModelFlushMode | null
+        flush_mode?: SharedModelFlushMode | null
         /**
          * The #DeePeer that this model uses to connect to the swarm
          */

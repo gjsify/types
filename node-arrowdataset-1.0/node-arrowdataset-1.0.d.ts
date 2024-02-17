@@ -155,7 +155,7 @@ module DatasetFactory {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.DatasetFactory
 
-        datasetFactory?: any | null
+        dataset_factory?: any | null
     }
 
 }
@@ -338,7 +338,7 @@ module FileSystemDataset {
         /**
          * File system of the dataset.
          */
-        fileSystem?: Arrow.FileSystem | null
+        file_system?: Arrow.FileSystem | null
         /**
          * Format of the dataset.
          */
@@ -436,7 +436,7 @@ module FileSystemDatasetFactory {
         /**
          * Partition base directory used by #GADatasetFileSystemDataset.
          */
-        partitionBaseDir?: string | null
+        partition_base_dir?: string | null
         /**
          * Partitioning used by #GADatasetFileSystemDataset.
          */
@@ -544,18 +544,18 @@ module FileSystemDatasetWriteOptions {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.FileSystemDatasetWriteOptions
 
-        baseDir?: string | null
+        base_dir?: string | null
         /**
          * Template string used to generate fragment base names. {i} will be
          * replaced by an auto incremented integer.
          */
-        baseNameTemplate?: string | null
-        fileSystem?: Arrow.FileSystem | null
-        fileWriteOptions?: FileWriteOptions | null
+        base_name_template?: string | null
+        file_system?: Arrow.FileSystem | null
+        file_write_options?: FileWriteOptions | null
         /**
          * Maximum number of partitions any batch may be written into.
          */
-        maxPartitions?: number | null
+        max_partitions?: number | null
         /**
          * #GADatasetPartitioning used to generate fragment paths.
          */
@@ -1110,7 +1110,7 @@ module PartitioningOptions {
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
          */
-        inferDictionary?: boolean | null
+        infer_dictionary?: boolean | null
         /**
          * Optionally, an expected schema can be provided, in which case
          * inference will only check discovered fields against the schema
@@ -1121,7 +1121,7 @@ module PartitioningOptions {
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
          */
-        segmentEncoding?: SegmentEncoding | null
+        segment_encoding?: SegmentEncoding | null
     }
 
 }
@@ -1267,7 +1267,7 @@ module ScannerBuilder {
 
         // Own constructor properties of ArrowDataset-1.0.ArrowDataset.ScannerBuilder
 
-        scannerBuilder?: any | null
+        scanner_builder?: any | null
     }
 
 }

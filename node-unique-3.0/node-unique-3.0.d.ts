@@ -83,7 +83,7 @@ module App {
          * notification sequence. If not set, a default id will be
          * automatically given.
          */
-        startupId?: string | null
+        startup_id?: string | null
     }
 
 }

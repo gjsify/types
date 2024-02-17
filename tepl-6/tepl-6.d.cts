@@ -529,10 +529,6 @@ export module TabGroup {
         /**
          * The #TeplTab currently shown.
          */
-        active_tab?: Tab | null
-        /**
-         * The #TeplTab currently shown.
-         */
         activeTab?: Tab | null
     }
 
@@ -545,23 +541,11 @@ export interface TabGroup {
     /**
      * The #TeplBuffer of the active tab.
      */
-    readonly active_buffer: Buffer
-    /**
-     * The #TeplBuffer of the active tab.
-     */
     readonly activeBuffer: Buffer
     /**
      * The #TeplTab currently shown.
      */
-    active_tab: Tab
-    /**
-     * The #TeplTab currently shown.
-     */
     activeTab: Tab
-    /**
-     * The #TeplView of the active tab.
-     */
-    readonly active_view: View
     /**
      * The #TeplView of the active tab.
      */
@@ -912,25 +896,6 @@ export module ApplicationWindow {
         /**
          * The #GtkApplicationWindow.
          */
-        application_window?: Gtk.ApplicationWindow | null
-        /**
-         * Whether to handle the #GtkWindow:title. The title is probably not
-         * appropriate if a #GtkHeaderBar is used, the title is meant to be used
-         * only for applications with a traditional UI.
-         * 
-         * If %TRUE, the title will contain:
-         * - the #TeplBuffer:tepl-full-title of the active buffer.
-         * - if the active view is not #GtkTextView:editable, the
-         *   `"[Read-Only]"` string.
-         * - the application name as returned by g_get_application_name().
-         * 
-         * If the active view is %NULL, the title contains only the application
-         * name.
-         */
-        handle_title?: boolean | null
-        /**
-         * The #GtkApplicationWindow.
-         */
         applicationWindow?: Gtk.ApplicationWindow | null
         /**
          * Whether to handle the #GtkWindow:title. The title is probably not
@@ -958,26 +923,7 @@ export interface ApplicationWindow extends TabGroup {
     /**
      * The #GtkApplicationWindow.
      */
-    readonly application_window: Gtk.ApplicationWindow
-    /**
-     * The #GtkApplicationWindow.
-     */
     readonly applicationWindow: Gtk.ApplicationWindow
-    /**
-     * Whether to handle the #GtkWindow:title. The title is probably not
-     * appropriate if a #GtkHeaderBar is used, the title is meant to be used
-     * only for applications with a traditional UI.
-     * 
-     * If %TRUE, the title will contain:
-     * - the #TeplBuffer:tepl-full-title of the active buffer.
-     * - if the active view is not #GtkTextView:editable, the
-     *   `"[Read-Only]"` string.
-     * - the application name as returned by g_get_application_name().
-     * 
-     * If the active view is %NULL, the title contains only the application
-     * name.
-     */
-    handle_title: boolean
     /**
      * Whether to handle the #GtkWindow:title. The title is probably not
      * appropriate if a #GtkHeaderBar is used, the title is meant to be used
@@ -1117,14 +1063,6 @@ export module Buffer {
          * When the #GtkSourceBuffer:style-scheme is %NULL,
          * #TeplBuffer:tepl-style-scheme-id contains the empty string.
          */
-        tepl_style_scheme_id?: string | null
-        /**
-         * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
-         * useful for binding it to a #GSettings key.
-         * 
-         * When the #GtkSourceBuffer:style-scheme is %NULL,
-         * #TeplBuffer:tepl-style-scheme-id contains the empty string.
-         */
         teplStyleSchemeId?: string | null
     }
 
@@ -1137,27 +1075,11 @@ export interface Buffer {
     /**
      * The full title. See tepl_buffer_get_full_title().
      */
-    readonly tepl_full_title: string | null
-    /**
-     * The full title. See tepl_buffer_get_full_title().
-     */
     readonly teplFullTitle: string | null
     /**
      * The short title. See tepl_buffer_get_short_title().
      */
-    readonly tepl_short_title: string | null
-    /**
-     * The short title. See tepl_buffer_get_short_title().
-     */
     readonly teplShortTitle: string | null
-    /**
-     * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
-     * useful for binding it to a #GSettings key.
-     * 
-     * When the #GtkSourceBuffer:style-scheme is %NULL,
-     * #TeplBuffer:tepl-style-scheme-id contains the empty string.
-     */
-    tepl_style_scheme_id: string | null
     /**
      * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
      * useful for binding it to a #GSettings key.
@@ -1371,32 +1293,7 @@ export interface File {
     /**
      * The line ending type.
      */
-    readonly newline_type: NewlineType
-    /**
-     * The line ending type.
-     */
     readonly newlineType: NewlineType
-    /**
-     * The file short name.
-     * 
-     * When the #TeplFile:location is %NULL, this property contains
-     * "Untitled File N", with N the Nth untitled file of the application,
-     * starting at 1. When an untitled file is closed (when the #TeplFile is
-     * freed) or its #TeplFile:location is set, its untitled number is
-     * released and can be used by a later file.
-     * 
-     * When the #TeplFile:location is not %NULL, this property contains the
-     * display-name (see #G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME). However,
-     * requesting the display-name can take some time (for example for a
-     * remote file with a slow network connection). When the
-     * #TeplFile:location property is set, the display-name is fetched
-     * asynchronously. When the display-name is available, this property is
-     * notified. In the meantime – after the #TeplFile:location is set but
-     * before receiving the display-name – a fallback implementation is used
-     * that does no blocking I/O (but it may return a different result
-     * compared to the real display-name).
-     */
-    readonly short_name: string | null
     /**
      * The file short name.
      * 
@@ -1669,10 +1566,6 @@ export module FileSaver {
         /**
          * The newline type.
          */
-        newline_type?: NewlineType | null
-        /**
-         * The newline type.
-         */
         newlineType?: NewlineType | null
     }
 
@@ -1701,10 +1594,6 @@ export interface FileSaver {
      * from the #TeplFile at construction time.
      */
     readonly location: Gio.File
-    /**
-     * The newline type.
-     */
-    newline_type: NewlineType
     /**
      * The newline type.
      */
@@ -2269,32 +2158,6 @@ export module InfoBar {
          * gtk_widget_destroy() when the #GtkInfoBar::response signal is
          * received with the `response_id` %GTK_RESPONSE_CLOSE.
          */
-        handle_close_response?: boolean | null
-        /**
-         * If this property is %TRUE, then an icon is shown on the left, based
-         * on the value of the #GtkInfoBar:message-type property. For
-         * %GTK_MESSAGE_OTHER no icon is shown.
-         * 
-         * If the #TeplInfoBar:icon-name property has a non-%NULL value, then
-         * this property is not taken into account.
-         * 
-         * Note that setting this property doesn't change the value of the
-         * #TeplInfoBar:icon-name property; the two properties are separate.
-         */
-        icon_from_message_type?: boolean | null
-        /**
-         * If set to a non-%NULL value, then an icon is shown on the left.
-         * 
-         * If this property has a non-%NULL value, then the
-         * #TeplInfoBar:icon-from-message-type property is not taken into
-         * account.
-         */
-        icon_name?: string | null
-        /**
-         * If this property is %TRUE, then the #TeplInfoBar is destroyed with
-         * gtk_widget_destroy() when the #GtkInfoBar::response signal is
-         * received with the `response_id` %GTK_RESPONSE_CLOSE.
-         */
         handleCloseResponse?: boolean | null
         /**
          * If this property is %TRUE, then an icon is shown on the left, based
@@ -2329,12 +2192,6 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * gtk_widget_destroy() when the #GtkInfoBar::response signal is
      * received with the `response_id` %GTK_RESPONSE_CLOSE.
      */
-    handle_close_response: boolean
-    /**
-     * If this property is %TRUE, then the #TeplInfoBar is destroyed with
-     * gtk_widget_destroy() when the #GtkInfoBar::response signal is
-     * received with the `response_id` %GTK_RESPONSE_CLOSE.
-     */
     handleCloseResponse: boolean
     /**
      * If this property is %TRUE, then an icon is shown on the left, based
@@ -2347,27 +2204,7 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Note that setting this property doesn't change the value of the
      * #TeplInfoBar:icon-name property; the two properties are separate.
      */
-    icon_from_message_type: boolean
-    /**
-     * If this property is %TRUE, then an icon is shown on the left, based
-     * on the value of the #GtkInfoBar:message-type property. For
-     * %GTK_MESSAGE_OTHER no icon is shown.
-     * 
-     * If the #TeplInfoBar:icon-name property has a non-%NULL value, then
-     * this property is not taken into account.
-     * 
-     * Note that setting this property doesn't change the value of the
-     * #TeplInfoBar:icon-name property; the two properties are separate.
-     */
     iconFromMessageType: boolean
-    /**
-     * If set to a non-%NULL value, then an icon is shown on the left.
-     * 
-     * If this property has a non-%NULL value, then the
-     * #TeplInfoBar:icon-from-message-type property is not taken into
-     * account.
-     */
-    icon_name: string | null
     /**
      * If set to a non-%NULL value, then an icon is shown on the left.
      * 
@@ -4006,11 +3843,6 @@ export module ProgressInfoBar {
          * Whether to add a Cancel button in the action area of the #GtkInfoBar,
          * with the %GTK_RESPONSE_CANCEL response.
          */
-        has_cancel_button?: boolean | null
-        /**
-         * Whether to add a Cancel button in the action area of the #GtkInfoBar,
-         * with the %GTK_RESPONSE_CANCEL response.
-         */
         hasCancelButton?: boolean | null
     }
 
@@ -4020,11 +3852,6 @@ export interface ProgressInfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gt
 
     // Own properties of Tepl-6.Tepl.ProgressInfoBar
 
-    /**
-     * Whether to add a Cancel button in the action area of the #GtkInfoBar,
-     * with the %GTK_RESPONSE_CANCEL response.
-     */
-    readonly has_cancel_button: boolean
     /**
      * Whether to add a Cancel button in the action area of the #GtkInfoBar,
      * with the %GTK_RESPONSE_CANCEL response.
@@ -4858,14 +4685,6 @@ export module StyleSchemeChooserWidget {
          * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
          * property contains the empty string.
          */
-        tepl_style_scheme_id?: string | null
-        /**
-         * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
-         * property is useful for binding it to a #GSettings key.
-         * 
-         * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
-         * property contains the empty string.
-         */
         teplStyleSchemeId?: string | null
     }
 
@@ -4875,14 +4694,6 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
 
     // Own properties of Tepl-6.Tepl.StyleSchemeChooserWidget
 
-    /**
-     * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
-     * property is useful for binding it to a #GSettings key.
-     * 
-     * When the #GtkSourceStyleSchemeChooser:style-scheme is %NULL, this
-     * property contains the empty string.
-     */
-    tepl_style_scheme_id: string | null
     /**
      * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
      * property is useful for binding it to a #GSettings key.

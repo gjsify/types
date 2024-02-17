@@ -94,26 +94,6 @@ export enum Layer {
     WINDOW,
 }
 /**
- * Enumeration used to indicate a type of live region and how assertive it
- * should be in terms of speaking notifications. Currently, this is only used
- * for "notification" events, but it may be used for additional purposes
- * in the future.
- */
-export enum Live {
-    /**
-     * No live region.
-     */
-    NONE,
-    /**
-     * This live region should be considered polite.
-     */
-    POLITE,
-    /**
-     * This live region should be considered assertive.
-     */
-    ASSERTIVE,
-}
-/**
  * Describes the type of the relation
  */
 export enum RelationType {
@@ -825,11 +805,6 @@ export enum Role {
      * actual change is. (Since: 2.36)
      */
     SUGGESTION,
-    /**
-     * A specialized push button to open a menu.
-     * (Since: 2.46)
-     */
-    PUSH_BUTTON_MENU,
     /**
      * not a valid role, used for finding end of the enumeration
      */
@@ -1663,7 +1638,7 @@ export function value_type_get_name(value_type: ValueType): string
  * supported are events of type "focus:".  Most clients of ATK will prefer to
  * attach signal handlers for the various ATK signals instead.
  * 
- * see [id`atk_add_focus_tracker]`
+ * see atk_add_focus_tracker.
  * @callback 
  * @param obj An #AtkObject instance for whom the callback will be called when the specified event (e.g. 'focus:') takes place.
  */
@@ -1675,7 +1650,7 @@ export interface EventListener {
  * called in order to initialize the per-object event registration system
  * used by #AtkEventListener, if any preparation is required.
  * 
- * see [id`atk_focus_tracker_init]`
+ * see atk_focus_tracker_init.
  * @callback 
  */
 export interface EventListenerInit {
@@ -1708,7 +1683,7 @@ export interface Function {
  * interception of key events via the return code as described below.
  * @callback 
  * @param event an AtkKeyEventStruct containing information about the key event for which notification is being given.
- * @returns TRUE (nonzero) if the event emission should be stopped and the event discarded without being passed to the normal GUI recipient; FALSE (zero) if the event dispatch to the client application should proceed as normal. see [id@atk_add_key_event_listener]
+ * @returns TRUE (nonzero) if the event emission should be stopped and the event discarded without being passed to the normal GUI recipient; FALSE (zero) if the event dispatch to the client application should proceed as normal. see atk_add_key_event_listener.
  */
 export interface KeySnoopFunc {
     (event: KeyEventStruct): number
@@ -1913,9 +1888,6 @@ export interface Action {
 }
 
 /**
- * The ATK interface provided by UI components
- * which the user can activate/interact with.
- * 
  * #AtkAction should be implemented by instances of #AtkObject classes
  * with which the user can interact directly, i.e. buttons,
  * checkboxes, scrollbars, e.g. components which are not "passive"
@@ -2250,10 +2222,6 @@ export interface Component {
 }
 
 /**
- * The ATK interface provided by UI components
- * which occupy a physical area on the screen.
- * which the user can activate/interact with.
- * 
  * #AtkComponent should be implemented by most if not all UI elements
  * with an actual on-screen presence, i.e. components which can be
  * said to have a screen-coordinate bounding box.  Virtually all
@@ -2459,9 +2427,6 @@ export interface Document {
 }
 
 /**
- * The ATK interface which represents the toplevel
- *  container for document content.
- * 
  * The AtkDocument interface should be supported by any object whose
  * content is a representation or view of a document.  The AtkDocument
  * interface should appear on the toplevel container for the document
@@ -2613,8 +2578,6 @@ export interface EditableText {
 }
 
 /**
- * The ATK interface implemented by components containing user-editable text content.
- * 
  * #AtkEditableText should be implemented by UI components which
  * contain text which the user can edit, via the #AtkObject
  * corresponding to that component (see #AtkObject).
@@ -2623,7 +2586,7 @@ export interface EditableText {
  * which implements #AtkEditableText is by definition an #AtkText
  * implementor as well.
  * 
- * See [iface`AtkText]`
+ * See also: #AtkText
  * @interface 
  */
 export class EditableText extends GObject.Object {
@@ -2676,11 +2639,34 @@ export interface HyperlinkImpl {
 }
 
 /**
- * A queryable interface which allows AtkHyperlink instances
- * associated with an AtkObject to be obtained.  AtkHyperlinkImpl
- * corresponds to AT-SPI's Hyperlink interface, and differs from
- * AtkHyperlink in that AtkHyperlink is an object type, rather than an
- * interface, and thus cannot be directly queried. FTW
+ * AtkHyperlinkImpl allows AtkObjects to refer to their associated
+ * AtkHyperlink instance, if one exists.  AtkHyperlinkImpl differs
+ * from AtkHyperlink in that AtkHyperlinkImpl is an interface, whereas
+ * AtkHyperlink is a object type.  The AtkHyperlinkImpl interface
+ * allows a client to query an AtkObject for the availability of an
+ * associated AtkHyperlink instance, and obtain that instance.  It is
+ * thus particularly useful in cases where embedded content or inline
+ * content within a text object is present, since the embedding text
+ * object implements AtkHypertext and the inline/embedded objects are
+ * exposed as children which implement AtkHyperlinkImpl, in addition
+ * to their being obtainable via AtkHypertext:getLink followed by
+ * AtkHyperlink:getObject.
+ * 
+ * The AtkHyperlinkImpl interface should be supported by objects
+ * exposed within the hierarchy as children of an AtkHypertext
+ * container which correspond to "links" or embedded content within
+ * the text.  HTML anchors are not, for instance, normally exposed
+ * this way, but embedded images and components which appear inline in
+ * the content of a text object are. The AtkHyperlinkIface interface
+ * allows a means of determining which children are hyperlinks in this
+ * sense of the word, and for obtaining their corresponding
+ * AtkHyperlink object, from which the embedding range, URI, etc. can
+ * be obtained.
+ * 
+ * To some extent this interface exists because, for historical
+ * reasons, AtkHyperlink was defined as an object type, not an
+ * interface.  Thus, in order to interact with AtkObjects via
+ * AtkHyperlink semantics, a new interface was required.
  * @interface 
  */
 export class HyperlinkImpl extends GObject.Object {
@@ -2780,8 +2766,6 @@ export interface Hypertext {
 }
 
 /**
- * The ATK interface which provides standard mechanism for manipulating hyperlinks.
- * 
  * An interface used for objects which implement linking between
  * multiple resource or content locations, or multiple 'markers'
  * within a single document.  A Hypertext instance is associated with
@@ -2904,9 +2888,6 @@ export interface Image {
 }
 
 /**
- * The ATK Interface implemented by components
- *  which expose image or pixmap content on-screen.
- * 
  * #AtkImage should be implemented by #AtkObject subtypes on behalf of
  * components which display image/pixmap information onscreen, and
  * which provide information (other than just widget borders, etc.)
@@ -3133,8 +3114,6 @@ export interface Selection {
 }
 
 /**
- * The ATK interface implemented by container objects whose #AtkObject children can be selected.
- * 
  * #AtkSelection should be implemented by UI components with children
  * which are exposed by #atk_object_ref_child and
  * #atk_object_get_n_children, if the use of the parent UI component
@@ -3252,8 +3231,6 @@ export interface StreamableContent {
 }
 
 /**
- * The ATK interface which provides access to streamable content.
- * 
  * An interface whereby an object allows its backing content to be
  * streamed to clients.  Typical implementors would be images or
  * icons, HTML content, or multimedia display/rendering widgets.
@@ -3787,8 +3764,6 @@ export interface Table {
 }
 
 /**
- * The ATK interface implemented for UI components which contain tabular or row/column information.
- * 
  * #AtkTable should be implemented by components which present
  * elements ordered via rows and columns.  It may also be used to
  * present tree-structured information if the nodes of the trees can
@@ -3988,13 +3963,11 @@ export interface TableCell extends Object {
 }
 
 /**
- * The ATK interface implemented for a cell inside a two-dimentional #AtkTable
- * 
  * Being #AtkTable a component which present elements ordered via rows
  * and columns, an #AtkTableCell is the interface which each of those
  * elements, so "cells" should implement.
  * 
- * See [iface`AtkTable]`
+ * See also #AtkTable.
  * @interface 
  */
 export class TableCell extends GObject.Object {
@@ -4598,8 +4571,6 @@ export interface Text {
 }
 
 /**
- * The ATK interface implemented by components with text content.
- * 
  * #AtkText should be implemented by #AtkObjects on behalf of widgets
  * that have text content which is either attributed or otherwise
  * non-trivial.  #AtkObjects whose text content is simple,
@@ -4827,8 +4798,6 @@ export interface Value {
 }
 
 /**
- * The ATK interface implemented by valuators and components which display or select a value from a bounded range of values.
- * 
  * #AtkValue should be implemented for components which either display
  * a value from a bounded range, or which allow the user to specify a
  * value from a bounded range, or both. For instance, most sliders and
@@ -5145,13 +5114,9 @@ export interface Window extends Object {
 }
 
 /**
- * The ATK Interface provided by UI components that represent a top-level window.
- * 
  * #AtkWindow should be implemented by the UI elements that represent
  * a top-level window, such as the main window of an application or
  * dialog.
- * 
- * See [class`AtkObject]`
  * @interface 
  */
 export class Window extends GObject.Object {
@@ -5244,8 +5209,6 @@ export interface GObjectAccessible {
 }
 
 /**
- * This object class is derived from AtkObject and can be used as a basis implementing accessible objects.
- * 
  * This object class is derived from AtkObject. It can be used as a
  * basis for implementing accessible objects for GObjects which are
  * not derived from GtkWidget. One example of its use is in providing
@@ -5294,19 +5257,12 @@ export interface Hyperlink extends Action {
 
     // Own properties of Atk-1.0.Atk.Hyperlink
 
-    readonly end_index: number
     readonly endIndex: number
-    readonly number_of_anchors: number
     readonly numberOfAnchors: number
     /**
      * Selected link
      */
-    readonly selected_link: boolean
-    /**
-     * Selected link
-     */
     readonly selectedLink: boolean
-    readonly start_index: number
     readonly startIndex: number
 
     // Own fields of Atk-1.0.Atk.Hyperlink
@@ -5457,8 +5413,6 @@ export interface Hyperlink extends Action {
 }
 
 /**
- * An ATK object which encapsulates a link or set of links in a hypertext document.
- * 
  * An ATK object which encapsulates a link or set of links (for
  * instance in the case of client-side image maps) in a hypertext
  * document.  It may implement the AtkAction interface.  AtkHyperlink
@@ -5550,8 +5504,6 @@ export interface Misc {
 }
 
 /**
- * A set of ATK utility functions for thread locking
- * 
  * A set of utility functions for thread locking. This interface and
  * all his related methods are deprecated since 2.12.
  * @class 
@@ -5812,8 +5764,6 @@ export interface NoOpObject extends Action, Component, Document, EditableText, H
 }
 
 /**
- * An AtkObject which purports to implement all ATK interfaces.
- * 
  * An AtkNoOpObject is an AtkObject which purports to implement all
  * ATK interfaces. It is the type of AtkObject which is created if an
  * accessible object is requested for an object type for which no
@@ -5873,8 +5823,6 @@ export interface NoOpObjectFactory {
 }
 
 /**
- * The AtkObjectFactory which creates an AtkNoOpObject.
- * 
  * The AtkObjectFactory which creates an AtkNoOpObject. An instance of
  * this is created by an AtkRegistry if no factory type has not been
  * specified to create an accessible object of a particular type.
@@ -5919,13 +5867,6 @@ export module Object {
     }
 
     /**
-     * Signal callback interface for `announcement`
-     */
-    export interface AnnouncementSignalCallback {
-        ($obj: Object, arg1: string | null): void
-    }
-
-    /**
      * Signal callback interface for `children-changed`
      */
     export interface ChildrenChangedSignalCallback {
@@ -5937,13 +5878,6 @@ export module Object {
      */
     export interface FocusEventSignalCallback {
         ($obj: Object, arg1: boolean): void
-    }
-
-    /**
-     * Signal callback interface for `notification`
-     */
-    export interface NotificationSignalCallback {
-        ($obj: Object, arg1: string | null, arg2: number): void
     }
 
     /**
@@ -5974,36 +5908,6 @@ export module Object {
 
         // Own constructor properties of Atk-1.0.Atk.Object
 
-        accessible_description?: string | null
-        accessible_name?: string | null
-        accessible_parent?: Object | null
-        accessible_role?: Role | null
-        /**
-         * Table caption.
-         */
-        accessible_table_caption?: string | null
-        accessible_table_caption_object?: Object | null
-        /**
-         * Accessible table column description.
-         */
-        accessible_table_column_description?: string | null
-        /**
-         * Accessible table column header.
-         */
-        accessible_table_column_header?: Object | null
-        /**
-         * Accessible table row description.
-         */
-        accessible_table_row_description?: string | null
-        /**
-         * Accessible table row header.
-         */
-        accessible_table_row_header?: Object | null
-        accessible_table_summary?: Object | null
-        /**
-         * Numeric value of this object, in case being and AtkValue.
-         */
-        accessible_value?: number | null
         accessibleDescription?: string | null
         accessibleName?: string | null
         accessibleParent?: Object | null
@@ -6042,33 +5946,18 @@ export interface Object {
 
     // Own properties of Atk-1.0.Atk.Object
 
-    readonly accessible_component_layer: number
     readonly accessibleComponentLayer: number
-    readonly accessible_component_mdi_zorder: number
     readonly accessibleComponentMdiZorder: number
-    accessible_description: string | null
     accessibleDescription: string | null
-    readonly accessible_hypertext_nlinks: number
     readonly accessibleHypertextNlinks: number
-    accessible_name: string | null
     accessibleName: string | null
     accessibleParent: Object
-    accessible_role: Role
     accessibleRole: Role
     /**
      * Table caption.
      */
-    accessible_table_caption: string | null
-    /**
-     * Table caption.
-     */
     accessibleTableCaption: string | null
-    accessible_table_caption_object: Object
     accessibleTableCaptionObject: Object
-    /**
-     * Accessible table column description.
-     */
-    accessible_table_column_description: string | null
     /**
      * Accessible table column description.
      */
@@ -6076,15 +5965,7 @@ export interface Object {
     /**
      * Accessible table column header.
      */
-    accessible_table_column_header: Object
-    /**
-     * Accessible table column header.
-     */
     accessibleTableColumnHeader: Object
-    /**
-     * Accessible table row description.
-     */
-    accessible_table_row_description: string | null
     /**
      * Accessible table row description.
      */
@@ -6092,17 +5973,8 @@ export interface Object {
     /**
      * Accessible table row header.
      */
-    accessible_table_row_header: Object
-    /**
-     * Accessible table row header.
-     */
     accessibleTableRowHeader: Object
-    accessible_table_summary: Object
     accessibleTableSummary: Object
-    /**
-     * Numeric value of this object, in case being and AtkValue.
-     */
-    accessible_value: number
     /**
      * Numeric value of this object, in case being and AtkValue.
      */
@@ -6430,18 +6302,12 @@ export interface Object {
     connect(sigName: "active-descendant-changed", callback: Object.ActiveDescendantChangedSignalCallback): number
     connect_after(sigName: "active-descendant-changed", callback: Object.ActiveDescendantChangedSignalCallback): number
     emit(sigName: "active-descendant-changed", arg1: Object, ...args: any[]): void
-    connect(sigName: "announcement", callback: Object.AnnouncementSignalCallback): number
-    connect_after(sigName: "announcement", callback: Object.AnnouncementSignalCallback): number
-    emit(sigName: "announcement", arg1: string | null, ...args: any[]): void
     connect(sigName: "children-changed", callback: Object.ChildrenChangedSignalCallback): number
     connect_after(sigName: "children-changed", callback: Object.ChildrenChangedSignalCallback): number
     emit(sigName: "children-changed", arg1: number, arg2: Object, ...args: any[]): void
     connect(sigName: "focus-event", callback: Object.FocusEventSignalCallback): number
     connect_after(sigName: "focus-event", callback: Object.FocusEventSignalCallback): number
     emit(sigName: "focus-event", arg1: boolean, ...args: any[]): void
-    connect(sigName: "notification", callback: Object.NotificationSignalCallback): number
-    connect_after(sigName: "notification", callback: Object.NotificationSignalCallback): number
-    emit(sigName: "notification", arg1: string | null, arg2: number, ...args: any[]): void
     connect(sigName: "property-change", callback: Object.PropertyChangeSignalCallback): number
     connect_after(sigName: "property-change", callback: Object.PropertyChangeSignalCallback): number
     emit(sigName: "property-change", arg1: PropertyValues, ...args: any[]): void
@@ -6506,8 +6372,6 @@ export interface Object {
 }
 
 /**
- * The base object class for the Accessibility Toolkit API.
- * 
  * This class is the primary class for accessibility support via the
  * Accessibility ToolKit (ATK).  Objects which are instances of
  * #AtkObject (or instances of AtkObject-derived types) are queried
@@ -6526,7 +6390,7 @@ export interface Object {
  * implementation is insufficient, via instances of a new #AtkObject
  * subclass.
  * 
- * See [class`AtkObjectFactory]`, [class`AtkRegistry]`.  (GTK+ users see also
+ * See also: #AtkObjectFactory, #AtkRegistry.  (GTK+ users see also
  * #GtkAccessible).
  * @interface 
  */
@@ -6602,9 +6466,6 @@ export interface ObjectFactory {
 }
 
 /**
- * The base object class for a factory used to
- *  create accessible objects for objects of a specific GType.
- * 
  * This class is the base object class for a factory used to create an
  * accessible object for a specific GType. The function
  * atk_registry_set_factory_type() is normally called to store in the
@@ -6726,9 +6587,7 @@ export interface Plug extends Component {
 }
 
 /**
- * Toplevel for embedding into other processes
- * 
- * See [class`AtkSocket]`
+ * See #AtkSocket
  * @class 
  */
 export class Plug extends Object {
@@ -6808,10 +6667,6 @@ export interface Registry {
 }
 
 /**
- * An object used to store the GType of the
- * factories used to create an accessible object for an object of a
- * particular GType.
- * 
  * The AtkRegistry is normally used to create appropriate ATK "peers"
  * for user interface components.  Application developers usually need
  * only interact with the AtkRegistry by associating appropriate ATK
@@ -6841,9 +6696,8 @@ export module Relation {
 
         // Own constructor properties of Atk-1.0.Atk.Relation
 
-        relation_type?: RelationType | null
-        target?: GObject.ValueArray | null
         relationType?: RelationType | null
+        target?: GObject.ValueArray | null
     }
 
 }
@@ -6852,7 +6706,6 @@ export interface Relation {
 
     // Own properties of Atk-1.0.Atk.Relation
 
-    relation_type: RelationType
     relationType: RelationType
 
     // Own fields of Atk-1.0.Atk.Relation
@@ -6898,9 +6751,6 @@ export interface Relation {
 }
 
 /**
- * An object used to describe a relation between a
- *  object and one or more other objects.
- * 
  * An AtkRelation describes a relation between an object and one or
  * more other objects. The actual relations that an object has with
  * other objects are defined as an AtkRelationSet, which is a set of
@@ -7024,9 +6874,6 @@ export interface RelationSet {
 }
 
 /**
- * A set of AtkRelations, normally the set of
- *  AtkRelations which an AtkObject has.
- * 
  * The AtkRelationSet held by an object establishes its relationships
  * with objects beyond the normal "parent/child" hierarchical
  * relationships that all user interface objects have.
@@ -7171,8 +7018,6 @@ export interface Socket extends Component {
 }
 
 /**
- * Container for AtkPlug objects from other processes
- * 
  * Together with #AtkPlug, #AtkSocket provides the ability to embed
  * accessibles from one process into another in a fashion that is
  * transparent to assistive technologies. #AtkSocket works as the
@@ -7195,8 +7040,6 @@ export interface Socket extends Component {
  * atk_object_get_n_accessible_children() and
  * atk_object_ref_accessible_child(). All the logic related to those
  * functions will be implemented by the IPC layer.
- * 
- * See [class`AtkPlug]`
  * @class 
  */
 export class Socket extends Object {
@@ -7327,8 +7170,6 @@ export interface StateSet {
 }
 
 /**
- * An AtkStateSet contains the states of an object.
- * 
  * An AtkStateSet is a read-only representation of the full set of #AtkStates
  * that apply to an object at a given time. This set is not meant to be
  * modified, but rather created when #atk_object_ref_state_set() is called.
@@ -7383,8 +7224,6 @@ export interface Util {
 }
 
 /**
- * A set of ATK utility functions for event and toolkit support.
- * 
  * A set of ATK utility functions which are used to support event
  * registration of various types, and obtaining the 'root' accessible
  * of a process and information about the current ATK implementation
@@ -7915,8 +7754,6 @@ export interface Range {
 }
 
 /**
- * A given range or subrange, to be used with #AtkValue
- * 
  * #AtkRange are used on #AtkValue, in order to represent the full
  * range of a given component (for example an slider or a range
  * control), or to define each individual subrange this full range is

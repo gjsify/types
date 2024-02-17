@@ -516,18 +516,18 @@ export module Buffer {
 
         // Own constructor properties of Gegl-0.3.Gegl.Buffer
 
-        abyssHeight?: number | null
-        abyssWidth?: number | null
-        abyssX?: number | null
-        abyssY?: number | null
+        abyss_height?: number | null
+        abyss_width?: number | null
+        abyss_x?: number | null
+        abyss_y?: number | null
         backend?: TileBackend | null
         format?: any | null
         height?: number | null
         path?: string | null
-        shiftX?: number | null
-        shiftY?: number | null
-        tileHeight?: number | null
-        tileWidth?: number | null
+        shift_x?: number | null
+        shift_y?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
         width?: number | null
         x?: number | null
         y?: number | null
@@ -983,16 +983,16 @@ export module Config {
 
         // Own constructor properties of Gegl-0.3.Gegl.Config
 
-        applicationLicense?: string | null
-        chunkSize?: number | null
+        application_license?: string | null
+        chunk_size?: number | null
         quality?: number | null
-        queueSize?: number | null
+        queue_size?: number | null
         swap?: string | null
         threads?: number | null
-        tileCacheSize?: number | null
-        tileHeight?: number | null
-        tileWidth?: number | null
-        useOpencl?: boolean | null
+        tile_cache_size?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
+        use_opencl?: boolean | null
     }
 
 }
@@ -1241,12 +1241,12 @@ export module Node {
 
         // Own constructor properties of Gegl-0.3.Gegl.Node
 
-        dontCache?: boolean | null
-        geglOperation?: Operation | null
+        dont_cache?: boolean | null
+        gegl_operation?: Operation | null
         name?: string | null
         operation?: string | null
         passthrough?: boolean | null
-        useOpencl?: boolean | null
+        use_opencl?: boolean | null
     }
 
 }
@@ -2186,10 +2186,10 @@ export module TileBackend {
 
         // Own constructor properties of Gegl-0.3.Gegl.TileBackend
 
-        flushOnDestroy?: boolean | null
+        flush_on_destroy?: boolean | null
         format?: any | null
-        tileHeight?: number | null
-        tileWidth?: number | null
+        tile_height?: number | null
+        tile_width?: number | null
     }
 
 }

@@ -818,9 +818,9 @@ export module ArraySpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.ArraySpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -896,9 +896,9 @@ export module ForkJoinTask {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.ForkJoinTask
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
         depth?: number | null
     }
 
@@ -1082,9 +1082,9 @@ export module FuncTask {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.FuncTask
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1155,9 +1155,9 @@ export module Future {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.Future
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1256,9 +1256,9 @@ export module GenericArraySpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.GenericArraySpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1334,9 +1334,9 @@ export module IteratorSpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.IteratorSpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1413,9 +1413,9 @@ export module ListSpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.ListSpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1491,9 +1491,9 @@ export module Optional {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.Optional
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1618,9 +1618,9 @@ export module Seq {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.Seq
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1763,12 +1763,12 @@ export module SpliteratorTask {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.SpliteratorTask
 
-        rType?: GObject.GType | null
-        rDupFunc?: GObject.BoxedCopyFunc | null
-        rDestroyFunc?: GLib.DestroyNotify | null
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        r_type?: GObject.GType | null
+        r_dup_func?: GObject.BoxedCopyFunc | null
+        r_destroy_func?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -1965,9 +1965,9 @@ export module SubArray {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.SubArray
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2060,9 +2060,9 @@ export module SubArraySpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.SubArraySpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2138,9 +2138,9 @@ export module SupplierSpliterator {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.SupplierSpliterator
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }
@@ -2335,7 +2335,7 @@ export module WorkerPool {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.WorkerPool
 
-        maxThreads?: number | null
+        max_threads?: number | null
     }
 
 }
@@ -2534,9 +2534,9 @@ export module Wrapper {
 
         // Own constructor properties of Gpseq-1.0.Gpseq.Wrapper
 
-        gType?: GObject.GType | null
-        gDupFunc?: GObject.BoxedCopyFunc | null
-        gDestroyFunc?: GLib.DestroyNotify | null
+        g_type?: GObject.GType | null
+        g_dup_func?: GObject.BoxedCopyFunc | null
+        g_destroy_func?: GLib.DestroyNotify | null
     }
 
 }

@@ -722,12 +722,12 @@ export module BaseAudioSink {
 
         // Own constructor properties of GstAudio-0.10.GstAudio.BaseAudioSink
 
-        bufferTime?: number | null
-        canActivatePull?: boolean | null
-        driftTolerance?: number | null
-        latencyTime?: number | null
-        provideClock?: boolean | null
-        slaveMethod?: BaseAudioSinkSlaveMethod | null
+        buffer_time?: number | null
+        can_activate_pull?: boolean | null
+        drift_tolerance?: number | null
+        latency_time?: number | null
+        provide_clock?: boolean | null
+        slave_method?: BaseAudioSinkSlaveMethod | null
     }
 
 }
@@ -888,10 +888,10 @@ export module BaseAudioSrc {
 
         // Own constructor properties of GstAudio-0.10.GstAudio.BaseAudioSrc
 
-        bufferTime?: number | null
-        latencyTime?: number | null
-        provideClock?: boolean | null
-        slaveMethod?: BaseAudioSrcSlaveMethod | null
+        buffer_time?: number | null
+        latency_time?: number | null
+        provide_clock?: boolean | null
+        slave_method?: BaseAudioSrcSlaveMethod | null
     }
 
 }

@@ -1,13 +1,19 @@
 {
     "name": "@girs/amtk-5",
-    "version": "5.0.0-3.2.7",
+    "version": "5.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Amtk-5, generated from library version 5.0.0",
     "type": "module",
     "module": "amtk-5.js",
     "main": "amtk-5.js",
     "exports": {
-        "./ambient": "./amtk-5-ambient.d.ts",
-        "./import": "./amtk-5-import.d.ts",
+        "./ambient": {
+            "types": "./amtk-5-ambient.d.ts",
+            "default": "./amtk-5-ambient.js"
+        },
+        "./import": {
+            "types": "./amtk-5-import.d.ts",
+            "default": "./amtk-5-import.js"
+        },
         ".": {
             "import": {
                 "types": "./amtk-5.d.ts",

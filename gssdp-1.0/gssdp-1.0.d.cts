@@ -54,7 +54,7 @@ export module Client {
         /**
          * The IP address of the assoicated network interface.
          */
-        host_ip?: string | null
+        hostIp?: string | null
         /**
          * The name of the network interface this client is associated with.
          * Set to NULL to autodetect.
@@ -65,7 +65,7 @@ export module Client {
          * network. If not set (or set to 0) a random port will be used.
          * This property can be only set during object construction.
          */
-        msearch_port?: number | null
+        msearchPort?: number | null
         /**
          * The network this client is currently connected to. You could set this
          * to anything you want to identify the network this client is
@@ -75,26 +75,6 @@ export module Client {
          * default.
          */
         network?: string | null
-        /**
-         * The SSDP server's identifier.
-         */
-        server_id?: string | null
-        /**
-         * Time-to-live value to use for all sockets created by this client.
-         * If not set (or set to 0) the value recommended by UPnP will be used.
-         * This property can only be set during object construction.
-         */
-        socket_ttl?: number | null
-        /**
-         * The IP address of the assoicated network interface.
-         */
-        hostIp?: string | null
-        /**
-         * UDP port to use for sending multicast M-SEARCH requests on the
-         * network. If not set (or set to 0) a random port will be used.
-         * This property can be only set during object construction.
-         */
-        msearchPort?: number | null
         /**
          * The SSDP server's identifier.
          */
@@ -122,22 +102,12 @@ export interface Client extends Gio.Initable {
     /**
      * The IP address of the assoicated network interface.
      */
-    host_ip: string | null
-    /**
-     * The IP address of the assoicated network interface.
-     */
     hostIp: string | null
     /**
      * The name of the network interface this client is associated with.
      * Set to NULL to autodetect.
      */
     readonly interface: string | null
-    /**
-     * UDP port to use for sending multicast M-SEARCH requests on the
-     * network. If not set (or set to 0) a random port will be used.
-     * This property can be only set during object construction.
-     */
-    readonly msearch_port: number
     /**
      * UDP port to use for sending multicast M-SEARCH requests on the
      * network. If not set (or set to 0) a random port will be used.
@@ -156,17 +126,7 @@ export interface Client extends Gio.Initable {
     /**
      * The SSDP server's identifier.
      */
-    server_id: string | null
-    /**
-     * The SSDP server's identifier.
-     */
     serverId: string | null
-    /**
-     * Time-to-live value to use for all sockets created by this client.
-     * If not set (or set to 0) the value recommended by UPnP will be used.
-     * This property can only be set during object construction.
-     */
-    readonly socket_ttl: number
     /**
      * Time-to-live value to use for all sockets created by this client.
      * If not set (or set to 0) the value recommended by UPnP will be used.
@@ -487,15 +447,6 @@ export module ResourceGroup {
         /**
          * The number of seconds our advertisements are valid.
          */
-        max_age?: number | null
-        /**
-         * The minimum number of milliseconds between SSDP messages.
-         * The default is 120 based on DLNA specification.
-         */
-        message_delay?: number | null
-        /**
-         * The number of seconds our advertisements are valid.
-         */
         maxAge?: number | null
         /**
          * The minimum number of milliseconds between SSDP messages.
@@ -521,16 +472,7 @@ export interface ResourceGroup {
     /**
      * The number of seconds our advertisements are valid.
      */
-    max_age: number
-    /**
-     * The number of seconds our advertisements are valid.
-     */
     maxAge: number
-    /**
-     * The minimum number of milliseconds between SSDP messages.
-     * The default is 120 based on DLNA specification.
-     */
-    message_delay: number
     /**
      * The minimum number of milliseconds between SSDP messages.
      * The default is 120 based on DLNA specification.

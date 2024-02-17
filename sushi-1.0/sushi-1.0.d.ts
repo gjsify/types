@@ -125,7 +125,6 @@ interface FileLoader {
 
     // Own properties of Sushi-1.0.Sushi.FileLoader
 
-    readonly content_type: string
     readonly contentType: string
     file: Gio.File
     readonly icon: GdkPixbuf.Pixbuf

@@ -226,8 +226,6 @@ export module Menu {
 
         // Own constructor properties of DbusmenuGtk-0.4.DbusmenuGtk.Menu
 
-        dbus_name?: string | null
-        dbus_object?: string | null
         dbusName?: string | null
         dbusObject?: string | null
     }
@@ -238,9 +236,7 @@ export interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own properties of DbusmenuGtk-0.4.DbusmenuGtk.Menu
 
-    readonly dbus_name: string | null
     readonly dbusName: string | null
-    readonly dbus_object: string | null
     readonly dbusObject: string | null
 
     // Own fields of DbusmenuGtk-0.4.DbusmenuGtk.Menu

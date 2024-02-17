@@ -429,9 +429,7 @@ interface Tab {
 
     // Own properties of Bamf-3.Bamf.Tab
 
-    readonly desktop_id: string | null
     readonly desktopId: string | null
-    readonly is_foreground_tab: boolean
     readonly isForegroundTab: boolean
     readonly location: string | null
     readonly xid: number
@@ -633,7 +631,6 @@ interface View {
     readonly running: boolean
     readonly starting: boolean
     readonly urgent: boolean
-    readonly user_visible: boolean
     readonly userVisible: boolean
 
     // Own fields of Bamf-3.Bamf.View

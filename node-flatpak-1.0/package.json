@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-flatpak-1.0",
-    "version": "1.8.0-3.2.7",
+    "version": "1.8.0-3.2.8",
     "description": "Node.js TypeScript type definitions for Flatpak-1.0, generated from library version 1.8.0",
     "type": "module",
     "module": "node-flatpak-1.0.js",
     "main": "node-flatpak-1.0.js",
     "exports": {
-        "./ambient": "./node-flatpak-1.0-ambient.d.ts",
-        "./import": "./node-flatpak-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-flatpak-1.0-ambient.d.ts",
+            "default": "./node-flatpak-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-flatpak-1.0-import.d.ts",
+            "default": "./node-flatpak-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-flatpak-1.0.d.ts",

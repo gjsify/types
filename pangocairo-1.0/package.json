@@ -1,13 +1,19 @@
 {
     "name": "@girs/pangocairo-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for PangoCairo-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "pangocairo-1.0.js",
     "main": "pangocairo-1.0.js",
     "exports": {
-        "./ambient": "./pangocairo-1.0-ambient.d.ts",
-        "./import": "./pangocairo-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./pangocairo-1.0-ambient.d.ts",
+            "default": "./pangocairo-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./pangocairo-1.0-import.d.ts",
+            "default": "./pangocairo-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./pangocairo-1.0.d.ts",

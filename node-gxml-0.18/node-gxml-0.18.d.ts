@@ -215,7 +215,7 @@ module Collection {
         // Own constructor properties of GXml-0.18.GXml.Collection
 
         element?: DomElement | null
-        itemsType?: GObject.GType | null
+        items_type?: GObject.GType | null
     }
 
 }
@@ -577,7 +577,7 @@ module Map {
 
         // Own constructor properties of GXml-0.18.GXml.Map
 
-        attributeKey?: string | null
+        attribute_key?: string | null
     }
 
 }
@@ -863,8 +863,8 @@ module PairedMap {
 
         // Own constructor properties of GXml-0.18.GXml.PairedMap
 
-        attributePrimaryKey?: string | null
-        attributeSecondaryKey?: string | null
+        attribute_primary_key?: string | null
+        attribute_secondary_key?: string | null
     }
 
 }
@@ -1166,9 +1166,9 @@ module ThreeMap {
 
         // Own constructor properties of GXml-0.18.GXml.ThreeMap
 
-        attributePrimaryKey?: string | null
-        attributeSecondaryKey?: string | null
-        attributeThirdKey?: string | null
+        attribute_primary_key?: string | null
+        attribute_secondary_key?: string | null
+        attribute_third_key?: string | null
     }
 
 }
@@ -1710,8 +1710,8 @@ module Document {
         // Own constructor properties of GXml-0.18.GXml.Document
 
         indent?: boolean | null
-        nsTop?: boolean | null
-        prefixDefaultNs?: boolean | null
+        ns_top?: boolean | null
+        prefix_default_ns?: boolean | null
         backup?: boolean | null
         file?: Gio.File | null
     }
@@ -4729,7 +4729,7 @@ module DomElement {
         // Own constructor properties of GXml-0.18.GXml.DomElement
 
         id?: string | null
-        className?: string | null
+        class_name?: string | null
     }
 
 }
@@ -5355,8 +5355,8 @@ module DomMutationRecord {
 
         // Own constructor properties of GXml-0.18.GXml.DomMutationRecord
 
-        addedNodes?: DomNodeList | null
-        removedNodes?: DomNodeList | null
+        added_nodes?: DomNodeList | null
+        removed_nodes?: DomNodeList | null
     }
 
 }
@@ -5484,9 +5484,9 @@ module DomNode {
 
         // Own constructor properties of GXml-0.18.GXml.DomNode
 
-        ownerDocument?: DomDocument | null
-        nodeValue?: string | null
-        textContent?: string | null
+        owner_document?: DomDocument | null
+        node_value?: string | null
+        text_content?: string | null
     }
 
 }
@@ -6899,9 +6899,9 @@ module IXsdSchema {
 
         // Own constructor properties of GXml-0.18.GXml.IXsdSchema
 
-        elementDefinitions?: IXsdListElements | null
-        simpleTypeDefinitions?: IXsdListSimpleTypes | null
-        complexTypeDefinitions?: IXsdListComplexTypes | null
+        element_definitions?: IXsdListElements | null
+        simple_type_definitions?: IXsdListSimpleTypes | null
+        complex_type_definitions?: IXsdListComplexTypes | null
     }
 
 }
@@ -7495,9 +7495,9 @@ module IXsdTypeRestriction {
 
         base?: string | null
         id?: string | null
-        simpleType?: IXsdSimpleType | null
+        simple_type?: IXsdSimpleType | null
         enumerations?: IXsdListTypeRestrictionEnumerations | null
-        whiteSpaces?: IXsdListTypeRestrictionWhiteSpaces | null
+        white_spaces?: IXsdListTypeRestrictionWhiteSpaces | null
     }
 
 }
@@ -8481,8 +8481,8 @@ module IXsdComplexType {
         final?: string | null
         mixed?: boolean | null
         name?: string | null
-        defaultAttributesApply?: boolean | null
-        contentType?: IXsdBaseContent | null
+        default_attributes_apply?: boolean | null
+        content_type?: IXsdBaseContent | null
     }
 
 }
@@ -8969,12 +8969,12 @@ module IXsdElement {
         name?: string | null
         nillable?: boolean | null
         ref?: string | null
-        substitutionGroup?: DomTokenList | null
-        targetNamespace?: string | null
-        objectType?: string | null
+        substitution_group?: DomTokenList | null
+        target_namespace?: string | null
+        object_type?: string | null
         anotation?: IXsdAnnotation | null
-        simpleType?: IXsdSimpleType | null
-        complexType?: IXsdComplexType | null
+        simple_type?: IXsdSimpleType | null
+        complex_type?: IXsdComplexType | null
     }
 
 }
@@ -9736,8 +9736,8 @@ module IXsdList {
         // Own constructor properties of GXml-0.18.GXml.IXsdList
 
         element?: DomElement | null
-        itemsType?: GObject.GType | null
-        itemsName?: GObject.GType | null
+        items_type?: GObject.GType | null
+        items_name?: GObject.GType | null
     }
 
 }
@@ -10757,7 +10757,7 @@ module Serializable {
 
         // Own constructor properties of GXml-0.18.GXml.Serializable
 
-        serializedXmlNodeValue?: string | null
+        serialized_xml_node_value?: string | null
     }
 
 }
@@ -11359,7 +11359,7 @@ module CssSelectorData {
 
         // Own constructor properties of GXml-0.18.GXml.CssSelectorData
 
-        selectorType?: CssSelectorType | null
+        selector_type?: CssSelectorType | null
         data?: string | null
         value?: string | null
     }
@@ -12148,13 +12148,13 @@ module DomMutationObserverInit {
 
         // Own constructor properties of GXml-0.18.GXml.DomMutationObserverInit
 
-        childList?: boolean | null
+        child_list?: boolean | null
         attributes?: boolean | null
-        characterData?: boolean | null
+        character_data?: boolean | null
         subtree?: boolean | null
-        attributeOldValue?: boolean | null
-        characterDataOldValue?: boolean | null
-        attributeFilter?: Gee.List | null
+        attribute_old_value?: boolean | null
+        character_data_old_value?: boolean | null
+        attribute_filter?: Gee.List | null
     }
 
 }
@@ -14233,7 +14233,7 @@ module GomElement {
 
         // Own constructor properties of GXml-0.18.GXml.GomElement
 
-        parseChildren?: boolean | null
+        parse_children?: boolean | null
         unparsed?: string | null
     }
 
@@ -15438,7 +15438,7 @@ module GomXsdArrayString {
 
         // Own constructor properties of GXml-0.18.GXml.GomXsdArrayString
 
-        simpleType?: string | null
+        simple_type?: string | null
         source?: Gio.File | null
     }
 
@@ -15880,7 +15880,7 @@ module GomEnum {
 
         // Own constructor properties of GXml-0.18.GXml.GomEnum
 
-        enumType?: GObject.GType | null
+        enum_type?: GObject.GType | null
     }
 
 }
@@ -16143,9 +16143,9 @@ module GomXsdSchema {
 
         // Own constructor properties of GXml-0.18.GXml.GomXsdSchema
 
-        elementDefinitions?: GomXsdListElements | null
-        simpleTypeDefinitions?: GomXsdListSimpleTypes | null
-        complexTypeDefinitions?: GomXsdListComplexTypes | null
+        element_definitions?: GomXsdListElements | null
+        simple_type_definitions?: GomXsdListSimpleTypes | null
+        complex_type_definitions?: GomXsdListComplexTypes | null
     }
 
 }
@@ -16799,9 +16799,9 @@ module GomXsdTypeRestriction {
         // Own constructor properties of GXml-0.18.GXml.GomXsdTypeRestriction
 
         base?: string | null
-        simpleType?: GomXsdSimpleType | null
+        simple_type?: GomXsdSimpleType | null
         enumerations?: GomXsdListTypeRestrictionEnumerations | null
-        whiteSpaces?: GomXsdListTypeRestrictionWhiteSpaces | null
+        white_spaces?: GomXsdListTypeRestrictionWhiteSpaces | null
     }
 
 }
@@ -18784,8 +18784,8 @@ module GomXsdComplexType {
         final?: string | null
         mixed?: boolean | null
         name?: string | null
-        defaultAttributesApply?: boolean | null
-        contentType?: GomXsdBaseContent | null
+        default_attributes_apply?: boolean | null
+        content_type?: GomXsdBaseContent | null
     }
 
 }
@@ -19093,17 +19093,17 @@ module GomXsdElement {
         final?: string | null
         fixed?: string | null
         form?: string | null
-        maxOccurs?: string | null
-        minOccurs?: string | null
+        max_occurs?: string | null
+        min_occurs?: string | null
         name?: string | null
         nillable?: boolean | null
         ref?: string | null
-        substitutionGroup?: DomTokenList | null
-        targetNamespace?: string | null
-        objectType?: string | null
+        substitution_group?: DomTokenList | null
+        target_namespace?: string | null
+        object_type?: string | null
         anotation?: GomXsdAnnotation | null
-        simpleType?: GomXsdSimpleType | null
-        complexType?: GomXsdComplexType | null
+        simple_type?: GomXsdSimpleType | null
+        complex_type?: GomXsdComplexType | null
     }
 
 }
@@ -28684,7 +28684,7 @@ module SerializableArrayList {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableArrayList
 
-        ignoredSerializableProperties?: GLib.HashTable | null
+        ignored_serializable_properties?: GLib.HashTable | null
     }
 
 }
@@ -29148,7 +29148,7 @@ module SerializableDualKeyMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableDualKeyMap
 
-        ignoredSerializableProperties?: GLib.HashTable | null
+        ignored_serializable_properties?: GLib.HashTable | null
     }
 
 }
@@ -29366,7 +29366,7 @@ module SerializableHashMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableHashMap
 
-        ignoredSerializableProperties?: GLib.HashTable | null
+        ignored_serializable_properties?: GLib.HashTable | null
     }
 
 }
@@ -29700,7 +29700,7 @@ module SerializableTreeMap {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableTreeMap
 
-        ignoredSerializableProperties?: GLib.HashTable | null
+        ignored_serializable_properties?: GLib.HashTable | null
     }
 
 }
@@ -30274,7 +30274,7 @@ module SerializableObjectModel {
 
         // Own constructor properties of GXml-0.18.GXml.SerializableObjectModel
 
-        ignoredSerializableProperties?: GLib.HashTable | null
+        ignored_serializable_properties?: GLib.HashTable | null
     }
 
 }

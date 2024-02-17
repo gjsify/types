@@ -157,7 +157,6 @@ module Sink {
 
         // Own constructor properties of GstVideo-0.10.GstVideo.Sink
 
-        show_preroll_frame?: boolean | null
         showPrerollFrame?: boolean | null
     }
 
@@ -167,7 +166,6 @@ interface Sink {
 
     // Own properties of GstVideo-0.10.GstVideo.Sink
 
-    show_preroll_frame: boolean
     showPrerollFrame: boolean
 
     // Conflicting properties

@@ -2267,13 +2267,13 @@ module BaseSink {
 
         async?: boolean | null
         blocksize?: number | null
-        enableLastBuffer?: boolean | null
-        maxLateness?: number | null
-        prerollQueueLen?: number | null
+        enable_last_buffer?: boolean | null
+        max_lateness?: number | null
+        preroll_queue_len?: number | null
         qos?: boolean | null
-        renderDelay?: number | null
+        render_delay?: number | null
         sync?: boolean | null
-        tsOffset?: number | null
+        ts_offset?: number | null
     }
 
 }
@@ -2452,8 +2452,8 @@ module BaseSrc {
         // Own constructor properties of Gst-0.10.Gst.BaseSrc
 
         blocksize?: number | null
-        doTimestamp?: boolean | null
-        numBuffers?: number | null
+        do_timestamp?: boolean | null
+        num_buffers?: number | null
         typefind?: boolean | null
     }
 
@@ -2715,7 +2715,7 @@ module Bin {
 
         // Own constructor properties of Gst-0.10.Gst.Bin
 
-        asyncHandling?: boolean | null
+        async_handling?: boolean | null
     }
 
 }
@@ -3031,8 +3031,8 @@ module Clock {
 
         stats?: boolean | null
         timeout?: number | null
-        windowSize?: number | null
-        windowThreshold?: number | null
+        window_size?: number | null
+        window_threshold?: number | null
     }
 
 }
@@ -4521,7 +4521,7 @@ module PadTemplate {
 
         caps?: Caps | null
         direction?: PadDirection | null
-        nameTemplate?: string | null
+        name_template?: string | null
         presence?: PadPresence | null
     }
 
@@ -4638,7 +4638,7 @@ module Pipeline {
 
         // Own constructor properties of Gst-0.10.Gst.Pipeline
 
-        autoFlushBus?: boolean | null
+        auto_flush_bus?: boolean | null
         delay?: number | null
     }
 
@@ -5203,7 +5203,7 @@ module SystemClock {
 
         // Own constructor properties of Gst-0.10.Gst.SystemClock
 
-        clockType?: ClockType | null
+        clock_type?: ClockType | null
     }
 
 }

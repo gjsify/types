@@ -1,13 +1,19 @@
 {
     "name": "@girs/rygelcore-2.8",
-    "version": "2.8.0-3.2.7",
+    "version": "2.8.0-3.2.8",
     "description": "GJS TypeScript type definitions for RygelCore-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "rygelcore-2.8.js",
     "main": "rygelcore-2.8.js",
     "exports": {
-        "./ambient": "./rygelcore-2.8-ambient.d.ts",
-        "./import": "./rygelcore-2.8-import.d.ts",
+        "./ambient": {
+            "types": "./rygelcore-2.8-ambient.d.ts",
+            "default": "./rygelcore-2.8-ambient.js"
+        },
+        "./import": {
+            "types": "./rygelcore-2.8-import.d.ts",
+            "default": "./rygelcore-2.8-import.js"
+        },
         ".": {
             "import": {
                 "types": "./rygelcore-2.8.d.ts",

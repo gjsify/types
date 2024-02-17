@@ -296,7 +296,7 @@ export module TestClock {
 
         // Own constructor properties of GstCheck-1.0.GstCheck.TestClock
 
-        clockType?: Gst.ClockType | null
+        clock_type?: Gst.ClockType | null
         /**
          * When a #GstTestClock is constructed it will have a certain start time set.
          * If the clock was created using gst_test_clock_new_with_start_time() then
@@ -304,7 +304,7 @@ export module TestClock {
          * gst_test_clock_new() was called the clock started at time zero, and thus
          * this property contains the value 0.
          */
-        startTime?: number | null
+        start_time?: number | null
     }
 
 }

@@ -334,15 +334,12 @@ export module AnnotationMarkup {
 
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
-        can_have_popup?: boolean | null
-        has_popup?: boolean | null
-        label?: string | null
-        opacity?: number | null
-        popup_is_open?: boolean | null
-        rectangle?: Rectangle | null
         canHavePopup?: boolean | null
         hasPopup?: boolean | null
+        label?: string | null
+        opacity?: number | null
         popupIsOpen?: boolean | null
+        rectangle?: Rectangle | null
     }
 
 }
@@ -351,22 +348,21 @@ export interface AnnotationMarkup extends Annotation {
 
     // Own properties of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
-    can_have_popup: boolean
     canHavePopup: boolean
-    has_popup: boolean
     hasPopup: boolean
     label: string | null
     opacity: number
-    popup_is_open: boolean
     popupIsOpen: boolean
     rectangle: Rectangle
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
+    can_have_popup(): boolean
     get_label(): string
     get_opacity(): number
     get_popup_is_open(): boolean
     get_rectangle(ev_rect: Rectangle): void
+    has_popup(): boolean
     set_has_popup(has_popup: boolean): boolean
     set_label(label: string): boolean
     set_opacity(opacity: number): boolean
@@ -1510,7 +1506,6 @@ export module AnnotationText {
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.AnnotationText
 
         icon?: AnnotationTextIcon | null
-        is_open?: boolean | null
         isOpen?: boolean | null
     }
 
@@ -1521,7 +1516,6 @@ export interface AnnotationText extends AnnotationMarkup {
     // Own properties of EvinceDocument-3.0.EvinceDocument.AnnotationText
 
     icon: AnnotationTextIcon
-    is_open: boolean
     isOpen: boolean
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.AnnotationText
@@ -2501,21 +2495,16 @@ export module LinkAction {
         // Own constructor properties of EvinceDocument-3.0.EvinceDocument.LinkAction
 
         dest?: LinkDest | null
-        exclude_reset_fields?: boolean | null
+        excludeResetFields?: boolean | null
         filename?: string | null
-        hide_list?: any | null
+        hideList?: any | null
         name?: string | null
         params?: string | null
-        reset_fields?: any | null
-        show_list?: any | null
-        toggle_list?: any | null
-        type?: LinkActionType | null
-        uri?: string | null
-        excludeResetFields?: boolean | null
-        hideList?: any | null
         resetFields?: any | null
         showList?: any | null
         toggleList?: any | null
+        type?: LinkActionType | null
+        uri?: string | null
     }
 
 }
@@ -2525,18 +2514,13 @@ export interface LinkAction {
     // Own properties of EvinceDocument-3.0.EvinceDocument.LinkAction
 
     readonly dest: LinkDest
-    readonly exclude_reset_fields: boolean
     readonly excludeResetFields: boolean
     readonly filename: string | null
-    readonly hide_list: any
     readonly hideList: any
     readonly name: string | null
     readonly params: string | null
-    readonly reset_fields: any
     readonly resetFields: any
-    readonly show_list: any
     readonly showList: any
-    readonly toggle_list: any
     readonly toggleList: any
     readonly type: LinkActionType
     readonly uri: string | null
@@ -2635,12 +2619,11 @@ export module LinkDest {
         left?: number | null
         named?: string | null
         page?: number | null
-        page_label?: string | null
+        pageLabel?: string | null
         right?: number | null
         top?: number | null
         type?: LinkDestType | null
         zoom?: number | null
-        pageLabel?: string | null
     }
 
 }
@@ -2654,7 +2637,6 @@ export interface LinkDest {
     readonly left: number
     readonly named: string | null
     readonly page: number
-    readonly page_label: string | null
     readonly pageLabel: string | null
     readonly right: number
     readonly top: number
@@ -2889,11 +2871,10 @@ export module TransitionEffect {
         angle?: number | null
         direction?: TransitionEffectDirection | null
         duration?: number | null
-        duration_real?: number | null
+        durationReal?: number | null
         rectangular?: boolean | null
         scale?: number | null
         type?: TransitionEffectType | null
-        durationReal?: number | null
     }
 
 }
@@ -2906,7 +2887,6 @@ export interface TransitionEffect {
     angle: number
     direction: TransitionEffectDirection
     duration: number
-    duration_real: number
     durationReal: number
     rectangular: boolean
     scale: number

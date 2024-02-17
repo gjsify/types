@@ -724,7 +724,6 @@ export module VulkanDevice {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanDevice
 
-        physical_device?: VulkanPhysicalDevice | null
         physicalDevice?: VulkanPhysicalDevice | null
     }
 
@@ -1627,9 +1626,8 @@ export module VulkanPhysicalDevice {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanPhysicalDevice
 
-        device_index?: number | null
-        instance?: VulkanInstance | null
         deviceIndex?: number | null
+        instance?: VulkanInstance | null
     }
 
 }
@@ -1849,8 +1847,6 @@ export module VulkanSwapper {
 
         // Own constructor properties of GstVulkan-1.0.GstVulkan.VulkanSwapper
 
-        force_aspect_ratio?: boolean | null
-        pixel_aspect_ratio?: Gst.Fraction | null
         forceAspectRatio?: boolean | null
         pixelAspectRatio?: Gst.Fraction | null
     }
@@ -1861,9 +1857,7 @@ export interface VulkanSwapper {
 
     // Own properties of GstVulkan-1.0.GstVulkan.VulkanSwapper
 
-    force_aspect_ratio: boolean
     forceAspectRatio: boolean
-    pixel_aspect_ratio: Gst.Fraction
     pixelAspectRatio: Gst.Fraction
 
     // Own fields of GstVulkan-1.0.GstVulkan.VulkanSwapper

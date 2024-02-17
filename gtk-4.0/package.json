@@ -1,13 +1,19 @@
 {
     "name": "@girs/gtk-4.0",
-    "version": "4.12.5-3.2.7",
-    "description": "GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.12.5",
+    "version": "4.12.0-3.2.8",
+    "description": "GJS TypeScript type definitions for Gtk-4.0, generated from library version 4.12.0",
     "type": "module",
     "module": "gtk-4.0.js",
     "main": "gtk-4.0.js",
     "exports": {
-        "./ambient": "./gtk-4.0-ambient.d.ts",
-        "./import": "./gtk-4.0-import.d.ts",
+        "./ambient": {
+            "types": "./gtk-4.0-ambient.d.ts",
+            "default": "./gtk-4.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gtk-4.0-import.d.ts",
+            "default": "./gtk-4.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gtk-4.0.d.ts",

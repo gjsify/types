@@ -126,11 +126,11 @@ export module MixerCard {
 
         // Own constructor properties of Gvc-1.0.Gvc.MixerCard
 
-        iconName?: string | null
+        icon_name?: string | null
         id?: number | null
         index?: number | null
         name?: string | null
-        paContext?: any | null
+        pa_context?: any | null
         profile?: string | null
     }
 
@@ -1257,24 +1257,24 @@ export module MixerStream {
 
         // Own constructor properties of Gvc-1.0.Gvc.MixerStream
 
-        applicationId?: string | null
-        canDecibel?: boolean | null
-        cardIndex?: number | null
-        channelMap?: ChannelMap | null
+        application_id?: string | null
+        can_decibel?: boolean | null
+        card_index?: number | null
+        channel_map?: ChannelMap | null
         decibel?: number | null
         description?: string | null
-        formFactor?: string | null
-        iconName?: string | null
+        form_factor?: string | null
+        icon_name?: string | null
         id?: number | null
         index?: number | null
-        isEventStream?: boolean | null
-        isMuted?: boolean | null
-        isVirtual?: boolean | null
+        is_event_stream?: boolean | null
+        is_muted?: boolean | null
+        is_virtual?: boolean | null
         name?: string | null
-        paContext?: any | null
+        pa_context?: any | null
         port?: string | null
         state?: MixerStreamState | null
-        sysfsPath?: string | null
+        sysfs_path?: string | null
         volume?: number | null
     }
 
@@ -1491,11 +1491,11 @@ export module MixerUIDevice {
 
         card?: any | null
         description?: string | null
-        iconName?: string | null
+        icon_name?: string | null
         origin?: string | null
-        portAvailable?: boolean | null
-        portName?: string | null
-        streamId?: number | null
+        port_available?: boolean | null
+        port_name?: string | null
+        stream_id?: number | null
         type?: number | null
     }
 

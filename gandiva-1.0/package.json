@@ -1,13 +1,19 @@
 {
     "name": "@girs/gandiva-1.0",
-    "version": "3.0.0-3.2.7",
+    "version": "3.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Gandiva-1.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gandiva-1.0.js",
     "main": "gandiva-1.0.js",
     "exports": {
-        "./ambient": "./gandiva-1.0-ambient.d.ts",
-        "./import": "./gandiva-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./gandiva-1.0-ambient.d.ts",
+            "default": "./gandiva-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gandiva-1.0-import.d.ts",
+            "default": "./gandiva-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./gandiva-1.0.d.ts",

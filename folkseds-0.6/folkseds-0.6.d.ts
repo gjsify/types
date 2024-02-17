@@ -134,9 +134,6 @@ module Persona {
         // Own constructor properties of FolksEds-0.6.FolksEds.Persona
 
         contact?: EBookContacts.Contact | null
-        contact_id?: string | null
-        system_groups?: Gee.Set | null
-        in_google_personal_group?: boolean | null
         contactId?: string | null
         systemGroups?: Gee.Set | null
         inGooglePersonalGroup?: boolean | null
@@ -149,11 +146,8 @@ interface Persona extends Folks.AntiLinkable, Folks.AvatarDetails, Folks.Birthda
     // Own properties of FolksEds-0.6.FolksEds.Persona
 
     readonly contact: EBookContacts.Contact
-    readonly contact_id: string | null
     readonly contactId: string | null
-    system_groups: Gee.Set
     systemGroups: Gee.Set
-    in_google_personal_group: boolean
     inGooglePersonalGroup: boolean
 
     // Owm methods of FolksEds-0.6.FolksEds.Persona

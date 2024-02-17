@@ -45,7 +45,7 @@ export module VideoSink {
 
         // Own constructor properties of CoglGst-2.0.CoglGst.VideoSink
 
-        updatePriority?: number | null
+        update_priority?: number | null
     }
 
 }

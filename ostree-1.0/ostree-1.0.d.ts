@@ -1007,8 +1007,6 @@ module Repo {
         // Own constructor properties of OSTree-1.0.OSTree.Repo
 
         path?: Gio.File | null
-        remotes_config_dir?: string | null
-        sysroot_path?: Gio.File | null
         remotesConfigDir?: string | null
         sysrootPath?: Gio.File | null
     }
@@ -1020,9 +1018,7 @@ interface Repo {
     // Own properties of OSTree-1.0.OSTree.Repo
 
     readonly path: Gio.File
-    readonly remotes_config_dir: string | null
     readonly remotesConfigDir: string | null
-    readonly sysroot_path: Gio.File
     readonly sysrootPath: Gio.File
 
     // Owm methods of OSTree-1.0.OSTree.Repo

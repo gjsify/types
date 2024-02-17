@@ -71,7 +71,7 @@ export module SearchableContainer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.SearchableContainer
 
-        searchClasses?: Gee.ArrayList | null
+        search_classes?: Gee.ArrayList | null
     }
 
 }
@@ -350,7 +350,7 @@ export module VisualItem {
 
         width?: number | null
         height?: number | null
-        colorDepth?: number | null
+        color_depth?: number | null
         thumbnails?: Gee.ArrayList | null
     }
 
@@ -463,7 +463,7 @@ export module WritableContainer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.WritableContainer
 
-        createClasses?: Gee.ArrayList | null
+        create_classes?: Gee.ArrayList | null
     }
 
 }
@@ -793,8 +793,8 @@ export module AudioItem {
 
         duration?: number | null
         bitrate?: number | null
-        sampleFreq?: number | null
-        bitsPerSample?: number | null
+        sample_freq?: number | null
+        bits_per_sample?: number | null
         channels?: number | null
         album?: string | null
     }
@@ -1544,8 +1544,8 @@ export module MusicItem {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.MusicItem
 
-        trackNumber?: number | null
-        albumArt?: Thumbnail | null
+        track_number?: number | null
+        album_art?: Thumbnail | null
     }
 
 }
@@ -2361,10 +2361,10 @@ export module MediaContainer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaContainer
 
-        childCount?: number | null
-        emptyChildCount?: number | null
-        createModeEnabled?: boolean | null
-        sortCriteria?: string | null
+        child_count?: number | null
+        empty_child_count?: number | null
+        create_mode_enabled?: boolean | null
+        sort_criteria?: string | null
     }
 
 }
@@ -2671,10 +2671,10 @@ export module MediaFileItem {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaFileItem
 
-        mimeType?: string | null
-        dlnaProfile?: string | null
+        mime_type?: string | null
+        dlna_profile?: string | null
         size?: number | null
-        placeHolder?: boolean | null
+        place_holder?: boolean | null
     }
 
 }
@@ -2845,16 +2845,16 @@ export module MediaObject {
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaObject
 
         id?: string | null
-        refId?: string | null
-        upnpClass?: string | null
+        ref_id?: string | null
+        upnp_class?: string | null
         date?: string | null
         creator?: string | null
         modified?: number | null
-        objectUpdateId?: number | null
+        object_update_id?: number | null
         artist?: string | null
         genre?: string | null
         parent?: MediaContainer | null
-        parentRef?: MediaContainer | null
+        parent_ref?: MediaContainer | null
         title?: string | null
     }
 
@@ -3038,25 +3038,25 @@ export module MediaResource {
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaResource
 
         uri?: string | null
-        importUri?: string | null
+        import_uri?: string | null
         extension?: string | null
         size?: number | null
-        cleartextSize?: number | null
+        cleartext_size?: number | null
         duration?: number | null
         bitrate?: number | null
-        bitsPerSample?: number | null
-        colorDepth?: number | null
+        bits_per_sample?: number | null
+        color_depth?: number | null
         width?: number | null
         height?: number | null
-        audioChannels?: number | null
-        sampleFreq?: number | null
+        audio_channels?: number | null
+        sample_freq?: number | null
         protocol?: string | null
-        mimeType?: string | null
-        dlnaProfile?: string | null
+        mime_type?: string | null
+        dlna_profile?: string | null
         network?: string | null
-        dlnaConversion?: GUPnPAV.DLNAConversion | null
-        dlnaFlags?: GUPnPAV.DLNAFlags | null
-        dlnaOperation?: GUPnPAV.DLNAOperation | null
+        dlna_conversion?: GUPnPAV.DLNAConversion | null
+        dlna_flags?: GUPnPAV.DLNAFlags | null
+        dlna_operation?: GUPnPAV.DLNAOperation | null
     }
 
 }
@@ -3295,9 +3295,9 @@ export module MediaServerPlugin {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaServerPlugin
 
-        rootContainer?: MediaContainer | null
-        uploadProfiles?: RygelCore.DLNAProfile[] | null
-        supportedProfiles?: RygelCore.DLNAProfile[] | null
+        root_container?: MediaContainer | null
+        upload_profiles?: RygelCore.DLNAProfile[] | null
+        supported_profiles?: RygelCore.DLNAProfile[] | null
     }
 
 }
@@ -3456,7 +3456,7 @@ export module MediaServer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.MediaServer
 
-        rootContainer?: MediaContainer | null
+        root_container?: MediaContainer | null
     }
 
 }
@@ -3877,10 +3877,10 @@ export module HTTPByteSeekRequest {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.HTTPByteSeekRequest
 
-        startByte?: number | null
-        endByte?: number | null
-        rangeLength?: number | null
-        totalSize?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        range_length?: number | null
+        total_size?: number | null
     }
 
 }
@@ -3964,10 +3964,10 @@ export module HTTPByteSeekResponse {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.HTTPByteSeekResponse
 
-        startByte?: number | null
-        endByte?: number | null
-        rangeLength?: number | null
-        totalSize?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        range_length?: number | null
+        total_size?: number | null
     }
 
 }
@@ -4178,11 +4178,11 @@ export module HTTPItemURI {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.HTTPItemURI
 
-        itemId?: string | null
-        thumbnailIndex?: number | null
-        subtitleIndex?: number | null
-        resourceName?: string | null
-        httpServer?: HTTPServer | null
+        item_id?: string | null
+        thumbnail_index?: number | null
+        subtitle_index?: number | null
+        resource_name?: string | null
+        http_server?: HTTPServer | null
         extension?: string | null
     }
 
@@ -4494,8 +4494,8 @@ export module HTTPServer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.HTTPServer
 
-        pathRoot?: string | null
-        serverName?: string | null
+        path_root?: string | null
+        server_name?: string | null
     }
 
 }
@@ -4638,14 +4638,14 @@ export module HTTPTimeSeekResponse {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.HTTPTimeSeekResponse
 
-        startTime?: number | null
-        endTime?: number | null
-        rangeDuration?: number | null
-        totalDuration?: number | null
-        startByte?: number | null
-        endByte?: number | null
-        responseLength?: number | null
-        totalSize?: number | null
+        start_time?: number | null
+        end_time?: number | null
+        range_duration?: number | null
+        total_duration?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        response_length?: number | null
+        total_size?: number | null
     }
 
 }
@@ -4755,7 +4755,7 @@ export module Serializer {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.Serializer
 
-        serializerType?: SerializerType | null
+        serializer_type?: SerializerType | null
     }
 
 }
@@ -4962,10 +4962,10 @@ export module DTCPCleartextRequest {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.DTCPCleartextRequest
 
-        startByte?: number | null
-        endByte?: number | null
-        rangeLength?: number | null
-        totalSize?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        range_length?: number | null
+        total_size?: number | null
     }
 
 }
@@ -5046,11 +5046,11 @@ export module DTCPCleartextResponse {
 
         // Own constructor properties of RygelServer-2.6.RygelServer.DTCPCleartextResponse
 
-        startByte?: number | null
-        endByte?: number | null
-        rangeLength?: number | null
-        totalSize?: number | null
-        encryptedLength?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        range_length?: number | null
+        total_size?: number | null
+        encrypted_length?: number | null
     }
 
 }
@@ -5183,11 +5183,11 @@ export module DLNAAvailableSeekRangeResponse {
         // Own constructor properties of RygelServer-2.6.RygelServer.DLNAAvailableSeekRangeResponse
 
         mode?: number | null
-        startTime?: number | null
-        endTime?: number | null
-        startByte?: number | null
-        endByte?: number | null
-        rangeLength?: number | null
+        start_time?: number | null
+        end_time?: number | null
+        start_byte?: number | null
+        end_byte?: number | null
+        range_length?: number | null
     }
 
 }

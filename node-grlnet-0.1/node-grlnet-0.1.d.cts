@@ -40,7 +40,7 @@ export module Wc {
         // Own constructor properties of GrlNet-0.1.GrlNet.Wc
 
         cache?: boolean | null
-        cacheSize?: number | null
+        cache_size?: number | null
         loglevel?: number | null
         throttling?: number | null
     }

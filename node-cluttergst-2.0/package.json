@@ -1,13 +1,19 @@
 {
     "name": "@girs/node-cluttergst-2.0",
-    "version": "2.0.19-3.2.7",
+    "version": "2.0.19-3.2.8",
     "description": "Node.js TypeScript type definitions for ClutterGst-2.0, generated from library version 2.0.19",
     "type": "module",
     "module": "node-cluttergst-2.0.js",
     "main": "node-cluttergst-2.0.js",
     "exports": {
-        "./ambient": "./node-cluttergst-2.0-ambient.d.ts",
-        "./import": "./node-cluttergst-2.0-import.d.ts",
+        "./ambient": {
+            "types": "./node-cluttergst-2.0-ambient.d.ts",
+            "default": "./node-cluttergst-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./node-cluttergst-2.0-import.d.ts",
+            "default": "./node-cluttergst-2.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./node-cluttergst-2.0.d.ts",

@@ -130,17 +130,10 @@ export module Transcoder {
         /**
          * See #encodebin:avoid-reencoding
          */
-        avoid_reencoding?: boolean | null
-        dest_uri?: string | null
-        position_update_interval?: number | null
-        profile?: GstPbutils.EncodingProfile | null
-        src_uri?: string | null
-        /**
-         * See #encodebin:avoid-reencoding
-         */
         avoidReencoding?: boolean | null
         destUri?: string | null
         positionUpdateInterval?: number | null
+        profile?: GstPbutils.EncodingProfile | null
         srcUri?: string | null
     }
 
@@ -153,20 +146,13 @@ export interface Transcoder {
     /**
      * See #encodebin:avoid-reencoding
      */
-    avoid_reencoding: boolean
-    /**
-     * See #encodebin:avoid-reencoding
-     */
     avoidReencoding: boolean
-    readonly dest_uri: string | null
     readonly destUri: string | null
     readonly duration: number
     readonly pipeline: Gst.Element
     readonly position: number
-    position_update_interval: number
     positionUpdateInterval: number
     readonly profile: GstPbutils.EncodingProfile
-    readonly src_uri: string | null
     readonly srcUri: string | null
 
     // Owm methods of GstTranscoder-1.0.GstTranscoder.Transcoder

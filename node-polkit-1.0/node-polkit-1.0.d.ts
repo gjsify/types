@@ -1167,7 +1167,7 @@ module Permission {
         /**
          * The action identifier to use for the permission.
          */
-        actionId?: string | null
+        action_id?: string | null
         /**
          * The #PolkitSubject to use for the permission. If not set during
          * construction, it will be set to match the current process.
@@ -1658,7 +1658,7 @@ module UnixProcess {
         /**
          * The start time of the process.
          */
-        startTime?: number | null
+        start_time?: number | null
         /**
          * The UNIX user id of the process or -1 if unknown.
          * 
@@ -1838,7 +1838,7 @@ module UnixSession {
         /**
          * The UNIX session id.
          */
-        sessionId?: string | null
+        session_id?: string | null
     }
 
 }

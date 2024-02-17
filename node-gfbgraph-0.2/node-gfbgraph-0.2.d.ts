@@ -233,7 +233,7 @@ module Album {
          * The number of photos in the album.
          */
         count?: number | null
-        coverPhoto?: string | null
+        cover_photo?: string | null
         /**
          * The album description given by the owner.
          */
@@ -448,7 +448,7 @@ module Node {
 
         // Own constructor properties of GFBGraph-0.2.GFBGraph.Node
 
-        createdTime?: string | null
+        created_time?: string | null
         /**
          * The node ID. All nodes have one of this.
          */
@@ -457,7 +457,7 @@ module Node {
          * The node link. An URL to the node on Facebook.
          */
         link?: string | null
-        updatedTime?: string | null
+        updated_time?: string | null
     }
 
 }
@@ -893,7 +893,7 @@ module SimpleAuthorizer {
 
         // Own constructor properties of GFBGraph-0.2.GFBGraph.SimpleAuthorizer
 
-        accessToken?: string | null
+        access_token?: string | null
     }
 
 }

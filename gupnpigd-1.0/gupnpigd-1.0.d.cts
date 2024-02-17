@@ -62,7 +62,6 @@ export interface SimpleIgd {
 
     // Own properties of GUPnPIgd-1.0.GUPnPIgd.SimpleIgd
 
-    readonly main_context: any
     readonly mainContext: any
 
     // Own fields of GUPnPIgd-1.0.GUPnPIgd.SimpleIgd

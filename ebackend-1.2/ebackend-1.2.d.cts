@@ -445,11 +445,9 @@ export interface Backend {
     // Own properties of EBackend-1.2.EBackend.Backend
 
     connectable: Gio.SocketConnectable
-    readonly main_context: GLib.MainContext
     readonly mainContext: GLib.MainContext
     online: boolean
     readonly source: EDataServer.Source
-    readonly user_prompter: UserPrompter
     readonly userPrompter: UserPrompter
 
     // Owm methods of EBackend-1.2.EBackend.Backend
@@ -1202,18 +1200,6 @@ export module CacheKeys {
         /**
          * The column name for the keys.
          */
-        key_column_name?: string | null
-        /**
-         * The table name of this keys table.
-         */
-        table_name?: string | null
-        /**
-         * The column name for the values.
-         */
-        value_column_name?: string | null
-        /**
-         * The column name for the keys.
-         */
         keyColumnName?: string | null
         /**
          * The table name of this keys table.
@@ -1238,23 +1224,11 @@ export interface CacheKeys {
     /**
      * The column name for the keys.
      */
-    readonly key_column_name: string | null
-    /**
-     * The column name for the keys.
-     */
     readonly keyColumnName: string | null
     /**
      * The table name of this keys table.
      */
-    readonly table_name: string | null
-    /**
-     * The table name of this keys table.
-     */
     readonly tableName: string | null
-    /**
-     * The column name for the values.
-     */
-    readonly value_column_name: string | null
     /**
      * The column name for the values.
      */
@@ -1526,7 +1500,6 @@ export interface CollectionBackend {
 
     // Own properties of EBackend-1.2.EBackend.CollectionBackend
 
-    readonly proxy_resolver: Gio.ProxyResolver
     readonly proxyResolver: Gio.ProxyResolver
     readonly server: SourceRegistryServer
 
@@ -2196,8 +2169,6 @@ export module DataFactory {
 
         // Own constructor properties of EBackend-1.2.EBackend.DataFactory
 
-        backend_per_process?: number | null
-        reload_supported?: boolean | null
         backendPerProcess?: number | null
         reloadSupported?: boolean | null
     }
@@ -2208,10 +2179,8 @@ export interface DataFactory extends EDataServer.Extensible, Gio.Initable {
 
     // Own properties of EBackend-1.2.EBackend.DataFactory
 
-    readonly backend_per_process: number
     readonly backendPerProcess: number
     readonly registry: EDataServer.SourceRegistry
-    readonly reload_supported: boolean
     readonly reloadSupported: boolean
 
     // Owm methods of EBackend-1.2.EBackend.DataFactory
@@ -2483,16 +2452,12 @@ export module ServerSideSource {
         // Own constructor properties of EBackend-1.2.EBackend.ServerSideSource
 
         file?: Gio.File | null
-        oauth2_support?: OAuth2Support | null
-        remote_creatable?: boolean | null
-        remote_deletable?: boolean | null
-        removable?: boolean | null
-        server?: SourceRegistryServer | null
-        writable?: boolean | null
-        write_directory?: string | null
         oauth2Support?: OAuth2Support | null
         remoteCreatable?: boolean | null
         remoteDeletable?: boolean | null
+        removable?: boolean | null
+        server?: SourceRegistryServer | null
+        writable?: boolean | null
         writeDirectory?: string | null
     }
 
@@ -2504,16 +2469,12 @@ export interface ServerSideSource extends Gio.Initable, Gio.ProxyResolver {
 
     readonly exported: boolean
     readonly file: Gio.File
-    oauth2_support: OAuth2Support
     oauth2Support: OAuth2Support
-    remote_creatable: any
     remoteCreatable: any
-    remote_deletable: any
     remoteDeletable: any
     removable: any
     readonly server: SourceRegistryServer
     writable: any
-    write_directory: string | null
     writeDirectory: string | null
 
     // Owm methods of EBackend-1.2.EBackend.ServerSideSource

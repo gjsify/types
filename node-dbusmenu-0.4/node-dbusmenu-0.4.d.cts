@@ -432,9 +432,9 @@ export module Client {
 
         // Own constructor properties of Dbusmenu-0.4.Dbusmenu.Client
 
-        dbusName?: string | null
-        dbusObject?: string | null
-        groupEvents?: boolean | null
+        dbus_name?: string | null
+        dbus_object?: string | null
+        group_events?: boolean | null
     }
 
 }
@@ -1139,7 +1139,7 @@ export module MenuitemProxy {
 
         // Own constructor properties of Dbusmenu-0.4.Dbusmenu.MenuitemProxy
 
-        menuItem?: Menuitem | null
+        menu_item?: Menuitem | null
     }
 
 }
@@ -1265,8 +1265,8 @@ export module Server {
 
         // Own constructor properties of Dbusmenu-0.4.Dbusmenu.Server
 
-        dbusObject?: string | null
-        rootNode?: Menuitem | null
+        dbus_object?: string | null
+        root_node?: Menuitem | null
     }
 
 }

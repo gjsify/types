@@ -164,7 +164,7 @@ module Notification {
         /**
          * The name of the application for the notification.
          */
-        appName?: string | null
+        app_name?: string | null
         /**
          * The body of the notification.
          */
@@ -172,7 +172,7 @@ module Notification {
         /**
          * The icon-name of the icon to be displayed on the notification.
          */
-        iconName?: string | null
+        icon_name?: string | null
         /**
          * The Id of the notification.
          */

@@ -1,13 +1,19 @@
 {
     "name": "@girs/cogl-1.0",
-    "version": "1.0.0-3.2.7",
+    "version": "1.0.0-3.2.8",
     "description": "GJS TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "cogl-1.0.js",
     "main": "cogl-1.0.js",
     "exports": {
-        "./ambient": "./cogl-1.0-ambient.d.ts",
-        "./import": "./cogl-1.0-import.d.ts",
+        "./ambient": {
+            "types": "./cogl-1.0-ambient.d.ts",
+            "default": "./cogl-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-1.0-import.d.ts",
+            "default": "./cogl-1.0-import.js"
+        },
         ".": {
             "import": {
                 "types": "./cogl-1.0.d.ts",

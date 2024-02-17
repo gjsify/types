@@ -284,10 +284,6 @@ module App {
         /**
          * The #GDesktopAppInfo associated with this ShellApp, if any.
          */
-        app_info?: Gio.DesktopAppInfo | null
-        /**
-         * The #GDesktopAppInfo associated with this ShellApp, if any.
-         */
         appInfo?: Gio.DesktopAppInfo | null
     }
 
@@ -301,16 +297,7 @@ interface App {
      * The #GDBusActionGroup associated with this ShellApp, if any. See the
      * documentation of #GApplication and #GActionGroup for details.
      */
-    readonly action_group: Gio.ActionGroup
-    /**
-     * The #GDBusActionGroup associated with this ShellApp, if any. See the
-     * documentation of #GApplication and #GActionGroup for details.
-     */
     readonly actionGroup: Gio.ActionGroup
-    /**
-     * The #GDesktopAppInfo associated with this ShellApp, if any.
-     */
-    readonly app_info: Gio.DesktopAppInfo
     /**
      * The #GDesktopAppInfo associated with this ShellApp, if any.
      */
@@ -1155,10 +1142,6 @@ module Global {
 
         // Own constructor properties of Shell-0.1.Shell.Global
 
-        debug_flags?: string | null
-        frame_finish_timestamp?: boolean | null
-        frame_timestamps?: boolean | null
-        session_mode?: string | null
         debugFlags?: string | null
         frameFinishTimestamp?: boolean | null
         frameTimestamps?: boolean | null
@@ -1174,34 +1157,22 @@ interface Global {
     readonly backend: Meta.Backend
     readonly context: Meta.Context
     readonly datadir: string | null
-    debug_flags: string | null
     debugFlags: string | null
     readonly display: Meta.Display
-    readonly focus_manager: St.FocusManager
     readonly focusManager: St.FocusManager
-    frame_finish_timestamp: boolean
     frameFinishTimestamp: boolean
-    frame_timestamps: boolean
     frameTimestamps: boolean
     readonly imagedir: string | null
-    readonly screen_height: number
     readonly screenHeight: number
-    readonly screen_width: number
     readonly screenWidth: number
-    readonly session_mode: string | null
     readonly sessionMode: string | null
     readonly settings: Gio.Settings
     readonly stage: Clutter.Actor
-    readonly switcheroo_control: Gio.DBusProxy
     readonly switcherooControl: Gio.DBusProxy
-    readonly top_window_group: Clutter.Actor
     readonly topWindowGroup: Clutter.Actor
     readonly userdatadir: string | null
-    readonly window_group: Clutter.Actor
     readonly windowGroup: Clutter.Actor
-    readonly window_manager: WM
     readonly windowManager: WM
-    readonly workspace_manager: Meta.WorkspaceManager
     readonly workspaceManager: Meta.WorkspaceManager
 
     // Owm methods of Shell-0.1.Shell.Global
@@ -1793,14 +1764,6 @@ module KeyringPrompt {
         /**
          * Text field for confirmation password
          */
-        confirm_actor?: Clutter.Text | null
-        /**
-         * Text field for password
-         */
-        password_actor?: Clutter.Text | null
-        /**
-         * Text field for confirmation password
-         */
         confirmActor?: Clutter.Text | null
         /**
          * Text field for password
@@ -1817,15 +1780,7 @@ interface KeyringPrompt extends Gcr.Prompt {
     /**
      * Whether the choice check box is visible or not.
      */
-    readonly choice_visible: boolean
-    /**
-     * Whether the choice check box is visible or not.
-     */
     readonly choiceVisible: boolean
-    /**
-     * Text field for confirmation password
-     */
-    confirm_actor: Clutter.Text
     /**
      * Text field for confirmation password
      */
@@ -1833,15 +1788,7 @@ interface KeyringPrompt extends Gcr.Prompt {
     /**
      * Whether the password confirm entry is visible or not.
      */
-    readonly confirm_visible: boolean
-    /**
-     * Whether the password confirm entry is visible or not.
-     */
     readonly confirmVisible: boolean
-    /**
-     * Text field for password
-     */
-    password_actor: Clutter.Text
     /**
      * Text field for password
      */
@@ -1849,15 +1796,7 @@ interface KeyringPrompt extends Gcr.Prompt {
     /**
      * Whether the password entry is visible or not.
      */
-    readonly password_visible: boolean
-    /**
-     * Whether the password entry is visible or not.
-     */
     readonly passwordVisible: boolean
-    /**
-     * Whether the warning label is visible or not.
-     */
-    readonly warning_visible: boolean
     /**
      * Whether the warning label is visible or not.
      */
@@ -3158,7 +3097,6 @@ interface TrayIcon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
 
     readonly pid: number
     readonly title: string | null
-    readonly wm_class: string | null
     readonly wmClass: string | null
 
     // Owm methods of Shell-0.1.Shell.TrayIcon
@@ -3469,7 +3407,6 @@ module TrayManager {
 
         // Own constructor properties of Shell-0.1.Shell.TrayManager
 
-        bg_color?: Clutter.Color | null
         bgColor?: Clutter.Color | null
     }
 
@@ -3479,7 +3416,6 @@ interface TrayManager {
 
     // Own properties of Shell-0.1.Shell.TrayManager
 
-    readonly bg_color: Clutter.Color
     readonly bgColor: Clutter.Color
 
     // Owm methods of Shell-0.1.Shell.TrayManager
@@ -3776,7 +3712,6 @@ module WindowPreview {
 
         // Own constructor properties of Shell-0.1.Shell.WindowPreview
 
-        window_container?: Clutter.Actor | null
         windowContainer?: Clutter.Actor | null
     }
 
@@ -3786,7 +3721,6 @@ interface WindowPreview extends Atk.ImplementorIface, Clutter.Animatable, Clutte
 
     // Own properties of Shell-0.1.Shell.WindowPreview
 
-    window_container: Clutter.Actor
     windowContainer: Clutter.Actor
 
     // Class property signals of Shell-0.1.Shell.WindowPreview
@@ -4066,7 +4000,6 @@ interface WindowPreviewLayout {
 
     // Own properties of Shell-0.1.Shell.WindowPreviewLayout
 
-    readonly bounding_box: Clutter.ActorBox
     readonly boundingBox: Clutter.ActorBox
 
     // Owm methods of Shell-0.1.Shell.WindowPreviewLayout
@@ -4148,7 +4081,6 @@ interface WindowTracker {
 
     // Own properties of Shell-0.1.Shell.WindowTracker
 
-    readonly focus_app: App
     readonly focusApp: App
 
     // Owm methods of Shell-0.1.Shell.WindowTracker
@@ -4204,8 +4136,6 @@ module WorkspaceBackground {
 
         // Own constructor properties of Shell-0.1.Shell.WorkspaceBackground
 
-        monitor_index?: number | null
-        state_adjustment_value?: number | null
         monitorIndex?: number | null
         stateAdjustmentValue?: number | null
     }
@@ -4216,9 +4146,7 @@ interface WorkspaceBackground extends Atk.ImplementorIface, Clutter.Animatable, 
 
     // Own properties of Shell-0.1.Shell.WorkspaceBackground
 
-    readonly monitor_index: number
     readonly monitorIndex: number
-    state_adjustment_value: number
     stateAdjustmentValue: number
 
     // Class property signals of Shell-0.1.Shell.WorkspaceBackground
