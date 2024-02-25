@@ -1,6 +1,6 @@
 {
     "name": "@girs/freetype2-2.0",
-    "version": "2.0.0-3.2.8",
+    "version": "2.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for freetype2-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "freetype2-2.0.js",
@@ -15,20 +15,12 @@
             "default": "./freetype2-2.0-import.js"
         },
         ".": {
-            "import": {
-                "types": "./freetype2-2.0.d.ts",
-                "default": "./freetype2-2.0.js"
-            },
-            "require": {
-                "types": "./freetype2-2.0.d.cts",
-                "default": "./freetype2-2.0.cjs"
-            }
+            "types": "./freetype2-2.0.d.ts",
+            "default": "./freetype2-2.0.js"
         }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit freetype2-2.0.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit freetype2-2.0.d.cts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit freetype2-2.0.d.ts"
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",
