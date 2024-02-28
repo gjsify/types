@@ -9,4 +9,3 @@ declare module 'gi://Gsf' {
     export default Gsf1;
 }
 
-

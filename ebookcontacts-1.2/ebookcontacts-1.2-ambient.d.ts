@@ -9,4 +9,3 @@ declare module 'gi://EBookContacts' {
     export default EBookContacts12;
 }
 
-

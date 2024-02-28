@@ -9,4 +9,3 @@ declare module 'gi://GSound' {
     export default GSound10;
 }
 
-

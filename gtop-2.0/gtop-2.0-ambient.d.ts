@@ -9,4 +9,3 @@ declare module 'gi://GTop' {
     export default GTop20;
 }
 
-

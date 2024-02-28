@@ -9,4 +9,3 @@ declare module 'gi://GSignond' {
     export default GSignond10;
 }
 
-

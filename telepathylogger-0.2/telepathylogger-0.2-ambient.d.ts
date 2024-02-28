@@ -9,4 +9,3 @@ declare module 'gi://TelepathyLogger' {
     export default TelepathyLogger02;
 }
 
-

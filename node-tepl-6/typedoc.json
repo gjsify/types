@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-tepl-6.d.ts"],
-    "readme": "./README.md",
-    "name": "Tepl-6",
-    "tsconfig": "./tsconfig.json"
-}
-

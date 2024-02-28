@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-bump-0.1.d.ts"],
-    "readme": "./README.md",
-    "name": "Bump-0.1",
-    "tsconfig": "./tsconfig.json"
-}
-

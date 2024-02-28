@@ -31,7 +31,7 @@ export namespace Gsk {
      * The implementation of each blend mode is deferred to the
      * rendering pipeline.
      *
-     * See &lt;https://www.w3.org/TR/compositing-1/#blending&gt; for more information
+     * See <https://www.w3.org/TR/compositing-1/#blending> for more information
      * on blending and blend modes.
      */
     enum BlendMode {
@@ -362,7 +362,7 @@ export namespace Gsk {
      *
      * Note that any category includes matrices of all later categories.
      * So if you want to for example check if a matrix is a 2D matrix,
-     * `category &gt;= GSK_TRANSFORM_CATEGORY_2D` is the way to do this.
+     * `category >= GSK_TRANSFORM_CATEGORY_2D` is the way to do this.
      *
      * Also keep in mind that rounding errors may cause matrices to not
      * conform to their categories. Otherwise, matrix operations done via
@@ -2167,7 +2167,7 @@ export namespace Gsk {
          * Converts a `GskTransform` to a 2D transformation matrix.
          *
          * `self` must be a 2D transformation. If you are not
-         * sure, use gsk_transform_get_category() &gt;=
+         * sure, use gsk_transform_get_category() >=
          * %GSK_TRANSFORM_CATEGORY_2D to check.
          *
          * The returned values have the following layout:
@@ -2192,14 +2192,14 @@ export namespace Gsk {
          *     gsk_transform_skew (
          *         gsk_transform_scale (
          *             gsk_transform_rotate (
-         *                 gsk_transform_translate (NULL, &amp;GRAPHENE_POINT_T (dx, dy)),
+         *                 gsk_transform_translate (NULL, &GRAPHENE_POINT_T (dx, dy)),
          *                 angle),
          *             scale_x, scale_y),
          *         skew_x, skew_y)
          *
          * `self` must be a 2D transformation. If you are not sure, use
          *
-         *     gsk_transform_get_category() &gt;= %GSK_TRANSFORM_CATEGORY_2D
+         *     gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D
          *
          * to check.
          */
@@ -2211,13 +2211,13 @@ export namespace Gsk {
          * by this function, use
          *
          *     gsk_transform_scale (gsk_transform_translate (NULL,
-         *                                                   &amp;GRAPHENE_POINT_T (dx, dy)),
+         *                                                   &GRAPHENE_POINT_T (dx, dy)),
          *                          sx, sy)
          *
          * `self` must be a 2D affine transformation. If you are not
          * sure, use
          *
-         *     gsk_transform_get_category() &gt;= %GSK_TRANSFORM_CATEGORY_2D_AFFINE
+         *     gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D_AFFINE
          *
          * to check.
          */
@@ -2243,7 +2243,7 @@ export namespace Gsk {
          * `self` must be a 2D transformation. If you are not
          * sure, use
          *
-         *     gsk_transform_get_category() &gt;= %GSK_TRANSFORM_CATEGORY_2D_TRANSLATE
+         *     gsk_transform_get_category() >= %GSK_TRANSFORM_CATEGORY_2D_TRANSLATE
          *
          * to check.
          */

@@ -543,7 +543,7 @@ export namespace GObject {
      * example:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static void
      * my_enum_complete_type_info (GTypePlugin     *plugin,
      *                             GType            g_type,
@@ -2453,7 +2453,7 @@ export namespace GObject {
      * target property; for instance, the following binding:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_object_bind_property (object1, "property-a",
      *                           object2, "property-b",
      *                           G_BINDING_DEFAULT);
@@ -2469,7 +2469,7 @@ export namespace GObject {
      * other is updated as well, for instance:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_object_bind_property (object1, "property-a",
      *                           object2, "property-b",
      *                           G_BINDING_BIDIRECTIONAL);
@@ -2484,7 +2484,7 @@ export namespace GObject {
      * applying it; for instance, the following binding:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_object_bind_property_full (adjustment1, "value",
      *                                adjustment2, "value",
      *                                G_BINDING_BIDIRECTIONAL,
@@ -2508,9 +2508,9 @@ export namespace GObject {
      *
      *
      * ```
-     *   object1:propertyA -&gt; object2:propertyB
-     *   object2:propertyB -&gt; object3:propertyC
-     *   object3:propertyC -&gt; object1:propertyA
+     *   object1:propertyA -> object2:propertyB
+     *   object2:propertyB -> object3:propertyC
+     *   object3:propertyC -> object1:propertyA
      * ```
      *
      *
@@ -2861,7 +2861,7 @@ export namespace GObject {
          * updated using the same value. For instance:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   g_object_bind_property (action, "active", widget, "sensitive", 0);
          * ```
          *
@@ -3035,7 +3035,7 @@ export namespace GObject {
          * g_object_class_install_property() inside a static array, e.g.:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   typedef enum
          *   {
          *     PROP_FOO = 1,
@@ -3061,7 +3061,7 @@ export namespace GObject {
          * and then notify a change on the "foo" property with:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
@@ -3131,7 +3131,7 @@ export namespace GObject {
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * void
          * object_add_to_user_list (GObject     *object,
          *                          const gchar *new_string)
@@ -3151,8 +3151,8 @@ export namespace GObject {
          * {
          *   GList *node, *list = data;
          *
-         *   for (node = list; node; node = node-&gt;next)
-         *     g_free (node-&gt;data);
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
          *   g_list_free (list);
          * }
          * ```
@@ -3243,7 +3243,7 @@ export namespace GObject {
          * @param name the canonical name of the property
          */
         static is_valid_name(name: string): boolean;
-        static char(
+        static ['char'](
             name: string,
             nick: string,
             blurb: string,
@@ -3324,7 +3324,7 @@ export namespace GObject {
             maximum: number,
             defaultValue: number,
         ): ParamSpec<number>;
-        static boolean(
+        static ['boolean'](
             name: string,
             nick: string,
             blurb: string,
@@ -3339,7 +3339,7 @@ export namespace GObject {
             flagsType: any,
             defaultValue: any,
         ): ParamSpec<number>;
-        static enum<T>(
+        static ['enum']<T>(
             name: string,
             nick: string,
             blurb: string,
@@ -3403,7 +3403,7 @@ export namespace GObject {
         get_name(): string;
         /**
          * Gets the GQuark for the name.
-         * @returns the GQuark for @pspec-&gt;name.
+         * @returns the GQuark for @pspec->name.
          */
         get_name_quark(): GLib.Quark;
         /**
@@ -4478,7 +4478,7 @@ export namespace GObject {
      * The class structure for the GObject type.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * // Example of implementing a singleton using a constructor.
      * static MySingleton *the_singleton = NULL;
      *
@@ -4491,7 +4491,7 @@ export namespace GObject {
      *
      *   if (!the_singleton)
      *     {
-     *       object = G_OBJECT_CLASS (parent_class)-&gt;constructor (type,
+     *       object = G_OBJECT_CLASS (parent_class)->constructor (type,
      *                                                            n_construct_params,
      *                                                            construct_params);
      *       the_singleton = MY_SINGLETON (object);
@@ -4532,7 +4532,7 @@ export namespace GObject {
          * class initialization:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * typedef enum {
          *   PROP_FOO = 1,
          *   PROP_BAR,
@@ -4557,8 +4557,8 @@ export namespace GObject {
          *                          NULL,
          *                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
          *
-         *   gobject_class-&gt;set_property = my_object_set_property;
-         *   gobject_class-&gt;get_property = my_object_get_property;
+         *   gobject_class->set_property = my_object_set_property;
+         *   gobject_class->get_property = my_object_get_property;
          *   g_object_class_install_properties (gobject_class,
          *                                      G_N_ELEMENTS (obj_properties),
          *                                      obj_properties);
@@ -4569,13 +4569,13 @@ export namespace GObject {
          * allows calling g_object_notify_by_pspec() to notify of property changes:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * void
          * my_object_set_foo (MyObject *self, gint foo)
          * {
-         *   if (self-&gt;foo != foo)
+         *   if (self->foo != foo)
          *     {
-         *       self-&gt;foo = foo;
+         *       self->foo = foo;
          *       g_object_notify_by_pspec (G_OBJECT (self), obj_properties[PROP_FOO]);
          *     }
          *  }
@@ -4805,7 +4805,7 @@ export namespace GObject {
          * of repeatedly calling MY_OBJECT_GET_PRIVATE().
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * typedef struct _MyObject        MyObject;
          * typedef struct _MyObjectPrivate MyObjectPrivate;
          *
@@ -4828,10 +4828,10 @@ export namespace GObject {
          * static void
          * my_object_init (MyObject *my_object)
          * {
-         *   my_object-&gt;priv = G_TYPE_INSTANCE_GET_PRIVATE (my_object,
+         *   my_object->priv = G_TYPE_INSTANCE_GET_PRIVATE (my_object,
          *                                                  MY_TYPE_OBJECT,
          *                                                  MyObjectPrivate);
-         *   // my_object-&gt;priv-&gt;some_field will be automatically initialised to 0
+         *   // my_object->priv->some_field will be automatically initialised to 0
          * }
          *
          * static int
@@ -4841,9 +4841,9 @@ export namespace GObject {
          *
          *   g_return_val_if_fail (MY_IS_OBJECT (my_object), 0);
          *
-         *   priv = my_object-&gt;priv;
+         *   priv = my_object->priv;
          *
-         *   return priv-&gt;some_field;
+         *   return priv->some_field;
          * }
          * ```
          *
@@ -5471,7 +5471,7 @@ export namespace GObject {
         /**
          * Insert a copy of `value` at specified position into `value_array`. If `value`
          * is %NULL, an uninitialized value is inserted.
-         * @param index_ insertion position, must be &lt;= value_array-&gt;;n_values
+         * @param index_ insertion position, must be <= value_array->;n_values
          * @param value #GValue to copy into #GValueArray, or %NULL
          * @returns the #GValueArray passed in as @value_array
          */
@@ -5485,7 +5485,7 @@ export namespace GObject {
         prepend(value?: Value | null): ValueArray;
         /**
          * Remove the value at position `index_` from `value_array`.
-         * @param index_ position of value to remove, which must be less than     @value_array-&gt;n_values
+         * @param index_ position of value to remove, which must be less than     @value_array->n_values
          * @returns the #GValueArray passed in as @value_array
          */
         remove(index_: number): ValueArray;
@@ -5722,10 +5722,10 @@ export namespace GObject {
     // See https://gitlab.gnome.org/ewlsh/gi.ts/-/blob/master/packages/lib/src/generators/dts/gobject.ts
     // Copyright Evan Welsh
 
-    export type GType<T = unknown> = {
-        __type__(arg: never): T;
-        name: string;
-    };
+    // export type GType<T = unknown> = {
+    //     __type__(arg: never): T
+    //     name: string
+    // };
 
     // Extra interfaces used to help define GObject classes in js; these
     // aren't part of gi.

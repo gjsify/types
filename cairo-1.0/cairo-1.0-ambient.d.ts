@@ -9,4 +9,3 @@ declare module 'gi://cairo' {
     export default Cairo10;
 }
 
-

@@ -1,60 +1,44 @@
 {
     "name": "@girs/xdp-1.0",
-    "version": "1.0.0-3.2.8",
+    "version": "1.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for Xdp-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "xdp-1.0.js",
     "main": "xdp-1.0.js",
     "exports": {
-        "./ambient": {
-            "types": "./xdp-1.0-ambient.d.ts",
-            "default": "./xdp-1.0-ambient.js"
-        },
-        "./import": {
-            "types": "./xdp-1.0-import.d.ts",
-            "default": "./xdp-1.0-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./xdp-1.0.d.ts",
-                "default": "./xdp-1.0.js"
-            },
-            "require": {
-                "types": "./xdp-1.0.d.cts",
-                "default": "./xdp-1.0.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./xdp-1.0-ambient.d.ts",
+        "default": "./xdp-1.0-ambient.js"
+      },
+      "./import": {
+        "types": "./xdp-1.0-import.d.ts",
+        "default": "./xdp-1.0-import.js"
+      },
+      ".": {
+        "types": "./xdp-1.0.d.ts",
+        "default": "./xdp-1.0.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xdp-1.0.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xdp-1.0.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xdp-1.0.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Xdp-1.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Xdp-1.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/xdp-1.0#readme"
 }
+
+

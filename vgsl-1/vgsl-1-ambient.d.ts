@@ -9,4 +9,3 @@ declare module 'gi://Vgsl' {
     export default Vgsl1;
 }
 
-

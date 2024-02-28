@@ -9,4 +9,3 @@ declare module 'gi://Totem' {
     export default Totem10;
 }
 
-

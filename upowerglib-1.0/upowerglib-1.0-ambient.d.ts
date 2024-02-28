@@ -9,4 +9,3 @@ declare module 'gi://UPowerGlib' {
     export default UPowerGlib10;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Gkbd' {
     export default Gkbd30;
 }
 
-

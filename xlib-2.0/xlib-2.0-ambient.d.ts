@@ -9,4 +9,3 @@ declare module 'gi://xlib' {
     export default Xlib20;
 }
 
-

@@ -1,12 +1,2 @@
-
-import CoglPango13 from '@girs/coglpango-13';
-
-declare global {
-    export interface GjsGiImports {
-        CoglPango: typeof CoglPango13;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "CoglPango"
 

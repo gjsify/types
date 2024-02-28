@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,154 +27,59 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Shew {
-
-module ExternalWindow {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Shew-0.Shew.ExternalWindow
-
-        display?: Gdk.Display | null
+    module ExternalWindow {
+        // Constructor properties interface
     }
 
-}
+    class ExternalWindow extends GObject.Object {
+        // Own properties of Shew-0.ExternalWindow
 
-interface ExternalWindow {
+        display: Gdk.Display;
 
-    // Own properties of Shew-0.Shew.ExternalWindow
+        // Constructors of Shew-0.ExternalWindow
 
-    readonly display: Gdk.Display
+        static new_from_handle(handle_str: string): ExternalWindow;
 
-    // Own fields of Shew-0.Shew.ExternalWindow
+        // Owm methods of Shew-0.ExternalWindow
 
-    parent_instance: GObject.Object
-
-    // Owm methods of Shew-0.Shew.ExternalWindow
-
-    get_display(): Gdk.Display
-    set_parent_of(child_surface: Gdk.Surface): void
-
-    // Own virtual methods of Shew-0.Shew.ExternalWindow
-
-    vfunc_set_parent_of(child_surface: Gdk.Surface): void
-
-    // Class property signals of Shew-0.Shew.ExternalWindow
-
-    connect(sigName: "notify::display", callback: (($obj: ExternalWindow, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::display", callback: (($obj: ExternalWindow, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::display", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
-
-class ExternalWindow extends GObject.Object {
-
-    // Own properties of Shew-0.Shew.ExternalWindow
-
-    static name: string
-    static $gtype: GObject.GType<ExternalWindow>
-
-    // Constructors of Shew-0.Shew.ExternalWindow
-
-    constructor(config?: ExternalWindow.ConstructorProperties) 
-    static new_from_handle(handle_str: string): ExternalWindow
-    _init(config?: ExternalWindow.ConstructorProperties): void
-}
-
-module WindowExporter {
-
-    // Constructor properties interface
-
-    interface ConstructorProperties extends GObject.Object.ConstructorProperties {
-
-        // Own constructor properties of Shew-0.Shew.WindowExporter
-
-        window?: Gtk.Window | null
+        get_display(): Gdk.Display;
+        set_parent_of(child_surface: Gdk.Surface): void;
     }
 
-}
+    module WindowExporter {
+        // Constructor properties interface
+    }
 
-interface WindowExporter {
+    class WindowExporter extends GObject.Object {
+        // Own properties of Shew-0.WindowExporter
 
-    // Own properties of Shew-0.Shew.WindowExporter
+        window: Gtk.Window;
 
-    readonly window: Gtk.Window
+        // Constructors of Shew-0.WindowExporter
 
-    // Owm methods of Shew-0.Shew.WindowExporter
+        static ['new'](window: Gtk.Window): WindowExporter;
 
-    export(callback: Gio.AsyncReadyCallback<this> | null): void
-    export_finish(result: Gio.AsyncResult): string | null
-    unexport(handle: string): void
+        // Owm methods of Shew-0.WindowExporter
 
-    // Class property signals of Shew-0.Shew.WindowExporter
+        ['export'](callback?: Gio.AsyncReadyCallback<this> | null): void;
+        export_finish(result: Gio.AsyncResult): string;
+        unexport(handle: string): void;
+    }
 
-    connect(sigName: "notify::window", callback: (($obj: WindowExporter, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::window", callback: (($obj: WindowExporter, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::window", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
+    class ExternalWindowClass {}
 
-class WindowExporter extends GObject.Object {
+    class WindowExporterClass {}
 
-    // Own properties of Shew-0.Shew.WindowExporter
-
-    static name: string
-    static $gtype: GObject.GType<WindowExporter>
-
-    // Constructors of Shew-0.Shew.WindowExporter
-
-    constructor(config?: WindowExporter.ConstructorProperties) 
-    constructor(window: Gtk.Window) 
-    static new(window: Gtk.Window): WindowExporter
-    _init(config?: WindowExporter.ConstructorProperties): void
-}
-
-interface ExternalWindowClass {
-
-    // Own fields of Shew-0.Shew.ExternalWindowClass
-
-    parent_class: GObject.ObjectClass
-    set_parent_of: (external_window: ExternalWindow, child_surface: Gdk.Surface) => void
-}
-
-abstract class ExternalWindowClass {
-
-    // Own properties of Shew-0.Shew.ExternalWindowClass
-
-    static name: string
-}
-
-interface WindowExporterClass {
-
-    // Own fields of Shew-0.Shew.WindowExporterClass
-
-    parent_class: GObject.ObjectClass
-}
-
-abstract class WindowExporterClass {
-
-    // Own properties of Shew-0.Shew.WindowExporterClass
-
-    static name: string
-}
-
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Shew;

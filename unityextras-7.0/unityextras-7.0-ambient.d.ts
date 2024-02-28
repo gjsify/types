@@ -9,4 +9,3 @@ declare module 'gi://UnityExtras' {
     export default UnityExtras70;
 }
 
-

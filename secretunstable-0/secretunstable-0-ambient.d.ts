@@ -9,4 +9,3 @@ declare module 'gi://SecretUnstable' {
     export default SecretUnstable0;
 }
 
-

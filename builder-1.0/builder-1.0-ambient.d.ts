@@ -9,4 +9,3 @@ declare module 'gi://Builder' {
     export default Builder10;
 }
 
-

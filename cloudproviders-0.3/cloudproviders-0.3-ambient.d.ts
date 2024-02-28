@@ -9,4 +9,3 @@ declare module 'gi://CloudProviders' {
     export default CloudProviders03;
 }
 
-

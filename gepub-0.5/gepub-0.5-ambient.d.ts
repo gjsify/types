@@ -9,4 +9,3 @@ declare module 'gi://Gepub' {
     export default Gepub05;
 }
 
-

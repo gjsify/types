@@ -9,4 +9,3 @@ declare module 'gi://Clutter' {
     export default Clutter10;
 }
 
-

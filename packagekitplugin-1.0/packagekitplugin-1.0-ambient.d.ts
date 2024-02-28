@@ -9,4 +9,3 @@ declare module 'gi://PackageKitPlugin' {
     export default PackageKitPlugin10;
 }
 
-

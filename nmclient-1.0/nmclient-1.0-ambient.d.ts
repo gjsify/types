@@ -9,4 +9,3 @@ declare module 'gi://NMClient' {
     export default NMClient10;
 }
 
-

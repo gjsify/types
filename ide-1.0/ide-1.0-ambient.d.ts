@@ -9,4 +9,3 @@ declare module 'gi://Ide' {
     export default Ide10;
 }
 
-

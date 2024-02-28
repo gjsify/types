@@ -1,12 +1,2 @@
-
-import Vte291 from '@girs/vte-2.91';
-
-declare global {
-    export interface GjsGiImports {
-        Vte: typeof Vte291;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Vte"
 

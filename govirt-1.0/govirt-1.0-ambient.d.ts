@@ -9,4 +9,3 @@ declare module 'gi://GoVirt' {
     export default GoVirt10;
 }
 
-

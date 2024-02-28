@@ -1,59 +1,44 @@
 {
     "name": "@girs/xft-2.0",
-    "version": "2.0.0-3.2.8",
+    "version": "2.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for xft-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "xft-2.0.js",
     "main": "xft-2.0.js",
     "exports": {
-        "./ambient": {
-            "types": "./xft-2.0-ambient.d.ts",
-            "default": "./xft-2.0-ambient.js"
-        },
-        "./import": {
-            "types": "./xft-2.0-import.d.ts",
-            "default": "./xft-2.0-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./xft-2.0.d.ts",
-                "default": "./xft-2.0.js"
-            },
-            "require": {
-                "types": "./xft-2.0.d.cts",
-                "default": "./xft-2.0.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./xft-2.0-ambient.d.ts",
+        "default": "./xft-2.0-ambient.js"
+      },
+      "./import": {
+        "types": "./xft-2.0-import.d.ts",
+        "default": "./xft-2.0-import.js"
+      },
+      ".": {
+        "types": "./xft-2.0.d.ts",
+        "default": "./xft-2.0.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xft-2.0.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xft-2.0.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xft-2.0.d.ts"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/xlib-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/xlib-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "xft-2.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "xft-2.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/xft-2.0#readme"
 }
+
+

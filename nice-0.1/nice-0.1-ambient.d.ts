@@ -9,4 +9,3 @@ declare module 'gi://Nice' {
     export default Nice01;
 }
 
-

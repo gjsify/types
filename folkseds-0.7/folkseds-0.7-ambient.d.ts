@@ -9,4 +9,3 @@ declare module 'gi://FolksEds' {
     export default FolksEds07;
 }
 
-

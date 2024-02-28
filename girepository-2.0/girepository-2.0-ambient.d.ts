@@ -9,4 +9,3 @@ declare module 'gi://GIRepository' {
     export default GIRepository20;
 }
 
-

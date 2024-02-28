@@ -9,4 +9,3 @@ declare module 'gi://WebKit' {
     export default WebKit60;
 }
 
-

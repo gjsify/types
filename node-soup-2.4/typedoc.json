@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-soup-2.4.d.ts"],
-    "readme": "./README.md",
-    "name": "Soup-2.4",
-    "tsconfig": "./tsconfig.json"
-}
-

@@ -9,4 +9,3 @@ declare module 'gi://Gtk' {
     export default Gtk20;
 }
 
-

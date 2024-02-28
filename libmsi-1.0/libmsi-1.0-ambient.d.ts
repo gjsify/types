@@ -9,4 +9,3 @@ declare module 'gi://Libmsi' {
     export default Libmsi10;
 }
 
-

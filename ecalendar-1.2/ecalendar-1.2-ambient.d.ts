@@ -9,4 +9,3 @@ declare module 'gi://ECalendar' {
     export default ECalendar12;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://xft' {
     export default Xft20;
 }
 
-

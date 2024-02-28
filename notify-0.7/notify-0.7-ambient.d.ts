@@ -9,4 +9,3 @@ declare module 'gi://Notify' {
     export default Notify07;
 }
 
-

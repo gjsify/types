@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-libmsi-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Libmsi-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

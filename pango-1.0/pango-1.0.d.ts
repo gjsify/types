@@ -472,19 +472,19 @@ export namespace Pango {
      */
     enum Gravity {
         /**
-         * Glyphs stand upright (default) &lt;img align="right" valign="center" src="m-south.png"&gt;
+         * Glyphs stand upright (default) <img align="right" valign="center" src="m-south.png">
          */
         SOUTH,
         /**
-         * Glyphs are rotated 90 degrees counter-clockwise. &lt;img align="right" valign="center" src="m-east.png"&gt;
+         * Glyphs are rotated 90 degrees counter-clockwise. <img align="right" valign="center" src="m-east.png">
          */
         EAST,
         /**
-         * Glyphs are upside-down. &lt;img align="right" valign="cener" src="m-north.png"&gt;
+         * Glyphs are upside-down. <img align="right" valign="cener" src="m-north.png">
          */
         NORTH,
         /**
-         * Glyphs are rotated 90 degrees clockwise. &lt;img align="right" valign="center" src="m-west.png"&gt;
+         * Glyphs are rotated 90 degrees clockwise. <img align="right" valign="center" src="m-west.png">
          */
         WEST,
         /**
@@ -1465,11 +1465,11 @@ export namespace Pango {
      * The effect of this attribute is to shift the baseline of a run,
      * relative to the run of preceding run.
      *
-     * &lt;picture&gt;
-     *   &lt;source srcset="baseline-shift-dark.png" media="(prefers-color-scheme: dark)"&gt;
-     *   &lt;img alt="Baseline Shift" src="baseline-shift-light.png"&gt;
-     * &lt;/picture&gt;
-     * @param shift either a `PangoBaselineShift` enumeration value or an absolute value (&gt; 1024)   in Pango units, relative to the baseline of the previous run.   Positive values displace the text upwards.
+     * <picture>
+     *   <source srcset="baseline-shift-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Baseline Shift" src="baseline-shift-light.png">
+     * </picture>
+     * @param shift either a `PangoBaselineShift` enumeration value or an absolute value (> 1024)   in Pango units, relative to the baseline of the previous run.   Positive values displace the text upwards.
      * @returns the newly allocated   `PangoAttribute`, which should be freed with   [method@Pango.Attribute.destroy]
      */
     function attr_baseline_shift_new(shift: number): Attribute;
@@ -2047,7 +2047,7 @@ export namespace Pango {
      * @param context a structure holding information that affects   the itemization process.
      * @param text the text to itemize. Must be valid UTF-8
      * @param start_index first byte in @text to process
-     * @param length the number of bytes (not characters) to process   after @start_index. This must be &gt;= 0.
+     * @param length the number of bytes (not characters) to process   after @start_index. This must be >= 0.
      * @param attrs the set of attributes that apply to @text.
      * @param cached_iter Cached attribute iterator
      * @returns a `GList` of   [struct@Pango.Item] structures. The items should be freed using   [method@Pango.Item.free] in combination with [func@GLib.List.free_full].
@@ -2070,7 +2070,7 @@ export namespace Pango {
      * @param base_dir base direction to use for bidirectional processing
      * @param text the text to itemize.
      * @param start_index first byte in @text to process
-     * @param length the number of bytes (not characters) to process   after @start_index. This must be &gt;= 0.
+     * @param length the number of bytes (not characters) to process   after @start_index. This must be >= 0.
      * @param attrs the set of attributes that apply to @text.
      * @param cached_iter Cached attribute iterator
      * @returns a `GList` of   [struct@Pango.Item] structures. The items should be freed using   [method@Pango.Item.free] probably in combination with [func@GLib.List.free_full].
@@ -3557,10 +3557,10 @@ export namespace Pango {
      * `PangoLayout`. The following image shows adjustable parameters
      * (on the left) and font metrics (on the right):
      *
-     * &lt;picture&gt;
-     *   &lt;source srcset="layout-dark.png" media="(prefers-color-scheme: dark)"&gt;
-     *   &lt;img alt="Pango Layout Parameters" src="layout-light.png"&gt;
-     * &lt;/picture&gt;
+     * <picture>
+     *   <source srcset="layout-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Pango Layout Parameters" src="layout-light.png">
+     * </picture>
      *
      * The following images demonstrate the effect of alignment and
      * justification on the layout of text:
@@ -3646,10 +3646,10 @@ export namespace Pango {
          * font metric information about caret slope and offset to the positions
          * it returns.
          *
-         * &lt;picture&gt;
-         *   &lt;source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)"&gt;
-         *   &lt;img alt="Caret metrics" src="caret-metrics-light.png"&gt;
-         * &lt;/picture&gt;
+         * <picture>
+         *   <source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Caret metrics" src="caret-metrics-light.png">
+         * </picture>
          * @param index_ the byte index of the cursor
          */
         get_caret_pos(index_: number): void;
@@ -3671,10 +3671,10 @@ export namespace Pango {
          * The position of each cursor is stored as a zero-width rectangle
          * with the height of the run extents.
          *
-         * &lt;picture&gt;
-         *   &lt;source srcset="cursor-positions-dark.png" media="(prefers-color-scheme: dark)"&gt;
-         *   &lt;img alt="Cursor positions" src="cursor-positions-light.png"&gt;
-         * &lt;/picture&gt;
+         * <picture>
+         *   <source srcset="cursor-positions-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Cursor positions" src="cursor-positions-light.png">
+         * </picture>
          *
          * The strong cursor location is the location where characters of the
          * directionality equal to the base direction of the layout are inserted.
@@ -3683,10 +3683,10 @@ export namespace Pango {
          *
          * The following example shows text with both a strong and a weak cursor.
          *
-         * &lt;picture&gt;
-         *   &lt;source srcset="split-cursor-dark.png" media="(prefers-color-scheme: dark)"&gt;
-         *   &lt;img alt="Strong and weak cursors" src="split-cursor-light.png"&gt;
-         * &lt;/picture&gt;
+         * <picture>
+         *   <source srcset="split-cursor-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Strong and weak cursors" src="split-cursor-light.png">
+         * </picture>
          *
          * The strong cursor has a little arrow pointing to the right, the weak
          * cursor to the left. Typing a 'c' in this situation will insert the
@@ -3925,17 +3925,17 @@ export namespace Pango {
          *
          * The X position is measured from the left edge of the line.
          * @param index_ the byte index of a grapheme within the layout
-         * @param trailing an integer indicating the edge of the grapheme to retrieve the   position of. If &gt; 0, the trailing edge of the grapheme, if 0,   the leading of the grapheme
+         * @param trailing an integer indicating the edge of the grapheme to retrieve the   position of. If > 0, the trailing edge of the grapheme, if 0,   the leading of the grapheme
          */
         index_to_line_x(index_: number, trailing: boolean): void;
         /**
          * Converts from an index within a `PangoLayout` to the onscreen position
          * corresponding to the grapheme at that index.
          *
-         * The returns is represented as rectangle. Note that `pos-&gt;x` is
-         * always the leading edge of the grapheme and `pos-&gt;x + pos-&gt;width` the
+         * The returns is represented as rectangle. Note that `pos->x` is
+         * always the leading edge of the grapheme and `pos->x + pos->width` the
          * trailing edge of the grapheme. If the directionality of the grapheme
-         * is right-to-left, then `pos-&gt;width` will be negative.
+         * is right-to-left, then `pos->width` will be negative.
          * @param index_ byte index within @layout
          */
         index_to_pos(index_: number): void;
@@ -3977,7 +3977,7 @@ export namespace Pango {
          * when multiple characters combine to form a single grapheme.
          * @param strong whether the moving cursor is the strong cursor or the   weak cursor. The strong cursor is the cursor corresponding   to text insertion in the base direction for the layout.
          * @param old_index the byte index of the current cursor position
-         * @param old_trailing if 0, the cursor was at the leading edge of the   grapheme indicated by @old_index, if &gt; 0, the cursor   was at the trailing edge.
+         * @param old_trailing if 0, the cursor was at the leading edge of the   grapheme indicated by @old_index, if > 0, the cursor   was at the trailing edge.
          * @param direction direction to move cursor. A negative   value indicates motion to the left
          */
         move_cursor_visually(strong: boolean, old_index: number, old_trailing: number, direction: number): void;
@@ -4372,7 +4372,7 @@ export namespace Pango {
          * or pango_renderer_draw_layout().
          *
          * Note that `text` is the start of the text for layout, which is then
-         * indexed by `glyph_item-&gt;item-&gt;offset`.
+         * indexed by `glyph_item->item->offset`.
          *
          * If `text` is %NULL, this simply calls [method`Pango`.Renderer.draw_glyphs].
          *
@@ -4595,7 +4595,7 @@ export namespace Pango {
          * stretch, and size simultaneously.
          * @param desc the font description
          */
-        static new(desc: FontDescription): Attribute;
+        static ['new'](desc: FontDescription): Attribute;
     }
 
     /**
@@ -4616,7 +4616,7 @@ export namespace Pango {
          * alternative glyphs, ligatures, etc. for fonts that support them.
          * @param features a string with OpenType font features, with the syntax of the [CSS font-feature-settings property](https://www.w3.org/TR/css-fonts-4/#font-rend-desc)
          */
-        static new(features: string): Attribute;
+        static ['new'](features: string): Attribute;
     }
 
     /**
@@ -4700,7 +4700,7 @@ export namespace Pango {
          * Create a new language tag attribute.
          * @param language language tag
          */
-        static new(language: Language): Attribute;
+        static ['new'](language: Language): Attribute;
     }
 
     /**
@@ -4927,7 +4927,7 @@ export namespace Pango {
          * @param ink_rect ink rectangle to assign to each character
          * @param logical_rect logical rectangle to assign to each character
          */
-        static new(ink_rect: Rectangle, logical_rect: Rectangle): Attribute;
+        static ['new'](ink_rect: Rectangle, logical_rect: Rectangle): Attribute;
         /**
          * Creates a new shape attribute.
          *
@@ -4965,7 +4965,7 @@ export namespace Pango {
          * Create a new font-size attribute in fractional points.
          * @param size the font size, in %PANGO_SCALE-ths of a point
          */
-        static new(size: number): Attribute;
+        static ['new'](size: number): Attribute;
         /**
          * Create a new font-size attribute in device units.
          * @param size the font size, in %PANGO_SCALE-ths of a device unit
@@ -5369,7 +5369,7 @@ export namespace Pango {
          * Computes a hash of a `PangoFontDescription` structure.
          *
          * This is suitable to be used, for example, as an argument
-         * to g_hash_table_new(). The hash value is independent of `desc-&`gt;mask.
+         * to g_hash_table_new(). The hash value is independent of `desc->`mask.
          * @returns the hash value.
          */
         hash(): number;
@@ -5575,10 +5575,10 @@ export namespace Pango {
      *
      * For an overview of the most important metrics, see:
      *
-     * &lt;picture&gt;
-     *   &lt;source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)"&gt;
-     *   &lt;img alt="Font metrics" src="fontmetrics-light.png"&gt;
-     * &lt;/picture&gt;
+     * <picture>
+     *   <source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Font metrics" src="fontmetrics-light.png">
+     * </picture>
      */
     class FontMetrics {
         // Constructors of Pango-1.0.FontMetrics
@@ -5773,7 +5773,7 @@ export namespace Pango {
          * to that cluster; for instance, if half of a cluster is underlined
          * and the other-half strikethrough, then the cluster will end
          * up with both underline and strikethrough attributes. In these
-         * cases, it may happen that `item-&`gt;extra_attrs for some of the
+         * cases, it may happen that `item->`extra_attrs for some of the
          * result items can have multiple attributes of the same type.
          *
          * This function takes ownership of `glyph_item;` it will be reused
@@ -5800,14 +5800,14 @@ export namespace Pango {
          * entire cluster is divided equally among the characters.
          *
          * See also [method`Pango`.GlyphString.get_logical_widths].
-         * @param text text that @glyph_item corresponds to   (glyph_item-&gt;item-&gt;offset is an offset from the   start of @text)
-         * @param logical_widths an array whose length is the number of   characters in glyph_item (equal to glyph_item-&gt;item-&gt;num_chars)   to be filled in with the resulting character widths.
+         * @param text text that @glyph_item corresponds to   (glyph_item->item->offset is an offset from the   start of @text)
+         * @param logical_widths an array whose length is the number of   characters in glyph_item (equal to glyph_item->item->num_chars)   to be filled in with the resulting character widths.
          */
         get_logical_widths(text: string, logical_widths: number[]): void;
         /**
          * Adds spacing between the graphemes of `glyph_item` to
          * give the effect of typographic letter spacing.
-         * @param text text that @glyph_item corresponds to   (glyph_item-&gt;item-&gt;offset is an offset from the   start of @text)
+         * @param text text that @glyph_item corresponds to   (glyph_item->item->offset is an offset from the   start of @text)
          * @param log_attrs logical attributes for the item   (the first logical attribute refers to the position   before the first character in the item)
          * @param letter_spacing amount of letter spacing to add   in Pango units. May be negative, though too large   negative values will give ugly results.
          */
@@ -5837,7 +5837,7 @@ export namespace Pango {
      *
      * The *forward direction* of the iterator is the logical direction of text.
      * That is, with increasing `start_index` and `start_char` values. If `glyph_item`
-     * is right-to-left (that is, if `glyph_item-&gt;item-&gt;analysis.level` is odd),
+     * is right-to-left (that is, if `glyph_item->item->analysis.level` is odd),
      * then `start_glyph` decreases as the iterator moves forward.  Moreover,
      * in right-to-left cases, `start_glyph` is greater than `end_glyph`.
      *
@@ -5854,17 +5854,17 @@ export namespace Pango {
      * PangoGlyphItemIter cluster_iter;
      * gboolean have_cluster;
      *
-     * for (have_cluster = pango_glyph_item_iter_init_start (&amp;cluster_iter,
+     * for (have_cluster = pango_glyph_item_iter_init_start (&cluster_iter,
      *                                                       glyph_item, text);
      *      have_cluster;
-     *      have_cluster = pango_glyph_item_iter_next_cluster (&amp;cluster_iter))
+     *      have_cluster = pango_glyph_item_iter_next_cluster (&cluster_iter))
      * {
      *   ...
      * }
      * ```
      *
      * Note that `text` is the start of the text for layout, which is then
-     * indexed by `glyph_item-&gt;item-&gt;offset` to get to the text of `glyph_item`.
+     * indexed by `glyph_item->item->offset` to get to the text of `glyph_item`.
      * The `start_index` and `end_index` values can directly index into `text`. The
      * `start_glyph,` `end_glyph,` `start_char,` and `end_char` values however are
      * zero-based for the `glyph_item`.  For each cluster, the item pointed at by
@@ -5982,7 +5982,7 @@ export namespace Pango {
          * (the origin of their coordinate system is at the start of the range,
          * not at the start of the entire glyph string).
          * @param start start index
-         * @param end end index (the range is the set of bytes with   indices such that start &lt;= index &lt; end)
+         * @param end end index (the range is the set of bytes with   indices such that start <= index < end)
          * @param font a `PangoFont`
          */
         extents_range(start: number, end: number, font: Font): void;
@@ -6022,10 +6022,10 @@ export namespace Pango {
          * where available, and computed by dividing up each cluster
          * into equal portions, otherwise.
          *
-         * &lt;picture&gt;
-         *   &lt;source srcset="glyphstring-positions-dark.png" media="(prefers-color-scheme: dark)"&gt;
-         *   &lt;img alt="Glyph positions" src="glyphstring-positions-light.png"&gt;
-         * &lt;/picture&gt;
+         * <picture>
+         *   <source srcset="glyphstring-positions-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Glyph positions" src="glyphstring-positions-light.png">
+         * </picture>
          * @param text the text for the run
          * @param length the number of bytes (not characters) in @text.
          * @param analysis the analysis information return from [func@itemize]
@@ -6598,7 +6598,7 @@ export namespace Pango {
         /**
          * Converts an index within a line to a X position.
          * @param index_ byte offset of a grapheme within the layout
-         * @param trailing an integer indicating the edge of the grapheme to retrieve   the position of. If &gt; 0, the trailing edge of the grapheme,   if 0, the leading of the grapheme
+         * @param trailing an integer indicating the edge of the grapheme to retrieve   the position of. If > 0, the trailing edge of the grapheme,   if 0, the leading of the grapheme
          */
         index_to_x(index_: number, trailing: boolean): void;
         /**
@@ -6691,8 +6691,8 @@ export namespace Pango {
      * The transformation is given by
      *
      * ```
-     * x_device = x_user * matrix-&gt;xx + y_user * matrix-&gt;xy + matrix-&gt;x0;
-     * y_device = x_user * matrix-&gt;yx + y_user * matrix-&gt;yy + matrix-&gt;y0;
+     * x_device = x_user * matrix->xx + y_user * matrix->xy + matrix->x0;
+     * y_device = x_user * matrix->yx + y_user * matrix->yy + matrix->y0;
      * ```
      */
     class Matrix {
@@ -6924,7 +6924,7 @@ export namespace Pango {
         /**
          * Gets information about the range to which `iter` currently points.
          *
-         * The range is the set of locations p where *start &lt;= p &lt; *end.
+         * The range is the set of locations p where *start <= p < *end.
          * (That is, it doesn't include the character stored at *end)
          *
          * Note that while the type of the `script` argument is declared

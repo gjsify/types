@@ -1,62 +1,44 @@
 {
     "name": "@girs/unity-6.0",
-    "version": "6.0.0-3.2.8",
+    "version": "6.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for Unity-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "unity-6.0.js",
     "main": "unity-6.0.js",
     "exports": {
-        "./ambient": {
-            "types": "./unity-6.0-ambient.d.ts",
-            "default": "./unity-6.0-ambient.js"
-        },
-        "./import": {
-            "types": "./unity-6.0-import.d.ts",
-            "default": "./unity-6.0-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./unity-6.0.d.ts",
-                "default": "./unity-6.0.js"
-            },
-            "require": {
-                "types": "./unity-6.0.d.cts",
-                "default": "./unity-6.0.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./unity-6.0-ambient.d.ts",
+        "default": "./unity-6.0-ambient.js"
+      },
+      "./import": {
+        "types": "./unity-6.0-import.d.ts",
+        "default": "./unity-6.0-import.js"
+      },
+      ".": {
+        "types": "./unity-6.0.d.ts",
+        "default": "./unity-6.0.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit unity-6.0.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit unity-6.0.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit unity-6.0.d.ts"
     },
     "dependencies": {
-        "@girs/dbusmenu-0.4": "workspace:^",
-        "@girs/dee-1.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/glib-2.0": "workspace:^",            "@girs/dbusmenu-0.4": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/dee-1.0": "workspace:^",            "@girs/gio-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Unity-6.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Unity-6.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/unity-6.0#readme"
 }
+
+

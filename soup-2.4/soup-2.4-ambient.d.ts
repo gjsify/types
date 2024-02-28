@@ -9,4 +9,3 @@ declare module 'gi://Soup' {
     export default Soup24;
 }
 
-

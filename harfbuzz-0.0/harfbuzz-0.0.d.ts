@@ -2807,9 +2807,9 @@ export namespace HarfBuzz {
      * Data type for the Canonical_Combining_Class (ccc) property
      * from the Unicode Character Database.
      *
-     * &lt;note&gt;Note: newer versions of Unicode may add new values.
+     * <note>Note: newer versions of Unicode may add new values.
      * Client programs should be ready to handle any value in the 0..254 range
-     * being returned from hb_unicode_combining_class().&lt;/note&gt;
+     * being returned from hb_unicode_combining_class().</note>
      */
     enum unicode_combining_class_t {
         /**
@@ -3274,7 +3274,7 @@ export namespace HarfBuzz {
      * Tests whether the specified face includes any positioning information
      * in the `kerx` table.
      *
-     * &lt;note&gt;Note: does not examine the `GPOS` table.&lt;/note&gt;
+     * <note>Note: does not examine the `GPOS` table.</note>
      * @param face #hb_face_t to work upon
      * @returns `true` if data found, `false` otherwise
      */
@@ -3283,7 +3283,7 @@ export namespace HarfBuzz {
      * Tests whether the specified face includes any substitutions in the
      * `morx` or `mort` tables.
      *
-     * &lt;note&gt;Note: does not examine the `GSUB` table.&lt;/note&gt;
+     * <note>Note: does not examine the `GSUB` table.</note>
      * @param face #hb_face_t to work upon
      * @returns `true` if data found, `false` otherwise
      */
@@ -3413,7 +3413,7 @@ export namespace HarfBuzz {
      * Similar to hb_buffer_add_codepoints(), but allows only access to first 256
      * Unicode code points that can fit in 8-bit strings.
      *
-     * &lt;note&gt;Has nothing to do with non-Unicode Latin-1 encoding.&lt;/note&gt;
+     * <note>Has nothing to do with non-Unicode Latin-1 encoding.</note>
      * @param buffer An #hb_buffer_t
      * @param text an array of UTF-8               characters to append
      * @param item_offset the offset of the first character to add to the @buffer
@@ -3660,7 +3660,7 @@ export namespace HarfBuzz {
      * Reorders a glyph buffer to have canonical in-cluster glyph order / position.
      * The resulting clusters should behave identical to pre-reordering clusters.
      *
-     * &lt;note&gt;This has nothing to do with Unicode normalization.&lt;/note&gt;
+     * <note>This has nothing to do with Unicode normalization.</note>
      * @param buffer An #hb_buffer_t
      */
     function buffer_normalize_glyphs(buffer: buffer_t): void;
@@ -3754,7 +3754,7 @@ export namespace HarfBuzz {
      *   - If #HB_BUFFER_SERIALIZE_FLAG_NO_POSITIONS is not set, the #hb_glyph_position_t in the format:
      *     - If both #hb_glyph_position_t.x_offset and #hb_glyph_position_t.y_offset are not 0, ``x_offset,`y_offset`. Then,
      *     - `+x_advance`, then `,y_advance` if #hb_glyph_position_t.y_advance is not 0. Then,
-     *   - If #HB_BUFFER_SERIALIZE_FLAG_GLYPH_EXTENTS is set, the #hb_glyph_extents_t in the format `&lt;x_bearing,y_bearing,width,height&gt;`
+     *   - If #HB_BUFFER_SERIALIZE_FLAG_GLYPH_EXTENTS is set, the #hb_glyph_extents_t in the format `<x_bearing,y_bearing,width,height>`
      *
      * ## json
      * A machine-readable, structured format.
@@ -3808,7 +3808,7 @@ export namespace HarfBuzz {
      * The serialized codepoints will look something like:
      *
      * ```
-     *  &lt;U+0651=0|U+0628=1&gt;
+     *  <U+0651=0|U+0628=1>
      * ```
      *
      * - Glyphs are separated with `|`
@@ -4268,13 +4268,13 @@ export namespace HarfBuzz {
      * DFont that can contain more than one face.  Face indices within
      * such collections are zero-based.
      *
-     * &lt;note&gt;Note: If the blob font format is not a collection, `index`
+     * <note>Note: If the blob font format is not a collection, `index`
      * is ignored.  Otherwise, only the lower 16-bits of `index` are used.
-     * The unmodified `index` can be accessed via hb_face_get_index().&lt;/note&gt;
+     * The unmodified `index` can be accessed via hb_face_get_index().</note>
      *
-     * &lt;note&gt;Note: The high 16-bits of `index,` if non-zero, are used by
+     * <note>Note: The high 16-bits of `index,` if non-zero, are used by
      * hb_font_create() to load named-instances in variable fonts.  See
-     * hb_font_create() for details.&lt;/note&gt;
+     * hb_font_create() for details.</note>
      * @param blob #hb_blob_t to work upon
      * @param index The index of the face within @blob
      * @returns The new face object
@@ -4310,7 +4310,7 @@ export namespace HarfBuzz {
     /**
      * Fetches the face-index corresponding to the given face.
      *
-     * &lt;note&gt;Note: face indices within a collection are zero-based.&lt;/note&gt;
+     * <note>Note: face indices within a collection are zero-based.</note>
      * @param face A face object
      * @returns The index of @face.
      */
@@ -4371,8 +4371,8 @@ export namespace HarfBuzz {
      * Assigns the specified face-index to `face`. Fails if the
      * face is immutable.
      *
-     * &lt;note&gt;Note: changing the index has no effect on the face itself
-     * This only changes the value returned by hb_face_get_index().&lt;/note&gt;
+     * <note>Note: changing the index has no effect on the face itself
+     * This only changes the value returned by hb_face_get_index().</note>
      * @param face A face object
      * @param index The index to assign
      */
@@ -4398,31 +4398,31 @@ export namespace HarfBuzz {
      *
      * The format is Python-esque.  Here is how it all works:
      *
-     * &lt;informaltable pgwide='1' align='left' frame='none'&gt;
-     * &lt;tgroup cols='5'&gt;
-     * &lt;thead&gt;
-     * &lt;row&gt;&lt;entry&gt;Syntax&lt;/entry&gt;    &lt;entry&gt;Value&lt;/entry&gt; &lt;entry&gt;Start&lt;/entry&gt; &lt;entry&gt;End&lt;/entry&gt;&lt;/row&gt;
-     * &lt;/thead&gt;
-     * &lt;tbody&gt;
-     * &lt;row&gt;&lt;entry&gt;Setting value:&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern&lt;/entry&gt;      &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;+kern&lt;/entry&gt;     &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;-kern&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature off&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern=0&lt;/entry&gt;    &lt;entry&gt;0&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature off&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern=1&lt;/entry&gt;    &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;aalt=2&lt;/entry&gt;    &lt;entry&gt;2&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Choose 2nd alternate&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;Setting index:&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[]&lt;/entry&gt;    &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[:]&lt;/entry&gt;   &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[5:]&lt;/entry&gt;  &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;5&lt;/entry&gt;      &lt;entry&gt;∞&lt;/entry&gt;   &lt;entry&gt;Turn feature on, partial&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[:5]&lt;/entry&gt;  &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;0&lt;/entry&gt;      &lt;entry&gt;5&lt;/entry&gt;   &lt;entry&gt;Turn feature on, partial&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[3:5]&lt;/entry&gt; &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;3&lt;/entry&gt;      &lt;entry&gt;5&lt;/entry&gt;   &lt;entry&gt;Turn feature on, range&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;kern[3]&lt;/entry&gt;   &lt;entry&gt;1&lt;/entry&gt;     &lt;entry&gt;3&lt;/entry&gt;      &lt;entry&gt;3+1&lt;/entry&gt; &lt;entry&gt;Turn feature on, single char&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;Mixing it all:&lt;/entry&gt;&lt;/row&gt;
-     * &lt;row&gt;&lt;entry&gt;aalt[3:5]=2&lt;/entry&gt; &lt;entry&gt;2&lt;/entry&gt;   &lt;entry&gt;3&lt;/entry&gt;      &lt;entry&gt;5&lt;/entry&gt;   &lt;entry&gt;Turn 2nd alternate on for range&lt;/entry&gt;&lt;/row&gt;
-     * &lt;/tbody&gt;
-     * &lt;/tgroup&gt;
-     * &lt;/informaltable&gt;
+     * <informaltable pgwide='1' align='left' frame='none'>
+     * <tgroup cols='5'>
+     * <thead>
+     * <row><entry>Syntax</entry>    <entry>Value</entry> <entry>Start</entry> <entry>End</entry></row>
+     * </thead>
+     * <tbody>
+     * <row><entry>Setting value:</entry></row>
+     * <row><entry>kern</entry>      <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>+kern</entry>     <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>-kern</entry>     <entry>0</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature off</entry></row>
+     * <row><entry>kern=0</entry>    <entry>0</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature off</entry></row>
+     * <row><entry>kern=1</entry>    <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>aalt=2</entry>    <entry>2</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Choose 2nd alternate</entry></row>
+     * <row><entry>Setting index:</entry></row>
+     * <row><entry>kern[]</entry>    <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>kern[:]</entry>   <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>kern[5:]</entry>  <entry>1</entry>     <entry>5</entry>      <entry>∞</entry>   <entry>Turn feature on, partial</entry></row>
+     * <row><entry>kern[:5]</entry>  <entry>1</entry>     <entry>0</entry>      <entry>5</entry>   <entry>Turn feature on, partial</entry></row>
+     * <row><entry>kern[3:5]</entry> <entry>1</entry>     <entry>3</entry>      <entry>5</entry>   <entry>Turn feature on, range</entry></row>
+     * <row><entry>kern[3]</entry>   <entry>1</entry>     <entry>3</entry>      <entry>3+1</entry> <entry>Turn feature on, single char</entry></row>
+     * <row><entry>Mixing it all:</entry></row>
+     * <row><entry>aalt[3:5]=2</entry> <entry>2</entry>   <entry>3</entry>      <entry>5</entry>   <entry>Turn 2nd alternate on for range</entry></row>
+     * </tbody>
+     * </tgroup>
+     * </informaltable>
      * @param str a string to parse
      * @returns `true` if @str is successfully parsed, `false` otherwise
      */
@@ -4463,12 +4463,12 @@ export namespace HarfBuzz {
     /**
      * Constructs a new font object from the specified face.
      *
-     * &lt;note&gt;Note: If `face'`s index value (as passed to hb_face_create()
+     * <note>Note: If `face'`s index value (as passed to hb_face_create()
      * has non-zero top 16-bits, those bits minus one are passed to
      * hb_font_set_var_named_instance(), effectively loading a named-instance
      * of a variable font, instead of the default-instance.  This allows
      * specifying which named-instance to load by default when creating the
-     * face.&lt;/note&gt;
+     * face.</note>
      * @param face a face.
      * @returns The new font object
      */
@@ -4860,7 +4860,7 @@ export namespace HarfBuzz {
     /**
      * Fetches the glyph ID that corresponds to a name string in the specified `font`.
      *
-     * &lt;note&gt;Note: `len` == -1 means the name string is null-terminated.&lt;/note&gt;
+     * <note>Note: `len` == -1 means the name string is null-terminated.</note>
      * @param font #hb_font_t to work upon
      * @param name The name string to query
      * @returns `true` if data found, `false` otherwise
@@ -4894,8 +4894,8 @@ export namespace HarfBuzz {
      * Fetches the kerning-adjustment value for a glyph-pair in
      * the specified font, for horizontal text segments.
      *
-     * &lt;note&gt;It handles legacy kerning only (as returned by the corresponding
-     * #hb_font_funcs_t function).&lt;/note&gt;
+     * <note>It handles legacy kerning only (as returned by the corresponding
+     * #hb_font_funcs_t function).</note>
      * @param font #hb_font_t to work upon
      * @param left_glyph The glyph ID of the left glyph in the glyph pair
      * @param right_glyph The glyph ID of the right glyph in the glyph pair
@@ -4983,8 +4983,8 @@ export namespace HarfBuzz {
      * Fetches the kerning-adjustment value for a glyph-pair in
      * the specified font, for vertical text segments.
      *
-     * &lt;note&gt;It handles legacy kerning only (as returned by the corresponding
-     * #hb_font_funcs_t function).&lt;/note&gt;
+     * <note>It handles legacy kerning only (as returned by the corresponding
+     * #hb_font_funcs_t function).</note>
      * @param font #hb_font_t to work upon
      * @param top_glyph The glyph ID of the top glyph in the glyph pair
      * @param bottom_glyph The glyph ID of the bottom glyph in the glyph pair
@@ -5132,7 +5132,7 @@ export namespace HarfBuzz {
      * Fetches the glyph ID from `font` that matches the specified string.
      * Strings of the format `gidDDD` or `uniUUUU` are parsed automatically.
      *
-     * &lt;note&gt;Note: `len` == -1 means the string is null-terminated.&lt;/note&gt;
+     * <note>Note: `len` == -1 means the string is null-terminated.</note>
      * @param font #hb_font_t to work upon
      * @param s string to query
      * @returns `true` if data found, `false` otherwise
@@ -5230,7 +5230,7 @@ export namespace HarfBuzz {
      * Sets the "point size" of a font. Set to zero to unset.
      * Used in CoreText to implement optical sizing.
      *
-     * &lt;note&gt;Note: There are 72 points in an inch.&lt;/note&gt;
+     * <note>Note: There are 72 points in an inch.</note>
      * @param font #hb_font_t to work upon
      * @param ptem font size in points.
      */
@@ -5297,11 +5297,11 @@ export namespace HarfBuzz {
      * HarfBuzz needs to know this value to adjust shaping results,
      * metrics, and style values to match the slanted rendering.
      *
-     * &lt;note&gt;Note: The glyph shape fetched via the hb_font_draw_glyph()
-     * function is slanted to reflect this value as well.&lt;/note&gt;
+     * <note>Note: The glyph shape fetched via the hb_font_draw_glyph()
+     * function is slanted to reflect this value as well.</note>
      *
-     * &lt;note&gt;Note: The slant value is a ratio.  For example, a
-     * 20% slant would be represented as a 0.2 value.&lt;/note&gt;
+     * <note>Note: The slant value is a ratio.  For example, a
+     * 20% slant would be represented as a 0.2 value.</note>
      * @param font #hb_font_t to work upon
      * @param slant synthetic slant value.
      */
@@ -5325,7 +5325,7 @@ export namespace HarfBuzz {
      * Axes not included in `coords` will be effectively set to their
      * default values.
      *
-     * &lt;note&gt;Note: Coordinates should be normalized to 2.14.&lt;/note&gt;
+     * <note>Note: Coordinates should be normalized to 2.14.</note>
      * @param font #hb_font_t to work upon
      * @param coords Array of variation coordinates to apply
      */
@@ -5443,9 +5443,9 @@ export namespace HarfBuzz {
     /**
      * Creates an #hb_font_t font object from the specified FT_Face.
      *
-     * &lt;note&gt;Note: You must set the face size on `ft_face` before calling
+     * <note>Note: You must set the face size on `ft_face` before calling
      * hb_ft_font_create() on it. HarfBuzz assumes size is always set and will
-     * access `size` member of FT_Face unconditionally.&lt;/note&gt;
+     * access `size` member of FT_Face unconditionally.</note>
      *
      * This variant of the function does not provide any life-cycle management.
      *
@@ -5469,9 +5469,9 @@ export namespace HarfBuzz {
     /**
      * Creates an #hb_font_t font object from the specified FT_Face.
      *
-     * &lt;note&gt;Note: You must set the face size on `ft_face` before calling
+     * <note>Note: You must set the face size on `ft_face` before calling
      * hb_ft_font_create_referenced() on it. HarfBuzz assumes size is always set
-     * and will access `size` member of FT_Face unconditionally.&lt;/note&gt;
+     * and will access `size` member of FT_Face unconditionally.</note>
      *
      * This is the preferred variant of the hb_ft_font_create*
      * function family, because it calls FT_Reference_Face() on `ft_face,`
@@ -5513,8 +5513,8 @@ export namespace HarfBuzz {
      * calling this function, you need to call hb_ft_hb_font_changed()
      * to update the underlying FT_Face.
      *
-     * &lt;note&gt;Note: Internally, this function creates an FT_Face.
-     * &lt;/note&gt;
+     * <note>Note: Internally, this function creates an FT_Face.
+     * </note>
      * @param font #hb_font_t to work upon
      */
     function ft_font_set_funcs(font: font_t): void;
@@ -5583,12 +5583,12 @@ export namespace HarfBuzz {
     /**
      * Fetch the default language from current locale.
      *
-     * &lt;note&gt;Note that the first time this function is called, it calls
+     * <note>Note that the first time this function is called, it calls
      * "setlocale (LC_CTYPE, nullptr)" to fetch current locale.  The underlying
      * setlocale function is, in many implementations, NOT threadsafe.  To avoid
      * problems, call this function once before multiple threads can call it.
      * This function is only used from hb_buffer_guess_segment_properties() by
-     * HarfBuzz itself.&lt;/note&gt;
+     * HarfBuzz itself.</note>
      * @returns The default language of the locale as an #hb_language_t
      */
     function language_get_default(): language_t;
@@ -6475,10 +6475,10 @@ export namespace HarfBuzz {
      * used to draw the glyph and an italics-correction value (if one is defined
      * in the font).
      *
-     * &lt;note&gt;The `direction` parameter is only used to select between horizontal
+     * <note>The `direction` parameter is only used to select between horizontal
      * or vertical directions for the construction. Even though all #hb_direction_t
      * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
-     * considered.&lt;/note&gt;
+     * considered.</note>
      * @param font #hb_font_t to work upon
      * @param glyph The index of the glyph to stretch
      * @param direction direction of the stretching (horizontal or vertical)
@@ -6527,13 +6527,13 @@ export namespace HarfBuzz {
      * See also #hb_ot_math_get_glyph_kerning, which handles selecting the
      * appropriate kern value for a given correction height.
      *
-     * &lt;note&gt;For a glyph with `n` defined kern values (where `n` &gt; 0), there are only
+     * <note>For a glyph with `n` defined kern values (where `n` > 0), there are only
      * `n−`1 defined correction heights, as each correction height defines a boundary
      * past which the next kern value should be selected. Therefore, only the
      * #hb_ot_math_kern_entry_t.kern_value of the uppermost #hb_ot_math_kern_entry_t
      * actually comes from the font; its corresponding
      * #hb_ot_math_kern_entry_t.max_correction_height is always set to
-     * &lt;code&gt;INT32_MAX&lt;/code&gt;.&lt;/note&gt;
+     * <code>INT32_MAX</code>.</note>
      * @param font #hb_font_t to work upon
      * @param glyph The glyph index from which to retrieve the kernings
      * @param kern The #hb_ot_math_kern_t from which to retrieve the kernings
@@ -6565,10 +6565,10 @@ export namespace HarfBuzz {
      * direction. The corresponding list of size variants is returned as a list of
      * #hb_ot_math_glyph_variant_t structs.
      *
-     * &lt;note&gt;The `direction` parameter is only used to select between horizontal
+     * <note>The `direction` parameter is only used to select between horizontal
      * or vertical directions for the construction. Even though all #hb_direction_t
      * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
-     * considered.&lt;/note&gt;
+     * considered.</note>
      * @param font #hb_font_t to work upon
      * @param glyph The index of the glyph to stretch
      * @param direction The direction of the stretching (horizontal or vertical)
@@ -6586,10 +6586,10 @@ export namespace HarfBuzz {
      * minimum overlap of connecting glyphs that are required to draw a glyph
      * assembly in the specified direction.
      *
-     * &lt;note&gt;The `direction` parameter is only used to select between horizontal
+     * <note>The `direction` parameter is only used to select between horizontal
      * or vertical directions for the construction. Even though all #hb_direction_t
      * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
-     * considered.&lt;/note&gt;
+     * considered.</note>
      * @param font #hb_font_t to work upon
      * @param direction direction of the stretching (horizontal or vertical)
      * @returns requested minimum connector overlap or zero
@@ -8198,7 +8198,7 @@ export namespace HarfBuzz {
         /**
          * flag indicating that a dotted circle should
          *                      not be inserted in the rendering of incorrect
-         *                      character sequences (such at &lt;0905 093E&gt;). Since: 2.4.0
+         *                      character sequences (such at <0905 093E>). Since: 2.4.0
          */
         DO_NOT_INSERT_DOTTED_CIRCLE,
         /**
@@ -8771,8 +8771,8 @@ export namespace HarfBuzz {
      *
      * The minimum, default, and maximum values are in un-normalized, user scales.
      *
-     * &lt;note&gt;Note: at present, the only flag defined for `flags` is
-     * #HB_OT_VAR_AXIS_FLAG_HIDDEN.&lt;/note&gt;
+     * <note>Note: at present, the only flag defined for `flags` is
+     * #HB_OT_VAR_AXIS_FLAG_HIDDEN.</note>
      */
     class ot_var_axis_info_t {
         // Own fields of HarfBuzz-0.0.ot_var_axis_info_t

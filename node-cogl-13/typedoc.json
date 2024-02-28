@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-cogl-13.d.ts"],
-    "readme": "./README.md",
-    "name": "Cogl-13",
-    "tsconfig": "./tsconfig.json"
-}
-

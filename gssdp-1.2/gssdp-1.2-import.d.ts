@@ -1,12 +1,2 @@
-
-import GSSDP12 from '@girs/gssdp-1.2';
-
-declare global {
-    export interface GjsGiImports {
-        GSSDP: typeof GSSDP12;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GSSDP"
 

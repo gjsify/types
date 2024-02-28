@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-folkseds-0.7.d.ts"],
-    "readme": "./README.md",
-    "name": "FolksEds-0.7",
-    "tsconfig": "./tsconfig.json"
-}
-

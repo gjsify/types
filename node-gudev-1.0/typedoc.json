@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gudev-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "GUdev-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

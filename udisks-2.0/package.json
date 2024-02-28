@@ -1,60 +1,44 @@
 {
     "name": "@girs/udisks-2.0",
-    "version": "2.6.4-3.2.8",
+    "version": "2.6.4-4.0.0",
     "description": "GJS TypeScript type definitions for UDisks-2.0, generated from library version 2.6.4",
     "type": "module",
     "module": "udisks-2.0.js",
     "main": "udisks-2.0.js",
     "exports": {
-        "./ambient": {
-            "types": "./udisks-2.0-ambient.d.ts",
-            "default": "./udisks-2.0-ambient.js"
-        },
-        "./import": {
-            "types": "./udisks-2.0-import.d.ts",
-            "default": "./udisks-2.0-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./udisks-2.0.d.ts",
-                "default": "./udisks-2.0.js"
-            },
-            "require": {
-                "types": "./udisks-2.0.d.cts",
-                "default": "./udisks-2.0.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./udisks-2.0-ambient.d.ts",
+        "default": "./udisks-2.0-ambient.js"
+      },
+      "./import": {
+        "types": "./udisks-2.0-import.d.ts",
+        "default": "./udisks-2.0-import.js"
+      },
+      ".": {
+        "types": "./udisks-2.0.d.ts",
+        "default": "./udisks-2.0.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit udisks-2.0.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit udisks-2.0.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit udisks-2.0.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "UDisks-2.0"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "UDisks-2.0"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/udisks-2.0#readme"
 }
+
+

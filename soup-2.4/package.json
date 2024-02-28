@@ -1,60 +1,44 @@
 {
     "name": "@girs/soup-2.4",
-    "version": "2.74.3-3.2.8",
+    "version": "2.74.3-4.0.0",
     "description": "GJS TypeScript type definitions for Soup-2.4, generated from library version 2.74.3",
     "type": "module",
     "module": "soup-2.4.js",
     "main": "soup-2.4.js",
     "exports": {
-        "./ambient": {
-            "types": "./soup-2.4-ambient.d.ts",
-            "default": "./soup-2.4-ambient.js"
-        },
-        "./import": {
-            "types": "./soup-2.4-import.d.ts",
-            "default": "./soup-2.4-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./soup-2.4.d.ts",
-                "default": "./soup-2.4.js"
-            },
-            "require": {
-                "types": "./soup-2.4.d.cts",
-                "default": "./soup-2.4.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./soup-2.4-ambient.d.ts",
+        "default": "./soup-2.4-ambient.js"
+      },
+      "./import": {
+        "types": "./soup-2.4-import.d.ts",
+        "default": "./soup-2.4-import.js"
+      },
+      ".": {
+        "types": "./soup-2.4.d.ts",
+        "default": "./soup-2.4.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit soup-2.4.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit soup-2.4.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit soup-2.4.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Soup-2.4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Soup-2.4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/soup-2.4#readme"
 }
+
+

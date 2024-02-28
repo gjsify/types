@@ -9,4 +9,3 @@ declare module 'gi://Qrtr' {
     export default Qrtr10;
 }
 
-

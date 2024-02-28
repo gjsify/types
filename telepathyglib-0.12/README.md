@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/telepathyglib-0.12)
 
 
-GJS TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-Telepathy is a D-Bus framework for unifying real time communication, including instant messaging, voice calls and video calls. It abstracts differences between protocols to provide a unified interface for applications.
 
 ## Install
 

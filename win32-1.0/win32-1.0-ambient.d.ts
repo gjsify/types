@@ -9,4 +9,3 @@ declare module 'gi://win32' {
     export default Win3210;
 }
 
-

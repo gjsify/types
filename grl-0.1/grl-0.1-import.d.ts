@@ -1,12 +1,2 @@
-
-import Grl01 from '@girs/grl-0.1';
-
-declare global {
-    export interface GjsGiImports {
-        Grl: typeof Grl01;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Grl"
 

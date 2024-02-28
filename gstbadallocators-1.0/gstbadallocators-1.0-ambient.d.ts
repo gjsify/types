@@ -9,4 +9,3 @@ declare module 'gi://GstBadAllocators' {
     export default GstBadAllocators10;
 }
 
-

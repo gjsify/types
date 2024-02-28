@@ -9,4 +9,3 @@ declare module 'gi://Gdk' {
     export default Gdk30;
 }
 
-

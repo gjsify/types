@@ -9,4 +9,3 @@ declare module 'gi://FolksTelepathy' {
     export default FolksTelepathy06;
 }
 
-

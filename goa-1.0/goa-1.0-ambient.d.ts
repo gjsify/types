@@ -9,4 +9,3 @@ declare module 'gi://Goa' {
     export default Goa10;
 }
 
-

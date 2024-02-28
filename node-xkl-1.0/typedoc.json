@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-xkl-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Xkl-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

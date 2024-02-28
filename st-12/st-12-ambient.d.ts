@@ -9,4 +9,3 @@ declare module 'gi://St' {
     export default St12;
 }
 
-

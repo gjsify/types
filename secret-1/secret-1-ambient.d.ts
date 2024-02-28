@@ -9,4 +9,3 @@ declare module 'gi://Secret' {
     export default Secret1;
 }
 
-

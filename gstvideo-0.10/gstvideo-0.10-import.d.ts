@@ -1,12 +1,2 @@
-
-import GstVideo010 from '@girs/gstvideo-0.10';
-
-declare global {
-    export interface GjsGiImports {
-        GstVideo: typeof GstVideo010;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GstVideo"
 

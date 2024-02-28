@@ -4000,8 +4000,8 @@ export namespace Gdk {
      *
      * gdk_app_launch_context_set_timestamp (gdk_event_get_time (event));
      *
-     * if (!g_app_info_launch_default_for_uri ("http://www.gtk.org", context, &amp;error))
-     *   g_warning ("Launching failed: %s\n", error-&gt;message);
+     * if (!g_app_info_launch_default_for_uri ("http://www.gtk.org", context, &error))
+     *   g_warning ("Launching failed: %s\n", error->message);
      *
      * g_object_unref (context);
      * ```
@@ -5526,7 +5526,7 @@ export namespace Gdk {
          * `consumed_modifiers` gives modifiers that should be masked out
          * from `state` when comparing this key press to a keyboard shortcut.
          * For instance, on a US keyboard, the `plus` symbol is shifted, so
-         * when comparing a key press to a `&lt;Control&gt;plus` accelerator `&lt;Shift&gt;`
+         * when comparing a key press to a `<Control>plus` accelerator `<Shift>`
          * should be masked out.
          *
          * This function should rarely be needed, since `GdkEventKey` already
@@ -6260,7 +6260,7 @@ export namespace Gdk {
          * The right mouse button typically triggers context menus.
          *
          * This function should always be used instead of simply checking for
-         * event-&gt;button == %GDK_BUTTON_SECONDARY.
+         * event->button == %GDK_BUTTON_SECONDARY.
          * @returns %TRUE if the event should trigger a context menu.
          */
         triggers_context_menu(): boolean;

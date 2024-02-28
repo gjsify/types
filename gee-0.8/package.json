@@ -1,60 +1,44 @@
 {
     "name": "@girs/gee-0.8",
-    "version": "0.8.0-3.2.8",
+    "version": "0.8.0-4.0.0",
     "description": "GJS TypeScript type definitions for Gee-0.8, generated from library version 0.8.0",
     "type": "module",
     "module": "gee-0.8.js",
     "main": "gee-0.8.js",
     "exports": {
-        "./ambient": {
-            "types": "./gee-0.8-ambient.d.ts",
-            "default": "./gee-0.8-ambient.js"
-        },
-        "./import": {
-            "types": "./gee-0.8-import.d.ts",
-            "default": "./gee-0.8-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./gee-0.8.d.ts",
-                "default": "./gee-0.8.js"
-            },
-            "require": {
-                "types": "./gee-0.8.d.cts",
-                "default": "./gee-0.8.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./gee-0.8-ambient.d.ts",
+        "default": "./gee-0.8-ambient.js"
+      },
+      "./import": {
+        "types": "./gee-0.8-import.d.ts",
+        "default": "./gee-0.8-import.js"
+      },
+      ".": {
+        "types": "./gee-0.8.d.ts",
+        "default": "./gee-0.8.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gee-0.8.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gee-0.8.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gee-0.8.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gee-0.8"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gee-0.8"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gee-0.8#readme"
 }
+
+

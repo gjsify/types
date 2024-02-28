@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-jscore-3.0.d.ts"],
-    "readme": "./README.md",
-    "name": "JSCore-3.0",
-    "tsconfig": "./tsconfig.json"
-}
-

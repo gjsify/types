@@ -1,12 +1,2 @@
-
-import Tepl4 from '@girs/tepl-4';
-
-declare global {
-    export interface GjsGiImports {
-        Tepl: typeof Tepl4;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Tepl"
 

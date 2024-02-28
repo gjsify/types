@@ -1,73 +1,44 @@
 {
     "name": "@girs/gcrgtk4-4",
-    "version": "4.0.0-3.2.8",
+    "version": "4.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for GcrGtk4-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gcrgtk4-4.js",
     "main": "gcrgtk4-4.js",
     "exports": {
-        "./ambient": {
-            "types": "./gcrgtk4-4-ambient.d.ts",
-            "default": "./gcrgtk4-4-ambient.js"
-        },
-        "./import": {
-            "types": "./gcrgtk4-4-import.d.ts",
-            "default": "./gcrgtk4-4-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./gcrgtk4-4.d.ts",
-                "default": "./gcrgtk4-4.js"
-            },
-            "require": {
-                "types": "./gcrgtk4-4.d.cts",
-                "default": "./gcrgtk4-4.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./gcrgtk4-4-ambient.d.ts",
+        "default": "./gcrgtk4-4-ambient.js"
+      },
+      "./import": {
+        "types": "./gcrgtk4-4-import.d.ts",
+        "default": "./gcrgtk4-4-import.js"
+      },
+      ".": {
+        "types": "./gcrgtk4-4.d.ts",
+        "default": "./gcrgtk4-4.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gcrgtk4-4.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gcrgtk4-4.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gcrgtk4-4.d.ts"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gck-2": "workspace:^",
-        "@girs/gcr-4": "workspace:^",
-        "@girs/gdk-4.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/gsk-4.0": "workspace:^",
-        "@girs/gtk-4.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/pangocairo-1.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gtk-4.0": "workspace:^",            "@girs/gsk-4.0": "workspace:^",            "@girs/graphene-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gdk-4.0": "workspace:^",            "@girs/cairo-1.0": "workspace:^",            "@girs/pangocairo-1.0": "workspace:^",            "@girs/pango-1.0": "workspace:^",            "@girs/harfbuzz-0.0": "workspace:^",            "@girs/freetype2-2.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gdkpixbuf-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^",            "@girs/gcr-4": "workspace:^",            "@girs/gck-2": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GcrGtk4-4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GcrGtk4-4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gcrgtk4-4#readme"
 }
+
+

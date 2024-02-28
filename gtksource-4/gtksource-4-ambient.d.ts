@@ -9,4 +9,3 @@ declare module 'gi://GtkSource' {
     export default GtkSource4;
 }
 
-

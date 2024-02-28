@@ -9,4 +9,3 @@ declare module 'gi://Poppler' {
     export default Poppler018;
 }
 
-

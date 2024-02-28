@@ -9,4 +9,3 @@ declare module 'gi://Gtef' {
     export default Gtef2;
 }
 
-

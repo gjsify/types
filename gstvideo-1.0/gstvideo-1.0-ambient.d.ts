@@ -9,4 +9,3 @@ declare module 'gi://GstVideo' {
     export default GstVideo10;
 }
 
-

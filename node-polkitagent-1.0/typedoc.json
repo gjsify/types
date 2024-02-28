@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-polkitagent-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "PolkitAgent-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-flatpak-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Flatpak-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

@@ -9,4 +9,3 @@ declare module 'gi://Cally' {
     export default Cally12;
 }
 
-

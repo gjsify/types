@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/icalglib-3.0)
 
 
-GJS TypeScript type definitions for ICalGLib-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for ICalGLib-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-Implementation of the iCalendar protocols and protocol data units. The iCalendar specification describes how calendar clients can communicate with calendar servers so users can store their calendar data and arrange meetings with other users.
 
 ## Install
 

@@ -9,4 +9,3 @@ declare module 'gi://Gxps' {
     export default Gxps10;
 }
 
-

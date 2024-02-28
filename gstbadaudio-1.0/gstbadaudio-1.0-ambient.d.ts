@@ -9,4 +9,3 @@ declare module 'gi://GstBadAudio' {
     export default GstBadAudio10;
 }
 
-

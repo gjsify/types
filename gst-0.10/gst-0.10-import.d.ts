@@ -1,12 +1,2 @@
-
-import Gst010 from '@girs/gst-0.10';
-
-declare global {
-    export interface GjsGiImports {
-        Gst: typeof Gst010;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Gst"
 

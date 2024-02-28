@@ -9,4 +9,3 @@ declare module 'gi://NMGtk' {
     export default NMGtk10;
 }
 
-

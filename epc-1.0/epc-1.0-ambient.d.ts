@@ -9,4 +9,3 @@ declare module 'gi://Epc' {
     export default Epc10;
 }
 
-

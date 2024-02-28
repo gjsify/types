@@ -9,4 +9,3 @@ declare module 'gi://AppIndicator3' {
     export default AppIndicator301;
 }
 
-

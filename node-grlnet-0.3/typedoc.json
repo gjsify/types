@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-grlnet-0.3.d.ts"],
-    "readme": "./README.md",
-    "name": "GrlNet-0.3",
-    "tsconfig": "./tsconfig.json"
-}
-

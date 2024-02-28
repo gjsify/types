@@ -9,4 +9,3 @@ declare module 'gi://MetaTest' {
     export default MetaTest12;
 }
 
-

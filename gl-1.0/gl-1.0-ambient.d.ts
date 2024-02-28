@@ -9,4 +9,3 @@ declare module 'gi://GL' {
     export default GL10;
 }
 
-

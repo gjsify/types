@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-rygelcore-2.6.d.ts"],
-    "readme": "./README.md",
-    "name": "RygelCore-2.6",
-    "tsconfig": "./tsconfig.json"
-}
-

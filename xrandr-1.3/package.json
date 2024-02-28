@@ -1,58 +1,44 @@
 {
     "name": "@girs/xrandr-1.3",
-    "version": "1.3.0-3.2.8",
+    "version": "1.3.0-4.0.0",
     "description": "GJS TypeScript type definitions for xrandr-1.3, generated from library version 1.3.0",
     "type": "module",
     "module": "xrandr-1.3.js",
     "main": "xrandr-1.3.js",
     "exports": {
-        "./ambient": {
-            "types": "./xrandr-1.3-ambient.d.ts",
-            "default": "./xrandr-1.3-ambient.js"
-        },
-        "./import": {
-            "types": "./xrandr-1.3-import.d.ts",
-            "default": "./xrandr-1.3-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./xrandr-1.3.d.ts",
-                "default": "./xrandr-1.3.js"
-            },
-            "require": {
-                "types": "./xrandr-1.3.d.cts",
-                "default": "./xrandr-1.3.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./xrandr-1.3-ambient.d.ts",
+        "default": "./xrandr-1.3-ambient.js"
+      },
+      "./import": {
+        "types": "./xrandr-1.3-import.d.ts",
+        "default": "./xrandr-1.3-import.js"
+      },
+      ".": {
+        "types": "./xrandr-1.3.d.ts",
+        "default": "./xrandr-1.3.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xrandr-1.3.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xrandr-1.3.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit xrandr-1.3.d.ts"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gobject-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "xrandr-1.3"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "xrandr-1.3"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/xrandr-1.3#readme"
 }
+
+

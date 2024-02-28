@@ -9,4 +9,3 @@ declare module 'gi://GXml' {
     export default GXml014;
 }
 
-

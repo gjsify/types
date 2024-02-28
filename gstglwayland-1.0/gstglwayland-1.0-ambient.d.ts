@@ -9,4 +9,3 @@ declare module 'gi://GstGLWayland' {
     export default GstGLWayland10;
 }
 
-

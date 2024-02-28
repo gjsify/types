@@ -9,4 +9,3 @@ declare module 'gi://GstBase' {
     export default GstBase10;
 }
 
-

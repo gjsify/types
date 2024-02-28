@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/cluttergst-3.0)
 
 
-GJS TypeScript type definitions for ClutterGst-3.0, generated from library version 3.0.28 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for ClutterGst-3.0, generated from library version 3.0.28 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-GStreamer bindings for clutter.
 
 ## Install
 

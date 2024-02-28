@@ -9,4 +9,3 @@ declare module 'gi://RygelRendererGst' {
     export default RygelRendererGst26;
 }
 
-

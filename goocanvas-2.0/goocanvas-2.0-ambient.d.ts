@@ -9,4 +9,3 @@ declare module 'gi://GooCanvas' {
     export default GooCanvas20;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Vulkan' {
     export default Vulkan10;
 }
 
-

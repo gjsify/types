@@ -9,4 +9,3 @@ declare module 'gi://Cogl' {
     export default Cogl10;
 }
 
-

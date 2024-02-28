@@ -9,4 +9,3 @@ declare module 'gi://GstVulkan' {
     export default GstVulkan10;
 }
 
-

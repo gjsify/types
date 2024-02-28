@@ -9,4 +9,3 @@ declare module 'gi://Rsvg' {
     export default Rsvg20;
 }
 
-

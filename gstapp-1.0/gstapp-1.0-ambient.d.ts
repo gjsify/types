@@ -9,4 +9,3 @@ declare module 'gi://GstApp' {
     export default GstApp10;
 }
 
-

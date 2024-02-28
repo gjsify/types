@@ -9,4 +9,3 @@ declare module 'gi://Gio' {
     export default Gio20;
 }
 
-

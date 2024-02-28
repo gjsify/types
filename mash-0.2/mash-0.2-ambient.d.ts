@@ -9,4 +9,3 @@ declare module 'gi://Mash' {
     export default Mash02;
 }
 
-

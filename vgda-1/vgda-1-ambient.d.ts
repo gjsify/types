@@ -9,4 +9,3 @@ declare module 'gi://Vgda' {
     export default Vgda1;
 }
 
-

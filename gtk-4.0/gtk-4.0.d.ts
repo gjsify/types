@@ -1055,9 +1055,9 @@ export namespace Gtk {
      * If none of these choices are appropriate, simply use
      * %GTK_BUTTONS_NONE and call [method`Gtk`.Dialog.add_buttons].
      *
-     * &gt; Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
-     * &gt; and %GTK_BUTTONS_OK_CANCEL are discouraged by the
-     * &gt; [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).
+     * > Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
+     * > and %GTK_BUTTONS_OK_CANCEL are discouraged by the
+     * > [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).
      */
     enum ButtonsType {
         /**
@@ -2027,7 +2027,7 @@ export namespace Gtk {
     }
     /**
      * Used to configure the focus behavior in the `GTK_DIR_TAB_FORWARD`
-     * and `GTK_DIR_TAB_BACKWARD` direction, like the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+     * and `GTK_DIR_TAB_BACKWARD` direction, like the <kbd>Tab</kbd> key
      * in a [class`Gtk`.ListView].
      */
     enum ListTabBehavior {
@@ -3782,7 +3782,7 @@ export namespace Gtk {
      * parseable by gtk_accelerator_parse().
      *
      * For example, if you pass in %GDK_KEY_q and %GDK_CONTROL_MASK,
-     * this function returns `&lt;Control&gt;q`.
+     * this function returns `<Control>q`.
      *
      * If you need to display accelerators in the user interface,
      * see [func`Gtk`.accelerator_get_label].
@@ -3813,24 +3813,24 @@ export namespace Gtk {
     /**
      * Parses a string representing an accelerator.
      *
-     * The format looks like “`&lt;Control&gt;a`” or “`&lt;Shift&gt;&lt;Alt&gt;F1`”.
+     * The format looks like “`<Control>a`” or “`<Shift><Alt>F1`”.
      *
      * The parser is fairly liberal and allows lower or upper case, and also
-     * abbreviations such as “`&lt;Ctl&gt;`” and “`&lt;Ctrl&gt;`”.
+     * abbreviations such as “`<Ctl>`” and “`<Ctrl>`”.
      *
      * Key names are parsed using [func`Gdk`.keyval_from_name]. For character keys
      * the name is not the symbol, but the lowercase name, e.g. one would use
-     * “`&lt;Ctrl&gt;minus`” instead of “`&lt;Ctrl&gt;-`”.
+     * “`<Ctrl>minus`” instead of “`<Ctrl>-`”.
      *
-     * Modifiers are enclosed in angular brackets `&lt;&gt;`, and match the
+     * Modifiers are enclosed in angular brackets `<>`, and match the
      * [flags`Gdk`.ModifierType] mask:
      *
-     * - `&lt;Shift&gt;` for `GDK_SHIFT_MASK`
-     * - `&lt;Ctrl&gt;` for `GDK_CONTROL_MASK`
-     * - `&lt;Alt&gt;` for `GDK_ALT_MASK`
-     * - `&lt;Meta&gt;` for `GDK_META_MASK`
-     * - `&lt;Super&gt;` for `GDK_SUPER_MASK`
-     * - `&lt;Hyper&gt;` for `GDK_HYPER_MASK`
+     * - `<Shift>` for `GDK_SHIFT_MASK`
+     * - `<Ctrl>` for `GDK_CONTROL_MASK`
+     * - `<Alt>` for `GDK_ALT_MASK`
+     * - `<Meta>` for `GDK_META_MASK`
+     * - `<Super>` for `GDK_SUPER_MASK`
+     * - `<Hyper>` for `GDK_HYPER_MASK`
      *
      * If the parse operation fails, `accelerator_key` and `accelerator_mods` will
      * be set to 0 (zero).
@@ -3876,7 +3876,7 @@ export namespace Gtk {
      * Initializes `iter` to point to `target`.
      *
      * If `target` is not found, finds the next value after it.
-     * If no value &gt;= `target` exists in `set,` this function returns %FALSE.
+     * If no value >= `target` exists in `set,` this function returns %FALSE.
      * @param set a `GtkBitset`
      * @param target target value to start iterating at
      * @returns %TRUE if a value was found.
@@ -4084,8 +4084,8 @@ export namespace Gtk {
      * you can use it to update the default text direction as follows:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
-     * #include &lt;locale.h&gt;
+     * ```c
+     * #include <locale.h>
      *
      * static void
      * update_locale (const char *new_locale)
@@ -5497,7 +5497,7 @@ export namespace Gtk {
      * [signal`Gtk`.AboutDialog::activate-link] signal.
      *
      * To specify a person with an email address, use a string like
-     * `Edgar Allan Poe &lt;edgar`poe`.com&gt;`. To specify a website with a title,
+     * `Edgar Allan Poe <edgar`poe`.com>`. To specify a website with a title,
      * use a string like `GTK team https://www.gtk.org`.
      *
      * To make constructing a `GtkAboutDialog` as convenient as possible, you can
@@ -5576,8 +5576,8 @@ export namespace Gtk {
          * [property`Gtk`.AboutDialog:license-type] property is set to
          * `GTK_LICENSE_CUSTOM` as a side effect.
          *
-         * The text may contain links in this format `&lt;http://www.some.place/&gt;`
-         * and email references in the form `&lt;mail-to`some`.body&gt;`, and these will
+         * The text may contain links in this format `<http://www.some.place/>`
+         * and email references in the form `<mail-to`some`.body>`, and these will
          * be converted into clickable links.
          */
         license: string;
@@ -5657,8 +5657,8 @@ export namespace Gtk {
          * to use a long multi-paragraph text. Note that the text should contain
          * the intended linebreaks.
          *
-         * The text may contain links in this format `&lt;http://www.some.place/&gt;`
-         * and email references in the form `&lt;mail-to`some`.body&gt;`, and these will
+         * The text may contain links in this format `<http://www.some.place/>`
+         * and email references in the form `<mail-to`some`.body>`, and these will
          * be converted into clickable links.
          */
         system_information: string;
@@ -5669,8 +5669,8 @@ export namespace Gtk {
          * to use a long multi-paragraph text. Note that the text should contain
          * the intended linebreaks.
          *
-         * The text may contain links in this format `&lt;http://www.some.place/&gt;`
-         * and email references in the form `&lt;mail-to`some`.body&gt;`, and these will
+         * The text may contain links in this format `<http://www.some.place/>`
+         * and email references in the form `<mail-to`some`.body>`, and these will
          * be converted into clickable links.
          */
         systemInformation: string;
@@ -5960,7 +5960,7 @@ export namespace Gtk {
      *
      * The `GtkActionBar` implementation of the `GtkBuildable` interface supports
      * adding children at the start or end sides by specifying “start” or “end” as
-     * the “type” attribute of a `&lt;child&gt;` element, or setting the center widget
+     * the “type” attribute of a `<child>` element, or setting the center widget
      * by specifying “center” value.
      *
      * # CSS nodes
@@ -7046,7 +7046,7 @@ export namespace Gtk {
      * defines a [class`Gtk`.ShortcutsWindow] with ID `help_overlay` then
      * `GtkApplication` associates an instance of this shortcuts window with
      * each [class`Gtk`.ApplicationWindow] and sets up the keyboard accelerator
-     * &lt;kbd&gt;Control&lt;/kbd&gt;+&lt;kbd&gt;?&lt;/kbd&gt; to open it. To create a menu item that
+     * <kbd>Control</kbd>+<kbd>?</kbd> to open it. To create a menu item that
      * displays the shortcuts window, associate the item with the action
      * `win.show-help-overlay`.
      *
@@ -7375,21 +7375,21 @@ export namespace Gtk {
      * GtkApplication *app = gtk_application_new ("org.gtk.test", 0);
      *
      * GtkBuilder *builder = gtk_builder_new_from_string (
-     *     "&lt;interface&gt;"
-     *     "  &lt;menu id='menubar'&gt;"
-     *     "    &lt;submenu&gt;"
-     *     "      &lt;attribute name='label' translatable='yes'&gt;_Edit&lt;/attribute&gt;"
-     *     "      &lt;item&gt;"
-     *     "        &lt;attribute name='label' translatable='yes'&gt;_Copy&lt;/attribute&gt;"
-     *     "        &lt;attribute name='action'&gt;win.copy&lt;/attribute&gt;"
-     *     "      &lt;/item&gt;"
-     *     "      &lt;item&gt;"
-     *     "        &lt;attribute name='label' translatable='yes'&gt;_Paste&lt;/attribute&gt;"
-     *     "        &lt;attribute name='action'&gt;win.paste&lt;/attribute&gt;"
-     *     "      &lt;/item&gt;"
-     *     "    &lt;/submenu&gt;"
-     *     "  &lt;/menu&gt;"
-     *     "&lt;/interface&gt;",
+     *     "<interface>"
+     *     "  <menu id='menubar'>"
+     *     "    <submenu>"
+     *     "      <attribute name='label' translatable='yes'>_Edit</attribute>"
+     *     "      <item>"
+     *     "        <attribute name='label' translatable='yes'>_Copy</attribute>"
+     *     "        <attribute name='action'>win.copy</attribute>"
+     *     "      </item>"
+     *     "      <item>"
+     *     "        <attribute name='label' translatable='yes'>_Paste</attribute>"
+     *     "        <attribute name='action'>win.paste</attribute>"
+     *     "      </item>"
+     *     "    </submenu>"
+     *     "  </menu>"
+     *     "</interface>",
      *     -1);
      *
      * GMenuModel *menubar = G_MENU_MODEL (gtk_builder_get_object (builder, "menubar"));
@@ -8401,46 +8401,46 @@ export namespace Gtk {
      *
      * UI definition files are always encoded in UTF-8.
      *
-     * The toplevel element is `&lt;interface&gt;`. It optionally takes a “domain”
+     * The toplevel element is `<interface>`. It optionally takes a “domain”
      * attribute, which will make the builder look for translated strings
      * using `dgettext()` in the domain specified. This can also be done by
      * calling [method`Gtk`.Builder.set_translation_domain] on the builder.
      * For example:
      *
      * ```xml
-     * &lt;?xml version="1.0" encoding="UTF-8"&gt;
-     * &lt;interface domain="your-app"&gt;
+     * <?xml version="1.0" encoding="UTF-8">
+     * <interface domain="your-app">
      *   ...
-     * &lt;/interface&gt;
+     * </interface>
      * ```
      *
      * ### Requirements
      *
-     * The target toolkit version(s) are described by `&lt;requires&gt;` elements,
+     * The target toolkit version(s) are described by `<requires>` elements,
      * the “lib” attribute specifies the widget library in question (currently
      * the only supported value is “gtk”) and the “version” attribute specifies
-     * the target version in the form “`&lt;major&gt;`.`&lt;minor&gt;`”. `GtkBuilder` will
+     * the target version in the form “`<major>`.`<minor>`”. `GtkBuilder` will
      * error out if the version requirements are not met. For example:
      *
      * ```xml
-     * &lt;?xml version="1.0" encoding="UTF-8"&gt;
-     * &lt;interface domain="your-app"&gt;
-     *   &lt;requires lib="gtk" version="4.0" /&gt;
-     * &lt;/interface&gt;
+     * <?xml version="1.0" encoding="UTF-8">
+     * <interface domain="your-app">
+     *   <requires lib="gtk" version="4.0" />
+     * </interface>
      * ```
      *
      * ### Objects
      *
-     * Objects are defined as children of the `&lt;interface&gt;` element.
+     * Objects are defined as children of the `<interface>` element.
      *
-     * Objects are described by `&lt;object&gt;` elements, which can contain
-     * `&lt;property&gt;` elements to set properties, `&lt;signal&gt;` elements which
-     * connect signals to handlers, and `&lt;child&gt;` elements, which describe
+     * Objects are described by `<object>` elements, which can contain
+     * `<property>` elements to set properties, `<signal>` elements which
+     * connect signals to handlers, and `<child>` elements, which describe
      * child objects (most often widgets inside a container, but also e.g.
-     * actions in an action group, or columns in a tree model). A `&lt;child&gt;`
-     * element contains an `&lt;object&gt;` element which describes the child object.
+     * actions in an action group, or columns in a tree model). A `<child>`
+     * element contains an `<object>` element which describes the child object.
      *
-     * Typically, the specific kind of object represented by an `&lt;object&gt;`
+     * Typically, the specific kind of object represented by an `<object>`
      * element is specified by the “class” attribute. If the type has not
      * been loaded yet, GTK tries to find the `get_type()` function from the
      * class name by applying heuristics. This works in most cases, but if
@@ -8459,13 +8459,13 @@ export namespace Gtk {
      * ### Properties
      *
      * Setting properties of objects is pretty straightforward with the
-     * `&lt;property&gt;` element: the “name” attribute specifies the name of the
+     * `<property>` element: the “name” attribute specifies the name of the
      * property, and the content of the element specifies the value:
      *
      * ```xml
-     * &lt;object class="GtkButton"&gt;
-     *   &lt;property name="label"&gt;Hello, world&lt;/property&gt;
-     * &lt;/object&gt;
+     * <object class="GtkButton">
+     *   <property name="label">Hello, world</property>
+     * </object>
      * ```
      *
      * If the “translatable” attribute is set to a true value, GTK uses
@@ -8477,9 +8477,9 @@ export namespace Gtk {
      * may help the translators:
      *
      * ```xml
-     * &lt;object class="GtkButton"&gt;
-     *   &lt;property name="label" translatable="yes" context="button"&gt;Hello, world&lt;/property&gt;
-     * &lt;/object&gt;
+     * <object class="GtkButton">
+     *   <property name="label" translatable="yes" context="button">Hello, world</property>
+     * </object>
      * ```
      *
      * `GtkBuilder` can parse textual representations for the most common
@@ -8524,22 +8524,22 @@ export namespace Gtk {
      * `top_button` widget:
      *
      * ```xml
-     * &lt;object class="GtkBox"&gt;
-     *   &lt;property name="orientation"&gt;vertical&lt;/property&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkButton" id="top_button"&gt;
-     *       &lt;property name="label"&gt;Hello, world&lt;/property&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkLabel" id="bottom_label"&gt;
-     *       &lt;property name="label"
+     * <object class="GtkBox">
+     *   <property name="orientation">vertical</property>
+     *   <child>
+     *     <object class="GtkButton" id="top_button">
+     *       <property name="label">Hello, world</property>
+     *     </object>
+     *   </child>
+     *   <child>
+     *     <object class="GtkLabel" id="bottom_label">
+     *       <property name="label"
      *                 bind-source="top_button"
      *                 bind-property="label"
-     *                 bind-flags="sync-create" /&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     *                 bind-flags="sync-create" />
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * For more information, see the documentation of the
@@ -8551,28 +8551,28 @@ export namespace Gtk {
      * been constructed by GTK as part of a composite widget, to set
      * properties on them or to add further children (e.g. the content area
      * of a `GtkDialog`). This can be achieved by setting the “internal-child”
-     * property of the `&lt;child&gt;` element to a true value. Note that `GtkBuilder`
-     * still requires an `&lt;object&gt;` element for the internal child, even if it
+     * property of the `<child>` element to a true value. Note that `GtkBuilder`
+     * still requires an `<object>` element for the internal child, even if it
      * has already been constructed.
      *
      * ### Specialized children
      *
      * A number of widgets have different places where a child can be added
      * (e.g. tabs vs. page content in notebooks). This can be reflected in
-     * a UI definition by specifying the “type” attribute on a `&lt;child&gt;`
+     * a UI definition by specifying the “type” attribute on a `<child>`
      * The possible values for the “type” attribute are described in the
      * sections describing the widget-specific portions of UI definitions.
      *
      * ### Signal handlers and function pointers
      *
-     * Signal handlers are set up with the `&lt;signal&gt;` element. The “name”
+     * Signal handlers are set up with the `<signal>` element. The “name”
      * attribute specifies the name of the signal, and the “handler” attribute
      * specifies the function to connect to the signal.
      *
      * ```xml
-     * &lt;object class="GtkButton" id="hello_button"&gt;
-     *   &lt;signal name="clicked" handler="hello_button__clicked" /&gt;
-     * &lt;/object&gt;
+     * <object class="GtkButton" id="hello_button">
+     *   <signal name="clicked" handler="hello_button__clicked" />
+     * </object>
      * ```
      *
      * The remaining attributes, “after”, “swapped” and “object”, have the
@@ -8611,25 +8611,25 @@ export namespace Gtk {
      * ## Example UI Definition
      *
      * ```xml
-     * &lt;interface&gt;
-     *   &lt;object class="GtkDialog" id="dialog1"&gt;
-     *     &lt;child internal-child="content_area"&gt;
-     *       &lt;object class="GtkBox"&gt;
-     *         &lt;child internal-child="action_area"&gt;
-     *           &lt;object class="GtkBox"&gt;
-     *             &lt;child&gt;
-     *               &lt;object class="GtkButton" id="ok_button"&gt;
-     *                 &lt;property name="label" translatable="yes"&gt;_Ok&lt;/property&gt;
-     *                 &lt;property name="use-underline"&gt;True&lt;/property&gt;
-     *                 &lt;signal name="clicked" handler="ok_button_clicked"/&gt;
-     *               &lt;/object&gt;
-     *             &lt;/child&gt;
-     *           &lt;/object&gt;
-     *         &lt;/child&gt;
-     *       &lt;/object&gt;
-     *     &lt;/child&gt;
-     *   &lt;/object&gt;
-     * &lt;/interface&gt;
+     * <interface>
+     *   <object class="GtkDialog" id="dialog1">
+     *     <child internal-child="content_area">
+     *       <object class="GtkBox">
+     *         <child internal-child="action_area">
+     *           <object class="GtkBox">
+     *             <child>
+     *               <object class="GtkButton" id="ok_button">
+     *                 <property name="label" translatable="yes">_Ok</property>
+     *                 <property name="use-underline">True</property>
+     *                 <signal name="clicked" handler="ok_button_clicked"/>
+     *               </object>
+     *             </child>
+     *           </object>
+     *         </child>
+     *       </object>
+     *     </child>
+     *   </object>
+     * </interface>
      * ```
      *
      * ## Using GtkBuildable for extending UI definitions
@@ -8640,7 +8640,7 @@ export namespace Gtk {
      *
      * ## Templates
      *
-     * When describing a [class`Gtk`.Widget], you can use the `&lt;template&gt;` tag to
+     * When describing a [class`Gtk`.Widget], you can use the `<template>` tag to
      * describe a UI bound to a specific widget type. GTK will automatically load
      * the UI definition when instantiating the type, and bind children and
      * signal handlers to instance fields and function symbols.
@@ -9014,20 +9014,20 @@ export namespace Gtk {
      *
      * Example:
      * ```xml
-     *   &lt;interface&gt;
-     *     &lt;template class="GtkListItem"&gt;
-     *       &lt;property name="child"&gt;
-     *         &lt;object class="GtkLabel"&gt;
-     *           &lt;property name="xalign"&gt;0&lt;/property&gt;
-     *           &lt;binding name="label"&gt;
-     *             &lt;lookup name="name" type="SettingsKey"&gt;
-     *               &lt;lookup name="item"&gt;GtkListItem&lt;/lookup&gt;
-     *             &lt;/lookup&gt;
-     *           &lt;/binding&gt;
-     *         &lt;/object&gt;
-     *       &lt;/property&gt;
-     *     &lt;/template&gt;
-     *   &lt;/interface&gt;
+     *   <interface>
+     *     <template class="GtkListItem">
+     *       <property name="child">
+     *         <object class="GtkLabel">
+     *           <property name="xalign">0</property>
+     *           <binding name="label">
+     *             <lookup name="name" type="SettingsKey">
+     *               <lookup name="item">GtkListItem</lookup>
+     *             </lookup>
+     *           </binding>
+     *         </object>
+     *       </property>
+     *     </template>
+     *   </interface>
      * ```
      */
     class BuilderListItemFactory extends ListItemFactory {
@@ -9596,16 +9596,16 @@ export namespace Gtk {
      * int minimum_width;
      * int natural_width;
      *
-     * valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+     * valid = gtk_tree_model_get_iter_first (model, &iter);
      * while (valid)
      *   {
-     *     gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+     *     gtk_cell_area_apply_attributes (area, model, &iter, FALSE, FALSE);
      *     gtk_cell_area_get_preferred_width (area, context, widget, NULL, NULL);
      *
-     *     valid = gtk_tree_model_iter_next (model, &amp;iter);
+     *     valid = gtk_tree_model_iter_next (model, &iter);
      *   }
      *
-     * gtk_cell_area_context_get_preferred_width (context, &amp;minimum_width, &amp;natural_width);
+     * gtk_cell_area_context_get_preferred_width (context, &minimum_width, &natural_width);
      * ```
      *
      * Note that in this example it’s not important to observe the
@@ -9638,7 +9638,7 @@ export namespace Gtk {
      *
      *   foo_ensure_at_least_one_handfull_of_rows_have_been_requested (self);
      *
-     *   gtk_cell_area_context_get_preferred_width (priv-&gt;context, minimum_size, natural_size);
+     *   gtk_cell_area_context_get_preferred_width (priv->context, minimum_size, natural_size);
      * }
      * ```
      *
@@ -9665,20 +9665,20 @@ export namespace Gtk {
      * int full_minimum_height = 0;
      * int full_natural_height = 0;
      *
-     * valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+     * valid = gtk_tree_model_get_iter_first (model, &iter);
      * while (valid)
      *   {
-     *     gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+     *     gtk_cell_area_apply_attributes (area, model, &iter, FALSE, FALSE);
      *     gtk_cell_area_get_preferred_height_for_width (area, context, widget,
-     *                                                   width, &amp;minimum_height, &amp;natural_height);
+     *                                                   width, &minimum_height, &natural_height);
      *
      *     if (width_is_for_allocation)
-     *        cache_row_height (&amp;iter, minimum_height, natural_height);
+     *        cache_row_height (&iter, minimum_height, natural_height);
      *
      *     full_minimum_height += minimum_height;
      *     full_natural_height += natural_height;
      *
-     *     valid = gtk_tree_model_iter_next (model, &amp;iter);
+     *     valid = gtk_tree_model_iter_next (model, &iter);
      *   }
      * ```
      *
@@ -9719,21 +9719,21 @@ export namespace Gtk {
      * int minimum_width;
      * int natural_width;
      *
-     * gtk_widget_get_allocation (widget, &amp;allocation);
+     * gtk_widget_get_allocation (widget, &allocation);
      * cell_area.width = allocation.width;
      *
-     * valid = gtk_tree_model_get_iter_first (model, &amp;iter);
+     * valid = gtk_tree_model_get_iter_first (model, &iter);
      * while (valid)
      *   {
-     *     cell_area.height = get_cached_height_for_row (&amp;iter);
+     *     cell_area.height = get_cached_height_for_row (&iter);
      *
-     *     gtk_cell_area_apply_attributes (area, model, &amp;iter, FALSE, FALSE);
+     *     gtk_cell_area_apply_attributes (area, model, &iter, FALSE, FALSE);
      *     gtk_cell_area_render (area, context, widget, cr,
-     *                           &amp;cell_area, &amp;cell_area, state_flags, FALSE);
+     *                           &cell_area, &cell_area, state_flags, FALSE);
      *
      *     cell_area.y += cell_area.height;
      *
-     *     valid = gtk_tree_model_iter_next (model, &amp;iter);
+     *     valid = gtk_tree_model_iter_next (model, &iter);
      *   }
      * ```
      *
@@ -9781,20 +9781,20 @@ export namespace Gtk {
      * {
      *   Foo *self = FOO (widget);
      *   FooPrivate *priv = foo_get_instance_private (self);
-     *   int focus_row = priv-&gt;focus_row;
+     *   int focus_row = priv->focus_row;
      *   gboolean have_focus = FALSE;
      *
      *   if (!gtk_widget_has_focus (widget))
      *     gtk_widget_grab_focus (widget);
      *
-     *   valid = gtk_tree_model_iter_nth_child (priv-&gt;model, &amp;iter, NULL, priv-&gt;focus_row);
+     *   valid = gtk_tree_model_iter_nth_child (priv->model, &iter, NULL, priv->focus_row);
      *   while (valid)
      *     {
-     *       gtk_cell_area_apply_attributes (priv-&gt;area, priv-&gt;model, &amp;iter, FALSE, FALSE);
+     *       gtk_cell_area_apply_attributes (priv->area, priv->model, &iter, FALSE, FALSE);
      *
-     *       if (gtk_cell_area_focus (priv-&gt;area, direction))
+     *       if (gtk_cell_area_focus (priv->area, direction))
      *         {
-     *            priv-&gt;focus_row = focus_row;
+     *            priv->focus_row = focus_row;
      *            have_focus = TRUE;
      *            break;
      *         }
@@ -9811,7 +9811,7 @@ export namespace Gtk {
      *               else
      *                {
      *                   focus_row--;
-     *                   valid = gtk_tree_model_iter_nth_child (priv-&gt;model, &amp;iter, NULL, focus_row);
+     *                   valid = gtk_tree_model_iter_nth_child (priv->model, &iter, NULL, focus_row);
      *                }
      *             }
      *           else
@@ -9821,7 +9821,7 @@ export namespace Gtk {
      *               else
      *                 {
      *                   focus_row++;
-     *                   valid = gtk_tree_model_iter_next (priv-&gt;model, &amp;iter);
+     *                   valid = gtk_tree_model_iter_next (priv->model, &iter);
      *                 }
      *             }
      *         }
@@ -9922,7 +9922,7 @@ export namespace Gtk {
         /**
          * This is used by `GtkCellArea` subclasses when handling events
          * to activate cells, the base `GtkCellArea` class activates cells
-         * for keyboard events for free in its own GtkCellArea-&gt;activate()
+         * for keyboard events for free in its own GtkCellArea->activate()
          * implementation.
          * @param widget the `GtkWidget` that @area is rendering onto
          * @param renderer the `GtkCellRenderer` in @area to activate
@@ -11708,7 +11708,7 @@ export namespace Gtk {
      *
      * The `GtkCenterBox` implementation of the `GtkBuildable` interface
      * supports placing children in the 3 positions by specifying “start”, “center”
-     * or “end” as the “type” attribute of a `&lt;child&gt;` element.
+     * or “end” as the “type” attribute of a `<child>` element.
      *
      * # CSS nodes
      *
@@ -12639,9 +12639,9 @@ export namespace Gtk {
      * ```
      * columnview[.column-separators][.rich-list][.navigation-sidebar][.data-table]
      * ├── header
-     * │   ├── &lt;column header&gt;
+     * │   ├── <column header>
      * ┊   ┊
-     * │   ╰── &lt;column header&gt;
+     * │   ╰── <column header>
      * │
      * ├── listview
      * │
@@ -12737,11 +12737,11 @@ export namespace Gtk {
          */
         readonly sorter: Sorter;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tab_behavior: ListTabBehavior;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tabBehavior: ListTabBehavior;
 
@@ -12832,8 +12832,8 @@ export namespace Gtk {
          */
         get_sorter(): Sorter | null;
         /**
-         * Gets the behavior set for the &lt;kbd&gt;Tab&lt;/kbd&gt; key.
-         * @returns The behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Gets the behavior set for the <kbd>Tab</kbd> key.
+         * @returns The behavior of the <kbd>Tab</kbd> key
          */
         get_tab_behavior(): ListTabBehavior;
         /**
@@ -12922,7 +12922,7 @@ export namespace Gtk {
          */
         set_single_click_activate(single_click_activate: boolean): void;
         /**
-         * Sets the behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; and &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; keys.
+         * Sets the behavior of the <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys.
          * @param tab_behavior The desired tab behavior
          */
         set_tab_behavior(tab_behavior: ListTabBehavior): void;
@@ -13460,9 +13460,9 @@ export namespace Gtk {
      *
      * ```
      * sorter = gtk_column_view_get_sorter (view);
-     * for (i = gtk_column_view_sorter_get_n_sort_columns (sorter) - 1; i &gt;= 0; i--)
+     * for (i = gtk_column_view_sorter_get_n_sort_columns (sorter) - 1; i >= 0; i--)
      *   {
-     *     column = gtk_column_view_sorter_get_nth_sort_column (sorter, i, &amp;order);
+     *     column = gtk_column_view_sorter_get_nth_sort_column (sorter, i, &order);
      *     gtk_column_view_sort_by_column (view, column, order);
      *   }
      * ```
@@ -13975,20 +13975,20 @@ export namespace Gtk {
      * ## GtkComboBoxText as GtkBuildable
      *
      * The `GtkComboBoxText` implementation of the `GtkBuildable` interface supports
-     * adding items directly using the `&lt;items&gt;` element and specifying `&lt;item&gt;`
-     * elements for each item. Each `&lt;item&gt;` element can specify the “id”
+     * adding items directly using the `<items>` element and specifying `<item>`
+     * elements for each item. Each `<item>` element can specify the “id”
      * corresponding to the appended text and also supports the regular
      * translation attributes “translatable”, “context” and “comments”.
      *
      * Here is a UI definition fragment specifying `GtkComboBoxText` items:
      * ```xml
-     * &lt;object class="GtkComboBoxText"&gt;
-     *   &lt;items&gt;
-     *     &lt;item translatable="yes" id="factory"&gt;Factory&lt;/item&gt;
-     *     &lt;item translatable="yes" id="home"&gt;Home&lt;/item&gt;
-     *     &lt;item translatable="yes" id="subway"&gt;Subway&lt;/item&gt;
-     *   &lt;/items&gt;
-     * &lt;/object&gt;
+     * <object class="GtkComboBoxText">
+     *   <items>
+     *     <item translatable="yes" id="factory">Factory</item>
+     *     <item translatable="yes" id="home">Home</item>
+     *     <item translatable="yes" id="subway">Subway</item>
+     *   </items>
+     * </object>
      * ```
      *
      * ## CSS nodes
@@ -14484,19 +14484,19 @@ export namespace Gtk {
      * An example of a UI definition fragment specifying a constraint:
      *
      * ```xml
-     *   &lt;object class="GtkConstraintLayout"&gt;
-     *     &lt;constraints&gt;
-     *       &lt;constraint target="button" target-attribute="start"
+     *   <object class="GtkConstraintLayout">
+     *     <constraints>
+     *       <constraint target="button" target-attribute="start"
      *                   relation="eq"
      *                   source="super" source-attribute="start"
      *                   constant="12"
-     *                   strength="required" /&gt;
-     *       &lt;constraint target="button" target-attribute="width"
+     *                   strength="required" />
+     *       <constraint target="button" target-attribute="width"
      *                   relation="ge"
      *                   constant="250"
-     *                   strength="strong" /&gt;
-     *     &lt;/constraints&gt;
-     *   &lt;/object&gt;
+     *                   strength="strong" />
+     *     </constraints>
+     *   </object>
      * ```
      *
      * The definition above will add two constraints to the GtkConstraintLayout:
@@ -14528,10 +14528,10 @@ export namespace Gtk {
      * of the `GtkConstraintGuides` used by the layout:
      *
      * ```xml
-     *   &lt;constraints&gt;
-     *     &lt;guide min-width="100" max-width="500" name="hspace"/&gt;
-     *     &lt;guide min-height="64" nat-height="128" name="vspace" strength="strong"/&gt;
-     *   &lt;/constraints&gt;
+     *   <constraints>
+     *     <guide min-width="100" max-width="500" name="hspace"/>
+     *     <guide min-height="64" nat-height="128" name="vspace" strength="strong"/>
+     *   </constraints>
      * ```
      *
      * The "guide" element has the following optional attributes:
@@ -14569,7 +14569,7 @@ export namespace Gtk {
      *
      * ```
      *   // Width must be greater than, or equal to 50
-     *   [button(&gt;=50)]
+     *   [button(>=50)]
      *
      *   // Width of button1 must be equal to width of button2
      *   [button1(==button2)]
@@ -14580,7 +14580,7 @@ export namespace Gtk {
      *
      * ```
      *   // horizontal orientation, default attribute: width
-     *   H:[button(&gt;=150)]
+     *   H:[button(>=150)]
      *
      *   // vertical orientation, default attribute: height
      *   V:[button1(==button2)]
@@ -14592,7 +14592,7 @@ export namespace Gtk {
      * ```
      *   // minimum width of button must be 150
      *   // natural width of button can be 250
-     *   [button(&gt;=150`required,` ==250`medium)`]
+     *   [button(>=150`required,` ==250`medium)`]
      * ```
      *
      * Finally, it's also possible to use simple arithmetic operators:
@@ -14638,30 +14638,30 @@ export namespace Gtk {
          * The VFL grammar is:
          *
          * ```
-         *        &lt;visualFormatString&gt; = (&lt;orientation&gt;)?
-         *                               (&lt;superview&gt;&lt;connection&gt;)?
-         *                               &lt;view&gt;(&lt;connection&gt;&lt;view&gt;)*
-         *                               (&lt;connection&gt;&lt;superview&gt;)?
-         *               &lt;orientation&gt; = 'H' | 'V'
-         *                 &lt;superview&gt; = '|'
-         *                &lt;connection&gt; = '' | '-' &lt;predicateList&gt; '-' | '-'
-         *             &lt;predicateList&gt; = &lt;simplePredicate&gt; | &lt;predicateListWithParens&gt;
-         *           &lt;simplePredicate&gt; = &lt;metricName&gt; | &lt;positiveNumber&gt;
-         *   &lt;predicateListWithParens&gt; = '(' &lt;predicate&gt; (',' &lt;predicate&gt;)* ')'
-         *                 &lt;predicate&gt; = (&lt;relation&gt;)? &lt;objectOfPredicate&gt; (&lt;operatorList&gt;)? ('`'` &lt;priority&gt;)?
-         *                  &lt;relation&gt; = '==' | '&lt;=' | '&gt;='
-         *         &lt;objectOfPredicate&gt; = &lt;constant&gt; | &lt;viewName&gt; | ('.' &lt;attributeName&gt;)?
-         *                  &lt;priority&gt; = &lt;positiveNumber&gt; | 'required' | 'strong' | 'medium' | 'weak'
-         *                  &lt;constant&gt; = &lt;number&gt;
-         *              &lt;operatorList&gt; = (&lt;multiplyOperator&gt;)? (&lt;addOperator&gt;)?
-         *          &lt;multiplyOperator&gt; = [ '*' | '/' ] &lt;positiveNumber&gt;
-         *               &lt;addOperator&gt; = [ '+' | '-' ] &lt;positiveNumber&gt;
-         *                  &lt;viewName&gt; = [A-Za-z_]([A-Za-z0-9_]*) // A C identifier
-         *                &lt;metricName&gt; = [A-Za-z_]([A-Za-z0-9_]*) // A C identifier
-         *             &lt;attributeName&gt; = 'top' | 'bottom' | 'left' | 'right' | 'width' | 'height' |
+         *        <visualFormatString> = (<orientation>)?
+         *                               (<superview><connection>)?
+         *                               <view>(<connection><view>)*
+         *                               (<connection><superview>)?
+         *               <orientation> = 'H' | 'V'
+         *                 <superview> = '|'
+         *                <connection> = '' | '-' <predicateList> '-' | '-'
+         *             <predicateList> = <simplePredicate> | <predicateListWithParens>
+         *           <simplePredicate> = <metricName> | <positiveNumber>
+         *   <predicateListWithParens> = '(' <predicate> (',' <predicate>)* ')'
+         *                 <predicate> = (<relation>)? <objectOfPredicate> (<operatorList>)? ('`'` <priority>)?
+         *                  <relation> = '==' | '<=' | '>='
+         *         <objectOfPredicate> = <constant> | <viewName> | ('.' <attributeName>)?
+         *                  <priority> = <positiveNumber> | 'required' | 'strong' | 'medium' | 'weak'
+         *                  <constant> = <number>
+         *              <operatorList> = (<multiplyOperator>)? (<addOperator>)?
+         *          <multiplyOperator> = [ '*' | '/' ] <positiveNumber>
+         *               <addOperator> = [ '+' | '-' ] <positiveNumber>
+         *                  <viewName> = [A-Za-z_]([A-Za-z0-9_]*) // A C identifier
+         *                <metricName> = [A-Za-z_]([A-Za-z0-9_]*) // A C identifier
+         *             <attributeName> = 'top' | 'bottom' | 'left' | 'right' | 'width' | 'height' |
          *                               'start' | 'end' | 'centerX' | 'centerY' | 'baseline'
-         *            &lt;positiveNumber&gt; // A positive real number parseable by g_ascii_strtod()
-         *                    &lt;number&gt; // A real number parseable by g_ascii_strtod()
+         *            <positiveNumber> // A positive real number parseable by g_ascii_strtod()
+         *                    <number> // A real number parseable by g_ascii_strtod()
          * ```
          *
          * **Note**: The VFL grammar used by GTK is slightly different than the one
@@ -14676,7 +14676,7 @@ export namespace Gtk {
          *   [button]-[textField]
          *
          *   // Width constraint
-         *   [button(&gt;=50)]
+         *   [button(>=50)]
          *
          *   // Connection to super view
          *   |-50-[purpleBox]-50-|
@@ -14694,10 +14694,10 @@ export namespace Gtk {
          *   [button1(==button2)]
          *
          *   // Multiple predicates
-         *   [flexibleButton(&gt;=70,&lt;=100)]
+         *   [flexibleButton(>=70,<=100)]
          *
          *   // A complete line of layout
-         *   |-[find]-[findNext]-[findField(&gt;=20)]-|
+         *   |-[find]-[findNext]-[findField(>=20)]-|
          *
          *   // Operators
          *   [button1(button2 / 3 + 50)]
@@ -15079,35 +15079,35 @@ export namespace Gtk {
      * The `GtkDialog` implementation of the `GtkBuildable` interface exposes the
      * `content_area` as an internal child with the name “content_area”.
      *
-     * `GtkDialog` supports a custom `&lt;action-widgets&gt;` element, which can contain
-     * multiple `&lt;action-widget&gt;` elements. The “response” attribute specifies a
+     * `GtkDialog` supports a custom `<action-widgets>` element, which can contain
+     * multiple `<action-widget>` elements. The “response” attribute specifies a
      * numeric response, and the content of the element is the id of widget
      * (which should be a child of the dialogs `action_area)`. To mark a response
-     * as default, set the “default” attribute of the `&lt;action-widget&gt;` element
+     * as default, set the “default” attribute of the `<action-widget>` element
      * to true.
      *
      * `GtkDialog` supports adding action widgets by specifying “action” as
-     * the “type” attribute of a `&lt;child&gt;` element. The widget will be added
+     * the “type” attribute of a `<child>` element. The widget will be added
      * either to the action area or the headerbar of the dialog, depending
      * on the “use-header-bar” property. The response id has to be associated
-     * with the action widget using the `&lt;action-widgets&gt;` element.
+     * with the action widget using the `<action-widgets>` element.
      *
      * An example of a `GtkDialog` UI definition fragment:
      *
      * ```xml
-     * &lt;object class="GtkDialog" id="dialog1"&gt;
-     *   &lt;child type="action"&gt;
-     *     &lt;object class="GtkButton" id="button_cancel"/&gt;
-     *   &lt;/child&gt;
-     *   &lt;child type="action"&gt;
-     *     &lt;object class="GtkButton" id="button_ok"&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;action-widgets&gt;
-     *     &lt;action-widget response="cancel"&gt;button_cancel&lt;/action-widget&gt;
-     *     &lt;action-widget response="ok" default="true"&gt;button_ok&lt;/action-widget&gt;
-     *   &lt;/action-widgets&gt;
-     * &lt;/object&gt;
+     * <object class="GtkDialog" id="dialog1">
+     *   <child type="action">
+     *     <object class="GtkButton" id="button_cancel"/>
+     *   </child>
+     *   <child type="action">
+     *     <object class="GtkButton" id="button_ok">
+     *     </object>
+     *   </child>
+     *   <action-widgets>
+     *     <action-widget response="cancel">button_cancel</action-widget>
+     *     <action-widget response="ok" default="true">button_ok</action-widget>
+     *   </action-widgets>
+     * </object>
      * ```
      *
      * # Accessibility
@@ -15133,7 +15133,7 @@ export namespace Gtk {
          * Here is how you can achieve the same:
          *
          * ```c
-         * g_object_get (settings, "gtk-dialogs-use-header", &amp;header, NULL);
+         * g_object_get (settings, "gtk-dialogs-use-header", &header, NULL);
          * dialog = g_object_new (GTK_TYPE_DIALOG, header, TRUE, NULL);
          * ```
          */
@@ -15154,7 +15154,7 @@ export namespace Gtk {
          * Here is how you can achieve the same:
          *
          * ```c
-         * g_object_get (settings, "gtk-dialogs-use-header", &amp;header, NULL);
+         * g_object_get (settings, "gtk-dialogs-use-header", &header, NULL);
          * dialog = g_object_new (GTK_TYPE_DIALOG, header, TRUE, NULL);
          * ```
          */
@@ -15725,8 +15725,8 @@ export namespace Gtk {
      *              0, 2 * G_PI);
      *
      *   gtk_widget_get_color (GTK_WIDGET (area),
-     *                         &amp;color);
-     *   gdk_cairo_set_source_rgba (cr, &amp;color);
+     *                         &color);
+     *   gdk_cairo_set_source_rgba (cr, &color);
      *
      *   cairo_fill (cr);
      * }
@@ -15990,17 +15990,17 @@ export namespace Gtk {
      *
      * Here is a UI definition example for `GtkDropDown` with a simple model:
      * ```xml
-     * &lt;object class="GtkDropDown"&gt;
-     *   &lt;property name="model"&gt;
-     *     &lt;object class="GtkStringList"&gt;
-     *       &lt;items&gt;
-     *         &lt;item translatable="yes"&gt;Factory&lt;/item&gt;
-     *         &lt;item translatable="yes"&gt;Home&lt;/item&gt;
-     *         &lt;item translatable="yes"&gt;Subway&lt;/item&gt;
-     *       &lt;/items&gt;
-     *     &lt;/object&gt;
-     *   &lt;/property&gt;
-     * &lt;/object&gt;
+     * <object class="GtkDropDown">
+     *   <property name="model">
+     *     <object class="GtkStringList">
+     *       <items>
+     *         <item translatable="yes">Factory</item>
+     *         <item translatable="yes">Home</item>
+     *         <item translatable="yes">Subway</item>
+     *       </items>
+     *     </object>
+     *   </property>
+     * </object>
      * ```
      *
      * To learn more about the list widget framework, see the
@@ -16758,19 +16758,19 @@ export namespace Gtk {
      * # GtkEntry as GtkBuildable
      *
      * The `GtkEntry` implementation of the `GtkBuildable` interface supports a
-     * custom `&lt;attributes&gt;` element, which supports any number of `&lt;attribute&gt;`
-     * elements. The `&lt;attribute&gt;` element has attributes named “name“, “value“,
+     * custom `<attributes>` element, which supports any number of `<attribute>`
+     * elements. The `<attribute>` element has attributes named “name“, “value“,
      * “start“ and “end“ and allows you to specify `PangoAttribute` values for
      * this label.
      *
      * An example of a UI definition fragment specifying Pango attributes:
      * ```xml
-     * &lt;object class="GtkEntry"&gt;
-     *   &lt;attributes&gt;
-     *     &lt;attribute name="weight" value="PANGO_WEIGHT_BOLD"/&gt;
-     *     &lt;attribute name="background" value="red" start="5" end="10"/&gt;
-     *   &lt;/attributes&gt;
-     * &lt;/object&gt;
+     * <object class="GtkEntry">
+     *   <attributes>
+     *     <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+     *     <attribute name="background" value="red" start="5" end="10"/>
+     *   </attributes>
+     * </object>
      * ```
      *
      * The start and end attributes specify the range of characters to which the
@@ -18693,20 +18693,20 @@ export namespace Gtk {
      *
      * The `GtkExpander` implementation of the `GtkBuildable` interface supports
      * placing a child in the label position by specifying “label” as the
-     * “type” attribute of a `&lt;child&gt;` element. A normal content child can be
-     * specified without specifying a `&lt;child&gt;` type attribute.
+     * “type” attribute of a `<child>` element. A normal content child can be
+     * specified without specifying a `<child>` type attribute.
      *
      * An example of a UI definition fragment with GtkExpander:
      *
      * ```xml
-     * &lt;object class="GtkExpander"&gt;
-     *   &lt;child type="label"&gt;
-     *     &lt;object class="GtkLabel" id="expander-label"/&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkEntry" id="expander-content"/&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkExpander">
+     *   <child type="label">
+     *     <object class="GtkLabel" id="expander-label"/>
+     *   </child>
+     *   <child>
+     *     <object class="GtkEntry" id="expander-content"/>
+     *   </child>
+     * </object>
      * ```
      *
      * # CSS nodes
@@ -18716,8 +18716,8 @@ export namespace Gtk {
      * ╰── box
      *     ├── title
      *     │   ├── expander
-     *     │   ╰── &lt;label widget&gt;
-     *     ╰── &lt;child&gt;
+     *     │   ╰── <label widget>
+     *     ╰── <child>
      * ```
      *
      * `GtkExpander` has a main node `expander-widget`, and subnode `box` containing
@@ -18917,7 +18917,7 @@ export namespace Gtk {
      * A more concise way to describe this would be
      *
      * ```
-     *   this-&gt;item-&gt;name
+     *   this->item->name
      * ```
      *
      * The most likely place where you will encounter expressions is in the context
@@ -18965,45 +18965,45 @@ export namespace Gtk {
      *
      *   // in get_property()...
      *   case PROP_EXPRESSION:
-     *     gtk_value_set_expression (value, foo-&gt;expression);
+     *     gtk_value_set_expression (value, foo->expression);
      *     break;
      * ```
      *
      * ## GtkExpression in .ui files
      *
      * `GtkBuilder` has support for creating expressions. The syntax here can be used where
-     * a `GtkExpression` object is needed like in a `&lt;property&gt;` tag for an expression
-     * property, or in a `&lt;binding name="property"&gt;` tag to bind a property to an expression.
+     * a `GtkExpression` object is needed like in a `<property>` tag for an expression
+     * property, or in a `<binding name="property">` tag to bind a property to an expression.
      *
-     * To create a property expression, use the `&lt;lookup&gt;` element. It can have a `type`
+     * To create a property expression, use the `<lookup>` element. It can have a `type`
      * attribute to specify the object type, and a `name` attribute to specify the property
-     * to look up. The content of `&lt;lookup&gt;` can either be an element specfiying the expression
+     * to look up. The content of `<lookup>` can either be an element specfiying the expression
      * to use the object, or a string that specifies the name of the object to use.
      *
      * Example:
      *
      * ```xml
-     *   &lt;lookup name='search'&gt;string_filter&lt;/lookup&gt;
+     *   <lookup name='search'>string_filter</lookup>
      * ```
      *
-     * To create a constant expression, use the `&lt;constant&gt;` element. If the type attribute
+     * To create a constant expression, use the `<constant>` element. If the type attribute
      * is specified, the element content is interpreted as a value of that type. Otherwise,
      * it is assumed to be an object. For instance:
      *
      * ```xml
-     *   &lt;constant&gt;string_filter&lt;/constant&gt;
-     *   &lt;constant type='gchararray'&gt;Hello, world&lt;/constant&gt;
+     *   <constant>string_filter</constant>
+     *   <constant type='gchararray'>Hello, world</constant>
      * ```
      *
-     * To create a closure expression, use the `&lt;closure&gt;` element. The `type` and `function`
+     * To create a closure expression, use the `<closure>` element. The `type` and `function`
      * attributes specify what function to use for the closure, the content of the element
      * contains the expressions for the parameters. For instance:
      *
      * ```xml
-     *   &lt;closure type='gchararray' function='combine_args_somehow'&gt;
-     *     &lt;constant type='gchararray'&gt;File size:&lt;/constant&gt;
-     *     &lt;lookup type='GFile' name='size'&gt;myfile&lt;/lookup&gt;
-     *   &lt;/closure&gt;
+     *   <closure type='gchararray' function='combine_args_somehow'>
+     *     <constant type='gchararray'>File size:</constant>
+     *     <lookup type='GFile' name='size'>myfile</lookup>
+     *   </closure>
      * ```
      */
     abstract class Expression {
@@ -19922,9 +19922,9 @@ export namespace Gtk {
      * # GtkFileFilter as GtkBuildable
      *
      * The `GtkFileFilter` implementation of the `GtkBuildable` interface
-     * supports adding rules using the `&lt;mime-types&gt;` and `&lt;patterns&gt;` and
-     * `&lt;suffixes&gt;` elements and listing the rules within. Specifying a
-     * `&lt;mime-type&gt;` or `&lt;pattern&gt;` or `&lt;suffix&gt;` has the same effect as
+     * supports adding rules using the `<mime-types>` and `<patterns>` and
+     * `<suffixes>` elements and listing the rules within. Specifying a
+     * `<mime-type>` or `<pattern>` or `<suffix>` has the same effect as
      * as calling
      * [method`Gtk`.FileFilter.add_mime_type] or
      * [method`Gtk`.FileFilter.add_pattern] or
@@ -19933,19 +19933,19 @@ export namespace Gtk {
      * An example of a UI definition fragment specifying `GtkFileFilter`
      * rules:
      * ```xml
-     * &lt;object class="GtkFileFilter"&gt;
-     *   &lt;property name="name" translatable="yes"&gt;Text and Images&lt;/property&gt;
-     *   &lt;mime-types&gt;
-     *     &lt;mime-type&gt;text/plain&lt;/mime-type&gt;
-     *     &lt;mime-type&gt;image/ *&lt;/mime-type&gt;
-     *   &lt;/mime-types&gt;
-     *   &lt;patterns&gt;
-     *     &lt;pattern&gt;*.txt&lt;/pattern&gt;
-     *   &lt;/patterns&gt;
-     *   &lt;suffixes&gt;
-     *     &lt;suffix&gt;png&lt;/suffix&gt;
-     *   &lt;/suffixes&gt;
-     * &lt;/object&gt;
+     * <object class="GtkFileFilter">
+     *   <property name="name" translatable="yes">Text and Images</property>
+     *   <mime-types>
+     *     <mime-type>text/plain</mime-type>
+     *     <mime-type>image/ *</mime-type>
+     *   </mime-types>
+     *   <patterns>
+     *     <pattern>*.txt</pattern>
+     *   </patterns>
+     *   <suffixes>
+     *     <suffix>png</suffix>
+     *   </suffixes>
+     * </object>
      * ```
      */
     class FileFilter extends Filter {
@@ -20648,9 +20648,9 @@ export namespace Gtk {
      * ```
      * flowbox
      * ├── flowboxchild
-     * │   ╰── &lt;child&gt;
+     * │   ╰── <child>
      * ├── flowboxchild
-     * │   ╰── &lt;child&gt;
+     * │   ╰── <child>
      * ┊
      * ╰── [rubberband]
      * ```
@@ -21732,27 +21732,27 @@ export namespace Gtk {
      *
      * The `GtkFrame` implementation of the `GtkBuildable` interface supports
      * placing a child in the label position by specifying “label” as the
-     * “type” attribute of a `&lt;child&gt;` element. A normal content child can
-     * be specified without specifying a `&lt;child&gt;` type attribute.
+     * “type” attribute of a `<child>` element. A normal content child can
+     * be specified without specifying a `<child>` type attribute.
      *
      * An example of a UI definition fragment with GtkFrame:
      * ```xml
-     * &lt;object class="GtkFrame"&gt;
-     *   &lt;child type="label"&gt;
-     *     &lt;object class="GtkLabel" id="frame_label"/&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkEntry" id="frame_content"/&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkFrame">
+     *   <child type="label">
+     *     <object class="GtkLabel" id="frame_label"/>
+     *   </child>
+     *   <child>
+     *     <object class="GtkEntry" id="frame_content"/>
+     *   </child>
+     * </object>
      * ```
      *
      * # CSS nodes
      *
      * ```
      * frame
-     * ├── &lt;label widget&gt;
-     * ╰── &lt;child&gt;
+     * ├── <label widget>
+     * ╰── <child>
      * ```
      *
      * `GtkFrame` has a main CSS node with name “frame”, which is used to draw the
@@ -21949,7 +21949,7 @@ export namespace Gtk {
      *   // to show eventual initialization errors on the
      *   // GtkGLArea widget itself
      *   GError *internal_error = NULL;
-     *   init_buffer_objects (&amp;error);
+     *   init_buffer_objects (&error);
      *   if (error != NULL)
      *     {
      *       gtk_gl_area_set_error (area, error);
@@ -21957,7 +21957,7 @@ export namespace Gtk {
      *       return;
      *     }
      *
-     *   init_shaders (&amp;error);
+     *   init_shaders (&error);
      *   if (error != NULL)
      *     {
      *       gtk_gl_area_set_error (area, error);
@@ -23142,8 +23142,8 @@ export namespace Gtk {
      * # GtkGrid as GtkBuildable
      *
      * Every child in a `GtkGrid` has access to a custom [iface`Gtk`.Buildable]
-     * element, called `&lt;layout&gt;`. It can by used to specify a position in the
-     * grid and optionally spans. All properties that can be used in the `&lt;layout&gt;`
+     * element, called `<layout>`. It can by used to specify a position in the
+     * grid and optionally spans. All properties that can be used in the `<layout>`
      * element are implemented by [class`Gtk`.GridLayoutChild].
      *
      * It is implemented by `GtkWidget` using [class`Gtk`.LayoutManager].
@@ -23151,46 +23151,46 @@ export namespace Gtk {
      * To showcase it, here is a simple example:
      *
      * ```xml
-     * &lt;object class="GtkGrid" id="my_grid"&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkButton" id="button1"&gt;
-     *       &lt;property name="label"&gt;Button 1&lt;/property&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;0&lt;/property&gt;
-     *         &lt;property name="row"&gt;0&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkButton" id="button2"&gt;
-     *       &lt;property name="label"&gt;Button 2&lt;/property&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;1&lt;/property&gt;
-     *         &lt;property name="row"&gt;0&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkButton" id="button3"&gt;
-     *       &lt;property name="label"&gt;Button 3&lt;/property&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;2&lt;/property&gt;
-     *         &lt;property name="row"&gt;0&lt;/property&gt;
-     *         &lt;property name="row-span"&gt;2&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkButton" id="button4"&gt;
-     *       &lt;property name="label"&gt;Button 4&lt;/property&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;0&lt;/property&gt;
-     *         &lt;property name="row"&gt;1&lt;/property&gt;
-     *         &lt;property name="column-span"&gt;2&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkGrid" id="my_grid">
+     *   <child>
+     *     <object class="GtkButton" id="button1">
+     *       <property name="label">Button 1</property>
+     *       <layout>
+     *         <property name="column">0</property>
+     *         <property name="row">0</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     *   <child>
+     *     <object class="GtkButton" id="button2">
+     *       <property name="label">Button 2</property>
+     *       <layout>
+     *         <property name="column">1</property>
+     *         <property name="row">0</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     *   <child>
+     *     <object class="GtkButton" id="button3">
+     *       <property name="label">Button 3</property>
+     *       <layout>
+     *         <property name="column">2</property>
+     *         <property name="row">0</property>
+     *         <property name="row-span">2</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     *   <child>
+     *     <object class="GtkButton" id="button4">
+     *       <property name="label">Button 4</property>
+     *       <layout>
+     *         <property name="column">0</property>
+     *         <property name="row">1</property>
+     *         <property name="column-span">2</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * It organizes the first two buttons side-by-side in one cell each.
@@ -23754,11 +23754,11 @@ export namespace Gtk {
          */
         singleClickActivate: boolean;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tab_behavior: ListTabBehavior;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tabBehavior: ListTabBehavior;
 
@@ -23800,8 +23800,8 @@ export namespace Gtk {
          */
         get_single_click_activate(): boolean;
         /**
-         * Gets the behavior set for the &lt;kbd&gt;Tab&lt;/kbd&gt; key.
-         * @returns The behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Gets the behavior set for the <kbd>Tab</kbd> key.
+         * @returns The behavior of the <kbd>Tab</kbd> key
          */
         get_tab_behavior(): ListTabBehavior;
         /**
@@ -23859,7 +23859,7 @@ export namespace Gtk {
          */
         set_single_click_activate(single_click_activate: boolean): void;
         /**
-         * Sets the behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; and &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; keys.
+         * Sets the behavior of the <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys.
          * @param tab_behavior The desired tab behavior
          */
         set_tab_behavior(tab_behavior: ListTabBehavior): void;
@@ -23892,7 +23892,7 @@ export namespace Gtk {
      *
      * The `GtkHeaderBar` implementation of the `GtkBuildable` interface supports
      * adding children at the start or end sides by specifying “start” or “end” as
-     * the “type” attribute of a `&lt;child&gt;` element, or setting the title widget by
+     * the “type” attribute of a `<child>` element, or setting the title widget by
      * specifying “title” value.
      *
      * By default the `GtkHeaderBar` uses a `GtkLabel` displaying the title of the
@@ -23900,19 +23900,19 @@ export namespace Gtk {
      * UI definition:
      *
      * ```xml
-     * &lt;object class="GtkHeaderBar"&gt;
-     *   &lt;property name="title-widget"&gt;
-     *     &lt;object class="GtkLabel"&gt;
-     *       &lt;property name="label" translatable="yes"&gt;Label&lt;/property&gt;
-     *       &lt;property name="single-line-mode"&gt;True&lt;/property&gt;
-     *       &lt;property name="ellipsize"&gt;end&lt;/property&gt;
-     *       &lt;property name="width-chars"&gt;5&lt;/property&gt;
-     *       &lt;style&gt;
-     *         &lt;class name="title"/&gt;
-     *       &lt;/style&gt;
-     *     &lt;/object&gt;
-     *   &lt;/property&gt;
-     * &lt;/object&gt;
+     * <object class="GtkHeaderBar">
+     *   <property name="title-widget">
+     *     <object class="GtkLabel">
+     *       <property name="label" translatable="yes">Label</property>
+     *       <property name="single-line-mode">True</property>
+     *       <property name="ellipsize">end</property>
+     *       <property name="width-chars">5</property>
+     *       <style>
+     *         <class name="title"/>
+     *       </style>
+     *     </object>
+     *   </property>
+     * </object>
      * ```
      *
      * # CSS nodes
@@ -24115,9 +24115,9 @@ export namespace Gtk {
      *
      * For instance, the built-in GTK input method [class`Gtk`.IMContextSimple]
      * implements the input of arbitrary Unicode code points by holding down the
-     * &lt;kbd&gt;Control&lt;/kbd&gt; and &lt;kbd&gt;Shift&lt;/kbd&gt; keys and then typing &lt;kbd&gt;u&lt;/kbd&gt;
+     * <kbd>Control</kbd> and <kbd>Shift</kbd> keys and then typing <kbd>u</kbd>
      * followed by the hexadecimal digits of the code point. When releasing the
-     * &lt;kbd&gt;Control&lt;/kbd&gt; and &lt;kbd&gt;Shift&lt;/kbd&gt; keys, preediting ends and the
+     * <kbd>Control</kbd> and <kbd>Shift</kbd> keys, preediting ends and the
      * character is inserted as text. For example,
      *
      *     Ctrl+Shift+u 2 0 A C
@@ -24362,7 +24362,7 @@ export namespace Gtk {
      * ## Unicode characters
      *
      * `GtkIMContextSimple` also supports numeric entry of Unicode characters
-     * by typing &lt;kbd&gt;Ctrl&lt;/kbd&gt;-&lt;kbd&gt;Shift&lt;/kbd&gt;-&lt;kbd&gt;u&lt;/kbd&gt;, followed by a
+     * by typing <kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>u</kbd>, followed by a
      * hexadecimal Unicode codepoint.
      *
      * For example,
@@ -25198,7 +25198,7 @@ export namespace Gtk {
          *
          * To free the return value, use `g_list_free_full`:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GtkWidget *icon_view = gtk_icon_view_new ();
          * // Use icon_view
          *
@@ -25456,7 +25456,7 @@ export namespace Gtk {
          * `icon_view` will connect a `GtkWidget::query-tooltip` signal handler.
          *
          * Note that the signal handler sets the text with gtk_tooltip_set_markup(),
-         * so &amp;, &lt;, etc have to be escaped in the text.
+         * so &, <, etc have to be escaped in the text.
          * @param column an integer, which is a valid column number for @icon_view’s model
          */
         set_tooltip_column(column: number): void;
@@ -25820,15 +25820,15 @@ export namespace Gtk {
      *
      * # GtkInfoBar as GtkBuildable
      *
-     * `GtkInfoBar` supports a custom `&lt;action-widgets&gt;` element, which can contain
-     * multiple `&lt;action-widget&gt;` elements. The “response” attribute specifies a
+     * `GtkInfoBar` supports a custom `<action-widgets>` element, which can contain
+     * multiple `<action-widget>` elements. The “response” attribute specifies a
      * numeric response, and the content of the element is the id of widget
      * (which should be a child of the dialogs `action_area)`.
      *
      * `GtkInfoBar` supports adding action widgets by specifying “action” as
-     * the “type” attribute of a `&lt;child&gt;` element. The widget will be added
+     * the “type” attribute of a `<child>` element. The widget will be added
      * either to the action area. The response id has to be associated
-     * with the action widget using the `&lt;action-widgets&gt;` element.
+     * with the action widget using the `<action-widgets>` element.
      *
      * # CSS nodes
      *
@@ -26390,19 +26390,19 @@ export namespace Gtk {
      * # GtkLabel as GtkBuildable
      *
      * The GtkLabel implementation of the GtkBuildable interface supports a
-     * custom `&lt;attributes&gt;` element, which supports any number of `&lt;attribute&gt;`
-     * elements. The &lt;attribute&gt; element has attributes named “name“, “value“,
+     * custom `<attributes>` element, which supports any number of `<attribute>`
+     * elements. The <attribute> element has attributes named “name“, “value“,
      * “start“ and “end“ and allows you to specify [struct`Pango`.Attribute]
      * values for this label.
      *
      * An example of a UI definition fragment specifying Pango attributes:
      * ```xml
-     * &lt;object class="GtkLabel"&gt;
-     *   &lt;attributes&gt;
-     *     &lt;attribute name="weight" value="PANGO_WEIGHT_BOLD"/&gt;
-     *     &lt;attribute name="background" value="red" start="5" end="10"/&gt;
-     *   &lt;/attributes&gt;
-     * &lt;/object&gt;
+     * <object class="GtkLabel">
+     *   <attributes>
+     *     <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+     *     <attribute name="background" value="red" start="5" end="10"/>
+     *   </attributes>
+     * </object>
      * ```
      *
      * The start and end attributes specify the range of characters to which the
@@ -26464,14 +26464,14 @@ export namespace Gtk {
      * Here’s how to create a label with a small font:
      * ```c
      * GtkWidget *label = gtk_label_new (NULL);
-     * gtk_label_set_markup (GTK_LABEL (label), "&lt;small&gt;Small text&lt;/small&gt;");
+     * gtk_label_set_markup (GTK_LABEL (label), "<small>Small text</small>");
      * ```
      *
      * (See the Pango manual for complete documentation] of available
      * tags, [func`Pango`.parse_markup])
      *
      * The markup passed to [method`Gtk`.Label.set_markup] must be valid; for example,
-     * literal `&lt;`, `&gt;` and `&amp;` characters must be escaped as `&amp;lt;`, `&amp;gt;`, and `&amp;amp;`.
+     * literal `<`, `>` and `&` characters must be escaped as `&lt;`, `&gt;`, and `&amp;`.
      * If you pass text obtained from the user, file, or a network to
      * [method`Gtk`.Label.set_markup], you’ll want to escape it with
      * [func`GLib`.markup_escape_text] or [func`GLib`.markup_printf_escaped].
@@ -26518,7 +26518,7 @@ export namespace Gtk {
      * # Links
      *
      * GTK supports markup for clickable hyperlinks in addition to regular Pango
-     * markup. The markup for links is borrowed from HTML, using the `&lt;a&gt;` with
+     * markup. The markup for links is borrowed from HTML, using the `<a>` with
      * “href“, “title“ and “class“ attributes. GTK renders links similar to the
      * way they appear in web browsers, with colored, underlined text. The “title“
      * attribute is displayed as a tooltip on the link. The “class“ attribute is
@@ -26529,8 +26529,8 @@ export namespace Gtk {
      * ```c
      * const char *text =
      * "Go to the "
-     * "&lt;a href=\"https://www.gtk.org\" title=\"&amp;lt;i&amp;gt;Our&amp;lt;/i&amp;gt; website\"&gt;"
-     * "GTK website&lt;/a&gt; for more...";
+     * "<a href=\"https://www.gtk.org\" title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
+     * "GTK website</a> for more...";
      * GtkWidget *label = gtk_label_new (NULL);
      * gtk_label_set_markup (GTK_LABEL (label), text);
      * ```
@@ -27042,7 +27042,7 @@ export namespace Gtk {
          * ```c
          * GtkWidget *self = gtk_label_new (NULL);
          * const char *str = "...";
-         * const char *format = "&lt;span style=\"italic\"&gt;\%s&lt;/span&gt;";
+         * const char *format = "<span style=\"italic\">\%s</span>";
          * char *markup;
          *
          * markup = g_markup_printf_escaped (format, str);
@@ -27452,7 +27452,7 @@ export namespace Gtk {
      * # GtkLevelBar as GtkBuildable
      *
      * The `GtkLevelBar` implementation of the `GtkBuildable` interface supports a
-     * custom `&lt;offsets&gt;` element, which can contain any number of `&lt;offset&gt;` elements,
+     * custom `<offsets>` element, which can contain any number of `<offset>` elements,
      * each of which must have "name" and "value" attributes.
      *
      * # CSS nodes
@@ -27793,13 +27793,13 @@ export namespace Gtk {
      *
      * The `GtkListBox` implementation of the `GtkBuildable` interface supports
      * setting a child as the placeholder by specifying “placeholder” as the “type”
-     * attribute of a `&lt;child&gt;` element. See [method`Gtk`.ListBox.set_placeholder]
+     * attribute of a `<child>` element. See [method`Gtk`.ListBox.set_placeholder]
      * for info.
      *
      * # CSS nodes
      *
      *
-     * ```&lt;!-- language="plain" --&gt;
+     * ```<!-- language="plain" -->
      * list[.separators][.rich-list][.navigation-sidebar][.boxed-list]
      * ╰── row[.activatable]
      * ```
@@ -28652,15 +28652,15 @@ export namespace Gtk {
      *                                    G_TYPE_INT,
      *                                    G_TYPE_BOOLEAN);
      *
-     *   for (i = 0; i &lt; 10; i++)
+     *   for (i = 0; i < 10; i++)
      *     {
      *       char *some_data;
      *
      *       some_data = get_some_data (i);
      *
      *       // Add a new row to the model
-     *       gtk_list_store_append (list_store, &amp;iter);
-     *       gtk_list_store_set (list_store, &amp;iter,
+     *       gtk_list_store_append (list_store, &iter);
+     *       gtk_list_store_set (list_store, &iter,
      *                           COLUMN_STRING, some_data,
      *                           COLUMN_INT, i,
      *                           COLUMN_BOOLEAN,  FALSE,
@@ -28674,10 +28674,10 @@ export namespace Gtk {
      *   // Modify a particular row
      *   path = gtk_tree_path_new_from_string ("4");
      *   gtk_tree_model_get_iter (GTK_TREE_MODEL (list_store),
-     *                            &amp;iter,
+     *                            &iter,
      *                            path);
      *   gtk_tree_path_free (path);
-     *   gtk_list_store_set (list_store, &amp;iter,
+     *   gtk_list_store_set (list_store, &iter,
      *                       COLUMN_BOOLEAN, TRUE,
      *                       -1);
      * }
@@ -28717,14 +28717,14 @@ export namespace Gtk {
      * ## GtkListStore as GtkBuildable
      *
      * The GtkListStore implementation of the [iface`Gtk`.Buildable] interface allows
-     * to specify the model columns with a `&lt;columns&gt;` element that may contain
-     * multiple `&lt;column&gt;` elements, each specifying one model column. The “type”
+     * to specify the model columns with a `<columns>` element that may contain
+     * multiple `<column>` elements, each specifying one model column. The “type”
      * attribute specifies the data type for the column.
      *
      * Additionally, it is possible to specify content for the list store
-     * in the UI definition, with the `&lt;data&gt;` element. It can contain multiple
-     * `&lt;row&gt;` elements, each specifying to content for one row of the list model.
-     * Inside a `&lt;row&gt;`, the `&lt;col&gt;` elements specify the content for individual cells.
+     * in the UI definition, with the `<data>` element. It can contain multiple
+     * `<row>` elements, each specifying to content for one row of the list model.
+     * Inside a `<row>`, the `<col>` elements specify the content for individual cells.
      *
      * Note that it is probably more common to define your models in the code,
      * and one might consider it a layering violation to specify the content of
@@ -28734,25 +28734,25 @@ export namespace Gtk {
      * An example of a UI Definition fragment for a list store:
      *
      * ```xml
-     * &lt;object class="GtkListStore"&gt;
-     *   &lt;columns&gt;
-     *     &lt;column type="gchararray"/&gt;
-     *     &lt;column type="gchararray"/&gt;
-     *     &lt;column type="gint"/&gt;
-     *   &lt;/columns&gt;
-     *   &lt;data&gt;
-     *     &lt;row&gt;
-     *       &lt;col id="0"&gt;John&lt;/col&gt;
-     *       &lt;col id="1"&gt;Doe&lt;/col&gt;
-     *       &lt;col id="2"&gt;25&lt;/col&gt;
-     *     &lt;/row&gt;
-     *     &lt;row&gt;
-     *       &lt;col id="0"&gt;Johan&lt;/col&gt;
-     *       &lt;col id="1"&gt;Dahlin&lt;/col&gt;
-     *       &lt;col id="2"&gt;50&lt;/col&gt;
-     *     &lt;/row&gt;
-     *   &lt;/data&gt;
-     * &lt;/object&gt;
+     * <object class="GtkListStore">
+     *   <columns>
+     *     <column type="gchararray"/>
+     *     <column type="gchararray"/>
+     *     <column type="gint"/>
+     *   </columns>
+     *   <data>
+     *     <row>
+     *       <col id="0">John</col>
+     *       <col id="1">Doe</col>
+     *       <col id="2">25</col>
+     *     </row>
+     *     <row>
+     *       <col id="0">Johan</col>
+     *       <col id="1">Dahlin</col>
+     *       <col id="2">50</col>
+     *     </row>
+     *   </data>
+     * </object>
      * ```
      */
     class ListStore extends GObject.Object {
@@ -29047,11 +29047,11 @@ export namespace Gtk {
          */
         singleClickActivate: boolean;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tab_behavior: ListTabBehavior;
         /**
-         * Behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Behavior of the <kbd>Tab</kbd> key
          */
         tabBehavior: ListTabBehavior;
 
@@ -29094,8 +29094,8 @@ export namespace Gtk {
          */
         get_single_click_activate(): boolean;
         /**
-         * Gets the behavior set for the &lt;kbd&gt;Tab&lt;/kbd&gt; key.
-         * @returns The behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; key
+         * Gets the behavior set for the <kbd>Tab</kbd> key.
+         * @returns The behavior of the <kbd>Tab</kbd> key
          */
         get_tab_behavior(): ListTabBehavior;
         /**
@@ -29147,7 +29147,7 @@ export namespace Gtk {
          */
         set_single_click_activate(single_click_activate: boolean): void;
         /**
-         * Sets the behavior of the &lt;kbd&gt;Tab&lt;/kbd&gt; and &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; keys.
+         * Sets the behavior of the <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys.
          * @param tab_behavior The desired tab behavior
          */
         set_tab_behavior(tab_behavior: ListTabBehavior): void;
@@ -29918,7 +29918,7 @@ export namespace Gtk {
      * ```
      * menubutton
      * ╰── button.toggle
-     *     ╰── &lt;content&gt;
+     *     ╰── <content>
      *          ╰── [arrow]
      * ```
      *
@@ -30018,7 +30018,7 @@ export namespace Gtk {
         /**
          * Whether the menu button acts as a primary menu.
          *
-         * Primary menus can be opened using the &lt;kbd&gt;F10&lt;/kbd&gt; key
+         * Primary menus can be opened using the <kbd>F10</kbd> key
          */
         primary: boolean;
         /**
@@ -30232,7 +30232,7 @@ export namespace Gtk {
         /**
          * Sets whether menu button acts as a primary menu.
          *
-         * Primary menus can be opened with the &lt;kbd&gt;F10&lt;/kbd&gt; key.
+         * Primary menus can be opened with the <kbd>F10</kbd> key.
          * @param primary whether the menubutton should act as a primary menu
          */
         set_primary(primary: boolean): void;
@@ -30415,7 +30415,7 @@ export namespace Gtk {
     /**
      * A `GtkShortcutTrigger` that triggers when a specific mnemonic is pressed.
      *
-     * Mnemonics require a *mnemonic modifier* (typically &lt;kbd&gt;Alt&lt;/kbd&gt;) to be
+     * Mnemonics require a *mnemonic modifier* (typically <kbd>Alt</kbd>) to be
      * pressed together with the mnemonic key.
      */
     class MnemonicTrigger extends ShortcutTrigger {
@@ -30971,30 +30971,30 @@ export namespace Gtk {
      *
      * The `GtkNotebook` implementation of the `GtkBuildable` interface
      * supports placing children into tabs by specifying “tab” as the
-     * “type” attribute of a `&lt;child&gt;` element. Note that the content
+     * “type” attribute of a `<child>` element. Note that the content
      * of the tab must be created before the tab can be filled.
-     * A tab child can be specified without specifying a `&lt;child&gt;`
+     * A tab child can be specified without specifying a `<child>`
      * type attribute.
      *
      * To add a child widget in the notebooks action area, specify
      * "action-start" or “action-end” as the “type” attribute of the
-     * `&lt;child&gt;` element.
+     * `<child>` element.
      *
      * An example of a UI definition fragment with `GtkNotebook`:
      *
      * ```xml
-     * &lt;object class="GtkNotebook"&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkLabel" id="notebook-content"&gt;
-     *       &lt;property name="label"&gt;Content&lt;/property&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child type="tab"&gt;
-     *     &lt;object class="GtkLabel" id="notebook-tab"&gt;
-     *       &lt;property name="label"&gt;Tab&lt;/property&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkNotebook">
+     *   <child>
+     *     <object class="GtkLabel" id="notebook-content">
+     *       <property name="label">Content</property>
+     *     </object>
+     *   </child>
+     *   <child type="tab">
+     *     <object class="GtkLabel" id="notebook-tab">
+     *       <property name="label">Tab</property>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * # CSS nodes
@@ -31002,21 +31002,21 @@ export namespace Gtk {
      * ```
      * notebook
      * ├── header.top
-     * │   ├── [&lt;action widget&gt;]
+     * │   ├── [<action widget>]
      * │   ├── tabs
      * │   │   ├── [arrow]
      * │   │   ├── tab
-     * │   │   │   ╰── &lt;tab label&gt;
+     * │   │   │   ╰── <tab label>
      * ┊   ┊   ┊
      * │   │   ├── tab[.reorderable-page]
-     * │   │   │   ╰── &lt;tab label&gt;
+     * │   │   │   ╰── <tab label>
      * │   │   ╰── [arrow]
-     * │   ╰── [&lt;action widget&gt;]
+     * │   ╰── [<action widget>]
      * │
      * ╰── stack
-     *     ├── &lt;child&gt;
+     *     ├── <child>
      *     ┊
-     *     ╰── &lt;child&gt;
+     *     ╰── <child>
      * ```
      *
      * `GtkNotebook` has a main CSS node with name `notebook`, a subnode
@@ -31666,7 +31666,7 @@ export namespace Gtk {
      *
      * The `GtkOverlay` implementation of the `GtkBuildable` interface
      * supports placing a child as an overlay by specifying “overlay” as
-     * the “type” attribute of a `&lt;child&gt;` element.
+     * the “type” attribute of a `<child>` element.
      *
      * # CSS nodes
      *
@@ -32239,9 +32239,9 @@ export namespace Gtk {
      *
      * ```
      * paned
-     * ├── &lt;child&gt;
+     * ├── <child>
      * ├── separator[.wide]
-     * ╰── &lt;child&gt;
+     * ╰── <child>
      * ```
      *
      * `GtkPaned` has a main CSS node with name paned, and a subnode for
@@ -32899,24 +32899,24 @@ export namespace Gtk {
      * populated from a `GMenuModel` with [ctor`Gtk`.PopoverMenu.new_from_model].
      *
      * ```xml
-     * &lt;section&gt;
-     *   &lt;attribute name="display-hint"&gt;horizontal-buttons&lt;/attribute&gt;
-     *   &lt;item&gt;
-     *     &lt;attribute name="label"&gt;Cut&lt;/attribute&gt;
-     *     &lt;attribute name="action"&gt;app.cut&lt;/attribute&gt;
-     *     &lt;attribute name="verb-icon"&gt;edit-cut-symbolic&lt;/attribute&gt;
-     *   &lt;/item&gt;
-     *   &lt;item&gt;
-     *     &lt;attribute name="label"&gt;Copy&lt;/attribute&gt;
-     *     &lt;attribute name="action"&gt;app.copy&lt;/attribute&gt;
-     *     &lt;attribute name="verb-icon"&gt;edit-copy-symbolic&lt;/attribute&gt;
-     *   &lt;/item&gt;
-     *   &lt;item&gt;
-     *     &lt;attribute name="label"&gt;Paste&lt;/attribute&gt;
-     *     &lt;attribute name="action"&gt;app.paste&lt;/attribute&gt;
-     *     &lt;attribute name="verb-icon"&gt;edit-paste-symbolic&lt;/attribute&gt;
-     *   &lt;/item&gt;
-     * &lt;/section&gt;
+     * <section>
+     *   <attribute name="display-hint">horizontal-buttons</attribute>
+     *   <item>
+     *     <attribute name="label">Cut</attribute>
+     *     <attribute name="action">app.cut</attribute>
+     *     <attribute name="verb-icon">edit-cut-symbolic</attribute>
+     *   </item>
+     *   <item>
+     *     <attribute name="label">Copy</attribute>
+     *     <attribute name="action">app.copy</attribute>
+     *     <attribute name="verb-icon">edit-copy-symbolic</attribute>
+     *   </item>
+     *   <item>
+     *     <attribute name="label">Paste</attribute>
+     *     <attribute name="action">app.paste</attribute>
+     *     <attribute name="verb-icon">edit-paste-symbolic</attribute>
+     *   </item>
+     * </section>
      * ```
      *
      * # CSS nodes
@@ -32925,7 +32925,7 @@ export namespace Gtk {
      * popover[.menu]
      * ├── arrow
      * ╰── contents.background
-     *     ╰── &lt;child&gt;
+     *     ╰── <child>
      * ```
      *
      * The contents child node always gets the .background style class
@@ -33186,34 +33186,34 @@ export namespace Gtk {
      * ## Menu models
      *
      * The XML format understood by `GtkBuilder` for `GMenuModel` consists
-     * of a toplevel `&lt;menu&gt;` element, which contains one or more `&lt;item&gt;`
-     * elements. Each `&lt;item&gt;` element contains `&lt;attribute&gt;` and `&lt;link&gt;`
-     * elements with a mandatory name attribute. `&lt;link&gt;` elements have the
-     * same content model as `&lt;menu&gt;`. Instead of `&lt;link name="submenu"&gt;`
-     * or `&lt;link name="section"&gt;`, you can use `&lt;submenu&gt;` or `&lt;section&gt;`
+     * of a toplevel `<menu>` element, which contains one or more `<item>`
+     * elements. Each `<item>` element contains `<attribute>` and `<link>`
+     * elements with a mandatory name attribute. `<link>` elements have the
+     * same content model as `<menu>`. Instead of `<link name="submenu">`
+     * or `<link name="section">`, you can use `<submenu>` or `<section>`
      * elements.
      *
      * ```xml
-     * &lt;menu id='app-menu'&gt;
-     *   &lt;section&gt;
-     *     &lt;item&gt;
-     *       &lt;attribute name='label' translatable='yes'&gt;_New Window&lt;/attribute&gt;
-     *       &lt;attribute name='action'&gt;app.new&lt;/attribute&gt;
-     *     &lt;/item&gt;
-     *     &lt;item&gt;
-     *       &lt;attribute name='label' translatable='yes'&gt;_About Sunny&lt;/attribute&gt;
-     *       &lt;attribute name='action'&gt;app.about&lt;/attribute&gt;
-     *     &lt;/item&gt;
-     *     &lt;item&gt;
-     *       &lt;attribute name='label' translatable='yes'&gt;_Quit&lt;/attribute&gt;
-     *       &lt;attribute name='action'&gt;app.quit&lt;/attribute&gt;
-     *     &lt;/item&gt;
-     *   &lt;/section&gt;
-     * &lt;/menu&gt;
+     * <menu id='app-menu'>
+     *   <section>
+     *     <item>
+     *       <attribute name='label' translatable='yes'>_New Window</attribute>
+     *       <attribute name='action'>app.new</attribute>
+     *     </item>
+     *     <item>
+     *       <attribute name='label' translatable='yes'>_About Sunny</attribute>
+     *       <attribute name='action'>app.about</attribute>
+     *     </item>
+     *     <item>
+     *       <attribute name='label' translatable='yes'>_Quit</attribute>
+     *       <attribute name='action'>app.quit</attribute>
+     *     </item>
+     *   </section>
+     * </menu>
      * ```
      *
      * Attribute values can be translated using gettext, like other `GtkBuilder`
-     * content. `&lt;attribute&gt;` elements can be marked for translation with a
+     * content. `<attribute>` elements can be marked for translation with a
      * `translatable="yes"` attribute. It is also possible to specify message
      * context and translator comments, using the context and comments attributes.
      * To make use of this, the `GtkBuilder` must have been given the gettext
@@ -33233,7 +33233,7 @@ export namespace Gtk {
      *      This is mainly useful for exported menus, see [method`Gtk`.Application.set_menubar].
      * - "custom": a string used to match against the ID of a custom child added with
      *      [method`Gtk`.PopoverMenu.add_child], [method`Gtk`.PopoverMenuBar.add_child],
-     *      or in the ui file with `&lt;child type="ID"&gt;`.
+     *      or in the ui file with `<child type="ID">`.
      *
      * The following attributes are used when constructing sections:
      *
@@ -34369,14 +34369,14 @@ export namespace Gtk {
          *   gtk_print_operation_set_default_page_setup (print, page_setup);
          *
          * g_signal_connect (print, "begin-print",
-         *                   G_CALLBACK (begin_print), &amp;data);
+         *                   G_CALLBACK (begin_print), &data);
          * g_signal_connect (print, "draw-page",
-         *                   G_CALLBACK (draw_page), &amp;data);
+         *                   G_CALLBACK (draw_page), &data);
          *
          * res = gtk_print_operation_run (print,
          *                                GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
          *                                parent,
-         *                                &amp;error);
+         *                                &error);
          *
          * if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
          *  {
@@ -34385,7 +34385,7 @@ export namespace Gtk {
          * 					     GTK_MESSAGE_ERROR,
          * 					     GTK_BUTTONS_CLOSE,
          * 					     "Error printing file:\n%s",
-         * 					     error-&gt;message);
+         * 					     error->message);
          *    g_signal_connect (error_dialog, "response",
          *                      G_CALLBACK (gtk_window_destroy), NULL);
          *    gtk_window_present (GTK_WINDOW (error_dialog));
@@ -35050,28 +35050,28 @@ export namespace Gtk {
      * An example of a `GtkPrintUnixDialog` UI definition fragment:
      *
      * ```xml
-     * &lt;object class="GtkPrintUnixDialog" id="dialog1"&gt;
-     *   &lt;child internal-child="notebook"&gt;
-     *     &lt;object class="GtkNotebook" id="notebook"&gt;
-     *       &lt;child&gt;
-     *         &lt;object type="GtkNotebookPage"&gt;
-     *           &lt;property name="tab_expand"&gt;False&lt;/property&gt;
-     *           &lt;property name="tab_fill"&gt;False&lt;/property&gt;
-     *           &lt;property name="tab"&gt;
-     *             &lt;object class="GtkLabel" id="tablabel"&gt;
-     *               &lt;property name="label"&gt;Tab label&lt;/property&gt;
-     *             &lt;/object&gt;
-     *           &lt;/property&gt;
-     *           &lt;property name="child"&gt;
-     *             &lt;object class="GtkLabel" id="tabcontent"&gt;
-     *               &lt;property name="label"&gt;Content on notebook tab&lt;/property&gt;
-     *             &lt;/object&gt;
-     *           &lt;/property&gt;
-     *         &lt;/object&gt;
-     *       &lt;/child&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkPrintUnixDialog" id="dialog1">
+     *   <child internal-child="notebook">
+     *     <object class="GtkNotebook" id="notebook">
+     *       <child>
+     *         <object type="GtkNotebookPage">
+     *           <property name="tab_expand">False</property>
+     *           <property name="tab_fill">False</property>
+     *           <property name="tab">
+     *             <object class="GtkLabel" id="tablabel">
+     *               <property name="label">Tab label</property>
+     *             </object>
+     *           </property>
+     *           <property name="child">
+     *             <object class="GtkLabel" id="tabcontent">
+     *               <property name="label">Content on notebook tab</property>
+     *             </object>
+     *           </property>
+     *         </object>
+     *       </child>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * # CSS nodes
@@ -35363,7 +35363,7 @@ export namespace Gtk {
         /**
          * Compares two printers.
          * @param b another `GtkPrinter`
-         * @returns 0 if the printer match, a negative value if @a &lt; @b,   or a positive value if @a &gt; @b
+         * @returns 0 if the printer match, a negative value if @a < @b,   or a positive value if @a > @b
          */
         compare(b: Printer): number;
         /**
@@ -35894,7 +35894,7 @@ export namespace Gtk {
         get_show_fill_level(): boolean;
         /**
          * This function returns sliders range along the long dimension,
-         * in widget-&gt;window coordinates.
+         * in widget->window coordinates.
          *
          * This function is useful mainly for `GtkRange` subclasses.
          */
@@ -36075,10 +36075,10 @@ export namespace Gtk {
      * GError *error = NULL;
      *
      * manager = gtk_recent_manager_get_default ();
-     * info = gtk_recent_manager_lookup_item (manager, file_uri, &amp;error);
+     * info = gtk_recent_manager_lookup_item (manager, file_uri, &error);
      * if (error)
      *   {
-     *     g_warning ("Could not find the file: %s", error-&gt;message);
+     *     g_warning ("Could not find the file: %s", error->message);
      *     g_error_free (error);
      *   }
      * else
@@ -36364,8 +36364,8 @@ export namespace Gtk {
      *
      * # GtkScale as GtkBuildable
      *
-     * `GtkScale` supports a custom `&lt;marks&gt;` element, which can contain multiple
-     * `&lt;mark\&gt;` elements. The “value” and “position” attributes have the same
+     * `GtkScale` supports a custom `<marks>` element, which can contain multiple
+     * `<mark\>` elements. The “value” and “position” attributes have the same
      * meaning as [method`Gtk`.Scale.add_mark] parameters of the same name. If
      * the element is not empty, its content is taken as the markup to show at
      * the mark. It can be translated with the usual ”translatable” and
@@ -36608,7 +36608,7 @@ export namespace Gtk {
      * ```
      * scalebutton.scale
      * ╰── button.toggle
-     *     ╰── &lt;icon&gt;
+     *     ╰── <icon>
      * ```
      *
      * `GtkScaleButton` has a single CSS node with name scalebutton and `.scale`
@@ -38631,19 +38631,19 @@ export namespace Gtk {
      *
      * An example of a UI definition fragment with `GtkShortcutController`:
      * ```xml
-     *   &lt;object class='GtkButton'&gt;
-     *     &lt;child&gt;
-     *       &lt;object class='GtkShortcutController'&gt;
-     *         &lt;property name='scope'&gt;managed&lt;/property&gt;
-     *         &lt;child&gt;
-     *           &lt;object class='GtkShortcut'&gt;
-     *             &lt;property name='trigger'&gt;&amp;lt;Control&amp;gt;k&lt;/property&gt;
-     *             &lt;property name='action'&gt;activate&lt;/property&gt;
-     *           &lt;/object&gt;
-     *         &lt;/child&gt;
-     *       &lt;/object&gt;
-     *     &lt;/child&gt;
-     *   &lt;/object&gt;
+     *   <object class='GtkButton'>
+     *     <child>
+     *       <object class='GtkShortcutController'>
+     *         <property name='scope'>managed</property>
+     *         <child>
+     *           <object class='GtkShortcut'>
+     *             <property name='trigger'>&lt;Control&gt;k</property>
+     *             <property name='action'>activate</property>
+     *           </object>
+     *         </child>
+     *       </object>
+     *     </child>
+     *   </object>
      * ```
      *
      * This example creates a [class`Gtk`.ActivateAction] for triggering the
@@ -39116,21 +39116,21 @@ export namespace Gtk {
          * is limited.
          *
          * It is also possible to specify ranges of shortcuts, using `...` between
-         * the keys. Sequences of keys can be specified using a `+` or `&amp;` between
+         * the keys. Sequences of keys can be specified using a `+` or `&` between
          * the keys.
          *
          * Examples:
          *
-         * - A single shortcut: `&lt;ctl&gt;&lt;alt&gt;delete`
-         * - Two alternative shortcuts: `&lt;shift&gt;a Home`
-         * - A range of shortcuts: `&lt;alt&gt;1...&lt;alt&gt;9`
-         * - Several keys pressed together: `Control_L&amp;Control_R`
-         * - A sequence of shortcuts or keys: `&lt;ctl&gt;c+&lt;ctl&gt;x`
+         * - A single shortcut: `<ctl><alt>delete`
+         * - Two alternative shortcuts: `<shift>a Home`
+         * - A range of shortcuts: `<alt>1...<alt>9`
+         * - Several keys pressed together: `Control_L&Control_R`
+         * - A sequence of shortcuts or keys: `<ctl>c+<ctl>x`
          *
-         * Use "+" instead of "&amp;" when the keys may (or have to be) pressed
+         * Use "+" instead of "&" when the keys may (or have to be) pressed
          * sequentially (e.g use "t+t" for 'press the t key twice').
          *
-         * Note that `&lt;`, `&gt;` and `&amp;` need to be escaped as `&amp;lt;`, `&amp;gt`; and `&amp;amp`; when used
+         * Note that `<`, `>` and `&` need to be escaped as `&lt;`, `&gt`; and `&amp`; when used
          * in .ui files.
          */
         accelerator: string;
@@ -39618,21 +39618,21 @@ export namespace Gtk {
      *
      * # GtkSizeGroup as GtkBuildable
      *
-     * Size groups can be specified in a UI definition by placing an `&lt;object&gt;`
+     * Size groups can be specified in a UI definition by placing an `<object>`
      * element with `class="GtkSizeGroup"` somewhere in the UI definition. The
-     * widgets that belong to the size group are specified by a `&lt;widgets&gt;` element
-     * that may contain multiple `&lt;widget&gt;` elements, one for each member of the
+     * widgets that belong to the size group are specified by a `<widgets>` element
+     * that may contain multiple `<widget>` elements, one for each member of the
      * size group. The ”name” attribute gives the id of the widget.
      *
      * An example of a UI definition fragment with `GtkSizeGroup`:
      * ```xml
-     * &lt;object class="GtkSizeGroup"&gt;
-     *   &lt;property name="mode"&gt;horizontal&lt;/property&gt;
-     *   &lt;widgets&gt;
-     *     &lt;widget name="radio1"/&gt;
-     *     &lt;widget name="radio2"/&gt;
-     *   &lt;/widgets&gt;
-     * &lt;/object&gt;
+     * <object class="GtkSizeGroup">
+     *   <property name="mode">horizontal</property>
+     *   <widgets>
+     *     <widget name="radio1"/>
+     *     <widget name="radio2"/>
+     *   </widgets>
+     * </object>
      * ```
      */
     class SizeGroup extends GObject.Object {
@@ -40514,7 +40514,7 @@ export namespace Gtk {
          * Sorters implement a partial order:
          *
          * * It is reflexive, ie a = a
-         * * It is antisymmetric, ie if a &lt; b and b &lt; a, then a = b
+         * * It is antisymmetric, ie if a < b and b < a, then a = b
          * * It is transitive, ie given any 3 items with a ≤ b and b ≤ c,
          *   then a ≤ c
          *
@@ -40522,7 +40522,7 @@ export namespace Gtk {
          * via the return value of [method`Gtk`.Sorter.get_order].
          * @param item1 first item to compare
          * @param item2 second item to compare
-         * @returns %GTK_ORDERING_EQUAL if @item1 == @item2,   %GTK_ORDERING_SMALLER if @item1 &lt; @item2,   %GTK_ORDERING_LARGER if @item1 &gt; @item2
+         * @returns %GTK_ORDERING_EQUAL if @item1 == @item2,   %GTK_ORDERING_SMALLER if @item1 < @item2,   %GTK_ORDERING_LARGER if @item1 > @item2
          */
         compare(item1: GObject.Object, item2: GObject.Object): Ordering;
         /**
@@ -40817,7 +40817,7 @@ export namespace Gtk {
         /**
          * Sets the acceleration rate for repeated changes when you
          * hold down a button or key.
-         * @param climb_rate the rate of acceleration, must be &gt;= 0
+         * @param climb_rate the rate of acceleration, must be >= 0
          */
         set_climb_rate(climb_rate: number): void;
         /**
@@ -40976,18 +40976,18 @@ export namespace Gtk {
      * objects explicitly, and set the child widget as a property on it:
      *
      * ```xml
-     *   &lt;object class="GtkStack" id="stack"&gt;
-     *     &lt;child&gt;
-     *       &lt;object class="GtkStackPage"&gt;
-     *         &lt;property name="name"&gt;page1&lt;/property&gt;
-     *         &lt;property name="title"&gt;In the beginning…&lt;/property&gt;
-     *         &lt;property name="child"&gt;
-     *           &lt;object class="GtkLabel"&gt;
-     *             &lt;property name="label"&gt;It was dark&lt;/property&gt;
-     *           &lt;/object&gt;
-     *         &lt;/property&gt;
-     *       &lt;/object&gt;
-     *     &lt;/child&gt;
+     *   <object class="GtkStack" id="stack">
+     *     <child>
+     *       <object class="GtkStackPage">
+     *         <property name="name">page1</property>
+     *         <property name="title">In the beginning…</property>
+     *         <property name="child">
+     *           <object class="GtkLabel">
+     *             <property name="label">It was dark</property>
+     *           </object>
+     *         </property>
+     *       </object>
+     *     </child>
      * ```
      *
      * # CSS nodes
@@ -41717,21 +41717,21 @@ export namespace Gtk {
      * # GtkStringList as GtkBuildable
      *
      * The `GtkStringList` implementation of the `GtkBuildable` interface
-     * supports adding items directly using the `&lt;items&gt;` element and
-     * specifying `&lt;item&gt;` elements for each item. Each `&lt;item&gt;` element
+     * supports adding items directly using the `<items>` element and
+     * specifying `<item>` elements for each item. Each `<item>` element
      * supports the regular translation attributes “translatable”,
      * “context” and “comments”.
      *
      * Here is a UI definition fragment specifying a `GtkStringList`
      *
      * ```xml
-     * &lt;object class="GtkStringList"&gt;
-     *   &lt;items&gt;
-     *     &lt;item translatable="yes"&gt;Factory&lt;/item&gt;
-     *     &lt;item translatable="yes"&gt;Home&lt;/item&gt;
-     *     &lt;item translatable="yes"&gt;Subway&lt;/item&gt;
-     *   &lt;/items&gt;
-     * &lt;/object&gt;
+     * <object class="GtkStringList">
+     *   <items>
+     *     <item translatable="yes">Factory</item>
+     *     <item translatable="yes">Home</item>
+     *     <item translatable="yes">Subway</item>
+     *   </items>
+     * </object>
      * ```
      */
     class StringList<A extends GObject.Object = GObject.Object> extends GObject.Object {
@@ -43108,7 +43108,7 @@ export namespace Gtk {
          * @param start a position in @buffer
          * @param end another position in @buffer
          */
-        delete(start: TextIter, end: TextIter): void;
+        ['delete'](start: TextIter, end: TextIter): void;
         /**
          * Deletes all editable text in the given range.
          *
@@ -44388,15 +44388,15 @@ export namespace Gtk {
      *
      * The `GtkTextTagTable` implementation of the `GtkBuildable` interface
      * supports adding tags by specifying “tag” as the “type” attribute
-     * of a `&lt;child&gt;` element.
+     * of a `<child>` element.
      *
      * An example of a UI definition fragment specifying tags:
      * ```xml
-     * &lt;object class="GtkTextTagTable"&gt;
-     *  &lt;child type="tag"&gt;
-     *    &lt;object class="GtkTextTag"/&gt;
-     *  &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkTextTagTable">
+     *  <child type="tag">
+     *    <object class="GtkTextTag"/>
+     *  </child>
+     * </object>
      * ```
      */
     class TextTagTable extends GObject.Object {
@@ -44828,7 +44828,7 @@ export namespace Gtk {
          */
         forward_display_line_end(iter: TextIter): boolean;
         /**
-         * Returns whether pressing the &lt;kbd&gt;Tab&lt;/kbd&gt; key inserts a tab characters.
+         * Returns whether pressing the <kbd>Tab</kbd> key inserts a tab characters.
          *
          * See [method`Gtk`.TextView.set_accepts_tab].
          * @returns %TRUE if pressing the Tab key inserts a tab character,   %FALSE if pressing the Tab key moves the keyboard focus.
@@ -45088,7 +45088,7 @@ export namespace Gtk {
          * {
          *   guint keyval;
          *
-         *   gdk_event_get_keyval ((GdkEvent*)event, &amp;keyval);
+         *   gdk_event_get_keyval ((GdkEvent*)event, &keyval);
          *
          *   if (keyval == GDK_KEY_Return || keyval == GDK_KEY_KP_Enter)
          *     {
@@ -45098,7 +45098,7 @@ export namespace Gtk {
          *
          *   // Do some stuff
          *
-         *   return GTK_WIDGET_CLASS (gtk_foo_bar_parent_class)-&gt;key_press_event (widget, event);
+         *   return GTK_WIDGET_CLASS (gtk_foo_bar_parent_class)->key_press_event (widget, event);
          * }
          * ```
          * @param event the key event
@@ -45221,13 +45221,13 @@ export namespace Gtk {
          */
         scroll_to_mark(mark: TextMark, within_margin: number, use_align: boolean, xalign: number, yalign: number): void;
         /**
-         * Sets the behavior of the text widget when the &lt;kbd&gt;Tab&lt;/kbd&gt; key is pressed.
+         * Sets the behavior of the text widget when the <kbd>Tab</kbd> key is pressed.
          *
          * If `accepts_tab` is %TRUE, a tab character is inserted. If `accepts_tab`
          * is %FALSE the keyboard focus is moved to the next widget in the focus
          * chain.
          *
-         * Focus can always be moved using &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt;.
+         * Focus can always be moved using <kbd>Ctrl</kbd>+<kbd>Tab</kbd>.
          * @param accepts_tab %TRUE if pressing the Tab key should insert a tab    character, %FALSE, if pressing the Tab key should move the    keyboard focus.
          */
         set_accepts_tab(accepts_tab: boolean): void;
@@ -45696,7 +45696,7 @@ export namespace Gtk {
      * treeexpander
      * ├── [indent]*
      * ├── [expander]
-     * ╰── &lt;child&gt;
+     * ╰── <child>
      * ```
      *
      * `GtkTreeExpander` has zero or one CSS nodes with the name "expander" that
@@ -46320,7 +46320,7 @@ export namespace Gtk {
          * rows, like in the example below.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static gboolean
          * visible_func (GtkTreeModel *model,
          *               GtkTreeIter  *iter,
@@ -46330,8 +46330,8 @@ export namespace Gtk {
          *   char *str;
          *   gboolean visible = FALSE;
          *
-         *   gtk_tree_model_get (model, iter, 0, &amp;str, -1);
-         *   if (str &amp;&amp; strcmp (str, "HI") == 0)
+         *   gtk_tree_model_get (model, iter, 0, &str, -1);
+         *   if (str && strcmp (str, "HI") == 0)
          *     visible = TRUE;
          *   g_free (str);
          *
@@ -46375,7 +46375,7 @@ export namespace Gtk {
      * ## Using a `GtkTreeModelSort`
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * {
      *   GtkTreeView *tree_view1;
      *   GtkTreeView *tree_view2;
@@ -46412,7 +46412,7 @@ export namespace Gtk {
      * ## Accessing the child model of in a selection changed callback
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * void
      * selection_changed (GtkTreeSelection *selection, gpointer data)
      * {
@@ -46425,14 +46425,14 @@ export namespace Gtk {
      *
      *   // Get the current selected row and the model.
      *   if (! gtk_tree_selection_get_selected (selection,
-     *                                          &amp;sort_model,
-     *                                          &amp;sort_iter))
+     *                                          &sort_model,
+     *                                          &sort_iter))
      *     return;
      *
      *   // Look up the current value on the selected row and get
      *   // a new value to change it to.
-     *   gtk_tree_model_get (GTK_TREE_MODEL (sort_model), &amp;sort_iter,
-     *                       COLUMN_1, &amp;some_data,
+     *   gtk_tree_model_get (GTK_TREE_MODEL (sort_model), &sort_iter,
+     *                       COLUMN_1, &some_data,
      *                       -1);
      *
      *   modified_data = change_the_data (some_data);
@@ -46440,15 +46440,15 @@ export namespace Gtk {
      *
      *   // Get an iterator on the child model, instead of the sort model.
      *   gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (sort_model),
-     *                                                   &amp;child_iter,
-     *                                                   &amp;sort_iter);
+     *                                                   &child_iter,
+     *                                                   &sort_iter);
      *
      *   // Get the child model and change the value of the row. In this
      *   // example, the child model is a GtkListStore. It could be any other
      *   // type of model, though.
      *   child_model = gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (sort_model));
-     *   gtk_list_store_set (GTK_LIST_STORE (child_model), &amp;child_iter,
-     *                       COLUMN_1, &amp;modified_data,
+     *   gtk_list_store_set (GTK_LIST_STORE (child_model), &child_iter,
+     *                       COLUMN_1, &modified_data,
      *                       -1);
      *   g_free (modified_data);
      * }
@@ -46513,8 +46513,8 @@ export namespace Gtk {
          */
         get_model(): TreeModel;
         /**
-         * &gt; This function is slow. Only use it for debugging and/or testing
-         * &gt; purposes.
+         * > This function is slow. Only use it for debugging and/or testing
+         * > purposes.
          *
          * Checks if the given iter is a valid iter for this `GtkTreeModelSort`.
          * @param iter A `GtkTreeIter`
@@ -46606,7 +46606,7 @@ export namespace Gtk {
          *
          * To free the return value, use:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * g_list_free_full (list, (GDestroyNotify) gtk_tree_path_free);
          * ```
          *
@@ -46721,20 +46721,20 @@ export namespace Gtk {
      * ## GtkTreeStore as GtkBuildable
      *
      * The GtkTreeStore implementation of the `GtkBuildable` interface allows
-     * to specify the model columns with a `&lt;columns&gt;` element that may contain
-     * multiple `&lt;column&gt;` elements, each specifying one model column. The “type”
+     * to specify the model columns with a `<columns>` element that may contain
+     * multiple `<column>` elements, each specifying one model column. The “type”
      * attribute specifies the data type for the column.
      *
      * An example of a UI Definition fragment for a tree store:
      *
      * ```xml
-     * &lt;object class="GtkTreeStore"&gt;
-     *   &lt;columns&gt;
-     *     &lt;column type="gchararray"/&gt;
-     *     &lt;column type="gchararray"/&gt;
-     *     &lt;column type="gint"/&gt;
-     *   &lt;/columns&gt;
-     * &lt;/object&gt;
+     * <object class="GtkTreeStore">
+     *   <columns>
+     *     <column type="gchararray"/>
+     *     <column type="gchararray"/>
+     *     <column type="gint"/>
+     *   </columns>
+     * </object>
      * ```
      */
     class TreeStore extends GObject.Object {
@@ -47019,7 +47019,7 @@ export namespace Gtk {
      *
      * ![](tree-view-coordinates.png)
      *
-     * - Widget coordinates: Coordinates relative to the widget (usually `widget-&gt;window`).
+     * - Widget coordinates: Coordinates relative to the widget (usually `widget->window`).
      *
      * - Bin window coordinates: Coordinates relative to the window that GtkTreeView renders to.
      *
@@ -47036,31 +47036,31 @@ export namespace Gtk {
      * ## `GtkTreeView` as `GtkBuildable`
      *
      * The `GtkTreeView` implementation of the `GtkBuildable` interface accepts
-     * [class`Gtk`.TreeViewColumn] objects as `&lt;child&gt;` elements and exposes the
+     * [class`Gtk`.TreeViewColumn] objects as `<child>` elements and exposes the
      * internal [class`Gtk`.TreeSelection] in UI definitions.
      *
      * An example of a UI definition fragment with `GtkTreeView`:
      *
      * ```xml
-     * &lt;object class="GtkTreeView" id="treeview"&gt;
-     *   &lt;property name="model"&gt;liststore1&lt;/property&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkTreeViewColumn" id="test-column"&gt;
-     *       &lt;property name="title"&gt;Test&lt;/property&gt;
-     *       &lt;child&gt;
-     *         &lt;object class="GtkCellRendererText" id="test-renderer"/&gt;
-     *         &lt;attributes&gt;
-     *           &lt;attribute name="text"&gt;1&lt;/attribute&gt;
-     *         &lt;/attributes&gt;
-     *       &lt;/child&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child internal-child="selection"&gt;
-     *     &lt;object class="GtkTreeSelection" id="selection"&gt;
-     *       &lt;signal name="changed" handler="on_treeview_selection_changed"/&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkTreeView" id="treeview">
+     *   <property name="model">liststore1</property>
+     *   <child>
+     *     <object class="GtkTreeViewColumn" id="test-column">
+     *       <property name="title">Test</property>
+     *       <child>
+     *         <object class="GtkCellRendererText" id="test-renderer"/>
+     *         <attributes>
+     *           <attribute name="text">1</attribute>
+     *         </attributes>
+     *       </child>
+     *     </object>
+     *   </child>
+     *   <child internal-child="selection">
+     *     <object class="GtkTreeSelection" id="selection">
+     *       <signal name="changed" handler="on_treeview_selection_changed"/>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * ## CSS nodes
@@ -47929,7 +47929,7 @@ export namespace Gtk {
          * `tree_view` will connect a `GtkWidget::query-tooltip` signal handler.
          *
          * Note that the signal handler sets the text with gtk_tooltip_set_markup(),
-         * so &amp;, &lt;, etc have to be escaped in the text.
+         * so &, <, etc have to be escaped in the text.
          * @param column an integer, which is a valid column number for @tree_view’s model
          */
         set_tooltip_column(column: number): void;
@@ -48843,13 +48843,13 @@ export namespace Gtk {
      *           int min_width, dummy;
      *
      *           // First, get the minimum width of our widget
-     *           GTK_WIDGET_GET_CLASS (widget)-&gt;measure (widget, GTK_ORIENTATION_HORIZONTAL, -1,
-     *                                                   &amp;min_width, &amp;dummy, &amp;dummy, &amp;dummy);
+     *           GTK_WIDGET_GET_CLASS (widget)->measure (widget, GTK_ORIENTATION_HORIZONTAL, -1,
+     *                                                   &min_width, &dummy, &dummy, &dummy);
      *
      *           // Now use the minimum width to retrieve the minimum and natural height to display
      *           // that width.
-     *           GTK_WIDGET_GET_CLASS (widget)-&gt;measure (widget, GTK_ORIENTATION_VERTICAL, min_width,
-     *                                                   minimum_size, natural_size, &amp;dummy, &amp;dummy);
+     *           GTK_WIDGET_GET_CLASS (widget)->measure (widget, GTK_ORIENTATION_VERTICAL, min_width,
+     *                                                   minimum_size, natural_size, &dummy, &dummy);
      *         }
      *       else
      *         {
@@ -48905,56 +48905,56 @@ export namespace Gtk {
      * that are not directly expressed as properties.
      *
      * If the widget uses a [class`Gtk`.LayoutManager], `GtkWidget` supports
-     * a custom `&lt;layout&gt;` element, used to define layout properties:
+     * a custom `<layout>` element, used to define layout properties:
      *
      * ```xml
-     * &lt;object class="GtkGrid" id="my_grid"&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkLabel" id="label1"&gt;
-     *       &lt;property name="label"&gt;Description&lt;/property&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;0&lt;/property&gt;
-     *         &lt;property name="row"&gt;0&lt;/property&gt;
-     *         &lt;property name="row-span"&gt;1&lt;/property&gt;
-     *         &lt;property name="column-span"&gt;1&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkEntry" id="description_entry"&gt;
-     *       &lt;layout&gt;
-     *         &lt;property name="column"&gt;1&lt;/property&gt;
-     *         &lt;property name="row"&gt;0&lt;/property&gt;
-     *         &lt;property name="row-span"&gt;1&lt;/property&gt;
-     *         &lt;property name="column-span"&gt;1&lt;/property&gt;
-     *       &lt;/layout&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     * <object class="GtkGrid" id="my_grid">
+     *   <child>
+     *     <object class="GtkLabel" id="label1">
+     *       <property name="label">Description</property>
+     *       <layout>
+     *         <property name="column">0</property>
+     *         <property name="row">0</property>
+     *         <property name="row-span">1</property>
+     *         <property name="column-span">1</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     *   <child>
+     *     <object class="GtkEntry" id="description_entry">
+     *       <layout>
+     *         <property name="column">1</property>
+     *         <property name="row">0</property>
+     *         <property name="row-span">1</property>
+     *         <property name="column-span">1</property>
+     *       </layout>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * `GtkWidget` allows style information such as style classes to
-     * be associated with widgets, using the custom `&lt;style&gt;` element:
+     * be associated with widgets, using the custom `<style>` element:
      *
      * ```xml
-     * &lt;object class="GtkButton" id="button1"&gt;
-     *   &lt;style&gt;
-     *     &lt;class name="my-special-button-class"/&gt;
-     *     &lt;class name="dark-button"/&gt;
-     *   &lt;/style&gt;
-     * &lt;/object&gt;
+     * <object class="GtkButton" id="button1">
+     *   <style>
+     *     <class name="my-special-button-class"/>
+     *     <class name="dark-button"/>
+     *   </style>
+     * </object>
      * ```
      *
      * `GtkWidget` allows defining accessibility information, such as properties,
-     * relations, and states, using the custom `&lt;accessibility&gt;` element:
+     * relations, and states, using the custom `<accessibility>` element:
      *
      * ```xml
-     * &lt;object class="GtkButton" id="button1"&gt;
-     *   &lt;accessibility&gt;
-     *     &lt;property name="label"&gt;Download&lt;/property&gt;
-     *     &lt;relation name="labelled-by"&gt;label1&lt;/relation&gt;
-     *   &lt;/accessibility&gt;
-     * &lt;/object&gt;
+     * <object class="GtkButton" id="button1">
+     *   <accessibility>
+     *     <property name="label">Download</property>
+     *     <relation name="labelled-by">label1</relation>
+     *   </accessibility>
+     * </object>
      * ```
      *
      * ### Building composite widgets from template XML
@@ -48970,45 +48970,45 @@ export namespace Gtk {
      * is slightly different from regular [class`Gtk`.Builder] XML.
      *
      * Unlike regular interface descriptions, [method`Gtk`.WidgetClass.set_template]
-     * will expect a `&lt;template&gt;` tag as a direct child of the toplevel
-     * `&lt;interface&gt;` tag. The `&lt;template&gt;` tag must specify the “class” attribute
+     * will expect a `<template>` tag as a direct child of the toplevel
+     * `<interface>` tag. The `<template>` tag must specify the “class” attribute
      * which must be the type name of the widget. Optionally, the “parent”
      * attribute may be specified to specify the direct parent type of the widget
      * type; this is ignored by `GtkBuilder` but can be used by UI design tools to
      * introspect what kind of properties and internal children exist for a given
      * type when the actual type does not exist.
      *
-     * The XML which is contained inside the `&lt;template&gt;` tag behaves as if it were
-     * added to the `&lt;object&gt;` tag defining the widget itself. You may set properties
-     * on a widget by inserting `&lt;property&gt;` tags into the `&lt;template&gt;` tag, and also
-     * add `&lt;child&gt;` tags to add children and extend a widget in the normal way you
-     * would with `&lt;object&gt;` tags.
+     * The XML which is contained inside the `<template>` tag behaves as if it were
+     * added to the `<object>` tag defining the widget itself. You may set properties
+     * on a widget by inserting `<property>` tags into the `<template>` tag, and also
+     * add `<child>` tags to add children and extend a widget in the normal way you
+     * would with `<object>` tags.
      *
-     * Additionally, `&lt;object&gt;` tags can also be added before and after the initial
-     * `&lt;template&gt;` tag in the normal way, allowing one to define auxiliary objects
+     * Additionally, `<object>` tags can also be added before and after the initial
+     * `<template>` tag in the normal way, allowing one to define auxiliary objects
      * which might be referenced by other widgets declared as children of the
-     * `&lt;template&gt;` tag.
+     * `<template>` tag.
      *
      * An example of a template definition:
      *
      * ```xml
-     * &lt;interface&gt;
-     *   &lt;template class="FooWidget" parent="GtkBox"&gt;
-     *     &lt;property name="orientation"&gt;horizontal&lt;/property&gt;
-     *     &lt;property name="spacing"&gt;4&lt;/property&gt;
-     *     &lt;child&gt;
-     *       &lt;object class="GtkButton" id="hello_button"&gt;
-     *         &lt;property name="label"&gt;Hello World&lt;/property&gt;
-     *         &lt;signal name="clicked" handler="hello_button_clicked" object="FooWidget" swapped="yes"/&gt;
-     *       &lt;/object&gt;
-     *     &lt;/child&gt;
-     *     &lt;child&gt;
-     *       &lt;object class="GtkButton" id="goodbye_button"&gt;
-     *         &lt;property name="label"&gt;Goodbye World&lt;/property&gt;
-     *       &lt;/object&gt;
-     *     &lt;/child&gt;
-     *   &lt;/template&gt;
-     * &lt;/interface&gt;
+     * <interface>
+     *   <template class="FooWidget" parent="GtkBox">
+     *     <property name="orientation">horizontal</property>
+     *     <property name="spacing">4</property>
+     *     <child>
+     *       <object class="GtkButton" id="hello_button">
+     *         <property name="label">Hello World</property>
+     *         <signal name="clicked" handler="hello_button_clicked" object="FooWidget" swapped="yes"/>
+     *       </object>
+     *     </child>
+     *     <child>
+     *       <object class="GtkButton" id="goodbye_button">
+     *         <property name="label">Goodbye World</property>
+     *       </object>
+     *     </child>
+     *   </template>
+     * </interface>
      * ```
      *
      * Typically, you'll place the template fragment into a file that is
@@ -49054,7 +49054,7 @@ export namespace Gtk {
      *   // Clear the template children for this widget type
      *   gtk_widget_dispose_template (GTK_WIDGET (self), FOO_TYPE_WIDGET);
      *
-     *   G_OBJECT_CLASS (foo_widget_parent_class)-&gt;dispose (gobject);
+     *   G_OBJECT_CLASS (foo_widget_parent_class)->dispose (gobject);
      * }
      * ```
      *
@@ -49079,14 +49079,14 @@ export namespace Gtk {
      * {
      *   gtk_widget_dispose_template (GTK_WIDGET (gobject), FOO_TYPE_WIDGET);
      *
-     *   G_OBJECT_CLASS (foo_widget_parent_class)-&gt;dispose (gobject);
+     *   G_OBJECT_CLASS (foo_widget_parent_class)->dispose (gobject);
      * }
      *
      * static void
      * foo_widget_class_init (FooWidgetClass *klass)
      * {
      *   // ...
-     *   G_OBJECT_CLASS (klass)-&gt;dispose = foo_widget_dispose;
+     *   G_OBJECT_CLASS (klass)->dispose = foo_widget_dispose;
      *
      *   gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
      *                                                "/com/example/ui/foowidget.ui");
@@ -49543,7 +49543,7 @@ export namespace Gtk {
          * The activation will emit the signal set using
          * [method`Gtk`.WidgetClass.set_activate_signal] during class initialization.
          *
-         * Activation is what happens when you press &lt;kbd&gt;Enter&lt;/kbd&gt;
+         * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget during key navigation.
          *
          * If you wish to handle the activation keybinding yourself, it is
@@ -49787,7 +49787,7 @@ export namespace Gtk {
          *   // Clear the template data for SomeWidget
          *   gtk_widget_dispose_template (GTK_WIDGET (self), SOME_TYPE_WIDGET);
          *
-         *   G_OBJECT_CLASS (some_widget_parent_class)-&gt;dispose (gobject);
+         *   G_OBJECT_CLASS (some_widget_parent_class)->dispose (gobject);
          * }
          * ```
          * @param widget_type the type of the widget to finalize the template for
@@ -51038,7 +51038,7 @@ export namespace Gtk {
          * same page as the docs for [class`Gtk`.StyleContext].
          *
          * Note that the CSS syntax has certain special characters to delimit
-         * and represent elements in a selector (period, #, &gt;, *...), so using
+         * and represent elements in a selector (period, #, >, *...), so using
          * these will make your widget impossible to match by name. Any combination
          * of alphanumeric symbols, dashes and underscores will suffice.
          * @param name name for the widget
@@ -51409,14 +51409,14 @@ export namespace Gtk {
      *
      * The `GtkWindow` implementation of the [iface`Gtk`.Buildable] interface supports
      * setting a child as the titlebar by specifying “titlebar” as the “type”
-     * attribute of a `&lt;child&gt;` element.
+     * attribute of a `<child>` element.
      *
      * # CSS nodes
      *
      * ```
      * window.background [.csd / .solid-csd / .ssd] [.maximized / .fullscreen / .tiled]
-     * ├── &lt;child&gt;
-     * ╰── &lt;titlebar child&gt;.titlebar [.default-decoration]
+     * ├── <child>
+     * ╰── <titlebar child>.titlebar [.default-decoration]
      * ```
      *
      * `GtkWindow` has a main CSS node with name window and style class .background.
@@ -52018,7 +52018,7 @@ export namespace Gtk {
          * If the window’s minimum size request is larger than
          * the default, the default will be ignored.
          *
-         * Setting the default size to a value &lt;= 0 will cause it to be
+         * Setting the default size to a value <= 0 will cause it to be
          * ignored and the natural size request will be used instead. It
          * is possible to do this while the window is showing to "reset"
          * it to its initial size.
@@ -52272,21 +52272,21 @@ export namespace Gtk {
      * in pair with another `GtkWindowControls` for the opposite side, for example:
      *
      * ```xml
-     * &lt;object class="GtkBox"&gt;
-     *   &lt;child&gt;
-     *     &lt;object class="GtkWindowControls"&gt;
-     *       &lt;property name="side"&gt;start&lt;/property&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
+     * <object class="GtkBox">
+     *   <child>
+     *     <object class="GtkWindowControls">
+     *       <property name="side">start</property>
+     *     </object>
+     *   </child>
      *
      *   ...
      *
-     *   &lt;child&gt;
-     *     &lt;object class="GtkWindowControls"&gt;
-     *       &lt;property name="side"&gt;end&lt;/property&gt;
-     *     &lt;/object&gt;
-     *   &lt;/child&gt;
-     * &lt;/object&gt;
+     *   <child>
+     *     <object class="GtkWindowControls">
+     *       <property name="side">end</property>
+     *     </object>
+     *   </child>
+     * </object>
      * ```
      *
      * # CSS nodes
@@ -52613,7 +52613,7 @@ export namespace Gtk {
         /**
          * Returns the value of the `nth` item in self.
          *
-         * If `nth` is &gt;= the size of `self,` 0 is returned.
+         * If `nth` is >= the size of `self,` 0 is returned.
          * @param nth index of the item to get
          * @returns the value of the @nth item in @self
          */
@@ -52773,7 +52773,7 @@ export namespace Gtk {
          * Initializes `iter` to point to `target`.
          *
          * If `target` is not found, finds the next value after it.
-         * If no value &gt;= `target` exists in `set,` this function returns %FALSE.
+         * If no value >= `target` exists in `set,` this function returns %FALSE.
          * @param set a `GtkBitset`
          * @param target target value to start iterating at
          */
@@ -55828,7 +55828,7 @@ export namespace Gtk {
          * Gets the ID of the `buildable` object.
          *
          * `GtkBuilder` sets the name based on the ID attribute
-         * of the `&lt;object&gt;` tag used to construct the `buildable`.
+         * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
         get_buildable_id(): string | null;
@@ -55862,7 +55862,7 @@ export namespace Gtk {
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
-         * Called for each unknown element under `&lt;child&gt;`.
+         * Called for each unknown element under `<child>`.
          * @param builder a `GtkBuilder` used to construct this object
          * @param child child object or %NULL for non-child tags
          * @param tagname name of tag
@@ -56307,7 +56307,7 @@ export namespace Gtk {
          * static void
          * accessible_interface_init (GtkAccessibleInterface *iface)
          * {
-         *   iface-&gt;get_platform_state = your_editable_get_accessible_platform_state;
+         *   iface->get_platform_state = your_editable_get_accessible_platform_state;
          * }
          *
          * static gboolean
@@ -57538,7 +57538,7 @@ export namespace Gtk {
          * In pseudocode, it would look something like this:
          *
          * ```c
-         * for (i = 0; i &lt; n_items; i++)
+         * for (i = 0; i < n_items; i++)
          *   {
          *     // don't change values not in the mask
          *     if (!gtk_bitset_contains (mask, i))
@@ -57632,7 +57632,7 @@ export namespace Gtk {
          * In pseudocode, it would look something like this:
          *
          * ```c
-         * for (i = 0; i &lt; n_items; i++)
+         * for (i = 0; i < n_items; i++)
          *   {
          *     // don't change values not in the mask
          *     if (!gtk_bitset_contains (mask, i))

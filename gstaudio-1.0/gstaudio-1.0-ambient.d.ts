@@ -9,4 +9,3 @@ declare module 'gi://GstAudio' {
     export default GstAudio10;
 }
 
-

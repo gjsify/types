@@ -9,4 +9,3 @@ declare module 'gi://PackageKitGlib' {
     export default PackageKitGlib10;
 }
 
-

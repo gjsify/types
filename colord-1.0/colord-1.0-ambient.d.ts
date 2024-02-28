@@ -9,4 +9,3 @@ declare module 'gi://Colord' {
     export default Colord10;
 }
 
-

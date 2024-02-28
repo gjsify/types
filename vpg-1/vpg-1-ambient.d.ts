@@ -9,4 +9,3 @@ declare module 'gi://Vpg' {
     export default Vpg1;
 }
 
-

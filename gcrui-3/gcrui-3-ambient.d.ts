@@ -9,4 +9,3 @@ declare module 'gi://GcrUi' {
     export default GcrUi3;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Anthy' {
     export default Anthy9000;
 }
 
-

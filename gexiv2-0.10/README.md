@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gexiv2-0.10)
 
 
-GJS TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for GExiv2-0.10, generated from library version 0.14.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-gexiv2 is a GObject wrapper around the Exiv2 photo metadata library. It allows for GNOME applications to easily inspect and update EXIF, IPTC, and XMP metadata in photo and video files of various formats
 
 ## Install
 

@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-folkstelepathy-0.6.d.ts"],
-    "readme": "./README.md",
-    "name": "FolksTelepathy-0.6",
-    "tsconfig": "./tsconfig.json"
-}
-

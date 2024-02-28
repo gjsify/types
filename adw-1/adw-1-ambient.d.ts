@@ -9,4 +9,3 @@ declare module 'gi://Adw' {
     export default Adw1;
 }
 
-

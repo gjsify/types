@@ -9,4 +9,3 @@ declare module 'gi://PeasGtk' {
     export default PeasGtk10;
 }
 
-

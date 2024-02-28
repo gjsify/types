@@ -9,4 +9,3 @@ declare module 'gi://IAnjuta' {
     export default IAnjuta30;
 }
 
-

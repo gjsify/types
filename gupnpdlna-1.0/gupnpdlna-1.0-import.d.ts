@@ -1,12 +1,2 @@
-
-import GUPnPDLNA10 from '@girs/gupnpdlna-1.0';
-
-declare global {
-    export interface GjsGiImports {
-        GUPnPDLNA: typeof GUPnPDLNA10;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GUPnPDLNA"
 

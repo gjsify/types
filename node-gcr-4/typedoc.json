@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-gcr-4.d.ts"],
-    "readme": "./README.md",
-    "name": "Gcr-4",
-    "tsconfig": "./tsconfig.json"
-}
-

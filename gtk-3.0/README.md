@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtk-3.0)
 
 
-GJS TypeScript type definitions for Gtk-3.0, generated from library version 3.24.39 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for Gtk-3.0, generated from library version 3.24.39 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-GTK+ is the primary library used to construct user interfaces in GNOME applications. It provides user interface controls and signal callbacks to control user interfaces.
 
 ## Install
 

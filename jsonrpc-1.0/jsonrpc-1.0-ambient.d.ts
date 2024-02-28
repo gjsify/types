@@ -9,4 +9,3 @@ declare module 'gi://Jsonrpc' {
     export default Jsonrpc10;
 }
 
-

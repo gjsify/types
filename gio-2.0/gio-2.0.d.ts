@@ -586,8 +586,8 @@ export namespace Gio {
         MULTIDISK,
         /**
          * The start/stop methods will
-         *    unlock/lock the disk (for example using the ATA &lt;quote&gt;SECURITY
-         *    UNLOCK DEVICE&lt;/quote&gt; command)
+         *    unlock/lock the disk (for example using the ATA <quote>SECURITY
+         *    UNLOCK DEVICE</quote> command)
          */
         PASSWORD,
     }
@@ -802,7 +802,7 @@ export namespace Gio {
      * replace %G_IO_ERROR_FAILED in cases that were not explicitly
      * distinguished before. You should therefore avoid writing code like
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
      *   {
      *     // Assume that this is EPRINTERONFIRE
@@ -1055,8 +1055,8 @@ export namespace Gio {
      * Note that because new values might be added, it is recommended that applications check
      * #GMemoryMonitorWarningLevel as ranges, for example:
      *
-     * ```&lt;!-- language="C" --&gt;
-     * if (warning_level &gt; G_MEMORY_MONITOR_WARNING_LEVEL_LOW)
+     * ```c
+     * if (warning_level > G_MEMORY_MONITOR_WARNING_LEVEL_LOW)
      *   drop_caches ();
      * ```
      *
@@ -3378,11 +3378,11 @@ export namespace Gio {
      * with `dirs` set to %NULL before calling g_test_init(), for instance:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   // Load MIME data from the system
      *   g_content_type_set_mime_dirs (NULL);
      *   // Isolate the environment
-     *   g_test_init (&amp;argc, &amp;argv, G_TEST_OPTION_ISOLATE_DIRS, NULL);
+     *   g_test_init (&argc, &argv, G_TEST_OPTION_ISOLATE_DIRS, NULL);
      *
      *   …
      *
@@ -6274,13 +6274,13 @@ export namespace Gio {
          * It is important to use the proper GVariant format when retrieving
          * the options with g_variant_dict_lookup():
          * - for %G_OPTION_ARG_NONE, use `b`
-         * - for %G_OPTION_ARG_STRING, use `&amp;s`
+         * - for %G_OPTION_ARG_STRING, use `&s`
          * - for %G_OPTION_ARG_INT, use `i`
          * - for %G_OPTION_ARG_INT64, use `x`
          * - for %G_OPTION_ARG_DOUBLE, use `d`
-         * - for %G_OPTION_ARG_FILENAME, use `^&amp;ay`
-         * - for %G_OPTION_ARG_STRING_ARRAY, use `^a&amp;s`
-         * - for %G_OPTION_ARG_FILENAME_ARRAY, use `^a&amp;ay`
+         * - for %G_OPTION_ARG_FILENAME, use `^&ay`
+         * - for %G_OPTION_ARG_STRING_ARRAY, use `^a&s`
+         * - for %G_OPTION_ARG_FILENAME_ARRAY, use `^a&ay`
          * @param entries a           %NULL-terminated list of #GOptionEntrys
          */
         add_main_option_entries(entries: GLib.OptionEntry[]): void;
@@ -6817,7 +6817,7 @@ export namespace Gio {
      * the return value of the signal handler becomes the exit status
      * of the launching instance.
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static int
      * command_line (GApplication            *application,
      *               GApplicationCommandLine *cmdline)
@@ -6826,13 +6826,13 @@ export namespace Gio {
      *   gint argc;
      *   gint i;
      *
-     *   argv = g_application_command_line_get_arguments (cmdline, &amp;argc);
+     *   argv = g_application_command_line_get_arguments (cmdline, &argc);
      *
      *   g_application_command_line_print (cmdline,
      *                                     "This text is written back\n"
      *                                     "to stdout of the caller\n");
      *
-     *   for (i = 0; i &lt; argc; i++)
+     *   for (i = 0; i < argc; i++)
      *     g_print ("argument %d: %s\n", i, argv[i]);
      *
      *   g_strfreev (argv);
@@ -6847,7 +6847,7 @@ export namespace Gio {
      * In more complicated cases, the handling of the commandline can be
      * split between the launcher and the primary instance.
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static gboolean
      *  test_local_cmdline (GApplication   *application,
      *                      gchar        ***arguments,
@@ -6889,7 +6889,7 @@ export namespace Gio {
      * static void
      * test_application_class_init (TestApplicationClass *class)
      * {
-     *   G_APPLICATION_CLASS (class)-&gt;local_command_line = test_local_cmdline;
+     *   G_APPLICATION_CLASS (class)->local_command_line = test_local_cmdline;
      *
      *   ...
      * }
@@ -6906,7 +6906,7 @@ export namespace Gio {
      * If handling the commandline requires a lot of work, it may
      * be better to defer it.
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static gboolean
      * my_cmdline_handler (gpointer data)
      * {
@@ -7817,7 +7817,7 @@ export namespace Gio {
      * you would use a signal handler like this:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static gboolean
      * on_allow_mechanism (GDBusAuthObserver *observer,
      *                     const gchar       *mechanism,
@@ -7844,7 +7844,7 @@ export namespace Gio {
      * to the following signal handler:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static gboolean
      * on_authorize_authenticated_peer (GDBusAuthObserver *observer,
      *                                  GIOStream         *stream,
@@ -8096,7 +8096,7 @@ export namespace Gio {
          * @param cancellable a #GCancellable or %NULL
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
-        static new(
+        static ['new'](
             stream: IOStream,
             guid: string | null,
             flags: DBusConnectionFlags,
@@ -8195,7 +8195,7 @@ export namespace Gio {
          * If the `parameters` #GVariant is floating, it is consumed. This allows
          * convenient 'inline' use of g_variant_new(), e.g.:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  g_dbus_connection_call (connection,
          *                          "org.freedesktop.StringThings",
          *                          "/org/freedesktop/StringThings",
@@ -8271,7 +8271,7 @@ export namespace Gio {
          * If the `parameters` #GVariant is floating, it is consumed.
          * This allows convenient 'inline' use of g_variant_new(), e.g.:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  g_dbus_connection_call_sync (connection,
          *                               "org.freedesktop.StringThings",
          *                               "/org/freedesktop/StringThings",
@@ -8284,7 +8284,7 @@ export namespace Gio {
          *                               G_DBUS_CALL_FLAGS_NONE,
          *                               -1,
          *                               NULL,
-         *                               &amp;error);
+         *                               &error);
          * ```
          *
          *
@@ -9065,7 +9065,7 @@ export namespace Gio {
          * @param object_path The path to export the interface at.
          * @returns %TRUE if the interface was exported on @connection, otherwise %FALSE with @error set.
          */
-        export(connection: DBusConnection, object_path: string): boolean;
+        ['export'](connection: DBusConnection, object_path: string): boolean;
         /**
          * If `interface_` has outstanding changes, request for these changes to be
          * emitted immediately.
@@ -9353,10 +9353,10 @@ export namespace Gio {
          * Version: 0
          * Serial:  4
          * Headers:
-         *   path -&gt; objectpath '/org/gtk/GDBus/TestObject'
-         *   interface -&gt; 'org.gtk.GDBus.TestInterface'
-         *   member -&gt; 'GimmeStdout'
-         *   destination -&gt; ':1.146'
+         *   path -> objectpath '/org/gtk/GDBus/TestObject'
+         *   interface -> 'org.gtk.GDBus.TestInterface'
+         *   member -> 'GimmeStdout'
+         *   destination -> ':1.146'
          * Body: ()
          * UNIX File Descriptors:
          *   (none)
@@ -9369,10 +9369,10 @@ export namespace Gio {
          * Version: 0
          * Serial:  477
          * Headers:
-         *   reply-serial -&gt; uint32 4
-         *   destination -&gt; ':1.159'
-         *   sender -&gt; ':1.146'
-         *   num-unix-fds -&gt; uint32 1
+         *   reply-serial -> uint32 4
+         *   destination -> ':1.159'
+         *   sender -> ':1.146'
+         *   num-unix-fds -> uint32 1
          * Body: ()
          * UNIX File Descriptors:
          *   fd 12: dev=0:10,mode=020620,ino=5,uid=500,gid=5,rdev=136:2,size=0,atime=1273085037,mtime=1273085851,ctime=1272982635
@@ -9629,12 +9629,12 @@ export namespace Gio {
          * out-parameters, `parameters` may be %NULL or an empty tuple.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GDBusMethodInvocation *invocation = some_invocation;
          * g_autofree gchar *result_string = NULL;
          * g_autoptr (GError) error = NULL;
          *
-         * result_string = calculate_result (&amp;error);
+         * result_string = calculate_result (&error);
          *
          * if (error != NULL)
          *   g_dbus_method_invocation_return_gerror (invocation, error);
@@ -9895,7 +9895,7 @@ export namespace Gio {
          * @param cancellable A #GCancellable or %NULL
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
          */
-        static new(
+        static ['new'](
             connection: DBusConnection,
             flags: DBusObjectManagerClientFlags,
             name: string,
@@ -10026,7 +10026,7 @@ export namespace Gio {
          * it is exported.
          * @param object A #GDBusObjectSkeleton.
          */
-        export(object: DBusObjectSkeleton): void;
+        ['export'](object: DBusObjectSkeleton): void;
         /**
          * Like g_dbus_object_manager_server_export() but appends a string of
          * the form _N (with N being a natural number) to `object'`s object path
@@ -10450,7 +10450,7 @@ export namespace Gio {
          * @param cancellable A #GCancellable or %NULL.
          * @param callback Callback function to invoke when the proxy is ready.
          */
-        static new(
+        static ['new'](
             connection: DBusConnection,
             flags: DBusProxyFlags,
             info: DBusInterfaceInfo | null,
@@ -10504,7 +10504,7 @@ export namespace Gio {
          * If the `parameters` #GVariant is floating, it is consumed. This allows
          * convenient 'inline' use of g_variant_new(), e.g.:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  g_dbus_proxy_call (proxy,
          *                     "TwoStrings",
          *                     g_variant_new ("(ss)",
@@ -10514,7 +10514,7 @@ export namespace Gio {
          *                     -1,
          *                     NULL,
          *                     (GAsyncReadyCallback) two_strings_done,
-         *                     &amp;data);
+         *                     &data);
          * ```
          *
          *
@@ -10570,7 +10570,7 @@ export namespace Gio {
          * If the `parameters` #GVariant is floating, it is consumed. This allows
          * convenient 'inline' use of g_variant_new(), e.g.:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  g_dbus_proxy_call_sync (proxy,
          *                          "TwoStrings",
          *                          g_variant_new ("(ss)",
@@ -10579,7 +10579,7 @@ export namespace Gio {
          *                          G_DBUS_CALL_FLAGS_NONE,
          *                          -1,
          *                          NULL,
-         *                          &amp;error);
+         *                          &error);
          * ```
          *
          *
@@ -10734,7 +10734,7 @@ export namespace Gio {
          * If the `value` #GVariant is floating, it is consumed. This allows
          * convenient 'inline' use of g_variant_new(), e.g.
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  g_dbus_proxy_set_cached_property (proxy,
          *                                    "SomeProperty",
          *                                    g_variant_new ("(si)",
@@ -11333,18 +11333,18 @@ export namespace Gio {
      * `SetDebugEnabled()`, installing something like the following in
      * `$datadir/dbus-1/system.d/`:
      *
-     * ```&lt;!-- language="XML" --&gt;
-     * &lt;?xml version="1.0"?&gt; &lt;!--*-nxml-*--&gt;
-     * &lt;!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
-     *      "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd"&gt;
-     * &lt;busconfig&gt;
-     *   &lt;policy user="root"&gt;
-     *     &lt;allow send_destination="com.example.MyService" send_interface="org.gtk.Debugging"/&gt;
-     *   &lt;/policy&gt;
-     *   &lt;policy context="default"&gt;
-     *     &lt;deny send_destination="com.example.MyService" send_interface="org.gtk.Debugging"/&gt;
-     *   &lt;/policy&gt;
-     * &lt;/busconfig&gt;
+     * ```<!-- language="XML" -->
+     * <?xml version="1.0"?> <!--*-nxml-*-->
+     * <!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
+     *      "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+     * <busconfig>
+     *   <policy user="root">
+     *     <allow send_destination="com.example.MyService" send_interface="org.gtk.Debugging"/>
+     *   </policy>
+     *   <policy context="default">
+     *     <deny send_destination="com.example.MyService" send_interface="org.gtk.Debugging"/>
+     *   </policy>
+     * </busconfig>
      * ```
      *
      *
@@ -11357,17 +11357,17 @@ export namespace Gio {
      * connect to the #GDebugControllerDBus::authorize signal and query polkit in
      * it:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_autoptr(GError) child_error = NULL;
      *   g_autoptr(GDBusConnection) connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, NULL);
      *   gulong debug_controller_authorize_id = 0;
      *
      *   // Set up the debug controller.
-     *   debug_controller = G_DEBUG_CONTROLLER (g_debug_controller_dbus_new (priv-&gt;connection, NULL, &amp;child_error));
+     *   debug_controller = G_DEBUG_CONTROLLER (g_debug_controller_dbus_new (priv->connection, NULL, &child_error));
      *   if (debug_controller == NULL)
      *     {
      *       g_error ("Could not register debug controller on bus: %s"),
-     *                child_error-&gt;message);
+     *                child_error->message);
      *     }
      *
      *   debug_controller_authorize_id = g_signal_connect (debug_controller,
@@ -11391,14 +11391,14 @@ export namespace Gio {
      *     message = g_dbus_method_invocation_get_message (invocation);
      *     message_flags = g_dbus_message_get_flags (message);
      *
-     *     authority = polkit_authority_get_sync (NULL, &amp;local_error);
+     *     authority = polkit_authority_get_sync (NULL, &local_error);
      *     if (authority == NULL)
      *       {
-     *         g_warning ("Failed to get polkit authority: %s", local_error-&gt;message);
+     *         g_warning ("Failed to get polkit authority: %s", local_error->message);
      *         return FALSE;
      *       }
      *
-     *     if (message_flags &amp; G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION)
+     *     if (message_flags & G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION)
      *       flags |= POLKIT_CHECK_AUTHORIZATION_FLAGS_ALLOW_USER_INTERACTION;
      *
      *     subject = polkit_system_bus_name_new (g_dbus_method_invocation_get_sender (invocation));
@@ -11409,10 +11409,10 @@ export namespace Gio {
      *                                                              NULL,
      *                                                              flags,
      *                                                              NULL,
-     *                                                              &amp;local_error);
+     *                                                              &local_error);
      *     if (auth_result == NULL)
      *       {
-     *         g_warning ("Failed to get check polkit authorization: %s", local_error-&gt;message);
+     *         g_warning ("Failed to get check polkit authorization: %s", local_error->message);
      *         return FALSE;
      *       }
      *
@@ -11468,7 +11468,7 @@ export namespace Gio {
      * #GDesktopAppInfo is an implementation of #GAppInfo based on
      * desktop files.
      *
-     * Note that `&lt;gio/gdesktopappinfo.h&gt;` belongs to the UNIX-specific
+     * Note that `<gio/gdesktopappinfo.h>` belongs to the UNIX-specific
      * GIO interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file when using it.
      */
@@ -11896,7 +11896,7 @@ export namespace Gio {
          *
          * This is a convenience method that's equivalent to:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   gchar *name = g_file_info_get_name (info);
          *   GFile *child = g_file_get_child (g_file_enumerator_get_container (enumr),
          *                                    name);
@@ -11951,7 +11951,7 @@ export namespace Gio {
          * while (TRUE)
          *   {
          *     GFileInfo *info;
-         *     if (!g_file_enumerator_iterate (direnum, &amp;info, NULL, cancellable, error))
+         *     if (!g_file_enumerator_iterate (direnum, &info, NULL, cancellable, error))
          *       goto out;
          *     if (!info)
          *       break;
@@ -12012,9 +12012,9 @@ export namespace Gio {
          *                                                     G_PRIORITY_DEFAULT,
          *                                                     cancellable,
          *                                                     …,
-         *                                                     &amp;local_error);
+         *                                                     &local_error);
          * if (enumerator == NULL)
-         *   g_error ("Error enumerating: %s", local_error-&gt;message);
+         *   g_error ("Error enumerating: %s", local_error->message);
          *
          * // Loop until no files are returned, either because the end of the enumerator
          * // has been reached, or an error was returned.
@@ -12025,20 +12025,20 @@ export namespace Gio {
          *                                                       G_PRIORITY_DEFAULT,
          *                                                       cancellable,
          *                                                       …,
-         *                                                       &amp;local_error);
+         *                                                       &local_error);
          *
          *     // Process the returned files, but don’t assume that exactly 5 were returned.
-         *     for (GList *l = files; l != NULL; l = l-&gt;next)
+         *     for (GList *l = files; l != NULL; l = l->next)
          *       {
-         *         GFileInfo *info = l-&gt;data;
+         *         GFileInfo *info = l->data;
          *         handle_file_info (info);
          *       }
          *   }
          * while (files != NULL);
          *
-         * if (local_error != NULL &amp;&amp;
+         * if (local_error != NULL &&
          *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-         *   g_error ("Error while enumerating: %s", local_error-&gt;message);
+         *   g_error ("Error while enumerating: %s", local_error->message);
          * ```
          *
          *
@@ -13111,7 +13111,7 @@ export namespace Gio {
          * run gio-querymodules in order to build the cache files required for
          * lazy loading.
          *
-         * Since 2.56, this function should be named `g_io_&lt;modulename&gt;_query`, where
+         * Since 2.56, this function should be named `g_io_<modulename>_query`, where
          * `modulename` is the plugin’s filename with the `lib` or `libgio` prefix and
          * everything after the first dot removed, and with `-` replaced with `_`
          * throughout. For example, `libgiognutls-helper.so` becomes `gnutls_helper`.
@@ -16828,29 +16828,29 @@ export namespace Gio {
      * Similar to GConf, the default values in GSettings schemas can be
      * localized, but the localized values are stored in gettext catalogs
      * and looked up with the domain that is specified in the
-     * `gettext-domain` attribute of the &lt;schemalist&gt; or &lt;schema&gt;
+     * `gettext-domain` attribute of the <schemalist> or <schema>
      * elements and the category that is specified in the `l10n` attribute of
-     * the &lt;default&gt; element. The string which is translated includes all text in
-     * the &lt;default&gt; element, including any surrounding quotation marks.
+     * the <default> element. The string which is translated includes all text in
+     * the <default> element, including any surrounding quotation marks.
      *
      * The `l10n` attribute must be set to `messages` or `time`, and sets the
      * [locale category for
      * translation](https://www.gnu.org/software/gettext/manual/html_node/Aspects.html#index-locale-categories-1).
      * The `messages` category should be used by default; use `time` for
      * translatable date or time formats. A translation comment can be added as an
-     * XML comment immediately above the &lt;default&gt; element — it is recommended to
+     * XML comment immediately above the <default> element — it is recommended to
      * add these comments to aid translators understand the meaning and
      * implications of the default value. An optional translation `context`
-     * attribute can be set on the &lt;default&gt; element to disambiguate multiple
+     * attribute can be set on the <default> element to disambiguate multiple
      * defaults which use the same string.
      *
      * For example:
      *
      * ```
-     *  &lt;!-- Translators: A list of words which are not allowed to be typed, in
+     *  <!-- Translators: A list of words which are not allowed to be typed, in
      *       GVariant serialization syntax.
-     *       See: https://developer.gnome.org/glib/stable/gvariant-text.html --&gt;
-     *  &lt;default l10n='messages' context='Banned words'&gt;['bad', 'words']&lt;/default&gt;
+     *       See: https://developer.gnome.org/glib/stable/gvariant-text.html -->
+     *  <default l10n='messages' context='Banned words'>['bad', 'words']</default>
      * ```
      *
      *
@@ -16869,7 +16869,7 @@ export namespace Gio {
      * files to have the extension `.gschema.xml`.
      *
      * At runtime, schemas are identified by their id (as specified in the
-     * id attribute of the &lt;schema&gt; element). The convention for schema
+     * id attribute of the <schema> element). The convention for schema
      * ids is to use a dotted name, similar in style to a D-Bus bus name,
      * e.g. "org.gnome.SessionManager". In particular, if the settings are
      * for a specific service that owns a D-Bus bus name, the D-Bus bus name
@@ -16878,8 +16878,8 @@ export namespace Gio {
      * StudlyCaps, e.g. "org.gnome.font-rendering".
      *
      * In addition to #GVariant types, keys can have types that have
-     * enumerated types. These can be described by a &lt;choice&gt;,
-     * &lt;enum&gt; or &lt;flags&gt; element, as seen in the
+     * enumerated types. These can be described by a <choice>,
+     * <enum> or <flags> element, as seen in the
      * [example][schema-enumerated]. The underlying type of such a key
      * is string, but you can use g_settings_get_enum(), g_settings_set_enum(),
      * g_settings_get_flags(), g_settings_set_flags() access the numeric values
@@ -16888,76 +16888,76 @@ export namespace Gio {
      * An example for default value:
      *
      * ```
-     * &lt;schemalist&gt;
-     *   &lt;schema id="org.gtk.Test" path="/org/gtk/Test/" gettext-domain="test"&gt;
+     * <schemalist>
+     *   <schema id="org.gtk.Test" path="/org/gtk/Test/" gettext-domain="test">
      *
-     *     &lt;key name="greeting" type="s"&gt;
-     *       &lt;default l10n="messages"&gt;"Hello, earthlings"&lt;/default&gt;
-     *       &lt;summary&gt;A greeting&lt;/summary&gt;
-     *       &lt;description&gt;
+     *     <key name="greeting" type="s">
+     *       <default l10n="messages">"Hello, earthlings"</default>
+     *       <summary>A greeting</summary>
+     *       <description>
      *         Greeting of the invading martians
-     *       &lt;/description&gt;
-     *     &lt;/key&gt;
+     *       </description>
+     *     </key>
      *
-     *     &lt;key name="box" type="(ii)"&gt;
-     *       &lt;default&gt;(20,30)&lt;/default&gt;
-     *     &lt;/key&gt;
+     *     <key name="box" type="(ii)">
+     *       <default>(20,30)</default>
+     *     </key>
      *
-     *     &lt;key name="empty-string" type="s"&gt;
-     *       &lt;default&gt;""&lt;/default&gt;
-     *       &lt;summary&gt;Empty strings have to be provided in GVariant form&lt;/summary&gt;
-     *     &lt;/key&gt;
+     *     <key name="empty-string" type="s">
+     *       <default>""</default>
+     *       <summary>Empty strings have to be provided in GVariant form</summary>
+     *     </key>
      *
-     *   &lt;/schema&gt;
-     * &lt;/schemalist&gt;
+     *   </schema>
+     * </schemalist>
      * ```
      *
      *
      * An example for ranges, choices and enumerated types:
      *
      * ```
-     * &lt;schemalist&gt;
+     * <schemalist>
      *
-     *   &lt;enum id="org.gtk.Test.myenum"&gt;
-     *     &lt;value nick="first" value="1"/&gt;
-     *     &lt;value nick="second" value="2"/&gt;
-     *   &lt;/enum&gt;
+     *   <enum id="org.gtk.Test.myenum">
+     *     <value nick="first" value="1"/>
+     *     <value nick="second" value="2"/>
+     *   </enum>
      *
-     *   &lt;flags id="org.gtk.Test.myflags"&gt;
-     *     &lt;value nick="flag1" value="1"/&gt;
-     *     &lt;value nick="flag2" value="2"/&gt;
-     *     &lt;value nick="flag3" value="4"/&gt;
-     *   &lt;/flags&gt;
+     *   <flags id="org.gtk.Test.myflags">
+     *     <value nick="flag1" value="1"/>
+     *     <value nick="flag2" value="2"/>
+     *     <value nick="flag3" value="4"/>
+     *   </flags>
      *
-     *   &lt;schema id="org.gtk.Test"&gt;
+     *   <schema id="org.gtk.Test">
      *
-     *     &lt;key name="key-with-range" type="i"&gt;
-     *       &lt;range min="1" max="100"/&gt;
-     *       &lt;default&gt;10&lt;/default&gt;
-     *     &lt;/key&gt;
+     *     <key name="key-with-range" type="i">
+     *       <range min="1" max="100"/>
+     *       <default>10</default>
+     *     </key>
      *
-     *     &lt;key name="key-with-choices" type="s"&gt;
-     *       &lt;choices&gt;
-     *         &lt;choice value='Elisabeth'/&gt;
-     *         &lt;choice value='Annabeth'/&gt;
-     *         &lt;choice value='Joe'/&gt;
-     *       &lt;/choices&gt;
-     *       &lt;aliases&gt;
-     *         &lt;alias value='Anna' target='Annabeth'/&gt;
-     *         &lt;alias value='Beth' target='Elisabeth'/&gt;
-     *       &lt;/aliases&gt;
-     *       &lt;default&gt;'Joe'&lt;/default&gt;
-     *     &lt;/key&gt;
+     *     <key name="key-with-choices" type="s">
+     *       <choices>
+     *         <choice value='Elisabeth'/>
+     *         <choice value='Annabeth'/>
+     *         <choice value='Joe'/>
+     *       </choices>
+     *       <aliases>
+     *         <alias value='Anna' target='Annabeth'/>
+     *         <alias value='Beth' target='Elisabeth'/>
+     *       </aliases>
+     *       <default>'Joe'</default>
+     *     </key>
      *
-     *     &lt;key name='enumerated-key' enum='org.gtk.Test.myenum'&gt;
-     *       &lt;default&gt;'first'&lt;/default&gt;
-     *     &lt;/key&gt;
+     *     <key name='enumerated-key' enum='org.gtk.Test.myenum'>
+     *       <default>'first'</default>
+     *     </key>
      *
-     *     &lt;key name='flags-key' flags='org.gtk.Test.myflags'&gt;
-     *       &lt;default&gt;["flag1","flag2"]&lt;/default&gt;
-     *     &lt;/key&gt;
-     *   &lt;/schema&gt;
-     * &lt;/schemalist&gt;
+     *     <key name='flags-key' flags='org.gtk.Test.myflags'>
+     *       <default>["flag1","flag2"]</default>
+     *     </key>
+     *   </schema>
+     * </schemalist>
      * ```
      *
      *
@@ -17001,7 +17001,7 @@ export namespace Gio {
      * ## Relocatable schemas # {#gsettings-relocatable}
      *
      * A relocatable schema is one with no `path` attribute specified on its
-     * &lt;schema&gt; element. By using g_settings_new_with_path(), a #GSettings object
+     * <schema> element. By using g_settings_new_with_path(), a #GSettings object
      * can be instantiated for a relocatable schema, assigning a path to the
      * instance. Paths passed to g_settings_new_with_path() will typically be
      * constructed dynamically from a constant prefix plus some form of instance
@@ -17014,12 +17014,12 @@ export namespace Gio {
      * `org.foo.MyApp.Window`, it could be instantiated for paths
      * `/org/foo/MyApp/main/`, `/org/foo/MyApp/document-1/`,
      * `/org/foo/MyApp/document-2/`, etc. If any of the paths are well-known
-     * they can be specified as &lt;child&gt; elements in the parent schema, e.g.:
+     * they can be specified as <child> elements in the parent schema, e.g.:
      *
      * ```
-     * &lt;schema id="org.foo.MyApp" path="/org/foo/MyApp/"&gt;
-     *   &lt;child name="main" schema="org.foo.MyApp.Window"/&gt;
-     * &lt;/schema&gt;
+     * <schema id="org.foo.MyApp" path="/org/foo/MyApp/">
+     *   <child name="main" schema="org.foo.MyApp.Window"/>
+     * </schema>
      * ```
      *
      *
@@ -17062,14 +17062,14 @@ export namespace Gio {
      * ```
      *
      *
-     * GSettings will use gettext to look up translations for the &lt;summary&gt; and
-     * &lt;description&gt; elements, and also any &lt;default&gt; elements which have a `l10n`
+     * GSettings will use gettext to look up translations for the <summary> and
+     * <description> elements, and also any <default> elements which have a `l10n`
      * attribute set. Translations must not be included in the `.gschema.xml` file
      * by the build system, for example by using intltool XML rules with a
      * `.gschema.xml.in` template.
      *
      * If an enumerated type defined in a C header file is to be used in a GSettings
-     * schema, it can either be defined manually using an &lt;enum&gt; element in the
+     * schema, it can either be defined manually using an <enum> element in the
      * schema XML, or it can be extracted automatically from the C header. This
      * approach is preferred, as it ensures the two representations are always
      * synchronised. To do so, add the following to the relevant `Makefile.am`:
@@ -17316,7 +17316,7 @@ export namespace Gio {
          * `settings`.
          *
          * The schema for the child settings object must have been declared
-         * in the schema of `settings` using a `&lt;child&gt;` element.
+         * in the schema of `settings` using a `<child>` element.
          *
          * The created child settings object will inherit the #GSettings:delay-apply
          * mode from `settings`.
@@ -18135,7 +18135,7 @@ export namespace Gio {
      * using GSimpleAsyncResult looks something like this:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static void
      * baked_cb (Cake    *cake,
      *           gpointer user_data)
@@ -18173,7 +18173,7 @@ export namespace Gio {
      *   GSimpleAsyncResult *simple;
      *   Cake               *cake;
      *
-     *   if (radius &lt; 3)
+     *   if (radius < 3)
      *     {
      *       g_simple_async_report_error_in_idle (G_OBJECT (self),
      *                                            callback,
@@ -18521,7 +18521,7 @@ export namespace Gio {
          * @param default_proxy the default proxy to use, eg     "socks://192.168.1.1"
          * @param ignore_hosts an optional list of hosts/IP addresses     to not use a proxy for.
          */
-        static new(default_proxy?: string | null, ignore_hosts?: string[] | null): ProxyResolver;
+        static ['new'](default_proxy?: string | null, ignore_hosts?: string[] | null): ProxyResolver;
 
         // Owm methods of Gio-2.0.SimpleProxyResolver
 
@@ -18949,7 +18949,7 @@ export namespace Gio {
          * getsockopt(). (If you need to fetch a  non-integer-valued option,
          * you will need to call getsockopt() directly.)
          *
-         * The [&lt;gio/gnetworking.h&gt;][gio-gnetworking.h]
+         * The [<gio/gnetworking.h>][gio-gnetworking.h]
          * header pulls in system headers that will define most of the
          * standard/portable socket options. For unusual socket protocols or
          * platform-dependent options, you may need to include additional
@@ -19502,7 +19502,7 @@ export namespace Gio {
          * setsockopt(). (If you need to set a non-integer-valued option,
          * you will need to call setsockopt() directly.)
          *
-         * The [&lt;gio/gnetworking.h&gt;][gio-gnetworking.h]
+         * The [<gio/gnetworking.h>][gio-gnetworking.h]
          * header pulls in system headers that will define most of the
          * standard/portable socket options. For unusual socket protocols or
          * platform-dependent options, you may need to include additional
@@ -21118,7 +21118,7 @@ export namespace Gio {
          * If `path` is %NULL then any previously given path is unset.
          *
          * The file will be created or truncated when the process is spawned, as
-         * would be the case if using '2&gt;' at the shell.
+         * would be the case if using '2>' at the shell.
          *
          * If you want to send both stdout and stderr to the same file then use
          * %G_SUBPROCESS_FLAGS_STDERR_MERGE.
@@ -21150,7 +21150,7 @@ export namespace Gio {
          * If `path` is %NULL then any previously given path is unset.
          *
          * The file will be created or truncated when the process is spawned, as
-         * would be the case if using '&gt;' at the shell.
+         * would be the case if using '>' at the shell.
          *
          * You may not set a stdout file path if a stdout fd is already set or
          * if the launcher flags contain any flags directing stdout elsewhere.
@@ -21304,7 +21304,7 @@ export namespace Gio {
      *
      * Here is an example for using GTask as a GAsyncResult:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *     typedef struct {
      *       CakeFrostingType frosting;
      *       char *message;
@@ -21313,7 +21313,7 @@ export namespace Gio {
      *     static void
      *     decoration_data_free (DecorationData *decoration)
      *     {
-     *       g_free (decoration-&gt;message);
+     *       g_free (decoration->message);
      *       g_slice_free (DecorationData, decoration);
      *     }
      *
@@ -21333,7 +21333,7 @@ export namespace Gio {
      *           return;
      *         }
      *
-     *       if (!cake_decorate (cake, decoration-&gt;frosting, decoration-&gt;message, &amp;error))
+     *       if (!cake_decorate (cake, decoration->frosting, decoration->message, &error))
      *         {
      *           g_object_unref (cake);
      *           // g_task_return_error() takes ownership of error
@@ -21361,7 +21361,7 @@ export namespace Gio {
      *       Cake  *cake;
      *
      *       task = g_task_new (self, cancellable, callback, user_data);
-     *       if (radius &lt; 3)
+     *       if (radius < 3)
      *         {
      *           g_task_return_new_error (task, BAKER_ERROR, BAKER_ERROR_TOO_SMALL,
      *                                    "%ucm radius cakes are silly",
@@ -21380,8 +21380,8 @@ export namespace Gio {
      *         }
      *
      *       decoration = g_slice_new (DecorationData);
-     *       decoration-&gt;frosting = frosting;
-     *       decoration-&gt;message = g_strdup (message);
+     *       decoration->frosting = frosting;
+     *       decoration->message = g_strdup (message);
      *       g_task_set_task_data (task, decoration, (GDestroyNotify) decoration_data_free);
      *
      *       _baker_begin_cake (self, radius, flavor, cancellable, baked_cb, task);
@@ -21413,7 +21413,7 @@ export namespace Gio {
      *
      * Here is an example for chained asynchronous operations:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *     typedef struct {
      *       Cake *cake;
      *       CakeFrostingType frosting;
@@ -21423,9 +21423,9 @@ export namespace Gio {
      *     static void
      *     decoration_data_free (BakingData *bd)
      *     {
-     *       if (bd-&gt;cake)
-     *         g_object_unref (bd-&gt;cake);
-     *       g_free (bd-&gt;message);
+     *       if (bd->cake)
+     *         g_object_unref (bd->cake);
+     *       g_free (bd->message);
      *       g_slice_free (BakingData, bd);
      *     }
      *
@@ -21437,7 +21437,7 @@ export namespace Gio {
      *       GTask *task = user_data;
      *       GError *error = NULL;
      *
-     *       if (!cake_decorate_finish (cake, result, &amp;error))
+     *       if (!cake_decorate_finish (cake, result, &error))
      *         {
      *           g_object_unref (cake);
      *           g_task_return_error (task, error);
@@ -21457,7 +21457,7 @@ export namespace Gio {
      *       GTask *task = user_data;
      *       BakingData *bd = g_task_get_task_data (task);
      *
-     *       cake_decorate_async (bd-&gt;cake, bd-&gt;frosting, bd-&gt;message,
+     *       cake_decorate_async (bd->cake, bd->frosting, bd->message,
      *                            g_task_get_cancellable (task),
      *                            decorated_cb, task);
      *
@@ -21480,7 +21480,7 @@ export namespace Gio {
      *           return;
      *         }
      *
-     *       bd-&gt;cake = cake;
+     *       bd->cake = cake;
      *
      *       // Bail out now if the user has already cancelled
      *       if (g_task_return_error_if_cancelled (task))
@@ -21521,8 +21521,8 @@ export namespace Gio {
      *       g_task_set_priority (task, priority);
      *
      *       bd = g_slice_new0 (BakingData);
-     *       bd-&gt;frosting = frosting;
-     *       bd-&gt;message = g_strdup (message);
+     *       bd->frosting = frosting;
+     *       bd->message = g_strdup (message);
      *       g_task_set_task_data (task, bd, (GDestroyNotify) baking_data_free);
      *
      *       _baker_begin_cake (self, radius, flavor, cancellable, baked_cb, task);
@@ -21550,7 +21550,7 @@ export namespace Gio {
      *
      * Running a task in a thread:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *     typedef struct {
      *       guint radius;
      *       CakeFlavor flavor;
@@ -21561,7 +21561,7 @@ export namespace Gio {
      *     static void
      *     cake_data_free (CakeData *cake_data)
      *     {
-     *       g_free (cake_data-&gt;message);
+     *       g_free (cake_data->message);
      *       g_slice_free (CakeData, cake_data);
      *     }
      *
@@ -21576,9 +21576,9 @@ export namespace Gio {
      *       Cake *cake;
      *       GError *error = NULL;
      *
-     *       cake = bake_cake (baker, cake_data-&gt;radius, cake_data-&gt;flavor,
-     *                         cake_data-&gt;frosting, cake_data-&gt;message,
-     *                         cancellable, &amp;error);
+     *       cake = bake_cake (baker, cake_data->radius, cake_data->flavor,
+     *                         cake_data->frosting, cake_data->message,
+     *                         cancellable, &error);
      *       if (cake)
      *         g_task_return_pointer (task, cake, g_object_unref);
      *       else
@@ -21599,10 +21599,10 @@ export namespace Gio {
      *       GTask *task;
      *
      *       cake_data = g_slice_new (CakeData);
-     *       cake_data-&gt;radius = radius;
-     *       cake_data-&gt;flavor = flavor;
-     *       cake_data-&gt;frosting = frosting;
-     *       cake_data-&gt;message = g_strdup (message);
+     *       cake_data->radius = radius;
+     *       cake_data->flavor = flavor;
+     *       cake_data->frosting = frosting;
+     *       cake_data->message = g_strdup (message);
      *       task = g_task_new (self, cancellable, callback, user_data);
      *       g_task_set_task_data (task, cake_data, (GDestroyNotify) cake_data_free);
      *       g_task_run_in_thread (task, bake_cake_thread);
@@ -21637,7 +21637,7 @@ export namespace Gio {
      *
      * Cancelling a task:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *     static void
      *     bake_cake_thread (GTask         *task,
      *                       gpointer       source_object,
@@ -21649,9 +21649,9 @@ export namespace Gio {
      *       Cake *cake;
      *       GError *error = NULL;
      *
-     *       cake = bake_cake (baker, cake_data-&gt;radius, cake_data-&gt;flavor,
-     *                         cake_data-&gt;frosting, cake_data-&gt;message,
-     *                         &amp;error);
+     *       cake = bake_cake (baker, cake_data->radius, cake_data->flavor,
+     *                         cake_data->frosting, cake_data->message,
+     *                         &error);
      *       if (error)
      *         {
      *           g_task_return_error (task, error);
@@ -22451,7 +22451,7 @@ export namespace Gio {
          * For example, if the icon name was "gnome-dev-cdrom-audio", the array
          * would become
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * {
          *   "gnome-dev-cdrom-audio",
          *   "gnome-dev-cdrom",
@@ -22471,7 +22471,7 @@ export namespace Gio {
          * For example, if the icon name was "gnome-dev-cdrom-audio", the array
          * would become
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * {
          *   "gnome-dev-cdrom-audio",
          *   "gnome-dev-cdrom",
@@ -23985,7 +23985,7 @@ export namespace Gio {
      * Since GLib 2.72, #GUnixConnection is available on all platforms. It requires
      * underlying system support (such as Windows 10 with `AF_UNIX`) at run time.
      *
-     * Before GLib 2.72, `&lt;gio/gunixconnection.h&gt;` belonged to the UNIX-specific GIO
+     * Before GLib 2.72, `<gio/gunixconnection.h>` belonged to the UNIX-specific GIO
      * interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file when
      * using it. This is no longer necessary since GLib 2.72.
      */
@@ -24125,7 +24125,7 @@ export namespace Gio {
      * requires underlying system support (such as Windows 10 with `AF_UNIX`) at run
      * time.
      *
-     * Before GLib 2.72, `&lt;gio/gunixcredentialsmessage.h&gt;` belonged to the UNIX-specific
+     * Before GLib 2.72, `<gio/gunixcredentialsmessage.h>` belonged to the UNIX-specific
      * GIO interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file
      * when using it. This is no longer necessary since GLib 2.72.
      */
@@ -24171,7 +24171,7 @@ export namespace Gio {
      * the %G_SOCKET_FAMILY_UNIX family by using g_socket_send_message()
      * and received using g_socket_receive_message().
      *
-     * Before 2.74, `&lt;gio/gunixfdlist.h&gt;` belonged to the UNIX-specific GIO
+     * Before 2.74, `<gio/gunixfdlist.h>` belonged to the UNIX-specific GIO
      * interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file when
      * using it.
      *
@@ -24282,7 +24282,7 @@ export namespace Gio {
      * stream-oriented UNIX sockets, see g_unix_connection_send_fd() and
      * g_unix_connection_receive_fd().
      *
-     * Note that `&lt;gio/gunixfdmessage.h&gt;` belongs to the UNIX-specific GIO
+     * Note that `<gio/gunixfdmessage.h>` belongs to the UNIX-specific GIO
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file when using it.
      */
@@ -24354,7 +24354,7 @@ export namespace Gio {
      * asynchronous I/O. If it refers to a regular file, it will fall back
      * to doing asynchronous I/O in another thread.)
      *
-     * Note that `&lt;gio/gunixinputstream.h&gt;` belongs to the UNIX-specific GIO
+     * Note that `<gio/gunixinputstream.h>` belongs to the UNIX-specific GIO
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
      * file when using it.
      */
@@ -24462,7 +24462,7 @@ export namespace Gio {
      * asynchronous I/O. If it refers to a regular file, it will fall back
      * to doing asynchronous I/O in another thread.)
      *
-     * Note that `&lt;gio/gunixoutputstream.h&gt;` belongs to the UNIX-specific GIO
+     * Note that `<gio/gunixoutputstream.h>` belongs to the UNIX-specific GIO
      * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config file
      * when using it.
      */
@@ -24527,7 +24527,7 @@ export namespace Gio {
      * requires underlying system support (such as Windows 10 with `AF_UNIX`) at
      * run time.
      *
-     * Before GLib 2.72, `&lt;gio/gunixsocketaddress.h&gt;` belonged to the UNIX-specific
+     * Before GLib 2.72, `<gio/gunixsocketaddress.h>` belonged to the UNIX-specific
      * GIO interfaces, thus you had to use the `gio-unix-2.0.pc` pkg-config file
      * when using it. This is no longer necessary since GLib 2.72.
      */
@@ -26251,15 +26251,15 @@ export namespace Gio {
      * An example resource description:
      *
      * ```
-     * &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-     * &lt;gresources&gt;
-     *   &lt;gresource prefix="/org/gtk/Example"&gt;
-     *     &lt;file&gt;data/splashscreen.png&lt;/file&gt;
-     *     &lt;file compressed="true"&gt;dialog.ui&lt;/file&gt;
-     *     &lt;file preprocess="xml-stripblanks"&gt;menumarkup.xml&lt;/file&gt;
-     *     &lt;file alias="example.css"&gt;data/example.css&lt;/file&gt;
-     *   &lt;/gresource&gt;
-     * &lt;/gresources&gt;
+     * <?xml version="1.0" encoding="UTF-8"?>
+     * <gresources>
+     *   <gresource prefix="/org/gtk/Example">
+     *     <file>data/splashscreen.png</file>
+     *     <file compressed="true">dialog.ui</file>
+     *     <file preprocess="xml-stripblanks">menumarkup.xml</file>
+     *     <file alias="example.css">data/example.css</file>
+     *   </gresource>
+     * </gresources>
      * ```
      *
      *
@@ -26479,7 +26479,7 @@ export namespace Gio {
      * Consider the following example:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * typedef struct
      * {
      *    ...
@@ -26494,7 +26494,7 @@ export namespace Gio {
      *
      *   ...
      *
-     *   plugin-&gt;schema_source =
+     *   plugin->schema_source =
      *     g_settings_schema_source_new_from_directory (dir,
      *       g_settings_schema_source_get_default (), FALSE, NULL);
      *
@@ -26512,9 +26512,9 @@ export namespace Gio {
      *   GSettingsSchema *schema;
      *
      *   if (schema_id == NULL)
-     *     schema_id = plugin-&gt;identifier;
+     *     schema_id = plugin->identifier;
      *
-     *   schema = g_settings_schema_source_lookup (plugin-&gt;schema_source,
+     *   schema = g_settings_schema_source_lookup (plugin->schema_source,
      *                                             schema_id, FALSE);
      *
      *   if (schema == NULL)
@@ -26538,7 +26538,7 @@ export namespace Gio {
      * the following:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * {
      *   GSettings *settings;
      *   gint some_value;
@@ -27083,7 +27083,7 @@ export namespace Gio {
     class UnixInputStreamPrivate {}
 
     /**
-     * Defines a Unix mount entry (e.g. &lt;filename&gt;/media/cdrom&lt;/filename&gt;).
+     * Defines a Unix mount entry (e.g. <filename>/media/cdrom</filename>).
      * This corresponds roughly to a mtab entry.
      */
     class UnixMountEntry {}
@@ -27091,7 +27091,7 @@ export namespace Gio {
     class UnixMountMonitorClass {}
 
     /**
-     * Defines a Unix mount point (e.g. &lt;filename&gt;/dev&lt;/filename&gt;).
+     * Defines a Unix mount point (e.g. <filename>/dev</filename>).
      * This corresponds roughly to a fstab entry.
      */
     class UnixMountPoint {
@@ -27504,7 +27504,7 @@ export namespace Gio {
          * may fail to be activated on the primary instance.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
@@ -27723,7 +27723,7 @@ export namespace Gio {
          * may fail to be activated on the primary instance.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * // call "quit" action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
@@ -27899,7 +27899,7 @@ export namespace Gio {
          * Each action is constructed as per one #GActionEntry.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static void
          * activate_quit (GSimpleAction *simple,
          *                GVariant      *parameter,
@@ -27957,7 +27957,7 @@ export namespace Gio {
          *
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static const GActionEntry entries[] = {
          *     { "quit",         activate_quit              },
          *     { "print-string", activate_print_string, "s" }
@@ -28037,7 +28037,7 @@ export namespace Gio {
          * See g_app_info_can_delete().
          * @returns %TRUE if @appinfo has been deleted
          */
-        delete(): boolean;
+        ['delete'](): boolean;
         /**
          * Creates a duplicate of a #GAppInfo.
          * @returns a duplicate of @appinfo.
@@ -30846,13 +30846,13 @@ export namespace Gio {
          *
          * ```
          * g_autoptr(GError) local_error = NULL;
-         * if (!g_file_delete (my_file, my_cancellable, &amp;local_error) &amp;&amp;
+         * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
          *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
          *   {
          *     // deletion failed for some reason other than the file not existing:
          *     // so report the error
          *     g_warning ("Failed to delete %s: %s",
-         *                g_file_peek_path (my_file), local_error-&gt;message);
+         *                g_file_peek_path (my_file), local_error->message);
          *   }
          * ```
          *
@@ -30863,7 +30863,7 @@ export namespace Gio {
          * @param cancellable optional #GCancellable object,   %NULL to ignore
          * @returns %TRUE if the file was deleted. %FALSE otherwise.
          */
-        delete(cancellable?: Cancellable | null): boolean;
+        ['delete'](cancellable?: Cancellable | null): boolean;
         /**
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
@@ -32849,13 +32849,13 @@ export namespace Gio {
          *
          * ```
          * g_autoptr(GError) local_error = NULL;
-         * if (!g_file_delete (my_file, my_cancellable, &amp;local_error) &amp;&amp;
+         * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
          *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
          *   {
          *     // deletion failed for some reason other than the file not existing:
          *     // so report the error
          *     g_warning ("Failed to delete %s: %s",
-         *                g_file_peek_path (my_file), local_error-&gt;message);
+         *                g_file_peek_path (my_file), local_error->message);
          *   }
          * ```
          *
@@ -35588,8 +35588,8 @@ export namespace Gio {
         /**
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
-         * the form `&lt;protocol&gt;://[user[:password]`]`host[:port]` or
-         * `direct://`, where &lt;protocol&gt; could be http, rtsp, socks
+         * the form `<protocol>://[user[:password]`]`host[:port]` or
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -35634,8 +35634,8 @@ export namespace Gio {
         /**
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
-         * the form `&lt;protocol&gt;://[user[:password]`]`host[:port]` or
-         * `direct://`, where &lt;protocol&gt; could be http, rtsp, socks
+         * the form `<protocol>://[user[:password]`]`host[:port]` or
+         * `direct://`, where <protocol> could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -36331,7 +36331,7 @@ export namespace Gio {
          * other words, in code
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   GMount *mount;
          *   GFile *mount_root
          *   GFile *volume_activation_root;
@@ -36343,7 +36343,7 @@ export namespace Gio {
          *
          * then the expression
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   (g_file_has_prefix (volume_activation_root, mount_root) ||
          *    g_file_equal (volume_activation_root, mount_root))
          * ```
@@ -36500,7 +36500,7 @@ export namespace Gio {
          * other words, in code
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   GMount *mount;
          *   GFile *mount_root
          *   GFile *volume_activation_root;
@@ -36512,7 +36512,7 @@ export namespace Gio {
          *
          * then the expression
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   (g_file_has_prefix (volume_activation_root, mount_root) ||
          *    g_file_equal (volume_activation_root, mount_root))
          * ```
@@ -36613,7 +36613,7 @@ export namespace Gio {
         get_connection(): DBusConnection;
         get_object_path(): string;
         unexport_from_connection(connection: DBusConnection): void;
-        export(busConnection: DBusConnection, objectPath: string): void;
+        ['export'](busConnection: DBusConnection, objectPath: string): void;
         unexport(): void;
         flush(): void;
         emit_signal(name: string, variant: GLib.Variant): void;

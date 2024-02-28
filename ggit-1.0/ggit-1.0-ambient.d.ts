@@ -9,4 +9,3 @@ declare module 'gi://Ggit' {
     export default Ggit10;
 }
 
-

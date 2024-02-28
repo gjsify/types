@@ -342,8 +342,8 @@ export namespace GdkPixbuf {
      *   int height = gdk_pixbuf_get_height (pixbuf);
      *
      *   // Ensure that the coordinates are in a valid range
-     *   g_assert (x &gt;= 0 &amp;&amp; x &lt; width);
-     *   g_assert (y &gt;= 0 &amp;&amp; y &lt; height);
+     *   g_assert (x >= 0 && x < width);
+     *   g_assert (y >= 0 && y < height);
      *
      *   int rowstride = gdk_pixbuf_get_rowstride (pixbuf);
      *
@@ -520,8 +520,8 @@ export namespace GdkPixbuf {
          * @param colorspace Color space for image
          * @param has_alpha Whether the image should have transparency information
          * @param bits_per_sample Number of bits per color sample
-         * @param width Width of image in pixels, must be &gt; 0
-         * @param height Height of image in pixels, must be &gt; 0
+         * @param width Width of image in pixels, must be > 0
+         * @param height Height of image in pixels, must be > 0
          */
         static calculate_rowstride(
             colorspace: Colorspace,

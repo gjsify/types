@@ -9,4 +9,3 @@ declare module 'gi://GVnc' {
     export default GVnc10;
 }
 
-

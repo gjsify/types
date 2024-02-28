@@ -9,4 +9,3 @@ declare module 'gi://FolksLibsocialweb' {
     export default FolksLibsocialweb06;
 }
 
-

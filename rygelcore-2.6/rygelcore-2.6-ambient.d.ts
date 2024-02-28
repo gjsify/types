@@ -9,4 +9,3 @@ declare module 'gi://RygelCore' {
     export default RygelCore26;
 }
 
-

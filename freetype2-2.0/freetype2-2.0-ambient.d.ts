@@ -9,4 +9,3 @@ declare module 'gi://freetype2' {
     export default Freetype220;
 }
 
-

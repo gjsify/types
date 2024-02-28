@@ -1,60 +1,44 @@
 {
     "name": "@girs/gck-1",
-    "version": "1.0.0-3.2.8",
+    "version": "1.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for Gck-1, generated from library version 1.0.0",
     "type": "module",
     "module": "gck-1.js",
     "main": "gck-1.js",
     "exports": {
-        "./ambient": {
-            "types": "./gck-1-ambient.d.ts",
-            "default": "./gck-1-ambient.js"
-        },
-        "./import": {
-            "types": "./gck-1-import.d.ts",
-            "default": "./gck-1-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./gck-1.d.ts",
-                "default": "./gck-1.js"
-            },
-            "require": {
-                "types": "./gck-1.d.cts",
-                "default": "./gck-1.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./gck-1-ambient.d.ts",
+        "default": "./gck-1-ambient.js"
+      },
+      "./import": {
+        "types": "./gck-1-import.d.ts",
+        "default": "./gck-1-import.js"
+      },
+      ".": {
+        "types": "./gck-1.d.ts",
+        "default": "./gck-1.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gck-1.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gck-1.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gck-1.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gck-1"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gck-1"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gck-1#readme"
 }
+
+

@@ -9,4 +9,3 @@ declare module 'gi://GstGL' {
     export default GstGL10;
 }
 
-

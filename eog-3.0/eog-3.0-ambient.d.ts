@@ -9,4 +9,3 @@ declare module 'gi://Eog' {
     export default Eog30;
 }
 
-

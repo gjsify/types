@@ -9,4 +9,3 @@ declare module 'gi://GUsb' {
     export default GUsb10;
 }
 
-

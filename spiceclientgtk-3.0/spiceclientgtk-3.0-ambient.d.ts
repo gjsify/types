@@ -9,4 +9,3 @@ declare module 'gi://SpiceClientGtk' {
     export default SpiceClientGtk30;
 }
 
-

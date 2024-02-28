@@ -9,4 +9,3 @@ declare module 'gi://FolksDummy' {
     export default FolksDummy06;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Vda' {
     export default Vda1;
 }
 
-

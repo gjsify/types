@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-mbim-1.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Mbim-1.0",
-    "tsconfig": "./tsconfig.json"
-}
-

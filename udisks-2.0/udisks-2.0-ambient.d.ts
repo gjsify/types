@@ -9,4 +9,3 @@ declare module 'gi://UDisks' {
     export default UDisks20;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://fontconfig' {
     export default Fontconfig20;
 }
 
-

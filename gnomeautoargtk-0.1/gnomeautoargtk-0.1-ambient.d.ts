@@ -9,4 +9,3 @@ declare module 'gi://GnomeAutoarGtk' {
     export default GnomeAutoarGtk01;
 }
 
-

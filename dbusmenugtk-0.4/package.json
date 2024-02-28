@@ -1,70 +1,44 @@
 {
     "name": "@girs/dbusmenugtk-0.4",
-    "version": "0.4.0-3.2.8",
+    "version": "0.4.0-4.0.0",
     "description": "GJS TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "dbusmenugtk-0.4.js",
     "main": "dbusmenugtk-0.4.js",
     "exports": {
-        "./ambient": {
-            "types": "./dbusmenugtk-0.4-ambient.d.ts",
-            "default": "./dbusmenugtk-0.4-ambient.js"
-        },
-        "./import": {
-            "types": "./dbusmenugtk-0.4-import.d.ts",
-            "default": "./dbusmenugtk-0.4-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./dbusmenugtk-0.4.d.ts",
-                "default": "./dbusmenugtk-0.4.js"
-            },
-            "require": {
-                "types": "./dbusmenugtk-0.4.d.cts",
-                "default": "./dbusmenugtk-0.4.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./dbusmenugtk-0.4-ambient.d.ts",
+        "default": "./dbusmenugtk-0.4-ambient.js"
+      },
+      "./import": {
+        "types": "./dbusmenugtk-0.4-import.d.ts",
+        "default": "./dbusmenugtk-0.4-import.js"
+      },
+      ".": {
+        "types": "./dbusmenugtk-0.4.d.ts",
+        "default": "./dbusmenugtk-0.4.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbusmenugtk-0.4.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbusmenugtk-0.4.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbusmenugtk-0.4.d.ts"
     },
     "dependencies": {
-        "@girs/atk-1.0": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/dbusmenu-0.4": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gdk-2.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gtk-2.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gtk-2.0": "workspace:^",            "@girs/gdk-2.0": "workspace:^",            "@girs/cairo-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/pango-1.0": "workspace:^",            "@girs/harfbuzz-0.0": "workspace:^",            "@girs/freetype2-2.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gdkpixbuf-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^",            "@girs/atk-1.0": "workspace:^",            "@girs/dbusmenu-0.4": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "DbusmenuGtk-0.4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "DbusmenuGtk-0.4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/dbusmenugtk-0.4#readme"
 }
+
+

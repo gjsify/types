@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-geoclue-2.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Geoclue-2.0",
-    "tsconfig": "./tsconfig.json"
-}
-

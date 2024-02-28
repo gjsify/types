@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/vgpg-1)
 
 
-GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-VDA implementation using GDA as backend to connect to PostgreSQL databases
 
 ## Install
 

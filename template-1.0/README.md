@@ -5,9 +5,8 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/template-1.0)
 
 
-GJS TypeScript type definitions for Template-1.0, generated from library version 3.36.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.8.
+GJS TypeScript type definitions for Template-1.0, generated from library version 3.36.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-Template-GLib is a library to generate text from a template and user defined state. Template-GLib allows you to access properties on GObjects as well as call simple methods via GObject-Introspection Template-GLib does not use a language runtime, so it is safe to use from any GObject-Introspectable language.
 
 ## Install
 

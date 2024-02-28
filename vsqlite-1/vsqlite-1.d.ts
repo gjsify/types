@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -23,90 +22,44 @@ import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
 export namespace Vsqlite {
+    class ConnectionError extends GLib.Error {
+        // Own fields of Vsqlite-1.ConnectionError
 
-enum ConnectionError {
-    INVALID_FILE_ERROR,
-}
-module Connection {
+        INVALID_FILE_ERROR: number;
 
-    // Constructor properties interface
+        // Constructors of Vsqlite-1.ConnectionError
 
-    interface ConstructorProperties extends Vda.Connection.ConstructorProperties, GObject.Object.ConstructorProperties {
+        constructor(options: { message: string; code: number });
     }
 
-}
+    module Connection {
+        // Constructor properties interface
+    }
 
-interface Connection extends Vda.Connection {
+    class Connection extends GObject.Object {
+        // Constructors of Vsqlite-1.Connection
 
-    // Owm methods of Vsqlite-1.Vsqlite.Connection
+        static ['new'](): Connection;
 
-    type_to_gtype(t: number): GObject.GType
+        // Owm methods of Vsqlite-1.Connection
 
-    // Class property signals of Vsqlite-1.Vsqlite.Connection
+        type_to_gtype(t: number): GObject.GType;
+    }
 
-    connect(sigName: "notify::status", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::status", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::status", ...args: any[]): void
-    connect(sigName: "notify::parameters", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::parameters", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::parameters", ...args: any[]): void
-    connect(sigName: "notify::is-opened", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::is-opened", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::is-opened", ...args: any[]): void
-    connect(sigName: "notify::connection-string", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::connection-string", callback: (($obj: Connection, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::connection-string", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
+    class ConnectionClass {}
 
-class Connection extends GObject.Object {
+    class ConnectionPrivate {}
 
-    // Own properties of Vsqlite-1.Vsqlite.Connection
-
-    static name: string
-    static $gtype: GObject.GType<Connection>
-
-    // Constructors of Vsqlite-1.Vsqlite.Connection
-
-    constructor(config?: Connection.ConstructorProperties) 
-    constructor() 
-    static new(): Connection
-    _init(config?: Connection.ConstructorProperties): void
-}
-
-interface ConnectionClass {
-}
-
-abstract class ConnectionClass {
-
-    // Own properties of Vsqlite-1.Vsqlite.ConnectionClass
-
-    static name: string
-}
-
-interface ConnectionPrivate {
-}
-
-class ConnectionPrivate {
-
-    // Own properties of Vsqlite-1.Vsqlite.ConnectionPrivate
-
-    static name: string
-}
-
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Vsqlite;

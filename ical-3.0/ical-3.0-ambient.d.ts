@@ -9,4 +9,3 @@ declare module 'gi://ICal' {
     export default ICal30;
 }
 
-

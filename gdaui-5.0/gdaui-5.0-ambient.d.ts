@@ -9,4 +9,3 @@ declare module 'gi://Gdaui' {
     export default Gdaui50;
 }
 
-

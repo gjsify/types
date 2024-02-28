@@ -9,4 +9,3 @@ declare module 'gi://GSystem' {
     export default GSystem10;
 }
 
-

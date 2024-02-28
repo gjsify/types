@@ -1,12 +1,2 @@
-
-import Soup24 from '@girs/soup-2.4';
-
-declare global {
-    export interface GjsGiImports {
-        Soup: typeof Soup24;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Soup"
 

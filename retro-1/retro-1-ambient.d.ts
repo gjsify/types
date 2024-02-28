@@ -9,4 +9,3 @@ declare module 'gi://Retro' {
     export default Retro1;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://GModule' {
     export default GModule20;
 }
 
-

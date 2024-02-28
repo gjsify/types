@@ -187,9 +187,9 @@ export namespace Graphene {
      *   float v[GRAPHENE_VEC2_LEN];
      *
      *   // vec is defined elsewhere
-     *   graphene_vec2_to_float (&amp;vec, v);
+     *   graphene_vec2_to_float (&vec, v);
      *
-     *   for (int i = 0; i &lt; GRAPHENE_VEC2_LEN; i++)
+     *   for (int i = 0; i < GRAPHENE_VEC2_LEN; i++)
      *     fprintf (stdout, "component %d: %g\n", i, v[i]);
      * ```
      *
@@ -207,9 +207,9 @@ export namespace Graphene {
      *   float v[GRAPHENE_VEC3_LEN];
      *
      *   // vec is defined elsewhere
-     *   graphene_vec3_to_float (&amp;vec, v);
+     *   graphene_vec3_to_float (&vec, v);
      *
-     *   for (int i = 0; i &lt; GRAPHENE_VEC2_LEN; i++)
+     *   for (int i = 0; i < GRAPHENE_VEC2_LEN; i++)
      *     fprintf (stdout, "component %d: %g\n", i, v[i]);
      * ```
      *
@@ -227,9 +227,9 @@ export namespace Graphene {
      *   float v[GRAPHENE_VEC4_LEN];
      *
      *   // vec is defined elsewhere
-     *   graphene_vec4_to_float (&amp;vec, v);
+     *   graphene_vec4_to_float (&vec, v);
      *
-     *   for (int i = 0; i &lt; GRAPHENE_VEC4_LEN; i++)
+     *   for (int i = 0; i < GRAPHENE_VEC4_LEN; i++)
      *     fprintf (stdout, "component %d: %g\n", i, v[i]);
      * ```
      *
@@ -901,7 +901,7 @@ export namespace Graphene {
          * graphene_matrix_near(). For instance:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   if (graphene_matrix_equal_fast (a, b))
          *     {
          *       // matrices are definitely the same
@@ -974,7 +974,7 @@ export namespace Graphene {
          * The arguments map to the following matrix layout:
          *
          *
-         * ```&lt;!-- language="plain" --&gt;
+         * ```<!-- language="plain" -->
          *   ⎛ xx  yx ⎞   ⎛  a   b  0 ⎞
          *   ⎜ xy  yy ⎟ = ⎜  c   d  0 ⎟
          *   ⎝ x0  y0 ⎠   ⎝ tx  ty  1 ⎠
@@ -1280,7 +1280,7 @@ export namespace Graphene {
          * The returned values have the following layout:
          *
          *
-         * ```&lt;!-- language="plain" --&gt;
+         * ```<!-- language="plain" -->
          *   ⎛ xx  yx ⎞   ⎛  a   b  0 ⎞
          *   ⎜ xy  yy ⎟ = ⎜  c   d  0 ⎟
          *   ⎝ x0  y0 ⎠   ⎝ tx  ty  1 ⎠

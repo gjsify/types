@@ -1,12 +1,2 @@
-
-import Gdk30 from '@girs/gdk-3.0';
-
-declare global {
-    export interface GjsGiImports {
-        Gdk: typeof Gdk30;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Gdk"
 

@@ -9,4 +9,3 @@ declare module 'gi://Uhm' {
     export default Uhm00;
 }
 
-

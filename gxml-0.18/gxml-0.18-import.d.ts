@@ -1,12 +1,2 @@
-
-import GXml018 from '@girs/gxml-0.18';
-
-declare global {
-    export interface GjsGiImports {
-        GXml: typeof GXml018;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GXml"
 

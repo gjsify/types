@@ -9,4 +9,3 @@ declare module 'gi://Grl' {
     export default Grl02;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://GeglGtk3' {
     export default GeglGtk301;
 }
 
-

@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-granite-7.0.d.ts"],
-    "readme": "./README.md",
-    "name": "Granite-7.0",
-    "tsconfig": "./tsconfig.json"
-}
-

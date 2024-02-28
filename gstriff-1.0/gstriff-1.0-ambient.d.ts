@@ -9,4 +9,3 @@ declare module 'gi://GstRiff' {
     export default GstRiff10;
 }
 
-

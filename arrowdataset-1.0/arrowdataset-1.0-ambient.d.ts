@@ -9,4 +9,3 @@ declare module 'gi://ArrowDataset' {
     export default ArrowDataset10;
 }
 
-

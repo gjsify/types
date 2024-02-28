@@ -9,4 +9,3 @@ declare module 'gi://Gedit' {
     export default Gedit30;
 }
 
-

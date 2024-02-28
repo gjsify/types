@@ -9,4 +9,3 @@ declare module 'gi://GnomeAutoar' {
     export default GnomeAutoar01;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://TelepathyFarstream' {
     export default TelepathyFarstream06;
 }
 
-

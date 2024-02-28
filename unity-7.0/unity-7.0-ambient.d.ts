@@ -9,4 +9,3 @@ declare module 'gi://Unity' {
     export default Unity70;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://GstInterfaces' {
     export default GstInterfaces010;
 }
 
-

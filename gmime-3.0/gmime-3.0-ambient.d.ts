@@ -9,4 +9,3 @@ declare module 'gi://GMime' {
     export default GMime30;
 }
 
-

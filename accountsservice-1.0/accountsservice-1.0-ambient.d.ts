@@ -9,4 +9,3 @@ declare module 'gi://AccountsService' {
     export default AccountsService10;
 }
 
-

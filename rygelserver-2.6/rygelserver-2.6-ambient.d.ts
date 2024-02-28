@@ -9,4 +9,3 @@ declare module 'gi://RygelServer' {
     export default RygelServer26;
 }
 
-

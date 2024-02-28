@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,48 +14,23 @@ import './fontconfig-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace fontconfig {
+    function init(): void;
+    class Pattern {}
 
-function init(): void
-interface Pattern {
-}
+    class CharSet {}
 
-class Pattern {
+    class Config {}
 
-    // Own properties of fontconfig-2.0.fontconfig.Pattern
-
-    static name: string
-}
-
-interface CharSet {
-}
-
-class CharSet {
-
-    // Own properties of fontconfig-2.0.fontconfig.CharSet
-
-    static name: string
-}
-
-interface Config {
-}
-
-class Config {
-
-    // Own properties of fontconfig-2.0.fontconfig.Config
-
-    static name: string
-}
-
-/**
- * Name of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default fontconfig;

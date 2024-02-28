@@ -9,4 +9,3 @@ declare module 'gi://Rest' {
     export default Rest10;
 }
 
-

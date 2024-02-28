@@ -1,12 +1,2 @@
-
-import Gcr3 from '@girs/gcr-3';
-
-declare global {
-    export interface GjsGiImports {
-        Gcr: typeof Gcr3;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Gcr"
 

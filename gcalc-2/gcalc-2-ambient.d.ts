@@ -9,4 +9,3 @@ declare module 'gi://GCalc' {
     export default GCalc2;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://GnomeBluetooth' {
     export default GnomeBluetooth10;
 }
 
-

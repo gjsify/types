@@ -9,4 +9,3 @@ declare module 'gi://GstMpegts' {
     export default GstMpegts10;
 }
 
-

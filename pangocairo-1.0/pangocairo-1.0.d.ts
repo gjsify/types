@@ -225,7 +225,7 @@ export namespace PangoCairo {
      * be drawn at the current point of the cairo context.
      *
      * Note that `text` is the start of the text for layout, which is then
-     * indexed by `glyph_item-&gt;item-&gt;offset`.
+     * indexed by `glyph_item->item->offset`.
      * @param cr a Cairo context
      * @param text the UTF-8 text that @glyph_item refers to
      * @param glyph_item a `PangoGlyphItem`
@@ -293,7 +293,7 @@ export namespace PangoCairo {
         get_scaled_font(): cairo.ScaledFont | null;
     }
 
-    interface FontMap {
+    interface FontMap<A extends GObject.Object = GObject.Object> {
         // Owm methods of PangoCairo-1.0.FontMap
 
         /**

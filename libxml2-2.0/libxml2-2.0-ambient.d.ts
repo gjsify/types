@@ -9,4 +9,3 @@ declare module 'gi://libxml2' {
     export default Libxml220;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Mx' {
     export default Mx20;
 }
 
-

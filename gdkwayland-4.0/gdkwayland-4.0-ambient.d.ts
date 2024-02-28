@@ -9,4 +9,3 @@ declare module 'gi://GdkWayland' {
     export default GdkWayland40;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Anjuta' {
     export default Anjuta30;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://HarfBuzz' {
     export default HarfBuzz00;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://Bamf' {
     export default Bamf3;
 }
 
-

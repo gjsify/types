@@ -9,4 +9,3 @@ declare module 'gi://GES' {
     export default GES10;
 }
 
-

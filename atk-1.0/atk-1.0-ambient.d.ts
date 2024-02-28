@@ -9,4 +9,3 @@ declare module 'gi://Atk' {
     export default Atk10;
 }
 
-

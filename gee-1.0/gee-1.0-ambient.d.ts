@@ -9,4 +9,3 @@ declare module 'gi://Gee' {
     export default Gee10;
 }
 
-

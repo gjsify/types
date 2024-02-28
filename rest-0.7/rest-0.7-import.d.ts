@@ -1,12 +1,2 @@
-
-import Rest07 from '@girs/rest-0.7';
-
-declare global {
-    export interface GjsGiImports {
-        Rest: typeof Rest07;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Rest"
 

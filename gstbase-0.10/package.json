@@ -1,62 +1,44 @@
 {
     "name": "@girs/gstbase-0.10",
-    "version": "0.10.0-3.2.8",
+    "version": "0.10.0-4.0.0",
     "description": "GJS TypeScript type definitions for GstBase-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstbase-0.10.js",
     "main": "gstbase-0.10.js",
     "exports": {
-        "./ambient": {
-            "types": "./gstbase-0.10-ambient.d.ts",
-            "default": "./gstbase-0.10-ambient.js"
-        },
-        "./import": {
-            "types": "./gstbase-0.10-import.d.ts",
-            "default": "./gstbase-0.10-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./gstbase-0.10.d.ts",
-                "default": "./gstbase-0.10.js"
-            },
-            "require": {
-                "types": "./gstbase-0.10.d.cts",
-                "default": "./gstbase-0.10.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./gstbase-0.10-ambient.d.ts",
+        "default": "./gstbase-0.10-ambient.js"
+      },
+      "./import": {
+        "types": "./gstbase-0.10-import.d.ts",
+        "default": "./gstbase-0.10-import.js"
+      },
+      ".": {
+        "types": "./gstbase-0.10.d.ts",
+        "default": "./gstbase-0.10.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstbase-0.10.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstbase-0.10.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstbase-0.10.d.ts"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gst-0.10": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/libxml2-2.0": "workspace:^",            "@girs/gst-0.10": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GstBase-0.10"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstBase-0.10"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstbase-0.10#readme"
 }
+
+

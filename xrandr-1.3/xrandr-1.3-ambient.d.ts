@@ -9,4 +9,3 @@ declare module 'gi://xrandr' {
     export default Xrandr13;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://GstInsertBin' {
     export default GstInsertBin10;
 }
 
-

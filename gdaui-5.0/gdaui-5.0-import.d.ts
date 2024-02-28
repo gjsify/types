@@ -1,12 +1,2 @@
-
-import Gdaui50 from '@girs/gdaui-5.0';
-
-declare global {
-    export interface GjsGiImports {
-        Gdaui: typeof Gdaui50;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Gdaui"
 

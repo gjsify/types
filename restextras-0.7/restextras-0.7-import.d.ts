@@ -1,12 +1,2 @@
-
-import RestExtras07 from '@girs/restextras-0.7';
-
-declare global {
-    export interface GjsGiImports {
-        RestExtras: typeof RestExtras07;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "RestExtras"
 

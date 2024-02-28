@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-shell-13.d.ts"],
-    "readme": "./README.md",
-    "name": "Shell-13",
-    "tsconfig": "./tsconfig.json"
-}
-

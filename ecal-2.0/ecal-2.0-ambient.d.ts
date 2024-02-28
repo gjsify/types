@@ -9,4 +9,3 @@ declare module 'gi://ECal' {
     export default ECal20;
 }
 
-

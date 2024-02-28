@@ -1,7 +1,0 @@
-{
-    "entryPoints": ["./node-retro-2.d.ts"],
-    "readme": "./README.md",
-    "name": "Retro-2",
-    "tsconfig": "./tsconfig.json"
-}
-

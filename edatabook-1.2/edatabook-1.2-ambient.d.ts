@@ -9,4 +9,3 @@ declare module 'gi://EDataBook' {
     export default EDataBook12;
 }
 
-

@@ -9,4 +9,3 @@ declare module 'gi://EpcUi' {
     export default EpcUi10;
 }
 
-

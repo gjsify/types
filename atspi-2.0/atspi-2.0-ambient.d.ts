@@ -9,4 +9,3 @@ declare module 'gi://Atspi' {
     export default Atspi20;
 }
 
-

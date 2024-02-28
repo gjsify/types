@@ -9,4 +9,3 @@ declare module 'gi://Gpseq' {
     export default Gpseq10;
 }
 
-

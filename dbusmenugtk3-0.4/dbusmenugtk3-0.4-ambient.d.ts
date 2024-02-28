@@ -9,4 +9,3 @@ declare module 'gi://DbusmenuGtk3' {
     export default DbusmenuGtk304;
 }
 
-

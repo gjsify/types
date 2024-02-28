@@ -9,4 +9,3 @@ declare module 'gi://EDataServerUI' {
     export default EDataServerUI12;
 }
 
-

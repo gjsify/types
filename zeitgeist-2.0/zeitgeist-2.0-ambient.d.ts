@@ -9,4 +9,3 @@ declare module 'gi://Zeitgeist' {
     export default Zeitgeist20;
 }
 
-

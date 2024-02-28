@@ -9,4 +9,3 @@ declare module 'gi://Guestfs' {
     export default Guestfs10;
 }
 
-

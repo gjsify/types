@@ -9,4 +9,3 @@ declare module 'gi://Parquet' {
     export default Parquet10;
 }
 
-

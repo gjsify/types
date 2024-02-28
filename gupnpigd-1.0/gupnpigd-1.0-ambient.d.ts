@@ -9,4 +9,3 @@ declare module 'gi://GUPnPIgd' {
     export default GUPnPIgd10;
 }
 
-

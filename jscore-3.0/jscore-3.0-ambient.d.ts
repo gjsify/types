@@ -9,4 +9,3 @@ declare module 'gi://JSCore' {
     export default JSCore30;
 }
 
-

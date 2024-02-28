@@ -9,4 +9,3 @@ declare module 'gi://TotemPlParser' {
     export default TotemPlParser10;
 }
 
-

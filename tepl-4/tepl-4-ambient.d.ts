@@ -9,4 +9,3 @@ declare module 'gi://Tepl' {
     export default Tepl4;
 }
 
-

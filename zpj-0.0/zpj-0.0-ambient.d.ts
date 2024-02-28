@@ -9,4 +9,3 @@ declare module 'gi://Zpj' {
     export default Zpj00;
 }
 
-

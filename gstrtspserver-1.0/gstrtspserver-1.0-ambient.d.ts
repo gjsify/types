@@ -9,4 +9,3 @@ declare module 'gi://GstRtspServer' {
     export default GstRtspServer10;
 }
 
-

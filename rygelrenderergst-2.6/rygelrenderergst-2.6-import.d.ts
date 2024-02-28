@@ -1,12 +1,2 @@
-
-import RygelRendererGst26 from '@girs/rygelrenderergst-2.6';
-
-declare global {
-    export interface GjsGiImports {
-        RygelRendererGst: typeof RygelRendererGst26;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "RygelRendererGst"
 

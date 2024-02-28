@@ -9,4 +9,3 @@ declare module 'gi://Plasma' {
     export default Plasma10;
 }
 
-

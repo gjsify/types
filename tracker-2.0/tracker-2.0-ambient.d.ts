@@ -9,4 +9,3 @@ declare module 'gi://Tracker' {
     export default Tracker20;
 }
 
-

@@ -882,7 +882,7 @@ export namespace GLib {
         NOTHING_TO_REPEAT: number;
         /**
          * Unrecognized character after "(?",
-         *     "(?&lt;" or "(?P". Since 2.16
+         *     "(?<" or "(?P". Since 2.16
          */
         UNRECOGNIZED_CHARACTER: number;
         /**
@@ -1231,7 +1231,7 @@ export namespace GLib {
         LIBBAD: number;
         /**
          * Some other fatal failure,
-         *   `error-&gt;message` should explain.
+         *   `error->message` should explain.
          */
         FAILED: number;
 
@@ -2731,7 +2731,7 @@ export namespace GLib {
      *
      * The typical usage would be something like:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   char buf[G_ASCII_DTOSTR_BUF_SIZE];
      *
      *   fprintf (out, "value=%s\n", g_ascii_dtostr (buf, sizeof (buf), value));
@@ -2746,7 +2746,7 @@ export namespace GLib {
      * structures, for instance:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * typedef struct {
      *   gatomicrefcount ref_count;
      *   char *name;
@@ -2800,7 +2800,7 @@ export namespace GLib {
     /**
      * A bitmask that restricts the possible flags passed to
      * g_datalist_set_flags(). Passing a flags value where
-     * flags &amp; ~G_DATALIST_FLAGS_MASK != 0 is an error.
+     * flags & ~G_DATALIST_FLAGS_MASK != 0 is an error.
      */
     const DATALIST_FLAGS_MASK: number;
     /**
@@ -2836,10 +2836,10 @@ export namespace GLib {
      * modifiers between percent-sign and conversion specifier.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * gint16 in;
      * gint32 out;
-     * sscanf ("42", "%" G_GINT16_FORMAT, &amp;in)
+     * sscanf ("42", "%" G_GINT16_FORMAT, &in)
      * out = in * 1000;
      * g_print ("%" G_GINT32_FORMAT, out);
      *
@@ -2859,7 +2859,7 @@ export namespace GLib {
      *
      * The following example prints "0x7b";
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * gint16 value = 123;
      * g_print ("%#" G_GINT16_MODIFIER "x", value);
      * ```
@@ -3050,7 +3050,7 @@ export namespace GLib {
     /**
      * The position of the first bit which is not reserved for internal
      * use be the #GHook implementation, i.e.
-     * `1 &lt;&lt; G_HOOK_FLAG_USER_SHIFT` is the first
+     * `1 << G_HOOK_FLAG_USER_SHIFT` is the first
      * bit which can be used for application-defined flags.
      */
     const HOOK_FLAG_USER_SHIFT: number;
@@ -3261,7 +3261,7 @@ export namespace GLib {
      */
     const LOG_FATAL_MASK: number;
     /**
-     * Log levels below 1&lt;&lt;G_LOG_LEVEL_USER_SHIFT are used by GLib.
+     * Log levels below 1<<G_LOG_LEVEL_USER_SHIFT are used by GLib.
      * Higher bits can be used for user-defined log levels.
      */
     const LOG_LEVEL_USER_SHIFT: number;
@@ -3442,7 +3442,7 @@ export namespace GLib {
      * structures, for instance:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * typedef struct {
      *   grefcount ref_count;
      *   char *name;
@@ -3556,7 +3556,7 @@ export namespace GLib {
     const URI_RESERVED_CHARS_GENERIC_DELIMITERS: string;
     /**
      * Subcomponent delimiter characters as defined in
-     * [RFC 3986](https://tools.ietf.org/html/rfc3986). Includes `!$&amp;'()*+,;=`.
+     * [RFC 3986](https://tools.ietf.org/html/rfc3986). Includes `!$&'()*+,;=`.
      */
     const URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS: string;
     /**
@@ -3708,7 +3708,7 @@ export namespace GLib {
      * Both `s1` and `s2` must be non-%NULL.
      * @param s1 string to compare with @s2
      * @param s2 string to compare with @s1
-     * @returns 0 if the strings match, a negative value if @s1 &lt; @s2,     or a positive value if @s1 &gt; @s2.
+     * @returns 0 if the strings match, a negative value if @s1 < @s2,     or a positive value if @s1 > @s2.
      */
     function ascii_strcasecmp(s1: string, s2: string): number;
     /**
@@ -3793,7 +3793,7 @@ export namespace GLib {
      * @param s1 string to compare with @s2
      * @param s2 string to compare with @s1
      * @param n number of characters to compare
-     * @returns 0 if the strings match, a negative value if @s1 &lt; @s2,     or a positive value if @s1 &gt; @s2.
+     * @returns 0 if the strings match, a negative value if @s1 < @s2,     or a positive value if @s1 > @s2.
      */
     function ascii_strncasecmp(s1: string, s2: string, n: number): number;
     /**
@@ -4027,7 +4027,7 @@ export namespace GLib {
      * This call acts as a full compiler and hardware memory barrier.
      *
      * Think of this operation as an atomic version of
-     * `{ tmp = *atomic; *atomic &amp;= val; return tmp; }`.
+     * `{ tmp = *atomic; *atomic &= val; return tmp; }`.
      *
      * While `atomic` has a `volatile` qualifier, this is a historical artifact and
      * the pointer passed to it should not be `volatile`.
@@ -4199,7 +4199,7 @@ export namespace GLib {
      * storing the result back in `atomic`.
      *
      * Think of this operation as an atomic version of
-     * `{ tmp = *atomic; *atomic &amp;= val; return tmp; }`.
+     * `{ tmp = *atomic; *atomic &= val; return tmp; }`.
      *
      * This call acts as a full compiler and hardware memory barrier.
      *
@@ -4490,7 +4490,7 @@ export namespace GLib {
      * Attempting to lock on two different bits within the same integer is
      * not supported and will very probably cause deadlocks.
      *
-     * The value of the bit that is set is (1u &lt;&lt; `bit)`.  If `bit` is not
+     * The value of the bit that is set is (1u << `bit)`.  If `bit` is not
      * between 0 and 31 then the result is undefined.
      *
      * This function accesses `address` atomically.  All other accesses to
@@ -4536,7 +4536,7 @@ export namespace GLib {
      * Attempting to lock on two different bits within the same integer is
      * not supported.
      *
-     * The value of the bit that is set is (1u &lt;&lt; `bit)`.  If `bit` is not
+     * The value of the bit that is set is (1u << `bit)`.  If `bit` is not
      * between 0 and 31 then the result is undefined.
      *
      * This function accesses `address` atomically.  All other accesses to
@@ -5375,18 +5375,18 @@ export namespace GLib {
      * to convert it to an absolute path:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * g_autoptr(GError) local_error = NULL;
-     * g_autofree gchar *link_target = g_file_read_link ("/etc/localtime", &amp;local_error);
+     * g_autofree gchar *link_target = g_file_read_link ("/etc/localtime", &local_error);
      *
      * if (local_error != NULL)
-     *   g_error ("Error reading link: %s", local_error-&gt;message);
+     *   g_error ("Error reading link: %s", local_error->message);
      *
      * if (!g_path_is_absolute (link_target))
      *   {
      *     g_autofree gchar *absolute_link_target = g_build_filename ("/etc", link_target, NULL);
      *     g_free (link_target);
-     *     link_target = g_steal_pointer (&amp;absolute_link_target);
+     *     link_target = g_steal_pointer (&absolute_link_target);
      *   }
      * ```
      *
@@ -5496,7 +5496,7 @@ export namespace GLib {
      * tricked into writing into a different location. It doesn't work!
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *  // DON'T DO THIS
      *  if (!g_file_test (filename, G_FILE_TEST_IS_SYMLINK))
      *    {
@@ -6923,7 +6923,7 @@ export namespace GLib {
      * behaviour as the default, but a different destination or output format:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   if (g_log_writer_default_would_drop (log_level, log_domain))
      *     return G_LOG_WRITER_HANDLED;
      * ```
@@ -6933,7 +6933,7 @@ export namespace GLib {
      * message, and `G_MESSAGES_DEBUG` is not set:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   if (!g_log_writer_default_would_drop (G_LOG_LEVEL_DEBUG, G_LOG_DOMAIN))
      *     {
      *       gchar *result = expensive_computation (my_object);
@@ -6972,7 +6972,7 @@ export namespace GLib {
      * Invalid file descriptors are accepted and return %FALSE, which allows for
      * the following construct without needing any additional error handling:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   is_journald = g_log_writer_is_journald (fileno (stderr));
      * ```
      *
@@ -7080,7 +7080,7 @@ export namespace GLib {
      * Imagine an extremely simple "garbage collected" system.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static GList *free_list;
      *
      * gpointer
@@ -7095,8 +7095,8 @@ export namespace GLib {
      * free_allocated_memory (void)
      * {
      *   GList *l;
-     *   for (l = free_list; l; l = l-&gt;next);
-     *     g_free (l-&gt;data);
+     *   for (l = free_list; l; l = l->next);
+     *     g_free (l->data);
      *   g_list_free (free_list);
      *   free_list = NULL;
      *  }
@@ -7119,15 +7119,15 @@ export namespace GLib {
      * recursive callback. This can be fixed by using g_main_depth()
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * gpointer
      * allocate_memory (gsize size)
      * {
      *   FreeListBlock *block = g_new (FreeListBlock, 1);
-     *   block-&gt;mem = g_malloc (size);
-     *   block-&gt;depth = g_main_depth ();
+     *   block->mem = g_malloc (size);
+     *   block->depth = g_main_depth ();
      *   free_list = g_list_prepend (free_list, block);
-     *   return block-&gt;mem;
+     *   return block->mem;
      * }
      *
      * void
@@ -7138,11 +7138,11 @@ export namespace GLib {
      *   int depth = g_main_depth ();
      *   for (l = free_list; l; );
      *     {
-     *       GList *next = l-&gt;next;
-     *       FreeListBlock *block = l-&gt;data;
-     *       if (block-&gt;depth &gt; depth)
+     *       GList *next = l->next;
+     *       FreeListBlock *block = l->data;
+     *       if (block->depth > depth)
      *         {
-     *           g_free (block-&gt;mem);
+     *           g_free (block->mem);
      *           g_free (block);
      *           free_list = g_list_delete_link (free_list, l);
      *         }
@@ -7230,7 +7230,7 @@ export namespace GLib {
      * of line endings and attribute values.
      *
      * Note also that this function will produce character references in
-     * the range of &amp;#x1; ... &amp;#x1f; for all control sequences
+     * the range of &#x1; ... &#x1f; for all control sequences
      * except for tabstop, newline and carriage return.  The character
      * references in this range are not valid XML 1.0, but they are
      * valid XML 1.1 and will be accepted by the GMarkup parser.
@@ -7303,8 +7303,8 @@ export namespace GLib {
      * the g_log() functions.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
-     * #include &lt;glib.h&gt;
+     * ```c
+     * #include <glib.h>
      *
      * static void
      * log_handler (const gchar   *log_domain,
@@ -7376,14 +7376,14 @@ export namespace GLib {
      * like this:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   static gsize initialization_value = 0;
      *
-     *   if (g_once_init_enter (&amp;initialization_value))
+     *   if (g_once_init_enter (&initialization_value))
      *     {
      *       gsize setup_value = 42; // initialization code here
      *
-     *       g_once_init_leave (&amp;initialization_value, setup_value);
+     *       g_once_init_leave (&initialization_value, setup_value);
      *     }
      *
      *   // use initialization_value here
@@ -8928,7 +8928,7 @@ export namespace GLib {
      * return value is to allow nesting such as:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_ascii_strup (g_strcanon (str, "abc", '?'))
      * ```
      *
@@ -8936,7 +8936,7 @@ export namespace GLib {
      * In order to modify a copy, you may use g_strdup():
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   reformatted = g_strcanon (g_strdup (const_str), "abc", '?');
      *   ...
      *   g_free (reformatted);
@@ -8953,7 +8953,7 @@ export namespace GLib {
      * strcasecmp() function on platforms which support it.
      * @param s1 a string
      * @param s2 a string to compare with @s1
-     * @returns 0 if the strings match, a negative value if @s1 &lt; @s2,     or a positive value if @s1 &gt; @s2.
+     * @returns 0 if the strings match, a negative value if @s1 < @s2,     or a positive value if @s1 > @s2.
      */
     function strcasecmp(s1: string, s2: string): number;
     /**
@@ -8991,7 +8991,7 @@ export namespace GLib {
      * Comparing two %NULL pointers returns 0.
      * @param str1 a C string or %NULL
      * @param str2 another C string or %NULL
-     * @returns an integer less than, equal to, or greater than zero, if @str1 is &lt;, == or &gt; than @str2.
+     * @returns an integer less than, equal to, or greater than zero, if @str1 is <, == or > than @str2.
      */
     function strcmp0(str1?: string | null, str2?: string | null): number;
     /**
@@ -9012,7 +9012,7 @@ export namespace GLib {
      * The return value is to allow nesting such as:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_ascii_strup (g_strdelimit (str, "abc", '?'))
      * ```
      *
@@ -9020,7 +9020,7 @@ export namespace GLib {
      * In order to modify a copy, you may use g_strdup():
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   reformatted = g_strdelimit (g_strdup (const_str), "abc", '?');
      *   ...
      *   g_free (reformatted);
@@ -9068,7 +9068,7 @@ export namespace GLib {
      * ```
      *
      * @param errnum the system error number. See the standard C %errno     documentation
-     * @returns a UTF-8 string describing the error code. If the error code     is unknown, it returns a string like "Unknown error: &lt;code&gt;".
+     * @returns a UTF-8 string describing the error code. If the error code     is unknown, it returns a string like "Unknown error: <code>".
      */
     function strerror(errnum: number): string;
     /**
@@ -9130,7 +9130,7 @@ export namespace GLib {
      * @param dest destination buffer, already containing one nul-terminated string
      * @param src source buffer
      * @param dest_size length of @dest buffer in bytes (not length of existing string     inside @dest)
-     * @returns size of attempted result, which is MIN (dest_size, strlen     (original dest)) + strlen (src), so if retval &gt;= dest_size,     truncation occurred.
+     * @returns size of attempted result, which is MIN (dest_size, strlen     (original dest)) + strlen (src), so if retval >= dest_size,     truncation occurred.
      */
     function strlcat(dest: string, src: string, dest_size: number): number;
     /**
@@ -9143,7 +9143,7 @@ export namespace GLib {
      * (unless `dest_size` is 0). This function does not allocate memory. Unlike
      * strncpy(), this function doesn't pad `dest` (so it's often faster). It
      * returns the size of the attempted result, strlen (src), so if
-     * `retval` &gt;= `dest_size,` truncation occurred.
+     * `retval` >= `dest_size,` truncation occurred.
      *
      * Caveat: strlcpy() is supposedly more secure than strcpy() or strncpy(),
      * but if you really want to avoid screwups, g_strdup() is an even better
@@ -9162,7 +9162,7 @@ export namespace GLib {
      * @param s1 a string
      * @param s2 a string to compare with @s1
      * @param n the maximum number of characters to compare
-     * @returns 0 if the strings match, a negative value if @s1 &lt; @s2,     or a positive value if @s1 &gt; @s2.
+     * @returns 0 if the strings match, a negative value if @s1 < @s2,     or a positive value if @s1 > @s2.
      */
     function strncasecmp(s1: string, s2: string, n: number): number;
     /**
@@ -9222,7 +9222,7 @@ export namespace GLib {
      * returns a string in UTF-8 encoding, and since not all platforms support
      * the strsignal() function.
      * @param signum the signal number. See the `signal` documentation
-     * @returns a UTF-8 string describing the signal. If the signal is unknown,     it returns "unknown signal (&lt;signum&gt;)".
+     * @returns a UTF-8 string describing the signal. If the signal is unknown,     it returns "unknown signal (<signum>)".
      */
     function strsignal(signum: number): string;
     /**
@@ -9381,7 +9381,7 @@ export namespace GLib {
      * For example:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   // g_main_context_push_thread_default() should fail if the
      *   // context is already owned by another thread.
      *   g_test_expect_message (G_LOG_DOMAIN,
@@ -9504,7 +9504,7 @@ export namespace GLib {
      * see g_test_rand_int() for details on test case random numbers.
      * @param range_start the minimum value returned by this function
      * @param range_end the minimum value not returned by this function
-     * @returns a number with @range_start &lt;= number &lt; @range_end.
+     * @returns a number with @range_start <= number < @range_end.
      */
     function test_rand_double_range(range_start: number, range_end: number): number;
     /**
@@ -9525,7 +9525,7 @@ export namespace GLib {
      * see g_test_rand_int() for details on test case random numbers.
      * @param begin the minimum value returned by this function
      * @param end the smallest value not to be returned by this function
-     * @returns a number with @begin &lt;= number &lt; @end.
+     * @returns a number with @begin <= number < @end.
      */
     function test_rand_int_range(begin: number, end: number): number;
     /**
@@ -9619,7 +9619,7 @@ export namespace GLib {
      *
      * For example:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static void
      * test_array_sort (void)
      * {
@@ -9672,7 +9672,7 @@ export namespace GLib {
      * termination and validates child program outputs.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   static void
      *   test_fork_patterns (void)
      *   {
@@ -9740,7 +9740,7 @@ export namespace GLib {
      * message.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   static void
      *   test_create_large_object (void)
      *   {
@@ -9759,7 +9759,7 @@ export namespace GLib {
      *   int
      *   main (int argc, char **argv)
      *   {
-     *     g_test_init (&amp;argc, &amp;argv, NULL);
+     *     g_test_init (&argc, &argv, NULL);
      *
      *     g_test_add_func ("/myobject/create_large_object",
      *                      test_create_large_object);
@@ -10122,7 +10122,7 @@ export namespace GLib {
      * No composition can have either of `a` or `b` equal to zero.
      * To be precise, this function composes if and only if
      * there exists a Primary Composite P which is canonically
-     * equivalent to the sequence &lt;`a,``b&`gt;.  See the Unicode
+     * equivalent to the sequence <`a,``b>`.  See the Unicode
      * Standard for the definition of Primary Composite.
      *
      * If `a` and `b` do not compose a new character, `ch` is set to zero.
@@ -10829,7 +10829,7 @@ export namespace GLib {
      * %G_URI_PARAMS_WWW_FORM is handled as documented for g_uri_params_iter_init().
      *
      * If %G_URI_PARAMS_CASE_INSENSITIVE is passed to `flags,` attributes will be
-     * compared case-insensitively, so a params string `attr=123&amp;Attr=456` will only
+     * compared case-insensitively, so a params string `attr=123&Attr=456` will only
      * return a single attribute–value pair, `Attr=456`. Case will be preserved in
      * the returned attributes.
      *
@@ -10837,7 +10837,7 @@ export namespace GLib {
      * characters in a row), then `error` is set and %NULL is returned.
      * @param params a `%`-encoded string containing `attribute=value`   parameters
      * @param length the length of @params, or `-1` if it is nul-terminated
-     * @param separators the separator byte character set between parameters. (usually   `&amp;`, but sometimes `;` or both `&amp;;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
+     * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
      * @param flags flags to modify the way the parameters are handled.
      * @returns A hash table of attribute/value pairs, with both names and values     fully-decoded; or %NULL on error.
      */
@@ -11059,7 +11059,7 @@ export namespace GLib {
      * different language scripts, for example.
      * @param str1 a UTF-8 encoded string
      * @param str2 a UTF-8 encoded string
-     * @returns &lt; 0 if @str1 compares before @str2,   0 if they compare equal, &gt; 0 if @str1 compares after @str2.
+     * @returns < 0 if @str1 compares before @str2,   0 if they compare equal, > 0 if @str1 compares after @str2.
      */
     function utf8_collate(str1: string, str2: string): number;
     /**
@@ -11159,7 +11159,7 @@ export namespace GLib {
      * assumption that it is close enough to ASCII or UTF-8 to be mostly
      * readable as-is.
      * @param str string to coerce into UTF-8
-     * @param len the maximum length of @str to use, in bytes. If @len &lt; 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
      * @returns a valid UTF-8 string whose content resembles @str
      */
     function utf8_make_valid(str: string, len: number): string;
@@ -11304,7 +11304,7 @@ export namespace GLib {
      * newly-allocated memory, which should be freed with g_free() when
      * no longer needed.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len &lt; 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
      * @returns a newly-allocated string which is the reverse of @str
      */
     function utf8_strreverse(str: string, len: number): string;
@@ -11336,7 +11336,7 @@ export namespace GLib {
      * representation as UCS-4. A trailing 0 character will be added to the
      * string after the converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len &lt; 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
      */
     function utf8_to_ucs4(str: string, len: number): number;
@@ -11347,7 +11347,7 @@ export namespace GLib {
      * but does no error checking on the input. A trailing 0 character
      * will be added to the string after the converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length of @str to use, in bytes. If @len &lt; 0,     then the string is nul-terminated.
+     * @param len the maximum length of @str to use, in bytes. If @len < 0,     then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.     This value must be freed with g_free().
      */
     function utf8_to_ucs4_fast(str: string, len: number): number;
@@ -11355,7 +11355,7 @@ export namespace GLib {
      * Convert a string from UTF-8 to UTF-16. A 0 character will be
      * added to the result after the converted text.
      * @param str a UTF-8 encoded string
-     * @param len the maximum length (number of bytes) of @str to use.     If @len &lt; 0, then the string is nul-terminated.
+     * @param len the maximum length (number of bytes) of @str to use.     If @len < 0, then the string is nul-terminated.
      * @returns a pointer to a newly allocated UTF-16 string.     This value must be freed with g_free(). If an error occurs,     %NULL will be returned and @error set.
      */
     function utf8_to_utf16(str: string, len: number): number;
@@ -12097,7 +12097,7 @@ export namespace GLib {
          * When this flag is set, CDATA marked
          *     sections are not passed literally to the `passthrough` function of
          *     the parser. Instead, the content of the section (without the
-         *     `&lt;![CDATA[` and `]]&gt;`) is
+         *     `<![CDATA[` and `]]>`) is
          *     passed to the `text` function. This flag was added in GLib 2.12
          */
         TREAT_CDATA_AS_TEXT,
@@ -12938,11 +12938,11 @@ export namespace GLib {
      * Desktop Bookmark Specification, here is a quick summary: bookmark
      * files use a sub-class of the XML Bookmark Exchange Language
      * specification, consisting of valid UTF-8 encoded XML, under the
-     * &lt;xbel&gt; root element; each bookmark is stored inside a
-     * &lt;bookmark&gt; element, using its URI: no relative paths can
+     * <xbel> root element; each bookmark is stored inside a
+     * <bookmark> element, using its URI: no relative paths can
      * be used inside a bookmark file. The bookmark may have a user defined
      * title and description, to be used instead of the URI. Under the
-     * &lt;metadata&gt; element, with its owner attribute set to
+     * <metadata> element, with its owner attribute set to
      * `http://freedesktop.org`, is stored the meta-data about a resource
      * pointed by its URI. The meta-data consists of the resource's MIME
      * type; the applications that have registered a bookmark; the groups
@@ -13333,7 +13333,7 @@ export namespace GLib {
          * The expansion is done automatically when retrieving the stored
          * command line using the g_bookmark_file_get_application_info() function.
          * `count` is the number of times the application has registered the
-         * bookmark; if is &lt; 0, the current registration count will be increased
+         * bookmark; if is < 0, the current registration count will be increased
          * by one, if is 0, the application with `name` will be removed from
          * the list of registered applications.
          * `stamp` is the Unix time of the last registration; if it is -1, the
@@ -13370,7 +13370,7 @@ export namespace GLib {
          * The expansion is done automatically when retrieving the stored
          * command line using the g_bookmark_file_get_application_info() function.
          * `count` is the number of times the application has registered the
-         * bookmark; if is &lt; 0, the current registration count will be increased
+         * bookmark; if is < 0, the current registration count will be increased
          * by one, if is 0, the application with `name` will be removed from
          * the list of registered applications.
          * `stamp` is the Unix time of the last registration.
@@ -13559,7 +13559,7 @@ export namespace GLib {
         /**
          * Creates a new #GByteArray with a reference count of 1.
          */
-        static new(): Uint8Array;
+        static ['new'](): Uint8Array;
         /**
          * Creates a byte array containing the `data`.
          * After this call, `data` belongs to the #GByteArray and may no longer be
@@ -13831,7 +13831,7 @@ export namespace GLib {
      * Here is an example for using GCond to block a thread until a condition
      * is satisfied:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   gpointer current_data = NULL;
      *   GMutex data_mutex;
      *   GCond data_cond;
@@ -13839,10 +13839,10 @@ export namespace GLib {
      *   void
      *   push_data (gpointer data)
      *   {
-     *     g_mutex_lock (&amp;data_mutex);
+     *     g_mutex_lock (&data_mutex);
      *     current_data = data;
-     *     g_cond_signal (&amp;data_cond);
-     *     g_mutex_unlock (&amp;data_mutex);
+     *     g_cond_signal (&data_cond);
+     *     g_mutex_unlock (&data_mutex);
      *   }
      *
      *   gpointer
@@ -13850,12 +13850,12 @@ export namespace GLib {
      *   {
      *     gpointer data;
      *
-     *     g_mutex_lock (&amp;data_mutex);
+     *     g_mutex_lock (&data_mutex);
      *     while (!current_data)
-     *       g_cond_wait (&amp;data_cond, &amp;data_mutex);
+     *       g_cond_wait (&data_cond, &data_mutex);
      *     data = current_data;
      *     current_data = NULL;
-     *     g_mutex_unlock (&amp;data_mutex);
+     *     g_mutex_unlock (&data_mutex);
      *
      *     return data;
      *   }
@@ -13964,21 +13964,21 @@ export namespace GLib {
          * documentation for #GCond):
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * gpointer
          * pop_data_timed (void)
          * {
          *   gint64 end_time;
          *   gpointer data;
          *
-         *   g_mutex_lock (&amp;data_mutex);
+         *   g_mutex_lock (&data_mutex);
          *
          *   end_time = g_get_monotonic_time () + 5 * G_TIME_SPAN_SECOND;
          *   while (!current_data)
-         *     if (!g_cond_wait_until (&amp;data_cond, &amp;data_mutex, end_time))
+         *     if (!g_cond_wait_until (&data_cond, &data_mutex, end_time))
          *       {
          *         // timeout has passed.
-         *         g_mutex_unlock (&amp;data_mutex);
+         *         g_mutex_unlock (&data_mutex);
          *         return NULL;
          *       }
          *
@@ -13986,7 +13986,7 @@ export namespace GLib {
          *   data = current_data;
          *   current_data = NULL;
          *
-         *   g_mutex_unlock (&amp;data_mutex);
+         *   g_mutex_unlock (&data_mutex);
          *
          *   return data;
          * }
@@ -14353,7 +14353,7 @@ export namespace GLib {
          *
          * To set the value of a date to the current day, you could write:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *  time_t now = time (NULL);
          *  if (now == (time_t) -1)
          *    // handle the error
@@ -15244,12 +15244,12 @@ export namespace GLib {
          * table is not defined.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GHashTableIter iter;
          * gpointer key, value;
          *
-         * g_hash_table_iter_init (&amp;iter, hash_table);
-         * while (g_hash_table_iter_next (&amp;iter, &amp;key, &amp;value))
+         * g_hash_table_iter_init (&iter, hash_table);
+         * while (g_hash_table_iter_next (&iter, &key, &value))
          *   {
          *     // do something with key and value
          *   }
@@ -15278,11 +15278,11 @@ export namespace GLib {
          *
          * It is safe to continue iterating the #GHashTable afterward:
          *
-         * ```&lt;!-- language="C" --&gt;
-         * while (g_hash_table_iter_next (&amp;iter, &amp;key, &amp;value))
+         * ```c
+         * while (g_hash_table_iter_next (&iter, &key, &value))
          *   {
          *     if (condition)
-         *       g_hash_table_iter_remove (&amp;iter);
+         *       g_hash_table_iter_remove (&iter);
          *   }
          * ```
          *
@@ -15417,7 +15417,7 @@ export namespace GLib {
          * Compares the ids of two #GHook elements, returning a negative value
          * if the second id is greater than the first.
          * @param sibling a #GHook to compare with @new_hook
-         * @returns a value &lt;= 0 if the id of @sibling is &gt;= the id of @new_hook
+         * @returns a value <= 0 if the id of @sibling is >= the id of @new_hook
          */
         compare_ids(sibling: Hook): number;
     }
@@ -15693,7 +15693,7 @@ export namespace GLib {
          */
         set_encoding(encoding?: string | null): IOStatus;
         /**
-         * Sets the (writeable) flags in `channel` to (`flags` &amp; %G_IO_FLAG_SET_MASK).
+         * Sets the (writeable) flags in `channel` to (`flags` & %G_IO_FLAG_SET_MASK).
          * @param flags the flags to set on the IO channel
          * @returns the status of the operation.
          */
@@ -15847,22 +15847,22 @@ export namespace GLib {
      * Here is an example of loading a key file and reading a value:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * g_autoptr(GError) error = NULL;
      * g_autoptr(GKeyFile) key_file = g_key_file_new ();
      *
-     * if (!g_key_file_load_from_file (key_file, "key-file.ini", flags, &amp;error))
+     * if (!g_key_file_load_from_file (key_file, "key-file.ini", flags, &error))
      *   {
      *     if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-     *       g_warning ("Error loading key file: %s", error-&gt;message);
+     *       g_warning ("Error loading key file: %s", error->message);
      *     return;
      *   }
      *
-     * g_autofree gchar *val = g_key_file_get_string (key_file, "Group Name", "SomeKey", &amp;error);
-     * if (val == NULL &amp;&amp;
+     * g_autofree gchar *val = g_key_file_get_string (key_file, "Group Name", "SomeKey", &error);
+     * if (val == NULL &&
      *     !g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND))
      *   {
-     *     g_warning ("Error finding key in key file: %s", error-&gt;message);
+     *     g_warning ("Error finding key in key file: %s", error->message);
      *     return;
      *   }
      * else if (val == NULL)
@@ -15876,7 +15876,7 @@ export namespace GLib {
      * Here is an example of creating and saving a key file:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * g_autoptr(GKeyFile) key_file = g_key_file_new ();
      * const gchar *val = …;
      * g_autoptr(GError) error = NULL;
@@ -15884,21 +15884,21 @@ export namespace GLib {
      * g_key_file_set_string (key_file, "Group Name", "SomeKey", val);
      *
      * // Save as a file.
-     * if (!g_key_file_save_to_file (key_file, "key-file.ini", &amp;error))
+     * if (!g_key_file_save_to_file (key_file, "key-file.ini", &error))
      *   {
-     *     g_warning ("Error saving key file: %s", error-&gt;message);
+     *     g_warning ("Error saving key file: %s", error->message);
      *     return;
      *   }
      *
      * // Or store to a GBytes for use elsewhere.
      * gsize data_len;
-     * g_autofree guint8 *data = (guint8 *) g_key_file_to_data (key_file, &amp;data_len, &amp;error);
+     * g_autofree guint8 *data = (guint8 *) g_key_file_to_data (key_file, &data_len, &error);
      * if (data == NULL)
      *   {
-     *     g_warning ("Error saving key file: %s", error-&gt;message);
+     *     g_warning ("Error saving key file: %s", error->message);
      *     return;
      *   }
-     * g_autoptr(GBytes) bytes = g_bytes_new_take (g_steal_pointer (&amp;data), data_len);
+     * g_autoptr(GBytes) bytes = g_bytes_new_take (g_steal_pointer (&data), data_len);
      * ```
      *
      */
@@ -16464,7 +16464,7 @@ export namespace GLib {
          * specified, and corresponds to the "main" main loop. See also
          * g_main_context_get_thread_default().
          */
-        static default(): MainContext;
+        static ['default'](): MainContext;
         /**
          * Gets the thread-default #GMainContext for this thread. Asynchronous
          * operations that want to be able to be run in contexts other than
@@ -16739,22 +16739,22 @@ export namespace GLib {
          * loop with a termination condition, computed from multiple threads:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   #define NUM_TASKS 10
          *   static gint tasks_remaining = NUM_TASKS;  // (atomic)
          *   ...
          *
-         *   while (g_atomic_int_get (&amp;tasks_remaining) != 0)
+         *   while (g_atomic_int_get (&tasks_remaining) != 0)
          *     g_main_context_iteration (NULL, TRUE);
          * ```
          *
          *
          * Then in a thread:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   perform_work();
          *
-         *   if (g_atomic_int_dec_and_test (&amp;tasks_remaining))
+         *   if (g_atomic_int_dec_and_test (&tasks_remaining))
          *     g_main_context_wakeup (NULL);
          * ```
          *
@@ -16994,7 +16994,7 @@ export namespace GLib {
          * parser that counts the number of tags encountered.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * typedef struct
          * {
          *   gint tag_count;
@@ -17010,7 +17010,7 @@ export namespace GLib {
          * {
          *   CounterData *data = user_data;
          *
-         *   data-&gt;tag_count++;
+         *   data->tag_count++;
          * }
          *
          * static void
@@ -17038,14 +17038,14 @@ export namespace GLib {
          * following interface is provided:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * void
          * start_counting (GMarkupParseContext *context)
          * {
          *   CounterData *data = g_slice_new (CounterData);
          *
-         *   data-&gt;tag_count = 0;
-         *   g_markup_parse_context_push (context, &amp;counter_subparser, data);
+         *   data->tag_count = 0;
+         *   g_markup_parse_context_push (context, &counter_subparser, data);
          * }
          *
          * gint
@@ -17054,7 +17054,7 @@ export namespace GLib {
          *   CounterData *data = g_markup_parse_context_pop (context);
          *   int result;
          *
-         *   result = data-&gt;tag_count;
+         *   result = data->tag_count;
          *   g_slice_free (CounterData, data);
          *
          *   return result;
@@ -17065,7 +17065,7 @@ export namespace GLib {
          * The subparser would then be used as follows:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static void start_element (context, element_name, ...)
          * {
          *   if (strcmp (element_name, "count-these") == 0)
@@ -17184,7 +17184,7 @@ export namespace GLib {
          * Retrieves the text matching the capturing parentheses named `name`.
          *
          * If `name` is a valid sub pattern name but it didn't match anything
-         * (e.g. sub pattern "X", matching "b" against "(?P&lt;X&gt;a)?b")
+         * (e.g. sub pattern "X", matching "b" against "(?P<X>a)?b")
          * then an empty string is returned.
          *
          * The string is fetched from the string passed to the match function,
@@ -17197,7 +17197,7 @@ export namespace GLib {
          * Retrieves the position in bytes of the capturing parentheses named `name`.
          *
          * If `name` is a valid sub pattern name but it didn't match anything
-         * (e.g. sub pattern "X", matching "b" against "(?P&lt;X&gt;a)?b")
+         * (e.g. sub pattern "X", matching "b" against "(?P<X>a)?b")
          * then `start_pos` and `end_pos` are set to -1 and %TRUE is returned.
          * @param name name of the subexpression
          * @returns %TRUE if the position was fetched, %FALSE otherwise.     If the position cannot be fetched, @start_pos and @end_pos     are left unchanged.
@@ -17427,14 +17427,14 @@ export namespace GLib {
          * like this:
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   static gsize initialization_value = 0;
          *
-         *   if (g_once_init_enter (&amp;initialization_value))
+         *   if (g_once_init_enter (&initialization_value))
          *     {
          *       gsize setup_value = 42; // initialization code here
          *
-         *       g_once_init_leave (&amp;initialization_value, setup_value);
+         *       g_once_init_leave (&initialization_value, setup_value);
          *     }
          *
          *   // use initialization_value here
@@ -17531,7 +17531,7 @@ export namespace GLib {
      * Here is a complete example of setting up GOption to parse the example
      * commandline above and produce the example help output.
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * static gint repeats = 2;
      * static gint max_size = 8;
      * static gboolean verbose = FALSE;
@@ -17540,11 +17540,11 @@ export namespace GLib {
      *
      * static GOptionEntry entries[] =
      * {
-     *   { "repeats", 'r', 0, G_OPTION_ARG_INT, &amp;repeats, "Average over N repetitions", "N" },
-     *   { "max-size", 'm', 0, G_OPTION_ARG_INT, &amp;max_size, "Test up to 2^M items", "M" },
-     *   { "verbose", 'v', 0, G_OPTION_ARG_NONE, &amp;verbose, "Be verbose", NULL },
-     *   { "beep", 'b', 0, G_OPTION_ARG_NONE, &amp;beep, "Beep when done", NULL },
-     *   { "rand", 0, 0, G_OPTION_ARG_NONE, &amp;randomize, "Randomize the data", NULL },
+     *   { "repeats", 'r', 0, G_OPTION_ARG_INT, &repeats, "Average over N repetitions", "N" },
+     *   { "max-size", 'm', 0, G_OPTION_ARG_INT, &max_size, "Test up to 2^M items", "M" },
+     *   { "verbose", 'v', 0, G_OPTION_ARG_NONE, &verbose, "Be verbose", NULL },
+     *   { "beep", 'b', 0, G_OPTION_ARG_NONE, &beep, "Beep when done", NULL },
+     *   { "rand", 0, 0, G_OPTION_ARG_NONE, &randomize, "Randomize the data", NULL },
      *   G_OPTION_ENTRY_NULL
      * };
      *
@@ -17557,9 +17557,9 @@ export namespace GLib {
      *   context = g_option_context_new ("- test tree model performance");
      *   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
      *   g_option_context_add_group (context, gtk_get_option_group (TRUE));
-     *   if (!g_option_context_parse (context, &amp;argc, &amp;argv, &amp;error))
+     *   if (!g_option_context_parse (context, &argc, &argv, &error))
      *     {
-     *       g_print ("option parsing failed: %s\n", error-&gt;message);
+     *       g_print ("option parsing failed: %s\n", error->message);
      *       exit (1);
      *     }
      *
@@ -17592,7 +17592,7 @@ export namespace GLib {
      * in order to correctly deal with Unicode filenames on Windows:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * int
      * main (int argc, char **argv)
      * {
@@ -17608,7 +17608,7 @@ export namespace GLib {
      *
      *   // set up context
      *
-     *   if (!g_option_context_parse_strv (context, &amp;args, &amp;error))
+     *   if (!g_option_context_parse_strv (context, &args, &error))
      *     {
      *       // error happened
      *     }
@@ -17932,16 +17932,16 @@ export namespace GLib {
      * separators.
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * g_auto (GPathBuf) path;
      *
-     * g_path_buf_init (&amp;path);
+     * g_path_buf_init (&path);
      *
-     * g_path_buf_push (&amp;path, "usr");
-     * g_path_buf_push (&amp;path, "bin");
-     * g_path_buf_push (&amp;path, "echo");
+     * g_path_buf_push (&path, "usr");
+     * g_path_buf_push (&path, "bin");
+     * g_path_buf_push (&path, "echo");
      *
-     * g_autofree char *echo = g_path_buf_to_path (&amp;path);
+     * g_autofree char *echo = g_path_buf_to_path (&path);
      * g_assert_cmpstr (echo, ==, "/usr/bin/echo");
      * ```
      *
@@ -17949,15 +17949,15 @@ export namespace GLib {
      * You can also load a full path and then operate on its components:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      * g_auto (GPathBuf) path;
      *
-     * g_path_buf_init_from_path (&amp;path, "/usr/bin/echo");
+     * g_path_buf_init_from_path (&path, "/usr/bin/echo");
      *
-     * g_path_buf_pop (&amp;path);
-     * g_path_buf_push (&amp;path, "sh");
+     * g_path_buf_pop (&path);
+     * g_path_buf_push (&path, "sh");
      *
-     * g_autofree char *sh = g_path_buf_to_path (&amp;path);
+     * g_autofree char *sh = g_path_buf_to_path (&path);
      * g_assert_cmpstr (sh, ==, "/usr/bin/sh");
      * ```
      *
@@ -18038,22 +18038,22 @@ export namespace GLib {
          * not be removed and %FALSE will be returned instead.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GPathBuf buf, cmp;
          *
-         * g_path_buf_init_from_path (&amp;buf, "/bin/sh");
+         * g_path_buf_init_from_path (&buf, "/bin/sh");
          *
-         * g_path_buf_pop (&amp;buf);
-         * g_path_buf_init_from_path (&amp;cmp, "/bin");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp));
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_pop (&buf);
+         * g_path_buf_init_from_path (&cmp, "/bin");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp));
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_pop (&amp;buf);
-         * g_path_buf_init_from_path (&amp;cmp, "/");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp));
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_pop (&buf);
+         * g_path_buf_init_from_path (&cmp, "/");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp));
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_clear (&amp;buf);
+         * g_path_buf_clear (&buf);
          * ```
          *
          * @returns `TRUE` if the buffer was modified and `FALSE` otherwise
@@ -18072,21 +18072,21 @@ export namespace GLib {
          * only directory separator.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GPathBuf buf, cmp;
          *
-         * g_path_buf_init_from_path (&amp;buf, "/tmp");
-         * g_path_buf_push (&amp;buf, ".X11-unix/X0");
-         * g_path_buf_init_from_path (&amp;cmp, "/tmp/.X11-unix/X0");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp));
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_init_from_path (&buf, "/tmp");
+         * g_path_buf_push (&buf, ".X11-unix/X0");
+         * g_path_buf_init_from_path (&cmp, "/tmp/.X11-unix/X0");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp));
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_push (&amp;buf, "/etc/locale.conf");
-         * g_path_buf_init_from_path (&amp;cmp, "/etc/locale.conf");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp));
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_push (&buf, "/etc/locale.conf");
+         * g_path_buf_init_from_path (&cmp, "/etc/locale.conf");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp));
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_clear (&amp;buf);
+         * g_path_buf_clear (&buf);
          * ```
          *
          * @param path a path
@@ -18119,22 +18119,22 @@ export namespace GLib {
          * sibling of the original path.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GPathBuf buf, cmp;
          *
-         * g_path_buf_init_from_path (&amp;buf, "/");
+         * g_path_buf_init_from_path (&buf, "/");
          *
-         * g_path_buf_set_filename (&amp;buf, "bar");
-         * g_path_buf_init_from_path (&amp;cmp, "/bar");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp));
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_set_filename (&buf, "bar");
+         * g_path_buf_init_from_path (&cmp, "/bar");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp));
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_set_filename (&amp;buf, "baz.txt");
-         * g_path_buf_init_from_path (&amp;cmp, "/baz.txt");
-         * g_assert_true (g_path_buf_equal (&amp;buf, &amp;cmp);
-         * g_path_buf_clear (&amp;cmp);
+         * g_path_buf_set_filename (&buf, "baz.txt");
+         * g_path_buf_init_from_path (&cmp, "/baz.txt");
+         * g_assert_true (g_path_buf_equal (&buf, &cmp);
+         * g_path_buf_clear (&cmp);
          *
-         * g_path_buf_clear (&amp;buf);
+         * g_path_buf_clear (&buf);
          * ```
          *
          * @param file_name the file name in the path
@@ -18465,7 +18465,7 @@ export namespace GLib {
      *
      * Here is an example for an array with access functions:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   GRWLock lock;
      *   GPtrArray *array;
      *
@@ -18477,10 +18477,10 @@ export namespace GLib {
      *     if (!array)
      *       return NULL;
      *
-     *     g_rw_lock_reader_lock (&amp;lock);
-     *     if (index &lt; array-&gt;len)
+     *     g_rw_lock_reader_lock (&lock);
+     *     if (index < array->len)
      *       retval = g_ptr_array_index (array, index);
-     *     g_rw_lock_reader_unlock (&amp;lock);
+     *     g_rw_lock_reader_unlock (&lock);
      *
      *     return retval;
      *   }
@@ -18488,16 +18488,16 @@ export namespace GLib {
      *   void
      *   my_array_set (guint index, gpointer data)
      *   {
-     *     g_rw_lock_writer_lock (&amp;lock);
+     *     g_rw_lock_writer_lock (&lock);
      *
      *     if (!array)
      *       array = g_ptr_array_new ();
      *
-     *     if (index &gt;= array-&gt;len)
+     *     if (index >= array->len)
      *       g_ptr_array_set_size (array, index+1);
      *     g_ptr_array_index (array, index) = data;
      *
-     *     g_rw_lock_writer_unlock (&amp;lock);
+     *     g_rw_lock_writer_unlock (&lock);
      *   }
      *  ```
      *
@@ -18540,7 +18540,7 @@ export namespace GLib {
          * allocated.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   typedef struct {
          *     GRWLock l;
          *     ...
@@ -18549,7 +18549,7 @@ export namespace GLib {
          * Blob *b;
          *
          * b = g_new (Blob, 1);
-         * g_rw_lock_init (&amp;b-&gt;l);
+         * g_rw_lock_init (&b->l);
          * ```
          *
          *
@@ -18717,7 +18717,7 @@ export namespace GLib {
          * statically allocated.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   typedef struct {
          *     GRecMutex m;
          *     ...
@@ -18726,7 +18726,7 @@ export namespace GLib {
          * Blob *b;
          *
          * b = g_new (Blob, 1);
-         * g_rec_mutex_init (&amp;b-&gt;m);
+         * g_rec_mutex_init (&b->m);
          * ```
          *
          *
@@ -18995,7 +18995,7 @@ export namespace GLib {
          * string you can use g_match_info_next().
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static void
          * print_uppercase_words (const gchar *string)
          * {
@@ -19004,7 +19004,7 @@ export namespace GLib {
          *   GMatchInfo *match_info;
          *
          *   regex = g_regex_new ("[A-Z]+", G_REGEX_DEFAULT, G_REGEX_MATCH_DEFAULT, NULL);
-         *   g_regex_match (regex, string, 0, &amp;match_info);
+         *   g_regex_match (regex, string, 0, &match_info);
          *   while (g_match_info_matches (match_info))
          *     {
          *       gchar *word = g_match_info_fetch (match_info, 0);
@@ -19050,15 +19050,15 @@ export namespace GLib {
          * Using the standard algorithm for regular expression matching only
          * the longest match in the `string` is retrieved, it is not possible
          * to obtain all the available matches. For instance matching
-         * "&lt;a&gt; &lt;b&gt; &lt;c&gt;" against the pattern "&lt;.*&gt;"
-         * you get "&lt;a&gt; &lt;b&gt; &lt;c&gt;".
+         * "<a> <b> <c>" against the pattern "<.*>"
+         * you get "<a> <b> <c>".
          *
          * This function uses a different algorithm (called DFA, i.e. deterministic
          * finite automaton), so it can retrieve all the possible matches, all
          * starting at the same point in the string. For instance matching
-         * "&lt;a&gt; &lt;b&gt; &lt;c&gt;" against the pattern "&lt;.*&gt;;"
-         * you would obtain three matches: "&lt;a&gt; &lt;b&gt; &lt;c&gt;",
-         * "&lt;a&gt; &lt;b&gt;" and "&lt;a&gt;".
+         * "<a> <b> <c>" against the pattern "<.*>;"
+         * you would obtain three matches: "<a> <b> <c>",
+         * "<a> <b>" and "<a>".
          *
          * The number of matched strings is retrieved using
          * g_match_info_get_match_count(). To obtain the matched strings and
@@ -19117,7 +19117,7 @@ export namespace GLib {
          * string you can use g_match_info_next().
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static void
          * print_uppercase_words (const gchar *string)
          * {
@@ -19127,19 +19127,19 @@ export namespace GLib {
          *   GError *error = NULL;
          *
          *   regex = g_regex_new ("[A-Z]+", G_REGEX_DEFAULT, G_REGEX_MATCH_DEFAULT, NULL);
-         *   g_regex_match_full (regex, string, -1, 0, 0, &amp;match_info, &amp;error);
+         *   g_regex_match_full (regex, string, -1, 0, 0, &match_info, &error);
          *   while (g_match_info_matches (match_info))
          *     {
          *       gchar *word = g_match_info_fetch (match_info, 0);
          *       g_print ("Found: %s\n", word);
          *       g_free (word);
-         *       g_match_info_next (match_info, &amp;error);
+         *       g_match_info_next (match_info, &error);
          *     }
          *   g_match_info_free (match_info);
          *   g_regex_unref (regex);
          *   if (error != NULL)
          *     {
-         *       g_printerr ("Error while matching: %s\n", error-&gt;message);
+         *       g_printerr ("Error while matching: %s\n", error->message);
          *       g_error_free (error);
          *     }
          * }
@@ -19159,8 +19159,8 @@ export namespace GLib {
         /**
          * Replaces all occurrences of the pattern in `regex` with the
          * replacement text. Backreferences of the form '\number' or
-         * '\g&lt;number&gt;' in the replacement text are interpolated by the
-         * number-th captured subexpression of the match, '\g&lt;name&gt;' refers
+         * '\g<number>' in the replacement text are interpolated by the
+         * number-th captured subexpression of the match, '\g<name>' refers
          * to the captured subexpression with the given name. '\0' refers
          * to the complete match, but '\0' followed by a number is the octal
          * representation of a character. To include a literal '\' in the
@@ -19648,7 +19648,7 @@ export namespace GLib {
          */
         get_iter_at_pos(pos: number): SequenceIter;
         /**
-         * Returns the positive length (&gt;= 0) of `seq`. Note that this method is
+         * Returns the positive length (>= 0) of `seq`. Note that this method is
          * O(h) where `h' is the height of the tree. It is thus more efficient
          * to use g_sequence_is_empty() when comparing the length to zero.
          * @returns the length of @seq
@@ -19964,16 +19964,16 @@ export namespace GLib {
          * before the dispatch of your idle handler.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static gboolean
          * idle_callback (gpointer data)
          * {
          *   SomeWidget *self = data;
          *
-         *   g_mutex_lock (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_lock (&self->idle_id_mutex);
          *   // do stuff with self
-         *   self-&gt;idle_id = 0;
-         *   g_mutex_unlock (&amp;self-&gt;idle_id_mutex);
+         *   self->idle_id = 0;
+         *   g_mutex_unlock (&self->idle_id_mutex);
          *
          *   return G_SOURCE_REMOVE;
          * }
@@ -19981,15 +19981,15 @@ export namespace GLib {
          * static void
          * some_widget_do_stuff_later (SomeWidget *self)
          * {
-         *   g_mutex_lock (&amp;self-&gt;idle_id_mutex);
-         *   self-&gt;idle_id = g_idle_add (idle_callback, self);
-         *   g_mutex_unlock (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_lock (&self->idle_id_mutex);
+         *   self->idle_id = g_idle_add (idle_callback, self);
+         *   g_mutex_unlock (&self->idle_id_mutex);
          * }
          *
          * static void
          * some_widget_init (SomeWidget *self)
          * {
-         *   g_mutex_init (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_init (&self->idle_id_mutex);
          *
          *   // ...
          * }
@@ -19999,12 +19999,12 @@ export namespace GLib {
          * {
          *   SomeWidget *self = SOME_WIDGET (object);
          *
-         *   if (self-&gt;idle_id)
-         *     g_source_remove (self-&gt;idle_id);
+         *   if (self->idle_id)
+         *     g_source_remove (self->idle_id);
          *
-         *   g_mutex_clear (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_clear (&self->idle_id_mutex);
          *
-         *   G_OBJECT_CLASS (parent_class)-&gt;finalize (object);
+         *   G_OBJECT_CLASS (parent_class)->finalize (object);
          * }
          * ```
          *
@@ -20016,18 +20016,18 @@ export namespace GLib {
          * has already been destroy within the callback.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * static gboolean
          * idle_callback (gpointer data)
          * {
          *   SomeWidget *self = data;
          *
-         *   g_mutex_lock (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_lock (&self->idle_id_mutex);
          *   if (!g_source_is_destroyed (g_main_current_source ()))
          *     {
          *       // do stuff with self
          *     }
-         *   g_mutex_unlock (&amp;self-&gt;idle_id_mutex);
+         *   g_mutex_unlock (&self->idle_id_mutex);
          *
          *   return FALSE;
          * }
@@ -20139,8 +20139,8 @@ export namespace GLib {
          * "object". This is used internally. Note that calling
          * g_source_set_callback_indirect() assumes
          * an initial reference count on `callback_data,` and thus
-         * `callback_funcs-&`gt;unref will eventually be called once more
-         * than `callback_funcs-&`gt;ref.
+         * `callback_funcs->`unref will eventually be called once more
+         * than `callback_funcs->`ref.
          *
          * It is safe to call this function multiple times on a source which has already
          * been attached to a context. The changes will take effect for the next time
@@ -20542,7 +20542,7 @@ export namespace GLib {
          * the current length, the string will be truncated. If the
          * length is greater than the current length, the contents
          * of the newly added area are undefined. (However, as
-         * always, string-&gt;str[string-&gt;len] will be a nul byte.)
+         * always, string->str[string->len] will be a nul byte.)
          * @param len the new length
          * @returns @string
          */
@@ -20637,7 +20637,7 @@ export namespace GLib {
      * The following example shows how to build a two element array:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   g_autoptr(GStrvBuilder) builder = g_strv_builder_new ();
      *   g_strv_builder_add (builder, "hello");
      *   g_strv_builder_add (builder, "world");
@@ -20833,7 +20833,7 @@ export namespace GLib {
          *
          * This function is often used as a method to make busy wait less evil.
          */
-        static yield(): void;
+        static ['yield'](): void;
 
         // Owm methods of GLib-2.0.Thread
 
@@ -21255,7 +21255,7 @@ export namespace GLib {
          * g_timer_stop(). g_timer_stop() must be called before using this
          * function.
          */
-        continue(): void;
+        ['continue'](): void;
         /**
          * Destroys a timer, freeing associated resources.
          */
@@ -21867,7 +21867,7 @@ export namespace GLib {
          * %G_URI_PARAMS_WWW_FORM is handled as documented for g_uri_params_iter_init().
          *
          * If %G_URI_PARAMS_CASE_INSENSITIVE is passed to `flags,` attributes will be
-         * compared case-insensitively, so a params string `attr=123&amp;Attr=456` will only
+         * compared case-insensitively, so a params string `attr=123&Attr=456` will only
          * return a single attribute–value pair, `Attr=456`. Case will be preserved in
          * the returned attributes.
          *
@@ -21875,7 +21875,7 @@ export namespace GLib {
          * characters in a row), then `error` is set and %NULL is returned.
          * @param params a `%`-encoded string containing `attribute=value`   parameters
          * @param length the length of @params, or `-1` if it is nul-terminated
-         * @param separators the separator byte character set between parameters. (usually   `&amp;`, but sometimes `;` or both `&amp;;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
+         * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
          * @param flags flags to modify the way the parameters are handled.
          */
         static parse_params(
@@ -22144,7 +22144,7 @@ export namespace GLib {
 
     /**
      * Many URI schemes include one or more attribute/value pairs as part of the URI
-     * value. For example `scheme://server/path?query=string&amp;is=there` has two
+     * value. For example `scheme://server/path?query=string&is=there` has two
      * attributes – `query=string` and `is=there` – in its query part.
      *
      * A #GUriParamsIter structure represents an iterator that can be used to
@@ -22178,16 +22178,16 @@ export namespace GLib {
          * responsible for doing their own case-insensitive comparisons.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GUriParamsIter iter;
          * GError *error = NULL;
          * gchar *unowned_attr, *unowned_value;
          *
-         * g_uri_params_iter_init (&amp;iter, "foo=bar&amp;baz=bar&amp;Foo=frob&amp;baz=bar2", -1, "&amp;", G_URI_PARAMS_NONE);
-         * while (g_uri_params_iter_next (&amp;iter, &amp;unowned_attr, &amp;unowned_value, &amp;error))
+         * g_uri_params_iter_init (&iter, "foo=bar&baz=bar&Foo=frob&baz=bar2", -1, "&", G_URI_PARAMS_NONE);
+         * while (g_uri_params_iter_next (&iter, &unowned_attr, &unowned_value, &error))
          *   {
-         *     g_autofree gchar *attr = g_steal_pointer (&amp;unowned_attr);
-         *     g_autofree gchar *value = g_steal_pointer (&amp;unowned_value);
+         *     g_autofree gchar *attr = g_steal_pointer (&unowned_attr);
+         *     g_autofree gchar *value = g_steal_pointer (&unowned_value);
          *     // do something with attr and value; this code will be called 4 times
          *     // for the params string in this example: once with attr=foo and value=bar,
          *     // then with baz/bar, then Foo/frob, then baz/bar2.
@@ -22198,7 +22198,7 @@ export namespace GLib {
          *
          * @param params a `%`-encoded string containing `attribute=value`   parameters
          * @param length the length of @params, or `-1` if it is nul-terminated
-         * @param separators the separator byte character set between parameters. (usually   `&amp;`, but sometimes `;` or both `&amp;;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
+         * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
          * @param flags flags to modify the way the parameters are handled.
          */
         init(params: string, length: number, separators: string, flags: UriParamsFlags): void;
@@ -22236,7 +22236,7 @@ export namespace GLib {
      * can use:
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   GVariant *v = g_variant_new ("u", 40);
      * ```
      *
@@ -22706,7 +22706,7 @@ export namespace GLib {
          * If you only require an equality comparison, g_variant_equal() is more
          * general.
          * @param two a #GVariant instance of the same type
-         * @returns negative value if a &lt; b;          zero if a = b;          positive value if a &gt; b.
+         * @returns negative value if a < b;          zero if a = b;          positive value if a > b.
          */
         compare(two: Variant): number;
         /**
@@ -23360,7 +23360,7 @@ export namespace GLib {
          *
          * Example of building a nested variant:
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          * GVariantBuilder builder;
          * guint32 some_number = get_number ();
          * g_autoptr (GHashTable) some_dict = get_dict ();
@@ -23369,22 +23369,22 @@ export namespace GLib {
          * const GVariant *value;
          * g_autoptr (GVariant) output = NULL;
          *
-         * g_variant_builder_init (&amp;builder, G_VARIANT_TYPE ("(ua{sv})"));
-         * g_variant_builder_add (&amp;builder, "u", some_number);
-         * g_variant_builder_open (&amp;builder, G_VARIANT_TYPE ("a{sv}"));
+         * g_variant_builder_init (&builder, G_VARIANT_TYPE ("(ua{sv})"));
+         * g_variant_builder_add (&builder, "u", some_number);
+         * g_variant_builder_open (&builder, G_VARIANT_TYPE ("a{sv}"));
          *
-         * g_hash_table_iter_init (&amp;iter, some_dict);
-         * while (g_hash_table_iter_next (&amp;iter, (gpointer *) &amp;key, (gpointer *) &amp;value))
+         * g_hash_table_iter_init (&iter, some_dict);
+         * while (g_hash_table_iter_next (&iter, (gpointer *) &key, (gpointer *) &value))
          *   {
-         *     g_variant_builder_open (&amp;builder, G_VARIANT_TYPE ("{sv}"));
-         *     g_variant_builder_add (&amp;builder, "s", key);
-         *     g_variant_builder_add (&amp;builder, "v", value);
-         *     g_variant_builder_close (&amp;builder);
+         *     g_variant_builder_open (&builder, G_VARIANT_TYPE ("{sv}"));
+         *     g_variant_builder_add (&builder, "s", key);
+         *     g_variant_builder_add (&builder, "v", value);
+         *     g_variant_builder_close (&builder);
          *   }
          *
-         * g_variant_builder_close (&amp;builder);
+         * g_variant_builder_close (&builder);
          *
-         * output = g_variant_builder_end (&amp;builder);
+         * output = g_variant_builder_end (&builder);
          * ```
          *
          * @param type the #GVariantType of the container
@@ -23450,7 +23450,7 @@ export namespace GLib {
      * ## Using a stack-allocated GVariantDict
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   GVariant *
      *   add_to_count (GVariant  *orig,
      *                 GError   **error)
@@ -23458,17 +23458,17 @@ export namespace GLib {
      *     GVariantDict dict;
      *     guint32 count;
      *
-     *     g_variant_dict_init (&amp;dict, orig);
-     *     if (!g_variant_dict_lookup (&amp;dict, "count", "u", &amp;count))
+     *     g_variant_dict_init (&dict, orig);
+     *     if (!g_variant_dict_lookup (&dict, "count", "u", &count))
      *       {
      *         g_set_error (...);
-     *         g_variant_dict_clear (&amp;dict);
+     *         g_variant_dict_clear (&dict);
      *         return NULL;
      *       }
      *
-     *     g_variant_dict_insert (&amp;dict, "count", "u", count + 1);
+     *     g_variant_dict_insert (&dict, "count", "u", count + 1);
      *
-     *     return g_variant_dict_end (&amp;dict);
+     *     return g_variant_dict_end (&dict);
      *   }
      * ```
      *
@@ -23476,7 +23476,7 @@ export namespace GLib {
      * ## Using heap-allocated GVariantDict
      *
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   GVariant *
      *   add_to_count (GVariant  *orig,
      *                 GError   **error)
@@ -23487,7 +23487,7 @@ export namespace GLib {
      *
      *     dict = g_variant_dict_new (orig);
      *
-     *     if (g_variant_dict_lookup (dict, "count", "u", &amp;count))
+     *     if (g_variant_dict_lookup (dict, "count", "u", &count))
      *       {
      *         g_variant_dict_insert (dict, "count", "u", count + 1);
      *         result = g_variant_dict_end (dict);
@@ -24063,7 +24063,7 @@ export namespace GLib {
      *
      * Take for example the following function:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   int
      *   give_me_next_number (void)
      *   {
@@ -24081,7 +24081,7 @@ export namespace GLib {
      * application. There current_number must be protected against shared
      * access. A #GMutex can be used as a solution to this problem:
      *
-     * ```&lt;!-- language="C" --&gt;
+     * ```c
      *   int
      *   give_me_next_number (void)
      *   {
@@ -24089,9 +24089,9 @@ export namespace GLib {
      *     static int current_number = 0;
      *     int ret_val;
      *
-     *     g_mutex_lock (&amp;mutex);
+     *     g_mutex_lock (&mutex);
      *     ret_val = current_number = calc_next_number (current_number);
-     *     g_mutex_unlock (&amp;mutex);
+     *     g_mutex_unlock (&mutex);
      *
      *     return ret_val;
      *   }
@@ -24132,7 +24132,7 @@ export namespace GLib {
          * statically allocated.
          *
          *
-         * ```&lt;!-- language="C" --&gt;
+         * ```c
          *   typedef struct {
          *     GMutex m;
          *     ...
@@ -24141,7 +24141,7 @@ export namespace GLib {
          * Blob *b;
          *
          * b = g_new (Blob, 1);
-         * g_mutex_init (&amp;b-&gt;m);
+         * g_mutex_init (&b->m);
          * ```
          *
          *

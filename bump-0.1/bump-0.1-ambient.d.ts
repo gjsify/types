@@ -9,4 +9,3 @@ declare module 'gi://Bump' {
     export default Bump01;
 }
 
-

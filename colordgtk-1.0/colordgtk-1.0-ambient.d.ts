@@ -9,4 +9,3 @@ declare module 'gi://ColordGtk' {
     export default ColordGtk10;
 }
 
-

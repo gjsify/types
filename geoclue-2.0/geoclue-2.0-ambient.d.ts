@@ -9,4 +9,3 @@ declare module 'gi://Geoclue' {
     export default Geoclue20;
 }
 
-

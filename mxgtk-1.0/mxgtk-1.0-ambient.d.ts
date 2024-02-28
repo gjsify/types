@@ -9,4 +9,3 @@ declare module 'gi://MxGtk' {
     export default MxGtk10;
 }
 
-

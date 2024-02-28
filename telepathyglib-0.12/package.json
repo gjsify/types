@@ -1,60 +1,44 @@
 {
     "name": "@girs/telepathyglib-0.12",
-    "version": "0.12.0-3.2.8",
+    "version": "0.12.0-4.0.0",
     "description": "GJS TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0",
     "type": "module",
     "module": "telepathyglib-0.12.js",
     "main": "telepathyglib-0.12.js",
     "exports": {
-        "./ambient": {
-            "types": "./telepathyglib-0.12-ambient.d.ts",
-            "default": "./telepathyglib-0.12-ambient.js"
-        },
-        "./import": {
-            "types": "./telepathyglib-0.12-import.d.ts",
-            "default": "./telepathyglib-0.12-import.js"
-        },
-        ".": {
-            "import": {
-                "types": "./telepathyglib-0.12.d.ts",
-                "default": "./telepathyglib-0.12.js"
-            },
-            "require": {
-                "types": "./telepathyglib-0.12.d.cts",
-                "default": "./telepathyglib-0.12.cjs"
-            }
-        }
+      "./ambient": {
+        "types": "./telepathyglib-0.12-ambient.d.ts",
+        "default": "./telepathyglib-0.12-ambient.js"
+      },
+      "./import": {
+        "types": "./telepathyglib-0.12-import.d.ts",
+        "default": "./telepathyglib-0.12-import.js"
+      },
+      ".": {
+        "types": "./telepathyglib-0.12.d.ts",
+        "default": "./telepathyglib-0.12.js"
+      }
     },
     "scripts": {
-        "test": "yarn test:esm && yarn test:cjs",
-        "test:esm": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit telepathyglib-0.12.d.ts",
-        "test:cjs": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit telepathyglib-0.12.d.cts"
+      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit telepathyglib-0.12.d.ts"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
     },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "TelepathyGLib-0.12"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "TelepathyGLib-0.12"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/telepathyglib-0.12#readme"
 }
+
+

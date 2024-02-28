@@ -1,12 +1,2 @@
-
-import GUPnP12 from '@girs/gupnp-1.2';
-
-declare global {
-    export interface GjsGiImports {
-        GUPnP: typeof GUPnP12;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GUPnP"
 

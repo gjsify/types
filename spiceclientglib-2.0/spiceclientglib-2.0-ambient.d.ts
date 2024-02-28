@@ -9,4 +9,3 @@ declare module 'gi://SpiceClientGLib' {
     export default SpiceClientGLib20;
 }
 
-
