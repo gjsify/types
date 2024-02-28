@@ -6,39 +6,57 @@
     "module": "clutter-1.0.js",
     "main": "clutter-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./clutter-1.0-ambient.d.ts",
-        "default": "./clutter-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./clutter-1.0-import.d.ts",
-        "default": "./clutter-1.0-import.js"
-      },
-      ".": {
-        "types": "./clutter-1.0.d.ts",
-        "default": "./clutter-1.0.js"
-      }
+        "./ambient": {
+            "types": "./clutter-1.0-ambient.d.ts",
+            "import": "./clutter-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./clutter-1.0-import.d.ts",
+            "import": "./clutter-1.0-import.js"
+        },
+        ".": {
+            "types": "./clutter-1.0.d.ts",
+            "import": "./clutter-1.0.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit clutter-1.0.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit clutter-1.0.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/cairo-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/json-1.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gl-1.0": "workspace:^",            "@girs/coglpango-1.0": "workspace:^",            "@girs/pangocairo-1.0": "workspace:^",            "@girs/pango-1.0": "workspace:^",            "@girs/harfbuzz-0.0": "workspace:^",            "@girs/freetype2-2.0": "workspace:^",            "@girs/cogl-1.0": "workspace:^",            "@girs/atk-1.0": "workspace:^"      
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/cogl-1.0": "workspace:^",
+        "@girs/coglpango-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Clutter-1.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Clutter-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/clutter-1.0#readme"
 }
-
-

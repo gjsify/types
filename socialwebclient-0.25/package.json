@@ -6,39 +6,47 @@
     "module": "socialwebclient-0.25.js",
     "main": "socialwebclient-0.25.js",
     "exports": {
-      "./ambient": {
-        "types": "./socialwebclient-0.25-ambient.d.ts",
-        "default": "./socialwebclient-0.25-ambient.js"
-      },
-      "./import": {
-        "types": "./socialwebclient-0.25-import.d.ts",
-        "default": "./socialwebclient-0.25-import.js"
-      },
-      ".": {
-        "types": "./socialwebclient-0.25.d.ts",
-        "default": "./socialwebclient-0.25.js"
-      }
+        "./ambient": {
+            "types": "./socialwebclient-0.25-ambient.d.ts",
+            "import": "./socialwebclient-0.25-ambient.js"
+        },
+        "./import": {
+            "types": "./socialwebclient-0.25-import.d.ts",
+            "import": "./socialwebclient-0.25-import.js"
+        },
+        ".": {
+            "types": "./socialwebclient-0.25.d.ts",
+            "import": "./socialwebclient-0.25.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit socialwebclient-0.25.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit socialwebclient-0.25.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "SocialWebClient-0.25"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "SocialWebClient-0.25"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/socialwebclient-0.25#readme"
 }
-
-

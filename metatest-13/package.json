@@ -6,39 +6,64 @@
     "module": "metatest-13.js",
     "main": "metatest-13.js",
     "exports": {
-      "./ambient": {
-        "types": "./metatest-13-ambient.d.ts",
-        "default": "./metatest-13-ambient.js"
-      },
-      "./import": {
-        "types": "./metatest-13-import.d.ts",
-        "default": "./metatest-13-import.js"
-      },
-      ".": {
-        "types": "./metatest-13.d.ts",
-        "default": "./metatest-13.js"
-      }
+        "./ambient": {
+            "types": "./metatest-13-ambient.d.ts",
+            "import": "./metatest-13-ambient.js"
+        },
+        "./import": {
+            "types": "./metatest-13-import.d.ts",
+            "import": "./metatest-13-import.js"
+        },
+        ".": {
+            "types": "./metatest-13.d.ts",
+            "import": "./metatest-13.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit metatest-13.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit metatest-13.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/xlib-2.0": "workspace:^",            "@girs/xfixes-4.0": "workspace:^",            "@girs/mtk-13": "workspace:^",            "@girs/cairo-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/graphene-1.0": "workspace:^",            "@girs/meta-13": "workspace:^",            "@girs/gdesktopenums-3.0": "workspace:^",            "@girs/coglpango-13": "workspace:^",            "@girs/pangocairo-1.0": "workspace:^",            "@girs/pango-1.0": "workspace:^",            "@girs/harfbuzz-0.0": "workspace:^",            "@girs/freetype2-2.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/cogl-13": "workspace:^",            "@girs/gl-1.0": "workspace:^",            "@girs/clutter-13": "workspace:^",            "@girs/json-1.0": "workspace:^",            "@girs/atk-1.0": "workspace:^"      
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-13": "workspace:^",
+        "@girs/cogl-13": "workspace:^",
+        "@girs/coglpango-13": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdesktopenums-3.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/meta-13": "workspace:^",
+        "@girs/mtk-13": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xfixes-4.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "MetaTest-13"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "MetaTest-13"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/metatest-13#readme"
 }
-
-

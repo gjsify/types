@@ -6,39 +6,48 @@
     "module": "folks-0.7.js",
     "main": "folks-0.7.js",
     "exports": {
-      "./ambient": {
-        "types": "./folks-0.7-ambient.d.ts",
-        "default": "./folks-0.7-ambient.js"
-      },
-      "./import": {
-        "types": "./folks-0.7-import.d.ts",
-        "default": "./folks-0.7-import.js"
-      },
-      ".": {
-        "types": "./folks-0.7.d.ts",
-        "default": "./folks-0.7.js"
-      }
+        "./ambient": {
+            "types": "./folks-0.7-ambient.d.ts",
+            "import": "./folks-0.7-ambient.js"
+        },
+        "./import": {
+            "types": "./folks-0.7-import.d.ts",
+            "import": "./folks-0.7-import.js"
+        },
+        ".": {
+            "types": "./folks-0.7.d.ts",
+            "import": "./folks-0.7.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit folks-0.7.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit folks-0.7.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/glib-2.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/gee-0.8": "workspace:^"      
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Folks-0.7"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Folks-0.7"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/folks-0.7#readme"
 }
-
-

@@ -6,39 +6,47 @@
     "module": "gnomeautoar-0.1.js",
     "main": "gnomeautoar-0.1.js",
     "exports": {
-      "./ambient": {
-        "types": "./gnomeautoar-0.1-ambient.d.ts",
-        "default": "./gnomeautoar-0.1-ambient.js"
-      },
-      "./import": {
-        "types": "./gnomeautoar-0.1-import.d.ts",
-        "default": "./gnomeautoar-0.1-import.js"
-      },
-      ".": {
-        "types": "./gnomeautoar-0.1.d.ts",
-        "default": "./gnomeautoar-0.1.js"
-      }
+        "./ambient": {
+            "types": "./gnomeautoar-0.1-ambient.d.ts",
+            "import": "./gnomeautoar-0.1-ambient.js"
+        },
+        "./import": {
+            "types": "./gnomeautoar-0.1-import.d.ts",
+            "import": "./gnomeautoar-0.1-import.js"
+        },
+        ".": {
+            "types": "./gnomeautoar-0.1.d.ts",
+            "import": "./gnomeautoar-0.1.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gnomeautoar-0.1.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gnomeautoar-0.1.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GnomeAutoar-0.1"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GnomeAutoar-0.1"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gnomeautoar-0.1#readme"
 }
-
-

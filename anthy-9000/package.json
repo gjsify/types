@@ -6,39 +6,46 @@
     "module": "anthy-9000.js",
     "main": "anthy-9000.js",
     "exports": {
-      "./ambient": {
-        "types": "./anthy-9000-ambient.d.ts",
-        "default": "./anthy-9000-ambient.js"
-      },
-      "./import": {
-        "types": "./anthy-9000-import.d.ts",
-        "default": "./anthy-9000-import.js"
-      },
-      ".": {
-        "types": "./anthy-9000.d.ts",
-        "default": "./anthy-9000.js"
-      }
+        "./ambient": {
+            "types": "./anthy-9000-ambient.d.ts",
+            "import": "./anthy-9000-ambient.js"
+        },
+        "./import": {
+            "types": "./anthy-9000-import.d.ts",
+            "import": "./anthy-9000-import.js"
+        },
+        ".": {
+            "types": "./anthy-9000.d.ts",
+            "import": "./anthy-9000.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit anthy-9000.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit anthy-9000.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Anthy-9000"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Anthy-9000"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/anthy-9000#readme"
 }
-
-

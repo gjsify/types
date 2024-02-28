@@ -6,39 +6,52 @@
     "module": "rygelcore-2.8.js",
     "main": "rygelcore-2.8.js",
     "exports": {
-      "./ambient": {
-        "types": "./rygelcore-2.8-ambient.d.ts",
-        "default": "./rygelcore-2.8-ambient.js"
-      },
-      "./import": {
-        "types": "./rygelcore-2.8-import.d.ts",
-        "default": "./rygelcore-2.8-import.js"
-      },
-      ".": {
-        "types": "./rygelcore-2.8.d.ts",
-        "default": "./rygelcore-2.8.js"
-      }
+        "./ambient": {
+            "types": "./rygelcore-2.8-ambient.d.ts",
+            "import": "./rygelcore-2.8-ambient.js"
+        },
+        "./import": {
+            "types": "./rygelcore-2.8-import.d.ts",
+            "import": "./rygelcore-2.8-import.js"
+        },
+        ".": {
+            "types": "./rygelcore-2.8.d.ts",
+            "import": "./rygelcore-2.8.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit rygelcore-2.8.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit rygelcore-2.8.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/glib-2.0": "workspace:^",            "@girs/gee-0.8": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/gupnp-1.6": "workspace:^",            "@girs/libxml2-2.0": "workspace:^",            "@girs/soup-3.0": "workspace:^",            "@girs/gssdp-1.6": "workspace:^"      
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gssdp-1.6": "workspace:^",
+        "@girs/gupnp-1.6": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "RygelCore-2.8"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "RygelCore-2.8"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/rygelcore-2.8#readme"
 }
-
-

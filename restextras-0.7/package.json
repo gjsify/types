@@ -6,39 +6,50 @@
     "module": "restextras-0.7.js",
     "main": "restextras-0.7.js",
     "exports": {
-      "./ambient": {
-        "types": "./restextras-0.7-ambient.d.ts",
-        "default": "./restextras-0.7-ambient.js"
-      },
-      "./import": {
-        "types": "./restextras-0.7-import.d.ts",
-        "default": "./restextras-0.7-import.js"
-      },
-      ".": {
-        "types": "./restextras-0.7.d.ts",
-        "default": "./restextras-0.7.js"
-      }
+        "./ambient": {
+            "types": "./restextras-0.7-ambient.d.ts",
+            "import": "./restextras-0.7-ambient.js"
+        },
+        "./import": {
+            "types": "./restextras-0.7-import.d.ts",
+            "import": "./restextras-0.7-import.js"
+        },
+        ".": {
+            "types": "./restextras-0.7.d.ts",
+            "import": "./restextras-0.7.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit restextras-0.7.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit restextras-0.7.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/libxml2-2.0": "workspace:^",            "@girs/rest-0.7": "workspace:^",            "@girs/soup-2.4": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/rest-0.7": "workspace:^",
+        "@girs/soup-2.4": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "RestExtras-0.7"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "RestExtras-0.7"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/restextras-0.7#readme"
 }
-
-

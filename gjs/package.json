@@ -1,0 +1,62 @@
+{
+    "name": "@girs/gjs",
+    "version": "4.0.0",
+    "description": "GJS TypeScript type definitions for Gjs",
+    "type": "module",
+    "module": "gjs.js",
+    "main": "gjs.js",
+    "exports": {
+        "./ambient": {
+            "types": "./ambient.d.ts",
+            "import": "./ambient.js"
+        },
+        "./dom": {
+            "types": "./dom.d.ts",
+            "import": "./dom.js"
+        },
+        "./gettext": {
+            "types": "./gettext.d.ts",
+            "import": "./gettext.js"
+        },
+        "./system": {
+            "types": "./system.d.ts",
+            "import": "./system.js"
+        },
+        "./cairo": {
+            "types": "./cairo.d.ts",
+            "import": "./cairo.js"
+        },
+        ".": {
+            "types": "./gjs.d.ts",
+            "import": "./gjs.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gjs.d.ts"
+    },
+    "dependencies": {
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gjs"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gjs#readme"
+}

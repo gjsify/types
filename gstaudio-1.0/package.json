@@ -6,39 +6,49 @@
     "module": "gstaudio-1.0.js",
     "main": "gstaudio-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./gstaudio-1.0-ambient.d.ts",
-        "default": "./gstaudio-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./gstaudio-1.0-import.d.ts",
-        "default": "./gstaudio-1.0-import.js"
-      },
-      ".": {
-        "types": "./gstaudio-1.0.d.ts",
-        "default": "./gstaudio-1.0.js"
-      }
+        "./ambient": {
+            "types": "./gstaudio-1.0-ambient.d.ts",
+            "import": "./gstaudio-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstaudio-1.0-import.d.ts",
+            "import": "./gstaudio-1.0-import.js"
+        },
+        ".": {
+            "types": "./gstaudio-1.0.d.ts",
+            "import": "./gstaudio-1.0.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstaudio-1.0.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstaudio-1.0.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/gstbase-1.0": "workspace:^",            "@girs/gst-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^"      
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gstbase-1.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstAudio-1.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstAudio-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstaudio-1.0#readme"
 }
-
-

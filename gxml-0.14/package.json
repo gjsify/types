@@ -6,39 +6,49 @@
     "module": "gxml-0.14.js",
     "main": "gxml-0.14.js",
     "exports": {
-      "./ambient": {
-        "types": "./gxml-0.14-ambient.d.ts",
-        "default": "./gxml-0.14-ambient.js"
-      },
-      "./import": {
-        "types": "./gxml-0.14-import.d.ts",
-        "default": "./gxml-0.14-import.js"
-      },
-      ".": {
-        "types": "./gxml-0.14.d.ts",
-        "default": "./gxml-0.14.js"
-      }
+        "./ambient": {
+            "types": "./gxml-0.14-ambient.d.ts",
+            "import": "./gxml-0.14-ambient.js"
+        },
+        "./import": {
+            "types": "./gxml-0.14-import.d.ts",
+            "import": "./gxml-0.14-import.js"
+        },
+        ".": {
+            "types": "./gxml-0.14.d.ts",
+            "import": "./gxml-0.14.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gxml-0.14.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gxml-0.14.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/libxml2-2.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gee-0.8": "workspace:^"      
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GXml-0.14"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GXml-0.14"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gxml-0.14#readme"
 }
-
-

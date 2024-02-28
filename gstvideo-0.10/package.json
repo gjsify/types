@@ -6,39 +6,50 @@
     "module": "gstvideo-0.10.js",
     "main": "gstvideo-0.10.js",
     "exports": {
-      "./ambient": {
-        "types": "./gstvideo-0.10-ambient.d.ts",
-        "default": "./gstvideo-0.10-ambient.js"
-      },
-      "./import": {
-        "types": "./gstvideo-0.10-import.d.ts",
-        "default": "./gstvideo-0.10-import.js"
-      },
-      ".": {
-        "types": "./gstvideo-0.10.d.ts",
-        "default": "./gstvideo-0.10.js"
-      }
+        "./ambient": {
+            "types": "./gstvideo-0.10-ambient.d.ts",
+            "import": "./gstvideo-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstvideo-0.10-import.d.ts",
+            "import": "./gstvideo-0.10-import.js"
+        },
+        ".": {
+            "types": "./gstvideo-0.10.d.ts",
+            "import": "./gstvideo-0.10.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstvideo-0.10.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstvideo-0.10.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/libxml2-2.0": "workspace:^",            "@girs/gstbase-0.10": "workspace:^",            "@girs/gst-0.10": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^"      
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/gstbase-0.10": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstVideo-0.10"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstVideo-0.10"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstvideo-0.10#readme"
 }
-
-

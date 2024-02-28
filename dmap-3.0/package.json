@@ -6,39 +6,48 @@
     "module": "dmap-3.0.js",
     "main": "dmap-3.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./dmap-3.0-ambient.d.ts",
-        "default": "./dmap-3.0-ambient.js"
-      },
-      "./import": {
-        "types": "./dmap-3.0-import.d.ts",
-        "default": "./dmap-3.0-import.js"
-      },
-      ".": {
-        "types": "./dmap-3.0.d.ts",
-        "default": "./dmap-3.0.js"
-      }
+        "./ambient": {
+            "types": "./dmap-3.0-ambient.d.ts",
+            "import": "./dmap-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./dmap-3.0-import.d.ts",
+            "import": "./dmap-3.0-import.js"
+        },
+        ".": {
+            "types": "./dmap-3.0.d.ts",
+            "import": "./dmap-3.0.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dmap-3.0.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dmap-3.0.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/soup-2.4": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^"      
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/soup-2.4": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "DMAP-3.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "DMAP-3.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/dmap-3.0#readme"
 }
-
-

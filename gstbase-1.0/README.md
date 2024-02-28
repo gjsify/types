@@ -4,9 +4,9 @@
 ![version](https://img.shields.io/npm/v/@girs/gstbase-1.0)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gstbase-1.0)
 
+
 GJS TypeScript type definitions for GstBase-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0.
 
-[GJS](https://gitlab.gnome.org/GNOME/gjs) is a JavaScript runtime for the GNOME ecosystem. Using GJS and the type definitions in this NPM package, you can build GTK applications in JavaScript or TypeScript with type checking, better autocompletion and inline documentations.
 
 ## Install
 
@@ -14,7 +14,6 @@ To use this type definitions, install them with NPM:
 ```bash
 npm install @girs/gstbase-1.0
 ```
-
 
 ## Usage
 
@@ -28,47 +27,11 @@ Or if you prefer CommonJS, you can also use this:
 const GstBase = require('@girs/gstbase-1.0');
 ```
 
-### Global types
-
-After the import, the global types of GJS are also available:
-
-```ts
-import '@girs/gjs';
-
-print('Hello World from print');
-
-const ByteArray = imports.byteArray;
-
-// And so on...
-```
-
-### Global DOM types
-
-Some types that conflict with the DOM are outsourced to allow frameworks like Gjsify to rebuild the DOM API without causing type conflicts.
-But you can easily import them:
-
-```ts
-import '@girs/gjs/dom';
-
-console.log('Hello World from console');
-
-const encoder = new TextEncoder();
-const encoded = encoder.encode('𝓽𝓮𝔁𝓽');
-
-setTimeout(() => {
-  // ...
-}, 1000);
-
-// And so on...
-```
-
-To avoid a type conflict with the DOM types it is recommended to either modify your `tsconfig.json` or `jsconfig.json` file to exclude the DOM lib, or to enable the `noLib` property.
-
 ### Ambient Modules
 
-You can import the built in [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) of GJS.
-For this you need to include the `@girs/gstbase-1.0` or `@girs/gstbase-1.0/ambient` in your `tsconfig` or entry point Typescript file:
-    
+You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
+For this you need to include `@girs/gstbase-1.0` or `@girs/gstbase-1.0/ambient` in your `tsconfig` or entry point Typescript file:
+
 `index.ts`:
 ```ts
 import '@girs/gstbase-1.0'
@@ -85,36 +48,51 @@ import '@girs/gstbase-1.0'
 }
 ```
 
-Now you can import `gettext`, `system` and `cairo` in ESM style with Typescript support:
+Now you can import the ambient module with TypeScript support: 
 
 ```ts
-import gettext from 'gettext';
-import system from 'system';
-import cairo from 'cairo';
+import GstBase from 'gi://GstBase?version=1.0';
 ```
 
-### GIR modules
+### Global import
 
-If you want to have types for [GObject Introspection](https://gi.readthedocs.io/en/latest/) modules, you have to add them to your dependencies and import them as well, see the description of these modules, e.g. [gtk-4.0](https://www.npmjs.com/package/@girs/gtk-4.0), [gio-2.0](https://www.npmjs.com/package/@girs/gio-2.0), [adw-1](https://www.npmjs.com/package/@girs/adw-1) and [much more](https://github.com/gjsify/types).
+You can also import the module with Typescript support using the global `imports.gi` object of GJS.
+For this you need to include `@girs/gstbase-1.0` or `@girs/gstbase-1.0/import` in your `tsconfig` or entry point Typescript file:
 
-These types will then be available to you:
+`index.ts`:
+```ts
+import '@girs/gstbase-1.0'
+```
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  "include": ["@girs/gstbase-1.0"],
+  ...
+}
+```
+
+Now you have also type support for this, too:
 
 ```ts
-import '@girs/gjs'
-import '@girs/gjs/dom'
-import '@girs/gio-2.0'
-import '@girs/gtk-4.0'
-import '@girs/adw-1'
-
-import Gio from 'gi://Gio?version=2.0';
-import Gtk from 'gi://Gtk?version=4.0';
-import Adwaita from 'gi://adw?version=1';
-
-const button = new Gtk.Button();
-
-// ...
-
+const GstBase = imports.gi.GstBase;
 ```
+
+
+### ESM vs. CommonJS
+
+GJS supports two different import syntaxes. The new modern ESM syntax and the old global imports syntax.
+
+In TypeScript projects for GJS and GNOME Shell extensions, you have the flexibility to use `ESM` syntax and then decide the import syntax for your bundled file. If your bundler is configured to use `CommonJS`, it will convert to the GJS-specific global imports syntax, like `const moduleName = imports.gi[moduleName]`. This is different from the traditional `require` syntax seen in Node.js. The global imports syntax is chosen because it aligns with the CommonJS format supported by NPM, which is used for the generated type definitions and this package.
+
+On the other hand, if you configure your bundler to use ESM, it will retain the ESM import syntax. It's crucial to ensure that your bundler is set up to correctly translate and bundle these imports into either CommonJS or ESM format, depending on your project's requirements.
+
+This approach is particularly important due to the `@girs` types, which include both `*.cjs `files, using the GJS global imports syntax, and `*.js` files, which utilize the ESM syntax. By appropriately setting up your bundler, you can control which syntax—CommonJS or ESM—is used in your project. The choice of CommonJS in this context is also due to the similarity between the GJS-specific global imports and CommonJS syntax, allowing for easier management and bundling in these specific types of projects.
+
+Since GNOME Shell 45, you should only use ESM, even for GNOME Shell extensions. Before that, extensions had to use the global import syntax, unlike normal GJS applications, where ESM has been available for some time.
 
 ### Bundle
 

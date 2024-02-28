@@ -6,39 +6,73 @@
     "module": "sushi-1.0.js",
     "main": "sushi-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./sushi-1.0-ambient.d.ts",
-        "default": "./sushi-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./sushi-1.0-import.d.ts",
-        "default": "./sushi-1.0-import.js"
-      },
-      ".": {
-        "types": "./sushi-1.0.d.ts",
-        "default": "./sushi-1.0.js"
-      }
+        "./ambient": {
+            "types": "./sushi-1.0-ambient.d.ts",
+            "import": "./sushi-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./sushi-1.0-import.d.ts",
+            "import": "./sushi-1.0-import.js"
+        },
+        ".": {
+            "types": "./sushi-1.0.d.ts",
+            "import": "./sushi-1.0.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit sushi-1.0.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit sushi-1.0.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/xlib-2.0": "workspace:^",            "@girs/libxml2-2.0": "workspace:^",            "@girs/freetype2-2.0": "workspace:^",            "@girs/fontconfig-2.0": "workspace:^",            "@girs/cairo-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/pangoft2-1.0": "workspace:^",            "@girs/pangofc-1.0": "workspace:^",            "@girs/pango-1.0": "workspace:^",            "@girs/harfbuzz-0.0": "workspace:^",            "@girs/gio-2.0": "workspace:^",            "@girs/pangocairo-1.0": "workspace:^",            "@girs/json-1.0": "workspace:^",            "@girs/gtksource-3.0": "workspace:^",            "@girs/gtk-3.0": "workspace:^",            "@girs/gdk-3.0": "workspace:^",            "@girs/gdkpixbuf-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^",            "@girs/atk-1.0": "workspace:^",            "@girs/gsttag-0.10": "workspace:^",            "@girs/gst-0.10": "workspace:^",            "@girs/gstpbutils-0.10": "workspace:^",            "@girs/gstbase-0.10": "workspace:^",            "@girs/gl-1.0": "workspace:^",            "@girs/evincedocument-3.0": "workspace:^",            "@girs/coglpango-1.0": "workspace:^",            "@girs/cogl-1.0": "workspace:^",            "@girs/clutter-1.0": "workspace:^"      
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/clutter-1.0": "workspace:^",
+        "@girs/cogl-1.0": "workspace:^",
+        "@girs/coglpango-1.0": "workspace:^",
+        "@girs/evincedocument-3.0": "workspace:^",
+        "@girs/fontconfig-2.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-3.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/gstbase-0.10": "workspace:^",
+        "@girs/gstpbutils-0.10": "workspace:^",
+        "@girs/gsttag-0.10": "workspace:^",
+        "@girs/gtk-3.0": "workspace:^",
+        "@girs/gtksource-3.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/pangofc-1.0": "workspace:^",
+        "@girs/pangoft2-1.0": "workspace:^",
+        "@girs/xlib-2.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Sushi-1.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Sushi-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/sushi-1.0#readme"
 }
-
-

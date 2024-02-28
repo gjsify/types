@@ -6,39 +6,51 @@
     "module": "gstvulkan-1.0.js",
     "main": "gstvulkan-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./gstvulkan-1.0-ambient.d.ts",
-        "default": "./gstvulkan-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./gstvulkan-1.0-import.d.ts",
-        "default": "./gstvulkan-1.0-import.js"
-      },
-      ".": {
-        "types": "./gstvulkan-1.0.d.ts",
-        "default": "./gstvulkan-1.0.js"
-      }
+        "./ambient": {
+            "types": "./gstvulkan-1.0-ambient.d.ts",
+            "import": "./gstvulkan-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstvulkan-1.0-import.d.ts",
+            "import": "./gstvulkan-1.0-import.js"
+        },
+        ".": {
+            "types": "./gstvulkan-1.0.d.ts",
+            "import": "./gstvulkan-1.0.js"
+        }
     },
     "scripts": {
-      "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstvulkan-1.0.d.ts"
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstvulkan-1.0.d.ts"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",      "@girs/vulkan-1.0": "workspace:^",            "@girs/gstvideo-1.0": "workspace:^",            "@girs/gstbase-1.0": "workspace:^",            "@girs/gst-1.0": "workspace:^",            "@girs/gobject-2.0": "workspace:^",            "@girs/glib-2.0": "workspace:^",            "@girs/gmodule-2.0": "workspace:^"      
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gstbase-1.0": "workspace:^",
+        "@girs/gstvideo-1.0": "workspace:^",
+        "@girs/vulkan-1.0": "workspace:^"
     },
     "devDependencies": {
-      "typescript": "*"
+        "typescript": "*"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstVulkan-1.0"],
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstVulkan-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/ts-for-gir.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstvulkan-1.0#readme"
 }
-
-
