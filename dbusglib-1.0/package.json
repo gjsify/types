@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dbusglib-1.0-ambient.d.ts",
-            "import": "./dbusglib-1.0-ambient.js"
+            "import": "./dbusglib-1.0-ambient.js",
+            "default": "./dbusglib-1.0-ambient.js"
         },
         "./import": {
             "types": "./dbusglib-1.0-import.d.ts",
-            "import": "./dbusglib-1.0-import.js"
+            "import": "./dbusglib-1.0-import.js",
+            "default": "./dbusglib-1.0-import.js"
         },
         ".": {
             "types": "./dbusglib-1.0.d.ts",
-            "import": "./dbusglib-1.0.js"
+            "import": "./dbusglib-1.0.js",
+            "default": "./dbusglib-1.0.js"
         }
     },
     "scripts": {

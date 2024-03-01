@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./pnl-1.0-ambient.d.ts",
-            "import": "./pnl-1.0-ambient.js"
+            "import": "./pnl-1.0-ambient.js",
+            "default": "./pnl-1.0-ambient.js"
         },
         "./import": {
             "types": "./pnl-1.0-import.d.ts",
-            "import": "./pnl-1.0-import.js"
+            "import": "./pnl-1.0-import.js",
+            "default": "./pnl-1.0-import.js"
         },
         ".": {
             "types": "./pnl-1.0.d.ts",
-            "import": "./pnl-1.0.js"
+            "import": "./pnl-1.0.js",
+            "default": "./pnl-1.0.js"
         }
     },
     "scripts": {

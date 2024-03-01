@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./nmgtk-1.0-ambient.d.ts",
-            "import": "./nmgtk-1.0-ambient.js"
+            "import": "./nmgtk-1.0-ambient.js",
+            "default": "./nmgtk-1.0-ambient.js"
         },
         "./import": {
             "types": "./nmgtk-1.0-import.d.ts",
-            "import": "./nmgtk-1.0-import.js"
+            "import": "./nmgtk-1.0-import.js",
+            "default": "./nmgtk-1.0-import.js"
         },
         ".": {
             "types": "./nmgtk-1.0.d.ts",
-            "import": "./nmgtk-1.0.js"
+            "import": "./nmgtk-1.0.js",
+            "default": "./nmgtk-1.0.js"
         }
     },
     "scripts": {

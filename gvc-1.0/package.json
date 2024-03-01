@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gvc-1.0-ambient.d.ts",
-            "import": "./gvc-1.0-ambient.js"
+            "import": "./gvc-1.0-ambient.js",
+            "default": "./gvc-1.0-ambient.js"
         },
         "./import": {
             "types": "./gvc-1.0-import.d.ts",
-            "import": "./gvc-1.0-import.js"
+            "import": "./gvc-1.0-import.js",
+            "default": "./gvc-1.0-import.js"
         },
         ".": {
             "types": "./gvc-1.0.d.ts",
-            "import": "./gvc-1.0.js"
+            "import": "./gvc-1.0.js",
+            "default": "./gvc-1.0.js"
         }
     },
     "scripts": {

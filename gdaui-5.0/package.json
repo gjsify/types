@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdaui-5.0-ambient.d.ts",
-            "import": "./gdaui-5.0-ambient.js"
+            "import": "./gdaui-5.0-ambient.js",
+            "default": "./gdaui-5.0-ambient.js"
         },
         "./import": {
             "types": "./gdaui-5.0-import.d.ts",
-            "import": "./gdaui-5.0-import.js"
+            "import": "./gdaui-5.0-import.js",
+            "default": "./gdaui-5.0-import.js"
         },
         ".": {
             "types": "./gdaui-5.0.d.ts",
-            "import": "./gdaui-5.0.js"
+            "import": "./gdaui-5.0.js",
+            "default": "./gdaui-5.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gxps-1.0-ambient.d.ts",
-            "import": "./gxps-1.0-ambient.js"
+            "import": "./gxps-1.0-ambient.js",
+            "default": "./gxps-1.0-ambient.js"
         },
         "./import": {
             "types": "./gxps-1.0-import.d.ts",
-            "import": "./gxps-1.0-import.js"
+            "import": "./gxps-1.0-import.js",
+            "default": "./gxps-1.0-import.js"
         },
         ".": {
             "types": "./gxps-1.0.d.ts",
-            "import": "./gxps-1.0.js"
+            "import": "./gxps-1.0.js",
+            "default": "./gxps-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./handy-0.0-ambient.d.ts",
-            "import": "./handy-0.0-ambient.js"
+            "import": "./handy-0.0-ambient.js",
+            "default": "./handy-0.0-ambient.js"
         },
         "./import": {
             "types": "./handy-0.0-import.d.ts",
-            "import": "./handy-0.0-import.js"
+            "import": "./handy-0.0-import.js",
+            "default": "./handy-0.0-import.js"
         },
         ".": {
             "types": "./handy-0.0.d.ts",
-            "import": "./handy-0.0.js"
+            "import": "./handy-0.0.js",
+            "default": "./handy-0.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mx-2.0-ambient.d.ts",
-            "import": "./mx-2.0-ambient.js"
+            "import": "./mx-2.0-ambient.js",
+            "default": "./mx-2.0-ambient.js"
         },
         "./import": {
             "types": "./mx-2.0-import.d.ts",
-            "import": "./mx-2.0-import.js"
+            "import": "./mx-2.0-import.js",
+            "default": "./mx-2.0-import.js"
         },
         ".": {
             "types": "./mx-2.0.d.ts",
-            "import": "./mx-2.0.js"
+            "import": "./mx-2.0.js",
+            "default": "./mx-2.0.js"
         }
     },
     "scripts": {

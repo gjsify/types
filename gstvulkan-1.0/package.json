@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstvulkan-1.0-ambient.d.ts",
-            "import": "./gstvulkan-1.0-ambient.js"
+            "import": "./gstvulkan-1.0-ambient.js",
+            "default": "./gstvulkan-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstvulkan-1.0-import.d.ts",
-            "import": "./gstvulkan-1.0-import.js"
+            "import": "./gstvulkan-1.0-import.js",
+            "default": "./gstvulkan-1.0-import.js"
         },
         ".": {
             "types": "./gstvulkan-1.0.d.ts",
-            "import": "./gstvulkan-1.0.js"
+            "import": "./gstvulkan-1.0.js",
+            "default": "./gstvulkan-1.0.js"
         }
     },
     "scripts": {

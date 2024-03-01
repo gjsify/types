@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./webkit2-4.0-ambient.d.ts",
-            "import": "./webkit2-4.0-ambient.js"
+            "import": "./webkit2-4.0-ambient.js",
+            "default": "./webkit2-4.0-ambient.js"
         },
         "./import": {
             "types": "./webkit2-4.0-import.d.ts",
-            "import": "./webkit2-4.0-import.js"
+            "import": "./webkit2-4.0-import.js",
+            "default": "./webkit2-4.0-import.js"
         },
         ".": {
             "types": "./webkit2-4.0.d.ts",
-            "import": "./webkit2-4.0.js"
+            "import": "./webkit2-4.0.js",
+            "default": "./webkit2-4.0.js"
         }
     },
     "scripts": {

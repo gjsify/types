@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./qrtr-1.0-ambient.d.ts",
-            "import": "./qrtr-1.0-ambient.js"
+            "import": "./qrtr-1.0-ambient.js",
+            "default": "./qrtr-1.0-ambient.js"
         },
         "./import": {
             "types": "./qrtr-1.0-import.d.ts",
-            "import": "./qrtr-1.0-import.js"
+            "import": "./qrtr-1.0-import.js",
+            "default": "./qrtr-1.0-import.js"
         },
         ".": {
             "types": "./qrtr-1.0.d.ts",
-            "import": "./qrtr-1.0.js"
+            "import": "./qrtr-1.0.js",
+            "default": "./qrtr-1.0.js"
         }
     },
     "scripts": {

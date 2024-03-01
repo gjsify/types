@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./pangoxft-1.0-ambient.d.ts",
-            "import": "./pangoxft-1.0-ambient.js"
+            "import": "./pangoxft-1.0-ambient.js",
+            "default": "./pangoxft-1.0-ambient.js"
         },
         "./import": {
             "types": "./pangoxft-1.0-import.d.ts",
-            "import": "./pangoxft-1.0-import.js"
+            "import": "./pangoxft-1.0-import.js",
+            "default": "./pangoxft-1.0-import.js"
         },
         ".": {
             "types": "./pangoxft-1.0.d.ts",
-            "import": "./pangoxft-1.0.js"
+            "import": "./pangoxft-1.0.js",
+            "default": "./pangoxft-1.0.js"
         }
     },
     "scripts": {

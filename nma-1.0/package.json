@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./nma-1.0-ambient.d.ts",
-            "import": "./nma-1.0-ambient.js"
+            "import": "./nma-1.0-ambient.js",
+            "default": "./nma-1.0-ambient.js"
         },
         "./import": {
             "types": "./nma-1.0-import.d.ts",
-            "import": "./nma-1.0-import.js"
+            "import": "./nma-1.0-import.js",
+            "default": "./nma-1.0-import.js"
         },
         ".": {
             "types": "./nma-1.0.d.ts",
-            "import": "./nma-1.0.js"
+            "import": "./nma-1.0.js",
+            "default": "./nma-1.0.js"
         }
     },
     "scripts": {

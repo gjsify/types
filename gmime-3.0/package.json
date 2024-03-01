@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gmime-3.0-ambient.d.ts",
-            "import": "./gmime-3.0-ambient.js"
+            "import": "./gmime-3.0-ambient.js",
+            "default": "./gmime-3.0-ambient.js"
         },
         "./import": {
             "types": "./gmime-3.0-import.d.ts",
-            "import": "./gmime-3.0-import.js"
+            "import": "./gmime-3.0-import.js",
+            "default": "./gmime-3.0-import.js"
         },
         ".": {
             "types": "./gmime-3.0.d.ts",
-            "import": "./gmime-3.0.js"
+            "import": "./gmime-3.0.js",
+            "default": "./gmime-3.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./epc-1.0-ambient.d.ts",
-            "import": "./epc-1.0-ambient.js"
+            "import": "./epc-1.0-ambient.js",
+            "default": "./epc-1.0-ambient.js"
         },
         "./import": {
             "types": "./epc-1.0-import.d.ts",
-            "import": "./epc-1.0-import.js"
+            "import": "./epc-1.0-import.js",
+            "default": "./epc-1.0-import.js"
         },
         ".": {
             "types": "./epc-1.0.d.ts",
-            "import": "./epc-1.0.js"
+            "import": "./epc-1.0.js",
+            "default": "./epc-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./modemmanager-1.0-ambient.d.ts",
-            "import": "./modemmanager-1.0-ambient.js"
+            "import": "./modemmanager-1.0-ambient.js",
+            "default": "./modemmanager-1.0-ambient.js"
         },
         "./import": {
             "types": "./modemmanager-1.0-import.d.ts",
-            "import": "./modemmanager-1.0-import.js"
+            "import": "./modemmanager-1.0-import.js",
+            "default": "./modemmanager-1.0-import.js"
         },
         ".": {
             "types": "./modemmanager-1.0.d.ts",
-            "import": "./modemmanager-1.0.js"
+            "import": "./modemmanager-1.0.js",
+            "default": "./modemmanager-1.0.js"
         }
     },
     "scripts": {

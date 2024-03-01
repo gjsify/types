@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./arrowdataset-1.0-ambient.d.ts",
-            "import": "./arrowdataset-1.0-ambient.js"
+            "import": "./arrowdataset-1.0-ambient.js",
+            "default": "./arrowdataset-1.0-ambient.js"
         },
         "./import": {
             "types": "./arrowdataset-1.0-import.d.ts",
-            "import": "./arrowdataset-1.0-import.js"
+            "import": "./arrowdataset-1.0-import.js",
+            "default": "./arrowdataset-1.0-import.js"
         },
         ".": {
             "types": "./arrowdataset-1.0.d.ts",
-            "import": "./arrowdataset-1.0.js"
+            "import": "./arrowdataset-1.0.js",
+            "default": "./arrowdataset-1.0.js"
         }
     },
     "scripts": {

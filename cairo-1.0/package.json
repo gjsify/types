@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./cairo-1.0-ambient.d.ts",
-            "import": "./cairo-1.0-ambient.js"
+            "import": "./cairo-1.0-ambient.js",
+            "default": "./cairo-1.0-ambient.js"
         },
         "./import": {
             "types": "./cairo-1.0-import.d.ts",
-            "import": "./cairo-1.0-import.js"
+            "import": "./cairo-1.0-import.js",
+            "default": "./cairo-1.0-import.js"
         },
         ".": {
             "types": "./cairo-1.0.d.ts",
-            "import": "./cairo-1.0.js"
+            "import": "./cairo-1.0.js",
+            "default": "./cairo-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./telepathylogger-0.2-ambient.d.ts",
-            "import": "./telepathylogger-0.2-ambient.js"
+            "import": "./telepathylogger-0.2-ambient.js",
+            "default": "./telepathylogger-0.2-ambient.js"
         },
         "./import": {
             "types": "./telepathylogger-0.2-import.d.ts",
-            "import": "./telepathylogger-0.2-import.js"
+            "import": "./telepathylogger-0.2-import.js",
+            "default": "./telepathylogger-0.2-import.js"
         },
         ".": {
             "types": "./telepathylogger-0.2.d.ts",
-            "import": "./telepathylogger-0.2.js"
+            "import": "./telepathylogger-0.2.js",
+            "default": "./telepathylogger-0.2.js"
         }
     },
     "scripts": {

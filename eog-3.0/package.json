@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./eog-3.0-ambient.d.ts",
-            "import": "./eog-3.0-ambient.js"
+            "import": "./eog-3.0-ambient.js",
+            "default": "./eog-3.0-ambient.js"
         },
         "./import": {
             "types": "./eog-3.0-import.d.ts",
-            "import": "./eog-3.0-import.js"
+            "import": "./eog-3.0-import.js",
+            "default": "./eog-3.0-import.js"
         },
         ".": {
             "types": "./eog-3.0.d.ts",
-            "import": "./eog-3.0.js"
+            "import": "./eog-3.0.js",
+            "default": "./eog-3.0.js"
         }
     },
     "scripts": {

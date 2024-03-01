@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vulkan-1.0-ambient.d.ts",
-            "import": "./vulkan-1.0-ambient.js"
+            "import": "./vulkan-1.0-ambient.js",
+            "default": "./vulkan-1.0-ambient.js"
         },
         "./import": {
             "types": "./vulkan-1.0-import.d.ts",
-            "import": "./vulkan-1.0-import.js"
+            "import": "./vulkan-1.0-import.js",
+            "default": "./vulkan-1.0-import.js"
         },
         ".": {
             "types": "./vulkan-1.0.d.ts",
-            "import": "./vulkan-1.0.js"
+            "import": "./vulkan-1.0.js",
+            "default": "./vulkan-1.0.js"
         }
     },
     "scripts": {

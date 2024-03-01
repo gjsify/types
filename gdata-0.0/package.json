@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdata-0.0-ambient.d.ts",
-            "import": "./gdata-0.0-ambient.js"
+            "import": "./gdata-0.0-ambient.js",
+            "default": "./gdata-0.0-ambient.js"
         },
         "./import": {
             "types": "./gdata-0.0-import.d.ts",
-            "import": "./gdata-0.0-import.js"
+            "import": "./gdata-0.0-import.js",
+            "default": "./gdata-0.0-import.js"
         },
         ".": {
             "types": "./gdata-0.0.d.ts",
-            "import": "./gdata-0.0.js"
+            "import": "./gdata-0.0.js",
+            "default": "./gdata-0.0.js"
         }
     },
     "scripts": {

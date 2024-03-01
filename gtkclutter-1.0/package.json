@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtkclutter-1.0-ambient.d.ts",
-            "import": "./gtkclutter-1.0-ambient.js"
+            "import": "./gtkclutter-1.0-ambient.js",
+            "default": "./gtkclutter-1.0-ambient.js"
         },
         "./import": {
             "types": "./gtkclutter-1.0-import.d.ts",
-            "import": "./gtkclutter-1.0-import.js"
+            "import": "./gtkclutter-1.0-import.js",
+            "default": "./gtkclutter-1.0-import.js"
         },
         ".": {
             "types": "./gtkclutter-1.0.d.ts",
-            "import": "./gtkclutter-1.0.js"
+            "import": "./gtkclutter-1.0.js",
+            "default": "./gtkclutter-1.0.js"
         }
     },
     "scripts": {

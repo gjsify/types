@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./tepl-4-ambient.d.ts",
-            "import": "./tepl-4-ambient.js"
+            "import": "./tepl-4-ambient.js",
+            "default": "./tepl-4-ambient.js"
         },
         "./import": {
             "types": "./tepl-4-import.d.ts",
-            "import": "./tepl-4-import.js"
+            "import": "./tepl-4-import.js",
+            "default": "./tepl-4-import.js"
         },
         ".": {
             "types": "./tepl-4.d.ts",
-            "import": "./tepl-4.js"
+            "import": "./tepl-4.js",
+            "default": "./tepl-4.js"
         }
     },
     "scripts": {

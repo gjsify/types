@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./networkmanager-1.0-ambient.d.ts",
-            "import": "./networkmanager-1.0-ambient.js"
+            "import": "./networkmanager-1.0-ambient.js",
+            "default": "./networkmanager-1.0-ambient.js"
         },
         "./import": {
             "types": "./networkmanager-1.0-import.d.ts",
-            "import": "./networkmanager-1.0-import.js"
+            "import": "./networkmanager-1.0-import.js",
+            "default": "./networkmanager-1.0-import.js"
         },
         ".": {
             "types": "./networkmanager-1.0.d.ts",
-            "import": "./networkmanager-1.0.js"
+            "import": "./networkmanager-1.0.js",
+            "default": "./networkmanager-1.0.js"
         }
     },
     "scripts": {

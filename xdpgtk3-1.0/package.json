@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xdpgtk3-1.0-ambient.d.ts",
-            "import": "./xdpgtk3-1.0-ambient.js"
+            "import": "./xdpgtk3-1.0-ambient.js",
+            "default": "./xdpgtk3-1.0-ambient.js"
         },
         "./import": {
             "types": "./xdpgtk3-1.0-import.d.ts",
-            "import": "./xdpgtk3-1.0-import.js"
+            "import": "./xdpgtk3-1.0-import.js",
+            "default": "./xdpgtk3-1.0-import.js"
         },
         ".": {
             "types": "./xdpgtk3-1.0.d.ts",
-            "import": "./xdpgtk3-1.0.js"
+            "import": "./xdpgtk3-1.0.js",
+            "default": "./xdpgtk3-1.0.js"
         }
     },
     "scripts": {

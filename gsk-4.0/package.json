@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsk-4.0-ambient.d.ts",
-            "import": "./gsk-4.0-ambient.js"
+            "import": "./gsk-4.0-ambient.js",
+            "default": "./gsk-4.0-ambient.js"
         },
         "./import": {
             "types": "./gsk-4.0-import.d.ts",
-            "import": "./gsk-4.0-import.js"
+            "import": "./gsk-4.0-import.js",
+            "default": "./gsk-4.0-import.js"
         },
         ".": {
             "types": "./gsk-4.0.d.ts",
-            "import": "./gsk-4.0.js"
+            "import": "./gsk-4.0.js",
+            "default": "./gsk-4.0.js"
         }
     },
     "scripts": {

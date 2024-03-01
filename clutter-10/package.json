@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./clutter-10-ambient.d.ts",
-            "import": "./clutter-10-ambient.js"
+            "import": "./clutter-10-ambient.js",
+            "default": "./clutter-10-ambient.js"
         },
         "./import": {
             "types": "./clutter-10-import.d.ts",
-            "import": "./clutter-10-import.js"
+            "import": "./clutter-10-import.js",
+            "default": "./clutter-10-import.js"
         },
         ".": {
             "types": "./clutter-10.d.ts",
-            "import": "./clutter-10.js"
+            "import": "./clutter-10.js",
+            "default": "./clutter-10.js"
         }
     },
     "scripts": {

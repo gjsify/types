@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./grlpls-0.3-ambient.d.ts",
-            "import": "./grlpls-0.3-ambient.js"
+            "import": "./grlpls-0.3-ambient.js",
+            "default": "./grlpls-0.3-ambient.js"
         },
         "./import": {
             "types": "./grlpls-0.3-import.d.ts",
-            "import": "./grlpls-0.3-import.js"
+            "import": "./grlpls-0.3-import.js",
+            "default": "./grlpls-0.3-import.js"
         },
         ".": {
             "types": "./grlpls-0.3.d.ts",
-            "import": "./grlpls-0.3.js"
+            "import": "./grlpls-0.3.js",
+            "default": "./grlpls-0.3.js"
         }
     },
     "scripts": {

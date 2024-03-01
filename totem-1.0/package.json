@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./totem-1.0-ambient.d.ts",
-            "import": "./totem-1.0-ambient.js"
+            "import": "./totem-1.0-ambient.js",
+            "default": "./totem-1.0-ambient.js"
         },
         "./import": {
             "types": "./totem-1.0-import.d.ts",
-            "import": "./totem-1.0-import.js"
+            "import": "./totem-1.0-import.js",
+            "default": "./totem-1.0-import.js"
         },
         ".": {
             "types": "./totem-1.0.d.ts",
-            "import": "./totem-1.0.js"
+            "import": "./totem-1.0.js",
+            "default": "./totem-1.0.js"
         }
     },
     "scripts": {

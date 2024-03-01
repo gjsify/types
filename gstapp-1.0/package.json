@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstapp-1.0-ambient.d.ts",
-            "import": "./gstapp-1.0-ambient.js"
+            "import": "./gstapp-1.0-ambient.js",
+            "default": "./gstapp-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstapp-1.0-import.d.ts",
-            "import": "./gstapp-1.0-import.js"
+            "import": "./gstapp-1.0-import.js",
+            "default": "./gstapp-1.0-import.js"
         },
         ".": {
             "types": "./gstapp-1.0.d.ts",
-            "import": "./gstapp-1.0.js"
+            "import": "./gstapp-1.0.js",
+            "default": "./gstapp-1.0.js"
         }
     },
     "scripts": {

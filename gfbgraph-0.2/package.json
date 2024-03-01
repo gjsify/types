@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gfbgraph-0.2-ambient.d.ts",
-            "import": "./gfbgraph-0.2-ambient.js"
+            "import": "./gfbgraph-0.2-ambient.js",
+            "default": "./gfbgraph-0.2-ambient.js"
         },
         "./import": {
             "types": "./gfbgraph-0.2-import.d.ts",
-            "import": "./gfbgraph-0.2-import.js"
+            "import": "./gfbgraph-0.2-import.js",
+            "default": "./gfbgraph-0.2-import.js"
         },
         ".": {
             "types": "./gfbgraph-0.2.d.ts",
-            "import": "./gfbgraph-0.2.js"
+            "import": "./gfbgraph-0.2.js",
+            "default": "./gfbgraph-0.2.js"
         }
     },
     "scripts": {

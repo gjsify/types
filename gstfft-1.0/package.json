@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstfft-1.0-ambient.d.ts",
-            "import": "./gstfft-1.0-ambient.js"
+            "import": "./gstfft-1.0-ambient.js",
+            "default": "./gstfft-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstfft-1.0-import.d.ts",
-            "import": "./gstfft-1.0-import.js"
+            "import": "./gstfft-1.0-import.js",
+            "default": "./gstfft-1.0-import.js"
         },
         ".": {
             "types": "./gstfft-1.0.d.ts",
-            "import": "./gstfft-1.0.js"
+            "import": "./gstfft-1.0.js",
+            "default": "./gstfft-1.0.js"
         }
     },
     "scripts": {

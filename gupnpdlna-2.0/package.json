@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gupnpdlna-2.0-ambient.d.ts",
-            "import": "./gupnpdlna-2.0-ambient.js"
+            "import": "./gupnpdlna-2.0-ambient.js",
+            "default": "./gupnpdlna-2.0-ambient.js"
         },
         "./import": {
             "types": "./gupnpdlna-2.0-import.d.ts",
-            "import": "./gupnpdlna-2.0-import.js"
+            "import": "./gupnpdlna-2.0-import.js",
+            "default": "./gupnpdlna-2.0-import.js"
         },
         ".": {
             "types": "./gupnpdlna-2.0.d.ts",
-            "import": "./gupnpdlna-2.0.js"
+            "import": "./gupnpdlna-2.0.js",
+            "default": "./gupnpdlna-2.0.js"
         }
     },
     "scripts": {

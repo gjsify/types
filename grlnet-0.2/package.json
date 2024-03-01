@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./grlnet-0.2-ambient.d.ts",
-            "import": "./grlnet-0.2-ambient.js"
+            "import": "./grlnet-0.2-ambient.js",
+            "default": "./grlnet-0.2-ambient.js"
         },
         "./import": {
             "types": "./grlnet-0.2-import.d.ts",
-            "import": "./grlnet-0.2-import.js"
+            "import": "./grlnet-0.2-import.js",
+            "default": "./grlnet-0.2-import.js"
         },
         ".": {
             "types": "./grlnet-0.2.d.ts",
-            "import": "./grlnet-0.2.js"
+            "import": "./grlnet-0.2.js",
+            "default": "./grlnet-0.2.js"
         }
     },
     "scripts": {

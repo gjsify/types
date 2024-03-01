@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./cluttergst-3.0-ambient.d.ts",
-            "import": "./cluttergst-3.0-ambient.js"
+            "import": "./cluttergst-3.0-ambient.js",
+            "default": "./cluttergst-3.0-ambient.js"
         },
         "./import": {
             "types": "./cluttergst-3.0-import.d.ts",
-            "import": "./cluttergst-3.0-import.js"
+            "import": "./cluttergst-3.0-import.js",
+            "default": "./cluttergst-3.0-import.js"
         },
         ".": {
             "types": "./cluttergst-3.0.d.ts",
-            "import": "./cluttergst-3.0.js"
+            "import": "./cluttergst-3.0.js",
+            "default": "./cluttergst-3.0.js"
         }
     },
     "scripts": {

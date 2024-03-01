@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./builder-1.0-ambient.d.ts",
-            "import": "./builder-1.0-ambient.js"
+            "import": "./builder-1.0-ambient.js",
+            "default": "./builder-1.0-ambient.js"
         },
         "./import": {
             "types": "./builder-1.0-import.d.ts",
-            "import": "./builder-1.0-import.js"
+            "import": "./builder-1.0-import.js",
+            "default": "./builder-1.0-import.js"
         },
         ".": {
             "types": "./builder-1.0.d.ts",
-            "import": "./builder-1.0.js"
+            "import": "./builder-1.0.js",
+            "default": "./builder-1.0.js"
         }
     },
     "scripts": {

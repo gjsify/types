@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ebookcontacts-1.2-ambient.d.ts",
-            "import": "./ebookcontacts-1.2-ambient.js"
+            "import": "./ebookcontacts-1.2-ambient.js",
+            "default": "./ebookcontacts-1.2-ambient.js"
         },
         "./import": {
             "types": "./ebookcontacts-1.2-import.d.ts",
-            "import": "./ebookcontacts-1.2-import.js"
+            "import": "./ebookcontacts-1.2-import.js",
+            "default": "./ebookcontacts-1.2-import.js"
         },
         ".": {
             "types": "./ebookcontacts-1.2.d.ts",
-            "import": "./ebookcontacts-1.2.js"
+            "import": "./ebookcontacts-1.2.js",
+            "default": "./ebookcontacts-1.2.js"
         }
     },
     "scripts": {

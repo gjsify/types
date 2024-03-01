@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./epcui-1.0-ambient.d.ts",
-            "import": "./epcui-1.0-ambient.js"
+            "import": "./epcui-1.0-ambient.js",
+            "default": "./epcui-1.0-ambient.js"
         },
         "./import": {
             "types": "./epcui-1.0-import.d.ts",
-            "import": "./epcui-1.0-import.js"
+            "import": "./epcui-1.0-import.js",
+            "default": "./epcui-1.0-import.js"
         },
         ".": {
             "types": "./epcui-1.0.d.ts",
-            "import": "./epcui-1.0.js"
+            "import": "./epcui-1.0.js",
+            "default": "./epcui-1.0.js"
         }
     },
     "scripts": {

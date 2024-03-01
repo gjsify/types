@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dex-1-ambient.d.ts",
-            "import": "./dex-1-ambient.js"
+            "import": "./dex-1-ambient.js",
+            "default": "./dex-1-ambient.js"
         },
         "./import": {
             "types": "./dex-1-import.d.ts",
-            "import": "./dex-1-import.js"
+            "import": "./dex-1-import.js",
+            "default": "./dex-1-import.js"
         },
         ".": {
             "types": "./dex-1.d.ts",
-            "import": "./dex-1.js"
+            "import": "./dex-1.js",
+            "default": "./dex-1.js"
         }
     },
     "scripts": {

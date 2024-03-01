@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstglx11-1.0-ambient.d.ts",
-            "import": "./gstglx11-1.0-ambient.js"
+            "import": "./gstglx11-1.0-ambient.js",
+            "default": "./gstglx11-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstglx11-1.0-import.d.ts",
-            "import": "./gstglx11-1.0-import.js"
+            "import": "./gstglx11-1.0-import.js",
+            "default": "./gstglx11-1.0-import.js"
         },
         ".": {
             "types": "./gstglx11-1.0.d.ts",
-            "import": "./gstglx11-1.0.js"
+            "import": "./gstglx11-1.0.js",
+            "default": "./gstglx11-1.0.js"
         }
     },
     "scripts": {

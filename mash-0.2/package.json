@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mash-0.2-ambient.d.ts",
-            "import": "./mash-0.2-ambient.js"
+            "import": "./mash-0.2-ambient.js",
+            "default": "./mash-0.2-ambient.js"
         },
         "./import": {
             "types": "./mash-0.2-import.d.ts",
-            "import": "./mash-0.2-import.js"
+            "import": "./mash-0.2-import.js",
+            "default": "./mash-0.2-import.js"
         },
         ".": {
             "types": "./mash-0.2.d.ts",
-            "import": "./mash-0.2.js"
+            "import": "./mash-0.2.js",
+            "default": "./mash-0.2.js"
         }
     },
     "scripts": {

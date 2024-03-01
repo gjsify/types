@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./udisks-2.0-ambient.d.ts",
-            "import": "./udisks-2.0-ambient.js"
+            "import": "./udisks-2.0-ambient.js",
+            "default": "./udisks-2.0-ambient.js"
         },
         "./import": {
             "types": "./udisks-2.0-import.d.ts",
-            "import": "./udisks-2.0-import.js"
+            "import": "./udisks-2.0-import.js",
+            "default": "./udisks-2.0-import.js"
         },
         ".": {
             "types": "./udisks-2.0.d.ts",
-            "import": "./udisks-2.0.js"
+            "import": "./udisks-2.0.js",
+            "default": "./udisks-2.0.js"
         }
     },
     "scripts": {

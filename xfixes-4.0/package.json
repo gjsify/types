@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xfixes-4.0-ambient.d.ts",
-            "import": "./xfixes-4.0-ambient.js"
+            "import": "./xfixes-4.0-ambient.js",
+            "default": "./xfixes-4.0-ambient.js"
         },
         "./import": {
             "types": "./xfixes-4.0-import.d.ts",
-            "import": "./xfixes-4.0-import.js"
+            "import": "./xfixes-4.0-import.js",
+            "default": "./xfixes-4.0-import.js"
         },
         ".": {
             "types": "./xfixes-4.0.d.ts",
-            "import": "./xfixes-4.0.js"
+            "import": "./xfixes-4.0.js",
+            "default": "./xfixes-4.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./shew-0-ambient.d.ts",
-            "import": "./shew-0-ambient.js"
+            "import": "./shew-0-ambient.js",
+            "default": "./shew-0-ambient.js"
         },
         "./import": {
             "types": "./shew-0-import.d.ts",
-            "import": "./shew-0-import.js"
+            "import": "./shew-0-import.js",
+            "default": "./shew-0-import.js"
         },
         ".": {
             "types": "./shew-0.d.ts",
-            "import": "./shew-0.js"
+            "import": "./shew-0.js",
+            "default": "./shew-0.js"
         }
     },
     "scripts": {

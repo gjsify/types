@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsystem-1.0-ambient.d.ts",
-            "import": "./gsystem-1.0-ambient.js"
+            "import": "./gsystem-1.0-ambient.js",
+            "default": "./gsystem-1.0-ambient.js"
         },
         "./import": {
             "types": "./gsystem-1.0-import.d.ts",
-            "import": "./gsystem-1.0-import.js"
+            "import": "./gsystem-1.0-import.js",
+            "default": "./gsystem-1.0-import.js"
         },
         ".": {
             "types": "./gsystem-1.0.d.ts",
-            "import": "./gsystem-1.0.js"
+            "import": "./gsystem-1.0.js",
+            "default": "./gsystem-1.0.js"
         }
     },
     "scripts": {

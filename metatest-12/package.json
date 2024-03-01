@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./metatest-12-ambient.d.ts",
-            "import": "./metatest-12-ambient.js"
+            "import": "./metatest-12-ambient.js",
+            "default": "./metatest-12-ambient.js"
         },
         "./import": {
             "types": "./metatest-12-import.d.ts",
-            "import": "./metatest-12-import.js"
+            "import": "./metatest-12-import.js",
+            "default": "./metatest-12-import.js"
         },
         ".": {
             "types": "./metatest-12.d.ts",
-            "import": "./metatest-12.js"
+            "import": "./metatest-12.js",
+            "default": "./metatest-12.js"
         }
     },
     "scripts": {

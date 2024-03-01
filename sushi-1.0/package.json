@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./sushi-1.0-ambient.d.ts",
-            "import": "./sushi-1.0-ambient.js"
+            "import": "./sushi-1.0-ambient.js",
+            "default": "./sushi-1.0-ambient.js"
         },
         "./import": {
             "types": "./sushi-1.0-import.d.ts",
-            "import": "./sushi-1.0-import.js"
+            "import": "./sushi-1.0-import.js",
+            "default": "./sushi-1.0-import.js"
         },
         ".": {
             "types": "./sushi-1.0.d.ts",
-            "import": "./sushi-1.0.js"
+            "import": "./sushi-1.0.js",
+            "default": "./sushi-1.0.js"
         }
     },
     "scripts": {

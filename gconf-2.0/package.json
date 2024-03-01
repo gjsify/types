@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gconf-2.0-ambient.d.ts",
-            "import": "./gconf-2.0-ambient.js"
+            "import": "./gconf-2.0-ambient.js",
+            "default": "./gconf-2.0-ambient.js"
         },
         "./import": {
             "types": "./gconf-2.0-import.d.ts",
-            "import": "./gconf-2.0-import.js"
+            "import": "./gconf-2.0-import.js",
+            "default": "./gconf-2.0-import.js"
         },
         ".": {
             "types": "./gconf-2.0.d.ts",
-            "import": "./gconf-2.0.js"
+            "import": "./gconf-2.0.js",
+            "default": "./gconf-2.0.js"
         }
     },
     "scripts": {

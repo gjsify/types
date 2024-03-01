@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./arrowcuda-1.0-ambient.d.ts",
-            "import": "./arrowcuda-1.0-ambient.js"
+            "import": "./arrowcuda-1.0-ambient.js",
+            "default": "./arrowcuda-1.0-ambient.js"
         },
         "./import": {
             "types": "./arrowcuda-1.0-import.d.ts",
-            "import": "./arrowcuda-1.0-import.js"
+            "import": "./arrowcuda-1.0-import.js",
+            "default": "./arrowcuda-1.0-import.js"
         },
         ".": {
             "types": "./arrowcuda-1.0.d.ts",
-            "import": "./arrowcuda-1.0.js"
+            "import": "./arrowcuda-1.0.js",
+            "default": "./arrowcuda-1.0.js"
         }
     },
     "scripts": {

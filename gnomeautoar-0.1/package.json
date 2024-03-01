@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomeautoar-0.1-ambient.d.ts",
-            "import": "./gnomeautoar-0.1-ambient.js"
+            "import": "./gnomeautoar-0.1-ambient.js",
+            "default": "./gnomeautoar-0.1-ambient.js"
         },
         "./import": {
             "types": "./gnomeautoar-0.1-import.d.ts",
-            "import": "./gnomeautoar-0.1-import.js"
+            "import": "./gnomeautoar-0.1-import.js",
+            "default": "./gnomeautoar-0.1-import.js"
         },
         ".": {
             "types": "./gnomeautoar-0.1.d.ts",
-            "import": "./gnomeautoar-0.1.js"
+            "import": "./gnomeautoar-0.1.js",
+            "default": "./gnomeautoar-0.1.js"
         }
     },
     "scripts": {

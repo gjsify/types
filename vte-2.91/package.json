@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vte-2.91-ambient.d.ts",
-            "import": "./vte-2.91-ambient.js"
+            "import": "./vte-2.91-ambient.js",
+            "default": "./vte-2.91-ambient.js"
         },
         "./import": {
             "types": "./vte-2.91-import.d.ts",
-            "import": "./vte-2.91-import.js"
+            "import": "./vte-2.91-import.js",
+            "default": "./vte-2.91-import.js"
         },
         ".": {
             "types": "./vte-2.91.d.ts",
-            "import": "./vte-2.91.js"
+            "import": "./vte-2.91.js",
+            "default": "./vte-2.91.js"
         }
     },
     "scripts": {

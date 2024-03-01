@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vda-1-ambient.d.ts",
-            "import": "./vda-1-ambient.js"
+            "import": "./vda-1-ambient.js",
+            "default": "./vda-1-ambient.js"
         },
         "./import": {
             "types": "./vda-1-import.d.ts",
-            "import": "./vda-1-import.js"
+            "import": "./vda-1-import.js",
+            "default": "./vda-1-import.js"
         },
         ".": {
             "types": "./vda-1.d.ts",
-            "import": "./vda-1.js"
+            "import": "./vda-1.js",
+            "default": "./vda-1.js"
         }
     },
     "scripts": {

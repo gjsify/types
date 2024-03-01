@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gweather-4.0-ambient.d.ts",
-            "import": "./gweather-4.0-ambient.js"
+            "import": "./gweather-4.0-ambient.js",
+            "default": "./gweather-4.0-ambient.js"
         },
         "./import": {
             "types": "./gweather-4.0-import.d.ts",
-            "import": "./gweather-4.0-import.js"
+            "import": "./gweather-4.0-import.js",
+            "default": "./gweather-4.0-import.js"
         },
         ".": {
             "types": "./gweather-4.0.d.ts",
-            "import": "./gweather-4.0.js"
+            "import": "./gweather-4.0.js",
+            "default": "./gweather-4.0.js"
         }
     },
     "scripts": {

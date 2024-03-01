@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomerr-4.0-ambient.d.ts",
-            "import": "./gnomerr-4.0-ambient.js"
+            "import": "./gnomerr-4.0-ambient.js",
+            "default": "./gnomerr-4.0-ambient.js"
         },
         "./import": {
             "types": "./gnomerr-4.0-import.d.ts",
-            "import": "./gnomerr-4.0-import.js"
+            "import": "./gnomerr-4.0-import.js",
+            "default": "./gnomerr-4.0-import.js"
         },
         ".": {
             "types": "./gnomerr-4.0.d.ts",
-            "import": "./gnomerr-4.0.js"
+            "import": "./gnomerr-4.0.js",
+            "default": "./gnomerr-4.0.js"
         }
     },
     "scripts": {

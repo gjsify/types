@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gobject-2.0-ambient.d.ts",
-            "import": "./gobject-2.0-ambient.js"
+            "import": "./gobject-2.0-ambient.js",
+            "default": "./gobject-2.0-ambient.js"
         },
         "./import": {
             "types": "./gobject-2.0-import.d.ts",
-            "import": "./gobject-2.0-import.js"
+            "import": "./gobject-2.0-import.js",
+            "default": "./gobject-2.0-import.js"
         },
         ".": {
             "types": "./gobject-2.0.d.ts",
-            "import": "./gobject-2.0.js"
+            "import": "./gobject-2.0.js",
+            "default": "./gobject-2.0.js"
         }
     },
     "scripts": {

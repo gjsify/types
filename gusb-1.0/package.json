@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gusb-1.0-ambient.d.ts",
-            "import": "./gusb-1.0-ambient.js"
+            "import": "./gusb-1.0-ambient.js",
+            "default": "./gusb-1.0-ambient.js"
         },
         "./import": {
             "types": "./gusb-1.0-import.d.ts",
-            "import": "./gusb-1.0-import.js"
+            "import": "./gusb-1.0-import.js",
+            "default": "./gusb-1.0-import.js"
         },
         ".": {
             "types": "./gusb-1.0.d.ts",
-            "import": "./gusb-1.0.js"
+            "import": "./gusb-1.0.js",
+            "default": "./gusb-1.0.js"
         }
     },
     "scripts": {

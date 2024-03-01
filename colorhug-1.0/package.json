@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./colorhug-1.0-ambient.d.ts",
-            "import": "./colorhug-1.0-ambient.js"
+            "import": "./colorhug-1.0-ambient.js",
+            "default": "./colorhug-1.0-ambient.js"
         },
         "./import": {
             "types": "./colorhug-1.0-import.d.ts",
-            "import": "./colorhug-1.0-import.js"
+            "import": "./colorhug-1.0-import.js",
+            "default": "./colorhug-1.0-import.js"
         },
         ".": {
             "types": "./colorhug-1.0.d.ts",
-            "import": "./colorhug-1.0.js"
+            "import": "./colorhug-1.0.js",
+            "default": "./colorhug-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./icalglib-3.0-ambient.d.ts",
-            "import": "./icalglib-3.0-ambient.js"
+            "import": "./icalglib-3.0-ambient.js",
+            "default": "./icalglib-3.0-ambient.js"
         },
         "./import": {
             "types": "./icalglib-3.0-import.d.ts",
-            "import": "./icalglib-3.0-import.js"
+            "import": "./icalglib-3.0-import.js",
+            "default": "./icalglib-3.0-import.js"
         },
         ".": {
             "types": "./icalglib-3.0.d.ts",
-            "import": "./icalglib-3.0.js"
+            "import": "./icalglib-3.0.js",
+            "default": "./icalglib-3.0.js"
         }
     },
     "scripts": {

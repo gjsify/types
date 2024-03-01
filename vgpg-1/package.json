@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vgpg-1-ambient.d.ts",
-            "import": "./vgpg-1-ambient.js"
+            "import": "./vgpg-1-ambient.js",
+            "default": "./vgpg-1-ambient.js"
         },
         "./import": {
             "types": "./vgpg-1-import.d.ts",
-            "import": "./vgpg-1-import.js"
+            "import": "./vgpg-1-import.js",
+            "default": "./vgpg-1-import.js"
         },
         ".": {
             "types": "./vgpg-1.d.ts",
-            "import": "./vgpg-1.js"
+            "import": "./vgpg-1.js",
+            "default": "./vgpg-1.js"
         }
     },
     "scripts": {

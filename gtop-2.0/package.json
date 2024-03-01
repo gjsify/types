@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtop-2.0-ambient.d.ts",
-            "import": "./gtop-2.0-ambient.js"
+            "import": "./gtop-2.0-ambient.js",
+            "default": "./gtop-2.0-ambient.js"
         },
         "./import": {
             "types": "./gtop-2.0-import.d.ts",
-            "import": "./gtop-2.0-import.js"
+            "import": "./gtop-2.0-import.js",
+            "default": "./gtop-2.0-import.js"
         },
         ".": {
             "types": "./gtop-2.0.d.ts",
-            "import": "./gtop-2.0.js"
+            "import": "./gtop-2.0.js",
+            "default": "./gtop-2.0.js"
         }
     },
     "scripts": {

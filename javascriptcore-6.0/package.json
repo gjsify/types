@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./javascriptcore-6.0-ambient.d.ts",
-            "import": "./javascriptcore-6.0-ambient.js"
+            "import": "./javascriptcore-6.0-ambient.js",
+            "default": "./javascriptcore-6.0-ambient.js"
         },
         "./import": {
             "types": "./javascriptcore-6.0-import.d.ts",
-            "import": "./javascriptcore-6.0-import.js"
+            "import": "./javascriptcore-6.0-import.js",
+            "default": "./javascriptcore-6.0-import.js"
         },
         ".": {
             "types": "./javascriptcore-6.0.d.ts",
-            "import": "./javascriptcore-6.0.js"
+            "import": "./javascriptcore-6.0.js",
+            "default": "./javascriptcore-6.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./uhm-0.0-ambient.d.ts",
-            "import": "./uhm-0.0-ambient.js"
+            "import": "./uhm-0.0-ambient.js",
+            "default": "./uhm-0.0-ambient.js"
         },
         "./import": {
             "types": "./uhm-0.0-import.d.ts",
-            "import": "./uhm-0.0-import.js"
+            "import": "./uhm-0.0-import.js",
+            "default": "./uhm-0.0-import.js"
         },
         ".": {
             "types": "./uhm-0.0.d.ts",
-            "import": "./uhm-0.0.js"
+            "import": "./uhm-0.0.js",
+            "default": "./uhm-0.0.js"
         }
     },
     "scripts": {

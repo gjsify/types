@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./edatabook-1.2-ambient.d.ts",
-            "import": "./edatabook-1.2-ambient.js"
+            "import": "./edatabook-1.2-ambient.js",
+            "default": "./edatabook-1.2-ambient.js"
         },
         "./import": {
             "types": "./edatabook-1.2-import.d.ts",
-            "import": "./edatabook-1.2-import.js"
+            "import": "./edatabook-1.2-import.js",
+            "default": "./edatabook-1.2-import.js"
         },
         ".": {
             "types": "./edatabook-1.2.d.ts",
-            "import": "./edatabook-1.2.js"
+            "import": "./edatabook-1.2.js",
+            "default": "./edatabook-1.2.js"
         }
     },
     "scripts": {

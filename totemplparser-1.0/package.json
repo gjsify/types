@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./totemplparser-1.0-ambient.d.ts",
-            "import": "./totemplparser-1.0-ambient.js"
+            "import": "./totemplparser-1.0-ambient.js",
+            "default": "./totemplparser-1.0-ambient.js"
         },
         "./import": {
             "types": "./totemplparser-1.0-import.d.ts",
-            "import": "./totemplparser-1.0-import.js"
+            "import": "./totemplparser-1.0-import.js",
+            "default": "./totemplparser-1.0-import.js"
         },
         ".": {
             "types": "./totemplparser-1.0.d.ts",
-            "import": "./totemplparser-1.0.js"
+            "import": "./totemplparser-1.0.js",
+            "default": "./totemplparser-1.0.js"
         }
     },
     "scripts": {

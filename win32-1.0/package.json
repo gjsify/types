@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./win32-1.0-ambient.d.ts",
-            "import": "./win32-1.0-ambient.js"
+            "import": "./win32-1.0-ambient.js",
+            "default": "./win32-1.0-ambient.js"
         },
         "./import": {
             "types": "./win32-1.0-import.d.ts",
-            "import": "./win32-1.0-import.js"
+            "import": "./win32-1.0-import.js",
+            "default": "./win32-1.0-import.js"
         },
         ".": {
             "types": "./win32-1.0.d.ts",
-            "import": "./win32-1.0.js"
+            "import": "./win32-1.0.js",
+            "default": "./win32-1.0.js"
         }
     },
     "scripts": {

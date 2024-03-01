@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./coglgst-2.0-ambient.d.ts",
-            "import": "./coglgst-2.0-ambient.js"
+            "import": "./coglgst-2.0-ambient.js",
+            "default": "./coglgst-2.0-ambient.js"
         },
         "./import": {
             "types": "./coglgst-2.0-import.d.ts",
-            "import": "./coglgst-2.0-import.js"
+            "import": "./coglgst-2.0-import.js",
+            "default": "./coglgst-2.0-import.js"
         },
         ".": {
             "types": "./coglgst-2.0.d.ts",
-            "import": "./coglgst-2.0.js"
+            "import": "./coglgst-2.0.js",
+            "default": "./coglgst-2.0.js"
         }
     },
     "scripts": {

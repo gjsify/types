@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gck-1-ambient.d.ts",
-            "import": "./gck-1-ambient.js"
+            "import": "./gck-1-ambient.js",
+            "default": "./gck-1-ambient.js"
         },
         "./import": {
             "types": "./gck-1-import.d.ts",
-            "import": "./gck-1-import.js"
+            "import": "./gck-1-import.js",
+            "default": "./gck-1-import.js"
         },
         ".": {
             "types": "./gck-1.d.ts",
-            "import": "./gck-1.js"
+            "import": "./gck-1.js",
+            "default": "./gck-1.js"
         }
     },
     "scripts": {

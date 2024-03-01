@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./retro-2-ambient.d.ts",
-            "import": "./retro-2-ambient.js"
+            "import": "./retro-2-ambient.js",
+            "default": "./retro-2-ambient.js"
         },
         "./import": {
             "types": "./retro-2-import.d.ts",
-            "import": "./retro-2-import.js"
+            "import": "./retro-2-import.js",
+            "default": "./retro-2-import.js"
         },
         ".": {
             "types": "./retro-2.d.ts",
-            "import": "./retro-2.js"
+            "import": "./retro-2.js",
+            "default": "./retro-2.js"
         }
     },
     "scripts": {

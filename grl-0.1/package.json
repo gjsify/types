@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./grl-0.1-ambient.d.ts",
-            "import": "./grl-0.1-ambient.js"
+            "import": "./grl-0.1-ambient.js",
+            "default": "./grl-0.1-ambient.js"
         },
         "./import": {
             "types": "./grl-0.1-import.d.ts",
-            "import": "./grl-0.1-import.js"
+            "import": "./grl-0.1-import.js",
+            "default": "./grl-0.1-import.js"
         },
         ".": {
             "types": "./grl-0.1.d.ts",
-            "import": "./grl-0.1.js"
+            "import": "./grl-0.1.js",
+            "default": "./grl-0.1.js"
         }
     },
     "scripts": {

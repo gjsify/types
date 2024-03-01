@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gpseq-1.0-ambient.d.ts",
-            "import": "./gpseq-1.0-ambient.js"
+            "import": "./gpseq-1.0-ambient.js",
+            "default": "./gpseq-1.0-ambient.js"
         },
         "./import": {
             "types": "./gpseq-1.0-import.d.ts",
-            "import": "./gpseq-1.0-import.js"
+            "import": "./gpseq-1.0-import.js",
+            "default": "./gpseq-1.0-import.js"
         },
         ".": {
             "types": "./gpseq-1.0.d.ts",
-            "import": "./gpseq-1.0.js"
+            "import": "./gpseq-1.0.js",
+            "default": "./gpseq-1.0.js"
         }
     },
     "scripts": {

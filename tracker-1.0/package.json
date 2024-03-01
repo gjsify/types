@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./tracker-1.0-ambient.d.ts",
-            "import": "./tracker-1.0-ambient.js"
+            "import": "./tracker-1.0-ambient.js",
+            "default": "./tracker-1.0-ambient.js"
         },
         "./import": {
             "types": "./tracker-1.0-import.d.ts",
-            "import": "./tracker-1.0-import.js"
+            "import": "./tracker-1.0-import.js",
+            "default": "./tracker-1.0-import.js"
         },
         ".": {
             "types": "./tracker-1.0.d.ts",
-            "import": "./tracker-1.0.js"
+            "import": "./tracker-1.0.js",
+            "default": "./tracker-1.0.js"
         }
     },
     "scripts": {

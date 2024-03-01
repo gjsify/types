@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vips-8.0-ambient.d.ts",
-            "import": "./vips-8.0-ambient.js"
+            "import": "./vips-8.0-ambient.js",
+            "default": "./vips-8.0-ambient.js"
         },
         "./import": {
             "types": "./vips-8.0-import.d.ts",
-            "import": "./vips-8.0-import.js"
+            "import": "./vips-8.0-import.js",
+            "default": "./vips-8.0-import.js"
         },
         ".": {
             "types": "./vips-8.0.d.ts",
-            "import": "./vips-8.0.js"
+            "import": "./vips-8.0.js",
+            "default": "./vips-8.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./folksdummy-0.7-ambient.d.ts",
-            "import": "./folksdummy-0.7-ambient.js"
+            "import": "./folksdummy-0.7-ambient.js",
+            "default": "./folksdummy-0.7-ambient.js"
         },
         "./import": {
             "types": "./folksdummy-0.7-import.d.ts",
-            "import": "./folksdummy-0.7-import.js"
+            "import": "./folksdummy-0.7-import.js",
+            "default": "./folksdummy-0.7-import.js"
         },
         ".": {
             "types": "./folksdummy-0.7.d.ts",
-            "import": "./folksdummy-0.7.js"
+            "import": "./folksdummy-0.7.js",
+            "default": "./folksdummy-0.7.js"
         }
     },
     "scripts": {

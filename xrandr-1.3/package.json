@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xrandr-1.3-ambient.d.ts",
-            "import": "./xrandr-1.3-ambient.js"
+            "import": "./xrandr-1.3-ambient.js",
+            "default": "./xrandr-1.3-ambient.js"
         },
         "./import": {
             "types": "./xrandr-1.3-import.d.ts",
-            "import": "./xrandr-1.3-import.js"
+            "import": "./xrandr-1.3-import.js",
+            "default": "./xrandr-1.3-import.js"
         },
         ".": {
             "types": "./xrandr-1.3.d.ts",
-            "import": "./xrandr-1.3.js"
+            "import": "./xrandr-1.3.js",
+            "default": "./xrandr-1.3.js"
         }
     },
     "scripts": {

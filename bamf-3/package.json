@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./bamf-3-ambient.d.ts",
-            "import": "./bamf-3-ambient.js"
+            "import": "./bamf-3-ambient.js",
+            "default": "./bamf-3-ambient.js"
         },
         "./import": {
             "types": "./bamf-3-import.d.ts",
-            "import": "./bamf-3-import.js"
+            "import": "./bamf-3-import.js",
+            "default": "./bamf-3-import.js"
         },
         ".": {
             "types": "./bamf-3.d.ts",
-            "import": "./bamf-3.js"
+            "import": "./bamf-3.js",
+            "default": "./bamf-3.js"
         }
     },
     "scripts": {

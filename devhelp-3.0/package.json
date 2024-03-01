@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./devhelp-3.0-ambient.d.ts",
-            "import": "./devhelp-3.0-ambient.js"
+            "import": "./devhelp-3.0-ambient.js",
+            "default": "./devhelp-3.0-ambient.js"
         },
         "./import": {
             "types": "./devhelp-3.0-import.d.ts",
-            "import": "./devhelp-3.0-import.js"
+            "import": "./devhelp-3.0-import.js",
+            "default": "./devhelp-3.0-import.js"
         },
         ".": {
             "types": "./devhelp-3.0.d.ts",
-            "import": "./devhelp-3.0.js"
+            "import": "./devhelp-3.0.js",
+            "default": "./devhelp-3.0.js"
         }
     },
     "scripts": {

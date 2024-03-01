@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./anthy-9000-ambient.d.ts",
-            "import": "./anthy-9000-ambient.js"
+            "import": "./anthy-9000-ambient.js",
+            "default": "./anthy-9000-ambient.js"
         },
         "./import": {
             "types": "./anthy-9000-import.d.ts",
-            "import": "./anthy-9000-import.js"
+            "import": "./anthy-9000-import.js",
+            "default": "./anthy-9000-import.js"
         },
         ".": {
             "types": "./anthy-9000.d.ts",
-            "import": "./anthy-9000.js"
+            "import": "./anthy-9000.js",
+            "default": "./anthy-9000.js"
         }
     },
     "scripts": {

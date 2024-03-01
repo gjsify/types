@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./flatpak-1.0-ambient.d.ts",
-            "import": "./flatpak-1.0-ambient.js"
+            "import": "./flatpak-1.0-ambient.js",
+            "default": "./flatpak-1.0-ambient.js"
         },
         "./import": {
             "types": "./flatpak-1.0-import.d.ts",
-            "import": "./flatpak-1.0-import.js"
+            "import": "./flatpak-1.0-import.js",
+            "default": "./flatpak-1.0-import.js"
         },
         ".": {
             "types": "./flatpak-1.0.d.ts",
-            "import": "./flatpak-1.0.js"
+            "import": "./flatpak-1.0.js",
+            "default": "./flatpak-1.0.js"
         }
     },
     "scripts": {

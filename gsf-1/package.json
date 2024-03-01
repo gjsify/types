@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsf-1-ambient.d.ts",
-            "import": "./gsf-1-ambient.js"
+            "import": "./gsf-1-ambient.js",
+            "default": "./gsf-1-ambient.js"
         },
         "./import": {
             "types": "./gsf-1-import.d.ts",
-            "import": "./gsf-1-import.js"
+            "import": "./gsf-1-import.js",
+            "default": "./gsf-1-import.js"
         },
         ".": {
             "types": "./gsf-1.d.ts",
-            "import": "./gsf-1.js"
+            "import": "./gsf-1.js",
+            "default": "./gsf-1.js"
         }
     },
     "scripts": {

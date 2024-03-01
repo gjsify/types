@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./granite-7.0-ambient.d.ts",
-            "import": "./granite-7.0-ambient.js"
+            "import": "./granite-7.0-ambient.js",
+            "default": "./granite-7.0-ambient.js"
         },
         "./import": {
             "types": "./granite-7.0-import.d.ts",
-            "import": "./granite-7.0-import.js"
+            "import": "./granite-7.0-import.js",
+            "default": "./granite-7.0-import.js"
         },
         ".": {
             "types": "./granite-7.0.d.ts",
-            "import": "./granite-7.0.js"
+            "import": "./granite-7.0.js",
+            "default": "./granite-7.0.js"
         }
     },
     "scripts": {

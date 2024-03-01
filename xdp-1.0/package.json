@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xdp-1.0-ambient.d.ts",
-            "import": "./xdp-1.0-ambient.js"
+            "import": "./xdp-1.0-ambient.js",
+            "default": "./xdp-1.0-ambient.js"
         },
         "./import": {
             "types": "./xdp-1.0-import.d.ts",
-            "import": "./xdp-1.0-import.js"
+            "import": "./xdp-1.0-import.js",
+            "default": "./xdp-1.0-import.js"
         },
         ".": {
             "types": "./xdp-1.0.d.ts",
-            "import": "./xdp-1.0.js"
+            "import": "./xdp-1.0.js",
+            "default": "./xdp-1.0.js"
         }
     },
     "scripts": {

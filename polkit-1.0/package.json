@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./polkit-1.0-ambient.d.ts",
-            "import": "./polkit-1.0-ambient.js"
+            "import": "./polkit-1.0-ambient.js",
+            "default": "./polkit-1.0-ambient.js"
         },
         "./import": {
             "types": "./polkit-1.0-import.d.ts",
-            "import": "./polkit-1.0-import.js"
+            "import": "./polkit-1.0-import.js",
+            "default": "./polkit-1.0-import.js"
         },
         ".": {
             "types": "./polkit-1.0.d.ts",
-            "import": "./polkit-1.0.js"
+            "import": "./polkit-1.0.js",
+            "default": "./polkit-1.0.js"
         }
     },
     "scripts": {

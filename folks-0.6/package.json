@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./folks-0.6-ambient.d.ts",
-            "import": "./folks-0.6-ambient.js"
+            "import": "./folks-0.6-ambient.js",
+            "default": "./folks-0.6-ambient.js"
         },
         "./import": {
             "types": "./folks-0.6-import.d.ts",
-            "import": "./folks-0.6-import.js"
+            "import": "./folks-0.6-import.js",
+            "default": "./folks-0.6-import.js"
         },
         ".": {
             "types": "./folks-0.6.d.ts",
-            "import": "./folks-0.6.js"
+            "import": "./folks-0.6.js",
+            "default": "./folks-0.6.js"
         }
     },
     "scripts": {

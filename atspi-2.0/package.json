@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./atspi-2.0-ambient.d.ts",
-            "import": "./atspi-2.0-ambient.js"
+            "import": "./atspi-2.0-ambient.js",
+            "default": "./atspi-2.0-ambient.js"
         },
         "./import": {
             "types": "./atspi-2.0-import.d.ts",
-            "import": "./atspi-2.0-import.js"
+            "import": "./atspi-2.0-import.js",
+            "default": "./atspi-2.0-import.js"
         },
         ".": {
             "types": "./atspi-2.0.d.ts",
-            "import": "./atspi-2.0.js"
+            "import": "./atspi-2.0.js",
+            "default": "./atspi-2.0.js"
         }
     },
     "scripts": {

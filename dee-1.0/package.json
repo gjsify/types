@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dee-1.0-ambient.d.ts",
-            "import": "./dee-1.0-ambient.js"
+            "import": "./dee-1.0-ambient.js",
+            "default": "./dee-1.0-ambient.js"
         },
         "./import": {
             "types": "./dee-1.0-import.d.ts",
-            "import": "./dee-1.0-import.js"
+            "import": "./dee-1.0-import.js",
+            "default": "./dee-1.0-import.js"
         },
         ".": {
             "types": "./dee-1.0.d.ts",
-            "import": "./dee-1.0.js"
+            "import": "./dee-1.0.js",
+            "default": "./dee-1.0.js"
         }
     },
     "scripts": {

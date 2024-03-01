@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./st-13-ambient.d.ts",
-            "import": "./st-13-ambient.js"
+            "import": "./st-13-ambient.js",
+            "default": "./st-13-ambient.js"
         },
         "./import": {
             "types": "./st-13-import.d.ts",
-            "import": "./st-13-import.js"
+            "import": "./st-13-import.js",
+            "default": "./st-13-import.js"
         },
         ".": {
             "types": "./st-13.d.ts",
-            "import": "./st-13.js"
+            "import": "./st-13.js",
+            "default": "./st-13.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstpbutils-0.10-ambient.d.ts",
-            "import": "./gstpbutils-0.10-ambient.js"
+            "import": "./gstpbutils-0.10-ambient.js",
+            "default": "./gstpbutils-0.10-ambient.js"
         },
         "./import": {
             "types": "./gstpbutils-0.10-import.d.ts",
-            "import": "./gstpbutils-0.10-import.js"
+            "import": "./gstpbutils-0.10-import.js",
+            "default": "./gstpbutils-0.10-import.js"
         },
         ".": {
             "types": "./gstpbutils-0.10.d.ts",
-            "import": "./gstpbutils-0.10.js"
+            "import": "./gstpbutils-0.10.js",
+            "default": "./gstpbutils-0.10.js"
         }
     },
     "scripts": {

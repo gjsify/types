@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./libosinfo-1.0-ambient.d.ts",
-            "import": "./libosinfo-1.0-ambient.js"
+            "import": "./libosinfo-1.0-ambient.js",
+            "default": "./libosinfo-1.0-ambient.js"
         },
         "./import": {
             "types": "./libosinfo-1.0-import.d.ts",
-            "import": "./libosinfo-1.0-import.js"
+            "import": "./libosinfo-1.0-import.js",
+            "default": "./libosinfo-1.0-import.js"
         },
         ".": {
             "types": "./libosinfo-1.0.d.ts",
-            "import": "./libosinfo-1.0.js"
+            "import": "./libosinfo-1.0.js",
+            "default": "./libosinfo-1.0.js"
         }
     },
     "scripts": {

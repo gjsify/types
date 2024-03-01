@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./manette-0.2-ambient.d.ts",
-            "import": "./manette-0.2-ambient.js"
+            "import": "./manette-0.2-ambient.js",
+            "default": "./manette-0.2-ambient.js"
         },
         "./import": {
             "types": "./manette-0.2-import.d.ts",
-            "import": "./manette-0.2-import.js"
+            "import": "./manette-0.2-import.js",
+            "default": "./manette-0.2-import.js"
         },
         ".": {
             "types": "./manette-0.2.d.ts",
-            "import": "./manette-0.2.js"
+            "import": "./manette-0.2.js",
+            "default": "./manette-0.2.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gkbd-3.0-ambient.d.ts",
-            "import": "./gkbd-3.0-ambient.js"
+            "import": "./gkbd-3.0-ambient.js",
+            "default": "./gkbd-3.0-ambient.js"
         },
         "./import": {
             "types": "./gkbd-3.0-import.d.ts",
-            "import": "./gkbd-3.0-import.js"
+            "import": "./gkbd-3.0-import.js",
+            "default": "./gkbd-3.0-import.js"
         },
         ".": {
             "types": "./gkbd-3.0.d.ts",
-            "import": "./gkbd-3.0.js"
+            "import": "./gkbd-3.0.js",
+            "default": "./gkbd-3.0.js"
         }
     },
     "scripts": {

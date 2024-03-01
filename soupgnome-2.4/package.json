@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./soupgnome-2.4-ambient.d.ts",
-            "import": "./soupgnome-2.4-ambient.js"
+            "import": "./soupgnome-2.4-ambient.js",
+            "default": "./soupgnome-2.4-ambient.js"
         },
         "./import": {
             "types": "./soupgnome-2.4-import.d.ts",
-            "import": "./soupgnome-2.4-import.js"
+            "import": "./soupgnome-2.4-import.js",
+            "default": "./soupgnome-2.4-import.js"
         },
         ".": {
             "types": "./soupgnome-2.4.d.ts",
-            "import": "./soupgnome-2.4.js"
+            "import": "./soupgnome-2.4.js",
+            "default": "./soupgnome-2.4.js"
         }
     },
     "scripts": {

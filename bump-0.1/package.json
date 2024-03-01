@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./bump-0.1-ambient.d.ts",
-            "import": "./bump-0.1-ambient.js"
+            "import": "./bump-0.1-ambient.js",
+            "default": "./bump-0.1-ambient.js"
         },
         "./import": {
             "types": "./bump-0.1-import.d.ts",
-            "import": "./bump-0.1-import.js"
+            "import": "./bump-0.1-import.js",
+            "default": "./bump-0.1-import.js"
         },
         ".": {
             "types": "./bump-0.1.d.ts",
-            "import": "./bump-0.1.js"
+            "import": "./bump-0.1.js",
+            "default": "./bump-0.1.js"
         }
     },
     "scripts": {

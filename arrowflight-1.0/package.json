@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./arrowflight-1.0-ambient.d.ts",
-            "import": "./arrowflight-1.0-ambient.js"
+            "import": "./arrowflight-1.0-ambient.js",
+            "default": "./arrowflight-1.0-ambient.js"
         },
         "./import": {
             "types": "./arrowflight-1.0-import.d.ts",
-            "import": "./arrowflight-1.0-import.js"
+            "import": "./arrowflight-1.0-import.js",
+            "default": "./arrowflight-1.0-import.js"
         },
         ".": {
             "types": "./arrowflight-1.0.d.ts",
-            "import": "./arrowflight-1.0.js"
+            "import": "./arrowflight-1.0.js",
+            "default": "./arrowflight-1.0.js"
         }
     },
     "scripts": {

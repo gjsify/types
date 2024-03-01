@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./cogl-13-ambient.d.ts",
-            "import": "./cogl-13-ambient.js"
+            "import": "./cogl-13-ambient.js",
+            "default": "./cogl-13-ambient.js"
         },
         "./import": {
             "types": "./cogl-13-import.d.ts",
-            "import": "./cogl-13-import.js"
+            "import": "./cogl-13-import.js",
+            "default": "./cogl-13-import.js"
         },
         ".": {
             "types": "./cogl-13.d.ts",
-            "import": "./cogl-13.js"
+            "import": "./cogl-13.js",
+            "default": "./cogl-13.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./json-1.0-ambient.d.ts",
-            "import": "./json-1.0-ambient.js"
+            "import": "./json-1.0-ambient.js",
+            "default": "./json-1.0-ambient.js"
         },
         "./import": {
             "types": "./json-1.0-import.d.ts",
-            "import": "./json-1.0-import.js"
+            "import": "./json-1.0-import.js",
+            "default": "./json-1.0-import.js"
         },
         ".": {
             "types": "./json-1.0.d.ts",
-            "import": "./json-1.0.js"
+            "import": "./json-1.0.js",
+            "default": "./json-1.0.js"
         }
     },
     "scripts": {

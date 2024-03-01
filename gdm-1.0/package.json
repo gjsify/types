@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdm-1.0-ambient.d.ts",
-            "import": "./gdm-1.0-ambient.js"
+            "import": "./gdm-1.0-ambient.js",
+            "default": "./gdm-1.0-ambient.js"
         },
         "./import": {
             "types": "./gdm-1.0-import.d.ts",
-            "import": "./gdm-1.0-import.js"
+            "import": "./gdm-1.0-import.js",
+            "default": "./gdm-1.0-import.js"
         },
         ".": {
             "types": "./gdm-1.0.d.ts",
-            "import": "./gdm-1.0.js"
+            "import": "./gdm-1.0.js",
+            "default": "./gdm-1.0.js"
         }
     },
     "scripts": {

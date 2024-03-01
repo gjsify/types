@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ggit-1.0-ambient.d.ts",
-            "import": "./ggit-1.0-ambient.js"
+            "import": "./ggit-1.0-ambient.js",
+            "default": "./ggit-1.0-ambient.js"
         },
         "./import": {
             "types": "./ggit-1.0-import.d.ts",
-            "import": "./ggit-1.0-import.js"
+            "import": "./ggit-1.0-import.js",
+            "default": "./ggit-1.0-import.js"
         },
         ".": {
             "types": "./ggit-1.0.d.ts",
-            "import": "./ggit-1.0.js"
+            "import": "./ggit-1.0.js",
+            "default": "./ggit-1.0.js"
         }
     },
     "scripts": {

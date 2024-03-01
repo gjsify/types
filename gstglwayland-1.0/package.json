@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstglwayland-1.0-ambient.d.ts",
-            "import": "./gstglwayland-1.0-ambient.js"
+            "import": "./gstglwayland-1.0-ambient.js",
+            "default": "./gstglwayland-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstglwayland-1.0-import.d.ts",
-            "import": "./gstglwayland-1.0-import.js"
+            "import": "./gstglwayland-1.0-import.js",
+            "default": "./gstglwayland-1.0-import.js"
         },
         ".": {
             "types": "./gstglwayland-1.0.d.ts",
-            "import": "./gstglwayland-1.0.js"
+            "import": "./gstglwayland-1.0.js",
+            "default": "./gstglwayland-1.0.js"
         }
     },
     "scripts": {

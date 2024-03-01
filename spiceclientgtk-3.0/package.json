@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./spiceclientgtk-3.0-ambient.d.ts",
-            "import": "./spiceclientgtk-3.0-ambient.js"
+            "import": "./spiceclientgtk-3.0-ambient.js",
+            "default": "./spiceclientgtk-3.0-ambient.js"
         },
         "./import": {
             "types": "./spiceclientgtk-3.0-import.d.ts",
-            "import": "./spiceclientgtk-3.0-import.js"
+            "import": "./spiceclientgtk-3.0-import.js",
+            "default": "./spiceclientgtk-3.0-import.js"
         },
         ".": {
             "types": "./spiceclientgtk-3.0.d.ts",
-            "import": "./spiceclientgtk-3.0.js"
+            "import": "./spiceclientgtk-3.0.js",
+            "default": "./spiceclientgtk-3.0.js"
         }
     },
     "scripts": {

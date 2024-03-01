@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./edatacal-2.0-ambient.d.ts",
-            "import": "./edatacal-2.0-ambient.js"
+            "import": "./edatacal-2.0-ambient.js",
+            "default": "./edatacal-2.0-ambient.js"
         },
         "./import": {
             "types": "./edatacal-2.0-import.d.ts",
-            "import": "./edatacal-2.0-import.js"
+            "import": "./edatacal-2.0-import.js",
+            "default": "./edatacal-2.0-import.js"
         },
         ".": {
             "types": "./edatacal-2.0.d.ts",
-            "import": "./edatacal-2.0.js"
+            "import": "./edatacal-2.0.js",
+            "default": "./edatacal-2.0.js"
         }
     },
     "scripts": {

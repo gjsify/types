@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./shell-13-ambient.d.ts",
-            "import": "./shell-13-ambient.js"
+            "import": "./shell-13-ambient.js",
+            "default": "./shell-13-ambient.js"
         },
         "./import": {
             "types": "./shell-13-import.d.ts",
-            "import": "./shell-13-import.js"
+            "import": "./shell-13-import.js",
+            "default": "./shell-13-import.js"
         },
         ".": {
             "types": "./shell-13.d.ts",
-            "import": "./shell-13.js"
+            "import": "./shell-13.js",
+            "default": "./shell-13.js"
         }
     },
     "scripts": {

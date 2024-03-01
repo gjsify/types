@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gcr-4-ambient.d.ts",
-            "import": "./gcr-4-ambient.js"
+            "import": "./gcr-4-ambient.js",
+            "default": "./gcr-4-ambient.js"
         },
         "./import": {
             "types": "./gcr-4-import.d.ts",
-            "import": "./gcr-4-import.js"
+            "import": "./gcr-4-import.js",
+            "default": "./gcr-4-import.js"
         },
         ".": {
             "types": "./gcr-4.d.ts",
-            "import": "./gcr-4.js"
+            "import": "./gcr-4.js",
+            "default": "./gcr-4.js"
         }
     },
     "scripts": {

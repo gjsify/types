@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtksource-3.0-ambient.d.ts",
-            "import": "./gtksource-3.0-ambient.js"
+            "import": "./gtksource-3.0-ambient.js",
+            "default": "./gtksource-3.0-ambient.js"
         },
         "./import": {
             "types": "./gtksource-3.0-import.d.ts",
-            "import": "./gtksource-3.0-import.js"
+            "import": "./gtksource-3.0-import.js",
+            "default": "./gtksource-3.0-import.js"
         },
         ".": {
             "types": "./gtksource-3.0.d.ts",
-            "import": "./gtksource-3.0.js"
+            "import": "./gtksource-3.0.js",
+            "default": "./gtksource-3.0.js"
         }
     },
     "scripts": {

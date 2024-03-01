@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./pangocairo-1.0-ambient.d.ts",
-            "import": "./pangocairo-1.0-ambient.js"
+            "import": "./pangocairo-1.0-ambient.js",
+            "default": "./pangocairo-1.0-ambient.js"
         },
         "./import": {
             "types": "./pangocairo-1.0-import.d.ts",
-            "import": "./pangocairo-1.0-import.js"
+            "import": "./pangocairo-1.0-import.js",
+            "default": "./pangocairo-1.0-import.js"
         },
         ".": {
             "types": "./pangocairo-1.0.d.ts",
-            "import": "./pangocairo-1.0.js"
+            "import": "./pangocairo-1.0.js",
+            "default": "./pangocairo-1.0.js"
         }
     },
     "scripts": {

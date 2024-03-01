@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gst-0.10-ambient.d.ts",
-            "import": "./gst-0.10-ambient.js"
+            "import": "./gst-0.10-ambient.js",
+            "default": "./gst-0.10-ambient.js"
         },
         "./import": {
             "types": "./gst-0.10-import.d.ts",
-            "import": "./gst-0.10-import.js"
+            "import": "./gst-0.10-import.js",
+            "default": "./gst-0.10-import.js"
         },
         ".": {
             "types": "./gst-0.10.d.ts",
-            "import": "./gst-0.10.js"
+            "import": "./gst-0.10.js",
+            "default": "./gst-0.10.js"
         }
     },
     "scripts": {

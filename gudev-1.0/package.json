@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gudev-1.0-ambient.d.ts",
-            "import": "./gudev-1.0-ambient.js"
+            "import": "./gudev-1.0-ambient.js",
+            "default": "./gudev-1.0-ambient.js"
         },
         "./import": {
             "types": "./gudev-1.0-import.d.ts",
-            "import": "./gudev-1.0-import.js"
+            "import": "./gudev-1.0-import.js",
+            "default": "./gudev-1.0-import.js"
         },
         ".": {
             "types": "./gudev-1.0.d.ts",
-            "import": "./gudev-1.0.js"
+            "import": "./gudev-1.0.js",
+            "default": "./gudev-1.0.js"
         }
     },
     "scripts": {

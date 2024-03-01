@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./peas-2-ambient.d.ts",
-            "import": "./peas-2-ambient.js"
+            "import": "./peas-2-ambient.js",
+            "default": "./peas-2-ambient.js"
         },
         "./import": {
             "types": "./peas-2-import.d.ts",
-            "import": "./peas-2-import.js"
+            "import": "./peas-2-import.js",
+            "default": "./peas-2-import.js"
         },
         ".": {
             "types": "./peas-2.d.ts",
-            "import": "./peas-2.js"
+            "import": "./peas-2.js",
+            "default": "./peas-2.js"
         }
     },
     "scripts": {

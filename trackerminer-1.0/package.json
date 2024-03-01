@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./trackerminer-1.0-ambient.d.ts",
-            "import": "./trackerminer-1.0-ambient.js"
+            "import": "./trackerminer-1.0-ambient.js",
+            "default": "./trackerminer-1.0-ambient.js"
         },
         "./import": {
             "types": "./trackerminer-1.0-import.d.ts",
-            "import": "./trackerminer-1.0-import.js"
+            "import": "./trackerminer-1.0-import.js",
+            "default": "./trackerminer-1.0-import.js"
         },
         ".": {
             "types": "./trackerminer-1.0.d.ts",
-            "import": "./trackerminer-1.0.js"
+            "import": "./trackerminer-1.0.js",
+            "default": "./trackerminer-1.0.js"
         }
     },
     "scripts": {

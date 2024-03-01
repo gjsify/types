@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./accounts-1.0-ambient.d.ts",
-            "import": "./accounts-1.0-ambient.js"
+            "import": "./accounts-1.0-ambient.js",
+            "default": "./accounts-1.0-ambient.js"
         },
         "./import": {
             "types": "./accounts-1.0-import.d.ts",
-            "import": "./accounts-1.0-import.js"
+            "import": "./accounts-1.0-import.js",
+            "default": "./accounts-1.0-import.js"
         },
         ".": {
             "types": "./accounts-1.0.d.ts",
-            "import": "./accounts-1.0.js"
+            "import": "./accounts-1.0.js",
+            "default": "./accounts-1.0.js"
         }
     },
     "scripts": {

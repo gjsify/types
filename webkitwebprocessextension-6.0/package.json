@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./webkitwebprocessextension-6.0-ambient.d.ts",
-            "import": "./webkitwebprocessextension-6.0-ambient.js"
+            "import": "./webkitwebprocessextension-6.0-ambient.js",
+            "default": "./webkitwebprocessextension-6.0-ambient.js"
         },
         "./import": {
             "types": "./webkitwebprocessextension-6.0-import.d.ts",
-            "import": "./webkitwebprocessextension-6.0-import.js"
+            "import": "./webkitwebprocessextension-6.0-import.js",
+            "default": "./webkitwebprocessextension-6.0-import.js"
         },
         ".": {
             "types": "./webkitwebprocessextension-6.0.d.ts",
-            "import": "./webkitwebprocessextension-6.0.js"
+            "import": "./webkitwebprocessextension-6.0.js",
+            "default": "./webkitwebprocessextension-6.0.js"
         }
     },
     "scripts": {

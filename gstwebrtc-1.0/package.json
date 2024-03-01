@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstwebrtc-1.0-ambient.d.ts",
-            "import": "./gstwebrtc-1.0-ambient.js"
+            "import": "./gstwebrtc-1.0-ambient.js",
+            "default": "./gstwebrtc-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstwebrtc-1.0-import.d.ts",
-            "import": "./gstwebrtc-1.0-import.js"
+            "import": "./gstwebrtc-1.0-import.js",
+            "default": "./gstwebrtc-1.0-import.js"
         },
         ".": {
             "types": "./gstwebrtc-1.0.d.ts",
-            "import": "./gstwebrtc-1.0.js"
+            "import": "./gstwebrtc-1.0.js",
+            "default": "./gstwebrtc-1.0.js"
         }
     },
     "scripts": {

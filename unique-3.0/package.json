@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./unique-3.0-ambient.d.ts",
-            "import": "./unique-3.0-ambient.js"
+            "import": "./unique-3.0-ambient.js",
+            "default": "./unique-3.0-ambient.js"
         },
         "./import": {
             "types": "./unique-3.0-import.d.ts",
-            "import": "./unique-3.0-import.js"
+            "import": "./unique-3.0-import.js",
+            "default": "./unique-3.0-import.js"
         },
         ".": {
             "types": "./unique-3.0.d.ts",
-            "import": "./unique-3.0.js"
+            "import": "./unique-3.0.js",
+            "default": "./unique-3.0.js"
         }
     },
     "scripts": {

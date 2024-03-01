@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./panelapplet-4.0-ambient.d.ts",
-            "import": "./panelapplet-4.0-ambient.js"
+            "import": "./panelapplet-4.0-ambient.js",
+            "default": "./panelapplet-4.0-ambient.js"
         },
         "./import": {
             "types": "./panelapplet-4.0-import.d.ts",
-            "import": "./panelapplet-4.0-import.js"
+            "import": "./panelapplet-4.0-import.js",
+            "default": "./panelapplet-4.0-import.js"
         },
         ".": {
             "types": "./panelapplet-4.0.d.ts",
-            "import": "./panelapplet-4.0.js"
+            "import": "./panelapplet-4.0.js",
+            "default": "./panelapplet-4.0.js"
         }
     },
     "scripts": {

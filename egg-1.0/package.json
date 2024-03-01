@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./egg-1.0-ambient.d.ts",
-            "import": "./egg-1.0-ambient.js"
+            "import": "./egg-1.0-ambient.js",
+            "default": "./egg-1.0-ambient.js"
         },
         "./import": {
             "types": "./egg-1.0-import.d.ts",
-            "import": "./egg-1.0-import.js"
+            "import": "./egg-1.0-import.js",
+            "default": "./egg-1.0-import.js"
         },
         ".": {
             "types": "./egg-1.0.d.ts",
-            "import": "./egg-1.0.js"
+            "import": "./egg-1.0.js",
+            "default": "./egg-1.0.js"
         }
     },
     "scripts": {

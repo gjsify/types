@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gcrui-3-ambient.d.ts",
-            "import": "./gcrui-3-ambient.js"
+            "import": "./gcrui-3-ambient.js",
+            "default": "./gcrui-3-ambient.js"
         },
         "./import": {
             "types": "./gcrui-3-import.d.ts",
-            "import": "./gcrui-3-import.js"
+            "import": "./gcrui-3-import.js",
+            "default": "./gcrui-3-import.js"
         },
         ".": {
             "types": "./gcrui-3.d.ts",
-            "import": "./gcrui-3.js"
+            "import": "./gcrui-3.js",
+            "default": "./gcrui-3.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ecalendar-1.2-ambient.d.ts",
-            "import": "./ecalendar-1.2-ambient.js"
+            "import": "./ecalendar-1.2-ambient.js",
+            "default": "./ecalendar-1.2-ambient.js"
         },
         "./import": {
             "types": "./ecalendar-1.2-import.d.ts",
-            "import": "./ecalendar-1.2-import.js"
+            "import": "./ecalendar-1.2-import.js",
+            "default": "./ecalendar-1.2-import.js"
         },
         ".": {
             "types": "./ecalendar-1.2.d.ts",
-            "import": "./ecalendar-1.2.js"
+            "import": "./ecalendar-1.2.js",
+            "default": "./ecalendar-1.2.js"
         }
     },
     "scripts": {

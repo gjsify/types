@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./poppler-0.18-ambient.d.ts",
-            "import": "./poppler-0.18-ambient.js"
+            "import": "./poppler-0.18-ambient.js",
+            "default": "./poppler-0.18-ambient.js"
         },
         "./import": {
             "types": "./poppler-0.18-import.d.ts",
-            "import": "./poppler-0.18-import.js"
+            "import": "./poppler-0.18-import.js",
+            "default": "./poppler-0.18-import.js"
         },
         ".": {
             "types": "./poppler-0.18.d.ts",
-            "import": "./poppler-0.18.js"
+            "import": "./poppler-0.18.js",
+            "default": "./poppler-0.18.js"
         }
     },
     "scripts": {

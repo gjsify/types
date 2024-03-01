@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mxgtk-1.0-ambient.d.ts",
-            "import": "./mxgtk-1.0-ambient.js"
+            "import": "./mxgtk-1.0-ambient.js",
+            "default": "./mxgtk-1.0-ambient.js"
         },
         "./import": {
             "types": "./mxgtk-1.0-import.d.ts",
-            "import": "./mxgtk-1.0-import.js"
+            "import": "./mxgtk-1.0-import.js",
+            "default": "./mxgtk-1.0-import.js"
         },
         ".": {
             "types": "./mxgtk-1.0.d.ts",
-            "import": "./mxgtk-1.0.js"
+            "import": "./mxgtk-1.0.js",
+            "default": "./mxgtk-1.0.js"
         }
     },
     "scripts": {

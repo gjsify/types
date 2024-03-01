@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./geoclue-2.0-ambient.d.ts",
-            "import": "./geoclue-2.0-ambient.js"
+            "import": "./geoclue-2.0-ambient.js",
+            "default": "./geoclue-2.0-ambient.js"
         },
         "./import": {
             "types": "./geoclue-2.0-import.d.ts",
-            "import": "./geoclue-2.0-import.js"
+            "import": "./geoclue-2.0-import.js",
+            "default": "./geoclue-2.0-import.js"
         },
         ".": {
             "types": "./geoclue-2.0.d.ts",
-            "import": "./geoclue-2.0.js"
+            "import": "./geoclue-2.0.js",
+            "default": "./geoclue-2.0.js"
         }
     },
     "scripts": {

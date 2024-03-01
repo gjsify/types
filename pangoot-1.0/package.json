@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./pangoot-1.0-ambient.d.ts",
-            "import": "./pangoot-1.0-ambient.js"
+            "import": "./pangoot-1.0-ambient.js",
+            "default": "./pangoot-1.0-ambient.js"
         },
         "./import": {
             "types": "./pangoot-1.0-import.d.ts",
-            "import": "./pangoot-1.0-import.js"
+            "import": "./pangoot-1.0-import.js",
+            "default": "./pangoot-1.0-import.js"
         },
         ".": {
             "types": "./pangoot-1.0.d.ts",
-            "import": "./pangoot-1.0.js"
+            "import": "./pangoot-1.0.js",
+            "default": "./pangoot-1.0.js"
         }
     },
     "scripts": {

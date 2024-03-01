@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./arrow-1.0-ambient.d.ts",
-            "import": "./arrow-1.0-ambient.js"
+            "import": "./arrow-1.0-ambient.js",
+            "default": "./arrow-1.0-ambient.js"
         },
         "./import": {
             "types": "./arrow-1.0-import.d.ts",
-            "import": "./arrow-1.0-import.js"
+            "import": "./arrow-1.0-import.js",
+            "default": "./arrow-1.0-import.js"
         },
         ".": {
             "types": "./arrow-1.0.d.ts",
-            "import": "./arrow-1.0.js"
+            "import": "./arrow-1.0.js",
+            "default": "./arrow-1.0.js"
         }
     },
     "scripts": {

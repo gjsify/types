@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./unity-7.0-ambient.d.ts",
-            "import": "./unity-7.0-ambient.js"
+            "import": "./unity-7.0-ambient.js",
+            "default": "./unity-7.0-ambient.js"
         },
         "./import": {
             "types": "./unity-7.0-import.d.ts",
-            "import": "./unity-7.0-import.js"
+            "import": "./unity-7.0-import.js",
+            "default": "./unity-7.0-import.js"
         },
         ".": {
             "types": "./unity-7.0.d.ts",
-            "import": "./unity-7.0.js"
+            "import": "./unity-7.0.js",
+            "default": "./unity-7.0.js"
         }
     },
     "scripts": {

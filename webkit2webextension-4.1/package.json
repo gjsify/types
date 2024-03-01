@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./webkit2webextension-4.1-ambient.d.ts",
-            "import": "./webkit2webextension-4.1-ambient.js"
+            "import": "./webkit2webextension-4.1-ambient.js",
+            "default": "./webkit2webextension-4.1-ambient.js"
         },
         "./import": {
             "types": "./webkit2webextension-4.1-import.d.ts",
-            "import": "./webkit2webextension-4.1-import.js"
+            "import": "./webkit2webextension-4.1-import.js",
+            "default": "./webkit2webextension-4.1-import.js"
         },
         ".": {
             "types": "./webkit2webextension-4.1.d.ts",
-            "import": "./webkit2webextension-4.1.js"
+            "import": "./webkit2webextension-4.1.js",
+            "default": "./webkit2webextension-4.1.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./graphene-1.0-ambient.d.ts",
-            "import": "./graphene-1.0-ambient.js"
+            "import": "./graphene-1.0-ambient.js",
+            "default": "./graphene-1.0-ambient.js"
         },
         "./import": {
             "types": "./graphene-1.0-import.d.ts",
-            "import": "./graphene-1.0-import.js"
+            "import": "./graphene-1.0-import.js",
+            "default": "./graphene-1.0-import.js"
         },
         ".": {
             "types": "./graphene-1.0.d.ts",
-            "import": "./graphene-1.0.js"
+            "import": "./graphene-1.0.js",
+            "default": "./graphene-1.0.js"
         }
     },
     "scripts": {

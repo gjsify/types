@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./libvirtgobject-1.0-ambient.d.ts",
-            "import": "./libvirtgobject-1.0-ambient.js"
+            "import": "./libvirtgobject-1.0-ambient.js",
+            "default": "./libvirtgobject-1.0-ambient.js"
         },
         "./import": {
             "types": "./libvirtgobject-1.0-import.d.ts",
-            "import": "./libvirtgobject-1.0-import.js"
+            "import": "./libvirtgobject-1.0-import.js",
+            "default": "./libvirtgobject-1.0-import.js"
         },
         ".": {
             "types": "./libvirtgobject-1.0.d.ts",
-            "import": "./libvirtgobject-1.0.js"
+            "import": "./libvirtgobject-1.0.js",
+            "default": "./libvirtgobject-1.0.js"
         }
     },
     "scripts": {

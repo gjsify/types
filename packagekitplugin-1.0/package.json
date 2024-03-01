@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./packagekitplugin-1.0-ambient.d.ts",
-            "import": "./packagekitplugin-1.0-ambient.js"
+            "import": "./packagekitplugin-1.0-ambient.js",
+            "default": "./packagekitplugin-1.0-ambient.js"
         },
         "./import": {
             "types": "./packagekitplugin-1.0-import.d.ts",
-            "import": "./packagekitplugin-1.0-import.js"
+            "import": "./packagekitplugin-1.0-import.js",
+            "default": "./packagekitplugin-1.0-import.js"
         },
         ".": {
             "types": "./packagekitplugin-1.0.d.ts",
-            "import": "./packagekitplugin-1.0.js"
+            "import": "./packagekitplugin-1.0.js",
+            "default": "./packagekitplugin-1.0.js"
         }
     },
     "scripts": {

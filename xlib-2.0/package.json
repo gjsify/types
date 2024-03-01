@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xlib-2.0-ambient.d.ts",
-            "import": "./xlib-2.0-ambient.js"
+            "import": "./xlib-2.0-ambient.js",
+            "default": "./xlib-2.0-ambient.js"
         },
         "./import": {
             "types": "./xlib-2.0-import.d.ts",
-            "import": "./xlib-2.0-import.js"
+            "import": "./xlib-2.0-import.js",
+            "default": "./xlib-2.0-import.js"
         },
         ".": {
             "types": "./xlib-2.0.d.ts",
-            "import": "./xlib-2.0.js"
+            "import": "./xlib-2.0.js",
+            "default": "./xlib-2.0.js"
         }
     },
     "scripts": {

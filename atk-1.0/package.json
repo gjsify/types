@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./atk-1.0-ambient.d.ts",
-            "import": "./atk-1.0-ambient.js"
+            "import": "./atk-1.0-ambient.js",
+            "default": "./atk-1.0-ambient.js"
         },
         "./import": {
             "types": "./atk-1.0-import.d.ts",
-            "import": "./atk-1.0-import.js"
+            "import": "./atk-1.0-import.js",
+            "default": "./atk-1.0-import.js"
         },
         ".": {
             "types": "./atk-1.0.d.ts",
-            "import": "./atk-1.0.js"
+            "import": "./atk-1.0.js",
+            "default": "./atk-1.0.js"
         }
     },
     "scripts": {

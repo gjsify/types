@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsignond-1.0-ambient.d.ts",
-            "import": "./gsignond-1.0-ambient.js"
+            "import": "./gsignond-1.0-ambient.js",
+            "default": "./gsignond-1.0-ambient.js"
         },
         "./import": {
             "types": "./gsignond-1.0-import.d.ts",
-            "import": "./gsignond-1.0-import.js"
+            "import": "./gsignond-1.0-import.js",
+            "default": "./gsignond-1.0-import.js"
         },
         ".": {
             "types": "./gsignond-1.0.d.ts",
-            "import": "./gsignond-1.0.js"
+            "import": "./gsignond-1.0.js",
+            "default": "./gsignond-1.0.js"
         }
     },
     "scripts": {

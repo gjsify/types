@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dbusmenugtk-0.4-ambient.d.ts",
-            "import": "./dbusmenugtk-0.4-ambient.js"
+            "import": "./dbusmenugtk-0.4-ambient.js",
+            "default": "./dbusmenugtk-0.4-ambient.js"
         },
         "./import": {
             "types": "./dbusmenugtk-0.4-import.d.ts",
-            "import": "./dbusmenugtk-0.4-import.js"
+            "import": "./dbusmenugtk-0.4-import.js",
+            "default": "./dbusmenugtk-0.4-import.js"
         },
         ".": {
             "types": "./dbusmenugtk-0.4.d.ts",
-            "import": "./dbusmenugtk-0.4.js"
+            "import": "./dbusmenugtk-0.4.js",
+            "default": "./dbusmenugtk-0.4.js"
         }
     },
     "scripts": {

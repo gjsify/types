@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./geocodeglib-1.0-ambient.d.ts",
-            "import": "./geocodeglib-1.0-ambient.js"
+            "import": "./geocodeglib-1.0-ambient.js",
+            "default": "./geocodeglib-1.0-ambient.js"
         },
         "./import": {
             "types": "./geocodeglib-1.0-import.d.ts",
-            "import": "./geocodeglib-1.0-import.js"
+            "import": "./geocodeglib-1.0-import.js",
+            "default": "./geocodeglib-1.0-import.js"
         },
         ".": {
             "types": "./geocodeglib-1.0.d.ts",
-            "import": "./geocodeglib-1.0.js"
+            "import": "./geocodeglib-1.0.js",
+            "default": "./geocodeglib-1.0.js"
         }
     },
     "scripts": {

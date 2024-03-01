@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstinterfaces-0.10-ambient.d.ts",
-            "import": "./gstinterfaces-0.10-ambient.js"
+            "import": "./gstinterfaces-0.10-ambient.js",
+            "default": "./gstinterfaces-0.10-ambient.js"
         },
         "./import": {
             "types": "./gstinterfaces-0.10-import.d.ts",
-            "import": "./gstinterfaces-0.10-import.js"
+            "import": "./gstinterfaces-0.10-import.js",
+            "default": "./gstinterfaces-0.10-import.js"
         },
         ".": {
             "types": "./gstinterfaces-0.10.d.ts",
-            "import": "./gstinterfaces-0.10.js"
+            "import": "./gstinterfaces-0.10.js",
+            "default": "./gstinterfaces-0.10.js"
         }
     },
     "scripts": {

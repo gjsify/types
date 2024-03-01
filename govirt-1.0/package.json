@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./govirt-1.0-ambient.d.ts",
-            "import": "./govirt-1.0-ambient.js"
+            "import": "./govirt-1.0-ambient.js",
+            "default": "./govirt-1.0-ambient.js"
         },
         "./import": {
             "types": "./govirt-1.0-import.d.ts",
-            "import": "./govirt-1.0-import.js"
+            "import": "./govirt-1.0-import.js",
+            "default": "./govirt-1.0-import.js"
         },
         ".": {
             "types": "./govirt-1.0.d.ts",
-            "import": "./govirt-1.0.js"
+            "import": "./govirt-1.0.js",
+            "default": "./govirt-1.0.js"
         }
     },
     "scripts": {

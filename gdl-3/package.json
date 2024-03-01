@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdl-3-ambient.d.ts",
-            "import": "./gdl-3-ambient.js"
+            "import": "./gdl-3-ambient.js",
+            "default": "./gdl-3-ambient.js"
         },
         "./import": {
             "types": "./gdl-3-import.d.ts",
-            "import": "./gdl-3-import.js"
+            "import": "./gdl-3-import.js",
+            "default": "./gdl-3-import.js"
         },
         ".": {
             "types": "./gdl-3.d.ts",
-            "import": "./gdl-3.js"
+            "import": "./gdl-3.js",
+            "default": "./gdl-3.js"
         }
     },
     "scripts": {

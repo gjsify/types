@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gvncpulse-1.0-ambient.d.ts",
-            "import": "./gvncpulse-1.0-ambient.js"
+            "import": "./gvncpulse-1.0-ambient.js",
+            "default": "./gvncpulse-1.0-ambient.js"
         },
         "./import": {
             "types": "./gvncpulse-1.0-import.d.ts",
-            "import": "./gvncpulse-1.0-import.js"
+            "import": "./gvncpulse-1.0-import.js",
+            "default": "./gvncpulse-1.0-import.js"
         },
         ".": {
             "types": "./gvncpulse-1.0.d.ts",
-            "import": "./gvncpulse-1.0.js"
+            "import": "./gvncpulse-1.0.js",
+            "default": "./gvncpulse-1.0.js"
         }
     },
     "scripts": {

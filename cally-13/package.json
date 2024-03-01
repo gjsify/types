@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./cally-13-ambient.d.ts",
-            "import": "./cally-13-ambient.js"
+            "import": "./cally-13-ambient.js",
+            "default": "./cally-13-ambient.js"
         },
         "./import": {
             "types": "./cally-13-import.d.ts",
-            "import": "./cally-13-import.js"
+            "import": "./cally-13-import.js",
+            "default": "./cally-13-import.js"
         },
         ".": {
             "types": "./cally-13.d.ts",
-            "import": "./cally-13.js"
+            "import": "./cally-13.js",
+            "default": "./cally-13.js"
         }
     },
     "scripts": {

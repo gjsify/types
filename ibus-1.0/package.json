@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ibus-1.0-ambient.d.ts",
-            "import": "./ibus-1.0-ambient.js"
+            "import": "./ibus-1.0-ambient.js",
+            "default": "./ibus-1.0-ambient.js"
         },
         "./import": {
             "types": "./ibus-1.0-import.d.ts",
-            "import": "./ibus-1.0-import.js"
+            "import": "./ibus-1.0-import.js",
+            "default": "./ibus-1.0-import.js"
         },
         ".": {
             "types": "./ibus-1.0.d.ts",
-            "import": "./ibus-1.0.js"
+            "import": "./ibus-1.0.js",
+            "default": "./ibus-1.0.js"
         }
     },
     "scripts": {

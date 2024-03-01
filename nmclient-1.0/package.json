@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./nmclient-1.0-ambient.d.ts",
-            "import": "./nmclient-1.0-ambient.js"
+            "import": "./nmclient-1.0-ambient.js",
+            "default": "./nmclient-1.0-ambient.js"
         },
         "./import": {
             "types": "./nmclient-1.0-import.d.ts",
-            "import": "./nmclient-1.0-import.js"
+            "import": "./nmclient-1.0-import.js",
+            "default": "./nmclient-1.0-import.js"
         },
         ".": {
             "types": "./nmclient-1.0.d.ts",
-            "import": "./nmclient-1.0.js"
+            "import": "./nmclient-1.0.js",
+            "default": "./nmclient-1.0.js"
         }
     },
     "scripts": {

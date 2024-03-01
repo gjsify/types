@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstriff-1.0-ambient.d.ts",
-            "import": "./gstriff-1.0-ambient.js"
+            "import": "./gstriff-1.0-ambient.js",
+            "default": "./gstriff-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstriff-1.0-import.d.ts",
-            "import": "./gstriff-1.0-import.js"
+            "import": "./gstriff-1.0-import.js",
+            "default": "./gstriff-1.0-import.js"
         },
         ".": {
             "types": "./gstriff-1.0.d.ts",
-            "import": "./gstriff-1.0.js"
+            "import": "./gstriff-1.0.js",
+            "default": "./gstriff-1.0.js"
         }
     },
     "scripts": {

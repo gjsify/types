@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./zpj-0.0-ambient.d.ts",
-            "import": "./zpj-0.0-ambient.js"
+            "import": "./zpj-0.0-ambient.js",
+            "default": "./zpj-0.0-ambient.js"
         },
         "./import": {
             "types": "./zpj-0.0-import.d.ts",
-            "import": "./zpj-0.0-import.js"
+            "import": "./zpj-0.0-import.js",
+            "default": "./zpj-0.0-import.js"
         },
         ".": {
             "types": "./zpj-0.0.d.ts",
-            "import": "./zpj-0.0.js"
+            "import": "./zpj-0.0.js",
+            "default": "./zpj-0.0.js"
         }
     },
     "scripts": {

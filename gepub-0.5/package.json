@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gepub-0.5-ambient.d.ts",
-            "import": "./gepub-0.5-ambient.js"
+            "import": "./gepub-0.5-ambient.js",
+            "default": "./gepub-0.5-ambient.js"
         },
         "./import": {
             "types": "./gepub-0.5-import.d.ts",
-            "import": "./gepub-0.5-import.js"
+            "import": "./gepub-0.5-import.js",
+            "default": "./gepub-0.5-import.js"
         },
         ".": {
             "types": "./gepub-0.5.d.ts",
-            "import": "./gepub-0.5.js"
+            "import": "./gepub-0.5.js",
+            "default": "./gepub-0.5.js"
         }
     },
     "scripts": {

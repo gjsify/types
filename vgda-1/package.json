@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vgda-1-ambient.d.ts",
-            "import": "./vgda-1-ambient.js"
+            "import": "./vgda-1-ambient.js",
+            "default": "./vgda-1-ambient.js"
         },
         "./import": {
             "types": "./vgda-1-import.d.ts",
-            "import": "./vgda-1-import.js"
+            "import": "./vgda-1-import.js",
+            "default": "./vgda-1-import.js"
         },
         ".": {
             "types": "./vgda-1.d.ts",
-            "import": "./vgda-1.js"
+            "import": "./vgda-1.js",
+            "default": "./vgda-1.js"
         }
     },
     "scripts": {

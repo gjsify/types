@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mtk-13-ambient.d.ts",
-            "import": "./mtk-13-ambient.js"
+            "import": "./mtk-13-ambient.js",
+            "default": "./mtk-13-ambient.js"
         },
         "./import": {
             "types": "./mtk-13-import.d.ts",
-            "import": "./mtk-13-import.js"
+            "import": "./mtk-13-import.js",
+            "default": "./mtk-13-import.js"
         },
         ".": {
             "types": "./mtk-13.d.ts",
-            "import": "./mtk-13.js"
+            "import": "./mtk-13.js",
+            "default": "./mtk-13.js"
         }
     },
     "scripts": {

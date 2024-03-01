@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gitg-1.0-ambient.d.ts",
-            "import": "./gitg-1.0-ambient.js"
+            "import": "./gitg-1.0-ambient.js",
+            "default": "./gitg-1.0-ambient.js"
         },
         "./import": {
             "types": "./gitg-1.0-import.d.ts",
-            "import": "./gitg-1.0-import.js"
+            "import": "./gitg-1.0-import.js",
+            "default": "./gitg-1.0-import.js"
         },
         ".": {
             "types": "./gitg-1.0.d.ts",
-            "import": "./gitg-1.0.js"
+            "import": "./gitg-1.0.js",
+            "default": "./gitg-1.0.js"
         }
     },
     "scripts": {

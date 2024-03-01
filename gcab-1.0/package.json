@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gcab-1.0-ambient.d.ts",
-            "import": "./gcab-1.0-ambient.js"
+            "import": "./gcab-1.0-ambient.js",
+            "default": "./gcab-1.0-ambient.js"
         },
         "./import": {
             "types": "./gcab-1.0-import.d.ts",
-            "import": "./gcab-1.0-import.js"
+            "import": "./gcab-1.0-import.js",
+            "default": "./gcab-1.0-import.js"
         },
         ".": {
             "types": "./gcab-1.0.d.ts",
-            "import": "./gcab-1.0.js"
+            "import": "./gcab-1.0.js",
+            "default": "./gcab-1.0.js"
         }
     },
     "scripts": {

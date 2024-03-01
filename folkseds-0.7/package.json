@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./folkseds-0.7-ambient.d.ts",
-            "import": "./folkseds-0.7-ambient.js"
+            "import": "./folkseds-0.7-ambient.js",
+            "default": "./folkseds-0.7-ambient.js"
         },
         "./import": {
             "types": "./folkseds-0.7-import.d.ts",
-            "import": "./folkseds-0.7-import.js"
+            "import": "./folkseds-0.7-import.js",
+            "default": "./folkseds-0.7-import.js"
         },
         ".": {
             "types": "./folkseds-0.7.d.ts",
-            "import": "./folkseds-0.7.js"
+            "import": "./folkseds-0.7.js",
+            "default": "./folkseds-0.7.js"
         }
     },
     "scripts": {

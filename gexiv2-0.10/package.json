@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gexiv2-0.10-ambient.d.ts",
-            "import": "./gexiv2-0.10-ambient.js"
+            "import": "./gexiv2-0.10-ambient.js",
+            "default": "./gexiv2-0.10-ambient.js"
         },
         "./import": {
             "types": "./gexiv2-0.10-import.d.ts",
-            "import": "./gexiv2-0.10-import.js"
+            "import": "./gexiv2-0.10-import.js",
+            "default": "./gexiv2-0.10-import.js"
         },
         ".": {
             "types": "./gexiv2-0.10.d.ts",
-            "import": "./gexiv2-0.10.js"
+            "import": "./gexiv2-0.10.js",
+            "default": "./gexiv2-0.10.js"
         }
     },
     "scripts": {

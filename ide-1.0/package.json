@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ide-1.0-ambient.d.ts",
-            "import": "./ide-1.0-ambient.js"
+            "import": "./ide-1.0-ambient.js",
+            "default": "./ide-1.0-ambient.js"
         },
         "./import": {
             "types": "./ide-1.0-import.d.ts",
-            "import": "./ide-1.0-import.js"
+            "import": "./ide-1.0-import.js",
+            "default": "./ide-1.0-import.js"
         },
         ".": {
             "types": "./ide-1.0.d.ts",
-            "import": "./ide-1.0.js"
+            "import": "./ide-1.0.js",
+            "default": "./ide-1.0.js"
         }
     },
     "scripts": {

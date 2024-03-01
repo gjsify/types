@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdkx11-4.0-ambient.d.ts",
-            "import": "./gdkx11-4.0-ambient.js"
+            "import": "./gdkx11-4.0-ambient.js",
+            "default": "./gdkx11-4.0-ambient.js"
         },
         "./import": {
             "types": "./gdkx11-4.0-import.d.ts",
-            "import": "./gdkx11-4.0-import.js"
+            "import": "./gdkx11-4.0-import.js",
+            "default": "./gdkx11-4.0-import.js"
         },
         ".": {
             "types": "./gdkx11-4.0.d.ts",
-            "import": "./gdkx11-4.0.js"
+            "import": "./gdkx11-4.0.js",
+            "default": "./gdkx11-4.0.js"
         }
     },
     "scripts": {

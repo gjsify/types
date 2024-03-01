@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./timezonemap-1.0-ambient.d.ts",
-            "import": "./timezonemap-1.0-ambient.js"
+            "import": "./timezonemap-1.0-ambient.js",
+            "default": "./timezonemap-1.0-ambient.js"
         },
         "./import": {
             "types": "./timezonemap-1.0-import.d.ts",
-            "import": "./timezonemap-1.0-import.js"
+            "import": "./timezonemap-1.0-import.js",
+            "default": "./timezonemap-1.0-import.js"
         },
         ".": {
             "types": "./timezonemap-1.0.d.ts",
-            "import": "./timezonemap-1.0.js"
+            "import": "./timezonemap-1.0.js",
+            "default": "./timezonemap-1.0.js"
         }
     },
     "scripts": {

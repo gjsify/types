@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gl-1.0-ambient.d.ts",
-            "import": "./gl-1.0-ambient.js"
+            "import": "./gl-1.0-ambient.js",
+            "default": "./gl-1.0-ambient.js"
         },
         "./import": {
             "types": "./gl-1.0-import.d.ts",
-            "import": "./gl-1.0-import.js"
+            "import": "./gl-1.0-import.js",
+            "default": "./gl-1.0-import.js"
         },
         ".": {
             "types": "./gl-1.0.d.ts",
-            "import": "./gl-1.0.js"
+            "import": "./gl-1.0.js",
+            "default": "./gl-1.0.js"
         }
     },
     "scripts": {

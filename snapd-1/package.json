@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./snapd-1-ambient.d.ts",
-            "import": "./snapd-1-ambient.js"
+            "import": "./snapd-1-ambient.js",
+            "default": "./snapd-1-ambient.js"
         },
         "./import": {
             "types": "./snapd-1-import.d.ts",
-            "import": "./snapd-1-import.js"
+            "import": "./snapd-1-import.js",
+            "default": "./snapd-1-import.js"
         },
         ".": {
             "types": "./snapd-1.d.ts",
-            "import": "./snapd-1.js"
+            "import": "./snapd-1.js",
+            "default": "./snapd-1.js"
         }
     },
     "scripts": {

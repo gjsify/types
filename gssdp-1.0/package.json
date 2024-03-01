@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gssdp-1.0-ambient.d.ts",
-            "import": "./gssdp-1.0-ambient.js"
+            "import": "./gssdp-1.0-ambient.js",
+            "default": "./gssdp-1.0-ambient.js"
         },
         "./import": {
             "types": "./gssdp-1.0-import.d.ts",
-            "import": "./gssdp-1.0-import.js"
+            "import": "./gssdp-1.0-import.js",
+            "default": "./gssdp-1.0-import.js"
         },
         ".": {
             "types": "./gssdp-1.0.d.ts",
-            "import": "./gssdp-1.0.js"
+            "import": "./gssdp-1.0.js",
+            "default": "./gssdp-1.0.js"
         }
     },
     "scripts": {

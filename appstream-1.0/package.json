@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./appstream-1.0-ambient.d.ts",
-            "import": "./appstream-1.0-ambient.js"
+            "import": "./appstream-1.0-ambient.js",
+            "default": "./appstream-1.0-ambient.js"
         },
         "./import": {
             "types": "./appstream-1.0-import.d.ts",
-            "import": "./appstream-1.0-import.js"
+            "import": "./appstream-1.0-import.js",
+            "default": "./appstream-1.0-import.js"
         },
         ".": {
             "types": "./appstream-1.0.d.ts",
-            "import": "./appstream-1.0.js"
+            "import": "./appstream-1.0.js",
+            "default": "./appstream-1.0.js"
         }
     },
     "scripts": {

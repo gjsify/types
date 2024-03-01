@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstcontroller-1.0-ambient.d.ts",
-            "import": "./gstcontroller-1.0-ambient.js"
+            "import": "./gstcontroller-1.0-ambient.js",
+            "default": "./gstcontroller-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstcontroller-1.0-import.d.ts",
-            "import": "./gstcontroller-1.0-import.js"
+            "import": "./gstcontroller-1.0-import.js",
+            "default": "./gstcontroller-1.0-import.js"
         },
         ".": {
             "types": "./gstcontroller-1.0.d.ts",
-            "import": "./gstcontroller-1.0.js"
+            "import": "./gstcontroller-1.0.js",
+            "default": "./gstcontroller-1.0.js"
         }
     },
     "scripts": {

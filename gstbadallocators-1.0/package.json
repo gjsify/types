@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstbadallocators-1.0-ambient.d.ts",
-            "import": "./gstbadallocators-1.0-ambient.js"
+            "import": "./gstbadallocators-1.0-ambient.js",
+            "default": "./gstbadallocators-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstbadallocators-1.0-import.d.ts",
-            "import": "./gstbadallocators-1.0-import.js"
+            "import": "./gstbadallocators-1.0-import.js",
+            "default": "./gstbadallocators-1.0-import.js"
         },
         ".": {
             "types": "./gstbadallocators-1.0.d.ts",
-            "import": "./gstbadallocators-1.0.js"
+            "import": "./gstbadallocators-1.0.js",
+            "default": "./gstbadallocators-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./edataserverui4-1.0-ambient.d.ts",
-            "import": "./edataserverui4-1.0-ambient.js"
+            "import": "./edataserverui4-1.0-ambient.js",
+            "default": "./edataserverui4-1.0-ambient.js"
         },
         "./import": {
             "types": "./edataserverui4-1.0-import.d.ts",
-            "import": "./edataserverui4-1.0-import.js"
+            "import": "./edataserverui4-1.0-import.js",
+            "default": "./edataserverui4-1.0-import.js"
         },
         ".": {
             "types": "./edataserverui4-1.0.d.ts",
-            "import": "./edataserverui4-1.0.js"
+            "import": "./edataserverui4-1.0.js",
+            "default": "./edataserverui4-1.0.js"
         }
     },
     "scripts": {

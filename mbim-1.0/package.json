@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mbim-1.0-ambient.d.ts",
-            "import": "./mbim-1.0-ambient.js"
+            "import": "./mbim-1.0-ambient.js",
+            "default": "./mbim-1.0-ambient.js"
         },
         "./import": {
             "types": "./mbim-1.0-import.d.ts",
-            "import": "./mbim-1.0-import.js"
+            "import": "./mbim-1.0-import.js",
+            "default": "./mbim-1.0-import.js"
         },
         ".": {
             "types": "./mbim-1.0.d.ts",
-            "import": "./mbim-1.0.js"
+            "import": "./mbim-1.0.js",
+            "default": "./mbim-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./folkstelepathy-0.7-ambient.d.ts",
-            "import": "./folkstelepathy-0.7-ambient.js"
+            "import": "./folkstelepathy-0.7-ambient.js",
+            "default": "./folkstelepathy-0.7-ambient.js"
         },
         "./import": {
             "types": "./folkstelepathy-0.7-import.d.ts",
-            "import": "./folkstelepathy-0.7-import.js"
+            "import": "./folkstelepathy-0.7-import.js",
+            "default": "./folkstelepathy-0.7-import.js"
         },
         ".": {
             "types": "./folkstelepathy-0.7.d.ts",
-            "import": "./folkstelepathy-0.7.js"
+            "import": "./folkstelepathy-0.7.js",
+            "default": "./folkstelepathy-0.7.js"
         }
     },
     "scripts": {

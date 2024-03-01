@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./restextras-0.7-ambient.d.ts",
-            "import": "./restextras-0.7-ambient.js"
+            "import": "./restextras-0.7-ambient.js",
+            "default": "./restextras-0.7-ambient.js"
         },
         "./import": {
             "types": "./restextras-0.7-import.d.ts",
-            "import": "./restextras-0.7-import.js"
+            "import": "./restextras-0.7-import.js",
+            "default": "./restextras-0.7-import.js"
         },
         ".": {
             "types": "./restextras-0.7.d.ts",
-            "import": "./restextras-0.7.js"
+            "import": "./restextras-0.7.js",
+            "default": "./restextras-0.7.js"
         }
     },
     "scripts": {

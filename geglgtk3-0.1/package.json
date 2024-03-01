@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./geglgtk3-0.1-ambient.d.ts",
-            "import": "./geglgtk3-0.1-ambient.js"
+            "import": "./geglgtk3-0.1-ambient.js",
+            "default": "./geglgtk3-0.1-ambient.js"
         },
         "./import": {
             "types": "./geglgtk3-0.1-import.d.ts",
-            "import": "./geglgtk3-0.1-import.js"
+            "import": "./geglgtk3-0.1-import.js",
+            "default": "./geglgtk3-0.1-import.js"
         },
         ".": {
             "types": "./geglgtk3-0.1.d.ts",
-            "import": "./geglgtk3-0.1.js"
+            "import": "./geglgtk3-0.1.js",
+            "default": "./geglgtk3-0.1.js"
         }
     },
     "scripts": {

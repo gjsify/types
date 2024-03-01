@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomemaps-1.0-ambient.d.ts",
-            "import": "./gnomemaps-1.0-ambient.js"
+            "import": "./gnomemaps-1.0-ambient.js",
+            "default": "./gnomemaps-1.0-ambient.js"
         },
         "./import": {
             "types": "./gnomemaps-1.0-import.d.ts",
-            "import": "./gnomemaps-1.0-import.js"
+            "import": "./gnomemaps-1.0-import.js",
+            "default": "./gnomemaps-1.0-import.js"
         },
         ".": {
             "types": "./gnomemaps-1.0.d.ts",
-            "import": "./gnomemaps-1.0.js"
+            "import": "./gnomemaps-1.0.js",
+            "default": "./gnomemaps-1.0.js"
         }
     },
     "scripts": {

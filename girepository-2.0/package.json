@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./girepository-2.0-ambient.d.ts",
-            "import": "./girepository-2.0-ambient.js"
+            "import": "./girepository-2.0-ambient.js",
+            "default": "./girepository-2.0-ambient.js"
         },
         "./import": {
             "types": "./girepository-2.0-import.d.ts",
-            "import": "./girepository-2.0-import.js"
+            "import": "./girepository-2.0-import.js",
+            "default": "./girepository-2.0-import.js"
         },
         ".": {
             "types": "./girepository-2.0.d.ts",
-            "import": "./girepository-2.0.js"
+            "import": "./girepository-2.0.js",
+            "default": "./girepository-2.0.js"
         }
     },
     "scripts": {

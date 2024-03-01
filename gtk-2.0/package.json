@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtk-2.0-ambient.d.ts",
-            "import": "./gtk-2.0-ambient.js"
+            "import": "./gtk-2.0-ambient.js",
+            "default": "./gtk-2.0-ambient.js"
         },
         "./import": {
             "types": "./gtk-2.0-import.d.ts",
-            "import": "./gtk-2.0-import.js"
+            "import": "./gtk-2.0-import.js",
+            "default": "./gtk-2.0-import.js"
         },
         ".": {
             "types": "./gtk-2.0.d.ts",
-            "import": "./gtk-2.0.js"
+            "import": "./gtk-2.0.js",
+            "default": "./gtk-2.0.js"
         }
     },
     "scripts": {

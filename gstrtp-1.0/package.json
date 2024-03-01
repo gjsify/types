@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstrtp-1.0-ambient.d.ts",
-            "import": "./gstrtp-1.0-ambient.js"
+            "import": "./gstrtp-1.0-ambient.js",
+            "default": "./gstrtp-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstrtp-1.0-import.d.ts",
-            "import": "./gstrtp-1.0-import.js"
+            "import": "./gstrtp-1.0-import.js",
+            "default": "./gstrtp-1.0-import.js"
         },
         ".": {
             "types": "./gstrtp-1.0.d.ts",
-            "import": "./gstrtp-1.0.js"
+            "import": "./gstrtp-1.0.js",
+            "default": "./gstrtp-1.0.js"
         }
     },
     "scripts": {

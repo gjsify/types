@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdk-2.0-ambient.d.ts",
-            "import": "./gdk-2.0-ambient.js"
+            "import": "./gdk-2.0-ambient.js",
+            "default": "./gdk-2.0-ambient.js"
         },
         "./import": {
             "types": "./gdk-2.0-import.d.ts",
-            "import": "./gdk-2.0-import.js"
+            "import": "./gdk-2.0-import.js",
+            "default": "./gdk-2.0-import.js"
         },
         ".": {
             "types": "./gdk-2.0.d.ts",
-            "import": "./gdk-2.0.js"
+            "import": "./gdk-2.0.js",
+            "default": "./gdk-2.0.js"
         }
     },
     "scripts": {

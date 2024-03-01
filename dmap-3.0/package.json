@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dmap-3.0-ambient.d.ts",
-            "import": "./dmap-3.0-ambient.js"
+            "import": "./dmap-3.0-ambient.js",
+            "default": "./dmap-3.0-ambient.js"
         },
         "./import": {
             "types": "./dmap-3.0-import.d.ts",
-            "import": "./dmap-3.0-import.js"
+            "import": "./dmap-3.0-import.js",
+            "default": "./dmap-3.0-import.js"
         },
         ".": {
             "types": "./dmap-3.0.d.ts",
-            "import": "./dmap-3.0.js"
+            "import": "./dmap-3.0.js",
+            "default": "./dmap-3.0.js"
         }
     },
     "scripts": {

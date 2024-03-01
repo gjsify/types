@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./fontconfig-2.0-ambient.d.ts",
-            "import": "./fontconfig-2.0-ambient.js"
+            "import": "./fontconfig-2.0-ambient.js",
+            "default": "./fontconfig-2.0-ambient.js"
         },
         "./import": {
             "types": "./fontconfig-2.0-import.d.ts",
-            "import": "./fontconfig-2.0-import.js"
+            "import": "./fontconfig-2.0-import.js",
+            "default": "./fontconfig-2.0-import.js"
         },
         ".": {
             "types": "./fontconfig-2.0.d.ts",
-            "import": "./fontconfig-2.0.js"
+            "import": "./fontconfig-2.0.js",
+            "default": "./fontconfig-2.0.js"
         }
     },
     "scripts": {

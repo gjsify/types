@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./adw-1-ambient.d.ts",
-            "import": "./adw-1-ambient.js"
+            "import": "./adw-1-ambient.js",
+            "default": "./adw-1-ambient.js"
         },
         "./import": {
             "types": "./adw-1-import.d.ts",
-            "import": "./adw-1-import.js"
+            "import": "./adw-1-import.js",
+            "default": "./adw-1-import.js"
         },
         ".": {
             "types": "./adw-1.d.ts",
-            "import": "./adw-1.js"
+            "import": "./adw-1.js",
+            "default": "./adw-1.js"
         }
     },
     "scripts": {

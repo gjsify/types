@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gcrgtk3-4-ambient.d.ts",
-            "import": "./gcrgtk3-4-ambient.js"
+            "import": "./gcrgtk3-4-ambient.js",
+            "default": "./gcrgtk3-4-ambient.js"
         },
         "./import": {
             "types": "./gcrgtk3-4-import.d.ts",
-            "import": "./gcrgtk3-4-import.js"
+            "import": "./gcrgtk3-4-import.js",
+            "default": "./gcrgtk3-4-import.js"
         },
         ".": {
             "types": "./gcrgtk3-4.d.ts",
-            "import": "./gcrgtk3-4.js"
+            "import": "./gcrgtk3-4.js",
+            "default": "./gcrgtk3-4.js"
         }
     },
     "scripts": {

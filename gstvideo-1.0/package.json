@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstvideo-1.0-ambient.d.ts",
-            "import": "./gstvideo-1.0-ambient.js"
+            "import": "./gstvideo-1.0-ambient.js",
+            "default": "./gstvideo-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstvideo-1.0-import.d.ts",
-            "import": "./gstvideo-1.0-import.js"
+            "import": "./gstvideo-1.0-import.js",
+            "default": "./gstvideo-1.0-import.js"
         },
         ".": {
             "types": "./gstvideo-1.0.d.ts",
-            "import": "./gstvideo-1.0.js"
+            "import": "./gstvideo-1.0.js",
+            "default": "./gstvideo-1.0.js"
         }
     },
     "scripts": {

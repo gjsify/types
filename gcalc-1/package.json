@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gcalc-1-ambient.d.ts",
-            "import": "./gcalc-1-ambient.js"
+            "import": "./gcalc-1-ambient.js",
+            "default": "./gcalc-1-ambient.js"
         },
         "./import": {
             "types": "./gcalc-1-import.d.ts",
-            "import": "./gcalc-1-import.js"
+            "import": "./gcalc-1-import.js",
+            "default": "./gcalc-1-import.js"
         },
         ".": {
             "types": "./gcalc-1.d.ts",
-            "import": "./gcalc-1.js"
+            "import": "./gcalc-1.js",
+            "default": "./gcalc-1.js"
         }
     },
     "scripts": {

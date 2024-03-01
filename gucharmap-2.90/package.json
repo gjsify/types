@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gucharmap-2.90-ambient.d.ts",
-            "import": "./gucharmap-2.90-ambient.js"
+            "import": "./gucharmap-2.90-ambient.js",
+            "default": "./gucharmap-2.90-ambient.js"
         },
         "./import": {
             "types": "./gucharmap-2.90-import.d.ts",
-            "import": "./gucharmap-2.90-import.js"
+            "import": "./gucharmap-2.90-import.js",
+            "default": "./gucharmap-2.90-import.js"
         },
         ".": {
             "types": "./gucharmap-2.90.d.ts",
-            "import": "./gucharmap-2.90.js"
+            "import": "./gucharmap-2.90.js",
+            "default": "./gucharmap-2.90.js"
         }
     },
     "scripts": {

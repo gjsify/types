@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gee-1.0-ambient.d.ts",
-            "import": "./gee-1.0-ambient.js"
+            "import": "./gee-1.0-ambient.js",
+            "default": "./gee-1.0-ambient.js"
         },
         "./import": {
             "types": "./gee-1.0-import.d.ts",
-            "import": "./gee-1.0-import.js"
+            "import": "./gee-1.0-import.js",
+            "default": "./gee-1.0-import.js"
         },
         ".": {
             "types": "./gee-1.0.d.ts",
-            "import": "./gee-1.0.js"
+            "import": "./gee-1.0.js",
+            "default": "./gee-1.0.js"
         }
     },
     "scripts": {

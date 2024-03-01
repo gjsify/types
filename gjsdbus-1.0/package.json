@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gjsdbus-1.0-ambient.d.ts",
-            "import": "./gjsdbus-1.0-ambient.js"
+            "import": "./gjsdbus-1.0-ambient.js",
+            "default": "./gjsdbus-1.0-ambient.js"
         },
         "./import": {
             "types": "./gjsdbus-1.0-import.d.ts",
-            "import": "./gjsdbus-1.0-import.js"
+            "import": "./gjsdbus-1.0-import.js",
+            "default": "./gjsdbus-1.0-import.js"
         },
         ".": {
             "types": "./gjsdbus-1.0.d.ts",
-            "import": "./gjsdbus-1.0.js"
+            "import": "./gjsdbus-1.0.js",
+            "default": "./gjsdbus-1.0.js"
         }
     },
     "scripts": {

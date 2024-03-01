@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdesktopenums-3.0-ambient.d.ts",
-            "import": "./gdesktopenums-3.0-ambient.js"
+            "import": "./gdesktopenums-3.0-ambient.js",
+            "default": "./gdesktopenums-3.0-ambient.js"
         },
         "./import": {
             "types": "./gdesktopenums-3.0-import.d.ts",
-            "import": "./gdesktopenums-3.0-import.js"
+            "import": "./gdesktopenums-3.0-import.js",
+            "default": "./gdesktopenums-3.0-import.js"
         },
         ".": {
             "types": "./gdesktopenums-3.0.d.ts",
-            "import": "./gdesktopenums-3.0.js"
+            "import": "./gdesktopenums-3.0.js",
+            "default": "./gdesktopenums-3.0.js"
         }
     },
     "scripts": {

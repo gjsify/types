@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./meta-11-ambient.d.ts",
-            "import": "./meta-11-ambient.js"
+            "import": "./meta-11-ambient.js",
+            "default": "./meta-11-ambient.js"
         },
         "./import": {
             "types": "./meta-11-import.d.ts",
-            "import": "./meta-11-import.js"
+            "import": "./meta-11-import.js",
+            "default": "./meta-11-import.js"
         },
         ".": {
             "types": "./meta-11.d.ts",
-            "import": "./meta-11.js"
+            "import": "./meta-11.js",
+            "default": "./meta-11.js"
         }
     },
     "scripts": {

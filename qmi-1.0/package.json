@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./qmi-1.0-ambient.d.ts",
-            "import": "./qmi-1.0-ambient.js"
+            "import": "./qmi-1.0-ambient.js",
+            "default": "./qmi-1.0-ambient.js"
         },
         "./import": {
             "types": "./qmi-1.0-import.d.ts",
-            "import": "./qmi-1.0-import.js"
+            "import": "./qmi-1.0-import.js",
+            "default": "./qmi-1.0-import.js"
         },
         ".": {
             "types": "./qmi-1.0.d.ts",
-            "import": "./qmi-1.0.js"
+            "import": "./qmi-1.0.js",
+            "default": "./qmi-1.0.js"
         }
     },
     "scripts": {

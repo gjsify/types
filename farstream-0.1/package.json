@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./farstream-0.1-ambient.d.ts",
-            "import": "./farstream-0.1-ambient.js"
+            "import": "./farstream-0.1-ambient.js",
+            "default": "./farstream-0.1-ambient.js"
         },
         "./import": {
             "types": "./farstream-0.1-import.d.ts",
-            "import": "./farstream-0.1-import.js"
+            "import": "./farstream-0.1-import.js",
+            "default": "./farstream-0.1-import.js"
         },
         ".": {
             "types": "./farstream-0.1.d.ts",
-            "import": "./farstream-0.1.js"
+            "import": "./farstream-0.1.js",
+            "default": "./farstream-0.1.js"
         }
     },
     "scripts": {

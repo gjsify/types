@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./pangoft2-1.0-ambient.d.ts",
-            "import": "./pangoft2-1.0-ambient.js"
+            "import": "./pangoft2-1.0-ambient.js",
+            "default": "./pangoft2-1.0-ambient.js"
         },
         "./import": {
             "types": "./pangoft2-1.0-import.d.ts",
-            "import": "./pangoft2-1.0-import.js"
+            "import": "./pangoft2-1.0-import.js",
+            "default": "./pangoft2-1.0-import.js"
         },
         ".": {
             "types": "./pangoft2-1.0.d.ts",
-            "import": "./pangoft2-1.0.js"
+            "import": "./pangoft2-1.0.js",
+            "default": "./pangoft2-1.0.js"
         }
     },
     "scripts": {

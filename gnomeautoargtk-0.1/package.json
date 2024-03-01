@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomeautoargtk-0.1-ambient.d.ts",
-            "import": "./gnomeautoargtk-0.1-ambient.js"
+            "import": "./gnomeautoargtk-0.1-ambient.js",
+            "default": "./gnomeautoargtk-0.1-ambient.js"
         },
         "./import": {
             "types": "./gnomeautoargtk-0.1-import.d.ts",
-            "import": "./gnomeautoargtk-0.1-import.js"
+            "import": "./gnomeautoargtk-0.1-import.js",
+            "default": "./gnomeautoargtk-0.1-import.js"
         },
         ".": {
             "types": "./gnomeautoargtk-0.1.d.ts",
-            "import": "./gnomeautoargtk-0.1.js"
+            "import": "./gnomeautoargtk-0.1.js",
+            "default": "./gnomeautoargtk-0.1.js"
         }
     },
     "scripts": {

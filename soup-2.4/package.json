@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./soup-2.4-ambient.d.ts",
-            "import": "./soup-2.4-ambient.js"
+            "import": "./soup-2.4-ambient.js",
+            "default": "./soup-2.4-ambient.js"
         },
         "./import": {
             "types": "./soup-2.4-import.d.ts",
-            "import": "./soup-2.4-import.js"
+            "import": "./soup-2.4-import.js",
+            "default": "./soup-2.4-import.js"
         },
         ".": {
             "types": "./soup-2.4.d.ts",
-            "import": "./soup-2.4.js"
+            "import": "./soup-2.4.js",
+            "default": "./soup-2.4.js"
         }
     },
     "scripts": {

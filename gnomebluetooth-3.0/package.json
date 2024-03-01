@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomebluetooth-3.0-ambient.d.ts",
-            "import": "./gnomebluetooth-3.0-ambient.js"
+            "import": "./gnomebluetooth-3.0-ambient.js",
+            "default": "./gnomebluetooth-3.0-ambient.js"
         },
         "./import": {
             "types": "./gnomebluetooth-3.0-import.d.ts",
-            "import": "./gnomebluetooth-3.0-import.js"
+            "import": "./gnomebluetooth-3.0-import.js",
+            "default": "./gnomebluetooth-3.0-import.js"
         },
         ".": {
             "types": "./gnomebluetooth-3.0.d.ts",
-            "import": "./gnomebluetooth-3.0.js"
+            "import": "./gnomebluetooth-3.0.js",
+            "default": "./gnomebluetooth-3.0.js"
         }
     },
     "scripts": {

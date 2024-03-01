@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gvnc-1.0-ambient.d.ts",
-            "import": "./gvnc-1.0-ambient.js"
+            "import": "./gvnc-1.0-ambient.js",
+            "default": "./gvnc-1.0-ambient.js"
         },
         "./import": {
             "types": "./gvnc-1.0-import.d.ts",
-            "import": "./gvnc-1.0-import.js"
+            "import": "./gvnc-1.0-import.js",
+            "default": "./gvnc-1.0-import.js"
         },
         ".": {
             "types": "./gvnc-1.0.d.ts",
-            "import": "./gvnc-1.0.js"
+            "import": "./gvnc-1.0.js",
+            "default": "./gvnc-1.0.js"
         }
     },
     "scripts": {

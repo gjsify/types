@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./parquet-1.0-ambient.d.ts",
-            "import": "./parquet-1.0-ambient.js"
+            "import": "./parquet-1.0-ambient.js",
+            "default": "./parquet-1.0-ambient.js"
         },
         "./import": {
             "types": "./parquet-1.0-import.d.ts",
-            "import": "./parquet-1.0-import.js"
+            "import": "./parquet-1.0-import.js",
+            "default": "./parquet-1.0-import.js"
         },
         ".": {
             "types": "./parquet-1.0.d.ts",
-            "import": "./parquet-1.0.js"
+            "import": "./parquet-1.0.js",
+            "default": "./parquet-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gspell-1-ambient.d.ts",
-            "import": "./gspell-1-ambient.js"
+            "import": "./gspell-1-ambient.js",
+            "default": "./gspell-1-ambient.js"
         },
         "./import": {
             "types": "./gspell-1-import.d.ts",
-            "import": "./gspell-1-import.js"
+            "import": "./gspell-1-import.js",
+            "default": "./gspell-1-import.js"
         },
         ".": {
             "types": "./gspell-1.d.ts",
-            "import": "./gspell-1.js"
+            "import": "./gspell-1.js",
+            "default": "./gspell-1.js"
         }
     },
     "scripts": {

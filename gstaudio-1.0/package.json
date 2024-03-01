@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstaudio-1.0-ambient.d.ts",
-            "import": "./gstaudio-1.0-ambient.js"
+            "import": "./gstaudio-1.0-ambient.js",
+            "default": "./gstaudio-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstaudio-1.0-import.d.ts",
-            "import": "./gstaudio-1.0-import.js"
+            "import": "./gstaudio-1.0-import.js",
+            "default": "./gstaudio-1.0-import.js"
         },
         ".": {
             "types": "./gstaudio-1.0.d.ts",
-            "import": "./gstaudio-1.0.js"
+            "import": "./gstaudio-1.0.js",
+            "default": "./gstaudio-1.0.js"
         }
     },
     "scripts": {

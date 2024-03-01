@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtef-2-ambient.d.ts",
-            "import": "./gtef-2-ambient.js"
+            "import": "./gtef-2-ambient.js",
+            "default": "./gtef-2-ambient.js"
         },
         "./import": {
             "types": "./gtef-2-import.d.ts",
-            "import": "./gtef-2-import.js"
+            "import": "./gtef-2-import.js",
+            "default": "./gtef-2-import.js"
         },
         ".": {
             "types": "./gtef-2.d.ts",
-            "import": "./gtef-2.js"
+            "import": "./gtef-2.js",
+            "default": "./gtef-2.js"
         }
     },
     "scripts": {

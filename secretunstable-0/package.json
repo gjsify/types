@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./secretunstable-0-ambient.d.ts",
-            "import": "./secretunstable-0-ambient.js"
+            "import": "./secretunstable-0-ambient.js",
+            "default": "./secretunstable-0-ambient.js"
         },
         "./import": {
             "types": "./secretunstable-0-import.d.ts",
-            "import": "./secretunstable-0-import.js"
+            "import": "./secretunstable-0-import.js",
+            "default": "./secretunstable-0-import.js"
         },
         ".": {
             "types": "./secretunstable-0.d.ts",
-            "import": "./secretunstable-0.js"
+            "import": "./secretunstable-0.js",
+            "default": "./secretunstable-0.js"
         }
     },
     "scripts": {

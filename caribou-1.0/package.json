@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./caribou-1.0-ambient.d.ts",
-            "import": "./caribou-1.0-ambient.js"
+            "import": "./caribou-1.0-ambient.js",
+            "default": "./caribou-1.0-ambient.js"
         },
         "./import": {
             "types": "./caribou-1.0-import.d.ts",
-            "import": "./caribou-1.0-import.js"
+            "import": "./caribou-1.0-import.js",
+            "default": "./caribou-1.0-import.js"
         },
         ".": {
             "types": "./caribou-1.0.d.ts",
-            "import": "./caribou-1.0.js"
+            "import": "./caribou-1.0.js",
+            "default": "./caribou-1.0.js"
         }
     },
     "scripts": {

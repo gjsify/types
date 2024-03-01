@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./spiceclientglib-2.0-ambient.d.ts",
-            "import": "./spiceclientglib-2.0-ambient.js"
+            "import": "./spiceclientglib-2.0-ambient.js",
+            "default": "./spiceclientglib-2.0-ambient.js"
         },
         "./import": {
             "types": "./spiceclientglib-2.0-import.d.ts",
-            "import": "./spiceclientglib-2.0-import.js"
+            "import": "./spiceclientglib-2.0-import.js",
+            "default": "./spiceclientglib-2.0-import.js"
         },
         ".": {
             "types": "./spiceclientglib-2.0.d.ts",
-            "import": "./spiceclientglib-2.0.js"
+            "import": "./spiceclientglib-2.0.js",
+            "default": "./spiceclientglib-2.0.js"
         }
     },
     "scripts": {

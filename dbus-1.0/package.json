@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./dbus-1.0-ambient.d.ts",
-            "import": "./dbus-1.0-ambient.js"
+            "import": "./dbus-1.0-ambient.js",
+            "default": "./dbus-1.0-ambient.js"
         },
         "./import": {
             "types": "./dbus-1.0-import.d.ts",
-            "import": "./dbus-1.0-import.js"
+            "import": "./dbus-1.0-import.js",
+            "default": "./dbus-1.0-import.js"
         },
         ".": {
             "types": "./dbus-1.0.d.ts",
-            "import": "./dbus-1.0.js"
+            "import": "./dbus-1.0.js",
+            "default": "./dbus-1.0.js"
         }
     },
     "scripts": {

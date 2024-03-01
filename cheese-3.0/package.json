@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./cheese-3.0-ambient.d.ts",
-            "import": "./cheese-3.0-ambient.js"
+            "import": "./cheese-3.0-ambient.js",
+            "default": "./cheese-3.0-ambient.js"
         },
         "./import": {
             "types": "./cheese-3.0-import.d.ts",
-            "import": "./cheese-3.0-import.js"
+            "import": "./cheese-3.0-import.js",
+            "default": "./cheese-3.0-import.js"
         },
         ".": {
             "types": "./cheese-3.0.d.ts",
-            "import": "./cheese-3.0.js"
+            "import": "./cheese-3.0.js",
+            "default": "./cheese-3.0.js"
         }
     },
     "scripts": {

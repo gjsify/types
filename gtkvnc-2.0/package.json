@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gtkvnc-2.0-ambient.d.ts",
-            "import": "./gtkvnc-2.0-ambient.js"
+            "import": "./gtkvnc-2.0-ambient.js",
+            "default": "./gtkvnc-2.0-ambient.js"
         },
         "./import": {
             "types": "./gtkvnc-2.0-import.d.ts",
-            "import": "./gtkvnc-2.0-import.js"
+            "import": "./gtkvnc-2.0-import.js",
+            "default": "./gtkvnc-2.0-import.js"
         },
         ".": {
             "types": "./gtkvnc-2.0.d.ts",
-            "import": "./gtkvnc-2.0.js"
+            "import": "./gtkvnc-2.0.js",
+            "default": "./gtkvnc-2.0.js"
         }
     },
     "scripts": {

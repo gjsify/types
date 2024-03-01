@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ecal-2.0-ambient.d.ts",
-            "import": "./ecal-2.0-ambient.js"
+            "import": "./ecal-2.0-ambient.js",
+            "default": "./ecal-2.0-ambient.js"
         },
         "./import": {
             "types": "./ecal-2.0-import.d.ts",
-            "import": "./ecal-2.0-import.js"
+            "import": "./ecal-2.0-import.js",
+            "default": "./ecal-2.0-import.js"
         },
         ".": {
             "types": "./ecal-2.0.d.ts",
-            "import": "./ecal-2.0.js"
+            "import": "./ecal-2.0.js",
+            "default": "./ecal-2.0.js"
         }
     },
     "scripts": {

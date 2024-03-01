@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./nice-0.1-ambient.d.ts",
-            "import": "./nice-0.1-ambient.js"
+            "import": "./nice-0.1-ambient.js",
+            "default": "./nice-0.1-ambient.js"
         },
         "./import": {
             "types": "./nice-0.1-import.d.ts",
-            "import": "./nice-0.1-import.js"
+            "import": "./nice-0.1-import.js",
+            "default": "./nice-0.1-import.js"
         },
         ".": {
             "types": "./nice-0.1.d.ts",
-            "import": "./nice-0.1.js"
+            "import": "./nice-0.1.js",
+            "default": "./nice-0.1.js"
         }
     },
     "scripts": {

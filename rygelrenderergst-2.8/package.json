@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./rygelrenderergst-2.8-ambient.d.ts",
-            "import": "./rygelrenderergst-2.8-ambient.js"
+            "import": "./rygelrenderergst-2.8-ambient.js",
+            "default": "./rygelrenderergst-2.8-ambient.js"
         },
         "./import": {
             "types": "./rygelrenderergst-2.8-import.d.ts",
-            "import": "./rygelrenderergst-2.8-import.js"
+            "import": "./rygelrenderergst-2.8-import.js",
+            "default": "./rygelrenderergst-2.8-import.js"
         },
         ".": {
             "types": "./rygelrenderergst-2.8.d.ts",
-            "import": "./rygelrenderergst-2.8.js"
+            "import": "./rygelrenderergst-2.8.js",
+            "default": "./rygelrenderergst-2.8.js"
         }
     },
     "scripts": {

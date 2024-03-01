@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./upowerglib-1.0-ambient.d.ts",
-            "import": "./upowerglib-1.0-ambient.js"
+            "import": "./upowerglib-1.0-ambient.js",
+            "default": "./upowerglib-1.0-ambient.js"
         },
         "./import": {
             "types": "./upowerglib-1.0-import.d.ts",
-            "import": "./upowerglib-1.0-import.js"
+            "import": "./upowerglib-1.0-import.js",
+            "default": "./upowerglib-1.0-import.js"
         },
         ".": {
             "types": "./upowerglib-1.0.d.ts",
-            "import": "./upowerglib-1.0.js"
+            "import": "./upowerglib-1.0.js",
+            "default": "./upowerglib-1.0.js"
         }
     },
     "scripts": {

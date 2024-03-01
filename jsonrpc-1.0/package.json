@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./jsonrpc-1.0-ambient.d.ts",
-            "import": "./jsonrpc-1.0-ambient.js"
+            "import": "./jsonrpc-1.0-ambient.js",
+            "default": "./jsonrpc-1.0-ambient.js"
         },
         "./import": {
             "types": "./jsonrpc-1.0-import.d.ts",
-            "import": "./jsonrpc-1.0-import.js"
+            "import": "./jsonrpc-1.0-import.js",
+            "default": "./jsonrpc-1.0-import.js"
         },
         ".": {
             "types": "./jsonrpc-1.0.d.ts",
-            "import": "./jsonrpc-1.0.js"
+            "import": "./jsonrpc-1.0.js",
+            "default": "./jsonrpc-1.0.js"
         }
     },
     "scripts": {

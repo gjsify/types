@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstcodecs-1.0-ambient.d.ts",
-            "import": "./gstcodecs-1.0-ambient.js"
+            "import": "./gstcodecs-1.0-ambient.js",
+            "default": "./gstcodecs-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstcodecs-1.0-import.d.ts",
-            "import": "./gstcodecs-1.0-import.js"
+            "import": "./gstcodecs-1.0-import.js",
+            "default": "./gstcodecs-1.0-import.js"
         },
         ".": {
             "types": "./gstcodecs-1.0.d.ts",
-            "import": "./gstcodecs-1.0.js"
+            "import": "./gstcodecs-1.0.js",
+            "default": "./gstcodecs-1.0.js"
         }
     },
     "scripts": {

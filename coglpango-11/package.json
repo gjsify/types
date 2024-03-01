@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./coglpango-11-ambient.d.ts",
-            "import": "./coglpango-11-ambient.js"
+            "import": "./coglpango-11-ambient.js",
+            "default": "./coglpango-11-ambient.js"
         },
         "./import": {
             "types": "./coglpango-11-import.d.ts",
-            "import": "./coglpango-11-import.js"
+            "import": "./coglpango-11-import.js",
+            "default": "./coglpango-11-import.js"
         },
         ".": {
             "types": "./coglpango-11.d.ts",
-            "import": "./coglpango-11.js"
+            "import": "./coglpango-11.js",
+            "default": "./coglpango-11.js"
         }
     },
     "scripts": {

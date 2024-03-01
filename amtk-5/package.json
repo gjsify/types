@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./amtk-5-ambient.d.ts",
-            "import": "./amtk-5-ambient.js"
+            "import": "./amtk-5-ambient.js",
+            "default": "./amtk-5-ambient.js"
         },
         "./import": {
             "types": "./amtk-5-import.d.ts",
-            "import": "./amtk-5-import.js"
+            "import": "./amtk-5-import.js",
+            "default": "./amtk-5-import.js"
         },
         ".": {
             "types": "./amtk-5.d.ts",
-            "import": "./amtk-5.js"
+            "import": "./amtk-5.js",
+            "default": "./amtk-5.js"
         }
     },
     "scripts": {

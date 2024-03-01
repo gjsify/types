@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./secret-1-ambient.d.ts",
-            "import": "./secret-1-ambient.js"
+            "import": "./secret-1-ambient.js",
+            "default": "./secret-1-ambient.js"
         },
         "./import": {
             "types": "./secret-1-import.d.ts",
-            "import": "./secret-1-import.js"
+            "import": "./secret-1-import.js",
+            "default": "./secret-1-import.js"
         },
         ".": {
             "types": "./secret-1.d.ts",
-            "import": "./secret-1.js"
+            "import": "./secret-1.js",
+            "default": "./secret-1.js"
         }
     },
     "scripts": {

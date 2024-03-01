@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./shell-0.1-ambient.d.ts",
-            "import": "./shell-0.1-ambient.js"
+            "import": "./shell-0.1-ambient.js",
+            "default": "./shell-0.1-ambient.js"
         },
         "./import": {
             "types": "./shell-0.1-import.d.ts",
-            "import": "./shell-0.1-import.js"
+            "import": "./shell-0.1-import.js",
+            "default": "./shell-0.1-import.js"
         },
         ".": {
             "types": "./shell-0.1.d.ts",
-            "import": "./shell-0.1.js"
+            "import": "./shell-0.1.js",
+            "default": "./shell-0.1.js"
         }
     },
     "scripts": {

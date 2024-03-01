@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./rest-1.0-ambient.d.ts",
-            "import": "./rest-1.0-ambient.js"
+            "import": "./rest-1.0-ambient.js",
+            "default": "./rest-1.0-ambient.js"
         },
         "./import": {
             "types": "./rest-1.0-import.d.ts",
-            "import": "./rest-1.0-import.js"
+            "import": "./rest-1.0-import.js",
+            "default": "./rest-1.0-import.js"
         },
         ".": {
             "types": "./rest-1.0.d.ts",
-            "import": "./rest-1.0.js"
+            "import": "./rest-1.0.js",
+            "default": "./rest-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./grss-0.7-ambient.d.ts",
-            "import": "./grss-0.7-ambient.js"
+            "import": "./grss-0.7-ambient.js",
+            "default": "./grss-0.7-ambient.js"
         },
         "./import": {
             "types": "./grss-0.7-import.d.ts",
-            "import": "./grss-0.7-import.js"
+            "import": "./grss-0.7-import.js",
+            "default": "./grss-0.7-import.js"
         },
         ".": {
             "types": "./grss-0.7.d.ts",
-            "import": "./grss-0.7.js"
+            "import": "./grss-0.7.js",
+            "default": "./grss-0.7.js"
         }
     },
     "scripts": {

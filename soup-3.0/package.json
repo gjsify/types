@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./soup-3.0-ambient.d.ts",
-            "import": "./soup-3.0-ambient.js"
+            "import": "./soup-3.0-ambient.js",
+            "default": "./soup-3.0-ambient.js"
         },
         "./import": {
             "types": "./soup-3.0-import.d.ts",
-            "import": "./soup-3.0-import.js"
+            "import": "./soup-3.0-import.js",
+            "default": "./soup-3.0-import.js"
         },
         ".": {
             "types": "./soup-3.0.d.ts",
-            "import": "./soup-3.0.js"
+            "import": "./soup-3.0.js",
+            "default": "./soup-3.0.js"
         }
     },
     "scripts": {

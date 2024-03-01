@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./guestfs-1.0-ambient.d.ts",
-            "import": "./guestfs-1.0-ambient.js"
+            "import": "./guestfs-1.0-ambient.js",
+            "default": "./guestfs-1.0-ambient.js"
         },
         "./import": {
             "types": "./guestfs-1.0-import.d.ts",
-            "import": "./guestfs-1.0-import.js"
+            "import": "./guestfs-1.0-import.js",
+            "default": "./guestfs-1.0-import.js"
         },
         ".": {
             "types": "./guestfs-1.0.d.ts",
-            "import": "./guestfs-1.0.js"
+            "import": "./guestfs-1.0.js",
+            "default": "./guestfs-1.0.js"
         }
     },
     "scripts": {

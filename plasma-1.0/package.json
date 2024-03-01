@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./plasma-1.0-ambient.d.ts",
-            "import": "./plasma-1.0-ambient.js"
+            "import": "./plasma-1.0-ambient.js",
+            "default": "./plasma-1.0-ambient.js"
         },
         "./import": {
             "types": "./plasma-1.0-import.d.ts",
-            "import": "./plasma-1.0-import.js"
+            "import": "./plasma-1.0-import.js",
+            "default": "./plasma-1.0-import.js"
         },
         ".": {
             "types": "./plasma-1.0.d.ts",
-            "import": "./plasma-1.0.js"
+            "import": "./plasma-1.0.js",
+            "default": "./plasma-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./xft-2.0-ambient.d.ts",
-            "import": "./xft-2.0-ambient.js"
+            "import": "./xft-2.0-ambient.js",
+            "default": "./xft-2.0-ambient.js"
         },
         "./import": {
             "types": "./xft-2.0-import.d.ts",
-            "import": "./xft-2.0-import.js"
+            "import": "./xft-2.0-import.js",
+            "default": "./xft-2.0-import.js"
         },
         ".": {
             "types": "./xft-2.0.d.ts",
-            "import": "./xft-2.0.js"
+            "import": "./xft-2.0.js",
+            "default": "./xft-2.0.js"
         }
     },
     "scripts": {

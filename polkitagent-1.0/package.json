@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./polkitagent-1.0-ambient.d.ts",
-            "import": "./polkitagent-1.0-ambient.js"
+            "import": "./polkitagent-1.0-ambient.js",
+            "default": "./polkitagent-1.0-ambient.js"
         },
         "./import": {
             "types": "./polkitagent-1.0-import.d.ts",
-            "import": "./polkitagent-1.0-import.js"
+            "import": "./polkitagent-1.0-import.js",
+            "default": "./polkitagent-1.0-import.js"
         },
         ".": {
             "types": "./polkitagent-1.0.d.ts",
-            "import": "./polkitagent-1.0.js"
+            "import": "./polkitagent-1.0.js",
+            "default": "./polkitagent-1.0.js"
         }
     },
     "scripts": {

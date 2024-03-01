@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./babl-0.1-ambient.d.ts",
-            "import": "./babl-0.1-ambient.js"
+            "import": "./babl-0.1-ambient.js",
+            "default": "./babl-0.1-ambient.js"
         },
         "./import": {
             "types": "./babl-0.1-import.d.ts",
-            "import": "./babl-0.1-import.js"
+            "import": "./babl-0.1-import.js",
+            "default": "./babl-0.1-import.js"
         },
         ".": {
             "types": "./babl-0.1.d.ts",
-            "import": "./babl-0.1.js"
+            "import": "./babl-0.1.js",
+            "default": "./babl-0.1.js"
         }
     },
     "scripts": {

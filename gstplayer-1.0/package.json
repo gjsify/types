@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstplayer-1.0-ambient.d.ts",
-            "import": "./gstplayer-1.0-ambient.js"
+            "import": "./gstplayer-1.0-ambient.js",
+            "default": "./gstplayer-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstplayer-1.0-import.d.ts",
-            "import": "./gstplayer-1.0-import.js"
+            "import": "./gstplayer-1.0-import.js",
+            "default": "./gstplayer-1.0-import.js"
         },
         ".": {
             "types": "./gstplayer-1.0.d.ts",
-            "import": "./gstplayer-1.0.js"
+            "import": "./gstplayer-1.0.js",
+            "default": "./gstplayer-1.0.js"
         }
     },
     "scripts": {

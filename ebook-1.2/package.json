@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ebook-1.2-ambient.d.ts",
-            "import": "./ebook-1.2-ambient.js"
+            "import": "./ebook-1.2-ambient.js",
+            "default": "./ebook-1.2-ambient.js"
         },
         "./import": {
             "types": "./ebook-1.2-import.d.ts",
-            "import": "./ebook-1.2-import.js"
+            "import": "./ebook-1.2-import.js",
+            "default": "./ebook-1.2-import.js"
         },
         ".": {
             "types": "./ebook-1.2.d.ts",
-            "import": "./ebook-1.2.js"
+            "import": "./ebook-1.2.js",
+            "default": "./ebook-1.2.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomebg-4.0-ambient.d.ts",
-            "import": "./gnomebg-4.0-ambient.js"
+            "import": "./gnomebg-4.0-ambient.js",
+            "default": "./gnomebg-4.0-ambient.js"
         },
         "./import": {
             "types": "./gnomebg-4.0-import.d.ts",
-            "import": "./gnomebg-4.0-import.js"
+            "import": "./gnomebg-4.0-import.js",
+            "default": "./gnomebg-4.0-import.js"
         },
         ".": {
             "types": "./gnomebg-4.0.d.ts",
-            "import": "./gnomebg-4.0.js"
+            "import": "./gnomebg-4.0.js",
+            "default": "./gnomebg-4.0.js"
         }
     },
     "scripts": {

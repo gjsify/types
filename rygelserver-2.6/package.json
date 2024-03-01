@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./rygelserver-2.6-ambient.d.ts",
-            "import": "./rygelserver-2.6-ambient.js"
+            "import": "./rygelserver-2.6-ambient.js",
+            "default": "./rygelserver-2.6-ambient.js"
         },
         "./import": {
             "types": "./rygelserver-2.6-import.d.ts",
-            "import": "./rygelserver-2.6-import.js"
+            "import": "./rygelserver-2.6-import.js",
+            "default": "./rygelserver-2.6-import.js"
         },
         ".": {
             "types": "./rygelserver-2.6.d.ts",
-            "import": "./rygelserver-2.6.js"
+            "import": "./rygelserver-2.6.js",
+            "default": "./rygelserver-2.6.js"
         }
     },
     "scripts": {

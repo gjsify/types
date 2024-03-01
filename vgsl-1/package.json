@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vgsl-1-ambient.d.ts",
-            "import": "./vgsl-1-ambient.js"
+            "import": "./vgsl-1-ambient.js",
+            "default": "./vgsl-1-ambient.js"
         },
         "./import": {
             "types": "./vgsl-1-import.d.ts",
-            "import": "./vgsl-1-import.js"
+            "import": "./vgsl-1-import.js",
+            "default": "./vgsl-1-import.js"
         },
         ".": {
             "types": "./vgsl-1.d.ts",
-            "import": "./vgsl-1.js"
+            "import": "./vgsl-1.js",
+            "default": "./vgsl-1.js"
         }
     },
     "scripts": {

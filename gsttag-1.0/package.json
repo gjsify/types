@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsttag-1.0-ambient.d.ts",
-            "import": "./gsttag-1.0-ambient.js"
+            "import": "./gsttag-1.0-ambient.js",
+            "default": "./gsttag-1.0-ambient.js"
         },
         "./import": {
             "types": "./gsttag-1.0-import.d.ts",
-            "import": "./gsttag-1.0-import.js"
+            "import": "./gsttag-1.0-import.js",
+            "default": "./gsttag-1.0-import.js"
         },
         ".": {
             "types": "./gsttag-1.0.d.ts",
-            "import": "./gsttag-1.0.js"
+            "import": "./gsttag-1.0.js",
+            "default": "./gsttag-1.0.js"
         }
     },
     "scripts": {

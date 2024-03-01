@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./colord-1.0-ambient.d.ts",
-            "import": "./colord-1.0-ambient.js"
+            "import": "./colord-1.0-ambient.js",
+            "default": "./colord-1.0-ambient.js"
         },
         "./import": {
             "types": "./colord-1.0-import.d.ts",
-            "import": "./colord-1.0-import.js"
+            "import": "./colord-1.0-import.js",
+            "default": "./colord-1.0-import.js"
         },
         ".": {
             "types": "./colord-1.0.d.ts",
-            "import": "./colord-1.0.js"
+            "import": "./colord-1.0.js",
+            "default": "./colord-1.0.js"
         }
     },
     "scripts": {

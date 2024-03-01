@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./fwupd-2.0-ambient.d.ts",
-            "import": "./fwupd-2.0-ambient.js"
+            "import": "./fwupd-2.0-ambient.js",
+            "default": "./fwupd-2.0-ambient.js"
         },
         "./import": {
             "types": "./fwupd-2.0-import.d.ts",
-            "import": "./fwupd-2.0-import.js"
+            "import": "./fwupd-2.0-import.js",
+            "default": "./fwupd-2.0-import.js"
         },
         ".": {
             "types": "./fwupd-2.0.d.ts",
-            "import": "./fwupd-2.0.js"
+            "import": "./fwupd-2.0.js",
+            "default": "./fwupd-2.0.js"
         }
     },
     "scripts": {

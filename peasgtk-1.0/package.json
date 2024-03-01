@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./peasgtk-1.0-ambient.d.ts",
-            "import": "./peasgtk-1.0-ambient.js"
+            "import": "./peasgtk-1.0-ambient.js",
+            "default": "./peasgtk-1.0-ambient.js"
         },
         "./import": {
             "types": "./peasgtk-1.0-import.d.ts",
-            "import": "./peasgtk-1.0-import.js"
+            "import": "./peasgtk-1.0-import.js",
+            "default": "./peasgtk-1.0-import.js"
         },
         ".": {
             "types": "./peasgtk-1.0.d.ts",
-            "import": "./peasgtk-1.0.js"
+            "import": "./peasgtk-1.0.js",
+            "default": "./peasgtk-1.0.js"
         }
     },
     "scripts": {

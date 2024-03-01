@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./appstreamglib-1.0-ambient.d.ts",
-            "import": "./appstreamglib-1.0-ambient.js"
+            "import": "./appstreamglib-1.0-ambient.js",
+            "default": "./appstreamglib-1.0-ambient.js"
         },
         "./import": {
             "types": "./appstreamglib-1.0-import.d.ts",
-            "import": "./appstreamglib-1.0-import.js"
+            "import": "./appstreamglib-1.0-import.js",
+            "default": "./appstreamglib-1.0-import.js"
         },
         ".": {
             "types": "./appstreamglib-1.0.d.ts",
-            "import": "./appstreamglib-1.0.js"
+            "import": "./appstreamglib-1.0.js",
+            "default": "./appstreamglib-1.0.js"
         }
     },
     "scripts": {

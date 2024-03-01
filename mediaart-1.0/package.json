@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./mediaart-1.0-ambient.d.ts",
-            "import": "./mediaart-1.0-ambient.js"
+            "import": "./mediaart-1.0-ambient.js",
+            "default": "./mediaart-1.0-ambient.js"
         },
         "./import": {
             "types": "./mediaart-1.0-import.d.ts",
-            "import": "./mediaart-1.0-import.js"
+            "import": "./mediaart-1.0-import.js",
+            "default": "./mediaart-1.0-import.js"
         },
         ".": {
             "types": "./mediaart-1.0.d.ts",
-            "import": "./mediaart-1.0.js"
+            "import": "./mediaart-1.0.js",
+            "default": "./mediaart-1.0.js"
         }
     },
     "scripts": {

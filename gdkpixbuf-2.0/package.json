@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gdkpixbuf-2.0-ambient.d.ts",
-            "import": "./gdkpixbuf-2.0-ambient.js"
+            "import": "./gdkpixbuf-2.0-ambient.js",
+            "default": "./gdkpixbuf-2.0-ambient.js"
         },
         "./import": {
             "types": "./gdkpixbuf-2.0-import.d.ts",
-            "import": "./gdkpixbuf-2.0-import.js"
+            "import": "./gdkpixbuf-2.0-import.js",
+            "default": "./gdkpixbuf-2.0-import.js"
         },
         ".": {
             "types": "./gdkpixbuf-2.0.d.ts",
-            "import": "./gdkpixbuf-2.0.js"
+            "import": "./gdkpixbuf-2.0.js",
+            "default": "./gdkpixbuf-2.0.js"
         }
     },
     "scripts": {

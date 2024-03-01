@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gsttranscoder-1.0-ambient.d.ts",
-            "import": "./gsttranscoder-1.0-ambient.js"
+            "import": "./gsttranscoder-1.0-ambient.js",
+            "default": "./gsttranscoder-1.0-ambient.js"
         },
         "./import": {
             "types": "./gsttranscoder-1.0-import.d.ts",
-            "import": "./gsttranscoder-1.0-import.js"
+            "import": "./gsttranscoder-1.0-import.js",
+            "default": "./gsttranscoder-1.0-import.js"
         },
         ".": {
             "types": "./gsttranscoder-1.0.d.ts",
-            "import": "./gsttranscoder-1.0.js"
+            "import": "./gsttranscoder-1.0.js",
+            "default": "./gsttranscoder-1.0.js"
         }
     },
     "scripts": {

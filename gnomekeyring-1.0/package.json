@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gnomekeyring-1.0-ambient.d.ts",
-            "import": "./gnomekeyring-1.0-ambient.js"
+            "import": "./gnomekeyring-1.0-ambient.js",
+            "default": "./gnomekeyring-1.0-ambient.js"
         },
         "./import": {
             "types": "./gnomekeyring-1.0-import.d.ts",
-            "import": "./gnomekeyring-1.0-import.js"
+            "import": "./gnomekeyring-1.0-import.js",
+            "default": "./gnomekeyring-1.0-import.js"
         },
         ".": {
             "types": "./gnomekeyring-1.0.d.ts",
-            "import": "./gnomekeyring-1.0.js"
+            "import": "./gnomekeyring-1.0.js",
+            "default": "./gnomekeyring-1.0.js"
         }
     },
     "scripts": {

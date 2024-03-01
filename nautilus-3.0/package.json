@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./nautilus-3.0-ambient.d.ts",
-            "import": "./nautilus-3.0-ambient.js"
+            "import": "./nautilus-3.0-ambient.js",
+            "default": "./nautilus-3.0-ambient.js"
         },
         "./import": {
             "types": "./nautilus-3.0-import.d.ts",
-            "import": "./nautilus-3.0-import.js"
+            "import": "./nautilus-3.0-import.js",
+            "default": "./nautilus-3.0-import.js"
         },
         ".": {
             "types": "./nautilus-3.0.d.ts",
-            "import": "./nautilus-3.0.js"
+            "import": "./nautilus-3.0.js",
+            "default": "./nautilus-3.0.js"
         }
     },
     "scripts": {

@@ -8,27 +8,33 @@
     "exports": {
         "./ambient": {
             "types": "./ambient.d.ts",
-            "import": "./ambient.js"
+            "import": "./ambient.js",
+            "default": "./ambient.js"
         },
         "./dom": {
             "types": "./dom.d.ts",
-            "import": "./dom.js"
+            "import": "./dom.js",
+            "default": "./dom.js"
         },
         "./gettext": {
             "types": "./gettext.d.ts",
-            "import": "./gettext.js"
+            "import": "./gettext.js",
+            "default": "./gettext.js"
         },
         "./system": {
             "types": "./system.d.ts",
-            "import": "./system.js"
+            "import": "./system.js",
+            "default": "./system.js"
         },
         "./cairo": {
             "types": "./cairo.d.ts",
-            "import": "./cairo.js"
+            "import": "./cairo.js",
+            "default": "./cairo.js"
         },
         ".": {
             "types": "./gjs.d.ts",
-            "import": "./gjs.js"
+            "import": "./gjs.js",
+            "default": "./gjs.js"
         }
     },
     "scripts": {

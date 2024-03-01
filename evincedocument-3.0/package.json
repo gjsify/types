@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./evincedocument-3.0-ambient.d.ts",
-            "import": "./evincedocument-3.0-ambient.js"
+            "import": "./evincedocument-3.0-ambient.js",
+            "default": "./evincedocument-3.0-ambient.js"
         },
         "./import": {
             "types": "./evincedocument-3.0-import.d.ts",
-            "import": "./evincedocument-3.0-import.js"
+            "import": "./evincedocument-3.0-import.js",
+            "default": "./evincedocument-3.0-import.js"
         },
         ".": {
             "types": "./evincedocument-3.0.d.ts",
-            "import": "./evincedocument-3.0.js"
+            "import": "./evincedocument-3.0.js",
+            "default": "./evincedocument-3.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstgl-1.0-ambient.d.ts",
-            "import": "./gstgl-1.0-ambient.js"
+            "import": "./gstgl-1.0-ambient.js",
+            "default": "./gstgl-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstgl-1.0-import.d.ts",
-            "import": "./gstgl-1.0-import.js"
+            "import": "./gstgl-1.0-import.js",
+            "default": "./gstgl-1.0-import.js"
         },
         ".": {
             "types": "./gstgl-1.0.d.ts",
-            "import": "./gstgl-1.0.js"
+            "import": "./gstgl-1.0.js",
+            "default": "./gstgl-1.0.js"
         }
     },
     "scripts": {

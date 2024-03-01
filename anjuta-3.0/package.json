@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./anjuta-3.0-ambient.d.ts",
-            "import": "./anjuta-3.0-ambient.js"
+            "import": "./anjuta-3.0-ambient.js",
+            "default": "./anjuta-3.0-ambient.js"
         },
         "./import": {
             "types": "./anjuta-3.0-import.d.ts",
-            "import": "./anjuta-3.0-import.js"
+            "import": "./anjuta-3.0-import.js",
+            "default": "./anjuta-3.0-import.js"
         },
         ".": {
             "types": "./anjuta-3.0.d.ts",
-            "import": "./anjuta-3.0.js"
+            "import": "./anjuta-3.0.js",
+            "default": "./anjuta-3.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./ges-1.0-ambient.d.ts",
-            "import": "./ges-1.0-ambient.js"
+            "import": "./ges-1.0-ambient.js",
+            "default": "./ges-1.0-ambient.js"
         },
         "./import": {
             "types": "./ges-1.0-import.d.ts",
-            "import": "./ges-1.0-import.js"
+            "import": "./ges-1.0-import.js",
+            "default": "./ges-1.0-import.js"
         },
         ".": {
             "types": "./ges-1.0.d.ts",
-            "import": "./ges-1.0.js"
+            "import": "./ges-1.0.js",
+            "default": "./ges-1.0.js"
         }
     },
     "scripts": {

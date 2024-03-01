@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./p11kit-1.0-ambient.d.ts",
-            "import": "./p11kit-1.0-ambient.js"
+            "import": "./p11kit-1.0-ambient.js",
+            "default": "./p11kit-1.0-ambient.js"
         },
         "./import": {
             "types": "./p11kit-1.0-import.d.ts",
-            "import": "./p11kit-1.0-import.js"
+            "import": "./p11kit-1.0-import.js",
+            "default": "./p11kit-1.0-import.js"
         },
         ".": {
             "types": "./p11kit-1.0.d.ts",
-            "import": "./p11kit-1.0.js"
+            "import": "./p11kit-1.0.js",
+            "default": "./p11kit-1.0.js"
         }
     },
     "scripts": {

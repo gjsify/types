@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./libmsi-1.0-ambient.d.ts",
-            "import": "./libmsi-1.0-ambient.js"
+            "import": "./libmsi-1.0-ambient.js",
+            "default": "./libmsi-1.0-ambient.js"
         },
         "./import": {
             "types": "./libmsi-1.0-import.d.ts",
-            "import": "./libmsi-1.0-import.js"
+            "import": "./libmsi-1.0-import.js",
+            "default": "./libmsi-1.0-import.js"
         },
         ".": {
             "types": "./libmsi-1.0.d.ts",
-            "import": "./libmsi-1.0.js"
+            "import": "./libmsi-1.0.js",
+            "default": "./libmsi-1.0.js"
         }
     },
     "scripts": {

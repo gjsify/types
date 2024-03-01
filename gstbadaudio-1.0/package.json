@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstbadaudio-1.0-ambient.d.ts",
-            "import": "./gstbadaudio-1.0-ambient.js"
+            "import": "./gstbadaudio-1.0-ambient.js",
+            "default": "./gstbadaudio-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstbadaudio-1.0-import.d.ts",
-            "import": "./gstbadaudio-1.0-import.js"
+            "import": "./gstbadaudio-1.0-import.js",
+            "default": "./gstbadaudio-1.0-import.js"
         },
         ".": {
             "types": "./gstbadaudio-1.0.d.ts",
-            "import": "./gstbadaudio-1.0.js"
+            "import": "./gstbadaudio-1.0.js",
+            "default": "./gstbadaudio-1.0.js"
         }
     },
     "scripts": {

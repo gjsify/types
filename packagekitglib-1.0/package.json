@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./packagekitglib-1.0-ambient.d.ts",
-            "import": "./packagekitglib-1.0-ambient.js"
+            "import": "./packagekitglib-1.0-ambient.js",
+            "default": "./packagekitglib-1.0-ambient.js"
         },
         "./import": {
             "types": "./packagekitglib-1.0-import.d.ts",
-            "import": "./packagekitglib-1.0-import.js"
+            "import": "./packagekitglib-1.0-import.js",
+            "default": "./packagekitglib-1.0-import.js"
         },
         ".": {
             "types": "./packagekitglib-1.0.d.ts",
-            "import": "./packagekitglib-1.0.js"
+            "import": "./packagekitglib-1.0.js",
+            "default": "./packagekitglib-1.0.js"
         }
     },
     "scripts": {

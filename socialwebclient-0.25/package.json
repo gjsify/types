@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./socialwebclient-0.25-ambient.d.ts",
-            "import": "./socialwebclient-0.25-ambient.js"
+            "import": "./socialwebclient-0.25-ambient.js",
+            "default": "./socialwebclient-0.25-ambient.js"
         },
         "./import": {
             "types": "./socialwebclient-0.25-import.d.ts",
-            "import": "./socialwebclient-0.25-import.js"
+            "import": "./socialwebclient-0.25-import.js",
+            "default": "./socialwebclient-0.25-import.js"
         },
         ".": {
             "types": "./socialwebclient-0.25.d.ts",
-            "import": "./socialwebclient-0.25.js"
+            "import": "./socialwebclient-0.25.js",
+            "default": "./socialwebclient-0.25.js"
         }
     },
     "scripts": {

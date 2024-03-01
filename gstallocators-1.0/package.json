@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./gstallocators-1.0-ambient.d.ts",
-            "import": "./gstallocators-1.0-ambient.js"
+            "import": "./gstallocators-1.0-ambient.js",
+            "default": "./gstallocators-1.0-ambient.js"
         },
         "./import": {
             "types": "./gstallocators-1.0-import.d.ts",
-            "import": "./gstallocators-1.0-import.js"
+            "import": "./gstallocators-1.0-import.js",
+            "default": "./gstallocators-1.0-import.js"
         },
         ".": {
             "types": "./gstallocators-1.0.d.ts",
-            "import": "./gstallocators-1.0.js"
+            "import": "./gstallocators-1.0.js",
+            "default": "./gstallocators-1.0.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./vsqlite-1-ambient.d.ts",
-            "import": "./vsqlite-1-ambient.js"
+            "import": "./vsqlite-1-ambient.js",
+            "default": "./vsqlite-1-ambient.js"
         },
         "./import": {
             "types": "./vsqlite-1-import.d.ts",
-            "import": "./vsqlite-1-import.js"
+            "import": "./vsqlite-1-import.js",
+            "default": "./vsqlite-1-import.js"
         },
         ".": {
             "types": "./vsqlite-1.d.ts",
-            "import": "./vsqlite-1.js"
+            "import": "./vsqlite-1.js",
+            "default": "./vsqlite-1.js"
         }
     },
     "scripts": {

@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./rygelcore-2.8-ambient.d.ts",
-            "import": "./rygelcore-2.8-ambient.js"
+            "import": "./rygelcore-2.8-ambient.js",
+            "default": "./rygelcore-2.8-ambient.js"
         },
         "./import": {
             "types": "./rygelcore-2.8-import.d.ts",
-            "import": "./rygelcore-2.8-import.js"
+            "import": "./rygelcore-2.8-import.js",
+            "default": "./rygelcore-2.8-import.js"
         },
         ".": {
             "types": "./rygelcore-2.8.d.ts",
-            "import": "./rygelcore-2.8.js"
+            "import": "./rygelcore-2.8.js",
+            "default": "./rygelcore-2.8.js"
         }
     },
     "scripts": {

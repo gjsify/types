@@ -8,15 +8,18 @@
     "exports": {
         "./ambient": {
             "types": "./appindicator3-0.1-ambient.d.ts",
-            "import": "./appindicator3-0.1-ambient.js"
+            "import": "./appindicator3-0.1-ambient.js",
+            "default": "./appindicator3-0.1-ambient.js"
         },
         "./import": {
             "types": "./appindicator3-0.1-import.d.ts",
-            "import": "./appindicator3-0.1-import.js"
+            "import": "./appindicator3-0.1-import.js",
+            "default": "./appindicator3-0.1-import.js"
         },
         ".": {
             "types": "./appindicator3-0.1.d.ts",
-            "import": "./appindicator3-0.1.js"
+            "import": "./appindicator3-0.1.js",
+            "default": "./appindicator3-0.1.js"
         }
     },
     "scripts": {
