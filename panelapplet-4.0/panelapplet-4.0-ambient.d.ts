@@ -9,3 +9,4 @@ declare module 'gi://PanelApplet' {
     export default PanelApplet40;
 }
 
+

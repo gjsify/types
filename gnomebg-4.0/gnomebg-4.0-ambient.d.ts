@@ -9,3 +9,4 @@ declare module 'gi://GnomeBG' {
     export default GnomeBG40;
 }
 
+

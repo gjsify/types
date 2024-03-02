@@ -9,3 +9,4 @@ declare module 'gi://GstWebRTC' {
     export default GstWebRTC10;
 }
 
+

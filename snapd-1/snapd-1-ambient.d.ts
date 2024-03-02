@@ -9,3 +9,4 @@ declare module 'gi://Snapd' {
     export default Snapd1;
 }
 
+

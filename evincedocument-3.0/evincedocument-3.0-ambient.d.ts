@@ -9,3 +9,4 @@ declare module 'gi://EvinceDocument' {
     export default EvinceDocument30;
 }
 
+

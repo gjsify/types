@@ -9,3 +9,4 @@ declare module 'gi://GitgExt' {
     export default GitgExt10;
 }
 
+

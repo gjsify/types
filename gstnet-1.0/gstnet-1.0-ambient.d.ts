@@ -9,3 +9,4 @@ declare module 'gi://GstNet' {
     export default GstNet10;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://Libosinfo' {
     export default Libosinfo10;
 }
 
+

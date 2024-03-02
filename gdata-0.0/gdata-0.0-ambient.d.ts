@@ -9,3 +9,4 @@ declare module 'gi://GData' {
     export default GData00;
 }
 
+

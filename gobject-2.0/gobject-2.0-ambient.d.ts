@@ -9,3 +9,4 @@ declare module 'gi://GObject' {
     export default GObject20;
 }
 
+

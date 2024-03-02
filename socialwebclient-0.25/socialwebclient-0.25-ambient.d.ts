@@ -9,3 +9,4 @@ declare module 'gi://SocialWebClient' {
     export default SocialWebClient025;
 }
 
+

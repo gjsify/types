@@ -9,3 +9,4 @@ declare module 'gi://CoglPango' {
     export default CoglPango20;
 }
 
+

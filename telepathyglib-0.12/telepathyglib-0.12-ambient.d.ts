@@ -9,3 +9,4 @@ declare module 'gi://TelepathyGLib' {
     export default TelepathyGLib012;
 }
 
+

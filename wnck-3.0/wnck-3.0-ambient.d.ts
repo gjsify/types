@@ -9,3 +9,4 @@ declare module 'gi://Wnck' {
     export default Wnck30;
 }
 
+

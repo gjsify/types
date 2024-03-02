@@ -9,3 +9,4 @@ declare module 'gi://GstController' {
     export default GstController10;
 }
 
+

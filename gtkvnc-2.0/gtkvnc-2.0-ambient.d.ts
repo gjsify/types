@@ -9,3 +9,4 @@ declare module 'gi://GtkVnc' {
     export default GtkVnc20;
 }
 
+

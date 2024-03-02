@@ -9,3 +9,4 @@ declare module 'gi://GVncPulse' {
     export default GVncPulse10;
 }
 
+

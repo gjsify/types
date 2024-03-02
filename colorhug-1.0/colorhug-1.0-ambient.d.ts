@@ -9,3 +9,4 @@ declare module 'gi://ColorHug' {
     export default ColorHug10;
 }
 
+

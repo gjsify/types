@@ -9,3 +9,4 @@ declare module 'gi://Flatpak' {
     export default Flatpak10;
 }
 
+

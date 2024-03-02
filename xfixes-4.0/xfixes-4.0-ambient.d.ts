@@ -9,3 +9,4 @@ declare module 'gi://xfixes' {
     export default Xfixes40;
 }
 
+

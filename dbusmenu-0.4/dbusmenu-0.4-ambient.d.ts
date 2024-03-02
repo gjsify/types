@@ -9,3 +9,4 @@ declare module 'gi://Dbusmenu' {
     export default Dbusmenu04;
 }
 
+

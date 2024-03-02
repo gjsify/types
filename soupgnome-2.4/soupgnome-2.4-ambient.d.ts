@@ -9,3 +9,4 @@ declare module 'gi://SoupGNOME' {
     export default SoupGNOME24;
 }
 
+

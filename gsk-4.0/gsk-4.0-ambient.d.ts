@@ -9,3 +9,4 @@ declare module 'gi://Gsk' {
     export default Gsk40;
 }
 
+

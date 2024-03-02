@@ -9,3 +9,4 @@ declare module 'gi://NetworkManager' {
     export default NetworkManager10;
 }
 
+

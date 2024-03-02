@@ -9,3 +9,4 @@ declare module 'gi://MediaArt' {
     export default MediaArt20;
 }
 
+

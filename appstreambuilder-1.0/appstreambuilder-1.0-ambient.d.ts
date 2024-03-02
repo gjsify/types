@@ -9,3 +9,4 @@ declare module 'gi://AppStreamBuilder' {
     export default AppStreamBuilder10;
 }
 
+

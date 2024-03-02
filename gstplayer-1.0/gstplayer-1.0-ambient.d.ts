@@ -9,3 +9,4 @@ declare module 'gi://GstPlayer' {
     export default GstPlayer10;
 }
 
+

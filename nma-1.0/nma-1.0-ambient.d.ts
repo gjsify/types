@@ -9,3 +9,4 @@ declare module 'gi://NMA' {
     export default NMA10;
 }
 
+

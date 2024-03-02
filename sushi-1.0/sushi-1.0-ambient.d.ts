@@ -9,3 +9,4 @@ declare module 'gi://Sushi' {
     export default Sushi10;
 }
 
+

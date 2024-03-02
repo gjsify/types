@@ -9,3 +9,4 @@ declare module 'gi://GdkPixbuf' {
     export default GdkPixbuf20;
 }
 
+

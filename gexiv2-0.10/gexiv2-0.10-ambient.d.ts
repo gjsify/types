@@ -9,3 +9,4 @@ declare module 'gi://GExiv2' {
     export default GExiv2010;
 }
 
+

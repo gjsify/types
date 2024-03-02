@@ -9,3 +9,4 @@ declare module 'gi://Gd' {
     export default Gd10;
 }
 
+

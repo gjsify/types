@@ -9,3 +9,4 @@ declare module 'gi://AppStreamGlib' {
     export default AppStreamGlib10;
 }
 
+

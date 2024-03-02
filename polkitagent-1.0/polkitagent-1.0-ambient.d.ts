@@ -9,3 +9,4 @@ declare module 'gi://PolkitAgent' {
     export default PolkitAgent10;
 }
 
+

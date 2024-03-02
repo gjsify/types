@@ -9,3 +9,4 @@ declare module 'gi://DMAP' {
     export default DMAP30;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://GstTranscoder' {
     export default GstTranscoder10;
 }
 
+

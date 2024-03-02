@@ -9,3 +9,4 @@ declare module 'gi://GConf' {
     export default GConf20;
 }
 
+

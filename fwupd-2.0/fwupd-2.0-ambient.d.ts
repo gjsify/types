@@ -9,3 +9,4 @@ declare module 'gi://Fwupd' {
     export default Fwupd20;
 }
 
+

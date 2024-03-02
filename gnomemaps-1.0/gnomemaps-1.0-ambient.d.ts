@@ -9,3 +9,4 @@ declare module 'gi://GnomeMaps' {
     export default GnomeMaps10;
 }
 
+

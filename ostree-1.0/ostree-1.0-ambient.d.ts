@@ -9,3 +9,4 @@ declare module 'gi://OSTree' {
     export default OSTree10;
 }
 
+

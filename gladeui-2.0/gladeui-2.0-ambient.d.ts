@@ -9,3 +9,4 @@ declare module 'gi://Gladeui' {
     export default Gladeui20;
 }
 
+

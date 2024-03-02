@@ -9,3 +9,4 @@ declare module 'gi://GWeather' {
     export default GWeather40;
 }
 
+

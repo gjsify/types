@@ -9,3 +9,4 @@ declare module 'gi://Arrow' {
     export default Arrow10;
 }
 
+

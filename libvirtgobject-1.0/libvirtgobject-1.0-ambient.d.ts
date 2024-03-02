@@ -9,3 +9,4 @@ declare module 'gi://LibvirtGObject' {
     export default LibvirtGObject10;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://XdpGtk3' {
     export default XdpGtk310;
 }
 
+

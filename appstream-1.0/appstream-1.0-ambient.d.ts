@@ -9,3 +9,4 @@ declare module 'gi://AppStream' {
     export default AppStream10;
 }
 
+

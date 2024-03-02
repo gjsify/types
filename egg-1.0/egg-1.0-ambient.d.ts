@@ -9,3 +9,4 @@ declare module 'gi://Egg' {
     export default Egg10;
 }
 
+

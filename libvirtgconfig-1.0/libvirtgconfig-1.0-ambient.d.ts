@@ -9,3 +9,4 @@ declare module 'gi://LibvirtGConfig' {
     export default LibvirtGConfig10;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://GdkPixdata' {
     export default GdkPixdata20;
 }
 
+

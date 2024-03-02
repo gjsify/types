@@ -9,3 +9,4 @@ declare module 'gi://TrackerMiner' {
     export default TrackerMiner20;
 }
 
+

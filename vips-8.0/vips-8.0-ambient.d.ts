@@ -9,3 +9,4 @@ declare module 'gi://Vips' {
     export default Vips80;
 }
 
+

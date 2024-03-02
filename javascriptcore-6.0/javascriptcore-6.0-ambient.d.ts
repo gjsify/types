@@ -9,3 +9,4 @@ declare module 'gi://JavaScriptCore' {
     export default JavaScriptCore60;
 }
 
+

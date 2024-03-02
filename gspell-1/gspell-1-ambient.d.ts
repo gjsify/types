@@ -9,3 +9,4 @@ declare module 'gi://Gspell' {
     export default Gspell1;
 }
 
+

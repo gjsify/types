@@ -9,3 +9,4 @@ declare module 'gi://GstCodecs' {
     export default GstCodecs10;
 }
 
+

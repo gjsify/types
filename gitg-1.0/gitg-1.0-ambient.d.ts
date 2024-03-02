@@ -9,3 +9,4 @@ declare module 'gi://Gitg' {
     export default Gitg10;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://GnomeKeyring' {
     export default GnomeKeyring10;
 }
 
+

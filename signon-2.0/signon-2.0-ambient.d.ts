@@ -9,3 +9,4 @@ declare module 'gi://Signon' {
     export default Signon20;
 }
 
+

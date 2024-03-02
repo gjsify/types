@@ -9,3 +9,4 @@ declare module 'gi://GnomeDesktop' {
     export default GnomeDesktop40;
 }
 
+

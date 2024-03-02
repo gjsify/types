@@ -9,3 +9,4 @@ declare module 'gi://GDesktopEnums' {
     export default GDesktopEnums30;
 }
 
+

@@ -9,3 +9,4 @@ declare module 'gi://WebKit2WebExtension' {
     export default WebKit2WebExtension50;
 }
 
+
