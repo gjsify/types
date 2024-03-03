@@ -643,8 +643,8 @@ interface Adjustment extends Clutter.Animatable {
      * 
      * Use this function to avoid multiple emissions of the #GObject::notify and
      * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
-     * alternative way of compressing multiple emissions of #GObject::notify into
-     * one.
+     * alternative way of compressing multiple emissions of #GObject::notify and
+     * #StAdjustmet::changed into one of each.
      * @param value the new value
      * @param lower the new minimum value
      * @param upper the new maximum value
@@ -1646,7 +1646,7 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      */
     set_label(text: string | null): void
     /**
-     * Enables or disables toggle mode for the button. In toggle mode, the active
+     * Enables or disables toggle mode for the button. In toggle mode, the checked
      * state will be "toggled" when the user clicks the button.
      * @param toggle %TRUE or %FALSE
      */

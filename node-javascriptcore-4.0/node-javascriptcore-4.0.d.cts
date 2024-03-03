@@ -1384,10 +1384,9 @@ export class Value extends GObject.Object {
      * @param data Pointer to a region of memory.
      * @param size Size in bytes of the memory region.
      * @param destroyNotify destroy notifier for `user_data`.
-     * @param userData user data.
      * @returns A #JSCValue, or %NULL in case of exception.
      */
-    static newArrayBuffer(context: Context, data: any | null, size: number, destroyNotify: GLib.DestroyNotify | null, userData: any | null): Value
+    static newArrayBuffer(context: Context, data: any | null, size: number, destroyNotify: GLib.DestroyNotify | null): Value
     /**
      * Create a new #JSCValue referencing an array with the items from `array`. If `array`
      * is %NULL or empty a new empty array will be created. Elements of `array` should be

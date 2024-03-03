@@ -1906,11 +1906,15 @@ export function type_parent(type: GType): GType
 export function type_qname(type: GType): GLib.Quark
 /**
  * Queries the type system for information about a specific type.
+ * 
  * This function will fill in a user-provided structure to hold
  * type-specific information. If an invalid #GType is passed in, the
  * `type` member of the #GTypeQuery is 0. All members filled into the
  * #GTypeQuery structure should be considered constant and have to be
  * left untouched.
+ * 
+ * Since GLib 2.78, this function allows queries on dynamic types. Previously
+ * it only supported static types.
  * @param type #GType of a static, classed type
  */
 export function type_query(type: GType): /* query */ TypeQuery

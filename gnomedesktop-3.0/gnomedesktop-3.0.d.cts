@@ -106,6 +106,21 @@ export function get_country_from_code(code: string, translation: string | null):
  */
 export function get_country_from_locale(locale: string, translation: string | null): string | null
 /**
+ * Asynchronously fetches a list of of default input sources based on locale and system
+ * configuration. This is for when a user has no input sources configured
+ * in GSettings.
+ * @param cancellable a #GCancellable
+ * @param callback a #GAsyncReadyCallback
+ */
+export function get_default_input_sources<Z = unknown>(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+/**
+ * Returns a whether or not a list of default input sources based on locale and system
+ * configuration could be retrieved. This is for when a user has no input sources configured
+ * in GSettings.
+ * @param result 
+ */
+export function get_default_input_sources_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* ids */ string[], /* types */ string[], /* options */ string[] ]
+/**
  * Gets the default input source's type and identifier for a given
  * locale.
  * @param locale a locale string
@@ -145,6 +160,13 @@ export function get_platform_version(): number
  * @returns the translated modifier string. Caller takes ownership.
  */
 export function get_translated_modifier(modifier: string, translation: string | null): string | null
+/**
+ * Returns whether or not the input source has the ability to enter latin characters.
+ * @param type an input source type (e.g., "xkb" or "ibus")
+ * @param id an input source id (e.g., "us+dvorak" or "anthy")
+ * @returns %TRUE if it can't enter latin characters
+ */
+export function input_source_is_non_latin(type: string, id: string): boolean
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string

@@ -910,7 +910,7 @@ export interface Matrix {
      * [CSS3 Transforms specification](http://dev.w3.org/csswg/css-transforms/);
      * specifically, the decomposition code is based on the equivalent code
      * published in "Graphics Gems II", edited by Jim Arvo, and
-     * [available online](http://web.archive.org/web/20150512160205/http://tog.acm.org/resources/GraphicsGems/gemsii/unmatrix.c).
+     * [available online](http://tog.acm.org/resources/GraphicsGems/gemsii/unmatrix.c).
      * @returns `true` if the matrix could be decomposed
      */
     decompose(): [ /* returnType */ boolean, /* translate */ Vec3, /* scale */ Vec3, /* rotate */ Quaternion, /* shear */ Vec3, /* perspective */ Vec4 ]
@@ -1615,12 +1615,6 @@ export interface Point {
      * @returns the distance between the two points
      */
     distance(b: Point): [ /* returnType */ number, /* dX */ number, /* dY */ number ]
-    /**
-     * Computes the squared distance between `a` and `b`.
-     * @param b a #graphene_point_t
-     * @returns the distance between the two points, squared
-     */
-    distanceSquared(b: Point): number
     /**
      * Checks if the two points `a` and `b` point to the same
      * coordinates.

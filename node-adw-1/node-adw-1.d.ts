@@ -12040,7 +12040,7 @@ module HeaderBar {
          * Whether the header bar can show the back button.
          * 
          * The back button will never be shown unless the header bar is placed inside an
-         * [class`NavigationView]`.
+         * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
          */
         show_back_button?: boolean | null
         /**
@@ -12119,7 +12119,7 @@ interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      * Whether the header bar can show the back button.
      * 
      * The back button will never be shown unless the header bar is placed inside an
-     * [class`NavigationView]`.
+     * [class`NavigationView]`. Usually, there is no reason to set this to `FALSE`.
      */
     showBackButton: boolean
     /**
@@ -12249,7 +12249,7 @@ interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      * Sets whether `self` can show the back button.
      * 
      * The back button will never be shown unless the header bar is placed inside an
-     * [class`NavigationView]`.
+     * [class`NavigationView]`. Usually, there is no reason to set it to `FALSE`.
      * @param showBackButton whether to show the back button
      */
     setShowBackButton(showBackButton: boolean): void
@@ -12546,9 +12546,9 @@ interface HeaderBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
  * When used together with [class`NavigationView]` or [class`NavigationSplitView]`,
  * it will also display a back button that can be used to go back to the previous
  * page. The button also has a context menu, allowing to pop multiple pages at
- * once, potentially across multiple navigation views. Set
+ * once, potentially across multiple navigation views. In rare scenarios, set
  * [property`HeaderBar:`show-back-button] to `FALSE` to disable the back button
- * if it's unwanted.
+ * if it's unwanted (e.g. in an extra header bar on the same page).
  * 
  * ## Split View Integration
  * 
@@ -18896,7 +18896,15 @@ module PreferencesWindow {
          * Whether search is enabled.
          */
         search_enabled?: boolean | null
+        /**
+         * The currently visible page.
+         */
         visible_page?: Gtk.Widget | null
+        /**
+         * The name of the currently visible page.
+         * 
+         * See [property`PreferencesWindow:`visible-page].
+         */
         visible_page_name?: string | null
     }
 
@@ -18925,7 +18933,15 @@ interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * Whether search is enabled.
      */
     searchEnabled: boolean
+    /**
+     * The currently visible page.
+     */
     visiblePage: Gtk.Widget
+    /**
+     * The name of the currently visible page.
+     * 
+     * See [property`PreferencesWindow:`visible-page].
+     */
     visiblePageName: string | null
     __gtype__: number
 
@@ -19027,7 +19043,7 @@ interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
     /**
      * Makes the page with the given name visible.
      * 
-     * See [property`ViewStack:`visible-child].
+     * See [property`PreferencesWindow:`visible-page].
      * @param name the name of the page to make visible
      */
     setVisiblePageName(name: string): void
