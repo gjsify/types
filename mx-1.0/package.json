@@ -38,11 +38,9 @@
         "@girs/gl-1.0": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
         "@girs/json-1.0": "workspace:^",
         "@girs/pango-1.0": "workspace:^",
         "@girs/pangocairo-1.0": "workspace:^",
-        "@girs/pangofc-1.0": "workspace:^",
         "@girs/pangoft2-1.0": "workspace:^"
     },
     "devDependencies": {

@@ -5,8 +5,7 @@ declare module 'gi://Xdp?version=1.0' {
 }
 
 declare module 'gi://Xdp' {
-    import Xdp10 from '@girs/xdp-1.0';
-    export default Xdp10;
+    export * from 'gi://Xdp?version=1.0';
 }
 
 

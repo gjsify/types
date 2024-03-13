@@ -5,8 +5,7 @@ declare module 'gi://ColorHug?version=1.0' {
 }
 
 declare module 'gi://ColorHug' {
-    import ColorHug10 from '@girs/colorhug-1.0';
-    export default ColorHug10;
+    export * from 'gi://ColorHug?version=1.0';
 }
 
 

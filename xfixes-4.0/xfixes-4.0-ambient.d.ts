@@ -5,8 +5,7 @@ declare module 'gi://xfixes?version=4.0' {
 }
 
 declare module 'gi://xfixes' {
-    import Xfixes40 from '@girs/xfixes-4.0';
-    export default Xfixes40;
+    export * from 'gi://xfixes?version=4.0';
 }
 
 

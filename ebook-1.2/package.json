@@ -33,9 +33,7 @@
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
-        "@girs/json-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
-        "@girs/soup-3.0": "workspace:^"
+        "@girs/libxml2-2.0": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

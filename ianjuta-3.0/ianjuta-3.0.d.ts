@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,4973 +29,6273 @@ import type Anjuta from '@girs/anjuta-3.0';
 import type Gdl from '@girs/gdl-3';
 
 export namespace IAnjuta {
+
+/**
+ * The enumeration is used to speficy the disered build operation
+ */
+enum BuildableCommand {
     /**
-     * The enumeration is used to speficy the disered build operation
+     * Compile source
      */
-    enum BuildableCommand {
-        /**
-         * Compile source
-         */
-        COMMAND_COMPILE,
-        /**
-         * Build file (normally using make)
-         */
-        COMMAND_BUILD,
-        /**
-         * make dist
-         */
-        COMMAND_BUILD_TARBALL,
-        /**
-         * make install
-         */
-        COMMAND_INSTALL,
-        /**
-         * ./configure
-         */
-        COMMAND_CONFIGURE,
-        /**
-         * ./autogen.sh
-         */
-        COMMAND_GENERATE,
-        /**
-         * make clean
-         */
-        COMMAND_CLEAN,
-        /**
-         * ./hello
-         */
-        COMMAND_EXECUTE,
-        /**
-         * check whether object files are up-to-date
-         */
-        COMMAND_IS_BUILT,
-        COMMAND_AUTORECONF,
-        /**
-         * make distclean
-         */
-        COMMAND_DISTCLEAN,
-        /**
-         * make check
-         */
-        COMMAND_CHECK,
-        /**
-         * size of enum
-         */
-        N_COMMANDS,
-    }
+    COMMAND_COMPILE,
     /**
-     * Possible build errors
+     * Build file (normally using make)
      */
-    class BuilderError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.BuilderError
+    COMMAND_BUILD,
+    /**
+     * make dist
+     */
+    COMMAND_BUILD_TARBALL,
+    /**
+     * make install
+     */
+    COMMAND_INSTALL,
+    /**
+     * ./configure
+     */
+    COMMAND_CONFIGURE,
+    /**
+     * ./autogen.sh
+     */
+    COMMAND_GENERATE,
+    /**
+     * make clean
+     */
+    COMMAND_CLEAN,
+    /**
+     * ./hello
+     */
+    COMMAND_EXECUTE,
+    /**
+     * check whether object files are up-to-date
+     */
+    COMMAND_IS_BUILT,
+    COMMAND_AUTORECONF,
+    /**
+     * make distclean
+     */
+    COMMAND_DISTCLEAN,
+    /**
+     * make check
+     */
+    COMMAND_CHECK,
+    /**
+     * size of enum
+     */
+    N_COMMANDS,
+}
+/**
+ * Possible build errors
+ */
+class BuilderError extends GLib.Error {
 
-        /**
-         * Build succeeded
-         */
-        SUCCEED: number;
-        /**
-         * Build failed
-         */
-        FAILED: number;
-        /**
-         * Build was canceld
-         */
-        CANCELED: number;
-        /**
-         * Build aborted
-         */
-        ABORTED: number;
-        /**
-         * Build interruped
-         */
-        INTERRUPTED: number;
-        /**
-         * Build interruped
-         */
-        TERMINATED: number;
-        /**
-         * The specified target is unknown
-         */
-        UNKNOWN_TARGET: number;
-        /**
-         * Unknown Error
-         */
-        UNKNOWN_ERROR: number;
-        /**
-         * Other Error (no unknown ;-))
-         */
-        OTHER_ERROR: number;
+    // Static fields of IAnjuta.BuilderError
 
-        // Constructors of IAnjuta-3.0.BuilderError
+/**
+ * Build succeeded
+ */
+static SUCCEED: number
+/**
+ * Build failed
+ */
+static FAILED: number
+/**
+ * Build was canceld
+ */
+static CANCELED: number
+/**
+ * Build aborted
+ */
+static ABORTED: number
+/**
+ * Build interruped
+ */
+static INTERRUPTED: number
+/**
+ * Build interruped
+ */
+static TERMINATED: number
+/**
+ * The specified target is unknown
+ */
+static UNKNOWN_TARGET: number
+/**
+ * Unknown Error
+ */
+static UNKNOWN_ERROR: number
+/**
+ * Other Error (no unknown ;-))
+ */
+static OTHER_ERROR: number
 
-        constructor(options: { message: string; code: number });
+    // Constructors of IAnjuta.BuilderError
 
-        // Owm methods of IAnjuta-3.0.BuilderError
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        static quark(): GLib.Quark;
+
+    // Own static methods of IAnjuta.BuilderError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * Defines which breakpoint characteristics are supported by the debugger
+ * backend.
+ */
+enum DebuggerBreakpointMethod {
+    /**
+     * Allow to set breakpoint on address
+     */
+    SET_AT_ADDRESS,
+    /**
+     * Allow to set breakpoint on function name
+     */
+    SET_AT_FUNCTION,
+    /**
+     * Allow to disable breakpoint
+     */
+    ENABLE,
+    /**
+     * Allow to ignore breakpoint
+     */
+    IGNORE,
+    /**
+     * Allow to add a condition on breakpoint
+     */
+    CONDITION,
+}
+/**
+ * This enumeration defined various characteristics of the breakpoint.
+ */
+enum DebuggerBreakpointType {
+    /**
+     * Set for removed breakpoint
+     */
+    REMOVED,
+    /**
+     * Set for changed breakpoint
+     */
+    UPDATED,
+    /**
+     * Set on source line
+     */
+    ON_LINE,
+    /**
+     * Set on an addresse
+     */
+    ON_ADDRESS,
+    /**
+     * Set on a function name
+     */
+    ON_FUNCTION,
+    /**
+     * Set on read access
+     */
+    ON_READ,
+    /**
+     * Set on write access
+     */
+    ON_WRITE,
+    /**
+     * Has enable information
+     */
+    WITH_ENABLE,
+    /**
+     * Has ignore information,
+     */
+    WITH_IGNORE,
+    /**
+     * Has counter information
+     */
+    WITH_TIME,
+    /**
+     * Has a condition
+     */
+    WITH_CONDITION,
+    /**
+     * Temporary breakpoint, automatically removed when triggered
+     */
+    WITH_TEMPORARY,
+    /**
+     * Pending breakpoint
+     */
+    WITH_PENDING,
+}
+/**
+ * This enumeration is used to defined the error returned by the debugger
+ * backend.
+ */
+class DebuggerError extends GLib.Error {
+
+    // Static fields of IAnjuta.DebuggerError
+
+/**
+ * No error
+ */
+static OK: number
+/**
+ * Debugger is not ready to execute the command
+ */
+static NOT_READY: number
+/**
+ * Debugger is not is running state
+ */
+static NOT_RUNNING: number
+/**
+ * Debugger is not is stopped state
+ */
+static NOT_STOPPED: number
+/**
+ * Debugger is not is loaded state
+ */
+static NOT_LOADED: number
+/**
+ * Debugger is not in started state
+ */
+static NOT_STARTED: number
+/**
+ * Debugger is not connected:
+ */
+static NOT_CONNECTED: number
+/**
+ * Corresponding function is not implemented
+ */
+static NOT_IMPLEMENTED: number
+/**
+ * Operation has been cancelled
+ */
+static CANCEL: number
+/**
+ * Debugger cannot create variable
+ */
+static UNABLE_TO_CREATE_VARIABLE: number
+/**
+ * Debugger cannot access memory
+ */
+static UNABLE_TO_ACCESS_MEMORY: number
+/**
+ * Debugger cannot open file
+ */
+static UNABLE_TO_OPEN_FILE: number
+/**
+ * Debugger cannot debug such file
+ */
+static UNSUPPORTED_FILE_TYPE: number
+/**
+ * Debugger is too old
+ */
+static UNSUPPORTED_VERSION: number
+/**
+ * Debugger cannot be found
+ */
+static UNABLE_TO_FIND_DEBUGGER: number
+/**
+ * Command has already been executed
+ */
+static ALREADY_DONE: number
+/**
+ * Program cannot be found
+ */
+static PROGRAM_NOT_FOUND: number
+/**
+ * Unable to connect to debugger
+ */
+static UNABLE_TO_CONNECT: number
+/**
+ * Unknown error
+ */
+static UNKNOWN_ERROR: number
+/**
+ * other error
+ */
+static OTHER_ERROR: number
+
+    // Constructors of IAnjuta.DebuggerError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.DebuggerError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * This enumeration is used to defined the kind of output in
+ * #IAnjutaDebuggerOutputCallback
+ */
+enum DebuggerOutputType {
+    /**
+     * Output from debugger
+     */
+    OUTPUT,
+    /**
+     * Warning from debugger
+     */
+    WARNING_OUTPUT,
+    /**
+     * Error from debugger
+     */
+    ERROR_OUTPUT,
+    /**
+     * Additional message from debugger
+     */
+    INFO_OUTPUT,
+}
+/**
+ * This enumeration is used to defined the different state of the debugger.
+ */
+enum DebuggerState {
+    /**
+     * Debugger is executing a command, it can enter in another
+     *                         at the end of the command.
+     */
+    BUSY,
+    /**
+     * Debugger is stopped.
+     */
+    STOPPED,
+    /**
+     * Debugger is started but no program is loaded.
+     */
+    STARTED,
+    /**
+     * Debugger is started and has a program loaded.
+     */
+    PROGRAM_LOADED,
+    /**
+     * Debugger is started and has a program stopped.
+     */
+    PROGRAM_STOPPED,
+    /**
+     * Debugger is started and has a program running.
+     */
+    PROGRAM_RUNNING,
+}
+class DocumentManagerError extends GLib.Error {
+
+    // Static fields of IAnjuta.DocumentManagerError
+
+static DOESNT_EXIST: number
+
+    // Constructors of IAnjuta.DocumentManagerError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.DocumentManagerError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * This enumeration is used to specify the type of text. Note that not all
+ * editors implement this.
+ */
+enum EditorAttribute {
+    /**
+     * Normal text
+     */
+    TEXT,
+    /**
+     * A keyword of the programming language
+     */
+    KEYWORD,
+    /**
+     * A comment
+     */
+    COMMENT,
+    /**
+     * A string
+     */
+    STRING,
+}
+class EditorError extends GLib.Error {
+
+    // Static fields of IAnjuta.EditorError
+
+static DOESNT_EXIST: number
+
+    // Constructors of IAnjuta.EditorError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.EditorError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * This enumeration is used to specify the type of text. Note that not all
+ * editors implement this.
+ */
+enum EditorLineModeType {
+    /**
+     * Line-Feed (Unix)
+     */
+    LF,
+    /**
+     * Carat return (Max)
+     */
+    CR,
+    /**
+     * Caret return + line-feed (Windows)
+     */
+    CRLF,
+}
+/**
+ * Possible build errors
+ */
+class EnvironmentError extends GLib.Error {
+
+    // Static fields of IAnjuta.EnvironmentError
+
+static CONFIG: number
+static OTHER_ERROR: number
+
+    // Constructors of IAnjuta.EnvironmentError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.EnvironmentError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * This enumeration is used to specify the appearance of the indicator
+ */
+enum IndicableIndicator {
+    /**
+     * No indicator
+     */
+    NONE,
+    /**
+     * Important indicator
+     */
+    IMPORTANT,
+    /**
+     * Warning indicator
+     */
+    WARNING,
+    /**
+     * Critical indicator
+     */
+    CRITICAL,
+}
+class MarkableError extends GLib.Error {
+
+    // Static fields of IAnjuta.MarkableError
+
+static INVALID_LOCATION: number
+
+    // Constructors of IAnjuta.MarkableError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.MarkableError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * This enumeration is used to specify the pixmap used for the marker
+ */
+enum MarkableMarker {
+    /**
+     * Mark a particular line
+     */
+    LINEMARKER,
+    /**
+     * A bookmark
+     */
+    BOOKMARK,
+    /**
+     * An (error) message
+     */
+    MESSAGE,
+    /**
+     * a disabled breakpoint
+     */
+    BREAKPOINT_DISABLED,
+    /**
+     * a enabled breakpoint
+     */
+    BREAKPOINT_ENABLED,
+    /**
+     * Marks the program counter position
+     */
+    PROGRAM_COUNTER,
+}
+class MessageManagerError extends GLib.Error {
+
+    // Static fields of IAnjuta.MessageManagerError
+
+static DOESNT_EXIST: number
+
+    // Constructors of IAnjuta.MessageManagerError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.MessageManagerError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * Speficy the type ot the message added to the message view
+ */
+enum MessageViewType {
+    /**
+     * Normal message
+     */
+    TYPE_NORMAL,
+    /**
+     * Info message (highlighed)
+     */
+    TYPE_INFO,
+    /**
+     * Warning message
+     */
+    TYPE_WARNING,
+    /**
+     * Error message
+     */
+    TYPE_ERROR,
+}
+/**
+ * These enumeration is used to specify errors.
+ */
+class PluginFactoryError extends GLib.Error {
+
+    // Static fields of IAnjuta.PluginFactoryError
+
+static OK: number
+/**
+ * Module file location is
+ * missing in .plugin file
+ */
+static MISSING_LOCATION: number
+/**
+ * Plugin type (just after
+ * double colon following location) is missing in .plugin file
+ */
+static MISSING_TYPE: number
+/**
+ * Module file name not found,
+ * plugin module is probably not installed
+ */
+static MISSING_MODULE: number
+/**
+ * Module file cannot be
+ * loaded, not a shared library perhaps
+ */
+static INVALID_MODULE: number
+/**
+ * Module does not contain
+ * registration function, library is not an anjuta plugin or
+ * is not for the right version
+ */
+static MISSING_FUNCTION: number
+/**
+ * Module has not registered
+ * 	plugin type, library is not an anjuta plugin or not for
+ * the right version
+ */
+static INVALID_TYPE: number
+/**
+ * Another error
+ */
+static UNKNOWN_ERROR: number
+
+    // Constructors of IAnjuta.PluginFactoryError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.PluginFactoryError
+
+    static quark(): GLib.Quark
+}
+
+class ProjectError extends GLib.Error {
+
+    // Static fields of IAnjuta.ProjectError
+
+static ERROR_SUCCESS: number
+static ERROR_DOESNT_EXIST: number
+static ERROR_ALREADY_EXISTS: number
+static ERROR_VALIDATION_FAILED: number
+static ERROR_PROJECT_MALFORMED: number
+static ERROR_WRONG_PARENT: number
+static ERROR_NOT_SUPPORTED: number
+static ERROR_GENERAL_FAILURE: number
+
+    // Constructors of IAnjuta.ProjectError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.ProjectError
+
+    static quark(): GLib.Quark
+}
+
+enum ProjectProbe {
+    PROBE_FILES,
+    PROBE_MAKE_FILES,
+    PROBE_PROJECT_FILES,
+}
+/**
+ * Symbol Fields. Used to define and retrieve results from query. Each of
+ * these fields are either integer or string. Use the right method to
+ * retrieve them. That is, for integer use ianjuta_symbol_get_int(),
+ * for string use ianjuta_symbol_get_string(), and for boolean use
+ * ianjuta_symbol_get_boolean(). Some fields can be in both forms,
+ * e.g. #IANJUTA_SYMBOL_FIELD_TYPE.
+ */
+enum SymbolField {
+    /**
+     * Integer. A unique ID of the symbol
+     */
+    FIELD_ID,
+    /**
+     * String. Name of the symbol
+     */
+    FIELD_NAME,
+    /**
+     * Integer. The file line number where the symbol is found.
+     */
+    FIELD_FILE_POS,
+    FILED_SCOPE_DEF_ID,
+    /**
+     * Boolean: TRUE if symbol is within file scope,
+     *     otherwise FALSE.
+     */
+    FIELD_FILE_SCOPE,
+    /**
+     * String. Signature of a method, if symbol is a funtion.
+     *     Namely, the arguments list of the funtion.
+     */
+    FIELD_SIGNATURE,
+    /**
+     * String. Return type of a method, if symbol is a function.
+     */
+    FIELD_RETURNTYPE,
+    /**
+     * Both string and Integer. Type attribute of a symbol.
+     *     In string form, it is name of the type in string form.
+     *     In integer form, it is IAnjutaSymbolType enumerator value.
+     */
+    FIELD_TYPE,
+    /**
+     * type_name attribute of a symbol.
+     *     If a type could be "class" then its type_name may be "MyFooClass" etc.
+     */
+    FIELD_TYPE_NAME,
+    /**
+     * String. The relative path to the file where the symbol is found.
+     */
+    FIELD_FILE_PATH,
+    /**
+     * String. The project name to which the symbol belongs to.
+     */
+    FIELD_PROJECT_NAME,
+    /**
+     * String. The project version to which the symbol belongs to.
+     */
+    FIELD_PROJECT_VERSION,
+    /**
+     * String. Implementation attribute of a symbol. It may be
+     *     "pure virtual", "virtual", etc.
+     */
+    FIELD_IMPLEMENTATION,
+    /**
+     * String. Access attribute of a symbol.
+     *     It may be "public", "private" etc.
+     */
+    FIELD_ACCESS,
+    /**
+     * Kind attribute of a symbol, such as
+     *     "enumerator", "namespace", "class" etc.
+     */
+    FIELD_KIND,
+    /**
+     * Boolean. TRUE if symbol is
+     *     a scope container, such as namespace, class, struct etc., otherwise
+     *     FALSE.
+     */
+    FIELD_IS_CONTAINER,
+    /**
+     * The end marker.
+     */
+    FIELD_END,
+}
+/**
+ * Sets the database to use for the query. System database is where
+ * all system library symbols are found. While project database is where
+ * currently open project's symbols are found.
+ */
+enum SymbolQueryDb {
+    /**
+     * Select project database.
+     */
+    DB_PROJECT,
+    /**
+     * Select system database.
+     */
+    DB_SYSTEM,
+}
+/**
+ * Defines file scope of symbols to query.
+ */
+enum SymbolQueryFileScope {
+    /**
+     * Ignore file scope
+     */
+    SEARCH_FS_IGNORE,
+    /**
+     * Only public symbols visible to rest of project.
+     */
+    SEARCH_FS_PUBLIC,
+    /**
+     * Only private symbols visible inside a file.
+     */
+    SEARCH_FS_PRIVATE,
+}
+/**
+ * This parameter determines the mode of query execution. By default,
+ * IANJUTA_SYMBOL_QUERY_MODE_SYNC is selected.
+ */
+enum SymbolQueryMode {
+    /**
+     * Syncronous query. The result is immediately
+     *     available as retrun value of search call.
+     */
+    MODE_SYNC,
+    /**
+     * Asynchronous query. The search call
+     *     return immediately and result delievered as a signal later. The actual
+     *     query is done in a separate thread.
+     */
+    MODE_ASYNC,
+    /**
+     * If the database is busy
+     *     scanning, then the query is performed later when database is ready.
+     *     It returns NULL and result is delivered through async-result signal.
+     *     Only query can stay queued, so calling search multiple times would
+     *     result in only the last one being active.
+     */
+    MODE_QUEUED,
+}
+/**
+ * Names of query that defined what kind of query it is.
+ */
+enum SymbolQueryName {
+    /**
+     * Query to perform basic substring search.
+     */
+    SEARCH,
+    /**
+     * Query to get all symbols
+     */
+    SEARCH_ALL,
+    /**
+     * Query to perform substring search in a file.
+     */
+    SEARCH_FILE,
+    /**
+     * Query to perform substring search in a scope.
+     */
+    SEARCH_IN_SCOPE,
+    /**
+     * Query to find the symbol of given ID.
+     */
+    SEARCH_ID,
+    /**
+     * Query to find members of a scope (eg. class).
+     */
+    SEARCH_MEMBERS,
+    /**
+     * Query to get parents of a class.
+     */
+    SEARCH_CLASS_PARENTS,
+    /**
+     * Query to find scope name of a file position.
+     */
+    SEARCH_SCOPE,
+    /**
+     * Query to get the parent scope of a symbol.
+     */
+    SEARCH_PARENT_SCOPE,
+    /**
+     * Query to get the parent scope of a symbol in the file.
+     */
+    SEARCH_PARENT_SCOPE_FILE,
+}
+enum SymbolType {
+    /**
+     * None spedified.
+     */
+    TYPE_NONE,
+    /**
+     * Unknown type.
+     */
+    TYPE_UNDEF,
+    /**
+     * Class declaration
+     */
+    TYPE_CLASS,
+    /**
+     * Enum declaration
+     */
+    TYPE_ENUM,
+    /**
+     * Enumerator value
+     */
+    TYPE_ENUMERATOR,
+    /**
+     * Field (Java only)
+     */
+    TYPE_FIELD,
+    /**
+     * Function definition
+     */
+    TYPE_FUNCTION,
+    /**
+     * Interface (Java only)
+     */
+    TYPE_INTERFACE,
+    /**
+     * Member variable of class/struct
+     */
+    TYPE_MEMBER,
+    /**
+     * Class method (Java only)
+     */
+    TYPE_METHOD,
+    /**
+     * Namespace declaration
+     */
+    TYPE_NAMESPACE,
+    /**
+     * Package (Java only)
+     */
+    TYPE_PACKAGE,
+    /**
+     * Function prototype
+     */
+    TYPE_PROTOTYPE,
+    /**
+     * Struct declaration
+     */
+    TYPE_STRUCT,
+    /**
+     * Typedef
+     */
+    TYPE_TYPEDEF,
+    /**
+     * Union
+     */
+    TYPE_UNION,
+    /**
+     * Variable
+     */
+    TYPE_VARIABLE,
+    /**
+     * Extern or forward declaration
+     */
+    TYPE_EXTERNVAR,
+    /**
+     * Macro (without arguments)
+     */
+    TYPE_MACRO,
+    /**
+     * Parameterized macro
+     */
+    TYPE_MACRO_WITH_ARG,
+    /**
+     * File (Pseudo tag)
+     */
+    TYPE_FILE,
+    /**
+     * Other (non C/C++/Java tag)
+     */
+    TYPE_OTHER,
+    /**
+     * types which are subjected to create a scope.
+     */
+    TYPE_SCOPE_CONTAINER,
+    /**
+     * Maximum value, used as end marker.
+     */
+    TYPE_MAX,
+}
+/**
+ * These enumeration is used to specify errors.
+ */
+class VcsError extends GLib.Error {
+
+    // Static fields of IAnjuta.VcsError
+
+static UNKOWN_ERROR: number
+
+    // Constructors of IAnjuta.VcsError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+
+    // Own static methods of IAnjuta.VcsError
+
+    static quark(): GLib.Quark
+}
+
+/**
+ * Name of debugging configutation.
+ */
+const BUILDER_CONFIGURATION_DEBUG: string
+/**
+ * Name of optimized configutation.
+ */
+const BUILDER_CONFIGURATION_OPTIMIZED: string
+/**
+ * Name of profiling configutation.
+ */
+const BUILDER_CONFIGURATION_PROFILING: string
+/**
+ * Build directory uri. It is the same than the project_root_uri for
+ * in source build.
+ */
+const BUILDER_ROOT_URI: string
+/**
+ * Anjuta shell value set by document manager to the current document
+ */
+const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string
+/**
+ * Integer key, defines the number a space for one indentation step.
+ */
+const EDITOR_INDENT_WIDTH_KEY: string
+/**
+ * Schema id used to store common editor settings.
+ */
+const EDITOR_PREF_SCHEMA: string
+/**
+ * Integer key, defines the size of a tabulation in spaces.
+ */
+const EDITOR_TAB_WIDTH_KEY: string
+/**
+ * Boolean key, true is tabs has to be used for indenting.
+ */
+const EDITOR_USE_TABS_KEY: string
+/**
+ * Anjuta shell value set by file manager to the selected file.
+ */
+const FILE_MANAGER_SELECTED_FILE: string
+/**
+ * Boolean key, true is adding '(' after function call autocompletion
+ */
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string
+/**
+ * Boolean key, true is adding ')' after function call autocompletion
+ */
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string
+/**
+ * Boolean key, true is code completion is enable.
+ */
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string
+/**
+ * Boolean key, true is adding a space after function call autocompletion
+ */
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string
+/**
+ * Boolean key, true is calltips has to be shown.
+ */
+const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string
+/**
+ * Anjuta shell value set by project manager to the current project object
+ * which implement #IAnjutaProject interface.
+ */
+const PROJECT_MANAGER_CURRENT_PROJECT: string
+/**
+ * Anjuta shell value set by project manager to the current uri.
+ */
+const PROJECT_MANAGER_CURRENT_URI: string
+/**
+ * Anjuta shell value set by project manager to the project root uri.
+ */
+const PROJECT_MANAGER_PROJECT_ROOT_URI: string
+function buildable_error_quark(): GLib.Quark
+function builder_error_quark(): GLib.Quark
+function debug_manager_error_quark(): GLib.Quark
+function debugger_breakpoint_error_quark(): GLib.Quark
+function debugger_error_quark(): GLib.Quark
+function debugger_instruction_error_quark(): GLib.Quark
+function debugger_memory_error_quark(): GLib.Quark
+function debugger_register_error_quark(): GLib.Quark
+function debugger_variable_error_quark(): GLib.Quark
+function document_error_quark(): GLib.Quark
+function document_manager_error_quark(): GLib.Quark
+function editor_assist_error_quark(): GLib.Quark
+function editor_cell_error_quark(): GLib.Quark
+function editor_cell_style_error_quark(): GLib.Quark
+function editor_comment_error_quark(): GLib.Quark
+function editor_convert_error_quark(): GLib.Quark
+function editor_error_quark(): GLib.Quark
+function editor_factory_error_quark(): GLib.Quark
+function editor_folds_error_quark(): GLib.Quark
+function editor_glade_signal_error_quark(): GLib.Quark
+function editor_goto_error_quark(): GLib.Quark
+function editor_hover_error_quark(): GLib.Quark
+function editor_language_error_quark(): GLib.Quark
+function editor_line_mode_error_quark(): GLib.Quark
+function editor_search_error_quark(): GLib.Quark
+function editor_selection_error_quark(): GLib.Quark
+function editor_tip_error_quark(): GLib.Quark
+function editor_view_error_quark(): GLib.Quark
+function editor_zoom_error_quark(): GLib.Quark
+function environment_error_quark(): GLib.Quark
+function file_error_quark(): GLib.Quark
+function file_loader_error_quark(): GLib.Quark
+function file_manager_error_quark(): GLib.Quark
+function file_savable_error_quark(): GLib.Quark
+function glade_error_quark(): GLib.Quark
+function help_error_quark(): GLib.Quark
+function indenter_error_quark(): GLib.Quark
+function indicable_error_quark(): GLib.Quark
+function iterable_error_quark(): GLib.Quark
+function iterable_tree_error_quark(): GLib.Quark
+function language_error_quark(): GLib.Quark
+function language_provider_error_quark(): GLib.Quark
+function loader_error_quark(): GLib.Quark
+function markable_error_quark(): GLib.Quark
+function message_manager_error_quark(): GLib.Quark
+function message_view_error_quark(): GLib.Quark
+function plugin_factory_error_quark(): GLib.Quark
+function preferences_error_quark(): GLib.Quark
+function print_error_quark(): GLib.Quark
+function project_backend_error_quark(): GLib.Quark
+function project_chooser_error_quark(): GLib.Quark
+function project_error_quark(): GLib.Quark
+function project_manager_error_quark(): GLib.Quark
+function provider_error_quark(): GLib.Quark
+function snippets_manager_error_quark(): GLib.Quark
+function stream_error_quark(): GLib.Quark
+function stream_loader_error_quark(): GLib.Quark
+function stream_savable_error_quark(): GLib.Quark
+function symbol_error_quark(): GLib.Quark
+function symbol_manager_error_quark(): GLib.Quark
+function symbol_query_error_quark(): GLib.Quark
+function terminal_error_quark(): GLib.Quark
+function todo_error_quark(): GLib.Quark
+function vcs_error_quark(): GLib.Quark
+function wizard_error_quark(): GLib.Quark
+interface BuilderCallback<A = GObject.Object> {
+    (sender: A, command: BuilderHandle, err: GLib.Error): void
+}
+interface DebuggerBreakpointCallback {
+    (data: DebuggerBreakpointItem, err: GLib.Error): void
+}
+interface DebuggerCallback {
+    (data: (any | null), err: GLib.Error): void
+}
+interface DebuggerGCharCallback {
+    (value: string, err: GLib.Error): void
+}
+interface DebuggerInstructionCallback {
+    (data: DebuggerInstructionDisassembly, err: GLib.Error): void
+}
+interface DebuggerMemoryCallback {
+    (data: DebuggerMemoryBlock, err: GLib.Error): void
+}
+interface DebuggerOutputCallback {
+    (type: DebuggerOutputType, output: string): void
+}
+interface DebuggerVariableCallback {
+    (data: DebuggerVariableObject, err: GLib.Error): void
+}
+interface VcsDiffCallback {
+    (file: Gio.File, diff: string): void
+}
+interface VcsStatusCallback {
+    (file: Gio.File, status: Anjuta.VcsStatus): void
+}
+type BuildableIface = typeof Buildable
+type BuilderIface = typeof Builder
+type DebugManagerIface = typeof DebugManager
+type DebuggerBreakpointIface = typeof DebuggerBreakpoint
+/**
+ * This structure keeps all information about a breakpoint.
+ */
+class DebuggerBreakpointItem {
+
+    // Own fields of IAnjuta.DebuggerBreakpointItem
+
+type: number
+id: number
+file: string
+line: number
+"function": string
+address: number
+enable: boolean
+ignore: number
+times: number
+condition: string
+temporary: boolean
+pending: boolean
+
+    // Constructors of IAnjuta.DebuggerBreakpointItem
+
+
+    constructor(properties?: Partial<{
+      type: number
+id: number
+file: string
+line: number
+"function": string
+address: number
+enable: boolean
+ignore: number
+times: number
+condition: string
+temporary: boolean
+pending: boolean
+    }>);
+_init(...args: any[]): void;
+
+}
+
+/**
+ * This structure keeps all information about a stack frame.
+ */
+class DebuggerFrame {
+
+    // Own fields of IAnjuta.DebuggerFrame
+
+thread: number
+level: number
+args: string
+file: string
+line: number
+"function": string
+library: string
+address: number
+
+    // Constructors of IAnjuta.DebuggerFrame
+
+
+    constructor(properties?: Partial<{
+      thread: number
+level: number
+args: string
+file: string
+line: number
+"function": string
+library: string
+address: number
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type DebuggerIface = typeof Debugger
+/**
+ * Defines a disassembled line
+ */
+class DebuggerInstructionALine {
+
+    // Own fields of IAnjuta.DebuggerInstructionALine
+
+address: number
+label: string
+text: string
+
+    // Constructors of IAnjuta.DebuggerInstructionALine
+
+
+    constructor(properties?: Partial<{
+      address: number
+label: string
+text: string
+    }>);
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Represents a block of diassembled instructions
+ */
+class DebuggerInstructionDisassembly {
+
+    // Own fields of IAnjuta.DebuggerInstructionDisassembly
+
+size: number
+data: DebuggerInstructionALine[]
+
+    // Constructors of IAnjuta.DebuggerInstructionDisassembly
+
+
+    constructor(properties?: Partial<{
+      size: number
+data: DebuggerInstructionALine[]
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type DebuggerInstructionIface = typeof DebuggerInstruction
+class DebuggerMemoryBlock {
+
+    // Own fields of IAnjuta.DebuggerMemoryBlock
+
+address: number
+length: number
+data: string
+
+    // Constructors of IAnjuta.DebuggerMemoryBlock
+
+
+    constructor(properties?: Partial<{
+      address: number
+length: number
+data: string
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type DebuggerMemoryIface = typeof DebuggerMemory
+/**
+ * Defines a register data.
+ */
+class DebuggerRegisterData {
+
+    // Own fields of IAnjuta.DebuggerRegisterData
+
+num: number
+name: string
+value: string
+
+    // Constructors of IAnjuta.DebuggerRegisterData
+
+
+    constructor(properties?: Partial<{
+      num: number
+name: string
+value: string
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type DebuggerRegisterIface = typeof DebuggerRegister
+type DebuggerVariableIface = typeof DebuggerVariable
+/**
+ * Defines a variable object.
+ */
+class DebuggerVariableObject {
+
+    // Own fields of IAnjuta.DebuggerVariableObject
+
+name: string
+expression: string
+type: string
+value: string
+changed: boolean
+exited: boolean
+deleted: boolean
+children: number
+has_more: boolean
+
+    // Constructors of IAnjuta.DebuggerVariableObject
+
+
+    constructor(properties?: Partial<{
+      name: string
+expression: string
+type: string
+value: string
+changed: boolean
+exited: boolean
+deleted: boolean
+children: number
+has_more: boolean
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type DocumentIface = typeof Document
+type DocumentManagerIface = typeof DocumentManager
+type EditorAssistIface = typeof EditorAssist
+class EditorAssistProposal {
+
+    // Own fields of IAnjuta.EditorAssistProposal
+
+label: string
+markup: string
+info: string
+text: string
+icon: GdkPixbuf.Pixbuf
+data: any
+
+    // Constructors of IAnjuta.EditorAssistProposal
+
+_init(...args: any[]): void;
+
+}
+
+type EditorCellIface = typeof EditorCell
+type EditorCellStyleIface = typeof EditorCellStyle
+type EditorCommentIface = typeof EditorComment
+type EditorConvertIface = typeof EditorConvert
+type EditorFactoryIface = typeof EditorFactory
+type EditorFoldsIface = typeof EditorFolds
+type EditorGladeSignalIface = typeof EditorGladeSignal
+type EditorGotoIface = typeof EditorGoto
+type EditorHoverIface = typeof EditorHover
+type EditorIface = typeof Editor
+type EditorLanguageIface = typeof EditorLanguage
+type EditorLineModeIface = typeof EditorLineMode
+type EditorSearchIface = typeof EditorSearch
+type EditorSelectionIface = typeof EditorSelection
+type EditorTipIface = typeof EditorTip
+type EditorViewIface = typeof EditorView
+type EditorZoomIface = typeof EditorZoom
+type EnvironmentIface = typeof Environment
+type FileIface = typeof File
+type FileLoaderIface = typeof FileLoader
+type FileManagerIface = typeof FileManager
+type FileSavableIface = typeof FileSavable
+type GladeIface = typeof Glade
+type HelpIface = typeof Help
+type IndenterIface = typeof Indenter
+type IndicableIface = typeof Indicable
+type IterableIface = typeof Iterable
+type IterableTreeIface = typeof IterableTree
+type LanguageIface = typeof Language
+type LanguageProviderIface = typeof LanguageProvider
+type LoaderIface = typeof Loader
+type MarkableIface = typeof Markable
+type MessageManagerIface = typeof MessageManager
+type MessageViewIface = typeof MessageView
+type PluginFactoryIface = typeof PluginFactory
+type PreferencesIface = typeof Preferences
+type PrintIface = typeof Print
+type ProjectBackendIface = typeof ProjectBackend
+type ProjectChooserIface = typeof ProjectChooser
+type ProjectIface = typeof Project
+type ProjectManagerIface = typeof ProjectManager
+type ProviderIface = typeof Provider
+type SnippetsManagerIface = typeof SnippetsManager
+type StreamIface = typeof Stream
+type StreamLoaderIface = typeof StreamLoader
+type StreamSavableIface = typeof StreamSavable
+type SymbolIface = typeof Symbol
+type SymbolManagerIface = typeof SymbolManager
+type SymbolQueryIface = typeof SymbolQuery
+type TerminalIface = typeof Terminal
+type TodoIface = typeof Todo
+type VcsIface = typeof Vcs
+type WizardIface = typeof Wizard
+module Buildable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
+}
+
+export interface BuildableNamespace {
+      $gtype: GObject.GType<Buildable>;
+      prototype: Buildable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Buildable extends GObject.Object {
+
+    // Own methods of IAnjuta.Buildable
+
     /**
-     * Defines which breakpoint characteristics are supported by the debugger
+     * fixme
+     * @param uri fixme
+     */
+    build(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    clean(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    configure(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    execute(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    generate(uri: string): void
+    /**
+     * Retrieves the currently set command override.
+     * @param command_id Command to get override.
+     * @returns The overridden command. NULL if no override set.
+     */
+    get_command(command_id: BuildableCommand): string
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    install(uri: string): void
+    /**
+     * Resets the command overrides to defaults.
+     */
+    reset_commands(): void
+    /**
+     * Overrides the default command for the given command.
+     * @param command_id Command to override.
+     * @param command Build command to override.
+     */
+    set_command(command_id: BuildableCommand, command: string): void
+
+    // Own virtual methods of IAnjuta.Buildable
+
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_build(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_clean(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_configure(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_execute(uri: string): void
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_generate(uri: string): void
+    /**
+     * Retrieves the currently set command override.
+     * @param command_id Command to get override.
+     */
+    vfunc_get_command(command_id: BuildableCommand): string
+    /**
+     * fixme
+     * @param uri fixme
+     */
+    vfunc_install(uri: string): void
+    /**
+     * Resets the command overrides to defaults.
+     */
+    vfunc_reset_commands(): void
+    /**
+     * Overrides the default command for the given command.
+     * @param command_id Command to override.
+     * @param command Build command to override.
+     */
+    vfunc_set_command(command_id: BuildableCommand, command: string): void
+}
+
+
+
+export const Buildable: BuildableNamespace;
+
+module Builder {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface BuilderNamespace {
+      $gtype: GObject.GType<Builder>;
+      prototype: Builder;
+      
+          
+      }
+interface Builder extends GObject.Object {
+
+    // Own methods of IAnjuta.Builder
+
+    /**
+     * Cancel specified command. The callback function will not
+     * be called.
+     * @param handle handle of the command to cancel
+     */
+    cancel(handle: BuilderHandle): void
+    /**
+     * Get the configuration corresponding to the target uri.
+     * @param uri target uri
+     * @returns The configuration name or NULL if the corresponding configuration cannot be found.
+     */
+    get_uri_configuration(uri: string): string
+    /**
+     * List all defined configuration. These names returned are
+     * the internal non localized names for the following
+     * predefined configuration: Debug, Profiling, Optimized.
+     * The default configuration has no name and is not returned.
+     * @returns a list configuration name. The names are owned by the plugin, so only the list has to be free using g_list_free.
+     */
+    list_configuration(): string[]
+
+    // Own virtual methods of IAnjuta.Builder
+
+    /**
+     * Cancel specified command. The callback function will not
+     * be called.
+     * @param handle handle of the command to cancel
+     */
+    vfunc_cancel(handle: BuilderHandle): void
+    /**
+     * Get the configuration corresponding to the target uri.
+     * @param uri target uri
+     */
+    vfunc_get_uri_configuration(uri: string): string
+    /**
+     * List all defined configuration. These names returned are
+     * the internal non localized names for the following
+     * predefined configuration: Debug, Profiling, Optimized.
+     * The default configuration has no name and is not returned.
+     */
+    vfunc_list_configuration(): string[]
+}
+
+
+
+export const Builder: BuilderNamespace;
+
+module DebugManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface DebugManagerNamespace {
+      $gtype: GObject.GType<DebugManager>;
+      prototype: DebugManager;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebugManager extends GObject.Object {
+
+    // Own methods of IAnjuta.DebugManager
+
+    /**
+     * Quit the debugger, can wait until the debugger is ready.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    quit(): boolean
+    /**
+     * Start the debugger of the given uri
+     * @param uri uri of the target
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    start(uri: string): boolean
+    /**
+     * Start the debugger of the given uri
+     * @param server server (IP address:port)
+     * @param uri uri of the local target
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    start_remote(server: string, uri: string): boolean
+
+    // Own virtual methods of IAnjuta.DebugManager
+
+    vfunc_breakpoint_changed(breakpoint: DebuggerBreakpointItem): void
+    vfunc_debugger_started(): void
+    vfunc_debugger_stopped(err: GLib.Error): void
+    vfunc_frame_changed(frame: number, thread: number): void
+    vfunc_location_changed(address: number, uri: string, line: number): void
+    vfunc_program_exited(): void
+    vfunc_program_loaded(): void
+    vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void
+    vfunc_program_running(): void
+    vfunc_program_started(): void
+    vfunc_program_stopped(): void
+    vfunc_program_unloaded(): void
+    /**
+     * Quit the debugger, can wait until the debugger is ready.
+     */
+    vfunc_quit(): boolean
+    vfunc_sharedlib_event(): void
+    vfunc_signal_received(name: string, description: string): void
+    /**
+     * Start the debugger of the given uri
+     * @param uri uri of the target
+     */
+    vfunc_start(uri: string): boolean
+    /**
+     * Start the debugger of the given uri
+     * @param server server (IP address:port)
+     * @param uri uri of the local target
+     */
+    vfunc_start_remote(server: string, uri: string): boolean
+}
+
+
+
+export const DebugManager: DebugManagerNamespace;
+
+module Debugger {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerNamespace {
+      $gtype: GObject.GType<Debugger>;
+      prototype: Debugger;
+      
+          
+      }
+interface Debugger extends GObject.Object {
+
+    // Own methods of IAnjuta.Debugger
+
+    /**
+     * Quit the debugger as fast as possible.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    abort(): boolean
+    /**
+     * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    attach(pid: number, source_search_directories: string[]): boolean
+    /**
+     * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
+     * @returns TRUE if sucessfull, otherwise FALSE.
+     */
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
+    connect(...args: never[]): any
+    /**
+     * Disable debugger log.
+     */
+    disable_log(): void
+    /**
+     * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
+     */
+    enable_log(log: MessageView): void
+    /**
+     * Exit from the currently loaded program.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    exit(): boolean
+    /**
+     * Get the current state of the debugger
+     * @returns The current debugger state.
+     */
+    get_state(): DebuggerState
+    /**
+     * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
+    /**
+     * Interrupt the program currently running.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    interrupt(): boolean
+    /**
+     * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    load(file: string, mime_type: string, source_search_directories: string[]): boolean
+    /**
+     * Quit the debugger, can wait until the debugger is ready.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    quit(): boolean
+    /**
+     * Run the program currently loaded.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    run(): boolean
+    /**
+     * Execute the program from a new position.
+     * This function is optional.
+     * @param file target file name
+     * @param line target line in file
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    run_from(file: string, line: number): boolean
+    /**
+     * Execute the currently loaded program until it reachs the target
+     * line.
+     * @param file target file name
+     * @param line target line in file
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    run_to(file: string, line: number): boolean
+    /**
+     * Send a command directly to the debugger. Warning, changing the
+     * debugger states, by sending a run command by example, will
+     * probably gives some troubles in the debug manager.
+     * @param command command
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    send_command(command: string): boolean
+    /**
+     * Set environment variable
+     * @param env List environment variable
+     * @returns TRUE if sucessfull, other FALSE.
+     */
+    set_environment(env: string): boolean
+    /**
+     * Set the current frame.
+     * @param frame frame number
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    set_frame(frame: number): boolean
+    /**
+     * Set the current thread.
+     * @param thread thread number
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    set_thread(thread: number): boolean
+    /**
+     * Set program working directory.
+     * @param dir working program directory
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    set_working_directory(dir: string): boolean
+    /**
+     * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    start(args: string, terminal: boolean, stop: boolean): boolean
+    /**
+     * Execute a single C instruction of the program currently loaded.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    step_in(): boolean
+    /**
+     * Execute the currently loaded program until it goes out of the
+     * current procedure.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    step_out(): boolean
+    /**
+     * Execute one C instruction, without entering in procedure, of
+     * the program currently loaded.
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    step_over(): boolean
+    /**
+     * Unload a program.
+     * @returns TRUE if sucessfull, otherwise FALSE.
+     */
+    unload(): boolean
+
+    // Own virtual methods of IAnjuta.Debugger
+
+    /**
+     * Quit the debugger as fast as possible.
+     */
+    vfunc_abort(): boolean
+    /**
+     * Attach to an already running process.
+     * @param pid pid of the process to debug
+     * @param source_search_directories List of directories to search for 		      source files.
+     */
+    vfunc_attach(pid: number, source_search_directories: string[]): boolean
+    /**
+     * Connect to a remote debugger and run program
+     * @param server remote server
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
+     */
+    vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
+    vfunc_debugger_ready(state: DebuggerState): void
+    vfunc_debugger_started(): void
+    vfunc_debugger_stopped(err: GLib.Error): void
+    /**
+     * Disable debugger log.
+     */
+    vfunc_disable_log(): void
+    /**
+     * Log all debuggers commands, mainly useful for debugging.
+     * @param log MessageView used by log
+     */
+    vfunc_enable_log(log: MessageView): void
+    /**
+     * Exit from the currently loaded program.
+     */
+    vfunc_exit(): boolean
+    vfunc_frame_changed(frame: number, thread: number): void
+    /**
+     * Get the current state of the debugger
+     */
+    vfunc_get_state(): DebuggerState
+    /**
+     * It defines how to handle signal received by the program.
+     * @param name signal name
+     * @param stop TRUE if we need to stop signal
+     * @param print TRUE if we display a message when the signal is emitted
+     * @param ignore TRUE if we ignore the signal
+     */
+    vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
+    /**
+     * Interrupt the program currently running.
+     */
+    vfunc_interrupt(): boolean
+    /**
+     * Load a program in the debugger.
+     * @param file filename
+     * @param mime_type mime type of the file
+     * @param source_search_directories List of directories to search for 		      source files.
+     */
+    vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
+    vfunc_program_exited(): void
+    vfunc_program_loaded(): void
+    vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void
+    vfunc_program_running(): void
+    vfunc_program_stopped(): void
+    /**
+     * Quit the debugger, can wait until the debugger is ready.
+     */
+    vfunc_quit(): boolean
+    /**
+     * Run the program currently loaded.
+     */
+    vfunc_run(): boolean
+    /**
+     * Execute the program from a new position.
+     * This function is optional.
+     * @param file target file name
+     * @param line target line in file
+     */
+    vfunc_run_from(file: string, line: number): boolean
+    /**
+     * Execute the currently loaded program until it reachs the target
+     * line.
+     * @param file target file name
+     * @param line target line in file
+     */
+    vfunc_run_to(file: string, line: number): boolean
+    /**
+     * Send a command directly to the debugger. Warning, changing the
+     * debugger states, by sending a run command by example, will
+     * probably gives some troubles in the debug manager.
+     * @param command command
+     */
+    vfunc_send_command(command: string): boolean
+    /**
+     * Set environment variable
+     * @param env List environment variable
+     */
+    vfunc_set_environment(env: string): boolean
+    /**
+     * Set the current frame.
+     * @param frame frame number
+     */
+    vfunc_set_frame(frame: number): boolean
+    /**
+     * Set the current thread.
+     * @param thread thread number
+     */
+    vfunc_set_thread(thread: number): boolean
+    /**
+     * Set program working directory.
+     * @param dir working program directory
+     */
+    vfunc_set_working_directory(dir: string): boolean
+    vfunc_sharedlib_event(): void
+    vfunc_signal_received(name: string, description: string): void
+    /**
+     * Start a loaded program under debugger control.
+     * @param args command line argument of the program
+     * @param terminal TRUE if the program need a terminal
+     * @param stop TRUE if program is stopped at the beginning
+     */
+    vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
+    /**
+     * Execute a single C instruction of the program currently loaded.
+     */
+    vfunc_step_in(): boolean
+    /**
+     * Execute the currently loaded program until it goes out of the
+     * current procedure.
+     */
+    vfunc_step_out(): boolean
+    /**
+     * Execute one C instruction, without entering in procedure, of
+     * the program currently loaded.
+     */
+    vfunc_step_over(): boolean
+    /**
+     * Unload a program.
+     */
+    vfunc_unload(): boolean
+}
+
+
+
+export const Debugger: DebuggerNamespace;
+
+module DebuggerBreakpoint {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Debugger.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerBreakpointNamespace {
+      $gtype: GObject.GType<DebuggerBreakpoint>;
+      prototype: DebuggerBreakpoint;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebuggerBreakpoint extends Debugger {
+
+    // Own methods of IAnjuta.DebuggerBreakpoint
+
+    /**
+     * Return all implemented methods.
+     * @returns A OR of #IAnjutaDebuggerBreakpointMethod corresponding to all implemented optional methods.
+     */
+    implement_breakpoint(): number
+
+    // Own virtual methods of IAnjuta.DebuggerBreakpoint
+
+    /**
+     * Return all implemented methods.
+     */
+    vfunc_implement_breakpoint(): number
+}
+
+
+
+export const DebuggerBreakpoint: DebuggerBreakpointNamespace;
+
+module DebuggerInstruction {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Debugger.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerInstructionNamespace {
+      $gtype: GObject.GType<DebuggerInstruction>;
+      prototype: DebuggerInstruction;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebuggerInstruction extends Debugger {
+
+    // Own methods of IAnjuta.DebuggerInstruction
+
+    /**
+     * Restart the program starting from address address
+     * @param address Run from this addresss
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    run_from_address(address: number): boolean
+    /**
+     * Start the program until it reachs the address address
+     * @param address Run to this addresss
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    run_to_address(address: number): boolean
+    /**
+     * Execute one assembler instruction in the program.
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    step_in_instruction(): boolean
+    /**
+     * Execute one assembler instruction in the program, if the instruction
+     * is a function call, continues until the function returns.
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    step_over_instruction(): boolean
+
+    // Own virtual methods of IAnjuta.DebuggerInstruction
+
+    /**
+     * Restart the program starting from address address
+     * @param address Run from this addresss
+     */
+    vfunc_run_from_address(address: number): boolean
+    /**
+     * Start the program until it reachs the address address
+     * @param address Run to this addresss
+     */
+    vfunc_run_to_address(address: number): boolean
+    /**
+     * Execute one assembler instruction in the program.
+     */
+    vfunc_step_in_instruction(): boolean
+    /**
+     * Execute one assembler instruction in the program, if the instruction
+     * is a function call, continues until the function returns.
+     */
+    vfunc_step_over_instruction(): boolean
+}
+
+
+
+export const DebuggerInstruction: DebuggerInstructionNamespace;
+
+module DebuggerMemory {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Debugger.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerMemoryNamespace {
+      $gtype: GObject.GType<DebuggerMemory>;
+      prototype: DebuggerMemory;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebuggerMemory extends Debugger {
+}
+
+
+
+export const DebuggerMemory: DebuggerMemoryNamespace;
+
+module DebuggerRegister {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Debugger.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerRegisterNamespace {
+      $gtype: GObject.GType<DebuggerRegister>;
+      prototype: DebuggerRegister;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebuggerRegister extends Debugger {
+
+    // Own methods of IAnjuta.DebuggerRegister
+
+    /**
+     * Change the value of one register. Only the num and value field are used.
+     * @param value Modified register with a new value
+     * @returns TRUE if the request succeed.
+     */
+    write_register(value: DebuggerRegisterData): boolean
+
+    // Own virtual methods of IAnjuta.DebuggerRegister
+
+    /**
+     * Change the value of one register. Only the num and value field are used.
+     * @param value Modified register with a new value
+     */
+    vfunc_write_register(value: DebuggerRegisterData): boolean
+}
+
+
+
+export const DebuggerRegister: DebuggerRegisterNamespace;
+
+module DebuggerVariable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Debugger.ConstructorProps {
+
+    }
+
+}
+
+export interface DebuggerVariableNamespace {
+      $gtype: GObject.GType<DebuggerVariable>;
+      prototype: DebuggerVariable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface DebuggerVariable extends Debugger {
+
+    // Own methods of IAnjuta.DebuggerVariable
+
+    /**
+     * Set the value of one variable or child object.
+     * @param name Variable name
+     * @param value Variable value
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    assign(name: string, value: string): boolean
+    /**
+     * Delete a previously created variable or child object
+     * including its own children.
+     * @param name Variable name
+     * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
+     */
+    destroy(name: string): boolean
+
+    // Own virtual methods of IAnjuta.DebuggerVariable
+
+    /**
+     * Set the value of one variable or child object.
+     * @param name Variable name
+     * @param value Variable value
+     */
+    vfunc_assign(name: string, value: string): boolean
+    /**
+     * Delete a previously created variable or child object
+     * including its own children.
+     * @param name Variable name
+     */
+    vfunc_destroy(name: string): boolean
+}
+
+
+
+export const DebuggerVariable: DebuggerVariableNamespace;
+
+module Document {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface DocumentNamespace {
+      $gtype: GObject.GType<Document>;
+      prototype: Document;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Document extends GObject.Object {
+
+    // Own methods of IAnjuta.Document
+
+    /**
+     * Begins the mark of undoable action. Calls to this are stacked and
+     * each must be ended with ianjuta_document_end_action().
+     */
+    begin_undo_action(): void
+    /**
+     * Can the editor redo the last operation?
+     * @returns TRUE if editor can redo, else FALSE
+     */
+    can_redo(): boolean
+    /**
+     * Can the editor undo the last operation?
+     * @returns TRUE if editor can undo, else FALSE
+     */
+    can_undo(): boolean
+    /**
+     * Clear selection
+     */
+    clear(): void
+    /**
+     * Copy selection to clipboard.
+     */
+    copy(): void
+    /**
+     * Cut selection to clipboard.
+     */
+    cut(): void
+    /**
+     * Ends the mark of undoable action.
+     */
+    end_undo_action(): void
+    /**
+     * Allows obtaining of the filename the editor was loaded from.
+     * @returns The name of the file. Not to be freed by caller.
+     */
+    get_filename(): string
+    /**
+     * Grabs the focus.
+     */
+    grab_focus(): void
+    /**
+     * Paste clipboard at current position.
+     */
+    paste(): void
+    /**
+     * Redo last undo operation
+     */
+    redo(): void
+    /**
+     * Undo last operation
+     */
+    undo(): void
+
+    // Own virtual methods of IAnjuta.Document
+
+    /**
+     * Begins the mark of undoable action. Calls to this are stacked and
+     * each must be ended with ianjuta_document_end_action().
+     */
+    vfunc_begin_undo_action(): void
+    /**
+     * Can the editor redo the last operation?
+     */
+    vfunc_can_redo(): boolean
+    /**
+     * Can the editor undo the last operation?
+     */
+    vfunc_can_undo(): boolean
+    /**
+     * Clear selection
+     */
+    vfunc_clear(): void
+    /**
+     * Copy selection to clipboard.
+     */
+    vfunc_copy(): void
+    /**
+     * Cut selection to clipboard.
+     */
+    vfunc_cut(): void
+    /**
+     * Ends the mark of undoable action.
+     */
+    vfunc_end_undo_action(): void
+    /**
+     * Allows obtaining of the filename the editor was loaded from.
+     */
+    vfunc_get_filename(): string
+    /**
+     * Grabs the focus.
+     */
+    vfunc_grab_focus(): void
+    /**
+     * Paste clipboard at current position.
+     */
+    vfunc_paste(): void
+    /**
+     * Redo last undo operation
+     */
+    vfunc_redo(): void
+    /**
+     * Undo last operation
+     */
+    vfunc_undo(): void
+    vfunc_update_ui(): void
+}
+
+
+
+export const Document: DocumentNamespace;
+
+module DocumentManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface DocumentManagerNamespace {
+      $gtype: GObject.GType<DocumentManager>;
+      prototype: DocumentManager;
+      
+          
+      }
+interface DocumentManager extends GObject.Object {
+
+    // Own methods of IAnjuta.DocumentManager
+
+    add_bookmark(file: Gio.File, line: number): void
+    /**
+     * Creates a new editor buffer of the given name and sets the given
+     * content as its initial content.
+     * @param name Name of the editor buffer.
+     * @param content Initial content of the buffer.
+     * @returns the IAnjutaEditor instance that has been added.
+     */
+    add_buffer(name: string, content: string): Editor
+    /**
+     * Adds a document to the document manager. This will open a new
+     * Notebook tab and show the document there
+     * @param document the document to add
+     */
+    add_document(document: Document): void
+    /**
+     * Finds the document that has the file  loaded. Only
+     * the editor that matches the file will be searched.
+     * @param file The file to find.
+     * @returns the document that corresponds to given file. NULL if there is no editor loaded with this file.
+     */
+    find_document_with_file(file: Gio.File): Document
+    /**
+     * Gets the current document.
+     * @returns the currently active document. NULL if none is there.
+     */
+    get_current_document(): Document
+    /**
+     * Gets a list of widgets for open documents. Each widget is
+     * a GTK_WIDGET(IAnjutaDocument*)
+     * @returns a list of widgets for all open documents. The returned list (but not the data in the list) must be freed after use.
+     */
+    get_doc_widgets(): Gtk.Widget[]
+    /**
+     * Given the short filename, finds the file of the filename, if the
+     * editor that has it loaded is found. If there is no editor that has
+     * this file opened, returns NULL.
+     * @param filename short filename
+     * @returns the GFile for the given short filename
+     */
+    get_file(filename: string): Gio.File
+    /**
+     * Loads the given file if not loaded yet, set its editor as current editor
+     * and moves cursor to the given line in the editor.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @returns the editor where the mark has been put. NULL if none.
+     */
+    goto_file_line(file: Gio.File, lineno: number): Editor
+    /**
+     * Loads the given file if not loaded yet, set its editor as current editor
+     * and moves cursor to the given line in the editor. Optionally also marks
+     * the line with line marker if `mark` is given TRUE.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @param mark TRUE if the line should be marked with a marker.
+     * @returns the editor where the mark has been put. NULL if none.
+     */
+    goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor
+    /**
+     * Closes and removes the given document. If `save_before` is TRUE, also
+     * saves the document before closing.
+     * @param document Document to close.
+     * @param save_before If true, saves the document before closing.
+     * @returns TRUE if the document was removed, else FALSE.
+     */
+    remove_document(document: Document, save_before: boolean): boolean
+    /**
+     * Sets the given document as current document.
+     * @param document the document to set as current.
+     */
+    set_current_document(document: Document): void
+
+    // Own virtual methods of IAnjuta.DocumentManager
+
+    vfunc_add_bookmark(file: Gio.File, line: number): void
+    /**
+     * Creates a new editor buffer of the given name and sets the given
+     * content as its initial content.
+     * @param name Name of the editor buffer.
+     * @param content Initial content of the buffer.
+     */
+    vfunc_add_buffer(name: string, content: string): Editor
+    /**
+     * Adds a document to the document manager. This will open a new
+     * Notebook tab and show the document there
+     * @param document the document to add
+     */
+    vfunc_add_document(document: Document): void
+    vfunc_document_added(doc: Document): void
+    vfunc_document_removed(doc: Document): void
+    /**
+     * Finds the document that has the file  loaded. Only
+     * the editor that matches the file will be searched.
+     * @param file The file to find.
+     */
+    vfunc_find_document_with_file(file: Gio.File): Document
+    /**
+     * Gets the current document.
+     */
+    vfunc_get_current_document(): Document
+    /**
+     * Gets a list of widgets for open documents. Each widget is
+     * a GTK_WIDGET(IAnjutaDocument*)
+     */
+    vfunc_get_doc_widgets(): Gtk.Widget[]
+    /**
+     * Given the short filename, finds the file of the filename, if the
+     * editor that has it loaded is found. If there is no editor that has
+     * this file opened, returns NULL.
+     * @param filename short filename
+     */
+    vfunc_get_file(filename: string): Gio.File
+    /**
+     * Loads the given file if not loaded yet, set its editor as current editor
+     * and moves cursor to the given line in the editor.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     */
+    vfunc_goto_file_line(file: Gio.File, lineno: number): Editor
+    /**
+     * Loads the given file if not loaded yet, set its editor as current editor
+     * and moves cursor to the given line in the editor. Optionally also marks
+     * the line with line marker if `mark` is given TRUE.
+     * @param file file to go to.
+     * @param lineno the line number in the file to go to.
+     * @param mark TRUE if the line should be marked with a marker.
+     */
+    vfunc_goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor
+    /**
+     * Closes and removes the given document. If `save_before` is TRUE, also
+     * saves the document before closing.
+     * @param document Document to close.
+     * @param save_before If true, saves the document before closing.
+     */
+    vfunc_remove_document(document: Document, save_before: boolean): boolean
+    /**
+     * Sets the given document as current document.
+     * @param document the document to set as current.
+     */
+    vfunc_set_current_document(document: Document): void
+}
+
+
+
+export const DocumentManager: DocumentManagerNamespace;
+
+module Editor {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorNamespace {
+      $gtype: GObject.GType<Editor>;
+      prototype: Editor;
+      
+          
+      }
+interface Editor extends GObject.Object {
+
+    // Own methods of IAnjuta.Editor
+
+    /**
+     * Appends `length` characters from `text` buffer at the end of editor
+     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of @text to use.
+     */
+    append(text: string, length: number): void
+    erase(position_start: Iterable, position_end: Iterable): void
+    /**
+     * Empties the whole editor buffer. There will be zero characters.
+     * After the erase operation, none of the active iters are guranteed
+     * to be valid.
+     */
+    erase_all(): void
+    get_column(): number
+    /**
+     * Obtains the word on which carat is currently on.
+     * @returns Current word.
+     */
+    get_current_word(): string
+    /**
+     * Gets the iter positioned at the end of the editor buffer. The
+     * returned iter is the end-iter which does not point to any valid
+     * character in the buffer (it is pointed one step beyond the last
+     * valid character).
+     * @returns Cell iter set to the end of the editor (end-iter).
+     */
+    get_end_position(): Iterable
+    /**
+     * Returns the indentation size in spaces currently used by the
+     * editor.
+     * @returns indentation size in number of spaces
+     */
+    get_indentsize(): number
+    /**
+     * Get length of complete text in editor. This will be the total
+     * number of bytes in the file or buffer.
+     * @returns Text length.
+     */
+    get_length(): number
+    /**
+     * fixme
+     * @param line fixme
+     * @returns fixme
+     */
+    get_line_begin_position(line: number): Iterable
+    /**
+     * fixme
+     * @param line fixme
+     * @returns fixme
+     */
+    get_line_end_position(line: number): Iterable
+    get_line_from_position(position: Iterable): number
+    /**
+     * Obtains current line number on which carat is.
+     * @returns Line number.
+     */
+    get_lineno(): number
+    get_offset(): number
+    /**
+     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
+     * @returns editor mode.
+     */
+    get_overwrite(): boolean
+    /**
+     * Get current caret position.
+     * @returns Iterator that points to the current position.
+     */
+    get_position(): Iterable
+    /**
+     * Gets the iter positioned at the start of the editor buffer.
+     * @returns Cell iter set to the begining of the editor.
+     */
+    get_start_position(): Iterable
+    /**
+     * Returns the tabsize (in spaces) currently used by the editor.
+     * @returns tabsize in number of spaces
+     */
+    get_tabsize(): number
+    /**
+     * Gets text characters beginning from `begin` (including char
+     * pointed by `begin)` and ending with `end` (excluding character
+     * pointed by `end)`. The characters returned are utf-8 encoded.
+     * The iterators `begin` and `end` could be in either order. The returned
+     * text, however, is in right order. If both `begin` and `end` points
+     * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
+     * @returns A buffer of utf-8 characters. The returned buffer must be freed when no longer required.
+     */
+    get_text(begin: Iterable, end: Iterable): string
+    /**
+     * Gets all text characters in the editor.
+     * The characters returned are utf-8 encoded.
+     * @returns A buffer of utf-8 characters containing all text from editor. The returned buffer must be freed when no longer required.
+     */
+    get_text_all(): string
+    /**
+     * Returns if the editor uses spaces for filling up tab characters.
+     * @returns TRUE if yes, FALSE if no.
+     */
+    get_use_spaces(): boolean
+    /**
+     * Carat is moved to the end of editor and text view is scrolled to
+     * bring it in viewable area of the editor.
+     */
+    goto_end(): void
+    /**
+     * Carat is moved to the given `lineno` line and text view is scrolled to
+     * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
+     */
+    goto_line(lineno: number): void
+    /**
+     * Carat is moved to the given `position` and text view is scrolled to
+     * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
+     */
+    goto_position(position: Iterable): void
+    /**
+     * Carat is moved to the begining of editor and text view is scrolled to
+     * bring it in viewable area of the editor.
+     */
+    goto_start(): void
+    /**
+     * Inserts `length` characters from `text` buffer at given `position` of
+     * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of @text to use.
+     */
+    insert(position: Iterable, text: string, length: number): void
+    /**
+     * Sets whether the editor should auto-indent itself. A plugin that does
+     * custom auto-indent can set this to false and override the preferences
+     * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
+     */
+    set_auto_indent(auto_indent: boolean): void
+    /**
+     * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
+     */
+    set_indentsize(indentsize: number): void
+    /**
+     * Set Editor popup menu. This is the menu shown in the editor when one
+     * right-clicks on it.
+     * @param menu Popupmenu
+     */
+    set_popup_menu(menu: Gtk.Widget): void
+    /**
+     * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
+     */
+    set_tabsize(tabsize: number): void
+    set_use_spaces(use_spaces: boolean): void
+
+    // Own virtual methods of IAnjuta.Editor
+
+    /**
+     * Appends `length` characters from `text` buffer at the end of editor
+     * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
+     * @param text Text to append.
+     * @param length Length of @text to use.
+     */
+    vfunc_append(text: string, length: number): void
+    vfunc_backspace(): void
+    vfunc_changed(position: Iterable, added: boolean, length: number, lines: number, text: string): void
+    vfunc_char_added(position: Iterable, ch: number): void
+    vfunc_code_changed(position: Iterable, code: string): void
+    vfunc_cursor_moved(): void
+    vfunc_erase(position_start: Iterable, position_end: Iterable): void
+    /**
+     * Empties the whole editor buffer. There will be zero characters.
+     * After the erase operation, none of the active iters are guranteed
+     * to be valid.
+     */
+    vfunc_erase_all(): void
+    vfunc_get_column(): number
+    /**
+     * Obtains the word on which carat is currently on.
+     */
+    vfunc_get_current_word(): string
+    /**
+     * Gets the iter positioned at the end of the editor buffer. The
+     * returned iter is the end-iter which does not point to any valid
+     * character in the buffer (it is pointed one step beyond the last
+     * valid character).
+     */
+    vfunc_get_end_position(): Iterable
+    /**
+     * Returns the indentation size in spaces currently used by the
+     * editor.
+     */
+    vfunc_get_indentsize(): number
+    /**
+     * Get length of complete text in editor. This will be the total
+     * number of bytes in the file or buffer.
+     */
+    vfunc_get_length(): number
+    /**
+     * fixme
+     * @param line fixme
+     */
+    vfunc_get_line_begin_position(line: number): Iterable
+    /**
+     * fixme
+     * @param line fixme
+     */
+    vfunc_get_line_end_position(line: number): Iterable
+    vfunc_get_line_from_position(position: Iterable): number
+    /**
+     * Obtains current line number on which carat is.
+     */
+    vfunc_get_lineno(): number
+    vfunc_get_offset(): number
+    /**
+     * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
+     */
+    vfunc_get_overwrite(): boolean
+    /**
+     * Get current caret position.
+     */
+    vfunc_get_position(): Iterable
+    /**
+     * Gets the iter positioned at the start of the editor buffer.
+     */
+    vfunc_get_start_position(): Iterable
+    /**
+     * Returns the tabsize (in spaces) currently used by the editor.
+     */
+    vfunc_get_tabsize(): number
+    /**
+     * Gets text characters beginning from `begin` (including char
+     * pointed by `begin)` and ending with `end` (excluding character
+     * pointed by `end)`. The characters returned are utf-8 encoded.
+     * The iterators `begin` and `end` could be in either order. The returned
+     * text, however, is in right order. If both `begin` and `end` points
+     * to the same position, NULL is returned.
+     * @param begin Begining iterator
+     * @param end End iterator
+     */
+    vfunc_get_text(begin: Iterable, end: Iterable): string
+    /**
+     * Gets all text characters in the editor.
+     * The characters returned are utf-8 encoded.
+     */
+    vfunc_get_text_all(): string
+    /**
+     * Returns if the editor uses spaces for filling up tab characters.
+     */
+    vfunc_get_use_spaces(): boolean
+    vfunc_glade_callback_add(widget_typename: string, signal_name: string, handler_name: string, object: string, swap: boolean, after: boolean, filename: string): void
+    vfunc_glade_member_add(widget_typename: string, widget_name: string, filename: string): void
+    /**
+     * Carat is moved to the end of editor and text view is scrolled to
+     * bring it in viewable area of the editor.
+     */
+    vfunc_goto_end(): void
+    /**
+     * Carat is moved to the given `lineno` line and text view is scrolled to
+     * bring it in viewable area of the editor.
+     * @param lineno line number where carat will be moved.
+     */
+    vfunc_goto_line(lineno: number): void
+    /**
+     * Carat is moved to the given `position` and text view is scrolled to
+     * bring `position` in viewable area of the editor.
+     * @param position Character position where carat will be moved.
+     */
+    vfunc_goto_position(position: Iterable): void
+    /**
+     * Carat is moved to the begining of editor and text view is scrolled to
+     * bring it in viewable area of the editor.
+     */
+    vfunc_goto_start(): void
+    /**
+     * Inserts `length` characters from `text` buffer at given `position` of
+     * editor buffer. If `length` is -1, the whole `text` is used.
+     * @param position Character position in editor where insert will take place.
+     * @param text Text to append.
+     * @param length Length of @text to use.
+     */
+    vfunc_insert(position: Iterable, text: string, length: number): void
+    vfunc_line_marks_gutter_clicked(location: number): void
+    /**
+     * Sets whether the editor should auto-indent itself. A plugin that does
+     * custom auto-indent can set this to false and override the preferences
+     * setting
+     * @param auto_indent TRUE to enable auto-indent, FALSE to disable
+     */
+    vfunc_set_auto_indent(auto_indent: boolean): void
+    /**
+     * Sets the indentation size of the editor.
+     * @param indentsize Indentation size in spaces
+     */
+    vfunc_set_indentsize(indentsize: number): void
+    /**
+     * Set Editor popup menu. This is the menu shown in the editor when one
+     * right-clicks on it.
+     * @param menu Popupmenu
+     */
+    vfunc_set_popup_menu(menu: Gtk.Widget): void
+    /**
+     * Sets the tabsize of the editor.
+     * @param tabsize Tabsize in spaces
+     */
+    vfunc_set_tabsize(tabsize: number): void
+    vfunc_set_use_spaces(use_spaces: boolean): void
+}
+
+
+
+export const Editor: EditorNamespace;
+
+module EditorAssist {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorAssistNamespace {
+      $gtype: GObject.GType<EditorAssist>;
+      prototype: EditorAssist;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorAssist extends Editor {
+
+    // Own methods of IAnjuta.EditorAssist
+
+    add(provider: Provider): void
+    invoke(provider: Provider): void
+    /**
+     * Add the list of proposals for the current population. You can add
+     * proposals async as long as the last call sets finished to TRUE. That
+     * is usually called by the IAnjutaProvider after it was triggered by
+     * ianjuta_provider_populate()
+     * @param provider a IAnjutaProvider
+     * @param proposals a list of IAnjutaProposals
+     * @param pre_word the word before the cursor
+     * @param finished whether is was the last call in an async operation
+     */
+    proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
+    remove(provider: Provider): void
+
+    // Own virtual methods of IAnjuta.EditorAssist
+
+    vfunc_add(provider: Provider): void
+    vfunc_cancelled(): void
+    vfunc_invoke(provider: Provider): void
+    /**
+     * Add the list of proposals for the current population. You can add
+     * proposals async as long as the last call sets finished to TRUE. That
+     * is usually called by the IAnjutaProvider after it was triggered by
+     * ianjuta_provider_populate()
+     * @param provider a IAnjutaProvider
+     * @param proposals a list of IAnjutaProposals
+     * @param pre_word the word before the cursor
+     * @param finished whether is was the last call in an async operation
+     */
+    vfunc_proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
+    vfunc_remove(provider: Provider): void
+}
+
+
+
+export const EditorAssist: EditorAssistNamespace;
+
+module EditorCell {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorCellNamespace {
+      $gtype: GObject.GType<EditorCell>;
+      prototype: EditorCell;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorCell extends GObject.Object {
+
+    // Own methods of IAnjuta.EditorCell
+
+    get_attribute(): EditorAttribute
+    /**
+     * Returns the byte of the unicode character in this cell at given
+     * index `char_index`. `char_index` can vary from 0 to length of the
+     * unicode string minus 1. Out of range index is not allowed
+     * (asserted) and return is undefined.
+     * 
+     * Since there is dynamic allocation of unicode character string
+     * involved in ianjuta_editor_cell_get_character(), this function
+     * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
+     * @returns a byte character.
+     */
+    get_char(char_index: number): number
+    /**
+     * Returns the unicode character in this cell. A NULL terminated
+     * string is returned that is the multibyte unicode character.
+     * NULL is returned if the cell does not have any character.
+     * @returns a newly created string representing the cell's unicode character.
+     */
+    get_character(): string
+    /**
+     * Gets the length of the cell in bytes. That is, length of the
+     * unicode character.
+     * @returns Length of the unicode character.
+     */
+    get_length(): number
+
+    // Own virtual methods of IAnjuta.EditorCell
+
+    vfunc_get_attribute(): EditorAttribute
+    /**
+     * Returns the byte of the unicode character in this cell at given
+     * index `char_index`. `char_index` can vary from 0 to length of the
+     * unicode string minus 1. Out of range index is not allowed
+     * (asserted) and return is undefined.
+     * 
+     * Since there is dynamic allocation of unicode character string
+     * involved in ianjuta_editor_cell_get_character(), this function
+     * is mainly useful for fast iteration (such as copying data).
+     * @param char_index 
+     */
+    vfunc_get_char(char_index: number): number
+    /**
+     * Returns the unicode character in this cell. A NULL terminated
+     * string is returned that is the multibyte unicode character.
+     * NULL is returned if the cell does not have any character.
+     */
+    vfunc_get_character(): string
+    /**
+     * Gets the length of the cell in bytes. That is, length of the
+     * unicode character.
+     */
+    vfunc_get_length(): number
+}
+
+
+
+export const EditorCell: EditorCellNamespace;
+
+module EditorCellStyle {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends EditorCell.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorCellStyleNamespace {
+      $gtype: GObject.GType<EditorCellStyle>;
+      prototype: EditorCellStyle;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorCellStyle extends EditorCell {
+
+    // Own methods of IAnjuta.EditorCellStyle
+
+    get_background_color(): string
+    get_color(): string
+    get_font_description(): string
+
+    // Own virtual methods of IAnjuta.EditorCellStyle
+
+    vfunc_get_background_color(): string
+    vfunc_get_color(): string
+    vfunc_get_font_description(): string
+}
+
+
+
+export const EditorCellStyle: EditorCellStyleNamespace;
+
+module EditorComment {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorCommentNamespace {
+      $gtype: GObject.GType<EditorComment>;
+      prototype: EditorComment;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorComment extends Editor {
+
+    // Own methods of IAnjuta.EditorComment
+
+    /**
+     * Comment/Uncomment out selected block
+     */
+    block(): void
+    /**
+     * Comment/Uncomment out selected block
+     */
+    box(): void
+    /**
+     * Comment/Uncomment out selected block
+     */
+    stream(): void
+
+    // Own virtual methods of IAnjuta.EditorComment
+
+    /**
+     * Comment/Uncomment out selected block
+     */
+    vfunc_block(): void
+    /**
+     * Comment/Uncomment out selected block
+     */
+    vfunc_box(): void
+    /**
+     * Comment/Uncomment out selected block
+     */
+    vfunc_stream(): void
+}
+
+
+
+export const EditorComment: EditorCommentNamespace;
+
+module EditorConvert {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorConvertNamespace {
+      $gtype: GObject.GType<EditorConvert>;
+      prototype: EditorConvert;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorConvert extends Editor {
+
+    // Own methods of IAnjuta.EditorConvert
+
+    /**
+     * change characters from start position to end position to lowercase
+     * @param start_position Start position.
+     * @param end_position End position.
+     */
+    to_lower(start_position: Iterable, end_position: Iterable): void
+    /**
+     * change characters from start position to end position to uppercase.
+     * @param start_position Start position.
+     * @param end_position End position.
+     */
+    to_upper(start_position: Iterable, end_position: Iterable): void
+
+    // Own virtual methods of IAnjuta.EditorConvert
+
+    /**
+     * change characters from start position to end position to lowercase
+     * @param start_position Start position.
+     * @param end_position End position.
+     */
+    vfunc_to_lower(start_position: Iterable, end_position: Iterable): void
+    /**
+     * change characters from start position to end position to uppercase.
+     * @param start_position Start position.
+     * @param end_position End position.
+     */
+    vfunc_to_upper(start_position: Iterable, end_position: Iterable): void
+}
+
+
+
+export const EditorConvert: EditorConvertNamespace;
+
+module EditorFactory {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorFactoryNamespace {
+      $gtype: GObject.GType<EditorFactory>;
+      prototype: EditorFactory;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorFactory extends GObject.Object {
+}
+
+
+
+export const EditorFactory: EditorFactoryNamespace;
+
+module EditorFolds {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorFoldsNamespace {
+      $gtype: GObject.GType<EditorFolds>;
+      prototype: EditorFolds;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorFolds extends Editor {
+
+    // Own methods of IAnjuta.EditorFolds
+
+    close_all(): void
+    open_all(): void
+    toggle_current(): void
+
+    // Own virtual methods of IAnjuta.EditorFolds
+
+    vfunc_close_all(): void
+    vfunc_open_all(): void
+    vfunc_toggle_current(): void
+}
+
+
+
+export const EditorFolds: EditorFoldsNamespace;
+
+module EditorGladeSignal {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorGladeSignalNamespace {
+      $gtype: GObject.GType<EditorGladeSignal>;
+      prototype: EditorGladeSignal;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorGladeSignal extends Editor {
+
+    // Own virtual methods of IAnjuta.EditorGladeSignal
+
+    vfunc_drop(iterator: Iterable, signal_data: string): void
+    vfunc_drop_possible(iterator: Iterable): boolean
+}
+
+
+
+export const EditorGladeSignal: EditorGladeSignalNamespace;
+
+module EditorGoto {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorGotoNamespace {
+      $gtype: GObject.GType<EditorGoto>;
+      prototype: EditorGoto;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorGoto extends Editor {
+
+    // Own methods of IAnjuta.EditorGoto
+
+    /**
+     * Moves cursor to the end of the current block
+     */
+    end_block(): void
+    /**
+     * Moves cursor to matching brace
+     */
+    matching_brace(): void
+    /**
+     * Moves cursor to the start of the current block
+     */
+    start_block(): void
+
+    // Own virtual methods of IAnjuta.EditorGoto
+
+    /**
+     * Moves cursor to the end of the current block
+     */
+    vfunc_end_block(): void
+    /**
+     * Moves cursor to matching brace
+     */
+    vfunc_matching_brace(): void
+    /**
+     * Moves cursor to the start of the current block
+     */
+    vfunc_start_block(): void
+}
+
+
+
+export const EditorGoto: EditorGotoNamespace;
+
+module EditorHover {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorHoverNamespace {
+      $gtype: GObject.GType<EditorHover>;
+      prototype: EditorHover;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorHover extends Editor {
+
+    // Own methods of IAnjuta.EditorHover
+
+    /**
+     * Show `info` as tooltip
+     * @param position 
+     * @param info String to display
+     */
+    display(position: Iterable, info: string): void
+
+    // Own virtual methods of IAnjuta.EditorHover
+
+    /**
+     * Show `info` as tooltip
+     * @param position 
+     * @param info String to display
+     */
+    vfunc_display(position: Iterable, info: string): void
+    vfunc_hover_leave(position: Iterable): void
+    vfunc_hover_over(position: Iterable): void
+}
+
+
+
+export const EditorHover: EditorHoverNamespace;
+
+module EditorLanguage {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorLanguageNamespace {
+      $gtype: GObject.GType<EditorLanguage>;
+      prototype: EditorLanguage;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorLanguage extends Editor {
+
+    // Own methods of IAnjuta.EditorLanguage
+
+    /**
+     * Return the name of the currently used language
+     */
+    get_language(): string
+    get_language_name(language: string): string
+    /**
+     * Return a list of languages supported by the editor
+     * Note: These list contains the names in the form
+     * the editor implementation knows them
+     */
+    get_supported_languages(): string[]
+    /**
+     * Force the editor to use a given language
+     * @param language Language
+     */
+    set_language(language: string): void
+
+    // Own virtual methods of IAnjuta.EditorLanguage
+
+    /**
+     * Return the name of the currently used language
+     */
+    vfunc_get_language(): string
+    vfunc_get_language_name(language: string): string
+    /**
+     * Return a list of languages supported by the editor
+     * Note: These list contains the names in the form
+     * the editor implementation knows them
+     */
+    vfunc_get_supported_languages(): string[]
+    vfunc_language_changed(language: string): void
+    /**
+     * Force the editor to use a given language
+     * @param language Language
+     */
+    vfunc_set_language(language: string): void
+}
+
+
+
+export const EditorLanguage: EditorLanguageNamespace;
+
+module EditorLineMode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorLineModeNamespace {
+      $gtype: GObject.GType<EditorLineMode>;
+      prototype: EditorLineMode;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorLineMode extends Editor {
+
+    // Own methods of IAnjuta.EditorLineMode
+
+    /**
+     * Set the line ending mode to the given `mode` and convert all line end
+     * characters in the buffer to `mode` line end characters.
+     * @param mode Line mode to convert.
+     */
+    convert(mode: EditorLineModeType): void
+    /**
+     * Convert EOL characters to majority of line mode. This is helpful
+     * when the buffer contains mixed line modes and we want to fix it.
+     */
+    fix(): void
+    /**
+     * Get current line ending mode. It is auto-detected from the
+     * buffer contents.
+     */
+    get(): EditorLineModeType
+    /**
+     * Set the line ending mode to the given `mode`. Existing line end
+     * characters in the buffer are not touched. Only the newly added
+     * texts will have `mode` line end characters.
+     * @param mode Line mode to set.
+     */
+    set(mode: EditorLineModeType): void
+    set(...args: never[]): any
+
+    // Own virtual methods of IAnjuta.EditorLineMode
+
+    /**
+     * Set the line ending mode to the given `mode` and convert all line end
+     * characters in the buffer to `mode` line end characters.
+     * @param mode Line mode to convert.
+     */
+    vfunc_convert(mode: EditorLineModeType): void
+    /**
+     * Convert EOL characters to majority of line mode. This is helpful
+     * when the buffer contains mixed line modes and we want to fix it.
+     */
+    vfunc_fix(): void
+    /**
+     * Get current line ending mode. It is auto-detected from the
+     * buffer contents.
+     */
+    vfunc_get(): EditorLineModeType
+    /**
+     * Set the line ending mode to the given `mode`. Existing line end
+     * characters in the buffer are not touched. Only the newly added
+     * texts will have `mode` line end characters.
+     * @param mode Line mode to set.
+     */
+    vfunc_set(mode: EditorLineModeType): void
+}
+
+
+
+export const EditorLineMode: EditorLineModeNamespace;
+
+module EditorSearch {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorSearchNamespace {
+      $gtype: GObject.GType<EditorSearch>;
+      prototype: EditorSearch;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorSearch extends Editor {
+
+    // Own methods of IAnjuta.EditorSearch
+
+    /**
+     * Search backward from end to start
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
+     */
+    backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [boolean, EditorCell, EditorCell]
+    /**
+     * Search forward from start to end
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
+     */
+    forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [boolean, EditorCell, EditorCell]
+
+    // Own virtual methods of IAnjuta.EditorSearch
+
+    /**
+     * Search backward from end to start
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
+     */
+    vfunc_backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [boolean, EditorCell, EditorCell]
+    /**
+     * Search forward from start to end
+     * @param search String to search for
+     * @param case_sensitive 
+     * @param start Where to search from
+     * @param end Where to stop searching
+     */
+    vfunc_forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [boolean, EditorCell, EditorCell]
+}
+
+
+
+export const EditorSearch: EditorSearchNamespace;
+
+module EditorSelection {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorSelectionNamespace {
+      $gtype: GObject.GType<EditorSelection>;
+      prototype: EditorSelection;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorSelection extends Editor {
+
+    // Own methods of IAnjuta.EditorSelection
+
+    /**
+     * Gets curerntly selected text in editor.
+     * @returns A newly allocated buffer of currently selected characters. NULL if there is no selection. The returned buffer must be freed after use.
+     */
+    get(): string
+    /**
+     * Returns TRUE if editor has any text selected. The selection
+     * positions can be retrieved with ianjuta_editor_selection_get_start()
+     * and ianjuta_editor_selection_get_end().
+     * @returns TRUE if there is text selected else FALSE.
+     */
+    has_selection(): boolean
+    /**
+     * Replaces currently selected text with the `text`. Only `length` amount
+     * of characters are used from `text` buffer to replace.
+     * @param text Replacement text.
+     * @param length Length of the text to used in @text.
+     */
+    replace(text: string, length: number): void
+    select_all(): void
+    /**
+     * Selects current block of code. The definition of block of code
+     * depends on highlight mode used (programming language). Some
+     * highlight mode does not have block concept, in that case this
+     * method does not do anything.
+     */
+    select_block(): void
+    /**
+     * Select current function block. The definition of function block
+     * depends on highlight mode used (programming language). Some
+     * highlight mode does not have function concept, in that case this
+     * method does not do anything.
+     */
+    select_function(): void
+    /**
+     * Select characters between start and end. Start and end don't have to
+     * be ordered.
+     * @param start Begin of selection
+     * @param end End of selection
+     * @param scroll Scroll selection onscreen
+     */
+    set(start: Iterable, end: Iterable, scroll: boolean): void
+    set(...args: never[]): any
+
+    // Own virtual methods of IAnjuta.EditorSelection
+
+    /**
+     * Gets curerntly selected text in editor.
+     */
+    vfunc_get(): string
+    /**
+     * Returns TRUE if editor has any text selected. The selection
+     * positions can be retrieved with ianjuta_editor_selection_get_start()
+     * and ianjuta_editor_selection_get_end().
+     */
+    vfunc_has_selection(): boolean
+    /**
+     * Replaces currently selected text with the `text`. Only `length` amount
+     * of characters are used from `text` buffer to replace.
+     * @param text Replacement text.
+     * @param length Length of the text to used in @text.
+     */
+    vfunc_replace(text: string, length: number): void
+    vfunc_select_all(): void
+    /**
+     * Selects current block of code. The definition of block of code
+     * depends on highlight mode used (programming language). Some
+     * highlight mode does not have block concept, in that case this
+     * method does not do anything.
+     */
+    vfunc_select_block(): void
+    /**
+     * Select current function block. The definition of function block
+     * depends on highlight mode used (programming language). Some
+     * highlight mode does not have function concept, in that case this
+     * method does not do anything.
+     */
+    vfunc_select_function(): void
+    /**
+     * Select characters between start and end. Start and end don't have to
+     * be ordered.
+     * @param start Begin of selection
+     * @param end End of selection
+     * @param scroll Scroll selection onscreen
+     */
+    vfunc_set(start: Iterable, end: Iterable, scroll: boolean): void
+}
+
+
+
+export const EditorSelection: EditorSelectionNamespace;
+
+module EditorTip {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorTipNamespace {
+      $gtype: GObject.GType<EditorTip>;
+      prototype: EditorTip;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorTip extends Editor {
+
+    // Own methods of IAnjuta.EditorTip
+
+    /**
+     * Cancels the last shown tooltip
+     */
+    cancel(): void
+    /**
+     * Show tips showing more information on current context. No user feedback
+     * is required when tips are shown. `position` indicates
+     * the position before which is the known context and after which are
+     * the suggestions. Usually the editor would use this to
+     * align the choices displayed such that the carat is just at this
+     * position when the choices are displayed.
+     * @param tips list of alternative tips.
+     * @param position Tip position.
+     */
+    show(tips: string[], position: Iterable): void
+    visible(): boolean
+
+    // Own virtual methods of IAnjuta.EditorTip
+
+    /**
+     * Cancels the last shown tooltip
+     */
+    vfunc_cancel(): void
+    /**
+     * Show tips showing more information on current context. No user feedback
+     * is required when tips are shown. `position` indicates
+     * the position before which is the known context and after which are
+     * the suggestions. Usually the editor would use this to
+     * align the choices displayed such that the carat is just at this
+     * position when the choices are displayed.
+     * @param tips list of alternative tips.
+     * @param position Tip position.
+     */
+    vfunc_show(tips: string[], position: Iterable): void
+    vfunc_visible(): boolean
+}
+
+
+
+export const EditorTip: EditorTipNamespace;
+
+module EditorView {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorViewNamespace {
+      $gtype: GObject.GType<EditorView>;
+      prototype: EditorView;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorView extends Editor {
+
+    // Own methods of IAnjuta.EditorView
+
+    /**
+     * Creates a new view for the editor. The newly created view gets
+     * the user focus and scrolls to the same location as last view.
+     */
+    create(): void
+    /**
+     * Total number of views currently present. It will never be less
+     * than 1. Invalid return values are considered error condition.
+     */
+    get_count(): number
+    /**
+     * Removes currently focused editor view. It does not remove the
+     * last view of the editor. That is, if currently there is only
+     * one view of the editor, this function does nothing.
+     */
+    remove_current(): void
+
+    // Own virtual methods of IAnjuta.EditorView
+
+    /**
+     * Creates a new view for the editor. The newly created view gets
+     * the user focus and scrolls to the same location as last view.
+     */
+    vfunc_create(): void
+    /**
+     * Total number of views currently present. It will never be less
+     * than 1. Invalid return values are considered error condition.
+     */
+    vfunc_get_count(): number
+    /**
+     * Removes currently focused editor view. It does not remove the
+     * last view of the editor. That is, if currently there is only
+     * one view of the editor, this function does nothing.
+     */
+    vfunc_remove_current(): void
+}
+
+
+
+export const EditorView: EditorViewNamespace;
+
+module EditorZoom {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Editor.ConstructorProps {
+
+    }
+
+}
+
+export interface EditorZoomNamespace {
+      $gtype: GObject.GType<EditorZoom>;
+      prototype: EditorZoom;
+      
+      error_quark(): GLib.Quark    
+      }
+interface EditorZoom extends Editor {
+
+    // Own methods of IAnjuta.EditorZoom
+
+    /**
+     * Zoom in
+     */
+    ["in"](): void
+    /**
+     * Zoom out
+     */
+    out(): void
+
+    // Own virtual methods of IAnjuta.EditorZoom
+
+    /**
+     * Zoom in
+     */
+    vfunc_in(): void
+    /**
+     * Zoom out
+     */
+    vfunc_out(): void
+}
+
+
+
+export const EditorZoom: EditorZoomNamespace;
+
+module Environment {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface EnvironmentNamespace {
+      $gtype: GObject.GType<Environment>;
+      prototype: Environment;
+      
+          
+      }
+interface Environment extends GObject.Object {
+
+    // Own methods of IAnjuta.Environment
+
+    /**
+     * Convert a directory in the environment to a directory outside.
+     * It is useful when the environment use chroot. Take care that
+     * the input directory string is freed using g_free but and you need to
+     * free the output string when not needed.
+     * @param dir A directory path in the environment
+     * @returns The directory path outside the environment
+     */
+    get_real_directory(dir: string): string
+    /**
+     * Override a command to work in another build environment
+     * @param dirp a pointer on the working directory
+     * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
+     * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
+     * @returns FALSE if there is an error.
+     */
+    override(dirp: string, argvp: string, envp: string): boolean
+
+    // Own virtual methods of IAnjuta.Environment
+
+    /**
+     * Convert a directory in the environment to a directory outside.
+     * It is useful when the environment use chroot. Take care that
+     * the input directory string is freed using g_free but and you need to
+     * free the output string when not needed.
+     * @param dir A directory path in the environment
+     */
+    vfunc_get_real_directory(dir: string): string
+    /**
+     * Override a command to work in another build environment
+     * @param dirp a pointer on the working directory
+     * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
+     * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
+     */
+    vfunc_override(dirp: string, argvp: string, envp: string): boolean
+}
+
+
+
+export const Environment: EnvironmentNamespace;
+
+module File {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface FileNamespace {
+      $gtype: GObject.GType<File>;
+      prototype: File;
+      
+      error_quark(): GLib.Quark    
+      }
+interface File extends GObject.Object {
+
+    // Own methods of IAnjuta.File
+
+    /**
+     * Returns the file that was opened with ianjuta_file_open().
+     * @returns The last file opened.
+     */
+    get_file(): Gio.File
+    /**
+     * The implementor opens the given file.
+     * @param file file to open.
+     */
+    open(file: Gio.File): void
+
+    // Own virtual methods of IAnjuta.File
+
+    /**
+     * Returns the file that was opened with ianjuta_file_open().
+     */
+    vfunc_get_file(): Gio.File
+    /**
+     * The implementor opens the given file.
+     * @param file file to open.
+     */
+    vfunc_open(file: Gio.File): void
+    vfunc_opened(): void
+}
+
+
+
+export const File: FileNamespace;
+
+module FileLoader {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Loader.ConstructorProps {
+
+    }
+
+}
+
+export interface FileLoaderNamespace {
+      $gtype: GObject.GType<FileLoader>;
+      prototype: FileLoader;
+      
+      error_quark(): GLib.Quark    
+      }
+interface FileLoader extends Loader {
+
+    // Own methods of IAnjuta.FileLoader
+
+    peek_interface(file: Gio.File): string
+
+    // Own virtual methods of IAnjuta.FileLoader
+
+    vfunc_peek_interface(file: Gio.File): string
+}
+
+
+
+export const FileLoader: FileLoaderNamespace;
+
+module FileManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface FileManagerNamespace {
+      $gtype: GObject.GType<FileManager>;
+      prototype: FileManager;
+      
+      error_quark(): GLib.Quark    
+      }
+interface FileManager extends GObject.Object {
+
+    // Own methods of IAnjuta.FileManager
+
+    /**
+     * fixme
+     * @param root_uri fixme
+     */
+    set_root(root_uri: string): void
+    /**
+     * fixme.
+     * @param file File to select
+     */
+    set_selected(file: Gio.File): void
+
+    // Own virtual methods of IAnjuta.FileManager
+
+    vfunc_section_changed(file: Gio.File): void
+    /**
+     * fixme
+     * @param root_uri fixme
+     */
+    vfunc_set_root(root_uri: string): void
+    /**
+     * fixme.
+     * @param file File to select
+     */
+    vfunc_set_selected(file: Gio.File): void
+}
+
+
+
+export const FileManager: FileManagerNamespace;
+
+module FileSavable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends File.ConstructorProps {
+
+    }
+
+}
+
+export interface FileSavableNamespace {
+      $gtype: GObject.GType<FileSavable>;
+      prototype: FileSavable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface FileSavable extends File {
+
+    // Own methods of IAnjuta.FileSavable
+
+    /**
+     * Return is the file is in conflict. It means the file
+     * has been modified externally and the user needs to
+     * tell which version he wants to use.
+     * @returns TRUE if conflict, FALSE otherwise.
+     */
+    is_conflict(): boolean
+    /**
+     * Returns the dirty status of the content.
+     * @returns TRUE if dirty, FALSE otherwise.
+     */
+    is_dirty(): boolean
+    /**
+     * Return is the file is read-only
+     * @returns TRUE if read-only, FALSE otherwise.
+     */
+    is_read_only(): boolean
+    /**
+     * Saves the content to the original file from which it was loaded.
+     * The signal saved is always emitted even if the save fails.
+     */
+    save(): void
+    /**
+     * Saves the content to a different File.
+     * The signal saved is always emitted even if the save fails.
+     * @param file File to save the content.
+     */
+    save_as(file: Gio.File): void
+    /**
+     * if `dirty` is TRUE, sets dirty for the content. Save point will be
+     * left and the content will be considered not saved. Otherwise,
+     * content will considered saved and save-point will be entered.
+     * @param dirty Whether the file was edited or not
+     */
+    set_dirty(dirty: boolean): void
+
+    // Own virtual methods of IAnjuta.FileSavable
+
+    /**
+     * Return is the file is in conflict. It means the file
+     * has been modified externally and the user needs to
+     * tell which version he wants to use.
+     */
+    vfunc_is_conflict(): boolean
+    /**
+     * Returns the dirty status of the content.
+     */
+    vfunc_is_dirty(): boolean
+    /**
+     * Return is the file is read-only
+     */
+    vfunc_is_read_only(): boolean
+    /**
+     * Saves the content to the original file from which it was loaded.
+     * The signal saved is always emitted even if the save fails.
+     */
+    vfunc_save(): void
+    /**
+     * Saves the content to a different File.
+     * The signal saved is always emitted even if the save fails.
+     * @param file File to save the content.
+     */
+    vfunc_save_as(file: Gio.File): void
+    vfunc_saved(file: Gio.File): void
+    /**
+     * if `dirty` is TRUE, sets dirty for the content. Save point will be
+     * left and the content will be considered not saved. Otherwise,
+     * content will considered saved and save-point will be entered.
+     * @param dirty Whether the file was edited or not
+     */
+    vfunc_set_dirty(dirty: boolean): void
+    vfunc_update_save_ui(): void
+}
+
+
+
+export const FileSavable: FileSavableNamespace;
+
+module Glade {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface GladeNamespace {
+      $gtype: GObject.GType<Glade>;
+      prototype: Glade;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Glade extends GObject.Object {
+
+    // Own methods of IAnjuta.Glade
+
+    add_association(master: string, slave: string): void
+
+    // Own virtual methods of IAnjuta.Glade
+
+    vfunc_add_association(master: string, slave: string): void
+}
+
+
+
+export const Glade: GladeNamespace;
+
+module Help {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface HelpNamespace {
+      $gtype: GObject.GType<Help>;
+      prototype: Help;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Help extends GObject.Object {
+
+    // Own methods of IAnjuta.Help
+
+    /**
+     * Search for string `query` in the help and display the result
+     * @param query string to search in the help
+     */
+    search(query: string): void
+
+    // Own virtual methods of IAnjuta.Help
+
+    /**
+     * Search for string `query` in the help and display the result
+     * @param query string to search in the help
+     */
+    vfunc_search(query: string): void
+}
+
+
+
+export const Help: HelpNamespace;
+
+module Indenter {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface IndenterNamespace {
+      $gtype: GObject.GType<Indenter>;
+      prototype: Indenter;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Indenter extends GObject.Object {
+
+    // Own methods of IAnjuta.Indenter
+
+    /**
+     * Indent the area between `start` and `end` according to the indentation rules
+     * of the programming language. Usually implemented by language support plugins.
+     * Only one indenter can be loaded at a time.
+     * Note: Indenters always affect full lines, so start and end will be moved
+     * according to the next line start/end.
+     * @param start Start of the area to indent
+     * @param end End of the area to indent
+     */
+    indent(start: Iterable, end: Iterable): void
+
+    // Own virtual methods of IAnjuta.Indenter
+
+    /**
+     * Indent the area between `start` and `end` according to the indentation rules
+     * of the programming language. Usually implemented by language support plugins.
+     * Only one indenter can be loaded at a time.
+     * Note: Indenters always affect full lines, so start and end will be moved
+     * according to the next line start/end.
+     * @param start Start of the area to indent
+     * @param end End of the area to indent
+     */
+    vfunc_indent(start: Iterable, end: Iterable): void
+}
+
+
+
+export const Indenter: IndenterNamespace;
+
+module Indicable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface IndicableNamespace {
+      $gtype: GObject.GType<Indicable>;
+      prototype: Indicable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Indicable extends GObject.Object {
+
+    // Own methods of IAnjuta.Indicable
+
+    /**
+     * Clear all indicators
+     */
+    clear(): void
+    /**
+     * Set an indicator
+     * @param begin_location Location where the indication should start
+     * @param end_location Location where the indication should end
+     * @param indicator the indicator to use
+     */
+    set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void
+    set(...args: never[]): any
+
+    // Own virtual methods of IAnjuta.Indicable
+
+    /**
+     * Clear all indicators
+     */
+    vfunc_clear(): void
+    /**
+     * Set an indicator
+     * @param begin_location Location where the indication should start
+     * @param end_location Location where the indication should end
+     * @param indicator the indicator to use
+     */
+    vfunc_set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void
+}
+
+
+
+export const Indicable: IndicableNamespace;
+
+module Iterable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface IterableNamespace {
+      $gtype: GObject.GType<Iterable>;
+      prototype: Iterable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Iterable extends GObject.Object {
+
+    // Own methods of IAnjuta.Iterable
+
+    /**
+     * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
+     */
+    assign(src_iter: Iterable): void
+    /**
+     * Clones the iterable. The returned iterable object must be unreffed
+     * when done.
+     * @returns A new instance of this iterable pointing at the same location.
+     */
+    clone(): Iterable
+    /**
+     * Compares the position of `iter2` with this `obj`. Returns -1
+     * value if this `obj` is smaller than `iter2`. Returns +1 value
+     * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
+     * If you want difference of the iter positions, use
+     * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
+     * @returns 0 if equal, -1 if @obj is smaller than @iter2 or +1 if @obj is larger than @iter2.
+     */
+    compare(iter2: Iterable): number
+    /**
+     * Compares the position of `iter2` with this `obj` and returns difference
+     * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
+     * @returns The position difference of @obj - @iter2
+     */
+    diff(iter2: Iterable): number
+    /**
+     * Set iter to first element position. Returns FALSE if
+     * there is no element in the iterable (hence does not have first).
+     * The iter points to the first valid item.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    first(): boolean
+    /**
+     * Length of the iterable (number of elements indexable by it).
+     * @returns total length of the list.
+     */
+    get_length(): number
+    /**
+     * Index of the current iter in the iterable. It will be
+     * from 0 to length - 1 (ianjuta_iter_get_length()) if iter is pointed
+     * at valid element. It will return -1 if iter is pointed at end-iter.
+     * @returns integer index, or -1 for end-iter.
+     */
+    get_position(): number
+    /**
+     * Set iter position to end-iter (one past last element) position.
+     * Returns FALSE if there is no element in the iterable (already
+     * at end-iter).
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    last(): boolean
+    /**
+     * Set the iter position to next element position. Iter can go until one
+     * item past the last item and lands in end-iter. end-iter does not point
+     * to any valid item and signifies end of the list. Returns FALSE if iter
+     * was already at end-iter (iter can not go past it) and remains pointed
+     * to the end-iter.
+     * @returns TRUE if sucessful, otherwise FALSE if already at end-iter.
+     */
+    next(): boolean
+    /**
+     * Set the iter position to previous element position. Returns FALSE if
+     * there is no previous element and the iter remains pointed to the first
+     * element.
+     * @returns TRUE if sucessful, other FALSE.
+     */
+    previous(): boolean
+    /**
+     * Sets the current position of the iter to `position`. The given `position`
+     * must be from 0 to length - 1 (#ianjuta_iter_get_length()) to point to
+     * a valid element. Passing `position` < 0 will set it to end-iter. It
+     * returns TRUE for the above cases. FLASE will be returned, if
+     * out-of-range `position` is passed (`position` > length - 1) and iter is
+     * set to end-iter.
+     * @param position New position for the iter.
+     * @returns TRUE if successfully set (i.e. @position is within the range or end-iter). otherwise returns FALSE (i.e. @position is out of data range).
+     */
+    set_position(position: number): boolean
+
+    // Own virtual methods of IAnjuta.Iterable
+
+    /**
+     * Assigns the iter position from `src_iter`.
+     * @param src_iter Source iter from which to copy the assignment.
+     */
+    vfunc_assign(src_iter: Iterable): void
+    /**
+     * Clones the iterable. The returned iterable object must be unreffed
+     * when done.
+     */
+    vfunc_clone(): Iterable
+    /**
+     * Compares the position of `iter2` with this `obj`. Returns -1
+     * value if this `obj` is smaller than `iter2`. Returns +1 value
+     * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
+     * If you want difference of the iter positions, use
+     * #ianjuta_iterable_diff(). This method is meant for fast comparision.
+     * @param iter2 Second iter to compare.
+     */
+    vfunc_compare(iter2: Iterable): number
+    /**
+     * Compares the position of `iter2` with this `obj` and returns difference
+     * in position of the two (`obj` - `iter2`).
+     * @param iter2 Second iter to differenciate.
+     */
+    vfunc_diff(iter2: Iterable): number
+    /**
+     * Set iter to first element position. Returns FALSE if
+     * there is no element in the iterable (hence does not have first).
+     * The iter points to the first valid item.
+     */
+    vfunc_first(): boolean
+    /**
+     * Length of the iterable (number of elements indexable by it).
+     */
+    vfunc_get_length(): number
+    /**
+     * Index of the current iter in the iterable. It will be
+     * from 0 to length - 1 (ianjuta_iter_get_length()) if iter is pointed
+     * at valid element. It will return -1 if iter is pointed at end-iter.
+     */
+    vfunc_get_position(): number
+    /**
+     * Set iter position to end-iter (one past last element) position.
+     * Returns FALSE if there is no element in the iterable (already
+     * at end-iter).
+     */
+    vfunc_last(): boolean
+    /**
+     * Set the iter position to next element position. Iter can go until one
+     * item past the last item and lands in end-iter. end-iter does not point
+     * to any valid item and signifies end of the list. Returns FALSE if iter
+     * was already at end-iter (iter can not go past it) and remains pointed
+     * to the end-iter.
+     */
+    vfunc_next(): boolean
+    /**
+     * Set the iter position to previous element position. Returns FALSE if
+     * there is no previous element and the iter remains pointed to the first
+     * element.
+     */
+    vfunc_previous(): boolean
+    /**
+     * Sets the current position of the iter to `position`. The given `position`
+     * must be from 0 to length - 1 (#ianjuta_iter_get_length()) to point to
+     * a valid element. Passing `position` < 0 will set it to end-iter. It
+     * returns TRUE for the above cases. FLASE will be returned, if
+     * out-of-range `position` is passed (`position` > length - 1) and iter is
+     * set to end-iter.
+     * @param position New position for the iter.
+     */
+    vfunc_set_position(position: number): boolean
+}
+
+
+
+export const Iterable: IterableNamespace;
+
+module IterableTree {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Iterable.ConstructorProps {
+
+    }
+
+}
+
+export interface IterableTreeNamespace {
+      $gtype: GObject.GType<IterableTree>;
+      prototype: IterableTree;
+      
+      error_quark(): GLib.Quark    
+      }
+interface IterableTree extends Iterable {
+
+    // Own methods of IAnjuta.IterableTree
+
+    /**
+     * Iter position set to first child of current iter. If there is no
+     * children, return NULL (iter position is not changed).
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    children(): boolean
+    /**
+     * Returns true if current iter has children
+     * @returns TRUE if there are children, otherwise FALSE.
+     */
+    has_children(): boolean
+    /**
+     * Set iter position to parent of curernt iter. If there is no parent,
+     * returns FALSE (current iter position is not changed)
+     * @returns TRUE if sucessful, otherwise FALSE.
+     */
+    parent(): boolean
+
+    // Own virtual methods of IAnjuta.IterableTree
+
+    /**
+     * Iter position set to first child of current iter. If there is no
+     * children, return NULL (iter position is not changed).
+     */
+    vfunc_children(): boolean
+    /**
+     * Returns true if current iter has children
+     */
+    vfunc_has_children(): boolean
+    /**
+     * Set iter position to parent of curernt iter. If there is no parent,
+     * returns FALSE (current iter position is not changed)
+     */
+    vfunc_parent(): boolean
+}
+
+
+
+export const IterableTree: IterableTreeNamespace;
+
+module Language {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface LanguageNamespace {
+      $gtype: GObject.GType<Language>;
+      prototype: Language;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Language extends GObject.Object {
+
+    // Own methods of IAnjuta.Language
+
+    /**
+     * Conviniece method to get the id directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
+     * @returns A valid language id or 0
+     */
+    get_from_editor(editor: EditorLanguage): LanguageId
+    get_from_mime_type(mime_type: string): LanguageId
+    get_from_string(string: string): LanguageId
+    get_languages(): number[]
+    get_make_target(id: LanguageId): string
+    get_name(id: LanguageId): string
+    /**
+     * Conviniece method to get the name directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
+     * @returns A language name or NULL
+     */
+    get_name_from_editor(editor: EditorLanguage): string
+
+    // Own virtual methods of IAnjuta.Language
+
+    /**
+     * Conviniece method to get the id directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
+     */
+    vfunc_get_from_editor(editor: EditorLanguage): LanguageId
+    vfunc_get_from_mime_type(mime_type: string): LanguageId
+    vfunc_get_from_string(string: string): LanguageId
+    vfunc_get_languages(): number[]
+    vfunc_get_make_target(id: LanguageId): string
+    vfunc_get_name(id: LanguageId): string
+    /**
+     * Conviniece method to get the name directly from the editor
+     * @param editor An object implementing IAnjutaEditorLanguage
+     */
+    vfunc_get_name_from_editor(editor: EditorLanguage): string
+}
+
+
+
+export const Language: LanguageNamespace;
+
+module LanguageProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Provider.ConstructorProps {
+
+    }
+
+}
+
+export interface LanguageProviderNamespace {
+      $gtype: GObject.GType<LanguageProvider>;
+      prototype: LanguageProvider;
+      
+      error_quark(): GLib.Quark    
+      }
+interface LanguageProvider extends Provider {
+
+    // Own methods of IAnjuta.LanguageProvider
+
+    /**
+     * Searches for a calltip in the cache
+     * @param call_context name of the method to show a calltip
+     * @returns tips for the          searched name of the method from the cache,          NULL if nothing found
+     */
+    get_calltip_cache(call_context: string): string[]
+    /**
+     * Searches for a calltip context
+     * @param iter current cursor position
+     * @returns name of the method to show a calltip for or NULL
+     */
+    get_calltip_context(iter: Iterable): string
+    /**
+     * Creates a new calltip
+     * @param call_context name of the method to create a new calltip
+     * @param iter current cursor position
+     */
+    new_calltip(call_context: string, iter: Iterable): void
+    /**
+     * Show completion for the context at position `iter`. The provider should
+     * call ianjuta_editor_assist_proposals here to add proposals to the list.
+     * 
+     * Note that this is called after every character typed and the list of proposals
+     * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
+     * @returns the iter where the provider populated, NULL otherwise
+     */
+    populate_completions(iter: Iterable): (Iterable | null)
+
+    // Own virtual methods of IAnjuta.LanguageProvider
+
+    /**
+     * Searches for a calltip in the cache
+     * @param call_context name of the method to show a calltip
+     */
+    vfunc_get_calltip_cache(call_context: string): string[]
+    /**
+     * Searches for a calltip context
+     * @param iter current cursor position
+     */
+    vfunc_get_calltip_context(iter: Iterable): string
+    /**
+     * Creates a new calltip
+     * @param call_context name of the method to create a new calltip
+     * @param iter current cursor position
+     */
+    vfunc_new_calltip(call_context: string, iter: Iterable): void
+    /**
+     * Show completion for the context at position `iter`. The provider should
+     * call ianjuta_editor_assist_proposals here to add proposals to the list.
+     * 
+     * Note that this is called after every character typed and the list of proposals
+     * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
+     */
+    vfunc_populate_completions(iter: Iterable): (Iterable | null)
+}
+
+
+
+export const LanguageProvider: LanguageProviderNamespace;
+
+module Loader {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface LoaderNamespace {
+      $gtype: GObject.GType<Loader>;
+      prototype: Loader;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Loader extends GObject.Object {
+}
+
+
+
+export const Loader: LoaderNamespace;
+
+module Markable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface MarkableNamespace {
+      $gtype: GObject.GType<Markable>;
+      prototype: Markable;
+      
+          
+      }
+interface Markable extends GObject.Object {
+
+    // Own methods of IAnjuta.Markable
+
+    /**
+     * Delete the `marker` from all locations.
+     * @param marker Marker to delete.
+     */
+    delete_all_markers(marker: MarkableMarker): void
+    /**
+     * Check if the `marker` is set at the given `location`.
+     * @param location Location to check.
+     * @param marker Marker to check.
+     * @returns TRUE if the marker is set at the location, other false.
+     */
+    is_marker_set(location: number, marker: MarkableMarker): boolean
+    /**
+     * Location where a marker is set could have moved by some operation in
+     * the implementation. To retrieve the correct location where the marker
+     * has moved, pass the handle retured by ianjuta_markable_mark() to this
+     * method.
+     * @param handle Handle of location.
+     * @returns Current location where the marker was set.
+     */
+    location_from_handle(handle: number): number
+    /**
+     * Marks the specified location with the given marker type. Location is
+     * implementation depenedent. For example, for an editor location means
+     * lines where markers are set.
+     * @param location Location at which the marker to set.
+     * @param marker Type of marker to be used
+     * @param tooltip optional tooltip displayed with the marker
+     * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
+     */
+    mark(location: number, marker: MarkableMarker, tooltip?: (string | null)): number
+    /**
+     * Clears the `marker` at given `location`.
+     * @param location Location where the marker is set.
+     * @param marker The marker to unset.
+     */
+    unmark(location: number, marker: MarkableMarker): void
+
+    // Own virtual methods of IAnjuta.Markable
+
+    /**
+     * Delete the `marker` from all locations.
+     * @param marker Marker to delete.
+     */
+    vfunc_delete_all_markers(marker: MarkableMarker): void
+    /**
+     * Check if the `marker` is set at the given `location`.
+     * @param location Location to check.
+     * @param marker Marker to check.
+     */
+    vfunc_is_marker_set(location: number, marker: MarkableMarker): boolean
+    /**
+     * Location where a marker is set could have moved by some operation in
+     * the implementation. To retrieve the correct location where the marker
+     * has moved, pass the handle retured by ianjuta_markable_mark() to this
+     * method.
+     * @param handle Handle of location.
+     */
+    vfunc_location_from_handle(handle: number): number
+    /**
+     * Marks the specified location with the given marker type. Location is
+     * implementation depenedent. For example, for an editor location means
+     * lines where markers are set.
+     * @param location Location at which the marker to set.
+     * @param marker Type of marker to be used
+     * @param tooltip optional tooltip displayed with the marker
+     */
+    vfunc_mark(location: number, marker: MarkableMarker, tooltip?: (string | null)): number
+    vfunc_marker_clicked(double_click: boolean, location: number): void
+    /**
+     * Clears the `marker` at given `location`.
+     * @param location Location where the marker is set.
+     * @param marker The marker to unset.
+     */
+    vfunc_unmark(location: number, marker: MarkableMarker): void
+}
+
+
+
+export const Markable: MarkableNamespace;
+
+module MessageManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface MessageManagerNamespace {
+      $gtype: GObject.GType<MessageManager>;
+      prototype: MessageManager;
+      
+          
+      }
+interface MessageManager extends GObject.Object {
+
+    // Own methods of IAnjuta.MessageManager
+
+    /**
+     * Remove view from the message-manager. The view
+     * will become invalid.
+     * @param view The view to remove
+     */
+    remove_view(view: MessageView): void
+    /**
+     * Set view to be on top of the notebook.
+     * @param view A message view
+     */
+    set_current_view(view: MessageView): void
+    /**
+     * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
+     */
+    set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
+    /**
+     * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
+     */
+    set_view_icon_from_stock(view: MessageView, icon: string): void
+    /**
+     * Sets the title of view.
+     * @param view A message view
+     * @param title Sets the title of view.
+     */
+    set_view_title(view: MessageView, title: string): void
+
+    // Own virtual methods of IAnjuta.MessageManager
+
+    /**
+     * Remove view from the message-manager. The view
+     * will become invalid.
+     * @param view The view to remove
+     */
+    vfunc_remove_view(view: MessageView): void
+    /**
+     * Set view to be on top of the notebook.
+     * @param view A message view
+     */
+    vfunc_set_current_view(view: MessageView): void
+    /**
+     * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
+     */
+    vfunc_set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
+    /**
+     * Sets the icon of view.
+     * @param view A message view
+     * @param icon Sets the icon of view.
+     */
+    vfunc_set_view_icon_from_stock(view: MessageView, icon: string): void
+    /**
+     * Sets the title of view.
+     * @param view A message view
+     * @param title Sets the title of view.
+     */
+    vfunc_set_view_title(view: MessageView, title: string): void
+}
+
+
+
+export const MessageManager: MessageManagerNamespace;
+
+module MessageView {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface MessageViewNamespace {
+      $gtype: GObject.GType<MessageView>;
+      prototype: MessageView;
+      
+      error_quark(): GLib.Quark    
+      }
+interface MessageView extends GObject.Object {
+
+    // Own methods of IAnjuta.MessageView
+
+    /**
+     * Append the message with summary displayed and details displayed as tooltip
+     * @param type type of the message
+     * @param summary summary of the message
+     * @param details details of the message
+     */
+    append(type: MessageViewType, summary: string, details: string): void
+    /**
+     * Appends the text in buffer. Flushes the buffer where a newline is found.
+     * by emiiting buffer_flushed signal. The string is expected to be utf8.
+     * @param text text to show as message
+     */
+    buffer_append(text: string): void
+    /**
+     * Clear all messages in buffer
+     */
+    clear(): void
+    /**
+     * Get the currently selected message
+     */
+    get_current_message(): string
+    /**
+     * Select next message (of type INFO, WARNING or ERROR)
+     */
+    select_next(): void
+    /**
+     * Select previous message
+     */
+    select_previous(): void
+
+    // Own virtual methods of IAnjuta.MessageView
+
+    /**
+     * Append the message with summary displayed and details displayed as tooltip
+     * @param type type of the message
+     * @param summary summary of the message
+     * @param details details of the message
+     */
+    vfunc_append(type: MessageViewType, summary: string, details: string): void
+    /**
+     * Appends the text in buffer. Flushes the buffer where a newline is found.
+     * by emiiting buffer_flushed signal. The string is expected to be utf8.
+     * @param text text to show as message
+     */
+    vfunc_buffer_append(text: string): void
+    vfunc_buffer_flushed(line: string): void
+    /**
+     * Clear all messages in buffer
+     */
+    vfunc_clear(): void
+    /**
+     * Get the currently selected message
+     */
+    vfunc_get_current_message(): string
+    vfunc_message_clicked(message: string): void
+    /**
+     * Select next message (of type INFO, WARNING or ERROR)
+     */
+    vfunc_select_next(): void
+    /**
+     * Select previous message
+     */
+    vfunc_select_previous(): void
+}
+
+
+
+export const MessageView: MessageViewNamespace;
+
+module PluginFactory {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface PluginFactoryNamespace {
+      $gtype: GObject.GType<PluginFactory>;
+      prototype: PluginFactory;
+      
+          
+      }
+interface PluginFactory extends GObject.Object {
+}
+
+
+
+export const PluginFactory: PluginFactoryNamespace;
+
+module Preferences {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface PreferencesNamespace {
+      $gtype: GObject.GType<Preferences>;
+      prototype: Preferences;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Preferences extends GObject.Object {
+
+    // Own methods of IAnjuta.Preferences
+
+    /**
+     * When called, the plugin should install it's preferences
+     * @param prefs AnjutaPreferences to install to
+     */
+    merge(prefs: Anjuta.Preferences): void
+    /**
+     * When called, the plugin should uninstall it's preferences
+     * @param prefs AnjutaPreferences to install to
+     */
+    unmerge(prefs: Anjuta.Preferences): void
+
+    // Own virtual methods of IAnjuta.Preferences
+
+    /**
+     * When called, the plugin should install it's preferences
+     * @param prefs AnjutaPreferences to install to
+     */
+    vfunc_merge(prefs: Anjuta.Preferences): void
+    /**
+     * When called, the plugin should uninstall it's preferences
+     * @param prefs AnjutaPreferences to install to
+     */
+    vfunc_unmerge(prefs: Anjuta.Preferences): void
+}
+
+
+
+export const Preferences: PreferencesNamespace;
+
+module Print {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface PrintNamespace {
+      $gtype: GObject.GType<Print>;
+      prototype: Print;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Print extends GObject.Object {
+
+    // Own methods of IAnjuta.Print
+
+    /**
+     * Print the plugin (the file in case of the editor). In most cases this will show
+     * a print dialog
+     */
+    print(): void
+    /**
+     * Show print preview dialog
+     */
+    print_preview(): void
+
+    // Own virtual methods of IAnjuta.Print
+
+    /**
+     * Print the plugin (the file in case of the editor). In most cases this will show
+     * a print dialog
+     */
+    vfunc_print(): void
+    /**
+     * Show print preview dialog
+     */
+    vfunc_print_preview(): void
+}
+
+
+
+export const Print: PrintNamespace;
+
+module Project {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface ProjectNamespace {
+      $gtype: GObject.GType<Project>;
+      prototype: Project;
+      
+          
+      }
+interface Project extends GObject.Object {
+
+    // Own methods of IAnjuta.Project
+
+    /**
+     * Create a new node and insert it after sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
+     * @returns The new node, NULL if error
+     */
+    add_node_after(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file?: (Gio.File | null), name?: (string | null)): Anjuta.ProjectNode
+    /**
+     * Create a new node and insert it before sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
+     * @returns The new node, NULL if error
+     */
+    add_node_before(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file?: (Gio.File | null), name?: (string | null)): Anjuta.ProjectNode
+    /**
+     * Return a list of possible node;
+     * @returns A list containing information on all node supported by the project.
+     */
+    get_node_info(): Anjuta.ProjectNodeInfo[]
+    /**
+     * Get root_node
+     * @returns The root node
+     */
+    get_root(): Anjuta.ProjectNode
+    /**
+     * Return TRUE if the project is loaded;
+     * @returns TRUE if the project is completely loaded.
+     */
+    is_loaded(): boolean
+    /**
+     * Reload a project node
+     * @param node Project node to reload
+     * @returns TRUE if the node has been loaded without error
+     */
+    load_node(node: Anjuta.ProjectNode): boolean
+    /**
+     * Remove a node
+     * @param node Node
+     * @returns TRUE if the node can be removed
+     */
+    remove_node(node: Anjuta.ProjectNode): boolean
+    /**
+     * Remove a property of the node
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @returns TRUE if the node is removed
+     */
+    remove_property(node: Anjuta.ProjectNode, id: string, name?: (string | null)): boolean
+    /**
+     * Save a project node
+     * @param node Project node to save
+     * @returns TRUE if the node has been saved without error
+     */
+    save_node(node: Anjuta.ProjectNode): boolean
+    /**
+     * Change a properties on node.
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @param value Value
+     * @returns The new property of NULL if the property cannot be set
+     */
+    set_property(node: Anjuta.ProjectNode, id: string, name: (string | null), value: string): (Anjuta.ProjectProperty | null)
+    set_property(...args: never[]): any
+
+    // Own virtual methods of IAnjuta.Project
+
+    /**
+     * Create a new node and insert it after sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
+     */
+    vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file?: (Gio.File | null), name?: (string | null)): Anjuta.ProjectNode
+    /**
+     * Create a new node and insert it before sibling
+     * @param parent Parent
+     * @param sibling Sibling
+     * @param type Node type
+     * @param file Optional file object for the node
+     * @param name Optional name for the node
+     */
+    vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file?: (Gio.File | null), name?: (string | null)): Anjuta.ProjectNode
+    vfunc_file_changed(node?: (any | null)): void
+    /**
+     * Return a list of possible node;
+     */
+    vfunc_get_node_info(): Anjuta.ProjectNodeInfo[]
+    /**
+     * Get root_node
+     */
+    vfunc_get_root(): Anjuta.ProjectNode
+    /**
+     * Return TRUE if the project is loaded;
+     */
+    vfunc_is_loaded(): boolean
+    /**
+     * Reload a project node
+     * @param node Project node to reload
+     */
+    vfunc_load_node(node: Anjuta.ProjectNode): boolean
+    vfunc_node_changed(node: (any | null), error: GLib.Error): void
+    vfunc_node_loaded(node: (any | null), error: GLib.Error): void
+    vfunc_node_saved(node: (any | null), error: GLib.Error): void
+    /**
+     * Remove a node
+     * @param node Node
+     */
+    vfunc_remove_node(node: Anjuta.ProjectNode): boolean
+    /**
+     * Remove a property of the node
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     */
+    vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name?: (string | null)): boolean
+    /**
+     * Save a project node
+     * @param node Project node to save
+     */
+    vfunc_save_node(node: Anjuta.ProjectNode): boolean
+    /**
+     * Change a properties on node.
+     * @param node Node
+     * @param id Property
+     * @param name Name for map property
+     * @param value Value
+     */
+    vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: (string | null), value: string): (Anjuta.ProjectProperty | null)
+    vfunc_set_property(...args: never[]): any
+}
+
+
+
+export const Project: ProjectNamespace;
+
+module ProjectBackend {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface ProjectBackendNamespace {
+      $gtype: GObject.GType<ProjectBackend>;
+      prototype: ProjectBackend;
+      
+      error_quark(): GLib.Quark    
+      }
+interface ProjectBackend extends GObject.Object {
+
+    // Own methods of IAnjuta.ProjectBackend
+
+    /**
+     * Create a new Anjuta project.
+     * @param file Project file or directory
+     * @returns An object implementing the #IAnjutaProject interface.
+     */
+    new_project(file: Gio.File): Project
+    /**
+     * Check if the directory contains a project supported by this
      * backend.
+     * @param directory Project file or directory
+     * @returns 0 if the project is invalid and > 0 if the project is valid.
      */
-    enum DebuggerBreakpointMethod {
-        /**
-         * Allow to set breakpoint on address
-         */
-        SET_AT_ADDRESS,
-        /**
-         * Allow to set breakpoint on function name
-         */
-        SET_AT_FUNCTION,
-        /**
-         * Allow to disable breakpoint
-         */
-        ENABLE,
-        /**
-         * Allow to ignore breakpoint
-         */
-        IGNORE,
-        /**
-         * Allow to add a condition on breakpoint
-         */
-        CONDITION,
-    }
+    probe(directory: Gio.File): number
+
+    // Own virtual methods of IAnjuta.ProjectBackend
+
     /**
-     * This enumeration defined various characteristics of the breakpoint.
+     * Create a new Anjuta project.
+     * @param file Project file or directory
      */
-    enum DebuggerBreakpointType {
-        /**
-         * Set for removed breakpoint
-         */
-        REMOVED,
-        /**
-         * Set for changed breakpoint
-         */
-        UPDATED,
-        /**
-         * Set on source line
-         */
-        ON_LINE,
-        /**
-         * Set on an addresse
-         */
-        ON_ADDRESS,
-        /**
-         * Set on a function name
-         */
-        ON_FUNCTION,
-        /**
-         * Set on read access
-         */
-        ON_READ,
-        /**
-         * Set on write access
-         */
-        ON_WRITE,
-        /**
-         * Has enable information
-         */
-        WITH_ENABLE,
-        /**
-         * Has ignore information,
-         */
-        WITH_IGNORE,
-        /**
-         * Has counter information
-         */
-        WITH_TIME,
-        /**
-         * Has a condition
-         */
-        WITH_CONDITION,
-        /**
-         * Temporary breakpoint, automatically removed when triggered
-         */
-        WITH_TEMPORARY,
-        /**
-         * Pending breakpoint
-         */
-        WITH_PENDING,
-    }
+    vfunc_new_project(file: Gio.File): Project
     /**
-     * This enumeration is used to defined the error returned by the debugger
+     * Check if the directory contains a project supported by this
      * backend.
+     * @param directory Project file or directory
      */
-    class DebuggerError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.DebuggerError
+    vfunc_probe(directory: Gio.File): number
+}
 
-        /**
-         * No error
-         */
-        OK: number;
-        /**
-         * Debugger is not ready to execute the command
-         */
-        NOT_READY: number;
-        /**
-         * Debugger is not is running state
-         */
-        NOT_RUNNING: number;
-        /**
-         * Debugger is not is stopped state
-         */
-        NOT_STOPPED: number;
-        /**
-         * Debugger is not is loaded state
-         */
-        NOT_LOADED: number;
-        /**
-         * Debugger is not in started state
-         */
-        NOT_STARTED: number;
-        /**
-         * Debugger is not connected:
-         */
-        NOT_CONNECTED: number;
-        /**
-         * Corresponding function is not implemented
-         */
-        NOT_IMPLEMENTED: number;
-        /**
-         * Operation has been cancelled
-         */
-        CANCEL: number;
-        /**
-         * Debugger cannot create variable
-         */
-        UNABLE_TO_CREATE_VARIABLE: number;
-        /**
-         * Debugger cannot access memory
-         */
-        UNABLE_TO_ACCESS_MEMORY: number;
-        /**
-         * Debugger cannot open file
-         */
-        UNABLE_TO_OPEN_FILE: number;
-        /**
-         * Debugger cannot debug such file
-         */
-        UNSUPPORTED_FILE_TYPE: number;
-        /**
-         * Debugger is too old
-         */
-        UNSUPPORTED_VERSION: number;
-        /**
-         * Debugger cannot be found
-         */
-        UNABLE_TO_FIND_DEBUGGER: number;
-        /**
-         * Command has already been executed
-         */
-        ALREADY_DONE: number;
-        /**
-         * Program cannot be found
-         */
-        PROGRAM_NOT_FOUND: number;
-        /**
-         * Unable to connect to debugger
-         */
-        UNABLE_TO_CONNECT: number;
-        /**
-         * Unknown error
-         */
-        UNKNOWN_ERROR: number;
-        /**
-         * other error
-         */
-        OTHER_ERROR: number;
 
-        // Constructors of IAnjuta-3.0.DebuggerError
 
-        constructor(options: { message: string; code: number });
+export const ProjectBackend: ProjectBackendNamespace;
 
-        // Owm methods of IAnjuta-3.0.DebuggerError
+module ProjectChooser {
 
-        static quark(): GLib.Quark;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
+
+}
+
+export interface ProjectChooserNamespace {
+      $gtype: GObject.GType<ProjectChooser>;
+      prototype: ProjectChooser;
+      
+      error_quark(): GLib.Quark    
+      }
+interface ProjectChooser extends GObject.Object {
+
+    // Own methods of IAnjuta.ProjectChooser
 
     /**
-     * This enumeration is used to defined the kind of output in
-     * #IAnjutaDebuggerOutputCallback
+     * Gets the currently selected element in the project chooser.
+     * @returns A #GFile corresponding to the selected element in the project view or %NULL if no valid node is selected. The file is owned by the widget If you want to keep a pointer to the file you must add a refcount using g_object_ref().
      */
-    enum DebuggerOutputType {
-        /**
-         * Output from debugger
-         */
-        OUTPUT,
-        /**
-         * Warning from debugger
-         */
-        WARNING_OUTPUT,
-        /**
-         * Error from debugger
-         */
-        ERROR_OUTPUT,
-        /**
-         * Additional message from debugger
-         */
-        INFO_OUTPUT,
-    }
+    get_selected(): Gio.File
     /**
-     * This enumeration is used to defined the different state of the debugger.
+     * Initialize a project chooser button allowing to select a parent node
+     * where you can add the nodes of type child_type.
+     * As special cases with
+     * <variablelist>
+     *   <varlistentry>
+     *     <term>ANJUTA_PROJECT_ROOT</term>
+     *     <listitem><para>all nodes are included</para></listitem>
+     *   </varlistentry>
+     *   <varlistentry>
+     *     <term>ANJUTA_PROJECT_MODULE</term>
+     *     <listitem><para>only modules are included, this can be used
+     *     to add a new package. While ANJUTA_PROJECT_PACKAGE allows you
+     *     to select a target using a package.</para></listitem>
+     *   </varlistentry>
+     * </variablelist>
+     * @param manager A project manager
+     * @param child_type Select one element type: source, group or target
+     * @returns TRUE if sucessful, other FALSE.
      */
-    enum DebuggerState {
-        /**
-         * Debugger is executing a command, it can enter in another
-         *                         at the end of the command.
-         */
-        BUSY,
-        /**
-         * Debugger is stopped.
-         */
-        STOPPED,
-        /**
-         * Debugger is started but no program is loaded.
-         */
-        STARTED,
-        /**
-         * Debugger is started and has a program loaded.
-         */
-        PROGRAM_LOADED,
-        /**
-         * Debugger is started and has a program stopped.
-         */
-        PROGRAM_STOPPED,
-        /**
-         * Debugger is started and has a program running.
-         */
-        PROGRAM_RUNNING,
-    }
-    class DocumentManagerError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.DocumentManagerError
+    set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean
 
-        DOESNT_EXIST: number;
+    // Own virtual methods of IAnjuta.ProjectChooser
 
-        // Constructors of IAnjuta-3.0.DocumentManagerError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.DocumentManagerError
-
-        static quark(): GLib.Quark;
-    }
-
+    vfunc_changed(): void
     /**
-     * This enumeration is used to specify the type of text. Note that not all
-     * editors implement this.
+     * Gets the currently selected element in the project chooser.
      */
-    enum EditorAttribute {
-        /**
-         * Normal text
-         */
-        TEXT,
-        /**
-         * A keyword of the programming language
-         */
-        KEYWORD,
-        /**
-         * A comment
-         */
-        COMMENT,
-        /**
-         * A string
-         */
-        STRING,
+    vfunc_get_selected(): Gio.File
+    /**
+     * Initialize a project chooser button allowing to select a parent node
+     * where you can add the nodes of type child_type.
+     * As special cases with
+     * <variablelist>
+     *   <varlistentry>
+     *     <term>ANJUTA_PROJECT_ROOT</term>
+     *     <listitem><para>all nodes are included</para></listitem>
+     *   </varlistentry>
+     *   <varlistentry>
+     *     <term>ANJUTA_PROJECT_MODULE</term>
+     *     <listitem><para>only modules are included, this can be used
+     *     to add a new package. While ANJUTA_PROJECT_PACKAGE allows you
+     *     to select a target using a package.</para></listitem>
+     *   </varlistentry>
+     * </variablelist>
+     * @param manager A project manager
+     * @param child_type Select one element type: source, group or target
+     */
+    vfunc_set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean
+}
+
+
+
+export const ProjectChooser: ProjectChooserNamespace;
+
+module ProjectManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
-    class EditorError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.EditorError
 
-        DOESNT_EXIST: number;
+}
 
-        // Constructors of IAnjuta-3.0.EditorError
+export interface ProjectManagerNamespace {
+      $gtype: GObject.GType<ProjectManager>;
+      prototype: ProjectManager;
+      
+      error_quark(): GLib.Quark    
+      }
+interface ProjectManager extends GObject.Object {
 
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.EditorError
-
-        static quark(): GLib.Quark;
-    }
+    // Own methods of IAnjuta.ProjectManager
 
     /**
-     * This enumeration is used to specify the type of text. Note that not all
-     * editors implement this.
+     * Prompts the user to add a new group to the project. The user can select
+     * a parent group different from the one set as default.
+     * @param name Group name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
+     * @returns A #GFile corresponding to the new group added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    enum EditorLineModeType {
-        /**
-         * Line-Feed (Unix)
-         */
-        LF,
-        /**
-         * Carat return (Max)
-         */
-        CR,
-        /**
-         * Caret return + line-feed (Windows)
-         */
-        CRLF,
-    }
+    add_group(name: string, default_group?: (Gio.File | null)): Gio.File
     /**
-     * Possible build errors
+     * Prompts the user to add a file to the project. If the user selects
+     * multiple files only the first source file is returned.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param name Source name or URI.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
+     * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    class EnvironmentError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.EnvironmentError
-
-        CONFIG: number;
-        OTHER_ERROR: number;
-
-        // Constructors of IAnjuta-3.0.EnvironmentError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.EnvironmentError
-
-        static quark(): GLib.Quark;
-    }
-
+    add_source(name: string, default_target?: (Gio.File | null)): Gio.File
     /**
-     * This enumeration is used to specify the appearance of the indicator
+     * Adds a file to the project without prompting the user.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param name Source name or URI.
+     * @param target A #GFile corresponding to the parent target or group.
+     * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    enum IndicableIndicator {
-        /**
-         * No indicator
-         */
-        NONE,
-        /**
-         * Important indicator
-         */
-        IMPORTANT,
-        /**
-         * Warning indicator
-         */
-        WARNING,
-        /**
-         * Critical indicator
-         */
-        CRITICAL,
-    }
-    class MarkableError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.MarkableError
-
-        INVALID_LOCATION: number;
-
-        // Constructors of IAnjuta-3.0.MarkableError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.MarkableError
-
-        static quark(): GLib.Quark;
-    }
-
+    add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
-     * This enumeration is used to specify the pixmap used for the marker
+     * Prompts the user to add several files to the project. Depending on the
+     * project backend, it can be possible that the source files must
+     * be located in a particular directory.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param names Sources name or URI to add.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
+     * @returns A list of #GFile corresponding to all new source files added in the project. You own the list with the the returned files; use g_list_free() and g_object_unref() on each file to release them.
      */
-    enum MarkableMarker {
-        /**
-         * Mark a particular line
-         */
-        LINEMARKER,
-        /**
-         * A bookmark
-         */
-        BOOKMARK,
-        /**
-         * An (error) message
-         */
-        MESSAGE,
-        /**
-         * a disabled breakpoint
-         */
-        BREAKPOINT_DISABLED,
-        /**
-         * a enabled breakpoint
-         */
-        BREAKPOINT_ENABLED,
-        /**
-         * Marks the program counter position
-         */
-        PROGRAM_COUNTER,
-    }
-    class MessageManagerError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.MessageManagerError
-
-        DOESNT_EXIST: number;
-
-        // Constructors of IAnjuta-3.0.MessageManagerError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.MessageManagerError
-
-        static quark(): GLib.Quark;
-    }
-
+    add_sources(names: string[], default_target?: (Gio.File | null)): Gio.File[]
     /**
-     * Speficy the type ot the message added to the message view
+     * Prompts the user to add a new target to the project. The user can select
+     * a parent group different from the one set as default.
+     * @param name Target name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
+     * @returns A #GFile corresponding to the new target added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    enum MessageViewType {
-        /**
-         * Normal message
-         */
-        TYPE_NORMAL,
-        /**
-         * Info message (highlighed)
-         */
-        TYPE_INFO,
-        /**
-         * Warning message
-         */
-        TYPE_WARNING,
-        /**
-         * Error message
-         */
-        TYPE_ERROR,
-    }
+    add_target(name: string, default_group?: (Gio.File | null)): Gio.File
     /**
-     * These enumeration is used to specify errors.
+     * Gets the capabilites of project whether it can add group, target
+     * sources etc.
+     * @returns Supported capabilites.
      */
-    class PluginFactoryError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.PluginFactoryError
-
-        OK: number;
-        /**
-         * Module file location is
-         * missing in .plugin file
-         */
-        MISSING_LOCATION: number;
-        /**
-         * Plugin type (just after
-         * double colon following location) is missing in .plugin file
-         */
-        MISSING_TYPE: number;
-        /**
-         * Module file name not found,
-         * plugin module is probably not installed
-         */
-        MISSING_MODULE: number;
-        /**
-         * Module file cannot be
-         * loaded, not a shared library perhaps
-         */
-        INVALID_MODULE: number;
-        /**
-         * Module does not contain
-         * registration function, library is not an anjuta plugin or
-         * is not for the right version
-         */
-        MISSING_FUNCTION: number;
-        /**
-         * Module has not registered
-         * 	plugin type, library is not an anjuta plugin or not for
-         * the right version
-         */
-        INVALID_TYPE: number;
-        /**
-         * Another error
-         */
-        UNKNOWN_ERROR: number;
-
-        // Constructors of IAnjuta-3.0.PluginFactoryError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.PluginFactoryError
-
-        static quark(): GLib.Quark;
-    }
-
-    class ProjectError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.ProjectError
-
-        ERROR_SUCCESS: number;
-        ERROR_DOESNT_EXIST: number;
-        ERROR_ALREADY_EXISTS: number;
-        ERROR_VALIDATION_FAILED: number;
-        ERROR_PROJECT_MALFORMED: number;
-        ERROR_WRONG_PARENT: number;
-        ERROR_NOT_SUPPORTED: number;
-        ERROR_GENERAL_FAILURE: number;
-
-        // Constructors of IAnjuta-3.0.ProjectError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.ProjectError
-
-        static quark(): GLib.Quark;
-    }
-
-    enum ProjectProbe {
-        PROBE_FILES,
-        PROBE_MAKE_FILES,
-        PROBE_PROJECT_FILES,
-    }
+    get_capabilities(): number
     /**
-     * Symbol Fields. Used to define and retrieve results from query. Each of
-     * these fields are either integer or string. Use the right method to
-     * retrieve them. That is, for integer use ianjuta_symbol_get_int(),
-     * for string use ianjuta_symbol_get_string(), and for boolean use
-     * ianjuta_symbol_get_boolean(). Some fields can be in both forms,
-     * e.g. #IANJUTA_SYMBOL_FIELD_TYPE.
+     * Recursively gets the list of all children below the corresponding
+     * parent having the specify type.
+     * @param parent A #GFile corresponding to the parent.
+     * @param children_type Select one element type: source, group or target
+     * @returns The list of #GFile corresponding to all children or %NULL if the element has no children with the corresponding type. Free the returned * list with g_list_free() and the files with g_object_unref().
      */
-    enum SymbolField {
-        /**
-         * Integer. A unique ID of the symbol
-         */
-        FIELD_ID,
-        /**
-         * String. Name of the symbol
-         */
-        FIELD_NAME,
-        /**
-         * Integer. The file line number where the symbol is found.
-         */
-        FIELD_FILE_POS,
-        FILED_SCOPE_DEF_ID,
-        /**
-         * Boolean: TRUE if symbol is within file scope,
-         *     otherwise FALSE.
-         */
-        FIELD_FILE_SCOPE,
-        /**
-         * String. Signature of a method, if symbol is a funtion.
-         *     Namely, the arguments list of the funtion.
-         */
-        FIELD_SIGNATURE,
-        /**
-         * String. Return type of a method, if symbol is a function.
-         */
-        FIELD_RETURNTYPE,
-        /**
-         * Both string and Integer. Type attribute of a symbol.
-         *     In string form, it is name of the type in string form.
-         *     In integer form, it is IAnjutaSymbolType enumerator value.
-         */
-        FIELD_TYPE,
-        /**
-         * type_name attribute of a symbol.
-         *     If a type could be "class" then its type_name may be "MyFooClass" etc.
-         */
-        FIELD_TYPE_NAME,
-        /**
-         * String. The relative path to the file where the symbol is found.
-         */
-        FIELD_FILE_PATH,
-        /**
-         * String. The project name to which the symbol belongs to.
-         */
-        FIELD_PROJECT_NAME,
-        /**
-         * String. The project version to which the symbol belongs to.
-         */
-        FIELD_PROJECT_VERSION,
-        /**
-         * String. Implementation attribute of a symbol. It may be
-         *     "pure virtual", "virtual", etc.
-         */
-        FIELD_IMPLEMENTATION,
-        /**
-         * String. Access attribute of a symbol.
-         *     It may be "public", "private" etc.
-         */
-        FIELD_ACCESS,
-        /**
-         * Kind attribute of a symbol, such as
-         *     "enumerator", "namespace", "class" etc.
-         */
-        FIELD_KIND,
-        /**
-         * Boolean. TRUE if symbol is
-         *     a scope container, such as namespace, class, struct etc., otherwise
-         *     FALSE.
-         */
-        FIELD_IS_CONTAINER,
-        /**
-         * The end marker.
-         */
-        FIELD_END,
-    }
+    get_children(parent: Gio.File, children_type: number): Gio.File[]
     /**
-     * Sets the database to use for the query. System database is where
-     * all system library symbols are found. While project database is where
-     * currently open project's symbols are found.
+     * Gets the current project.
+     * @returns the currently active project. NULL if none is there.
      */
-    enum SymbolQueryDb {
-        /**
-         * Select project database.
-         */
-        DB_PROJECT,
-        /**
-         * Select system database.
-         */
-        DB_SYSTEM,
-    }
+    get_current_project(): Project
     /**
-     * Defines file scope of symbols to query.
+     * Get a list of all elements of this type in the project.
+     * @param element_type Select one element type: source, group or target
+     * @returns Get list of #GFile corresponding to all valid elements or %NULL if there are no elements of this type. Free the returned list with g_list_free() and the files with g_object_unref().
      */
-    enum SymbolQueryFileScope {
-        /**
-         * Ignore file scope
-         */
-        SEARCH_FS_IGNORE,
-        /**
-         * Only public symbols visible to rest of project.
-         */
-        SEARCH_FS_PUBLIC,
-        /**
-         * Only private symbols visible inside a file.
-         */
-        SEARCH_FS_PRIVATE,
-    }
+    get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[]
+    get_packages(): string[]
     /**
-     * This parameter determines the mode of query execution. By default,
-     * IANJUTA_SYMBOL_QUERY_MODE_SYNC is selected.
+     * Gets the currently selected element in the project manager view.
+     * @returns A #GFile corresponding to the selected element in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    enum SymbolQueryMode {
-        /**
-         * Syncronous query. The result is immediately
-         *     available as retrun value of search call.
-         */
-        MODE_SYNC,
-        /**
-         * Asynchronous query. The search call
-         *     return immediately and result delievered as a signal later. The actual
-         *     query is done in a separate thread.
-         */
-        MODE_ASYNC,
-        /**
-         * If the database is busy
-         *     scanning, then the query is performed later when database is ready.
-         *     It returns NULL and result is delivered through async-result signal.
-         *     Only query can stay queued, so calling search multiple times would
-         *     result in only the last one being active.
-         */
-        MODE_QUEUED,
-    }
+    get_selected(): Gio.File
     /**
-     * Names of query that defined what kind of query it is.
+     * Get the type of the corresponding target: program, library...
+     * @param target A #GFile corresponding to a target
+     * @returns Return the type of the target.
      */
-    enum SymbolQueryName {
-        /**
-         * Query to perform basic substring search.
-         */
-        SEARCH,
-        /**
-         * Query to get all symbols
-         */
-        SEARCH_ALL,
-        /**
-         * Query to perform substring search in a file.
-         */
-        SEARCH_FILE,
-        /**
-         * Query to perform substring search in a scope.
-         */
-        SEARCH_IN_SCOPE,
-        /**
-         * Query to find the symbol of given ID.
-         */
-        SEARCH_ID,
-        /**
-         * Query to find members of a scope (eg. class).
-         */
-        SEARCH_MEMBERS,
-        /**
-         * Query to get parents of a class.
-         */
-        SEARCH_CLASS_PARENTS,
-        /**
-         * Query to find scope name of a file position.
-         */
-        SEARCH_SCOPE,
-        /**
-         * Query to get the parent scope of a symbol.
-         */
-        SEARCH_PARENT_SCOPE,
-        /**
-         * Query to get the parent scope of a symbol in the file.
-         */
-        SEARCH_PARENT_SCOPE_FILE,
-    }
-    enum SymbolType {
-        /**
-         * None spedified.
-         */
-        TYPE_NONE,
-        /**
-         * Unknown type.
-         */
-        TYPE_UNDEF,
-        /**
-         * Class declaration
-         */
-        TYPE_CLASS,
-        /**
-         * Enum declaration
-         */
-        TYPE_ENUM,
-        /**
-         * Enumerator value
-         */
-        TYPE_ENUMERATOR,
-        /**
-         * Field (Java only)
-         */
-        TYPE_FIELD,
-        /**
-         * Function definition
-         */
-        TYPE_FUNCTION,
-        /**
-         * Interface (Java only)
-         */
-        TYPE_INTERFACE,
-        /**
-         * Member variable of class/struct
-         */
-        TYPE_MEMBER,
-        /**
-         * Class method (Java only)
-         */
-        TYPE_METHOD,
-        /**
-         * Namespace declaration
-         */
-        TYPE_NAMESPACE,
-        /**
-         * Package (Java only)
-         */
-        TYPE_PACKAGE,
-        /**
-         * Function prototype
-         */
-        TYPE_PROTOTYPE,
-        /**
-         * Struct declaration
-         */
-        TYPE_STRUCT,
-        /**
-         * Typedef
-         */
-        TYPE_TYPEDEF,
-        /**
-         * Union
-         */
-        TYPE_UNION,
-        /**
-         * Variable
-         */
-        TYPE_VARIABLE,
-        /**
-         * Extern or forward declaration
-         */
-        TYPE_EXTERNVAR,
-        /**
-         * Macro (without arguments)
-         */
-        TYPE_MACRO,
-        /**
-         * Parameterized macro
-         */
-        TYPE_MACRO_WITH_ARG,
-        /**
-         * File (Pseudo tag)
-         */
-        TYPE_FILE,
-        /**
-         * Other (non C/C++/Java tag)
-         */
-        TYPE_OTHER,
-        /**
-         * types which are subjected to create a scope.
-         */
-        TYPE_SCOPE_CONTAINER,
-        /**
-         * Maximum value, used as end marker.
-         */
-        TYPE_MAX,
-    }
+    get_target_type(target: Gio.File): Anjuta.ProjectNodeType
     /**
-     * These enumeration is used to specify errors.
+     * Get a list of targets in the project with the corresponding type.
+     * @param target_type type of the target
+     * @returns A list of #GFile corresponding to each target of the requested type or %NULL if none exists. Free the returned list with g_list_free() and the files with g_object_unref().
      */
-    class VcsError extends GLib.Error {
-        // Own fields of IAnjuta-3.0.VcsError
+    get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[]
+    /**
+     * Gets whether a project is currently opened.
+     * @returns %TRUE if a project is opened.
+     */
+    is_open(): boolean
+    /**
+     * Remove a source file from the project. If the file is used in several
+     * targets, it is removed from all targets. The file could be removed from
+     * the disk.
+     * @param file A #GFile that will be removed from the project
+     * @returns %TRUE if the file has been removed from the project else %FALSE
+     */
+    remove_file(file: Gio.File): boolean
 
-        UNKOWN_ERROR: number;
-
-        // Constructors of IAnjuta-3.0.VcsError
-
-        constructor(options: { message: string; code: number });
-
-        // Owm methods of IAnjuta-3.0.VcsError
-
-        static quark(): GLib.Quark;
-    }
+    // Own virtual methods of IAnjuta.ProjectManager
 
     /**
-     * Name of debugging configutation.
+     * Prompts the user to add a new group to the project. The user can select
+     * a parent group different from the one set as default.
+     * @param name Group name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
-    const BUILDER_CONFIGURATION_DEBUG: string;
+    vfunc_add_group(name: string, default_group?: (Gio.File | null)): Gio.File
     /**
-     * Name of optimized configutation.
+     * Prompts the user to add a file to the project. If the user selects
+     * multiple files only the first source file is returned.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param name Source name or URI.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      */
-    const BUILDER_CONFIGURATION_OPTIMIZED: string;
+    vfunc_add_source(name: string, default_target?: (Gio.File | null)): Gio.File
     /**
-     * Name of profiling configutation.
+     * Adds a file to the project without prompting the user.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param name Source name or URI.
+     * @param target A #GFile corresponding to the parent target or group.
      */
-    const BUILDER_CONFIGURATION_PROFILING: string;
+    vfunc_add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
-     * Build directory uri. It is the same than the project_root_uri for
-     * in source build.
+     * Prompts the user to add several files to the project. Depending on the
+     * project backend, it can be possible that the source files must
+     * be located in a particular directory.
+     * 
+     * You can add non existing file. In this case the element_added
+     * signal will be emitted with a non existing file. So it is
+     * up to the caller to reemit this signal later when the file
+     * is created.
+     * @param names Sources name or URI to add.
+     * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
      */
-    const BUILDER_ROOT_URI: string;
+    vfunc_add_sources(names: string[], default_target?: (Gio.File | null)): Gio.File[]
     /**
-     * Anjuta shell value set by document manager to the current document
+     * Prompts the user to add a new target to the project. The user can select
+     * a parent group different from the one set as default.
+     * @param name Target name or URI.
+     * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      */
-    const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string;
+    vfunc_add_target(name: string, default_group?: (Gio.File | null)): Gio.File
+    vfunc_element_added(element: Gio.File): void
+    vfunc_element_removed(element: Gio.File): void
+    vfunc_element_selected(element: Gio.File): void
     /**
-     * Integer key, defines the number a space for one indentation step.
+     * Gets the capabilites of project whether it can add group, target
+     * sources etc.
      */
-    const EDITOR_INDENT_WIDTH_KEY: string;
+    vfunc_get_capabilities(): number
     /**
-     * Schema id used to store common editor settings.
+     * Recursively gets the list of all children below the corresponding
+     * parent having the specify type.
+     * @param parent A #GFile corresponding to the parent.
+     * @param children_type Select one element type: source, group or target
      */
-    const EDITOR_PREF_SCHEMA: string;
+    vfunc_get_children(parent: Gio.File, children_type: number): Gio.File[]
     /**
-     * Integer key, defines the size of a tabulation in spaces.
+     * Gets the current project.
      */
-    const EDITOR_TAB_WIDTH_KEY: string;
+    vfunc_get_current_project(): Project
     /**
-     * Boolean key, true is tabs has to be used for indenting.
+     * Get a list of all elements of this type in the project.
+     * @param element_type Select one element type: source, group or target
      */
-    const EDITOR_USE_TABS_KEY: string;
+    vfunc_get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[]
+    vfunc_get_packages(): string[]
     /**
-     * Anjuta shell value set by file manager to the selected file.
+     * Gets the currently selected element in the project manager view.
      */
-    const FILE_MANAGER_SELECTED_FILE: string;
+    vfunc_get_selected(): Gio.File
     /**
-     * Boolean key, true is adding '(' after function call autocompletion
+     * Get the type of the corresponding target: program, library...
+     * @param target A #GFile corresponding to a target
      */
-    const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string;
+    vfunc_get_target_type(target: Gio.File): Anjuta.ProjectNodeType
     /**
-     * Boolean key, true is adding ')' after function call autocompletion
+     * Get a list of targets in the project with the corresponding type.
+     * @param target_type type of the target
      */
-    const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string;
+    vfunc_get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[]
     /**
-     * Boolean key, true is code completion is enable.
+     * Gets whether a project is currently opened.
      */
-    const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string;
+    vfunc_is_open(): boolean
+    vfunc_project_loaded(error: GLib.Error): void
     /**
-     * Boolean key, true is adding a space after function call autocompletion
+     * Remove a source file from the project. If the file is used in several
+     * targets, it is removed from all targets. The file could be removed from
+     * the disk.
+     * @param file A #GFile that will be removed from the project
      */
-    const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string;
-    /**
-     * Boolean key, true is calltips has to be shown.
-     */
-    const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string;
-    /**
-     * Anjuta shell value set by project manager to the current project object
-     * which implement #IAnjutaProject interface.
-     */
-    const PROJECT_MANAGER_CURRENT_PROJECT: string;
-    /**
-     * Anjuta shell value set by project manager to the current uri.
-     */
-    const PROJECT_MANAGER_CURRENT_URI: string;
-    /**
-     * Anjuta shell value set by project manager to the project root uri.
-     */
-    const PROJECT_MANAGER_PROJECT_ROOT_URI: string;
-    function buildable_error_quark(): GLib.Quark;
-    function builder_error_quark(): GLib.Quark;
-    function debug_manager_error_quark(): GLib.Quark;
-    function debugger_breakpoint_error_quark(): GLib.Quark;
-    function debugger_error_quark(): GLib.Quark;
-    function debugger_instruction_error_quark(): GLib.Quark;
-    function debugger_memory_error_quark(): GLib.Quark;
-    function debugger_register_error_quark(): GLib.Quark;
-    function debugger_variable_error_quark(): GLib.Quark;
-    function document_error_quark(): GLib.Quark;
-    function document_manager_error_quark(): GLib.Quark;
-    function editor_assist_error_quark(): GLib.Quark;
-    function editor_cell_error_quark(): GLib.Quark;
-    function editor_cell_style_error_quark(): GLib.Quark;
-    function editor_comment_error_quark(): GLib.Quark;
-    function editor_convert_error_quark(): GLib.Quark;
-    function editor_error_quark(): GLib.Quark;
-    function editor_factory_error_quark(): GLib.Quark;
-    function editor_folds_error_quark(): GLib.Quark;
-    function editor_glade_signal_error_quark(): GLib.Quark;
-    function editor_goto_error_quark(): GLib.Quark;
-    function editor_hover_error_quark(): GLib.Quark;
-    function editor_language_error_quark(): GLib.Quark;
-    function editor_line_mode_error_quark(): GLib.Quark;
-    function editor_search_error_quark(): GLib.Quark;
-    function editor_selection_error_quark(): GLib.Quark;
-    function editor_tip_error_quark(): GLib.Quark;
-    function editor_view_error_quark(): GLib.Quark;
-    function editor_zoom_error_quark(): GLib.Quark;
-    function environment_error_quark(): GLib.Quark;
-    function file_error_quark(): GLib.Quark;
-    function file_loader_error_quark(): GLib.Quark;
-    function file_manager_error_quark(): GLib.Quark;
-    function file_savable_error_quark(): GLib.Quark;
-    function glade_error_quark(): GLib.Quark;
-    function help_error_quark(): GLib.Quark;
-    function indenter_error_quark(): GLib.Quark;
-    function indicable_error_quark(): GLib.Quark;
-    function iterable_error_quark(): GLib.Quark;
-    function iterable_tree_error_quark(): GLib.Quark;
-    function language_error_quark(): GLib.Quark;
-    function language_provider_error_quark(): GLib.Quark;
-    function loader_error_quark(): GLib.Quark;
-    function markable_error_quark(): GLib.Quark;
-    function message_manager_error_quark(): GLib.Quark;
-    function message_view_error_quark(): GLib.Quark;
-    function plugin_factory_error_quark(): GLib.Quark;
-    function preferences_error_quark(): GLib.Quark;
-    function print_error_quark(): GLib.Quark;
-    function project_backend_error_quark(): GLib.Quark;
-    function project_chooser_error_quark(): GLib.Quark;
-    function project_error_quark(): GLib.Quark;
-    function project_manager_error_quark(): GLib.Quark;
-    function provider_error_quark(): GLib.Quark;
-    function snippets_manager_error_quark(): GLib.Quark;
-    function stream_error_quark(): GLib.Quark;
-    function stream_loader_error_quark(): GLib.Quark;
-    function stream_savable_error_quark(): GLib.Quark;
-    function symbol_error_quark(): GLib.Quark;
-    function symbol_manager_error_quark(): GLib.Quark;
-    function symbol_query_error_quark(): GLib.Quark;
-    function terminal_error_quark(): GLib.Quark;
-    function todo_error_quark(): GLib.Quark;
-    function vcs_error_quark(): GLib.Quark;
-    function wizard_error_quark(): GLib.Quark;
-    interface BuilderCallback<A = GObject.Object> {
-        (sender: A, command: BuilderHandle, err: GLib.Error): void;
-    }
-    interface DebuggerBreakpointCallback {
-        (data: DebuggerBreakpointItem, err: GLib.Error): void;
-    }
-    interface DebuggerCallback {
-        (data: any | null, err: GLib.Error): void;
-    }
-    interface DebuggerGCharCallback {
-        (value: string, err: GLib.Error): void;
-    }
-    interface DebuggerInstructionCallback {
-        (data: DebuggerInstructionDisassembly, err: GLib.Error): void;
-    }
-    interface DebuggerMemoryCallback {
-        (data: DebuggerMemoryBlock, err: GLib.Error): void;
-    }
-    interface DebuggerOutputCallback {
-        (type: DebuggerOutputType, output: string): void;
-    }
-    interface DebuggerVariableCallback {
-        (data: DebuggerVariableObject, err: GLib.Error): void;
-    }
-    interface VcsDiffCallback {
-        (file: Gio.File, diff: string): void;
-    }
-    interface VcsStatusCallback {
-        (file: Gio.File, status: Anjuta.VcsStatus): void;
-    }
-    class BuildableIface {}
+    vfunc_remove_file(file: Gio.File): boolean
+}
 
-    class BuilderIface {}
 
-    class DebugManagerIface {}
 
-    class DebuggerBreakpointIface {}
+export const ProjectManager: ProjectManagerNamespace;
+
+module Provider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface ProviderNamespace {
+      $gtype: GObject.GType<Provider>;
+      prototype: Provider;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Provider extends GObject.Object {
+
+    // Own methods of IAnjuta.Provider
 
     /**
-     * This structure keeps all information about a breakpoint.
+     * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
-    class DebuggerBreakpointItem {
-        // Own fields of IAnjuta-3.0.DebuggerBreakpointItem
+    activate(iter: Iterable, data?: (any | null)): void
+    /**
+     * Return a (translatable) name for the provider
+     */
+    get_name(): string
+    /**
+     * Get the iter where the current completion started
+     * @returns current start iter
+     */
+    get_start_iter(): Iterable
+    /**
+     * Show completion for the context at position `iter`. The provider should
+     * call ianjuta_editor_assist_proposals here to add proposals to the list.
+     * 
+     * Note that this is called after every character typed and the list of proposals
+     * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
+     */
+    populate(iter: Iterable): void
 
-        type: number;
-        id: number;
-        file: string;
-        line: number;
-        'function': string;
-        address: number;
-        enable: boolean;
-        ignore: number;
-        times: number;
-        condition: string;
-        temporary: boolean;
-        pending: boolean;
-
-        // Constructors of IAnjuta-3.0.DebuggerBreakpointItem
-
-        constructor(
-            properties?: Partial<{
-                type: number;
-                id: number;
-                file: string;
-                line: number;
-                function: string;
-                address: number;
-                enable: boolean;
-                ignore: number;
-                times: number;
-                condition: string;
-                temporary: boolean;
-                pending: boolean;
-            }>,
-        );
-    }
+    // Own virtual methods of IAnjuta.Provider
 
     /**
-     * This structure keeps all information about a stack frame.
+     * Show completion for the context at position `iter`
+     * @param iter position where the completion occurs
+     * @param data data assigned to the proposal
      */
-    class DebuggerFrame {
-        // Own fields of IAnjuta-3.0.DebuggerFrame
+    vfunc_activate(iter: Iterable, data?: (any | null)): void
+    /**
+     * Return a (translatable) name for the provider
+     */
+    vfunc_get_name(): string
+    /**
+     * Get the iter where the current completion started
+     */
+    vfunc_get_start_iter(): Iterable
+    /**
+     * Show completion for the context at position `iter`. The provider should
+     * call ianjuta_editor_assist_proposals here to add proposals to the list.
+     * 
+     * Note that this is called after every character typed and the list of proposals
+     * has to be completely renewed.
+     * @param iter the text iter where the provider should be populated
+     */
+    vfunc_populate(iter: Iterable): void
+}
 
-        thread: number;
-        level: number;
-        args: string;
-        file: string;
-        line: number;
-        'function': string;
-        library: string;
-        address: number;
 
-        // Constructors of IAnjuta-3.0.DebuggerFrame
 
-        constructor(
-            properties?: Partial<{
-                thread: number;
-                level: number;
-                args: string;
-                file: string;
-                line: number;
-                function: string;
-                library: string;
-                address: number;
-            }>,
-        );
+export const Provider: ProviderNamespace;
+
+module SnippetsManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class DebuggerIface {}
+}
+
+export interface SnippetsManagerNamespace {
+      $gtype: GObject.GType<SnippetsManager>;
+      prototype: SnippetsManager;
+      
+      error_quark(): GLib.Quark    
+      }
+interface SnippetsManager extends GObject.Object {
+
+    // Own methods of IAnjuta.SnippetsManager
 
     /**
-     * Defines a disassembled line
+     * Insert snippet in the current editor.
+     * @param key Trigger-key of the snippet
+     * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
-    class DebuggerInstructionALine {
-        // Own fields of IAnjuta-3.0.DebuggerInstructionALine
+    insert(key: string, editing_session: boolean): boolean
 
-        address: number;
-        label: string;
-        text: string;
-
-        // Constructors of IAnjuta-3.0.DebuggerInstructionALine
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                label: string;
-                text: string;
-            }>,
-        );
-    }
+    // Own virtual methods of IAnjuta.SnippetsManager
 
     /**
-     * Represents a block of diassembled instructions
+     * Insert snippet in the current editor.
+     * @param key Trigger-key of the snippet
+     * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
-    class DebuggerInstructionDisassembly {
-        // Own fields of IAnjuta-3.0.DebuggerInstructionDisassembly
+    vfunc_insert(key: string, editing_session: boolean): boolean
+}
 
-        size: number;
-        data: DebuggerInstructionALine[];
 
-        // Constructors of IAnjuta-3.0.DebuggerInstructionDisassembly
 
-        constructor(
-            properties?: Partial<{
-                size: number;
-                data: DebuggerInstructionALine[];
-            }>,
-        );
+export const SnippetsManager: SnippetsManagerNamespace;
+
+module Stream {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class DebuggerInstructionIface {}
+}
 
-    class DebuggerMemoryBlock {
-        // Own fields of IAnjuta-3.0.DebuggerMemoryBlock
+export interface StreamNamespace {
+      $gtype: GObject.GType<Stream>;
+      prototype: Stream;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Stream extends GObject.Object {
 
-        address: number;
-        length: number;
-        data: string;
-
-        // Constructors of IAnjuta-3.0.DebuggerMemoryBlock
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                length: number;
-                data: string;
-            }>,
-        );
-    }
-
-    class DebuggerMemoryIface {}
+    // Own methods of IAnjuta.Stream
 
     /**
-     * Defines a register data.
+     * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
-    class DebuggerRegisterData {
-        // Own fields of IAnjuta-3.0.DebuggerRegisterData
+    open(stream?: (any | null)): void
 
-        num: number;
-        name: string;
-        value: string;
-
-        // Constructors of IAnjuta-3.0.DebuggerRegisterData
-
-        constructor(
-            properties?: Partial<{
-                num: number;
-                name: string;
-                value: string;
-            }>,
-        );
-    }
-
-    class DebuggerRegisterIface {}
-
-    class DebuggerVariableIface {}
+    // Own virtual methods of IAnjuta.Stream
 
     /**
-     * Defines a variable object.
+     * The implementor opens the given stream.
+     * @param stream Stream to open from.
      */
-    class DebuggerVariableObject {
-        // Own fields of IAnjuta-3.0.DebuggerVariableObject
+    vfunc_open(stream?: (any | null)): void
+}
 
-        name: string;
-        expression: string;
-        type: string;
-        value: string;
-        changed: boolean;
-        exited: boolean;
-        deleted: boolean;
-        children: number;
-        has_more: boolean;
 
-        // Constructors of IAnjuta-3.0.DebuggerVariableObject
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                expression: string;
-                type: string;
-                value: string;
-                changed: boolean;
-                exited: boolean;
-                deleted: boolean;
-                children: number;
-                has_more: boolean;
-            }>,
-        );
+export const Stream: StreamNamespace;
+
+module StreamLoader {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Loader.ConstructorProps {
+
     }
 
-    class DocumentIface {}
+}
 
-    class DocumentManagerIface {}
+export interface StreamLoaderNamespace {
+      $gtype: GObject.GType<StreamLoader>;
+      prototype: StreamLoader;
+      
+      error_quark(): GLib.Quark    
+      }
+interface StreamLoader extends Loader {
 
-    class EditorAssistIface {}
+    // Own methods of IAnjuta.StreamLoader
 
-    class EditorAssistProposal {
-        // Own fields of IAnjuta-3.0.EditorAssistProposal
-
-        label: string;
-        markup: string;
-        info: string;
-        text: string;
-        icon: GdkPixbuf.Pixbuf;
-        data: any;
-    }
-
-    class EditorCellIface {}
-
-    class EditorCellStyleIface {}
-
-    class EditorCommentIface {}
-
-    class EditorConvertIface {}
-
-    class EditorFactoryIface {}
-
-    class EditorFoldsIface {}
-
-    class EditorGladeSignalIface {}
-
-    class EditorGotoIface {}
-
-    class EditorHoverIface {}
-
-    class EditorIface {}
-
-    class EditorLanguageIface {}
-
-    class EditorLineModeIface {}
-
-    class EditorSearchIface {}
-
-    class EditorSelectionIface {}
-
-    class EditorTipIface {}
-
-    class EditorViewIface {}
-
-    class EditorZoomIface {}
-
-    class EnvironmentIface {}
-
-    class FileIface {}
-
-    class FileLoaderIface {}
-
-    class FileManagerIface {}
-
-    class FileSavableIface {}
-
-    class GladeIface {}
-
-    class HelpIface {}
-
-    class IndenterIface {}
-
-    class IndicableIface {}
-
-    class IterableIface {}
-
-    class IterableTreeIface {}
-
-    class LanguageIface {}
-
-    class LanguageProviderIface {}
-
-    class LoaderIface {}
-
-    class MarkableIface {}
-
-    class MessageManagerIface {}
-
-    class MessageViewIface {}
-
-    class PluginFactoryIface {}
-
-    class PreferencesIface {}
-
-    class PrintIface {}
-
-    class ProjectBackendIface {}
-
-    class ProjectChooserIface {}
-
-    class ProjectIface {}
-
-    class ProjectManagerIface {}
-
-    class ProviderIface {}
-
-    class SnippetsManagerIface {}
-
-    class StreamIface {}
-
-    class StreamLoaderIface {}
-
-    class StreamSavableIface {}
-
-    class SymbolIface {}
-
-    class SymbolManagerIface {}
-
-    class SymbolQueryIface {}
-
-    class TerminalIface {}
-
-    class TodoIface {}
-
-    class VcsIface {}
-
-    class WizardIface {}
-
-    interface Buildable {
-        // Owm methods of IAnjuta-3.0.Buildable
-
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        build(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        clean(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        configure(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        execute(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        generate(uri: string): void;
-        /**
-         * Retrieves the currently set command override.
-         * @param command_id Command to get override.
-         * @returns The overridden command. NULL if no override set.
-         */
-        get_command(command_id: BuildableCommand): string;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        install(uri: string): void;
-        /**
-         * Resets the command overrides to defaults.
-         */
-        reset_commands(): void;
-        /**
-         * Overrides the default command for the given command.
-         * @param command_id Command to override.
-         * @param command Build command to override.
-         */
-        set_command(command_id: BuildableCommand, command: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.Buildable
-
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_build(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_clean(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_configure(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_execute(uri: string): void;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_generate(uri: string): void;
-        /**
-         * Retrieves the currently set command override.
-         * @param command_id Command to get override.
-         */
-        vfunc_get_command(command_id: BuildableCommand): string;
-        /**
-         * fixme
-         * @param uri fixme
-         */
-        vfunc_install(uri: string): void;
-        /**
-         * Resets the command overrides to defaults.
-         */
-        vfunc_reset_commands(): void;
-        /**
-         * Overrides the default command for the given command.
-         * @param command_id Command to override.
-         * @param command Build command to override.
-         */
-        vfunc_set_command(command_id: BuildableCommand, command: string): void;
-    }
-
-    interface Builder {
-        // Owm methods of IAnjuta-3.0.Builder
-
-        /**
-         * Cancel specified command. The callback function will not
-         * be called.
-         * @param handle handle of the command to cancel
-         */
-        cancel(handle: BuilderHandle): void;
-        /**
-         * Get the configuration corresponding to the target uri.
-         * @param uri target uri
-         * @returns The configuration name or NULL if the corresponding configuration cannot be found.
-         */
-        get_uri_configuration(uri: string): string;
-        /**
-         * List all defined configuration. These names returned are
-         * the internal non localized names for the following
-         * predefined configuration: Debug, Profiling, Optimized.
-         * The default configuration has no name and is not returned.
-         * @returns a list configuration name. The names are owned by the plugin, so only the list has to be free using g_list_free.
-         */
-        list_configuration(): string[];
-
-        // Own virtual methods of IAnjuta-3.0.Builder
-
-        /**
-         * Cancel specified command. The callback function will not
-         * be called.
-         * @param handle handle of the command to cancel
-         */
-        vfunc_cancel(handle: BuilderHandle): void;
-        /**
-         * Get the configuration corresponding to the target uri.
-         * @param uri target uri
-         */
-        vfunc_get_uri_configuration(uri: string): string;
-        /**
-         * List all defined configuration. These names returned are
-         * the internal non localized names for the following
-         * predefined configuration: Debug, Profiling, Optimized.
-         * The default configuration has no name and is not returned.
-         */
-        vfunc_list_configuration(): string[];
-    }
-
-    interface DebugManager {
-        // Owm methods of IAnjuta-3.0.DebugManager
-
-        /**
-         * Quit the debugger, can wait until the debugger is ready.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        quit(): boolean;
-        /**
-         * Start the debugger of the given uri
-         * @param uri uri of the target
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        start(uri: string): boolean;
-        /**
-         * Start the debugger of the given uri
-         * @param server server (IP address:port)
-         * @param uri uri of the local target
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        start_remote(server: string, uri: string): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.DebugManager
-
-        vfunc_breakpoint_changed(breakpoint: DebuggerBreakpointItem): void;
-        vfunc_debugger_started(): void;
-        vfunc_debugger_stopped(err: GLib.Error): void;
-        vfunc_frame_changed(frame: number, thread: number): void;
-        vfunc_location_changed(address: number, uri: string, line: number): void;
-        vfunc_program_exited(): void;
-        vfunc_program_loaded(): void;
-        vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
-        vfunc_program_running(): void;
-        vfunc_program_started(): void;
-        vfunc_program_stopped(): void;
-        vfunc_program_unloaded(): void;
-        /**
-         * Quit the debugger, can wait until the debugger is ready.
-         */
-        vfunc_quit(): boolean;
-        vfunc_sharedlib_event(): void;
-        vfunc_signal_received(name: string, description: string): void;
-        /**
-         * Start the debugger of the given uri
-         * @param uri uri of the target
-         */
-        vfunc_start(uri: string): boolean;
-        /**
-         * Start the debugger of the given uri
-         * @param server server (IP address:port)
-         * @param uri uri of the local target
-         */
-        vfunc_start_remote(server: string, uri: string): boolean;
-    }
-
-    interface Debugger {
-        // Owm methods of IAnjuta-3.0.Debugger
-
-        /**
-         * Quit the debugger as fast as possible.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        abort(): boolean;
-        /**
-         * Attach to an already running process.
-         * @param pid pid of the process to debug
-         * @param source_search_directories List of directories to search for 		      source files.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        attach(pid: number, source_search_directories: string[]): boolean;
-        /**
-         * Connect to a remote debugger and run program
-         * @param server remote server
-         * @param args command line argument of the program
-         * @param terminal TRUE if the program need a terminal
-         * @param stop TRUE if program is stopped at the beginning
-         * @returns TRUE if sucessfull, otherwise FALSE.
-         */
-        connect(server: string, args: string, terminal: boolean, stop: boolean): boolean;
-        /**
-         * Disable debugger log.
-         */
-        disable_log(): void;
-        /**
-         * Log all debuggers commands, mainly useful for debugging.
-         * @param log MessageView used by log
-         */
-        enable_log(log: MessageView): void;
-        /**
-         * Exit from the currently loaded program.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        exit(): boolean;
-        /**
-         * Get the current state of the debugger
-         * @returns The current debugger state.
-         */
-        get_state(): DebuggerState;
-        /**
-         * It defines how to handle signal received by the program.
-         * @param name signal name
-         * @param stop TRUE if we need to stop signal
-         * @param print TRUE if we display a message when the signal is emitted
-         * @param ignore TRUE if we ignore the signal
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean;
-        /**
-         * Interrupt the program currently running.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        interrupt(): boolean;
-        /**
-         * Load a program in the debugger.
-         * @param file filename
-         * @param mime_type mime type of the file
-         * @param source_search_directories List of directories to search for 		      source files.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        load(file: string, mime_type: string, source_search_directories: string[]): boolean;
-        /**
-         * Quit the debugger, can wait until the debugger is ready.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        quit(): boolean;
-        /**
-         * Run the program currently loaded.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        run(): boolean;
-        /**
-         * Execute the program from a new position.
-         * This function is optional.
-         * @param file target file name
-         * @param line target line in file
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        run_from(file: string, line: number): boolean;
-        /**
-         * Execute the currently loaded program until it reachs the target
-         * line.
-         * @param file target file name
-         * @param line target line in file
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        run_to(file: string, line: number): boolean;
-        /**
-         * Send a command directly to the debugger. Warning, changing the
-         * debugger states, by sending a run command by example, will
-         * probably gives some troubles in the debug manager.
-         * @param command command
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        send_command(command: string): boolean;
-        /**
-         * Set environment variable
-         * @param env List environment variable
-         * @returns TRUE if sucessfull, other FALSE.
-         */
-        set_environment(env: string): boolean;
-        /**
-         * Set the current frame.
-         * @param frame frame number
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        set_frame(frame: number): boolean;
-        /**
-         * Set the current thread.
-         * @param thread thread number
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        set_thread(thread: number): boolean;
-        /**
-         * Set program working directory.
-         * @param dir working program directory
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        set_working_directory(dir: string): boolean;
-        /**
-         * Start a loaded program under debugger control.
-         * @param args command line argument of the program
-         * @param terminal TRUE if the program need a terminal
-         * @param stop TRUE if program is stopped at the beginning
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        start(args: string, terminal: boolean, stop: boolean): boolean;
-        /**
-         * Execute a single C instruction of the program currently loaded.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        step_in(): boolean;
-        /**
-         * Execute the currently loaded program until it goes out of the
-         * current procedure.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        step_out(): boolean;
-        /**
-         * Execute one C instruction, without entering in procedure, of
-         * the program currently loaded.
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        step_over(): boolean;
-        /**
-         * Unload a program.
-         * @returns TRUE if sucessfull, otherwise FALSE.
-         */
-        unload(): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.Debugger
-
-        /**
-         * Quit the debugger as fast as possible.
-         */
-        vfunc_abort(): boolean;
-        /**
-         * Attach to an already running process.
-         * @param pid pid of the process to debug
-         * @param source_search_directories List of directories to search for 		      source files.
-         */
-        vfunc_attach(pid: number, source_search_directories: string[]): boolean;
-        /**
-         * Connect to a remote debugger and run program
-         * @param server remote server
-         * @param args command line argument of the program
-         * @param terminal TRUE if the program need a terminal
-         * @param stop TRUE if program is stopped at the beginning
-         */
-        vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean;
-        vfunc_debugger_ready(state: DebuggerState): void;
-        vfunc_debugger_started(): void;
-        vfunc_debugger_stopped(err: GLib.Error): void;
-        /**
-         * Disable debugger log.
-         */
-        vfunc_disable_log(): void;
-        /**
-         * Log all debuggers commands, mainly useful for debugging.
-         * @param log MessageView used by log
-         */
-        vfunc_enable_log(log: MessageView): void;
-        /**
-         * Exit from the currently loaded program.
-         */
-        vfunc_exit(): boolean;
-        vfunc_frame_changed(frame: number, thread: number): void;
-        /**
-         * Get the current state of the debugger
-         */
-        vfunc_get_state(): DebuggerState;
-        /**
-         * It defines how to handle signal received by the program.
-         * @param name signal name
-         * @param stop TRUE if we need to stop signal
-         * @param print TRUE if we display a message when the signal is emitted
-         * @param ignore TRUE if we ignore the signal
-         */
-        vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean;
-        /**
-         * Interrupt the program currently running.
-         */
-        vfunc_interrupt(): boolean;
-        /**
-         * Load a program in the debugger.
-         * @param file filename
-         * @param mime_type mime type of the file
-         * @param source_search_directories List of directories to search for 		      source files.
-         */
-        vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean;
-        vfunc_program_exited(): void;
-        vfunc_program_loaded(): void;
-        vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
-        vfunc_program_running(): void;
-        vfunc_program_stopped(): void;
-        /**
-         * Quit the debugger, can wait until the debugger is ready.
-         */
-        vfunc_quit(): boolean;
-        /**
-         * Run the program currently loaded.
-         */
-        vfunc_run(): boolean;
-        /**
-         * Execute the program from a new position.
-         * This function is optional.
-         * @param file target file name
-         * @param line target line in file
-         */
-        vfunc_run_from(file: string, line: number): boolean;
-        /**
-         * Execute the currently loaded program until it reachs the target
-         * line.
-         * @param file target file name
-         * @param line target line in file
-         */
-        vfunc_run_to(file: string, line: number): boolean;
-        /**
-         * Send a command directly to the debugger. Warning, changing the
-         * debugger states, by sending a run command by example, will
-         * probably gives some troubles in the debug manager.
-         * @param command command
-         */
-        vfunc_send_command(command: string): boolean;
-        /**
-         * Set environment variable
-         * @param env List environment variable
-         */
-        vfunc_set_environment(env: string): boolean;
-        /**
-         * Set the current frame.
-         * @param frame frame number
-         */
-        vfunc_set_frame(frame: number): boolean;
-        /**
-         * Set the current thread.
-         * @param thread thread number
-         */
-        vfunc_set_thread(thread: number): boolean;
-        /**
-         * Set program working directory.
-         * @param dir working program directory
-         */
-        vfunc_set_working_directory(dir: string): boolean;
-        vfunc_sharedlib_event(): void;
-        vfunc_signal_received(name: string, description: string): void;
-        /**
-         * Start a loaded program under debugger control.
-         * @param args command line argument of the program
-         * @param terminal TRUE if the program need a terminal
-         * @param stop TRUE if program is stopped at the beginning
-         */
-        vfunc_start(args: string, terminal: boolean, stop: boolean): boolean;
-        /**
-         * Execute a single C instruction of the program currently loaded.
-         */
-        vfunc_step_in(): boolean;
-        /**
-         * Execute the currently loaded program until it goes out of the
-         * current procedure.
-         */
-        vfunc_step_out(): boolean;
-        /**
-         * Execute one C instruction, without entering in procedure, of
-         * the program currently loaded.
-         */
-        vfunc_step_over(): boolean;
-        /**
-         * Unload a program.
-         */
-        vfunc_unload(): boolean;
-    }
-
-    interface DebuggerBreakpoint {
-        // Owm methods of IAnjuta-3.0.DebuggerBreakpoint
-
-        /**
-         * Return all implemented methods.
-         * @returns A OR of #IAnjutaDebuggerBreakpointMethod corresponding to all implemented optional methods.
-         */
-        implement_breakpoint(): number;
-
-        // Own virtual methods of IAnjuta-3.0.DebuggerBreakpoint
-
-        /**
-         * Return all implemented methods.
-         */
-        vfunc_implement_breakpoint(): number;
-    }
-
-    interface DebuggerInstruction {
-        // Owm methods of IAnjuta-3.0.DebuggerInstruction
-
-        /**
-         * Restart the program starting from address address
-         * @param address Run from this addresss
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        run_from_address(address: number): boolean;
-        /**
-         * Start the program until it reachs the address address
-         * @param address Run to this addresss
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        run_to_address(address: number): boolean;
-        /**
-         * Execute one assembler instruction in the program.
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        step_in_instruction(): boolean;
-        /**
-         * Execute one assembler instruction in the program, if the instruction
-         * is a function call, continues until the function returns.
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        step_over_instruction(): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.DebuggerInstruction
-
-        /**
-         * Restart the program starting from address address
-         * @param address Run from this addresss
-         */
-        vfunc_run_from_address(address: number): boolean;
-        /**
-         * Start the program until it reachs the address address
-         * @param address Run to this addresss
-         */
-        vfunc_run_to_address(address: number): boolean;
-        /**
-         * Execute one assembler instruction in the program.
-         */
-        vfunc_step_in_instruction(): boolean;
-        /**
-         * Execute one assembler instruction in the program, if the instruction
-         * is a function call, continues until the function returns.
-         */
-        vfunc_step_over_instruction(): boolean;
-    }
-
-    interface DebuggerMemory {}
-
-    interface DebuggerRegister {
-        // Owm methods of IAnjuta-3.0.DebuggerRegister
-
-        /**
-         * Change the value of one register. Only the num and value field are used.
-         * @param value Modified register with a new value
-         * @returns TRUE if the request succeed.
-         */
-        write_register(value: DebuggerRegisterData): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.DebuggerRegister
-
-        /**
-         * Change the value of one register. Only the num and value field are used.
-         * @param value Modified register with a new value
-         */
-        vfunc_write_register(value: DebuggerRegisterData): boolean;
-    }
-
-    interface DebuggerVariable {
-        // Owm methods of IAnjuta-3.0.DebuggerVariable
-
-        /**
-         * Set the value of one variable or child object.
-         * @param name Variable name
-         * @param value Variable value
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        assign(name: string, value: string): boolean;
-        /**
-         * Delete a previously created variable or child object
-         * including its own children.
-         * @param name Variable name
-         * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
-         */
-        destroy(name: string): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.DebuggerVariable
-
-        /**
-         * Set the value of one variable or child object.
-         * @param name Variable name
-         * @param value Variable value
-         */
-        vfunc_assign(name: string, value: string): boolean;
-        /**
-         * Delete a previously created variable or child object
-         * including its own children.
-         * @param name Variable name
-         */
-        vfunc_destroy(name: string): boolean;
-    }
-
-    interface Document {
-        // Owm methods of IAnjuta-3.0.Document
-
-        /**
-         * Begins the mark of undoable action. Calls to this are stacked and
-         * each must be ended with ianjuta_document_end_action().
-         */
-        begin_undo_action(): void;
-        /**
-         * Can the editor redo the last operation?
-         * @returns TRUE if editor can redo, else FALSE
-         */
-        can_redo(): boolean;
-        /**
-         * Can the editor undo the last operation?
-         * @returns TRUE if editor can undo, else FALSE
-         */
-        can_undo(): boolean;
-        /**
-         * Clear selection
-         */
-        clear(): void;
-        /**
-         * Copy selection to clipboard.
-         */
-        copy(): void;
-        /**
-         * Cut selection to clipboard.
-         */
-        cut(): void;
-        /**
-         * Ends the mark of undoable action.
-         */
-        end_undo_action(): void;
-        /**
-         * Allows obtaining of the filename the editor was loaded from.
-         * @returns The name of the file. Not to be freed by caller.
-         */
-        get_filename(): string;
-        /**
-         * Grabs the focus.
-         */
-        grab_focus(): void;
-        /**
-         * Paste clipboard at current position.
-         */
-        paste(): void;
-        /**
-         * Redo last undo operation
-         */
-        redo(): void;
-        /**
-         * Undo last operation
-         */
-        undo(): void;
-
-        // Own virtual methods of IAnjuta-3.0.Document
-
-        /**
-         * Begins the mark of undoable action. Calls to this are stacked and
-         * each must be ended with ianjuta_document_end_action().
-         */
-        vfunc_begin_undo_action(): void;
-        /**
-         * Can the editor redo the last operation?
-         */
-        vfunc_can_redo(): boolean;
-        /**
-         * Can the editor undo the last operation?
-         */
-        vfunc_can_undo(): boolean;
-        /**
-         * Clear selection
-         */
-        vfunc_clear(): void;
-        /**
-         * Copy selection to clipboard.
-         */
-        vfunc_copy(): void;
-        /**
-         * Cut selection to clipboard.
-         */
-        vfunc_cut(): void;
-        /**
-         * Ends the mark of undoable action.
-         */
-        vfunc_end_undo_action(): void;
-        /**
-         * Allows obtaining of the filename the editor was loaded from.
-         */
-        vfunc_get_filename(): string;
-        /**
-         * Grabs the focus.
-         */
-        vfunc_grab_focus(): void;
-        /**
-         * Paste clipboard at current position.
-         */
-        vfunc_paste(): void;
-        /**
-         * Redo last undo operation
-         */
-        vfunc_redo(): void;
-        /**
-         * Undo last operation
-         */
-        vfunc_undo(): void;
-        vfunc_update_ui(): void;
-    }
-
-    interface DocumentManager {
-        // Owm methods of IAnjuta-3.0.DocumentManager
-
-        add_bookmark(file: Gio.File, line: number): void;
-        /**
-         * Creates a new editor buffer of the given name and sets the given
-         * content as its initial content.
-         * @param name Name of the editor buffer.
-         * @param content Initial content of the buffer.
-         * @returns the IAnjutaEditor instance that has been added.
-         */
-        add_buffer(name: string, content: string): Editor;
-        /**
-         * Adds a document to the document manager. This will open a new
-         * Notebook tab and show the document there
-         * @param document the document to add
-         */
-        add_document(document: Document): void;
-        /**
-         * Finds the document that has the file  loaded. Only
-         * the editor that matches the file will be searched.
-         * @param file The file to find.
-         * @returns the document that corresponds to given file. NULL if there is no editor loaded with this file.
-         */
-        find_document_with_file(file: Gio.File): Document;
-        /**
-         * Gets the current document.
-         * @returns the currently active document. NULL if none is there.
-         */
-        get_current_document(): Document;
-        /**
-         * Gets a list of widgets for open documents. Each widget is
-         * a GTK_WIDGET(IAnjutaDocument*)
-         * @returns a list of widgets for all open documents. The returned list (but not the data in the list) must be freed after use.
-         */
-        get_doc_widgets(): Gtk.Widget[];
-        /**
-         * Given the short filename, finds the file of the filename, if the
-         * editor that has it loaded is found. If there is no editor that has
-         * this file opened, returns NULL.
-         * @param filename short filename
-         * @returns the GFile for the given short filename
-         */
-        get_file(filename: string): Gio.File;
-        /**
-         * Loads the given file if not loaded yet, set its editor as current editor
-         * and moves cursor to the given line in the editor.
-         * @param file file to go to.
-         * @param lineno the line number in the file to go to.
-         * @returns the editor where the mark has been put. NULL if none.
-         */
-        goto_file_line(file: Gio.File, lineno: number): Editor;
-        /**
-         * Loads the given file if not loaded yet, set its editor as current editor
-         * and moves cursor to the given line in the editor. Optionally also marks
-         * the line with line marker if `mark` is given TRUE.
-         * @param file file to go to.
-         * @param lineno the line number in the file to go to.
-         * @param mark TRUE if the line should be marked with a marker.
-         * @returns the editor where the mark has been put. NULL if none.
-         */
-        goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor;
-        /**
-         * Closes and removes the given document. If `save_before` is TRUE, also
-         * saves the document before closing.
-         * @param document Document to close.
-         * @param save_before If true, saves the document before closing.
-         * @returns TRUE if the document was removed, else FALSE.
-         */
-        remove_document(document: Document, save_before: boolean): boolean;
-        /**
-         * Sets the given document as current document.
-         * @param document the document to set as current.
-         */
-        set_current_document(document: Document): void;
-
-        // Own virtual methods of IAnjuta-3.0.DocumentManager
-
-        vfunc_add_bookmark(file: Gio.File, line: number): void;
-        /**
-         * Creates a new editor buffer of the given name and sets the given
-         * content as its initial content.
-         * @param name Name of the editor buffer.
-         * @param content Initial content of the buffer.
-         */
-        vfunc_add_buffer(name: string, content: string): Editor;
-        /**
-         * Adds a document to the document manager. This will open a new
-         * Notebook tab and show the document there
-         * @param document the document to add
-         */
-        vfunc_add_document(document: Document): void;
-        vfunc_document_added(doc: Document): void;
-        vfunc_document_removed(doc: Document): void;
-        /**
-         * Finds the document that has the file  loaded. Only
-         * the editor that matches the file will be searched.
-         * @param file The file to find.
-         */
-        vfunc_find_document_with_file(file: Gio.File): Document;
-        /**
-         * Gets the current document.
-         */
-        vfunc_get_current_document(): Document;
-        /**
-         * Gets a list of widgets for open documents. Each widget is
-         * a GTK_WIDGET(IAnjutaDocument*)
-         */
-        vfunc_get_doc_widgets(): Gtk.Widget[];
-        /**
-         * Given the short filename, finds the file of the filename, if the
-         * editor that has it loaded is found. If there is no editor that has
-         * this file opened, returns NULL.
-         * @param filename short filename
-         */
-        vfunc_get_file(filename: string): Gio.File;
-        /**
-         * Loads the given file if not loaded yet, set its editor as current editor
-         * and moves cursor to the given line in the editor.
-         * @param file file to go to.
-         * @param lineno the line number in the file to go to.
-         */
-        vfunc_goto_file_line(file: Gio.File, lineno: number): Editor;
-        /**
-         * Loads the given file if not loaded yet, set its editor as current editor
-         * and moves cursor to the given line in the editor. Optionally also marks
-         * the line with line marker if `mark` is given TRUE.
-         * @param file file to go to.
-         * @param lineno the line number in the file to go to.
-         * @param mark TRUE if the line should be marked with a marker.
-         */
-        vfunc_goto_file_line_mark(file: Gio.File, lineno: number, mark: boolean): Editor;
-        /**
-         * Closes and removes the given document. If `save_before` is TRUE, also
-         * saves the document before closing.
-         * @param document Document to close.
-         * @param save_before If true, saves the document before closing.
-         */
-        vfunc_remove_document(document: Document, save_before: boolean): boolean;
-        /**
-         * Sets the given document as current document.
-         * @param document the document to set as current.
-         */
-        vfunc_set_current_document(document: Document): void;
-    }
-
-    interface Editor {
-        // Owm methods of IAnjuta-3.0.Editor
-
-        /**
-         * Appends `length` characters from `text` buffer at the end of editor
-         * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-         * @param text Text to append.
-         * @param length Length of @text to use.
-         */
-        append(text: string, length: number): void;
-        erase(position_start: Iterable, position_end: Iterable): void;
-        /**
-         * Empties the whole editor buffer. There will be zero characters.
-         * After the erase operation, none of the active iters are guranteed
-         * to be valid.
-         */
-        erase_all(): void;
-        get_column(): number;
-        /**
-         * Obtains the word on which carat is currently on.
-         * @returns Current word.
-         */
-        get_current_word(): string;
-        /**
-         * Gets the iter positioned at the end of the editor buffer. The
-         * returned iter is the end-iter which does not point to any valid
-         * character in the buffer (it is pointed one step beyond the last
-         * valid character).
-         * @returns Cell iter set to the end of the editor (end-iter).
-         */
-        get_end_position(): Iterable;
-        /**
-         * Returns the indentation size in spaces currently used by the
-         * editor.
-         * @returns indentation size in number of spaces
-         */
-        get_indentsize(): number;
-        /**
-         * Get length of complete text in editor. This will be the total
-         * number of bytes in the file or buffer.
-         * @returns Text length.
-         */
-        get_length(): number;
-        /**
-         * fixme
-         * @param line fixme
-         * @returns fixme
-         */
-        get_line_begin_position(line: number): Iterable;
-        /**
-         * fixme
-         * @param line fixme
-         * @returns fixme
-         */
-        get_line_end_position(line: number): Iterable;
-        get_line_from_position(position: Iterable): number;
-        /**
-         * Obtains current line number on which carat is.
-         * @returns Line number.
-         */
-        get_lineno(): number;
-        get_offset(): number;
-        /**
-         * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-         * @returns editor mode.
-         */
-        get_overwrite(): boolean;
-        /**
-         * Get current caret position.
-         * @returns Iterator that points to the current position.
-         */
-        get_position(): Iterable;
-        /**
-         * Gets the iter positioned at the start of the editor buffer.
-         * @returns Cell iter set to the begining of the editor.
-         */
-        get_start_position(): Iterable;
-        /**
-         * Returns the tabsize (in spaces) currently used by the editor.
-         * @returns tabsize in number of spaces
-         */
-        get_tabsize(): number;
-        /**
-         * Gets text characters beginning from `begin` (including char
-         * pointed by `begin)` and ending with `end` (excluding character
-         * pointed by `end)`. The characters returned are utf-8 encoded.
-         * The iterators `begin` and `end` could be in either order. The returned
-         * text, however, is in right order. If both `begin` and `end` points
-         * to the same position, NULL is returned.
-         * @param begin Begining iterator
-         * @param end End iterator
-         * @returns A buffer of utf-8 characters. The returned buffer must be freed when no longer required.
-         */
-        get_text(begin: Iterable, end: Iterable): string;
-        /**
-         * Gets all text characters in the editor.
-         * The characters returned are utf-8 encoded.
-         * @returns A buffer of utf-8 characters containing all text from editor. The returned buffer must be freed when no longer required.
-         */
-        get_text_all(): string;
-        /**
-         * Returns if the editor uses spaces for filling up tab characters.
-         * @returns TRUE if yes, FALSE if no.
-         */
-        get_use_spaces(): boolean;
-        /**
-         * Carat is moved to the end of editor and text view is scrolled to
-         * bring it in viewable area of the editor.
-         */
-        goto_end(): void;
-        /**
-         * Carat is moved to the given `lineno` line and text view is scrolled to
-         * bring it in viewable area of the editor.
-         * @param lineno line number where carat will be moved.
-         */
-        goto_line(lineno: number): void;
-        /**
-         * Carat is moved to the given `position` and text view is scrolled to
-         * bring `position` in viewable area of the editor.
-         * @param position Character position where carat will be moved.
-         */
-        goto_position(position: Iterable): void;
-        /**
-         * Carat is moved to the begining of editor and text view is scrolled to
-         * bring it in viewable area of the editor.
-         */
-        goto_start(): void;
-        /**
-         * Inserts `length` characters from `text` buffer at given `position` of
-         * editor buffer. If `length` is -1, the whole `text` is used.
-         * @param position Character position in editor where insert will take place.
-         * @param text Text to append.
-         * @param length Length of @text to use.
-         */
-        insert(position: Iterable, text: string, length: number): void;
-        /**
-         * Sets whether the editor should auto-indent itself. A plugin that does
-         * custom auto-indent can set this to false and override the preferences
-         * setting
-         * @param auto_indent TRUE to enable auto-indent, FALSE to disable
-         */
-        set_auto_indent(auto_indent: boolean): void;
-        /**
-         * Sets the indentation size of the editor.
-         * @param indentsize Indentation size in spaces
-         */
-        set_indentsize(indentsize: number): void;
-        /**
-         * Set Editor popup menu. This is the menu shown in the editor when one
-         * right-clicks on it.
-         * @param menu Popupmenu
-         */
-        set_popup_menu(menu: Gtk.Widget): void;
-        /**
-         * Sets the tabsize of the editor.
-         * @param tabsize Tabsize in spaces
-         */
-        set_tabsize(tabsize: number): void;
-        set_use_spaces(use_spaces: boolean): void;
-
-        // Own virtual methods of IAnjuta-3.0.Editor
-
-        /**
-         * Appends `length` characters from `text` buffer at the end of editor
-         * buffer. If `length` is -1, the whole `text` is used. `length` is in bytes.
-         * @param text Text to append.
-         * @param length Length of @text to use.
-         */
-        vfunc_append(text: string, length: number): void;
-        vfunc_backspace(): void;
-        vfunc_changed(position: Iterable, added: boolean, length: number, lines: number, text: string): void;
-        vfunc_char_added(position: Iterable, ch: number): void;
-        vfunc_code_changed(position: Iterable, code: string): void;
-        vfunc_cursor_moved(): void;
-        vfunc_erase(position_start: Iterable, position_end: Iterable): void;
-        /**
-         * Empties the whole editor buffer. There will be zero characters.
-         * After the erase operation, none of the active iters are guranteed
-         * to be valid.
-         */
-        vfunc_erase_all(): void;
-        vfunc_get_column(): number;
-        /**
-         * Obtains the word on which carat is currently on.
-         */
-        vfunc_get_current_word(): string;
-        /**
-         * Gets the iter positioned at the end of the editor buffer. The
-         * returned iter is the end-iter which does not point to any valid
-         * character in the buffer (it is pointed one step beyond the last
-         * valid character).
-         */
-        vfunc_get_end_position(): Iterable;
-        /**
-         * Returns the indentation size in spaces currently used by the
-         * editor.
-         */
-        vfunc_get_indentsize(): number;
-        /**
-         * Get length of complete text in editor. This will be the total
-         * number of bytes in the file or buffer.
-         */
-        vfunc_get_length(): number;
-        /**
-         * fixme
-         * @param line fixme
-         */
-        vfunc_get_line_begin_position(line: number): Iterable;
-        /**
-         * fixme
-         * @param line fixme
-         */
-        vfunc_get_line_end_position(line: number): Iterable;
-        vfunc_get_line_from_position(position: Iterable): number;
-        /**
-         * Obtains current line number on which carat is.
-         */
-        vfunc_get_lineno(): number;
-        vfunc_get_offset(): number;
-        /**
-         * Obtains editor overwirte mode: TRUE = Override, FALSE = Insert.
-         */
-        vfunc_get_overwrite(): boolean;
-        /**
-         * Get current caret position.
-         */
-        vfunc_get_position(): Iterable;
-        /**
-         * Gets the iter positioned at the start of the editor buffer.
-         */
-        vfunc_get_start_position(): Iterable;
-        /**
-         * Returns the tabsize (in spaces) currently used by the editor.
-         */
-        vfunc_get_tabsize(): number;
-        /**
-         * Gets text characters beginning from `begin` (including char
-         * pointed by `begin)` and ending with `end` (excluding character
-         * pointed by `end)`. The characters returned are utf-8 encoded.
-         * The iterators `begin` and `end` could be in either order. The returned
-         * text, however, is in right order. If both `begin` and `end` points
-         * to the same position, NULL is returned.
-         * @param begin Begining iterator
-         * @param end End iterator
-         */
-        vfunc_get_text(begin: Iterable, end: Iterable): string;
-        /**
-         * Gets all text characters in the editor.
-         * The characters returned are utf-8 encoded.
-         */
-        vfunc_get_text_all(): string;
-        /**
-         * Returns if the editor uses spaces for filling up tab characters.
-         */
-        vfunc_get_use_spaces(): boolean;
-        vfunc_glade_callback_add(
-            widget_typename: string,
-            signal_name: string,
-            handler_name: string,
-            object: string,
-            swap: boolean,
-            after: boolean,
-            filename: string,
-        ): void;
-        vfunc_glade_member_add(widget_typename: string, widget_name: string, filename: string): void;
-        /**
-         * Carat is moved to the end of editor and text view is scrolled to
-         * bring it in viewable area of the editor.
-         */
-        vfunc_goto_end(): void;
-        /**
-         * Carat is moved to the given `lineno` line and text view is scrolled to
-         * bring it in viewable area of the editor.
-         * @param lineno line number where carat will be moved.
-         */
-        vfunc_goto_line(lineno: number): void;
-        /**
-         * Carat is moved to the given `position` and text view is scrolled to
-         * bring `position` in viewable area of the editor.
-         * @param position Character position where carat will be moved.
-         */
-        vfunc_goto_position(position: Iterable): void;
-        /**
-         * Carat is moved to the begining of editor and text view is scrolled to
-         * bring it in viewable area of the editor.
-         */
-        vfunc_goto_start(): void;
-        /**
-         * Inserts `length` characters from `text` buffer at given `position` of
-         * editor buffer. If `length` is -1, the whole `text` is used.
-         * @param position Character position in editor where insert will take place.
-         * @param text Text to append.
-         * @param length Length of @text to use.
-         */
-        vfunc_insert(position: Iterable, text: string, length: number): void;
-        vfunc_line_marks_gutter_clicked(location: number): void;
-        /**
-         * Sets whether the editor should auto-indent itself. A plugin that does
-         * custom auto-indent can set this to false and override the preferences
-         * setting
-         * @param auto_indent TRUE to enable auto-indent, FALSE to disable
-         */
-        vfunc_set_auto_indent(auto_indent: boolean): void;
-        /**
-         * Sets the indentation size of the editor.
-         * @param indentsize Indentation size in spaces
-         */
-        vfunc_set_indentsize(indentsize: number): void;
-        /**
-         * Set Editor popup menu. This is the menu shown in the editor when one
-         * right-clicks on it.
-         * @param menu Popupmenu
-         */
-        vfunc_set_popup_menu(menu: Gtk.Widget): void;
-        /**
-         * Sets the tabsize of the editor.
-         * @param tabsize Tabsize in spaces
-         */
-        vfunc_set_tabsize(tabsize: number): void;
-        vfunc_set_use_spaces(use_spaces: boolean): void;
-    }
-
-    interface EditorAssist {
-        // Owm methods of IAnjuta-3.0.EditorAssist
-
-        add(provider: Provider): void;
-        invoke(provider: Provider): void;
-        /**
-         * Add the list of proposals for the current population. You can add
-         * proposals async as long as the last call sets finished to TRUE. That
-         * is usually called by the IAnjutaProvider after it was triggered by
-         * ianjuta_provider_populate()
-         * @param provider a IAnjutaProvider
-         * @param proposals a list of IAnjutaProposals
-         * @param pre_word the word before the cursor
-         * @param finished whether is was the last call in an async operation
-         */
-        proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void;
-        remove(provider: Provider): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorAssist
-
-        vfunc_add(provider: Provider): void;
-        vfunc_cancelled(): void;
-        vfunc_invoke(provider: Provider): void;
-        /**
-         * Add the list of proposals for the current population. You can add
-         * proposals async as long as the last call sets finished to TRUE. That
-         * is usually called by the IAnjutaProvider after it was triggered by
-         * ianjuta_provider_populate()
-         * @param provider a IAnjutaProvider
-         * @param proposals a list of IAnjutaProposals
-         * @param pre_word the word before the cursor
-         * @param finished whether is was the last call in an async operation
-         */
-        vfunc_proposals(
-            provider: Provider,
-            proposals: EditorAssistProposal[],
-            pre_word: string,
-            finished: boolean,
-        ): void;
-        vfunc_remove(provider: Provider): void;
-    }
-
-    interface EditorCell {
-        // Owm methods of IAnjuta-3.0.EditorCell
-
-        get_attribute(): EditorAttribute;
-        /**
-         * Returns the byte of the unicode character in this cell at given
-         * index `char_index`. `char_index` can vary from 0 to length of the
-         * unicode string minus 1. Out of range index is not allowed
-         * (asserted) and return is undefined.
-         *
-         * Since there is dynamic allocation of unicode character string
-         * involved in ianjuta_editor_cell_get_character(), this function
-         * is mainly useful for fast iteration (such as copying data).
-         * @param char_index
-         * @returns a byte character.
-         */
-        get_char(char_index: number): number;
-        /**
-         * Returns the unicode character in this cell. A NULL terminated
-         * string is returned that is the multibyte unicode character.
-         * NULL is returned if the cell does not have any character.
-         * @returns a newly created string representing the cell's unicode character.
-         */
-        get_character(): string;
-        /**
-         * Gets the length of the cell in bytes. That is, length of the
-         * unicode character.
-         * @returns Length of the unicode character.
-         */
-        get_length(): number;
-
-        // Own virtual methods of IAnjuta-3.0.EditorCell
-
-        vfunc_get_attribute(): EditorAttribute;
-        /**
-         * Returns the byte of the unicode character in this cell at given
-         * index `char_index`. `char_index` can vary from 0 to length of the
-         * unicode string minus 1. Out of range index is not allowed
-         * (asserted) and return is undefined.
-         *
-         * Since there is dynamic allocation of unicode character string
-         * involved in ianjuta_editor_cell_get_character(), this function
-         * is mainly useful for fast iteration (such as copying data).
-         * @param char_index
-         */
-        vfunc_get_char(char_index: number): number;
-        /**
-         * Returns the unicode character in this cell. A NULL terminated
-         * string is returned that is the multibyte unicode character.
-         * NULL is returned if the cell does not have any character.
-         */
-        vfunc_get_character(): string;
-        /**
-         * Gets the length of the cell in bytes. That is, length of the
-         * unicode character.
-         */
-        vfunc_get_length(): number;
-    }
-
-    interface EditorCellStyle {
-        // Owm methods of IAnjuta-3.0.EditorCellStyle
-
-        get_background_color(): string;
-        get_color(): string;
-        get_font_description(): string;
-
-        // Own virtual methods of IAnjuta-3.0.EditorCellStyle
-
-        vfunc_get_background_color(): string;
-        vfunc_get_color(): string;
-        vfunc_get_font_description(): string;
-    }
-
-    interface EditorComment {
-        // Owm methods of IAnjuta-3.0.EditorComment
-
-        /**
-         * Comment/Uncomment out selected block
-         */
-        block(): void;
-        /**
-         * Comment/Uncomment out selected block
-         */
-        box(): void;
-        /**
-         * Comment/Uncomment out selected block
-         */
-        stream(): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorComment
-
-        /**
-         * Comment/Uncomment out selected block
-         */
-        vfunc_block(): void;
-        /**
-         * Comment/Uncomment out selected block
-         */
-        vfunc_box(): void;
-        /**
-         * Comment/Uncomment out selected block
-         */
-        vfunc_stream(): void;
-    }
-
-    interface EditorConvert {
-        // Owm methods of IAnjuta-3.0.EditorConvert
-
-        /**
-         * change characters from start position to end position to lowercase
-         * @param start_position Start position.
-         * @param end_position End position.
-         */
-        to_lower(start_position: Iterable, end_position: Iterable): void;
-        /**
-         * change characters from start position to end position to uppercase.
-         * @param start_position Start position.
-         * @param end_position End position.
-         */
-        to_upper(start_position: Iterable, end_position: Iterable): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorConvert
-
-        /**
-         * change characters from start position to end position to lowercase
-         * @param start_position Start position.
-         * @param end_position End position.
-         */
-        vfunc_to_lower(start_position: Iterable, end_position: Iterable): void;
-        /**
-         * change characters from start position to end position to uppercase.
-         * @param start_position Start position.
-         * @param end_position End position.
-         */
-        vfunc_to_upper(start_position: Iterable, end_position: Iterable): void;
-    }
-
-    interface EditorFactory {}
-
-    interface EditorFolds {
-        // Owm methods of IAnjuta-3.0.EditorFolds
-
-        close_all(): void;
-        open_all(): void;
-        toggle_current(): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorFolds
-
-        vfunc_close_all(): void;
-        vfunc_open_all(): void;
-        vfunc_toggle_current(): void;
-    }
-
-    interface EditorGladeSignal {
-        // Own virtual methods of IAnjuta-3.0.EditorGladeSignal
-
-        vfunc_drop(iterator: Iterable, signal_data: string): void;
-        vfunc_drop_possible(iterator: Iterable): boolean;
-    }
-
-    interface EditorGoto {
-        // Owm methods of IAnjuta-3.0.EditorGoto
-
-        /**
-         * Moves cursor to the end of the current block
-         */
-        end_block(): void;
-        /**
-         * Moves cursor to matching brace
-         */
-        matching_brace(): void;
-        /**
-         * Moves cursor to the start of the current block
-         */
-        start_block(): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorGoto
-
-        /**
-         * Moves cursor to the end of the current block
-         */
-        vfunc_end_block(): void;
-        /**
-         * Moves cursor to matching brace
-         */
-        vfunc_matching_brace(): void;
-        /**
-         * Moves cursor to the start of the current block
-         */
-        vfunc_start_block(): void;
-    }
-
-    interface EditorHover {
-        // Owm methods of IAnjuta-3.0.EditorHover
-
-        /**
-         * Show `info` as tooltip
-         * @param position
-         * @param info String to display
-         */
-        display(position: Iterable, info: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorHover
-
-        /**
-         * Show `info` as tooltip
-         * @param position
-         * @param info String to display
-         */
-        vfunc_display(position: Iterable, info: string): void;
-        vfunc_hover_leave(position: Iterable): void;
-        vfunc_hover_over(position: Iterable): void;
-    }
-
-    interface EditorLanguage {
-        // Owm methods of IAnjuta-3.0.EditorLanguage
-
-        /**
-         * Return the name of the currently used language
-         */
-        get_language(): string;
-        get_language_name(language: string): string;
-        /**
-         * Return a list of languages supported by the editor
-         * Note: These list contains the names in the form
-         * the editor implementation knows them
-         */
-        get_supported_languages(): string[];
-        /**
-         * Force the editor to use a given language
-         * @param language Language
-         */
-        set_language(language: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorLanguage
-
-        /**
-         * Return the name of the currently used language
-         */
-        vfunc_get_language(): string;
-        vfunc_get_language_name(language: string): string;
-        /**
-         * Return a list of languages supported by the editor
-         * Note: These list contains the names in the form
-         * the editor implementation knows them
-         */
-        vfunc_get_supported_languages(): string[];
-        vfunc_language_changed(language: string): void;
-        /**
-         * Force the editor to use a given language
-         * @param language Language
-         */
-        vfunc_set_language(language: string): void;
-    }
-
-    interface EditorLineMode {
-        // Owm methods of IAnjuta-3.0.EditorLineMode
-
-        /**
-         * Set the line ending mode to the given `mode` and convert all line end
-         * characters in the buffer to `mode` line end characters.
-         * @param mode Line mode to convert.
-         */
-        convert(mode: EditorLineModeType): void;
-        /**
-         * Convert EOL characters to majority of line mode. This is helpful
-         * when the buffer contains mixed line modes and we want to fix it.
-         */
-        fix(): void;
-        /**
-         * Get current line ending mode. It is auto-detected from the
-         * buffer contents.
-         */
-        get(): EditorLineModeType;
-        /**
-         * Set the line ending mode to the given `mode`. Existing line end
-         * characters in the buffer are not touched. Only the newly added
-         * texts will have `mode` line end characters.
-         * @param mode Line mode to set.
-         */
-        set(mode: EditorLineModeType): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorLineMode
-
-        /**
-         * Set the line ending mode to the given `mode` and convert all line end
-         * characters in the buffer to `mode` line end characters.
-         * @param mode Line mode to convert.
-         */
-        vfunc_convert(mode: EditorLineModeType): void;
-        /**
-         * Convert EOL characters to majority of line mode. This is helpful
-         * when the buffer contains mixed line modes and we want to fix it.
-         */
-        vfunc_fix(): void;
-        /**
-         * Get current line ending mode. It is auto-detected from the
-         * buffer contents.
-         */
-        vfunc_get(): EditorLineModeType;
-        /**
-         * Set the line ending mode to the given `mode`. Existing line end
-         * characters in the buffer are not touched. Only the newly added
-         * texts will have `mode` line end characters.
-         * @param mode Line mode to set.
-         */
-        vfunc_set(mode: EditorLineModeType): void;
-    }
-
-    interface EditorSearch {
-        // Owm methods of IAnjuta-3.0.EditorSearch
-
-        /**
-         * Search backward from end to start
-         * @param search String to search for
-         * @param case_sensitive
-         * @param start Where to search from
-         * @param end Where to stop searching
-         */
-        backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): boolean;
-        /**
-         * Search forward from start to end
-         * @param search String to search for
-         * @param case_sensitive
-         * @param start Where to search from
-         * @param end Where to stop searching
-         */
-        forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.EditorSearch
-
-        /**
-         * Search backward from end to start
-         * @param search String to search for
-         * @param case_sensitive
-         * @param start Where to search from
-         * @param end Where to stop searching
-         */
-        vfunc_backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): boolean;
-        /**
-         * Search forward from start to end
-         * @param search String to search for
-         * @param case_sensitive
-         * @param start Where to search from
-         * @param end Where to stop searching
-         */
-        vfunc_forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): boolean;
-    }
-
-    interface EditorSelection {
-        // Owm methods of IAnjuta-3.0.EditorSelection
-
-        /**
-         * Gets curerntly selected text in editor.
-         * @returns A newly allocated buffer of currently selected characters. NULL if there is no selection. The returned buffer must be freed after use.
-         */
-        get(): string;
-        /**
-         * Returns TRUE if editor has any text selected. The selection
-         * positions can be retrieved with ianjuta_editor_selection_get_start()
-         * and ianjuta_editor_selection_get_end().
-         * @returns TRUE if there is text selected else FALSE.
-         */
-        has_selection(): boolean;
-        /**
-         * Replaces currently selected text with the `text`. Only `length` amount
-         * of characters are used from `text` buffer to replace.
-         * @param text Replacement text.
-         * @param length Length of the text to used in @text.
-         */
-        replace(text: string, length: number): void;
-        select_all(): void;
-        /**
-         * Selects current block of code. The definition of block of code
-         * depends on highlight mode used (programming language). Some
-         * highlight mode does not have block concept, in that case this
-         * method does not do anything.
-         */
-        select_block(): void;
-        /**
-         * Select current function block. The definition of function block
-         * depends on highlight mode used (programming language). Some
-         * highlight mode does not have function concept, in that case this
-         * method does not do anything.
-         */
-        select_function(): void;
-        /**
-         * Select characters between start and end. Start and end don't have to
-         * be ordered.
-         * @param start Begin of selection
-         * @param end End of selection
-         * @param scroll Scroll selection onscreen
-         */
-        set(start: Iterable, end: Iterable, scroll: boolean): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorSelection
-
-        /**
-         * Gets curerntly selected text in editor.
-         */
-        vfunc_get(): string;
-        /**
-         * Returns TRUE if editor has any text selected. The selection
-         * positions can be retrieved with ianjuta_editor_selection_get_start()
-         * and ianjuta_editor_selection_get_end().
-         */
-        vfunc_has_selection(): boolean;
-        /**
-         * Replaces currently selected text with the `text`. Only `length` amount
-         * of characters are used from `text` buffer to replace.
-         * @param text Replacement text.
-         * @param length Length of the text to used in @text.
-         */
-        vfunc_replace(text: string, length: number): void;
-        vfunc_select_all(): void;
-        /**
-         * Selects current block of code. The definition of block of code
-         * depends on highlight mode used (programming language). Some
-         * highlight mode does not have block concept, in that case this
-         * method does not do anything.
-         */
-        vfunc_select_block(): void;
-        /**
-         * Select current function block. The definition of function block
-         * depends on highlight mode used (programming language). Some
-         * highlight mode does not have function concept, in that case this
-         * method does not do anything.
-         */
-        vfunc_select_function(): void;
-        /**
-         * Select characters between start and end. Start and end don't have to
-         * be ordered.
-         * @param start Begin of selection
-         * @param end End of selection
-         * @param scroll Scroll selection onscreen
-         */
-        vfunc_set(start: Iterable, end: Iterable, scroll: boolean): void;
-    }
-
-    interface EditorTip {
-        // Owm methods of IAnjuta-3.0.EditorTip
-
-        /**
-         * Cancels the last shown tooltip
-         */
-        cancel(): void;
-        /**
-         * Show tips showing more information on current context. No user feedback
-         * is required when tips are shown. `position` indicates
-         * the position before which is the known context and after which are
-         * the suggestions. Usually the editor would use this to
-         * align the choices displayed such that the carat is just at this
-         * position when the choices are displayed.
-         * @param tips list of alternative tips.
-         * @param position Tip position.
-         */
-        show(tips: string[], position: Iterable): void;
-        visible(): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.EditorTip
-
-        /**
-         * Cancels the last shown tooltip
-         */
-        vfunc_cancel(): void;
-        /**
-         * Show tips showing more information on current context. No user feedback
-         * is required when tips are shown. `position` indicates
-         * the position before which is the known context and after which are
-         * the suggestions. Usually the editor would use this to
-         * align the choices displayed such that the carat is just at this
-         * position when the choices are displayed.
-         * @param tips list of alternative tips.
-         * @param position Tip position.
-         */
-        vfunc_show(tips: string[], position: Iterable): void;
-        vfunc_visible(): boolean;
-    }
-
-    interface EditorView {
-        // Owm methods of IAnjuta-3.0.EditorView
-
-        /**
-         * Creates a new view for the editor. The newly created view gets
-         * the user focus and scrolls to the same location as last view.
-         */
-        create(): void;
-        /**
-         * Total number of views currently present. It will never be less
-         * than 1. Invalid return values are considered error condition.
-         */
-        get_count(): number;
-        /**
-         * Removes currently focused editor view. It does not remove the
-         * last view of the editor. That is, if currently there is only
-         * one view of the editor, this function does nothing.
-         */
-        remove_current(): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorView
-
-        /**
-         * Creates a new view for the editor. The newly created view gets
-         * the user focus and scrolls to the same location as last view.
-         */
-        vfunc_create(): void;
-        /**
-         * Total number of views currently present. It will never be less
-         * than 1. Invalid return values are considered error condition.
-         */
-        vfunc_get_count(): number;
-        /**
-         * Removes currently focused editor view. It does not remove the
-         * last view of the editor. That is, if currently there is only
-         * one view of the editor, this function does nothing.
-         */
-        vfunc_remove_current(): void;
-    }
-
-    interface EditorZoom {
-        // Owm methods of IAnjuta-3.0.EditorZoom
-
-        /**
-         * Zoom in
-         */
-        ['in'](): void;
-        /**
-         * Zoom out
-         */
-        out(): void;
-
-        // Own virtual methods of IAnjuta-3.0.EditorZoom
-
-        /**
-         * Zoom in
-         */
-        vfunc_in(): void;
-        /**
-         * Zoom out
-         */
-        vfunc_out(): void;
-    }
-
-    interface Environment {
-        // Owm methods of IAnjuta-3.0.Environment
-
-        /**
-         * Convert a directory in the environment to a directory outside.
-         * It is useful when the environment use chroot. Take care that
-         * the input directory string is freed using g_free but and you need to
-         * free the output string when not needed.
-         * @param dir A directory path in the environment
-         * @returns The directory path outside the environment
-         */
-        get_real_directory(dir: string): string;
-        /**
-         * Override a command to work in another build environment
-         * @param dirp a pointer on the working directory
-         * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
-         * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
-         * @returns FALSE if there is an error.
-         */
-        override(dirp: string, argvp: string, envp: string): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.Environment
-
-        /**
-         * Convert a directory in the environment to a directory outside.
-         * It is useful when the environment use chroot. Take care that
-         * the input directory string is freed using g_free but and you need to
-         * free the output string when not needed.
-         * @param dir A directory path in the environment
-         */
-        vfunc_get_real_directory(dir: string): string;
-        /**
-         * Override a command to work in another build environment
-         * @param dirp a pointer on the working directory
-         * @param argvp a pointer on a NULL terminated string array     containing the command name in argv[0] and all    its argument
-         * @param envp a pointer on a NULL terminated string array    containing all additional environment variable    used by the command
-         */
-        vfunc_override(dirp: string, argvp: string, envp: string): boolean;
-    }
-
-    interface File {
-        // Owm methods of IAnjuta-3.0.File
-
-        /**
-         * Returns the file that was opened with ianjuta_file_open().
-         * @returns The last file opened.
-         */
-        get_file(): Gio.File;
-        /**
-         * The implementor opens the given file.
-         * @param file file to open.
-         */
-        open(file: Gio.File): void;
-
-        // Own virtual methods of IAnjuta-3.0.File
-
-        /**
-         * Returns the file that was opened with ianjuta_file_open().
-         */
-        vfunc_get_file(): Gio.File;
-        /**
-         * The implementor opens the given file.
-         * @param file file to open.
-         */
-        vfunc_open(file: Gio.File): void;
-        vfunc_opened(): void;
-    }
-
-    interface FileLoader {
-        // Owm methods of IAnjuta-3.0.FileLoader
-
-        peek_interface(file: Gio.File): string;
-
-        // Own virtual methods of IAnjuta-3.0.FileLoader
-
-        vfunc_peek_interface(file: Gio.File): string;
-    }
-
-    interface FileManager {
-        // Owm methods of IAnjuta-3.0.FileManager
-
-        /**
-         * fixme
-         * @param root_uri fixme
-         */
-        set_root(root_uri: string): void;
-        /**
-         * fixme.
-         * @param file File to select
-         */
-        set_selected(file: Gio.File): void;
-
-        // Own virtual methods of IAnjuta-3.0.FileManager
-
-        vfunc_section_changed(file: Gio.File): void;
-        /**
-         * fixme
-         * @param root_uri fixme
-         */
-        vfunc_set_root(root_uri: string): void;
-        /**
-         * fixme.
-         * @param file File to select
-         */
-        vfunc_set_selected(file: Gio.File): void;
-    }
-
-    interface FileSavable {
-        // Owm methods of IAnjuta-3.0.FileSavable
-
-        /**
-         * Return is the file is in conflict. It means the file
-         * has been modified externally and the user needs to
-         * tell which version he wants to use.
-         * @returns TRUE if conflict, FALSE otherwise.
-         */
-        is_conflict(): boolean;
-        /**
-         * Returns the dirty status of the content.
-         * @returns TRUE if dirty, FALSE otherwise.
-         */
-        is_dirty(): boolean;
-        /**
-         * Return is the file is read-only
-         * @returns TRUE if read-only, FALSE otherwise.
-         */
-        is_read_only(): boolean;
-        /**
-         * Saves the content to the original file from which it was loaded.
-         * The signal saved is always emitted even if the save fails.
-         */
-        save(): void;
-        /**
-         * Saves the content to a different File.
-         * The signal saved is always emitted even if the save fails.
-         * @param file File to save the content.
-         */
-        save_as(file: Gio.File): void;
-        /**
-         * if `dirty` is TRUE, sets dirty for the content. Save point will be
-         * left and the content will be considered not saved. Otherwise,
-         * content will considered saved and save-point will be entered.
-         * @param dirty Whether the file was edited or not
-         */
-        set_dirty(dirty: boolean): void;
-
-        // Own virtual methods of IAnjuta-3.0.FileSavable
-
-        /**
-         * Return is the file is in conflict. It means the file
-         * has been modified externally and the user needs to
-         * tell which version he wants to use.
-         */
-        vfunc_is_conflict(): boolean;
-        /**
-         * Returns the dirty status of the content.
-         */
-        vfunc_is_dirty(): boolean;
-        /**
-         * Return is the file is read-only
-         */
-        vfunc_is_read_only(): boolean;
-        /**
-         * Saves the content to the original file from which it was loaded.
-         * The signal saved is always emitted even if the save fails.
-         */
-        vfunc_save(): void;
-        /**
-         * Saves the content to a different File.
-         * The signal saved is always emitted even if the save fails.
-         * @param file File to save the content.
-         */
-        vfunc_save_as(file: Gio.File): void;
-        vfunc_saved(file: Gio.File): void;
-        /**
-         * if `dirty` is TRUE, sets dirty for the content. Save point will be
-         * left and the content will be considered not saved. Otherwise,
-         * content will considered saved and save-point will be entered.
-         * @param dirty Whether the file was edited or not
-         */
-        vfunc_set_dirty(dirty: boolean): void;
-        vfunc_update_save_ui(): void;
-    }
-
-    interface Glade {
-        // Owm methods of IAnjuta-3.0.Glade
-
-        add_association(master: string, slave: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.Glade
-
-        vfunc_add_association(master: string, slave: string): void;
-    }
-
-    interface Help {
-        // Owm methods of IAnjuta-3.0.Help
-
-        /**
-         * Search for string `query` in the help and display the result
-         * @param query string to search in the help
-         */
-        search(query: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.Help
-
-        /**
-         * Search for string `query` in the help and display the result
-         * @param query string to search in the help
-         */
-        vfunc_search(query: string): void;
-    }
-
-    interface Indenter {
-        // Owm methods of IAnjuta-3.0.Indenter
-
-        /**
-         * Indent the area between `start` and `end` according to the indentation rules
-         * of the programming language. Usually implemented by language support plugins.
-         * Only one indenter can be loaded at a time.
-         * Note: Indenters always affect full lines, so start and end will be moved
-         * according to the next line start/end.
-         * @param start Start of the area to indent
-         * @param end End of the area to indent
-         */
-        indent(start: Iterable, end: Iterable): void;
-
-        // Own virtual methods of IAnjuta-3.0.Indenter
-
-        /**
-         * Indent the area between `start` and `end` according to the indentation rules
-         * of the programming language. Usually implemented by language support plugins.
-         * Only one indenter can be loaded at a time.
-         * Note: Indenters always affect full lines, so start and end will be moved
-         * according to the next line start/end.
-         * @param start Start of the area to indent
-         * @param end End of the area to indent
-         */
-        vfunc_indent(start: Iterable, end: Iterable): void;
-    }
-
-    interface Indicable {
-        // Owm methods of IAnjuta-3.0.Indicable
-
-        /**
-         * Clear all indicators
-         */
-        clear(): void;
-        /**
-         * Set an indicator
-         * @param begin_location Location where the indication should start
-         * @param end_location Location where the indication should end
-         * @param indicator the indicator to use
-         */
-        set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
-
-        // Own virtual methods of IAnjuta-3.0.Indicable
-
-        /**
-         * Clear all indicators
-         */
-        vfunc_clear(): void;
-        /**
-         * Set an indicator
-         * @param begin_location Location where the indication should start
-         * @param end_location Location where the indication should end
-         * @param indicator the indicator to use
-         */
-        vfunc_set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
-    }
-
-    interface Iterable {
-        // Owm methods of IAnjuta-3.0.Iterable
-
-        /**
-         * Assigns the iter position from `src_iter`.
-         * @param src_iter Source iter from which to copy the assignment.
-         */
-        assign(src_iter: Iterable): void;
-        /**
-         * Clones the iterable. The returned iterable object must be unreffed
-         * when done.
-         * @returns A new instance of this iterable pointing at the same location.
-         */
-        clone(): Iterable;
-        /**
-         * Compares the position of `iter2` with this `obj`. Returns -1
-         * value if this `obj` is smaller than `iter2`. Returns +1 value
-         * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
-         * If you want difference of the iter positions, use
-         * #ianjuta_iterable_diff(). This method is meant for fast comparision.
-         * @param iter2 Second iter to compare.
-         * @returns 0 if equal, -1 if @obj is smaller than @iter2 or +1 if @obj is larger than @iter2.
-         */
-        compare(iter2: Iterable): number;
-        /**
-         * Compares the position of `iter2` with this `obj` and returns difference
-         * in position of the two (`obj` - `iter2`).
-         * @param iter2 Second iter to differenciate.
-         * @returns The position difference of @obj - @iter2
-         */
-        diff(iter2: Iterable): number;
-        /**
-         * Set iter to first element position. Returns FALSE if
-         * there is no element in the iterable (hence does not have first).
-         * The iter points to the first valid item.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        first(): boolean;
-        /**
-         * Length of the iterable (number of elements indexable by it).
-         * @returns total length of the list.
-         */
-        get_length(): number;
-        /**
-         * Index of the current iter in the iterable. It will be
-         * from 0 to length - 1 (ianjuta_iter_get_length()) if iter is pointed
-         * at valid element. It will return -1 if iter is pointed at end-iter.
-         * @returns integer index, or -1 for end-iter.
-         */
-        get_position(): number;
-        /**
-         * Set iter position to end-iter (one past last element) position.
-         * Returns FALSE if there is no element in the iterable (already
-         * at end-iter).
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        last(): boolean;
-        /**
-         * Set the iter position to next element position. Iter can go until one
-         * item past the last item and lands in end-iter. end-iter does not point
-         * to any valid item and signifies end of the list. Returns FALSE if iter
-         * was already at end-iter (iter can not go past it) and remains pointed
-         * to the end-iter.
-         * @returns TRUE if sucessful, otherwise FALSE if already at end-iter.
-         */
-        next(): boolean;
-        /**
-         * Set the iter position to previous element position. Returns FALSE if
-         * there is no previous element and the iter remains pointed to the first
-         * element.
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        previous(): boolean;
-        /**
-         * Sets the current position of the iter to `position`. The given `position`
-         * must be from 0 to length - 1 (#ianjuta_iter_get_length()) to point to
-         * a valid element. Passing `position` < 0 will set it to end-iter. It
-         * returns TRUE for the above cases. FLASE will be returned, if
-         * out-of-range `position` is passed (`position` > length - 1) and iter is
-         * set to end-iter.
-         * @param position New position for the iter.
-         * @returns TRUE if successfully set (i.e. @position is within the range or end-iter). otherwise returns FALSE (i.e. @position is out of data range).
-         */
-        set_position(position: number): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.Iterable
-
-        /**
-         * Assigns the iter position from `src_iter`.
-         * @param src_iter Source iter from which to copy the assignment.
-         */
-        vfunc_assign(src_iter: Iterable): void;
-        /**
-         * Clones the iterable. The returned iterable object must be unreffed
-         * when done.
-         */
-        vfunc_clone(): Iterable;
-        /**
-         * Compares the position of `iter2` with this `obj`. Returns -1
-         * value if this `obj` is smaller than `iter2`. Returns +1 value
-         * if this `obj` is larger than `iter2`. And returns 0 if both are equal.
-         * If you want difference of the iter positions, use
-         * #ianjuta_iterable_diff(). This method is meant for fast comparision.
-         * @param iter2 Second iter to compare.
-         */
-        vfunc_compare(iter2: Iterable): number;
-        /**
-         * Compares the position of `iter2` with this `obj` and returns difference
-         * in position of the two (`obj` - `iter2`).
-         * @param iter2 Second iter to differenciate.
-         */
-        vfunc_diff(iter2: Iterable): number;
-        /**
-         * Set iter to first element position. Returns FALSE if
-         * there is no element in the iterable (hence does not have first).
-         * The iter points to the first valid item.
-         */
-        vfunc_first(): boolean;
-        /**
-         * Length of the iterable (number of elements indexable by it).
-         */
-        vfunc_get_length(): number;
-        /**
-         * Index of the current iter in the iterable. It will be
-         * from 0 to length - 1 (ianjuta_iter_get_length()) if iter is pointed
-         * at valid element. It will return -1 if iter is pointed at end-iter.
-         */
-        vfunc_get_position(): number;
-        /**
-         * Set iter position to end-iter (one past last element) position.
-         * Returns FALSE if there is no element in the iterable (already
-         * at end-iter).
-         */
-        vfunc_last(): boolean;
-        /**
-         * Set the iter position to next element position. Iter can go until one
-         * item past the last item and lands in end-iter. end-iter does not point
-         * to any valid item and signifies end of the list. Returns FALSE if iter
-         * was already at end-iter (iter can not go past it) and remains pointed
-         * to the end-iter.
-         */
-        vfunc_next(): boolean;
-        /**
-         * Set the iter position to previous element position. Returns FALSE if
-         * there is no previous element and the iter remains pointed to the first
-         * element.
-         */
-        vfunc_previous(): boolean;
-        /**
-         * Sets the current position of the iter to `position`. The given `position`
-         * must be from 0 to length - 1 (#ianjuta_iter_get_length()) to point to
-         * a valid element. Passing `position` < 0 will set it to end-iter. It
-         * returns TRUE for the above cases. FLASE will be returned, if
-         * out-of-range `position` is passed (`position` > length - 1) and iter is
-         * set to end-iter.
-         * @param position New position for the iter.
-         */
-        vfunc_set_position(position: number): boolean;
-    }
-
-    interface IterableTree {
-        // Owm methods of IAnjuta-3.0.IterableTree
-
-        /**
-         * Iter position set to first child of current iter. If there is no
-         * children, return NULL (iter position is not changed).
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        children(): boolean;
-        /**
-         * Returns true if current iter has children
-         * @returns TRUE if there are children, otherwise FALSE.
-         */
-        has_children(): boolean;
-        /**
-         * Set iter position to parent of curernt iter. If there is no parent,
-         * returns FALSE (current iter position is not changed)
-         * @returns TRUE if sucessful, otherwise FALSE.
-         */
-        parent(): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.IterableTree
-
-        /**
-         * Iter position set to first child of current iter. If there is no
-         * children, return NULL (iter position is not changed).
-         */
-        vfunc_children(): boolean;
-        /**
-         * Returns true if current iter has children
-         */
-        vfunc_has_children(): boolean;
-        /**
-         * Set iter position to parent of curernt iter. If there is no parent,
-         * returns FALSE (current iter position is not changed)
-         */
-        vfunc_parent(): boolean;
-    }
-
-    interface Language {
-        // Owm methods of IAnjuta-3.0.Language
-
-        /**
-         * Conviniece method to get the id directly from the editor
-         * @param editor An object implementing IAnjutaEditorLanguage
-         * @returns A valid language id or 0
-         */
-        get_from_editor(editor: EditorLanguage): LanguageId;
-        get_from_mime_type(mime_type: string): LanguageId;
-        get_from_string(string: string): LanguageId;
-        get_languages(): number[];
-        get_make_target(id: LanguageId): string;
-        get_name(id: LanguageId): string;
-        /**
-         * Conviniece method to get the name directly from the editor
-         * @param editor An object implementing IAnjutaEditorLanguage
-         * @returns A language name or NULL
-         */
-        get_name_from_editor(editor: EditorLanguage): string;
-
-        // Own virtual methods of IAnjuta-3.0.Language
-
-        /**
-         * Conviniece method to get the id directly from the editor
-         * @param editor An object implementing IAnjutaEditorLanguage
-         */
-        vfunc_get_from_editor(editor: EditorLanguage): LanguageId;
-        vfunc_get_from_mime_type(mime_type: string): LanguageId;
-        vfunc_get_from_string(string: string): LanguageId;
-        vfunc_get_languages(): number[];
-        vfunc_get_make_target(id: LanguageId): string;
-        vfunc_get_name(id: LanguageId): string;
-        /**
-         * Conviniece method to get the name directly from the editor
-         * @param editor An object implementing IAnjutaEditorLanguage
-         */
-        vfunc_get_name_from_editor(editor: EditorLanguage): string;
-    }
-
-    interface LanguageProvider {
-        // Owm methods of IAnjuta-3.0.LanguageProvider
-
-        /**
-         * Searches for a calltip in the cache
-         * @param call_context name of the method to show a calltip
-         * @returns tips for the          searched name of the method from the cache,          NULL if nothing found
-         */
-        get_calltip_cache(call_context: string): string[];
-        /**
-         * Searches for a calltip context
-         * @param iter current cursor position
-         * @returns name of the method to show a calltip for or NULL
-         */
-        get_calltip_context(iter: Iterable): string;
-        /**
-         * Creates a new calltip
-         * @param call_context name of the method to create a new calltip
-         * @param iter current cursor position
-         */
-        new_calltip(call_context: string, iter: Iterable): void;
-        /**
-         * Show completion for the context at position `iter`. The provider should
-         * call ianjuta_editor_assist_proposals here to add proposals to the list.
-         *
-         * Note that this is called after every character typed and the list of proposals
-         * has to be completely renewed.
-         * @param iter the text iter where the provider should be populated
-         * @returns the iter where the provider populated, NULL otherwise
-         */
-        populate_completions(iter: Iterable): Iterable | null;
-
-        // Own virtual methods of IAnjuta-3.0.LanguageProvider
-
-        /**
-         * Searches for a calltip in the cache
-         * @param call_context name of the method to show a calltip
-         */
-        vfunc_get_calltip_cache(call_context: string): string[];
-        /**
-         * Searches for a calltip context
-         * @param iter current cursor position
-         */
-        vfunc_get_calltip_context(iter: Iterable): string;
-        /**
-         * Creates a new calltip
-         * @param call_context name of the method to create a new calltip
-         * @param iter current cursor position
-         */
-        vfunc_new_calltip(call_context: string, iter: Iterable): void;
-        /**
-         * Show completion for the context at position `iter`. The provider should
-         * call ianjuta_editor_assist_proposals here to add proposals to the list.
-         *
-         * Note that this is called after every character typed and the list of proposals
-         * has to be completely renewed.
-         * @param iter the text iter where the provider should be populated
-         */
-        vfunc_populate_completions(iter: Iterable): Iterable | null;
-    }
-
-    interface Loader {}
-
-    interface Markable {
-        // Owm methods of IAnjuta-3.0.Markable
-
-        /**
-         * Delete the `marker` from all locations.
-         * @param marker Marker to delete.
-         */
-        delete_all_markers(marker: MarkableMarker): void;
-        /**
-         * Check if the `marker` is set at the given `location`.
-         * @param location Location to check.
-         * @param marker Marker to check.
-         * @returns TRUE if the marker is set at the location, other false.
-         */
-        is_marker_set(location: number, marker: MarkableMarker): boolean;
-        /**
-         * Location where a marker is set could have moved by some operation in
-         * the implementation. To retrieve the correct location where the marker
-         * has moved, pass the handle retured by ianjuta_markable_mark() to this
-         * method.
-         * @param handle Handle of location.
-         * @returns Current location where the marker was set.
-         */
-        location_from_handle(handle: number): number;
-        /**
-         * Marks the specified location with the given marker type. Location is
-         * implementation depenedent. For example, for an editor location means
-         * lines where markers are set.
-         * @param location Location at which the marker to set.
-         * @param marker Type of marker to be used
-         * @param tooltip optional tooltip displayed with the marker
-         * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
-         */
-        mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
-        /**
-         * Clears the `marker` at given `location`.
-         * @param location Location where the marker is set.
-         * @param marker The marker to unset.
-         */
-        unmark(location: number, marker: MarkableMarker): void;
-
-        // Own virtual methods of IAnjuta-3.0.Markable
-
-        /**
-         * Delete the `marker` from all locations.
-         * @param marker Marker to delete.
-         */
-        vfunc_delete_all_markers(marker: MarkableMarker): void;
-        /**
-         * Check if the `marker` is set at the given `location`.
-         * @param location Location to check.
-         * @param marker Marker to check.
-         */
-        vfunc_is_marker_set(location: number, marker: MarkableMarker): boolean;
-        /**
-         * Location where a marker is set could have moved by some operation in
-         * the implementation. To retrieve the correct location where the marker
-         * has moved, pass the handle retured by ianjuta_markable_mark() to this
-         * method.
-         * @param handle Handle of location.
-         */
-        vfunc_location_from_handle(handle: number): number;
-        /**
-         * Marks the specified location with the given marker type. Location is
-         * implementation depenedent. For example, for an editor location means
-         * lines where markers are set.
-         * @param location Location at which the marker to set.
-         * @param marker Type of marker to be used
-         * @param tooltip optional tooltip displayed with the marker
-         */
-        vfunc_mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
-        vfunc_marker_clicked(double_click: boolean, location: number): void;
-        /**
-         * Clears the `marker` at given `location`.
-         * @param location Location where the marker is set.
-         * @param marker The marker to unset.
-         */
-        vfunc_unmark(location: number, marker: MarkableMarker): void;
-    }
-
-    interface MessageManager {
-        // Owm methods of IAnjuta-3.0.MessageManager
-
-        /**
-         * Remove view from the message-manager. The view
-         * will become invalid.
-         * @param view The view to remove
-         */
-        remove_view(view: MessageView): void;
-        /**
-         * Set view to be on top of the notebook.
-         * @param view A message view
-         */
-        set_current_view(view: MessageView): void;
-        /**
-         * Sets the icon of view.
-         * @param view A message view
-         * @param icon Sets the icon of view.
-         */
-        set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void;
-        /**
-         * Sets the icon of view.
-         * @param view A message view
-         * @param icon Sets the icon of view.
-         */
-        set_view_icon_from_stock(view: MessageView, icon: string): void;
-        /**
-         * Sets the title of view.
-         * @param view A message view
-         * @param title Sets the title of view.
-         */
-        set_view_title(view: MessageView, title: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.MessageManager
-
-        /**
-         * Remove view from the message-manager. The view
-         * will become invalid.
-         * @param view The view to remove
-         */
-        vfunc_remove_view(view: MessageView): void;
-        /**
-         * Set view to be on top of the notebook.
-         * @param view A message view
-         */
-        vfunc_set_current_view(view: MessageView): void;
-        /**
-         * Sets the icon of view.
-         * @param view A message view
-         * @param icon Sets the icon of view.
-         */
-        vfunc_set_view_icon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void;
-        /**
-         * Sets the icon of view.
-         * @param view A message view
-         * @param icon Sets the icon of view.
-         */
-        vfunc_set_view_icon_from_stock(view: MessageView, icon: string): void;
-        /**
-         * Sets the title of view.
-         * @param view A message view
-         * @param title Sets the title of view.
-         */
-        vfunc_set_view_title(view: MessageView, title: string): void;
-    }
-
-    interface MessageView {
-        // Owm methods of IAnjuta-3.0.MessageView
-
-        /**
-         * Append the message with summary displayed and details displayed as tooltip
-         * @param type type of the message
-         * @param summary summary of the message
-         * @param details details of the message
-         */
-        append(type: MessageViewType, summary: string, details: string): void;
-        /**
-         * Appends the text in buffer. Flushes the buffer where a newline is found.
-         * by emiiting buffer_flushed signal. The string is expected to be utf8.
-         * @param text text to show as message
-         */
-        buffer_append(text: string): void;
-        /**
-         * Clear all messages in buffer
-         */
-        clear(): void;
-        /**
-         * Get the currently selected message
-         */
-        get_current_message(): string;
-        /**
-         * Select next message (of type INFO, WARNING or ERROR)
-         */
-        select_next(): void;
-        /**
-         * Select previous message
-         */
-        select_previous(): void;
-
-        // Own virtual methods of IAnjuta-3.0.MessageView
-
-        /**
-         * Append the message with summary displayed and details displayed as tooltip
-         * @param type type of the message
-         * @param summary summary of the message
-         * @param details details of the message
-         */
-        vfunc_append(type: MessageViewType, summary: string, details: string): void;
-        /**
-         * Appends the text in buffer. Flushes the buffer where a newline is found.
-         * by emiiting buffer_flushed signal. The string is expected to be utf8.
-         * @param text text to show as message
-         */
-        vfunc_buffer_append(text: string): void;
-        vfunc_buffer_flushed(line: string): void;
-        /**
-         * Clear all messages in buffer
-         */
-        vfunc_clear(): void;
-        /**
-         * Get the currently selected message
-         */
-        vfunc_get_current_message(): string;
-        vfunc_message_clicked(message: string): void;
-        /**
-         * Select next message (of type INFO, WARNING or ERROR)
-         */
-        vfunc_select_next(): void;
-        /**
-         * Select previous message
-         */
-        vfunc_select_previous(): void;
-    }
-
-    interface PluginFactory {}
-
-    interface Preferences {
-        // Owm methods of IAnjuta-3.0.Preferences
-
-        /**
-         * When called, the plugin should install it's preferences
-         * @param prefs AnjutaPreferences to install to
-         */
-        merge(prefs: Anjuta.Preferences): void;
-        /**
-         * When called, the plugin should uninstall it's preferences
-         * @param prefs AnjutaPreferences to install to
-         */
-        unmerge(prefs: Anjuta.Preferences): void;
-
-        // Own virtual methods of IAnjuta-3.0.Preferences
-
-        /**
-         * When called, the plugin should install it's preferences
-         * @param prefs AnjutaPreferences to install to
-         */
-        vfunc_merge(prefs: Anjuta.Preferences): void;
-        /**
-         * When called, the plugin should uninstall it's preferences
-         * @param prefs AnjutaPreferences to install to
-         */
-        vfunc_unmerge(prefs: Anjuta.Preferences): void;
-    }
-
-    interface Print {
-        // Owm methods of IAnjuta-3.0.Print
-
-        /**
-         * Print the plugin (the file in case of the editor). In most cases this will show
-         * a print dialog
-         */
-        print(): void;
-        /**
-         * Show print preview dialog
-         */
-        print_preview(): void;
-
-        // Own virtual methods of IAnjuta-3.0.Print
-
-        /**
-         * Print the plugin (the file in case of the editor). In most cases this will show
-         * a print dialog
-         */
-        vfunc_print(): void;
-        /**
-         * Show print preview dialog
-         */
-        vfunc_print_preview(): void;
-    }
-
-    interface Project {
-        // Owm methods of IAnjuta-3.0.Project
-
-        /**
-         * Create a new node and insert it after sibling
-         * @param parent Parent
-         * @param sibling Sibling
-         * @param type Node type
-         * @param file Optional file object for the node
-         * @param name Optional name for the node
-         * @returns The new node, NULL if error
-         */
-        add_node_after(
-            parent: Anjuta.ProjectNode,
-            sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
-        ): Anjuta.ProjectNode;
-        /**
-         * Create a new node and insert it before sibling
-         * @param parent Parent
-         * @param sibling Sibling
-         * @param type Node type
-         * @param file Optional file object for the node
-         * @param name Optional name for the node
-         * @returns The new node, NULL if error
-         */
-        add_node_before(
-            parent: Anjuta.ProjectNode,
-            sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
-        ): Anjuta.ProjectNode;
-        /**
-         * Return a list of possible node;
-         * @returns A list containing information on all node supported by the project.
-         */
-        get_node_info(): Anjuta.ProjectNodeInfo[];
-        /**
-         * Get root_node
-         * @returns The root node
-         */
-        get_root(): Anjuta.ProjectNode;
-        /**
-         * Return TRUE if the project is loaded;
-         * @returns TRUE if the project is completely loaded.
-         */
-        is_loaded(): boolean;
-        /**
-         * Reload a project node
-         * @param node Project node to reload
-         * @returns TRUE if the node has been loaded without error
-         */
-        load_node(node: Anjuta.ProjectNode): boolean;
-        /**
-         * Remove a node
-         * @param node Node
-         * @returns TRUE if the node can be removed
-         */
-        remove_node(node: Anjuta.ProjectNode): boolean;
-        /**
-         * Remove a property of the node
-         * @param node Node
-         * @param id Property
-         * @param name Name for map property
-         * @returns TRUE if the node is removed
-         */
-        remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean;
-        /**
-         * Save a project node
-         * @param node Project node to save
-         * @returns TRUE if the node has been saved without error
-         */
-        save_node(node: Anjuta.ProjectNode): boolean;
-        /**
-         * Change a properties on node.
-         * @param node Node
-         * @param id Property
-         * @param name Name for map property
-         * @param value Value
-         * @returns The new property of NULL if the property cannot be set
-         */
-        set_property(
-            node: Anjuta.ProjectNode,
-            id: string,
-            name: string | null,
-            value: string,
-        ): Anjuta.ProjectProperty | null;
-
-        // Own virtual methods of IAnjuta-3.0.Project
-
-        /**
-         * Create a new node and insert it after sibling
-         * @param parent Parent
-         * @param sibling Sibling
-         * @param type Node type
-         * @param file Optional file object for the node
-         * @param name Optional name for the node
-         */
-        vfunc_add_node_after(
-            parent: Anjuta.ProjectNode,
-            sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
-        ): Anjuta.ProjectNode;
-        /**
-         * Create a new node and insert it before sibling
-         * @param parent Parent
-         * @param sibling Sibling
-         * @param type Node type
-         * @param file Optional file object for the node
-         * @param name Optional name for the node
-         */
-        vfunc_add_node_before(
-            parent: Anjuta.ProjectNode,
-            sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType,
-            file?: Gio.File | null,
-            name?: string | null,
-        ): Anjuta.ProjectNode;
-        vfunc_file_changed(node?: any | null): void;
-        /**
-         * Return a list of possible node;
-         */
-        vfunc_get_node_info(): Anjuta.ProjectNodeInfo[];
-        /**
-         * Get root_node
-         */
-        vfunc_get_root(): Anjuta.ProjectNode;
-        /**
-         * Return TRUE if the project is loaded;
-         */
-        vfunc_is_loaded(): boolean;
-        /**
-         * Reload a project node
-         * @param node Project node to reload
-         */
-        vfunc_load_node(node: Anjuta.ProjectNode): boolean;
-        vfunc_node_changed(node: any | null, error: GLib.Error): void;
-        vfunc_node_loaded(node: any | null, error: GLib.Error): void;
-        vfunc_node_saved(node: any | null, error: GLib.Error): void;
-        /**
-         * Remove a node
-         * @param node Node
-         */
-        vfunc_remove_node(node: Anjuta.ProjectNode): boolean;
-        /**
-         * Remove a property of the node
-         * @param node Node
-         * @param id Property
-         * @param name Name for map property
-         */
-        vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name?: string | null): boolean;
-        /**
-         * Save a project node
-         * @param node Project node to save
-         */
-        vfunc_save_node(node: Anjuta.ProjectNode): boolean;
-        /**
-         * Change a properties on node.
-         * @param node Node
-         * @param id Property
-         * @param name Name for map property
-         * @param value Value
-         */
-        vfunc_set_property(
-            node: Anjuta.ProjectNode,
-            id: string,
-            name: string | null,
-            value: string,
-        ): Anjuta.ProjectProperty | null;
-    }
-
-    interface ProjectBackend {
-        // Owm methods of IAnjuta-3.0.ProjectBackend
-
-        /**
-         * Create a new Anjuta project.
-         * @param file Project file or directory
-         * @returns An object implementing the #IAnjutaProject interface.
-         */
-        new_project(file: Gio.File): Project;
-        /**
-         * Check if the directory contains a project supported by this
-         * backend.
-         * @param directory Project file or directory
-         * @returns 0 if the project is invalid and > 0 if the project is valid.
-         */
-        probe(directory: Gio.File): number;
-
-        // Own virtual methods of IAnjuta-3.0.ProjectBackend
-
-        /**
-         * Create a new Anjuta project.
-         * @param file Project file or directory
-         */
-        vfunc_new_project(file: Gio.File): Project;
-        /**
-         * Check if the directory contains a project supported by this
-         * backend.
-         * @param directory Project file or directory
-         */
-        vfunc_probe(directory: Gio.File): number;
-    }
-
-    interface ProjectChooser {
-        // Owm methods of IAnjuta-3.0.ProjectChooser
-
-        /**
-         * Gets the currently selected element in the project chooser.
-         * @returns A #GFile corresponding to the selected element in the project view or %NULL if no valid node is selected. The file is owned by the widget If you want to keep a pointer to the file you must add a refcount using g_object_ref().
-         */
-        get_selected(): Gio.File;
-        /**
-         * Initialize a project chooser button allowing to select a parent node
-         * where you can add the nodes of type child_type.
-         * As special cases with
-         * <variablelist>
-         *   <varlistentry>
-         *     <term>ANJUTA_PROJECT_ROOT</term>
-         *     <listitem><para>all nodes are included</para></listitem>
-         *   </varlistentry>
-         *   <varlistentry>
-         *     <term>ANJUTA_PROJECT_MODULE</term>
-         *     <listitem><para>only modules are included, this can be used
-         *     to add a new package. While ANJUTA_PROJECT_PACKAGE allows you
-         *     to select a target using a package.</para></listitem>
-         *   </varlistentry>
-         * </variablelist>
-         * @param manager A project manager
-         * @param child_type Select one element type: source, group or target
-         * @returns TRUE if sucessful, other FALSE.
-         */
-        set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.ProjectChooser
-
-        vfunc_changed(): void;
-        /**
-         * Gets the currently selected element in the project chooser.
-         */
-        vfunc_get_selected(): Gio.File;
-        /**
-         * Initialize a project chooser button allowing to select a parent node
-         * where you can add the nodes of type child_type.
-         * As special cases with
-         * <variablelist>
-         *   <varlistentry>
-         *     <term>ANJUTA_PROJECT_ROOT</term>
-         *     <listitem><para>all nodes are included</para></listitem>
-         *   </varlistentry>
-         *   <varlistentry>
-         *     <term>ANJUTA_PROJECT_MODULE</term>
-         *     <listitem><para>only modules are included, this can be used
-         *     to add a new package. While ANJUTA_PROJECT_PACKAGE allows you
-         *     to select a target using a package.</para></listitem>
-         *   </varlistentry>
-         * </variablelist>
-         * @param manager A project manager
-         * @param child_type Select one element type: source, group or target
-         */
-        vfunc_set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
-    }
-
-    interface ProjectManager {
-        // Owm methods of IAnjuta-3.0.ProjectManager
-
-        /**
-         * Prompts the user to add a new group to the project. The user can select
-         * a parent group different from the one set as default.
-         * @param name Group name or URI.
-         * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
-         * @returns A #GFile corresponding to the new group added in the project. You own the returned file; use g_object_unref() to release it.
-         */
-        add_group(name: string, default_group?: Gio.File | null): Gio.File;
-        /**
-         * Prompts the user to add a file to the project. If the user selects
-         * multiple files only the first source file is returned.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param name Source name or URI.
-         * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
-         * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
-         */
-        add_source(name: string, default_target?: Gio.File | null): Gio.File;
-        /**
-         * Adds a file to the project without prompting the user.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param name Source name or URI.
-         * @param target A #GFile corresponding to the parent target or group.
-         * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
-         */
-        add_source_quiet(name: string, target: Gio.File): Gio.File;
-        /**
-         * Prompts the user to add several files to the project. Depending on the
-         * project backend, it can be possible that the source files must
-         * be located in a particular directory.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param names Sources name or URI to add.
-         * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
-         * @returns A list of #GFile corresponding to all new source files added in the project. You own the list with the the returned files; use g_list_free() and g_object_unref() on each file to release them.
-         */
-        add_sources(names: string[], default_target?: Gio.File | null): Gio.File[];
-        /**
-         * Prompts the user to add a new target to the project. The user can select
-         * a parent group different from the one set as default.
-         * @param name Target name or URI.
-         * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
-         * @returns A #GFile corresponding to the new target added in the project. You own the returned file; use g_object_unref() to release it.
-         */
-        add_target(name: string, default_group?: Gio.File | null): Gio.File;
-        /**
-         * Gets the capabilites of project whether it can add group, target
-         * sources etc.
-         * @returns Supported capabilites.
-         */
-        get_capabilities(): number;
-        /**
-         * Recursively gets the list of all children below the corresponding
-         * parent having the specify type.
-         * @param parent A #GFile corresponding to the parent.
-         * @param children_type Select one element type: source, group or target
-         * @returns The list of #GFile corresponding to all children or %NULL if the element has no children with the corresponding type. Free the returned * list with g_list_free() and the files with g_object_unref().
-         */
-        get_children(parent: Gio.File, children_type: number): Gio.File[];
-        /**
-         * Gets the current project.
-         * @returns the currently active project. NULL if none is there.
-         */
-        get_current_project(): Project;
-        /**
-         * Get a list of all elements of this type in the project.
-         * @param element_type Select one element type: source, group or target
-         * @returns Get list of #GFile corresponding to all valid elements or %NULL if there are no elements of this type. Free the returned list with g_list_free() and the files with g_object_unref().
-         */
-        get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[];
-        get_packages(): string[];
-        /**
-         * Gets the currently selected element in the project manager view.
-         * @returns A #GFile corresponding to the selected element in the project view. You own the returned file; use g_object_unref() to release it.
-         */
-        get_selected(): Gio.File;
-        /**
-         * Get the type of the corresponding target: program, library...
-         * @param target A #GFile corresponding to a target
-         * @returns Return the type of the target.
-         */
-        get_target_type(target: Gio.File): Anjuta.ProjectNodeType;
-        /**
-         * Get a list of targets in the project with the corresponding type.
-         * @param target_type type of the target
-         * @returns A list of #GFile corresponding to each target of the requested type or %NULL if none exists. Free the returned list with g_list_free() and the files with g_object_unref().
-         */
-        get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[];
-        /**
-         * Gets whether a project is currently opened.
-         * @returns %TRUE if a project is opened.
-         */
-        is_open(): boolean;
-        /**
-         * Remove a source file from the project. If the file is used in several
-         * targets, it is removed from all targets. The file could be removed from
-         * the disk.
-         * @param file A #GFile that will be removed from the project
-         * @returns %TRUE if the file has been removed from the project else %FALSE
-         */
-        remove_file(file: Gio.File): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.ProjectManager
-
-        /**
-         * Prompts the user to add a new group to the project. The user can select
-         * a parent group different from the one set as default.
-         * @param name Group name or URI.
-         * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
-         */
-        vfunc_add_group(name: string, default_group?: Gio.File | null): Gio.File;
-        /**
-         * Prompts the user to add a file to the project. If the user selects
-         * multiple files only the first source file is returned.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param name Source name or URI.
-         * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
-         */
-        vfunc_add_source(name: string, default_target?: Gio.File | null): Gio.File;
-        /**
-         * Adds a file to the project without prompting the user.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param name Source name or URI.
-         * @param target A #GFile corresponding to the parent target or group.
-         */
-        vfunc_add_source_quiet(name: string, target: Gio.File): Gio.File;
-        /**
-         * Prompts the user to add several files to the project. Depending on the
-         * project backend, it can be possible that the source files must
-         * be located in a particular directory.
-         *
-         * You can add non existing file. In this case the element_added
-         * signal will be emitted with a non existing file. So it is
-         * up to the caller to reemit this signal later when the file
-         * is created.
-         * @param names Sources name or URI to add.
-         * @param default_target A #GFile corresponding to the default target or group or 				%NULL if don't care.
-         */
-        vfunc_add_sources(names: string[], default_target?: Gio.File | null): Gio.File[];
-        /**
-         * Prompts the user to add a new target to the project. The user can select
-         * a parent group different from the one set as default.
-         * @param name Target name or URI.
-         * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
-         */
-        vfunc_add_target(name: string, default_group?: Gio.File | null): Gio.File;
-        vfunc_element_added(element: Gio.File): void;
-        vfunc_element_removed(element: Gio.File): void;
-        vfunc_element_selected(element: Gio.File): void;
-        /**
-         * Gets the capabilites of project whether it can add group, target
-         * sources etc.
-         */
-        vfunc_get_capabilities(): number;
-        /**
-         * Recursively gets the list of all children below the corresponding
-         * parent having the specify type.
-         * @param parent A #GFile corresponding to the parent.
-         * @param children_type Select one element type: source, group or target
-         */
-        vfunc_get_children(parent: Gio.File, children_type: number): Gio.File[];
-        /**
-         * Gets the current project.
-         */
-        vfunc_get_current_project(): Project;
-        /**
-         * Get a list of all elements of this type in the project.
-         * @param element_type Select one element type: source, group or target
-         */
-        vfunc_get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[];
-        vfunc_get_packages(): string[];
-        /**
-         * Gets the currently selected element in the project manager view.
-         */
-        vfunc_get_selected(): Gio.File;
-        /**
-         * Get the type of the corresponding target: program, library...
-         * @param target A #GFile corresponding to a target
-         */
-        vfunc_get_target_type(target: Gio.File): Anjuta.ProjectNodeType;
-        /**
-         * Get a list of targets in the project with the corresponding type.
-         * @param target_type type of the target
-         */
-        vfunc_get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[];
-        /**
-         * Gets whether a project is currently opened.
-         */
-        vfunc_is_open(): boolean;
-        vfunc_project_loaded(error: GLib.Error): void;
-        /**
-         * Remove a source file from the project. If the file is used in several
-         * targets, it is removed from all targets. The file could be removed from
-         * the disk.
-         * @param file A #GFile that will be removed from the project
-         */
-        vfunc_remove_file(file: Gio.File): boolean;
-    }
-
-    interface Provider {
-        // Owm methods of IAnjuta-3.0.Provider
-
-        /**
-         * Show completion for the context at position `iter`
-         * @param iter position where the completion occurs
-         * @param data data assigned to the proposal
-         */
-        activate(iter: Iterable, data?: any | null): void;
-        /**
-         * Return a (translatable) name for the provider
-         */
-        get_name(): string;
-        /**
-         * Get the iter where the current completion started
-         * @returns current start iter
-         */
-        get_start_iter(): Iterable;
-        /**
-         * Show completion for the context at position `iter`. The provider should
-         * call ianjuta_editor_assist_proposals here to add proposals to the list.
-         *
-         * Note that this is called after every character typed and the list of proposals
-         * has to be completely renewed.
-         * @param iter the text iter where the provider should be populated
-         */
-        populate(iter: Iterable): void;
-
-        // Own virtual methods of IAnjuta-3.0.Provider
-
-        /**
-         * Show completion for the context at position `iter`
-         * @param iter position where the completion occurs
-         * @param data data assigned to the proposal
-         */
-        vfunc_activate(iter: Iterable, data?: any | null): void;
-        /**
-         * Return a (translatable) name for the provider
-         */
-        vfunc_get_name(): string;
-        /**
-         * Get the iter where the current completion started
-         */
-        vfunc_get_start_iter(): Iterable;
-        /**
-         * Show completion for the context at position `iter`. The provider should
-         * call ianjuta_editor_assist_proposals here to add proposals to the list.
-         *
-         * Note that this is called after every character typed and the list of proposals
-         * has to be completely renewed.
-         * @param iter the text iter where the provider should be populated
-         */
-        vfunc_populate(iter: Iterable): void;
-    }
-
-    interface SnippetsManager {
-        // Owm methods of IAnjuta-3.0.SnippetsManager
-
-        /**
-         * Insert snippet in the current editor.
-         * @param key Trigger-key of the snippet
-         * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
-         */
-        insert(key: string, editing_session: boolean): boolean;
-
-        // Own virtual methods of IAnjuta-3.0.SnippetsManager
-
-        /**
-         * Insert snippet in the current editor.
-         * @param key Trigger-key of the snippet
-         * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
-         */
-        vfunc_insert(key: string, editing_session: boolean): boolean;
-    }
-
-    interface Stream {
-        // Owm methods of IAnjuta-3.0.Stream
-
-        /**
-         * The implementor opens the given stream.
-         * @param stream Stream to open from.
-         */
-        open(stream?: any | null): void;
-
-        // Own virtual methods of IAnjuta-3.0.Stream
-
-        /**
-         * The implementor opens the given stream.
-         * @param stream Stream to open from.
-         */
-        vfunc_open(stream?: any | null): void;
-    }
-
-    interface StreamLoader {
-        // Owm methods of IAnjuta-3.0.StreamLoader
-
-        /**
-         * Peeks the stream and determines the interface which can load
-         * this stream.
-         * @param stream Stream to load
-         * @returns Plugin interface name that can load the stream.
-         */
-        peek_interface(stream?: any | null): string;
-
-        // Own virtual methods of IAnjuta-3.0.StreamLoader
-
-        /**
-         * Peeks the stream and determines the interface which can load
-         * this stream.
-         * @param stream Stream to load
-         */
-        vfunc_peek_interface(stream?: any | null): string;
-    }
-
-    interface StreamSavable {
-        // Owm methods of IAnjuta-3.0.StreamSavable
-
-        save(stream?: any | null): void;
-
-        // Own virtual methods of IAnjuta-3.0.StreamSavable
-
-        vfunc_save(stream?: any | null): void;
-    }
-
-    interface Symbol {
-        // Owm methods of IAnjuta-3.0.Symbol
-
-        /**
-         * Retreives the boolean value of a boolean `field`.
-         * @param field The field to retrieve.
-         * @returns The boolean
-         */
-        get_boolean(field: SymbolField): boolean;
-        /**
-         * A convenience method to get a small icon (16x16) representing the symbol
-         * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
-         * #IANJUTA_SYMBOL_FIELD_KIND selected.
-         * @returns a Pixbuf icon representing the symbol. Ref the icon if you need to keep it.
-         */
-        get_icon(): GdkPixbuf.Pixbuf;
-        /**
-         * Retreives the integer value of an integer `field`.
-         * @param field The field to retrieve.
-         * @returns The integer
-         */
-        get_int(field: SymbolField): number;
-        /**
-         * Retreives the string value of a string `field`.
-         * @param field The field to retrieve.
-         * @returns The string
-         */
-        get_string(field: SymbolField): string;
-        /**
-         * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
-         * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
-         * @returns a #IAnjutaSymbolType
-         */
-        get_sym_type(): SymbolType;
-
-        // Own virtual methods of IAnjuta-3.0.Symbol
-
-        /**
-         * Retreives the boolean value of a boolean `field`.
-         * @param field The field to retrieve.
-         */
-        vfunc_get_boolean(field: SymbolField): boolean;
-        /**
-         * A convenience method to get a small icon (16x16) representing the symbol
-         * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
-         * #IANJUTA_SYMBOL_FIELD_KIND selected.
-         */
-        vfunc_get_icon(): GdkPixbuf.Pixbuf;
-        /**
-         * Retreives the integer value of an integer `field`.
-         * @param field The field to retrieve.
-         */
-        vfunc_get_int(field: SymbolField): number;
-        /**
-         * Retreives the string value of a string `field`.
-         * @param field The field to retrieve.
-         */
-        vfunc_get_string(field: SymbolField): string;
-        /**
-         * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
-         * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
-         */
-        vfunc_get_sym_type(): SymbolType;
-    }
-
-    interface SymbolManager {
-        // Owm methods of IAnjuta-3.0.SymbolManager
-
-        /**
-         * Activates the package for searches in the global symbol database.
-         * @param pkg_name Name of the package to activate. The colon char must be avoided.
-         * @param pkg_version Version of the package. The colon char must be avoided.
-         * @returns TRUE if the package was loaded (or will be loaded once scanned). FALSE if the version given was newer than the version in the database or the package was not found. In this case, add_package() should be called.
-         */
-        activate_package(pkg_name: string, pkg_version: string): boolean;
-        /**
-         * Deactivates all activate packages
-         */
-        deactivate_all(): void;
-        /**
-         * Deactivates the package if it was found. If package is NULL, deactivate all
-         * packages.
-         * @param pkg_name name of the package. The colon char must be avoided.
-         * @param pkg_version Version of the package. The colon char must be avoided.
-         */
-        deactivate_package(pkg_name: string, pkg_version: string): void;
-
-        // Own virtual methods of IAnjuta-3.0.SymbolManager
-
-        /**
-         * Activates the package for searches in the global symbol database.
-         * @param pkg_name Name of the package to activate. The colon char must be avoided.
-         * @param pkg_version Version of the package. The colon char must be avoided.
-         */
-        vfunc_activate_package(pkg_name: string, pkg_version: string): boolean;
-        /**
-         * Deactivates all activate packages
-         */
-        vfunc_deactivate_all(): void;
-        /**
-         * Deactivates the package if it was found. If package is NULL, deactivate all
-         * packages.
-         * @param pkg_name name of the package. The colon char must be avoided.
-         * @param pkg_version Version of the package. The colon char must be avoided.
-         */
-        vfunc_deactivate_package(pkg_name: string, pkg_version: string): void;
-        vfunc_prj_scan_end(process_id: number): void;
-        vfunc_sys_scan_end(process_id: number): void;
-    }
-
-    interface SymbolQuery {
-        // Owm methods of IAnjuta-3.0.SymbolQuery
-
-        cancel(): void;
-        /**
-         * Sets the fields of Query.
-         * @param n_fields Then number of fields to retrieve.
-         * @param fields The fields to retrieve in the query. The array length must   be @n_fields.
-         */
-        set_fields(n_fields: number, fields: SymbolField): void;
-        /**
-         * Sets the filescope search of Query.
-         * @param filescope_search The filescope to search.
-         */
-        set_file_scope(filescope_search: SymbolQueryFileScope): void;
-        /**
-         * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
-         * symbols satisfying the given symbol types are selected, otherwise
-         * they are excluded.
-         * @param filters The mode of query.
-         * @param include_types TRUE if filter is positive, FALSE if reversed.
-         */
-        set_filters(filters: SymbolType, include_types: boolean): void;
-        /**
-         * Sets the field with which result of query is grouped. As a result
-         * there will be no duplicates of with this field.
-         * @param field The field to group results.
-         */
-        set_group_by(field: SymbolField): void;
-        /**
-         * Sets the limit of Query results. No more than `limit` results are
-         * returned.
-         * @param limit The limit of query.
-         */
-        set_limit(limit: number): void;
-        /**
-         * Sets the mode of Query.
-         * @param mode The mode of query.
-         */
-        set_mode(mode: SymbolQueryMode): void;
-        /**
-         * Sets the offset index of Query results.
-         * @param offset Offset of the resultset.
-         */
-        set_offset(offset: number): void;
-        /**
-         * Sets the field with which result of query is ordered.
-         * @param field The field to order the result.
-         */
-        set_order_by(field: SymbolField): void;
-
-        // Own virtual methods of IAnjuta-3.0.SymbolQuery
-
-        vfunc_async_result(result: GObject.Object): void;
-        vfunc_cancel(): void;
-        /**
-         * Sets the fields of Query.
-         * @param n_fields Then number of fields to retrieve.
-         * @param fields The fields to retrieve in the query. The array length must   be @n_fields.
-         */
-        vfunc_set_fields(n_fields: number, fields: SymbolField): void;
-        /**
-         * Sets the filescope search of Query.
-         * @param filescope_search The filescope to search.
-         */
-        vfunc_set_file_scope(filescope_search: SymbolQueryFileScope): void;
-        /**
-         * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
-         * symbols satisfying the given symbol types are selected, otherwise
-         * they are excluded.
-         * @param filters The mode of query.
-         * @param include_types TRUE if filter is positive, FALSE if reversed.
-         */
-        vfunc_set_filters(filters: SymbolType, include_types: boolean): void;
-        /**
-         * Sets the field with which result of query is grouped. As a result
-         * there will be no duplicates of with this field.
-         * @param field The field to group results.
-         */
-        vfunc_set_group_by(field: SymbolField): void;
-        /**
-         * Sets the limit of Query results. No more than `limit` results are
-         * returned.
-         * @param limit The limit of query.
-         */
-        vfunc_set_limit(limit: number): void;
-        /**
-         * Sets the mode of Query.
-         * @param mode The mode of query.
-         */
-        vfunc_set_mode(mode: SymbolQueryMode): void;
-        /**
-         * Sets the offset index of Query results.
-         * @param offset Offset of the resultset.
-         */
-        vfunc_set_offset(offset: number): void;
-        /**
-         * Sets the field with which result of query is ordered.
-         * @param field The field to order the result.
-         */
-        vfunc_set_order_by(field: SymbolField): void;
-    }
-
-    interface Terminal {
-        // Owm methods of IAnjuta-3.0.Terminal
-
-        /**
-         * Run the command in a terminal, setting the working directory
-         * and environment variables.
-         * @param directory Working directory
-         * @param command Command executed followed by arguments
-         * @param environment List of additional environment variables
-         * @returns Process ID
-         */
-        execute_command(directory: string, command: string, environment: string[]): number;
-
-        // Own virtual methods of IAnjuta-3.0.Terminal
-
-        vfunc_child_exited(pid: number, status: number): void;
-        /**
-         * Run the command in a terminal, setting the working directory
-         * and environment variables.
-         * @param directory Working directory
-         * @param command Command executed followed by arguments
-         * @param environment List of additional environment variables
-         */
-        vfunc_execute_command(directory: string, command: string, environment: string[]): number;
-    }
-
-    interface Todo {
-        // Owm methods of IAnjuta-3.0.Todo
-
-        load(file: Gio.File): void;
-
-        // Own virtual methods of IAnjuta-3.0.Todo
-
-        vfunc_load(file: Gio.File): void;
-    }
-
-    interface Vcs {
-        // Owm methods of IAnjuta-3.0.Vcs
-
-        /**
-         * Add files to the VCS repository.
-         * @param files List of List of files, represented as #Gfile objects, to add
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        add(files: Gio.File[], notify: Anjuta.AsyncNotify): void;
-        /**
-         * Check out a copy of a code repository.
-         * @param repository_location Location of repository to check out
-         * @param dest Destination of checked out copy
-         * @param cancel An optional #GCancellable object to cancel the operation, or NULL
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        checkout(
-            repository_location: string,
-            dest: Gio.File,
-            cancel: Gio.Cancellable | null,
-            notify: Anjuta.AsyncNotify,
-        ): void;
-        /**
-         * Remove files from the VCS repository.
-         * @param files List of files, represented as #Gfile objects, to remove
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void;
-
-        // Own virtual methods of IAnjuta-3.0.Vcs
-
-        /**
-         * Add files to the VCS repository.
-         * @param files List of List of files, represented as #Gfile objects, to add
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        vfunc_add(files: Gio.File[], notify: Anjuta.AsyncNotify): void;
-        /**
-         * Check out a copy of a code repository.
-         * @param repository_location Location of repository to check out
-         * @param dest Destination of checked out copy
-         * @param cancel An optional #GCancellable object to cancel the operation, or NULL
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        vfunc_checkout(
-            repository_location: string,
-            dest: Gio.File,
-            cancel: Gio.Cancellable | null,
-            notify: Anjuta.AsyncNotify,
-        ): void;
-        /**
-         * Remove files from the VCS repository.
-         * @param files List of files, represented as #Gfile objects, to remove
-         * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
-         */
-        vfunc_remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void;
-        vfunc_status_changed(): void;
-    }
-
-    interface Wizard {
-        // Owm methods of IAnjuta-3.0.Wizard
-
-        /**
-         * Called when the wizard should start after some user action
-         */
-        activate(): void;
-
-        // Own virtual methods of IAnjuta-3.0.Wizard
-
-        /**
-         * Called when the wizard should start after some user action
-         */
-        vfunc_activate(): void;
-    }
-
-    type BuilderHandle = any;
-    type LanguageId = number;
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Peeks the stream and determines the interface which can load
+     * this stream.
+     * @param stream Stream to load
+     * @returns Plugin interface name that can load the stream.
      */
-    const __name__: string;
+    peek_interface(stream?: (any | null)): string
+
+    // Own virtual methods of IAnjuta.StreamLoader
+
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Peeks the stream and determines the interface which can load
+     * this stream.
+     * @param stream Stream to load
      */
-    const __version__: string;
+    vfunc_peek_interface(stream?: (any | null)): string
+}
+
+
+
+export const StreamLoader: StreamLoaderNamespace;
+
+module StreamSavable {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Stream.ConstructorProps {
+
+    }
+
+}
+
+export interface StreamSavableNamespace {
+      $gtype: GObject.GType<StreamSavable>;
+      prototype: StreamSavable;
+      
+      error_quark(): GLib.Quark    
+      }
+interface StreamSavable extends Stream {
+
+    // Own methods of IAnjuta.StreamSavable
+
+    save(stream?: (any | null)): void
+
+    // Own virtual methods of IAnjuta.StreamSavable
+
+    vfunc_save(stream?: (any | null)): void
+}
+
+
+
+export const StreamSavable: StreamSavableNamespace;
+
+module Symbol {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface SymbolNamespace {
+      $gtype: GObject.GType<Symbol>;
+      prototype: Symbol;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Symbol extends GObject.Object {
+
+    // Own methods of IAnjuta.Symbol
+
+    /**
+     * Retreives the boolean value of a boolean `field`.
+     * @param field The field to retrieve.
+     * @returns The boolean
+     */
+    get_boolean(field: SymbolField): boolean
+    /**
+     * A convenience method to get a small icon (16x16) representing the symbol
+     * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
+     * #IANJUTA_SYMBOL_FIELD_KIND selected.
+     * @returns a Pixbuf icon representing the symbol. Ref the icon if you need to keep it.
+     */
+    get_icon(): GdkPixbuf.Pixbuf
+    /**
+     * Retreives the integer value of an integer `field`.
+     * @param field The field to retrieve.
+     * @returns The integer
+     */
+    get_int(field: SymbolField): number
+    /**
+     * Retreives the string value of a string `field`.
+     * @param field The field to retrieve.
+     * @returns The string
+     */
+    get_string(field: SymbolField): string
+    /**
+     * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
+     * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
+     * @returns a #IAnjutaSymbolType
+     */
+    get_sym_type(): SymbolType
+
+    // Own virtual methods of IAnjuta.Symbol
+
+    /**
+     * Retreives the boolean value of a boolean `field`.
+     * @param field The field to retrieve.
+     */
+    vfunc_get_boolean(field: SymbolField): boolean
+    /**
+     * A convenience method to get a small icon (16x16) representing the symbol
+     * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
+     * #IANJUTA_SYMBOL_FIELD_KIND selected.
+     */
+    vfunc_get_icon(): GdkPixbuf.Pixbuf
+    /**
+     * Retreives the integer value of an integer `field`.
+     * @param field The field to retrieve.
+     */
+    vfunc_get_int(field: SymbolField): number
+    /**
+     * Retreives the string value of a string `field`.
+     * @param field The field to retrieve.
+     */
+    vfunc_get_string(field: SymbolField): string
+    /**
+     * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
+     * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
+     */
+    vfunc_get_sym_type(): SymbolType
+}
+
+
+
+export const Symbol: SymbolNamespace;
+
+module SymbolManager {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface SymbolManagerNamespace {
+      $gtype: GObject.GType<SymbolManager>;
+      prototype: SymbolManager;
+      
+      error_quark(): GLib.Quark    
+      }
+interface SymbolManager extends GObject.Object {
+
+    // Own methods of IAnjuta.SymbolManager
+
+    /**
+     * Activates the package for searches in the global symbol database.
+     * @param pkg_name Name of the package to activate. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
+     * @returns TRUE if the package was loaded (or will be loaded once scanned). FALSE if the version given was newer than the version in the database or the package was not found. In this case, add_package() should be called.
+     */
+    activate_package(pkg_name: string, pkg_version: string): boolean
+    /**
+     * Deactivates all activate packages
+     */
+    deactivate_all(): void
+    /**
+     * Deactivates the package if it was found. If package is NULL, deactivate all
+     * packages.
+     * @param pkg_name name of the package. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
+     */
+    deactivate_package(pkg_name: string, pkg_version: string): void
+
+    // Own virtual methods of IAnjuta.SymbolManager
+
+    /**
+     * Activates the package for searches in the global symbol database.
+     * @param pkg_name Name of the package to activate. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
+     */
+    vfunc_activate_package(pkg_name: string, pkg_version: string): boolean
+    /**
+     * Deactivates all activate packages
+     */
+    vfunc_deactivate_all(): void
+    /**
+     * Deactivates the package if it was found. If package is NULL, deactivate all
+     * packages.
+     * @param pkg_name name of the package. The colon char must be avoided.
+     * @param pkg_version Version of the package. The colon char must be avoided.
+     */
+    vfunc_deactivate_package(pkg_name: string, pkg_version: string): void
+    vfunc_prj_scan_end(process_id: number): void
+    vfunc_sys_scan_end(process_id: number): void
+}
+
+
+
+export const SymbolManager: SymbolManagerNamespace;
+
+module SymbolQuery {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface SymbolQueryNamespace {
+      $gtype: GObject.GType<SymbolQuery>;
+      prototype: SymbolQuery;
+      
+      error_quark(): GLib.Quark    
+      }
+interface SymbolQuery extends GObject.Object {
+
+    // Own methods of IAnjuta.SymbolQuery
+
+    cancel(): void
+    /**
+     * Sets the fields of Query.
+     * @param n_fields Then number of fields to retrieve.
+     * @param fields The fields to retrieve in the query. The array length must   be @n_fields.
+     */
+    set_fields(n_fields: number, fields: SymbolField): void
+    /**
+     * Sets the filescope search of Query.
+     * @param filescope_search The filescope to search.
+     */
+    set_file_scope(filescope_search: SymbolQueryFileScope): void
+    /**
+     * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
+     * symbols satisfying the given symbol types are selected, otherwise
+     * they are excluded.
+     * @param filters The mode of query.
+     * @param include_types TRUE if filter is positive, FALSE if reversed.
+     */
+    set_filters(filters: SymbolType, include_types: boolean): void
+    /**
+     * Sets the field with which result of query is grouped. As a result
+     * there will be no duplicates of with this field.
+     * @param field The field to group results.
+     */
+    set_group_by(field: SymbolField): void
+    /**
+     * Sets the limit of Query results. No more than `limit` results are
+     * returned.
+     * @param limit The limit of query.
+     */
+    set_limit(limit: number): void
+    /**
+     * Sets the mode of Query.
+     * @param mode The mode of query.
+     */
+    set_mode(mode: SymbolQueryMode): void
+    /**
+     * Sets the offset index of Query results.
+     * @param offset Offset of the resultset.
+     */
+    set_offset(offset: number): void
+    /**
+     * Sets the field with which result of query is ordered.
+     * @param field The field to order the result.
+     */
+    set_order_by(field: SymbolField): void
+
+    // Own virtual methods of IAnjuta.SymbolQuery
+
+    vfunc_async_result(result: GObject.Object): void
+    vfunc_cancel(): void
+    /**
+     * Sets the fields of Query.
+     * @param n_fields Then number of fields to retrieve.
+     * @param fields The fields to retrieve in the query. The array length must   be @n_fields.
+     */
+    vfunc_set_fields(n_fields: number, fields: SymbolField): void
+    /**
+     * Sets the filescope search of Query.
+     * @param filescope_search The filescope to search.
+     */
+    vfunc_set_file_scope(filescope_search: SymbolQueryFileScope): void
+    /**
+     * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
+     * symbols satisfying the given symbol types are selected, otherwise
+     * they are excluded.
+     * @param filters The mode of query.
+     * @param include_types TRUE if filter is positive, FALSE if reversed.
+     */
+    vfunc_set_filters(filters: SymbolType, include_types: boolean): void
+    /**
+     * Sets the field with which result of query is grouped. As a result
+     * there will be no duplicates of with this field.
+     * @param field The field to group results.
+     */
+    vfunc_set_group_by(field: SymbolField): void
+    /**
+     * Sets the limit of Query results. No more than `limit` results are
+     * returned.
+     * @param limit The limit of query.
+     */
+    vfunc_set_limit(limit: number): void
+    /**
+     * Sets the mode of Query.
+     * @param mode The mode of query.
+     */
+    vfunc_set_mode(mode: SymbolQueryMode): void
+    /**
+     * Sets the offset index of Query results.
+     * @param offset Offset of the resultset.
+     */
+    vfunc_set_offset(offset: number): void
+    /**
+     * Sets the field with which result of query is ordered.
+     * @param field The field to order the result.
+     */
+    vfunc_set_order_by(field: SymbolField): void
+}
+
+
+
+export const SymbolQuery: SymbolQueryNamespace;
+
+module Terminal {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface TerminalNamespace {
+      $gtype: GObject.GType<Terminal>;
+      prototype: Terminal;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Terminal extends GObject.Object {
+
+    // Own methods of IAnjuta.Terminal
+
+    /**
+     * Run the command in a terminal, setting the working directory
+     * and environment variables.
+     * @param directory Working directory
+     * @param command Command executed followed by arguments
+     * @param environment List of additional environment variables
+     * @returns Process ID
+     */
+    execute_command(directory: string, command: string, environment: string[]): number
+
+    // Own virtual methods of IAnjuta.Terminal
+
+    vfunc_child_exited(pid: number, status: number): void
+    /**
+     * Run the command in a terminal, setting the working directory
+     * and environment variables.
+     * @param directory Working directory
+     * @param command Command executed followed by arguments
+     * @param environment List of additional environment variables
+     */
+    vfunc_execute_command(directory: string, command: string, environment: string[]): number
+}
+
+
+
+export const Terminal: TerminalNamespace;
+
+module Todo {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface TodoNamespace {
+      $gtype: GObject.GType<Todo>;
+      prototype: Todo;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Todo extends GObject.Object {
+
+    // Own methods of IAnjuta.Todo
+
+    load(file: Gio.File): void
+
+    // Own virtual methods of IAnjuta.Todo
+
+    vfunc_load(file: Gio.File): void
+}
+
+
+
+export const Todo: TodoNamespace;
+
+module Vcs {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface VcsNamespace {
+      $gtype: GObject.GType<Vcs>;
+      prototype: Vcs;
+      
+          
+      }
+interface Vcs extends GObject.Object {
+
+    // Own methods of IAnjuta.Vcs
+
+    /**
+     * Add files to the VCS repository.
+     * @param files List of List of files, represented as #Gfile objects, to add
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
+    /**
+     * Check out a copy of a code repository.
+     * @param repository_location Location of repository to check out
+     * @param dest Destination of checked out copy
+     * @param cancel An optional #GCancellable object to cancel the operation, or NULL
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    checkout(repository_location: string, dest: Gio.File, cancel: (Gio.Cancellable | null), notify: Anjuta.AsyncNotify): void
+    /**
+     * Remove files from the VCS repository.
+     * @param files List of files, represented as #Gfile objects, to remove
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
+
+    // Own virtual methods of IAnjuta.Vcs
+
+    /**
+     * Add files to the VCS repository.
+     * @param files List of List of files, represented as #Gfile objects, to add
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    vfunc_add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
+    /**
+     * Check out a copy of a code repository.
+     * @param repository_location Location of repository to check out
+     * @param dest Destination of checked out copy
+     * @param cancel An optional #GCancellable object to cancel the operation, or NULL
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    vfunc_checkout(repository_location: string, dest: Gio.File, cancel: (Gio.Cancellable | null), notify: Anjuta.AsyncNotify): void
+    /**
+     * Remove files from the VCS repository.
+     * @param files List of files, represented as #Gfile objects, to remove
+     * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
+     */
+    vfunc_remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
+    vfunc_status_changed(): void
+}
+
+
+
+export const Vcs: VcsNamespace;
+
+module Wizard {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface WizardNamespace {
+      $gtype: GObject.GType<Wizard>;
+      prototype: Wizard;
+      
+      error_quark(): GLib.Quark    
+      }
+interface Wizard extends GObject.Object {
+
+    // Own methods of IAnjuta.Wizard
+
+    /**
+     * Called when the wizard should start after some user action
+     */
+    activate(): void
+
+    // Own virtual methods of IAnjuta.Wizard
+
+    /**
+     * Called when the wizard should start after some user action
+     */
+    vfunc_activate(): void
+}
+
+
+
+export const Wizard: WizardNamespace;
+
+type BuilderHandle = any
+type LanguageId = number
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default IAnjuta;

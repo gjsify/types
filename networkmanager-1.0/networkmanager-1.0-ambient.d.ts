@@ -5,8 +5,7 @@ declare module 'gi://NetworkManager?version=1.0' {
 }
 
 declare module 'gi://NetworkManager' {
-    import NetworkManager10 from '@girs/networkmanager-1.0';
-    export default NetworkManager10;
+    export * from 'gi://NetworkManager?version=1.0';
 }
 
 

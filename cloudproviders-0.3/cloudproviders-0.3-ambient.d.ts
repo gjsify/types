@@ -5,8 +5,7 @@ declare module 'gi://CloudProviders?version=0.3' {
 }
 
 declare module 'gi://CloudProviders' {
-    import CloudProviders03 from '@girs/cloudproviders-0.3';
-    export default CloudProviders03;
+    export * from 'gi://CloudProviders?version=0.3';
 }
 
 

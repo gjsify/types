@@ -5,8 +5,7 @@ declare module 'gi://Vsqlite?version=1' {
 }
 
 declare module 'gi://Vsqlite' {
-    import Vsqlite1 from '@girs/vsqlite-1';
-    export default Vsqlite1;
+    export * from 'gi://Vsqlite?version=1';
 }
 
 

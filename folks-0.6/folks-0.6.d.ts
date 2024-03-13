@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,1654 +18,3583 @@ import type GObject from '@girs/gobject-2.0';
 import type Gee from '@girs/gee-0.8';
 
 export namespace Folks {
-    enum Gender {
-        UNSPECIFIED,
-        MALE,
-        FEMALE,
-    }
-    enum TrustLevel {
-        NONE,
-        PERSONAS,
-    }
-    enum PersonaStoreTrust {
-        NONE,
-        PARTIAL,
-        FULL,
-    }
-    enum PersonaDetail {
-        INVALID,
-        ALIAS,
-        AVATAR,
-        BIRTHDAY,
-        EMAIL_ADDRESSES,
-        FULL_NAME,
-        GENDER,
-        IM_ADDRESSES,
-        IS_FAVOURITE,
-        LOCAL_IDS,
-        LOCATION,
-        NICKNAME,
-        NOTES,
-        PHONE_NUMBERS,
-        POSTAL_ADDRESSES,
-        ROLES,
-        STRUCTURED_NAME,
-        URLS,
-        WEB_SERVICE_ADDRESSES,
-        GROUPS,
-        IM_INTERACTION_COUNT,
-        LAST_IM_INTERACTION_DATETIME,
-        CALL_INTERACTION_COUNT,
-        LAST_CALL_INTERACTION_DATETIME,
-        ANTI_LINKS,
-        EXTENDED_INFO,
-    }
-    enum MatchResult {
-        NONE,
-        VERY_LOW,
-        LOW,
-        MEDIUM,
-        HIGH,
-        VERY_HIGH,
-        MIN,
-        MAX,
-    }
-    enum PresenceType {
-        UNSET,
-        OFFLINE,
-        AVAILABLE,
-        AWAY,
-        EXTENDED_AWAY,
-        HIDDEN,
-        BUSY,
-        UNKNOWN,
-        ERROR,
-    }
-    enum MaybeBool {
-        UNSET,
-        FALSE,
-        TRUE,
-    }
-    class ImDetailsError extends GLib.Error {
-        // Own fields of Folks-0.6.ImDetailsError
-
-        INVALID_IM_ADDRESS: number;
-
-        // Constructors of Folks-0.6.ImDetailsError
-
-        constructor(options: { message: string; code: number });
-    }
-
-    class IndividualAggregatorError extends GLib.Error {
-        // Own fields of Folks-0.6.IndividualAggregatorError
-
-        ADD_FAILED: number;
-        NO_WRITEABLE_STORE: number;
-        STORE_OFFLINE: number;
-        PROPERTY_NOT_WRITEABLE: number;
-        NO_PRIMARY_STORE: number;
-
-        // Constructors of Folks-0.6.IndividualAggregatorError
-
-        constructor(options: { message: string; code: number });
-    }
-
-    class PersonaStoreError extends GLib.Error {
-        // Own fields of Folks-0.6.PersonaStoreError
-
-        INVALID_ARGUMENT: number;
-        CREATE_FAILED: number;
-        UNSUPPORTED_ON_USER: number;
-        STORE_OFFLINE: number;
-        READ_ONLY: number;
-        PERMISSION_DENIED: number;
-        REMOVE_FAILED: number;
-        UNSUPPORTED_ON_NON_USER: number;
 
-        // Constructors of Folks-0.6.PersonaStoreError
+enum Gender {
+    UNSPECIFIED,
+    MALE,
+    FEMALE,
+}
+enum TrustLevel {
+    NONE,
+    PERSONAS,
+}
+enum PersonaStoreTrust {
+    NONE,
+    PARTIAL,
+    FULL,
+}
+enum PersonaDetail {
+    INVALID,
+    ALIAS,
+    AVATAR,
+    BIRTHDAY,
+    EMAIL_ADDRESSES,
+    FULL_NAME,
+    GENDER,
+    IM_ADDRESSES,
+    IS_FAVOURITE,
+    LOCAL_IDS,
+    LOCATION,
+    NICKNAME,
+    NOTES,
+    PHONE_NUMBERS,
+    POSTAL_ADDRESSES,
+    ROLES,
+    STRUCTURED_NAME,
+    URLS,
+    WEB_SERVICE_ADDRESSES,
+    GROUPS,
+    IM_INTERACTION_COUNT,
+    LAST_IM_INTERACTION_DATETIME,
+    CALL_INTERACTION_COUNT,
+    LAST_CALL_INTERACTION_DATETIME,
+    ANTI_LINKS,
+    EXTENDED_INFO,
+}
+enum MatchResult {
+    NONE,
+    VERY_LOW,
+    LOW,
+    MEDIUM,
+    HIGH,
+    VERY_HIGH,
+    MIN,
+    MAX,
+}
+enum PresenceType {
+    UNSET,
+    OFFLINE,
+    AVAILABLE,
+    AWAY,
+    EXTENDED_AWAY,
+    HIDDEN,
+    BUSY,
+    UNKNOWN,
+    ERROR,
+}
+enum MaybeBool {
+    UNSET,
+    FALSE,
+    TRUE,
+}
+class ImDetailsError extends GLib.Error {
+
+    // Static fields of Folks.ImDetailsError
+
+static INVALID_IM_ADDRESS: number
+
+    // Constructors of Folks.ImDetailsError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+}
+
+class IndividualAggregatorError extends GLib.Error {
+
+    // Static fields of Folks.IndividualAggregatorError
+
+static ADD_FAILED: number
+static NO_WRITEABLE_STORE: number
+static STORE_OFFLINE: number
+static PROPERTY_NOT_WRITEABLE: number
+static NO_PRIMARY_STORE: number
+
+    // Constructors of Folks.IndividualAggregatorError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+}
+
+class PersonaStoreError extends GLib.Error {
+
+    // Static fields of Folks.PersonaStoreError
 
-        constructor(options: { message: string; code: number });
-    }
+static INVALID_ARGUMENT: number
+static CREATE_FAILED: number
+static UNSUPPORTED_ON_USER: number
+static STORE_OFFLINE: number
+static READ_ONLY: number
+static PERMISSION_DENIED: number
+static REMOVE_FAILED: number
+static UNSUPPORTED_ON_NON_USER: number
 
-    class PropertyError extends GLib.Error {
-        // Own fields of Folks-0.6.PropertyError
+    // Constructors of Folks.PersonaStoreError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        NOT_WRITEABLE: number;
-        INVALID_VALUE: number;
-        UNKNOWN_ERROR: number;
-        UNAVAILABLE: number;
+}
 
-        // Constructors of Folks-0.6.PropertyError
+class PropertyError extends GLib.Error {
 
-        constructor(options: { message: string; code: number });
-    }
+    // Static fields of Folks.PropertyError
+
+static NOT_WRITEABLE: number
+static INVALID_VALUE: number
+static UNKNOWN_ERROR: number
+static UNAVAILABLE: number
+
+    // Constructors of Folks.PropertyError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+}
+
+enum GroupDetailsChangeReason {
+    NONE,
+    OFFLINE,
+    KICKED,
+    BUSY,
+    INVITED,
+    BANNED,
+    ERROR,
+    INVALID_MEMBER,
+    NO_ANSWER,
+    RENAMED,
+    PERMISSION_DENIED,
+    SEPARATED,
+}
+module AbstractFieldDetails {
 
-    enum GroupDetailsChangeReason {
-        NONE,
-        OFFLINE,
-        KICKED,
-        BUSY,
-        INVITED,
-        BANNED,
-        ERROR,
-        INVALID_MEMBER,
-        NO_ANSWER,
-        RENAMED,
-        PERMISSION_DENIED,
-        SEPARATED,
-    }
-    module AbstractFieldDetails {
-        // Constructor properties interface
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+t_type: GObject.GType;
+    tType: GObject.GType;
+    t_dup_func: GObject.BoxedCopyFunc;
+    tDupFunc: GObject.BoxedCopyFunc;
+    t_destroy_func: GLib.DestroyNotify;
+    tDestroyFunc: GLib.DestroyNotify;
+    value: any;
+    value_type: GObject.GType;
+    valueType: GObject.GType;
+    id: string;
+    parameters: Gee.MultiMap;
     }
 
-    abstract class AbstractFieldDetails extends GObject.Object {
-        // Own properties of Folks-0.6.AbstractFieldDetails
+}
 
-        t_type: GObject.GType;
-        tType: GObject.GType;
-        t_dup_func: GObject.BoxedCopyFunc;
-        tDupFunc: GObject.BoxedCopyFunc;
-        t_destroy_func: GLib.DestroyNotify;
-        tDestroyFunc: GLib.DestroyNotify;
-        value: any;
-        readonly value_type: GObject.GType;
-        readonly valueType: GObject.GType;
-        id: string;
-        parameters: Gee.MultiMap;
+abstract class AbstractFieldDetails extends GObject.Object {
 
-        // Owm methods of Folks-0.6.AbstractFieldDetails
+    // Own properties of Folks.AbstractFieldDetails
 
-        static equal_static(left: AbstractFieldDetails, right: AbstractFieldDetails): boolean;
-        static hash_static(value: AbstractFieldDetails): number;
+    get t_type(): GObject.GType;
+    get tType(): GObject.GType;
+    get t_dup_func(): GObject.BoxedCopyFunc;
+    get tDupFunc(): GObject.BoxedCopyFunc;
+    get t_destroy_func(): GLib.DestroyNotify;
+    get tDestroyFunc(): GLib.DestroyNotify;
+    get value(): any;
+    set value(val: any);
+    get value_type(): GObject.GType;
+    get valueType(): GObject.GType;
+    get id(): string;
+    set id(val: string);
+    get parameters(): Gee.MultiMap;
+    set parameters(val: Gee.MultiMap);
 
-        // Owm methods of Folks-0.6.AbstractFieldDetails
+    // Constructors of Folks.AbstractFieldDetails
 
-        get_parameter_values(parameter_name: string): Gee.Collection;
-        add_parameter(parameter_name: string, parameter_value: string): void;
-        set_parameter(parameter_name: string, parameter_value: string): void;
-        extend_parameters(additional: Gee.MultiMap): void;
-        remove_parameter_all(parameter_name: string): void;
-        equal(that: AbstractFieldDetails): boolean;
-        parameters_equal(that: AbstractFieldDetails): boolean;
-        values_equal(that: AbstractFieldDetails): boolean;
-        hash(): number;
-        get_value(): any;
-        set_value(value: any): void;
-        get_value_type(): GObject.GType;
-        get_id(): string;
-        set_id(value: string): void;
-        get_parameters(): Gee.MultiMap;
-        set_parameters(value: Gee.MultiMap): void;
-    }
 
-    module AvatarCache {
-        // Constructor properties interface
-    }
+constructor(properties?: Partial<AbstractFieldDetails.ConstructorProps>, ...args: any[]);
 
-    class AvatarCache extends GObject.Object {
-        // Owm methods of Folks-0.6.AvatarCache
+_init(...args: any[]): void;
 
-        static dup(): AvatarCache;
 
-        // Owm methods of Folks-0.6.AvatarCache
+    // Own static methods of Folks.AbstractFieldDetails
 
-        load_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon;
-        store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
-        store_avatar_finish(_res_: Gio.AsyncResult): string;
-        remove_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_avatar_finish(_res_: Gio.AsyncResult): void;
-        build_uri_for_avatar(id: string): string;
-    }
+    static equal_static(left: AbstractFieldDetails, right: AbstractFieldDetails): boolean
+    static hash_static(value: AbstractFieldDetails): number
 
-    module BackendStore {
-        // Signal callback interfaces
+    // Own virtual methods of Folks.AbstractFieldDetails
 
-        interface BackendAvailable {
-            (backend: Backend): void;
-        }
+    vfunc_equal(that: AbstractFieldDetails): boolean
+    vfunc_parameters_equal(that: AbstractFieldDetails): boolean
+    vfunc_values_equal(that: AbstractFieldDetails): boolean
+    vfunc_hash(): number
+    vfunc_get_value(): any
+    vfunc_set_value(value: any): void
+    vfunc_get_id(): string
+    vfunc_set_id(value: string): void
+    vfunc_get_parameters(): Gee.MultiMap
+    vfunc_set_parameters(value: Gee.MultiMap): void
 
-        // Constructor properties interface
-    }
+    // Own methods of Folks.AbstractFieldDetails
+
+    get_parameter_values(parameter_name: string): Gee.Collection
+    add_parameter(parameter_name: string, parameter_value: string): void
+    set_parameter(parameter_name: string, parameter_value: string): void
+    extend_parameters(additional: Gee.MultiMap): void
+    remove_parameter_all(parameter_name: string): void
+    equal(that: AbstractFieldDetails): boolean
+    parameters_equal(that: AbstractFieldDetails): boolean
+    values_equal(that: AbstractFieldDetails): boolean
+    hash(): number
+    get_value(): any
+    set_value(value: any): void
+    get_value_type(): GObject.GType
+    get_id(): string
+    set_id(value: string): void
+    get_parameters(): Gee.MultiMap
+    set_parameters(value: Gee.MultiMap): void
+}
 
-    class BackendStore extends GObject.Object {
-        // Own properties of Folks-0.6.BackendStore
+module AvatarCache {
 
-        enabled_backends: Gee.Map;
-        enabledBackends: Gee.Map;
-        is_prepared: boolean;
-        isPrepared: boolean;
+    // Constructor properties interface
 
-        // Own fields of Folks-0.6.BackendStore
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        folks_backend_store_KEY_FILE_GROUP_ALL_OTHERS: string;
+    }
 
-        // Owm methods of Folks-0.6.BackendStore
+}
 
-        static dup(): BackendStore;
+class AvatarCache extends GObject.Object {
 
-        // Owm methods of Folks-0.6.BackendStore
+    // Constructors of Folks.AvatarCache
 
-        prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        prepare_finish(_res_: Gio.AsyncResult): void;
-        load_backends(_callback_: Gio.AsyncReadyCallback<this>): void;
-        load_backends_finish(_res_: Gio.AsyncResult): void;
-        add_backend(backend: Backend): void;
-        dup_backend_by_name(name: string): Backend;
-        list_backends(): Gee.Collection;
-        enable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        enable_backend_finish(_res_: Gio.AsyncResult): void;
-        disable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        disable_backend_finish(_res_: Gio.AsyncResult): void;
-        get_enabled_backends(): Gee.Map;
-        get_is_prepared(): boolean;
-    }
 
-    module Backend {
-        // Signal callback interfaces
+constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
-        interface PersonaStoreAdded {
-            (store: PersonaStore): void;
-        }
+_init(...args: any[]): void;
 
-        interface PersonaStoreRemoved {
-            (store: PersonaStore): void;
-        }
 
-        // Constructor properties interface
-    }
+    // Own static methods of Folks.AvatarCache
+
+    static dup(): AvatarCache
 
-    abstract class Backend extends GObject.Object {
-        // Own properties of Folks-0.6.Backend
+    // Own methods of Folks.AvatarCache
 
-        readonly is_prepared: boolean;
-        readonly isPrepared: boolean;
-        readonly is_quiescent: boolean;
-        readonly isQuiescent: boolean;
-        readonly name: string;
-        readonly persona_stores: Gee.Map;
-        readonly personaStores: Gee.Map;
+    load_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon
+    store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void
+    store_avatar_finish(_res_: Gio.AsyncResult): string
+    remove_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_avatar_finish(_res_: Gio.AsyncResult): void
+    build_uri_for_avatar(id: string): string
+}
 
-        // Owm methods of Folks-0.6.Backend
+module BackendStore {
 
-        disable_persona_store(store: PersonaStore): void;
-        enable_persona_store(store: PersonaStore): void;
-        set_persona_stores(storeids: Gee.Set): void;
-        prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        prepare_finish(_res_: Gio.AsyncResult): void;
-        unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        unprepare_finish(_res_: Gio.AsyncResult): void;
-        get_is_prepared(): boolean;
-        get_is_quiescent(): boolean;
-        get_name(): string;
-        get_persona_stores(): Gee.Map;
+    // Signal callback interfaces
+
+    interface BackendAvailable {
+        (backend: Backend): void
     }
 
-    module Debug {
-        // Signal callback interfaces
 
-        interface PrintStatus {
-            (): void;
-        }
+    // Constructor properties interface
 
-        // Constructor properties interface
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+enabled_backends: Gee.Map;
+    enabledBackends: Gee.Map;
+    is_prepared: boolean;
+    isPrepared: boolean;
     }
 
-    class Debug extends GObject.Object {
-        // Own properties of Folks-0.6.Debug
+}
 
-        colour_enabled: boolean;
-        colourEnabled: boolean;
-        debug_output_enabled: boolean;
-        debugOutputEnabled: boolean;
+class BackendStore extends GObject.Object {
 
-        // Owm methods of Folks-0.6.Debug
+    // Own properties of Folks.BackendStore
 
-        static dup(): Debug;
-        static dup_with_flags(debug_flags: string, colour_enabled: boolean): Debug;
+    get enabled_backends(): Gee.Map;
+    set enabled_backends(val: Gee.Map);
+    get enabledBackends(): Gee.Map;
+    set enabledBackends(val: Gee.Map);
+    get is_prepared(): boolean;
+    set is_prepared(val: boolean);
+    get isPrepared(): boolean;
+    set isPrepared(val: boolean);
 
-        // Owm methods of Folks-0.6.Debug
+    // Own fields of Folks.BackendStore
 
-        emit_print_status(): void;
-        indent(): void;
-        unindent(): void;
-        get_colour_enabled(): boolean;
-        set_colour_enabled(value: boolean): void;
-        get_debug_output_enabled(): boolean;
-        set_debug_output_enabled(value: boolean): void;
-    }
+folks_backend_store_KEY_FILE_GROUP_ALL_OTHERS: string
 
-    module EmailFieldDetails {
-        // Constructor properties interface
-    }
+    // Constructors of Folks.BackendStore
 
-    class EmailFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.EmailFieldDetails
 
-        static ['new'](value: string, parameters: Gee.MultiMap): EmailFieldDetails;
-    }
+constructor(properties?: Partial<BackendStore.ConstructorProps>, ...args: any[]);
 
-    module ExtendedFieldDetails {
-        // Constructor properties interface
-    }
+_init(...args: any[]): void;
+
+
+    // Own signals of Folks.BackendStore
 
-    class ExtendedFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.ExtendedFieldDetails
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'backend-available', callback: ((_source: this, backend: Backend) => void)): number
+    connect_after(signal: 'backend-available', callback: ((_source: this, backend: Backend) => void)): number
+    emit(signal: 'backend-available', backend: Backend): void
 
-        static ['new'](value: string, parameters: Gee.MultiMap): ExtendedFieldDetails;
+    // Own static methods of Folks.BackendStore
+
+    static dup(): BackendStore
+
+    // Own methods of Folks.BackendStore
+
+    prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    prepare_finish(_res_: Gio.AsyncResult): void
+    load_backends(_callback_: Gio.AsyncReadyCallback<this>): void
+    load_backends_finish(_res_: Gio.AsyncResult): void
+    add_backend(backend: Backend): void
+    dup_backend_by_name(name: string): Backend
+    list_backends(): Gee.Collection
+    enable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    enable_backend_finish(_res_: Gio.AsyncResult): void
+    disable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    disable_backend_finish(_res_: Gio.AsyncResult): void
+    get_enabled_backends(): Gee.Map
+    get_is_prepared(): boolean
+}
+
+module Backend {
+
+    // Signal callback interfaces
+
+    interface PersonaStoreAdded {
+        (store: PersonaStore): void
     }
 
-    module ImFieldDetails {
-        // Constructor properties interface
+    interface PersonaStoreRemoved {
+        (store: PersonaStore): void
     }
+
 
-    class ImFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.ImFieldDetails
+    // Constructor properties interface
 
-        static ['new'](value: string, parameters: Gee.MultiMap): ImFieldDetails;
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+is_prepared: boolean;
+    isPrepared: boolean;
+    is_quiescent: boolean;
+    isQuiescent: boolean;
+    name: string;
+    persona_stores: Gee.Map;
+    personaStores: Gee.Map;
     }
 
-    module IndividualAggregator {
-        // Signal callback interfaces
+}
 
-        interface IndividualsChanged {
-            (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void;
-        }
+abstract class Backend extends GObject.Object {
 
-        interface IndividualsChangedDetailed {
-            (changes: Gee.MultiMap): void;
-        }
+    // Own properties of Folks.Backend
 
-        // Constructor properties interface
-    }
+    get is_prepared(): boolean;
+    get isPrepared(): boolean;
+    get is_quiescent(): boolean;
+    get isQuiescent(): boolean;
+    get name(): string;
+    get persona_stores(): Gee.Map;
+    get personaStores(): Gee.Map;
 
-    class IndividualAggregator extends GObject.Object {
-        // Own properties of Folks-0.6.IndividualAggregator
+    // Constructors of Folks.Backend
 
-        readonly is_prepared: boolean;
-        readonly isPrepared: boolean;
-        readonly is_quiescent: boolean;
-        readonly isQuiescent: boolean;
-        readonly primary_store: PersonaStore;
-        readonly primaryStore: PersonaStore;
-        backend_store: BackendStore;
-        backendStore: BackendStore;
-        individuals: Gee.Map;
-        user: Individual;
 
-        // Constructors of Folks-0.6.IndividualAggregator
+constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
-        static ['new'](): IndividualAggregator;
+_init(...args: any[]): void;
 
-        static with_backend_store(store: BackendStore): IndividualAggregator;
 
-        // Owm methods of Folks-0.6.IndividualAggregator
+    // Own signals of Folks.Backend
 
-        static dup(): IndividualAggregator;
-        static dup_with_backend_store(store: BackendStore): IndividualAggregator;
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'persona-store-added', callback: ((_source: this, store: PersonaStore) => void)): number
+    connect_after(signal: 'persona-store-added', callback: ((_source: this, store: PersonaStore) => void)): number
+    emit(signal: 'persona-store-added', store: PersonaStore): void
+    connect(signal: 'persona-store-removed', callback: ((_source: this, store: PersonaStore) => void)): number
+    connect_after(signal: 'persona-store-removed', callback: ((_source: this, store: PersonaStore) => void)): number
+    emit(signal: 'persona-store-removed', store: PersonaStore): void
 
-        // Owm methods of Folks-0.6.IndividualAggregator
+    // Own virtual methods of Folks.Backend
 
-        prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        prepare_finish(_res_: Gio.AsyncResult): void;
-        unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        unprepare_finish(_res_: Gio.AsyncResult): void;
-        get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map;
-        get_all_potential_matches(min_threshold: MatchResult): Gee.Map;
-        add_persona_from_details(
-            parent: Individual,
-            persona_store: PersonaStore,
-            details: GLib.HashTable<string, GObject.Value>,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
-        remove_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_individual_finish(_res_: Gio.AsyncResult): void;
-        remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_persona_finish(_res_: Gio.AsyncResult): void;
-        link_personas(personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        link_personas_finish(_res_: Gio.AsyncResult): void;
-        unlink_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
-        unlink_individual_finish(_res_: Gio.AsyncResult): void;
-        ensure_individual_property_writeable(
-            individual: Individual,
-            property_name: string,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona;
-        look_up_individual(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        look_up_individual_finish(_res_: Gio.AsyncResult): Individual;
-        get_is_prepared(): boolean;
-        get_is_quiescent(): boolean;
-        get_primary_store(): PersonaStore;
-        get_backend_store(): BackendStore;
-        get_individuals(): Gee.Map;
-        get_user(): Individual;
-    }
+    vfunc_disable_persona_store(store: PersonaStore): void
+    vfunc_enable_persona_store(store: PersonaStore): void
+    vfunc_set_persona_stores(storeids: Gee.Set): void
+    vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_prepare_finish(_res_: Gio.AsyncResult): void
+    vfunc_unprepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_unprepare_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_is_prepared(): boolean
+    vfunc_get_is_quiescent(): boolean
+    vfunc_get_name(): string
+    vfunc_get_persona_stores(): Gee.Map
+
+    // Own methods of Folks.Backend
 
-    module Individual {
-        // Signal callback interfaces
+    disable_persona_store(store: PersonaStore): void
+    enable_persona_store(store: PersonaStore): void
+    set_persona_stores(storeids: Gee.Set): void
+    prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    prepare_finish(_res_: Gio.AsyncResult): void
+    unprepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    unprepare_finish(_res_: Gio.AsyncResult): void
+    get_is_prepared(): boolean
+    get_is_quiescent(): boolean
+    get_name(): string
+    get_persona_stores(): Gee.Map
+}
 
-        interface Removed {
-            (replacement_individual: Individual): void;
-        }
+module Debug {
 
-        interface PersonasChanged {
-            (added: Gee.Set, removed: Gee.Set): void;
-        }
+    // Signal callback interfaces
 
-        // Constructor properties interface
+    interface PrintStatus {
+        (): void
     }
 
-    class Individual extends GObject.Object {
-        // Own properties of Folks-0.6.Individual
 
-        trust_level: TrustLevel;
-        trustLevel: TrustLevel;
-        is_user: boolean;
-        isUser: boolean;
-        id: string;
-        readonly display_name: string;
-        readonly displayName: string;
-        personas: Gee.Set;
+    // Constructor properties interface
 
-        // Constructors of Folks-0.6.Individual
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+colour_enabled: boolean;
+    colourEnabled: boolean;
+    debug_output_enabled: boolean;
+    debugOutputEnabled: boolean;
+    }
 
-        static ['new'](personas: Gee.Set): Individual;
+}
 
-        // Owm methods of Folks-0.6.Individual
+class Debug extends GObject.Object {
 
-        has_anti_link_with_persona(p: Persona): boolean;
-        has_anti_link_with_individual(i: Individual): boolean;
-        get_trust_level(): TrustLevel;
-        get_is_user(): boolean;
-        get_id(): string;
-        get_display_name(): string;
-        get_personas(): Gee.Set;
-        set_personas(value: Gee.Set): void;
-    }
+    // Own properties of Folks.Debug
 
-    module Location {
-        // Constructor properties interface
-    }
+    get colour_enabled(): boolean;
+    set colour_enabled(val: boolean);
+    get colourEnabled(): boolean;
+    set colourEnabled(val: boolean);
+    get debug_output_enabled(): boolean;
+    set debug_output_enabled(val: boolean);
+    get debugOutputEnabled(): boolean;
+    set debugOutputEnabled(val: boolean);
 
-    class Location extends GObject.Object {
-        // Own fields of Folks-0.6.Location
+    // Constructors of Folks.Debug
 
-        latitude: number;
-        longitude: number;
 
-        // Constructors of Folks-0.6.Location
+constructor(properties?: Partial<Debug.ConstructorProps>, ...args: any[]);
 
-        static ['new'](latitude: number, longitude: number): Location;
+_init(...args: any[]): void;
 
-        // Owm methods of Folks-0.6.Location
 
-        equal(other: Location): boolean;
-        equal_coordinates(latitude: number, longitude: number): boolean;
-    }
+    // Own signals of Folks.Debug
 
-    module StructuredName {
-        // Constructor properties interface
-    }
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'print-status', callback: ((_source: this) => void)): number
+    connect_after(signal: 'print-status', callback: ((_source: this) => void)): number
+    emit(signal: 'print-status'): void
 
-    class StructuredName extends GObject.Object {
-        // Own properties of Folks-0.6.StructuredName
+    // Own static methods of Folks.Debug
 
-        family_name: string;
-        familyName: string;
-        given_name: string;
-        givenName: string;
-        additional_names: string;
-        additionalNames: string;
-        prefixes: string;
-        suffixes: string;
+    static dup(): Debug
+    static dup_with_flags(debug_flags: string, colour_enabled: boolean): Debug
 
-        // Constructors of Folks-0.6.StructuredName
+    // Own methods of Folks.Debug
 
-        static ['new'](
-            family_name: string,
-            given_name: string,
-            additional_names: string,
-            prefixes: string,
-            suffixes: string,
-        ): StructuredName;
+    emit_print_status(): void
+    indent(): void
+    unindent(): void
+    get_colour_enabled(): boolean
+    set_colour_enabled(value: boolean): void
+    get_debug_output_enabled(): boolean
+    set_debug_output_enabled(value: boolean): void
+}
 
-        static simple(family_name: string, given_name: string): StructuredName;
+module EmailFieldDetails {
 
-        // Owm methods of Folks-0.6.StructuredName
+    // Constructor properties interface
 
-        is_empty(): boolean;
-        equal(other: StructuredName): boolean;
-        to_string(): string;
-        to_string_with_format(name_fmt: string): string;
-        get_family_name(): string;
-        set_family_name(value: string): void;
-        get_given_name(): string;
-        set_given_name(value: string): void;
-        get_additional_names(): string;
-        set_additional_names(value: string): void;
-        get_prefixes(): string;
-        set_prefixes(value: string): void;
-        get_suffixes(): string;
-        set_suffixes(value: string): void;
-    }
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-    module NoteFieldDetails {
-        // Constructor properties interface
     }
 
-    class NoteFieldDetails extends AbstractFieldDetails {
-        // Own properties of Folks-0.6.NoteFieldDetails
+}
 
-        uid: string;
+class EmailFieldDetails extends AbstractFieldDetails {
 
-        // Constructors of Folks-0.6.NoteFieldDetails
+    // Constructors of Folks.EmailFieldDetails
 
-        static ['new'](value: string, parameters: Gee.MultiMap, uid: string): NoteFieldDetails;
 
-        // Owm methods of Folks-0.6.NoteFieldDetails
+constructor(properties?: Partial<EmailFieldDetails.ConstructorProps>, ...args: any[]);
 
-        get_uid(): string;
-        set_uid(value: string): void;
-    }
+_init(...args: any[]): void;
 
-    module ObjectCache {
-        // Constructor properties interface
-    }
+
+static ["new"](value: string, parameters: Gee.MultiMap): EmailFieldDetails;
+}
 
-    abstract class ObjectCache extends GObject.Object {
-        // Own properties of Folks-0.6.ObjectCache
+module ExtendedFieldDetails {
 
-        t_type: GObject.GType;
-        tType: GObject.GType;
-        t_dup_func: GObject.BoxedCopyFunc;
-        tDupFunc: GObject.BoxedCopyFunc;
-        t_destroy_func: GLib.DestroyNotify;
-        tDestroyFunc: GLib.DestroyNotify;
-        type_id: string;
-        typeId: string;
-        id: string;
+    // Constructor properties interface
 
-        // Owm methods of Folks-0.6.ObjectCache
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        get_serialised_object_type(object_version: number): GLib.VariantType;
-        get_serialised_object_version(): number;
-        serialise_object(object: any): GLib.Variant;
-        deserialise_object(variant: GLib.Variant, object_version: number): any;
-        load_objects(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        load_objects_finish(_res_: Gio.AsyncResult): Gee.Set;
-        store_objects(objects: Gee.Set, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        store_objects_finish(_res_: Gio.AsyncResult): void;
-        clear_cache(_callback_: Gio.AsyncReadyCallback<this>): void;
-        clear_cache_finish(_res_: Gio.AsyncResult): void;
-        get_type_id(): string;
-        get_id(): string;
     }
 
-    module PersonaStore {
-        // Signal callback interfaces
+}
 
-        interface PersonasChanged {
-            (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void;
-        }
+class ExtendedFieldDetails extends AbstractFieldDetails {
 
-        interface Removed {
-            (): void;
-        }
+    // Constructors of Folks.ExtendedFieldDetails
 
-        // Constructor properties interface
-    }
 
-    abstract class PersonaStore extends GObject.Object {
-        // Own properties of Folks-0.6.PersonaStore
+constructor(properties?: Partial<ExtendedFieldDetails.ConstructorProps>, ...args: any[]);
 
-        readonly type_id: string;
-        readonly typeId: string;
-        display_name: string;
-        displayName: string;
-        id: string;
-        readonly personas: Gee.Map;
-        readonly can_add_personas: MaybeBool;
-        readonly canAddPersonas: MaybeBool;
-        readonly can_alias_personas: MaybeBool;
-        readonly canAliasPersonas: MaybeBool;
-        readonly can_group_personas: MaybeBool;
-        readonly canGroupPersonas: MaybeBool;
-        readonly can_remove_personas: MaybeBool;
-        readonly canRemovePersonas: MaybeBool;
-        readonly is_prepared: boolean;
-        readonly isPrepared: boolean;
-        readonly is_quiescent: boolean;
-        readonly isQuiescent: boolean;
-        is_writeable: boolean;
-        isWriteable: boolean;
-        trust_level: PersonaStoreTrust;
-        trustLevel: PersonaStoreTrust;
-        readonly always_writeable_properties: string[];
-        readonly alwaysWriteableProperties: string[];
-        is_primary_store: boolean;
-        isPrimaryStore: boolean;
-        is_user_set_default: boolean;
-        isUserSetDefault: boolean;
+_init(...args: any[]): void;
 
-        // Owm methods of Folks-0.6.PersonaStore
 
-        static detail_key(detail: PersonaDetail): string;
+static ["new"](value: string, parameters: Gee.MultiMap): ExtendedFieldDetails;
+}
 
-        // Owm methods of Folks-0.6.PersonaStore
+module ImFieldDetails {
 
-        _emit_personas_changed(
-            added: Gee.Set,
-            removed: Gee.Set,
-            message: string,
-            actor: Persona,
-            reason: GroupDetailsChangeReason,
-        ): void;
-        prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        prepare_finish(_res_: Gio.AsyncResult): void;
-        flush(_callback_: Gio.AsyncReadyCallback<this>): void;
-        flush_finish(_res_: Gio.AsyncResult): void;
-        add_persona_from_details(
-            details: GLib.HashTable<string, GObject.Value>,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
-        remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_persona_finish(_res_: Gio.AsyncResult): void;
-        get_type_id(): string;
-        get_display_name(): string;
-        get_id(): string;
-        get_personas(): Gee.Map;
-        get_can_add_personas(): MaybeBool;
-        get_can_alias_personas(): MaybeBool;
-        get_can_group_personas(): MaybeBool;
-        get_can_remove_personas(): MaybeBool;
-        get_is_prepared(): boolean;
-        get_is_quiescent(): boolean;
-        get_is_writeable(): boolean;
-        set_is_writeable(value: boolean): void;
-        get_trust_level(): PersonaStoreTrust;
-        set_trust_level(value: PersonaStoreTrust): void;
-        get_always_writeable_properties(): string[];
-        get_is_primary_store(): boolean;
-        get_is_user_set_default(): boolean;
-    }
+    // Constructor properties interface
 
-    module Persona {
-        // Constructor properties interface
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
     }
 
-    abstract class Persona extends GObject.Object {
-        // Own properties of Folks-0.6.Persona
+}
 
-        iid: string;
-        uid: string;
-        display_id: string;
-        displayId: string;
-        is_user: boolean;
-        isUser: boolean;
-        store: PersonaStore;
-        individual: Individual;
-        readonly linkable_properties: string[];
-        readonly linkableProperties: string[];
-        readonly writeable_properties: string[];
-        readonly writeableProperties: string[];
+class ImFieldDetails extends AbstractFieldDetails {
 
-        // Owm methods of Folks-0.6.Persona
+    // Constructors of Folks.ImFieldDetails
 
-        static build_uid(backend_name: string, persona_store_id: string, persona_id: string): string;
-        static split_uid(uid: string): void;
 
-        // Owm methods of Folks-0.6.Persona
+constructor(properties?: Partial<ImFieldDetails.ConstructorProps>, ...args: any[]);
 
-        linkable_property_to_links(prop_name: string, callback: PersonaLinkablePropertyCallback): void;
-        get_iid(): string;
-        get_uid(): string;
-        get_display_id(): string;
-        get_is_user(): boolean;
-        get_store(): PersonaStore;
-        get_individual(): Individual;
-        get_linkable_properties(): string[];
-        get_writeable_properties(): string[];
-    }
+_init(...args: any[]): void;
 
-    module PhoneFieldDetails {
-        // Constructor properties interface
-    }
 
-    class PhoneFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.PhoneFieldDetails
+static ["new"](value: string, parameters: Gee.MultiMap): ImFieldDetails;
+}
 
-        static ['new'](value: string, parameters: Gee.MultiMap): PhoneFieldDetails;
+module IndividualAggregator {
 
-        // Owm methods of Folks-0.6.PhoneFieldDetails
+    // Signal callback interfaces
 
-        get_normalised(): string;
+    interface IndividualsChanged {
+        (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void
     }
 
-    module PostalAddress {
-        // Constructor properties interface
+    interface IndividualsChangedDetailed {
+        (changes: Gee.MultiMap): void
     }
 
-    class PostalAddress extends GObject.Object {
-        // Own properties of Folks-0.6.PostalAddress
 
-        po_box: string;
-        poBox: string;
-        extension: string;
-        street: string;
-        locality: string;
-        region: string;
-        postal_code: string;
-        postalCode: string;
-        country: string;
-        address_format: string;
-        addressFormat: string;
-        uid: string;
+    // Constructor properties interface
 
-        // Constructors of Folks-0.6.PostalAddress
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+is_prepared: boolean;
+    isPrepared: boolean;
+    is_quiescent: boolean;
+    isQuiescent: boolean;
+    primary_store: PersonaStore;
+    primaryStore: PersonaStore;
+    backend_store: BackendStore;
+    backendStore: BackendStore;
+    individuals: Gee.Map;
+    user: Individual;
+    }
 
-        static ['new'](
-            po_box: string,
-            extension: string,
-            street: string,
-            locality: string,
-            region: string,
-            postal_code: string,
-            country: string,
-            address_format: string,
-            uid: string,
-        ): PostalAddress;
+}
 
-        // Owm methods of Folks-0.6.PostalAddress
+class IndividualAggregator extends GObject.Object {
 
-        is_empty(): boolean;
-        equal(_with: PostalAddress): boolean;
-        to_string(): string;
-        get_po_box(): string;
-        set_po_box(value: string): void;
-        get_extension(): string;
-        set_extension(value: string): void;
-        get_street(): string;
-        set_street(value: string): void;
-        get_locality(): string;
-        set_locality(value: string): void;
-        get_region(): string;
-        set_region(value: string): void;
-        get_postal_code(): string;
-        set_postal_code(value: string): void;
-        get_country(): string;
-        set_country(value: string): void;
-        get_address_format(): string;
-        set_address_format(value: string): void;
-        get_uid(): string;
-        set_uid(value: string): void;
-    }
+    // Own properties of Folks.IndividualAggregator
 
-    module PostalAddressFieldDetails {
-        // Constructor properties interface
-    }
+    get is_prepared(): boolean;
+    get isPrepared(): boolean;
+    get is_quiescent(): boolean;
+    get isQuiescent(): boolean;
+    get primary_store(): PersonaStore;
+    get primaryStore(): PersonaStore;
+    get backend_store(): BackendStore;
+    get backendStore(): BackendStore;
+    get individuals(): Gee.Map;
+    set individuals(val: Gee.Map);
+    get user(): Individual;
+    set user(val: Individual);
 
-    class PostalAddressFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.PostalAddressFieldDetails
+    // Constructors of Folks.IndividualAggregator
 
-        static ['new'](value: PostalAddress, parameters: Gee.MultiMap): PostalAddressFieldDetails;
-    }
 
-    module PotentialMatch {
-        // Constructor properties interface
-    }
+constructor(properties?: Partial<IndividualAggregator.ConstructorProps>, ...args: any[]);
 
-    class PotentialMatch extends GObject.Object {
-        // Own fields of Folks-0.6.PotentialMatch
+_init(...args: any[]): void;
 
-        folks_potential_match_known_email_aliases: Gee.Set;
 
-        // Constructors of Folks-0.6.PotentialMatch
+static ["new"](): IndividualAggregator;
 
-        static ['new'](): PotentialMatch;
+static with_backend_store(store: BackendStore): IndividualAggregator;
 
-        // Owm methods of Folks-0.6.PotentialMatch
+    // Own signals of Folks.IndividualAggregator
 
-        potential_match(a: Individual, b: Individual): MatchResult;
-    }
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'individuals-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void)): number
+    connect_after(signal: 'individuals-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void)): number
+    emit(signal: 'individuals-changed', added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void
+    connect(signal: 'individuals-changed-detailed', callback: ((_source: this, changes: Gee.MultiMap) => void)): number
+    connect_after(signal: 'individuals-changed-detailed', callback: ((_source: this, changes: Gee.MultiMap) => void)): number
+    emit(signal: 'individuals-changed-detailed', changes: Gee.MultiMap): void
 
-    module Query {
-        // Constructor properties interface
-    }
+    // Own static methods of Folks.IndividualAggregator
 
-    abstract class Query extends GObject.Object {
-        // Own properties of Folks-0.6.Query
+    static dup(): IndividualAggregator
+    static dup_with_backend_store(store: BackendStore): IndividualAggregator
 
-        match_fields: string[];
-        matchFields: string[];
+    // Own methods of Folks.IndividualAggregator
 
-        // Owm methods of Folks-0.6.Query
+    prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    prepare_finish(_res_: Gio.AsyncResult): void
+    unprepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    unprepare_finish(_res_: Gio.AsyncResult): void
+    get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map
+    get_all_potential_matches(min_threshold: MatchResult): Gee.Map
+    add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void
+    add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona
+    remove_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_individual_finish(_res_: Gio.AsyncResult): void
+    remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_persona_finish(_res_: Gio.AsyncResult): void
+    link_personas(personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    link_personas_finish(_res_: Gio.AsyncResult): void
+    unlink_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void
+    unlink_individual_finish(_res_: Gio.AsyncResult): void
+    ensure_individual_property_writeable(individual: Individual, property_name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona
+    look_up_individual(id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    look_up_individual_finish(_res_: Gio.AsyncResult): Individual
+    get_is_prepared(): boolean
+    get_is_quiescent(): boolean
+    get_primary_store(): PersonaStore
+    get_backend_store(): BackendStore
+    get_individuals(): Gee.Map
+    get_user(): Individual
+}
 
-        is_match(individual: Individual): number;
-        get_match_fields(): string[];
+module Individual {
+
+    // Signal callback interfaces
+
+    interface Removed {
+        (replacement_individual: Individual): void
     }
 
-    module Role {
-        // Constructor properties interface
+    interface PersonasChanged {
+        (added: Gee.Set, removed: Gee.Set): void
     }
 
-    class Role extends GObject.Object {
-        // Own properties of Folks-0.6.Role
 
-        organisation_name: string;
-        organisationName: string;
-        title: string;
-        role: string;
-        uid: string;
+    // Constructor properties interface
 
-        // Constructors of Folks-0.6.Role
+    interface ConstructorProps extends GObject.Object.ConstructorProps, AliasDetails.ConstructorProps, AvatarDetails.ConstructorProps, BirthdayDetails.ConstructorProps, EmailDetails.ConstructorProps, ExtendedInfo.ConstructorProps, FavouriteDetails.ConstructorProps, GenderDetails.ConstructorProps, GroupDetails.ConstructorProps, ImDetails.ConstructorProps, InteractionDetails.ConstructorProps, LocalIdDetails.ConstructorProps, LocationDetails.ConstructorProps, NameDetails.ConstructorProps, NoteDetails.ConstructorProps, PresenceDetails.ConstructorProps, PhoneDetails.ConstructorProps, PostalAddressDetails.ConstructorProps, RoleDetails.ConstructorProps, UrlDetails.ConstructorProps, WebServiceDetails.ConstructorProps {
+trust_level: TrustLevel;
+    trustLevel: TrustLevel;
+    is_user: boolean;
+    isUser: boolean;
+    id: string;
+    display_name: string;
+    displayName: string;
+    personas: Gee.Set;
+    }
 
-        static ['new'](title: string, organisation_name: string, uid: string): Role;
+}
 
-        // Owm methods of Folks-0.6.Role
+class Individual extends GObject.Object implements AliasDetails, AvatarDetails, BirthdayDetails, EmailDetails, ExtendedInfo, FavouriteDetails, GenderDetails, GroupDetails, ImDetails, InteractionDetails, LocalIdDetails, LocationDetails, NameDetails, NoteDetails, PresenceDetails, PhoneDetails, PostalAddressDetails, RoleDetails, UrlDetails, WebServiceDetails {
 
-        static equal(a: Role, b: Role): boolean;
-        static hash(r: Role): number;
+    // Own properties of Folks.Individual
 
-        // Owm methods of Folks-0.6.Role
+    get trust_level(): TrustLevel;
+    set trust_level(val: TrustLevel);
+    get trustLevel(): TrustLevel;
+    set trustLevel(val: TrustLevel);
+    get is_user(): boolean;
+    set is_user(val: boolean);
+    get isUser(): boolean;
+    set isUser(val: boolean);
+    get id(): string;
+    set id(val: string);
+    get display_name(): string;
+    get displayName(): string;
+    get personas(): Gee.Set;
+    set personas(val: Gee.Set);
 
-        is_empty(): boolean;
-        to_string(): string;
-        get_organisation_name(): string;
-        set_organisation_name(value: string): void;
-        get_title(): string;
-        set_title(value: string): void;
-        get_role(): string;
-        set_role(value: string): void;
-        get_uid(): string;
-        set_uid(value: string): void;
-    }
+    // Constructors of Folks.Individual
 
-    module RoleFieldDetails {
-        // Constructor properties interface
-    }
 
-    class RoleFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.RoleFieldDetails
+constructor(properties?: Partial<Individual.ConstructorProps>, ...args: any[]);
 
-        static ['new'](value: Role, parameters: Gee.MultiMap): RoleFieldDetails;
-    }
+_init(...args: any[]): void;
 
-    module SearchView {
-        // Signal callback interfaces
 
-        interface IndividualsChangedDetailed {
-            (added: Gee.SortedSet, removed: Gee.SortedSet): void;
-        }
+static ["new"](personas: Gee.Set): Individual;
 
-        // Constructor properties interface
-    }
+    // Own signals of Folks.Individual
 
-    class SearchView extends GObject.Object {
-        // Own properties of Folks-0.6.SearchView
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'removed', callback: ((_source: this, replacement_individual: Individual) => void)): number
+    connect_after(signal: 'removed', callback: ((_source: this, replacement_individual: Individual) => void)): number
+    emit(signal: 'removed', replacement_individual: Individual): void
+    connect(signal: 'personas-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set) => void)): number
+    connect_after(signal: 'personas-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set) => void)): number
+    emit(signal: 'personas-changed', added: Gee.Set, removed: Gee.Set): void
 
-        readonly aggregator: IndividualAggregator;
-        query: Query;
-        readonly individuals: Gee.SortedSet;
-        readonly is_prepared: boolean;
-        readonly isPrepared: boolean;
-        readonly is_quiescent: boolean;
-        readonly isQuiescent: boolean;
+    // Own methods of Folks.Individual
 
-        // Constructors of Folks-0.6.SearchView
+    has_anti_link_with_persona(p: Persona): boolean
+    has_anti_link_with_individual(i: Individual): boolean
+    get_trust_level(): TrustLevel
+    get_is_user(): boolean
+    get_id(): string
+    get_display_name(): string
+    get_personas(): Gee.Set
+    set_personas(value: Gee.Set): void
 
-        static ['new'](aggregator: IndividualAggregator, query: Query): SearchView;
+// Inherited properties
+get alias(): string;
+set alias(val: string);
+get avatar(): Gio.LoadableIcon;
+set avatar(val: Gio.LoadableIcon);
+get birthday(): GLib.DateTime;
+set birthday(val: GLib.DateTime);
+get calendar_event_id(): string;
+set calendar_event_id(val: string);
+get calendarEventId(): string;
+set calendarEventId(val: string);
+get email_addresses(): Gee.Set;
+set email_addresses(val: Gee.Set);
+get emailAddresses(): Gee.Set;
+set emailAddresses(val: Gee.Set);
+get is_favourite(): boolean;
+set is_favourite(val: boolean);
+get isFavourite(): boolean;
+set isFavourite(val: boolean);
+get gender(): Gender;
+set gender(val: Gender);
+get groups(): Gee.Set;
+set groups(val: Gee.Set);
+get im_addresses(): Gee.MultiMap;
+set im_addresses(val: Gee.MultiMap);
+get imAddresses(): Gee.MultiMap;
+set imAddresses(val: Gee.MultiMap);
+get im_interaction_count(): number;
+get imInteractionCount(): number;
+get last_im_interaction_datetime(): GLib.DateTime;
+get lastImInteractionDatetime(): GLib.DateTime;
+get call_interaction_count(): number;
+get callInteractionCount(): number;
+get last_call_interaction_datetime(): GLib.DateTime;
+get lastCallInteractionDatetime(): GLib.DateTime;
+get local_ids(): Gee.Set;
+set local_ids(val: Gee.Set);
+get localIds(): Gee.Set;
+set localIds(val: Gee.Set);
+get location(): Location;
+set location(val: Location);
+get structured_name(): StructuredName;
+set structured_name(val: StructuredName);
+get structuredName(): StructuredName;
+set structuredName(val: StructuredName);
+get full_name(): string;
+set full_name(val: string);
+get fullName(): string;
+set fullName(val: string);
+get nickname(): string;
+set nickname(val: string);
+get notes(): Gee.Set;
+set notes(val: Gee.Set);
+get presence_type(): PresenceType;
+set presence_type(val: PresenceType);
+get presenceType(): PresenceType;
+set presenceType(val: PresenceType);
+get presence_message(): string;
+set presence_message(val: string);
+get presenceMessage(): string;
+set presenceMessage(val: string);
+get client_types(): string[];
+set client_types(val: string[]);
+get clientTypes(): string[];
+set clientTypes(val: string[]);
+get presence_status(): string;
+set presence_status(val: string);
+get presenceStatus(): string;
+set presenceStatus(val: string);
+get phone_numbers(): Gee.Set;
+set phone_numbers(val: Gee.Set);
+get phoneNumbers(): Gee.Set;
+set phoneNumbers(val: Gee.Set);
+get postal_addresses(): Gee.Set;
+set postal_addresses(val: Gee.Set);
+get postalAddresses(): Gee.Set;
+set postalAddresses(val: Gee.Set);
+get roles(): Gee.Set;
+set roles(val: Gee.Set);
+get urls(): Gee.Set;
+set urls(val: Gee.Set);
+get web_service_addresses(): Gee.MultiMap;
+set web_service_addresses(val: Gee.MultiMap);
+get webServiceAddresses(): Gee.MultiMap;
+set webServiceAddresses(val: Gee.MultiMap);
 
-        // Owm methods of Folks-0.6.SearchView
+// Inherited methods
+change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void
+change_alias_finish(_res_: Gio.AsyncResult): void
+get_alias(): string
+set_alias(value: string): void
+vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_alias_finish(_res_: Gio.AsyncResult): void
+vfunc_get_alias(): string
+vfunc_set_alias(value: string): void
+change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void
+change_avatar_finish(_res_: Gio.AsyncResult): void
+get_avatar(): Gio.LoadableIcon
+set_avatar(value: Gio.LoadableIcon): void
+vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void
+vfunc_get_avatar(): Gio.LoadableIcon
+vfunc_set_avatar(value: Gio.LoadableIcon): void
+change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void
+change_birthday_finish(_res_: Gio.AsyncResult): void
+change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+change_calendar_event_id_finish(_res_: Gio.AsyncResult): void
+get_birthday(): GLib.DateTime
+set_birthday(value: GLib.DateTime): void
+get_calendar_event_id(): string
+set_calendar_event_id(value: string): void
+vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void
+vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void
+vfunc_get_birthday(): GLib.DateTime
+vfunc_set_birthday(value: GLib.DateTime): void
+vfunc_get_calendar_event_id(): string
+vfunc_set_calendar_event_id(value: string): void
+change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_email_addresses_finish(_res_: Gio.AsyncResult): void
+get_email_addresses(): Gee.Set
+set_email_addresses(value: Gee.Set): void
+vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void
+vfunc_get_email_addresses(): Gee.Set
+vfunc_set_email_addresses(value: Gee.Set): void
+get_extended_field(name: string): ExtendedFieldDetails
+change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void
+change_extended_field_finish(_res_: Gio.AsyncResult): void
+remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+remove_extended_field_finish(_res_: Gio.AsyncResult): void
+vfunc_get_extended_field(name: string): ExtendedFieldDetails
+vfunc_change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void
+vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void
+change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+change_is_favourite_finish(_res_: Gio.AsyncResult): void
+get_is_favourite(): boolean
+set_is_favourite(value: boolean): void
+vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void
+vfunc_get_is_favourite(): boolean
+vfunc_set_is_favourite(value: boolean): void
+change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void
+change_gender_finish(_res_: Gio.AsyncResult): void
+get_gender(): Gender
+set_gender(value: Gender): void
+vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_gender_finish(_res_: Gio.AsyncResult): void
+vfunc_get_gender(): Gender
+vfunc_set_gender(value: Gender): void
+change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+change_group_finish(_res_: Gio.AsyncResult): void
+change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_groups_finish(_res_: Gio.AsyncResult): void
+get_groups(): Gee.Set
+set_groups(value: Gee.Set): void
+vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_group_finish(_res_: Gio.AsyncResult): void
+vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_groups_finish(_res_: Gio.AsyncResult): void
+vfunc_get_groups(): Gee.Set
+vfunc_set_groups(value: Gee.Set): void
+change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+change_im_addresses_finish(_res_: Gio.AsyncResult): void
+get_im_addresses(): Gee.MultiMap
+set_im_addresses(value: Gee.MultiMap): void
+vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void
+vfunc_get_im_addresses(): Gee.MultiMap
+vfunc_set_im_addresses(value: Gee.MultiMap): void
+get_im_interaction_count(): number
+get_last_im_interaction_datetime(): GLib.DateTime
+get_call_interaction_count(): number
+get_last_call_interaction_datetime(): GLib.DateTime
+vfunc_get_im_interaction_count(): number
+vfunc_get_last_im_interaction_datetime(): GLib.DateTime
+vfunc_get_call_interaction_count(): number
+vfunc_get_last_call_interaction_datetime(): GLib.DateTime
+change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_local_ids_finish(_res_: Gio.AsyncResult): void
+get_local_ids(): Gee.Set
+set_local_ids(value: Gee.Set): void
+vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void
+vfunc_get_local_ids(): Gee.Set
+vfunc_set_local_ids(value: Gee.Set): void
+change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void
+change_location_finish(_res_: Gio.AsyncResult): void
+get_location(): Location
+set_location(value: Location): void
+vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_location_finish(_res_: Gio.AsyncResult): void
+vfunc_get_location(): Location
+vfunc_set_location(value: Location): void
+change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void
+change_structured_name_finish(_res_: Gio.AsyncResult): void
+change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+change_full_name_finish(_res_: Gio.AsyncResult): void
+change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void
+change_nickname_finish(_res_: Gio.AsyncResult): void
+get_structured_name(): StructuredName
+set_structured_name(value: StructuredName): void
+get_full_name(): string
+set_full_name(value: string): void
+get_nickname(): string
+set_nickname(value: string): void
+vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void
+vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void
+vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void
+vfunc_get_structured_name(): StructuredName
+vfunc_set_structured_name(value: StructuredName): void
+vfunc_get_full_name(): string
+vfunc_set_full_name(value: string): void
+vfunc_get_nickname(): string
+vfunc_set_nickname(value: string): void
+change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_notes_finish(_res_: Gio.AsyncResult): void
+get_notes(): Gee.Set
+set_notes(value: Gee.Set): void
+vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_notes_finish(_res_: Gio.AsyncResult): void
+vfunc_get_notes(): Gee.Set
+vfunc_set_notes(value: Gee.Set): void
+is_online(): boolean
+get_presence_type(): PresenceType
+set_presence_type(value: PresenceType): void
+get_presence_message(): string
+set_presence_message(value: string): void
+get_client_types(): string[]
+set_client_types(value: string[]): void
+get_presence_status(): string
+set_presence_status(value: string): void
+vfunc_get_presence_type(): PresenceType
+vfunc_set_presence_type(value: PresenceType): void
+vfunc_get_presence_message(): string
+vfunc_set_presence_message(value: string): void
+vfunc_get_client_types(): string[]
+vfunc_set_client_types(value: string[]): void
+vfunc_get_presence_status(): string
+vfunc_set_presence_status(value: string): void
+change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_phone_numbers_finish(_res_: Gio.AsyncResult): void
+get_phone_numbers(): Gee.Set
+set_phone_numbers(value: Gee.Set): void
+vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void
+vfunc_get_phone_numbers(): Gee.Set
+vfunc_set_phone_numbers(value: Gee.Set): void
+change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_postal_addresses_finish(_res_: Gio.AsyncResult): void
+get_postal_addresses(): Gee.Set
+set_postal_addresses(value: Gee.Set): void
+vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void
+vfunc_get_postal_addresses(): Gee.Set
+vfunc_set_postal_addresses(value: Gee.Set): void
+change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_roles_finish(_res_: Gio.AsyncResult): void
+get_roles(): Gee.Set
+set_roles(value: Gee.Set): void
+vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_roles_finish(_res_: Gio.AsyncResult): void
+vfunc_get_roles(): Gee.Set
+vfunc_set_roles(value: Gee.Set): void
+change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+change_urls_finish(_res_: Gio.AsyncResult): void
+get_urls(): Gee.Set
+set_urls(value: Gee.Set): void
+vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_urls_finish(_res_: Gio.AsyncResult): void
+vfunc_get_urls(): Gee.Set
+vfunc_set_urls(value: Gee.Set): void
+change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+change_web_service_addresses_finish(_res_: Gio.AsyncResult): void
+get_web_service_addresses(): Gee.MultiMap
+set_web_service_addresses(value: Gee.MultiMap): void
+vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void
+vfunc_get_web_service_addresses(): Gee.MultiMap
+vfunc_set_web_service_addresses(value: Gee.MultiMap): void
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module Location {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class Location extends GObject.Object {
+
+    // Own fields of Folks.Location
+
+latitude: number
+longitude: number
+
+    // Constructors of Folks.Location
+
+
+constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](latitude: number, longitude: number): Location;
+
+    // Own methods of Folks.Location
+
+    equal(other: Location): boolean
+    equal_coordinates(latitude: number, longitude: number): boolean
+}
+
+module StructuredName {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+family_name: string;
+    familyName: string;
+    given_name: string;
+    givenName: string;
+    additional_names: string;
+    additionalNames: string;
+    prefixes: string;
+    suffixes: string;
+    }
+
+}
+
+class StructuredName extends GObject.Object {
+
+    // Own properties of Folks.StructuredName
+
+    get family_name(): string;
+    set family_name(val: string);
+    get familyName(): string;
+    set familyName(val: string);
+    get given_name(): string;
+    set given_name(val: string);
+    get givenName(): string;
+    set givenName(val: string);
+    get additional_names(): string;
+    set additional_names(val: string);
+    get additionalNames(): string;
+    set additionalNames(val: string);
+    get prefixes(): string;
+    set prefixes(val: string);
+    get suffixes(): string;
+    set suffixes(val: string);
+
+    // Constructors of Folks.StructuredName
+
+
+constructor(properties?: Partial<StructuredName.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](family_name: string, given_name: string, additional_names: string, prefixes: string, suffixes: string): StructuredName;
+
+static simple(family_name: string, given_name: string): StructuredName;
+
+    // Own methods of Folks.StructuredName
+
+    is_empty(): boolean
+    equal(other: StructuredName): boolean
+    to_string(): string
+    to_string_with_format(name_fmt: string): string
+    get_family_name(): string
+    set_family_name(value: string): void
+    get_given_name(): string
+    set_given_name(value: string): void
+    get_additional_names(): string
+    set_additional_names(value: string): void
+    get_prefixes(): string
+    set_prefixes(value: string): void
+    get_suffixes(): string
+    set_suffixes(value: string): void
+}
+
+module NoteFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+uid: string;
+    }
+
+}
+
+class NoteFieldDetails extends AbstractFieldDetails {
+
+    // Own properties of Folks.NoteFieldDetails
+
+    get uid(): string;
+    set uid(val: string);
+
+    // Constructors of Folks.NoteFieldDetails
+
+
+constructor(properties?: Partial<NoteFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: string, parameters: Gee.MultiMap, uid: string): NoteFieldDetails;
+
+    // Own methods of Folks.NoteFieldDetails
+
+    get_uid(): string
+    set_uid(value: string): void
+}
+
+module ObjectCache {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+t_type: GObject.GType;
+    tType: GObject.GType;
+    t_dup_func: GObject.BoxedCopyFunc;
+    tDupFunc: GObject.BoxedCopyFunc;
+    t_destroy_func: GLib.DestroyNotify;
+    tDestroyFunc: GLib.DestroyNotify;
+    type_id: string;
+    typeId: string;
+    id: string;
+    }
+
+}
+
+abstract class ObjectCache extends GObject.Object {
+
+    // Own properties of Folks.ObjectCache
+
+    get t_type(): GObject.GType;
+    get tType(): GObject.GType;
+    get t_dup_func(): GObject.BoxedCopyFunc;
+    get tDupFunc(): GObject.BoxedCopyFunc;
+    get t_destroy_func(): GLib.DestroyNotify;
+    get tDestroyFunc(): GLib.DestroyNotify;
+    get type_id(): string;
+    get typeId(): string;
+    get id(): string;
+
+    // Constructors of Folks.ObjectCache
+
+
+constructor(properties?: Partial<ObjectCache.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own virtual methods of Folks.ObjectCache
+
+    vfunc_get_serialised_object_type(object_version: number): GLib.VariantType
+    vfunc_get_serialised_object_version(): number
+    vfunc_serialise_object(object: any): GLib.Variant
+    vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any
+
+    // Own methods of Folks.ObjectCache
+
+    get_serialised_object_type(object_version: number): GLib.VariantType
+    get_serialised_object_version(): number
+    serialise_object(object: any): GLib.Variant
+    deserialise_object(variant: GLib.Variant, object_version: number): any
+    load_objects(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    load_objects_finish(_res_: Gio.AsyncResult): Gee.Set
+    store_objects(objects: Gee.Set, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    store_objects_finish(_res_: Gio.AsyncResult): void
+    clear_cache(_callback_: Gio.AsyncReadyCallback<this>): void
+    clear_cache_finish(_res_: Gio.AsyncResult): void
+    get_type_id(): string
+    get_id(): string
+}
+
+module PersonaStore {
+
+    // Signal callback interfaces
+
+    interface PersonasChanged {
+        (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void
+    }
+
+    interface Removed {
+        (): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+type_id: string;
+    typeId: string;
+    display_name: string;
+    displayName: string;
+    id: string;
+    personas: Gee.Map;
+    can_add_personas: MaybeBool;
+    canAddPersonas: MaybeBool;
+    can_alias_personas: MaybeBool;
+    canAliasPersonas: MaybeBool;
+    can_group_personas: MaybeBool;
+    canGroupPersonas: MaybeBool;
+    can_remove_personas: MaybeBool;
+    canRemovePersonas: MaybeBool;
+    is_prepared: boolean;
+    isPrepared: boolean;
+    is_quiescent: boolean;
+    isQuiescent: boolean;
+    is_writeable: boolean;
+    isWriteable: boolean;
+    trust_level: PersonaStoreTrust;
+    trustLevel: PersonaStoreTrust;
+    always_writeable_properties: string[];
+    alwaysWriteableProperties: string[];
+    is_primary_store: boolean;
+    isPrimaryStore: boolean;
+    is_user_set_default: boolean;
+    isUserSetDefault: boolean;
+    }
+
+}
+
+abstract class PersonaStore extends GObject.Object {
+
+    // Own properties of Folks.PersonaStore
+
+    get type_id(): string;
+    get typeId(): string;
+    get display_name(): string;
+    get displayName(): string;
+    get id(): string;
+    get personas(): Gee.Map;
+    get can_add_personas(): MaybeBool;
+    get canAddPersonas(): MaybeBool;
+    get can_alias_personas(): MaybeBool;
+    get canAliasPersonas(): MaybeBool;
+    get can_group_personas(): MaybeBool;
+    get canGroupPersonas(): MaybeBool;
+    get can_remove_personas(): MaybeBool;
+    get canRemovePersonas(): MaybeBool;
+    get is_prepared(): boolean;
+    get isPrepared(): boolean;
+    get is_quiescent(): boolean;
+    get isQuiescent(): boolean;
+    get is_writeable(): boolean;
+    set is_writeable(val: boolean);
+    get isWriteable(): boolean;
+    set isWriteable(val: boolean);
+    get trust_level(): PersonaStoreTrust;
+    set trust_level(val: PersonaStoreTrust);
+    get trustLevel(): PersonaStoreTrust;
+    set trustLevel(val: PersonaStoreTrust);
+    get always_writeable_properties(): string[];
+    get alwaysWriteableProperties(): string[];
+    get is_primary_store(): boolean;
+    set is_primary_store(val: boolean);
+    get isPrimaryStore(): boolean;
+    set isPrimaryStore(val: boolean);
+    get is_user_set_default(): boolean;
+    set is_user_set_default(val: boolean);
+    get isUserSetDefault(): boolean;
+    set isUserSetDefault(val: boolean);
+
+    // Constructors of Folks.PersonaStore
+
+
+constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own signals of Folks.PersonaStore
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'personas-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void)): number
+    connect_after(signal: 'personas-changed', callback: ((_source: this, added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void)): number
+    emit(signal: 'personas-changed', added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void
+    connect(signal: 'removed', callback: ((_source: this) => void)): number
+    connect_after(signal: 'removed', callback: ((_source: this) => void)): number
+    emit(signal: 'removed'): void
+
+    // Own static methods of Folks.PersonaStore
+
+    static detail_key(detail: PersonaDetail): string
+
+    // Own virtual methods of Folks.PersonaStore
+
+    vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_prepare_finish(_res_: Gio.AsyncResult): void
+    vfunc_flush(_callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_flush_finish(_res_: Gio.AsyncResult): void
+    vfunc_add_persona_from_details(details: GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona
+    vfunc_remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_remove_persona_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_type_id(): string
+    vfunc_get_personas(): Gee.Map
+    vfunc_get_can_add_personas(): MaybeBool
+    vfunc_get_can_alias_personas(): MaybeBool
+    vfunc_get_can_group_personas(): MaybeBool
+    vfunc_get_can_remove_personas(): MaybeBool
+    vfunc_get_is_prepared(): boolean
+    vfunc_get_is_quiescent(): boolean
+    vfunc_get_always_writeable_properties(): string[]
+
+    // Own methods of Folks.PersonaStore
+
+    _emit_personas_changed(added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void
+    prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    prepare_finish(_res_: Gio.AsyncResult): void
+    flush(_callback_: Gio.AsyncReadyCallback<this>): void
+    flush_finish(_res_: Gio.AsyncResult): void
+    add_persona_from_details(details: GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void
+    add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona
+    remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_persona_finish(_res_: Gio.AsyncResult): void
+    get_type_id(): string
+    get_display_name(): string
+    get_id(): string
+    get_personas(): Gee.Map
+    get_can_add_personas(): MaybeBool
+    get_can_alias_personas(): MaybeBool
+    get_can_group_personas(): MaybeBool
+    get_can_remove_personas(): MaybeBool
+    get_is_prepared(): boolean
+    get_is_quiescent(): boolean
+    get_is_writeable(): boolean
+    set_is_writeable(value: boolean): void
+    get_trust_level(): PersonaStoreTrust
+    set_trust_level(value: PersonaStoreTrust): void
+    get_always_writeable_properties(): string[]
+    get_is_primary_store(): boolean
+    get_is_user_set_default(): boolean
+}
+
+module Persona {
+interface LinkablePropertyCallback {
+    (link: string): void
+}
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+iid: string;
+    uid: string;
+    display_id: string;
+    displayId: string;
+    is_user: boolean;
+    isUser: boolean;
+    store: PersonaStore;
+    individual: Individual;
+    linkable_properties: string[];
+    linkableProperties: string[];
+    writeable_properties: string[];
+    writeableProperties: string[];
+    }
+
+}
+
+abstract class Persona extends GObject.Object {
+
+    // Own properties of Folks.Persona
+
+    get iid(): string;
+    get uid(): string;
+    get display_id(): string;
+    get displayId(): string;
+    get is_user(): boolean;
+    get isUser(): boolean;
+    get store(): PersonaStore;
+    get individual(): Individual;
+    set individual(val: Individual);
+    get linkable_properties(): string[];
+    get linkableProperties(): string[];
+    get writeable_properties(): string[];
+    get writeableProperties(): string[];
+
+    // Constructors of Folks.Persona
+
+
+constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of Folks.Persona
+
+    static build_uid(backend_name: string, persona_store_id: string, persona_id: string): string
+    static split_uid(uid: string): [string, string, string]
+
+    // Own virtual methods of Folks.Persona
+
+    vfunc_linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void
+    vfunc_get_linkable_properties(): string[]
+    vfunc_get_writeable_properties(): string[]
+
+    // Own methods of Folks.Persona
+
+    linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void
+    get_iid(): string
+    get_uid(): string
+    get_display_id(): string
+    get_is_user(): boolean
+    get_store(): PersonaStore
+    get_individual(): Individual
+    get_linkable_properties(): string[]
+    get_writeable_properties(): string[]
+}
+
+module PhoneFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
+    }
+
+}
+
+class PhoneFieldDetails extends AbstractFieldDetails {
+
+    // Constructors of Folks.PhoneFieldDetails
+
+
+constructor(properties?: Partial<PhoneFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: string, parameters: Gee.MultiMap): PhoneFieldDetails;
+
+    // Own methods of Folks.PhoneFieldDetails
+
+    get_normalised(): string
+}
+
+module PostalAddress {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+po_box: string;
+    poBox: string;
+    extension: string;
+    street: string;
+    locality: string;
+    region: string;
+    postal_code: string;
+    postalCode: string;
+    country: string;
+    address_format: string;
+    addressFormat: string;
+    uid: string;
+    }
+
+}
+
+class PostalAddress extends GObject.Object {
+
+    // Own properties of Folks.PostalAddress
+
+    get po_box(): string;
+    set po_box(val: string);
+    get poBox(): string;
+    set poBox(val: string);
+    get extension(): string;
+    set extension(val: string);
+    get street(): string;
+    set street(val: string);
+    get locality(): string;
+    set locality(val: string);
+    get region(): string;
+    set region(val: string);
+    get postal_code(): string;
+    set postal_code(val: string);
+    get postalCode(): string;
+    set postalCode(val: string);
+    get country(): string;
+    set country(val: string);
+    get address_format(): string;
+    set address_format(val: string);
+    get addressFormat(): string;
+    set addressFormat(val: string);
+    get uid(): string;
+    set uid(val: string);
+
+    // Constructors of Folks.PostalAddress
+
+
+constructor(properties?: Partial<PostalAddress.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](po_box: string, extension: string, street: string, locality: string, region: string, postal_code: string, country: string, address_format: string, uid: string): PostalAddress;
+
+    // Own methods of Folks.PostalAddress
+
+    is_empty(): boolean
+    equal(_with: PostalAddress): boolean
+    to_string(): string
+    get_po_box(): string
+    set_po_box(value: string): void
+    get_extension(): string
+    set_extension(value: string): void
+    get_street(): string
+    set_street(value: string): void
+    get_locality(): string
+    set_locality(value: string): void
+    get_region(): string
+    set_region(value: string): void
+    get_postal_code(): string
+    set_postal_code(value: string): void
+    get_country(): string
+    set_country(value: string): void
+    get_address_format(): string
+    set_address_format(value: string): void
+    get_uid(): string
+    set_uid(value: string): void
+}
+
+module PostalAddressFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
+    }
+
+}
+
+class PostalAddressFieldDetails extends AbstractFieldDetails {
+
+    // Constructors of Folks.PostalAddressFieldDetails
+
+
+constructor(properties?: Partial<PostalAddressFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: PostalAddress, parameters: Gee.MultiMap): PostalAddressFieldDetails;
+}
+
+module PotentialMatch {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class PotentialMatch extends GObject.Object {
+
+    // Own fields of Folks.PotentialMatch
+
+folks_potential_match_known_email_aliases: Gee.Set
+
+    // Constructors of Folks.PotentialMatch
+
+
+constructor(properties?: Partial<PotentialMatch.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): PotentialMatch;
+
+    // Own methods of Folks.PotentialMatch
+
+    potential_match(a: Individual, b: Individual): MatchResult
+}
+
+module Query {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+match_fields: string[];
+    matchFields: string[];
+    }
+
+}
+
+abstract class Query extends GObject.Object {
+
+    // Own properties of Folks.Query
+
+    get match_fields(): string[];
+    get matchFields(): string[];
+
+    // Constructors of Folks.Query
+
+
+constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own virtual methods of Folks.Query
+
+    vfunc_is_match(individual: Individual): number
+    vfunc_get_match_fields(): string[]
+
+    // Own methods of Folks.Query
+
+    is_match(individual: Individual): number
+    get_match_fields(): string[]
+}
+
+module Role {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+organisation_name: string;
+    organisationName: string;
+    title: string;
+    role: string;
+    uid: string;
+    }
+
+}
+
+class Role extends GObject.Object {
+
+    // Own properties of Folks.Role
+
+    get organisation_name(): string;
+    set organisation_name(val: string);
+    get organisationName(): string;
+    set organisationName(val: string);
+    get title(): string;
+    set title(val: string);
+    get role(): string;
+    set role(val: string);
+    get uid(): string;
+    set uid(val: string);
+
+    // Constructors of Folks.Role
+
+
+constructor(properties?: Partial<Role.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](title: string, organisation_name: string, uid: string): Role;
+
+    // Own static methods of Folks.Role
+
+    static equal(a: Role, b: Role): boolean
+    static hash(r: Role): number
+
+    // Own methods of Folks.Role
+
+    is_empty(): boolean
+    to_string(): string
+    get_organisation_name(): string
+    set_organisation_name(value: string): void
+    get_title(): string
+    set_title(value: string): void
+    get_role(): string
+    set_role(value: string): void
+    get_uid(): string
+    set_uid(value: string): void
+}
+
+module RoleFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
+    }
+
+}
+
+class RoleFieldDetails extends AbstractFieldDetails {
+
+    // Constructors of Folks.RoleFieldDetails
+
+
+constructor(properties?: Partial<RoleFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: Role, parameters: Gee.MultiMap): RoleFieldDetails;
+}
+
+module SearchView {
+
+    // Signal callback interfaces
+
+    interface IndividualsChangedDetailed {
+        (added: Gee.SortedSet, removed: Gee.SortedSet): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+aggregator: IndividualAggregator;
+    query: Query;
+    individuals: Gee.SortedSet;
+    is_prepared: boolean;
+    isPrepared: boolean;
+    is_quiescent: boolean;
+    isQuiescent: boolean;
+    }
+
+}
+
+class SearchView extends GObject.Object {
+
+    // Own properties of Folks.SearchView
+
+    get aggregator(): IndividualAggregator;
+    get query(): Query;
+    set query(val: Query);
+    get individuals(): Gee.SortedSet;
+    get is_prepared(): boolean;
+    get isPrepared(): boolean;
+    get is_quiescent(): boolean;
+    get isQuiescent(): boolean;
+
+    // Constructors of Folks.SearchView
+
+
+constructor(properties?: Partial<SearchView.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](aggregator: IndividualAggregator, query: Query): SearchView;
+
+    // Own signals of Folks.SearchView
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'individuals-changed-detailed', callback: ((_source: this, added: Gee.SortedSet, removed: Gee.SortedSet) => void)): number
+    connect_after(signal: 'individuals-changed-detailed', callback: ((_source: this, added: Gee.SortedSet, removed: Gee.SortedSet) => void)): number
+    emit(signal: 'individuals-changed-detailed', added: Gee.SortedSet, removed: Gee.SortedSet): void
+
+    // Own methods of Folks.SearchView
+
+    prepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    prepare_finish(_res_: Gio.AsyncResult): void
+    unprepare(_callback_: Gio.AsyncReadyCallback<this>): void
+    unprepare_finish(_res_: Gio.AsyncResult): void
+    refresh(_callback_: Gio.AsyncReadyCallback<this>): void
+    refresh_finish(_res_: Gio.AsyncResult): void
+    get_aggregator(): IndividualAggregator
+    get_query(): Query
+    set_query(value: Query): void
+    get_individuals(): Gee.SortedSet
+    get_is_prepared(): boolean
+    get_is_quiescent(): boolean
+}
+
+module SimpleQuery {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Query.ConstructorProps {
+query_string: string;
+    queryString: string;
+    query_locale: string;
+    queryLocale: string;
+    }
+
+}
+
+class SimpleQuery extends Query {
+
+    // Own properties of Folks.SimpleQuery
+
+    get query_string(): string;
+    set query_string(val: string);
+    get queryString(): string;
+    set queryString(val: string);
+    get query_locale(): string;
+    set query_locale(val: string);
+    get queryLocale(): string;
+    set queryLocale(val: string);
+
+    // Constructors of Folks.SimpleQuery
+
+
+constructor(properties?: Partial<SimpleQuery.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](query_string: string, match_fields: string[]): SimpleQuery;
+
+    // Own methods of Folks.SimpleQuery
+
+    get_query_string(): string
+    set_query_string(value: string): void
+    get_query_locale(): string
+    set_query_locale(value: string): void
+}
+
+module UrlFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
+    }
+
+}
+
+class UrlFieldDetails extends AbstractFieldDetails {
+
+    // Constructors of Folks.UrlFieldDetails
+
+
+constructor(properties?: Partial<UrlFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: string, parameters: Gee.MultiMap): UrlFieldDetails;
+}
+
+module Utils {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class Utils extends GObject.Object {
+
+    // Constructors of Folks.Utils
+
+
+constructor(properties?: Partial<Utils.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Utils;
+
+    // Own static methods of Folks.Utils
+
+    static multi_map_str_str_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean
+    static multi_map_str_afd_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean
+    static set_afd_equal(a: Gee.Set, b: Gee.Set): boolean
+    static set_string_afd_equal(a: Gee.Set, b: Gee.Set): boolean
+}
+
+module WebServiceFieldDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
+
+    }
+
+}
+
+class WebServiceFieldDetails extends AbstractFieldDetails {
+
+    // Constructors of Folks.WebServiceFieldDetails
+
+
+constructor(properties?: Partial<WebServiceFieldDetails.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: string, parameters: Gee.MultiMap): WebServiceFieldDetails;
+}
+
+type AbstractFieldDetailsClass = typeof AbstractFieldDetails
+abstract class AbstractFieldDetailsPrivate {
+
+    // Constructors of Folks.AbstractFieldDetailsPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type AvatarCacheClass = typeof AvatarCache
+abstract class AvatarCachePrivate {
+
+    // Constructors of Folks.AvatarCachePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type BackendStoreClass = typeof BackendStore
+abstract class BackendStorePrivate {
+
+    // Constructors of Folks.BackendStorePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type BackendClass = typeof Backend
+abstract class BackendPrivate {
+
+    // Constructors of Folks.BackendPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type DebugClass = typeof Debug
+abstract class DebugPrivate {
+
+    // Constructors of Folks.DebugPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type EmailFieldDetailsClass = typeof EmailFieldDetails
+abstract class EmailFieldDetailsPrivate {
+
+    // Constructors of Folks.EmailFieldDetailsPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type ExtendedFieldDetailsClass = typeof ExtendedFieldDetails
+abstract class ExtendedFieldDetailsPrivate {
+
+    // Constructors of Folks.ExtendedFieldDetailsPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type ImFieldDetailsClass = typeof ImFieldDetails
+abstract class ImFieldDetailsPrivate {
+
+    // Constructors of Folks.ImFieldDetailsPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type IndividualAggregatorClass = typeof IndividualAggregator
+abstract class IndividualAggregatorPrivate {
+
+    // Constructors of Folks.IndividualAggregatorPrivate
+
+_init(...args: any[]): void;
+
+}
 
-        prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        prepare_finish(_res_: Gio.AsyncResult): void;
-        unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
-        unprepare_finish(_res_: Gio.AsyncResult): void;
-        refresh(_callback_: Gio.AsyncReadyCallback<this>): void;
-        refresh_finish(_res_: Gio.AsyncResult): void;
-        get_aggregator(): IndividualAggregator;
-        get_query(): Query;
-        set_query(value: Query): void;
-        get_individuals(): Gee.SortedSet;
-        get_is_prepared(): boolean;
-        get_is_quiescent(): boolean;
-    }
+type IndividualClass = typeof Individual
+abstract class IndividualPrivate {
 
-    module SimpleQuery {
-        // Constructor properties interface
-    }
+    // Constructors of Folks.IndividualPrivate
 
-    class SimpleQuery extends Query {
-        // Own properties of Folks-0.6.SimpleQuery
+_init(...args: any[]): void;
 
-        query_string: string;
-        queryString: string;
-        query_locale: string;
-        queryLocale: string;
+}
 
-        // Constructors of Folks-0.6.SimpleQuery
+type LocationClass = typeof Location
+abstract class LocationPrivate {
 
-        static ['new'](query_string: string, match_fields: string[]): SimpleQuery;
+    // Constructors of Folks.LocationPrivate
 
-        // Owm methods of Folks-0.6.SimpleQuery
+_init(...args: any[]): void;
 
-        get_query_string(): string;
-        set_query_string(value: string): void;
-        get_query_locale(): string;
-        set_query_locale(value: string): void;
-    }
+}
 
-    module UrlFieldDetails {
-        // Constructor properties interface
-    }
+type StructuredNameClass = typeof StructuredName
+abstract class StructuredNamePrivate {
 
-    class UrlFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.UrlFieldDetails
+    // Constructors of Folks.StructuredNamePrivate
 
-        static ['new'](value: string, parameters: Gee.MultiMap): UrlFieldDetails;
-    }
+_init(...args: any[]): void;
 
-    module Utils {
-        // Constructor properties interface
-    }
+}
 
-    class Utils extends GObject.Object {
-        // Constructors of Folks-0.6.Utils
+type NoteFieldDetailsClass = typeof NoteFieldDetails
+abstract class NoteFieldDetailsPrivate {
 
-        static ['new'](): Utils;
+    // Constructors of Folks.NoteFieldDetailsPrivate
 
-        // Owm methods of Folks-0.6.Utils
+_init(...args: any[]): void;
 
-        static multi_map_str_str_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
-        static multi_map_str_afd_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
-        static set_afd_equal(a: Gee.Set, b: Gee.Set): boolean;
-        static set_string_afd_equal(a: Gee.Set, b: Gee.Set): boolean;
-    }
+}
 
-    module WebServiceFieldDetails {
-        // Constructor properties interface
-    }
+type ObjectCacheClass = typeof ObjectCache
+abstract class ObjectCachePrivate {
 
-    class WebServiceFieldDetails extends AbstractFieldDetails {
-        // Constructors of Folks-0.6.WebServiceFieldDetails
+    // Constructors of Folks.ObjectCachePrivate
 
-        static ['new'](value: string, parameters: Gee.MultiMap): WebServiceFieldDetails;
-    }
+_init(...args: any[]): void;
+
+}
 
-    class AbstractFieldDetailsClass {}
+type PersonaStoreClass = typeof PersonaStore
+abstract class PersonaStorePrivate {
 
-    class AbstractFieldDetailsPrivate {}
+    // Constructors of Folks.PersonaStorePrivate
 
-    class AvatarCacheClass {}
+_init(...args: any[]): void;
 
-    class AvatarCachePrivate {}
+}
 
-    class BackendStoreClass {}
+type PersonaClass = typeof Persona
+abstract class PersonaPrivate {
 
-    class BackendStorePrivate {}
+    // Constructors of Folks.PersonaPrivate
 
-    class BackendClass {}
+_init(...args: any[]): void;
 
-    class BackendPrivate {}
+}
 
-    class DebugClass {}
+type PhoneFieldDetailsClass = typeof PhoneFieldDetails
+abstract class PhoneFieldDetailsPrivate {
 
-    class DebugPrivate {}
+    // Constructors of Folks.PhoneFieldDetailsPrivate
 
-    class EmailFieldDetailsClass {}
+_init(...args: any[]): void;
 
-    class EmailFieldDetailsPrivate {}
+}
 
-    class ExtendedFieldDetailsClass {}
+type PostalAddressClass = typeof PostalAddress
+abstract class PostalAddressPrivate {
 
-    class ExtendedFieldDetailsPrivate {}
+    // Constructors of Folks.PostalAddressPrivate
 
-    class ImFieldDetailsClass {}
+_init(...args: any[]): void;
 
-    class ImFieldDetailsPrivate {}
+}
 
-    class IndividualAggregatorClass {}
+type PostalAddressFieldDetailsClass = typeof PostalAddressFieldDetails
+abstract class PostalAddressFieldDetailsPrivate {
 
-    class IndividualAggregatorPrivate {}
+    // Constructors of Folks.PostalAddressFieldDetailsPrivate
 
-    class IndividualClass {}
+_init(...args: any[]): void;
 
-    class IndividualPrivate {}
+}
 
-    class LocationClass {}
+type PotentialMatchClass = typeof PotentialMatch
+abstract class PotentialMatchPrivate {
 
-    class LocationPrivate {}
+    // Constructors of Folks.PotentialMatchPrivate
 
-    class StructuredNameClass {}
+_init(...args: any[]): void;
 
-    class StructuredNamePrivate {}
+}
 
-    class NoteFieldDetailsClass {}
+type QueryClass = typeof Query
+abstract class QueryPrivate {
 
-    class NoteFieldDetailsPrivate {}
+    // Constructors of Folks.QueryPrivate
 
-    class ObjectCacheClass {}
+_init(...args: any[]): void;
 
-    class ObjectCachePrivate {}
+}
 
-    class PersonaStoreClass {}
+type RoleClass = typeof Role
+abstract class RolePrivate {
 
-    class PersonaStorePrivate {}
+    // Constructors of Folks.RolePrivate
 
-    class PersonaClass {}
+_init(...args: any[]): void;
 
-    class PersonaPrivate {}
+}
 
-    class PhoneFieldDetailsClass {}
+type RoleFieldDetailsClass = typeof RoleFieldDetails
+abstract class RoleFieldDetailsPrivate {
 
-    class PhoneFieldDetailsPrivate {}
+    // Constructors of Folks.RoleFieldDetailsPrivate
 
-    class PostalAddressClass {}
+_init(...args: any[]): void;
 
-    class PostalAddressPrivate {}
+}
 
-    class PostalAddressFieldDetailsClass {}
+type SearchViewClass = typeof SearchView
+abstract class SearchViewPrivate {
 
-    class PostalAddressFieldDetailsPrivate {}
+    // Constructors of Folks.SearchViewPrivate
 
-    class PotentialMatchClass {}
+_init(...args: any[]): void;
 
-    class PotentialMatchPrivate {}
+}
 
-    class QueryClass {}
+type SimpleQueryClass = typeof SimpleQuery
+abstract class SimpleQueryPrivate {
 
-    class QueryPrivate {}
+    // Constructors of Folks.SimpleQueryPrivate
 
-    class RoleClass {}
+_init(...args: any[]): void;
 
-    class RolePrivate {}
+}
 
-    class RoleFieldDetailsClass {}
+type UrlFieldDetailsClass = typeof UrlFieldDetails
+abstract class UrlFieldDetailsPrivate {
 
-    class RoleFieldDetailsPrivate {}
+    // Constructors of Folks.UrlFieldDetailsPrivate
 
-    class SearchViewClass {}
+_init(...args: any[]): void;
 
-    class SearchViewPrivate {}
+}
 
-    class SimpleQueryClass {}
+type UtilsClass = typeof Utils
+abstract class UtilsPrivate {
 
-    class SimpleQueryPrivate {}
+    // Constructors of Folks.UtilsPrivate
 
-    class UrlFieldDetailsClass {}
+_init(...args: any[]): void;
 
-    class UrlFieldDetailsPrivate {}
+}
 
-    class UtilsClass {}
+type WebServiceFieldDetailsClass = typeof WebServiceFieldDetails
+abstract class WebServiceFieldDetailsPrivate {
 
-    class UtilsPrivate {}
+    // Constructors of Folks.WebServiceFieldDetailsPrivate
 
-    class WebServiceFieldDetailsClass {}
+_init(...args: any[]): void;
 
-    class WebServiceFieldDetailsPrivate {}
+}
 
-    class AliasDetailsIface {}
+type AliasDetailsIface = typeof AliasDetails
+type AntiLinkableIface = typeof AntiLinkable
+type AvatarDetailsIface = typeof AvatarDetails
+type BirthdayDetailsIface = typeof BirthdayDetails
+type EmailDetailsIface = typeof EmailDetails
+type ExtendedInfoIface = typeof ExtendedInfo
+type FavouriteDetailsIface = typeof FavouriteDetails
+type GenderDetailsIface = typeof GenderDetails
+type GroupDetailsIface = typeof GroupDetails
+type ImDetailsIface = typeof ImDetails
+type InteractionDetailsIface = typeof InteractionDetails
+type LocalIdDetailsIface = typeof LocalIdDetails
+type LocationDetailsIface = typeof LocationDetails
+type NameDetailsIface = typeof NameDetails
+type NoteDetailsIface = typeof NoteDetails
+type PhoneDetailsIface = typeof PhoneDetails
+type PostalAddressDetailsIface = typeof PostalAddressDetails
+type PresenceDetailsIface = typeof PresenceDetails
+type RoleDetailsIface = typeof RoleDetails
+type UrlDetailsIface = typeof UrlDetails
+type WebServiceDetailsIface = typeof WebServiceDetails
+module AliasDetails {
 
-    class AntiLinkableIface {}
+    // Constructor properties interface
 
-    class AvatarDetailsIface {}
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+alias: string;
+    }
+
+}
+
+export interface AliasDetailsNamespace {
+      $gtype: GObject.GType<AliasDetails>;
+      prototype: AliasDetails;
+      
+          
+      }
+interface AliasDetails extends GObject.Object {
 
-    class BirthdayDetailsIface {}
+    // Own properties of Folks.AliasDetails
 
-    class EmailDetailsIface {}
+    get alias(): string;
+    set alias(val: string);
 
-    class ExtendedInfoIface {}
+    // Own methods of Folks.AliasDetails
 
-    class FavouriteDetailsIface {}
+    change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_alias_finish(_res_: Gio.AsyncResult): void
+    get_alias(): string
+    set_alias(value: string): void
 
-    class GenderDetailsIface {}
+    // Own virtual methods of Folks.AliasDetails
 
-    class GroupDetailsIface {}
+    vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_alias_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_alias(): string
+    vfunc_set_alias(value: string): void
+}
 
-    class ImDetailsIface {}
 
-    class InteractionDetailsIface {}
 
-    class LocalIdDetailsIface {}
+export const AliasDetails: AliasDetailsNamespace;
 
-    class LocationDetailsIface {}
+module AntiLinkable {
 
-    class NameDetailsIface {}
+    // Constructor properties interface
 
-    class NoteDetailsIface {}
+    interface ConstructorProps extends Persona.ConstructorProps {
+anti_links: Gee.Set;
+    antiLinks: Gee.Set;
+    }
+
+}
 
-    class PhoneDetailsIface {}
+export interface AntiLinkableNamespace {
+      $gtype: GObject.GType<AntiLinkable>;
+      prototype: AntiLinkable;
+      
+          
+      }
+interface AntiLinkable extends Persona {
 
-    class PostalAddressDetailsIface {}
+    // Own properties of Folks.AntiLinkable
 
-    class PresenceDetailsIface {}
+    get anti_links(): Gee.Set;
+    set anti_links(val: Gee.Set);
+    get antiLinks(): Gee.Set;
+    set antiLinks(val: Gee.Set);
 
-    class RoleDetailsIface {}
+    // Own methods of Folks.AntiLinkable
 
-    class UrlDetailsIface {}
+    change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_anti_links_finish(_res_: Gio.AsyncResult): void
+    has_anti_link_with_persona(other_persona: Persona): boolean
+    add_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    add_anti_links_finish(_res_: Gio.AsyncResult): void
+    remove_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_anti_links_finish(_res_: Gio.AsyncResult): void
+    add_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void
+    add_global_anti_link_finish(_res_: Gio.AsyncResult): void
+    remove_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void
+    remove_global_anti_link_finish(_res_: Gio.AsyncResult): void
+    has_global_anti_link(): boolean
+    get_anti_links(): Gee.Set
+    set_anti_links(value: Gee.Set): void
 
-    class WebServiceDetailsIface {}
+    // Own virtual methods of Folks.AntiLinkable
 
-    interface AliasDetails {
-        // Own properties of Folks-0.6.AliasDetails
+    vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_anti_links(): Gee.Set
+    vfunc_set_anti_links(value: Gee.Set): void
+}
 
-        alias: string;
 
-        // Owm methods of Folks-0.6.AliasDetails
 
-        change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_alias_finish(_res_: Gio.AsyncResult): void;
-        get_alias(): string;
-        set_alias(value: string): void;
+export const AntiLinkable: AntiLinkableNamespace;
 
-        // Own virtual methods of Folks-0.6.AliasDetails
+module AvatarDetails {
 
-        vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_alias(): string;
-        vfunc_set_alias(value: string): void;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+avatar: Gio.LoadableIcon;
     }
 
-    interface AntiLinkable {
-        // Own properties of Folks-0.6.AntiLinkable
+}
 
-        anti_links: Gee.Set;
-        antiLinks: Gee.Set;
+export interface AvatarDetailsNamespace {
+      $gtype: GObject.GType<AvatarDetails>;
+      prototype: AvatarDetails;
+      
+          
+      }
+interface AvatarDetails extends GObject.Object {
 
-        // Owm methods of Folks-0.6.AntiLinkable
+    // Own properties of Folks.AvatarDetails
 
-        change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_anti_links_finish(_res_: Gio.AsyncResult): void;
-        has_anti_link_with_persona(other_persona: Persona): boolean;
-        add_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        add_anti_links_finish(_res_: Gio.AsyncResult): void;
-        remove_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_anti_links_finish(_res_: Gio.AsyncResult): void;
-        add_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
-        add_global_anti_link_finish(_res_: Gio.AsyncResult): void;
-        remove_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_global_anti_link_finish(_res_: Gio.AsyncResult): void;
-        has_global_anti_link(): boolean;
-        get_anti_links(): Gee.Set;
-        set_anti_links(value: Gee.Set): void;
+    get avatar(): Gio.LoadableIcon;
+    set avatar(val: Gio.LoadableIcon);
 
-        // Own virtual methods of Folks-0.6.AntiLinkable
+    // Own methods of Folks.AvatarDetails
 
-        vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_anti_links(): Gee.Set;
-        vfunc_set_anti_links(value: Gee.Set): void;
-    }
+    change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_avatar_finish(_res_: Gio.AsyncResult): void
+    get_avatar(): Gio.LoadableIcon
+    set_avatar(value: Gio.LoadableIcon): void
 
-    interface AvatarDetails {
-        // Own properties of Folks-0.6.AvatarDetails
+    // Own virtual methods of Folks.AvatarDetails
 
-        avatar: Gio.LoadableIcon;
+    vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_avatar(): Gio.LoadableIcon
+    vfunc_set_avatar(value: Gio.LoadableIcon): void
+}
 
-        // Owm methods of Folks-0.6.AvatarDetails
 
-        change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_avatar_finish(_res_: Gio.AsyncResult): void;
-        get_avatar(): Gio.LoadableIcon;
-        set_avatar(value: Gio.LoadableIcon): void;
 
-        // Own virtual methods of Folks-0.6.AvatarDetails
+export const AvatarDetails: AvatarDetailsNamespace;
 
-        vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_avatar(): Gio.LoadableIcon;
-        vfunc_set_avatar(value: Gio.LoadableIcon): void;
+module BirthdayDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+birthday: GLib.DateTime;
+    calendar_event_id: string;
+    calendarEventId: string;
     }
 
-    interface BirthdayDetails {
-        // Own properties of Folks-0.6.BirthdayDetails
+}
 
-        birthday: GLib.DateTime;
-        calendar_event_id: string;
-        calendarEventId: string;
+export interface BirthdayDetailsNamespace {
+      $gtype: GObject.GType<BirthdayDetails>;
+      prototype: BirthdayDetails;
+      
+          
+      }
+interface BirthdayDetails extends GObject.Object {
 
-        // Owm methods of Folks-0.6.BirthdayDetails
+    // Own properties of Folks.BirthdayDetails
 
-        change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_birthday_finish(_res_: Gio.AsyncResult): void;
-        change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
-        get_birthday(): GLib.DateTime;
-        set_birthday(value: GLib.DateTime): void;
-        get_calendar_event_id(): string;
-        set_calendar_event_id(value: string): void;
+    get birthday(): GLib.DateTime;
+    set birthday(val: GLib.DateTime);
+    get calendar_event_id(): string;
+    set calendar_event_id(val: string);
+    get calendarEventId(): string;
+    set calendarEventId(val: string);
 
-        // Own virtual methods of Folks-0.6.BirthdayDetails
+    // Own methods of Folks.BirthdayDetails
 
-        vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_birthday(): GLib.DateTime;
-        vfunc_set_birthday(value: GLib.DateTime): void;
-        vfunc_get_calendar_event_id(): string;
-        vfunc_set_calendar_event_id(value: string): void;
-    }
+    change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_birthday_finish(_res_: Gio.AsyncResult): void
+    change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_calendar_event_id_finish(_res_: Gio.AsyncResult): void
+    get_birthday(): GLib.DateTime
+    set_birthday(value: GLib.DateTime): void
+    get_calendar_event_id(): string
+    set_calendar_event_id(value: string): void
 
-    interface EmailDetails {
-        // Own properties of Folks-0.6.EmailDetails
+    // Own virtual methods of Folks.BirthdayDetails
 
-        email_addresses: Gee.Set;
-        emailAddresses: Gee.Set;
+    vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void
+    vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_birthday(): GLib.DateTime
+    vfunc_set_birthday(value: GLib.DateTime): void
+    vfunc_get_calendar_event_id(): string
+    vfunc_set_calendar_event_id(value: string): void
+}
 
-        // Owm methods of Folks-0.6.EmailDetails
 
-        change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_email_addresses_finish(_res_: Gio.AsyncResult): void;
-        get_email_addresses(): Gee.Set;
-        set_email_addresses(value: Gee.Set): void;
 
-        // Own virtual methods of Folks-0.6.EmailDetails
+export const BirthdayDetails: BirthdayDetailsNamespace;
 
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_email_addresses(): Gee.Set;
-        vfunc_set_email_addresses(value: Gee.Set): void;
+module EmailDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+email_addresses: Gee.Set;
+    emailAddresses: Gee.Set;
     }
+
+}
+
+export interface EmailDetailsNamespace {
+      $gtype: GObject.GType<EmailDetails>;
+      prototype: EmailDetails;
+      
+          
+      }
+interface EmailDetails extends GObject.Object {
 
-    interface ExtendedInfo {
-        // Owm methods of Folks-0.6.ExtendedInfo
+    // Own properties of Folks.EmailDetails
 
-        get_extended_field(name: string): ExtendedFieldDetails;
-        change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        change_extended_field_finish(_res_: Gio.AsyncResult): void;
-        remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+    get email_addresses(): Gee.Set;
+    set email_addresses(val: Gee.Set);
+    get emailAddresses(): Gee.Set;
+    set emailAddresses(val: Gee.Set);
 
-        // Own virtual methods of Folks-0.6.ExtendedInfo
+    // Own methods of Folks.EmailDetails
 
-        vfunc_get_extended_field(name: string): ExtendedFieldDetails;
-        vfunc_change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
-        vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+    change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_email_addresses_finish(_res_: Gio.AsyncResult): void
+    get_email_addresses(): Gee.Set
+    set_email_addresses(value: Gee.Set): void
+
+    // Own virtual methods of Folks.EmailDetails
+
+    vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_email_addresses(): Gee.Set
+    vfunc_set_email_addresses(value: Gee.Set): void
+}
+
+
+
+export const EmailDetails: EmailDetailsNamespace;
+
+module ExtendedInfo {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
+
+}
+
+export interface ExtendedInfoNamespace {
+      $gtype: GObject.GType<ExtendedInfo>;
+      prototype: ExtendedInfo;
+      
+          
+      }
+interface ExtendedInfo extends GObject.Object {
+
+    // Own methods of Folks.ExtendedInfo
+
+    get_extended_field(name: string): ExtendedFieldDetails
+    change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_extended_field_finish(_res_: Gio.AsyncResult): void
+    remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    remove_extended_field_finish(_res_: Gio.AsyncResult): void
+
+    // Own virtual methods of Folks.ExtendedInfo
 
-    interface FavouriteDetails {
-        // Own properties of Folks-0.6.FavouriteDetails
+    vfunc_get_extended_field(name: string): ExtendedFieldDetails
+    vfunc_change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void
+    vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void
+}
 
-        is_favourite: boolean;
-        isFavourite: boolean;
 
-        // Owm methods of Folks-0.6.FavouriteDetails
 
-        change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_is_favourite_finish(_res_: Gio.AsyncResult): void;
-        get_is_favourite(): boolean;
-        set_is_favourite(value: boolean): void;
+export const ExtendedInfo: ExtendedInfoNamespace;
 
-        // Own virtual methods of Folks-0.6.FavouriteDetails
+module FavouriteDetails {
 
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_is_favourite(): boolean;
-        vfunc_set_is_favourite(value: boolean): void;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+is_favourite: boolean;
+    isFavourite: boolean;
     }
+
+}
+
+export interface FavouriteDetailsNamespace {
+      $gtype: GObject.GType<FavouriteDetails>;
+      prototype: FavouriteDetails;
+      
+          
+      }
+interface FavouriteDetails extends GObject.Object {
+
+    // Own properties of Folks.FavouriteDetails
+
+    get is_favourite(): boolean;
+    set is_favourite(val: boolean);
+    get isFavourite(): boolean;
+    set isFavourite(val: boolean);
+
+    // Own methods of Folks.FavouriteDetails
+
+    change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_is_favourite_finish(_res_: Gio.AsyncResult): void
+    get_is_favourite(): boolean
+    set_is_favourite(value: boolean): void
 
-    interface GenderDetails {
-        // Own properties of Folks-0.6.GenderDetails
+    // Own virtual methods of Folks.FavouriteDetails
 
-        gender: Gender;
+    vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_is_favourite(): boolean
+    vfunc_set_is_favourite(value: boolean): void
+}
 
-        // Owm methods of Folks-0.6.GenderDetails
 
-        change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_gender_finish(_res_: Gio.AsyncResult): void;
-        get_gender(): Gender;
-        set_gender(value: Gender): void;
 
-        // Own virtual methods of Folks-0.6.GenderDetails
+export const FavouriteDetails: FavouriteDetailsNamespace;
 
-        vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_gender(): Gender;
-        vfunc_set_gender(value: Gender): void;
+module GenderDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+gender: Gender;
     }
+
+}
+
+export interface GenderDetailsNamespace {
+      $gtype: GObject.GType<GenderDetails>;
+      prototype: GenderDetails;
+      
+          
+      }
+interface GenderDetails extends GObject.Object {
+
+    // Own properties of Folks.GenderDetails
+
+    get gender(): Gender;
+    set gender(val: Gender);
+
+    // Own methods of Folks.GenderDetails
 
-    interface GroupDetails {
-        // Own properties of Folks-0.6.GroupDetails
+    change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_gender_finish(_res_: Gio.AsyncResult): void
+    get_gender(): Gender
+    set_gender(value: Gender): void
 
-        groups: Gee.Set;
+    // Own virtual methods of Folks.GenderDetails
 
-        // Owm methods of Folks-0.6.GroupDetails
+    vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_gender_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_gender(): Gender
+    vfunc_set_gender(value: Gender): void
+}
 
-        change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_group_finish(_res_: Gio.AsyncResult): void;
-        change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_groups_finish(_res_: Gio.AsyncResult): void;
-        get_groups(): Gee.Set;
-        set_groups(value: Gee.Set): void;
 
-        // Own virtual methods of Folks-0.6.GroupDetails
 
-        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_groups(): Gee.Set;
-        vfunc_set_groups(value: Gee.Set): void;
+export const GenderDetails: GenderDetailsNamespace;
+
+module GroupDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+groups: Gee.Set;
     }
+
+}
+
+export interface GroupDetailsNamespace {
+      $gtype: GObject.GType<GroupDetails>;
+      prototype: GroupDetails;
+      
+          
+      }
+interface GroupDetails extends GObject.Object {
+
+    // Own properties of Folks.GroupDetails
 
-    interface ImDetails {
-        // Own properties of Folks-0.6.ImDetails
+    get groups(): Gee.Set;
+    set groups(val: Gee.Set);
 
-        im_addresses: Gee.MultiMap;
-        imAddresses: Gee.MultiMap;
+    // Own methods of Folks.GroupDetails
 
-        // Owm methods of Folks-0.6.ImDetails
+    change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_group_finish(_res_: Gio.AsyncResult): void
+    change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_groups_finish(_res_: Gio.AsyncResult): void
+    get_groups(): Gee.Set
+    set_groups(value: Gee.Set): void
 
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_im_addresses_finish(_res_: Gio.AsyncResult): void;
-        get_im_addresses(): Gee.MultiMap;
-        set_im_addresses(value: Gee.MultiMap): void;
+    // Own virtual methods of Folks.GroupDetails
 
-        // Own virtual methods of Folks-0.6.ImDetails
+    vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_group_finish(_res_: Gio.AsyncResult): void
+    vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_groups_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_groups(): Gee.Set
+    vfunc_set_groups(value: Gee.Set): void
+}
 
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_im_addresses(): Gee.MultiMap;
-        vfunc_set_im_addresses(value: Gee.MultiMap): void;
+
+
+export const GroupDetails: GroupDetailsNamespace;
+
+module ImDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+im_addresses: Gee.MultiMap;
+    imAddresses: Gee.MultiMap;
     }
+
+}
+
+export interface ImDetailsNamespace {
+      $gtype: GObject.GType<ImDetails>;
+      prototype: ImDetails;
+      
+      normalise_im_address(im_address: string, protocol: string): string    
+      }
+interface ImDetails extends GObject.Object {
 
-    interface InteractionDetails {
-        // Own properties of Folks-0.6.InteractionDetails
+    // Own properties of Folks.ImDetails
 
-        readonly im_interaction_count: number;
-        readonly imInteractionCount: number;
-        readonly last_im_interaction_datetime: GLib.DateTime;
-        readonly lastImInteractionDatetime: GLib.DateTime;
-        readonly call_interaction_count: number;
-        readonly callInteractionCount: number;
-        readonly last_call_interaction_datetime: GLib.DateTime;
-        readonly lastCallInteractionDatetime: GLib.DateTime;
+    get im_addresses(): Gee.MultiMap;
+    set im_addresses(val: Gee.MultiMap);
+    get imAddresses(): Gee.MultiMap;
+    set imAddresses(val: Gee.MultiMap);
 
-        // Owm methods of Folks-0.6.InteractionDetails
+    // Own methods of Folks.ImDetails
 
-        get_im_interaction_count(): number;
-        get_last_im_interaction_datetime(): GLib.DateTime;
-        get_call_interaction_count(): number;
-        get_last_call_interaction_datetime(): GLib.DateTime;
+    change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_im_addresses_finish(_res_: Gio.AsyncResult): void
+    get_im_addresses(): Gee.MultiMap
+    set_im_addresses(value: Gee.MultiMap): void
 
-        // Own virtual methods of Folks-0.6.InteractionDetails
+    // Own virtual methods of Folks.ImDetails
 
-        vfunc_get_im_interaction_count(): number;
-        vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
-        vfunc_get_call_interaction_count(): number;
-        vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
+    vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_im_addresses(): Gee.MultiMap
+    vfunc_set_im_addresses(value: Gee.MultiMap): void
+}
+
+
+
+export const ImDetails: ImDetailsNamespace;
+
+module InteractionDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+im_interaction_count: number;
+    imInteractionCount: number;
+    last_im_interaction_datetime: GLib.DateTime;
+    lastImInteractionDatetime: GLib.DateTime;
+    call_interaction_count: number;
+    callInteractionCount: number;
+    last_call_interaction_datetime: GLib.DateTime;
+    lastCallInteractionDatetime: GLib.DateTime;
     }
+
+}
+
+export interface InteractionDetailsNamespace {
+      $gtype: GObject.GType<InteractionDetails>;
+      prototype: InteractionDetails;
+      
+          
+      }
+interface InteractionDetails extends GObject.Object {
+
+    // Own properties of Folks.InteractionDetails
+
+    get im_interaction_count(): number;
+    get imInteractionCount(): number;
+    get last_im_interaction_datetime(): GLib.DateTime;
+    get lastImInteractionDatetime(): GLib.DateTime;
+    get call_interaction_count(): number;
+    get callInteractionCount(): number;
+    get last_call_interaction_datetime(): GLib.DateTime;
+    get lastCallInteractionDatetime(): GLib.DateTime;
+
+    // Own methods of Folks.InteractionDetails
+
+    get_im_interaction_count(): number
+    get_last_im_interaction_datetime(): GLib.DateTime
+    get_call_interaction_count(): number
+    get_last_call_interaction_datetime(): GLib.DateTime
+
+    // Own virtual methods of Folks.InteractionDetails
+
+    vfunc_get_im_interaction_count(): number
+    vfunc_get_last_im_interaction_datetime(): GLib.DateTime
+    vfunc_get_call_interaction_count(): number
+    vfunc_get_last_call_interaction_datetime(): GLib.DateTime
+}
 
-    interface LocalIdDetails {
-        // Own properties of Folks-0.6.LocalIdDetails
 
-        local_ids: Gee.Set;
-        localIds: Gee.Set;
 
-        // Owm methods of Folks-0.6.LocalIdDetails
+export const InteractionDetails: InteractionDetailsNamespace;
 
-        change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_local_ids_finish(_res_: Gio.AsyncResult): void;
-        get_local_ids(): Gee.Set;
-        set_local_ids(value: Gee.Set): void;
+module LocalIdDetails {
 
-        // Own virtual methods of Folks-0.6.LocalIdDetails
+    // Constructor properties interface
 
-        vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_local_ids(): Gee.Set;
-        vfunc_set_local_ids(value: Gee.Set): void;
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+local_ids: Gee.Set;
+    localIds: Gee.Set;
     }
 
-    interface LocationDetails {
-        // Own properties of Folks-0.6.LocationDetails
+}
 
-        location: Location;
+export interface LocalIdDetailsNamespace {
+      $gtype: GObject.GType<LocalIdDetails>;
+      prototype: LocalIdDetails;
+      
+          
+      }
+interface LocalIdDetails extends GObject.Object {
 
-        // Owm methods of Folks-0.6.LocationDetails
+    // Own properties of Folks.LocalIdDetails
 
-        change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_location_finish(_res_: Gio.AsyncResult): void;
-        get_location(): Location;
-        set_location(value: Location): void;
+    get local_ids(): Gee.Set;
+    set local_ids(val: Gee.Set);
+    get localIds(): Gee.Set;
+    set localIds(val: Gee.Set);
 
-        // Own virtual methods of Folks-0.6.LocationDetails
+    // Own methods of Folks.LocalIdDetails
 
-        vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_location(): Location;
-        vfunc_set_location(value: Location): void;
+    change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_local_ids_finish(_res_: Gio.AsyncResult): void
+    get_local_ids(): Gee.Set
+    set_local_ids(value: Gee.Set): void
+
+    // Own virtual methods of Folks.LocalIdDetails
+
+    vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_local_ids(): Gee.Set
+    vfunc_set_local_ids(value: Gee.Set): void
+}
+
+
+
+export const LocalIdDetails: LocalIdDetailsNamespace;
+
+module LocationDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+location: Location;
     }
+
+}
+
+export interface LocationDetailsNamespace {
+      $gtype: GObject.GType<LocationDetails>;
+      prototype: LocationDetails;
+      
+          
+      }
+interface LocationDetails extends GObject.Object {
+
+    // Own properties of Folks.LocationDetails
+
+    get location(): Location;
+    set location(val: Location);
+
+    // Own methods of Folks.LocationDetails
+
+    change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_location_finish(_res_: Gio.AsyncResult): void
+    get_location(): Location
+    set_location(value: Location): void
 
-    interface NameDetails {
-        // Own properties of Folks-0.6.NameDetails
+    // Own virtual methods of Folks.LocationDetails
 
-        structured_name: StructuredName;
-        structuredName: StructuredName;
-        full_name: string;
-        fullName: string;
-        nickname: string;
+    vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_location_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_location(): Location
+    vfunc_set_location(value: Location): void
+}
 
-        // Owm methods of Folks-0.6.NameDetails
 
-        change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_structured_name_finish(_res_: Gio.AsyncResult): void;
-        change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_full_name_finish(_res_: Gio.AsyncResult): void;
-        change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_nickname_finish(_res_: Gio.AsyncResult): void;
-        get_structured_name(): StructuredName;
-        set_structured_name(value: StructuredName): void;
-        get_full_name(): string;
-        set_full_name(value: string): void;
-        get_nickname(): string;
-        set_nickname(value: string): void;
 
-        // Own virtual methods of Folks-0.6.NameDetails
+export const LocationDetails: LocationDetailsNamespace;
 
-        vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void;
-        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_structured_name(): StructuredName;
-        vfunc_set_structured_name(value: StructuredName): void;
-        vfunc_get_full_name(): string;
-        vfunc_set_full_name(value: string): void;
-        vfunc_get_nickname(): string;
-        vfunc_set_nickname(value: string): void;
+module NameDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+structured_name: StructuredName;
+    structuredName: StructuredName;
+    full_name: string;
+    fullName: string;
+    nickname: string;
     }
+
+}
+
+export interface NameDetailsNamespace {
+      $gtype: GObject.GType<NameDetails>;
+      prototype: NameDetails;
+      
+          
+      }
+interface NameDetails extends GObject.Object {
+
+    // Own properties of Folks.NameDetails
+
+    get structured_name(): StructuredName;
+    set structured_name(val: StructuredName);
+    get structuredName(): StructuredName;
+    set structuredName(val: StructuredName);
+    get full_name(): string;
+    set full_name(val: string);
+    get fullName(): string;
+    set fullName(val: string);
+    get nickname(): string;
+    set nickname(val: string);
+
+    // Own methods of Folks.NameDetails
 
-    interface NoteDetails {
-        // Own properties of Folks-0.6.NoteDetails
+    change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_structured_name_finish(_res_: Gio.AsyncResult): void
+    change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_full_name_finish(_res_: Gio.AsyncResult): void
+    change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_nickname_finish(_res_: Gio.AsyncResult): void
+    get_structured_name(): StructuredName
+    set_structured_name(value: StructuredName): void
+    get_full_name(): string
+    set_full_name(value: string): void
+    get_nickname(): string
+    set_nickname(value: string): void
 
-        notes: Gee.Set;
+    // Own virtual methods of Folks.NameDetails
 
-        // Owm methods of Folks-0.6.NoteDetails
+    vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void
+    vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void
+    vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_structured_name(): StructuredName
+    vfunc_set_structured_name(value: StructuredName): void
+    vfunc_get_full_name(): string
+    vfunc_set_full_name(value: string): void
+    vfunc_get_nickname(): string
+    vfunc_set_nickname(value: string): void
+}
 
-        change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_notes_finish(_res_: Gio.AsyncResult): void;
-        get_notes(): Gee.Set;
-        set_notes(value: Gee.Set): void;
 
-        // Own virtual methods of Folks-0.6.NoteDetails
 
-        vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_notes(): Gee.Set;
-        vfunc_set_notes(value: Gee.Set): void;
+export const NameDetails: NameDetailsNamespace;
+
+module NoteDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+notes: Gee.Set;
     }
+
+}
+
+export interface NoteDetailsNamespace {
+      $gtype: GObject.GType<NoteDetails>;
+      prototype: NoteDetails;
+      
+          
+      }
+interface NoteDetails extends GObject.Object {
+
+    // Own properties of Folks.NoteDetails
+
+    get notes(): Gee.Set;
+    set notes(val: Gee.Set);
 
-    interface PhoneDetails {
-        // Own properties of Folks-0.6.PhoneDetails
+    // Own methods of Folks.NoteDetails
 
-        phone_numbers: Gee.Set;
-        phoneNumbers: Gee.Set;
+    change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_notes_finish(_res_: Gio.AsyncResult): void
+    get_notes(): Gee.Set
+    set_notes(value: Gee.Set): void
 
-        // Owm methods of Folks-0.6.PhoneDetails
+    // Own virtual methods of Folks.NoteDetails
 
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
-        get_phone_numbers(): Gee.Set;
-        set_phone_numbers(value: Gee.Set): void;
+    vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_notes_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_notes(): Gee.Set
+    vfunc_set_notes(value: Gee.Set): void
+}
 
-        // Own virtual methods of Folks-0.6.PhoneDetails
 
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_phone_numbers(): Gee.Set;
-        vfunc_set_phone_numbers(value: Gee.Set): void;
+
+export const NoteDetails: NoteDetailsNamespace;
+
+module PhoneDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+phone_numbers: Gee.Set;
+    phoneNumbers: Gee.Set;
     }
+
+}
+
+export interface PhoneDetailsNamespace {
+      $gtype: GObject.GType<PhoneDetails>;
+      prototype: PhoneDetails;
+      
+          
+      }
+interface PhoneDetails extends GObject.Object {
 
-    interface PostalAddressDetails {
-        // Own properties of Folks-0.6.PostalAddressDetails
+    // Own properties of Folks.PhoneDetails
 
-        postal_addresses: Gee.Set;
-        postalAddresses: Gee.Set;
+    get phone_numbers(): Gee.Set;
+    set phone_numbers(val: Gee.Set);
+    get phoneNumbers(): Gee.Set;
+    set phoneNumbers(val: Gee.Set);
 
-        // Owm methods of Folks-0.6.PostalAddressDetails
+    // Own methods of Folks.PhoneDetails
 
-        change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
-        get_postal_addresses(): Gee.Set;
-        set_postal_addresses(value: Gee.Set): void;
+    change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_phone_numbers_finish(_res_: Gio.AsyncResult): void
+    get_phone_numbers(): Gee.Set
+    set_phone_numbers(value: Gee.Set): void
 
-        // Own virtual methods of Folks-0.6.PostalAddressDetails
+    // Own virtual methods of Folks.PhoneDetails
 
-        vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_postal_addresses(): Gee.Set;
-        vfunc_set_postal_addresses(value: Gee.Set): void;
+    vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_phone_numbers(): Gee.Set
+    vfunc_set_phone_numbers(value: Gee.Set): void
+}
+
+
+
+export const PhoneDetails: PhoneDetailsNamespace;
+
+module PostalAddressDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+postal_addresses: Gee.Set;
+    postalAddresses: Gee.Set;
     }
+
+}
 
-    interface PresenceDetails {
-        // Own properties of Folks-0.6.PresenceDetails
+export interface PostalAddressDetailsNamespace {
+      $gtype: GObject.GType<PostalAddressDetails>;
+      prototype: PostalAddressDetails;
+      
+          
+      }
+interface PostalAddressDetails extends GObject.Object {
 
-        presence_type: PresenceType;
-        presenceType: PresenceType;
-        presence_message: string;
-        presenceMessage: string;
-        client_types: string[];
-        clientTypes: string[];
-        presence_status: string;
-        presenceStatus: string;
+    // Own properties of Folks.PostalAddressDetails
 
-        // Owm methods of Folks-0.6.PresenceDetails
+    get postal_addresses(): Gee.Set;
+    set postal_addresses(val: Gee.Set);
+    get postalAddresses(): Gee.Set;
+    set postalAddresses(val: Gee.Set);
 
-        is_online(): boolean;
-        get_presence_type(): PresenceType;
-        set_presence_type(value: PresenceType): void;
-        get_presence_message(): string;
-        set_presence_message(value: string): void;
-        get_client_types(): string[];
-        set_client_types(value: string[]): void;
-        get_presence_status(): string;
-        set_presence_status(value: string): void;
+    // Own methods of Folks.PostalAddressDetails
 
-        // Own virtual methods of Folks-0.6.PresenceDetails
+    change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_postal_addresses_finish(_res_: Gio.AsyncResult): void
+    get_postal_addresses(): Gee.Set
+    set_postal_addresses(value: Gee.Set): void
 
-        vfunc_get_presence_type(): PresenceType;
-        vfunc_set_presence_type(value: PresenceType): void;
-        vfunc_get_presence_message(): string;
-        vfunc_set_presence_message(value: string): void;
-        vfunc_get_client_types(): string[];
-        vfunc_set_client_types(value: string[]): void;
-        vfunc_get_presence_status(): string;
-        vfunc_set_presence_status(value: string): void;
+    // Own virtual methods of Folks.PostalAddressDetails
+
+    vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_postal_addresses(): Gee.Set
+    vfunc_set_postal_addresses(value: Gee.Set): void
+}
+
+
+
+export const PostalAddressDetails: PostalAddressDetailsNamespace;
+
+module PresenceDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+presence_type: PresenceType;
+    presenceType: PresenceType;
+    presence_message: string;
+    presenceMessage: string;
+    client_types: string[];
+    clientTypes: string[];
+    presence_status: string;
+    presenceStatus: string;
     }
+
+}
+
+export interface PresenceDetailsNamespace {
+      $gtype: GObject.GType<PresenceDetails>;
+      prototype: PresenceDetails;
+      
+      get_default_message_from_type(type: PresenceType): string
+typecmp(type_a: PresenceType, type_b: PresenceType): number    
+      }
+interface PresenceDetails extends GObject.Object {
+
+    // Own properties of Folks.PresenceDetails
+
+    get presence_type(): PresenceType;
+    set presence_type(val: PresenceType);
+    get presenceType(): PresenceType;
+    set presenceType(val: PresenceType);
+    get presence_message(): string;
+    set presence_message(val: string);
+    get presenceMessage(): string;
+    set presenceMessage(val: string);
+    get client_types(): string[];
+    set client_types(val: string[]);
+    get clientTypes(): string[];
+    set clientTypes(val: string[]);
+    get presence_status(): string;
+    set presence_status(val: string);
+    get presenceStatus(): string;
+    set presenceStatus(val: string);
+
+    // Own methods of Folks.PresenceDetails
+
+    is_online(): boolean
+    get_presence_type(): PresenceType
+    set_presence_type(value: PresenceType): void
+    get_presence_message(): string
+    set_presence_message(value: string): void
+    get_client_types(): string[]
+    set_client_types(value: string[]): void
+    get_presence_status(): string
+    set_presence_status(value: string): void
+
+    // Own virtual methods of Folks.PresenceDetails
 
-    interface RoleDetails {
-        // Own properties of Folks-0.6.RoleDetails
+    vfunc_get_presence_type(): PresenceType
+    vfunc_set_presence_type(value: PresenceType): void
+    vfunc_get_presence_message(): string
+    vfunc_set_presence_message(value: string): void
+    vfunc_get_client_types(): string[]
+    vfunc_set_client_types(value: string[]): void
+    vfunc_get_presence_status(): string
+    vfunc_set_presence_status(value: string): void
+}
 
-        roles: Gee.Set;
 
-        // Owm methods of Folks-0.6.RoleDetails
 
-        change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_roles_finish(_res_: Gio.AsyncResult): void;
-        get_roles(): Gee.Set;
-        set_roles(value: Gee.Set): void;
+export const PresenceDetails: PresenceDetailsNamespace;
 
-        // Own virtual methods of Folks-0.6.RoleDetails
+module RoleDetails {
 
-        vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_roles(): Gee.Set;
-        vfunc_set_roles(value: Gee.Set): void;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+roles: Gee.Set;
     }
+
+}
+
+export interface RoleDetailsNamespace {
+      $gtype: GObject.GType<RoleDetails>;
+      prototype: RoleDetails;
+      
+          
+      }
+interface RoleDetails extends GObject.Object {
+
+    // Own properties of Folks.RoleDetails
+
+    get roles(): Gee.Set;
+    set roles(val: Gee.Set);
+
+    // Own methods of Folks.RoleDetails
+
+    change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_roles_finish(_res_: Gio.AsyncResult): void
+    get_roles(): Gee.Set
+    set_roles(value: Gee.Set): void
 
-    interface UrlDetails {
-        // Own properties of Folks-0.6.UrlDetails
+    // Own virtual methods of Folks.RoleDetails
 
-        urls: Gee.Set;
+    vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_roles_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_roles(): Gee.Set
+    vfunc_set_roles(value: Gee.Set): void
+}
 
-        // Owm methods of Folks-0.6.UrlDetails
 
-        change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        change_urls_finish(_res_: Gio.AsyncResult): void;
-        get_urls(): Gee.Set;
-        set_urls(value: Gee.Set): void;
 
-        // Own virtual methods of Folks-0.6.UrlDetails
+export const RoleDetails: RoleDetailsNamespace;
 
-        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_urls(): Gee.Set;
-        vfunc_set_urls(value: Gee.Set): void;
+module UrlDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+urls: Gee.Set;
     }
+
+}
+
+export interface UrlDetailsNamespace {
+      $gtype: GObject.GType<UrlDetails>;
+      prototype: UrlDetails;
+      
+          
+      }
+interface UrlDetails extends GObject.Object {
+
+    // Own properties of Folks.UrlDetails
+
+    get urls(): Gee.Set;
+    set urls(val: Gee.Set);
+
+    // Own methods of Folks.UrlDetails
 
-    interface WebServiceDetails {
-        // Own properties of Folks-0.6.WebServiceDetails
+    change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_urls_finish(_res_: Gio.AsyncResult): void
+    get_urls(): Gee.Set
+    set_urls(value: Gee.Set): void
 
-        web_service_addresses: Gee.MultiMap;
-        webServiceAddresses: Gee.MultiMap;
+    // Own virtual methods of Folks.UrlDetails
 
-        // Owm methods of Folks-0.6.WebServiceDetails
+    vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_urls_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_urls(): Gee.Set
+    vfunc_set_urls(value: Gee.Set): void
+}
 
-        change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
-        get_web_service_addresses(): Gee.MultiMap;
-        set_web_service_addresses(value: Gee.MultiMap): void;
 
-        // Own virtual methods of Folks-0.6.WebServiceDetails
 
-        vfunc_change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_web_service_addresses(): Gee.MultiMap;
-        vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
+export const UrlDetails: UrlDetailsNamespace;
+
+module WebServiceDetails {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+web_service_addresses: Gee.MultiMap;
+    webServiceAddresses: Gee.MultiMap;
     }
+
+}
+
+export interface WebServiceDetailsNamespace {
+      $gtype: GObject.GType<WebServiceDetails>;
+      prototype: WebServiceDetails;
+      
+          
+      }
+interface WebServiceDetails extends GObject.Object {
+
+    // Own properties of Folks.WebServiceDetails
+
+    get web_service_addresses(): Gee.MultiMap;
+    set web_service_addresses(val: Gee.MultiMap);
+    get webServiceAddresses(): Gee.MultiMap;
+    set webServiceAddresses(val: Gee.MultiMap);
+
+    // Own methods of Folks.WebServiceDetails
+
+    change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+    change_web_service_addresses_finish(_res_: Gio.AsyncResult): void
+    get_web_service_addresses(): Gee.MultiMap
+    set_web_service_addresses(value: Gee.MultiMap): void
+
+    // Own virtual methods of Folks.WebServiceDetails
+
+    vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_web_service_addresses(): Gee.MultiMap
+    vfunc_set_web_service_addresses(value: Gee.MultiMap): void
+}
+
+
+
+export const WebServiceDetails: WebServiceDetailsNamespace;
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Folks;

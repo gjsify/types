@@ -5,8 +5,7 @@ declare module 'gi://GFBGraph?version=0.3' {
 }
 
 declare module 'gi://GFBGraph' {
-    import GFBGraph03 from '@girs/gfbgraph-0.3';
-    export default GFBGraph03;
+    export * from 'gi://GFBGraph?version=0.3';
 }
 
 

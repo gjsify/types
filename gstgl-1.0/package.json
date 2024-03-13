@@ -27,9 +27,6 @@
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
         "@girs/gst-1.0": "workspace:^",
         "@girs/gstbase-1.0": "workspace:^",
         "@girs/gstvideo-1.0": "workspace:^"

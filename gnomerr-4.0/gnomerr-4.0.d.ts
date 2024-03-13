@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,389 +27,1017 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 
 export namespace GnomeRR {
-    enum DpmsMode {
-        ON,
-        STANDBY,
-        SUSPEND,
-        OFF,
-        UNKNOWN,
+
+enum DpmsMode {
+    ON,
+    STANDBY,
+    SUSPEND,
+    OFF,
+    UNKNOWN,
+}
+enum DpmsModeType {
+    ON,
+    STANDBY,
+    SUSPEND,
+    OFF,
+    UNKNOWN,
+}
+class Error extends GLib.Error {
+
+    // Static fields of GnomeRR.Error
+
+static UNKNOWN: number
+static NO_RANDR_EXTENSION: number
+static RANDR_ERROR: number
+static BOUNDS_ERROR: number
+static CRTC_ASSIGNMENT: number
+static NO_MATCHING_CONFIG: number
+static NO_DPMS_EXTENSION: number
+
+    // Constructors of GnomeRR.Error
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+}
+
+const CONNECTOR_TYPE_PANEL: string
+/**
+ * Returns the error domain used by the GnomeRR API.
+ * @returns the GnomeRR error domain
+ */
+function error_quark(): GLib.Quark
+enum Rotation {
+    ROTATION_NEXT,
+    ROTATION_0,
+    ROTATION_90,
+    ROTATION_180,
+    ROTATION_270,
+    REFLECT_X,
+    REFLECT_Y,
+}
+module Config {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+screen: Screen;
     }
-    enum DpmsModeType {
-        ON,
-        STANDBY,
-        SUSPEND,
-        OFF,
-        UNKNOWN,
+
+}
+
+class Config extends GObject.Object {
+
+    // Own properties of GnomeRR.Config
+
+    set screen(val: Screen);
+
+    // Constructors of GnomeRR.Config
+
+
+constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static new_current(screen: Screen): Config;
+
+    // Own methods of GnomeRR.Config
+
+    applicable(screen: Screen): boolean
+    apply(screen: Screen): boolean
+    apply_persistent(screen: Screen): boolean
+    ensure_primary(): boolean
+    equal(config2: Config): boolean
+    get_clone(): boolean
+    get_outputs(): OutputInfo[]
+    load_current(): boolean
+    match(config2: Config): boolean
+    sanitize(): void
+    set_clone(clone: boolean): void
+}
+
+module OutputInfo {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
-    class Error extends GLib.Error {
-        // Own fields of GnomeRR-4.0.Error
 
-        UNKNOWN: number;
-        NO_RANDR_EXTENSION: number;
-        RANDR_ERROR: number;
-        BOUNDS_ERROR: number;
-        CRTC_ASSIGNMENT: number;
-        NO_MATCHING_CONFIG: number;
-        NO_DPMS_EXTENSION: number;
+}
 
-        // Constructors of GnomeRR-4.0.Error
+/**
+ * The representation of an output, which can be used for
+ * querying and setting display state.
+ */
+class OutputInfo extends GObject.Object {
 
-        constructor(options: { message: string; code: number });
-    }
+    // Constructors of GnomeRR.OutputInfo
 
-    const CONNECTOR_TYPE_PANEL: string;
+
+constructor(properties?: Partial<OutputInfo.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of GnomeRR.OutputInfo
+
+    get_aspect_ratio(): number
+    get_display_name(): string
     /**
-     * Returns the error domain used by the GnomeRR API.
-     * @returns the GnomeRR error domain
+     * Get the geometry for the monitor connected to the specified output.
+     * 
+     * If the monitor is a tiled monitor, it returns the geometry for the complete monitor.
      */
-    function error_quark(): GLib.Quark;
-    enum Rotation {
-        ROTATION_NEXT,
-        ROTATION_0,
-        ROTATION_90,
-        ROTATION_180,
-        ROTATION_270,
-        REFLECT_X,
-        REFLECT_Y,
-    }
-    module Config {
-        // Constructor properties interface
-    }
-
-    class Config extends GObject.Object {
-        // Own properties of GnomeRR-4.0.Config
-
-        screen: Screen;
-
-        // Constructors of GnomeRR-4.0.Config
-
-        static new_current(screen: Screen): Config;
-
-        // Owm methods of GnomeRR-4.0.Config
-
-        applicable(screen: Screen): boolean;
-        apply(screen: Screen): boolean;
-        apply_persistent(screen: Screen): boolean;
-        ensure_primary(): boolean;
-        equal(config2: Config): boolean;
-        get_clone(): boolean;
-        get_outputs(): OutputInfo[];
-        load_current(): boolean;
-        match(config2: Config): boolean;
-        sanitize(): void;
-        set_clone(clone: boolean): void;
-    }
-
-    module OutputInfo {
-        // Constructor properties interface
-    }
-
+    get_geometry(): [number, number, number, number]
     /**
-     * The representation of an output, which can be used for
-     * querying and setting display state.
+     * Retrieves the output name.
+     * @returns the output name
      */
-    class OutputInfo extends GObject.Object {
-        // Owm methods of GnomeRR-4.0.OutputInfo
+    get_name(): string
+    get_preferred_height(): number
+    get_preferred_width(): number
+    get_primary(): boolean
+    get_product(): string
+    get_refresh_rate(): number
+    get_rotation(): Rotation
+    get_serial(): string
+    get_underscanning(): boolean
+    get_vendor(): string
+    is_active(): boolean
+    is_connected(): boolean
+    is_primary_tile(): boolean
+    set_active(active: boolean): void
+    /**
+     * Set the geometry for the monitor connected to the specified output.
+     * 
+     * If the monitor is a tiled monitor, it sets the geometry for the complete monitor.
+     * @param x x offset for monitor
+     * @param y y offset for monitor
+     * @param width monitor width
+     * @param height monitor height
+     */
+    set_geometry(x: number, y: number, width: number, height: number): void
+    set_primary(primary: boolean): void
+    set_refresh_rate(rate: number): void
+    set_rotation(rotation: Rotation): void
+    set_underscanning(underscanning: boolean): void
+    supports_rotation(rotation: Rotation): boolean
+}
 
-        get_aspect_ratio(): number;
-        get_display_name(): string;
-        /**
-         * Get the geometry for the monitor connected to the specified output.
-         *
-         * If the monitor is a tiled monitor, it returns the geometry for the complete monitor.
-         */
-        get_geometry(): void;
-        /**
-         * Retrieves the output name.
-         * @returns the output name
-         */
-        get_name(): string;
-        get_preferred_height(): number;
-        get_preferred_width(): number;
-        get_primary(): boolean;
-        get_product(): string;
-        get_refresh_rate(): number;
-        get_rotation(): Rotation;
-        get_serial(): string;
-        get_underscanning(): boolean;
-        get_vendor(): string;
-        is_active(): boolean;
-        is_connected(): boolean;
-        is_primary_tile(): boolean;
-        set_active(active: boolean): void;
-        /**
-         * Set the geometry for the monitor connected to the specified output.
-         *
-         * If the monitor is a tiled monitor, it sets the geometry for the complete monitor.
-         * @param x x offset for monitor
-         * @param y y offset for monitor
-         * @param width monitor width
-         * @param height monitor height
-         */
-        set_geometry(x: number, y: number, width: number, height: number): void;
-        set_primary(primary: boolean): void;
-        set_refresh_rate(rate: number): void;
-        set_rotation(rotation: Rotation): void;
-        set_underscanning(underscanning: boolean): void;
-        supports_rotation(rotation: Rotation): boolean;
+module Screen {
+
+    // Signal callback interfaces
+
+    interface Changed {
+        (): void
     }
 
-    module Screen {
-        // Signal callback interfaces
-
-        interface Changed {
-            (): void;
-        }
-
-        interface OutputConnected {
-            (output: Output): void;
-        }
-
-        interface OutputDisconnected {
-            (output: Output): void;
-        }
-
-        // Constructor properties interface
+    interface OutputConnected {
+        (output: Output): void
     }
 
-    class Screen extends GObject.Object {
-        // Own properties of GnomeRR-4.0.Screen
-
-        dpms_mode: DpmsModeType;
-        dpmsMode: DpmsModeType;
-        gdk_display: Gdk.Display;
-        gdkDisplay: Gdk.Display;
-
-        // Constructors of GnomeRR-4.0.Screen
-
-        static ['new'](display: Gdk.Display): Screen;
-
-        static new_finish(result: Gio.AsyncResult): Screen;
-
-        // Owm methods of GnomeRR-4.0.Screen
-
-        /**
-         * Asynchronously creates a new #GnomeRRScreen instance.
-         *
-         * On both success and error, `callback` will be invoked. You should use
-         * gnome_rr_screen_new_finish() to retrieve the newly created #GnomeRRScreen
-         * instance.
-         * @param display the windowing system connection used to query the display
-         * @param callback the function to call when the #GnomeRRScreen is ready, or on error
-         */
-        static new_async(display: Gdk.Display, callback?: Gio.AsyncReadyCallback<Screen> | null): void;
-
-        // Owm methods of GnomeRR-4.0.Screen
-
-        /**
-         * Retrieves the CRTC of the screen using the given identifier.
-         * @param id the identifier of a CRTC
-         * @returns the CRTC identified by @id
-         */
-        get_crtc_by_id(id: number): Crtc;
-        get_dpms_mode(): boolean;
-        /**
-         * Retrieves the output of a screen using the given identifier.
-         * @param id the identifier of an output
-         * @returns the output identified by @id
-         */
-        get_output_by_id(id: number): Output;
-        /**
-         * Retrieves the output for the given name.
-         * @param name
-         * @returns the output identified by @name
-         */
-        get_output_by_name(name: string): Output;
-        /**
-         * Get the ranges of the screen
-         */
-        get_ranges(): void;
-        /**
-         * Lists all available XRandR clone modes.
-         * @returns the available XRandR clone modes
-         */
-        list_clone_modes(): Mode[];
-        /**
-         * List all CRTCs of the given screen.
-         * @returns the available CRTCs
-         */
-        list_crtcs(): Crtc[];
-        /**
-         * Lists all available XRandR modes.
-         * @returns the available XRandR modes
-         */
-        list_modes(): Mode[];
-        /**
-         * List all outputs of the given screen.
-         * @returns the available outputs
-         */
-        list_outputs(): Output[];
-        /**
-         * Refreshes the screen configuration, and calls the screen's callback if it
-         * exists and if the screen's configuration changed.
-         * @returns TRUE if the screen's configuration changed; otherwise, the function returns FALSE and a NULL error if the configuration didn't change, or FALSE and a non-NULL error if there was an error while refreshing the configuration.
-         */
-        refresh(): boolean;
-        /**
-         * This method also disables the DPMS timeouts.
-         * @param mode
-         */
-        set_dpms_mode(mode: DpmsMode): boolean;
+    interface OutputDisconnected {
+        (output: Output): void
     }
 
-    class CTM {
-        // Constructors of GnomeRR-4.0.CTM
 
-        constructor(properties?: Partial<{}>);
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
+dpms_mode: DpmsModeType;
+    dpmsMode: DpmsModeType;
+    gdk_display: Gdk.Display;
+    gdkDisplay: Gdk.Display;
     }
 
-    class ConfigClass {}
+}
 
-    class Crtc {
-        // Owm methods of GnomeRR-4.0.Crtc
+class Screen extends GObject.Object implements Gio.AsyncInitable<Screen>, Gio.Initable {
 
-        can_drive_output(output: Output): boolean;
-        get_current_mode(): Mode;
-        get_current_rotation(): Rotation;
-        get_gamma(size: number): boolean;
-        get_id(): number;
-        get_position(): void;
-        get_rotations(): Rotation;
-        set_gamma(size: number, red: number, green: number, blue: number): boolean;
-        supports_rotation(rotation: Rotation): boolean;
-    }
+    // Own properties of GnomeRR.Screen
 
-    class Mode {
-        // Owm methods of GnomeRR-4.0.Mode
+    get dpms_mode(): DpmsModeType;
+    set dpms_mode(val: DpmsModeType);
+    get dpmsMode(): DpmsModeType;
+    set dpmsMode(val: DpmsModeType);
+    get gdk_display(): Gdk.Display;
+    get gdkDisplay(): Gdk.Display;
 
-        get_freq(): number;
-        get_freq_f(): number;
-        get_height(): number;
-        get_id(): number;
-        get_is_interlaced(): boolean;
-        /**
-         * Returns TRUE if this mode is a tiled
-         * mode created for span a tiled monitor.
-         */
-        get_is_tiled(): boolean;
-        get_width(): number;
-    }
+    // Constructors of GnomeRR.Screen
 
-    class Output {
-        // Owm methods of GnomeRR-4.0.Output
 
-        /**
-         * Checks whether the given output can clone another output.
-         * @param clone the output to compare
-         * @returns `TRUE` if the output can clone another output
-         */
-        can_clone(clone: Output): boolean;
-        /**
-         * Retrieves the backlight brightness of the given output.
-         * @returns The currently set backlight brightness
-         */
-        get_backlight(): number;
-        /**
-         * Retrieves the CRTC of the given output.
-         * @returns the CRTC of the output
-         */
-        get_crtc(): Crtc;
-        /**
-         * Retrieves the current mode of the given output.
-         * @returns the current mode of this output
-         */
-        get_current_mode(): Mode;
-        /**
-         * Retrieves the display name of the given output.
-         * @returns the display name
-         */
-        get_display_name(): string;
-        get_edid_data(size: number): number;
-        get_id(): number;
-        /**
-         * Retrieves the model identifiers from the EDID of the given output.
-         */
-        get_ids_from_edid(): void;
-        /**
-         * Checks whether the given output is the primary output.
-         * @returns `TRUE` if the output is the primary one
-         */
-        get_is_primary(): boolean;
-        get_is_underscanning(): boolean;
-        /**
-         * Retrieves the value of the minimum backlight step for the given output,
-         * as a percentage.
-         * @returns The minimum backlight step available in percent
-         */
-        get_min_backlight_step(): number;
-        /**
-         * Retrieves the name of the given output.
-         * @returns the name of the output
-         */
-        get_name(): string;
-        /**
-         * Retrieves the physical size of the given output.
-         */
-        get_physical_size(): void;
-        get_position(): void;
-        /**
-         * Retrieves all the possible CRTC for the given output.
-         * @returns the list of possible CRTC
-         */
-        get_possible_crtcs(): Crtc[];
-        /**
-         * Retrieves the preferred mode of the given output.
-         * @returns the preferred mode of the output
-         */
-        get_preferred_mode(): Mode;
-        /**
-         * Checks whether the given output is a built-in display.
-         * @returns `TRUE` if the output is a built-in display
-         */
-        is_builtin_display(): boolean;
-        /**
-         * Retrieves all available modes of the given output.
-         * @returns a list of modes
-         */
-        list_modes(): Mode[];
-        /**
-         * Sets the backlight level for the given output.
-         *
-         * The value is a percentage, with a range of [0, 100].
-         * @param value the absolute value of the backlight
-         * @returns `TRUE` for success
-         */
-        set_backlight(value: number): boolean;
-        /**
-         * Sets the color transformation matrix for the given output.
-         * @param ctm the color transformation matrix
-         * @returns `TRUE` on success
-         */
-        set_color_transform(ctm: CTM): boolean;
-        supports_color_transform(): boolean;
-        /**
-         * Checks whether the given output supports a mode.
-         * @param mode the mode to compare
-         * @returns `TRUE` if the mode is supported
-         */
-        supports_mode(mode: Mode): boolean;
-        supports_underscanning(): boolean;
-    }
+constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
 
-    class OutputInfoClass {}
+_init(...args: any[]): void;
 
-    class ScreenClass {}
+
+static ["new"](display: Gdk.Display): Screen;
+
+static new_finish(result: Gio.AsyncResult): Screen;
+// Conflicted with Gio.AsyncInitable.new_finish
+
+static new_finish(...args: never[]): any;
+
+    // Own signals of GnomeRR.Screen
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'changed', callback: ((_source: this) => void)): number
+    connect_after(signal: 'changed', callback: ((_source: this) => void)): number
+    emit(signal: 'changed'): void
+    connect(signal: 'output-connected', callback: ((_source: this, output: Output) => void)): number
+    connect_after(signal: 'output-connected', callback: ((_source: this, output: Output) => void)): number
+    emit(signal: 'output-connected', output: Output): void
+    connect(signal: 'output-disconnected', callback: ((_source: this, output: Output) => void)): number
+    connect_after(signal: 'output-disconnected', callback: ((_source: this, output: Output) => void)): number
+    emit(signal: 'output-disconnected', output: Output): void
+
+    // Own static methods of GnomeRR.Screen
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Asynchronously creates a new #GnomeRRScreen instance.
+     * 
+     * On both success and error, `callback` will be invoked. You should use
+     * gnome_rr_screen_new_finish() to retrieve the newly created #GnomeRRScreen
+     * instance.
+     * @param display the windowing system connection used to query the display
+     * @param callback the function to call when the #GnomeRRScreen is ready, or on error
      */
-    const __name__: string;
+    static new_async(display: Gdk.Display, callback?: (Gio.AsyncReadyCallback<Screen> | null)): void
+
+    // Own virtual methods of GnomeRR.Screen
+
+    vfunc_changed(): void
+    vfunc_output_connected(output: Output): void
+    vfunc_output_disconnected(output: Output): void
+
+    // Own methods of GnomeRR.Screen
+
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Retrieves the CRTC of the screen using the given identifier.
+     * @param id the identifier of a CRTC
+     * @returns the CRTC identified by @id
      */
-    const __version__: string;
+    get_crtc_by_id(id: number): Crtc
+    get_dpms_mode(): [boolean, DpmsMode]
+    /**
+     * Retrieves the output of a screen using the given identifier.
+     * @param id the identifier of an output
+     * @returns the output identified by @id
+     */
+    get_output_by_id(id: number): Output
+    /**
+     * Retrieves the output for the given name.
+     * @param name 
+     * @returns the output identified by @name
+     */
+    get_output_by_name(name: string): Output
+    /**
+     * Get the ranges of the screen
+     */
+    get_ranges(): [number, number, number, number]
+    /**
+     * Lists all available XRandR clone modes.
+     * @returns the available XRandR clone modes
+     */
+    list_clone_modes(): Mode[]
+    /**
+     * List all CRTCs of the given screen.
+     * @returns the available CRTCs
+     */
+    list_crtcs(): Crtc[]
+    /**
+     * Lists all available XRandR modes.
+     * @returns the available XRandR modes
+     */
+    list_modes(): Mode[]
+    /**
+     * List all outputs of the given screen.
+     * @returns the available outputs
+     */
+    list_outputs(): Output[]
+    /**
+     * Refreshes the screen configuration, and calls the screen's callback if it
+     * exists and if the screen's configuration changed.
+     * @returns TRUE if the screen's configuration changed; otherwise, the function returns FALSE and a NULL error if the configuration didn't change, or FALSE and a non-NULL error if there was an error while refreshing the configuration.
+     */
+    refresh(): boolean
+    /**
+     * This method also disables the DPMS timeouts.
+     * @param mode 
+     */
+    set_dpms_mode(mode: DpmsMode): boolean
+
+// Inherited methods
+/**
+ * Starts asynchronous initialization of the object implementing the
+ * interface. This must be done before any real use of the object after
+ * initial construction. If the object also implements #GInitable you can
+ * optionally call g_initable_init() instead.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_async_initable_new_async() should typically be used instead.
+ * 
+ * When the initialization is finished, `callback` will be called. You can
+ * then call g_async_initable_init_finish() to get the result of the
+ * initialization.
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not
+ * %NULL, then initialization can be cancelled by triggering the cancellable
+ * object from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+ * the object doesn't support cancellable initialization, the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * As with #GInitable, if the object is not initialized, or initialization
+ * returns with an error, then all operations on the object except
+ * g_object_ref() and g_object_unref() are considered to be invalid, and
+ * have undefined behaviour. They will often fail with g_critical() or
+ * g_warning(), but this must not be relied on.
+ * 
+ * Callers should not assume that a class which implements #GAsyncInitable can
+ * be initialized multiple times; for more information, see g_initable_init().
+ * If a class explicitly supports being initialized multiple times,
+ * implementation requires yielding all subsequent calls to init_async() on the
+ * results of the first call.
+ * 
+ * For classes that also support the #GInitable interface, the default
+ * implementation of this method will run the g_initable_init() function
+ * in a thread, so if you want to support asynchronous initialization via
+ * threads, just implement the #GAsyncInitable interface without overriding
+ * any interface methods.
+ * @param io_priority the [I/O priority][io-priority] of the operation
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+ */
+init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
+/**
+ * Finishes asynchronous initialization and returns the result.
+ * See g_async_initable_init_async().
+ * @param res a #GAsyncResult.
+ * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+ */
+init_finish(res: Gio.AsyncResult): boolean
+/**
+ * Finishes the async construction for the various g_async_initable_new
+ * calls, returning the created object or %NULL on error.
+ * @param res the #GAsyncResult from the callback
+ * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+ */
+new_finish(res: Gio.AsyncResult): Screen
+/**
+ * Starts asynchronous initialization of the object implementing the
+ * interface. This must be done before any real use of the object after
+ * initial construction. If the object also implements #GInitable you can
+ * optionally call g_initable_init() instead.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_async_initable_new_async() should typically be used instead.
+ * 
+ * When the initialization is finished, `callback` will be called. You can
+ * then call g_async_initable_init_finish() to get the result of the
+ * initialization.
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not
+ * %NULL, then initialization can be cancelled by triggering the cancellable
+ * object from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+ * the object doesn't support cancellable initialization, the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * As with #GInitable, if the object is not initialized, or initialization
+ * returns with an error, then all operations on the object except
+ * g_object_ref() and g_object_unref() are considered to be invalid, and
+ * have undefined behaviour. They will often fail with g_critical() or
+ * g_warning(), but this must not be relied on.
+ * 
+ * Callers should not assume that a class which implements #GAsyncInitable can
+ * be initialized multiple times; for more information, see g_initable_init().
+ * If a class explicitly supports being initialized multiple times,
+ * implementation requires yielding all subsequent calls to init_async() on the
+ * results of the first call.
+ * 
+ * For classes that also support the #GInitable interface, the default
+ * implementation of this method will run the g_initable_init() function
+ * in a thread, so if you want to support asynchronous initialization via
+ * threads, just implement the #GAsyncInitable interface without overriding
+ * any interface methods.
+ * @param io_priority the [I/O priority][io-priority] of the operation
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+ */
+vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
+/**
+ * Finishes asynchronous initialization and returns the result.
+ * See g_async_initable_init_async().
+ * @param res a #GAsyncResult.
+ */
+vfunc_init_finish(res: Gio.AsyncResult): boolean
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+ */
+init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ */
+vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+class CTM {
+
+    // Constructors of GnomeRR.CTM
+
+
+    constructor(properties?: Partial<{
+      
+    }>);
+_init(...args: any[]): void;
+
+}
+
+type ConfigClass = typeof Config
+abstract class Crtc {
+
+    // Constructors of GnomeRR.Crtc
+
+_init(...args: any[]): void;
+
+
+    // Own methods of GnomeRR.Crtc
+
+    can_drive_output(output: Output): boolean
+    get_current_mode(): Mode
+    get_current_rotation(): Rotation
+    get_gamma(size: number): [boolean, number, number, number]
+    get_id(): number
+    get_position(): [number, number]
+    get_rotations(): Rotation
+    set_gamma(size: number, red: number, green: number, blue: number): boolean
+    supports_rotation(rotation: Rotation): boolean
+}
+
+abstract class Mode {
+
+    // Constructors of GnomeRR.Mode
+
+_init(...args: any[]): void;
+
+
+    // Own methods of GnomeRR.Mode
+
+    get_freq(): number
+    get_freq_f(): number
+    get_height(): number
+    get_id(): number
+    get_is_interlaced(): boolean
+    /**
+     * Returns TRUE if this mode is a tiled
+     * mode created for span a tiled monitor.
+     */
+    get_is_tiled(): boolean
+    get_width(): number
+}
+
+abstract class Output {
+
+    // Constructors of GnomeRR.Output
+
+_init(...args: any[]): void;
+
+
+    // Own methods of GnomeRR.Output
+
+    /**
+     * Checks whether the given output can clone another output.
+     * @param clone the output to compare
+     * @returns `TRUE` if the output can clone another output
+     */
+    can_clone(clone: Output): boolean
+    /**
+     * Retrieves the backlight brightness of the given output.
+     * @returns The currently set backlight brightness
+     */
+    get_backlight(): number
+    /**
+     * Retrieves the CRTC of the given output.
+     * @returns the CRTC of the output
+     */
+    get_crtc(): Crtc
+    /**
+     * Retrieves the current mode of the given output.
+     * @returns the current mode of this output
+     */
+    get_current_mode(): Mode
+    /**
+     * Retrieves the display name of the given output.
+     * @returns the display name
+     */
+    get_display_name(): string
+    get_edid_data(size: number): number
+    get_id(): number
+    /**
+     * Retrieves the model identifiers from the EDID of the given output.
+     */
+    get_ids_from_edid(): [string, string, string]
+    /**
+     * Checks whether the given output is the primary output.
+     * @returns `TRUE` if the output is the primary one
+     */
+    get_is_primary(): boolean
+    get_is_underscanning(): boolean
+    /**
+     * Retrieves the value of the minimum backlight step for the given output,
+     * as a percentage.
+     * @returns The minimum backlight step available in percent
+     */
+    get_min_backlight_step(): number
+    /**
+     * Retrieves the name of the given output.
+     * @returns the name of the output
+     */
+    get_name(): string
+    /**
+     * Retrieves the physical size of the given output.
+     */
+    get_physical_size(): [number, number]
+    get_position(): [number, number]
+    /**
+     * Retrieves all the possible CRTC for the given output.
+     * @returns the list of possible CRTC
+     */
+    get_possible_crtcs(): Crtc[]
+    /**
+     * Retrieves the preferred mode of the given output.
+     * @returns the preferred mode of the output
+     */
+    get_preferred_mode(): Mode
+    /**
+     * Checks whether the given output is a built-in display.
+     * @returns `TRUE` if the output is a built-in display
+     */
+    is_builtin_display(): boolean
+    /**
+     * Retrieves all available modes of the given output.
+     * @returns a list of modes
+     */
+    list_modes(): Mode[]
+    /**
+     * Sets the backlight level for the given output.
+     * 
+     * The value is a percentage, with a range of [0, 100].
+     * @param value the absolute value of the backlight
+     * @returns `TRUE` for success
+     */
+    set_backlight(value: number): boolean
+    /**
+     * Sets the color transformation matrix for the given output.
+     * @param ctm the color transformation matrix
+     * @returns `TRUE` on success
+     */
+    set_color_transform(ctm: CTM): boolean
+    supports_color_transform(): boolean
+    /**
+     * Checks whether the given output supports a mode.
+     * @param mode the mode to compare
+     * @returns `TRUE` if the mode is supported
+     */
+    supports_mode(mode: Mode): boolean
+    supports_underscanning(): boolean
+}
+
+type OutputInfoClass = typeof OutputInfo
+type ScreenClass = typeof Screen
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default GnomeRR;

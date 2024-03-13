@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,216 +17,302 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace Tracker {
-    enum SparqlValueType {
-        UNBOUND,
-        URI,
-        STRING,
-        INTEGER,
-        DOUBLE,
-        DATETIME,
-        BLANK_NODE,
-        BOOLEAN,
-    }
-    class Error extends GLib.Error {
-        // Own fields of Tracker-1.0.Error
 
-        PARSE: number;
-        UNKNOWN_CLASS: number;
-        UNKNOWN_PROPERTY: number;
-        TYPE: number;
-        CONSTRAINT: number;
-        NO_SPACE: number;
-        INTERNAL: number;
-        UNSUPPORTED: number;
+enum SparqlValueType {
+    UNBOUND,
+    URI,
+    STRING,
+    INTEGER,
+    DOUBLE,
+    DATETIME,
+    BLANK_NODE,
+    BOOLEAN,
+}
+enum SparqlBuilderState {
+    UPDATE,
+    INSERT,
+    DELETE,
+    SUBJECT,
+    PREDICATE,
+    OBJECT,
+    BLANK,
+    WHERE,
+    EMBEDDED_INSERT,
+    GRAPH,
+}
+const DBUS_SERVICE: string
+const DBUS_INTERFACE_RESOURCES: string
+const DBUS_OBJECT_RESOURCES: string
+const DBUS_INTERFACE_STATISTICS: string
+const DBUS_OBJECT_STATISTICS: string
+const DBUS_INTERFACE_STATUS: string
+const DBUS_OBJECT_STATUS: string
+const DBUS_INTERFACE_STEROIDS: string
+const DBUS_OBJECT_STEROIDS: string
+function sparql_escape_uri(uri: string): string
+function sparql_escape_string(literal: string): string
+function sparql_get_uuid_urn(): string
+module SparqlBuilder {
 
-        // Constructors of Tracker-1.0.Error
+    // Constructor properties interface
 
-        constructor(options: { message: string; code: number });
-    }
-
-    enum SparqlBuilderState {
-        UPDATE,
-        INSERT,
-        DELETE,
-        SUBJECT,
-        PREDICATE,
-        OBJECT,
-        BLANK,
-        WHERE,
-        EMBEDDED_INSERT,
-        GRAPH,
-    }
-    const DBUS_SERVICE: string;
-    const DBUS_INTERFACE_RESOURCES: string;
-    const DBUS_OBJECT_RESOURCES: string;
-    const DBUS_INTERFACE_STATISTICS: string;
-    const DBUS_OBJECT_STATISTICS: string;
-    const DBUS_INTERFACE_STATUS: string;
-    const DBUS_OBJECT_STATUS: string;
-    const DBUS_INTERFACE_STEROIDS: string;
-    const DBUS_OBJECT_STEROIDS: string;
-    function sparql_escape_uri(uri: string): string;
-    function sparql_escape_string(literal: string): string;
-    function sparql_get_uuid_urn(): string;
-    module SparqlBuilder {
-        // Constructor properties interface
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+result: string;
+    length: number;
+    state: SparqlBuilderState;
     }
 
-    class SparqlBuilder extends GObject.Object {
-        // Own properties of Tracker-1.0.SparqlBuilder
+}
 
-        readonly result: string;
-        length: number;
-        readonly state: SparqlBuilderState;
+class SparqlBuilder extends GObject.Object {
 
-        // Constructors of Tracker-1.0.SparqlBuilder
+    // Own properties of Tracker.SparqlBuilder
 
-        static update(): SparqlBuilder;
+    get result(): string;
+    get length(): number;
+    set length(val: number);
+    get state(): SparqlBuilderState;
 
-        static embedded_insert(): SparqlBuilder;
+    // Constructors of Tracker.SparqlBuilder
 
-        static ['new'](): SparqlBuilder;
 
-        // Owm methods of Tracker-1.0.SparqlBuilder
+constructor(properties?: Partial<SparqlBuilder.ConstructorProps>, ...args: any[]);
 
-        insert_open(graph: string): void;
-        insert_silent_open(graph: string): void;
-        insert_close(): void;
-        delete_open(graph: string): void;
-        delete_close(): void;
-        graph_open(graph: string): void;
-        graph_close(): void;
-        where_open(): void;
-        where_close(): void;
-        subject_variable(var_name: string): void;
-        object_variable(var_name: string): void;
-        subject_iri(iri: string): void;
-        subject(s: string): void;
-        predicate_iri(iri: string): void;
-        predicate(s: string): void;
-        object_iri(iri: string): void;
-        object(s: string): void;
-        object_string(literal: string): void;
-        object_unvalidated(value: string): void;
-        object_boolean(literal: boolean): void;
-        object_int64(literal: number): void;
-        object_date(literal: number): void;
-        object_double(literal: number): void;
-        object_blank_open(): void;
-        object_blank_close(): void;
-        prepend(raw: string): void;
-        append(raw: string): void;
-        get_result(): string;
-        get_length(): number;
-        get_state(): SparqlBuilderState;
+_init(...args: any[]): void;
+
+
+static update(): SparqlBuilder;
+
+static embedded_insert(): SparqlBuilder;
+
+static ["new"](): SparqlBuilder;
+
+    // Own methods of Tracker.SparqlBuilder
+
+    insert_open(graph: string): void
+    insert_silent_open(graph: string): void
+    insert_close(): void
+    delete_open(graph: string): void
+    delete_close(): void
+    graph_open(graph: string): void
+    graph_close(): void
+    where_open(): void
+    where_close(): void
+    subject_variable(var_name: string): void
+    object_variable(var_name: string): void
+    subject_iri(iri: string): void
+    subject(s: string): void
+    predicate_iri(iri: string): void
+    predicate(s: string): void
+    object_iri(iri: string): void
+    object(s: string): void
+    object_string(literal: string): void
+    object_unvalidated(value: string): void
+    object_boolean(literal: boolean): void
+    object_int64(literal: number): void
+    object_date(literal: number): number
+    object_double(literal: number): void
+    object_blank_open(): void
+    object_blank_close(): void
+    prepend(raw: string): void
+    append(raw: string): void
+    get_result(): string
+    get_length(): number
+    get_state(): SparqlBuilderState
+}
+
+module SparqlConnection {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module SparqlConnection {
-        // Constructor properties interface
+}
+
+abstract class SparqlConnection extends GObject.Object {
+
+    // Constructors of Tracker.SparqlConnection
+
+
+constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of Tracker.SparqlConnection
+
+    static get_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void
+    static get_finish(_res_: Gio.AsyncResult): SparqlConnection
+    static get(cancellable: Gio.Cancellable): SparqlConnection
+    static get_direct_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void
+    static get_direct_finish(_res_: Gio.AsyncResult): SparqlConnection
+    static get_direct(cancellable: Gio.Cancellable): SparqlConnection
+    static remote_new(uri_base: string): SparqlConnection
+
+    // Own virtual methods of Tracker.SparqlConnection
+
+    vfunc_query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor
+    vfunc_query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_query_finish(_res_: Gio.AsyncResult): SparqlCursor
+    vfunc_update(sparql: string, priority: number, cancellable: Gio.Cancellable): void
+    vfunc_update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_update_finish(_res_: Gio.AsyncResult): void
+    vfunc_update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_update_array_finish(_res_: Gio.AsyncResult): SparqlError[]
+    vfunc_update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant
+    vfunc_update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant
+    vfunc_load(file: Gio.File, cancellable: Gio.Cancellable): void
+    vfunc_load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_load_finish(_res_: Gio.AsyncResult): void
+    vfunc_statistics(cancellable: Gio.Cancellable): SparqlCursor
+    vfunc_statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_statistics_finish(_res_: Gio.AsyncResult): SparqlCursor
+
+    // Own methods of Tracker.SparqlConnection
+
+    query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor
+    query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    query_finish(_res_: Gio.AsyncResult): SparqlCursor
+    update(sparql: string, priority: number, cancellable: Gio.Cancellable): void
+    update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    update_finish(_res_: Gio.AsyncResult): void
+    update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    update_array_finish(_res_: Gio.AsyncResult): SparqlError[]
+    update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant
+    update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant
+    load(file: Gio.File, cancellable: Gio.Cancellable): void
+    load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    load_finish(_res_: Gio.AsyncResult): void
+    statistics(cancellable: Gio.Cancellable): SparqlCursor
+    statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    statistics_finish(_res_: Gio.AsyncResult): SparqlCursor
+}
+
+module SparqlCursor {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+connection: SparqlConnection;
+    n_columns: number;
+    nColumns: number;
     }
 
-    abstract class SparqlConnection extends GObject.Object {
-        // Owm methods of Tracker-1.0.SparqlConnection
+}
 
-        static get_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void;
-        static get_finish(_res_: Gio.AsyncResult): SparqlConnection;
-        static get(cancellable: Gio.Cancellable): SparqlConnection;
-        static get_direct_async(
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<SparqlConnection>,
-        ): void;
-        static get_direct_finish(_res_: Gio.AsyncResult): SparqlConnection;
-        static get_direct(cancellable: Gio.Cancellable): SparqlConnection;
-        static remote_new(uri_base: string): SparqlConnection;
+abstract class SparqlCursor extends GObject.Object {
 
-        // Owm methods of Tracker-1.0.SparqlConnection
+    // Own properties of Tracker.SparqlCursor
 
-        query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
-        query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        query_finish(_res_: Gio.AsyncResult): SparqlCursor;
-        update(sparql: string, priority: number, cancellable: Gio.Cancellable): void;
-        update_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        update_finish(_res_: Gio.AsyncResult): void;
-        update_array_async(
-            sparql: string[],
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        update_array_finish(_res_: Gio.AsyncResult): SparqlError[];
-        update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant;
-        update_blank_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
-        update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        load(file: Gio.File, cancellable: Gio.Cancellable): void;
-        load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        load_finish(_res_: Gio.AsyncResult): void;
-        statistics(cancellable: Gio.Cancellable): SparqlCursor;
-        statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
-    }
+    get connection(): SparqlConnection;
+    set connection(val: SparqlConnection);
+    get n_columns(): number;
+    get nColumns(): number;
 
-    module SparqlCursor {
-        // Constructor properties interface
-    }
+    // Constructors of Tracker.SparqlCursor
 
-    abstract class SparqlCursor extends GObject.Object {
-        // Own properties of Tracker-1.0.SparqlCursor
 
-        connection: SparqlConnection;
-        readonly n_columns: number;
-        readonly nColumns: number;
+constructor(properties?: Partial<SparqlCursor.ConstructorProps>, ...args: any[]);
 
-        // Owm methods of Tracker-1.0.SparqlCursor
+_init(...args: any[]): void;
 
-        get_value_type(column: number): SparqlValueType;
-        get_variable_name(column: number): string;
-        get_string(column: number): string;
-        next(cancellable: Gio.Cancellable): boolean;
-        next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
-        next_finish(_res_: Gio.AsyncResult): boolean;
-        rewind(): void;
-        close(): void;
-        get_integer(column: number): number;
-        get_double(column: number): number;
-        get_boolean(column: number): boolean;
-        is_bound(column: number): boolean;
-        get_connection(): SparqlConnection;
-        set_connection(value: SparqlConnection): void;
-        get_n_columns(): number;
-    }
 
-    class SparqlBuilderClass {}
+    // Own virtual methods of Tracker.SparqlCursor
 
-    class SparqlBuilderPrivate {}
+    vfunc_get_value_type(column: number): SparqlValueType
+    vfunc_get_variable_name(column: number): string
+    vfunc_get_string(column: number): [string, number]
+    vfunc_next(cancellable: Gio.Cancellable): boolean
+    vfunc_next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    vfunc_next_finish(_res_: Gio.AsyncResult): boolean
+    vfunc_rewind(): void
+    vfunc_close(): void
+    vfunc_get_integer(column: number): number
+    vfunc_get_double(column: number): number
+    vfunc_get_boolean(column: number): boolean
+    vfunc_is_bound(column: number): boolean
+    vfunc_get_n_columns(): number
 
-    class SparqlConnectionClass {}
+    // Own methods of Tracker.SparqlCursor
 
-    class SparqlConnectionPrivate {}
+    get_value_type(column: number): SparqlValueType
+    get_variable_name(column: number): string
+    get_string(column: number): [string, number]
+    next(cancellable: Gio.Cancellable): boolean
+    next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void
+    next_finish(_res_: Gio.AsyncResult): boolean
+    rewind(): void
+    close(): void
+    get_integer(column: number): number
+    get_double(column: number): number
+    get_boolean(column: number): boolean
+    is_bound(column: number): boolean
+    get_connection(): SparqlConnection
+    set_connection(value: SparqlConnection): void
+    get_n_columns(): number
+}
 
-    class SparqlCursorClass {}
+type SparqlBuilderClass = typeof SparqlBuilder
+abstract class SparqlBuilderPrivate {
 
-    class SparqlCursorPrivate {}
+    // Constructors of Tracker.SparqlBuilderPrivate
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+_init(...args: any[]): void;
+
+}
+
+type SparqlConnectionClass = typeof SparqlConnection
+abstract class SparqlConnectionPrivate {
+
+    // Constructors of Tracker.SparqlConnectionPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type SparqlCursorClass = typeof SparqlCursor
+abstract class SparqlCursorPrivate {
+
+    // Constructors of Tracker.SparqlCursorPrivate
+
+_init(...args: any[]): void;
+
+}
+
+class SparqlError extends GLib.Error {
+
+    // Static fields of Tracker.SparqlError
+
+static PARSE: number
+static UNKNOWN_CLASS: number
+static UNKNOWN_PROPERTY: number
+static TYPE: number
+static CONSTRAINT: number
+static NO_SPACE: number
+static INTERNAL: number
+static UNSUPPORTED: number
+
+    // Constructors of Tracker.SparqlError
+
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Tracker;

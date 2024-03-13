@@ -5,8 +5,7 @@ declare module 'gi://Gandiva?version=1.0' {
 }
 
 declare module 'gi://Gandiva' {
-    import Gandiva10 from '@girs/gandiva-1.0';
-    export default Gandiva10;
+    export * from 'gi://Gandiva?version=1.0';
 }
 
 

@@ -5,8 +5,7 @@ declare module 'gi://xlib?version=2.0' {
 }
 
 declare module 'gi://xlib' {
-    import Xlib20 from '@girs/xlib-2.0';
-    export default Xlib20;
+    export * from 'gi://xlib?version=2.0';
 }
 
 

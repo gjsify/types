@@ -5,8 +5,7 @@ declare module 'gi://Gee?version=1.0' {
 }
 
 declare module 'gi://Gee' {
-    import Gee10 from '@girs/gee-1.0';
-    export default Gee10;
+    export * from 'gi://Gee?version=1.0';
 }
 
 

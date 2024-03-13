@@ -31,10 +31,8 @@
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
-        "@girs/gssdp-1.6": "workspace:^",
         "@girs/gupnp-1.6": "workspace:^",
         "@girs/gupnpav-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
         "@girs/rygelcore-2.8": "workspace:^",
         "@girs/soup-3.0": "workspace:^"
     },

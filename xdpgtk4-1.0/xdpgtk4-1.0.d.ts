@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,22 +29,23 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace XdpGtk4 {
-    /**
-     * Creates a new [struct`Parent]` from `window`.
-     * @param window a [class@Gtk.Window]
-     * @returns a [struct@Parent]
-     */
-    function parent_new_gtk(window: Gtk.Window): Xdp.Parent;
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+
+/**
+ * Creates a new [struct`Parent]` from `window`.
+ * @param window a [class@Gtk.Window]
+ * @returns a [struct@Parent]
+ */
+function parent_new_gtk(window: Gtk.Window): Xdp.Parent
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default XdpGtk4;

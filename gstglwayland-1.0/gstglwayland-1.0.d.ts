@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,42 +21,58 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
 export namespace GstGLWayland {
-    module GLDisplayWayland {
-        // Constructor properties interface
+
+module GLDisplayWayland {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {
+
     }
 
-    /**
-     * the contents of a #GstGLDisplayWayland are private and should only be accessed
-     * through the provided API
-     */
-    class GLDisplayWayland extends GstGL.GLDisplay {
-        // Own fields of GstGLWayland-1.0.GLDisplayWayland
+}
 
-        display: any;
-        registry: any;
-        compositor: any;
-        subcompositor: any;
-        shell: any;
+/**
+ * the contents of a #GstGLDisplayWayland are private and should only be accessed
+ * through the provided API
+ */
+class GLDisplayWayland extends GstGL.GLDisplay {
 
-        // Constructors of GstGLWayland-1.0.GLDisplayWayland
+    // Own fields of GstGLWayland.GLDisplayWayland
 
-        static ['new'](name?: string | null): GLDisplayWayland;
+display: any
+registry: any
+compositor: any
+subcompositor: any
+shell: any
 
-        static new_with_display(display?: any | null): GLDisplayWayland;
-    }
+    // Constructors of GstGLWayland.GLDisplayWayland
 
-    class GLDisplayWaylandClass {}
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+constructor(properties?: Partial<GLDisplayWayland.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](name?: (string | null)): GLDisplayWayland;
+// Conflicted with GstGL.GLDisplay.new
+
+static ["new"](...args: never[]): any;
+
+static new_with_display(display?: (any | null)): GLDisplayWayland;
+}
+
+type GLDisplayWaylandClass = typeof GLDisplayWayland
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default GstGLWayland;

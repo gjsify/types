@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,506 +18,848 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gandiva {
+
+/**
+ * They are corresponding to `gandiva::ResultNullableType` values.
+ */
+enum ResultNullableType {
     /**
-     * They are corresponding to `gandiva::ResultNullableType` values.
+     * This means the result validity is an intersection of
+     *   the validity of the children.
      */
-    enum ResultNullableType {
-        /**
-         * This means the result validity is an intersection of
-         *   the validity of the children.
-         */
-        IF_NULL,
-        /**
-         * This means that the result is always valid.
-         */
-        NEVER,
-        /**
-         * This means that the result validity depends on some
-         *   internal logic.
-         */
-        INTERNAL,
-    }
+    IF_NULL,
     /**
-     * The major version.
+     * This means that the result is always valid.
      */
-    const VERSION_MAJOR: number;
+    NEVER,
     /**
-     * The micro version.
+     * This means that the result validity depends on some
+     *   internal logic.
      */
-    const VERSION_MICRO: number;
-    /**
-     * The minor version.
-     */
-    const VERSION_MINOR: number;
-    /**
-     * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
-     * for snapshot version.
-     */
-    const VERSION_TAG: string;
-    module AndNode {
-        // Constructor properties interface
+    INTERNAL,
+}
+/**
+ * The major version.
+ */
+const VERSION_MAJOR: number
+/**
+ * The micro version.
+ */
+const VERSION_MICRO: number
+/**
+ * The minor version.
+ */
+const VERSION_MINOR: number
+/**
+ * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
+ * for snapshot version.
+ */
+const VERSION_TAG: string
+module AndNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends BooleanNode.ConstructorProps {
+
     }
 
-    class AndNode extends BooleanNode {
-        // Constructors of Gandiva-1.0.AndNode
+}
 
-        static ['new'](children: Node[]): AndNode;
+class AndNode extends BooleanNode {
+
+    // Constructors of Gandiva.AndNode
+
+
+constructor(properties?: Partial<AndNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](children: Node[]): AndNode;
+}
+
+module BinaryLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module BinaryLiteralNode {
-        // Constructor properties interface
+}
+
+class BinaryLiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.BinaryLiteralNode
+
+
+constructor(properties?: Partial<BinaryLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: Uint8Array): BinaryLiteralNode;
+
+static new_bytes(value: GLib.Bytes): BinaryLiteralNode;
+
+    // Own methods of Gandiva.BinaryLiteralNode
+
+    get_value(): GLib.Bytes
+}
+
+module BooleanLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class BinaryLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.BinaryLiteralNode
+}
 
-        static ['new'](value: Uint8Array): BinaryLiteralNode;
+class BooleanLiteralNode extends LiteralNode {
 
-        static new_bytes(value: GLib.Bytes): BinaryLiteralNode;
+    // Constructors of Gandiva.BooleanLiteralNode
 
-        // Owm methods of Gandiva-1.0.BinaryLiteralNode
 
-        get_value(): GLib.Bytes;
+constructor(properties?: Partial<BooleanLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: boolean): BooleanLiteralNode;
+
+    // Own methods of Gandiva.BooleanLiteralNode
+
+    get_value(): boolean
+}
+
+module BooleanNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Node.ConstructorProps {
+
     }
 
-    module BooleanLiteralNode {
-        // Constructor properties interface
+}
+
+class BooleanNode extends Node {
+
+    // Constructors of Gandiva.BooleanNode
+
+
+constructor(properties?: Partial<BooleanNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gandiva.BooleanNode
+
+    get_children(): Node[]
+}
+
+module DoubleLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class BooleanLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.BooleanLiteralNode
+}
 
-        static ['new'](value: boolean): BooleanLiteralNode;
+class DoubleLiteralNode extends LiteralNode {
 
-        // Owm methods of Gandiva-1.0.BooleanLiteralNode
+    // Constructors of Gandiva.DoubleLiteralNode
 
-        get_value(): boolean;
+
+constructor(properties?: Partial<DoubleLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): DoubleLiteralNode;
+
+    // Own methods of Gandiva.DoubleLiteralNode
+
+    get_value(): number
+}
+
+module Expression {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+expression: any;
+    result_field: Arrow.Field;
+    resultField: Arrow.Field;
+    root_node: Node;
+    rootNode: Node;
     }
 
-    module BooleanNode {
-        // Constructor properties interface
+}
+
+class Expression extends GObject.Object {
+
+    // Own properties of Gandiva.Expression
+
+    set expression(val: any);
+    get result_field(): Arrow.Field;
+    get resultField(): Arrow.Field;
+    get root_node(): Node;
+    get rootNode(): Node;
+
+    // Constructors of Gandiva.Expression
+
+
+constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](root_node: Node, result_field: Arrow.Field): Expression;
+
+    // Own methods of Gandiva.Expression
+
+    to_string(): string
+}
+
+module FieldNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Node.ConstructorProps {
+field: Arrow.Field;
     }
 
-    class BooleanNode extends Node {
-        // Owm methods of Gandiva-1.0.BooleanNode
+}
 
-        get_children(): Node[];
+class FieldNode extends Node {
+
+    // Own properties of Gandiva.FieldNode
+
+    get field(): Arrow.Field;
+
+    // Constructors of Gandiva.FieldNode
+
+
+constructor(properties?: Partial<FieldNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](field: Arrow.Field): FieldNode;
+}
+
+module FloatLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module DoubleLiteralNode {
-        // Constructor properties interface
+}
+
+class FloatLiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.FloatLiteralNode
+
+
+constructor(properties?: Partial<FloatLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): FloatLiteralNode;
+
+    // Own methods of Gandiva.FloatLiteralNode
+
+    get_value(): number
+}
+
+module FunctionNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Node.ConstructorProps {
+name: string;
     }
 
-    class DoubleLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.DoubleLiteralNode
+}
 
-        static ['new'](value: number): DoubleLiteralNode;
+class FunctionNode extends Node {
 
-        // Owm methods of Gandiva-1.0.DoubleLiteralNode
+    // Own properties of Gandiva.FunctionNode
 
-        get_value(): number;
+    get name(): string;
+
+    // Constructors of Gandiva.FunctionNode
+
+
+constructor(properties?: Partial<FunctionNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](name: string, parameters: Node[], return_type: Arrow.DataType): FunctionNode;
+
+    // Own methods of Gandiva.FunctionNode
+
+    get_parameters(): Node[]
+}
+
+module FunctionRegistry {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module Expression {
-        // Constructor properties interface
+}
+
+class FunctionRegistry extends GObject.Object {
+
+    // Constructors of Gandiva.FunctionRegistry
+
+
+constructor(properties?: Partial<FunctionRegistry.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): FunctionRegistry;
+
+    // Own methods of Gandiva.FunctionRegistry
+
+    get_native_functions(): NativeFunction[]
+    lookup(function_signature: FunctionSignature): (NativeFunction | null)
+}
+
+module FunctionSignature {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+function_signature: any;
+    functionSignature: any;
     }
 
-    class Expression extends GObject.Object {
-        // Own properties of Gandiva-1.0.Expression
+}
 
-        expression: any;
-        result_field: Arrow.Field;
-        resultField: Arrow.Field;
-        root_node: Node;
-        rootNode: Node;
+class FunctionSignature extends GObject.Object {
 
-        // Constructors of Gandiva-1.0.Expression
+    // Own properties of Gandiva.FunctionSignature
 
-        static ['new'](root_node: Node, result_field: Arrow.Field): Expression;
+    set function_signature(val: any);
+    set functionSignature(val: any);
 
-        // Owm methods of Gandiva-1.0.Expression
+    // Constructors of Gandiva.FunctionSignature
 
-        to_string(): string;
+
+constructor(properties?: Partial<FunctionSignature.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](base_name: string, parameter_types: Arrow.DataType[], return_type: Arrow.DataType): FunctionSignature;
+
+    // Own methods of Gandiva.FunctionSignature
+
+    equal(other_function_signature: FunctionSignature): boolean
+    get_base_name(): string
+    get_param_types(): Arrow.DataType[]
+    get_return_type(): Arrow.DataType
+    to_string(): string
+}
+
+module IfNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Node.ConstructorProps {
+condition_node: Node;
+    conditionNode: Node;
+    else_node: Node;
+    elseNode: Node;
+    then_node: Node;
+    thenNode: Node;
     }
 
-    module FieldNode {
-        // Constructor properties interface
+}
+
+class IfNode extends Node {
+
+    // Own properties of Gandiva.IfNode
+
+    get condition_node(): Node;
+    get conditionNode(): Node;
+    get else_node(): Node;
+    get elseNode(): Node;
+    get then_node(): Node;
+    get thenNode(): Node;
+
+    // Constructors of Gandiva.IfNode
+
+
+constructor(properties?: Partial<IfNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](condition_node: Node, then_node: Node, else_node: Node, return_type: Arrow.DataType): IfNode;
+}
+
+module Int16LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class FieldNode extends Node {
-        // Own properties of Gandiva-1.0.FieldNode
+}
 
-        field: Arrow.Field;
+class Int16LiteralNode extends LiteralNode {
 
-        // Constructors of Gandiva-1.0.FieldNode
+    // Constructors of Gandiva.Int16LiteralNode
 
-        static ['new'](field: Arrow.Field): FieldNode;
+
+constructor(properties?: Partial<Int16LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): Int16LiteralNode;
+
+    // Own methods of Gandiva.Int16LiteralNode
+
+    get_value(): number
+}
+
+module Int32LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module FloatLiteralNode {
-        // Constructor properties interface
+}
+
+class Int32LiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.Int32LiteralNode
+
+
+constructor(properties?: Partial<Int32LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): Int32LiteralNode;
+
+    // Own methods of Gandiva.Int32LiteralNode
+
+    get_value(): number
+}
+
+module Int64LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class FloatLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.FloatLiteralNode
+}
 
-        static ['new'](value: number): FloatLiteralNode;
+class Int64LiteralNode extends LiteralNode {
 
-        // Owm methods of Gandiva-1.0.FloatLiteralNode
+    // Constructors of Gandiva.Int64LiteralNode
 
-        get_value(): number;
+
+constructor(properties?: Partial<Int64LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): Int64LiteralNode;
+
+    // Own methods of Gandiva.Int64LiteralNode
+
+    get_value(): number
+}
+
+module Int8LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module FunctionNode {
-        // Constructor properties interface
+}
+
+class Int8LiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.Int8LiteralNode
+
+
+constructor(properties?: Partial<Int8LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): Int8LiteralNode;
+
+    // Own methods of Gandiva.Int8LiteralNode
+
+    get_value(): number
+}
+
+module LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Node.ConstructorProps {
+
     }
 
-    class FunctionNode extends Node {
-        // Own properties of Gandiva-1.0.FunctionNode
+}
 
-        name: string;
+class LiteralNode extends Node {
 
-        // Constructors of Gandiva-1.0.FunctionNode
+    // Constructors of Gandiva.LiteralNode
 
-        static ['new'](name: string, parameters: Node[], return_type: Arrow.DataType): FunctionNode;
 
-        // Owm methods of Gandiva-1.0.FunctionNode
+constructor(properties?: Partial<LiteralNode.ConstructorProps>, ...args: any[]);
 
-        get_parameters(): Node[];
+_init(...args: any[]): void;
+
+}
+
+module NativeFunction {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+native_function: any;
+    nativeFunction: any;
     }
 
-    module FunctionRegistry {
-        // Constructor properties interface
+}
+
+class NativeFunction extends GObject.Object {
+
+    // Own properties of Gandiva.NativeFunction
+
+    set native_function(val: any);
+    set nativeFunction(val: any);
+
+    // Constructors of Gandiva.NativeFunction
+
+
+constructor(properties?: Partial<NativeFunction.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gandiva.NativeFunction
+
+    can_return_errors(): boolean
+    equal(other_native_function: NativeFunction): boolean
+    get_result_nullable_type(): ResultNullableType
+    get_signatures(): FunctionSignature[]
+    need_context(): boolean
+    need_function_holder(): boolean
+    to_string(): string
+}
+
+module Node {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+node: any;
+    return_type: Arrow.DataType;
+    returnType: Arrow.DataType;
     }
 
-    class FunctionRegistry extends GObject.Object {
-        // Constructors of Gandiva-1.0.FunctionRegistry
+}
 
-        static ['new'](): FunctionRegistry;
+class Node extends GObject.Object {
 
-        // Owm methods of Gandiva-1.0.FunctionRegistry
+    // Own properties of Gandiva.Node
 
-        get_native_functions(): NativeFunction[];
-        lookup(function_signature: FunctionSignature): NativeFunction | null;
+    set node(val: any);
+    get return_type(): Arrow.DataType;
+    get returnType(): Arrow.DataType;
+
+    // Constructors of Gandiva.Node
+
+
+constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gandiva.Node
+
+    to_string(): string
+}
+
+module NullLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module FunctionSignature {
-        // Constructor properties interface
+}
+
+class NullLiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.NullLiteralNode
+
+
+constructor(properties?: Partial<NullLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](return_type: Arrow.DataType): NullLiteralNode;
+}
+
+module OrNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends BooleanNode.ConstructorProps {
+
     }
 
-    class FunctionSignature extends GObject.Object {
-        // Own properties of Gandiva-1.0.FunctionSignature
+}
 
-        function_signature: any;
-        functionSignature: any;
+class OrNode extends BooleanNode {
 
-        // Constructors of Gandiva-1.0.FunctionSignature
+    // Constructors of Gandiva.OrNode
 
-        static ['new'](
-            base_name: string,
-            parameter_types: Arrow.DataType[],
-            return_type: Arrow.DataType,
-        ): FunctionSignature;
 
-        // Owm methods of Gandiva-1.0.FunctionSignature
+constructor(properties?: Partial<OrNode.ConstructorProps>, ...args: any[]);
 
-        equal(other_function_signature: FunctionSignature): boolean;
-        get_base_name(): string;
-        get_param_types(): Arrow.DataType[];
-        get_return_type(): Arrow.DataType;
-        to_string(): string;
+_init(...args: any[]): void;
+
+
+static ["new"](children: Node[]): OrNode;
+}
+
+module Projector {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+projector: any;
     }
 
-    module IfNode {
-        // Constructor properties interface
+}
+
+class Projector extends GObject.Object {
+
+    // Own properties of Gandiva.Projector
+
+    set projector(val: any);
+
+    // Constructors of Gandiva.Projector
+
+
+constructor(properties?: Partial<Projector.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](schema: Arrow.Schema, expressions: Expression[]): Projector;
+
+    // Own methods of Gandiva.Projector
+
+    evaluate(record_batch: Arrow.RecordBatch): (Arrow.Array[] | null)
+}
+
+module StringLiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class IfNode extends Node {
-        // Own properties of Gandiva-1.0.IfNode
+}
 
-        condition_node: Node;
-        conditionNode: Node;
-        else_node: Node;
-        elseNode: Node;
-        then_node: Node;
-        thenNode: Node;
+class StringLiteralNode extends LiteralNode {
 
-        // Constructors of Gandiva-1.0.IfNode
+    // Constructors of Gandiva.StringLiteralNode
 
-        static ['new'](condition_node: Node, then_node: Node, else_node: Node, return_type: Arrow.DataType): IfNode;
+
+constructor(properties?: Partial<StringLiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: string): StringLiteralNode;
+
+    // Own methods of Gandiva.StringLiteralNode
+
+    get_value(): string
+}
+
+module UInt16LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module Int16LiteralNode {
-        // Constructor properties interface
+}
+
+class UInt16LiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.UInt16LiteralNode
+
+
+constructor(properties?: Partial<UInt16LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): UInt16LiteralNode;
+
+    // Own methods of Gandiva.UInt16LiteralNode
+
+    get_value(): number
+}
+
+module UInt32LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class Int16LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.Int16LiteralNode
+}
 
-        static ['new'](value: number): Int16LiteralNode;
+class UInt32LiteralNode extends LiteralNode {
 
-        // Owm methods of Gandiva-1.0.Int16LiteralNode
+    // Constructors of Gandiva.UInt32LiteralNode
 
-        get_value(): number;
+
+constructor(properties?: Partial<UInt32LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): UInt32LiteralNode;
+
+    // Own methods of Gandiva.UInt32LiteralNode
+
+    get_value(): number
+}
+
+module UInt64LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    module Int32LiteralNode {
-        // Constructor properties interface
+}
+
+class UInt64LiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.UInt64LiteralNode
+
+
+constructor(properties?: Partial<UInt64LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): UInt64LiteralNode;
+
+    // Own methods of Gandiva.UInt64LiteralNode
+
+    get_value(): number
+}
+
+module UInt8LiteralNode {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends LiteralNode.ConstructorProps {
+
     }
 
-    class Int32LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.Int32LiteralNode
-
-        static ['new'](value: number): Int32LiteralNode;
-
-        // Owm methods of Gandiva-1.0.Int32LiteralNode
-
-        get_value(): number;
-    }
-
-    module Int64LiteralNode {
-        // Constructor properties interface
-    }
-
-    class Int64LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.Int64LiteralNode
-
-        static ['new'](value: number): Int64LiteralNode;
-
-        // Owm methods of Gandiva-1.0.Int64LiteralNode
-
-        get_value(): number;
-    }
-
-    module Int8LiteralNode {
-        // Constructor properties interface
-    }
-
-    class Int8LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.Int8LiteralNode
-
-        static ['new'](value: number): Int8LiteralNode;
-
-        // Owm methods of Gandiva-1.0.Int8LiteralNode
-
-        get_value(): number;
-    }
-
-    module LiteralNode {
-        // Constructor properties interface
-    }
-
-    class LiteralNode extends Node {}
-
-    module NativeFunction {
-        // Constructor properties interface
-    }
-
-    class NativeFunction extends GObject.Object {
-        // Own properties of Gandiva-1.0.NativeFunction
-
-        native_function: any;
-        nativeFunction: any;
-
-        // Owm methods of Gandiva-1.0.NativeFunction
-
-        can_return_errors(): boolean;
-        equal(other_native_function: NativeFunction): boolean;
-        get_result_nullable_type(): ResultNullableType;
-        get_signatures(): FunctionSignature[];
-        need_context(): boolean;
-        need_function_holder(): boolean;
-        to_string(): string;
-    }
-
-    module Node {
-        // Constructor properties interface
-    }
-
-    class Node extends GObject.Object {
-        // Own properties of Gandiva-1.0.Node
-
-        node: any;
-        return_type: Arrow.DataType;
-        returnType: Arrow.DataType;
-
-        // Owm methods of Gandiva-1.0.Node
-
-        to_string(): string;
-    }
-
-    module NullLiteralNode {
-        // Constructor properties interface
-    }
-
-    class NullLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.NullLiteralNode
-
-        static ['new'](return_type: Arrow.DataType): NullLiteralNode;
-    }
-
-    module OrNode {
-        // Constructor properties interface
-    }
-
-    class OrNode extends BooleanNode {
-        // Constructors of Gandiva-1.0.OrNode
-
-        static ['new'](children: Node[]): OrNode;
-    }
-
-    module Projector {
-        // Constructor properties interface
-    }
-
-    class Projector extends GObject.Object {
-        // Own properties of Gandiva-1.0.Projector
-
-        projector: any;
-
-        // Constructors of Gandiva-1.0.Projector
-
-        static ['new'](schema: Arrow.Schema, expressions: Expression[]): Projector;
-
-        // Owm methods of Gandiva-1.0.Projector
-
-        evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
-    }
-
-    module StringLiteralNode {
-        // Constructor properties interface
-    }
-
-    class StringLiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.StringLiteralNode
-
-        static ['new'](value: string): StringLiteralNode;
-
-        // Owm methods of Gandiva-1.0.StringLiteralNode
-
-        get_value(): string;
-    }
-
-    module UInt16LiteralNode {
-        // Constructor properties interface
-    }
-
-    class UInt16LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.UInt16LiteralNode
-
-        static ['new'](value: number): UInt16LiteralNode;
-
-        // Owm methods of Gandiva-1.0.UInt16LiteralNode
-
-        get_value(): number;
-    }
-
-    module UInt32LiteralNode {
-        // Constructor properties interface
-    }
-
-    class UInt32LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.UInt32LiteralNode
-
-        static ['new'](value: number): UInt32LiteralNode;
-
-        // Owm methods of Gandiva-1.0.UInt32LiteralNode
-
-        get_value(): number;
-    }
-
-    module UInt64LiteralNode {
-        // Constructor properties interface
-    }
-
-    class UInt64LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.UInt64LiteralNode
-
-        static ['new'](value: number): UInt64LiteralNode;
-
-        // Owm methods of Gandiva-1.0.UInt64LiteralNode
-
-        get_value(): number;
-    }
-
-    module UInt8LiteralNode {
-        // Constructor properties interface
-    }
-
-    class UInt8LiteralNode extends LiteralNode {
-        // Constructors of Gandiva-1.0.UInt8LiteralNode
-
-        static ['new'](value: number): UInt8LiteralNode;
-
-        // Owm methods of Gandiva-1.0.UInt8LiteralNode
-
-        get_value(): number;
-    }
-
-    class AndNodeClass {}
-
-    class BinaryLiteralNodeClass {}
-
-    class BooleanLiteralNodeClass {}
-
-    class BooleanNodeClass {}
-
-    class DoubleLiteralNodeClass {}
-
-    class ExpressionClass {}
-
-    class FieldNodeClass {}
-
-    class FloatLiteralNodeClass {}
-
-    class FunctionNodeClass {}
-
-    class FunctionRegistryClass {}
-
-    class FunctionSignatureClass {}
-
-    class IfNodeClass {}
-
-    class Int16LiteralNodeClass {}
-
-    class Int32LiteralNodeClass {}
-
-    class Int64LiteralNodeClass {}
-
-    class Int8LiteralNodeClass {}
-
-    class LiteralNodeClass {}
-
-    class NativeFunctionClass {}
-
-    class NodeClass {}
-
-    class NullLiteralNodeClass {}
-
-    class OrNodeClass {}
-
-    class ProjectorClass {}
-
-    class StringLiteralNodeClass {}
-
-    class UInt16LiteralNodeClass {}
-
-    class UInt32LiteralNodeClass {}
-
-    class UInt64LiteralNodeClass {}
-
-    class UInt8LiteralNodeClass {}
-
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+}
+
+class UInt8LiteralNode extends LiteralNode {
+
+    // Constructors of Gandiva.UInt8LiteralNode
+
+
+constructor(properties?: Partial<UInt8LiteralNode.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](value: number): UInt8LiteralNode;
+
+    // Own methods of Gandiva.UInt8LiteralNode
+
+    get_value(): number
+}
+
+type AndNodeClass = typeof AndNode
+type BinaryLiteralNodeClass = typeof BinaryLiteralNode
+type BooleanLiteralNodeClass = typeof BooleanLiteralNode
+type BooleanNodeClass = typeof BooleanNode
+type DoubleLiteralNodeClass = typeof DoubleLiteralNode
+type ExpressionClass = typeof Expression
+type FieldNodeClass = typeof FieldNode
+type FloatLiteralNodeClass = typeof FloatLiteralNode
+type FunctionNodeClass = typeof FunctionNode
+type FunctionRegistryClass = typeof FunctionRegistry
+type FunctionSignatureClass = typeof FunctionSignature
+type IfNodeClass = typeof IfNode
+type Int16LiteralNodeClass = typeof Int16LiteralNode
+type Int32LiteralNodeClass = typeof Int32LiteralNode
+type Int64LiteralNodeClass = typeof Int64LiteralNode
+type Int8LiteralNodeClass = typeof Int8LiteralNode
+type LiteralNodeClass = typeof LiteralNode
+type NativeFunctionClass = typeof NativeFunction
+type NodeClass = typeof Node
+type NullLiteralNodeClass = typeof NullLiteralNode
+type OrNodeClass = typeof OrNode
+type ProjectorClass = typeof Projector
+type StringLiteralNodeClass = typeof StringLiteralNode
+type UInt16LiteralNodeClass = typeof UInt16LiteralNode
+type UInt32LiteralNodeClass = typeof UInt32LiteralNode
+type UInt64LiteralNodeClass = typeof UInt64LiteralNode
+type UInt8LiteralNodeClass = typeof UInt8LiteralNode
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Gandiva;

@@ -5,8 +5,7 @@ declare module 'gi://GstRtspServer?version=1.0' {
 }
 
 declare module 'gi://GstRtspServer' {
-    import GstRtspServer10 from '@girs/gstrtspserver-1.0';
-    export default GstRtspServer10;
+    export * from 'gi://GstRtspServer?version=1.0';
 }
 
 

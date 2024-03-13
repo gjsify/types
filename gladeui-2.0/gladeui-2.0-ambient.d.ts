@@ -5,8 +5,7 @@ declare module 'gi://Gladeui?version=2.0' {
 }
 
 declare module 'gi://Gladeui' {
-    import Gladeui20 from '@girs/gladeui-2.0';
-    export default Gladeui20;
+    export * from 'gi://Gladeui?version=2.0';
 }
 
 

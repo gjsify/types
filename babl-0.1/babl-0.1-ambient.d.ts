@@ -5,8 +5,7 @@ declare module 'gi://Babl?version=0.1' {
 }
 
 declare module 'gi://Babl' {
-    import Babl01 from '@girs/babl-0.1';
-    export default Babl01;
+    export * from 'gi://Babl?version=0.1';
 }
 
 

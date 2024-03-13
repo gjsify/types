@@ -5,8 +5,7 @@ declare module 'gi://JSCore?version=3.0' {
 }
 
 declare module 'gi://JSCore' {
-    import JSCore30 from '@girs/jscore-3.0';
-    export default JSCore30;
+    export * from 'gi://JSCore?version=3.0';
 }
 
 

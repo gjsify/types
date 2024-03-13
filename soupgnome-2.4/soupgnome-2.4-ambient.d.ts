@@ -5,8 +5,7 @@ declare module 'gi://SoupGNOME?version=2.4' {
 }
 
 declare module 'gi://SoupGNOME' {
-    import SoupGNOME24 from '@girs/soupgnome-2.4';
-    export default SoupGNOME24;
+    export * from 'gi://SoupGNOME?version=2.4';
 }
 
 

@@ -5,8 +5,7 @@ declare module 'gi://Egg?version=1.0' {
 }
 
 declare module 'gi://Egg' {
-    import Egg10 from '@girs/egg-1.0';
-    export default Egg10;
+    export * from 'gi://Egg?version=1.0';
 }
 
 

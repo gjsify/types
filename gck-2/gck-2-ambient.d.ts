@@ -5,8 +5,7 @@ declare module 'gi://Gck?version=2' {
 }
 
 declare module 'gi://Gck' {
-    import Gck2 from '@girs/gck-2';
-    export default Gck2;
+    export * from 'gi://Gck?version=2';
 }
 
 

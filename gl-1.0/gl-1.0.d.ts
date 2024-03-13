@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,43 +15,122 @@ import './gl-1.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace GL {
-    function InitNames(): void;
-    class bitfield {}
 
-    class charARB {}
+function InitNames(): void
+class bitfield {
 
-    class clampf {}
+    // Constructors of GL.bitfield
 
-    class __boolean {}
+_init(...args: any[]): void;
 
-    class __enum {}
+}
 
-    class float {}
+class charARB {
 
-    class handleARB {}
+    // Constructors of GL.charARB
 
-    class int {}
+_init(...args: any[]): void;
 
-    class intptr {}
+}
 
-    class sizei {}
+class clampf {
 
-    class sizeiptr {}
+    // Constructors of GL.clampf
 
-    class uint {}
+_init(...args: any[]): void;
 
-    class __void {}
+}
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+class __boolean {
+
+    // Constructors of GL.__boolean
+
+_init(...args: any[]): void;
+
+}
+
+class __enum {
+
+    // Constructors of GL.__enum
+
+_init(...args: any[]): void;
+
+}
+
+class float {
+
+    // Constructors of GL.float
+
+_init(...args: any[]): void;
+
+}
+
+class handleARB {
+
+    // Constructors of GL.handleARB
+
+_init(...args: any[]): void;
+
+}
+
+class int {
+
+    // Constructors of GL.int
+
+_init(...args: any[]): void;
+
+}
+
+class intptr {
+
+    // Constructors of GL.intptr
+
+_init(...args: any[]): void;
+
+}
+
+class sizei {
+
+    // Constructors of GL.sizei
+
+_init(...args: any[]): void;
+
+}
+
+class sizeiptr {
+
+    // Constructors of GL.sizeiptr
+
+_init(...args: any[]): void;
+
+}
+
+class uint {
+
+    // Constructors of GL.uint
+
+_init(...args: any[]): void;
+
+}
+
+class __void {
+
+    // Constructors of GL.__void
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default GL;

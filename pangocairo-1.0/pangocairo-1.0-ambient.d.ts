@@ -5,8 +5,7 @@ declare module 'gi://PangoCairo?version=1.0' {
 }
 
 declare module 'gi://PangoCairo' {
-    import PangoCairo10 from '@girs/pangocairo-1.0';
-    export default PangoCairo10;
+    export * from 'gi://PangoCairo?version=1.0';
 }
 
 

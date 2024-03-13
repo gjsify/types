@@ -5,8 +5,7 @@ declare module 'gi://Vda?version=1' {
 }
 
 declare module 'gi://Vda' {
-    import Vda1 from '@girs/vda-1';
-    export default Vda1;
+    export * from 'gi://Vda?version=1';
 }
 
 

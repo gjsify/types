@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,159 +19,266 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Plasma {
-    module Client {
-        // Constructor properties interface
+
+module Client {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+client: any;
     }
 
-    class Client extends GObject.Object {
-        // Own properties of Plasma-1.0.Client
+}
 
-        client: any;
+class Client extends GObject.Object {
 
-        // Constructors of Plasma-1.0.Client
+    // Own properties of Plasma.Client
 
-        static ['new'](store_socket_name: string, options?: ClientOptions | null): Client;
+    set client(val: any);
 
-        // Owm methods of Plasma-1.0.Client
+    // Constructors of Plasma.Client
 
-        create(id: ObjectID, data_size: number, options?: ClientCreateOptions | null): CreatedObject | null;
-        disconnect(): boolean;
-        refer_object(id: ObjectID, timeout_ms: number): ReferredObject | null;
+
+constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](store_socket_name: string, options?: (ClientOptions | null)): Client;
+
+    // Own methods of Plasma.Client
+
+    create(id: ObjectID, data_size: number, options?: (ClientCreateOptions | null)): (CreatedObject | null)
+    disconnect(): boolean
+    disconnect(...args: never[]): any
+    refer_object(id: ObjectID, timeout_ms: number): (ReferredObject | null)
+}
+
+module ClientCreateOptions {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+gpu_device: number;
+    gpuDevice: number;
     }
 
-    module ClientCreateOptions {
-        // Constructor properties interface
+}
+
+class ClientCreateOptions extends GObject.Object {
+
+    // Own properties of Plasma.ClientCreateOptions
+
+    get gpu_device(): number;
+    set gpu_device(val: number);
+    get gpuDevice(): number;
+    set gpuDevice(val: number);
+
+    // Constructors of Plasma.ClientCreateOptions
+
+
+constructor(properties?: Partial<ClientCreateOptions.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): ClientCreateOptions;
+
+    // Own methods of Plasma.ClientCreateOptions
+
+    get_metadata(): (Uint8Array | null)
+    set_metadata(metadata?: (Uint8Array | null)): void
+}
+
+module ClientOptions {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+n_retries: number;
+    nRetries: number;
     }
 
-    class ClientCreateOptions extends GObject.Object {
-        // Own properties of Plasma-1.0.ClientCreateOptions
+}
 
-        gpu_device: number;
-        gpuDevice: number;
+class ClientOptions extends GObject.Object {
 
-        // Constructors of Plasma-1.0.ClientCreateOptions
+    // Own properties of Plasma.ClientOptions
 
-        static ['new'](): ClientCreateOptions;
+    get n_retries(): number;
+    set n_retries(val: number);
+    get nRetries(): number;
+    set nRetries(val: number);
 
-        // Owm methods of Plasma-1.0.ClientCreateOptions
+    // Constructors of Plasma.ClientOptions
 
-        get_metadata(): Uint8Array | null;
-        set_metadata(metadata?: Uint8Array | null): void;
+
+constructor(properties?: Partial<ClientOptions.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): ClientOptions;
+
+    // Own methods of Plasma.ClientOptions
+
+    get_n_retries(): number
+    set_n_retries(n_retries: number): void
+}
+
+module CreatedObject {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Object.ConstructorProps {
+
     }
 
-    module ClientOptions {
-        // Constructor properties interface
-    }
+}
 
-    class ClientOptions extends GObject.Object {
-        // Own properties of Plasma-1.0.ClientOptions
+class CreatedObject extends Object {
 
-        n_retries: number;
-        nRetries: number;
+    // Constructors of Plasma.CreatedObject
 
-        // Constructors of Plasma-1.0.ClientOptions
 
-        static ['new'](): ClientOptions;
+constructor(properties?: Partial<CreatedObject.ConstructorProps>, ...args: any[]);
 
-        // Owm methods of Plasma-1.0.ClientOptions
+_init(...args: any[]): void;
 
-        get_n_retries(): number;
-        set_n_retries(n_retries: number): void;
-    }
 
-    module CreatedObject {
-        // Constructor properties interface
-    }
-
-    class CreatedObject extends Object {
-        // Owm methods of Plasma-1.0.CreatedObject
-
-        /**
-         * Aborts the object in the object store. You can't use the aborted
-         * object anymore.
-         * @returns %TRUE on success, %FALSE on error.
-         */
-        abort(): boolean;
-        /**
-         * Seals the object in the object store. You can't use the sealed
-         * object anymore.
-         * @returns %TRUE on success, %FALSE on error.
-         */
-        seal(): boolean;
-    }
-
-    module Object {
-        // Constructor properties interface
-    }
-
-    class Object extends GObject.Object {
-        // Own properties of Plasma-1.0.Object
-
-        client: Client;
-        data: Arrow.Buffer;
-        gpu_device: number;
-        gpuDevice: number;
-        id: ObjectID;
-        metadata: Arrow.Buffer;
-        raw_data: any;
-        rawData: any;
-        raw_metadata: any;
-        rawMetadata: any;
-    }
-
-    module ObjectID {
-        // Constructor properties interface
-    }
-
-    class ObjectID extends GObject.Object {
-        // Constructors of Plasma-1.0.ObjectID
-
-        static ['new'](id: Uint8Array): ObjectID;
-
-        // Owm methods of Plasma-1.0.ObjectID
-
-        to_binary(): Uint8Array;
-        to_hex(): string;
-    }
-
-    module ReferredObject {
-        // Constructor properties interface
-    }
-
-    class ReferredObject extends Object {
-        // Owm methods of Plasma-1.0.ReferredObject
-
-        /**
-         * Releases the object explicitly. The object is no longer valid.
-         * @returns %TRUE on success, %FALSE on error.
-         */
-        release(): boolean;
-    }
-
-    class ClientClass {}
-
-    class ClientCreateOptionsClass {}
-
-    class ClientOptionsClass {}
-
-    class CreatedObjectClass {}
-
-    class ObjectClass {}
-
-    class ObjectIDClass {}
-
-    class ReferredObjectClass {}
+    // Own methods of Plasma.CreatedObject
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Aborts the object in the object store. You can't use the aborted
+     * object anymore.
+     * @returns %TRUE on success, %FALSE on error.
      */
-    const __name__: string;
+    abort(): boolean
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Seals the object in the object store. You can't use the sealed
+     * object anymore.
+     * @returns %TRUE on success, %FALSE on error.
      */
-    const __version__: string;
+    seal(): boolean
+}
+
+module Object {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+client: Client;
+    data: Arrow.Buffer;
+    gpu_device: number;
+    gpuDevice: number;
+    id: ObjectID;
+    metadata: Arrow.Buffer;
+    raw_data: any;
+    rawData: any;
+    raw_metadata: any;
+    rawMetadata: any;
+    }
+
+}
+
+class Object extends GObject.Object {
+
+    // Own properties of Plasma.Object
+
+    get client(): Client;
+    get data(): Arrow.Buffer;
+    get gpu_device(): number;
+    get gpuDevice(): number;
+    get id(): ObjectID;
+    get metadata(): Arrow.Buffer;
+    set raw_data(val: any);
+    set rawData(val: any);
+    set raw_metadata(val: any);
+    set rawMetadata(val: any);
+
+    // Constructors of Plasma.Object
+
+
+constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+}
+
+module ObjectID {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class ObjectID extends GObject.Object {
+
+    // Constructors of Plasma.ObjectID
+
+
+constructor(properties?: Partial<ObjectID.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](id: Uint8Array): ObjectID;
+
+    // Own methods of Plasma.ObjectID
+
+    to_binary(): Uint8Array
+    to_hex(): string
+}
+
+module ReferredObject {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Object.ConstructorProps {
+
+    }
+
+}
+
+class ReferredObject extends Object {
+
+    // Constructors of Plasma.ReferredObject
+
+
+constructor(properties?: Partial<ReferredObject.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Plasma.ReferredObject
+
+    /**
+     * Releases the object explicitly. The object is no longer valid.
+     * @returns %TRUE on success, %FALSE on error.
+     */
+    release(): boolean
+}
+
+type ClientClass = typeof Client
+type ClientCreateOptionsClass = typeof ClientCreateOptions
+type ClientOptionsClass = typeof ClientOptions
+type CreatedObjectClass = typeof CreatedObject
+type ObjectClass = typeof Object
+type ObjectIDClass = typeof ObjectID
+type ReferredObjectClass = typeof ReferredObject
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Plasma;

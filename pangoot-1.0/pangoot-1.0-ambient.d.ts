@@ -5,8 +5,7 @@ declare module 'gi://PangoOT?version=1.0' {
 }
 
 declare module 'gi://PangoOT' {
-    import PangoOT10 from '@girs/pangoot-1.0';
-    export default PangoOT10;
+    export * from 'gi://PangoOT?version=1.0';
 }
 
 

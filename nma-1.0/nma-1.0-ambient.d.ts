@@ -5,8 +5,7 @@ declare module 'gi://NMA?version=1.0' {
 }
 
 declare module 'gi://NMA' {
-    import NMA10 from '@girs/nma-1.0';
-    export default NMA10;
+    export * from 'gi://NMA?version=1.0';
 }
 
 

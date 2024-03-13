@@ -5,8 +5,7 @@ declare module 'gi://TelepathyGLib?version=0.12' {
 }
 
 declare module 'gi://TelepathyGLib' {
-    import TelepathyGLib012 from '@girs/telepathyglib-0.12';
-    export default TelepathyGLib012;
+    export * from 'gi://TelepathyGLib?version=0.12';
 }
 
 

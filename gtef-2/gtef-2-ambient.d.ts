@@ -5,8 +5,7 @@ declare module 'gi://Gtef?version=2' {
 }
 
 declare module 'gi://Gtef' {
-    import Gtef2 from '@girs/gtef-2';
-    export default Gtef2;
+    export * from 'gi://Gtef?version=2';
 }
 
 

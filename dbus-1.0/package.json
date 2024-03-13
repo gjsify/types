@@ -26,8 +26,7 @@
         "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit dbus-1.0.d.ts"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
+        "@girs/gjs": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

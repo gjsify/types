@@ -5,8 +5,7 @@ declare module 'gi://GstBadAudio?version=1.0' {
 }
 
 declare module 'gi://GstBadAudio' {
-    import GstBadAudio10 from '@girs/gstbadaudio-1.0';
-    export default GstBadAudio10;
+    export * from 'gi://GstBadAudio?version=1.0';
 }
 
 

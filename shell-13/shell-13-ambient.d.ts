@@ -5,8 +5,7 @@ declare module 'gi://Shell?version=13' {
 }
 
 declare module 'gi://Shell' {
-    import Shell13 from '@girs/shell-13';
-    export default Shell13;
+    export * from 'gi://Shell?version=13';
 }
 
 

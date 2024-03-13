@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,206 +19,209 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GdkPixdata {
-    /**
-     * Magic number for #GdkPixdata structures.
-     */
-    const PIXBUF_MAGIC_NUMBER: number;
-    /**
-     * The length of a #GdkPixdata structure without the `pixel_data` pointer.
-     */
-    const PIXDATA_HEADER_LENGTH: number;
-    /**
-     * Converts a `GdkPixdata` to a `GdkPixbuf`.
-     *
-     * If `copy_pixels` is `TRUE` or if the pixel data is run-length-encoded,
-     * the pixel data is copied into newly-allocated memory; otherwise it is
-     * reused.
-     * @param pixdata a #GdkPixdata to convert into a `GdkPixbuf`.
-     * @param copy_pixels whether to copy raw pixel data; run-length encoded   pixel data is always copied.
-     * @returns a new pixbuf
-     */
-    function pixbuf_from_pixdata(pixdata: Pixdata, copy_pixels: boolean): GdkPixbuf.Pixbuf;
-    /**
-     * An enumeration which is used by gdk_pixdata_to_csource() to
-     * determine the form of C source to be generated. The three values
-     * `GDK_PIXDATA_DUMP_PIXDATA_STREAM,` `GDK_PIXDATA_DUMP_PIXDATA_STRUCT`
-     * and `GDK_PIXDATA_DUMP_MACROS` are mutually exclusive, as are
-     * `GDK_PIXBUF_DUMP_GTYPES` and `GDK_PIXBUF_DUMP_CTYPES`. The remaining
-     * elements are optional flags that can be freely added.
-     */
-    enum PixdataDumpType {
-        /**
-         * Generate pixbuf data stream (a single
-         *    string containing a serialized #GdkPixdata structure in network byte
-         *    order).
-         */
-        PIXDATA_STREAM,
-        /**
-         * Generate #GdkPixdata structure (needs
-         *    the #GdkPixdata structure definition from gdk-pixdata.h).
-         */
-        PIXDATA_STRUCT,
-        /**
-         * Generate <function>*_ROWSTRIDE</function>,
-         *    <function>*_WIDTH</function>, <function>*_HEIGHT</function>,
-         *    <function>*_BYTES_PER_PIXEL</function> and
-         *    <function>*_RLE_PIXEL_DATA</function> or <function>*_PIXEL_DATA</function>
-         *    macro definitions for the image.
-         */
-        MACROS,
-        /**
-         * Generate GLib data types instead of
-         *    standard C data types.
-         */
-        GTYPES,
-        /**
-         * Generate standard C data types instead of
-         *    GLib data types.
-         */
-        CTYPES,
-        /**
-         * Generate static symbols.
-         */
-        STATIC,
-        /**
-         * Generate const symbols.
-         */
-        CONST,
-        /**
-         * Provide a <function>*_RUN_LENGTH_DECODE(image_buf, rle_data, size, bpp)</function>
-         *    macro definition  to  decode  run-length encoded image data.
-         */
-        RLE_DECODER,
-    }
-    /**
-     * An enumeration containing three sets of flags for a #GdkPixdata struct:
-     * one for the used colorspace, one for the width of the samples and one
-     * for the encoding of the pixel data.
-     */
-    enum PixdataType {
-        /**
-         * each pixel has red, green and blue samples.
-         */
-        COLOR_TYPE_RGB,
-        /**
-         * each pixel has red, green and blue samples
-         *    and an alpha value.
-         */
-        COLOR_TYPE_RGBA,
-        /**
-         * mask for the colortype flags of the enum.
-         */
-        COLOR_TYPE_MASK,
-        /**
-         * each sample has 8 bits.
-         */
-        SAMPLE_WIDTH_8,
-        /**
-         * mask for the sample width flags of the enum.
-         */
-        SAMPLE_WIDTH_MASK,
-        /**
-         * the pixel data is in raw form.
-         */
-        ENCODING_RAW,
-        /**
-         * the pixel data is run-length encoded. Runs may
-         *    be up to 127 bytes long; their length is stored in a single byte
-         *    preceding the pixel data for the run. If a run is constant, its length
-         *    byte has the high bit set and the pixel data consists of a single pixel
-         *    which must be repeated.
-         */
-        ENCODING_RLE,
-        /**
-         * mask for the encoding flags of the enum.
-         */
-        ENCODING_MASK,
-    }
-    /**
-     * A pixel buffer suitable for serialization and streaming.
-     *
-     * Using `GdkPixdata`, images can be compiled into an application,
-     * making it unnecessary to refer to external image files at runtime.
-     *
-     * `GdkPixbuf` includes a utility named `gdk-pixbuf-csource`, which
-     * can be used to convert image files into `GdkPixdata` structures suitable
-     * for inclusion in C sources. To convert the `GdkPixdata` structures back
-     * into a `GdkPixbuf`, use `gdk_pixbuf_from_pixdata()`.
-     */
-    class Pixdata {
-        // Own fields of GdkPixdata-2.0.Pixdata
 
-        magic: number;
-        length: number;
-        pixdata_type: number;
-        rowstride: number;
-        width: number;
-        height: number;
-        pixel_data: Uint8Array;
+/**
+ * Magic number for #GdkPixdata structures.
+ */
+const PIXBUF_MAGIC_NUMBER: number
+/**
+ * The length of a #GdkPixdata structure without the `pixel_data` pointer.
+ */
+const PIXDATA_HEADER_LENGTH: number
+/**
+ * Converts a `GdkPixdata` to a `GdkPixbuf`.
+ * 
+ * If `copy_pixels` is `TRUE` or if the pixel data is run-length-encoded,
+ * the pixel data is copied into newly-allocated memory; otherwise it is
+ * reused.
+ * @param pixdata a #GdkPixdata to convert into a `GdkPixbuf`.
+ * @param copy_pixels whether to copy raw pixel data; run-length encoded   pixel data is always copied.
+ * @returns a new pixbuf
+ */
+function pixbuf_from_pixdata(pixdata: Pixdata, copy_pixels: boolean): GdkPixbuf.Pixbuf
+/**
+ * An enumeration which is used by gdk_pixdata_to_csource() to
+ * determine the form of C source to be generated. The three values
+ * `GDK_PIXDATA_DUMP_PIXDATA_STREAM,` `GDK_PIXDATA_DUMP_PIXDATA_STRUCT`
+ * and `GDK_PIXDATA_DUMP_MACROS` are mutually exclusive, as are
+ * `GDK_PIXBUF_DUMP_GTYPES` and `GDK_PIXBUF_DUMP_CTYPES`. The remaining
+ * elements are optional flags that can be freely added.
+ */
+enum PixdataDumpType {
+    /**
+     * Generate pixbuf data stream (a single
+     *    string containing a serialized #GdkPixdata structure in network byte
+     *    order).
+     */
+    PIXDATA_STREAM,
+    /**
+     * Generate #GdkPixdata structure (needs
+     *    the #GdkPixdata structure definition from gdk-pixdata.h).
+     */
+    PIXDATA_STRUCT,
+    /**
+     * Generate <function>*_ROWSTRIDE</function>,
+     *    <function>*_WIDTH</function>, <function>*_HEIGHT</function>,
+     *    <function>*_BYTES_PER_PIXEL</function> and
+     *    <function>*_RLE_PIXEL_DATA</function> or <function>*_PIXEL_DATA</function>
+     *    macro definitions for the image.
+     */
+    MACROS,
+    /**
+     * Generate GLib data types instead of
+     *    standard C data types.
+     */
+    GTYPES,
+    /**
+     * Generate standard C data types instead of
+     *    GLib data types.
+     */
+    CTYPES,
+    /**
+     * Generate static symbols.
+     */
+    STATIC,
+    /**
+     * Generate const symbols.
+     */
+    CONST,
+    /**
+     * Provide a <function>*_RUN_LENGTH_DECODE(image_buf, rle_data, size, bpp)</function>
+     *    macro definition  to  decode  run-length encoded image data.
+     */
+    RLE_DECODER,
+}
+/**
+ * An enumeration containing three sets of flags for a #GdkPixdata struct:
+ * one for the used colorspace, one for the width of the samples and one
+ * for the encoding of the pixel data.
+ */
+enum PixdataType {
+    /**
+     * each pixel has red, green and blue samples.
+     */
+    COLOR_TYPE_RGB,
+    /**
+     * each pixel has red, green and blue samples
+     *    and an alpha value.
+     */
+    COLOR_TYPE_RGBA,
+    /**
+     * mask for the colortype flags of the enum.
+     */
+    COLOR_TYPE_MASK,
+    /**
+     * each sample has 8 bits.
+     */
+    SAMPLE_WIDTH_8,
+    /**
+     * mask for the sample width flags of the enum.
+     */
+    SAMPLE_WIDTH_MASK,
+    /**
+     * the pixel data is in raw form.
+     */
+    ENCODING_RAW,
+    /**
+     * the pixel data is run-length encoded. Runs may
+     *    be up to 127 bytes long; their length is stored in a single byte
+     *    preceding the pixel data for the run. If a run is constant, its length
+     *    byte has the high bit set and the pixel data consists of a single pixel
+     *    which must be repeated.
+     */
+    ENCODING_RLE,
+    /**
+     * mask for the encoding flags of the enum.
+     */
+    ENCODING_MASK,
+}
+/**
+ * A pixel buffer suitable for serialization and streaming.
+ * 
+ * Using `GdkPixdata`, images can be compiled into an application,
+ * making it unnecessary to refer to external image files at runtime.
+ * 
+ * `GdkPixbuf` includes a utility named `gdk-pixbuf-csource`, which
+ * can be used to convert image files into `GdkPixdata` structures suitable
+ * for inclusion in C sources. To convert the `GdkPixdata` structures back
+ * into a `GdkPixbuf`, use `gdk_pixbuf_from_pixdata()`.
+ */
+class Pixdata {
 
-        // Constructors of GdkPixdata-2.0.Pixdata
+    // Own fields of GdkPixdata.Pixdata
 
-        constructor(
-            properties?: Partial<{
-                magic: number;
-                length: number;
-                pixdata_type: number;
-                rowstride: number;
-                width: number;
-                height: number;
-                pixel_data: Uint8Array;
-            }>,
-        );
+magic: number
+length: number
+pixdata_type: number
+rowstride: number
+width: number
+height: number
+pixel_data: Uint8Array
 
-        // Owm methods of GdkPixdata-2.0.Pixdata
+    // Constructors of GdkPixdata.Pixdata
 
-        /**
-         * Deserializes (reconstruct) a #GdkPixdata structure from a byte stream.
-         *
-         * The byte stream consists of a straightforward writeout of the
-         * `GdkPixdata` fields in network byte order, plus the `pixel_data`
-         * bytes the structure points to.
-         *
-         * The `pixdata` contents are reconstructed byte by byte and are checked
-         * for validity.
-         *
-         * This function may fail with `GDK_PIXBUF_ERROR_CORRUPT_IMAGE`
-         * or `GDK_PIXBUF_ERROR_UNKNOWN_TYPE`.
-         * @param stream stream of bytes containing a   serialized #GdkPixdata structure.
-         * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
-         */
-        deserialize(stream: Uint8Array): boolean;
-        /**
-         * Serializes a #GdkPixdata structure into a byte stream.
-         * The byte stream consists of a straightforward writeout of the
-         * #GdkPixdata fields in network byte order, plus the `pixel_data`
-         * bytes the structure points to.
-         * @returns A newly-allocated string containing the serialized #GdkPixdata structure.
-         */
-        serialize(): Uint8Array;
-        /**
-         * Generates C source code suitable for compiling images directly
-         * into programs.
-         *
-         * GdkPixbuf ships with a program called `gdk-pixbuf-csource`, which offers
-         * a command line interface to this function.
-         * @param name used for naming generated data structures or macros
-         * @param dump_type the kind of C source to be generated
-         * @returns a newly-allocated string buffer containing   the C source form of `pixdata`.
-         */
-        to_csource(name: string, dump_type: PixdataDumpType): GLib.String;
-    }
+
+    constructor(properties?: Partial<{
+      magic: number
+length: number
+pixdata_type: number
+rowstride: number
+width: number
+height: number
+pixel_data: Uint8Array
+    }>);
+_init(...args: any[]): void;
+
+
+    // Own methods of GdkPixdata.Pixdata
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Deserializes (reconstruct) a #GdkPixdata structure from a byte stream.
+     * 
+     * The byte stream consists of a straightforward writeout of the
+     * `GdkPixdata` fields in network byte order, plus the `pixel_data`
+     * bytes the structure points to.
+     * 
+     * The `pixdata` contents are reconstructed byte by byte and are checked
+     * for validity.
+     * 
+     * This function may fail with `GDK_PIXBUF_ERROR_CORRUPT_IMAGE`
+     * or `GDK_PIXBUF_ERROR_UNKNOWN_TYPE`.
+     * @param stream stream of bytes containing a   serialized #GdkPixdata structure.
+     * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
      */
-    const __name__: string;
+    deserialize(stream: Uint8Array): boolean
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Serializes a #GdkPixdata structure into a byte stream.
+     * The byte stream consists of a straightforward writeout of the
+     * #GdkPixdata fields in network byte order, plus the `pixel_data`
+     * bytes the structure points to.
+     * @returns A newly-allocated string containing the serialized #GdkPixdata structure.
      */
-    const __version__: string;
+    serialize(): Uint8Array
+    /**
+     * Generates C source code suitable for compiling images directly
+     * into programs.
+     * 
+     * GdkPixbuf ships with a program called `gdk-pixbuf-csource`, which offers
+     * a command line interface to this function.
+     * @param name used for naming generated data structures or macros
+     * @param dump_type the kind of C source to be generated
+     * @returns a newly-allocated string buffer containing   the C source form of `pixdata`.
+     */
+    to_csource(name: string, dump_type: PixdataDumpType): GLib.String
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default GdkPixdata;

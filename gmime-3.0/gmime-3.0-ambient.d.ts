@@ -5,8 +5,7 @@ declare module 'gi://GMime?version=3.0' {
 }
 
 declare module 'gi://GMime' {
-    import GMime30 from '@girs/gmime-3.0';
-    export default GMime30;
+    export * from 'gi://GMime?version=3.0';
 }
 
 

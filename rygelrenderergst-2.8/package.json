@@ -26,20 +26,12 @@
         "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit rygelrenderergst-2.8.d.ts"
     },
     "dependencies": {
-        "@girs/gee-0.8": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
-        "@girs/gssdp-1.6": "workspace:^",
         "@girs/gst-1.0": "workspace:^",
-        "@girs/gupnp-1.6": "workspace:^",
-        "@girs/gupnpav-1.0": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^",
         "@girs/rygelcore-2.8": "workspace:^",
-        "@girs/rygelrenderer-2.8": "workspace:^",
-        "@girs/soup-3.0": "workspace:^"
+        "@girs/rygelrenderer-2.8": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

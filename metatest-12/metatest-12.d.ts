@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -32,73 +33,116 @@ import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace MetaTest {
-    enum ContextTestType {
-        HEADLESS,
-        VKMS,
-        NESTED,
-    }
-    enum ContextTestFlag {
-        NONE,
-        TEST_CLIENT,
-        NO_X11,
-    }
-    enum TestRunFlags {
-        NONE,
-        CAN_SKIP,
-    }
-    module ContextTest {
-        // Signal callback interfaces
 
-        interface AfterTests {
-            (): void;
-        }
+enum ContextTestType {
+    HEADLESS,
+    VKMS,
+    NESTED,
+}
+enum ContextTestFlag {
+    NONE,
+    TEST_CLIENT,
+    NO_X11,
+}
+enum TestRunFlags {
+    NONE,
+    CAN_SKIP,
+}
+module ContextTest {
 
-        interface BeforeTests {
-            (): void;
-        }
+    // Signal callback interfaces
 
-        interface RunTests {
-            (): number;
-        }
-
-        // Constructor properties interface
+    interface AfterTests {
+        (): void
     }
 
-    class ContextTest extends Meta.Context {
-        // Owm methods of MetaTest-12.ContextTest
-
-        run_tests(flags: TestRunFlags): number;
-        wait_for_x11_display(): void;
+    interface BeforeTests {
+        (): void
     }
 
-    module TestMonitor {
-        // Constructor properties interface
+    interface RunTests {
+        (): number
     }
 
-    class TestMonitor extends GObject.Object {
-        // Constructors of MetaTest-12.TestMonitor
 
-        static ['new'](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
+    // Constructor properties interface
 
-        // Owm methods of MetaTest-12.TestMonitor
+    interface ConstructorProps extends Meta.Context.ConstructorProps {
 
-        destroy(): void;
     }
 
-    class ContextTestClass {}
+}
 
-    class TestMonitorClass {}
+class ContextTest extends Meta.Context {
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+    // Constructors of MetaTest.ContextTest
+
+
+constructor(properties?: Partial<ContextTest.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own signals of MetaTest.ContextTest
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'after-tests', callback: ((_source: this) => void)): number
+    connect_after(signal: 'after-tests', callback: ((_source: this) => void)): number
+    emit(signal: 'after-tests'): void
+    connect(signal: 'before-tests', callback: ((_source: this) => void)): number
+    connect_after(signal: 'before-tests', callback: ((_source: this) => void)): number
+    emit(signal: 'before-tests'): void
+    connect(signal: 'run-tests', callback: ((_source: this) => number)): number
+    connect_after(signal: 'run-tests', callback: ((_source: this) => number)): number
+    emit(signal: 'run-tests'): void
+
+    // Own methods of MetaTest.ContextTest
+
+    run_tests(flags: TestRunFlags): number
+    wait_for_x11_display(): void
+}
+
+module TestMonitor {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class TestMonitor extends GObject.Object {
+
+    // Constructors of MetaTest.TestMonitor
+
+
+constructor(properties?: Partial<TestMonitor.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
+
+    // Own methods of MetaTest.TestMonitor
+
+    destroy(): void
+}
+
+type ContextTestClass = typeof ContextTest
+type TestMonitorClass = typeof TestMonitor
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default MetaTest;

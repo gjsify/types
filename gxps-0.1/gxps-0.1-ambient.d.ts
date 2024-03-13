@@ -5,8 +5,7 @@ declare module 'gi://GXPS?version=0.1' {
 }
 
 declare module 'gi://GXPS' {
-    import GXPS01 from '@girs/gxps-0.1';
-    export default GXPS01;
+    export * from 'gi://GXPS?version=0.1';
 }
 
 

@@ -5,8 +5,7 @@ declare module 'gi://EDataServer?version=1.2' {
 }
 
 declare module 'gi://EDataServer' {
-    import EDataServer12 from '@girs/edataserver-1.2';
-    export default EDataServer12;
+    export * from 'gi://EDataServer?version=1.2';
 }
 
 

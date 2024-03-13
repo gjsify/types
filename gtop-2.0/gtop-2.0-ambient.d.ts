@@ -5,8 +5,7 @@ declare module 'gi://GTop?version=2.0' {
 }
 
 declare module 'gi://GTop' {
-    import GTop20 from '@girs/gtop-2.0';
-    export default GTop20;
+    export * from 'gi://GTop?version=2.0';
 }
 
 

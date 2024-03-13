@@ -5,8 +5,7 @@ declare module 'gi://GnomeMaps?version=1.0' {
 }
 
 declare module 'gi://GnomeMaps' {
-    import GnomeMaps10 from '@girs/gnomemaps-1.0';
-    export default GnomeMaps10;
+    export * from 'gi://GnomeMaps?version=1.0';
 }
 
 

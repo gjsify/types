@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -21,777 +22,4051 @@ import type Soup from '@girs/soup-2.4';
 import type GSSDP from '@girs/gssdp-1.2';
 
 export namespace RygelCore {
-    enum LogLevel {
-        INVALID,
-        ERROR,
-        CRITICAL,
-        WARNING,
-        INFO,
-        DEFAULT,
-        DEBUG,
-    }
-    enum ConfigurationEntry {
-        INTERFACE,
-        PORT,
-        TRANSCODING,
-        ALLOW_UPLOAD,
-        ALLOW_DELETION,
-        LOG_LEVELS,
-        PLUGIN_PATH,
-        VIDEO_UPLOAD_FOLDER,
-        MUSIC_UPLOAD_FOLDER,
-        PICTURE_UPLOAD_FOLDER,
-    }
-    enum SectionEntry {
-        TITLE,
-        ENABLED,
-    }
-    class ConfigurationError extends GLib.Error {
-        // Own fields of RygelCore-2.6.ConfigurationError
 
-        NO_VALUE_SET: number;
-        VALUE_OUT_OF_RANGE: number;
+enum LogLevel {
+    INVALID,
+    ERROR,
+    CRITICAL,
+    WARNING,
+    INFO,
+    DEFAULT,
+    DEBUG,
+}
+enum ConfigurationEntry {
+    INTERFACE,
+    PORT,
+    TRANSCODING,
+    ALLOW_UPLOAD,
+    ALLOW_DELETION,
+    LOG_LEVELS,
+    PLUGIN_PATH,
+    VIDEO_UPLOAD_FOLDER,
+    MUSIC_UPLOAD_FOLDER,
+    PICTURE_UPLOAD_FOLDER,
+}
+enum SectionEntry {
+    TITLE,
+    ENABLED,
+}
+class ConfigurationError extends GLib.Error {
 
-        // Constructors of RygelCore-2.6.ConfigurationError
+    // Static fields of RygelCore.ConfigurationError
 
-        constructor(options: { message: string; code: number });
-    }
+static NO_VALUE_SET: number
+static VALUE_OUT_OF_RANGE: number
 
-    class CmdlineConfigError extends GLib.Error {
-        // Own fields of RygelCore-2.6.CmdlineConfigError
+    // Constructors of RygelCore.ConfigurationError
 
-        VERSION_ONLY: number;
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        // Constructors of RygelCore-2.6.CmdlineConfigError
+}
 
-        constructor(options: { message: string; code: number });
-    }
+class CmdlineConfigError extends GLib.Error {
 
-    function get_pretty_host_name(): string;
-    enum PluginCapabilities {
-        NONE,
-        IMAGE_UPLOAD,
-        VIDEO_UPLOAD,
-        AUDIO_UPLOAD,
-        UPLOAD,
-        TRACK_CHANGES,
-        CREATE_CONTAINERS,
-        DIAGNOSTICS,
-        ENERGY_MANAGEMENT,
-    }
-    module ConnectionManager {
-        // Constructor properties interface
-    }
+    // Static fields of RygelCore.CmdlineConfigError
 
-    class ConnectionManager extends GUPnP.Service {
-        // Own fields of RygelCore-2.6.ConnectionManager
+static VERSION_ONLY: number
 
-        sink_protocol_info: string;
-        connection_ids: string;
-        source_protocol_info: string;
-        rcs_id: number;
-        av_transport_id: number;
-        direction: string;
+    // Constructors of RygelCore.CmdlineConfigError
 
-        // Constructors of RygelCore-2.6.ConnectionManager
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        static ['new'](): ConnectionManager;
+}
 
-        // Owm methods of RygelCore-2.6.ConnectionManager
+function get_pretty_host_name(): string
+enum PluginCapabilities {
+    NONE,
+    IMAGE_UPLOAD,
+    VIDEO_UPLOAD,
+    AUDIO_UPLOAD,
+    UPLOAD,
+    TRACK_CHANGES,
+    CREATE_CONTAINERS,
+    DIAGNOSTICS,
+    ENERGY_MANAGEMENT,
+}
+module ConnectionManager {
 
-        get_current_protocol_info(): string;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GUPnP.Service.ConstructorProps {
+
     }
 
-    module BasicManagement {
-        // Constructor properties interface
+}
+
+class ConnectionManager extends GUPnP.Service {
+
+    // Own fields of RygelCore.ConnectionManager
+
+sink_protocol_info: string
+connection_ids: string
+source_protocol_info: string
+rcs_id: number
+av_transport_id: number
+direction: string
+
+    // Constructors of RygelCore.ConnectionManager
+
+
+constructor(properties?: Partial<ConnectionManager.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): ConnectionManager;
+
+    // Own virtual methods of RygelCore.ConnectionManager
+
+    vfunc_get_current_protocol_info(): string
+
+    // Own methods of RygelCore.ConnectionManager
+
+    get_current_protocol_info(): string
+}
+
+module BasicManagement {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GUPnP.Service.ConstructorProps {
+max_history_size: number;
+    maxHistorySize: number;
     }
 
-    class BasicManagement extends GUPnP.Service {
-        // Own properties of RygelCore-2.6.BasicManagement
+}
 
-        max_history_size: number;
-        maxHistorySize: number;
+class BasicManagement extends GUPnP.Service {
 
-        // Own fields of RygelCore-2.6.BasicManagement
+    // Own properties of RygelCore.BasicManagement
 
-        device_status: string;
+    get max_history_size(): number;
+    set max_history_size(val: number);
+    get maxHistorySize(): number;
+    set maxHistorySize(val: number);
 
-        // Constructors of RygelCore-2.6.BasicManagement
+    // Own fields of RygelCore.BasicManagement
 
-        static ['new'](): BasicManagement;
+device_status: string
 
-        // Owm methods of RygelCore-2.6.BasicManagement
+    // Constructors of RygelCore.BasicManagement
 
-        get_max_history_size(): number;
-        set_max_history_size(value: number): void;
+
+constructor(properties?: Partial<BasicManagement.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): BasicManagement;
+
+    // Own methods of RygelCore.BasicManagement
+
+    get_max_history_size(): number
+    set_max_history_size(value: number): void
+}
+
+module DescriptionFile {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module DescriptionFile {
-        // Constructor properties interface
+}
+
+class DescriptionFile extends GObject.Object {
+
+    // Constructors of RygelCore.DescriptionFile
+
+
+constructor(properties?: Partial<DescriptionFile.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](template_file: string): DescriptionFile;
+
+static from_xml_document(doc: GUPnP.XMLDoc): DescriptionFile;
+
+    // Own methods of RygelCore.DescriptionFile
+
+    set_device_type(device_type: string): void
+    set_model_description(model_description: string): void
+    set_model_name(model_name: string): void
+    set_model_number(model_number: string): void
+    set_friendly_name(friendly_name: string): void
+    get_friendly_name(): string
+    set_udn(udn: string): void
+    get_udn(): (string | null)
+    set_serial_number(serial: string): void
+    set_dlna_caps(capabilities: PluginCapabilities): void
+    clear_service_list(): void
+    add_dlna_doc_element(dlnadoc_xpath: string, dlnadoc_non_xpath: string, dev_cap: string): void
+    remove_dlna_doc_element(dlnadoc_xpath: string): void
+    add_service(device_name: string, resource_info: ResourceInfo): void
+    clear_icon_list(): void
+    add_icon(device_name: string, icon_info: IconInfo, url: string): void
+    modify_service_type(old_type: string, new_type: string): void
+    save(path: string): void
+}
+
+class DLNAProfile {
+
+    // Own fields of RygelCore.DLNAProfile
+
+ref_count: number
+mime: string
+name: string
+
+    // Constructors of RygelCore.DLNAProfile
+
+_init(...args: any[]): void;
+
+
+static ["new"](name: string, mime: string): DLNAProfile;
+
+    // Own static methods of RygelCore.DLNAProfile
+
+    static compare_by_name(a: DLNAProfile, b: DLNAProfile): number
+}
+
+module EnergyManagement {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GUPnP.Service.ConstructorProps {
+
     }
 
-    class DescriptionFile extends GObject.Object {
-        // Constructors of RygelCore-2.6.DescriptionFile
+}
 
-        static ['new'](template_file: string): DescriptionFile;
+class EnergyManagement extends GUPnP.Service {
 
-        static from_xml_document(doc: GUPnP.XMLDoc): DescriptionFile;
+    // Constructors of RygelCore.EnergyManagement
 
-        // Owm methods of RygelCore-2.6.DescriptionFile
 
-        set_device_type(device_type: string): void;
-        set_model_description(model_description: string): void;
-        set_model_name(model_name: string): void;
-        set_model_number(model_number: string): void;
-        set_friendly_name(friendly_name: string): void;
-        get_friendly_name(): string;
-        set_udn(udn: string): void;
-        get_udn(): string | null;
-        set_serial_number(serial: string): void;
-        set_dlna_caps(capabilities: PluginCapabilities): void;
-        clear_service_list(): void;
-        add_dlna_doc_element(dlnadoc_xpath: string, dlnadoc_non_xpath: string, dev_cap: string): void;
-        remove_dlna_doc_element(dlnadoc_xpath: string): void;
-        add_service(device_name: string, resource_info: ResourceInfo): void;
-        clear_icon_list(): void;
-        add_icon(device_name: string, icon_info: IconInfo, url: string): void;
-        modify_service_type(old_type: string, new_type: string): void;
-        save(path: string): void;
+constructor(properties?: Partial<EnergyManagement.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): EnergyManagement;
+}
+
+module RootDevice {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GUPnP.RootDevice.ConstructorProps, Gio.Initable.ConstructorProps {
+services: Gee.ArrayList;
     }
 
-    class DLNAProfile {
-        // Own fields of RygelCore-2.6.DLNAProfile
+}
 
-        ref_count: number;
-        mime: string;
-        name: string;
+class RootDevice extends GUPnP.RootDevice implements Gio.Initable {
 
-        // Constructors of RygelCore-2.6.DLNAProfile
+    // Own properties of RygelCore.RootDevice
 
-        static ['new'](name: string, mime: string): DLNAProfile;
+    get services(): Gee.ArrayList;
+    set services(val: Gee.ArrayList);
 
-        // Owm methods of RygelCore-2.6.DLNAProfile
+    // Constructors of RygelCore.RootDevice
 
-        static compare_by_name(a: DLNAProfile, b: DLNAProfile): number;
+
+constructor(properties?: Partial<RootDevice.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](context: GUPnP.Context, plugin: Plugin, description_doc: GUPnP.XMLDoc, description_path: string, description_dir: string): RootDevice;
+// Conflicted with GUPnP.RootDevice.new
+
+static ["new"](...args: never[]): any;
+
+    // Own methods of RygelCore.RootDevice
+
+    get_services(): Gee.ArrayList
+
+// Inherited methods
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+ */
+init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ */
+vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module RootDeviceFactory {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
+context: GUPnP.Context;
     }
 
-    module EnergyManagement {
-        // Constructor properties interface
+}
+
+class RootDeviceFactory extends GObject.Object implements Gio.Initable {
+
+    // Own properties of RygelCore.RootDeviceFactory
+
+    get context(): GUPnP.Context;
+
+    // Constructors of RygelCore.RootDeviceFactory
+
+
+constructor(properties?: Partial<RootDeviceFactory.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](context: GUPnP.Context): RootDeviceFactory;
+
+    // Own methods of RygelCore.RootDeviceFactory
+
+    create(plugin: Plugin): RootDevice
+    get_context(): GUPnP.Context
+
+// Inherited methods
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+ */
+init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Initializes the object implementing the interface.
+ * 
+ * This method is intended for language bindings. If writing in C,
+ * g_initable_new() should typically be used instead.
+ * 
+ * The object must be initialized before any real use after initial
+ * construction, either with this function or g_async_initable_init_async().
+ * 
+ * Implementations may also support cancellation. If `cancellable` is not %NULL,
+ * then initialization can be cancelled by triggering the cancellable object
+ * from another thread. If the operation was cancelled, the error
+ * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+ * the object doesn't support cancellable initialization the error
+ * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+ * 
+ * If the object is not initialized, or initialization returns with an
+ * error, then all operations on the object except g_object_ref() and
+ * g_object_unref() are considered to be invalid, and have undefined
+ * behaviour. See the [introduction][ginitable] for more details.
+ * 
+ * Callers should not assume that a class which implements #GInitable can be
+ * initialized multiple times, unless the class explicitly documents itself as
+ * supporting this. Generally, a class’ implementation of init() can assume
+ * (and assert) that it will only be called once. Previously, this documentation
+ * recommended all #GInitable implementations should be idempotent; that
+ * recommendation was relaxed in GLib 2.54.
+ * 
+ * If a class explicitly supports being initialized multiple times, it is
+ * recommended that the method is idempotent: multiple calls with the same
+ * arguments should return the same results. Only the first call initializes
+ * the object; further calls return the result of the first call.
+ * 
+ * One reason why a class might need to support idempotent initialization is if
+ * it is designed to be used via the singleton pattern, with a
+ * #GObjectClass.constructor that sometimes returns an existing instance.
+ * In this pattern, a caller would expect to be able to call g_initable_init()
+ * on the result of g_object_new(), regardless of whether it is in fact a new
+ * instance.
+ * @param cancellable optional #GCancellable object, %NULL to ignore.
+ */
+vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module LogHandler {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class EnergyManagement extends GUPnP.Service {
-        // Constructors of RygelCore-2.6.EnergyManagement
+}
 
-        static ['new'](): EnergyManagement;
+class LogHandler extends GObject.Object {
+
+    // Constructors of RygelCore.LogHandler
+
+
+constructor(properties?: Partial<LogHandler.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of RygelCore.LogHandler
+
+    static get_default(): LogHandler
+}
+
+module MetaConfig {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
+
     }
 
-    module RootDevice {
-        // Constructor properties interface
+}
+
+class MetaConfig extends GObject.Object implements Configuration {
+
+    // Constructors of RygelCore.MetaConfig
+
+
+constructor(properties?: Partial<MetaConfig.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): MetaConfig;
+
+    // Own static methods of RygelCore.MetaConfig
+
+    static get_default(): MetaConfig
+    static register_configuration(config: Configuration): void
+    static cleanup(): void
+
+// Inherited methods
+get_interface(): string
+get_interfaces(): string[]
+get_port(): number
+get_transcoding(): boolean
+get_allow_upload(): boolean
+get_allow_deletion(): boolean
+get_log_levels(): string
+get_plugin_path(): string
+get_engine_path(): string
+get_media_engine(): string
+get_video_upload_folder(): (string | null)
+get_music_upload_folder(): (string | null)
+get_picture_upload_folder(): (string | null)
+get_enabled(section: string): boolean
+get_title(section: string): string
+get_string(section: string, key: string): string
+get_string_list(section: string, key: string): Gee.ArrayList
+get_int(section: string, key: string, min: number, max: number): number
+get_int_list(section: string, key: string): Gee.ArrayList
+get_bool(section: string, key: string): boolean
+vfunc_get_interface(): string
+vfunc_get_interfaces(): string[]
+vfunc_get_port(): number
+vfunc_get_transcoding(): boolean
+vfunc_get_allow_upload(): boolean
+vfunc_get_allow_deletion(): boolean
+vfunc_get_log_levels(): string
+vfunc_get_plugin_path(): string
+vfunc_get_engine_path(): string
+vfunc_get_media_engine(): string
+vfunc_get_video_upload_folder(): (string | null)
+vfunc_get_music_upload_folder(): (string | null)
+vfunc_get_picture_upload_folder(): (string | null)
+vfunc_get_enabled(section: string): boolean
+vfunc_get_title(section: string): string
+vfunc_get_string(section: string, key: string): string
+vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+vfunc_get_int(section: string, key: string, min: number, max: number): number
+vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+vfunc_get_bool(section: string, key: string): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module PluginLoader {
+
+    // Signal callback interfaces
+
+    interface PluginAvailable {
+        (plugin: Plugin): void
     }
 
-    class RootDevice extends GUPnP.RootDevice {
-        // Own properties of RygelCore-2.6.RootDevice
 
-        services: Gee.ArrayList;
+    // Constructor properties interface
 
-        // Constructors of RygelCore-2.6.RootDevice
+    interface ConstructorProps extends RecursiveModuleLoader.ConstructorProps {
 
-        static ['new'](
-            context: GUPnP.Context,
-            plugin: Plugin,
-            description_doc: GUPnP.XMLDoc,
-            description_path: string,
-            description_dir: string,
-        ): RootDevice;
-
-        // Owm methods of RygelCore-2.6.RootDevice
-
-        get_services(): Gee.ArrayList;
     }
 
-    module RootDeviceFactory {
-        // Constructor properties interface
+}
+
+class PluginLoader extends RecursiveModuleLoader {
+
+    // Constructors of RygelCore.PluginLoader
+
+
+constructor(properties?: Partial<PluginLoader.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): PluginLoader;
+
+    // Own signals of RygelCore.PluginLoader
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'plugin-available', callback: ((_source: this, plugin: Plugin) => void)): number
+    connect_after(signal: 'plugin-available', callback: ((_source: this, plugin: Plugin) => void)): number
+    emit(signal: 'plugin-available', plugin: Plugin): void
+
+    // Own methods of RygelCore.PluginLoader
+
+    plugin_disabled(name: string): boolean
+    add_plugin(plugin: Plugin): void
+    get_plugin_by_name(name: string): (Plugin | null)
+    list_plugins(): Gee.Collection
+}
+
+module RecursiveModuleLoader {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+base_path: string;
+    basePath: string;
     }
 
-    class RootDeviceFactory extends GObject.Object {
-        // Own properties of RygelCore-2.6.RootDeviceFactory
+}
 
-        context: GUPnP.Context;
+abstract class RecursiveModuleLoader extends GObject.Object {
 
-        // Constructors of RygelCore-2.6.RootDeviceFactory
+    // Own properties of RygelCore.RecursiveModuleLoader
 
-        static ['new'](context: GUPnP.Context): RootDeviceFactory;
+    get base_path(): string;
+    set base_path(val: string);
+    get basePath(): string;
+    set basePath(val: string);
 
-        // Owm methods of RygelCore-2.6.RootDeviceFactory
+    // Constructors of RygelCore.RecursiveModuleLoader
 
-        create(plugin: Plugin): RootDevice;
-        get_context(): GUPnP.Context;
+
+constructor(properties?: Partial<RecursiveModuleLoader.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own virtual methods of RygelCore.RecursiveModuleLoader
+
+    vfunc_load_module_from_file(file: Gio.File): boolean
+    vfunc_load_module_from_info(info: PluginInformation): boolean
+
+    // Own methods of RygelCore.RecursiveModuleLoader
+
+    load_modules(): void
+    load_modules_sync(cancellable?: (Gio.Cancellable | null)): void
+    load_module_from_file(file: Gio.File): boolean
+    load_module_from_info(info: PluginInformation): boolean
+    get_base_path(): string
+    set_base_path(value: string): void
+}
+
+module Plugin {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GUPnP.ResourceFactory.ConstructorProps {
+capabilities: PluginCapabilities;
+    name: string;
+    title: string;
+    description: string;
+    desc_path: string;
+    descPath: string;
+    active: boolean;
+    resource_infos: Gee.ArrayList;
+    resourceInfos: Gee.ArrayList;
+    icon_infos: Gee.ArrayList;
+    iconInfos: Gee.ArrayList;
+    default_icons: Gee.ArrayList;
+    defaultIcons: Gee.ArrayList;
     }
 
-    module LogHandler {
-        // Constructor properties interface
+}
+
+class Plugin extends GUPnP.ResourceFactory {
+
+    // Own properties of RygelCore.Plugin
+
+    get capabilities(): PluginCapabilities;
+    set capabilities(val: PluginCapabilities);
+    get name(): string;
+    get title(): string;
+    set title(val: string);
+    get description(): string;
+    get desc_path(): string;
+    get descPath(): string;
+    get active(): boolean;
+    set active(val: boolean);
+    get resource_infos(): Gee.ArrayList;
+    set resource_infos(val: Gee.ArrayList);
+    get resourceInfos(): Gee.ArrayList;
+    set resourceInfos(val: Gee.ArrayList);
+    get icon_infos(): Gee.ArrayList;
+    set icon_infos(val: Gee.ArrayList);
+    get iconInfos(): Gee.ArrayList;
+    set iconInfos(val: Gee.ArrayList);
+    get default_icons(): Gee.ArrayList;
+    set default_icons(val: Gee.ArrayList);
+    get defaultIcons(): Gee.ArrayList;
+    set defaultIcons(val: Gee.ArrayList);
+
+    // Constructors of RygelCore.Plugin
+
+
+constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](desc_path: string, name: string, title: (string | null), description: (string | null), capabilities: PluginCapabilities): Plugin;
+// Conflicted with GUPnP.ResourceFactory.new
+
+static ["new"](...args: never[]): any;
+
+    // Own virtual methods of RygelCore.Plugin
+
+    vfunc_apply_hacks(device: RootDevice, description_path: string): void
+
+    // Own methods of RygelCore.Plugin
+
+    add_resource(resource_info: ResourceInfo): void
+    add_icon(icon_info: IconInfo): void
+    apply_hacks(device: RootDevice, description_path: string): void
+    get_capabilities(): PluginCapabilities
+    set_capabilities(value: PluginCapabilities): void
+    get_name(): string
+    get_title(): string
+    set_title(value: string): void
+    get_description(): string
+    get_desc_path(): string
+    get_active(): boolean
+    set_active(value: boolean): void
+    get_resource_infos(): Gee.ArrayList
+    get_icon_infos(): Gee.ArrayList
+    get_default_icons(): Gee.ArrayList
+}
+
+class ResourceInfo {
+
+    // Own fields of RygelCore.ResourceInfo
+
+ref_count: number
+upnp_type: string
+upnp_id: string
+description_path: string
+type: GObject.GType
+
+    // Constructors of RygelCore.ResourceInfo
+
+_init(...args: any[]): void;
+
+
+static ["new"](upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType): ResourceInfo;
+}
+
+module MediaDevice {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+plugin: Plugin;
+    title: string;
+    capabilities: PluginCapabilities;
     }
 
-    class LogHandler extends GObject.Object {
-        // Owm methods of RygelCore-2.6.LogHandler
+}
 
-        static get_default(): LogHandler;
+abstract class MediaDevice extends GObject.Object {
+
+    // Own properties of RygelCore.MediaDevice
+
+    get plugin(): Plugin;
+    set plugin(val: Plugin);
+    get title(): string;
+    get capabilities(): PluginCapabilities;
+
+    // Constructors of RygelCore.MediaDevice
+
+
+constructor(properties?: Partial<MediaDevice.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of RygelCore.MediaDevice
+
+    add_interface(iface: string): void
+    remove_interface(iface: string): void
+    get_interfaces(): string[]
+    get_plugin(): Plugin
+    set_plugin(value: Plugin): void
+    get_title(): string
+    get_capabilities(): PluginCapabilities
+}
+
+module BaseConfiguration {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
+
     }
 
-    module MetaConfig {
-        // Constructor properties interface
+}
+
+class BaseConfiguration extends GObject.Object implements Configuration {
+
+    // Constructors of RygelCore.BaseConfiguration
+
+
+constructor(properties?: Partial<BaseConfiguration.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): BaseConfiguration;
+
+    // Own virtual methods of RygelCore.BaseConfiguration
+
+    vfunc_get_interface(): string
+    vfunc_get_interfaces(): string[]
+    vfunc_get_port(): number
+    vfunc_get_transcoding(): boolean
+    vfunc_get_allow_upload(): boolean
+    vfunc_get_allow_deletion(): boolean
+    vfunc_get_log_levels(): string
+    vfunc_get_plugin_path(): string
+    vfunc_get_engine_path(): string
+    vfunc_get_media_engine(): string
+    vfunc_get_video_upload_folder(): (string | null)
+    vfunc_get_music_upload_folder(): (string | null)
+    vfunc_get_picture_upload_folder(): (string | null)
+    vfunc_get_enabled(section: string): boolean
+    vfunc_get_title(section: string): string
+    vfunc_get_string(section: string, key: string): string
+    vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_int(section: string, key: string, min: number, max: number): number
+    vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_bool(section: string, key: string): boolean
+
+    // Own methods of RygelCore.BaseConfiguration
+
+    get_interface(): string
+    get_interfaces(): string[]
+    get_port(): number
+    get_transcoding(): boolean
+    get_allow_upload(): boolean
+    get_allow_deletion(): boolean
+    get_log_levels(): string
+    get_plugin_path(): string
+    get_engine_path(): string
+    get_media_engine(): string
+    get_video_upload_folder(): (string | null)
+    get_music_upload_folder(): (string | null)
+    get_picture_upload_folder(): (string | null)
+    get_enabled(section: string): boolean
+    get_title(section: string): string
+    get_string(section: string, key: string): string
+    get_string_list(section: string, key: string): Gee.ArrayList
+    get_int(section: string, key: string, min: number, max: number): number
+    get_int_list(section: string, key: string): Gee.ArrayList
+    get_bool(section: string, key: string): boolean
+
+// Inherited methods
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module CmdlineConfig {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
+
     }
 
-    class MetaConfig extends GObject.Object {
-        // Constructors of RygelCore-2.6.MetaConfig
+}
 
-        static ['new'](): MetaConfig;
+class CmdlineConfig extends GObject.Object implements Configuration {
 
-        // Owm methods of RygelCore-2.6.MetaConfig
+    // Constructors of RygelCore.CmdlineConfig
 
-        static get_default(): MetaConfig;
-        static register_configuration(config: Configuration): void;
-        static cleanup(): void;
+
+constructor(properties?: Partial<CmdlineConfig.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): CmdlineConfig;
+
+    // Own static methods of RygelCore.CmdlineConfig
+
+    static get_default(): CmdlineConfig
+    static parse_args(args: string[]): string[]
+
+    // Own methods of RygelCore.CmdlineConfig
+
+    get_config_file(): string
+
+// Inherited methods
+get_interface(): string
+get_interfaces(): string[]
+get_port(): number
+get_transcoding(): boolean
+get_allow_upload(): boolean
+get_allow_deletion(): boolean
+get_log_levels(): string
+get_plugin_path(): string
+get_engine_path(): string
+get_media_engine(): string
+get_video_upload_folder(): (string | null)
+get_music_upload_folder(): (string | null)
+get_picture_upload_folder(): (string | null)
+get_enabled(section: string): boolean
+get_title(section: string): string
+get_string(section: string, key: string): string
+get_string_list(section: string, key: string): Gee.ArrayList
+get_int(section: string, key: string, min: number, max: number): number
+get_int_list(section: string, key: string): Gee.ArrayList
+get_bool(section: string, key: string): boolean
+vfunc_get_interface(): string
+vfunc_get_interfaces(): string[]
+vfunc_get_port(): number
+vfunc_get_transcoding(): boolean
+vfunc_get_allow_upload(): boolean
+vfunc_get_allow_deletion(): boolean
+vfunc_get_log_levels(): string
+vfunc_get_plugin_path(): string
+vfunc_get_engine_path(): string
+vfunc_get_media_engine(): string
+vfunc_get_video_upload_folder(): (string | null)
+vfunc_get_music_upload_folder(): (string | null)
+vfunc_get_picture_upload_folder(): (string | null)
+vfunc_get_enabled(section: string): boolean
+vfunc_get_title(section: string): string
+vfunc_get_string(section: string, key: string): string
+vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+vfunc_get_int(section: string, key: string, min: number, max: number): number
+vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+vfunc_get_bool(section: string, key: string): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module EnvironmentConfig {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
+
     }
 
-    module PluginLoader {
-        // Signal callback interfaces
+}
 
-        interface PluginAvailable {
-            (plugin: Plugin): void;
-        }
+class EnvironmentConfig extends GObject.Object implements Configuration {
 
-        // Constructor properties interface
+    // Constructors of RygelCore.EnvironmentConfig
+
+
+constructor(properties?: Partial<EnvironmentConfig.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): EnvironmentConfig;
+
+    // Own static methods of RygelCore.EnvironmentConfig
+
+    static get_default(): EnvironmentConfig
+
+// Inherited methods
+get_interface(): string
+get_interfaces(): string[]
+get_port(): number
+get_transcoding(): boolean
+get_allow_upload(): boolean
+get_allow_deletion(): boolean
+get_log_levels(): string
+get_plugin_path(): string
+get_engine_path(): string
+get_media_engine(): string
+get_video_upload_folder(): (string | null)
+get_music_upload_folder(): (string | null)
+get_picture_upload_folder(): (string | null)
+get_enabled(section: string): boolean
+get_title(section: string): string
+get_string(section: string, key: string): string
+get_string_list(section: string, key: string): Gee.ArrayList
+get_int(section: string, key: string, min: number, max: number): number
+get_int_list(section: string, key: string): Gee.ArrayList
+get_bool(section: string, key: string): boolean
+vfunc_get_interface(): string
+vfunc_get_interfaces(): string[]
+vfunc_get_port(): number
+vfunc_get_transcoding(): boolean
+vfunc_get_allow_upload(): boolean
+vfunc_get_allow_deletion(): boolean
+vfunc_get_log_levels(): string
+vfunc_get_plugin_path(): string
+vfunc_get_engine_path(): string
+vfunc_get_media_engine(): string
+vfunc_get_video_upload_folder(): (string | null)
+vfunc_get_music_upload_folder(): (string | null)
+vfunc_get_picture_upload_folder(): (string | null)
+vfunc_get_enabled(section: string): boolean
+vfunc_get_title(section: string): string
+vfunc_get_string(section: string, key: string): string
+vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+vfunc_get_int(section: string, key: string, min: number, max: number): number
+vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+vfunc_get_bool(section: string, key: string): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module UserConfig {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
+
     }
 
-    class PluginLoader extends RecursiveModuleLoader {
-        // Constructors of RygelCore-2.6.PluginLoader
+}
 
-        static ['new'](): PluginLoader;
+class UserConfig extends GObject.Object implements Configuration {
 
-        // Owm methods of RygelCore-2.6.PluginLoader
+    // Own fields of RygelCore.UserConfig
 
-        plugin_disabled(name: string): boolean;
-        add_plugin(plugin: Plugin): void;
-        get_plugin_by_name(name: string): Plugin | null;
-        list_plugins(): Gee.Collection;
+key_file_monitor: Gio.FileMonitor
+sys_key_file_monitor: Gio.FileMonitor
+
+    // Constructors of RygelCore.UserConfig
+
+
+constructor(properties?: Partial<UserConfig.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](local_path: string): UserConfig;
+
+static with_paths(local_path: string, system_path: string): UserConfig;
+
+    // Own static methods of RygelCore.UserConfig
+
+    static get_default(): UserConfig
+
+// Inherited methods
+get_interface(): string
+get_interfaces(): string[]
+get_port(): number
+get_transcoding(): boolean
+get_allow_upload(): boolean
+get_allow_deletion(): boolean
+get_log_levels(): string
+get_plugin_path(): string
+get_engine_path(): string
+get_media_engine(): string
+get_video_upload_folder(): (string | null)
+get_music_upload_folder(): (string | null)
+get_picture_upload_folder(): (string | null)
+get_enabled(section: string): boolean
+get_title(section: string): string
+get_string(section: string, key: string): string
+get_string_list(section: string, key: string): Gee.ArrayList
+get_int(section: string, key: string, min: number, max: number): number
+get_int_list(section: string, key: string): Gee.ArrayList
+get_bool(section: string, key: string): boolean
+vfunc_get_interface(): string
+vfunc_get_interfaces(): string[]
+vfunc_get_port(): number
+vfunc_get_transcoding(): boolean
+vfunc_get_allow_upload(): boolean
+vfunc_get_allow_deletion(): boolean
+vfunc_get_log_levels(): string
+vfunc_get_plugin_path(): string
+vfunc_get_engine_path(): string
+vfunc_get_media_engine(): string
+vfunc_get_video_upload_folder(): (string | null)
+vfunc_get_music_upload_folder(): (string | null)
+vfunc_get_picture_upload_folder(): (string | null)
+vfunc_get_enabled(section: string): boolean
+vfunc_get_title(section: string): string
+vfunc_get_string(section: string, key: string): string
+vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+vfunc_get_int(section: string, key: string, min: number, max: number): number
+vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+vfunc_get_bool(section: string, key: string): boolean
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module V1Hacks {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+device_type: string;
+    deviceType: string;
+    service_types: string[];
+    serviceTypes: string[];
     }
 
-    module RecursiveModuleLoader {
-        // Constructor properties interface
+}
+
+class V1Hacks extends GObject.Object {
+
+    // Own properties of RygelCore.V1Hacks
+
+    get device_type(): string;
+    set device_type(val: string);
+    get deviceType(): string;
+    set deviceType(val: string);
+    get service_types(): string[];
+    get serviceTypes(): string[];
+
+    // Own fields of RygelCore.V1Hacks
+
+description_path: string
+
+    // Constructors of RygelCore.V1Hacks
+
+
+constructor(properties?: Partial<V1Hacks.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](device_type: string, service_types: string[]): V1Hacks;
+
+    // Own methods of RygelCore.V1Hacks
+
+    apply_on_device(device: RootDevice, template_path?: (string | null)): void
+    get_device_type(): string
+    set_device_type(value: string): void
+    get_service_types(): string[]
+}
+
+class IconInfo {
+
+    // Own fields of RygelCore.IconInfo
+
+ref_count: number
+mime_type: string
+uri: string
+file_extension: string
+size: number
+width: number
+height: number
+depth: number
+
+    // Constructors of RygelCore.IconInfo
+
+_init(...args: any[]): void;
+
+
+static ["new"](mime_type: string, file_extension: string): IconInfo;
+}
+
+class XMLUtils {
+
+    // Own fields of RygelCore.XMLUtils
+
+ref_count: number
+
+    // Constructors of RygelCore.XMLUtils
+
+_init(...args: any[]): void;
+
+
+static ["new"](): XMLUtils;
+}
+
+class XMLUtilsIterator {
+
+    // Own fields of RygelCore.XMLUtilsIterator
+
+ref_count: number
+
+    // Constructors of RygelCore.XMLUtilsIterator
+
+_init(...args: any[]): void;
+
+
+static ["new"](node?: (any | null)): XMLUtilsIterator;
+
+    // Own methods of RygelCore.XMLUtilsIterator
+
+    iterator(): XMLUtilsIterator
+    next(): boolean
+    get(): (any | null)
+}
+
+class XMLUtilsChildIterator extends XMLUtilsIterator {
+
+    // Constructors of RygelCore.XMLUtilsChildIterator
+
+_init(...args: any[]): void;
+
+
+static ["new"](node?: (any | null)): XMLUtilsChildIterator;
+}
+
+module PluginInformation {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+module_path: string;
+    modulePath: string;
+    name: string;
+    conflicts: never;
+    module_loaded: boolean;
+    moduleLoaded: boolean;
     }
 
-    abstract class RecursiveModuleLoader extends GObject.Object {
-        // Own properties of RygelCore-2.6.RecursiveModuleLoader
+}
 
-        base_path: string;
-        basePath: string;
+class PluginInformation extends GObject.Object {
 
-        // Owm methods of RygelCore-2.6.RecursiveModuleLoader
+    // Own properties of RygelCore.PluginInformation
 
-        load_modules(): void;
-        load_modules_sync(cancellable?: Gio.Cancellable | null): void;
-        load_module_from_file(file: Gio.File): boolean;
-        load_module_from_info(info: PluginInformation): boolean;
-        get_base_path(): string;
-        set_base_path(value: string): void;
+    get module_path(): string;
+    get modulePath(): string;
+    get name(): string;
+    get conflicts(): never;
+    get module_loaded(): boolean;
+    set module_loaded(val: boolean);
+    get moduleLoaded(): boolean;
+    set moduleLoaded(val: boolean);
+
+    // Constructors of RygelCore.PluginInformation
+
+
+constructor(properties?: Partial<PluginInformation.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of RygelCore.PluginInformation
+
+    static new_from_file(file: Gio.File): PluginInformation
+
+    // Own methods of RygelCore.PluginInformation
+
+    get_module_path(): string
+    get_name(): string
+    get_conflicts(): never
+    get_module_loaded(): boolean
+    set_module_loaded(value: boolean): void
+}
+
+type ConnectionManagerClass = typeof ConnectionManager
+abstract class ConnectionManagerPrivate {
+
+    // Constructors of RygelCore.ConnectionManagerPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type BasicManagementClass = typeof BasicManagement
+abstract class BasicManagementPrivate {
+
+    // Constructors of RygelCore.BasicManagementPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type DescriptionFileClass = typeof DescriptionFile
+abstract class DescriptionFilePrivate {
+
+    // Constructors of RygelCore.DescriptionFilePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type DLNAProfileClass = typeof DLNAProfile
+abstract class DLNAProfilePrivate {
+
+    // Constructors of RygelCore.DLNAProfilePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type EnergyManagementClass = typeof EnergyManagement
+abstract class EnergyManagementPrivate {
+
+    // Constructors of RygelCore.EnergyManagementPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type RootDeviceClass = typeof RootDevice
+abstract class RootDevicePrivate {
+
+    // Constructors of RygelCore.RootDevicePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type RootDeviceFactoryClass = typeof RootDeviceFactory
+abstract class RootDeviceFactoryPrivate {
+
+    // Constructors of RygelCore.RootDeviceFactoryPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type LogHandlerClass = typeof LogHandler
+abstract class LogHandlerPrivate {
+
+    // Constructors of RygelCore.LogHandlerPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type MetaConfigClass = typeof MetaConfig
+abstract class MetaConfigPrivate {
+
+    // Constructors of RygelCore.MetaConfigPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type PluginLoaderClass = typeof PluginLoader
+abstract class PluginLoaderPrivate {
+
+    // Constructors of RygelCore.PluginLoaderPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type RecursiveModuleLoaderClass = typeof RecursiveModuleLoader
+abstract class RecursiveModuleLoaderPrivate {
+
+    // Constructors of RygelCore.RecursiveModuleLoaderPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type PluginClass = typeof Plugin
+abstract class PluginPrivate {
+
+    // Constructors of RygelCore.PluginPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type ResourceInfoClass = typeof ResourceInfo
+abstract class ResourceInfoPrivate {
+
+    // Constructors of RygelCore.ResourceInfoPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type MediaDeviceClass = typeof MediaDevice
+abstract class MediaDevicePrivate {
+
+    // Constructors of RygelCore.MediaDevicePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type BaseConfigurationClass = typeof BaseConfiguration
+abstract class BaseConfigurationPrivate {
+
+    // Constructors of RygelCore.BaseConfigurationPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type CmdlineConfigClass = typeof CmdlineConfig
+abstract class CmdlineConfigPrivate {
+
+    // Constructors of RygelCore.CmdlineConfigPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type EnvironmentConfigClass = typeof EnvironmentConfig
+abstract class EnvironmentConfigPrivate {
+
+    // Constructors of RygelCore.EnvironmentConfigPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type UserConfigClass = typeof UserConfig
+abstract class UserConfigPrivate {
+
+    // Constructors of RygelCore.UserConfigPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type V1HacksClass = typeof V1Hacks
+abstract class V1HacksPrivate {
+
+    // Constructors of RygelCore.V1HacksPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type IconInfoClass = typeof IconInfo
+abstract class IconInfoPrivate {
+
+    // Constructors of RygelCore.IconInfoPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type XMLUtilsClass = typeof XMLUtils
+abstract class XMLUtilsPrivate {
+
+    // Constructors of RygelCore.XMLUtilsPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type XMLUtilsIteratorClass = typeof XMLUtilsIterator
+abstract class XMLUtilsIteratorPrivate {
+
+    // Constructors of RygelCore.XMLUtilsIteratorPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type XMLUtilsChildIteratorClass = typeof XMLUtilsChildIterator
+abstract class XMLUtilsChildIteratorPrivate {
+
+    // Constructors of RygelCore.XMLUtilsChildIteratorPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type PluginInformationClass = typeof PluginInformation
+abstract class PluginInformationPrivate {
+
+    // Constructors of RygelCore.PluginInformationPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type DBusInterfaceIface = typeof DBusInterface
+type DBusAclProviderIface = typeof DBusAclProvider
+type ConfigurationIface = typeof Configuration
+type StateMachineIface = typeof StateMachine
+module DBusInterface {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module Plugin {
-        // Constructor properties interface
+}
+
+export interface DBusInterfaceNamespace {
+      $gtype: GObject.GType<DBusInterface>;
+      prototype: DBusInterface;
+      
+          
+      }
+interface DBusInterface extends GObject.Object {
+
+    // Own methods of RygelCore.DBusInterface
+
+    shutdown(): void
+
+    // Own virtual methods of RygelCore.DBusInterface
+
+    vfunc_shutdown(): void
+}
+
+
+
+export const DBusInterface: DBusInterfaceNamespace;
+
+module DBusAclProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class Plugin extends GUPnP.ResourceFactory {
-        // Own properties of RygelCore-2.6.Plugin
+}
 
-        capabilities: PluginCapabilities;
-        name: string;
-        title: string;
-        description: string;
-        desc_path: string;
-        descPath: string;
-        active: boolean;
-        resource_infos: Gee.ArrayList;
-        resourceInfos: Gee.ArrayList;
-        icon_infos: Gee.ArrayList;
-        iconInfos: Gee.ArrayList;
-        default_icons: Gee.ArrayList;
-        defaultIcons: Gee.ArrayList;
+export interface DBusAclProviderNamespace {
+      $gtype: GObject.GType<DBusAclProvider>;
+      prototype: DBusAclProvider;
+      
+          
+      }
+interface DBusAclProvider extends GObject.Object {
 
-        // Constructors of RygelCore-2.6.Plugin
+    // Own methods of RygelCore.DBusAclProvider
 
-        static ['new'](
-            desc_path: string,
-            name: string,
-            title: string | null,
-            description: string | null,
-            capabilities: PluginCapabilities,
-        ): Plugin;
+    is_allowed(device: GLib.HashTable<string, string>, service: GLib.HashTable<string, string>, path: string, address: string, agent?: (string | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    is_allowed_finish(_res_: Gio.AsyncResult): boolean
 
-        // Owm methods of RygelCore-2.6.Plugin
+    // Own virtual methods of RygelCore.DBusAclProvider
 
-        add_resource(resource_info: ResourceInfo): void;
-        add_icon(icon_info: IconInfo): void;
-        apply_hacks(device: RootDevice, description_path: string): void;
-        get_capabilities(): PluginCapabilities;
-        set_capabilities(value: PluginCapabilities): void;
-        get_name(): string;
-        get_title(): string;
-        set_title(value: string): void;
-        get_description(): string;
-        get_desc_path(): string;
-        get_active(): boolean;
-        set_active(value: boolean): void;
-        get_resource_infos(): Gee.ArrayList;
-        get_icon_infos(): Gee.ArrayList;
-        get_default_icons(): Gee.ArrayList;
+    vfunc_is_allowed(device: GLib.HashTable<string, string>, service: GLib.HashTable<string, string>, path: string, address: string, agent?: (string | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean
+}
+
+
+
+export const DBusAclProvider: DBusAclProviderNamespace;
+
+module Configuration {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class ResourceInfo {
-        // Own fields of RygelCore-2.6.ResourceInfo
+}
 
-        ref_count: number;
-        upnp_type: string;
-        upnp_id: string;
-        description_path: string;
-        type: GObject.GType;
+export interface ConfigurationNamespace {
+      $gtype: GObject.GType<Configuration>;
+      prototype: Configuration;
+      
+          
+      }
+interface Configuration extends GObject.Object {
 
-        // Constructors of RygelCore-2.6.ResourceInfo
+    // Own methods of RygelCore.Configuration
 
-        static ['new'](upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType): ResourceInfo;
+    get_interface(): string
+    get_interfaces(): string[]
+    get_port(): number
+    get_transcoding(): boolean
+    get_allow_upload(): boolean
+    get_allow_deletion(): boolean
+    get_log_levels(): string
+    get_plugin_path(): string
+    get_engine_path(): string
+    get_media_engine(): string
+    get_video_upload_folder(): (string | null)
+    get_music_upload_folder(): (string | null)
+    get_picture_upload_folder(): (string | null)
+    get_enabled(section: string): boolean
+    get_title(section: string): string
+    get_string(section: string, key: string): string
+    get_string_list(section: string, key: string): Gee.ArrayList
+    get_int(section: string, key: string, min: number, max: number): number
+    get_int_list(section: string, key: string): Gee.ArrayList
+    get_bool(section: string, key: string): boolean
+
+    // Own virtual methods of RygelCore.Configuration
+
+    vfunc_get_interface(): string
+    vfunc_get_interfaces(): string[]
+    vfunc_get_port(): number
+    vfunc_get_transcoding(): boolean
+    vfunc_get_allow_upload(): boolean
+    vfunc_get_allow_deletion(): boolean
+    vfunc_get_log_levels(): string
+    vfunc_get_plugin_path(): string
+    vfunc_get_engine_path(): string
+    vfunc_get_media_engine(): string
+    vfunc_get_video_upload_folder(): (string | null)
+    vfunc_get_music_upload_folder(): (string | null)
+    vfunc_get_picture_upload_folder(): (string | null)
+    vfunc_get_enabled(section: string): boolean
+    vfunc_get_title(section: string): string
+    vfunc_get_string(section: string, key: string): string
+    vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_int(section: string, key: string, min: number, max: number): number
+    vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_bool(section: string, key: string): boolean
+}
+
+
+
+export const Configuration: ConfigurationNamespace;
+
+module StateMachine {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+cancellable: Gio.Cancellable;
     }
 
-    module MediaDevice {
-        // Constructor properties interface
-    }
+}
 
-    abstract class MediaDevice extends GObject.Object {
-        // Own properties of RygelCore-2.6.MediaDevice
+export interface StateMachineNamespace {
+      $gtype: GObject.GType<StateMachine>;
+      prototype: StateMachine;
+      
+          
+      }
+interface StateMachine extends GObject.Object {
 
-        plugin: Plugin;
-        title: string;
-        capabilities: PluginCapabilities;
+    // Own properties of RygelCore.StateMachine
 
-        // Owm methods of RygelCore-2.6.MediaDevice
+    get cancellable(): Gio.Cancellable;
+    set cancellable(val: Gio.Cancellable);
 
-        add_interface(iface: string): void;
-        remove_interface(iface: string): void;
-        get_interfaces(): string[];
-        get_plugin(): Plugin;
-        set_plugin(value: Plugin): void;
-        get_title(): string;
-        get_capabilities(): PluginCapabilities;
-    }
+    // Own methods of RygelCore.StateMachine
 
-    module BaseConfiguration {
-        // Constructor properties interface
-    }
+    run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    run_finish(_res_: Gio.AsyncResult): void
+    get_cancellable(): Gio.Cancellable
+    set_cancellable(value: Gio.Cancellable): void
 
-    class BaseConfiguration extends GObject.Object {
-        // Constructors of RygelCore-2.6.BaseConfiguration
+    // Own virtual methods of RygelCore.StateMachine
 
-        static ['new'](): BaseConfiguration;
+    vfunc_run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_run_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_cancellable(): Gio.Cancellable
+    vfunc_set_cancellable(value: Gio.Cancellable): void
+}
 
-        // Owm methods of RygelCore-2.6.BaseConfiguration
 
-        get_interface(): string;
-        get_interfaces(): string[];
-        get_port(): number;
-        get_transcoding(): boolean;
-        get_allow_upload(): boolean;
-        get_allow_deletion(): boolean;
-        get_log_levels(): string;
-        get_plugin_path(): string;
-        get_engine_path(): string;
-        get_media_engine(): string;
-        get_video_upload_folder(): string | null;
-        get_music_upload_folder(): string | null;
-        get_picture_upload_folder(): string | null;
-        get_enabled(section: string): boolean;
-        get_title(section: string): string;
-        get_string(section: string, key: string): string;
-        get_string_list(section: string, key: string): Gee.ArrayList;
-        get_int(section: string, key: string, min: number, max: number): number;
-        get_int_list(section: string, key: string): Gee.ArrayList;
-        get_bool(section: string, key: string): boolean;
-    }
 
-    module CmdlineConfig {
-        // Constructor properties interface
-    }
+export const StateMachine: StateMachineNamespace;
 
-    class CmdlineConfig extends GObject.Object {
-        // Constructors of RygelCore-2.6.CmdlineConfig
-
-        static ['new'](): CmdlineConfig;
-
-        // Owm methods of RygelCore-2.6.CmdlineConfig
-
-        static get_default(): CmdlineConfig;
-        static parse_args(args: string[]): void;
-
-        // Owm methods of RygelCore-2.6.CmdlineConfig
-
-        get_config_file(): string;
-    }
-
-    module EnvironmentConfig {
-        // Constructor properties interface
-    }
-
-    class EnvironmentConfig extends GObject.Object {
-        // Constructors of RygelCore-2.6.EnvironmentConfig
-
-        static ['new'](): EnvironmentConfig;
-
-        // Owm methods of RygelCore-2.6.EnvironmentConfig
-
-        static get_default(): EnvironmentConfig;
-    }
-
-    module UserConfig {
-        // Constructor properties interface
-    }
-
-    class UserConfig extends GObject.Object {
-        // Own fields of RygelCore-2.6.UserConfig
-
-        key_file_monitor: Gio.FileMonitor;
-        sys_key_file_monitor: Gio.FileMonitor;
-
-        // Constructors of RygelCore-2.6.UserConfig
-
-        static ['new'](local_path: string): UserConfig;
-
-        static with_paths(local_path: string, system_path: string): UserConfig;
-
-        // Owm methods of RygelCore-2.6.UserConfig
-
-        static get_default(): UserConfig;
-    }
-
-    module V1Hacks {
-        // Constructor properties interface
-    }
-
-    class V1Hacks extends GObject.Object {
-        // Own properties of RygelCore-2.6.V1Hacks
-
-        device_type: string;
-        deviceType: string;
-        service_types: string[];
-        serviceTypes: string[];
-
-        // Own fields of RygelCore-2.6.V1Hacks
-
-        description_path: string;
-
-        // Constructors of RygelCore-2.6.V1Hacks
-
-        static ['new'](device_type: string, service_types: string[]): V1Hacks;
-
-        // Owm methods of RygelCore-2.6.V1Hacks
-
-        apply_on_device(device: RootDevice, template_path?: string | null): void;
-        get_device_type(): string;
-        set_device_type(value: string): void;
-        get_service_types(): string[];
-    }
-
-    class IconInfo {
-        // Own fields of RygelCore-2.6.IconInfo
-
-        ref_count: number;
-        mime_type: string;
-        uri: string;
-        file_extension: string;
-        size: number;
-        width: number;
-        height: number;
-        depth: number;
-
-        // Constructors of RygelCore-2.6.IconInfo
-
-        static ['new'](mime_type: string, file_extension: string): IconInfo;
-    }
-
-    class XMLUtils {
-        // Own fields of RygelCore-2.6.XMLUtils
-
-        ref_count: number;
-
-        // Constructors of RygelCore-2.6.XMLUtils
-
-        static ['new'](): XMLUtils;
-    }
-
-    class XMLUtilsIterator {
-        // Own fields of RygelCore-2.6.XMLUtilsIterator
-
-        ref_count: number;
-
-        // Constructors of RygelCore-2.6.XMLUtilsIterator
-
-        static ['new'](node?: any | null): XMLUtilsIterator;
-
-        // Owm methods of RygelCore-2.6.XMLUtilsIterator
-
-        iterator(): XMLUtilsIterator;
-        next(): boolean;
-        get(): any | null;
-    }
-
-    class XMLUtilsChildIterator extends XMLUtilsIterator {
-        // Constructors of RygelCore-2.6.XMLUtilsChildIterator
-
-        static ['new'](node?: any | null): XMLUtilsChildIterator;
-    }
-
-    module PluginInformation {
-        // Constructor properties interface
-    }
-
-    class PluginInformation extends GObject.Object {
-        // Own properties of RygelCore-2.6.PluginInformation
-
-        module_path: string;
-        modulePath: string;
-        name: string;
-        conflicts: GLib.GenericSet;
-        module_loaded: boolean;
-        moduleLoaded: boolean;
-
-        // Owm methods of RygelCore-2.6.PluginInformation
-
-        static new_from_file(file: Gio.File): PluginInformation;
-
-        // Owm methods of RygelCore-2.6.PluginInformation
-
-        get_module_path(): string;
-        get_name(): string;
-        get_conflicts(): GLib.GenericSet;
-        get_module_loaded(): boolean;
-        set_module_loaded(value: boolean): void;
-    }
-
-    class ConnectionManagerClass {}
-
-    class ConnectionManagerPrivate {}
-
-    class BasicManagementClass {}
-
-    class BasicManagementPrivate {}
-
-    class DescriptionFileClass {}
-
-    class DescriptionFilePrivate {}
-
-    class DLNAProfileClass {}
-
-    class DLNAProfilePrivate {}
-
-    class EnergyManagementClass {}
-
-    class EnergyManagementPrivate {}
-
-    class RootDeviceClass {}
-
-    class RootDevicePrivate {}
-
-    class RootDeviceFactoryClass {}
-
-    class RootDeviceFactoryPrivate {}
-
-    class LogHandlerClass {}
-
-    class LogHandlerPrivate {}
-
-    class MetaConfigClass {}
-
-    class MetaConfigPrivate {}
-
-    class PluginLoaderClass {}
-
-    class PluginLoaderPrivate {}
-
-    class RecursiveModuleLoaderClass {}
-
-    class RecursiveModuleLoaderPrivate {}
-
-    class PluginClass {}
-
-    class PluginPrivate {}
-
-    class ResourceInfoClass {}
-
-    class ResourceInfoPrivate {}
-
-    class MediaDeviceClass {}
-
-    class MediaDevicePrivate {}
-
-    class BaseConfigurationClass {}
-
-    class BaseConfigurationPrivate {}
-
-    class CmdlineConfigClass {}
-
-    class CmdlineConfigPrivate {}
-
-    class EnvironmentConfigClass {}
-
-    class EnvironmentConfigPrivate {}
-
-    class UserConfigClass {}
-
-    class UserConfigPrivate {}
-
-    class V1HacksClass {}
-
-    class V1HacksPrivate {}
-
-    class IconInfoClass {}
-
-    class IconInfoPrivate {}
-
-    class XMLUtilsClass {}
-
-    class XMLUtilsPrivate {}
-
-    class XMLUtilsIteratorClass {}
-
-    class XMLUtilsIteratorPrivate {}
-
-    class XMLUtilsChildIteratorClass {}
-
-    class XMLUtilsChildIteratorPrivate {}
-
-    class PluginInformationClass {}
-
-    class PluginInformationPrivate {}
-
-    class DBusInterfaceIface {}
-
-    class DBusAclProviderIface {}
-
-    class ConfigurationIface {}
-
-    class StateMachineIface {}
-
-    interface DBusInterface {
-        // Owm methods of RygelCore-2.6.DBusInterface
-
-        shutdown(): void;
-
-        // Own virtual methods of RygelCore-2.6.DBusInterface
-
-        vfunc_shutdown(): void;
-    }
-
-    interface DBusAclProvider {
-        // Owm methods of RygelCore-2.6.DBusAclProvider
-
-        is_allowed(
-            device: GLib.HashTable<string, string>,
-            service: GLib.HashTable<string, string>,
-            path: string,
-            address: string,
-            agent?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        is_allowed_finish(_res_: Gio.AsyncResult): boolean;
-
-        // Own virtual methods of RygelCore-2.6.DBusAclProvider
-
-        vfunc_is_allowed(
-            device: GLib.HashTable<string, string>,
-            service: GLib.HashTable<string, string>,
-            path: string,
-            address: string,
-            agent?: string | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean;
-    }
-
-    interface Configuration {
-        // Owm methods of RygelCore-2.6.Configuration
-
-        get_interface(): string;
-        get_interfaces(): string[];
-        get_port(): number;
-        get_transcoding(): boolean;
-        get_allow_upload(): boolean;
-        get_allow_deletion(): boolean;
-        get_log_levels(): string;
-        get_plugin_path(): string;
-        get_engine_path(): string;
-        get_media_engine(): string;
-        get_video_upload_folder(): string | null;
-        get_music_upload_folder(): string | null;
-        get_picture_upload_folder(): string | null;
-        get_enabled(section: string): boolean;
-        get_title(section: string): string;
-        get_string(section: string, key: string): string;
-        get_string_list(section: string, key: string): Gee.ArrayList;
-        get_int(section: string, key: string, min: number, max: number): number;
-        get_int_list(section: string, key: string): Gee.ArrayList;
-        get_bool(section: string, key: string): boolean;
-
-        // Own virtual methods of RygelCore-2.6.Configuration
-
-        vfunc_get_interface(): string;
-        vfunc_get_interfaces(): string[];
-        vfunc_get_port(): number;
-        vfunc_get_transcoding(): boolean;
-        vfunc_get_allow_upload(): boolean;
-        vfunc_get_allow_deletion(): boolean;
-        vfunc_get_log_levels(): string;
-        vfunc_get_plugin_path(): string;
-        vfunc_get_engine_path(): string;
-        vfunc_get_media_engine(): string;
-        vfunc_get_video_upload_folder(): string | null;
-        vfunc_get_music_upload_folder(): string | null;
-        vfunc_get_picture_upload_folder(): string | null;
-        vfunc_get_enabled(section: string): boolean;
-        vfunc_get_title(section: string): string;
-        vfunc_get_string(section: string, key: string): string;
-        vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
-        vfunc_get_int(section: string, key: string, min: number, max: number): number;
-        vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
-        vfunc_get_bool(section: string, key: string): boolean;
-    }
-
-    interface StateMachine {
-        // Own properties of RygelCore-2.6.StateMachine
-
-        cancellable: Gio.Cancellable;
-
-        // Owm methods of RygelCore-2.6.StateMachine
-
-        run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        run_finish(_res_: Gio.AsyncResult): void;
-        get_cancellable(): Gio.Cancellable;
-        set_cancellable(value: Gio.Cancellable): void;
-
-        // Own virtual methods of RygelCore-2.6.StateMachine
-
-        vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_run_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_cancellable(): Gio.Cancellable;
-        vfunc_set_cancellable(value: Gio.Cancellable): void;
-    }
-
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default RygelCore;

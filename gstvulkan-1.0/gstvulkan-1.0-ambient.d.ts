@@ -5,8 +5,7 @@ declare module 'gi://GstVulkan?version=1.0' {
 }
 
 declare module 'gi://GstVulkan' {
-    import GstVulkan10 from '@girs/gstvulkan-1.0';
-    export default GstVulkan10;
+    export * from 'gi://GstVulkan?version=1.0';
 }
 
 

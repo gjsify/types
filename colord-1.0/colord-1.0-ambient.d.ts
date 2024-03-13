@@ -5,8 +5,7 @@ declare module 'gi://Colord?version=1.0' {
 }
 
 declare module 'gi://Colord' {
-    import Colord10 from '@girs/colord-1.0';
-    export default Colord10;
+    export * from 'gi://Colord?version=1.0';
 }
 
 

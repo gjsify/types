@@ -5,8 +5,7 @@ declare module 'gi://NMGtk?version=1.0' {
 }
 
 declare module 'gi://NMGtk' {
-    import NMGtk10 from '@girs/nmgtk-1.0';
-    export default NMGtk10;
+    export * from 'gi://NMGtk?version=1.0';
 }
 
 

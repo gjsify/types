@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,289 +27,543 @@ import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Nautilus {
+
+/**
+ * Return values for asynchronous operations performed by the extension.
+ * See nautilus_info_provider_update_file_info().
+ */
+enum OperationResult {
     /**
-     * Return values for asynchronous operations performed by the extension.
-     * See nautilus_info_provider_update_file_info().
+     * the operation succeeded, and the extension
+     *  is done with the request.
      */
-    enum OperationResult {
-        /**
-         * the operation succeeded, and the extension
-         *  is done with the request.
-         */
-        COMPLETE,
-        /**
-         * the operation failed.
-         */
-        FAILED,
-        /**
-         * the extension has begin an async operation.
-         *  When this value is returned, the extension must set the handle parameter
-         *  and call the callback closure when the operation is complete.
-         */
-        IN_PROGRESS,
-    }
-    function file_info_create(location: Gio.File): FileInfo;
-    function file_info_create_for_uri(uri: string): FileInfo;
-    function file_info_list_copy(files: FileInfo[]): FileInfo[];
-    function file_info_list_free(files: FileInfo[]): void;
-    function file_info_lookup(location: Gio.File): FileInfo | null;
-    function file_info_lookup_for_uri(uri: string): FileInfo | null;
-    function info_provider_update_complete_invoke(
-        update_complete: GObject.Closure,
-        provider: InfoProvider,
-        handle: OperationHandle,
-        result: OperationResult,
-    ): void;
-    module Column {
-        // Constructor properties interface
-    }
-
-    class Column extends GObject.Object {
-        // Own properties of Nautilus-3.0.Column
-
-        attribute: string;
-        readonly attribute_q: number;
-        readonly attributeQ: number;
-        default_sort_order: Gtk.SortType;
-        defaultSortOrder: Gtk.SortType;
-        description: string;
-        label: string;
-        name: string;
-        xalign: number;
-
-        // Constructors of Nautilus-3.0.Column
-
-        static ['new'](name: string, attribute: string, label: string, description: string): Column;
-    }
-
-    module Menu {
-        // Constructor properties interface
-    }
-
-    class Menu extends GObject.Object {
-        // Constructors of Nautilus-3.0.Menu
-
-        static ['new'](): Menu;
-
-        // Owm methods of Nautilus-3.0.Menu
-
-        append_item(item: MenuItem): void;
-        get_items(): MenuItem[] | null;
-    }
-
-    module MenuItem {
-        // Signal callback interfaces
-
-        interface Activate {
-            (): void;
-        }
-
-        // Constructor properties interface
-    }
-
-    class MenuItem extends GObject.Object {
-        // Own properties of Nautilus-3.0.MenuItem
-
-        icon: string;
-        label: string;
-        menu: Menu;
-        name: string;
-        priority: boolean;
-        sensitive: boolean;
-        tip: string;
-
-        // Constructors of Nautilus-3.0.MenuItem
-
-        static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
-
-        // Owm methods of Nautilus-3.0.MenuItem
-
-        static list_free(item_list: MenuItem[]): void;
-
-        // Owm methods of Nautilus-3.0.MenuItem
-
-        /**
-         * Emits #NautilusMenuItem::activate.
-         */
-        activate(): void;
-        /**
-         * Attaches a menu to the given #NautilusMenuItem.
-         * @param menu pointer to a #NautilusMenu to attach to the button
-         */
-        set_submenu(menu: Menu): void;
-    }
-
-    module PropertyPage {
-        // Constructor properties interface
-    }
-
-    class PropertyPage extends GObject.Object {
-        // Own properties of Nautilus-3.0.PropertyPage
-
-        label: Gtk.Widget;
-        name: string;
-        page: Gtk.Widget;
-
-        // Constructors of Nautilus-3.0.PropertyPage
-
-        static ['new'](name: string, label: Gtk.Widget, page: Gtk.Widget): PropertyPage;
-    }
-
-    class ColumnClass {}
-
+    COMPLETE,
     /**
-     * Interface for extensions to provide additional list view columns.
+     * the operation failed.
      */
-    class ColumnProviderInterface {}
-
+    FAILED,
     /**
-     * Interface for extensions to provide additional menu items.
+     * the extension has begin an async operation.
+     *  When this value is returned, the extension must set the handle parameter
+     *  and call the callback closure when the operation is complete.
      */
-    class FileInfoInterface {}
+    IN_PROGRESS,
+}
+function file_info_create(location: Gio.File): FileInfo
+function file_info_create_for_uri(uri: string): FileInfo
+function file_info_list_copy(files: FileInfo[]): FileInfo[]
+function file_info_list_free(files: FileInfo[]): void
+function file_info_lookup(location: Gio.File): (FileInfo | null)
+function file_info_lookup_for_uri(uri: string): (FileInfo | null)
+function info_provider_update_complete_invoke(update_complete: GObject.Closure, provider: InfoProvider, handle: OperationHandle, result: OperationResult): void
+module Column {
 
-    /**
-     * Interface for extensions to provide additional information about files.
-     */
-    class InfoProviderInterface {}
+    // Constructor properties interface
 
-    /**
-     * Interface for extensions to provide additional location widgets.
-     */
-    class LocationWidgetProviderInterface {}
-
-    class MenuClass {}
-
-    class MenuItemClass {}
-
-    /**
-     * Interface for extensions to provide additional menu items.
-     */
-    class MenuProviderInterface {}
-
-    /**
-     * Handle for asynchronous interfaces. These are opaque handles that must
-     * be unique within an extension object. These are returned by operations
-     * that return #NAUTILUS_OPERATION_IN_PROGRESS.
-     */
-    class OperationHandle {}
-
-    class PropertyPageClass {}
-
-    /**
-     * Interface for extensions to provide additional property pages.
-     */
-    class PropertyPageProviderInterface {}
-
-    interface ColumnProvider {
-        // Owm methods of Nautilus-3.0.ColumnProvider
-
-        get_columns(): Column[] | null;
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+attribute: string;
+    attribute_q: number;
+    attributeQ: number;
+    default_sort_order: Gtk.SortType;
+    defaultSortOrder: Gtk.SortType;
+    description: string;
+    label: string;
+    name: string;
+    xalign: number;
     }
 
-    interface FileInfo {
-        // Owm methods of Nautilus-3.0.FileInfo
+}
 
-        add_emblem(emblem_name: string): void;
-        add_string_attribute(attribute_name: string, value: string): void;
-        can_write(): boolean;
-        get_activation_uri(): string;
-        get_file_type(): Gio.FileType;
-        get_location(): Gio.File;
-        get_mime_type(): string;
-        get_mount(): Gio.Mount | null;
-        get_name(): string;
-        /**
-         * It's not safe to call this recursively multiple times, as it works
-         * only for files already cached by Nautilus.
-         * @returns a #NautilusFileInfo for the parent of @file_info,                                      or %NULL if @file_info has no parent.
-         */
-        get_parent_info(): FileInfo | null;
-        get_parent_location(): Gio.File | null;
-        get_parent_uri(): string;
-        get_string_attribute(attribute_name: string): string;
-        get_uri(): string;
-        get_uri_scheme(): string;
-        invalidate_extension_info(): void;
-        is_directory(): boolean;
-        is_gone(): boolean;
-        is_mime_type(mime_type: string): boolean;
+class Column extends GObject.Object {
 
-        // Own virtual methods of Nautilus-3.0.FileInfo
+    // Own properties of Nautilus.Column
 
-        vfunc_add_emblem(emblem_name: string): void;
-        vfunc_add_string_attribute(attribute_name: string, value: string): void;
-        vfunc_can_write(): boolean;
-        vfunc_get_activation_uri(): string;
-        vfunc_get_file_type(): Gio.FileType;
-        vfunc_get_location(): Gio.File;
-        vfunc_get_mime_type(): string;
-        vfunc_get_mount(): Gio.Mount | null;
-        vfunc_get_name(): string;
-        /**
-         * It's not safe to call this recursively multiple times, as it works
-         * only for files already cached by Nautilus.
-         */
-        vfunc_get_parent_info(): FileInfo | null;
-        vfunc_get_parent_location(): Gio.File | null;
-        vfunc_get_parent_uri(): string;
-        vfunc_get_string_attribute(attribute_name: string): string;
-        vfunc_get_uri(): string;
-        vfunc_get_uri_scheme(): string;
-        vfunc_invalidate_extension_info(): void;
-        vfunc_is_directory(): boolean;
-        vfunc_is_gone(): boolean;
-        vfunc_is_mime_type(mime_type: string): boolean;
+    get attribute(): string;
+    set attribute(val: string);
+    get attribute_q(): number;
+    get attributeQ(): number;
+    get default_sort_order(): Gtk.SortType;
+    set default_sort_order(val: Gtk.SortType);
+    get defaultSortOrder(): Gtk.SortType;
+    set defaultSortOrder(val: Gtk.SortType);
+    get description(): string;
+    set description(val: string);
+    get label(): string;
+    set label(val: string);
+    get name(): string;
+    get xalign(): number;
+    set xalign(val: number);
+
+    // Constructors of Nautilus.Column
+
+
+constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](name: string, attribute: string, label: string, description: string): Column;
+}
+
+module Menu {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    interface InfoProvider {
-        // Owm methods of Nautilus-3.0.InfoProvider
+}
 
-        cancel_update(handle: OperationHandle): void;
-        update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
+class Menu extends GObject.Object {
+
+    // Constructors of Nautilus.Menu
+
+
+constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Menu;
+
+    // Own methods of Nautilus.Menu
+
+    append_item(item: MenuItem): void
+    get_items(): (MenuItem[] | null)
+}
+
+module MenuItem {
+
+    // Signal callback interfaces
+
+    interface Activate {
+        (): void
     }
 
-    interface LocationWidgetProvider {
-        // Owm methods of Nautilus-3.0.LocationWidgetProvider
 
-        get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null;
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+icon: string;
+    label: string;
+    menu: Menu;
+    name: string;
+    priority: boolean;
+    sensitive: boolean;
+    tip: string;
     }
 
-    interface MenuProvider {
-        // Owm methods of Nautilus-3.0.MenuProvider
+}
 
-        /**
-         * Emits #NautilusMenuProvider::items-updated.
-         */
-        emit_items_updated_signal(): void;
-        get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[] | null;
-        get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[] | null;
-    }
+class MenuItem extends GObject.Object {
 
-    interface PropertyPageProvider {
-        // Owm methods of Nautilus-3.0.PropertyPageProvider
+    // Own properties of Nautilus.MenuItem
 
-        /**
-         * This function is called by Nautilus when it wants property page
-         * items from the extension.
-         *
-         * This function is called in the main thread before a property page
-         * is shown, so it should return quickly.
-         * @param files a #GList of #NautilusFileInfo
-         * @returns A #GList of allocated #NautilusPropertyPage items.
-         */
-        get_pages(files: FileInfo[]): PropertyPage[] | null;
-    }
+    get icon(): string;
+    set icon(val: string);
+    get label(): string;
+    set label(val: string);
+    get menu(): Menu;
+    set menu(val: Menu);
+    get name(): string;
+    get priority(): boolean;
+    set priority(val: boolean);
+    get sensitive(): boolean;
+    set sensitive(val: boolean);
+    get tip(): string;
+    set tip(val: string);
+
+    // Constructors of Nautilus.MenuItem
+
+
+constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](name: string, label: string, tip?: (string | null), icon?: (string | null)): MenuItem;
+
+    // Own signals of Nautilus.MenuItem
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'activate', callback: ((_source: this) => void)): number
+    connect_after(signal: 'activate', callback: ((_source: this) => void)): number
+    emit(signal: 'activate'): void
+
+    // Own static methods of Nautilus.MenuItem
+
+    static list_free(item_list: MenuItem[]): void
+
+    // Own virtual methods of Nautilus.MenuItem
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Emits #NautilusMenuItem::activate.
      */
-    const __name__: string;
+    vfunc_activate(): void
+
+    // Own methods of Nautilus.MenuItem
+
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Emits #NautilusMenuItem::activate.
      */
-    const __version__: string;
+    activate(): void
+    /**
+     * Attaches a menu to the given #NautilusMenuItem.
+     * @param menu pointer to a #NautilusMenu to attach to the button
+     */
+    set_submenu(menu: Menu): void
+}
+
+module PropertyPage {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+label: Gtk.Widget;
+    name: string;
+    page: Gtk.Widget;
+    }
+
+}
+
+class PropertyPage extends GObject.Object {
+
+    // Own properties of Nautilus.PropertyPage
+
+    get label(): Gtk.Widget;
+    set label(val: Gtk.Widget);
+    get name(): string;
+    get page(): Gtk.Widget;
+    set page(val: Gtk.Widget);
+
+    // Constructors of Nautilus.PropertyPage
+
+
+constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](name: string, label: Gtk.Widget, page: Gtk.Widget): PropertyPage;
+}
+
+type ColumnClass = typeof Column
+/**
+ * Interface for extensions to provide additional list view columns.
+ */
+class ColumnProviderInterface {
+
+    // Constructors of Nautilus.ColumnProviderInterface
+
+_init(...args: any[]): void;
+
+}
+
+type FileInfoInterface = typeof FileInfo
+/**
+ * Interface for extensions to provide additional information about files.
+ */
+class InfoProviderInterface {
+
+    // Constructors of Nautilus.InfoProviderInterface
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Interface for extensions to provide additional location widgets.
+ */
+class LocationWidgetProviderInterface {
+
+    // Constructors of Nautilus.LocationWidgetProviderInterface
+
+_init(...args: any[]): void;
+
+}
+
+type MenuClass = typeof Menu
+type MenuItemClass = typeof MenuItem
+/**
+ * Interface for extensions to provide additional menu items.
+ */
+class MenuProviderInterface {
+
+    // Constructors of Nautilus.MenuProviderInterface
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Handle for asynchronous interfaces. These are opaque handles that must
+ * be unique within an extension object. These are returned by operations
+ * that return #NAUTILUS_OPERATION_IN_PROGRESS.
+ */
+abstract class OperationHandle {
+
+    // Constructors of Nautilus.OperationHandle
+
+_init(...args: any[]): void;
+
+}
+
+type PropertyPageClass = typeof PropertyPage
+/**
+ * Interface for extensions to provide additional property pages.
+ */
+class PropertyPageProviderInterface {
+
+    // Constructors of Nautilus.PropertyPageProviderInterface
+
+_init(...args: any[]): void;
+
+}
+
+module ColumnProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface ColumnProviderNamespace {
+      $gtype: GObject.GType<ColumnProvider>;
+      prototype: ColumnProvider;
+      
+          
+      }
+interface ColumnProvider extends GObject.Object {
+
+    // Own methods of Nautilus.ColumnProvider
+
+    get_columns(): (Column[] | null)
+}
+
+
+
+export const ColumnProvider: ColumnProviderNamespace;
+
+module FileInfo {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface FileInfoNamespace {
+      $gtype: GObject.GType<FileInfo>;
+      prototype: FileInfo;
+      
+      create(location: Gio.File): FileInfo
+create_for_uri(uri: string): FileInfo
+list_copy(files: FileInfo[]): FileInfo[]
+list_free(files: FileInfo[]): void
+lookup(location: Gio.File): (FileInfo | null)
+lookup_for_uri(uri: string): (FileInfo | null)    
+      }
+interface FileInfo extends GObject.Object {
+
+    // Own methods of Nautilus.FileInfo
+
+    add_emblem(emblem_name: string): void
+    add_string_attribute(attribute_name: string, value: string): void
+    can_write(): boolean
+    get_activation_uri(): string
+    get_file_type(): Gio.FileType
+    get_location(): Gio.File
+    get_mime_type(): string
+    get_mount(): (Gio.Mount | null)
+    get_name(): string
+    /**
+     * It's not safe to call this recursively multiple times, as it works
+     * only for files already cached by Nautilus.
+     * @returns a #NautilusFileInfo for the parent of @file_info,                                      or %NULL if @file_info has no parent.
+     */
+    get_parent_info(): (FileInfo | null)
+    get_parent_location(): (Gio.File | null)
+    get_parent_uri(): string
+    get_string_attribute(attribute_name: string): string
+    get_uri(): string
+    get_uri_scheme(): string
+    invalidate_extension_info(): void
+    is_directory(): boolean
+    is_gone(): boolean
+    is_mime_type(mime_type: string): boolean
+
+    // Own virtual methods of Nautilus.FileInfo
+
+    vfunc_add_emblem(emblem_name: string): void
+    vfunc_add_string_attribute(attribute_name: string, value: string): void
+    vfunc_can_write(): boolean
+    vfunc_get_activation_uri(): string
+    vfunc_get_file_type(): Gio.FileType
+    vfunc_get_location(): Gio.File
+    vfunc_get_mime_type(): string
+    vfunc_get_mount(): (Gio.Mount | null)
+    vfunc_get_name(): string
+    /**
+     * It's not safe to call this recursively multiple times, as it works
+     * only for files already cached by Nautilus.
+     */
+    vfunc_get_parent_info(): (FileInfo | null)
+    vfunc_get_parent_location(): (Gio.File | null)
+    vfunc_get_parent_uri(): string
+    vfunc_get_string_attribute(attribute_name: string): string
+    vfunc_get_uri(): string
+    vfunc_get_uri_scheme(): string
+    vfunc_invalidate_extension_info(): void
+    vfunc_is_directory(): boolean
+    vfunc_is_gone(): boolean
+    vfunc_is_mime_type(mime_type: string): boolean
+}
+
+
+
+export const FileInfo: FileInfoNamespace;
+
+module InfoProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface InfoProviderNamespace {
+      $gtype: GObject.GType<InfoProvider>;
+      prototype: InfoProvider;
+      
+      update_complete_invoke(update_complete: GObject.Closure, provider: InfoProvider, handle: OperationHandle, result: OperationResult): void    
+      }
+interface InfoProvider extends GObject.Object {
+
+    // Own methods of Nautilus.InfoProvider
+
+    cancel_update(handle: OperationHandle): void
+    update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult
+}
+
+
+
+export const InfoProvider: InfoProviderNamespace;
+
+module LocationWidgetProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface LocationWidgetProviderNamespace {
+      $gtype: GObject.GType<LocationWidgetProvider>;
+      prototype: LocationWidgetProvider;
+      
+          
+      }
+interface LocationWidgetProvider extends GObject.Object {
+
+    // Own methods of Nautilus.LocationWidgetProvider
+
+    get_widget(uri: string, window: Gtk.Widget): (Gtk.Widget | null)
+}
+
+
+
+export const LocationWidgetProvider: LocationWidgetProviderNamespace;
+
+module MenuProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface MenuProviderNamespace {
+      $gtype: GObject.GType<MenuProvider>;
+      prototype: MenuProvider;
+      
+          
+      }
+interface MenuProvider extends GObject.Object {
+
+    // Own methods of Nautilus.MenuProvider
+
+    /**
+     * Emits #NautilusMenuProvider::items-updated.
+     */
+    emit_items_updated_signal(): void
+    get_background_items(window: Gtk.Widget, current_folder: FileInfo): (MenuItem[] | null)
+    get_file_items(window: Gtk.Widget, files: FileInfo[]): (MenuItem[] | null)
+}
+
+
+
+export const MenuProvider: MenuProviderNamespace;
+
+module PropertyPageProvider {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+export interface PropertyPageProviderNamespace {
+      $gtype: GObject.GType<PropertyPageProvider>;
+      prototype: PropertyPageProvider;
+      
+          
+      }
+interface PropertyPageProvider extends GObject.Object {
+
+    // Own methods of Nautilus.PropertyPageProvider
+
+    /**
+     * This function is called by Nautilus when it wants property page
+     * items from the extension.
+     * 
+     * This function is called in the main thread before a property page
+     * is shown, so it should return quickly.
+     * @param files a #GList of #NautilusFileInfo
+     * @returns A #GList of allocated #NautilusPropertyPage items.
+     */
+    get_pages(files: FileInfo[]): (PropertyPage[] | null)
+}
+
+
+
+export const PropertyPageProvider: PropertyPageProviderNamespace;
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Nautilus;

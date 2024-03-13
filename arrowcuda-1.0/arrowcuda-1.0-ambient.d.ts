@@ -5,8 +5,7 @@ declare module 'gi://ArrowCUDA?version=1.0' {
 }
 
 declare module 'gi://ArrowCUDA' {
-    import ArrowCUDA10 from '@girs/arrowcuda-1.0';
-    export default ArrowCUDA10;
+    export * from 'gi://ArrowCUDA?version=1.0';
 }
 
 

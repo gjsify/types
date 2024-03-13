@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,1980 +16,2302 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gegl {
-    enum AbyssPolicy {
-        NONE,
-        CLAMP,
-        LOOP,
-        BLACK,
-        WHITE,
+
+enum AbyssPolicy {
+    NONE,
+    CLAMP,
+    LOOP,
+    BLACK,
+    WHITE,
+}
+enum DistanceMetric {
+    EUCLIDEAN,
+    MANHATTAN,
+    CHEBYSHEV,
+}
+enum DitherMethod {
+    NONE,
+    FLOYD_STEINBERG,
+    BAYER,
+    RANDOM,
+    RANDOM_COVARIANT,
+    ADD,
+    ADD_COVARIANT,
+    XOR,
+    XOR_COVARIANT,
+}
+enum Orientation {
+    HORIZONTAL,
+    VERTICAL,
+}
+enum SamplerType {
+    NEAREST,
+    LINEAR,
+    CUBIC,
+    NOHALO,
+    LOHALO,
+}
+enum SplitStrategy {
+    AUTO,
+    HORIZONTAL,
+    VERTICAL,
+}
+enum TileCommand {
+    IDLE,
+    SET,
+    GET,
+    IS_CACHED,
+    EXIST,
+    VOID,
+    FLUSH,
+    REFETCH,
+    REINIT,
+    LAST_COMMAND,
+}
+const AUTO_ROWSTRIDE: number
+const BUFFER_MAX_ITERATORS: number
+const CH_BACK_CENTER: number
+const CH_BACK_LEFT: number
+const CH_BACK_RIGHT: number
+const CH_FRONT_CENTER: number
+const CH_FRONT_LEFT: number
+const CH_FRONT_LEFT_OF_CENTER: number
+const CH_FRONT_RIGHT: number
+const CH_FRONT_RIGHT_OF_CENTER: number
+const CH_LAYOUT_2POINT1: number
+const CH_LAYOUT_2_1: number
+const CH_LAYOUT_2_2: number
+const CH_LAYOUT_3POINT1: number
+const CH_LAYOUT_4POINT0: number
+const CH_LAYOUT_4POINT1: number
+const CH_LAYOUT_5POINT0: number
+const CH_LAYOUT_5POINT0_BACK: number
+const CH_LAYOUT_5POINT1: number
+const CH_LAYOUT_5POINT1_BACK: number
+const CH_LAYOUT_6POINT0: number
+const CH_LAYOUT_6POINT0_FRONT: number
+const CH_LAYOUT_6POINT1: number
+const CH_LAYOUT_6POINT1_BACK: number
+const CH_LAYOUT_6POINT1_FRONT: number
+const CH_LAYOUT_7POINT0: number
+const CH_LAYOUT_7POINT0_FRONT: number
+const CH_LAYOUT_7POINT1: number
+const CH_LAYOUT_7POINT1_WIDE: number
+const CH_LAYOUT_7POINT1_WIDE_BACK: number
+const CH_LAYOUT_HEXADECAGONAL: number
+const CH_LAYOUT_HEXAGONAL: number
+const CH_LAYOUT_NATIVE: number
+const CH_LAYOUT_OCTAGONAL: number
+const CH_LAYOUT_QUAD: number
+const CH_LAYOUT_STEREO: number
+const CH_LAYOUT_STEREO_DOWNMIX: number
+const CH_LAYOUT_SURROUND: number
+const CH_LOW_FREQUENCY: number
+const CH_LOW_FREQUENCY_2: number
+const CH_SIDE_LEFT: number
+const CH_SIDE_RIGHT: number
+const CH_STEREO_LEFT: number
+const CH_STEREO_RIGHT: number
+const CH_SURROUND_DIRECT_LEFT: number
+const CH_SURROUND_DIRECT_RIGHT: number
+const CH_TOP_BACK_CENTER: number
+const CH_TOP_BACK_LEFT: number
+const CH_TOP_BACK_RIGHT: number
+const CH_TOP_CENTER: number
+const CH_TOP_FRONT_CENTER: number
+const CH_TOP_FRONT_LEFT: number
+const CH_TOP_FRONT_RIGHT: number
+const CH_WIDE_LEFT: number
+const CH_WIDE_RIGHT: number
+const FLOAT_EPSILON: number
+const LOOKUP_MAX_ENTRIES: number
+const MAJOR_VERSION: number
+const MAX_AUDIO_CHANNELS: number
+const MICRO_VERSION: number
+const MINOR_VERSION: number
+const PARAM_NO_VALIDATE: number
+/**
+ * Disable OpenCL
+ */
+function cl_disable(): void
+/**
+ * Initialize and enable OpenCL, calling this function again
+ * will re-enable OpenCL if it has been disabled.
+ * @returns True if OpenCL was initialized
+ */
+function cl_init(): boolean
+/**
+ * Check if OpenCL is enabled.
+ * @returns True if OpenCL is initialized and enabled
+ */
+function cl_is_accelerated(): boolean
+/**
+ * Returns a GeglConfig object with properties that can be manipulated to control
+ * GEGLs behavior.
+ * @returns a #GeglConfig
+ */
+function config(): Config
+/**
+ * Create a node chain from an unparsed commandline string.
+ * @param ops an argv style, NULL terminated array of arguments
+ * @param op_start node to pass in as input of chain
+ * @param op_end node to get processed data
+ * @param time the time to use for interpolatino of keyframed values
+ * @param rel_dim relative dimension to scale rel suffixed values by
+ * @param path_root path in filesystem to use as relative root
+ */
+function create_chain(ops: string, op_start: Node, op_end: Node, time: number, rel_dim: number, path_root: string): void
+/**
+ * Create a node chain from argv style list of op data.
+ * @param ops an argv style, NULL terminated array of arguments
+ * @param op_start node to pass in as input of chain
+ * @param op_end node to get processed data
+ * @param time the time to use for interpolatino of keyframed values
+ * @param rel_dim relative dimension to scale rel suffixed values by
+ * @param path_root path in filesystem to use as relative root
+ */
+function create_chain_argv(ops: string, op_start: Node, op_end: Node, time: number, rel_dim: number, path_root: string): void
+/**
+ * Call this function when you're done using GEGL. It will clean up
+ * caches and write/dump debug information if the correct debug flags
+ * are set.
+ */
+function exit(): void
+/**
+ * Returns a value sutable to pass to the GeglBuffer constructor
+ * or any other property that expects a Babl format.
+ * @param format_name A Babl format name, e.g. "RGBA float"
+ * @returns the format pointer
+ */
+function format(format_name: string): (GObject.Value | null)
+function format_get_name(format: GObject.Value): (string | null)
+/**
+ * This function fetches the version of the GEGL library being used by
+ * the running process.
+ */
+function get_version(): [number, number, number]
+/**
+ * Dump the bounds and format of each node in the graph to stdout.
+ * @param node The final node of the graph
+ */
+function graph_dump_outputs(node: Node): void
+/**
+ * Dump the region that will be rendered for each node to fulfill
+ * the request.
+ * @param node The final node of the graph
+ * @param roi The request rectangle
+ */
+function graph_dump_request(node: Node, roi: Rectangle): void
+function has_operation(operation_type: string): boolean
+/**
+ * Call this function before using any other GEGL functions. It will
+ * initialize everything needed to operate GEGL and parses some
+ * standard command line options.  `argc` and `argv` are adjusted
+ * accordingly so your own code will never see those standard
+ * arguments.
+ * 
+ * Note that there is an alternative way to initialize GEGL: if you
+ * are calling g_option_context_parse() with the option group returned
+ * by #gegl_get_option_group(), you don't have to call #gegl_init().
+ * @param argv a pointer to the array of command line arguments.
+ */
+function init(argv?: (string[] | null)): string[] | null
+function is_main_thread(): boolean
+function list_operations(): string[]
+/**
+ * Load all gegl modules found in the given directory.
+ * @param path the directory to load modules from
+ */
+function load_module_directory(path: string): void
+/**
+ * Creates a new #GParamSpec instance specifying a #GeglAudioFragment property.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_audio_fragment(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GParamSpec instance specifying a #GeglColor property.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param default_color the default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_color(name: string, nick: string, blurb: string, default_color: Color, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GParamSpec instance specifying a #GeglColor property.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param default_color_string the default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_color_from_string(name: string, nick: string, blurb: string, default_color_string: string, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Get the default color value of the param spec
+ * @param self a #GeglColor #GParamSpec
+ * @returns the default #GeglColor
+ */
+function param_spec_color_get_default(self: GObject.ParamSpec): Color
+/**
+ * Creates a new #GParamSpec instance specifying a #GeglCurve property.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param default_curve the default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_curve(name: string, nick: string, blurb: string, default_curve: Curve, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecDouble instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param minimum minimum value for the property specified
+ * @param maximum maximum value for the property specified
+ * @param default_value default value for the property specified
+ * @param ui_minimum minimum value a user should be allowed to input
+ * @param ui_maximum maximum value a user should be allowed to input
+ * @param ui_gamma the gamma that should be used when adjusting the value
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_double(name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, ui_minimum: number, ui_maximum: number, ui_gamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecEnum instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param enum_type the enum type to get valid values from
+ * @param default_value default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_enum(name: string, nick: string, blurb: string, enum_type: GObject.GType, default_value: number, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecFilePath instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param no_validate true if the string should be validated with g_utf8_validate
+ * @param null_ok true if the string can be NULL
+ * @param default_value default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_file_path(name: string, nick: string, blurb: string, no_validate: boolean, null_ok: boolean, default_value: string, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_format(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
+function param_spec_get_property_key(pspec: GObject.ParamSpec, key_name: string): string
+/**
+ * Creates a new #GeglParamSpecInt instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param minimum minimum value for the property specified
+ * @param maximum maximum value for the property specified
+ * @param default_value default value for the property specified
+ * @param ui_minimum minimum value a user should be allowed to input
+ * @param ui_maximum maximum value a user should be allowed to input
+ * @param ui_gamma the gamma that should be used when adjusting the value
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_int(name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, ui_minimum: number, ui_maximum: number, ui_gamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GParamSpec instance specifying a #GeglPath property.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param default_path the default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_path(name: string, nick: string, blurb: string, default_path: Path, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_seed(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
+function param_spec_set_property_key(pspec: GObject.ParamSpec, key_name: string, value: string): void
+/**
+ * Creates a new #GeglParamSpecString instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param no_validate true if the string should be validated with g_utf8_validate
+ * @param null_ok true if the string can be NULL
+ * @param default_value default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_string(name: string, nick: string, blurb: string, no_validate: boolean, null_ok: boolean, default_value: string, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Creates a new #GeglParamSpecUri instance.
+ * @param name canonical name of the property specified
+ * @param nick nick name for the property specified
+ * @param blurb description of the property specified
+ * @param no_validate true if the string should be validated with g_utf8_validate
+ * @param null_ok true if the string can be NULL
+ * @param default_value default value for the property specified
+ * @param flags flags for the property specified
+ * @returns a newly created parameter specification
+ */
+function param_spec_uri(name: string, nick: string, blurb: string, no_validate: boolean, null_ok: boolean, default_value: string, flags: GObject.ParamFlags): GObject.ParamSpec
+/**
+ * Returns a GeglRectangle that represents an infininte plane.
+ */
+function rectangle_infinite_plane(): Rectangle
+/**
+ * Resets the cumulative data gathered by the #GeglStats object returned
+ * by #gegl_stats().
+ */
+function reset_stats(): void
+function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag): string
+/**
+ * Returns a GeglStats object with properties that can be read to monitor
+ * GEGL statistics.
+ * @returns a #GeglStats
+ */
+function stats(): Stats
+interface LookupFunction {
+    (value: number, data?: (any | null)): number
+}
+interface NodeFunction {
+    (node: PathItem): void
+}
+interface SamplerGetFun {
+    (self: Sampler, x: number, y: number, scale: Matrix2, output: (any | null), repeat_mode: AbyssPolicy): void
+}
+interface TileCallback {
+    (tile: Tile): void
+}
+interface TileSourceCommand {
+    (gegl_tile_source: TileSource, command: TileCommand, x: number, y: number, z: number, data?: (any | null)): (any | null)
+}
+enum AccessMode {
+    READ,
+    WRITE,
+    READWRITE,
+}
+enum BlitFlags {
+    DEFAULT,
+    CACHE,
+    DIRTY,
+}
+enum PadType {
+    OUTPUT,
+    INPUT,
+}
+enum SerializeFlag {
+    TRIM_DEFAULTS,
+    VERSION,
+    INDENT,
+}
+module AudioFragment {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+string: string;
     }
-    enum DistanceMetric {
-        EUCLIDEAN,
-        MANHATTAN,
-        CHEBYSHEV,
+
+}
+
+class AudioFragment extends GObject.Object {
+
+    // Own properties of Gegl.AudioFragment
+
+    get string(): string;
+    set string(val: string);
+
+    // Own fields of Gegl.AudioFragment
+
+data: number[]
+
+    // Constructors of Gegl.AudioFragment
+
+
+constructor(properties?: Partial<AudioFragment.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](sample_rate: number, channels: number, channel_layout: number, max_samples: number): AudioFragment;
+
+    // Own methods of Gegl.AudioFragment
+
+    get_channel_layout(): number
+    get_channels(): number
+    get_max_samples(): number
+    get_pos(): number
+    get_sample_count(): number
+    get_sample_rate(): number
+    set_channel_layout(channel_layout: number): void
+    set_channels(channels: number): void
+    set_max_samples(max_samples: number): void
+    set_pos(pos: number): void
+    set_sample_count(sample_count: number): void
+    set_sample_rate(sample_rate: number): void
+}
+
+module Buffer {
+
+    // Signal callback interfaces
+
+    interface Changed {
+        (object: Rectangle): void
     }
-    enum DitherMethod {
-        NONE,
-        FLOYD_STEINBERG,
-        BAYER,
-        RANDOM,
-        RANDOM_COVARIANT,
-        ADD,
-        ADD_COVARIANT,
-        XOR,
-        XOR_COVARIANT,
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends TileHandler.ConstructorProps {
+abyss_height: number;
+    abyssHeight: number;
+    abyss_width: number;
+    abyssWidth: number;
+    abyss_x: number;
+    abyssX: number;
+    abyss_y: number;
+    abyssY: number;
+    backend: TileBackend;
+    format: any;
+    height: number;
+    path: string;
+    pixels: number;
+    px_size: number;
+    pxSize: number;
+    shift_x: number;
+    shiftX: number;
+    shift_y: number;
+    shiftY: number;
+    tile_height: number;
+    tileHeight: number;
+    tile_width: number;
+    tileWidth: number;
+    width: number;
+    x: number;
+    y: number;
     }
-    enum Orientation {
-        HORIZONTAL,
-        VERTICAL,
+
+}
+
+class Buffer extends TileHandler {
+
+    // Own properties of Gegl.Buffer
+
+    get abyss_height(): number;
+    get abyssHeight(): number;
+    get abyss_width(): number;
+    get abyssWidth(): number;
+    get abyss_x(): number;
+    get abyssX(): number;
+    get abyss_y(): number;
+    get abyssY(): number;
+    get backend(): TileBackend;
+    get format(): any;
+    set format(val: any);
+    get height(): number;
+    set height(val: number);
+    get path(): string;
+    get pixels(): number;
+    get px_size(): number;
+    get pxSize(): number;
+    get shift_x(): number;
+    get shiftX(): number;
+    get shift_y(): number;
+    get shiftY(): number;
+    get tile_height(): number;
+    get tileHeight(): number;
+    get tile_width(): number;
+    get tileWidth(): number;
+    get width(): number;
+    set width(val: number);
+    get x(): number;
+    set x(val: number);
+    get y(): number;
+    set y(val: number);
+
+    // Constructors of Gegl.Buffer
+
+
+constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](format_name: string, x: number, y: number, width: number, height: number): Buffer;
+
+static new_for_backend(extent: Rectangle, backend: TileBackend): Buffer;
+
+    // Own signals of Gegl.Buffer
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'changed', callback: ((_source: this, object: Rectangle) => void)): number
+    connect_after(signal: 'changed', callback: ((_source: this, object: Rectangle) => void)): number
+    emit(signal: 'changed', object: Rectangle): void
+
+    // Own static methods of Gegl.Buffer
+
+    /**
+     * Loads an existing GeglBuffer from disk, if it has previously been saved with
+     * gegl_buffer_save it should be possible to open through any GIO transport, buffers
+     * that have been used as swap needs random access to be opened.
+     * @param path the path to a gegl buffer on disk.
+     */
+    static load(path: string): Buffer
+    /**
+     * Open an existing on-disk GeglBuffer, this buffer is opened in a monitored
+     * state so multiple instances of gegl can share the same buffer. Sets on
+     * one buffer are reflected in the other.
+     * @param path the path to a gegl buffer on disk.
+     */
+    static open(path: string): Buffer
+
+    // Own methods of Gegl.Buffer
+
+    /**
+     * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
+     * @param handler a #GeglTileHandler
+     */
+    add_handler(handler?: (any | null)): void
+    /**
+     * Clears the provided rectangular region by setting all the associated memory
+     * to 0.
+     * @param roi a rectangular region
+     */
+    clear(roi: Rectangle): void
+    /**
+     * Copy a region from source buffer to destination buffer.
+     * 
+     * If the babl_formats of the buffers are the same, and the tile boundaries
+     * align, this will create copy-on-write tiles in the destination buffer.
+     * 
+     * This function never does any scaling. When src_rect and dst_rect do not have
+     * the same width and height, the size of src_rect is used.
+     * @param src_rect source rectangle (or NULL to copy entire source buffer)
+     * @param repeat_mode the abyss policy to be using if src_rect is outside src's extent.
+     * @param dst destination buffer.
+     * @param dst_rect position of upper left destination pixel, or NULL for top left coordinates of the buffer extents.
+     */
+    copy(src_rect: Rectangle, repeat_mode: AbyssPolicy, dst: Buffer, dst_rect: Rectangle): void
+    /**
+     * Create a new sub GeglBuffer, that is a view on a larger buffer.
+     * @param extent coordinates of new buffer.
+     * @returns the new sub buffer
+     */
+    create_sub_buffer(extent: Rectangle): Buffer
+    /**
+     * Duplicate a buffer (internally uses gegl_buffer_copy). Aligned tiles
+     * will create copy-on-write clones in the new buffer.
+     * @returns the new buffer
+     */
+    dup(): Buffer
+    /**
+     * Flushes all unsaved data to disk, this is not necessary for shared
+     * geglbuffers opened with gegl_buffer_open since they auto-sync on writes.
+     */
+    flush(): void
+    /**
+     * Return the abyss extent of a buffer, this expands out to the parents extent in
+     * subbuffers.
+     */
+    get_abyss(): Rectangle
+    /**
+     * Returns a pointer to a GeglRectangle structure defining the geometry of a
+     * specific GeglBuffer, this is also the default width/height of buffers passed
+     * in to gegl_buffer_set and gegl_buffer_get (with a scale of 1.0 at least).
+     */
+    get_extent(): Rectangle
+    /**
+     * Fetch a rectangular linear buffer of pixel data from the GeglBuffer.
+     * @param rect the coordinates we want to retrieve data from.
+     * @param scale sampling scale, 1.0 = pixel for pixel 2.0 = magnify, 0.5 scale down.
+     * @param format_name the format to store data in, if NULL the format of the buffer is used.
+     * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
+     * @returns A copy of the requested data
+     */
+    get(rect: Rectangle, scale: number, format_name: (string | null), repeat_mode: AbyssPolicy): Uint8Array
+    /**
+     * Store a linear raster buffer into the GeglBuffer.
+     * @param rect the rectangle to write.
+     * @param format_name the format of the input data.
+     * @param src pixel data to write to @buffer.
+     */
+    set(rect: Rectangle, format_name: string, src: Uint8Array): void
+    set(...args: never[]): any
+    /**
+     * This function makes sure GeglBuffer and underlying code is aware of changes
+     * being made to the linear buffer. If the request was not a compatible one
+     * it is written back to the buffer. Multiple concurrent users can be handed
+     * the same buffer (both raw access and converted).
+     * @param linear a previously returned buffer.
+     */
+    linear_close(linear?: (any | null)): void
+    /**
+     * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
+     * @param handler a #GeglTileHandler
+     */
+    remove_handler(handler?: (any | null)): void
+    /**
+     * Clean up resources used by sampling framework of buffer (will be freed
+     * automatically later when the buffer is destroyed, for long lived buffers
+     * cleaning up the sampling infrastructure when it has been used for its
+     * purpose will sometimes be more efficient).
+     */
+    sample_cleanup(): void
+    /**
+     * Write a GeglBuffer to a file.
+     * @param path the path where the gegl buffer will be saved, any writable GIO uri is valid.
+     * @param roi the region of interest to write, this is the tiles that will be collected and written to disk.
+     */
+    save(path: string, roi: Rectangle): void
+    /**
+     * Changes the size and position of the abyss rectangle of a buffer.
+     * 
+     * Returns TRUE if the change of abyss was successful.
+     * @param abyss new abyss.
+     */
+    set_abyss(abyss: Rectangle): boolean
+    /**
+     * Sets the region covered by rect to the specified color.
+     * @param rect a rectangular region to fill with a color.
+     * @param color the GeglColor to fill with.
+     */
+    set_color(rect: Rectangle, color: Color): void
+    /**
+     * Changes the size and position that is considered active in a buffer, this
+     * operation is valid on any buffer, reads on subbuffers outside the master
+     * buffer's extent are at the moment undefined.
+     * 
+     * Returns TRUE if the change of extent was successful.
+     * @param extent new extent.
+     */
+    set_extent(extent: Rectangle): boolean
+    /**
+     * Fill a region with a repeating pattern. Offsets parameters are
+     * relative to the origin (0, 0) and not to the rectangle. So be carefull
+     * about the origin of `pattern` and `buffer` extents.
+     * @param rect the region of @buffer to fill
+     * @param pattern a #GeglBuffer to be repeated as a pattern
+     * @param x_offset where the pattern starts horizontally
+     * @param y_offset where the pattern starts vertical
+     */
+    set_pattern(rect: Rectangle, pattern: Buffer, x_offset: number, y_offset: number): void
+    /**
+     * This function should be used instead of g_signal_connect when connecting to
+     * the GeglBuffer::changed signal handler, GeglBuffer contains additional
+     * machinery to avoid the overhead of changes when no signal handler have been
+     * connected, if regular g_signal_connect is used; then no signals will be
+     * emitted.
+     * @param detailed_signal only "changed" expected for now
+     * @param c_handler c function callback
+     * @returns an handle like g_signal_connect.
+     */
+    signal_connect(detailed_signal: string, c_handler: GObject.Callback): number
+}
+
+module Color {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+string: string;
     }
-    enum SamplerType {
-        NEAREST,
-        LINEAR,
-        CUBIC,
-        NOHALO,
-        LOHALO,
+
+}
+
+class Color extends GObject.Object {
+
+    // Own properties of Gegl.Color
+
+    get string(): string;
+    set string(val: string);
+
+    // Constructors of Gegl.Color
+
+
+constructor(properties?: Partial<Color.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](string: string): Color;
+
+    // Own methods of Gegl.Color
+
+    /**
+     * Creates a copy of `color`.
+     * @returns A new copy of @color.
+     */
+    duplicate(): Color
+    /**
+     * Get the component values of the color in `format`.
+     * @param format A Babl pointer
+     * @returns The color components
+     */
+    get_components(format: GObject.Value): number[]
+    /**
+     * Retrieves the current set color as linear light non premultipled RGBA data,
+     * any of the return pointers can be omitted.
+     */
+    get_rgba(): [number, number, number, number]
+    /**
+     * Set the color using the component values as `format`.
+     * @param format A Babl pointer
+     * @param components The color components.
+     */
+    set_components(format: GObject.Value, components: number[]): void
+    /**
+     * Retrieves the current set color as linear light non premultipled RGBA data
+     * @param red red value
+     * @param green green value
+     * @param blue blue value
+     * @param alpha alpha value
+     */
+    set_rgba(red: number, green: number, blue: number, alpha: number): void
+}
+
+module Config {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+application_license: string;
+    applicationLicense: string;
+    chunk_size: number;
+    chunkSize: number;
+    quality: number;
+    queue_size: number;
+    queueSize: number;
+    swap: string;
+    threads: number;
+    tile_cache_size: number;
+    tileCacheSize: number;
+    tile_height: number;
+    tileHeight: number;
+    tile_width: number;
+    tileWidth: number;
+    use_opencl: boolean;
+    useOpencl: boolean;
     }
-    enum SplitStrategy {
-        AUTO,
-        HORIZONTAL,
-        VERTICAL,
+
+}
+
+class Config extends GObject.Object {
+
+    // Own properties of Gegl.Config
+
+    get application_license(): string;
+    set application_license(val: string);
+    get applicationLicense(): string;
+    set applicationLicense(val: string);
+    get chunk_size(): number;
+    set chunk_size(val: number);
+    get chunkSize(): number;
+    set chunkSize(val: number);
+    get quality(): number;
+    set quality(val: number);
+    get queue_size(): number;
+    set queue_size(val: number);
+    get queueSize(): number;
+    set queueSize(val: number);
+    get swap(): string;
+    set swap(val: string);
+    get threads(): number;
+    set threads(val: number);
+    get tile_cache_size(): number;
+    set tile_cache_size(val: number);
+    get tileCacheSize(): number;
+    set tileCacheSize(val: number);
+    get tile_height(): number;
+    set tile_height(val: number);
+    get tileHeight(): number;
+    set tileHeight(val: number);
+    get tile_width(): number;
+    set tile_width(val: number);
+    get tileWidth(): number;
+    set tileWidth(val: number);
+    get use_opencl(): boolean;
+    set use_opencl(val: boolean);
+    get useOpencl(): boolean;
+    set useOpencl(val: boolean);
+
+    // Constructors of Gegl.Config
+
+
+constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+}
+
+module Curve {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
-    enum TileCommand {
-        IDLE,
-        SET,
-        GET,
-        IS_CACHED,
-        EXIST,
-        VOID,
-        FLUSH,
-        REFETCH,
-        REINIT,
-        LAST_COMMAND,
+
+}
+
+class Curve extends GObject.Object {
+
+    // Constructors of Gegl.Curve
+
+
+constructor(properties?: Partial<Curve.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](y_min: number, y_max: number): Curve;
+
+static new_default(): Curve;
+
+    // Own methods of Gegl.Curve
+
+    /**
+     * Add a point to the curve at `x` `y` (replacing the value exactly for `x` if it
+     * already exists.
+     * @param x x coordinate
+     * @param y y coordinate
+     */
+    add_point(x: number, y: number): number
+    /**
+     * Retrieve the number of points in the curve.
+     * 
+     * Returns the number of points for the coordinates in the curve.
+     * @param x 
+     */
+    calc_value(x: number): number
+    /**
+     * Create a copy of `curve`.
+     * @returns A new copy of @curve.
+     */
+    duplicate(): Curve
+    /**
+     * Retrive the coordinates for an index.
+     * @param index the position of the value number to retrieve.
+     */
+    get_point(index: number): [number, number]
+    /**
+     * Get the bounds on the values of the curve and store the values in
+     * the return locaitons provided in `min_y` and `max_y`.
+     */
+    get_y_bounds(): [number, number]
+    /**
+     * Retrieve the number of points in the curve.
+     * 
+     * Returns the number of points for the coordinates in the curve.
+     */
+    num_points(): number
+    /**
+     * Replace an existing point in a curve.
+     * @param index the position of the value number to retrieve.
+     * @param x x coordinate
+     * @param y y coordinate
+     */
+    set_point(index: number, x: number, y: number): void
+}
+
+module Node {
+
+    // Signal callback interfaces
+
+    interface Computed {
+        (object: Rectangle): void
     }
-    const AUTO_ROWSTRIDE: number;
-    const BUFFER_MAX_ITERATORS: number;
-    const CH_BACK_CENTER: number;
-    const CH_BACK_LEFT: number;
-    const CH_BACK_RIGHT: number;
-    const CH_FRONT_CENTER: number;
-    const CH_FRONT_LEFT: number;
-    const CH_FRONT_LEFT_OF_CENTER: number;
-    const CH_FRONT_RIGHT: number;
-    const CH_FRONT_RIGHT_OF_CENTER: number;
-    const CH_LAYOUT_2POINT1: number;
-    const CH_LAYOUT_2_1: number;
-    const CH_LAYOUT_2_2: number;
-    const CH_LAYOUT_3POINT1: number;
-    const CH_LAYOUT_4POINT0: number;
-    const CH_LAYOUT_4POINT1: number;
-    const CH_LAYOUT_5POINT0: number;
-    const CH_LAYOUT_5POINT0_BACK: number;
-    const CH_LAYOUT_5POINT1: number;
-    const CH_LAYOUT_5POINT1_BACK: number;
-    const CH_LAYOUT_6POINT0: number;
-    const CH_LAYOUT_6POINT0_FRONT: number;
-    const CH_LAYOUT_6POINT1: number;
-    const CH_LAYOUT_6POINT1_BACK: number;
-    const CH_LAYOUT_6POINT1_FRONT: number;
-    const CH_LAYOUT_7POINT0: number;
-    const CH_LAYOUT_7POINT0_FRONT: number;
-    const CH_LAYOUT_7POINT1: number;
-    const CH_LAYOUT_7POINT1_WIDE: number;
-    const CH_LAYOUT_7POINT1_WIDE_BACK: number;
-    const CH_LAYOUT_HEXADECAGONAL: number;
-    const CH_LAYOUT_HEXAGONAL: number;
-    const CH_LAYOUT_NATIVE: number;
-    const CH_LAYOUT_OCTAGONAL: number;
-    const CH_LAYOUT_QUAD: number;
-    const CH_LAYOUT_STEREO: number;
-    const CH_LAYOUT_STEREO_DOWNMIX: number;
-    const CH_LAYOUT_SURROUND: number;
-    const CH_LOW_FREQUENCY: number;
-    const CH_LOW_FREQUENCY_2: number;
-    const CH_SIDE_LEFT: number;
-    const CH_SIDE_RIGHT: number;
-    const CH_STEREO_LEFT: number;
-    const CH_STEREO_RIGHT: number;
-    const CH_SURROUND_DIRECT_LEFT: number;
-    const CH_SURROUND_DIRECT_RIGHT: number;
-    const CH_TOP_BACK_CENTER: number;
-    const CH_TOP_BACK_LEFT: number;
-    const CH_TOP_BACK_RIGHT: number;
-    const CH_TOP_CENTER: number;
-    const CH_TOP_FRONT_CENTER: number;
-    const CH_TOP_FRONT_LEFT: number;
-    const CH_TOP_FRONT_RIGHT: number;
-    const CH_WIDE_LEFT: number;
-    const CH_WIDE_RIGHT: number;
-    const FLOAT_EPSILON: number;
-    const LOOKUP_MAX_ENTRIES: number;
-    const MAJOR_VERSION: number;
-    const MAX_AUDIO_CHANNELS: number;
-    const MICRO_VERSION: number;
-    const MINOR_VERSION: number;
-    const PARAM_NO_VALIDATE: number;
+
+    interface Invalidated {
+        (object: Rectangle): void
+    }
+
+    interface Progress {
+        (object: number): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+dont_cache: boolean;
+    dontCache: boolean;
+    gegl_operation: Operation;
+    geglOperation: Operation;
+    name: string;
+    operation: string;
+    passthrough: boolean;
+    use_opencl: boolean;
+    useOpencl: boolean;
+    }
+
+}
+
+class Node extends GObject.Object {
+
+    // Own properties of Gegl.Node
+
+    get dont_cache(): boolean;
+    set dont_cache(val: boolean);
+    get dontCache(): boolean;
+    set dontCache(val: boolean);
+    get gegl_operation(): Operation;
+    set gegl_operation(val: Operation);
+    get geglOperation(): Operation;
+    set geglOperation(val: Operation);
+    get name(): string;
+    set name(val: string);
+    get operation(): string;
+    set operation(val: string);
+    get passthrough(): boolean;
+    set passthrough(val: boolean);
+    get use_opencl(): boolean;
+    set use_opencl(val: boolean);
+    get useOpencl(): boolean;
+    set useOpencl(val: boolean);
+
+    // Constructors of Gegl.Node
+
+
+constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Node;
+
+static new_from_file(path: string): Node;
+
+static new_from_serialized(chaindata: string, path_root: string): Node;
+
+static new_from_xml(xmldata: string, path_root: string): Node;
+
+    // Own signals of Gegl.Node
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'computed', callback: ((_source: this, object: Rectangle) => void)): number
+    connect_after(signal: 'computed', callback: ((_source: this, object: Rectangle) => void)): number
+    emit(signal: 'computed', object: Rectangle): void
+    connect(signal: 'invalidated', callback: ((_source: this, object: Rectangle) => void)): number
+    connect_after(signal: 'invalidated', callback: ((_source: this, object: Rectangle) => void)): number
+    emit(signal: 'invalidated', object: Rectangle): void
+    connect(signal: 'progress', callback: ((_source: this, object: number) => void)): number
+    connect_after(signal: 'progress', callback: ((_source: this, object: number) => void)): number
+    emit(signal: 'progress', object: number): void
+
+    // Own methods of Gegl.Node
+
     /**
-     * Disable OpenCL
+     * Make the GeglNode `graph,` take a reference on child. This reference
+     * will be dropped when the reference count on the graph reaches zero.
+     * @param child a GeglNode.
+     * @returns the child.
      */
-    function cl_disable(): void;
+    add_child(child: Node): Node
     /**
-     * Initialize and enable OpenCL, calling this function again
-     * will re-enable OpenCL if it has been disabled.
-     * @returns True if OpenCL was initialized
+     * Render a rectangular region from a node to the given buffer.
+     * @param buffer the #GeglBuffer to render to.
+     * @param roi the rectangle to render.
+     * @param level mipmap level to render (0 for all)
+     * @param abyss_policy 
      */
-    function cl_init(): boolean;
+    blit_buffer(buffer: (Buffer | null), roi: (Rectangle | null), level: number, abyss_policy: AbyssPolicy): void
     /**
-     * Check if OpenCL is enabled.
-     * @returns True if OpenCL is initialized and enabled
+     * Makes a connection between the pads of two nodes.
+     * 
+     * Returns TRUE if the connection was successfully made.
+     * @param input_pad_name the name of the input pad we are connecting to
+     * @param source the node producing data we want to connect.
+     * @param output_pad_name the output pad we want to use on the source.
      */
-    function cl_is_accelerated(): boolean;
+    connect_from(input_pad_name: string, source: Node, output_pad_name: string): boolean
     /**
-     * Returns a GeglConfig object with properties that can be manipulated to control
-     * GEGLs behavior.
-     * @returns a #GeglConfig
+     * Makes a connection between the pads of two nodes.
+     * 
+     * Returns TRUE if the connection was successfully made.
+     * @param output_pad_name the output pad we want to use on the source.
+     * @param sink the node we're connecting an input to
+     * @param input_pad_name the name of the input pad we are connecting to
      */
-    function config(): Config;
+    connect_to(output_pad_name: string, sink: Node, input_pad_name: string): boolean
     /**
-     * Create a node chain from an unparsed commandline string.
-     * @param ops an argv style, NULL terminated array of arguments
-     * @param op_start node to pass in as input of chain
-     * @param op_end node to get processed data
-     * @param time the time to use for interpolatino of keyframed values
-     * @param rel_dim relative dimension to scale rel suffixed values by
-     * @param path_root path in filesystem to use as relative root
+     * Creates a new processing node that performs the specified operation.
+     * All properties of the operation will have their default values. This
+     * is included as an addition to #gegl_node_new_child in the public API to have
+     * a non varargs entry point for bindings as well as sometimes simpler more
+     * readable code.
+     * @param operation the type of node to create.
+     * @returns a newly created node. The node will be destroyed by the parent. Calling g_object_unref on a node will cause the node to be dropped by the parent. (You may also add additional references using g_object_ref/g_object_unref, but in general relying on the parents reference counting is easiest.)
      */
-    function create_chain(
-        ops: string,
-        op_start: Node,
-        op_end: Node,
-        time: number,
-        rel_dim: number,
-        path_root: string,
-    ): void;
+    create_child(operation: string): Node
     /**
-     * Create a node chain from argv style list of op data.
-     * @param ops an argv style, NULL terminated array of arguments
-     * @param op_start node to pass in as input of chain
-     * @param op_end node to get processed data
-     * @param time the time to use for interpolatino of keyframed values
-     * @param rel_dim relative dimension to scale rel suffixed values by
-     * @param path_root path in filesystem to use as relative root
+     * Performs hit detection by returning the node providing data at a given
+     * coordinate pair. Currently operates only on bounding boxes and not
+     * pixel data.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @returns the GeglNode providing the data ending up at @x,@y in the output of @node.
      */
-    function create_chain_argv(
-        ops: string,
-        op_start: Node,
-        op_end: Node,
-        time: number,
-        rel_dim: number,
-        path_root: string,
-    ): void;
+    detect(x: number, y: number): Node
     /**
-     * Call this function when you're done using GEGL. It will clean up
-     * caches and write/dump debug information if the correct debug flags
-     * are set.
+     * Disconnects node connected to `input_pad` of `node` (if any).
+     * 
+     * Returns TRUE if a connection was broken.
+     * @param input_pad the input pad to disconnect.
      */
-    function exit(): void;
+    disconnect(input_pad: string): boolean
+    disconnect(...args: never[]): any
+    find_property(property_name: string): GObject.ParamSpec
+    get_children(): Node[]
     /**
-     * Returns a value sutable to pass to the GeglBuffer constructor
-     * or any other property that expects a Babl format.
-     * @param format_name A Babl format name, e.g. "RGBA float"
-     * @returns the format pointer
+     * Retrieve which pads on which nodes are connected to a named output_pad,
+     * and the number of connections. Both the location for the generated
+     * nodes array and pads array can be left as NULL. If they are non NULL
+     * both should be freed with g_free. The arrays are NULL terminated.
+     * 
+     * Returns the number of consumers connected to this output_pad.
+     * @param output_pad the output pad we want to know who uses.
      */
-    function format(format_name: string): GObject.Value | null;
-    function format_get_name(format: GObject.Value): string | null;
+    get_consumers(output_pad: string): [number, Node[] | null, string[] | null]
+    get_gegl_operation(): (Operation | null)
     /**
-     * This function fetches the version of the GEGL library being used by
-     * the running process.
+     * Proxies are used to route between nodes of a subgraph contained within
+     * a node.
+     * @param pad_name the name of the pad.
+     * @returns Returns an input proxy for the named pad. If no input proxy exists with this name a new one will be created.
      */
-    function get_version(): void;
+    get_input_proxy(pad_name: string): Node
+    get_operation(): string
     /**
-     * Dump the bounds and format of each node in the graph to stdout.
-     * @param node The final node of the graph
+     * Proxies are used to route between nodes of a subgraph contained within
+     * a node.
+     * @param pad_name the name of the pad.
+     * @returns Returns a output proxy for the named pad. If no output proxy exists with this name a new one will be created.
      */
-    function graph_dump_outputs(node: Node): void;
+    get_output_proxy(pad_name: string): Node
     /**
-     * Dump the region that will be rendered for each node to fulfill
-     * the request.
-     * @param node The final node of the graph
-     * @param roi The request rectangle
+     * Returns a GeglNode that keeps a reference on a child.
+     * @returns the parent of a node or NULL.
      */
-    function graph_dump_request(node: Node, roi: Rectangle): void;
-    function has_operation(operation_type: string): boolean;
+    get_parent(): Node
+    get_passthrough(): boolean
+    get_producer(input_pad_name: string, output_pad_name?: (string | null)): Node
     /**
-     * Call this function before using any other GEGL functions. It will
-     * initialize everything needed to operate GEGL and parses some
-     * standard command line options.  `argc` and `argv` are adjusted
-     * accordingly so your own code will never see those standard
-     * arguments.
-     *
-     * Note that there is an alternative way to initialize GEGL: if you
-     * are calling g_option_context_parse() with the option group returned
-     * by #gegl_get_option_group(), you don't have to call #gegl_init().
-     * @param argv a pointer to the array of command line arguments.
+     * Returns TRUE if the node has a pad with the specified name
+     * @param pad_name the pad name we are looking for
      */
-    function init(argv?: string[] | null): void;
-    function is_main_thread(): boolean;
-    function list_operations(): string[];
+    has_pad(pad_name: string): boolean
     /**
-     * Load all gegl modules found in the given directory.
-     * @param path the directory to load modules from
+     * Returns the position and dimensions of a rectangle spanning the area
+     * defined by a node.
+     * @returns pointer a #GeglRectangle
      */
-    function load_module_directory(path: string): void;
+    get_bounding_box(): Rectangle
+    get_property(property_name: string): GObject.Value
+    get_property(...args: never[]): any
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglAudioFragment property.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Synthetic sugar for linking the "output" pad of `source` to the "input"
+     * pad of `sink`.
+     * @param sink the consumer of data.
      */
-    function param_spec_audio_fragment(
-        name: string,
-        nick: string,
-        blurb: string,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    link(sink: Node): void
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param default_color the default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * If the node has any input pads this function returns a null terminated
+     * array of pad names, otherwise it returns NULL. The return value can be
+     * freed with g_strfreev().
      */
-    function param_spec_color(
-        name: string,
-        nick: string,
-        blurb: string,
-        default_color: Color,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    list_input_pads(): string[]
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param default_color_string the default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * If the node has any output pads this function returns a null terminated
+     * array of pad names, otherwise it returns NULL. The return value can be
+     * freed with g_strfreev().
      */
-    function param_spec_color_from_string(
-        name: string,
-        nick: string,
-        blurb: string,
-        default_color_string: string,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    list_output_pads(): string[]
+    new_processor(rectangle: Rectangle): Processor
     /**
-     * Get the default color value of the param spec
-     * @param self a #GeglColor #GParamSpec
-     * @returns the default #GeglColor
+     * Render a composition. This can be used for instance on a node with a "png-save"
+     * operation to render all necessary data, and make it be written to file. This
+     * function wraps the usage of a GeglProcessor in a single blocking function
+     * call. If you need a non-blocking operation, then make a direct use of
+     * #gegl_processor_work. See #GeglProcessor.
+     * 
+     * ---
+     * GeglNode      *gegl;
+     * GeglRectangle  roi;
+     * GeglNode      *png_save;
+     * unsigned char *buffer;
+     * 
+     * gegl = gegl_parse_xml (xml_data);
+     * roi      = gegl_node_get_bounding_box (gegl);
+     * # create png_save from the graph, the parent/child relationship
+     * # only mean anything when it comes to memory management.
+     * png_save = gegl_node_new_child (gegl,
+     *                                 "operation", "gegl:png-save",
+     *                                 "path",      "output.png",
+     *                                 NULL);
+     * 
+     * gegl_node_link (gegl, png_save);
+     * gegl_node_process (png_save);
+     * 
+     * buffer = malloc (roi.w*roi.h*4);
+     * gegl_node_blit (gegl,
+     *                 1.0,
+     *                 &roi,
+     *                 babl_format("R'G'B'A u8"),
+     *                 buffer,
+     *                 GEGL_AUTO_ROWSTRIDE,
+     *                 GEGL_BLIT_DEFAULT);
      */
-    function param_spec_color_get_default(self: GObject.ParamSpec): Color;
+    process(): void
+    progress(progress: number, message: string): void
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglCurve property.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param default_curve the default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Removes a child from a GeglNode. The reference previously held will be
+     * dropped so increase the reference count before removing when reparenting
+     * a child between two graphs.
+     * @param child a GeglNode.
+     * @returns the child.
      */
-    function param_spec_curve(
-        name: string,
-        nick: string,
-        blurb: string,
-        default_curve: Curve,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    remove_child(child: Node): Node
+    set_passthrough(passthrough: boolean): void
     /**
-     * Creates a new #GeglParamSpecDouble instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param minimum minimum value for the property specified
-     * @param maximum maximum value for the property specified
-     * @param default_value default value for the property specified
-     * @param ui_minimum minimum value a user should be allowed to input
-     * @param ui_maximum maximum value a user should be allowed to input
-     * @param ui_gamma the gamma that should be used when adjusting the value
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * This is mainly included for language bindings. Using #gegl_node_set is
+     * more convenient when programming in C.
+     * @param property_name the name of the property to set
+     * @param value a GValue containing the value to be set in the property.
      */
-    function param_spec_double(
-        name: string,
-        nick: string,
-        blurb: string,
-        minimum: number,
-        maximum: number,
-        default_value: number,
-        ui_minimum: number,
-        ui_maximum: number,
-        ui_gamma: number,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    set_property(property_name: string, value: GObject.Value): void
+    set_property(...args: never[]): any
     /**
-     * Creates a new #GeglParamSpecEnum instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param enum_type the enum type to get valid values from
-     * @param default_value default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Returns a freshly allocated \0 terminated string containing a XML
+     * serialization of the composition produced by a node (and thus also
+     * the nodes contributing data to the specified node). To export a
+     * gegl graph, connect the internal output node to an output proxy (see
+     * #gegl_node_get_output_proxy.) and use the proxy node as the basis
+     * for the serialization.
+     * @param path_root filesystem path to construct relative paths from.
      */
-    function param_spec_enum(
-        name: string,
-        nick: string,
-        blurb: string,
-        enum_type: GObject.GType,
-        default_value: number,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    to_xml(path_root: string): string
     /**
-     * Creates a new #GeglParamSpecFilePath instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param no_validate true if the string should be validated with g_utf8_validate
-     * @param null_ok true if the string can be NULL
-     * @param default_value default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Returns a freshly allocated \0 terminated string containing a XML
+     * serialization of a segment of a graph from `head` to `tail` nodes.
+     * If `tail` is %NULL then this behaves just like #gegl_node_to_xml.
+     * @param tail a #GeglNode
+     * @param path_root filesystem path to construct relative paths from.
+     * @returns XML serialization of a graph segment.
      */
-    function param_spec_file_path(
-        name: string,
-        nick: string,
-        blurb: string,
-        no_validate: boolean,
-        null_ok: boolean,
-        default_value: string,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    to_xml_full(tail: (Node | null), path_root: string): string
+}
+
+module Operation {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class Operation extends GObject.Object {
+
+    // Constructors of Gegl.Operation
+
+
+constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of Gegl.Operation
+
+    static find_property(operation_type: string, property_name: string): GObject.ParamSpec
+    static find_property(...args: never[]): any
+    static get_key(operation_type: string, key_name: string): string
+    static get_op_version(op_name: string): string
+    static get_property_key(operation_type: string, property_name: string, property_key_name: string): string
+    static list_keys(operation_type: string): string[]
+    static list_properties(operation_type: string): GObject.ParamSpec[]
+    static list_properties(...args: never[]): any
+    static list_property_keys(operation_type: string, property_name: string): string[]
+}
+
+module Path {
+
+    // Signal callback interfaces
+
+    interface Changed {
+        (object?: (any | null)): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class Path extends GObject.Object {
+
+    // Constructors of Gegl.Path
+
+
+constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Path;
+
+static new_from_string(instructions: string): Path;
+
+    // Own signals of Gegl.Path
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'changed', callback: ((_source: this, object: any | null) => void)): number
+    connect_after(signal: 'changed', callback: ((_source: this, object: any | null) => void)): number
+    emit(signal: 'changed', object?: (any | null)): void
+
+    // Own static methods of Gegl.Path
+
     /**
-     * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Adds a new type to the path system, FIXME this should probably
+     * return something on registration conflicts, for now it expects
+     * all registered paths to be aware of each other.
+     * @param type a gchar to recognize in path descriptions.
+     * @param items the number of floating point data items the instruction takes
+     * @param description a human readable description of this entry
      */
-    function param_spec_format(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
-    function param_spec_get_property_key(pspec: GObject.ParamSpec, key_name: string): string;
+    static add_type(type: number, items: number, description: string): void
+
+    // Own methods of Gegl.Path
+
     /**
-     * Creates a new #GeglParamSpecInt instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param minimum minimum value for the property specified
-     * @param maximum maximum value for the property specified
-     * @param default_value default value for the property specified
-     * @param ui_minimum minimum value a user should be allowed to input
-     * @param ui_maximum maximum value a user should be allowed to input
-     * @param ui_gamma the gamma that should be used when adjusting the value
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Compute the coordinates of the path at the `position` (length measured from
+     * start of path, not including discontinuities).
+     * @param pos how far along the path.
      */
-    function param_spec_int(
-        name: string,
-        nick: string,
-        blurb: string,
-        minimum: number,
-        maximum: number,
-        default_value: number,
-        ui_minimum: number,
-        ui_maximum: number,
-        ui_gamma: number,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    calc(pos: number): [boolean, number, number]
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglPath property.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param default_path the default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Compute a corresponding y coordinate for a given x input coordinate,
+     * returns 0 if computed correctly and -1 if the path doesn't exist for the
+     * specified x coordinate.
+     * @param x x coordinate to compute for
      */
-    function param_spec_path(
-        name: string,
-        nick: string,
-        blurb: string,
-        default_path: Path,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    calc_y_for_x(x: number): [number, number]
     /**
-     * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Remove all nods from a `path`.
      */
-    function param_spec_seed(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
-    function param_spec_set_property_key(pspec: GObject.ParamSpec, key_name: string, value: string): void;
+    clear(): void
     /**
-     * Creates a new #GeglParamSpecString instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param no_validate true if the string should be validated with g_utf8_validate
-     * @param null_ok true if the string can be NULL
-     * @param default_value default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Figure out what and where on a path is closest to arbitrary coordinates.
+     * 
+     * Returns the length along the path where the closest point was encountered.
+     * @param x x coordinate.
+     * @param y y coordinate
      */
-    function param_spec_string(
-        name: string,
-        nick: string,
-        blurb: string,
-        no_validate: boolean,
-        null_ok: boolean,
-        default_value: string,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    closest_point(x: number, y: number): [number, number, number, number]
     /**
-     * Creates a new #GeglParamSpecUri instance.
-     * @param name canonical name of the property specified
-     * @param nick nick name for the property specified
-     * @param blurb description of the property specified
-     * @param no_validate true if the string should be validated with g_utf8_validate
-     * @param null_ok true if the string can be NULL
-     * @param default_value default value for the property specified
-     * @param flags flags for the property specified
-     * @returns a newly created parameter specification
+     * Execute a provided function for every node in the path (useful for
+     * drawing and otherwise traversing a path.)
+     * @param each_item a function to call for each node in the path.
      */
-    function param_spec_uri(
-        name: string,
-        nick: string,
-        blurb: string,
-        no_validate: boolean,
-        null_ok: boolean,
-        default_value: string,
-        flags: GObject.ParamFlags,
-    ): GObject.ParamSpec;
+    foreach(each_item: NodeFunction): void
+    /**
+     * Execute a provided function for the segments of a poly line approximating
+     * the path.
+     * @param each_item a function to call for each node in the path.
+     */
+    foreach_flat(each_item: NodeFunction): void
+    /**
+     * Make the `GeglPath` stop firing signals as it changes must be paired with a
+     * gegl_path_thaw() for the signals to start again.
+     */
+    freeze(): void
+    /**
+     * Compute the bounding box of a path.
+     */
+    get_bounds(): [number, number, number, number]
+    /**
+     * Returns the total length of the path.
+     * @returns the length of the path.
+     */
+    get_length(): number
+    /**
+     * Get the transformation matrix of the path.
+     */
+    get_matrix(): Matrix3
+    /**
+     * Retrieves the number of nodes in the path.
+     * @returns the number of nodes in the path.
+     */
+    get_n_nodes(): number
+    /**
+     * Retrieve the node of the path at position `pos`.
+     * 
+     * Returns TRUE if the node was successfully retrieved.
+     * @param index the node number to retrieve
+     */
+    get_node(index: number): [boolean, PathItem]
+    /**
+     * Insert the new node `node` at position `pos` in `path`.
+     * if `pos` = -1, the node is added in the last position.
+     * @param pos the position we want the new node to have.
+     * @param node pointer to a structure describing the GeglPathItem we want to store
+     */
+    insert_node(pos: number, node: PathItem): void
+    /**
+     * Check if the path contains any nodes.
+     * 
+     * Returns TRUE if the path has no nodes.
+     */
+    is_empty(): boolean
+    /**
+     * Parses `instructions` and appends corresponding nodes to path (call
+     * gegl_path_clean() first if you want to replace the existing path.
+     * @param instructions a string describing a path.
+     */
+    parse_string(instructions: string): void
+    /**
+     * Removes the node number `pos` in `path`.
+     * @param pos a node in the path.
+     */
+    remove_node(pos: number): void
+    /**
+     * Replaces the exiting node at position `pos` in `path`.
+     * @param pos the position we want the new node to have.
+     * @param node pointer to a structure describing the GeglPathItem we want to store.
+     */
+    replace_node(pos: number, node: PathItem): void
+    /**
+     * Set the transformation matrix of the path.
+     * 
+     * The path is transformed through this matrix when being evaluated,
+     * causing the calculated positions and length to be changed by the transform.
+     * @param matrix a #GeglMatrix3 to copy the matrix from
+     */
+    set_matrix(matrix: Matrix3): void
+    /**
+     * Restart firing signals (unless the path has been frozen multiple times).
+     */
+    thaw(): void
+    /**
+     * Serialize the paths nodes to a string.
+     * @returns return a string with instructions describing the string you need to free this with g_free().
+     */
+    to_string(): string
+}
+
+module Processor {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+chunksize: number;
+    node: Node;
+    progress: number;
+    rectangle: any;
+    }
+
+}
+
+class Processor extends GObject.Object {
+
+    // Own properties of Gegl.Processor
+
+    get chunksize(): number;
+    set node(val: Node);
+    get progress(): number;
+    set progress(val: number);
+    get rectangle(): any;
+    set rectangle(val: any);
+
+    // Constructors of Gegl.Processor
+
+
+constructor(properties?: Partial<Processor.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.Processor
+
+    set_level(level: number): void
+    /**
+     * Change the rectangle a #GeglProcessor is working on.
+     * @param rectangle the new #GeglRectangle the processor shold work on or NULL to make it work on all data in the buffer.
+     */
+    set_rectangle(rectangle: Rectangle): void
+    set_scale(scale: number): void
+    /**
+     * Do an iteration of work for the processor.
+     * 
+     * Returns TRUE if there is more work to be done.
+     * 
+     * ---
+     * GeglProcessor *processor = gegl_node_new_processor (node, &roi);
+     * double         progress;
+     * 
+     * while (gegl_processor_work (processor, &progress))
+     *   g_warning ("%f%% complete", progress);
+     * g_object_unref (processor);
+     */
+    work(): [boolean, number]
+}
+
+module Stats {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+swap_busy: boolean;
+    swapBusy: boolean;
+    swap_file_size: number;
+    swapFileSize: number;
+    swap_total: number;
+    swapTotal: number;
+    tile_cache_hits: number;
+    tileCacheHits: number;
+    tile_cache_misses: number;
+    tileCacheMisses: number;
+    tile_cache_total: number;
+    tileCacheTotal: number;
+    tile_cache_total_max: number;
+    tileCacheTotalMax: number;
+    tile_cache_total_uncloned: number;
+    tileCacheTotalUncloned: number;
+    zoom_total: number;
+    zoomTotal: number;
+    }
+
+}
+
+class Stats extends GObject.Object {
+
+    // Own properties of Gegl.Stats
+
+    get swap_busy(): boolean;
+    get swapBusy(): boolean;
+    get swap_file_size(): number;
+    get swapFileSize(): number;
+    get swap_total(): number;
+    get swapTotal(): number;
+    get tile_cache_hits(): number;
+    get tileCacheHits(): number;
+    get tile_cache_misses(): number;
+    get tileCacheMisses(): number;
+    get tile_cache_total(): number;
+    get tileCacheTotal(): number;
+    get tile_cache_total_max(): number;
+    get tileCacheTotalMax(): number;
+    get tile_cache_total_uncloned(): number;
+    get tileCacheTotalUncloned(): number;
+    get zoom_total(): number;
+    get zoomTotal(): number;
+
+    // Constructors of Gegl.Stats
+
+
+constructor(properties?: Partial<Stats.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+}
+
+module TileBackend {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends TileSource.ConstructorProps {
+flush_on_destroy: boolean;
+    flushOnDestroy: boolean;
+    format: any;
+    px_size: number;
+    pxSize: number;
+    tile_height: number;
+    tileHeight: number;
+    tile_size: number;
+    tileSize: number;
+    tile_width: number;
+    tileWidth: number;
+    }
+
+}
+
+class TileBackend extends TileSource {
+
+    // Own properties of Gegl.TileBackend
+
+    get flush_on_destroy(): boolean;
+    set flush_on_destroy(val: boolean);
+    get flushOnDestroy(): boolean;
+    set flushOnDestroy(val: boolean);
+    get format(): any;
+    get px_size(): number;
+    get pxSize(): number;
+    get tile_height(): number;
+    get tileHeight(): number;
+    get tile_size(): number;
+    get tileSize(): number;
+    get tile_width(): number;
+    get tileWidth(): number;
+
+    // Constructors of Gegl.TileBackend
+
+
+constructor(properties?: Partial<TileBackend.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own static methods of Gegl.TileBackend
+
+    /**
+     * Delete a swap file from disk. This must be used by tile backends which may
+     * swap to disk under certain circonstances.
+     * 
+     * For safety, this function will check that the swap file is in the swap
+     * directory before deletion but it won't perform any other check.
+     * @param path the path where the gegl tile backend has swapped.
+     */
+    static unlink_swap(path: string): void
+
+    // Own methods of Gegl.TileBackend
+
+    get_extent(): Rectangle
+    get_flush_on_destroy(): boolean
+    get_tile_height(): number
+    get_tile_size(): number
+    get_tile_width(): number
+    /**
+     * Gets a pointer to the GeglTileStorage that uses the backend
+     * @returns the #GeglTileStorage
+     */
+    peek_storage(): TileSource
+    /**
+     * Specify the extent of the backend, can be used to pre-prime the
+     * backend with the width/height information when constructing proxy
+     * GeglBuffers to interact with other systems
+     * @param rectangle the new extent
+     */
+    set_extent(rectangle: Rectangle): void
+    /**
+     * Control whether cached data will be written to the backend before it
+     * is destroyed. If false unwritten data will be discarded.
+     * @param flush_on_destroy true if the backend needs to be flushed
+     */
+    set_flush_on_destroy(flush_on_destroy: boolean): void
+}
+
+module TileHandler {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends TileSource.ConstructorProps {
+source: GObject.Object;
+    }
+
+}
+
+class TileHandler extends TileSource {
+
+    // Own properties of Gegl.TileHandler
+
+    get source(): GObject.Object;
+    set source(val: GObject.Object);
+
+    // Constructors of Gegl.TileHandler
+
+
+constructor(properties?: Partial<TileHandler.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.TileHandler
+
+    damage_rect(rect: Rectangle): void
+    set_source(source: TileSource): void
+}
+
+module TileSource {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+    }
+
+}
+
+class TileSource extends GObject.Object {
+
+    // Own fields of Gegl.TileSource
+
+command: TileSourceCommand
+padding: any[]
+
+    // Constructors of Gegl.TileSource
+
+
+constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+}
+
+type AudioFragmentClass = typeof AudioFragment
+abstract class AudioFragmentPrivate {
+
+    // Constructors of Gegl.AudioFragmentPrivate
+
+_init(...args: any[]): void;
+
+}
+
+class BufferIterator {
+
+    // Own fields of Gegl.BufferIterator
+
+length: number
+data: any[]
+roi: Rectangle[]
+
+    // Constructors of Gegl.BufferIterator
+
+_init(...args: any[]): void;
+
+}
+
+abstract class BufferIteratorPriv {
+
+    // Constructors of Gegl.BufferIteratorPriv
+
+_init(...args: any[]): void;
+
+}
+
+type ColorClass = typeof Color
+abstract class ColorPrivate {
+
+    // Constructors of Gegl.ColorPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type CurveClass = typeof Curve
+class Lookup {
+
+    // Own fields of Gegl.Lookup
+
+"function": LookupFunction
+data: any
+shift: number
+positive_min: number
+positive_max: number
+negative_min: number
+negative_max: number
+bitmask: number[]
+table: number[]
+
+    // Constructors of Gegl.Lookup
+
+_init(...args: any[]): void;
+
+}
+
+class Matrix2 {
+
+    // Own fields of Gegl.Matrix2
+
+coeff: number[]
+
+    // Constructors of Gegl.Matrix2
+
+
+    constructor(properties?: Partial<{
+      coeff: number[]
+    }>);
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.Matrix2
+
+    determinant(): number
+    is_scale(): boolean
+}
+
+class Matrix3 {
+
+    // Own fields of Gegl.Matrix3
+
+coeff: number[]
+
+    // Constructors of Gegl.Matrix3
+
+
+    constructor(properties?: Partial<{
+      coeff: number[]
+    }>);
+_init(...args: any[]): void;
+
+
+static ["new"](): Matrix3;
+
+    // Own methods of Gegl.Matrix3
+
+    /**
+     * Returns a copy of `src`.
+     */
+    copy(): Matrix3
+    /**
+     * Copies the matrix in `src` into `dst`.
+     * @param src a #GeglMatrix3
+     */
+    copy_into(src: Matrix3): void
+    /**
+     * Returns the determinant for the matrix.
+     */
+    determinant(): number
+    /**
+     * Check if two matrices are equal.
+     * 
+     * Returns TRUE if the matrices are equal.
+     * @param matrix2 a #GeglMatrix3
+     */
+    equal(matrix2: Matrix3): boolean
+    /**
+     * Set the provided `matrix` to the identity matrix.
+     */
+    identity(): void
+    /**
+     * Inverts `matrix`.
+     */
+    invert(): void
+    /**
+     * Check if a matrix is the identity matrix.
+     * 
+     * Returns TRUE if the matrix is the identity matrix.
+     */
+    is_identity(): boolean
+    /**
+     * Check if a matrix only does scaling.
+     * 
+     * Returns TRUE if the matrix only does scaling.
+     */
+    is_scale(): boolean
+    /**
+     * Check if a matrix only does translation.
+     * 
+     * Returns TRUE if the matrix only does trasnlation.
+     */
+    is_translate(): boolean
+    /**
+     * Multiples `product` = `left` · `right`
+     * @param right a #GeglMatrix3
+     * @param product a #GeglMatrix3 to store the result in.
+     */
+    multiply(right: Matrix3, product: Matrix3): void
+    /**
+     * Shift the origin of the transformation specified by `matrix`
+     * to (`x,` `y)`. In other words, calculate the matrix that:
+     * 
+     * 1. Translates the input by (-`x,` -`y)`.
+     * 
+     * 2. Transforms the result using the original `matrix`.
+     * 
+     * 3. Translates the result by (`x,` `y)`.
+     * @param x x coordinate of new origin
+     * @param y y coordinate of new origin.
+     */
+    originate(x: number, y: number): void
+    /**
+     * Parse a transofmation matrix from a string.
+     * @param string a string describing the matrix (right now a small subset of the transform strings allowed by SVG)
+     */
+    parse_string(string: string): void
+    /**
+     * Serialize a #GeglMatrix3 to a string.
+     * 
+     * Returns a freshly allocated string representing that #GeglMatrix3, the
+     * returned string should be g_free()'d.
+     */
+    to_string(): string
+    /**
+     * transforms the coordinates provided in `x` and `y` and changes to the
+     * coordinates gotten when the transformed with the matrix.
+     * @param x pointer to an x coordinate
+     * @param y pointer to an y coordinate
+     */
+    transform_point(x: number, y: number): void
+}
+
+abstract class OperationContext {
+
+    // Constructors of Gegl.OperationContext
+
+_init(...args: any[]): void;
+
+}
+
+class ParamSpecDouble {
+
+    // Own fields of Gegl.ParamSpecDouble
+
+ui_minimum: number
+ui_maximum: number
+ui_gamma: number
+ui_step_small: number
+ui_step_big: number
+ui_digits: number
+
+    // Constructors of Gegl.ParamSpecDouble
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.ParamSpecDouble
+
+    set_digits(digits: number): void
+    set_steps(small_step: number, big_step: number): void
+}
+
+class ParamSpecEnum {
+
+    // Own fields of Gegl.ParamSpecEnum
+
+excluded_values: any[]
+
+    // Constructors of Gegl.ParamSpecEnum
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.ParamSpecEnum
+
+    exclude_value(value: number): void
+}
+
+class ParamSpecFilePath {
+
+    // Own fields of Gegl.ParamSpecFilePath
+
+no_validate: number
+null_ok: number
+
+    // Constructors of Gegl.ParamSpecFilePath
+
+_init(...args: any[]): void;
+
+}
+
+class ParamSpecFormat {
+
+    // Constructors of Gegl.ParamSpecFormat
+
+_init(...args: any[]): void;
+
+}
+
+class ParamSpecInt {
+
+    // Own fields of Gegl.ParamSpecInt
+
+ui_minimum: number
+ui_maximum: number
+ui_gamma: number
+ui_step_small: number
+ui_step_big: number
+
+    // Constructors of Gegl.ParamSpecInt
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.ParamSpecInt
+
+    set_steps(small_step: number, big_step: number): void
+}
+
+class ParamSpecSeed {
+
+    // Own fields of Gegl.ParamSpecSeed
+
+ui_minimum: number
+ui_maximum: number
+
+    // Constructors of Gegl.ParamSpecSeed
+
+_init(...args: any[]): void;
+
+}
+
+class ParamSpecString {
+
+    // Own fields of Gegl.ParamSpecString
+
+no_validate: number
+null_ok: number
+
+    // Constructors of Gegl.ParamSpecString
+
+_init(...args: any[]): void;
+
+}
+
+class ParamSpecUri {
+
+    // Own fields of Gegl.ParamSpecUri
+
+no_validate: number
+null_ok: number
+
+    // Constructors of Gegl.ParamSpecUri
+
+_init(...args: any[]): void;
+
+}
+
+type PathClass = typeof Path
+class PathItem {
+
+    // Own fields of Gegl.PathItem
+
+type: number
+point: PathPoint[]
+
+    // Constructors of Gegl.PathItem
+
+
+    constructor(properties?: Partial<{
+      type: number
+point: PathPoint[]
+    }>);
+_init(...args: any[]): void;
+
+}
+
+class PathList {
+
+    // Own fields of Gegl.PathList
+
+next: any
+d: PathItem
+
+    // Constructors of Gegl.PathList
+
+
+    constructor(properties?: Partial<{
+      next: any
+d: PathItem
+    }>);
+_init(...args: any[]): void;
+
+}
+
+class PathPoint {
+
+    // Own fields of Gegl.PathPoint
+
+x: number
+y: number
+
+    // Constructors of Gegl.PathPoint
+
+
+    constructor(properties?: Partial<{
+      x: number
+y: number
+    }>);
+_init(...args: any[]): void;
+
+}
+
+class Random {
+
+    // Constructors of Gegl.Random
+
+
+    constructor(properties?: Partial<{
+      
+    }>);
+_init(...args: any[]): void;
+
+
+static ["new"](): Random;
+
+static new_with_seed(seed: number): Random;
+
+    // Own methods of Gegl.Random
+
+    /**
+     * Return a new copy of an existing GeglRandom
+     */
+    duplicate(): Random
+    /**
+     * Return a random floating point number in range 0.0 .. 1.0.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     */
+    float(x: number, y: number, z: number, n: number): number
+    /**
+     * Return a random floating point number in the range specified,
+     * for the given x,y coordinates and GeglRandom provided, if multiple different
+     * numbers are needed pass in incrementing n's.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     * @param min minimum value
+     * @param max maximum value
+     */
+    float_range(x: number, y: number, z: number, n: number, min: number, max: number): number
+    /**
+     * Free a GeglRandom structure created with gegl_random_new() or
+     * gegl_random_new_with_seed()
+     */
+    free(): void
+    /**
+     * Return a random integer number in range 0 .. MAX_UINT
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     */
+    int(x: number, y: number, z: number, n: number): number
+    /**
+     * Return a random integer point number in the range specified,
+     * for the given x,y coordinates and GeglRandom provided, if multiple different
+     * numbers are needed pass in incrementing n's.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate (mipmap level)
+     * @param n number no (each x,y coordinate provides its own sequence of numbers
+     * @param min minimum value
+     * @param max maximum value+1
+     */
+    int_range(x: number, y: number, z: number, n: number, min: number, max: number): number
+    /**
+     * Change the seed of an existing GeglRandom.
+     * @param seed an integer seed, change for different permutation.
+     */
+    set_seed(seed: number): void
+}
+
+class Rectangle {
+
+    // Own fields of Gegl.Rectangle
+
+x: number
+y: number
+width: number
+height: number
+
+    // Constructors of Gegl.Rectangle
+
+
+    constructor(properties?: Partial<{
+      x: number
+y: number
+width: number
+height: number
+    }>);
+_init(...args: any[]): void;
+
+
+static ["new"](x: number, y: number, width: number, height: number): Rectangle;
+
+    // Own static methods of Gegl.Rectangle
+
     /**
      * Returns a GeglRectangle that represents an infininte plane.
      */
-    function rectangle_infinite_plane(): Rectangle;
-    /**
-     * Resets the cumulative data gathered by the #GeglStats object returned
-     * by #gegl_stats().
-     */
-    function reset_stats(): void;
-    function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag): string;
-    /**
-     * Returns a GeglStats object with properties that can be read to monitor
-     * GEGL statistics.
-     * @returns a #GeglStats
-     */
-    function stats(): Stats;
-    interface LookupFunction {
-        (value: number, data?: any | null): number;
-    }
-    interface NodeFunction {
-        (node: PathItem): void;
-    }
-    interface SamplerGetFun {
-        (self: Sampler, x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy): void;
-    }
-    interface TileCallback {
-        (tile: Tile): void;
-    }
-    interface TileSourceCommand {
-        (
-            gegl_tile_source: TileSource,
-            command: TileCommand,
-            x: number,
-            y: number,
-            z: number,
-            data?: any | null,
-        ): any | null;
-    }
-    enum AccessMode {
-        READ,
-        WRITE,
-        READWRITE,
-    }
-    enum BlitFlags {
-        DEFAULT,
-        CACHE,
-        DIRTY,
-    }
-    enum PadType {
-        OUTPUT,
-        INPUT,
-    }
-    enum SerializeFlag {
-        TRIM_DEFAULTS,
-        VERSION,
-        INDENT,
-    }
-    module AudioFragment {
-        // Constructor properties interface
-    }
+    static infinite_plane(): Rectangle
 
-    class AudioFragment extends GObject.Object {
-        // Own properties of Gegl-0.3.AudioFragment
-
-        string: string;
-
-        // Own fields of Gegl-0.3.AudioFragment
-
-        data: number[];
-
-        // Constructors of Gegl-0.3.AudioFragment
-
-        static ['new'](
-            sample_rate: number,
-            channels: number,
-            channel_layout: number,
-            max_samples: number,
-        ): AudioFragment;
-
-        // Owm methods of Gegl-0.3.AudioFragment
-
-        get_channel_layout(): number;
-        get_channels(): number;
-        get_max_samples(): number;
-        get_pos(): number;
-        get_sample_count(): number;
-        get_sample_rate(): number;
-        set_channel_layout(channel_layout: number): void;
-        set_channels(channels: number): void;
-        set_max_samples(max_samples: number): void;
-        set_pos(pos: number): void;
-        set_sample_count(sample_count: number): void;
-        set_sample_rate(sample_rate: number): void;
-    }
-
-    module Buffer {
-        // Signal callback interfaces
-
-        interface Changed {
-            (object: Rectangle): void;
-        }
-
-        // Constructor properties interface
-    }
-
-    class Buffer extends TileHandler {
-        // Own properties of Gegl-0.3.Buffer
-
-        abyss_height: number;
-        abyssHeight: number;
-        abyss_width: number;
-        abyssWidth: number;
-        abyss_x: number;
-        abyssX: number;
-        abyss_y: number;
-        abyssY: number;
-        backend: TileBackend;
-        format: any;
-        height: number;
-        path: string;
-        readonly pixels: number;
-        readonly px_size: number;
-        readonly pxSize: number;
-        shift_x: number;
-        shiftX: number;
-        shift_y: number;
-        shiftY: number;
-        tile_height: number;
-        tileHeight: number;
-        tile_width: number;
-        tileWidth: number;
-        width: number;
-        x: number;
-        y: number;
-
-        // Constructors of Gegl-0.3.Buffer
-
-        static ['new'](format_name: string, x: number, y: number, width: number, height: number): Buffer;
-
-        static new_for_backend(extent: Rectangle, backend: TileBackend): Buffer;
-
-        // Owm methods of Gegl-0.3.Buffer
-
-        /**
-         * Loads an existing GeglBuffer from disk, if it has previously been saved with
-         * gegl_buffer_save it should be possible to open through any GIO transport, buffers
-         * that have been used as swap needs random access to be opened.
-         * @param path the path to a gegl buffer on disk.
-         */
-        static load(path: string): Buffer;
-        /**
-         * Open an existing on-disk GeglBuffer, this buffer is opened in a monitored
-         * state so multiple instances of gegl can share the same buffer. Sets on
-         * one buffer are reflected in the other.
-         * @param path the path to a gegl buffer on disk.
-         */
-        static open(path: string): Buffer;
-
-        // Owm methods of Gegl-0.3.Buffer
-
-        /**
-         * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
-         */
-        add_handler(handler?: any | null): void;
-        /**
-         * Clears the provided rectangular region by setting all the associated memory
-         * to 0.
-         * @param roi a rectangular region
-         */
-        clear(roi: Rectangle): void;
-        /**
-         * Copy a region from source buffer to destination buffer.
-         *
-         * If the babl_formats of the buffers are the same, and the tile boundaries
-         * align, this will create copy-on-write tiles in the destination buffer.
-         *
-         * This function never does any scaling. When src_rect and dst_rect do not have
-         * the same width and height, the size of src_rect is used.
-         * @param src_rect source rectangle (or NULL to copy entire source buffer)
-         * @param repeat_mode the abyss policy to be using if src_rect is outside src's extent.
-         * @param dst destination buffer.
-         * @param dst_rect position of upper left destination pixel, or NULL for top left coordinates of the buffer extents.
-         */
-        copy(src_rect: Rectangle, repeat_mode: AbyssPolicy, dst: Buffer, dst_rect: Rectangle): void;
-        /**
-         * Create a new sub GeglBuffer, that is a view on a larger buffer.
-         * @param extent coordinates of new buffer.
-         * @returns the new sub buffer
-         */
-        create_sub_buffer(extent: Rectangle): Buffer;
-        /**
-         * Duplicate a buffer (internally uses gegl_buffer_copy). Aligned tiles
-         * will create copy-on-write clones in the new buffer.
-         * @returns the new buffer
-         */
-        dup(): Buffer;
-        /**
-         * Flushes all unsaved data to disk, this is not necessary for shared
-         * geglbuffers opened with gegl_buffer_open since they auto-sync on writes.
-         */
-        flush(): void;
-        /**
-         * Return the abyss extent of a buffer, this expands out to the parents extent in
-         * subbuffers.
-         */
-        get_abyss(): Rectangle;
-        /**
-         * Returns a pointer to a GeglRectangle structure defining the geometry of a
-         * specific GeglBuffer, this is also the default width/height of buffers passed
-         * in to gegl_buffer_set and gegl_buffer_get (with a scale of 1.0 at least).
-         */
-        get_extent(): Rectangle;
-        /**
-         * Fetch a rectangular linear buffer of pixel data from the GeglBuffer.
-         * @param rect the coordinates we want to retrieve data from.
-         * @param scale sampling scale, 1.0 = pixel for pixel 2.0 = magnify, 0.5 scale down.
-         * @param format_name the format to store data in, if NULL the format of the buffer is used.
-         * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
-         * @returns A copy of the requested data
-         */
-        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy): Uint8Array;
-        /**
-         * Store a linear raster buffer into the GeglBuffer.
-         * @param rect the rectangle to write.
-         * @param format_name the format of the input data.
-         * @param src pixel data to write to @buffer.
-         */
-        set(rect: Rectangle, format_name: string, src: Uint8Array): void;
-        /**
-         * This function makes sure GeglBuffer and underlying code is aware of changes
-         * being made to the linear buffer. If the request was not a compatible one
-         * it is written back to the buffer. Multiple concurrent users can be handed
-         * the same buffer (both raw access and converted).
-         * @param linear a previously returned buffer.
-         */
-        linear_close(linear?: any | null): void;
-        /**
-         * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
-         */
-        remove_handler(handler?: any | null): void;
-        /**
-         * Clean up resources used by sampling framework of buffer (will be freed
-         * automatically later when the buffer is destroyed, for long lived buffers
-         * cleaning up the sampling infrastructure when it has been used for its
-         * purpose will sometimes be more efficient).
-         */
-        sample_cleanup(): void;
-        /**
-         * Write a GeglBuffer to a file.
-         * @param path the path where the gegl buffer will be saved, any writable GIO uri is valid.
-         * @param roi the region of interest to write, this is the tiles that will be collected and written to disk.
-         */
-        save(path: string, roi: Rectangle): void;
-        /**
-         * Changes the size and position of the abyss rectangle of a buffer.
-         *
-         * Returns TRUE if the change of abyss was successful.
-         * @param abyss new abyss.
-         */
-        set_abyss(abyss: Rectangle): boolean;
-        /**
-         * Sets the region covered by rect to the specified color.
-         * @param rect a rectangular region to fill with a color.
-         * @param color the GeglColor to fill with.
-         */
-        set_color(rect: Rectangle, color: Color): void;
-        /**
-         * Changes the size and position that is considered active in a buffer, this
-         * operation is valid on any buffer, reads on subbuffers outside the master
-         * buffer's extent are at the moment undefined.
-         *
-         * Returns TRUE if the change of extent was successful.
-         * @param extent new extent.
-         */
-        set_extent(extent: Rectangle): boolean;
-        /**
-         * Fill a region with a repeating pattern. Offsets parameters are
-         * relative to the origin (0, 0) and not to the rectangle. So be carefull
-         * about the origin of `pattern` and `buffer` extents.
-         * @param rect the region of @buffer to fill
-         * @param pattern a #GeglBuffer to be repeated as a pattern
-         * @param x_offset where the pattern starts horizontally
-         * @param y_offset where the pattern starts vertical
-         */
-        set_pattern(rect: Rectangle, pattern: Buffer, x_offset: number, y_offset: number): void;
-        /**
-         * This function should be used instead of g_signal_connect when connecting to
-         * the GeglBuffer::changed signal handler, GeglBuffer contains additional
-         * machinery to avoid the overhead of changes when no signal handler have been
-         * connected, if regular g_signal_connect is used; then no signals will be
-         * emitted.
-         * @param detailed_signal only "changed" expected for now
-         * @param c_handler c function callback
-         * @returns an handle like g_signal_connect.
-         */
-        signal_connect(detailed_signal: string, c_handler: GObject.Callback): number;
-    }
-
-    module Color {
-        // Constructor properties interface
-    }
-
-    class Color extends GObject.Object {
-        // Own properties of Gegl-0.3.Color
-
-        string: string;
-
-        // Constructors of Gegl-0.3.Color
-
-        static ['new'](string: string): Color;
-
-        // Owm methods of Gegl-0.3.Color
-
-        /**
-         * Creates a copy of `color`.
-         * @returns A new copy of @color.
-         */
-        duplicate(): Color;
-        /**
-         * Get the component values of the color in `format`.
-         * @param format A Babl pointer
-         * @returns The color components
-         */
-        get_components(format: GObject.Value): number[];
-        /**
-         * Retrieves the current set color as linear light non premultipled RGBA data,
-         * any of the return pointers can be omitted.
-         */
-        get_rgba(): void;
-        /**
-         * Set the color using the component values as `format`.
-         * @param format A Babl pointer
-         * @param components The color components.
-         */
-        set_components(format: GObject.Value, components: number[]): void;
-        /**
-         * Retrieves the current set color as linear light non premultipled RGBA data
-         * @param red red value
-         * @param green green value
-         * @param blue blue value
-         * @param alpha alpha value
-         */
-        set_rgba(red: number, green: number, blue: number, alpha: number): void;
-    }
-
-    module Config {
-        // Constructor properties interface
-    }
-
-    class Config extends GObject.Object {
-        // Own properties of Gegl-0.3.Config
-
-        application_license: string;
-        applicationLicense: string;
-        chunk_size: number;
-        chunkSize: number;
-        quality: number;
-        queue_size: number;
-        queueSize: number;
-        swap: string;
-        threads: number;
-        tile_cache_size: number;
-        tileCacheSize: number;
-        tile_height: number;
-        tileHeight: number;
-        tile_width: number;
-        tileWidth: number;
-        use_opencl: boolean;
-        useOpencl: boolean;
-    }
-
-    module Curve {
-        // Constructor properties interface
-    }
-
-    class Curve extends GObject.Object {
-        // Constructors of Gegl-0.3.Curve
-
-        static ['new'](y_min: number, y_max: number): Curve;
-
-        static new_default(): Curve;
-
-        // Owm methods of Gegl-0.3.Curve
-
-        /**
-         * Add a point to the curve at `x` `y` (replacing the value exactly for `x` if it
-         * already exists.
-         * @param x x coordinate
-         * @param y y coordinate
-         */
-        add_point(x: number, y: number): number;
-        /**
-         * Retrieve the number of points in the curve.
-         *
-         * Returns the number of points for the coordinates in the curve.
-         * @param x
-         */
-        calc_value(x: number): number;
-        /**
-         * Create a copy of `curve`.
-         * @returns A new copy of @curve.
-         */
-        duplicate(): Curve;
-        /**
-         * Retrive the coordinates for an index.
-         * @param index the position of the value number to retrieve.
-         */
-        get_point(index: number): void;
-        /**
-         * Get the bounds on the values of the curve and store the values in
-         * the return locaitons provided in `min_y` and `max_y`.
-         */
-        get_y_bounds(): void;
-        /**
-         * Retrieve the number of points in the curve.
-         *
-         * Returns the number of points for the coordinates in the curve.
-         */
-        num_points(): number;
-        /**
-         * Replace an existing point in a curve.
-         * @param index the position of the value number to retrieve.
-         * @param x x coordinate
-         * @param y y coordinate
-         */
-        set_point(index: number, x: number, y: number): void;
-    }
-
-    module Node {
-        // Signal callback interfaces
-
-        interface Computed {
-            (object: Rectangle): void;
-        }
-
-        interface Invalidated {
-            (object: Rectangle): void;
-        }
-
-        interface Progress {
-            (object: number): void;
-        }
-
-        // Constructor properties interface
-    }
-
-    class Node extends GObject.Object {
-        // Own properties of Gegl-0.3.Node
-
-        dont_cache: boolean;
-        dontCache: boolean;
-        gegl_operation: Operation;
-        geglOperation: Operation;
-        name: string;
-        operation: string;
-        passthrough: boolean;
-        use_opencl: boolean;
-        useOpencl: boolean;
-
-        // Constructors of Gegl-0.3.Node
-
-        static ['new'](): Node;
-
-        static new_from_file(path: string): Node;
-
-        static new_from_serialized(chaindata: string, path_root: string): Node;
-
-        static new_from_xml(xmldata: string, path_root: string): Node;
-
-        // Owm methods of Gegl-0.3.Node
-
-        /**
-         * Make the GeglNode `graph,` take a reference on child. This reference
-         * will be dropped when the reference count on the graph reaches zero.
-         * @param child a GeglNode.
-         * @returns the child.
-         */
-        add_child(child: Node): Node;
-        /**
-         * Render a rectangular region from a node to the given buffer.
-         * @param buffer the #GeglBuffer to render to.
-         * @param roi the rectangle to render.
-         * @param level mipmap level to render (0 for all)
-         * @param abyss_policy
-         */
-        blit_buffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyss_policy: AbyssPolicy): void;
-        /**
-         * Makes a connection between the pads of two nodes.
-         *
-         * Returns TRUE if the connection was successfully made.
-         * @param input_pad_name the name of the input pad we are connecting to
-         * @param source the node producing data we want to connect.
-         * @param output_pad_name the output pad we want to use on the source.
-         */
-        connect_from(input_pad_name: string, source: Node, output_pad_name: string): boolean;
-        /**
-         * Makes a connection between the pads of two nodes.
-         *
-         * Returns TRUE if the connection was successfully made.
-         * @param output_pad_name the output pad we want to use on the source.
-         * @param sink the node we're connecting an input to
-         * @param input_pad_name the name of the input pad we are connecting to
-         */
-        connect_to(output_pad_name: string, sink: Node, input_pad_name: string): boolean;
-        /**
-         * Creates a new processing node that performs the specified operation.
-         * All properties of the operation will have their default values. This
-         * is included as an addition to #gegl_node_new_child in the public API to have
-         * a non varargs entry point for bindings as well as sometimes simpler more
-         * readable code.
-         * @param operation the type of node to create.
-         * @returns a newly created node. The node will be destroyed by the parent. Calling g_object_unref on a node will cause the node to be dropped by the parent. (You may also add additional references using g_object_ref/g_object_unref, but in general relying on the parents reference counting is easiest.)
-         */
-        create_child(operation: string): Node;
-        /**
-         * Performs hit detection by returning the node providing data at a given
-         * coordinate pair. Currently operates only on bounding boxes and not
-         * pixel data.
-         * @param x x coordinate
-         * @param y y coordinate
-         * @returns the GeglNode providing the data ending up at @x,@y in the output of @node.
-         */
-        detect(x: number, y: number): Node;
-        /**
-         * Disconnects node connected to `input_pad` of `node` (if any).
-         *
-         * Returns TRUE if a connection was broken.
-         * @param input_pad the input pad to disconnect.
-         */
-        disconnect(input_pad: string): boolean;
-        find_property(property_name: string): GObject.ParamSpec;
-        get_children(): Node[];
-        /**
-         * Retrieve which pads on which nodes are connected to a named output_pad,
-         * and the number of connections. Both the location for the generated
-         * nodes array and pads array can be left as NULL. If they are non NULL
-         * both should be freed with g_free. The arrays are NULL terminated.
-         *
-         * Returns the number of consumers connected to this output_pad.
-         * @param output_pad the output pad we want to know who uses.
-         */
-        get_consumers(output_pad: string): number;
-        get_gegl_operation(): Operation | null;
-        /**
-         * Proxies are used to route between nodes of a subgraph contained within
-         * a node.
-         * @param pad_name the name of the pad.
-         * @returns Returns an input proxy for the named pad. If no input proxy exists with this name a new one will be created.
-         */
-        get_input_proxy(pad_name: string): Node;
-        get_operation(): string;
-        /**
-         * Proxies are used to route between nodes of a subgraph contained within
-         * a node.
-         * @param pad_name the name of the pad.
-         * @returns Returns a output proxy for the named pad. If no output proxy exists with this name a new one will be created.
-         */
-        get_output_proxy(pad_name: string): Node;
-        /**
-         * Returns a GeglNode that keeps a reference on a child.
-         * @returns the parent of a node or NULL.
-         */
-        get_parent(): Node;
-        get_passthrough(): boolean;
-        get_producer(input_pad_name: string, output_pad_name?: string | null): Node;
-        /**
-         * Returns TRUE if the node has a pad with the specified name
-         * @param pad_name the pad name we are looking for
-         */
-        has_pad(pad_name: string): boolean;
-        /**
-         * Returns the position and dimensions of a rectangle spanning the area
-         * defined by a node.
-         * @returns pointer a #GeglRectangle
-         */
-        get_bounding_box(): Rectangle;
-        get_property(property_name: string): GObject.Value;
-        /**
-         * Synthetic sugar for linking the "output" pad of `source` to the "input"
-         * pad of `sink`.
-         * @param sink the consumer of data.
-         */
-        link(sink: Node): void;
-        /**
-         * If the node has any input pads this function returns a null terminated
-         * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
-         */
-        list_input_pads(): string[];
-        /**
-         * If the node has any output pads this function returns a null terminated
-         * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
-         */
-        list_output_pads(): string[];
-        new_processor(rectangle: Rectangle): Processor;
-        /**
-         * Render a composition. This can be used for instance on a node with a "png-save"
-         * operation to render all necessary data, and make it be written to file. This
-         * function wraps the usage of a GeglProcessor in a single blocking function
-         * call. If you need a non-blocking operation, then make a direct use of
-         * #gegl_processor_work. See #GeglProcessor.
-         *
-         * ---
-         * GeglNode      *gegl;
-         * GeglRectangle  roi;
-         * GeglNode      *png_save;
-         * unsigned char *buffer;
-         *
-         * gegl = gegl_parse_xml (xml_data);
-         * roi      = gegl_node_get_bounding_box (gegl);
-         * # create png_save from the graph, the parent/child relationship
-         * # only mean anything when it comes to memory management.
-         * png_save = gegl_node_new_child (gegl,
-         *                                 "operation", "gegl:png-save",
-         *                                 "path",      "output.png",
-         *                                 NULL);
-         *
-         * gegl_node_link (gegl, png_save);
-         * gegl_node_process (png_save);
-         *
-         * buffer = malloc (roi.w*roi.h*4);
-         * gegl_node_blit (gegl,
-         *                 1.0,
-         *                 &roi,
-         *                 babl_format("R'G'B'A u8"),
-         *                 buffer,
-         *                 GEGL_AUTO_ROWSTRIDE,
-         *                 GEGL_BLIT_DEFAULT);
-         */
-        process(): void;
-        progress(progress: number, message: string): void;
-        /**
-         * Removes a child from a GeglNode. The reference previously held will be
-         * dropped so increase the reference count before removing when reparenting
-         * a child between two graphs.
-         * @param child a GeglNode.
-         * @returns the child.
-         */
-        remove_child(child: Node): Node;
-        set_passthrough(passthrough: boolean): void;
-        /**
-         * This is mainly included for language bindings. Using #gegl_node_set is
-         * more convenient when programming in C.
-         * @param property_name the name of the property to set
-         * @param value a GValue containing the value to be set in the property.
-         */
-        set_property(property_name: string, value: GObject.Value): void;
-        /**
-         * Returns a freshly allocated \0 terminated string containing a XML
-         * serialization of the composition produced by a node (and thus also
-         * the nodes contributing data to the specified node). To export a
-         * gegl graph, connect the internal output node to an output proxy (see
-         * #gegl_node_get_output_proxy.) and use the proxy node as the basis
-         * for the serialization.
-         * @param path_root filesystem path to construct relative paths from.
-         */
-        to_xml(path_root: string): string;
-        /**
-         * Returns a freshly allocated \0 terminated string containing a XML
-         * serialization of a segment of a graph from `head` to `tail` nodes.
-         * If `tail` is %NULL then this behaves just like #gegl_node_to_xml.
-         * @param tail a #GeglNode
-         * @param path_root filesystem path to construct relative paths from.
-         * @returns XML serialization of a graph segment.
-         */
-        to_xml_full(tail: Node | null, path_root: string): string;
-    }
-
-    module Operation {
-        // Constructor properties interface
-    }
-
-    class Operation extends GObject.Object {
-        // Owm methods of Gegl-0.3.Operation
-
-        static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
-        static get_key(operation_type: string, key_name: string): string;
-        static get_op_version(op_name: string): string;
-        static get_property_key(operation_type: string, property_name: string, property_key_name: string): string;
-        static list_keys(operation_type: string): string[];
-        static list_properties(operation_type: string): GObject.ParamSpec[];
-        static list_property_keys(operation_type: string, property_name: string): string[];
-    }
-
-    class ParamAudioFragment extends GObject.ParamSpec {}
-
-    class ParamColor extends GObject.ParamSpec {}
-
-    class ParamCurve extends GObject.ParamSpec {}
-
-    class ParamDouble extends GObject.ParamSpec {}
-
-    class ParamEnum extends GObject.ParamSpec {}
-
-    class ParamFilePath extends GObject.ParamSpec {}
-
-    class ParamFormat extends GObject.ParamSpec {}
-
-    class ParamInt extends GObject.ParamSpec {}
-
-    class ParamPath extends GObject.ParamSpec {}
-
-    class ParamSeed extends GObject.ParamSpec {}
-
-    class ParamString extends GObject.ParamSpec {}
-
-    class ParamUri extends GObject.ParamSpec {}
-
-    module Path {
-        // Signal callback interfaces
-
-        interface Changed {
-            (object?: any | null): void;
-        }
-
-        // Constructor properties interface
-    }
-
-    class Path extends GObject.Object {
-        // Constructors of Gegl-0.3.Path
-
-        static ['new'](): Path;
-
-        static new_from_string(instructions: string): Path;
-
-        // Owm methods of Gegl-0.3.Path
-
-        /**
-         * Adds a new type to the path system, FIXME this should probably
-         * return something on registration conflicts, for now it expects
-         * all registered paths to be aware of each other.
-         * @param type a gchar to recognize in path descriptions.
-         * @param items the number of floating point data items the instruction takes
-         * @param description a human readable description of this entry
-         */
-        static add_type(type: number, items: number, description: string): void;
-
-        // Owm methods of Gegl-0.3.Path
-
-        /**
-         * Compute the coordinates of the path at the `position` (length measured from
-         * start of path, not including discontinuities).
-         * @param pos how far along the path.
-         */
-        calc(pos: number): boolean;
-        /**
-         * Compute a corresponding y coordinate for a given x input coordinate,
-         * returns 0 if computed correctly and -1 if the path doesn't exist for the
-         * specified x coordinate.
-         * @param x x coordinate to compute for
-         */
-        calc_y_for_x(x: number): number;
-        /**
-         * Remove all nods from a `path`.
-         */
-        clear(): void;
-        /**
-         * Figure out what and where on a path is closest to arbitrary coordinates.
-         *
-         * Returns the length along the path where the closest point was encountered.
-         * @param x x coordinate.
-         * @param y y coordinate
-         */
-        closest_point(x: number, y: number): number;
-        /**
-         * Execute a provided function for every node in the path (useful for
-         * drawing and otherwise traversing a path.)
-         * @param each_item a function to call for each node in the path.
-         */
-        foreach(each_item: NodeFunction): void;
-        /**
-         * Execute a provided function for the segments of a poly line approximating
-         * the path.
-         * @param each_item a function to call for each node in the path.
-         */
-        foreach_flat(each_item: NodeFunction): void;
-        /**
-         * Make the `GeglPath` stop firing signals as it changes must be paired with a
-         * gegl_path_thaw() for the signals to start again.
-         */
-        freeze(): void;
-        /**
-         * Compute the bounding box of a path.
-         */
-        get_bounds(): void;
-        /**
-         * Returns the total length of the path.
-         * @returns the length of the path.
-         */
-        get_length(): number;
-        /**
-         * Get the transformation matrix of the path.
-         */
-        get_matrix(): void;
-        /**
-         * Retrieves the number of nodes in the path.
-         * @returns the number of nodes in the path.
-         */
-        get_n_nodes(): number;
-        /**
-         * Retrieve the node of the path at position `pos`.
-         *
-         * Returns TRUE if the node was successfully retrieved.
-         * @param index the node number to retrieve
-         */
-        get_node(index: number): boolean;
-        /**
-         * Insert the new node `node` at position `pos` in `path`.
-         * if `pos` = -1, the node is added in the last position.
-         * @param pos the position we want the new node to have.
-         * @param node pointer to a structure describing the GeglPathItem we want to store
-         */
-        insert_node(pos: number, node: PathItem): void;
-        /**
-         * Check if the path contains any nodes.
-         *
-         * Returns TRUE if the path has no nodes.
-         */
-        is_empty(): boolean;
-        /**
-         * Parses `instructions` and appends corresponding nodes to path (call
-         * gegl_path_clean() first if you want to replace the existing path.
-         * @param instructions a string describing a path.
-         */
-        parse_string(instructions: string): void;
-        /**
-         * Removes the node number `pos` in `path`.
-         * @param pos a node in the path.
-         */
-        remove_node(pos: number): void;
-        /**
-         * Replaces the exiting node at position `pos` in `path`.
-         * @param pos the position we want the new node to have.
-         * @param node pointer to a structure describing the GeglPathItem we want to store.
-         */
-        replace_node(pos: number, node: PathItem): void;
-        /**
-         * Set the transformation matrix of the path.
-         *
-         * The path is transformed through this matrix when being evaluated,
-         * causing the calculated positions and length to be changed by the transform.
-         * @param matrix a #GeglMatrix3 to copy the matrix from
-         */
-        set_matrix(matrix: Matrix3): void;
-        /**
-         * Restart firing signals (unless the path has been frozen multiple times).
-         */
-        thaw(): void;
-        /**
-         * Serialize the paths nodes to a string.
-         * @returns return a string with instructions describing the string you need to free this with g_free().
-         */
-        to_string(): string;
-    }
-
-    module Processor {
-        // Constructor properties interface
-    }
-
-    class Processor extends GObject.Object {
-        // Own properties of Gegl-0.3.Processor
-
-        chunksize: number;
-        node: Node;
-        progress: number;
-        rectangle: any;
-
-        // Owm methods of Gegl-0.3.Processor
-
-        set_level(level: number): void;
-        /**
-         * Change the rectangle a #GeglProcessor is working on.
-         * @param rectangle the new #GeglRectangle the processor shold work on or NULL to make it work on all data in the buffer.
-         */
-        set_rectangle(rectangle: Rectangle): void;
-        set_scale(scale: number): void;
-        /**
-         * Do an iteration of work for the processor.
-         *
-         * Returns TRUE if there is more work to be done.
-         *
-         * ---
-         * GeglProcessor *processor = gegl_node_new_processor (node, &roi);
-         * double         progress;
-         *
-         * while (gegl_processor_work (processor, &progress))
-         *   g_warning ("%f%% complete", progress);
-         * g_object_unref (processor);
-         */
-        work(): boolean;
-    }
-
-    module Stats {
-        // Constructor properties interface
-    }
-
-    class Stats extends GObject.Object {
-        // Own properties of Gegl-0.3.Stats
-
-        readonly swap_busy: boolean;
-        readonly swapBusy: boolean;
-        readonly swap_file_size: number;
-        readonly swapFileSize: number;
-        readonly swap_total: number;
-        readonly swapTotal: number;
-        readonly tile_cache_hits: number;
-        readonly tileCacheHits: number;
-        readonly tile_cache_misses: number;
-        readonly tileCacheMisses: number;
-        readonly tile_cache_total: number;
-        readonly tileCacheTotal: number;
-        readonly tile_cache_total_max: number;
-        readonly tileCacheTotalMax: number;
-        readonly tile_cache_total_uncloned: number;
-        readonly tileCacheTotalUncloned: number;
-        readonly zoom_total: number;
-        readonly zoomTotal: number;
-    }
-
-    module TileBackend {
-        // Constructor properties interface
-    }
-
-    class TileBackend extends TileSource {
-        // Own properties of Gegl-0.3.TileBackend
-
-        flush_on_destroy: boolean;
-        flushOnDestroy: boolean;
-        format: any;
-        readonly px_size: number;
-        readonly pxSize: number;
-        tile_height: number;
-        tileHeight: number;
-        readonly tile_size: number;
-        readonly tileSize: number;
-        tile_width: number;
-        tileWidth: number;
-
-        // Owm methods of Gegl-0.3.TileBackend
-
-        /**
-         * Delete a swap file from disk. This must be used by tile backends which may
-         * swap to disk under certain circonstances.
-         *
-         * For safety, this function will check that the swap file is in the swap
-         * directory before deletion but it won't perform any other check.
-         * @param path the path where the gegl tile backend has swapped.
-         */
-        static unlink_swap(path: string): void;
-
-        // Owm methods of Gegl-0.3.TileBackend
-
-        get_extent(): Rectangle;
-        get_flush_on_destroy(): boolean;
-        get_tile_height(): number;
-        get_tile_size(): number;
-        get_tile_width(): number;
-        /**
-         * Gets a pointer to the GeglTileStorage that uses the backend
-         * @returns the #GeglTileStorage
-         */
-        peek_storage(): TileSource;
-        /**
-         * Specify the extent of the backend, can be used to pre-prime the
-         * backend with the width/height information when constructing proxy
-         * GeglBuffers to interact with other systems
-         * @param rectangle the new extent
-         */
-        set_extent(rectangle: Rectangle): void;
-        /**
-         * Control whether cached data will be written to the backend before it
-         * is destroyed. If false unwritten data will be discarded.
-         * @param flush_on_destroy true if the backend needs to be flushed
-         */
-        set_flush_on_destroy(flush_on_destroy: boolean): void;
-    }
-
-    module TileHandler {
-        // Constructor properties interface
-    }
-
-    class TileHandler extends TileSource {
-        // Own properties of Gegl-0.3.TileHandler
-
-        source: GObject.Object;
-
-        // Owm methods of Gegl-0.3.TileHandler
-
-        damage_rect(rect: Rectangle): void;
-        set_source(source: TileSource): void;
-    }
-
-    module TileSource {
-        // Constructor properties interface
-    }
-
-    class TileSource extends GObject.Object {
-        // Own fields of Gegl-0.3.TileSource
-
-        command: TileSourceCommand;
-        padding: any[];
-    }
-
-    class AudioFragmentClass {}
-
-    class AudioFragmentPrivate {}
-
-    class BufferIterator {
-        // Own fields of Gegl-0.3.BufferIterator
-
-        length: number;
-        data: any[];
-        roi: Rectangle[];
-    }
-
-    class BufferIteratorPriv {}
-
-    class ColorClass {}
-
-    class ColorPrivate {}
-
-    class CurveClass {}
-
-    class Lookup {
-        // Own fields of Gegl-0.3.Lookup
-
-        'function': LookupFunction;
-        data: any;
-        shift: number;
-        positive_min: number;
-        positive_max: number;
-        negative_min: number;
-        negative_max: number;
-        bitmask: number[];
-        table: number[];
-    }
-
-    class Matrix2 {
-        // Own fields of Gegl-0.3.Matrix2
-
-        coeff: number[];
-
-        // Constructors of Gegl-0.3.Matrix2
-
-        constructor(
-            properties?: Partial<{
-                coeff: number[];
-            }>,
-        );
-
-        // Owm methods of Gegl-0.3.Matrix2
-
-        determinant(): number;
-        is_scale(): boolean;
-    }
-
-    class Matrix3 {
-        // Own fields of Gegl-0.3.Matrix3
-
-        coeff: number[];
-
-        // Constructors of Gegl-0.3.Matrix3
-
-        constructor(
-            properties?: Partial<{
-                coeff: number[];
-            }>,
-        );
-
-        static ['new'](): Matrix3;
-
-        // Owm methods of Gegl-0.3.Matrix3
-
-        /**
-         * Returns a copy of `src`.
-         */
-        copy(): Matrix3;
-        /**
-         * Copies the matrix in `src` into `dst`.
-         * @param src a #GeglMatrix3
-         */
-        copy_into(src: Matrix3): void;
-        /**
-         * Returns the determinant for the matrix.
-         */
-        determinant(): number;
-        /**
-         * Check if two matrices are equal.
-         *
-         * Returns TRUE if the matrices are equal.
-         * @param matrix2 a #GeglMatrix3
-         */
-        equal(matrix2: Matrix3): boolean;
-        /**
-         * Set the provided `matrix` to the identity matrix.
-         */
-        identity(): void;
-        /**
-         * Inverts `matrix`.
-         */
-        invert(): void;
-        /**
-         * Check if a matrix is the identity matrix.
-         *
-         * Returns TRUE if the matrix is the identity matrix.
-         */
-        is_identity(): boolean;
-        /**
-         * Check if a matrix only does scaling.
-         *
-         * Returns TRUE if the matrix only does scaling.
-         */
-        is_scale(): boolean;
-        /**
-         * Check if a matrix only does translation.
-         *
-         * Returns TRUE if the matrix only does trasnlation.
-         */
-        is_translate(): boolean;
-        /**
-         * Multiples `product` = `left` · `right`
-         * @param right a #GeglMatrix3
-         * @param product a #GeglMatrix3 to store the result in.
-         */
-        multiply(right: Matrix3, product: Matrix3): void;
-        /**
-         * Shift the origin of the transformation specified by `matrix`
-         * to (`x,` `y)`. In other words, calculate the matrix that:
-         *
-         * 1. Translates the input by (-`x,` -`y)`.
-         *
-         * 2. Transforms the result using the original `matrix`.
-         *
-         * 3. Translates the result by (`x,` `y)`.
-         * @param x x coordinate of new origin
-         * @param y y coordinate of new origin.
-         */
-        originate(x: number, y: number): void;
-        /**
-         * Parse a transofmation matrix from a string.
-         * @param string a string describing the matrix (right now a small subset of the transform strings allowed by SVG)
-         */
-        parse_string(string: string): void;
-        /**
-         * Serialize a #GeglMatrix3 to a string.
-         *
-         * Returns a freshly allocated string representing that #GeglMatrix3, the
-         * returned string should be g_free()'d.
-         */
-        to_string(): string;
-        /**
-         * transforms the coordinates provided in `x` and `y` and changes to the
-         * coordinates gotten when the transformed with the matrix.
-         * @param x pointer to an x coordinate
-         * @param y pointer to an y coordinate
-         */
-        transform_point(x: number, y: number): void;
-    }
-
-    class OperationContext {}
-
-    class ParamSpecDouble {
-        // Own fields of Gegl-0.3.ParamSpecDouble
-
-        ui_minimum: number;
-        ui_maximum: number;
-        ui_gamma: number;
-        ui_step_small: number;
-        ui_step_big: number;
-        ui_digits: number;
-
-        // Owm methods of Gegl-0.3.ParamSpecDouble
-
-        set_digits(digits: number): void;
-        set_steps(small_step: number, big_step: number): void;
-    }
-
-    class ParamSpecEnum {
-        // Own fields of Gegl-0.3.ParamSpecEnum
-
-        excluded_values: any[];
-
-        // Owm methods of Gegl-0.3.ParamSpecEnum
-
-        exclude_value(value: number): void;
-    }
-
-    class ParamSpecFilePath {
-        // Own fields of Gegl-0.3.ParamSpecFilePath
-
-        no_validate: number;
-        null_ok: number;
-    }
-
-    class ParamSpecFormat {}
-
-    class ParamSpecInt {
-        // Own fields of Gegl-0.3.ParamSpecInt
-
-        ui_minimum: number;
-        ui_maximum: number;
-        ui_gamma: number;
-        ui_step_small: number;
-        ui_step_big: number;
-
-        // Owm methods of Gegl-0.3.ParamSpecInt
-
-        set_steps(small_step: number, big_step: number): void;
-    }
-
-    class ParamSpecSeed {
-        // Own fields of Gegl-0.3.ParamSpecSeed
-
-        ui_minimum: number;
-        ui_maximum: number;
-    }
-
-    class ParamSpecString {
-        // Own fields of Gegl-0.3.ParamSpecString
-
-        no_validate: number;
-        null_ok: number;
-    }
-
-    class ParamSpecUri {
-        // Own fields of Gegl-0.3.ParamSpecUri
-
-        no_validate: number;
-        null_ok: number;
-    }
-
-    class PathClass {}
-
-    class PathItem {
-        // Own fields of Gegl-0.3.PathItem
-
-        type: number;
-        point: PathPoint[];
-
-        // Constructors of Gegl-0.3.PathItem
-
-        constructor(
-            properties?: Partial<{
-                type: number;
-                point: PathPoint[];
-            }>,
-        );
-    }
-
-    class PathList {
-        // Own fields of Gegl-0.3.PathList
-
-        next: any;
-        d: PathItem;
-
-        // Constructors of Gegl-0.3.PathList
-
-        constructor(
-            properties?: Partial<{
-                next: any;
-                d: PathItem;
-            }>,
-        );
-    }
-
-    class PathPoint {
-        // Own fields of Gegl-0.3.PathPoint
-
-        x: number;
-        y: number;
-
-        // Constructors of Gegl-0.3.PathPoint
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-            }>,
-        );
-    }
-
-    class Random {
-        // Constructors of Gegl-0.3.Random
-
-        constructor(properties?: Partial<{}>);
-
-        static ['new'](): Random;
-
-        static new_with_seed(seed: number): Random;
-
-        // Owm methods of Gegl-0.3.Random
-
-        /**
-         * Return a new copy of an existing GeglRandom
-         */
-        duplicate(): Random;
-        /**
-         * Return a random floating point number in range 0.0 .. 1.0.
-         * @param x x coordinate
-         * @param y y coordinate
-         * @param z z coordinate (mipmap level)
-         * @param n number no (each x,y coordinate provides its own sequence of numbers
-         */
-        float(x: number, y: number, z: number, n: number): number;
-        /**
-         * Return a random floating point number in the range specified,
-         * for the given x,y coordinates and GeglRandom provided, if multiple different
-         * numbers are needed pass in incrementing n's.
-         * @param x x coordinate
-         * @param y y coordinate
-         * @param z z coordinate (mipmap level)
-         * @param n number no (each x,y coordinate provides its own sequence of numbers
-         * @param min minimum value
-         * @param max maximum value
-         */
-        float_range(x: number, y: number, z: number, n: number, min: number, max: number): number;
-        /**
-         * Free a GeglRandom structure created with gegl_random_new() or
-         * gegl_random_new_with_seed()
-         */
-        free(): void;
-        /**
-         * Return a random integer number in range 0 .. MAX_UINT
-         * @param x x coordinate
-         * @param y y coordinate
-         * @param z z coordinate (mipmap level)
-         * @param n number no (each x,y coordinate provides its own sequence of numbers
-         */
-        int(x: number, y: number, z: number, n: number): number;
-        /**
-         * Return a random integer point number in the range specified,
-         * for the given x,y coordinates and GeglRandom provided, if multiple different
-         * numbers are needed pass in incrementing n's.
-         * @param x x coordinate
-         * @param y y coordinate
-         * @param z z coordinate (mipmap level)
-         * @param n number no (each x,y coordinate provides its own sequence of numbers
-         * @param min minimum value
-         * @param max maximum value+1
-         */
-        int_range(x: number, y: number, z: number, n: number, min: number, max: number): number;
-        /**
-         * Change the seed of an existing GeglRandom.
-         * @param seed an integer seed, change for different permutation.
-         */
-        set_seed(seed: number): void;
-    }
-
-    class Rectangle {
-        // Own fields of Gegl-0.3.Rectangle
-
-        x: number;
-        y: number;
-        width: number;
-        height: number;
-
-        // Constructors of Gegl-0.3.Rectangle
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
-
-        static ['new'](x: number, y: number, width: number, height: number): Rectangle;
-
-        // Owm methods of Gegl-0.3.Rectangle
-
-        /**
-         * Returns a GeglRectangle that represents an infininte plane.
-         */
-        static infinite_plane(): Rectangle;
-
-        // Owm methods of Gegl-0.3.Rectangle
-
-        /**
-         * Computes the bounding box of the rectangles `source1` and `source2` and stores the
-         * resulting bounding box in `destination`.
-         *
-         * `destination` may point to the same object as `source1` or `source2`.
-         * @param source1 a #GeglRectangle
-         * @param source2 a #GeglRectangle
-         */
-        bounding_box(source1: Rectangle, source2: Rectangle): void;
-        /**
-         * Checks if the #GeglRectangle `child` is fully contained within `parent`.
-         *
-         * Returns TRUE if the `child` is fully contained in `parent`.
-         * @param child a #GeglRectangle
-         */
-        contains(child: Rectangle): boolean;
-        /**
-         * Copies the rectangle information stored in `source` over the information in
-         * `destination`.
-         *
-         * `destination` may point to the same object as `source`.
-         * @param source a #GeglRectangle
-         */
-        copy(source: Rectangle): void;
-        /**
-         * For debugging purposes, not stable API.
-         */
-        dump(): void;
-        /**
-         * Create a new copy of `rectangle`.
-         * @returns a #GeglRectangle
-         */
-        dup(): Rectangle;
-        /**
-         * Check if two #GeglRectangles are equal.
-         *
-         * Returns TRUE if `rectangle` and `rectangle2` are equal.
-         * @param rectangle2 a #GeglRectangle
-         */
-        equal(rectangle2: Rectangle): boolean;
-        /**
-         * Check if a rectangle is equal to a set of parameters.
-         *
-         * Returns TRUE if `rectangle` and `x,``y` `width` x `height` are equal.
-         * @param x X coordinate
-         * @param y Y coordinate
-         * @param width width of rectangle
-         * @param height height of rectangle
-         */
-        equal_coords(x: number, y: number, width: number, height: number): boolean;
-        /**
-         * Calculates the intersection of two rectangles. If the rectangles do not
-         * intersect, dest's width and height are set to 0 and its x and y values
-         * are undefined.
-         *
-         * `dest` may point to the same object as `src1` or `src2`.
-         *
-         * Returns TRUE if the rectangles intersect.
-         * @param src1 a #GeglRectangle
-         * @param src2 a #GeglRectangle
-         */
-        intersect(src1: Rectangle, src2: Rectangle): boolean;
-        /**
-         * Check if a rectangle has zero area.
-         *
-         * Returns TRUE if `rectangle` height and width are both zero.
-         */
-        is_empty(): boolean;
-        /**
-         * Returns TRUE if the GeglRectangle represents an infininte plane,
-         * FALSE otherwise.
-         */
-        is_infinite_plane(): boolean;
-        /**
-         * Sets the `x,` `y,` `width` and `height` on `rectangle`.
-         * @param x upper left x coordinate
-         * @param y upper left y coordinate
-         * @param width width in pixels.
-         * @param height height in pixels.
-         */
-        set(x: number, y: number, width: number, height: number): void;
-        /**
-         * Computes the bounding box of the area formed by subtracting `subtrahend`
-         * from `minuend,` and stores the result in `destination`.
-         *
-         * `destination` may point to the same object as `minuend` or `subtrahend`.
-         *
-         * Returns TRUE if the result is not empty.
-         * @param minuend a #GeglRectangle
-         * @param subtrahend a #GeglRectangle
-         */
-        subtract_bounding_box(minuend: Rectangle, subtrahend: Rectangle): boolean;
-    }
-
-    class Sampler {
-        // Owm methods of Gegl-0.3.Sampler
-
-        /**
-         * Perform a sampling with the provided `sampler`.
-         * @param x x coordinate to sample
-         * @param y y coordinate to sample
-         * @param scale matrix representing extent of sampling area in source buffer.
-         * @param output memory location for output data.
-         * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
-         */
-        get(x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy): void;
-        get_context_rect(): Rectangle;
-    }
-
-    class Tile {}
-
-    class TileBackendClass {
-        // Own fields of Gegl-0.3.TileBackendClass
-
-        padding: any[];
-    }
-
-    class TileBackendPrivate {}
-
-    class TileHandlerClass {}
-
-    class TileHandlerPrivate {}
-
-    class TileSourceClass {
-        // Own fields of Gegl-0.3.TileSourceClass
-
-        padding: any[];
-    }
+    // Own methods of Gegl.Rectangle
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Computes the bounding box of the rectangles `source1` and `source2` and stores the
+     * resulting bounding box in `destination`.
+     * 
+     * `destination` may point to the same object as `source1` or `source2`.
+     * @param source1 a #GeglRectangle
+     * @param source2 a #GeglRectangle
      */
-    const __name__: string;
+    bounding_box(source1: Rectangle, source2: Rectangle): void
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Checks if the #GeglRectangle `child` is fully contained within `parent`.
+     * 
+     * Returns TRUE if the `child` is fully contained in `parent`.
+     * @param child a #GeglRectangle
      */
-    const __version__: string;
+    contains(child: Rectangle): boolean
+    /**
+     * Copies the rectangle information stored in `source` over the information in
+     * `destination`.
+     * 
+     * `destination` may point to the same object as `source`.
+     * @param source a #GeglRectangle
+     */
+    copy(source: Rectangle): void
+    /**
+     * For debugging purposes, not stable API.
+     */
+    dump(): void
+    /**
+     * Create a new copy of `rectangle`.
+     * @returns a #GeglRectangle
+     */
+    dup(): Rectangle
+    /**
+     * Check if two #GeglRectangles are equal.
+     * 
+     * Returns TRUE if `rectangle` and `rectangle2` are equal.
+     * @param rectangle2 a #GeglRectangle
+     */
+    equal(rectangle2: Rectangle): boolean
+    /**
+     * Check if a rectangle is equal to a set of parameters.
+     * 
+     * Returns TRUE if `rectangle` and `x,``y` `width` x `height` are equal.
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @param width width of rectangle
+     * @param height height of rectangle
+     */
+    equal_coords(x: number, y: number, width: number, height: number): boolean
+    /**
+     * Calculates the intersection of two rectangles. If the rectangles do not
+     * intersect, dest's width and height are set to 0 and its x and y values
+     * are undefined.
+     * 
+     * `dest` may point to the same object as `src1` or `src2`.
+     * 
+     * Returns TRUE if the rectangles intersect.
+     * @param src1 a #GeglRectangle
+     * @param src2 a #GeglRectangle
+     */
+    intersect(src1: Rectangle, src2: Rectangle): boolean
+    /**
+     * Check if a rectangle has zero area.
+     * 
+     * Returns TRUE if `rectangle` height and width are both zero.
+     */
+    is_empty(): boolean
+    /**
+     * Returns TRUE if the GeglRectangle represents an infininte plane,
+     * FALSE otherwise.
+     */
+    is_infinite_plane(): boolean
+    /**
+     * Sets the `x,` `y,` `width` and `height` on `rectangle`.
+     * @param x upper left x coordinate
+     * @param y upper left y coordinate
+     * @param width width in pixels.
+     * @param height height in pixels.
+     */
+    set(x: number, y: number, width: number, height: number): void
+    /**
+     * Computes the bounding box of the area formed by subtracting `subtrahend`
+     * from `minuend,` and stores the result in `destination`.
+     * 
+     * `destination` may point to the same object as `minuend` or `subtrahend`.
+     * 
+     * Returns TRUE if the result is not empty.
+     * @param minuend a #GeglRectangle
+     * @param subtrahend a #GeglRectangle
+     */
+    subtract_bounding_box(minuend: Rectangle, subtrahend: Rectangle): boolean
+}
+
+abstract class Sampler {
+
+    // Constructors of Gegl.Sampler
+
+_init(...args: any[]): void;
+
+
+    // Own methods of Gegl.Sampler
+
+    /**
+     * Perform a sampling with the provided `sampler`.
+     * @param x x coordinate to sample
+     * @param y y coordinate to sample
+     * @param scale matrix representing extent of sampling area in source buffer.
+     * @param output memory location for output data.
+     * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
+     */
+    get(x: number, y: number, scale: Matrix2, output: (any | null), repeat_mode: AbyssPolicy): void
+    get_context_rect(): Rectangle
+}
+
+abstract class Tile {
+
+    // Constructors of Gegl.Tile
+
+_init(...args: any[]): void;
+
+}
+
+type TileBackendClass = typeof TileBackend
+abstract class TileBackendPrivate {
+
+    // Constructors of Gegl.TileBackendPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type TileHandlerClass = typeof TileHandler
+abstract class TileHandlerPrivate {
+
+    // Constructors of Gegl.TileHandlerPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type TileSourceClass = typeof TileSource
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Gegl;

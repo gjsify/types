@@ -5,8 +5,7 @@ declare module 'gi://Vulkan?version=1.0' {
 }
 
 declare module 'gi://Vulkan' {
-    import Vulkan10 from '@girs/vulkan-1.0';
-    export default Vulkan10;
+    export * from 'gi://Vulkan?version=1.0';
 }
 
 

@@ -5,8 +5,7 @@ declare module 'gi://GstCodecs?version=1.0' {
 }
 
 declare module 'gi://GstCodecs' {
-    import GstCodecs10 from '@girs/gstcodecs-1.0';
-    export default GstCodecs10;
+    export * from 'gi://GstCodecs?version=1.0';
 }
 
 

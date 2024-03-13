@@ -5,8 +5,7 @@ declare module 'gi://Atk?version=1.0' {
 }
 
 declare module 'gi://Atk' {
-    import Atk10 from '@girs/atk-1.0';
-    export default Atk10;
+    export * from 'gi://Atk?version=1.0';
 }
 
 

@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,355 +28,766 @@ import type Atk from '@girs/atk-1.0';
 import type GConf from '@girs/gconf-2.0';
 
 export namespace PanelApplet {
-    /**
-     * Type defining the orientation of the applet. The values may seem backward
-     * (e.g. %PANEL_APPLET_ORIENT_RIGHT means the panel is on the left side), but
-     * this represents the direction the applet is oriented to.
-     */
-    enum AppletOrient {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-    }
-    const APPLET_FLAGS_ALL: number;
-    interface AppletFactoryCallback {
-        (applet: Applet, iid: string): boolean;
-    }
-    /**
-     * Flags to be used with panel_applet_get_flags()/panel_applet_set_flags(), to
-     * indicate to the panel a specific behavior requested by the #PanelApplet.
-     */
-    enum AppletFlags {
-        FLAGS_NONE,
-        EXPAND_MAJOR,
-        EXPAND_MINOR,
-        HAS_HANDLE,
-    }
-    module Applet {
-        // Signal callback interfaces
 
-        interface ChangeBackground {
-            (pattern: cairo.Pattern): void;
-        }
+/**
+ * Type defining the orientation of the applet. The values may seem backward
+ * (e.g. %PANEL_APPLET_ORIENT_RIGHT means the panel is on the left side), but
+ * this represents the direction the applet is oriented to.
+ */
+enum AppletOrient {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+}
+const APPLET_FLAGS_ALL: number
+interface AppletFactoryCallback {
+    (applet: Applet, iid: string): boolean
+}
+/**
+ * Flags to be used with panel_applet_get_flags()/panel_applet_set_flags(), to
+ * indicate to the panel a specific behavior requested by the #PanelApplet.
+ */
+enum AppletFlags {
+    FLAGS_NONE,
+    EXPAND_MAJOR,
+    EXPAND_MINOR,
+    HAS_HANDLE,
+}
+module Applet {
 
-        interface ChangeOrient {
-            (orient: number): void;
-        }
+    // Signal callback interfaces
 
-        interface ChangeSize {
-            (size: number): void;
-        }
-
-        interface MoveFocusOutOfApplet {
-            (direction: Gtk.DirectionType): void;
-        }
-
-        // Constructor properties interface
+    interface ChangeBackground {
+        (pattern: cairo.Pattern): void
     }
 
-    class Applet extends Gtk.EventBox {
-        // Own properties of PanelApplet-4.0.Applet
-
-        /**
-         * The #PanelAppletFlags of the applet.
-         */
-        flags: number;
-        /**
-         * Whether the panel the applet is on is locked down.
-         */
-        locked_down: boolean;
-        /**
-         * Whether the panel the applet is on is locked down.
-         */
-        lockedDown: boolean;
-        /**
-         * The #PanelAppletOrient of the applet.
-         *
-         * This property gets set when the applet gets embedded, and can change
-         * when the panel position changes.
-         */
-        orient: number;
-        /**
-         * The GConf path to the per-instance settings of the applet.
-         *
-         * This property gets set when the applet gets embedded.
-         */
-        prefs_key: string;
-        /**
-         * The GConf path to the per-instance settings of the applet.
-         *
-         * This property gets set when the applet gets embedded.
-         */
-        prefsKey: string;
-        /**
-         * The GSettings path to the per-instance settings of the applet.
-         *
-         * This property gets set when the applet gets embedded.
-         */
-        settings_path: string;
-        /**
-         * The GSettings path to the per-instance settings of the applet.
-         *
-         * This property gets set when the applet gets embedded.
-         */
-        settingsPath: string;
-        /**
-         * The size of the panel the applet is on. For a horizontal panel, the
-         * size if the height of the panel; for a vertical panel, the size is
-         * the width of the panel.
-         *
-         * This property gets set when the applet gets embedded, and can change
-         * when the panel size changes.
-         */
-        size: number;
-        /**
-         * The size hints set for the applet. See panel_applet_set_size_hints().
-         */
-        size_hints: any;
-        /**
-         * The size hints set for the applet. See panel_applet_set_size_hints().
-         */
-        sizeHints: any;
-
-        // Own fields of PanelApplet-4.0.Applet
-
-        event_box: Gtk.EventBox;
-
-        // Owm methods of PanelApplet-4.0.Applet
-
-        /**
-         * Creates the applet factory for `factory_id,` so that the factory can create
-         * instances of the applet types it is associated with.
-         *
-         * Applet instances created by the applet factory will use `applet_type` as
-         * GType. Unless you subclass #PanelApplet, you should use %PANEL_TYPE_APPLET
-         * as `applet_type`.
-         *
-         * On creation of the applet instances, `callback` is called to setup the
-         * applet. If `callback` returns %FALSE, the creation of the applet instance is
-         * cancelled.
-         *
-         * If using C, it is recommended to use #PANEL_APPLET_OUT_PROCESS_FACTORY
-         * instead as it will create a main() function for you.
-         *
-         * It can only be used once, and is incompatible with the use of
-         * %PANEL_APPLET_IN_PROCESS_FACTORY and %PANEL_APPLET_OUT_PROCESS_FACTORY.
-         * @param factory_id identifier of an applet factory.
-         * @param applet_type GType of the applet this factory creates.
-         * @param callback callback to be called when a new applet is created.
-         */
-        static factory_main(factory_id: string, applet_type: GObject.GType, callback: AppletFactoryCallback): number;
-
-        // Owm methods of PanelApplet-4.0.Applet
-
-        /**
-         * Associates the per-instance GConf directory of `applet` to the schemas
-         * defined in `schema_dir`. This must be called if the applet will save
-         * per-instance settings, to ensure that each key in the per-instance GConf
-         * directory has a defined type, sane default and documentation.
-         * @param schema_dir a GConf path of a schema directory.
-         */
-        add_preferences(schema_dir: string): void;
-        /**
-         * Convenience wrapper around gconf_client_get_bool() to get the value of `key`
-         * in the per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @returns the value of @key.
-         */
-        gconf_get_bool(key: string): boolean;
-        /**
-         * Convenience wrapper around gconf_client_get_float() to get the value of `key`
-         * in the per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @returns the value of @key.
-         */
-        gconf_get_float(key: string): number;
-        /**
-         * Returns the full GConf path of `key,` in the per-instance GConf directory of
-         * `applet`. The string should be freed by the caller.
-         * @param key a GConf key name.
-         */
-        gconf_get_full_key(key: string): string;
-        /**
-         * Convenience wrapper around gconf_client_get_int() to get the value of `key`
-         * in the per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @returns the value of @key.
-         */
-        gconf_get_int(key: string): number;
-        /**
-         * Convenience wrapper around gconf_client_get_string() to get the value of `key`
-         * in the per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @returns the value of @key. The string should be freed by the caller.
-         */
-        gconf_get_string(key: string): string;
-        /**
-         * Convenience wrapper around gconf_client_get_value() to get the value of `key`
-         * in the per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @returns the value of @key.
-         */
-        gconf_get_value(key: string): GConf.Value;
-        /**
-         * Convenience wrapper around gconf_client_set_bool() to update `key` in the
-         * per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @param the_bool new value for @key.
-         */
-        gconf_set_bool(key: string, the_bool: boolean): void;
-        /**
-         * Convenience wrapper around gconf_client_set_float() to update `key` in the
-         * per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @param the_float new value for @key.
-         */
-        gconf_set_float(key: string, the_float: number): void;
-        /**
-         * Convenience wrapper around gconf_client_set_int() to update `key` in the
-         * per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @param the_int new value for @key.
-         */
-        gconf_set_int(key: string, the_int: number): void;
-        /**
-         * Convenience wrapper around gconf_client_set_string() to update `key` in the
-         * per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @param the_string new value for @key.
-         */
-        gconf_set_string(key: string, the_string: string): void;
-        /**
-         * Convenience wrapper around gconf_client_set_value() to update `key` in the
-         * per-instance GConf directory of `applet`.
-         * @param key a GConf key name.
-         * @param value new value for @key.
-         */
-        gconf_set_value(key: string, value: GConf.Value): void;
-        /**
-         * Gets the background pattern for `applet,` or %NULL if there is none.
-         * @returns a new #cairo_pattern_t to use as background for @applet.
-         */
-        get_background(): cairo.Pattern;
-        /**
-         * Gets the #PanelAppletFlags of `applet`.
-         * @returns the #PanelAppletFlags of @applet.
-         */
-        get_flags(): AppletFlags;
-        /**
-         * Gets whether the panel `applet` is on is locked down or not. A locked down
-         * applet should not allow any change to its configuration.
-         * @returns %TRUE if the panel @applet is on is locked down, %FALSE otherwise.
-         */
-        get_locked_down(): boolean;
-        /**
-         * Gets the #PanelAppletOrient of `applet`.
-         * @returns the #PanelAppletOrient of @applet.
-         */
-        get_orient(): AppletOrient;
-        /**
-         * Gets the GConf path to the per-instance settings of `applet`.
-         * @returns a copy of the GConf path to the per-instance settings of @applet.
-         */
-        get_preferences_key(): string;
-        /**
-         * Gets the size of the panel `applet` is on. For a horizontal panel, the
-         * size if the height of the panel; for a vertical panel, the size is the width
-         * of the panel.
-         * @returns the size of the panel @applet is on.
-         */
-        get_size(): number;
-        /**
-         * Requests focus for `applet`. There is no guarantee that `applet` will
-         * successfully get focus after that call.
-         * @param timestamp the timestamp of the user interaction (typically a button or key press event) which triggered this call.
-         */
-        request_focus(timestamp: number): void;
-        /**
-         * Configure #PanelApplet to automatically draw the background of the applet on
-         * `widget`. It is generally enough to call this function with `applet` as
-         * `widget`.
-         * @param widget a #GtkWidget.
-         */
-        set_background_widget(widget: Gtk.Widget): void;
-        /**
-         * Sets the #PanelAppletFlags of `applet`. Most of the time, at least
-         * %PANEL_APPLET_EXPAND_MINOR should be used.
-         * @param flags #PanelAppletFlags to use for @applet.
-         */
-        set_flags(flags: AppletFlags): void;
-        /**
-         * Give hints to the panel about sizes `applet` is comfortable with. This is
-         * generally useful for applets that can take a lot of space, in case the panel
-         * gets full and needs to restrict the size of some applets.
-         *
-         * `size_hints` should have an even number of sizes. It is an array of (max,
-         * min) pairs where min(i) > max(i + 1).
-         *
-         * `base_size` will be added to all sizes in `size_hints,` and is therefore a way
-         * to guarantee a minimum size to `applet`.
-         *
-         * The panel will try to allocate a size that is acceptable to `applet,` i.e. in
-         * one of the (`base_size` + max, `base_size` + min) ranges.
-         *
-         * %PANEL_APPLET_EXPAND_MAJOR must be set for `applet` to use size hints.
-         * @param size_hints array of sizes.
-         * @param n_elements length of @size_hints.
-         * @param base_size base size of the applet.
-         */
-        set_size_hints(size_hints: number, n_elements: number, base_size: number): void;
-        /**
-         * Sets up the context menu of `applet`. `xml` is a #GtkUIManager UI definition,
-         * describing how to display the menu items. `action_group` contains the
-         * various #GtkAction that are referenced in `xml`.
-         *
-         * See also the <link linkend="getting-started.context-menu">Context
-         * Menu</link> section.
-         * @param xml a menu XML string.
-         * @param action_group a #GtkActionGroup.
-         */
-        setup_menu(xml: string, action_group: Gtk.ActionGroup): void;
-        /**
-         * Sets up the context menu of `applet`. `filename` is the path to a menu XML
-         * file, containing a #GtkUIManager UI definition that describes how to display
-         * the menu items. `action_group` contains the various #GtkAction that
-         * are referenced in `xml`.
-         *
-         * See also the <link linkend="getting-started.context-menu">Context
-         * Menu</link> section.
-         * @param filename path to a menu XML file.
-         * @param action_group a #GtkActionGroup.
-         */
-        setup_menu_from_file(filename: string, action_group: Gtk.ActionGroup): void;
-        /**
-         * Sets up the context menu of `applet`. `filename` is a resource path to a menu
-         * XML file, containing a #GtkUIManager UI definition that describes how to
-         * display the menu items. `action_group` contains the various #GtkAction that
-         * are referenced in `xml`.
-         *
-         * See also the <link linkend="getting-started.context-menu">Context
-         * Menu</link> section.
-         * @param resource_path a resource path
-         * @param action_group a #GtkActionGroup.
-         */
-        setup_menu_from_resource(resource_path: string, action_group: Gtk.ActionGroup): void;
+    interface ChangeOrient {
+        (orient: number): void
     }
 
-    class AppletClass {}
+    interface ChangeSize {
+        (size: number): void
+    }
 
-    class AppletPrivate {}
+    interface MoveFocusOutOfApplet {
+        (direction: Gtk.DirectionType): void
+    }
+
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+flags: number;
+    locked_down: boolean;
+    lockedDown: boolean;
+    orient: number;
+    prefs_key: string;
+    prefsKey: string;
+    settings_path: string;
+    settingsPath: string;
+    size: number;
+    size_hints: any;
+    sizeHints: any;
+    }
+
+}
+
+class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
+
+    // Own properties of PanelApplet.Applet
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * The #PanelAppletFlags of the applet.
      */
-    const __name__: string;
+    get flags(): number;
+    set flags(val: number);
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Whether the panel the applet is on is locked down.
      */
-    const __version__: string;
+    get locked_down(): boolean;
+    set locked_down(val: boolean);
+    /**
+     * Whether the panel the applet is on is locked down.
+     */
+    get lockedDown(): boolean;
+    set lockedDown(val: boolean);
+    /**
+     * The #PanelAppletOrient of the applet.
+     * 
+     * This property gets set when the applet gets embedded, and can change
+     * when the panel position changes.
+     */
+    get orient(): number;
+    set orient(val: number);
+    /**
+     * The GConf path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    get prefs_key(): string;
+    set prefs_key(val: string);
+    /**
+     * The GConf path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    get prefsKey(): string;
+    set prefsKey(val: string);
+    /**
+     * The GSettings path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    get settings_path(): string;
+    set settings_path(val: string);
+    /**
+     * The GSettings path to the per-instance settings of the applet.
+     * 
+     * This property gets set when the applet gets embedded.
+     */
+    get settingsPath(): string;
+    set settingsPath(val: string);
+    /**
+     * The size of the panel the applet is on. For a horizontal panel, the
+     * size if the height of the panel; for a vertical panel, the size is
+     * the width of the panel.
+     * 
+     * This property gets set when the applet gets embedded, and can change
+     * when the panel size changes.
+     */
+    get size(): number;
+    set size(val: number);
+    /**
+     * The size hints set for the applet. See panel_applet_set_size_hints().
+     */
+    get size_hints(): any;
+    set size_hints(val: any);
+    /**
+     * The size hints set for the applet. See panel_applet_set_size_hints().
+     */
+    get sizeHints(): any;
+    set sizeHints(val: any);
+
+    // Own fields of PanelApplet.Applet
+
+event_box: Gtk.EventBox
+
+    // Constructors of PanelApplet.Applet
+
+
+constructor(properties?: Partial<Applet.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own signals of PanelApplet.Applet
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'change-background', callback: ((_source: this, pattern: cairo.Pattern) => void)): number
+    connect_after(signal: 'change-background', callback: ((_source: this, pattern: cairo.Pattern) => void)): number
+    emit(signal: 'change-background', pattern: cairo.Pattern): void
+    connect(signal: 'change-orient', callback: ((_source: this, orient: number) => void)): number
+    connect_after(signal: 'change-orient', callback: ((_source: this, orient: number) => void)): number
+    emit(signal: 'change-orient', orient: number): void
+    connect(signal: 'change-size', callback: ((_source: this, size: number) => void)): number
+    connect_after(signal: 'change-size', callback: ((_source: this, size: number) => void)): number
+    emit(signal: 'change-size', size: number): void
+    connect(signal: 'move-focus-out-of-applet', callback: ((_source: this, direction: Gtk.DirectionType) => void)): number
+    connect_after(signal: 'move-focus-out-of-applet', callback: ((_source: this, direction: Gtk.DirectionType) => void)): number
+    emit(signal: 'move-focus-out-of-applet', direction: Gtk.DirectionType): void
+
+    // Own static methods of PanelApplet.Applet
+
+    /**
+     * Creates the applet factory for `factory_id,` so that the factory can create
+     * instances of the applet types it is associated with.
+     * 
+     * Applet instances created by the applet factory will use `applet_type` as
+     * GType. Unless you subclass #PanelApplet, you should use %PANEL_TYPE_APPLET
+     * as `applet_type`.
+     * 
+     * On creation of the applet instances, `callback` is called to setup the
+     * applet. If `callback` returns %FALSE, the creation of the applet instance is
+     * cancelled.
+     * 
+     * If using C, it is recommended to use #PANEL_APPLET_OUT_PROCESS_FACTORY
+     * instead as it will create a main() function for you.
+     * 
+     * It can only be used once, and is incompatible with the use of
+     * %PANEL_APPLET_IN_PROCESS_FACTORY and %PANEL_APPLET_OUT_PROCESS_FACTORY.
+     * @param factory_id identifier of an applet factory.
+     * @param applet_type GType of the applet this factory creates.
+     * @param callback callback to be called when a new applet is created.
+     */
+    static factory_main(factory_id: string, applet_type: GObject.GType, callback: AppletFactoryCallback): number
+
+    // Own virtual methods of PanelApplet.Applet
+
+    vfunc_change_background(pattern: cairo.Pattern): void
+    vfunc_change_orient(orient: AppletOrient): void
+    vfunc_change_size(size: number): void
+    vfunc_move_focus_out_of_applet(direction: Gtk.DirectionType): void
+
+    // Own methods of PanelApplet.Applet
+
+    /**
+     * Associates the per-instance GConf directory of `applet` to the schemas
+     * defined in `schema_dir`. This must be called if the applet will save
+     * per-instance settings, to ensure that each key in the per-instance GConf
+     * directory has a defined type, sane default and documentation.
+     * @param schema_dir a GConf path of a schema directory.
+     */
+    add_preferences(schema_dir: string): void
+    /**
+     * Convenience wrapper around gconf_client_get_bool() to get the value of `key`
+     * in the per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @returns the value of @key.
+     */
+    gconf_get_bool(key: string): boolean
+    /**
+     * Convenience wrapper around gconf_client_get_float() to get the value of `key`
+     * in the per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @returns the value of @key.
+     */
+    gconf_get_float(key: string): number
+    /**
+     * Returns the full GConf path of `key,` in the per-instance GConf directory of
+     * `applet`. The string should be freed by the caller.
+     * @param key a GConf key name.
+     */
+    gconf_get_full_key(key: string): string
+    /**
+     * Convenience wrapper around gconf_client_get_int() to get the value of `key`
+     * in the per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @returns the value of @key.
+     */
+    gconf_get_int(key: string): number
+    /**
+     * Convenience wrapper around gconf_client_get_string() to get the value of `key`
+     * in the per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @returns the value of @key. The string should be freed by the caller.
+     */
+    gconf_get_string(key: string): string
+    /**
+     * Convenience wrapper around gconf_client_get_value() to get the value of `key`
+     * in the per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @returns the value of @key.
+     */
+    gconf_get_value(key: string): GConf.Value
+    /**
+     * Convenience wrapper around gconf_client_set_bool() to update `key` in the
+     * per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @param the_bool new value for @key.
+     */
+    gconf_set_bool(key: string, the_bool: boolean): void
+    /**
+     * Convenience wrapper around gconf_client_set_float() to update `key` in the
+     * per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @param the_float new value for @key.
+     */
+    gconf_set_float(key: string, the_float: number): void
+    /**
+     * Convenience wrapper around gconf_client_set_int() to update `key` in the
+     * per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @param the_int new value for @key.
+     */
+    gconf_set_int(key: string, the_int: number): void
+    /**
+     * Convenience wrapper around gconf_client_set_string() to update `key` in the
+     * per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @param the_string new value for @key.
+     */
+    gconf_set_string(key: string, the_string: string): void
+    /**
+     * Convenience wrapper around gconf_client_set_value() to update `key` in the
+     * per-instance GConf directory of `applet`.
+     * @param key a GConf key name.
+     * @param value new value for @key.
+     */
+    gconf_set_value(key: string, value: GConf.Value): void
+    /**
+     * Gets the background pattern for `applet,` or %NULL if there is none.
+     * @returns a new #cairo_pattern_t to use as background for @applet.
+     */
+    get_background(): cairo.Pattern
+    /**
+     * Gets the #PanelAppletFlags of `applet`.
+     * @returns the #PanelAppletFlags of @applet.
+     */
+    get_flags(): AppletFlags
+    /**
+     * Gets whether the panel `applet` is on is locked down or not. A locked down
+     * applet should not allow any change to its configuration.
+     * @returns %TRUE if the panel @applet is on is locked down, %FALSE otherwise.
+     */
+    get_locked_down(): boolean
+    /**
+     * Gets the #PanelAppletOrient of `applet`.
+     * @returns the #PanelAppletOrient of @applet.
+     */
+    get_orient(): AppletOrient
+    /**
+     * Gets the GConf path to the per-instance settings of `applet`.
+     * @returns a copy of the GConf path to the per-instance settings of @applet.
+     */
+    get_preferences_key(): string
+    /**
+     * Gets the size of the panel `applet` is on. For a horizontal panel, the
+     * size if the height of the panel; for a vertical panel, the size is the width
+     * of the panel.
+     * @returns the size of the panel @applet is on.
+     */
+    get_size(): number
+    /**
+     * Requests focus for `applet`. There is no guarantee that `applet` will
+     * successfully get focus after that call.
+     * @param timestamp the timestamp of the user interaction (typically a button or key press event) which triggered this call.
+     */
+    request_focus(timestamp: number): void
+    /**
+     * Configure #PanelApplet to automatically draw the background of the applet on
+     * `widget`. It is generally enough to call this function with `applet` as
+     * `widget`.
+     * @param widget a #GtkWidget.
+     */
+    set_background_widget(widget: Gtk.Widget): void
+    /**
+     * Sets the #PanelAppletFlags of `applet`. Most of the time, at least
+     * %PANEL_APPLET_EXPAND_MINOR should be used.
+     * @param flags #PanelAppletFlags to use for @applet.
+     */
+    set_flags(flags: AppletFlags): void
+    /**
+     * Give hints to the panel about sizes `applet` is comfortable with. This is
+     * generally useful for applets that can take a lot of space, in case the panel
+     * gets full and needs to restrict the size of some applets.
+     * 
+     * `size_hints` should have an even number of sizes. It is an array of (max,
+     * min) pairs where min(i) > max(i + 1).
+     * 
+     * `base_size` will be added to all sizes in `size_hints,` and is therefore a way
+     * to guarantee a minimum size to `applet`.
+     * 
+     * The panel will try to allocate a size that is acceptable to `applet,` i.e. in
+     * one of the (`base_size` + max, `base_size` + min) ranges.
+     * 
+     * %PANEL_APPLET_EXPAND_MAJOR must be set for `applet` to use size hints.
+     * @param size_hints array of sizes.
+     * @param n_elements length of @size_hints.
+     * @param base_size base size of the applet.
+     */
+    set_size_hints(size_hints: number, n_elements: number, base_size: number): void
+    /**
+     * Sets up the context menu of `applet`. `xml` is a #GtkUIManager UI definition,
+     * describing how to display the menu items. `action_group` contains the
+     * various #GtkAction that are referenced in `xml`.
+     * 
+     * See also the <link linkend="getting-started.context-menu">Context
+     * Menu</link> section.
+     * @param xml a menu XML string.
+     * @param action_group a #GtkActionGroup.
+     */
+    setup_menu(xml: string, action_group: Gtk.ActionGroup): void
+    /**
+     * Sets up the context menu of `applet`. `filename` is the path to a menu XML
+     * file, containing a #GtkUIManager UI definition that describes how to display
+     * the menu items. `action_group` contains the various #GtkAction that
+     * are referenced in `xml`.
+     * 
+     * See also the <link linkend="getting-started.context-menu">Context
+     * Menu</link> section.
+     * @param filename path to a menu XML file.
+     * @param action_group a #GtkActionGroup.
+     */
+    setup_menu_from_file(filename: string, action_group: Gtk.ActionGroup): void
+    /**
+     * Sets up the context menu of `applet`. `filename` is a resource path to a menu
+     * XML file, containing a #GtkUIManager UI definition that describes how to
+     * display the menu items. `action_group` contains the various #GtkAction that
+     * are referenced in `xml`.
+     * 
+     * See also the <link linkend="getting-started.context-menu">Context
+     * Menu</link> section.
+     * @param resource_path a resource path
+     * @param action_group a #GtkActionGroup.
+     */
+    setup_menu_from_resource(resource_path: string, action_group: Gtk.ActionGroup): void
+
+// Inherited methods
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+type AppletClass = typeof Applet
+abstract class AppletPrivate {
+
+    // Constructors of PanelApplet.AppletPrivate
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default PanelApplet;

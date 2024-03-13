@@ -5,8 +5,7 @@ declare module 'gi://GstRtp?version=1.0' {
 }
 
 declare module 'gi://GstRtp' {
-    import GstRtp10 from '@girs/gstrtp-1.0';
-    export default GstRtp10;
+    export * from 'gi://GstRtp?version=1.0';
 }
 
 

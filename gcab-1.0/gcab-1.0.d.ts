@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,372 +17,405 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace GCab {
+
+/**
+ * Compression used by the #GCabFolder.
+ */
+enum Compression {
     /**
-     * Compression used by the #GCabFolder.
+     * No compression.
      */
-    enum Compression {
-        /**
-         * No compression.
-         */
-        NONE,
-        /**
-         * MSZIP compression.
-         */
-        MSZIP,
-        /**
-         * QUANTUM compression (unsupported).
-         */
-        QUANTUM,
-        /**
-         * LZX compression (only decompression supported).
-         */
-        LZX,
-        /**
-         * compression value mask.
-         */
-        MASK,
-    }
+    NONE,
     /**
-     * The various errors triggered by the GCab functions.
+     * MSZIP compression.
      */
-    class Error extends GLib.Error {
-        // Own fields of GCab-1.0.Error
-
-        /**
-         * The given file is not of Cabinet format.
-         */
-        FORMAT: number;
-        /**
-         * General function failure.
-         */
-        FAILED: number;
-        /**
-         * Action or format is not supported
-         */
-        NOT_SUPPORTED: number;
-        /**
-         * Data stream was invalid
-         */
-        INVALID_DATA: number;
-
-        // Constructors of GCab-1.0.Error
-
-        constructor(options: { message: string; code: number });
-    }
-
+    MSZIP,
     /**
-     * Attributes associated with the #GCabFile.
+     * QUANTUM compression (unsupported).
      */
-    enum FileAttribute {
-        /**
-         * file is read-only
-         */
-        RDONLY,
-        /**
-         * file is hidden
-         */
-        HIDDEN,
-        /**
-         * file is a system file
-         */
-        SYSTEM,
-        /**
-         * file modified since last backup
-         */
-        ARCH,
-        /**
-         * run after extraction
-         */
-        EXEC,
-        /**
-         * name contains UTF
-         */
-        NAME_IS_UTF,
-    }
-    function error_quark(): GLib.Quark;
-    interface FileCallback {
-        (file: File): boolean;
-    }
-    module Cabinet {
-        // Constructor properties interface
-    }
-
+    QUANTUM,
     /**
-     * An opaque object holding a Cabinet file reference.
+     * LZX compression (only decompression supported).
      */
-    class Cabinet extends GObject.Object {
-        // Own properties of GCab-1.0.Cabinet
+    LZX,
+    /**
+     * compression value mask.
+     */
+    MASK,
+}
+/**
+ * The various errors triggered by the GCab functions.
+ */
+class Error extends GLib.Error {
 
-        reserved: Uint8Array;
-        signature: Uint8Array;
+    // Static fields of GCab.Error
 
-        // Constructors of GCab-1.0.Cabinet
+/**
+ * The given file is not of Cabinet format.
+ */
+static FORMAT: number
+/**
+ * General function failure.
+ */
+static FAILED: number
+/**
+ * Action or format is not supported
+ */
+static NOT_SUPPORTED: number
+/**
+ * Data stream was invalid
+ */
+static INVALID_DATA: number
 
-        static ['new'](): Cabinet;
+    // Constructors of GCab.Error
 
-        // Owm methods of GCab-1.0.Cabinet
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        /**
-         * Adds a compression kind to the allow-list. By default, GCab will use all decompression support
-         * compiled in at build time. Once this function has been called only specific compression kinds
-         * will be used in functions like gcab_cabinet_load().
-         * @param compression a #GCabCompression kind, e.g. %GCAB_COMPRESSION_MSZIP
-         */
-        add_allowed_compression(compression: Compression): void;
-        /**
-         * Add `folder` to `cabinet`.
-         * @param folder a #GCabFolder
-         * @returns %TRUE on success.
-         */
-        add_folder(folder: Folder): boolean;
-        /**
-         * Extract files to given path.
-         *
-         * If `path` is NULL then the files are decompressed to memory blobs stored on
-         * each #GCabFile.
-         * @param path the path to extract files
-         * @param file_callback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
-         * @param progress_callback a progress callback
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on success.
-         */
-        extract(
-            path?: Gio.File | null,
-            file_callback?: FileCallback | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * Extract files to given path.
-         * @param path the path to extract files
-         * @param file_callback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on success.
-         */
-        extract_simple(
-            path: Gio.File,
-            file_callback?: FileCallback | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * Get the Cabinet folders within the `cabinet`.
-         * Note that Cabinet folders are not like filesystem path, they are
-         * group of files sharing some layout parameters.
-         * @returns an array of #GCabFolder
-         */
-        get_folders(): Folder[];
-        /**
-         * Lookup the cabinet authenticode signature if any.
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns the array containing the PKCS#7 signed data or %NULL on error.
-         */
-        get_signature(cancellable?: Gio.Cancellable | null): Uint8Array;
-        /**
-         * Get the size of the compressed cabinet file.
-         * @returns size in bytes
-         */
-        get_size(): number;
-        /**
-         * Load a cabinet archive.
-         * @param stream a #GInputStream
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on success
-         */
-        load(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
-         * @param stream a #GOutputStream also #GSeekable
-         * @param file_callback report current file being saved
-         * @param progress_callback report saving progress
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on success.
-         */
-        write(
-            stream: Gio.OutputStream,
-            file_callback?: FileCallback | null,
-            progress_callback?: Gio.FileProgressCallback | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
-         * @param stream a #GOutputStream also #GSeekable
-         * @param file_callback report current file being saved
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on success.
-         */
-        write_simple(
-            stream: Gio.OutputStream,
-            file_callback?: FileCallback | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+}
+
+/**
+ * Attributes associated with the #GCabFile.
+ */
+enum FileAttribute {
+    /**
+     * file is read-only
+     */
+    RDONLY,
+    /**
+     * file is hidden
+     */
+    HIDDEN,
+    /**
+     * file is a system file
+     */
+    SYSTEM,
+    /**
+     * file modified since last backup
+     */
+    ARCH,
+    /**
+     * run after extraction
+     */
+    EXEC,
+    /**
+     * name contains UTF
+     */
+    NAME_IS_UTF,
+}
+function error_quark(): GLib.Quark
+interface FileCallback {
+    (file: File): boolean
+}
+module Cabinet {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+reserved: Uint8Array;
+    signature: Uint8Array;
     }
 
-    module File {
-        // Constructor properties interface
-    }
+}
+
+/**
+ * An opaque object holding a Cabinet file reference.
+ */
+class Cabinet extends GObject.Object {
+
+    // Own properties of GCab.Cabinet
+
+    get reserved(): Uint8Array;
+    set reserved(val: Uint8Array);
+    get signature(): Uint8Array;
+    set signature(val: Uint8Array);
+
+    // Constructors of GCab.Cabinet
+
+
+constructor(properties?: Partial<Cabinet.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Cabinet;
+
+    // Own methods of GCab.Cabinet
 
     /**
-     * An opaque object, referencing a file in a Cabinet.
+     * Adds a compression kind to the allow-list. By default, GCab will use all decompression support
+     * compiled in at build time. Once this function has been called only specific compression kinds
+     * will be used in functions like gcab_cabinet_load().
+     * @param compression a #GCabCompression kind, e.g. %GCAB_COMPRESSION_MSZIP
      */
-    class File extends GObject.Object {
-        // Own properties of GCab-1.0.File
+    add_allowed_compression(compression: Compression): void
+    /**
+     * Add `folder` to `cabinet`.
+     * @param folder a #GCabFolder
+     * @returns %TRUE on success.
+     */
+    add_folder(folder: Folder): boolean
+    /**
+     * Extract files to given path.
+     * 
+     * If `path` is NULL then the files are decompressed to memory blobs stored on
+     * each #GCabFile.
+     * @param path the path to extract files
+     * @param file_callback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
+     * @param progress_callback a progress callback
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on success.
+     */
+    extract(path?: (Gio.File | null), file_callback?: (FileCallback | null), progress_callback?: (Gio.FileProgressCallback | null), cancellable?: (Gio.Cancellable | null)): boolean
+    /**
+     * Extract files to given path.
+     * @param path the path to extract files
+     * @param file_callback an optional #GCabFile callback,     return %FALSE to filter out or skip files.
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on success.
+     */
+    extract_simple(path: Gio.File, file_callback?: (FileCallback | null), cancellable?: (Gio.Cancellable | null)): boolean
+    /**
+     * Get the Cabinet folders within the `cabinet`.
+     * Note that Cabinet folders are not like filesystem path, they are
+     * group of files sharing some layout parameters.
+     * @returns an array of #GCabFolder
+     */
+    get_folders(): Folder[]
+    /**
+     * Lookup the cabinet authenticode signature if any.
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns the array containing the PKCS#7 signed data or %NULL on error.
+     */
+    get_signature(cancellable?: (Gio.Cancellable | null)): Uint8Array
+    /**
+     * Get the size of the compressed cabinet file.
+     * @returns size in bytes
+     */
+    get_size(): number
+    /**
+     * Load a cabinet archive.
+     * @param stream a #GInputStream
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on success
+     */
+    load(stream: Gio.InputStream, cancellable?: (Gio.Cancellable | null)): boolean
+    /**
+     * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
+     * @param stream a #GOutputStream also #GSeekable
+     * @param file_callback report current file being saved
+     * @param progress_callback report saving progress
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on success.
+     */
+    write(stream: Gio.OutputStream, file_callback?: (FileCallback | null), progress_callback?: (Gio.FileProgressCallback | null), cancellable?: (Gio.Cancellable | null)): boolean
+    /**
+     * Save `cabinet` to the output stream `out`. `out` must be a #GSeekable.
+     * @param stream a #GOutputStream also #GSeekable
+     * @param file_callback report current file being saved
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on success.
+     */
+    write_simple(stream: Gio.OutputStream, file_callback?: (FileCallback | null), cancellable?: (Gio.Cancellable | null)): boolean
+}
 
-        bytes: GLib.Bytes;
-        file: Gio.File;
-        name: string;
+module File {
 
-        // Constructors of GCab-1.0.File
+    // Constructor properties interface
 
-        static new_with_bytes(name: string, bytes: GLib.Bytes): File;
-
-        static new_with_file(name: string, file: Gio.File): File;
-
-        // Owm methods of GCab-1.0.File
-
-        /**
-         * Get the file attributes.
-         * @returns the cabinet file attributes
-         */
-        get_attributes(): number;
-        /**
-         * Get the #GFile associated with `file`. This will only be non-%NULL if the
-         * #GCabFile has been created using gcab_file_new_with_bytes().
-         * @returns the associated #GBytes or %NULL
-         */
-        get_bytes(): GLib.Bytes;
-        /**
-         * Get the file date, in `result`.
-         * @param result a #GTimeVal to return date
-         * @returns %TRUE if @tv was set
-         */
-        get_date(result: GLib.TimeVal): boolean;
-        /**
-         * Gets the file date and returns it as a #GDateTime..
-         * @returns file date, or NULL if unknown.
-         */
-        get_date_time(): GLib.DateTime;
-        /**
-         * Get the file name to use for extraction, or %NULL.
-         * @returns a file name
-         */
-        get_extract_name(): string | null;
-        /**
-         * If the cabinet is being created, get the #GFile associated with
-         * `file`. This must be an exisiting file that can be read, in order to
-         * be added to the archive during cabinet creation.
-         *
-         * If `file` is from an existing cabinet, the fuction will return
-         * %NULL.
-         * @returns the associated #GFile or %NULL
-         */
-        get_file(): Gio.File;
-        /**
-         * Get the file name within the cabinet.
-         * @returns the cabinet file name
-         */
-        get_name(): string;
-        /**
-         * Get the file size.
-         * @returns the cabinet file size
-         */
-        get_size(): number;
-        /**
-         * Set the file attributes.
-         * @param attr the attributes, e.g. %GCAB_FILE_ATTRIBUTE_RDONLY
-         */
-        set_attributes(attr: number): void;
-        /**
-         * Replace the #GBytes associated with `self`.
-         * This is most usefule when the #GCabFile has been created using
-         * gcab_file_new_with_bytes() and the data needs to be modified.
-         * @param bytes a #GBytes
-         */
-        set_bytes(bytes: GLib.Bytes): void;
-        /**
-         * Sets the file modification date, instead of the value provided by the GFile.
-         * @param tv a #GTimeVal
-         */
-        set_date(tv: GLib.TimeVal): void;
-        /**
-         * Sets the file modification date (instead of the date provided by the GFile)
-         * @param dt a #GDateTime
-         */
-        set_date_time(dt: GLib.DateTime): void;
-        /**
-         * Sets the file name to use for extraction, instead of the name
-         * provided by the Cabinet.
-         * @param name a file name or %NULL
-         */
-        set_extract_name(name?: string | null): void;
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+bytes: GLib.Bytes;
+    file: Gio.File;
+    name: string;
     }
 
-    module Folder {
-        // Constructor properties interface
+}
+
+/**
+ * An opaque object, referencing a file in a Cabinet.
+ */
+class File extends GObject.Object {
+
+    // Own properties of GCab.File
+
+    get bytes(): GLib.Bytes;
+    set bytes(val: GLib.Bytes);
+    get file(): Gio.File;
+    set file(val: Gio.File);
+    get name(): string;
+    set name(val: string);
+
+    // Constructors of GCab.File
+
+
+constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static new_with_bytes(name: string, bytes: GLib.Bytes): File;
+
+static new_with_file(name: string, file: Gio.File): File;
+
+    // Own methods of GCab.File
+
+    /**
+     * Get the file attributes.
+     * @returns the cabinet file attributes
+     */
+    get_attributes(): number
+    /**
+     * Get the #GFile associated with `file`. This will only be non-%NULL if the
+     * #GCabFile has been created using gcab_file_new_with_bytes().
+     * @returns the associated #GBytes or %NULL
+     */
+    get_bytes(): GLib.Bytes
+    /**
+     * Get the file date, in `result`.
+     * @param result a #GTimeVal to return date
+     * @returns %TRUE if @tv was set
+     */
+    get_date(result: GLib.TimeVal): boolean
+    /**
+     * Gets the file date and returns it as a #GDateTime..
+     * @returns file date, or NULL if unknown.
+     */
+    get_date_time(): GLib.DateTime
+    /**
+     * Get the file name to use for extraction, or %NULL.
+     * @returns a file name
+     */
+    get_extract_name(): (string | null)
+    /**
+     * If the cabinet is being created, get the #GFile associated with
+     * `file`. This must be an exisiting file that can be read, in order to
+     * be added to the archive during cabinet creation.
+     * 
+     * If `file` is from an existing cabinet, the fuction will return
+     * %NULL.
+     * @returns the associated #GFile or %NULL
+     */
+    get_file(): Gio.File
+    /**
+     * Get the file name within the cabinet.
+     * @returns the cabinet file name
+     */
+    get_name(): string
+    /**
+     * Get the file size.
+     * @returns the cabinet file size
+     */
+    get_size(): number
+    /**
+     * Set the file attributes.
+     * @param attr the attributes, e.g. %GCAB_FILE_ATTRIBUTE_RDONLY
+     */
+    set_attributes(attr: number): void
+    /**
+     * Replace the #GBytes associated with `self`.
+     * This is most usefule when the #GCabFile has been created using
+     * gcab_file_new_with_bytes() and the data needs to be modified.
+     * @param bytes a #GBytes
+     */
+    set_bytes(bytes: GLib.Bytes): void
+    /**
+     * Sets the file modification date, instead of the value provided by the GFile.
+     * @param tv a #GTimeVal
+     */
+    set_date(tv: GLib.TimeVal): void
+    /**
+     * Sets the file modification date (instead of the date provided by the GFile)
+     * @param dt a #GDateTime
+     */
+    set_date_time(dt: GLib.DateTime): void
+    /**
+     * Sets the file name to use for extraction, instead of the name
+     * provided by the Cabinet.
+     * @param name a file name or %NULL
+     */
+    set_extract_name(name?: (string | null)): void
+}
+
+module Folder {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+compression: Compression;
+    comptype: number;
+    reserved: Uint8Array;
     }
 
-    /**
-     * An opaque object, referencing a folder in a Cabinet.
-     */
-    class Folder extends GObject.Object {
-        // Own properties of GCab-1.0.Folder
+}
 
-        readonly compression: Compression;
-        comptype: number;
-        reserved: Uint8Array;
+/**
+ * An opaque object, referencing a folder in a Cabinet.
+ */
+class Folder extends GObject.Object {
 
-        // Constructors of GCab-1.0.Folder
+    // Own properties of GCab.Folder
 
-        static ['new'](comptype: number): Folder;
+    get compression(): Compression;
+    get comptype(): number;
+    get reserved(): Uint8Array;
+    set reserved(val: Uint8Array);
 
-        // Owm methods of GCab-1.0.Folder
+    // Constructors of GCab.Folder
 
-        /**
-         * Add `file` to the #GCabFolder.
-         * @param cabfile file to be added
-         * @param recurse whether to recurse through subdirectories
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @returns %TRUE on succes
-         */
-        add_file(cabfile: File, recurse: boolean, cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Returns the compression used in this folder.
-         * @returns a #GCabCompression, e.g. %GCAB_COMPRESSION_MSZIP
-         */
-        get_comptype(): number;
-        /**
-         * Gets a specific #GCabFile files contained in the `cabfolder`.
-         * @param name a file name
-         * @returns A #GCabFile, or %NULL if not found
-         */
-        get_file_by_name(name: string): File;
-        /**
-         * Get the list of #GCabFile files contained in the `cabfolder`.
-         * @returns list of files
-         */
-        get_files(): File[];
-        /**
-         * Get the number of files in this `folder`.
-         * @returns a #guint
-         */
-        get_nfiles(): number;
-    }
 
-    class CabinetClass {}
+constructor(properties?: Partial<Folder.ConstructorProps>, ...args: any[]);
 
-    class FileClass {}
+_init(...args: any[]): void;
 
-    class FolderClass {}
+
+static ["new"](comptype: number): Folder;
+
+    // Own methods of GCab.Folder
 
     /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     * Add `file` to the #GCabFolder.
+     * @param cabfile file to be added
+     * @param recurse whether to recurse through subdirectories
+     * @param cancellable optional #GCancellable object,     %NULL to ignore
+     * @returns %TRUE on succes
      */
-    const __name__: string;
+    add_file(cabfile: File, recurse: boolean, cancellable?: (Gio.Cancellable | null)): boolean
     /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     * Returns the compression used in this folder.
+     * @returns a #GCabCompression, e.g. %GCAB_COMPRESSION_MSZIP
      */
-    const __version__: string;
+    get_comptype(): number
+    /**
+     * Gets a specific #GCabFile files contained in the `cabfolder`.
+     * @param name a file name
+     * @returns A #GCabFile, or %NULL if not found
+     */
+    get_file_by_name(name: string): File
+    /**
+     * Get the list of #GCabFile files contained in the `cabfolder`.
+     * @returns list of files
+     */
+    get_files(): File[]
+    /**
+     * Get the number of files in this `folder`.
+     * @returns a #guint
+     */
+    get_nfiles(): number
+}
+
+type CabinetClass = typeof Cabinet
+type FileClass = typeof File
+type FolderClass = typeof Folder
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default GCab;

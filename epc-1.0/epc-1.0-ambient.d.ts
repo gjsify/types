@@ -5,8 +5,7 @@ declare module 'gi://Epc?version=1.0' {
 }
 
 declare module 'gi://Epc' {
-    import Epc10 from '@girs/epc-1.0';
-    export default Epc10;
+    export * from 'gi://Epc?version=1.0';
 }
 
 

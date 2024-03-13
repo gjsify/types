@@ -5,8 +5,7 @@ declare module 'gi://Dazzle?version=1.0' {
 }
 
 declare module 'gi://Dazzle' {
-    import Dazzle10 from '@girs/dazzle-1.0';
-    export default Dazzle10;
+    export * from 'gi://Dazzle?version=1.0';
 }
 
 

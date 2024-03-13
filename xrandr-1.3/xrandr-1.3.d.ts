@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,30 +15,73 @@ import './xrandr-1.3-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xrandr {
-    class ScreenSize {}
 
-    class ScreenChangeNotifyEvent {}
+class ScreenSize {
 
-    class NotifyEvent {}
+    // Constructors of xrandr.ScreenSize
 
-    class ScreenResources {}
+_init(...args: any[]): void;
 
-    class OutputChangeNotifyEvent {}
+}
 
-    class CrtcChangeNotifyEvent {}
+class ScreenChangeNotifyEvent {
 
-    class OutputPropertyNotifyEvent {}
+    // Constructors of xrandr.ScreenChangeNotifyEvent
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+_init(...args: any[]): void;
+
+}
+
+class NotifyEvent {
+
+    // Constructors of xrandr.NotifyEvent
+
+_init(...args: any[]): void;
+
+}
+
+class ScreenResources {
+
+    // Constructors of xrandr.ScreenResources
+
+_init(...args: any[]): void;
+
+}
+
+class OutputChangeNotifyEvent {
+
+    // Constructors of xrandr.OutputChangeNotifyEvent
+
+_init(...args: any[]): void;
+
+}
+
+class CrtcChangeNotifyEvent {
+
+    // Constructors of xrandr.CrtcChangeNotifyEvent
+
+_init(...args: any[]): void;
+
+}
+
+class OutputPropertyNotifyEvent {
+
+    // Constructors of xrandr.OutputPropertyNotifyEvent
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default xrandr;

@@ -5,8 +5,7 @@ declare module 'gi://GstCheck?version=1.0' {
 }
 
 declare module 'gi://GstCheck' {
-    import GstCheck10 from '@girs/gstcheck-1.0';
-    export default GstCheck10;
+    export * from 'gi://GstCheck?version=1.0';
 }
 
 

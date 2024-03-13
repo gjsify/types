@@ -5,8 +5,7 @@ declare module 'gi://Retro?version=2' {
 }
 
 declare module 'gi://Retro' {
-    import Retro2 from '@girs/retro-2';
-    export default Retro2;
+    export * from 'gi://Retro?version=2';
 }
 
 

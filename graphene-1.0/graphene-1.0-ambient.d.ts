@@ -5,8 +5,7 @@ declare module 'gi://Graphene?version=1.0' {
 }
 
 declare module 'gi://Graphene' {
-    import Graphene10 from '@girs/graphene-1.0';
-    export default Graphene10;
+    export * from 'gi://Graphene?version=1.0';
 }
 
 

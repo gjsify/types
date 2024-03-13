@@ -5,8 +5,7 @@ declare module 'gi://GObject?version=2.0' {
 }
 
 declare module 'gi://GObject' {
-    import GObject20 from '@girs/gobject-2.0';
-    export default GObject20;
+    export * from 'gi://GObject?version=2.0';
 }
 
 

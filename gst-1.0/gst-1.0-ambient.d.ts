@@ -5,8 +5,7 @@ declare module 'gi://Gst?version=1.0' {
 }
 
 declare module 'gi://Gst' {
-    import Gst10 from '@girs/gst-1.0';
-    export default Gst10;
+    export * from 'gi://Gst?version=1.0';
 }
 
 

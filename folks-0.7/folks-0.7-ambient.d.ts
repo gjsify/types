@@ -5,8 +5,7 @@ declare module 'gi://Folks?version=0.7' {
 }
 
 declare module 'gi://Folks' {
-    import Folks07 from '@girs/folks-0.7';
-    export default Folks07;
+    export * from 'gi://Folks?version=0.7';
 }
 
 

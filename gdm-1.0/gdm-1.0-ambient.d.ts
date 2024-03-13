@@ -5,8 +5,7 @@ declare module 'gi://Gdm?version=1.0' {
 }
 
 declare module 'gi://Gdm' {
-    import Gdm10 from '@girs/gdm-1.0';
-    export default Gdm10;
+    export * from 'gi://Gdm?version=1.0';
 }
 
 

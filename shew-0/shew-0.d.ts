@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,59 +28,88 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Shew {
-    module ExternalWindow {
-        // Constructor properties interface
+
+module ExternalWindow {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+display: Gdk.Display;
     }
 
-    class ExternalWindow extends GObject.Object {
-        // Own properties of Shew-0.ExternalWindow
+}
 
-        display: Gdk.Display;
+class ExternalWindow extends GObject.Object {
 
-        // Constructors of Shew-0.ExternalWindow
+    // Own properties of Shew.ExternalWindow
 
-        static new_from_handle(handle_str: string): ExternalWindow;
+    get display(): Gdk.Display;
 
-        // Owm methods of Shew-0.ExternalWindow
+    // Constructors of Shew.ExternalWindow
 
-        get_display(): Gdk.Display;
-        set_parent_of(child_surface: Gdk.Surface): void;
+
+constructor(properties?: Partial<ExternalWindow.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static new_from_handle(handle_str: string): ExternalWindow;
+
+    // Own virtual methods of Shew.ExternalWindow
+
+    vfunc_set_parent_of(child_surface: Gdk.Surface): void
+
+    // Own methods of Shew.ExternalWindow
+
+    get_display(): Gdk.Display
+    set_parent_of(child_surface: Gdk.Surface): void
+}
+
+module WindowExporter {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+window: Gtk.Window;
     }
 
-    module WindowExporter {
-        // Constructor properties interface
-    }
+}
 
-    class WindowExporter extends GObject.Object {
-        // Own properties of Shew-0.WindowExporter
+class WindowExporter extends GObject.Object {
 
-        window: Gtk.Window;
+    // Own properties of Shew.WindowExporter
 
-        // Constructors of Shew-0.WindowExporter
+    get window(): Gtk.Window;
 
-        static ['new'](window: Gtk.Window): WindowExporter;
+    // Constructors of Shew.WindowExporter
 
-        // Owm methods of Shew-0.WindowExporter
 
-        ['export'](callback?: Gio.AsyncReadyCallback<this> | null): void;
-        export_finish(result: Gio.AsyncResult): string;
-        unexport(handle: string): void;
-    }
+constructor(properties?: Partial<WindowExporter.ConstructorProps>, ...args: any[]);
 
-    class ExternalWindowClass {}
+_init(...args: any[]): void;
 
-    class WindowExporterClass {}
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+static ["new"](window: Gtk.Window): WindowExporter;
+
+    // Own methods of Shew.WindowExporter
+
+    ["export"](callback?: (Gio.AsyncReadyCallback<this> | null)): void
+    export_finish(result: Gio.AsyncResult): string
+    unexport(handle: string): void
+}
+
+type ExternalWindowClass = typeof ExternalWindow
+type WindowExporterClass = typeof WindowExporter
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Shew;

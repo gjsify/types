@@ -5,8 +5,7 @@ declare module 'gi://LibvirtGObject?version=1.0' {
 }
 
 declare module 'gi://LibvirtGObject' {
-    import LibvirtGObject10 from '@girs/libvirtgobject-1.0';
-    export default LibvirtGObject10;
+    export * from 'gi://LibvirtGObject?version=1.0';
 }
 
 

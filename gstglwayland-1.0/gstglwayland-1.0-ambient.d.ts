@@ -5,8 +5,7 @@ declare module 'gi://GstGLWayland?version=1.0' {
 }
 
 declare module 'gi://GstGLWayland' {
-    import GstGLWayland10 from '@girs/gstglwayland-1.0';
-    export default GstGLWayland10;
+    export * from 'gi://GstGLWayland?version=1.0';
 }
 
 

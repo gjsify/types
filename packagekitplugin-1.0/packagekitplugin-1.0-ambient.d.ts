@@ -5,8 +5,7 @@ declare module 'gi://PackageKitPlugin?version=1.0' {
 }
 
 declare module 'gi://PackageKitPlugin' {
-    import PackageKitPlugin10 from '@girs/packagekitplugin-1.0';
-    export default PackageKitPlugin10;
+    export * from 'gi://PackageKitPlugin?version=1.0';
 }
 
 

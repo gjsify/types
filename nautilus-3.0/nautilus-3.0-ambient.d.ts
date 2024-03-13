@@ -5,8 +5,7 @@ declare module 'gi://Nautilus?version=3.0' {
 }
 
 declare module 'gi://Nautilus' {
-    import Nautilus30 from '@girs/nautilus-3.0';
-    export default Nautilus30;
+    export * from 'gi://Nautilus?version=3.0';
 }
 
 

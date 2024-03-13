@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,33 +15,82 @@ import './libxml2-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace libxml2 {
-    function dummy(): void;
-    class Node {}
 
-    class NodePtr {}
+function dummy(): void
+class Node {
 
-    class Doc {}
+    // Constructors of libxml2.Node
 
-    class DocPtr {}
+_init(...args: any[]): void;
 
-    class NsPtr {}
+}
 
-    class Char {}
+class NodePtr {
 
-    class TextWriter {}
+    // Constructors of libxml2.NodePtr
 
-    class TextReader {}
+_init(...args: any[]): void;
 
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+}
+
+class Doc {
+
+    // Constructors of libxml2.Doc
+
+_init(...args: any[]): void;
+
+}
+
+class DocPtr {
+
+    // Constructors of libxml2.DocPtr
+
+_init(...args: any[]): void;
+
+}
+
+class NsPtr {
+
+    // Constructors of libxml2.NsPtr
+
+_init(...args: any[]): void;
+
+}
+
+class Char {
+
+    // Constructors of libxml2.Char
+
+_init(...args: any[]): void;
+
+}
+
+class TextWriter {
+
+    // Constructors of libxml2.TextWriter
+
+_init(...args: any[]): void;
+
+}
+
+class TextReader {
+
+    // Constructors of libxml2.TextReader
+
+_init(...args: any[]): void;
+
+}
+
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default libxml2;

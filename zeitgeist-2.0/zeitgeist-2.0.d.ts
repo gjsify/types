@@ -1,3 +1,4 @@
+
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,1108 +17,1971 @@ import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
 
 export namespace Zeitgeist {
-    enum ResultType {
-        MOST_RECENT_EVENTS,
-        LEAST_RECENT_EVENTS,
-        MOST_RECENT_SUBJECTS,
-        LEAST_RECENT_SUBJECTS,
-        MOST_POPULAR_SUBJECTS,
-        LEAST_POPULAR_SUBJECTS,
-        MOST_POPULAR_ACTOR,
-        LEAST_POPULAR_ACTOR,
-        MOST_RECENT_ACTOR,
-        LEAST_RECENT_ACTOR,
-        MOST_RECENT_ORIGIN,
-        LEAST_RECENT_ORIGIN,
-        MOST_POPULAR_ORIGIN,
-        LEAST_POPULAR_ORIGIN,
-        OLDEST_ACTOR,
-        MOST_RECENT_SUBJECT_INTERPRETATION,
-        LEAST_RECENT_SUBJECT_INTERPRETATION,
-        MOST_POPULAR_SUBJECT_INTERPRETATION,
-        LEAST_POPULAR_SUBJECT_INTERPRETATION,
-        MOST_RECENT_MIMETYPE,
-        LEAST_RECENT_MIMETYPE,
-        MOST_POPULAR_MIMETYPE,
-        LEAST_POPULAR_MIMETYPE,
-        MOST_RECENT_CURRENT_URI,
-        LEAST_RECENT_CURRENT_URI,
-        MOST_POPULAR_CURRENT_URI,
-        LEAST_POPULAR_CURRENT_URI,
-        MOST_RECENT_EVENT_ORIGIN,
-        LEAST_RECENT_EVENT_ORIGIN,
-        MOST_POPULAR_EVENT_ORIGIN,
-        LEAST_POPULAR_EVENT_ORIGIN,
-        MOST_RECENT_CURRENT_ORIGIN,
-        LEAST_RECENT_CURRENT_ORIGIN,
-        MOST_POPULAR_CURRENT_ORIGIN,
-        LEAST_POPULAR_CURRENT_ORIGIN,
-        RELEVANCY,
-    }
-    enum RelevantResultType {
-        RECENT,
-        RELATED,
-    }
-    enum StorageState {
-        NOT_AVAILABLE,
-        AVAILABLE,
-        ANY,
-    }
-    class EngineError extends GLib.Error {
-        // Own fields of Zeitgeist-2.0.EngineError
 
-        BACKUP_FAILED: number;
-        DATABASE_BUSY: number;
-        DATABASE_CANTOPEN: number;
-        DATABASE_CORRUPT: number;
-        DATABASE_ERROR: number;
-        DATABASE_RETIRE_FAILED: number;
-        EXISTING_INSTANCE: number;
-        INVALID_ARGUMENT: number;
-        INVALID_EVENT: number;
-        INVALID_KEY: number;
+enum ResultType {
+    MOST_RECENT_EVENTS,
+    LEAST_RECENT_EVENTS,
+    MOST_RECENT_SUBJECTS,
+    LEAST_RECENT_SUBJECTS,
+    MOST_POPULAR_SUBJECTS,
+    LEAST_POPULAR_SUBJECTS,
+    MOST_POPULAR_ACTOR,
+    LEAST_POPULAR_ACTOR,
+    MOST_RECENT_ACTOR,
+    LEAST_RECENT_ACTOR,
+    MOST_RECENT_ORIGIN,
+    LEAST_RECENT_ORIGIN,
+    MOST_POPULAR_ORIGIN,
+    LEAST_POPULAR_ORIGIN,
+    OLDEST_ACTOR,
+    MOST_RECENT_SUBJECT_INTERPRETATION,
+    LEAST_RECENT_SUBJECT_INTERPRETATION,
+    MOST_POPULAR_SUBJECT_INTERPRETATION,
+    LEAST_POPULAR_SUBJECT_INTERPRETATION,
+    MOST_RECENT_MIMETYPE,
+    LEAST_RECENT_MIMETYPE,
+    MOST_POPULAR_MIMETYPE,
+    LEAST_POPULAR_MIMETYPE,
+    MOST_RECENT_CURRENT_URI,
+    LEAST_RECENT_CURRENT_URI,
+    MOST_POPULAR_CURRENT_URI,
+    LEAST_POPULAR_CURRENT_URI,
+    MOST_RECENT_EVENT_ORIGIN,
+    LEAST_RECENT_EVENT_ORIGIN,
+    MOST_POPULAR_EVENT_ORIGIN,
+    LEAST_POPULAR_EVENT_ORIGIN,
+    MOST_RECENT_CURRENT_ORIGIN,
+    LEAST_RECENT_CURRENT_ORIGIN,
+    MOST_POPULAR_CURRENT_ORIGIN,
+    LEAST_POPULAR_CURRENT_ORIGIN,
+    RELEVANCY,
+}
+enum RelevantResultType {
+    RECENT,
+    RELATED,
+}
+enum StorageState {
+    NOT_AVAILABLE,
+    AVAILABLE,
+    ANY,
+}
+class EngineError extends GLib.Error {
 
-        // Constructors of Zeitgeist-2.0.EngineError
+    // Static fields of Zeitgeist.EngineError
 
-        constructor(options: { message: string; code: number });
-    }
+static BACKUP_FAILED: number
+static DATABASE_BUSY: number
+static DATABASE_CANTOPEN: number
+static DATABASE_CORRUPT: number
+static DATABASE_ERROR: number
+static DATABASE_RETIRE_FAILED: number
+static EXISTING_INSTANCE: number
+static INVALID_ARGUMENT: number
+static INVALID_EVENT: number
+static INVALID_KEY: number
 
-    class DataModelError extends GLib.Error {
-        // Own fields of Zeitgeist-2.0.DataModelError
+    // Constructors of Zeitgeist.EngineError
 
-        INVALID_SIGNATURE: number;
-        NULL_EVENT: number;
-        TOO_MANY_RESULTS: number;
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        // Constructors of Zeitgeist-2.0.DataModelError
+}
 
-        constructor(options: { message: string; code: number });
-    }
+class DataModelError extends GLib.Error {
 
-    const DataSourcesSIG_DATASOURCES: string;
-    const TimestampSECOND: number;
-    const TimestampMINUTE: number;
-    const TimestampHOUR: number;
-    const TimestampDAY: number;
-    const TimestampWEEK: number;
-    const TimestampYEAR: number;
-    const NCALALARM: string;
-    const NCALATTACHMENT: string;
-    const NCALCALENDAR: string;
-    const NCALCALENDAR_DATA_OBJECT: string;
-    const NCALEVENT: string;
-    const NCALFREEBUSY: string;
-    const NCALJOURNAL: string;
-    const NCALTIMEZONE: string;
-    const NCALTODO: string;
-    const NCOCONTACT: string;
-    const NCOCONTACT_GROUP: string;
-    const NCOCONTACT_LIST: string;
-    const NCOCONTACT_LIST_DATA_OBJECT: string;
-    const NCOORGANIZATION_CONTACT: string;
-    const NCOPERSON_CONTACT: string;
-    const NFOAPPLICATION: string;
-    const NFOARCHIVE: string;
-    const NFOARCHIVE_ITEM: string;
-    const NFOATTACHMENT: string;
-    const NFOAUDIO: string;
-    const NFOBOOKMARK: string;
-    const NFOBOOKMARK_FOLDER: string;
-    const NFOCURSOR: string;
-    const NFODATA_CONTAINER: string;
-    const NFODELETED_RESOURCE: string;
-    const NFODOCUMENT: string;
-    const NFOEMBEDDED_FILE_DATA_OBJECT: string;
-    const NFOEXECUTABLE: string;
-    const NFOFILESYSTEM: string;
-    const NFOFILESYSTEM_IMAGE: string;
-    const NFOFILE_DATA_OBJECT: string;
-    const NFOFOLDER: string;
-    const NFOFONT: string;
-    const NFOHARD_DISK_PARTITION: string;
-    const NFOHTML_DOCUMENT: string;
-    const NFOICON: string;
-    const NFOIMAGE: string;
-    const NFOMEDIA: string;
-    const NFOMEDIA_LIST: string;
-    const NFOMEDIA_STREAM: string;
-    const NFOMIND_MAP: string;
-    const NFOOPERATING_SYSTEM: string;
-    const NFOPAGINATED_TEXT_DOCUMENT: string;
-    const NFOPLAIN_TEXT_DOCUMENT: string;
-    const NFOPRESENTATION: string;
-    const NFORASTER_IMAGE: string;
-    const NFOREMOTE_DATA_OBJECT: string;
-    const NFOREMOTE_PORT_ADDRESS: string;
-    const NFOSOFTWARE: string;
-    const NFOSOFTWARE_ITEM: string;
-    const NFOSOFTWARE_SERVICE: string;
-    const NFOSOURCE_CODE: string;
-    const NFOSPREADSHEET: string;
-    const NFOTEXT_DOCUMENT: string;
-    const NFOTRASH: string;
-    const NFOVECTOR_IMAGE: string;
-    const NFOVIDEO: string;
-    const NFOVISUAL: string;
-    const NFOWEBSITE: string;
-    const NFOWEB_DATA_OBJECT: string;
-    const NIEDATA_OBJECT: string;
-    const NIEINFORMATION_ELEMENT: string;
-    const NMMMOVIE: string;
-    const NMMMUSIC_ALBUM: string;
-    const NMMMUSIC_PIECE: string;
-    const NMMTVSERIES: string;
-    const NMMTVSHOW: string;
-    const NMOEMAIL: string;
-    const NMOIMMESSAGE: string;
-    const NMOMAILBOX: string;
-    const NMOMAILBOX_DATA_OBJECT: string;
-    const NMOMESSAGE: string;
-    const NMOMIME_ENTITY: string;
-    const ZGACCEPT_EVENT: string;
-    const ZGACCESS_EVENT: string;
-    const ZGAPPLICATION_ACTION: string;
-    const ZGCREATE_EVENT: string;
-    const ZGDELETE_EVENT: string;
-    const ZGDENY_EVENT: string;
-    const ZGEVENT_INTERPRETATION: string;
-    const ZGEVENT_MANIFESTATION: string;
-    const ZGEXPIRE_EVENT: string;
-    const ZGHEURISTIC_ACTIVITY: string;
-    const ZGLEAVE_EVENT: string;
-    const ZGMODIFY_EVENT: string;
-    const ZGMOVE_EVENT: string;
-    const ZGRECEIVE_EVENT: string;
-    const ZGSCHEDULED_ACTIVITY: string;
-    const ZGSEND_EVENT: string;
-    const ZGSYSTEM_NOTIFICATION: string;
-    const ZGUSER_ACTIVITY: string;
-    const ZGWORLD_ACTIVITY: string;
-    const UtilsENGINE_DBUS_NAME: string;
-    const UtilsENGINE_DBUS_PATH: string;
-    const UtilsSIG_EVENT: string;
-    const UtilsMAX_DBUS_RESULT_SIZE: number;
-    const UtilsCACHE_SIZE: number;
-    function data_sources_from_variant(sources_variant: GLib.Variant): DataSource[];
-    function data_sources_to_variant(sources: GLib.HashTable<string, DataSource>): GLib.Variant;
-    function events_from_variant(vevents: GLib.Variant): Event[];
-    function events_to_variant(events: Event[]): GLib.Variant;
-    function events_to_variant_with_limit(events: Event[], limit: number): GLib.Variant;
-    function timestamp_from_timeval(timeval: GLib.TimeVal): number;
-    function timestamp_to_timeval(timestamp: number): void;
-    function timestamp_from_now(): number;
-    function timestamp_from_iso8601(datetime: string): number;
-    function timestamp_to_iso8601(timestamp: number): string;
-    function timestamp_from_date(date: GLib.Date): number;
-    function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth, year: GLib.DateYear): number;
-    function timestamp_to_date(timestamp: number): void;
-    function timestamp_next_midnight(timestamp: number): number;
-    function timestamp_prev_midnight(timestamp: number): number;
-    function symbol_get_display_name(symbol_uri: string): string;
-    function symbol_get_description(symbol_uri: string): string;
-    function symbol_get_all_parents(symbol_uri: string): string[];
-    function symbol_get_all_children(symbol_uri: string): string[];
-    function symbol_get_children(symbol_uri: string): string[];
-    function symbol_get_parents(symbol_uri: string): string[];
-    function symbol_is_a(symbol_uri?: string | null, parent_uri?: string | null): boolean;
-    function utils_get_data_path(): string;
-    function utils_get_default_data_path(): string;
-    function utils_get_database_file_path(): string;
-    function utils_set_database_file_path(path: string): void;
-    function utils_get_database_file_backup_path(): string;
-    function utils_get_database_file_retire_name(): string;
-    function utils_get_local_extensions_path(): string;
-    function utils_using_in_memory_database(): boolean;
-    function utils_backup_database(): void;
-    function utils_parse_negation(val: string): boolean;
-    function utils_parse_noexpand(val: string): boolean;
-    function utils_parse_wildcard(val: string): boolean;
-    function utils_is_empty_string(s?: string | null): boolean;
-    function utils_log_may_read_directly(): boolean;
-    function result_type_is_sort_order_asc(result_type: ResultType): boolean;
-    function register_mimetype(mimetype: string, interpretation_uri: string): void;
-    function register_mimetype_regex(mimetype_regex: string, interpretation_uri: string): void;
-    function interpretation_for_mimetype(mimetype?: string | null): string | null;
-    function register_uri_scheme(uri_scheme: string, manifestation_type: string): void;
-    function manifestation_for_uri(uri: string): string | null;
-    module DataSourceRegistry {
-        // Signal callback interfaces
+    // Static fields of Zeitgeist.DataModelError
 
-        interface SourceDisconnected {
-            (data_source: DataSource): void;
-        }
+static INVALID_SIGNATURE: number
+static NULL_EVENT: number
+static TOO_MANY_RESULTS: number
 
-        interface SourceEnabled {
-            (unique_id: string, enabled: boolean): void;
-        }
+    // Constructors of Zeitgeist.DataModelError
 
-        interface SourceRegistered {
-            (data_source: DataSource): void;
-        }
+constructor(options: { message: string, code: number});
+_init(...args: any[]): void;
 
-        // Constructor properties interface
+}
+
+const DataSourcesSIG_DATASOURCES: string
+const TimestampSECOND: number
+const TimestampMINUTE: number
+const TimestampHOUR: number
+const TimestampDAY: number
+const TimestampWEEK: number
+const TimestampYEAR: number
+const NCALALARM: string
+const NCALATTACHMENT: string
+const NCALCALENDAR: string
+const NCALCALENDAR_DATA_OBJECT: string
+const NCALEVENT: string
+const NCALFREEBUSY: string
+const NCALJOURNAL: string
+const NCALTIMEZONE: string
+const NCALTODO: string
+const NCOCONTACT: string
+const NCOCONTACT_GROUP: string
+const NCOCONTACT_LIST: string
+const NCOCONTACT_LIST_DATA_OBJECT: string
+const NCOORGANIZATION_CONTACT: string
+const NCOPERSON_CONTACT: string
+const NFOAPPLICATION: string
+const NFOARCHIVE: string
+const NFOARCHIVE_ITEM: string
+const NFOATTACHMENT: string
+const NFOAUDIO: string
+const NFOBOOKMARK: string
+const NFOBOOKMARK_FOLDER: string
+const NFOCURSOR: string
+const NFODATA_CONTAINER: string
+const NFODELETED_RESOURCE: string
+const NFODOCUMENT: string
+const NFOEMBEDDED_FILE_DATA_OBJECT: string
+const NFOEXECUTABLE: string
+const NFOFILESYSTEM: string
+const NFOFILESYSTEM_IMAGE: string
+const NFOFILE_DATA_OBJECT: string
+const NFOFOLDER: string
+const NFOFONT: string
+const NFOHARD_DISK_PARTITION: string
+const NFOHTML_DOCUMENT: string
+const NFOICON: string
+const NFOIMAGE: string
+const NFOMEDIA: string
+const NFOMEDIA_LIST: string
+const NFOMEDIA_STREAM: string
+const NFOMIND_MAP: string
+const NFOOPERATING_SYSTEM: string
+const NFOPAGINATED_TEXT_DOCUMENT: string
+const NFOPLAIN_TEXT_DOCUMENT: string
+const NFOPRESENTATION: string
+const NFORASTER_IMAGE: string
+const NFOREMOTE_DATA_OBJECT: string
+const NFOREMOTE_PORT_ADDRESS: string
+const NFOSOFTWARE: string
+const NFOSOFTWARE_ITEM: string
+const NFOSOFTWARE_SERVICE: string
+const NFOSOURCE_CODE: string
+const NFOSPREADSHEET: string
+const NFOTEXT_DOCUMENT: string
+const NFOTRASH: string
+const NFOVECTOR_IMAGE: string
+const NFOVIDEO: string
+const NFOVISUAL: string
+const NFOWEBSITE: string
+const NFOWEB_DATA_OBJECT: string
+const NIEDATA_OBJECT: string
+const NIEINFORMATION_ELEMENT: string
+const NMMMOVIE: string
+const NMMMUSIC_ALBUM: string
+const NMMMUSIC_PIECE: string
+const NMMTVSERIES: string
+const NMMTVSHOW: string
+const NMOEMAIL: string
+const NMOIMMESSAGE: string
+const NMOMAILBOX: string
+const NMOMAILBOX_DATA_OBJECT: string
+const NMOMESSAGE: string
+const NMOMIME_ENTITY: string
+const ZGACCEPT_EVENT: string
+const ZGACCESS_EVENT: string
+const ZGAPPLICATION_ACTION: string
+const ZGCREATE_EVENT: string
+const ZGDELETE_EVENT: string
+const ZGDENY_EVENT: string
+const ZGEVENT_INTERPRETATION: string
+const ZGEVENT_MANIFESTATION: string
+const ZGEXPIRE_EVENT: string
+const ZGHEURISTIC_ACTIVITY: string
+const ZGLEAVE_EVENT: string
+const ZGMODIFY_EVENT: string
+const ZGMOVE_EVENT: string
+const ZGRECEIVE_EVENT: string
+const ZGSCHEDULED_ACTIVITY: string
+const ZGSEND_EVENT: string
+const ZGSYSTEM_NOTIFICATION: string
+const ZGUSER_ACTIVITY: string
+const ZGWORLD_ACTIVITY: string
+const UtilsENGINE_DBUS_NAME: string
+const UtilsENGINE_DBUS_PATH: string
+const UtilsSIG_EVENT: string
+const UtilsMAX_DBUS_RESULT_SIZE: number
+const UtilsCACHE_SIZE: number
+function data_sources_from_variant(sources_variant: GLib.Variant): DataSource[]
+function data_sources_to_variant(sources: GLib.HashTable<string, DataSource>): GLib.Variant
+function events_from_variant(vevents: GLib.Variant): Event[]
+function events_to_variant(events: Event[]): GLib.Variant
+function events_to_variant_with_limit(events: Event[], limit: number): GLib.Variant
+function timestamp_from_timeval(timeval: GLib.TimeVal): number
+function timestamp_to_timeval(timestamp: number): GLib.TimeVal
+function timestamp_from_now(): number
+function timestamp_from_iso8601(datetime: string): number
+function timestamp_to_iso8601(timestamp: number): string
+function timestamp_from_date(date: GLib.Date): number
+function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth, year: GLib.DateYear): number
+function timestamp_to_date(timestamp: number): GLib.Date
+function timestamp_next_midnight(timestamp: number): number
+function timestamp_prev_midnight(timestamp: number): number
+function symbol_get_display_name(symbol_uri: string): string
+function symbol_get_description(symbol_uri: string): string
+function symbol_get_all_parents(symbol_uri: string): string[]
+function symbol_get_all_children(symbol_uri: string): string[]
+function symbol_get_children(symbol_uri: string): string[]
+function symbol_get_parents(symbol_uri: string): string[]
+function symbol_is_a(symbol_uri?: (string | null), parent_uri?: (string | null)): boolean
+function utils_get_data_path(): string
+function utils_get_default_data_path(): string
+function utils_get_database_file_path(): string
+function utils_set_database_file_path(path: string): void
+function utils_get_database_file_backup_path(): string
+function utils_get_database_file_retire_name(): string
+function utils_get_local_extensions_path(): string
+function utils_using_in_memory_database(): boolean
+function utils_backup_database(): void
+function utils_parse_negation(val: string): [boolean, string]
+function utils_parse_noexpand(val: string): [boolean, string]
+function utils_parse_wildcard(val: string): [boolean, string]
+function utils_is_empty_string(s?: (string | null)): boolean
+function utils_log_may_read_directly(): boolean
+function result_type_is_sort_order_asc(result_type: ResultType): boolean
+function register_mimetype(mimetype: string, interpretation_uri: string): void
+function register_mimetype_regex(mimetype_regex: string, interpretation_uri: string): void
+function interpretation_for_mimetype(mimetype?: (string | null)): (string | null)
+function register_uri_scheme(uri_scheme: string, manifestation_type: string): void
+function manifestation_for_uri(uri: string): (string | null)
+module DataSourceRegistry {
+
+    // Signal callback interfaces
+
+    interface SourceDisconnected {
+        (data_source: DataSource): void
     }
 
-    class DataSourceRegistry extends QueuedProxyWrapper {
-        // Constructors of Zeitgeist-2.0.DataSourceRegistry
-
-        static ['new'](): DataSourceRegistry;
-
-        // Owm methods of Zeitgeist-2.0.DataSourceRegistry
-
-        get_data_sources(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[];
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        get_data_source_from_id_finish(_res_: Gio.AsyncResult): DataSource;
-        register_data_source(
-            data_source: DataSource,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        register_data_source_finish(_res_: Gio.AsyncResult): boolean;
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
+    interface SourceEnabled {
+        (unique_id: string, enabled: boolean): void
     }
 
-    module Index {
-        // Constructor properties interface
+    interface SourceRegistered {
+        (data_source: DataSource): void
     }
 
-    class Index extends QueuedProxyWrapper {
-        // Constructors of Zeitgeist-2.0.Index
 
-        static ['new'](): Index;
+    // Constructor properties interface
 
-        // Owm methods of Zeitgeist-2.0.Index
+    interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
 
-        search(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        search_finish(_res_: Gio.AsyncResult): ResultSet;
-        search_with_relevancies(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        search_with_relevancies_finish(_res_: Gio.AsyncResult): ResultSet;
     }
 
-    module Log {
-        // Constructor properties interface
+}
+
+class DataSourceRegistry extends QueuedProxyWrapper {
+
+    // Constructors of Zeitgeist.DataSourceRegistry
+
+
+constructor(properties?: Partial<DataSourceRegistry.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): DataSourceRegistry;
+
+    // Own signals of Zeitgeist.DataSourceRegistry
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'source-disconnected', callback: ((_source: this, data_source: DataSource) => void)): number
+    connect_after(signal: 'source-disconnected', callback: ((_source: this, data_source: DataSource) => void)): number
+    emit(signal: 'source-disconnected', data_source: DataSource): void
+    connect(signal: 'source-enabled', callback: ((_source: this, unique_id: string, enabled: boolean) => void)): number
+    connect_after(signal: 'source-enabled', callback: ((_source: this, unique_id: string, enabled: boolean) => void)): number
+    emit(signal: 'source-enabled', unique_id: string, enabled: boolean): void
+    connect(signal: 'source-registered', callback: ((_source: this, data_source: DataSource) => void)): number
+    connect_after(signal: 'source-registered', callback: ((_source: this, data_source: DataSource) => void)): number
+    emit(signal: 'source-registered', data_source: DataSource): void
+
+    // Own methods of Zeitgeist.DataSourceRegistry
+
+    get_data_sources(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[]
+    get_data_source_from_id(unique_id: string, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_data_source_from_id_finish(_res_: Gio.AsyncResult): DataSource
+    register_data_source(data_source: DataSource, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    register_data_source_finish(_res_: Gio.AsyncResult): boolean
+    set_data_source_enabled(unique_id: string, enabled: boolean, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
+}
+
+module Index {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
+
     }
 
-    class Log extends QueuedProxyWrapper {
-        // Constructors of Zeitgeist-2.0.Log
+}
 
-        static ['new'](): Log;
+class Index extends QueuedProxyWrapper {
 
-        // Owm methods of Zeitgeist-2.0.Log
+    // Constructors of Zeitgeist.Index
 
-        static get_default(): Log;
 
-        // Owm methods of Zeitgeist-2.0.Log
+constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
-        insert_event(
-            event: Event,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        insert_event_finish(_res_: Gio.AsyncResult): number[];
-        insert_events(
-            events: Event[],
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        insert_events_finish(_res_: Gio.AsyncResult): number[];
-        insert_event_no_reply(event: Event): void;
-        insert_events_no_reply(events: Event[]): void;
-        find_events(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_events_finish(_res_: Gio.AsyncResult): ResultSet;
-        find_event_ids(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_event_ids_finish(_res_: Gio.AsyncResult): number[];
-        get_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        get_events_finish(_res_: Gio.AsyncResult): ResultSet;
-        find_related_uris(
-            time_range: TimeRange,
-            event_templates: Event[],
-            result_event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: RelevantResultType,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_related_uris_finish(_res_: Gio.AsyncResult): string[];
-        delete_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        delete_events_finish(_res_: Gio.AsyncResult): TimeRange;
-        quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        quit_finish(_res_: Gio.AsyncResult): void;
-        install_monitor(monitor: Monitor): void;
-        remove_monitor(monitor: Monitor): void;
-        get_version(): void;
-        get_extensions(): string[];
-        datapath(): string;
+_init(...args: any[]): void;
+
+
+static ["new"](): Index;
+
+    // Own methods of Zeitgeist.Index
+
+    search(query: string, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    search_finish(_res_: Gio.AsyncResult): ResultSet
+    search_with_relevancies(query: string, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    search_with_relevancies_finish(_res_: Gio.AsyncResult): [ResultSet, number[]]
+}
+
+module Log {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
+
     }
 
-    module Monitor {
-        // Signal callback interfaces
+}
 
-        interface EventsInserted {
-            (time_range: TimeRange, events: ResultSet): void;
-        }
+class Log extends QueuedProxyWrapper {
 
-        interface EventsDeleted {
-            (time_range: TimeRange, event_ids: number[]): void;
-        }
+    // Constructors of Zeitgeist.Log
 
-        // Constructor properties interface
+
+constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): Log;
+
+    // Own static methods of Zeitgeist.Log
+
+    static get_default(): Log
+
+    // Own methods of Zeitgeist.Log
+
+    insert_event(event: Event, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    insert_event_finish(_res_: Gio.AsyncResult): number[]
+    insert_events(events: Event[], cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    insert_events_finish(_res_: Gio.AsyncResult): number[]
+    insert_event_no_reply(event: Event): void
+    insert_events_no_reply(events: Event[]): void
+    find_events(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_events_finish(_res_: Gio.AsyncResult): ResultSet
+    find_event_ids(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_event_ids_finish(_res_: Gio.AsyncResult): number[]
+    get_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_events_finish(_res_: Gio.AsyncResult): ResultSet
+    find_related_uris(time_range: TimeRange, event_templates: Event[], result_event_templates: Event[], storage_state: StorageState, num_events: number, result_type: RelevantResultType, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_related_uris_finish(_res_: Gio.AsyncResult): string[]
+    delete_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    delete_events_finish(_res_: Gio.AsyncResult): TimeRange
+    quit(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    quit_finish(_res_: Gio.AsyncResult): void
+    install_monitor(monitor: Monitor): void
+    remove_monitor(monitor: Monitor): void
+    get_version(): [number, number, number]
+    get_extensions(): string[]
+    datapath(): string
+}
+
+module Monitor {
+
+    // Signal callback interfaces
+
+    interface EventsInserted {
+        (time_range: TimeRange, events: ResultSet): void
     }
 
-    class Monitor extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.Monitor
-
-        time_range: TimeRange;
-        timeRange: TimeRange;
-        event_templates: Event[];
-        eventTemplates: Event[];
-
-        // Constructors of Zeitgeist-2.0.Monitor
-
-        static ['new'](time_range: TimeRange, event_templates: Event[]): Monitor;
-
-        // Owm methods of Zeitgeist-2.0.Monitor
-
-        get_templates(): Event[];
-        get_path(): GLib.ObjectPath;
-        get_time_range(): TimeRange;
-        set_time_range(value: TimeRange): void;
-        get_event_templates(): Event[];
-        set_event_templates(value: Event[]): void;
+    interface EventsDeleted {
+        (time_range: TimeRange, event_ids: number[]): void
     }
 
-    module QueuedProxyWrapper {
-        // Constructor properties interface
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, RemoteMonitor.ConstructorProps {
+time_range: TimeRange;
+    timeRange: TimeRange;
+    event_templates: Event[];
+    eventTemplates: Event[];
     }
 
-    abstract class QueuedProxyWrapper extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.QueuedProxyWrapper
+}
 
-        proxy_created: boolean;
-        proxyCreated: boolean;
-        is_connected: boolean;
-        isConnected: boolean;
+class Monitor extends GObject.Object implements RemoteMonitor {
 
-        // Owm methods of Zeitgeist-2.0.QueuedProxyWrapper
+    // Own properties of Zeitgeist.Monitor
 
-        proxy_acquired(proxy: GObject.Object): void;
-        proxy_unavailable(err: Gio.IOErrorEnum): void;
-        process_queued_methods(): void;
-        name_owner_changed(pspec: GObject.ParamSpec): void;
-        on_connection_established(): void;
-        on_connection_lost(): void;
-        wait_for_proxy(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        wait_for_proxy_finish(_res_: Gio.AsyncResult): void;
-        get_proxy_created(): boolean;
-        get_is_connected(): boolean;
+    get time_range(): TimeRange;
+    set time_range(val: TimeRange);
+    get timeRange(): TimeRange;
+    set timeRange(val: TimeRange);
+    get event_templates(): Event[];
+    set event_templates(val: Event[]);
+    get eventTemplates(): Event[];
+    set eventTemplates(val: Event[]);
+
+    // Constructors of Zeitgeist.Monitor
+
+
+constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](time_range: TimeRange, event_templates: Event[]): Monitor;
+
+    // Own signals of Zeitgeist.Monitor
+
+    connect(id: string, callback: (...args: any[]) => any): number
+    connect_after(id: string, callback: (...args: any[]) => any): number
+    emit(id: string, ...args: any[]): void
+    connect(signal: 'events-inserted', callback: ((_source: this, time_range: TimeRange, events: ResultSet) => void)): number
+    connect_after(signal: 'events-inserted', callback: ((_source: this, time_range: TimeRange, events: ResultSet) => void)): number
+    emit(signal: 'events-inserted', time_range: TimeRange, events: ResultSet): void
+    connect(signal: 'events-deleted', callback: ((_source: this, time_range: TimeRange, event_ids: number[]) => void)): number
+    connect_after(signal: 'events-deleted', callback: ((_source: this, time_range: TimeRange, event_ids: number[]) => void)): number
+    emit(signal: 'events-deleted', time_range: TimeRange, event_ids: number[]): void
+
+    // Own methods of Zeitgeist.Monitor
+
+    get_templates(): Event[]
+    get_path(): never
+    get_time_range(): TimeRange
+    set_time_range(value: TimeRange): void
+    get_event_templates(): Event[]
+    set_event_templates(value: Event[]): void
+
+// Inherited methods
+notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+notify_insert_finish(_res_: Gio.AsyncResult): void
+notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+notify_delete_finish(_res_: Gio.AsyncResult): void
+vfunc_notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void
+vfunc_notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+module QueuedProxyWrapper {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+proxy_created: boolean;
+    proxyCreated: boolean;
+    is_connected: boolean;
+    isConnected: boolean;
     }
 
-    class QueuedProxyWrapperQueuedMethod {
-        // Own fields of Zeitgeist-2.0.QueuedProxyWrapperQueuedMethod
+}
 
-        ref_count: number;
+abstract class QueuedProxyWrapper extends GObject.Object {
 
-        // Constructors of Zeitgeist-2.0.QueuedProxyWrapperQueuedMethod
+    // Own properties of Zeitgeist.QueuedProxyWrapper
 
-        static ['new'](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
+    get proxy_created(): boolean;
+    set proxy_created(val: boolean);
+    get proxyCreated(): boolean;
+    set proxyCreated(val: boolean);
+    get is_connected(): boolean;
+    set is_connected(val: boolean);
+    get isConnected(): boolean;
+    set isConnected(val: boolean);
 
-        // Owm methods of Zeitgeist-2.0.QueuedProxyWrapperQueuedMethod
+    // Constructors of Zeitgeist.QueuedProxyWrapper
 
-        get_queued_method(): GLib.SourceFunc;
+
+constructor(properties?: Partial<QueuedProxyWrapper.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+    // Own virtual methods of Zeitgeist.QueuedProxyWrapper
+
+    vfunc_on_connection_established(): void
+    vfunc_on_connection_lost(): void
+
+    // Own methods of Zeitgeist.QueuedProxyWrapper
+
+    proxy_acquired(proxy: GObject.Object): void
+    proxy_unavailable(err: Gio.IOErrorEnum): void
+    process_queued_methods(): void
+    name_owner_changed(pspec: GObject.ParamSpec): void
+    on_connection_established(): void
+    on_connection_lost(): void
+    wait_for_proxy(_callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    wait_for_proxy_finish(_res_: Gio.AsyncResult): void
+    get_proxy_created(): boolean
+    get_is_connected(): boolean
+}
+
+class QueuedProxyWrapperQueuedMethod {
+
+    // Own fields of Zeitgeist.QueuedProxyWrapperQueuedMethod
+
+ref_count: number
+
+    // Constructors of Zeitgeist.QueuedProxyWrapperQueuedMethod
+
+_init(...args: any[]): void;
+
+
+static ["new"](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
+
+    // Own methods of Zeitgeist.QueuedProxyWrapperQueuedMethod
+
+    get_queued_method(): [GLib.SourceFunc, any]
+}
+
+module DataSource {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+unique_id: string;
+    uniqueId: string;
+    name: string;
+    description: string;
+    event_templates: Event[];
+    eventTemplates: Event[];
+    enabled: boolean;
+    running: boolean;
+    timestamp: number;
     }
 
-    module DataSource {
-        // Constructor properties interface
+}
+
+class DataSource extends GObject.Object {
+
+    // Own properties of Zeitgeist.DataSource
+
+    get unique_id(): string;
+    set unique_id(val: string);
+    get uniqueId(): string;
+    set uniqueId(val: string);
+    get name(): string;
+    set name(val: string);
+    get description(): string;
+    set description(val: string);
+    get event_templates(): Event[];
+    set event_templates(val: Event[]);
+    get eventTemplates(): Event[];
+    set eventTemplates(val: Event[]);
+    get enabled(): boolean;
+    set enabled(val: boolean);
+    get running(): boolean;
+    set running(val: boolean);
+    get timestamp(): number;
+    set timestamp(val: number);
+
+    // Constructors of Zeitgeist.DataSource
+
+
+constructor(properties?: Partial<DataSource.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](): DataSource;
+
+static full(unique_id: string, name: string, description: string, templates?: (Event[] | null)): DataSource;
+
+static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
+
+    // Own methods of Zeitgeist.DataSource
+
+    to_variant(): GLib.Variant
+    get_unique_id(): string
+    set_unique_id(value: string): void
+    get_name(): string
+    set_name(value: string): void
+    get_description(): string
+    set_description(value: string): void
+    get_event_templates(): (Event[] | null)
+    set_event_templates(value?: (Event[] | null)): void
+    get_enabled(): boolean
+    set_enabled(value: boolean): void
+    get_running(): boolean
+    set_running(value: boolean): void
+    get_timestamp(): number
+    set_timestamp(value: number): void
+}
+
+module Event {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+id: number;
+    timestamp: number;
+    origin: string;
+    actor: string;
+    interpretation: string;
+    manifestation: string;
+    subjects: Subject[];
+    payload: GLib.ByteArray;
     }
 
-    class DataSource extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.DataSource
+}
 
-        unique_id: string;
-        uniqueId: string;
-        name: string;
-        description: string;
-        event_templates: Event[];
-        eventTemplates: Event[];
-        enabled: boolean;
-        running: boolean;
-        timestamp: number;
+class Event extends GObject.Object {
 
-        // Constructors of Zeitgeist-2.0.DataSource
+    // Own properties of Zeitgeist.Event
 
-        static ['new'](): DataSource;
+    get id(): number;
+    set id(val: number);
+    get timestamp(): number;
+    set timestamp(val: number);
+    get origin(): string;
+    set origin(val: string);
+    get actor(): string;
+    set actor(val: string);
+    get interpretation(): string;
+    set interpretation(val: string);
+    get manifestation(): string;
+    set manifestation(val: string);
+    get subjects(): Subject[];
+    set subjects(val: Subject[]);
+    get payload(): GLib.ByteArray;
+    set payload(val: GLib.ByteArray);
 
-        static full(unique_id: string, name: string, description: string, templates?: Event[] | null): DataSource;
+    // Constructors of Zeitgeist.Event
 
-        static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
 
-        // Owm methods of Zeitgeist-2.0.DataSource
+constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
-        to_variant(): GLib.Variant;
-        get_unique_id(): string;
-        set_unique_id(value: string): void;
-        get_name(): string;
-        set_name(value: string): void;
-        get_description(): string;
-        set_description(value: string): void;
-        get_event_templates(): Event[] | null;
-        set_event_templates(value?: Event[] | null): void;
-        get_enabled(): boolean;
-        set_enabled(value: boolean): void;
-        get_running(): boolean;
-        set_running(value: boolean): void;
-        get_timestamp(): number;
-        set_timestamp(value: number): void;
+_init(...args: any[]): void;
+
+
+static from_variant(event_variant: GLib.Variant): Event;
+
+static ["new"](): Event;
+
+    // Own methods of Zeitgeist.Event
+
+    get_subject(index: number): Subject
+    num_subjects(): number
+    add_subject(subject: Subject): void
+    take_subject(subject: Subject): void
+    set_actor_from_app_info(info: Gio.AppInfo): void
+    to_variant(): GLib.Variant
+    debug_print(): void
+    matches_template(template_event: Event): boolean
+    get_id(): number
+    set_id(value: number): void
+    get_timestamp(): number
+    set_timestamp(value: number): void
+    get_origin(): (string | null)
+    set_origin(value?: (string | null)): void
+    get_actor(): (string | null)
+    set_actor(value?: (string | null)): void
+    get_interpretation(): (string | null)
+    set_interpretation(value?: (string | null)): void
+    get_manifestation(): (string | null)
+    set_manifestation(value?: (string | null)): void
+    get_subjects(): Subject[]
+    set_subjects(value: Subject[]): void
+    get_payload(): (GLib.ByteArray | null)
+    set_payload(value?: (GLib.ByteArray | null)): void
+}
+
+module Subject {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+uri: string;
+    origin: string;
+    text: string;
+    storage: string;
+    current_uri: string;
+    currentUri: string;
+    current_origin: string;
+    currentOrigin: string;
+    mimetype: string;
+    interpretation: string;
+    manifestation: string;
     }
 
-    module Event {
-        // Constructor properties interface
+}
+
+class Subject extends GObject.Object {
+
+    // Own properties of Zeitgeist.Subject
+
+    get uri(): string;
+    set uri(val: string);
+    get origin(): string;
+    set origin(val: string);
+    get text(): string;
+    set text(val: string);
+    get storage(): string;
+    set storage(val: string);
+    get current_uri(): string;
+    set current_uri(val: string);
+    get currentUri(): string;
+    set currentUri(val: string);
+    get current_origin(): string;
+    set current_origin(val: string);
+    get currentOrigin(): string;
+    set currentOrigin(val: string);
+    get mimetype(): string;
+    set mimetype(val: string);
+    get interpretation(): string;
+    set interpretation(val: string);
+    get manifestation(): string;
+    set manifestation(val: string);
+
+    // Constructors of Zeitgeist.Subject
+
+
+constructor(properties?: Partial<Subject.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static full(uri?: (string | null), interpretation?: (string | null), manifestation?: (string | null), mimetype?: (string | null), origin?: (string | null), text?: (string | null), storage?: (string | null)): Subject;
+
+static move_event(source_uri?: (string | null), source_origin?: (string | null), destination_uri?: (string | null), destination_origin?: (string | null), interpretation?: (string | null), manifestation?: (string | null), mimetype?: (string | null), text?: (string | null), storage?: (string | null)): Subject;
+
+static from_variant(subject_variant: GLib.Variant): Subject;
+
+static ["new"](): Subject;
+
+    // Own methods of Zeitgeist.Subject
+
+    to_variant(): GLib.Variant
+    matches_template(template_subject: Subject): boolean
+    get_uri(): (string | null)
+    set_uri(value?: (string | null)): void
+    get_origin(): (string | null)
+    set_origin(value?: (string | null)): void
+    get_text(): (string | null)
+    set_text(value?: (string | null)): void
+    get_storage(): (string | null)
+    set_storage(value?: (string | null)): void
+    get_current_uri(): (string | null)
+    set_current_uri(value?: (string | null)): void
+    get_current_origin(): (string | null)
+    set_current_origin(value?: (string | null)): void
+    get_mimetype(): (string | null)
+    set_mimetype(value?: (string | null)): void
+    get_interpretation(): (string | null)
+    set_interpretation(value?: (string | null)): void
+    get_manifestation(): (string | null)
+    set_manifestation(value?: (string | null)): void
+}
+
+module TimeRange {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+start: number;
+    end: number;
     }
 
-    class Event extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.Event
+}
 
-        id: number;
-        timestamp: number;
-        origin: string;
-        actor: string;
-        interpretation: string;
-        manifestation: string;
-        subjects: Subject[];
-        payload: GLib.ByteArray;
+class TimeRange extends GObject.Object {
 
-        // Constructors of Zeitgeist-2.0.Event
+    // Own properties of Zeitgeist.TimeRange
 
-        static from_variant(event_variant: GLib.Variant): Event;
+    get start(): number;
+    set start(val: number);
+    get end(): number;
+    set end(val: number);
 
-        static ['new'](): Event;
+    // Constructors of Zeitgeist.TimeRange
 
-        // Owm methods of Zeitgeist-2.0.Event
 
-        get_subject(index: number): Subject;
-        num_subjects(): number;
-        add_subject(subject: Subject): void;
-        take_subject(subject: Subject): void;
-        set_actor_from_app_info(info: Gio.AppInfo): void;
-        to_variant(): GLib.Variant;
-        debug_print(): void;
-        matches_template(template_event: Event): boolean;
-        get_id(): number;
-        set_id(value: number): void;
-        get_timestamp(): number;
-        set_timestamp(value: number): void;
-        get_origin(): string | null;
-        set_origin(value?: string | null): void;
-        get_actor(): string | null;
-        set_actor(value?: string | null): void;
-        get_interpretation(): string | null;
-        set_interpretation(value?: string | null): void;
-        get_manifestation(): string | null;
-        set_manifestation(value?: string | null): void;
-        get_subjects(): Subject[];
-        set_subjects(value: Subject[]): void;
-        get_payload(): GLib.ByteArray | null;
-        set_payload(value?: GLib.ByteArray | null): void;
+constructor(properties?: Partial<TimeRange.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](start_msec: number, end_msec: number): TimeRange;
+
+static anytime(): TimeRange;
+
+static to_now(): TimeRange;
+
+static from_now(): TimeRange;
+
+static from_variant(variant: GLib.Variant): TimeRange;
+
+    // Own methods of Zeitgeist.TimeRange
+
+    to_variant(): GLib.Variant
+    intersect(time_range: TimeRange): (TimeRange | null)
+    get_start(): number
+    get_end(): number
+}
+
+module SimpleResultSet {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {
+
     }
 
-    module Subject {
-        // Constructor properties interface
+}
+
+class SimpleResultSet extends GObject.Object implements ResultSet {
+
+    // Constructors of Zeitgeist.SimpleResultSet
+
+
+constructor(properties?: Partial<SimpleResultSet.ConstructorProps>, ...args: any[]);
+
+_init(...args: any[]): void;
+
+
+static ["new"](events: Event[]): SimpleResultSet;
+
+static with_num_matches(events: Event[], matches: number): SimpleResultSet;
+
+// Inherited methods
+size(): number
+estimated_matches(): number
+next_value(): (Event | null)
+has_next(): boolean
+tell(): number
+reset(): void
+iterator(): ResultSet
+vfunc_size(): number
+vfunc_estimated_matches(): number
+vfunc_next_value(): (Event | null)
+vfunc_has_next(): boolean
+vfunc_tell(): number
+vfunc_reset(): void
+/**
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target`.
+ * 
+ * Whenever the `source_property` is changed the `target_property` is
+ * updated using the same value. For instance:
+ * 
+ * 
+ * ```c
+ *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+ * ```
+ * 
+ * 
+ * Will result in the "sensitive" property of the widget #GObject instance to be
+ * updated with the same value of the "active" property of the action #GObject
+ * instance.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well.
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. To remove the binding without affecting the
+ * `source` and the `target` you can just call g_object_unref() on the returned
+ * #GBinding instance.
+ * 
+ * Removing the binding by calling g_object_unref() on it must only be done if
+ * the binding, `source` and `target` are only used from a single thread and it
+ * is clear that both `source` and `target` outlive the binding. Especially it
+ * is not safe to rely on this if the binding, `source` or `target` can be
+ * finalized from different threads. Keep another reference to the binding and
+ * use g_binding_unbind() instead to be on the safe side.
+ * 
+ * A #GObject can have multiple bindings.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+/**
+ * Complete version of g_object_bind_property().
+ * 
+ * Creates a binding between `source_property` on `source` and `target_property`
+ * on `target,` allowing you to set the transformation functions to be used by
+ * the binding.
+ * 
+ * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+ * if `target_property` on `target` changes then the `source_property` on `source`
+ * will be updated as well. The `transform_from` function is only used in case
+ * of bidirectional bindings, otherwise it will be ignored
+ * 
+ * The binding will automatically be removed when either the `source` or the
+ * `target` instances are finalized. This will release the reference that is
+ * being held on the #GBinding instance; if you want to hold on to the
+ * #GBinding instance, you will need to hold a reference to it.
+ * 
+ * To remove the binding, call g_binding_unbind().
+ * 
+ * A #GObject can have multiple bindings.
+ * 
+ * The same `user_data` parameter will be used for both `transform_to`
+ * and `transform_from` transformation functions; the `notify` function will
+ * be called once, when the binding is removed. If you need different data
+ * for each transformation function, please use
+ * g_object_bind_property_with_closures() instead.
+ * @param source_property the property on @source to bind
+ * @param target the target #GObject
+ * @param target_property the property on @target to bind
+ * @param flags flags to pass to #GBinding
+ * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+ * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+ * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+ * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+ */
+bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
+bind_property_full(...args: never[]): any
+/**
+ * This function is intended for #GObject implementations to re-enforce
+ * a [floating][floating-ref] object reference. Doing this is seldom
+ * required: all #GInitiallyUnowneds are created with a floating reference
+ * which usually just needs to be sunken by calling g_object_ref_sink().
+ */
+force_floating(): void
+/**
+ * Increases the freeze count on `object`. If the freeze count is
+ * non-zero, the emission of "notify" signals on `object` is
+ * stopped. The signals are queued until the freeze count is decreased
+ * to zero. Duplicate notifications are squashed so that at most one
+ * #GObject::notify signal is emitted for each property modified while the
+ * object is frozen.
+ * 
+ * This is necessary for accessors that modify multiple properties to prevent
+ * premature notification while the object is still being modified.
+ */
+freeze_notify(): void
+/**
+ * Gets a named field from the objects table of associations (see g_object_set_data()).
+ * @param key name of the key for that association
+ * @returns the data if found,          or %NULL if no such data exists.
+ */
+get_data(key: string): (any | null)
+get_property(property_name: string): any
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+get_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Gets `n_properties` properties for an `object`.
+ * Obtained properties will be set to `values`. All properties must be valid.
+ * Warnings will be emitted and undefined behaviour may result if invalid
+ * properties are passed in.
+ * @param names the names of each property to get
+ * @param values the values of each property to get
+ */
+getv(names: string[], values: GObject.Value[]): void
+/**
+ * Checks whether `object` has a [floating][floating-ref] reference.
+ * @returns %TRUE if @object has a floating reference
+ */
+is_floating(): boolean
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param property_name the name of a property installed on the class of @object.
+ */
+notify(property_name: string): void
+/**
+ * Emits a "notify" signal for the property specified by `pspec` on `object`.
+ * 
+ * This function omits the property name lookup, hence it is faster than
+ * g_object_notify().
+ * 
+ * One way to avoid using g_object_notify() from within the
+ * class that registered the properties, and using g_object_notify_by_pspec()
+ * instead, is to store the GParamSpec used with
+ * g_object_class_install_property() inside a static array, e.g.:
+ * 
+ * 
+ * ```c
+ *   typedef enum
+ *   {
+ *     PROP_FOO = 1,
+ *     PROP_LAST
+ *   } MyObjectProperty;
+ * 
+ *   static GParamSpec *properties[PROP_LAST];
+ * 
+ *   static void
+ *   my_object_class_init (MyObjectClass *klass)
+ *   {
+ *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+ *                                              0, 100,
+ *                                              50,
+ *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ *     g_object_class_install_property (gobject_class,
+ *                                      PROP_FOO,
+ *                                      properties[PROP_FOO]);
+ *   }
+ * ```
+ * 
+ * 
+ * and then notify a change on the "foo" property with:
+ * 
+ * 
+ * ```c
+ *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+ * ```
+ * 
+ * @param pspec the #GParamSpec of a property installed on the class of @object.
+ */
+notify_by_pspec(pspec: GObject.ParamSpec): void
+/**
+ * Increases the reference count of `object`.
+ * 
+ * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+ * of `object` will be propagated to the return type (using the GCC typeof()
+ * extension), so any casting the caller needs to do on the return type must be
+ * explicit.
+ * @returns the same @object
+ */
+ref(): GObject.Object
+/**
+ * Increase the reference count of `object,` and possibly remove the
+ * [floating][floating-ref] reference, if `object` has a floating reference.
+ * 
+ * In other words, if the object is floating, then this call "assumes
+ * ownership" of the floating reference, converting it to a normal
+ * reference by clearing the floating flag while leaving the reference
+ * count unchanged.  If the object is not floating, then this call
+ * adds a new normal reference increasing the reference count by one.
+ * 
+ * Since GLib 2.56, the type of `object` will be propagated to the return type
+ * under the same conditions as for g_object_ref().
+ * @returns @object
+ */
+ref_sink(): GObject.Object
+/**
+ * Releases all references to other objects. This can be used to break
+ * reference cycles.
+ * 
+ * This function should only be called from object system implementations.
+ */
+run_dispose(): void
+/**
+ * Each object carries around a table of associations from
+ * strings to pointers.  This function lets you set an association.
+ * 
+ * If the object already had an association with that name,
+ * the old association will be destroyed.
+ * 
+ * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+ * This means a copy of `key` is kept permanently (even after `object` has been
+ * finalized) — so it is recommended to only use a small, bounded set of values
+ * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+ * @param key name of the key
+ * @param data data to associate with that key
+ */
+set_data(key: string, data?: (any | null)): void
+set_property(property_name: string, value: any): void
+/**
+ * Remove a specified datum from the object's data associations,
+ * without invoking the association's destroy handler.
+ * @param key name of the key
+ * @returns the data if found, or %NULL          if no such data exists.
+ */
+steal_data(key: string): (any | null)
+/**
+ * This function gets back user data pointers stored via
+ * g_object_set_qdata() and removes the `data` from object
+ * without invoking its destroy() function (if any was
+ * set).
+ * Usually, calling this function is only required to update
+ * user data pointers with a destroy notifier, for example:
+ * 
+ * ```c
+ * void
+ * object_add_to_user_list (GObject     *object,
+ *                          const gchar *new_string)
+ * {
+ *   // the quark, naming the object data
+ *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+ *   // retrieve the old string list
+ *   GList *list = g_object_steal_qdata (object, quark_string_list);
+ * 
+ *   // prepend new string
+ *   list = g_list_prepend (list, g_strdup (new_string));
+ *   // this changed 'list', so we need to set it again
+ *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+ * }
+ * static void
+ * free_string_list (gpointer data)
+ * {
+ *   GList *node, *list = data;
+ * 
+ *   for (node = list; node; node = node->next)
+ *     g_free (node->data);
+ *   g_list_free (list);
+ * }
+ * ```
+ * 
+ * Using g_object_get_qdata() in the above example, instead of
+ * g_object_steal_qdata() would have left the destroy function set,
+ * and thus the partial string list would have been freed upon
+ * g_object_set_qdata_full().
+ * @param quark A #GQuark, naming the user data pointer
+ * @returns The user data pointer set, or %NULL
+ */
+steal_qdata(quark: GLib.Quark): (any | null)
+/**
+ * Reverts the effect of a previous call to
+ * g_object_freeze_notify(). The freeze count is decreased on `object`
+ * and when it reaches zero, queued "notify" signals are emitted.
+ * 
+ * Duplicate notifications for each property are squashed so that at most one
+ * #GObject::notify signal is emitted for each property, in the reverse order
+ * in which they have been queued.
+ * 
+ * It is an error to call this function when the freeze count is zero.
+ */
+thaw_notify(): void
+/**
+ * Decreases the reference count of `object`. When its reference count
+ * drops to 0, the object is finalized (i.e. its memory is freed).
+ * 
+ * If the pointer to the #GObject may be reused in future (for example, if it is
+ * an instance variable of another object), it is recommended to clear the
+ * pointer to %NULL rather than retain a dangling pointer to a potentially
+ * invalid #GObject instance. Use g_clear_object() for this.
+ */
+unref(): void
+/**
+ * This function essentially limits the life time of the `closure` to
+ * the life time of the object. That is, when the object is finalized,
+ * the `closure` is invalidated by calling g_closure_invalidate() on
+ * it, in order to prevent invocations of the closure with a finalized
+ * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+ * added as marshal guards to the `closure,` to ensure that an extra
+ * reference count is held on `object` during invocation of the
+ * `closure`.  Usually, this function will be called on closures that
+ * use this `object` as closure data.
+ * @param closure #GClosure to watch
+ */
+watch_closure(closure: GObject.Closure): void
+vfunc_constructed(): void
+vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+vfunc_dispose(): void
+vfunc_finalize(): void
+vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+/**
+ * Emits a "notify" signal for the property `property_name` on `object`.
+ * 
+ * When possible, eg. when signaling a property change from within the class
+ * that registered the property, you should use g_object_notify_by_pspec()
+ * instead.
+ * 
+ * Note that emission of the notify signal may be blocked with
+ * g_object_freeze_notify(). In this case, the signal emissions are queued
+ * and will be emitted (in reverse order) when g_object_thaw_notify() is
+ * called.
+ * @param pspec 
+ */
+vfunc_notify(pspec: GObject.ParamSpec): void
+vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
+disconnect(id: number): void
+set(properties: { [key: string]: any }): void
+block_signal_handler(id: number): any
+unblock_signal_handler(id: number): any
+stop_emission_by_name(detailedName: string): any
+}
+
+type DataSourceRegistryClass = typeof DataSourceRegistry
+abstract class DataSourceRegistryPrivate {
+
+    // Constructors of Zeitgeist.DataSourceRegistryPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type IndexClass = typeof Index
+abstract class IndexPrivate {
+
+    // Constructors of Zeitgeist.IndexPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type LogClass = typeof Log
+abstract class LogPrivate {
+
+    // Constructors of Zeitgeist.LogPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type MonitorClass = typeof Monitor
+abstract class MonitorPrivate {
+
+    // Constructors of Zeitgeist.MonitorPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type QueuedProxyWrapperClass = typeof QueuedProxyWrapper
+abstract class QueuedProxyWrapperPrivate {
+
+    // Constructors of Zeitgeist.QueuedProxyWrapperPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type QueuedProxyWrapperQueuedMethodClass = typeof QueuedProxyWrapperQueuedMethod
+abstract class QueuedProxyWrapperQueuedMethodPrivate {
+
+    // Constructors of Zeitgeist.QueuedProxyWrapperQueuedMethodPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type DataSourceClass = typeof DataSource
+abstract class DataSourcePrivate {
+
+    // Constructors of Zeitgeist.DataSourcePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type EventClass = typeof Event
+abstract class EventPrivate {
+
+    // Constructors of Zeitgeist.EventPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type SubjectClass = typeof Subject
+abstract class SubjectPrivate {
+
+    // Constructors of Zeitgeist.SubjectPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type TimeRangeClass = typeof TimeRange
+abstract class TimeRangePrivate {
+
+    // Constructors of Zeitgeist.TimeRangePrivate
+
+_init(...args: any[]): void;
+
+}
+
+type SimpleResultSetClass = typeof SimpleResultSet
+abstract class SimpleResultSetPrivate {
+
+    // Constructors of Zeitgeist.SimpleResultSetPrivate
+
+_init(...args: any[]): void;
+
+}
+
+type RemoteRegistryIface = typeof RemoteRegistry
+type RemoteLogIface = typeof RemoteLog
+type RemoteMonitorIface = typeof RemoteMonitor
+type RemoteSimpleIndexerIface = typeof RemoteSimpleIndexer
+type NetworkManagerDBusIface = typeof NetworkManagerDBus
+type ConnmanManagerDBusIface = typeof ConnmanManagerDBus
+type ResultSetIface = typeof ResultSet
+class VersionStruct {
+
+    // Own fields of Zeitgeist.VersionStruct
+
+major: number
+minor: number
+micro: number
+
+    // Constructors of Zeitgeist.VersionStruct
+
+
+    constructor(properties?: Partial<{
+      major: number
+minor: number
+micro: number
+    }>);
+_init(...args: any[]): void;
+
+}
+
+module RemoteRegistry {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class Subject extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.Subject
+}
 
-        uri: string;
-        origin: string;
-        text: string;
-        storage: string;
-        current_uri: string;
-        currentUri: string;
-        current_origin: string;
-        currentOrigin: string;
-        mimetype: string;
-        interpretation: string;
-        manifestation: string;
+export interface RemoteRegistryNamespace {
+      $gtype: GObject.GType<RemoteRegistry>;
+      prototype: RemoteRegistry;
+      
+          
+      }
+interface RemoteRegistry extends GObject.Object {
 
-        // Constructors of Zeitgeist-2.0.Subject
+    // Own methods of Zeitgeist.RemoteRegistry
 
-        static full(
-            uri?: string | null,
-            interpretation?: string | null,
-            manifestation?: string | null,
-            mimetype?: string | null,
-            origin?: string | null,
-            text?: string | null,
-            storage?: string | null,
-        ): Subject;
+    get_data_sources(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant
+    register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    register_data_source_finish(_res_: Gio.AsyncResult): boolean
+    set_data_source_enabled(unique_id: string, enabled: boolean, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
+    get_data_source_from_id(unique_id: string, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant
 
-        static move_event(
-            source_uri?: string | null,
-            source_origin?: string | null,
-            destination_uri?: string | null,
-            destination_origin?: string | null,
-            interpretation?: string | null,
-            manifestation?: string | null,
-            mimetype?: string | null,
-            text?: string | null,
-            storage?: string | null,
-        ): Subject;
+    // Own virtual methods of Zeitgeist.RemoteRegistry
 
-        static from_variant(subject_variant: GLib.Variant): Subject;
+    vfunc_get_data_sources(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant
+    vfunc_register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean
+    vfunc_set_data_source_enabled(unique_id: string, enabled: boolean, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_data_source_from_id(unique_id: string, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant
+}
 
-        static ['new'](): Subject;
 
-        // Owm methods of Zeitgeist-2.0.Subject
 
-        to_variant(): GLib.Variant;
-        matches_template(template_subject: Subject): boolean;
-        get_uri(): string | null;
-        set_uri(value?: string | null): void;
-        get_origin(): string | null;
-        set_origin(value?: string | null): void;
-        get_text(): string | null;
-        set_text(value?: string | null): void;
-        get_storage(): string | null;
-        set_storage(value?: string | null): void;
-        get_current_uri(): string | null;
-        set_current_uri(value?: string | null): void;
-        get_current_origin(): string | null;
-        set_current_origin(value?: string | null): void;
-        get_mimetype(): string | null;
-        set_mimetype(value?: string | null): void;
-        get_interpretation(): string | null;
-        set_interpretation(value?: string | null): void;
-        get_manifestation(): string | null;
-        set_manifestation(value?: string | null): void;
+export const RemoteRegistry: RemoteRegistryNamespace;
+
+module RemoteLog {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module TimeRange {
-        // Constructor properties interface
+}
+
+export interface RemoteLogNamespace {
+      $gtype: GObject.GType<RemoteLog>;
+      prototype: RemoteLog;
+      
+          
+      }
+interface RemoteLog extends GObject.Object {
+
+    // Own methods of Zeitgeist.RemoteLog
+
+    delete_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_event_ids_finish(_res_: Gio.AsyncResult): number[]
+    find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    find_related_uris_finish(_res_: Gio.AsyncResult): string[]
+    get_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    get_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    insert_events(events: GLib.Variant, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    insert_events_finish(_res_: Gio.AsyncResult): number[]
+    install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    install_monitor_finish(_res_: Gio.AsyncResult): void
+    remove_monitor(monitor_path: never, owner?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    remove_monitor_finish(_res_: Gio.AsyncResult): void
+    quit(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    quit_finish(_res_: Gio.AsyncResult): void
+    get_extensions(): string[]
+    get_version(): VersionStruct
+    get_datapath(): string
+
+    // Own virtual methods of Zeitgeist.RemoteLog
+
+    vfunc_delete_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    vfunc_find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_find_event_ids_finish(_res_: Gio.AsyncResult): number[]
+    vfunc_find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_find_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    vfunc_find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_find_related_uris_finish(_res_: Gio.AsyncResult): string[]
+    vfunc_get_events(event_ids: number[], cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_get_events_finish(_res_: Gio.AsyncResult): GLib.Variant
+    vfunc_insert_events(events: GLib.Variant, cancellable?: (Gio.Cancellable | null), sender?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_insert_events_finish(_res_: Gio.AsyncResult): number[]
+    vfunc_install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_install_monitor_finish(_res_: Gio.AsyncResult): void
+    vfunc_remove_monitor(monitor_path: never, owner?: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_remove_monitor_finish(_res_: Gio.AsyncResult): void
+    vfunc_quit(cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_quit_finish(_res_: Gio.AsyncResult): void
+    vfunc_get_extensions(): string[]
+    vfunc_get_version(): VersionStruct
+    vfunc_get_datapath(): string
+}
+
+
+
+export const RemoteLog: RemoteLogNamespace;
+
+module RemoteMonitor {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class TimeRange extends GObject.Object {
-        // Own properties of Zeitgeist-2.0.TimeRange
+}
 
-        start: number;
-        end: number;
+export interface RemoteMonitorNamespace {
+      $gtype: GObject.GType<RemoteMonitor>;
+      prototype: RemoteMonitor;
+      
+          
+      }
+interface RemoteMonitor extends GObject.Object {
 
-        // Constructors of Zeitgeist-2.0.TimeRange
+    // Own methods of Zeitgeist.RemoteMonitor
 
-        static ['new'](start_msec: number, end_msec: number): TimeRange;
+    notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    notify_insert_finish(_res_: Gio.AsyncResult): void
+    notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    notify_delete_finish(_res_: Gio.AsyncResult): void
 
-        static anytime(): TimeRange;
+    // Own virtual methods of Zeitgeist.RemoteMonitor
 
-        static to_now(): TimeRange;
+    vfunc_notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void
+    vfunc_notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void
+}
 
-        static from_now(): TimeRange;
 
-        static from_variant(variant: GLib.Variant): TimeRange;
 
-        // Owm methods of Zeitgeist-2.0.TimeRange
+export const RemoteMonitor: RemoteMonitorNamespace;
 
-        to_variant(): GLib.Variant;
-        intersect(time_range: TimeRange): TimeRange | null;
-        get_start(): number;
-        get_end(): number;
+module RemoteSimpleIndexer {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    module SimpleResultSet {
-        // Constructor properties interface
+}
+
+export interface RemoteSimpleIndexerNamespace {
+      $gtype: GObject.GType<RemoteSimpleIndexer>;
+      prototype: RemoteSimpleIndexer;
+      
+          
+      }
+interface RemoteSimpleIndexer extends GObject.Object {
+
+    // Own methods of Zeitgeist.RemoteSimpleIndexer
+
+    search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number]
+    search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number]
+
+    // Own virtual methods of Zeitgeist.RemoteSimpleIndexer
+
+    vfunc_search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number]
+    vfunc_search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable?: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): void
+    vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number]
+}
+
+
+
+export const RemoteSimpleIndexer: RemoteSimpleIndexerNamespace;
+
+module NetworkManagerDBus {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class SimpleResultSet extends GObject.Object {
-        // Constructors of Zeitgeist-2.0.SimpleResultSet
+}
 
-        static ['new'](events: Event[]): SimpleResultSet;
+export interface NetworkManagerDBusNamespace {
+      $gtype: GObject.GType<NetworkManagerDBus>;
+      prototype: NetworkManagerDBus;
+      
+          
+      }
+interface NetworkManagerDBus extends GObject.Object {
 
-        static with_num_matches(events: Event[], matches: number): SimpleResultSet;
+    // Own methods of Zeitgeist.NetworkManagerDBus
+
+    state(): number
+
+    // Own virtual methods of Zeitgeist.NetworkManagerDBus
+
+    vfunc_state(): number
+}
+
+
+
+export const NetworkManagerDBus: NetworkManagerDBusNamespace;
+
+module ConnmanManagerDBus {
+
+    // Constructor properties interface
+
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
+
     }
 
-    class DataSourceRegistryClass {}
+}
 
-    class DataSourceRegistryPrivate {}
+export interface ConnmanManagerDBusNamespace {
+      $gtype: GObject.GType<ConnmanManagerDBus>;
+      prototype: ConnmanManagerDBus;
+      
+          
+      }
+interface ConnmanManagerDBus extends GObject.Object {
 
-    class IndexClass {}
+    // Own methods of Zeitgeist.ConnmanManagerDBus
 
-    class IndexPrivate {}
+    get_state(): string
 
-    class LogClass {}
+    // Own virtual methods of Zeitgeist.ConnmanManagerDBus
 
-    class LogPrivate {}
+    vfunc_get_state(): string
+}
 
-    class MonitorClass {}
 
-    class MonitorPrivate {}
 
-    class QueuedProxyWrapperClass {}
+export const ConnmanManagerDBus: ConnmanManagerDBusNamespace;
 
-    class QueuedProxyWrapperPrivate {}
+module ResultSet {
 
-    class QueuedProxyWrapperQueuedMethodClass {}
+    // Constructor properties interface
 
-    class QueuedProxyWrapperQueuedMethodPrivate {}
+    interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-    class DataSourceClass {}
-
-    class DataSourcePrivate {}
-
-    class EventClass {}
-
-    class EventPrivate {}
-
-    class SubjectClass {}
-
-    class SubjectPrivate {}
-
-    class TimeRangeClass {}
-
-    class TimeRangePrivate {}
-
-    class SimpleResultSetClass {}
-
-    class SimpleResultSetPrivate {}
-
-    class RemoteRegistryIface {}
-
-    class RemoteLogIface {}
-
-    class RemoteMonitorIface {}
-
-    class RemoteSimpleIndexerIface {}
-
-    class NetworkManagerDBusIface {}
-
-    class ConnmanManagerDBusIface {}
-
-    class ResultSetIface {}
-
-    class VersionStruct {
-        // Own fields of Zeitgeist-2.0.VersionStruct
-
-        major: number;
-        minor: number;
-        micro: number;
-
-        // Constructors of Zeitgeist-2.0.VersionStruct
-
-        constructor(
-            properties?: Partial<{
-                major: number;
-                minor: number;
-                micro: number;
-            }>,
-        );
     }
 
-    interface RemoteRegistry {
-        // Owm methods of Zeitgeist-2.0.RemoteRegistry
+}
 
-        get_data_sources(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        register_data_source(
-            unique_id: string,
-            name: string,
-            description: string,
-            event_templates: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        register_data_source_finish(_res_: Gio.AsyncResult): boolean;
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
+export interface ResultSetNamespace {
+      $gtype: GObject.GType<ResultSet>;
+      prototype: ResultSet;
+      
+          
+      }
+interface ResultSet extends GObject.Object {
 
-        // Own virtual methods of Zeitgeist-2.0.RemoteRegistry
+    // Own methods of Zeitgeist.ResultSet
 
-        vfunc_get_data_sources(
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        vfunc_register_data_source(
-            unique_id: string,
-            name: string,
-            description: string,
-            event_templates: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean;
-        vfunc_set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_data_source_from_id(
-            unique_id: string,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
-    }
+    size(): number
+    estimated_matches(): number
+    next_value(): (Event | null)
+    has_next(): boolean
+    tell(): number
+    reset(): void
+    iterator(): ResultSet
 
-    interface RemoteLog {
-        // Owm methods of Zeitgeist-2.0.RemoteLog
+    // Own virtual methods of Zeitgeist.ResultSet
 
-        delete_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        find_event_ids(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_event_ids_finish(_res_: Gio.AsyncResult): number[];
-        find_events(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        find_related_uris(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            result_event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        find_related_uris_finish(_res_: Gio.AsyncResult): string[];
-        get_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        insert_events(
-            events: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        insert_events_finish(_res_: Gio.AsyncResult): number[];
-        install_monitor(
-            monitor_path: GLib.ObjectPath,
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            owner?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        install_monitor_finish(_res_: Gio.AsyncResult): void;
-        remove_monitor(
-            monitor_path: GLib.ObjectPath,
-            owner?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        remove_monitor_finish(_res_: Gio.AsyncResult): void;
-        quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        quit_finish(_res_: Gio.AsyncResult): void;
-        get_extensions(): string[];
-        get_version(): void;
-        get_datapath(): string;
+    vfunc_size(): number
+    vfunc_estimated_matches(): number
+    vfunc_next_value(): (Event | null)
+    vfunc_has_next(): boolean
+    vfunc_tell(): number
+    vfunc_reset(): void
+}
 
-        // Own virtual methods of Zeitgeist-2.0.RemoteLog
 
-        vfunc_delete_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        vfunc_find_event_ids(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_find_event_ids_finish(_res_: Gio.AsyncResult): number[];
-        vfunc_find_events(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        vfunc_find_related_uris(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            result_event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_find_related_uris_finish(_res_: Gio.AsyncResult): string[];
-        vfunc_get_events(
-            event_ids: number[],
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
-        vfunc_insert_events(
-            events: GLib.Variant,
-            cancellable?: Gio.Cancellable | null,
-            sender?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_insert_events_finish(_res_: Gio.AsyncResult): number[];
-        vfunc_install_monitor(
-            monitor_path: GLib.ObjectPath,
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            owner?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_install_monitor_finish(_res_: Gio.AsyncResult): void;
-        vfunc_remove_monitor(
-            monitor_path: GLib.ObjectPath,
-            owner?: GLib.BusName | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_remove_monitor_finish(_res_: Gio.AsyncResult): void;
-        vfunc_quit(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
-        vfunc_quit_finish(_res_: Gio.AsyncResult): void;
-        vfunc_get_extensions(): string[];
-        vfunc_get_version(): void;
-        vfunc_get_datapath(): string;
-    }
 
-    interface RemoteMonitor {
-        // Owm methods of Zeitgeist-2.0.RemoteMonitor
+export const ResultSet: ResultSetNamespace;
 
-        notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        notify_insert_finish(_res_: Gio.AsyncResult): void;
-        notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        notify_delete_finish(_res_: Gio.AsyncResult): void;
-
-        // Own virtual methods of Zeitgeist-2.0.RemoteMonitor
-
-        vfunc_notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void;
-        vfunc_notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void;
-    }
-
-    interface RemoteSimpleIndexer {
-        // Owm methods of Zeitgeist-2.0.RemoteSimpleIndexer
-
-        search(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        search_finish(_res_: Gio.AsyncResult): void;
-        search_with_relevancies(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            storage_state: number,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        search_with_relevancies_finish(_res_: Gio.AsyncResult): void;
-
-        // Own virtual methods of Zeitgeist-2.0.RemoteSimpleIndexer
-
-        vfunc_search(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_search_finish(_res_: Gio.AsyncResult): void;
-        vfunc_search_with_relevancies(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            storage_state: number,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable?: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): void;
-    }
-
-    interface NetworkManagerDBus {
-        // Owm methods of Zeitgeist-2.0.NetworkManagerDBus
-
-        state(): number;
-
-        // Own virtual methods of Zeitgeist-2.0.NetworkManagerDBus
-
-        vfunc_state(): number;
-    }
-
-    interface ConnmanManagerDBus {
-        // Owm methods of Zeitgeist-2.0.ConnmanManagerDBus
-
-        get_state(): string;
-
-        // Own virtual methods of Zeitgeist-2.0.ConnmanManagerDBus
-
-        vfunc_get_state(): string;
-    }
-
-    interface ResultSet {
-        // Owm methods of Zeitgeist-2.0.ResultSet
-
-        size(): number;
-        estimated_matches(): number;
-        next_value(): Event | null;
-        has_next(): boolean;
-        tell(): number;
-        reset(): void;
-        iterator(): ResultSet;
-
-        // Own virtual methods of Zeitgeist-2.0.ResultSet
-
-        vfunc_size(): number;
-        vfunc_estimated_matches(): number;
-        vfunc_next_value(): Event | null;
-        vfunc_has_next(): boolean;
-        vfunc_tell(): number;
-        vfunc_reset(): void;
-    }
-
-    /**
-     * Name of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
-     */
-    const __name__: string;
-    /**
-     * Version of the imported GIR library
-     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
-     */
-    const __version__: string;
+/**
+ * Name of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+ */
+const __name__: string
+/**
+ * Version of the imported GIR library
+ * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+ */
+const __version__: string
 }
 
 export default Zeitgeist;

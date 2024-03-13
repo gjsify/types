@@ -5,8 +5,7 @@ declare module 'gi://ArrowDataset?version=1.0' {
 }
 
 declare module 'gi://ArrowDataset' {
-    import ArrowDataset10 from '@girs/arrowdataset-1.0';
-    export default ArrowDataset10;
+    export * from 'gi://ArrowDataset?version=1.0';
 }
 
 

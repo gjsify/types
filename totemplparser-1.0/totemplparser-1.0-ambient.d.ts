@@ -5,8 +5,7 @@ declare module 'gi://TotemPlParser?version=1.0' {
 }
 
 declare module 'gi://TotemPlParser' {
-    import TotemPlParser10 from '@girs/totemplparser-1.0';
-    export default TotemPlParser10;
+    export * from 'gi://TotemPlParser?version=1.0';
 }
 
 
