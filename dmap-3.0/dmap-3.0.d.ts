@@ -6,7 +6,7 @@
  */
 
 import './dmap-3.0-ambient.d.ts';
-import './dmap-3.0-import.d.ts';
+
 /**
  * DMAP-3.0
  */

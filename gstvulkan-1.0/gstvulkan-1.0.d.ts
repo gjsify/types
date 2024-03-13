@@ -6,7 +6,7 @@
  */
 
 import './gstvulkan-1.0-ambient.d.ts';
-import './gstvulkan-1.0-import.d.ts';
+
 /**
  * GstVulkan-1.0
  */

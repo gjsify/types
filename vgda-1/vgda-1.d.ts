@@ -6,7 +6,7 @@
  */
 
 import './vgda-1-ambient.d.ts';
-import './vgda-1-import.d.ts';
+
 /**
  * Vgda-1
  */

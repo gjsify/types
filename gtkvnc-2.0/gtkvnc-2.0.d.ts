@@ -6,7 +6,7 @@
  */
 
 import './gtkvnc-2.0-ambient.d.ts';
-import './gtkvnc-2.0-import.d.ts';
+
 /**
  * GtkVnc-2.0
  */

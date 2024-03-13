@@ -6,7 +6,7 @@
  */
 
 import './gstplay-1.0-ambient.d.ts';
-import './gstplay-1.0-import.d.ts';
+
 /**
  * GstPlay-1.0
  */

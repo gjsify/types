@@ -6,7 +6,7 @@
  */
 
 import './rest-1.0-ambient.d.ts';
-import './rest-1.0-import.d.ts';
+
 /**
  * Rest-1.0
  */

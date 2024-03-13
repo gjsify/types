@@ -6,7 +6,7 @@
  */
 
 import './ebook-1.2-ambient.d.ts';
-import './ebook-1.2-import.d.ts';
+
 /**
  * EBook-1.2
  */

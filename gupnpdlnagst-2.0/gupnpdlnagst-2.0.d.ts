@@ -6,7 +6,7 @@
  */
 
 import './gupnpdlnagst-2.0-ambient.d.ts';
-import './gupnpdlnagst-2.0-import.d.ts';
+
 /**
  * GUPnPDLNAGst-2.0
  */

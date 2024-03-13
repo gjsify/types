@@ -6,7 +6,7 @@
  */
 
 import './udisks-2.0-ambient.d.ts';
-import './udisks-2.0-import.d.ts';
+
 /**
  * UDisks-2.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './vsqlite-1-ambient.d.ts';
-import './vsqlite-1-import.d.ts';
+
 /**
  * Vsqlite-1
  */

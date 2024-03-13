@@ -6,7 +6,7 @@
  */
 
 import './gexiv2-0.10-ambient.d.ts';
-import './gexiv2-0.10-import.d.ts';
+
 /**
  * GExiv2-0.10
  */

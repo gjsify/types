@@ -6,7 +6,7 @@
  */
 
 import './parquet-1.0-ambient.d.ts';
-import './parquet-1.0-import.d.ts';
+
 /**
  * Parquet-1.0
  */

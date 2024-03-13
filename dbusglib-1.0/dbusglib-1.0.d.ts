@@ -6,7 +6,7 @@
  */
 
 import './dbusglib-1.0-ambient.d.ts';
-import './dbusglib-1.0-import.d.ts';
+
 /**
  * DBusGLib-1.0
  */

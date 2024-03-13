@@ -6,7 +6,7 @@
  */
 
 import './bamf-3-ambient.d.ts';
-import './bamf-3-import.d.ts';
+
 /**
  * Bamf-3
  */

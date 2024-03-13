@@ -6,7 +6,7 @@
  */
 
 import './gspell-1-ambient.d.ts';
-import './gspell-1-import.d.ts';
+
 /**
  * Gspell-1
  */

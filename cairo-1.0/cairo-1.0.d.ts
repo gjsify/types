@@ -6,7 +6,7 @@
  */
 
 import './cairo-1.0-ambient.d.ts';
-import './cairo-1.0-import.d.ts';
+
 /**
  * cairo-1.0
  */

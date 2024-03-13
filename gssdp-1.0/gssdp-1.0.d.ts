@@ -6,7 +6,9 @@
  */
 
 import './gssdp-1.0-ambient.d.ts';
+
 import './gssdp-1.0-import.d.ts';
+
 /**
  * GSSDP-1.0
  */

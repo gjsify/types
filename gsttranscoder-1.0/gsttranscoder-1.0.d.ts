@@ -6,7 +6,7 @@
  */
 
 import './gsttranscoder-1.0-ambient.d.ts';
-import './gsttranscoder-1.0-import.d.ts';
+
 /**
  * GstTranscoder-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './nice-0.1-ambient.d.ts';
-import './nice-0.1-import.d.ts';
+
 /**
  * Nice-0.1
  */

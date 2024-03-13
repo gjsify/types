@@ -6,7 +6,7 @@
  */
 
 import './gcab-1.0-ambient.d.ts';
-import './gcab-1.0-import.d.ts';
+
 /**
  * GCab-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './camel-1.2-ambient.d.ts';
-import './camel-1.2-import.d.ts';
+
 /**
  * Camel-1.2
  */

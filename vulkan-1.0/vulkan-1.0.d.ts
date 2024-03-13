@@ -6,7 +6,7 @@
  */
 
 import './vulkan-1.0-ambient.d.ts';
-import './vulkan-1.0-import.d.ts';
+
 /**
  * Vulkan-1.0
  */

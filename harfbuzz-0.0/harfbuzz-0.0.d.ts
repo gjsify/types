@@ -6,7 +6,7 @@
  */
 
 import './harfbuzz-0.0-ambient.d.ts';
-import './harfbuzz-0.0-import.d.ts';
+
 /**
  * HarfBuzz-0.0
  */

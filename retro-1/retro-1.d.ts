@@ -6,7 +6,9 @@
  */
 
 import './retro-1-ambient.d.ts';
+
 import './retro-1-import.d.ts';
+
 /**
  * Retro-1
  */

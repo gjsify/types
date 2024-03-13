@@ -6,7 +6,7 @@
  */
 
 import './signon-2.0-ambient.d.ts';
-import './signon-2.0-import.d.ts';
+
 /**
  * Signon-2.0
  */

@@ -6,7 +6,9 @@
  */
 
 import './amtk-4-ambient.d.ts';
+
 import './amtk-4-import.d.ts';
+
 /**
  * Amtk-4
  */

@@ -6,7 +6,7 @@
  */
 
 import './gconf-2.0-ambient.d.ts';
-import './gconf-2.0-import.d.ts';
+
 /**
  * GConf-2.0
  */

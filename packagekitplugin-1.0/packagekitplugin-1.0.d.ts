@@ -6,7 +6,7 @@
  */
 
 import './packagekitplugin-1.0-ambient.d.ts';
-import './packagekitplugin-1.0-import.d.ts';
+
 /**
  * PackageKitPlugin-1.0
  */

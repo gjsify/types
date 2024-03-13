@@ -6,7 +6,7 @@
  */
 
 import './socialwebclient-0.25-ambient.d.ts';
-import './socialwebclient-0.25-import.d.ts';
+
 /**
  * SocialWebClient-0.25
  */

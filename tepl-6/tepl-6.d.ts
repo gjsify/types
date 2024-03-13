@@ -6,7 +6,7 @@
  */
 
 import './tepl-6-ambient.d.ts';
-import './tepl-6-import.d.ts';
+
 /**
  * Tepl-6
  */

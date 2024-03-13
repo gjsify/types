@@ -6,7 +6,7 @@
  */
 
 import './bump-0.1-ambient.d.ts';
-import './bump-0.1-import.d.ts';
+
 /**
  * Bump-0.1
  */

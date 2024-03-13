@@ -6,7 +6,9 @@
  */
 
 import './gstpbutils-0.10-ambient.d.ts';
+
 import './gstpbutils-0.10-import.d.ts';
+
 /**
  * GstPbutils-0.10
  */

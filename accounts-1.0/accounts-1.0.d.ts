@@ -6,7 +6,7 @@
  */
 
 import './accounts-1.0-ambient.d.ts';
-import './accounts-1.0-import.d.ts';
+
 /**
  * Accounts-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './babl-0.1-ambient.d.ts';
-import './babl-0.1-import.d.ts';
+
 /**
  * Babl-0.1
  */

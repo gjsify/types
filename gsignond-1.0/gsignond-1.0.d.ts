@@ -6,7 +6,7 @@
  */
 
 import './gsignond-1.0-ambient.d.ts';
-import './gsignond-1.0-import.d.ts';
+
 /**
  * GSignond-1.0
  */

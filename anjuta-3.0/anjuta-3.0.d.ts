@@ -6,7 +6,7 @@
  */
 
 import './anjuta-3.0-ambient.d.ts';
-import './anjuta-3.0-import.d.ts';
+
 /**
  * Anjuta-3.0
  */

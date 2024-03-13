@@ -6,7 +6,7 @@
  */
 
 import './gxml-0.20-ambient.d.ts';
-import './gxml-0.20-import.d.ts';
+
 /**
  * GXml-0.20
  */

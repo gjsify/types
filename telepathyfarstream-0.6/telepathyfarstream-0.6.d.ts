@@ -6,7 +6,7 @@
  */
 
 import './telepathyfarstream-0.6-ambient.d.ts';
-import './telepathyfarstream-0.6-import.d.ts';
+
 /**
  * TelepathyFarstream-0.6
  */

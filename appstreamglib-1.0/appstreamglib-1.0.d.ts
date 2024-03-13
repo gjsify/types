@@ -6,7 +6,7 @@
  */
 
 import './appstreamglib-1.0-ambient.d.ts';
-import './appstreamglib-1.0-import.d.ts';
+
 /**
  * AppStreamGlib-1.0
  */

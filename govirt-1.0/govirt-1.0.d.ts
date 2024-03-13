@@ -6,7 +6,7 @@
  */
 
 import './govirt-1.0-ambient.d.ts';
-import './govirt-1.0-import.d.ts';
+
 /**
  * GoVirt-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './appstreambuilder-1.0-ambient.d.ts';
-import './appstreambuilder-1.0-import.d.ts';
+
 /**
  * AppStreamBuilder-1.0
  */

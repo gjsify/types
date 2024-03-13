@@ -6,7 +6,7 @@
  */
 
 import './ecal-2.0-ambient.d.ts';
-import './ecal-2.0-import.d.ts';
+
 /**
  * ECal-2.0
  */

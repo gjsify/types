@@ -6,7 +6,7 @@
  */
 
 import './totem-1.0-ambient.d.ts';
-import './totem-1.0-import.d.ts';
+
 /**
  * Totem-1.0
  */

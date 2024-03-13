@@ -6,7 +6,7 @@
  */
 
 import './dee-1.0-ambient.d.ts';
-import './dee-1.0-import.d.ts';
+
 /**
  * Dee-1.0
  */

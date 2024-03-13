@@ -6,7 +6,7 @@
  */
 
 import './ebackend-1.2-ambient.d.ts';
-import './ebackend-1.2-import.d.ts';
+
 /**
  * EBackend-1.2
  */

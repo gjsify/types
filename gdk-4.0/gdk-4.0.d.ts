@@ -6,7 +6,7 @@
  */
 
 import './gdk-4.0-ambient.d.ts';
-import './gdk-4.0-import.d.ts';
+
 /**
  * Gdk-4.0
  */

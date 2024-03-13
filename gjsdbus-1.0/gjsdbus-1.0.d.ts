@@ -6,7 +6,7 @@
  */
 
 import './gjsdbus-1.0-ambient.d.ts';
-import './gjsdbus-1.0-import.d.ts';
+
 /**
  * GjsDBus-1.0
  */

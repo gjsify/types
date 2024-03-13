@@ -6,7 +6,7 @@
  */
 
 import './pnl-1.0-ambient.d.ts';
-import './pnl-1.0-import.d.ts';
+
 /**
  * Pnl-1.0
  */

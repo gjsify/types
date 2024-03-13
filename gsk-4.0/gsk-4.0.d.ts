@@ -6,7 +6,7 @@
  */
 
 import './gsk-4.0-ambient.d.ts';
-import './gsk-4.0-import.d.ts';
+
 /**
  * Gsk-4.0
  */

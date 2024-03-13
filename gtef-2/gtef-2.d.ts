@@ -6,7 +6,7 @@
  */
 
 import './gtef-2-ambient.d.ts';
-import './gtef-2-import.d.ts';
+
 /**
  * Gtef-2
  */

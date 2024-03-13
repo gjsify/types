@@ -6,7 +6,7 @@
  */
 
 import './gcrgtk4-4-ambient.d.ts';
-import './gcrgtk4-4-import.d.ts';
+
 /**
  * GcrGtk4-4
  */

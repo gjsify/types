@@ -6,7 +6,7 @@
  */
 
 import './gstriff-1.0-ambient.d.ts';
-import './gstriff-1.0-import.d.ts';
+
 /**
  * GstRiff-1.0
  */

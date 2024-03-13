@@ -6,7 +6,9 @@
  */
 
 import './gck-1-ambient.d.ts';
+
 import './gck-1-import.d.ts';
+
 /**
  * Gck-1
  */

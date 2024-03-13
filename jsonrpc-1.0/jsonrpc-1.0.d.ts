@@ -6,7 +6,7 @@
  */
 
 import './jsonrpc-1.0-ambient.d.ts';
-import './jsonrpc-1.0-import.d.ts';
+
 /**
  * Jsonrpc-1.0
  */

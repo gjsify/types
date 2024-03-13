@@ -6,7 +6,7 @@
  */
 
 import './gdkwayland-4.0-ambient.d.ts';
-import './gdkwayland-4.0-import.d.ts';
+
 /**
  * GdkWayland-4.0
  */

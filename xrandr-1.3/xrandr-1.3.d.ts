@@ -6,7 +6,7 @@
  */
 
 import './xrandr-1.3-ambient.d.ts';
-import './xrandr-1.3-import.d.ts';
+
 /**
  * xrandr-1.3
  */

@@ -6,7 +6,7 @@
  */
 
 import './ebookcontacts-1.2-ambient.d.ts';
-import './ebookcontacts-1.2-import.d.ts';
+
 /**
  * EBookContacts-1.2
  */

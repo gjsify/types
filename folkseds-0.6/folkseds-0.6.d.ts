@@ -6,7 +6,9 @@
  */
 
 import './folkseds-0.6-ambient.d.ts';
+
 import './folkseds-0.6-import.d.ts';
+
 /**
  * FolksEds-0.6
  */

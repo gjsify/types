@@ -6,7 +6,7 @@
  */
 
 import './anthy-9000-ambient.d.ts';
-import './anthy-9000-import.d.ts';
+
 /**
  * Anthy-9000
  */

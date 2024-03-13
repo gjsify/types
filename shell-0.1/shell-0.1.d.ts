@@ -6,7 +6,9 @@
  */
 
 import './shell-0.1-ambient.d.ts';
+
 import './shell-0.1-import.d.ts';
+
 /**
  * Shell-0.1
  */

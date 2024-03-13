@@ -6,7 +6,9 @@
  */
 
 import './cogl-10-ambient.d.ts';
+
 import './cogl-10-import.d.ts';
+
 /**
  * Cogl-10
  */

@@ -6,7 +6,7 @@
  */
 
 import './arrow-1.0-ambient.d.ts';
-import './arrow-1.0-import.d.ts';
+
 /**
  * Arrow-1.0
  */

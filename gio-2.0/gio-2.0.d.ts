@@ -6,7 +6,7 @@
  */
 
 import './gio-2.0-ambient.d.ts';
-import './gio-2.0-import.d.ts';
+
 /**
  * Gio-2.0
  */

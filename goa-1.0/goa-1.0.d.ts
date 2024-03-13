@@ -6,7 +6,7 @@
  */
 
 import './goa-1.0-ambient.d.ts';
-import './goa-1.0-import.d.ts';
+
 /**
  * Goa-1.0
  */

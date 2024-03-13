@@ -6,7 +6,7 @@
  */
 
 import './amtk-5-ambient.d.ts';
-import './amtk-5-import.d.ts';
+
 /**
  * Amtk-5
  */

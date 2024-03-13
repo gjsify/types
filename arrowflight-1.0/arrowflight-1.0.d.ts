@@ -6,7 +6,7 @@
  */
 
 import './arrowflight-1.0-ambient.d.ts';
-import './arrowflight-1.0-import.d.ts';
+
 /**
  * ArrowFlight-1.0
  */

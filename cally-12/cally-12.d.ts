@@ -6,7 +6,9 @@
  */
 
 import './cally-12-ambient.d.ts';
+
 import './cally-12-import.d.ts';
+
 /**
  * Cally-12
  */

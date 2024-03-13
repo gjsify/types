@@ -6,7 +6,9 @@
  */
 
 import './gxml-0.14-ambient.d.ts';
+
 import './gxml-0.14-import.d.ts';
+
 /**
  * GXml-0.14
  */

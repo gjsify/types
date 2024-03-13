@@ -6,7 +6,7 @@
  */
 
 import './gusb-1.0-ambient.d.ts';
-import './gusb-1.0-import.d.ts';
+
 /**
  * GUsb-1.0
  */

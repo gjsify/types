@@ -6,7 +6,7 @@
  */
 
 import './grl-0.3-ambient.d.ts';
-import './grl-0.3-import.d.ts';
+
 /**
  * Grl-0.3
  */

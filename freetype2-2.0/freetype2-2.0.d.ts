@@ -6,7 +6,7 @@
  */
 
 import './freetype2-2.0-ambient.d.ts';
-import './freetype2-2.0-import.d.ts';
+
 /**
  * freetype2-2.0
  */

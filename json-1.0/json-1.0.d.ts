@@ -6,7 +6,7 @@
  */
 
 import './json-1.0-ambient.d.ts';
-import './json-1.0-import.d.ts';
+
 /**
  * Json-1.0
  */

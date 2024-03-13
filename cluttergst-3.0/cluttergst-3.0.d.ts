@@ -6,7 +6,7 @@
  */
 
 import './cluttergst-3.0-ambient.d.ts';
-import './cluttergst-3.0-import.d.ts';
+
 /**
  * ClutterGst-3.0
  */

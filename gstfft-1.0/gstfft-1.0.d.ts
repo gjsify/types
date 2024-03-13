@@ -6,7 +6,7 @@
  */
 
 import './gstfft-1.0-ambient.d.ts';
-import './gstfft-1.0-import.d.ts';
+
 /**
  * GstFft-1.0
  */

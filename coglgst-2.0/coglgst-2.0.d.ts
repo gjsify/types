@@ -6,7 +6,7 @@
  */
 
 import './coglgst-2.0-ambient.d.ts';
-import './coglgst-2.0-import.d.ts';
+
 /**
  * CoglGst-2.0
  */

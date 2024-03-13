@@ -6,7 +6,7 @@
  */
 
 import './gsystem-1.0-ambient.d.ts';
-import './gsystem-1.0-import.d.ts';
+
 /**
  * GSystem-1.0
  */

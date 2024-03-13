@@ -6,7 +6,9 @@
  */
 
 import './gee-0.8-ambient.d.ts';
+
 import './gee-0.8-import.d.ts';
+
 /**
  * Gee-0.8
  */

@@ -6,7 +6,7 @@
  */
 
 import './grss-0.7-ambient.d.ts';
-import './grss-0.7-import.d.ts';
+
 /**
  * Grss-0.7
  */

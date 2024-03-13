@@ -6,7 +6,7 @@
  */
 
 import './notify-0.7-ambient.d.ts';
-import './notify-0.7-import.d.ts';
+
 /**
  * Notify-0.7
  */

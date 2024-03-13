@@ -6,7 +6,7 @@
  */
 
 import './xlib-2.0-ambient.d.ts';
-import './xlib-2.0-import.d.ts';
+
 /**
  * xlib-2.0
  */

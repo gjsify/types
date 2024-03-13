@@ -6,7 +6,7 @@
  */
 
 import './coglpango-2.0-ambient.d.ts';
-import './coglpango-2.0-import.d.ts';
+
 /**
  * CoglPango-2.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './gstglwayland-1.0-ambient.d.ts';
-import './gstglwayland-1.0-import.d.ts';
+
 /**
  * GstGLWayland-1.0
  */

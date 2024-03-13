@@ -6,7 +6,9 @@
  */
 
 import './gcalc-1-ambient.d.ts';
+
 import './gcalc-1-import.d.ts';
+
 /**
  * GCalc-1
  */

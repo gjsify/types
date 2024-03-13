@@ -6,7 +6,7 @@
  */
 
 import './caribou-1.0-ambient.d.ts';
-import './caribou-1.0-import.d.ts';
+
 /**
  * Caribou-1.0
  */

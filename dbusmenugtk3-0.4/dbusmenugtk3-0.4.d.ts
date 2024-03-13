@@ -6,7 +6,7 @@
  */
 
 import './dbusmenugtk3-0.4-ambient.d.ts';
-import './dbusmenugtk3-0.4-import.d.ts';
+
 /**
  * DbusmenuGtk3-0.4
  */

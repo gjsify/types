@@ -6,7 +6,7 @@
  */
 
 import './geocodeglib-2.0-ambient.d.ts';
-import './geocodeglib-2.0-import.d.ts';
+
 /**
  * GeocodeGlib-2.0
  */

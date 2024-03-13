@@ -6,7 +6,7 @@
  */
 
 import './gstcheck-1.0-ambient.d.ts';
-import './gstcheck-1.0-import.d.ts';
+
 /**
  * GstCheck-1.0
  */

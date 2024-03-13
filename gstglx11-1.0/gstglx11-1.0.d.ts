@@ -6,7 +6,7 @@
  */
 
 import './gstglx11-1.0-ambient.d.ts';
-import './gstglx11-1.0-import.d.ts';
+
 /**
  * GstGLX11-1.0
  */

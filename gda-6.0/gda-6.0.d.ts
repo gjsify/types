@@ -6,7 +6,7 @@
  */
 
 import './gda-6.0-ambient.d.ts';
-import './gda-6.0-import.d.ts';
+
 /**
  * Gda-6.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './appstream-1.0-ambient.d.ts';
-import './appstream-1.0-import.d.ts';
+
 /**
  * AppStream-1.0
  */

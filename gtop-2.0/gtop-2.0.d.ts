@@ -6,7 +6,7 @@
  */
 
 import './gtop-2.0-ambient.d.ts';
-import './gtop-2.0-import.d.ts';
+
 /**
  * GTop-2.0
  */

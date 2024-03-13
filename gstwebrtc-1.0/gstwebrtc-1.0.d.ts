@@ -6,7 +6,7 @@
  */
 
 import './gstwebrtc-1.0-ambient.d.ts';
-import './gstwebrtc-1.0-import.d.ts';
+
 /**
  * GstWebRTC-1.0
  */

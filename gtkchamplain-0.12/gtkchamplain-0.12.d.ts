@@ -6,7 +6,7 @@
  */
 
 import './gtkchamplain-0.12-ambient.d.ts';
-import './gtkchamplain-0.12-import.d.ts';
+
 /**
  * GtkChamplain-0.12
  */

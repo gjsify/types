@@ -6,7 +6,7 @@
  */
 
 import './flatpak-1.0-ambient.d.ts';
-import './flatpak-1.0-import.d.ts';
+
 /**
  * Flatpak-1.0
  */

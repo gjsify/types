@@ -6,7 +6,9 @@
  */
 
 import './st-12-ambient.d.ts';
+
 import './st-12-import.d.ts';
+
 /**
  * St-12
  */

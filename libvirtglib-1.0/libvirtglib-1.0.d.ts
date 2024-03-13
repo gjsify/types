@@ -6,7 +6,7 @@
  */
 
 import './libvirtglib-1.0-ambient.d.ts';
-import './libvirtglib-1.0-import.d.ts';
+
 /**
  * LibvirtGLib-1.0
  */

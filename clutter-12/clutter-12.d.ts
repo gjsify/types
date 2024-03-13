@@ -6,7 +6,9 @@
  */
 
 import './clutter-12-ambient.d.ts';
+
 import './clutter-12-import.d.ts';
+
 /**
  * Clutter-12
  */

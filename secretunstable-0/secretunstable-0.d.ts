@@ -6,7 +6,7 @@
  */
 
 import './secretunstable-0-ambient.d.ts';
-import './secretunstable-0-import.d.ts';
+
 /**
  * SecretUnstable-0
  */

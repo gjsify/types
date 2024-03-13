@@ -6,7 +6,7 @@
  */
 
 import './fontconfig-2.0-ambient.d.ts';
-import './fontconfig-2.0-import.d.ts';
+
 /**
  * fontconfig-2.0
  */

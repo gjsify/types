@@ -6,7 +6,9 @@
  */
 
 import './trackerminer-1.0-ambient.d.ts';
+
 import './trackerminer-1.0-import.d.ts';
+
 /**
  * TrackerMiner-1.0
  */

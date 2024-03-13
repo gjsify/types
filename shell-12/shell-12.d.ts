@@ -6,7 +6,9 @@
  */
 
 import './shell-12-ambient.d.ts';
+
 import './shell-12-import.d.ts';
+
 /**
  * Shell-12
  */

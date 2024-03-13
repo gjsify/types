@@ -6,7 +6,7 @@
  */
 
 import './champlain-0.12-ambient.d.ts';
-import './champlain-0.12-import.d.ts';
+
 /**
  * Champlain-0.12
  */

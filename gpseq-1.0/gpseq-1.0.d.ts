@@ -6,7 +6,7 @@
  */
 
 import './gpseq-1.0-ambient.d.ts';
-import './gpseq-1.0-import.d.ts';
+
 /**
  * Gpseq-1.0
  */

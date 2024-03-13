@@ -6,7 +6,7 @@
  */
 
 import './networkmanager-1.0-ambient.d.ts';
-import './networkmanager-1.0-import.d.ts';
+
 /**
  * NetworkManager-1.0
  */

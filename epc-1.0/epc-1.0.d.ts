@@ -6,7 +6,7 @@
  */
 
 import './epc-1.0-ambient.d.ts';
-import './epc-1.0-import.d.ts';
+
 /**
  * Epc-1.0
  */

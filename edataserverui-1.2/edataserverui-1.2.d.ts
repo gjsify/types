@@ -6,7 +6,7 @@
  */
 
 import './edataserverui-1.2-ambient.d.ts';
-import './edataserverui-1.2-import.d.ts';
+
 /**
  * EDataServerUI-1.2
  */

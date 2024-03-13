@@ -6,7 +6,7 @@
  */
 
 import './gfbgraph-0.3-ambient.d.ts';
-import './gfbgraph-0.3-import.d.ts';
+
 /**
  * GFBGraph-0.3
  */

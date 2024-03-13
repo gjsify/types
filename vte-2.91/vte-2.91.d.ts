@@ -6,7 +6,9 @@
  */
 
 import './vte-2.91-ambient.d.ts';
+
 import './vte-2.91-import.d.ts';
+
 /**
  * Vte-2.91
  */

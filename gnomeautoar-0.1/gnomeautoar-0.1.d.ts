@@ -6,7 +6,7 @@
  */
 
 import './gnomeautoar-0.1-ambient.d.ts';
-import './gnomeautoar-0.1-import.d.ts';
+
 /**
  * GnomeAutoar-0.1
  */

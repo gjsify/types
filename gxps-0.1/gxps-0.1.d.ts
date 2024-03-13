@@ -6,7 +6,7 @@
  */
 
 import './gxps-0.1-ambient.d.ts';
-import './gxps-0.1-import.d.ts';
+
 /**
  * GXPS-0.1
  */

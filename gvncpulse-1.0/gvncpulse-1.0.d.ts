@@ -6,7 +6,7 @@
  */
 
 import './gvncpulse-1.0-ambient.d.ts';
-import './gvncpulse-1.0-import.d.ts';
+
 /**
  * GVncPulse-1.0
  */

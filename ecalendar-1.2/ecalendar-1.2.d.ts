@@ -6,7 +6,7 @@
  */
 
 import './ecalendar-1.2-ambient.d.ts';
-import './ecalendar-1.2-import.d.ts';
+
 /**
  * ECalendar-1.2
  */

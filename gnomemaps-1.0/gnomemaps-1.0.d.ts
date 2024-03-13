@@ -6,7 +6,7 @@
  */
 
 import './gnomemaps-1.0-ambient.d.ts';
-import './gnomemaps-1.0-import.d.ts';
+
 /**
  * GnomeMaps-1.0
  */

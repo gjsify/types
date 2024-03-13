@@ -6,7 +6,9 @@
  */
 
 import './folkstelepathy-0.6-ambient.d.ts';
+
 import './folkstelepathy-0.6-import.d.ts';
+
 /**
  * FolksTelepathy-0.6
  */

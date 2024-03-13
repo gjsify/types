@@ -6,7 +6,7 @@
  */
 
 import './edatabook-1.2-ambient.d.ts';
-import './edatabook-1.2-import.d.ts';
+
 /**
  * EDataBook-1.2
  */

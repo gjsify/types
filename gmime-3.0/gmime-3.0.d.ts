@@ -6,7 +6,7 @@
  */
 
 import './gmime-3.0-ambient.d.ts';
-import './gmime-3.0-import.d.ts';
+
 /**
  * GMime-3.0
  */

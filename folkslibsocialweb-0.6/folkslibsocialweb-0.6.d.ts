@@ -6,7 +6,7 @@
  */
 
 import './folkslibsocialweb-0.6-ambient.d.ts';
-import './folkslibsocialweb-0.6-import.d.ts';
+
 /**
  * FolksLibsocialweb-0.6
  */

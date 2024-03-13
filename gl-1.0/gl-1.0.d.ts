@@ -6,7 +6,7 @@
  */
 
 import './gl-1.0-ambient.d.ts';
-import './gl-1.0-import.d.ts';
+
 /**
  * GL-1.0
  */

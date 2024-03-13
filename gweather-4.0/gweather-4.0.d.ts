@@ -6,7 +6,7 @@
  */
 
 import './gweather-4.0-ambient.d.ts';
-import './gweather-4.0-import.d.ts';
+
 /**
  * GWeather-4.0
  */

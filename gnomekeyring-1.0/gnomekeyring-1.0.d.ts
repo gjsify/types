@@ -6,7 +6,7 @@
  */
 
 import './gnomekeyring-1.0-ambient.d.ts';
-import './gnomekeyring-1.0-import.d.ts';
+
 /**
  * GnomeKeyring-1.0
  */

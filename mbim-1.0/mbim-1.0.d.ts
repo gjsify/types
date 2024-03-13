@@ -6,7 +6,7 @@
  */
 
 import './mbim-1.0-ambient.d.ts';
-import './mbim-1.0-import.d.ts';
+
 /**
  * Mbim-1.0
  */

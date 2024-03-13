@@ -6,7 +6,9 @@
  */
 
 import './gstvideo-0.10-ambient.d.ts';
+
 import './gstvideo-0.10-import.d.ts';
+
 /**
  * GstVideo-0.10
  */

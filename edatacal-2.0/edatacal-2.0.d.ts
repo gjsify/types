@@ -6,7 +6,7 @@
  */
 
 import './edatacal-2.0-ambient.d.ts';
-import './edatacal-2.0-import.d.ts';
+
 /**
  * EDataCal-2.0
  */

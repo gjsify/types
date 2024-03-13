@@ -6,7 +6,7 @@
  */
 
 import './webkit-6.0-ambient.d.ts';
-import './webkit-6.0-import.d.ts';
+
 /**
  * WebKit-6.0
  */

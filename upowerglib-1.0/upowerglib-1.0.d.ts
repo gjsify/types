@@ -6,7 +6,7 @@
  */
 
 import './upowerglib-1.0-ambient.d.ts';
-import './upowerglib-1.0-import.d.ts';
+
 /**
  * UPowerGlib-1.0
  */

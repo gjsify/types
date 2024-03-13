@@ -6,7 +6,7 @@
  */
 
 import './gsttag-1.0-ambient.d.ts';
-import './gsttag-1.0-import.d.ts';
+
 /**
  * GstTag-1.0
  */

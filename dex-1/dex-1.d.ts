@@ -6,7 +6,7 @@
  */
 
 import './dex-1-ambient.d.ts';
-import './dex-1-import.d.ts';
+
 /**
  * Dex-1
  */

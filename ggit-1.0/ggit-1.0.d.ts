@@ -6,7 +6,7 @@
  */
 
 import './ggit-1.0-ambient.d.ts';
-import './ggit-1.0-import.d.ts';
+
 /**
  * Ggit-1.0
  */

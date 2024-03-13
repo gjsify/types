@@ -6,7 +6,7 @@
  */
 
 import './ges-1.0-ambient.d.ts';
-import './ges-1.0-import.d.ts';
+
 /**
  * GES-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './handy-1-ambient.d.ts';
-import './handy-1-import.d.ts';
+
 /**
  * Handy-1
  */

@@ -6,7 +6,7 @@
  */
 
 import './xfixes-4.0-ambient.d.ts';
-import './xfixes-4.0-import.d.ts';
+
 /**
  * xfixes-4.0
  */

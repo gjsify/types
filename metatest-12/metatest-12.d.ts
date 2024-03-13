@@ -6,7 +6,9 @@
  */
 
 import './metatest-12-ambient.d.ts';
+
 import './metatest-12-import.d.ts';
+
 /**
  * MetaTest-12
  */

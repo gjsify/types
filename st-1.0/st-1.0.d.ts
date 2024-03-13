@@ -6,7 +6,9 @@
  */
 
 import './st-1.0-ambient.d.ts';
+
 import './st-1.0-import.d.ts';
+
 /**
  * St-1.0
  */

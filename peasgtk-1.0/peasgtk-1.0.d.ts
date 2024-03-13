@@ -6,7 +6,7 @@
  */
 
 import './peasgtk-1.0-ambient.d.ts';
-import './peasgtk-1.0-import.d.ts';
+
 /**
  * PeasGtk-1.0
  */

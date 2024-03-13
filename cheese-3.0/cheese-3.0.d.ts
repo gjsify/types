@@ -6,7 +6,7 @@
  */
 
 import './cheese-3.0-ambient.d.ts';
-import './cheese-3.0-import.d.ts';
+
 /**
  * Cheese-3.0
  */

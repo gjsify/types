@@ -6,7 +6,7 @@
  */
 
 import './win32-1.0-ambient.d.ts';
-import './win32-1.0-import.d.ts';
+
 /**
  * win32-1.0
  */

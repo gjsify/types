@@ -6,7 +6,7 @@
  */
 
 import './ostree-1.0-ambient.d.ts';
-import './ostree-1.0-import.d.ts';
+
 /**
  * OSTree-1.0
  */

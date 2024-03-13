@@ -6,7 +6,7 @@
  */
 
 import './gck-2-ambient.d.ts';
-import './gck-2-import.d.ts';
+
 /**
  * Gck-2
  */

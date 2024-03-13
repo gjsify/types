@@ -6,7 +6,7 @@
  */
 
 import './gnomebg-4.0-ambient.d.ts';
-import './gnomebg-4.0-import.d.ts';
+
 /**
  * GnomeBG-4.0
  */

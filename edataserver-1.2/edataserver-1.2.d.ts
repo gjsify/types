@@ -6,7 +6,7 @@
  */
 
 import './edataserver-1.2-ambient.d.ts';
-import './edataserver-1.2-import.d.ts';
+
 /**
  * EDataServer-1.2
  */

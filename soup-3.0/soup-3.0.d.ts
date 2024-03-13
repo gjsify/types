@@ -6,7 +6,7 @@
  */
 
 import './soup-3.0-ambient.d.ts';
-import './soup-3.0-import.d.ts';
+
 /**
  * Soup-3.0
  */

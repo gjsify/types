@@ -6,7 +6,7 @@
  */
 
 import './soupgnome-2.4-ambient.d.ts';
-import './soupgnome-2.4-import.d.ts';
+
 /**
  * SoupGNOME-2.4
  */

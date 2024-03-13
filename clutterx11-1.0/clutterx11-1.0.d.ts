@@ -6,7 +6,7 @@
  */
 
 import './clutterx11-1.0-ambient.d.ts';
-import './clutterx11-1.0-import.d.ts';
+
 /**
  * ClutterX11-1.0
  */

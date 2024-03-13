@@ -6,7 +6,7 @@
  */
 
 import './nmclient-1.0-ambient.d.ts';
-import './nmclient-1.0-import.d.ts';
+
 /**
  * NMClient-1.0
  */

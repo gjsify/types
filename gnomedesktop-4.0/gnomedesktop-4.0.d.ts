@@ -6,7 +6,7 @@
  */
 
 import './gnomedesktop-4.0-ambient.d.ts';
-import './gnomedesktop-4.0-import.d.ts';
+
 /**
  * GnomeDesktop-4.0
  */

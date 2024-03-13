@@ -6,7 +6,7 @@
  */
 
 import './granite-7.0-ambient.d.ts';
-import './granite-7.0-import.d.ts';
+
 /**
  * Granite-7.0
  */

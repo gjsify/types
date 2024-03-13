@@ -6,7 +6,7 @@
  */
 
 import './trackercontrol-2.0-ambient.d.ts';
-import './trackercontrol-2.0-import.d.ts';
+
 /**
  * TrackerControl-2.0
  */

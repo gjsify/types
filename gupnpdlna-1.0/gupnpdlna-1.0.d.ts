@@ -6,7 +6,9 @@
  */
 
 import './gupnpdlna-1.0-ambient.d.ts';
+
 import './gupnpdlna-1.0-import.d.ts';
+
 /**
  * GUPnPDLNA-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './wnck-3.0-ambient.d.ts';
-import './wnck-3.0-import.d.ts';
+
 /**
  * Wnck-3.0
  */

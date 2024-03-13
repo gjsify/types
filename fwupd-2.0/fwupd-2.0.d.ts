@@ -6,7 +6,7 @@
  */
 
 import './fwupd-2.0-ambient.d.ts';
-import './fwupd-2.0-import.d.ts';
+
 /**
  * Fwupd-2.0
  */

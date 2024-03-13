@@ -6,7 +6,7 @@
  */
 
 import './eog-3.0-ambient.d.ts';
-import './eog-3.0-import.d.ts';
+
 /**
  * Eog-3.0
  */

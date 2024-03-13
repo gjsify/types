@@ -6,7 +6,7 @@
  */
 
 import './gupnpav-1.0-ambient.d.ts';
-import './gupnpav-1.0-import.d.ts';
+
 /**
  * GUPnPAV-1.0
  */

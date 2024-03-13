@@ -6,7 +6,7 @@
  */
 
 import './gstglegl-1.0-ambient.d.ts';
-import './gstglegl-1.0-import.d.ts';
+
 /**
  * GstGLEGL-1.0
  */

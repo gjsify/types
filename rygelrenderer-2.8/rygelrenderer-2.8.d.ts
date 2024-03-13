@@ -6,7 +6,7 @@
  */
 
 import './rygelrenderer-2.8-ambient.d.ts';
-import './rygelrenderer-2.8-import.d.ts';
+
 /**
  * RygelRenderer-2.8
  */

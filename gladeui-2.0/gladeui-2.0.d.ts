@@ -6,7 +6,7 @@
  */
 
 import './gladeui-2.0-ambient.d.ts';
-import './gladeui-2.0-import.d.ts';
+
 /**
  * Gladeui-2.0
  */

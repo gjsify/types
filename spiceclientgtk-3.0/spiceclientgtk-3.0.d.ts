@@ -6,7 +6,7 @@
  */
 
 import './spiceclientgtk-3.0-ambient.d.ts';
-import './spiceclientgtk-3.0-import.d.ts';
+
 /**
  * SpiceClientGtk-3.0
  */

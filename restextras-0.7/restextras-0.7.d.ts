@@ -6,7 +6,9 @@
  */
 
 import './restextras-0.7-ambient.d.ts';
+
 import './restextras-0.7-import.d.ts';
+
 /**
  * RestExtras-0.7
  */

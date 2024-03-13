@@ -6,7 +6,9 @@
  */
 
 import './peas-1.0-ambient.d.ts';
+
 import './peas-1.0-import.d.ts';
+
 /**
  * Peas-1.0
  */

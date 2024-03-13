@@ -6,7 +6,7 @@
  */
 
 import './gnomeautoargtk-0.1-ambient.d.ts';
-import './gnomeautoargtk-0.1-import.d.ts';
+
 /**
  * GnomeAutoarGtk-0.1
  */

@@ -6,7 +6,9 @@
  */
 
 import './grlnet-0.1-ambient.d.ts';
+
 import './grlnet-0.1-import.d.ts';
+
 /**
  * GrlNet-0.1
  */

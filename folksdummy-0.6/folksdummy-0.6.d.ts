@@ -6,7 +6,9 @@
  */
 
 import './folksdummy-0.6-ambient.d.ts';
+
 import './folksdummy-0.6-import.d.ts';
+
 /**
  * FolksDummy-0.6
  */

@@ -6,7 +6,7 @@
  */
 
 import './builder-1.0-ambient.d.ts';
-import './builder-1.0-import.d.ts';
+
 /**
  * Builder-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './spiceclientglib-2.0-ambient.d.ts';
-import './spiceclientglib-2.0-import.d.ts';
+
 /**
  * SpiceClientGLib-2.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './timezonemap-1.0-ambient.d.ts';
-import './timezonemap-1.0-import.d.ts';
+
 /**
  * TimezoneMap-1.0
  */

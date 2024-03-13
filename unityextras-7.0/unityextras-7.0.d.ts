@@ -6,7 +6,7 @@
  */
 
 import './unityextras-7.0-ambient.d.ts';
-import './unityextras-7.0-import.d.ts';
+
 /**
  * UnityExtras-7.0
  */

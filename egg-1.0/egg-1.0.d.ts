@@ -6,7 +6,7 @@
  */
 
 import './egg-1.0-ambient.d.ts';
-import './egg-1.0-import.d.ts';
+
 /**
  * Egg-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './gstrtp-1.0-ambient.d.ts';
-import './gstrtp-1.0-import.d.ts';
+
 /**
  * GstRtp-1.0
  */

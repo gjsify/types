@@ -6,7 +6,7 @@
  */
 
 import './webkit2-5.0-ambient.d.ts';
-import './webkit2-5.0-import.d.ts';
+
 /**
  * WebKit2-5.0
  */

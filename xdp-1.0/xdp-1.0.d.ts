@@ -6,7 +6,7 @@
  */
 
 import './xdp-1.0-ambient.d.ts';
-import './xdp-1.0-import.d.ts';
+
 /**
  * Xdp-1.0
  */

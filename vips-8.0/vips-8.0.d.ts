@@ -6,7 +6,7 @@
  */
 
 import './vips-8.0-ambient.d.ts';
-import './vips-8.0-import.d.ts';
+
 /**
  * Vips-8.0
  */

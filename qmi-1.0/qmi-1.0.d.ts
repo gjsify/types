@@ -6,7 +6,7 @@
  */
 
 import './qmi-1.0-ambient.d.ts';
-import './qmi-1.0-import.d.ts';
+
 /**
  * Qmi-1.0
  */

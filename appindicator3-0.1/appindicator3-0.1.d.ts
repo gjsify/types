@@ -6,7 +6,7 @@
  */
 
 import './appindicator3-0.1-ambient.d.ts';
-import './appindicator3-0.1-import.d.ts';
+
 /**
  * AppIndicator3-0.1
  */

@@ -6,7 +6,7 @@
  */
 
 import './sushi-1.0-ambient.d.ts';
-import './sushi-1.0-import.d.ts';
+
 /**
  * Sushi-1.0
  */

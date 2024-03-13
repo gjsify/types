@@ -6,7 +6,7 @@
  */
 
 import './geoclue-2.0-ambient.d.ts';
-import './geoclue-2.0-import.d.ts';
+
 /**
  * Geoclue-2.0
  */

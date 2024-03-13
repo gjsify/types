@@ -6,7 +6,9 @@
  */
 
 import './rygelrenderergst-2.6-ambient.d.ts';
+
 import './rygelrenderergst-2.6-import.d.ts';
+
 /**
  * RygelRendererGst-2.6
  */

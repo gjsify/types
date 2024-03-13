@@ -6,7 +6,7 @@
  */
 
 import './panelapplet-4.0-ambient.d.ts';
-import './panelapplet-4.0-import.d.ts';
+
 /**
  * PanelApplet-4.0
  */

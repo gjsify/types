@@ -6,7 +6,7 @@
  */
 
 import './xft-2.0-ambient.d.ts';
-import './xft-2.0-import.d.ts';
+
 /**
  * xft-2.0
  */

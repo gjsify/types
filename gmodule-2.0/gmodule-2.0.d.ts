@@ -6,7 +6,7 @@
  */
 
 import './gmodule-2.0-ambient.d.ts';
-import './gmodule-2.0-import.d.ts';
+
 /**
  * GModule-2.0
  */

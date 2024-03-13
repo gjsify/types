@@ -6,7 +6,7 @@
  */
 
 import './gdkpixbuf-2.0-ambient.d.ts';
-import './gdkpixbuf-2.0-import.d.ts';
+
 /**
  * GdkPixbuf-2.0
  */

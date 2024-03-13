@@ -6,7 +6,9 @@
  */
 
 import './gupnp-1.0-ambient.d.ts';
+
 import './gupnp-1.0-import.d.ts';
+
 /**
  * GUPnP-1.0
  */

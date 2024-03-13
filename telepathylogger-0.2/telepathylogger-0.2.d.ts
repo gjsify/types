@@ -6,7 +6,7 @@
  */
 
 import './telepathylogger-0.2-ambient.d.ts';
-import './telepathylogger-0.2-import.d.ts';
+
 /**
  * TelepathyLogger-0.2
  */

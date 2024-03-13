@@ -6,7 +6,7 @@
  */
 
 import './vgpg-1-ambient.d.ts';
-import './vgpg-1-import.d.ts';
+
 /**
  * Vgpg-1
  */

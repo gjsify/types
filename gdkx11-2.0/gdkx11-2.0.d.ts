@@ -6,7 +6,9 @@
  */
 
 import './gdkx11-2.0-ambient.d.ts';
+
 import './gdkx11-2.0-import.d.ts';
+
 /**
  * GdkX11-2.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './totemplparser-1.0-ambient.d.ts';
-import './totemplparser-1.0-import.d.ts';
+
 /**
  * TotemPlParser-1.0
  */

@@ -6,7 +6,9 @@
  */
 
 import './webkit2webextension-4.0-ambient.d.ts';
+
 import './webkit2webextension-4.0-import.d.ts';
+
 /**
  * WebKit2WebExtension-4.0
  */

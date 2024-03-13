@@ -6,7 +6,7 @@
  */
 
 import './unity-7.0-ambient.d.ts';
-import './unity-7.0-import.d.ts';
+
 /**
  * Unity-7.0
  */

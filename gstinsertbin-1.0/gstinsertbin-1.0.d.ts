@@ -6,7 +6,7 @@
  */
 
 import './gstinsertbin-1.0-ambient.d.ts';
-import './gstinsertbin-1.0-import.d.ts';
+
 /**
  * GstInsertBin-1.0
  */

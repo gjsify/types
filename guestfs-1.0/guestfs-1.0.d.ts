@@ -6,7 +6,7 @@
  */
 
 import './guestfs-1.0-ambient.d.ts';
-import './guestfs-1.0-import.d.ts';
+
 /**
  * Guestfs-1.0
  */

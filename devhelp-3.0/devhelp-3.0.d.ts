@@ -6,7 +6,7 @@
  */
 
 import './devhelp-3.0-ambient.d.ts';
-import './devhelp-3.0-import.d.ts';
+
 /**
  * Devhelp-3.0
  */

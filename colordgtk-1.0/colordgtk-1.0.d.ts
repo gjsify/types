@@ -6,7 +6,7 @@
  */
 
 import './colordgtk-1.0-ambient.d.ts';
-import './colordgtk-1.0-import.d.ts';
+
 /**
  * ColordGtk-1.0
  */

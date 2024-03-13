@@ -6,7 +6,7 @@
  */
 
 import './nmgtk-1.0-ambient.d.ts';
-import './nmgtk-1.0-import.d.ts';
+
 /**
  * NMGtk-1.0
  */

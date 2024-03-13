@@ -6,7 +6,7 @@
  */
 
 import './gdkpixdata-2.0-ambient.d.ts';
-import './gdkpixdata-2.0-import.d.ts';
+
 /**
  * GdkPixdata-2.0
  */

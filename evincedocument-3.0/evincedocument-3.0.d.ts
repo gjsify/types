@@ -6,7 +6,7 @@
  */
 
 import './evincedocument-3.0-ambient.d.ts';
-import './evincedocument-3.0-import.d.ts';
+
 /**
  * EvinceDocument-3.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './gdesktopenums-3.0-ambient.d.ts';
-import './gdesktopenums-3.0-import.d.ts';
+
 /**
  * GDesktopEnums-3.0
  */

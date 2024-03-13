@@ -6,7 +6,7 @@
  */
 
 import './telepathyglib-0.12-ambient.d.ts';
-import './telepathyglib-0.12-import.d.ts';
+
 /**
  * TelepathyGLib-0.12
  */

@@ -6,7 +6,7 @@
  */
 
 import './vgsl-1-ambient.d.ts';
-import './vgsl-1-import.d.ts';
+
 /**
  * Vgsl-1
  */

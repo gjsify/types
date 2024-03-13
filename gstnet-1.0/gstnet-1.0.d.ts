@@ -6,7 +6,7 @@
  */
 
 import './gstnet-1.0-ambient.d.ts';
-import './gstnet-1.0-import.d.ts';
+
 /**
  * GstNet-1.0
  */

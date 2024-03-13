@@ -6,7 +6,7 @@
  */
 
 import './gkbd-3.0-ambient.d.ts';
-import './gkbd-3.0-import.d.ts';
+
 /**
  * Gkbd-3.0
  */

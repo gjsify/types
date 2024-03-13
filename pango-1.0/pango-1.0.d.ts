@@ -6,7 +6,7 @@
  */
 
 import './pango-1.0-ambient.d.ts';
-import './pango-1.0-import.d.ts';
+
 /**
  * Pango-1.0
  */

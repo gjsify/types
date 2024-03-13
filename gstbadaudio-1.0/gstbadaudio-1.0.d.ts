@@ -6,7 +6,7 @@
  */
 
 import './gstbadaudio-1.0-ambient.d.ts';
-import './gstbadaudio-1.0-import.d.ts';
+
 /**
  * GstBadAudio-1.0
  */

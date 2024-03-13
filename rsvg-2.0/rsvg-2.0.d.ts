@@ -6,7 +6,7 @@
  */
 
 import './rsvg-2.0-ambient.d.ts';
-import './rsvg-2.0-import.d.ts';
+
 /**
  * Rsvg-2.0
  */

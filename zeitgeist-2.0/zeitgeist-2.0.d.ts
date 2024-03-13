@@ -6,7 +6,7 @@
  */
 
 import './zeitgeist-2.0-ambient.d.ts';
-import './zeitgeist-2.0-import.d.ts';
+
 /**
  * Zeitgeist-2.0
  */

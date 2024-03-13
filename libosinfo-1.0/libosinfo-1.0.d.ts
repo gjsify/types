@@ -6,7 +6,7 @@
  */
 
 import './libosinfo-1.0-ambient.d.ts';
-import './libosinfo-1.0-import.d.ts';
+
 /**
  * Libosinfo-1.0
  */

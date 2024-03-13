@@ -6,7 +6,9 @@
  */
 
 import './mx-1.0-ambient.d.ts';
+
 import './mx-1.0-import.d.ts';
+
 /**
  * Mx-1.0
  */

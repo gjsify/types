@@ -6,7 +6,7 @@
  */
 
 import './p11kit-1.0-ambient.d.ts';
-import './p11kit-1.0-import.d.ts';
+
 /**
  * P11Kit-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './packagekitglib-1.0-ambient.d.ts';
-import './packagekitglib-1.0-import.d.ts';
+
 /**
  * PackageKitGlib-1.0
  */

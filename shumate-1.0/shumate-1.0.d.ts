@@ -6,7 +6,7 @@
  */
 
 import './shumate-1.0-ambient.d.ts';
-import './shumate-1.0-import.d.ts';
+
 /**
  * Shumate-1.0
  */

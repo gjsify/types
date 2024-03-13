@@ -6,7 +6,7 @@
  */
 
 import './colord-1.0-ambient.d.ts';
-import './colord-1.0-import.d.ts';
+
 /**
  * Colord-1.0
  */

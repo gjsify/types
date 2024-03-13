@@ -6,7 +6,7 @@
  */
 
 import './gstinterfaces-0.10-ambient.d.ts';
-import './gstinterfaces-0.10-import.d.ts';
+
 /**
  * GstInterfaces-0.10
  */

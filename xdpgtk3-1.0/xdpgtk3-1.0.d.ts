@@ -6,7 +6,7 @@
  */
 
 import './xdpgtk3-1.0-ambient.d.ts';
-import './xdpgtk3-1.0-import.d.ts';
+
 /**
  * XdpGtk3-1.0
  */

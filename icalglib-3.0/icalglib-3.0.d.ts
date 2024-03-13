@@ -6,7 +6,7 @@
  */
 
 import './icalglib-3.0-ambient.d.ts';
-import './icalglib-3.0-import.d.ts';
+
 /**
  * ICalGLib-3.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './gstmpegts-1.0-ambient.d.ts';
-import './gstmpegts-1.0-import.d.ts';
+
 /**
  * GstMpegts-1.0
  */

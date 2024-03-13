@@ -6,7 +6,7 @@
  */
 
 import './shew-0-ambient.d.ts';
-import './shew-0-import.d.ts';
+
 /**
  * Shew-0
  */

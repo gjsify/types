@@ -6,7 +6,7 @@
  */
 
 import './atk-1.0-ambient.d.ts';
-import './atk-1.0-import.d.ts';
+
 /**
  * Atk-1.0
  */

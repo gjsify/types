@@ -6,7 +6,7 @@
  */
 
 import './gdata-0.0-ambient.d.ts';
-import './gdata-0.0-import.d.ts';
+
 /**
  * GData-0.0
  */

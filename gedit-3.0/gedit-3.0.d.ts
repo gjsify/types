@@ -6,7 +6,7 @@
  */
 
 import './gedit-3.0-ambient.d.ts';
-import './gedit-3.0-import.d.ts';
+
 /**
  * Gedit-3.0
  */

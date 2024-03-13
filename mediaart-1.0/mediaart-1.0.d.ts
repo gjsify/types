@@ -6,7 +6,9 @@
  */
 
 import './mediaart-1.0-ambient.d.ts';
+
 import './mediaart-1.0-import.d.ts';
+
 /**
  * MediaArt-1.0
  */

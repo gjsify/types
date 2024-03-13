@@ -6,7 +6,7 @@
  */
 
 import './gitgext-1.0-ambient.d.ts';
-import './gitgext-1.0-import.d.ts';
+
 /**
  * GitgExt-1.0
  */

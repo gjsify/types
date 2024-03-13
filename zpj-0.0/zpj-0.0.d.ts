@@ -6,7 +6,7 @@
  */
 
 import './zpj-0.0-ambient.d.ts';
-import './zpj-0.0-import.d.ts';
+
 /**
  * Zpj-0.0
  */

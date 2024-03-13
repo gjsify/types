@@ -6,7 +6,7 @@
  */
 
 import './qrtr-1.0-ambient.d.ts';
-import './qrtr-1.0-import.d.ts';
+
 /**
  * Qrtr-1.0
  */

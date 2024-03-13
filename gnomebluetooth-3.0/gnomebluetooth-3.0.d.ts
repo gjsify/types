@@ -6,7 +6,7 @@
  */
 
 import './gnomebluetooth-3.0-ambient.d.ts';
-import './gnomebluetooth-3.0-import.d.ts';
+
 /**
  * GnomeBluetooth-3.0
  */

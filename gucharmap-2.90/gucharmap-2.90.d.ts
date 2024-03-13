@@ -6,7 +6,7 @@
  */
 
 import './gucharmap-2.90-ambient.d.ts';
-import './gucharmap-2.90-import.d.ts';
+
 /**
  * Gucharmap-2.90
  */

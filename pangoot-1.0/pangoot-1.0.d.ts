@@ -6,7 +6,7 @@
  */
 
 import './pangoot-1.0-ambient.d.ts';
-import './pangoot-1.0-import.d.ts';
+
 /**
  * PangoOT-1.0
  */

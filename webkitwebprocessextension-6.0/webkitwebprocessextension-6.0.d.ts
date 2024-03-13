@@ -6,7 +6,7 @@
  */
 
 import './webkitwebprocessextension-6.0-ambient.d.ts';
-import './webkitwebprocessextension-6.0-import.d.ts';
+
 /**
  * WebKitWebProcessExtension-6.0
  */

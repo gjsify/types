@@ -6,7 +6,7 @@
  */
 
 import './atspi-2.0-ambient.d.ts';
-import './atspi-2.0-import.d.ts';
+
 /**
  * Atspi-2.0
  */

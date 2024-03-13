@@ -6,7 +6,7 @@
  */
 
 import './ide-1.0-ambient.d.ts';
-import './ide-1.0-import.d.ts';
+
 /**
  * Ide-1.0
  */

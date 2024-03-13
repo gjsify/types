@@ -6,7 +6,7 @@
  */
 
 import './template-1.0-ambient.d.ts';
-import './template-1.0-import.d.ts';
+
 /**
  * Template-1.0
  */

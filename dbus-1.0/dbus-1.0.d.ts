@@ -6,7 +6,7 @@
  */
 
 import './dbus-1.0-ambient.d.ts';
-import './dbus-1.0-import.d.ts';
+
 /**
  * DBus-1.0
  */

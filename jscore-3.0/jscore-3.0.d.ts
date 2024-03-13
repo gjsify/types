@@ -6,7 +6,7 @@
  */
 
 import './jscore-3.0-ambient.d.ts';
-import './jscore-3.0-import.d.ts';
+
 /**
  * JSCore-3.0
  */

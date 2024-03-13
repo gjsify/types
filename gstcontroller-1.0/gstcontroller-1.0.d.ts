@@ -6,7 +6,7 @@
  */
 
 import './gstcontroller-1.0-ambient.d.ts';
-import './gstcontroller-1.0-import.d.ts';
+
 /**
  * GstController-1.0
  */

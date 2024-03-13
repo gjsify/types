@@ -6,7 +6,7 @@
  */
 
 import './mxgtk-1.0-ambient.d.ts';
-import './mxgtk-1.0-import.d.ts';
+
 /**
  * MxGtk-1.0
  */

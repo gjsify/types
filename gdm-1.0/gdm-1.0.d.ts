@@ -6,7 +6,7 @@
  */
 
 import './gdm-1.0-ambient.d.ts';
-import './gdm-1.0-import.d.ts';
+
 /**
  * Gdm-1.0
  */

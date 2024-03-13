@@ -6,7 +6,7 @@
  */
 
 import './polkitagent-1.0-ambient.d.ts';
-import './polkitagent-1.0-import.d.ts';
+
 /**
  * PolkitAgent-1.0
  */

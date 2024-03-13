@@ -6,7 +6,7 @@
  */
 
 import './pangofc-1.0-ambient.d.ts';
-import './pangofc-1.0-import.d.ts';
+
 /**
  * PangoFc-1.0
  */

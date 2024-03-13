@@ -6,7 +6,9 @@
  */
 
 import './goocanvas-2.0-ambient.d.ts';
+
 import './goocanvas-2.0-import.d.ts';
+
 /**
  * GooCanvas-2.0
  */

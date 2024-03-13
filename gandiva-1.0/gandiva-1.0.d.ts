@@ -6,7 +6,7 @@
  */
 
 import './gandiva-1.0-ambient.d.ts';
-import './gandiva-1.0-import.d.ts';
+
 /**
  * Gandiva-1.0
  */

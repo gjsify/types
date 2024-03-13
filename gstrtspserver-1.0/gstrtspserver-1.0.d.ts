@@ -6,7 +6,7 @@
  */
 
 import './gstrtspserver-1.0-ambient.d.ts';
-import './gstrtspserver-1.0-import.d.ts';
+
 /**
  * GstRtspServer-1.0
  */

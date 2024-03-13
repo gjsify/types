@@ -6,7 +6,7 @@
  */
 
 import './manette-0.2-ambient.d.ts';
-import './manette-0.2-import.d.ts';
+
 /**
  * Manette-0.2
  */

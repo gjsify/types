@@ -6,7 +6,7 @@
  */
 
 import './nma-1.0-ambient.d.ts';
-import './nma-1.0-import.d.ts';
+
 /**
  * NMA-1.0
  */

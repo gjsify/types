@@ -6,7 +6,9 @@
  */
 
 import './gtksource-3.0-ambient.d.ts';
+
 import './gtksource-3.0-import.d.ts';
+
 /**
  * GtkSource-3.0
  */

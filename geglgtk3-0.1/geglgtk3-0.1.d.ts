@@ -6,7 +6,7 @@
  */
 
 import './geglgtk3-0.1-ambient.d.ts';
-import './geglgtk3-0.1-import.d.ts';
+
 /**
  * GeglGtk3-0.1
  */

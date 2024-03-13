@@ -6,7 +6,9 @@
  */
 
 import './webkit2-4.1-ambient.d.ts';
+
 import './webkit2-4.1-import.d.ts';
+
 /**
  * WebKit2-4.1
  */

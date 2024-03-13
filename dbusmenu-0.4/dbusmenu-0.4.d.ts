@@ -6,7 +6,7 @@
  */
 
 import './dbusmenu-0.4-ambient.d.ts';
-import './dbusmenu-0.4-import.d.ts';
+
 /**
  * Dbusmenu-0.4
  */

@@ -6,7 +6,7 @@
  */
 
 import './gnomerr-4.0-ambient.d.ts';
-import './gnomerr-4.0-import.d.ts';
+
 /**
  * GnomeRR-4.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './graphene-1.0-ambient.d.ts';
-import './graphene-1.0-import.d.ts';
+
 /**
  * Graphene-1.0
  */

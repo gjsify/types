@@ -6,7 +6,7 @@
  */
 
 import './gudev-1.0-ambient.d.ts';
-import './gudev-1.0-import.d.ts';
+
 /**
  * GUdev-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './gsignon-1.0-ambient.d.ts';
-import './gsignon-1.0-import.d.ts';
+
 /**
  * gSignon-1.0
  */

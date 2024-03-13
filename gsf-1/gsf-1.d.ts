@@ -6,7 +6,7 @@
  */
 
 import './gsf-1-ambient.d.ts';
-import './gsf-1-import.d.ts';
+
 /**
  * Gsf-1
  */

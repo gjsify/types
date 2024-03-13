@@ -6,7 +6,7 @@
  */
 
 import './gvnc-1.0-ambient.d.ts';
-import './gvnc-1.0-import.d.ts';
+
 /**
  * GVnc-1.0
  */

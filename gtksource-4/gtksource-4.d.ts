@@ -6,7 +6,9 @@
  */
 
 import './gtksource-4-ambient.d.ts';
+
 import './gtksource-4-import.d.ts';
+
 /**
  * GtkSource-4
  */

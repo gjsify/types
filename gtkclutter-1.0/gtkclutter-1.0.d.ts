@@ -6,7 +6,7 @@
  */
 
 import './gtkclutter-1.0-ambient.d.ts';
-import './gtkclutter-1.0-import.d.ts';
+
 /**
  * GtkClutter-1.0
  */

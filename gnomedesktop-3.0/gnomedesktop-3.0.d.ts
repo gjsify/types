@@ -6,7 +6,9 @@
  */
 
 import './gnomedesktop-3.0-ambient.d.ts';
+
 import './gnomedesktop-3.0-import.d.ts';
+
 /**
  * GnomeDesktop-3.0
  */

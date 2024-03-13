@@ -6,7 +6,7 @@
  */
 
 import './gcrui-3-ambient.d.ts';
-import './gcrui-3-import.d.ts';
+
 /**
  * GcrUi-3
  */

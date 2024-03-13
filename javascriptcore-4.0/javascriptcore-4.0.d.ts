@@ -6,7 +6,9 @@
  */
 
 import './javascriptcore-4.0-ambient.d.ts';
+
 import './javascriptcore-4.0-import.d.ts';
+
 /**
  * JavaScriptCore-4.0
  */

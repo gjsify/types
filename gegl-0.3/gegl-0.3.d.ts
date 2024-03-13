@@ -6,7 +6,9 @@
  */
 
 import './gegl-0.3-ambient.d.ts';
+
 import './gegl-0.3-import.d.ts';
+
 /**
  * Gegl-0.3
  */

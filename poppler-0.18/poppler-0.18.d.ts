@@ -6,7 +6,7 @@
  */
 
 import './poppler-0.18-ambient.d.ts';
-import './poppler-0.18-import.d.ts';
+
 /**
  * Poppler-0.18
  */

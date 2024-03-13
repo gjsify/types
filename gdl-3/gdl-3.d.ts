@@ -6,7 +6,7 @@
  */
 
 import './gdl-3-ambient.d.ts';
-import './gdl-3-import.d.ts';
+
 /**
  * Gdl-3
  */

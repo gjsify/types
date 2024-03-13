@@ -6,7 +6,9 @@
  */
 
 import './farstream-0.1-ambient.d.ts';
+
 import './farstream-0.1-import.d.ts';
+
 /**
  * Farstream-0.1
  */

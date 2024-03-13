@@ -6,7 +6,7 @@
  */
 
 import './javascriptcore-6.0-ambient.d.ts';
-import './javascriptcore-6.0-import.d.ts';
+
 /**
  * JavaScriptCore-6.0
  */

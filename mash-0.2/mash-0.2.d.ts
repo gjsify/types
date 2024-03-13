@@ -6,7 +6,7 @@
  */
 
 import './mash-0.2-ambient.d.ts';
-import './mash-0.2-import.d.ts';
+
 /**
  * Mash-0.2
  */

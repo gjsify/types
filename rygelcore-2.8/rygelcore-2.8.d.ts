@@ -6,7 +6,7 @@
  */
 
 import './rygelcore-2.8-ambient.d.ts';
-import './rygelcore-2.8-import.d.ts';
+
 /**
  * RygelCore-2.8
  */

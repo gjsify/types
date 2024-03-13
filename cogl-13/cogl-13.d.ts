@@ -6,7 +6,9 @@
  */
 
 import './cogl-13-ambient.d.ts';
+
 import './cogl-13-import.d.ts';
+
 /**
  * Cogl-13
  */

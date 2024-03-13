@@ -6,7 +6,7 @@
  */
 
 import './tracker-3.0-ambient.d.ts';
-import './tracker-3.0-import.d.ts';
+
 /**
  * Tracker-3.0
  */

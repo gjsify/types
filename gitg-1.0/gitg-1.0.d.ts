@@ -6,7 +6,7 @@
  */
 
 import './gitg-1.0-ambient.d.ts';
-import './gitg-1.0-import.d.ts';
+
 /**
  * Gitg-1.0
  */

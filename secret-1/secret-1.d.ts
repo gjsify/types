@@ -6,7 +6,7 @@
  */
 
 import './secret-1-ambient.d.ts';
-import './secret-1-import.d.ts';
+
 /**
  * Secret-1
  */

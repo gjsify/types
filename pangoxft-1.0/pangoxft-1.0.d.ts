@@ -6,7 +6,7 @@
  */
 
 import './pangoxft-1.0-ambient.d.ts';
-import './pangoxft-1.0-import.d.ts';
+
 /**
  * PangoXft-1.0
  */

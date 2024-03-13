@@ -6,7 +6,7 @@
  */
 
 import './arrowcuda-1.0-ambient.d.ts';
-import './arrowcuda-1.0-import.d.ts';
+
 /**
  * ArrowCUDA-1.0
  */

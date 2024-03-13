@@ -6,7 +6,7 @@
  */
 
 import './gvc-1.0-ambient.d.ts';
-import './gvc-1.0-import.d.ts';
+
 /**
  * Gvc-1.0
  */

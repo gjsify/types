@@ -6,7 +6,7 @@
  */
 
 import './gstcodecs-1.0-ambient.d.ts';
-import './gstcodecs-1.0-import.d.ts';
+
 /**
  * GstCodecs-1.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './unique-3.0-ambient.d.ts';
-import './unique-3.0-import.d.ts';
+
 /**
  * Unique-3.0
  */

@@ -6,7 +6,7 @@
  */
 
 import './ical-3.0-ambient.d.ts';
-import './ical-3.0-import.d.ts';
+
 /**
  * ICal-3.0
  */

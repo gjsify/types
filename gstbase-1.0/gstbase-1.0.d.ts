@@ -6,7 +6,7 @@
  */
 
 import './gstbase-1.0-ambient.d.ts';
-import './gstbase-1.0-import.d.ts';
+
 /**
  * GstBase-1.0
  */
