@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
         "@girs/xlib-2.0": "workspace:^"
     },

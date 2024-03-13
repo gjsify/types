@@ -26,7 +26,8 @@
         "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit fontconfig-2.0.d.ts"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^"
+        "@girs/gjs": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"

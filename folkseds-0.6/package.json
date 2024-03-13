@@ -26,12 +26,18 @@
         "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit folkseds-0.6.d.ts"
     },
     "dependencies": {
+        "@girs/camel-1.2": "workspace:^",
         "@girs/ebookcontacts-1.2": "workspace:^",
         "@girs/edataserver-1.2": "workspace:^",
         "@girs/folks-0.6": "workspace:^",
         "@girs/gee-0.8": "workspace:^",
         "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/soup-3.0": "workspace:^"
     },
     "devDependencies": {
         "typescript": "*"
