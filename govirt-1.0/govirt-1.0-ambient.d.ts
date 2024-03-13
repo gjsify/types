@@ -5,7 +5,8 @@ declare module 'gi://GoVirt?version=1.0' {
 }
 
 declare module 'gi://GoVirt' {
-    export default 'gi://GoVirt?version=1.0';
+    import GoVirt10 from 'gi://GoVirt?version=1.0';
+    export default GoVirt10;
 }
 
 

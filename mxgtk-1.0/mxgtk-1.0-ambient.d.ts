@@ -5,7 +5,8 @@ declare module 'gi://MxGtk?version=1.0' {
 }
 
 declare module 'gi://MxGtk' {
-    export default 'gi://MxGtk?version=1.0';
+    import MxGtk10 from 'gi://MxGtk?version=1.0';
+    export default MxGtk10;
 }
 
 

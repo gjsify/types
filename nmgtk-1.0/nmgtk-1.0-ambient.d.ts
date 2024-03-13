@@ -5,7 +5,8 @@ declare module 'gi://NMGtk?version=1.0' {
 }
 
 declare module 'gi://NMGtk' {
-    export default 'gi://NMGtk?version=1.0';
+    import NMGtk10 from 'gi://NMGtk?version=1.0';
+    export default NMGtk10;
 }
 
 

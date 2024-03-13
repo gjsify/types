@@ -5,7 +5,8 @@ declare module 'gi://WebKitWebExtension?version=6.0' {
 }
 
 declare module 'gi://WebKitWebExtension' {
-    export default 'gi://WebKitWebExtension?version=6.0';
+    import WebKitWebExtension60 from 'gi://WebKitWebExtension?version=6.0';
+    export default WebKitWebExtension60;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://P11Kit?version=1.0' {
 }
 
 declare module 'gi://P11Kit' {
-    export default 'gi://P11Kit?version=1.0';
+    import P11Kit10 from 'gi://P11Kit?version=1.0';
+    export default P11Kit10;
 }
 
 

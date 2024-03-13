@@ -5,7 +5,8 @@ declare module 'gi://ModemManager?version=1.0' {
 }
 
 declare module 'gi://ModemManager' {
-    export default 'gi://ModemManager?version=1.0';
+    import ModemManager10 from 'gi://ModemManager?version=1.0';
+    export default ModemManager10;
 }
 
 

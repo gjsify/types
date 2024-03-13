@@ -5,7 +5,8 @@ declare module 'gi://GitgExt?version=1.0' {
 }
 
 declare module 'gi://GitgExt' {
-    export default 'gi://GitgExt?version=1.0';
+    import GitgExt10 from 'gi://GitgExt?version=1.0';
+    export default GitgExt10;
 }
 
 

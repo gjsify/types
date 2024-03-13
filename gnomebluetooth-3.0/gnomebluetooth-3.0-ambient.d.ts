@@ -5,7 +5,8 @@ declare module 'gi://GnomeBluetooth?version=3.0' {
 }
 
 declare module 'gi://GnomeBluetooth' {
-    export default 'gi://GnomeBluetooth?version=3.0';
+    import GnomeBluetooth30 from 'gi://GnomeBluetooth?version=3.0';
+    export default GnomeBluetooth30;
 }
 
 

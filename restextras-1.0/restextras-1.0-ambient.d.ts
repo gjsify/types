@@ -5,7 +5,8 @@ declare module 'gi://RestExtras?version=1.0' {
 }
 
 declare module 'gi://RestExtras' {
-    export default 'gi://RestExtras?version=1.0';
+    import RestExtras10 from 'gi://RestExtras?version=1.0';
+    export default RestExtras10;
 }
 
 

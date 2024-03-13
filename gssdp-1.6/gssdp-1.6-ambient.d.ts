@@ -5,7 +5,8 @@ declare module 'gi://GSSDP?version=1.6' {
 }
 
 declare module 'gi://GSSDP' {
-    export default 'gi://GSSDP?version=1.6';
+    import GSSDP16 from 'gi://GSSDP?version=1.6';
+    export default GSSDP16;
 }
 
 

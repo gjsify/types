@@ -5,7 +5,8 @@ declare module 'gi://GstAllocators?version=1.0' {
 }
 
 declare module 'gi://GstAllocators' {
-    export default 'gi://GstAllocators?version=1.0';
+    import GstAllocators10 from 'gi://GstAllocators?version=1.0';
+    export default GstAllocators10;
 }
 
 

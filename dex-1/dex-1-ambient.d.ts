@@ -5,7 +5,8 @@ declare module 'gi://Dex?version=1' {
 }
 
 declare module 'gi://Dex' {
-    export default 'gi://Dex?version=1';
+    import Dex1 from 'gi://Dex?version=1';
+    export default Dex1;
 }
 
 

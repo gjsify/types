@@ -5,7 +5,8 @@ declare module 'gi://Jsonrpc?version=1.0' {
 }
 
 declare module 'gi://Jsonrpc' {
-    export default 'gi://Jsonrpc?version=1.0';
+    import Jsonrpc10 from 'gi://Jsonrpc?version=1.0';
+    export default Jsonrpc10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://GnomeDesktop?version=4.0' {
 }
 
 declare module 'gi://GnomeDesktop' {
-    export default 'gi://GnomeDesktop?version=4.0';
+    import GnomeDesktop40 from 'gi://GnomeDesktop?version=4.0';
+    export default GnomeDesktop40;
 }
 
 

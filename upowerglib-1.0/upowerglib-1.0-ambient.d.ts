@@ -5,7 +5,8 @@ declare module 'gi://UPowerGlib?version=1.0' {
 }
 
 declare module 'gi://UPowerGlib' {
-    export default 'gi://UPowerGlib?version=1.0';
+    import UPowerGlib10 from 'gi://UPowerGlib?version=1.0';
+    export default UPowerGlib10;
 }
 
 

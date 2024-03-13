@@ -5,7 +5,8 @@ declare module 'gi://TimezoneMap?version=1.0' {
 }
 
 declare module 'gi://TimezoneMap' {
-    export default 'gi://TimezoneMap?version=1.0';
+    import TimezoneMap10 from 'gi://TimezoneMap?version=1.0';
+    export default TimezoneMap10;
 }
 
 

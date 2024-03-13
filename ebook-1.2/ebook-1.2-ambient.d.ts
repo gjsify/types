@@ -5,7 +5,8 @@ declare module 'gi://EBook?version=1.2' {
 }
 
 declare module 'gi://EBook' {
-    export default 'gi://EBook?version=1.2';
+    import EBook12 from 'gi://EBook?version=1.2';
+    export default EBook12;
 }
 
 

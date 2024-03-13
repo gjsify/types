@@ -5,7 +5,8 @@ declare module 'gi://Gepub?version=0.5' {
 }
 
 declare module 'gi://Gepub' {
-    export default 'gi://Gepub?version=0.5';
+    import Gepub05 from 'gi://Gepub?version=0.5';
+    export default Gepub05;
 }
 
 

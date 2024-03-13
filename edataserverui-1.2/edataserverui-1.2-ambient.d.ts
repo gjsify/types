@@ -5,7 +5,8 @@ declare module 'gi://EDataServerUI?version=1.2' {
 }
 
 declare module 'gi://EDataServerUI' {
-    export default 'gi://EDataServerUI?version=1.2';
+    import EDataServerUI12 from 'gi://EDataServerUI?version=1.2';
+    export default EDataServerUI12;
 }
 
 

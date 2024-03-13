@@ -5,7 +5,8 @@ declare module 'gi://GLib?version=2.0' {
 }
 
 declare module 'gi://GLib' {
-    export default 'gi://GLib?version=2.0';
+    import GLib20 from 'gi://GLib?version=2.0';
+    export default GLib20;
 }
 
 

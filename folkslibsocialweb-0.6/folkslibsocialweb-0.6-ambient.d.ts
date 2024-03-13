@@ -5,7 +5,8 @@ declare module 'gi://FolksLibsocialweb?version=0.6' {
 }
 
 declare module 'gi://FolksLibsocialweb' {
-    export default 'gi://FolksLibsocialweb?version=0.6';
+    import FolksLibsocialweb06 from 'gi://FolksLibsocialweb?version=0.6';
+    export default FolksLibsocialweb06;
 }
 
 

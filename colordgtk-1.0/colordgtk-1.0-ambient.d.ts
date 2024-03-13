@@ -5,7 +5,8 @@ declare module 'gi://ColordGtk?version=1.0' {
 }
 
 declare module 'gi://ColordGtk' {
-    export default 'gi://ColordGtk?version=1.0';
+    import ColordGtk10 from 'gi://ColordGtk?version=1.0';
+    export default ColordGtk10;
 }
 
 

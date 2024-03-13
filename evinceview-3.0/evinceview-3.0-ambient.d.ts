@@ -5,7 +5,8 @@ declare module 'gi://EvinceView?version=3.0' {
 }
 
 declare module 'gi://EvinceView' {
-    export default 'gi://EvinceView?version=3.0';
+    import EvinceView30 from 'gi://EvinceView?version=3.0';
+    export default EvinceView30;
 }
 
 

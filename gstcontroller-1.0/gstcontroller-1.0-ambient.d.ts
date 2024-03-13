@@ -5,7 +5,8 @@ declare module 'gi://GstController?version=1.0' {
 }
 
 declare module 'gi://GstController' {
-    export default 'gi://GstController?version=1.0';
+    import GstController10 from 'gi://GstController?version=1.0';
+    export default GstController10;
 }
 
 

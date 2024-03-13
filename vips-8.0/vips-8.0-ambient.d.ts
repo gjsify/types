@@ -5,7 +5,8 @@ declare module 'gi://Vips?version=8.0' {
 }
 
 declare module 'gi://Vips' {
-    export default 'gi://Vips?version=8.0';
+    import Vips80 from 'gi://Vips?version=8.0';
+    export default Vips80;
 }
 
 

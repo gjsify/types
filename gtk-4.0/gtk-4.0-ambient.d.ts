@@ -5,7 +5,8 @@ declare module 'gi://Gtk?version=4.0' {
 }
 
 declare module 'gi://Gtk' {
-    export default 'gi://Gtk?version=4.0';
+    import Gtk40 from 'gi://Gtk?version=4.0';
+    export default Gtk40;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://ArrowFlight?version=1.0' {
 }
 
 declare module 'gi://ArrowFlight' {
-    export default 'gi://ArrowFlight?version=1.0';
+    import ArrowFlight10 from 'gi://ArrowFlight?version=1.0';
+    export default ArrowFlight10;
 }
 
 

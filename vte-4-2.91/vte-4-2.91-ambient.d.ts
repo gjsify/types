@@ -5,7 +5,8 @@ declare module 'gi://Vte?version=4-2.91' {
 }
 
 declare module 'gi://Vte' {
-    export default 'gi://Vte?version=4-2.91';
+    import Vte4291 from 'gi://Vte?version=4-2.91';
+    export default Vte4291;
 }
 
 

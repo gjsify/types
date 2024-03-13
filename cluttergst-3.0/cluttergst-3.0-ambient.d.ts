@@ -5,7 +5,8 @@ declare module 'gi://ClutterGst?version=3.0' {
 }
 
 declare module 'gi://ClutterGst' {
-    export default 'gi://ClutterGst?version=3.0';
+    import ClutterGst30 from 'gi://ClutterGst?version=3.0';
+    export default ClutterGst30;
 }
 
 

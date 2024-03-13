@@ -5,7 +5,8 @@ declare module 'gi://GstInsertBin?version=1.0' {
 }
 
 declare module 'gi://GstInsertBin' {
-    export default 'gi://GstInsertBin?version=1.0';
+    import GstInsertBin10 from 'gi://GstInsertBin?version=1.0';
+    export default GstInsertBin10;
 }
 
 

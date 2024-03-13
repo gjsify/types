@@ -5,7 +5,8 @@ declare module 'gi://ECalendar?version=1.2' {
 }
 
 declare module 'gi://ECalendar' {
-    export default 'gi://ECalendar?version=1.2';
+    import ECalendar12 from 'gi://ECalendar?version=1.2';
+    export default ECalendar12;
 }
 
 

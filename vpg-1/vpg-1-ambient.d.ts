@@ -5,7 +5,8 @@ declare module 'gi://Vpg?version=1' {
 }
 
 declare module 'gi://Vpg' {
-    export default 'gi://Vpg?version=1';
+    import Vpg1 from 'gi://Vpg?version=1';
+    export default Vpg1;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://GVnc?version=1.0' {
 }
 
 declare module 'gi://GVnc' {
-    export default 'gi://GVnc?version=1.0';
+    import GVnc10 from 'gi://GVnc?version=1.0';
+    export default GVnc10;
 }
 
 

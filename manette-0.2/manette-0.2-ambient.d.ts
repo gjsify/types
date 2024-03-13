@@ -5,7 +5,8 @@ declare module 'gi://Manette?version=0.2' {
 }
 
 declare module 'gi://Manette' {
-    export default 'gi://Manette?version=0.2';
+    import Manette02 from 'gi://Manette?version=0.2';
+    export default Manette02;
 }
 
 

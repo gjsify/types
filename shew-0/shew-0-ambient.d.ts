@@ -5,7 +5,8 @@ declare module 'gi://Shew?version=0' {
 }
 
 declare module 'gi://Shew' {
-    export default 'gi://Shew?version=0';
+    import Shew0 from 'gi://Shew?version=0';
+    export default Shew0;
 }
 
 

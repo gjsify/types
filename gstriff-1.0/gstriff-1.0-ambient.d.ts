@@ -5,7 +5,8 @@ declare module 'gi://GstRiff?version=1.0' {
 }
 
 declare module 'gi://GstRiff' {
-    export default 'gi://GstRiff?version=1.0';
+    import GstRiff10 from 'gi://GstRiff?version=1.0';
+    export default GstRiff10;
 }
 
 

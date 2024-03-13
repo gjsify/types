@@ -5,7 +5,8 @@ declare module 'gi://ClutterGdk?version=1.0' {
 }
 
 declare module 'gi://ClutterGdk' {
-    export default 'gi://ClutterGdk?version=1.0';
+    import ClutterGdk10 from 'gi://ClutterGdk?version=1.0';
+    export default ClutterGdk10;
 }
 
 

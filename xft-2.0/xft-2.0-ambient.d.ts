@@ -5,7 +5,8 @@ declare module 'gi://xft?version=2.0' {
 }
 
 declare module 'gi://xft' {
-    export default 'gi://xft?version=2.0';
+    import Xft20 from 'gi://xft?version=2.0';
+    export default Xft20;
 }
 
 

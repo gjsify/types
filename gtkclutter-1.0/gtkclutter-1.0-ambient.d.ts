@@ -5,7 +5,8 @@ declare module 'gi://GtkClutter?version=1.0' {
 }
 
 declare module 'gi://GtkClutter' {
-    export default 'gi://GtkClutter?version=1.0';
+    import GtkClutter10 from 'gi://GtkClutter?version=1.0';
+    export default GtkClutter10;
 }
 
 

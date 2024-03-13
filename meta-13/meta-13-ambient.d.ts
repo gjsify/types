@@ -5,7 +5,8 @@ declare module 'gi://Meta?version=13' {
 }
 
 declare module 'gi://Meta' {
-    export default 'gi://Meta?version=13';
+    import Meta13 from 'gi://Meta?version=13';
+    export default Meta13;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Handy?version=1' {
 }
 
 declare module 'gi://Handy' {
-    export default 'gi://Handy?version=1';
+    import Handy1 from 'gi://Handy?version=1';
+    export default Handy1;
 }
 
 

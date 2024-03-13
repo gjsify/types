@@ -5,7 +5,8 @@ declare module 'gi://TrackerControl?version=2.0' {
 }
 
 declare module 'gi://TrackerControl' {
-    export default 'gi://TrackerControl?version=2.0';
+    import TrackerControl20 from 'gi://TrackerControl?version=2.0';
+    export default TrackerControl20;
 }
 
 

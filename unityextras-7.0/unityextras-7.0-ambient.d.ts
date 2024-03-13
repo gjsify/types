@@ -5,7 +5,8 @@ declare module 'gi://UnityExtras?version=7.0' {
 }
 
 declare module 'gi://UnityExtras' {
-    export default 'gi://UnityExtras?version=7.0';
+    import UnityExtras70 from 'gi://UnityExtras?version=7.0';
+    export default UnityExtras70;
 }
 
 

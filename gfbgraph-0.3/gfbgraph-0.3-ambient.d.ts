@@ -5,7 +5,8 @@ declare module 'gi://GFBGraph?version=0.3' {
 }
 
 declare module 'gi://GFBGraph' {
-    export default 'gi://GFBGraph?version=0.3';
+    import GFBGraph03 from 'gi://GFBGraph?version=0.3';
+    export default GFBGraph03;
 }
 
 

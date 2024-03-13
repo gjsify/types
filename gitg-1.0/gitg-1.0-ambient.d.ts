@@ -5,7 +5,8 @@ declare module 'gi://Gitg?version=1.0' {
 }
 
 declare module 'gi://Gitg' {
-    export default 'gi://Gitg?version=1.0';
+    import Gitg10 from 'gi://Gitg?version=1.0';
+    export default Gitg10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Grl?version=0.3' {
 }
 
 declare module 'gi://Grl' {
-    export default 'gi://Grl?version=0.3';
+    import Grl03 from 'gi://Grl?version=0.3';
+    export default Grl03;
 }
 
 

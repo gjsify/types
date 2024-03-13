@@ -5,7 +5,8 @@ declare module 'gi://NM?version=1.0' {
 }
 
 declare module 'gi://NM' {
-    export default 'gi://NM?version=1.0';
+    import NM10 from 'gi://NM?version=1.0';
+    export default NM10;
 }
 
 

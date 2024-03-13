@@ -5,7 +5,8 @@ declare module 'gi://Parquet?version=1.0' {
 }
 
 declare module 'gi://Parquet' {
-    export default 'gi://Parquet?version=1.0';
+    import Parquet10 from 'gi://Parquet?version=1.0';
+    export default Parquet10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://gSignon?version=1.0' {
 }
 
 declare module 'gi://gSignon' {
-    export default 'gi://gSignon?version=1.0';
+    import GSignon10 from 'gi://gSignon?version=1.0';
+    export default GSignon10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Pango?version=1.0' {
 }
 
 declare module 'gi://Pango' {
-    export default 'gi://Pango?version=1.0';
+    import Pango10 from 'gi://Pango?version=1.0';
+    export default Pango10;
 }
 
 

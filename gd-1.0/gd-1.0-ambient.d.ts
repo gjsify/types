@@ -5,7 +5,8 @@ declare module 'gi://Gd?version=1.0' {
 }
 
 declare module 'gi://Gd' {
-    export default 'gi://Gd?version=1.0';
+    import Gd10 from 'gi://Gd?version=1.0';
+    export default Gd10;
 }
 
 

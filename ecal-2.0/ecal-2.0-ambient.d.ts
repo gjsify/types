@@ -5,7 +5,8 @@ declare module 'gi://ECal?version=2.0' {
 }
 
 declare module 'gi://ECal' {
-    export default 'gi://ECal?version=2.0';
+    import ECal20 from 'gi://ECal?version=2.0';
+    export default ECal20;
 }
 
 

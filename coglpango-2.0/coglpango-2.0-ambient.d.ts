@@ -5,7 +5,8 @@ declare module 'gi://CoglPango?version=2.0' {
 }
 
 declare module 'gi://CoglPango' {
-    export default 'gi://CoglPango?version=2.0';
+    import CoglPango20 from 'gi://CoglPango?version=2.0';
+    export default CoglPango20;
 }
 
 

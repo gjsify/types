@@ -5,7 +5,8 @@ declare module 'gi://Shumate?version=1.0' {
 }
 
 declare module 'gi://Shumate' {
-    export default 'gi://Shumate?version=1.0';
+    import Shumate10 from 'gi://Shumate?version=1.0';
+    export default Shumate10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Gsk?version=4.0' {
 }
 
 declare module 'gi://Gsk' {
-    export default 'gi://Gsk?version=4.0';
+    import Gsk40 from 'gi://Gsk?version=4.0';
+    export default Gsk40;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://GrlNet?version=0.3' {
 }
 
 declare module 'gi://GrlNet' {
-    export default 'gi://GrlNet?version=0.3';
+    import GrlNet03 from 'gi://GrlNet?version=0.3';
+    export default GrlNet03;
 }
 
 

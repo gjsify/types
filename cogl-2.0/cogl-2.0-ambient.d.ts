@@ -5,7 +5,8 @@ declare module 'gi://Cogl?version=2.0' {
 }
 
 declare module 'gi://Cogl' {
-    export default 'gi://Cogl?version=2.0';
+    import Cogl20 from 'gi://Cogl?version=2.0';
+    export default Cogl20;
 }
 
 

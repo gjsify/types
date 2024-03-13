@@ -5,7 +5,8 @@ declare module 'gi://EBackend?version=1.2' {
 }
 
 declare module 'gi://EBackend' {
-    export default 'gi://EBackend?version=1.2';
+    import EBackend12 from 'gi://EBackend?version=1.2';
+    export default EBackend12;
 }
 
 

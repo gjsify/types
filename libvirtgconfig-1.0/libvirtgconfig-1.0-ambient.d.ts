@@ -5,7 +5,8 @@ declare module 'gi://LibvirtGConfig?version=1.0' {
 }
 
 declare module 'gi://LibvirtGConfig' {
-    export default 'gi://LibvirtGConfig?version=1.0';
+    import LibvirtGConfig10 from 'gi://LibvirtGConfig?version=1.0';
+    export default LibvirtGConfig10;
 }
 
 

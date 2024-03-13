@@ -5,7 +5,8 @@ declare module 'gi://ClutterX11?version=1.0' {
 }
 
 declare module 'gi://ClutterX11' {
-    export default 'gi://ClutterX11?version=1.0';
+    import ClutterX1110 from 'gi://ClutterX11?version=1.0';
+    export default ClutterX1110;
 }
 
 

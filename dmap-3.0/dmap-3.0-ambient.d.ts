@@ -5,7 +5,8 @@ declare module 'gi://DMAP?version=3.0' {
 }
 
 declare module 'gi://DMAP' {
-    export default 'gi://DMAP?version=3.0';
+    import DMAP30 from 'gi://DMAP?version=3.0';
+    export default DMAP30;
 }
 
 

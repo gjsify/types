@@ -5,7 +5,8 @@ declare module 'gi://Mash?version=0.2' {
 }
 
 declare module 'gi://Mash' {
-    export default 'gi://Mash?version=0.2';
+    import Mash02 from 'gi://Mash?version=0.2';
+    export default Mash02;
 }
 
 

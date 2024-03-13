@@ -5,7 +5,8 @@ declare module 'gi://EpcUi?version=1.0' {
 }
 
 declare module 'gi://EpcUi' {
-    export default 'gi://EpcUi?version=1.0';
+    import EpcUi10 from 'gi://EpcUi?version=1.0';
+    export default EpcUi10;
 }
 
 

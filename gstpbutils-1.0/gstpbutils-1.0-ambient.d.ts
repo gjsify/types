@@ -5,7 +5,8 @@ declare module 'gi://GstPbutils?version=1.0' {
 }
 
 declare module 'gi://GstPbutils' {
-    export default 'gi://GstPbutils?version=1.0';
+    import GstPbutils10 from 'gi://GstPbutils?version=1.0';
+    export default GstPbutils10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://GstInterfaces?version=0.10' {
 }
 
 declare module 'gi://GstInterfaces' {
-    export default 'gi://GstInterfaces?version=0.10';
+    import GstInterfaces010 from 'gi://GstInterfaces?version=0.10';
+    export default GstInterfaces010;
 }
 
 

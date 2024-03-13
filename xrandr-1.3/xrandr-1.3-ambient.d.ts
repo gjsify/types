@@ -5,7 +5,8 @@ declare module 'gi://xrandr?version=1.3' {
 }
 
 declare module 'gi://xrandr' {
-    export default 'gi://xrandr?version=1.3';
+    import Xrandr13 from 'gi://xrandr?version=1.3';
+    export default Xrandr13;
 }
 
 

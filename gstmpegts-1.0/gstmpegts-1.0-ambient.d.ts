@@ -5,7 +5,8 @@ declare module 'gi://GstMpegts?version=1.0' {
 }
 
 declare module 'gi://GstMpegts' {
-    export default 'gi://GstMpegts?version=1.0';
+    import GstMpegts10 from 'gi://GstMpegts?version=1.0';
+    export default GstMpegts10;
 }
 
 

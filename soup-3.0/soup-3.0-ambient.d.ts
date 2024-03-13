@@ -5,7 +5,8 @@ declare module 'gi://Soup?version=3.0' {
 }
 
 declare module 'gi://Soup' {
-    export default 'gi://Soup?version=3.0';
+    import Soup30 from 'gi://Soup?version=3.0';
+    export default Soup30;
 }
 
 

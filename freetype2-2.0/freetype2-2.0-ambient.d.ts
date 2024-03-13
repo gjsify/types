@@ -5,7 +5,8 @@ declare module 'gi://freetype2?version=2.0' {
 }
 
 declare module 'gi://freetype2' {
-    export default 'gi://freetype2?version=2.0';
+    import Freetype220 from 'gi://freetype2?version=2.0';
+    export default Freetype220;
 }
 
 

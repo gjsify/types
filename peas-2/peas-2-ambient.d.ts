@@ -5,7 +5,8 @@ declare module 'gi://Peas?version=2' {
 }
 
 declare module 'gi://Peas' {
-    export default 'gi://Peas?version=2';
+    import Peas2 from 'gi://Peas?version=2';
+    export default Peas2;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://libxml2?version=2.0' {
 }
 
 declare module 'gi://libxml2' {
-    export default 'gi://libxml2?version=2.0';
+    import Libxml220 from 'gi://libxml2?version=2.0';
+    export default Libxml220;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Bump?version=0.1' {
 }
 
 declare module 'gi://Bump' {
-    export default 'gi://Bump?version=0.1';
+    import Bump01 from 'gi://Bump?version=0.1';
+    export default Bump01;
 }
 
 

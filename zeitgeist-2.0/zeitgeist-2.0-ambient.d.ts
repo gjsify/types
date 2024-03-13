@@ -5,7 +5,8 @@ declare module 'gi://Zeitgeist?version=2.0' {
 }
 
 declare module 'gi://Zeitgeist' {
-    export default 'gi://Zeitgeist?version=2.0';
+    import Zeitgeist20 from 'gi://Zeitgeist?version=2.0';
+    export default Zeitgeist20;
 }
 
 

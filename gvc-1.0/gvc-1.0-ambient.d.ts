@@ -5,7 +5,8 @@ declare module 'gi://Gvc?version=1.0' {
 }
 
 declare module 'gi://Gvc' {
-    export default 'gi://Gvc?version=1.0';
+    import Gvc10 from 'gi://Gvc?version=1.0';
+    export default Gvc10;
 }
 
 

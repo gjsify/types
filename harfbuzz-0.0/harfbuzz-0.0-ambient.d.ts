@@ -5,7 +5,8 @@ declare module 'gi://HarfBuzz?version=0.0' {
 }
 
 declare module 'gi://HarfBuzz' {
-    export default 'gi://HarfBuzz?version=0.0';
+    import HarfBuzz00 from 'gi://HarfBuzz?version=0.0';
+    export default HarfBuzz00;
 }
 
 

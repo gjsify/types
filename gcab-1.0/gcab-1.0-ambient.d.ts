@@ -5,7 +5,8 @@ declare module 'gi://GCab?version=1.0' {
 }
 
 declare module 'gi://GCab' {
-    export default 'gi://GCab?version=1.0';
+    import GCab10 from 'gi://GCab?version=1.0';
+    export default GCab10;
 }
 
 

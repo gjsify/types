@@ -5,7 +5,8 @@ declare module 'gi://GL?version=1.0' {
 }
 
 declare module 'gi://GL' {
-    export default 'gi://GL?version=1.0';
+    import GL10 from 'gi://GL?version=1.0';
+    export default GL10;
 }
 
 

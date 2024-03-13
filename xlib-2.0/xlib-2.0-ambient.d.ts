@@ -5,7 +5,8 @@ declare module 'gi://xlib?version=2.0' {
 }
 
 declare module 'gi://xlib' {
-    export default 'gi://xlib?version=2.0';
+    import Xlib20 from 'gi://xlib?version=2.0';
+    export default Xlib20;
 }
 
 

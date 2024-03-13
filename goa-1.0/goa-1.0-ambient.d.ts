@@ -5,7 +5,8 @@ declare module 'gi://Goa?version=1.0' {
 }
 
 declare module 'gi://Goa' {
-    export default 'gi://Goa?version=1.0';
+    import Goa10 from 'gi://Goa?version=1.0';
+    export default Goa10;
 }
 
 

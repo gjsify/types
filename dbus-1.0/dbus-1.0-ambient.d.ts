@@ -5,7 +5,8 @@ declare module 'gi://DBus?version=1.0' {
 }
 
 declare module 'gi://DBus' {
-    export default 'gi://DBus?version=1.0';
+    import DBus10 from 'gi://DBus?version=1.0';
+    export default DBus10;
 }
 
 

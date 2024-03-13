@@ -5,7 +5,8 @@ declare module 'gi://Anjuta?version=3.0' {
 }
 
 declare module 'gi://Anjuta' {
-    export default 'gi://Anjuta?version=3.0';
+    import Anjuta30 from 'gi://Anjuta?version=3.0';
+    export default Anjuta30;
 }
 
 

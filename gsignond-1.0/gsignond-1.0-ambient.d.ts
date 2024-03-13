@@ -5,7 +5,8 @@ declare module 'gi://GSignond?version=1.0' {
 }
 
 declare module 'gi://GSignond' {
-    export default 'gi://GSignond?version=1.0';
+    import GSignond10 from 'gi://GSignond?version=1.0';
+    export default GSignond10;
 }
 
 

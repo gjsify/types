@@ -5,7 +5,8 @@ declare module 'gi://GeocodeGlib?version=2.0' {
 }
 
 declare module 'gi://GeocodeGlib' {
-    export default 'gi://GeocodeGlib?version=2.0';
+    import GeocodeGlib20 from 'gi://GeocodeGlib?version=2.0';
+    export default GeocodeGlib20;
 }
 
 

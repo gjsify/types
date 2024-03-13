@@ -5,7 +5,8 @@ declare module 'gi://Flatpak?version=1.0' {
 }
 
 declare module 'gi://Flatpak' {
-    export default 'gi://Flatpak?version=1.0';
+    import Flatpak10 from 'gi://Flatpak?version=1.0';
+    export default Flatpak10;
 }
 
 

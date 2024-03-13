@@ -5,7 +5,8 @@ declare module 'gi://Zpj?version=0.0' {
 }
 
 declare module 'gi://Zpj' {
-    export default 'gi://Zpj?version=0.0';
+    import Zpj00 from 'gi://Zpj?version=0.0';
+    export default Zpj00;
 }
 
 

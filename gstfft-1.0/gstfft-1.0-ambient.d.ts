@@ -5,7 +5,8 @@ declare module 'gi://GstFft?version=1.0' {
 }
 
 declare module 'gi://GstFft' {
-    export default 'gi://GstFft?version=1.0';
+    import GstFft10 from 'gi://GstFft?version=1.0';
+    export default GstFft10;
 }
 
 

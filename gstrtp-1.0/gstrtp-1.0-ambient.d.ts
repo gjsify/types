@@ -5,7 +5,8 @@ declare module 'gi://GstRtp?version=1.0' {
 }
 
 declare module 'gi://GstRtp' {
-    export default 'gi://GstRtp?version=1.0';
+    import GstRtp10 from 'gi://GstRtp?version=1.0';
+    export default GstRtp10;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://Sushi?version=1.0' {
 }
 
 declare module 'gi://Sushi' {
-    export default 'gi://Sushi?version=1.0';
+    import Sushi10 from 'gi://Sushi?version=1.0';
+    export default Sushi10;
 }
 
 

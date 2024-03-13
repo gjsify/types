@@ -5,7 +5,8 @@ declare module 'gi://GVncPulse?version=1.0' {
 }
 
 declare module 'gi://GVncPulse' {
-    export default 'gi://GVncPulse?version=1.0';
+    import GVncPulse10 from 'gi://GVncPulse?version=1.0';
+    export default GVncPulse10;
 }
 
 

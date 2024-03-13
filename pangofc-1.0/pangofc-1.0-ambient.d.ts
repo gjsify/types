@@ -5,7 +5,8 @@ declare module 'gi://PangoFc?version=1.0' {
 }
 
 declare module 'gi://PangoFc' {
-    export default 'gi://PangoFc?version=1.0';
+    import PangoFc10 from 'gi://PangoFc?version=1.0';
+    export default PangoFc10;
 }
 
 

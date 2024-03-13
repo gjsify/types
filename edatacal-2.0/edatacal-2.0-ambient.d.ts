@@ -5,7 +5,8 @@ declare module 'gi://EDataCal?version=2.0' {
 }
 
 declare module 'gi://EDataCal' {
-    export default 'gi://EDataCal?version=2.0';
+    import EDataCal20 from 'gi://EDataCal?version=2.0';
+    export default EDataCal20;
 }
 
 

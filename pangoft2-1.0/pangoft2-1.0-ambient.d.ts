@@ -5,7 +5,8 @@ declare module 'gi://PangoFT2?version=1.0' {
 }
 
 declare module 'gi://PangoFT2' {
-    export default 'gi://PangoFT2?version=1.0';
+    import PangoFT210 from 'gi://PangoFT2?version=1.0';
+    export default PangoFT210;
 }
 
 

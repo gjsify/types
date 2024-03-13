@@ -5,7 +5,8 @@ declare module 'gi://GnomeKeyring?version=1.0' {
 }
 
 declare module 'gi://GnomeKeyring' {
-    export default 'gi://GnomeKeyring?version=1.0';
+    import GnomeKeyring10 from 'gi://GnomeKeyring?version=1.0';
+    export default GnomeKeyring10;
 }
 
 

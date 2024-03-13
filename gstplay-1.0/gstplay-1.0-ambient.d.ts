@@ -5,7 +5,8 @@ declare module 'gi://GstPlay?version=1.0' {
 }
 
 declare module 'gi://GstPlay' {
-    export default 'gi://GstPlay?version=1.0';
+    import GstPlay10 from 'gi://GstPlay?version=1.0';
+    export default GstPlay10;
 }
 
 

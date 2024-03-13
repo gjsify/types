@@ -5,7 +5,8 @@ declare module 'gi://ICal?version=3.0' {
 }
 
 declare module 'gi://ICal' {
-    export default 'gi://ICal?version=3.0';
+    import ICal30 from 'gi://ICal?version=3.0';
+    export default ICal30;
 }
 
 

@@ -5,7 +5,8 @@ declare module 'gi://OSTree?version=1.0' {
 }
 
 declare module 'gi://OSTree' {
-    export default 'gi://OSTree?version=1.0';
+    import OSTree10 from 'gi://OSTree?version=1.0';
+    export default OSTree10;
 }
 
 

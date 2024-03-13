@@ -5,7 +5,8 @@ declare module 'gi://GdkPixbuf?version=2.0' {
 }
 
 declare module 'gi://GdkPixbuf' {
-    export default 'gi://GdkPixbuf?version=2.0';
+    import GdkPixbuf20 from 'gi://GdkPixbuf?version=2.0';
+    export default GdkPixbuf20;
 }
 
 

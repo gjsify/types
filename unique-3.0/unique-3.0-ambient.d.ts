@@ -5,7 +5,8 @@ declare module 'gi://Unique?version=3.0' {
 }
 
 declare module 'gi://Unique' {
-    export default 'gi://Unique?version=3.0';
+    import Unique30 from 'gi://Unique?version=3.0';
+    export default Unique30;
 }
 
 
