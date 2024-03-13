@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,1341 +19,1310 @@ import type Rest from '@girs/rest-0.7';
 import type Json from '@girs/json-1.0';
 
 export namespace Zpj {
-
-/**
- * This enumeration can be expanded at a later date.
- */
-class Error extends GLib.Error {
-
-    // Static fields of Zpj.Error
-
-/**
- * The server received an invalid URL,
- *   possibly because of an invalid `file_id`.
- */
-static REQUEST_URL_INVALID: number
-/**
- * An unknown error occurred.
- */
-static UNKNOWN: number
-
-    // Constructors of Zpj.Error
-
-constructor(options: { message: string, code: number});
-_init(...args: any[]): void;
-
-}
-
-/**
- * The types of Skydrive
- * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
- * objects</ulink>.
- * 
- * This enumeration can be expanded at a later date.
- */
-enum SkydriveEntryType {
     /**
-     * A file.
+     * This enumeration can be expanded at a later date.
      */
-    FILE,
-    /**
-     * A folder.
-     */
-    FOLDER,
-    /**
-     * A photo.
-     */
-    PHOTO,
-    /**
-     * A video.
-     */
-    VIDEO,
-    /**
-     * Invalid or unknown object.
-     */
-    INVALID,
-}
-/**
- * Different
- * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826522.aspx#reading_photos_videos_props">
- * thumbnail sizes</ulink> offered by SkyDrive.
- * 
- * This enumeration can be expanded at a later date.
- */
-enum ThumbnailSize {
-    /**
-     * Smallest possible size.
-     */
-    SMALL,
-    /**
-     * The default.
-     */
-    NORMAL,
-}
-/**
- * <ulink
- * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
- * Friendly name</ulink> for the Documents folder. It can be used as
- * the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
- */
-const SKYDRIVE_FOLDER_MY_DOCUMENTS: string
-/**
- * <ulink
- * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
- * Friendly name</ulink> for the Pictures folder. It can be used as the
- * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
- */
-const SKYDRIVE_FOLDER_MY_PHOTOS: string
-/**
- * <ulink
- * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
- * Friendly name</ulink> for the Public folder. It can be used as the
- * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
- */
-const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string
-/**
- * <ulink
- * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
- * Friendly name</ulink> for the Skydrive top-level folder. It can be
- * used as the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
- */
-const SKYDRIVE_FOLDER_SKYDRIVE: string
-function error_quark(): GLib.Quark
-module AuthorizationDomain {
+    class Error extends GLib.Error {
+        // Static fields of Zpj.Error
 
-    // Constructor properties interface
+        /**
+         * The server received an invalid URL,
+         *   possibly because of an invalid `file_id`.
+         */
+        static REQUEST_URL_INVALID: number;
+        /**
+         * An unknown error occurred.
+         */
+        static UNKNOWN: number;
 
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-scope: string;
-    service_name: string;
-    serviceName: string;
+        // Constructors of Zpj.Error
+
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
     }
 
-}
-
-class AuthorizationDomain extends GObject.Object {
-
-    // Own properties of Zpj.AuthorizationDomain
-
-    get scope(): string;
-    get service_name(): string;
-    get serviceName(): string;
-
-    // Constructors of Zpj.AuthorizationDomain
-
-
-constructor(properties?: Partial<AuthorizationDomain.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own methods of Zpj.AuthorizationDomain
-
-    get_scope(): string
-    get_service_name(): string
-}
-
-module GoaAuthorizer {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
-
-    }
-
-}
-
-/**
- * The #ZpjGoaAuthorizer structure contains only private data and
- * should only be accessed using the provided API.
- */
-class GoaAuthorizer extends GObject.Object implements Authorizer {
-
-    // Constructors of Zpj.GoaAuthorizer
-
-
-constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-/**
- * Whether the authorization tokens held by `iface` are valid for
- * `domain`.
- * 
- * This method is thread safe.
- * @param domain A #ZpjAuthorizationDomain.
- * @returns %TRUE if the tokens are valid.
- */
-is_authorized_for_domain(domain: AuthorizationDomain): boolean
-/**
- * Adds the necessary authorization to `call`.
- * 
- * This method modifies `call` in place and is thread safe.
- * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
- * @param call A #RestProxyCall.
- */
-process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void
-/**
- * Adds the necessary authorization to `message`. The type of `message`
- * can be DELETE, GET and POST.
- * 
- * This method modifies `message` in place and is thread safe.
- * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
- * @param message A #SoupMessage.
- */
-process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void
-/**
- * Synchronously forces `iface` to refresh any authorization tokens
- * held by it. See zpj_authorizer_refresh_authorization_async() for the
- * asynchronous version of this call.
- * 
- * This method is thread safe.
- * @param cancellable An optional #GCancellable object, or   %NULL.
- * @returns %TRUE if the authorizer now has a valid token.
- */
-refresh_authorization(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Asynchronously forces `iface` to refresh any authorization tokens
- * held by it. See zpj_authorizer_refresh_authorization() for the
- * synchronous version of this call.
- * 
- * When the operation is finished, `callback` will be called. You can
- * then call zpj_authorizer_refresh_authorization_finish() to get the
- * result of the operation.
- * 
- * This method is thread safe.
- * @param cancellable An optional #GCancellable object, or   %NULL.
- * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
- */
-refresh_authorization_async(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes an asynchronous operation started with
- * zpj_authorizer_refresh_authorization_async().
- * @param res A #GAsyncResult.
- * @returns %TRUE if the authorizer now has a valid token.
- */
-refresh_authorization_finish(res: Gio.AsyncResult): boolean
-/**
- * Whether the authorization tokens held by `iface` are valid for
- * `domain`.
- * 
- * This method is thread safe.
- * @param domain A #ZpjAuthorizationDomain.
- */
-vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean
-/**
- * Adds the necessary authorization to `call`.
- * 
- * This method modifies `call` in place and is thread safe.
- * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
- * @param call A #RestProxyCall.
- */
-vfunc_process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void
-/**
- * Adds the necessary authorization to `message`. The type of `message`
- * can be DELETE, GET and POST.
- * 
- * This method modifies `message` in place and is thread safe.
- * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
- * @param message A #SoupMessage.
- */
-vfunc_process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void
-/**
- * Synchronously forces `iface` to refresh any authorization tokens
- * held by it. See zpj_authorizer_refresh_authorization_async() for the
- * asynchronous version of this call.
- * 
- * This method is thread safe.
- * @param cancellable An optional #GCancellable object, or   %NULL.
- */
-vfunc_refresh_authorization(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module Skydrive {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-authorizer: Authorizer;
-    }
-
-}
-
-/**
- * The #ZpjSkydrive structure contains only private data and should
- * only be accessed using the provided API.
- */
-class Skydrive extends GObject.Object {
-
-    // Own properties of Zpj.Skydrive
-
-    get authorizer(): Authorizer;
-    set authorizer(val: Authorizer);
-
-    // Constructors of Zpj.Skydrive
-
-
-constructor(properties?: Partial<Skydrive.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](authorizer: Authorizer): Skydrive;
-
-    // Own methods of Zpj.Skydrive
-
-    create_folder(folder: SkydriveFolder, cancellable?: (Gio.Cancellable | null)): boolean
-    create_folder_from_name(name: string, parent_id: string, cancellable?: (Gio.Cancellable | null)): boolean
     /**
-     * Synchronously deletes the entry corresponding to `entry_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>.
-     * @param entry_id The ID of the #ZpjSkydriveEntry to be deleted.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the #ZpjSkydriveEntry was deleted successfully.
-     */
-    delete_entry_id(entry_id: string, cancellable?: (Gio.Cancellable | null)): boolean
-    /**
-     * Synchronously downloads the file corresponding to `file_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink> and saves it in `path`. The file is temporarily
-     * saved in the preferred directory for temporary files (as returned
-     * by g_get_tmp_dir()) while the download is going on, and then moved
-     * to `path`.
-     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-     * @param path The destination.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
-     */
-    download_file_id_to_path(file_id: string, path: string, cancellable?: (Gio.Cancellable | null)): boolean
-    /**
-     * Synchronously returns a stream for downloading the file
-     * corresponding to `file_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See
-     * zpj_skydrive_download_file_id_to_stream_async() for the asynchronous
-     * version of this call.
-     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
-     */
-    download_file_id_to_stream(file_id: string, cancellable?: (Gio.Cancellable | null)): Gio.InputStream
-    /**
-     * Asynchronously returns a stream for downloading the file
-     * corresponding to `file_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_download_file_id_to_stream() for
-     * the synchronous version of this call.
-     * 
-     * When the operation is finished, `callback` will be called. You can
-     * then call zpj_skydrive_download_file_id_to_stream_finish() to get
-     * the result of the operation.
-     * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
-     */
-    download_file_id_to_stream_async(file_id: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an asynchronous operation started with
-     * zpj_skydrive_download_file_id_to_stream_async().
-     * @param res A #GAsyncResult.
-     * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
-     */
-    download_file_id_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream
-    /**
-     * Synchronously downloads `file` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink> and saves it in `path`. The file is temporarily
-     * saved in the preferred directory for temporary files (as returned
-     * by g_get_tmp_dir()) while the download is going on, and then moved
-     * to `path`.
-     * @param file The #ZpjSkydriveFile to be downloaded.
-     * @param path The destination.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
-     */
-    download_file_to_path(file: SkydriveFile, path: string, cancellable?: (Gio.Cancellable | null)): boolean
-    /**
-     * Synchronously returns a stream for downloading `file` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream_async()
-     * for the asynchronous version of this call.
-     * @param file The #ZpjSkydriveFile to be downloaded.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
-     */
-    download_file_to_stream(file: SkydriveFile, cancellable?: (Gio.Cancellable | null)): Gio.InputStream
-    /**
-     * Asynchronously returns a stream for downloading `file` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream() for the
-     * synchronous version of this call.
-     * 
-     * When the operation is finished, `callback` will be called. You can
-     * then call zpj_skydrive_download_file_to_stream_finish() to get the
-     * result of the operation.
-     * @param file The #ZpjSkydriveFile to be downloaded.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
-     */
-    download_file_to_stream_async(file: SkydriveFile, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an asynchronous operation started with
-     * zpj_skydrive_download_file_to_stream_async().
-     * @param res A #GAsyncResult.
-     * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
-     */
-    download_file_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream
-    /**
-     * Gets the authorizer used to authorize requests to `self`.
-     * @returns A #ZpjAuthorizer. The returned object is owned by #ZpjSkydrive and should not be modified or freed.
-     */
-    get_authorizer(): Authorizer
-    /**
-     * Synchronously lists the contents of `folder_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>.
-     * @param folder The #ZpjSkydriveFolder to be listed.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
-     */
-    list_folder(folder: SkydriveFolder, cancellable?: (Gio.Cancellable | null)): SkydriveEntry[]
-    /**
-     * Synchronously lists the contents of the folder corresponding to
-     * `folder_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>.
-     * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
-     */
-    list_folder_id(folder_id: string, cancellable?: (Gio.Cancellable | null)): SkydriveEntry[]
-    /**
-     * Asynchronously lists the contents of the folder corresponding to
-     * `folder_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_list_folder_id() for the
-     * synchronous version of this call.
-     * 
-     * When the operation is finished, `callback` will be called. You can
-     * then call zpj_skydrive_list_folder_id_finish() to get the result
-     * of the operation.
-     * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
-     */
-    list_folder_id_async(folder_id: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an asynchronous operation started with
-     * zpj_skydrive_list_folder_id_async().
-     * @param res A #GAsyncResult.
-     * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
-     */
-    list_folder_id_finish(res: Gio.AsyncResult): SkydriveEntry[]
-    /**
-     * Synchronously reads the properties of the entry corresponding to
-     * `id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_query_info_from_id_async() for
-     * the asynchronous version of this call.
-     * @param id An ID to be queried.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
-     */
-    query_info_from_id(id: string, cancellable?: (Gio.Cancellable | null)): SkydriveEntry
-    /**
-     * Asynchronously reads the properties of the entry corresponding to
-     * `id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See zpj_skydrive_query_info_from_id() for the
-     * synchronous version of this call.
-     * 
-     * When the operation is finished, `callback` will be called. You can
-     * then call zpj_skydrive_query_info_from_id_finish() to get the result
-     * of the operation.
-     * @param id The ID to be queried.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
-     */
-    query_info_from_id_async(id: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an asynchronous operation started with
-     * zpj_skydrive_query_info_from_id_async().
-     * @param res A #GAsyncResult.
-     * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
-     */
-    query_info_from_id_finish(res: Gio.AsyncResult): SkydriveEntry
-    /**
-     * Uses the new `authorizer` to replace the old one that was used to
-     * authorize requests to `self`.
-     * @param authorizer A new #ZpjAuthorizer.
-     */
-    set_authorizer(authorizer: Authorizer): void
-    /**
-     * Synchronously returns a stream for downloading the thumbnail of the
-     * file corresponding to `file_id` from
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink>. See
-     * zpj_skydrive_thumbnail_file_id_to_stream_async() for the
-     * asynchronous version of this call.
-     * 
-     * Thumbnails are only available for #ZpjSkydrivePhoto and
-     * #ZpjSkydriveVideo objects. If `file_id` refers to some other kind of
-     * #ZpjSkydriveFile, the error %ZPJ_ERROR_REQUEST_URL_INVALID will be
-     * returned.
-     * @param file_id The ID of the #ZpjSkydriveFile to be thumbnailed.
-     * @param size The thumbnail size.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns A #GInputStream to read the thumbnail data from. Free the returned object with g_object_unref().
-     */
-    thumbnail_file_id_to_stream(file_id: string, size: ThumbnailSize, cancellable?: (Gio.Cancellable | null)): Gio.InputStream
-    /**
-     * Synchronously uploads the file at `path` to
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink> and places it under `folder`.
-     * @param path The source.
-     * @param folder The destination #ZpjSkydriveFolder.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the file was uploaded successfully.
-     */
-    upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable?: (Gio.Cancellable | null)): boolean
-    /**
-     * Synchronously uploads the file at `path` to
-     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-     * Skydrive</ulink> and places it under the folder corresponding to
-     * `folder_id`.
-     * @param path The source.
-     * @param folder_id The ID of the destination #ZpjSkydriveFolder.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the file was uploaded successfully.
-     */
-    upload_path_to_folder_id(path: string, folder_id: string, cancellable?: (Gio.Cancellable | null)): boolean
-}
-
-module SkydriveEntry {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-created_time: GLib.DateTime;
-    createdTime: GLib.DateTime;
-    description: string;
-    from_id: string;
-    fromId: string;
-    from_name: string;
-    fromName: string;
-    id: string;
-    json: Json.Node;
-    name: string;
-    parent_id: string;
-    parentId: string;
-    type: SkydriveEntryType;
-    updated_time: GLib.DateTime;
-    updatedTime: GLib.DateTime;
-    }
-
-}
-
-/**
- * The #ZpjSkydriveEntry structure contains only private data and
- * should only be accessed using the provided API.
- */
-abstract class SkydriveEntry extends GObject.Object {
-
-    // Own properties of Zpj.SkydriveEntry
-
-    get created_time(): GLib.DateTime;
-    get createdTime(): GLib.DateTime;
-    get description(): string;
-    get from_id(): string;
-    get fromId(): string;
-    get from_name(): string;
-    get fromName(): string;
-    get id(): string;
-    set json(val: Json.Node);
-    get name(): string;
-    get parent_id(): string;
-    get parentId(): string;
-    get type(): SkydriveEntryType;
-    get updated_time(): GLib.DateTime;
-    get updatedTime(): GLib.DateTime;
-
-    // Constructors of Zpj.SkydriveEntry
-
-
-constructor(properties?: Partial<SkydriveEntry.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own virtual methods of Zpj.SkydriveEntry
-
-    vfunc_parse_json_node(node: Json.Node): void
-
-    // Own methods of Zpj.SkydriveEntry
-
-    /**
-     * Gets the time at which `self` was created. This is the value of the
+     * The types of Skydrive
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * updated_time</ulink> member in the JSON returned by the server.
-     * @returns a #GDateTime representing the time at which the entry was created. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
+     * objects</ulink>.
+     *
+     * This enumeration can be expanded at a later date.
      */
-    get_created_time(): GLib.DateTime
+    enum SkydriveEntryType {
+        /**
+         * A file.
+         */
+        FILE,
+        /**
+         * A folder.
+         */
+        FOLDER,
+        /**
+         * A photo.
+         */
+        PHOTO,
+        /**
+         * A video.
+         */
+        VIDEO,
+        /**
+         * Invalid or unknown object.
+         */
+        INVALID,
+    }
     /**
-     * Gets the description of `self`. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * description</ulink> member in the JSON returned by the server.
-     * @returns description of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+     * Different
+     * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826522.aspx#reading_photos_videos_props">
+     * thumbnail sizes</ulink> offered by SkyDrive.
+     *
+     * This enumeration can be expanded at a later date.
      */
-    get_description(): string
+    enum ThumbnailSize {
+        /**
+         * Smallest possible size.
+         */
+        SMALL,
+        /**
+         * The default.
+         */
+        NORMAL,
+    }
     /**
-     * Gets the ID of the user who created or uploaded `self`. This is part
-     * of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * from</ulink> object in the JSON returned by the server.
-     * @returns ID of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+     * <ulink
+     * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
+     * Friendly name</ulink> for the Documents folder. It can be used as
+     * the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
      */
-    get_from_id(): string
+    const SKYDRIVE_FOLDER_MY_DOCUMENTS: string;
     /**
-     * Gets the name of the user who created or uploaded `self`. This is
-     * part of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * from</ulink> object in the JSON returned by the server.
-     * @returns name of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+     * <ulink
+     * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
+     * Friendly name</ulink> for the Pictures folder. It can be used as the
+     * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
      */
-    get_from_name(): string
+    const SKYDRIVE_FOLDER_MY_PHOTOS: string;
     /**
-     * Gets the ID of `self`. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * id</ulink> member in the JSON returned by the server.
-     * @returns the entry's ID. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+     * <ulink
+     * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
+     * Friendly name</ulink> for the Public folder. It can be used as the
+     * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
      */
-    get_id(): string
+    const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string;
     /**
-     * Gets the name of `self`. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * name</ulink> member in the JSON returned by the server.
-     * @returns name of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+     * <ulink
+     * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
+     * Friendly name</ulink> for the Skydrive top-level folder. It can be
+     * used as the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
      */
-    get_name(): string
-    /**
-     * Gets the ID of the folder containing `self`. This is the value of
-     * the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * parent_id</ulink> member in the JSON returned by the server.
-     * @returns ID of the parent folder. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
-     */
-    get_parent_id(): string
-    /**
-     * Gets the time at which `self` was last updated. This is the value of
-     * the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
-     * updated_time</ulink> member in the JSON returned by the server.
-     * @returns a #GDateTime representing the time at which the entry was last updated. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
-     */
-    get_updated_time(): GLib.DateTime
-    /**
-     * Whether `self` is a folder.
-     * @returns %TRUE if the entry is a folder.
-     */
-    is_folder(): boolean
-}
+    const SKYDRIVE_FOLDER_SKYDRIVE: string;
+    function error_quark(): GLib.Quark;
+    module AuthorizationDomain {
+        // Constructor properties interface
 
-module SkydriveFile {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends SkydriveEntry.ConstructorProps {
-size: number;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            scope: string;
+            service_name: string;
+            serviceName: string;
+        }
     }
 
-}
+    class AuthorizationDomain extends GObject.Object {
+        // Own properties of Zpj.AuthorizationDomain
 
-/**
- * The #ZpjSkydriveFile structure contains only private data and should
- * only be accessed using the provided API.
- */
-class SkydriveFile extends SkydriveEntry {
+        get scope(): string;
+        get service_name(): string;
+        get serviceName(): string;
 
-    // Own properties of Zpj.SkydriveFile
+        // Constructors of Zpj.AuthorizationDomain
 
-    get size(): number;
+        constructor(properties?: Partial<AuthorizationDomain.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Zpj.SkydriveFile
+        _init(...args: any[]): void;
 
+        // Own methods of Zpj.AuthorizationDomain
 
-constructor(properties?: Partial<SkydriveFile.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](node: Json.Node): SkydriveFile;
-
-    // Own methods of Zpj.SkydriveFile
-
-    /**
-     * Gets the size of `self` in bytes. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648#file">
-     * size</ulink> member in the JSON returned by the server.
-     * @returns The entry's size in bytes.
-     */
-    get_size(): number
-}
-
-module SkydriveFolder {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends SkydriveEntry.ConstructorProps {
-
+        get_scope(): string;
+        get_service_name(): string;
     }
 
-}
+    module GoaAuthorizer {
+        // Constructor properties interface
 
-/**
- * The #ZpjSkydriveFolder structure contains only private data and
- * should only be accessed using the provided API.
- */
-class SkydriveFolder extends SkydriveEntry {
-
-    // Constructors of Zpj.SkydriveFolder
-
-
-constructor(properties?: Partial<SkydriveFolder.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](node: Json.Node): SkydriveFolder;
-}
-
-module SkydrivePhoto {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends SkydriveFile.ConstructorProps {
-
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
     }
 
-}
+    /**
+     * The #ZpjGoaAuthorizer structure contains only private data and
+     * should only be accessed using the provided API.
+     */
+    class GoaAuthorizer extends GObject.Object implements Authorizer {
+        // Constructors of Zpj.GoaAuthorizer
 
-/**
- * The #ZpjSkydrivePhoto structure contains only private data and
- * should only be accessed using the provided API.
- */
-class SkydrivePhoto extends SkydriveFile {
+        constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Zpj.SkydrivePhoto
+        _init(...args: any[]): void;
 
-
-constructor(properties?: Partial<SkydrivePhoto.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](node: Json.Node): SkydrivePhoto;
-}
-
-module SkydriveVideo {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends SkydriveFile.ConstructorProps {
-bitrate: number;
-    duration: number;
-    height: number;
-    width: number;
+        // Inherited methods
+        /**
+         * Whether the authorization tokens held by `iface` are valid for
+         * `domain`.
+         *
+         * This method is thread safe.
+         * @param domain A #ZpjAuthorizationDomain.
+         * @returns %TRUE if the tokens are valid.
+         */
+        is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+        /**
+         * Adds the necessary authorization to `call`.
+         *
+         * This method modifies `call` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param call A #RestProxyCall.
+         */
+        process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param message A #SoupMessage.
+         */
+        process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the authorizer now has a valid token.
+         */
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Asynchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * result of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        refresh_authorization_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_authorizer_refresh_authorization_async().
+         * @param res A #GAsyncResult.
+         * @returns %TRUE if the authorizer now has a valid token.
+         */
+        refresh_authorization_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Whether the authorization tokens held by `iface` are valid for
+         * `domain`.
+         *
+         * This method is thread safe.
+         * @param domain A #ZpjAuthorizationDomain.
+         */
+        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+        /**
+         * Adds the necessary authorization to `call`.
+         *
+         * This method modifies `call` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param call A #RestProxyCall.
+         */
+        vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param message A #SoupMessage.
+         */
+        vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         */
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
     }
 
-}
+    module Skydrive {
+        // Constructor properties interface
 
-/**
- * The #ZpjSkydriveVideo structure contains only private data and
- * should only be accessed using the provided API.
- */
-class SkydriveVideo extends SkydriveFile {
-
-    // Own properties of Zpj.SkydriveVideo
-
-    get bitrate(): number;
-    get duration(): number;
-    get height(): number;
-    get width(): number;
-
-    // Constructors of Zpj.SkydriveVideo
-
-
-constructor(properties?: Partial<SkydriveVideo.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](node: Json.Node): SkydriveVideo;
-
-    // Own methods of Zpj.SkydriveVideo
-
-    /**
-     * Gets the bit rate of `self` in bits per second. This is the value of
-     * the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
-     * bitrate</ulink> member in the JSON returned by the server.
-     * @returns The video's bit rate in bits per second.
-     */
-    get_bitrate(): number
-    /**
-     * Gets the run time duration of `self` in milliseconds. This is the
-     * value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
-     * duration</ulink> member in the JSON returned by the server.
-     * @returns The video's run time duration in milliseconds.
-     */
-    get_duration(): number
-    /**
-     * Gets the height of `self` in pixels. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
-     * height</ulink> member in the JSON returned by the server.
-     * @returns The video's height in pixels.
-     */
-    get_height(): number
-    /**
-     * Gets the width of `self` in pixels. This is the value of the <ulink
-     * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
-     * width</ulink> member in the JSON returned by the server.
-     * @returns The video's width in pixels.
-     */
-    get_width(): number
-}
-
-type AuthorizationDomainClass = typeof AuthorizationDomain
-abstract class AuthorizationDomainPrivate {
-
-    // Constructors of Zpj.AuthorizationDomainPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type AuthorizerInterface = typeof Authorizer
-type GoaAuthorizerClass = typeof GoaAuthorizer
-abstract class GoaAuthorizerPrivate {
-
-    // Constructors of Zpj.GoaAuthorizerPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type SkydriveClass = typeof Skydrive
-type SkydriveEntryClass = typeof SkydriveEntry
-abstract class SkydriveEntryPrivate {
-
-    // Constructors of Zpj.SkydriveEntryPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type SkydriveFileClass = typeof SkydriveFile
-abstract class SkydriveFilePrivate {
-
-    // Constructors of Zpj.SkydriveFilePrivate
-
-_init(...args: any[]): void;
-
-}
-
-type SkydriveFolderClass = typeof SkydriveFolder
-type SkydrivePhotoClass = typeof SkydrivePhoto
-abstract class SkydrivePrivate {
-
-    // Constructors of Zpj.SkydrivePrivate
-
-_init(...args: any[]): void;
-
-}
-
-type SkydriveVideoClass = typeof SkydriveVideo
-abstract class SkydriveVideoPrivate {
-
-    // Constructors of Zpj.SkydriveVideoPrivate
-
-_init(...args: any[]): void;
-
-}
-
-module Authorizer {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            authorizer: Authorizer;
+        }
     }
 
-}
+    /**
+     * The #ZpjSkydrive structure contains only private data and should
+     * only be accessed using the provided API.
+     */
+    class Skydrive extends GObject.Object {
+        // Own properties of Zpj.Skydrive
 
-export interface AuthorizerNamespace {
-      $gtype: GObject.GType<Authorizer>;
-      prototype: Authorizer;
-      
-          
-      }
-interface Authorizer extends GObject.Object {
+        get authorizer(): Authorizer;
+        set authorizer(val: Authorizer);
 
-    // Own methods of Zpj.Authorizer
+        // Constructors of Zpj.Skydrive
+
+        constructor(properties?: Partial<Skydrive.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](authorizer: Authorizer): Skydrive;
+
+        // Own methods of Zpj.Skydrive
+
+        create_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean;
+        create_folder_from_name(name: string, parent_id: string, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Synchronously deletes the entry corresponding to `entry_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>.
+         * @param entry_id The ID of the #ZpjSkydriveEntry to be deleted.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the #ZpjSkydriveEntry was deleted successfully.
+         */
+        delete_entry_id(entry_id: string, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Synchronously downloads the file corresponding to `file_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink> and saves it in `path`. The file is temporarily
+         * saved in the preferred directory for temporary files (as returned
+         * by g_get_tmp_dir()) while the download is going on, and then moved
+         * to `path`.
+         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+         * @param path The destination.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
+         */
+        download_file_id_to_path(file_id: string, path: string, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Synchronously returns a stream for downloading the file
+         * corresponding to `file_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See
+         * zpj_skydrive_download_file_id_to_stream_async() for the asynchronous
+         * version of this call.
+         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         */
+        download_file_id_to_stream(file_id: string, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        /**
+         * Asynchronously returns a stream for downloading the file
+         * corresponding to `file_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_download_file_id_to_stream() for
+         * the synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_skydrive_download_file_id_to_stream_finish() to get
+         * the result of the operation.
+         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        download_file_id_to_stream_async(
+            file_id: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_skydrive_download_file_id_to_stream_async().
+         * @param res A #GAsyncResult.
+         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         */
+        download_file_id_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
+        /**
+         * Synchronously downloads `file` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink> and saves it in `path`. The file is temporarily
+         * saved in the preferred directory for temporary files (as returned
+         * by g_get_tmp_dir()) while the download is going on, and then moved
+         * to `path`.
+         * @param file The #ZpjSkydriveFile to be downloaded.
+         * @param path The destination.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
+         */
+        download_file_to_path(file: SkydriveFile, path: string, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Synchronously returns a stream for downloading `file` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream_async()
+         * for the asynchronous version of this call.
+         * @param file The #ZpjSkydriveFile to be downloaded.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         */
+        download_file_to_stream(file: SkydriveFile, cancellable?: Gio.Cancellable | null): Gio.InputStream;
+        /**
+         * Asynchronously returns a stream for downloading `file` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream() for the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_skydrive_download_file_to_stream_finish() to get the
+         * result of the operation.
+         * @param file The #ZpjSkydriveFile to be downloaded.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        download_file_to_stream_async(
+            file: SkydriveFile,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_skydrive_download_file_to_stream_async().
+         * @param res A #GAsyncResult.
+         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         */
+        download_file_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
+        /**
+         * Gets the authorizer used to authorize requests to `self`.
+         * @returns A #ZpjAuthorizer. The returned object is owned by #ZpjSkydrive and should not be modified or freed.
+         */
+        get_authorizer(): Authorizer;
+        /**
+         * Synchronously lists the contents of `folder_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>.
+         * @param folder The #ZpjSkydriveFolder to be listed.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         */
+        list_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): SkydriveEntry[];
+        /**
+         * Synchronously lists the contents of the folder corresponding to
+         * `folder_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>.
+         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         */
+        list_folder_id(folder_id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry[];
+        /**
+         * Asynchronously lists the contents of the folder corresponding to
+         * `folder_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_list_folder_id() for the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_skydrive_list_folder_id_finish() to get the result
+         * of the operation.
+         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        list_folder_id_async(
+            folder_id: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_skydrive_list_folder_id_async().
+         * @param res A #GAsyncResult.
+         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         */
+        list_folder_id_finish(res: Gio.AsyncResult): SkydriveEntry[];
+        /**
+         * Synchronously reads the properties of the entry corresponding to
+         * `id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id_async() for
+         * the asynchronous version of this call.
+         * @param id An ID to be queried.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
+         */
+        query_info_from_id(id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry;
+        /**
+         * Asynchronously reads the properties of the entry corresponding to
+         * `id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id() for the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_skydrive_query_info_from_id_finish() to get the result
+         * of the operation.
+         * @param id The ID to be queried.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        query_info_from_id_async(
+            id: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_skydrive_query_info_from_id_async().
+         * @param res A #GAsyncResult.
+         * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
+         */
+        query_info_from_id_finish(res: Gio.AsyncResult): SkydriveEntry;
+        /**
+         * Uses the new `authorizer` to replace the old one that was used to
+         * authorize requests to `self`.
+         * @param authorizer A new #ZpjAuthorizer.
+         */
+        set_authorizer(authorizer: Authorizer): void;
+        /**
+         * Synchronously returns a stream for downloading the thumbnail of the
+         * file corresponding to `file_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See
+         * zpj_skydrive_thumbnail_file_id_to_stream_async() for the
+         * asynchronous version of this call.
+         *
+         * Thumbnails are only available for #ZpjSkydrivePhoto and
+         * #ZpjSkydriveVideo objects. If `file_id` refers to some other kind of
+         * #ZpjSkydriveFile, the error %ZPJ_ERROR_REQUEST_URL_INVALID will be
+         * returned.
+         * @param file_id The ID of the #ZpjSkydriveFile to be thumbnailed.
+         * @param size The thumbnail size.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns A #GInputStream to read the thumbnail data from. Free the returned object with g_object_unref().
+         */
+        thumbnail_file_id_to_stream(
+            file_id: string,
+            size: ThumbnailSize,
+            cancellable?: Gio.Cancellable | null,
+        ): Gio.InputStream;
+        /**
+         * Synchronously uploads the file at `path` to
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink> and places it under `folder`.
+         * @param path The source.
+         * @param folder The destination #ZpjSkydriveFolder.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the file was uploaded successfully.
+         */
+        upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Synchronously uploads the file at `path` to
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink> and places it under the folder corresponding to
+         * `folder_id`.
+         * @param path The source.
+         * @param folder_id The ID of the destination #ZpjSkydriveFolder.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the file was uploaded successfully.
+         */
+        upload_path_to_folder_id(path: string, folder_id: string, cancellable?: Gio.Cancellable | null): boolean;
+    }
+
+    module SkydriveEntry {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            created_time: GLib.DateTime;
+            createdTime: GLib.DateTime;
+            description: string;
+            from_id: string;
+            fromId: string;
+            from_name: string;
+            fromName: string;
+            id: string;
+            json: Json.Node;
+            name: string;
+            parent_id: string;
+            parentId: string;
+            type: SkydriveEntryType;
+            updated_time: GLib.DateTime;
+            updatedTime: GLib.DateTime;
+        }
+    }
 
     /**
-     * Whether the authorization tokens held by `iface` are valid for
-     * `domain`.
-     * 
-     * This method is thread safe.
-     * @param domain A #ZpjAuthorizationDomain.
-     * @returns %TRUE if the tokens are valid.
+     * The #ZpjSkydriveEntry structure contains only private data and
+     * should only be accessed using the provided API.
      */
-    is_authorized_for_domain(domain: AuthorizationDomain): boolean
-    /**
-     * Adds the necessary authorization to `call`.
-     * 
-     * This method modifies `call` in place and is thread safe.
-     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-     * @param call A #RestProxyCall.
-     */
-    process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void
-    /**
-     * Adds the necessary authorization to `message`. The type of `message`
-     * can be DELETE, GET and POST.
-     * 
-     * This method modifies `message` in place and is thread safe.
-     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-     * @param message A #SoupMessage.
-     */
-    process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void
-    /**
-     * Synchronously forces `iface` to refresh any authorization tokens
-     * held by it. See zpj_authorizer_refresh_authorization_async() for the
-     * asynchronous version of this call.
-     * 
-     * This method is thread safe.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @returns %TRUE if the authorizer now has a valid token.
-     */
-    refresh_authorization(cancellable?: (Gio.Cancellable | null)): boolean
-    /**
-     * Asynchronously forces `iface` to refresh any authorization tokens
-     * held by it. See zpj_authorizer_refresh_authorization() for the
-     * synchronous version of this call.
-     * 
-     * When the operation is finished, `callback` will be called. You can
-     * then call zpj_authorizer_refresh_authorization_finish() to get the
-     * result of the operation.
-     * 
-     * This method is thread safe.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
-     * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
-     */
-    refresh_authorization_async(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an asynchronous operation started with
-     * zpj_authorizer_refresh_authorization_async().
-     * @param res A #GAsyncResult.
-     * @returns %TRUE if the authorizer now has a valid token.
-     */
-    refresh_authorization_finish(res: Gio.AsyncResult): boolean
+    abstract class SkydriveEntry extends GObject.Object {
+        // Own properties of Zpj.SkydriveEntry
 
-    // Own virtual methods of Zpj.Authorizer
+        get created_time(): GLib.DateTime;
+        get createdTime(): GLib.DateTime;
+        get description(): string;
+        get from_id(): string;
+        get fromId(): string;
+        get from_name(): string;
+        get fromName(): string;
+        get id(): string;
+        set json(val: Json.Node);
+        get name(): string;
+        get parent_id(): string;
+        get parentId(): string;
+        get type(): SkydriveEntryType;
+        get updated_time(): GLib.DateTime;
+        get updatedTime(): GLib.DateTime;
+
+        // Constructors of Zpj.SkydriveEntry
+
+        constructor(properties?: Partial<SkydriveEntry.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own virtual methods of Zpj.SkydriveEntry
+
+        vfunc_parse_json_node(node: Json.Node): void;
+
+        // Own methods of Zpj.SkydriveEntry
+
+        /**
+         * Gets the time at which `self` was created. This is the value of the
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * updated_time</ulink> member in the JSON returned by the server.
+         * @returns a #GDateTime representing the time at which the entry was created. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
+         */
+        get_created_time(): GLib.DateTime;
+        /**
+         * Gets the description of `self`. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * description</ulink> member in the JSON returned by the server.
+         * @returns description of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_description(): string;
+        /**
+         * Gets the ID of the user who created or uploaded `self`. This is part
+         * of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * from</ulink> object in the JSON returned by the server.
+         * @returns ID of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_from_id(): string;
+        /**
+         * Gets the name of the user who created or uploaded `self`. This is
+         * part of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * from</ulink> object in the JSON returned by the server.
+         * @returns name of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_from_name(): string;
+        /**
+         * Gets the ID of `self`. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * id</ulink> member in the JSON returned by the server.
+         * @returns the entry's ID. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_id(): string;
+        /**
+         * Gets the name of `self`. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * name</ulink> member in the JSON returned by the server.
+         * @returns name of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_name(): string;
+        /**
+         * Gets the ID of the folder containing `self`. This is the value of
+         * the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * parent_id</ulink> member in the JSON returned by the server.
+         * @returns ID of the parent folder. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         */
+        get_parent_id(): string;
+        /**
+         * Gets the time at which `self` was last updated. This is the value of
+         * the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
+         * updated_time</ulink> member in the JSON returned by the server.
+         * @returns a #GDateTime representing the time at which the entry was last updated. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
+         */
+        get_updated_time(): GLib.DateTime;
+        /**
+         * Whether `self` is a folder.
+         * @returns %TRUE if the entry is a folder.
+         */
+        is_folder(): boolean;
+    }
+
+    module SkydriveFile {
+        // Constructor properties interface
+
+        interface ConstructorProps extends SkydriveEntry.ConstructorProps {
+            size: number;
+        }
+    }
 
     /**
-     * Whether the authorization tokens held by `iface` are valid for
-     * `domain`.
-     * 
-     * This method is thread safe.
-     * @param domain A #ZpjAuthorizationDomain.
+     * The #ZpjSkydriveFile structure contains only private data and should
+     * only be accessed using the provided API.
      */
-    vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean
+    class SkydriveFile extends SkydriveEntry {
+        // Own properties of Zpj.SkydriveFile
+
+        get size(): number;
+
+        // Constructors of Zpj.SkydriveFile
+
+        constructor(properties?: Partial<SkydriveFile.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](node: Json.Node): SkydriveFile;
+
+        // Own methods of Zpj.SkydriveFile
+
+        /**
+         * Gets the size of `self` in bytes. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648#file">
+         * size</ulink> member in the JSON returned by the server.
+         * @returns The entry's size in bytes.
+         */
+        get_size(): number;
+    }
+
+    module SkydriveFolder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends SkydriveEntry.ConstructorProps {}
+    }
+
     /**
-     * Adds the necessary authorization to `call`.
-     * 
-     * This method modifies `call` in place and is thread safe.
-     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-     * @param call A #RestProxyCall.
+     * The #ZpjSkydriveFolder structure contains only private data and
+     * should only be accessed using the provided API.
      */
-    vfunc_process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void
+    class SkydriveFolder extends SkydriveEntry {
+        // Constructors of Zpj.SkydriveFolder
+
+        constructor(properties?: Partial<SkydriveFolder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](node: Json.Node): SkydriveFolder;
+    }
+
+    module SkydrivePhoto {
+        // Constructor properties interface
+
+        interface ConstructorProps extends SkydriveFile.ConstructorProps {}
+    }
+
     /**
-     * Adds the necessary authorization to `message`. The type of `message`
-     * can be DELETE, GET and POST.
-     * 
-     * This method modifies `message` in place and is thread safe.
-     * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-     * @param message A #SoupMessage.
+     * The #ZpjSkydrivePhoto structure contains only private data and
+     * should only be accessed using the provided API.
      */
-    vfunc_process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void
+    class SkydrivePhoto extends SkydriveFile {
+        // Constructors of Zpj.SkydrivePhoto
+
+        constructor(properties?: Partial<SkydrivePhoto.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](node: Json.Node): SkydrivePhoto;
+    }
+
+    module SkydriveVideo {
+        // Constructor properties interface
+
+        interface ConstructorProps extends SkydriveFile.ConstructorProps {
+            bitrate: number;
+            duration: number;
+            height: number;
+            width: number;
+        }
+    }
+
     /**
-     * Synchronously forces `iface` to refresh any authorization tokens
-     * held by it. See zpj_authorizer_refresh_authorization_async() for the
-     * asynchronous version of this call.
-     * 
-     * This method is thread safe.
-     * @param cancellable An optional #GCancellable object, or   %NULL.
+     * The #ZpjSkydriveVideo structure contains only private data and
+     * should only be accessed using the provided API.
      */
-    vfunc_refresh_authorization(cancellable?: (Gio.Cancellable | null)): boolean
-}
+    class SkydriveVideo extends SkydriveFile {
+        // Own properties of Zpj.SkydriveVideo
 
+        get bitrate(): number;
+        get duration(): number;
+        get height(): number;
+        get width(): number;
 
+        // Constructors of Zpj.SkydriveVideo
 
-export const Authorizer: AuthorizerNamespace;
+        constructor(properties?: Partial<SkydriveVideo.ConstructorProps>, ...args: any[]);
 
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+        _init(...args: any[]): void;
+
+        static ['new'](node: Json.Node): SkydriveVideo;
+
+        // Own methods of Zpj.SkydriveVideo
+
+        /**
+         * Gets the bit rate of `self` in bits per second. This is the value of
+         * the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
+         * bitrate</ulink> member in the JSON returned by the server.
+         * @returns The video's bit rate in bits per second.
+         */
+        get_bitrate(): number;
+        /**
+         * Gets the run time duration of `self` in milliseconds. This is the
+         * value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
+         * duration</ulink> member in the JSON returned by the server.
+         * @returns The video's run time duration in milliseconds.
+         */
+        get_duration(): number;
+        /**
+         * Gets the height of `self` in pixels. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
+         * height</ulink> member in the JSON returned by the server.
+         * @returns The video's height in pixels.
+         */
+        get_height(): number;
+        /**
+         * Gets the width of `self` in pixels. This is the value of the <ulink
+         * url="http://msdn.microsoft.com/en-us/library/live/hh243648#video">
+         * width</ulink> member in the JSON returned by the server.
+         * @returns The video's width in pixels.
+         */
+        get_width(): number;
+    }
+
+    type AuthorizationDomainClass = typeof AuthorizationDomain;
+    abstract class AuthorizationDomainPrivate {
+        // Constructors of Zpj.AuthorizationDomainPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type AuthorizerInterface = typeof Authorizer;
+    type GoaAuthorizerClass = typeof GoaAuthorizer;
+    abstract class GoaAuthorizerPrivate {
+        // Constructors of Zpj.GoaAuthorizerPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type SkydriveClass = typeof Skydrive;
+    type SkydriveEntryClass = typeof SkydriveEntry;
+    abstract class SkydriveEntryPrivate {
+        // Constructors of Zpj.SkydriveEntryPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type SkydriveFileClass = typeof SkydriveFile;
+    abstract class SkydriveFilePrivate {
+        // Constructors of Zpj.SkydriveFilePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type SkydriveFolderClass = typeof SkydriveFolder;
+    type SkydrivePhotoClass = typeof SkydrivePhoto;
+    abstract class SkydrivePrivate {
+        // Constructors of Zpj.SkydrivePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type SkydriveVideoClass = typeof SkydriveVideo;
+    abstract class SkydriveVideoPrivate {
+        // Constructors of Zpj.SkydriveVideoPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    module Authorizer {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface AuthorizerNamespace {
+        $gtype: GObject.GType<Authorizer>;
+        prototype: Authorizer;
+    }
+    interface Authorizer extends GObject.Object {
+        // Own methods of Zpj.Authorizer
+
+        /**
+         * Whether the authorization tokens held by `iface` are valid for
+         * `domain`.
+         *
+         * This method is thread safe.
+         * @param domain A #ZpjAuthorizationDomain.
+         * @returns %TRUE if the tokens are valid.
+         */
+        is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+        /**
+         * Adds the necessary authorization to `call`.
+         *
+         * This method modifies `call` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param call A #RestProxyCall.
+         */
+        process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param message A #SoupMessage.
+         */
+        process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @returns %TRUE if the authorizer now has a valid token.
+         */
+        refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Asynchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * synchronous version of this call.
+         *
+         * When the operation is finished, `callback` will be called. You can
+         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * result of the operation.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         */
+        refresh_authorization_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an asynchronous operation started with
+         * zpj_authorizer_refresh_authorization_async().
+         * @param res A #GAsyncResult.
+         * @returns %TRUE if the authorizer now has a valid token.
+         */
+        refresh_authorization_finish(res: Gio.AsyncResult): boolean;
+
+        // Own virtual methods of Zpj.Authorizer
+
+        /**
+         * Whether the authorization tokens held by `iface` are valid for
+         * `domain`.
+         *
+         * This method is thread safe.
+         * @param domain A #ZpjAuthorizationDomain.
+         */
+        vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
+        /**
+         * Adds the necessary authorization to `call`.
+         *
+         * This method modifies `call` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param call A #RestProxyCall.
+         */
+        vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
+        /**
+         * Adds the necessary authorization to `message`. The type of `message`
+         * can be DELETE, GET and POST.
+         *
+         * This method modifies `message` in place and is thread safe.
+         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
+         * @param message A #SoupMessage.
+         */
+        vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
+        /**
+         * Synchronously forces `iface` to refresh any authorization tokens
+         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * asynchronous version of this call.
+         *
+         * This method is thread safe.
+         * @param cancellable An optional #GCancellable object, or   %NULL.
+         */
+        vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
+    }
+
+    export const Authorizer: AuthorizerNamespace;
+
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Zpj;

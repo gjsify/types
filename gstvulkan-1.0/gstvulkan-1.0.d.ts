@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -21,1584 +20,215 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstVulkan {
+    enum VulkanBarrierFlags {
+        NONE,
+    }
+    enum VulkanBarrierType {
+        NONE,
+        TYPE_MEMORY,
+        TYPE_BUFFER,
+        TYPE_IMAGE,
+    }
+    class VulkanError extends GLib.Error {
+        // Static fields of GstVulkan.VulkanError
 
-enum VulkanBarrierFlags {
-    NONE,
-}
-enum VulkanBarrierType {
-    NONE,
-    TYPE_MEMORY,
-    TYPE_BUFFER,
-    TYPE_IMAGE,
-}
-class VulkanError extends GLib.Error {
+        static FAILED: number;
 
-    // Static fields of GstVulkan.VulkanError
+        // Constructors of GstVulkan.VulkanError
 
-static FAILED: number
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
 
-    // Constructors of GstVulkan.VulkanError
+        // Own static methods of GstVulkan.VulkanError
 
-constructor(options: { message: string, code: number});
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanError
-
-    static quark(): GLib.Quark
-    /**
-     * if `result` indicates an error condition, fills out #Gerror with details of
-     * the error
-     * @param result a VkResult
-     * @param error a #GError to fill
-     * @param format the printf-like format to write into the #GError
-     * @param ___ arguments for @format
-     */
-    static to_g_error(result: Vulkan.Result, error: (GLib.Error | null), format: string, ___: any[]): [Vulkan.Result, GLib.Error | null]
-}
-
-enum VulkanFormatScaling {
-    UNORM,
-    SNORM,
-    USCALED,
-    SSCALED,
-    UINT,
-    SINT,
-    SRGB,
-}
-enum VulkanHandleType {
-    DESCRIPTOR_SET_LAYOUT,
-    PIPELINE_LAYOUT,
-    PIPELINE,
-    RENDER_PASS,
-    SAMPLER,
-    FRAMEBUFFER,
-    SHADER,
-}
-class VulkanWindowError extends GLib.Error {
-
-    // Static fields of GstVulkan.VulkanWindowError
-
-static FAILED: number
-static OLD_LIBS: number
-static RESOURCE_UNAVAILABLE: number
-
-    // Constructors of GstVulkan.VulkanWindowError
-
-constructor(options: { message: string, code: number});
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanWindowError
-
-    static quark(): GLib.Quark
-}
-
-const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string
-const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string
-const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string
-const VULKAN_DEVICE_CONTEXT_TYPE_STR: string
-const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string
-const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string
-const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string
-const VULKAN_MAX_COMPONENTS: number
-const VULKAN_MEMORY_ALLOCATOR_NAME: string
-/**
- * The printf format specifier for raw Vulkan non dispatchable handles.
- */
-const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string
-const VULKAN_QUEUE_CONTEXT_TYPE_STR: string
-const VULKAN_SWAPPER_VIDEO_FORMATS: string
-function context_get_vulkan_device(context: Gst.Context, device: VulkanDevice): boolean
-function context_get_vulkan_display(context: Gst.Context, display: VulkanDisplay): boolean
-function context_get_vulkan_instance(context: Gst.Context, instance: VulkanInstance): boolean
-function context_get_vulkan_queue(context: Gst.Context, queue: VulkanQueue): boolean
-/**
- * Sets `device` on `context`
- * @param context a #GstContext
- * @param device a #GstVulkanDevice
- */
-function context_set_vulkan_device(context: Gst.Context, device: VulkanDevice): void
-/**
- * Sets `display` on `context`
- * @param context a #GstContext
- * @param display a #GstVulkanDisplay
- */
-function context_set_vulkan_display(context: Gst.Context, display: VulkanDisplay): void
-/**
- * Sets `instance` on `context`
- * @param context a #GstContext
- * @param instance a #GstVulkanInstance
- */
-function context_set_vulkan_instance(context: Gst.Context, instance: VulkanInstance): void
-/**
- * Sets `queue` on `context`
- * @param context a #GstContext
- * @param queue a #GstVulkanQueue
- */
-function context_set_vulkan_queue(context: Gst.Context, queue: VulkanQueue): void
-function is_vulkan_buffer_memory(mem: Gst.Memory): boolean
-function is_vulkan_image_memory(mem: Gst.Memory): boolean
-function is_vulkan_memory(mem: Gst.Memory): boolean
-/**
- * Allocate a new #GstVulkanBufferMemory.
- * @param device a #GstVulkanDevice
- * @param size size of the new buffer
- * @param usage buffer usage flags
- * @param mem_prop_flags memory properties flags for the backing memory
- * @returns a #GstMemory object backed by a vulkan buffer          backed by vulkan device memory
- */
-function vulkan_buffer_memory_alloc(device: VulkanDevice, size: number, usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
-/**
- * Initializes the Vulkan buffer memory allocator. It is safe to call this function
- * multiple times.  This must be called before any other #GstVulkanBufferMemory operation.
- */
-function vulkan_buffer_memory_init_once(): void
-/**
- * Allocated a new wrapped #GstVulkanBufferMemory with `buffer`.
- * @param device a #GstVulkanDevice
- * @param buffer a #VkBuffer
- * @param usage usage flags of @buffer
- * @param user_data user data to call @notify with
- * @param notify a #GDestroyNotify called when @buffer is no longer in use
- * @returns a #GstMemory object backed by a vulkan device memory
- */
-function vulkan_buffer_memory_wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data?: (any | null), notify?: (GLib.DestroyNotify | null)): Gst.Memory
-function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle
-function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string
-/**
- * Perform the steps necessary for retrieving a #GstVulkanInstance and
- * (optionally) an #GstVulkanDisplay from the surrounding elements or from
- * the application using the #GstContext mechanism.
- * 
- * If the contents of `display_ptr` or `instance_ptr` are not %NULL, then no
- * #GstContext query is necessary and no #GstVulkanInstance or #GstVulkanDisplay
- * retrieval is performed.
- * @param element a #GstElement
- * @param display_ptr the resulting #GstVulkanDisplay
- * @param instance_ptr the resulting #GstVulkanInstance
- * @returns whether a #GstVulkanInstance exists in @instance_ptr and if          @display_ptr is not %NULL, whether a #GstVulkanDisplay exists in          @display_ptr
- */
-function vulkan_ensure_element_data(element: Gst.Element, display_ptr: (VulkanDisplay | null), instance_ptr: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance]
-function vulkan_error_quark(): GLib.Quark
-function vulkan_format_get_info(format: Vulkan.Format): VulkanFormatInfo
-function vulkan_get_or_create_image_view(image: VulkanImageMemory): VulkanImageView
-/**
- * Performs the steps necessary for executing a context query including
- * posting a message for the application to respond.
- * @param element a #GstElement
- * @param context_type the context type to query for
- */
-function vulkan_global_context_query(element: Gst.Element, context_type: string): void
-function vulkan_handle_context_query(element: Gst.Element, query: Gst.Query, display?: (VulkanDisplay | null), instance?: (VulkanInstance | null), device?: (VulkanDevice | null)): boolean
-/**
- * Helper function for implementing #GstElementClass.set_context() in
- * Vulkan capable elements.
- * 
- * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
- * the result in `display` or `instance` respectively.
- * @param element a #GstElement
- * @param context a #GstContext
- * @param display location of a #GstVulkanDisplay
- * @param instance location of a #GstVulkanInstance
- * @returns whether the @display or @instance could be set successfully
- */
-function vulkan_handle_set_context(element: Gst.Element, context: Gst.Context, display: (VulkanDisplay | null), instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance]
-/**
- * Allocated a new #GstVulkanImageMemory.
- * @param device a #GstVulkanDevice
- * @param format the VkFormat for the new image
- * @param width width for the new image
- * @param height height for the new image
- * @param tiling tiling for the new image
- * @param usage usage flags for the new image
- * @param mem_prop_flags VkDeviceMemory property flags for the new image
- * @returns a #GstMemory object backed by a vulkan device memory
- */
-function vulkan_image_memory_alloc(device: VulkanDevice, format: Vulkan.Format, width: number, height: number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
-/**
- * Initializes the Vulkan image memory allocator. It is safe to call this function
- * multiple times.  This must be called before any other #GstVulkanImageMemory operation.
- */
-function vulkan_image_memory_init_once(): void
-function vulkan_image_memory_wrapped(device: VulkanDevice, image: Vulkan.Image, format: Vulkan.Format, width: number, height: number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, user_data?: (any | null)): Gst.Memory
-/**
- * Performs the steps necessary for executing a context query between only
- * other elements in the pipeline
- * @param element a #GstElement
- * @param context_type the context type to query for
- */
-function vulkan_local_context_query(element: Gst.Element, context_type: string): Gst.Query
-/**
- * Allocated a new #GstVulkanMemory.
- * @param device a #GstVulkanDevice
- * @param memory_type_index the Vulkan memory type index
- * @param params a #GstAllocationParams
- * @param size the size to allocate
- * @param mem_prop_flags 
- * @returns a #GstMemory object backed by a vulkan device memory
- */
-function vulkan_memory_alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: number, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
-function vulkan_memory_find_memory_type_index_with_type_properties(device: VulkanDevice, type_bits: number, properties: Vulkan.MemoryPropertyFlags, type_index: number): boolean
-function vulkan_memory_heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string
-/**
- * Initializes the Vulkan memory allocator. It is safe to call this function
- * multiple times.  This must be called before any other #GstVulkanMemory operation.
- */
-function vulkan_memory_init_once(): void
-function vulkan_memory_property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string
-function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection): boolean
-function vulkan_sample_count_flags_to_string(sample_count_bits: Vulkan.SampleCountFlags): string
-function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: (any | null)): void
-function vulkan_trash_object_unref(device: VulkanDevice, user_data?: (any | null)): void
-function vulkan_window_error_quark(): GLib.Quark
-interface VulkanDeviceForEachQueueFunc {
-    (device: VulkanDevice, queue: VulkanQueue): boolean
-}
-interface VulkanHandleDestroyNotify {
-    (handle: VulkanHandle): void
-}
-interface VulkanImageMemoryFindViewFunc {
-    (view: VulkanImageView): boolean
-}
-interface VulkanTrashListAdd {
-    (trash_list: VulkanTrashList, trash: VulkanTrash): boolean
-}
-interface VulkanTrashListGC {
-    (trash_list: VulkanTrashList): void
-}
-interface VulkanTrashListWait {
-    (trash_list: VulkanTrashList, timeout: number): boolean
-}
-interface VulkanTrashNotify {
-    (device: VulkanDevice): void
-}
-enum VulkanDisplayType {
-    /**
-     * no display
-     */
-    NONE,
-    /**
-     * XCB display
-     */
-    XCB,
-    /**
-     * wayland display
-     */
-    WAYLAND,
-    /**
-     * cocoa display for macOS
-     */
-    COCOA,
-    /**
-     * ios display
-     */
-    IOS,
-    /**
-     * win32 display
-     */
-    WIN32,
-    ANDROID,
-    ANY,
-}
-enum VulkanFormatFlags {
-    YUV,
-    RGB,
-    ALPHA,
-    LE,
-    COMPLEX,
-}
-module VulkanBufferMemoryAllocator {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
+        static quark(): GLib.Quark;
+        /**
+         * if `result` indicates an error condition, fills out #Gerror with details of
+         * the error
+         * @param result a VkResult
+         * @param error a #GError to fill
+         * @param format the printf-like format to write into the #GError
+         * @param ___ arguments for @format
+         */
+        static to_g_error(
+            result: Vulkan.Result,
+            error: GLib.Error | null,
+            format: string,
+            ___: any[],
+        ): [Vulkan.Result, GLib.Error | null];
     }
 
-}
+    enum VulkanFormatScaling {
+        UNORM,
+        SNORM,
+        USCALED,
+        SSCALED,
+        UINT,
+        SINT,
+        SRGB,
+    }
+    enum VulkanHandleType {
+        DESCRIPTOR_SET_LAYOUT,
+        PIPELINE_LAYOUT,
+        PIPELINE,
+        RENDER_PASS,
+        SAMPLER,
+        FRAMEBUFFER,
+        SHADER,
+    }
+    class VulkanWindowError extends GLib.Error {
+        // Static fields of GstVulkan.VulkanWindowError
 
-/**
- * Opaque #GstVulkanBufferMemoryAllocator struct
- */
-class VulkanBufferMemoryAllocator extends Gst.Allocator {
+        static FAILED: number;
+        static OLD_LIBS: number;
+        static RESOURCE_UNAVAILABLE: number;
 
-    // Constructors of GstVulkan.VulkanBufferMemoryAllocator
+        // Constructors of GstVulkan.VulkanWindowError
 
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
 
-constructor(properties?: Partial<VulkanBufferMemoryAllocator.ConstructorProps>, ...args: any[]);
+        // Own static methods of GstVulkan.VulkanWindowError
 
-_init(...args: any[]): void;
-
-}
-
-module VulkanBufferPool {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
-
+        static quark(): GLib.Quark;
     }
 
-}
-
-/**
- * Opaque GstVulkanBufferPool struct
- */
-class VulkanBufferPool extends Gst.BufferPool {
-
-    // Own fields of GstVulkan.VulkanBufferPool
-
-bufferpool: Gst.BufferPool
-device: VulkanDevice
-
-    // Constructors of GstVulkan.VulkanBufferPool
-
-
-constructor(properties?: Partial<VulkanBufferPool.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](device: VulkanDevice): VulkanBufferPool;
-// Conflicted with Gst.BufferPool.new
-
-static ["new"](...args: never[]): any;
-}
-
-module VulkanCommandPool {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-class VulkanCommandPool extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanCommandPool
-
-queue: VulkanQueue
-
-    // Constructors of GstVulkan.VulkanCommandPool
-
-
-constructor(properties?: Partial<VulkanCommandPool.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own methods of GstVulkan.VulkanCommandPool
-
-    create(): VulkanCommandBuffer
-    get_queue(): VulkanQueue
+    const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string;
+    const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string;
+    const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string;
+    const VULKAN_DEVICE_CONTEXT_TYPE_STR: string;
+    const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string;
+    const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string;
+    const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string;
+    const VULKAN_MAX_COMPONENTS: number;
+    const VULKAN_MEMORY_ALLOCATOR_NAME: string;
     /**
-     * This should be called to ensure no other thread will attempt to access
-     * the pool's internal resources.  Any modification of any of the allocated
-     * #GstVulkanCommandBuffer's need to be encapsulated in a
-     * gst_vulkan_command_pool_lock()/gst_vulkan_command_pool_unlock() pair to meet
-     * the Vulkan API requirements that host access to the command pool is
-     * externally synchronised.
+     * The printf format specifier for raw Vulkan non dispatchable handles.
      */
-    lock(): void
+    const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string;
+    const VULKAN_QUEUE_CONTEXT_TYPE_STR: string;
+    const VULKAN_SWAPPER_VIDEO_FORMATS: string;
+    function context_get_vulkan_device(context: Gst.Context, device: VulkanDevice): boolean;
+    function context_get_vulkan_display(context: Gst.Context, display: VulkanDisplay): boolean;
+    function context_get_vulkan_instance(context: Gst.Context, instance: VulkanInstance): boolean;
+    function context_get_vulkan_queue(context: Gst.Context, queue: VulkanQueue): boolean;
     /**
-     * See the documentation for gst_vulkan_command_pool_lock() for when you would
-     * need to use this function.
-     */
-    unlock(): void
-}
-
-module VulkanDescriptorCache {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-    }
-
-}
-
-class VulkanDescriptorCache extends VulkanHandlePool {
-
-    // Own fields of GstVulkan.VulkanDescriptorCache
-
-pool: VulkanDescriptorPool
-
-    // Constructors of GstVulkan.VulkanDescriptorCache
-
-
-constructor(properties?: Partial<VulkanDescriptorCache.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](pool: VulkanDescriptorPool, n_layouts: number, layouts: VulkanHandle): VulkanDescriptorCache;
-
-    // Own methods of GstVulkan.VulkanDescriptorCache
-
-    acquire(): VulkanDescriptorSet
-    acquire(...args: never[]): any
-}
-
-module VulkanDescriptorPool {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-class VulkanDescriptorPool extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanDescriptorPool
-
-device: VulkanDevice
-
-    // Constructors of GstVulkan.VulkanDescriptorPool
-
-
-constructor(properties?: Partial<VulkanDescriptorPool.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
-
-    // Own methods of GstVulkan.VulkanDescriptorPool
-
-    create(n_layouts: number, layouts: VulkanHandle): VulkanDescriptorSet
-    get_device(): VulkanDevice
-    get_max_sets(): number
-}
-
-module VulkanDevice {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-instance: VulkanInstance;
-    physical_device: VulkanPhysicalDevice;
-    physicalDevice: VulkanPhysicalDevice;
-    }
-
-}
-
-class VulkanDevice extends Gst.Object {
-
-    // Own properties of GstVulkan.VulkanDevice
-
-    get instance(): VulkanInstance;
-    get physical_device(): VulkanPhysicalDevice;
-    get physicalDevice(): VulkanPhysicalDevice;
-
-    // Constructors of GstVulkan.VulkanDevice
-
-
-constructor(properties?: Partial<VulkanDevice.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](physical_device: VulkanPhysicalDevice): VulkanDevice;
-
-static new_with_index(instance: VulkanInstance, device_index: number): VulkanDevice;
-
-    // Own static methods of GstVulkan.VulkanDevice
-
-    /**
-     * If a #GstVulkanDevice is requested in `query,` sets `device` as the reply.
-     * 
-     * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-     * for a #GstVulkanDevice.
-     * @param element a #GstElement
-     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-     * @param device the #GstVulkanDevice
-     */
-    static handle_context_query(element: Gst.Element, query: Gst.Query, device: VulkanDevice): boolean
-    /**
-     * Attempt to retrieve a #GstVulkanDevice using #GST_QUERY_CONTEXT from the
-     * surrounding elements of `element`.
-     * @param element a #GstElement
+     * Sets `device` on `context`
+     * @param context a #GstContext
      * @param device a #GstVulkanDevice
      */
-    static run_context_query(element: Gst.Element, device: VulkanDevice): [boolean, VulkanDevice]
-
-    // Own methods of GstVulkan.VulkanDevice
-
-    create_fence(): VulkanFence
+    function context_set_vulkan_device(context: Gst.Context, device: VulkanDevice): void;
     /**
-     * Iterate over each queue family available on #GstVulkanDevice
-     */
-    foreach_queue(): void
-    get_instance(): VulkanInstance
-    /**
-     * Performs vkGetDeviceProcAddr() with `device` and `name`
-     * @param name name of the function to retrieve
-     * @returns the function pointer for @name or %NULL
-     */
-    get_proc_address(name: string): (any | null)
-    get_queue(queue_family: number, queue_i: number): VulkanQueue
-    /**
-     * Attempts to create the internal #VkDevice object.
-     * @returns whether a vulkan device could be created
-     */
-    open(): boolean
-}
-
-module VulkanDisplay {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-/**
- * The contents of a #GstVulkanDisplay are private and should only be accessed
- * through the provided API
- */
-class VulkanDisplay extends Gst.Object {
-
-    // Constructors of GstVulkan.VulkanDisplay
-
-
-constructor(properties?: Partial<VulkanDisplay.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](instance: VulkanInstance): VulkanDisplay;
-
-static new_with_type(instance: VulkanInstance, type: VulkanDisplayType): VulkanDisplay;
-
-    // Own static methods of GstVulkan.VulkanDisplay
-
-    /**
-     * This function will read the %GST_VULKAN_WINDOW environment variable for
-     * a user choice or choose the first supported implementation.
-     * @param instance a #GstVulkanInstance
-     */
-    static choose_type(instance: VulkanInstance): VulkanDisplayType
-    /**
-     * If a #GstVulkanDisplay is requested in `query,` sets `device` as the reply.
-     * 
-     * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-     * for a #GstVulkanDisplay.
-     * @param element a #GstElement
-     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-     * @param display the #GstVulkanDisplay
-     */
-    static handle_context_query(element: Gst.Element, query: Gst.Query, display?: (VulkanDisplay | null)): boolean
-    /**
-     * Attempt to retrieve a #GstVulkanDisplay using #GST_QUERY_CONTEXT from the
-     * surrounding elements of `element`.
-     * @param element a #GstElement
+     * Sets `display` on `context`
+     * @param context a #GstContext
      * @param display a #GstVulkanDisplay
      */
-    static run_context_query(element: Gst.Element, display: VulkanDisplay): [boolean, VulkanDisplay]
-
-    // Own virtual methods of GstVulkan.VulkanDisplay
-
-    vfunc_create_window(): VulkanWindow
-    vfunc_get_handle(): (any | null)
-
-    // Own methods of GstVulkan.VulkanDisplay
-
-    create_window(): VulkanWindow
+    function context_set_vulkan_display(context: Gst.Context, display: VulkanDisplay): void;
     /**
-     * Execute `compare_func` over the list of windows stored by `display`.  The
-     * first argument to `compare_func` is the #GstVulkanWindow being checked and the
-     * second argument is `data`.
-     * @param data some data to pass to @compare_func
-     * @param compare_func a comparison function to run
-     * @returns The first #GstVulkanWindow that causes a match          from @compare_func
-     */
-    find_window(data: (any | null), compare_func: GLib.CompareFunc): VulkanWindow
-    get_handle(): (any | null)
-    get_handle_type(): VulkanDisplayType
-    remove_window(window: VulkanWindow): boolean
-}
-
-module VulkanFenceCache {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-    }
-
-}
-
-class VulkanFenceCache extends VulkanHandlePool {
-
-    // Constructors of GstVulkan.VulkanFenceCache
-
-
-constructor(properties?: Partial<VulkanFenceCache.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](device: VulkanDevice): VulkanFenceCache;
-}
-
-module VulkanFullScreenQuad {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-class VulkanFullScreenQuad extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanFullScreenQuad
-
-queue: VulkanQueue
-descriptor_cache: VulkanDescriptorCache
-cmd_pool: VulkanCommandPool
-trash_list: VulkanTrashList
-
-    // Constructors of GstVulkan.VulkanFullScreenQuad
-
-
-constructor(properties?: Partial<VulkanFullScreenQuad.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](queue: VulkanQueue): VulkanFullScreenQuad;
-
-    // Own methods of GstVulkan.VulkanFullScreenQuad
-
-    draw(): boolean
-    fill_command_buffer(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean
-    get_last_fence(): VulkanFence
-    prepare_draw(fence: VulkanFence): boolean
-    set_index_buffer(indices: Gst.Memory, n_indices: number): boolean
-    set_info(in_info: GstVideo.VideoInfo, out_info: GstVideo.VideoInfo): boolean
-    set_input_buffer(buffer: Gst.Buffer): boolean
-    set_output_buffer(buffer: Gst.Buffer): boolean
-    set_shaders(vert: VulkanHandle, frag: VulkanHandle): boolean
-    set_uniform_buffer(uniforms: Gst.Memory): boolean
-    set_vertex_buffer(vertices: Gst.Memory): boolean
-    submit(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean
-}
-
-module VulkanHandlePool {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-abstract class VulkanHandlePool extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanHandlePool
-
-device: VulkanDevice
-outstanding: any[]
-available: any[]
-
-    // Constructors of GstVulkan.VulkanHandlePool
-
-
-constructor(properties?: Partial<VulkanHandlePool.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own virtual methods of GstVulkan.VulkanHandlePool
-
-    vfunc_acquire(): (any | null)
-    vfunc_alloc(): (any | null)
-    vfunc_free(handle?: (any | null)): void
-    vfunc_release(handle?: (any | null)): void
-
-    // Own methods of GstVulkan.VulkanHandlePool
-
-    acquire(): (any | null)
-    alloc(): (any | null)
-    release(handle?: (any | null)): void
-}
-
-module VulkanImageBufferPool {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
-
-    }
-
-}
-
-/**
- * Opaque GstVulkanImageBufferPool struct
- */
-class VulkanImageBufferPool extends Gst.BufferPool {
-
-    // Own fields of GstVulkan.VulkanImageBufferPool
-
-bufferpool: Gst.BufferPool
-device: VulkanDevice
-
-    // Constructors of GstVulkan.VulkanImageBufferPool
-
-
-constructor(properties?: Partial<VulkanImageBufferPool.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](device: VulkanDevice): VulkanImageBufferPool;
-// Conflicted with Gst.BufferPool.new
-
-static ["new"](...args: never[]): any;
-}
-
-module VulkanImageMemoryAllocator {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-    }
-
-}
-
-/**
- * Opaque #GstVulkanImageMemoryAllocator struct
- */
-class VulkanImageMemoryAllocator extends Gst.Allocator {
-
-    // Constructors of GstVulkan.VulkanImageMemoryAllocator
-
-
-constructor(properties?: Partial<VulkanImageMemoryAllocator.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-}
-
-module VulkanInstance {
-
-    // Signal callback interfaces
-
-    interface CreateDevice {
-        (): VulkanDevice
-    }
-
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-class VulkanInstance extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanInstance
-
-n_physical_devices: number
-
-    // Constructors of GstVulkan.VulkanInstance
-
-
-constructor(properties?: Partial<VulkanInstance.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](): VulkanInstance;
-
-    // Own signals of GstVulkan.VulkanInstance
-
-    connect(id: string, callback: (...args: any[]) => any): number
-    connect_after(id: string, callback: (...args: any[]) => any): number
-    emit(id: string, ...args: any[]): void
-    connect(signal: 'create-device', callback: ((_source: this) => VulkanDevice)): number
-    connect_after(signal: 'create-device', callback: ((_source: this) => VulkanDevice)): number
-    emit(signal: 'create-device'): void
-
-    // Own static methods of GstVulkan.VulkanInstance
-
-    /**
-     * If a #GstVulkanInstance is requested in `query,` sets `instance` as the reply.
-     * 
-     * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-     * for a #GstVulkanInstance.
-     * @param element a #GstElement
-     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-     * @param instance the #GstVulkanInstance
-     */
-    static handle_context_query(element: Gst.Element, query: Gst.Query, instance?: (VulkanInstance | null)): boolean
-    /**
-     * Attempt to retrieve a #GstVulkanInstance using #GST_QUERY_CONTEXT from the
-     * surrounding elements of `element`.
-     * @param element a #GstElement
+     * Sets `instance` on `context`
+     * @param context a #GstContext
      * @param instance a #GstVulkanInstance
      */
-    static run_context_query(element: Gst.Element, instance: VulkanInstance): [boolean, VulkanInstance]
-
-    // Own methods of GstVulkan.VulkanInstance
-
-    create_device(): VulkanDevice
+    function context_set_vulkan_instance(context: Gst.Context, instance: VulkanInstance): void;
     /**
-     * Performs vkGetInstanceProcAddr() with `instance` and `name`
-     * @param name name of the function to retrieve
-     * @returns the function pointer for @name or %NULL
-     */
-    get_proc_address(name: string): (any | null)
-    open(): boolean
-}
-
-module VulkanMemoryAllocator {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-    }
-
-}
-
-/**
- * Opaque #GstVulkanMemoryAllocator struct
- */
-class VulkanMemoryAllocator extends Gst.Allocator {
-
-    // Constructors of GstVulkan.VulkanMemoryAllocator
-
-
-constructor(properties?: Partial<VulkanMemoryAllocator.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-}
-
-module VulkanPhysicalDevice {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-device_index: number;
-    deviceIndex: number;
-    instance: VulkanInstance;
-    name: string;
-    }
-
-}
-
-class VulkanPhysicalDevice extends Gst.Object {
-
-    // Own properties of GstVulkan.VulkanPhysicalDevice
-
-    get device_index(): number;
-    get deviceIndex(): number;
-    get instance(): VulkanInstance;
-    get name(): string;
-
-    // Own fields of GstVulkan.VulkanPhysicalDevice
-
-n_device_layers: number
-n_device_extensions: number
-n_queue_families: number
-
-    // Constructors of GstVulkan.VulkanPhysicalDevice
-
-
-constructor(properties?: Partial<VulkanPhysicalDevice.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](instance: VulkanInstance, device_index: number): VulkanPhysicalDevice;
-
-    // Own static methods of GstVulkan.VulkanPhysicalDevice
-
-    static type_to_string(type: Vulkan.PhysicalDeviceType): string
-
-    // Own methods of GstVulkan.VulkanPhysicalDevice
-
-    get_instance(): VulkanInstance
-}
-
-module VulkanQueue {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-    }
-
-}
-
-class VulkanQueue extends Gst.Object {
-
-    // Own fields of GstVulkan.VulkanQueue
-
-device: VulkanDevice
-family: number
-index: number
-
-    // Constructors of GstVulkan.VulkanQueue
-
-
-constructor(properties?: Partial<VulkanQueue.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanQueue
-
-    static flags_to_string(queue_bits: Vulkan.QueueFlags): string
-    /**
-     * If a #GstVulkanQueue is requested in `query,` sets `queue` as the reply.
-     * 
-     * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-     * for a #GstVulkanQueue.
-     * @param element a #GstElement
-     * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-     * @param queue the #GstVulkanQueue
-     */
-    static handle_context_query(element: Gst.Element, query: Gst.Query, queue?: (VulkanQueue | null)): boolean
-    /**
-     * Attempt to retrieve a #GstVulkanQueue using #GST_QUERY_CONTEXT from the
-     * surrounding elements of `element`.
-     * @param element a #GstElement
+     * Sets `queue` on `context`
+     * @param context a #GstContext
      * @param queue a #GstVulkanQueue
      */
-    static run_context_query(element: Gst.Element, queue: VulkanQueue): [boolean, VulkanQueue]
-
-    // Own methods of GstVulkan.VulkanQueue
-
-    create_command_pool(): VulkanCommandPool
-    get_device(): VulkanDevice
-    /**
-     * Locks the queue for command submission using `vkQueueSubmit()` to meet the
-     * Vulkan requirements for externally synchronised resources.
-     */
-    submit_lock(): void
-    /**
-     * Unlocks the queue for command submission using `vkQueueSubmit()`.
-     * 
-     * See gst_vulkan_queue_submit_lock() for details on when this call is needed.
-     */
-    submit_unlock(): void
-}
-
-module VulkanSwapper {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-force_aspect_ratio: boolean;
-    forceAspectRatio: boolean;
-    pixel_aspect_ratio: Gst.Fraction;
-    pixelAspectRatio: Gst.Fraction;
-    }
-
-}
-
-class VulkanSwapper extends Gst.Object {
-
-    // Own properties of GstVulkan.VulkanSwapper
-
-    get force_aspect_ratio(): boolean;
-    set force_aspect_ratio(val: boolean);
-    get forceAspectRatio(): boolean;
-    set forceAspectRatio(val: boolean);
-    get pixel_aspect_ratio(): Gst.Fraction;
-    set pixel_aspect_ratio(val: Gst.Fraction);
-    get pixelAspectRatio(): Gst.Fraction;
-    set pixelAspectRatio(val: Gst.Fraction);
-
-    // Own fields of GstVulkan.VulkanSwapper
-
-device: VulkanDevice
-window: VulkanWindow
-queue: VulkanQueue
-cmd_pool: VulkanCommandPool
-
-    // Constructors of GstVulkan.VulkanSwapper
-
-
-constructor(properties?: Partial<VulkanSwapper.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](device: VulkanDevice, window: VulkanWindow): VulkanSwapper;
-
-    // Own methods of GstVulkan.VulkanSwapper
-
-    choose_queue(available_queue: VulkanQueue): boolean
-    get_supported_caps(): Gst.Caps
-    get_surface_rectangles(): [GstVideo.VideoRectangle | null, GstVideo.VideoRectangle | null, GstVideo.VideoRectangle | null]
-    render_buffer(buffer: Gst.Buffer): boolean
-    set_caps(caps: Gst.Caps): boolean
-}
-
-module VulkanTrashFenceList {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends VulkanTrashList.ConstructorProps {
-
-    }
-
-}
-
-class VulkanTrashFenceList extends VulkanTrashList {
-
-    // Constructors of GstVulkan.VulkanTrashFenceList
-
-
-constructor(properties?: Partial<VulkanTrashFenceList.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](): VulkanTrashFenceList;
-}
-
-module VulkanTrashList {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-    }
-
-}
-
-class VulkanTrashList extends VulkanHandlePool {
-
-    // Constructors of GstVulkan.VulkanTrashList
-
-
-constructor(properties?: Partial<VulkanTrashList.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own virtual methods of GstVulkan.VulkanTrashList
-
-    vfunc_add_func(trash: VulkanTrash): boolean
-    vfunc_gc_func(): void
-    vfunc_wait_func(timeout: number): boolean
-
-    // Own methods of GstVulkan.VulkanTrashList
-
-    acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash
-    acquire(...args: never[]): any
-    add(trash: VulkanTrash): boolean
-    gc(): void
-    wait(timeout: number): boolean
-}
-
-module VulkanVideoFilter {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {
-
-    }
-
-}
-
-class VulkanVideoFilter extends GstBase.BaseTransform {
-
-    // Own fields of GstVulkan.VulkanVideoFilter
-
-instance: VulkanInstance
-device: VulkanDevice
-queue: VulkanQueue
-
-    // Constructors of GstVulkan.VulkanVideoFilter
-
-
-constructor(properties?: Partial<VulkanVideoFilter.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-}
-
-module VulkanWindow {
-
-    // Signal callback interfaces
-
-    interface Close {
-        (): boolean
-    }
-
-    interface Draw {
-        (): void
-    }
-
-    interface KeyEvent {
-        (id: string, key: string): void
-    }
-
-    interface MouseEvent {
-        (id: string, button: number, x: number, y: number): void
-    }
-
-    interface Resize {
-        (object: number, p0: number): void
-    }
-
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Object.ConstructorProps {
-display: VulkanDisplay;
-    }
-
-}
-
-/**
- * #GstVulkanWindow is an opaque struct and should only be accessed through the
- * provided api.
- */
-abstract class VulkanWindow extends Gst.Object {
-
-    // Own properties of GstVulkan.VulkanWindow
-
-    get display(): VulkanDisplay;
-
-    // Constructors of GstVulkan.VulkanWindow
-
-
-constructor(properties?: Partial<VulkanWindow.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](display: VulkanDisplay): VulkanWindow;
-
-    // Own signals of GstVulkan.VulkanWindow
-
-    connect(id: string, callback: (...args: any[]) => any): number
-    connect_after(id: string, callback: (...args: any[]) => any): number
-    emit(id: string, ...args: any[]): void
-    connect(signal: 'close', callback: ((_source: this) => boolean)): number
-    connect_after(signal: 'close', callback: ((_source: this) => boolean)): number
-    emit(signal: 'close'): void
-    connect(signal: 'draw', callback: ((_source: this) => void)): number
-    connect_after(signal: 'draw', callback: ((_source: this) => void)): number
-    emit(signal: 'draw'): void
-    connect(signal: 'key-event', callback: ((_source: this, id: string, key: string) => void)): number
-    connect_after(signal: 'key-event', callback: ((_source: this, id: string, key: string) => void)): number
-    emit(signal: 'key-event', id: string, key: string): void
-    connect(signal: 'mouse-event', callback: ((_source: this, id: string, button: number, x: number, y: number) => void)): number
-    connect_after(signal: 'mouse-event', callback: ((_source: this, id: string, button: number, x: number, y: number) => void)): number
-    emit(signal: 'mouse-event', id: string, button: number, x: number, y: number): void
-    connect(signal: 'resize', callback: ((_source: this, object: number, p0: number) => void)): number
-    connect_after(signal: 'resize', callback: ((_source: this, object: number, p0: number) => void)): number
-    emit(signal: 'resize', object: number, p0: number): void
-
-    // Own virtual methods of GstVulkan.VulkanWindow
-
-    /**
-     * Attempt to close the window.
-     */
-    vfunc_close(): void
-    vfunc_get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean
-    vfunc_get_surface_dimensions(width: number, height: number): void
-    /**
-     * Tell a `window` that it should handle events from the window system. These
-     * events are forwarded upstream as navigation events. In some window systems
-     * events are not propagated in the window hierarchy if a client is listening
-     * for them. This method allows you to disable events handling completely
-     * from the `window`.
-     * @param handle_events a #gboolean indicating if events should be handled or not.
-     */
-    vfunc_handle_events(handle_events: boolean): void
-    vfunc_open(): boolean
-    vfunc_set_window_handle(handle: never): void
-
-    // Own methods of GstVulkan.VulkanWindow
-
-    /**
-     * Attempt to close the window.
-     */
-    close(): void
-    get_display(): VulkanDisplay
-    get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean
-    get_surface_dimensions(width: number, height: number): void
-    /**
-     * Tell a `window` that it should handle events from the window system. These
-     * events are forwarded upstream as navigation events. In some window systems
-     * events are not propagated in the window hierarchy if a client is listening
-     * for them. This method allows you to disable events handling completely
-     * from the `window`.
-     * @param handle_events a #gboolean indicating if events should be handled or not.
-     */
-    handle_events(handle_events: boolean): void
-    open(): boolean
-    /**
-     * Ask the `window` to redraw its contents
-     */
-    redraw(): void
-    /**
-     * Resize the output surface.
-     * 
-     * Currently intended for subclasses to update internal state.
-     * @param width the new width
-     * @param height the new height
-     */
-    resize(width: number, height: number): void
-    send_key_event(event_type: string, key_str: string): void
-    send_mouse_event(event_type: string, button: number, posx: number, posy: number): void
-    set_window_handle(handle: never): void
-}
-
-class VulkanBarrierBufferInfo {
-
-    // Constructors of GstVulkan.VulkanBarrierBufferInfo
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanBarrierImageInfo {
-
-    // Constructors of GstVulkan.VulkanBarrierImageInfo
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanBarrierMemoryInfo {
-
-    // Own fields of GstVulkan.VulkanBarrierMemoryInfo
-
-type: VulkanBarrierType
-flags: VulkanBarrierFlags
-queue: VulkanQueue
-
-    // Constructors of GstVulkan.VulkanBarrierMemoryInfo
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanBufferMemory {
-
-    // Own fields of GstVulkan.VulkanBufferMemory
-
-device: VulkanDevice
-wrapped: boolean
-notify: GLib.DestroyNotify
-user_data: any
-
-    // Constructors of GstVulkan.VulkanBufferMemory
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanBufferMemory
-
+    function context_set_vulkan_queue(context: Gst.Context, queue: VulkanQueue): void;
+    function is_vulkan_buffer_memory(mem: Gst.Memory): boolean;
+    function is_vulkan_image_memory(mem: Gst.Memory): boolean;
+    function is_vulkan_memory(mem: Gst.Memory): boolean;
     /**
      * Allocate a new #GstVulkanBufferMemory.
      * @param device a #GstVulkanDevice
      * @param size size of the new buffer
      * @param usage buffer usage flags
      * @param mem_prop_flags memory properties flags for the backing memory
+     * @returns a #GstMemory object backed by a vulkan buffer          backed by vulkan device memory
      */
-    static alloc(device: VulkanDevice, size: number, usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
+    function vulkan_buffer_memory_alloc(
+        device: VulkanDevice,
+        size: number,
+        usage: Vulkan.BufferUsageFlags,
+        mem_prop_flags: Vulkan.MemoryPropertyFlags,
+    ): Gst.Memory;
     /**
      * Initializes the Vulkan buffer memory allocator. It is safe to call this function
      * multiple times.  This must be called before any other #GstVulkanBufferMemory operation.
      */
-    static init_once(): void
-}
-
-type VulkanBufferMemoryAllocatorClass = typeof VulkanBufferMemoryAllocator
-type VulkanBufferPoolClass = typeof VulkanBufferPool
-abstract class VulkanBufferPoolPrivate {
-
-    // Constructors of GstVulkan.VulkanBufferPoolPrivate
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanCommandBuffer {
-
-    // Own fields of GstVulkan.VulkanCommandBuffer
-
-pool: VulkanCommandPool
-
-    // Constructors of GstVulkan.VulkanCommandBuffer
-
-constructor(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel);
-_init(...args: any[]): void;
-
-
-static new_wrapped(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel): VulkanCommandBuffer;
-}
-
-type VulkanCommandPoolClass = typeof VulkanCommandPool
-abstract class VulkanCommandPoolPrivate {
-
-    // Constructors of GstVulkan.VulkanCommandPoolPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanDescriptorCacheClass = typeof VulkanDescriptorCache
-abstract class VulkanDescriptorCachePrivate {
-
-    // Constructors of GstVulkan.VulkanDescriptorCachePrivate
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanDescriptorPoolClass = typeof VulkanDescriptorPool
-abstract class VulkanDescriptorPoolPrivate {
-
-    // Constructors of GstVulkan.VulkanDescriptorPoolPrivate
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanDescriptorSet {
-
-    // Own fields of GstVulkan.VulkanDescriptorSet
-
-pool: VulkanDescriptorPool
-cache: VulkanDescriptorCache
-n_layouts: number
-
-    // Constructors of GstVulkan.VulkanDescriptorSet
-
-constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, n_layouts: number, layouts: VulkanHandle);
-_init(...args: any[]): void;
-
-
-static new_wrapped(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, n_layouts: number, layouts: VulkanHandle): VulkanDescriptorSet;
-}
-
-abstract class VulkanDescriptorSetClass {
-
-    // Constructors of GstVulkan.VulkanDescriptorSetClass
-
-_init(...args: any[]): void;
-
-}
-
-abstract class VulkanDescriptorSetPrivate {
-
-    // Constructors of GstVulkan.VulkanDescriptorSetPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanDeviceClass = typeof VulkanDevice
-abstract class VulkanDevicePrivate {
-
-    // Constructors of GstVulkan.VulkanDevicePrivate
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanDisplayClass = typeof VulkanDisplay
-abstract class VulkanDisplayPrivate {
-
-    // Constructors of GstVulkan.VulkanDisplayPrivate
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanFence {
-
-    // Own fields of GstVulkan.VulkanFence
-
-device: VulkanDevice
-cache: VulkanFenceCache
-
-    // Constructors of GstVulkan.VulkanFence
-
-constructor(device: VulkanDevice);
-_init(...args: any[]): void;
-
-
-static ["new"](device: VulkanDevice): VulkanFence;
-
-static new_always_signalled(device: VulkanDevice): VulkanFence;
-
-    // Own methods of GstVulkan.VulkanFence
-
-    is_signaled(): boolean
-    reset(): void
-}
-
-type VulkanFenceCacheClass = typeof VulkanFenceCache
-class VulkanFormatInfo {
-
-    // Own fields of GstVulkan.VulkanFormatInfo
-
-name: string
-scaling: VulkanFormatScaling
-flags: VulkanFormatFlags
-bits: number
-n_components: number
-shift: Uint8Array
-depth: Uint8Array
-pixel_stride: Uint8Array
-n_planes: number
-plane: Uint8Array
-poffset: Uint8Array
-w_sub: Uint8Array
-h_sub: Uint8Array
-
-    // Constructors of GstVulkan.VulkanFormatInfo
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanFullScreenQuadClass = typeof VulkanFullScreenQuad
-abstract class VulkanFullScreenQuadPrivate {
-
-    // Constructors of GstVulkan.VulkanFullScreenQuadPrivate
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Holds information about a vulkan non dispatchable handle
- */
-class VulkanHandle {
-
-    // Own fields of GstVulkan.VulkanHandle
-
-device: VulkanDevice
-type: VulkanHandleType
-notify: VulkanHandleDestroyNotify
-user_data: any
-
-    // Constructors of GstVulkan.VulkanHandle
-
-constructor(device: VulkanDevice, type: VulkanHandleType, handle: VulkanHandleTypedef, notify: VulkanHandleDestroyNotify);
-_init(...args: any[]): void;
-
-
-static new_wrapped(device: VulkanDevice, type: VulkanHandleType, handle: VulkanHandleTypedef, notify: VulkanHandleDestroyNotify): VulkanHandle;
-
-    // Own static methods of GstVulkan.VulkanHandle
-
-    static context_query(element: Gst.Element, query: Gst.Query, display?: (VulkanDisplay | null), instance?: (VulkanInstance | null), device?: (VulkanDevice | null)): boolean
+    function vulkan_buffer_memory_init_once(): void;
+    /**
+     * Allocated a new wrapped #GstVulkanBufferMemory with `buffer`.
+     * @param device a #GstVulkanDevice
+     * @param buffer a #VkBuffer
+     * @param usage usage flags of @buffer
+     * @param user_data user data to call @notify with
+     * @param notify a #GDestroyNotify called when @buffer is no longer in use
+     * @returns a #GstMemory object backed by a vulkan device memory
+     */
+    function vulkan_buffer_memory_wrapped(
+        device: VulkanDevice,
+        buffer: Vulkan.Buffer,
+        usage: Vulkan.BufferUsageFlags,
+        user_data?: any | null,
+        notify?: GLib.DestroyNotify | null,
+    ): Gst.Memory;
+    function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle;
+    function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string;
+    /**
+     * Perform the steps necessary for retrieving a #GstVulkanInstance and
+     * (optionally) an #GstVulkanDisplay from the surrounding elements or from
+     * the application using the #GstContext mechanism.
+     *
+     * If the contents of `display_ptr` or `instance_ptr` are not %NULL, then no
+     * #GstContext query is necessary and no #GstVulkanInstance or #GstVulkanDisplay
+     * retrieval is performed.
+     * @param element a #GstElement
+     * @param display_ptr the resulting #GstVulkanDisplay
+     * @param instance_ptr the resulting #GstVulkanInstance
+     * @returns whether a #GstVulkanInstance exists in @instance_ptr and if          @display_ptr is not %NULL, whether a #GstVulkanDisplay exists in          @display_ptr
+     */
+    function vulkan_ensure_element_data(
+        element: Gst.Element,
+        display_ptr: VulkanDisplay | null,
+        instance_ptr: VulkanInstance,
+    ): [boolean, VulkanDisplay | null, VulkanInstance];
+    function vulkan_error_quark(): GLib.Quark;
+    function vulkan_format_get_info(format: Vulkan.Format): VulkanFormatInfo;
+    function vulkan_get_or_create_image_view(image: VulkanImageMemory): VulkanImageView;
+    /**
+     * Performs the steps necessary for executing a context query including
+     * posting a message for the application to respond.
+     * @param element a #GstElement
+     * @param context_type the context type to query for
+     */
+    function vulkan_global_context_query(element: Gst.Element, context_type: string): void;
+    function vulkan_handle_context_query(
+        element: Gst.Element,
+        query: Gst.Query,
+        display?: VulkanDisplay | null,
+        instance?: VulkanInstance | null,
+        device?: VulkanDevice | null,
+    ): boolean;
     /**
      * Helper function for implementing #GstElementClass.set_context() in
      * Vulkan capable elements.
-     * 
+     *
      * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
      * the result in `display` or `instance` respectively.
      * @param element a #GstElement
      * @param context a #GstContext
      * @param display location of a #GstVulkanDisplay
      * @param instance location of a #GstVulkanInstance
+     * @returns whether the @display or @instance could be set successfully
      */
-    static set_context(element: Gst.Element, context: Gst.Context, display: (VulkanDisplay | null), instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance]
-
-    // Own methods of GstVulkan.VulkanHandle
-
-    /**
-     * Frees the descriptor set layout in `handle`
-     * @param user_data callback user data
-     */
-    free_descriptor_set_layout(user_data?: (any | null)): void
-    /**
-     * Frees the framebuffer in `handle`
-     * @param user_data callback user data
-     */
-    free_framebuffer(user_data?: (any | null)): void
-    /**
-     * Frees the pipeline in `handle`
-     * @param user_data callback user data
-     */
-    free_pipeline(user_data?: (any | null)): void
-    /**
-     * Frees the pipeline layout in `handle`
-     * @param user_data callback user data
-     */
-    free_pipeline_layout(user_data?: (any | null)): void
-    /**
-     * Frees the render pass in `handle`
-     * @param user_data callback user data
-     */
-    free_render_pass(user_data?: (any | null)): void
-    /**
-     * Frees the sampler in `handle`
-     * @param user_data callback user data
-     */
-    free_sampler(user_data?: (any | null)): void
-    /**
-     * Frees the shader in `handle`
-     * @param user_data callback user data
-     */
-    free_shader(user_data?: (any | null)): void
-}
-
-type VulkanHandlePoolClass = typeof VulkanHandlePool
-abstract class VulkanHandleTypedef {
-
-    // Constructors of GstVulkan.VulkanHandleTypedef
-
-_init(...args: any[]): void;
-
-}
-
-type VulkanImageBufferPoolClass = typeof VulkanImageBufferPool
-abstract class VulkanImageBufferPoolPrivate {
-
-    // Constructors of GstVulkan.VulkanImageBufferPoolPrivate
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanImageMemory {
-
-    // Own fields of GstVulkan.VulkanImageMemory
-
-device: VulkanDevice
-wrapped: boolean
-notify: GLib.DestroyNotify
-user_data: any
-views: any[]
-outstanding_views: any[]
-
-    // Constructors of GstVulkan.VulkanImageMemory
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanImageMemory
-
+    function vulkan_handle_set_context(
+        element: Gst.Element,
+        context: Gst.Context,
+        display: VulkanDisplay | null,
+        instance: VulkanInstance,
+    ): [boolean, VulkanDisplay | null, VulkanInstance];
     /**
      * Allocated a new #GstVulkanImageMemory.
      * @param device a #GstVulkanDevice
@@ -1608,155 +238,1447 @@ _init(...args: any[]): void;
      * @param tiling tiling for the new image
      * @param usage usage flags for the new image
      * @param mem_prop_flags VkDeviceMemory property flags for the new image
+     * @returns a #GstMemory object backed by a vulkan device memory
      */
-    static alloc(device: VulkanDevice, format: Vulkan.Format, width: number, height: number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
+    function vulkan_image_memory_alloc(
+        device: VulkanDevice,
+        format: Vulkan.Format,
+        width: number,
+        height: number,
+        tiling: Vulkan.ImageTiling,
+        usage: Vulkan.ImageUsageFlags,
+        mem_prop_flags: Vulkan.MemoryPropertyFlags,
+    ): Gst.Memory;
     /**
      * Initializes the Vulkan image memory allocator. It is safe to call this function
      * multiple times.  This must be called before any other #GstVulkanImageMemory operation.
      */
-    static init_once(): void
-
-    // Own methods of GstVulkan.VulkanImageMemory
-
-    add_view(view: VulkanImageView): void
-    find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView
-    get_height(): number
-    get_width(): number
-    init(allocator: Gst.Allocator, parent: Gst.Memory, device: VulkanDevice, usage: Vulkan.ImageUsageFlags, params: Gst.AllocationParams, size: number, user_data?: (any | null)): boolean
-}
-
-type VulkanImageMemoryAllocatorClass = typeof VulkanImageMemoryAllocator
-class VulkanImageView {
-
-    // Own fields of GstVulkan.VulkanImageView
-
-device: VulkanDevice
-
-    // Constructors of GstVulkan.VulkanImageView
-
-constructor(image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo);
-_init(...args: any[]): void;
-
-
-static ["new"](image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo): VulkanImageView;
-}
-
-type VulkanInstanceClass = typeof VulkanInstance
-abstract class VulkanInstancePrivate {
-
-    // Constructors of GstVulkan.VulkanInstancePrivate
-
-_init(...args: any[]): void;
-
-}
-
-class VulkanMemory {
-
-    // Own fields of GstVulkan.VulkanMemory
-
-device: VulkanDevice
-map_count: number
-
-    // Constructors of GstVulkan.VulkanMemory
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of GstVulkan.VulkanMemory
-
+    function vulkan_image_memory_init_once(): void;
+    function vulkan_image_memory_wrapped(
+        device: VulkanDevice,
+        image: Vulkan.Image,
+        format: Vulkan.Format,
+        width: number,
+        height: number,
+        tiling: Vulkan.ImageTiling,
+        usage: Vulkan.ImageUsageFlags,
+        user_data?: any | null,
+    ): Gst.Memory;
+    /**
+     * Performs the steps necessary for executing a context query between only
+     * other elements in the pipeline
+     * @param element a #GstElement
+     * @param context_type the context type to query for
+     */
+    function vulkan_local_context_query(element: Gst.Element, context_type: string): Gst.Query;
     /**
      * Allocated a new #GstVulkanMemory.
      * @param device a #GstVulkanDevice
      * @param memory_type_index the Vulkan memory type index
      * @param params a #GstAllocationParams
      * @param size the size to allocate
-     * @param mem_prop_flags 
+     * @param mem_prop_flags
+     * @returns a #GstMemory object backed by a vulkan device memory
      */
-    static alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: number, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory
-    static find_memory_type_index_with_type_properties(device: VulkanDevice, type_bits: number, properties: Vulkan.MemoryPropertyFlags, type_index: number): boolean
-    static heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string
+    function vulkan_memory_alloc(
+        device: VulkanDevice,
+        memory_type_index: number,
+        params: Gst.AllocationParams,
+        size: number,
+        mem_prop_flags: Vulkan.MemoryPropertyFlags,
+    ): Gst.Memory;
+    function vulkan_memory_find_memory_type_index_with_type_properties(
+        device: VulkanDevice,
+        type_bits: number,
+        properties: Vulkan.MemoryPropertyFlags,
+        type_index: number,
+    ): boolean;
+    function vulkan_memory_heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string;
     /**
      * Initializes the Vulkan memory allocator. It is safe to call this function
      * multiple times.  This must be called before any other #GstVulkanMemory operation.
      */
-    static init_once(): void
-    static property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string
-}
+    function vulkan_memory_init_once(): void;
+    function vulkan_memory_property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
+    function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection): boolean;
+    function vulkan_sample_count_flags_to_string(sample_count_bits: Vulkan.SampleCountFlags): string;
+    function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
+    function vulkan_trash_object_unref(device: VulkanDevice, user_data?: any | null): void;
+    function vulkan_window_error_quark(): GLib.Quark;
+    interface VulkanDeviceForEachQueueFunc {
+        (device: VulkanDevice, queue: VulkanQueue): boolean;
+    }
+    interface VulkanHandleDestroyNotify {
+        (handle: VulkanHandle): void;
+    }
+    interface VulkanImageMemoryFindViewFunc {
+        (view: VulkanImageView): boolean;
+    }
+    interface VulkanTrashListAdd {
+        (trash_list: VulkanTrashList, trash: VulkanTrash): boolean;
+    }
+    interface VulkanTrashListGC {
+        (trash_list: VulkanTrashList): void;
+    }
+    interface VulkanTrashListWait {
+        (trash_list: VulkanTrashList, timeout: number): boolean;
+    }
+    interface VulkanTrashNotify {
+        (device: VulkanDevice): void;
+    }
+    enum VulkanDisplayType {
+        /**
+         * no display
+         */
+        NONE,
+        /**
+         * XCB display
+         */
+        XCB,
+        /**
+         * wayland display
+         */
+        WAYLAND,
+        /**
+         * cocoa display for macOS
+         */
+        COCOA,
+        /**
+         * ios display
+         */
+        IOS,
+        /**
+         * win32 display
+         */
+        WIN32,
+        ANDROID,
+        ANY,
+    }
+    enum VulkanFormatFlags {
+        YUV,
+        RGB,
+        ALPHA,
+        LE,
+        COMPLEX,
+    }
+    module VulkanBufferMemoryAllocator {
+        // Constructor properties interface
 
-type VulkanMemoryAllocatorClass = typeof VulkanMemoryAllocator
-type VulkanPhysicalDeviceClass = typeof VulkanPhysicalDevice
-abstract class VulkanPhysicalDevicePrivate {
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+    }
 
-    // Constructors of GstVulkan.VulkanPhysicalDevicePrivate
+    /**
+     * Opaque #GstVulkanBufferMemoryAllocator struct
+     */
+    class VulkanBufferMemoryAllocator extends Gst.Allocator {
+        // Constructors of GstVulkan.VulkanBufferMemoryAllocator
 
-_init(...args: any[]): void;
+        constructor(properties?: Partial<VulkanBufferMemoryAllocator.ConstructorProps>, ...args: any[]);
 
-}
+        _init(...args: any[]): void;
+    }
 
-type VulkanQueueClass = typeof VulkanQueue
-abstract class VulkanQueuePrivate {
+    module VulkanBufferPool {
+        // Constructor properties interface
 
-    // Constructors of GstVulkan.VulkanQueuePrivate
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
+    }
 
-_init(...args: any[]): void;
+    /**
+     * Opaque GstVulkanBufferPool struct
+     */
+    class VulkanBufferPool extends Gst.BufferPool {
+        // Own fields of GstVulkan.VulkanBufferPool
 
-}
+        bufferpool: Gst.BufferPool;
+        device: VulkanDevice;
 
-type VulkanSwapperClass = typeof VulkanSwapper
-abstract class VulkanSwapperPrivate {
+        // Constructors of GstVulkan.VulkanBufferPool
 
-    // Constructors of GstVulkan.VulkanSwapperPrivate
+        constructor(properties?: Partial<VulkanBufferPool.ConstructorProps>, ...args: any[]);
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
 
-}
+        static ['new'](device: VulkanDevice): VulkanBufferPool;
+        // Conflicted with Gst.BufferPool.new
 
-class VulkanTrash {
+        static ['new'](...args: never[]): any;
+    }
 
-    // Own fields of GstVulkan.VulkanTrash
+    module VulkanCommandPool {
+        // Constructor properties interface
 
-cache: VulkanTrashList
-notify: VulkanTrashNotify
-user_data: any
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
 
-    // Constructors of GstVulkan.VulkanTrash
+    class VulkanCommandPool extends Gst.Object {
+        // Own fields of GstVulkan.VulkanCommandPool
 
-constructor(fence: VulkanFence);
-_init(...args: any[]): void;
+        queue: VulkanQueue;
 
+        // Constructors of GstVulkan.VulkanCommandPool
 
-static ["new"](fence: VulkanFence): VulkanTrash;
+        constructor(properties?: Partial<VulkanCommandPool.ConstructorProps>, ...args: any[]);
 
-static new_free_semaphore(fence: VulkanFence, semaphore: Vulkan.Semaphore): VulkanTrash;
+        _init(...args: any[]): void;
 
-    // Own static methods of GstVulkan.VulkanTrash
+        // Own methods of GstVulkan.VulkanCommandPool
 
-    static mini_object_unref(device: VulkanDevice, user_data?: (any | null)): void
-    static object_unref(device: VulkanDevice, user_data?: (any | null)): void
-}
+        create(): VulkanCommandBuffer;
+        get_queue(): VulkanQueue;
+        /**
+         * This should be called to ensure no other thread will attempt to access
+         * the pool's internal resources.  Any modification of any of the allocated
+         * #GstVulkanCommandBuffer's need to be encapsulated in a
+         * gst_vulkan_command_pool_lock()/gst_vulkan_command_pool_unlock() pair to meet
+         * the Vulkan API requirements that host access to the command pool is
+         * externally synchronised.
+         */
+        lock(): void;
+        /**
+         * See the documentation for gst_vulkan_command_pool_lock() for when you would
+         * need to use this function.
+         */
+        unlock(): void;
+    }
 
-type VulkanTrashFenceListClass = typeof VulkanTrashFenceList
-type VulkanTrashListClass = typeof VulkanTrashList
-type VulkanVideoFilterClass = typeof VulkanVideoFilter
-type VulkanWindowClass = typeof VulkanWindow
-abstract class VulkanWindowPrivate {
+    module VulkanDescriptorCache {
+        // Constructor properties interface
 
-    // Constructors of GstVulkan.VulkanWindowPrivate
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
+    }
 
-_init(...args: any[]): void;
+    class VulkanDescriptorCache extends VulkanHandlePool {
+        // Own fields of GstVulkan.VulkanDescriptorCache
 
-}
+        pool: VulkanDescriptorPool;
 
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+        // Constructors of GstVulkan.VulkanDescriptorCache
+
+        constructor(properties?: Partial<VulkanDescriptorCache.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](pool: VulkanDescriptorPool, n_layouts: number, layouts: VulkanHandle): VulkanDescriptorCache;
+
+        // Own methods of GstVulkan.VulkanDescriptorCache
+
+        acquire(): VulkanDescriptorSet;
+        acquire(...args: never[]): any;
+    }
+
+    module VulkanDescriptorPool {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    class VulkanDescriptorPool extends Gst.Object {
+        // Own fields of GstVulkan.VulkanDescriptorPool
+
+        device: VulkanDevice;
+
+        // Constructors of GstVulkan.VulkanDescriptorPool
+
+        constructor(properties?: Partial<VulkanDescriptorPool.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
+
+        // Own methods of GstVulkan.VulkanDescriptorPool
+
+        create(n_layouts: number, layouts: VulkanHandle): VulkanDescriptorSet;
+        get_device(): VulkanDevice;
+        get_max_sets(): number;
+    }
+
+    module VulkanDevice {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {
+            instance: VulkanInstance;
+            physical_device: VulkanPhysicalDevice;
+            physicalDevice: VulkanPhysicalDevice;
+        }
+    }
+
+    class VulkanDevice extends Gst.Object {
+        // Own properties of GstVulkan.VulkanDevice
+
+        get instance(): VulkanInstance;
+        get physical_device(): VulkanPhysicalDevice;
+        get physicalDevice(): VulkanPhysicalDevice;
+
+        // Constructors of GstVulkan.VulkanDevice
+
+        constructor(properties?: Partial<VulkanDevice.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](physical_device: VulkanPhysicalDevice): VulkanDevice;
+
+        static new_with_index(instance: VulkanInstance, device_index: number): VulkanDevice;
+
+        // Own static methods of GstVulkan.VulkanDevice
+
+        /**
+         * If a #GstVulkanDevice is requested in `query,` sets `device` as the reply.
+         *
+         * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
+         * for a #GstVulkanDevice.
+         * @param element a #GstElement
+         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+         * @param device the #GstVulkanDevice
+         */
+        static handle_context_query(element: Gst.Element, query: Gst.Query, device: VulkanDevice): boolean;
+        /**
+         * Attempt to retrieve a #GstVulkanDevice using #GST_QUERY_CONTEXT from the
+         * surrounding elements of `element`.
+         * @param element a #GstElement
+         * @param device a #GstVulkanDevice
+         */
+        static run_context_query(element: Gst.Element, device: VulkanDevice): [boolean, VulkanDevice];
+
+        // Own methods of GstVulkan.VulkanDevice
+
+        create_fence(): VulkanFence;
+        /**
+         * Iterate over each queue family available on #GstVulkanDevice
+         */
+        foreach_queue(): void;
+        get_instance(): VulkanInstance;
+        /**
+         * Performs vkGetDeviceProcAddr() with `device` and `name`
+         * @param name name of the function to retrieve
+         * @returns the function pointer for @name or %NULL
+         */
+        get_proc_address(name: string): any | null;
+        get_queue(queue_family: number, queue_i: number): VulkanQueue;
+        /**
+         * Attempts to create the internal #VkDevice object.
+         * @returns whether a vulkan device could be created
+         */
+        open(): boolean;
+    }
+
+    module VulkanDisplay {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    /**
+     * The contents of a #GstVulkanDisplay are private and should only be accessed
+     * through the provided API
+     */
+    class VulkanDisplay extends Gst.Object {
+        // Constructors of GstVulkan.VulkanDisplay
+
+        constructor(properties?: Partial<VulkanDisplay.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](instance: VulkanInstance): VulkanDisplay;
+
+        static new_with_type(instance: VulkanInstance, type: VulkanDisplayType): VulkanDisplay;
+
+        // Own static methods of GstVulkan.VulkanDisplay
+
+        /**
+         * This function will read the %GST_VULKAN_WINDOW environment variable for
+         * a user choice or choose the first supported implementation.
+         * @param instance a #GstVulkanInstance
+         */
+        static choose_type(instance: VulkanInstance): VulkanDisplayType;
+        /**
+         * If a #GstVulkanDisplay is requested in `query,` sets `device` as the reply.
+         *
+         * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
+         * for a #GstVulkanDisplay.
+         * @param element a #GstElement
+         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+         * @param display the #GstVulkanDisplay
+         */
+        static handle_context_query(element: Gst.Element, query: Gst.Query, display?: VulkanDisplay | null): boolean;
+        /**
+         * Attempt to retrieve a #GstVulkanDisplay using #GST_QUERY_CONTEXT from the
+         * surrounding elements of `element`.
+         * @param element a #GstElement
+         * @param display a #GstVulkanDisplay
+         */
+        static run_context_query(element: Gst.Element, display: VulkanDisplay): [boolean, VulkanDisplay];
+
+        // Own virtual methods of GstVulkan.VulkanDisplay
+
+        vfunc_create_window(): VulkanWindow;
+        vfunc_get_handle(): any | null;
+
+        // Own methods of GstVulkan.VulkanDisplay
+
+        create_window(): VulkanWindow;
+        /**
+         * Execute `compare_func` over the list of windows stored by `display`.  The
+         * first argument to `compare_func` is the #GstVulkanWindow being checked and the
+         * second argument is `data`.
+         * @param data some data to pass to @compare_func
+         * @param compare_func a comparison function to run
+         * @returns The first #GstVulkanWindow that causes a match          from @compare_func
+         */
+        find_window(data: any | null, compare_func: GLib.CompareFunc): VulkanWindow;
+        get_handle(): any | null;
+        get_handle_type(): VulkanDisplayType;
+        remove_window(window: VulkanWindow): boolean;
+    }
+
+    module VulkanFenceCache {
+        // Constructor properties interface
+
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
+    }
+
+    class VulkanFenceCache extends VulkanHandlePool {
+        // Constructors of GstVulkan.VulkanFenceCache
+
+        constructor(properties?: Partial<VulkanFenceCache.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](device: VulkanDevice): VulkanFenceCache;
+    }
+
+    module VulkanFullScreenQuad {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    class VulkanFullScreenQuad extends Gst.Object {
+        // Own fields of GstVulkan.VulkanFullScreenQuad
+
+        queue: VulkanQueue;
+        descriptor_cache: VulkanDescriptorCache;
+        cmd_pool: VulkanCommandPool;
+        trash_list: VulkanTrashList;
+
+        // Constructors of GstVulkan.VulkanFullScreenQuad
+
+        constructor(properties?: Partial<VulkanFullScreenQuad.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](queue: VulkanQueue): VulkanFullScreenQuad;
+
+        // Own methods of GstVulkan.VulkanFullScreenQuad
+
+        draw(): boolean;
+        fill_command_buffer(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean;
+        get_last_fence(): VulkanFence;
+        prepare_draw(fence: VulkanFence): boolean;
+        set_index_buffer(indices: Gst.Memory, n_indices: number): boolean;
+        set_info(in_info: GstVideo.VideoInfo, out_info: GstVideo.VideoInfo): boolean;
+        set_input_buffer(buffer: Gst.Buffer): boolean;
+        set_output_buffer(buffer: Gst.Buffer): boolean;
+        set_shaders(vert: VulkanHandle, frag: VulkanHandle): boolean;
+        set_uniform_buffer(uniforms: Gst.Memory): boolean;
+        set_vertex_buffer(vertices: Gst.Memory): boolean;
+        submit(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean;
+    }
+
+    module VulkanHandlePool {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    abstract class VulkanHandlePool extends Gst.Object {
+        // Own fields of GstVulkan.VulkanHandlePool
+
+        device: VulkanDevice;
+        outstanding: any[];
+        available: any[];
+
+        // Constructors of GstVulkan.VulkanHandlePool
+
+        constructor(properties?: Partial<VulkanHandlePool.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own virtual methods of GstVulkan.VulkanHandlePool
+
+        vfunc_acquire(): any | null;
+        vfunc_alloc(): any | null;
+        vfunc_free(handle?: any | null): void;
+        vfunc_release(handle?: any | null): void;
+
+        // Own methods of GstVulkan.VulkanHandlePool
+
+        acquire(): any | null;
+        alloc(): any | null;
+        release(handle?: any | null): void;
+    }
+
+    module VulkanImageBufferPool {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
+    }
+
+    /**
+     * Opaque GstVulkanImageBufferPool struct
+     */
+    class VulkanImageBufferPool extends Gst.BufferPool {
+        // Own fields of GstVulkan.VulkanImageBufferPool
+
+        bufferpool: Gst.BufferPool;
+        device: VulkanDevice;
+
+        // Constructors of GstVulkan.VulkanImageBufferPool
+
+        constructor(properties?: Partial<VulkanImageBufferPool.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](device: VulkanDevice): VulkanImageBufferPool;
+        // Conflicted with Gst.BufferPool.new
+
+        static ['new'](...args: never[]): any;
+    }
+
+    module VulkanImageMemoryAllocator {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+    }
+
+    /**
+     * Opaque #GstVulkanImageMemoryAllocator struct
+     */
+    class VulkanImageMemoryAllocator extends Gst.Allocator {
+        // Constructors of GstVulkan.VulkanImageMemoryAllocator
+
+        constructor(properties?: Partial<VulkanImageMemoryAllocator.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
+    module VulkanInstance {
+        // Signal callback interfaces
+
+        interface CreateDevice {
+            (): VulkanDevice;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    class VulkanInstance extends Gst.Object {
+        // Own fields of GstVulkan.VulkanInstance
+
+        n_physical_devices: number;
+
+        // Constructors of GstVulkan.VulkanInstance
+
+        constructor(properties?: Partial<VulkanInstance.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): VulkanInstance;
+
+        // Own signals of GstVulkan.VulkanInstance
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'create-device', callback: (_source: this) => VulkanDevice): number;
+        connect_after(signal: 'create-device', callback: (_source: this) => VulkanDevice): number;
+        emit(signal: 'create-device'): void;
+
+        // Own static methods of GstVulkan.VulkanInstance
+
+        /**
+         * If a #GstVulkanInstance is requested in `query,` sets `instance` as the reply.
+         *
+         * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
+         * for a #GstVulkanInstance.
+         * @param element a #GstElement
+         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+         * @param instance the #GstVulkanInstance
+         */
+        static handle_context_query(element: Gst.Element, query: Gst.Query, instance?: VulkanInstance | null): boolean;
+        /**
+         * Attempt to retrieve a #GstVulkanInstance using #GST_QUERY_CONTEXT from the
+         * surrounding elements of `element`.
+         * @param element a #GstElement
+         * @param instance a #GstVulkanInstance
+         */
+        static run_context_query(element: Gst.Element, instance: VulkanInstance): [boolean, VulkanInstance];
+
+        // Own methods of GstVulkan.VulkanInstance
+
+        create_device(): VulkanDevice;
+        /**
+         * Performs vkGetInstanceProcAddr() with `instance` and `name`
+         * @param name name of the function to retrieve
+         * @returns the function pointer for @name or %NULL
+         */
+        get_proc_address(name: string): any | null;
+        open(): boolean;
+    }
+
+    module VulkanMemoryAllocator {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+    }
+
+    /**
+     * Opaque #GstVulkanMemoryAllocator struct
+     */
+    class VulkanMemoryAllocator extends Gst.Allocator {
+        // Constructors of GstVulkan.VulkanMemoryAllocator
+
+        constructor(properties?: Partial<VulkanMemoryAllocator.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
+    module VulkanPhysicalDevice {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {
+            device_index: number;
+            deviceIndex: number;
+            instance: VulkanInstance;
+            name: string;
+        }
+    }
+
+    class VulkanPhysicalDevice extends Gst.Object {
+        // Own properties of GstVulkan.VulkanPhysicalDevice
+
+        get device_index(): number;
+        get deviceIndex(): number;
+        get instance(): VulkanInstance;
+        get name(): string;
+
+        // Own fields of GstVulkan.VulkanPhysicalDevice
+
+        n_device_layers: number;
+        n_device_extensions: number;
+        n_queue_families: number;
+
+        // Constructors of GstVulkan.VulkanPhysicalDevice
+
+        constructor(properties?: Partial<VulkanPhysicalDevice.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](instance: VulkanInstance, device_index: number): VulkanPhysicalDevice;
+
+        // Own static methods of GstVulkan.VulkanPhysicalDevice
+
+        static type_to_string(type: Vulkan.PhysicalDeviceType): string;
+
+        // Own methods of GstVulkan.VulkanPhysicalDevice
+
+        get_instance(): VulkanInstance;
+    }
+
+    module VulkanQueue {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
+    }
+
+    class VulkanQueue extends Gst.Object {
+        // Own fields of GstVulkan.VulkanQueue
+
+        device: VulkanDevice;
+        family: number;
+        index: number;
+
+        // Constructors of GstVulkan.VulkanQueue
+
+        constructor(properties?: Partial<VulkanQueue.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstVulkan.VulkanQueue
+
+        static flags_to_string(queue_bits: Vulkan.QueueFlags): string;
+        /**
+         * If a #GstVulkanQueue is requested in `query,` sets `queue` as the reply.
+         *
+         * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
+         * for a #GstVulkanQueue.
+         * @param element a #GstElement
+         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
+         * @param queue the #GstVulkanQueue
+         */
+        static handle_context_query(element: Gst.Element, query: Gst.Query, queue?: VulkanQueue | null): boolean;
+        /**
+         * Attempt to retrieve a #GstVulkanQueue using #GST_QUERY_CONTEXT from the
+         * surrounding elements of `element`.
+         * @param element a #GstElement
+         * @param queue a #GstVulkanQueue
+         */
+        static run_context_query(element: Gst.Element, queue: VulkanQueue): [boolean, VulkanQueue];
+
+        // Own methods of GstVulkan.VulkanQueue
+
+        create_command_pool(): VulkanCommandPool;
+        get_device(): VulkanDevice;
+        /**
+         * Locks the queue for command submission using `vkQueueSubmit()` to meet the
+         * Vulkan requirements for externally synchronised resources.
+         */
+        submit_lock(): void;
+        /**
+         * Unlocks the queue for command submission using `vkQueueSubmit()`.
+         *
+         * See gst_vulkan_queue_submit_lock() for details on when this call is needed.
+         */
+        submit_unlock(): void;
+    }
+
+    module VulkanSwapper {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {
+            force_aspect_ratio: boolean;
+            forceAspectRatio: boolean;
+            pixel_aspect_ratio: Gst.Fraction;
+            pixelAspectRatio: Gst.Fraction;
+        }
+    }
+
+    class VulkanSwapper extends Gst.Object {
+        // Own properties of GstVulkan.VulkanSwapper
+
+        get force_aspect_ratio(): boolean;
+        set force_aspect_ratio(val: boolean);
+        get forceAspectRatio(): boolean;
+        set forceAspectRatio(val: boolean);
+        get pixel_aspect_ratio(): Gst.Fraction;
+        set pixel_aspect_ratio(val: Gst.Fraction);
+        get pixelAspectRatio(): Gst.Fraction;
+        set pixelAspectRatio(val: Gst.Fraction);
+
+        // Own fields of GstVulkan.VulkanSwapper
+
+        device: VulkanDevice;
+        window: VulkanWindow;
+        queue: VulkanQueue;
+        cmd_pool: VulkanCommandPool;
+
+        // Constructors of GstVulkan.VulkanSwapper
+
+        constructor(properties?: Partial<VulkanSwapper.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](device: VulkanDevice, window: VulkanWindow): VulkanSwapper;
+
+        // Own methods of GstVulkan.VulkanSwapper
+
+        choose_queue(available_queue: VulkanQueue): boolean;
+        get_supported_caps(): Gst.Caps;
+        get_surface_rectangles(): [
+            GstVideo.VideoRectangle | null,
+            GstVideo.VideoRectangle | null,
+            GstVideo.VideoRectangle | null,
+        ];
+        render_buffer(buffer: Gst.Buffer): boolean;
+        set_caps(caps: Gst.Caps): boolean;
+    }
+
+    module VulkanTrashFenceList {
+        // Constructor properties interface
+
+        interface ConstructorProps extends VulkanTrashList.ConstructorProps {}
+    }
+
+    class VulkanTrashFenceList extends VulkanTrashList {
+        // Constructors of GstVulkan.VulkanTrashFenceList
+
+        constructor(properties?: Partial<VulkanTrashFenceList.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): VulkanTrashFenceList;
+    }
+
+    module VulkanTrashList {
+        // Constructor properties interface
+
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
+    }
+
+    class VulkanTrashList extends VulkanHandlePool {
+        // Constructors of GstVulkan.VulkanTrashList
+
+        constructor(properties?: Partial<VulkanTrashList.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own virtual methods of GstVulkan.VulkanTrashList
+
+        vfunc_add_func(trash: VulkanTrash): boolean;
+        vfunc_gc_func(): void;
+        vfunc_wait_func(timeout: number): boolean;
+
+        // Own methods of GstVulkan.VulkanTrashList
+
+        acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash;
+        acquire(...args: never[]): any;
+        add(trash: VulkanTrash): boolean;
+        gc(): void;
+        wait(timeout: number): boolean;
+    }
+
+    module VulkanVideoFilter {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
+    }
+
+    class VulkanVideoFilter extends GstBase.BaseTransform {
+        // Own fields of GstVulkan.VulkanVideoFilter
+
+        instance: VulkanInstance;
+        device: VulkanDevice;
+        queue: VulkanQueue;
+
+        // Constructors of GstVulkan.VulkanVideoFilter
+
+        constructor(properties?: Partial<VulkanVideoFilter.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
+    module VulkanWindow {
+        // Signal callback interfaces
+
+        interface Close {
+            (): boolean;
+        }
+
+        interface Draw {
+            (): void;
+        }
+
+        interface KeyEvent {
+            (id: string, key: string): void;
+        }
+
+        interface MouseEvent {
+            (id: string, button: number, x: number, y: number): void;
+        }
+
+        interface Resize {
+            (object: number, p0: number): void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gst.Object.ConstructorProps {
+            display: VulkanDisplay;
+        }
+    }
+
+    /**
+     * #GstVulkanWindow is an opaque struct and should only be accessed through the
+     * provided api.
+     */
+    abstract class VulkanWindow extends Gst.Object {
+        // Own properties of GstVulkan.VulkanWindow
+
+        get display(): VulkanDisplay;
+
+        // Constructors of GstVulkan.VulkanWindow
+
+        constructor(properties?: Partial<VulkanWindow.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](display: VulkanDisplay): VulkanWindow;
+
+        // Own signals of GstVulkan.VulkanWindow
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'close', callback: (_source: this) => boolean): number;
+        connect_after(signal: 'close', callback: (_source: this) => boolean): number;
+        emit(signal: 'close'): void;
+        connect(signal: 'draw', callback: (_source: this) => void): number;
+        connect_after(signal: 'draw', callback: (_source: this) => void): number;
+        emit(signal: 'draw'): void;
+        connect(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
+        connect_after(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
+        emit(signal: 'key-event', id: string, key: string): void;
+        connect(
+            signal: 'mouse-event',
+            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
+        ): number;
+        connect_after(
+            signal: 'mouse-event',
+            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
+        ): number;
+        emit(signal: 'mouse-event', id: string, button: number, x: number, y: number): void;
+        connect(signal: 'resize', callback: (_source: this, object: number, p0: number) => void): number;
+        connect_after(signal: 'resize', callback: (_source: this, object: number, p0: number) => void): number;
+        emit(signal: 'resize', object: number, p0: number): void;
+
+        // Own virtual methods of GstVulkan.VulkanWindow
+
+        /**
+         * Attempt to close the window.
+         */
+        vfunc_close(): void;
+        vfunc_get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
+        vfunc_get_surface_dimensions(width: number, height: number): void;
+        /**
+         * Tell a `window` that it should handle events from the window system. These
+         * events are forwarded upstream as navigation events. In some window systems
+         * events are not propagated in the window hierarchy if a client is listening
+         * for them. This method allows you to disable events handling completely
+         * from the `window`.
+         * @param handle_events a #gboolean indicating if events should be handled or not.
+         */
+        vfunc_handle_events(handle_events: boolean): void;
+        vfunc_open(): boolean;
+        vfunc_set_window_handle(handle: never): void;
+
+        // Own methods of GstVulkan.VulkanWindow
+
+        /**
+         * Attempt to close the window.
+         */
+        close(): void;
+        get_display(): VulkanDisplay;
+        get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
+        get_surface_dimensions(width: number, height: number): void;
+        /**
+         * Tell a `window` that it should handle events from the window system. These
+         * events are forwarded upstream as navigation events. In some window systems
+         * events are not propagated in the window hierarchy if a client is listening
+         * for them. This method allows you to disable events handling completely
+         * from the `window`.
+         * @param handle_events a #gboolean indicating if events should be handled or not.
+         */
+        handle_events(handle_events: boolean): void;
+        open(): boolean;
+        /**
+         * Ask the `window` to redraw its contents
+         */
+        redraw(): void;
+        /**
+         * Resize the output surface.
+         *
+         * Currently intended for subclasses to update internal state.
+         * @param width the new width
+         * @param height the new height
+         */
+        resize(width: number, height: number): void;
+        send_key_event(event_type: string, key_str: string): void;
+        send_mouse_event(event_type: string, button: number, posx: number, posy: number): void;
+        set_window_handle(handle: never): void;
+    }
+
+    class VulkanBarrierBufferInfo {
+        // Constructors of GstVulkan.VulkanBarrierBufferInfo
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanBarrierImageInfo {
+        // Constructors of GstVulkan.VulkanBarrierImageInfo
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanBarrierMemoryInfo {
+        // Own fields of GstVulkan.VulkanBarrierMemoryInfo
+
+        type: VulkanBarrierType;
+        flags: VulkanBarrierFlags;
+        queue: VulkanQueue;
+
+        // Constructors of GstVulkan.VulkanBarrierMemoryInfo
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanBufferMemory {
+        // Own fields of GstVulkan.VulkanBufferMemory
+
+        device: VulkanDevice;
+        wrapped: boolean;
+        notify: GLib.DestroyNotify;
+        user_data: any;
+
+        // Constructors of GstVulkan.VulkanBufferMemory
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstVulkan.VulkanBufferMemory
+
+        /**
+         * Allocate a new #GstVulkanBufferMemory.
+         * @param device a #GstVulkanDevice
+         * @param size size of the new buffer
+         * @param usage buffer usage flags
+         * @param mem_prop_flags memory properties flags for the backing memory
+         */
+        static alloc(
+            device: VulkanDevice,
+            size: number,
+            usage: Vulkan.BufferUsageFlags,
+            mem_prop_flags: Vulkan.MemoryPropertyFlags,
+        ): Gst.Memory;
+        /**
+         * Initializes the Vulkan buffer memory allocator. It is safe to call this function
+         * multiple times.  This must be called before any other #GstVulkanBufferMemory operation.
+         */
+        static init_once(): void;
+    }
+
+    type VulkanBufferMemoryAllocatorClass = typeof VulkanBufferMemoryAllocator;
+    type VulkanBufferPoolClass = typeof VulkanBufferPool;
+    abstract class VulkanBufferPoolPrivate {
+        // Constructors of GstVulkan.VulkanBufferPoolPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanCommandBuffer {
+        // Own fields of GstVulkan.VulkanCommandBuffer
+
+        pool: VulkanCommandPool;
+
+        // Constructors of GstVulkan.VulkanCommandBuffer
+
+        constructor(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel);
+        _init(...args: any[]): void;
+
+        static new_wrapped(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel): VulkanCommandBuffer;
+    }
+
+    type VulkanCommandPoolClass = typeof VulkanCommandPool;
+    abstract class VulkanCommandPoolPrivate {
+        // Constructors of GstVulkan.VulkanCommandPoolPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanDescriptorCacheClass = typeof VulkanDescriptorCache;
+    abstract class VulkanDescriptorCachePrivate {
+        // Constructors of GstVulkan.VulkanDescriptorCachePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanDescriptorPoolClass = typeof VulkanDescriptorPool;
+    abstract class VulkanDescriptorPoolPrivate {
+        // Constructors of GstVulkan.VulkanDescriptorPoolPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanDescriptorSet {
+        // Own fields of GstVulkan.VulkanDescriptorSet
+
+        pool: VulkanDescriptorPool;
+        cache: VulkanDescriptorCache;
+        n_layouts: number;
+
+        // Constructors of GstVulkan.VulkanDescriptorSet
+
+        constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, n_layouts: number, layouts: VulkanHandle);
+        _init(...args: any[]): void;
+
+        static new_wrapped(
+            pool: VulkanDescriptorPool,
+            set: Vulkan.DescriptorSet,
+            n_layouts: number,
+            layouts: VulkanHandle,
+        ): VulkanDescriptorSet;
+    }
+
+    abstract class VulkanDescriptorSetClass {
+        // Constructors of GstVulkan.VulkanDescriptorSetClass
+
+        _init(...args: any[]): void;
+    }
+
+    abstract class VulkanDescriptorSetPrivate {
+        // Constructors of GstVulkan.VulkanDescriptorSetPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanDeviceClass = typeof VulkanDevice;
+    abstract class VulkanDevicePrivate {
+        // Constructors of GstVulkan.VulkanDevicePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanDisplayClass = typeof VulkanDisplay;
+    abstract class VulkanDisplayPrivate {
+        // Constructors of GstVulkan.VulkanDisplayPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanFence {
+        // Own fields of GstVulkan.VulkanFence
+
+        device: VulkanDevice;
+        cache: VulkanFenceCache;
+
+        // Constructors of GstVulkan.VulkanFence
+
+        constructor(device: VulkanDevice);
+        _init(...args: any[]): void;
+
+        static ['new'](device: VulkanDevice): VulkanFence;
+
+        static new_always_signalled(device: VulkanDevice): VulkanFence;
+
+        // Own methods of GstVulkan.VulkanFence
+
+        is_signaled(): boolean;
+        reset(): void;
+    }
+
+    type VulkanFenceCacheClass = typeof VulkanFenceCache;
+    class VulkanFormatInfo {
+        // Own fields of GstVulkan.VulkanFormatInfo
+
+        name: string;
+        scaling: VulkanFormatScaling;
+        flags: VulkanFormatFlags;
+        bits: number;
+        n_components: number;
+        shift: Uint8Array;
+        depth: Uint8Array;
+        pixel_stride: Uint8Array;
+        n_planes: number;
+        plane: Uint8Array;
+        poffset: Uint8Array;
+        w_sub: Uint8Array;
+        h_sub: Uint8Array;
+
+        // Constructors of GstVulkan.VulkanFormatInfo
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanFullScreenQuadClass = typeof VulkanFullScreenQuad;
+    abstract class VulkanFullScreenQuadPrivate {
+        // Constructors of GstVulkan.VulkanFullScreenQuadPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    /**
+     * Holds information about a vulkan non dispatchable handle
+     */
+    class VulkanHandle {
+        // Own fields of GstVulkan.VulkanHandle
+
+        device: VulkanDevice;
+        type: VulkanHandleType;
+        notify: VulkanHandleDestroyNotify;
+        user_data: any;
+
+        // Constructors of GstVulkan.VulkanHandle
+
+        constructor(
+            device: VulkanDevice,
+            type: VulkanHandleType,
+            handle: VulkanHandleTypedef,
+            notify: VulkanHandleDestroyNotify,
+        );
+        _init(...args: any[]): void;
+
+        static new_wrapped(
+            device: VulkanDevice,
+            type: VulkanHandleType,
+            handle: VulkanHandleTypedef,
+            notify: VulkanHandleDestroyNotify,
+        ): VulkanHandle;
+
+        // Own static methods of GstVulkan.VulkanHandle
+
+        static context_query(
+            element: Gst.Element,
+            query: Gst.Query,
+            display?: VulkanDisplay | null,
+            instance?: VulkanInstance | null,
+            device?: VulkanDevice | null,
+        ): boolean;
+        /**
+         * Helper function for implementing #GstElementClass.set_context() in
+         * Vulkan capable elements.
+         *
+         * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
+         * the result in `display` or `instance` respectively.
+         * @param element a #GstElement
+         * @param context a #GstContext
+         * @param display location of a #GstVulkanDisplay
+         * @param instance location of a #GstVulkanInstance
+         */
+        static set_context(
+            element: Gst.Element,
+            context: Gst.Context,
+            display: VulkanDisplay | null,
+            instance: VulkanInstance,
+        ): [boolean, VulkanDisplay | null, VulkanInstance];
+
+        // Own methods of GstVulkan.VulkanHandle
+
+        /**
+         * Frees the descriptor set layout in `handle`
+         * @param user_data callback user data
+         */
+        free_descriptor_set_layout(user_data?: any | null): void;
+        /**
+         * Frees the framebuffer in `handle`
+         * @param user_data callback user data
+         */
+        free_framebuffer(user_data?: any | null): void;
+        /**
+         * Frees the pipeline in `handle`
+         * @param user_data callback user data
+         */
+        free_pipeline(user_data?: any | null): void;
+        /**
+         * Frees the pipeline layout in `handle`
+         * @param user_data callback user data
+         */
+        free_pipeline_layout(user_data?: any | null): void;
+        /**
+         * Frees the render pass in `handle`
+         * @param user_data callback user data
+         */
+        free_render_pass(user_data?: any | null): void;
+        /**
+         * Frees the sampler in `handle`
+         * @param user_data callback user data
+         */
+        free_sampler(user_data?: any | null): void;
+        /**
+         * Frees the shader in `handle`
+         * @param user_data callback user data
+         */
+        free_shader(user_data?: any | null): void;
+    }
+
+    type VulkanHandlePoolClass = typeof VulkanHandlePool;
+    abstract class VulkanHandleTypedef {
+        // Constructors of GstVulkan.VulkanHandleTypedef
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanImageBufferPoolClass = typeof VulkanImageBufferPool;
+    abstract class VulkanImageBufferPoolPrivate {
+        // Constructors of GstVulkan.VulkanImageBufferPoolPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanImageMemory {
+        // Own fields of GstVulkan.VulkanImageMemory
+
+        device: VulkanDevice;
+        wrapped: boolean;
+        notify: GLib.DestroyNotify;
+        user_data: any;
+        views: any[];
+        outstanding_views: any[];
+
+        // Constructors of GstVulkan.VulkanImageMemory
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstVulkan.VulkanImageMemory
+
+        /**
+         * Allocated a new #GstVulkanImageMemory.
+         * @param device a #GstVulkanDevice
+         * @param format the VkFormat for the new image
+         * @param width width for the new image
+         * @param height height for the new image
+         * @param tiling tiling for the new image
+         * @param usage usage flags for the new image
+         * @param mem_prop_flags VkDeviceMemory property flags for the new image
+         */
+        static alloc(
+            device: VulkanDevice,
+            format: Vulkan.Format,
+            width: number,
+            height: number,
+            tiling: Vulkan.ImageTiling,
+            usage: Vulkan.ImageUsageFlags,
+            mem_prop_flags: Vulkan.MemoryPropertyFlags,
+        ): Gst.Memory;
+        /**
+         * Initializes the Vulkan image memory allocator. It is safe to call this function
+         * multiple times.  This must be called before any other #GstVulkanImageMemory operation.
+         */
+        static init_once(): void;
+
+        // Own methods of GstVulkan.VulkanImageMemory
+
+        add_view(view: VulkanImageView): void;
+        find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView;
+        get_height(): number;
+        get_width(): number;
+        init(
+            allocator: Gst.Allocator,
+            parent: Gst.Memory,
+            device: VulkanDevice,
+            usage: Vulkan.ImageUsageFlags,
+            params: Gst.AllocationParams,
+            size: number,
+            user_data?: any | null,
+        ): boolean;
+    }
+
+    type VulkanImageMemoryAllocatorClass = typeof VulkanImageMemoryAllocator;
+    class VulkanImageView {
+        // Own fields of GstVulkan.VulkanImageView
+
+        device: VulkanDevice;
+
+        // Constructors of GstVulkan.VulkanImageView
+
+        constructor(image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo);
+        _init(...args: any[]): void;
+
+        static ['new'](image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo): VulkanImageView;
+    }
+
+    type VulkanInstanceClass = typeof VulkanInstance;
+    abstract class VulkanInstancePrivate {
+        // Constructors of GstVulkan.VulkanInstancePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanMemory {
+        // Own fields of GstVulkan.VulkanMemory
+
+        device: VulkanDevice;
+        map_count: number;
+
+        // Constructors of GstVulkan.VulkanMemory
+
+        _init(...args: any[]): void;
+
+        // Own static methods of GstVulkan.VulkanMemory
+
+        /**
+         * Allocated a new #GstVulkanMemory.
+         * @param device a #GstVulkanDevice
+         * @param memory_type_index the Vulkan memory type index
+         * @param params a #GstAllocationParams
+         * @param size the size to allocate
+         * @param mem_prop_flags
+         */
+        static alloc(
+            device: VulkanDevice,
+            memory_type_index: number,
+            params: Gst.AllocationParams,
+            size: number,
+            mem_prop_flags: Vulkan.MemoryPropertyFlags,
+        ): Gst.Memory;
+        static find_memory_type_index_with_type_properties(
+            device: VulkanDevice,
+            type_bits: number,
+            properties: Vulkan.MemoryPropertyFlags,
+            type_index: number,
+        ): boolean;
+        static heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string;
+        /**
+         * Initializes the Vulkan memory allocator. It is safe to call this function
+         * multiple times.  This must be called before any other #GstVulkanMemory operation.
+         */
+        static init_once(): void;
+        static property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
+    }
+
+    type VulkanMemoryAllocatorClass = typeof VulkanMemoryAllocator;
+    type VulkanPhysicalDeviceClass = typeof VulkanPhysicalDevice;
+    abstract class VulkanPhysicalDevicePrivate {
+        // Constructors of GstVulkan.VulkanPhysicalDevicePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanQueueClass = typeof VulkanQueue;
+    abstract class VulkanQueuePrivate {
+        // Constructors of GstVulkan.VulkanQueuePrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type VulkanSwapperClass = typeof VulkanSwapper;
+    abstract class VulkanSwapperPrivate {
+        // Constructors of GstVulkan.VulkanSwapperPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    class VulkanTrash {
+        // Own fields of GstVulkan.VulkanTrash
+
+        cache: VulkanTrashList;
+        notify: VulkanTrashNotify;
+        user_data: any;
+
+        // Constructors of GstVulkan.VulkanTrash
+
+        constructor(fence: VulkanFence);
+        _init(...args: any[]): void;
+
+        static ['new'](fence: VulkanFence): VulkanTrash;
+
+        static new_free_semaphore(fence: VulkanFence, semaphore: Vulkan.Semaphore): VulkanTrash;
+
+        // Own static methods of GstVulkan.VulkanTrash
+
+        static mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
+        static object_unref(device: VulkanDevice, user_data?: any | null): void;
+    }
+
+    type VulkanTrashFenceListClass = typeof VulkanTrashFenceList;
+    type VulkanTrashListClass = typeof VulkanTrashList;
+    type VulkanVideoFilterClass = typeof VulkanVideoFilter;
+    type VulkanWindowClass = typeof VulkanWindow;
+    abstract class VulkanWindowPrivate {
+        // Constructors of GstVulkan.VulkanWindowPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default GstVulkan;

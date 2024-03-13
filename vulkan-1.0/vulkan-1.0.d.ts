@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,6329 +14,4750 @@ import './vulkan-1.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace Vulkan {
+    class Flags {
+        // Constructors of Vulkan.Flags
 
-class Flags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Flags
+    class Bool32 {
+        // Constructors of Vulkan.Bool32
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceSize {
+        // Constructors of Vulkan.DeviceSize
 
-class Bool32 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Bool32
+    class SampleMask {
+        // Constructors of Vulkan.SampleMask
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Instance {
+        // Constructors of Vulkan.Instance
 
-class DeviceSize {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceSize
+    class PhysicalDevice {
+        // Constructors of Vulkan.PhysicalDevice
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Device {
+        // Constructors of Vulkan.Device
 
-class SampleMask {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SampleMask
+    class Queue {
+        // Constructors of Vulkan.Queue
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Semaphore {
+        // Constructors of Vulkan.Semaphore
 
-class Instance {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Instance
+    class CommandBuffer {
+        // Constructors of Vulkan.CommandBuffer
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Fence {
+        // Constructors of Vulkan.Fence
 
-class PhysicalDevice {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDevice
+    class DeviceMemory {
+        // Constructors of Vulkan.DeviceMemory
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Buffer {
+        // Constructors of Vulkan.Buffer
 
-class Device {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Device
+    class Image {
+        // Constructors of Vulkan.Image
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Event {
+        // Constructors of Vulkan.Event
 
-class Queue {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Queue
+    class QueryPool {
+        // Constructors of Vulkan.QueryPool
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferView {
+        // Constructors of Vulkan.BufferView
 
-class Semaphore {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Semaphore
+    class ImageView {
+        // Constructors of Vulkan.ImageView
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderModule {
+        // Constructors of Vulkan.ShaderModule
 
-class CommandBuffer {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBuffer
+    class PipelineCache {
+        // Constructors of Vulkan.PipelineCache
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineLayout {
+        // Constructors of Vulkan.PipelineLayout
 
-class Fence {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Fence
+    class RenderPass {
+        // Constructors of Vulkan.RenderPass
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Pipeline {
+        // Constructors of Vulkan.Pipeline
 
-class DeviceMemory {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceMemory
+    class DescriptorSetLayout {
+        // Constructors of Vulkan.DescriptorSetLayout
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Sampler {
+        // Constructors of Vulkan.Sampler
 
-class Buffer {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Buffer
+    class DescriptorPool {
+        // Constructors of Vulkan.DescriptorPool
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorSet {
+        // Constructors of Vulkan.DescriptorSet
 
-class Image {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Image
+    class Framebuffer {
+        // Constructors of Vulkan.Framebuffer
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPool {
+        // Constructors of Vulkan.CommandPool
 
-class Event {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Event
+    class PipelineCacheHeaderVersion {
+        // Constructors of Vulkan.PipelineCacheHeaderVersion
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Result {
+        // Constructors of Vulkan.Result
 
-class QueryPool {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryPool
+    class StructureType {
+        // Constructors of Vulkan.StructureType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SystemAllocationScope {
+        // Constructors of Vulkan.SystemAllocationScope
 
-class BufferView {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferView
+    class InternalAllocationType {
+        // Constructors of Vulkan.InternalAllocationType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Format {
+        // Constructors of Vulkan.Format
 
-class ImageView {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageView
+    class ImageType {
+        // Constructors of Vulkan.ImageType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageTiling {
+        // Constructors of Vulkan.ImageTiling
 
-class ShaderModule {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ShaderModule
+    class PhysicalDeviceType {
+        // Constructors of Vulkan.PhysicalDeviceType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueryType {
+        // Constructors of Vulkan.QueryType
 
-class PipelineCache {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCache
+    class SharingMode {
+        // Constructors of Vulkan.SharingMode
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageLayout {
+        // Constructors of Vulkan.ImageLayout
 
-class PipelineLayout {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineLayout
+    class ImageViewType {
+        // Constructors of Vulkan.ImageViewType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ComponentSwizzle {
+        // Constructors of Vulkan.ComponentSwizzle
 
-class RenderPass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPass
+    class VertexInputRate {
+        // Constructors of Vulkan.VertexInputRate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PrimitiveTopology {
+        // Constructors of Vulkan.PrimitiveTopology
 
-class Pipeline {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Pipeline
+    class PolygonMode {
+        // Constructors of Vulkan.PolygonMode
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FrontFace {
+        // Constructors of Vulkan.FrontFace
 
-class DescriptorSetLayout {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayout
+    class CompareOp {
+        // Constructors of Vulkan.CompareOp
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class StencilOp {
+        // Constructors of Vulkan.StencilOp
 
-class Sampler {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Sampler
+    class LogicOp {
+        // Constructors of Vulkan.LogicOp
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BlendFactor {
+        // Constructors of Vulkan.BlendFactor
 
-class DescriptorPool {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPool
+    class BlendOp {
+        // Constructors of Vulkan.BlendOp
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DynamicState {
+        // Constructors of Vulkan.DynamicState
 
-class DescriptorSet {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSet
+    class Filter {
+        // Constructors of Vulkan.Filter
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerMipmapMode {
+        // Constructors of Vulkan.SamplerMipmapMode
 
-class Framebuffer {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Framebuffer
+    class SamplerAddressMode {
+        // Constructors of Vulkan.SamplerAddressMode
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BorderColor {
+        // Constructors of Vulkan.BorderColor
 
-class CommandPool {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPool
+    class DescriptorType {
+        // Constructors of Vulkan.DescriptorType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AttachmentLoadOp {
+        // Constructors of Vulkan.AttachmentLoadOp
 
-class PipelineCacheHeaderVersion {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCacheHeaderVersion
+    class AttachmentStoreOp {
+        // Constructors of Vulkan.AttachmentStoreOp
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineBindPoint {
+        // Constructors of Vulkan.PipelineBindPoint
 
-class Result {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Result
+    class CommandBufferLevel {
+        // Constructors of Vulkan.CommandBufferLevel
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class IndexType {
+        // Constructors of Vulkan.IndexType
 
-class StructureType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.StructureType
+    class SubpassContents {
+        // Constructors of Vulkan.SubpassContents
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectType {
+        // Constructors of Vulkan.ObjectType
 
-class SystemAllocationScope {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SystemAllocationScope
+    class VendorId {
+        // Constructors of Vulkan.VendorId
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class InstanceCreateFlags {
+        // Constructors of Vulkan.InstanceCreateFlags
 
-class InternalAllocationType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.InternalAllocationType
+    class FormatFeatureFlagBits {
+        // Constructors of Vulkan.FormatFeatureFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FormatFeatureFlags {
+        // Constructors of Vulkan.FormatFeatureFlags
 
-class Format {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Format
+    class ImageUsageFlagBits {
+        // Constructors of Vulkan.ImageUsageFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageUsageFlags {
+        // Constructors of Vulkan.ImageUsageFlags
 
-class ImageType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageType
+    class ImageCreateFlagBits {
+        // Constructors of Vulkan.ImageCreateFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageCreateFlags {
+        // Constructors of Vulkan.ImageCreateFlags
 
-class ImageTiling {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageTiling
+    class SampleCountFlagBits {
+        // Constructors of Vulkan.SampleCountFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SampleCountFlags {
+        // Constructors of Vulkan.SampleCountFlags
 
-class PhysicalDeviceType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceType
+    class QueueFlagBits {
+        // Constructors of Vulkan.QueueFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueueFlags {
+        // Constructors of Vulkan.QueueFlags
 
-class QueryType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryType
+    class MemoryPropertyFlagBits {
+        // Constructors of Vulkan.MemoryPropertyFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryPropertyFlags {
+        // Constructors of Vulkan.MemoryPropertyFlags
 
-class SharingMode {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SharingMode
+    class MemoryHeapFlagBits {
+        // Constructors of Vulkan.MemoryHeapFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryHeapFlags {
+        // Constructors of Vulkan.MemoryHeapFlags
 
-class ImageLayout {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageLayout
+    class DeviceCreateFlags {
+        // Constructors of Vulkan.DeviceCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceQueueCreateFlagBits {
+        // Constructors of Vulkan.DeviceQueueCreateFlagBits
 
-class ImageViewType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageViewType
+    class DeviceQueueCreateFlags {
+        // Constructors of Vulkan.DeviceQueueCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineStageFlagBits {
+        // Constructors of Vulkan.PipelineStageFlagBits
 
-class ComponentSwizzle {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ComponentSwizzle
+    class PipelineStageFlags {
+        // Constructors of Vulkan.PipelineStageFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryMapFlags {
+        // Constructors of Vulkan.MemoryMapFlags
 
-class VertexInputRate {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.VertexInputRate
+    class ImageAspectFlagBits {
+        // Constructors of Vulkan.ImageAspectFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageAspectFlags {
+        // Constructors of Vulkan.ImageAspectFlags
 
-class PrimitiveTopology {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PrimitiveTopology
+    class SparseImageFormatFlagBits {
+        // Constructors of Vulkan.SparseImageFormatFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageFormatFlags {
+        // Constructors of Vulkan.SparseImageFormatFlags
 
-class PolygonMode {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PolygonMode
+    class SparseMemoryBindFlagBits {
+        // Constructors of Vulkan.SparseMemoryBindFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseMemoryBindFlags {
+        // Constructors of Vulkan.SparseMemoryBindFlags
 
-class FrontFace {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FrontFace
+    class FenceCreateFlagBits {
+        // Constructors of Vulkan.FenceCreateFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FenceCreateFlags {
+        // Constructors of Vulkan.FenceCreateFlags
 
-class CompareOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CompareOp
+    class SemaphoreCreateFlags {
+        // Constructors of Vulkan.SemaphoreCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class EventCreateFlags {
+        // Constructors of Vulkan.EventCreateFlags
 
-class StencilOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.StencilOp
+    class QueryPoolCreateFlags {
+        // Constructors of Vulkan.QueryPoolCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueryPipelineStatisticFlagBits {
+        // Constructors of Vulkan.QueryPipelineStatisticFlagBits
 
-class LogicOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.LogicOp
+    class QueryPipelineStatisticFlags {
+        // Constructors of Vulkan.QueryPipelineStatisticFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueryResultFlagBits {
+        // Constructors of Vulkan.QueryResultFlagBits
 
-class BlendFactor {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BlendFactor
+    class QueryResultFlags {
+        // Constructors of Vulkan.QueryResultFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferCreateFlagBits {
+        // Constructors of Vulkan.BufferCreateFlagBits
 
-class BlendOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BlendOp
+    class BufferCreateFlags {
+        // Constructors of Vulkan.BufferCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferUsageFlagBits {
+        // Constructors of Vulkan.BufferUsageFlagBits
 
-class DynamicState {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DynamicState
+    class BufferUsageFlags {
+        // Constructors of Vulkan.BufferUsageFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferViewCreateFlags {
+        // Constructors of Vulkan.BufferViewCreateFlags
 
-class Filter {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Filter
+    class ImageViewCreateFlagBits {
+        // Constructors of Vulkan.ImageViewCreateFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageViewCreateFlags {
+        // Constructors of Vulkan.ImageViewCreateFlags
 
-class SamplerMipmapMode {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerMipmapMode
+    class ShaderModuleCreateFlags {
+        // Constructors of Vulkan.ShaderModuleCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCacheCreateFlags {
+        // Constructors of Vulkan.PipelineCacheCreateFlags
 
-class SamplerAddressMode {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerAddressMode
+    class PipelineCreateFlagBits {
+        // Constructors of Vulkan.PipelineCreateFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCreateFlags {
+        // Constructors of Vulkan.PipelineCreateFlags
 
-class BorderColor {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BorderColor
+    class PipelineShaderStageCreateFlags {
+        // Constructors of Vulkan.PipelineShaderStageCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderStageFlagBits {
+        // Constructors of Vulkan.ShaderStageFlagBits
 
-class DescriptorType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorType
+    class PipelineVertexInputStateCreateFlags {
+        // Constructors of Vulkan.PipelineVertexInputStateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineInputAssemblyStateCreateFlags {
+        // Constructors of Vulkan.PipelineInputAssemblyStateCreateFlags
 
-class AttachmentLoadOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentLoadOp
+    class PipelineTessellationStateCreateFlags {
+        // Constructors of Vulkan.PipelineTessellationStateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineViewportStateCreateFlags {
+        // Constructors of Vulkan.PipelineViewportStateCreateFlags
 
-class AttachmentStoreOp {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentStoreOp
+    class PipelineRasterizationStateCreateFlags {
+        // Constructors of Vulkan.PipelineRasterizationStateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CullModeFlagBits {
+        // Constructors of Vulkan.CullModeFlagBits
 
-class PipelineBindPoint {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineBindPoint
+    class CullModeFlags {
+        // Constructors of Vulkan.CullModeFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineMultisampleStateCreateFlags {
+        // Constructors of Vulkan.PipelineMultisampleStateCreateFlags
 
-class CommandBufferLevel {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferLevel
+    class PipelineDepthStencilStateCreateFlags {
+        // Constructors of Vulkan.PipelineDepthStencilStateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineColorBlendStateCreateFlags {
+        // Constructors of Vulkan.PipelineColorBlendStateCreateFlags
 
-class IndexType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.IndexType
+    class ColorComponentFlagBits {
+        // Constructors of Vulkan.ColorComponentFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ColorComponentFlags {
+        // Constructors of Vulkan.ColorComponentFlags
 
-class SubpassContents {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubpassContents
+    class PipelineDynamicStateCreateFlags {
+        // Constructors of Vulkan.PipelineDynamicStateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineLayoutCreateFlags {
+        // Constructors of Vulkan.PipelineLayoutCreateFlags
 
-class ObjectType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ObjectType
+    class ShaderStageFlags {
+        // Constructors of Vulkan.ShaderStageFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerCreateFlagBits {
+        // Constructors of Vulkan.SamplerCreateFlagBits
 
-class VendorId {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.VendorId
+    class SamplerCreateFlags {
+        // Constructors of Vulkan.SamplerCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorSetLayoutCreateFlagBits {
+        // Constructors of Vulkan.DescriptorSetLayoutCreateFlagBits
 
-class InstanceCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.InstanceCreateFlags
+    class DescriptorSetLayoutCreateFlags {
+        // Constructors of Vulkan.DescriptorSetLayoutCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorPoolCreateFlagBits {
+        // Constructors of Vulkan.DescriptorPoolCreateFlagBits
 
-class FormatFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FormatFeatureFlagBits
+    class DescriptorPoolCreateFlags {
+        // Constructors of Vulkan.DescriptorPoolCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorPoolResetFlags {
+        // Constructors of Vulkan.DescriptorPoolResetFlags
 
-class FormatFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FormatFeatureFlags
+    class FramebufferCreateFlags {
+        // Constructors of Vulkan.FramebufferCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RenderPassCreateFlags {
+        // Constructors of Vulkan.RenderPassCreateFlags
 
-class ImageUsageFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageUsageFlagBits
+    class AttachmentDescriptionFlagBits {
+        // Constructors of Vulkan.AttachmentDescriptionFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AttachmentDescriptionFlags {
+        // Constructors of Vulkan.AttachmentDescriptionFlags
 
-class ImageUsageFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageUsageFlags
+    class SubpassDescriptionFlagBits {
+        // Constructors of Vulkan.SubpassDescriptionFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassDescriptionFlags {
+        // Constructors of Vulkan.SubpassDescriptionFlags
 
-class ImageCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageCreateFlagBits
+    class AccessFlagBits {
+        // Constructors of Vulkan.AccessFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AccessFlags {
+        // Constructors of Vulkan.AccessFlags
 
-class ImageCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageCreateFlags
+    class DependencyFlagBits {
+        // Constructors of Vulkan.DependencyFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DependencyFlags {
+        // Constructors of Vulkan.DependencyFlags
 
-class SampleCountFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SampleCountFlagBits
+    class CommandPoolCreateFlagBits {
+        // Constructors of Vulkan.CommandPoolCreateFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPoolCreateFlags {
+        // Constructors of Vulkan.CommandPoolCreateFlags
 
-class SampleCountFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SampleCountFlags
+    class CommandPoolResetFlagBits {
+        // Constructors of Vulkan.CommandPoolResetFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPoolResetFlags {
+        // Constructors of Vulkan.CommandPoolResetFlags
 
-class QueueFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueueFlagBits
+    class CommandBufferUsageFlagBits {
+        // Constructors of Vulkan.CommandBufferUsageFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandBufferUsageFlags {
+        // Constructors of Vulkan.CommandBufferUsageFlags
 
-class QueueFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueueFlags
+    class QueryControlFlagBits {
+        // Constructors of Vulkan.QueryControlFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueryControlFlags {
+        // Constructors of Vulkan.QueryControlFlags
 
-class MemoryPropertyFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryPropertyFlagBits
+    class CommandBufferResetFlagBits {
+        // Constructors of Vulkan.CommandBufferResetFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandBufferResetFlags {
+        // Constructors of Vulkan.CommandBufferResetFlags
 
-class MemoryPropertyFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryPropertyFlags
+    class StencilFaceFlagBits {
+        // Constructors of Vulkan.StencilFaceFlagBits
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class StencilFaceFlags {
+        // Constructors of Vulkan.StencilFaceFlags
 
-class MemoryHeapFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryHeapFlagBits
+    class ApplicationInfo {
+        // Constructors of Vulkan.ApplicationInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class InstanceCreateInfo {
+        // Constructors of Vulkan.InstanceCreateInfo
 
-class MemoryHeapFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryHeapFlags
+    class AllocationCallbacks {
+        // Constructors of Vulkan.AllocationCallbacks
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceFeatures {
+        // Constructors of Vulkan.PhysicalDeviceFeatures
 
-class DeviceCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceCreateFlags
+    class FormatProperties {
+        // Constructors of Vulkan.FormatProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Extent3D {
+        // Constructors of Vulkan.Extent3D
 
-class DeviceQueueCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceQueueCreateFlagBits
+    class ImageFormatProperties {
+        // Constructors of Vulkan.ImageFormatProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceLimits {
+        // Constructors of Vulkan.PhysicalDeviceLimits
 
-class DeviceQueueCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceQueueCreateFlags
+    class PhysicalDeviceSparseProperties {
+        // Constructors of Vulkan.PhysicalDeviceSparseProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceProperties {
+        // Constructors of Vulkan.PhysicalDeviceProperties
 
-class PipelineStageFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineStageFlagBits
+    class QueueFamilyProperties {
+        // Constructors of Vulkan.QueueFamilyProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryType {
+        // Constructors of Vulkan.MemoryType
 
-class PipelineStageFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineStageFlags
+    class MemoryHeap {
+        // Constructors of Vulkan.MemoryHeap
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMemoryProperties {
+        // Constructors of Vulkan.PhysicalDeviceMemoryProperties
 
-class MemoryMapFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryMapFlags
+    class DeviceQueueCreateInfo {
+        // Constructors of Vulkan.DeviceQueueCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceCreateInfo {
+        // Constructors of Vulkan.DeviceCreateInfo
 
-class ImageAspectFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageAspectFlagBits
+    class ExtensionProperties {
+        // Constructors of Vulkan.ExtensionProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class LayerProperties {
+        // Constructors of Vulkan.LayerProperties
 
-class ImageAspectFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageAspectFlags
+    class SubmitInfo {
+        // Constructors of Vulkan.SubmitInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryAllocateInfo {
+        // Constructors of Vulkan.MemoryAllocateInfo
 
-class SparseImageFormatFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageFormatFlagBits
+    class MappedMemoryRange {
+        // Constructors of Vulkan.MappedMemoryRange
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryRequirements {
+        // Constructors of Vulkan.MemoryRequirements
 
-class SparseImageFormatFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageFormatFlags
+    class SparseImageFormatProperties {
+        // Constructors of Vulkan.SparseImageFormatProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageMemoryRequirements {
+        // Constructors of Vulkan.SparseImageMemoryRequirements
 
-class SparseMemoryBindFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseMemoryBindFlagBits
+    class SparseMemoryBind {
+        // Constructors of Vulkan.SparseMemoryBind
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseBufferMemoryBindInfo {
+        // Constructors of Vulkan.SparseBufferMemoryBindInfo
 
-class SparseMemoryBindFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseMemoryBindFlags
+    class SparseImageOpaqueMemoryBindInfo {
+        // Constructors of Vulkan.SparseImageOpaqueMemoryBindInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageSubresource {
+        // Constructors of Vulkan.ImageSubresource
 
-class FenceCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FenceCreateFlagBits
+    class Offset3D {
+        // Constructors of Vulkan.Offset3D
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageMemoryBind {
+        // Constructors of Vulkan.SparseImageMemoryBind
 
-class FenceCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FenceCreateFlags
+    class SparseImageMemoryBindInfo {
+        // Constructors of Vulkan.SparseImageMemoryBindInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindSparseInfo {
+        // Constructors of Vulkan.BindSparseInfo
 
-class SemaphoreCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SemaphoreCreateFlags
+    class FenceCreateInfo {
+        // Constructors of Vulkan.FenceCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SemaphoreCreateInfo {
+        // Constructors of Vulkan.SemaphoreCreateInfo
 
-class EventCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.EventCreateFlags
+    class EventCreateInfo {
+        // Constructors of Vulkan.EventCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueryPoolCreateInfo {
+        // Constructors of Vulkan.QueryPoolCreateInfo
 
-class QueryPoolCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryPoolCreateFlags
+    class BufferCreateInfo {
+        // Constructors of Vulkan.BufferCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferViewCreateInfo {
+        // Constructors of Vulkan.BufferViewCreateInfo
 
-class QueryPipelineStatisticFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryPipelineStatisticFlagBits
+    class ImageCreateInfo {
+        // Constructors of Vulkan.ImageCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubresourceLayout {
+        // Constructors of Vulkan.SubresourceLayout
 
-class QueryPipelineStatisticFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryPipelineStatisticFlags
+    class ComponentMapping {
+        // Constructors of Vulkan.ComponentMapping
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageSubresourceRange {
+        // Constructors of Vulkan.ImageSubresourceRange
 
-class QueryResultFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryResultFlagBits
+    class ImageViewCreateInfo {
+        // Constructors of Vulkan.ImageViewCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderModuleCreateInfo {
+        // Constructors of Vulkan.ShaderModuleCreateInfo
 
-class QueryResultFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryResultFlags
+    class PipelineCacheCreateInfo {
+        // Constructors of Vulkan.PipelineCacheCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SpecializationMapEntry {
+        // Constructors of Vulkan.SpecializationMapEntry
 
-class BufferCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferCreateFlagBits
+    class SpecializationInfo {
+        // Constructors of Vulkan.SpecializationInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineShaderStageCreateInfo {
+        // Constructors of Vulkan.PipelineShaderStageCreateInfo
 
-class BufferCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferCreateFlags
+    class VertexInputBindingDescription {
+        // Constructors of Vulkan.VertexInputBindingDescription
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class VertexInputAttributeDescription {
+        // Constructors of Vulkan.VertexInputAttributeDescription
 
-class BufferUsageFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferUsageFlagBits
+    class PipelineVertexInputStateCreateInfo {
+        // Constructors of Vulkan.PipelineVertexInputStateCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineInputAssemblyStateCreateInfo {
+        // Constructors of Vulkan.PipelineInputAssemblyStateCreateInfo
 
-class BufferUsageFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferUsageFlags
+    class PipelineTessellationStateCreateInfo {
+        // Constructors of Vulkan.PipelineTessellationStateCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Viewport {
+        // Constructors of Vulkan.Viewport
 
-class BufferViewCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferViewCreateFlags
+    class Offset2D {
+        // Constructors of Vulkan.Offset2D
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Extent2D {
+        // Constructors of Vulkan.Extent2D
 
-class ImageViewCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageViewCreateFlagBits
+    class Rect2D {
+        // Constructors of Vulkan.Rect2D
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineViewportStateCreateInfo {
+        // Constructors of Vulkan.PipelineViewportStateCreateInfo
 
-class ImageViewCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageViewCreateFlags
+    class PipelineRasterizationStateCreateInfo {
+        // Constructors of Vulkan.PipelineRasterizationStateCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineMultisampleStateCreateInfo {
+        // Constructors of Vulkan.PipelineMultisampleStateCreateInfo
 
-class ShaderModuleCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ShaderModuleCreateFlags
+    class StencilOpState {
+        // Constructors of Vulkan.StencilOpState
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineDepthStencilStateCreateInfo {
+        // Constructors of Vulkan.PipelineDepthStencilStateCreateInfo
 
-class PipelineCacheCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCacheCreateFlags
+    class PipelineColorBlendAttachmentState {
+        // Constructors of Vulkan.PipelineColorBlendAttachmentState
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineColorBlendStateCreateInfo {
+        // Constructors of Vulkan.PipelineColorBlendStateCreateInfo
 
-class PipelineCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCreateFlagBits
+    class PipelineDynamicStateCreateInfo {
+        // Constructors of Vulkan.PipelineDynamicStateCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class GraphicsPipelineCreateInfo {
+        // Constructors of Vulkan.GraphicsPipelineCreateInfo
 
-class PipelineCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCreateFlags
+    class ComputePipelineCreateInfo {
+        // Constructors of Vulkan.ComputePipelineCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PushConstantRange {
+        // Constructors of Vulkan.PushConstantRange
 
-class PipelineShaderStageCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineShaderStageCreateFlags
+    class PipelineLayoutCreateInfo {
+        // Constructors of Vulkan.PipelineLayoutCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerCreateInfo {
+        // Constructors of Vulkan.SamplerCreateInfo
 
-class ShaderStageFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ShaderStageFlagBits
+    class DescriptorSetLayoutBinding {
+        // Constructors of Vulkan.DescriptorSetLayoutBinding
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorSetLayoutCreateInfo {
+        // Constructors of Vulkan.DescriptorSetLayoutCreateInfo
 
-class PipelineVertexInputStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineVertexInputStateCreateFlags
+    class DescriptorPoolSize {
+        // Constructors of Vulkan.DescriptorPoolSize
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorPoolCreateInfo {
+        // Constructors of Vulkan.DescriptorPoolCreateInfo
 
-class PipelineInputAssemblyStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineInputAssemblyStateCreateFlags
+    class DescriptorSetAllocateInfo {
+        // Constructors of Vulkan.DescriptorSetAllocateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorImageInfo {
+        // Constructors of Vulkan.DescriptorImageInfo
 
-class PipelineTessellationStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineTessellationStateCreateFlags
+    class DescriptorBufferInfo {
+        // Constructors of Vulkan.DescriptorBufferInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class WriteDescriptorSet {
+        // Constructors of Vulkan.WriteDescriptorSet
 
-class PipelineViewportStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineViewportStateCreateFlags
+    class CopyDescriptorSet {
+        // Constructors of Vulkan.CopyDescriptorSet
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FramebufferCreateInfo {
+        // Constructors of Vulkan.FramebufferCreateInfo
 
-class PipelineRasterizationStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineRasterizationStateCreateFlags
+    class AttachmentDescription {
+        // Constructors of Vulkan.AttachmentDescription
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AttachmentReference {
+        // Constructors of Vulkan.AttachmentReference
 
-class CullModeFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CullModeFlagBits
+    class SubpassDescription {
+        // Constructors of Vulkan.SubpassDescription
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassDependency {
+        // Constructors of Vulkan.SubpassDependency
 
-class CullModeFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CullModeFlags
+    class RenderPassCreateInfo {
+        // Constructors of Vulkan.RenderPassCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPoolCreateInfo {
+        // Constructors of Vulkan.CommandPoolCreateInfo
 
-class PipelineMultisampleStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineMultisampleStateCreateFlags
+    class CommandBufferAllocateInfo {
+        // Constructors of Vulkan.CommandBufferAllocateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandBufferInheritanceInfo {
+        // Constructors of Vulkan.CommandBufferInheritanceInfo
 
-class PipelineDepthStencilStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineDepthStencilStateCreateFlags
+    class CommandBufferBeginInfo {
+        // Constructors of Vulkan.CommandBufferBeginInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferCopy {
+        // Constructors of Vulkan.BufferCopy
 
-class PipelineColorBlendStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineColorBlendStateCreateFlags
+    class ImageSubresourceLayers {
+        // Constructors of Vulkan.ImageSubresourceLayers
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageCopy {
+        // Constructors of Vulkan.ImageCopy
 
-class ColorComponentFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ColorComponentFlagBits
+    class ImageBlit {
+        // Constructors of Vulkan.ImageBlit
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferImageCopy {
+        // Constructors of Vulkan.BufferImageCopy
 
-class ColorComponentFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ColorComponentFlags
+    class ClearColorValue {
+        // Constructors of Vulkan.ClearColorValue
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ClearDepthStencilValue {
+        // Constructors of Vulkan.ClearDepthStencilValue
 
-class PipelineDynamicStateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineDynamicStateCreateFlags
+    class ClearValue {
+        // Constructors of Vulkan.ClearValue
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ClearAttachment {
+        // Constructors of Vulkan.ClearAttachment
 
-class PipelineLayoutCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineLayoutCreateFlags
+    class ClearRect {
+        // Constructors of Vulkan.ClearRect
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageResolve {
+        // Constructors of Vulkan.ImageResolve
 
-class ShaderStageFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ShaderStageFlags
+    class MemoryBarrier {
+        // Constructors of Vulkan.MemoryBarrier
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferMemoryBarrier {
+        // Constructors of Vulkan.BufferMemoryBarrier
 
-class SamplerCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerCreateFlagBits
+    class ImageMemoryBarrier {
+        // Constructors of Vulkan.ImageMemoryBarrier
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RenderPassBeginInfo {
+        // Constructors of Vulkan.RenderPassBeginInfo
 
-class SamplerCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerCreateFlags
+    class DispatchIndirectCommand {
+        // Constructors of Vulkan.DispatchIndirectCommand
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DrawIndexedIndirectCommand {
+        // Constructors of Vulkan.DrawIndexedIndirectCommand
 
-class DescriptorSetLayoutCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayoutCreateFlagBits
+    class DrawIndirectCommand {
+        // Constructors of Vulkan.DrawIndirectCommand
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BaseOutStructure {
+        // Constructors of Vulkan.BaseOutStructure
 
-class DescriptorSetLayoutCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayoutCreateFlags
+    class BaseInStructure {
+        // Constructors of Vulkan.BaseInStructure
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrConversion {
+        // Constructors of Vulkan.SamplerYcbcrConversion
 
-class DescriptorPoolCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPoolCreateFlagBits
+    class DescriptorUpdateTemplate {
+        // Constructors of Vulkan.DescriptorUpdateTemplate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PointClippingBehavior {
+        // Constructors of Vulkan.PointClippingBehavior
 
-class DescriptorPoolCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPoolCreateFlags
+    class TessellationDomainOrigin {
+        // Constructors of Vulkan.TessellationDomainOrigin
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrModelConversion {
+        // Constructors of Vulkan.SamplerYcbcrModelConversion
 
-class DescriptorPoolResetFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPoolResetFlags
+    class SamplerYcbcrRange {
+        // Constructors of Vulkan.SamplerYcbcrRange
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ChromaLocation {
+        // Constructors of Vulkan.ChromaLocation
 
-class FramebufferCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FramebufferCreateFlags
+    class DescriptorUpdateTemplateType {
+        // Constructors of Vulkan.DescriptorUpdateTemplateType
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubgroupFeatureFlagBits {
+        // Constructors of Vulkan.SubgroupFeatureFlagBits
 
-class RenderPassCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPassCreateFlags
+    class SubgroupFeatureFlags {
+        // Constructors of Vulkan.SubgroupFeatureFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PeerMemoryFeatureFlagBits {
+        // Constructors of Vulkan.PeerMemoryFeatureFlagBits
 
-class AttachmentDescriptionFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentDescriptionFlagBits
+    class PeerMemoryFeatureFlags {
+        // Constructors of Vulkan.PeerMemoryFeatureFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryAllocateFlagBits {
+        // Constructors of Vulkan.MemoryAllocateFlagBits
 
-class AttachmentDescriptionFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentDescriptionFlags
+    class MemoryAllocateFlags {
+        // Constructors of Vulkan.MemoryAllocateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPoolTrimFlags {
+        // Constructors of Vulkan.CommandPoolTrimFlags
 
-class SubpassDescriptionFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubpassDescriptionFlagBits
+    class DescriptorUpdateTemplateCreateFlags {
+        // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryHandleTypeFlagBits {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBits
 
-class SubpassDescriptionFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubpassDescriptionFlags
+    class ExternalMemoryHandleTypeFlags {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryFeatureFlagBits {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlagBits
 
-class AccessFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AccessFlagBits
+    class ExternalMemoryFeatureFlags {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFenceHandleTypeFlagBits {
+        // Constructors of Vulkan.ExternalFenceHandleTypeFlagBits
 
-class AccessFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AccessFlags
+    class ExternalFenceHandleTypeFlags {
+        // Constructors of Vulkan.ExternalFenceHandleTypeFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFenceFeatureFlagBits {
+        // Constructors of Vulkan.ExternalFenceFeatureFlagBits
 
-class DependencyFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DependencyFlagBits
+    class ExternalFenceFeatureFlags {
+        // Constructors of Vulkan.ExternalFenceFeatureFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FenceImportFlagBits {
+        // Constructors of Vulkan.FenceImportFlagBits
 
-class DependencyFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DependencyFlags
+    class FenceImportFlags {
+        // Constructors of Vulkan.FenceImportFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SemaphoreImportFlagBits {
+        // Constructors of Vulkan.SemaphoreImportFlagBits
 
-class CommandPoolCreateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolCreateFlagBits
+    class SemaphoreImportFlags {
+        // Constructors of Vulkan.SemaphoreImportFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphoreHandleTypeFlagBits {
+        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBits
 
-class CommandPoolCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolCreateFlags
+    class ExternalSemaphoreHandleTypeFlags {
+        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphoreFeatureFlagBits {
+        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBits
 
-class CommandPoolResetFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolResetFlagBits
+    class ExternalSemaphoreFeatureFlags {
+        // Constructors of Vulkan.ExternalSemaphoreFeatureFlags
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceSubgroupProperties {
+        // Constructors of Vulkan.PhysicalDeviceSubgroupProperties
 
-class CommandPoolResetFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolResetFlags
+    class BindBufferMemoryInfo {
+        // Constructors of Vulkan.BindBufferMemoryInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindImageMemoryInfo {
+        // Constructors of Vulkan.BindImageMemoryInfo
 
-class CommandBufferUsageFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferUsageFlagBits
+    class PhysicalDevice16BitStorageFeatures {
+        // Constructors of Vulkan.PhysicalDevice16BitStorageFeatures
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryDedicatedRequirements {
+        // Constructors of Vulkan.MemoryDedicatedRequirements
 
-class CommandBufferUsageFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferUsageFlags
+    class MemoryDedicatedAllocateInfo {
+        // Constructors of Vulkan.MemoryDedicatedAllocateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryAllocateFlagsInfo {
+        // Constructors of Vulkan.MemoryAllocateFlagsInfo
 
-class QueryControlFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryControlFlagBits
+    class DeviceGroupRenderPassBeginInfo {
+        // Constructors of Vulkan.DeviceGroupRenderPassBeginInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupCommandBufferBeginInfo {
+        // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfo
 
-class QueryControlFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryControlFlags
+    class DeviceGroupSubmitInfo {
+        // Constructors of Vulkan.DeviceGroupSubmitInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupBindSparseInfo {
+        // Constructors of Vulkan.DeviceGroupBindSparseInfo
 
-class CommandBufferResetFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferResetFlagBits
+    class BindBufferMemoryDeviceGroupInfo {
+        // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindImageMemoryDeviceGroupInfo {
+        // Constructors of Vulkan.BindImageMemoryDeviceGroupInfo
 
-class CommandBufferResetFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferResetFlags
+    class PhysicalDeviceGroupProperties {
+        // Constructors of Vulkan.PhysicalDeviceGroupProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupDeviceCreateInfo {
+        // Constructors of Vulkan.DeviceGroupDeviceCreateInfo
 
-class StencilFaceFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.StencilFaceFlagBits
+    class BufferMemoryRequirementsInfo2 {
+        // Constructors of Vulkan.BufferMemoryRequirementsInfo2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageMemoryRequirementsInfo2 {
+        // Constructors of Vulkan.ImageMemoryRequirementsInfo2
 
-class StencilFaceFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.StencilFaceFlags
+    class ImageSparseMemoryRequirementsInfo2 {
+        // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryRequirements2 {
+        // Constructors of Vulkan.MemoryRequirements2
 
-class ApplicationInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ApplicationInfo
+    class MemoryRequirements2KHR {
+        // Constructors of Vulkan.MemoryRequirements2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageMemoryRequirements2 {
+        // Constructors of Vulkan.SparseImageMemoryRequirements2
 
-class InstanceCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.InstanceCreateInfo
+    class PhysicalDeviceFeatures2 {
+        // Constructors of Vulkan.PhysicalDeviceFeatures2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceProperties2 {
+        // Constructors of Vulkan.PhysicalDeviceProperties2
 
-class AllocationCallbacks {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AllocationCallbacks
+    class FormatProperties2 {
+        // Constructors of Vulkan.FormatProperties2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageFormatProperties2 {
+        // Constructors of Vulkan.ImageFormatProperties2
 
-class PhysicalDeviceFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceFeatures
+    class PhysicalDeviceImageFormatInfo2 {
+        // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class QueueFamilyProperties2 {
+        // Constructors of Vulkan.QueueFamilyProperties2
 
-class FormatProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FormatProperties
+    class PhysicalDeviceMemoryProperties2 {
+        // Constructors of Vulkan.PhysicalDeviceMemoryProperties2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageFormatProperties2 {
+        // Constructors of Vulkan.SparseImageFormatProperties2
 
-class Extent3D {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Extent3D
+    class PhysicalDeviceSparseImageFormatInfo2 {
+        // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDevicePointClippingProperties {
+        // Constructors of Vulkan.PhysicalDevicePointClippingProperties
 
-class ImageFormatProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageFormatProperties
+    class InputAttachmentAspectReference {
+        // Constructors of Vulkan.InputAttachmentAspectReference
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RenderPassInputAttachmentAspectCreateInfo {
+        // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfo
 
-class PhysicalDeviceLimits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceLimits
+    class ImageViewUsageCreateInfo {
+        // Constructors of Vulkan.ImageViewUsageCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineTessellationDomainOriginStateCreateInfo {
+        // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfo
 
-class PhysicalDeviceSparseProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceSparseProperties
+    class RenderPassMultiviewCreateInfo {
+        // Constructors of Vulkan.RenderPassMultiviewCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMultiviewFeatures {
+        // Constructors of Vulkan.PhysicalDeviceMultiviewFeatures
 
-class PhysicalDeviceProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceProperties
+    class PhysicalDeviceMultiviewProperties {
+        // Constructors of Vulkan.PhysicalDeviceMultiviewProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceVariablePointersFeatures {
+        // Constructors of Vulkan.PhysicalDeviceVariablePointersFeatures
 
-class QueueFamilyProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueueFamilyProperties
+    class PhysicalDeviceVariablePointerFeatures {
+        // Constructors of Vulkan.PhysicalDeviceVariablePointerFeatures
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceProtectedMemoryFeatures {
+        // Constructors of Vulkan.PhysicalDeviceProtectedMemoryFeatures
 
-class MemoryType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryType
+    class PhysicalDeviceProtectedMemoryProperties {
+        // Constructors of Vulkan.PhysicalDeviceProtectedMemoryProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceQueueInfo2 {
+        // Constructors of Vulkan.DeviceQueueInfo2
 
-class MemoryHeap {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryHeap
+    class ProtectedSubmitInfo {
+        // Constructors of Vulkan.ProtectedSubmitInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrConversionCreateInfo {
+        // Constructors of Vulkan.SamplerYcbcrConversionCreateInfo
 
-class PhysicalDeviceMemoryProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceMemoryProperties
+    class SamplerYcbcrConversionInfo {
+        // Constructors of Vulkan.SamplerYcbcrConversionInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindImagePlaneMemoryInfo {
+        // Constructors of Vulkan.BindImagePlaneMemoryInfo
 
-class DeviceQueueCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceQueueCreateInfo
+    class ImagePlaneMemoryRequirementsInfo {
+        // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceSamplerYcbcrConversionFeatures {
+        // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeatures
 
-class DeviceCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceCreateInfo
+    class SamplerYcbcrConversionImageFormatProperties {
+        // Constructors of Vulkan.SamplerYcbcrConversionImageFormatProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorUpdateTemplateEntry {
+        // Constructors of Vulkan.DescriptorUpdateTemplateEntry
 
-class ExtensionProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExtensionProperties
+    class DescriptorUpdateTemplateCreateInfo {
+        // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryProperties {
+        // Constructors of Vulkan.ExternalMemoryProperties
 
-class LayerProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.LayerProperties
+    class PhysicalDeviceExternalImageFormatInfo {
+        // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalImageFormatProperties {
+        // Constructors of Vulkan.ExternalImageFormatProperties
 
-class SubmitInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubmitInfo
+    class PhysicalDeviceExternalBufferInfo {
+        // Constructors of Vulkan.PhysicalDeviceExternalBufferInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalBufferProperties {
+        // Constructors of Vulkan.ExternalBufferProperties
 
-class MemoryAllocateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryAllocateInfo
+    class PhysicalDeviceIDProperties {
+        // Constructors of Vulkan.PhysicalDeviceIDProperties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryImageCreateInfo {
+        // Constructors of Vulkan.ExternalMemoryImageCreateInfo
 
-class MappedMemoryRange {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MappedMemoryRange
+    class ExternalMemoryBufferCreateInfo {
+        // Constructors of Vulkan.ExternalMemoryBufferCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExportMemoryAllocateInfo {
+        // Constructors of Vulkan.ExportMemoryAllocateInfo
 
-class MemoryRequirements {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryRequirements
+    class PhysicalDeviceExternalFenceInfo {
+        // Constructors of Vulkan.PhysicalDeviceExternalFenceInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFenceProperties {
+        // Constructors of Vulkan.ExternalFenceProperties
 
-class SparseImageFormatProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageFormatProperties
+    class ExportFenceCreateInfo {
+        // Constructors of Vulkan.ExportFenceCreateInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExportSemaphoreCreateInfo {
+        // Constructors of Vulkan.ExportSemaphoreCreateInfo
 
-class SparseImageMemoryRequirements {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageMemoryRequirements
+    class PhysicalDeviceExternalSemaphoreInfo {
+        // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfo
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphoreProperties {
+        // Constructors of Vulkan.ExternalSemaphoreProperties
 
-class SparseMemoryBind {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseMemoryBind
+    class PhysicalDeviceMaintenance3Properties {
+        // Constructors of Vulkan.PhysicalDeviceMaintenance3Properties
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorSetLayoutSupport {
+        // Constructors of Vulkan.DescriptorSetLayoutSupport
 
-class SparseBufferMemoryBindInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseBufferMemoryBindInfo
+    class PhysicalDeviceShaderDrawParametersFeatures {
+        // Constructors of Vulkan.PhysicalDeviceShaderDrawParametersFeatures
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceShaderDrawParameterFeatures {
+        // Constructors of Vulkan.PhysicalDeviceShaderDrawParameterFeatures
 
-class SparseImageOpaqueMemoryBindInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageOpaqueMemoryBindInfo
+    class SurfaceKHR {
+        // Constructors of Vulkan.SurfaceKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ColorSpaceKHR {
+        // Constructors of Vulkan.ColorSpaceKHR
 
-class ImageSubresource {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageSubresource
+    class PresentModeKHR {
+        // Constructors of Vulkan.PresentModeKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SurfaceTransformFlagBitsKHR {
+        // Constructors of Vulkan.SurfaceTransformFlagBitsKHR
 
-class Offset3D {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Offset3D
+    class SurfaceTransformFlagsKHR {
+        // Constructors of Vulkan.SurfaceTransformFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CompositeAlphaFlagBitsKHR {
+        // Constructors of Vulkan.CompositeAlphaFlagBitsKHR
 
-class SparseImageMemoryBind {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageMemoryBind
+    class CompositeAlphaFlagsKHR {
+        // Constructors of Vulkan.CompositeAlphaFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SurfaceCapabilitiesKHR {
+        // Constructors of Vulkan.SurfaceCapabilitiesKHR
 
-class SparseImageMemoryBindInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageMemoryBindInfo
+    class SurfaceFormatKHR {
+        // Constructors of Vulkan.SurfaceFormatKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SwapchainKHR {
+        // Constructors of Vulkan.SwapchainKHR
 
-class BindSparseInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindSparseInfo
+    class SwapchainCreateFlagBitsKHR {
+        // Constructors of Vulkan.SwapchainCreateFlagBitsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SwapchainCreateFlagsKHR {
+        // Constructors of Vulkan.SwapchainCreateFlagsKHR
 
-class FenceCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FenceCreateInfo
+    class DeviceGroupPresentModeFlagBitsKHR {
+        // Constructors of Vulkan.DeviceGroupPresentModeFlagBitsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupPresentModeFlagsKHR {
+        // Constructors of Vulkan.DeviceGroupPresentModeFlagsKHR
 
-class SemaphoreCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SemaphoreCreateInfo
+    class SwapchainCreateInfoKHR {
+        // Constructors of Vulkan.SwapchainCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PresentInfoKHR {
+        // Constructors of Vulkan.PresentInfoKHR
 
-class EventCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.EventCreateInfo
+    class ImageSwapchainCreateInfoKHR {
+        // Constructors of Vulkan.ImageSwapchainCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindImageMemorySwapchainInfoKHR {
+        // Constructors of Vulkan.BindImageMemorySwapchainInfoKHR
 
-class QueryPoolCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueryPoolCreateInfo
+    class AcquireNextImageInfoKHR {
+        // Constructors of Vulkan.AcquireNextImageInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupPresentCapabilitiesKHR {
+        // Constructors of Vulkan.DeviceGroupPresentCapabilitiesKHR
 
-class BufferCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferCreateInfo
+    class DeviceGroupPresentInfoKHR {
+        // Constructors of Vulkan.DeviceGroupPresentInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupSwapchainCreateInfoKHR {
+        // Constructors of Vulkan.DeviceGroupSwapchainCreateInfoKHR
 
-class BufferViewCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferViewCreateInfo
+    class DisplayKHR {
+        // Constructors of Vulkan.DisplayKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayModeKHR {
+        // Constructors of Vulkan.DisplayModeKHR
 
-class ImageCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageCreateInfo
+    class DisplayPlaneAlphaFlagBitsKHR {
+        // Constructors of Vulkan.DisplayPlaneAlphaFlagBitsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayPlaneAlphaFlagsKHR {
+        // Constructors of Vulkan.DisplayPlaneAlphaFlagsKHR
 
-class SubresourceLayout {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubresourceLayout
+    class DisplayModeCreateFlagsKHR {
+        // Constructors of Vulkan.DisplayModeCreateFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplaySurfaceCreateFlagsKHR {
+        // Constructors of Vulkan.DisplaySurfaceCreateFlagsKHR
 
-class ComponentMapping {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ComponentMapping
+    class DisplayPropertiesKHR {
+        // Constructors of Vulkan.DisplayPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayModeParametersKHR {
+        // Constructors of Vulkan.DisplayModeParametersKHR
 
-class ImageSubresourceRange {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageSubresourceRange
+    class DisplayModePropertiesKHR {
+        // Constructors of Vulkan.DisplayModePropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayModeCreateInfoKHR {
+        // Constructors of Vulkan.DisplayModeCreateInfoKHR
 
-class ImageViewCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageViewCreateInfo
+    class DisplayPlaneCapabilitiesKHR {
+        // Constructors of Vulkan.DisplayPlaneCapabilitiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayPlanePropertiesKHR {
+        // Constructors of Vulkan.DisplayPlanePropertiesKHR
 
-class ShaderModuleCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ShaderModuleCreateInfo
+    class DisplaySurfaceCreateInfoKHR {
+        // Constructors of Vulkan.DisplaySurfaceCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayPresentInfoKHR {
+        // Constructors of Vulkan.DisplayPresentInfoKHR
 
-class PipelineCacheCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineCacheCreateInfo
+    class RenderPassMultiviewCreateInfoKHR {
+        // Constructors of Vulkan.RenderPassMultiviewCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMultiviewFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceMultiviewFeaturesKHR
 
-class SpecializationMapEntry {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SpecializationMapEntry
+    class PhysicalDeviceMultiviewPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceMultiviewPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceFeatures2KHR {
+        // Constructors of Vulkan.PhysicalDeviceFeatures2KHR
 
-class SpecializationInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SpecializationInfo
+    class PhysicalDeviceProperties2KHR {
+        // Constructors of Vulkan.PhysicalDeviceProperties2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FormatProperties2KHR {
+        // Constructors of Vulkan.FormatProperties2KHR
 
-class PipelineShaderStageCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineShaderStageCreateInfo
+    class ImageFormatProperties2KHR {
+        // Constructors of Vulkan.ImageFormatProperties2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceImageFormatInfo2KHR {
+        // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2KHR
 
-class VertexInputBindingDescription {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.VertexInputBindingDescription
+    class QueueFamilyProperties2KHR {
+        // Constructors of Vulkan.QueueFamilyProperties2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMemoryProperties2KHR {
+        // Constructors of Vulkan.PhysicalDeviceMemoryProperties2KHR
 
-class VertexInputAttributeDescription {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.VertexInputAttributeDescription
+    class SparseImageFormatProperties2KHR {
+        // Constructors of Vulkan.SparseImageFormatProperties2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceSparseImageFormatInfo2KHR {
+        // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2KHR
 
-class PipelineVertexInputStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineVertexInputStateCreateInfo
+    class PeerMemoryFeatureFlagsKHR {
+        // Constructors of Vulkan.PeerMemoryFeatureFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PeerMemoryFeatureFlagBitsKHR {
+        // Constructors of Vulkan.PeerMemoryFeatureFlagBitsKHR
 
-class PipelineInputAssemblyStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineInputAssemblyStateCreateInfo
+    class MemoryAllocateFlagsKHR {
+        // Constructors of Vulkan.MemoryAllocateFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryAllocateFlagBitsKHR {
+        // Constructors of Vulkan.MemoryAllocateFlagBitsKHR
 
-class PipelineTessellationStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineTessellationStateCreateInfo
+    class MemoryAllocateFlagsInfoKHR {
+        // Constructors of Vulkan.MemoryAllocateFlagsInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupRenderPassBeginInfoKHR {
+        // Constructors of Vulkan.DeviceGroupRenderPassBeginInfoKHR
 
-class Viewport {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Viewport
+    class DeviceGroupCommandBufferBeginInfoKHR {
+        // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupSubmitInfoKHR {
+        // Constructors of Vulkan.DeviceGroupSubmitInfoKHR
 
-class Offset2D {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Offset2D
+    class DeviceGroupBindSparseInfoKHR {
+        // Constructors of Vulkan.DeviceGroupBindSparseInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindBufferMemoryDeviceGroupInfoKHR {
+        // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfoKHR
 
-class Extent2D {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Extent2D
+    class BindImageMemoryDeviceGroupInfoKHR {
+        // Constructors of Vulkan.BindImageMemoryDeviceGroupInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CommandPoolTrimFlagsKHR {
+        // Constructors of Vulkan.CommandPoolTrimFlagsKHR
 
-class Rect2D {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.Rect2D
+    class PhysicalDeviceGroupPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceGroupPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGroupDeviceCreateInfoKHR {
+        // Constructors of Vulkan.DeviceGroupDeviceCreateInfoKHR
 
-class PipelineViewportStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineViewportStateCreateInfo
+    class ExternalMemoryHandleTypeFlagsKHR {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryHandleTypeFlagBitsKHR {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsKHR
 
-class PipelineRasterizationStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineRasterizationStateCreateInfo
+    class ExternalMemoryFeatureFlagsKHR {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryFeatureFlagBitsKHR {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsKHR
 
-class PipelineMultisampleStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineMultisampleStateCreateInfo
+    class ExternalMemoryPropertiesKHR {
+        // Constructors of Vulkan.ExternalMemoryPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceExternalImageFormatInfoKHR {
+        // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfoKHR
 
-class StencilOpState {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.StencilOpState
+    class ExternalImageFormatPropertiesKHR {
+        // Constructors of Vulkan.ExternalImageFormatPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceExternalBufferInfoKHR {
+        // Constructors of Vulkan.PhysicalDeviceExternalBufferInfoKHR
 
-class PipelineDepthStencilStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineDepthStencilStateCreateInfo
+    class ExternalBufferPropertiesKHR {
+        // Constructors of Vulkan.ExternalBufferPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceIDPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceIDPropertiesKHR
 
-class PipelineColorBlendAttachmentState {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineColorBlendAttachmentState
+    class ExternalMemoryImageCreateInfoKHR {
+        // Constructors of Vulkan.ExternalMemoryImageCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryBufferCreateInfoKHR {
+        // Constructors of Vulkan.ExternalMemoryBufferCreateInfoKHR
 
-class PipelineColorBlendStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineColorBlendStateCreateInfo
+    class ExportMemoryAllocateInfoKHR {
+        // Constructors of Vulkan.ExportMemoryAllocateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImportMemoryFdInfoKHR {
+        // Constructors of Vulkan.ImportMemoryFdInfoKHR
 
-class PipelineDynamicStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineDynamicStateCreateInfo
+    class MemoryFdPropertiesKHR {
+        // Constructors of Vulkan.MemoryFdPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryGetFdInfoKHR {
+        // Constructors of Vulkan.MemoryGetFdInfoKHR
 
-class GraphicsPipelineCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.GraphicsPipelineCreateInfo
+    class ExternalSemaphoreHandleTypeFlagsKHR {
+        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphoreHandleTypeFlagBitsKHR {
+        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBitsKHR
 
-class ComputePipelineCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ComputePipelineCreateInfo
+    class ExternalSemaphoreFeatureFlagsKHR {
+        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphoreFeatureFlagBitsKHR {
+        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBitsKHR
 
-class PushConstantRange {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PushConstantRange
+    class PhysicalDeviceExternalSemaphoreInfoKHR {
+        // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalSemaphorePropertiesKHR {
+        // Constructors of Vulkan.ExternalSemaphorePropertiesKHR
 
-class PipelineLayoutCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineLayoutCreateInfo
+    class SemaphoreImportFlagsKHR {
+        // Constructors of Vulkan.SemaphoreImportFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SemaphoreImportFlagBitsKHR {
+        // Constructors of Vulkan.SemaphoreImportFlagBitsKHR
 
-class SamplerCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerCreateInfo
+    class ExportSemaphoreCreateInfoKHR {
+        // Constructors of Vulkan.ExportSemaphoreCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImportSemaphoreFdInfoKHR {
+        // Constructors of Vulkan.ImportSemaphoreFdInfoKHR
 
-class DescriptorSetLayoutBinding {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayoutBinding
+    class SemaphoreGetFdInfoKHR {
+        // Constructors of Vulkan.SemaphoreGetFdInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDevicePushDescriptorPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDevicePushDescriptorPropertiesKHR
 
-class DescriptorSetLayoutCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayoutCreateInfo
+    class PhysicalDeviceFloat16Int8FeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceFloat16Int8FeaturesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDevice16BitStorageFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDevice16BitStorageFeaturesKHR
 
-class DescriptorPoolSize {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPoolSize
+    class RectLayerKHR {
+        // Constructors of Vulkan.RectLayerKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PresentRegionKHR {
+        // Constructors of Vulkan.PresentRegionKHR
 
-class DescriptorPoolCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorPoolCreateInfo
+    class PresentRegionsKHR {
+        // Constructors of Vulkan.PresentRegionsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorUpdateTemplateKHR {
+        // Constructors of Vulkan.DescriptorUpdateTemplateKHR
 
-class DescriptorSetAllocateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetAllocateInfo
+    class DescriptorUpdateTemplateTypeKHR {
+        // Constructors of Vulkan.DescriptorUpdateTemplateTypeKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorUpdateTemplateCreateFlagsKHR {
+        // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlagsKHR
 
-class DescriptorImageInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorImageInfo
+    class DescriptorUpdateTemplateEntryKHR {
+        // Constructors of Vulkan.DescriptorUpdateTemplateEntryKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorUpdateTemplateCreateInfoKHR {
+        // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfoKHR
 
-class DescriptorBufferInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorBufferInfo
+    class AttachmentDescription2KHR {
+        // Constructors of Vulkan.AttachmentDescription2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AttachmentReference2KHR {
+        // Constructors of Vulkan.AttachmentReference2KHR
 
-class WriteDescriptorSet {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.WriteDescriptorSet
+    class SubpassDescription2KHR {
+        // Constructors of Vulkan.SubpassDescription2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassDependency2KHR {
+        // Constructors of Vulkan.SubpassDependency2KHR
 
-class CopyDescriptorSet {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CopyDescriptorSet
+    class RenderPassCreateInfo2KHR {
+        // Constructors of Vulkan.RenderPassCreateInfo2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassBeginInfoKHR {
+        // Constructors of Vulkan.SubpassBeginInfoKHR
 
-class FramebufferCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FramebufferCreateInfo
+    class SubpassEndInfoKHR {
+        // Constructors of Vulkan.SubpassEndInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SharedPresentSurfaceCapabilitiesKHR {
+        // Constructors of Vulkan.SharedPresentSurfaceCapabilitiesKHR
 
-class AttachmentDescription {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentDescription
+    class ExternalFenceHandleTypeFlagsKHR {
+        // Constructors of Vulkan.ExternalFenceHandleTypeFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFenceHandleTypeFlagBitsKHR {
+        // Constructors of Vulkan.ExternalFenceHandleTypeFlagBitsKHR
 
-class AttachmentReference {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AttachmentReference
+    class ExternalFenceFeatureFlagsKHR {
+        // Constructors of Vulkan.ExternalFenceFeatureFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFenceFeatureFlagBitsKHR {
+        // Constructors of Vulkan.ExternalFenceFeatureFlagBitsKHR
 
-class SubpassDescription {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubpassDescription
+    class PhysicalDeviceExternalFenceInfoKHR {
+        // Constructors of Vulkan.PhysicalDeviceExternalFenceInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalFencePropertiesKHR {
+        // Constructors of Vulkan.ExternalFencePropertiesKHR
 
-class SubpassDependency {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubpassDependency
+    class FenceImportFlagsKHR {
+        // Constructors of Vulkan.FenceImportFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FenceImportFlagBitsKHR {
+        // Constructors of Vulkan.FenceImportFlagBitsKHR
 
-class RenderPassCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPassCreateInfo
+    class ExportFenceCreateInfoKHR {
+        // Constructors of Vulkan.ExportFenceCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImportFenceFdInfoKHR {
+        // Constructors of Vulkan.ImportFenceFdInfoKHR
 
-class CommandPoolCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolCreateInfo
+    class FenceGetFdInfoKHR {
+        // Constructors of Vulkan.FenceGetFdInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PointClippingBehaviorKHR {
+        // Constructors of Vulkan.PointClippingBehaviorKHR
 
-class CommandBufferAllocateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferAllocateInfo
+    class TessellationDomainOriginKHR {
+        // Constructors of Vulkan.TessellationDomainOriginKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDevicePointClippingPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDevicePointClippingPropertiesKHR
 
-class CommandBufferInheritanceInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferInheritanceInfo
+    class RenderPassInputAttachmentAspectCreateInfoKHR {
+        // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class InputAttachmentAspectReferenceKHR {
+        // Constructors of Vulkan.InputAttachmentAspectReferenceKHR
 
-class CommandBufferBeginInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandBufferBeginInfo
+    class ImageViewUsageCreateInfoKHR {
+        // Constructors of Vulkan.ImageViewUsageCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineTessellationDomainOriginStateCreateInfoKHR {
+        // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfoKHR
 
-class BufferCopy {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferCopy
+    class PhysicalDeviceSurfaceInfo2KHR {
+        // Constructors of Vulkan.PhysicalDeviceSurfaceInfo2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SurfaceCapabilities2KHR {
+        // Constructors of Vulkan.SurfaceCapabilities2KHR
 
-class ImageSubresourceLayers {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageSubresourceLayers
+    class SurfaceFormat2KHR {
+        // Constructors of Vulkan.SurfaceFormat2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceVariablePointerFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceVariablePointerFeaturesKHR
 
-class ImageCopy {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageCopy
+    class PhysicalDeviceVariablePointersFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceVariablePointersFeaturesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayProperties2KHR {
+        // Constructors of Vulkan.DisplayProperties2KHR
 
-class ImageBlit {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageBlit
+    class DisplayPlaneProperties2KHR {
+        // Constructors of Vulkan.DisplayPlaneProperties2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayModeProperties2KHR {
+        // Constructors of Vulkan.DisplayModeProperties2KHR
 
-class BufferImageCopy {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferImageCopy
+    class DisplayPlaneInfo2KHR {
+        // Constructors of Vulkan.DisplayPlaneInfo2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayPlaneCapabilities2KHR {
+        // Constructors of Vulkan.DisplayPlaneCapabilities2KHR
 
-class ClearColorValue {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ClearColorValue
+    class MemoryDedicatedRequirementsKHR {
+        // Constructors of Vulkan.MemoryDedicatedRequirementsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryDedicatedAllocateInfoKHR {
+        // Constructors of Vulkan.MemoryDedicatedAllocateInfoKHR
 
-class ClearDepthStencilValue {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ClearDepthStencilValue
+    class BufferMemoryRequirementsInfo2KHR {
+        // Constructors of Vulkan.BufferMemoryRequirementsInfo2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageMemoryRequirementsInfo2KHR {
+        // Constructors of Vulkan.ImageMemoryRequirementsInfo2KHR
 
-class ClearValue {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ClearValue
+    class ImageSparseMemoryRequirementsInfo2KHR {
+        // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2KHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SparseImageMemoryRequirements2KHR {
+        // Constructors of Vulkan.SparseImageMemoryRequirements2KHR
 
-class ClearAttachment {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ClearAttachment
+    class ImageFormatListCreateInfoKHR {
+        // Constructors of Vulkan.ImageFormatListCreateInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrConversionKHR {
+        // Constructors of Vulkan.SamplerYcbcrConversionKHR
 
-class ClearRect {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ClearRect
+    class SamplerYcbcrModelConversionKHR {
+        // Constructors of Vulkan.SamplerYcbcrModelConversionKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrRangeKHR {
+        // Constructors of Vulkan.SamplerYcbcrRangeKHR
 
-class ImageResolve {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageResolve
+    class ChromaLocationKHR {
+        // Constructors of Vulkan.ChromaLocationKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerYcbcrConversionCreateInfoKHR {
+        // Constructors of Vulkan.SamplerYcbcrConversionCreateInfoKHR
 
-class MemoryBarrier {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryBarrier
+    class SamplerYcbcrConversionInfoKHR {
+        // Constructors of Vulkan.SamplerYcbcrConversionInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindImagePlaneMemoryInfoKHR {
+        // Constructors of Vulkan.BindImagePlaneMemoryInfoKHR
 
-class BufferMemoryBarrier {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferMemoryBarrier
+    class ImagePlaneMemoryRequirementsInfoKHR {
+        // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeaturesKHR
 
-class ImageMemoryBarrier {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageMemoryBarrier
+    class SamplerYcbcrConversionImageFormatPropertiesKHR {
+        // Constructors of Vulkan.SamplerYcbcrConversionImageFormatPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BindBufferMemoryInfoKHR {
+        // Constructors of Vulkan.BindBufferMemoryInfoKHR
 
-class RenderPassBeginInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPassBeginInfo
+    class BindImageMemoryInfoKHR {
+        // Constructors of Vulkan.BindImageMemoryInfoKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMaintenance3PropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceMaintenance3PropertiesKHR
 
-class DispatchIndirectCommand {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DispatchIndirectCommand
+    class DescriptorSetLayoutSupportKHR {
+        // Constructors of Vulkan.DescriptorSetLayoutSupportKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDevice8BitStorageFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDevice8BitStorageFeaturesKHR
 
-class DrawIndexedIndirectCommand {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DrawIndexedIndirectCommand
+    class PhysicalDeviceShaderAtomicInt64FeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceShaderAtomicInt64FeaturesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DriverIdKHR {
+        // Constructors of Vulkan.DriverIdKHR
 
-class DrawIndirectCommand {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DrawIndirectCommand
+    class ConformanceVersionKHR {
+        // Constructors of Vulkan.ConformanceVersionKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceDriverPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceDriverPropertiesKHR
 
-class BaseOutStructure {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BaseOutStructure
+    class PhysicalDeviceFloatControlsPropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceFloatControlsPropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ResolveModeFlagBitsKHR {
+        // Constructors of Vulkan.ResolveModeFlagBitsKHR
 
-class BaseInStructure {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BaseInStructure
+    class ResolveModeFlagsKHR {
+        // Constructors of Vulkan.ResolveModeFlagsKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassDescriptionDepthStencilResolveKHR {
+        // Constructors of Vulkan.SubpassDescriptionDepthStencilResolveKHR
 
-class SamplerYcbcrConversion {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrConversion
+    class PhysicalDeviceDepthStencilResolvePropertiesKHR {
+        // Constructors of Vulkan.PhysicalDeviceDepthStencilResolvePropertiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceVulkanMemoryModelFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceVulkanMemoryModelFeaturesKHR
 
-class DescriptorUpdateTemplate {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorUpdateTemplate
+    class SurfaceProtectedCapabilitiesKHR {
+        // Constructors of Vulkan.SurfaceProtectedCapabilitiesKHR
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
+        // Constructors of Vulkan.PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR
 
-class PointClippingBehavior {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PointClippingBehavior
+    class DebugReportCallbackEXT {
+        // Constructors of Vulkan.DebugReportCallbackEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugReportObjectTypeEXT {
+        // Constructors of Vulkan.DebugReportObjectTypeEXT
 
-class TessellationDomainOrigin {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.TessellationDomainOrigin
+    class DebugReportFlagBitsEXT {
+        // Constructors of Vulkan.DebugReportFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugReportFlagsEXT {
+        // Constructors of Vulkan.DebugReportFlagsEXT
 
-class SamplerYcbcrModelConversion {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrModelConversion
+    class DebugReportCallbackCreateInfoEXT {
+        // Constructors of Vulkan.DebugReportCallbackCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RasterizationOrderAMD {
+        // Constructors of Vulkan.RasterizationOrderAMD
 
-class SamplerYcbcrRange {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrRange
+    class PipelineRasterizationStateRasterizationOrderAMD {
+        // Constructors of Vulkan.PipelineRasterizationStateRasterizationOrderAMD
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugMarkerObjectNameInfoEXT {
+        // Constructors of Vulkan.DebugMarkerObjectNameInfoEXT
 
-class ChromaLocation {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ChromaLocation
+    class DebugMarkerObjectTagInfoEXT {
+        // Constructors of Vulkan.DebugMarkerObjectTagInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugMarkerMarkerInfoEXT {
+        // Constructors of Vulkan.DebugMarkerMarkerInfoEXT
 
-class DescriptorUpdateTemplateType {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorUpdateTemplateType
+    class DedicatedAllocationImageCreateInfoNV {
+        // Constructors of Vulkan.DedicatedAllocationImageCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DedicatedAllocationBufferCreateInfoNV {
+        // Constructors of Vulkan.DedicatedAllocationBufferCreateInfoNV
 
-class SubgroupFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubgroupFeatureFlagBits
+    class DedicatedAllocationMemoryAllocateInfoNV {
+        // Constructors of Vulkan.DedicatedAllocationMemoryAllocateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineRasterizationStateStreamCreateFlagsEXT {
+        // Constructors of Vulkan.PipelineRasterizationStateStreamCreateFlagsEXT
 
-class SubgroupFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SubgroupFeatureFlags
+    class PhysicalDeviceTransformFeedbackFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceTransformFeedbackFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceTransformFeedbackPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceTransformFeedbackPropertiesEXT
 
-class PeerMemoryFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PeerMemoryFeatureFlagBits
+    class PipelineRasterizationStateStreamCreateInfoEXT {
+        // Constructors of Vulkan.PipelineRasterizationStateStreamCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageViewHandleInfoNVX {
+        // Constructors of Vulkan.ImageViewHandleInfoNVX
 
-class PeerMemoryFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PeerMemoryFeatureFlags
+    class TextureLODGatherFormatPropertiesAMD {
+        // Constructors of Vulkan.TextureLODGatherFormatPropertiesAMD
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderInfoTypeAMD {
+        // Constructors of Vulkan.ShaderInfoTypeAMD
 
-class MemoryAllocateFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryAllocateFlagBits
+    class ShaderResourceUsageAMD {
+        // Constructors of Vulkan.ShaderResourceUsageAMD
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderStatisticsInfoAMD {
+        // Constructors of Vulkan.ShaderStatisticsInfoAMD
 
-class MemoryAllocateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryAllocateFlags
+    class PhysicalDeviceCornerSampledImageFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceCornerSampledImageFeaturesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryHandleTypeFlagBitsNV {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsNV
 
-class CommandPoolTrimFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CommandPoolTrimFlags
+    class ExternalMemoryHandleTypeFlagsNV {
+        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalMemoryFeatureFlagBitsNV {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsNV
 
-class DescriptorUpdateTemplateCreateFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlags
+    class ExternalMemoryFeatureFlagsNV {
+        // Constructors of Vulkan.ExternalMemoryFeatureFlagsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExternalImageFormatPropertiesNV {
+        // Constructors of Vulkan.ExternalImageFormatPropertiesNV
 
-class ExternalMemoryHandleTypeFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBits
+    class ExternalMemoryImageCreateInfoNV {
+        // Constructors of Vulkan.ExternalMemoryImageCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ExportMemoryAllocateInfoNV {
+        // Constructors of Vulkan.ExportMemoryAllocateInfoNV
 
-class ExternalMemoryHandleTypeFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlags
+    class ValidationCheckEXT {
+        // Constructors of Vulkan.ValidationCheckEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ValidationFlagsEXT {
+        // Constructors of Vulkan.ValidationFlagsEXT
 
-class ExternalMemoryFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryFeatureFlagBits
+    class ImageViewASTCDecodeModeEXT {
+        // Constructors of Vulkan.ImageViewASTCDecodeModeEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceASTCDecodeFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceASTCDecodeFeaturesEXT
 
-class ExternalMemoryFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryFeatureFlags
+    class ConditionalRenderingFlagBitsEXT {
+        // Constructors of Vulkan.ConditionalRenderingFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ConditionalRenderingFlagsEXT {
+        // Constructors of Vulkan.ConditionalRenderingFlagsEXT
 
-class ExternalFenceHandleTypeFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalFenceHandleTypeFlagBits
+    class ConditionalRenderingBeginInfoEXT {
+        // Constructors of Vulkan.ConditionalRenderingBeginInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceConditionalRenderingFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceConditionalRenderingFeaturesEXT
 
-class ExternalFenceHandleTypeFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalFenceHandleTypeFlags
+    class CommandBufferInheritanceConditionalRenderingInfoEXT {
+        // Constructors of Vulkan.CommandBufferInheritanceConditionalRenderingInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectTableNVX {
+        // Constructors of Vulkan.ObjectTableNVX
 
-class ExternalFenceFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalFenceFeatureFlagBits
+    class IndirectCommandsLayoutNVX {
+        // Constructors of Vulkan.IndirectCommandsLayoutNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class IndirectCommandsTokenTypeNVX {
+        // Constructors of Vulkan.IndirectCommandsTokenTypeNVX
 
-class ExternalFenceFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalFenceFeatureFlags
+    class ObjectEntryTypeNVX {
+        // Constructors of Vulkan.ObjectEntryTypeNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class IndirectCommandsLayoutUsageFlagBitsNVX {
+        // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagBitsNVX
 
-class FenceImportFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FenceImportFlagBits
+    class IndirectCommandsLayoutUsageFlagsNVX {
+        // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagsNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectEntryUsageFlagBitsNVX {
+        // Constructors of Vulkan.ObjectEntryUsageFlagBitsNVX
 
-class FenceImportFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FenceImportFlags
+    class ObjectEntryUsageFlagsNVX {
+        // Constructors of Vulkan.ObjectEntryUsageFlagsNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceGeneratedCommandsFeaturesNVX {
+        // Constructors of Vulkan.DeviceGeneratedCommandsFeaturesNVX
 
-class SemaphoreImportFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SemaphoreImportFlagBits
+    class DeviceGeneratedCommandsLimitsNVX {
+        // Constructors of Vulkan.DeviceGeneratedCommandsLimitsNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class IndirectCommandsTokenNVX {
+        // Constructors of Vulkan.IndirectCommandsTokenNVX
 
-class SemaphoreImportFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SemaphoreImportFlags
+    class IndirectCommandsLayoutTokenNVX {
+        // Constructors of Vulkan.IndirectCommandsLayoutTokenNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class IndirectCommandsLayoutCreateInfoNVX {
+        // Constructors of Vulkan.IndirectCommandsLayoutCreateInfoNVX
 
-class ExternalSemaphoreHandleTypeFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBits
+    class CmdProcessCommandsInfoNVX {
+        // Constructors of Vulkan.CmdProcessCommandsInfoNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CmdReserveSpaceForCommandsInfoNVX {
+        // Constructors of Vulkan.CmdReserveSpaceForCommandsInfoNVX
 
-class ExternalSemaphoreHandleTypeFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlags
+    class ObjectTableCreateInfoNVX {
+        // Constructors of Vulkan.ObjectTableCreateInfoNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectTableEntryNVX {
+        // Constructors of Vulkan.ObjectTableEntryNVX
 
-class ExternalSemaphoreFeatureFlagBits {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBits
+    class ObjectTablePipelineEntryNVX {
+        // Constructors of Vulkan.ObjectTablePipelineEntryNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectTableDescriptorSetEntryNVX {
+        // Constructors of Vulkan.ObjectTableDescriptorSetEntryNVX
 
-class ExternalSemaphoreFeatureFlags {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalSemaphoreFeatureFlags
+    class ObjectTableVertexBufferEntryNVX {
+        // Constructors of Vulkan.ObjectTableVertexBufferEntryNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ObjectTableIndexBufferEntryNVX {
+        // Constructors of Vulkan.ObjectTableIndexBufferEntryNVX
 
-class PhysicalDeviceSubgroupProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceSubgroupProperties
+    class ObjectTablePushConstantEntryNVX {
+        // Constructors of Vulkan.ObjectTablePushConstantEntryNVX
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ViewportWScalingNV {
+        // Constructors of Vulkan.ViewportWScalingNV
 
-class BindBufferMemoryInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindBufferMemoryInfo
+    class PipelineViewportWScalingStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineViewportWScalingStateCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SurfaceCounterFlagBitsEXT {
+        // Constructors of Vulkan.SurfaceCounterFlagBitsEXT
 
-class BindImageMemoryInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindImageMemoryInfo
+    class SurfaceCounterFlagsEXT {
+        // Constructors of Vulkan.SurfaceCounterFlagsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SurfaceCapabilities2EXT {
+        // Constructors of Vulkan.SurfaceCapabilities2EXT
 
-class PhysicalDevice16BitStorageFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDevice16BitStorageFeatures
+    class DisplayPowerStateEXT {
+        // Constructors of Vulkan.DisplayPowerStateEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceEventTypeEXT {
+        // Constructors of Vulkan.DeviceEventTypeEXT
 
-class MemoryDedicatedRequirements {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryDedicatedRequirements
+    class DisplayEventTypeEXT {
+        // Constructors of Vulkan.DisplayEventTypeEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayPowerInfoEXT {
+        // Constructors of Vulkan.DisplayPowerInfoEXT
 
-class MemoryDedicatedAllocateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryDedicatedAllocateInfo
+    class DeviceEventInfoEXT {
+        // Constructors of Vulkan.DeviceEventInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayEventInfoEXT {
+        // Constructors of Vulkan.DisplayEventInfoEXT
 
-class MemoryAllocateFlagsInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryAllocateFlagsInfo
+    class SwapchainCounterCreateInfoEXT {
+        // Constructors of Vulkan.SwapchainCounterCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RefreshCycleDurationGOOGLE {
+        // Constructors of Vulkan.RefreshCycleDurationGOOGLE
 
-class DeviceGroupRenderPassBeginInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupRenderPassBeginInfo
+    class PastPresentationTimingGOOGLE {
+        // Constructors of Vulkan.PastPresentationTimingGOOGLE
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PresentTimeGOOGLE {
+        // Constructors of Vulkan.PresentTimeGOOGLE
 
-class DeviceGroupCommandBufferBeginInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfo
+    class PresentTimesInfoGOOGLE {
+        // Constructors of Vulkan.PresentTimesInfoGOOGLE
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
+        // Constructors of Vulkan.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
 
-class DeviceGroupSubmitInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupSubmitInfo
+    class ViewportCoordinateSwizzleNV {
+        // Constructors of Vulkan.ViewportCoordinateSwizzleNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineViewportSwizzleStateCreateFlagsNV {
+        // Constructors of Vulkan.PipelineViewportSwizzleStateCreateFlagsNV
 
-class DeviceGroupBindSparseInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupBindSparseInfo
+    class ViewportSwizzleNV {
+        // Constructors of Vulkan.ViewportSwizzleNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineViewportSwizzleStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineViewportSwizzleStateCreateInfoNV
 
-class BindBufferMemoryDeviceGroupInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfo
+    class DiscardRectangleModeEXT {
+        // Constructors of Vulkan.DiscardRectangleModeEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineDiscardRectangleStateCreateFlagsEXT {
+        // Constructors of Vulkan.PipelineDiscardRectangleStateCreateFlagsEXT
 
-class BindImageMemoryDeviceGroupInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindImageMemoryDeviceGroupInfo
+    class PhysicalDeviceDiscardRectanglePropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceDiscardRectanglePropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineDiscardRectangleStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineDiscardRectangleStateCreateInfoEXT
 
-class PhysicalDeviceGroupProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceGroupProperties
+    class ConservativeRasterizationModeEXT {
+        // Constructors of Vulkan.ConservativeRasterizationModeEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineRasterizationConservativeStateCreateFlagsEXT {
+        // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateFlagsEXT
 
-class DeviceGroupDeviceCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupDeviceCreateInfo
+    class PhysicalDeviceConservativeRasterizationPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceConservativeRasterizationPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineRasterizationConservativeStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateInfoEXT
 
-class BufferMemoryRequirementsInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BufferMemoryRequirementsInfo2
+    class PipelineRasterizationDepthClipStateCreateFlagsEXT {
+        // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateFlagsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceDepthClipEnableFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceDepthClipEnableFeaturesEXT
 
-class ImageMemoryRequirementsInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageMemoryRequirementsInfo2
+    class PipelineRasterizationDepthClipStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class XYColorEXT {
+        // Constructors of Vulkan.XYColorEXT
 
-class ImageSparseMemoryRequirementsInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2
+    class HdrMetadataEXT {
+        // Constructors of Vulkan.HdrMetadataEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsMessengerEXT {
+        // Constructors of Vulkan.DebugUtilsMessengerEXT
 
-class MemoryRequirements2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryRequirements2
+    class DebugUtilsMessengerCallbackDataFlagsEXT {
+        // Constructors of Vulkan.DebugUtilsMessengerCallbackDataFlagsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsMessengerCreateFlagsEXT {
+        // Constructors of Vulkan.DebugUtilsMessengerCreateFlagsEXT
 
-class MemoryRequirements2KHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.MemoryRequirements2KHR
+    class DebugUtilsMessageSeverityFlagBitsEXT {
+        // Constructors of Vulkan.DebugUtilsMessageSeverityFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsMessageSeverityFlagsEXT {
+        // Constructors of Vulkan.DebugUtilsMessageSeverityFlagsEXT
 
-class SparseImageMemoryRequirements2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageMemoryRequirements2
+    class DebugUtilsMessageTypeFlagBitsEXT {
+        // Constructors of Vulkan.DebugUtilsMessageTypeFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsMessageTypeFlagsEXT {
+        // Constructors of Vulkan.DebugUtilsMessageTypeFlagsEXT
 
-class PhysicalDeviceFeatures2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceFeatures2
+    class DebugUtilsObjectNameInfoEXT {
+        // Constructors of Vulkan.DebugUtilsObjectNameInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsObjectTagInfoEXT {
+        // Constructors of Vulkan.DebugUtilsObjectTagInfoEXT
 
-class PhysicalDeviceProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceProperties2
+    class DebugUtilsLabelEXT {
+        // Constructors of Vulkan.DebugUtilsLabelEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DebugUtilsMessengerCallbackDataEXT {
+        // Constructors of Vulkan.DebugUtilsMessengerCallbackDataEXT
 
-class FormatProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.FormatProperties2
+    class DebugUtilsMessengerCreateInfoEXT {
+        // Constructors of Vulkan.DebugUtilsMessengerCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SamplerReductionModeEXT {
+        // Constructors of Vulkan.SamplerReductionModeEXT
 
-class ImageFormatProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageFormatProperties2
+    class SamplerReductionModeCreateInfoEXT {
+        // Constructors of Vulkan.SamplerReductionModeCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceSamplerFilterMinmaxPropertiesEXT
 
-class PhysicalDeviceImageFormatInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2
+    class PhysicalDeviceInlineUniformBlockFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceInlineUniformBlockPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockPropertiesEXT
 
-class QueueFamilyProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.QueueFamilyProperties2
+    class WriteDescriptorSetInlineUniformBlockEXT {
+        // Constructors of Vulkan.WriteDescriptorSetInlineUniformBlockEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorPoolInlineUniformBlockCreateInfoEXT {
+        // Constructors of Vulkan.DescriptorPoolInlineUniformBlockCreateInfoEXT
 
-class PhysicalDeviceMemoryProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceMemoryProperties2
+    class SampleLocationEXT {
+        // Constructors of Vulkan.SampleLocationEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SampleLocationsInfoEXT {
+        // Constructors of Vulkan.SampleLocationsInfoEXT
 
-class SparseImageFormatProperties2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SparseImageFormatProperties2
+    class AttachmentSampleLocationsEXT {
+        // Constructors of Vulkan.AttachmentSampleLocationsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class SubpassSampleLocationsEXT {
+        // Constructors of Vulkan.SubpassSampleLocationsEXT
 
-class PhysicalDeviceSparseImageFormatInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2
+    class RenderPassSampleLocationsBeginInfoEXT {
+        // Constructors of Vulkan.RenderPassSampleLocationsBeginInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineSampleLocationsStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineSampleLocationsStateCreateInfoEXT
 
-class PhysicalDevicePointClippingProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDevicePointClippingProperties
+    class PhysicalDeviceSampleLocationsPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceSampleLocationsPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MultisamplePropertiesEXT {
+        // Constructors of Vulkan.MultisamplePropertiesEXT
 
-class InputAttachmentAspectReference {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.InputAttachmentAspectReference
+    class BlendOverlapEXT {
+        // Constructors of Vulkan.BlendOverlapEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedFeaturesEXT
 
-class RenderPassInputAttachmentAspectCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfo
+    class PhysicalDeviceBlendOperationAdvancedPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineColorBlendAdvancedStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineColorBlendAdvancedStateCreateInfoEXT
 
-class ImageViewUsageCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageViewUsageCreateInfo
+    class PipelineCoverageToColorStateCreateFlagsNV {
+        // Constructors of Vulkan.PipelineCoverageToColorStateCreateFlagsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCoverageToColorStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineCoverageToColorStateCreateInfoNV
 
-class PipelineTessellationDomainOriginStateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfo
+    class CoverageModulationModeNV {
+        // Constructors of Vulkan.CoverageModulationModeNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCoverageModulationStateCreateFlagsNV {
+        // Constructors of Vulkan.PipelineCoverageModulationStateCreateFlagsNV
 
-class RenderPassMultiviewCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.RenderPassMultiviewCreateInfo
+    class PipelineCoverageModulationStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineCoverageModulationStateCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DrmFormatModifierPropertiesEXT {
+        // Constructors of Vulkan.DrmFormatModifierPropertiesEXT
 
-class PhysicalDeviceMultiviewFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceMultiviewFeatures
+    class DrmFormatModifierPropertiesListEXT {
+        // Constructors of Vulkan.DrmFormatModifierPropertiesListEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceImageDrmFormatModifierInfoEXT {
+        // Constructors of Vulkan.PhysicalDeviceImageDrmFormatModifierInfoEXT
 
-class PhysicalDeviceMultiviewProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceMultiviewProperties
+    class ImageDrmFormatModifierListCreateInfoEXT {
+        // Constructors of Vulkan.ImageDrmFormatModifierListCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ImageDrmFormatModifierExplicitCreateInfoEXT {
+        // Constructors of Vulkan.ImageDrmFormatModifierExplicitCreateInfoEXT
 
-class PhysicalDeviceVariablePointersFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceVariablePointersFeatures
+    class ImageDrmFormatModifierPropertiesEXT {
+        // Constructors of Vulkan.ImageDrmFormatModifierPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ValidationCacheEXT {
+        // Constructors of Vulkan.ValidationCacheEXT
 
-class PhysicalDeviceVariablePointerFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceVariablePointerFeatures
+    class ValidationCacheHeaderVersionEXT {
+        // Constructors of Vulkan.ValidationCacheHeaderVersionEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ValidationCacheCreateFlagsEXT {
+        // Constructors of Vulkan.ValidationCacheCreateFlagsEXT
 
-class PhysicalDeviceProtectedMemoryFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceProtectedMemoryFeatures
+    class ValidationCacheCreateInfoEXT {
+        // Constructors of Vulkan.ValidationCacheCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShaderModuleValidationCacheCreateInfoEXT {
+        // Constructors of Vulkan.ShaderModuleValidationCacheCreateInfoEXT
 
-class PhysicalDeviceProtectedMemoryProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceProtectedMemoryProperties
+    class DescriptorBindingFlagBitsEXT {
+        // Constructors of Vulkan.DescriptorBindingFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorBindingFlagsEXT {
+        // Constructors of Vulkan.DescriptorBindingFlagsEXT
 
-class DeviceQueueInfo2 {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceQueueInfo2
+    class DescriptorSetLayoutBindingFlagsCreateInfoEXT {
+        // Constructors of Vulkan.DescriptorSetLayoutBindingFlagsCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceDescriptorIndexingFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingFeaturesEXT
 
-class ProtectedSubmitInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ProtectedSubmitInfo
+    class PhysicalDeviceDescriptorIndexingPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DescriptorSetVariableDescriptorCountAllocateInfoEXT {
+        // Constructors of Vulkan.DescriptorSetVariableDescriptorCountAllocateInfoEXT
 
-class SamplerYcbcrConversionCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrConversionCreateInfo
+    class DescriptorSetVariableDescriptorCountLayoutSupportEXT {
+        // Constructors of Vulkan.DescriptorSetVariableDescriptorCountLayoutSupportEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShadingRatePaletteEntryNV {
+        // Constructors of Vulkan.ShadingRatePaletteEntryNV
 
-class SamplerYcbcrConversionInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrConversionInfo
+    class CoarseSampleOrderTypeNV {
+        // Constructors of Vulkan.CoarseSampleOrderTypeNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ShadingRatePaletteNV {
+        // Constructors of Vulkan.ShadingRatePaletteNV
 
-class BindImagePlaneMemoryInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindImagePlaneMemoryInfo
+    class PipelineViewportShadingRateImageStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineViewportShadingRateImageStateCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceShadingRateImageFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceShadingRateImageFeaturesNV
 
-class ImagePlaneMemoryRequirementsInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfo
+    class PhysicalDeviceShadingRateImagePropertiesNV {
+        // Constructors of Vulkan.PhysicalDeviceShadingRateImagePropertiesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CoarseSampleLocationNV {
+        // Constructors of Vulkan.CoarseSampleLocationNV
 
-class PhysicalDeviceSamplerYcbcrConversionFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeatures
+    class CoarseSampleOrderCustomNV {
+        // Constructors of Vulkan.CoarseSampleOrderCustomNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineViewportCoarseSampleOrderStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineViewportCoarseSampleOrderStateCreateInfoNV
 
-class SamplerYcbcrConversionImageFormatProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SamplerYcbcrConversionImageFormatProperties
+    class AccelerationStructureNV {
+        // Constructors of Vulkan.AccelerationStructureNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RayTracingShaderGroupTypeNV {
+        // Constructors of Vulkan.RayTracingShaderGroupTypeNV
 
-class DescriptorUpdateTemplateEntry {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorUpdateTemplateEntry
+    class GeometryTypeNV {
+        // Constructors of Vulkan.GeometryTypeNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AccelerationStructureTypeNV {
+        // Constructors of Vulkan.AccelerationStructureTypeNV
 
-class DescriptorUpdateTemplateCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfo
+    class CopyAccelerationStructureModeNV {
+        // Constructors of Vulkan.CopyAccelerationStructureModeNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AccelerationStructureMemoryRequirementsTypeNV {
+        // Constructors of Vulkan.AccelerationStructureMemoryRequirementsTypeNV
 
-class ExternalMemoryProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryProperties
+    class GeometryFlagBitsNV {
+        // Constructors of Vulkan.GeometryFlagBitsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class GeometryFlagsNV {
+        // Constructors of Vulkan.GeometryFlagsNV
 
-class PhysicalDeviceExternalImageFormatInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfo
+    class GeometryInstanceFlagBitsNV {
+        // Constructors of Vulkan.GeometryInstanceFlagBitsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class GeometryInstanceFlagsNV {
+        // Constructors of Vulkan.GeometryInstanceFlagsNV
 
-class ExternalImageFormatProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalImageFormatProperties
+    class BuildAccelerationStructureFlagBitsNV {
+        // Constructors of Vulkan.BuildAccelerationStructureFlagBitsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BuildAccelerationStructureFlagsNV {
+        // Constructors of Vulkan.BuildAccelerationStructureFlagsNV
 
-class PhysicalDeviceExternalBufferInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceExternalBufferInfo
+    class RayTracingShaderGroupCreateInfoNV {
+        // Constructors of Vulkan.RayTracingShaderGroupCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RayTracingPipelineCreateInfoNV {
+        // Constructors of Vulkan.RayTracingPipelineCreateInfoNV
 
-class ExternalBufferProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalBufferProperties
+    class GeometryTrianglesNV {
+        // Constructors of Vulkan.GeometryTrianglesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class GeometryAABBNV {
+        // Constructors of Vulkan.GeometryAABBNV
 
-class PhysicalDeviceIDProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceIDProperties
+    class GeometryDataNV {
+        // Constructors of Vulkan.GeometryDataNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class GeometryNV {
+        // Constructors of Vulkan.GeometryNV
 
-class ExternalMemoryImageCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryImageCreateInfo
+    class AccelerationStructureInfoNV {
+        // Constructors of Vulkan.AccelerationStructureInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class AccelerationStructureCreateInfoNV {
+        // Constructors of Vulkan.AccelerationStructureCreateInfoNV
 
-class ExternalMemoryBufferCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalMemoryBufferCreateInfo
+    class BindAccelerationStructureMemoryInfoNV {
+        // Constructors of Vulkan.BindAccelerationStructureMemoryInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class WriteDescriptorSetAccelerationStructureNV {
+        // Constructors of Vulkan.WriteDescriptorSetAccelerationStructureNV
 
-class ExportMemoryAllocateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExportMemoryAllocateInfo
+    class AccelerationStructureMemoryRequirementsInfoNV {
+        // Constructors of Vulkan.AccelerationStructureMemoryRequirementsInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceRayTracingPropertiesNV {
+        // Constructors of Vulkan.PhysicalDeviceRayTracingPropertiesNV
 
-class PhysicalDeviceExternalFenceInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceExternalFenceInfo
+    class PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceRepresentativeFragmentTestFeaturesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineRepresentativeFragmentTestStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineRepresentativeFragmentTestStateCreateInfoNV
 
-class ExternalFenceProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalFenceProperties
+    class PhysicalDeviceImageViewImageFormatInfoEXT {
+        // Constructors of Vulkan.PhysicalDeviceImageViewImageFormatInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FilterCubicImageViewImageFormatPropertiesEXT {
+        // Constructors of Vulkan.FilterCubicImageViewImageFormatPropertiesEXT
 
-class ExportFenceCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExportFenceCreateInfo
+    class QueueGlobalPriorityEXT {
+        // Constructors of Vulkan.QueueGlobalPriorityEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceQueueGlobalPriorityCreateInfoEXT {
+        // Constructors of Vulkan.DeviceQueueGlobalPriorityCreateInfoEXT
 
-class ExportSemaphoreCreateInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExportSemaphoreCreateInfo
+    class ImportMemoryHostPointerInfoEXT {
+        // Constructors of Vulkan.ImportMemoryHostPointerInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryHostPointerPropertiesEXT {
+        // Constructors of Vulkan.MemoryHostPointerPropertiesEXT
 
-class PhysicalDeviceExternalSemaphoreInfo {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfo
+    class PhysicalDeviceExternalMemoryHostPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceExternalMemoryHostPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class TimeDomainEXT {
+        // Constructors of Vulkan.TimeDomainEXT
 
-class ExternalSemaphoreProperties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ExternalSemaphoreProperties
+    class CalibratedTimestampInfoEXT {
+        // Constructors of Vulkan.CalibratedTimestampInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceShaderCorePropertiesAMD {
+        // Constructors of Vulkan.PhysicalDeviceShaderCorePropertiesAMD
 
-class PhysicalDeviceMaintenance3Properties {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceMaintenance3Properties
+    class MemoryOverallocationBehaviorAMD {
+        // Constructors of Vulkan.MemoryOverallocationBehaviorAMD
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceMemoryOverallocationCreateInfoAMD {
+        // Constructors of Vulkan.DeviceMemoryOverallocationCreateInfoAMD
 
-class DescriptorSetLayoutSupport {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DescriptorSetLayoutSupport
+    class PhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class VertexInputBindingDivisorDescriptionEXT {
+        // Constructors of Vulkan.VertexInputBindingDivisorDescriptionEXT
 
-class PhysicalDeviceShaderDrawParametersFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceShaderDrawParametersFeatures
+    class PipelineVertexInputDivisorStateCreateInfoEXT {
+        // Constructors of Vulkan.PipelineVertexInputDivisorStateCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorFeaturesEXT
 
-class PhysicalDeviceShaderDrawParameterFeatures {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PhysicalDeviceShaderDrawParameterFeatures
+    class PipelineCreationFeedbackFlagBitsEXT {
+        // Constructors of Vulkan.PipelineCreationFeedbackFlagBitsEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCreationFeedbackFlagsEXT {
+        // Constructors of Vulkan.PipelineCreationFeedbackFlagsEXT
 
-class SurfaceKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SurfaceKHR
+    class PipelineCreationFeedbackEXT {
+        // Constructors of Vulkan.PipelineCreationFeedbackEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PipelineCreationFeedbackCreateInfoEXT {
+        // Constructors of Vulkan.PipelineCreationFeedbackCreateInfoEXT
 
-class ColorSpaceKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ColorSpaceKHR
+    class PhysicalDeviceComputeShaderDerivativesFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceComputeShaderDerivativesFeaturesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMeshShaderFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceMeshShaderFeaturesNV
 
-class PresentModeKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PresentModeKHR
+    class PhysicalDeviceMeshShaderPropertiesNV {
+        // Constructors of Vulkan.PhysicalDeviceMeshShaderPropertiesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DrawMeshTasksIndirectCommandNV {
+        // Constructors of Vulkan.DrawMeshTasksIndirectCommandNV
 
-class SurfaceTransformFlagBitsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SurfaceTransformFlagBitsKHR
+    class PhysicalDeviceFragmentShaderBarycentricFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceFragmentShaderBarycentricFeaturesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceShaderImageFootprintFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceShaderImageFootprintFeaturesNV
 
-class SurfaceTransformFlagsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SurfaceTransformFlagsKHR
+    class PipelineViewportExclusiveScissorStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineViewportExclusiveScissorStateCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceExclusiveScissorFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceExclusiveScissorFeaturesNV
 
-class CompositeAlphaFlagBitsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CompositeAlphaFlagBitsKHR
+    class QueueFamilyCheckpointPropertiesNV {
+        // Constructors of Vulkan.QueueFamilyCheckpointPropertiesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CheckpointDataNV {
+        // Constructors of Vulkan.CheckpointDataNV
 
-class CompositeAlphaFlagsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.CompositeAlphaFlagsKHR
+    class PhysicalDevicePCIBusInfoPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDevicePCIBusInfoPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DisplayNativeHdrSurfaceCapabilitiesAMD {
+        // Constructors of Vulkan.DisplayNativeHdrSurfaceCapabilitiesAMD
 
-class SurfaceCapabilitiesKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SurfaceCapabilitiesKHR
+    class SwapchainDisplayNativeHdrCreateInfoAMD {
+        // Constructors of Vulkan.SwapchainDisplayNativeHdrCreateInfoAMD
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceFragmentDensityMapFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapFeaturesEXT
 
-class SurfaceFormatKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SurfaceFormatKHR
+    class PhysicalDeviceFragmentDensityMapPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapPropertiesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class RenderPassFragmentDensityMapCreateInfoEXT {
+        // Constructors of Vulkan.RenderPassFragmentDensityMapCreateInfoEXT
 
-class SwapchainKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SwapchainKHR
+    class PhysicalDeviceScalarBlockLayoutFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceScalarBlockLayoutFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceMemoryBudgetPropertiesEXT {
+        // Constructors of Vulkan.PhysicalDeviceMemoryBudgetPropertiesEXT
 
-class SwapchainCreateFlagBitsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SwapchainCreateFlagBitsKHR
+    class PhysicalDeviceMemoryPriorityFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceMemoryPriorityFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class MemoryPriorityAllocateInfoEXT {
+        // Constructors of Vulkan.MemoryPriorityAllocateInfoEXT
 
-class SwapchainCreateFlagsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SwapchainCreateFlagsKHR
+    class PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class DeviceAddress {
+        // Constructors of Vulkan.DeviceAddress
 
-class DeviceGroupPresentModeFlagBitsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupPresentModeFlagBitsKHR
+    class PhysicalDeviceBufferDeviceAddressFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceBufferDeviceAddressFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceBufferAddressFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceBufferAddressFeaturesEXT
 
-class DeviceGroupPresentModeFlagsKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupPresentModeFlagsKHR
+    class BufferDeviceAddressInfoEXT {
+        // Constructors of Vulkan.BufferDeviceAddressInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class BufferDeviceAddressCreateInfoEXT {
+        // Constructors of Vulkan.BufferDeviceAddressCreateInfoEXT
 
-class SwapchainCreateInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.SwapchainCreateInfoKHR
+    class ImageStencilUsageCreateInfoEXT {
+        // Constructors of Vulkan.ImageStencilUsageCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ValidationFeatureEnableEXT {
+        // Constructors of Vulkan.ValidationFeatureEnableEXT
 
-class PresentInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.PresentInfoKHR
+    class ValidationFeatureDisableEXT {
+        // Constructors of Vulkan.ValidationFeatureDisableEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ValidationFeaturesEXT {
+        // Constructors of Vulkan.ValidationFeaturesEXT
 
-class ImageSwapchainCreateInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.ImageSwapchainCreateInfoKHR
+    class ComponentTypeNV {
+        // Constructors of Vulkan.ComponentTypeNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class ScopeNV {
+        // Constructors of Vulkan.ScopeNV
 
-class BindImageMemorySwapchainInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.BindImageMemorySwapchainInfoKHR
+    class CooperativeMatrixPropertiesNV {
+        // Constructors of Vulkan.CooperativeMatrixPropertiesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceCooperativeMatrixFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixFeaturesNV
 
-class AcquireNextImageInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.AcquireNextImageInfoKHR
+    class PhysicalDeviceCooperativeMatrixPropertiesNV {
+        // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixPropertiesNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class CoverageReductionModeNV {
+        // Constructors of Vulkan.CoverageReductionModeNV
 
-class DeviceGroupPresentCapabilitiesKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupPresentCapabilitiesKHR
+    class PipelineCoverageReductionStateCreateFlagsNV {
+        // Constructors of Vulkan.PipelineCoverageReductionStateCreateFlagsNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceCoverageReductionModeFeaturesNV {
+        // Constructors of Vulkan.PhysicalDeviceCoverageReductionModeFeaturesNV
 
-class DeviceGroupPresentInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupPresentInfoKHR
+    class PipelineCoverageReductionStateCreateInfoNV {
+        // Constructors of Vulkan.PipelineCoverageReductionStateCreateInfoNV
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class FramebufferMixedSamplesCombinationNV {
+        // Constructors of Vulkan.FramebufferMixedSamplesCombinationNV
 
-class DeviceGroupSwapchainCreateInfoKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DeviceGroupSwapchainCreateInfoKHR
+    class PhysicalDeviceYcbcrImageArraysFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceYcbcrImageArraysFeaturesEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class HeadlessSurfaceCreateFlagsEXT {
+        // Constructors of Vulkan.HeadlessSurfaceCreateFlagsEXT
 
-class DisplayKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DisplayKHR
+    class HeadlessSurfaceCreateInfoEXT {
+        // Constructors of Vulkan.HeadlessSurfaceCreateInfoEXT
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PhysicalDeviceHostQueryResetFeaturesEXT {
+        // Constructors of Vulkan.PhysicalDeviceHostQueryResetFeaturesEXT
 
-class DisplayModeKHR {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of Vulkan.DisplayModeKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneAlphaFlagBitsKHR {
-
-    // Constructors of Vulkan.DisplayPlaneAlphaFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneAlphaFlagsKHR {
-
-    // Constructors of Vulkan.DisplayPlaneAlphaFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayModeCreateFlagsKHR {
-
-    // Constructors of Vulkan.DisplayModeCreateFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplaySurfaceCreateFlagsKHR {
-
-    // Constructors of Vulkan.DisplaySurfaceCreateFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPropertiesKHR {
-
-    // Constructors of Vulkan.DisplayPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayModeParametersKHR {
-
-    // Constructors of Vulkan.DisplayModeParametersKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayModePropertiesKHR {
-
-    // Constructors of Vulkan.DisplayModePropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayModeCreateInfoKHR {
-
-    // Constructors of Vulkan.DisplayModeCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneCapabilitiesKHR {
-
-    // Constructors of Vulkan.DisplayPlaneCapabilitiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlanePropertiesKHR {
-
-    // Constructors of Vulkan.DisplayPlanePropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplaySurfaceCreateInfoKHR {
-
-    // Constructors of Vulkan.DisplaySurfaceCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPresentInfoKHR {
-
-    // Constructors of Vulkan.DisplayPresentInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class RenderPassMultiviewCreateInfoKHR {
-
-    // Constructors of Vulkan.RenderPassMultiviewCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMultiviewFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceMultiviewFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMultiviewPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceMultiviewPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFeatures2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceFeatures2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceProperties2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class FormatProperties2KHR {
-
-    // Constructors of Vulkan.FormatProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImageFormatProperties2KHR {
-
-    // Constructors of Vulkan.ImageFormatProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceImageFormatInfo2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class QueueFamilyProperties2KHR {
-
-    // Constructors of Vulkan.QueueFamilyProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMemoryProperties2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceMemoryProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SparseImageFormatProperties2KHR {
-
-    // Constructors of Vulkan.SparseImageFormatProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceSparseImageFormatInfo2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PeerMemoryFeatureFlagsKHR {
-
-    // Constructors of Vulkan.PeerMemoryFeatureFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PeerMemoryFeatureFlagBitsKHR {
-
-    // Constructors of Vulkan.PeerMemoryFeatureFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryAllocateFlagsKHR {
-
-    // Constructors of Vulkan.MemoryAllocateFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryAllocateFlagBitsKHR {
-
-    // Constructors of Vulkan.MemoryAllocateFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryAllocateFlagsInfoKHR {
-
-    // Constructors of Vulkan.MemoryAllocateFlagsInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGroupRenderPassBeginInfoKHR {
-
-    // Constructors of Vulkan.DeviceGroupRenderPassBeginInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGroupCommandBufferBeginInfoKHR {
-
-    // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGroupSubmitInfoKHR {
-
-    // Constructors of Vulkan.DeviceGroupSubmitInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGroupBindSparseInfoKHR {
-
-    // Constructors of Vulkan.DeviceGroupBindSparseInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BindBufferMemoryDeviceGroupInfoKHR {
-
-    // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BindImageMemoryDeviceGroupInfoKHR {
-
-    // Constructors of Vulkan.BindImageMemoryDeviceGroupInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class CommandPoolTrimFlagsKHR {
-
-    // Constructors of Vulkan.CommandPoolTrimFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceGroupPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceGroupPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGroupDeviceCreateInfoKHR {
-
-    // Constructors of Vulkan.DeviceGroupDeviceCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryHandleTypeFlagsKHR {
-
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryHandleTypeFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryFeatureFlagsKHR {
-
-    // Constructors of Vulkan.ExternalMemoryFeatureFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryFeatureFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryPropertiesKHR {
-
-    // Constructors of Vulkan.ExternalMemoryPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExternalImageFormatInfoKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalImageFormatPropertiesKHR {
-
-    // Constructors of Vulkan.ExternalImageFormatPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExternalBufferInfoKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceExternalBufferInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalBufferPropertiesKHR {
-
-    // Constructors of Vulkan.ExternalBufferPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceIDPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceIDPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryImageCreateInfoKHR {
-
-    // Constructors of Vulkan.ExternalMemoryImageCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryBufferCreateInfoKHR {
-
-    // Constructors of Vulkan.ExternalMemoryBufferCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExportMemoryAllocateInfoKHR {
-
-    // Constructors of Vulkan.ExportMemoryAllocateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImportMemoryFdInfoKHR {
-
-    // Constructors of Vulkan.ImportMemoryFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryFdPropertiesKHR {
-
-    // Constructors of Vulkan.MemoryFdPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryGetFdInfoKHR {
-
-    // Constructors of Vulkan.MemoryGetFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalSemaphoreHandleTypeFlagsKHR {
-
-    // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalSemaphoreHandleTypeFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalSemaphoreFeatureFlagsKHR {
-
-    // Constructors of Vulkan.ExternalSemaphoreFeatureFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalSemaphoreFeatureFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExternalSemaphoreInfoKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalSemaphorePropertiesKHR {
-
-    // Constructors of Vulkan.ExternalSemaphorePropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SemaphoreImportFlagsKHR {
-
-    // Constructors of Vulkan.SemaphoreImportFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SemaphoreImportFlagBitsKHR {
-
-    // Constructors of Vulkan.SemaphoreImportFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExportSemaphoreCreateInfoKHR {
-
-    // Constructors of Vulkan.ExportSemaphoreCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImportSemaphoreFdInfoKHR {
-
-    // Constructors of Vulkan.ImportSemaphoreFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SemaphoreGetFdInfoKHR {
-
-    // Constructors of Vulkan.SemaphoreGetFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDevicePushDescriptorPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDevicePushDescriptorPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFloat16Int8FeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceFloat16Int8FeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDevice16BitStorageFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDevice16BitStorageFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class RectLayerKHR {
-
-    // Constructors of Vulkan.RectLayerKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PresentRegionKHR {
-
-    // Constructors of Vulkan.PresentRegionKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PresentRegionsKHR {
-
-    // Constructors of Vulkan.PresentRegionsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorUpdateTemplateKHR {
-
-    // Constructors of Vulkan.DescriptorUpdateTemplateKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorUpdateTemplateTypeKHR {
-
-    // Constructors of Vulkan.DescriptorUpdateTemplateTypeKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorUpdateTemplateCreateFlagsKHR {
-
-    // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorUpdateTemplateEntryKHR {
-
-    // Constructors of Vulkan.DescriptorUpdateTemplateEntryKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorUpdateTemplateCreateInfoKHR {
-
-    // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class AttachmentDescription2KHR {
-
-    // Constructors of Vulkan.AttachmentDescription2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class AttachmentReference2KHR {
-
-    // Constructors of Vulkan.AttachmentReference2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassDescription2KHR {
-
-    // Constructors of Vulkan.SubpassDescription2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassDependency2KHR {
-
-    // Constructors of Vulkan.SubpassDependency2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class RenderPassCreateInfo2KHR {
-
-    // Constructors of Vulkan.RenderPassCreateInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassBeginInfoKHR {
-
-    // Constructors of Vulkan.SubpassBeginInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassEndInfoKHR {
-
-    // Constructors of Vulkan.SubpassEndInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SharedPresentSurfaceCapabilitiesKHR {
-
-    // Constructors of Vulkan.SharedPresentSurfaceCapabilitiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalFenceHandleTypeFlagsKHR {
-
-    // Constructors of Vulkan.ExternalFenceHandleTypeFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalFenceHandleTypeFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalFenceHandleTypeFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalFenceFeatureFlagsKHR {
-
-    // Constructors of Vulkan.ExternalFenceFeatureFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalFenceFeatureFlagBitsKHR {
-
-    // Constructors of Vulkan.ExternalFenceFeatureFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExternalFenceInfoKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceExternalFenceInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalFencePropertiesKHR {
-
-    // Constructors of Vulkan.ExternalFencePropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class FenceImportFlagsKHR {
-
-    // Constructors of Vulkan.FenceImportFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class FenceImportFlagBitsKHR {
-
-    // Constructors of Vulkan.FenceImportFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ExportFenceCreateInfoKHR {
-
-    // Constructors of Vulkan.ExportFenceCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImportFenceFdInfoKHR {
-
-    // Constructors of Vulkan.ImportFenceFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class FenceGetFdInfoKHR {
-
-    // Constructors of Vulkan.FenceGetFdInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PointClippingBehaviorKHR {
-
-    // Constructors of Vulkan.PointClippingBehaviorKHR
-
-_init(...args: any[]): void;
-
-}
-
-class TessellationDomainOriginKHR {
-
-    // Constructors of Vulkan.TessellationDomainOriginKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDevicePointClippingPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDevicePointClippingPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class RenderPassInputAttachmentAspectCreateInfoKHR {
-
-    // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class InputAttachmentAspectReferenceKHR {
-
-    // Constructors of Vulkan.InputAttachmentAspectReferenceKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImageViewUsageCreateInfoKHR {
-
-    // Constructors of Vulkan.ImageViewUsageCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineTessellationDomainOriginStateCreateInfoKHR {
-
-    // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceSurfaceInfo2KHR {
-
-    // Constructors of Vulkan.PhysicalDeviceSurfaceInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceCapabilities2KHR {
-
-    // Constructors of Vulkan.SurfaceCapabilities2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceFormat2KHR {
-
-    // Constructors of Vulkan.SurfaceFormat2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceVariablePointerFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceVariablePointerFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceVariablePointersFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceVariablePointersFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayProperties2KHR {
-
-    // Constructors of Vulkan.DisplayProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneProperties2KHR {
-
-    // Constructors of Vulkan.DisplayPlaneProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayModeProperties2KHR {
-
-    // Constructors of Vulkan.DisplayModeProperties2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneInfo2KHR {
-
-    // Constructors of Vulkan.DisplayPlaneInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPlaneCapabilities2KHR {
-
-    // Constructors of Vulkan.DisplayPlaneCapabilities2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryDedicatedRequirementsKHR {
-
-    // Constructors of Vulkan.MemoryDedicatedRequirementsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryDedicatedAllocateInfoKHR {
-
-    // Constructors of Vulkan.MemoryDedicatedAllocateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BufferMemoryRequirementsInfo2KHR {
-
-    // Constructors of Vulkan.BufferMemoryRequirementsInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImageMemoryRequirementsInfo2KHR {
-
-    // Constructors of Vulkan.ImageMemoryRequirementsInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImageSparseMemoryRequirementsInfo2KHR {
-
-    // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class SparseImageMemoryRequirements2KHR {
-
-    // Constructors of Vulkan.SparseImageMemoryRequirements2KHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImageFormatListCreateInfoKHR {
-
-    // Constructors of Vulkan.ImageFormatListCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrConversionKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrConversionKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrModelConversionKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrModelConversionKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrRangeKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrRangeKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ChromaLocationKHR {
-
-    // Constructors of Vulkan.ChromaLocationKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrConversionCreateInfoKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrConversionCreateInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrConversionInfoKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrConversionInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BindImagePlaneMemoryInfoKHR {
-
-    // Constructors of Vulkan.BindImagePlaneMemoryInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ImagePlaneMemoryRequirementsInfoKHR {
-
-    // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerYcbcrConversionImageFormatPropertiesKHR {
-
-    // Constructors of Vulkan.SamplerYcbcrConversionImageFormatPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BindBufferMemoryInfoKHR {
-
-    // Constructors of Vulkan.BindBufferMemoryInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class BindImageMemoryInfoKHR {
-
-    // Constructors of Vulkan.BindImageMemoryInfoKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMaintenance3PropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceMaintenance3PropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorSetLayoutSupportKHR {
-
-    // Constructors of Vulkan.DescriptorSetLayoutSupportKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDevice8BitStorageFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDevice8BitStorageFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceShaderAtomicInt64FeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceShaderAtomicInt64FeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DriverIdKHR {
-
-    // Constructors of Vulkan.DriverIdKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ConformanceVersionKHR {
-
-    // Constructors of Vulkan.ConformanceVersionKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDriverPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceDriverPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFloatControlsPropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceFloatControlsPropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ResolveModeFlagBitsKHR {
-
-    // Constructors of Vulkan.ResolveModeFlagBitsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class ResolveModeFlagsKHR {
-
-    // Constructors of Vulkan.ResolveModeFlagsKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassDescriptionDepthStencilResolveKHR {
-
-    // Constructors of Vulkan.SubpassDescriptionDepthStencilResolveKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDepthStencilResolvePropertiesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceDepthStencilResolvePropertiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceVulkanMemoryModelFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceVulkanMemoryModelFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceProtectedCapabilitiesKHR {
-
-    // Constructors of Vulkan.SurfaceProtectedCapabilitiesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
-
-    // Constructors of Vulkan.PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR
-
-_init(...args: any[]): void;
-
-}
-
-class DebugReportCallbackEXT {
-
-    // Constructors of Vulkan.DebugReportCallbackEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugReportObjectTypeEXT {
-
-    // Constructors of Vulkan.DebugReportObjectTypeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugReportFlagBitsEXT {
-
-    // Constructors of Vulkan.DebugReportFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugReportFlagsEXT {
-
-    // Constructors of Vulkan.DebugReportFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugReportCallbackCreateInfoEXT {
-
-    // Constructors of Vulkan.DebugReportCallbackCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class RasterizationOrderAMD {
-
-    // Constructors of Vulkan.RasterizationOrderAMD
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationStateRasterizationOrderAMD {
-
-    // Constructors of Vulkan.PipelineRasterizationStateRasterizationOrderAMD
-
-_init(...args: any[]): void;
-
-}
-
-class DebugMarkerObjectNameInfoEXT {
-
-    // Constructors of Vulkan.DebugMarkerObjectNameInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugMarkerObjectTagInfoEXT {
-
-    // Constructors of Vulkan.DebugMarkerObjectTagInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugMarkerMarkerInfoEXT {
-
-    // Constructors of Vulkan.DebugMarkerMarkerInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DedicatedAllocationImageCreateInfoNV {
-
-    // Constructors of Vulkan.DedicatedAllocationImageCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class DedicatedAllocationBufferCreateInfoNV {
-
-    // Constructors of Vulkan.DedicatedAllocationBufferCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class DedicatedAllocationMemoryAllocateInfoNV {
-
-    // Constructors of Vulkan.DedicatedAllocationMemoryAllocateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationStateStreamCreateFlagsEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationStateStreamCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceTransformFeedbackFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceTransformFeedbackFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceTransformFeedbackPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceTransformFeedbackPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationStateStreamCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationStateStreamCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageViewHandleInfoNVX {
-
-    // Constructors of Vulkan.ImageViewHandleInfoNVX
-
-_init(...args: any[]): void;
-
-}
-
-class TextureLODGatherFormatPropertiesAMD {
-
-    // Constructors of Vulkan.TextureLODGatherFormatPropertiesAMD
-
-_init(...args: any[]): void;
-
-}
-
-class ShaderInfoTypeAMD {
-
-    // Constructors of Vulkan.ShaderInfoTypeAMD
-
-_init(...args: any[]): void;
-
-}
-
-class ShaderResourceUsageAMD {
-
-    // Constructors of Vulkan.ShaderResourceUsageAMD
-
-_init(...args: any[]): void;
-
-}
-
-class ShaderStatisticsInfoAMD {
-
-    // Constructors of Vulkan.ShaderStatisticsInfoAMD
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceCornerSampledImageFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceCornerSampledImageFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryHandleTypeFlagBitsNV {
-
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryHandleTypeFlagsNV {
-
-    // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryFeatureFlagBitsNV {
-
-    // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryFeatureFlagsNV {
-
-    // Constructors of Vulkan.ExternalMemoryFeatureFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalImageFormatPropertiesNV {
-
-    // Constructors of Vulkan.ExternalImageFormatPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExternalMemoryImageCreateInfoNV {
-
-    // Constructors of Vulkan.ExternalMemoryImageCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class ExportMemoryAllocateInfoNV {
-
-    // Constructors of Vulkan.ExportMemoryAllocateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationCheckEXT {
-
-    // Constructors of Vulkan.ValidationCheckEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationFlagsEXT {
-
-    // Constructors of Vulkan.ValidationFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageViewASTCDecodeModeEXT {
-
-    // Constructors of Vulkan.ImageViewASTCDecodeModeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceASTCDecodeFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceASTCDecodeFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ConditionalRenderingFlagBitsEXT {
-
-    // Constructors of Vulkan.ConditionalRenderingFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ConditionalRenderingFlagsEXT {
-
-    // Constructors of Vulkan.ConditionalRenderingFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ConditionalRenderingBeginInfoEXT {
-
-    // Constructors of Vulkan.ConditionalRenderingBeginInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceConditionalRenderingFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceConditionalRenderingFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class CommandBufferInheritanceConditionalRenderingInfoEXT {
-
-    // Constructors of Vulkan.CommandBufferInheritanceConditionalRenderingInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableNVX {
-
-    // Constructors of Vulkan.ObjectTableNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsLayoutNVX {
-
-    // Constructors of Vulkan.IndirectCommandsLayoutNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsTokenTypeNVX {
-
-    // Constructors of Vulkan.IndirectCommandsTokenTypeNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectEntryTypeNVX {
-
-    // Constructors of Vulkan.ObjectEntryTypeNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsLayoutUsageFlagBitsNVX {
-
-    // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagBitsNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsLayoutUsageFlagsNVX {
-
-    // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagsNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectEntryUsageFlagBitsNVX {
-
-    // Constructors of Vulkan.ObjectEntryUsageFlagBitsNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectEntryUsageFlagsNVX {
-
-    // Constructors of Vulkan.ObjectEntryUsageFlagsNVX
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGeneratedCommandsFeaturesNVX {
-
-    // Constructors of Vulkan.DeviceGeneratedCommandsFeaturesNVX
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceGeneratedCommandsLimitsNVX {
-
-    // Constructors of Vulkan.DeviceGeneratedCommandsLimitsNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsTokenNVX {
-
-    // Constructors of Vulkan.IndirectCommandsTokenNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsLayoutTokenNVX {
-
-    // Constructors of Vulkan.IndirectCommandsLayoutTokenNVX
-
-_init(...args: any[]): void;
-
-}
-
-class IndirectCommandsLayoutCreateInfoNVX {
-
-    // Constructors of Vulkan.IndirectCommandsLayoutCreateInfoNVX
-
-_init(...args: any[]): void;
-
-}
-
-class CmdProcessCommandsInfoNVX {
-
-    // Constructors of Vulkan.CmdProcessCommandsInfoNVX
-
-_init(...args: any[]): void;
-
-}
-
-class CmdReserveSpaceForCommandsInfoNVX {
-
-    // Constructors of Vulkan.CmdReserveSpaceForCommandsInfoNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableCreateInfoNVX {
-
-    // Constructors of Vulkan.ObjectTableCreateInfoNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableEntryNVX {
-
-    // Constructors of Vulkan.ObjectTableEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTablePipelineEntryNVX {
-
-    // Constructors of Vulkan.ObjectTablePipelineEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableDescriptorSetEntryNVX {
-
-    // Constructors of Vulkan.ObjectTableDescriptorSetEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableVertexBufferEntryNVX {
-
-    // Constructors of Vulkan.ObjectTableVertexBufferEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTableIndexBufferEntryNVX {
-
-    // Constructors of Vulkan.ObjectTableIndexBufferEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ObjectTablePushConstantEntryNVX {
-
-    // Constructors of Vulkan.ObjectTablePushConstantEntryNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ViewportWScalingNV {
-
-    // Constructors of Vulkan.ViewportWScalingNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportWScalingStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineViewportWScalingStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceCounterFlagBitsEXT {
-
-    // Constructors of Vulkan.SurfaceCounterFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceCounterFlagsEXT {
-
-    // Constructors of Vulkan.SurfaceCounterFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SurfaceCapabilities2EXT {
-
-    // Constructors of Vulkan.SurfaceCapabilities2EXT
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPowerStateEXT {
-
-    // Constructors of Vulkan.DisplayPowerStateEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceEventTypeEXT {
-
-    // Constructors of Vulkan.DeviceEventTypeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayEventTypeEXT {
-
-    // Constructors of Vulkan.DisplayEventTypeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayPowerInfoEXT {
-
-    // Constructors of Vulkan.DisplayPowerInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceEventInfoEXT {
-
-    // Constructors of Vulkan.DeviceEventInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayEventInfoEXT {
-
-    // Constructors of Vulkan.DisplayEventInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SwapchainCounterCreateInfoEXT {
-
-    // Constructors of Vulkan.SwapchainCounterCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class RefreshCycleDurationGOOGLE {
-
-    // Constructors of Vulkan.RefreshCycleDurationGOOGLE
-
-_init(...args: any[]): void;
-
-}
-
-class PastPresentationTimingGOOGLE {
-
-    // Constructors of Vulkan.PastPresentationTimingGOOGLE
-
-_init(...args: any[]): void;
-
-}
-
-class PresentTimeGOOGLE {
-
-    // Constructors of Vulkan.PresentTimeGOOGLE
-
-_init(...args: any[]): void;
-
-}
-
-class PresentTimesInfoGOOGLE {
-
-    // Constructors of Vulkan.PresentTimesInfoGOOGLE
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
-
-    // Constructors of Vulkan.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
-
-_init(...args: any[]): void;
-
-}
-
-class ViewportCoordinateSwizzleNV {
-
-    // Constructors of Vulkan.ViewportCoordinateSwizzleNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportSwizzleStateCreateFlagsNV {
-
-    // Constructors of Vulkan.PipelineViewportSwizzleStateCreateFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class ViewportSwizzleNV {
-
-    // Constructors of Vulkan.ViewportSwizzleNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportSwizzleStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineViewportSwizzleStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class DiscardRectangleModeEXT {
-
-    // Constructors of Vulkan.DiscardRectangleModeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineDiscardRectangleStateCreateFlagsEXT {
-
-    // Constructors of Vulkan.PipelineDiscardRectangleStateCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDiscardRectanglePropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceDiscardRectanglePropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineDiscardRectangleStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineDiscardRectangleStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ConservativeRasterizationModeEXT {
-
-    // Constructors of Vulkan.ConservativeRasterizationModeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationConservativeStateCreateFlagsEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceConservativeRasterizationPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceConservativeRasterizationPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationConservativeStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationDepthClipStateCreateFlagsEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDepthClipEnableFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceDepthClipEnableFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRasterizationDepthClipStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class XYColorEXT {
-
-    // Constructors of Vulkan.XYColorEXT
-
-_init(...args: any[]): void;
-
-}
-
-class HdrMetadataEXT {
-
-    // Constructors of Vulkan.HdrMetadataEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessengerEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessengerEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessengerCallbackDataFlagsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessengerCallbackDataFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessengerCreateFlagsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessengerCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessageSeverityFlagBitsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessageSeverityFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessageSeverityFlagsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessageSeverityFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessageTypeFlagBitsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessageTypeFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessageTypeFlagsEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessageTypeFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsObjectNameInfoEXT {
-
-    // Constructors of Vulkan.DebugUtilsObjectNameInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsObjectTagInfoEXT {
-
-    // Constructors of Vulkan.DebugUtilsObjectTagInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsLabelEXT {
-
-    // Constructors of Vulkan.DebugUtilsLabelEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessengerCallbackDataEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessengerCallbackDataEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DebugUtilsMessengerCreateInfoEXT {
-
-    // Constructors of Vulkan.DebugUtilsMessengerCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerReductionModeEXT {
-
-    // Constructors of Vulkan.SamplerReductionModeEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SamplerReductionModeCreateInfoEXT {
-
-    // Constructors of Vulkan.SamplerReductionModeCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceSamplerFilterMinmaxPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceInlineUniformBlockFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceInlineUniformBlockPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class WriteDescriptorSetInlineUniformBlockEXT {
-
-    // Constructors of Vulkan.WriteDescriptorSetInlineUniformBlockEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorPoolInlineUniformBlockCreateInfoEXT {
-
-    // Constructors of Vulkan.DescriptorPoolInlineUniformBlockCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SampleLocationEXT {
-
-    // Constructors of Vulkan.SampleLocationEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SampleLocationsInfoEXT {
-
-    // Constructors of Vulkan.SampleLocationsInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class AttachmentSampleLocationsEXT {
-
-    // Constructors of Vulkan.AttachmentSampleLocationsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class SubpassSampleLocationsEXT {
-
-    // Constructors of Vulkan.SubpassSampleLocationsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class RenderPassSampleLocationsBeginInfoEXT {
-
-    // Constructors of Vulkan.RenderPassSampleLocationsBeginInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineSampleLocationsStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineSampleLocationsStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceSampleLocationsPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceSampleLocationsPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class MultisamplePropertiesEXT {
-
-    // Constructors of Vulkan.MultisamplePropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class BlendOverlapEXT {
-
-    // Constructors of Vulkan.BlendOverlapEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceBlendOperationAdvancedPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineColorBlendAdvancedStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineColorBlendAdvancedStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageToColorStateCreateFlagsNV {
-
-    // Constructors of Vulkan.PipelineCoverageToColorStateCreateFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageToColorStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineCoverageToColorStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class CoverageModulationModeNV {
-
-    // Constructors of Vulkan.CoverageModulationModeNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageModulationStateCreateFlagsNV {
-
-    // Constructors of Vulkan.PipelineCoverageModulationStateCreateFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageModulationStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineCoverageModulationStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class DrmFormatModifierPropertiesEXT {
-
-    // Constructors of Vulkan.DrmFormatModifierPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DrmFormatModifierPropertiesListEXT {
-
-    // Constructors of Vulkan.DrmFormatModifierPropertiesListEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceImageDrmFormatModifierInfoEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceImageDrmFormatModifierInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageDrmFormatModifierListCreateInfoEXT {
-
-    // Constructors of Vulkan.ImageDrmFormatModifierListCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageDrmFormatModifierExplicitCreateInfoEXT {
-
-    // Constructors of Vulkan.ImageDrmFormatModifierExplicitCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageDrmFormatModifierPropertiesEXT {
-
-    // Constructors of Vulkan.ImageDrmFormatModifierPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationCacheEXT {
-
-    // Constructors of Vulkan.ValidationCacheEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationCacheHeaderVersionEXT {
-
-    // Constructors of Vulkan.ValidationCacheHeaderVersionEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationCacheCreateFlagsEXT {
-
-    // Constructors of Vulkan.ValidationCacheCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationCacheCreateInfoEXT {
-
-    // Constructors of Vulkan.ValidationCacheCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ShaderModuleValidationCacheCreateInfoEXT {
-
-    // Constructors of Vulkan.ShaderModuleValidationCacheCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorBindingFlagBitsEXT {
-
-    // Constructors of Vulkan.DescriptorBindingFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorBindingFlagsEXT {
-
-    // Constructors of Vulkan.DescriptorBindingFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorSetLayoutBindingFlagsCreateInfoEXT {
-
-    // Constructors of Vulkan.DescriptorSetLayoutBindingFlagsCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDescriptorIndexingFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDescriptorIndexingPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorSetVariableDescriptorCountAllocateInfoEXT {
-
-    // Constructors of Vulkan.DescriptorSetVariableDescriptorCountAllocateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DescriptorSetVariableDescriptorCountLayoutSupportEXT {
-
-    // Constructors of Vulkan.DescriptorSetVariableDescriptorCountLayoutSupportEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ShadingRatePaletteEntryNV {
-
-    // Constructors of Vulkan.ShadingRatePaletteEntryNV
-
-_init(...args: any[]): void;
-
-}
-
-class CoarseSampleOrderTypeNV {
-
-    // Constructors of Vulkan.CoarseSampleOrderTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class ShadingRatePaletteNV {
-
-    // Constructors of Vulkan.ShadingRatePaletteNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportShadingRateImageStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineViewportShadingRateImageStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceShadingRateImageFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceShadingRateImageFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceShadingRateImagePropertiesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceShadingRateImagePropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class CoarseSampleLocationNV {
-
-    // Constructors of Vulkan.CoarseSampleLocationNV
-
-_init(...args: any[]): void;
-
-}
-
-class CoarseSampleOrderCustomNV {
-
-    // Constructors of Vulkan.CoarseSampleOrderCustomNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportCoarseSampleOrderStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineViewportCoarseSampleOrderStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureNV {
-
-    // Constructors of Vulkan.AccelerationStructureNV
-
-_init(...args: any[]): void;
-
-}
-
-class RayTracingShaderGroupTypeNV {
-
-    // Constructors of Vulkan.RayTracingShaderGroupTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryTypeNV {
-
-    // Constructors of Vulkan.GeometryTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureTypeNV {
-
-    // Constructors of Vulkan.AccelerationStructureTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class CopyAccelerationStructureModeNV {
-
-    // Constructors of Vulkan.CopyAccelerationStructureModeNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureMemoryRequirementsTypeNV {
-
-    // Constructors of Vulkan.AccelerationStructureMemoryRequirementsTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryFlagBitsNV {
-
-    // Constructors of Vulkan.GeometryFlagBitsNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryFlagsNV {
-
-    // Constructors of Vulkan.GeometryFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryInstanceFlagBitsNV {
-
-    // Constructors of Vulkan.GeometryInstanceFlagBitsNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryInstanceFlagsNV {
-
-    // Constructors of Vulkan.GeometryInstanceFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class BuildAccelerationStructureFlagBitsNV {
-
-    // Constructors of Vulkan.BuildAccelerationStructureFlagBitsNV
-
-_init(...args: any[]): void;
-
-}
-
-class BuildAccelerationStructureFlagsNV {
-
-    // Constructors of Vulkan.BuildAccelerationStructureFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class RayTracingShaderGroupCreateInfoNV {
-
-    // Constructors of Vulkan.RayTracingShaderGroupCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class RayTracingPipelineCreateInfoNV {
-
-    // Constructors of Vulkan.RayTracingPipelineCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryTrianglesNV {
-
-    // Constructors of Vulkan.GeometryTrianglesNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryAABBNV {
-
-    // Constructors of Vulkan.GeometryAABBNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryDataNV {
-
-    // Constructors of Vulkan.GeometryDataNV
-
-_init(...args: any[]): void;
-
-}
-
-class GeometryNV {
-
-    // Constructors of Vulkan.GeometryNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureInfoNV {
-
-    // Constructors of Vulkan.AccelerationStructureInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureCreateInfoNV {
-
-    // Constructors of Vulkan.AccelerationStructureCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class BindAccelerationStructureMemoryInfoNV {
-
-    // Constructors of Vulkan.BindAccelerationStructureMemoryInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class WriteDescriptorSetAccelerationStructureNV {
-
-    // Constructors of Vulkan.WriteDescriptorSetAccelerationStructureNV
-
-_init(...args: any[]): void;
-
-}
-
-class AccelerationStructureMemoryRequirementsInfoNV {
-
-    // Constructors of Vulkan.AccelerationStructureMemoryRequirementsInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceRayTracingPropertiesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceRayTracingPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceRepresentativeFragmentTestFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineRepresentativeFragmentTestStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineRepresentativeFragmentTestStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceImageViewImageFormatInfoEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceImageViewImageFormatInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class FilterCubicImageViewImageFormatPropertiesEXT {
-
-    // Constructors of Vulkan.FilterCubicImageViewImageFormatPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class QueueGlobalPriorityEXT {
-
-    // Constructors of Vulkan.QueueGlobalPriorityEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceQueueGlobalPriorityCreateInfoEXT {
-
-    // Constructors of Vulkan.DeviceQueueGlobalPriorityCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImportMemoryHostPointerInfoEXT {
-
-    // Constructors of Vulkan.ImportMemoryHostPointerInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryHostPointerPropertiesEXT {
-
-    // Constructors of Vulkan.MemoryHostPointerPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExternalMemoryHostPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceExternalMemoryHostPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class TimeDomainEXT {
-
-    // Constructors of Vulkan.TimeDomainEXT
-
-_init(...args: any[]): void;
-
-}
-
-class CalibratedTimestampInfoEXT {
-
-    // Constructors of Vulkan.CalibratedTimestampInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceShaderCorePropertiesAMD {
-
-    // Constructors of Vulkan.PhysicalDeviceShaderCorePropertiesAMD
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryOverallocationBehaviorAMD {
-
-    // Constructors of Vulkan.MemoryOverallocationBehaviorAMD
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceMemoryOverallocationCreateInfoAMD {
-
-    // Constructors of Vulkan.DeviceMemoryOverallocationCreateInfoAMD
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceVertexAttributeDivisorPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class VertexInputBindingDivisorDescriptionEXT {
-
-    // Constructors of Vulkan.VertexInputBindingDivisorDescriptionEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineVertexInputDivisorStateCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineVertexInputDivisorStateCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCreationFeedbackFlagBitsEXT {
-
-    // Constructors of Vulkan.PipelineCreationFeedbackFlagBitsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCreationFeedbackFlagsEXT {
-
-    // Constructors of Vulkan.PipelineCreationFeedbackFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCreationFeedbackEXT {
-
-    // Constructors of Vulkan.PipelineCreationFeedbackEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCreationFeedbackCreateInfoEXT {
-
-    // Constructors of Vulkan.PipelineCreationFeedbackCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceComputeShaderDerivativesFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceComputeShaderDerivativesFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMeshShaderFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceMeshShaderFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMeshShaderPropertiesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceMeshShaderPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class DrawMeshTasksIndirectCommandNV {
-
-    // Constructors of Vulkan.DrawMeshTasksIndirectCommandNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFragmentShaderBarycentricFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceFragmentShaderBarycentricFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceShaderImageFootprintFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceShaderImageFootprintFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineViewportExclusiveScissorStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineViewportExclusiveScissorStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceExclusiveScissorFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceExclusiveScissorFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class QueueFamilyCheckpointPropertiesNV {
-
-    // Constructors of Vulkan.QueueFamilyCheckpointPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class CheckpointDataNV {
-
-    // Constructors of Vulkan.CheckpointDataNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDevicePCIBusInfoPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDevicePCIBusInfoPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class DisplayNativeHdrSurfaceCapabilitiesAMD {
-
-    // Constructors of Vulkan.DisplayNativeHdrSurfaceCapabilitiesAMD
-
-_init(...args: any[]): void;
-
-}
-
-class SwapchainDisplayNativeHdrCreateInfoAMD {
-
-    // Constructors of Vulkan.SwapchainDisplayNativeHdrCreateInfoAMD
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFragmentDensityMapFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceFragmentDensityMapPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class RenderPassFragmentDensityMapCreateInfoEXT {
-
-    // Constructors of Vulkan.RenderPassFragmentDensityMapCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceScalarBlockLayoutFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceScalarBlockLayoutFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMemoryBudgetPropertiesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceMemoryBudgetPropertiesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceMemoryPriorityFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceMemoryPriorityFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class MemoryPriorityAllocateInfoEXT {
-
-    // Constructors of Vulkan.MemoryPriorityAllocateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class DeviceAddress {
-
-    // Constructors of Vulkan.DeviceAddress
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceBufferDeviceAddressFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceBufferDeviceAddressFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceBufferAddressFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceBufferAddressFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class BufferDeviceAddressInfoEXT {
-
-    // Constructors of Vulkan.BufferDeviceAddressInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class BufferDeviceAddressCreateInfoEXT {
-
-    // Constructors of Vulkan.BufferDeviceAddressCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ImageStencilUsageCreateInfoEXT {
-
-    // Constructors of Vulkan.ImageStencilUsageCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationFeatureEnableEXT {
-
-    // Constructors of Vulkan.ValidationFeatureEnableEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationFeatureDisableEXT {
-
-    // Constructors of Vulkan.ValidationFeatureDisableEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ValidationFeaturesEXT {
-
-    // Constructors of Vulkan.ValidationFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class ComponentTypeNV {
-
-    // Constructors of Vulkan.ComponentTypeNV
-
-_init(...args: any[]): void;
-
-}
-
-class ScopeNV {
-
-    // Constructors of Vulkan.ScopeNV
-
-_init(...args: any[]): void;
-
-}
-
-class CooperativeMatrixPropertiesNV {
-
-    // Constructors of Vulkan.CooperativeMatrixPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceCooperativeMatrixFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceCooperativeMatrixPropertiesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixPropertiesNV
-
-_init(...args: any[]): void;
-
-}
-
-class CoverageReductionModeNV {
-
-    // Constructors of Vulkan.CoverageReductionModeNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageReductionStateCreateFlagsNV {
-
-    // Constructors of Vulkan.PipelineCoverageReductionStateCreateFlagsNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceCoverageReductionModeFeaturesNV {
-
-    // Constructors of Vulkan.PhysicalDeviceCoverageReductionModeFeaturesNV
-
-_init(...args: any[]): void;
-
-}
-
-class PipelineCoverageReductionStateCreateInfoNV {
-
-    // Constructors of Vulkan.PipelineCoverageReductionStateCreateInfoNV
-
-_init(...args: any[]): void;
-
-}
-
-class FramebufferMixedSamplesCombinationNV {
-
-    // Constructors of Vulkan.FramebufferMixedSamplesCombinationNV
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceYcbcrImageArraysFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceYcbcrImageArraysFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-class HeadlessSurfaceCreateFlagsEXT {
-
-    // Constructors of Vulkan.HeadlessSurfaceCreateFlagsEXT
-
-_init(...args: any[]): void;
-
-}
-
-class HeadlessSurfaceCreateInfoEXT {
-
-    // Constructors of Vulkan.HeadlessSurfaceCreateInfoEXT
-
-_init(...args: any[]): void;
-
-}
-
-class PhysicalDeviceHostQueryResetFeaturesEXT {
-
-    // Constructors of Vulkan.PhysicalDeviceHostQueryResetFeaturesEXT
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Vulkan;

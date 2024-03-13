@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,62 +15,48 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace DBusGLib {
+    module Proxy {
+        // Constructor properties interface
 
-module Proxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-}
+    class Proxy extends GObject.Object {
+        // Constructors of DBusGLib.Proxy
 
-class Proxy extends GObject.Object {
+        constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
-    // Constructors of DBusGLib.Proxy
+        _init(...args: any[]): void;
+    }
 
+    class Connection {
+        // Constructors of DBusGLib.Connection
 
-constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
+    }
 
-_init(...args: any[]): void;
+    class MethodInvocation {
+        // Constructors of DBusGLib.MethodInvocation
 
-}
+        _init(...args: any[]): void;
+    }
 
-class Connection {
+    class ProxyClass {
+        // Constructors of DBusGLib.ProxyClass
 
-    // Constructors of DBusGLib.Connection
+        _init(...args: any[]): void;
+    }
 
-_init(...args: any[]): void;
-
-}
-
-class MethodInvocation {
-
-    // Constructors of DBusGLib.MethodInvocation
-
-_init(...args: any[]): void;
-
-}
-
-class ProxyClass {
-
-    // Constructors of DBusGLib.ProxyClass
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default DBusGLib;

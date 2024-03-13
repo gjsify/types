@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,1319 +27,1360 @@ import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace TimezoneMap {
+    const TIMEZONE_COMPLETION_ADMIN1: number;
+    const TIMEZONE_COMPLETION_COUNTRY: number;
+    const TIMEZONE_COMPLETION_LAST: number;
+    const TIMEZONE_COMPLETION_LATITUDE: number;
+    const TIMEZONE_COMPLETION_LONGITUDE: number;
+    const TIMEZONE_COMPLETION_NAME: number;
+    const TIMEZONE_COMPLETION_ZONE: number;
+    module TimezoneCompletion {
+        // Constructor properties interface
 
-const TIMEZONE_COMPLETION_ADMIN1: number
-const TIMEZONE_COMPLETION_COUNTRY: number
-const TIMEZONE_COMPLETION_LAST: number
-const TIMEZONE_COMPLETION_LATITUDE: number
-const TIMEZONE_COMPLETION_LONGITUDE: number
-const TIMEZONE_COMPLETION_NAME: number
-const TIMEZONE_COMPLETION_ZONE: number
-module TimezoneCompletion {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gtk.EntryCompletion.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
+        interface ConstructorProps
+            extends Gtk.EntryCompletion.ConstructorProps,
+                Gtk.Buildable.ConstructorProps,
+                Gtk.CellLayout.ConstructorProps {}
     }
 
-}
+    class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
+        // Constructors of TimezoneMap.TimezoneCompletion
 
-class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
+        constructor(properties?: Partial<TimezoneCompletion.ConstructorProps>, ...args: any[]);
 
-    // Constructors of TimezoneMap.TimezoneCompletion
+        _init(...args: any[]): void;
 
+        static ['new'](): TimezoneCompletion;
 
-constructor(properties?: Partial<TimezoneCompletion.ConstructorProps>, ...args: any[]);
+        // Own methods of TimezoneMap.TimezoneCompletion
 
-_init(...args: any[]): void;
+        watch_entry(entry: Gtk.Entry): void;
 
-
-static ["new"](): TimezoneCompletion;
-
-    // Own methods of TimezoneMap.TimezoneCompletion
-
-    watch_entry(entry: Gtk.Entry): void
-
-// Inherited methods
-/**
- * Adds a child to `buildable`. `type` is an optional string
- * describing how the child should be added.
- * @param builder a #GtkBuilder
- * @param child child to add
- * @param type kind of child or %NULL
- */
-add_child(builder: Gtk.Builder, child: GObject.Object, type?: (string | null)): void
-/**
- * Constructs a child of `buildable` with the name `name`.
- * 
- * #GtkBuilder calls this function if a “constructor” has been
- * specified in the UI definition.
- * @param builder #GtkBuilder used to construct this object
- * @param name name of child to construct
- * @returns the constructed child
- */
-construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T
-/**
- * This is similar to gtk_buildable_parser_finished() but is
- * called once for each custom tag handled by the `buildable`.
- * @param builder a #GtkBuilder
- * @param child child object or %NULL for non-child tags
- * @param tagname the name of the tag
- * @param data user data created in custom_tag_start
- */
-custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called at the end of each custom element handled by
- * the buildable.
- * @param builder #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @param data user data that will be passed in to parser functions
- */
-custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called for each unknown element under `<child>`.
- * @param builder a #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
- */
-custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any]
-/**
- * Get the internal child called `childname` of the `buildable` object.
- * @param builder a #GtkBuilder
- * @param childname name of child
- * @returns the internal child of the buildable object
- */
-get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T
-/**
- * Gets the name of the `buildable` object.
- * 
- * #GtkBuilder sets the name based on the
- * [GtkBuilder UI definition][BUILDER-UI]
- * used to construct the `buildable`.
- * @returns the name set with gtk_buildable_set_name()
- */
-get_name(): string
-/**
- * Called when the builder finishes the parsing of a
- * [GtkBuilder UI definition][BUILDER-UI].
- * Note that this will be called once for each time
- * gtk_builder_add_from_file() or gtk_builder_add_from_string()
- * is called on a builder.
- * @param builder a #GtkBuilder
- */
-parser_finished(builder: Gtk.Builder): void
-/**
- * Sets the property name `name` to `value` on the `buildable` object.
- * @param builder a #GtkBuilder
- * @param name name of property
- * @param value value of property
- */
-set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void
-/**
- * Sets the name of the `buildable` object.
- * @param name name to set
- */
-set_name(name: string): void
-/**
- * Adds a child to `buildable`. `type` is an optional string
- * describing how the child should be added.
- * @param builder a #GtkBuilder
- * @param child child to add
- * @param type kind of child or %NULL
- */
-vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: (string | null)): void
-/**
- * Constructs a child of `buildable` with the name `name`.
- * 
- * #GtkBuilder calls this function if a “constructor” has been
- * specified in the UI definition.
- * @param builder #GtkBuilder used to construct this object
- * @param name name of child to construct
- */
-vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T
-/**
- * This is similar to gtk_buildable_parser_finished() but is
- * called once for each custom tag handled by the `buildable`.
- * @param builder a #GtkBuilder
- * @param child child object or %NULL for non-child tags
- * @param tagname the name of the tag
- * @param data user data created in custom_tag_start
- */
-vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called at the end of each custom element handled by
- * the buildable.
- * @param builder #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @param data user data that will be passed in to parser functions
- */
-vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called for each unknown element under `<child>`.
- * @param builder a #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- */
-vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any]
-/**
- * Get the internal child called `childname` of the `buildable` object.
- * @param builder a #GtkBuilder
- * @param childname name of child
- */
-vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T
-/**
- * Gets the name of the `buildable` object.
- * 
- * #GtkBuilder sets the name based on the
- * [GtkBuilder UI definition][BUILDER-UI]
- * used to construct the `buildable`.
- */
-vfunc_get_name(): string
-/**
- * Called when the builder finishes the parsing of a
- * [GtkBuilder UI definition][BUILDER-UI].
- * Note that this will be called once for each time
- * gtk_builder_add_from_file() or gtk_builder_add_from_string()
- * is called on a builder.
- * @param builder a #GtkBuilder
- */
-vfunc_parser_finished(builder: Gtk.Builder): void
-/**
- * Sets the property name `name` to `value` on the `buildable` object.
- * @param builder a #GtkBuilder
- * @param name name of property
- * @param value value of property
- */
-vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void
-/**
- * Sets the name of the `buildable` object.
- * @param name name to set
- */
-vfunc_set_name(name: string): void
-/**
- * Adds an attribute mapping to the list in `cell_layout`.
- * 
- * The `column` is the column of the model to get a value from, and the
- * `attribute` is the parameter on `cell` to be set from the value. So for
- * example if column 2 of the model contains strings, you could have the
- * “text” attribute of a #GtkCellRendererText get its values from column 2.
- * @param cell a #GtkCellRenderer
- * @param attribute an attribute on the renderer
- * @param column the column position on the model to get the attribute from
- */
-add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void
-/**
- * Unsets all the mappings on all renderers on `cell_layout` and
- * removes all renderers from `cell_layout`.
- */
-clear(): void
-/**
- * Clears all existing attributes previously set with
- * gtk_cell_layout_set_attributes().
- * @param cell a #GtkCellRenderer to clear the attribute mapping on
- */
-clear_attributes(cell: Gtk.CellRenderer): void
-/**
- * Returns the underlying #GtkCellArea which might be `cell_layout`
- * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
- * is used by `cell_layout`.
- * @returns the cell area used by @cell_layout, or %NULL in case no cell area is used.
- */
-get_area(): (Gtk.CellArea | null)
-/**
- * Returns the cell renderers which have been added to `cell_layout`.
- * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with g_list_free()     when no longer needed.
- */
-get_cells(): Gtk.CellRenderer[]
-/**
- * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
- * `cell` is allocated no more space than it needs. Any unused space is
- * divided evenly between cells for which `expand` is %TRUE.
- * 
- * Note that reusing the same cell renderer is not supported.
- * @param cell a #GtkCellRenderer
- * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
- */
-pack_end(cell: Gtk.CellRenderer, expand: boolean): void
-/**
- * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
- * then the `cell` is allocated no more space than it needs. Any unused space
- * is divided evenly between cells for which `expand` is %TRUE.
- * 
- * Note that reusing the same cell renderer is not supported.
- * @param cell a #GtkCellRenderer
- * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
- */
-pack_start(cell: Gtk.CellRenderer, expand: boolean): void
-/**
- * Re-inserts `cell` at `position`.
- * 
- * Note that `cell` has already to be packed into `cell_layout`
- * for this to function properly.
- * @param cell a #GtkCellRenderer to reorder
- * @param position new position to insert @cell at
- */
-reorder(cell: Gtk.CellRenderer, position: number): void
-/**
- * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
- * 
- * This function is used instead of the standard attributes mapping
- * for setting the column value, and should set the value of `cell_layout’`s
- * cell renderer(s) as appropriate.
- * 
- * `func` may be %NULL to remove a previously set function.
- * @param cell a #GtkCellRenderer
- * @param func the #GtkCellLayoutDataFunc to use, or %NULL
- */
-set_cell_data_func(cell: Gtk.CellRenderer, func?: (Gtk.CellLayoutDataFunc | null)): void
-/**
- * Adds an attribute mapping to the list in `cell_layout`.
- * 
- * The `column` is the column of the model to get a value from, and the
- * `attribute` is the parameter on `cell` to be set from the value. So for
- * example if column 2 of the model contains strings, you could have the
- * “text” attribute of a #GtkCellRendererText get its values from column 2.
- * @param cell a #GtkCellRenderer
- * @param attribute an attribute on the renderer
- * @param column the column position on the model to get the attribute from
- */
-vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void
-/**
- * Unsets all the mappings on all renderers on `cell_layout` and
- * removes all renderers from `cell_layout`.
- */
-vfunc_clear(): void
-/**
- * Clears all existing attributes previously set with
- * gtk_cell_layout_set_attributes().
- * @param cell a #GtkCellRenderer to clear the attribute mapping on
- */
-vfunc_clear_attributes(cell: Gtk.CellRenderer): void
-/**
- * Returns the underlying #GtkCellArea which might be `cell_layout`
- * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
- * is used by `cell_layout`.
- */
-vfunc_get_area(): (Gtk.CellArea | null)
-/**
- * Returns the cell renderers which have been added to `cell_layout`.
- */
-vfunc_get_cells(): Gtk.CellRenderer[]
-/**
- * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
- * `cell` is allocated no more space than it needs. Any unused space is
- * divided evenly between cells for which `expand` is %TRUE.
- * 
- * Note that reusing the same cell renderer is not supported.
- * @param cell a #GtkCellRenderer
- * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
- */
-vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void
-/**
- * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
- * then the `cell` is allocated no more space than it needs. Any unused space
- * is divided evenly between cells for which `expand` is %TRUE.
- * 
- * Note that reusing the same cell renderer is not supported.
- * @param cell a #GtkCellRenderer
- * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
- */
-vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void
-/**
- * Re-inserts `cell` at `position`.
- * 
- * Note that `cell` has already to be packed into `cell_layout`
- * for this to function properly.
- * @param cell a #GtkCellRenderer to reorder
- * @param position new position to insert @cell at
- */
-vfunc_reorder(cell: Gtk.CellRenderer, position: number): void
-/**
- * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
- * 
- * This function is used instead of the standard attributes mapping
- * for setting the column value, and should set the value of `cell_layout’`s
- * cell renderer(s) as appropriate.
- * 
- * `func` may be %NULL to remove a previously set function.
- * @param cell a #GtkCellRenderer
- * @param func the #GtkCellLayoutDataFunc to use, or %NULL
- */
-vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func?: (Gtk.CellLayoutDataFunc | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module TimezoneLocation {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-Comment: string;
-    country: string;
-    dist: number;
-    latitude: number;
-    longitude: number;
-    zone: string;
+        // Inherited methods
+        /**
+         * Adds a child to `buildable`. `type` is an optional string
+         * describing how the child should be added.
+         * @param builder a #GtkBuilder
+         * @param child child to add
+         * @param type kind of child or %NULL
+         */
+        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        /**
+         * Constructs a child of `buildable` with the name `name`.
+         *
+         * #GtkBuilder calls this function if a “constructor” has been
+         * specified in the UI definition.
+         * @param builder #GtkBuilder used to construct this object
+         * @param name name of child to construct
+         * @returns the constructed child
+         */
+        construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        /**
+         * This is similar to gtk_buildable_parser_finished() but is
+         * called once for each custom tag handled by the `buildable`.
+         * @param builder a #GtkBuilder
+         * @param child child object or %NULL for non-child tags
+         * @param tagname the name of the tag
+         * @param data user data created in custom_tag_start
+         */
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        /**
+         * This is called at the end of each custom element handled by
+         * the buildable.
+         * @param builder #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @param data user data that will be passed in to parser functions
+         */
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        /**
+         * This is called for each unknown element under `<child>`.
+         * @param builder a #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         */
+        custom_tag_start(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+        ): [boolean, GLib.MarkupParser, any];
+        /**
+         * Get the internal child called `childname` of the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param childname name of child
+         * @returns the internal child of the buildable object
+         */
+        get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Gets the name of the `buildable` object.
+         *
+         * #GtkBuilder sets the name based on the
+         * [GtkBuilder UI definition][BUILDER-UI]
+         * used to construct the `buildable`.
+         * @returns the name set with gtk_buildable_set_name()
+         */
+        get_name(): string;
+        /**
+         * Called when the builder finishes the parsing of a
+         * [GtkBuilder UI definition][BUILDER-UI].
+         * Note that this will be called once for each time
+         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * is called on a builder.
+         * @param builder a #GtkBuilder
+         */
+        parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets the property name `name` to `value` on the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param name name of property
+         * @param value value of property
+         */
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        /**
+         * Sets the name of the `buildable` object.
+         * @param name name to set
+         */
+        set_name(name: string): void;
+        /**
+         * Adds a child to `buildable`. `type` is an optional string
+         * describing how the child should be added.
+         * @param builder a #GtkBuilder
+         * @param child child to add
+         * @param type kind of child or %NULL
+         */
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        /**
+         * Constructs a child of `buildable` with the name `name`.
+         *
+         * #GtkBuilder calls this function if a “constructor” has been
+         * specified in the UI definition.
+         * @param builder #GtkBuilder used to construct this object
+         * @param name name of child to construct
+         */
+        vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        /**
+         * This is similar to gtk_buildable_parser_finished() but is
+         * called once for each custom tag handled by the `buildable`.
+         * @param builder a #GtkBuilder
+         * @param child child object or %NULL for non-child tags
+         * @param tagname the name of the tag
+         * @param data user data created in custom_tag_start
+         */
+        vfunc_custom_finished(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+            data?: any | null,
+        ): void;
+        /**
+         * This is called at the end of each custom element handled by
+         * the buildable.
+         * @param builder #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @param data user data that will be passed in to parser functions
+         */
+        vfunc_custom_tag_end(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+            data?: any | null,
+        ): void;
+        /**
+         * This is called for each unknown element under `<child>`.
+         * @param builder a #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         */
+        vfunc_custom_tag_start(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+        ): [boolean, GLib.MarkupParser, any];
+        /**
+         * Get the internal child called `childname` of the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param childname name of child
+         */
+        vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Gets the name of the `buildable` object.
+         *
+         * #GtkBuilder sets the name based on the
+         * [GtkBuilder UI definition][BUILDER-UI]
+         * used to construct the `buildable`.
+         */
+        vfunc_get_name(): string;
+        /**
+         * Called when the builder finishes the parsing of a
+         * [GtkBuilder UI definition][BUILDER-UI].
+         * Note that this will be called once for each time
+         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * is called on a builder.
+         * @param builder a #GtkBuilder
+         */
+        vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets the property name `name` to `value` on the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param name name of property
+         * @param value value of property
+         */
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        /**
+         * Sets the name of the `buildable` object.
+         * @param name name to set
+         */
+        vfunc_set_name(name: string): void;
+        /**
+         * Adds an attribute mapping to the list in `cell_layout`.
+         *
+         * The `column` is the column of the model to get a value from, and the
+         * `attribute` is the parameter on `cell` to be set from the value. So for
+         * example if column 2 of the model contains strings, you could have the
+         * “text” attribute of a #GtkCellRendererText get its values from column 2.
+         * @param cell a #GtkCellRenderer
+         * @param attribute an attribute on the renderer
+         * @param column the column position on the model to get the attribute from
+         */
+        add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
+        /**
+         * Unsets all the mappings on all renderers on `cell_layout` and
+         * removes all renderers from `cell_layout`.
+         */
+        clear(): void;
+        /**
+         * Clears all existing attributes previously set with
+         * gtk_cell_layout_set_attributes().
+         * @param cell a #GtkCellRenderer to clear the attribute mapping on
+         */
+        clear_attributes(cell: Gtk.CellRenderer): void;
+        /**
+         * Returns the underlying #GtkCellArea which might be `cell_layout`
+         * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+         * is used by `cell_layout`.
+         * @returns the cell area used by @cell_layout, or %NULL in case no cell area is used.
+         */
+        get_area(): Gtk.CellArea | null;
+        /**
+         * Returns the cell renderers which have been added to `cell_layout`.
+         * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with g_list_free()     when no longer needed.
+         */
+        get_cells(): Gtk.CellRenderer[];
+        /**
+         * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
+         * `cell` is allocated no more space than it needs. Any unused space is
+         * divided evenly between cells for which `expand` is %TRUE.
+         *
+         * Note that reusing the same cell renderer is not supported.
+         * @param cell a #GtkCellRenderer
+         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         */
+        pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
+        /**
+         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
+         * then the `cell` is allocated no more space than it needs. Any unused space
+         * is divided evenly between cells for which `expand` is %TRUE.
+         *
+         * Note that reusing the same cell renderer is not supported.
+         * @param cell a #GtkCellRenderer
+         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         */
+        pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
+        /**
+         * Re-inserts `cell` at `position`.
+         *
+         * Note that `cell` has already to be packed into `cell_layout`
+         * for this to function properly.
+         * @param cell a #GtkCellRenderer to reorder
+         * @param position new position to insert @cell at
+         */
+        reorder(cell: Gtk.CellRenderer, position: number): void;
+        /**
+         * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
+         *
+         * This function is used instead of the standard attributes mapping
+         * for setting the column value, and should set the value of `cell_layout’`s
+         * cell renderer(s) as appropriate.
+         *
+         * `func` may be %NULL to remove a previously set function.
+         * @param cell a #GtkCellRenderer
+         * @param func the #GtkCellLayoutDataFunc to use, or %NULL
+         */
+        set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
+        /**
+         * Adds an attribute mapping to the list in `cell_layout`.
+         *
+         * The `column` is the column of the model to get a value from, and the
+         * `attribute` is the parameter on `cell` to be set from the value. So for
+         * example if column 2 of the model contains strings, you could have the
+         * “text” attribute of a #GtkCellRendererText get its values from column 2.
+         * @param cell a #GtkCellRenderer
+         * @param attribute an attribute on the renderer
+         * @param column the column position on the model to get the attribute from
+         */
+        vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
+        /**
+         * Unsets all the mappings on all renderers on `cell_layout` and
+         * removes all renderers from `cell_layout`.
+         */
+        vfunc_clear(): void;
+        /**
+         * Clears all existing attributes previously set with
+         * gtk_cell_layout_set_attributes().
+         * @param cell a #GtkCellRenderer to clear the attribute mapping on
+         */
+        vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
+        /**
+         * Returns the underlying #GtkCellArea which might be `cell_layout`
+         * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+         * is used by `cell_layout`.
+         */
+        vfunc_get_area(): Gtk.CellArea | null;
+        /**
+         * Returns the cell renderers which have been added to `cell_layout`.
+         */
+        vfunc_get_cells(): Gtk.CellRenderer[];
+        /**
+         * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
+         * `cell` is allocated no more space than it needs. Any unused space is
+         * divided evenly between cells for which `expand` is %TRUE.
+         *
+         * Note that reusing the same cell renderer is not supported.
+         * @param cell a #GtkCellRenderer
+         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         */
+        vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
+        /**
+         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
+         * then the `cell` is allocated no more space than it needs. Any unused space
+         * is divided evenly between cells for which `expand` is %TRUE.
+         *
+         * Note that reusing the same cell renderer is not supported.
+         * @param cell a #GtkCellRenderer
+         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         */
+        vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
+        /**
+         * Re-inserts `cell` at `position`.
+         *
+         * Note that `cell` has already to be packed into `cell_layout`
+         * for this to function properly.
+         * @param cell a #GtkCellRenderer to reorder
+         * @param position new position to insert @cell at
+         */
+        vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
+        /**
+         * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
+         *
+         * This function is used instead of the standard attributes mapping
+         * for setting the column value, and should set the value of `cell_layout’`s
+         * cell renderer(s) as appropriate.
+         *
+         * `func` may be %NULL to remove a previously set function.
+         * @param cell a #GtkCellRenderer
+         * @param func the #GtkCellLayoutDataFunc to use, or %NULL
+         */
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
     }
 
-}
+    module TimezoneLocation {
+        // Constructor properties interface
 
-class TimezoneLocation extends GObject.Object {
-
-    // Own properties of TimezoneMap.TimezoneLocation
-
-    get Comment(): string;
-    set Comment(val: string);
-    get country(): string;
-    set country(val: string);
-    get dist(): number;
-    set dist(val: number);
-    get latitude(): number;
-    set latitude(val: number);
-    get longitude(): number;
-    set longitude(val: number);
-    get zone(): string;
-    set zone(val: string);
-
-    // Constructors of TimezoneMap.TimezoneLocation
-
-
-constructor(properties?: Partial<TimezoneLocation.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](): TimezoneLocation;
-}
-
-module TimezoneMap {
-
-    // Signal callback interfaces
-
-    interface LocationChanged {
-        (object: TimezoneLocation): void
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            Comment: string;
+            country: string;
+            dist: number;
+            latitude: number;
+            longitude: number;
+            zone: string;
+        }
     }
 
+    class TimezoneLocation extends GObject.Object {
+        // Own properties of TimezoneMap.TimezoneLocation
 
-    // Constructor properties interface
+        get Comment(): string;
+        set Comment(val: string);
+        get country(): string;
+        set country(val: string);
+        get dist(): number;
+        set dist(val: number);
+        get latitude(): number;
+        set latitude(val: number);
+        get longitude(): number;
+        set longitude(val: number);
+        get zone(): string;
+        set zone(val: string);
 
-    interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        // Constructors of TimezoneMap.TimezoneLocation
 
+        constructor(properties?: Partial<TimezoneLocation.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): TimezoneLocation;
     }
 
-}
+    module TimezoneMap {
+        // Signal callback interfaces
 
-class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        interface LocationChanged {
+            (object: TimezoneLocation): void;
+        }
 
-    // Constructors of TimezoneMap.TimezoneMap
+        // Constructor properties interface
 
+        interface ConstructorProps
+            extends Gtk.Widget.ConstructorProps,
+                Atk.ImplementorIface.ConstructorProps,
+                Gtk.Buildable.ConstructorProps {}
+    }
 
-constructor(properties?: Partial<TimezoneMap.ConstructorProps>, ...args: any[]);
+    class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        // Constructors of TimezoneMap.TimezoneMap
 
-_init(...args: any[]): void;
+        constructor(properties?: Partial<TimezoneMap.ConstructorProps>, ...args: any[]);
 
+        _init(...args: any[]): void;
 
-static ["new"](): TimezoneMap;
+        static ['new'](): TimezoneMap;
 
-    // Own signals of TimezoneMap.TimezoneMap
+        // Own signals of TimezoneMap.TimezoneMap
 
-    connect(id: string, callback: (...args: any[]) => any): number
-    connect_after(id: string, callback: (...args: any[]) => any): number
-    emit(id: string, ...args: any[]): void
-    connect(signal: 'location-changed', callback: ((_source: this, object: TimezoneLocation) => void)): number
-    connect_after(signal: 'location-changed', callback: ((_source: this, object: TimezoneLocation) => void)): number
-    emit(signal: 'location-changed', object: TimezoneLocation): void
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'location-changed', callback: (_source: this, object: TimezoneLocation) => void): number;
+        connect_after(signal: 'location-changed', callback: (_source: this, object: TimezoneLocation) => void): number;
+        emit(signal: 'location-changed', object: TimezoneLocation): void;
 
-    // Own methods of TimezoneMap.TimezoneMap
+        // Own methods of TimezoneMap.TimezoneMap
 
-    get_timezone_at_coords(lon: number, lat: number): string
-    set_coords(lon: number, lat: number): void
-    set_timezone(timezone: string): void
-    set_watermark(watermark: string): void
+        get_timezone_at_coords(lon: number, lat: number): string;
+        set_coords(lon: number, lat: number): void;
+        set_timezone(timezone: string): void;
+        set_watermark(watermark: string): void;
 
-// Inherited methods
-/**
- * Adds a child to `buildable`. `type` is an optional string
- * describing how the child should be added.
- * @param builder a #GtkBuilder
- * @param child child to add
- * @param type kind of child or %NULL
- */
-add_child(builder: Gtk.Builder, child: GObject.Object, type?: (string | null)): void
-/**
- * Constructs a child of `buildable` with the name `name`.
- * 
- * #GtkBuilder calls this function if a “constructor” has been
- * specified in the UI definition.
- * @param builder #GtkBuilder used to construct this object
- * @param name name of child to construct
- * @returns the constructed child
- */
-construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T
-/**
- * This is similar to gtk_buildable_parser_finished() but is
- * called once for each custom tag handled by the `buildable`.
- * @param builder a #GtkBuilder
- * @param child child object or %NULL for non-child tags
- * @param tagname the name of the tag
- * @param data user data created in custom_tag_start
- */
-custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called at the end of each custom element handled by
- * the buildable.
- * @param builder #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @param data user data that will be passed in to parser functions
- */
-custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called for each unknown element under `<child>`.
- * @param builder a #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
- */
-custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any]
-/**
- * Get the internal child called `childname` of the `buildable` object.
- * @param builder a #GtkBuilder
- * @param childname name of child
- * @returns the internal child of the buildable object
- */
-get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T
-/**
- * Gets the name of the `buildable` object.
- * 
- * #GtkBuilder sets the name based on the
- * [GtkBuilder UI definition][BUILDER-UI]
- * used to construct the `buildable`.
- * @returns the name set with gtk_buildable_set_name()
- */
-get_name(): string
-/**
- * Called when the builder finishes the parsing of a
- * [GtkBuilder UI definition][BUILDER-UI].
- * Note that this will be called once for each time
- * gtk_builder_add_from_file() or gtk_builder_add_from_string()
- * is called on a builder.
- * @param builder a #GtkBuilder
- */
-parser_finished(builder: Gtk.Builder): void
-/**
- * Sets the property name `name` to `value` on the `buildable` object.
- * @param builder a #GtkBuilder
- * @param name name of property
- * @param value value of property
- */
-set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void
-/**
- * Sets the name of the `buildable` object.
- * @param name name to set
- */
-set_name(name: string): void
-/**
- * Adds a child to `buildable`. `type` is an optional string
- * describing how the child should be added.
- * @param builder a #GtkBuilder
- * @param child child to add
- * @param type kind of child or %NULL
- */
-vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: (string | null)): void
-/**
- * Constructs a child of `buildable` with the name `name`.
- * 
- * #GtkBuilder calls this function if a “constructor” has been
- * specified in the UI definition.
- * @param builder #GtkBuilder used to construct this object
- * @param name name of child to construct
- */
-vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T
-/**
- * This is similar to gtk_buildable_parser_finished() but is
- * called once for each custom tag handled by the `buildable`.
- * @param builder a #GtkBuilder
- * @param child child object or %NULL for non-child tags
- * @param tagname the name of the tag
- * @param data user data created in custom_tag_start
- */
-vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called at the end of each custom element handled by
- * the buildable.
- * @param builder #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- * @param data user data that will be passed in to parser functions
- */
-vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data?: (any | null)): void
-/**
- * This is called for each unknown element under `<child>`.
- * @param builder a #GtkBuilder used to construct this object
- * @param child child object or %NULL for non-child tags
- * @param tagname name of tag
- */
-vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any]
-/**
- * Get the internal child called `childname` of the `buildable` object.
- * @param builder a #GtkBuilder
- * @param childname name of child
- */
-vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T
-/**
- * Gets the name of the `buildable` object.
- * 
- * #GtkBuilder sets the name based on the
- * [GtkBuilder UI definition][BUILDER-UI]
- * used to construct the `buildable`.
- */
-vfunc_get_name(): string
-/**
- * Called when the builder finishes the parsing of a
- * [GtkBuilder UI definition][BUILDER-UI].
- * Note that this will be called once for each time
- * gtk_builder_add_from_file() or gtk_builder_add_from_string()
- * is called on a builder.
- * @param builder a #GtkBuilder
- */
-vfunc_parser_finished(builder: Gtk.Builder): void
-/**
- * Sets the property name `name` to `value` on the `buildable` object.
- * @param builder a #GtkBuilder
- * @param name name of property
- * @param value value of property
- */
-vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void
-/**
- * Sets the name of the `buildable` object.
- * @param name name to set
- */
-vfunc_set_name(name: string): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
+        // Inherited methods
+        /**
+         * Adds a child to `buildable`. `type` is an optional string
+         * describing how the child should be added.
+         * @param builder a #GtkBuilder
+         * @param child child to add
+         * @param type kind of child or %NULL
+         */
+        add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        /**
+         * Constructs a child of `buildable` with the name `name`.
+         *
+         * #GtkBuilder calls this function if a “constructor” has been
+         * specified in the UI definition.
+         * @param builder #GtkBuilder used to construct this object
+         * @param name name of child to construct
+         * @returns the constructed child
+         */
+        construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        /**
+         * This is similar to gtk_buildable_parser_finished() but is
+         * called once for each custom tag handled by the `buildable`.
+         * @param builder a #GtkBuilder
+         * @param child child object or %NULL for non-child tags
+         * @param tagname the name of the tag
+         * @param data user data created in custom_tag_start
+         */
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        /**
+         * This is called at the end of each custom element handled by
+         * the buildable.
+         * @param builder #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @param data user data that will be passed in to parser functions
+         */
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
+        /**
+         * This is called for each unknown element under `<child>`.
+         * @param builder a #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         */
+        custom_tag_start(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+        ): [boolean, GLib.MarkupParser, any];
+        /**
+         * Get the internal child called `childname` of the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param childname name of child
+         * @returns the internal child of the buildable object
+         */
+        get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Gets the name of the `buildable` object.
+         *
+         * #GtkBuilder sets the name based on the
+         * [GtkBuilder UI definition][BUILDER-UI]
+         * used to construct the `buildable`.
+         * @returns the name set with gtk_buildable_set_name()
+         */
+        get_name(): string;
+        /**
+         * Called when the builder finishes the parsing of a
+         * [GtkBuilder UI definition][BUILDER-UI].
+         * Note that this will be called once for each time
+         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * is called on a builder.
+         * @param builder a #GtkBuilder
+         */
+        parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets the property name `name` to `value` on the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param name name of property
+         * @param value value of property
+         */
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        /**
+         * Sets the name of the `buildable` object.
+         * @param name name to set
+         */
+        set_name(name: string): void;
+        /**
+         * Adds a child to `buildable`. `type` is an optional string
+         * describing how the child should be added.
+         * @param builder a #GtkBuilder
+         * @param child child to add
+         * @param type kind of child or %NULL
+         */
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
+        /**
+         * Constructs a child of `buildable` with the name `name`.
+         *
+         * #GtkBuilder calls this function if a “constructor” has been
+         * specified in the UI definition.
+         * @param builder #GtkBuilder used to construct this object
+         * @param name name of child to construct
+         */
+        vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+        /**
+         * This is similar to gtk_buildable_parser_finished() but is
+         * called once for each custom tag handled by the `buildable`.
+         * @param builder a #GtkBuilder
+         * @param child child object or %NULL for non-child tags
+         * @param tagname the name of the tag
+         * @param data user data created in custom_tag_start
+         */
+        vfunc_custom_finished(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+            data?: any | null,
+        ): void;
+        /**
+         * This is called at the end of each custom element handled by
+         * the buildable.
+         * @param builder #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         * @param data user data that will be passed in to parser functions
+         */
+        vfunc_custom_tag_end(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+            data?: any | null,
+        ): void;
+        /**
+         * This is called for each unknown element under `<child>`.
+         * @param builder a #GtkBuilder used to construct this object
+         * @param child child object or %NULL for non-child tags
+         * @param tagname name of tag
+         */
+        vfunc_custom_tag_start(
+            builder: Gtk.Builder,
+            child: GObject.Object | null,
+            tagname: string,
+        ): [boolean, GLib.MarkupParser, any];
+        /**
+         * Get the internal child called `childname` of the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param childname name of child
+         */
+        vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+        /**
+         * Gets the name of the `buildable` object.
+         *
+         * #GtkBuilder sets the name based on the
+         * [GtkBuilder UI definition][BUILDER-UI]
+         * used to construct the `buildable`.
+         */
+        vfunc_get_name(): string;
+        /**
+         * Called when the builder finishes the parsing of a
+         * [GtkBuilder UI definition][BUILDER-UI].
+         * Note that this will be called once for each time
+         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * is called on a builder.
+         * @param builder a #GtkBuilder
+         */
+        vfunc_parser_finished(builder: Gtk.Builder): void;
+        /**
+         * Sets the property name `name` to `value` on the `buildable` object.
+         * @param builder a #GtkBuilder
+         * @param name name of property
+         * @param value value of property
+         */
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value): void;
+        /**
+         * Sets the name of the `buildable` object.
+         * @param name name to set
+         */
+        vfunc_set_name(name: string): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
 
-type TimezoneCompletionClass = typeof TimezoneCompletion
-abstract class TimezoneCompletionPrivate {
+    type TimezoneCompletionClass = typeof TimezoneCompletion;
+    abstract class TimezoneCompletionPrivate {
+        // Constructors of TimezoneMap.TimezoneCompletionPrivate
 
-    // Constructors of TimezoneMap.TimezoneCompletionPrivate
+        _init(...args: any[]): void;
+    }
 
-_init(...args: any[]): void;
+    type TimezoneLocationClass = typeof TimezoneLocation;
+    abstract class TimezoneLocationPrivate {
+        // Constructors of TimezoneMap.TimezoneLocationPrivate
 
-}
+        _init(...args: any[]): void;
+    }
 
-type TimezoneLocationClass = typeof TimezoneLocation
-abstract class TimezoneLocationPrivate {
+    type TimezoneMapClass = typeof TimezoneMap;
+    abstract class TimezoneMapPrivate {
+        // Constructors of TimezoneMap.TimezoneMapPrivate
 
-    // Constructors of TimezoneMap.TimezoneLocationPrivate
+        _init(...args: any[]): void;
+    }
 
-_init(...args: any[]): void;
-
-}
-
-type TimezoneMapClass = typeof TimezoneMap
-abstract class TimezoneMapPrivate {
-
-    // Constructors of TimezoneMap.TimezoneMapPrivate
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default TimezoneMap;

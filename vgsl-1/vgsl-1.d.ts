@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -24,49 +23,39 @@ import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
 export namespace Vgsl {
+    module Connection {
+        // Constructor properties interface
 
-module Connection {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Vgda.GProvider.ConstructorProps {
-
+        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}
     }
 
-}
+    class Connection extends Vgda.GProvider {
+        // Constructors of Vgsl.Connection
 
-class Connection extends Vgda.GProvider {
+        constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Vgsl.Connection
+        _init(...args: any[]): void;
 
+        static ['new'](): Connection;
+    }
 
-constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
+    type ConnectionClass = typeof Connection;
+    abstract class ConnectionPrivate {
+        // Constructors of Vgsl.ConnectionPrivate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-
-static ["new"](): Connection;
-}
-
-type ConnectionClass = typeof Connection
-abstract class ConnectionPrivate {
-
-    // Constructors of Vgsl.ConnectionPrivate
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Vgsl;

@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,404 +15,404 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace GConf {
+    enum ClientErrorHandlingMode {
+        HANDLE_NONE,
+        HANDLE_UNRETURNED,
+        HANDLE_ALL,
+    }
+    enum ClientPreloadType {
+        PRELOAD_NONE,
+        PRELOAD_ONELEVEL,
+        PRELOAD_RECURSIVE,
+    }
+    class Error extends GLib.Error {
+        // Static fields of GConf.Error
 
-enum ClientErrorHandlingMode {
-    HANDLE_NONE,
-    HANDLE_UNRETURNED,
-    HANDLE_ALL,
-}
-enum ClientPreloadType {
-    PRELOAD_NONE,
-    PRELOAD_ONELEVEL,
-    PRELOAD_RECURSIVE,
-}
-class Error extends GLib.Error {
+        static SUCCESS: number;
+        static FAILED: number;
+        static NO_SERVER: number;
+        static NO_PERMISSION: number;
+        static BAD_ADDRESS: number;
+        static BAD_KEY: number;
+        static PARSE_ERROR: number;
+        static CORRUPT: number;
+        static TYPE_MISMATCH: number;
+        static IS_DIR: number;
+        static IS_KEY: number;
+        static OVERRIDDEN: number;
+        static OAF_ERROR: number;
+        static LOCAL_ENGINE: number;
+        static LOCK_FAILED: number;
+        static NO_WRITABLE_DATABASE: number;
+        static IN_SHUTDOWN: number;
 
-    // Static fields of GConf.Error
+        // Constructors of GConf.Error
 
-static SUCCESS: number
-static FAILED: number
-static NO_SERVER: number
-static NO_PERMISSION: number
-static BAD_ADDRESS: number
-static BAD_KEY: number
-static PARSE_ERROR: number
-static CORRUPT: number
-static TYPE_MISMATCH: number
-static IS_DIR: number
-static IS_KEY: number
-static OVERRIDDEN: number
-static OAF_ERROR: number
-static LOCAL_ENGINE: number
-static LOCK_FAILED: number
-static NO_WRITABLE_DATABASE: number
-static IN_SHUTDOWN: number
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
 
-    // Constructors of GConf.Error
+        // Own static methods of GConf.Error
 
-constructor(options: { message: string, code: number});
-_init(...args: any[]): void;
-
-
-    // Own static methods of GConf.Error
-
-    static quark(): GLib.Quark
-}
-
-enum ValueType {
-    INVALID,
-    STRING,
-    INT,
-    FLOAT,
-    BOOL,
-    SCHEMA,
-    LIST,
-    PAIR,
-}
-function concat_dir_and_key(dir: string, key: string): string
-/**
- * Detach from the config server and release
- * all related resources
- */
-function debug_shutdown(): number
-function enum_to_string(lookup_table: EnumStringPair, enum_value: number): string
-function error_quark(): GLib.Quark
-/**
- * Escape `arbitrary_text` such that it's a valid key element (i.e. one
- * part of the key path). The escaped key won't pass gconf_valid_key()
- * because it isn't a whole key (i.e. it doesn't have a preceding
- * slash), but prepending a slash to the escaped text should always
- * result in a valid key.
- * @param arbitrary_text some text in any encoding or format
- * @param len length of @arbitrary_text in bytes, or -1 if @arbitrary_text is nul-terminated
- * @returns a nul-terminated valid GConf key
- */
-function escape_key(arbitrary_text: string, len: number): string
-function init(argc: number, argv: string): boolean
-function is_initialized(): boolean
-function key_is_below(above: string, below: string): boolean
-function postinit(app?: (any | null), mod_info?: (any | null)): void
-function preinit(app?: (any | null), mod_info?: (any | null)): void
-function string_to_enum(lookup_table: EnumStringPair, str: string, enum_value_retloc: number): boolean
-/**
- * Converts a string escaped with gconf_escape_key() back into its original
- * form.
- * @param escaped_key a key created with gconf_escape_key()
- * @param len length of @escaped_key in bytes, or -1 if @escaped_key is nul-terminated
- * @returns the original string that was escaped to create @escaped_key
- */
-function unescape_key(escaped_key: string, len: number): string
-function unique_key(): string
-function valid_key(key: string, why_invalid: string): boolean
-function value_decode(encoded: string): Value
-interface ChangeSetForeachFunc {
-    (cs: ChangeSet, key: string, value: Value): void
-}
-interface ClientErrorHandlerFunc {
-    (client: Client, error: GLib.Error): void
-}
-interface ClientNotifyFunc {
-    (client: Client, cnxn_id: number, entry: Entry): void
-}
-interface ListenersForeach {
-    (location: string, cnxn_id: number, listener_data?: (any | null)): void
-}
-interface ListenersPredicate {
-    (location: string, cnxn_id: number, listener_data?: (any | null)): boolean
-}
-enum UnsetFlags {
-    NAMES,
-}
-module Client {
-
-    // Signal callback interfaces
-
-    interface Error {
-        (object?: (any | null)): void
+        static quark(): GLib.Quark;
     }
 
-    interface UnreturnedError {
-        (object?: (any | null)): void
+    enum ValueType {
+        INVALID,
+        STRING,
+        INT,
+        FLOAT,
+        BOOL,
+        SCHEMA,
+        LIST,
+        PAIR,
+    }
+    function concat_dir_and_key(dir: string, key: string): string;
+    /**
+     * Detach from the config server and release
+     * all related resources
+     */
+    function debug_shutdown(): number;
+    function enum_to_string(lookup_table: EnumStringPair, enum_value: number): string;
+    function error_quark(): GLib.Quark;
+    /**
+     * Escape `arbitrary_text` such that it's a valid key element (i.e. one
+     * part of the key path). The escaped key won't pass gconf_valid_key()
+     * because it isn't a whole key (i.e. it doesn't have a preceding
+     * slash), but prepending a slash to the escaped text should always
+     * result in a valid key.
+     * @param arbitrary_text some text in any encoding or format
+     * @param len length of @arbitrary_text in bytes, or -1 if @arbitrary_text is nul-terminated
+     * @returns a nul-terminated valid GConf key
+     */
+    function escape_key(arbitrary_text: string, len: number): string;
+    function init(argc: number, argv: string): boolean;
+    function is_initialized(): boolean;
+    function key_is_below(above: string, below: string): boolean;
+    function postinit(app?: any | null, mod_info?: any | null): void;
+    function preinit(app?: any | null, mod_info?: any | null): void;
+    function string_to_enum(lookup_table: EnumStringPair, str: string, enum_value_retloc: number): boolean;
+    /**
+     * Converts a string escaped with gconf_escape_key() back into its original
+     * form.
+     * @param escaped_key a key created with gconf_escape_key()
+     * @param len length of @escaped_key in bytes, or -1 if @escaped_key is nul-terminated
+     * @returns the original string that was escaped to create @escaped_key
+     */
+    function unescape_key(escaped_key: string, len: number): string;
+    function unique_key(): string;
+    function valid_key(key: string, why_invalid: string): boolean;
+    function value_decode(encoded: string): Value;
+    interface ChangeSetForeachFunc {
+        (cs: ChangeSet, key: string, value: Value): void;
+    }
+    interface ClientErrorHandlerFunc {
+        (client: Client, error: GLib.Error): void;
+    }
+    interface ClientNotifyFunc {
+        (client: Client, cnxn_id: number, entry: Entry): void;
+    }
+    interface ListenersForeach {
+        (location: string, cnxn_id: number, listener_data?: any | null): void;
+    }
+    interface ListenersPredicate {
+        (location: string, cnxn_id: number, listener_data?: any | null): boolean;
+    }
+    enum UnsetFlags {
+        NAMES,
+    }
+    module Client {
+        // Signal callback interfaces
+
+        interface Error {
+            (object?: any | null): void;
+        }
+
+        interface UnreturnedError {
+            (object?: any | null): void;
+        }
+
+        interface ValueChanged {
+            (object: string, p0?: any | null): void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    interface ValueChanged {
-        (object: string, p0?: (any | null)): void
+    class Client extends GObject.Object {
+        // Own fields of GConf.Client
+
+        object: GObject.Object;
+
+        // Constructors of GConf.Client
+
+        constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own signals of GConf.Client
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'error', callback: (_source: this, object: any | null) => void): number;
+        connect_after(signal: 'error', callback: (_source: this, object: any | null) => void): number;
+        emit(signal: 'error', object?: any | null): void;
+        connect(signal: 'unreturned-error', callback: (_source: this, object: any | null) => void): number;
+        connect_after(signal: 'unreturned-error', callback: (_source: this, object: any | null) => void): number;
+        emit(signal: 'unreturned-error', object?: any | null): void;
+        connect(signal: 'value-changed', callback: (_source: this, object: string, p0: any | null) => void): number;
+        connect_after(
+            signal: 'value-changed',
+            callback: (_source: this, object: string, p0: any | null) => void,
+        ): number;
+        emit(signal: 'value-changed', object: string, p0?: any | null): void;
+
+        // Own static methods of GConf.Client
+
+        /**
+         * Creates a new #GConfClient using the default #GConfEngine. Normally this is the
+         * engine you want. If someone else is already using the default
+         * #GConfClient, this function returns the same one they're using, but
+         * with the reference count incremented. So you have to unref either way.
+         */
+        static get_default(): Client;
+
+        // Own virtual methods of GConf.Client
+
+        vfunc_error(error: GLib.Error): void;
+        vfunc_unreturned_error(error: GLib.Error): void;
+        vfunc_value_changed(key: string, value: Value): void;
+
+        // Own methods of GConf.Client
+
+        add_dir(dir: string, preload: ClientPreloadType): void;
+        /**
+         * Lists the subdirectories in `dir`. The returned list contains
+         * allocated strings. Each string is the absolute path of a
+         * subdirectory. You should g_free() each string in the list, then
+         * g_slist_free() the list itself.  Just like gconf_engine_all_dirs(),
+         * but uses #GConfClient caching and error-handling features.
+         * @param dir directory to get subdirectories from.
+         * @returns List of allocated subdirectory names.
+         */
+        all_dirs(dir: string): string[];
+        /**
+         * Lists the key-value pairs in `dir`. Does not list subdirectories; for
+         * that use gconf_client_all_dirs(). The returned list contains #GConfEntry
+         * objects. A #GConfEntry contains an <emphasis>absolute</emphasis> key
+         * and a value. The list is not recursive, it contains only the immediate
+         * children of `dir`.  To free the returned list, gconf_entry_free()
+         * each list element, then g_slist_free() the list itself.
+         * Just like gconf_engine_all_entries (), but uses #GConfClient caching and error-handling features.
+         * @param dir directory to list.
+         * @returns List of #GConfEntry.
+         */
+        all_entries(dir: string): Entry[];
+        change_set_from_currentv(keys: string): ChangeSet;
+        clear_cache(): void;
+        commit_change_set(cs: ChangeSet, remove_committed: boolean): boolean;
+        dir_exists(dir: string): boolean;
+        error(error: GLib.Error): void;
+        get(key: string): Value;
+        get_bool(key: string): boolean;
+        get_default_from_schema(key: string): Value;
+        get_entry(key: string, locale: string, use_schema_default: boolean): Entry;
+        get_float(key: string): number;
+        get_int(key: string): number;
+        get_pair(
+            key: string,
+            car_type: ValueType,
+            cdr_type: ValueType,
+            car_retloc?: any | null,
+            cdr_retloc?: any | null,
+        ): boolean;
+        get_string(key: string): string;
+        get_without_default(key: string): Value;
+        key_is_writable(key: string): boolean;
+        notify(key: string): void;
+        notify_add(namespace_section: string, func: ClientNotifyFunc, destroy_notify: GLib.FreeFunc): number;
+        notify_remove(cnxn: number): void;
+        preload(dirname: string, type: ClientPreloadType): void;
+        recursive_unset(key: string, flags: UnsetFlags): boolean;
+        remove_dir(dir: string): void;
+        reverse_change_set(cs: ChangeSet): ChangeSet;
+        set(key: string, val: Value): void;
+        set(...args: never[]): any;
+        set_bool(key: string, val: boolean): boolean;
+        set_error_handling(mode: ClientErrorHandlingMode): void;
+        set_float(key: string, val: number): boolean;
+        set_int(key: string, val: number): boolean;
+        set_pair(
+            key: string,
+            car_type: ValueType,
+            cdr_type: ValueType,
+            address_of_car?: any | null,
+            address_of_cdr?: any | null,
+        ): boolean;
+        set_string(key: string, val: string): boolean;
+        suggest_sync(): void;
+        unreturned_error(error: GLib.Error): void;
+        unset(key: string): boolean;
+        value_changed(key: string, value: Value): void;
     }
 
+    class ChangeSet {
+        // Constructors of GConf.ChangeSet
 
-    // Constructor properties interface
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
 
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
+        static ['new'](): ChangeSet;
 
+        // Own methods of GConf.ChangeSet
+
+        check_value(key: string, value_retloc: Value): boolean;
+        clear(): void;
+        /**
+         * Iterates over a #GConfChangeSet by calling a
+         * #GConfChangeSetForeachFunc for each change in the set. See the
+         * description of #GConfChangeSetForeachFunc for details.  You may not
+         * call gconf_change_set_remove() during the iteration, because you'll
+         * confuse the internal data structures and cause memory corruption.
+         * @param func function to call for each change in the change set.
+         */
+        foreach(func: ChangeSetForeachFunc): void;
+        ref(): ChangeSet;
+        remove(key: string): void;
+        set(key: string, value: Value): void;
+        set_bool(key: string, val: boolean): void;
+        set_float(key: string, val: number): void;
+        set_int(key: string, val: number): void;
+        set_nocopy(key: string, value: Value): void;
+        set_pair(
+            key: string,
+            car_type: ValueType,
+            cdr_type: ValueType,
+            address_of_car?: any | null,
+            address_of_cdr?: any | null,
+        ): void;
+        set_string(key: string, val: string): void;
+        size(): number;
+        unref(): void;
+        unset(key: string): void;
     }
 
-}
+    type ClientClass = typeof Client;
+    class Entry {
+        // Own fields of GConf.Entry
 
-class Client extends GObject.Object {
+        key: string;
 
-    // Own fields of GConf.Client
+        // Constructors of GConf.Entry
 
-object: GObject.Object
+        constructor(key: string, val: Value);
+        _init(...args: any[]): void;
 
-    // Constructors of GConf.Client
+        static ['new'](key: string, val: Value): Entry;
 
+        static new_nocopy(key: string, val: Value): Entry;
 
-constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
+        // Own methods of GConf.Entry
 
-_init(...args: any[]): void;
+        copy(): Entry;
+        equal(b: Entry): boolean;
+        free(): void;
+        get_is_default(): boolean;
+        get_is_writable(): boolean;
+        get_key(): string;
+        get_schema_name(): string;
+        get_value(): Value;
+        ref(): Entry;
+        set_is_default(is_default: boolean): void;
+        set_is_writable(is_writable: boolean): void;
+        set_schema_name(name: string): void;
+        set_value(val: Value): void;
+        set_value_nocopy(val: Value): void;
+        steal_value(): Value;
+        unref(): void;
+    }
 
+    class EnumStringPair {
+        // Own fields of GConf.EnumStringPair
 
-    // Own signals of GConf.Client
+        enum_value: number;
+        str: string;
 
-    connect(id: string, callback: (...args: any[]) => any): number
-    connect_after(id: string, callback: (...args: any[]) => any): number
-    emit(id: string, ...args: any[]): void
-    connect(signal: 'error', callback: ((_source: this, object: any | null) => void)): number
-    connect_after(signal: 'error', callback: ((_source: this, object: any | null) => void)): number
-    emit(signal: 'error', object?: (any | null)): void
-    connect(signal: 'unreturned-error', callback: ((_source: this, object: any | null) => void)): number
-    connect_after(signal: 'unreturned-error', callback: ((_source: this, object: any | null) => void)): number
-    emit(signal: 'unreturned-error', object?: (any | null)): void
-    connect(signal: 'value-changed', callback: ((_source: this, object: string, p0: any | null) => void)): number
-    connect_after(signal: 'value-changed', callback: ((_source: this, object: string, p0: any | null) => void)): number
-    emit(signal: 'value-changed', object: string, p0?: (any | null)): void
+        // Constructors of GConf.EnumStringPair
 
-    // Own static methods of GConf.Client
+        constructor(
+            properties?: Partial<{
+                enum_value: number;
+                str: string;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
+    class Value {
+        // Own fields of GConf.Value
+
+        type: ValueType;
+
+        // Constructors of GConf.Value
+
+        constructor(type: ValueType);
+        _init(...args: any[]): void;
+
+        static ['new'](type: ValueType): Value;
+
+        static new_from_string(type: ValueType, str: string): Value;
+
+        // Own static methods of GConf.Value
+
+        static decode(encoded: string): Value;
+
+        // Own methods of GConf.Value
+
+        compare(value_b: Value): number;
+        copy(): Value;
+        encode(): string;
+        free(): void;
+        get_bool(): boolean;
+        get_car(): Value;
+        get_cdr(): Value;
+        get_float(): number;
+        get_int(): number;
+        /**
+         * Returns a #GSList containing #GConfValue objects. Each #GConfValue in
+         * the returned list will have the type returned by
+         * gconf_value_get_list_type(). Remember that the empty #GSList is equal to
+         * <symbol>NULL</symbol>.  The list is not a copy; it is "owned" by the
+         * #GConfValue and will be destroyed when the #GConfValue is destroyed.
+         * @returns a #GList.
+         */
+        get_list(): Value[];
+        get_list_type(): ValueType;
+        get_string(): string;
+        set_bool(the_bool: boolean): void;
+        set_car(car: Value): void;
+        set_car_nocopy(car: Value): void;
+        set_cdr(cdr: Value): void;
+        set_cdr_nocopy(cdr: Value): void;
+        set_float(the_float: number): void;
+        set_int(the_int: number): void;
+        set_list_type(type: ValueType): void;
+        set_string(the_str: string): void;
+        to_string(): string;
+    }
 
     /**
-     * Creates a new #GConfClient using the default #GConfEngine. Normally this is the
-     * engine you want. If someone else is already using the default
-     * #GConfClient, this function returns the same one they're using, but
-     * with the reference count incremented. So you have to unref either way.
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
-    static get_default(): Client
-
-    // Own virtual methods of GConf.Client
-
-    vfunc_error(error: GLib.Error): void
-    vfunc_unreturned_error(error: GLib.Error): void
-    vfunc_value_changed(key: string, value: Value): void
-
-    // Own methods of GConf.Client
-
-    add_dir(dir: string, preload: ClientPreloadType): void
+    const __name__: string;
     /**
-     * Lists the subdirectories in `dir`. The returned list contains
-     * allocated strings. Each string is the absolute path of a
-     * subdirectory. You should g_free() each string in the list, then
-     * g_slist_free() the list itself.  Just like gconf_engine_all_dirs(),
-     * but uses #GConfClient caching and error-handling features.
-     * @param dir directory to get subdirectories from.
-     * @returns List of allocated subdirectory names.
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
      */
-    all_dirs(dir: string): string[]
-    /**
-     * Lists the key-value pairs in `dir`. Does not list subdirectories; for
-     * that use gconf_client_all_dirs(). The returned list contains #GConfEntry
-     * objects. A #GConfEntry contains an <emphasis>absolute</emphasis> key
-     * and a value. The list is not recursive, it contains only the immediate
-     * children of `dir`.  To free the returned list, gconf_entry_free()
-     * each list element, then g_slist_free() the list itself.
-     * Just like gconf_engine_all_entries (), but uses #GConfClient caching and error-handling features.
-     * @param dir directory to list.
-     * @returns List of #GConfEntry.
-     */
-    all_entries(dir: string): Entry[]
-    change_set_from_currentv(keys: string): ChangeSet
-    clear_cache(): void
-    commit_change_set(cs: ChangeSet, remove_committed: boolean): boolean
-    dir_exists(dir: string): boolean
-    error(error: GLib.Error): void
-    get(key: string): Value
-    get_bool(key: string): boolean
-    get_default_from_schema(key: string): Value
-    get_entry(key: string, locale: string, use_schema_default: boolean): Entry
-    get_float(key: string): number
-    get_int(key: string): number
-    get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc?: (any | null), cdr_retloc?: (any | null)): boolean
-    get_string(key: string): string
-    get_without_default(key: string): Value
-    key_is_writable(key: string): boolean
-    notify(key: string): void
-    notify_add(namespace_section: string, func: ClientNotifyFunc, destroy_notify: GLib.FreeFunc): number
-    notify_remove(cnxn: number): void
-    preload(dirname: string, type: ClientPreloadType): void
-    recursive_unset(key: string, flags: UnsetFlags): boolean
-    remove_dir(dir: string): void
-    reverse_change_set(cs: ChangeSet): ChangeSet
-    set(key: string, val: Value): void
-    set(...args: never[]): any
-    set_bool(key: string, val: boolean): boolean
-    set_error_handling(mode: ClientErrorHandlingMode): void
-    set_float(key: string, val: number): boolean
-    set_int(key: string, val: number): boolean
-    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car?: (any | null), address_of_cdr?: (any | null)): boolean
-    set_string(key: string, val: string): boolean
-    suggest_sync(): void
-    unreturned_error(error: GLib.Error): void
-    unset(key: string): boolean
-    value_changed(key: string, value: Value): void
-}
-
-class ChangeSet {
-
-    // Constructors of GConf.ChangeSet
-
-
-    constructor(properties?: Partial<{
-      
-    }>);
-_init(...args: any[]): void;
-
-
-static ["new"](): ChangeSet;
-
-    // Own methods of GConf.ChangeSet
-
-    check_value(key: string, value_retloc: Value): boolean
-    clear(): void
-    /**
-     * Iterates over a #GConfChangeSet by calling a
-     * #GConfChangeSetForeachFunc for each change in the set. See the
-     * description of #GConfChangeSetForeachFunc for details.  You may not
-     * call gconf_change_set_remove() during the iteration, because you'll
-     * confuse the internal data structures and cause memory corruption.
-     * @param func function to call for each change in the change set.
-     */
-    foreach(func: ChangeSetForeachFunc): void
-    ref(): ChangeSet
-    remove(key: string): void
-    set(key: string, value: Value): void
-    set_bool(key: string, val: boolean): void
-    set_float(key: string, val: number): void
-    set_int(key: string, val: number): void
-    set_nocopy(key: string, value: Value): void
-    set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car?: (any | null), address_of_cdr?: (any | null)): void
-    set_string(key: string, val: string): void
-    size(): number
-    unref(): void
-    unset(key: string): void
-}
-
-type ClientClass = typeof Client
-class Entry {
-
-    // Own fields of GConf.Entry
-
-key: string
-
-    // Constructors of GConf.Entry
-
-constructor(key: string, val: Value);
-_init(...args: any[]): void;
-
-
-static ["new"](key: string, val: Value): Entry;
-
-static new_nocopy(key: string, val: Value): Entry;
-
-    // Own methods of GConf.Entry
-
-    copy(): Entry
-    equal(b: Entry): boolean
-    free(): void
-    get_is_default(): boolean
-    get_is_writable(): boolean
-    get_key(): string
-    get_schema_name(): string
-    get_value(): Value
-    ref(): Entry
-    set_is_default(is_default: boolean): void
-    set_is_writable(is_writable: boolean): void
-    set_schema_name(name: string): void
-    set_value(val: Value): void
-    set_value_nocopy(val: Value): void
-    steal_value(): Value
-    unref(): void
-}
-
-class EnumStringPair {
-
-    // Own fields of GConf.EnumStringPair
-
-enum_value: number
-str: string
-
-    // Constructors of GConf.EnumStringPair
-
-
-    constructor(properties?: Partial<{
-      enum_value: number
-str: string
-    }>);
-_init(...args: any[]): void;
-
-}
-
-class Value {
-
-    // Own fields of GConf.Value
-
-type: ValueType
-
-    // Constructors of GConf.Value
-
-constructor(type: ValueType);
-_init(...args: any[]): void;
-
-
-static ["new"](type: ValueType): Value;
-
-static new_from_string(type: ValueType, str: string): Value;
-
-    // Own static methods of GConf.Value
-
-    static decode(encoded: string): Value
-
-    // Own methods of GConf.Value
-
-    compare(value_b: Value): number
-    copy(): Value
-    encode(): string
-    free(): void
-    get_bool(): boolean
-    get_car(): Value
-    get_cdr(): Value
-    get_float(): number
-    get_int(): number
-    /**
-     * Returns a #GSList containing #GConfValue objects. Each #GConfValue in
-     * the returned list will have the type returned by
-     * gconf_value_get_list_type(). Remember that the empty #GSList is equal to
-     * <symbol>NULL</symbol>.  The list is not a copy; it is "owned" by the
-     * #GConfValue and will be destroyed when the #GConfValue is destroyed.
-     * @returns a #GList.
-     */
-    get_list(): Value[]
-    get_list_type(): ValueType
-    get_string(): string
-    set_bool(the_bool: boolean): void
-    set_car(car: Value): void
-    set_car_nocopy(car: Value): void
-    set_cdr(cdr: Value): void
-    set_cdr_nocopy(cdr: Value): void
-    set_float(the_float: number): void
-    set_int(the_int: number): void
-    set_list_type(type: ValueType): void
-    set_string(the_str: string): void
-    to_string(): string
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    const __version__: string;
 }
 
 export default GConf;

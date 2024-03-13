@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,73 +14,58 @@ import './xrandr-1.3-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xrandr {
+    class ScreenSize {
+        // Constructors of xrandr.ScreenSize
 
-class ScreenSize {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xrandr.ScreenSize
+    class ScreenChangeNotifyEvent {
+        // Constructors of xrandr.ScreenChangeNotifyEvent
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class NotifyEvent {
+        // Constructors of xrandr.NotifyEvent
 
-class ScreenChangeNotifyEvent {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xrandr.ScreenChangeNotifyEvent
+    class ScreenResources {
+        // Constructors of xrandr.ScreenResources
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class OutputChangeNotifyEvent {
+        // Constructors of xrandr.OutputChangeNotifyEvent
 
-class NotifyEvent {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xrandr.NotifyEvent
+    class CrtcChangeNotifyEvent {
+        // Constructors of xrandr.CrtcChangeNotifyEvent
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class OutputPropertyNotifyEvent {
+        // Constructors of xrandr.OutputPropertyNotifyEvent
 
-class ScreenResources {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xrandr.ScreenResources
-
-_init(...args: any[]): void;
-
-}
-
-class OutputChangeNotifyEvent {
-
-    // Constructors of xrandr.OutputChangeNotifyEvent
-
-_init(...args: any[]): void;
-
-}
-
-class CrtcChangeNotifyEvent {
-
-    // Constructors of xrandr.CrtcChangeNotifyEvent
-
-_init(...args: any[]): void;
-
-}
-
-class OutputPropertyNotifyEvent {
-
-    // Constructors of xrandr.OutputPropertyNotifyEvent
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default xrandr;

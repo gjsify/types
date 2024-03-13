@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -32,534 +31,452 @@ import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GnomeMaps {
+    enum ContactStoreState {
+        /**
+         * Initial state
+         */
+        INITIAL,
+        /**
+         * Loading
+         */
+        LOADING,
+        /**
+         * Loaded
+         */
+        LOADED,
+    }
+    function osm_finalize(): void;
+    function osm_init(): void;
+    function osm_parse(content: string, length: number): OSMObject;
+    interface ContactGeocodeCallback {
+        (contact: Contact): void;
+    }
+    interface ContactStoreLookupCallback {
+        (contact: Contact): void;
+    }
+    module Contact {
+        // Constructor properties interface
 
-enum ContactStoreState {
-    /**
-     * Initial state
-     */
-    INITIAL,
-    /**
-     * Loading
-     */
-    LOADING,
-    /**
-     * Loaded
-     */
-    LOADED,
-}
-function osm_finalize(): void
-function osm_init(): void
-function osm_parse(content: string, length: number): OSMObject
-interface ContactGeocodeCallback {
-    (contact: Contact): void
-}
-interface ContactStoreLookupCallback {
-    (contact: Contact): void
-}
-module Contact {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-bounding_box: Champlain.BoundingBox;
-    boundingBox: Champlain.BoundingBox;
-    icon: Gio.Icon;
-    id: string;
-    name: string;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            bounding_box: Champlain.BoundingBox;
+            boundingBox: Champlain.BoundingBox;
+            icon: Gio.Icon;
+            id: string;
+            name: string;
+        }
     }
 
-}
+    class Contact extends GObject.Object {
+        // Own properties of GnomeMaps.Contact
 
-class Contact extends GObject.Object {
+        /**
+         * The bounding box for the contact.
+         */
+        get bounding_box(): Champlain.BoundingBox;
+        /**
+         * The bounding box for the contact.
+         */
+        get boundingBox(): Champlain.BoundingBox;
+        /**
+         * The icon of the contact.
+         */
+        get icon(): Gio.Icon;
+        set icon(val: Gio.Icon);
+        /**
+         * The unique id of the contact.
+         */
+        get id(): string;
+        set id(val: string);
+        /**
+         * The name of the contact.
+         */
+        get name(): string;
+        set name(val: string);
 
-    // Own properties of GnomeMaps.Contact
+        // Constructors of GnomeMaps.Contact
 
-    /**
-     * The bounding box for the contact.
-     */
-    get bounding_box(): Champlain.BoundingBox;
-    /**
-     * The bounding box for the contact.
-     */
-    get boundingBox(): Champlain.BoundingBox;
-    /**
-     * The icon of the contact.
-     */
-    get icon(): Gio.Icon;
-    set icon(val: Gio.Icon);
-    /**
-     * The unique id of the contact.
-     */
-    get id(): string;
-    set id(val: string);
-    /**
-     * The name of the contact.
-     */
-    get name(): string;
-    set name(val: string);
+        constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
 
-    // Constructors of GnomeMaps.Contact
+        _init(...args: any[]): void;
 
+        static ['new'](): Contact;
 
-constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
+        // Own methods of GnomeMaps.Contact
 
-_init(...args: any[]): void;
-
-
-static ["new"](): Contact;
-
-    // Own methods of GnomeMaps.Contact
-
-    add_place(place: GeocodeGlib.Place): void
-    geocode(callback: ContactGeocodeCallback): void
-    get_places(): GeocodeGlib.Place[]
-}
-
-module ContactStore {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-state: ContactStoreState;
+        add_place(place: GeocodeGlib.Place): void;
+        geocode(callback: ContactGeocodeCallback): void;
+        get_places(): GeocodeGlib.Place[];
     }
 
-}
+    module ContactStore {
+        // Constructor properties interface
 
-class ContactStore extends GObject.Object {
-
-    // Own properties of GnomeMaps.ContactStore
-
-    /**
-     * The type of the contact.
-     */
-    get state(): ContactStoreState;
-
-    // Constructors of GnomeMaps.ContactStore
-
-
-constructor(properties?: Partial<ContactStore.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](): ContactStore;
-
-    // Own methods of GnomeMaps.ContactStore
-
-    get_contacts(): Contact[]
-    /**
-     * Load contacts from available backends.
-     */
-    load(): void
-    lookup(id: string, callback: ContactStoreLookupCallback): void
-}
-
-module FileTileSource {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
-max_zoom: number;
-    maxZoom: number;
-    min_zoom: number;
-    minZoom: number;
-    path: string;
-    world: Champlain.BoundingBox;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            state: ContactStoreState;
+        }
     }
 
-}
+    class ContactStore extends GObject.Object {
+        // Own properties of GnomeMaps.ContactStore
 
-/**
- * The #MapsFileTileSource structure contains only private data
- * and should be accessed using the provided API
- */
-class FileTileSource extends Champlain.TileSource {
+        /**
+         * The type of the contact.
+         */
+        get state(): ContactStoreState;
 
-    // Own properties of GnomeMaps.FileTileSource
+        // Constructors of GnomeMaps.ContactStore
 
-    /**
-     * The maximum zoom level of the tile source.
-     */
-    get max_zoom(): number;
-    /**
-     * The maximum zoom level of the tile source.
-     */
-    get maxZoom(): number;
-    /**
-     * The minimum zoom level of the tile source.
-     */
-    get min_zoom(): number;
-    /**
-     * The minimum zoom level of the tile source.
-     */
-    get minZoom(): number;
-    /**
-     * The path to the tile source.
-     */
-    get path(): string;
-    set path(val: string);
-    /**
-     * Set a bounding box to limit the world to. No tiles will be loaded
-     * outside of this bounding box. It will not be possible to scroll outside
-     * of this bounding box.
-     */
-    get world(): Champlain.BoundingBox;
+        constructor(properties?: Partial<ContactStore.ConstructorProps>, ...args: any[]);
 
-    // Constructors of GnomeMaps.FileTileSource
+        _init(...args: any[]): void;
 
+        static ['new'](): ContactStore;
 
-constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
+        // Own methods of GnomeMaps.ContactStore
 
-_init(...args: any[]): void;
-
-
-    // Own methods of GnomeMaps.FileTileSource
-
-    prepare(): boolean
-}
-
-module OSMChangeset {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-comment: string;
-    created_by: string;
-    createdBy: string;
+        get_contacts(): Contact[];
+        /**
+         * Load contacts from available backends.
+         */
+        load(): void;
+        lookup(id: string, callback: ContactStoreLookupCallback): void;
     }
 
-}
+    module FileTileSource {
+        // Constructor properties interface
 
-class OSMChangeset extends GObject.Object {
-
-    // Own properties of GnomeMaps.OSMChangeset
-
-    /**
-     * The comment of the changes.
-     */
-    get comment(): string;
-    set comment(val: string);
-    get created_by(): string;
-    set created_by(val: string);
-    get createdBy(): string;
-    set createdBy(val: string);
-
-    // Constructors of GnomeMaps.OSMChangeset
-
-
-constructor(properties?: Partial<OSMChangeset.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](comment?: (string | null), created_by?: (string | null)): OSMChangeset;
-
-    // Own methods of GnomeMaps.OSMChangeset
-
-    serialize(): string
-}
-
-module OSMNode {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends OSMObject.ConstructorProps {
-latitude: number;
-    longitude: number;
+        interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
+            max_zoom: number;
+            maxZoom: number;
+            min_zoom: number;
+            minZoom: number;
+            path: string;
+            world: Champlain.BoundingBox;
+        }
     }
 
-}
-
-class OSMNode extends OSMObject {
-
-    // Own properties of GnomeMaps.OSMNode
-
     /**
-     * The latitude of the node.
+     * The #MapsFileTileSource structure contains only private data
+     * and should be accessed using the provided API
      */
-    get latitude(): number;
-    set latitude(val: number);
-    /**
-     * The longitude of the node.
-     */
-    get longitude(): number;
-    set longitude(val: number);
+    class FileTileSource extends Champlain.TileSource {
+        // Own properties of GnomeMaps.FileTileSource
 
-    // Constructors of GnomeMaps.OSMNode
+        /**
+         * The maximum zoom level of the tile source.
+         */
+        get max_zoom(): number;
+        /**
+         * The maximum zoom level of the tile source.
+         */
+        get maxZoom(): number;
+        /**
+         * The minimum zoom level of the tile source.
+         */
+        get min_zoom(): number;
+        /**
+         * The minimum zoom level of the tile source.
+         */
+        get minZoom(): number;
+        /**
+         * The path to the tile source.
+         */
+        get path(): string;
+        set path(val: string);
+        /**
+         * Set a bounding box to limit the world to. No tiles will be loaded
+         * outside of this bounding box. It will not be possible to scroll outside
+         * of this bounding box.
+         */
+        get world(): Champlain.BoundingBox;
 
+        // Constructors of GnomeMaps.FileTileSource
 
-constructor(properties?: Partial<OSMNode.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
 
+        // Own methods of GnomeMaps.FileTileSource
 
-static ["new"](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
-}
-
-module OSMOAuthProxyCall {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {
-
+        prepare(): boolean;
     }
 
-}
+    module OSMChangeset {
+        // Constructor properties interface
 
-class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
-
-    // Constructors of GnomeMaps.OSMOAuthProxyCall
-
-
-constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
-}
-
-module OSMObject {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-changeset: number;
-    id: number;
-    version: number;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            comment: string;
+            created_by: string;
+            createdBy: string;
+        }
     }
 
-}
+    class OSMChangeset extends GObject.Object {
+        // Own properties of GnomeMaps.OSMChangeset
 
-abstract class OSMObject extends GObject.Object {
+        /**
+         * The comment of the changes.
+         */
+        get comment(): string;
+        set comment(val: string);
+        get created_by(): string;
+        set created_by(val: string);
+        get createdBy(): string;
+        set createdBy(val: string);
 
-    // Own properties of GnomeMaps.OSMObject
+        // Constructors of GnomeMaps.OSMChangeset
 
-    /**
-     * The OSM changeset for the current upload of the object.
-     */
-    get changeset(): number;
-    set changeset(val: number);
-    /**
-     * The OSM id of the object.
-     */
-    get id(): number;
-    set id(val: number);
-    /**
-     * The latest OSM version of the object.
-     */
-    get version(): number;
-    set version(val: number);
+        constructor(properties?: Partial<OSMChangeset.ConstructorProps>, ...args: any[]);
 
-    // Constructors of GnomeMaps.OSMObject
+        _init(...args: any[]): void;
 
+        static ['new'](comment?: string | null, created_by?: string | null): OSMChangeset;
 
-constructor(properties?: Partial<OSMObject.ConstructorProps>, ...args: any[]);
+        // Own methods of GnomeMaps.OSMChangeset
 
-_init(...args: any[]): void;
-
-
-    // Own methods of GnomeMaps.OSMObject
-
-    delete_tag(key: string): void
-    get_tag(key: string): string
-    serialize(): string
-    set_tag(key: string, value: string): void
-}
-
-module OSMRelation {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends OSMObject.ConstructorProps {
-
+        serialize(): string;
     }
 
-}
+    module OSMNode {
+        // Constructor properties interface
 
-class OSMRelation extends OSMObject {
-
-    // Constructors of GnomeMaps.OSMRelation
-
-
-constructor(properties?: Partial<OSMRelation.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](id: number, version: number, changeset: number): OSMRelation;
-
-    // Own methods of GnomeMaps.OSMRelation
-
-    add_member(role: string, type: number, ref: number): void
-}
-
-module OSMWay {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends OSMObject.ConstructorProps {
-
+        interface ConstructorProps extends OSMObject.ConstructorProps {
+            latitude: number;
+            longitude: number;
+        }
     }
 
-}
+    class OSMNode extends OSMObject {
+        // Own properties of GnomeMaps.OSMNode
 
-class OSMWay extends OSMObject {
+        /**
+         * The latitude of the node.
+         */
+        get latitude(): number;
+        set latitude(val: number);
+        /**
+         * The longitude of the node.
+         */
+        get longitude(): number;
+        set longitude(val: number);
 
-    // Constructors of GnomeMaps.OSMWay
+        // Constructors of GnomeMaps.OSMNode
 
+        constructor(properties?: Partial<OSMNode.ConstructorProps>, ...args: any[]);
 
-constructor(properties?: Partial<OSMWay.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
 
-_init(...args: any[]): void;
+        static ['new'](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
+    }
 
+    module OSMOAuthProxyCall {
+        // Constructor properties interface
 
-static ["new"](id: number, version: number, changeset: number): OSMWay;
+        interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
+    }
 
-    // Own methods of GnomeMaps.OSMWay
+    class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
+        // Constructors of GnomeMaps.OSMOAuthProxyCall
 
-    add_node_id(id: number): void
-}
+        constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
 
-type ContactClass = typeof Contact
-abstract class ContactPrivate {
+        _init(...args: any[]): void;
 
-    // Constructors of GnomeMaps.ContactPrivate
+        static ['new'](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
+    }
 
-_init(...args: any[]): void;
+    module OSMObject {
+        // Constructor properties interface
 
-}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            changeset: number;
+            id: number;
+            version: number;
+        }
+    }
 
-type ContactStoreClass = typeof ContactStore
-abstract class ContactStorePrivate {
+    abstract class OSMObject extends GObject.Object {
+        // Own properties of GnomeMaps.OSMObject
 
-    // Constructors of GnomeMaps.ContactStorePrivate
+        /**
+         * The OSM changeset for the current upload of the object.
+         */
+        get changeset(): number;
+        set changeset(val: number);
+        /**
+         * The OSM id of the object.
+         */
+        get id(): number;
+        set id(val: number);
+        /**
+         * The latest OSM version of the object.
+         */
+        get version(): number;
+        set version(val: number);
 
-_init(...args: any[]): void;
+        // Constructors of GnomeMaps.OSMObject
 
-}
+        constructor(properties?: Partial<OSMObject.ConstructorProps>, ...args: any[]);
 
-type FileTileSourceClass = typeof FileTileSource
-abstract class FileTileSourcePrivate {
+        _init(...args: any[]): void;
 
-    // Constructors of GnomeMaps.FileTileSourcePrivate
+        // Own methods of GnomeMaps.OSMObject
 
-_init(...args: any[]): void;
+        delete_tag(key: string): void;
+        get_tag(key: string): string;
+        serialize(): string;
+        set_tag(key: string, value: string): void;
+    }
 
-}
+    module OSMRelation {
+        // Constructor properties interface
 
-type OSMChangesetClass = typeof OSMChangeset
-abstract class OSMChangesetPrivate {
+        interface ConstructorProps extends OSMObject.ConstructorProps {}
+    }
 
-    // Constructors of GnomeMaps.OSMChangesetPrivate
+    class OSMRelation extends OSMObject {
+        // Constructors of GnomeMaps.OSMRelation
 
-_init(...args: any[]): void;
+        constructor(properties?: Partial<OSMRelation.ConstructorProps>, ...args: any[]);
 
-}
+        _init(...args: any[]): void;
 
-type OSMNodeClass = typeof OSMNode
-abstract class OSMNodePrivate {
+        static ['new'](id: number, version: number, changeset: number): OSMRelation;
 
-    // Constructors of GnomeMaps.OSMNodePrivate
+        // Own methods of GnomeMaps.OSMRelation
 
-_init(...args: any[]): void;
+        add_member(role: string, type: number, ref: number): void;
+    }
 
-}
+    module OSMWay {
+        // Constructor properties interface
 
-type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall
-abstract class OSMOAuthProxyCallPrivate {
+        interface ConstructorProps extends OSMObject.ConstructorProps {}
+    }
 
-    // Constructors of GnomeMaps.OSMOAuthProxyCallPrivate
+    class OSMWay extends OSMObject {
+        // Constructors of GnomeMaps.OSMWay
 
-_init(...args: any[]): void;
+        constructor(properties?: Partial<OSMWay.ConstructorProps>, ...args: any[]);
 
-}
+        _init(...args: any[]): void;
 
-type OSMObjectClass = typeof OSMObject
-abstract class OSMObjectPrivate {
+        static ['new'](id: number, version: number, changeset: number): OSMWay;
 
-    // Constructors of GnomeMaps.OSMObjectPrivate
+        // Own methods of GnomeMaps.OSMWay
 
-_init(...args: any[]): void;
+        add_node_id(id: number): void;
+    }
 
-}
+    type ContactClass = typeof Contact;
+    abstract class ContactPrivate {
+        // Constructors of GnomeMaps.ContactPrivate
 
-type OSMRelationClass = typeof OSMRelation
-abstract class OSMRelationPrivate {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps.OSMRelationPrivate
+    type ContactStoreClass = typeof ContactStore;
+    abstract class ContactStorePrivate {
+        // Constructors of GnomeMaps.ContactStorePrivate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    type FileTileSourceClass = typeof FileTileSource;
+    abstract class FileTileSourcePrivate {
+        // Constructors of GnomeMaps.FileTileSourcePrivate
 
-type OSMWayClass = typeof OSMWay
-abstract class OSMWayPrivate {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps.OSMWayPrivate
+    type OSMChangesetClass = typeof OSMChangeset;
+    abstract class OSMChangesetPrivate {
+        // Constructors of GnomeMaps.OSMChangesetPrivate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    type OSMNodeClass = typeof OSMNode;
+    abstract class OSMNodePrivate {
+        // Constructors of GnomeMaps.OSMNodePrivate
 
-abstract class _ContactClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._ContactClass
+    type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall;
+    abstract class OSMOAuthProxyCallPrivate {
+        // Constructors of GnomeMaps.OSMOAuthProxyCallPrivate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    type OSMObjectClass = typeof OSMObject;
+    abstract class OSMObjectPrivate {
+        // Constructors of GnomeMaps.OSMObjectPrivate
 
-abstract class _ContactStoreClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._ContactStoreClass
+    type OSMRelationClass = typeof OSMRelation;
+    abstract class OSMRelationPrivate {
+        // Constructors of GnomeMaps.OSMRelationPrivate
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    type OSMWayClass = typeof OSMWay;
+    abstract class OSMWayPrivate {
+        // Constructors of GnomeMaps.OSMWayPrivate
 
-abstract class _OSMChangesetClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._OSMChangesetClass
+    abstract class _ContactClass {
+        // Constructors of GnomeMaps._ContactClass
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    abstract class _ContactStoreClass {
+        // Constructors of GnomeMaps._ContactStoreClass
 
-abstract class _OSMNodeClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._OSMNodeClass
+    abstract class _OSMChangesetClass {
+        // Constructors of GnomeMaps._OSMChangesetClass
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    abstract class _OSMNodeClass {
+        // Constructors of GnomeMaps._OSMNodeClass
 
-abstract class _OSMRelationClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._OSMRelationClass
+    abstract class _OSMRelationClass {
+        // Constructors of GnomeMaps._OSMRelationClass
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    abstract class _OSMWayClass {
+        // Constructors of GnomeMaps._OSMWayClass
 
-abstract class _OSMWayClass {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of GnomeMaps._OSMWayClass
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default GnomeMaps;

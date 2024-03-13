@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,42 +14,35 @@ import './fontconfig-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace fontconfig {
+    function init(): void;
+    class Pattern {
+        // Constructors of fontconfig.Pattern
 
-function init(): void
-class Pattern {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of fontconfig.Pattern
+    class CharSet {
+        // Constructors of fontconfig.CharSet
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Config {
+        // Constructors of fontconfig.Config
 
-class CharSet {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of fontconfig.CharSet
-
-_init(...args: any[]): void;
-
-}
-
-class Config {
-
-    // Constructors of fontconfig.Config
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default fontconfig;

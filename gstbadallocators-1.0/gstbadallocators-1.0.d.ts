@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,47 +17,37 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstBadAllocators {
+    function is_phys_memory(mem: Gst.Memory): boolean;
+    function phys_memory_get_phys_addr(mem: Gst.Memory): never;
+    type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
+    module PhysMemoryAllocator {
+        // Constructor properties interface
 
-function is_phys_memory(mem: Gst.Memory): boolean
-function phys_memory_get_phys_addr(mem: Gst.Memory): never
-type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator
-module PhysMemoryAllocator {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
-}
+    export interface PhysMemoryAllocatorNamespace {
+        $gtype: GObject.GType<PhysMemoryAllocator>;
+        prototype: PhysMemoryAllocator;
+    }
+    interface PhysMemoryAllocator extends Gst.Allocator {
+        // Own virtual methods of GstBadAllocators.PhysMemoryAllocator
 
-export interface PhysMemoryAllocatorNamespace {
-      $gtype: GObject.GType<PhysMemoryAllocator>;
-      prototype: PhysMemoryAllocator;
-      
-          
-      }
-interface PhysMemoryAllocator extends Gst.Allocator {
+        vfunc_get_phys_addr(mem: Gst.Memory): never;
+    }
 
-    // Own virtual methods of GstBadAllocators.PhysMemoryAllocator
+    export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace;
 
-    vfunc_get_phys_addr(mem: Gst.Memory): never
-}
-
-
-
-export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace;
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default GstBadAllocators;

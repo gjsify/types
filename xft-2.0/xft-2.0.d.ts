@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,50 +15,41 @@ import type xlib from '@girs/xlib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xft {
+    function init(): void;
+    class Color {
+        // Constructors of xft.Color
 
-function init(): void
-class Color {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xft.Color
+    class Draw {
+        // Constructors of xft.Draw
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Font {
+        // Constructors of xft.Font
 
-class Draw {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of xft.Draw
+    class GlyphSpec {
+        // Constructors of xft.GlyphSpec
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
-
-class Font {
-
-    // Constructors of xft.Font
-
-_init(...args: any[]): void;
-
-}
-
-class GlyphSpec {
-
-    // Constructors of xft.GlyphSpec
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default xft;

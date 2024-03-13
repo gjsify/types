@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,338 +19,317 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace RestExtras {
+    interface YoutubeProxyUploadCallback<A = GObject.Object> {
+        (
+            proxy: YoutubeProxy,
+            payload: string,
+            total: number,
+            uploaded: number,
+            error: GLib.Error,
+            weak_object: A,
+        ): void;
+    }
+    module FlickrProxy {
+        // Constructor properties interface
 
-interface YoutubeProxyUploadCallback<A = GObject.Object> {
-    (proxy: YoutubeProxy, payload: string, total: number, uploaded: number, error: GLib.Error, weak_object: A): void
-}
-module FlickrProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Rest.Proxy.ConstructorProps {
-api_key: string;
-    apiKey: string;
-    shared_secret: string;
-    sharedSecret: string;
-    token: string;
+        interface ConstructorProps extends Rest.Proxy.ConstructorProps {
+            api_key: string;
+            apiKey: string;
+            shared_secret: string;
+            sharedSecret: string;
+            token: string;
+        }
     }
 
-}
-
-/**
- * #FlickrProxy has no publicly available members.
- */
-class FlickrProxy extends Rest.Proxy {
-
-    // Own properties of RestExtras.FlickrProxy
-
-    get api_key(): string;
-    get apiKey(): string;
-    get shared_secret(): string;
-    get sharedSecret(): string;
-    get token(): string;
-    set token(val: string);
-
-    // Constructors of RestExtras.FlickrProxy
-
-
-constructor(properties?: Partial<FlickrProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](api_key: string, shared_secret: string): FlickrProxy;
-// Conflicted with Rest.Proxy.new
-
-static ["new"](...args: never[]): any;
-
-static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy;
-
-    // Own static methods of RestExtras.FlickrProxy
-
     /**
-     * Examines the Flickr response and if it not a successful reply, set `error` and
-     * return FALSE.
-     * @param root The root node of a parsed Flickr response
+     * #FlickrProxy has no publicly available members.
      */
-    static is_successful(root: Rest.XmlNode): boolean
+    class FlickrProxy extends Rest.Proxy {
+        // Own properties of RestExtras.FlickrProxy
 
-    // Own methods of RestExtras.FlickrProxy
+        get api_key(): string;
+        get apiKey(): string;
+        get shared_secret(): string;
+        get sharedSecret(): string;
+        get token(): string;
+        set token(val: string);
 
-    build_login_url(frob: string, perms: string): string
-    /**
-     * Get the API key.
-     * @returns the API key. This string is owned by #FlickrProxy and should not be freed.
-     */
-    get_api_key(): string
-    /**
-     * Get the shared secret for authentication.
-     * @returns the shared secret. This string is owned by #FlickrProxy and should not be freed.
-     */
-    get_shared_secret(): string
-    /**
-     * Get the current token.
-     * @returns the token, or %NULL if there is no token yet.  This string is owned by #FlickrProxy and should not be freed.
-     */
-    get_token(): string
-    /**
-     * Create a new #RestProxyCall that can be used for uploading.
-     * 
-     * See http://www.flickr.com/services/api/upload.api.html for details on
-     * uploading to Flickr.
-     * @returns a new #FlickrProxyCall
-     */
-    new_upload(): FlickrProxyCall
-    /**
-     * Create a new #RestProxyCall that can be used for uploading.  `filename` will
-     * be set as the "photo" parameter for you, avoiding you from having to open the
-     * file and determine the MIME type.
-     * 
-     * Note that this function can in theory block.
-     * 
-     * See http://www.flickr.com/services/api/upload.api.html for details on
-     * uploading to Flickr.
-     * @param filename the file to upload
-     * @returns a new #FlickrProxyCall
-     */
-    new_upload_for_file(filename: string): FlickrProxyCall
-    /**
-     * Set the token.
-     * @param token the access token
-     */
-    set_token(token: string): void
-    sign(params: GLib.HashTable<any, any>): string
-}
+        // Constructors of RestExtras.FlickrProxy
 
-module FlickrProxyCall {
+        constructor(properties?: Partial<FlickrProxy.ConstructorProps>, ...args: any[]);
 
-    // Constructor properties interface
+        _init(...args: any[]): void;
 
-    interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
-upload: boolean | any;
+        static ['new'](api_key: string, shared_secret: string): FlickrProxy;
+        // Conflicted with Rest.Proxy.new
+
+        static ['new'](...args: never[]): any;
+
+        static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy;
+
+        // Own static methods of RestExtras.FlickrProxy
+
+        /**
+         * Examines the Flickr response and if it not a successful reply, set `error` and
+         * return FALSE.
+         * @param root The root node of a parsed Flickr response
+         */
+        static is_successful(root: Rest.XmlNode): boolean;
+
+        // Own methods of RestExtras.FlickrProxy
+
+        build_login_url(frob: string, perms: string): string;
+        /**
+         * Get the API key.
+         * @returns the API key. This string is owned by #FlickrProxy and should not be freed.
+         */
+        get_api_key(): string;
+        /**
+         * Get the shared secret for authentication.
+         * @returns the shared secret. This string is owned by #FlickrProxy and should not be freed.
+         */
+        get_shared_secret(): string;
+        /**
+         * Get the current token.
+         * @returns the token, or %NULL if there is no token yet.  This string is owned by #FlickrProxy and should not be freed.
+         */
+        get_token(): string;
+        /**
+         * Create a new #RestProxyCall that can be used for uploading.
+         *
+         * See http://www.flickr.com/services/api/upload.api.html for details on
+         * uploading to Flickr.
+         * @returns a new #FlickrProxyCall
+         */
+        new_upload(): FlickrProxyCall;
+        /**
+         * Create a new #RestProxyCall that can be used for uploading.  `filename` will
+         * be set as the "photo" parameter for you, avoiding you from having to open the
+         * file and determine the MIME type.
+         *
+         * Note that this function can in theory block.
+         *
+         * See http://www.flickr.com/services/api/upload.api.html for details on
+         * uploading to Flickr.
+         * @param filename the file to upload
+         * @returns a new #FlickrProxyCall
+         */
+        new_upload_for_file(filename: string): FlickrProxyCall;
+        /**
+         * Set the token.
+         * @param token the access token
+         */
+        set_token(token: string): void;
+        sign(params: GLib.HashTable<any, any>): string;
     }
 
-}
+    module FlickrProxyCall {
+        // Constructor properties interface
 
-/**
- * #FlickrProxyCall has no publicly available members.
- */
-class FlickrProxyCall extends Rest.ProxyCall {
-
-    // Own properties of RestExtras.FlickrProxyCall
-
-    /**
-     * Set if the call should be sent to the photo upload endpoint and not the
-     * general-purpose endpoint.
-     */
-// This accessor conflicts with a property or field in a parent class or interface.
-     upload: boolean | any;
-
-    // Constructors of RestExtras.FlickrProxyCall
-
-
-constructor(properties?: Partial<FlickrProxyCall.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-}
-
-module LastfmProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Rest.Proxy.ConstructorProps {
-api_key: string;
-    apiKey: string;
-    secret: string;
-    session_key: string;
-    sessionKey: string;
+        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
+            upload: boolean | any;
+        }
     }
 
-}
-
-/**
- * #LastfmProxy has no publicly available members.
- */
-class LastfmProxy extends Rest.Proxy {
-
-    // Own properties of RestExtras.LastfmProxy
-
-    get api_key(): string;
-    get apiKey(): string;
-    get secret(): string;
-    get session_key(): string;
-    set session_key(val: string);
-    get sessionKey(): string;
-    set sessionKey(val: string);
-
-    // Constructors of RestExtras.LastfmProxy
-
-
-constructor(properties?: Partial<LastfmProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](api_key: string, secret: string): LastfmProxy;
-// Conflicted with Rest.Proxy.new
-
-static ["new"](...args: never[]): any;
-
-static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy;
-
-    // Own static methods of RestExtras.LastfmProxy
-
     /**
-     * Examines the Lastfm response and if it not a successful reply, set `error` and
-     * return FALSE.
-     * @param root The root node of a parsed Lastfm response
+     * #FlickrProxyCall has no publicly available members.
      */
-    static is_successful(root: Rest.XmlNode): boolean
+    class FlickrProxyCall extends Rest.ProxyCall {
+        // Own properties of RestExtras.FlickrProxyCall
 
-    // Own methods of RestExtras.LastfmProxy
+        /**
+         * Set if the call should be sent to the photo upload endpoint and not the
+         * general-purpose endpoint.
+         */
+        // This accessor conflicts with a property or field in a parent class or interface.
+        upload: boolean | any;
 
-    build_login_url(token: string): string
-    /**
-     * Get the API key.
-     * @returns the API key. This string is owned by #LastfmProxy and should not be freed.
-     */
-    get_api_key(): string
-    /**
-     * Get the secret for authentication.
-     * @returns the secret. This string is owned by #LastfmProxy and should not be freed.
-     */
-    get_secret(): string
-    /**
-     * Get the current session key.
-     * @returns the session key, or %NULL if there is no session key yet.  This string is owned by #LastfmProxy and should not be freed.
-     */
-    get_session_key(): string
-    /**
-     * Set the session key.
-     * @param session_key the access session_key
-     */
-    set_session_key(session_key: string): void
-    sign(params: GLib.HashTable<any, any>): string
-}
+        // Constructors of RestExtras.FlickrProxyCall
 
-module LastfmProxyCall {
+        constructor(properties?: Partial<FlickrProxyCall.ConstructorProps>, ...args: any[]);
 
-    // Constructor properties interface
-
-    interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
-
+        _init(...args: any[]): void;
     }
 
-}
+    module LastfmProxy {
+        // Constructor properties interface
 
-/**
- * #LastfmProxyCall has no publicly available members.
- */
-class LastfmProxyCall extends Rest.ProxyCall {
-
-    // Constructors of RestExtras.LastfmProxyCall
-
-
-constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-}
-
-module YoutubeProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Rest.Proxy.ConstructorProps {
-developer_key: string;
-    developerKey: string;
-    user_auth: string;
-    userAuth: string;
+        interface ConstructorProps extends Rest.Proxy.ConstructorProps {
+            api_key: string;
+            apiKey: string;
+            secret: string;
+            session_key: string;
+            sessionKey: string;
+        }
     }
 
-}
-
-/**
- * #YoutubeProxy has no publicly available members.
- */
-class YoutubeProxy extends Rest.Proxy {
-
-    // Own properties of RestExtras.YoutubeProxy
-
-    get developer_key(): string;
-    get developerKey(): string;
-    get user_auth(): string;
-    set user_auth(val: string);
-    get userAuth(): string;
-    set userAuth(val: string);
-
-    // Constructors of RestExtras.YoutubeProxy
-
-
-constructor(properties?: Partial<YoutubeProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](developer_key: string): YoutubeProxy;
-
-static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy;
-
-    // Own methods of RestExtras.YoutubeProxy
-
-    set_user_auth(user_auth: string): void
     /**
-     * Upload a file.
-     * @param filename filename
-     * @param fields fields
-     * @param incomplete incomplete
-     * @param callback callback to invoke upon completion
-     * @param weak_object an object instance used to tie the life cycle of the proxy to
-     * @returns %TRUE, or %FALSE if the file could not be opened
+     * #LastfmProxy has no publicly available members.
      */
-    upload_async(filename: string, fields: GLib.HashTable<any, any>, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean
-}
+    class LastfmProxy extends Rest.Proxy {
+        // Own properties of RestExtras.LastfmProxy
 
-type FlickrProxyCallClass = typeof FlickrProxyCall
-type FlickrProxyClass = typeof FlickrProxy
-abstract class FlickrProxyPrivate {
+        get api_key(): string;
+        get apiKey(): string;
+        get secret(): string;
+        get session_key(): string;
+        set session_key(val: string);
+        get sessionKey(): string;
+        set sessionKey(val: string);
 
-    // Constructors of RestExtras.FlickrProxyPrivate
+        // Constructors of RestExtras.LastfmProxy
 
-_init(...args: any[]): void;
+        constructor(properties?: Partial<LastfmProxy.ConstructorProps>, ...args: any[]);
 
-}
+        _init(...args: any[]): void;
 
-type LastfmProxyCallClass = typeof LastfmProxyCall
-type LastfmProxyClass = typeof LastfmProxy
-abstract class LastfmProxyPrivate {
+        static ['new'](api_key: string, secret: string): LastfmProxy;
+        // Conflicted with Rest.Proxy.new
 
-    // Constructors of RestExtras.LastfmProxyPrivate
+        static ['new'](...args: never[]): any;
 
-_init(...args: any[]): void;
+        static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy;
 
-}
+        // Own static methods of RestExtras.LastfmProxy
 
-type YoutubeProxyClass = typeof YoutubeProxy
-abstract class YoutubeProxyPrivate {
+        /**
+         * Examines the Lastfm response and if it not a successful reply, set `error` and
+         * return FALSE.
+         * @param root The root node of a parsed Lastfm response
+         */
+        static is_successful(root: Rest.XmlNode): boolean;
 
-    // Constructors of RestExtras.YoutubeProxyPrivate
+        // Own methods of RestExtras.LastfmProxy
 
-_init(...args: any[]): void;
+        build_login_url(token: string): string;
+        /**
+         * Get the API key.
+         * @returns the API key. This string is owned by #LastfmProxy and should not be freed.
+         */
+        get_api_key(): string;
+        /**
+         * Get the secret for authentication.
+         * @returns the secret. This string is owned by #LastfmProxy and should not be freed.
+         */
+        get_secret(): string;
+        /**
+         * Get the current session key.
+         * @returns the session key, or %NULL if there is no session key yet.  This string is owned by #LastfmProxy and should not be freed.
+         */
+        get_session_key(): string;
+        /**
+         * Set the session key.
+         * @param session_key the access session_key
+         */
+        set_session_key(session_key: string): void;
+        sign(params: GLib.HashTable<any, any>): string;
+    }
 
-}
+    module LastfmProxyCall {
+        // Constructor properties interface
 
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {}
+    }
+
+    /**
+     * #LastfmProxyCall has no publicly available members.
+     */
+    class LastfmProxyCall extends Rest.ProxyCall {
+        // Constructors of RestExtras.LastfmProxyCall
+
+        constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
+    module YoutubeProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Rest.Proxy.ConstructorProps {
+            developer_key: string;
+            developerKey: string;
+            user_auth: string;
+            userAuth: string;
+        }
+    }
+
+    /**
+     * #YoutubeProxy has no publicly available members.
+     */
+    class YoutubeProxy extends Rest.Proxy {
+        // Own properties of RestExtras.YoutubeProxy
+
+        get developer_key(): string;
+        get developerKey(): string;
+        get user_auth(): string;
+        set user_auth(val: string);
+        get userAuth(): string;
+        set userAuth(val: string);
+
+        // Constructors of RestExtras.YoutubeProxy
+
+        constructor(properties?: Partial<YoutubeProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](developer_key: string): YoutubeProxy;
+
+        static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy;
+
+        // Own methods of RestExtras.YoutubeProxy
+
+        set_user_auth(user_auth: string): void;
+        /**
+         * Upload a file.
+         * @param filename filename
+         * @param fields fields
+         * @param incomplete incomplete
+         * @param callback callback to invoke upon completion
+         * @param weak_object an object instance used to tie the life cycle of the proxy to
+         * @returns %TRUE, or %FALSE if the file could not be opened
+         */
+        upload_async(
+            filename: string,
+            fields: GLib.HashTable<any, any>,
+            incomplete: boolean,
+            callback: YoutubeProxyUploadCallback,
+            weak_object: GObject.Object,
+        ): boolean;
+    }
+
+    type FlickrProxyCallClass = typeof FlickrProxyCall;
+    type FlickrProxyClass = typeof FlickrProxy;
+    abstract class FlickrProxyPrivate {
+        // Constructors of RestExtras.FlickrProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type LastfmProxyCallClass = typeof LastfmProxyCall;
+    type LastfmProxyClass = typeof LastfmProxy;
+    abstract class LastfmProxyPrivate {
+        // Constructors of RestExtras.LastfmProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type YoutubeProxyClass = typeof YoutubeProxy;
+    abstract class YoutubeProxyPrivate {
+        // Constructors of RestExtras.YoutubeProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default RestExtras;

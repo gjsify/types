@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,62 +14,51 @@ import './dbus-1.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace DBus {
+    enum BusType {
+        SESSION,
+        SYSTEM,
+        STARTER,
+    }
+    class Connection {
+        // Constructors of DBus.Connection
 
-enum BusType {
-    SESSION,
-    SYSTEM,
-    STARTER,
-}
-class Connection {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of DBus.Connection
+    class Error {
+        // Constructors of DBus.Error
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Message {
+        // Constructors of DBus.Message
 
-class Error {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of DBus.Error
+    class MessageIter {
+        // Constructors of DBus.MessageIter
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class PendingCall {
+        // Constructors of DBus.PendingCall
 
-class Message {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of DBus.Message
-
-_init(...args: any[]): void;
-
-}
-
-class MessageIter {
-
-    // Constructors of DBus.MessageIter
-
-_init(...args: any[]): void;
-
-}
-
-class PendingCall {
-
-    // Constructors of DBus.PendingCall
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default DBus;

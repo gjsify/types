@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,82 +14,65 @@ import './libxml2-2.0-import.d.ts';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace libxml2 {
+    function dummy(): void;
+    class Node {
+        // Constructors of libxml2.Node
 
-function dummy(): void
-class Node {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of libxml2.Node
+    class NodePtr {
+        // Constructors of libxml2.NodePtr
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class Doc {
+        // Constructors of libxml2.Doc
 
-class NodePtr {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of libxml2.NodePtr
+    class DocPtr {
+        // Constructors of libxml2.DocPtr
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class NsPtr {
+        // Constructors of libxml2.NsPtr
 
-class Doc {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of libxml2.Doc
+    class Char {
+        // Constructors of libxml2.Char
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
+    class TextWriter {
+        // Constructors of libxml2.TextWriter
 
-class DocPtr {
+        _init(...args: any[]): void;
+    }
 
-    // Constructors of libxml2.DocPtr
+    class TextReader {
+        // Constructors of libxml2.TextReader
 
-_init(...args: any[]): void;
+        _init(...args: any[]): void;
+    }
 
-}
-
-class NsPtr {
-
-    // Constructors of libxml2.NsPtr
-
-_init(...args: any[]): void;
-
-}
-
-class Char {
-
-    // Constructors of libxml2.Char
-
-_init(...args: any[]): void;
-
-}
-
-class TextWriter {
-
-    // Constructors of libxml2.TextWriter
-
-_init(...args: any[]): void;
-
-}
-
-class TextReader {
-
-    // Constructors of libxml2.TextReader
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default libxml2;

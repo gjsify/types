@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,7989 +16,8742 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gdm {
+    enum ClientError {
+        CLIENT_ERROR_GENERIC,
+    }
+    function chooser_interface_info(): Gio.DBusInterfaceInfo;
+    function chooser_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    /**
+     * Reads /usr/share/xsessions and other relevant places for possible sessions
+     * to log into and returns the complete list.
+     * @returns a %NULL terminated list of session ids
+     */
+    function get_session_ids(): string[];
+    /**
+     * Takes an xsession id and returns the name and comment about it.
+     * @param id an id from gdm_get_session_ids()
+     * @returns The session name if found, or %NULL otherwise
+     */
+    function get_session_name_and_description(id: string): [string, string];
+    function goto_login_session_sync(cancellable?: Gio.Cancellable | null): boolean;
+    function greeter_interface_info(): Gio.DBusInterfaceInfo;
+    function greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    function manager_interface_info(): Gio.DBusInterfaceInfo;
+    function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    function remote_greeter_interface_info(): Gio.DBusInterfaceInfo;
+    function remote_greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    function user_verifier_choice_list_interface_info(): Gio.DBusInterfaceInfo;
+    function user_verifier_choice_list_override_properties(
+        klass: typeof GObject.Object,
+        property_id_begin: number,
+    ): number;
+    function user_verifier_interface_info(): Gio.DBusInterfaceInfo;
+    function user_verifier_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    function worker_manager_interface_info(): Gio.DBusInterfaceInfo;
+    function worker_manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    module ChooserProxy {
+        // Constructor properties interface
 
-enum ClientError {
-    CLIENT_ERROR_GENERIC,
-}
-function chooser_interface_info(): Gio.DBusInterfaceInfo
-function chooser_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-/**
- * Reads /usr/share/xsessions and other relevant places for possible sessions
- * to log into and returns the complete list.
- * @returns a %NULL terminated list of session ids
- */
-function get_session_ids(): string[]
-/**
- * Takes an xsession id and returns the name and comment about it.
- * @param id an id from gdm_get_session_ids()
- * @returns The session name if found, or %NULL otherwise
- */
-function get_session_name_and_description(id: string): [string, string]
-function goto_login_session_sync(cancellable?: (Gio.Cancellable | null)): boolean
-function greeter_interface_info(): Gio.DBusInterfaceInfo
-function greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-function manager_interface_info(): Gio.DBusInterfaceInfo
-function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-function remote_greeter_interface_info(): Gio.DBusInterfaceInfo
-function remote_greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-function user_verifier_choice_list_interface_info(): Gio.DBusInterfaceInfo
-function user_verifier_choice_list_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-function user_verifier_interface_info(): Gio.DBusInterfaceInfo
-function user_verifier_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-function worker_manager_interface_info(): Gio.DBusInterfaceInfo
-function worker_manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number
-module ChooserProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Chooser.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                Chooser.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
     }
 
-}
+    class ChooserProxy
+        extends Gio.DBusProxy
+        implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.ChooserProxy
 
-class ChooserProxy extends Gio.DBusProxy implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable {
+        constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Gdm.ChooserProxy
+        _init(...args: any[]): void;
 
+        // Own static methods of Gdm.ChooserProxy
 
-constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<ChooserProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<ChooserProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
 
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.ChooserProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<ChooserProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<ChooserProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_disconnect_finish(res: Gio.AsyncResult): boolean
-call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_select_hostname(arg_hostname: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_hostname_finish(res: Gio.AsyncResult): boolean
-call_select_hostname_sync(arg_hostname: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-complete_select_hostname(invocation: Gio.DBusMethodInvocation): void
-vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): ChooserProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module ChooserSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Chooser.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
+        // Inherited methods
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname(
+            arg_hostname: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): ChooserProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
     }
 
-}
+    module ChooserSkeleton {
+        // Constructor properties interface
 
-class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
-
-    // Constructors of Gdm.ChooserSkeleton
-
-
-constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_disconnect_finish(res: Gio.AsyncResult): boolean
-call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_select_hostname(arg_hostname: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_hostname_finish(res: Gio.AsyncResult): boolean
-call_select_hostname_sync(arg_hostname: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-complete_select_hostname(invocation: Gio.DBusMethodInvocation): void
-vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module Client {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                Chooser.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
     }
 
-}
+    class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
+        // Constructors of Gdm.ChooserSkeleton
 
-class Client extends GObject.Object {
+        constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Gdm.Client
+        _init(...args: any[]): void;
 
+        // Inherited methods
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname(
+            arg_hostname: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
 
-constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
+    module Client {
+        // Constructor properties interface
 
-_init(...args: any[]): void;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
 
+    class Client extends GObject.Object {
+        // Constructors of Gdm.Client
 
-static ["new"](): Client;
+        constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
-    // Own static methods of Gdm.Client
+        _init(...args: any[]): void;
 
-    static error_quark(): GLib.Quark
+        static ['new'](): Client;
 
-    // Own methods of Gdm.Client
+        // Own static methods of Gdm.Client
+
+        static error_quark(): GLib.Quark;
+
+        // Own methods of Gdm.Client
+
+        /**
+         * Gets a #GdmChooser object that can be used to
+         * verify a user's local account.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_chooser(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes an operation started with
+         * gdm_client_get_chooser().
+         * @param result The #GAsyncResult from the callback
+         * @returns a #GdmChooser
+         */
+        get_chooser_finish(result: Gio.AsyncResult): Chooser;
+        /**
+         * Gets a #GdmChooser object that can be used
+         * to do do various XDMCP chooser related tasks, such
+         * as selecting a host or disconnecting.
+         * @param cancellable a #GCancellable
+         * @returns #GdmChooser or %NULL if caller is not a chooser
+         */
+        get_chooser_sync(cancellable?: Gio.Cancellable | null): Chooser;
+        /**
+         * Gets a #GdmGreeter object that can be used to
+         * verify a user's local account.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_greeter(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes an operation started with
+         * gdm_client_get_greeter().
+         * @param result The #GAsyncResult from the callback
+         * @returns a #GdmGreeter
+         */
+        get_greeter_finish(result: Gio.AsyncResult): Greeter;
+        /**
+         * Gets a #GdmGreeter object that can be used
+         * to do do various login screen related tasks, such
+         * as selecting a users session, and starting that
+         * session.
+         * @param cancellable a #GCancellable
+         * @returns #GdmGreeter or %NULL if caller is not a greeter
+         */
+        get_greeter_sync(cancellable?: Gio.Cancellable | null): Greeter;
+        /**
+         * Gets a #GdmRemoteGreeter object that can be used to
+         * verify a user's local account.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_remote_greeter(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Finishes an operation started with
+         * gdm_client_get_remote_greeter().
+         * @param result The #GAsyncResult from the callback
+         * @returns a #GdmRemoteGreeter
+         */
+        get_remote_greeter_finish(result: Gio.AsyncResult): RemoteGreeter;
+        /**
+         * Gets a #GdmRemoteGreeter object that can be used
+         * to do do various remote login screen related tasks,
+         * such as disconnecting.
+         * @param cancellable a #GCancellable
+         * @returns #GdmRemoteGreeter or %NULL if caller is not remote
+         */
+        get_remote_greeter_sync(cancellable?: Gio.Cancellable | null): RemoteGreeter;
+        /**
+         * Gets a #GdmUserVerifier object that can be used to
+         * verify a user's local account.
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        get_user_verifier(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Gets a #GdmUserVerifierChoiceList object that can be used to
+         * verify a user's local account.
+         * @returns #GdmUserVerifierChoiceList or %NULL if user verifier isn't yet fetched, or daemon doesn't support choice lists
+         */
+        get_user_verifier_choice_list(): UserVerifierChoiceList;
+        /**
+         * Finishes an operation started with
+         * gdm_client_get_user_verifier().
+         * @param result The #GAsyncResult from the callback
+         * @returns a #GdmUserVerifier
+         */
+        get_user_verifier_finish(result: Gio.AsyncResult): UserVerifier;
+        /**
+         * Gets a #GdmUserVerifier object that can be used to
+         * verify a user's local account.
+         * @param cancellable a #GCancellable
+         * @returns #GdmUserVerifier or %NULL if not connected
+         */
+        get_user_verifier_sync(cancellable?: Gio.Cancellable | null): UserVerifier;
+        /**
+         * Gets a #GdmUserVerifier object that can be used to
+         * reauthenticate an already logged in user.
+         * @param username user to reauthenticate
+         * @param cancellable a #GCancellable
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        open_reauthentication_channel(
+            username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes an operation started with
+         * gdm_client_open_reauthentication_channel().
+         * @param result The #GAsyncResult from the callback
+         * @returns a #GdmUserVerifier
+         */
+        open_reauthentication_channel_finish(result: Gio.AsyncResult): UserVerifier;
+        /**
+         * Gets a #GdmUserVerifier object that can be used to
+         * reauthenticate an already logged in user. Free with
+         * g_object_unref to close reauthentication channel.
+         * @param username user to reauthenticate
+         * @param cancellable a #GCancellable
+         * @returns #GdmUserVerifier or %NULL if @username is not already logged in.
+         */
+        open_reauthentication_channel_sync(username: string, cancellable?: Gio.Cancellable | null): UserVerifier;
+        /**
+         * Enables GDM's pam extensions.  Currently, only
+         * org.gnome.DisplayManager.UserVerifier.ChoiceList is supported.
+         * @param extensions a list of extensions
+         */
+        set_enabled_extensions(extensions: string[]): void;
+    }
+
+    module GreeterProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                Greeter.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class GreeterProxy
+        extends Gio.DBusProxy
+        implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.GreeterProxy
+
+        constructor(properties?: Partial<GreeterProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.GreeterProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<GreeterProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<GreeterProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited methods
+        call_begin_auto_login(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_get_timed_login_details_finish(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            res: Gio.AsyncResult,
+        ): boolean;
+        call_get_timed_login_details_sync(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_select_session(
+            arg_session: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_session_finish(res: Gio.AsyncResult): boolean;
+        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_user_finish(res: Gio.AsyncResult): boolean;
+        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_start_session_when_ready(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
+        call_start_session_when_ready_sync(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
+        complete_get_timed_login_details(
+            invocation: Gio.DBusMethodInvocation,
+            enabled: boolean,
+            username: string,
+            delay: number,
+        ): void;
+        complete_select_session(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
+        emit_default_language_name_changed(arg_language_name: string): void;
+        emit_default_session_name_changed(arg_session_name: string): void;
+        emit_reauthenticated(arg_service_name: string): void;
+        emit_selected_user_changed(arg_username: string): void;
+        emit_session_opened(arg_service_name: string): void;
+        emit_timed_login_requested(arg_username: string, arg_delay: number): void;
+        vfunc_default_language_name_changed(arg_language_name: string): void;
+        vfunc_default_session_name_changed(arg_session_name: string): void;
+        vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
+        vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_start_session_when_ready(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+        ): boolean;
+        vfunc_reauthenticated(arg_service_name: string): void;
+        vfunc_selected_user_changed(arg_username: string): void;
+        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): GreeterProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module GreeterSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                Greeter.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
+        // Constructors of Gdm.GreeterSkeleton
+
+        constructor(properties?: Partial<GreeterSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        call_begin_auto_login(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_get_timed_login_details_finish(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            res: Gio.AsyncResult,
+        ): boolean;
+        call_get_timed_login_details_sync(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_select_session(
+            arg_session: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_session_finish(res: Gio.AsyncResult): boolean;
+        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_user_finish(res: Gio.AsyncResult): boolean;
+        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_start_session_when_ready(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
+        call_start_session_when_ready_sync(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
+        complete_get_timed_login_details(
+            invocation: Gio.DBusMethodInvocation,
+            enabled: boolean,
+            username: string,
+            delay: number,
+        ): void;
+        complete_select_session(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
+        emit_default_language_name_changed(arg_language_name: string): void;
+        emit_default_session_name_changed(arg_session_name: string): void;
+        emit_reauthenticated(arg_service_name: string): void;
+        emit_selected_user_changed(arg_username: string): void;
+        emit_session_opened(arg_service_name: string): void;
+        emit_timed_login_requested(arg_username: string, arg_delay: number): void;
+        vfunc_default_language_name_changed(arg_language_name: string): void;
+        vfunc_default_session_name_changed(arg_session_name: string): void;
+        vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
+        vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_start_session_when_ready(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+        ): boolean;
+        vfunc_reauthenticated(arg_service_name: string): void;
+        vfunc_selected_user_changed(arg_username: string): void;
+        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module ManagerProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                Manager.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class ManagerProxy
+        extends Gio.DBusProxy
+        implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.ManagerProxy
+
+        constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.ManagerProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<ManagerProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited properties
+        get version(): string;
+        set version(val: string);
+
+        // Inherited methods
+        call_open_reauthentication_channel(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_sync(
+            arg_username: string,
+            out_address: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_open_session(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_display_finish(res: Gio.AsyncResult): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_session_finish(res: Gio.AsyncResult): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_register_display(invocation: Gio.DBusMethodInvocation): void;
+        complete_register_session(invocation: Gio.DBusMethodInvocation): void;
+        dup_version(): string;
+        get_version(): string;
+        set_version(value: string): void;
+        vfunc_get_version(): string;
+        vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): ManagerProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module ManagerSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                Manager.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
+        // Constructors of Gdm.ManagerSkeleton
+
+        constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited properties
+        get version(): string;
+        set version(val: string);
+
+        // Inherited methods
+        call_open_reauthentication_channel(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_sync(
+            arg_username: string,
+            out_address: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_open_session(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_display_finish(res: Gio.AsyncResult): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_session_finish(res: Gio.AsyncResult): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_register_display(invocation: Gio.DBusMethodInvocation): void;
+        complete_register_session(invocation: Gio.DBusMethodInvocation): void;
+        dup_version(): string;
+        get_version(): string;
+        set_version(value: string): void;
+        vfunc_get_version(): string;
+        vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module RemoteGreeterProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                RemoteGreeter.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class RemoteGreeterProxy
+        extends Gio.DBusProxy
+        implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.RemoteGreeterProxy
+
+        constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.RemoteGreeterProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited methods
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): RemoteGreeterProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module RemoteGreeterSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                RemoteGreeter.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
+        // Constructors of Gdm.RemoteGreeterSkeleton
+
+        constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module UserVerifierChoiceListProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                UserVerifierChoiceList.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class UserVerifierChoiceListProxy
+        extends Gio.DBusProxy
+        implements
+            UserVerifierChoiceList,
+            Gio.AsyncInitable<UserVerifierChoiceListProxy>,
+            Gio.DBusInterface,
+            Gio.Initable
+    {
+        // Constructors of Gdm.UserVerifierChoiceListProxy
+
+        constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.UserVerifierChoiceListProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited methods
+        call_select_choice(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_choice_finish(res: Gio.AsyncResult): boolean;
+        call_select_choice_sync(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
+        emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_handle_select_choice(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_choice: string,
+        ): boolean;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): UserVerifierChoiceListProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module UserVerifierChoiceListSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                UserVerifierChoiceList.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class UserVerifierChoiceListSkeleton
+        extends Gio.DBusInterfaceSkeleton
+        implements UserVerifierChoiceList, Gio.DBusInterface
+    {
+        // Constructors of Gdm.UserVerifierChoiceListSkeleton
+
+        constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        call_select_choice(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_choice_finish(res: Gio.AsyncResult): boolean;
+        call_select_choice_sync(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
+        emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_handle_select_choice(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_choice: string,
+        ): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module UserVerifierProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                UserVerifier.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class UserVerifierProxy
+        extends Gio.DBusProxy
+        implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.UserVerifierProxy
+
+        constructor(properties?: Partial<UserVerifierProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.UserVerifierProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<UserVerifierProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited methods
+        call_answer_query(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_answer_query_finish(res: Gio.AsyncResult): boolean;
+        call_answer_query_sync(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification(
+            arg_service_name: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user_sync(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_cancel_finish(res: Gio.AsyncResult): boolean;
+        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions(
+            arg_extensions: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_cancel(invocation: Gio.DBusMethodInvocation): void;
+        complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
+        emit_conversation_started(arg_service_name: string): void;
+        emit_conversation_stopped(arg_service_name: string): void;
+        emit_info(arg_service_name: string, arg_info: string): void;
+        emit_info_query(arg_service_name: string, arg_query: string): void;
+        emit_problem(arg_service_name: string, arg_problem: string): void;
+        emit_reauthentication_started(arg_pid_of_caller: number): void;
+        emit_reset(): void;
+        emit_secret_info_query(arg_service_name: string, arg_query: string): void;
+        emit_service_unavailable(arg_service_name: string, arg_message: string): void;
+        emit_verification_complete(arg_service_name: string): void;
+        emit_verification_failed(arg_service_name: string): void;
+        vfunc_conversation_started(arg_service_name: string): void;
+        vfunc_conversation_stopped(arg_service_name: string): void;
+        vfunc_handle_answer_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_answer: string,
+        ): boolean;
+        vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
+        vfunc_handle_begin_verification_for_user(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_username: string,
+        ): boolean;
+        vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
+        vfunc_info(arg_service_name: string, arg_info: string): void;
+        vfunc_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_problem(arg_service_name: string, arg_problem: string): void;
+        vfunc_reauthentication_started(arg_pid_of_caller: number): void;
+        vfunc_reset(): void;
+        vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
+        vfunc_verification_complete(arg_service_name: string): void;
+        vfunc_verification_failed(arg_service_name: string): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): UserVerifierProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module UserVerifierSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                UserVerifier.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
+        // Constructors of Gdm.UserVerifierSkeleton
+
+        constructor(properties?: Partial<UserVerifierSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        call_answer_query(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_answer_query_finish(res: Gio.AsyncResult): boolean;
+        call_answer_query_sync(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification(
+            arg_service_name: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user_sync(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_cancel_finish(res: Gio.AsyncResult): boolean;
+        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions(
+            arg_extensions: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_cancel(invocation: Gio.DBusMethodInvocation): void;
+        complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
+        emit_conversation_started(arg_service_name: string): void;
+        emit_conversation_stopped(arg_service_name: string): void;
+        emit_info(arg_service_name: string, arg_info: string): void;
+        emit_info_query(arg_service_name: string, arg_query: string): void;
+        emit_problem(arg_service_name: string, arg_problem: string): void;
+        emit_reauthentication_started(arg_pid_of_caller: number): void;
+        emit_reset(): void;
+        emit_secret_info_query(arg_service_name: string, arg_query: string): void;
+        emit_service_unavailable(arg_service_name: string, arg_message: string): void;
+        emit_verification_complete(arg_service_name: string): void;
+        emit_verification_failed(arg_service_name: string): void;
+        vfunc_conversation_started(arg_service_name: string): void;
+        vfunc_conversation_stopped(arg_service_name: string): void;
+        vfunc_handle_answer_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_answer: string,
+        ): boolean;
+        vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
+        vfunc_handle_begin_verification_for_user(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_username: string,
+        ): boolean;
+        vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
+        vfunc_info(arg_service_name: string, arg_info: string): void;
+        vfunc_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_problem(arg_service_name: string, arg_problem: string): void;
+        vfunc_reauthentication_started(arg_pid_of_caller: number): void;
+        vfunc_reset(): void;
+        vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
+        vfunc_verification_complete(arg_service_name: string): void;
+        vfunc_verification_failed(arg_service_name: string): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module WorkerManagerProxy {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusProxy.ConstructorProps,
+                WorkerManager.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps,
+                Gio.Initable.ConstructorProps {}
+    }
+
+    class WorkerManagerProxy
+        extends Gio.DBusProxy
+        implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
+    {
+        // Constructors of Gdm.WorkerManagerProxy
+
+        constructor(properties?: Partial<WorkerManagerProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Own static methods of Gdm.WorkerManagerProxy
+
+        static ['new'](
+            connection: Gio.DBusConnection,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
+        ): void;
+        static ['new'](...args: never[]): any;
+        static new_for_bus(
+            bus_type: Gio.BusType,
+            flags: Gio.DBusProxyFlags,
+            name: string,
+            object_path: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<WorkerManagerProxy> | null,
+        ): void;
+        static new_for_bus(...args: never[]): any;
+
+        // Inherited methods
+        call_choice_list_query(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_sync(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_hello(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_hello_finish(res: Gio.AsyncResult): boolean;
+        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_info(
+            arg_service_name: string,
+            arg_info: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_finish(res: Gio.AsyncResult): boolean;
+        call_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem(
+            arg_service_name: string,
+            arg_problem: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_problem_finish(res: Gio.AsyncResult): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_secret_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_hello(invocation: Gio.DBusMethodInvocation): void;
+        complete_info(invocation: Gio.DBusMethodInvocation): void;
+        complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_problem(invocation: Gio.DBusMethodInvocation): void;
+        complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        vfunc_handle_choice_list_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+        ): boolean;
+        vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
+        vfunc_handle_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        vfunc_handle_problem(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_problem: string,
+        ): boolean;
+        vfunc_handle_secret_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or %NULL on error.
+         * @param res the #GAsyncResult from the callback
+         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         */
+        new_finish(res: Gio.AsyncResult): WorkerManagerProxy;
+        new_finish(...args: never[]): any;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements #GInitable you can
+         * optionally call g_initable_init() instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_async_initable_new_async() should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call g_async_initable_init_finish() to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * the object doesn't support cancellable initialization, the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * As with #GInitable, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * g_object_ref() and g_object_unref() are considered to be invalid, and
+         * have undefined behaviour. They will often fail with g_critical() or
+         * g_warning(), but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements #GAsyncInitable can
+         * be initialized multiple times; for more information, see g_initable_init().
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to init_async() on the
+         * results of the first call.
+         *
+         * For classes that also support the #GInitable interface, the default
+         * implementation of this method will run the g_initable_init() function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the #GAsyncInitable interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See g_async_initable_init_async().
+         * @param res a #GAsyncResult.
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * g_initable_new() should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or g_async_initable_init_async().
+         *
+         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * the object doesn't support cancellable initialization the error
+         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except g_object_ref() and
+         * g_object_unref() are considered to be invalid, and have undefined
+         * behaviour. See the [introduction][ginitable] for more details.
+         *
+         * Callers should not assume that a class which implements #GInitable can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of init() can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all #GInitable implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * #GObjectClass.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call g_initable_init()
+         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module WorkerManagerSkeleton {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                WorkerManager.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {}
+    }
+
+    class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
+        // Constructors of Gdm.WorkerManagerSkeleton
+
+        constructor(properties?: Partial<WorkerManagerSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        call_choice_list_query(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_sync(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_hello(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_hello_finish(res: Gio.AsyncResult): boolean;
+        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_info(
+            arg_service_name: string,
+            arg_info: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_finish(res: Gio.AsyncResult): boolean;
+        call_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem(
+            arg_service_name: string,
+            arg_problem: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_problem_finish(res: Gio.AsyncResult): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_secret_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_hello(invocation: Gio.DBusMethodInvocation): void;
+        complete_info(invocation: Gio.DBusMethodInvocation): void;
+        complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_problem(invocation: Gio.DBusMethodInvocation): void;
+        complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        vfunc_handle_choice_list_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+        ): boolean;
+        vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
+        vfunc_handle_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        vfunc_handle_problem(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_problem: string,
+        ): boolean;
+        vfunc_handle_secret_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: GObject.Value[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        vfunc_constructed(): void;
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        vfunc_dispose(): void;
+        vfunc_finalize(): void;
+        vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    type ChooserIface = typeof Chooser;
+    type ChooserProxyClass = typeof ChooserProxy;
+    abstract class ChooserProxyPrivate {
+        // Constructors of Gdm.ChooserProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type ChooserSkeletonClass = typeof ChooserSkeleton;
+    abstract class ChooserSkeletonPrivate {
+        // Constructors of Gdm.ChooserSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type ClientClass = typeof Client;
+    type GreeterIface = typeof Greeter;
+    type GreeterProxyClass = typeof GreeterProxy;
+    abstract class GreeterProxyPrivate {
+        // Constructors of Gdm.GreeterProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type GreeterSkeletonClass = typeof GreeterSkeleton;
+    abstract class GreeterSkeletonPrivate {
+        // Constructors of Gdm.GreeterSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type ManagerIface = typeof Manager;
+    type ManagerProxyClass = typeof ManagerProxy;
+    abstract class ManagerProxyPrivate {
+        // Constructors of Gdm.ManagerProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type ManagerSkeletonClass = typeof ManagerSkeleton;
+    abstract class ManagerSkeletonPrivate {
+        // Constructors of Gdm.ManagerSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type RemoteGreeterIface = typeof RemoteGreeter;
+    type RemoteGreeterProxyClass = typeof RemoteGreeterProxy;
+    abstract class RemoteGreeterProxyPrivate {
+        // Constructors of Gdm.RemoteGreeterProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type RemoteGreeterSkeletonClass = typeof RemoteGreeterSkeleton;
+    abstract class RemoteGreeterSkeletonPrivate {
+        // Constructors of Gdm.RemoteGreeterSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type UserVerifierChoiceListIface = typeof UserVerifierChoiceList;
+    type UserVerifierChoiceListProxyClass = typeof UserVerifierChoiceListProxy;
+    abstract class UserVerifierChoiceListProxyPrivate {
+        // Constructors of Gdm.UserVerifierChoiceListProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type UserVerifierChoiceListSkeletonClass = typeof UserVerifierChoiceListSkeleton;
+    abstract class UserVerifierChoiceListSkeletonPrivate {
+        // Constructors of Gdm.UserVerifierChoiceListSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type UserVerifierIface = typeof UserVerifier;
+    type UserVerifierProxyClass = typeof UserVerifierProxy;
+    abstract class UserVerifierProxyPrivate {
+        // Constructors of Gdm.UserVerifierProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type UserVerifierSkeletonClass = typeof UserVerifierSkeleton;
+    abstract class UserVerifierSkeletonPrivate {
+        // Constructors of Gdm.UserVerifierSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type WorkerManagerIface = typeof WorkerManager;
+    type WorkerManagerProxyClass = typeof WorkerManagerProxy;
+    abstract class WorkerManagerProxyPrivate {
+        // Constructors of Gdm.WorkerManagerProxyPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    type WorkerManagerSkeletonClass = typeof WorkerManagerSkeleton;
+    abstract class WorkerManagerSkeletonPrivate {
+        // Constructors of Gdm.WorkerManagerSkeletonPrivate
+
+        _init(...args: any[]): void;
+    }
+
+    module Chooser {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface ChooserNamespace {
+        $gtype: GObject.GType<Chooser>;
+        prototype: Chooser;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface Chooser extends GObject.Object {
+        // Own methods of Gdm.Chooser
+
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_select_hostname(
+            arg_hostname: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
+
+        // Own virtual methods of Gdm.Chooser
+
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
+    }
+
+    export const Chooser: ChooserNamespace;
+
+    module Greeter {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface GreeterNamespace {
+        $gtype: GObject.GType<Greeter>;
+        prototype: Greeter;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface Greeter extends GObject.Object {
+        // Own methods of Gdm.Greeter
+
+        call_begin_auto_login(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_get_timed_login_details_finish(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            res: Gio.AsyncResult,
+        ): boolean;
+        call_get_timed_login_details_sync(
+            out_enabled: boolean,
+            out_username: string,
+            out_delay: number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_select_session(
+            arg_session: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_session_finish(res: Gio.AsyncResult): boolean;
+        call_select_session_sync(arg_session: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_select_user(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_user_finish(res: Gio.AsyncResult): boolean;
+        call_select_user_sync(arg_username: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_start_session_when_ready(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
+        call_start_session_when_ready_sync(
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
+        complete_get_timed_login_details(
+            invocation: Gio.DBusMethodInvocation,
+            enabled: boolean,
+            username: string,
+            delay: number,
+        ): void;
+        complete_select_session(invocation: Gio.DBusMethodInvocation): void;
+        complete_select_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
+        emit_default_language_name_changed(arg_language_name: string): void;
+        emit_default_session_name_changed(arg_session_name: string): void;
+        emit_reauthenticated(arg_service_name: string): void;
+        emit_selected_user_changed(arg_username: string): void;
+        emit_session_opened(arg_service_name: string): void;
+        emit_timed_login_requested(arg_username: string, arg_delay: number): void;
+
+        // Own virtual methods of Gdm.Greeter
+
+        vfunc_default_language_name_changed(arg_language_name: string): void;
+        vfunc_default_session_name_changed(arg_session_name: string): void;
+        vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
+        vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_start_session_when_ready(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_should_start_session: boolean,
+        ): boolean;
+        vfunc_reauthenticated(arg_service_name: string): void;
+        vfunc_selected_user_changed(arg_username: string): void;
+        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_timed_login_requested(arg_username: string, arg_delay: number): void;
+    }
+
+    export const Greeter: GreeterNamespace;
+
+    module Manager {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            version: string;
+        }
+    }
+
+    export interface ManagerNamespace {
+        $gtype: GObject.GType<Manager>;
+        prototype: Manager;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface Manager extends GObject.Object {
+        // Own properties of Gdm.Manager
+
+        get version(): string;
+        set version(val: string);
+
+        // Own methods of Gdm.Manager
+
+        call_open_reauthentication_channel(
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_sync(
+            arg_username: string,
+            out_address: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_open_session(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_sync(out_address: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_display(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_display_finish(res: Gio.AsyncResult): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        call_register_session(
+            arg_details: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_register_session_finish(res: Gio.AsyncResult): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+        complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
+        complete_register_display(invocation: Gio.DBusMethodInvocation): void;
+        complete_register_session(invocation: Gio.DBusMethodInvocation): void;
+        dup_version(): string;
+        get_version(): string;
+        set_version(value: string): void;
+
+        // Own virtual methods of Gdm.Manager
+
+        vfunc_get_version(): string;
+        vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
+        vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+    }
+
+    export const Manager: ManagerNamespace;
+
+    module RemoteGreeter {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface RemoteGreeterNamespace {
+        $gtype: GObject.GType<RemoteGreeter>;
+        prototype: RemoteGreeter;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface RemoteGreeter extends GObject.Object {
+        // Own methods of Gdm.RemoteGreeter
+
+        call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_disconnect_finish(res: Gio.AsyncResult): boolean;
+        call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
+        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+
+        // Own virtual methods of Gdm.RemoteGreeter
+
+        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+    }
+
+    export const RemoteGreeter: RemoteGreeterNamespace;
+
+    module UserVerifier {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface UserVerifierNamespace {
+        $gtype: GObject.GType<UserVerifier>;
+        prototype: UserVerifier;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface UserVerifier extends GObject.Object {
+        // Own methods of Gdm.UserVerifier
+
+        call_answer_query(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_answer_query_finish(res: Gio.AsyncResult): boolean;
+        call_answer_query_sync(
+            arg_service_name: string,
+            arg_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification(
+            arg_service_name: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
+        call_begin_verification_for_user_sync(
+            arg_service_name: string,
+            arg_username: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_cancel(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_cancel_finish(res: Gio.AsyncResult): boolean;
+        call_cancel_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_enable_extensions(
+            arg_extensions: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable?: Gio.Cancellable | null): boolean;
+        complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
+        complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
+        complete_cancel(invocation: Gio.DBusMethodInvocation): void;
+        complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
+        emit_conversation_started(arg_service_name: string): void;
+        emit_conversation_stopped(arg_service_name: string): void;
+        emit_info(arg_service_name: string, arg_info: string): void;
+        emit_info_query(arg_service_name: string, arg_query: string): void;
+        emit_problem(arg_service_name: string, arg_problem: string): void;
+        emit_reauthentication_started(arg_pid_of_caller: number): void;
+        emit_reset(): void;
+        emit_secret_info_query(arg_service_name: string, arg_query: string): void;
+        emit_service_unavailable(arg_service_name: string, arg_message: string): void;
+        emit_verification_complete(arg_service_name: string): void;
+        emit_verification_failed(arg_service_name: string): void;
+
+        // Own virtual methods of Gdm.UserVerifier
+
+        vfunc_conversation_started(arg_service_name: string): void;
+        vfunc_conversation_stopped(arg_service_name: string): void;
+        vfunc_handle_answer_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_answer: string,
+        ): boolean;
+        vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
+        vfunc_handle_begin_verification_for_user(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_username: string,
+        ): boolean;
+        vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
+        vfunc_info(arg_service_name: string, arg_info: string): void;
+        vfunc_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_problem(arg_service_name: string, arg_problem: string): void;
+        vfunc_reauthentication_started(arg_pid_of_caller: number): void;
+        vfunc_reset(): void;
+        vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
+        vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
+        vfunc_verification_complete(arg_service_name: string): void;
+        vfunc_verification_failed(arg_service_name: string): void;
+    }
+
+    export const UserVerifier: UserVerifierNamespace;
+
+    module UserVerifierChoiceList {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface UserVerifierChoiceListNamespace {
+        $gtype: GObject.GType<UserVerifierChoiceList>;
+        prototype: UserVerifierChoiceList;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface UserVerifierChoiceList extends GObject.Object {
+        // Own methods of Gdm.UserVerifierChoiceList
+
+        call_select_choice(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_select_choice_finish(res: Gio.AsyncResult): boolean;
+        call_select_choice_sync(
+            arg_service_name: string,
+            arg_choice: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
+        emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+
+        // Own virtual methods of Gdm.UserVerifierChoiceList
+
+        vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
+        vfunc_handle_select_choice(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_choice: string,
+        ): boolean;
+    }
+
+    export const UserVerifierChoiceList: UserVerifierChoiceListNamespace;
+
+    module WorkerManager {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface WorkerManagerNamespace {
+        $gtype: GObject.GType<WorkerManager>;
+        prototype: WorkerManager;
+
+        interface_info(): Gio.DBusInterfaceInfo;
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    interface WorkerManager extends GObject.Object {
+        // Own methods of Gdm.WorkerManager
+
+        call_choice_list_query(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_sync(
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_hello(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
+        call_hello_finish(res: Gio.AsyncResult): boolean;
+        call_hello_sync(cancellable?: Gio.Cancellable | null): boolean;
+        call_info(
+            arg_service_name: string,
+            arg_info: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_finish(res: Gio.AsyncResult): boolean;
+        call_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_problem(
+            arg_service_name: string,
+            arg_problem: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_problem_finish(res: Gio.AsyncResult): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: Gio.Cancellable | null): boolean;
+        call_secret_info_query(
+            arg_service_name: string,
+            arg_query: string,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_sync(
+            arg_service_name: string,
+            arg_query: string,
+            out_answer: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
+        complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_hello(invocation: Gio.DBusMethodInvocation): void;
+        complete_info(invocation: Gio.DBusMethodInvocation): void;
+        complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+        complete_problem(invocation: Gio.DBusMethodInvocation): void;
+        complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
+
+        // Own virtual methods of Gdm.WorkerManager
+
+        vfunc_handle_choice_list_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_prompt_message: string,
+            arg_query: GLib.Variant,
+        ): boolean;
+        vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
+        vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
+        vfunc_handle_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+        vfunc_handle_problem(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_problem: string,
+        ): boolean;
+        vfunc_handle_secret_info_query(
+            invocation: Gio.DBusMethodInvocation,
+            arg_service_name: string,
+            arg_query: string,
+        ): boolean;
+    }
+
+    export const WorkerManager: WorkerManagerNamespace;
 
     /**
-     * Gets a #GdmChooser object that can be used to
-     * verify a user's local account.
-     * @param cancellable a #GCancellable
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
-    get_chooser(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
+    const __name__: string;
     /**
-     * Finishes an operation started with
-     * gdm_client_get_chooser().
-     * @param result The #GAsyncResult from the callback
-     * @returns a #GdmChooser
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
      */
-    get_chooser_finish(result: Gio.AsyncResult): Chooser
-    /**
-     * Gets a #GdmChooser object that can be used
-     * to do do various XDMCP chooser related tasks, such
-     * as selecting a host or disconnecting.
-     * @param cancellable a #GCancellable
-     * @returns #GdmChooser or %NULL if caller is not a chooser
-     */
-    get_chooser_sync(cancellable?: (Gio.Cancellable | null)): Chooser
-    /**
-     * Gets a #GdmGreeter object that can be used to
-     * verify a user's local account.
-     * @param cancellable a #GCancellable
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_greeter(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an operation started with
-     * gdm_client_get_greeter().
-     * @param result The #GAsyncResult from the callback
-     * @returns a #GdmGreeter
-     */
-    get_greeter_finish(result: Gio.AsyncResult): Greeter
-    /**
-     * Gets a #GdmGreeter object that can be used
-     * to do do various login screen related tasks, such
-     * as selecting a users session, and starting that
-     * session.
-     * @param cancellable a #GCancellable
-     * @returns #GdmGreeter or %NULL if caller is not a greeter
-     */
-    get_greeter_sync(cancellable?: (Gio.Cancellable | null)): Greeter
-    /**
-     * Gets a #GdmRemoteGreeter object that can be used to
-     * verify a user's local account.
-     * @param cancellable a #GCancellable
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_remote_greeter(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an operation started with
-     * gdm_client_get_remote_greeter().
-     * @param result The #GAsyncResult from the callback
-     * @returns a #GdmRemoteGreeter
-     */
-    get_remote_greeter_finish(result: Gio.AsyncResult): RemoteGreeter
-    /**
-     * Gets a #GdmRemoteGreeter object that can be used
-     * to do do various remote login screen related tasks,
-     * such as disconnecting.
-     * @param cancellable a #GCancellable
-     * @returns #GdmRemoteGreeter or %NULL if caller is not remote
-     */
-    get_remote_greeter_sync(cancellable?: (Gio.Cancellable | null)): RemoteGreeter
-    /**
-     * Gets a #GdmUserVerifier object that can be used to
-     * verify a user's local account.
-     * @param cancellable a #GCancellable
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    get_user_verifier(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Gets a #GdmUserVerifierChoiceList object that can be used to
-     * verify a user's local account.
-     * @returns #GdmUserVerifierChoiceList or %NULL if user verifier isn't yet fetched, or daemon doesn't support choice lists
-     */
-    get_user_verifier_choice_list(): UserVerifierChoiceList
-    /**
-     * Finishes an operation started with
-     * gdm_client_get_user_verifier().
-     * @param result The #GAsyncResult from the callback
-     * @returns a #GdmUserVerifier
-     */
-    get_user_verifier_finish(result: Gio.AsyncResult): UserVerifier
-    /**
-     * Gets a #GdmUserVerifier object that can be used to
-     * verify a user's local account.
-     * @param cancellable a #GCancellable
-     * @returns #GdmUserVerifier or %NULL if not connected
-     */
-    get_user_verifier_sync(cancellable?: (Gio.Cancellable | null)): UserVerifier
-    /**
-     * Gets a #GdmUserVerifier object that can be used to
-     * reauthenticate an already logged in user.
-     * @param username user to reauthenticate
-     * @param cancellable a #GCancellable
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-     */
-    open_reauthentication_channel(username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    /**
-     * Finishes an operation started with
-     * gdm_client_open_reauthentication_channel().
-     * @param result The #GAsyncResult from the callback
-     * @returns a #GdmUserVerifier
-     */
-    open_reauthentication_channel_finish(result: Gio.AsyncResult): UserVerifier
-    /**
-     * Gets a #GdmUserVerifier object that can be used to
-     * reauthenticate an already logged in user. Free with
-     * g_object_unref to close reauthentication channel.
-     * @param username user to reauthenticate
-     * @param cancellable a #GCancellable
-     * @returns #GdmUserVerifier or %NULL if @username is not already logged in.
-     */
-    open_reauthentication_channel_sync(username: string, cancellable?: (Gio.Cancellable | null)): UserVerifier
-    /**
-     * Enables GDM's pam extensions.  Currently, only
-     * org.gnome.DisplayManager.UserVerifier.ChoiceList is supported.
-     * @param extensions a list of extensions
-     */
-    set_enabled_extensions(extensions: string[]): void
-}
-
-module GreeterProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Greeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class GreeterProxy extends Gio.DBusProxy implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.GreeterProxy
-
-
-constructor(properties?: Partial<GreeterProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.GreeterProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<GreeterProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<GreeterProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_begin_auto_login(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_auto_login_finish(res: Gio.AsyncResult): boolean
-call_begin_auto_login_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_get_timed_login_details(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean
-call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable?: (Gio.Cancellable | null)): boolean
-call_select_session(arg_session: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_session_finish(res: Gio.AsyncResult): boolean
-call_select_session_sync(arg_session: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_select_user(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_user_finish(res: Gio.AsyncResult): boolean
-call_select_user_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean
-call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null)): boolean
-complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void
-complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void
-complete_select_session(invocation: Gio.DBusMethodInvocation): void
-complete_select_user(invocation: Gio.DBusMethodInvocation): void
-complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void
-emit_default_language_name_changed(arg_language_name: string): void
-emit_default_session_name_changed(arg_session_name: string): void
-emit_reauthenticated(arg_service_name: string): void
-emit_selected_user_changed(arg_username: string): void
-emit_session_opened(arg_service_name: string): void
-emit_timed_login_requested(arg_username: string, arg_delay: number): void
-vfunc_default_language_name_changed(arg_language_name: string): void
-vfunc_default_session_name_changed(arg_session_name: string): void
-vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean
-vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean
-vfunc_reauthenticated(arg_service_name: string): void
-vfunc_selected_user_changed(arg_username: string): void
-vfunc_session_opened(arg_service_name: string): void
-vfunc_timed_login_requested(arg_username: string, arg_delay: number): void
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): GreeterProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module GreeterSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Greeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
-
-    // Constructors of Gdm.GreeterSkeleton
-
-
-constructor(properties?: Partial<GreeterSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_begin_auto_login(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_auto_login_finish(res: Gio.AsyncResult): boolean
-call_begin_auto_login_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_get_timed_login_details(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean
-call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable?: (Gio.Cancellable | null)): boolean
-call_select_session(arg_session: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_session_finish(res: Gio.AsyncResult): boolean
-call_select_session_sync(arg_session: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_select_user(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_user_finish(res: Gio.AsyncResult): boolean
-call_select_user_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean
-call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null)): boolean
-complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void
-complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void
-complete_select_session(invocation: Gio.DBusMethodInvocation): void
-complete_select_user(invocation: Gio.DBusMethodInvocation): void
-complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void
-emit_default_language_name_changed(arg_language_name: string): void
-emit_default_session_name_changed(arg_session_name: string): void
-emit_reauthenticated(arg_service_name: string): void
-emit_selected_user_changed(arg_username: string): void
-emit_session_opened(arg_service_name: string): void
-emit_timed_login_requested(arg_username: string, arg_delay: number): void
-vfunc_default_language_name_changed(arg_language_name: string): void
-vfunc_default_session_name_changed(arg_session_name: string): void
-vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean
-vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean
-vfunc_reauthenticated(arg_service_name: string): void
-vfunc_selected_user_changed(arg_username: string): void
-vfunc_session_opened(arg_service_name: string): void
-vfunc_timed_login_requested(arg_username: string, arg_delay: number): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module ManagerProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Manager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class ManagerProxy extends Gio.DBusProxy implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.ManagerProxy
-
-
-constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.ManagerProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited properties
-get version(): string;
-set version(val: string);
-
-// Inherited methods
-call_open_reauthentication_channel(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean
-call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_open_session(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean
-call_open_session_sync(out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_register_display(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_register_display_finish(res: Gio.AsyncResult): boolean
-call_register_display_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-call_register_session(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_register_session_finish(res: Gio.AsyncResult): boolean
-call_register_session_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void
-complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void
-complete_register_display(invocation: Gio.DBusMethodInvocation): void
-complete_register_session(invocation: Gio.DBusMethodInvocation): void
-dup_version(): string
-get_version(): string
-set_version(value: string): void
-vfunc_get_version(): string
-vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): ManagerProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module ManagerSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Manager.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
-
-    // Constructors of Gdm.ManagerSkeleton
-
-
-constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited properties
-get version(): string;
-set version(val: string);
-
-// Inherited methods
-call_open_reauthentication_channel(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean
-call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_open_session(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean
-call_open_session_sync(out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_register_display(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_register_display_finish(res: Gio.AsyncResult): boolean
-call_register_display_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-call_register_session(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_register_session_finish(res: Gio.AsyncResult): boolean
-call_register_session_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void
-complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void
-complete_register_display(invocation: Gio.DBusMethodInvocation): void
-complete_register_session(invocation: Gio.DBusMethodInvocation): void
-dup_version(): string
-get_version(): string
-set_version(value: string): void
-vfunc_get_version(): string
-vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module RemoteGreeterProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class RemoteGreeterProxy extends Gio.DBusProxy implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.RemoteGreeterProxy
-
-
-constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.RemoteGreeterProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<RemoteGreeterProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<RemoteGreeterProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_disconnect_finish(res: Gio.AsyncResult): boolean
-call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): RemoteGreeterProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module RemoteGreeterSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
-
-    // Constructors of Gdm.RemoteGreeterSkeleton
-
-
-constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_disconnect_finish(res: Gio.AsyncResult): boolean
-call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module UserVerifierChoiceListProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class UserVerifierChoiceListProxy extends Gio.DBusProxy implements UserVerifierChoiceList, Gio.AsyncInitable<UserVerifierChoiceListProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.UserVerifierChoiceListProxy
-
-
-constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.UserVerifierChoiceListProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_select_choice(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_choice_finish(res: Gio.AsyncResult): boolean
-call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_select_choice(invocation: Gio.DBusMethodInvocation): void
-emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-vfunc_handle_select_choice(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_choice: string): boolean
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): UserVerifierChoiceListProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module UserVerifierChoiceListSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class UserVerifierChoiceListSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifierChoiceList, Gio.DBusInterface {
-
-    // Constructors of Gdm.UserVerifierChoiceListSkeleton
-
-
-constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_select_choice(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_select_choice_finish(res: Gio.AsyncResult): boolean
-call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_select_choice(invocation: Gio.DBusMethodInvocation): void
-emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-vfunc_handle_select_choice(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_choice: string): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module UserVerifierProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifier.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class UserVerifierProxy extends Gio.DBusProxy implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.UserVerifierProxy
-
-
-constructor(properties?: Partial<UserVerifierProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.UserVerifierProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<UserVerifierProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<UserVerifierProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_answer_query(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_answer_query_finish(res: Gio.AsyncResult): boolean
-call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_begin_verification(arg_service_name: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_verification_finish(res: Gio.AsyncResult): boolean
-call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean
-call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_begin_verification_sync(arg_service_name: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_cancel(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_cancel_finish(res: Gio.AsyncResult): boolean
-call_cancel_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_enable_extensions(arg_extensions: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_enable_extensions_finish(res: Gio.AsyncResult): boolean
-call_enable_extensions_sync(arg_extensions: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_answer_query(invocation: Gio.DBusMethodInvocation): void
-complete_begin_verification(invocation: Gio.DBusMethodInvocation): void
-complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void
-complete_cancel(invocation: Gio.DBusMethodInvocation): void
-complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void
-emit_conversation_started(arg_service_name: string): void
-emit_conversation_stopped(arg_service_name: string): void
-emit_info(arg_service_name: string, arg_info: string): void
-emit_info_query(arg_service_name: string, arg_query: string): void
-emit_problem(arg_service_name: string, arg_problem: string): void
-emit_reauthentication_started(arg_pid_of_caller: number): void
-emit_reset(): void
-emit_secret_info_query(arg_service_name: string, arg_query: string): void
-emit_service_unavailable(arg_service_name: string, arg_message: string): void
-emit_verification_complete(arg_service_name: string): void
-emit_verification_failed(arg_service_name: string): void
-vfunc_conversation_started(arg_service_name: string): void
-vfunc_conversation_stopped(arg_service_name: string): void
-vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean
-vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean
-vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean
-vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean
-vfunc_info(arg_service_name: string, arg_info: string): void
-vfunc_info_query(arg_service_name: string, arg_query: string): void
-vfunc_problem(arg_service_name: string, arg_problem: string): void
-vfunc_reauthentication_started(arg_pid_of_caller: number): void
-vfunc_reset(): void
-vfunc_secret_info_query(arg_service_name: string, arg_query: string): void
-vfunc_service_unavailable(arg_service_name: string, arg_message: string): void
-vfunc_verification_complete(arg_service_name: string): void
-vfunc_verification_failed(arg_service_name: string): void
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): UserVerifierProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module UserVerifierSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifier.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
-
-    // Constructors of Gdm.UserVerifierSkeleton
-
-
-constructor(properties?: Partial<UserVerifierSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_answer_query(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_answer_query_finish(res: Gio.AsyncResult): boolean
-call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_begin_verification(arg_service_name: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_verification_finish(res: Gio.AsyncResult): boolean
-call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean
-call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_begin_verification_sync(arg_service_name: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_cancel(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_cancel_finish(res: Gio.AsyncResult): boolean
-call_cancel_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_enable_extensions(arg_extensions: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_enable_extensions_finish(res: Gio.AsyncResult): boolean
-call_enable_extensions_sync(arg_extensions: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_answer_query(invocation: Gio.DBusMethodInvocation): void
-complete_begin_verification(invocation: Gio.DBusMethodInvocation): void
-complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void
-complete_cancel(invocation: Gio.DBusMethodInvocation): void
-complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void
-emit_conversation_started(arg_service_name: string): void
-emit_conversation_stopped(arg_service_name: string): void
-emit_info(arg_service_name: string, arg_info: string): void
-emit_info_query(arg_service_name: string, arg_query: string): void
-emit_problem(arg_service_name: string, arg_problem: string): void
-emit_reauthentication_started(arg_pid_of_caller: number): void
-emit_reset(): void
-emit_secret_info_query(arg_service_name: string, arg_query: string): void
-emit_service_unavailable(arg_service_name: string, arg_message: string): void
-emit_verification_complete(arg_service_name: string): void
-emit_verification_failed(arg_service_name: string): void
-vfunc_conversation_started(arg_service_name: string): void
-vfunc_conversation_stopped(arg_service_name: string): void
-vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean
-vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean
-vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean
-vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean
-vfunc_info(arg_service_name: string, arg_info: string): void
-vfunc_info_query(arg_service_name: string, arg_query: string): void
-vfunc_problem(arg_service_name: string, arg_problem: string): void
-vfunc_reauthentication_started(arg_pid_of_caller: number): void
-vfunc_reset(): void
-vfunc_secret_info_query(arg_service_name: string, arg_query: string): void
-vfunc_service_unavailable(arg_service_name: string, arg_message: string): void
-vfunc_verification_complete(arg_service_name: string): void
-vfunc_verification_failed(arg_service_name: string): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module WorkerManagerProxy {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, WorkerManager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-    }
-
-}
-
-class WorkerManagerProxy extends Gio.DBusProxy implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable {
-
-    // Constructors of Gdm.WorkerManagerProxy
-
-
-constructor(properties?: Partial<WorkerManagerProxy.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-    // Own static methods of Gdm.WorkerManagerProxy
-
-    static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<WorkerManagerProxy> | null)): void
-    static ["new"](...args: never[]): any
-    static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<WorkerManagerProxy> | null)): void
-    static new_for_bus(...args: never[]): any
-
-// Inherited methods
-call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_hello(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_hello_finish(res: Gio.AsyncResult): boolean
-call_hello_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_info(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_info_finish(res: Gio.AsyncResult): boolean
-call_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_info_sync(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_problem(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_problem_finish(res: Gio.AsyncResult): boolean
-call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_secret_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-complete_hello(invocation: Gio.DBusMethodInvocation): void
-complete_info(invocation: Gio.DBusMethodInvocation): void
-complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-complete_problem(invocation: Gio.DBusMethodInvocation): void
-complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean
-vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean
-vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean
-vfunc_handle_secret_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
- */
-init_finish(res: Gio.AsyncResult): boolean
-/**
- * Finishes the async construction for the various g_async_initable_new
- * calls, returning the created object or %NULL on error.
- * @param res the #GAsyncResult from the callback
- * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
- */
-new_finish(res: Gio.AsyncResult): WorkerManagerProxy
-new_finish(...args: never[]): any
-/**
- * Starts asynchronous initialization of the object implementing the
- * interface. This must be done before any real use of the object after
- * initial construction. If the object also implements #GInitable you can
- * optionally call g_initable_init() instead.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_async_initable_new_async() should typically be used instead.
- * 
- * When the initialization is finished, `callback` will be called. You can
- * then call g_async_initable_init_finish() to get the result of the
- * initialization.
- * 
- * Implementations may also support cancellation. If `cancellable` is not
- * %NULL, then initialization can be cancelled by triggering the cancellable
- * object from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
- * the object doesn't support cancellable initialization, the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * As with #GInitable, if the object is not initialized, or initialization
- * returns with an error, then all operations on the object except
- * g_object_ref() and g_object_unref() are considered to be invalid, and
- * have undefined behaviour. They will often fail with g_critical() or
- * g_warning(), but this must not be relied on.
- * 
- * Callers should not assume that a class which implements #GAsyncInitable can
- * be initialized multiple times; for more information, see g_initable_init().
- * If a class explicitly supports being initialized multiple times,
- * implementation requires yielding all subsequent calls to init_async() on the
- * results of the first call.
- * 
- * For classes that also support the #GInitable interface, the default
- * implementation of this method will run the g_initable_init() function
- * in a thread, so if you want to support asynchronous initialization via
- * threads, just implement the #GAsyncInitable interface without overriding
- * any interface methods.
- * @param io_priority the [I/O priority][io-priority] of the operation
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @param callback a #GAsyncReadyCallback to call when the request is satisfied
- */
-vfunc_init_async(io_priority: number, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-/**
- * Finishes asynchronous initialization and returns the result.
- * See g_async_initable_init_async().
- * @param res a #GAsyncResult.
- */
-vfunc_init_finish(res: Gio.AsyncResult): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
- */
-init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Initializes the object implementing the interface.
- * 
- * This method is intended for language bindings. If writing in C,
- * g_initable_new() should typically be used instead.
- * 
- * The object must be initialized before any real use after initial
- * construction, either with this function or g_async_initable_init_async().
- * 
- * Implementations may also support cancellation. If `cancellable` is not %NULL,
- * then initialization can be cancelled by triggering the cancellable object
- * from another thread. If the operation was cancelled, the error
- * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
- * the object doesn't support cancellable initialization the error
- * %G_IO_ERROR_NOT_SUPPORTED will be returned.
- * 
- * If the object is not initialized, or initialization returns with an
- * error, then all operations on the object except g_object_ref() and
- * g_object_unref() are considered to be invalid, and have undefined
- * behaviour. See the [introduction][ginitable] for more details.
- * 
- * Callers should not assume that a class which implements #GInitable can be
- * initialized multiple times, unless the class explicitly documents itself as
- * supporting this. Generally, a class’ implementation of init() can assume
- * (and assert) that it will only be called once. Previously, this documentation
- * recommended all #GInitable implementations should be idempotent; that
- * recommendation was relaxed in GLib 2.54.
- * 
- * If a class explicitly supports being initialized multiple times, it is
- * recommended that the method is idempotent: multiple calls with the same
- * arguments should return the same results. Only the first call initializes
- * the object; further calls return the result of the first call.
- * 
- * One reason why a class might need to support idempotent initialization is if
- * it is designed to be used via the singleton pattern, with a
- * #GObjectClass.constructor that sometimes returns an existing instance.
- * In this pattern, a caller would expect to be able to call g_initable_init()
- * on the result of g_object_new(), regardless of whether it is in fact a new
- * instance.
- * @param cancellable optional #GCancellable object, %NULL to ignore.
- */
-vfunc_init(cancellable?: (Gio.Cancellable | null)): boolean
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-module WorkerManagerSkeleton {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, WorkerManager.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-    }
-
-}
-
-class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
-
-    // Constructors of Gdm.WorkerManagerSkeleton
-
-
-constructor(properties?: Partial<WorkerManagerSkeleton.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-// Inherited methods
-call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_hello(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_hello_finish(res: Gio.AsyncResult): boolean
-call_hello_sync(cancellable?: (Gio.Cancellable | null)): boolean
-call_info(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_info_finish(res: Gio.AsyncResult): boolean
-call_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_info_sync(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_problem(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_problem_finish(res: Gio.AsyncResult): boolean
-call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null)): boolean
-call_secret_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-complete_hello(invocation: Gio.DBusMethodInvocation): void
-complete_info(invocation: Gio.DBusMethodInvocation): void
-complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-complete_problem(invocation: Gio.DBusMethodInvocation): void
-complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean
-vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean
-vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean
-vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean
-vfunc_handle_secret_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
- */
-get_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- * @returns A #GDBusInterfaceInfo. Do not free.
- */
-get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Gets the #GDBusObject that `interface_` belongs to, if any.
- */
-vfunc_dup_object(): (Gio.DBusObject | null)
-/**
- * Gets D-Bus introspection information for the D-Bus interface
- * implemented by `interface_`.
- */
-vfunc_get_info(): Gio.DBusInterfaceInfo
-/**
- * Sets the #GDBusObject for `interface_` to `object`.
- * 
- * Note that `interface_` will hold a weak reference to `object`.
- * @param object A #GDBusObject or %NULL.
- */
-vfunc_set_object(object?: (Gio.DBusObject | null)): void
-/**
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target`.
- * 
- * Whenever the `source_property` is changed the `target_property` is
- * updated using the same value. For instance:
- * 
- * 
- * ```c
- *   g_object_bind_property (action, "active", widget, "sensitive", 0);
- * ```
- * 
- * 
- * Will result in the "sensitive" property of the widget #GObject instance to be
- * updated with the same value of the "active" property of the action #GObject
- * instance.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well.
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. To remove the binding without affecting the
- * `source` and the `target` you can just call g_object_unref() on the returned
- * #GBinding instance.
- * 
- * Removing the binding by calling g_object_unref() on it must only be done if
- * the binding, `source` and `target` are only used from a single thread and it
- * is clear that both `source` and `target` outlive the binding. Especially it
- * is not safe to rely on this if the binding, `source` or `target` can be
- * finalized from different threads. Keep another reference to the binding and
- * use g_binding_unbind() instead to be on the safe side.
- * 
- * A #GObject can have multiple bindings.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-/**
- * Complete version of g_object_bind_property().
- * 
- * Creates a binding between `source_property` on `source` and `target_property`
- * on `target,` allowing you to set the transformation functions to be used by
- * the binding.
- * 
- * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
- * if `target_property` on `target` changes then the `source_property` on `source`
- * will be updated as well. The `transform_from` function is only used in case
- * of bidirectional bindings, otherwise it will be ignored
- * 
- * The binding will automatically be removed when either the `source` or the
- * `target` instances are finalized. This will release the reference that is
- * being held on the #GBinding instance; if you want to hold on to the
- * #GBinding instance, you will need to hold a reference to it.
- * 
- * To remove the binding, call g_binding_unbind().
- * 
- * A #GObject can have multiple bindings.
- * 
- * The same `user_data` parameter will be used for both `transform_to`
- * and `transform_from` transformation functions; the `notify` function will
- * be called once, when the binding is removed. If you need different data
- * for each transformation function, please use
- * g_object_bind_property_with_closures() instead.
- * @param source_property the property on @source to bind
- * @param target the target #GObject
- * @param target_property the property on @target to bind
- * @param flags flags to pass to #GBinding
- * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
- * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
- * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
- * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
- */
-bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to?: (GObject.BindingTransformFunc | null), transform_from?: (GObject.BindingTransformFunc | null), notify?: (GLib.DestroyNotify | null)): GObject.Binding
-bind_property_full(...args: never[]): any
-/**
- * This function is intended for #GObject implementations to re-enforce
- * a [floating][floating-ref] object reference. Doing this is seldom
- * required: all #GInitiallyUnowneds are created with a floating reference
- * which usually just needs to be sunken by calling g_object_ref_sink().
- */
-force_floating(): void
-/**
- * Increases the freeze count on `object`. If the freeze count is
- * non-zero, the emission of "notify" signals on `object` is
- * stopped. The signals are queued until the freeze count is decreased
- * to zero. Duplicate notifications are squashed so that at most one
- * #GObject::notify signal is emitted for each property modified while the
- * object is frozen.
- * 
- * This is necessary for accessors that modify multiple properties to prevent
- * premature notification while the object is still being modified.
- */
-freeze_notify(): void
-/**
- * Gets a named field from the objects table of associations (see g_object_set_data()).
- * @param key name of the key for that association
- * @returns the data if found,          or %NULL if no such data exists.
- */
-get_data(key: string): (any | null)
-get_property(property_name: string): any
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-get_qdata(quark: GLib.Quark): (any | null)
-/**
- * Gets `n_properties` properties for an `object`.
- * Obtained properties will be set to `values`. All properties must be valid.
- * Warnings will be emitted and undefined behaviour may result if invalid
- * properties are passed in.
- * @param names the names of each property to get
- * @param values the values of each property to get
- */
-getv(names: string[], values: GObject.Value[]): void
-/**
- * Checks whether `object` has a [floating][floating-ref] reference.
- * @returns %TRUE if @object has a floating reference
- */
-is_floating(): boolean
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param property_name the name of a property installed on the class of @object.
- */
-notify(property_name: string): void
-/**
- * Emits a "notify" signal for the property specified by `pspec` on `object`.
- * 
- * This function omits the property name lookup, hence it is faster than
- * g_object_notify().
- * 
- * One way to avoid using g_object_notify() from within the
- * class that registered the properties, and using g_object_notify_by_pspec()
- * instead, is to store the GParamSpec used with
- * g_object_class_install_property() inside a static array, e.g.:
- * 
- * 
- * ```c
- *   typedef enum
- *   {
- *     PROP_FOO = 1,
- *     PROP_LAST
- *   } MyObjectProperty;
- * 
- *   static GParamSpec *properties[PROP_LAST];
- * 
- *   static void
- *   my_object_class_init (MyObjectClass *klass)
- *   {
- *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
- *                                              0, 100,
- *                                              50,
- *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
- *     g_object_class_install_property (gobject_class,
- *                                      PROP_FOO,
- *                                      properties[PROP_FOO]);
- *   }
- * ```
- * 
- * 
- * and then notify a change on the "foo" property with:
- * 
- * 
- * ```c
- *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
- * ```
- * 
- * @param pspec the #GParamSpec of a property installed on the class of @object.
- */
-notify_by_pspec(pspec: GObject.ParamSpec): void
-/**
- * Increases the reference count of `object`.
- * 
- * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
- * of `object` will be propagated to the return type (using the GCC typeof()
- * extension), so any casting the caller needs to do on the return type must be
- * explicit.
- * @returns the same @object
- */
-ref(): GObject.Object
-/**
- * Increase the reference count of `object,` and possibly remove the
- * [floating][floating-ref] reference, if `object` has a floating reference.
- * 
- * In other words, if the object is floating, then this call "assumes
- * ownership" of the floating reference, converting it to a normal
- * reference by clearing the floating flag while leaving the reference
- * count unchanged.  If the object is not floating, then this call
- * adds a new normal reference increasing the reference count by one.
- * 
- * Since GLib 2.56, the type of `object` will be propagated to the return type
- * under the same conditions as for g_object_ref().
- * @returns @object
- */
-ref_sink(): GObject.Object
-/**
- * Releases all references to other objects. This can be used to break
- * reference cycles.
- * 
- * This function should only be called from object system implementations.
- */
-run_dispose(): void
-/**
- * Each object carries around a table of associations from
- * strings to pointers.  This function lets you set an association.
- * 
- * If the object already had an association with that name,
- * the old association will be destroyed.
- * 
- * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
- * This means a copy of `key` is kept permanently (even after `object` has been
- * finalized) — so it is recommended to only use a small, bounded set of values
- * for `key` in your program, to avoid the #GQuark storage growing unbounded.
- * @param key name of the key
- * @param data data to associate with that key
- */
-set_data(key: string, data?: (any | null)): void
-set_property(property_name: string, value: any): void
-/**
- * Remove a specified datum from the object's data associations,
- * without invoking the association's destroy handler.
- * @param key name of the key
- * @returns the data if found, or %NULL          if no such data exists.
- */
-steal_data(key: string): (any | null)
-/**
- * This function gets back user data pointers stored via
- * g_object_set_qdata() and removes the `data` from object
- * without invoking its destroy() function (if any was
- * set).
- * Usually, calling this function is only required to update
- * user data pointers with a destroy notifier, for example:
- * 
- * ```c
- * void
- * object_add_to_user_list (GObject     *object,
- *                          const gchar *new_string)
- * {
- *   // the quark, naming the object data
- *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
- *   // retrieve the old string list
- *   GList *list = g_object_steal_qdata (object, quark_string_list);
- * 
- *   // prepend new string
- *   list = g_list_prepend (list, g_strdup (new_string));
- *   // this changed 'list', so we need to set it again
- *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
- * }
- * static void
- * free_string_list (gpointer data)
- * {
- *   GList *node, *list = data;
- * 
- *   for (node = list; node; node = node->next)
- *     g_free (node->data);
- *   g_list_free (list);
- * }
- * ```
- * 
- * Using g_object_get_qdata() in the above example, instead of
- * g_object_steal_qdata() would have left the destroy function set,
- * and thus the partial string list would have been freed upon
- * g_object_set_qdata_full().
- * @param quark A #GQuark, naming the user data pointer
- * @returns The user data pointer set, or %NULL
- */
-steal_qdata(quark: GLib.Quark): (any | null)
-/**
- * Reverts the effect of a previous call to
- * g_object_freeze_notify(). The freeze count is decreased on `object`
- * and when it reaches zero, queued "notify" signals are emitted.
- * 
- * Duplicate notifications for each property are squashed so that at most one
- * #GObject::notify signal is emitted for each property, in the reverse order
- * in which they have been queued.
- * 
- * It is an error to call this function when the freeze count is zero.
- */
-thaw_notify(): void
-/**
- * Decreases the reference count of `object`. When its reference count
- * drops to 0, the object is finalized (i.e. its memory is freed).
- * 
- * If the pointer to the #GObject may be reused in future (for example, if it is
- * an instance variable of another object), it is recommended to clear the
- * pointer to %NULL rather than retain a dangling pointer to a potentially
- * invalid #GObject instance. Use g_clear_object() for this.
- */
-unref(): void
-/**
- * This function essentially limits the life time of the `closure` to
- * the life time of the object. That is, when the object is finalized,
- * the `closure` is invalidated by calling g_closure_invalidate() on
- * it, in order to prevent invocations of the closure with a finalized
- * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
- * added as marshal guards to the `closure,` to ensure that an extra
- * reference count is held on `object` during invocation of the
- * `closure`.  Usually, this function will be called on closures that
- * use this `object` as closure data.
- * @param closure #GClosure to watch
- */
-watch_closure(closure: GObject.Closure): void
-vfunc_constructed(): void
-vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-vfunc_dispose(): void
-vfunc_finalize(): void
-vfunc_get_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-/**
- * Emits a "notify" signal for the property `property_name` on `object`.
- * 
- * When possible, eg. when signaling a property change from within the class
- * that registered the property, you should use g_object_notify_by_pspec()
- * instead.
- * 
- * Note that emission of the notify signal may be blocked with
- * g_object_freeze_notify(). In this case, the signal emissions are queued
- * and will be emitted (in reverse order) when g_object_thaw_notify() is
- * called.
- * @param pspec 
- */
-vfunc_notify(pspec: GObject.ParamSpec): void
-vfunc_set_property(property_id: number, value: GObject.Value, pspec: GObject.ParamSpec): void
-disconnect(id: number): void
-set(properties: { [key: string]: any }): void
-block_signal_handler(id: number): any
-unblock_signal_handler(id: number): any
-stop_emission_by_name(detailedName: string): any
-}
-
-type ChooserIface = typeof Chooser
-type ChooserProxyClass = typeof ChooserProxy
-abstract class ChooserProxyPrivate {
-
-    // Constructors of Gdm.ChooserProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type ChooserSkeletonClass = typeof ChooserSkeleton
-abstract class ChooserSkeletonPrivate {
-
-    // Constructors of Gdm.ChooserSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type ClientClass = typeof Client
-type GreeterIface = typeof Greeter
-type GreeterProxyClass = typeof GreeterProxy
-abstract class GreeterProxyPrivate {
-
-    // Constructors of Gdm.GreeterProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type GreeterSkeletonClass = typeof GreeterSkeleton
-abstract class GreeterSkeletonPrivate {
-
-    // Constructors of Gdm.GreeterSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type ManagerIface = typeof Manager
-type ManagerProxyClass = typeof ManagerProxy
-abstract class ManagerProxyPrivate {
-
-    // Constructors of Gdm.ManagerProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type ManagerSkeletonClass = typeof ManagerSkeleton
-abstract class ManagerSkeletonPrivate {
-
-    // Constructors of Gdm.ManagerSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type RemoteGreeterIface = typeof RemoteGreeter
-type RemoteGreeterProxyClass = typeof RemoteGreeterProxy
-abstract class RemoteGreeterProxyPrivate {
-
-    // Constructors of Gdm.RemoteGreeterProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type RemoteGreeterSkeletonClass = typeof RemoteGreeterSkeleton
-abstract class RemoteGreeterSkeletonPrivate {
-
-    // Constructors of Gdm.RemoteGreeterSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type UserVerifierChoiceListIface = typeof UserVerifierChoiceList
-type UserVerifierChoiceListProxyClass = typeof UserVerifierChoiceListProxy
-abstract class UserVerifierChoiceListProxyPrivate {
-
-    // Constructors of Gdm.UserVerifierChoiceListProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type UserVerifierChoiceListSkeletonClass = typeof UserVerifierChoiceListSkeleton
-abstract class UserVerifierChoiceListSkeletonPrivate {
-
-    // Constructors of Gdm.UserVerifierChoiceListSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type UserVerifierIface = typeof UserVerifier
-type UserVerifierProxyClass = typeof UserVerifierProxy
-abstract class UserVerifierProxyPrivate {
-
-    // Constructors of Gdm.UserVerifierProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type UserVerifierSkeletonClass = typeof UserVerifierSkeleton
-abstract class UserVerifierSkeletonPrivate {
-
-    // Constructors of Gdm.UserVerifierSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type WorkerManagerIface = typeof WorkerManager
-type WorkerManagerProxyClass = typeof WorkerManagerProxy
-abstract class WorkerManagerProxyPrivate {
-
-    // Constructors of Gdm.WorkerManagerProxyPrivate
-
-_init(...args: any[]): void;
-
-}
-
-type WorkerManagerSkeletonClass = typeof WorkerManagerSkeleton
-abstract class WorkerManagerSkeletonPrivate {
-
-    // Constructors of Gdm.WorkerManagerSkeletonPrivate
-
-_init(...args: any[]): void;
-
-}
-
-module Chooser {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface ChooserNamespace {
-      $gtype: GObject.GType<Chooser>;
-      prototype: Chooser;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface Chooser extends GObject.Object {
-
-    // Own methods of Gdm.Chooser
-
-    call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_disconnect_finish(res: Gio.AsyncResult): boolean
-    call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-    call_select_hostname(arg_hostname: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_select_hostname_finish(res: Gio.AsyncResult): boolean
-    call_select_hostname_sync(arg_hostname: string, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-    complete_select_hostname(invocation: Gio.DBusMethodInvocation): void
-
-    // Own virtual methods of Gdm.Chooser
-
-    vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-    vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean
-}
-
-
-
-export const Chooser: ChooserNamespace;
-
-module Greeter {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface GreeterNamespace {
-      $gtype: GObject.GType<Greeter>;
-      prototype: Greeter;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface Greeter extends GObject.Object {
-
-    // Own methods of Gdm.Greeter
-
-    call_begin_auto_login(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_begin_auto_login_finish(res: Gio.AsyncResult): boolean
-    call_begin_auto_login_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_get_timed_login_details(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean
-    call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable?: (Gio.Cancellable | null)): boolean
-    call_select_session(arg_session: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_select_session_finish(res: Gio.AsyncResult): boolean
-    call_select_session_sync(arg_session: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_select_user(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_select_user_finish(res: Gio.AsyncResult): boolean
-    call_select_user_sync(arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean
-    call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void
-    complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void
-    complete_select_session(invocation: Gio.DBusMethodInvocation): void
-    complete_select_user(invocation: Gio.DBusMethodInvocation): void
-    complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void
-    emit_default_language_name_changed(arg_language_name: string): void
-    emit_default_session_name_changed(arg_session_name: string): void
-    emit_reauthenticated(arg_service_name: string): void
-    emit_selected_user_changed(arg_username: string): void
-    emit_session_opened(arg_service_name: string): void
-    emit_timed_login_requested(arg_username: string, arg_delay: number): void
-
-    // Own virtual methods of Gdm.Greeter
-
-    vfunc_default_language_name_changed(arg_language_name: string): void
-    vfunc_default_session_name_changed(arg_session_name: string): void
-    vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-    vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean
-    vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean
-    vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-    vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean
-    vfunc_reauthenticated(arg_service_name: string): void
-    vfunc_selected_user_changed(arg_username: string): void
-    vfunc_session_opened(arg_service_name: string): void
-    vfunc_timed_login_requested(arg_username: string, arg_delay: number): void
-}
-
-
-
-export const Greeter: GreeterNamespace;
-
-module Manager {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-version: string;
-    }
-
-}
-
-export interface ManagerNamespace {
-      $gtype: GObject.GType<Manager>;
-      prototype: Manager;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface Manager extends GObject.Object {
-
-    // Own properties of Gdm.Manager
-
-    get version(): string;
-    set version(val: string);
-
-    // Own methods of Gdm.Manager
-
-    call_open_reauthentication_channel(arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean
-    call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_open_session(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean
-    call_open_session_sync(out_address: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_register_display(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_register_display_finish(res: Gio.AsyncResult): boolean
-    call_register_display_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-    call_register_session(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_register_session_finish(res: Gio.AsyncResult): boolean
-    call_register_session_sync(arg_details: GLib.Variant, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void
-    complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void
-    complete_register_display(invocation: Gio.DBusMethodInvocation): void
-    complete_register_session(invocation: Gio.DBusMethodInvocation): void
-    dup_version(): string
-    get_version(): string
-    set_version(value: string): void
-
-    // Own virtual methods of Gdm.Manager
-
-    vfunc_get_version(): string
-    vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean
-    vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean
-    vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-    vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean
-}
-
-
-
-export const Manager: ManagerNamespace;
-
-module RemoteGreeter {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface RemoteGreeterNamespace {
-      $gtype: GObject.GType<RemoteGreeter>;
-      prototype: RemoteGreeter;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface RemoteGreeter extends GObject.Object {
-
-    // Own methods of Gdm.RemoteGreeter
-
-    call_disconnect(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_disconnect_finish(res: Gio.AsyncResult): boolean
-    call_disconnect_sync(cancellable?: (Gio.Cancellable | null)): boolean
-    complete_disconnect(invocation: Gio.DBusMethodInvocation): void
-
-    // Own virtual methods of Gdm.RemoteGreeter
-
-    vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean
-}
-
-
-
-export const RemoteGreeter: RemoteGreeterNamespace;
-
-module UserVerifier {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface UserVerifierNamespace {
-      $gtype: GObject.GType<UserVerifier>;
-      prototype: UserVerifier;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface UserVerifier extends GObject.Object {
-
-    // Own methods of Gdm.UserVerifier
-
-    call_answer_query(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_answer_query_finish(res: Gio.AsyncResult): boolean
-    call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_begin_verification(arg_service_name: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_begin_verification_finish(res: Gio.AsyncResult): boolean
-    call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean
-    call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_begin_verification_sync(arg_service_name: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_cancel(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_cancel_finish(res: Gio.AsyncResult): boolean
-    call_cancel_sync(cancellable?: (Gio.Cancellable | null)): boolean
-    call_enable_extensions(arg_extensions: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_enable_extensions_finish(res: Gio.AsyncResult): boolean
-    call_enable_extensions_sync(arg_extensions: string, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_answer_query(invocation: Gio.DBusMethodInvocation): void
-    complete_begin_verification(invocation: Gio.DBusMethodInvocation): void
-    complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void
-    complete_cancel(invocation: Gio.DBusMethodInvocation): void
-    complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void
-    emit_conversation_started(arg_service_name: string): void
-    emit_conversation_stopped(arg_service_name: string): void
-    emit_info(arg_service_name: string, arg_info: string): void
-    emit_info_query(arg_service_name: string, arg_query: string): void
-    emit_problem(arg_service_name: string, arg_problem: string): void
-    emit_reauthentication_started(arg_pid_of_caller: number): void
-    emit_reset(): void
-    emit_secret_info_query(arg_service_name: string, arg_query: string): void
-    emit_service_unavailable(arg_service_name: string, arg_message: string): void
-    emit_verification_complete(arg_service_name: string): void
-    emit_verification_failed(arg_service_name: string): void
-
-    // Own virtual methods of Gdm.UserVerifier
-
-    vfunc_conversation_started(arg_service_name: string): void
-    vfunc_conversation_stopped(arg_service_name: string): void
-    vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean
-    vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean
-    vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean
-    vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean
-    vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean
-    vfunc_info(arg_service_name: string, arg_info: string): void
-    vfunc_info_query(arg_service_name: string, arg_query: string): void
-    vfunc_problem(arg_service_name: string, arg_problem: string): void
-    vfunc_reauthentication_started(arg_pid_of_caller: number): void
-    vfunc_reset(): void
-    vfunc_secret_info_query(arg_service_name: string, arg_query: string): void
-    vfunc_service_unavailable(arg_service_name: string, arg_message: string): void
-    vfunc_verification_complete(arg_service_name: string): void
-    vfunc_verification_failed(arg_service_name: string): void
-}
-
-
-
-export const UserVerifier: UserVerifierNamespace;
-
-module UserVerifierChoiceList {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface UserVerifierChoiceListNamespace {
-      $gtype: GObject.GType<UserVerifierChoiceList>;
-      prototype: UserVerifierChoiceList;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface UserVerifierChoiceList extends GObject.Object {
-
-    // Own methods of Gdm.UserVerifierChoiceList
-
-    call_select_choice(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_select_choice_finish(res: Gio.AsyncResult): boolean
-    call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_select_choice(invocation: Gio.DBusMethodInvocation): void
-    emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-
-    // Own virtual methods of Gdm.UserVerifierChoiceList
-
-    vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void
-    vfunc_handle_select_choice(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_choice: string): boolean
-}
-
-
-
-export const UserVerifierChoiceList: UserVerifierChoiceListNamespace;
-
-module WorkerManager {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-    }
-
-}
-
-export interface WorkerManagerNamespace {
-      $gtype: GObject.GType<WorkerManager>;
-      prototype: WorkerManager;
-      
-      interface_info(): Gio.DBusInterfaceInfo
-override_properties(klass: typeof GObject.Object, property_id_begin: number): number    
-      }
-interface WorkerManager extends GObject.Object {
-
-    // Own methods of Gdm.WorkerManager
-
-    call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-    call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_hello(cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_hello_finish(res: Gio.AsyncResult): boolean
-    call_hello_sync(cancellable?: (Gio.Cancellable | null)): boolean
-    call_info(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_info_finish(res: Gio.AsyncResult): boolean
-    call_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-    call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_info_sync(arg_service_name: string, arg_info: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_problem(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_problem_finish(res: Gio.AsyncResult): boolean
-    call_problem_sync(arg_service_name: string, arg_problem: string, cancellable?: (Gio.Cancellable | null)): boolean
-    call_secret_info_query(arg_service_name: string, arg_query: string, cancellable?: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): void
-    call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean
-    call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable?: (Gio.Cancellable | null)): boolean
-    complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-    complete_hello(invocation: Gio.DBusMethodInvocation): void
-    complete_info(invocation: Gio.DBusMethodInvocation): void
-    complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-    complete_problem(invocation: Gio.DBusMethodInvocation): void
-    complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void
-
-    // Own virtual methods of Gdm.WorkerManager
-
-    vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean
-    vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean
-    vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean
-    vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-    vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean
-    vfunc_handle_secret_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean
-}
-
-
-
-export const WorkerManager: WorkerManagerNamespace;
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    const __version__: string;
 }
 
 export default Gdm;

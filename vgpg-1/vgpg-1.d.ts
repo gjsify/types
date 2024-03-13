@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -24,53 +23,43 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Vgda from '@girs/vgda-1';
 
 export namespace Vgpg {
+    module Connection {
+        // Constructor properties interface
 
-module Connection {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends Vgda.GProvider.ConstructorProps {
-
+        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}
     }
 
-}
+    class Connection extends Vgda.GProvider {
+        // Constructors of Vgpg.Connection
 
-class Connection extends Vgda.GProvider {
+        constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
-    // Constructors of Vgpg.Connection
+        _init(...args: any[]): void;
 
+        static ['new'](): Connection;
 
-constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
+        // Own methods of Vgpg.Connection
 
-_init(...args: any[]): void;
+        current_user(): Vda.Role;
+    }
 
+    type ConnectionClass = typeof Connection;
+    abstract class ConnectionPrivate {
+        // Constructors of Vgpg.ConnectionPrivate
 
-static ["new"](): Connection;
+        _init(...args: any[]): void;
+    }
 
-    // Own methods of Vgpg.Connection
-
-    current_user(): Vda.Role
-}
-
-type ConnectionClass = typeof Connection
-abstract class ConnectionPrivate {
-
-    // Constructors of Vgpg.ConnectionPrivate
-
-_init(...args: any[]): void;
-
-}
-
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default Vgpg;

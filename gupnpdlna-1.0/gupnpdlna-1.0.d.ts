@@ -1,4 +1,3 @@
-
 /*
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -23,191 +22,174 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
 export namespace GUPnPDLNA {
+    module Discoverer {
+        // Signal callback interfaces
 
-module Discoverer {
+        interface Done {
+            (dlna: Information, err: GLib.Error): void;
+        }
 
-    // Signal callback interfaces
+        // Constructor properties interface
 
-    interface Done {
-        (dlna: Information, err: GLib.Error): void
+        interface ConstructorProps extends GstPbutils.Discoverer.ConstructorProps {
+            extended_mode: boolean;
+            extendedMode: boolean;
+            relaxed_mode: boolean;
+            relaxedMode: boolean;
+        }
     }
 
+    /**
+     * The top-level object used to for metadata extraction.
+     */
+    class Discoverer extends GstPbutils.Discoverer {
+        // Own properties of GUPnPDLNA.Discoverer
 
-    // Constructor properties interface
+        get extended_mode(): boolean;
+        get extendedMode(): boolean;
+        get relaxed_mode(): boolean;
+        get relaxedMode(): boolean;
 
-    interface ConstructorProps extends GstPbutils.Discoverer.ConstructorProps {
-extended_mode: boolean;
-    extendedMode: boolean;
-    relaxed_mode: boolean;
-    relaxedMode: boolean;
+        // Constructors of GUPnPDLNA.Discoverer
+
+        constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](timeout: Gst.ClockTime, relaxed_mode: boolean, extended_mode: boolean): Discoverer;
+        // Conflicted with GstPbutils.Discoverer.new
+
+        static ['new'](...args: never[]): any;
+
+        // Own signals of GUPnPDLNA.Discoverer
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'done', callback: (_source: this, dlna: Information, err: GLib.Error) => void): number;
+        connect_after(signal: 'done', callback: (_source: this, dlna: Information, err: GLib.Error) => void): number;
+        emit(signal: 'done', dlna: Information, err: GLib.Error): void;
+
+        // Own virtual methods of GUPnPDLNA.Discoverer
+
+        vfunc_done(dlna: Information, err: GLib.Error): void;
+
+        // Own methods of GUPnPDLNA.Discoverer
+
+        /**
+         * Queues `uri` for metadata discovery. When discovery is completed, the
+         * "discovered" signal is emitted on `discoverer`.
+         * @param uri URI to gather metadata for
+         * @returns TRUE if @uri was successfully queued, FALSE otherwise.
+         */
+        discover_uri(uri: string): boolean;
+        discover_uri(...args: never[]): any;
+        /**
+         * Synchronously gathers metadata for `uri`.
+         * @param uri URI to gather metadata for
+         * @returns a #GUPnPDLNAInformation with the metadata for @uri on success, NULL otherwise
+         */
+        discover_uri_sync(uri: string): Information;
+        get_extended_mode(): boolean;
+        /**
+         * Given `name,` this finds the corresponding DLNA profile information (stored
+         * as a #GUPnPDLNAProfile).
+         * @param name The name of the DLNA profile to be retrieved
+         * @returns a #GUPnPDLNAProfile on success, NULL otherwise.
+         */
+        get_profile(name: string): Profile;
+        get_relaxed_mode(): boolean;
+        /**
+         * Retuns a list of the all the DLNA profiles supported by `self`.
+         * @returns a #GList of #GUPnPDLNAProfile on success, NULL otherwise.
+         */
+        list_profiles(): Profile[];
     }
 
-}
+    module Information {
+        // Constructor properties interface
 
-/**
- * The top-level object used to for metadata extraction.
- */
-class Discoverer extends GstPbutils.Discoverer {
-
-    // Own properties of GUPnPDLNA.Discoverer
-
-    get extended_mode(): boolean;
-    get extendedMode(): boolean;
-    get relaxed_mode(): boolean;
-    get relaxedMode(): boolean;
-
-    // Constructors of GUPnPDLNA.Discoverer
-
-
-constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
-
-_init(...args: any[]): void;
-
-
-static ["new"](timeout: Gst.ClockTime, relaxed_mode: boolean, extended_mode: boolean): Discoverer;
-// Conflicted with GstPbutils.Discoverer.new
-
-static ["new"](...args: never[]): any;
-
-    // Own signals of GUPnPDLNA.Discoverer
-
-    connect(id: string, callback: (...args: any[]) => any): number
-    connect_after(id: string, callback: (...args: any[]) => any): number
-    emit(id: string, ...args: any[]): void
-    connect(signal: 'done', callback: ((_source: this, dlna: Information, err: GLib.Error) => void)): number
-    connect_after(signal: 'done', callback: ((_source: this, dlna: Information, err: GLib.Error) => void)): number
-    emit(signal: 'done', dlna: Information, err: GLib.Error): void
-
-    // Own virtual methods of GUPnPDLNA.Discoverer
-
-    vfunc_done(dlna: Information, err: GLib.Error): void
-
-    // Own methods of GUPnPDLNA.Discoverer
-
-    /**
-     * Queues `uri` for metadata discovery. When discovery is completed, the
-     * "discovered" signal is emitted on `discoverer`.
-     * @param uri URI to gather metadata for
-     * @returns TRUE if @uri was successfully queued, FALSE otherwise.
-     */
-    discover_uri(uri: string): boolean
-    discover_uri(...args: never[]): any
-    /**
-     * Synchronously gathers metadata for `uri`.
-     * @param uri URI to gather metadata for
-     * @returns a #GUPnPDLNAInformation with the metadata for @uri on success, NULL otherwise
-     */
-    discover_uri_sync(uri: string): Information
-    get_extended_mode(): boolean
-    /**
-     * Given `name,` this finds the corresponding DLNA profile information (stored
-     * as a #GUPnPDLNAProfile).
-     * @param name The name of the DLNA profile to be retrieved
-     * @returns a #GUPnPDLNAProfile on success, NULL otherwise.
-     */
-    get_profile(name: string): Profile
-    get_relaxed_mode(): boolean
-    /**
-     * Retuns a list of the all the DLNA profiles supported by `self`.
-     * @returns a #GList of #GUPnPDLNAProfile on success, NULL otherwise.
-     */
-    list_profiles(): Profile[]
-}
-
-module Information {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-info: GstPbutils.DiscovererInfo;
-    mime: string;
-    name: string;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            info: GstPbutils.DiscovererInfo;
+            mime: string;
+            name: string;
+        }
     }
 
-}
+    class Information extends GObject.Object {
+        // Own properties of GUPnPDLNA.Information
 
-class Information extends GObject.Object {
+        get info(): GstPbutils.DiscovererInfo;
+        get mime(): string;
+        get name(): string;
 
-    // Own properties of GUPnPDLNA.Information
+        // Constructors of GUPnPDLNA.Information
 
-    get info(): GstPbutils.DiscovererInfo;
-    get mime(): string;
-    get name(): string;
+        constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
 
-    // Constructors of GUPnPDLNA.Information
+        _init(...args: any[]): void;
 
+        static ['new'](name: string, mime: string, info: GstPbutils.DiscovererInfo): Information;
 
-constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
+        // Own methods of GUPnPDLNA.Information
 
-_init(...args: any[]): void;
-
-
-static ["new"](name: string, mime: string, info: GstPbutils.DiscovererInfo): Information;
-
-    // Own methods of GUPnPDLNA.Information
-
-    get_info(): GstPbutils.DiscovererInfo
-    get_mime(): string
-    get_name(): string
-}
-
-module Profile {
-
-    // Constructor properties interface
-
-    interface ConstructorProps extends GObject.Object.ConstructorProps {
-encoding_profile: GstPbutils.EncodingProfile;
-    encodingProfile: GstPbutils.EncodingProfile;
-    extended: boolean;
-    mime: string;
-    name: string;
+        get_info(): GstPbutils.DiscovererInfo;
+        get_mime(): string;
+        get_name(): string;
     }
 
-}
+    module Profile {
+        // Constructor properties interface
 
-/**
- * The top-level object used for the in-memory representation of the DLNA
- * Profiles.
- */
-class Profile extends GObject.Object {
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            encoding_profile: GstPbutils.EncodingProfile;
+            encodingProfile: GstPbutils.EncodingProfile;
+            extended: boolean;
+            mime: string;
+            name: string;
+        }
+    }
 
-    // Own properties of GUPnPDLNA.Profile
+    /**
+     * The top-level object used for the in-memory representation of the DLNA
+     * Profiles.
+     */
+    class Profile extends GObject.Object {
+        // Own properties of GUPnPDLNA.Profile
 
-    get encoding_profile(): GstPbutils.EncodingProfile;
-    get encodingProfile(): GstPbutils.EncodingProfile;
-    get extended(): boolean;
-    get mime(): string;
-    get name(): string;
+        get encoding_profile(): GstPbutils.EncodingProfile;
+        get encodingProfile(): GstPbutils.EncodingProfile;
+        get extended(): boolean;
+        get mime(): string;
+        get name(): string;
 
-    // Constructors of GUPnPDLNA.Profile
+        // Constructors of GUPnPDLNA.Profile
 
+        constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
-constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
+        _init(...args: any[]): void;
 
-_init(...args: any[]): void;
+        // Own methods of GUPnPDLNA.Profile
 
+        get_encoding_profile(): GstPbutils.EncodingProfile;
+        get_extended(): boolean;
+        get_mime(): string;
+        get_name(): string;
+    }
 
-    // Own methods of GUPnPDLNA.Profile
-
-    get_encoding_profile(): GstPbutils.EncodingProfile
-    get_extended(): boolean
-    get_mime(): string
-    get_name(): string
-}
-
-type DiscovererClass = typeof Discoverer
-type InformationClass = typeof Information
-type ProfileClass = typeof Profile
-/**
- * Name of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
- */
-const __name__: string
-/**
- * Version of the imported GIR library
- * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
- */
-const __version__: string
+    type DiscovererClass = typeof Discoverer;
+    type InformationClass = typeof Information;
+    type ProfileClass = typeof Profile;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
 }
 
 export default GUPnPDLNA;
