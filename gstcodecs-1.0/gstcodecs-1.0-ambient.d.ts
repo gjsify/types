@@ -5,7 +5,7 @@ declare module 'gi://GstCodecs?version=1.0' {
 }
 
 declare module 'gi://GstCodecs' {
-    export * from 'gi://GstCodecs?version=1.0';
+    export default 'gi://GstCodecs?version=1.0';
 }
 
 

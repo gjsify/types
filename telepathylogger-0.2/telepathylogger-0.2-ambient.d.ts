@@ -5,7 +5,7 @@ declare module 'gi://TelepathyLogger?version=0.2' {
 }
 
 declare module 'gi://TelepathyLogger' {
-    export * from 'gi://TelepathyLogger?version=0.2';
+    export default 'gi://TelepathyLogger?version=0.2';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GUdev?version=1.0' {
 }
 
 declare module 'gi://GUdev' {
-    export * from 'gi://GUdev?version=1.0';
+    export default 'gi://GUdev?version=1.0';
 }
 
 

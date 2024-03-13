@@ -5,7 +5,7 @@ declare module 'gi://GUsb?version=1.0' {
 }
 
 declare module 'gi://GUsb' {
-    export * from 'gi://GUsb?version=1.0';
+    export default 'gi://GUsb?version=1.0';
 }
 
 

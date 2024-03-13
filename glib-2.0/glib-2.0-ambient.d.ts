@@ -5,7 +5,7 @@ declare module 'gi://GLib?version=2.0' {
 }
 
 declare module 'gi://GLib' {
-    export * from 'gi://GLib?version=2.0';
+    export default 'gi://GLib?version=2.0';
 }
 
 

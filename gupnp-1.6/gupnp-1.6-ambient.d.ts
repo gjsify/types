@@ -5,7 +5,7 @@ declare module 'gi://GUPnP?version=1.6' {
 }
 
 declare module 'gi://GUPnP' {
-    export * from 'gi://GUPnP?version=1.6';
+    export default 'gi://GUPnP?version=1.6';
 }
 
 

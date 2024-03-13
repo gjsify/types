@@ -5,7 +5,7 @@ declare module 'gi://Libosinfo?version=1.0' {
 }
 
 declare module 'gi://Libosinfo' {
-    export * from 'gi://Libosinfo?version=1.0';
+    export default 'gi://Libosinfo?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GdkPixdata?version=2.0' {
 }
 
 declare module 'gi://GdkPixdata' {
-    export * from 'gi://GdkPixdata?version=2.0';
+    export default 'gi://GdkPixdata?version=2.0';
 }
 
 

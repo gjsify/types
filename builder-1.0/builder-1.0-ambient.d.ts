@@ -5,7 +5,7 @@ declare module 'gi://Builder?version=1.0' {
 }
 
 declare module 'gi://Builder' {
-    export * from 'gi://Builder?version=1.0';
+    export default 'gi://Builder?version=1.0';
 }
 
 

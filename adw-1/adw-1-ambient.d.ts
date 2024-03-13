@@ -5,7 +5,7 @@ declare module 'gi://Adw?version=1' {
 }
 
 declare module 'gi://Adw' {
-    export * from 'gi://Adw?version=1';
+    export default 'gi://Adw?version=1';
 }
 
 

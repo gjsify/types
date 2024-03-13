@@ -5,7 +5,7 @@ declare module 'gi://Notify?version=0.7' {
 }
 
 declare module 'gi://Notify' {
-    export * from 'gi://Notify?version=0.7';
+    export default 'gi://Notify?version=0.7';
 }
 
 

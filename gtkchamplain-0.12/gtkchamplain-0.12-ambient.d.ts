@@ -5,7 +5,7 @@ declare module 'gi://GtkChamplain?version=0.12' {
 }
 
 declare module 'gi://GtkChamplain' {
-    export * from 'gi://GtkChamplain?version=0.12';
+    export default 'gi://GtkChamplain?version=0.12';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Gladeui?version=2.0' {
 }
 
 declare module 'gi://Gladeui' {
-    export * from 'gi://Gladeui?version=2.0';
+    export default 'gi://Gladeui?version=2.0';
 }
 
 

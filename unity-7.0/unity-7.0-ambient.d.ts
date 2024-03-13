@@ -5,7 +5,7 @@ declare module 'gi://Unity?version=7.0' {
 }
 
 declare module 'gi://Unity' {
-    export * from 'gi://Unity?version=7.0';
+    export default 'gi://Unity?version=7.0';
 }
 
 

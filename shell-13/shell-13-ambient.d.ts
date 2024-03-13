@@ -5,7 +5,7 @@ declare module 'gi://Shell?version=13' {
 }
 
 declare module 'gi://Shell' {
-    export * from 'gi://Shell?version=13';
+    export default 'gi://Shell?version=13';
 }
 
 

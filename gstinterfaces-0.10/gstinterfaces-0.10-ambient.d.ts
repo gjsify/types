@@ -5,7 +5,7 @@ declare module 'gi://GstInterfaces?version=0.10' {
 }
 
 declare module 'gi://GstInterfaces' {
-    export * from 'gi://GstInterfaces?version=0.10';
+    export default 'gi://GstInterfaces?version=0.10';
 }
 
 

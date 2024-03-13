@@ -5,7 +5,7 @@ declare module 'gi://Gda?version=6.0' {
 }
 
 declare module 'gi://Gda' {
-    export * from 'gi://Gda?version=6.0';
+    export default 'gi://Gda?version=6.0';
 }
 
 

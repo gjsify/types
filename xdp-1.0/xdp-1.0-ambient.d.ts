@@ -5,7 +5,7 @@ declare module 'gi://Xdp?version=1.0' {
 }
 
 declare module 'gi://Xdp' {
-    export * from 'gi://Xdp?version=1.0';
+    export default 'gi://Xdp?version=1.0';
 }
 
 

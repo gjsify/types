@@ -5,7 +5,7 @@ declare module 'gi://PackageKitGlib?version=1.0' {
 }
 
 declare module 'gi://PackageKitGlib' {
-    export * from 'gi://PackageKitGlib?version=1.0';
+    export default 'gi://PackageKitGlib?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GConf?version=2.0' {
 }
 
 declare module 'gi://GConf' {
-    export * from 'gi://GConf?version=2.0';
+    export default 'gi://GConf?version=2.0';
 }
 
 

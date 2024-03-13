@@ -5,7 +5,7 @@ declare module 'gi://ICalGLib?version=3.0' {
 }
 
 declare module 'gi://ICalGLib' {
-    export * from 'gi://ICalGLib?version=3.0';
+    export default 'gi://ICalGLib?version=3.0';
 }
 
 

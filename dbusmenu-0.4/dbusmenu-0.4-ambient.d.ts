@@ -5,7 +5,7 @@ declare module 'gi://Dbusmenu?version=0.4' {
 }
 
 declare module 'gi://Dbusmenu' {
-    export * from 'gi://Dbusmenu?version=0.4';
+    export default 'gi://Dbusmenu?version=0.4';
 }
 
 

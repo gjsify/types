@@ -5,7 +5,7 @@ declare module 'gi://Gck?version=2' {
 }
 
 declare module 'gi://Gck' {
-    export * from 'gi://Gck?version=2';
+    export default 'gi://Gck?version=2';
 }
 
 

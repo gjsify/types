@@ -5,7 +5,7 @@ declare module 'gi://DMAP?version=3.0' {
 }
 
 declare module 'gi://DMAP' {
-    export * from 'gi://DMAP?version=3.0';
+    export default 'gi://DMAP?version=3.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GExiv2?version=0.10' {
 }
 
 declare module 'gi://GExiv2' {
-    export * from 'gi://GExiv2?version=0.10';
+    export default 'gi://GExiv2?version=0.10';
 }
 
 

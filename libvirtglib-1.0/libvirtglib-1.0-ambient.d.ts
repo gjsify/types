@@ -5,7 +5,7 @@ declare module 'gi://LibvirtGLib?version=1.0' {
 }
 
 declare module 'gi://LibvirtGLib' {
-    export * from 'gi://LibvirtGLib?version=1.0';
+    export default 'gi://LibvirtGLib?version=1.0';
 }
 
 

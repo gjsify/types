@@ -5,7 +5,7 @@ declare module 'gi://GSignond?version=1.0' {
 }
 
 declare module 'gi://GSignond' {
-    export * from 'gi://GSignond?version=1.0';
+    export default 'gi://GSignond?version=1.0';
 }
 
 

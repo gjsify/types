@@ -5,7 +5,7 @@ declare module 'gi://RygelServer?version=2.8' {
 }
 
 declare module 'gi://RygelServer' {
-    export * from 'gi://RygelServer?version=2.8';
+    export default 'gi://RygelServer?version=2.8';
 }
 
 

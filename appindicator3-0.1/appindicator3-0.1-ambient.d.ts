@@ -5,7 +5,7 @@ declare module 'gi://AppIndicator3?version=0.1' {
 }
 
 declare module 'gi://AppIndicator3' {
-    export * from 'gi://AppIndicator3?version=0.1';
+    export default 'gi://AppIndicator3?version=0.1';
 }
 
 

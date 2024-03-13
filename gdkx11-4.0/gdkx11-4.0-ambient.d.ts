@@ -5,7 +5,7 @@ declare module 'gi://GdkX11?version=4.0' {
 }
 
 declare module 'gi://GdkX11' {
-    export * from 'gi://GdkX11?version=4.0';
+    export default 'gi://GdkX11?version=4.0';
 }
 
 

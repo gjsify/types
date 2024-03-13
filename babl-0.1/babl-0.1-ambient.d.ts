@@ -5,7 +5,7 @@ declare module 'gi://Babl?version=0.1' {
 }
 
 declare module 'gi://Babl' {
-    export * from 'gi://Babl?version=0.1';
+    export default 'gi://Babl?version=0.1';
 }
 
 

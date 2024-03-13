@@ -5,7 +5,7 @@ declare module 'gi://GcrGtk4?version=4' {
 }
 
 declare module 'gi://GcrGtk4' {
-    export * from 'gi://GcrGtk4?version=4';
+    export default 'gi://GcrGtk4?version=4';
 }
 
 

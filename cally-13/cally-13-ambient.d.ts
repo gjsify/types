@@ -5,7 +5,7 @@ declare module 'gi://Cally?version=13' {
 }
 
 declare module 'gi://Cally' {
-    export * from 'gi://Cally?version=13';
+    export default 'gi://Cally?version=13';
 }
 
 

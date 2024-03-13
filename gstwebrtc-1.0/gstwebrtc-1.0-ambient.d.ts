@@ -5,7 +5,7 @@ declare module 'gi://GstWebRTC?version=1.0' {
 }
 
 declare module 'gi://GstWebRTC' {
-    export * from 'gi://GstWebRTC?version=1.0';
+    export default 'gi://GstWebRTC?version=1.0';
 }
 
 

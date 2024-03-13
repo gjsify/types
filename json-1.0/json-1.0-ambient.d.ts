@@ -5,7 +5,7 @@ declare module 'gi://Json?version=1.0' {
 }
 
 declare module 'gi://Json' {
-    export * from 'gi://Json?version=1.0';
+    export default 'gi://Json?version=1.0';
 }
 
 

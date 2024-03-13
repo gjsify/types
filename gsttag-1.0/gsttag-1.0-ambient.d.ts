@@ -5,7 +5,7 @@ declare module 'gi://GstTag?version=1.0' {
 }
 
 declare module 'gi://GstTag' {
-    export * from 'gi://GstTag?version=1.0';
+    export default 'gi://GstTag?version=1.0';
 }
 
 

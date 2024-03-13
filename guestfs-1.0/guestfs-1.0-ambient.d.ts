@@ -5,7 +5,7 @@ declare module 'gi://Guestfs?version=1.0' {
 }
 
 declare module 'gi://Guestfs' {
-    export * from 'gi://Guestfs?version=1.0';
+    export default 'gi://Guestfs?version=1.0';
 }
 
 

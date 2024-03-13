@@ -5,7 +5,7 @@ declare module 'gi://TrackerMiner?version=2.0' {
 }
 
 declare module 'gi://TrackerMiner' {
-    export * from 'gi://TrackerMiner?version=2.0';
+    export default 'gi://TrackerMiner?version=2.0';
 }
 
 

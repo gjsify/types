@@ -5,7 +5,7 @@ declare module 'gi://GES?version=1.0' {
 }
 
 declare module 'gi://GES' {
-    export * from 'gi://GES?version=1.0';
+    export default 'gi://GES?version=1.0';
 }
 
 

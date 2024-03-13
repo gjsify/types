@@ -5,7 +5,7 @@ declare module 'gi://Rest?version=1.0' {
 }
 
 declare module 'gi://Rest' {
-    export * from 'gi://Rest?version=1.0';
+    export default 'gi://Rest?version=1.0';
 }
 
 

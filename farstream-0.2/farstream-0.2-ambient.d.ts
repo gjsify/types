@@ -5,7 +5,7 @@ declare module 'gi://Farstream?version=0.2' {
 }
 
 declare module 'gi://Farstream' {
-    export * from 'gi://Farstream?version=0.2';
+    export default 'gi://Farstream?version=0.2';
 }
 
 

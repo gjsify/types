@@ -5,7 +5,7 @@ declare module 'gi://GrlPls?version=0.3' {
 }
 
 declare module 'gi://GrlPls' {
-    export * from 'gi://GrlPls?version=0.3';
+    export default 'gi://GrlPls?version=0.3';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Gdaui?version=6.0' {
 }
 
 declare module 'gi://Gdaui' {
-    export * from 'gi://Gdaui?version=6.0';
+    export default 'gi://Gdaui?version=6.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GstBase?version=1.0' {
 }
 
 declare module 'gi://GstBase' {
-    export * from 'gi://GstBase?version=1.0';
+    export default 'gi://GstBase?version=1.0';
 }
 
 

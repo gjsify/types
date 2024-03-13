@@ -5,7 +5,7 @@ declare module 'gi://SocialWebClient?version=0.25' {
 }
 
 declare module 'gi://SocialWebClient' {
-    export * from 'gi://SocialWebClient?version=0.25';
+    export default 'gi://SocialWebClient?version=0.25';
 }
 
 

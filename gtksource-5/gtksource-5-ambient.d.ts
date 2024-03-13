@@ -5,7 +5,7 @@ declare module 'gi://GtkSource?version=5' {
 }
 
 declare module 'gi://GtkSource' {
-    export * from 'gi://GtkSource?version=5';
+    export default 'gi://GtkSource?version=5';
 }
 
 

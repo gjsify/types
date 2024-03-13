@@ -5,7 +5,7 @@ declare module 'gi://Gpseq?version=1.0' {
 }
 
 declare module 'gi://Gpseq' {
-    export * from 'gi://Gpseq?version=1.0';
+    export default 'gi://Gpseq?version=1.0';
 }
 
 

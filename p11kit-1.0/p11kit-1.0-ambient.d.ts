@@ -5,7 +5,7 @@ declare module 'gi://P11Kit?version=1.0' {
 }
 
 declare module 'gi://P11Kit' {
-    export * from 'gi://P11Kit?version=1.0';
+    export default 'gi://P11Kit?version=1.0';
 }
 
 

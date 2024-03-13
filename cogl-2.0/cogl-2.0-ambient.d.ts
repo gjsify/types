@@ -5,7 +5,7 @@ declare module 'gi://Cogl?version=2.0' {
 }
 
 declare module 'gi://Cogl' {
-    export * from 'gi://Cogl?version=2.0';
+    export default 'gi://Cogl?version=2.0';
 }
 
 

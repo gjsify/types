@@ -5,7 +5,7 @@ declare module 'gi://GMime?version=3.0' {
 }
 
 declare module 'gi://GMime' {
-    export * from 'gi://GMime?version=3.0';
+    export default 'gi://GMime?version=3.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://FolksLibsocialweb?version=0.6' {
 }
 
 declare module 'gi://FolksLibsocialweb' {
-    export * from 'gi://FolksLibsocialweb?version=0.6';
+    export default 'gi://FolksLibsocialweb?version=0.6';
 }
 
 

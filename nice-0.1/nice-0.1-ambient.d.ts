@@ -5,7 +5,7 @@ declare module 'gi://Nice?version=0.1' {
 }
 
 declare module 'gi://Nice' {
-    export * from 'gi://Nice?version=0.1';
+    export default 'gi://Nice?version=0.1';
 }
 
 

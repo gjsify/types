@@ -5,7 +5,7 @@ declare module 'gi://PangoFc?version=1.0' {
 }
 
 declare module 'gi://PangoFc' {
-    export * from 'gi://PangoFc?version=1.0';
+    export default 'gi://PangoFc?version=1.0';
 }
 
 

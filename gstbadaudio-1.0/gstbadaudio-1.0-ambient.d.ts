@@ -5,7 +5,7 @@ declare module 'gi://GstBadAudio?version=1.0' {
 }
 
 declare module 'gi://GstBadAudio' {
-    export * from 'gi://GstBadAudio?version=1.0';
+    export default 'gi://GstBadAudio?version=1.0';
 }
 
 

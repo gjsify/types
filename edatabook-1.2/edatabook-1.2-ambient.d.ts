@@ -5,7 +5,7 @@ declare module 'gi://EDataBook?version=1.2' {
 }
 
 declare module 'gi://EDataBook' {
-    export * from 'gi://EDataBook?version=1.2';
+    export default 'gi://EDataBook?version=1.2';
 }
 
 

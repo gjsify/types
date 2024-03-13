@@ -5,7 +5,7 @@ declare module 'gi://FolksEds?version=0.7' {
 }
 
 declare module 'gi://FolksEds' {
-    export * from 'gi://FolksEds?version=0.7';
+    export default 'gi://FolksEds?version=0.7';
 }
 
 

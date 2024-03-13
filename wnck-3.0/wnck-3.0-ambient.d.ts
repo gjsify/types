@@ -5,7 +5,7 @@ declare module 'gi://Wnck?version=3.0' {
 }
 
 declare module 'gi://Wnck' {
-    export * from 'gi://Wnck?version=3.0';
+    export default 'gi://Wnck?version=3.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://GnomeMaps?version=1.0' {
 }
 
 declare module 'gi://GnomeMaps' {
-    export * from 'gi://GnomeMaps?version=1.0';
+    export default 'gi://GnomeMaps?version=1.0';
 }
 
 

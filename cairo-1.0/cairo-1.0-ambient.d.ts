@@ -5,7 +5,7 @@ declare module 'gi://cairo?version=1.0' {
 }
 
 declare module 'gi://cairo' {
-    export * from 'gi://cairo?version=1.0';
+    export default 'gi://cairo?version=1.0';
 }
 
 

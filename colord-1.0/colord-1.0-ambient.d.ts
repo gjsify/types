@@ -5,7 +5,7 @@ declare module 'gi://Colord?version=1.0' {
 }
 
 declare module 'gi://Colord' {
-    export * from 'gi://Colord?version=1.0';
+    export default 'gi://Colord?version=1.0';
 }
 
 

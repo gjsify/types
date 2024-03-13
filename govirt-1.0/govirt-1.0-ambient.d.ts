@@ -5,7 +5,7 @@ declare module 'gi://GoVirt?version=1.0' {
 }
 
 declare module 'gi://GoVirt' {
-    export * from 'gi://GoVirt?version=1.0';
+    export default 'gi://GoVirt?version=1.0';
 }
 
 

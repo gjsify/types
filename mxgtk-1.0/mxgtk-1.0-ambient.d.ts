@@ -5,7 +5,7 @@ declare module 'gi://MxGtk?version=1.0' {
 }
 
 declare module 'gi://MxGtk' {
-    export * from 'gi://MxGtk?version=1.0';
+    export default 'gi://MxGtk?version=1.0';
 }
 
 

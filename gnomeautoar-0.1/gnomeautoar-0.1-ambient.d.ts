@@ -5,7 +5,7 @@ declare module 'gi://GnomeAutoar?version=0.1' {
 }
 
 declare module 'gi://GnomeAutoar' {
-    export * from 'gi://GnomeAutoar?version=0.1';
+    export default 'gi://GnomeAutoar?version=0.1';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://RygelRendererGst?version=2.8' {
 }
 
 declare module 'gi://RygelRendererGst' {
-    export * from 'gi://RygelRendererGst?version=2.8';
+    export default 'gi://RygelRendererGst?version=2.8';
 }
 
 

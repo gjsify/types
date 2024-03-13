@@ -5,7 +5,7 @@ declare module 'gi://Caribou?version=1.0' {
 }
 
 declare module 'gi://Caribou' {
-    export * from 'gi://Caribou?version=1.0';
+    export default 'gi://Caribou?version=1.0';
 }
 
 

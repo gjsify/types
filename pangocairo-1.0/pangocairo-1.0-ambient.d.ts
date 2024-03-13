@@ -5,7 +5,7 @@ declare module 'gi://PangoCairo?version=1.0' {
 }
 
 declare module 'gi://PangoCairo' {
-    export * from 'gi://PangoCairo?version=1.0';
+    export default 'gi://PangoCairo?version=1.0';
 }
 
 

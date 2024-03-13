@@ -5,7 +5,7 @@ declare module 'gi://Polkit?version=1.0' {
 }
 
 declare module 'gi://Polkit' {
-    export * from 'gi://Polkit?version=1.0';
+    export default 'gi://Polkit?version=1.0';
 }
 
 

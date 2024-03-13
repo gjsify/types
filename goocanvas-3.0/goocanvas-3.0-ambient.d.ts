@@ -5,7 +5,7 @@ declare module 'gi://GooCanvas?version=3.0' {
 }
 
 declare module 'gi://GooCanvas' {
-    export * from 'gi://GooCanvas?version=3.0';
+    export default 'gi://GooCanvas?version=3.0';
 }
 
 

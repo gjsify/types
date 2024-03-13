@@ -5,7 +5,7 @@ declare module 'gi://Mbim?version=1.0' {
 }
 
 declare module 'gi://Mbim' {
-    export * from 'gi://Mbim?version=1.0';
+    export default 'gi://Mbim?version=1.0';
 }
 
 

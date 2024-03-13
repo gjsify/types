@@ -5,7 +5,7 @@ declare module 'gi://GjsDBus?version=1.0' {
 }
 
 declare module 'gi://GjsDBus' {
-    export * from 'gi://GjsDBus?version=1.0';
+    export default 'gi://GjsDBus?version=1.0';
 }
 
 

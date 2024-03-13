@@ -5,7 +5,7 @@ declare module 'gi://Gio?version=2.0' {
 }
 
 declare module 'gi://Gio' {
-    export * from 'gi://Gio?version=2.0';
+    export default 'gi://Gio?version=2.0';
 }
 
 

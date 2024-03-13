@@ -5,7 +5,7 @@ declare module 'gi://Gandiva?version=1.0' {
 }
 
 declare module 'gi://Gandiva' {
-    export * from 'gi://Gandiva?version=1.0';
+    export default 'gi://Gandiva?version=1.0';
 }
 
 

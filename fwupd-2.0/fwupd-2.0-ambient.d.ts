@@ -5,7 +5,7 @@ declare module 'gi://Fwupd?version=2.0' {
 }
 
 declare module 'gi://Fwupd' {
-    export * from 'gi://Fwupd?version=2.0';
+    export default 'gi://Fwupd?version=2.0';
 }
 
 

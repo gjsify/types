@@ -5,7 +5,7 @@ declare module 'gi://Vgpg?version=1' {
 }
 
 declare module 'gi://Vgpg' {
-    export * from 'gi://Vgpg?version=1';
+    export default 'gi://Vgpg?version=1';
 }
 
 

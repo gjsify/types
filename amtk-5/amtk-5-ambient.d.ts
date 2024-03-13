@@ -5,7 +5,7 @@ declare module 'gi://Amtk?version=5' {
 }
 
 declare module 'gi://Amtk' {
-    export * from 'gi://Amtk?version=5';
+    export default 'gi://Amtk?version=5';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Uhm?version=0.0' {
 }
 
 declare module 'gi://Uhm' {
-    export * from 'gi://Uhm?version=0.0';
+    export default 'gi://Uhm?version=0.0';
 }
 
 

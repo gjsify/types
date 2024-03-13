@@ -5,7 +5,7 @@ declare module 'gi://Shew?version=0' {
 }
 
 declare module 'gi://Shew' {
-    export * from 'gi://Shew?version=0';
+    export default 'gi://Shew?version=0';
 }
 
 

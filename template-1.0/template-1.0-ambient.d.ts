@@ -5,7 +5,7 @@ declare module 'gi://Template?version=1.0' {
 }
 
 declare module 'gi://Template' {
-    export * from 'gi://Template?version=1.0';
+    export default 'gi://Template?version=1.0';
 }
 
 

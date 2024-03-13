@@ -5,7 +5,7 @@ declare module 'gi://Poppler?version=0.18' {
 }
 
 declare module 'gi://Poppler' {
-    export * from 'gi://Poppler?version=0.18';
+    export default 'gi://Poppler?version=0.18';
 }
 
 

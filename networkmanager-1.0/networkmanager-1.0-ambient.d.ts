@@ -5,7 +5,7 @@ declare module 'gi://NetworkManager?version=1.0' {
 }
 
 declare module 'gi://NetworkManager' {
-    export * from 'gi://NetworkManager?version=1.0';
+    export default 'gi://NetworkManager?version=1.0';
 }
 
 

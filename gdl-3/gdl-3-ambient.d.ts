@@ -5,7 +5,7 @@ declare module 'gi://Gdl?version=3' {
 }
 
 declare module 'gi://Gdl' {
-    export * from 'gi://Gdl?version=3';
+    export default 'gi://Gdl?version=3';
 }
 
 

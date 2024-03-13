@@ -5,7 +5,7 @@ declare module 'gi://Rsvg?version=2.0' {
 }
 
 declare module 'gi://Rsvg' {
-    export * from 'gi://Rsvg?version=2.0';
+    export default 'gi://Rsvg?version=2.0';
 }
 
 

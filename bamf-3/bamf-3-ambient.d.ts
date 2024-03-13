@@ -5,7 +5,7 @@ declare module 'gi://Bamf?version=3' {
 }
 
 declare module 'gi://Bamf' {
-    export * from 'gi://Bamf?version=3';
+    export default 'gi://Bamf?version=3';
 }
 
 

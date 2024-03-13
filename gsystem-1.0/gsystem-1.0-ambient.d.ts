@@ -5,7 +5,7 @@ declare module 'gi://GSystem?version=1.0' {
 }
 
 declare module 'gi://GSystem' {
-    export * from 'gi://GSystem?version=1.0';
+    export default 'gi://GSystem?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://AppStreamBuilder?version=1.0' {
 }
 
 declare module 'gi://AppStreamBuilder' {
-    export * from 'gi://AppStreamBuilder?version=1.0';
+    export default 'gi://AppStreamBuilder?version=1.0';
 }
 
 

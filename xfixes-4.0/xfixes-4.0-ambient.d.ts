@@ -5,7 +5,7 @@ declare module 'gi://xfixes?version=4.0' {
 }
 
 declare module 'gi://xfixes' {
-    export * from 'gi://xfixes?version=4.0';
+    export default 'gi://xfixes?version=4.0';
 }
 
 

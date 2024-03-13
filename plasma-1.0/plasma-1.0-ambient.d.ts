@@ -5,7 +5,7 @@ declare module 'gi://Plasma?version=1.0' {
 }
 
 declare module 'gi://Plasma' {
-    export * from 'gi://Plasma?version=1.0';
+    export default 'gi://Plasma?version=1.0';
 }
 
 

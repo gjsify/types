@@ -5,7 +5,7 @@ declare module 'gi://GstNet?version=1.0' {
 }
 
 declare module 'gi://GstNet' {
-    export * from 'gi://GstNet?version=1.0';
+    export default 'gi://GstNet?version=1.0';
 }
 
 

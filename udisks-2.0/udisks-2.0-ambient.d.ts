@@ -5,7 +5,7 @@ declare module 'gi://UDisks?version=2.0' {
 }
 
 declare module 'gi://UDisks' {
-    export * from 'gi://UDisks?version=2.0';
+    export default 'gi://UDisks?version=2.0';
 }
 
 

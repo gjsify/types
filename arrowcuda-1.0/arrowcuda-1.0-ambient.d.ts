@@ -5,7 +5,7 @@ declare module 'gi://ArrowCUDA?version=1.0' {
 }
 
 declare module 'gi://ArrowCUDA' {
-    export * from 'gi://ArrowCUDA?version=1.0';
+    export default 'gi://ArrowCUDA?version=1.0';
 }
 
 

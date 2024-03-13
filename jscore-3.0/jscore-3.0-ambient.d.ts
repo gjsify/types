@@ -5,7 +5,7 @@ declare module 'gi://JSCore?version=3.0' {
 }
 
 declare module 'gi://JSCore' {
-    export * from 'gi://JSCore?version=3.0';
+    export default 'gi://JSCore?version=3.0';
 }
 
 

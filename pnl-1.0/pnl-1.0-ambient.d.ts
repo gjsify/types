@@ -5,7 +5,7 @@ declare module 'gi://Pnl?version=1.0' {
 }
 
 declare module 'gi://Pnl' {
-    export * from 'gi://Pnl?version=1.0';
+    export default 'gi://Pnl?version=1.0';
 }
 
 

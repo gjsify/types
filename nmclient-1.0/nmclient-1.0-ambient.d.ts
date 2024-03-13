@@ -5,7 +5,7 @@ declare module 'gi://NMClient?version=1.0' {
 }
 
 declare module 'gi://NMClient' {
-    export * from 'gi://NMClient?version=1.0';
+    export default 'gi://NMClient?version=1.0';
 }
 
 

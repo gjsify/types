@@ -5,7 +5,7 @@ declare module 'gi://Gitg?version=1.0' {
 }
 
 declare module 'gi://Gitg' {
-    export * from 'gi://Gitg?version=1.0';
+    export default 'gi://Gitg?version=1.0';
 }
 
 

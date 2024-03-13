@@ -5,7 +5,7 @@ declare module 'gi://Qrtr?version=1.0' {
 }
 
 declare module 'gi://Qrtr' {
-    export * from 'gi://Qrtr?version=1.0';
+    export default 'gi://Qrtr?version=1.0';
 }
 
 

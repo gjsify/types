@@ -5,7 +5,7 @@ declare module 'gi://Qmi?version=1.0' {
 }
 
 declare module 'gi://Qmi' {
-    export * from 'gi://Qmi?version=1.0';
+    export default 'gi://Qmi?version=1.0';
 }
 
 

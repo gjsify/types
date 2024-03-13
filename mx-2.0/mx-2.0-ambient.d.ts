@@ -5,7 +5,7 @@ declare module 'gi://Mx?version=2.0' {
 }
 
 declare module 'gi://Mx' {
-    export * from 'gi://Mx?version=2.0';
+    export default 'gi://Mx?version=2.0';
 }
 
 

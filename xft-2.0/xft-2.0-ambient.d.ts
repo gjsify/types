@@ -5,7 +5,7 @@ declare module 'gi://xft?version=2.0' {
 }
 
 declare module 'gi://xft' {
-    export * from 'gi://xft?version=2.0';
+    export default 'gi://xft?version=2.0';
 }
 
 

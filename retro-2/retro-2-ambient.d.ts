@@ -5,7 +5,7 @@ declare module 'gi://Retro?version=2' {
 }
 
 declare module 'gi://Retro' {
-    export * from 'gi://Retro?version=2';
+    export default 'gi://Retro?version=2';
 }
 
 

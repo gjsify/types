@@ -5,7 +5,7 @@ declare module 'gi://DBusGLib?version=1.0' {
 }
 
 declare module 'gi://DBusGLib' {
-    export * from 'gi://DBusGLib?version=1.0';
+    export default 'gi://DBusGLib?version=1.0';
 }
 
 

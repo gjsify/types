@@ -5,7 +5,7 @@ declare module 'gi://GDesktopEnums?version=3.0' {
 }
 
 declare module 'gi://GDesktopEnums' {
-    export * from 'gi://GDesktopEnums?version=3.0';
+    export default 'gi://GDesktopEnums?version=3.0';
 }
 
 

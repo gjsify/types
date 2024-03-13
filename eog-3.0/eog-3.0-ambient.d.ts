@@ -5,7 +5,7 @@ declare module 'gi://Eog?version=3.0' {
 }
 
 declare module 'gi://Eog' {
-    export * from 'gi://Eog?version=3.0';
+    export default 'gi://Eog?version=3.0';
 }
 
 

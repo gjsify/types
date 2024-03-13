@@ -5,7 +5,7 @@ declare module 'gi://Vte?version=4-2.91' {
 }
 
 declare module 'gi://Vte' {
-    export * from 'gi://Vte?version=4-2.91';
+    export default 'gi://Vte?version=4-2.91';
 }
 
 

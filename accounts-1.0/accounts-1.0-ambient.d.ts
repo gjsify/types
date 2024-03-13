@@ -5,7 +5,7 @@ declare module 'gi://Accounts?version=1.0' {
 }
 
 declare module 'gi://Accounts' {
-    export * from 'gi://Accounts?version=1.0';
+    export default 'gi://Accounts?version=1.0';
 }
 
 

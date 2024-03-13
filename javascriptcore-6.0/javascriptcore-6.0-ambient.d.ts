@@ -5,7 +5,7 @@ declare module 'gi://JavaScriptCore?version=6.0' {
 }
 
 declare module 'gi://JavaScriptCore' {
-    export * from 'gi://JavaScriptCore?version=6.0';
+    export default 'gi://JavaScriptCore?version=6.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Nautilus?version=3.0' {
 }
 
 declare module 'gi://Nautilus' {
-    export * from 'gi://Nautilus?version=3.0';
+    export default 'gi://Nautilus?version=3.0';
 }
 
 

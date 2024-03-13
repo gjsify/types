@@ -5,7 +5,7 @@ declare module 'gi://PangoOT?version=1.0' {
 }
 
 declare module 'gi://PangoOT' {
-    export * from 'gi://PangoOT?version=1.0';
+    export default 'gi://PangoOT?version=1.0';
 }
 
 

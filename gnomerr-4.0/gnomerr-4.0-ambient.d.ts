@@ -5,7 +5,7 @@ declare module 'gi://GnomeRR?version=4.0' {
 }
 
 declare module 'gi://GnomeRR' {
-    export * from 'gi://GnomeRR?version=4.0';
+    export default 'gi://GnomeRR?version=4.0';
 }
 
 

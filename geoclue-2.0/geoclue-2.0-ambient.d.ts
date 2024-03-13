@@ -5,7 +5,7 @@ declare module 'gi://Geoclue?version=2.0' {
 }
 
 declare module 'gi://Geoclue' {
-    export * from 'gi://Geoclue?version=2.0';
+    export default 'gi://Geoclue?version=2.0';
 }
 
 

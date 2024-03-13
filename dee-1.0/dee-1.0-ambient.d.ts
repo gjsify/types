@@ -5,7 +5,7 @@ declare module 'gi://Dee?version=1.0' {
 }
 
 declare module 'gi://Dee' {
-    export * from 'gi://Dee?version=1.0';
+    export default 'gi://Dee?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Gegl?version=0.4' {
 }
 
 declare module 'gi://Gegl' {
-    export * from 'gi://Gegl?version=0.4';
+    export default 'gi://Gegl?version=0.4';
 }
 
 

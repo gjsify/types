@@ -5,7 +5,7 @@ declare module 'gi://Libmsi?version=1.0' {
 }
 
 declare module 'gi://Libmsi' {
-    export * from 'gi://Libmsi?version=1.0';
+    export default 'gi://Libmsi?version=1.0';
 }
 
 

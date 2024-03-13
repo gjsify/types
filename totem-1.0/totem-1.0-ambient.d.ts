@@ -5,7 +5,7 @@ declare module 'gi://Totem?version=1.0' {
 }
 
 declare module 'gi://Totem' {
-    export * from 'gi://Totem?version=1.0';
+    export default 'gi://Totem?version=1.0';
 }
 
 

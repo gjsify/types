@@ -5,7 +5,7 @@ declare module 'gi://GMenu?version=3.0' {
 }
 
 declare module 'gi://GMenu' {
-    export * from 'gi://GMenu?version=3.0';
+    export default 'gi://GMenu?version=3.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Dazzle?version=1.0' {
 }
 
 declare module 'gi://Dazzle' {
-    export * from 'gi://Dazzle?version=1.0';
+    export default 'gi://Dazzle?version=1.0';
 }
 
 

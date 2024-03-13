@@ -5,7 +5,7 @@ declare module 'gi://PanelApplet?version=4.0' {
 }
 
 declare module 'gi://PanelApplet' {
-    export * from 'gi://PanelApplet?version=4.0';
+    export default 'gi://PanelApplet?version=4.0';
 }
 
 

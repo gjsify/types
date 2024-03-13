@@ -5,7 +5,7 @@ declare module 'gi://ColorHug?version=1.0' {
 }
 
 declare module 'gi://ColorHug' {
-    export * from 'gi://ColorHug?version=1.0';
+    export default 'gi://ColorHug?version=1.0';
 }
 
 

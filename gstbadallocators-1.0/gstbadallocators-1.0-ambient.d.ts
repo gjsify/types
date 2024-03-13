@@ -5,7 +5,7 @@ declare module 'gi://GstBadAllocators?version=1.0' {
 }
 
 declare module 'gi://GstBadAllocators' {
-    export * from 'gi://GstBadAllocators?version=1.0';
+    export default 'gi://GstBadAllocators?version=1.0';
 }
 
 

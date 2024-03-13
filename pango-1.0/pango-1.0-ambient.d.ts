@@ -5,7 +5,7 @@ declare module 'gi://Pango?version=1.0' {
 }
 
 declare module 'gi://Pango' {
-    export * from 'gi://Pango?version=1.0';
+    export default 'gi://Pango?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Egg?version=1.0' {
 }
 
 declare module 'gi://Egg' {
-    export * from 'gi://Egg?version=1.0';
+    export default 'gi://Egg?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Manette?version=0.2' {
 }
 
 declare module 'gi://Manette' {
-    export * from 'gi://Manette?version=0.2';
+    export default 'gi://Manette?version=0.2';
 }
 
 

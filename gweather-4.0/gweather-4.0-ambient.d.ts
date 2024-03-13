@@ -5,7 +5,7 @@ declare module 'gi://GWeather?version=4.0' {
 }
 
 declare module 'gi://GWeather' {
-    export * from 'gi://GWeather?version=4.0';
+    export default 'gi://GWeather?version=4.0';
 }
 
 

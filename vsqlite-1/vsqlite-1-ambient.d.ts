@@ -5,7 +5,7 @@ declare module 'gi://Vsqlite?version=1' {
 }
 
 declare module 'gi://Vsqlite' {
-    export * from 'gi://Vsqlite?version=1';
+    export default 'gi://Vsqlite?version=1';
 }
 
 

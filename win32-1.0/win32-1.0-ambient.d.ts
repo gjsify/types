@@ -5,7 +5,7 @@ declare module 'gi://win32?version=1.0' {
 }
 
 declare module 'gi://win32' {
-    export * from 'gi://win32?version=1.0';
+    export default 'gi://win32?version=1.0';
 }
 
 

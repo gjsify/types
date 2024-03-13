@@ -5,7 +5,7 @@ declare module 'gi://GObject?version=2.0' {
 }
 
 declare module 'gi://GObject' {
-    export * from 'gi://GObject?version=2.0';
+    export default 'gi://GObject?version=2.0';
 }
 
 

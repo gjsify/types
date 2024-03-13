@@ -5,7 +5,7 @@ declare module 'gi://TelepathyFarstream?version=0.6' {
 }
 
 declare module 'gi://TelepathyFarstream' {
-    export * from 'gi://TelepathyFarstream?version=0.6';
+    export default 'gi://TelepathyFarstream?version=0.6';
 }
 
 

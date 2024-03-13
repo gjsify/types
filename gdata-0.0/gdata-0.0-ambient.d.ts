@@ -5,7 +5,7 @@ declare module 'gi://GData?version=0.0' {
 }
 
 declare module 'gi://GData' {
-    export * from 'gi://GData?version=0.0';
+    export default 'gi://GData?version=0.0';
 }
 
 

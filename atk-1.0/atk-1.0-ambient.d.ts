@@ -5,7 +5,7 @@ declare module 'gi://Atk?version=1.0' {
 }
 
 declare module 'gi://Atk' {
-    export * from 'gi://Atk?version=1.0';
+    export default 'gi://Atk?version=1.0';
 }
 
 

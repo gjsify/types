@@ -5,7 +5,7 @@ declare module 'gi://Graphene?version=1.0' {
 }
 
 declare module 'gi://Graphene' {
-    export * from 'gi://Graphene?version=1.0';
+    export default 'gi://Graphene?version=1.0';
 }
 
 

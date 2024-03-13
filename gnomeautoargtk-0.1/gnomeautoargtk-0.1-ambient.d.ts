@@ -5,7 +5,7 @@ declare module 'gi://GnomeAutoarGtk?version=0.1' {
 }
 
 declare module 'gi://GnomeAutoarGtk' {
-    export * from 'gi://GnomeAutoarGtk?version=0.1';
+    export default 'gi://GnomeAutoarGtk?version=0.1';
 }
 
 

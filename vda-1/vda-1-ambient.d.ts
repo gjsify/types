@@ -5,7 +5,7 @@ declare module 'gi://Vda?version=1' {
 }
 
 declare module 'gi://Vda' {
-    export * from 'gi://Vda?version=1';
+    export default 'gi://Vda?version=1';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://IAnjuta?version=3.0' {
 }
 
 declare module 'gi://IAnjuta' {
-    export * from 'gi://IAnjuta?version=3.0';
+    export default 'gi://IAnjuta?version=3.0';
 }
 
 

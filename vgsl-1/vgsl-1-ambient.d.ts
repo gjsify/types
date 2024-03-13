@@ -5,7 +5,7 @@ declare module 'gi://Vgsl?version=1' {
 }
 
 declare module 'gi://Vgsl' {
-    export * from 'gi://Vgsl?version=1';
+    export default 'gi://Vgsl?version=1';
 }
 
 

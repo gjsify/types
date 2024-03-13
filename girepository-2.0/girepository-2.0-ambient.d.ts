@@ -5,7 +5,7 @@ declare module 'gi://GIRepository?version=2.0' {
 }
 
 declare module 'gi://GIRepository' {
-    export * from 'gi://GIRepository?version=2.0';
+    export default 'gi://GIRepository?version=2.0';
 }
 
 

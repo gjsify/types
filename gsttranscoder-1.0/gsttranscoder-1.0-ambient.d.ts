@@ -5,7 +5,7 @@ declare module 'gi://GstTranscoder?version=1.0' {
 }
 
 declare module 'gi://GstTranscoder' {
-    export * from 'gi://GstTranscoder?version=1.0';
+    export default 'gi://GstTranscoder?version=1.0';
 }
 
 

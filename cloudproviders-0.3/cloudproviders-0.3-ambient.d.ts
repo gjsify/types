@@ -5,7 +5,7 @@ declare module 'gi://CloudProviders?version=0.3' {
 }
 
 declare module 'gi://CloudProviders' {
-    export * from 'gi://CloudProviders?version=0.3';
+    export default 'gi://CloudProviders?version=0.3';
 }
 
 

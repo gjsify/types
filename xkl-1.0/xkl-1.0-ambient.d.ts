@@ -5,7 +5,7 @@ declare module 'gi://Xkl?version=1.0' {
 }
 
 declare module 'gi://Xkl' {
-    export * from 'gi://Xkl?version=1.0';
+    export default 'gi://Xkl?version=1.0';
 }
 
 

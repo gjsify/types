@@ -5,7 +5,7 @@ declare module 'gi://Ggit?version=1.0' {
 }
 
 declare module 'gi://Ggit' {
-    export * from 'gi://Ggit?version=1.0';
+    export default 'gi://Ggit?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://EBookContacts?version=1.2' {
 }
 
 declare module 'gi://EBookContacts' {
-    export * from 'gi://EBookContacts?version=1.2';
+    export default 'gi://EBookContacts?version=1.2';
 }
 
 

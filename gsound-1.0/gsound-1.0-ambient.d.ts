@@ -5,7 +5,7 @@ declare module 'gi://GSound?version=1.0' {
 }
 
 declare module 'gi://GSound' {
-    export * from 'gi://GSound?version=1.0';
+    export default 'gi://GSound?version=1.0';
 }
 
 

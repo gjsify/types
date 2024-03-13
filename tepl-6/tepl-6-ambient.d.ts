@@ -5,7 +5,7 @@ declare module 'gi://Tepl?version=6' {
 }
 
 declare module 'gi://Tepl' {
-    export * from 'gi://Tepl?version=6';
+    export default 'gi://Tepl?version=6';
 }
 
 

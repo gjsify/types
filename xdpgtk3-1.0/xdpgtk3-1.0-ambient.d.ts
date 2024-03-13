@@ -5,7 +5,7 @@ declare module 'gi://XdpGtk3?version=1.0' {
 }
 
 declare module 'gi://XdpGtk3' {
-    export * from 'gi://XdpGtk3?version=1.0';
+    export default 'gi://XdpGtk3?version=1.0';
 }
 
 

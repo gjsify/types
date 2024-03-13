@@ -5,7 +5,7 @@ declare module 'gi://GstVideo?version=1.0' {
 }
 
 declare module 'gi://GstVideo' {
-    export * from 'gi://GstVideo?version=1.0';
+    export default 'gi://GstVideo?version=1.0';
 }
 
 

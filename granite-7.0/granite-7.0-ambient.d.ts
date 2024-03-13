@@ -5,7 +5,7 @@ declare module 'gi://Granite?version=7.0' {
 }
 
 declare module 'gi://Granite' {
-    export * from 'gi://Granite?version=7.0';
+    export default 'gi://Granite?version=7.0';
 }
 
 

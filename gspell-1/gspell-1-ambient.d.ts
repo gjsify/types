@@ -5,7 +5,7 @@ declare module 'gi://Gspell?version=1' {
 }
 
 declare module 'gi://Gspell' {
-    export * from 'gi://Gspell?version=1';
+    export default 'gi://Gspell?version=1';
 }
 
 

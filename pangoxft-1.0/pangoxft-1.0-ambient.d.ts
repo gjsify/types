@@ -5,7 +5,7 @@ declare module 'gi://PangoXft?version=1.0' {
 }
 
 declare module 'gi://PangoXft' {
-    export * from 'gi://PangoXft?version=1.0';
+    export default 'gi://PangoXft?version=1.0';
 }
 
 

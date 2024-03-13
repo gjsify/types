@@ -5,7 +5,7 @@ declare module 'gi://CoglPango?version=2.0' {
 }
 
 declare module 'gi://CoglPango' {
-    export * from 'gi://CoglPango?version=2.0';
+    export default 'gi://CoglPango?version=2.0';
 }
 
 

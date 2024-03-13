@@ -5,7 +5,7 @@ declare module 'gi://IBus?version=1.0' {
 }
 
 declare module 'gi://IBus' {
-    export * from 'gi://IBus?version=1.0';
+    export default 'gi://IBus?version=1.0';
 }
 
 

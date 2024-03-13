@@ -5,7 +5,7 @@ declare module 'gi://fontconfig?version=2.0' {
 }
 
 declare module 'gi://fontconfig' {
-    export * from 'gi://fontconfig?version=2.0';
+    export default 'gi://fontconfig?version=2.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Epc?version=1.0' {
 }
 
 declare module 'gi://Epc' {
-    export * from 'gi://Epc?version=1.0';
+    export default 'gi://Epc?version=1.0';
 }
 
 

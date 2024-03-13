@@ -5,7 +5,7 @@ declare module 'gi://Camel?version=1.2' {
 }
 
 declare module 'gi://Camel' {
-    export * from 'gi://Camel?version=1.2';
+    export default 'gi://Camel?version=1.2';
 }
 
 

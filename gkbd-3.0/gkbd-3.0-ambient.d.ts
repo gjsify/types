@@ -5,7 +5,7 @@ declare module 'gi://Gkbd?version=3.0' {
 }
 
 declare module 'gi://Gkbd' {
-    export * from 'gi://Gkbd?version=3.0';
+    export default 'gi://Gkbd?version=3.0';
 }
 
 

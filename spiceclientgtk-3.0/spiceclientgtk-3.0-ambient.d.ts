@@ -5,7 +5,7 @@ declare module 'gi://SpiceClientGtk?version=3.0' {
 }
 
 declare module 'gi://SpiceClientGtk' {
-    export * from 'gi://SpiceClientGtk?version=3.0';
+    export default 'gi://SpiceClientGtk?version=3.0';
 }
 
 

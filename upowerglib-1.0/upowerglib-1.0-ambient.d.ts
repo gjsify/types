@@ -5,7 +5,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
 }
 
 declare module 'gi://UPowerGlib' {
-    export * from 'gi://UPowerGlib?version=1.0';
+    export default 'gi://UPowerGlib?version=1.0';
 }
 
 

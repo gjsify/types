@@ -5,7 +5,7 @@ declare module 'gi://SpiceClientGLib?version=2.0' {
 }
 
 declare module 'gi://SpiceClientGLib' {
-    export * from 'gi://SpiceClientGLib?version=2.0';
+    export default 'gi://SpiceClientGLib?version=2.0';
 }
 
 

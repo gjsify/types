@@ -5,7 +5,7 @@ declare module 'gi://Secret?version=1' {
 }
 
 declare module 'gi://Secret' {
-    export * from 'gi://Secret?version=1';
+    export default 'gi://Secret?version=1';
 }
 
 

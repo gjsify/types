@@ -5,7 +5,7 @@ declare module 'gi://Gcr?version=4' {
 }
 
 declare module 'gi://Gcr' {
-    export * from 'gi://Gcr?version=4';
+    export default 'gi://Gcr?version=4';
 }
 
 

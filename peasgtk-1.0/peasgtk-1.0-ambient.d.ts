@@ -5,7 +5,7 @@ declare module 'gi://PeasGtk?version=1.0' {
 }
 
 declare module 'gi://PeasGtk' {
-    export * from 'gi://PeasGtk?version=1.0';
+    export default 'gi://PeasGtk?version=1.0';
 }
 
 

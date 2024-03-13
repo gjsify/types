@@ -5,7 +5,7 @@ declare module 'gi://SoupGNOME?version=2.4' {
 }
 
 declare module 'gi://SoupGNOME' {
-    export * from 'gi://SoupGNOME?version=2.4';
+    export default 'gi://SoupGNOME?version=2.4';
 }
 
 

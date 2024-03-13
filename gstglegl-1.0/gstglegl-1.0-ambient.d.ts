@@ -5,7 +5,7 @@ declare module 'gi://GstGLEGL?version=1.0' {
 }
 
 declare module 'gi://GstGLEGL' {
-    export * from 'gi://GstGLEGL?version=1.0';
+    export default 'gi://GstGLEGL?version=1.0';
 }
 
 

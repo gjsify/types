@@ -5,7 +5,7 @@ declare module 'gi://Snapd?version=1' {
 }
 
 declare module 'gi://Snapd' {
-    export * from 'gi://Snapd?version=1';
+    export default 'gi://Snapd?version=1';
 }
 
 

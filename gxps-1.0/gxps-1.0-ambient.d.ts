@@ -5,7 +5,7 @@ declare module 'gi://Gxps?version=1.0' {
 }
 
 declare module 'gi://Gxps' {
-    export * from 'gi://Gxps?version=1.0';
+    export default 'gi://Gxps?version=1.0';
 }
 
 

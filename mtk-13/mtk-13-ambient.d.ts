@@ -5,7 +5,7 @@ declare module 'gi://Mtk?version=13' {
 }
 
 declare module 'gi://Mtk' {
-    export * from 'gi://Mtk?version=13';
+    export default 'gi://Mtk?version=13';
 }
 
 

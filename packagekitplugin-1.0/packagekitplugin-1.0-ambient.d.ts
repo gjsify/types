@@ -5,7 +5,7 @@ declare module 'gi://PackageKitPlugin?version=1.0' {
 }
 
 declare module 'gi://PackageKitPlugin' {
-    export * from 'gi://PackageKitPlugin?version=1.0';
+    export default 'gi://PackageKitPlugin?version=1.0';
 }
 
 

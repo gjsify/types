@@ -5,7 +5,7 @@ declare module 'gi://GCalc?version=2' {
 }
 
 declare module 'gi://GCalc' {
-    export * from 'gi://GCalc?version=2';
+    export default 'gi://GCalc?version=2';
 }
 
 

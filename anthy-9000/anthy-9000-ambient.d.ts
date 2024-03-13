@@ -5,7 +5,7 @@ declare module 'gi://Anthy?version=9000' {
 }
 
 declare module 'gi://Anthy' {
-    export * from 'gi://Anthy?version=9000';
+    export default 'gi://Anthy?version=9000';
 }
 
 

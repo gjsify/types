@@ -5,7 +5,7 @@ declare module 'gi://GL?version=1.0' {
 }
 
 declare module 'gi://GL' {
-    export * from 'gi://GL?version=1.0';
+    export default 'gi://GL?version=1.0';
 }
 
 

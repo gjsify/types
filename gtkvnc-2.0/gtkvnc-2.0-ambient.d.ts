@@ -5,7 +5,7 @@ declare module 'gi://GtkVnc?version=2.0' {
 }
 
 declare module 'gi://GtkVnc' {
-    export * from 'gi://GtkVnc?version=2.0';
+    export default 'gi://GtkVnc?version=2.0';
 }
 
 

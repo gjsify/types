@@ -5,7 +5,7 @@ declare module 'gi://GUPnPDLNA?version=2.0' {
 }
 
 declare module 'gi://GUPnPDLNA' {
-    export * from 'gi://GUPnPDLNA?version=2.0';
+    export default 'gi://GUPnPDLNA?version=2.0';
 }
 
 

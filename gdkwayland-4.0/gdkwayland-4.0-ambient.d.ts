@@ -5,7 +5,7 @@ declare module 'gi://GdkWayland?version=4.0' {
 }
 
 declare module 'gi://GdkWayland' {
-    export * from 'gi://GdkWayland?version=4.0';
+    export default 'gi://GdkWayland?version=4.0';
 }
 
 

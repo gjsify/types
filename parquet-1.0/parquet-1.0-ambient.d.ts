@@ -5,7 +5,7 @@ declare module 'gi://Parquet?version=1.0' {
 }
 
 declare module 'gi://Parquet' {
-    export * from 'gi://Parquet?version=1.0';
+    export default 'gi://Parquet?version=1.0';
 }
 
 

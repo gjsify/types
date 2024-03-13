@@ -5,7 +5,7 @@ declare module 'gi://MediaArt?version=2.0' {
 }
 
 declare module 'gi://MediaArt' {
-    export * from 'gi://MediaArt?version=2.0';
+    export default 'gi://MediaArt?version=2.0';
 }
 
 

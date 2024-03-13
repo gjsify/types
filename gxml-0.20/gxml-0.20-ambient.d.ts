@@ -5,7 +5,7 @@ declare module 'gi://GXml?version=0.20' {
 }
 
 declare module 'gi://GXml' {
-    export * from 'gi://GXml?version=0.20';
+    export default 'gi://GXml?version=0.20';
 }
 
 

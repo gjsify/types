@@ -5,7 +5,7 @@ declare module 'gi://Champlain?version=0.12' {
 }
 
 declare module 'gi://Champlain' {
-    export * from 'gi://Champlain?version=0.12';
+    export default 'gi://Champlain?version=0.12';
 }
 
 

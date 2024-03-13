@@ -5,7 +5,7 @@ declare module 'gi://PolkitAgent?version=1.0' {
 }
 
 declare module 'gi://PolkitAgent' {
-    export * from 'gi://PolkitAgent?version=1.0';
+    export default 'gi://PolkitAgent?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://NMA?version=1.0' {
 }
 
 declare module 'gi://NMA' {
-    export * from 'gi://NMA?version=1.0';
+    export default 'gi://NMA?version=1.0';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Atspi?version=2.0' {
 }
 
 declare module 'gi://Atspi' {
-    export * from 'gi://Atspi?version=2.0';
+    export default 'gi://Atspi?version=2.0';
 }
 
 

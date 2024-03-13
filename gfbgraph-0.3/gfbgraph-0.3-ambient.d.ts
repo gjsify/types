@@ -5,7 +5,7 @@ declare module 'gi://GFBGraph?version=0.3' {
 }
 
 declare module 'gi://GFBGraph' {
-    export * from 'gi://GFBGraph?version=0.3';
+    export default 'gi://GFBGraph?version=0.3';
 }
 
 

@@ -5,7 +5,7 @@ declare module 'gi://Arrow?version=1.0' {
 }
 
 declare module 'gi://Arrow' {
-    export * from 'gi://Arrow?version=1.0';
+    export default 'gi://Arrow?version=1.0';
 }
 
 

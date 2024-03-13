@@ -5,7 +5,7 @@ declare module 'gi://Grss?version=0.7' {
 }
 
 declare module 'gi://Grss' {
-    export * from 'gi://Grss?version=0.7';
+    export default 'gi://Grss?version=0.7';
 }
 
 

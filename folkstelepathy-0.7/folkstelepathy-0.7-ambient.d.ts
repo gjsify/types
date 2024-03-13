@@ -5,7 +5,7 @@ declare module 'gi://FolksTelepathy?version=0.7' {
 }
 
 declare module 'gi://FolksTelepathy' {
-    export * from 'gi://FolksTelepathy?version=0.7';
+    export default 'gi://FolksTelepathy?version=0.7';
 }
 
 

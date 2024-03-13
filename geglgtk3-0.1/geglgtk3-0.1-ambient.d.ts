@@ -5,7 +5,7 @@ declare module 'gi://GeglGtk3?version=0.1' {
 }
 
 declare module 'gi://GeglGtk3' {
-    export * from 'gi://GeglGtk3?version=0.1';
+    export default 'gi://GeglGtk3?version=0.1';
 }
 
 

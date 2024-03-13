@@ -5,7 +5,7 @@ declare module 'gi://TotemPlParser?version=1.0' {
 }
 
 declare module 'gi://TotemPlParser' {
-    export * from 'gi://TotemPlParser?version=1.0';
+    export default 'gi://TotemPlParser?version=1.0';
 }
 
 
