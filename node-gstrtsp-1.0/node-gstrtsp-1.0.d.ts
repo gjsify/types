@@ -1601,7 +1601,7 @@ interface RTSPMessage {
     /**
      * Parses the credentials given in a WWW-Authenticate or Authorization header.
      * @param field a #GstRTSPHeaderField
-     * @returns      %NULL-terminated array of GstRTSPAuthCredential or %NULL.
+     * @returns %NULL-terminated array of GstRTSPAuthCredential or %NULL.
      */
     parseAuthCredentials(field: RTSPHeaderField): RTSPAuthCredential[]
     /**

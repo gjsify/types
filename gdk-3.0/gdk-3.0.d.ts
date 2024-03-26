@@ -5224,7 +5224,7 @@ function keyval_to_upper(keyval: number): number
  * and might expect pixels to be in a certain format.
  * 
  * Call g_list_free() on the return value when you’re finished with it.
- * @returns      a list of visuals; the list must be freed, but not its contents
+ * @returns a list of visuals; the list must be freed, but not its contents
  */
 function list_visuals(): Visual[]
 /**
@@ -6747,14 +6747,14 @@ interface Device {
     /**
      * Returns a #GList of #GdkAtoms, containing the labels for
      * the axes that `device` currently has.
-     * @returns      A #GList of #GdkAtoms, free with g_list_free().
+     * @returns A #GList of #GdkAtoms, free with g_list_free().
      */
     list_axes(): Atom[]
     /**
      * If the device if of type %GDK_DEVICE_TYPE_MASTER, it will return
      * the list of slave devices attached to it, otherwise it will return
      * %NULL
-     * @returns           the list of slave devices, or %NULL. The list must be          freed with g_list_free(), the contents of the list are          owned by GTK+ and should not be freed.
+     * @returns the list of slave devices, or %NULL. The list must be          freed with g_list_free(), the contents of the list are          owned by GTK+ and should not be freed.
      */
     list_slave_devices(): Device[] | null
     /**
@@ -7422,7 +7422,7 @@ interface Display {
     /**
      * Returns the list of available input devices attached to `display`.
      * The list is statically allocated and should not be freed.
-     * @returns      a list of #GdkDevice
+     * @returns a list of #GdkDevice
      */
     list_devices(): Device[]
     /**
@@ -9250,7 +9250,7 @@ interface Screen {
      * 
      * The returned list should be freed with g_list_free(), but
      * its elements need not be freed.
-     * @returns      list of toplevel windows, free with g_list_free()
+     * @returns list of toplevel windows, free with g_list_free()
      */
     get_toplevel_windows(): Window[]
     /**
@@ -9305,7 +9305,7 @@ interface Screen {
      * and might expect pixels to be in a certain format.
      * 
      * Call g_list_free() on the return value when you’re finished with it.
-     * @returns      a list of visuals; the list must be freed, but not its contents
+     * @returns a list of visuals; the list must be freed, but not its contents
      */
     list_visuals(): Visual[]
     /**
@@ -10194,7 +10194,7 @@ interface Window {
      * 
      * The returned list must be freed, but the elements in the
      * list need not be.
-     * @returns      list of child windows inside @window
+     * @returns list of child windows inside @window
      */
     get_children(): Window[]
     /**
@@ -10207,7 +10207,7 @@ interface Window {
      * The list is returned in (relative) stacking order, i.e. the
      * lowest window is first.
      * @param user_data user data to look for
-     * @returns      list of child windows inside @window
+     * @returns list of child windows inside @window
      */
     get_children_with_user_data(user_data: any | null): Window[]
     /**
@@ -10789,7 +10789,7 @@ interface Window {
     /**
      * Like gdk_window_get_children(), but does not copy the list of
      * children, so the list does not need to be freed.
-     * @returns      a reference to the list of child windows in @window
+     * @returns a reference to the list of child windows in @window
      */
     peek_children(): Window[]
     /**
@@ -11125,7 +11125,7 @@ interface Window {
      * icon by a small amount or not at all.
      * 
      * Note that some platforms don't support window icons.
-     * @param pixbufs      A list of pixbufs, of different sizes.
+     * @param pixbufs A list of pixbufs, of different sizes.
      */
     set_icon_list(pixbufs: GdkPixbuf.Pixbuf[]): void
     /**

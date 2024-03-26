@@ -1421,7 +1421,7 @@ interface Buffer {
      * is %NULL it returns all marks at `iter`.
      * @param iter an iterator.
      * @param category category to search for, or %NULL
-     * @returns  a newly allocated #GSList.
+     * @returns a newly allocated #GSList.
      */
     get_source_marks_at_iter(iter: Gtk.TextIter, category: string | null): Mark[]
     /**
@@ -1429,7 +1429,7 @@ interface Buffer {
      * If `category` is %NULL, all marks at `line` are returned.
      * @param line a line number.
      * @param category category to search for, or %NULL
-     * @returns  a newly allocated #GSList.
+     * @returns a newly allocated #GSList.
      */
     get_source_marks_at_line(line: number, category: string | null): Mark[]
     /**
@@ -1951,7 +1951,7 @@ interface Completion extends Gtk.Buildable {
     /**
      * Get list of providers registered on `completion`. The returned list is owned
      * by the completion and should not be freed.
-     * @returns  list of #GtkSourceCompletionProvider.
+     * @returns list of #GtkSourceCompletionProvider.
      */
     get_providers(): CompletionProvider[]
     /**
@@ -1985,7 +1985,7 @@ interface Completion extends Gtk.Buildable {
      * Another solution is to add providers with
      * gtk_source_completion_add_provider(), and implement
      * gtk_source_completion_provider_match() for each provider.
-     * @param providers  a list of #GtkSourceCompletionProvider, or %NULL.
+     * @param providers a list of #GtkSourceCompletionProvider, or %NULL.
      * @param context The #GtkSourceCompletionContext with which to start the completion.
      * @returns %TRUE if it was possible to the show completion window.
      */
@@ -4341,7 +4341,7 @@ interface Language {
      * Returns the globs associated to this language. This is just
      * an utility wrapper around gtk_source_language_get_metadata() to
      * retrieve the "globs" metadata property and split it into an array.
-     * @returns  a newly-allocated %NULL terminated array containing the globs or %NULL if no globs are found. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing the globs or %NULL if no globs are found. The returned array must be freed with g_strfreev().
      */
     get_globs(): string[] | null
     /**
@@ -4362,7 +4362,7 @@ interface Language {
      * an utility wrapper around gtk_source_language_get_metadata() to
      * retrieve the "mimetypes" metadata property and split it into an
      * array.
-     * @returns  a newly-allocated %NULL terminated array containing the mime types or %NULL if no mime types are found. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing the mime types or %NULL if no mime types are found. The returned array must be freed with g_strfreev().
      */
     get_mime_types(): string[] | null
     /**
@@ -4390,7 +4390,7 @@ interface Language {
     get_style_fallback(style_id: string): string | null
     /**
      * Returns the ids of the styles defined by this `language`.
-     * @returns  a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
      */
     get_style_ids(): string[] | null
     /**
@@ -4469,7 +4469,7 @@ interface LanguageManager {
     get_language(id: string): Language | null
     /**
      * Returns the ids of the available languages.
-     * @returns  a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
+     * @returns a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
      */
     get_language_ids(): string[] | null
     /**
@@ -4528,7 +4528,7 @@ interface LanguageManager {
      *     you have to call this function right after creating it.
      *   </para>
      * </note>
-     * @param dirs  a %NULL-terminated array of strings or %NULL.
+     * @param dirs a %NULL-terminated array of strings or %NULL.
      */
     set_search_path(dirs: string[] | null): void
 
@@ -7640,7 +7640,7 @@ interface StyleSchemeManager {
     get_scheme(scheme_id: string): StyleScheme
     /**
      * Returns the ids of the available style schemes.
-     * @returns  a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
+     * @returns a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
      */
     get_scheme_ids(): string[] | null
     /**
@@ -7660,7 +7660,7 @@ interface StyleSchemeManager {
      * Sets the list of directories where the `manager` looks for
      * style scheme files.
      * If `path` is %NULL, the search path is reset to default.
-     * @param path  a %NULL-terminated array of strings or %NULL.
+     * @param path a %NULL-terminated array of strings or %NULL.
      */
     set_search_path(path: string[] | null): void
 

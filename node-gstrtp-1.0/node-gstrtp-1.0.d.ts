@@ -780,7 +780,7 @@ function rtpBufferNewCopyData(data: number[]): Gst.Buffer
  * Create a new buffer and set the data and size of the buffer to `data` and `len`
  * respectively. `data` will be freed when the buffer is unreffed, so this
  * function transfers ownership of `data` to the new buffer.
- * @param data    data for the new buffer
+ * @param data data for the new buffer
  * @returns A newly allocated buffer with @data and of size @len.
  */
 function rtpBufferNewTakeData(data: number[]): Gst.Buffer
@@ -3089,7 +3089,7 @@ class RTPBuffer {
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
      * function transfers ownership of `data` to the new buffer.
-     * @param data    data for the new buffer
+     * @param data data for the new buffer
      * @returns A newly allocated buffer with @data and of size @len.
      */
     static newTakeData(data: number[]): Gst.Buffer

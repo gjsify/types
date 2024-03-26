@@ -778,7 +778,7 @@ export function rtp_buffer_new_copy_data(data: Uint8Array): Gst.Buffer
  * Create a new buffer and set the data and size of the buffer to `data` and `len`
  * respectively. `data` will be freed when the buffer is unreffed, so this
  * function transfers ownership of `data` to the new buffer.
- * @param data    data for the new buffer
+ * @param data data for the new buffer
  * @returns A newly allocated buffer with @data and of size @len.
  */
 export function rtp_buffer_new_take_data(data: Uint8Array): Gst.Buffer
@@ -3018,7 +3018,7 @@ export class RTPBuffer {
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
      * function transfers ownership of `data` to the new buffer.
-     * @param data    data for the new buffer
+     * @param data data for the new buffer
      * @returns A newly allocated buffer with @data and of size @len.
      */
     static new_take_data(data: Uint8Array): Gst.Buffer

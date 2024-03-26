@@ -536,7 +536,7 @@ export interface Model {
      * Get a %NULL-terminated array of column names for the columns of `self`.
      * These names can be used in calls to dee_model_build_named_row().
      * @virtual 
-     * @returns           A %NULL-terminated array of #GVariant type strings. The length of          the returned array is written to @num_columns. The returned array          should not be freed or modified. It is owned by the model.
+     * @returns A %NULL-terminated array of #GVariant type strings. The length of          the returned array is written to @num_columns. The returned array          should not be freed or modified. It is owned by the model.
      */
     getColumnNames(): string[]
     /**
@@ -609,7 +609,7 @@ export interface Model {
      * Get a %NULL-terminated array of #GVariant type strings that defines the
      * required formats for the columns of `self`.
      * @virtual 
-     * @returns           A %NULL-terminated array of #GVariant type strings. The length of          the returned array is written to @num_columns. The returned array          should not be freed or modified. It is owned by the model.
+     * @returns A %NULL-terminated array of #GVariant type strings. The length of          the returned array is written to @num_columns. The returned array          should not be freed or modified. It is owned by the model.
      */
     getSchema(): string[]
     getString(iter: ModelIter, column: number): string
@@ -2011,7 +2011,7 @@ export interface Peer {
     /**
      * Gets list of #GDBusConnection instances used by this #DeePeer instance.
      * @virtual 
-     * @returns                List of connections.
+     * @returns List of connections.
      */
     getConnections(): Gio.DBusConnection[]
     /**

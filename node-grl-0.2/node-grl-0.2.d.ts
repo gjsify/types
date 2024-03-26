@@ -523,7 +523,7 @@ function multipleGetMediaFromUri(uri: string, keys: KeyID[], options: OperationO
  * plugin (see #grl_source_search for more details).
  * 
  * This method is asynchronous.
- * @param sources  a #GList of #GrlSource<!-- -->s to search from (%NULL for all searchable sources)
+ * @param sources a #GList of #GrlSource<!-- -->s to search from (%NULL for all searchable sources)
  * @param text the text to search for
  * @param keys the #GList of #GrlKeyID to retrieve
  * @param options options wanted for that operation
@@ -535,7 +535,7 @@ function multipleSearch(sources: Source[] | null, text: string, keys: KeyID[], o
  * Search for `text` in all the sources specified in `sources`.
  * 
  * This method is synchronous.
- * @param sources  a #GList of #GrlSource<!-- -->s where to search from (%NULL for all available sources with search capability)
+ * @param sources a #GList of #GrlSource<!-- -->s where to search from (%NULL for all available sources with search capability)
  * @param text the text to search for
  * @param keys the #GList of #GrlKeyID to retrieve
  * @param options options wanted for that operation
@@ -2469,7 +2469,7 @@ interface Plugin {
     /**
      * Returns a list of keys that can be queried to retrieve information about the
      * plugin.
-     * @returns  a #GList of strings containing the keys. The content of the list is owned by the plugin and should not be modified or freed. Use g_list_free() when done using the list.
+     * @returns a #GList of strings containing the keys. The content of the list is owned by the plugin and should not be modified or freed. Use g_list_free() when done using the list.
      */
     getInfoKeys(): string[]
     /**
@@ -3429,7 +3429,7 @@ interface Source {
      * @param media the #GrlMedia object that we want to operate on
      * @param keys a list of #GrlKeyID whose values we want to change
      * @param flags Flags to configure specific behaviors of the operation.
-     * @returns  a #GList of keys that could not be updated, or @NULL
+     * @returns a #GList of keys that could not be updated, or @NULL
      */
     storeMetadataSync(media: Media, keys: KeyID[] | null, flags: WriteFlags): KeyID[]
     /**
@@ -3526,7 +3526,7 @@ interface Source {
      * are marked as writable, meaning the source allows the client
      * to provide new values for these keys that will be stored permanently.
      * @virtual 
-     * @returns  a #GList with the keys
+     * @returns a #GList with the keys
      */
     writableKeys(): KeyID[]
 

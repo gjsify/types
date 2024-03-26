@@ -338,7 +338,7 @@ interface Scope {
     /**
      * Gets the names of all symbols within the scope.
      * @param recursive if the parent scopes should be included
-     * @returns    an array containing the names of all symbols within the scope.
+     * @returns an array containing the names of all symbols within the scope.
      */
     listSymbols(recursive: boolean): string[]
     /**

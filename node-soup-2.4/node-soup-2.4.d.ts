@@ -1665,7 +1665,7 @@ function formDecode(encodedForm: string): GLib.HashTable
  * and soup_multipart_get_part().
  * @param msg a #SoupMessage containing a "multipart/form-data" request body
  * @param fileControlName the name of the HTML file upload control, or %NULL
- * @returns  a hash table containing the name/value pairs (other than @file_control_name) from @msg, which you can free with g_hash_table_destroy(). On error, it will return %NULL.
+ * @returns a hash table containing the name/value pairs (other than @file_control_name) from @msg, which you can free with g_hash_table_destroy(). On error, it will return %NULL.
  */
 function formDecodeMultipart(msg: Message, fileControlName: string | null): [ /* returnType */ GLib.HashTable | null, /* filename */ string, /* contentType */ string, /* file */ Buffer ]
 /**
@@ -1833,7 +1833,7 @@ function headerParseParamList(header: string): GLib.HashTable
  * RFC5987-encoded parameters, use
  * soup_header_parse_param_list() instead.
  * @param header a header value
- * @returns  a #GHashTable of list elements, which can be freed with soup_header_free_param_list() or %NULL if there are duplicate elements.
+ * @returns a #GHashTable of list elements, which can be freed with soup_header_free_param_list() or %NULL if there are duplicate elements.
  */
 function headerParseParamListStrict(header: string): GLib.HashTable | null
 /**
@@ -1871,7 +1871,7 @@ function headerParseSemiParamList(header: string): GLib.HashTable
  * RFC5987-encoded parameters, use
  * soup_header_parse_semi_param_list() instead.
  * @param header a header value
- * @returns  a #GHashTable of list elements, which can be freed with soup_header_free_param_list() or %NULL if there are duplicate elements.
+ * @returns a #GHashTable of list elements, which can be freed with soup_header_free_param_list() or %NULL if there are duplicate elements.
  */
 function headerParseSemiParamListStrict(header: string): GLib.HashTable | null
 /**
@@ -5768,7 +5768,7 @@ interface Message {
      * `content_type` is %NULL, the request body must be empty as well.
      * @param contentType MIME Content-Type of the body
      * @param reqUse a #SoupMemoryUse describing how to handle `req_body`
-     * @param reqBody    a data buffer containing the body of the message request.
+     * @param reqBody a data buffer containing the body of the message request.
      */
     setRequest(contentType: string | null, reqUse: MemoryUse, reqBody: number[] | null): void
     /**
@@ -5776,7 +5776,7 @@ interface Message {
      * `content_type` is %NULL, the response body must be empty as well.
      * @param contentType MIME Content-Type of the body
      * @param respUse a #SoupMemoryUse describing how to handle `resp_body`
-     * @param respBody    a data buffer containing the body of the message response.
+     * @param respBody a data buffer containing the body of the message response.
      */
     setResponse(contentType: string | null, respUse: MemoryUse, respBody: number[] | null): void
     /**
@@ -8055,7 +8055,7 @@ interface Session {
      * you want to see all features, you can pass %SOUP_TYPE_SESSION_FEATURE
      * for `feature_type`.)
      * @param featureType the #GType of the class of features to get
-     * @returns  a list of features. You must free the list, but not its contents
+     * @returns a list of features. You must free the list, but not its contents
      */
     getFeatures(featureType: GObject.GType): SessionFeature[]
     /**

@@ -5315,7 +5315,7 @@ export interface AttrIterator {
     /**
      * Gets a list of all attributes at the current position of the
      * iterator.
-     * @returns    a list of all attributes for the current range. To free   this value, call [method@Pango.Attribute.destroy] on each   value and g_slist_free() on the list.
+     * @returns a list of all attributes for the current range. To free   this value, call [method@Pango.Attribute.destroy] on each   value and g_slist_free() on the list.
      */
     getAttrs(): Attribute[]
     /**
@@ -5440,7 +5440,7 @@ export interface AttrList {
     filter(func: AttrFilterFunc): AttrList | null
     /**
      * Gets a list of all attributes in `list`.
-     * @returns    a list of all attributes in @list. To free this value,   call [method@Pango.Attribute.destroy] on each value and   g_slist_free() on the list.
+     * @returns a list of all attributes in @list. To free this value,   call [method@Pango.Attribute.destroy] on each value and   g_slist_free() on the list.
      */
     getAttributes(): Attribute[]
     /**
@@ -7301,7 +7301,7 @@ export interface Language {
      * Note: while the return value is declared as `PangoScript`, the
      * returned values are from the `GUnicodeScript` enumeration, which
      * may have more values. Callers need to handle unknown values.
-     * @returns    An array of `PangoScript` values, with the number of entries in   the array stored in @num_scripts, or %NULL if Pango does not have   any information about this particular language tag (also the case   if @language is %NULL).
+     * @returns An array of `PangoScript` values, with the number of entries in   the array stored in @num_scripts, or %NULL if Pango does not have   any information about this particular language tag (also the case   if @language is %NULL).
      */
     getScripts(): Script[] | null
     /**

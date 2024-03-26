@@ -2349,7 +2349,7 @@ export interface ServiceIntrospection {
     /**
      * Returns a GList of all the state variables (of type
      * #GUPnPServiceStateVariableInfo) in this service.
-     * @returns  A #GList of all the state variables or %NULL. Do not modify or free it or its contents.
+     * @returns A #GList of all the state variables or %NULL. Do not modify or free it or its contents.
      */
     list_state_variables(): ServiceStateVariableInfo[]
 

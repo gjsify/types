@@ -23848,7 +23848,7 @@ export interface Device extends Gio.AsyncInitable {
     /**
      * Finishes an operation started with qmi_device_get_service_version_info().
      * @param res a #GAsyncResult.
-     * @returns   a #GArray of #QmiDeviceServiceVersionInfo elements, or %NULL if @error  is set. The returned value should be freed with g_array_unref().
+     * @returns a #GArray of #QmiDeviceServiceVersionInfo elements, or %NULL if @error  is set. The returned value should be freed with g_array_unref().
      */
     getServiceVersionInfoFinish(res: Gio.AsyncResult): DeviceServiceVersionInfo[]
     /**

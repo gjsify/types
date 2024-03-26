@@ -20824,7 +20824,7 @@ export interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * 
      * In `func,` you should set the height of the rectangle to the maximum height
      * that the popover should be allowed to grow.
-     * @param func    A function to call to position the popover, or %NULL to set the default.
+     * @param func A function to call to position the popover, or %NULL to set the default.
      */
     set_position_func(func: SuggestionPositionFunc | null): void
     set_suggestion(suggestion: Suggestion): void

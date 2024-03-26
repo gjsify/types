@@ -6229,7 +6229,7 @@ interface Application {
      * should not be used from applications like editors that need precise
      * control over when processes invoked via the commandline will exit and
      * what their exit status will be.
-     * @param argv      the argv from main(), or %NULL
+     * @param argv the argv from main(), or %NULL
      * @returns the exit status
      */
     run(argv: string[] | null): number

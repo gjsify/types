@@ -4455,7 +4455,7 @@ export interface ClientChannelFactory {
      * parameter was the type of the interface vtable.
      * @param conn a #TpConnection
      * @param path the object path of the channel
-     * @param properties  the immutable properties of the channel
+     * @param properties the immutable properties of the channel
      * @returns a new channel proxy, or %NULL on invalid arguments
      */
     create_channel(conn: Connection, path: string, properties: GLib.HashTable): Channel
@@ -8204,7 +8204,7 @@ export interface BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.add_dispatch_operation.
-     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
+     * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_approver_filter(filter: GLib.HashTable): void
     /**
@@ -8270,7 +8270,7 @@ export interface BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.handle_channels.
-     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
+     * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_handler_filter(filter: GLib.HashTable): void
     /**
@@ -8296,7 +8296,7 @@ export interface BaseClient {
      * This method may only be called before tp_base_client_register() is
      * called, and may only be called on objects whose class implements
      * #TpBaseClientClass.observe_channels.
-     * @param filter  a %TP_HASH_TYPE_CHANNEL_CLASS
+     * @param filter a %TP_HASH_TYPE_CHANNEL_CLASS
      */
     add_observer_filter(filter: GLib.HashTable): void
     /**
@@ -9112,7 +9112,7 @@ export interface CallChannel {
     add_content_finish(result: Gio.AsyncResult): CallContent
     /**
      * <!-- -->
-     * @returns   the value of #TpCallChannel:contents
+     * @returns the value of #TpCallChannel:contents
      */
     get_contents(): CallContent[]
     /**
@@ -9121,7 +9121,7 @@ export interface CallChannel {
      * The #TpContact objects are guaranteed to have all of the features
      * previously passed to tp_simple_client_factory_add_contact_features()
      * prepared.
-     * @returns   #GHashTable mapping #TpContact to its new #TpCallMemberFlags
+     * @returns #GHashTable mapping #TpContact to its new #TpCallMemberFlags
      */
     get_members(): GLib.HashTable
     /**
@@ -9520,7 +9520,7 @@ export interface CallContent {
     get_name(): string
     /**
      * <!-- -->
-     * @returns   the value of #TpCallContent:streams
+     * @returns the value of #TpCallContent:streams
      */
     get_streams(): CallStream[]
     /**
@@ -9733,7 +9733,7 @@ export interface CallStream {
      * sending state.
      * 
      * It is NOT guaranteed that #TpContact objects have any feature prepared.
-     * @returns   #GHashTable mapping #TpContact to its new #TpSendingState
+     * @returns #GHashTable mapping #TpContact to its new #TpSendingState
      */
     get_remote_members(): GLib.HashTable
     /**
@@ -10552,7 +10552,7 @@ export interface Channel {
      * the result may either be a set of local-pending members, or %NULL.
      * 
      * If `self` is not a group, return %NULL.
-     * @returns   a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
+     * @returns a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
      */
     group_dup_local_pending_contacts(): Contact[]
     /**
@@ -10563,7 +10563,7 @@ export interface Channel {
      * the result may either be a set of members, or %NULL.
      * 
      * If `self` is not a group, return %NULL.
-     * @returns   a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
+     * @returns a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
      */
     group_dup_members_contacts(): Contact[]
     /**
@@ -10574,7 +10574,7 @@ export interface Channel {
      * the result may either be a set of remote-pending members, or %NULL.
      * 
      * If `self` is not a group, return %NULL.
-     * @returns   a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
+     * @returns a new #GPtrArray of #TpContact, free it with g_ptr_array_unref(), or %NULL.
      */
     group_dup_remote_pending_contacts(): Contact[]
     /**
@@ -10983,7 +10983,7 @@ export class Channel extends Proxy {
      * @constructor 
      * @param conn a connection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a new channel proxy, or %NULL on invalid arguments
      */
     static new_from_properties(conn: Connection, object_path: string, immutable_properties: GLib.HashTable): Channel
@@ -12561,7 +12561,7 @@ export interface Connection {
      * feature %TP_CONNECTION_FEATURE_CONTACT_INFO.
      * 
      * This property cannot change after `self` goes to the Connected state.
-     * @returns   a #GList of #TpContactInfoFieldSpec struct, or %NULL if the feature is not  yet prepared or the connection doesn't have the necessary properties.
+     * @returns a #GList of #TpContactInfoFieldSpec struct, or %NULL if the feature is not  yet prepared or the connection doesn't have the necessary properties.
      */
     dup_contact_info_supported_fields(): ContactInfoFieldSpec[]
     /**
@@ -12573,7 +12573,7 @@ export interface Connection {
      * Before calling this method, you must first call tp_proxy_prepare_async() with
      * the %TP_CONNECTION_FEATURE_CONTACT_LIST feature, and verify that
      * #TpConnection:contact-list-state is set to %TP_CONTACT_LIST_STATE_SUCCESS.
-     * @returns   a new #GPtrArray of #TpContact. Use g_ptr_array_unref() when done.
+     * @returns a new #GPtrArray of #TpContact. Use g_ptr_array_unref() when done.
      */
     dup_contact_list(): Contact[]
     /**
@@ -12708,7 +12708,7 @@ export interface Connection {
      * feature %TP_CONNECTION_FEATURE_CONTACT_INFO.
      * 
      * This property cannot change after `self` goes to the Connected state.
-     * @returns   a #GList of #TpContactInfoFieldSpec struct, or %NULL if the feature is not  yet prepared or the connection doesn't have the necessary properties.
+     * @returns a #GList of #TpContactInfoFieldSpec struct, or %NULL if the feature is not  yet prepared or the connection doesn't have the necessary properties.
      */
     get_contact_info_supported_fields(): ContactInfoFieldSpec[]
     /**
@@ -14082,7 +14082,7 @@ export interface Contact {
      * freed with tp_contact_info_list_free() after used.
      * 
      * Same as the #TpContact:contact-info property.
-     * @returns   a #GList of #TpContactInfoField, or %NULL if the feature is not yet  prepared.
+     * @returns a #GList of #TpContactInfoField, or %NULL if the feature is not yet  prepared.
      */
     dup_contact_info(): ContactInfoField[]
     /**
@@ -14162,7 +14162,7 @@ export interface Contact {
      * list using tp_contact_info_field_copy().
      * 
      * Same as the #TpContact:contact-info property.
-     * @returns   a #GList of #TpContactInfoField, or %NULL if the feature is not yet  prepared.
+     * @returns a #GList of #TpContactInfoField, or %NULL if the feature is not yet  prepared.
      */
     get_contact_info(): ContactInfoField[]
     /**
@@ -14845,7 +14845,7 @@ export interface ContactSearchResult {
 
     /**
      * <!-- -->
-     * @returns   a #GList of #TpContactInfoField for the specified contact. You should free  it when you're done with tp_contact_info_list_free().
+     * @returns a #GList of #TpContactInfoField for the specified contact. You should free  it when you're done with tp_contact_info_list_free().
      */
     dup_fields(): ContactInfoField[]
     /**
@@ -14856,7 +14856,7 @@ export interface ContactSearchResult {
     get_field(field: string): ContactInfoField
     /**
      * <!-- -->
-     * @returns   a #GList of #TpContactInfoField for the specified contact. You should free  it when you're done with g_list_free().
+     * @returns a #GList of #TpContactInfoField for the specified contact. You should free  it when you're done with g_list_free().
      */
     get_fields(): ContactInfoField[]
     /**
@@ -15280,13 +15280,13 @@ export interface DebugClient {
      * Retrieve buffered messages from `self`. Once `callback` is called,
      * use tp_debug_client_get_messages_finish() to retrieve the #TpDebugMessage
      * objects.
-     * @returns A Promise of:  a #GPtrArray of #TpDebugMessage, free with g_ptr_array_unref()
+     * @returns A Promise of: a #GPtrArray of #TpDebugMessage, free with g_ptr_array_unref()
      */
     get_messages_async(): globalThis.Promise<DebugMessage[]>
     /**
      * Finishes tp_debug_client_set_enabled_async().
      * @param result a #GAsyncResult
-     * @returns  a #GPtrArray of #TpDebugMessage, free with g_ptr_array_unref()
+     * @returns a #GPtrArray of #TpDebugMessage, free with g_ptr_array_unref()
      */
     get_messages_finish(result: Gio.AsyncResult): DebugMessage[]
     /**
@@ -15852,7 +15852,7 @@ export class FileTransferChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpFileTransferChannel
      */
     constructor(conn: Connection, object_path: string, immutable_properties: GLib.HashTable) 
@@ -15861,7 +15861,7 @@ export class FileTransferChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpFileTransferChannel
      */
     static new(conn: Connection, object_path: string, immutable_properties: GLib.HashTable): FileTransferChannel
@@ -16029,7 +16029,7 @@ export interface HandleChannelsContext {
     /**
      * Return a list of the #TpChannelRequest which have been satisfied by the
      * channels associated with #self.
-     * @returns   a newly allocated #GList of reffed #TpChannelRequest.
+     * @returns a newly allocated #GList of reffed #TpChannelRequest.
      */
     get_requests(): ChannelRequest[]
 
@@ -16123,7 +16123,7 @@ export interface Message {
     /**
      * <!-- nothing more to say -->
      * @param part a part number
-     * @returns   the current contents of the given part, or %NULL if the part number is  out of range
+     * @returns the current contents of the given part, or %NULL if the part number is  out of range
      */
     dup_part(part: number): GLib.Variant
     /**
@@ -16213,7 +16213,7 @@ export interface Message {
     /**
      * <!-- nothing more to say -->
      * @param part a part number
-     * @returns   the #GHashTable used to implement the given part, or %NULL if the  part number is out of range. The hash table is only valid as long as the  message is valid and the part is not deleted.
+     * @returns the #GHashTable used to implement the given part, or %NULL if the  part number is out of range. The hash table is only valid as long as the  message is valid and the part is not deleted.
      */
     peek(part: number): GLib.HashTable
     /**
@@ -16482,7 +16482,7 @@ export interface ObserveChannelsContext {
     /**
      * Return a list of the #TpChannelRequest which have been satisfied by the
      * channels associated with #self.
-     * @returns   a newly allocated #GList of reffed #TpChannelRequest.
+     * @returns a newly allocated #GList of reffed #TpChannelRequest.
      */
     get_requests(): ChannelRequest[]
     /**
@@ -16688,7 +16688,7 @@ export interface Protocol {
      * The returned list must be freed by the caller, for instance with
      * <literal>g_list_free_full (l,
      * (GDestroyNotify) tp_connection_manager_param_free)</literal>.
-     * @returns   a list of #TpConnectionManagerParam structures, owned by the caller
+     * @returns a list of #TpConnectionManagerParam structures, owned by the caller
      */
     dup_params(): ConnectionManagerParam[]
     /**
@@ -17894,7 +17894,7 @@ export interface SimpleClientFactory {
      * and #TpAccountManager::validity-changed are more appropriate for most
      * applications.
      * @param object_path the object path of an account
-     * @param immutable_properties   the immutable properties of the account, or %NULL.
+     * @param immutable_properties the immutable properties of the account, or %NULL.
      * @returns a reference to a #TpAccount;  see tp_account_new().
      */
     ensure_account(object_path: string, immutable_properties: GLib.HashTable): Account
@@ -17913,7 +17913,7 @@ export interface SimpleClientFactory {
      * to obtain channels for most applications.
      * @param connection a #TpConnection whose #TpProxy:factory is this object
      * @param object_path the object path of a channel on `connection`
-     * @param immutable_properties   the immutable properties of the channel
+     * @param immutable_properties the immutable properties of the channel
      * @returns a reference to a #TpChannel;  see tp_channel_new_from_properties().
      */
     ensure_channel(connection: Connection, object_path: string, immutable_properties: GLib.HashTable): Channel
@@ -17930,7 +17930,7 @@ export interface SimpleClientFactory {
      * This function is rather low-level. #TpAccount:connection is more
      * appropriate for most applications.
      * @param object_path the object path of a connection
-     * @param immutable_properties   the immutable properties of the connection.
+     * @param immutable_properties the immutable properties of the connection.
      * @returns a reference to a #TpConnection;  see tp_connection_new().
      */
     ensure_connection(object_path: string, immutable_properties: GLib.HashTable): Connection
@@ -18660,7 +18660,7 @@ export class StreamTubeChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly-created #TpStreamTubeChannel proxy
      */
     constructor(conn: Connection, object_path: string, immutable_properties: GLib.HashTable) 
@@ -18672,7 +18672,7 @@ export class StreamTubeChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly-created #TpStreamTubeChannel proxy
      */
     static new(conn: Connection, object_path: string, immutable_properties: GLib.HashTable): StreamTubeChannel
@@ -19410,7 +19410,7 @@ export interface TextChannel {
      * It is guaranteed that the #TpSignalledMessage:sender of each
      * #TpSignalledMessage has all of the features previously passed to
      * tp_simple_client_factory_add_contact_features() prepared.
-     * @returns  a #GList of reffed #TpSignalledMessage
+     * @returns a #GList of reffed #TpSignalledMessage
      */
     dup_pending_messages(): SignalledMessage[]
     /**
@@ -19444,7 +19444,7 @@ export interface TextChannel {
     get_message_part_support_flags(): MessagePartSupportFlags
     /**
      * Return the #TpTextChannel:message-types property
-     * @returns  the value of #TpTextChannel:message-types
+     * @returns the value of #TpTextChannel:message-types
      */
     get_message_types(): ChannelTextMessageType[]
     /**
@@ -19454,7 +19454,7 @@ export interface TextChannel {
      * It is guaranteed that the #TpSignalledMessage:sender of each
      * #TpSignalledMessage has all of the features previously passed to
      * tp_simple_client_factory_add_contact_features() prepared.
-     * @returns  a #GList of borrowed #TpSignalledMessage
+     * @returns a #GList of borrowed #TpSignalledMessage
      */
     get_pending_messages(): SignalledMessage[]
     /**
@@ -19501,7 +19501,7 @@ export interface TextChannel {
     get_sms_length_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* chunks_required */ number, /* remaining_characters */ number, /* estimated_cost */ number ]
     /**
      * Return the #TpTextChannel:supported-content-types property
-     * @returns  the value of #TpTextChannel:supported-content-types
+     * @returns the value of #TpTextChannel:supported-content-types
      */
     get_supported_content_types(): string[]
     /**
@@ -19687,7 +19687,7 @@ export class TextChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpTextChannel
      */
     constructor(conn: Connection, object_path: string, immutable_properties: GLib.HashTable) 
@@ -19696,7 +19696,7 @@ export class TextChannel extends Channel {
      * @constructor 
      * @param conn a #TpConnection; may not be %NULL
      * @param object_path the object path of the channel; may not be %NULL
-     * @param immutable_properties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
+     * @param immutable_properties the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpTextChannel
      */
     static new(conn: Connection, object_path: string, immutable_properties: GLib.HashTable): TextChannel

@@ -19919,12 +19919,12 @@ interface DeviceManager {
     // Has conflict: getDevice(deviceId: number): InputDevice
     /**
      * Lists all currently registered input devices
-     * @returns    a newly allocated list of #ClutterInputDevice objects. Use   g_slist_free() to deallocate it when done
+     * @returns a newly allocated list of #ClutterInputDevice objects. Use   g_slist_free() to deallocate it when done
      */
     listDevices(): InputDevice[]
     /**
      * Lists all currently registered input devices
-     * @returns    a pointer to the internal list of #ClutterInputDevice objects. The   returned list is owned by the #ClutterDeviceManager and should never   be modified or freed
+     * @returns a pointer to the internal list of #ClutterInputDevice objects. The   returned list is owned by the #ClutterDeviceManager and should never   be modified or freed
      */
     peekDevices(): InputDevice[]
 
@@ -33279,7 +33279,7 @@ interface Timeline extends Scriptable {
      * negative integer, all the markers attached to `timeline` will be
      * returned.
      * @param msecs the time to check, or -1
-     * @returns    a newly allocated, %NULL terminated string array containing the names   of the markers. Use g_strfreev() when done.
+     * @returns a newly allocated, %NULL terminated string array containing the names   of the markers. Use g_strfreev() when done.
      */
     listMarkers(msecs: number): string[]
     /**

@@ -701,7 +701,7 @@ class Blob extends GObject.Object {
      * copied internally, so the blob does not hold references to external chunks
      * of memory.
      * @constructor 
-     * @param data_to_copy  Data which will be copied into the blob, or %NULL if `size` is zero.
+     * @param data_to_copy Data which will be copied into the blob, or %NULL if `size` is zero.
      * @returns A newly-created #GsfBlob, or %NULL if the data could not be copied. Error domain: #GSF_ERROR Possible errors: #GSF_ERROR_OUT_OF_MEMORY if the @data_to_copy could not be copied.
      */
     constructor(data_to_copy: Uint8Array) 
@@ -711,7 +711,7 @@ class Blob extends GObject.Object {
      * copied internally, so the blob does not hold references to external chunks
      * of memory.
      * @constructor 
-     * @param data_to_copy  Data which will be copied into the blob, or %NULL if `size` is zero.
+     * @param data_to_copy Data which will be copied into the blob, or %NULL if `size` is zero.
      * @returns A newly-created #GsfBlob, or %NULL if the data could not be copied. Error domain: #GSF_ERROR Possible errors: #GSF_ERROR_OUT_OF_MEMORY if the @data_to_copy could not be copied.
      */
     static new(data_to_copy: Uint8Array): Blob
@@ -1126,7 +1126,7 @@ interface InfileMSVBA {
 
     /**
      * a collection of names and source code.
-     * @returns  A #GHashTable of names and source code (unknown encoding).
+     * @returns A #GHashTable of names and source code (unknown encoding).
      */
     get_modules(): GLib.HashTable | null
     /**
@@ -1445,7 +1445,7 @@ interface Input {
      * Read `num_bytes`.  Does not change the current position if there
      * is an error.  Will only read if the entire amount can be read.
      * @param num_bytes number of bytes to read
-     * @returns  the data read.
+     * @returns the data read.
      */
     read(num_bytes: number): Uint8Array
     /**

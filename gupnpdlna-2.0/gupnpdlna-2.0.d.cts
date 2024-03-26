@@ -444,7 +444,7 @@ export interface Profile {
     get_audio_restrictions(): Restriction[]
     /**
      * Gets a list of container restrictions.
-     * @returns  Container restrictions. Do not modify.
+     * @returns Container restrictions. Do not modify.
      */
     get_container_restrictions(): Restriction[]
     get_extended(): boolean
@@ -1008,7 +1008,7 @@ export interface Restriction {
     /**
      * Gets `restriction'`s entries. It is a string to #GUPnPDLNAValueList
      * mapping.
-     * @returns  Entries. Do not modify.
+     * @returns Entries. Do not modify.
      */
     get_entries(): GLib.HashTable
     /**

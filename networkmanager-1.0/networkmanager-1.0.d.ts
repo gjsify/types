@@ -9368,12 +9368,12 @@ interface IP6Address {
     dup(): IP6Address
     /**
      * Gets the IPv6 address property of this address object.
-     * @returns           the IPv6 address
+     * @returns the IPv6 address
      */
     get_address(): Uint8Array
     /**
      * Gets the IPv6 default gateway property of this address object.
-     * @returns           the IPv6 gateway address
+     * @returns the IPv6 gateway address
      */
     get_gateway(): Uint8Array
     /**
@@ -9446,7 +9446,7 @@ interface IP6Route {
     dup(): IP6Route
     /**
      * Gets the IPv6 destination address property of this route object.
-     * @returns           the IPv6 address of destination
+     * @returns the IPv6 address of destination
      */
     get_dest(): Uint8Array
     /**
@@ -9457,7 +9457,7 @@ interface IP6Route {
     get_metric(): number
     /**
      * Gets the IPv6 address of the next hop of this route.
-     * @returns           the IPv6 address of next hop
+     * @returns the IPv6 address of next hop
      */
     get_next_hop(): Uint8Array
     /**

@@ -208,7 +208,7 @@ function get_enable_animations(widget: Gtk.Widget): boolean
  * Call this function before using any other Handy functions in your
  * GUI applications. If libhandy has already been initialized, the function will
  * simply return without processing the new arguments.
- * @param argv      Address of the <parameter>argv</parameter> parameter of main(), or %NULL.     Any options understood by Handy are stripped before return.
+ * @param argv Address of the <parameter>argv</parameter> parameter of main(), or %NULL.     Any options understood by Handy are stripped before return.
  * @returns %TRUE if initialization was successful, %FALSE otherwise.
  */
 function init(argv?: string[] | null): [ /* returnType */ boolean, /* argv */ string[] | null ]

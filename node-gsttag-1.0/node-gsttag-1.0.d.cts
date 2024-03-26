@@ -469,7 +469,7 @@ export function tagCheckLanguageCode(langCode: string): boolean
  * are specified, the current locale will be tried. If that also doesn't work,
  * WINDOWS-1252/ISO-8859-1 is assumed (which will almost always succeed).
  * @param data string data
- * @param envVars     a NULL-terminated string array of environment variable names, or NULL
+ * @param envVars a NULL-terminated string array of environment variable names, or NULL
  * @returns a newly-allocated string in UTF-8 encoding, or NULL
  */
 export function tagFreeformStringToUtf8(data: number[], envVars: string[]): string | null
@@ -744,7 +744,7 @@ export function tagListToVorbiscommentBuffer(list: Gst.TagList, idData: number[]
  * be used
  * @param list tags
  * @param readOnly does the container forbid inplace editing
- * @param schemas      %NULL terminated array of schemas to be used on serialization
+ * @param schemas %NULL terminated array of schemas to be used on serialization
  * @returns new buffer or %NULL, unref the buffer when done
  */
 export function tagListToXmpBuffer(list: Gst.TagList, readOnly: boolean, schemas: string[]): Gst.Buffer | null

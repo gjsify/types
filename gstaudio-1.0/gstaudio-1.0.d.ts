@@ -5281,7 +5281,7 @@ interface AudioConverter {
     free(): void
     /**
      * Get the current configuration of `convert`.
-     * @returns    a #GstStructure that remains valid for as long as @convert is valid   or until gst_audio_converter_update_config() is called.
+     * @returns a #GstStructure that remains valid for as long as @convert is valid   or until gst_audio_converter_update_config() is called.
      */
     get_config(): [ /* returnType */ Gst.Structure, /* in_rate */ number, /* out_rate */ number ]
     /**

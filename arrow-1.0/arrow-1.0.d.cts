@@ -5931,7 +5931,7 @@ export interface FileSystem {
     delete_file(path: string): boolean
     /**
      * Delete many files.
-     * @param paths    The paths of the files to be delete.
+     * @param paths The paths of the files to be delete.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
     delete_files(paths: string[]): boolean
@@ -5951,7 +5951,7 @@ export interface FileSystem {
      * Get information same as garrow_file_system_get_file_info()
      * for the given many targets at once.
      * @param paths The paths of the targets.
-     * @returns    A list of #GArrowFileInfo.
+     * @returns A list of #GArrowFileInfo.
      */
     get_file_infos_paths(paths: string[]): FileInfo[]
     /**
@@ -5961,7 +5961,7 @@ export interface FileSystem {
      * The selector's base directory will not be part of the results,
      * even if it exists.
      * @param file_selector A #GArrowFileSelector.
-     * @returns    A list of #GArrowFileInfo.
+     * @returns A list of #GArrowFileInfo.
      */
     get_file_infos_selector(file_selector: FileSelector): FileInfo[]
     get_type_name(): string | null

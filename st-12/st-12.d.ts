@@ -7417,7 +7417,7 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * Gets a list of the focusable children of `widget,` in "Tab"
      * order. By default, this returns all visible
      * (as in clutter_actor_is_visible()) children of `widget`.
-     * @returns    @widget's focusable children
+     * @returns @widget's focusable children
      */
     get_focus_chain(): Clutter.Actor[]
     /**
@@ -7672,7 +7672,7 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * order. By default, this returns all visible
      * (as in clutter_actor_is_visible()) children of `widget`.
      * @virtual 
-     * @returns    @widget's focusable children
+     * @returns @widget's focusable children
      */
     vfunc_get_focus_chain(): Clutter.Actor[]
     vfunc_navigate_focus(from: Clutter.Actor | null, direction: DirectionType): boolean

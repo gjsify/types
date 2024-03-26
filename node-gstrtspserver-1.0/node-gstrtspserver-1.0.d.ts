@@ -1870,7 +1870,7 @@ interface RTSPMedia {
      * 
      * `media` must be prepared with gst_rtsp_media_prepare();
      * @param state the target state of the media
-     * @param transports  a #GPtrArray of #GstRTSPStreamTransport pointers
+     * @param transports a #GPtrArray of #GstRTSPStreamTransport pointers
      * @returns %TRUE on success.
      */
     setState(state: Gst.State, transports: RTSPStreamTransport[]): boolean

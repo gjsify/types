@@ -18409,7 +18409,7 @@ interface Setting {
     optionGet(optName: string): GLib.Variant
     /**
      * Gives the name of all set options.
-     * @returns    A %NULL terminated array of key names. If no names are present, this returns   %NULL. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
+     * @returns A %NULL terminated array of key names. If no names are present, this returns   %NULL. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
      */
     optionGetAllNames(): string[] | null
     optionGetBoolean(optName: string): [ /* returnType */ boolean, /* outValue */ boolean | null ]

@@ -338,7 +338,7 @@ export interface CDSLastChangeParser {
      * Parse a LastChange XML document in the flavor defined by the
      * ContentDirectory:3 specification.
      * @param last_change XML string to parse
-     * @returns  List of #GUPnPCDSLastChangeEntry<!-- -->s
+     * @returns List of #GUPnPCDSLastChangeEntry<!-- -->s
      */
     parse(last_change: string): CDSLastChangeEntry[]
 

@@ -826,7 +826,7 @@ export interface BookClientCursor extends Gio.Initable {
      * array might contain more than one alphabet for locales where it is
      * very common or expected to have names in Latin script as well as names
      * in another script.
-     * @returns    The array of displayable labels for each index in the active alphabet.
+     * @returns The array of displayable labels for each index in the active alphabet.
      */
     get_alphabet(): [ /* returnType */ string[], /* n_labels */ number, /* underflow */ number, /* inflow */ number, /* overflow */ number ]
     /**

@@ -4596,7 +4596,7 @@ class Container extends TimelineElement {
      * the sources share the same #GESAsset. If this fails, or one of the
      * elements is not a #GESClip, this method will try to create a #GESGroup
      * instead.
-     * @param containers  The #GESContainer-s to group
+     * @param containers The #GESContainer-s to group
      * @returns The container created by merging @containers, or %NULL if they could not be merged into a single container.
      */
     static group(containers: Container[] | null): Container | null
@@ -11341,7 +11341,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * 
      * This is intended to be used by subclasses when constructing.
      * @param element The child object to retrieve properties from
-     * @param wanted_categories  An array of element factory "klass" categories to whitelist, or %NULL to accept all categories
+     * @param wanted_categories An array of element factory "klass" categories to whitelist, or %NULL to accept all categories
      * @param blacklist A blacklist of element factory names, or %NULL to not blacklist any element factory
      * @param whitelist A whitelist of element property names, or %NULL to whitelist all writeable properties
      */

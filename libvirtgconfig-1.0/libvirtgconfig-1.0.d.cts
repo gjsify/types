@@ -315,7 +315,7 @@ export interface Capabilities {
 
     /**
      * Gets the list of guest capabilities.
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesGuest.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesGuest.
      */
     get_guests(): CapabilitiesGuest[]
     /**
@@ -388,7 +388,7 @@ export interface CapabilitiesCpu {
     get_arch(): string
     /**
      * Gets the features of this CPU.
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesCpuFeature.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesCpuFeature.
      */
     get_features(): CapabilitiesCpuFeature[]
     /**
@@ -412,7 +412,7 @@ export interface CapabilitiesCpu {
     /**
      * Gets the features of this CPU.
      * @virtual 
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesCpuFeature.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesCpuFeature.
      */
     vfunc_get_features(): CapabilitiesCpuFeature[]
 
@@ -638,7 +638,7 @@ export interface CapabilitiesGuest {
     get_arch(): CapabilitiesGuestArch
     /**
      * Gets the CPU features for this guest.
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesGuestFeature.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesGuestFeature.
      */
     get_features(): CapabilitiesGuestFeature[]
     get_os_type(): DomainOsType
@@ -690,7 +690,7 @@ export interface CapabilitiesGuestArch {
 
     /**
      * Gets the possible domains for this architecture.
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesGuestDomain.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesGuestDomain.
      */
     get_domains(): CapabilitiesGuestDomain[]
     get_emulator(): string
@@ -843,7 +843,7 @@ export interface CapabilitiesHost {
     get_cpu(): CapabilitiesCpu
     /**
      * Get the security models listed in `host` capabilities.
-     * @returns  a newly allocated #GList of #GVirConfigCapabilitiesHostSecModel.
+     * @returns a newly allocated #GList of #GVirConfigCapabilitiesHostSecModel.
      */
     get_secmodels(): CapabilitiesHostSecModel[]
     get_uuid(): string
@@ -981,7 +981,7 @@ export interface Domain {
      * Gets the list of devices attached to `domain`.  The returned list should
      * be freed with g_list_free(), after its elements have been unreffed with
      * g_object_unref().
-     * @returns  a newly allocated #GList of #GVirConfigDomainDevice.
+     * @returns a newly allocated #GList of #GVirConfigDomainDevice.
      */
     get_devices(): DomainDevice[]
     get_features(): string[]
@@ -1348,7 +1348,7 @@ export interface DomainCapabilitiesOs {
     /**
      * Gets the firmwares supported by `os`. The returned list should be freed with
      * g_list_free().
-     * @returns  a newly allocated #GList of #GVirConfigDomainOsFirmware.
+     * @returns a newly allocated #GList of #GVirConfigDomainOsFirmware.
      */
     get_firmwares(): DomainOsFirmware[]
 
@@ -1358,7 +1358,7 @@ export interface DomainCapabilitiesOs {
      * Gets the firmwares supported by `os`. The returned list should be freed with
      * g_list_free().
      * @virtual 
-     * @returns  a newly allocated #GList of #GVirConfigDomainOsFirmware.
+     * @returns a newly allocated #GList of #GVirConfigDomainOsFirmware.
      */
     vfunc_get_firmwares(): DomainOsFirmware[]
 
@@ -3204,7 +3204,7 @@ export interface DomainInterfaceFilterref {
      * Gets the list of parameters attached to `filterref`. The returned list should be
      * freed with g_list_free(), after its elements have been unreffed with
      * g_object_unref().
-     * @returns  a newly allocated #GList of #GVirConfigDomainInterfaceFilterrefParameter.
+     * @returns a newly allocated #GList of #GVirConfigDomainInterfaceFilterrefParameter.
      */
     get_parameters(): DomainInterfaceFilterrefParameter[]
     set_name(filter: string): void
@@ -3502,7 +3502,7 @@ export interface DomainOs {
     /**
      * Gets the list of devices attached to `os`. The returned list should be
      * freed with g_list_free().
-     * @returns  a newly allocated #GList of #GVirConfigDomainOsBootDevice.
+     * @returns a newly allocated #GList of #GVirConfigDomainOsBootDevice.
      */
     get_boot_devices(): DomainOsBootDevice[]
     get_firmware(): DomainOsFirmware
@@ -4085,7 +4085,7 @@ export interface DomainSnapshot {
      * Gets the list of disks attached to `snapshot`.  The returned list should
      * be freed with g_list_free(), after its elements have been unreffed with
      * g_object_unref().
-     * @returns  a newly allocated #GList of #GVirConfigDomainSnapshotDisk.
+     * @returns a newly allocated #GList of #GVirConfigDomainSnapshotDisk.
      */
     get_disks(): DomainSnapshotDisk[]
     /**

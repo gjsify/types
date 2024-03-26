@@ -298,7 +298,7 @@ export function utils_list_box_clear(list_box: Gtk.ListBox): void
  * increasing index order (as returned by gtk_list_box_row_get_index()).
  * @param list_box a #GtkListBox.
  * @param filter_func non-%NULL callback function.
- * @returns    a %NULL-terminated array of #GtkListBoxRow objects, or %NULL. Free with   g_free() when no longer needed.
+ * @returns a %NULL-terminated array of #GtkListBoxRow objects, or %NULL. Free with   g_free() when no longer needed.
  */
 export function utils_list_box_get_filtered_children(list_box: Gtk.ListBox, filter_func: Gtk.ListBoxFilterFunc): [ /* returnType */ Gtk.ListBoxRow[] | null, /* n_filtered_children */ number ]
 /**

@@ -1052,7 +1052,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
     /**
      * Complete asynchronous operation to search for items in a collection.
      * @param result asynchronous result passed to callback
-     * @returns    a list of items that matched the search
+     * @returns a list of items that matched the search
      */
     searchFinish(result: Gio.AsyncResult): Item[]
     /**
@@ -1076,7 +1076,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
      * @param attributes search for items matching these attributes
      * @param flags search option flags
      * @param cancellable optional cancellation object
-     * @returns    a list of items that matched the search
+     * @returns a list of items that matched the search
      */
     searchSync(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable: Gio.Cancellable | null): Item[]
     /**
@@ -2385,7 +2385,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
     /**
      * Complete asynchronous operation to search for items.
      * @param result asynchronous result passed to callback
-     * @returns    a list of items that matched the search
+     * @returns a list of items that matched the search
      */
     searchFinish(result: Gio.AsyncResult): Item[]
     /**
@@ -2416,7 +2416,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param attributes search for items matching these attributes
      * @param flags search option flags
      * @param cancellable optional cancellation object
-     * @returns    a list of items that matched the search
+     * @returns a list of items that matched the search
      */
     searchSync(schema: Schema | null, attributes: GLib.HashTable, flags: SearchFlags, cancellable: Gio.Cancellable | null): Item[]
     /**

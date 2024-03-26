@@ -14388,7 +14388,7 @@ class OAuth2Authorizer extends GObject.Object {
      * @param clientId your application’s client ID
      * @param clientSecret your application’s client secret
      * @param redirectUri authorisation redirect URI
-     * @param authorizationDomains  a non-empty list of #GDataAuthorizationDomains to be authorized against by the #GDataOAuth2Authorizer
+     * @param authorizationDomains a non-empty list of #GDataAuthorizationDomains to be authorized against by the #GDataOAuth2Authorizer
      * @returns a new #GDataOAuth2Authorizer; unref with g_object_unref()
      */
     static newForAuthorizationDomains(clientId: string, clientSecret: string, redirectUri: string, authorizationDomains: AuthorizationDomain[]): OAuth2Authorizer

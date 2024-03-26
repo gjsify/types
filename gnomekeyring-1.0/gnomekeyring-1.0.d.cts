@@ -148,7 +148,7 @@ export const SESSION: string
 /**
  * Copy an access control list.
  * @param list A list of        #GnomeKeyringAccessControl pointers.
- * @returns  A new list of #GnomeKeyringAccessControl items. Use gnome_keyring_acl_free() to free the memory.
+ * @returns A new list of #GnomeKeyringAccessControl items. Use gnome_keyring_acl_free() to free the memory.
  */
 export function acl_copy(list: AccessControl[]): AccessControl[]
 /**

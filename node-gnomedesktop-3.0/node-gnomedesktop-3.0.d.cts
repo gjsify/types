@@ -86,7 +86,7 @@ export function desktopThumbnailIsValid(pixbuf: GdkPixbuf.Pixbuf, uri: string, m
 export function desktopThumbnailPathForUri(uri: string, size: DesktopThumbnailSize): string | null
 /**
  * Gets all locales.
- * @returns    a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
+ * @returns a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
  */
 export function getAllLocales(): string[]
 /**

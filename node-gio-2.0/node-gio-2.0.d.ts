@@ -5334,7 +5334,7 @@ function unixMountPointsChangedSince(time: number): boolean
  * If `time_read` is set, it will be filled with the mount timestamp,
  * allowing for checking if the mounts have changed with
  * g_unix_mount_points_changed_since().
- * @returns      a #GList of the UNIX mountpoints.
+ * @returns a #GList of the UNIX mountpoints.
  */
 function unixMountPointsGet(): [ /* returnType */ UnixMountPoint[], /* timeRead */ number ]
 /**
@@ -5348,7 +5348,7 @@ function unixMountsChangedSince(time: number): boolean
  * If `time_read` is set, it will be filled with the mount
  * timestamp, allowing for checking if the mounts have changed
  * with g_unix_mounts_changed_since().
- * @returns      a #GList of the UNIX mounts.
+ * @returns a #GList of the UNIX mounts.
  */
 function unixMountsGet(): [ /* returnType */ UnixMountEntry[], /* timeRead */ number ]
 /**
@@ -6910,7 +6910,7 @@ interface AppInfo {
      * g_app_info_add_supports_type(), but only those exported directly by
      * the application.
      * @virtual 
-     * @returns     a list of content types.
+     * @returns a list of content types.
      */
     getSupportedTypes(): string[]
     /**
@@ -10767,7 +10767,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param ioPriority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progressCallback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param progressCallback function to callback with progress information, or %NULL if   progress information is not needed
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     copyAsync(destination: File, flags: FileCopyFlags, ioPriority: number, cancellable: Cancellable | null, progressCallback: FileProgressCallback | null, callback: AsyncReadyCallback | null): void
@@ -11468,7 +11468,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param ioPriority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progressCallback    #GFileProgressCallback function for updates
+     * @param progressCallback #GFileProgressCallback function for updates
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     moveAsync(destination: File, flags: FileCopyFlags, ioPriority: number, cancellable: Cancellable | null, progressCallback: FileProgressCallback | null, callback: AsyncReadyCallback | null): void
@@ -15948,7 +15948,7 @@ interface AppLaunchContext {
      * the child process when `context` is used to launch an application.
      * This is a %NULL-terminated array of strings, where each string has
      * the form `KEY=VALUE`.
-     * @returns      the child's environment
+     * @returns the child's environment
      */
     getEnvironment(): string[]
     // Has conflict: getStartupNotifyId(info: AppInfo, files: File[]): string | null
@@ -16538,7 +16538,7 @@ interface Application extends ActionGroup, ActionMap {
      * should not be used from applications like editors that need precise
      * control over when processes invoked via the commandline will exit and
      * what their exit status will be.
-     * @param argv      the argv from main(), or %NULL
+     * @param argv the argv from main(), or %NULL
      * @returns the exit status
      */
     run(argv: string[] | null): number
@@ -17144,7 +17144,7 @@ interface ApplicationCommandLine {
      * 
      * The return value is %NULL-terminated and should be freed using
      * g_strfreev().
-     * @returns       the string array containing the arguments (the argv)
+     * @returns the string array containing the arguments (the argv)
      */
     getArguments(): string[]
     /**
@@ -17175,7 +17175,7 @@ interface ApplicationCommandLine {
      * 
      * See g_application_command_line_getenv() if you are only interested
      * in the value of a single environment variable.
-     * @returns      the environment strings, or %NULL if they were not sent
+     * @returns the environment strings, or %NULL if they were not sent
      */
     getEnviron(): string[]
     /**
@@ -17550,7 +17550,7 @@ interface BufferedInputStream extends Seekable {
      * Returns the buffer with the currently available bytes. The returned
      * buffer must not be modified and will become invalid when reading from
      * the stream or filling the buffer.
-     * @returns           read-only buffer
+     * @returns read-only buffer
      */
     peekBuffer(): number[]
     /**
@@ -22742,7 +22742,7 @@ interface DataInputStream extends Seekable {
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @returns   a NUL terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     * @returns a NUL terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
      */
     readLine(cancellable: Cancellable | null): [ /* returnType */ number[] | null, /* length */ number ]
     /**
@@ -22763,7 +22763,7 @@ interface DataInputStream extends Seekable {
      * string encoding in g_data_input_stream_read_line() applies here as
      * well.
      * @param result the #GAsyncResult that was provided to the callback.
-     * @returns   a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     * @returns a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
      */
     readLineFinish(result: AsyncResult): [ /* returnType */ number[] | null, /* length */ number ]
     /**
@@ -23555,7 +23555,7 @@ interface DesktopAppInfo extends AppInfo {
      * 
      * The `key` is looked up in the "Desktop Entry" group.
      * @param key the key to look up
-     * @returns   a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
+     * @returns a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
      */
     getStringList(key: string): string[]
     /**
@@ -37542,7 +37542,7 @@ interface SubprocessLauncher {
      * 
      * On UNIX, all strings in this array can be arbitrary byte strings.
      * On Windows, they should be in UTF-8.
-     * @param env      the replacement environment
+     * @param env the replacement environment
      */
     setEnviron(env: string[]): void
     /**

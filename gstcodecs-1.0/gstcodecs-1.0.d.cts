@@ -549,8 +549,8 @@ export interface H264Decoder {
      * @virtual 
      * @param picture a #GstH264Picture
      * @param slice a #GstH264Slice
-     * @param ref_pic_list0     an array of #GstH264Picture pointers
-     * @param ref_pic_list1     an array of #GstH264Picture pointers
+     * @param ref_pic_list0 an array of #GstH264Picture pointers
+     * @param ref_pic_list1 an array of #GstH264Picture pointers
      */
     vfunc_decode_slice(picture: H264Picture, slice: H264Slice, ref_pic_list0: H264Picture[], ref_pic_list1: H264Picture[]): Gst.FlowReturn
     /**
@@ -727,8 +727,8 @@ export interface H265Decoder {
      * @virtual 
      * @param picture a #GstH265Picture
      * @param slice a #GstH265Slice
-     * @param ref_pic_list0     an array of #GstH265Picture pointers
-     * @param ref_pic_list1     an array of #GstH265Picture pointers
+     * @param ref_pic_list0 an array of #GstH265Picture pointers
+     * @param ref_pic_list1 an array of #GstH265Picture pointers
      */
     vfunc_decode_slice(picture: H265Picture, slice: H265Slice, ref_pic_list0: H265Picture[], ref_pic_list1: H265Picture[]): Gst.FlowReturn
     /**

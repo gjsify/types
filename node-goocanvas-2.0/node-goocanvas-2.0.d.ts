@@ -418,7 +418,7 @@ function canvasItemModelClassInstallChildProperty(mclass: GObject.ObjectClass, p
  * 
  * It returns all child properties of a canvas item class.
  * @param mclass a #GObjectClass
- * @returns   a newly allocated array of #GParamSpec*. The array must be freed with g_free().
+ * @returns a newly allocated array of #GParamSpec*. The array must be freed with g_free().
  */
 function canvasItemModelClassListChildProperties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
 module CanvasItem {
@@ -1602,7 +1602,7 @@ class CanvasItemModel extends GObject.Object {
      * 
      * It returns all child properties of a canvas item class.
      * @param mclass a #GObjectClass
-     * @returns   a newly allocated array of #GParamSpec*. The array must be freed with g_free().
+     * @returns a newly allocated array of #GParamSpec*. The array must be freed with g_free().
      */
     static classListChildProperties(mclass: GObject.ObjectClass): GObject.ParamSpec[]
 }

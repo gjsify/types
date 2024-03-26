@@ -511,19 +511,19 @@ interface App extends Gio.ActionGroup, Gio.ActionMap {
     create_window(screen: Gdk.Screen | null): Window
     /**
      * Returns all the documents currently open in #GeditApp.
-     * @returns  a newly allocated list of #GeditDocument objects
+     * @returns a newly allocated list of #GeditDocument objects
      */
     get_documents(): Document[]
     /**
      * Returns all #GeditWindows currently open in #GeditApp.
      * This differs from gtk_application_get_windows() since it does not
      * include the preferences dialog and other auxiliary windows.
-     * @returns  a newly allocated list of #GeditWindow objects
+     * @returns a newly allocated list of #GeditWindow objects
      */
     get_main_windows(): Window[]
     /**
      * Returns all the views currently present in #GeditApp.
-     * @returns  a newly allocated list of #GeditView objects
+     * @returns a newly allocated list of #GeditView objects
      */
     get_views(): View[]
     process_window_event(window: Window, event: Gdk.Event): boolean

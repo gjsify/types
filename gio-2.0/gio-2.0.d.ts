@@ -5420,7 +5420,7 @@ function unix_mount_points_changed_since(time: number): boolean
  * If `time_read` is set, it will be filled with the mount timestamp,
  * allowing for checking if the mounts have changed with
  * g_unix_mount_points_changed_since().
- * @returns      a #GList of the UNIX mountpoints.
+ * @returns a #GList of the UNIX mountpoints.
  */
 function unix_mount_points_get(): [ /* returnType */ UnixMountPoint[], /* time_read */ number ]
 /**
@@ -5434,7 +5434,7 @@ function unix_mounts_changed_since(time: number): boolean
  * If `time_read` is set, it will be filled with the mount
  * timestamp, allowing for checking if the mounts have changed
  * with g_unix_mounts_changed_since().
- * @returns      a #GList of the UNIX mounts.
+ * @returns a #GList of the UNIX mounts.
  */
 function unix_mounts_get(): [ /* returnType */ UnixMountEntry[], /* time_read */ number ]
 /**
@@ -7213,7 +7213,7 @@ interface AppInfo {
      * This function does not take in consideration associations added with
      * g_app_info_add_supports_type(), but only those exported directly by
      * the application.
-     * @returns     a list of content types.
+     * @returns a list of content types.
      */
     get_supported_types(): string[]
     /**
@@ -7460,7 +7460,7 @@ interface AppInfo {
      * g_app_info_add_supports_type(), but only those exported directly by
      * the application.
      * @virtual 
-     * @returns     a list of content types.
+     * @returns a list of content types.
      */
     vfunc_get_supported_types(): string[]
     /**
@@ -11241,7 +11241,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
@@ -11265,7 +11265,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
      * @returns A Promise of: a %TRUE on success, %FALSE on error.
      */
     copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
@@ -12267,7 +12267,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param progress_callback #GFileProgressCallback function for updates
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
@@ -12290,7 +12290,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param progress_callback #GFileProgressCallback function for updates
      * @returns A Promise of: %TRUE on successful file move, %FALSE otherwise.
      */
     move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null): globalThis.Promise<boolean>
@@ -13497,7 +13497,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    function to callback with progress information, or %NULL if   progress information is not needed
+     * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_copy_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
@@ -14198,7 +14198,7 @@ interface File {
      * @param flags set of #GFileCopyFlags
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object,   %NULL to ignore
-     * @param progress_callback    #GFileProgressCallback function for updates
+     * @param progress_callback #GFileProgressCallback function for updates
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
     vfunc_move_async(destination: File, flags: FileCopyFlags, io_priority: number, cancellable: Cancellable | null, progress_callback: FileProgressCallback | null, callback: AsyncReadyCallback<this> | null): void
@@ -19346,7 +19346,7 @@ interface AppLaunchContext {
      * the child process when `context` is used to launch an application.
      * This is a %NULL-terminated array of strings, where each string has
      * the form `KEY=VALUE`.
-     * @returns      the child's environment
+     * @returns the child's environment
      */
     get_environment(): string[]
     /**
@@ -19972,7 +19972,7 @@ interface Application extends ActionGroup, ActionMap {
      * should not be used from applications like editors that need precise
      * control over when processes invoked via the commandline will exit and
      * what their exit status will be.
-     * @param argv      the argv from main(), or %NULL
+     * @param argv the argv from main(), or %NULL
      * @returns the exit status
      */
     run(argv: string[] | null): number
@@ -20548,7 +20548,7 @@ interface ApplicationCommandLine {
      * 
      * The return value is %NULL-terminated and should be freed using
      * g_strfreev().
-     * @returns       the string array containing the arguments (the argv)
+     * @returns the string array containing the arguments (the argv)
      */
     get_arguments(): string[]
     /**
@@ -20579,7 +20579,7 @@ interface ApplicationCommandLine {
      * 
      * See g_application_command_line_getenv() if you are only interested
      * in the value of a single environment variable.
-     * @returns      the environment strings, or %NULL if they were not sent
+     * @returns the environment strings, or %NULL if they were not sent
      */
     get_environ(): string[]
     /**
@@ -21016,7 +21016,7 @@ interface BufferedInputStream extends Seekable {
      * Returns the buffer with the currently available bytes. The returned
      * buffer must not be modified and will become invalid when reading from
      * the stream or filling the buffer.
-     * @returns           read-only buffer
+     * @returns read-only buffer
      */
     peek_buffer(): Uint8Array
     /**
@@ -25949,7 +25949,7 @@ interface DataInputStream extends Seekable {
      * triggering the cancellable object from another thread. If the operation
      * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @returns   a NUL terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     * @returns a NUL terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
      */
     read_line(cancellable: Cancellable | null): [ /* returnType */ Uint8Array | null, /* length */ number ]
     /**
@@ -25978,7 +25978,7 @@ interface DataInputStream extends Seekable {
      * the result of the operation.
      * @param io_priority the [I/O priority][io-priority] of the request
      * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @returns A Promise of:   a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     * @returns A Promise of: a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
      */
     read_line_async(io_priority: number, cancellable: Cancellable | null): globalThis.Promise</* length */ number>
     /**
@@ -25987,7 +25987,7 @@ interface DataInputStream extends Seekable {
      * string encoding in g_data_input_stream_read_line() applies here as
      * well.
      * @param result the #GAsyncResult that was provided to the callback.
-     * @returns   a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
+     * @returns a NUL-terminated byte array with the line that was read in  (without the newlines).  Set @length to a #gsize to get the length  of the read line.  On an error, it will return %NULL and @error  will be set. If there's no content to read, it will still return  %NULL, but @error won't be set.
      */
     read_line_finish(result: AsyncResult): [ /* returnType */ Uint8Array | null, /* length */ number ]
     /**
@@ -26800,7 +26800,7 @@ interface DesktopAppInfo extends AppInfo {
      * 
      * The `key` is looked up in the "Desktop Entry" group.
      * @param key the key to look up
-     * @returns   a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
+     * @returns a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
      */
     get_string_list(key: string): string[]
     /**
@@ -41618,7 +41618,7 @@ interface SubprocessLauncher {
      * 
      * On UNIX, all strings in this array can be arbitrary byte strings.
      * On Windows, they should be in UTF-8.
-     * @param env      the replacement environment
+     * @param env the replacement environment
      */
     set_environ(env: string[]): void
     /**

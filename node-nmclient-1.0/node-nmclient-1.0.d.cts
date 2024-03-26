@@ -6390,7 +6390,7 @@ export interface IP6Config extends Gio.AsyncInitable, Gio.Initable {
     /**
      * Gets the domain name server at index `idx` in the configuration.
      * @param idx index of the nameserver to return
-     * @returns           the IPv6 address of domain name server at index @iidx
+     * @returns the IPv6 address of domain name server at index @iidx
      */
     getNameserver(idx: number): number[]
     /**

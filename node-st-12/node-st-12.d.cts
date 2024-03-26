@@ -9760,7 +9760,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * order. By default, this returns all visible
      * (as in clutter_actor_is_visible()) children of `widget`.
      * @virtual 
-     * @returns    @widget's focusable children
+     * @returns @widget's focusable children
      */
     getFocusChain(): Clutter.Actor[]
     navigateFocus(from: Clutter.Actor | null, direction: DirectionType): boolean

@@ -576,7 +576,7 @@ export interface Adapter {
      * gst_adapter_take_buffer().
      * 
      * Returns %NULL if `size` bytes are not available.
-     * @returns      a pointer to the first @size bytes of data, or %NULL
+     * @returns a pointer to the first @size bytes of data, or %NULL
      */
     map(): Uint8Array | null
     /**
@@ -704,7 +704,7 @@ export interface Adapter {
      * Caller owns returned value. g_free after usage.
      * 
      * Free-function: g_free
-     * @returns      oven-fresh hot data, or %NULL if @nbytes bytes are not available
+     * @returns oven-fresh hot data, or %NULL if @nbytes bytes are not available
      */
     take(): Uint8Array | null
     /**

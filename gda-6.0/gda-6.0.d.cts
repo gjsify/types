@@ -16763,7 +16763,6 @@ export interface SqlOperation {
      */
     operator_type: SqlOperatorType
     /**
-     * 
      * : list of #GdaSqlExpr operands
      * @field 
      */

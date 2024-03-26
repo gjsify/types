@@ -5284,7 +5284,7 @@ interface Bus {
      * this function will simply ignore them, and return rest of engines.
      * TODO(penghuang): add asynchronous version
      * @param names A %NULL-terminated array of names.
-     * @returns          A %NULL-terminated array of engines.
+     * @returns A %NULL-terminated array of engines.
      */
     getEnginesByNames(names: string[]): EngineDesc[]
     /**
@@ -5413,7 +5413,7 @@ interface Bus {
     isGlobalEngineEnabledAsyncFinish(res: Gio.AsyncResult): boolean
     /**
      * List active engines synchronously.
-     * @returns         A List of active engines.
+     * @returns A List of active engines.
      */
     listActiveEngines(): EngineDesc[]
     /**
@@ -5426,12 +5426,12 @@ interface Bus {
     /**
      * Finishes an operation started with ibus_bus_list_active_engines_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_active_engines_async().
-     * @returns          A List of active engines.
+     * @returns A List of active engines.
      */
     listActiveEnginesAsyncFinish(res: Gio.AsyncResult): EngineDesc[]
     /**
      * List engines synchronously.
-     * @returns          A List of engines.
+     * @returns A List of engines.
      */
     listEngines(): EngineDesc[]
     /**
@@ -5444,7 +5444,7 @@ interface Bus {
     /**
      * Finishes an operation started with ibus_bus_list_engines_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_engines_async().
-     * @returns          A List of engines.
+     * @returns A List of engines.
      */
     listEnginesAsyncFinish(res: Gio.AsyncResult): EngineDesc[]
     /**
@@ -5458,7 +5458,7 @@ interface Bus {
      * Lists the unique bus names of connections currently queued for a bus name.
      * FIXME add an asynchronous version.
      * @param name Name to be queried.
-     * @returns            The unique bus names of connections currently queued for @name.
+     * @returns The unique bus names of connections currently queued for @name.
      */
     listQueuedOwners(name: string): string[]
     /**
@@ -5834,7 +5834,7 @@ interface Component {
     getDescription(): string
     /**
      * Gets the engines of this component.
-     * @returns  A newly allocated GList that contains engines.
+     * @returns A newly allocated GList that contains engines.
      */
     getEngines(): EngineDesc[]
     /**
@@ -10119,12 +10119,12 @@ interface Registry {
     checkModification(): boolean
     /**
      * List components.
-     * @returns  a list of #IBusComponent objects. The caller has to call g_list_free() for the returned list.
+     * @returns a list of #IBusComponent objects. The caller has to call g_list_free() for the returned list.
      */
     getComponents(): Component[]
     /**
      * List observed paths.
-     * @returns  a list of #IBusObservedPath objects. The caller has to call g_list_free() for the returned list.
+     * @returns a list of #IBusObservedPath objects. The caller has to call g_list_free() for the returned list.
      */
     getObservedPaths(): ObservedPath[]
     /**

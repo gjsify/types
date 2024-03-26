@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./girepository-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GIRepository-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

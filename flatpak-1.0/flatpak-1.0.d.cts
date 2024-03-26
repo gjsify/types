@@ -704,7 +704,7 @@ export interface Installation {
      * subpaths to install of locale extensions. This list may also be used
      * by frontends like GNOME Software to decide which language-specific apps
      * to display. An empty array means that all languages should be installed.
-     * @returns    A possibly empty array of strings, or %NULL on error.
+     * @returns A possibly empty array of strings, or %NULL on error.
      */
     get_default_languages(): string[]
     /**
@@ -714,7 +714,7 @@ export interface Installation {
      * 
      * Strings returned by this function are in the format specified by
      * [`setlocale()`](man:setlocale): `language[_territory][.codeset][`modifier]``.
-     * @returns    A possibly empty array of locale strings, or %NULL on error.
+     * @returns A possibly empty array of locale strings, or %NULL on error.
      */
     get_default_locales(): string[]
     /**

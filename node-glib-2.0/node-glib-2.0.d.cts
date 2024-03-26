@@ -5282,7 +5282,7 @@ export function atomicRefCountInit(arc: number): void
  * that the returned binary data is not necessarily zero-terminated,
  * so it should not be used as a character string.
  * @param text zero-terminated string with base64 text to decode
- * @returns                newly allocated buffer containing the binary data               that @text represents. The returned buffer must               be freed with g_free().
+ * @returns newly allocated buffer containing the binary data               that @text represents. The returned buffer must               be freed with g_free().
  */
 export function base64Decode(text: string): number[]
 /**
@@ -5751,10 +5751,10 @@ export function computeHmacForString(digestType: ChecksumType, key: number[], st
  * 
  * Using extensions such as "//TRANSLIT" may not work (or may not work
  * well) on many platforms.  Consider using g_str_to_ascii() instead.
- * @param str                  the string to convert.
+ * @param str the string to convert.
  * @param toCodeset name of character set into which to convert `str`
  * @param fromCodeset character set of `str`.
- * @returns           If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
+ * @returns If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
  */
 export function convert(str: number[], toCodeset: string, fromCodeset: string): [ /* returnType */ number[], /* bytesRead */ number ]
 export function convertErrorQuark(): Quark
@@ -5776,11 +5776,11 @@ export function convertErrorQuark(): Quark
  * this is the GNU C converter for CP1255 which does not emit a base
  * character until it knows that the next character is not a mark that
  * could combine with the base character.)
- * @param str                 the string to convert.
+ * @param str the string to convert.
  * @param toCodeset name of character set into which to convert `str`
  * @param fromCodeset character set of `str`.
  * @param fallback UTF-8 string to use in place of characters not                present in the target encoding. (The string must be                representable in the target encoding).                If %NULL, characters not in the target encoding will                be represented as Unicode escapes \uxxxx or \Uxxxxyyyy.
- * @returns           If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
+ * @returns If the conversion was successful, a newly allocated buffer          containing the converted string, which must be freed with g_free().          Otherwise %NULL and @error will be set.
  */
 export function convertWithFallback(str: number[], toCodeset: string, fromCodeset: string, fallback: string): [ /* returnType */ number[], /* bytesRead */ number ]
 /**
@@ -6145,7 +6145,7 @@ export function dpgettext2(domain: string | null, context: string, msgid: string
 /**
  * Returns the value of the environment variable `variable` in the
  * provided list `envp`.
- * @param envp      an environment list (eg, as returned from g_get_environ()), or %NULL     for an empty environment list
+ * @param envp an environment list (eg, as returned from g_get_environ()), or %NULL     for an empty environment list
  * @param variable the environment variable to get
  * @returns the value of the environment variable, or %NULL if     the environment variable is not set in @envp. The returned     string is owned by @envp, and will be freed if @variable is     set or unset again.
  */
@@ -6153,19 +6153,19 @@ export function environGetenv(envp: string[] | null, variable: string): string |
 /**
  * Sets the environment variable `variable` in the provided list
  * `envp` to `value`.
- * @param envp      an environment list that can be freed using g_strfreev() (e.g., as     returned from g_get_environ()), or %NULL for an empty     environment list
+ * @param envp an environment list that can be freed using g_strfreev() (e.g., as     returned from g_get_environ()), or %NULL for an empty     environment list
  * @param variable the environment variable to set, must not     contain '='
  * @param value the value for to set the variable to
  * @param overwrite whether to change the variable if it already exists
- * @returns      the updated environment list. Free it using g_strfreev().
+ * @returns the updated environment list. Free it using g_strfreev().
  */
 export function environSetenv(envp: string[] | null, variable: string, value: string, overwrite: boolean): string[]
 /**
  * Removes the environment variable `variable` from the provided
  * environment `envp`.
- * @param envp      an environment list that can be freed using g_strfreev() (e.g., as     returned from g_get_environ()), or %NULL for an empty environment list
+ * @param envp an environment list that can be freed using g_strfreev() (e.g., as     returned from g_get_environ()), or %NULL for an empty environment list
  * @param variable the environment variable to remove, must not     contain '='
- * @returns      the updated environment list. Free it using g_strfreev().
+ * @returns the updated environment list. Free it using g_strfreev().
  */
 export function environUnsetenv(envp: string[] | null, variable: string): string[]
 /**
@@ -6454,7 +6454,7 @@ export function filenameFromUri(uri: string): [ /* returnType */ string, /* host
  * %G_CONVERT_ERROR_EMBEDDED_NUL is set and the function returns %NULL.
  * @param utf8string a UTF-8 encoded string.
  * @param len the length of the string, or -1 if the string is                 nul-terminated.
- * @returns                The converted string, or %NULL on an error.
+ * @returns The converted string, or %NULL on an error.
  */
 export function filenameFromUtf8(utf8string: string, len: number): [ /* returnType */ string, /* bytesRead */ number, /* bytesWritten */ number ]
 /**
@@ -6674,7 +6674,7 @@ export function getCurrentTime(result: TimeVal): void
  * 
  * The return value is freshly allocated and it should be freed with
  * g_strfreev() when it is no longer needed.
- * @returns      the list of environment variables
+ * @returns the list of environment variables
  */
 export function getEnviron(): string[]
 /**
@@ -6887,7 +6887,7 @@ export function getRealTime(): number
  * 
  * The return value is cached and modifying it at runtime is not supported, as
  * it’s not thread-safe to modify environment variables at runtime.
- * @returns      a %NULL-terminated array of strings owned by GLib that must not be     modified or freed.
+ * @returns a %NULL-terminated array of strings owned by GLib that must not be     modified or freed.
  */
 export function getSystemConfigDirs(): string[]
 /**
@@ -6925,7 +6925,7 @@ export function getSystemConfigDirs(): string[]
  * 
  * The return value is cached and modifying it at runtime is not supported, as
  * it’s not thread-safe to modify environment variables at runtime.
- * @returns      a %NULL-terminated array of strings owned by GLib that must not be     modified or freed.
+ * @returns a %NULL-terminated array of strings owned by GLib that must not be     modified or freed.
  */
 export function getSystemDataDirs(): string[]
 /**
@@ -7522,7 +7522,7 @@ export function keyFileErrorQuark(): Quark
  * array are in system codepage encoding, while in most of the typical
  * use cases for environment variables in GLib-using programs you want
  * the UTF-8 encoding that this function and g_getenv() provide.
- * @returns      a %NULL-terminated list of strings which must be freed with     g_strfreev().
+ * @returns a %NULL-terminated list of strings which must be freed with     g_strfreev().
  */
 export function listenv(): string[]
 /**
@@ -7537,7 +7537,7 @@ export function listenv(): string[]
  * input that may contain embedded nul characters.
  * @param utf8string a UTF-8 encoded string
  * @param len the length of the string, or -1 if the string is                 nul-terminated.
- * @returns           A newly-allocated buffer containing the converted string,          or %NULL on an error, and error will be set.
+ * @returns A newly-allocated buffer containing the converted string,          or %NULL on an error, and error will be set.
  */
 export function localeFromUtf8(utf8string: string, len: number): [ /* returnType */ number[], /* bytesRead */ number ]
 /**
@@ -9190,8 +9190,8 @@ export function spacedPrimesClosest(num: number): number
  * process and not its identifier. Process handles and process identifiers
  * are different concepts on Windows.
  * @param workingDirectory child's current working     directory, or %NULL to inherit parent's
- * @param argv      child's argument vector
- * @param envp      child's environment, or %NULL to inherit parent's
+ * @param argv child's argument vector
+ * @param envp child's environment, or %NULL to inherit parent's
  * @param flags flags from #GSpawnFlags
  * @param childSetup function to run     in the child just before `exec()`
  * @returns %TRUE on success, %FALSE if error is set
@@ -9218,7 +9218,7 @@ export function spawnAsyncWithFds(workingDirectory: string | null, argv: string[
  * so no FD assignments are used.
  * @param workingDirectory child's current working     directory, or %NULL to inherit parent's, in the GLib file name encoding
  * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
- * @param envp      child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
+ * @param envp child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
  * @param flags flags from #GSpawnFlags
  * @param childSetup function to run     in the child just before `exec()`
  * @returns %TRUE on success, %FALSE if an error was set
@@ -9421,7 +9421,7 @@ export function spawnAsyncWithPipes(workingDirectory: string | null, argv: strin
  * #GAppLaunchContext, or set the `DISPLAY` environment variable.
  * @param workingDirectory child's current working     directory, or %NULL to inherit parent's, in the GLib file name encoding
  * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and %NULL-terminated
- * @param envp      child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
+ * @param envp child's environment, or %NULL to inherit parent's, in the GLib file     name encoding
  * @param flags flags from #GSpawnFlags
  * @param childSetup function to run     in the child just before `exec()`
  * @param stdinFd file descriptor to use for child's stdin, or `-1`
@@ -9573,8 +9573,8 @@ export function spawnExitErrorQuark(): Quark
  * function for full details on the other parameters and details on
  * how these functions work on Windows.
  * @param workingDirectory child's current working     directory, or %NULL to inherit parent's
- * @param argv      child's argument vector, which must be non-empty and %NULL-terminated
- * @param envp      child's environment, or %NULL to inherit parent's
+ * @param argv child's argument vector, which must be non-empty and %NULL-terminated
+ * @param envp child's environment, or %NULL to inherit parent's
  * @param flags flags from #GSpawnFlags
  * @param childSetup function to run     in the child just before `exec()`
  * @returns %TRUE on success, %FALSE if an error was set
@@ -11634,7 +11634,7 @@ export function uriParse(uriString: string, flags: UriFlags): Uri
  * @param length the length of `params,` or `-1` if it is nul-terminated
  * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
  * @param flags flags to modify the way the parameters are handled.
- * @returns      A hash table of attribute/value pairs, with both names and values     fully-decoded; or %NULL on error.
+ * @returns A hash table of attribute/value pairs, with both names and values     fully-decoded; or %NULL on error.
  */
 export function uriParseParams(params: string, length: number, separators: string, flags: UriParamsFlags): HashTable
 /**
@@ -13788,7 +13788,7 @@ export interface BookmarkFile {
     setVisitedDateTime(uri: string, visited: DateTime): void
     /**
      * This function outputs `bookmark` as a string.
-     * @returns    a newly allocated string holding the contents of the #GBookmarkFile
+     * @returns a newly allocated string holding the contents of the #GBookmarkFile
      */
     toData(): number[]
     /**
@@ -13996,7 +13996,7 @@ export interface Bytes {
      * %NULL may be returned if `size` is 0. This is not guaranteed, as the #GBytes
      * may represent an empty string with `data` non-%NULL and `size` as 0. %NULL will
      * not be returned if `size` is non-zero.
-     * @returns           a pointer to the byte data, or %NULL
+     * @returns a pointer to the byte data, or %NULL
      */
     getData(): number[] | null
     /**
@@ -14136,7 +14136,7 @@ export class Bytes {
      * 
      * `data` is copied. If `size` is 0, `data` may be %NULL.
      * @constructor 
-     * @param data         the data to be used for the bytes
+     * @param data the data to be used for the bytes
      * @returns a new #GBytes
      */
     constructor(data: number[] | null) 
@@ -14145,7 +14145,7 @@ export class Bytes {
      * 
      * `data` is copied. If `size` is 0, `data` may be %NULL.
      * @constructor 
-     * @param data         the data to be used for the bytes
+     * @param data the data to be used for the bytes
      * @returns a new #GBytes
      */
     static new(data: number[] | null): Bytes
@@ -14161,7 +14161,7 @@ export class Bytes {
      * 
      * `data` may be %NULL if `size` is 0.
      * @constructor 
-     * @param data         the data to be used for the bytes
+     * @param data the data to be used for the bytes
      * @returns a new #GBytes
      */
     static newTake(data: number[] | null): Bytes
@@ -16779,7 +16779,7 @@ export interface KeyFile {
      * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
      * @param groupName a group name
      * @param key a key
-     * @returns     the values associated with the key as a list of booleans, or %NULL if the    key was not found or could not be parsed. The returned list of booleans    should be freed with g_free() when no longer needed.
+     * @returns the values associated with the key as a list of booleans, or %NULL if the    key was not found or could not be parsed. The returned list of booleans    should be freed with g_free() when no longer needed.
      */
     getBooleanList(groupName: string, key: string): boolean[]
     /**
@@ -16819,7 +16819,7 @@ export interface KeyFile {
      * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
      * @param groupName a group name
      * @param key a key
-     * @returns      the values associated with the key as a list of doubles, or %NULL if the     key was not found or could not be parsed. The returned list of doubles     should be freed with g_free() when no longer needed.
+     * @returns the values associated with the key as a list of doubles, or %NULL if the     key was not found or could not be parsed. The returned list of doubles     should be freed with g_free() when no longer needed.
      */
     getDoubleList(groupName: string, key: string): number[]
     /**
@@ -16863,7 +16863,7 @@ export interface KeyFile {
      * and `error` is set to %G_KEY_FILE_ERROR_INVALID_VALUE.
      * @param groupName a group name
      * @param key a key
-     * @returns      the values associated with the key as a list of integers, or %NULL if     the key was not found or could not be parsed. The returned list of     integers should be freed with g_free() when no longer needed.
+     * @returns the values associated with the key as a list of integers, or %NULL if     the key was not found or could not be parsed. The returned list of     integers should be freed with g_free() when no longer needed.
      */
     getIntegerList(groupName: string, key: string): number[]
     /**
@@ -16960,7 +16960,7 @@ export interface KeyFile {
      * and `error` is set to %G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
      * @param groupName a group name
      * @param key a key
-     * @returns   a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
+     * @returns a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
      */
     getStringList(groupName: string, key: string): string[]
     /**
@@ -24150,7 +24150,7 @@ export class Uri {
      * @param length the length of `params,` or `-1` if it is nul-terminated
      * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
      * @param flags flags to modify the way the parameters are handled.
-     * @returns      A hash table of attribute/value pairs, with both names and values     fully-decoded; or %NULL on error.
+     * @returns A hash table of attribute/value pairs, with both names and values     fully-decoded; or %NULL on error.
      */
     static parseParams(params: string, length: number, separators: string, flags: UriParamsFlags): HashTable
     /**
@@ -24457,7 +24457,7 @@ export interface Variant {
      * returning a constant string, the string is duplicated.
      * 
      * The return value must be freed using g_free().
-     * @returns           a newly allocated string
+     * @returns a newly allocated string
      */
     dupBytestring(): number[]
     /**
@@ -24556,7 +24556,7 @@ export interface Variant {
      * array of bytes.
      * 
      * The return value remains valid as long as `value` exists.
-     * @returns           the constant string
+     * @returns the constant string
      */
     getBytestring(): number[]
     /**

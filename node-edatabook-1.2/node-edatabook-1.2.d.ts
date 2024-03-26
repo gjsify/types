@@ -686,7 +686,7 @@ interface BookBackend {
      * @param viewId a view identifier
      * @param rangeStart 0-based range start to retrieve the contacts for
      * @param rangeLength how many contacts to retrieve
-     * @returns     an array of the contacts, or %NULL, when the view cannot be found    or when the @range_start is out of bounds.
+     * @returns an array of the contacts, or %NULL, when the view cannot be found    or when the @range_start is out of bounds.
      */
     dupViewContacts(viewId: number, rangeStart: number, rangeLength: number): EBookContacts.Contact[] | null
     /**
@@ -2516,9 +2516,9 @@ interface BookMetaBackend {
      * Processes given changes by updating local cache content accordingly.
      * The `meta_backend` processes the changes like being online and particularly
      * requires to be online to load created and modified objects when needed.
-     * @param createdObjects     a #GSList of #EBookMetaBackendInfo object infos which had been created
-     * @param modifiedObjects     a #GSList of #EBookMetaBackendInfo object infos which had been modified
-     * @param removedObjects     a #GSList of #EBookMetaBackendInfo object infos which had been removed
+     * @param createdObjects a #GSList of #EBookMetaBackendInfo object infos which had been created
+     * @param modifiedObjects a #GSList of #EBookMetaBackendInfo object infos which had been modified
+     * @param removedObjects a #GSList of #EBookMetaBackendInfo object infos which had been removed
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
@@ -2607,7 +2607,7 @@ interface BookMetaBackend {
      * when no longer needed.
      * 
      * The caller is still responsible to free `objects` as well.
-     * @param objects     a #GSList of #EBookMetaBackendInfo object infos to split
+     * @param objects a #GSList of #EBookMetaBackendInfo object infos to split
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */

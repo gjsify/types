@@ -2311,9 +2311,9 @@ export interface CalMetaBackend extends ECal.TimezoneCache {
      * Processes given changes by updating local cache content accordingly.
      * The `meta_backend` processes the changes like being online and particularly
      * requires to be online to load created and modified objects when needed.
-     * @param createdObjects     a #GSList of #ECalMetaBackendInfo object infos which had been created
-     * @param modifiedObjects     a #GSList of #ECalMetaBackendInfo object infos which had been modified
-     * @param removedObjects     a #GSList of #ECalMetaBackendInfo object infos which had been removed
+     * @param createdObjects a #GSList of #ECalMetaBackendInfo object infos which had been created
+     * @param modifiedObjects a #GSList of #ECalMetaBackendInfo object infos which had been modified
+     * @param removedObjects a #GSList of #ECalMetaBackendInfo object infos which had been removed
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
@@ -2402,7 +2402,7 @@ export interface CalMetaBackend extends ECal.TimezoneCache {
      * when no longer needed.
      * 
      * The caller is still responsible to free `objects` as well.
-     * @param objects     a #GSList of #ECalMetaBackendInfo object infos to split
+     * @param objects a #GSList of #ECalMetaBackendInfo object infos to split
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */

@@ -2765,7 +2765,7 @@ export interface Component {
      * Queries the attendee properties of the calendar component object.
      * Free the returned #GSList with g_slist_free_full (slist, e_cal_component_attendee_free);,
      * when no longer needed.
-     * @returns     the attendees, as a #GSList of an #ECalComponentAttendee, or %NULL,    when none are set
+     * @returns the attendees, as a #GSList of an #ECalComponentAttendee, or %NULL,    when none are set
      */
     get_attendees(): ComponentAttendee[] | null
     /**
@@ -2867,7 +2867,7 @@ export interface Component {
      * Queries the list of exception date properties in a calendar component object.
      * Free the returned #GSList with g_slist_free_full (exdates, e_cal_component_datetime_free);,
      * when no longer needed.
-     * @returns     the list of exception dates, as a #GSList of #ECalComponentDateTime
+     * @returns the list of exception dates, as a #GSList of #ECalComponentDateTime
      */
     get_exdates(): ComponentDateTime[] | null
     /**

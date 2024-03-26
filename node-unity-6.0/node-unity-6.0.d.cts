@@ -154,9 +154,9 @@ export interface MergeStrategy extends GObject.Object {
     /**
      * <para>Virtual method to merge row from source model into target model.</para>
      * @virtual 
-     * @param target The target model to merge a row into 
-     * @param row An array of variants with the row data for the result 
-     * @returns A model iter pointing to the row in the target model where &commat;row was added. Or null if the result was discarded 
+     * @param target The target model to merge a row into
+     * @param row An array of variants with the row data for the result
+     * @returns A model iter pointing to the row in the target model where &commat;row was added. Or null if the result was discarded
      */
     mergeResult(target: Dee.Model, row: GLib.Variant[]): Dee.ModelIter | null
 
@@ -459,7 +459,7 @@ export class Inspector extends GObject.Object {
     _init(config?: Inspector.ConstructorProperties): void
     /**
      * <para>Get the default singleton Unity.Inspector instance, creating it dynamically if necessary.</para>
-     * @returns The singleton Unity.Inspector. If calling from C do not free this instance. 
+     * @returns The singleton Unity.Inspector. If calling from C do not free this instance.
      */
     static getDefault(): Inspector
 }
@@ -646,7 +646,7 @@ export class LauncherFavorites extends GObject.Object {
     _init(config?: LauncherFavorites.ConstructorProperties): void
     /**
      * <para>Get the default singleton Unity.LauncherFavorites instance, creating it dynamically if necessary.</para>
-     * @returns The singleton Unity.LauncherFavorites. If calling from C do not free this instance. 
+     * @returns The singleton Unity.LauncherFavorites. If calling from C do not free this instance.
      */
     static getDefault(): LauncherFavorites
 }
@@ -1021,7 +1021,7 @@ export interface OptionsFilter {
     /**
      * <para>Removes a FilterOption from the OptionsFilter.</para>
      * @param id 
-     * @returns true if a FilterOption was removed, false if FilterOption with given id couldn&apos;t be found. 
+     * @returns true if a FilterOption was removed, false if FilterOption with given id couldn&apos;t be found.
      */
     removeOption(id: string): boolean
 
@@ -2970,7 +2970,7 @@ export interface Scope {
      * <para>Invalidates current search and queues new search.</para>
      * <para>This method will invalidate &lpar;and cancel&rpar; last search and queue a new search &lpar;with the same search_string&rpar;. The #UnityScope::search-changed
      *  signal will be emitted immediately in case the Lens managing this scope is active, or as soon as it becomes active.</para>
-     * @param searchType Type of search to queue. 
+     * @param searchType Type of search to queue.
      */
     queueSearchChanged(searchType: SearchType): void
     /**
@@ -2978,7 +2978,7 @@ export interface Scope {
      * <para>Invalidate last search, so that the next search request will trigger the #UnityScope::search-changed signal even if the search would be 
      * otherwise discarded because of unchanged search key.</para>
      * <para>See also: #UnityScope::generate-search-key</para>
-     * @param searchType Type of search to invalidate. 
+     * @param searchType Type of search to invalidate.
      */
     invalidateSearch(searchType: SearchType): void
 

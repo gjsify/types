@@ -21435,7 +21435,7 @@ export interface Timeline extends Scriptable {
      * negative integer, all the markers attached to `timeline` will be
      * returned.
      * @param msecs the time to check, or -1
-     * @returns    a newly allocated, %NULL terminated string array containing the names   of the markers. Use g_strfreev() when done.
+     * @returns a newly allocated, %NULL terminated string array containing the names   of the markers. Use g_strfreev() when done.
      */
     listMarkers(msecs: number): string[]
     /**

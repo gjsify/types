@@ -662,12 +662,10 @@ export interface Engine {
     lock_group(group: number): void
     /**
      * Temporary pauses listening for XKB-related events
-     * @returns 0
      */
     pause_listen(): number
     /**
      * Resumes listening for XKB-related events
-     * @returns 0
      */
     resume_listen(): number
     /**
@@ -708,13 +706,11 @@ export interface Engine {
     /**
      * Starts listening for XKB-related events
      * @param flags any combination of XKLL_* constants
-     * @returns 0
      */
     start_listen(flags: number): number
     /**
      * Stops listening for XKB-related events
      * @param flags any combination of XKLL_* constants
-     * @returns 0
      */
     stop_listen(flags: number): number
     /**

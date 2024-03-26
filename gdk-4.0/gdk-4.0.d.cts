@@ -4918,7 +4918,7 @@ export interface Toplevel extends Surface {
      * image quality.
      * 
      * Note that some platforms don't support surface icons.
-     * @param surfaces    A list of textures to use as icon, of different sizes
+     * @param surfaces A list of textures to use as icon, of different sizes
      */
     set_icon_list(surfaces: Texture[]): void
     /**
@@ -6061,7 +6061,7 @@ export class ContentProvider extends GObject.Object {
      *                                 }, 2);
      * ```
      * @constructor 
-     * @param providers    The `GdkContentProvider`s to present the union of
+     * @param providers The `GdkContentProvider`s to present the union of
      * @returns a new `GdkContentProvider`
      */
     static new_union(providers: ContentProvider[] | null): ContentProvider
@@ -8063,7 +8063,7 @@ export interface Drop {
     /**
      * Asynchronously read the dropped data from a `GdkDrop`
      * in a format that complies with one of the mime types.
-     * @param mime_types    pointer to an array of mime types
+     * @param mime_types pointer to an array of mime types
      * @param io_priority the I/O priority for the read operation
      * @param cancellable optional `GCancellable` object
      * @param callback a `GAsyncReadyCallback` to call when   the request is satisfied
@@ -8077,7 +8077,7 @@ export interface Drop {
      * 
      * Asynchronously read the dropped data from a `GdkDrop`
      * in a format that complies with one of the mime types.
-     * @param mime_types    pointer to an array of mime types
+     * @param mime_types pointer to an array of mime types
      * @param io_priority the I/O priority for the read operation
      * @param cancellable optional `GCancellable` object
      * @returns A Promise of: the `GInputStream`
@@ -10014,7 +10014,7 @@ export interface Seat {
     get_pointer(): Device | null
     /**
      * Returns all `GdkDeviceTools` that are known to the application.
-     * @returns    A list of tools. Free with g_list_free().
+     * @returns A list of tools. Free with g_list_free().
      */
     get_tools(): DeviceTool[]
 
@@ -10978,7 +10978,7 @@ export interface ContentFormats {
      * 
      * Note that `formats` may not contain any `GType`s, in particular when
      * they are empty. In that case %NULL will be returned.
-     * @returns    %G_TYPE_INVALID-terminated array of types included in @formats
+     * @returns %G_TYPE_INVALID-terminated array of types included in @formats
      */
     get_gtypes(): GObject.GType[] | null
     /**
@@ -10986,7 +10986,7 @@ export interface ContentFormats {
      * 
      * Note that `formats` may not contain any mime types, in particular
      * when they are empty. In that case %NULL will be returned.
-     * @returns    %NULL-terminated array of interned strings of mime types included   in @formats
+     * @returns %NULL-terminated array of interned strings of mime types included   in @formats
      */
     get_mime_types(): string[] | null
     /**

@@ -47,7 +47,7 @@ function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime
 function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string | null
 /**
  * Gets all locales.
- * @returns    a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
+ * @returns a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
  */
 function get_all_locales(): string[]
 /**

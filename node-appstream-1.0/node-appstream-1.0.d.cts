@@ -504,7 +504,7 @@ export enum FormatVersion {
      */
     V0_9,
     /**
-     * 0.10
+     * 0.1
      */
     V0_10,
     /**

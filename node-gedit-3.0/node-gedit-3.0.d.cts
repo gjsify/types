@@ -500,19 +500,19 @@ export interface App extends Gio.ActionGroup, Gio.ActionMap {
     createWindow(screen: Gdk.Screen | null): Window
     /**
      * Returns all the documents currently open in #GeditApp.
-     * @returns  a newly allocated list of #GeditDocument objects
+     * @returns a newly allocated list of #GeditDocument objects
      */
     getDocuments(): Document[]
     /**
      * Returns all #GeditWindows currently open in #GeditApp.
      * This differs from gtk_application_get_windows() since it does not
      * include the preferences dialog and other auxiliary windows.
-     * @returns  a newly allocated list of #GeditWindow objects
+     * @returns a newly allocated list of #GeditWindow objects
      */
     getMainWindows(): Window[]
     /**
      * Returns all the views currently present in #GeditApp.
-     * @returns  a newly allocated list of #GeditView objects
+     * @returns a newly allocated list of #GeditView objects
      */
     getViews(): View[]
     // Has conflict: processWindowEvent(window: Window, event: Gdk.Event): boolean

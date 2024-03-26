@@ -4235,7 +4235,7 @@ export interface StructureElement {
      * 
      * The array with the results is allocated by the function. When it is
      * not needed anymore, be sure to call g_free() on it.
-     * @returns     Array containing the values for the column gaps, or %NULL if the    array is empty or the attribute is not defined.
+     * @returns Array containing the values for the column gaps, or %NULL if the    array is empty or the attribute is not defined.
      */
     getColumnGaps(): number[]
     /**
@@ -4243,7 +4243,7 @@ export interface StructureElement {
      * 
      * The array with the results is allocated by the function. When it is
      * not needed anymore, be sure to call g_free() on it.
-     * @returns     Array containing widths of the columns, or %NULL if the attribute    is not defined.
+     * @returns Array containing widths of the columns, or %NULL if the attribute    is not defined.
      */
     getColumnWidths(): number[]
     /**
@@ -4379,7 +4379,7 @@ export interface StructureElement {
      * The array with the results is allocated by the function. The number
      * of items in the returned array can be obtained with g_strv_length().
      * The returned value must be freed using g_strfreev().
-     * @returns     Zero-terminated array of strings with the table header names,    or %NULL if the attribute is not defined.
+     * @returns Zero-terminated array of strings with the table header names,    or %NULL if the attribute is not defined.
      */
     getTableHeaders(): string[]
     /**
@@ -4467,7 +4467,7 @@ export interface StructureElement {
      *    poppler_text_span_free (text_spans[i]);
      * g_free (text_spans);
      * </programlisting></informalexample>
-     * @returns     An array of #PopplerTextSpan elements.
+     * @returns An array of #PopplerTextSpan elements.
      */
     getTextSpans(): TextSpan[]
     /**

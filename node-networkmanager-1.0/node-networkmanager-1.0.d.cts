@@ -9929,12 +9929,12 @@ export interface IP6Address {
     dup(): IP6Address
     /**
      * Gets the IPv6 address property of this address object.
-     * @returns           the IPv6 address
+     * @returns the IPv6 address
      */
     getAddress(): number[]
     /**
      * Gets the IPv6 default gateway property of this address object.
-     * @returns           the IPv6 gateway address
+     * @returns the IPv6 gateway address
      */
     getGateway(): number[]
     /**
@@ -10007,7 +10007,7 @@ export interface IP6Route {
     dup(): IP6Route
     /**
      * Gets the IPv6 destination address property of this route object.
-     * @returns           the IPv6 address of destination
+     * @returns the IPv6 address of destination
      */
     getDest(): number[]
     /**
@@ -10018,7 +10018,7 @@ export interface IP6Route {
     getMetric(): number
     /**
      * Gets the IPv6 address of the next hop of this route.
-     * @returns           the IPv6 address of next hop
+     * @returns the IPv6 address of next hop
      */
     getNextHop(): number[]
     /**

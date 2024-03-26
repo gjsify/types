@@ -1963,7 +1963,7 @@ function alternative_dialog_button_order(screen: Gdk.Screen | null): boolean
  * @param keyval key value
  * @param modifiers key modifier
  * @param signal_name signal name to be bound
- * @param binding_args      list of #GtkBindingArg signal arguments
+ * @param binding_args list of #GtkBindingArg signal arguments
  */
 function binding_entry_add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: BindingArg[]): void
 /**
@@ -3335,7 +3335,7 @@ function rc_find_pixmap_in_path(settings: Settings, scanner: GLib.Scanner, pixma
 /**
  * Retrieves the current list of RC files that will be parsed
  * at the end of gtk_init().
- * @returns      A %NULL-terminated array of filenames.     This memory is owned by GTK+ and must not be freed by the application.     If you want to store this information, you should make a copy.
+ * @returns A %NULL-terminated array of filenames.     This memory is owned by GTK+ and must not be freed by the application.     If you want to store this information, you should make a copy.
  */
 function rc_get_default_files(): string[]
 /**
@@ -3814,7 +3814,7 @@ function test_find_widget(widget: Widget, label_pattern: string, widget_type: GO
 /**
  * Return the type ids that have been registered after
  * calling gtk_test_register_all_types().
- * @returns     0-terminated array of type ids
+ * @returns 0-terminated array of type ids
  */
 function test_list_all_types(): GObject.GType[]
 /**
@@ -7122,7 +7122,7 @@ interface RecentChooser {
      * properties of `chooser`.
      * 
      * Since the returned array is %NULL terminated, `length` may be %NULL.
-     * @returns      A newly allocated, %NULL-terminated array of strings. Use     g_strfreev() to free it.
+     * @returns A newly allocated, %NULL-terminated array of strings. Use     g_strfreev() to free it.
      */
     get_uris(): string[]
     /**
@@ -19901,7 +19901,7 @@ interface Container extends Atk.ImplementorIface, Buildable {
      * to set the focus chain before you pack the widgets, or have a widget
      * in the chain that isn't always packed. The necessary checks are done
      * when the focus chain is actually traversed.
-     * @param focusable_widgets      the new focus chain
+     * @param focusable_widgets the new focus chain
      */
     set_focus_chain(focusable_widgets: Widget[]): void
     /**
@@ -59053,7 +59053,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * by connecting to the `GtkAccelGroup:`:accel-changed signal of the
      * #GtkAccelGroup of a closure which can be found out with
      * gtk_accel_group_from_accel_closure().
-     * @returns      a newly allocated #GList of closures
+     * @returns a newly allocated #GList of closures
      */
     list_accel_closures(): GObject.TClosure[]
     /**
@@ -62589,7 +62589,7 @@ class BindingEntry {
      * @param keyval key value
      * @param modifiers key modifier
      * @param signal_name signal name to be bound
-     * @param binding_args      list of #GtkBindingArg signal arguments
+     * @param binding_args list of #GtkBindingArg signal arguments
      */
     static add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: BindingArg[]): void
     /**
@@ -66371,7 +66371,7 @@ interface RecentInfo {
     get_application_info(app_name: string): [ /* returnType */ boolean, /* app_exec */ string, /* count */ number, /* time_ */ number ]
     /**
      * Retrieves the list of applications that have registered this resource.
-     * @returns      a newly allocated %NULL-terminated array of strings.     Use g_strfreev() to free it.
+     * @returns a newly allocated %NULL-terminated array of strings.     Use g_strfreev() to free it.
      */
     get_applications(): string[]
     /**
@@ -66389,7 +66389,7 @@ interface RecentInfo {
      * Returns all groups registered for the recently used item `info`.  The
      * array of returned group names will be %NULL terminated, so length might
      * optionally be %NULL.
-     * @returns      a newly allocated %NULL terminated array of strings.     Use g_strfreev() to free it.
+     * @returns a newly allocated %NULL terminated array of strings.     Use g_strfreev() to free it.
      */
     get_groups(): string[]
     /**

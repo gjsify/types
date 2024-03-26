@@ -13461,7 +13461,7 @@ interface Collator {
     getIndex(str: string): number
     /**
      * Fetches the displayable labels and index positions for the active alphabet.
-     * @returns    The array of displayable labels for each index in the active alphabet(s).
+     * @returns The array of displayable labels for each index in the active alphabet(s).
      */
     getIndexLabels(): [ /* returnType */ string[], /* nLabels */ number, /* underflow */ number, /* inflow */ number, /* overflow */ number ]
     /**

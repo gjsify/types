@@ -31425,7 +31425,7 @@ export interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable,
      * of the thread you are calling this method from. You can then call
      * mm_sim_set_preferred_networks_finish() to get the result of
      * the operation.
-     * @param preferredNetworks   A list of #MMSimPreferredNetwork objects
+     * @param preferredNetworks A list of #MMSimPreferredNetwork objects
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
@@ -31448,7 +31448,7 @@ export interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable,
      * of the thread you are calling this method from. You can then call
      * mm_sim_set_preferred_networks_finish() to get the result of
      * the operation.
-     * @param preferredNetworks   A list of #MMSimPreferredNetwork objects
+     * @param preferredNetworks A list of #MMSimPreferredNetwork objects
      * @param cancellable A #GCancellable or %NULL.
      */
     setPreferredNetworksSync(preferredNetworks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null): boolean

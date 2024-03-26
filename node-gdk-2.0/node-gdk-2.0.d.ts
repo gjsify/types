@@ -3522,7 +3522,7 @@ function keyvalToUpper(keyval: number): number
  * and might expect pixels to be in a certain format.
  * 
  * Call g_list_free() on the return value when you're finished with it.
- * @returns      a list of visuals; the list must be freed, but not its contents
+ * @returns a list of visuals; the list must be freed, but not its contents
  */
 function listVisuals(): Visual[]
 /**
@@ -6547,7 +6547,7 @@ interface Screen {
      * 
      * The returned list should be freed with g_list_free(), but
      * its elements need not be freed.
-     * @returns      list of toplevel windows, free with g_list_free()
+     * @returns list of toplevel windows, free with g_list_free()
      */
     getToplevelWindows(): Window[]
     /**
@@ -6577,7 +6577,7 @@ interface Screen {
      * The returned list is newly allocated and owns references to the
      * windows it contains, so it should be freed using g_list_free() and
      * its windows unrefed using g_object_unref() when no longer needed.
-     * @returns      a list of #GdkWindow<!-- -->s for the current window stack,               or %NULL.
+     * @returns a list of #GdkWindow<!-- -->s for the current window stack,               or %NULL.
      */
     getWindowStack(): Window[]
     /**
@@ -6597,7 +6597,7 @@ interface Screen {
      * and might expect pixels to be in a certain format.
      * 
      * Call g_list_free() on the return value when you're finished with it.
-     * @returns      a list of visuals; the list must be freed, but not its contents
+     * @returns a list of visuals; the list must be freed, but not its contents
      */
     listVisuals(): Visual[]
     /**
@@ -7246,7 +7246,7 @@ interface Window {
      * 
      * The returned list must be freed, but the elements in the
      * list need not be.
-     * @returns      list of child windows inside @window
+     * @returns list of child windows inside @window
      */
     getChildren(): Window[]
     /**
@@ -7675,7 +7675,7 @@ interface Window {
     /**
      * Like gdk_window_get_children(), but does not copy the list of
      * children, so the list does not need to be freed.
-     * @returns      a reference to the list of child windows in @window
+     * @returns a reference to the list of child windows in @window
      */
     peekChildren(): Window[]
     /**
@@ -8004,7 +8004,7 @@ interface Window {
      * can scale the icon  but setting several size icons can give better
      * image quality since the window manager may only need to scale the
      * icon by a small amount or not at all.
-     * @param pixbufs      A list of pixbufs, of different sizes.
+     * @param pixbufs A list of pixbufs, of different sizes.
      */
     setIconList(pixbufs: GdkPixbuf.Pixbuf[]): void
     /**

@@ -23947,7 +23947,7 @@ export interface TabBar extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * 
      * The [signal`TabBar:`:extra-drag-drop] signal can be used to handle the drop.
      * @param actions the supported actions
-     * @param types    all supported `GType`s that can be dropped
+     * @param types all supported `GType`s that can be dropped
      */
     setupExtraDropTarget(actions: Gdk.DragAction, types: GObject.GType[] | null): void
 
@@ -24917,7 +24917,7 @@ export interface TabOverview extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * The [signal`TabOverview:`:extra-drag-drop] signal can be used to handle the
      * drop.
      * @param actions the supported actions
-     * @param types    all supported `GType`s that can be dropped
+     * @param types all supported `GType`s that can be dropped
      */
     setupExtraDropTarget(actions: Gdk.DragAction, types: GObject.GType[] | null): void
 

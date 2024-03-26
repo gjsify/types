@@ -15850,7 +15850,7 @@ export interface Setting {
     option_get(opt_name: string): GLib.Variant
     /**
      * Gives the name of all set options.
-     * @returns    A %NULL terminated array of key names. If no names are present, this returns   %NULL. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
+     * @returns A %NULL terminated array of key names. If no names are present, this returns   %NULL. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
      */
     option_get_all_names(): string[] | null
     option_get_boolean(opt_name: string): [ /* returnType */ boolean, /* out_value */ boolean | null ]

@@ -12931,7 +12931,7 @@ export interface Collator {
     get_index(str: string): number
     /**
      * Fetches the displayable labels and index positions for the active alphabet.
-     * @returns    The array of displayable labels for each index in the active alphabet(s).
+     * @returns The array of displayable labels for each index in the active alphabet(s).
      */
     get_index_labels(): [ /* returnType */ string[], /* n_labels */ number, /* underflow */ number, /* inflow */ number, /* overflow */ number ]
     /**

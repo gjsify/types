@@ -3786,14 +3786,14 @@ function buffer_append(buffer: buffer_t, source: buffer_t, start: number, end: n
 function buffer_clear_contents(buffer: buffer_t): void
 /**
  * Creates a new #hb_buffer_t with all properties to defaults.
- * @returns  A newly allocated #hb_buffer_t with a reference count of 1. The initial reference count should be released with hb_buffer_destroy() when you are done using the #hb_buffer_t. This function never returns `NULL`. If memory cannot be allocated, a special #hb_buffer_t object will be returned on which hb_buffer_allocation_successful() returns `false`.
+ * @returns A newly allocated #hb_buffer_t with a reference count of 1. The initial reference count should be released with hb_buffer_destroy() when you are done using the #hb_buffer_t. This function never returns `NULL`. If memory cannot be allocated, a special #hb_buffer_t object will be returned on which hb_buffer_allocation_successful() returns `false`.
  */
 function buffer_create(): buffer_t
 /**
  * Creates a new #hb_buffer_t, similar to hb_buffer_create(). The only
  * difference is that the buffer is configured similarly to `src`.
  * @param src An #hb_buffer_t
- * @returns  A newly allocated #hb_buffer_t, similar to hb_buffer_create().
+ * @returns A newly allocated #hb_buffer_t, similar to hb_buffer_create().
  */
 function buffer_create_similar(src: buffer_t): buffer_t
 /**
@@ -3861,7 +3861,7 @@ function buffer_get_flags(buffer: buffer_t): buffer_flags_t
  * Returns `buffer` glyph information array.  Returned pointer
  * is valid as long as `buffer` contents are not modified.
  * @param buffer An #hb_buffer_t
- * @returns  The @buffer glyph information array. The value valid as long as buffer has not been modified.
+ * @returns The @buffer glyph information array. The value valid as long as buffer has not been modified.
  */
 function buffer_get_glyph_infos(buffer: buffer_t): glyph_info_t[]
 /**
@@ -3873,7 +3873,7 @@ function buffer_get_glyph_infos(buffer: buffer_t): glyph_info_t[]
  * within a buffer message callback (see hb_buffer_set_message_func()),
  * in which case `NULL` is returned.
  * @param buffer An #hb_buffer_t
- * @returns  The @buffer glyph position array. The value valid as long as buffer has not been modified.
+ * @returns The @buffer glyph position array. The value valid as long as buffer has not been modified.
  */
 function buffer_get_glyph_positions(buffer: buffer_t): glyph_position_t[]
 /**
@@ -3885,7 +3885,7 @@ function buffer_get_invisible_glyph(buffer: buffer_t): codepoint_t
 /**
  * See hb_buffer_set_language().
  * @param buffer An #hb_buffer_t
- * @returns  The #hb_language_t of the buffer. Must not be freed by the caller.
+ * @returns The #hb_language_t of the buffer. Must not be freed by the caller.
  */
 function buffer_get_language(buffer: buffer_t): language_t
 /**
@@ -4024,7 +4024,7 @@ function buffer_serialize_format_from_string(str: Uint8Array): buffer_serialize_
  * Converts `format` to the string corresponding it, or `NULL` if it is not a valid
  * #hb_buffer_serialize_format_t.
  * @param format an #hb_buffer_serialize_format_t to convert.
- * @returns  A `NULL` terminated string corresponding to @format. Should not be freed.
+ * @returns A `NULL` terminated string corresponding to @format. Should not be freed.
  */
 function buffer_serialize_format_to_string(format: buffer_serialize_format_t): string
 /**
@@ -4081,7 +4081,7 @@ function buffer_serialize_format_to_string(format: buffer_serialize_format_t): s
 function buffer_serialize_glyphs(buffer: buffer_t, start: number, end: number, font: font_t | null, format: buffer_serialize_format_t, flags: buffer_serialize_flags_t): [ /* returnType */ number, /* buf */ Uint8Array, /* buf_consumed */ number ]
 /**
  * Returns a list of supported buffer serialization formats.
- * @returns  A string array of buffer serialization formats. Should not be freed.
+ * @returns A string array of buffer serialization formats. Should not be freed.
  */
 function buffer_serialize_list_formats(): string[]
 /**
@@ -4349,7 +4349,7 @@ function draw_close_path(dfuncs: draw_funcs_t, draw_data: any | null, st: draw_s
 function draw_cubic_to(dfuncs: draw_funcs_t, draw_data: any | null, st: draw_state_t, control1_x: number, control1_y: number, control2_x: number, control2_y: number, to_x: number, to_y: number): void
 /**
  * Creates a new draw callbacks object.
- * @returns  A newly allocated #hb_draw_funcs_t with a reference count of 1. The initial reference count should be released with hb_draw_funcs_destroy when you are done using the #hb_draw_funcs_t. This function never returns `NULL`. If memory cannot be allocated, a special singleton #hb_draw_funcs_t object will be returned.
+ * @returns A newly allocated #hb_draw_funcs_t with a reference count of 1. The initial reference count should be released with hb_draw_funcs_destroy when you are done using the #hb_draw_funcs_t. This function never returns `NULL`. If memory cannot be allocated, a special singleton #hb_draw_funcs_t object will be returned.
  */
 function draw_funcs_create(): draw_funcs_t
 /**
@@ -5633,7 +5633,7 @@ function glyph_info_get_glyph_flags(info: glyph_info_t): glyph_flags_t
  * Converts `str` representing a BCP 47 language tag to the corresponding
  * #hb_language_t.
  * @param str a string representing       a BCP 47 language tag
- * @returns  The #hb_language_t corresponding to the BCP 47 language tag.
+ * @returns The #hb_language_t corresponding to the BCP 47 language tag.
  */
 function language_from_string(str: Uint8Array): language_t
 /**
@@ -5660,7 +5660,7 @@ function language_matches(language: language_t, specific: language_t): bool_t
 /**
  * Converts an #hb_language_t to a string.
  * @param language The #hb_language_t to convert
- * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
+ * @returns A `NULL`-terminated string representing the @language. Must not be freed by the caller.
  */
 function language_to_string(language: language_t): string
 /**
@@ -6612,7 +6612,7 @@ function ot_tag_from_language(language: language_t): tag_t
 /**
  * Converts a language tag to an #hb_language_t.
  * @param tag an language tag
- * @returns  The #hb_language_t corresponding to @tag.
+ * @returns The #hb_language_t corresponding to @tag.
  */
 function ot_tag_to_language(tag: tag_t): language_t | null
 /**
@@ -8750,7 +8750,7 @@ interface language_t {
 
     /**
      * Converts an #hb_language_t to a string.
-     * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
+     * @returns A `NULL`-terminated string representing the @language. Must not be freed by the caller.
      */
     _string(): string
 }

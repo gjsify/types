@@ -985,7 +985,7 @@ export interface Menuitem {
      * internal list.  The calling function is now in charge of the ref's
      * on the children it has taken.  A lot of responsibility involved
      * in taking children.
-     * @returns     A #GList of pointers to #DbusmenuMenuitem objects.
+     * @returns A #GList of pointers to #DbusmenuMenuitem objects.
      */
     takeChildren(): Menuitem[]
     /**

@@ -674,7 +674,7 @@ interface CompletionProvider {
      * @virtual 
      * @param context a #GtkSourceCompletionContext
      * @param proposal a #GtkSourceCompletionProposal
-     * @returns    a #GPtrArray of #GtkSourceCompletionProposal or %NULL.
+     * @returns a #GPtrArray of #GtkSourceCompletionProposal or %NULL.
      */
     listAlternates(context: CompletionContext, proposal: CompletionProposal): CompletionProposal[] | null
     /**
@@ -1233,7 +1233,7 @@ interface Buffer {
      * If `category` is %NULL it returns all marks at `iter`.
      * @param iter an iterator.
      * @param category category to search for, or %NULL
-     * @returns  a newly allocated #GSList.
+     * @returns a newly allocated #GSList.
      */
     getSourceMarksAtIter(iter: Gtk.TextIter, category: string | null): Mark[]
     /**
@@ -1242,7 +1242,7 @@ interface Buffer {
      * If `category` is %NULL, all marks at `line` are returned.
      * @param line a line number.
      * @param category category to search for, or %NULL
-     * @returns  a newly allocated #GSList.
+     * @returns a newly allocated #GSList.
      */
     getSourceMarksAtLine(line: number, category: string | null): Mark[]
     /**
@@ -5425,7 +5425,7 @@ interface Language {
      * 
      * This is just an utility wrapper around [method`Language`.get_metadata] to
      * retrieve the "globs" metadata property and split it into an array.
-     * @returns  a newly-allocated %NULL terminated array containing the globs or %NULL if no globs are found. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing the globs or %NULL if no globs are found. The returned array must be freed with g_strfreev().
      */
     getGlobs(): string[] | null
     /**
@@ -5448,7 +5448,7 @@ interface Language {
      * This is just an utility wrapper around [method`Language`.get_metadata] to
      * retrieve the "mimetypes" metadata property and split it into an
      * array.
-     * @returns  a newly-allocated %NULL terminated array containing the mime types or %NULL if no mime types are found. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing the mime types or %NULL if no mime types are found. The returned array must be freed with g_strfreev().
      */
     getMimeTypes(): string[] | null
     /**
@@ -5478,7 +5478,7 @@ interface Language {
     getStyleFallback(styleId: string): string | null
     /**
      * Returns the ids of the styles defined by this `language`.
-     * @returns  a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
+     * @returns a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
      */
     getStyleIds(): string[] | null
     /**
@@ -5585,7 +5585,7 @@ interface LanguageManager {
     getLanguage(id: string): Language | null
     /**
      * Returns the ids of the available languages.
-     * @returns  a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
+     * @returns a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
      */
     getLanguageIds(): string[] | null
     /**
@@ -8829,7 +8829,7 @@ interface SnippetManager {
      * 
      * The result should be freed with g_free(), and the individual strings are
      * owned by `self` and should never be freed by the caller.
-     * @returns    An array of strings which should be freed with g_free().
+     * @returns An array of strings which should be freed with g_free().
      */
     listGroups(): string[]
     /**
@@ -10098,7 +10098,7 @@ interface StyleSchemeManager {
     getScheme(schemeId: string): StyleScheme | null
     /**
      * Returns the ids of the available style schemes.
-     * @returns  a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
+     * @returns a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
      */
     getSchemeIds(): string[] | null
     /**

@@ -5263,7 +5263,7 @@ interface Bus {
      * this function will simply ignore them, and return rest of engines.
      * TODO(penghuang): add asynchronous version
      * @param names A %NULL-terminated array of names.
-     * @returns          A %NULL-terminated array of engines.
+     * @returns A %NULL-terminated array of engines.
      */
     get_engines_by_names(names: string[]): EngineDesc[]
     /**
@@ -5392,7 +5392,7 @@ interface Bus {
     is_global_engine_enabled_async_finish(res: Gio.AsyncResult): boolean
     /**
      * List active engines synchronously.
-     * @returns         A List of active engines.
+     * @returns A List of active engines.
      */
     list_active_engines(): EngineDesc[]
     /**
@@ -5405,12 +5405,12 @@ interface Bus {
     /**
      * Finishes an operation started with ibus_bus_list_active_engines_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_active_engines_async().
-     * @returns          A List of active engines.
+     * @returns A List of active engines.
      */
     list_active_engines_async_finish(res: Gio.AsyncResult): EngineDesc[]
     /**
      * List engines synchronously.
-     * @returns          A List of engines.
+     * @returns A List of engines.
      */
     list_engines(): EngineDesc[]
     /**
@@ -5423,7 +5423,7 @@ interface Bus {
     /**
      * Finishes an operation started with ibus_bus_list_engines_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_list_engines_async().
-     * @returns          A List of engines.
+     * @returns A List of engines.
      */
     list_engines_async_finish(res: Gio.AsyncResult): EngineDesc[]
     /**
@@ -5437,7 +5437,7 @@ interface Bus {
      * Lists the unique bus names of connections currently queued for a bus name.
      * FIXME add an asynchronous version.
      * @param name Name to be queried.
-     * @returns            The unique bus names of connections currently queued for @name.
+     * @returns The unique bus names of connections currently queued for @name.
      */
     list_queued_owners(name: string): string[]
     /**
@@ -5796,7 +5796,7 @@ interface Component {
     get_description(): string
     /**
      * Gets the engines of this component.
-     * @returns  A newly allocated GList that contains engines.
+     * @returns A newly allocated GList that contains engines.
      */
     get_engines(): EngineDesc[]
     /**
@@ -9654,12 +9654,12 @@ interface Registry {
     check_modification(): boolean
     /**
      * List components.
-     * @returns  a list of #IBusComponent objects. The caller has to call g_list_free() for the returned list.
+     * @returns a list of #IBusComponent objects. The caller has to call g_list_free() for the returned list.
      */
     get_components(): Component[]
     /**
      * List observed paths.
-     * @returns  a list of #IBusObservedPath objects. The caller has to call g_list_free() for the returned list.
+     * @returns a list of #IBusObservedPath objects. The caller has to call g_list_free() for the returned list.
      */
     get_observed_paths(): ObservedPath[]
     /**

@@ -368,7 +368,7 @@ interface Device {
      * horizontal tab ('\t'), and vertical tab ('\v') are considered; the
      * locale is not taken into account).
      * @param key Name of property.
-     * @returns  The value of @key on @device split into tokens or %NULL if @key doesn't exist. This array is owned by @device and should not be freed by the caller.
+     * @returns The value of @key on @device split into tokens or %NULL if @key doesn't exist. This array is owned by @device and should not be freed by the caller.
      */
     getPropertyAsStrv(key: string): string[] | null
     /**
@@ -473,7 +473,7 @@ interface Device {
      * the same value and not open the attribute again, unless updated through
      * one of the "uncached" functions.
      * @param name Name of the sysfs attribute.
-     * @returns  The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller.
+     * @returns The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller.
      */
     getSysfsAttrAsStrv(name: string): string[] | null
     /**
@@ -485,7 +485,7 @@ interface Device {
      * 
      * This function does blocking I/O, and updates the sysfs attributes cache.
      * @param name Name of the sysfs attribute.
-     * @returns  The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller. Before version 238 the uncached getters would not strip trailing newlines.
+     * @returns The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller. Before version 238 the uncached getters would not strip trailing newlines.
      */
     getSysfsAttrAsStrvUncached(name: string): string[] | null
     /**

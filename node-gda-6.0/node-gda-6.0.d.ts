@@ -17883,7 +17883,6 @@ interface SqlOperation {
      */
     operatorType: SqlOperatorType
     /**
-     * 
      * : list of #GdaSqlExpr operands
      * @field 
      */

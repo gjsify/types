@@ -4651,8 +4651,8 @@ export function presetSetAppDir(appDir: string): boolean
 /**
  * Iterates the supplied list of UUIDs and checks the GstRegistry for
  * all the decryptors supporting one of the supplied UUIDs.
- * @param systemIdentifiers  A null terminated array of strings that contains the UUID values of each protection system that is to be checked.
- * @returns  A null terminated array containing all the @system_identifiers supported by the set of available decryptors, or %NULL if no matches were found.
+ * @param systemIdentifiers A null terminated array of strings that contains the UUID values of each protection system that is to be checked.
+ * @returns A null terminated array containing all the @system_identifiers supported by the set of available decryptors, or %NULL if no matches were found.
  */
 export function protectionFilterSystemsByAvailableDecryptors(systemIdentifiers: string[]): string[] | null
 export function protectionMetaApiGetType(): GObject.GType
@@ -6714,7 +6714,7 @@ export interface Preset {
     /**
      * Get a copy of preset names as a %NULL terminated string array.
      * @virtual 
-     * @returns      list with names, use g_strfreev() after usage.
+     * @returns list with names, use g_strfreev() after usage.
      */
     getPresetNames(): string[]
     /**
@@ -10058,7 +10058,7 @@ export interface DeviceMonitor {
      * Get a list of the currently selected device provider factories.
      * 
      * This
-     * @returns      A list of device provider factory names that are currently being     monitored by @monitor or %NULL when nothing is being monitored.
+     * @returns A list of device provider factory names that are currently being     monitored by @monitor or %NULL when nothing is being monitored.
      */
     getProviders(): string[]
     /**
@@ -10338,7 +10338,7 @@ export interface DeviceProvider {
     /**
      * Get the provider factory names of the #GstDeviceProvider instances that
      * are hidden by `provider`.
-     * @returns    a list of hidden providers factory names or %NULL when   nothing is hidden by @provider. Free with g_strfreev.
+     * @returns a list of hidden providers factory names or %NULL when   nothing is hidden by @provider. Free with g_strfreev.
      */
     getHiddenProviders(): string[]
     /**
@@ -10585,7 +10585,7 @@ export interface DeviceProviderFactory {
     getMetadata(key: string): string | null
     /**
      * Get the available keys for the metadata on `factory`.
-     * @returns  a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
+     * @returns a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
      */
     getMetadataKeys(): string[] | null
     /**
@@ -10692,7 +10692,7 @@ export class DeviceProviderFactory extends PluginFeature {
      * Get a list of factories with a rank greater or equal to `minrank`.
      * The list of factories is returned by decreasing rank.
      * @param minrank Minimum rank
-     * @returns  a #GList of #GstDeviceProviderFactory device providers. Use gst_plugin_feature_list_free() after usage.
+     * @returns a #GList of #GstDeviceProviderFactory device providers. Use gst_plugin_feature_list_free() after usage.
      */
     static listGetDeviceProviders(minrank: Rank): DeviceProviderFactory[]
 }
@@ -11987,7 +11987,7 @@ export interface ElementFactory {
     getMetadata(key: string): string | null
     /**
      * Get the available keys for the metadata on `factory`.
-     * @returns  a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
+     * @returns a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
      */
     getMetadataKeys(): string[] | null
     /**
@@ -12889,7 +12889,7 @@ export class Object extends GObject.InitiallyUnowned {
      * @param object the #GObject that signalled the notify.
      * @param orig a #GstObject that initiated the notify.
      * @param pspec a #GParamSpec of the property.
-     * @param excludedProps      a set of user-specified properties to exclude or %NULL to show     all changes.
+     * @param excludedProps a set of user-specified properties to exclude or %NULL to show     all changes.
      */
     static defaultDeepNotify(object: GObject.Object, orig: Object, pspec: GObject.ParamSpec, excludedProps: string[] | null): void
     /**
@@ -17069,7 +17069,7 @@ export interface TypeFindFactory {
      * array should not be changed. If you need to change stuff in it, you should
      * copy it using g_strdupv().  This function may return %NULL to indicate
      * a 0-length list.
-     * @returns      a %NULL-terminated array of extensions associated with this factory
+     * @returns a %NULL-terminated array of extensions associated with this factory
      */
     getExtensions(): string[] | null
     /**

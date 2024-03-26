@@ -1062,7 +1062,7 @@ function form_decode(encoded_form: string): GLib.HashTable
  * and [method`Multipart`.get_part].
  * @param multipart a #SoupMultipart
  * @param file_control_name the name of the HTML file upload control
- * @returns    a hash table containing the name/value pairs (other than   @file_control_name) from @msg, which you can free with   [func@GLib.HashTable.destroy]. On error, it will return %NULL.
+ * @returns a hash table containing the name/value pairs (other than   @file_control_name) from @msg, which you can free with   [func@GLib.HashTable.destroy]. On error, it will return %NULL.
  */
 function form_decode_multipart(multipart: Multipart, file_control_name: string | null): [ /* returnType */ GLib.HashTable | null, /* filename */ string, /* content_type */ string, /* file */ GLib.Bytes ]
 /**
@@ -1204,7 +1204,7 @@ function header_parse_param_list(header: string): GLib.HashTable
  * RFC5987-encoded parameters, use
  * [func`header_parse_param_list]` instead.
  * @param header a header value
- * @returns    a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
+ * @returns a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
  */
 function header_parse_param_list_strict(header: string): GLib.HashTable | null
 /**
@@ -1243,7 +1243,7 @@ function header_parse_semi_param_list(header: string): GLib.HashTable
  * RFC5987-encoded parameters, use
  * [func`header_parse_semi_param_list]` instead.
  * @param header a header value
- * @returns    a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
+ * @returns a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
  */
 function header_parse_semi_param_list_strict(header: string): GLib.HashTable | null
 /**
@@ -5777,7 +5777,7 @@ interface ServerMessage {
      * `content_type` is %NULL, the response body must be empty as well.
      * @param content_type MIME Content-Type of the body
      * @param resp_use a #SoupMemoryUse describing how to handle `resp_body`
-     * @param resp_body    a data buffer containing the body of the message response.
+     * @param resp_body a data buffer containing the body of the message response.
      */
     set_response(content_type: string | null, resp_use: MemoryUse, resp_body: Uint8Array | null): void
     /**

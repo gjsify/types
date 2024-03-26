@@ -304,7 +304,7 @@ function candidateListCopy(candidateList: Codec[]): Codec[]
 function codecListAreEqual(list1: Codec[] | null, list2: Codec[] | null): boolean
 /**
  * Copies a list of #FsCodec structures.
- * @param codecList    a GList of #FsCodec to copy
+ * @param codecList a GList of #FsCodec to copy
  * @returns The new list.
  */
 function codecListCopy(codecList: Codec[]): Codec[]
@@ -333,7 +333,7 @@ function codecListCopy(codecList: Codec[]): Codec[]
  * ```
  * 
  * @param filename Name of the #GKeyFile to read the codecs parameters from
- * @returns  The #GList of #FsCodec or %NULL if the keyfile was empty or an error occured.
+ * @returns The #GList of #FsCodec or %NULL if the keyfile was empty or an error occured.
  */
 function codecListFromKeyfile(filename: string): Codec[]
 function errorQuark(): GLib.Quark
@@ -353,7 +353,7 @@ function mediaTypeToString(mediaType: MediaType): string
 function parseError(object: GObject.Object, message: Gst.Message): [ /* returnType */ boolean, /* error */ Error, /* errorMsg */ string ]
 /**
  * Does a deep copy of a #GList of #FsRtpHeaderExtension
- * @param extensions    a #GList of #FsRtpHeaderExtension
+ * @param extensions a #GList of #FsRtpHeaderExtension
  * @returns a new #GList of #FsRtpHeaderExtension
  */
 function rtpHeaderExtensionListCopy(extensions: RtpHeaderExtension[]): RtpHeaderExtension[]
@@ -396,7 +396,7 @@ function rtpHeaderExtensionListFromKeyfile(filename: string, mediaType: MediaTyp
  * available in the main GStreamer element repositories.
  * They should be suitable for standards based protocols like SIP or XMPP.
  * @param element Element for which to fetch default codec preferences
- * @returns  The default codec preferences for this plugin. This #GList should be freed with fs_codec_list_destroy()
+ * @returns The default codec preferences for this plugin. This #GList should be freed with fs_codec_list_destroy()
  */
 function utilsGetDefaultCodecPreferences(element: Gst.Element): Codec[]
 /**
@@ -1096,8 +1096,8 @@ interface Session {
      * because they contain important parameters required to decode the media.
      * Other codec updates, caused by user action, don't.
      * @virtual 
-     * @param oldCodecs   Codecs previously retrieved from the #FsSession:codecs property
-     * @param newCodecs    Codecs recently retrieved from the #FsSession:codecs property
+     * @param oldCodecs Codecs previously retrieved from the #FsSession:codecs property
+     * @param newCodecs Codecs recently retrieved from the #FsSession:codecs property
      * @returns A new #GList of  #FsCodec that need to be resent or %NULL if there are none. This  list must be freed with fs_codec_list_destroy().
      */
     codecsNeedResend(oldCodecs: Codec[] | null, newCodecs: Codec[] | null): Codec[]
@@ -1490,7 +1490,7 @@ interface Stream {
      * This is the same as fs_stream_set_transmitter() except that the parameters
      * are passed in a #GHashTable to make it more friendly to GObject introspection
      * @param transmitter Name of the type of transmitter to use for this stream
-     * @param streamTransmitterParameters    A #GHashTable of string->GValue containing the parameters.
+     * @param streamTransmitterParameters A #GHashTable of string->GValue containing the parameters.
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
     setTransmitterHt(transmitter: string, streamTransmitterParameters: GLib.HashTable | null): boolean
@@ -1530,7 +1530,7 @@ interface Stream {
      * candidate, by-passing any connectivity checks. There should be at most
      * one candidate per component.
      * @virtual 
-     * @param remoteCandidates    a #GList of #FsCandidate to force
+     * @param remoteCandidates a #GList of #FsCandidate to force
      * @returns %TRUE if the candidates could be forced, %FALSE otherwise
      */
     forceRemoteCandidates(remoteCandidates: Candidate[]): boolean
@@ -1561,7 +1561,7 @@ interface Stream {
      * selected stream transmitter.
      * @virtual 
      * @param transmitter Name of the type of transmitter to use for this stream
-     * @param streamTransmitterParameters    an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
+     * @param streamTransmitterParameters an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
     setTransmitter(transmitter: string, streamTransmitterParameters: GObject.Parameter[] | null): boolean
@@ -2287,7 +2287,7 @@ interface Codec {
      * Removes an optional parameter from a codec.
      * 
      * NULL param will do nothing.
-     * @param item     a pointer to the #GList element to remove that contains a #FsFeedbackParameter
+     * @param item a pointer to the #GList element to remove that contains a #FsFeedbackParameter
      */
     removeFeedbackParameter(item: FeedbackParameter[]): void
     /**

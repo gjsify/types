@@ -2621,10 +2621,10 @@ export interface Diff {
     find_similar(options: DiffFindOptions | null): boolean
     /**
      * Iterates over the diff calling `file_cb,` `binary_cb,` `hunk_cb` and `line_cb`.
-     * @param file_cb   a #GgitDiffFileCallback.
-     * @param binary_cb   a #GgitDiffBinaryCallback.
-     * @param hunk_cb   a #GgitDiffHunkCallback.
-     * @param line_cb   a #GgitDiffLineCallback.
+     * @param file_cb a #GgitDiffFileCallback.
+     * @param binary_cb a #GgitDiffBinaryCallback.
+     * @param hunk_cb a #GgitDiffHunkCallback.
+     * @param line_cb a #GgitDiffLineCallback.
      */
     foreach(file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void
     /**
@@ -2759,10 +2759,10 @@ export class Diff extends Native {
      * @param buffer a buffer to diff to.
      * @param buffer_as_path treat `buffer` as if it had this filename, or %NULL,
      * @param diff_options a #GgitDiffOptions, or %NULL.
-     * @param file_cb   a #GgitDiffFileCallback.
-     * @param binary_cb   a #GgitDiffBinaryCallback.
-     * @param hunk_cb   a #GgitDiffHunkCallback.
-     * @param line_cb   a #GgitDiffLineCallback.
+     * @param file_cb a #GgitDiffFileCallback.
+     * @param binary_cb a #GgitDiffBinaryCallback.
+     * @param hunk_cb a #GgitDiffHunkCallback.
+     * @param line_cb a #GgitDiffLineCallback.
      */
     static blob_to_buffer(old_blob: Blob | null, old_as_path: string | null, buffer: Uint8Array | null, buffer_as_path: string | null, diff_options: DiffOptions | null, file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void
     /**
@@ -2778,10 +2778,10 @@ export class Diff extends Native {
      * @param new_blob a #GgitBlob to diff to.
      * @param new_as_path treat `new_blob` as if it had this filename, or %NULL,
      * @param diff_options a #GgitDiffOptions, or %NULL.
-     * @param file_cb   a #GgitDiffFileCallback.
-     * @param binary_cb   a #GgitDiffBinaryCallback.
-     * @param hunk_cb   a #GgitDiffHunkCallback.
-     * @param line_cb   a #GgitDiffLineCallback.
+     * @param file_cb a #GgitDiffFileCallback.
+     * @param binary_cb a #GgitDiffBinaryCallback.
+     * @param hunk_cb a #GgitDiffHunkCallback.
+     * @param line_cb a #GgitDiffLineCallback.
      */
     static blobs(old_blob: Blob | null, old_as_path: string | null, new_blob: Blob | null, new_as_path: string | null, diff_options: DiffOptions | null, file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void
 }

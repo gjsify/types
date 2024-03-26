@@ -220,7 +220,7 @@ export function multiple_get_media_from_uri(uri: string | null, keys: KeyID[], f
  * plugin (see #grl_media_source_search for more details).
  * 
  * This method is asynchronous.
- * @param sources  a #GList of #GrlMediaSource<!-- -->s to search from (%NULL for all searchable sources)
+ * @param sources a #GList of #GrlMediaSource<!-- -->s to search from (%NULL for all searchable sources)
  * @param text the text to search for
  * @param keys the #GList of #GrlKeyID to retrieve
  * @param count the maximum number of elements to retrieve
@@ -233,7 +233,7 @@ export function multiple_search(sources: MediaSource[] | null, text: string | nu
  * Search for `text` in all the sources specified in `sources`.
  * 
  * This method is synchronous.
- * @param sources  a #GList of #GrlMediaSource<!-- -->s where to search from (%NULL for all available sources with search capability)
+ * @param sources a #GList of #GrlMediaSource<!-- -->s where to search from (%NULL for all available sources with search capability)
  * @param text the text to search for
  * @param keys the #GList of #GrlKeyID to retrieve
  * @param count the maximum number of elements to retrieve
@@ -2218,7 +2218,7 @@ export interface MetadataSource {
      * 
      * `return_filtered` is %TRUE will return the list of slow keys; otherwise
      * %NULL
-     * @param keys  the list of keys to filter out
+     * @param keys the list of keys to filter out
      * @param return_filtered if %TRUE the return value shall be a new list with the slow keys
      * @returns if
      */
@@ -2229,7 +2229,7 @@ export interface MetadataSource {
      * 
      * if `return_filtered` is %TRUE will return the list of removed keys;
      * otherwise %NULL
-     * @param keys  the list of keys to filter out
+     * @param keys the list of keys to filter out
      * @param return_filtered if %TRUE the return value shall be a new list with the unsupported keys
      */
     filter_supported(keys: GObject.ParamSpec[] | null, return_filtered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
@@ -2243,7 +2243,7 @@ export interface MetadataSource {
      * 
      * if `return_filtered` is %TRUE will return the list of non-writtable keys;
      * otherwise %NULL
-     * @param keys  the list of keys to filter out
+     * @param keys the list of keys to filter out
      * @param return_filtered if %TRUE the return value shall be a new list with the non-writable keys
      */
     filter_writable(keys: GObject.ParamSpec[] | null, return_filtered: boolean): [ /* returnType */ GObject.ParamSpec[], /* keys */ GObject.ParamSpec[] | null ]
