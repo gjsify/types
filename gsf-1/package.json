@@ -1,6 +1,6 @@
 {
     "name": "@girs/gsf-1",
-    "version": "1.0.0-4.0.0-beta.1",
+    "version": "1.0.0-4.0.0-beta.2",
     "description": "GJS TypeScript type definitions for Gsf-1, generated from library version 1.0.0",
     "type": "module",
     "module": "gsf-1.js",

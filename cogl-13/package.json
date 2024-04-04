@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-13",
-    "version": "13.0.0-4.0.0-beta.1",
+    "version": "13.0.0-4.0.0-beta.2",
     "description": "GJS TypeScript type definitions for Cogl-13, generated from library version 13.0.0",
     "type": "module",
     "module": "cogl-13.js",

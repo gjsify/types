@@ -1,6 +1,6 @@
 {
     "name": "@girs/clutter-13",
-    "version": "13.0.0-4.0.0-beta.1",
+    "version": "13.0.0-4.0.0-beta.2",
     "description": "GJS TypeScript type definitions for Clutter-13, generated from library version 13.0.0",
     "type": "module",
     "module": "clutter-13.js",
