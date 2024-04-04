@@ -7,8 +7,6 @@
 
 import './metatest-13-ambient.d.ts';
 
-import './metatest-13-import.d.ts';
-
 /**
  * MetaTest-13
  */

@@ -1,2 +1,12 @@
-// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Gepub"
+
+import Gepub05 from '@girs/gepub-0.5';
+
+declare global {
+    export interface GjsGiImports {
+        Gepub: typeof Gepub05;
+    }
+}
+
+export default GjsGiImports;
+
 

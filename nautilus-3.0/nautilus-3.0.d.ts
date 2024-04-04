@@ -7,8 +7,6 @@
 
 import './nautilus-3.0-ambient.d.ts';
 
-import './nautilus-3.0-import.d.ts';
-
 /**
  * Nautilus-3.0
  */

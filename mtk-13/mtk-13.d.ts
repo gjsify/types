@@ -7,8 +7,6 @@
 
 import './mtk-13-ambient.d.ts';
 
-import './mtk-13-import.d.ts';
-
 /**
  * Mtk-13
  */

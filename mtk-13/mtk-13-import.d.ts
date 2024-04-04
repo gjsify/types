@@ -1,2 +1,12 @@
-// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Mtk"
+
+import Mtk13 from '@girs/mtk-13';
+
+declare global {
+    export interface GjsGiImports {
+        Mtk: typeof Mtk13;
+    }
+}
+
+export default GjsGiImports;
+
 

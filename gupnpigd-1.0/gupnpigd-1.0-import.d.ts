@@ -1,2 +1,12 @@
-// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "GUPnPIgd"
+
+import GUPnPIgd10 from '@girs/gupnpigd-1.0';
+
+declare global {
+    export interface GjsGiImports {
+        GUPnPIgd: typeof GUPnPIgd10;
+    }
+}
+
+export default GjsGiImports;
+
 

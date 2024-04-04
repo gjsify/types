@@ -7,8 +7,6 @@
 
 import './shell-13-ambient.d.ts';
 
-import './shell-13-import.d.ts';
-
 /**
  * Shell-13
  */

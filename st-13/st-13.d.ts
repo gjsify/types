@@ -7,8 +7,6 @@
 
 import './st-13-ambient.d.ts';
 
-import './st-13-import.d.ts';
-
 /**
  * St-13
  */

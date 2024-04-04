@@ -7,8 +7,6 @@
 
 import './girepository-2.0-ambient.d.ts';
 
-import './girepository-2.0-import.d.ts';
-
 /**
  * GIRepository-2.0
  */

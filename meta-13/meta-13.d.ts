@@ -7,8 +7,6 @@
 
 import './meta-13-ambient.d.ts';
 
-import './meta-13-import.d.ts';
-
 /**
  * Meta-13
  */

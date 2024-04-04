@@ -7,8 +7,6 @@
 
 import './cally-13-ambient.d.ts';
 
-import './cally-13-import.d.ts';
-
 /**
  * Cally-13
  */

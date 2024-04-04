@@ -7,8 +7,6 @@
 
 import './gepub-0.5-ambient.d.ts';
 
-import './gepub-0.5-import.d.ts';
-
 /**
  * Gepub-0.5
  */

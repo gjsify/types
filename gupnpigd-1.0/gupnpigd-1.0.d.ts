@@ -7,8 +7,6 @@
 
 import './gupnpigd-1.0-ambient.d.ts';
 
-import './gupnpigd-1.0-import.d.ts';
-
 /**
  * GUPnPIgd-1.0
  */
