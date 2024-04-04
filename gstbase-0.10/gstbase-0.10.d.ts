@@ -76,6 +76,8 @@ export namespace GstBase {
      * The opaque #GstAdapter data structure.
      */
     class GstAdapter extends GObject.Object {
+        static $gtype: GObject.GType<GstAdapter>;
+
         // Own fields of GstBase.GstAdapter
 
         object: GObject.Object;
@@ -123,6 +125,8 @@ export namespace GstBase {
      * at all times and should not be used for iterating them.
      */
     class GstCollectPads extends Gst.Object {
+        static $gtype: GObject.GType<GstCollectPads>;
+
         // Own fields of GstBase.GstCollectPads
 
         object: Gst.Object;
@@ -192,6 +196,8 @@ export namespace GstBase {
      * Opaque #GstDataQueue structure.
      */
     class GstDataQueue extends GObject.Object {
+        static $gtype: GObject.GType<GstDataQueue>;
+
         // Own properties of GstBase.GstDataQueue
 
         get current_level_bytes(): number;
@@ -261,6 +267,8 @@ export namespace GstBase {
      * The opaque #GstPushSrc data structure.
      */
     class GstPushSrc extends Src {
+        static $gtype: GObject.GType<GstPushSrc>;
+
         // Constructors of GstBase.GstPushSrc
 
         constructor(properties?: Partial<GstPushSrc.ConstructorProps>, ...args: any[]);
@@ -295,6 +303,8 @@ export namespace GstBase {
      * The opaque #GstBaseSink data structure.
      */
     abstract class Sink extends Gst.Element {
+        static $gtype: GObject.GType<Sink>;
+
         // Own properties of GstBase.Sink
 
         get async(): boolean;
@@ -401,6 +411,8 @@ export namespace GstBase {
      * The opaque #GstBaseSrc data structure.
      */
     abstract class Src extends Gst.Element {
+        static $gtype: GObject.GType<Src>;
+
         // Own properties of GstBase.Src
 
         get blocksize(): never;
@@ -464,6 +476,8 @@ export namespace GstBase {
      * The opaque #GstBaseTransform data structure.
      */
     abstract class Transform extends Gst.Element {
+        static $gtype: GObject.GType<Transform>;
+
         // Own properties of GstBase.Transform
 
         get qos(): boolean;
@@ -506,6 +520,8 @@ export namespace GstBase {
 
     type GstAdapterClass = typeof GstAdapter;
     class GstAdapterPrivate {
+        static $gtype: GObject.GType<GstAdapterPrivate>;
+
         // Constructors of GstBase.GstAdapterPrivate
 
         _init(...args: any[]): void;
@@ -515,6 +531,8 @@ export namespace GstBase {
      * A bit reader instance.
      */
     class GstBitReader {
+        static $gtype: GObject.GType<GstBitReader>;
+
         // Own fields of GstBase.GstBitReader
 
         data: any;
@@ -563,6 +581,8 @@ export namespace GstBase {
      * A byte reader instance.
      */
     class GstByteReader {
+        static $gtype: GObject.GType<GstByteReader>;
+
         // Own fields of GstBase.GstByteReader
 
         data: any;
@@ -656,6 +676,8 @@ export namespace GstBase {
      * A byte writer instance.
      */
     class GstByteWriter {
+        static $gtype: GObject.GType<GstByteWriter>;
+
         // Own fields of GstBase.GstByteWriter
 
         alloc_size: number;
@@ -729,6 +751,8 @@ export namespace GstBase {
      * Structure used by the collect_pads.
      */
     class GstCollectData {
+        static $gtype: GObject.GType<GstCollectData>;
+
         // Own fields of GstBase.GstCollectData
 
         collect: Gst.CollectPads;
@@ -743,6 +767,8 @@ export namespace GstBase {
 
     type GstCollectPadsClass = typeof GstCollectPads;
     class GstCollectPadsPrivate {
+        static $gtype: GObject.GType<GstCollectPadsPrivate>;
+
         // Constructors of GstBase.GstCollectPadsPrivate
 
         _init(...args: any[]): void;
@@ -754,6 +780,8 @@ export namespace GstBase {
      * long as the top of the structure is identical to this structure.
      */
     class GstDataQueueItem {
+        static $gtype: GObject.GType<GstDataQueueItem>;
+
         // Own fields of GstBase.GstDataQueueItem
 
         object: Gst.MiniObject;
@@ -771,6 +799,8 @@ export namespace GstBase {
      * Structure describing the size of a queue.
      */
     class GstDataQueueSize {
+        static $gtype: GObject.GType<GstDataQueueSize>;
+
         // Own fields of GstBase.GstDataQueueSize
 
         visible: number;
@@ -792,6 +822,8 @@ export namespace GstBase {
     type GstPushSrcClass = typeof GstPushSrc;
     type SinkClass = typeof Sink;
     class SinkPrivate {
+        static $gtype: GObject.GType<SinkPrivate>;
+
         // Constructors of GstBase.SinkPrivate
 
         _init(...args: any[]): void;
@@ -799,6 +831,8 @@ export namespace GstBase {
 
     type SrcClass = typeof Src;
     class SrcPrivate {
+        static $gtype: GObject.GType<SrcPrivate>;
+
         // Constructors of GstBase.SrcPrivate
 
         _init(...args: any[]): void;
@@ -806,6 +840,8 @@ export namespace GstBase {
 
     type TransformClass = typeof Transform;
     class TransformPrivate {
+        static $gtype: GObject.GType<TransformPrivate>;
+
         // Constructors of GstBase.TransformPrivate
 
         _init(...args: any[]): void;

@@ -94,6 +94,8 @@ export namespace GcrUi {
      * An implementation of #GcrRenderer which renders certificates.
      */
     class CertificateRenderer extends GObject.Object implements Gcr.Certificate, Gcr.Comparable, Renderer {
+        static $gtype: GObject.GType<CertificateRenderer>;
+
         // Own properties of GcrUi.CertificateRenderer
 
         /**
@@ -778,6 +780,8 @@ export namespace GcrUi {
      * add renderers to it.
      */
     class CertificateWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<CertificateWidget>;
+
         // Own properties of GcrUi.CertificateWidget
 
         get attributes(): Gck.Attributes;
@@ -1210,6 +1214,8 @@ export namespace GcrUi {
      * [method`CollectionModel`.object_for_iter] functions.
      */
     class CollectionModel extends GObject.Object implements Gtk.TreeModel, Gtk.TreeSortable {
+        static $gtype: GObject.GType<CollectionModel>;
+
         // Own properties of GcrUi.CollectionModel
 
         get collection(): Gcr.Collection;
@@ -2179,6 +2185,8 @@ export namespace GcrUi {
         extends Gtk.ComboBox
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
+        static $gtype: GObject.GType<ComboSelector>;
+
         // Own properties of GcrUi.ComboSelector
 
         /**
@@ -6316,6 +6324,8 @@ export namespace GcrUi {
      * A renderer that can be used for unsupported data.
      */
     class FailureRenderer extends GObject.Object implements Renderer {
+        static $gtype: GObject.GType<FailureRenderer>;
+
         // Own properties of GcrUi.FailureRenderer
 
         get attributes(): Gck.Attributes;
@@ -6762,6 +6772,8 @@ export namespace GcrUi {
         extends Gtk.Button
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<ImportButton>;
+
         // Constructors of GcrUi.ImportButton
 
         constructor(properties?: Partial<ImportButton.ConstructorProps>, ...args: any[]);
@@ -10937,6 +10949,8 @@ export namespace GcrUi {
      * An implementation of #GcrRenderer which renders keys.
      */
     class KeyRenderer extends GObject.Object implements Renderer {
+        static $gtype: GObject.GType<KeyRenderer>;
+
         // Own properties of GcrUi.KeyRenderer
 
         get object(): Gck.Object;
@@ -11381,6 +11395,8 @@ export namespace GcrUi {
      * than one key in a view, create the viewer and add renderers to it.
      */
     class KeyWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<KeyWidget>;
+
         // Own properties of GcrUi.KeyWidget
 
         get attributes(): Gck.Attributes;
@@ -11783,6 +11799,8 @@ export namespace GcrUi {
      * Live search is available for quick filtering.
      */
     class ListSelector extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<ListSelector>;
+
         // Own properties of GcrUi.ListSelector
 
         /**
@@ -12300,6 +12318,8 @@ export namespace GcrUi {
      * the dialog between prompts, then the dialog will be hidden.
      */
     class PromptDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gcr.Prompt, Gtk.Buildable {
+        static $gtype: GObject.GType<PromptDialog>;
+
         // Own properties of GcrUi.PromptDialog
 
         /**
@@ -13220,6 +13240,8 @@ export namespace GcrUi {
      * on an entry.
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
+        static $gtype: GObject.GType<SecureEntryBuffer>;
+
         // Constructors of GcrUi.SecureEntryBuffer
 
         constructor(properties?: Partial<SecureEntryBuffer.ConstructorProps>, ...args: any[]);
@@ -13247,6 +13269,8 @@ export namespace GcrUi {
      * the user to select multiple objects from a tree.
      */
     class TreeSelector extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<TreeSelector>;
+
         // Own properties of GcrUi.TreeSelector
 
         /**
@@ -13761,6 +13785,8 @@ export namespace GcrUi {
      * [method`UnlockOptionsWidget`.get_choice].
      */
     class UnlockOptionsWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<UnlockOptionsWidget>;
+
         // Own properties of GcrUi.UnlockOptionsWidget
 
         get choice(): string;
@@ -14216,6 +14242,8 @@ export namespace GcrUi {
      * located in files.
      */
     class ViewerWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<ViewerWidget>;
+
         // Own properties of GcrUi.ViewerWidget
 
         /**
@@ -14704,6 +14732,8 @@ export namespace GcrUi {
 
     type CertificateRendererClass = typeof CertificateRenderer;
     abstract class CertificateRendererPrivate {
+        static $gtype: GObject.GType<CertificateRendererPrivate>;
+
         // Constructors of GcrUi.CertificateRendererPrivate
 
         _init(...args: any[]): void;
@@ -14711,6 +14741,8 @@ export namespace GcrUi {
 
     type CertificateWidgetClass = typeof CertificateWidget;
     abstract class CertificateWidgetPrivate {
+        static $gtype: GObject.GType<CertificateWidgetPrivate>;
+
         // Constructors of GcrUi.CertificateWidgetPrivate
 
         _init(...args: any[]): void;
@@ -14718,6 +14750,8 @@ export namespace GcrUi {
 
     type CollectionModelClass = typeof CollectionModel;
     abstract class CollectionModelPrivate {
+        static $gtype: GObject.GType<CollectionModelPrivate>;
+
         // Constructors of GcrUi.CollectionModelPrivate
 
         _init(...args: any[]): void;
@@ -14725,6 +14759,8 @@ export namespace GcrUi {
 
     type ComboSelectorClass = typeof ComboSelector;
     abstract class ComboSelectorPrivate {
+        static $gtype: GObject.GType<ComboSelectorPrivate>;
+
         // Constructors of GcrUi.ComboSelectorPrivate
 
         _init(...args: any[]): void;
@@ -14732,6 +14768,8 @@ export namespace GcrUi {
 
     type FailureRendererClass = typeof FailureRenderer;
     abstract class FailureRendererPrivate {
+        static $gtype: GObject.GType<FailureRendererPrivate>;
+
         // Constructors of GcrUi.FailureRendererPrivate
 
         _init(...args: any[]): void;
@@ -14739,6 +14777,8 @@ export namespace GcrUi {
 
     type ImportButtonClass = typeof ImportButton;
     abstract class ImportButtonPrivate {
+        static $gtype: GObject.GType<ImportButtonPrivate>;
+
         // Constructors of GcrUi.ImportButtonPrivate
 
         _init(...args: any[]): void;
@@ -14746,6 +14786,8 @@ export namespace GcrUi {
 
     type KeyRendererClass = typeof KeyRenderer;
     abstract class KeyRendererPrivate {
+        static $gtype: GObject.GType<KeyRendererPrivate>;
+
         // Constructors of GcrUi.KeyRendererPrivate
 
         _init(...args: any[]): void;
@@ -14753,6 +14795,8 @@ export namespace GcrUi {
 
     type KeyWidgetClass = typeof KeyWidget;
     abstract class KeyWidgetPrivate {
+        static $gtype: GObject.GType<KeyWidgetPrivate>;
+
         // Constructors of GcrUi.KeyWidgetPrivate
 
         _init(...args: any[]): void;
@@ -14760,6 +14804,8 @@ export namespace GcrUi {
 
     type ListSelectorClass = typeof ListSelector;
     abstract class ListSelectorPrivate {
+        static $gtype: GObject.GType<ListSelectorPrivate>;
+
         // Constructors of GcrUi.ListSelectorPrivate
 
         _init(...args: any[]): void;
@@ -14767,6 +14813,8 @@ export namespace GcrUi {
 
     type PromptDialogClass = typeof PromptDialog;
     abstract class PromptDialogPrivate {
+        static $gtype: GObject.GType<PromptDialogPrivate>;
+
         // Constructors of GcrUi.PromptDialogPrivate
 
         _init(...args: any[]): void;
@@ -14775,6 +14823,8 @@ export namespace GcrUi {
     type RendererIface = typeof Renderer;
     type SecureEntryBufferClass = typeof SecureEntryBuffer;
     abstract class SecureEntryBufferPrivate {
+        static $gtype: GObject.GType<SecureEntryBufferPrivate>;
+
         // Constructors of GcrUi.SecureEntryBufferPrivate
 
         _init(...args: any[]): void;
@@ -14782,6 +14832,8 @@ export namespace GcrUi {
 
     type TreeSelectorClass = typeof TreeSelector;
     abstract class TreeSelectorPrivate {
+        static $gtype: GObject.GType<TreeSelectorPrivate>;
+
         // Constructors of GcrUi.TreeSelectorPrivate
 
         _init(...args: any[]): void;
@@ -14789,6 +14841,8 @@ export namespace GcrUi {
 
     type UnlockOptionsWidgetClass = typeof UnlockOptionsWidget;
     abstract class UnlockOptionsWidgetPrivate {
+        static $gtype: GObject.GType<UnlockOptionsWidgetPrivate>;
+
         // Constructors of GcrUi.UnlockOptionsWidgetPrivate
 
         _init(...args: any[]): void;

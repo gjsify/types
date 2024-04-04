@@ -1,7 +1,7 @@
 
 declare module 'gi://DBus?version=1.0' {
-    import DBus10 from '@girs/dbus-1.0';
-    export default DBus10;
+    import DBus from '@girs/dbus-1.0';
+    export default DBus;
 }
 
 declare module 'gi://DBus' {

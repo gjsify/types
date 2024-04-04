@@ -54,6 +54,8 @@ export namespace Rest {
      * Error domain used when returning errors from #RestProxyCall.
      */
     class ProxyCallError extends GLib.Error {
+        static $gtype: GObject.GType<ProxyCallError>;
+
         // Static fields of Rest.ProxyCallError
 
         /**
@@ -75,6 +77,8 @@ export namespace Rest {
      * Error domain used when returning errors from a #RestProxy.
      */
     class ProxyError extends GLib.Error {
+        static $gtype: GObject.GType<ProxyError>;
+
         // Static fields of Rest.ProxyError
 
         /**
@@ -279,6 +283,8 @@ export namespace Rest {
      * #OAuth2Proxy has no publicly available members.
      */
     class OAuth2Proxy extends Proxy {
+        static $gtype: GObject.GType<OAuth2Proxy>;
+
         // Own properties of Rest.OAuth2Proxy
 
         get access_token(): string;
@@ -373,6 +379,8 @@ export namespace Rest {
      * #OAuth2ProxyCall has no publicly available members.
      */
     class OAuth2ProxyCall extends ProxyCall {
+        static $gtype: GObject.GType<OAuth2ProxyCall>;
+
         // Constructors of Rest.OAuth2ProxyCall
 
         constructor(properties?: Partial<OAuth2ProxyCall.ConstructorProps>, ...args: any[]);
@@ -402,6 +410,8 @@ export namespace Rest {
      * #OAuthProxy has no publicly available members.
      */
     class OAuthProxy extends Proxy {
+        static $gtype: GObject.GType<OAuthProxy>;
+
         // Own properties of Rest.OAuthProxy
 
         get consumer_key(): string;
@@ -599,6 +609,8 @@ export namespace Rest {
      * #OAuthProxyCall has no publicly available members.
      */
     class OAuthProxyCall extends ProxyCall {
+        static $gtype: GObject.GType<OAuthProxyCall>;
+
         // Constructors of Rest.OAuthProxyCall
 
         constructor(properties?: Partial<OAuthProxyCall.ConstructorProps>, ...args: any[]);
@@ -642,6 +654,8 @@ export namespace Rest {
      * #RestProxy has no publicly available members.
      */
     class Proxy extends GObject.Object {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own properties of Rest.Proxy
 
         get binding_required(): boolean;
@@ -750,6 +764,8 @@ export namespace Rest {
      * #RestProxyAuth has no publicly available members.
      */
     class ProxyAuth extends GObject.Object {
+        static $gtype: GObject.GType<ProxyAuth>;
+
         // Constructors of Rest.ProxyAuth
 
         constructor(properties?: Partial<ProxyAuth.ConstructorProps>, ...args: any[]);
@@ -790,6 +806,8 @@ export namespace Rest {
      * #RestProxyCall has no publicly available members.
      */
     class ProxyCall extends GObject.Object {
+        static $gtype: GObject.GType<ProxyCall>;
+
         // Own properties of Rest.ProxyCall
 
         get proxy(): Proxy;
@@ -946,6 +964,8 @@ export namespace Rest {
     }
 
     class XmlParser extends GObject.Object {
+        static $gtype: GObject.GType<XmlParser>;
+
         // Constructors of Rest.XmlParser
 
         constructor(properties?: Partial<XmlParser.ConstructorProps>, ...args: any[]);
@@ -969,6 +989,8 @@ export namespace Rest {
     type OAuth2ProxyCallClass = typeof OAuth2ProxyCall;
     type OAuth2ProxyClass = typeof OAuth2Proxy;
     abstract class OAuth2ProxyPrivate {
+        static $gtype: GObject.GType<OAuth2ProxyPrivate>;
+
         // Constructors of Rest.OAuth2ProxyPrivate
 
         _init(...args: any[]): void;
@@ -977,6 +999,8 @@ export namespace Rest {
     type OAuthProxyCallClass = typeof OAuthProxyCall;
     type OAuthProxyClass = typeof OAuthProxy;
     abstract class Param {
+        static $gtype: GObject.GType<Param>;
+
         // Constructors of Rest.Param
 
         constructor(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename: string);
@@ -1042,6 +1066,8 @@ export namespace Rest {
     }
 
     abstract class Params {
+        static $gtype: GObject.GType<Params>;
+
         // Constructors of Rest.Params
 
         _init(...args: any[]): void;
@@ -1086,6 +1112,8 @@ export namespace Rest {
     }
 
     abstract class ParamsIter {
+        static $gtype: GObject.GType<ParamsIter>;
+
         // Constructors of Rest.ParamsIter
 
         _init(...args: any[]): void;
@@ -1123,6 +1151,8 @@ export namespace Rest {
 
     type ProxyAuthClass = typeof ProxyAuth;
     abstract class ProxyAuthPrivate {
+        static $gtype: GObject.GType<ProxyAuthPrivate>;
+
         // Constructors of Rest.ProxyAuthPrivate
 
         _init(...args: any[]): void;
@@ -1130,6 +1160,8 @@ export namespace Rest {
 
     type ProxyCallClass = typeof ProxyCall;
     abstract class ProxyCallPrivate {
+        static $gtype: GObject.GType<ProxyCallPrivate>;
+
         // Constructors of Rest.ProxyCallPrivate
 
         _init(...args: any[]): void;
@@ -1137,6 +1169,8 @@ export namespace Rest {
 
     type ProxyClass = typeof Proxy;
     class XmlNode {
+        static $gtype: GObject.GType<XmlNode>;
+
         // Own fields of Rest.XmlNode
 
         name: string;

@@ -392,6 +392,8 @@ export namespace JavaScriptCore {
      * #GCallback<!-- -->s to implement them.
      */
     class Class extends GObject.Object {
+        static $gtype: GObject.GType<Class>;
+
         // Own properties of JavaScriptCore.Class
 
         /**
@@ -562,6 +564,8 @@ export namespace JavaScriptCore {
      * It's also possible to register custom objects in the context with jsc_context_register_class().
      */
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of JavaScriptCore.Context
 
         /**
@@ -750,6 +754,8 @@ export namespace JavaScriptCore {
      * JSCException represents a JavaScript exception.
      */
     class Exception extends GObject.Object {
+        static $gtype: GObject.GType<Exception>;
+
         // Constructors of JavaScriptCore.Exception
 
         constructor(properties?: Partial<Exception.ConstructorProps>, ...args: any[]);
@@ -818,6 +824,8 @@ export namespace JavaScriptCore {
      * protects the referenced value from being garbage collected.
      */
     class Value extends GObject.Object {
+        static $gtype: GObject.GType<Value>;
+
         // Own properties of JavaScriptCore.Value
 
         /**
@@ -1215,6 +1223,8 @@ export namespace JavaScriptCore {
      * instance to every JSCContext constructor.
      */
     class VirtualMachine extends GObject.Object {
+        static $gtype: GObject.GType<VirtualMachine>;
+
         // Constructors of JavaScriptCore.VirtualMachine
 
         constructor(properties?: Partial<VirtualMachine.ConstructorProps>, ...args: any[]);
@@ -1244,6 +1254,8 @@ export namespace JavaScriptCore {
      * collected and without referencing the #JSCContext either.
      */
     class WeakValue extends GObject.Object {
+        static $gtype: GObject.GType<WeakValue>;
+
         // Own properties of JavaScriptCore.WeakValue
 
         /**
@@ -1284,6 +1296,8 @@ export namespace JavaScriptCore {
      * %NULL to fallback to the default implementation.
      */
     class ClassVTable {
+        static $gtype: GObject.GType<ClassVTable>;
+
         // Own fields of JavaScriptCore.ClassVTable
 
         get_property: ClassGetPropertyFunction;

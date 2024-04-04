@@ -1,7 +1,7 @@
 
 declare module 'gi://Gsf?version=1' {
-    import Gsf1 from '@girs/gsf-1';
-    export default Gsf1;
+    import Gsf from '@girs/gsf-1';
+    export default Gsf;
 }
 
 declare module 'gi://Gsf' {

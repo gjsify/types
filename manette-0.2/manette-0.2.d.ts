@@ -76,6 +76,8 @@ export namespace Manette {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Constructors of Manette.Device
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
@@ -157,6 +159,8 @@ export namespace Manette {
     }
 
     class Monitor extends GObject.Object {
+        static $gtype: GObject.GType<Monitor>;
+
         // Constructors of Manette.Monitor
 
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
@@ -185,6 +189,8 @@ export namespace Manette {
     type DeviceClass = typeof Device;
     type MonitorClass = typeof Monitor;
     abstract class MonitorIter {
+        static $gtype: GObject.GType<MonitorIter>;
+
         // Constructors of Manette.MonitorIter
 
         _init(...args: any[]): void;
@@ -199,6 +205,8 @@ export namespace Manette {
     }
 
     class Event {
+        static $gtype: GObject.GType<Event>;
+
         // Constructors of Manette.Event
 
         _init(...args: any[]): void;

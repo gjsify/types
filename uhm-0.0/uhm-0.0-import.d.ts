@@ -1,12 +1,2 @@
-
-import Uhm00 from '@girs/uhm-0.0';
-
-declare global {
-    export interface GjsGiImports {
-        Uhm: typeof Uhm00;
-    }
-}
-
-export default GjsGiImports;
-
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Uhm"
 

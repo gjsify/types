@@ -16,18 +16,24 @@ import type GObject from '@girs/gobject-2.0';
 export namespace fontconfig {
     function init(): void;
     class Pattern {
+        static $gtype: GObject.GType<Pattern>;
+
         // Constructors of fontconfig.Pattern
 
         _init(...args: any[]): void;
     }
 
     class CharSet {
+        static $gtype: GObject.GType<CharSet>;
+
         // Constructors of fontconfig.CharSet
 
         _init(...args: any[]): void;
     }
 
     class Config {
+        static $gtype: GObject.GType<Config>;
+
         // Constructors of fontconfig.Config
 
         _init(...args: any[]): void;

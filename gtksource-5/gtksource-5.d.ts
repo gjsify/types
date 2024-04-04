@@ -101,6 +101,8 @@ export namespace GtkSource {
      * An error code used with the %GTK_SOURCE_FILE_LOADER_ERROR domain.
      */
     class FileLoaderError extends GLib.Error {
+        static $gtype: GObject.GType<FileLoaderError>;
+
         // Static fields of GtkSource.FileLoaderError
 
         /**
@@ -132,6 +134,8 @@ export namespace GtkSource {
      * An error code used with the %GTK_SOURCE_FILE_SAVER_ERROR domain.
      */
     class FileSaverError extends GLib.Error {
+        static $gtype: GObject.GType<FileSaverError>;
+
         // Static fields of GtkSource.FileSaverError
 
         /**
@@ -596,6 +600,8 @@ export namespace GtkSource {
      * read the no-spell-check region).
      */
     class Buffer extends Gtk.TextBuffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own properties of GtkSource.Buffer
 
         /**
@@ -1020,6 +1026,8 @@ export namespace GtkSource {
      * `GtkSourceCompletion`'s.
      */
     class Completion extends GObject.Object {
+        static $gtype: GObject.GType<Completion>;
+
         // Own properties of GtkSource.Completion
 
         /**
@@ -1210,6 +1218,8 @@ export namespace GtkSource {
      * the `GtkSourceCompletionCell`.
      */
     class CompletionCell extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<CompletionCell>;
+
         // Own properties of GtkSource.CompletionCell
 
         get column(): CompletionColumn;
@@ -1881,6 +1891,8 @@ export namespace GtkSource {
         extends GObject.Object
         implements Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<CompletionContext>;
+
         // Own properties of GtkSource.CompletionContext
 
         /**
@@ -2474,6 +2486,8 @@ export namespace GtkSource {
      * registered with the [class`SnippetManager]`.
      */
     class CompletionSnippets extends GObject.Object implements CompletionProvider {
+        static $gtype: GObject.GType<CompletionSnippets>;
+
         // Own properties of GtkSource.CompletionSnippets
 
         get priority(): number;
@@ -3112,6 +3126,8 @@ export namespace GtkSource {
      * appearing in the registered [class`Gtk`.TextBuffer]s.
      */
     class CompletionWords extends GObject.Object implements CompletionProvider {
+        static $gtype: GObject.GType<CompletionWords>;
+
         // Own properties of GtkSource.CompletionWords
 
         get minimum_word_size(): number;
@@ -3779,6 +3795,8 @@ export namespace GtkSource {
      * have still the previous valid values.
      */
     class File extends GObject.Object {
+        static $gtype: GObject.GType<File>;
+
         // Own properties of GtkSource.File
 
         /**
@@ -3922,6 +3940,8 @@ export namespace GtkSource {
      * [method`FileLoader`.load_finish].
      */
     class FileLoader extends GObject.Object {
+        static $gtype: GObject.GType<FileLoader>;
+
         // Own properties of GtkSource.FileLoader
 
         /**
@@ -4042,6 +4062,8 @@ export namespace GtkSource {
      * operation with [method`FileSaver`.save_async].
      */
     class FileSaver extends GObject.Object {
+        static $gtype: GObject.GType<FileSaver>;
+
         // Own properties of GtkSource.FileSaver
 
         /**
@@ -4195,6 +4217,8 @@ export namespace GtkSource {
      * right of the line numbers.
      */
     class Gutter extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<Gutter>;
+
         // Own properties of GtkSource.Gutter
 
         /**
@@ -4847,6 +4871,8 @@ export namespace GtkSource {
      * frames-per-second while performing kinetic scrolling.
      */
     class GutterLines extends GObject.Object {
+        static $gtype: GObject.GType<GutterLines>;
+
         // Constructors of GtkSource.GutterLines
 
         constructor(properties?: Partial<GutterLines.ConstructorProps>, ...args: any[]);
@@ -5048,6 +5074,8 @@ export namespace GtkSource {
      * width and height measurement of the content they width to render.
      */
     abstract class GutterRenderer extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<GutterRenderer>;
+
         // Own properties of GtkSource.GutterRenderer
 
         /**
@@ -5938,6 +5966,8 @@ export namespace GtkSource {
      * [class`Gutter]`.
      */
     class GutterRendererPixbuf extends GutterRenderer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<GutterRendererPixbuf>;
+
         // Own properties of GtkSource.GutterRendererPixbuf
 
         get gicon(): Gio.Icon;
@@ -6367,6 +6397,8 @@ export namespace GtkSource {
      * [class`Gutter]`.
      */
     class GutterRendererText extends GutterRenderer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<GutterRendererText>;
+
         // Own properties of GtkSource.GutterRendererText
 
         get markup(): string;
@@ -6782,6 +6814,8 @@ export namespace GtkSource {
      * setting the [property`Hover:`hover-delay] property in milliseconds.
      */
     class Hover extends GObject.Object {
+        static $gtype: GObject.GType<Hover>;
+
         // Own properties of GtkSource.Hover
 
         /**
@@ -6827,6 +6861,8 @@ export namespace GtkSource {
      * of the pointer when the request was made.
      */
     class HoverContext extends GObject.Object {
+        static $gtype: GObject.GType<HoverContext>;
+
         // Constructors of GtkSource.HoverContext
 
         constructor(properties?: Partial<HoverContext.ConstructorProps>, ...args: any[]);
@@ -6876,6 +6912,8 @@ export namespace GtkSource {
      * to populate a `GtkSourceHoverDisplay` on behalf of the user.
      */
     class HoverDisplay extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<HoverDisplay>;
+
         // Constructors of GtkSource.HoverDisplay
 
         constructor(properties?: Partial<HoverDisplay.ConstructorProps>, ...args: any[]);
@@ -7504,6 +7542,8 @@ export namespace GtkSource {
      * [method`Buffer`.set_language] to apply it to a [class`Buffer]`.
      */
     class Language extends GObject.Object {
+        static $gtype: GObject.GType<Language>;
+
         // Own properties of GtkSource.Language
 
         get hidden(): boolean;
@@ -7612,6 +7652,8 @@ export namespace GtkSource {
      * given file name and content type.
      */
     class LanguageManager extends GObject.Object {
+        static $gtype: GObject.GType<LanguageManager>;
+
         // Own properties of GtkSource.LanguageManager
 
         get language_ids(): string[];
@@ -7774,6 +7816,8 @@ export namespace GtkSource {
      * "block" font to make the map more legible.
      */
     class Map extends View implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable {
+        static $gtype: GObject.GType<Map>;
+
         // Own properties of GtkSource.Map
 
         get font_desc(): Pango.FontDescription;
@@ -8185,6 +8229,8 @@ export namespace GtkSource {
      * of each other. The mark with the highest priority will be drawn on top.
      */
     class Mark extends Gtk.TextMark {
+        static $gtype: GObject.GType<Mark>;
+
         // Own properties of GtkSource.Mark
 
         /**
@@ -8291,6 +8337,8 @@ export namespace GtkSource {
      * takes precedence.
      */
     class MarkAttributes extends GObject.Object {
+        static $gtype: GObject.GType<MarkAttributes>;
+
         // Own properties of GtkSource.MarkAttributes
 
         /**
@@ -8467,6 +8515,8 @@ export namespace GtkSource {
      * the printed area is not clipped.
      */
     class PrintCompositor extends GObject.Object {
+        static $gtype: GObject.GType<PrintCompositor>;
+
         // Own properties of GtkSource.PrintCompositor
 
         /**
@@ -9188,6 +9238,8 @@ export namespace GtkSource {
      * ```
      */
     class Region extends GObject.Object {
+        static $gtype: GObject.GType<Region>;
+
         // Own properties of GtkSource.Region
 
         /**
@@ -9351,6 +9403,8 @@ export namespace GtkSource {
      * application for the search and replace, with a basic user interface.
      */
     class SearchContext extends GObject.Object {
+        static $gtype: GObject.GType<SearchContext>;
+
         // Own properties of GtkSource.SearchContext
 
         /**
@@ -9606,6 +9660,8 @@ export namespace GtkSource {
      * [class`SearchContext]`s.
      */
     class SearchSettings extends GObject.Object {
+        static $gtype: GObject.GType<SearchSettings>;
+
         // Own properties of GtkSource.SearchSettings
 
         /**
@@ -9775,6 +9831,8 @@ export namespace GtkSource {
      * the values from other chunks such as capitalization.
      */
     class Snippet extends GObject.Object {
+        static $gtype: GObject.GType<Snippet>;
+
         // Own properties of GtkSource.Snippet
 
         get buffer(): Gtk.TextBuffer;
@@ -9913,6 +9971,8 @@ export namespace GtkSource {
      * [property`SnippetChunk:`focus-position] property set.
      */
     class SnippetChunk extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<SnippetChunk>;
+
         // Own properties of GtkSource.SnippetChunk
 
         get context(): SnippetContext;
@@ -10061,6 +10121,8 @@ export namespace GtkSource {
      * chunks during the insertion/edit phase.
      */
     class SnippetContext extends GObject.Object {
+        static $gtype: GObject.GType<SnippetContext>;
+
         // Constructors of GtkSource.SnippetContext
 
         constructor(properties?: Partial<SnippetContext.ConstructorProps>, ...args: any[]);
@@ -10138,6 +10200,8 @@ export namespace GtkSource {
      * a given snippets.
      */
     class SnippetManager extends GObject.Object {
+        static $gtype: GObject.GType<SnippetManager>;
+
         // Own properties of GtkSource.SnippetManager
 
         /**
@@ -10291,6 +10355,8 @@ export namespace GtkSource {
      * from normal spaces.
      */
     class SpaceDrawer extends GObject.Object {
+        static $gtype: GObject.GType<SpaceDrawer>;
+
         // Own properties of GtkSource.SpaceDrawer
 
         /**
@@ -10444,6 +10510,8 @@ export namespace GtkSource {
      * which are set when given style is used.
      */
     class Style extends GObject.Object {
+        static $gtype: GObject.GType<Style>;
+
         // Own properties of GtkSource.Style
 
         get background(): string;
@@ -10534,6 +10602,8 @@ export namespace GtkSource {
      * GTK theme (for example for the background color).
      */
     class StyleScheme extends GObject.Object {
+        static $gtype: GObject.GType<StyleScheme>;
+
         // Own properties of GtkSource.StyleScheme
 
         /**
@@ -10603,6 +10673,8 @@ export namespace GtkSource {
         extends Gtk.Button
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget, StyleSchemeChooser
     {
+        static $gtype: GObject.GType<StyleSchemeChooserButton>;
+
         // Constructors of GtkSource.StyleSchemeChooserButton
 
         constructor(properties?: Partial<StyleSchemeChooserButton.ConstructorProps>, ...args: any[]);
@@ -13491,6 +13563,8 @@ export namespace GtkSource {
         extends Gtk.Widget
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, StyleSchemeChooser
     {
+        static $gtype: GObject.GType<StyleSchemeChooserWidget>;
+
         // Constructors of GtkSource.StyleSchemeChooserWidget
 
         constructor(properties?: Partial<StyleSchemeChooserWidget.ConstructorProps>, ...args: any[]);
@@ -14140,6 +14214,8 @@ export namespace GtkSource {
      * Provides access to [class`StyleScheme]`s.
      */
     class StyleSchemeManager extends GObject.Object {
+        static $gtype: GObject.GType<StyleSchemeManager>;
+
         // Own properties of GtkSource.StyleSchemeManager
 
         get scheme_ids(): string[];
@@ -14249,6 +14325,8 @@ export namespace GtkSource {
         extends Gtk.Widget
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
+        static $gtype: GObject.GType<StyleSchemePreview>;
+
         // Own properties of GtkSource.StyleSchemePreview
 
         get scheme(): StyleScheme;
@@ -17357,6 +17435,8 @@ export namespace GtkSource {
      * a [class`Gtk`.TextTag], not a [class`Tag]`.
      */
     class Tag extends Gtk.TextTag {
+        static $gtype: GObject.GType<Tag>;
+
         // Own properties of GtkSource.Tag
 
         /**
@@ -17550,6 +17630,8 @@ export namespace GtkSource {
      * the default font set in CSS.
      */
     class View extends Gtk.TextView implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of GtkSource.View
 
         get auto_indent(): boolean;
@@ -18629,6 +18711,8 @@ export namespace GtkSource {
      * ```
      */
     class VimIMContext extends Gtk.IMContext {
+        static $gtype: GObject.GType<VimIMContext>;
+
         // Own properties of GtkSource.VimIMContext
 
         get command_bar_text(): string;
@@ -18705,6 +18789,8 @@ export namespace GtkSource {
      * encoded in UTF-8.
      */
     abstract class Encoding {
+        static $gtype: GObject.GType<Encoding>;
+
         // Constructors of GtkSource.Encoding
 
         _init(...args: any[]): void;
@@ -18790,6 +18876,8 @@ export namespace GtkSource {
      * Ignore all its fields and initialize the iter with [method`Region`.get_start_region_iter].
      */
     class RegionIter {
+        static $gtype: GObject.GType<RegionIter>;
+
         // Constructors of GtkSource.RegionIter
 
         constructor(properties?: Partial<{}>);

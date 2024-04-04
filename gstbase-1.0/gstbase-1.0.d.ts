@@ -503,6 +503,8 @@ export namespace GstBase {
      * buffer pushed in it.
      */
     class Adapter extends GObject.Object {
+        static $gtype: GObject.GType<Adapter>;
+
         // Constructors of GstBase.Adapter
 
         constructor(properties?: Partial<Adapter.ConstructorProps>, ...args: any[]);
@@ -926,6 +928,8 @@ export namespace GstBase {
      * This class used to live in gst-plugins-bad and was moved to core.
      */
     abstract class Aggregator extends Gst.Element {
+        static $gtype: GObject.GType<Aggregator>;
+
         // Own properties of GstBase.Aggregator
 
         /**
@@ -1213,6 +1217,8 @@ export namespace GstBase {
      * This class used to live in gst-plugins-bad and was moved to core.
      */
     class AggregatorPad extends Gst.Pad {
+        static $gtype: GObject.GType<AggregatorPad>;
+
         // Own properties of GstBase.AggregatorPad
 
         /**
@@ -1421,6 +1427,8 @@ export namespace GstBase {
      *   frame intervals.
      */
     abstract class BaseParse extends Gst.Element {
+        static $gtype: GObject.GType<BaseParse>;
+
         // Own properties of GstBase.BaseParse
 
         /**
@@ -1804,6 +1812,8 @@ export namespace GstBase {
      * with non-synchronized streams or sparse streams.
      */
     abstract class BaseSink extends Gst.Element {
+        static $gtype: GObject.GType<BaseSink>;
+
         // Own properties of GstBase.BaseSink
 
         /**
@@ -2386,6 +2396,8 @@ export namespace GstBase {
      * received, it may safely shut down the entire pipeline.
      */
     abstract class BaseSrc extends Gst.Element {
+        static $gtype: GObject.GType<BaseSrc>;
+
         // Own properties of GstBase.BaseSrc
 
         get blocksize(): number;
@@ -2814,6 +2826,8 @@ export namespace GstBase {
      *   * Implied %FALSE if ONLY transform function is implemented.
      */
     abstract class BaseTransform extends Gst.Element {
+        static $gtype: GObject.GType<BaseTransform>;
+
         // Own properties of GstBase.BaseTransform
 
         get qos(): boolean;
@@ -3042,6 +3056,8 @@ export namespace GstBase {
      *     All pads are in waiting mode by default.
      */
     class CollectPads extends Gst.Object {
+        static $gtype: GObject.GType<CollectPads>;
+
         // Own fields of GstBase.CollectPads
 
         object: Gst.Object;
@@ -3354,6 +3370,8 @@ export namespace GstBase {
      * any #GstElement that wishes to provide some sort of queueing functionality.
      */
     class DataQueue extends GObject.Object {
+        static $gtype: GObject.GType<DataQueue>;
+
         // Own properties of GstBase.DataQueue
 
         get current_level_bytes(): number;
@@ -3419,6 +3437,8 @@ export namespace GstBase {
      * base class.
      */
     class PushSrc extends BaseSrc {
+        static $gtype: GObject.GType<PushSrc>;
+
         // Constructors of GstBase.PushSrc
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
@@ -3446,12 +3466,16 @@ export namespace GstBase {
     type AggregatorClass = typeof Aggregator;
     type AggregatorPadClass = typeof AggregatorPad;
     abstract class AggregatorPadPrivate {
+        static $gtype: GObject.GType<AggregatorPadPrivate>;
+
         // Constructors of GstBase.AggregatorPadPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class AggregatorPrivate {
+        static $gtype: GObject.GType<AggregatorPrivate>;
+
         // Constructors of GstBase.AggregatorPrivate
 
         _init(...args: any[]): void;
@@ -3468,6 +3492,8 @@ export namespace GstBase {
      * of each frame's processing, i.e. parsing virtual method invocation sequence.
      */
     class BaseParseFrame {
+        static $gtype: GObject.GType<BaseParseFrame>;
+
         // Own fields of GstBase.BaseParseFrame
 
         flags: number;
@@ -3503,6 +3529,8 @@ export namespace GstBase {
     }
 
     abstract class BaseParsePrivate {
+        static $gtype: GObject.GType<BaseParsePrivate>;
+
         // Constructors of GstBase.BaseParsePrivate
 
         _init(...args: any[]): void;
@@ -3510,6 +3538,8 @@ export namespace GstBase {
 
     type BaseSinkClass = typeof BaseSink;
     abstract class BaseSinkPrivate {
+        static $gtype: GObject.GType<BaseSinkPrivate>;
+
         // Constructors of GstBase.BaseSinkPrivate
 
         _init(...args: any[]): void;
@@ -3517,6 +3547,8 @@ export namespace GstBase {
 
     type BaseSrcClass = typeof BaseSrc;
     abstract class BaseSrcPrivate {
+        static $gtype: GObject.GType<BaseSrcPrivate>;
+
         // Constructors of GstBase.BaseSrcPrivate
 
         _init(...args: any[]): void;
@@ -3524,6 +3556,8 @@ export namespace GstBase {
 
     type BaseTransformClass = typeof BaseTransform;
     abstract class BaseTransformPrivate {
+        static $gtype: GObject.GType<BaseTransformPrivate>;
+
         // Constructors of GstBase.BaseTransformPrivate
 
         _init(...args: any[]): void;
@@ -3535,6 +3569,8 @@ export namespace GstBase {
      * into 8, 16, 32 and 64 bit variables.
      */
     class BitReader {
+        static $gtype: GObject.GType<BitReader>;
+
         // Own fields of GstBase.BitReader
 
         data: Uint8Array;
@@ -3655,6 +3691,8 @@ export namespace GstBase {
      * number of bits into 8, 16, 32 and 64 bit variables.
      */
     class BitWriter {
+        static $gtype: GObject.GType<BitWriter>;
+
         // Own fields of GstBase.BitWriter
 
         data: number;
@@ -3775,6 +3813,8 @@ export namespace GstBase {
      * in various character encodings.
      */
     class ByteReader {
+        static $gtype: GObject.GType<ByteReader>;
+
         // Own fields of GstBase.ByteReader
 
         data: Uint8Array;
@@ -4266,6 +4306,8 @@ export namespace GstBase {
      * in various character encodings.
      */
     class ByteWriter {
+        static $gtype: GObject.GType<ByteWriter>;
+
         // Own fields of GstBase.ByteWriter
 
         alloc_size: number;
@@ -4533,6 +4575,8 @@ export namespace GstBase {
      * Structure used by the collect_pads.
      */
     class CollectData {
+        static $gtype: GObject.GType<CollectData>;
+
         // Own fields of GstBase.CollectData
 
         collect: CollectPads;
@@ -4545,6 +4589,8 @@ export namespace GstBase {
     }
 
     abstract class CollectDataPrivate {
+        static $gtype: GObject.GType<CollectDataPrivate>;
+
         // Constructors of GstBase.CollectDataPrivate
 
         _init(...args: any[]): void;
@@ -4552,6 +4598,8 @@ export namespace GstBase {
 
     type CollectPadsClass = typeof CollectPads;
     abstract class CollectPadsPrivate {
+        static $gtype: GObject.GType<CollectPadsPrivate>;
+
         // Constructors of GstBase.CollectPadsPrivate
 
         _init(...args: any[]): void;
@@ -4559,6 +4607,8 @@ export namespace GstBase {
 
     type DataQueueClass = typeof DataQueue;
     abstract class DataQueuePrivate {
+        static $gtype: GObject.GType<DataQueuePrivate>;
+
         // Constructors of GstBase.DataQueuePrivate
 
         _init(...args: any[]): void;
@@ -4598,6 +4648,8 @@ export namespace GstBase {
      * returned immediately from the gst_flow_combiner_update_flow() function.
      */
     abstract class FlowCombiner {
+        static $gtype: GObject.GType<FlowCombiner>;
+
         // Constructors of GstBase.FlowCombiner
 
         constructor(properties?: Partial<{}>);
@@ -4669,6 +4721,8 @@ export namespace GstBase {
      * The opaque #GstTypeFindData structure.
      */
     abstract class TypeFindData {
+        static $gtype: GObject.GType<TypeFindData>;
+
         // Constructors of GstBase.TypeFindData
 
         _init(...args: any[]): void;

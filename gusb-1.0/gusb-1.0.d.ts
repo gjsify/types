@@ -98,6 +98,8 @@ export namespace GUsb {
      * The error code.
      */
     class SourceError extends GLib.Error {
+        static $gtype: GObject.GType<SourceError>;
+
         // Static fields of GUsb.SourceError
 
         static SOURCE_ERROR_INTERNAL: number;
@@ -157,6 +159,8 @@ export namespace GUsb {
     }
 
     class BosDescriptor extends GObject.Object {
+        static $gtype: GObject.GType<BosDescriptor>;
+
         // Constructors of GUsb.BosDescriptor
 
         constructor(properties?: Partial<BosDescriptor.ConstructorProps>, ...args: any[]);
@@ -203,6 +207,8 @@ export namespace GUsb {
     }
 
     class Context extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of GUsb.Context
 
         get debug_level(): number;
@@ -816,6 +822,8 @@ export namespace GUsb {
     }
 
     class Device extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of GUsb.Device
 
         set context(val: Context);
@@ -1718,6 +1726,8 @@ export namespace GUsb {
     }
 
     class DeviceEvent extends GObject.Object {
+        static $gtype: GObject.GType<DeviceEvent>;
+
         // Constructors of GUsb.DeviceEvent
 
         constructor(properties?: Partial<DeviceEvent.ConstructorProps>, ...args: any[]);
@@ -1772,6 +1782,8 @@ export namespace GUsb {
     }
 
     class DeviceList extends GObject.Object {
+        static $gtype: GObject.GType<DeviceList>;
+
         // Own properties of GUsb.DeviceList
 
         get context(): Context;
@@ -1831,6 +1843,8 @@ export namespace GUsb {
     }
 
     class Endpoint extends GObject.Object {
+        static $gtype: GObject.GType<Endpoint>;
+
         // Constructors of GUsb.Endpoint
 
         constructor(properties?: Partial<Endpoint.ConstructorProps>, ...args: any[]);
@@ -1893,6 +1907,8 @@ export namespace GUsb {
     }
 
     class Interface extends GObject.Object {
+        static $gtype: GObject.GType<Interface>;
+
         // Constructors of GUsb.Interface
 
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
@@ -1963,6 +1979,8 @@ export namespace GUsb {
     type EndpointClass = typeof Endpoint;
     type InterfaceClass = typeof Interface;
     abstract class Source {
+        static $gtype: GObject.GType<Source>;
+
         // Constructors of GUsb.Source
 
         _init(...args: any[]): void;

@@ -1,7 +1,7 @@
 
 declare module 'gi://Plasma?version=1.0' {
-    import Plasma10 from '@girs/plasma-1.0';
-    export default Plasma10;
+    import Plasma from '@girs/plasma-1.0';
+    export default Plasma;
 }
 
 declare module 'gi://Plasma' {

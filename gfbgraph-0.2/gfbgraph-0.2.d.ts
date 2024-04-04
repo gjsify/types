@@ -45,6 +45,8 @@ export namespace GFBGraph {
     }
 
     class Album extends Node implements Connectable {
+        static $gtype: GObject.GType<Album>;
+
         // Own properties of GFBGraph.Album
 
         /**
@@ -238,6 +240,8 @@ export namespace GFBGraph {
     }
 
     class GoaAuthorizer extends GObject.Object implements Authorizer {
+        static $gtype: GObject.GType<GoaAuthorizer>;
+
         // Constructors of GFBGraph.GoaAuthorizer
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
@@ -662,6 +666,8 @@ export namespace GFBGraph {
     }
 
     class Node extends GObject.Object {
+        static $gtype: GObject.GType<Node>;
+
         // Own properties of GFBGraph.Node
 
         get created_time(): string;
@@ -780,6 +786,8 @@ export namespace GFBGraph {
     }
 
     class Photo extends Node implements Connectable, Json.Serializable {
+        static $gtype: GObject.GType<Photo>;
+
         // Own properties of GFBGraph.Photo
 
         /**
@@ -1513,6 +1521,8 @@ export namespace GFBGraph {
     }
 
     class SimpleAuthorizer extends GObject.Object implements Authorizer {
+        static $gtype: GObject.GType<SimpleAuthorizer>;
+
         // Own properties of GFBGraph.SimpleAuthorizer
 
         get access_token(): string;
@@ -1942,6 +1952,8 @@ export namespace GFBGraph {
     }
 
     class User extends Node {
+        static $gtype: GObject.GType<User>;
+
         // Own properties of GFBGraph.User
 
         /**
@@ -2041,6 +2053,8 @@ export namespace GFBGraph {
 
     type AlbumClass = typeof Album;
     abstract class AlbumPrivate {
+        static $gtype: GObject.GType<AlbumPrivate>;
+
         // Constructors of GFBGraph.AlbumPrivate
 
         _init(...args: any[]): void;
@@ -2050,6 +2064,8 @@ export namespace GFBGraph {
     type ConnectableInterface = typeof Connectable;
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
+        static $gtype: GObject.GType<GoaAuthorizerPrivate>;
+
         // Constructors of GFBGraph.GoaAuthorizerPrivate
 
         _init(...args: any[]): void;
@@ -2057,6 +2073,8 @@ export namespace GFBGraph {
 
     type NodeClass = typeof Node;
     abstract class NodePrivate {
+        static $gtype: GObject.GType<NodePrivate>;
+
         // Constructors of GFBGraph.NodePrivate
 
         _init(...args: any[]): void;
@@ -2067,6 +2085,8 @@ export namespace GFBGraph {
      * An struct with the information of a image.
      */
     class PhotoImage {
+        static $gtype: GObject.GType<PhotoImage>;
+
         // Own fields of GFBGraph.PhotoImage
 
         width: number;
@@ -2086,6 +2106,8 @@ export namespace GFBGraph {
     }
 
     abstract class PhotoPrivate {
+        static $gtype: GObject.GType<PhotoPrivate>;
+
         // Constructors of GFBGraph.PhotoPrivate
 
         _init(...args: any[]): void;
@@ -2093,6 +2115,8 @@ export namespace GFBGraph {
 
     type SimpleAuthorizerClass = typeof SimpleAuthorizer;
     abstract class SimpleAuthorizerPrivate {
+        static $gtype: GObject.GType<SimpleAuthorizerPrivate>;
+
         // Constructors of GFBGraph.SimpleAuthorizerPrivate
 
         _init(...args: any[]): void;
@@ -2100,6 +2124,8 @@ export namespace GFBGraph {
 
     type UserClass = typeof User;
     abstract class UserPrivate {
+        static $gtype: GObject.GType<UserPrivate>;
+
         // Constructors of GFBGraph.UserPrivate
 
         _init(...args: any[]): void;

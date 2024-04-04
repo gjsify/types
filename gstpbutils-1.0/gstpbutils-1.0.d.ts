@@ -922,6 +922,8 @@ export namespace GstPbutils {
      * new frame.
      */
     abstract class AudioVisualizer extends Gst.Element {
+        static $gtype: GObject.GType<AudioVisualizer>;
+
         // Own properties of GstPbutils.AudioVisualizer
 
         get shade_amount(): number;
@@ -999,6 +1001,8 @@ export namespace GstPbutils {
      * All the information is returned in a #GstDiscovererInfo structure.
      */
     class Discoverer extends GObject.Object {
+        static $gtype: GObject.GType<Discoverer>;
+
         // Own properties of GstPbutils.Discoverer
 
         /**
@@ -1113,6 +1117,8 @@ export namespace GstPbutils {
      * #GstDiscovererStreamInfo specific to audio streams.
      */
     class DiscovererAudioInfo extends DiscovererStreamInfo {
+        static $gtype: GObject.GType<DiscovererAudioInfo>;
+
         // Constructors of GstPbutils.DiscovererAudioInfo
 
         constructor(properties?: Partial<DiscovererAudioInfo.ConstructorProps>, ...args: any[]);
@@ -1140,6 +1146,8 @@ export namespace GstPbutils {
      * #GstDiscovererStreamInfo specific to container streams.
      */
     class DiscovererContainerInfo extends DiscovererStreamInfo {
+        static $gtype: GObject.GType<DiscovererContainerInfo>;
+
         // Constructors of GstPbutils.DiscovererContainerInfo
 
         constructor(properties?: Partial<DiscovererContainerInfo.ConstructorProps>, ...args: any[]);
@@ -1162,6 +1170,8 @@ export namespace GstPbutils {
      * Structure containing the information of a URI analyzed by #GstDiscoverer.
      */
     class DiscovererInfo extends GObject.Object {
+        static $gtype: GObject.GType<DiscovererInfo>;
+
         // Constructors of GstPbutils.DiscovererInfo
 
         constructor(properties?: Partial<DiscovererInfo.ConstructorProps>, ...args: any[]);
@@ -1258,6 +1268,8 @@ export namespace GstPbutils {
      * for the audio and video streams respectively.
      */
     class DiscovererStreamInfo extends GObject.Object {
+        static $gtype: GObject.GType<DiscovererStreamInfo>;
+
         // Constructors of GstPbutils.DiscovererStreamInfo
 
         constructor(properties?: Partial<DiscovererStreamInfo.ConstructorProps>, ...args: any[]);
@@ -1297,6 +1309,8 @@ export namespace GstPbutils {
      * image based ones).
      */
     class DiscovererSubtitleInfo extends DiscovererStreamInfo {
+        static $gtype: GObject.GType<DiscovererSubtitleInfo>;
+
         // Constructors of GstPbutils.DiscovererSubtitleInfo
 
         constructor(properties?: Partial<DiscovererSubtitleInfo.ConstructorProps>, ...args: any[]);
@@ -1318,6 +1332,8 @@ export namespace GstPbutils {
      * #GstDiscovererStreamInfo specific to video streams (this includes images).
      */
     class DiscovererVideoInfo extends DiscovererStreamInfo {
+        static $gtype: GObject.GType<DiscovererVideoInfo>;
+
         // Constructors of GstPbutils.DiscovererVideoInfo
 
         constructor(properties?: Partial<DiscovererVideoInfo.ConstructorProps>, ...args: any[]);
@@ -1349,6 +1365,8 @@ export namespace GstPbutils {
      * Variant of #GstEncodingProfile for audio streams.
      */
     class EncodingAudioProfile extends EncodingProfile {
+        static $gtype: GObject.GType<EncodingAudioProfile>;
+
         // Constructors of GstPbutils.EncodingAudioProfile
 
         constructor(properties?: Partial<EncodingAudioProfile.ConstructorProps>, ...args: any[]);
@@ -1373,6 +1391,8 @@ export namespace GstPbutils {
      * Encoding profiles for containers. Keeps track of a list of #GstEncodingProfile
      */
     class EncodingContainerProfile extends EncodingProfile {
+        static $gtype: GObject.GType<EncodingContainerProfile>;
+
         // Constructors of GstPbutils.EncodingContainerProfile
 
         constructor(properties?: Partial<EncodingContainerProfile.ConstructorProps>, ...args: any[]);
@@ -1423,6 +1443,8 @@ export namespace GstPbutils {
      * information like name, description, format and preset.
      */
     class EncodingProfile extends GObject.Object {
+        static $gtype: GObject.GType<EncodingProfile>;
+
         // Own properties of GstPbutils.EncodingProfile
 
         /**
@@ -1609,6 +1631,8 @@ export namespace GstPbutils {
      * #GST_ENCODING_CATEGORY_DEVICE.
      */
     class EncodingTarget extends GObject.Object {
+        static $gtype: GObject.GType<EncodingTarget>;
+
         // Constructors of GstPbutils.EncodingTarget
 
         constructor(properties?: Partial<EncodingTarget.ConstructorProps>, ...args: any[]);
@@ -1682,6 +1706,8 @@ export namespace GstPbutils {
      * Variant of #GstEncodingProfile for video streams, allows specifying the `pass`.
      */
     class EncodingVideoProfile extends EncodingProfile {
+        static $gtype: GObject.GType<EncodingVideoProfile>;
+
         // Constructors of GstPbutils.EncodingVideoProfile
 
         constructor(properties?: Partial<EncodingVideoProfile.ConstructorProps>, ...args: any[]);
@@ -1727,6 +1753,8 @@ export namespace GstPbutils {
 
     type AudioVisualizerClass = typeof AudioVisualizer;
     abstract class AudioVisualizerPrivate {
+        static $gtype: GObject.GType<AudioVisualizerPrivate>;
+
         // Constructors of GstPbutils.AudioVisualizerPrivate
 
         _init(...args: any[]): void;
@@ -1734,6 +1762,8 @@ export namespace GstPbutils {
 
     type DiscovererClass = typeof Discoverer;
     abstract class DiscovererPrivate {
+        static $gtype: GObject.GType<DiscovererPrivate>;
+
         // Constructors of GstPbutils.DiscovererPrivate
 
         _init(...args: any[]): void;
@@ -1748,6 +1778,8 @@ export namespace GstPbutils {
      * API to set details on it.
      */
     abstract class InstallPluginsContext {
+        static $gtype: GObject.GType<InstallPluginsContext>;
+
         // Constructors of GstPbutils.InstallPluginsContext
 
         constructor(properties?: Partial<{}>);

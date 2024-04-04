@@ -39,6 +39,8 @@ export namespace MxGtk {
      * through the public API.
      */
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Frame>;
+
         // Constructors of MxGtk.Frame
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
@@ -426,6 +428,8 @@ export namespace MxGtk {
      * through the public API.
      */
     class LightSwitch extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<LightSwitch>;
+
         // Own properties of MxGtk.LightSwitch
 
         get active(): boolean;

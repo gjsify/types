@@ -20,6 +20,8 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace GSSDP {
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GSSDP.Error
 
         /**
@@ -68,6 +70,8 @@ export namespace GSSDP {
     }
 
     class Client extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of GSSDP.Client
 
         /**
@@ -695,6 +699,8 @@ export namespace GSSDP {
     }
 
     class ResourceBrowser extends GObject.Object {
+        static $gtype: GObject.GType<ResourceBrowser>;
+
         // Own properties of GSSDP.ResourceBrowser
 
         /**
@@ -791,6 +797,8 @@ export namespace GSSDP {
     }
 
     class ResourceGroup extends GObject.Object {
+        static $gtype: GObject.GType<ResourceGroup>;
+
         // Own properties of GSSDP.ResourceGroup
 
         /**
@@ -883,6 +891,8 @@ export namespace GSSDP {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of GSSDP.ClientPrivate
 
         _init(...args: any[]): void;
@@ -890,6 +900,8 @@ export namespace GSSDP {
 
     type ResourceBrowserClass = typeof ResourceBrowser;
     abstract class ResourceBrowserPrivate {
+        static $gtype: GObject.GType<ResourceBrowserPrivate>;
+
         // Constructors of GSSDP.ResourceBrowserPrivate
 
         _init(...args: any[]): void;
@@ -897,6 +909,8 @@ export namespace GSSDP {
 
     type ResourceGroupClass = typeof ResourceGroup;
     abstract class ResourceGroupPrivate {
+        static $gtype: GObject.GType<ResourceGroupPrivate>;
+
         // Constructors of GSSDP.ResourceGroupPrivate
 
         _init(...args: any[]): void;

@@ -47,6 +47,8 @@ export namespace RestExtras {
      * #FlickrProxy has no publicly available members.
      */
     class FlickrProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<FlickrProxy>;
+
         // Own properties of RestExtras.FlickrProxy
 
         get api_key(): string;
@@ -137,6 +139,8 @@ export namespace RestExtras {
      * #FlickrProxyCall has no publicly available members.
      */
     class FlickrProxyCall extends Rest.ProxyCall {
+        static $gtype: GObject.GType<FlickrProxyCall>;
+
         // Own properties of RestExtras.FlickrProxyCall
 
         /**
@@ -169,6 +173,8 @@ export namespace RestExtras {
      * #LastfmProxy has no publicly available members.
      */
     class LastfmProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<LastfmProxy>;
+
         // Own properties of RestExtras.LastfmProxy
 
         get api_key(): string;
@@ -237,6 +243,8 @@ export namespace RestExtras {
      * #LastfmProxyCall has no publicly available members.
      */
     class LastfmProxyCall extends Rest.ProxyCall {
+        static $gtype: GObject.GType<LastfmProxyCall>;
+
         // Constructors of RestExtras.LastfmProxyCall
 
         constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
@@ -259,6 +267,8 @@ export namespace RestExtras {
      * #YoutubeProxy has no publicly available members.
      */
     class YoutubeProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<YoutubeProxy>;
+
         // Own properties of RestExtras.YoutubeProxy
 
         get developer_key(): string;
@@ -302,6 +312,8 @@ export namespace RestExtras {
     type FlickrProxyCallClass = typeof FlickrProxyCall;
     type FlickrProxyClass = typeof FlickrProxy;
     abstract class FlickrProxyPrivate {
+        static $gtype: GObject.GType<FlickrProxyPrivate>;
+
         // Constructors of RestExtras.FlickrProxyPrivate
 
         _init(...args: any[]): void;
@@ -310,6 +322,8 @@ export namespace RestExtras {
     type LastfmProxyCallClass = typeof LastfmProxyCall;
     type LastfmProxyClass = typeof LastfmProxy;
     abstract class LastfmProxyPrivate {
+        static $gtype: GObject.GType<LastfmProxyPrivate>;
+
         // Constructors of RestExtras.LastfmProxyPrivate
 
         _init(...args: any[]): void;
@@ -317,6 +331,8 @@ export namespace RestExtras {
 
     type YoutubeProxyClass = typeof YoutubeProxy;
     abstract class YoutubeProxyPrivate {
+        static $gtype: GObject.GType<YoutubeProxyPrivate>;
+
         // Constructors of RestExtras.YoutubeProxyPrivate
 
         _init(...args: any[]): void;

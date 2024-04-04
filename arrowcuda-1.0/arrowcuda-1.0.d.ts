@@ -24,6 +24,8 @@ export namespace ArrowCUDA {
     }
 
     class Buffer extends Arrow.Buffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Constructors of ArrowCUDA.Buffer
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
@@ -58,6 +60,8 @@ export namespace ArrowCUDA {
     }
 
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
+        static $gtype: GObject.GType<BufferInputStream>;
+
         // Constructors of ArrowCUDA.BufferInputStream
 
         constructor(properties?: Partial<BufferInputStream.ConstructorProps>, ...args: any[]);
@@ -433,6 +437,8 @@ export namespace ArrowCUDA {
     }
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
+        static $gtype: GObject.GType<BufferOutputStream>;
+
         // Constructors of ArrowCUDA.BufferOutputStream
 
         constructor(properties?: Partial<BufferOutputStream.ConstructorProps>, ...args: any[]);
@@ -823,6 +829,8 @@ export namespace ArrowCUDA {
     }
 
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of ArrowCUDA.Context
 
         set context(val: any);
@@ -845,6 +853,8 @@ export namespace ArrowCUDA {
     }
 
     class DeviceManager extends GObject.Object {
+        static $gtype: GObject.GType<DeviceManager>;
+
         // Constructors of ArrowCUDA.DeviceManager
 
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
@@ -866,6 +876,8 @@ export namespace ArrowCUDA {
     }
 
     class HostBuffer extends Arrow.MutableBuffer {
+        static $gtype: GObject.GType<HostBuffer>;
+
         // Constructors of ArrowCUDA.HostBuffer
 
         constructor(properties?: Partial<HostBuffer.ConstructorProps>, ...args: any[]);
@@ -888,6 +900,8 @@ export namespace ArrowCUDA {
     }
 
     class IPCMemoryHandle extends GObject.Object {
+        static $gtype: GObject.GType<IPCMemoryHandle>;
+
         // Own properties of ArrowCUDA.IPCMemoryHandle
 
         set ipc_memory_handle(val: any);

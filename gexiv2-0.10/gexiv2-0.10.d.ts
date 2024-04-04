@@ -211,6 +211,8 @@ export namespace GExiv2 {
      * <ulink url="http://www.exiv2.org/metadata.html"></ulink>
      */
     class Metadata extends GObject.Object {
+        static $gtype: GObject.GType<Metadata>;
+
         // Constructors of GExiv2.Metadata
 
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
@@ -946,6 +948,8 @@ export namespace GExiv2 {
     }
 
     class PreviewImage extends GObject.Object {
+        static $gtype: GObject.GType<PreviewImage>;
+
         // Constructors of GExiv2.PreviewImage
 
         constructor(properties?: Partial<PreviewImage.ConstructorProps>, ...args: any[]);
@@ -975,6 +979,8 @@ export namespace GExiv2 {
     }
 
     class PreviewProperties extends GObject.Object {
+        static $gtype: GObject.GType<PreviewProperties>;
+
         // Constructors of GExiv2.PreviewProperties
 
         constructor(properties?: Partial<PreviewProperties.ConstructorProps>, ...args: any[]);
@@ -992,6 +998,8 @@ export namespace GExiv2 {
 
     type MetadataClass = typeof Metadata;
     abstract class MetadataPrivate {
+        static $gtype: GObject.GType<MetadataPrivate>;
+
         // Constructors of GExiv2.MetadataPrivate
 
         _init(...args: any[]): void;
@@ -999,6 +1007,8 @@ export namespace GExiv2 {
 
     type PreviewImageClass = typeof PreviewImage;
     abstract class PreviewImagePrivate {
+        static $gtype: GObject.GType<PreviewImagePrivate>;
+
         // Constructors of GExiv2.PreviewImagePrivate
 
         _init(...args: any[]): void;
@@ -1006,6 +1016,8 @@ export namespace GExiv2 {
 
     type PreviewPropertiesClass = typeof PreviewProperties;
     abstract class PreviewPropertiesPrivate {
+        static $gtype: GObject.GType<PreviewPropertiesPrivate>;
+
         // Constructors of GExiv2.PreviewPropertiesPrivate
 
         _init(...args: any[]): void;

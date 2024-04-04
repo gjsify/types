@@ -7,6 +7,8 @@
 
 import './girepository-2.0-ambient.d.ts';
 
+import './girepository-2.0-import.d.ts';
+
 /**
  * GIRepository-2.0
  */
@@ -1607,6 +1609,8 @@ export namespace GIRepository {
      * and the g_irepository_prepend_search_path() calls.
      */
     class Repository extends GObject.Object {
+        static $gtype: GObject.GType<Repository>;
+
         // Constructors of GIRepository.Repository
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
@@ -1854,6 +1858,8 @@ export namespace GIRepository {
      * in a #GIBaseInfo struct.
      */
     class AttributeIter {
+        static $gtype: GObject.GType<AttributeIter>;
+
         // Constructors of GIRepository.AttributeIter
 
         constructor(properties?: Partial<{}>);
@@ -1908,6 +1914,8 @@ export namespace GIRepository {
      *
      */
     class BaseInfo {
+        static $gtype: GObject.GType<BaseInfo>;
+
         // Constructors of GIRepository.BaseInfo
 
         constructor(properties?: Partial<{}>);
@@ -2000,6 +2008,8 @@ export namespace GIRepository {
 
     type RepositoryClass = typeof Repository;
     abstract class RepositoryPrivate {
+        static $gtype: GObject.GType<RepositoryPrivate>;
+
         // Constructors of GIRepository.RepositoryPrivate
 
         _init(...args: any[]): void;
@@ -2009,6 +2019,8 @@ export namespace GIRepository {
      * TODO
      */
     abstract class Typelib {
+        static $gtype: GObject.GType<Typelib>;
+
         // Constructors of GIRepository.Typelib
 
         _init(...args: any[]): void;
@@ -2024,6 +2036,8 @@ export namespace GIRepository {
      * Represents a unresolved type in a typelib.
      */
     abstract class UnresolvedInfo {
+        static $gtype: GObject.GType<UnresolvedInfo>;
+
         // Constructors of GIRepository.UnresolvedInfo
 
         _init(...args: any[]): void;
@@ -2033,6 +2047,8 @@ export namespace GIRepository {
      * Stores an argument of varying type
      */
     class Argument {
+        static $gtype: GObject.GType<Argument>;
+
         // Own fields of GIRepository.Argument
 
         v_boolean: boolean;

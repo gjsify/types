@@ -17,6 +17,8 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace GSound {
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GSound.Error
 
         static NOTSUPPORTED: number;
@@ -341,6 +343,8 @@ export namespace GSound {
      * Wrapper for ca_context.
      */
     class Context extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of GSound.Context
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);

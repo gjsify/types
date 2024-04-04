@@ -145,6 +145,8 @@ export namespace GstVideo {
     }
 
     abstract class Filter extends GstBase.Transform {
+        static $gtype: GObject.GType<Filter>;
+
         // Own fields of GstVideo.Filter
 
         element: GstBase.Transform;
@@ -170,6 +172,8 @@ export namespace GstVideo {
      * The video sink instance structure. Derived video sinks should set the
      */
     class Sink extends GstBase.Sink {
+        static $gtype: GObject.GType<Sink>;
+
         // Own properties of GstVideo.Sink
 
         get show_preroll_frame(): boolean;
@@ -203,6 +207,8 @@ export namespace GstVideo {
      * Helper structure representing a rectangular area.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of GstVideo.Rectangle
 
         x: number;
@@ -225,6 +231,8 @@ export namespace GstVideo {
 
     type SinkClass = typeof Sink;
     class SinkPrivate {
+        static $gtype: GObject.GType<SinkPrivate>;
+
         // Constructors of GstVideo.SinkPrivate
 
         _init(...args: any[]): void;

@@ -203,6 +203,8 @@ export namespace GstBadAudio {
      *   subsong duration regardless of the output mode.
      */
     abstract class NonstreamAudioDecoder extends Gst.Element {
+        static $gtype: GObject.GType<NonstreamAudioDecoder>;
+
         // Own properties of GstBadAudio.NonstreamAudioDecoder
 
         get current_subsong(): number;
@@ -380,6 +382,8 @@ export namespace GstBadAudio {
      * must be configured with gst_planar_audio_adapter_configure()
      */
     class PlanarAudioAdapter extends GObject.Object {
+        static $gtype: GObject.GType<PlanarAudioAdapter>;
+
         // Constructors of GstBadAudio.PlanarAudioAdapter
 
         constructor(properties?: Partial<PlanarAudioAdapter.ConstructorProps>, ...args: any[]);

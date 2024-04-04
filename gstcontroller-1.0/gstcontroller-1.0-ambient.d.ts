@@ -1,7 +1,7 @@
 
 declare module 'gi://GstController?version=1.0' {
-    import GstController10 from '@girs/gstcontroller-1.0';
-    export default GstController10;
+    import GstController from '@girs/gstcontroller-1.0';
+    export default GstController;
 }
 
 declare module 'gi://GstController' {

@@ -1454,6 +1454,8 @@ export namespace ECal {
      * functions below.
      */
     class Client extends EDataServer.Client implements TimezoneCache, Gio.AsyncInitable<Client>, Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of ECal.Client
 
         get default_timezone(): ICalGLib.Timezone;
@@ -3142,6 +3144,8 @@ export namespace ECal {
      * functions below.
      */
     class ClientView extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<ClientView>;
+
         // Own properties of ECal.ClientView
 
         /**
@@ -3701,6 +3705,8 @@ export namespace ECal {
     }
 
     class Component extends GObject.Object {
+        static $gtype: GObject.GType<Component>;
+
         // Constructors of ECal.Component
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
@@ -4398,6 +4404,8 @@ export namespace ECal {
      * functions below.
      */
     class ReminderWatcher extends GObject.Object {
+        static $gtype: GObject.GType<ReminderWatcher>;
+
         // Own properties of ECal.ReminderWatcher
 
         /**
@@ -4631,6 +4639,8 @@ export namespace ECal {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of ECal.ClientPrivate
 
         _init(...args: any[]): void;
@@ -4640,6 +4650,8 @@ export namespace ECal {
      * Contains data used as lookup_data of e_cal_client_tzlookup_icalcomp_cb().
      */
     abstract class ClientTzlookupICalCompData {
+        static $gtype: GObject.GType<ClientTzlookupICalCompData>;
+
         // Constructors of ECal.ClientTzlookupICalCompData
 
         constructor(icomp: ICalGLib.Component);
@@ -4666,6 +4678,8 @@ export namespace ECal {
 
     type ClientViewClass = typeof ClientView;
     abstract class ClientViewPrivate {
+        static $gtype: GObject.GType<ClientViewPrivate>;
+
         // Constructors of ECal.ClientViewPrivate
 
         _init(...args: any[]): void;
@@ -4676,6 +4690,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentAlarm {
+        static $gtype: GObject.GType<ComponentAlarm>;
+
         // Constructors of ECal.ComponentAlarm
 
         constructor(properties?: Partial<{}>);
@@ -4828,6 +4844,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentAlarmInstance {
+        static $gtype: GObject.GType<ComponentAlarmInstance>;
+
         // Constructors of ECal.ComponentAlarmInstance
 
         constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
@@ -4892,6 +4910,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentAlarmRepeat {
+        static $gtype: GObject.GType<ComponentAlarmRepeat>;
+
         // Constructors of ECal.ComponentAlarmRepeat
 
         constructor(repetitions: number, interval: ICalGLib.Duration);
@@ -4940,6 +4960,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentAlarmTrigger {
+        static $gtype: GObject.GType<ComponentAlarmTrigger>;
+
         // Constructors of ECal.ComponentAlarmTrigger
 
         constructor(absolute_time: ICalGLib.Time);
@@ -5041,6 +5063,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentAlarms {
+        static $gtype: GObject.GType<ComponentAlarms>;
+
         // Constructors of ECal.ComponentAlarms
 
         constructor(comp?: Component | null);
@@ -5105,6 +5129,8 @@ export namespace ECal {
      * Describes an attendee. Use the functions below to work with it.
      */
     abstract class ComponentAttendee {
+        static $gtype: GObject.GType<ComponentAttendee>;
+
         // Constructors of ECal.ComponentAttendee
 
         constructor(properties?: Partial<{}>);
@@ -5238,6 +5264,8 @@ export namespace ECal {
      * below to work with it.
      */
     abstract class ComponentDateTime {
+        static $gtype: GObject.GType<ComponentDateTime>;
+
         // Constructors of ECal.ComponentDateTime
 
         constructor(value: ICalGLib.Time, tzid?: string | null);
@@ -5307,6 +5335,8 @@ export namespace ECal {
      * below to work with it.
      */
     abstract class ComponentId {
+        static $gtype: GObject.GType<ComponentId>;
+
         // Constructors of ECal.ComponentId
 
         constructor(uid: string, rid?: string | null);
@@ -5355,6 +5385,8 @@ export namespace ECal {
      * Describes an organizer. Use the functions below to work with it.
      */
     abstract class ComponentOrganizer {
+        static $gtype: GObject.GType<ComponentOrganizer>;
+
         // Constructors of ECal.ComponentOrganizer
 
         constructor(properties?: Partial<{}>);
@@ -5434,6 +5466,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentParameterBag {
+        static $gtype: GObject.GType<ComponentParameterBag>;
+
         // Constructors of ECal.ComponentParameterBag
 
         constructor(properties?: Partial<{}>);
@@ -5519,6 +5553,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentPeriod {
+        static $gtype: GObject.GType<ComponentPeriod>;
+
         // Constructors of ECal.ComponentPeriod
 
         constructor(start: ICalGLib.Time, end?: ICalGLib.Time | null);
@@ -5600,6 +5636,8 @@ export namespace ECal {
     }
 
     abstract class ComponentPrivate {
+        static $gtype: GObject.GType<ComponentPrivate>;
+
         // Constructors of ECal.ComponentPrivate
 
         _init(...args: any[]): void;
@@ -5610,6 +5648,8 @@ export namespace ECal {
      * Use the functions below to work with it.
      */
     abstract class ComponentPropertyBag {
+        static $gtype: GObject.GType<ComponentPropertyBag>;
+
         // Constructors of ECal.ComponentPropertyBag
 
         constructor(properties?: Partial<{}>);
@@ -5694,6 +5734,8 @@ export namespace ECal {
      * Describes a range. Use the functions below to work with it.
      */
     abstract class ComponentRange {
+        static $gtype: GObject.GType<ComponentRange>;
+
         // Constructors of ECal.ComponentRange
 
         constructor(kind: ComponentRangeKind, datetime: ComponentDateTime);
@@ -5729,6 +5771,8 @@ export namespace ECal {
      * for text properties. Use the functions below to work with it.
      */
     abstract class ComponentText {
+        static $gtype: GObject.GType<ComponentText>;
+
         // Constructors of ECal.ComponentText
 
         constructor(value?: string | null, altrep?: string | null);
@@ -5777,6 +5821,8 @@ export namespace ECal {
      * Contains data related to single reminder occurrence.
      */
     abstract class ReminderData {
+        static $gtype: GObject.GType<ReminderData>;
+
         // Constructors of ECal.ReminderData
 
         constructor(source_uid: string, component: Component, instance: ComponentAlarmInstance);
@@ -5820,6 +5866,8 @@ export namespace ECal {
 
     type ReminderWatcherClass = typeof ReminderWatcher;
     abstract class ReminderWatcherPrivate {
+        static $gtype: GObject.GType<ReminderWatcherPrivate>;
+
         // Constructors of ECal.ReminderWatcherPrivate
 
         _init(...args: any[]): void;

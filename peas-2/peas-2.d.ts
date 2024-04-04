@@ -79,6 +79,8 @@ export namespace Peas {
      *   plugins and their extensions from within your application.
      */
     class Engine<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<Engine>;
+
         // Own properties of Peas.Engine
 
         /**
@@ -777,6 +779,8 @@ export namespace Peas {
      * the same purpose.
      */
     abstract class ExtensionBase extends GObject.Object {
+        static $gtype: GObject.GType<ExtensionBase>;
+
         // Own properties of Peas.ExtensionBase
 
         /**
@@ -903,6 +907,8 @@ export namespace Peas {
      * ```
      */
     class ExtensionSet<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<ExtensionSet>;
+
         // Own properties of Peas.ExtensionSet
 
         set construct_properties(val: any);
@@ -1436,6 +1442,8 @@ export namespace Peas {
      * function.
      */
     class ObjectModule extends GObject.TypeModule implements GObject.TypePlugin {
+        static $gtype: GObject.GType<ObjectModule>;
+
         // Own properties of Peas.ObjectModule
 
         /**
@@ -1919,6 +1927,8 @@ export namespace Peas {
      * ```
      */
     class PluginInfo extends GObject.Object {
+        static $gtype: GObject.GType<PluginInfo>;
+
         // Own properties of Peas.PluginInfo
 
         get authors(): string[];

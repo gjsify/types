@@ -1,7 +1,7 @@
 
 declare module 'gi://GstVideo?version=1.0' {
-    import GstVideo10 from '@girs/gstvideo-1.0';
-    export default GstVideo10;
+    import GstVideo from '@girs/gstvideo-1.0';
+    export default GstVideo;
 }
 
 declare module 'gi://GstVideo' {

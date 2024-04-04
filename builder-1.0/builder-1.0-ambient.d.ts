@@ -1,7 +1,7 @@
 
 declare module 'gi://Builder?version=1.0' {
-    import Builder10 from '@girs/builder-1.0';
-    export default Builder10;
+    import Builder from '@girs/builder-1.0';
+    export default Builder;
 }
 
 declare module 'gi://Builder' {

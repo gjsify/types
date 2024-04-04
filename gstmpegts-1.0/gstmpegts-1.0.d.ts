@@ -552,6 +552,8 @@ export namespace GstMpegts {
         CIRCULAR_RIGHT,
     }
     class SatelliteRolloff {
+        static $gtype: GObject.GType<SatelliteRolloff>;
+
         // Static fields of GstMpegts.SatelliteRolloff
 
         static '35': number;
@@ -1237,6 +1239,8 @@ export namespace GstMpegts {
         PN945,
     }
     class TerrestrialHierarchy {
+        static $gtype: GObject.GType<TerrestrialHierarchy>;
+
         // Static fields of GstMpegts.TerrestrialHierarchy
 
         static NONE: number;
@@ -1490,6 +1494,8 @@ export namespace GstMpegts {
      * "official" documentation for the given format.
      */
     class RegistrationId {
+        static $gtype: GObject.GType<RegistrationId>;
+
         // Static fields of GstMpegts.RegistrationId
 
         /**
@@ -1576,6 +1582,8 @@ export namespace GstMpegts {
      * Event Information Table (ATSC)
      */
     class AtscEIT {
+        static $gtype: GObject.GType<AtscEIT>;
+
         // Own fields of GstMpegts.AtscEIT
 
         source_id: number;
@@ -1598,6 +1606,8 @@ export namespace GstMpegts {
      * An ATSC EIT Event
      */
     class AtscEITEvent {
+        static $gtype: GObject.GType<AtscEITEvent>;
+
         // Own fields of GstMpegts.AtscEITEvent
 
         event_id: number;
@@ -1626,6 +1636,8 @@ export namespace GstMpegts {
      * Extended Text Table (ATSC)
      */
     class AtscETT {
+        static $gtype: GObject.GType<AtscETT>;
+
         // Own fields of GstMpegts.AtscETT
 
         ett_table_id_extension: number;
@@ -1650,6 +1662,8 @@ export namespace GstMpegts {
      * Master Guide Table (A65)
      */
     class AtscMGT {
+        static $gtype: GObject.GType<AtscMGT>;
+
         // Own fields of GstMpegts.AtscMGT
 
         protocol_version: number;
@@ -1676,6 +1690,8 @@ export namespace GstMpegts {
      * Source from a `GstMpegtsAtscMGT`
      */
     class AtscMGTTable {
+        static $gtype: GObject.GType<AtscMGTTable>;
+
         // Own fields of GstMpegts.AtscMGTTable
 
         table_type: number;
@@ -1699,6 +1715,8 @@ export namespace GstMpegts {
     }
 
     class AtscMultString {
+        static $gtype: GObject.GType<AtscMultString>;
+
         // Own fields of GstMpegts.AtscMultString
 
         iso_639_langcode: number[];
@@ -1719,6 +1737,8 @@ export namespace GstMpegts {
      * Region Rating Table (A65)
      */
     class AtscRRT {
+        static $gtype: GObject.GType<AtscRRT>;
+
         // Own fields of GstMpegts.AtscRRT
 
         protocol_version: number;
@@ -1744,6 +1764,8 @@ export namespace GstMpegts {
     }
 
     class AtscRRTDimension {
+        static $gtype: GObject.GType<AtscRRTDimension>;
+
         // Own fields of GstMpegts.AtscRRTDimension
 
         names: AtscMultString[];
@@ -1767,6 +1789,8 @@ export namespace GstMpegts {
     }
 
     class AtscRRTDimensionValue {
+        static $gtype: GObject.GType<AtscRRTDimensionValue>;
+
         // Own fields of GstMpegts.AtscRRTDimensionValue
 
         abbrev_ratings: AtscMultString[];
@@ -1789,6 +1813,8 @@ export namespace GstMpegts {
      * System Time Table (A65)
      */
     class AtscSTT {
+        static $gtype: GObject.GType<AtscSTT>;
+
         // Own fields of GstMpegts.AtscSTT
 
         protocol_version: number;
@@ -1825,6 +1851,8 @@ export namespace GstMpegts {
      * A string segment
      */
     class AtscStringSegment {
+        static $gtype: GObject.GType<AtscStringSegment>;
+
         // Own fields of GstMpegts.AtscStringSegment
 
         compression_type: number;
@@ -1858,6 +1886,8 @@ export namespace GstMpegts {
      *   Cable Virtual Channel Table (A65)
      */
     class AtscVCT {
+        static $gtype: GObject.GType<AtscVCT>;
+
         // Own fields of GstMpegts.AtscVCT
 
         transport_stream_id: number;
@@ -1882,6 +1912,8 @@ export namespace GstMpegts {
      * Source from a %GstMpegtsAtscVCT, can be used both for TVCT and CVCT tables
      */
     class AtscVCTSource {
+        static $gtype: GObject.GType<AtscVCTSource>;
+
         // Own fields of GstMpegts.AtscVCTSource
 
         short_name: string;
@@ -1930,6 +1962,8 @@ export namespace GstMpegts {
      * Table 110: Audio Preselection Descriptor (ETSI EN 300 468 v1.16.1)
      */
     class AudioPreselectionDescriptor {
+        static $gtype: GObject.GType<AudioPreselectionDescriptor>;
+
         // Own fields of GstMpegts.AudioPreselectionDescriptor
 
         preselection_id: number;
@@ -1970,6 +2004,8 @@ export namespace GstMpegts {
      * DVB Bouquet Association Table (EN 300 468)
      */
     class BAT {
+        static $gtype: GObject.GType<BAT>;
+
         // Own fields of GstMpegts.BAT
 
         descriptors: Descriptor[];
@@ -1987,6 +2023,8 @@ export namespace GstMpegts {
     }
 
     class BATStream {
+        static $gtype: GObject.GType<BATStream>;
+
         // Own fields of GstMpegts.BATStream
 
         transport_stream_id: number;
@@ -2009,6 +2047,8 @@ export namespace GstMpegts {
      * Cable Delivery System Descriptor (EN 300 468 v.1.13.1)
      */
     class CableDeliverySystemDescriptor {
+        static $gtype: GObject.GType<CableDeliverySystemDescriptor>;
+
         // Own fields of GstMpegts.CableDeliverySystemDescriptor
 
         frequency: number;
@@ -2027,6 +2067,8 @@ export namespace GstMpegts {
     }
 
     class ComponentDescriptor {
+        static $gtype: GObject.GType<ComponentDescriptor>;
+
         // Own fields of GstMpegts.ComponentDescriptor
 
         stream_content: number;
@@ -2050,6 +2092,8 @@ export namespace GstMpegts {
     }
 
     class Content {
+        static $gtype: GObject.GType<Content>;
+
         // Own fields of GstMpegts.Content
 
         content_nibble_1: ContentNibbleHi;
@@ -2062,6 +2106,8 @@ export namespace GstMpegts {
     }
 
     class DVBLinkageDescriptor {
+        static $gtype: GObject.GType<DVBLinkageDescriptor>;
+
         // Own fields of GstMpegts.DVBLinkageDescriptor
 
         transport_stream_id: number;
@@ -2084,6 +2130,8 @@ export namespace GstMpegts {
     }
 
     class DVBLinkageEvent {
+        static $gtype: GObject.GType<DVBLinkageEvent>;
+
         // Own fields of GstMpegts.DVBLinkageEvent
 
         target_event_id: number;
@@ -2103,6 +2151,8 @@ export namespace GstMpegts {
     }
 
     class DVBLinkageExtendedEvent {
+        static $gtype: GObject.GType<DVBLinkageExtendedEvent>;
+
         // Own fields of GstMpegts.DVBLinkageExtendedEvent
 
         target_event_id: number;
@@ -2138,6 +2188,8 @@ export namespace GstMpegts {
     }
 
     class DVBLinkageMobileHandOver {
+        static $gtype: GObject.GType<DVBLinkageMobileHandOver>;
+
         // Own fields of GstMpegts.DVBLinkageMobileHandOver
 
         hand_over_type: DVBLinkageHandOverType;
@@ -2151,6 +2203,8 @@ export namespace GstMpegts {
     }
 
     class DVBParentalRatingItem {
+        static $gtype: GObject.GType<DVBParentalRatingItem>;
+
         // Own fields of GstMpegts.DVBParentalRatingItem
 
         country_code: string;
@@ -2168,6 +2222,8 @@ export namespace GstMpegts {
     }
 
     class DVBServiceListItem {
+        static $gtype: GObject.GType<DVBServiceListItem>;
+
         // Own fields of GstMpegts.DVBServiceListItem
 
         service_id: number;
@@ -2179,6 +2235,8 @@ export namespace GstMpegts {
     }
 
     class DataBroadcastDescriptor {
+        static $gtype: GObject.GType<DataBroadcastDescriptor>;
+
         // Own fields of GstMpegts.DataBroadcastDescriptor
 
         data_broadcast_id: number;
@@ -2214,6 +2272,8 @@ export namespace GstMpegts {
      * and other specifications mentioned in the documentation.
      */
     class Descriptor {
+        static $gtype: GObject.GType<Descriptor>;
+
         // Own fields of GstMpegts.Descriptor
 
         tag: number;
@@ -2508,6 +2568,8 @@ export namespace GstMpegts {
      * a multilingual bouquet name entry
      */
     class DvbMultilingualBouquetNameItem {
+        static $gtype: GObject.GType<DvbMultilingualBouquetNameItem>;
+
         // Own fields of GstMpegts.DvbMultilingualBouquetNameItem
 
         language_code: string;
@@ -2525,6 +2587,8 @@ export namespace GstMpegts {
     }
 
     class DvbMultilingualComponentItem {
+        static $gtype: GObject.GType<DvbMultilingualComponentItem>;
+
         // Own fields of GstMpegts.DvbMultilingualComponentItem
 
         language_code: string;
@@ -2545,6 +2609,8 @@ export namespace GstMpegts {
      * a multilingual network name entry
      */
     class DvbMultilingualNetworkNameItem {
+        static $gtype: GObject.GType<DvbMultilingualNetworkNameItem>;
+
         // Own fields of GstMpegts.DvbMultilingualNetworkNameItem
 
         language_code: string;
@@ -2565,6 +2631,8 @@ export namespace GstMpegts {
      * a multilingual service name entry
      */
     class DvbMultilingualServiceNameItem {
+        static $gtype: GObject.GType<DvbMultilingualServiceNameItem>;
+
         // Own fields of GstMpegts.DvbMultilingualServiceNameItem
 
         language_code: string;
@@ -2587,6 +2655,8 @@ export namespace GstMpegts {
      * Event Information Table (EN 300 468)
      */
     class EIT {
+        static $gtype: GObject.GType<EIT>;
+
         // Own fields of GstMpegts.EIT
 
         transport_stream_id: number;
@@ -2605,6 +2675,8 @@ export namespace GstMpegts {
      * Event from a `GstMpegtsEIT`
      */
     class EITEvent {
+        static $gtype: GObject.GType<EITEvent>;
+
         // Own fields of GstMpegts.EITEvent
 
         event_id: number;
@@ -2622,6 +2694,8 @@ export namespace GstMpegts {
      * Extended Event Descriptor (EN 300 468 v.1.13.1)
      */
     class ExtendedEventDescriptor {
+        static $gtype: GObject.GType<ExtendedEventDescriptor>;
+
         // Own fields of GstMpegts.ExtendedEventDescriptor
 
         descriptor_number: number;
@@ -2649,6 +2723,8 @@ export namespace GstMpegts {
     }
 
     class ExtendedEventItem {
+        static $gtype: GObject.GType<ExtendedEventItem>;
+
         // Own fields of GstMpegts.ExtendedEventItem
 
         item_description: string;
@@ -2666,6 +2742,8 @@ export namespace GstMpegts {
     }
 
     class ISO639LanguageDescriptor {
+        static $gtype: GObject.GType<ISO639LanguageDescriptor>;
+
         // Own fields of GstMpegts.ISO639LanguageDescriptor
 
         nb_language: number;
@@ -2682,6 +2760,8 @@ export namespace GstMpegts {
     }
 
     class LogicalChannel {
+        static $gtype: GObject.GType<LogicalChannel>;
+
         // Own fields of GstMpegts.LogicalChannel
 
         service_id: number;
@@ -2701,6 +2781,8 @@ export namespace GstMpegts {
     }
 
     class LogicalChannelDescriptor {
+        static $gtype: GObject.GType<LogicalChannelDescriptor>;
+
         // Own fields of GstMpegts.LogicalChannelDescriptor
 
         nb_channels: number;
@@ -2726,6 +2808,8 @@ export namespace GstMpegts {
      * See ISO/IEC 13818-1:2018 Section 2.6.60 and Section 2.6.61 for more information.
      */
     class MetadataDescriptor {
+        static $gtype: GObject.GType<MetadataDescriptor>;
+
         // Own fields of GstMpegts.MetadataDescriptor
 
         metadata_application_format: number;
@@ -2744,6 +2828,8 @@ export namespace GstMpegts {
      * Network Information Table (ISO/IEC 13818-1 / EN 300 468)
      */
     class NIT {
+        static $gtype: GObject.GType<NIT>;
+
         // Own fields of GstMpegts.NIT
 
         actual_network: boolean;
@@ -2767,6 +2853,8 @@ export namespace GstMpegts {
     }
 
     class NITStream {
+        static $gtype: GObject.GType<NITStream>;
+
         // Own fields of GstMpegts.NITStream
 
         transport_stream_id: number;
@@ -2795,6 +2883,8 @@ export namespace GstMpegts {
      * AU_cell_data_length is not provided, since it matches the length of the buffer
      */
     class PESMetadataMeta {
+        static $gtype: GObject.GType<PESMetadataMeta>;
+
         // Own fields of GstMpegts.PESMetadataMeta
 
         metadata_service_id: number;
@@ -2820,6 +2910,8 @@ export namespace GstMpegts {
      * container #GstMpegtsSection.
      */
     class PMT {
+        static $gtype: GObject.GType<PMT>;
+
         // Own fields of GstMpegts.PMT
 
         pcr_pid: number;
@@ -2846,6 +2938,8 @@ export namespace GstMpegts {
      * An individual stream definition of a #GstMpegtsPMT.
      */
     class PMTStream {
+        static $gtype: GObject.GType<PMTStream>;
+
         // Own fields of GstMpegts.PMTStream
 
         stream_type: number;
@@ -2870,6 +2964,8 @@ export namespace GstMpegts {
      * A program entry from a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
      */
     class PatProgram {
+        static $gtype: GObject.GType<PatProgram>;
+
         // Own fields of GstMpegts.PatProgram
 
         program_number: number;
@@ -2889,6 +2985,8 @@ export namespace GstMpegts {
     }
 
     class SCTESIT {
+        static $gtype: GObject.GType<SCTESIT>;
+
         // Own fields of GstMpegts.SCTESIT
 
         encrypted_packet: boolean;
@@ -2933,6 +3031,8 @@ export namespace GstMpegts {
      * Per-PID splice information.
      */
     class SCTESpliceComponent {
+        static $gtype: GObject.GType<SCTESpliceComponent>;
+
         // Own fields of GstMpegts.SCTESpliceComponent
 
         tag: number;
@@ -2956,6 +3056,8 @@ export namespace GstMpegts {
     }
 
     class SCTESpliceEvent {
+        static $gtype: GObject.GType<SCTESpliceEvent>;
+
         // Own fields of GstMpegts.SCTESpliceEvent
 
         insert_event: boolean;
@@ -3006,6 +3108,8 @@ export namespace GstMpegts {
      * Service Description Table (EN 300 468)
      */
     class SDT {
+        static $gtype: GObject.GType<SDT>;
+
         // Own fields of GstMpegts.SDT
 
         original_network_id: number;
@@ -3028,6 +3132,8 @@ export namespace GstMpegts {
     }
 
     class SDTService {
+        static $gtype: GObject.GType<SDTService>;
+
         // Own fields of GstMpegts.SDTService
 
         service_id: number;
@@ -3058,6 +3164,8 @@ export namespace GstMpegts {
      * Selection Information Table (EN 300 468)
      */
     class SIT {
+        static $gtype: GObject.GType<SIT>;
+
         // Own fields of GstMpegts.SIT
 
         descriptors: Descriptor[];
@@ -3071,6 +3179,8 @@ export namespace GstMpegts {
      * SIT Service entry
      */
     class SITService {
+        static $gtype: GObject.GType<SITService>;
+
         // Own fields of GstMpegts.SITService
 
         service_id: number;
@@ -3086,6 +3196,8 @@ export namespace GstMpegts {
      * Satellite Delivery System Descriptor (EN 300 468 v.1.13.1)
      */
     class SatelliteDeliverySystemDescriptor {
+        static $gtype: GObject.GType<SatelliteDeliverySystemDescriptor>;
+
         // Own fields of GstMpegts.SatelliteDeliverySystemDescriptor
 
         frequency: number;
@@ -3150,6 +3262,8 @@ export namespace GstMpegts {
      * # API
      */
     class Section {
+        static $gtype: GObject.GType<Section>;
+
         // Own fields of GstMpegts.Section
 
         section_type: SectionType;
@@ -3332,6 +3446,8 @@ export namespace GstMpegts {
     }
 
     class T2DeliverySystemCell {
+        static $gtype: GObject.GType<T2DeliverySystemCell>;
+
         // Own fields of GstMpegts.T2DeliverySystemCell
 
         cell_id: number;
@@ -3351,6 +3467,8 @@ export namespace GstMpegts {
     }
 
     class T2DeliverySystemCellExtension {
+        static $gtype: GObject.GType<T2DeliverySystemCellExtension>;
+
         // Own fields of GstMpegts.T2DeliverySystemCellExtension
 
         cell_id_extension: number;
@@ -3371,6 +3489,8 @@ export namespace GstMpegts {
      * describe DVB-T2 transmissions according to EN 302 755
      */
     class T2DeliverySystemDescriptor {
+        static $gtype: GObject.GType<T2DeliverySystemDescriptor>;
+
         // Own fields of GstMpegts.T2DeliverySystemDescriptor
 
         plp_id: number;
@@ -3396,6 +3516,8 @@ export namespace GstMpegts {
      * Time Offset Table (EN 300 468)
      */
     class TOT {
+        static $gtype: GObject.GType<TOT>;
+
         // Own fields of GstMpegts.TOT
 
         descriptors: Descriptor[];
@@ -3409,6 +3531,8 @@ export namespace GstMpegts {
      * Terrestrial Delivery System Descriptor (EN 300 468 v.1.13.1)
      */
     class TerrestrialDeliverySystemDescriptor {
+        static $gtype: GObject.GType<TerrestrialDeliverySystemDescriptor>;
+
         // Own fields of GstMpegts.TerrestrialDeliverySystemDescriptor
 
         frequency: number;

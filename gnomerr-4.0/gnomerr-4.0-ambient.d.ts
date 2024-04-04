@@ -1,7 +1,7 @@
 
 declare module 'gi://GnomeRR?version=4.0' {
-    import GnomeRR40 from '@girs/gnomerr-4.0';
-    export default GnomeRR40;
+    import GnomeRR from '@girs/gnomerr-4.0';
+    export default GnomeRR;
 }
 
 declare module 'gi://GnomeRR' {

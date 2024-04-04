@@ -661,6 +661,8 @@ export namespace Grl {
     }
 
     class Caps extends GObject.Object {
+        static $gtype: GObject.GType<Caps>;
+
         // Constructors of Grl.Caps
 
         constructor(properties?: Partial<Caps.ConstructorProps>, ...args: any[]);
@@ -709,6 +711,8 @@ export namespace Grl {
     }
 
     class Config extends GObject.Object {
+        static $gtype: GObject.GType<Config>;
+
         // Constructors of Grl.Config
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
@@ -835,6 +839,8 @@ export namespace Grl {
     }
 
     class Data extends GObject.Object {
+        static $gtype: GObject.GType<Data>;
+
         // Constructors of Grl.Data
 
         constructor(properties?: Partial<Data.ConstructorProps>, ...args: any[]);
@@ -1095,6 +1101,8 @@ export namespace Grl {
     }
 
     class Media extends Data {
+        static $gtype: GObject.GType<Media>;
+
         // Constructors of Grl.Media
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
@@ -1401,6 +1409,8 @@ export namespace Grl {
     }
 
     class MediaAudio extends Media {
+        static $gtype: GObject.GType<MediaAudio>;
+
         // Constructors of Grl.MediaAudio
 
         constructor(properties?: Partial<MediaAudio.ConstructorProps>, ...args: any[]);
@@ -1525,6 +1535,8 @@ export namespace Grl {
     }
 
     class MediaBox extends Media {
+        static $gtype: GObject.GType<MediaBox>;
+
         // Constructors of Grl.MediaBox
 
         constructor(properties?: Partial<MediaBox.ConstructorProps>, ...args: any[]);
@@ -1555,6 +1567,8 @@ export namespace Grl {
     }
 
     class MediaImage extends Media {
+        static $gtype: GObject.GType<MediaImage>;
+
         // Constructors of Grl.MediaImage
 
         constructor(properties?: Partial<MediaImage.ConstructorProps>, ...args: any[]);
@@ -1634,6 +1648,8 @@ export namespace Grl {
     }
 
     class MediaVideo extends Media {
+        static $gtype: GObject.GType<MediaVideo>;
+
         // Constructors of Grl.MediaVideo
 
         constructor(properties?: Partial<MediaVideo.ConstructorProps>, ...args: any[]);
@@ -1769,6 +1785,8 @@ export namespace Grl {
     }
 
     class OperationOptions extends GObject.Object {
+        static $gtype: GObject.GType<OperationOptions>;
+
         // Constructors of Grl.OperationOptions
 
         constructor(properties?: Partial<OperationOptions.ConstructorProps>, ...args: any[]);
@@ -1891,6 +1909,8 @@ export namespace Grl {
     }
 
     class Plugin extends GObject.Object {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own properties of Grl.Plugin
 
         /**
@@ -2002,6 +2022,8 @@ export namespace Grl {
     }
 
     class Registry extends GObject.Object {
+        static $gtype: GObject.GType<Registry>;
+
         // Constructors of Grl.Registry
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
@@ -2226,6 +2248,8 @@ export namespace Grl {
     }
 
     class RelatedKeys extends GObject.Object {
+        static $gtype: GObject.GType<RelatedKeys>;
+
         // Constructors of Grl.RelatedKeys
 
         constructor(properties?: Partial<RelatedKeys.ConstructorProps>, ...args: any[]);
@@ -2409,6 +2433,8 @@ export namespace Grl {
     }
 
     abstract class Source extends GObject.Object {
+        static $gtype: GObject.GType<Source>;
+
         // Own properties of Grl.Source
 
         /**
@@ -3047,6 +3073,8 @@ export namespace Grl {
 
     type CapsClass = typeof Caps;
     abstract class CapsPrivate {
+        static $gtype: GObject.GType<CapsPrivate>;
+
         // Constructors of Grl.CapsPrivate
 
         _init(...args: any[]): void;
@@ -3054,6 +3082,8 @@ export namespace Grl {
 
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
+        static $gtype: GObject.GType<ConfigPrivate>;
+
         // Constructors of Grl.ConfigPrivate
 
         _init(...args: any[]): void;
@@ -3061,12 +3091,16 @@ export namespace Grl {
 
     type DataClass = typeof Data;
     abstract class DataPrivate {
+        static $gtype: GObject.GType<DataPrivate>;
+
         // Constructors of Grl.DataPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class LogDomain {
+        static $gtype: GObject.GType<LogDomain>;
+
         // Constructors of Grl.LogDomain
 
         _init(...args: any[]): void;
@@ -3086,6 +3120,8 @@ export namespace Grl {
     type MediaVideoClass = typeof MediaVideo;
     type OperationOptionsClass = typeof OperationOptions;
     abstract class OperationOptionsPrivate {
+        static $gtype: GObject.GType<OperationOptionsPrivate>;
+
         // Constructors of Grl.OperationOptionsPrivate
 
         _init(...args: any[]): void;
@@ -3096,6 +3132,8 @@ export namespace Grl {
      * This structure is used for the module loader
      */
     class PluginDescriptor {
+        static $gtype: GObject.GType<PluginDescriptor>;
+
         // Own fields of Grl.PluginDescriptor
 
         plugin_id: string;
@@ -3106,12 +3144,16 @@ export namespace Grl {
     }
 
     abstract class PluginPrivate {
+        static $gtype: GObject.GType<PluginPrivate>;
+
         // Constructors of Grl.PluginPrivate
 
         _init(...args: any[]): void;
     }
 
     class RangeValue {
+        static $gtype: GObject.GType<RangeValue>;
+
         // Constructors of Grl.RangeValue
 
         constructor(min: GObject.Value, max: GObject.Value);
@@ -3137,6 +3179,8 @@ export namespace Grl {
 
     type RegistryClass = typeof Registry;
     abstract class RegistryPrivate {
+        static $gtype: GObject.GType<RegistryPrivate>;
+
         // Constructors of Grl.RegistryPrivate
 
         _init(...args: any[]): void;
@@ -3144,6 +3188,8 @@ export namespace Grl {
 
     type RelatedKeysClass = typeof RelatedKeys;
     abstract class RelatedKeysPrivate {
+        static $gtype: GObject.GType<RelatedKeysPrivate>;
+
         // Constructors of Grl.RelatedKeysPrivate
 
         _init(...args: any[]): void;
@@ -3154,6 +3200,8 @@ export namespace Grl {
      * browse vmethod.
      */
     class SourceBrowseSpec {
+        static $gtype: GObject.GType<SourceBrowseSpec>;
+
         // Own fields of Grl.SourceBrowseSpec
 
         source: Source;
@@ -3175,6 +3223,8 @@ export namespace Grl {
      * media_from_uri vmethod.
      */
     class SourceMediaFromUriSpec {
+        static $gtype: GObject.GType<SourceMediaFromUriSpec>;
+
         // Own fields of Grl.SourceMediaFromUriSpec
 
         source: Source;
@@ -3191,6 +3241,8 @@ export namespace Grl {
     }
 
     abstract class SourcePrivate {
+        static $gtype: GObject.GType<SourcePrivate>;
+
         // Constructors of Grl.SourcePrivate
 
         _init(...args: any[]): void;
@@ -3201,6 +3253,8 @@ export namespace Grl {
      * query vmethod.
      */
     class SourceQuerySpec {
+        static $gtype: GObject.GType<SourceQuerySpec>;
+
         // Own fields of Grl.SourceQuerySpec
 
         source: Source;
@@ -3221,6 +3275,8 @@ export namespace Grl {
      * store vmethod.
      */
     class SourceRemoveSpec {
+        static $gtype: GObject.GType<SourceRemoveSpec>;
+
         // Own fields of Grl.SourceRemoveSpec
 
         source: Source;
@@ -3239,6 +3295,8 @@ export namespace Grl {
      * resolve vmethod.
      */
     class SourceResolveSpec {
+        static $gtype: GObject.GType<SourceResolveSpec>;
+
         // Own fields of Grl.SourceResolveSpec
 
         source: Source;
@@ -3259,6 +3317,8 @@ export namespace Grl {
      * search vmethod.
      */
     class SourceSearchSpec {
+        static $gtype: GObject.GType<SourceSearchSpec>;
+
         // Own fields of Grl.SourceSearchSpec
 
         source: Source;
@@ -3279,6 +3339,8 @@ export namespace Grl {
      * store_metadata vmethod.
      */
     class SourceStoreMetadataSpec {
+        static $gtype: GObject.GType<SourceStoreMetadataSpec>;
+
         // Own fields of Grl.SourceStoreMetadataSpec
 
         source: Source;
@@ -3299,6 +3361,8 @@ export namespace Grl {
      * store vmethod.
      */
     class SourceStoreSpec {
+        static $gtype: GObject.GType<SourceStoreSpec>;
+
         // Own fields of Grl.SourceStoreSpec
 
         source: Source;

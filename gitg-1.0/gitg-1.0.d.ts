@@ -87,6 +87,8 @@ export namespace Gitg {
         ITEM,
     }
     class CredentialsError extends GLib.Error {
+        static $gtype: GObject.GType<CredentialsError>;
+
         // Static fields of Gitg.CredentialsError
 
         static CANCELLED: number;
@@ -98,6 +100,8 @@ export namespace Gitg {
     }
 
     class DateError extends GLib.Error {
+        static $gtype: GObject.GType<DateError>;
+
         // Static fields of Gitg.DateError
 
         static INVALID_FORMAT: number;
@@ -109,6 +113,8 @@ export namespace Gitg {
     }
 
     class InitError extends GLib.Error {
+        static $gtype: GObject.GType<InitError>;
+
         // Static fields of Gitg.InitError
 
         static THREADS_UNSAFE: number;
@@ -120,6 +126,8 @@ export namespace Gitg {
     }
 
     class RemoteError extends GLib.Error {
+        static $gtype: GObject.GType<RemoteError>;
+
         // Static fields of Gitg.RemoteError
 
         static ALREADY_CONNECTED: number;
@@ -134,6 +142,8 @@ export namespace Gitg {
     }
 
     class StageError extends GLib.Error {
+        static $gtype: GObject.GType<StageError>;
+
         // Static fields of Gitg.StageError
 
         static PRE_COMMIT_HOOK_FAILED: number;
@@ -179,6 +189,8 @@ export namespace Gitg {
     }
 
     class Async {
+        static $gtype: GObject.GType<Async>;
+
         // Own fields of Gitg.Async
 
         ref_count: number;
@@ -209,6 +221,8 @@ export namespace Gitg {
     }
 
     class AuthenticationDialog extends Gtk.Dialog {
+        static $gtype: GObject.GType<AuthenticationDialog>;
+
         // Own properties of Gitg.AuthenticationDialog
 
         get username(): string;
@@ -241,6 +255,8 @@ export namespace Gitg {
     }
 
     class AvatarCache extends GObject.Object {
+        static $gtype: GObject.GType<AvatarCache>;
+
         // Constructors of Gitg.AvatarCache
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
@@ -272,6 +288,8 @@ export namespace Gitg {
     }
 
     class BranchBase extends Ggit.Branch implements Ref, Branch {
+        static $gtype: GObject.GType<BranchBase>;
+
         // Constructors of Gitg.BranchBase
 
         constructor(properties?: Partial<BranchBase.ConstructorProps>, ...args: any[]);
@@ -499,6 +517,8 @@ export namespace Gitg {
     }
 
     class CellRendererLanes extends Gtk.CellRendererText {
+        static $gtype: GObject.GType<CellRendererLanes>;
+
         // Own properties of Gitg.CellRendererLanes
 
         get commit(): Commit;
@@ -552,6 +572,8 @@ export namespace Gitg {
     }
 
     class Color extends GObject.Object {
+        static $gtype: GObject.GType<Color>;
+
         // Own properties of Gitg.Color
 
         get r(): number;
@@ -592,6 +614,8 @@ export namespace Gitg {
     }
 
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
+        static $gtype: GObject.GType<CommitListView>;
+
         // Constructors of Gitg.CommitListView
 
         constructor(properties?: Partial<CommitListView.ConstructorProps>, ...args: any[]);
@@ -1000,6 +1024,8 @@ export namespace Gitg {
     }
 
     class CommitModel extends GObject.Object implements Gtk.TreeModel {
+        static $gtype: GObject.GType<CommitModel>;
+
         // Own properties of Gitg.CommitModel
 
         get limit(): number;
@@ -1835,6 +1861,8 @@ export namespace Gitg {
     }
 
     class Commit extends Ggit.Commit {
+        static $gtype: GObject.GType<Commit>;
+
         // Own properties of Gitg.Commit
 
         get tag(): LaneTag;
@@ -1876,6 +1904,8 @@ export namespace Gitg {
     }
 
     class CredentialsManager {
+        static $gtype: GObject.GType<CredentialsManager>;
+
         // Own fields of Gitg.CredentialsManager
 
         ref_count: number;
@@ -1906,6 +1936,8 @@ export namespace Gitg {
     }
 
     class Date extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Date>;
+
         // Own properties of Gitg.Date
 
         get date_string(): string;
@@ -2387,6 +2419,8 @@ export namespace Gitg {
     }
 
     class DiffStat extends Gtk.DrawingArea {
+        static $gtype: GObject.GType<DiffStat>;
+
         // Own properties of Gitg.DiffStat
 
         get added(): number;
@@ -2421,6 +2455,8 @@ export namespace Gitg {
     }
 
     class DiffViewOptions extends Gtk.Toolbar {
+        static $gtype: GObject.GType<DiffViewOptions>;
+
         // Own properties of Gitg.DiffViewOptions
 
         get context_lines(): number;
@@ -2492,6 +2528,8 @@ export namespace Gitg {
     }
 
     class DiffView extends Gtk.Grid {
+        static $gtype: GObject.GType<DiffView>;
+
         // Own properties of Gitg.DiffView
 
         get options(): Ggit.DiffOptions;
@@ -2629,6 +2667,8 @@ export namespace Gitg {
     }
 
     class FontManager extends GObject.Object {
+        static $gtype: GObject.GType<FontManager>;
+
         // Constructors of Gitg.FontManager
 
         constructor(properties?: Partial<FontManager.ConstructorProps>, ...args: any[]);
@@ -2639,6 +2679,8 @@ export namespace Gitg {
     }
 
     class GPGUtils {
+        static $gtype: GObject.GType<GPGUtils>;
+
         // Own fields of Gitg.GPGUtils
 
         ref_count: number;
@@ -2667,6 +2709,8 @@ export namespace Gitg {
     }
 
     class Hook extends GObject.Object {
+        static $gtype: GObject.GType<Hook>;
+
         // Own properties of Gitg.Hook
 
         get environment(): Gee.HashMap;
@@ -2704,6 +2748,8 @@ export namespace Gitg {
     }
 
     class LabelRenderer {
+        static $gtype: GObject.GType<LabelRenderer>;
+
         // Own fields of Gitg.LabelRenderer
 
         ref_count: number;
@@ -2757,6 +2803,8 @@ export namespace Gitg {
     }
 
     class Lanes extends GObject.Object {
+        static $gtype: GObject.GType<Lanes>;
+
         // Own properties of Gitg.Lanes
 
         get inactive_max(): number;
@@ -2811,6 +2859,8 @@ export namespace Gitg {
     }
 
     class Lane extends GObject.Object {
+        static $gtype: GObject.GType<Lane>;
+
         // Own fields of Gitg.Lane
 
         color: Color;
@@ -2842,6 +2892,8 @@ export namespace Gitg {
     }
 
     class ProgressBin extends Gtk.Bin {
+        static $gtype: GObject.GType<ProgressBin>;
+
         // Own properties of Gitg.ProgressBin
 
         get fraction(): number;
@@ -2868,6 +2920,8 @@ export namespace Gitg {
     }
 
     class RefBase extends Ggit.Ref implements Ref {
+        static $gtype: GObject.GType<RefBase>;
+
         // Constructors of Gitg.RefBase
 
         constructor(properties?: Partial<RefBase.ConstructorProps>, ...args: any[]);
@@ -3075,6 +3129,8 @@ export namespace Gitg {
     }
 
     class ParsedRefName extends GObject.Object {
+        static $gtype: GObject.GType<ParsedRefName>;
+
         // Own properties of Gitg.ParsedRefName
 
         get rtype(): RefType;
@@ -3128,6 +3184,8 @@ export namespace Gitg {
     }
 
     class Remote extends Ggit.Remote {
+        static $gtype: GObject.GType<Remote>;
+
         // Own properties of Gitg.Remote
 
         get transfer_progress(): number;
@@ -3227,6 +3285,8 @@ export namespace Gitg {
     }
 
     class RepositoryListBox extends Gtk.ListBox {
+        static $gtype: GObject.GType<RepositoryListBox>;
+
         // Own properties of Gitg.RepositoryListBox
 
         get mode(): SelectionMode;
@@ -3317,6 +3377,8 @@ export namespace Gitg {
     }
 
     class RepositoryListBoxRow extends Gtk.ListBoxRow {
+        static $gtype: GObject.GType<RepositoryListBoxRow>;
+
         // Own properties of Gitg.RepositoryListBoxRow
 
         get mode(): SelectionMode;
@@ -3401,6 +3463,8 @@ export namespace Gitg {
     }
 
     class Repository extends Ggit.Repository {
+        static $gtype: GObject.GType<Repository>;
+
         // Own properties of Gitg.Repository
 
         get name(): string;
@@ -3443,6 +3507,8 @@ export namespace Gitg {
     }
 
     class Resource {
+        static $gtype: GObject.GType<Resource>;
+
         // Own fields of Gitg.Resource
 
         ref_count: number;
@@ -3467,6 +3533,8 @@ export namespace Gitg {
     }
 
     class SidebarStore extends Gtk.TreeStore {
+        static $gtype: GObject.GType<SidebarStore>;
+
         // Own properties of Gitg.SidebarStore
 
         get clearing(): boolean;
@@ -3501,6 +3569,8 @@ export namespace Gitg {
     }
 
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
+        static $gtype: GObject.GType<SidebarStoreSidebarText>;
+
         // Constructors of Gitg.SidebarStoreSidebarText
 
         constructor(properties?: Partial<SidebarStoreSidebarText.ConstructorProps>, ...args: any[]);
@@ -3886,6 +3956,8 @@ export namespace Gitg {
     }
 
     class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
+        static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
+
         // Own properties of Gitg.SidebarStoreSidebarHeader
 
         get id(): number;
@@ -3925,6 +3997,8 @@ export namespace Gitg {
     }
 
     class Sidebar extends Gtk.TreeView {
+        static $gtype: GObject.GType<Sidebar>;
+
         // Own properties of Gitg.Sidebar
 
         get model(): SidebarStore;
@@ -3982,6 +4056,8 @@ export namespace Gitg {
     }
 
     class StageStatusFile extends GObject.Object implements StageStatusItem {
+        static $gtype: GObject.GType<StageStatusFile>;
+
         // Own properties of Gitg.StageStatusFile
 
         get flags(): Ggit.StatusFlags;
@@ -4388,6 +4464,8 @@ export namespace Gitg {
     }
 
     class StageStatusSubmodule extends GObject.Object implements StageStatusItem {
+        static $gtype: GObject.GType<StageStatusSubmodule>;
+
         // Own properties of Gitg.StageStatusSubmodule
 
         get submodule(): Ggit.Submodule;
@@ -4794,6 +4872,8 @@ export namespace Gitg {
     }
 
     class StageStatusEnumerator extends GObject.Object {
+        static $gtype: GObject.GType<StageStatusEnumerator>;
+
         // Constructors of Gitg.StageStatusEnumerator
 
         constructor(properties?: Partial<StageStatusEnumerator.ConstructorProps>, ...args: any[]);
@@ -4808,6 +4888,8 @@ export namespace Gitg {
     }
 
     class PatchSet {
+        static $gtype: GObject.GType<PatchSet>;
+
         // Own fields of Gitg.PatchSet
 
         ref_count: number;
@@ -4832,6 +4914,8 @@ export namespace Gitg {
     }
 
     class Stage extends GObject.Object {
+        static $gtype: GObject.GType<Stage>;
+
         // Constructors of Gitg.Stage
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
@@ -4928,6 +5012,8 @@ export namespace Gitg {
     }
 
     class TextConv {
+        static $gtype: GObject.GType<TextConv>;
+
         // Own fields of Gitg.TextConv
 
         ref_count: number;
@@ -4956,6 +5042,8 @@ export namespace Gitg {
     }
 
     class Theme extends Gtk.Widget {
+        static $gtype: GObject.GType<Theme>;
+
         // Constructors of Gitg.Theme
 
         constructor(properties?: Partial<Theme.ConstructorProps>, ...args: any[]);
@@ -4974,6 +5062,8 @@ export namespace Gitg {
     }
 
     class Utils {
+        static $gtype: GObject.GType<Utils>;
+
         // Own fields of Gitg.Utils
 
         ref_count: number;
@@ -4997,6 +5087,8 @@ export namespace Gitg {
     }
 
     class WhenMapped {
+        static $gtype: GObject.GType<WhenMapped>;
+
         // Own fields of Gitg.WhenMapped
 
         ref_count: number;
@@ -5014,6 +5106,8 @@ export namespace Gitg {
 
     type AsyncClass = typeof Async;
     abstract class AsyncPrivate {
+        static $gtype: GObject.GType<AsyncPrivate>;
+
         // Constructors of Gitg.AsyncPrivate
 
         _init(...args: any[]): void;
@@ -5021,6 +5115,8 @@ export namespace Gitg {
 
     type AuthenticationDialogClass = typeof AuthenticationDialog;
     abstract class AuthenticationDialogPrivate {
+        static $gtype: GObject.GType<AuthenticationDialogPrivate>;
+
         // Constructors of Gitg.AuthenticationDialogPrivate
 
         _init(...args: any[]): void;
@@ -5028,6 +5124,8 @@ export namespace Gitg {
 
     type AvatarCacheClass = typeof AvatarCache;
     abstract class AvatarCachePrivate {
+        static $gtype: GObject.GType<AvatarCachePrivate>;
+
         // Constructors of Gitg.AvatarCachePrivate
 
         _init(...args: any[]): void;
@@ -5035,6 +5133,8 @@ export namespace Gitg {
 
     type BranchBaseClass = typeof BranchBase;
     abstract class BranchBasePrivate {
+        static $gtype: GObject.GType<BranchBasePrivate>;
+
         // Constructors of Gitg.BranchBasePrivate
 
         _init(...args: any[]): void;
@@ -5042,6 +5142,8 @@ export namespace Gitg {
 
     type CellRendererLanesClass = typeof CellRendererLanes;
     abstract class CellRendererLanesPrivate {
+        static $gtype: GObject.GType<CellRendererLanesPrivate>;
+
         // Constructors of Gitg.CellRendererLanesPrivate
 
         _init(...args: any[]): void;
@@ -5049,6 +5151,8 @@ export namespace Gitg {
 
     type ColorClass = typeof Color;
     abstract class ColorPrivate {
+        static $gtype: GObject.GType<ColorPrivate>;
+
         // Constructors of Gitg.ColorPrivate
 
         _init(...args: any[]): void;
@@ -5056,6 +5160,8 @@ export namespace Gitg {
 
     type CommitListViewClass = typeof CommitListView;
     abstract class CommitListViewPrivate {
+        static $gtype: GObject.GType<CommitListViewPrivate>;
+
         // Constructors of Gitg.CommitListViewPrivate
 
         _init(...args: any[]): void;
@@ -5063,6 +5169,8 @@ export namespace Gitg {
 
     type CommitModelClass = typeof CommitModel;
     abstract class CommitModelPrivate {
+        static $gtype: GObject.GType<CommitModelPrivate>;
+
         // Constructors of Gitg.CommitModelPrivate
 
         _init(...args: any[]): void;
@@ -5070,6 +5178,8 @@ export namespace Gitg {
 
     type CommitClass = typeof Commit;
     abstract class CommitPrivate {
+        static $gtype: GObject.GType<CommitPrivate>;
+
         // Constructors of Gitg.CommitPrivate
 
         _init(...args: any[]): void;
@@ -5077,6 +5187,8 @@ export namespace Gitg {
 
     type CredentialsManagerClass = typeof CredentialsManager;
     abstract class CredentialsManagerPrivate {
+        static $gtype: GObject.GType<CredentialsManagerPrivate>;
+
         // Constructors of Gitg.CredentialsManagerPrivate
 
         _init(...args: any[]): void;
@@ -5084,6 +5196,8 @@ export namespace Gitg {
 
     type DateClass = typeof Date;
     abstract class DatePrivate {
+        static $gtype: GObject.GType<DatePrivate>;
+
         // Constructors of Gitg.DatePrivate
 
         _init(...args: any[]): void;
@@ -5091,6 +5205,8 @@ export namespace Gitg {
 
     type DiffStatClass = typeof DiffStat;
     abstract class DiffStatPrivate {
+        static $gtype: GObject.GType<DiffStatPrivate>;
+
         // Constructors of Gitg.DiffStatPrivate
 
         _init(...args: any[]): void;
@@ -5098,6 +5214,8 @@ export namespace Gitg {
 
     type DiffViewOptionsClass = typeof DiffViewOptions;
     abstract class DiffViewOptionsPrivate {
+        static $gtype: GObject.GType<DiffViewOptionsPrivate>;
+
         // Constructors of Gitg.DiffViewOptionsPrivate
 
         _init(...args: any[]): void;
@@ -5105,6 +5223,8 @@ export namespace Gitg {
 
     type DiffViewClass = typeof DiffView;
     abstract class DiffViewPrivate {
+        static $gtype: GObject.GType<DiffViewPrivate>;
+
         // Constructors of Gitg.DiffViewPrivate
 
         _init(...args: any[]): void;
@@ -5112,6 +5232,8 @@ export namespace Gitg {
 
     type FontManagerClass = typeof FontManager;
     abstract class FontManagerPrivate {
+        static $gtype: GObject.GType<FontManagerPrivate>;
+
         // Constructors of Gitg.FontManagerPrivate
 
         _init(...args: any[]): void;
@@ -5119,6 +5241,8 @@ export namespace Gitg {
 
     type GPGUtilsClass = typeof GPGUtils;
     abstract class GPGUtilsPrivate {
+        static $gtype: GObject.GType<GPGUtilsPrivate>;
+
         // Constructors of Gitg.GPGUtilsPrivate
 
         _init(...args: any[]): void;
@@ -5126,6 +5250,8 @@ export namespace Gitg {
 
     type HookClass = typeof Hook;
     abstract class HookPrivate {
+        static $gtype: GObject.GType<HookPrivate>;
+
         // Constructors of Gitg.HookPrivate
 
         _init(...args: any[]): void;
@@ -5133,6 +5259,8 @@ export namespace Gitg {
 
     type LabelRendererClass = typeof LabelRenderer;
     abstract class LabelRendererPrivate {
+        static $gtype: GObject.GType<LabelRendererPrivate>;
+
         // Constructors of Gitg.LabelRendererPrivate
 
         _init(...args: any[]): void;
@@ -5140,6 +5268,8 @@ export namespace Gitg {
 
     type LanesClass = typeof Lanes;
     abstract class LanesPrivate {
+        static $gtype: GObject.GType<LanesPrivate>;
+
         // Constructors of Gitg.LanesPrivate
 
         _init(...args: any[]): void;
@@ -5147,6 +5277,8 @@ export namespace Gitg {
 
     type LaneClass = typeof Lane;
     abstract class LanePrivate {
+        static $gtype: GObject.GType<LanePrivate>;
+
         // Constructors of Gitg.LanePrivate
 
         _init(...args: any[]): void;
@@ -5154,6 +5286,8 @@ export namespace Gitg {
 
     type ProgressBinClass = typeof ProgressBin;
     abstract class ProgressBinPrivate {
+        static $gtype: GObject.GType<ProgressBinPrivate>;
+
         // Constructors of Gitg.ProgressBinPrivate
 
         _init(...args: any[]): void;
@@ -5161,6 +5295,8 @@ export namespace Gitg {
 
     type RefBaseClass = typeof RefBase;
     abstract class RefBasePrivate {
+        static $gtype: GObject.GType<RefBasePrivate>;
+
         // Constructors of Gitg.RefBasePrivate
 
         _init(...args: any[]): void;
@@ -5168,6 +5304,8 @@ export namespace Gitg {
 
     type ParsedRefNameClass = typeof ParsedRefName;
     abstract class ParsedRefNamePrivate {
+        static $gtype: GObject.GType<ParsedRefNamePrivate>;
+
         // Constructors of Gitg.ParsedRefNamePrivate
 
         _init(...args: any[]): void;
@@ -5175,6 +5313,8 @@ export namespace Gitg {
 
     type RemoteClass = typeof Remote;
     abstract class RemotePrivate {
+        static $gtype: GObject.GType<RemotePrivate>;
+
         // Constructors of Gitg.RemotePrivate
 
         _init(...args: any[]): void;
@@ -5182,6 +5322,8 @@ export namespace Gitg {
 
     type RepositoryListBoxClass = typeof RepositoryListBox;
     abstract class RepositoryListBoxPrivate {
+        static $gtype: GObject.GType<RepositoryListBoxPrivate>;
+
         // Constructors of Gitg.RepositoryListBoxPrivate
 
         _init(...args: any[]): void;
@@ -5189,6 +5331,8 @@ export namespace Gitg {
 
     type RepositoryListBoxRowClass = typeof RepositoryListBoxRow;
     abstract class RepositoryListBoxRowPrivate {
+        static $gtype: GObject.GType<RepositoryListBoxRowPrivate>;
+
         // Constructors of Gitg.RepositoryListBoxRowPrivate
 
         _init(...args: any[]): void;
@@ -5196,6 +5340,8 @@ export namespace Gitg {
 
     type RepositoryClass = typeof Repository;
     abstract class RepositoryPrivate {
+        static $gtype: GObject.GType<RepositoryPrivate>;
+
         // Constructors of Gitg.RepositoryPrivate
 
         _init(...args: any[]): void;
@@ -5203,6 +5349,8 @@ export namespace Gitg {
 
     type ResourceClass = typeof Resource;
     abstract class ResourcePrivate {
+        static $gtype: GObject.GType<ResourcePrivate>;
+
         // Constructors of Gitg.ResourcePrivate
 
         _init(...args: any[]): void;
@@ -5210,6 +5358,8 @@ export namespace Gitg {
 
     type SidebarStoreClass = typeof SidebarStore;
     abstract class SidebarStorePrivate {
+        static $gtype: GObject.GType<SidebarStorePrivate>;
+
         // Constructors of Gitg.SidebarStorePrivate
 
         _init(...args: any[]): void;
@@ -5217,6 +5367,8 @@ export namespace Gitg {
 
     type SidebarStoreSidebarTextClass = typeof SidebarStoreSidebarText;
     abstract class SidebarStoreSidebarTextPrivate {
+        static $gtype: GObject.GType<SidebarStoreSidebarTextPrivate>;
+
         // Constructors of Gitg.SidebarStoreSidebarTextPrivate
 
         _init(...args: any[]): void;
@@ -5224,6 +5376,8 @@ export namespace Gitg {
 
     type SidebarStoreSidebarHeaderClass = typeof SidebarStoreSidebarHeader;
     abstract class SidebarStoreSidebarHeaderPrivate {
+        static $gtype: GObject.GType<SidebarStoreSidebarHeaderPrivate>;
+
         // Constructors of Gitg.SidebarStoreSidebarHeaderPrivate
 
         _init(...args: any[]): void;
@@ -5231,6 +5385,8 @@ export namespace Gitg {
 
     type SidebarClass = typeof Sidebar;
     abstract class SidebarPrivate {
+        static $gtype: GObject.GType<SidebarPrivate>;
+
         // Constructors of Gitg.SidebarPrivate
 
         _init(...args: any[]): void;
@@ -5238,6 +5394,8 @@ export namespace Gitg {
 
     type StageStatusFileClass = typeof StageStatusFile;
     abstract class StageStatusFilePrivate {
+        static $gtype: GObject.GType<StageStatusFilePrivate>;
+
         // Constructors of Gitg.StageStatusFilePrivate
 
         _init(...args: any[]): void;
@@ -5245,6 +5403,8 @@ export namespace Gitg {
 
     type StageStatusSubmoduleClass = typeof StageStatusSubmodule;
     abstract class StageStatusSubmodulePrivate {
+        static $gtype: GObject.GType<StageStatusSubmodulePrivate>;
+
         // Constructors of Gitg.StageStatusSubmodulePrivate
 
         _init(...args: any[]): void;
@@ -5252,6 +5412,8 @@ export namespace Gitg {
 
     type StageStatusEnumeratorClass = typeof StageStatusEnumerator;
     abstract class StageStatusEnumeratorPrivate {
+        static $gtype: GObject.GType<StageStatusEnumeratorPrivate>;
+
         // Constructors of Gitg.StageStatusEnumeratorPrivate
 
         _init(...args: any[]): void;
@@ -5259,12 +5421,16 @@ export namespace Gitg {
 
     type PatchSetClass = typeof PatchSet;
     abstract class PatchSetPrivate {
+        static $gtype: GObject.GType<PatchSetPrivate>;
+
         // Constructors of Gitg.PatchSetPrivate
 
         _init(...args: any[]): void;
     }
 
     class PatchSetPatch {
+        static $gtype: GObject.GType<PatchSetPatch>;
+
         // Own fields of Gitg.PatchSetPatch
 
         type: PatchSetType;
@@ -5279,6 +5445,8 @@ export namespace Gitg {
 
     type StageClass = typeof Stage;
     abstract class StagePrivate {
+        static $gtype: GObject.GType<StagePrivate>;
+
         // Constructors of Gitg.StagePrivate
 
         _init(...args: any[]): void;
@@ -5286,6 +5454,8 @@ export namespace Gitg {
 
     type TextConvClass = typeof TextConv;
     abstract class TextConvPrivate {
+        static $gtype: GObject.GType<TextConvPrivate>;
+
         // Constructors of Gitg.TextConvPrivate
 
         _init(...args: any[]): void;
@@ -5293,6 +5463,8 @@ export namespace Gitg {
 
     type ThemeClass = typeof Theme;
     abstract class ThemePrivate {
+        static $gtype: GObject.GType<ThemePrivate>;
+
         // Constructors of Gitg.ThemePrivate
 
         _init(...args: any[]): void;
@@ -5300,6 +5472,8 @@ export namespace Gitg {
 
     type UtilsClass = typeof Utils;
     abstract class UtilsPrivate {
+        static $gtype: GObject.GType<UtilsPrivate>;
+
         // Constructors of Gitg.UtilsPrivate
 
         _init(...args: any[]): void;
@@ -5307,6 +5481,8 @@ export namespace Gitg {
 
     type WhenMappedClass = typeof WhenMapped;
     abstract class WhenMappedPrivate {
+        static $gtype: GObject.GType<WhenMappedPrivate>;
+
         // Constructors of Gitg.WhenMappedPrivate
 
         _init(...args: any[]): void;

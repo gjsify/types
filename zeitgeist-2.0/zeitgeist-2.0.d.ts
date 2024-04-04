@@ -64,6 +64,8 @@ export namespace Zeitgeist {
         ANY,
     }
     class EngineError extends GLib.Error {
+        static $gtype: GObject.GType<EngineError>;
+
         // Static fields of Zeitgeist.EngineError
 
         static BACKUP_FAILED: number;
@@ -84,6 +86,8 @@ export namespace Zeitgeist {
     }
 
     class DataModelError extends GLib.Error {
+        static $gtype: GObject.GType<DataModelError>;
+
         // Static fields of Zeitgeist.DataModelError
 
         static INVALID_SIGNATURE: number;
@@ -263,6 +267,8 @@ export namespace Zeitgeist {
     }
 
     class DataSourceRegistry extends QueuedProxyWrapper {
+        static $gtype: GObject.GType<DataSourceRegistry>;
+
         // Constructors of Zeitgeist.DataSourceRegistry
 
         constructor(properties?: Partial<DataSourceRegistry.ConstructorProps>, ...args: any[]);
@@ -327,6 +333,8 @@ export namespace Zeitgeist {
     }
 
     class Index extends QueuedProxyWrapper {
+        static $gtype: GObject.GType<Index>;
+
         // Constructors of Zeitgeist.Index
 
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
@@ -369,6 +377,8 @@ export namespace Zeitgeist {
     }
 
     class Log extends QueuedProxyWrapper {
+        static $gtype: GObject.GType<Log>;
+
         // Constructors of Zeitgeist.Log
 
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
@@ -471,6 +481,8 @@ export namespace Zeitgeist {
     }
 
     class Monitor extends GObject.Object implements RemoteMonitor {
+        static $gtype: GObject.GType<Monitor>;
+
         // Own properties of Zeitgeist.Monitor
 
         get time_range(): TimeRange;
@@ -916,6 +928,8 @@ export namespace Zeitgeist {
     }
 
     abstract class QueuedProxyWrapper extends GObject.Object {
+        static $gtype: GObject.GType<QueuedProxyWrapper>;
+
         // Own properties of Zeitgeist.QueuedProxyWrapper
 
         get proxy_created(): boolean;
@@ -953,6 +967,8 @@ export namespace Zeitgeist {
     }
 
     class QueuedProxyWrapperQueuedMethod {
+        static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethod>;
+
         // Own fields of Zeitgeist.QueuedProxyWrapperQueuedMethod
 
         ref_count: number;
@@ -985,6 +1001,8 @@ export namespace Zeitgeist {
     }
 
     class DataSource extends GObject.Object {
+        static $gtype: GObject.GType<DataSource>;
+
         // Own properties of Zeitgeist.DataSource
 
         get unique_id(): string;
@@ -1053,6 +1071,8 @@ export namespace Zeitgeist {
     }
 
     class Event extends GObject.Object {
+        static $gtype: GObject.GType<Event>;
+
         // Own properties of Zeitgeist.Event
 
         get id(): number;
@@ -1129,6 +1149,8 @@ export namespace Zeitgeist {
     }
 
     class Subject extends GObject.Object {
+        static $gtype: GObject.GType<Subject>;
+
         // Own properties of Zeitgeist.Subject
 
         get uri(): string;
@@ -1220,6 +1242,8 @@ export namespace Zeitgeist {
     }
 
     class TimeRange extends GObject.Object {
+        static $gtype: GObject.GType<TimeRange>;
+
         // Own properties of Zeitgeist.TimeRange
 
         get start(): number;
@@ -1258,6 +1282,8 @@ export namespace Zeitgeist {
     }
 
     class SimpleResultSet extends GObject.Object implements ResultSet {
+        static $gtype: GObject.GType<SimpleResultSet>;
+
         // Constructors of Zeitgeist.SimpleResultSet
 
         constructor(properties?: Partial<SimpleResultSet.ConstructorProps>, ...args: any[]);
@@ -1640,6 +1666,8 @@ export namespace Zeitgeist {
 
     type DataSourceRegistryClass = typeof DataSourceRegistry;
     abstract class DataSourceRegistryPrivate {
+        static $gtype: GObject.GType<DataSourceRegistryPrivate>;
+
         // Constructors of Zeitgeist.DataSourceRegistryPrivate
 
         _init(...args: any[]): void;
@@ -1647,6 +1675,8 @@ export namespace Zeitgeist {
 
     type IndexClass = typeof Index;
     abstract class IndexPrivate {
+        static $gtype: GObject.GType<IndexPrivate>;
+
         // Constructors of Zeitgeist.IndexPrivate
 
         _init(...args: any[]): void;
@@ -1654,6 +1684,8 @@ export namespace Zeitgeist {
 
     type LogClass = typeof Log;
     abstract class LogPrivate {
+        static $gtype: GObject.GType<LogPrivate>;
+
         // Constructors of Zeitgeist.LogPrivate
 
         _init(...args: any[]): void;
@@ -1661,6 +1693,8 @@ export namespace Zeitgeist {
 
     type MonitorClass = typeof Monitor;
     abstract class MonitorPrivate {
+        static $gtype: GObject.GType<MonitorPrivate>;
+
         // Constructors of Zeitgeist.MonitorPrivate
 
         _init(...args: any[]): void;
@@ -1668,6 +1702,8 @@ export namespace Zeitgeist {
 
     type QueuedProxyWrapperClass = typeof QueuedProxyWrapper;
     abstract class QueuedProxyWrapperPrivate {
+        static $gtype: GObject.GType<QueuedProxyWrapperPrivate>;
+
         // Constructors of Zeitgeist.QueuedProxyWrapperPrivate
 
         _init(...args: any[]): void;
@@ -1675,6 +1711,8 @@ export namespace Zeitgeist {
 
     type QueuedProxyWrapperQueuedMethodClass = typeof QueuedProxyWrapperQueuedMethod;
     abstract class QueuedProxyWrapperQueuedMethodPrivate {
+        static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethodPrivate>;
+
         // Constructors of Zeitgeist.QueuedProxyWrapperQueuedMethodPrivate
 
         _init(...args: any[]): void;
@@ -1682,6 +1720,8 @@ export namespace Zeitgeist {
 
     type DataSourceClass = typeof DataSource;
     abstract class DataSourcePrivate {
+        static $gtype: GObject.GType<DataSourcePrivate>;
+
         // Constructors of Zeitgeist.DataSourcePrivate
 
         _init(...args: any[]): void;
@@ -1689,6 +1729,8 @@ export namespace Zeitgeist {
 
     type EventClass = typeof Event;
     abstract class EventPrivate {
+        static $gtype: GObject.GType<EventPrivate>;
+
         // Constructors of Zeitgeist.EventPrivate
 
         _init(...args: any[]): void;
@@ -1696,6 +1738,8 @@ export namespace Zeitgeist {
 
     type SubjectClass = typeof Subject;
     abstract class SubjectPrivate {
+        static $gtype: GObject.GType<SubjectPrivate>;
+
         // Constructors of Zeitgeist.SubjectPrivate
 
         _init(...args: any[]): void;
@@ -1703,6 +1747,8 @@ export namespace Zeitgeist {
 
     type TimeRangeClass = typeof TimeRange;
     abstract class TimeRangePrivate {
+        static $gtype: GObject.GType<TimeRangePrivate>;
+
         // Constructors of Zeitgeist.TimeRangePrivate
 
         _init(...args: any[]): void;
@@ -1710,6 +1756,8 @@ export namespace Zeitgeist {
 
     type SimpleResultSetClass = typeof SimpleResultSet;
     abstract class SimpleResultSetPrivate {
+        static $gtype: GObject.GType<SimpleResultSetPrivate>;
+
         // Constructors of Zeitgeist.SimpleResultSetPrivate
 
         _init(...args: any[]): void;
@@ -1723,6 +1771,8 @@ export namespace Zeitgeist {
     type ConnmanManagerDBusIface = typeof ConnmanManagerDBus;
     type ResultSetIface = typeof ResultSet;
     class VersionStruct {
+        static $gtype: GObject.GType<VersionStruct>;
+
         // Own fields of Zeitgeist.VersionStruct
 
         major: number;

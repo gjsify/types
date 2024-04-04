@@ -27,6 +27,8 @@ export namespace Vda {
         RELATIVE,
     }
     class MetaObjectError extends GLib.Error {
+        static $gtype: GObject.GType<MetaObjectError>;
+
         // Static fields of Vda.MetaObjectError
 
         static APPEND: number;
@@ -41,6 +43,8 @@ export namespace Vda {
     }
 
     class ConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<ConnectionError>;
+
         // Static fields of Vda.ConnectionError
 
         static NO_DATABASE_NAME_ERROR: number;
@@ -54,6 +58,8 @@ export namespace Vda {
     }
 
     class DataObjectError extends GLib.Error {
+        static $gtype: GObject.GType<DataObjectError>;
+
         // Static fields of Vda.DataObjectError
 
         static SELECT_ERROR: number;
@@ -70,6 +76,8 @@ export namespace Vda {
     }
 
     class DataCollectionError extends GLib.Error {
+        static $gtype: GObject.GType<DataCollectionError>;
+
         // Static fields of Vda.DataCollectionError
 
         static INVALID_PROPERTY_ERROR: number;
@@ -81,6 +89,8 @@ export namespace Vda {
     }
 
     class ParserError extends GLib.Error {
+        static $gtype: GObject.GType<ParserError>;
+
         // Static fields of Vda.ParserError
 
         static INVALID_TOKEN_ERROR: number;
@@ -93,6 +103,8 @@ export namespace Vda {
     }
 
     class QueryError extends GLib.Error {
+        static $gtype: GObject.GType<QueryError>;
+
         // Static fields of Vda.QueryError
 
         static INVALID_QUERY_ERROR: number;
@@ -106,6 +118,8 @@ export namespace Vda {
     }
 
     class RoleError extends GLib.Error {
+        static $gtype: GObject.GType<RoleError>;
+
         // Static fields of Vda.RoleError
 
         static PROVILAGE_ERROR: number;
@@ -117,6 +131,8 @@ export namespace Vda {
     }
 
     class RowModelError extends GLib.Error {
+        static $gtype: GObject.GType<RowModelError>;
+
         // Static fields of Vda.RowModelError
 
         static INVALID_COLUMN_NAME_ERROR: number;
@@ -129,6 +145,8 @@ export namespace Vda {
     }
 
     class SqlCommandError extends GLib.Error {
+        static $gtype: GObject.GType<SqlCommandError>;
+
         // Static fields of Vda.SqlCommandError
 
         static INVALID_STRUCTURE_ERROR: number;
@@ -140,6 +158,8 @@ export namespace Vda {
     }
 
     class SqlCommandSelectError extends GLib.Error {
+        static $gtype: GObject.GType<SqlCommandSelectError>;
+
         // Static fields of Vda.SqlCommandSelectError
 
         static INVALID_FIELDS_ERROR: number;
@@ -151,6 +171,8 @@ export namespace Vda {
     }
 
     class SqlExpressionError extends GLib.Error {
+        static $gtype: GObject.GType<SqlExpressionError>;
+
         // Static fields of Vda.SqlExpressionError
 
         static INVALID_EXPRESSION_ERROR: number;
@@ -238,6 +260,8 @@ export namespace Vda {
     }
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
+        static $gtype: GObject.GType<AffectedRows>;
+
         // Constructors of Vda.AffectedRows
 
         constructor(properties?: Partial<AffectedRows.ConstructorProps>, ...args: any[]);
@@ -631,6 +655,8 @@ export namespace Vda {
             SqlCommandParametrized,
             SqlCommandDelete
     {
+        static $gtype: GObject.GType<CommandDelete>;
+
         // Constructors of Vda.CommandDelete
 
         constructor(properties?: Partial<CommandDelete.ConstructorProps>, ...args: any[]);
@@ -1037,6 +1063,8 @@ export namespace Vda {
     }
 
     class CommandInsert extends CommandModification implements Stringifiable, SqlCommandInsert {
+        static $gtype: GObject.GType<CommandInsert>;
+
         // Constructors of Vda.CommandInsert
 
         constructor(properties?: Partial<CommandInsert.ConstructorProps>, ...args: any[]);
@@ -1425,6 +1453,8 @@ export namespace Vda {
         extends GObject.Object
         implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
     {
+        static $gtype: GObject.GType<CommandModification>;
+
         // Constructors of Vda.CommandModification
 
         constructor(properties?: Partial<CommandModification.ConstructorProps>, ...args: any[]);
@@ -1842,6 +1872,8 @@ export namespace Vda {
         extends GObject.Object
         implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
     {
+        static $gtype: GObject.GType<CommandSelect>;
+
         // Constructors of Vda.CommandSelect
 
         constructor(properties?: Partial<CommandSelect.ConstructorProps>, ...args: any[]);
@@ -2251,6 +2283,8 @@ export namespace Vda {
     }
 
     class CommandUpdate extends CommandModification implements SqlCommandConditional, Stringifiable, SqlCommandUpdate {
+        static $gtype: GObject.GType<CommandUpdate>;
+
         // Constructors of Vda.CommandUpdate
 
         constructor(properties?: Partial<CommandUpdate.ConstructorProps>, ...args: any[]);
@@ -2639,6 +2673,8 @@ export namespace Vda {
     }
 
     class ConnectionParameter extends GObject.Object {
+        static $gtype: GObject.GType<ConnectionParameter>;
+
         // Own properties of Vda.ConnectionParameter
 
         get name(): string;
@@ -2669,6 +2705,8 @@ export namespace Vda {
     }
 
     class ConnectionParameterDbName extends ConnectionParameter {
+        static $gtype: GObject.GType<ConnectionParameterDbName>;
+
         // Constructors of Vda.ConnectionParameterDbName
 
         constructor(properties?: Partial<ConnectionParameterDbName.ConstructorProps>, ...args: any[]);
@@ -2685,6 +2723,8 @@ export namespace Vda {
     }
 
     class ConnectionParameterHost extends ConnectionParameter {
+        static $gtype: GObject.GType<ConnectionParameterHost>;
+
         // Constructors of Vda.ConnectionParameterHost
 
         constructor(properties?: Partial<ConnectionParameterHost.ConstructorProps>, ...args: any[]);
@@ -2701,6 +2741,8 @@ export namespace Vda {
     }
 
     class ConnectionParameterPort extends ConnectionParameter {
+        static $gtype: GObject.GType<ConnectionParameterPort>;
+
         // Constructors of Vda.ConnectionParameterPort
 
         constructor(properties?: Partial<ConnectionParameterPort.ConstructorProps>, ...args: any[]);
@@ -2717,6 +2759,8 @@ export namespace Vda {
     }
 
     class ConnectionParameterUserName extends ConnectionParameter {
+        static $gtype: GObject.GType<ConnectionParameterUserName>;
+
         // Constructors of Vda.ConnectionParameterUserName
 
         constructor(properties?: Partial<ConnectionParameterUserName.ConstructorProps>, ...args: any[]);
@@ -2733,6 +2777,8 @@ export namespace Vda {
     }
 
     class ConnectionParameterPassword extends ConnectionParameter {
+        static $gtype: GObject.GType<ConnectionParameterPassword>;
+
         // Constructors of Vda.ConnectionParameterPassword
 
         constructor(properties?: Partial<ConnectionParameterPassword.ConstructorProps>, ...args: any[]);
@@ -2749,6 +2795,8 @@ export namespace Vda {
     }
 
     class ConnectionParameters extends Gee.HashMap {
+        static $gtype: GObject.GType<ConnectionParameters>;
+
         // Constructors of Vda.ConnectionParameters
 
         constructor(properties?: Partial<ConnectionParameters.ConstructorProps>, ...args: any[]);
@@ -2784,6 +2832,8 @@ export namespace Vda {
         extends Gee.ArrayList
         implements Gio.ListModel<A>, SqlExpression
     {
+        static $gtype: GObject.GType<Expression>;
+
         // Constructors of Vda.Expression
 
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
@@ -3268,6 +3318,8 @@ export namespace Vda {
         extends Expression<A>
         implements SqlExpressionField
     {
+        static $gtype: GObject.GType<ExpressionField>;
+
         // Constructors of Vda.ExpressionField
 
         constructor(properties?: Partial<ExpressionField.ConstructorProps>, ...args: any[]);
@@ -3668,6 +3720,8 @@ export namespace Vda {
         extends Expression<A>
         implements SqlExpressionOperator
     {
+        static $gtype: GObject.GType<ExpressionOperator>;
+
         // Constructors of Vda.ExpressionOperator
 
         constructor(properties?: Partial<ExpressionOperator.ConstructorProps>, ...args: any[]);
@@ -4146,6 +4200,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorGroup
     {
+        static $gtype: GObject.GType<ExpressionOperatorGroup>;
+
         // Constructors of Vda.ExpressionOperatorGroup
 
         constructor(properties?: Partial<ExpressionOperatorGroup.ConstructorProps>, ...args: any[]);
@@ -4524,6 +4580,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorMultiterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
+
         // Constructors of Vda.ExpressionOperatorMultiterm
 
         constructor(properties?: Partial<ExpressionOperatorMultiterm.ConstructorProps>, ...args: any[]);
@@ -4902,6 +4960,8 @@ export namespace Vda {
         extends ExpressionOperatorMultiterm<A>
         implements SqlExpressionOperatorAnd
     {
+        static $gtype: GObject.GType<ExpressionOperatorAnd>;
+
         // Constructors of Vda.ExpressionOperatorAnd
 
         constructor(properties?: Partial<ExpressionOperatorAnd.ConstructorProps>, ...args: any[]);
@@ -5280,6 +5340,8 @@ export namespace Vda {
         extends ExpressionOperatorMultiterm<A>
         implements SqlExpressionOperatorOr
     {
+        static $gtype: GObject.GType<ExpressionOperatorOr>;
+
         // Constructors of Vda.ExpressionOperatorOr
 
         constructor(properties?: Partial<ExpressionOperatorOr.ConstructorProps>, ...args: any[]);
@@ -5658,6 +5720,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorBinaryterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
+
         // Constructors of Vda.ExpressionOperatorBinaryterm
 
         constructor(properties?: Partial<ExpressionOperatorBinaryterm.ConstructorProps>, ...args: any[]);
@@ -6036,6 +6100,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorEq
     {
+        static $gtype: GObject.GType<ExpressionOperatorEq>;
+
         // Constructors of Vda.ExpressionOperatorEq
 
         constructor(properties?: Partial<ExpressionOperatorEq.ConstructorProps>, ...args: any[]);
@@ -6414,6 +6480,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorNotEq
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotEq>;
+
         // Constructors of Vda.ExpressionOperatorNotEq
 
         constructor(properties?: Partial<ExpressionOperatorNotEq.ConstructorProps>, ...args: any[]);
@@ -6792,6 +6860,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorDiff
     {
+        static $gtype: GObject.GType<ExpressionOperatorDiff>;
+
         // Constructors of Vda.ExpressionOperatorDiff
 
         constructor(properties?: Partial<ExpressionOperatorDiff.ConstructorProps>, ...args: any[]);
@@ -7170,6 +7240,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorGt
     {
+        static $gtype: GObject.GType<ExpressionOperatorGt>;
+
         // Constructors of Vda.ExpressionOperatorGt
 
         constructor(properties?: Partial<ExpressionOperatorGt.ConstructorProps>, ...args: any[]);
@@ -7548,6 +7620,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorLt
     {
+        static $gtype: GObject.GType<ExpressionOperatorLt>;
+
         // Constructors of Vda.ExpressionOperatorLt
 
         constructor(properties?: Partial<ExpressionOperatorLt.ConstructorProps>, ...args: any[]);
@@ -7926,6 +8000,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorGeq
     {
+        static $gtype: GObject.GType<ExpressionOperatorGeq>;
+
         // Constructors of Vda.ExpressionOperatorGeq
 
         constructor(properties?: Partial<ExpressionOperatorGeq.ConstructorProps>, ...args: any[]);
@@ -8304,6 +8380,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorLeq
     {
+        static $gtype: GObject.GType<ExpressionOperatorLeq>;
+
         // Constructors of Vda.ExpressionOperatorLeq
 
         constructor(properties?: Partial<ExpressionOperatorLeq.ConstructorProps>, ...args: any[]);
@@ -8682,6 +8760,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorRegexp
     {
+        static $gtype: GObject.GType<ExpressionOperatorRegexp>;
+
         // Constructors of Vda.ExpressionOperatorRegexp
 
         constructor(properties?: Partial<ExpressionOperatorRegexp.ConstructorProps>, ...args: any[]);
@@ -9060,6 +9140,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorStar
     {
+        static $gtype: GObject.GType<ExpressionOperatorStar>;
+
         // Constructors of Vda.ExpressionOperatorStar
 
         constructor(properties?: Partial<ExpressionOperatorStar.ConstructorProps>, ...args: any[]);
@@ -9438,6 +9520,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorDiv
     {
+        static $gtype: GObject.GType<ExpressionOperatorDiv>;
+
         // Constructors of Vda.ExpressionOperatorDiv
 
         constructor(properties?: Partial<ExpressionOperatorDiv.ConstructorProps>, ...args: any[]);
@@ -9816,6 +9900,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorIn
     {
+        static $gtype: GObject.GType<ExpressionOperatorIn>;
+
         // Constructors of Vda.ExpressionOperatorIn
 
         constructor(properties?: Partial<ExpressionOperatorIn.ConstructorProps>, ...args: any[]);
@@ -10194,6 +10280,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorNotIn
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotIn>;
+
         // Constructors of Vda.ExpressionOperatorNotIn
 
         constructor(properties?: Partial<ExpressionOperatorNotIn.ConstructorProps>, ...args: any[]);
@@ -10572,6 +10660,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorConcatenate
     {
+        static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
+
         // Constructors of Vda.ExpressionOperatorConcatenate
 
         constructor(properties?: Partial<ExpressionOperatorConcatenate.ConstructorProps>, ...args: any[]);
@@ -10950,6 +11040,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorSimilarTo
     {
+        static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
+
         // Constructors of Vda.ExpressionOperatorSimilarTo
 
         constructor(properties?: Partial<ExpressionOperatorSimilarTo.ConstructorProps>, ...args: any[]);
@@ -11328,6 +11420,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorLike
     {
+        static $gtype: GObject.GType<ExpressionOperatorLike>;
+
         // Constructors of Vda.ExpressionOperatorLike
 
         constructor(properties?: Partial<ExpressionOperatorLike.ConstructorProps>, ...args: any[]);
@@ -11706,6 +11800,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorNotLike
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotLike>;
+
         // Constructors of Vda.ExpressionOperatorNotLike
 
         constructor(properties?: Partial<ExpressionOperatorNotLike.ConstructorProps>, ...args: any[]);
@@ -12084,6 +12180,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorIlike
     {
+        static $gtype: GObject.GType<ExpressionOperatorIlike>;
+
         // Constructors of Vda.ExpressionOperatorIlike
 
         constructor(properties?: Partial<ExpressionOperatorIlike.ConstructorProps>, ...args: any[]);
@@ -12462,6 +12560,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorNotIlike
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
+
         // Constructors of Vda.ExpressionOperatorNotIlike
 
         constructor(properties?: Partial<ExpressionOperatorNotIlike.ConstructorProps>, ...args: any[]);
@@ -12840,6 +12940,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorBinaryUnaryterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
+
         // Constructors of Vda.ExpressionOperatorBinaryUnaryterm
 
         constructor(properties?: Partial<ExpressionOperatorBinaryUnaryterm.ConstructorProps>, ...args: any[]);
@@ -13218,6 +13320,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryUnaryterm<A>
         implements SqlExpressionOperatorMinus
     {
+        static $gtype: GObject.GType<ExpressionOperatorMinus>;
+
         // Constructors of Vda.ExpressionOperatorMinus
 
         constructor(properties?: Partial<ExpressionOperatorMinus.ConstructorProps>, ...args: any[]);
@@ -13596,6 +13700,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryUnaryterm<A>
         implements SqlExpressionOperatorPlus
     {
+        static $gtype: GObject.GType<ExpressionOperatorPlus>;
+
         // Constructors of Vda.ExpressionOperatorPlus
 
         constructor(properties?: Partial<ExpressionOperatorPlus.ConstructorProps>, ...args: any[]);
@@ -13974,6 +14080,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorInitialUnaryterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
+
         // Constructors of Vda.ExpressionOperatorInitialUnaryterm
 
         constructor(properties?: Partial<ExpressionOperatorInitialUnaryterm.ConstructorProps>, ...args: any[]);
@@ -14352,6 +14460,8 @@ export namespace Vda {
         extends ExpressionOperatorInitialUnaryterm<A>
         implements SqlExpressionOperatorNot
     {
+        static $gtype: GObject.GType<ExpressionOperatorNot>;
+
         // Constructors of Vda.ExpressionOperatorNot
 
         constructor(properties?: Partial<ExpressionOperatorNot.ConstructorProps>, ...args: any[]);
@@ -14730,6 +14840,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorFinalUnaryterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
+
         // Constructors of Vda.ExpressionOperatorFinalUnaryterm
 
         constructor(properties?: Partial<ExpressionOperatorFinalUnaryterm.ConstructorProps>, ...args: any[]);
@@ -15108,6 +15220,8 @@ export namespace Vda {
         extends ExpressionOperatorFinalUnaryterm<A>
         implements SqlExpressionOperatorIs
     {
+        static $gtype: GObject.GType<ExpressionOperatorIs>;
+
         // Constructors of Vda.ExpressionOperatorIs
 
         constructor(properties?: Partial<ExpressionOperatorIs.ConstructorProps>, ...args: any[]);
@@ -15486,6 +15600,8 @@ export namespace Vda {
         extends ExpressionOperatorIs<A>
         implements SqlExpressionOperatorIsNot
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNot>;
+
         // Constructors of Vda.ExpressionOperatorIsNot
 
         constructor(properties?: Partial<ExpressionOperatorIsNot.ConstructorProps>, ...args: any[]);
@@ -15864,6 +15980,8 @@ export namespace Vda {
         extends ExpressionOperatorIs<A>
         implements SqlExpressionOperatorIsNull
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNull>;
+
         // Constructors of Vda.ExpressionOperatorIsNull
 
         constructor(properties?: Partial<ExpressionOperatorIsNull.ConstructorProps>, ...args: any[]);
@@ -16242,6 +16360,8 @@ export namespace Vda {
         extends ExpressionOperatorIsNot<A>
         implements SqlExpressionOperatorIsNotNull
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
+
         // Constructors of Vda.ExpressionOperatorIsNotNull
 
         constructor(properties?: Partial<ExpressionOperatorIsNotNull.ConstructorProps>, ...args: any[]);
@@ -16620,6 +16740,8 @@ export namespace Vda {
         extends ExpressionOperatorIs<A>
         implements SqlExpressionOperatorIsTrue
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
+
         // Constructors of Vda.ExpressionOperatorIsTrue
 
         constructor(properties?: Partial<ExpressionOperatorIsTrue.ConstructorProps>, ...args: any[]);
@@ -16998,6 +17120,8 @@ export namespace Vda {
         extends ExpressionOperatorIsNot<A>
         implements SqlExpressionOperatorIsNotTrue
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
+
         // Constructors of Vda.ExpressionOperatorIsNotTrue
 
         constructor(properties?: Partial<ExpressionOperatorIsNotTrue.ConstructorProps>, ...args: any[]);
@@ -17376,6 +17500,8 @@ export namespace Vda {
         extends ExpressionOperatorIs<A>
         implements SqlExpressionOperatorIsFalse
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
+
         // Constructors of Vda.ExpressionOperatorIsFalse
 
         constructor(properties?: Partial<ExpressionOperatorIsFalse.ConstructorProps>, ...args: any[]);
@@ -17754,6 +17880,8 @@ export namespace Vda {
         extends ExpressionOperatorIsNot<A>
         implements SqlExpressionOperatorIsNotFalse
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
+
         // Constructors of Vda.ExpressionOperatorIsNotFalse
 
         constructor(properties?: Partial<ExpressionOperatorIsNotFalse.ConstructorProps>, ...args: any[]);
@@ -18132,6 +18260,8 @@ export namespace Vda {
         extends ExpressionOperatorIsNot<A>
         implements SqlExpressionOperatorIsNotUnknown
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
+
         // Constructors of Vda.ExpressionOperatorIsNotUnknown
 
         constructor(properties?: Partial<ExpressionOperatorIsNotUnknown.ConstructorProps>, ...args: any[]);
@@ -18510,6 +18640,8 @@ export namespace Vda {
         extends ExpressionOperatorIs<A>
         implements SqlExpressionOperatorIsUnknown
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
+
         // Constructors of Vda.ExpressionOperatorIsUnknown
 
         constructor(properties?: Partial<ExpressionOperatorIsUnknown.ConstructorProps>, ...args: any[]);
@@ -18888,6 +19020,8 @@ export namespace Vda {
         extends ExpressionOperatorBinaryterm<A>
         implements SqlExpressionOperatorIsDistinct
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
+
         // Constructors of Vda.ExpressionOperatorIsDistinct
 
         constructor(properties?: Partial<ExpressionOperatorIsDistinct.ConstructorProps>, ...args: any[]);
@@ -19266,6 +19400,8 @@ export namespace Vda {
         extends ExpressionOperatorIsDistinct<A>
         implements SqlExpressionOperatorIsNotDistinct
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
+
         // Constructors of Vda.ExpressionOperatorIsNotDistinct
 
         constructor(properties?: Partial<ExpressionOperatorIsNotDistinct.ConstructorProps>, ...args: any[]);
@@ -19644,6 +19780,8 @@ export namespace Vda {
         extends ExpressionOperatorIsDistinct<A>
         implements SqlExpressionOperatorIsDistinctFrom
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
+
         // Constructors of Vda.ExpressionOperatorIsDistinctFrom
 
         constructor(properties?: Partial<ExpressionOperatorIsDistinctFrom.ConstructorProps>, ...args: any[]);
@@ -20022,6 +20160,8 @@ export namespace Vda {
         extends ExpressionOperatorIsNotDistinct<A>
         implements SqlExpressionOperatorIsNotDistinctFrom
     {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
+
         // Constructors of Vda.ExpressionOperatorIsNotDistinctFrom
 
         constructor(properties?: Partial<ExpressionOperatorIsNotDistinctFrom.ConstructorProps>, ...args: any[]);
@@ -20400,6 +20540,8 @@ export namespace Vda {
         extends ExpressionOperator<A>
         implements SqlExpressionOperatorThreeterm
     {
+        static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
+
         // Constructors of Vda.ExpressionOperatorThreeterm
 
         constructor(properties?: Partial<ExpressionOperatorThreeterm.ConstructorProps>, ...args: any[]);
@@ -20778,6 +20920,8 @@ export namespace Vda {
         extends ExpressionOperatorThreeterm<A>
         implements SqlExpressionOperatorBetween
     {
+        static $gtype: GObject.GType<ExpressionOperatorBetween>;
+
         // Constructors of Vda.ExpressionOperatorBetween
 
         constructor(properties?: Partial<ExpressionOperatorBetween.ConstructorProps>, ...args: any[]);
@@ -21156,6 +21300,8 @@ export namespace Vda {
         extends ExpressionOperatorBetween<A>
         implements SqlExpressionOperatorBetweenAnd
     {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
+
         // Constructors of Vda.ExpressionOperatorBetweenAnd
 
         constructor(properties?: Partial<ExpressionOperatorBetweenAnd.ConstructorProps>, ...args: any[]);
@@ -21534,6 +21680,8 @@ export namespace Vda {
         extends ExpressionOperatorBetween<A>
         implements SqlExpressionOperatorNotBetween
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
+
         // Constructors of Vda.ExpressionOperatorNotBetween
 
         constructor(properties?: Partial<ExpressionOperatorNotBetween.ConstructorProps>, ...args: any[]);
@@ -21912,6 +22060,8 @@ export namespace Vda {
         extends ExpressionOperatorNotBetween<A>
         implements SqlExpressionOperatorNotBetweenAnd
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenAnd
 
         constructor(properties?: Partial<ExpressionOperatorNotBetweenAnd.ConstructorProps>, ...args: any[]);
@@ -22290,6 +22440,8 @@ export namespace Vda {
         extends ExpressionOperatorBetween<A>
         implements SqlExpressionOperatorBetweenSymmetric
     {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
+
         // Constructors of Vda.ExpressionOperatorBetweenSymmetric
 
         constructor(properties?: Partial<ExpressionOperatorBetweenSymmetric.ConstructorProps>, ...args: any[]);
@@ -22668,6 +22820,8 @@ export namespace Vda {
         extends ExpressionOperatorBetweenSymmetric<A>
         implements SqlExpressionOperatorBetweenSymmetricAnd
     {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
+
         // Constructors of Vda.ExpressionOperatorBetweenSymmetricAnd
 
         constructor(properties?: Partial<ExpressionOperatorBetweenSymmetricAnd.ConstructorProps>, ...args: any[]);
@@ -23046,6 +23200,8 @@ export namespace Vda {
         extends ExpressionOperatorBetweenSymmetric<A>
         implements SqlExpressionOperatorNotBetweenSymmetric
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenSymmetric
 
         constructor(properties?: Partial<ExpressionOperatorNotBetweenSymmetric.ConstructorProps>, ...args: any[]);
@@ -23424,6 +23580,8 @@ export namespace Vda {
         extends ExpressionOperatorNotBetweenSymmetric<A>
         implements SqlExpressionOperatorNotBetweenSymmetricAnd
     {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenSymmetricAnd
 
         constructor(properties?: Partial<ExpressionOperatorNotBetweenSymmetricAnd.ConstructorProps>, ...args: any[]);
@@ -23802,6 +23960,8 @@ export namespace Vda {
         extends Expression<A>
         implements SqlExpressionValue
     {
+        static $gtype: GObject.GType<ExpressionValue>;
+
         // Constructors of Vda.ExpressionValue
 
         constructor(properties?: Partial<ExpressionValue.ConstructorProps>, ...args: any[]);
@@ -24196,6 +24356,8 @@ export namespace Vda {
         extends ExpressionValue<A>
         implements SqlExpressionValueParameter
     {
+        static $gtype: GObject.GType<ExpressionValueParameter>;
+
         // Constructors of Vda.ExpressionValueParameter
 
         constructor(properties?: Partial<ExpressionValueParameter.ConstructorProps>, ...args: any[]);
@@ -24597,6 +24759,8 @@ export namespace Vda {
         extends Gee.ArrayList
         implements Gio.ListModel<A>, HashModel
     {
+        static $gtype: GObject.GType<HashList>;
+
         // Constructors of Vda.HashList
 
         constructor(properties?: Partial<HashList.ConstructorProps>, ...args: any[]);
@@ -25074,6 +25238,8 @@ export namespace Vda {
     }
 
     class InvalidQuery extends GObject.Object implements Query {
+        static $gtype: GObject.GType<InvalidQuery>;
+
         // Own properties of Vda.InvalidQuery
 
         get message(): string;
@@ -25474,6 +25640,8 @@ export namespace Vda {
     }
 
     class InvalidPreparedQuery extends InvalidQuery implements PreparedQuery {
+        static $gtype: GObject.GType<InvalidPreparedQuery>;
+
         // Constructors of Vda.InvalidPreparedQuery
 
         constructor(properties?: Partial<InvalidPreparedQuery.ConstructorProps>, ...args: any[]);
@@ -25856,6 +26024,8 @@ export namespace Vda {
     }
 
     class InvalidResult extends GObject.Object implements Result {
+        static $gtype: GObject.GType<InvalidResult>;
+
         // Own properties of Vda.InvalidResult
 
         get message(): string;
@@ -26238,6 +26408,8 @@ export namespace Vda {
     }
 
     class Parameters extends Gee.HashMap implements SqlParameters {
+        static $gtype: GObject.GType<Parameters>;
+
         // Constructors of Vda.Parameters
 
         constructor(properties?: Partial<Parameters.ConstructorProps>, ...args: any[]);
@@ -26621,6 +26793,8 @@ export namespace Vda {
     }
 
     class Parser extends GObject.Object implements SqlParser {
+        static $gtype: GObject.GType<Parser>;
+
         // Constructors of Vda.Parser
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
@@ -26995,6 +27169,8 @@ export namespace Vda {
     }
 
     class TableReference extends GObject.Object implements SqlTableReference {
+        static $gtype: GObject.GType<TableReference>;
+
         // Constructors of Vda.TableReference
 
         constructor(properties?: Partial<TableReference.ConstructorProps>, ...args: any[]);
@@ -27384,6 +27560,8 @@ export namespace Vda {
     }
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
+        static $gtype: GObject.GType<Value>;
+
         // Constructors of Vda.Value
 
         constructor(properties?: Partial<Value.ConstructorProps>, ...args: any[]);
@@ -27785,6 +27963,8 @@ export namespace Vda {
     }
 
     class ValueNull extends Value implements SqlValueNull {
+        static $gtype: GObject.GType<ValueNull>;
+
         // Constructors of Vda.ValueNull
 
         constructor(properties?: Partial<ValueNull.ConstructorProps>, ...args: any[]);
@@ -28157,6 +28337,8 @@ export namespace Vda {
     }
 
     class ValueString extends Value implements SqlValueString {
+        static $gtype: GObject.GType<ValueString>;
+
         // Constructors of Vda.ValueString
 
         constructor(properties?: Partial<ValueString.ConstructorProps>, ...args: any[]);
@@ -28529,6 +28711,8 @@ export namespace Vda {
     }
 
     class ValueXml extends ValueString implements SqlValueXml {
+        static $gtype: GObject.GType<ValueXml>;
+
         // Constructors of Vda.ValueXml
 
         constructor(properties?: Partial<ValueXml.ConstructorProps>, ...args: any[]);
@@ -28906,6 +29090,8 @@ export namespace Vda {
     }
 
     class ValueJson extends ValueString implements SqlValueJson {
+        static $gtype: GObject.GType<ValueJson>;
+
         // Constructors of Vda.ValueJson
 
         constructor(properties?: Partial<ValueJson.ConstructorProps>, ...args: any[]);
@@ -29283,6 +29469,8 @@ export namespace Vda {
     }
 
     class ValueText extends ValueString implements SqlValueText {
+        static $gtype: GObject.GType<ValueText>;
+
         // Constructors of Vda.ValueText
 
         constructor(properties?: Partial<ValueText.ConstructorProps>, ...args: any[]);
@@ -29655,6 +29843,8 @@ export namespace Vda {
     }
 
     class ValueName extends ValueString implements SqlValueName {
+        static $gtype: GObject.GType<ValueName>;
+
         // Constructors of Vda.ValueName
 
         constructor(properties?: Partial<ValueName.ConstructorProps>, ...args: any[]);
@@ -30027,6 +30217,8 @@ export namespace Vda {
     }
 
     class ValueBool extends Value implements SqlValueBool {
+        static $gtype: GObject.GType<ValueBool>;
+
         // Constructors of Vda.ValueBool
 
         constructor(properties?: Partial<ValueBool.ConstructorProps>, ...args: any[]);
@@ -30399,6 +30591,8 @@ export namespace Vda {
     }
 
     class ValueBit extends ValueBool implements SqlValueBit {
+        static $gtype: GObject.GType<ValueBit>;
+
         // Constructors of Vda.ValueBit
 
         constructor(properties?: Partial<ValueBit.ConstructorProps>, ...args: any[]);
@@ -30774,6 +30968,8 @@ export namespace Vda {
     }
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
+        static $gtype: GObject.GType<ValueInteger>;
+
         // Constructors of Vda.ValueInteger
 
         constructor(properties?: Partial<ValueInteger.ConstructorProps>, ...args: any[]);
@@ -31165,6 +31361,8 @@ export namespace Vda {
     }
 
     class ValueByte extends ValueInteger implements SqlValueByte {
+        static $gtype: GObject.GType<ValueByte>;
+
         // Constructors of Vda.ValueByte
 
         constructor(properties?: Partial<ValueByte.ConstructorProps>, ...args: any[]);
@@ -31537,6 +31735,8 @@ export namespace Vda {
     }
 
     class ValueInt2 extends ValueInteger implements SqlValueInt2 {
+        static $gtype: GObject.GType<ValueInt2>;
+
         // Constructors of Vda.ValueInt2
 
         constructor(properties?: Partial<ValueInt2.ConstructorProps>, ...args: any[]);
@@ -31909,6 +32109,8 @@ export namespace Vda {
     }
 
     class ValueInt4 extends ValueInteger implements SqlValueInt4 {
+        static $gtype: GObject.GType<ValueInt4>;
+
         // Constructors of Vda.ValueInt4
 
         constructor(properties?: Partial<ValueInt4.ConstructorProps>, ...args: any[]);
@@ -32281,6 +32483,8 @@ export namespace Vda {
     }
 
     class ValueInt8 extends ValueInteger implements SqlValueInt8 {
+        static $gtype: GObject.GType<ValueInt8>;
+
         // Constructors of Vda.ValueInt8
 
         constructor(properties?: Partial<ValueInt8.ConstructorProps>, ...args: any[]);
@@ -32656,6 +32860,8 @@ export namespace Vda {
     }
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
+        static $gtype: GObject.GType<ValueUnsignedInteger>;
+
         // Constructors of Vda.ValueUnsignedInteger
 
         constructor(properties?: Partial<ValueUnsignedInteger.ConstructorProps>, ...args: any[]);
@@ -33049,6 +33255,8 @@ export namespace Vda {
     }
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
+        static $gtype: GObject.GType<ValueUnsignedByte>;
+
         // Constructors of Vda.ValueUnsignedByte
 
         constructor(properties?: Partial<ValueUnsignedByte.ConstructorProps>, ...args: any[]);
@@ -33423,6 +33631,8 @@ export namespace Vda {
     }
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
+        static $gtype: GObject.GType<ValueUnsignedInt2>;
+
         // Constructors of Vda.ValueUnsignedInt2
 
         constructor(properties?: Partial<ValueUnsignedInt2.ConstructorProps>, ...args: any[]);
@@ -33797,6 +34007,8 @@ export namespace Vda {
     }
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
+        static $gtype: GObject.GType<ValueUnsignedInt4>;
+
         // Constructors of Vda.ValueUnsignedInt4
 
         constructor(properties?: Partial<ValueUnsignedInt4.ConstructorProps>, ...args: any[]);
@@ -34171,6 +34383,8 @@ export namespace Vda {
     }
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
+        static $gtype: GObject.GType<ValueUnsignedInt8>;
+
         // Constructors of Vda.ValueUnsignedInt8
 
         constructor(properties?: Partial<ValueUnsignedInt8.ConstructorProps>, ...args: any[]);
@@ -34543,6 +34757,8 @@ export namespace Vda {
     }
 
     class ValueOid extends ValueInteger implements SqlValueOid {
+        static $gtype: GObject.GType<ValueOid>;
+
         // Constructors of Vda.ValueOid
 
         constructor(properties?: Partial<ValueOid.ConstructorProps>, ...args: any[]);
@@ -34915,6 +35131,8 @@ export namespace Vda {
     }
 
     class ValueNumeric extends Value implements SqlValueNumeric {
+        static $gtype: GObject.GType<ValueNumeric>;
+
         // Constructors of Vda.ValueNumeric
 
         constructor(properties?: Partial<ValueNumeric.ConstructorProps>, ...args: any[]);
@@ -35311,6 +35529,8 @@ export namespace Vda {
     }
 
     class ValueFloat extends ValueNumeric implements SqlValueFloat {
+        static $gtype: GObject.GType<ValueFloat>;
+
         // Constructors of Vda.ValueFloat
 
         constructor(properties?: Partial<ValueFloat.ConstructorProps>, ...args: any[]);
@@ -35685,6 +35905,8 @@ export namespace Vda {
     }
 
     class ValueDouble extends ValueNumeric implements SqlValueDouble {
+        static $gtype: GObject.GType<ValueDouble>;
+
         // Constructors of Vda.ValueDouble
 
         constructor(properties?: Partial<ValueDouble.ConstructorProps>, ...args: any[]);
@@ -36057,6 +36279,8 @@ export namespace Vda {
     }
 
     class ValueMoney extends ValueNumeric implements SqlValueMoney {
+        static $gtype: GObject.GType<ValueMoney>;
+
         // Constructors of Vda.ValueMoney
 
         constructor(properties?: Partial<ValueMoney.ConstructorProps>, ...args: any[]);
@@ -36437,6 +36661,8 @@ export namespace Vda {
     }
 
     class ValueTimestamp extends Value implements SqlValueTimestamp {
+        static $gtype: GObject.GType<ValueTimestamp>;
+
         // Constructors of Vda.ValueTimestamp
 
         constructor(properties?: Partial<ValueTimestamp.ConstructorProps>, ...args: any[]);
@@ -36835,6 +37061,8 @@ export namespace Vda {
     }
 
     class ValueTimestampNtz extends ValueTimestamp implements SqlValueTimestampNtz {
+        static $gtype: GObject.GType<ValueTimestampNtz>;
+
         // Constructors of Vda.ValueTimestampNtz
 
         constructor(properties?: Partial<ValueTimestampNtz.ConstructorProps>, ...args: any[]);
@@ -37207,6 +37435,8 @@ export namespace Vda {
     }
 
     class ValueTime extends ValueTimestamp implements SqlValueTime {
+        static $gtype: GObject.GType<ValueTime>;
+
         // Constructors of Vda.ValueTime
 
         constructor(properties?: Partial<ValueTime.ConstructorProps>, ...args: any[]);
@@ -37579,6 +37809,8 @@ export namespace Vda {
     }
 
     class ValueTimeNtz extends ValueTimestampNtz implements SqlValueTimeNtz {
+        static $gtype: GObject.GType<ValueTimeNtz>;
+
         // Constructors of Vda.ValueTimeNtz
 
         constructor(properties?: Partial<ValueTimeNtz.ConstructorProps>, ...args: any[]);
@@ -37951,6 +38183,8 @@ export namespace Vda {
     }
 
     class ValueDate extends Value implements SqlValueDate {
+        static $gtype: GObject.GType<ValueDate>;
+
         // Own fields of Vda.ValueDate
 
         d: GLib.Date;
@@ -38331,6 +38565,8 @@ export namespace Vda {
     }
 
     class ValueBinary extends Value implements SqlValueBinary {
+        static $gtype: GObject.GType<ValueBinary>;
+
         // Constructors of Vda.ValueBinary
 
         constructor(properties?: Partial<ValueBinary.ConstructorProps>, ...args: any[]);
@@ -38724,6 +38960,8 @@ export namespace Vda {
     }
 
     class ValueMathExp extends GObject.Object implements Stringifiable, SqlValue, SqlValueMathExp {
+        static $gtype: GObject.GType<ValueMathExp>;
+
         // Own properties of Vda.ValueMathExp
 
         get parameters(): SqlParameters;
@@ -39128,6 +39366,8 @@ export namespace Vda {
 
     type AffectedRowsClass = typeof AffectedRows;
     abstract class AffectedRowsPrivate {
+        static $gtype: GObject.GType<AffectedRowsPrivate>;
+
         // Constructors of Vda.AffectedRowsPrivate
 
         _init(...args: any[]): void;
@@ -39135,6 +39375,8 @@ export namespace Vda {
 
     type CommandDeleteClass = typeof CommandDelete;
     abstract class CommandDeletePrivate {
+        static $gtype: GObject.GType<CommandDeletePrivate>;
+
         // Constructors of Vda.CommandDeletePrivate
 
         _init(...args: any[]): void;
@@ -39142,6 +39384,8 @@ export namespace Vda {
 
     type CommandInsertClass = typeof CommandInsert;
     abstract class CommandInsertPrivate {
+        static $gtype: GObject.GType<CommandInsertPrivate>;
+
         // Constructors of Vda.CommandInsertPrivate
 
         _init(...args: any[]): void;
@@ -39149,6 +39393,8 @@ export namespace Vda {
 
     type CommandModificationClass = typeof CommandModification;
     abstract class CommandModificationPrivate {
+        static $gtype: GObject.GType<CommandModificationPrivate>;
+
         // Constructors of Vda.CommandModificationPrivate
 
         _init(...args: any[]): void;
@@ -39156,6 +39402,8 @@ export namespace Vda {
 
     type CommandSelectClass = typeof CommandSelect;
     abstract class CommandSelectPrivate {
+        static $gtype: GObject.GType<CommandSelectPrivate>;
+
         // Constructors of Vda.CommandSelectPrivate
 
         _init(...args: any[]): void;
@@ -39163,6 +39411,8 @@ export namespace Vda {
 
     type CommandUpdateClass = typeof CommandUpdate;
     abstract class CommandUpdatePrivate {
+        static $gtype: GObject.GType<CommandUpdatePrivate>;
+
         // Constructors of Vda.CommandUpdatePrivate
 
         _init(...args: any[]): void;
@@ -39170,6 +39420,8 @@ export namespace Vda {
 
     type ConnectionParameterClass = typeof ConnectionParameter;
     abstract class ConnectionParameterPrivate {
+        static $gtype: GObject.GType<ConnectionParameterPrivate>;
+
         // Constructors of Vda.ConnectionParameterPrivate
 
         _init(...args: any[]): void;
@@ -39177,6 +39429,8 @@ export namespace Vda {
 
     type ConnectionParameterDbNameClass = typeof ConnectionParameterDbName;
     abstract class ConnectionParameterDbNamePrivate {
+        static $gtype: GObject.GType<ConnectionParameterDbNamePrivate>;
+
         // Constructors of Vda.ConnectionParameterDbNamePrivate
 
         _init(...args: any[]): void;
@@ -39184,6 +39438,8 @@ export namespace Vda {
 
     type ConnectionParameterHostClass = typeof ConnectionParameterHost;
     abstract class ConnectionParameterHostPrivate {
+        static $gtype: GObject.GType<ConnectionParameterHostPrivate>;
+
         // Constructors of Vda.ConnectionParameterHostPrivate
 
         _init(...args: any[]): void;
@@ -39191,6 +39447,8 @@ export namespace Vda {
 
     type ConnectionParameterPortClass = typeof ConnectionParameterPort;
     abstract class ConnectionParameterPortPrivate {
+        static $gtype: GObject.GType<ConnectionParameterPortPrivate>;
+
         // Constructors of Vda.ConnectionParameterPortPrivate
 
         _init(...args: any[]): void;
@@ -39198,6 +39456,8 @@ export namespace Vda {
 
     type ConnectionParameterUserNameClass = typeof ConnectionParameterUserName;
     abstract class ConnectionParameterUserNamePrivate {
+        static $gtype: GObject.GType<ConnectionParameterUserNamePrivate>;
+
         // Constructors of Vda.ConnectionParameterUserNamePrivate
 
         _init(...args: any[]): void;
@@ -39205,6 +39465,8 @@ export namespace Vda {
 
     type ConnectionParameterPasswordClass = typeof ConnectionParameterPassword;
     abstract class ConnectionParameterPasswordPrivate {
+        static $gtype: GObject.GType<ConnectionParameterPasswordPrivate>;
+
         // Constructors of Vda.ConnectionParameterPasswordPrivate
 
         _init(...args: any[]): void;
@@ -39212,6 +39474,8 @@ export namespace Vda {
 
     type ConnectionParametersClass = typeof ConnectionParameters;
     abstract class ConnectionParametersPrivate {
+        static $gtype: GObject.GType<ConnectionParametersPrivate>;
+
         // Constructors of Vda.ConnectionParametersPrivate
 
         _init(...args: any[]): void;
@@ -39219,6 +39483,8 @@ export namespace Vda {
 
     type ExpressionClass = typeof Expression;
     abstract class ExpressionPrivate {
+        static $gtype: GObject.GType<ExpressionPrivate>;
+
         // Constructors of Vda.ExpressionPrivate
 
         _init(...args: any[]): void;
@@ -39226,6 +39492,8 @@ export namespace Vda {
 
     type ExpressionFieldClass = typeof ExpressionField;
     abstract class ExpressionFieldPrivate {
+        static $gtype: GObject.GType<ExpressionFieldPrivate>;
+
         // Constructors of Vda.ExpressionFieldPrivate
 
         _init(...args: any[]): void;
@@ -39233,6 +39501,8 @@ export namespace Vda {
 
     type ExpressionOperatorClass = typeof ExpressionOperator;
     abstract class ExpressionOperatorPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorPrivate>;
+
         // Constructors of Vda.ExpressionOperatorPrivate
 
         _init(...args: any[]): void;
@@ -39240,6 +39510,8 @@ export namespace Vda {
 
     type ExpressionOperatorGroupClass = typeof ExpressionOperatorGroup;
     abstract class ExpressionOperatorGroupPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorGroupPrivate>;
+
         // Constructors of Vda.ExpressionOperatorGroupPrivate
 
         _init(...args: any[]): void;
@@ -39247,6 +39519,8 @@ export namespace Vda {
 
     type ExpressionOperatorMultitermClass = typeof ExpressionOperatorMultiterm;
     abstract class ExpressionOperatorMultitermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorMultitermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorMultitermPrivate
 
         _init(...args: any[]): void;
@@ -39254,6 +39528,8 @@ export namespace Vda {
 
     type ExpressionOperatorAndClass = typeof ExpressionOperatorAnd;
     abstract class ExpressionOperatorAndPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorAndPrivate>;
+
         // Constructors of Vda.ExpressionOperatorAndPrivate
 
         _init(...args: any[]): void;
@@ -39261,6 +39537,8 @@ export namespace Vda {
 
     type ExpressionOperatorOrClass = typeof ExpressionOperatorOr;
     abstract class ExpressionOperatorOrPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorOrPrivate>;
+
         // Constructors of Vda.ExpressionOperatorOrPrivate
 
         _init(...args: any[]): void;
@@ -39268,6 +39546,8 @@ export namespace Vda {
 
     type ExpressionOperatorBinarytermClass = typeof ExpressionOperatorBinaryterm;
     abstract class ExpressionOperatorBinarytermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBinarytermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBinarytermPrivate
 
         _init(...args: any[]): void;
@@ -39275,6 +39555,8 @@ export namespace Vda {
 
     type ExpressionOperatorEqClass = typeof ExpressionOperatorEq;
     abstract class ExpressionOperatorEqPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorEqPrivate>;
+
         // Constructors of Vda.ExpressionOperatorEqPrivate
 
         _init(...args: any[]): void;
@@ -39282,6 +39564,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotEqClass = typeof ExpressionOperatorNotEq;
     abstract class ExpressionOperatorNotEqPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotEqPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotEqPrivate
 
         _init(...args: any[]): void;
@@ -39289,6 +39573,8 @@ export namespace Vda {
 
     type ExpressionOperatorDiffClass = typeof ExpressionOperatorDiff;
     abstract class ExpressionOperatorDiffPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorDiffPrivate>;
+
         // Constructors of Vda.ExpressionOperatorDiffPrivate
 
         _init(...args: any[]): void;
@@ -39296,6 +39582,8 @@ export namespace Vda {
 
     type ExpressionOperatorGtClass = typeof ExpressionOperatorGt;
     abstract class ExpressionOperatorGtPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorGtPrivate>;
+
         // Constructors of Vda.ExpressionOperatorGtPrivate
 
         _init(...args: any[]): void;
@@ -39303,6 +39591,8 @@ export namespace Vda {
 
     type ExpressionOperatorLtClass = typeof ExpressionOperatorLt;
     abstract class ExpressionOperatorLtPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorLtPrivate>;
+
         // Constructors of Vda.ExpressionOperatorLtPrivate
 
         _init(...args: any[]): void;
@@ -39310,6 +39600,8 @@ export namespace Vda {
 
     type ExpressionOperatorGeqClass = typeof ExpressionOperatorGeq;
     abstract class ExpressionOperatorGeqPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorGeqPrivate>;
+
         // Constructors of Vda.ExpressionOperatorGeqPrivate
 
         _init(...args: any[]): void;
@@ -39317,6 +39609,8 @@ export namespace Vda {
 
     type ExpressionOperatorLeqClass = typeof ExpressionOperatorLeq;
     abstract class ExpressionOperatorLeqPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorLeqPrivate>;
+
         // Constructors of Vda.ExpressionOperatorLeqPrivate
 
         _init(...args: any[]): void;
@@ -39324,6 +39618,8 @@ export namespace Vda {
 
     type ExpressionOperatorRegexpClass = typeof ExpressionOperatorRegexp;
     abstract class ExpressionOperatorRegexpPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorRegexpPrivate>;
+
         // Constructors of Vda.ExpressionOperatorRegexpPrivate
 
         _init(...args: any[]): void;
@@ -39331,6 +39627,8 @@ export namespace Vda {
 
     type ExpressionOperatorStarClass = typeof ExpressionOperatorStar;
     abstract class ExpressionOperatorStarPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorStarPrivate>;
+
         // Constructors of Vda.ExpressionOperatorStarPrivate
 
         _init(...args: any[]): void;
@@ -39338,6 +39636,8 @@ export namespace Vda {
 
     type ExpressionOperatorDivClass = typeof ExpressionOperatorDiv;
     abstract class ExpressionOperatorDivPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorDivPrivate>;
+
         // Constructors of Vda.ExpressionOperatorDivPrivate
 
         _init(...args: any[]): void;
@@ -39345,6 +39645,8 @@ export namespace Vda {
 
     type ExpressionOperatorInClass = typeof ExpressionOperatorIn;
     abstract class ExpressionOperatorInPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorInPrivate>;
+
         // Constructors of Vda.ExpressionOperatorInPrivate
 
         _init(...args: any[]): void;
@@ -39352,6 +39654,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotInClass = typeof ExpressionOperatorNotIn;
     abstract class ExpressionOperatorNotInPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotInPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotInPrivate
 
         _init(...args: any[]): void;
@@ -39359,6 +39663,8 @@ export namespace Vda {
 
     type ExpressionOperatorConcatenateClass = typeof ExpressionOperatorConcatenate;
     abstract class ExpressionOperatorConcatenatePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorConcatenatePrivate>;
+
         // Constructors of Vda.ExpressionOperatorConcatenatePrivate
 
         _init(...args: any[]): void;
@@ -39366,6 +39672,8 @@ export namespace Vda {
 
     type ExpressionOperatorSimilarToClass = typeof ExpressionOperatorSimilarTo;
     abstract class ExpressionOperatorSimilarToPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorSimilarToPrivate>;
+
         // Constructors of Vda.ExpressionOperatorSimilarToPrivate
 
         _init(...args: any[]): void;
@@ -39373,6 +39681,8 @@ export namespace Vda {
 
     type ExpressionOperatorLikeClass = typeof ExpressionOperatorLike;
     abstract class ExpressionOperatorLikePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorLikePrivate>;
+
         // Constructors of Vda.ExpressionOperatorLikePrivate
 
         _init(...args: any[]): void;
@@ -39380,6 +39690,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotLikeClass = typeof ExpressionOperatorNotLike;
     abstract class ExpressionOperatorNotLikePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotLikePrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotLikePrivate
 
         _init(...args: any[]): void;
@@ -39387,6 +39699,8 @@ export namespace Vda {
 
     type ExpressionOperatorIlikeClass = typeof ExpressionOperatorIlike;
     abstract class ExpressionOperatorIlikePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIlikePrivate>;
+
         // Constructors of Vda.ExpressionOperatorIlikePrivate
 
         _init(...args: any[]): void;
@@ -39394,6 +39708,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotIlikeClass = typeof ExpressionOperatorNotIlike;
     abstract class ExpressionOperatorNotIlikePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotIlikePrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotIlikePrivate
 
         _init(...args: any[]): void;
@@ -39401,6 +39717,8 @@ export namespace Vda {
 
     type ExpressionOperatorBinaryUnarytermClass = typeof ExpressionOperatorBinaryUnaryterm;
     abstract class ExpressionOperatorBinaryUnarytermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBinaryUnarytermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBinaryUnarytermPrivate
 
         _init(...args: any[]): void;
@@ -39408,6 +39726,8 @@ export namespace Vda {
 
     type ExpressionOperatorMinusClass = typeof ExpressionOperatorMinus;
     abstract class ExpressionOperatorMinusPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorMinusPrivate>;
+
         // Constructors of Vda.ExpressionOperatorMinusPrivate
 
         _init(...args: any[]): void;
@@ -39415,6 +39735,8 @@ export namespace Vda {
 
     type ExpressionOperatorPlusClass = typeof ExpressionOperatorPlus;
     abstract class ExpressionOperatorPlusPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorPlusPrivate>;
+
         // Constructors of Vda.ExpressionOperatorPlusPrivate
 
         _init(...args: any[]): void;
@@ -39422,6 +39744,8 @@ export namespace Vda {
 
     type ExpressionOperatorInitialUnarytermClass = typeof ExpressionOperatorInitialUnaryterm;
     abstract class ExpressionOperatorInitialUnarytermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorInitialUnarytermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorInitialUnarytermPrivate
 
         _init(...args: any[]): void;
@@ -39429,6 +39753,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotClass = typeof ExpressionOperatorNot;
     abstract class ExpressionOperatorNotPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotPrivate
 
         _init(...args: any[]): void;
@@ -39436,6 +39762,8 @@ export namespace Vda {
 
     type ExpressionOperatorFinalUnarytermClass = typeof ExpressionOperatorFinalUnaryterm;
     abstract class ExpressionOperatorFinalUnarytermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorFinalUnarytermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorFinalUnarytermPrivate
 
         _init(...args: any[]): void;
@@ -39443,6 +39771,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsClass = typeof ExpressionOperatorIs;
     abstract class ExpressionOperatorIsPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsPrivate
 
         _init(...args: any[]): void;
@@ -39450,6 +39780,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotClass = typeof ExpressionOperatorIsNot;
     abstract class ExpressionOperatorIsNotPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotPrivate
 
         _init(...args: any[]): void;
@@ -39457,6 +39789,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNullClass = typeof ExpressionOperatorIsNull;
     abstract class ExpressionOperatorIsNullPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNullPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNullPrivate
 
         _init(...args: any[]): void;
@@ -39464,6 +39798,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotNullClass = typeof ExpressionOperatorIsNotNull;
     abstract class ExpressionOperatorIsNotNullPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotNullPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotNullPrivate
 
         _init(...args: any[]): void;
@@ -39471,6 +39807,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsTrueClass = typeof ExpressionOperatorIsTrue;
     abstract class ExpressionOperatorIsTruePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsTruePrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsTruePrivate
 
         _init(...args: any[]): void;
@@ -39478,6 +39816,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotTrueClass = typeof ExpressionOperatorIsNotTrue;
     abstract class ExpressionOperatorIsNotTruePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotTruePrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotTruePrivate
 
         _init(...args: any[]): void;
@@ -39485,6 +39825,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsFalseClass = typeof ExpressionOperatorIsFalse;
     abstract class ExpressionOperatorIsFalsePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsFalsePrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsFalsePrivate
 
         _init(...args: any[]): void;
@@ -39492,6 +39834,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotFalseClass = typeof ExpressionOperatorIsNotFalse;
     abstract class ExpressionOperatorIsNotFalsePrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotFalsePrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotFalsePrivate
 
         _init(...args: any[]): void;
@@ -39499,6 +39843,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotUnknownClass = typeof ExpressionOperatorIsNotUnknown;
     abstract class ExpressionOperatorIsNotUnknownPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotUnknownPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotUnknownPrivate
 
         _init(...args: any[]): void;
@@ -39506,6 +39852,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsUnknownClass = typeof ExpressionOperatorIsUnknown;
     abstract class ExpressionOperatorIsUnknownPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsUnknownPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsUnknownPrivate
 
         _init(...args: any[]): void;
@@ -39513,6 +39861,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsDistinctClass = typeof ExpressionOperatorIsDistinct;
     abstract class ExpressionOperatorIsDistinctPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsDistinctPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsDistinctPrivate
 
         _init(...args: any[]): void;
@@ -39520,6 +39870,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotDistinctClass = typeof ExpressionOperatorIsNotDistinct;
     abstract class ExpressionOperatorIsNotDistinctPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotDistinctPrivate
 
         _init(...args: any[]): void;
@@ -39527,6 +39879,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsDistinctFromClass = typeof ExpressionOperatorIsDistinctFrom;
     abstract class ExpressionOperatorIsDistinctFromPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsDistinctFromPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsDistinctFromPrivate
 
         _init(...args: any[]): void;
@@ -39534,6 +39888,8 @@ export namespace Vda {
 
     type ExpressionOperatorIsNotDistinctFromClass = typeof ExpressionOperatorIsNotDistinctFrom;
     abstract class ExpressionOperatorIsNotDistinctFromPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFromPrivate>;
+
         // Constructors of Vda.ExpressionOperatorIsNotDistinctFromPrivate
 
         _init(...args: any[]): void;
@@ -39541,6 +39897,8 @@ export namespace Vda {
 
     type ExpressionOperatorThreetermClass = typeof ExpressionOperatorThreeterm;
     abstract class ExpressionOperatorThreetermPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorThreetermPrivate>;
+
         // Constructors of Vda.ExpressionOperatorThreetermPrivate
 
         _init(...args: any[]): void;
@@ -39548,6 +39906,8 @@ export namespace Vda {
 
     type ExpressionOperatorBetweenClass = typeof ExpressionOperatorBetween;
     abstract class ExpressionOperatorBetweenPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBetweenPrivate
 
         _init(...args: any[]): void;
@@ -39555,6 +39915,8 @@ export namespace Vda {
 
     type ExpressionOperatorBetweenAndClass = typeof ExpressionOperatorBetweenAnd;
     abstract class ExpressionOperatorBetweenAndPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenAndPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBetweenAndPrivate
 
         _init(...args: any[]): void;
@@ -39562,6 +39924,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotBetweenClass = typeof ExpressionOperatorNotBetween;
     abstract class ExpressionOperatorNotBetweenPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenPrivate
 
         _init(...args: any[]): void;
@@ -39569,6 +39933,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotBetweenAndClass = typeof ExpressionOperatorNotBetweenAnd;
     abstract class ExpressionOperatorNotBetweenAndPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenAndPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenAndPrivate
 
         _init(...args: any[]): void;
@@ -39576,6 +39942,8 @@ export namespace Vda {
 
     type ExpressionOperatorBetweenSymmetricClass = typeof ExpressionOperatorBetweenSymmetric;
     abstract class ExpressionOperatorBetweenSymmetricPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBetweenSymmetricPrivate
 
         _init(...args: any[]): void;
@@ -39583,6 +39951,8 @@ export namespace Vda {
 
     type ExpressionOperatorBetweenSymmetricAndClass = typeof ExpressionOperatorBetweenSymmetricAnd;
     abstract class ExpressionOperatorBetweenSymmetricAndPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAndPrivate>;
+
         // Constructors of Vda.ExpressionOperatorBetweenSymmetricAndPrivate
 
         _init(...args: any[]): void;
@@ -39590,6 +39960,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotBetweenSymmetricClass = typeof ExpressionOperatorNotBetweenSymmetric;
     abstract class ExpressionOperatorNotBetweenSymmetricPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenSymmetricPrivate
 
         _init(...args: any[]): void;
@@ -39597,6 +39969,8 @@ export namespace Vda {
 
     type ExpressionOperatorNotBetweenSymmetricAndClass = typeof ExpressionOperatorNotBetweenSymmetricAnd;
     abstract class ExpressionOperatorNotBetweenSymmetricAndPrivate {
+        static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAndPrivate>;
+
         // Constructors of Vda.ExpressionOperatorNotBetweenSymmetricAndPrivate
 
         _init(...args: any[]): void;
@@ -39604,6 +39978,8 @@ export namespace Vda {
 
     type ExpressionValueClass = typeof ExpressionValue;
     abstract class ExpressionValuePrivate {
+        static $gtype: GObject.GType<ExpressionValuePrivate>;
+
         // Constructors of Vda.ExpressionValuePrivate
 
         _init(...args: any[]): void;
@@ -39611,6 +39987,8 @@ export namespace Vda {
 
     type ExpressionValueParameterClass = typeof ExpressionValueParameter;
     abstract class ExpressionValueParameterPrivate {
+        static $gtype: GObject.GType<ExpressionValueParameterPrivate>;
+
         // Constructors of Vda.ExpressionValueParameterPrivate
 
         _init(...args: any[]): void;
@@ -39618,6 +39996,8 @@ export namespace Vda {
 
     type HashListClass = typeof HashList;
     abstract class HashListPrivate {
+        static $gtype: GObject.GType<HashListPrivate>;
+
         // Constructors of Vda.HashListPrivate
 
         _init(...args: any[]): void;
@@ -39625,6 +40005,8 @@ export namespace Vda {
 
     type InvalidQueryClass = typeof InvalidQuery;
     abstract class InvalidQueryPrivate {
+        static $gtype: GObject.GType<InvalidQueryPrivate>;
+
         // Constructors of Vda.InvalidQueryPrivate
 
         _init(...args: any[]): void;
@@ -39632,6 +40014,8 @@ export namespace Vda {
 
     type InvalidPreparedQueryClass = typeof InvalidPreparedQuery;
     abstract class InvalidPreparedQueryPrivate {
+        static $gtype: GObject.GType<InvalidPreparedQueryPrivate>;
+
         // Constructors of Vda.InvalidPreparedQueryPrivate
 
         _init(...args: any[]): void;
@@ -39639,6 +40023,8 @@ export namespace Vda {
 
     type InvalidResultClass = typeof InvalidResult;
     abstract class InvalidResultPrivate {
+        static $gtype: GObject.GType<InvalidResultPrivate>;
+
         // Constructors of Vda.InvalidResultPrivate
 
         _init(...args: any[]): void;
@@ -39646,6 +40032,8 @@ export namespace Vda {
 
     type ParametersClass = typeof Parameters;
     abstract class ParametersPrivate {
+        static $gtype: GObject.GType<ParametersPrivate>;
+
         // Constructors of Vda.ParametersPrivate
 
         _init(...args: any[]): void;
@@ -39653,6 +40041,8 @@ export namespace Vda {
 
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
+        static $gtype: GObject.GType<ParserPrivate>;
+
         // Constructors of Vda.ParserPrivate
 
         _init(...args: any[]): void;
@@ -39660,6 +40050,8 @@ export namespace Vda {
 
     type TableReferenceClass = typeof TableReference;
     abstract class TableReferencePrivate {
+        static $gtype: GObject.GType<TableReferencePrivate>;
+
         // Constructors of Vda.TableReferencePrivate
 
         _init(...args: any[]): void;
@@ -39667,6 +40059,8 @@ export namespace Vda {
 
     type ValueClass = typeof Value;
     abstract class ValuePrivate {
+        static $gtype: GObject.GType<ValuePrivate>;
+
         // Constructors of Vda.ValuePrivate
 
         _init(...args: any[]): void;
@@ -39674,6 +40068,8 @@ export namespace Vda {
 
     type ValueNullClass = typeof ValueNull;
     abstract class ValueNullPrivate {
+        static $gtype: GObject.GType<ValueNullPrivate>;
+
         // Constructors of Vda.ValueNullPrivate
 
         _init(...args: any[]): void;
@@ -39681,6 +40077,8 @@ export namespace Vda {
 
     type ValueStringClass = typeof ValueString;
     abstract class ValueStringPrivate {
+        static $gtype: GObject.GType<ValueStringPrivate>;
+
         // Constructors of Vda.ValueStringPrivate
 
         _init(...args: any[]): void;
@@ -39688,6 +40086,8 @@ export namespace Vda {
 
     type ValueXmlClass = typeof ValueXml;
     abstract class ValueXmlPrivate {
+        static $gtype: GObject.GType<ValueXmlPrivate>;
+
         // Constructors of Vda.ValueXmlPrivate
 
         _init(...args: any[]): void;
@@ -39695,6 +40095,8 @@ export namespace Vda {
 
     type ValueJsonClass = typeof ValueJson;
     abstract class ValueJsonPrivate {
+        static $gtype: GObject.GType<ValueJsonPrivate>;
+
         // Constructors of Vda.ValueJsonPrivate
 
         _init(...args: any[]): void;
@@ -39702,6 +40104,8 @@ export namespace Vda {
 
     type ValueTextClass = typeof ValueText;
     abstract class ValueTextPrivate {
+        static $gtype: GObject.GType<ValueTextPrivate>;
+
         // Constructors of Vda.ValueTextPrivate
 
         _init(...args: any[]): void;
@@ -39709,6 +40113,8 @@ export namespace Vda {
 
     type ValueNameClass = typeof ValueName;
     abstract class ValueNamePrivate {
+        static $gtype: GObject.GType<ValueNamePrivate>;
+
         // Constructors of Vda.ValueNamePrivate
 
         _init(...args: any[]): void;
@@ -39716,6 +40122,8 @@ export namespace Vda {
 
     type ValueBoolClass = typeof ValueBool;
     abstract class ValueBoolPrivate {
+        static $gtype: GObject.GType<ValueBoolPrivate>;
+
         // Constructors of Vda.ValueBoolPrivate
 
         _init(...args: any[]): void;
@@ -39723,6 +40131,8 @@ export namespace Vda {
 
     type ValueBitClass = typeof ValueBit;
     abstract class ValueBitPrivate {
+        static $gtype: GObject.GType<ValueBitPrivate>;
+
         // Constructors of Vda.ValueBitPrivate
 
         _init(...args: any[]): void;
@@ -39730,6 +40140,8 @@ export namespace Vda {
 
     type ValueIntegerClass = typeof ValueInteger;
     abstract class ValueIntegerPrivate {
+        static $gtype: GObject.GType<ValueIntegerPrivate>;
+
         // Constructors of Vda.ValueIntegerPrivate
 
         _init(...args: any[]): void;
@@ -39737,6 +40149,8 @@ export namespace Vda {
 
     type ValueByteClass = typeof ValueByte;
     abstract class ValueBytePrivate {
+        static $gtype: GObject.GType<ValueBytePrivate>;
+
         // Constructors of Vda.ValueBytePrivate
 
         _init(...args: any[]): void;
@@ -39744,6 +40158,8 @@ export namespace Vda {
 
     type ValueInt2Class = typeof ValueInt2;
     abstract class ValueInt2Private {
+        static $gtype: GObject.GType<ValueInt2Private>;
+
         // Constructors of Vda.ValueInt2Private
 
         _init(...args: any[]): void;
@@ -39751,6 +40167,8 @@ export namespace Vda {
 
     type ValueInt4Class = typeof ValueInt4;
     abstract class ValueInt4Private {
+        static $gtype: GObject.GType<ValueInt4Private>;
+
         // Constructors of Vda.ValueInt4Private
 
         _init(...args: any[]): void;
@@ -39758,6 +40176,8 @@ export namespace Vda {
 
     type ValueInt8Class = typeof ValueInt8;
     abstract class ValueInt8Private {
+        static $gtype: GObject.GType<ValueInt8Private>;
+
         // Constructors of Vda.ValueInt8Private
 
         _init(...args: any[]): void;
@@ -39765,6 +40185,8 @@ export namespace Vda {
 
     type ValueUnsignedIntegerClass = typeof ValueUnsignedInteger;
     abstract class ValueUnsignedIntegerPrivate {
+        static $gtype: GObject.GType<ValueUnsignedIntegerPrivate>;
+
         // Constructors of Vda.ValueUnsignedIntegerPrivate
 
         _init(...args: any[]): void;
@@ -39772,6 +40194,8 @@ export namespace Vda {
 
     type ValueUnsignedByteClass = typeof ValueUnsignedByte;
     abstract class ValueUnsignedBytePrivate {
+        static $gtype: GObject.GType<ValueUnsignedBytePrivate>;
+
         // Constructors of Vda.ValueUnsignedBytePrivate
 
         _init(...args: any[]): void;
@@ -39779,6 +40203,8 @@ export namespace Vda {
 
     type ValueUnsignedInt2Class = typeof ValueUnsignedInt2;
     abstract class ValueUnsignedInt2Private {
+        static $gtype: GObject.GType<ValueUnsignedInt2Private>;
+
         // Constructors of Vda.ValueUnsignedInt2Private
 
         _init(...args: any[]): void;
@@ -39786,6 +40212,8 @@ export namespace Vda {
 
     type ValueUnsignedInt4Class = typeof ValueUnsignedInt4;
     abstract class ValueUnsignedInt4Private {
+        static $gtype: GObject.GType<ValueUnsignedInt4Private>;
+
         // Constructors of Vda.ValueUnsignedInt4Private
 
         _init(...args: any[]): void;
@@ -39793,6 +40221,8 @@ export namespace Vda {
 
     type ValueUnsignedInt8Class = typeof ValueUnsignedInt8;
     abstract class ValueUnsignedInt8Private {
+        static $gtype: GObject.GType<ValueUnsignedInt8Private>;
+
         // Constructors of Vda.ValueUnsignedInt8Private
 
         _init(...args: any[]): void;
@@ -39800,6 +40230,8 @@ export namespace Vda {
 
     type ValueOidClass = typeof ValueOid;
     abstract class ValueOidPrivate {
+        static $gtype: GObject.GType<ValueOidPrivate>;
+
         // Constructors of Vda.ValueOidPrivate
 
         _init(...args: any[]): void;
@@ -39807,6 +40239,8 @@ export namespace Vda {
 
     type ValueNumericClass = typeof ValueNumeric;
     abstract class ValueNumericPrivate {
+        static $gtype: GObject.GType<ValueNumericPrivate>;
+
         // Constructors of Vda.ValueNumericPrivate
 
         _init(...args: any[]): void;
@@ -39814,6 +40248,8 @@ export namespace Vda {
 
     type ValueFloatClass = typeof ValueFloat;
     abstract class ValueFloatPrivate {
+        static $gtype: GObject.GType<ValueFloatPrivate>;
+
         // Constructors of Vda.ValueFloatPrivate
 
         _init(...args: any[]): void;
@@ -39821,6 +40257,8 @@ export namespace Vda {
 
     type ValueDoubleClass = typeof ValueDouble;
     abstract class ValueDoublePrivate {
+        static $gtype: GObject.GType<ValueDoublePrivate>;
+
         // Constructors of Vda.ValueDoublePrivate
 
         _init(...args: any[]): void;
@@ -39828,6 +40266,8 @@ export namespace Vda {
 
     type ValueMoneyClass = typeof ValueMoney;
     abstract class ValueMoneyPrivate {
+        static $gtype: GObject.GType<ValueMoneyPrivate>;
+
         // Constructors of Vda.ValueMoneyPrivate
 
         _init(...args: any[]): void;
@@ -39835,6 +40275,8 @@ export namespace Vda {
 
     type ValueTimestampClass = typeof ValueTimestamp;
     abstract class ValueTimestampPrivate {
+        static $gtype: GObject.GType<ValueTimestampPrivate>;
+
         // Constructors of Vda.ValueTimestampPrivate
 
         _init(...args: any[]): void;
@@ -39842,6 +40284,8 @@ export namespace Vda {
 
     type ValueTimestampNtzClass = typeof ValueTimestampNtz;
     abstract class ValueTimestampNtzPrivate {
+        static $gtype: GObject.GType<ValueTimestampNtzPrivate>;
+
         // Constructors of Vda.ValueTimestampNtzPrivate
 
         _init(...args: any[]): void;
@@ -39849,6 +40293,8 @@ export namespace Vda {
 
     type ValueTimeClass = typeof ValueTime;
     abstract class ValueTimePrivate {
+        static $gtype: GObject.GType<ValueTimePrivate>;
+
         // Constructors of Vda.ValueTimePrivate
 
         _init(...args: any[]): void;
@@ -39856,6 +40302,8 @@ export namespace Vda {
 
     type ValueTimeNtzClass = typeof ValueTimeNtz;
     abstract class ValueTimeNtzPrivate {
+        static $gtype: GObject.GType<ValueTimeNtzPrivate>;
+
         // Constructors of Vda.ValueTimeNtzPrivate
 
         _init(...args: any[]): void;
@@ -39863,6 +40311,8 @@ export namespace Vda {
 
     type ValueDateClass = typeof ValueDate;
     abstract class ValueDatePrivate {
+        static $gtype: GObject.GType<ValueDatePrivate>;
+
         // Constructors of Vda.ValueDatePrivate
 
         _init(...args: any[]): void;
@@ -39870,6 +40320,8 @@ export namespace Vda {
 
     type ValueBinaryClass = typeof ValueBinary;
     abstract class ValueBinaryPrivate {
+        static $gtype: GObject.GType<ValueBinaryPrivate>;
+
         // Constructors of Vda.ValueBinaryPrivate
 
         _init(...args: any[]): void;
@@ -39877,6 +40329,8 @@ export namespace Vda {
 
     type ValueMathExpClass = typeof ValueMathExp;
     abstract class ValueMathExpPrivate {
+        static $gtype: GObject.GType<ValueMathExpPrivate>;
+
         // Constructors of Vda.ValueMathExpPrivate
 
         _init(...args: any[]): void;

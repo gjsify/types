@@ -1,0 +1,54 @@
+{
+    "name": "@girs/umockdev-1.0",
+    "version": "1.0.0-4.0.0",
+    "description": "GJS TypeScript type definitions for UMockdev-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "umockdev-1.0.js",
+    "main": "umockdev-1.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./umockdev-1.0-ambient.d.ts",
+            "import": "./umockdev-1.0-ambient.js",
+            "default": "./umockdev-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./umockdev-1.0-import.d.ts",
+            "import": "./umockdev-1.0-import.js",
+            "default": "./umockdev-1.0-import.js"
+        },
+        ".": {
+            "types": "./umockdev-1.0.d.ts",
+            "import": "./umockdev-1.0.js",
+            "default": "./umockdev-1.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit umockdev-1.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "UMockdev-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/umockdev-1.0#readme"
+}

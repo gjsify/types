@@ -29,6 +29,8 @@ export namespace Vpg {
     }
 
     class Connection extends GObject.Object implements Vda.Connection {
+        static $gtype: GObject.GType<Connection>;
+
         // Constructors of Vpg.Connection
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
@@ -439,6 +441,8 @@ export namespace Vpg {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of Vpg.ConnectionPrivate
 
         _init(...args: any[]): void;

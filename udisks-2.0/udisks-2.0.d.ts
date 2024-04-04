@@ -21,6 +21,8 @@ export namespace UDisks {
      * corresponding D-Bus error names.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of UDisks.Error
 
         /**
@@ -323,6 +325,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<BlockProxy>, Gio.DBusInterface, Gio.Initable, Block
     {
+        static $gtype: GObject.GType<BlockProxy>;
+
         // Constructors of UDisks.BlockProxy
 
         constructor(properties?: Partial<BlockProxy.ConstructorProps>, ...args: any[]);
@@ -1736,6 +1740,8 @@ export namespace UDisks {
      * The #UDisksBlockSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class BlockSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Block {
+        static $gtype: GObject.GType<BlockSkeleton>;
+
         // Constructors of UDisks.BlockSkeleton
 
         constructor(properties?: Partial<BlockSkeleton.ConstructorProps>, ...args: any[]);
@@ -2886,6 +2892,8 @@ export namespace UDisks {
      * client program.
      */
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of UDisks.Client
 
         /**
@@ -3784,6 +3792,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<DriveAtaProxy>, Gio.DBusInterface, Gio.Initable, DriveAta
     {
+        static $gtype: GObject.GType<DriveAtaProxy>;
+
         // Constructors of UDisks.DriveAtaProxy
 
         constructor(properties?: Partial<DriveAtaProxy.ConstructorProps>, ...args: any[]);
@@ -5191,6 +5201,8 @@ export namespace UDisks {
      * The #UDisksDriveAtaSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DriveAtaSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DriveAta {
+        static $gtype: GObject.GType<DriveAtaSkeleton>;
+
         // Constructors of UDisks.DriveAtaSkeleton
 
         constructor(properties?: Partial<DriveAtaSkeleton.ConstructorProps>, ...args: any[]);
@@ -6329,6 +6341,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<DriveProxy>, Gio.DBusInterface, Gio.Initable, Drive
     {
+        static $gtype: GObject.GType<DriveProxy>;
+
         // Constructors of UDisks.DriveProxy
 
         constructor(properties?: Partial<DriveProxy.ConstructorProps>, ...args: any[]);
@@ -7457,6 +7471,8 @@ export namespace UDisks {
      * The #UDisksDriveSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DriveSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Drive {
+        static $gtype: GObject.GType<DriveSkeleton>;
+
         // Constructors of UDisks.DriveSkeleton
 
         constructor(properties?: Partial<DriveSkeleton.ConstructorProps>, ...args: any[]);
@@ -8316,6 +8332,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<EncryptedProxy>, Gio.DBusInterface, Gio.Initable, Encrypted
     {
+        static $gtype: GObject.GType<EncryptedProxy>;
+
         // Constructors of UDisks.EncryptedProxy
 
         constructor(properties?: Partial<EncryptedProxy.ConstructorProps>, ...args: any[]);
@@ -9160,6 +9178,8 @@ export namespace UDisks {
      * The #UDisksEncryptedSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class EncryptedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Encrypted {
+        static $gtype: GObject.GType<EncryptedSkeleton>;
+
         // Constructors of UDisks.EncryptedSkeleton
 
         constructor(properties?: Partial<EncryptedSkeleton.ConstructorProps>, ...args: any[]);
@@ -9735,6 +9755,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<FilesystemProxy>, Gio.DBusInterface, Gio.Initable, Filesystem
     {
+        static $gtype: GObject.GType<FilesystemProxy>;
+
         // Constructors of UDisks.FilesystemProxy
 
         constructor(properties?: Partial<FilesystemProxy.ConstructorProps>, ...args: any[]);
@@ -10563,6 +10585,8 @@ export namespace UDisks {
      * The #UDisksFilesystemSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class FilesystemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Filesystem {
+        static $gtype: GObject.GType<FilesystemSkeleton>;
+
         // Constructors of UDisks.FilesystemSkeleton
 
         constructor(properties?: Partial<FilesystemSkeleton.ConstructorProps>, ...args: any[]);
@@ -11119,6 +11143,8 @@ export namespace UDisks {
      * The #UDisksJobProxy structure contains only private data and should only be accessed using the provided API.
      */
     class JobProxy extends Gio.DBusProxy implements Gio.AsyncInitable<JobProxy>, Gio.DBusInterface, Gio.Initable, Job {
+        static $gtype: GObject.GType<JobProxy>;
+
         // Constructors of UDisks.JobProxy
 
         constructor(properties?: Partial<JobProxy.ConstructorProps>, ...args: any[]);
@@ -11950,6 +11976,8 @@ export namespace UDisks {
      * The #UDisksJobSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class JobSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Job {
+        static $gtype: GObject.GType<JobSkeleton>;
+
         // Constructors of UDisks.JobSkeleton
 
         constructor(properties?: Partial<JobSkeleton.ConstructorProps>, ...args: any[]);
@@ -12512,6 +12540,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<LoopProxy>, Gio.DBusInterface, Gio.Initable, Loop
     {
+        static $gtype: GObject.GType<LoopProxy>;
+
         // Constructors of UDisks.LoopProxy
 
         constructor(properties?: Partial<LoopProxy.ConstructorProps>, ...args: any[]);
@@ -13322,6 +13352,8 @@ export namespace UDisks {
      * The #UDisksLoopSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class LoopSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Loop {
+        static $gtype: GObject.GType<LoopSkeleton>;
+
         // Constructors of UDisks.LoopSkeleton
 
         constructor(properties?: Partial<LoopSkeleton.ConstructorProps>, ...args: any[]);
@@ -13863,6 +13895,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<MDRaidProxy>, Gio.DBusInterface, Gio.Initable, MDRaid
     {
+        static $gtype: GObject.GType<MDRaidProxy>;
+
         // Constructors of UDisks.MDRaidProxy
 
         constructor(properties?: Partial<MDRaidProxy.ConstructorProps>, ...args: any[]);
@@ -15029,6 +15063,8 @@ export namespace UDisks {
      * The #UDisksMDRaidSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class MDRaidSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MDRaid {
+        static $gtype: GObject.GType<MDRaidSkeleton>;
+
         // Constructors of UDisks.MDRaidSkeleton
 
         constructor(properties?: Partial<MDRaidSkeleton.ConstructorProps>, ...args: any[]);
@@ -15926,6 +15962,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable, Manager
     {
+        static $gtype: GObject.GType<ManagerProxy>;
+
         // Constructors of UDisks.ManagerProxy
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
@@ -16798,6 +16836,8 @@ export namespace UDisks {
      * The #UDisksManagerSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
+        static $gtype: GObject.GType<ManagerSkeleton>;
+
         // Constructors of UDisks.ManagerSkeleton
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
@@ -17412,6 +17452,8 @@ export namespace UDisks {
      * e.g. <filename>/dev/sda</filename>.
      */
     class ObjectInfo extends GObject.Object {
+        static $gtype: GObject.GType<ObjectInfo>;
+
         // Constructors of UDisks.ObjectInfo
 
         constructor(properties?: Partial<ObjectInfo.ConstructorProps>, ...args: any[]);
@@ -17490,6 +17532,8 @@ export namespace UDisks {
         extends Gio.DBusObjectManagerClient
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
+        static $gtype: GObject.GType<ObjectManagerClient>;
+
         // Constructors of UDisks.ObjectManagerClient
 
         constructor(properties?: Partial<ObjectManagerClient.ConstructorProps>, ...args: any[]);
@@ -18203,6 +18247,8 @@ export namespace UDisks {
      * The #UDisksObjectProxy structure contains only private data and should only be accessed using the provided API.
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
+        static $gtype: GObject.GType<ObjectProxy>;
+
         // Constructors of UDisks.ObjectProxy
 
         constructor(properties?: Partial<ObjectProxy.ConstructorProps>, ...args: any[]);
@@ -18774,6 +18820,8 @@ export namespace UDisks {
      * The #UDisksObjectSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
+        static $gtype: GObject.GType<ObjectSkeleton>;
+
         // Constructors of UDisks.ObjectSkeleton
 
         constructor(properties?: Partial<ObjectSkeleton.ConstructorProps>, ...args: any[]);
@@ -19413,6 +19461,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<PartitionProxy>, Gio.DBusInterface, Gio.Initable, Partition
     {
+        static $gtype: GObject.GType<PartitionProxy>;
+
         // Constructors of UDisks.PartitionProxy
 
         constructor(properties?: Partial<PartitionProxy.ConstructorProps>, ...args: any[]);
@@ -20362,6 +20412,8 @@ export namespace UDisks {
      * The #UDisksPartitionSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class PartitionSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Partition {
+        static $gtype: GObject.GType<PartitionSkeleton>;
+
         // Constructors of UDisks.PartitionSkeleton
 
         constructor(properties?: Partial<PartitionSkeleton.ConstructorProps>, ...args: any[]);
@@ -21042,6 +21094,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<PartitionTableProxy>, Gio.DBusInterface, Gio.Initable, PartitionTable
     {
+        static $gtype: GObject.GType<PartitionTableProxy>;
+
         // Constructors of UDisks.PartitionTableProxy
 
         constructor(properties?: Partial<PartitionTableProxy.ConstructorProps>, ...args: any[]);
@@ -21877,6 +21931,8 @@ export namespace UDisks {
      * The #UDisksPartitionTableSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class PartitionTableSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PartitionTable {
+        static $gtype: GObject.GType<PartitionTableSkeleton>;
+
         // Constructors of UDisks.PartitionTableSkeleton
 
         constructor(properties?: Partial<PartitionTableSkeleton.ConstructorProps>, ...args: any[]);
@@ -22443,6 +22499,8 @@ export namespace UDisks {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<SwapspaceProxy>, Gio.DBusInterface, Gio.Initable, Swapspace
     {
+        static $gtype: GObject.GType<SwapspaceProxy>;
+
         // Constructors of UDisks.SwapspaceProxy
 
         constructor(properties?: Partial<SwapspaceProxy.ConstructorProps>, ...args: any[]);
@@ -23214,6 +23272,8 @@ export namespace UDisks {
      * The #UDisksSwapspaceSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class SwapspaceSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Swapspace {
+        static $gtype: GObject.GType<SwapspaceSkeleton>;
+
         // Constructors of UDisks.SwapspaceSkeleton
 
         constructor(properties?: Partial<SwapspaceSkeleton.ConstructorProps>, ...args: any[]);
@@ -23701,6 +23761,8 @@ export namespace UDisks {
     type BlockIface = typeof Block;
     type BlockProxyClass = typeof BlockProxy;
     abstract class BlockProxyPrivate {
+        static $gtype: GObject.GType<BlockProxyPrivate>;
+
         // Constructors of UDisks.BlockProxyPrivate
 
         _init(...args: any[]): void;
@@ -23708,6 +23770,8 @@ export namespace UDisks {
 
     type BlockSkeletonClass = typeof BlockSkeleton;
     abstract class BlockSkeletonPrivate {
+        static $gtype: GObject.GType<BlockSkeletonPrivate>;
+
         // Constructors of UDisks.BlockSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23716,6 +23780,8 @@ export namespace UDisks {
     type DriveAtaIface = typeof DriveAta;
     type DriveAtaProxyClass = typeof DriveAtaProxy;
     abstract class DriveAtaProxyPrivate {
+        static $gtype: GObject.GType<DriveAtaProxyPrivate>;
+
         // Constructors of UDisks.DriveAtaProxyPrivate
 
         _init(...args: any[]): void;
@@ -23723,6 +23789,8 @@ export namespace UDisks {
 
     type DriveAtaSkeletonClass = typeof DriveAtaSkeleton;
     abstract class DriveAtaSkeletonPrivate {
+        static $gtype: GObject.GType<DriveAtaSkeletonPrivate>;
+
         // Constructors of UDisks.DriveAtaSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23731,6 +23799,8 @@ export namespace UDisks {
     type DriveIface = typeof Drive;
     type DriveProxyClass = typeof DriveProxy;
     abstract class DriveProxyPrivate {
+        static $gtype: GObject.GType<DriveProxyPrivate>;
+
         // Constructors of UDisks.DriveProxyPrivate
 
         _init(...args: any[]): void;
@@ -23738,6 +23808,8 @@ export namespace UDisks {
 
     type DriveSkeletonClass = typeof DriveSkeleton;
     abstract class DriveSkeletonPrivate {
+        static $gtype: GObject.GType<DriveSkeletonPrivate>;
+
         // Constructors of UDisks.DriveSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23746,6 +23818,8 @@ export namespace UDisks {
     type EncryptedIface = typeof Encrypted;
     type EncryptedProxyClass = typeof EncryptedProxy;
     abstract class EncryptedProxyPrivate {
+        static $gtype: GObject.GType<EncryptedProxyPrivate>;
+
         // Constructors of UDisks.EncryptedProxyPrivate
 
         _init(...args: any[]): void;
@@ -23753,6 +23827,8 @@ export namespace UDisks {
 
     type EncryptedSkeletonClass = typeof EncryptedSkeleton;
     abstract class EncryptedSkeletonPrivate {
+        static $gtype: GObject.GType<EncryptedSkeletonPrivate>;
+
         // Constructors of UDisks.EncryptedSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23761,6 +23837,8 @@ export namespace UDisks {
     type FilesystemIface = typeof Filesystem;
     type FilesystemProxyClass = typeof FilesystemProxy;
     abstract class FilesystemProxyPrivate {
+        static $gtype: GObject.GType<FilesystemProxyPrivate>;
+
         // Constructors of UDisks.FilesystemProxyPrivate
 
         _init(...args: any[]): void;
@@ -23768,6 +23846,8 @@ export namespace UDisks {
 
     type FilesystemSkeletonClass = typeof FilesystemSkeleton;
     abstract class FilesystemSkeletonPrivate {
+        static $gtype: GObject.GType<FilesystemSkeletonPrivate>;
+
         // Constructors of UDisks.FilesystemSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23776,6 +23856,8 @@ export namespace UDisks {
     type JobIface = typeof Job;
     type JobProxyClass = typeof JobProxy;
     abstract class JobProxyPrivate {
+        static $gtype: GObject.GType<JobProxyPrivate>;
+
         // Constructors of UDisks.JobProxyPrivate
 
         _init(...args: any[]): void;
@@ -23783,6 +23865,8 @@ export namespace UDisks {
 
     type JobSkeletonClass = typeof JobSkeleton;
     abstract class JobSkeletonPrivate {
+        static $gtype: GObject.GType<JobSkeletonPrivate>;
+
         // Constructors of UDisks.JobSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23791,6 +23875,8 @@ export namespace UDisks {
     type LoopIface = typeof Loop;
     type LoopProxyClass = typeof LoopProxy;
     abstract class LoopProxyPrivate {
+        static $gtype: GObject.GType<LoopProxyPrivate>;
+
         // Constructors of UDisks.LoopProxyPrivate
 
         _init(...args: any[]): void;
@@ -23798,6 +23884,8 @@ export namespace UDisks {
 
     type LoopSkeletonClass = typeof LoopSkeleton;
     abstract class LoopSkeletonPrivate {
+        static $gtype: GObject.GType<LoopSkeletonPrivate>;
+
         // Constructors of UDisks.LoopSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23806,6 +23894,8 @@ export namespace UDisks {
     type MDRaidIface = typeof MDRaid;
     type MDRaidProxyClass = typeof MDRaidProxy;
     abstract class MDRaidProxyPrivate {
+        static $gtype: GObject.GType<MDRaidProxyPrivate>;
+
         // Constructors of UDisks.MDRaidProxyPrivate
 
         _init(...args: any[]): void;
@@ -23813,6 +23903,8 @@ export namespace UDisks {
 
     type MDRaidSkeletonClass = typeof MDRaidSkeleton;
     abstract class MDRaidSkeletonPrivate {
+        static $gtype: GObject.GType<MDRaidSkeletonPrivate>;
+
         // Constructors of UDisks.MDRaidSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23821,6 +23913,8 @@ export namespace UDisks {
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
+        static $gtype: GObject.GType<ManagerProxyPrivate>;
+
         // Constructors of UDisks.ManagerProxyPrivate
 
         _init(...args: any[]): void;
@@ -23828,6 +23922,8 @@ export namespace UDisks {
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
+        static $gtype: GObject.GType<ManagerSkeletonPrivate>;
+
         // Constructors of UDisks.ManagerSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23836,6 +23932,8 @@ export namespace UDisks {
     type ObjectIface = typeof Object;
     type ObjectManagerClientClass = typeof ObjectManagerClient;
     abstract class ObjectManagerClientPrivate {
+        static $gtype: GObject.GType<ObjectManagerClientPrivate>;
+
         // Constructors of UDisks.ObjectManagerClientPrivate
 
         _init(...args: any[]): void;
@@ -23843,6 +23941,8 @@ export namespace UDisks {
 
     type ObjectProxyClass = typeof ObjectProxy;
     abstract class ObjectProxyPrivate {
+        static $gtype: GObject.GType<ObjectProxyPrivate>;
+
         // Constructors of UDisks.ObjectProxyPrivate
 
         _init(...args: any[]): void;
@@ -23850,6 +23950,8 @@ export namespace UDisks {
 
     type ObjectSkeletonClass = typeof ObjectSkeleton;
     abstract class ObjectSkeletonPrivate {
+        static $gtype: GObject.GType<ObjectSkeletonPrivate>;
+
         // Constructors of UDisks.ObjectSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23858,6 +23960,8 @@ export namespace UDisks {
     type PartitionIface = typeof Partition;
     type PartitionProxyClass = typeof PartitionProxy;
     abstract class PartitionProxyPrivate {
+        static $gtype: GObject.GType<PartitionProxyPrivate>;
+
         // Constructors of UDisks.PartitionProxyPrivate
 
         _init(...args: any[]): void;
@@ -23865,6 +23969,8 @@ export namespace UDisks {
 
     type PartitionSkeletonClass = typeof PartitionSkeleton;
     abstract class PartitionSkeletonPrivate {
+        static $gtype: GObject.GType<PartitionSkeletonPrivate>;
+
         // Constructors of UDisks.PartitionSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23873,6 +23979,8 @@ export namespace UDisks {
     type PartitionTableIface = typeof PartitionTable;
     type PartitionTableProxyClass = typeof PartitionTableProxy;
     abstract class PartitionTableProxyPrivate {
+        static $gtype: GObject.GType<PartitionTableProxyPrivate>;
+
         // Constructors of UDisks.PartitionTableProxyPrivate
 
         _init(...args: any[]): void;
@@ -23880,6 +23988,8 @@ export namespace UDisks {
 
     type PartitionTableSkeletonClass = typeof PartitionTableSkeleton;
     abstract class PartitionTableSkeletonPrivate {
+        static $gtype: GObject.GType<PartitionTableSkeletonPrivate>;
+
         // Constructors of UDisks.PartitionTableSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -23896,6 +24006,8 @@ export namespace UDisks {
      * ABI break.
      */
     class PartitionTypeInfo {
+        static $gtype: GObject.GType<PartitionTypeInfo>;
+
         // Own fields of UDisks.PartitionTypeInfo
 
         table_type: string;
@@ -23918,6 +24030,8 @@ export namespace UDisks {
     type SwapspaceIface = typeof Swapspace;
     type SwapspaceProxyClass = typeof SwapspaceProxy;
     abstract class SwapspaceProxyPrivate {
+        static $gtype: GObject.GType<SwapspaceProxyPrivate>;
+
         // Constructors of UDisks.SwapspaceProxyPrivate
 
         _init(...args: any[]): void;
@@ -23925,6 +24039,8 @@ export namespace UDisks {
 
     type SwapspaceSkeletonClass = typeof SwapspaceSkeleton;
     abstract class SwapspaceSkeletonPrivate {
+        static $gtype: GObject.GType<SwapspaceSkeletonPrivate>;
+
         // Constructors of UDisks.SwapspaceSkeletonPrivate
 
         _init(...args: any[]): void;

@@ -21,6 +21,8 @@ export namespace Libmsi {
         TYPES,
     }
     class DBError extends GLib.Error {
+        static $gtype: GObject.GType<DBError>;
+
         // Static fields of Libmsi.DBError
 
         static SUCCESS: number;
@@ -96,6 +98,8 @@ export namespace Libmsi {
         FILETIME,
     }
     class ResultError extends GLib.Error {
+        static $gtype: GObject.GType<ResultError>;
+
         // Static fields of Libmsi.ResultError
 
         static SUCCESS: number;
@@ -148,6 +152,8 @@ export namespace Libmsi {
     }
 
     class Database extends GObject.Object {
+        static $gtype: GObject.GType<Database>;
+
         // Own properties of Libmsi.Database
 
         get flags(): DbFlags;
@@ -209,6 +215,8 @@ export namespace Libmsi {
     }
 
     class Query extends GObject.Object {
+        static $gtype: GObject.GType<Query>;
+
         // Own properties of Libmsi.Query
 
         get database(): Database;
@@ -262,6 +270,8 @@ export namespace Libmsi {
     }
 
     class Record extends GObject.Object {
+        static $gtype: GObject.GType<Record>;
+
         // Own properties of Libmsi.Record
 
         get count(): number;
@@ -346,6 +356,8 @@ export namespace Libmsi {
     }
 
     class SummaryInfo extends GObject.Object {
+        static $gtype: GObject.GType<SummaryInfo>;
+
         // Own properties of Libmsi.SummaryInfo
 
         get database(): Database;

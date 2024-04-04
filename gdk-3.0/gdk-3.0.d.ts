@@ -887,6 +887,8 @@ export namespace Gdk {
      * Error enumeration for #GdkGLContext.
      */
     class GLError extends GLib.Error {
+        static $gtype: GObject.GType<GLError>;
+
         // Static fields of Gdk.GLError
 
         /**
@@ -6002,6 +6004,8 @@ export namespace Gdk {
      *
      */
     class AppLaunchContext extends Gio.AppLaunchContext {
+        static $gtype: GObject.GType<AppLaunchContext>;
+
         // Own properties of Gdk.AppLaunchContext
 
         get display(): Display;
@@ -6097,6 +6101,8 @@ export namespace Gdk {
      * A #GdkCursor represents a cursor. Its contents are private.
      */
     abstract class Cursor extends GObject.Object {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own properties of Gdk.Cursor
 
         get cursor_type(): CursorType;
@@ -6211,6 +6217,8 @@ export namespace Gdk {
      * relationships.
      */
     abstract class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Gdk.Device
 
         /**
@@ -6743,6 +6751,8 @@ export namespace Gdk {
      * written code.
      */
     abstract class DeviceManager extends GObject.Object {
+        static $gtype: GObject.GType<DeviceManager>;
+
         // Own properties of Gdk.DeviceManager
 
         get display(): Display;
@@ -6808,6 +6818,8 @@ export namespace Gdk {
     }
 
     class DeviceTool extends GObject.Object {
+        static $gtype: GObject.GType<DeviceTool>;
+
         // Own properties of Gdk.DeviceTool
 
         get axes(): AxisFlags;
@@ -6904,6 +6916,8 @@ export namespace Gdk {
      * gdk_display_get_device_manager().
      */
     class Display extends GObject.Object {
+        static $gtype: GObject.GType<Display>;
+
         // Constructors of Gdk.Display
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
@@ -7332,6 +7346,8 @@ export namespace Gdk {
      *
      */
     class DisplayManager extends GObject.Object {
+        static $gtype: GObject.GType<DisplayManager>;
+
         // Own properties of Gdk.DisplayManager
 
         get default_display(): Display;
@@ -7417,6 +7433,8 @@ export namespace Gdk {
     }
 
     class DragContext extends GObject.Object {
+        static $gtype: GObject.GType<DragContext>;
+
         // Constructors of Gdk.DragContext
 
         constructor(properties?: Partial<DragContext.ConstructorProps>, ...args: any[]);
@@ -7554,6 +7572,8 @@ export namespace Gdk {
      * #GdkDrawingContext is available since GDK 3.22
      */
     class DrawingContext extends GObject.Object {
+        static $gtype: GObject.GType<DrawingContext>;
+
         // Own properties of Gdk.DrawingContext
 
         /**
@@ -7672,6 +7692,8 @@ export namespace Gdk {
      * they will stay exactly synchronized.
      */
     abstract class FrameClock extends GObject.Object {
+        static $gtype: GObject.GType<FrameClock>;
+
         // Constructors of Gdk.FrameClock
 
         constructor(properties?: Partial<FrameClock.ConstructorProps>, ...args: any[]);
@@ -7852,6 +7874,8 @@ export namespace Gdk {
      * that is currently set by calling gdk_gl_context_clear_current().
      */
     abstract class GLContext extends GObject.Object {
+        static $gtype: GObject.GType<GLContext>;
+
         // Own properties of Gdk.GLContext
 
         /**
@@ -8046,6 +8070,8 @@ export namespace Gdk {
      * in the keymap and see what keyval it corresponds to.
      */
     class Keymap extends GObject.Object {
+        static $gtype: GObject.GType<Keymap>;
+
         // Constructors of Gdk.Keymap
 
         constructor(properties?: Partial<Keymap.ConstructorProps>, ...args: any[]);
@@ -8291,6 +8317,8 @@ export namespace Gdk {
      * APIs in GdkScreen to obtain monitor-related information.
      */
     class Monitor extends GObject.Object {
+        static $gtype: GObject.GType<Monitor>;
+
         // Own properties of Gdk.Monitor
 
         get display(): Display;
@@ -8448,6 +8476,8 @@ export namespace Gdk {
      * of the physical monitors (gdk_screen_get_monitor_geometry()), etc.
      */
     class Screen extends GObject.Object {
+        static $gtype: GObject.GType<Screen>;
+
         // Own properties of Gdk.Screen
 
         get font_options(): any;
@@ -8823,6 +8853,8 @@ export namespace Gdk {
      * that belong to a user.
      */
     abstract class Seat extends GObject.Object {
+        static $gtype: GObject.GType<Seat>;
+
         // Own properties of Gdk.Seat
 
         /**
@@ -8940,6 +8972,8 @@ export namespace Gdk {
      * a particular visual.
      */
     class Visual extends GObject.Object {
+        static $gtype: GObject.GType<Visual>;
+
         // Constructors of Gdk.Visual
 
         constructor(properties?: Partial<Visual.ConstructorProps>, ...args: any[]);
@@ -9090,6 +9124,8 @@ export namespace Gdk {
     }
 
     abstract class Window extends GObject.Object {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Gdk.Window
 
         /**
@@ -10992,6 +11028,8 @@ export namespace Gdk {
      * of strings on the X server.
      */
     abstract class Atom {
+        static $gtype: GObject.GType<Atom>;
+
         // Constructors of Gdk.Atom
 
         _init(...args: any[]): void;
@@ -11033,6 +11071,8 @@ export namespace Gdk {
      * similar to the XColor struct used in the X11 drawing API.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Own fields of Gdk.Color
 
         pixel: number;
@@ -11113,6 +11153,8 @@ export namespace Gdk {
      * access these fields.
      */
     class EventAny {
+        static $gtype: GObject.GType<EventAny>;
+
         // Own fields of Gdk.EventAny
 
         type: EventType;
@@ -11160,6 +11202,8 @@ export namespace Gdk {
      * button press must also occur within 1/2 second of the first button press.
      */
     class EventButton {
+        static $gtype: GObject.GType<EventButton>;
+
         // Own fields of Gdk.EventButton
 
         type: EventType;
@@ -11184,6 +11228,8 @@ export namespace Gdk {
      * Generated when a window size or position has changed.
      */
     class EventConfigure {
+        static $gtype: GObject.GType<EventConfigure>;
+
         // Own fields of Gdk.EventConfigure
 
         type: EventType;
@@ -11203,6 +11249,8 @@ export namespace Gdk {
      * Generated when the pointer enters or leaves a window.
      */
     class EventCrossing {
+        static $gtype: GObject.GType<EventCrossing>;
+
         // Own fields of Gdk.EventCrossing
 
         type: EventType;
@@ -11228,6 +11276,8 @@ export namespace Gdk {
      * Generated during DND operations.
      */
     class EventDND {
+        static $gtype: GObject.GType<EventDND>;
+
         // Own fields of Gdk.EventDND
 
         type: EventType;
@@ -11248,6 +11298,8 @@ export namespace Gdk {
      * redrawn.
      */
     class EventExpose {
+        static $gtype: GObject.GType<EventExpose>;
+
         // Own fields of Gdk.EventExpose
 
         type: EventType;
@@ -11265,6 +11317,8 @@ export namespace Gdk {
      * Describes a change of keyboard focus.
      */
     class EventFocus {
+        static $gtype: GObject.GType<EventFocus>;
+
         // Own fields of Gdk.EventFocus
 
         type: EventType;
@@ -11285,6 +11339,8 @@ export namespace Gdk {
      * can also cause #GdkEventGrabBroken events.
      */
     class EventGrabBroken {
+        static $gtype: GObject.GType<EventGrabBroken>;
+
         // Own fields of Gdk.EventGrabBroken
 
         type: EventType;
@@ -11303,6 +11359,8 @@ export namespace Gdk {
      * Describes a key press or key release event.
      */
     class EventKey {
+        static $gtype: GObject.GType<EventKey>;
+
         // Own fields of Gdk.EventKey
 
         type: EventType;
@@ -11326,6 +11384,8 @@ export namespace Gdk {
      * Generated when the pointer moves.
      */
     class EventMotion {
+        static $gtype: GObject.GType<EventMotion>;
+
         // Own fields of Gdk.EventMotion
 
         type: EventType;
@@ -11352,6 +11412,8 @@ export namespace Gdk {
      * extension.
      */
     class EventOwnerChange {
+        static $gtype: GObject.GType<EventOwnerChange>;
+
         // Own fields of Gdk.EventOwnerChange
 
         type: EventType;
@@ -11371,6 +11433,8 @@ export namespace Gdk {
      * Generated during %GDK_SOURCE_TABLET_PAD interaction with tactile sensors.
      */
     class EventPadAxis {
+        static $gtype: GObject.GType<EventPadAxis>;
+
         // Own fields of Gdk.EventPadAxis
 
         type: EventType;
@@ -11391,6 +11455,8 @@ export namespace Gdk {
      * Generated during %GDK_SOURCE_TABLET_PAD button presses and releases.
      */
     class EventPadButton {
+        static $gtype: GObject.GType<EventPadButton>;
+
         // Own fields of Gdk.EventPadButton
 
         type: EventType;
@@ -11410,6 +11476,8 @@ export namespace Gdk {
      * Generated during %GDK_SOURCE_TABLET_PAD mode switches in a group.
      */
     class EventPadGroupMode {
+        static $gtype: GObject.GType<EventPadGroupMode>;
+
         // Own fields of Gdk.EventPadGroupMode
 
         type: EventType;
@@ -11428,6 +11496,8 @@ export namespace Gdk {
      * Describes a property change on a window.
      */
     class EventProperty {
+        static $gtype: GObject.GType<EventProperty>;
+
         // Own fields of Gdk.EventProperty
 
         type: EventType;
@@ -11453,6 +11523,8 @@ export namespace Gdk {
      * XInput aware programs that are drawing their own cursor.
      */
     class EventProximity {
+        static $gtype: GObject.GType<EventProximity>;
+
         // Own fields of Gdk.EventProximity
 
         type: EventType;
@@ -11477,6 +11549,8 @@ export namespace Gdk {
      * gdk_event_get_scroll_deltas().
      */
     class EventScroll {
+        static $gtype: GObject.GType<EventScroll>;
+
         // Own fields of Gdk.EventScroll
 
         type: EventType;
@@ -11504,6 +11578,8 @@ export namespace Gdk {
      * is taken over by another client application.
      */
     class EventSelection {
+        static $gtype: GObject.GType<EventSelection>;
+
         // Own fields of Gdk.EventSelection
 
         type: EventType;
@@ -11518,6 +11594,8 @@ export namespace Gdk {
     }
 
     abstract class EventSequence {
+        static $gtype: GObject.GType<EventSequence>;
+
         // Constructors of Gdk.EventSequence
 
         _init(...args: any[]): void;
@@ -11527,6 +11605,8 @@ export namespace Gdk {
      * Generated when a setting is modified.
      */
     class EventSetting {
+        static $gtype: GObject.GType<EventSetting>;
+
         // Own fields of Gdk.EventSetting
 
         type: EventType;
@@ -11553,6 +11633,8 @@ export namespace Gdk {
      * several active sequences at the same time.
      */
     class EventTouch {
+        static $gtype: GObject.GType<EventTouch>;
+
         // Own fields of Gdk.EventTouch
 
         type: EventType;
@@ -11577,6 +11659,8 @@ export namespace Gdk {
      * Generated during touchpad swipe gestures.
      */
     class EventTouchpadPinch {
+        static $gtype: GObject.GType<EventTouchpadPinch>;
+
         // Own fields of Gdk.EventTouchpadPinch
 
         type: EventType;
@@ -11604,6 +11688,8 @@ export namespace Gdk {
      * Generated during touchpad swipe gestures.
      */
     class EventTouchpadSwipe {
+        static $gtype: GObject.GType<EventTouchpadSwipe>;
+
         // Own fields of Gdk.EventTouchpadSwipe
 
         type: EventType;
@@ -11629,6 +11715,8 @@ export namespace Gdk {
      * Generated when the window visibility status has changed.
      */
     class EventVisibility {
+        static $gtype: GObject.GType<EventVisibility>;
+
         // Own fields of Gdk.EventVisibility
 
         type: EventType;
@@ -11645,6 +11733,8 @@ export namespace Gdk {
      * Generated when the state of a toplevel window changes.
      */
     class EventWindowState {
+        static $gtype: GObject.GType<EventWindowState>;
+
         // Own fields of Gdk.EventWindowState
 
         type: EventType;
@@ -11660,6 +11750,8 @@ export namespace Gdk {
 
     type FrameClockClass = typeof FrameClock;
     abstract class FrameClockPrivate {
+        static $gtype: GObject.GType<FrameClockPrivate>;
+
         // Constructors of Gdk.FrameClockPrivate
 
         _init(...args: any[]): void;
@@ -11674,6 +11766,8 @@ export namespace Gdk {
      * quality metrics for the application’s display, such as latency and jitter.
      */
     abstract class FrameTimings {
+        static $gtype: GObject.GType<FrameTimings>;
+
         // Constructors of Gdk.FrameTimings
 
         _init(...args: any[]): void;
@@ -11804,6 +11898,8 @@ export namespace Gdk {
      * aspect ratio.
      */
     class Geometry {
+        static $gtype: GObject.GType<Geometry>;
+
         // Own fields of Gdk.Geometry
 
         min_width: number;
@@ -11827,6 +11923,8 @@ export namespace Gdk {
      * A #GdkKeymapKey is a hardware key that can be mapped to a keyval.
      */
     class KeymapKey {
+        static $gtype: GObject.GType<KeymapKey>;
+
         // Own fields of Gdk.KeymapKey
 
         keycode: number;
@@ -11850,6 +11948,8 @@ export namespace Gdk {
      * Defines the x and y coordinates of a point.
      */
     class Point {
+        static $gtype: GObject.GType<Point>;
+
         // Own fields of Gdk.Point
 
         x: number;
@@ -11871,6 +11971,8 @@ export namespace Gdk {
      * color, in a way that is compatible with cairo’s notion of color.
      */
     class RGBA {
+        static $gtype: GObject.GType<RGBA>;
+
         // Own fields of Gdk.RGBA
 
         red: number;
@@ -11961,6 +12063,8 @@ export namespace Gdk {
      * #cairo_rectangle_int_t.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Gdk.Rectangle
 
         x: number;
@@ -12016,6 +12120,8 @@ export namespace Gdk {
      * A #GdkTimeCoord stores a single event in a motion history.
      */
     class TimeCoord {
+        static $gtype: GObject.GType<TimeCoord>;
+
         // Own fields of Gdk.TimeCoord
 
         time: number;
@@ -12036,6 +12142,8 @@ export namespace Gdk {
      * Attributes to use for a newly-created window.
      */
     class WindowAttr {
+        static $gtype: GObject.GType<WindowAttr>;
+
         // Own fields of Gdk.WindowAttr
 
         title: string;
@@ -12060,6 +12168,8 @@ export namespace Gdk {
 
     type WindowClass = typeof Window;
     abstract class WindowRedirect {
+        static $gtype: GObject.GType<WindowRedirect>;
+
         // Constructors of Gdk.WindowRedirect
 
         _init(...args: any[]): void;
@@ -12104,6 +12214,8 @@ export namespace Gdk {
      *
      */
     class Event {
+        static $gtype: GObject.GType<Event>;
+
         // Own fields of Gdk.Event
 
         type: EventType;

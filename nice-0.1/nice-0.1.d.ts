@@ -574,6 +574,8 @@ export namespace Nice {
      * the ICE agent.
      */
     class Agent extends GObject.Object {
+        static $gtype: GObject.GType<Agent>;
+
         // Own properties of Nice.Agent
 
         /**
@@ -1906,6 +1908,8 @@ export namespace Nice {
      * The #PseudoTcpSocket is the GObject implementing the Pseudo TCP Socket
      */
     class PseudoTcpSocket extends GObject.Object {
+        static $gtype: GObject.GType<PseudoTcpSocket>;
+
         // Own properties of Nice.PseudoTcpSocket
 
         get ack_delay(): number;
@@ -2142,6 +2146,8 @@ export namespace Nice {
      * The #NiceAddress structure that represents an IPv4 or IPv6 address.
      */
     class Address {
+        static $gtype: GObject.GType<Address>;
+
         // Constructors of Nice.Address
 
         _init(...args: any[]): void;
@@ -2255,6 +2261,8 @@ export namespace Nice {
      *  </note>
      */
     class Candidate {
+        static $gtype: GObject.GType<Candidate>;
+
         // Own fields of Nice.Candidate
 
         type: CandidateType;
@@ -2324,6 +2332,8 @@ export namespace Nice {
      * #NiceInputMessage to struct mmsghdr.
      */
     class InputMessage {
+        static $gtype: GObject.GType<InputMessage>;
+
         // Own fields of Nice.InputMessage
 
         buffers: Gio.InputVector[];
@@ -2351,6 +2361,8 @@ export namespace Nice {
      * sendmmsg(); and #NiceOutputMessage to struct mmsghdr.
      */
     class OutputMessage {
+        static $gtype: GObject.GType<OutputMessage>;
+
         // Own fields of Nice.OutputMessage
 
         buffers: Gio.OutputVector[];
@@ -2373,6 +2385,8 @@ export namespace Nice {
      * <para> See also: #PseudoTcpWriteResult </para>
      */
     class PseudoTcpCallbacks {
+        static $gtype: GObject.GType<PseudoTcpCallbacks>;
+
         // Own fields of Nice.PseudoTcpCallbacks
 
         user_data: any;

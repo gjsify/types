@@ -33,6 +33,8 @@ export namespace RygelRenderer {
     }
 
     class MediaRendererPlugin extends RygelCore.Plugin {
+        static $gtype: GObject.GType<MediaRendererPlugin>;
+
         // Own properties of RygelRenderer.MediaRendererPlugin
 
         get supported_profiles(): RygelCore.DLNAProfile[];
@@ -79,6 +81,8 @@ export namespace RygelRenderer {
     }
 
     class MediaRenderer extends RygelCore.MediaDevice {
+        static $gtype: GObject.GType<MediaRenderer>;
+
         // Own properties of RygelRenderer.MediaRenderer
 
         get player(): MediaPlayer;
@@ -94,6 +98,8 @@ export namespace RygelRenderer {
 
     type MediaRendererPluginClass = typeof MediaRendererPlugin;
     abstract class MediaRendererPluginPrivate {
+        static $gtype: GObject.GType<MediaRendererPluginPrivate>;
+
         // Constructors of RygelRenderer.MediaRendererPluginPrivate
 
         _init(...args: any[]): void;
@@ -101,6 +107,8 @@ export namespace RygelRenderer {
 
     type MediaRendererClass = typeof MediaRenderer;
     abstract class MediaRendererPrivate {
+        static $gtype: GObject.GType<MediaRendererPrivate>;
+
         // Constructors of RygelRenderer.MediaRendererPrivate
 
         _init(...args: any[]): void;

@@ -90,6 +90,8 @@ export namespace EBook {
      * functions below.
      */
     class BookClient extends EDataServer.Client implements Gio.AsyncInitable<BookClient>, Gio.Initable {
+        static $gtype: GObject.GType<BookClient>;
+
         // Own properties of EBook.BookClient
 
         /**
@@ -1307,6 +1309,8 @@ export namespace EBook {
      * Contains only private data.
      */
     class BookClientCursor extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<BookClientCursor>;
+
         // Own properties of EBook.BookClientCursor
 
         /**
@@ -2151,6 +2155,8 @@ export namespace EBook {
      * functions below.
      */
     class BookClientView extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<BookClientView>;
+
         // Own properties of EBook.BookClientView
 
         get client(): BookClient;
@@ -2805,6 +2811,8 @@ export namespace EBook {
     }
 
     class Destination extends GObject.Object {
+        static $gtype: GObject.GType<Destination>;
+
         // Own fields of EBook.Destination
 
         object: GObject.Object;
@@ -3038,12 +3046,16 @@ export namespace EBook {
     type BookClientClass = typeof BookClient;
     type BookClientCursorClass = typeof BookClientCursor;
     abstract class BookClientCursorPrivate {
+        static $gtype: GObject.GType<BookClientCursorPrivate>;
+
         // Constructors of EBook.BookClientCursorPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BookClientPrivate {
+        static $gtype: GObject.GType<BookClientPrivate>;
+
         // Constructors of EBook.BookClientPrivate
 
         _init(...args: any[]): void;
@@ -3051,6 +3063,8 @@ export namespace EBook {
 
     type BookClientViewClass = typeof BookClientView;
     abstract class BookClientViewPrivate {
+        static $gtype: GObject.GType<BookClientViewPrivate>;
+
         // Constructors of EBook.BookClientViewPrivate
 
         _init(...args: any[]): void;
@@ -3058,6 +3072,8 @@ export namespace EBook {
 
     type DestinationClass = typeof Destination;
     abstract class DestinationPrivate {
+        static $gtype: GObject.GType<DestinationPrivate>;
+
         // Constructors of EBook.DestinationPrivate
 
         _init(...args: any[]): void;

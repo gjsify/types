@@ -26,6 +26,8 @@ export namespace GUPnP {
      * invocation of service actions.
      */
     class ControlError extends GLib.Error {
+        static $gtype: GObject.GType<ControlError>;
+
         // Static fields of GUPnP.ControlError
 
         /**
@@ -56,6 +58,8 @@ export namespace GUPnP {
      * eventing of state variables.
      */
     class EventingError extends GLib.Error {
+        static $gtype: GObject.GType<EventingError>;
+
         // Static fields of GUPnP.EventingError
 
         /**
@@ -82,6 +86,8 @@ export namespace GUPnP {
      * is communication with another server.
      */
     class ServerError extends GLib.Error {
+        static $gtype: GObject.GType<ServerError>;
+
         // Static fields of GUPnP.ServerError
 
         /**
@@ -133,6 +139,8 @@ export namespace GUPnP {
      * processing of XML data.
      */
     class XMLError extends GLib.Error {
+        static $gtype: GObject.GType<XMLError>;
+
         // Static fields of GUPnP.XMLError
 
         /**
@@ -209,6 +217,8 @@ export namespace GUPnP {
      * functions below.
      */
     class Context extends GSSDP.Client implements Gio.Initable {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of GUPnP.Context
 
         /**
@@ -828,6 +838,8 @@ export namespace GUPnP {
      * functions below.
      */
     abstract class ContextManager extends GObject.Object {
+        static $gtype: GObject.GType<ContextManager>;
+
         // Own properties of GUPnP.ContextManager
 
         get main_context(): any;
@@ -948,6 +960,8 @@ export namespace GUPnP {
      * functions below.
      */
     class ControlPoint extends GSSDP.ResourceBrowser {
+        static $gtype: GObject.GType<ControlPoint>;
+
         // Own properties of GUPnP.ControlPoint
 
         /**
@@ -1043,6 +1057,8 @@ export namespace GUPnP {
      * functions below.
      */
     class Device extends DeviceInfo {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of GUPnP.Device
 
         /**
@@ -1086,6 +1102,8 @@ export namespace GUPnP {
      * functions below.
      */
     abstract class DeviceInfo extends GObject.Object {
+        static $gtype: GObject.GType<DeviceInfo>;
+
         // Own properties of GUPnP.DeviceInfo
 
         /**
@@ -1336,6 +1354,8 @@ export namespace GUPnP {
      * functions below.
      */
     class DeviceProxy extends DeviceInfo {
+        static $gtype: GObject.GType<DeviceProxy>;
+
         // Constructors of GUPnP.DeviceProxy
 
         constructor(properties?: Partial<DeviceProxy.ConstructorProps>, ...args: any[]);
@@ -1354,6 +1374,8 @@ export namespace GUPnP {
      * functions below.
      */
     class ResourceFactory extends GObject.Object {
+        static $gtype: GObject.GType<ResourceFactory>;
+
         // Constructors of GUPnP.ResourceFactory
 
         constructor(properties?: Partial<ResourceFactory.ConstructorProps>, ...args: any[]);
@@ -1427,6 +1449,8 @@ export namespace GUPnP {
      * functions below.
      */
     class RootDevice extends Device {
+        static $gtype: GObject.GType<RootDevice>;
+
         // Own properties of GUPnP.RootDevice
 
         /**
@@ -1541,6 +1565,8 @@ export namespace GUPnP {
      * functions below.
      */
     class Service extends ServiceInfo {
+        static $gtype: GObject.GType<Service>;
+
         // Own properties of GUPnP.Service
 
         /**
@@ -1658,6 +1684,8 @@ export namespace GUPnP {
      * functions below.
      */
     abstract class ServiceInfo extends GObject.Object {
+        static $gtype: GObject.GType<ServiceInfo>;
+
         // Own properties of GUPnP.ServiceInfo
 
         /**
@@ -1797,6 +1825,8 @@ export namespace GUPnP {
      * functions below.
      */
     class ServiceIntrospection extends GObject.Object {
+        static $gtype: GObject.GType<ServiceIntrospection>;
+
         // Own properties of GUPnP.ServiceIntrospection
 
         /**
@@ -1867,6 +1897,8 @@ export namespace GUPnP {
      * functions below.
      */
     class ServiceProxy extends ServiceInfo {
+        static $gtype: GObject.GType<ServiceProxy>;
+
         // Own properties of GUPnP.ServiceProxy
 
         /**
@@ -2047,6 +2079,8 @@ export namespace GUPnP {
      * functions below.
      */
     class WhiteList extends GObject.Object {
+        static $gtype: GObject.GType<WhiteList>;
+
         // Own properties of GUPnP.WhiteList
 
         /**
@@ -2138,6 +2172,8 @@ export namespace GUPnP {
      * Reference-counting wrapper for libxml's #xmlDoc
      */
     class XMLDoc extends GObject.Object {
+        static $gtype: GObject.GType<XMLDoc>;
+
         // Constructors of GUPnP.XMLDoc
 
         constructor(properties?: Partial<XMLDoc.ConstructorProps>, ...args: any[]);
@@ -2153,12 +2189,16 @@ export namespace GUPnP {
     type ContextClass = typeof Context;
     type ContextManagerClass = typeof ContextManager;
     abstract class ContextManagerPrivate {
+        static $gtype: GObject.GType<ContextManagerPrivate>;
+
         // Constructors of GUPnP.ContextManagerPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ContextPrivate {
+        static $gtype: GObject.GType<ContextPrivate>;
+
         // Constructors of GUPnP.ContextPrivate
 
         _init(...args: any[]): void;
@@ -2166,6 +2206,8 @@ export namespace GUPnP {
 
     type ControlPointClass = typeof ControlPoint;
     abstract class ControlPointPrivate {
+        static $gtype: GObject.GType<ControlPointPrivate>;
+
         // Constructors of GUPnP.ControlPointPrivate
 
         _init(...args: any[]): void;
@@ -2174,12 +2216,16 @@ export namespace GUPnP {
     type DeviceClass = typeof Device;
     type DeviceInfoClass = typeof DeviceInfo;
     abstract class DeviceInfoPrivate {
+        static $gtype: GObject.GType<DeviceInfoPrivate>;
+
         // Constructors of GUPnP.DeviceInfoPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DevicePrivate {
+        static $gtype: GObject.GType<DevicePrivate>;
+
         // Constructors of GUPnP.DevicePrivate
 
         _init(...args: any[]): void;
@@ -2187,6 +2233,8 @@ export namespace GUPnP {
 
     type DeviceProxyClass = typeof DeviceProxy;
     abstract class DeviceProxyPrivate {
+        static $gtype: GObject.GType<DeviceProxyPrivate>;
+
         // Constructors of GUPnP.DeviceProxyPrivate
 
         _init(...args: any[]): void;
@@ -2194,6 +2242,8 @@ export namespace GUPnP {
 
     type ResourceFactoryClass = typeof ResourceFactory;
     abstract class ResourceFactoryPrivate {
+        static $gtype: GObject.GType<ResourceFactoryPrivate>;
+
         // Constructors of GUPnP.ResourceFactoryPrivate
 
         _init(...args: any[]): void;
@@ -2201,6 +2251,8 @@ export namespace GUPnP {
 
     type RootDeviceClass = typeof RootDevice;
     abstract class RootDevicePrivate {
+        static $gtype: GObject.GType<RootDevicePrivate>;
+
         // Constructors of GUPnP.RootDevicePrivate
 
         _init(...args: any[]): void;
@@ -2210,6 +2262,8 @@ export namespace GUPnP {
      * Opaque structure for holding in-progress action data.
      */
     class ServiceAction {
+        static $gtype: GObject.GType<ServiceAction>;
+
         // Constructors of GUPnP.ServiceAction
 
         _init(...args: any[]): void;
@@ -2282,6 +2336,8 @@ export namespace GUPnP {
      * This structure contains information about the argument of service action.
      */
     class ServiceActionArgInfo {
+        static $gtype: GObject.GType<ServiceActionArgInfo>;
+
         // Own fields of GUPnP.ServiceActionArgInfo
 
         name: string;
@@ -2298,6 +2354,8 @@ export namespace GUPnP {
      * This structure contains information about a service action.
      */
     class ServiceActionInfo {
+        static $gtype: GObject.GType<ServiceActionInfo>;
+
         // Own fields of GUPnP.ServiceActionInfo
 
         name: string;
@@ -2310,6 +2368,8 @@ export namespace GUPnP {
     type ServiceClass = typeof Service;
     type ServiceInfoClass = typeof ServiceInfo;
     abstract class ServiceInfoPrivate {
+        static $gtype: GObject.GType<ServiceInfoPrivate>;
+
         // Constructors of GUPnP.ServiceInfoPrivate
 
         _init(...args: any[]): void;
@@ -2317,12 +2377,16 @@ export namespace GUPnP {
 
     type ServiceIntrospectionClass = typeof ServiceIntrospection;
     abstract class ServiceIntrospectionPrivate {
+        static $gtype: GObject.GType<ServiceIntrospectionPrivate>;
+
         // Constructors of GUPnP.ServiceIntrospectionPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ServicePrivate {
+        static $gtype: GObject.GType<ServicePrivate>;
+
         // Constructors of GUPnP.ServicePrivate
 
         _init(...args: any[]): void;
@@ -2332,6 +2396,8 @@ export namespace GUPnP {
      * Opaque structure for holding in-progress action data.
      */
     class ServiceProxyAction {
+        static $gtype: GObject.GType<ServiceProxyAction>;
+
         // Constructors of GUPnP.ServiceProxyAction
 
         _init(...args: any[]): void;
@@ -2339,6 +2405,8 @@ export namespace GUPnP {
 
     type ServiceProxyClass = typeof ServiceProxy;
     abstract class ServiceProxyPrivate {
+        static $gtype: GObject.GType<ServiceProxyPrivate>;
+
         // Constructors of GUPnP.ServiceProxyPrivate
 
         _init(...args: any[]): void;
@@ -2348,6 +2416,8 @@ export namespace GUPnP {
      * This structure contains information about service state variable.
      */
     class ServiceStateVariableInfo {
+        static $gtype: GObject.GType<ServiceStateVariableInfo>;
+
         // Own fields of GUPnP.ServiceStateVariableInfo
 
         name: string;
@@ -2363,6 +2433,8 @@ export namespace GUPnP {
 
     type WhiteListClass = typeof WhiteList;
     abstract class WhiteListPrivate {
+        static $gtype: GObject.GType<WhiteListPrivate>;
+
         // Constructors of GUPnP.WhiteListPrivate
 
         _init(...args: any[]): void;

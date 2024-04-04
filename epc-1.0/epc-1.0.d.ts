@@ -115,6 +115,8 @@ export namespace Epc {
      * Public fields of the #EpcConsumer class.
      */
     class Consumer extends GObject.Object {
+        static $gtype: GObject.GType<Consumer>;
+
         // Own properties of Epc.Consumer
 
         get application(): string;
@@ -192,6 +194,8 @@ export namespace Epc {
      * Public fields of the #EpcDispatcher class.
      */
     class Dispatcher extends GObject.Object {
+        static $gtype: GObject.GType<Dispatcher>;
+
         // Own properties of Epc.Dispatcher
 
         get collision_handling(): CollisionHandling;
@@ -253,6 +257,8 @@ export namespace Epc {
      * Public fields of the #EpcPublisher class.
      */
     class Publisher extends GObject.Object {
+        static $gtype: GObject.GType<Publisher>;
+
         // Own properties of Epc.Publisher
 
         get application(): string;
@@ -367,6 +373,8 @@ export namespace Epc {
      * Public fields of the #EpcServiceMonitor class.
      */
     class ServiceMonitor extends GObject.Object {
+        static $gtype: GObject.GType<ServiceMonitor>;
+
         // Own properties of Epc.ServiceMonitor
 
         get application(): string;
@@ -417,6 +425,8 @@ export namespace Epc {
     }
 
     abstract class AuthContext {
+        static $gtype: GObject.GType<AuthContext>;
+
         // Constructors of Epc.AuthContext
 
         _init(...args: any[]): void;
@@ -430,12 +440,16 @@ export namespace Epc {
 
     type ConsumerClass = typeof Consumer;
     abstract class ConsumerPrivate {
+        static $gtype: GObject.GType<ConsumerPrivate>;
+
         // Constructors of Epc.ConsumerPrivate
 
         _init(...args: any[]): void;
     }
 
     class Contents {
+        static $gtype: GObject.GType<Contents>;
+
         // Constructors of Epc.Contents
 
         constructor(type: string, data: any, length: number);
@@ -457,6 +471,8 @@ export namespace Epc {
 
     type DispatcherClass = typeof Dispatcher;
     abstract class DispatcherPrivate {
+        static $gtype: GObject.GType<DispatcherPrivate>;
+
         // Constructors of Epc.DispatcherPrivate
 
         _init(...args: any[]): void;
@@ -464,12 +480,16 @@ export namespace Epc {
 
     type PublisherClass = typeof Publisher;
     abstract class PublisherPrivate {
+        static $gtype: GObject.GType<PublisherPrivate>;
+
         // Constructors of Epc.PublisherPrivate
 
         _init(...args: any[]): void;
     }
 
     class ServiceInfo {
+        static $gtype: GObject.GType<ServiceInfo>;
+
         // Constructors of Epc.ServiceInfo
 
         constructor(type: string, host: string, port: number, details: unknown);
@@ -489,6 +509,8 @@ export namespace Epc {
 
     type ServiceMonitorClass = typeof ServiceMonitor;
     abstract class ServiceMonitorPrivate {
+        static $gtype: GObject.GType<ServiceMonitorPrivate>;
+
         // Constructors of Epc.ServiceMonitorPrivate
 
         _init(...args: any[]): void;
@@ -501,6 +523,8 @@ export namespace Epc {
      * See also: #epc_progress_window_install
      */
     class ShellProgressHooks {
+        static $gtype: GObject.GType<ShellProgressHooks>;
+
         // Constructors of Epc.ShellProgressHooks
 
         constructor(properties?: Partial<{}>);

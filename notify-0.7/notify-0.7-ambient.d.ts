@@ -1,7 +1,7 @@
 
 declare module 'gi://Notify?version=0.7' {
-    import Notify07 from '@girs/notify-0.7';
-    export default Notify07;
+    import Notify from '@girs/notify-0.7';
+    export default Notify;
 }
 
 declare module 'gi://Notify' {

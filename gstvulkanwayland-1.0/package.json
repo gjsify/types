@@ -1,0 +1,60 @@
+{
+    "name": "@girs/gstvulkanwayland-1.0",
+    "version": "1.0.0-4.0.0",
+    "description": "GJS TypeScript type definitions for GstVulkanWayland-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gstvulkanwayland-1.0.js",
+    "main": "gstvulkanwayland-1.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./gstvulkanwayland-1.0-ambient.d.ts",
+            "import": "./gstvulkanwayland-1.0-ambient.js",
+            "default": "./gstvulkanwayland-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gstvulkanwayland-1.0-import.d.ts",
+            "import": "./gstvulkanwayland-1.0-import.js",
+            "default": "./gstvulkanwayland-1.0-import.js"
+        },
+        ".": {
+            "types": "./gstvulkanwayland-1.0.d.ts",
+            "import": "./gstvulkanwayland-1.0.js",
+            "default": "./gstvulkanwayland-1.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit gstvulkanwayland-1.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-1.0": "workspace:^",
+        "@girs/gstbase-1.0": "workspace:^",
+        "@girs/gstvideo-1.0": "workspace:^",
+        "@girs/gstvulkan-1.0": "workspace:^",
+        "@girs/vulkan-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstVulkanWayland-1.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gstvulkanwayland-1.0#readme"
+}

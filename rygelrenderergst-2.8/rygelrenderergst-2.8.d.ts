@@ -27,6 +27,8 @@ import type GModule from '@girs/gmodule-2.0';
 
 export namespace RygelRendererGst {
     class PlaybinPlayerError extends GLib.Error {
+        static $gtype: GObject.GType<PlaybinPlayerError>;
+
         // Static fields of RygelRendererGst.PlaybinPlayerError
 
         static NO_ELEMENT: number;
@@ -48,6 +50,8 @@ export namespace RygelRendererGst {
     }
 
     class PlaybinPlayer extends GObject.Object implements RygelRenderer.MediaPlayer {
+        static $gtype: GObject.GType<PlaybinPlayer>;
+
         // Own properties of RygelRendererGst.PlaybinPlayer
 
         get playbin(): Gst.Element;
@@ -531,6 +535,8 @@ export namespace RygelRendererGst {
     }
 
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
+        static $gtype: GObject.GType<PlaybinRenderer>;
+
         // Constructors of RygelRendererGst.PlaybinRenderer
 
         constructor(properties?: Partial<PlaybinRenderer.ConstructorProps>, ...args: any[]);
@@ -546,6 +552,8 @@ export namespace RygelRendererGst {
 
     type PlaybinPlayerClass = typeof PlaybinPlayer;
     abstract class PlaybinPlayerPrivate {
+        static $gtype: GObject.GType<PlaybinPlayerPrivate>;
+
         // Constructors of RygelRendererGst.PlaybinPlayerPrivate
 
         _init(...args: any[]): void;
@@ -553,6 +561,8 @@ export namespace RygelRendererGst {
 
     type PlaybinRendererClass = typeof PlaybinRenderer;
     abstract class PlaybinRendererPrivate {
+        static $gtype: GObject.GType<PlaybinRendererPrivate>;
+
         // Constructors of RygelRendererGst.PlaybinRendererPrivate
 
         _init(...args: any[]): void;

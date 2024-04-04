@@ -394,6 +394,8 @@ export namespace JavaScriptCore {
      * #GCallback<!-- -->s to implement them.
      */
     class Class extends GObject.Object {
+        static $gtype: GObject.GType<Class>;
+
         // Own properties of JavaScriptCore.Class
 
         /**
@@ -564,6 +566,8 @@ export namespace JavaScriptCore {
      * It's also possible to register custom objects in the context with jsc_context_register_class().
      */
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of JavaScriptCore.Context
 
         /**
@@ -752,6 +756,8 @@ export namespace JavaScriptCore {
      * JSCException represents a JavaScript exception.
      */
     class Exception extends GObject.Object {
+        static $gtype: GObject.GType<Exception>;
+
         // Constructors of JavaScriptCore.Exception
 
         constructor(properties?: Partial<Exception.ConstructorProps>, ...args: any[]);
@@ -820,6 +826,8 @@ export namespace JavaScriptCore {
      * protects the referenced value from being garbage collected.
      */
     class Value extends GObject.Object {
+        static $gtype: GObject.GType<Value>;
+
         // Own properties of JavaScriptCore.Value
 
         /**
@@ -1217,6 +1225,8 @@ export namespace JavaScriptCore {
      * instance to every JSCContext constructor.
      */
     class VirtualMachine extends GObject.Object {
+        static $gtype: GObject.GType<VirtualMachine>;
+
         // Constructors of JavaScriptCore.VirtualMachine
 
         constructor(properties?: Partial<VirtualMachine.ConstructorProps>, ...args: any[]);
@@ -1246,6 +1256,8 @@ export namespace JavaScriptCore {
      * collected and without referencing the #JSCContext either.
      */
     class WeakValue extends GObject.Object {
+        static $gtype: GObject.GType<WeakValue>;
+
         // Own properties of JavaScriptCore.WeakValue
 
         /**
@@ -1281,6 +1293,8 @@ export namespace JavaScriptCore {
 
     type ClassClass = typeof Class;
     abstract class ClassPrivate {
+        static $gtype: GObject.GType<ClassPrivate>;
+
         // Constructors of JavaScriptCore.ClassPrivate
 
         _init(...args: any[]): void;
@@ -1292,6 +1306,8 @@ export namespace JavaScriptCore {
      * %NULL to fallback to the default implementation.
      */
     class ClassVTable {
+        static $gtype: GObject.GType<ClassVTable>;
+
         // Own fields of JavaScriptCore.ClassVTable
 
         get_property: ClassGetPropertyFunction;
@@ -1307,6 +1323,8 @@ export namespace JavaScriptCore {
 
     type ContextClass = typeof Context;
     abstract class ContextPrivate {
+        static $gtype: GObject.GType<ContextPrivate>;
+
         // Constructors of JavaScriptCore.ContextPrivate
 
         _init(...args: any[]): void;
@@ -1314,6 +1332,8 @@ export namespace JavaScriptCore {
 
     type ExceptionClass = typeof Exception;
     abstract class ExceptionPrivate {
+        static $gtype: GObject.GType<ExceptionPrivate>;
+
         // Constructors of JavaScriptCore.ExceptionPrivate
 
         _init(...args: any[]): void;
@@ -1321,6 +1341,8 @@ export namespace JavaScriptCore {
 
     type ValueClass = typeof Value;
     abstract class ValuePrivate {
+        static $gtype: GObject.GType<ValuePrivate>;
+
         // Constructors of JavaScriptCore.ValuePrivate
 
         _init(...args: any[]): void;
@@ -1328,6 +1350,8 @@ export namespace JavaScriptCore {
 
     type VirtualMachineClass = typeof VirtualMachine;
     abstract class VirtualMachinePrivate {
+        static $gtype: GObject.GType<VirtualMachinePrivate>;
+
         // Constructors of JavaScriptCore.VirtualMachinePrivate
 
         _init(...args: any[]): void;
@@ -1335,6 +1359,8 @@ export namespace JavaScriptCore {
 
     type WeakValueClass = typeof WeakValue;
     abstract class WeakValuePrivate {
+        static $gtype: GObject.GType<WeakValuePrivate>;
+
         // Constructors of JavaScriptCore.WeakValuePrivate
 
         _init(...args: any[]): void;

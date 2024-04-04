@@ -73,6 +73,8 @@ export namespace GeglGtk3 {
     }
 
     class View extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of GeglGtk3.View
 
         get autoscale_policy(): ViewAutoscale;
@@ -544,6 +546,8 @@ export namespace GeglGtk3 {
 
     type ViewClass = typeof View;
     abstract class ViewPrivate {
+        static $gtype: GObject.GType<ViewPrivate>;
+
         // Constructors of GeglGtk3.ViewPrivate
 
         _init(...args: any[]): void;

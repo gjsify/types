@@ -20,6 +20,8 @@ import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstGL {
     class GLBaseMemoryError extends GLib.Error {
+        static $gtype: GObject.GType<GLBaseMemoryError>;
+
         // Static fields of GstGL.GLBaseMemoryError
 
         /**
@@ -64,6 +66,8 @@ export namespace GstGL {
      * OpenGL context errors.
      */
     class GLContextError extends GLib.Error {
+        static $gtype: GObject.GType<GLContextError>;
+
         // Static fields of GstGL.GLContextError
 
         /**
@@ -202,6 +206,8 @@ export namespace GstGL {
      * Compilation stage that caused an error
      */
     class GLSLError extends GLib.Error {
+        static $gtype: GObject.GType<GLSLError>;
+
         // Static fields of GstGL.GLSLError
 
         /**
@@ -234,6 +240,8 @@ export namespace GstGL {
      * GLSL version list
      */
     class GLSLVersion {
+        static $gtype: GObject.GType<GLSLVersion>;
+
         // Static fields of GstGL.GLSLVersion
 
         /**
@@ -377,6 +385,8 @@ export namespace GstGL {
         UNSHARED_GL_CONTEXT,
     }
     class GLWindowError extends GLib.Error {
+        static $gtype: GObject.GType<GLWindowError>;
+
         // Static fields of GstGL.GLWindowError
 
         /**
@@ -969,6 +979,8 @@ export namespace GstGL {
      * context is available and current in the calling thread.
      */
     class GLBaseFilter extends GstBase.BaseTransform {
+        static $gtype: GObject.GType<GLBaseFilter>;
+
         // Own properties of GstGL.GLBaseFilter
 
         get context(): GLContext;
@@ -1005,6 +1017,8 @@ export namespace GstGL {
      * Opaque #GstGLBaseMemoryAllocator struct
      */
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<GLBaseMemoryAllocator>;
+
         // Constructors of GstGL.GLBaseMemoryAllocator
 
         constructor(properties?: Partial<GLBaseMemoryAllocator.ConstructorProps>, ...args: any[]);
@@ -1031,6 +1045,8 @@ export namespace GstGL {
      * is available and is not available within this element.
      */
     abstract class GLBaseMixer extends GstVideo.VideoAggregator {
+        static $gtype: GObject.GType<GLBaseMixer>;
+
         // Own properties of GstGL.GLBaseMixer
 
         /**
@@ -1071,6 +1087,8 @@ export namespace GstGL {
     }
 
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
+        static $gtype: GObject.GType<GLBaseMixerPad>;
+
         // Constructors of GstGL.GLBaseMixerPad
 
         constructor(properties?: Partial<GLBaseMixerPad.ConstructorProps>, ...args: any[]);
@@ -1094,6 +1112,8 @@ export namespace GstGL {
      * current in the calling thread.
      */
     abstract class GLBaseSrc extends GstBase.PushSrc {
+        static $gtype: GObject.GType<GLBaseSrc>;
+
         // Own properties of GstGL.GLBaseSrc
 
         get timestamp_offset(): number;
@@ -1130,6 +1150,8 @@ export namespace GstGL {
      * Opaque #GstGLBufferAllocator struct
      */
     class GLBufferAllocator extends GLBaseMemoryAllocator {
+        static $gtype: GObject.GType<GLBufferAllocator>;
+
         // Constructors of GstGL.GLBufferAllocator
 
         constructor(properties?: Partial<GLBufferAllocator.ConstructorProps>, ...args: any[]);
@@ -1154,6 +1176,8 @@ export namespace GstGL {
      * %GST_BUFFER_POOL_OPTION_GL_SYNC_META buffer pool option.
      */
     class GLBufferPool extends Gst.BufferPool {
+        static $gtype: GObject.GType<GLBufferPool>;
+
         // Own fields of GstGL.GLBufferPool
 
         bufferpool: Gst.BufferPool;
@@ -1200,6 +1224,8 @@ export namespace GstGL {
      * #GstGLColorConvert to convert between video formats and color spaces.
      */
     class GLColorConvert extends Gst.Object {
+        static $gtype: GObject.GType<GLColorConvert>;
+
         // Constructors of GstGL.GLColorConvert
 
         constructor(properties?: Partial<GLColorConvert.ConstructorProps>, ...args: any[]);
@@ -1283,6 +1309,8 @@ export namespace GstGL {
      *                    functionality.
      */
     abstract class GLContext extends Gst.Object {
+        static $gtype: GObject.GType<GLContext>;
+
         // Constructors of GstGL.GLContext
 
         constructor(properties?: Partial<GLContext.ConstructorProps>, ...args: any[]);
@@ -1634,6 +1662,8 @@ export namespace GstGL {
      * > example of such a function is X11's XInitThreads\().
      */
     class GLDisplay extends Gst.Object {
+        static $gtype: GObject.GType<GLDisplay>;
+
         // Constructors of GstGL.GLDisplay
 
         constructor(properties?: Partial<GLDisplay.ConstructorProps>, ...args: any[]);
@@ -1733,6 +1763,8 @@ export namespace GstGL {
      * single input and producing a single output with a #GstGLFramebuffer
      */
     class GLFilter extends GLBaseFilter {
+        static $gtype: GObject.GType<GLFilter>;
+
         // Own fields of GstGL.GLFilter
 
         in_texture_target: GLTextureTarget;
@@ -1816,6 +1848,8 @@ export namespace GstGL {
      * between multiple OpenGL contexts.
      */
     class GLFramebuffer extends Gst.Object {
+        static $gtype: GObject.GType<GLFramebuffer>;
+
         // Constructors of GstGL.GLFramebuffer
 
         constructor(properties?: Partial<GLFramebuffer.ConstructorProps>, ...args: any[]);
@@ -1877,6 +1911,8 @@ export namespace GstGL {
      * Opaque #GstGLMemoryAllocator struct
      */
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
+        static $gtype: GObject.GType<GLMemoryAllocator>;
+
         // Constructors of GstGL.GLMemoryAllocator
 
         constructor(properties?: Partial<GLMemoryAllocator.ConstructorProps>, ...args: any[]);
@@ -1898,6 +1934,8 @@ export namespace GstGL {
      * Opaque #GstGLMemoryPBOAllocator struct
      */
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
+        static $gtype: GObject.GType<GLMemoryPBOAllocator>;
+
         // Constructors of GstGL.GLMemoryPBOAllocator
 
         constructor(properties?: Partial<GLMemoryPBOAllocator.ConstructorProps>, ...args: any[]);
@@ -1915,6 +1953,8 @@ export namespace GstGL {
      * #GstGLMixer helps implement an element that operates on RGBA textures.
      */
     abstract class GLMixer extends GLBaseMixer {
+        static $gtype: GObject.GType<GLMixer>;
+
         // Constructors of GstGL.GLMixer
 
         constructor(properties?: Partial<GLMixer.ConstructorProps>, ...args: any[]);
@@ -1961,6 +2001,8 @@ export namespace GstGL {
     }
 
     class GLMixerPad extends GLBaseMixerPad {
+        static $gtype: GObject.GType<GLMixerPad>;
+
         // Own fields of GstGL.GLMixerPad
 
         current_texture: number;
@@ -1984,6 +2026,8 @@ export namespace GstGL {
      * Opaque #GstGLOverlayCompositor object
      */
     class GLOverlayCompositor extends Gst.Object {
+        static $gtype: GObject.GType<GLOverlayCompositor>;
+
         // Own properties of GstGL.GLOverlayCompositor
 
         get yinvert(): boolean;
@@ -2018,6 +2062,8 @@ export namespace GstGL {
      * Opaque #GstGLRenderbufferAllocator struct
      */
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
+        static $gtype: GObject.GType<GLRenderbufferAllocator>;
+
         // Constructors of GstGL.GLRenderbufferAllocator
 
         constructor(properties?: Partial<GLRenderbufferAllocator.ConstructorProps>, ...args: any[]);
@@ -2035,6 +2081,8 @@ export namespace GstGL {
      * #GstGLSLStage holds and represents a single OpenGL shader stage.
      */
     class GLSLStage extends Gst.Object {
+        static $gtype: GObject.GType<GLSLStage>;
+
         // Constructors of GstGL.GLSLStage
 
         constructor(properties?: Partial<GLSLStage.ConstructorProps>, ...args: any[]);
@@ -2088,6 +2136,8 @@ export namespace GstGL {
     }
 
     class GLShader extends Gst.Object {
+        static $gtype: GObject.GType<GLShader>;
+
         // Own properties of GstGL.GLShader
 
         get linked(): boolean;
@@ -2412,6 +2462,8 @@ export namespace GstGL {
      * A #GstGLUpload can be created with gst_gl_upload_new()
      */
     class GLUpload extends Gst.Object {
+        static $gtype: GObject.GType<GLUpload>;
+
         // Own fields of GstGL.GLUpload
 
         context: GLContext;
@@ -2476,6 +2528,8 @@ export namespace GstGL {
      * Convert stereoscopic/multiview video using fragment shaders.
      */
     class GLViewConvert extends Gst.Object {
+        static $gtype: GObject.GType<GLViewConvert>;
+
         // Own properties of GstGL.GLViewConvert
 
         get downmix_mode(): GLStereoDownmix;
@@ -2603,6 +2657,8 @@ export namespace GstGL {
      * either be a user visible window (onscreen) or hidden (offscreen).
      */
     abstract class GLWindow extends Gst.Object {
+        static $gtype: GObject.GType<GLWindow>;
+
         // Constructors of GstGL.GLWindow
 
         constructor(properties?: Partial<GLWindow.ConstructorProps>, ...args: any[]);
@@ -2834,6 +2890,8 @@ export namespace GstGL {
     }
 
     class GLAllocationParams {
+        static $gtype: GObject.GType<GLAllocationParams>;
+
         // Own fields of GstGL.GLAllocationParams
 
         struct_size: number;
@@ -2874,6 +2932,8 @@ export namespace GstGL {
      * provided API.
      */
     class GLAsyncDebug {
+        static $gtype: GObject.GType<GLAsyncDebug>;
+
         // Constructors of GstGL.GLAsyncDebug
 
         _init(...args: any[]): void;
@@ -2913,6 +2973,8 @@ export namespace GstGL {
 
     type GLBaseFilterClass = typeof GLBaseFilter;
     abstract class GLBaseFilterPrivate {
+        static $gtype: GObject.GType<GLBaseFilterPrivate>;
+
         // Constructors of GstGL.GLBaseFilterPrivate
 
         _init(...args: any[]): void;
@@ -2925,6 +2987,8 @@ export namespace GstGL {
      * Data is uploaded or downloaded from the GPU as is necessary.
      */
     class GLBaseMemory {
+        static $gtype: GObject.GType<GLBaseMemory>;
+
         // Own fields of GstGL.GLBaseMemory
 
         context: GLContext;
@@ -2981,6 +3045,8 @@ export namespace GstGL {
     type GLBaseMixerClass = typeof GLBaseMixer;
     type GLBaseMixerPadClass = typeof GLBaseMixerPad;
     abstract class GLBaseMixerPrivate {
+        static $gtype: GObject.GType<GLBaseMixerPrivate>;
+
         // Constructors of GstGL.GLBaseMixerPrivate
 
         _init(...args: any[]): void;
@@ -2988,6 +3054,8 @@ export namespace GstGL {
 
     type GLBaseSrcClass = typeof GLBaseSrc;
     abstract class GLBaseSrcPrivate {
+        static $gtype: GObject.GType<GLBaseSrcPrivate>;
+
         // Constructors of GstGL.GLBaseSrcPrivate
 
         _init(...args: any[]): void;
@@ -3000,6 +3068,8 @@ export namespace GstGL {
      * Data is uploaded or downloaded from the GPU as is necessary.
      */
     class GLBuffer {
+        static $gtype: GObject.GType<GLBuffer>;
+
         // Own fields of GstGL.GLBuffer
 
         id: number;
@@ -3020,6 +3090,8 @@ export namespace GstGL {
     }
 
     class GLBufferAllocationParams {
+        static $gtype: GObject.GType<GLBufferAllocationParams>;
+
         // Own fields of GstGL.GLBufferAllocationParams
 
         gl_target: number;
@@ -3048,6 +3120,8 @@ export namespace GstGL {
     type GLBufferAllocatorClass = typeof GLBufferAllocator;
     type GLBufferPoolClass = typeof GLBufferPool;
     abstract class GLBufferPoolPrivate {
+        static $gtype: GObject.GType<GLBufferPoolPrivate>;
+
         // Constructors of GstGL.GLBufferPoolPrivate
 
         _init(...args: any[]): void;
@@ -3055,6 +3129,8 @@ export namespace GstGL {
 
     type GLColorConvertClass = typeof GLColorConvert;
     abstract class GLColorConvertPrivate {
+        static $gtype: GObject.GType<GLColorConvertPrivate>;
+
         // Constructors of GstGL.GLColorConvertPrivate
 
         _init(...args: any[]): void;
@@ -3062,6 +3138,8 @@ export namespace GstGL {
 
     type GLContextClass = typeof GLContext;
     abstract class GLContextPrivate {
+        static $gtype: GObject.GType<GLContextPrivate>;
+
         // Constructors of GstGL.GLContextPrivate
 
         _init(...args: any[]): void;
@@ -3069,6 +3147,8 @@ export namespace GstGL {
 
     type GLDisplayClass = typeof GLDisplay;
     abstract class GLDisplayPrivate {
+        static $gtype: GObject.GType<GLDisplayPrivate>;
+
         // Constructors of GstGL.GLDisplayPrivate
 
         _init(...args: any[]): void;
@@ -3077,6 +3157,8 @@ export namespace GstGL {
     type GLFilterClass = typeof GLFilter;
     type GLFramebufferClass = typeof GLFramebuffer;
     abstract class GLFramebufferPrivate {
+        static $gtype: GObject.GType<GLFramebufferPrivate>;
+
         // Constructors of GstGL.GLFramebufferPrivate
 
         _init(...args: any[]): void;
@@ -3089,6 +3171,8 @@ export namespace GstGL {
      * `gl` prefix.
      */
     abstract class GLFuncs {
+        static $gtype: GObject.GType<GLFuncs>;
+
         // Constructors of GstGL.GLFuncs
 
         _init(...args: any[]): void;
@@ -3110,6 +3194,8 @@ export namespace GstGL {
      * rectangle, external-oes}'.
      */
     class GLMemory {
+        static $gtype: GObject.GType<GLMemory>;
+
         // Own fields of GstGL.GLMemory
 
         tex_id: number;
@@ -3230,6 +3316,8 @@ export namespace GstGL {
      * Data is uploaded or downloaded from the GPU as is necessary.
      */
     class GLMemoryPBO {
+        static $gtype: GObject.GType<GLMemoryPBO>;
+
         // Constructors of GstGL.GLMemoryPBO
 
         _init(...args: any[]): void;
@@ -3286,6 +3374,8 @@ export namespace GstGL {
     type GLMixerClass = typeof GLMixer;
     type GLMixerPadClass = typeof GLMixerPad;
     abstract class GLMixerPrivate {
+        static $gtype: GObject.GType<GLMixerPrivate>;
+
         // Constructors of GstGL.GLMixerPrivate
 
         _init(...args: any[]): void;
@@ -3297,6 +3387,8 @@ export namespace GstGL {
      * queries can be run or counters retrieved.
      */
     class GLQuery {
+        static $gtype: GObject.GType<GLQuery>;
+
         // Constructors of GstGL.GLQuery
 
         _init(...args: any[]): void;
@@ -3351,6 +3443,8 @@ export namespace GstGL {
      * with #GstGLRenderbufferAllocationParams.
      */
     class GLRenderbuffer {
+        static $gtype: GObject.GType<GLRenderbuffer>;
+
         // Own fields of GstGL.GLRenderbuffer
 
         renderbuffer_id: number;
@@ -3383,6 +3477,8 @@ export namespace GstGL {
      * Allocation parameters
      */
     class GLRenderbufferAllocationParams {
+        static $gtype: GObject.GType<GLRenderbufferAllocationParams>;
+
         // Own fields of GstGL.GLRenderbufferAllocationParams
 
         renderbuffer_format: GLFormat;
@@ -3423,6 +3519,8 @@ export namespace GstGL {
     type GLRenderbufferAllocatorClass = typeof GLRenderbufferAllocator;
     type GLSLStageClass = typeof GLSLStage;
     abstract class GLSLStagePrivate {
+        static $gtype: GObject.GType<GLSLStagePrivate>;
+
         // Constructors of GstGL.GLSLStagePrivate
 
         _init(...args: any[]): void;
@@ -3430,6 +3528,8 @@ export namespace GstGL {
 
     type GLShaderClass = typeof GLShader;
     abstract class GLShaderPrivate {
+        static $gtype: GObject.GType<GLShaderPrivate>;
+
         // Constructors of GstGL.GLShaderPrivate
 
         _init(...args: any[]): void;
@@ -3440,6 +3540,8 @@ export namespace GstGL {
      * with the CPU or with other OpenGL contexts.
      */
     class GLSyncMeta {
+        static $gtype: GObject.GType<GLSyncMeta>;
+
         // Own fields of GstGL.GLSyncMeta
 
         context: GLContext;
@@ -3477,12 +3579,16 @@ export namespace GstGL {
 
     type GLUploadClass = typeof GLUpload;
     abstract class GLUploadPrivate {
+        static $gtype: GObject.GType<GLUploadPrivate>;
+
         // Constructors of GstGL.GLUploadPrivate
 
         _init(...args: any[]): void;
     }
 
     class GLVideoAllocationParams {
+        static $gtype: GObject.GType<GLVideoAllocationParams>;
+
         // Own fields of GstGL.GLVideoAllocationParams
 
         plane: number;
@@ -3569,6 +3675,8 @@ export namespace GstGL {
 
     type GLViewConvertClass = typeof GLViewConvert;
     abstract class GLViewConvertPrivate {
+        static $gtype: GObject.GType<GLViewConvertPrivate>;
+
         // Constructors of GstGL.GLViewConvertPrivate
 
         _init(...args: any[]): void;
@@ -3576,6 +3684,8 @@ export namespace GstGL {
 
     type GLWindowClass = typeof GLWindow;
     abstract class GLWindowPrivate {
+        static $gtype: GObject.GType<GLWindowPrivate>;
+
         // Constructors of GstGL.GLWindowPrivate
 
         _init(...args: any[]): void;

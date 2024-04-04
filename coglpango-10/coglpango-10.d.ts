@@ -89,6 +89,8 @@ export namespace CoglPango {
     }
 
     class Renderer extends Pango.Renderer {
+        static $gtype: GObject.GType<Renderer>;
+
         // Own properties of CoglPango.Renderer
 
         set context(val: any);

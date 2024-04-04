@@ -46,6 +46,8 @@ export namespace PeasGtk {
      * and should only be accessed using the provided API.
      */
     class PluginManager extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<PluginManager>;
+
         // Own properties of PeasGtk.PluginManager
 
         /**
@@ -479,6 +481,8 @@ export namespace PeasGtk {
      * and should only be accessed using the provided API.
      */
     class PluginManagerView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<PluginManagerView>;
+
         // Own properties of PeasGtk.PluginManagerView
 
         get engine(): Peas.Engine;
@@ -999,6 +1003,8 @@ export namespace PeasGtk {
     type ConfigurableInterface = typeof Configurable;
     type PluginManagerClass = typeof PluginManager;
     abstract class PluginManagerPrivate {
+        static $gtype: GObject.GType<PluginManagerPrivate>;
+
         // Constructors of PeasGtk.PluginManagerPrivate
 
         _init(...args: any[]): void;
@@ -1006,6 +1012,8 @@ export namespace PeasGtk {
 
     type PluginManagerViewClass = typeof PluginManagerView;
     abstract class PluginManagerViewPrivate {
+        static $gtype: GObject.GType<PluginManagerViewPrivate>;
+
         // Constructors of PeasGtk.PluginManagerViewPrivate
 
         _init(...args: any[]): void;

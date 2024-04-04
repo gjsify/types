@@ -1,0 +1,56 @@
+{
+    "name": "@girs/giounix-2.0",
+    "version": "2.0.0-4.0.0",
+    "description": "GJS TypeScript type definitions for GioUnix-2.0, generated from library version 2.0.0",
+    "type": "module",
+    "module": "giounix-2.0.js",
+    "main": "giounix-2.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./giounix-2.0-ambient.d.ts",
+            "import": "./giounix-2.0-ambient.js",
+            "default": "./giounix-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./giounix-2.0-import.d.ts",
+            "import": "./giounix-2.0-import.js",
+            "default": "./giounix-2.0-import.js"
+        },
+        ".": {
+            "types": "./giounix-2.0.d.ts",
+            "import": "./giounix-2.0.js",
+            "default": "./giounix-2.0.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit giounix-2.0.d.ts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GioUnix-2.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/giounix-2.0#readme"
+}

@@ -24,6 +24,8 @@ export namespace GeocodeGlib {
      * Error codes returned by geocode-glib functions.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GeocodeGlib.Error
 
         /**
@@ -289,6 +291,8 @@ export namespace GeocodeGlib {
      * never be accessed directly.
      */
     class BoundingBox extends GObject.Object {
+        static $gtype: GObject.GType<BoundingBox>;
+
         // Own properties of GeocodeGlib.BoundingBox
 
         /**
@@ -365,6 +369,8 @@ export namespace GeocodeGlib {
      * All the fields in the #GeocodeForward structure are private and should never be accessed directly.
      */
     class Forward extends GObject.Object {
+        static $gtype: GObject.GType<Forward>;
+
         // Own properties of GeocodeGlib.Forward
 
         /**
@@ -496,6 +502,8 @@ export namespace GeocodeGlib {
      * All the fields in the #GeocodeLocation structure are private and should never be accessed directly.
      */
     class Location extends GObject.Object {
+        static $gtype: GObject.GType<Location>;
+
         // Own properties of GeocodeGlib.Location
 
         /**
@@ -656,6 +664,8 @@ export namespace GeocodeGlib {
      * never be accessed directly.
      */
     class MockBackend extends GObject.Object implements Backend {
+        static $gtype: GObject.GType<MockBackend>;
+
         // Constructors of GeocodeGlib.MockBackend
 
         constructor(properties?: Partial<MockBackend.ConstructorProps>, ...args: any[]);
@@ -1290,6 +1300,8 @@ export namespace GeocodeGlib {
      * never be accessed directly.
      */
     class Nominatim extends GObject.Object implements Backend {
+        static $gtype: GObject.GType<Nominatim>;
+
         // Own properties of GeocodeGlib.Nominatim
 
         /**
@@ -1951,6 +1963,8 @@ export namespace GeocodeGlib {
      * All the fields in the #GeocodePlace structure are private and should never be accessed directly.
      */
     class Place extends GObject.Object {
+        static $gtype: GObject.GType<Place>;
+
         // Own properties of GeocodeGlib.Place
 
         /**
@@ -2292,6 +2306,8 @@ export namespace GeocodeGlib {
      * All the fields in the #GeocodeReverse structure are private and should never be accessed directly.
      */
     class Reverse extends GObject.Object {
+        static $gtype: GObject.GType<Reverse>;
+
         // Constructors of GeocodeGlib.Reverse
 
         constructor(properties?: Partial<Reverse.ConstructorProps>, ...args: any[]);
@@ -2343,6 +2359,8 @@ export namespace GeocodeGlib {
     type BackendInterface = typeof Backend;
     type BoundingBoxClass = typeof BoundingBox;
     abstract class BoundingBoxPrivate {
+        static $gtype: GObject.GType<BoundingBoxPrivate>;
+
         // Constructors of GeocodeGlib.BoundingBoxPrivate
 
         _init(...args: any[]): void;
@@ -2350,6 +2368,8 @@ export namespace GeocodeGlib {
 
     type ForwardClass = typeof Forward;
     abstract class ForwardPrivate {
+        static $gtype: GObject.GType<ForwardPrivate>;
+
         // Constructors of GeocodeGlib.ForwardPrivate
 
         _init(...args: any[]): void;
@@ -2357,6 +2377,8 @@ export namespace GeocodeGlib {
 
     type LocationClass = typeof Location;
     abstract class LocationPrivate {
+        static $gtype: GObject.GType<LocationPrivate>;
+
         // Constructors of GeocodeGlib.LocationPrivate
 
         _init(...args: any[]): void;
@@ -2373,6 +2395,8 @@ export namespace GeocodeGlib {
      * queries), rather than an empty `results` list.
      */
     class MockBackendQuery {
+        static $gtype: GObject.GType<MockBackendQuery>;
+
         // Own fields of GeocodeGlib.MockBackendQuery
 
         is_forward: boolean;
@@ -2387,6 +2411,8 @@ export namespace GeocodeGlib {
     type NominatimClass = typeof Nominatim;
     type PlaceClass = typeof Place;
     abstract class PlacePrivate {
+        static $gtype: GObject.GType<PlacePrivate>;
+
         // Constructors of GeocodeGlib.PlacePrivate
 
         _init(...args: any[]): void;
@@ -2394,6 +2420,8 @@ export namespace GeocodeGlib {
 
     type ReverseClass = typeof Reverse;
     abstract class ReversePrivate {
+        static $gtype: GObject.GType<ReversePrivate>;
+
         // Constructors of GeocodeGlib.ReversePrivate
 
         _init(...args: any[]): void;

@@ -58,6 +58,8 @@ export namespace Anthy {
      * An #AnthyGContext is an object that handles conversion strings.
      */
     class GContext extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<GContext>;
+
         // Constructors of Anthy.GContext
 
         constructor(properties?: Partial<GContext.ConstructorProps>, ...args: any[]);
@@ -142,18 +144,24 @@ export namespace Anthy {
 
     type GContextClass = typeof GContext;
     abstract class GContextPrivate {
+        static $gtype: GObject.GType<GContextPrivate>;
+
         // Constructors of Anthy.GContextPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class anthy_context_t {
+        static $gtype: GObject.GType<anthy_context_t>;
+
         // Constructors of Anthy.anthy_context_t
 
         _init(...args: any[]): void;
     }
 
     class anthy_conv_stat {
+        static $gtype: GObject.GType<anthy_conv_stat>;
+
         // Own fields of Anthy.anthy_conv_stat
 
         nr_segment: number;
@@ -169,6 +177,8 @@ export namespace Anthy {
     }
 
     class anthy_prediction_stat {
+        static $gtype: GObject.GType<anthy_prediction_stat>;
+
         // Own fields of Anthy.anthy_prediction_stat
 
         nr_prediction: number;
@@ -184,6 +194,8 @@ export namespace Anthy {
     }
 
     class anthy_segment_stat {
+        static $gtype: GObject.GType<anthy_segment_stat>;
+
         // Own fields of Anthy.anthy_segment_stat
 
         nr_candidate: number;

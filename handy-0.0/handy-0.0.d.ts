@@ -263,6 +263,8 @@ export namespace Handy {
     }
 
     class ActionRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ActionRow>;
+
         // Own properties of Handy.ActionRow
 
         /**
@@ -4283,6 +4285,8 @@ export namespace Handy {
     }
 
     class Arrows extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Arrows>;
+
         // Own properties of Handy.Arrows
 
         get count(): number;
@@ -4711,6 +4715,8 @@ export namespace Handy {
     }
 
     class Column extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Column>;
+
         // Own properties of Handy.Column
 
         get linear_growth_width(): number;
@@ -5130,6 +5136,8 @@ export namespace Handy {
     }
 
     class ComboRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ComboRow>;
+
         // Own properties of Handy.ComboRow
 
         /**
@@ -9173,6 +9181,8 @@ export namespace Handy {
     }
 
     class Dialer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Dialer>;
+
         // Own properties of Handy.Dialer
 
         get column_spacing(): number;
@@ -9639,6 +9649,8 @@ export namespace Handy {
         extends Gtk.Button
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<DialerButton>;
+
         // Own properties of Handy.DialerButton
 
         get digit(): number;
@@ -13818,6 +13830,8 @@ export namespace Handy {
         extends DialerButton
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<DialerCycleButton>;
+
         // Own properties of Handy.DialerCycleButton
 
         get cycle_timeout(): number;
@@ -17774,6 +17788,8 @@ export namespace Handy {
     }
 
     class Dialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Dialog>;
+
         // Own properties of Handy.Dialog
 
         /**
@@ -18164,6 +18180,8 @@ export namespace Handy {
     }
 
     class EnumValueObject extends GObject.Object {
+        static $gtype: GObject.GType<EnumValueObject>;
+
         // Constructors of Handy.EnumValueObject
 
         constructor(properties?: Partial<EnumValueObject.ConstructorProps>, ...args: any[]);
@@ -18196,6 +18214,8 @@ export namespace Handy {
     }
 
     class ExpanderRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ExpanderRow>;
+
         // Own properties of Handy.ExpanderRow
 
         /**
@@ -22173,6 +22193,8 @@ export namespace Handy {
     }
 
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<HeaderBar>;
+
         // Own properties of Handy.HeaderBar
 
         get centering_policy(): CenteringPolicy;
@@ -22793,6 +22815,8 @@ export namespace Handy {
     }
 
     class HeaderGroup extends GObject.Object implements Gtk.Buildable {
+        static $gtype: GObject.GType<HeaderGroup>;
+
         // Own properties of Handy.HeaderGroup
 
         /**
@@ -23399,6 +23423,8 @@ export namespace Handy {
     }
 
     class Keypad extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Keypad>;
+
         // Own properties of Handy.Keypad
 
         get entry(): Gtk.Widget;
@@ -23870,6 +23896,8 @@ export namespace Handy {
     }
 
     class Leaflet extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Leaflet>;
+
         // Own properties of Handy.Leaflet
 
         /**
@@ -28091,6 +28119,8 @@ export namespace Handy {
     }
 
     class Paginator extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Paginator>;
+
         // Own properties of Handy.Paginator
 
         /**
@@ -32248,6 +32278,8 @@ export namespace Handy {
     }
 
     class PreferencesGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<PreferencesGroup>;
+
         // Own properties of Handy.PreferencesGroup
 
         /**
@@ -32676,6 +32708,8 @@ export namespace Handy {
     }
 
     class PreferencesPage extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesPage>;
+
         // Own properties of Handy.PreferencesPage
 
         /**
@@ -33097,6 +33131,8 @@ export namespace Handy {
     }
 
     class PreferencesRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesRow>;
+
         // Own properties of Handy.PreferencesRow
 
         /**
@@ -37168,6 +37204,8 @@ export namespace Handy {
     }
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesWindow>;
+
         // Constructors of Handy.PreferencesWindow
 
         constructor(properties?: Partial<PreferencesWindow.ConstructorProps>, ...args: any[]);
@@ -37548,6 +37586,8 @@ export namespace Handy {
     }
 
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SearchBar>;
+
         // Own properties of Handy.SearchBar
 
         /**
@@ -38042,6 +38082,8 @@ export namespace Handy {
     }
 
     class Squeezer extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Squeezer>;
+
         // Own properties of Handy.Squeezer
 
         get homogeneous(): boolean;
@@ -38545,6 +38587,8 @@ export namespace Handy {
     }
 
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
+        static $gtype: GObject.GType<SwipeGroup>;
+
         // Constructors of Handy.SwipeGroup
 
         constructor(properties?: Partial<SwipeGroup.ConstructorProps>, ...args: any[]);
@@ -39118,6 +39162,8 @@ export namespace Handy {
     }
 
     class TitleBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TitleBar>;
+
         // Own properties of Handy.TitleBar
 
         get selection_mode(): boolean;
@@ -39512,6 +39558,8 @@ export namespace Handy {
     }
 
     class ValueObject extends GObject.Object {
+        static $gtype: GObject.GType<ValueObject>;
+
         // Own properties of Handy.ValueObject
 
         get value(): GObject.Value;
@@ -39567,6 +39615,8 @@ export namespace Handy {
     }
 
     class ViewSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<ViewSwitcher>;
+
         // Own properties of Handy.ViewSwitcher
 
         /**
@@ -40062,6 +40112,8 @@ export namespace Handy {
     }
 
     class ViewSwitcherBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewSwitcherBar>;
+
         // Own properties of Handy.ViewSwitcherBar
 
         /**

@@ -350,6 +350,8 @@ export namespace GnomeBluetooth {
      * only private fields and should not be directly accessed.
      */
     class Chooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Chooser>;
+
         // Own properties of GnomeBluetooth.Chooser
 
         get device_selected(): string;
@@ -877,6 +879,8 @@ export namespace GnomeBluetooth {
         extends Gtk.Button
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<ChooserButton>;
+
         // Own properties of GnomeBluetooth.ChooserButton
 
         /**
@@ -5071,6 +5075,8 @@ export namespace GnomeBluetooth {
      * only private fields and should not be directly accessed.
      */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<ChooserCombo>;
+
         // Own properties of GnomeBluetooth.ChooserCombo
 
         /**
@@ -5506,6 +5512,8 @@ export namespace GnomeBluetooth {
      * only private fields and should not be directly accessed.
      */
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of GnomeBluetooth.Client
 
         /**
@@ -5639,6 +5647,8 @@ export namespace GnomeBluetooth {
     }
 
     class FilterWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<FilterWidget>;
+
         // Own properties of GnomeBluetooth.FilterWidget
 
         set device_service_filter(val: string);
@@ -6079,6 +6089,8 @@ export namespace GnomeBluetooth {
      * only private fields and should not be directly accessed.
      */
     class SettingsWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<SettingsWidget>;
+
         // Constructors of GnomeBluetooth.SettingsWidget
 
         constructor(properties?: Partial<SettingsWidget.ConstructorProps>, ...args: any[]);
@@ -6481,6 +6493,8 @@ export namespace GnomeBluetooth {
     type ChooserClass = typeof Chooser;
     type ChooserComboClass = typeof ChooserCombo;
     abstract class ChooserComboPrivate {
+        static $gtype: GObject.GType<ChooserComboPrivate>;
+
         // Constructors of GnomeBluetooth.ChooserComboPrivate
 
         _init(...args: any[]): void;

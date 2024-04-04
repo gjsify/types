@@ -91,6 +91,8 @@ export namespace Egg {
     }
 
     class Animation extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<Animation>;
+
         // Own properties of Egg.Animation
 
         /**
@@ -178,6 +180,8 @@ export namespace Egg {
      * This should not be confused with #GtkBindingGroup.
      */
     class BindingGroup extends GObject.Object {
+        static $gtype: GObject.GType<BindingGroup>;
+
         // Own properties of Egg.BindingGroup
 
         /**
@@ -292,6 +296,8 @@ export namespace Egg {
     }
 
     class Box extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Box>;
+
         // Own properties of Egg.Box
 
         get max_width_request(): number;
@@ -708,6 +714,8 @@ export namespace Egg {
      * the toplevel and anchoring the child at TRUE_CENTER-(alloc.width/2).
      */
     class CenteringBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<CenteringBin>;
+
         // Own properties of Egg.CenteringBin
 
         get max_width_request(): number;
@@ -1099,6 +1107,8 @@ export namespace Egg {
     }
 
     class ColumnLayout extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ColumnLayout>;
+
         // Own properties of Egg.ColumnLayout
 
         get column_spacing(): number;
@@ -1504,6 +1514,8 @@ export namespace Egg {
     }
 
     class ElasticBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ElasticBin>;
+
         // Constructors of Egg.ElasticBin
 
         constructor(properties?: Partial<ElasticBin.ConstructorProps>, ...args: any[]);
@@ -1887,6 +1899,8 @@ export namespace Egg {
     }
 
     class EmptyState extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<EmptyState>;
+
         // Own properties of Egg.EmptyState
 
         get icon_name(): string;
@@ -2292,6 +2306,8 @@ export namespace Egg {
     }
 
     class EntryBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EntryBox>;
+
         // Own properties of Egg.EntryBox
 
         get max_width_chars(): number;
@@ -2706,6 +2722,8 @@ export namespace Egg {
     }
 
     class FileChooserEntry extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<FileChooserEntry>;
+
         // Own properties of Egg.FileChooserEntry
 
         get action(): Gtk.FileChooserAction;
@@ -3128,6 +3146,8 @@ export namespace Egg {
     }
 
     class ListBox extends Gtk.ListBox implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ListBox>;
+
         // Own properties of Egg.ListBox
 
         get property_name(): string;
@@ -3539,6 +3559,8 @@ export namespace Egg {
      * on during the application process.
      */
     class MenuManager extends GObject.Object {
+        static $gtype: GObject.GType<MenuManager>;
+
         // Constructors of Egg.MenuManager
 
         constructor(properties?: Partial<MenuManager.ConstructorProps>, ...args: any[]);
@@ -3567,6 +3589,8 @@ export namespace Egg {
     }
 
     class PillBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PillBox>;
+
         // Own properties of Egg.PillBox
 
         get label(): string;
@@ -3959,6 +3983,8 @@ export namespace Egg {
      * This is like a #GtkBox but uses stable priorities to sort.
      */
     class PriorityBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<PriorityBox>;
+
         // Constructors of Egg.PriorityBox
 
         constructor(properties?: Partial<PriorityBox.ConstructorProps>, ...args: any[]);
@@ -4360,6 +4386,8 @@ export namespace Egg {
         extends Gtk.Button
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<ProgressButton>;
+
         // Own properties of Egg.ProgressButton
 
         get progress(): number;
@@ -8528,6 +8556,8 @@ export namespace Egg {
     }
 
     class RadioBox extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<RadioBox>;
+
         // Own properties of Egg.RadioBox
 
         get active_id(): string;
@@ -8931,6 +8961,8 @@ export namespace Egg {
     }
 
     class ScrolledWindow extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ScrolledWindow>;
+
         // Constructors of Egg.ScrolledWindow
 
         constructor(properties?: Partial<ScrolledWindow.ConstructorProps>, ...args: any[]);
@@ -9319,6 +9351,8 @@ export namespace Egg {
     }
 
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SearchBar>;
+
         // Own properties of Egg.SearchBar
 
         get search_mode_enabled(): boolean;
@@ -9729,6 +9763,8 @@ export namespace Egg {
     }
 
     class SettingsFlagAction extends GObject.Object implements Gio.Action {
+        static $gtype: GObject.GType<SettingsFlagAction>;
+
         // Own properties of Egg.SettingsFlagAction
 
         get flag_nick(): string;
@@ -10359,6 +10395,8 @@ export namespace Egg {
     }
 
     class SettingsSandwich extends GObject.Object {
+        static $gtype: GObject.GType<SettingsSandwich>;
+
         // Own properties of Egg.SettingsSandwich
 
         get path(): string;
@@ -10453,6 +10491,8 @@ export namespace Egg {
      * all of the signals will be transitioned correctly.
      */
     class SignalGroup extends GObject.Object {
+        static $gtype: GObject.GType<SignalGroup>;
+
         // Own properties of Egg.SignalGroup
 
         /**
@@ -10570,6 +10610,8 @@ export namespace Egg {
     }
 
     class SimpleLabel extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SimpleLabel>;
+
         // Own properties of Egg.SimpleLabel
 
         get label(): string;
@@ -11162,6 +11204,8 @@ export namespace Egg {
     }
 
     class SimplePopover extends Gtk.Popover implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SimplePopover>;
+
         // Own properties of Egg.SimplePopover
 
         get button_text(): string;
@@ -11594,6 +11638,8 @@ export namespace Egg {
     }
 
     class Slider extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Slider>;
+
         // Own properties of Egg.Slider
 
         get position(): SliderPosition;
@@ -11979,6 +12025,8 @@ export namespace Egg {
     }
 
     class StateMachine extends GObject.Object implements Gtk.Buildable {
+        static $gtype: GObject.GType<StateMachine>;
+
         // Own properties of Egg.StateMachine
 
         get state(): string;
@@ -12587,6 +12635,8 @@ export namespace Egg {
     }
 
     class Suggestion extends GObject.Object {
+        static $gtype: GObject.GType<Suggestion>;
+
         // Own properties of Egg.Suggestion
 
         get icon_name(): string;
@@ -12714,6 +12764,8 @@ export namespace Egg {
         extends Gtk.Entry
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
+        static $gtype: GObject.GType<SuggestionEntry>;
+
         // Own properties of Egg.SuggestionEntry
 
         get model(): Gio.ListModel;
@@ -16918,6 +16970,8 @@ export namespace Egg {
     }
 
     class SuggestionEntryBuffer extends Gtk.EntryBuffer {
+        static $gtype: GObject.GType<SuggestionEntryBuffer>;
+
         // Own properties of Egg.SuggestionEntryBuffer
 
         get suggestion(): Suggestion;
@@ -16974,6 +17028,8 @@ export namespace Egg {
     }
 
     class SuggestionPopover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SuggestionPopover>;
+
         // Own properties of Egg.SuggestionPopover
 
         get model(): Suggestion;
@@ -17392,6 +17448,8 @@ export namespace Egg {
     }
 
     class SuggestionRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SuggestionRow>;
+
         // Own properties of Egg.SuggestionRow
 
         get suggestion(): Suggestion;
@@ -17799,6 +17857,8 @@ export namespace Egg {
     }
 
     class TaskCache extends GObject.Object {
+        static $gtype: GObject.GType<TaskCache>;
+
         // Own properties of Egg.TaskCache
 
         set key_copy_func(val: any);
@@ -17885,6 +17945,8 @@ export namespace Egg {
     }
 
     class ThreeGrid extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ThreeGrid>;
+
         // Own properties of Egg.ThreeGrid
 
         get column_spacing(): number;
@@ -18270,6 +18332,8 @@ export namespace Egg {
     }
 
     class WidgetActionGroup extends GObject.Object implements Gio.ActionGroup {
+        static $gtype: GObject.GType<WidgetActionGroup>;
+
         // Own properties of Egg.WidgetActionGroup
 
         get widget(): Gtk.Widget;
@@ -19100,6 +19164,8 @@ export namespace Egg {
     type CenteringBinClass = typeof CenteringBin;
     type ColumnLayoutClass = typeof ColumnLayout;
     class Counter {
+        static $gtype: GObject.GType<Counter>;
+
         // Own fields of Egg.Counter
 
         values: CounterValue;
@@ -19125,6 +19191,8 @@ export namespace Egg {
     }
 
     class CounterArena {
+        static $gtype: GObject.GType<CounterArena>;
+
         // Constructors of Egg.CounterArena
 
         constructor(pid: GLib.Pid);
@@ -19149,6 +19217,8 @@ export namespace Egg {
     }
 
     class CounterValue {
+        static $gtype: GObject.GType<CounterValue>;
+
         // Own fields of Egg.CounterValue
 
         value: number;
@@ -19218,6 +19288,8 @@ export namespace Egg {
      *
      */
     class Heap {
+        static $gtype: GObject.GType<Heap>;
+
         // Own fields of Egg.Heap
 
         data: string;

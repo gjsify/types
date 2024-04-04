@@ -100,6 +100,8 @@ export namespace Mx {
         LIGHTER,
     }
     class ImageError extends GLib.Error {
+        static $gtype: GObject.GType<ImageError>;
+
         // Static fields of Mx.ImageError
 
         static BAD_FORMAT: number;
@@ -223,6 +225,8 @@ export namespace Mx {
      * Defines the clock-wise rotation angle of a window.
      */
     class WindowRotation {
+        static $gtype: GObject.GType<WindowRotation>;
+
         // Static fields of Mx.WindowRotation
 
         /**
@@ -362,6 +366,8 @@ export namespace Mx {
      * through the public API.
      */
     class Action extends GObject.InitiallyUnowned implements Gio.Action {
+        static $gtype: GObject.GType<Action>;
+
         // Own properties of Mx.Action
 
         get active(): boolean;
@@ -1075,6 +1081,8 @@ export namespace Mx {
     }
 
     class ActorManager extends GObject.Object {
+        static $gtype: GObject.GType<ActorManager>;
+
         // Own properties of Mx.ActorManager
 
         get n_operations(): number;
@@ -1274,6 +1282,8 @@ export namespace Mx {
      * public API.
      */
     class Adjustment extends GObject.Object {
+        static $gtype: GObject.GType<Adjustment>;
+
         // Own properties of Mx.Adjustment
 
         get clamp_value(): boolean;
@@ -1490,6 +1500,8 @@ export namespace Mx {
      * through the public API.
      */
     class Application extends GObject.Object {
+        static $gtype: GObject.GType<Application>;
+
         // Own properties of Mx.Application
 
         get application_name(): string;
@@ -1633,6 +1645,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Bin>;
+
         // Own properties of Mx.Bin
 
         /**
@@ -2314,6 +2328,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<BoxLayout>;
+
         // Own properties of Mx.BoxLayout
 
         get enable_animations(): boolean;
@@ -3020,6 +3036,8 @@ export namespace Mx {
      * through the public API.
      */
     class BoxLayoutChild extends Clutter.ChildMeta {
+        static $gtype: GObject.GType<BoxLayoutChild>;
+
         // Own properties of Mx.BoxLayoutChild
 
         get expand(): boolean;
@@ -3091,6 +3109,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Button>;
+
         // Own properties of Mx.Button
 
         get action(): Action;
@@ -3646,6 +3666,8 @@ export namespace Mx {
      * through the public API.
      */
     class ButtonGroup extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<ButtonGroup>;
+
         // Own properties of Mx.ButtonGroup
 
         get active_button(): Button;
@@ -3721,6 +3743,8 @@ export namespace Mx {
      * the provided API.
      */
     class Clipboard extends GObject.Object {
+        static $gtype: GObject.GType<Clipboard>;
+
         // Constructors of Mx.Clipboard
 
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
@@ -3776,6 +3800,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<ComboBox>;
+
         // Own properties of Mx.ComboBox
 
         get active_icon_name(): string;
@@ -4418,6 +4444,8 @@ export namespace Mx {
         extends DeformTexture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<DeformBowTie>;
+
         // Own properties of Mx.DeformBowTie
 
         get flip_back(): boolean;
@@ -4824,6 +4852,8 @@ export namespace Mx {
         extends DeformTexture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<DeformPageTurn>;
+
         // Own properties of Mx.DeformPageTurn
 
         get angle(): number;
@@ -5235,6 +5265,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<DeformTexture>;
+
         // Own properties of Mx.DeformTexture
 
         get back(): Clutter.Texture;
@@ -5823,6 +5855,8 @@ export namespace Mx {
         extends DeformTexture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<DeformWaves>;
+
         // Own properties of Mx.DeformWaves
 
         get amplitude(): number;
@@ -6232,6 +6266,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Dialog>;
+
         // Constructors of Mx.Dialog
 
         constructor(properties?: Partial<Dialog.ConstructorProps>, ...args: any[]);
@@ -6694,6 +6730,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Entry>;
+
         // Own properties of Mx.Entry
 
         get clutter_text(): Clutter.Text;
@@ -7377,6 +7415,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Expander>;
+
         // Own properties of Mx.Expander
 
         get expanded(): boolean;
@@ -7833,6 +7873,8 @@ export namespace Mx {
     }
 
     class FadeEffect extends Clutter.OffscreenEffect {
+        static $gtype: GObject.GType<FadeEffect>;
+
         // Own properties of Mx.FadeEffect
 
         get border_bottom(): number;
@@ -7949,6 +7991,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<FloatingWidget>;
+
         // Constructors of Mx.FloatingWidget
 
         constructor(properties?: Partial<FloatingWidget.ConstructorProps>, ...args: any[]);
@@ -8477,6 +8521,8 @@ export namespace Mx {
      * through the public API.
      */
     class FocusManager extends GObject.Object {
+        static $gtype: GObject.GType<FocusManager>;
+
         // Own properties of Mx.FocusManager
 
         get focused(): Clutter.Actor;
@@ -8555,6 +8601,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Frame>;
+
         // Constructors of Mx.Frame
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
@@ -8992,6 +9040,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<Grid>;
+
         // Own properties of Mx.Grid
 
         get child_x_align(): Align;
@@ -9635,6 +9685,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Icon>;
+
         // Own properties of Mx.Icon
 
         get icon_name(): string;
@@ -10183,6 +10235,8 @@ export namespace Mx {
      * through the public API.
      */
     class IconTheme extends GObject.Object {
+        static $gtype: GObject.GType<IconTheme>;
+
         // Own properties of Mx.IconTheme
 
         get theme_name(): string;
@@ -10297,6 +10351,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Image>;
+
         // Own properties of Mx.Image
 
         get allow_upscale(): boolean;
@@ -11063,6 +11119,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<ItemView>;
+
         // Own properties of Mx.ItemView
 
         get factory(): GObject.Object;
@@ -11584,6 +11642,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<KineticScrollView>;
+
         // Own properties of Mx.KineticScrollView
 
         get acceleration_factor(): number;
@@ -12176,6 +12236,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Label>;
+
         // Own properties of Mx.Label
 
         get clutter_text(): Clutter.Text;
@@ -12854,6 +12916,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<ListView>;
+
         // Own properties of Mx.ListView
 
         get factory(): GObject.Object;
@@ -13355,6 +13419,8 @@ export namespace Mx {
         extends FloatingWidget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Menu>;
+
         // Constructors of Mx.Menu
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
@@ -13809,6 +13875,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Notebook>;
+
         // Own properties of Mx.Notebook
 
         get current_page(): Clutter.Actor;
@@ -14404,6 +14472,8 @@ export namespace Mx {
         extends Clutter.Texture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable
     {
+        static $gtype: GObject.GType<Offscreen>;
+
         // Own properties of Mx.Offscreen
 
         get accumulation_enabled(): boolean;
@@ -14930,6 +15000,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<PathBar>;
+
         // Own properties of Mx.PathBar
 
         get clear_on_change(): boolean;
@@ -15551,6 +15623,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<ProgressBar>;
+
         // Own properties of Mx.ProgressBar
 
         get progress(): number;
@@ -16119,6 +16193,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<ScrollBar>;
+
         // Own properties of Mx.ScrollBar
 
         get adjustment(): Adjustment;
@@ -16575,6 +16651,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<ScrollView>;
+
         // Own properties of Mx.ScrollView
 
         get enable_gestures(): boolean;
@@ -17013,6 +17091,8 @@ export namespace Mx {
     }
 
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of Mx.Settings
 
         get drag_threshold(): number;
@@ -17075,6 +17155,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Slider>;
+
         // Own properties of Mx.Slider
 
         get buffer_value(): number;
@@ -17675,6 +17757,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Spinner>;
+
         // Own properties of Mx.Spinner
 
         get animating(): boolean;
@@ -18244,6 +18328,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Stack>;
+
         // Constructors of Mx.Stack
 
         constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
@@ -18881,6 +18967,8 @@ export namespace Mx {
      * through the public API.
      */
     class StackChild extends Clutter.ChildMeta {
+        static $gtype: GObject.GType<StackChild>;
+
         // Own properties of Mx.StackChild
 
         get crop(): boolean;
@@ -18928,6 +19016,8 @@ export namespace Mx {
      * the provided API.
      */
     class Style extends GObject.Object {
+        static $gtype: GObject.GType<Style>;
+
         // Constructors of Mx.Style
 
         constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
@@ -19004,6 +19094,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Table>;
+
         // Own properties of Mx.Table
 
         get column_count(): number;
@@ -19760,6 +19852,8 @@ export namespace Mx {
      * the provided API.
      */
     class TableChild extends Clutter.ChildMeta {
+        static $gtype: GObject.GType<TableChild>;
+
         // Own properties of Mx.TableChild
 
         get column(): number;
@@ -19817,6 +19911,8 @@ export namespace Mx {
      * through the public API.
      */
     class TextureCache extends GObject.Object {
+        static $gtype: GObject.GType<TextureCache>;
+
         // Constructors of Mx.TextureCache
 
         constructor(properties?: Partial<TextureCache.ConstructorProps>, ...args: any[]);
@@ -19954,6 +20050,8 @@ export namespace Mx {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<TextureFrame>;
+
         // Own properties of Mx.TextureFrame
 
         get bottom(): number;
@@ -20831,6 +20929,8 @@ export namespace Mx {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Toggle>;
+
         // Own properties of Mx.Toggle
 
         get active(): boolean;
@@ -21387,6 +21487,8 @@ export namespace Mx {
         extends Bin
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
+        static $gtype: GObject.GType<Toolbar>;
+
         // Own properties of Mx.Toolbar
 
         get has_close_button(): boolean;
@@ -21834,6 +21936,8 @@ export namespace Mx {
         extends FloatingWidget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Tooltip>;
+
         // Own properties of Mx.Tooltip
 
         get text(): string;
@@ -22293,6 +22397,8 @@ export namespace Mx {
             Scrollable,
             Stylable
     {
+        static $gtype: GObject.GType<Viewport>;
+
         // Own properties of Mx.Viewport
 
         get sync_adjustments(): boolean;
@@ -22765,6 +22871,8 @@ export namespace Mx {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
+        static $gtype: GObject.GType<Widget>;
+
         // Own properties of Mx.Widget
 
         get disabled(): boolean;
@@ -23902,6 +24010,8 @@ export namespace Mx {
      * the provided API.
      */
     class Window extends GObject.Object {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Mx.Window
 
         get child(): Clutter.Actor;
@@ -24125,6 +24235,8 @@ export namespace Mx {
 
     type ActionClass = typeof Action;
     abstract class ActionPrivate {
+        static $gtype: GObject.GType<ActionPrivate>;
+
         // Constructors of Mx.ActionPrivate
 
         _init(...args: any[]): void;
@@ -24132,6 +24244,8 @@ export namespace Mx {
 
     type ActorManagerClass = typeof ActorManager;
     abstract class ActorManagerPrivate {
+        static $gtype: GObject.GType<ActorManagerPrivate>;
+
         // Constructors of Mx.ActorManagerPrivate
 
         _init(...args: any[]): void;
@@ -24139,6 +24253,8 @@ export namespace Mx {
 
     type AdjustmentClass = typeof Adjustment;
     abstract class AdjustmentPrivate {
+        static $gtype: GObject.GType<AdjustmentPrivate>;
+
         // Constructors of Mx.AdjustmentPrivate
 
         _init(...args: any[]): void;
@@ -24146,6 +24262,8 @@ export namespace Mx {
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Mx.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -24153,12 +24271,16 @@ export namespace Mx {
 
     type BinClass = typeof Bin;
     abstract class BinPrivate {
+        static $gtype: GObject.GType<BinPrivate>;
+
         // Constructors of Mx.BinPrivate
 
         _init(...args: any[]): void;
     }
 
     class BorderImage {
+        static $gtype: GObject.GType<BorderImage>;
+
         // Own fields of Mx.BorderImage
 
         uri: string;
@@ -24187,6 +24309,8 @@ export namespace Mx {
 
     type BoxLayoutChildClass = typeof BoxLayoutChild;
     abstract class BoxLayoutChildPrivate {
+        static $gtype: GObject.GType<BoxLayoutChildPrivate>;
+
         // Constructors of Mx.BoxLayoutChildPrivate
 
         _init(...args: any[]): void;
@@ -24194,6 +24318,8 @@ export namespace Mx {
 
     type BoxLayoutClass = typeof BoxLayout;
     abstract class BoxLayoutPrivate {
+        static $gtype: GObject.GType<BoxLayoutPrivate>;
+
         // Constructors of Mx.BoxLayoutPrivate
 
         _init(...args: any[]): void;
@@ -24202,12 +24328,16 @@ export namespace Mx {
     type ButtonClass = typeof Button;
     type ButtonGroupClass = typeof ButtonGroup;
     abstract class ButtonGroupPrivate {
+        static $gtype: GObject.GType<ButtonGroupPrivate>;
+
         // Constructors of Mx.ButtonGroupPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ButtonPrivate {
+        static $gtype: GObject.GType<ButtonPrivate>;
+
         // Constructors of Mx.ButtonPrivate
 
         _init(...args: any[]): void;
@@ -24215,6 +24345,8 @@ export namespace Mx {
 
     type ClipboardClass = typeof Clipboard;
     abstract class ClipboardPrivate {
+        static $gtype: GObject.GType<ClipboardPrivate>;
+
         // Constructors of Mx.ClipboardPrivate
 
         _init(...args: any[]): void;
@@ -24222,6 +24354,8 @@ export namespace Mx {
 
     type ComboBoxClass = typeof ComboBox;
     abstract class ComboBoxPrivate {
+        static $gtype: GObject.GType<ComboBoxPrivate>;
+
         // Constructors of Mx.ComboBoxPrivate
 
         _init(...args: any[]): void;
@@ -24229,6 +24363,8 @@ export namespace Mx {
 
     type DeformBowTieClass = typeof DeformBowTie;
     abstract class DeformBowTiePrivate {
+        static $gtype: GObject.GType<DeformBowTiePrivate>;
+
         // Constructors of Mx.DeformBowTiePrivate
 
         _init(...args: any[]): void;
@@ -24236,6 +24372,8 @@ export namespace Mx {
 
     type DeformPageTurnClass = typeof DeformPageTurn;
     abstract class DeformPageTurnPrivate {
+        static $gtype: GObject.GType<DeformPageTurnPrivate>;
+
         // Constructors of Mx.DeformPageTurnPrivate
 
         _init(...args: any[]): void;
@@ -24243,6 +24381,8 @@ export namespace Mx {
 
     type DeformTextureClass = typeof DeformTexture;
     abstract class DeformTexturePrivate {
+        static $gtype: GObject.GType<DeformTexturePrivate>;
+
         // Constructors of Mx.DeformTexturePrivate
 
         _init(...args: any[]): void;
@@ -24250,6 +24390,8 @@ export namespace Mx {
 
     type DeformWavesClass = typeof DeformWaves;
     abstract class DeformWavesPrivate {
+        static $gtype: GObject.GType<DeformWavesPrivate>;
+
         // Constructors of Mx.DeformWavesPrivate
 
         _init(...args: any[]): void;
@@ -24257,6 +24399,8 @@ export namespace Mx {
 
     type DialogClass = typeof Dialog;
     abstract class DialogPrivate {
+        static $gtype: GObject.GType<DialogPrivate>;
+
         // Constructors of Mx.DialogPrivate
 
         _init(...args: any[]): void;
@@ -24266,6 +24410,8 @@ export namespace Mx {
     type DroppableIface = typeof Droppable;
     type EntryClass = typeof Entry;
     abstract class EntryPrivate {
+        static $gtype: GObject.GType<EntryPrivate>;
+
         // Constructors of Mx.EntryPrivate
 
         _init(...args: any[]): void;
@@ -24273,6 +24419,8 @@ export namespace Mx {
 
     type ExpanderClass = typeof Expander;
     abstract class ExpanderPrivate {
+        static $gtype: GObject.GType<ExpanderPrivate>;
+
         // Constructors of Mx.ExpanderPrivate
 
         _init(...args: any[]): void;
@@ -24280,6 +24428,8 @@ export namespace Mx {
 
     type FadeEffectClass = typeof FadeEffect;
     abstract class FadeEffectPrivate {
+        static $gtype: GObject.GType<FadeEffectPrivate>;
+
         // Constructors of Mx.FadeEffectPrivate
 
         _init(...args: any[]): void;
@@ -24287,6 +24437,8 @@ export namespace Mx {
 
     type FloatingWidgetClass = typeof FloatingWidget;
     abstract class FloatingWidgetPrivate {
+        static $gtype: GObject.GType<FloatingWidgetPrivate>;
+
         // Constructors of Mx.FloatingWidgetPrivate
 
         _init(...args: any[]): void;
@@ -24294,6 +24446,8 @@ export namespace Mx {
 
     type FocusManagerClass = typeof FocusManager;
     abstract class FocusManagerPrivate {
+        static $gtype: GObject.GType<FocusManagerPrivate>;
+
         // Constructors of Mx.FocusManagerPrivate
 
         _init(...args: any[]): void;
@@ -24302,6 +24456,8 @@ export namespace Mx {
     type FocusableIface = typeof Focusable;
     type FrameClass = typeof Frame;
     abstract class FramePrivate {
+        static $gtype: GObject.GType<FramePrivate>;
+
         // Constructors of Mx.FramePrivate
 
         _init(...args: any[]): void;
@@ -24309,6 +24465,8 @@ export namespace Mx {
 
     type GridClass = typeof Grid;
     abstract class GridPrivate {
+        static $gtype: GObject.GType<GridPrivate>;
+
         // Constructors of Mx.GridPrivate
 
         _init(...args: any[]): void;
@@ -24316,6 +24474,8 @@ export namespace Mx {
 
     type IconClass = typeof Icon;
     abstract class IconPrivate {
+        static $gtype: GObject.GType<IconPrivate>;
+
         // Constructors of Mx.IconPrivate
 
         _init(...args: any[]): void;
@@ -24323,6 +24483,8 @@ export namespace Mx {
 
     type IconThemeClass = typeof IconTheme;
     abstract class IconThemePrivate {
+        static $gtype: GObject.GType<IconThemePrivate>;
+
         // Constructors of Mx.IconThemePrivate
 
         _init(...args: any[]): void;
@@ -24330,6 +24492,8 @@ export namespace Mx {
 
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
+        static $gtype: GObject.GType<ImagePrivate>;
+
         // Constructors of Mx.ImagePrivate
 
         _init(...args: any[]): void;
@@ -24338,6 +24502,8 @@ export namespace Mx {
     type ItemFactoryIface = typeof ItemFactory;
     type ItemViewClass = typeof ItemView;
     abstract class ItemViewPrivate {
+        static $gtype: GObject.GType<ItemViewPrivate>;
+
         // Constructors of Mx.ItemViewPrivate
 
         _init(...args: any[]): void;
@@ -24345,6 +24511,8 @@ export namespace Mx {
 
     type KineticScrollViewClass = typeof KineticScrollView;
     abstract class KineticScrollViewPrivate {
+        static $gtype: GObject.GType<KineticScrollViewPrivate>;
+
         // Constructors of Mx.KineticScrollViewPrivate
 
         _init(...args: any[]): void;
@@ -24352,6 +24520,8 @@ export namespace Mx {
 
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
+        static $gtype: GObject.GType<LabelPrivate>;
+
         // Constructors of Mx.LabelPrivate
 
         _init(...args: any[]): void;
@@ -24359,6 +24529,8 @@ export namespace Mx {
 
     type ListViewClass = typeof ListView;
     abstract class ListViewPrivate {
+        static $gtype: GObject.GType<ListViewPrivate>;
+
         // Constructors of Mx.ListViewPrivate
 
         _init(...args: any[]): void;
@@ -24366,6 +24538,8 @@ export namespace Mx {
 
     type MenuClass = typeof Menu;
     abstract class MenuPrivate {
+        static $gtype: GObject.GType<MenuPrivate>;
+
         // Constructors of Mx.MenuPrivate
 
         _init(...args: any[]): void;
@@ -24373,6 +24547,8 @@ export namespace Mx {
 
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
+        static $gtype: GObject.GType<NotebookPrivate>;
+
         // Constructors of Mx.NotebookPrivate
 
         _init(...args: any[]): void;
@@ -24380,6 +24556,8 @@ export namespace Mx {
 
     type OffscreenClass = typeof Offscreen;
     abstract class OffscreenPrivate {
+        static $gtype: GObject.GType<OffscreenPrivate>;
+
         // Constructors of Mx.OffscreenPrivate
 
         _init(...args: any[]): void;
@@ -24389,6 +24567,8 @@ export namespace Mx {
      * The padding from the internal border of the parent container.
      */
     class Padding {
+        static $gtype: GObject.GType<Padding>;
+
         // Own fields of Mx.Padding
 
         top: number;
@@ -24411,6 +24591,8 @@ export namespace Mx {
 
     type PathBarClass = typeof PathBar;
     abstract class PathBarPrivate {
+        static $gtype: GObject.GType<PathBarPrivate>;
+
         // Constructors of Mx.PathBarPrivate
 
         _init(...args: any[]): void;
@@ -24418,6 +24600,8 @@ export namespace Mx {
 
     type ProgressBarClass = typeof ProgressBar;
     abstract class ProgressBarPrivate {
+        static $gtype: GObject.GType<ProgressBarPrivate>;
+
         // Constructors of Mx.ProgressBarPrivate
 
         _init(...args: any[]): void;
@@ -24425,6 +24609,8 @@ export namespace Mx {
 
     type ScrollBarClass = typeof ScrollBar;
     abstract class ScrollBarPrivate {
+        static $gtype: GObject.GType<ScrollBarPrivate>;
+
         // Constructors of Mx.ScrollBarPrivate
 
         _init(...args: any[]): void;
@@ -24432,6 +24618,8 @@ export namespace Mx {
 
     type ScrollViewClass = typeof ScrollView;
     abstract class ScrollViewPrivate {
+        static $gtype: GObject.GType<ScrollViewPrivate>;
+
         // Constructors of Mx.ScrollViewPrivate
 
         _init(...args: any[]): void;
@@ -24440,18 +24628,24 @@ export namespace Mx {
     type ScrollableIface = typeof Scrollable;
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
+        static $gtype: GObject.GType<SettingsPrivate>;
+
         // Constructors of Mx.SettingsPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class SettingsProvider {
+        static $gtype: GObject.GType<SettingsProvider>;
+
         // Constructors of Mx.SettingsProvider
 
         _init(...args: any[]): void;
     }
 
     class SettingsProviderIface {
+        static $gtype: GObject.GType<SettingsProviderIface>;
+
         // Constructors of Mx.SettingsProviderIface
 
         _init(...args: any[]): void;
@@ -24459,6 +24653,8 @@ export namespace Mx {
 
     type SliderClass = typeof Slider;
     abstract class SliderPrivate {
+        static $gtype: GObject.GType<SliderPrivate>;
+
         // Constructors of Mx.SliderPrivate
 
         _init(...args: any[]): void;
@@ -24466,6 +24662,8 @@ export namespace Mx {
 
     type SpinnerClass = typeof Spinner;
     abstract class SpinnerPrivate {
+        static $gtype: GObject.GType<SpinnerPrivate>;
+
         // Constructors of Mx.SpinnerPrivate
 
         _init(...args: any[]): void;
@@ -24473,6 +24671,8 @@ export namespace Mx {
 
     type StackChildClass = typeof StackChild;
     abstract class StackChildPrivate {
+        static $gtype: GObject.GType<StackChildPrivate>;
+
         // Constructors of Mx.StackChildPrivate
 
         _init(...args: any[]): void;
@@ -24480,6 +24680,8 @@ export namespace Mx {
 
     type StackClass = typeof Stack;
     abstract class StackPrivate {
+        static $gtype: GObject.GType<StackPrivate>;
+
         // Constructors of Mx.StackPrivate
 
         _init(...args: any[]): void;
@@ -24488,6 +24690,8 @@ export namespace Mx {
     type StylableIface = typeof Stylable;
     type StyleClass = typeof Style;
     abstract class StylePrivate {
+        static $gtype: GObject.GType<StylePrivate>;
+
         // Constructors of Mx.StylePrivate
 
         _init(...args: any[]): void;
@@ -24496,6 +24700,8 @@ export namespace Mx {
     type TableChildClass = typeof TableChild;
     type TableClass = typeof Table;
     abstract class TablePrivate {
+        static $gtype: GObject.GType<TablePrivate>;
+
         // Constructors of Mx.TablePrivate
 
         _init(...args: any[]): void;
@@ -24504,6 +24710,8 @@ export namespace Mx {
     type TextureCacheClass = typeof TextureCache;
     type TextureFrameClass = typeof TextureFrame;
     abstract class TextureFramePrivate {
+        static $gtype: GObject.GType<TextureFramePrivate>;
+
         // Constructors of Mx.TextureFramePrivate
 
         _init(...args: any[]): void;
@@ -24511,6 +24719,8 @@ export namespace Mx {
 
     type ToggleClass = typeof Toggle;
     abstract class TogglePrivate {
+        static $gtype: GObject.GType<TogglePrivate>;
+
         // Constructors of Mx.TogglePrivate
 
         _init(...args: any[]): void;
@@ -24518,6 +24728,8 @@ export namespace Mx {
 
     type ToolbarClass = typeof Toolbar;
     abstract class ToolbarPrivate {
+        static $gtype: GObject.GType<ToolbarPrivate>;
+
         // Constructors of Mx.ToolbarPrivate
 
         _init(...args: any[]): void;
@@ -24525,6 +24737,8 @@ export namespace Mx {
 
     type TooltipClass = typeof Tooltip;
     abstract class TooltipPrivate {
+        static $gtype: GObject.GType<TooltipPrivate>;
+
         // Constructors of Mx.TooltipPrivate
 
         _init(...args: any[]): void;
@@ -24532,6 +24746,8 @@ export namespace Mx {
 
     type ViewportClass = typeof Viewport;
     abstract class ViewportPrivate {
+        static $gtype: GObject.GType<ViewportPrivate>;
+
         // Constructors of Mx.ViewportPrivate
 
         _init(...args: any[]): void;
@@ -24539,6 +24755,8 @@ export namespace Mx {
 
     type WidgetClass = typeof Widget;
     abstract class WidgetPrivate {
+        static $gtype: GObject.GType<WidgetPrivate>;
+
         // Constructors of Mx.WidgetPrivate
 
         _init(...args: any[]): void;
@@ -24546,6 +24764,8 @@ export namespace Mx {
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of Mx.WindowPrivate
 
         _init(...args: any[]): void;

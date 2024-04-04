@@ -450,12 +450,16 @@ export namespace GstSdp {
      */
     function sdp_message_parse_uri(uri: string, msg: SDPMessage): SDPResult;
     abstract class MIKEYDecryptInfo {
+        static $gtype: GObject.GType<MIKEYDecryptInfo>;
+
         // Constructors of GstSdp.MIKEYDecryptInfo
 
         _init(...args: any[]): void;
     }
 
     abstract class MIKEYEncryptInfo {
+        static $gtype: GObject.GType<MIKEYEncryptInfo>;
+
         // Constructors of GstSdp.MIKEYEncryptInfo
 
         _init(...args: any[]): void;
@@ -465,6 +469,8 @@ export namespace GstSdp {
      * The Security policy Map item for SRTP
      */
     class MIKEYMapSRTP {
+        static $gtype: GObject.GType<MIKEYMapSRTP>;
+
         // Own fields of GstSdp.MIKEYMapSRTP
 
         policy: number;
@@ -487,6 +493,8 @@ export namespace GstSdp {
      * Structure holding the information of the MIKEY message
      */
     class MIKEYMessage {
+        static $gtype: GObject.GType<MIKEYMessage>;
+
         // Own fields of GstSdp.MIKEYMessage
 
         version: number;
@@ -674,6 +682,8 @@ export namespace GstSdp {
      * Hold the common fields for all payloads
      */
     class MIKEYPayload {
+        static $gtype: GObject.GType<MIKEYPayload>;
+
         // Own fields of GstSdp.MIKEYPayload
 
         type: MIKEYPayloadType;
@@ -811,6 +821,8 @@ export namespace GstSdp {
      * A structure holding the KEMAC payload
      */
     class MIKEYPayloadKEMAC {
+        static $gtype: GObject.GType<MIKEYPayloadKEMAC>;
+
         // Own fields of GstSdp.MIKEYPayloadKEMAC
 
         enc_alg: MIKEYEncAlg;
@@ -827,6 +839,8 @@ export namespace GstSdp {
      * payload to the KEMAC.
      */
     class MIKEYPayloadKeyData {
+        static $gtype: GObject.GType<MIKEYPayloadKeyData>;
+
         // Own fields of GstSdp.MIKEYPayloadKeyData
 
         key_type: MIKEYKeyDataType;
@@ -850,6 +864,8 @@ export namespace GstSdp {
      * the certificate/public key used.
      */
     class MIKEYPayloadPKE {
+        static $gtype: GObject.GType<MIKEYPayloadPKE>;
+
         // Own fields of GstSdp.MIKEYPayloadPKE
 
         C: MIKEYCacheType;
@@ -865,6 +881,8 @@ export namespace GstSdp {
      * The RAND payload consists of a (pseudo-)random bit-string
      */
     class MIKEYPayloadRAND {
+        static $gtype: GObject.GType<MIKEYPayloadRAND>;
+
         // Own fields of GstSdp.MIKEYPayloadRAND
 
         len: number;
@@ -880,6 +898,8 @@ export namespace GstSdp {
      * specific security protocol
      */
     class MIKEYPayloadSP {
+        static $gtype: GObject.GType<MIKEYPayloadSP>;
+
         // Own fields of GstSdp.MIKEYPayloadSP
 
         policy: number;
@@ -895,6 +915,8 @@ export namespace GstSdp {
      * A Type/Length/Value field for security parameters
      */
     class MIKEYPayloadSPParam {
+        static $gtype: GObject.GType<MIKEYPayloadSPParam>;
+
         // Own fields of GstSdp.MIKEYPayloadSPParam
 
         type: number;
@@ -917,6 +939,8 @@ export namespace GstSdp {
      * The timestamp payload carries the timestamp information
      */
     class MIKEYPayloadT {
+        static $gtype: GObject.GType<MIKEYPayloadT>;
+
         // Own fields of GstSdp.MIKEYPayloadT
 
         type: MIKEYTSType;
@@ -931,6 +955,8 @@ export namespace GstSdp {
      * The contents of the SDP "a=" field which contains a key/value pair.
      */
     class SDPAttribute {
+        static $gtype: GObject.GType<SDPAttribute>;
+
         // Own fields of GstSdp.SDPAttribute
 
         key: string;
@@ -967,6 +993,8 @@ export namespace GstSdp {
      * be used by the session or media.
      */
     class SDPBandwidth {
+        static $gtype: GObject.GType<SDPBandwidth>;
+
         // Own fields of GstSdp.SDPBandwidth
 
         bwtype: string;
@@ -1002,6 +1030,8 @@ export namespace GstSdp {
      * The contents of the SDP "c=" field which contains connection data.
      */
     class SDPConnection {
+        static $gtype: GObject.GType<SDPConnection>;
+
         // Own fields of GstSdp.SDPConnection
 
         nettype: string;
@@ -1047,6 +1077,8 @@ export namespace GstSdp {
      * keys.
      */
     class SDPKey {
+        static $gtype: GObject.GType<SDPKey>;
+
         // Own fields of GstSdp.SDPKey
 
         type: string;
@@ -1067,6 +1099,8 @@ export namespace GstSdp {
      * The contents of the SDP "m=" field with all related fields.
      */
     class SDPMedia {
+        static $gtype: GObject.GType<SDPMedia>;
+
         // Own fields of GstSdp.SDPMedia
 
         media: string;
@@ -1422,6 +1456,8 @@ export namespace GstSdp {
      * messages.
      */
     class SDPMessage {
+        static $gtype: GObject.GType<SDPMessage>;
+
         // Own fields of GstSdp.SDPMessage
 
         version: string;
@@ -1934,6 +1970,8 @@ export namespace GstSdp {
      * session version number.
      */
     class SDPOrigin {
+        static $gtype: GObject.GType<SDPOrigin>;
+
         // Own fields of GstSdp.SDPOrigin
 
         username: string;
@@ -1963,6 +2001,8 @@ export namespace GstSdp {
      * a conference session.
      */
     class SDPTime {
+        static $gtype: GObject.GType<SDPTime>;
+
         // Own fields of GstSdp.SDPTime
 
         start: string;
@@ -2003,6 +2043,8 @@ export namespace GstSdp {
      * time.
      */
     class SDPZone {
+        static $gtype: GObject.GType<SDPZone>;
+
         // Own fields of GstSdp.SDPZone
 
         time: string;

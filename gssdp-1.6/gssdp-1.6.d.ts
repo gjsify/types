@@ -21,6 +21,8 @@ export namespace GSSDP {
      * Error used in client creation.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GSSDP.Error
 
         /**
@@ -111,6 +113,8 @@ export namespace GSSDP {
      * belong t the same network device.
      */
     class Client extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of GSSDP.Client
 
         /**
@@ -892,6 +896,8 @@ export namespace GSSDP {
      * the UDA 1.1 devices on the nework annouced its upcoming BOOTID change.
      */
     class ResourceBrowser extends GObject.Object {
+        static $gtype: GObject.GType<ResourceBrowser>;
+
         // Own properties of GSSDP.ResourceBrowser
 
         /**
@@ -1021,6 +1027,8 @@ export namespace GSSDP {
      * service as multiple SSDP resources (UPnP does this for example).
      */
     class ResourceGroup extends GObject.Object {
+        static $gtype: GObject.GType<ResourceGroup>;
+
         // Own properties of GSSDP.ResourceGroup
 
         /**

@@ -536,6 +536,8 @@ export namespace GWeather {
      * moon phases.
      */
     class Info extends GObject.Object {
+        static $gtype: GObject.GType<Info>;
+
         // Own properties of GWeather.Info
 
         /**
@@ -759,6 +761,8 @@ export namespace GWeather {
      * hierarchy of locations works.
      */
     class Location extends GObject.Object {
+        static $gtype: GObject.GType<Location>;
+
         // Constructors of GWeather.Location
 
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
@@ -1050,6 +1054,8 @@ export namespace GWeather {
      * gweather_info_get_symbolic_icon_name().
      */
     class Conditions {
+        static $gtype: GObject.GType<Conditions>;
+
         // Own fields of GWeather.Conditions
 
         significant: boolean;

@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./mypaint-1.6.d.ts"],
+    "readme": "./README.md",
+    "name": "MyPaint-1.6",
+    "tsconfig": "./tsconfig.json"
+}
+

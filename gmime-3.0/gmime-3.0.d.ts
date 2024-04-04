@@ -1459,6 +1459,8 @@ export namespace GMime {
      * An application/pkcs7-mime MIME part.
      */
     class ApplicationPkcs7Mime extends Part {
+        static $gtype: GObject.GType<ApplicationPkcs7Mime>;
+
         // Own fields of GMime.ApplicationPkcs7Mime
 
         parent_object: Part;
@@ -1540,6 +1542,8 @@ export namespace GMime {
      * See https://autocrypt.org/ for details and motivation.
      */
     class AutocryptHeader extends GObject.Object {
+        static $gtype: GObject.GType<AutocryptHeader>;
+
         // Own fields of GMime.AutocryptHeader
 
         parent_object: GObject.Object;
@@ -1660,6 +1664,8 @@ export namespace GMime {
      * A list of Autocrypt headers, typically extracted from a GMimeMessage.
      */
     class AutocryptHeaderList extends GObject.Object {
+        static $gtype: GObject.GType<AutocryptHeaderList>;
+
         // Own fields of GMime.AutocryptHeaderList
 
         parent_object: GObject.Object;
@@ -1719,6 +1725,8 @@ export namespace GMime {
      * An object containing useful information about a certificate.
      */
     class Certificate extends GObject.Object {
+        static $gtype: GObject.GType<Certificate>;
+
         // Own fields of GMime.Certificate
 
         parent_object: GObject.Object;
@@ -1923,6 +1931,8 @@ export namespace GMime {
      * A collection of #GMimeCertificate objects.
      */
     class CertificateList extends GObject.Object {
+        static $gtype: GObject.GType<CertificateList>;
+
         // Own fields of GMime.CertificateList
 
         parent_object: GObject.Object;
@@ -2011,6 +2021,8 @@ export namespace GMime {
      * A data structure representing a Content-Disposition.
      */
     class ContentDisposition extends GObject.Object {
+        static $gtype: GObject.GType<ContentDisposition>;
+
         // Own fields of GMime.ContentDisposition
 
         parent_object: GObject.Object;
@@ -2092,6 +2104,8 @@ export namespace GMime {
      * A data structure representing a Content-Type.
      */
     class ContentType extends GObject.Object {
+        static $gtype: GObject.GType<ContentType>;
+
         // Own fields of GMime.ContentType
 
         parent_object: GObject.Object;
@@ -2190,6 +2204,8 @@ export namespace GMime {
      * A crypto context for use with MIME.
      */
     class CryptoContext extends GObject.Object {
+        static $gtype: GObject.GType<CryptoContext>;
+
         // Own fields of GMime.CryptoContext
 
         parent_object: GObject.Object;
@@ -2445,6 +2461,8 @@ export namespace GMime {
      * A wrapper for a stream which may be encoded.
      */
     class DataWrapper extends GObject.Object {
+        static $gtype: GObject.GType<DataWrapper>;
+
         // Own fields of GMime.DataWrapper
 
         parent_object: GObject.Object;
@@ -2514,6 +2532,8 @@ export namespace GMime {
      * An object containing the results from decrypting an encrypted stream.
      */
     class DecryptResult extends GObject.Object {
+        static $gtype: GObject.GType<DecryptResult>;
+
         // Own fields of GMime.DecryptResult
 
         parent_object: GObject.Object;
@@ -2595,6 +2615,8 @@ export namespace GMime {
      * Base class for filters used by #GMimeStreamFilter.
      */
     abstract class Filter extends GObject.Object {
+        static $gtype: GObject.GType<Filter>;
+
         // Own fields of GMime.Filter
 
         parent_object: GObject.Object;
@@ -2684,6 +2706,8 @@ export namespace GMime {
      * A basic encoder/decoder filter for the MIME encodings.
      */
     class FilterBasic extends Filter {
+        static $gtype: GObject.GType<FilterBasic>;
+
         // Own fields of GMime.FilterBasic
 
         parent_object: Filter;
@@ -2708,6 +2732,8 @@ export namespace GMime {
      * the data passed through it.
      */
     class FilterBest extends Filter {
+        static $gtype: GObject.GType<FilterBest>;
+
         // Own fields of GMime.FilterBest
 
         parent_object: Filter;
@@ -2759,6 +2785,8 @@ export namespace GMime {
      * A filter to convert between charsets.
      */
     class FilterCharset extends Filter {
+        static $gtype: GObject.GType<FilterCharset>;
+
         // Own fields of GMime.FilterCharset
 
         parent_object: Filter;
@@ -2784,6 +2812,8 @@ export namespace GMime {
      * A filter for calculating the checksum of a stream.
      */
     class FilterChecksum extends Filter {
+        static $gtype: GObject.GType<FilterChecksum>;
+
         // Own fields of GMime.FilterChecksum
 
         parent_object: Filter;
@@ -2822,6 +2852,8 @@ export namespace GMime {
      * A filter to convert a stream from Windows/DOS line endings to Unix line endings.
      */
     class FilterDos2Unix extends Filter {
+        static $gtype: GObject.GType<FilterDos2Unix>;
+
         // Own fields of GMime.FilterDos2Unix
 
         parent_object: Filter;
@@ -2848,6 +2880,8 @@ export namespace GMime {
      * streams into text/html.
      */
     class FilterEnriched extends Filter {
+        static $gtype: GObject.GType<FilterEnriched>;
+
         // Own fields of GMime.FilterEnriched
 
         parent_object: Filter;
@@ -2873,6 +2907,8 @@ export namespace GMime {
      * A filter for armoring or escaping lines beginning with "From ".
      */
     class FilterFrom extends Filter {
+        static $gtype: GObject.GType<FilterFrom>;
+
         // Own fields of GMime.FilterFrom
 
         parent_object: Filter;
@@ -2898,6 +2934,8 @@ export namespace GMime {
      * A filter for compresing or decompressing a gzip stream.
      */
     class FilterGZip extends Filter {
+        static $gtype: GObject.GType<FilterGZip>;
+
         // Own fields of GMime.FilterGZip
 
         parent_object: Filter;
@@ -2947,6 +2985,8 @@ export namespace GMime {
      * A filter for converting text/plain into text/html.
      */
     class FilterHTML extends Filter {
+        static $gtype: GObject.GType<FilterHTML>;
+
         // Own fields of GMime.FilterHTML
 
         parent_object: Filter;
@@ -2976,6 +3016,8 @@ export namespace GMime {
      * A filter to detect OpenPGP markers.
      */
     class FilterOpenPGP extends Filter {
+        static $gtype: GObject.GType<FilterOpenPGP>;
+
         // Own fields of GMime.FilterOpenPGP
 
         parent_object: Filter;
@@ -3017,6 +3059,8 @@ export namespace GMime {
      * A filter to byte-stuff SMTP DATA.
      */
     class FilterSmtpData extends Filter {
+        static $gtype: GObject.GType<FilterSmtpData>;
+
         // Own fields of GMime.FilterSmtpData
 
         parent_object: Filter;
@@ -3041,6 +3085,8 @@ export namespace GMime {
      * A filter for stripping whitespace from the end of lines.
      */
     class FilterStrip extends Filter {
+        static $gtype: GObject.GType<FilterStrip>;
+
         // Own fields of GMime.FilterStrip
 
         parent_object: Filter;
@@ -3064,6 +3110,8 @@ export namespace GMime {
      * A filter to convert a stream from Windows/DOS line endings to Unix line endings.
      */
     class FilterUnix2Dos extends Filter {
+        static $gtype: GObject.GType<FilterUnix2Dos>;
+
         // Own fields of GMime.FilterUnix2Dos
 
         parent_object: Filter;
@@ -3091,6 +3139,8 @@ export namespace GMime {
      * Windows-CP125x charset.
      */
     class FilterWindows extends Filter {
+        static $gtype: GObject.GType<FilterWindows>;
+
         // Own fields of GMime.FilterWindows
 
         parent_object: Filter;
@@ -3130,6 +3180,8 @@ export namespace GMime {
      * A filter for yEncoding or yDecoding a stream.
      */
     class FilterYenc extends Filter {
+        static $gtype: GObject.GType<FilterYenc>;
+
         // Own fields of GMime.FilterYenc
 
         parent_object: Filter;
@@ -3181,6 +3233,8 @@ export namespace GMime {
      * A GnuPG crypto context.
      */
     class GpgContext extends CryptoContext {
+        static $gtype: GObject.GType<GpgContext>;
+
         // Constructors of GMime.GpgContext
 
         constructor(properties?: Partial<GpgContext.ConstructorProps>, ...args: any[]);
@@ -3200,6 +3254,8 @@ export namespace GMime {
      * A message or mime-part header.
      */
     class Header extends GObject.Object {
+        static $gtype: GObject.GType<Header>;
+
         // Constructors of GMime.Header
 
         constructor(properties?: Partial<Header.ConstructorProps>, ...args: any[]);
@@ -3331,6 +3387,8 @@ export namespace GMime {
      * A list of message or mime-part headers.
      */
     class HeaderList extends GObject.Object {
+        static $gtype: GObject.GType<HeaderList>;
+
         // Own fields of GMime.HeaderList
 
         parent_object: GObject.Object;
@@ -3442,6 +3500,8 @@ export namespace GMime {
      * An RFC 2822 Address object.
      */
     abstract class InternetAddress extends GObject.Object {
+        static $gtype: GObject.GType<InternetAddress>;
+
         // Own fields of GMime.InternetAddress
 
         parent_object: GObject.Object;
@@ -3502,6 +3562,8 @@ export namespace GMime {
      * An RFC 2822 Group address.
      */
     class InternetAddressGroup extends InternetAddress {
+        static $gtype: GObject.GType<InternetAddressGroup>;
+
         // Own fields of GMime.InternetAddressGroup
 
         parent_object: InternetAddress;
@@ -3546,6 +3608,8 @@ export namespace GMime {
      * A collection of #InternetAddress objects.
      */
     class InternetAddressList extends GObject.Object {
+        static $gtype: GObject.GType<InternetAddressList>;
+
         // Own fields of GMime.InternetAddressList
 
         parent_object: GObject.Object;
@@ -3668,6 +3732,8 @@ export namespace GMime {
      * An RFC 2822 Mailbox address.
      */
     class InternetAddressMailbox extends InternetAddress {
+        static $gtype: GObject.GType<InternetAddressMailbox>;
+
         // Own fields of GMime.InternetAddressMailbox
 
         parent_object: InternetAddress;
@@ -3712,6 +3778,8 @@ export namespace GMime {
      * A MIME Message object.
      */
     class Message extends Object {
+        static $gtype: GObject.GType<Message>;
+
         // Own fields of GMime.Message
 
         parent_object: Object;
@@ -3962,6 +4030,8 @@ export namespace GMime {
      * A message/rfc822 or message/news MIME part.
      */
     class MessagePart extends Object {
+        static $gtype: GObject.GType<MessagePart>;
+
         // Own fields of GMime.MessagePart
 
         parent_object: Object;
@@ -4004,6 +4074,8 @@ export namespace GMime {
      * A message/partial MIME part.
      */
     class MessagePartial extends Part {
+        static $gtype: GObject.GType<MessagePartial>;
+
         // Own fields of GMime.MessagePartial
 
         parent_object: Part;
@@ -4062,6 +4134,8 @@ export namespace GMime {
      * A base MIME multipart object.
      */
     class Multipart extends Object {
+        static $gtype: GObject.GType<Multipart>;
+
         // Own fields of GMime.Multipart
 
         parent_object: Object;
@@ -4256,6 +4330,8 @@ export namespace GMime {
      * A multipart/encrypted MIME part.
      */
     class MultipartEncrypted extends Multipart {
+        static $gtype: GObject.GType<MultipartEncrypted>;
+
         // Own fields of GMime.MultipartEncrypted
 
         parent_object: Multipart;
@@ -4322,6 +4398,8 @@ export namespace GMime {
      * A multipart/signed MIME part.
      */
     class MultipartSigned extends Multipart {
+        static $gtype: GObject.GType<MultipartSigned>;
+
         // Own fields of GMime.MultipartSigned
 
         parent_object: Multipart;
@@ -4367,6 +4445,8 @@ export namespace GMime {
      * Base class for all MIME parts.
      */
     abstract class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own fields of GMime.Object
 
         parent_object: GObject.Object;
@@ -4592,6 +4672,8 @@ export namespace GMime {
      * A parameter name/value pair as used in the Content-Type and Content-Disposition headers.
      */
     class Param extends GObject.Object {
+        static $gtype: GObject.GType<Param>;
+
         // Own fields of GMime.Param
 
         parent_object: GObject.Object;
@@ -4666,6 +4748,8 @@ export namespace GMime {
      * A list of Content-Type or Content-Disposition parameters.
      */
     class ParamList extends GObject.Object {
+        static $gtype: GObject.GType<ParamList>;
+
         // Constructors of GMime.ParamList
 
         constructor(properties?: Partial<ParamList.ConstructorProps>, ...args: any[]);
@@ -4743,6 +4827,8 @@ export namespace GMime {
      * A MIME parser context.
      */
     class Parser extends GObject.Object {
+        static $gtype: GObject.GType<Parser>;
+
         // Own fields of GMime.Parser
 
         parent_object: GObject.Object;
@@ -4888,6 +4974,8 @@ export namespace GMime {
      * A leaf-node MIME part object.
      */
     class Part extends Object {
+        static $gtype: GObject.GType<Part>;
+
         // Own fields of GMime.Part
 
         parent_object: Object;
@@ -5071,6 +5159,8 @@ export namespace GMime {
      * A PKCS7 crypto context.
      */
     class Pkcs7Context extends CryptoContext {
+        static $gtype: GObject.GType<Pkcs7Context>;
+
         // Constructors of GMime.Pkcs7Context
 
         constructor(properties?: Partial<Pkcs7Context.ConstructorProps>, ...args: any[]);
@@ -5090,6 +5180,8 @@ export namespace GMime {
      * An object containing useful information about a signature.
      */
     class Signature extends GObject.Object {
+        static $gtype: GObject.GType<Signature>;
+
         // Own fields of GMime.Signature
 
         parent_object: GObject.Object;
@@ -5173,6 +5265,8 @@ export namespace GMime {
      * A collection of #GMimeSignature objects.
      */
     class SignatureList extends GObject.Object {
+        static $gtype: GObject.GType<SignatureList>;
+
         // Own fields of GMime.SignatureList
 
         parent_object: GObject.Object;
@@ -5260,6 +5354,8 @@ export namespace GMime {
      * Abstract I/O stream class.
      */
     abstract class Stream extends GObject.Object {
+        static $gtype: GObject.GType<Stream>;
+
         // Constructors of GMime.Stream
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
@@ -5452,6 +5548,8 @@ export namespace GMime {
      * A buffered stream wrapper around any #GMimeStream object.
      */
     class StreamBuffer extends Stream {
+        static $gtype: GObject.GType<StreamBuffer>;
+
         // Own fields of GMime.StreamBuffer
 
         parent_object: Stream;
@@ -5481,6 +5579,8 @@ export namespace GMime {
      * A concatenation of other #GMimeStream objects.
      */
     class StreamCat extends Stream {
+        static $gtype: GObject.GType<StreamCat>;
+
         // Own fields of GMime.StreamCat
 
         parent_object: Stream;
@@ -5515,6 +5615,8 @@ export namespace GMime {
      * A #GMimeStream wrapper around standard-c FILE pointers.
      */
     class StreamFile extends Stream {
+        static $gtype: GObject.GType<StreamFile>;
+
         // Own fields of GMime.StreamFile
 
         parent_object: Stream;
@@ -5567,6 +5669,8 @@ export namespace GMime {
      * A #GMimeStream which passes data through any #GMimeFilter objects.
      */
     class StreamFilter extends Stream {
+        static $gtype: GObject.GType<StreamFilter>;
+
         // Own fields of GMime.StreamFilter
 
         parent_object: Stream;
@@ -5622,6 +5726,8 @@ export namespace GMime {
      * A #GMimeStream wrapper around POSIX file descriptors.
      */
     class StreamFs extends Stream {
+        static $gtype: GObject.GType<StreamFs>;
+
         // Own fields of GMime.StreamFs
 
         parent_object: Stream;
@@ -5678,6 +5784,8 @@ export namespace GMime {
      * A #GMimeStream wrapper around GLib's GIO streams.
      */
     class StreamGIO extends Stream {
+        static $gtype: GObject.GType<StreamGIO>;
+
         // Own fields of GMime.StreamGIO
 
         parent_object: Stream;
@@ -5726,6 +5834,8 @@ export namespace GMime {
      * A memory-backed #GMimeStream.
      */
     class StreamMem extends Stream {
+        static $gtype: GObject.GType<StreamMem>;
+
         // Own fields of GMime.StreamMem
 
         parent_object: Stream;
@@ -5784,6 +5894,8 @@ export namespace GMime {
      * A memory-mapped #GMimeStream.
      */
     class StreamMmap extends Stream {
+        static $gtype: GObject.GType<StreamMmap>;
+
         // Own fields of GMime.StreamMmap
 
         parent_object: Stream;
@@ -5832,6 +5944,8 @@ export namespace GMime {
      * A #GMimeStream which has no backing store.
      */
     class StreamNull extends Stream {
+        static $gtype: GObject.GType<StreamNull>;
+
         // Own fields of GMime.StreamNull
 
         parent_object: Stream;
@@ -5873,6 +5987,8 @@ export namespace GMime {
      * A #GMimeStream wrapper around pipes.
      */
     class StreamPipe extends Stream {
+        static $gtype: GObject.GType<StreamPipe>;
+
         // Own fields of GMime.StreamPipe
 
         parent_object: Stream;
@@ -5917,6 +6033,8 @@ export namespace GMime {
      * A text MIME part object.
      */
     class TextPart extends Part {
+        static $gtype: GObject.GType<TextPart>;
+
         // Own fields of GMime.TextPart
 
         parent_object: Part;
@@ -5964,6 +6082,8 @@ export namespace GMime {
      * State used by g_mime_charset_best() and g_mime_charset_best_name().
      */
     class Charset {
+        static $gtype: GObject.GType<Charset>;
+
         // Own fields of GMime.Charset
 
         mask: number;
@@ -6080,6 +6200,8 @@ export namespace GMime {
      * A context used for encoding or decoding data.
      */
     class Encoding {
+        static $gtype: GObject.GType<Encoding>;
+
         // Own fields of GMime.Encoding
 
         encoding: ContentEncoding;
@@ -6277,6 +6399,8 @@ export namespace GMime {
      * Format options for serializing various GMime objects.
      */
     abstract class FormatOptions {
+        static $gtype: GObject.GType<FormatOptions>;
+
         // Constructors of GMime.FormatOptions
 
         constructor(properties?: Partial<{}>);
@@ -6378,6 +6502,8 @@ export namespace GMime {
      * An OpenPGP marker for use with GMime's internal state machines used for detecting OpenPGP blocks.
      */
     class OpenPGPMarker {
+        static $gtype: GObject.GType<OpenPGPMarker>;
+
         // Own fields of GMime.OpenPGPMarker
 
         marker: string;
@@ -6398,6 +6524,8 @@ export namespace GMime {
      * A set of parser options used by #GMimeParser and various other parsing functions.
      */
     abstract class ParserOptions {
+        static $gtype: GObject.GType<ParserOptions>;
+
         // Constructors of GMime.ParserOptions
 
         constructor(properties?: Partial<{}>);
@@ -6539,6 +6667,8 @@ export namespace GMime {
      * A MIME part iterator.
      */
     abstract class PartIter {
+        static $gtype: GObject.GType<PartIter>;
+
         // Constructors of GMime.PartIter
 
         constructor(toplevel: Object);
@@ -6628,6 +6758,8 @@ export namespace GMime {
      * fields.
      */
     class References {
+        static $gtype: GObject.GType<References>;
+
         // Own fields of GMime.References
 
         array: any[];
@@ -6705,6 +6837,8 @@ export namespace GMime {
      * An I/O vector for use with g_mime_stream_writev().
      */
     class StreamIOVector {
+        static $gtype: GObject.GType<StreamIOVector>;
+
         // Own fields of GMime.StreamIOVector
 
         data: any;

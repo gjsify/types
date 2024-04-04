@@ -18,6 +18,8 @@ export namespace GLib {
      * Error codes returned by bookmark file parsing.
      */
     class BookmarkFileError extends Error {
+        static $gtype: GObject.GType<BookmarkFileError>;
+
         // Static fields of GLib.BookmarkFileError
 
         /**
@@ -94,6 +96,8 @@ export namespace GLib {
      * Error codes returned by character set conversion routines.
      */
     class ConvertError extends Error {
+        static $gtype: GObject.GType<ConvertError>;
+
         // Static fields of GLib.ConvertError
 
         /**
@@ -307,6 +311,8 @@ export namespace GLib {
      * differences in when a system will report a given error, etc.
      */
     class FileError extends Error {
+        static $gtype: GObject.GType<FileError>;
+
         // Static fields of GLib.FileError
 
         /**
@@ -462,6 +468,8 @@ export namespace GLib {
      * Error codes returned by #GIOChannel operations.
      */
     class IOChannelError extends Error {
+        static $gtype: GObject.GType<IOChannelError>;
+
         // Static fields of GLib.IOChannelError
 
         /**
@@ -554,6 +562,8 @@ export namespace GLib {
      * Error codes returned by key file parsing.
      */
     class KeyFileError extends Error {
+        static $gtype: GObject.GType<KeyFileError>;
+
         // Static fields of GLib.KeyFileError
 
         /**
@@ -610,6 +620,8 @@ export namespace GLib {
      * Error codes returned by markup parsing.
      */
     class MarkupError extends Error {
+        static $gtype: GObject.GType<MarkupError>;
+
         // Static fields of GLib.MarkupError
 
         /**
@@ -703,6 +715,8 @@ export namespace GLib {
      * Error codes returned by functions converting a string to a number.
      */
     class NumberParserError extends Error {
+        static $gtype: GObject.GType<NumberParserError>;
+
         // Static fields of GLib.NumberParserError
 
         /**
@@ -795,6 +809,8 @@ export namespace GLib {
      * Error codes returned by option parsing.
      */
     class OptionError extends Error {
+        static $gtype: GObject.GType<OptionError>;
+
         // Static fields of GLib.OptionError
 
         /**
@@ -822,6 +838,8 @@ export namespace GLib {
      * Error codes returned by regular expressions functions.
      */
     class RegexError extends Error {
+        static $gtype: GObject.GType<RegexError>;
+
         // Static fields of GLib.RegexError
 
         /**
@@ -1124,6 +1142,8 @@ export namespace GLib {
      * Error codes returned by shell functions.
      */
     class ShellError extends Error {
+        static $gtype: GObject.GType<ShellError>;
+
         // Static fields of GLib.ShellError
 
         /**
@@ -1157,6 +1177,8 @@ export namespace GLib {
      * Error codes returned by spawning processes.
      */
     class SpawnError extends Error {
+        static $gtype: GObject.GType<SpawnError>;
+
         // Static fields of GLib.SpawnError
 
         /**
@@ -1303,6 +1325,8 @@ export namespace GLib {
      * Possible errors of thread related functions.
      */
     class ThreadError extends Error {
+        static $gtype: GObject.GType<ThreadError>;
+
         // Static fields of GLib.ThreadError
 
         /**
@@ -2472,6 +2496,8 @@ export namespace GLib {
      * Error codes returned by #GUri methods.
      */
     class UriError extends Error {
+        static $gtype: GObject.GType<UriError>;
+
         // Static fields of GLib.UriError
 
         /**
@@ -2652,6 +2678,8 @@ export namespace GLib {
      * Error codes returned by parsing text-format GVariants.
      */
     class VariantParseError extends Error {
+        static $gtype: GObject.GType<VariantParseError>;
+
         // Static fields of GLib.VariantParseError
 
         /**
@@ -12746,6 +12774,8 @@ export namespace GLib {
      * Contains the public fields of a GArray.
      */
     class Array {
+        static $gtype: GObject.GType<Array>;
+
         // Own fields of GLib.Array
 
         data: string;
@@ -12768,6 +12798,8 @@ export namespace GLib {
      * It should only be accessed through the `g_async_queue_*` functions.
      */
     abstract class AsyncQueue {
+        static $gtype: GObject.GType<AsyncQueue>;
+
         // Constructors of GLib.AsyncQueue
 
         _init(...args: any[]): void;
@@ -13005,6 +13037,8 @@ export namespace GLib {
      * The #GBookmarkFile parser was added in GLib 2.12.
      */
     abstract class BookmarkFile {
+        static $gtype: GObject.GType<BookmarkFile>;
+
         // Constructors of GLib.BookmarkFile
 
         constructor(properties?: Partial<{}>);
@@ -13558,6 +13592,8 @@ export namespace GLib {
      * Contains the public fields of a GByteArray.
      */
     class ByteArray {
+        static $gtype: GObject.GType<ByteArray>;
+
         // Own fields of GLib.ByteArray
 
         data: number;
@@ -13656,6 +13692,8 @@ export namespace GLib {
      * a mutable #GByteArray, use the g_byte_array_free_to_bytes() function.
      */
     abstract class Bytes {
+        static $gtype: GObject.GType<Bytes>;
+
         // Constructors of GLib.Bytes
 
         constructor(data?: Uint8Array | null);
@@ -13807,6 +13845,8 @@ export namespace GLib {
      * a GChecksum, use g_checksum_free().
      */
     abstract class Checksum {
+        static $gtype: GObject.GType<Checksum>;
+
         // Constructors of GLib.Checksum
 
         constructor(checksum_type: ChecksumType);
@@ -13928,6 +13968,8 @@ export namespace GLib {
      * A #GCond should only be accessed via the g_cond_ functions.
      */
     class Cond {
+        static $gtype: GObject.GType<Cond>;
+
         // Constructors of GLib.Cond
 
         constructor(properties?: Partial<{}>);
@@ -14055,6 +14097,8 @@ export namespace GLib {
      * See also: [Keyed data lists][glib-Keyed-Data-Lists].
      */
     abstract class Data {
+        static $gtype: GObject.GType<Data>;
+
         // Constructors of GLib.Data
 
         _init(...args: any[]): void;
@@ -14074,6 +14118,8 @@ export namespace GLib {
      * and year.
      */
     class Date {
+        static $gtype: GObject.GType<Date>;
+
         // Own fields of GLib.Date
 
         julian_days: number;
@@ -14469,6 +14515,8 @@ export namespace GLib {
      * An opaque structure that represents a date and time, including a time zone.
      */
     abstract class DateTime {
+        static $gtype: GObject.GType<DateTime>;
+
         // Constructors of GLib.DateTime
 
         constructor(properties?: Partial<{}>);
@@ -14966,6 +15014,8 @@ export namespace GLib {
      * Used in g_parse_debug_string().
      */
     class DebugKey {
+        static $gtype: GObject.GType<DebugKey>;
+
         // Own fields of GLib.DebugKey
 
         key: string;
@@ -14986,6 +15036,8 @@ export namespace GLib {
      * An opaque structure representing an opened directory.
      */
     abstract class Dir {
+        static $gtype: GObject.GType<Dir>;
+
         // Constructors of GLib.Dir
 
         _init(...args: any[]): void;
@@ -15043,6 +15095,8 @@ export namespace GLib {
      * an error that has occurred.
      */
     class Error {
+        static $gtype: GObject.GType<Error>;
+
         // Own fields of GLib.Error
 
         domain: Quark;
@@ -15097,6 +15151,8 @@ export namespace GLib {
      * following functions.
      */
     abstract class HashTable<A = string, B = any> {
+        static $gtype: GObject.GType<HashTable>;
+
         [key: string]: B;
 
         // Own static methods of GLib.HashTable
@@ -15286,6 +15342,8 @@ export namespace GLib {
      * table is not defined.
      */
     class HashTableIter {
+        static $gtype: GObject.GType<HashTableIter>;
+
         // Constructors of GLib.HashTableIter
 
         constructor(properties?: Partial<{}>);
@@ -15372,6 +15430,8 @@ export namespace GLib {
      * a GHmac, use g_hmac_unref().
      */
     abstract class Hmac {
+        static $gtype: GObject.GType<Hmac>;
+
         // Constructors of GLib.Hmac
 
         _init(...args: any[]): void;
@@ -15420,6 +15480,8 @@ export namespace GLib {
      * The #GHook struct represents a single hook function in a #GHookList.
      */
     class Hook {
+        static $gtype: GObject.GType<Hook>;
+
         // Own fields of GLib.Hook
 
         data: any;
@@ -15486,6 +15548,8 @@ export namespace GLib {
      * The #GHookList struct represents a list of hook functions.
      */
     class HookList {
+        static $gtype: GObject.GType<HookList>;
+
         // Own fields of GLib.HookList
 
         seq_id: number;
@@ -15530,6 +15594,8 @@ export namespace GLib {
      * functions.
      */
     class IOChannel {
+        static $gtype: GObject.GType<IOChannel>;
+
         // Constructors of GLib.IOChannel
 
         constructor(filename: string, mode: string);
@@ -15824,6 +15890,8 @@ export namespace GLib {
      * in a generic way.
      */
     class IOFuncs {
+        static $gtype: GObject.GType<IOFuncs>;
+
         // Constructors of GLib.IOFuncs
 
         _init(...args: any[]): void;
@@ -15972,6 +16040,8 @@ export namespace GLib {
      *
      */
     abstract class KeyFile {
+        static $gtype: GObject.GType<KeyFile>;
+
         // Constructors of GLib.KeyFile
 
         constructor(properties?: Partial<{}>);
@@ -16471,6 +16541,8 @@ export namespace GLib {
      * The #GList struct is used for each element in a doubly-linked list.
      */
     class List {
+        static $gtype: GObject.GType<List>;
+
         // Own fields of GLib.List
 
         data: any;
@@ -16497,6 +16569,8 @@ export namespace GLib {
      * value.
      */
     class LogField {
+        static $gtype: GObject.GType<LogField>;
+
         // Own fields of GLib.LogField
 
         key: string;
@@ -16520,6 +16594,8 @@ export namespace GLib {
      * type representing a set of sources to be handled in a main loop.
      */
     abstract class MainContext {
+        static $gtype: GObject.GType<MainContext>;
+
         // Constructors of GLib.MainContext
 
         constructor(properties?: Partial<{}>);
@@ -16840,6 +16916,8 @@ export namespace GLib {
      * representing the main event loop of a GLib or GTK application.
      */
     abstract class MainLoop {
+        static $gtype: GObject.GType<MainLoop>;
+
         // Constructors of GLib.MainLoop
 
         constructor(context: MainContext | null, is_running: boolean);
@@ -16897,6 +16975,8 @@ export namespace GLib {
      * not be accessed directly.
      */
     abstract class MappedFile {
+        static $gtype: GObject.GType<MappedFile>;
+
         // Constructors of GLib.MappedFile
 
         constructor(filename: string, writable: boolean);
@@ -16960,6 +17040,8 @@ export namespace GLib {
      * on for more details.
      */
     abstract class MarkupParseContext {
+        static $gtype: GObject.GType<MarkupParseContext>;
+
         // Constructors of GLib.MarkupParseContext
 
         constructor(parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null);
@@ -17190,6 +17272,8 @@ export namespace GLib {
      * back to its caller.
      */
     class MarkupParser {
+        static $gtype: GObject.GType<MarkupParser>;
+
         // Constructors of GLib.MarkupParser
 
         _init(...args: any[]): void;
@@ -17200,6 +17284,8 @@ export namespace GLib {
      * matches.
      */
     abstract class MatchInfo {
+        static $gtype: GObject.GType<MatchInfo>;
+
         // Constructors of GLib.MatchInfo
 
         _init(...args: any[]): void;
@@ -17413,6 +17499,8 @@ export namespace GLib {
      * This functions related to this has been deprecated in 2.46, and no longer work.
      */
     class MemVTable {
+        static $gtype: GObject.GType<MemVTable>;
+
         // Constructors of GLib.MemVTable
 
         _init(...args: any[]): void;
@@ -17422,6 +17510,8 @@ export namespace GLib {
      * The #GNode struct represents one node in a [n-ary tree][glib-N-ary-Trees].
      */
     class Node {
+        static $gtype: GObject.GType<Node>;
+
         // Own fields of GLib.Node
 
         data: any;
@@ -17505,6 +17595,8 @@ export namespace GLib {
      * struct.
      */
     class Once {
+        static $gtype: GObject.GType<Once>;
+
         // Own fields of GLib.Once
 
         status: OnceStatus;
@@ -17724,6 +17816,8 @@ export namespace GLib {
      *
      */
     abstract class OptionContext {
+        static $gtype: GObject.GType<OptionContext>;
+
         // Constructors of GLib.OptionContext
 
         _init(...args: any[]): void;
@@ -17950,6 +18044,8 @@ export namespace GLib {
      * or g_option_group_add_entries().
      */
     class OptionEntry {
+        static $gtype: GObject.GType<OptionEntry>;
+
         // Own fields of GLib.OptionEntry
 
         long_name: string;
@@ -17975,6 +18071,8 @@ export namespace GLib {
      * the application can then add to its #GOptionContext.
      */
     abstract class OptionGroup {
+        static $gtype: GObject.GType<OptionGroup>;
+
         // Constructors of GLib.OptionGroup
 
         constructor(
@@ -18075,6 +18173,8 @@ export namespace GLib {
      * `GPathBuf` is available since GLib 2.76.
      */
     class PathBuf {
+        static $gtype: GObject.GType<PathBuf>;
+
         // Constructors of GLib.PathBuf
 
         constructor(properties?: Partial<{}>);
@@ -18269,6 +18369,8 @@ export namespace GLib {
      * structure is opaque and its fields cannot be accessed directly.
      */
     abstract class PatternSpec {
+        static $gtype: GObject.GType<PatternSpec>;
+
         // Constructors of GLib.PatternSpec
 
         constructor(pattern: string);
@@ -18333,6 +18435,8 @@ export namespace GLib {
      * occurred.
      */
     class PollFD {
+        static $gtype: GObject.GType<PollFD>;
+
         // Own fields of GLib.PollFD
 
         fd: number;
@@ -18371,6 +18475,8 @@ export namespace GLib {
      * be accessed via the g_private_ functions.
      */
     class Private {
+        static $gtype: GObject.GType<Private>;
+
         // Constructors of GLib.Private
 
         _init(...args: any[]): void;
@@ -18411,6 +18517,8 @@ export namespace GLib {
      * Contains the public fields of a pointer array.
      */
     class PtrArray {
+        static $gtype: GObject.GType<PtrArray>;
+
         // Own fields of GLib.PtrArray
 
         pdata: any;
@@ -18432,6 +18540,8 @@ export namespace GLib {
      * [Queue][glib-Double-ended-Queues].
      */
     class Queue {
+        static $gtype: GObject.GType<Queue>;
+
         // Own fields of GLib.Queue
 
         head: any[];
@@ -18634,6 +18744,8 @@ export namespace GLib {
      * A GRWLock should only be accessed with the g_rw_lock_ functions.
      */
     class RWLock {
+        static $gtype: GObject.GType<RWLock>;
+
         // Constructors of GLib.RWLock
 
         constructor(properties?: Partial<{}>);
@@ -18743,6 +18855,8 @@ export namespace GLib {
      * accessed through the g_rand_* functions.
      */
     abstract class Rand {
+        static $gtype: GObject.GType<Rand>;
+
         // Constructors of GLib.Rand
 
         _init(...args: any[]): void;
@@ -18813,6 +18927,8 @@ export namespace GLib {
      * g_rec_mutex_ functions.
      */
     class RecMutex {
+        static $gtype: GObject.GType<RecMutex>;
+
         // Constructors of GLib.RecMutex
 
         constructor(properties?: Partial<{}>);
@@ -18945,6 +19061,8 @@ export namespace GLib {
      * library written by Philip Hazel.
      */
     abstract class Regex {
+        static $gtype: GObject.GType<Regex>;
+
         // Constructors of GLib.Regex
 
         constructor(pattern: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags);
@@ -19414,6 +19532,8 @@ export namespace GLib {
      * list.
      */
     class SList {
+        static $gtype: GObject.GType<SList>;
+
         // Own fields of GLib.SList
 
         data: any;
@@ -19446,6 +19566,8 @@ export namespace GLib {
      * is declared by #GScannerMsgFunc.
      */
     class Scanner {
+        static $gtype: GObject.GType<Scanner>;
+
         // Own fields of GLib.Scanner
 
         user_data: any;
@@ -19606,6 +19728,8 @@ export namespace GLib {
      * parsing of the next unpeeked token.
      */
     class ScannerConfig {
+        static $gtype: GObject.GType<ScannerConfig>;
+
         // Own fields of GLib.ScannerConfig
 
         cset_skip_characters: string;
@@ -19675,6 +19799,8 @@ export namespace GLib {
      * [sequence][glib-Sequences] data type.
      */
     abstract class Sequence {
+        static $gtype: GObject.GType<Sequence>;
+
         // Constructors of GLib.Sequence
 
         _init(...args: any[]): void;
@@ -19820,6 +19946,8 @@ export namespace GLib {
      * iterator pointing into a #GSequence.
      */
     abstract class SequenceIter {
+        static $gtype: GObject.GType<SequenceIter>;
+
         // Constructors of GLib.SequenceIter
 
         _init(...args: any[]): void;
@@ -19883,6 +20011,8 @@ export namespace GLib {
      * representing an event source.
      */
     class Source {
+        static $gtype: GObject.GType<Source>;
+
         // Constructors of GLib.Source
 
         constructor(source_funcs: SourceFuncs, struct_size: number);
@@ -20392,6 +20522,8 @@ export namespace GLib {
      * functions for managing callback objects.
      */
     class SourceCallbackFuncs {
+        static $gtype: GObject.GType<SourceCallbackFuncs>;
+
         // Constructors of GLib.SourceCallbackFuncs
 
         _init(...args: any[]): void;
@@ -20420,12 +20552,16 @@ export namespace GLib {
      * required condition has been met, and returns %TRUE if so.
      */
     class SourceFuncs {
+        static $gtype: GObject.GType<SourceFuncs>;
+
         // Constructors of GLib.SourceFuncs
 
         _init(...args: any[]): void;
     }
 
     abstract class SourcePrivate {
+        static $gtype: GObject.GType<SourcePrivate>;
+
         // Constructors of GLib.SourcePrivate
 
         _init(...args: any[]): void;
@@ -20438,6 +20574,8 @@ export namespace GLib {
      * See g_stat() for more information.
      */
     abstract class StatBuf {
+        static $gtype: GObject.GType<StatBuf>;
+
         // Constructors of GLib.StatBuf
 
         _init(...args: any[]): void;
@@ -20447,6 +20585,8 @@ export namespace GLib {
      * The GString struct contains the public fields of a GString.
      */
     class String {
+        static $gtype: GObject.GType<String>;
+
         // Own fields of GLib.String
 
         str: string;
@@ -20731,6 +20871,8 @@ export namespace GLib {
      * It should only be accessed by using the following functions.
      */
     abstract class StringChunk {
+        static $gtype: GObject.GType<StringChunk>;
+
         // Constructors of GLib.StringChunk
 
         _init(...args: any[]): void;
@@ -20816,6 +20958,8 @@ export namespace GLib {
      *
      */
     abstract class StrvBuilder {
+        static $gtype: GObject.GType<StrvBuilder>;
+
         // Constructors of GLib.StrvBuilder
 
         _init(...args: any[]): void;
@@ -20856,6 +21000,8 @@ export namespace GLib {
      * An opaque structure representing a test case.
      */
     abstract class TestCase {
+        static $gtype: GObject.GType<TestCase>;
+
         // Constructors of GLib.TestCase
 
         _init(...args: any[]): void;
@@ -20869,6 +21015,8 @@ export namespace GLib {
     }
 
     class TestConfig {
+        static $gtype: GObject.GType<TestConfig>;
+
         // Own fields of GLib.TestConfig
 
         test_initialized: boolean;
@@ -20894,6 +21042,8 @@ export namespace GLib {
     }
 
     class TestLogBuffer {
+        static $gtype: GObject.GType<TestLogBuffer>;
+
         // Constructors of GLib.TestLogBuffer
 
         constructor(properties?: Partial<{}>);
@@ -20914,6 +21064,8 @@ export namespace GLib {
     }
 
     class TestLogMsg {
+        static $gtype: GObject.GType<TestLogMsg>;
+
         // Own fields of GLib.TestLogMsg
 
         log_type: TestLogType;
@@ -20937,6 +21089,8 @@ export namespace GLib {
      * An opaque structure representing a test suite.
      */
     abstract class TestSuite {
+        static $gtype: GObject.GType<TestSuite>;
+
         // Constructors of GLib.TestSuite
 
         _init(...args: any[]): void;
@@ -20975,6 +21129,8 @@ export namespace GLib {
      * accessed.
      */
     abstract class Thread {
+        static $gtype: GObject.GType<Thread>;
+
         // Constructors of GLib.Thread
 
         constructor(name: string | null, func: ThreadFunc);
@@ -21068,6 +21224,8 @@ export namespace GLib {
      * so you must not copy this struct.
      */
     class ThreadPool {
+        static $gtype: GObject.GType<ThreadPool>;
+
         // Own fields of GLib.ThreadPool
 
         func: Func;
@@ -21228,6 +21386,8 @@ export namespace GLib {
      * problem.
      */
     class TimeVal {
+        static $gtype: GObject.GType<TimeVal>;
+
         // Own fields of GLib.TimeVal
 
         tv_sec: number;
@@ -21324,6 +21484,8 @@ export namespace GLib {
      * directly.
      */
     abstract class TimeZone {
+        static $gtype: GObject.GType<TimeZone>;
+
         // Constructors of GLib.TimeZone
 
         constructor(properties?: Partial<{}>);
@@ -21443,6 +21605,8 @@ export namespace GLib {
      * Opaque datatype that records a start time.
      */
     abstract class Timer {
+        static $gtype: GObject.GType<Timer>;
+
         // Constructors of GLib.Timer
 
         _init(...args: any[]): void;
@@ -21500,6 +21664,8 @@ export namespace GLib {
      * is cast to a GTrashStack*.
      */
     class TrashStack {
+        static $gtype: GObject.GType<TrashStack>;
+
         // Constructors of GLib.TrashStack
 
         _init(...args: any[]): void;
@@ -21539,6 +21705,8 @@ export namespace GLib {
      * accessed only by using the following functions.
      */
     abstract class Tree {
+        static $gtype: GObject.GType<Tree>;
+
         // Constructors of GLib.Tree
 
         constructor(key_compare_func: CompareFunc);
@@ -21731,6 +21899,8 @@ export namespace GLib {
      * An opaque type which identifies a specific node in a #GTree.
      */
     abstract class TreeNode {
+        static $gtype: GObject.GType<TreeNode>;
+
         // Constructors of GLib.TreeNode
 
         _init(...args: any[]): void;
@@ -21872,6 +22042,8 @@ export namespace GLib {
      * handle.
      */
     abstract class Uri {
+        static $gtype: GObject.GType<Uri>;
+
         // Constructors of GLib.Uri
 
         _init(...args: any[]): void;
@@ -22372,6 +22544,8 @@ export namespace GLib {
      * for a usage example.
      */
     class UriParamsIter {
+        static $gtype: GObject.GType<UriParamsIter>;
+
         // Constructors of GLib.UriParamsIter
 
         constructor(properties?: Partial<{}>);
@@ -22683,6 +22857,8 @@ export namespace GLib {
      * be shared.
      */
     abstract class Variant<A extends string = any> {
+        static $gtype: GObject.GType<Variant>;
+
         // Constructors of GLib.Variant
 
         constructor(sig: A, value: any);
@@ -23516,6 +23692,8 @@ export namespace GLib {
      * access it from more than one thread.
      */
     class VariantBuilder {
+        static $gtype: GObject.GType<VariantBuilder>;
+
         // Constructors of GLib.VariantBuilder
 
         constructor(type: VariantType);
@@ -23727,6 +23905,8 @@ export namespace GLib {
      *
      */
     class VariantDict {
+        static $gtype: GObject.GType<VariantDict>;
+
         // Constructors of GLib.VariantDict
 
         constructor(from_asv?: Variant | null);
@@ -23972,6 +24152,8 @@ export namespace GLib {
      * be a basic type, "{**}" is not a valid type string.
      */
     abstract class VariantType<A extends string = any> {
+        static $gtype: GObject.GType<VariantType>;
+
         // Constructors of GLib.VariantType
 
         constructor(type_string: string);
@@ -24246,6 +24428,8 @@ export namespace GLib {
      * (used for storage) by at least Intel, PPC and Sparc.
      */
     class DoubleIEEE754 {
+        static $gtype: GObject.GType<DoubleIEEE754>;
+
         // Own fields of GLib.DoubleIEEE754
 
         v_double: number;
@@ -24267,6 +24451,8 @@ export namespace GLib {
      * (used for storage) by at least Intel, PPC and Sparc.
      */
     class FloatIEEE754 {
+        static $gtype: GObject.GType<FloatIEEE754>;
+
         // Own fields of GLib.FloatIEEE754
 
         v_float: number;
@@ -24332,6 +24518,8 @@ export namespace GLib {
      * A #GMutex should only be accessed via g_mutex_ functions.
      */
     class Mutex {
+        static $gtype: GObject.GType<Mutex>;
+
         // Constructors of GLib.Mutex
 
         constructor(properties?: Partial<{}>);
@@ -24415,6 +24603,8 @@ export namespace GLib {
      * A union holding the value of the token.
      */
     class TokenValue {
+        static $gtype: GObject.GType<TokenValue>;
+
         // Own fields of GLib.TokenValue
 
         v_symbol: any;

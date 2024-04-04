@@ -159,6 +159,8 @@ export namespace GstGLEGL {
      * through the provided API
      */
     class GLDisplayEGL extends GstGL.GLDisplay {
+        static $gtype: GObject.GType<GLDisplayEGL>;
+
         // Constructors of GstGLEGL.GLDisplayEGL
 
         constructor(properties?: Partial<GLDisplayEGL.ConstructorProps>, ...args: any[]);
@@ -200,6 +202,8 @@ export namespace GstGLEGL {
      * through the provided API
      */
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
+        static $gtype: GObject.GType<GLDisplayEGLDevice>;
+
         // Own fields of GstGLEGL.GLDisplayEGLDevice
 
         device: any;
@@ -228,6 +232,8 @@ export namespace GstGLEGL {
      * Opaque #GstGLMemoryEGLAllocator struct
      */
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
+        static $gtype: GObject.GType<GLMemoryEGLAllocator>;
+
         // Constructors of GstGLEGL.GLMemoryEGLAllocator
 
         constructor(properties?: Partial<GLMemoryEGLAllocator.ConstructorProps>, ...args: any[]);
@@ -243,6 +249,8 @@ export namespace GstGLEGL {
      * #GstAllocator to allocate `EGLImage`'s bound to and OpenGL texture.
      */
     class EGLImage {
+        static $gtype: GObject.GType<EGLImage>;
+
         // Constructors of GstGLEGL.EGLImage
 
         constructor(
@@ -386,6 +394,8 @@ export namespace GstGLEGL {
      * with #GstGLVideoAllocationParams.
      */
     class GLMemoryEGL {
+        static $gtype: GObject.GType<GLMemoryEGL>;
+
         // Constructors of GstGLEGL.GLMemoryEGL
 
         _init(...args: any[]): void;

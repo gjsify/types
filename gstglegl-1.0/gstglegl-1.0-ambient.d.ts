@@ -1,7 +1,7 @@
 
 declare module 'gi://GstGLEGL?version=1.0' {
-    import GstGLEGL10 from '@girs/gstglegl-1.0';
-    export default GstGLEGL10;
+    import GstGLEGL from '@girs/gstglegl-1.0';
+    export default GstGLEGL;
 }
 
 declare module 'gi://GstGLEGL' {

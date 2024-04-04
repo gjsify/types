@@ -54,6 +54,8 @@ export namespace Ide {
         MATCH,
     }
     class DeviceError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceError>;
+
         // Static fields of Ide.DeviceError
 
         static DEVICE: number;
@@ -77,6 +79,8 @@ export namespace Ide {
         FATAL,
     }
     class DoapError extends GLib.Error {
+        static $gtype: GObject.GType<DoapError>;
+
         // Static fields of Ide.DoapError
 
         static FORMAT: number;
@@ -112,6 +116,8 @@ export namespace Ide {
         MOVE_RIGHT,
     }
     class RuntimeError extends GLib.Error {
+        static $gtype: GObject.GType<RuntimeError>;
+
         // Static fields of Ide.RuntimeError
 
         static RUNTIME: number;
@@ -442,6 +448,8 @@ export namespace Ide {
      * Error codes returned by #IdeUri methods.
      */
     class UriError extends GLib.Error {
+        static $gtype: GObject.GType<UriError>;
+
         // Static fields of Ide.UriError
 
         static MISC: number;
@@ -814,6 +822,8 @@ export namespace Ide {
     }
 
     class Application extends Dazzle.Application implements Gio.ActionGroup, Gio.ActionMap {
+        static $gtype: GObject.GType<Application>;
+
         // Constructors of Ide.Application
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
@@ -1247,6 +1257,8 @@ export namespace Ide {
     }
 
     class BackForwardItem extends Object {
+        static $gtype: GObject.GType<BackForwardItem>;
+
         // Own properties of Ide.BackForwardItem
 
         get mark(): Gtk.TextMark;
@@ -1305,6 +1317,8 @@ export namespace Ide {
     }
 
     class BackForwardList extends Object {
+        static $gtype: GObject.GType<BackForwardList>;
+
         // Own properties of Ide.BackForwardList
 
         get can_go_backward(): boolean;
@@ -1402,6 +1416,8 @@ export namespace Ide {
     }
 
     class Buffer extends GtkSource.Buffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own properties of Ide.Buffer
 
         get busy(): boolean;
@@ -1650,6 +1666,8 @@ export namespace Ide {
     }
 
     class BufferChangeMonitor extends Object {
+        static $gtype: GObject.GType<BufferChangeMonitor>;
+
         // Own properties of Ide.BufferChangeMonitor
 
         set buffer(val: Buffer);
@@ -1734,6 +1752,8 @@ export namespace Ide {
     }
 
     class BufferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<BufferManager>;
+
         // Own properties of Ide.BufferManager
 
         get auto_save(): boolean;
@@ -2411,6 +2431,8 @@ export namespace Ide {
     }
 
     class BuildManager extends Object implements Gio.ActionGroup, Gio.Initable {
+        static $gtype: GObject.GType<BuildManager>;
+
         // Own properties of Ide.BuildManager
 
         /**
@@ -3526,6 +3548,8 @@ export namespace Ide {
      * by the user requesting a "make dist" style operation.
      */
     class BuildPipeline extends Object implements Gio.Initable {
+        static $gtype: GObject.GType<BuildPipeline>;
+
         // Own properties of Ide.BuildPipeline
 
         /**
@@ -4202,6 +4226,8 @@ export namespace Ide {
     }
 
     class BuildStage extends Object {
+        static $gtype: GObject.GType<BuildStage>;
+
         // Own properties of Ide.BuildStage
 
         /**
@@ -4392,6 +4418,8 @@ export namespace Ide {
     }
 
     class BuildStageLauncher extends BuildStage {
+        static $gtype: GObject.GType<BuildStageLauncher>;
+
         // Own properties of Ide.BuildStageLauncher
 
         get clean_launcher(): SubprocessLauncher;
@@ -4443,6 +4471,8 @@ export namespace Ide {
     }
 
     class BuildStageMkdirs extends BuildStage {
+        static $gtype: GObject.GType<BuildStageMkdirs>;
+
         // Constructors of Ide.BuildStageMkdirs
 
         constructor(properties?: Partial<BuildStageMkdirs.ConstructorProps>, ...args: any[]);
@@ -4467,6 +4497,8 @@ export namespace Ide {
     }
 
     class BuildStageTransfer extends BuildStage {
+        static $gtype: GObject.GType<BuildStageTransfer>;
+
         // Own properties of Ide.BuildStageTransfer
 
         get disable_when_metered(): boolean;
@@ -4494,6 +4526,8 @@ export namespace Ide {
     }
 
     class BuildconfigConfiguration extends Configuration {
+        static $gtype: GObject.GType<BuildconfigConfiguration>;
+
         // Own properties of Ide.BuildconfigConfiguration
 
         get postbuild(): string[];
@@ -4522,6 +4556,8 @@ export namespace Ide {
     }
 
     class BuildconfigConfigurationProvider extends GObject.Object implements ConfigurationProvider {
+        static $gtype: GObject.GType<BuildconfigConfigurationProvider>;
+
         // Constructors of Ide.BuildconfigConfigurationProvider
 
         constructor(properties?: Partial<BuildconfigConfigurationProvider.ConstructorProps>, ...args: any[]);
@@ -4914,6 +4950,8 @@ export namespace Ide {
     }
 
     abstract class CompletionItem extends GObject.Object {
+        static $gtype: GObject.GType<CompletionItem>;
+
         // Constructors of Ide.CompletionItem
 
         constructor(properties?: Partial<CompletionItem.ConstructorProps>, ...args: any[]);
@@ -4956,6 +4994,8 @@ export namespace Ide {
     }
 
     class CompletionResults extends GObject.Object {
+        static $gtype: GObject.GType<CompletionResults>;
+
         // Own properties of Ide.CompletionResults
 
         get query(): string;
@@ -4991,6 +5031,8 @@ export namespace Ide {
     }
 
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
+        static $gtype: GObject.GType<CompletionWords>;
+
         // Constructors of Ide.CompletionWords
 
         constructor(properties?: Partial<CompletionWords.ConstructorProps>, ...args: any[]);
@@ -5628,6 +5670,8 @@ export namespace Ide {
     }
 
     class Configuration extends Object {
+        static $gtype: GObject.GType<Configuration>;
+
         // Own properties of Ide.Configuration
 
         get app_id(): string;
@@ -5834,6 +5878,8 @@ export namespace Ide {
         extends Object
         implements Gio.AsyncInitable<ConfigurationManager>, Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<ConfigurationManager>;
+
         // Own properties of Ide.ConfigurationManager
 
         get current(): Configuration;
@@ -6480,6 +6526,8 @@ export namespace Ide {
     }
 
     class Context extends GObject.Object implements Gio.AsyncInitable<Context> {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of Ide.Context
 
         get back_forward_list(): BackForwardList;
@@ -7197,6 +7245,8 @@ export namespace Ide {
     }
 
     class Cursor extends GObject.Object {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own properties of Ide.Cursor
 
         get ide_source_view(): SourceView;
@@ -7231,6 +7281,8 @@ export namespace Ide {
     }
 
     abstract class Device extends Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Ide.Device
 
         get display_name(): string;
@@ -7312,6 +7364,8 @@ export namespace Ide {
     }
 
     class DeviceManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<DeviceManager>;
+
         // Own properties of Ide.DeviceManager
 
         get settled(): boolean;
@@ -7824,6 +7878,8 @@ export namespace Ide {
     }
 
     class DiagnosticsManager extends Object implements Gio.Initable {
+        static $gtype: GObject.GType<DiagnosticsManager>;
+
         // Own properties of Ide.DiagnosticsManager
 
         get busy(): boolean;
@@ -8319,6 +8375,8 @@ export namespace Ide {
     }
 
     class DirectoryBuildSystem extends Object implements Gio.AsyncInitable<DirectoryBuildSystem>, BuildSystem {
+        static $gtype: GObject.GType<DirectoryBuildSystem>;
+
         // Own properties of Ide.DirectoryBuildSystem
 
         get project_file(): Gio.File;
@@ -8873,6 +8931,8 @@ export namespace Ide {
     }
 
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
+        static $gtype: GObject.GType<DirectoryVcs>;
+
         // Constructors of Ide.DirectoryVcs
 
         constructor(properties?: Partial<DirectoryVcs.ConstructorProps>, ...args: any[]);
@@ -9454,6 +9514,8 @@ export namespace Ide {
     }
 
     class Doap extends GObject.Object {
+        static $gtype: GObject.GType<Doap>;
+
         // Own properties of Ide.Doap
 
         get bug_database(): string;
@@ -9510,6 +9572,8 @@ export namespace Ide {
     }
 
     class DoapPerson extends GObject.Object {
+        static $gtype: GObject.GType<DoapPerson>;
+
         // Own properties of Ide.DoapPerson
 
         get email(): string;
@@ -9562,6 +9626,8 @@ export namespace Ide {
         extends Dazzle.DockOverlay
         implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable, Perspective
     {
+        static $gtype: GObject.GType<EditorPerspective>;
+
         // Own properties of Ide.EditorPerspective
 
         get active_view(): Gtk.Widget;
@@ -14132,6 +14198,8 @@ export namespace Ide {
     }
 
     class EditorView extends LayoutView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EditorView>;
+
         // Own properties of Ide.EditorView
 
         get document(): Buffer;
@@ -14528,6 +14596,8 @@ export namespace Ide {
     }
 
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<Environment>;
+
         // Constructors of Ide.Environment
 
         constructor(properties?: Partial<Environment.ConstructorProps>, ...args: any[]);
@@ -15022,6 +15092,8 @@ export namespace Ide {
     }
 
     class EnvironmentVariable extends GObject.Object {
+        static $gtype: GObject.GType<EnvironmentVariable>;
+
         // Own properties of Ide.EnvironmentVariable
 
         get key(): string;
@@ -15059,6 +15131,8 @@ export namespace Ide {
     }
 
     class ExtensionAdapter extends Object {
+        static $gtype: GObject.GType<ExtensionAdapter>;
+
         // Own properties of Ide.ExtensionAdapter
 
         get engine(): Peas.Engine;
@@ -15126,6 +15200,8 @@ export namespace Ide {
     }
 
     class ExtensionSetAdapter extends Object {
+        static $gtype: GObject.GType<ExtensionSetAdapter>;
+
         // Own properties of Ide.ExtensionSetAdapter
 
         get engine(): Peas.Engine;
@@ -15209,6 +15285,8 @@ export namespace Ide {
     }
 
     class File extends Object {
+        static $gtype: GObject.GType<File>;
+
         // Own properties of Ide.File
 
         get file(): Gio.File;
@@ -15323,6 +15401,8 @@ export namespace Ide {
     }
 
     class FileSettings extends Object {
+        static $gtype: GObject.GType<FileSettings>;
+
         // Own properties of Ide.FileSettings
 
         get encoding(): string;
@@ -15457,6 +15537,8 @@ export namespace Ide {
     }
 
     class FormatterOptions extends GObject.Object {
+        static $gtype: GObject.GType<FormatterOptions>;
+
         // Own properties of Ide.FormatterOptions
 
         get insert_spaces(): boolean;
@@ -15494,6 +15576,8 @@ export namespace Ide {
     }
 
     class HighlightEngine extends Object {
+        static $gtype: GObject.GType<HighlightEngine>;
+
         // Own properties of Ide.HighlightEngine
 
         get buffer(): Buffer;
@@ -15567,6 +15651,8 @@ export namespace Ide {
     }
 
     class LangservClient extends Object {
+        static $gtype: GObject.GType<LangservClient>;
+
         // Own properties of Ide.LangservClient
 
         get io_stream(): Gio.IOStream;
@@ -15671,6 +15757,8 @@ export namespace Ide {
         extends Object
         implements GtkSource.CompletionProvider, CompletionProvider
     {
+        static $gtype: GObject.GType<LangservCompletionProvider>;
+
         // Own properties of Ide.LangservCompletionProvider
 
         get client(): LangservClient;
@@ -16296,6 +16384,8 @@ export namespace Ide {
     }
 
     abstract class LangservDiagnosticProvider extends Object implements DiagnosticProvider {
+        static $gtype: GObject.GType<LangservDiagnosticProvider>;
+
         // Own properties of Ide.LangservDiagnosticProvider
 
         get client(): LangservClient;
@@ -16387,6 +16477,8 @@ export namespace Ide {
     }
 
     class LangservFormatter extends Object implements Formatter {
+        static $gtype: GObject.GType<LangservFormatter>;
+
         // Own properties of Ide.LangservFormatter
 
         get client(): LangservClient;
@@ -16807,6 +16899,8 @@ export namespace Ide {
     }
 
     class LangservHighlighter extends Object implements Highlighter {
+        static $gtype: GObject.GType<LangservHighlighter>;
+
         // Own properties of Ide.LangservHighlighter
 
         get client(): LangservClient;
@@ -16896,6 +16990,8 @@ export namespace Ide {
     }
 
     abstract class LangservRenameProvider extends Object implements RenameProvider {
+        static $gtype: GObject.GType<LangservRenameProvider>;
+
         // Own properties of Ide.LangservRenameProvider
 
         set buffer(val: Buffer);
@@ -17007,6 +17103,8 @@ export namespace Ide {
     }
 
     class LangservSymbolNode extends SymbolNode {
+        static $gtype: GObject.GType<LangservSymbolNode>;
+
         // Constructors of Ide.LangservSymbolNode
 
         constructor(properties?: Partial<LangservSymbolNode.ConstructorProps>, ...args: any[]);
@@ -17039,6 +17137,8 @@ export namespace Ide {
     }
 
     abstract class LangservSymbolResolver extends Object implements SymbolResolver {
+        static $gtype: GObject.GType<LangservSymbolResolver>;
+
         // Own properties of Ide.LangservSymbolResolver
 
         get client(): LangservClient;
@@ -17201,6 +17301,8 @@ export namespace Ide {
     }
 
     class LangservSymbolTree extends GObject.Object implements SymbolTree {
+        static $gtype: GObject.GType<LangservSymbolTree>;
+
         // Constructors of Ide.LangservSymbolTree
 
         constructor(properties?: Partial<LangservSymbolTree.ConstructorProps>, ...args: any[]);
@@ -17607,6 +17709,8 @@ export namespace Ide {
     }
 
     class Layout extends Dazzle.DockBin implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable {
+        static $gtype: GObject.GType<Layout>;
+
         // Own properties of Ide.Layout
 
         get active_view(): Gtk.Widget;
@@ -22002,6 +22106,8 @@ export namespace Ide {
     }
 
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<LayoutGrid>;
+
         // Constructors of Ide.LayoutGrid
 
         constructor(properties?: Partial<LayoutGrid.ConstructorProps>, ...args: any[]);
@@ -22410,6 +22516,8 @@ export namespace Ide {
     }
 
     class LayoutPane extends Dazzle.DockBinEdge implements Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildable {
+        static $gtype: GObject.GType<LayoutPane>;
+
         // Constructors of Ide.LayoutPane
 
         constructor(properties?: Partial<LayoutPane.ConstructorProps>, ...args: any[]);
@@ -26462,6 +26570,8 @@ export namespace Ide {
     }
 
     class LayoutStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<LayoutStack>;
+
         // Own properties of Ide.LayoutStack
 
         get active_view(): LayoutView;
@@ -26878,6 +26988,8 @@ export namespace Ide {
     }
 
     class LayoutView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<LayoutView>;
+
         // Own properties of Ide.LayoutView
 
         get can_split(): boolean;
@@ -27341,6 +27453,8 @@ export namespace Ide {
     }
 
     class LocalDevice extends Device {
+        static $gtype: GObject.GType<LocalDevice>;
+
         // Constructors of Ide.LocalDevice
 
         constructor(properties?: Partial<LocalDevice.ConstructorProps>, ...args: any[]);
@@ -27363,6 +27477,8 @@ export namespace Ide {
     }
 
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Ide.Object
 
         get context(): Context;
@@ -27436,6 +27552,8 @@ export namespace Ide {
     }
 
     class OmniBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<OmniBar>;
+
         // Constructors of Ide.OmniBar
 
         constructor(properties?: Partial<OmniBar.ConstructorProps>, ...args: any[]);
@@ -27841,6 +27959,8 @@ export namespace Ide {
     }
 
     class OmniSearchDisplay extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<OmniSearchDisplay>;
+
         // Own properties of Ide.OmniSearchDisplay
 
         get context(): SearchContext;
@@ -28275,6 +28395,8 @@ export namespace Ide {
         extends Gtk.Entry
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
+        static $gtype: GObject.GType<OmniSearchEntry>;
+
         // Constructors of Ide.OmniSearchEntry
 
         constructor(properties?: Partial<OmniSearchEntry.ConstructorProps>, ...args: any[]);
@@ -32466,6 +32588,8 @@ export namespace Ide {
     }
 
     class OmniSearchGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<OmniSearchGroup>;
+
         // Own properties of Ide.OmniSearchGroup
 
         get provider(): SearchProvider;
@@ -32898,6 +33022,8 @@ export namespace Ide {
     }
 
     class OmniSearchRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<OmniSearchRow>;
+
         // Own properties of Ide.OmniSearchRow
 
         set icon_name(val: string);
@@ -33282,6 +33408,8 @@ export namespace Ide {
     }
 
     class PkconTransfer extends Transfer {
+        static $gtype: GObject.GType<PkconTransfer>;
+
         // Own properties of Ide.PkconTransfer
 
         get packages(): string[];
@@ -33310,6 +33438,8 @@ export namespace Ide {
         extends Dazzle.PreferencesView
         implements Atk.ImplementorIface, Dazzle.Preferences, Gtk.Buildable, Perspective
     {
+        static $gtype: GObject.GType<PreferencesPerspective>;
+
         // Constructors of Ide.PreferencesPerspective
 
         constructor(properties?: Partial<PreferencesPerspective.ConstructorProps>, ...args: any[]);
@@ -33994,6 +34124,8 @@ export namespace Ide {
     }
 
     class Progress extends GObject.Object {
+        static $gtype: GObject.GType<Progress>;
+
         // Own properties of Ide.Progress
 
         get completed(): boolean;
@@ -34059,6 +34191,8 @@ export namespace Ide {
     }
 
     class Project extends Object {
+        static $gtype: GObject.GType<Project>;
+
         // Own properties of Ide.Project
 
         get id(): string;
@@ -34157,6 +34291,8 @@ export namespace Ide {
     }
 
     class ProjectEdit extends GObject.Object {
+        static $gtype: GObject.GType<ProjectEdit>;
+
         // Own properties of Ide.ProjectEdit
 
         get range(): SourceRange;
@@ -34199,6 +34335,8 @@ export namespace Ide {
     }
 
     class ProjectFile extends ProjectItem {
+        static $gtype: GObject.GType<ProjectFile>;
+
         // Own properties of Ide.ProjectFile
 
         get file(): Gio.File;
@@ -34244,6 +34382,8 @@ export namespace Ide {
     }
 
     class ProjectFiles extends ProjectItem {
+        static $gtype: GObject.GType<ProjectFiles>;
+
         // Constructors of Ide.ProjectFiles
 
         constructor(properties?: Partial<ProjectFiles.ConstructorProps>, ...args: any[]);
@@ -34294,6 +34434,8 @@ export namespace Ide {
      * This information should be used to display a list of available projects.
      */
     class ProjectInfo extends GObject.Object {
+        static $gtype: GObject.GType<ProjectInfo>;
+
         // Own properties of Ide.ProjectInfo
 
         get build_system_name(): string;
@@ -34371,6 +34513,8 @@ export namespace Ide {
     }
 
     class ProjectItem extends Object {
+        static $gtype: GObject.GType<ProjectItem>;
+
         // Own properties of Ide.ProjectItem
 
         get parent(): ProjectItem;
@@ -34408,6 +34552,8 @@ export namespace Ide {
     }
 
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<RecentProjects>;
+
         // Constructors of Ide.RecentProjects
 
         constructor(properties?: Partial<RecentProjects.ConstructorProps>, ...args: any[]);
@@ -34896,6 +35042,8 @@ export namespace Ide {
     }
 
     class RunButton extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<RunButton>;
+
         // Constructors of Ide.RunButton
 
         constructor(properties?: Partial<RunButton.ConstructorProps>, ...args: any[]);
@@ -35303,6 +35451,8 @@ export namespace Ide {
     }
 
     class RunManager extends Object implements Gio.ActionGroup, Gio.Initable {
+        static $gtype: GObject.GType<RunManager>;
+
         // Own properties of Ide.RunManager
 
         get build_target(): BuildTarget;
@@ -36267,6 +36417,8 @@ export namespace Ide {
     }
 
     class Runner extends Object {
+        static $gtype: GObject.GType<Runner>;
+
         // Own properties of Ide.Runner
 
         get argv(): string[];
@@ -36390,6 +36542,8 @@ export namespace Ide {
     }
 
     class Runtime extends Object {
+        static $gtype: GObject.GType<Runtime>;
+
         // Own properties of Ide.Runtime
 
         get display_name(): string;
@@ -36482,6 +36636,8 @@ export namespace Ide {
         extends Object
         implements Gio.Initable, Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<RuntimeManager>;
+
         // Constructors of Ide.RuntimeManager
 
         constructor(properties?: Partial<RuntimeManager.ConstructorProps>, ...args: any[]);
@@ -37077,6 +37233,8 @@ export namespace Ide {
     }
 
     class SearchContext extends Object {
+        static $gtype: GObject.GType<SearchContext>;
+
         // Constructors of Ide.SearchContext
 
         constructor(properties?: Partial<SearchContext.ConstructorProps>, ...args: any[]);
@@ -37139,6 +37297,8 @@ export namespace Ide {
     }
 
     class SearchEngine extends Object {
+        static $gtype: GObject.GType<SearchEngine>;
+
         // Constructors of Ide.SearchEngine
 
         constructor(properties?: Partial<SearchEngine.ConstructorProps>, ...args: any[]);
@@ -37169,6 +37329,8 @@ export namespace Ide {
     }
 
     class SearchResult extends Object {
+        static $gtype: GObject.GType<SearchResult>;
+
         // Own properties of Ide.SearchResult
 
         get provider(): SearchProvider;
@@ -37232,6 +37394,8 @@ export namespace Ide {
      * projects setting, not the users default settings.
      */
     class Settings extends Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of Ide.Settings
 
         get ignore_project_settings(): boolean;
@@ -37320,6 +37484,8 @@ export namespace Ide {
     }
 
     class SourceMap extends GtkSource.Map implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<SourceMap>;
+
         // Constructors of Ide.SourceMap
 
         constructor(properties?: Partial<SourceMap.ConstructorProps>, ...args: any[]);
@@ -37715,6 +37881,8 @@ export namespace Ide {
     }
 
     class SourceSnippet extends GObject.Object {
+        static $gtype: GObject.GType<SourceSnippet>;
+
         // Own properties of Ide.SourceSnippet
 
         get buffer(): Gtk.TextBuffer;
@@ -37779,6 +37947,8 @@ export namespace Ide {
     }
 
     class SourceSnippetChunk extends GObject.Object {
+        static $gtype: GObject.GType<SourceSnippetChunk>;
+
         // Own properties of Ide.SourceSnippetChunk
 
         get context(): SourceSnippetContext;
@@ -37849,6 +38019,8 @@ export namespace Ide {
      * chunks during the insertion/edit phase.
      */
     class SourceSnippetContext extends GObject.Object {
+        static $gtype: GObject.GType<SourceSnippetContext>;
+
         // Constructors of Ide.SourceSnippetContext
 
         constructor(properties?: Partial<SourceSnippetContext.ConstructorProps>, ...args: any[]);
@@ -37887,6 +38059,8 @@ export namespace Ide {
     }
 
     class SourceSnippets extends GObject.Object {
+        static $gtype: GObject.GType<SourceSnippets>;
+
         // Constructors of Ide.SourceSnippets
 
         constructor(properties?: Partial<SourceSnippets.ConstructorProps>, ...args: any[]);
@@ -37911,6 +38085,8 @@ export namespace Ide {
     }
 
     class SourceSnippetsManager extends GObject.Object {
+        static $gtype: GObject.GType<SourceSnippetsManager>;
+
         // Constructors of Ide.SourceSnippetsManager
 
         constructor(properties?: Partial<SourceSnippetsManager.ConstructorProps>, ...args: any[]);
@@ -38204,6 +38380,8 @@ export namespace Ide {
     }
 
     class SourceView extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<SourceView>;
+
         // Own properties of Ide.SourceView
 
         get back_forward_list(): BackForwardList;
@@ -39412,6 +39590,8 @@ export namespace Ide {
     }
 
     class SourceViewMode extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SourceViewMode>;
+
         // Own properties of Ide.SourceViewMode
 
         get name(): string;
@@ -40270,6 +40450,8 @@ export namespace Ide {
     }
 
     class SubprocessLauncher extends GObject.Object {
+        static $gtype: GObject.GType<SubprocessLauncher>;
+
         // Own properties of Ide.SubprocessLauncher
 
         get clean_env(): boolean;
@@ -40379,6 +40561,8 @@ export namespace Ide {
     }
 
     class SubprocessSupervisor extends GObject.Object {
+        static $gtype: GObject.GType<SubprocessSupervisor>;
+
         // Constructors of Ide.SubprocessSupervisor
 
         constructor(properties?: Partial<SubprocessSupervisor.ConstructorProps>, ...args: any[]);
@@ -40435,6 +40619,8 @@ export namespace Ide {
     }
 
     class SymbolNode extends Object {
+        static $gtype: GObject.GType<SymbolNode>;
+
         // Own properties of Ide.SymbolNode
 
         get flags(): SymbolFlags;
@@ -40490,6 +40676,8 @@ export namespace Ide {
     }
 
     abstract class TemplateBase extends GObject.Object {
+        static $gtype: GObject.GType<TemplateBase>;
+
         // Own properties of Ide.TemplateBase
 
         /**
@@ -40537,6 +40725,8 @@ export namespace Ide {
     }
 
     class Transfer extends GObject.Object {
+        static $gtype: GObject.GType<Transfer>;
+
         // Own properties of Ide.Transfer
 
         get active(): boolean;
@@ -40601,6 +40791,8 @@ export namespace Ide {
         extends Dazzle.ProgressButton
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<TransferButton>;
+
         // Own properties of Ide.TransferButton
 
         get transfer(): Transfer;
@@ -44526,6 +44718,8 @@ export namespace Ide {
     }
 
     class TransferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<TransferManager>;
+
         // Own properties of Ide.TransferManager
 
         /**
@@ -45065,6 +45259,8 @@ export namespace Ide {
     }
 
     class TransferRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TransferRow>;
+
         // Own properties of Ide.TransferRow
 
         get transfer(): Transfer;
@@ -45462,6 +45658,8 @@ export namespace Ide {
         extends Gtk.MenuButton
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<TransfersButton>;
+
         // Constructors of Ide.TransfersButton
 
         constructor(properties?: Partial<TransfersButton.ConstructorProps>, ...args: any[]);
@@ -49367,6 +49565,8 @@ export namespace Ide {
     }
 
     class TransfersProgressIcon extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TransfersProgressIcon>;
+
         // Own properties of Ide.TransfersProgressIcon
 
         get progress(): number;
@@ -49749,6 +49949,8 @@ export namespace Ide {
     }
 
     class UnsavedFiles extends Object {
+        static $gtype: GObject.GType<UnsavedFiles>;
+
         // Constructors of Ide.UnsavedFiles
 
         constructor(properties?: Partial<UnsavedFiles.ConstructorProps>, ...args: any[]);
@@ -49824,6 +50026,8 @@ export namespace Ide {
         extends Gtk.ApplicationWindow
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
+        static $gtype: GObject.GType<Workbench>;
+
         // Own properties of Ide.Workbench
 
         /**
@@ -50914,6 +51118,8 @@ export namespace Ide {
     }
 
     class WorkbenchHeaderBar extends Gtk.HeaderBar implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<WorkbenchHeaderBar>;
+
         // Constructors of Ide.WorkbenchHeaderBar
 
         constructor(properties?: Partial<WorkbenchHeaderBar.ConstructorProps>, ...args: any[]);
@@ -51301,6 +51507,8 @@ export namespace Ide {
     }
 
     class WorkbenchMessage extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<WorkbenchMessage>;
+
         // Own properties of Ide.WorkbenchMessage
 
         get id(): string;
@@ -51694,12 +51902,16 @@ export namespace Ide {
     type BufferClass = typeof Buffer;
     type BufferManagerClass = typeof BufferManager;
     abstract class BuildCommand {
+        static $gtype: GObject.GType<BuildCommand>;
+
         // Constructors of Ide.BuildCommand
 
         _init(...args: any[]): void;
     }
 
     abstract class BuildCommandQueue {
+        static $gtype: GObject.GType<BuildCommandQueue>;
+
         // Constructors of Ide.BuildCommandQueue
 
         _init(...args: any[]): void;
@@ -51709,6 +51921,8 @@ export namespace Ide {
     type BuildPipelineAddinInterface = typeof BuildPipelineAddin;
     type BuildPipelineClass = typeof BuildPipeline;
     abstract class BuildResult {
+        static $gtype: GObject.GType<BuildResult>;
+
         // Constructors of Ide.BuildResult
 
         _init(...args: any[]): void;
@@ -51724,6 +51938,8 @@ export namespace Ide {
     type BuildconfigConfigurationClass = typeof BuildconfigConfiguration;
     type BuildconfigConfigurationProviderClass = typeof BuildconfigConfigurationProvider;
     abstract class Builder {
+        static $gtype: GObject.GType<Builder>;
+
         // Constructors of Ide.Builder
 
         _init(...args: any[]): void;
@@ -51742,6 +51958,8 @@ export namespace Ide {
     type DeviceManagerClass = typeof DeviceManager;
     type DeviceProviderInterface = typeof DeviceProvider;
     class Diagnostic {
+        static $gtype: GObject.GType<Diagnostic>;
+
         // Constructors of Ide.Diagnostic
 
         constructor(severity: DiagnosticSeverity, text: string, location: SourceLocation);
@@ -51817,6 +52035,8 @@ export namespace Ide {
 
     type DiagnosticProviderInterface = typeof DiagnosticProvider;
     class Diagnostics {
+        static $gtype: GObject.GType<Diagnostics>;
+
         // Constructors of Ide.Diagnostics
 
         constructor(ar?: Diagnostic[] | null);
@@ -51857,6 +52077,8 @@ export namespace Ide {
     type DoapClass = typeof Doap;
     type DoapPersonClass = typeof DoapPerson;
     abstract class EditorFrame {
+        static $gtype: GObject.GType<EditorFrame>;
+
         // Constructors of Ide.EditorFrame
 
         _init(...args: any[]): void;
@@ -51872,6 +52094,8 @@ export namespace Ide {
     type FileClass = typeof File;
     type FileSettingsClass = typeof FileSettings;
     class Fixit {
+        static $gtype: GObject.GType<Fixit>;
+
         // Constructors of Ide.Fixit
 
         _init(...args: any[]): void;
@@ -51899,6 +52123,8 @@ export namespace Ide {
     type GenesisAddinInterface = typeof GenesisAddin;
     type HighlightEngineClass = typeof HighlightEngine;
     class HighlightIndex {
+        static $gtype: GObject.GType<HighlightIndex>;
+
         // Constructors of Ide.HighlightIndex
 
         constructor(properties?: Partial<{}>);
@@ -51940,6 +52166,8 @@ export namespace Ide {
     type LayoutStackClass = typeof LayoutStack;
     type LayoutViewClass = typeof LayoutView;
     class LineReader {
+        static $gtype: GObject.GType<LineReader>;
+
         // Own fields of Ide.LineReader
 
         contents: string;
@@ -51986,6 +52214,8 @@ export namespace Ide {
      * case sensitivity is used.
      */
     class PatternSpec {
+        static $gtype: GObject.GType<PatternSpec>;
+
         // Constructors of Ide.PatternSpec
 
         constructor(keywords: string);
@@ -52024,12 +52254,16 @@ export namespace Ide {
     type RuntimeManagerClass = typeof RuntimeManager;
     type RuntimeProviderInterface = typeof RuntimeProvider;
     abstract class Script {
+        static $gtype: GObject.GType<Script>;
+
         // Constructors of Ide.Script
 
         _init(...args: any[]): void;
     }
 
     abstract class ScriptManager {
+        static $gtype: GObject.GType<ScriptManager>;
+
         // Constructors of Ide.ScriptManager
 
         _init(...args: any[]): void;
@@ -52039,6 +52273,8 @@ export namespace Ide {
     type SearchEngineClass = typeof SearchEngine;
     type SearchProviderInterface = typeof SearchProvider;
     class SearchReducer {
+        static $gtype: GObject.GType<SearchReducer>;
+
         // Own fields of Ide.SearchReducer
 
         context: SearchContext;
@@ -52062,6 +52298,8 @@ export namespace Ide {
     type ServiceInterface = typeof Service;
     type SettingsClass = typeof Settings;
     class SourceLocation {
+        static $gtype: GObject.GType<SourceLocation>;
+
         // Constructors of Ide.SourceLocation
 
         constructor(file: File, line: number, line_offset: number, offset: number);
@@ -52108,6 +52346,8 @@ export namespace Ide {
 
     type SourceMapClass = typeof SourceMap;
     class SourceRange {
+        static $gtype: GObject.GType<SourceRange>;
+
         // Constructors of Ide.SourceRange
 
         constructor(begin: SourceLocation, end: SourceLocation);
@@ -52150,6 +52390,8 @@ export namespace Ide {
     type SubprocessLauncherClass = typeof SubprocessLauncher;
     type SubprocessSupervisorClass = typeof SubprocessSupervisor;
     class Symbol {
+        static $gtype: GObject.GType<Symbol>;
+
         // Constructors of Ide.Symbol
 
         constructor(
@@ -52207,6 +52449,8 @@ export namespace Ide {
     type TemplateBaseClass = typeof TemplateBase;
     type TemplateProviderInterface = typeof TemplateProvider;
     abstract class ThreadPool {
+        static $gtype: GObject.GType<ThreadPool>;
+
         // Constructors of Ide.ThreadPool
 
         _init(...args: any[]): void;
@@ -52236,6 +52480,8 @@ export namespace Ide {
     type TransfersButtonClass = typeof TransfersButton;
     type TransfersProgressIconClass = typeof TransfersProgressIcon;
     class UnsavedFile {
+        static $gtype: GObject.GType<UnsavedFile>;
+
         // Constructors of Ide.UnsavedFile
 
         _init(...args: any[]): void;
@@ -52264,6 +52510,8 @@ export namespace Ide {
      * FIXME
      */
     class Uri {
+        static $gtype: GObject.GType<Uri>;
+
         // Constructors of Ide.Uri
 
         constructor(uri_string: string, flags: UriParseFlags);
@@ -52496,6 +52744,8 @@ export namespace Ide {
     type VcsInitializerInterface = typeof VcsInitializer;
     type VcsInterface = typeof Vcs;
     class VcsUri {
+        static $gtype: GObject.GType<VcsUri>;
+
         // Constructors of Ide.VcsUri
 
         constructor(uri: string);

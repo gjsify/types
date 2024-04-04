@@ -88,6 +88,8 @@ export namespace Gkbd {
     }
 
     class Configuration extends GObject.Object {
+        static $gtype: GObject.GType<Configuration>;
+
         // Constructors of Gkbd.Configuration
 
         constructor(properties?: Partial<Configuration.ConstructorProps>, ...args: any[]);
@@ -158,6 +160,8 @@ export namespace Gkbd {
     }
 
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Indicator>;
+
         // Constructors of Gkbd.Indicator
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
@@ -565,6 +569,8 @@ export namespace Gkbd {
     }
 
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<KeyboardDrawing>;
+
         // Constructors of Gkbd.KeyboardDrawing
 
         constructor(properties?: Partial<KeyboardDrawing.ConstructorProps>, ...args: any[]);
@@ -994,6 +1000,8 @@ export namespace Gkbd {
     }
 
     class Status extends Gtk.StatusIcon {
+        static $gtype: GObject.GType<Status>;
+
         // Constructors of Gkbd.Status
 
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
@@ -1015,6 +1023,8 @@ export namespace Gkbd {
 
     type ConfigurationClass = typeof Configuration;
     class DesktopConfig {
+        static $gtype: GObject.GType<DesktopConfig>;
+
         // Own fields of Gkbd.DesktopConfig
 
         default_group: number;
@@ -1053,6 +1063,8 @@ export namespace Gkbd {
 
     type IndicatorClass = typeof Indicator;
     class IndicatorConfig {
+        static $gtype: GObject.GType<IndicatorConfig>;
+
         // Own fields of Gkbd.IndicatorConfig
 
         secondary_groups_mask: number;
@@ -1089,6 +1101,8 @@ export namespace Gkbd {
     }
 
     class KeyboardConfig {
+        static $gtype: GObject.GType<KeyboardConfig>;
+
         // Own fields of Gkbd.KeyboardConfig
 
         model: string;
@@ -1138,12 +1152,16 @@ export namespace Gkbd {
 
     type KeyboardDrawingClass = typeof KeyboardDrawing;
     class KeyboardDrawingDoodad {
+        static $gtype: GObject.GType<KeyboardDrawingDoodad>;
+
         // Constructors of Gkbd.KeyboardDrawingDoodad
 
         _init(...args: any[]): void;
     }
 
     class KeyboardDrawingGroupLevel {
+        static $gtype: GObject.GType<KeyboardDrawingGroupLevel>;
+
         // Own fields of Gkbd.KeyboardDrawingGroupLevel
 
         group: number;
@@ -1161,18 +1179,24 @@ export namespace Gkbd {
     }
 
     class KeyboardDrawingItem {
+        static $gtype: GObject.GType<KeyboardDrawingItem>;
+
         // Constructors of Gkbd.KeyboardDrawingItem
 
         _init(...args: any[]): void;
     }
 
     class KeyboardDrawingKey {
+        static $gtype: GObject.GType<KeyboardDrawingKey>;
+
         // Constructors of Gkbd.KeyboardDrawingKey
 
         _init(...args: any[]): void;
     }
 
     class KeyboardDrawingRenderContext {
+        static $gtype: GObject.GType<KeyboardDrawingRenderContext>;
+
         // Own fields of Gkbd.KeyboardDrawingRenderContext
 
         angle: number;
@@ -1188,6 +1212,8 @@ export namespace Gkbd {
 
     type StatusClass = typeof Status;
     abstract class StatusPrivate {
+        static $gtype: GObject.GType<StatusPrivate>;
+
         // Constructors of Gkbd.StatusPrivate
 
         _init(...args: any[]): void;

@@ -45,6 +45,8 @@ export namespace GCab {
      * The various errors triggered by the GCab functions.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GCab.Error
 
         /**
@@ -116,6 +118,8 @@ export namespace GCab {
      * An opaque object holding a Cabinet file reference.
      */
     class Cabinet extends GObject.Object {
+        static $gtype: GObject.GType<Cabinet>;
+
         // Own properties of GCab.Cabinet
 
         get reserved(): Uint8Array;
@@ -242,6 +246,8 @@ export namespace GCab {
      * An opaque object, referencing a file in a Cabinet.
      */
     class File extends GObject.Object {
+        static $gtype: GObject.GType<File>;
+
         // Own properties of GCab.File
 
         get bytes(): GLib.Bytes;
@@ -354,6 +360,8 @@ export namespace GCab {
      * An opaque object, referencing a folder in a Cabinet.
      */
     class Folder extends GObject.Object {
+        static $gtype: GObject.GType<Folder>;
+
         // Own properties of GCab.Folder
 
         get compression(): Compression;

@@ -20,6 +20,8 @@ export namespace Fwupd {
      * The error code.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Fwupd.Error
 
         /**
@@ -985,6 +987,8 @@ export namespace Fwupd {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Fwupd.Client
 
         /**
@@ -2280,6 +2284,8 @@ export namespace Fwupd {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Fwupd.Device
 
         get flags(): number;
@@ -2795,6 +2801,8 @@ export namespace Fwupd {
     }
 
     class Plugin extends GObject.Object {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own properties of Fwupd.Plugin
 
         get flags(): number;
@@ -2890,6 +2898,8 @@ export namespace Fwupd {
     }
 
     class Release extends GObject.Object {
+        static $gtype: GObject.GType<Release>;
+
         // Constructors of Fwupd.Release
 
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
@@ -3314,6 +3324,8 @@ export namespace Fwupd {
     }
 
     class Remote extends GObject.Object {
+        static $gtype: GObject.GType<Remote>;
+
         // Own properties of Fwupd.Remote
 
         /**
@@ -3588,6 +3600,8 @@ export namespace Fwupd {
     }
 
     class SecurityAttr extends GObject.Object {
+        static $gtype: GObject.GType<SecurityAttr>;
+
         // Constructors of Fwupd.SecurityAttr
 
         constructor(properties?: Partial<SecurityAttr.ConstructorProps>, ...args: any[]);

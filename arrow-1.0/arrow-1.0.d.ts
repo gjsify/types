@@ -76,6 +76,8 @@ export namespace Arrow {
      * They are corresponding to `arrow::Status` values.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Arrow.Error
 
         /**
@@ -596,6 +598,8 @@ export namespace Arrow {
     }
 
     class AggregateNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<AggregateNodeOptions>;
+
         // Constructors of Arrow.AggregateNodeOptions
 
         constructor(properties?: Partial<AggregateNodeOptions.ConstructorProps>, ...args: any[]);
@@ -617,6 +621,8 @@ export namespace Arrow {
     }
 
     class Aggregation extends GObject.Object {
+        static $gtype: GObject.GType<Aggregation>;
+
         // Own properties of Arrow.Aggregation
 
         /**
@@ -661,6 +667,8 @@ export namespace Arrow {
     }
 
     abstract class Array extends GObject.Object {
+        static $gtype: GObject.GType<Array>;
+
         // Own properties of Arrow.Array
 
         set array(val: any);
@@ -732,6 +740,8 @@ export namespace Arrow {
     }
 
     abstract class ArrayBuilder extends GObject.Object {
+        static $gtype: GObject.GType<ArrayBuilder>;
+
         // Own properties of Arrow.ArrayBuilder
 
         set array_builder(val: any);
@@ -781,6 +791,8 @@ export namespace Arrow {
     }
 
     class ArrayDatum extends Datum {
+        static $gtype: GObject.GType<ArrayDatum>;
+
         // Own properties of Arrow.ArrayDatum
 
         get value(): Array;
@@ -803,6 +815,8 @@ export namespace Arrow {
     }
 
     class ArraySortOptions extends FunctionOptions {
+        static $gtype: GObject.GType<ArraySortOptions>;
+
         // Own properties of Arrow.ArraySortOptions
 
         /**
@@ -834,6 +848,8 @@ export namespace Arrow {
     }
 
     abstract class BaseBinaryScalar extends Scalar {
+        static $gtype: GObject.GType<BaseBinaryScalar>;
+
         // Own properties of Arrow.BaseBinaryScalar
 
         /**
@@ -861,6 +877,8 @@ export namespace Arrow {
     }
 
     abstract class BaseListScalar extends Scalar {
+        static $gtype: GObject.GType<BaseListScalar>;
+
         // Own properties of Arrow.BaseListScalar
 
         /**
@@ -886,6 +904,8 @@ export namespace Arrow {
     }
 
     class BinaryArray extends Array {
+        static $gtype: GObject.GType<BinaryArray>;
+
         // Constructors of Arrow.BinaryArray
 
         constructor(properties?: Partial<BinaryArray.ConstructorProps>, ...args: any[]);
@@ -915,6 +935,8 @@ export namespace Arrow {
     }
 
     class BinaryArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<BinaryArrayBuilder>;
+
         // Constructors of Arrow.BinaryArrayBuilder
 
         constructor(properties?: Partial<BinaryArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -945,6 +967,8 @@ export namespace Arrow {
     }
 
     class BinaryDataType extends DataType {
+        static $gtype: GObject.GType<BinaryDataType>;
+
         // Constructors of Arrow.BinaryDataType
 
         constructor(properties?: Partial<BinaryDataType.ConstructorProps>, ...args: any[]);
@@ -961,6 +985,8 @@ export namespace Arrow {
     }
 
     class BinaryDictionaryArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<BinaryDictionaryArrayBuilder>;
+
         // Constructors of Arrow.BinaryDictionaryArrayBuilder
 
         constructor(properties?: Partial<BinaryDictionaryArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -997,6 +1023,8 @@ export namespace Arrow {
     }
 
     class BinaryScalar extends BaseBinaryScalar {
+        static $gtype: GObject.GType<BinaryScalar>;
+
         // Constructors of Arrow.BinaryScalar
 
         constructor(properties?: Partial<BinaryScalar.ConstructorProps>, ...args: any[]);
@@ -1013,6 +1041,8 @@ export namespace Arrow {
     }
 
     class BooleanArray extends PrimitiveArray {
+        static $gtype: GObject.GType<BooleanArray>;
+
         // Constructors of Arrow.BooleanArray
 
         constructor(properties?: Partial<BooleanArray.ConstructorProps>, ...args: any[]);
@@ -1038,6 +1068,8 @@ export namespace Arrow {
     }
 
     class BooleanArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<BooleanArrayBuilder>;
+
         // Constructors of Arrow.BooleanArrayBuilder
 
         constructor(properties?: Partial<BooleanArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -1067,6 +1099,8 @@ export namespace Arrow {
     }
 
     class BooleanDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<BooleanDataType>;
+
         // Constructors of Arrow.BooleanDataType
 
         constructor(properties?: Partial<BooleanDataType.ConstructorProps>, ...args: any[]);
@@ -1083,6 +1117,8 @@ export namespace Arrow {
     }
 
     class BooleanScalar extends Scalar {
+        static $gtype: GObject.GType<BooleanScalar>;
+
         // Constructors of Arrow.BooleanScalar
 
         constructor(properties?: Partial<BooleanScalar.ConstructorProps>, ...args: any[]);
@@ -1107,6 +1143,8 @@ export namespace Arrow {
     }
 
     class Buffer extends GObject.Object {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own properties of Arrow.Buffer
 
         set buffer(val: any);
@@ -1150,6 +1188,8 @@ export namespace Arrow {
     }
 
     class BufferInputStream extends SeekableInputStream implements File, Readable {
+        static $gtype: GObject.GType<BufferInputStream>;
+
         // Own properties of Arrow.BufferInputStream
 
         get buffer(): Buffer;
@@ -1536,6 +1576,8 @@ export namespace Arrow {
      * It wraps `arrow::io::BufferOutputStream`.
      */
     class BufferOutputStream extends OutputStream implements File, Writable {
+        static $gtype: GObject.GType<BufferOutputStream>;
+
         // Constructors of Arrow.BufferOutputStream
 
         constructor(properties?: Partial<BufferOutputStream.ConstructorProps>, ...args: any[]);
@@ -1946,6 +1988,8 @@ export namespace Arrow {
     }
 
     class CSVReadOptions extends GObject.Object {
+        static $gtype: GObject.GType<CSVReadOptions>;
+
         // Own properties of Arrow.CSVReadOptions
 
         /**
@@ -2139,6 +2183,8 @@ export namespace Arrow {
     }
 
     class CSVReader extends GObject.Object {
+        static $gtype: GObject.GType<CSVReader>;
+
         // Own properties of Arrow.CSVReader
 
         set csv_table_reader(val: any);
@@ -2165,6 +2211,8 @@ export namespace Arrow {
     }
 
     class CallExpression extends Expression {
+        static $gtype: GObject.GType<CallExpression>;
+
         // Constructors of Arrow.CallExpression
 
         constructor(properties?: Partial<CallExpression.ConstructorProps>, ...args: any[]);
@@ -2196,6 +2244,8 @@ export namespace Arrow {
     }
 
     class CastOptions extends FunctionOptions {
+        static $gtype: GObject.GType<CastOptions>;
+
         // Own properties of Arrow.CastOptions
 
         /**
@@ -2288,6 +2338,8 @@ export namespace Arrow {
     }
 
     class ChunkedArray extends GObject.Object {
+        static $gtype: GObject.GType<ChunkedArray>;
+
         // Own properties of Arrow.ChunkedArray
 
         set chunked_array(val: any);
@@ -2331,6 +2383,8 @@ export namespace Arrow {
     }
 
     class ChunkedArrayDatum extends Datum {
+        static $gtype: GObject.GType<ChunkedArrayDatum>;
+
         // Own properties of Arrow.ChunkedArrayDatum
 
         get value(): ChunkedArray;
@@ -2353,6 +2407,8 @@ export namespace Arrow {
     }
 
     class Codec extends GObject.Object {
+        static $gtype: GObject.GType<Codec>;
+
         // Own properties of Arrow.Codec
 
         set codec(val: any);
@@ -2385,6 +2441,8 @@ export namespace Arrow {
     }
 
     class CompressedInputStream extends InputStream implements File, Readable {
+        static $gtype: GObject.GType<CompressedInputStream>;
+
         // Own properties of Arrow.CompressedInputStream
 
         get codec(): Codec;
@@ -2776,6 +2834,8 @@ export namespace Arrow {
     }
 
     class CompressedOutputStream extends OutputStream implements File, Writable {
+        static $gtype: GObject.GType<CompressedOutputStream>;
+
         // Own properties of Arrow.CompressedOutputStream
 
         get codec(): Codec;
@@ -3165,6 +3225,8 @@ export namespace Arrow {
     }
 
     class CountOptions extends FunctionOptions {
+        static $gtype: GObject.GType<CountOptions>;
+
         // Own properties of Arrow.CountOptions
 
         get mode(): CountMode;
@@ -3189,6 +3251,8 @@ export namespace Arrow {
     }
 
     abstract class DataType extends GObject.Object {
+        static $gtype: GObject.GType<DataType>;
+
         // Own properties of Arrow.DataType
 
         set data_type(val: any);
@@ -3220,6 +3284,8 @@ export namespace Arrow {
     }
 
     class Date32Array extends NumericArray {
+        static $gtype: GObject.GType<Date32Array>;
+
         // Constructors of Arrow.Date32Array
 
         constructor(properties?: Partial<Date32Array.ConstructorProps>, ...args: any[]);
@@ -3241,6 +3307,8 @@ export namespace Arrow {
     }
 
     class Date32ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Date32ArrayBuilder>;
+
         // Constructors of Arrow.Date32ArrayBuilder
 
         constructor(properties?: Partial<Date32ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -3270,6 +3338,8 @@ export namespace Arrow {
     }
 
     class Date32DataType extends TemporalDataType {
+        static $gtype: GObject.GType<Date32DataType>;
+
         // Constructors of Arrow.Date32DataType
 
         constructor(properties?: Partial<Date32DataType.ConstructorProps>, ...args: any[]);
@@ -3286,6 +3356,8 @@ export namespace Arrow {
     }
 
     class Date32Scalar extends Scalar {
+        static $gtype: GObject.GType<Date32Scalar>;
+
         // Constructors of Arrow.Date32Scalar
 
         constructor(properties?: Partial<Date32Scalar.ConstructorProps>, ...args: any[]);
@@ -3306,6 +3378,8 @@ export namespace Arrow {
     }
 
     class Date64Array extends NumericArray {
+        static $gtype: GObject.GType<Date64Array>;
+
         // Constructors of Arrow.Date64Array
 
         constructor(properties?: Partial<Date64Array.ConstructorProps>, ...args: any[]);
@@ -3327,6 +3401,8 @@ export namespace Arrow {
     }
 
     class Date64ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Date64ArrayBuilder>;
+
         // Constructors of Arrow.Date64ArrayBuilder
 
         constructor(properties?: Partial<Date64ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -3356,6 +3432,8 @@ export namespace Arrow {
     }
 
     class Date64DataType extends TemporalDataType {
+        static $gtype: GObject.GType<Date64DataType>;
+
         // Constructors of Arrow.Date64DataType
 
         constructor(properties?: Partial<Date64DataType.ConstructorProps>, ...args: any[]);
@@ -3372,6 +3450,8 @@ export namespace Arrow {
     }
 
     class Date64Scalar extends Scalar {
+        static $gtype: GObject.GType<Date64Scalar>;
+
         // Constructors of Arrow.Date64Scalar
 
         constructor(properties?: Partial<Date64Scalar.ConstructorProps>, ...args: any[]);
@@ -3394,6 +3474,8 @@ export namespace Arrow {
     }
 
     abstract class Datum extends GObject.Object {
+        static $gtype: GObject.GType<Datum>;
+
         // Own properties of Arrow.Datum
 
         set datum(val: any);
@@ -3421,6 +3503,8 @@ export namespace Arrow {
     }
 
     class DayTimeIntervalDataType extends IntervalDataType {
+        static $gtype: GObject.GType<DayTimeIntervalDataType>;
+
         // Constructors of Arrow.DayTimeIntervalDataType
 
         constructor(properties?: Partial<DayTimeIntervalDataType.ConstructorProps>, ...args: any[]);
@@ -3439,6 +3523,8 @@ export namespace Arrow {
     }
 
     class Decimal128 extends GObject.Object {
+        static $gtype: GObject.GType<Decimal128>;
+
         // Own properties of Arrow.Decimal128
 
         set decimal128(val: any);
@@ -3488,6 +3574,8 @@ export namespace Arrow {
     }
 
     class Decimal128Array extends FixedSizeBinaryArray {
+        static $gtype: GObject.GType<Decimal128Array>;
+
         // Constructors of Arrow.Decimal128Array
 
         constructor(properties?: Partial<Decimal128Array.ConstructorProps>, ...args: any[]);
@@ -3508,6 +3596,8 @@ export namespace Arrow {
     }
 
     class Decimal128ArrayBuilder extends FixedSizeBinaryArrayBuilder {
+        static $gtype: GObject.GType<Decimal128ArrayBuilder>;
+
         // Constructors of Arrow.Decimal128ArrayBuilder
 
         constructor(properties?: Partial<Decimal128ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -3539,6 +3629,8 @@ export namespace Arrow {
     }
 
     class Decimal128DataType extends DecimalDataType {
+        static $gtype: GObject.GType<Decimal128DataType>;
+
         // Constructors of Arrow.Decimal128DataType
 
         constructor(properties?: Partial<Decimal128DataType.ConstructorProps>, ...args: any[]);
@@ -3564,6 +3656,8 @@ export namespace Arrow {
     }
 
     class Decimal128Scalar extends Scalar {
+        static $gtype: GObject.GType<Decimal128Scalar>;
+
         // Own properties of Arrow.Decimal128Scalar
 
         /**
@@ -3593,6 +3687,8 @@ export namespace Arrow {
     }
 
     class Decimal256 extends GObject.Object {
+        static $gtype: GObject.GType<Decimal256>;
+
         // Own properties of Arrow.Decimal256
 
         set decimal256(val: any);
@@ -3640,6 +3736,8 @@ export namespace Arrow {
     }
 
     class Decimal256Array extends FixedSizeBinaryArray {
+        static $gtype: GObject.GType<Decimal256Array>;
+
         // Constructors of Arrow.Decimal256Array
 
         constructor(properties?: Partial<Decimal256Array.ConstructorProps>, ...args: any[]);
@@ -3660,6 +3758,8 @@ export namespace Arrow {
     }
 
     class Decimal256ArrayBuilder extends FixedSizeBinaryArrayBuilder {
+        static $gtype: GObject.GType<Decimal256ArrayBuilder>;
+
         // Constructors of Arrow.Decimal256ArrayBuilder
 
         constructor(properties?: Partial<Decimal256ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -3690,6 +3790,8 @@ export namespace Arrow {
     }
 
     class Decimal256DataType extends DecimalDataType {
+        static $gtype: GObject.GType<Decimal256DataType>;
+
         // Constructors of Arrow.Decimal256DataType
 
         constructor(properties?: Partial<Decimal256DataType.ConstructorProps>, ...args: any[]);
@@ -3715,6 +3817,8 @@ export namespace Arrow {
     }
 
     class Decimal256Scalar extends Scalar {
+        static $gtype: GObject.GType<Decimal256Scalar>;
+
         // Own properties of Arrow.Decimal256Scalar
 
         /**
@@ -3742,6 +3846,8 @@ export namespace Arrow {
     }
 
     abstract class DecimalDataType extends FixedSizeBinaryDataType {
+        static $gtype: GObject.GType<DecimalDataType>;
+
         // Constructors of Arrow.DecimalDataType
 
         constructor(properties?: Partial<DecimalDataType.ConstructorProps>, ...args: any[]);
@@ -3769,6 +3875,8 @@ export namespace Arrow {
     }
 
     class DenseUnionArray extends UnionArray {
+        static $gtype: GObject.GType<DenseUnionArray>;
+
         // Own properties of Arrow.DenseUnionArray
 
         get value_offsets(): Int32Array;
@@ -3797,6 +3905,8 @@ export namespace Arrow {
     }
 
     class DenseUnionDataType extends UnionDataType {
+        static $gtype: GObject.GType<DenseUnionDataType>;
+
         // Constructors of Arrow.DenseUnionDataType
 
         constructor(properties?: Partial<DenseUnionDataType.ConstructorProps>, ...args: any[]);
@@ -3813,6 +3923,8 @@ export namespace Arrow {
     }
 
     class DenseUnionScalar extends UnionScalar {
+        static $gtype: GObject.GType<DenseUnionScalar>;
+
         // Constructors of Arrow.DenseUnionScalar
 
         constructor(properties?: Partial<DenseUnionScalar.ConstructorProps>, ...args: any[]);
@@ -3832,6 +3944,8 @@ export namespace Arrow {
     }
 
     class DictionaryArray extends Array {
+        static $gtype: GObject.GType<DictionaryArray>;
+
         // Own properties of Arrow.DictionaryArray
 
         get dictionary(): Array;
@@ -3859,6 +3973,8 @@ export namespace Arrow {
     }
 
     class DictionaryDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<DictionaryDataType>;
+
         // Constructors of Arrow.DictionaryDataType
 
         constructor(properties?: Partial<DictionaryDataType.ConstructorProps>, ...args: any[]);
@@ -3881,6 +3997,8 @@ export namespace Arrow {
     }
 
     class DoubleArray extends NumericArray {
+        static $gtype: GObject.GType<DoubleArray>;
+
         // Constructors of Arrow.DoubleArray
 
         constructor(properties?: Partial<DoubleArray.ConstructorProps>, ...args: any[]);
@@ -3903,6 +4021,8 @@ export namespace Arrow {
     }
 
     class DoubleArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<DoubleArrayBuilder>;
+
         // Constructors of Arrow.DoubleArrayBuilder
 
         constructor(properties?: Partial<DoubleArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -3932,6 +4052,8 @@ export namespace Arrow {
     }
 
     class DoubleDataType extends FloatingPointDataType {
+        static $gtype: GObject.GType<DoubleDataType>;
+
         // Constructors of Arrow.DoubleDataType
 
         constructor(properties?: Partial<DoubleDataType.ConstructorProps>, ...args: any[]);
@@ -3948,6 +4070,8 @@ export namespace Arrow {
     }
 
     class DoubleScalar extends Scalar {
+        static $gtype: GObject.GType<DoubleScalar>;
+
         // Constructors of Arrow.DoubleScalar
 
         constructor(properties?: Partial<DoubleScalar.ConstructorProps>, ...args: any[]);
@@ -3974,6 +4098,8 @@ export namespace Arrow {
     }
 
     class EqualOptions extends GObject.Object {
+        static $gtype: GObject.GType<EqualOptions>;
+
         // Own properties of Arrow.EqualOptions
 
         /**
@@ -4024,6 +4150,8 @@ export namespace Arrow {
     }
 
     class ExecuteContext extends GObject.Object {
+        static $gtype: GObject.GType<ExecuteContext>;
+
         // Constructors of Arrow.ExecuteContext
 
         constructor(properties?: Partial<ExecuteContext.ConstructorProps>, ...args: any[]);
@@ -4042,6 +4170,8 @@ export namespace Arrow {
     }
 
     class ExecuteNode extends GObject.Object {
+        static $gtype: GObject.GType<ExecuteNode>;
+
         // Own properties of Arrow.ExecuteNode
 
         set node(val: any);
@@ -4067,6 +4197,8 @@ export namespace Arrow {
     }
 
     class ExecuteNodeOptions extends GObject.Object {
+        static $gtype: GObject.GType<ExecuteNodeOptions>;
+
         // Own properties of Arrow.ExecuteNodeOptions
 
         set options(val: any);
@@ -4087,6 +4219,8 @@ export namespace Arrow {
     }
 
     class ExecutePlan extends GObject.Object {
+        static $gtype: GObject.GType<ExecutePlan>;
+
         // Own properties of Arrow.ExecutePlan
 
         set plan(val: any);
@@ -4157,6 +4291,8 @@ export namespace Arrow {
     }
 
     abstract class Expression extends GObject.Object {
+        static $gtype: GObject.GType<Expression>;
+
         // Constructors of Arrow.Expression
 
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
@@ -4178,6 +4314,8 @@ export namespace Arrow {
     }
 
     class ExtensionArray extends Array {
+        static $gtype: GObject.GType<ExtensionArray>;
+
         // Own properties of Arrow.ExtensionArray
 
         get storage(): Array;
@@ -4203,6 +4341,8 @@ export namespace Arrow {
     }
 
     class ExtensionDataType extends DataType {
+        static $gtype: GObject.GType<ExtensionDataType>;
+
         // Own properties of Arrow.ExtensionDataType
 
         get storage_data_type(): DataType;
@@ -4237,6 +4377,8 @@ export namespace Arrow {
     }
 
     class ExtensionDataTypeRegistry extends GObject.Object {
+        static $gtype: GObject.GType<ExtensionDataTypeRegistry>;
+
         // Own properties of Arrow.ExtensionDataTypeRegistry
 
         set registry(val: any);
@@ -4276,6 +4418,8 @@ export namespace Arrow {
     }
 
     class ExtensionScalar extends Scalar {
+        static $gtype: GObject.GType<ExtensionScalar>;
+
         // Constructors of Arrow.ExtensionScalar
 
         constructor(properties?: Partial<ExtensionScalar.ConstructorProps>, ...args: any[]);
@@ -4293,6 +4437,8 @@ export namespace Arrow {
     }
 
     class FeatherFileReader extends GObject.Object {
+        static $gtype: GObject.GType<FeatherFileReader>;
+
         // Own properties of Arrow.FeatherFileReader
 
         set feather_reader(val: any);
@@ -4323,6 +4469,8 @@ export namespace Arrow {
     }
 
     class FeatherWriteProperties extends GObject.Object {
+        static $gtype: GObject.GType<FeatherWriteProperties>;
+
         // Own properties of Arrow.FeatherWriteProperties
 
         /**
@@ -4358,6 +4506,8 @@ export namespace Arrow {
     }
 
     class Field extends GObject.Object {
+        static $gtype: GObject.GType<Field>;
+
         // Own properties of Arrow.Field
 
         set data_type(val: DataType);
@@ -4401,6 +4551,8 @@ export namespace Arrow {
     }
 
     class FieldExpression extends Expression {
+        static $gtype: GObject.GType<FieldExpression>;
+
         // Constructors of Arrow.FieldExpression
 
         constructor(properties?: Partial<FieldExpression.ConstructorProps>, ...args: any[]);
@@ -4427,6 +4579,8 @@ export namespace Arrow {
     }
 
     class FileInfo extends GObject.Object {
+        static $gtype: GObject.GType<FileInfo>;
+
         // Own properties of Arrow.FileInfo
 
         /**
@@ -4497,6 +4651,8 @@ export namespace Arrow {
     }
 
     class FileInputStream extends SeekableInputStream implements File, Readable {
+        static $gtype: GObject.GType<FileInputStream>;
+
         // Constructors of Arrow.FileInputStream
 
         constructor(properties?: Partial<FileInputStream.ConstructorProps>, ...args: any[]);
@@ -4881,6 +5037,8 @@ export namespace Arrow {
      * It wraps `arrow::io::FileOutputStream`.
      */
     class FileOutputStream extends OutputStream implements File, Writable {
+        static $gtype: GObject.GType<FileOutputStream>;
+
         // Constructors of Arrow.FileOutputStream
 
         constructor(properties?: Partial<FileOutputStream.ConstructorProps>, ...args: any[]);
@@ -5271,6 +5429,8 @@ export namespace Arrow {
     }
 
     class FileSelector extends GObject.Object {
+        static $gtype: GObject.GType<FileSelector>;
+
         // Own properties of Arrow.FileSelector
 
         /**
@@ -5332,6 +5492,8 @@ export namespace Arrow {
     }
 
     abstract class FileSystem extends GObject.Object {
+        static $gtype: GObject.GType<FileSystem>;
+
         // Own properties of Arrow.FileSystem
 
         set file_system(val: any);
@@ -5477,6 +5639,8 @@ export namespace Arrow {
     }
 
     class FilterOptions extends FunctionOptions {
+        static $gtype: GObject.GType<FilterOptions>;
+
         // Own properties of Arrow.FilterOptions
 
         /**
@@ -5506,6 +5670,8 @@ export namespace Arrow {
     }
 
     class FixedSizeBinaryArray extends PrimitiveArray {
+        static $gtype: GObject.GType<FixedSizeBinaryArray>;
+
         // Constructors of Arrow.FixedSizeBinaryArray
 
         constructor(properties?: Partial<FixedSizeBinaryArray.ConstructorProps>, ...args: any[]);
@@ -5534,6 +5700,8 @@ export namespace Arrow {
     }
 
     class FixedSizeBinaryArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<FixedSizeBinaryArrayBuilder>;
+
         // Constructors of Arrow.FixedSizeBinaryArrayBuilder
 
         constructor(properties?: Partial<FixedSizeBinaryArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -5574,6 +5742,8 @@ export namespace Arrow {
     }
 
     class FixedSizeBinaryDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<FixedSizeBinaryDataType>;
+
         // Constructors of Arrow.FixedSizeBinaryDataType
 
         constructor(properties?: Partial<FixedSizeBinaryDataType.ConstructorProps>, ...args: any[]);
@@ -5594,6 +5764,8 @@ export namespace Arrow {
     }
 
     class FixedSizeBinaryScalar extends BaseBinaryScalar {
+        static $gtype: GObject.GType<FixedSizeBinaryScalar>;
+
         // Constructors of Arrow.FixedSizeBinaryScalar
 
         constructor(properties?: Partial<FixedSizeBinaryScalar.ConstructorProps>, ...args: any[]);
@@ -5610,6 +5782,8 @@ export namespace Arrow {
     }
 
     abstract class FixedWidthDataType extends DataType {
+        static $gtype: GObject.GType<FixedWidthDataType>;
+
         // Constructors of Arrow.FixedWidthDataType
 
         constructor(properties?: Partial<FixedWidthDataType.ConstructorProps>, ...args: any[]);
@@ -5628,6 +5802,8 @@ export namespace Arrow {
     }
 
     class FloatArray extends NumericArray {
+        static $gtype: GObject.GType<FloatArray>;
+
         // Constructors of Arrow.FloatArray
 
         constructor(properties?: Partial<FloatArray.ConstructorProps>, ...args: any[]);
@@ -5650,6 +5826,8 @@ export namespace Arrow {
     }
 
     class FloatArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<FloatArrayBuilder>;
+
         // Constructors of Arrow.FloatArrayBuilder
 
         constructor(properties?: Partial<FloatArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -5679,6 +5857,8 @@ export namespace Arrow {
     }
 
     class FloatDataType extends FloatingPointDataType {
+        static $gtype: GObject.GType<FloatDataType>;
+
         // Constructors of Arrow.FloatDataType
 
         constructor(properties?: Partial<FloatDataType.ConstructorProps>, ...args: any[]);
@@ -5695,6 +5875,8 @@ export namespace Arrow {
     }
 
     class FloatScalar extends Scalar {
+        static $gtype: GObject.GType<FloatScalar>;
+
         // Constructors of Arrow.FloatScalar
 
         constructor(properties?: Partial<FloatScalar.ConstructorProps>, ...args: any[]);
@@ -5715,6 +5897,8 @@ export namespace Arrow {
     }
 
     abstract class FloatingPointDataType extends NumericDataType {
+        static $gtype: GObject.GType<FloatingPointDataType>;
+
         // Constructors of Arrow.FloatingPointDataType
 
         constructor(properties?: Partial<FloatingPointDataType.ConstructorProps>, ...args: any[]);
@@ -5731,6 +5915,8 @@ export namespace Arrow {
     }
 
     class Function extends GObject.Object {
+        static $gtype: GObject.GType<Function>;
+
         // Own properties of Arrow.Function
 
         set function(val: any);
@@ -5766,6 +5952,8 @@ export namespace Arrow {
     }
 
     class FunctionDoc extends GObject.Object {
+        static $gtype: GObject.GType<FunctionDoc>;
+
         // Own properties of Arrow.FunctionDoc
 
         set doc(val: any);
@@ -5791,6 +5979,8 @@ export namespace Arrow {
     }
 
     class FunctionOptions extends GObject.Object {
+        static $gtype: GObject.GType<FunctionOptions>;
+
         // Constructors of Arrow.FunctionOptions
 
         constructor(properties?: Partial<FunctionOptions.ConstructorProps>, ...args: any[]);
@@ -5818,6 +6008,8 @@ export namespace Arrow {
      * It's an input stream for `GInputStream`.
      */
     class GIOInputStream extends SeekableInputStream implements File, Readable {
+        static $gtype: GObject.GType<GIOInputStream>;
+
         // Own properties of Arrow.GIOInputStream
 
         get raw(): Gio.InputStream;
@@ -6206,6 +6398,8 @@ export namespace Arrow {
      * It's an output stream for `GOutputStream`.
      */
     class GIOOutputStream extends OutputStream implements File, Writable {
+        static $gtype: GObject.GType<GIOOutputStream>;
+
         // Own properties of Arrow.GIOOutputStream
 
         get raw(): Gio.OutputStream;
@@ -6596,6 +6790,8 @@ export namespace Arrow {
     }
 
     class HDFSFileSystem extends FileSystem {
+        static $gtype: GObject.GType<HDFSFileSystem>;
+
         // Constructors of Arrow.HDFSFileSystem
 
         constructor(properties?: Partial<HDFSFileSystem.ConstructorProps>, ...args: any[]);
@@ -6610,6 +6806,8 @@ export namespace Arrow {
     }
 
     class HashJoinNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<HashJoinNodeOptions>;
+
         // Constructors of Arrow.HashJoinNodeOptions
 
         constructor(properties?: Partial<HashJoinNodeOptions.ConstructorProps>, ...args: any[]);
@@ -6637,6 +6835,8 @@ export namespace Arrow {
     }
 
     class InputStream extends Gio.InputStream implements File, Readable {
+        static $gtype: GObject.GType<InputStream>;
+
         // Own properties of Arrow.InputStream
 
         set input_stream(val: any);
@@ -7027,6 +7227,8 @@ export namespace Arrow {
     }
 
     class Int16Array extends NumericArray {
+        static $gtype: GObject.GType<Int16Array>;
+
         // Constructors of Arrow.Int16Array
 
         constructor(properties?: Partial<Int16Array.ConstructorProps>, ...args: any[]);
@@ -7049,6 +7251,8 @@ export namespace Arrow {
     }
 
     class Int16ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Int16ArrayBuilder>;
+
         // Constructors of Arrow.Int16ArrayBuilder
 
         constructor(properties?: Partial<Int16ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7078,6 +7282,8 @@ export namespace Arrow {
     }
 
     class Int16DataType extends IntegerDataType {
+        static $gtype: GObject.GType<Int16DataType>;
+
         // Constructors of Arrow.Int16DataType
 
         constructor(properties?: Partial<Int16DataType.ConstructorProps>, ...args: any[]);
@@ -7094,6 +7300,8 @@ export namespace Arrow {
     }
 
     class Int16Scalar extends Scalar {
+        static $gtype: GObject.GType<Int16Scalar>;
+
         // Constructors of Arrow.Int16Scalar
 
         constructor(properties?: Partial<Int16Scalar.ConstructorProps>, ...args: any[]);
@@ -7114,6 +7322,8 @@ export namespace Arrow {
     }
 
     class Int32Array extends NumericArray {
+        static $gtype: GObject.GType<Int32Array>;
+
         // Constructors of Arrow.Int32Array
 
         constructor(properties?: Partial<Int32Array.ConstructorProps>, ...args: any[]);
@@ -7136,6 +7346,8 @@ export namespace Arrow {
     }
 
     class Int32ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Int32ArrayBuilder>;
+
         // Constructors of Arrow.Int32ArrayBuilder
 
         constructor(properties?: Partial<Int32ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7165,6 +7377,8 @@ export namespace Arrow {
     }
 
     class Int32DataType extends IntegerDataType {
+        static $gtype: GObject.GType<Int32DataType>;
+
         // Constructors of Arrow.Int32DataType
 
         constructor(properties?: Partial<Int32DataType.ConstructorProps>, ...args: any[]);
@@ -7181,6 +7395,8 @@ export namespace Arrow {
     }
 
     class Int32Scalar extends Scalar {
+        static $gtype: GObject.GType<Int32Scalar>;
+
         // Constructors of Arrow.Int32Scalar
 
         constructor(properties?: Partial<Int32Scalar.ConstructorProps>, ...args: any[]);
@@ -7201,6 +7417,8 @@ export namespace Arrow {
     }
 
     class Int64Array extends NumericArray {
+        static $gtype: GObject.GType<Int64Array>;
+
         // Constructors of Arrow.Int64Array
 
         constructor(properties?: Partial<Int64Array.ConstructorProps>, ...args: any[]);
@@ -7223,6 +7441,8 @@ export namespace Arrow {
     }
 
     class Int64ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Int64ArrayBuilder>;
+
         // Constructors of Arrow.Int64ArrayBuilder
 
         constructor(properties?: Partial<Int64ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7252,6 +7472,8 @@ export namespace Arrow {
     }
 
     class Int64DataType extends IntegerDataType {
+        static $gtype: GObject.GType<Int64DataType>;
+
         // Constructors of Arrow.Int64DataType
 
         constructor(properties?: Partial<Int64DataType.ConstructorProps>, ...args: any[]);
@@ -7268,6 +7490,8 @@ export namespace Arrow {
     }
 
     class Int64Scalar extends Scalar {
+        static $gtype: GObject.GType<Int64Scalar>;
+
         // Constructors of Arrow.Int64Scalar
 
         constructor(properties?: Partial<Int64Scalar.ConstructorProps>, ...args: any[]);
@@ -7288,6 +7512,8 @@ export namespace Arrow {
     }
 
     class Int8Array extends NumericArray {
+        static $gtype: GObject.GType<Int8Array>;
+
         // Constructors of Arrow.Int8Array
 
         constructor(properties?: Partial<Int8Array.ConstructorProps>, ...args: any[]);
@@ -7310,6 +7536,8 @@ export namespace Arrow {
     }
 
     class Int8ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Int8ArrayBuilder>;
+
         // Constructors of Arrow.Int8ArrayBuilder
 
         constructor(properties?: Partial<Int8ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7339,6 +7567,8 @@ export namespace Arrow {
     }
 
     class Int8DataType extends IntegerDataType {
+        static $gtype: GObject.GType<Int8DataType>;
+
         // Constructors of Arrow.Int8DataType
 
         constructor(properties?: Partial<Int8DataType.ConstructorProps>, ...args: any[]);
@@ -7355,6 +7585,8 @@ export namespace Arrow {
     }
 
     class Int8Scalar extends Scalar {
+        static $gtype: GObject.GType<Int8Scalar>;
+
         // Constructors of Arrow.Int8Scalar
 
         constructor(properties?: Partial<Int8Scalar.ConstructorProps>, ...args: any[]);
@@ -7375,6 +7607,8 @@ export namespace Arrow {
     }
 
     class IntArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<IntArrayBuilder>;
+
         // Constructors of Arrow.IntArrayBuilder
 
         constructor(properties?: Partial<IntArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7404,6 +7638,8 @@ export namespace Arrow {
     }
 
     abstract class IntegerDataType extends NumericDataType {
+        static $gtype: GObject.GType<IntegerDataType>;
+
         // Constructors of Arrow.IntegerDataType
 
         constructor(properties?: Partial<IntegerDataType.ConstructorProps>, ...args: any[]);
@@ -7422,6 +7658,8 @@ export namespace Arrow {
     }
 
     abstract class IntervalDataType extends TemporalDataType {
+        static $gtype: GObject.GType<IntervalDataType>;
+
         // Constructors of Arrow.IntervalDataType
 
         constructor(properties?: Partial<IntervalDataType.ConstructorProps>, ...args: any[]);
@@ -7450,6 +7688,8 @@ export namespace Arrow {
     }
 
     class JSONReadOptions extends GObject.Object {
+        static $gtype: GObject.GType<JSONReadOptions>;
+
         // Own properties of Arrow.JSONReadOptions
 
         /**
@@ -7522,6 +7762,8 @@ export namespace Arrow {
     }
 
     class JSONReader extends GObject.Object {
+        static $gtype: GObject.GType<JSONReader>;
+
         // Own properties of Arrow.JSONReader
 
         get input(): InputStream;
@@ -7548,6 +7790,8 @@ export namespace Arrow {
     }
 
     class LargeBinaryArray extends Array {
+        static $gtype: GObject.GType<LargeBinaryArray>;
+
         // Constructors of Arrow.LargeBinaryArray
 
         constructor(properties?: Partial<LargeBinaryArray.ConstructorProps>, ...args: any[]);
@@ -7577,6 +7821,8 @@ export namespace Arrow {
     }
 
     class LargeBinaryArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<LargeBinaryArrayBuilder>;
+
         // Constructors of Arrow.LargeBinaryArrayBuilder
 
         constructor(properties?: Partial<LargeBinaryArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7606,6 +7852,8 @@ export namespace Arrow {
     }
 
     class LargeBinaryDataType extends DataType {
+        static $gtype: GObject.GType<LargeBinaryDataType>;
+
         // Constructors of Arrow.LargeBinaryDataType
 
         constructor(properties?: Partial<LargeBinaryDataType.ConstructorProps>, ...args: any[]);
@@ -7622,6 +7870,8 @@ export namespace Arrow {
     }
 
     class LargeBinaryScalar extends BaseBinaryScalar {
+        static $gtype: GObject.GType<LargeBinaryScalar>;
+
         // Constructors of Arrow.LargeBinaryScalar
 
         constructor(properties?: Partial<LargeBinaryScalar.ConstructorProps>, ...args: any[]);
@@ -7641,6 +7891,8 @@ export namespace Arrow {
     }
 
     class LargeListArray extends Array {
+        static $gtype: GObject.GType<LargeListArray>;
+
         // Own properties of Arrow.LargeListArray
 
         get raw_values(): Array;
@@ -7679,6 +7931,8 @@ export namespace Arrow {
     }
 
     class LargeListArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<LargeListArrayBuilder>;
+
         // Constructors of Arrow.LargeListArrayBuilder
 
         constructor(properties?: Partial<LargeListArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7700,6 +7954,8 @@ export namespace Arrow {
     }
 
     class LargeListDataType extends DataType {
+        static $gtype: GObject.GType<LargeListDataType>;
+
         // Constructors of Arrow.LargeListDataType
 
         constructor(properties?: Partial<LargeListDataType.ConstructorProps>, ...args: any[]);
@@ -7720,6 +7976,8 @@ export namespace Arrow {
     }
 
     class LargeListScalar extends BaseListScalar {
+        static $gtype: GObject.GType<LargeListScalar>;
+
         // Constructors of Arrow.LargeListScalar
 
         constructor(properties?: Partial<LargeListScalar.ConstructorProps>, ...args: any[]);
@@ -7736,6 +7994,8 @@ export namespace Arrow {
     }
 
     class LargeStringArray extends LargeBinaryArray {
+        static $gtype: GObject.GType<LargeStringArray>;
+
         // Constructors of Arrow.LargeStringArray
 
         constructor(properties?: Partial<LargeStringArray.ConstructorProps>, ...args: any[]);
@@ -7762,6 +8022,8 @@ export namespace Arrow {
     }
 
     class LargeStringArrayBuilder extends LargeBinaryArrayBuilder {
+        static $gtype: GObject.GType<LargeStringArrayBuilder>;
+
         // Constructors of Arrow.LargeStringArrayBuilder
 
         constructor(properties?: Partial<LargeStringArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7790,6 +8052,8 @@ export namespace Arrow {
     }
 
     class LargeStringDataType extends DataType {
+        static $gtype: GObject.GType<LargeStringDataType>;
+
         // Constructors of Arrow.LargeStringDataType
 
         constructor(properties?: Partial<LargeStringDataType.ConstructorProps>, ...args: any[]);
@@ -7806,6 +8070,8 @@ export namespace Arrow {
     }
 
     class LargeStringScalar extends BaseBinaryScalar {
+        static $gtype: GObject.GType<LargeStringScalar>;
+
         // Constructors of Arrow.LargeStringScalar
 
         constructor(properties?: Partial<LargeStringScalar.ConstructorProps>, ...args: any[]);
@@ -7825,6 +8091,8 @@ export namespace Arrow {
     }
 
     class ListArray extends Array {
+        static $gtype: GObject.GType<ListArray>;
+
         // Own properties of Arrow.ListArray
 
         get raw_values(): Array;
@@ -7863,6 +8131,8 @@ export namespace Arrow {
     }
 
     class ListArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<ListArrayBuilder>;
+
         // Constructors of Arrow.ListArrayBuilder
 
         constructor(properties?: Partial<ListArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -7885,6 +8155,8 @@ export namespace Arrow {
     }
 
     class ListDataType extends DataType {
+        static $gtype: GObject.GType<ListDataType>;
+
         // Constructors of Arrow.ListDataType
 
         constructor(properties?: Partial<ListDataType.ConstructorProps>, ...args: any[]);
@@ -7906,6 +8178,8 @@ export namespace Arrow {
     }
 
     class ListScalar extends BaseListScalar {
+        static $gtype: GObject.GType<ListScalar>;
+
         // Constructors of Arrow.ListScalar
 
         constructor(properties?: Partial<ListScalar.ConstructorProps>, ...args: any[]);
@@ -7922,6 +8196,8 @@ export namespace Arrow {
     }
 
     class LiteralExpression extends Expression {
+        static $gtype: GObject.GType<LiteralExpression>;
+
         // Constructors of Arrow.LiteralExpression
 
         constructor(properties?: Partial<LiteralExpression.ConstructorProps>, ...args: any[]);
@@ -7938,6 +8214,8 @@ export namespace Arrow {
     }
 
     class LocalFileSystem extends FileSystem {
+        static $gtype: GObject.GType<LocalFileSystem>;
+
         // Constructors of Arrow.LocalFileSystem
 
         constructor(properties?: Partial<LocalFileSystem.ConstructorProps>, ...args: any[]);
@@ -7957,6 +8235,8 @@ export namespace Arrow {
     }
 
     class LocalFileSystemOptions extends GObject.Object {
+        static $gtype: GObject.GType<LocalFileSystemOptions>;
+
         // Own properties of Arrow.LocalFileSystemOptions
 
         /**
@@ -7992,6 +8272,8 @@ export namespace Arrow {
     }
 
     class MapArray extends ListArray {
+        static $gtype: GObject.GType<MapArray>;
+
         // Own properties of Arrow.MapArray
 
         get items(): Array;
@@ -8022,6 +8304,8 @@ export namespace Arrow {
     }
 
     class MapArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<MapArrayBuilder>;
+
         // Constructors of Arrow.MapArrayBuilder
 
         constructor(properties?: Partial<MapArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -8053,6 +8337,8 @@ export namespace Arrow {
     }
 
     class MapDataType extends ListDataType {
+        static $gtype: GObject.GType<MapDataType>;
+
         // Constructors of Arrow.MapDataType
 
         constructor(properties?: Partial<MapDataType.ConstructorProps>, ...args: any[]);
@@ -8077,6 +8363,8 @@ export namespace Arrow {
     }
 
     class MapScalar extends BaseListScalar {
+        static $gtype: GObject.GType<MapScalar>;
+
         // Constructors of Arrow.MapScalar
 
         constructor(properties?: Partial<MapScalar.ConstructorProps>, ...args: any[]);
@@ -8096,6 +8384,8 @@ export namespace Arrow {
     }
 
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
+        static $gtype: GObject.GType<MemoryMappedInputStream>;
+
         // Constructors of Arrow.MemoryMappedInputStream
 
         constructor(properties?: Partial<MemoryMappedInputStream.ConstructorProps>, ...args: any[]);
@@ -8468,6 +8758,8 @@ export namespace Arrow {
     }
 
     class MockFileSystem extends FileSystem {
+        static $gtype: GObject.GType<MockFileSystem>;
+
         // Constructors of Arrow.MockFileSystem
 
         constructor(properties?: Partial<MockFileSystem.ConstructorProps>, ...args: any[]);
@@ -8482,6 +8774,8 @@ export namespace Arrow {
     }
 
     class MonthDayNanoIntervalDataType extends IntervalDataType {
+        static $gtype: GObject.GType<MonthDayNanoIntervalDataType>;
+
         // Constructors of Arrow.MonthDayNanoIntervalDataType
 
         constructor(properties?: Partial<MonthDayNanoIntervalDataType.ConstructorProps>, ...args: any[]);
@@ -8498,6 +8792,8 @@ export namespace Arrow {
     }
 
     class MonthIntervalDataType extends IntervalDataType {
+        static $gtype: GObject.GType<MonthIntervalDataType>;
+
         // Constructors of Arrow.MonthIntervalDataType
 
         constructor(properties?: Partial<MonthIntervalDataType.ConstructorProps>, ...args: any[]);
@@ -8514,6 +8810,8 @@ export namespace Arrow {
     }
 
     class MutableBuffer extends Buffer {
+        static $gtype: GObject.GType<MutableBuffer>;
+
         // Constructors of Arrow.MutableBuffer
 
         constructor(properties?: Partial<MutableBuffer.ConstructorProps>, ...args: any[]);
@@ -8538,6 +8836,8 @@ export namespace Arrow {
     }
 
     class NullArray extends Array {
+        static $gtype: GObject.GType<NullArray>;
+
         // Constructors of Arrow.NullArray
 
         constructor(properties?: Partial<NullArray.ConstructorProps>, ...args: any[]);
@@ -8554,6 +8854,8 @@ export namespace Arrow {
     }
 
     class NullArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<NullArrayBuilder>;
+
         // Constructors of Arrow.NullArrayBuilder
 
         constructor(properties?: Partial<NullArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -8570,6 +8872,8 @@ export namespace Arrow {
     }
 
     class NullDataType extends DataType {
+        static $gtype: GObject.GType<NullDataType>;
+
         // Constructors of Arrow.NullDataType
 
         constructor(properties?: Partial<NullDataType.ConstructorProps>, ...args: any[]);
@@ -8586,6 +8890,8 @@ export namespace Arrow {
     }
 
     class NullScalar extends Scalar {
+        static $gtype: GObject.GType<NullScalar>;
+
         // Constructors of Arrow.NullScalar
 
         constructor(properties?: Partial<NullScalar.ConstructorProps>, ...args: any[]);
@@ -8602,6 +8908,8 @@ export namespace Arrow {
     }
 
     class NumericArray extends PrimitiveArray {
+        static $gtype: GObject.GType<NumericArray>;
+
         // Constructors of Arrow.NumericArray
 
         constructor(properties?: Partial<NumericArray.ConstructorProps>, ...args: any[]);
@@ -8620,6 +8928,8 @@ export namespace Arrow {
     }
 
     abstract class NumericDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<NumericDataType>;
+
         // Constructors of Arrow.NumericDataType
 
         constructor(properties?: Partial<NumericDataType.ConstructorProps>, ...args: any[]);
@@ -8640,6 +8950,8 @@ export namespace Arrow {
     }
 
     class OutputStream extends GObject.Object implements File, Writable {
+        static $gtype: GObject.GType<OutputStream>;
+
         // Own properties of Arrow.OutputStream
 
         set output_stream(val: any);
@@ -9031,6 +9343,8 @@ export namespace Arrow {
     }
 
     class PrimitiveArray extends Array {
+        static $gtype: GObject.GType<PrimitiveArray>;
+
         // Constructors of Arrow.PrimitiveArray
 
         constructor(properties?: Partial<PrimitiveArray.ConstructorProps>, ...args: any[]);
@@ -9055,6 +9369,8 @@ export namespace Arrow {
     }
 
     class ReadOptions extends GObject.Object {
+        static $gtype: GObject.GType<ReadOptions>;
+
         // Own properties of Arrow.ReadOptions
 
         /**
@@ -9102,6 +9418,8 @@ export namespace Arrow {
     }
 
     class RecordBatch extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatch>;
+
         // Own properties of Arrow.RecordBatch
 
         set record_batch(val: any);
@@ -9149,6 +9467,8 @@ export namespace Arrow {
     }
 
     class RecordBatchBuilder extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatchBuilder>;
+
         // Own properties of Arrow.RecordBatchBuilder
 
         set record_batch_builder(val: any);
@@ -9183,6 +9503,8 @@ export namespace Arrow {
     }
 
     class RecordBatchDatum extends Datum {
+        static $gtype: GObject.GType<RecordBatchDatum>;
+
         // Own properties of Arrow.RecordBatchDatum
 
         get value(): RecordBatch;
@@ -9209,6 +9531,8 @@ export namespace Arrow {
      * It wraps `arrow::ipc::RecordBatchFileReader`.
      */
     class RecordBatchFileReader extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatchFileReader>;
+
         // Own properties of Arrow.RecordBatchFileReader
 
         set record_batch_file_reader(val: any);
@@ -9241,6 +9565,8 @@ export namespace Arrow {
      * It wraps `arrow::ipc::RecordBatchFileWriter`.
      */
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
+        static $gtype: GObject.GType<RecordBatchFileWriter>;
+
         // Constructors of Arrow.RecordBatchFileWriter
 
         constructor(properties?: Partial<RecordBatchFileWriter.ConstructorProps>, ...args: any[]);
@@ -9259,6 +9585,8 @@ export namespace Arrow {
     }
 
     class RecordBatchIterator extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatchIterator>;
+
         // Own properties of Arrow.RecordBatchIterator
 
         set iterator(val: any);
@@ -9288,6 +9616,8 @@ export namespace Arrow {
     }
 
     class RecordBatchReader extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatchReader>;
+
         // Own properties of Arrow.RecordBatchReader
 
         set record_batch_reader(val: any);
@@ -9325,6 +9655,8 @@ export namespace Arrow {
      * It wraps `arrow::ipc::RecordBatchStreamReader`.
      */
     class RecordBatchStreamReader extends RecordBatchReader {
+        static $gtype: GObject.GType<RecordBatchStreamReader>;
+
         // Constructors of Arrow.RecordBatchStreamReader
 
         constructor(properties?: Partial<RecordBatchStreamReader.ConstructorProps>, ...args: any[]);
@@ -9347,6 +9679,8 @@ export namespace Arrow {
      * It wraps `arrow::ipc::RecordBatchStreamWriter`.
      */
     class RecordBatchStreamWriter extends RecordBatchWriter {
+        static $gtype: GObject.GType<RecordBatchStreamWriter>;
+
         // Constructors of Arrow.RecordBatchStreamWriter
 
         constructor(properties?: Partial<RecordBatchStreamWriter.ConstructorProps>, ...args: any[]);
@@ -9369,6 +9703,8 @@ export namespace Arrow {
      * It wraps `arrow::ipc::RecordBatchWriter`.
      */
     class RecordBatchWriter extends GObject.Object {
+        static $gtype: GObject.GType<RecordBatchWriter>;
+
         // Own properties of Arrow.RecordBatchWriter
 
         set record_batch_writer(val: any);
@@ -9394,6 +9730,8 @@ export namespace Arrow {
     }
 
     class ResizableBuffer extends MutableBuffer {
+        static $gtype: GObject.GType<ResizableBuffer>;
+
         // Constructors of Arrow.ResizableBuffer
 
         constructor(properties?: Partial<ResizableBuffer.ConstructorProps>, ...args: any[]);
@@ -9422,6 +9760,8 @@ export namespace Arrow {
     }
 
     class RoundOptions extends FunctionOptions {
+        static $gtype: GObject.GType<RoundOptions>;
+
         // Own properties of Arrow.RoundOptions
 
         /**
@@ -9459,6 +9799,8 @@ export namespace Arrow {
     }
 
     class RoundToMultipleOptions extends FunctionOptions {
+        static $gtype: GObject.GType<RoundToMultipleOptions>;
+
         // Own properties of Arrow.RoundToMultipleOptions
 
         /**
@@ -9493,6 +9835,8 @@ export namespace Arrow {
     }
 
     class S3FileSystem extends FileSystem {
+        static $gtype: GObject.GType<S3FileSystem>;
+
         // Constructors of Arrow.S3FileSystem
 
         constructor(properties?: Partial<S3FileSystem.ConstructorProps>, ...args: any[]);
@@ -9510,6 +9854,8 @@ export namespace Arrow {
     }
 
     class S3GlobalOptions extends GObject.Object {
+        static $gtype: GObject.GType<S3GlobalOptions>;
+
         // Own properties of Arrow.S3GlobalOptions
 
         /**
@@ -9543,6 +9889,8 @@ export namespace Arrow {
     }
 
     abstract class Scalar extends GObject.Object {
+        static $gtype: GObject.GType<Scalar>;
+
         // Own properties of Arrow.Scalar
 
         /**
@@ -9587,6 +9935,8 @@ export namespace Arrow {
     }
 
     class ScalarAggregateOptions extends FunctionOptions {
+        static $gtype: GObject.GType<ScalarAggregateOptions>;
+
         // Own properties of Arrow.ScalarAggregateOptions
 
         /**
@@ -9628,6 +9978,8 @@ export namespace Arrow {
     }
 
     class ScalarDatum extends Datum {
+        static $gtype: GObject.GType<ScalarDatum>;
+
         // Own properties of Arrow.ScalarDatum
 
         get value(): Scalar;
@@ -9650,6 +10002,8 @@ export namespace Arrow {
     }
 
     class Schema extends GObject.Object {
+        static $gtype: GObject.GType<Schema>;
+
         // Own properties of Arrow.Schema
 
         set schema(val: any);
@@ -9695,6 +10049,8 @@ export namespace Arrow {
     }
 
     class SeekableInputStream extends InputStream implements File, Readable {
+        static $gtype: GObject.GType<SeekableInputStream>;
+
         // Constructors of Arrow.SeekableInputStream
 
         constructor(properties?: Partial<SeekableInputStream.ConstructorProps>, ...args: any[]);
@@ -10086,6 +10442,8 @@ export namespace Arrow {
     }
 
     class SetLookupOptions extends FunctionOptions {
+        static $gtype: GObject.GType<SetLookupOptions>;
+
         // Own properties of Arrow.SetLookupOptions
 
         /**
@@ -10125,6 +10483,8 @@ export namespace Arrow {
     }
 
     class SinkNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<SinkNodeOptions>;
+
         // Constructors of Arrow.SinkNodeOptions
 
         constructor(properties?: Partial<SinkNodeOptions.ConstructorProps>, ...args: any[]);
@@ -10148,6 +10508,8 @@ export namespace Arrow {
     }
 
     class SlowFileSystem extends FileSystem {
+        static $gtype: GObject.GType<SlowFileSystem>;
+
         // Own properties of Arrow.SlowFileSystem
 
         get base_file_system(): FileSystem;
@@ -10178,6 +10540,8 @@ export namespace Arrow {
     }
 
     class SortKey extends GObject.Object {
+        static $gtype: GObject.GType<SortKey>;
+
         // Own properties of Arrow.SortKey
 
         /**
@@ -10213,6 +10577,8 @@ export namespace Arrow {
     }
 
     class SortOptions extends FunctionOptions {
+        static $gtype: GObject.GType<SortOptions>;
+
         // Constructors of Arrow.SortOptions
 
         constructor(properties?: Partial<SortOptions.ConstructorProps>, ...args: any[]);
@@ -10249,6 +10615,8 @@ export namespace Arrow {
     }
 
     class SourceNodeOptions extends ExecuteNodeOptions {
+        static $gtype: GObject.GType<SourceNodeOptions>;
+
         // Own properties of Arrow.SourceNodeOptions
 
         set reader(val: RecordBatchReader);
@@ -10275,6 +10643,8 @@ export namespace Arrow {
     }
 
     class SparseUnionArray extends UnionArray {
+        static $gtype: GObject.GType<SparseUnionArray>;
+
         // Constructors of Arrow.SparseUnionArray
 
         constructor(properties?: Partial<SparseUnionArray.ConstructorProps>, ...args: any[]);
@@ -10293,6 +10663,8 @@ export namespace Arrow {
     }
 
     class SparseUnionDataType extends UnionDataType {
+        static $gtype: GObject.GType<SparseUnionDataType>;
+
         // Constructors of Arrow.SparseUnionDataType
 
         constructor(properties?: Partial<SparseUnionDataType.ConstructorProps>, ...args: any[]);
@@ -10309,6 +10681,8 @@ export namespace Arrow {
     }
 
     class SparseUnionScalar extends UnionScalar {
+        static $gtype: GObject.GType<SparseUnionScalar>;
+
         // Constructors of Arrow.SparseUnionScalar
 
         constructor(properties?: Partial<SparseUnionScalar.ConstructorProps>, ...args: any[]);
@@ -10325,6 +10699,8 @@ export namespace Arrow {
     }
 
     class StringArray extends BinaryArray {
+        static $gtype: GObject.GType<StringArray>;
+
         // Constructors of Arrow.StringArray
 
         constructor(properties?: Partial<StringArray.ConstructorProps>, ...args: any[]);
@@ -10351,6 +10727,8 @@ export namespace Arrow {
     }
 
     class StringArrayBuilder extends BinaryArrayBuilder {
+        static $gtype: GObject.GType<StringArrayBuilder>;
+
         // Constructors of Arrow.StringArrayBuilder
 
         constructor(properties?: Partial<StringArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -10381,6 +10759,8 @@ export namespace Arrow {
     }
 
     class StringDataType extends DataType {
+        static $gtype: GObject.GType<StringDataType>;
+
         // Constructors of Arrow.StringDataType
 
         constructor(properties?: Partial<StringDataType.ConstructorProps>, ...args: any[]);
@@ -10397,6 +10777,8 @@ export namespace Arrow {
     }
 
     class StringDictionaryArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<StringDictionaryArrayBuilder>;
+
         // Constructors of Arrow.StringDictionaryArrayBuilder
 
         constructor(properties?: Partial<StringDictionaryArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -10432,6 +10814,8 @@ export namespace Arrow {
     }
 
     class StringScalar extends BaseBinaryScalar {
+        static $gtype: GObject.GType<StringScalar>;
+
         // Constructors of Arrow.StringScalar
 
         constructor(properties?: Partial<StringScalar.ConstructorProps>, ...args: any[]);
@@ -10448,6 +10832,8 @@ export namespace Arrow {
     }
 
     class StructArray extends Array {
+        static $gtype: GObject.GType<StructArray>;
+
         // Constructors of Arrow.StructArray
 
         constructor(properties?: Partial<StructArray.ConstructorProps>, ...args: any[]);
@@ -10476,6 +10862,8 @@ export namespace Arrow {
     }
 
     class StructArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<StructArrayBuilder>;
+
         // Constructors of Arrow.StructArrayBuilder
 
         constructor(properties?: Partial<StructArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -10499,6 +10887,8 @@ export namespace Arrow {
     }
 
     class StructDataType extends DataType {
+        static $gtype: GObject.GType<StructDataType>;
+
         // Constructors of Arrow.StructDataType
 
         constructor(properties?: Partial<StructDataType.ConstructorProps>, ...args: any[]);
@@ -10523,6 +10913,8 @@ export namespace Arrow {
     }
 
     class StructScalar extends Scalar {
+        static $gtype: GObject.GType<StructScalar>;
+
         // Constructors of Arrow.StructScalar
 
         constructor(properties?: Partial<StructScalar.ConstructorProps>, ...args: any[]);
@@ -10546,6 +10938,8 @@ export namespace Arrow {
     }
 
     class SubTreeFileSystem extends FileSystem {
+        static $gtype: GObject.GType<SubTreeFileSystem>;
+
         // Own properties of Arrow.SubTreeFileSystem
 
         get base_file_system(): FileSystem;
@@ -10569,6 +10963,8 @@ export namespace Arrow {
     }
 
     class Table extends GObject.Object {
+        static $gtype: GObject.GType<Table>;
+
         // Own properties of Arrow.Table
 
         set table(val: any);
@@ -10621,6 +11017,8 @@ export namespace Arrow {
     }
 
     class TableBatchReader extends RecordBatchReader {
+        static $gtype: GObject.GType<TableBatchReader>;
+
         // Constructors of Arrow.TableBatchReader
 
         constructor(properties?: Partial<TableBatchReader.ConstructorProps>, ...args: any[]);
@@ -10645,6 +11043,8 @@ export namespace Arrow {
     }
 
     class TableConcatenateOptions extends GObject.Object {
+        static $gtype: GObject.GType<TableConcatenateOptions>;
+
         // Own properties of Arrow.TableConcatenateOptions
 
         /**
@@ -10708,6 +11108,8 @@ export namespace Arrow {
     }
 
     class TableDatum extends Datum {
+        static $gtype: GObject.GType<TableDatum>;
+
         // Own properties of Arrow.TableDatum
 
         get value(): Table;
@@ -10728,6 +11130,8 @@ export namespace Arrow {
     }
 
     class TakeOptions extends FunctionOptions {
+        static $gtype: GObject.GType<TakeOptions>;
+
         // Constructors of Arrow.TakeOptions
 
         constructor(properties?: Partial<TakeOptions.ConstructorProps>, ...args: any[]);
@@ -10744,6 +11148,8 @@ export namespace Arrow {
     }
 
     abstract class TemporalDataType extends FixedWidthDataType {
+        static $gtype: GObject.GType<TemporalDataType>;
+
         // Constructors of Arrow.TemporalDataType
 
         constructor(properties?: Partial<TemporalDataType.ConstructorProps>, ...args: any[]);
@@ -10761,6 +11167,8 @@ export namespace Arrow {
     }
 
     class Tensor extends GObject.Object {
+        static $gtype: GObject.GType<Tensor>;
+
         // Own properties of Arrow.Tensor
 
         get buffer(): Buffer;
@@ -10804,6 +11212,8 @@ export namespace Arrow {
     }
 
     class Time32Array extends NumericArray {
+        static $gtype: GObject.GType<Time32Array>;
+
         // Constructors of Arrow.Time32Array
 
         constructor(properties?: Partial<Time32Array.ConstructorProps>, ...args: any[]);
@@ -10831,6 +11241,8 @@ export namespace Arrow {
     }
 
     class Time32ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Time32ArrayBuilder>;
+
         // Constructors of Arrow.Time32ArrayBuilder
 
         constructor(properties?: Partial<Time32ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -10860,6 +11272,8 @@ export namespace Arrow {
     }
 
     class Time32DataType extends TimeDataType {
+        static $gtype: GObject.GType<Time32DataType>;
+
         // Constructors of Arrow.Time32DataType
 
         constructor(properties?: Partial<Time32DataType.ConstructorProps>, ...args: any[]);
@@ -10876,6 +11290,8 @@ export namespace Arrow {
     }
 
     class Time32Scalar extends Scalar {
+        static $gtype: GObject.GType<Time32Scalar>;
+
         // Constructors of Arrow.Time32Scalar
 
         constructor(properties?: Partial<Time32Scalar.ConstructorProps>, ...args: any[]);
@@ -10896,6 +11312,8 @@ export namespace Arrow {
     }
 
     class Time64Array extends NumericArray {
+        static $gtype: GObject.GType<Time64Array>;
+
         // Constructors of Arrow.Time64Array
 
         constructor(properties?: Partial<Time64Array.ConstructorProps>, ...args: any[]);
@@ -10923,6 +11341,8 @@ export namespace Arrow {
     }
 
     class Time64ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<Time64ArrayBuilder>;
+
         // Constructors of Arrow.Time64ArrayBuilder
 
         constructor(properties?: Partial<Time64ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -10952,6 +11372,8 @@ export namespace Arrow {
     }
 
     class Time64DataType extends TimeDataType {
+        static $gtype: GObject.GType<Time64DataType>;
+
         // Constructors of Arrow.Time64DataType
 
         constructor(properties?: Partial<Time64DataType.ConstructorProps>, ...args: any[]);
@@ -10968,6 +11390,8 @@ export namespace Arrow {
     }
 
     class Time64Scalar extends Scalar {
+        static $gtype: GObject.GType<Time64Scalar>;
+
         // Constructors of Arrow.Time64Scalar
 
         constructor(properties?: Partial<Time64Scalar.ConstructorProps>, ...args: any[]);
@@ -10988,6 +11412,8 @@ export namespace Arrow {
     }
 
     abstract class TimeDataType extends TemporalDataType {
+        static $gtype: GObject.GType<TimeDataType>;
+
         // Constructors of Arrow.TimeDataType
 
         constructor(properties?: Partial<TimeDataType.ConstructorProps>, ...args: any[]);
@@ -11006,6 +11432,8 @@ export namespace Arrow {
     }
 
     class TimestampArray extends NumericArray {
+        static $gtype: GObject.GType<TimestampArray>;
+
         // Constructors of Arrow.TimestampArray
 
         constructor(properties?: Partial<TimestampArray.ConstructorProps>, ...args: any[]);
@@ -11033,6 +11461,8 @@ export namespace Arrow {
     }
 
     class TimestampArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<TimestampArrayBuilder>;
+
         // Constructors of Arrow.TimestampArrayBuilder
 
         constructor(properties?: Partial<TimestampArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11062,6 +11492,8 @@ export namespace Arrow {
     }
 
     class TimestampDataType extends TemporalDataType {
+        static $gtype: GObject.GType<TimestampDataType>;
+
         // Constructors of Arrow.TimestampDataType
 
         constructor(properties?: Partial<TimestampDataType.ConstructorProps>, ...args: any[]);
@@ -11082,6 +11514,8 @@ export namespace Arrow {
     }
 
     class TimestampScalar extends Scalar {
+        static $gtype: GObject.GType<TimestampScalar>;
+
         // Constructors of Arrow.TimestampScalar
 
         constructor(properties?: Partial<TimestampScalar.ConstructorProps>, ...args: any[]);
@@ -11102,6 +11536,8 @@ export namespace Arrow {
     }
 
     class UInt16Array extends NumericArray {
+        static $gtype: GObject.GType<UInt16Array>;
+
         // Constructors of Arrow.UInt16Array
 
         constructor(properties?: Partial<UInt16Array.ConstructorProps>, ...args: any[]);
@@ -11124,6 +11560,8 @@ export namespace Arrow {
     }
 
     class UInt16ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UInt16ArrayBuilder>;
+
         // Constructors of Arrow.UInt16ArrayBuilder
 
         constructor(properties?: Partial<UInt16ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11153,6 +11591,8 @@ export namespace Arrow {
     }
 
     class UInt16DataType extends IntegerDataType {
+        static $gtype: GObject.GType<UInt16DataType>;
+
         // Constructors of Arrow.UInt16DataType
 
         constructor(properties?: Partial<UInt16DataType.ConstructorProps>, ...args: any[]);
@@ -11169,6 +11609,8 @@ export namespace Arrow {
     }
 
     class UInt16Scalar extends Scalar {
+        static $gtype: GObject.GType<UInt16Scalar>;
+
         // Constructors of Arrow.UInt16Scalar
 
         constructor(properties?: Partial<UInt16Scalar.ConstructorProps>, ...args: any[]);
@@ -11189,6 +11631,8 @@ export namespace Arrow {
     }
 
     class UInt32Array extends NumericArray {
+        static $gtype: GObject.GType<UInt32Array>;
+
         // Constructors of Arrow.UInt32Array
 
         constructor(properties?: Partial<UInt32Array.ConstructorProps>, ...args: any[]);
@@ -11211,6 +11655,8 @@ export namespace Arrow {
     }
 
     class UInt32ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UInt32ArrayBuilder>;
+
         // Constructors of Arrow.UInt32ArrayBuilder
 
         constructor(properties?: Partial<UInt32ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11240,6 +11686,8 @@ export namespace Arrow {
     }
 
     class UInt32DataType extends IntegerDataType {
+        static $gtype: GObject.GType<UInt32DataType>;
+
         // Constructors of Arrow.UInt32DataType
 
         constructor(properties?: Partial<UInt32DataType.ConstructorProps>, ...args: any[]);
@@ -11256,6 +11704,8 @@ export namespace Arrow {
     }
 
     class UInt32Scalar extends Scalar {
+        static $gtype: GObject.GType<UInt32Scalar>;
+
         // Constructors of Arrow.UInt32Scalar
 
         constructor(properties?: Partial<UInt32Scalar.ConstructorProps>, ...args: any[]);
@@ -11276,6 +11726,8 @@ export namespace Arrow {
     }
 
     class UInt64Array extends NumericArray {
+        static $gtype: GObject.GType<UInt64Array>;
+
         // Constructors of Arrow.UInt64Array
 
         constructor(properties?: Partial<UInt64Array.ConstructorProps>, ...args: any[]);
@@ -11298,6 +11750,8 @@ export namespace Arrow {
     }
 
     class UInt64ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UInt64ArrayBuilder>;
+
         // Constructors of Arrow.UInt64ArrayBuilder
 
         constructor(properties?: Partial<UInt64ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11327,6 +11781,8 @@ export namespace Arrow {
     }
 
     class UInt64DataType extends IntegerDataType {
+        static $gtype: GObject.GType<UInt64DataType>;
+
         // Constructors of Arrow.UInt64DataType
 
         constructor(properties?: Partial<UInt64DataType.ConstructorProps>, ...args: any[]);
@@ -11343,6 +11799,8 @@ export namespace Arrow {
     }
 
     class UInt64Scalar extends Scalar {
+        static $gtype: GObject.GType<UInt64Scalar>;
+
         // Constructors of Arrow.UInt64Scalar
 
         constructor(properties?: Partial<UInt64Scalar.ConstructorProps>, ...args: any[]);
@@ -11363,6 +11821,8 @@ export namespace Arrow {
     }
 
     class UInt8Array extends NumericArray {
+        static $gtype: GObject.GType<UInt8Array>;
+
         // Constructors of Arrow.UInt8Array
 
         constructor(properties?: Partial<UInt8Array.ConstructorProps>, ...args: any[]);
@@ -11385,6 +11845,8 @@ export namespace Arrow {
     }
 
     class UInt8ArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UInt8ArrayBuilder>;
+
         // Constructors of Arrow.UInt8ArrayBuilder
 
         constructor(properties?: Partial<UInt8ArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11414,6 +11876,8 @@ export namespace Arrow {
     }
 
     class UInt8DataType extends IntegerDataType {
+        static $gtype: GObject.GType<UInt8DataType>;
+
         // Constructors of Arrow.UInt8DataType
 
         constructor(properties?: Partial<UInt8DataType.ConstructorProps>, ...args: any[]);
@@ -11430,6 +11894,8 @@ export namespace Arrow {
     }
 
     class UInt8Scalar extends Scalar {
+        static $gtype: GObject.GType<UInt8Scalar>;
+
         // Constructors of Arrow.UInt8Scalar
 
         constructor(properties?: Partial<UInt8Scalar.ConstructorProps>, ...args: any[]);
@@ -11450,6 +11916,8 @@ export namespace Arrow {
     }
 
     class UIntArrayBuilder extends ArrayBuilder {
+        static $gtype: GObject.GType<UIntArrayBuilder>;
+
         // Constructors of Arrow.UIntArrayBuilder
 
         constructor(properties?: Partial<UIntArrayBuilder.ConstructorProps>, ...args: any[]);
@@ -11481,6 +11949,8 @@ export namespace Arrow {
     }
 
     class UTF8NormalizeOptions extends FunctionOptions {
+        static $gtype: GObject.GType<UTF8NormalizeOptions>;
+
         // Own properties of Arrow.UTF8NormalizeOptions
 
         /**
@@ -11508,6 +11978,8 @@ export namespace Arrow {
     }
 
     class UnionArray extends Array {
+        static $gtype: GObject.GType<UnionArray>;
+
         // Own properties of Arrow.UnionArray
 
         get type_ids(): Int8Array;
@@ -11531,6 +12003,8 @@ export namespace Arrow {
     }
 
     abstract class UnionDataType extends DataType {
+        static $gtype: GObject.GType<UnionDataType>;
+
         // Constructors of Arrow.UnionDataType
 
         constructor(properties?: Partial<UnionDataType.ConstructorProps>, ...args: any[]);
@@ -11554,6 +12028,8 @@ export namespace Arrow {
     }
 
     abstract class UnionScalar extends Scalar {
+        static $gtype: GObject.GType<UnionScalar>;
+
         // Own properties of Arrow.UnionScalar
 
         /**
@@ -11586,6 +12062,8 @@ export namespace Arrow {
     }
 
     class VarianceOptions extends FunctionOptions {
+        static $gtype: GObject.GType<VarianceOptions>;
+
         // Own properties of Arrow.VarianceOptions
 
         /**
@@ -11641,6 +12119,8 @@ export namespace Arrow {
     }
 
     class WriteOptions extends GObject.Object {
+        static $gtype: GObject.GType<WriteOptions>;
+
         // Own properties of Arrow.WriteOptions
 
         /**

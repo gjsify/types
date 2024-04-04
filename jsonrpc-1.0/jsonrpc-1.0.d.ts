@@ -97,6 +97,8 @@ export namespace Jsonrpc {
      * before calling into any #JsonrpcClient API.
      */
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Jsonrpc.Client
 
         /**
@@ -391,6 +393,8 @@ export namespace Jsonrpc {
     }
 
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
+        static $gtype: GObject.GType<InputStream>;
+
         // Constructors of Jsonrpc.InputStream
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
@@ -772,6 +776,8 @@ export namespace Jsonrpc {
     }
 
     class OutputStream extends Gio.DataOutputStream implements Gio.Seekable {
+        static $gtype: GObject.GType<OutputStream>;
+
         // Own properties of Jsonrpc.OutputStream
 
         get use_gvariant(): boolean;
@@ -1304,6 +1310,8 @@ export namespace Jsonrpc {
      * [class`Client]` API.
      */
     class Server extends GObject.Object {
+        static $gtype: GObject.GType<Server>;
+
         // Constructors of Jsonrpc.Server
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
@@ -1392,6 +1400,8 @@ export namespace Jsonrpc {
     type ClientClass = typeof Client;
     type InputStreamClass = typeof InputStream;
     class MessageAny {
+        static $gtype: GObject.GType<MessageAny>;
+
         // Own fields of Jsonrpc.MessageAny
 
         magic: MessageMagic;
@@ -1407,6 +1417,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetBoolean {
+        static $gtype: GObject.GType<MessageGetBoolean>;
+
         // Own fields of Jsonrpc.MessageGetBoolean
 
         magic: MessageMagic;
@@ -1424,6 +1436,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetDict {
+        static $gtype: GObject.GType<MessageGetDict>;
+
         // Own fields of Jsonrpc.MessageGetDict
 
         magic: MessageMagic;
@@ -1434,6 +1448,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetDouble {
+        static $gtype: GObject.GType<MessageGetDouble>;
+
         // Own fields of Jsonrpc.MessageGetDouble
 
         magic: MessageMagic;
@@ -1451,6 +1467,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetInt32 {
+        static $gtype: GObject.GType<MessageGetInt32>;
+
         // Own fields of Jsonrpc.MessageGetInt32
 
         magic: MessageMagic;
@@ -1468,6 +1486,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetInt64 {
+        static $gtype: GObject.GType<MessageGetInt64>;
+
         // Own fields of Jsonrpc.MessageGetInt64
 
         magic: MessageMagic;
@@ -1485,6 +1505,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetIter {
+        static $gtype: GObject.GType<MessageGetIter>;
+
         // Own fields of Jsonrpc.MessageGetIter
 
         magic: MessageMagic;
@@ -1495,6 +1517,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetString {
+        static $gtype: GObject.GType<MessageGetString>;
+
         // Own fields of Jsonrpc.MessageGetString
 
         magic: MessageMagic;
@@ -1512,6 +1536,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetStrv {
+        static $gtype: GObject.GType<MessageGetStrv>;
+
         // Own fields of Jsonrpc.MessageGetStrv
 
         magic: MessageMagic;
@@ -1529,6 +1555,8 @@ export namespace Jsonrpc {
     }
 
     class MessageGetVariant {
+        static $gtype: GObject.GType<MessageGetVariant>;
+
         // Own fields of Jsonrpc.MessageGetVariant
 
         magic: MessageMagic;
@@ -1539,6 +1567,8 @@ export namespace Jsonrpc {
     }
 
     class MessageMagic {
+        static $gtype: GObject.GType<MessageMagic>;
+
         // Own fields of Jsonrpc.MessageMagic
 
         bytes: number[];
@@ -1554,6 +1584,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutBoolean {
+        static $gtype: GObject.GType<MessagePutBoolean>;
+
         // Own fields of Jsonrpc.MessagePutBoolean
 
         magic: MessageMagic;
@@ -1571,6 +1603,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutDouble {
+        static $gtype: GObject.GType<MessagePutDouble>;
+
         // Own fields of Jsonrpc.MessagePutDouble
 
         magic: MessageMagic;
@@ -1588,6 +1622,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutInt32 {
+        static $gtype: GObject.GType<MessagePutInt32>;
+
         // Own fields of Jsonrpc.MessagePutInt32
 
         magic: MessageMagic;
@@ -1605,6 +1641,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutInt64 {
+        static $gtype: GObject.GType<MessagePutInt64>;
+
         // Own fields of Jsonrpc.MessagePutInt64
 
         magic: MessageMagic;
@@ -1622,6 +1660,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutString {
+        static $gtype: GObject.GType<MessagePutString>;
+
         // Own fields of Jsonrpc.MessagePutString
 
         magic: MessageMagic;
@@ -1639,6 +1679,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutStrv {
+        static $gtype: GObject.GType<MessagePutStrv>;
+
         // Own fields of Jsonrpc.MessagePutStrv
 
         magic: MessageMagic;
@@ -1656,6 +1698,8 @@ export namespace Jsonrpc {
     }
 
     class MessagePutVariant {
+        static $gtype: GObject.GType<MessagePutVariant>;
+
         // Own fields of Jsonrpc.MessagePutVariant
 
         magic: MessageMagic;

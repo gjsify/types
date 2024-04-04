@@ -33,6 +33,8 @@ export namespace AccountsService {
      * Various error codes returned by the accounts service.
      */
     class UserManagerError extends GLib.Error {
+        static $gtype: GObject.GType<UserManagerError>;
+
         // Static fields of AccountsService.UserManagerError
 
         /**
@@ -142,6 +144,8 @@ export namespace AccountsService {
      * Represents a user account on the system.
      */
     class User extends GObject.Object {
+        static $gtype: GObject.GType<User>;
+
         // Own properties of AccountsService.User
 
         get account_type(): number;
@@ -573,6 +577,8 @@ export namespace AccountsService {
      * A user manager object.
      */
     class UserManager extends GObject.Object {
+        static $gtype: GObject.GType<UserManager>;
+
         // Own properties of AccountsService.UserManager
 
         get exclude_usernames_list(): any;

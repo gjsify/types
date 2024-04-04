@@ -1,7 +1,7 @@
 
 declare module 'gi://NM?version=1.0' {
-    import NM10 from '@girs/nm-1.0';
-    export default NM10;
+    import NM from '@girs/nm-1.0';
+    export default NM;
 }
 
 declare module 'gi://NM' {

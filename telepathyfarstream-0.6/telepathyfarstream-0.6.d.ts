@@ -58,6 +58,8 @@ export namespace TelepathyFarstream {
      * All members of the object are private
      */
     class Channel extends GObject.Object implements Gio.AsyncInitable<Channel> {
+        static $gtype: GObject.GType<Channel>;
+
         // Own properties of TelepathyFarstream.Channel
 
         get channel(): TelepathyGLib.Channel;
@@ -645,6 +647,8 @@ export namespace TelepathyFarstream {
      * This structure is private, this class is not subclassable.
      */
     abstract class Content extends GObject.Object {
+        static $gtype: GObject.GType<Content>;
+
         // Own properties of TelepathyFarstream.Content
 
         get fs_conference(): Farstream.Conference;
@@ -764,6 +768,8 @@ export namespace TelepathyFarstream {
 
     type ChannelClass = typeof Channel;
     abstract class ChannelPrivate {
+        static $gtype: GObject.GType<ChannelPrivate>;
+
         // Constructors of TelepathyFarstream.ChannelPrivate
 
         _init(...args: any[]): void;
@@ -771,6 +777,8 @@ export namespace TelepathyFarstream {
 
     type ContentClass = typeof Content;
     abstract class ContentPrivate {
+        static $gtype: GObject.GType<ContentPrivate>;
+
         // Constructors of TelepathyFarstream.ContentPrivate
 
         _init(...args: any[]): void;

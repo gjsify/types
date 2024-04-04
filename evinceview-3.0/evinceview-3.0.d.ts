@@ -138,6 +138,8 @@ export namespace EvinceView {
     }
 
     class DocumentModel extends GObject.Object {
+        static $gtype: GObject.GType<DocumentModel>;
+
         // Own properties of EvinceView.DocumentModel
 
         get continuous(): boolean;
@@ -265,6 +267,8 @@ export namespace EvinceView {
     }
 
     abstract class Job extends GObject.Object {
+        static $gtype: GObject.GType<Job>;
+
         // Own fields of EvinceView.Job
 
         document: EvinceDocument.Document;
@@ -330,6 +334,8 @@ export namespace EvinceView {
     }
 
     class JobAnnots extends Job {
+        static $gtype: GObject.GType<JobAnnots>;
+
         // Own fields of EvinceView.JobAnnots
 
         annots: any[];
@@ -350,6 +356,8 @@ export namespace EvinceView {
     }
 
     class JobAttachments extends Job {
+        static $gtype: GObject.GType<JobAttachments>;
+
         // Own fields of EvinceView.JobAttachments
 
         attachments: any[];
@@ -370,6 +378,8 @@ export namespace EvinceView {
     }
 
     class JobExport extends Job {
+        static $gtype: GObject.GType<JobExport>;
+
         // Own fields of EvinceView.JobExport
 
         page: number;
@@ -401,6 +411,8 @@ export namespace EvinceView {
     }
 
     class JobFind extends Job {
+        static $gtype: GObject.GType<JobFind>;
+
         // Own fields of EvinceView.JobFind
 
         start_page: number;
@@ -467,6 +479,8 @@ export namespace EvinceView {
     }
 
     class JobFonts extends Job {
+        static $gtype: GObject.GType<JobFonts>;
+
         // Own fields of EvinceView.JobFonts
 
         scan_completed: boolean;
@@ -500,6 +514,8 @@ export namespace EvinceView {
     }
 
     class JobLayers extends Job {
+        static $gtype: GObject.GType<JobLayers>;
+
         // Own fields of EvinceView.JobLayers
 
         model: Gtk.TreeModel;
@@ -520,6 +536,8 @@ export namespace EvinceView {
     }
 
     class JobLinks extends Job {
+        static $gtype: GObject.GType<JobLinks>;
+
         // Own fields of EvinceView.JobLinks
 
         model: Gtk.TreeModel;
@@ -548,6 +566,8 @@ export namespace EvinceView {
     }
 
     class JobLoad extends Job {
+        static $gtype: GObject.GType<JobLoad>;
+
         // Own fields of EvinceView.JobLoad
 
         uri: string;
@@ -578,6 +598,8 @@ export namespace EvinceView {
      * referring to a regular file.
      */
     class JobLoadFd extends Job {
+        static $gtype: GObject.GType<JobLoadFd>;
+
         // Own fields of EvinceView.JobLoadFd
 
         mime_type: string;
@@ -626,6 +648,8 @@ export namespace EvinceView {
      * A job class to load a #EvDocument from a #GFile.
      */
     class JobLoadGFile extends Job {
+        static $gtype: GObject.GType<JobLoadGFile>;
+
         // Own fields of EvinceView.JobLoadGFile
 
         password: string;
@@ -657,6 +681,8 @@ export namespace EvinceView {
      * A job class to load a #EvDocument from a #GInputStream.
      */
     class JobLoadStream extends Job {
+        static $gtype: GObject.GType<JobLoadStream>;
+
         // Own fields of EvinceView.JobLoadStream
 
         password: string;
@@ -686,6 +712,8 @@ export namespace EvinceView {
     }
 
     class JobPageData extends Job {
+        static $gtype: GObject.GType<JobPageData>;
+
         // Own fields of EvinceView.JobPageData
 
         page: number;
@@ -712,6 +740,8 @@ export namespace EvinceView {
     }
 
     class JobPrint extends Job {
+        static $gtype: GObject.GType<JobPrint>;
+
         // Own fields of EvinceView.JobPrint
 
         page: number;
@@ -737,6 +767,8 @@ export namespace EvinceView {
     }
 
     class JobRender extends Job {
+        static $gtype: GObject.GType<JobRender>;
+
         // Own fields of EvinceView.JobRender
 
         page: number;
@@ -783,6 +815,8 @@ export namespace EvinceView {
     }
 
     class JobSave extends Job {
+        static $gtype: GObject.GType<JobSave>;
+
         // Own fields of EvinceView.JobSave
 
         uri: string;
@@ -804,6 +838,8 @@ export namespace EvinceView {
     }
 
     class JobThumbnail extends Job {
+        static $gtype: GObject.GType<JobThumbnail>;
+
         // Own fields of EvinceView.JobThumbnail
 
         page: number;
@@ -864,6 +900,8 @@ export namespace EvinceView {
     }
 
     abstract class PrintOperation extends GObject.Object {
+        static $gtype: GObject.GType<PrintOperation>;
+
         // Own properties of EvinceView.PrintOperation
 
         set document(val: EvinceDocument.Document);
@@ -989,6 +1027,8 @@ export namespace EvinceView {
     }
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of EvinceView.View
 
         get can_zoom_in(): boolean;
@@ -1658,6 +1698,8 @@ export namespace EvinceView {
     }
 
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewPresentation>;
+
         // Own properties of EvinceView.ViewPresentation
 
         get current_page(): number;

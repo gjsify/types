@@ -98,6 +98,8 @@ export namespace GstController {
      * color component off and a value of 1.0 will be the color level.
      */
     class ARGBControlBinding extends Gst.ControlBinding {
+        static $gtype: GObject.GType<ARGBControlBinding>;
+
         // Own properties of GstController.ARGBControlBinding
 
         get control_source_a(): Gst.ControlSource;
@@ -152,6 +154,8 @@ export namespace GstController {
      * transformations.
      */
     class DirectControlBinding extends Gst.ControlBinding {
+        static $gtype: GObject.GType<DirectControlBinding>;
+
         // Own properties of GstController.DirectControlBinding
 
         get absolute(): boolean;
@@ -190,6 +194,8 @@ export namespace GstController {
      * All functions are MT-safe.
      */
     class InterpolationControlSource extends TimedValueControlSource {
+        static $gtype: GObject.GType<InterpolationControlSource>;
+
         // Own properties of GstController.InterpolationControlSource
 
         get mode(): InterpolationMode;
@@ -227,6 +233,8 @@ export namespace GstController {
      * All functions are MT-safe.
      */
     class LFOControlSource extends Gst.ControlSource {
+        static $gtype: GObject.GType<LFOControlSource>;
+
         // Own properties of GstController.LFOControlSource
 
         /**
@@ -280,6 +288,8 @@ export namespace GstController {
      * A #GstControlBinding that forwards requests to another #GstControlBinding
      */
     class ProxyControlBinding extends Gst.ControlBinding {
+        static $gtype: GObject.GType<ProxyControlBinding>;
+
         // Constructors of GstController.ProxyControlBinding
 
         constructor(properties?: Partial<ProxyControlBinding.ConstructorProps>, ...args: any[]);
@@ -323,6 +333,8 @@ export namespace GstController {
      * All functions are MT-safe.
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
+        static $gtype: GObject.GType<TimedValueControlSource>;
+
         // Own fields of GstController.TimedValueControlSource
 
         nvalues: number;
@@ -418,6 +430,8 @@ export namespace GstController {
      * All functions are MT-safe.
      */
     class TriggerControlSource extends TimedValueControlSource {
+        static $gtype: GObject.GType<TriggerControlSource>;
+
         // Own properties of GstController.TriggerControlSource
 
         get tolerance(): number;
@@ -439,6 +453,8 @@ export namespace GstController {
      * GstTimedValue.
      */
     class ControlPoint {
+        static $gtype: GObject.GType<ControlPoint>;
+
         // Own fields of GstController.ControlPoint
 
         timestamp: Gst.ClockTime;
@@ -470,6 +486,8 @@ export namespace GstController {
     type DirectControlBindingClass = typeof DirectControlBinding;
     type InterpolationControlSourceClass = typeof InterpolationControlSource;
     abstract class InterpolationControlSourcePrivate {
+        static $gtype: GObject.GType<InterpolationControlSourcePrivate>;
+
         // Constructors of GstController.InterpolationControlSourcePrivate
 
         _init(...args: any[]): void;
@@ -477,6 +495,8 @@ export namespace GstController {
 
     type LFOControlSourceClass = typeof LFOControlSource;
     abstract class LFOControlSourcePrivate {
+        static $gtype: GObject.GType<LFOControlSourcePrivate>;
+
         // Constructors of GstController.LFOControlSourcePrivate
 
         _init(...args: any[]): void;
@@ -485,6 +505,8 @@ export namespace GstController {
     type ProxyControlBindingClass = typeof ProxyControlBinding;
     type TimedValueControlSourceClass = typeof TimedValueControlSource;
     abstract class TimedValueControlSourcePrivate {
+        static $gtype: GObject.GType<TimedValueControlSourcePrivate>;
+
         // Constructors of GstController.TimedValueControlSourcePrivate
 
         _init(...args: any[]): void;
@@ -492,6 +514,8 @@ export namespace GstController {
 
     type TriggerControlSourceClass = typeof TriggerControlSource;
     abstract class TriggerControlSourcePrivate {
+        static $gtype: GObject.GType<TriggerControlSourcePrivate>;
+
         // Constructors of GstController.TriggerControlSourcePrivate
 
         _init(...args: any[]): void;

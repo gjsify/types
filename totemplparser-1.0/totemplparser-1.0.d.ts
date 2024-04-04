@@ -21,6 +21,8 @@ export namespace TotemPlParser {
      * errors occurring during file operations in a #TotemPlParser.
      */
     class ParserError extends GLib.Error {
+        static $gtype: GObject.GType<ParserError>;
+
         // Static fields of TotemPlParser.ParserError
 
         /**
@@ -278,6 +280,8 @@ export namespace TotemPlParser {
      * All the fields in the #TotemPlParser structure are private and should never be accessed directly.
      */
     class Parser extends GObject.Object {
+        static $gtype: GObject.GType<Parser>;
+
         // Own properties of TotemPlParser.Parser
 
         /**
@@ -552,6 +556,8 @@ export namespace TotemPlParser {
      * All the fields in the #TotemPlPlaylist structure are private and should never be accessed directly.
      */
     class Playlist extends GObject.Object {
+        static $gtype: GObject.GType<Playlist>;
+
         // Constructors of TotemPlParser.Playlist
 
         constructor(properties?: Partial<Playlist.ConstructorProps>, ...args: any[]);
@@ -633,6 +639,8 @@ export namespace TotemPlParser {
 
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
+        static $gtype: GObject.GType<ParserPrivate>;
+
         // Constructors of TotemPlParser.ParserPrivate
 
         _init(...args: any[]): void;
@@ -643,6 +651,8 @@ export namespace TotemPlParser {
      * All the fields in the #TotemPlPlaylistIter structure are private and should never be accessed directly.
      */
     class PlaylistIter {
+        static $gtype: GObject.GType<PlaylistIter>;
+
         // Constructors of TotemPlParser.PlaylistIter
 
         constructor(properties?: Partial<{}>);

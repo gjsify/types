@@ -1,7 +1,7 @@
 
 declare module 'gi://GCalc?version=2' {
-    import GCalc2 from '@girs/gcalc-2';
-    export default GCalc2;
+    import GCalc from '@girs/gcalc-2';
+    export default GCalc;
 }
 
 declare module 'gi://GCalc' {

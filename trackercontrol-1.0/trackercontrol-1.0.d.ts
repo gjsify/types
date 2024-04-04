@@ -69,6 +69,8 @@ export namespace TrackerControl {
      * Object to query and control miners.
      */
     class MinerManager extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<MinerManager>;
+
         // Own properties of TrackerControl.MinerManager
 
         get auto_start(): boolean;

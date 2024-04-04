@@ -7,6 +7,8 @@
 
 import './uhm-0.0-ambient.d.ts';
 
+import './uhm-0.0-import.d.ts';
+
 /**
  * Uhm-0.0
  */
@@ -51,6 +53,8 @@ export namespace Uhm {
      * All the fields in the #UhmResolver structure are private and should never be accessed directly.
      */
     class Resolver extends Gio.Resolver {
+        static $gtype: GObject.GType<Resolver>;
+
         // Constructors of Uhm.Resolver
 
         constructor(properties?: Partial<Resolver.ConstructorProps>, ...args: any[]);
@@ -116,6 +120,8 @@ export namespace Uhm {
      * All the fields in the #UhmServer structure are private and should never be accessed directly.
      */
     class Server extends GObject.Object {
+        static $gtype: GObject.GType<Server>;
+
         // Own properties of Uhm.Server
 
         /**
@@ -552,6 +558,8 @@ export namespace Uhm {
 
     type ResolverClass = typeof Resolver;
     abstract class ResolverPrivate {
+        static $gtype: GObject.GType<ResolverPrivate>;
+
         // Constructors of Uhm.ResolverPrivate
 
         _init(...args: any[]): void;
@@ -559,6 +567,8 @@ export namespace Uhm {
 
     type ServerClass = typeof Server;
     abstract class ServerPrivate {
+        static $gtype: GObject.GType<ServerPrivate>;
+
         // Constructors of Uhm.ServerPrivate
 
         _init(...args: any[]): void;

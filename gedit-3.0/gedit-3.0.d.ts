@@ -241,6 +241,8 @@ export namespace Gedit {
     }
 
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
+        static $gtype: GObject.GType<App>;
+
         // Constructors of Gedit.App
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
@@ -672,6 +674,8 @@ export namespace Gedit {
     }
 
     class Document extends GtkSource.Buffer {
+        static $gtype: GObject.GType<Document>;
+
         // Own properties of Gedit.Document
 
         /**
@@ -815,6 +819,8 @@ export namespace Gedit {
         extends Gtk.ComboBox
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
+        static $gtype: GObject.GType<EncodingsComboBox>;
+
         // Own properties of Gedit.EncodingsComboBox
 
         /**
@@ -4948,6 +4954,8 @@ export namespace Gedit {
     }
 
     class MenuExtension extends GObject.Object {
+        static $gtype: GObject.GType<MenuExtension>;
+
         // Own properties of Gedit.MenuExtension
 
         get menu(): Gio.Menu;
@@ -4978,6 +4986,8 @@ export namespace Gedit {
     }
 
     class Message extends GObject.Object {
+        static $gtype: GObject.GType<Message>;
+
         // Own properties of Gedit.Message
 
         /**
@@ -5053,6 +5063,8 @@ export namespace Gedit {
     }
 
     class MessageBus extends GObject.Object {
+        static $gtype: GObject.GType<MessageBus>;
+
         // Constructors of Gedit.MessageBus
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
@@ -5228,6 +5240,8 @@ export namespace Gedit {
     }
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Statusbar>;
+
         // Constructors of Gedit.Statusbar
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
@@ -5628,6 +5642,8 @@ export namespace Gedit {
     }
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Tab>;
+
         // Own properties of Gedit.Tab
 
         get autosave(): boolean;
@@ -6096,6 +6112,8 @@ export namespace Gedit {
     }
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<View>;
+
         // Constructors of Gedit.View
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
@@ -6516,6 +6534,8 @@ export namespace Gedit {
         extends Gtk.ApplicationWindow
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Gedit.Window
 
         get state(): WindowState;
@@ -7613,6 +7633,8 @@ export namespace Gedit {
     type MenuExtensionClass = typeof MenuExtension;
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
+        static $gtype: GObject.GType<MessageBusPrivate>;
+
         // Constructors of Gedit.MessageBusPrivate
 
         _init(...args: any[]): void;
@@ -7620,6 +7642,8 @@ export namespace Gedit {
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
+        static $gtype: GObject.GType<MessagePrivate>;
+
         // Constructors of Gedit.MessagePrivate
 
         _init(...args: any[]): void;
@@ -7630,6 +7654,8 @@ export namespace Gedit {
     type ViewActivatableInterface = typeof ViewActivatable;
     type ViewClass = typeof View;
     abstract class ViewPrivate {
+        static $gtype: GObject.GType<ViewPrivate>;
+
         // Constructors of Gedit.ViewPrivate
 
         _init(...args: any[]): void;
@@ -7638,6 +7664,8 @@ export namespace Gedit {
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of Gedit.WindowPrivate
 
         _init(...args: any[]): void;

@@ -1502,6 +1502,8 @@ export namespace GstAudio {
      * - "size"  G_TYPE_UINT   size of the input buffer in samples
      */
     abstract class AudioAggregator extends GstBase.Aggregator {
+        static $gtype: GObject.GType<AudioAggregator>;
+
         // Own properties of GstAudio.AudioAggregator
 
         get alignment_threshold(): number;
@@ -1603,6 +1605,8 @@ export namespace GstAudio {
      * See #GstAudioAggregator for more details.
      */
     class AudioAggregatorConvertPad extends AudioAggregatorPad {
+        static $gtype: GObject.GType<AudioAggregatorConvertPad>;
+
         // Own properties of GstAudio.AudioAggregatorConvertPad
 
         get converter_config(): Gst.Structure;
@@ -1630,6 +1634,8 @@ export namespace GstAudio {
      * The default implementation of GstPad used with #GstAudioAggregator
      */
     class AudioAggregatorPad extends GstBase.AggregatorPad {
+        static $gtype: GObject.GType<AudioAggregatorPad>;
+
         // Own properties of GstAudio.AudioAggregatorPad
 
         /**
@@ -1684,6 +1690,8 @@ export namespace GstAudio {
      * writing samples to the ringbuffer, synchronisation, clipping and flushing.
      */
     class AudioBaseSink extends GstBase.BaseSink {
+        static $gtype: GObject.GType<AudioBaseSink>;
+
         // Own properties of GstAudio.AudioBaseSink
 
         get alignment_threshold(): number;
@@ -1869,6 +1877,8 @@ export namespace GstAudio {
      * reading samples from the ringbuffer, synchronisation and flushing.
      */
     class AudioBaseSrc extends GstBase.PushSrc {
+        static $gtype: GObject.GType<AudioBaseSrc>;
+
         // Own properties of GstAudio.AudioBaseSrc
 
         /**
@@ -2016,6 +2026,8 @@ export namespace GstAudio {
      * The track entries in the TOC will be sorted by track number.
      */
     class AudioCdSrc extends GstBase.PushSrc implements Gst.URIHandler {
+        static $gtype: GObject.GType<AudioCdSrc>;
+
         // Own properties of GstAudio.AudioCdSrc
 
         get device(): string;
@@ -2455,6 +2467,8 @@ export namespace GstAudio {
      * This object is internally used to implement the clock in #GstAudioBaseSink.
      */
     class AudioClock extends Gst.SystemClock {
+        static $gtype: GObject.GType<AudioClock>;
+
         // Own fields of GstAudio.AudioClock
 
         clock: Gst.SystemClock;
@@ -2608,6 +2622,8 @@ export namespace GstAudio {
      *      data for indicated duration.
      */
     abstract class AudioDecoder extends Gst.Element {
+        static $gtype: GObject.GType<AudioDecoder>;
+
         // Own properties of GstAudio.AudioDecoder
 
         /**
@@ -2999,6 +3015,8 @@ export namespace GstAudio {
      *      gst_audio_encoder_finish_frame().
      */
     abstract class AudioEncoder extends Gst.Element implements Gst.Preset {
+        static $gtype: GObject.GType<AudioEncoder>;
+
         // Own properties of GstAudio.AudioEncoder
 
         get hard_resync(): boolean;
@@ -3746,6 +3764,8 @@ export namespace GstAudio {
      * virtual functions in their class_init function.
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
+        static $gtype: GObject.GType<AudioFilter>;
+
         // Own fields of GstAudio.AudioFilter
 
         basetransform: GstBase.BaseTransform;
@@ -3782,6 +3802,8 @@ export namespace GstAudio {
      * implementations.
      */
     abstract class AudioRingBuffer extends Gst.Object {
+        static $gtype: GObject.GType<AudioRingBuffer>;
+
         // Own fields of GstAudio.AudioRingBuffer
 
         object: Gst.Object;
@@ -4160,6 +4182,8 @@ export namespace GstAudio {
      * #GstAudioRingBuffer that uses threads.
      */
     class AudioSink extends AudioBaseSink {
+        static $gtype: GObject.GType<AudioSink>;
+
         // Own fields of GstAudio.AudioSink
 
         element: AudioBaseSink;
@@ -4213,6 +4237,8 @@ export namespace GstAudio {
      * #GstAudioRingBuffer that uses threads.
      */
     class AudioSrc extends AudioBaseSrc {
+        static $gtype: GObject.GType<AudioSrc>;
+
         // Own fields of GstAudio.AudioSrc
 
         element: AudioBaseSrc;
@@ -4241,6 +4267,8 @@ export namespace GstAudio {
     type AudioAggregatorClass = typeof AudioAggregator;
     type AudioAggregatorConvertPadClass = typeof AudioAggregatorConvertPad;
     abstract class AudioAggregatorConvertPadPrivate {
+        static $gtype: GObject.GType<AudioAggregatorConvertPadPrivate>;
+
         // Constructors of GstAudio.AudioAggregatorConvertPadPrivate
 
         _init(...args: any[]): void;
@@ -4248,12 +4276,16 @@ export namespace GstAudio {
 
     type AudioAggregatorPadClass = typeof AudioAggregatorPad;
     abstract class AudioAggregatorPadPrivate {
+        static $gtype: GObject.GType<AudioAggregatorPadPrivate>;
+
         // Constructors of GstAudio.AudioAggregatorPadPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class AudioAggregatorPrivate {
+        static $gtype: GObject.GType<AudioAggregatorPrivate>;
+
         // Constructors of GstAudio.AudioAggregatorPrivate
 
         _init(...args: any[]): void;
@@ -4261,6 +4293,8 @@ export namespace GstAudio {
 
     type AudioBaseSinkClass = typeof AudioBaseSink;
     abstract class AudioBaseSinkPrivate {
+        static $gtype: GObject.GType<AudioBaseSinkPrivate>;
+
         // Constructors of GstAudio.AudioBaseSinkPrivate
 
         _init(...args: any[]): void;
@@ -4268,6 +4302,8 @@ export namespace GstAudio {
 
     type AudioBaseSrcClass = typeof AudioBaseSrc;
     abstract class AudioBaseSrcPrivate {
+        static $gtype: GObject.GType<AudioBaseSrcPrivate>;
+
         // Constructors of GstAudio.AudioBaseSrcPrivate
 
         _init(...args: any[]): void;
@@ -4284,6 +4320,8 @@ export namespace GstAudio {
      * The different channels in `planes` are always in the GStreamer channel order.
      */
     class AudioBuffer {
+        static $gtype: GObject.GType<AudioBuffer>;
+
         // Own fields of GstAudio.AudioBuffer
 
         n_samples: number;
@@ -4384,6 +4422,8 @@ export namespace GstAudio {
 
     type AudioCdSrcClass = typeof AudioCdSrc;
     abstract class AudioCdSrcPrivate {
+        static $gtype: GObject.GType<AudioCdSrcPrivate>;
+
         // Constructors of GstAudio.AudioCdSrcPrivate
 
         _init(...args: any[]): void;
@@ -4399,6 +4439,8 @@ export namespace GstAudio {
      * on the pipeline's #GstBus instead.
      */
     class AudioCdSrcTrack {
+        static $gtype: GObject.GType<AudioCdSrcTrack>;
+
         // Own fields of GstAudio.AudioCdSrcTrack
 
         is_audio: boolean;
@@ -4412,6 +4454,8 @@ export namespace GstAudio {
     }
 
     abstract class AudioChannelMixer {
+        static $gtype: GObject.GType<AudioChannelMixer>;
+
         // Constructors of GstAudio.AudioChannelMixer
 
         _init(...args: any[]): void;
@@ -4467,6 +4511,8 @@ export namespace GstAudio {
      * has to be dropped from buffers as otherwise clipping could happen twice.
      */
     class AudioClippingMeta {
+        static $gtype: GObject.GType<AudioClippingMeta>;
+
         // Own fields of GstAudio.AudioClippingMeta
 
         format: Gst.Format;
@@ -4494,6 +4540,8 @@ export namespace GstAudio {
      *  * audio channels and channel layout
      */
     abstract class AudioConverter {
+        static $gtype: GObject.GType<AudioConverter>;
+
         // Constructors of GstAudio.AudioConverter
 
         constructor(flags: AudioConverterFlags, in_info: AudioInfo, out_info: AudioInfo, config?: Gst.Structure | null);
@@ -4619,6 +4667,8 @@ export namespace GstAudio {
 
     type AudioDecoderClass = typeof AudioDecoder;
     abstract class AudioDecoderPrivate {
+        static $gtype: GObject.GType<AudioDecoderPrivate>;
+
         // Constructors of GstAudio.AudioDecoderPrivate
 
         _init(...args: any[]): void;
@@ -4635,6 +4685,8 @@ export namespace GstAudio {
      * of the results.
      */
     class AudioDownmixMeta {
+        static $gtype: GObject.GType<AudioDownmixMeta>;
+
         // Own fields of GstAudio.AudioDownmixMeta
 
         from_position: AudioChannelPosition;
@@ -4654,6 +4706,8 @@ export namespace GstAudio {
 
     type AudioEncoderClass = typeof AudioEncoder;
     abstract class AudioEncoderPrivate {
+        static $gtype: GObject.GType<AudioEncoderPrivate>;
+
         // Constructors of GstAudio.AudioEncoderPrivate
 
         _init(...args: any[]): void;
@@ -4664,6 +4718,8 @@ export namespace GstAudio {
      * Information for an audio format.
      */
     class AudioFormatInfo {
+        static $gtype: GObject.GType<AudioFormatInfo>;
+
         // Own fields of GstAudio.AudioFormatInfo
 
         format: AudioFormat;
@@ -4698,6 +4754,8 @@ export namespace GstAudio {
      * Use the provided macros to access the info in this structure.
      */
     class AudioInfo {
+        static $gtype: GObject.GType<AudioInfo>;
+
         // Own fields of GstAudio.AudioInfo
 
         flags: AudioFlags;
@@ -4787,6 +4845,8 @@ export namespace GstAudio {
      * Meta containing Audio Level Indication: https://tools.ietf.org/html/rfc6464
      */
     class AudioLevelMeta {
+        static $gtype: GObject.GType<AudioLevelMeta>;
+
         // Own fields of GstAudio.AudioLevelMeta
 
         level: number;
@@ -4810,6 +4870,8 @@ export namespace GstAudio {
      * meta as well as extracting it.
      */
     class AudioMeta {
+        static $gtype: GObject.GType<AudioMeta>;
+
         // Own fields of GstAudio.AudioMeta
 
         samples: number;
@@ -4825,6 +4887,8 @@ export namespace GstAudio {
     }
 
     abstract class AudioQuantize {
+        static $gtype: GObject.GType<AudioQuantize>;
+
         // Constructors of GstAudio.AudioQuantize
 
         _init(...args: any[]): void;
@@ -4863,6 +4927,8 @@ export namespace GstAudio {
      * required to perform various kinds of resampling filtering.
      */
     abstract class AudioResampler {
+        static $gtype: GObject.GType<AudioResampler>;
+
         // Constructors of GstAudio.AudioResampler
 
         _init(...args: any[]): void;
@@ -4978,6 +5044,8 @@ export namespace GstAudio {
      * The structure containing the format specification of the ringbuffer.
      */
     class AudioRingBufferSpec {
+        static $gtype: GObject.GType<AudioRingBufferSpec>;
+
         // Own fields of GstAudio.AudioRingBufferSpec
 
         type: AudioRingBufferFormatType;
@@ -4994,6 +5062,8 @@ export namespace GstAudio {
 
     type AudioSinkClass = typeof AudioSink;
     class AudioSinkClassExtension {
+        static $gtype: GObject.GType<AudioSinkClassExtension>;
+
         // Constructors of GstAudio.AudioSinkClassExtension
 
         _init(...args: any[]): void;
@@ -5009,6 +5079,8 @@ export namespace GstAudio {
      * gst_audio_stream_align_process() for the details of the processing.
      */
     abstract class AudioStreamAlign {
+        static $gtype: GObject.GType<AudioStreamAlign>;
+
         // Constructors of GstAudio.AudioStreamAlign
 
         constructor(rate: number, alignment_threshold: Gst.ClockTime, discont_wait: Gst.ClockTime);

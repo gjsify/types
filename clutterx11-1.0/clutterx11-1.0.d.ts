@@ -266,6 +266,8 @@ export namespace ClutterX11 {
         extends Clutter.Texture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<TexturePixmap>;
+
         // Own properties of ClutterX11.TexturePixmap
 
         get automatic_updates(): boolean;
@@ -746,12 +748,16 @@ export namespace ClutterX11 {
 
     type TexturePixmapClass = typeof TexturePixmap;
     abstract class TexturePixmapPrivate {
+        static $gtype: GObject.GType<TexturePixmapPrivate>;
+
         // Constructors of ClutterX11.TexturePixmapPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class XInputDevice {
+        static $gtype: GObject.GType<XInputDevice>;
+
         // Constructors of ClutterX11.XInputDevice
 
         _init(...args: any[]): void;

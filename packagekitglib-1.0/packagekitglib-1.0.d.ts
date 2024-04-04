@@ -42,6 +42,8 @@ export namespace PackageKitGlib {
      * Errors that can be thrown
      */
     class ClientError extends GLib.Error {
+        static $gtype: GObject.GType<ClientError>;
+
         // Static fields of PackageKitGlib.ClientError
 
         /**
@@ -107,6 +109,8 @@ export namespace PackageKitGlib {
      * Errors that can be thrown
      */
     class ControlError extends GLib.Error {
+        static $gtype: GObject.GType<ControlError>;
+
         // Static fields of PackageKitGlib.ControlError
 
         /**
@@ -855,6 +859,8 @@ export namespace PackageKitGlib {
      * Errors that can be thrown
      */
     class OfflineError extends GLib.Error {
+        static $gtype: GObject.GType<OfflineError>;
+
         // Static fields of PackageKitGlib.OfflineError
 
         /**
@@ -1955,6 +1961,8 @@ export namespace PackageKitGlib {
     }
 
     class Category extends Source {
+        static $gtype: GObject.GType<Category>;
+
         // Own properties of PackageKitGlib.Category
 
         get cat_id(): string;
@@ -2050,6 +2058,8 @@ export namespace PackageKitGlib {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of PackageKitGlib.Client
 
         get background(): boolean;
@@ -3254,6 +3264,8 @@ export namespace PackageKitGlib {
     }
 
     class ClientHelper extends GObject.Object {
+        static $gtype: GObject.GType<ClientHelper>;
+
         // Constructors of PackageKitGlib.ClientHelper
 
         constructor(properties?: Partial<ClientHelper.ConstructorProps>, ...args: any[]);
@@ -3341,6 +3353,8 @@ export namespace PackageKitGlib {
     }
 
     class Control extends GObject.Object {
+        static $gtype: GObject.GType<Control>;
+
         // Own properties of PackageKitGlib.Control
 
         get backend_author(): string;
@@ -3646,6 +3660,8 @@ export namespace PackageKitGlib {
     }
 
     class Desktop extends GObject.Object {
+        static $gtype: GObject.GType<Desktop>;
+
         // Constructors of PackageKitGlib.Desktop
 
         constructor(properties?: Partial<Desktop.ConstructorProps>, ...args: any[]);
@@ -3702,6 +3718,8 @@ export namespace PackageKitGlib {
     }
 
     class Details extends Source {
+        static $gtype: GObject.GType<Details>;
+
         // Own properties of PackageKitGlib.Details
 
         get description(): string;
@@ -3789,6 +3807,8 @@ export namespace PackageKitGlib {
     }
 
     class DistroUpgrade extends Source {
+        static $gtype: GObject.GType<DistroUpgrade>;
+
         // Own properties of PackageKitGlib.DistroUpgrade
 
         get name(): string;
@@ -3836,6 +3856,8 @@ export namespace PackageKitGlib {
     }
 
     class Error extends Source {
+        static $gtype: GObject.GType<Error>;
+
         // Own properties of PackageKitGlib.Error
 
         get code(): ErrorEnum;
@@ -3881,6 +3903,8 @@ export namespace PackageKitGlib {
     }
 
     class EulaRequired extends Source {
+        static $gtype: GObject.GType<EulaRequired>;
+
         // Own properties of PackageKitGlib.EulaRequired
 
         /**
@@ -3967,6 +3991,8 @@ export namespace PackageKitGlib {
     }
 
     class Files extends Source {
+        static $gtype: GObject.GType<Files>;
+
         // Own properties of PackageKitGlib.Files
 
         get files(): string[];
@@ -4010,6 +4036,8 @@ export namespace PackageKitGlib {
     }
 
     class ItemProgress extends Source {
+        static $gtype: GObject.GType<ItemProgress>;
+
         // Own properties of PackageKitGlib.ItemProgress
 
         get package_id(): string;
@@ -4062,6 +4090,8 @@ export namespace PackageKitGlib {
     }
 
     class MediaChangeRequired extends Source {
+        static $gtype: GObject.GType<MediaChangeRequired>;
+
         // Own properties of PackageKitGlib.MediaChangeRequired
 
         get media_id(): string;
@@ -4133,6 +4163,8 @@ export namespace PackageKitGlib {
     }
 
     class Package extends Source {
+        static $gtype: GObject.GType<Package>;
+
         // Own properties of PackageKitGlib.Package
 
         get description(): string;
@@ -4410,6 +4442,8 @@ export namespace PackageKitGlib {
     }
 
     class PackageSack extends GObject.Object {
+        static $gtype: GObject.GType<PackageSack>;
+
         // Constructors of PackageKitGlib.PackageSack
 
         constructor(properties?: Partial<PackageSack.ConstructorProps>, ...args: any[]);
@@ -4623,6 +4657,8 @@ export namespace PackageKitGlib {
     }
 
     class Progress extends GObject.Object {
+        static $gtype: GObject.GType<Progress>;
+
         // Own properties of PackageKitGlib.Progress
 
         /**
@@ -4951,6 +4987,8 @@ export namespace PackageKitGlib {
     }
 
     class RepoDetail extends Source {
+        static $gtype: GObject.GType<RepoDetail>;
+
         // Own properties of PackageKitGlib.RepoDetail
 
         get description(): string;
@@ -5012,6 +5050,8 @@ export namespace PackageKitGlib {
     }
 
     class RepoSignatureRequired extends Source {
+        static $gtype: GObject.GType<RepoSignatureRequired>;
+
         // Own properties of PackageKitGlib.RepoSignatureRequired
 
         get key_fingerprint(): string;
@@ -5065,6 +5105,8 @@ export namespace PackageKitGlib {
     }
 
     class RequireRestart extends Source {
+        static $gtype: GObject.GType<RequireRestart>;
+
         // Own properties of PackageKitGlib.RequireRestart
 
         get package_id(): string;
@@ -5096,6 +5138,8 @@ export namespace PackageKitGlib {
     }
 
     class Results extends GObject.Object {
+        static $gtype: GObject.GType<Results>;
+
         // Own properties of PackageKitGlib.Results
 
         get inputs(): number;
@@ -5328,6 +5372,8 @@ export namespace PackageKitGlib {
     }
 
     class Source extends GObject.Object {
+        static $gtype: GObject.GType<Source>;
+
         // Own properties of PackageKitGlib.Source
 
         get role(): RoleEnum;
@@ -5363,6 +5409,8 @@ export namespace PackageKitGlib {
     }
 
     class Task extends Client {
+        static $gtype: GObject.GType<Task>;
+
         // Own properties of PackageKitGlib.Task
 
         /**
@@ -6201,6 +6249,8 @@ export namespace PackageKitGlib {
     }
 
     class TransactionList extends GObject.Object {
+        static $gtype: GObject.GType<TransactionList>;
+
         // Constructors of PackageKitGlib.TransactionList
 
         constructor(properties?: Partial<TransactionList.ConstructorProps>, ...args: any[]);
@@ -6251,6 +6301,8 @@ export namespace PackageKitGlib {
     }
 
     class TransactionPast extends Source {
+        static $gtype: GObject.GType<TransactionPast>;
+
         // Own properties of PackageKitGlib.TransactionPast
 
         get cmdline(): string;
@@ -6358,6 +6410,8 @@ export namespace PackageKitGlib {
     }
 
     class UpdateDetail extends Source {
+        static $gtype: GObject.GType<UpdateDetail>;
+
         // Own properties of PackageKitGlib.UpdateDetail
 
         get bugzilla_urls(): string[];
@@ -6472,6 +6526,8 @@ export namespace PackageKitGlib {
      * Private #PkCategory data
      */
     abstract class CategoryPrivate {
+        static $gtype: GObject.GType<CategoryPrivate>;
+
         // Constructors of PackageKitGlib.CategoryPrivate
 
         _init(...args: any[]): void;
@@ -6483,6 +6539,8 @@ export namespace PackageKitGlib {
      * Private #PkClientHelper data
      */
     abstract class ClientHelperPrivate {
+        static $gtype: GObject.GType<ClientHelperPrivate>;
+
         // Constructors of PackageKitGlib.ClientHelperPrivate
 
         _init(...args: any[]): void;
@@ -6492,6 +6550,8 @@ export namespace PackageKitGlib {
      * Private #PkClient data
      */
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of PackageKitGlib.ClientPrivate
 
         _init(...args: any[]): void;
@@ -6502,6 +6562,8 @@ export namespace PackageKitGlib {
      * Private #PkControl data
      */
     abstract class ControlPrivate {
+        static $gtype: GObject.GType<ControlPrivate>;
+
         // Constructors of PackageKitGlib.ControlPrivate
 
         _init(...args: any[]): void;
@@ -6512,6 +6574,8 @@ export namespace PackageKitGlib {
      * Private #PkDesktop data
      */
     abstract class DesktopPrivate {
+        static $gtype: GObject.GType<DesktopPrivate>;
+
         // Constructors of PackageKitGlib.DesktopPrivate
 
         _init(...args: any[]): void;
@@ -6522,6 +6586,8 @@ export namespace PackageKitGlib {
      * Private #PkDetails data
      */
     abstract class DetailsPrivate {
+        static $gtype: GObject.GType<DetailsPrivate>;
+
         // Constructors of PackageKitGlib.DetailsPrivate
 
         _init(...args: any[]): void;
@@ -6532,6 +6598,8 @@ export namespace PackageKitGlib {
      * Private #PkDistroUpgrade data
      */
     abstract class DistroUpgradePrivate {
+        static $gtype: GObject.GType<DistroUpgradePrivate>;
+
         // Constructors of PackageKitGlib.DistroUpgradePrivate
 
         _init(...args: any[]): void;
@@ -6541,6 +6609,8 @@ export namespace PackageKitGlib {
      * Matching an enumerated type to a string
      */
     class EnumMatch {
+        static $gtype: GObject.GType<EnumMatch>;
+
         // Own fields of PackageKitGlib.EnumMatch
 
         value: number;
@@ -6562,6 +6632,8 @@ export namespace PackageKitGlib {
      * Private #PkError data
      */
     abstract class ErrorPrivate {
+        static $gtype: GObject.GType<ErrorPrivate>;
+
         // Constructors of PackageKitGlib.ErrorPrivate
 
         _init(...args: any[]): void;
@@ -6572,6 +6644,8 @@ export namespace PackageKitGlib {
      * Private #PkEulaRequired data
      */
     abstract class EulaRequiredPrivate {
+        static $gtype: GObject.GType<EulaRequiredPrivate>;
+
         // Constructors of PackageKitGlib.EulaRequiredPrivate
 
         _init(...args: any[]): void;
@@ -6582,6 +6656,8 @@ export namespace PackageKitGlib {
      * Private #PkFiles data
      */
     abstract class FilesPrivate {
+        static $gtype: GObject.GType<FilesPrivate>;
+
         // Constructors of PackageKitGlib.FilesPrivate
 
         _init(...args: any[]): void;
@@ -6592,6 +6668,8 @@ export namespace PackageKitGlib {
      * Private #PkItemProgress data
      */
     abstract class ItemProgressPrivate {
+        static $gtype: GObject.GType<ItemProgressPrivate>;
+
         // Constructors of PackageKitGlib.ItemProgressPrivate
 
         _init(...args: any[]): void;
@@ -6602,6 +6680,8 @@ export namespace PackageKitGlib {
      * Private #PkMediaChangeRequired data
      */
     abstract class MediaChangeRequiredPrivate {
+        static $gtype: GObject.GType<MediaChangeRequiredPrivate>;
+
         // Constructors of PackageKitGlib.MediaChangeRequiredPrivate
 
         _init(...args: any[]): void;
@@ -6612,6 +6692,8 @@ export namespace PackageKitGlib {
      * Private #PkPackage data
      */
     abstract class PackagePrivate {
+        static $gtype: GObject.GType<PackagePrivate>;
+
         // Constructors of PackageKitGlib.PackagePrivate
 
         _init(...args: any[]): void;
@@ -6622,12 +6704,16 @@ export namespace PackageKitGlib {
      * Private #PkPackageSack data
      */
     abstract class PackageSackPrivate {
+        static $gtype: GObject.GType<PackageSackPrivate>;
+
         // Constructors of PackageKitGlib.PackageSackPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class PackageSackResults {
+        static $gtype: GObject.GType<PackageSackResults>;
+
         // Constructors of PackageKitGlib.PackageSackResults
 
         _init(...args: any[]): void;
@@ -6638,6 +6724,8 @@ export namespace PackageKitGlib {
      * Private #PkProgress data
      */
     abstract class ProgressPrivate {
+        static $gtype: GObject.GType<ProgressPrivate>;
+
         // Constructors of PackageKitGlib.ProgressPrivate
 
         _init(...args: any[]): void;
@@ -6648,6 +6736,8 @@ export namespace PackageKitGlib {
      * Private #PkRepoDetail data
      */
     abstract class RepoDetailPrivate {
+        static $gtype: GObject.GType<RepoDetailPrivate>;
+
         // Constructors of PackageKitGlib.RepoDetailPrivate
 
         _init(...args: any[]): void;
@@ -6658,6 +6748,8 @@ export namespace PackageKitGlib {
      * Private #PkRepoSignatureRequired data
      */
     abstract class RepoSignatureRequiredPrivate {
+        static $gtype: GObject.GType<RepoSignatureRequiredPrivate>;
+
         // Constructors of PackageKitGlib.RepoSignatureRequiredPrivate
 
         _init(...args: any[]): void;
@@ -6668,6 +6760,8 @@ export namespace PackageKitGlib {
      * Private #PkRequireRestart data
      */
     abstract class RequireRestartPrivate {
+        static $gtype: GObject.GType<RequireRestartPrivate>;
+
         // Constructors of PackageKitGlib.RequireRestartPrivate
 
         _init(...args: any[]): void;
@@ -6678,6 +6772,8 @@ export namespace PackageKitGlib {
      * Private #PkResults data
      */
     abstract class ResultsPrivate {
+        static $gtype: GObject.GType<ResultsPrivate>;
+
         // Constructors of PackageKitGlib.ResultsPrivate
 
         _init(...args: any[]): void;
@@ -6688,6 +6784,8 @@ export namespace PackageKitGlib {
      * Private #PkSource data
      */
     abstract class SourcePrivate {
+        static $gtype: GObject.GType<SourcePrivate>;
+
         // Constructors of PackageKitGlib.SourcePrivate
 
         _init(...args: any[]): void;
@@ -6698,6 +6796,8 @@ export namespace PackageKitGlib {
      * Private #PkTask data
      */
     abstract class TaskPrivate {
+        static $gtype: GObject.GType<TaskPrivate>;
+
         // Constructors of PackageKitGlib.TaskPrivate
 
         _init(...args: any[]): void;
@@ -6708,6 +6808,8 @@ export namespace PackageKitGlib {
      * Private #PkTransactionList data
      */
     abstract class TransactionListPrivate {
+        static $gtype: GObject.GType<TransactionListPrivate>;
+
         // Constructors of PackageKitGlib.TransactionListPrivate
 
         _init(...args: any[]): void;
@@ -6718,6 +6820,8 @@ export namespace PackageKitGlib {
      * Private #PkTransactionPast data
      */
     abstract class TransactionPastPrivate {
+        static $gtype: GObject.GType<TransactionPastPrivate>;
+
         // Constructors of PackageKitGlib.TransactionPastPrivate
 
         _init(...args: any[]): void;
@@ -6728,6 +6832,8 @@ export namespace PackageKitGlib {
      * Private #PkUpdateDetail data
      */
     abstract class UpdateDetailPrivate {
+        static $gtype: GObject.GType<UpdateDetailPrivate>;
+
         // Constructors of PackageKitGlib.UpdateDetailPrivate
 
         _init(...args: any[]): void;

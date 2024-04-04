@@ -26,6 +26,8 @@ export namespace GUPnP {
      * invocation of service actions.
      */
     class ControlError extends GLib.Error {
+        static $gtype: GObject.GType<ControlError>;
+
         // Static fields of GUPnP.ControlError
 
         /**
@@ -60,6 +62,8 @@ export namespace GUPnP {
      * eventing of state variables.
      */
     class EventingError extends GLib.Error {
+        static $gtype: GObject.GType<EventingError>;
+
         // Static fields of GUPnP.EventingError
 
         /**
@@ -86,6 +90,8 @@ export namespace GUPnP {
     }
 
     class RootdeviceError extends GLib.Error {
+        static $gtype: GObject.GType<RootdeviceError>;
+
         // Static fields of GUPnP.RootdeviceError
 
         static NO_CONTEXT: number;
@@ -109,6 +115,8 @@ export namespace GUPnP {
      * is communication with another server.
      */
     class ServerError extends GLib.Error {
+        static $gtype: GObject.GType<ServerError>;
+
         // Static fields of GUPnP.ServerError
 
         /**
@@ -164,6 +172,8 @@ export namespace GUPnP {
      * processing of XML data.
      */
     class XMLError extends GLib.Error {
+        static $gtype: GObject.GType<XMLError>;
+
         // Static fields of GUPnP.XMLError
 
         /**
@@ -313,6 +323,8 @@ export namespace GUPnP {
     }
 
     class Context extends GSSDP.Client implements Gio.Initable {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of GUPnP.Context
 
         /**
@@ -935,6 +947,8 @@ export namespace GUPnP {
      * behaves as disabled.
      */
     class ContextFilter extends GObject.Object {
+        static $gtype: GObject.GType<ContextFilter>;
+
         // Own properties of GUPnP.ContextFilter
 
         /**
@@ -1038,6 +1052,8 @@ export namespace GUPnP {
     }
 
     abstract class ContextManager extends GObject.Object {
+        static $gtype: GObject.GType<ContextManager>;
+
         // Own properties of GUPnP.ContextManager
 
         /**
@@ -1195,6 +1211,8 @@ export namespace GUPnP {
     }
 
     class ControlPoint extends GSSDP.ResourceBrowser {
+        static $gtype: GObject.GType<ControlPoint>;
+
         // Own properties of GUPnP.ControlPoint
 
         /**
@@ -1286,6 +1304,8 @@ export namespace GUPnP {
     }
 
     class Device extends DeviceInfo {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of GUPnP.Device
 
         /**
@@ -1325,6 +1345,8 @@ export namespace GUPnP {
     }
 
     abstract class DeviceInfo extends GObject.Object {
+        static $gtype: GObject.GType<DeviceInfo>;
+
         // Own properties of GUPnP.DeviceInfo
 
         /**
@@ -1575,6 +1597,8 @@ export namespace GUPnP {
     }
 
     class DeviceProxy extends DeviceInfo {
+        static $gtype: GObject.GType<DeviceProxy>;
+
         // Constructors of GUPnP.DeviceProxy
 
         constructor(properties?: Partial<DeviceProxy.ConstructorProps>, ...args: any[]);
@@ -1589,6 +1613,8 @@ export namespace GUPnP {
     }
 
     class ResourceFactory extends GObject.Object {
+        static $gtype: GObject.GType<ResourceFactory>;
+
         // Constructors of GUPnP.ResourceFactory
 
         constructor(properties?: Partial<ResourceFactory.ConstructorProps>, ...args: any[]);
@@ -1663,6 +1689,8 @@ export namespace GUPnP {
     }
 
     class RootDevice extends Device implements Gio.Initable {
+        static $gtype: GObject.GType<RootDevice>;
+
         // Own properties of GUPnP.RootDevice
 
         /**
@@ -2219,6 +2247,8 @@ export namespace GUPnP {
     }
 
     class Service extends ServiceInfo {
+        static $gtype: GObject.GType<Service>;
+
         // Own properties of GUPnP.Service
 
         /**
@@ -2332,6 +2362,8 @@ export namespace GUPnP {
     }
 
     abstract class ServiceInfo extends GObject.Object {
+        static $gtype: GObject.GType<ServiceInfo>;
+
         // Own properties of GUPnP.ServiceInfo
 
         /**
@@ -2474,6 +2506,8 @@ export namespace GUPnP {
     }
 
     class ServiceIntrospection extends GObject.Object {
+        static $gtype: GObject.GType<ServiceIntrospection>;
+
         // Own properties of GUPnP.ServiceIntrospection
 
         /**
@@ -2540,6 +2574,8 @@ export namespace GUPnP {
     }
 
     class ServiceProxy extends ServiceInfo {
+        static $gtype: GObject.GType<ServiceProxy>;
+
         // Own properties of GUPnP.ServiceProxy
 
         /**
@@ -2738,6 +2774,8 @@ export namespace GUPnP {
      * Reference-counting wrapper for libxml's #xmlDoc
      */
     class XMLDoc extends GObject.Object {
+        static $gtype: GObject.GType<XMLDoc>;
+
         // Constructors of GUPnP.XMLDoc
 
         constructor(properties?: Partial<XMLDoc.ConstructorProps>, ...args: any[]);
@@ -2767,6 +2805,8 @@ export namespace GUPnP {
      * Opaque structure for holding in-progress action data.
      */
     class ServiceAction {
+        static $gtype: GObject.GType<ServiceAction>;
+
         // Constructors of GUPnP.ServiceAction
 
         _init(...args: any[]): void;
@@ -2843,6 +2883,8 @@ export namespace GUPnP {
      * This structure contains information about the argument of service action.
      */
     class ServiceActionArgInfo {
+        static $gtype: GObject.GType<ServiceActionArgInfo>;
+
         // Own fields of GUPnP.ServiceActionArgInfo
 
         name: string;
@@ -2859,6 +2901,8 @@ export namespace GUPnP {
      * This structure contains information about a service action.
      */
     class ServiceActionInfo {
+        static $gtype: GObject.GType<ServiceActionInfo>;
+
         // Own fields of GUPnP.ServiceActionInfo
 
         name: string;
@@ -2875,6 +2919,8 @@ export namespace GUPnP {
      * Opaque structure for holding in-progress action data.
      */
     class ServiceProxyAction {
+        static $gtype: GObject.GType<ServiceProxyAction>;
+
         // Constructors of GUPnP.ServiceProxyAction
 
         constructor(action: string, ___: any[]);
@@ -3013,6 +3059,8 @@ export namespace GUPnP {
      * This structure contains information about service state variable.
      */
     class ServiceStateVariableInfo {
+        static $gtype: GObject.GType<ServiceStateVariableInfo>;
+
         // Own fields of GUPnP.ServiceStateVariableInfo
 
         name: string;

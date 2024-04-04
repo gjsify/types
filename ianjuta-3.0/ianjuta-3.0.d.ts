@@ -86,6 +86,8 @@ export namespace IAnjuta {
      * Possible build errors
      */
     class BuilderError extends GLib.Error {
+        static $gtype: GObject.GType<BuilderError>;
+
         // Static fields of IAnjuta.BuilderError
 
         /**
@@ -223,6 +225,8 @@ export namespace IAnjuta {
      * backend.
      */
     class DebuggerError extends GLib.Error {
+        static $gtype: GObject.GType<DebuggerError>;
+
         // Static fields of IAnjuta.DebuggerError
 
         /**
@@ -369,6 +373,8 @@ export namespace IAnjuta {
         PROGRAM_RUNNING,
     }
     class DocumentManagerError extends GLib.Error {
+        static $gtype: GObject.GType<DocumentManagerError>;
+
         // Static fields of IAnjuta.DocumentManagerError
 
         static DOESNT_EXIST: number;
@@ -406,6 +412,8 @@ export namespace IAnjuta {
         STRING,
     }
     class EditorError extends GLib.Error {
+        static $gtype: GObject.GType<EditorError>;
+
         // Static fields of IAnjuta.EditorError
 
         static DOESNT_EXIST: number;
@@ -442,6 +450,8 @@ export namespace IAnjuta {
      * Possible build errors
      */
     class EnvironmentError extends GLib.Error {
+        static $gtype: GObject.GType<EnvironmentError>;
+
         // Static fields of IAnjuta.EnvironmentError
 
         static CONFIG: number;
@@ -479,6 +489,8 @@ export namespace IAnjuta {
         CRITICAL,
     }
     class MarkableError extends GLib.Error {
+        static $gtype: GObject.GType<MarkableError>;
+
         // Static fields of IAnjuta.MarkableError
 
         static INVALID_LOCATION: number;
@@ -523,6 +535,8 @@ export namespace IAnjuta {
         PROGRAM_COUNTER,
     }
     class MessageManagerError extends GLib.Error {
+        static $gtype: GObject.GType<MessageManagerError>;
+
         // Static fields of IAnjuta.MessageManagerError
 
         static DOESNT_EXIST: number;
@@ -562,6 +576,8 @@ export namespace IAnjuta {
      * These enumeration is used to specify errors.
      */
     class PluginFactoryError extends GLib.Error {
+        static $gtype: GObject.GType<PluginFactoryError>;
+
         // Static fields of IAnjuta.PluginFactoryError
 
         static OK: number;
@@ -613,6 +629,8 @@ export namespace IAnjuta {
     }
 
     class ProjectError extends GLib.Error {
+        static $gtype: GObject.GType<ProjectError>;
+
         // Static fields of IAnjuta.ProjectError
 
         static ERROR_SUCCESS: number;
@@ -928,6 +946,8 @@ export namespace IAnjuta {
      * These enumeration is used to specify errors.
      */
     class VcsError extends GLib.Error {
+        static $gtype: GObject.GType<VcsError>;
+
         // Static fields of IAnjuta.VcsError
 
         static UNKOWN_ERROR: number;
@@ -1119,6 +1139,8 @@ export namespace IAnjuta {
      * This structure keeps all information about a breakpoint.
      */
     class DebuggerBreakpointItem {
+        static $gtype: GObject.GType<DebuggerBreakpointItem>;
+
         // Own fields of IAnjuta.DebuggerBreakpointItem
 
         type: number;
@@ -1159,6 +1181,8 @@ export namespace IAnjuta {
      * This structure keeps all information about a stack frame.
      */
     class DebuggerFrame {
+        static $gtype: GObject.GType<DebuggerFrame>;
+
         // Own fields of IAnjuta.DebuggerFrame
 
         thread: number;
@@ -1192,6 +1216,8 @@ export namespace IAnjuta {
      * Defines a disassembled line
      */
     class DebuggerInstructionALine {
+        static $gtype: GObject.GType<DebuggerInstructionALine>;
+
         // Own fields of IAnjuta.DebuggerInstructionALine
 
         address: number;
@@ -1214,6 +1240,8 @@ export namespace IAnjuta {
      * Represents a block of diassembled instructions
      */
     class DebuggerInstructionDisassembly {
+        static $gtype: GObject.GType<DebuggerInstructionDisassembly>;
+
         // Own fields of IAnjuta.DebuggerInstructionDisassembly
 
         size: number;
@@ -1232,6 +1260,8 @@ export namespace IAnjuta {
 
     type DebuggerInstructionIface = typeof DebuggerInstruction;
     class DebuggerMemoryBlock {
+        static $gtype: GObject.GType<DebuggerMemoryBlock>;
+
         // Own fields of IAnjuta.DebuggerMemoryBlock
 
         address: number;
@@ -1255,6 +1285,8 @@ export namespace IAnjuta {
      * Defines a register data.
      */
     class DebuggerRegisterData {
+        static $gtype: GObject.GType<DebuggerRegisterData>;
+
         // Own fields of IAnjuta.DebuggerRegisterData
 
         num: number;
@@ -1279,6 +1311,8 @@ export namespace IAnjuta {
      * Defines a variable object.
      */
     class DebuggerVariableObject {
+        static $gtype: GObject.GType<DebuggerVariableObject>;
+
         // Own fields of IAnjuta.DebuggerVariableObject
 
         name: string;
@@ -1313,6 +1347,8 @@ export namespace IAnjuta {
     type DocumentManagerIface = typeof DocumentManager;
     type EditorAssistIface = typeof EditorAssist;
     class EditorAssistProposal {
+        static $gtype: GObject.GType<EditorAssistProposal>;
+
         // Own fields of IAnjuta.EditorAssistProposal
 
         label: string;

@@ -21,6 +21,8 @@ export namespace Goa {
      * corresponding D-Bus error names.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Goa.Error
 
         /**
@@ -383,6 +385,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<AccountProxy>, Gio.DBusInterface, Gio.Initable, Account
     {
+        static $gtype: GObject.GType<AccountProxy>;
+
         // Constructors of Goa.AccountProxy
 
         constructor(properties?: Partial<AccountProxy.ConstructorProps>, ...args: any[]);
@@ -1433,6 +1437,8 @@ export namespace Goa {
      * The #GoaAccountSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class AccountSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Account {
+        static $gtype: GObject.GType<AccountSkeleton>;
+
         // Constructors of Goa.AccountSkeleton
 
         constructor(properties?: Partial<AccountSkeleton.ConstructorProps>, ...args: any[]);
@@ -2214,6 +2220,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<CalendarProxy>, Gio.DBusInterface, Gio.Initable, Calendar
     {
+        static $gtype: GObject.GType<CalendarProxy>;
+
         // Constructors of Goa.CalendarProxy
 
         constructor(properties?: Partial<CalendarProxy.ConstructorProps>, ...args: any[]);
@@ -2923,6 +2931,8 @@ export namespace Goa {
      * The #GoaCalendarSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class CalendarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Calendar {
+        static $gtype: GObject.GType<CalendarSkeleton>;
+
         // Constructors of Goa.CalendarSkeleton
 
         constructor(properties?: Partial<CalendarSkeleton.ConstructorProps>, ...args: any[]);
@@ -3363,6 +3373,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ChatProxy>, Gio.DBusInterface, Gio.Initable, Chat
     {
+        static $gtype: GObject.GType<ChatProxy>;
+
         // Constructors of Goa.ChatProxy
 
         constructor(properties?: Partial<ChatProxy.ConstructorProps>, ...args: any[]);
@@ -4049,6 +4061,8 @@ export namespace Goa {
      * The #GoaChatSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ChatSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Chat {
+        static $gtype: GObject.GType<ChatSkeleton>;
+
         // Constructors of Goa.ChatSkeleton
 
         constructor(properties?: Partial<ChatSkeleton.ConstructorProps>, ...args: any[]);
@@ -4479,6 +4493,8 @@ export namespace Goa {
      * from a client program.
      */
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Goa.Client
 
         /**
@@ -5133,6 +5149,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ContactsProxy>, Gio.DBusInterface, Gio.Initable, Contacts
     {
+        static $gtype: GObject.GType<ContactsProxy>;
+
         // Constructors of Goa.ContactsProxy
 
         constructor(properties?: Partial<ContactsProxy.ConstructorProps>, ...args: any[]);
@@ -5842,6 +5860,8 @@ export namespace Goa {
      * The #GoaContactsSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ContactsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Contacts {
+        static $gtype: GObject.GType<ContactsSkeleton>;
+
         // Constructors of Goa.ContactsSkeleton
 
         constructor(properties?: Partial<ContactsSkeleton.ConstructorProps>, ...args: any[]);
@@ -6282,6 +6302,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<DocumentsProxy>, Gio.DBusInterface, Gio.Initable, Documents
     {
+        static $gtype: GObject.GType<DocumentsProxy>;
+
         // Constructors of Goa.DocumentsProxy
 
         constructor(properties?: Partial<DocumentsProxy.ConstructorProps>, ...args: any[]);
@@ -6968,6 +6990,8 @@ export namespace Goa {
      * The #GoaDocumentsSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DocumentsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Documents {
+        static $gtype: GObject.GType<DocumentsSkeleton>;
+
         // Constructors of Goa.DocumentsSkeleton
 
         constructor(properties?: Partial<DocumentsSkeleton.ConstructorProps>, ...args: any[]);
@@ -7385,6 +7409,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ExchangeProxy>, Gio.DBusInterface, Gio.Initable, Exchange
     {
+        static $gtype: GObject.GType<ExchangeProxy>;
+
         // Constructors of Goa.ExchangeProxy
 
         constructor(properties?: Partial<ExchangeProxy.ConstructorProps>, ...args: any[]);
@@ -8094,6 +8120,8 @@ export namespace Goa {
      * The #GoaExchangeSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ExchangeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Exchange {
+        static $gtype: GObject.GType<ExchangeSkeleton>;
+
         // Constructors of Goa.ExchangeSkeleton
 
         constructor(properties?: Partial<ExchangeSkeleton.ConstructorProps>, ...args: any[]);
@@ -8534,6 +8562,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<FilesProxy>, Gio.DBusInterface, Gio.Initable, Files
     {
+        static $gtype: GObject.GType<FilesProxy>;
+
         // Constructors of Goa.FilesProxy
 
         constructor(properties?: Partial<FilesProxy.ConstructorProps>, ...args: any[]);
@@ -9243,6 +9273,8 @@ export namespace Goa {
      * The #GoaFilesSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class FilesSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Files {
+        static $gtype: GObject.GType<FilesSkeleton>;
+
         // Constructors of Goa.FilesSkeleton
 
         constructor(properties?: Partial<FilesSkeleton.ConstructorProps>, ...args: any[]);
@@ -9683,6 +9715,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<MailProxy>, Gio.DBusInterface, Gio.Initable, Mail
     {
+        static $gtype: GObject.GType<MailProxy>;
+
         // Constructors of Goa.MailProxy
 
         constructor(properties?: Partial<MailProxy.ConstructorProps>, ...args: any[]);
@@ -10616,6 +10650,8 @@ export namespace Goa {
      * The #GoaMailSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class MailSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Mail {
+        static $gtype: GObject.GType<MailSkeleton>;
+
         // Constructors of Goa.MailSkeleton
 
         constructor(properties?: Partial<MailSkeleton.ConstructorProps>, ...args: any[]);
@@ -11280,6 +11316,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable, Manager
     {
+        static $gtype: GObject.GType<ManagerProxy>;
+
         // Constructors of Goa.ManagerProxy
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
@@ -12073,6 +12111,8 @@ export namespace Goa {
      * The #GoaManagerSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
+        static $gtype: GObject.GType<ManagerSkeleton>;
+
         // Constructors of Goa.ManagerSkeleton
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
@@ -12597,6 +12637,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<MapsProxy>, Gio.DBusInterface, Gio.Initable, Maps
     {
+        static $gtype: GObject.GType<MapsProxy>;
+
         // Constructors of Goa.MapsProxy
 
         constructor(properties?: Partial<MapsProxy.ConstructorProps>, ...args: any[]);
@@ -13283,6 +13325,8 @@ export namespace Goa {
      * The #GoaMapsSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class MapsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Maps {
+        static $gtype: GObject.GType<MapsSkeleton>;
+
         // Constructors of Goa.MapsSkeleton
 
         constructor(properties?: Partial<MapsSkeleton.ConstructorProps>, ...args: any[]);
@@ -13700,6 +13744,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<MediaServerProxy>, Gio.DBusInterface, Gio.Initable, MediaServer
     {
+        static $gtype: GObject.GType<MediaServerProxy>;
+
         // Constructors of Goa.MediaServerProxy
 
         constructor(properties?: Partial<MediaServerProxy.ConstructorProps>, ...args: any[]);
@@ -14409,6 +14455,8 @@ export namespace Goa {
      * The #GoaMediaServerSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class MediaServerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MediaServer {
+        static $gtype: GObject.GType<MediaServerSkeleton>;
+
         // Constructors of Goa.MediaServerSkeleton
 
         constructor(properties?: Partial<MediaServerSkeleton.ConstructorProps>, ...args: any[]);
@@ -14849,6 +14897,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<MusicProxy>, Gio.DBusInterface, Gio.Initable, Music
     {
+        static $gtype: GObject.GType<MusicProxy>;
+
         // Constructors of Goa.MusicProxy
 
         constructor(properties?: Partial<MusicProxy.ConstructorProps>, ...args: any[]);
@@ -15535,6 +15585,8 @@ export namespace Goa {
      * The #GoaMusicSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class MusicSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Music {
+        static $gtype: GObject.GType<MusicSkeleton>;
+
         // Constructors of Goa.MusicSkeleton
 
         constructor(properties?: Partial<MusicSkeleton.ConstructorProps>, ...args: any[]);
@@ -15952,6 +16004,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<OAuth2BasedProxy>, Gio.DBusInterface, Gio.Initable, OAuth2Based
     {
+        static $gtype: GObject.GType<OAuth2BasedProxy>;
+
         // Constructors of Goa.OAuth2BasedProxy
 
         constructor(properties?: Partial<OAuth2BasedProxy.ConstructorProps>, ...args: any[]);
@@ -16705,6 +16759,8 @@ export namespace Goa {
      * The #GoaOAuth2BasedSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class OAuth2BasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuth2Based {
+        static $gtype: GObject.GType<OAuth2BasedSkeleton>;
+
         // Constructors of Goa.OAuth2BasedSkeleton
 
         constructor(properties?: Partial<OAuth2BasedSkeleton.ConstructorProps>, ...args: any[]);
@@ -17189,6 +17245,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<OAuthBasedProxy>, Gio.DBusInterface, Gio.Initable, OAuthBased
     {
+        static $gtype: GObject.GType<OAuthBasedProxy>;
+
         // Constructors of Goa.OAuthBasedProxy
 
         constructor(properties?: Partial<OAuthBasedProxy.ConstructorProps>, ...args: any[]);
@@ -17948,6 +18006,8 @@ export namespace Goa {
      * The #GoaOAuthBasedSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class OAuthBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuthBased {
+        static $gtype: GObject.GType<OAuthBasedSkeleton>;
+
         // Constructors of Goa.OAuthBasedSkeleton
 
         constructor(properties?: Partial<OAuthBasedSkeleton.ConstructorProps>, ...args: any[]);
@@ -18437,6 +18497,8 @@ export namespace Goa {
         extends Gio.DBusObjectManagerClient
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
+        static $gtype: GObject.GType<ObjectManagerClient>;
+
         // Constructors of Goa.ObjectManagerClient
 
         constructor(properties?: Partial<ObjectManagerClient.ConstructorProps>, ...args: any[]);
@@ -19150,6 +19212,8 @@ export namespace Goa {
      * The #GoaObjectProxy structure contains only private data and should only be accessed using the provided API.
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
+        static $gtype: GObject.GType<ObjectProxy>;
+
         // Constructors of Goa.ObjectProxy
 
         constructor(properties?: Partial<ObjectProxy.ConstructorProps>, ...args: any[]);
@@ -19838,6 +19902,8 @@ export namespace Goa {
      * The #GoaObjectSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
+        static $gtype: GObject.GType<ObjectSkeleton>;
+
         // Constructors of Goa.ObjectSkeleton
 
         constructor(properties?: Partial<ObjectSkeleton.ConstructorProps>, ...args: any[]);
@@ -20634,6 +20700,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<PasswordBasedProxy>, Gio.DBusInterface, Gio.Initable, PasswordBased
     {
+        static $gtype: GObject.GType<PasswordBasedProxy>;
+
         // Constructors of Goa.PasswordBasedProxy
 
         constructor(properties?: Partial<PasswordBasedProxy.ConstructorProps>, ...args: any[]);
@@ -21359,6 +21427,8 @@ export namespace Goa {
      * The #GoaPasswordBasedSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class PasswordBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PasswordBased {
+        static $gtype: GObject.GType<PasswordBasedSkeleton>;
+
         // Constructors of Goa.PasswordBasedSkeleton
 
         constructor(properties?: Partial<PasswordBasedSkeleton.ConstructorProps>, ...args: any[]);
@@ -21815,6 +21885,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<PhotosProxy>, Gio.DBusInterface, Gio.Initable, Photos
     {
+        static $gtype: GObject.GType<PhotosProxy>;
+
         // Constructors of Goa.PhotosProxy
 
         constructor(properties?: Partial<PhotosProxy.ConstructorProps>, ...args: any[]);
@@ -22501,6 +22573,8 @@ export namespace Goa {
      * The #GoaPhotosSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class PhotosSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Photos {
+        static $gtype: GObject.GType<PhotosSkeleton>;
+
         // Constructors of Goa.PhotosSkeleton
 
         constructor(properties?: Partial<PhotosSkeleton.ConstructorProps>, ...args: any[]);
@@ -22918,6 +22992,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<PrintersProxy>, Gio.DBusInterface, Gio.Initable, Printers
     {
+        static $gtype: GObject.GType<PrintersProxy>;
+
         // Constructors of Goa.PrintersProxy
 
         constructor(properties?: Partial<PrintersProxy.ConstructorProps>, ...args: any[]);
@@ -23604,6 +23680,8 @@ export namespace Goa {
      * The #GoaPrintersSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class PrintersSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Printers {
+        static $gtype: GObject.GType<PrintersSkeleton>;
+
         // Constructors of Goa.PrintersSkeleton
 
         constructor(properties?: Partial<PrintersSkeleton.ConstructorProps>, ...args: any[]);
@@ -24021,6 +24099,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ReadLaterProxy>, Gio.DBusInterface, Gio.Initable, ReadLater
     {
+        static $gtype: GObject.GType<ReadLaterProxy>;
+
         // Constructors of Goa.ReadLaterProxy
 
         constructor(properties?: Partial<ReadLaterProxy.ConstructorProps>, ...args: any[]);
@@ -24707,6 +24787,8 @@ export namespace Goa {
      * The #GoaReadLaterSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ReadLaterSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ReadLater {
+        static $gtype: GObject.GType<ReadLaterSkeleton>;
+
         // Constructors of Goa.ReadLaterSkeleton
 
         constructor(properties?: Partial<ReadLaterSkeleton.ConstructorProps>, ...args: any[]);
@@ -25124,6 +25206,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<TicketingProxy>, Gio.DBusInterface, Gio.Initable, Ticketing
     {
+        static $gtype: GObject.GType<TicketingProxy>;
+
         // Constructors of Goa.TicketingProxy
 
         constructor(properties?: Partial<TicketingProxy.ConstructorProps>, ...args: any[]);
@@ -25851,6 +25935,8 @@ export namespace Goa {
      * The #GoaTicketingSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class TicketingSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Ticketing {
+        static $gtype: GObject.GType<TicketingSkeleton>;
+
         // Constructors of Goa.TicketingSkeleton
 
         constructor(properties?: Partial<TicketingSkeleton.ConstructorProps>, ...args: any[]);
@@ -26309,6 +26395,8 @@ export namespace Goa {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<TodoProxy>, Gio.DBusInterface, Gio.Initable, Todo
     {
+        static $gtype: GObject.GType<TodoProxy>;
+
         // Constructors of Goa.TodoProxy
 
         constructor(properties?: Partial<TodoProxy.ConstructorProps>, ...args: any[]);
@@ -26995,6 +27083,8 @@ export namespace Goa {
      * The #GoaTodoSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class TodoSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Todo {
+        static $gtype: GObject.GType<TodoSkeleton>;
+
         // Constructors of Goa.TodoSkeleton
 
         constructor(properties?: Partial<TodoSkeleton.ConstructorProps>, ...args: any[]);
@@ -27397,6 +27487,8 @@ export namespace Goa {
     type AccountIface = typeof Account;
     type AccountProxyClass = typeof AccountProxy;
     abstract class AccountProxyPrivate {
+        static $gtype: GObject.GType<AccountProxyPrivate>;
+
         // Constructors of Goa.AccountProxyPrivate
 
         _init(...args: any[]): void;
@@ -27404,6 +27496,8 @@ export namespace Goa {
 
     type AccountSkeletonClass = typeof AccountSkeleton;
     abstract class AccountSkeletonPrivate {
+        static $gtype: GObject.GType<AccountSkeletonPrivate>;
+
         // Constructors of Goa.AccountSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27412,6 +27506,8 @@ export namespace Goa {
     type CalendarIface = typeof Calendar;
     type CalendarProxyClass = typeof CalendarProxy;
     abstract class CalendarProxyPrivate {
+        static $gtype: GObject.GType<CalendarProxyPrivate>;
+
         // Constructors of Goa.CalendarProxyPrivate
 
         _init(...args: any[]): void;
@@ -27419,6 +27515,8 @@ export namespace Goa {
 
     type CalendarSkeletonClass = typeof CalendarSkeleton;
     abstract class CalendarSkeletonPrivate {
+        static $gtype: GObject.GType<CalendarSkeletonPrivate>;
+
         // Constructors of Goa.CalendarSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27427,6 +27525,8 @@ export namespace Goa {
     type ChatIface = typeof Chat;
     type ChatProxyClass = typeof ChatProxy;
     abstract class ChatProxyPrivate {
+        static $gtype: GObject.GType<ChatProxyPrivate>;
+
         // Constructors of Goa.ChatProxyPrivate
 
         _init(...args: any[]): void;
@@ -27434,6 +27534,8 @@ export namespace Goa {
 
     type ChatSkeletonClass = typeof ChatSkeleton;
     abstract class ChatSkeletonPrivate {
+        static $gtype: GObject.GType<ChatSkeletonPrivate>;
+
         // Constructors of Goa.ChatSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27443,6 +27545,8 @@ export namespace Goa {
     type ContactsIface = typeof Contacts;
     type ContactsProxyClass = typeof ContactsProxy;
     abstract class ContactsProxyPrivate {
+        static $gtype: GObject.GType<ContactsProxyPrivate>;
+
         // Constructors of Goa.ContactsProxyPrivate
 
         _init(...args: any[]): void;
@@ -27450,6 +27554,8 @@ export namespace Goa {
 
     type ContactsSkeletonClass = typeof ContactsSkeleton;
     abstract class ContactsSkeletonPrivate {
+        static $gtype: GObject.GType<ContactsSkeletonPrivate>;
+
         // Constructors of Goa.ContactsSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27458,6 +27564,8 @@ export namespace Goa {
     type DocumentsIface = typeof Documents;
     type DocumentsProxyClass = typeof DocumentsProxy;
     abstract class DocumentsProxyPrivate {
+        static $gtype: GObject.GType<DocumentsProxyPrivate>;
+
         // Constructors of Goa.DocumentsProxyPrivate
 
         _init(...args: any[]): void;
@@ -27465,6 +27573,8 @@ export namespace Goa {
 
     type DocumentsSkeletonClass = typeof DocumentsSkeleton;
     abstract class DocumentsSkeletonPrivate {
+        static $gtype: GObject.GType<DocumentsSkeletonPrivate>;
+
         // Constructors of Goa.DocumentsSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27473,6 +27583,8 @@ export namespace Goa {
     type ExchangeIface = typeof Exchange;
     type ExchangeProxyClass = typeof ExchangeProxy;
     abstract class ExchangeProxyPrivate {
+        static $gtype: GObject.GType<ExchangeProxyPrivate>;
+
         // Constructors of Goa.ExchangeProxyPrivate
 
         _init(...args: any[]): void;
@@ -27480,6 +27592,8 @@ export namespace Goa {
 
     type ExchangeSkeletonClass = typeof ExchangeSkeleton;
     abstract class ExchangeSkeletonPrivate {
+        static $gtype: GObject.GType<ExchangeSkeletonPrivate>;
+
         // Constructors of Goa.ExchangeSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27488,6 +27602,8 @@ export namespace Goa {
     type FilesIface = typeof Files;
     type FilesProxyClass = typeof FilesProxy;
     abstract class FilesProxyPrivate {
+        static $gtype: GObject.GType<FilesProxyPrivate>;
+
         // Constructors of Goa.FilesProxyPrivate
 
         _init(...args: any[]): void;
@@ -27495,6 +27611,8 @@ export namespace Goa {
 
     type FilesSkeletonClass = typeof FilesSkeleton;
     abstract class FilesSkeletonPrivate {
+        static $gtype: GObject.GType<FilesSkeletonPrivate>;
+
         // Constructors of Goa.FilesSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27503,6 +27621,8 @@ export namespace Goa {
     type MailIface = typeof Mail;
     type MailProxyClass = typeof MailProxy;
     abstract class MailProxyPrivate {
+        static $gtype: GObject.GType<MailProxyPrivate>;
+
         // Constructors of Goa.MailProxyPrivate
 
         _init(...args: any[]): void;
@@ -27510,6 +27630,8 @@ export namespace Goa {
 
     type MailSkeletonClass = typeof MailSkeleton;
     abstract class MailSkeletonPrivate {
+        static $gtype: GObject.GType<MailSkeletonPrivate>;
+
         // Constructors of Goa.MailSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27518,6 +27640,8 @@ export namespace Goa {
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
+        static $gtype: GObject.GType<ManagerProxyPrivate>;
+
         // Constructors of Goa.ManagerProxyPrivate
 
         _init(...args: any[]): void;
@@ -27525,6 +27649,8 @@ export namespace Goa {
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
+        static $gtype: GObject.GType<ManagerSkeletonPrivate>;
+
         // Constructors of Goa.ManagerSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27533,6 +27659,8 @@ export namespace Goa {
     type MapsIface = typeof Maps;
     type MapsProxyClass = typeof MapsProxy;
     abstract class MapsProxyPrivate {
+        static $gtype: GObject.GType<MapsProxyPrivate>;
+
         // Constructors of Goa.MapsProxyPrivate
 
         _init(...args: any[]): void;
@@ -27540,6 +27668,8 @@ export namespace Goa {
 
     type MapsSkeletonClass = typeof MapsSkeleton;
     abstract class MapsSkeletonPrivate {
+        static $gtype: GObject.GType<MapsSkeletonPrivate>;
+
         // Constructors of Goa.MapsSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27548,6 +27678,8 @@ export namespace Goa {
     type MediaServerIface = typeof MediaServer;
     type MediaServerProxyClass = typeof MediaServerProxy;
     abstract class MediaServerProxyPrivate {
+        static $gtype: GObject.GType<MediaServerProxyPrivate>;
+
         // Constructors of Goa.MediaServerProxyPrivate
 
         _init(...args: any[]): void;
@@ -27555,6 +27687,8 @@ export namespace Goa {
 
     type MediaServerSkeletonClass = typeof MediaServerSkeleton;
     abstract class MediaServerSkeletonPrivate {
+        static $gtype: GObject.GType<MediaServerSkeletonPrivate>;
+
         // Constructors of Goa.MediaServerSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27563,6 +27697,8 @@ export namespace Goa {
     type MusicIface = typeof Music;
     type MusicProxyClass = typeof MusicProxy;
     abstract class MusicProxyPrivate {
+        static $gtype: GObject.GType<MusicProxyPrivate>;
+
         // Constructors of Goa.MusicProxyPrivate
 
         _init(...args: any[]): void;
@@ -27570,6 +27706,8 @@ export namespace Goa {
 
     type MusicSkeletonClass = typeof MusicSkeleton;
     abstract class MusicSkeletonPrivate {
+        static $gtype: GObject.GType<MusicSkeletonPrivate>;
+
         // Constructors of Goa.MusicSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27578,6 +27716,8 @@ export namespace Goa {
     type OAuth2BasedIface = typeof OAuth2Based;
     type OAuth2BasedProxyClass = typeof OAuth2BasedProxy;
     abstract class OAuth2BasedProxyPrivate {
+        static $gtype: GObject.GType<OAuth2BasedProxyPrivate>;
+
         // Constructors of Goa.OAuth2BasedProxyPrivate
 
         _init(...args: any[]): void;
@@ -27585,6 +27725,8 @@ export namespace Goa {
 
     type OAuth2BasedSkeletonClass = typeof OAuth2BasedSkeleton;
     abstract class OAuth2BasedSkeletonPrivate {
+        static $gtype: GObject.GType<OAuth2BasedSkeletonPrivate>;
+
         // Constructors of Goa.OAuth2BasedSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27593,6 +27735,8 @@ export namespace Goa {
     type OAuthBasedIface = typeof OAuthBased;
     type OAuthBasedProxyClass = typeof OAuthBasedProxy;
     abstract class OAuthBasedProxyPrivate {
+        static $gtype: GObject.GType<OAuthBasedProxyPrivate>;
+
         // Constructors of Goa.OAuthBasedProxyPrivate
 
         _init(...args: any[]): void;
@@ -27600,6 +27744,8 @@ export namespace Goa {
 
     type OAuthBasedSkeletonClass = typeof OAuthBasedSkeleton;
     abstract class OAuthBasedSkeletonPrivate {
+        static $gtype: GObject.GType<OAuthBasedSkeletonPrivate>;
+
         // Constructors of Goa.OAuthBasedSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27608,6 +27754,8 @@ export namespace Goa {
     type ObjectIface = typeof Object;
     type ObjectManagerClientClass = typeof ObjectManagerClient;
     abstract class ObjectManagerClientPrivate {
+        static $gtype: GObject.GType<ObjectManagerClientPrivate>;
+
         // Constructors of Goa.ObjectManagerClientPrivate
 
         _init(...args: any[]): void;
@@ -27615,6 +27763,8 @@ export namespace Goa {
 
     type ObjectProxyClass = typeof ObjectProxy;
     abstract class ObjectProxyPrivate {
+        static $gtype: GObject.GType<ObjectProxyPrivate>;
+
         // Constructors of Goa.ObjectProxyPrivate
 
         _init(...args: any[]): void;
@@ -27622,6 +27772,8 @@ export namespace Goa {
 
     type ObjectSkeletonClass = typeof ObjectSkeleton;
     abstract class ObjectSkeletonPrivate {
+        static $gtype: GObject.GType<ObjectSkeletonPrivate>;
+
         // Constructors of Goa.ObjectSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27630,6 +27782,8 @@ export namespace Goa {
     type PasswordBasedIface = typeof PasswordBased;
     type PasswordBasedProxyClass = typeof PasswordBasedProxy;
     abstract class PasswordBasedProxyPrivate {
+        static $gtype: GObject.GType<PasswordBasedProxyPrivate>;
+
         // Constructors of Goa.PasswordBasedProxyPrivate
 
         _init(...args: any[]): void;
@@ -27637,6 +27791,8 @@ export namespace Goa {
 
     type PasswordBasedSkeletonClass = typeof PasswordBasedSkeleton;
     abstract class PasswordBasedSkeletonPrivate {
+        static $gtype: GObject.GType<PasswordBasedSkeletonPrivate>;
+
         // Constructors of Goa.PasswordBasedSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27645,6 +27801,8 @@ export namespace Goa {
     type PhotosIface = typeof Photos;
     type PhotosProxyClass = typeof PhotosProxy;
     abstract class PhotosProxyPrivate {
+        static $gtype: GObject.GType<PhotosProxyPrivate>;
+
         // Constructors of Goa.PhotosProxyPrivate
 
         _init(...args: any[]): void;
@@ -27652,6 +27810,8 @@ export namespace Goa {
 
     type PhotosSkeletonClass = typeof PhotosSkeleton;
     abstract class PhotosSkeletonPrivate {
+        static $gtype: GObject.GType<PhotosSkeletonPrivate>;
+
         // Constructors of Goa.PhotosSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27660,6 +27820,8 @@ export namespace Goa {
     type PrintersIface = typeof Printers;
     type PrintersProxyClass = typeof PrintersProxy;
     abstract class PrintersProxyPrivate {
+        static $gtype: GObject.GType<PrintersProxyPrivate>;
+
         // Constructors of Goa.PrintersProxyPrivate
 
         _init(...args: any[]): void;
@@ -27667,6 +27829,8 @@ export namespace Goa {
 
     type PrintersSkeletonClass = typeof PrintersSkeleton;
     abstract class PrintersSkeletonPrivate {
+        static $gtype: GObject.GType<PrintersSkeletonPrivate>;
+
         // Constructors of Goa.PrintersSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27675,6 +27839,8 @@ export namespace Goa {
     type ReadLaterIface = typeof ReadLater;
     type ReadLaterProxyClass = typeof ReadLaterProxy;
     abstract class ReadLaterProxyPrivate {
+        static $gtype: GObject.GType<ReadLaterProxyPrivate>;
+
         // Constructors of Goa.ReadLaterProxyPrivate
 
         _init(...args: any[]): void;
@@ -27682,6 +27848,8 @@ export namespace Goa {
 
     type ReadLaterSkeletonClass = typeof ReadLaterSkeleton;
     abstract class ReadLaterSkeletonPrivate {
+        static $gtype: GObject.GType<ReadLaterSkeletonPrivate>;
+
         // Constructors of Goa.ReadLaterSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27690,6 +27858,8 @@ export namespace Goa {
     type TicketingIface = typeof Ticketing;
     type TicketingProxyClass = typeof TicketingProxy;
     abstract class TicketingProxyPrivate {
+        static $gtype: GObject.GType<TicketingProxyPrivate>;
+
         // Constructors of Goa.TicketingProxyPrivate
 
         _init(...args: any[]): void;
@@ -27697,6 +27867,8 @@ export namespace Goa {
 
     type TicketingSkeletonClass = typeof TicketingSkeleton;
     abstract class TicketingSkeletonPrivate {
+        static $gtype: GObject.GType<TicketingSkeletonPrivate>;
+
         // Constructors of Goa.TicketingSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -27705,6 +27877,8 @@ export namespace Goa {
     type TodoIface = typeof Todo;
     type TodoProxyClass = typeof TodoProxy;
     abstract class TodoProxyPrivate {
+        static $gtype: GObject.GType<TodoProxyPrivate>;
+
         // Constructors of Goa.TodoProxyPrivate
 
         _init(...args: any[]): void;
@@ -27712,6 +27886,8 @@ export namespace Goa {
 
     type TodoSkeletonClass = typeof TodoSkeleton;
     abstract class TodoSkeletonPrivate {
+        static $gtype: GObject.GType<TodoSkeletonPrivate>;
+
         // Constructors of Goa.TodoSkeletonPrivate
 
         _init(...args: any[]): void;

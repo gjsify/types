@@ -20,6 +20,8 @@ export namespace Flatpak {
      * Error codes for library functions.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Flatpak.Error
 
         /**
@@ -145,6 +147,8 @@ export namespace Flatpak {
      * Error codes returned by portal calls.
      */
     class PortalError extends GLib.Error {
+        static $gtype: GObject.GType<PortalError>;
+
         // Static fields of Flatpak.PortalError
 
         /**
@@ -457,6 +461,8 @@ export namespace Flatpak {
     }
 
     class BundleRef extends Ref {
+        static $gtype: GObject.GType<BundleRef>;
+
         // Own properties of Flatpak.BundleRef
 
         /**
@@ -519,6 +525,8 @@ export namespace Flatpak {
     }
 
     class Installation extends GObject.Object {
+        static $gtype: GObject.GType<Installation>;
+
         // Constructors of Flatpak.Installation
 
         constructor(properties?: Partial<Installation.ConstructorProps>, ...args: any[]);
@@ -1275,6 +1283,8 @@ export namespace Flatpak {
     }
 
     class InstalledRef extends Ref {
+        static $gtype: GObject.GType<InstalledRef>;
+
         // Own properties of Flatpak.InstalledRef
 
         get appdata_content_rating(): GLib.HashTable<any, any>;
@@ -1423,6 +1433,8 @@ export namespace Flatpak {
     }
 
     class Instance extends GObject.Object {
+        static $gtype: GObject.GType<Instance>;
+
         // Constructors of Flatpak.Instance
 
         constructor(properties?: Partial<Instance.ConstructorProps>, ...args: any[]);
@@ -1526,6 +1538,8 @@ export namespace Flatpak {
     }
 
     class Ref extends GObject.Object {
+        static $gtype: GObject.GType<Ref>;
+
         // Own properties of Flatpak.Ref
 
         get arch(): string;
@@ -1606,6 +1620,8 @@ export namespace Flatpak {
     }
 
     class RelatedRef extends Ref {
+        static $gtype: GObject.GType<RelatedRef>;
+
         // Own properties of Flatpak.RelatedRef
 
         get should_autoprune(): boolean;
@@ -1642,6 +1658,8 @@ export namespace Flatpak {
     }
 
     class Remote extends GObject.Object {
+        static $gtype: GObject.GType<Remote>;
+
         // Own properties of Flatpak.Remote
 
         /**
@@ -1939,6 +1957,8 @@ export namespace Flatpak {
     }
 
     class RemoteRef extends Ref {
+        static $gtype: GObject.GType<RemoteRef>;
+
         // Own properties of Flatpak.RemoteRef
 
         get download_size(): number;
@@ -2054,6 +2074,8 @@ export namespace Flatpak {
     }
 
     class Transaction extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Transaction>;
+
         // Own properties of Flatpak.Transaction
 
         /**
@@ -2972,6 +2994,8 @@ export namespace Flatpak {
     }
 
     class TransactionOperation extends GObject.Object {
+        static $gtype: GObject.GType<TransactionOperation>;
+
         // Constructors of Flatpak.TransactionOperation
 
         constructor(properties?: Partial<TransactionOperation.ConstructorProps>, ...args: any[]);
@@ -3101,6 +3125,8 @@ export namespace Flatpak {
     }
 
     class TransactionProgress extends GObject.Object {
+        static $gtype: GObject.GType<TransactionProgress>;
+
         // Constructors of Flatpak.TransactionProgress
 
         constructor(properties?: Partial<TransactionProgress.ConstructorProps>, ...args: any[]);

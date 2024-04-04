@@ -1,7 +1,7 @@
 
 declare module 'gi://Polkit?version=1.0' {
-    import Polkit10 from '@girs/polkit-1.0';
-    export default Polkit10;
+    import Polkit from '@girs/polkit-1.0';
+    export default Polkit;
 }
 
 declare module 'gi://Polkit' {

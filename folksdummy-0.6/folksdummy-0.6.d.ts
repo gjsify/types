@@ -27,6 +27,8 @@ export namespace FolksDummy {
     }
 
     class Backend extends Folks.Backend {
+        static $gtype: GObject.GType<Backend>;
+
         // Constructors of FolksDummy.Backend
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
@@ -84,6 +86,8 @@ export namespace FolksDummy {
             Folks.PostalAddressDetails,
             Folks.WebServiceDetails
     {
+        static $gtype: GObject.GType<FullPersona>;
+
         // Constructors of FolksDummy.FullPersona
 
         constructor(properties?: Partial<FullPersona.ConstructorProps>, ...args: any[]);
@@ -755,6 +759,8 @@ export namespace FolksDummy {
     }
 
     class PersonaStore extends Folks.PersonaStore {
+        static $gtype: GObject.GType<PersonaStore>;
+
         // Own properties of FolksDummy.PersonaStore
 
         get persona_type(): GObject.GType;
@@ -805,6 +811,8 @@ export namespace FolksDummy {
     }
 
     class Persona extends Folks.Persona {
+        static $gtype: GObject.GType<Persona>;
+
         // Own properties of FolksDummy.Persona
 
         get property_change_delay(): number;
@@ -841,6 +849,8 @@ export namespace FolksDummy {
 
     type BackendClass = typeof Backend;
     abstract class BackendPrivate {
+        static $gtype: GObject.GType<BackendPrivate>;
+
         // Constructors of FolksDummy.BackendPrivate
 
         _init(...args: any[]): void;
@@ -848,6 +858,8 @@ export namespace FolksDummy {
 
     type FullPersonaClass = typeof FullPersona;
     abstract class FullPersonaPrivate {
+        static $gtype: GObject.GType<FullPersonaPrivate>;
+
         // Constructors of FolksDummy.FullPersonaPrivate
 
         _init(...args: any[]): void;
@@ -855,6 +867,8 @@ export namespace FolksDummy {
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
+        static $gtype: GObject.GType<PersonaStorePrivate>;
+
         // Constructors of FolksDummy.PersonaStorePrivate
 
         _init(...args: any[]): void;
@@ -862,6 +876,8 @@ export namespace FolksDummy {
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
+        static $gtype: GObject.GType<PersonaPrivate>;
+
         // Constructors of FolksDummy.PersonaPrivate
 
         _init(...args: any[]): void;

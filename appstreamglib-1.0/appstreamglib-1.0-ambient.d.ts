@@ -1,7 +1,7 @@
 
 declare module 'gi://AppStreamGlib?version=1.0' {
-    import AppStreamGlib10 from '@girs/appstreamglib-1.0';
-    export default AppStreamGlib10;
+    import AppStreamGlib from '@girs/appstreamglib-1.0';
+    export default AppStreamGlib;
 }
 
 declare module 'gi://AppStreamGlib' {

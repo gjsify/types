@@ -50,6 +50,8 @@ export namespace GtkChamplain {
      * and should be accessed using the provided API
      */
     class Embed extends Gtk.Alignment implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Embed>;
+
         // Own properties of GtkChamplain.Embed
 
         /**
@@ -441,6 +443,8 @@ export namespace GtkChamplain {
 
     type EmbedClass = typeof Embed;
     abstract class EmbedPrivate {
+        static $gtype: GObject.GType<EmbedPrivate>;
+
         // Constructors of GtkChamplain.EmbedPrivate
 
         _init(...args: any[]): void;

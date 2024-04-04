@@ -162,6 +162,8 @@ export namespace EDataServerUI4 {
     }
 
     class CellRendererColor extends Gtk.CellRenderer {
+        static $gtype: GObject.GType<CellRendererColor>;
+
         // Own properties of EDataServerUI4.CellRendererColor
 
         get rgba(): Gdk.RGBA;
@@ -191,6 +193,8 @@ export namespace EDataServerUI4 {
         extends Gtk.Box
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
+        static $gtype: GObject.GType<CertificateWidget>;
+
         // Constructors of EDataServerUI4.CertificateWidget
 
         constructor(properties?: Partial<CertificateWidget.ConstructorProps>, ...args: any[]);
@@ -620,6 +624,8 @@ export namespace EDataServerUI4 {
      * functions below.
      */
     class CredentialsPrompter extends GObject.Object implements EDataServer.Extensible {
+        static $gtype: GObject.GType<CredentialsPrompter>;
+
         // Own properties of EDataServerUI4.CredentialsPrompter
 
         /**
@@ -1261,6 +1267,8 @@ export namespace EDataServerUI4 {
      * into an #ECredentialsPrompter.
      */
     abstract class CredentialsPrompterImpl extends EDataServer.Extension {
+        static $gtype: GObject.GType<CredentialsPrompterImpl>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImpl
 
         constructor(properties?: Partial<CredentialsPrompterImpl.ConstructorProps>, ...args: any[]);
@@ -1360,6 +1368,8 @@ export namespace EDataServerUI4 {
      * functions below.
      */
     class CredentialsPrompterImplOAuth2 extends CredentialsPrompterImpl {
+        static $gtype: GObject.GType<CredentialsPrompterImplOAuth2>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImplOAuth2
 
         constructor(properties?: Partial<CredentialsPrompterImplOAuth2.ConstructorProps>, ...args: any[]);
@@ -1380,6 +1390,8 @@ export namespace EDataServerUI4 {
      * functions below.
      */
     class CredentialsPrompterImplPassword extends CredentialsPrompterImpl {
+        static $gtype: GObject.GType<CredentialsPrompterImplPassword>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImplPassword
 
         constructor(properties?: Partial<CredentialsPrompterImplPassword.ConstructorProps>, ...args: any[]);
@@ -1422,6 +1434,8 @@ export namespace EDataServerUI4 {
         extends Gtk.Grid
         implements EDataServer.Extensible, Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
+        static $gtype: GObject.GType<RemindersWidget>;
+
         // Own properties of EDataServerUI4.RemindersWidget
 
         get empty(): boolean;
@@ -1885,6 +1899,8 @@ export namespace EDataServerUI4 {
         extends Gtk.Grid
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
+        static $gtype: GObject.GType<WebDAVDiscoverContent>;
+
         // Constructors of EDataServerUI4.WebDAVDiscoverContent
 
         constructor(properties?: Partial<WebDAVDiscoverContent.ConstructorProps>, ...args: any[]);
@@ -2374,6 +2390,8 @@ export namespace EDataServerUI4 {
         extends Gtk.Dialog
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
+        static $gtype: GObject.GType<WebDAVDiscoverDialog>;
+
         // Constructors of EDataServerUI4.WebDAVDiscoverDialog
 
         constructor(properties?: Partial<WebDAVDiscoverDialog.ConstructorProps>, ...args: any[]);
@@ -5113,6 +5131,8 @@ export namespace EDataServerUI4 {
 
     type CellRendererColorClass = typeof CellRendererColor;
     abstract class CellRendererColorPrivate {
+        static $gtype: GObject.GType<CellRendererColorPrivate>;
+
         // Constructors of EDataServerUI4.CellRendererColorPrivate
 
         _init(...args: any[]): void;
@@ -5120,6 +5140,8 @@ export namespace EDataServerUI4 {
 
     type CertificateWidgetClass = typeof CertificateWidget;
     abstract class CertificateWidgetPrivate {
+        static $gtype: GObject.GType<CertificateWidgetPrivate>;
+
         // Constructors of EDataServerUI4.CertificateWidgetPrivate
 
         _init(...args: any[]): void;
@@ -5129,6 +5151,8 @@ export namespace EDataServerUI4 {
     type CredentialsPrompterImplClass = typeof CredentialsPrompterImpl;
     type CredentialsPrompterImplOAuth2Class = typeof CredentialsPrompterImplOAuth2;
     abstract class CredentialsPrompterImplOAuth2Private {
+        static $gtype: GObject.GType<CredentialsPrompterImplOAuth2Private>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImplOAuth2Private
 
         _init(...args: any[]): void;
@@ -5136,18 +5160,24 @@ export namespace EDataServerUI4 {
 
     type CredentialsPrompterImplPasswordClass = typeof CredentialsPrompterImplPassword;
     abstract class CredentialsPrompterImplPasswordPrivate {
+        static $gtype: GObject.GType<CredentialsPrompterImplPasswordPrivate>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImplPasswordPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CredentialsPrompterImplPrivate {
+        static $gtype: GObject.GType<CredentialsPrompterImplPrivate>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterImplPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CredentialsPrompterPrivate {
+        static $gtype: GObject.GType<CredentialsPrompterPrivate>;
+
         // Constructors of EDataServerUI4.CredentialsPrompterPrivate
 
         _init(...args: any[]): void;
@@ -5155,6 +5185,8 @@ export namespace EDataServerUI4 {
 
     type RemindersWidgetClass = typeof RemindersWidget;
     abstract class RemindersWidgetPrivate {
+        static $gtype: GObject.GType<RemindersWidgetPrivate>;
+
         // Constructors of EDataServerUI4.RemindersWidgetPrivate
 
         _init(...args: any[]): void;

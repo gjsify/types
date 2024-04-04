@@ -22,6 +22,8 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMClient.
      */
     class ClientError extends GLib.Error {
+        static $gtype: GObject.GType<ClientError>;
+
         // Static fields of NMClient.ClientError
 
         /**
@@ -160,6 +162,8 @@ export namespace NMClient {
         NO,
     }
     class DeviceAdslError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceAdslError>;
+
         // Static fields of NMClient.DeviceAdslError
 
         /**
@@ -189,6 +193,8 @@ export namespace NMClient {
     }
 
     class DeviceBondError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceBondError>;
+
         // Static fields of NMClient.DeviceBondError
 
         /**
@@ -222,6 +228,8 @@ export namespace NMClient {
     }
 
     class DeviceBridgeError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceBridgeError>;
+
         // Static fields of NMClient.DeviceBridgeError
 
         /**
@@ -255,6 +263,8 @@ export namespace NMClient {
     }
 
     class DeviceBtError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceBtError>;
+
         // Static fields of NMClient.DeviceBtError
 
         /**
@@ -296,6 +306,8 @@ export namespace NMClient {
     }
 
     class DeviceError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceError>;
+
         // Static fields of NMClient.DeviceError
 
         /**
@@ -322,6 +334,8 @@ export namespace NMClient {
     }
 
     class DeviceEthernetError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceEthernetError>;
+
         // Static fields of NMClient.DeviceEthernetError
 
         /**
@@ -359,6 +373,8 @@ export namespace NMClient {
     }
 
     class DeviceGenericError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceGenericError>;
+
         // Static fields of NMClient.DeviceGenericError
 
         /**
@@ -388,6 +404,8 @@ export namespace NMClient {
     }
 
     class DeviceInfinibandError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceInfinibandError>;
+
         // Static fields of NMClient.DeviceInfinibandError
 
         /**
@@ -425,6 +443,8 @@ export namespace NMClient {
     }
 
     class DeviceModemError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceModemError>;
+
         // Static fields of NMClient.DeviceModemError
 
         /**
@@ -458,6 +478,8 @@ export namespace NMClient {
     }
 
     class DeviceOlpcMeshError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceOlpcMeshError>;
+
         // Static fields of NMClient.DeviceOlpcMeshError
 
         /**
@@ -487,6 +509,8 @@ export namespace NMClient {
     }
 
     class DeviceTeamError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceTeamError>;
+
         // Static fields of NMClient.DeviceTeamError
 
         /**
@@ -520,6 +544,8 @@ export namespace NMClient {
     }
 
     class DeviceVlanError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceVlanError>;
+
         // Static fields of NMClient.DeviceVlanError
 
         /**
@@ -561,6 +587,8 @@ export namespace NMClient {
     }
 
     class DeviceWifiError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceWifiError>;
+
         // Static fields of NMClient.DeviceWifiError
 
         /**
@@ -608,6 +636,8 @@ export namespace NMClient {
     }
 
     class DeviceWimaxError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceWimaxError>;
+
         // Static fields of NMClient.DeviceWimaxError
 
         /**
@@ -648,6 +678,8 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMObject.
      */
     class ObjectError extends GLib.Error {
+        static $gtype: GObject.GType<ObjectError>;
+
         // Static fields of NMClient.ObjectError
 
         /**
@@ -673,6 +705,8 @@ export namespace NMClient {
     }
 
     class RemoteConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<RemoteConnectionError>;
+
         // Static fields of NMClient.RemoteConnectionError
 
         /**
@@ -701,6 +735,8 @@ export namespace NMClient {
      * Describes errors that may result from operations involving a #NMRemoteSettings.
      */
     class RemoteSettingsError extends GLib.Error {
+        static $gtype: GObject.GType<RemoteSettingsError>;
+
         // Static fields of NMClient.RemoteSettingsError
 
         /**
@@ -741,6 +777,8 @@ export namespace NMClient {
      * when they encounter problems retrieving secrets on behalf of NM.
      */
     class SecretAgentError extends GLib.Error {
+        static $gtype: GObject.GType<SecretAgentError>;
+
         // Static fields of NMClient.SecretAgentError
 
         /**
@@ -1171,6 +1209,8 @@ export namespace NMClient {
     }
 
     class AccessPoint extends Object implements Gio.AsyncInitable<AccessPoint>, Gio.Initable {
+        static $gtype: GObject.GType<AccessPoint>;
+
         // Own properties of NMClient.AccessPoint
 
         /**
@@ -1921,6 +1961,8 @@ export namespace NMClient {
     }
 
     class ActiveConnection extends Object implements Gio.AsyncInitable<ActiveConnection>, Gio.Initable {
+        static $gtype: GObject.GType<ActiveConnection>;
+
         // Own properties of NMClient.ActiveConnection
 
         /**
@@ -2710,6 +2752,8 @@ export namespace NMClient {
     }
 
     class Client extends Object implements Gio.AsyncInitable<Client>, Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of NMClient.Client
 
         /**
@@ -3727,6 +3771,8 @@ export namespace NMClient {
     }
 
     class DHCP4Config extends Object implements Gio.AsyncInitable<DHCP4Config>, Gio.Initable {
+        static $gtype: GObject.GType<DHCP4Config>;
+
         // Own properties of NMClient.DHCP4Config
 
         /**
@@ -4322,6 +4368,8 @@ export namespace NMClient {
     }
 
     class DHCP6Config extends Object implements Gio.AsyncInitable<DHCP6Config>, Gio.Initable {
+        static $gtype: GObject.GType<DHCP6Config>;
+
         // Own properties of NMClient.DHCP6Config
 
         /**
@@ -4957,6 +5005,8 @@ export namespace NMClient {
     }
 
     class Device extends Object implements Gio.AsyncInitable<Device>, Gio.Initable {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of NMClient.Device
 
         /**
@@ -5981,6 +6031,8 @@ export namespace NMClient {
     }
 
     class DeviceAdsl extends Device implements Gio.AsyncInitable<DeviceAdsl>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceAdsl>;
+
         // Own properties of NMClient.DeviceAdsl
 
         /**
@@ -6489,6 +6541,8 @@ export namespace NMClient {
     }
 
     class DeviceBond extends Device implements Gio.AsyncInitable<DeviceBond>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceBond>;
+
         // Own properties of NMClient.DeviceBond
 
         /**
@@ -7019,6 +7073,8 @@ export namespace NMClient {
     }
 
     class DeviceBridge extends Device implements Gio.AsyncInitable<DeviceBridge>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceBridge>;
+
         // Own properties of NMClient.DeviceBridge
 
         /**
@@ -7550,6 +7606,8 @@ export namespace NMClient {
     }
 
     class DeviceBt extends Device implements Gio.AsyncInitable<DeviceBt>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceBt>;
+
         // Own properties of NMClient.DeviceBt
 
         /**
@@ -8087,6 +8145,8 @@ export namespace NMClient {
     }
 
     class DeviceEthernet extends Device implements Gio.AsyncInitable<DeviceEthernet>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceEthernet>;
+
         // Own properties of NMClient.DeviceEthernet
 
         /**
@@ -8630,6 +8690,8 @@ export namespace NMClient {
     }
 
     class DeviceGeneric extends Device implements Gio.AsyncInitable<DeviceGeneric>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceGeneric>;
+
         // Own properties of NMClient.DeviceGeneric
 
         /**
@@ -9151,6 +9213,8 @@ export namespace NMClient {
     }
 
     class DeviceInfiniband extends Device implements Gio.AsyncInitable<DeviceInfiniband>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceInfiniband>;
+
         // Own properties of NMClient.DeviceInfiniband
 
         /**
@@ -9672,6 +9736,8 @@ export namespace NMClient {
     }
 
     class DeviceModem extends Device implements Gio.AsyncInitable<DeviceModem>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceModem>;
+
         // Own properties of NMClient.DeviceModem
 
         /**
@@ -10208,6 +10274,8 @@ export namespace NMClient {
     }
 
     class DeviceOlpcMesh extends Device implements Gio.AsyncInitable<DeviceOlpcMesh>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceOlpcMesh>;
+
         // Own properties of NMClient.DeviceOlpcMesh
 
         /**
@@ -10742,6 +10810,8 @@ export namespace NMClient {
     }
 
     class DeviceTeam extends Device implements Gio.AsyncInitable<DeviceTeam>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceTeam>;
+
         // Own properties of NMClient.DeviceTeam
 
         /**
@@ -11274,6 +11344,8 @@ export namespace NMClient {
     }
 
     class DeviceVlan extends Device implements Gio.AsyncInitable<DeviceVlan>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceVlan>;
+
         // Own properties of NMClient.DeviceVlan
 
         /**
@@ -11827,6 +11899,8 @@ export namespace NMClient {
     }
 
     class DeviceWifi extends Device implements Gio.AsyncInitable<DeviceWifi>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceWifi>;
+
         // Own properties of NMClient.DeviceWifi
 
         /**
@@ -12458,6 +12532,8 @@ export namespace NMClient {
     }
 
     class DeviceWimax extends Device implements Gio.AsyncInitable<DeviceWimax>, Gio.Initable {
+        static $gtype: GObject.GType<DeviceWimax>;
+
         // Own properties of NMClient.DeviceWimax
 
         /**
@@ -13095,6 +13171,8 @@ export namespace NMClient {
     }
 
     class IP4Config extends Object implements Gio.AsyncInitable<IP4Config>, Gio.Initable {
+        static $gtype: GObject.GType<IP4Config>;
+
         // Own properties of NMClient.IP4Config
 
         /**
@@ -13747,6 +13825,8 @@ export namespace NMClient {
     }
 
     class IP6Config extends Object implements Gio.AsyncInitable<IP6Config>, Gio.Initable {
+        static $gtype: GObject.GType<IP6Config>;
+
         // Own properties of NMClient.IP6Config
 
         /**
@@ -14399,6 +14479,8 @@ export namespace NMClient {
     }
 
     abstract class Object extends GObject.Object implements Gio.AsyncInitable<Object>, Gio.Initable {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of NMClient.Object
 
         get dbus_path(): string;
@@ -15027,6 +15109,8 @@ export namespace NMClient {
         extends NetworkManager.Connection
         implements Gio.AsyncInitable<RemoteConnection>, Gio.Initable
     {
+        static $gtype: GObject.GType<RemoteConnection>;
+
         // Own properties of NMClient.RemoteConnection
 
         set dbus_path(val: string);
@@ -15683,6 +15767,8 @@ export namespace NMClient {
     }
 
     class RemoteSettings extends GObject.Object implements Gio.AsyncInitable<RemoteSettings>, Gio.Initable {
+        static $gtype: GObject.GType<RemoteSettings>;
+
         // Own properties of NMClient.RemoteSettings
 
         /**
@@ -16408,6 +16494,8 @@ export namespace NMClient {
     }
 
     abstract class SecretAgent extends GObject.Object {
+        static $gtype: GObject.GType<SecretAgent>;
+
         // Own properties of NMClient.SecretAgent
 
         /**
@@ -16591,6 +16679,8 @@ export namespace NMClient {
     }
 
     class VPNConnection extends ActiveConnection implements Gio.AsyncInitable<VPNConnection>, Gio.Initable {
+        static $gtype: GObject.GType<VPNConnection>;
+
         // Own properties of NMClient.VPNConnection
 
         /**
@@ -17131,6 +17221,8 @@ export namespace NMClient {
     }
 
     class WimaxNsp extends Object implements Gio.AsyncInitable<WimaxNsp>, Gio.Initable {
+        static $gtype: GObject.GType<WimaxNsp>;
+
         // Own properties of NMClient.WimaxNsp
 
         /**

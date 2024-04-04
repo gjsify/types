@@ -50,6 +50,8 @@ export namespace Tracker {
         BOOLEAN,
     }
     class SparqlError extends GLib.Error {
+        static $gtype: GObject.GType<SparqlError>;
+
         // Static fields of Tracker.SparqlError
 
         static PARSE: number;
@@ -143,6 +145,8 @@ export namespace Tracker {
     }
 
     class NamespaceManager extends GObject.Object {
+        static $gtype: GObject.GType<NamespaceManager>;
+
         // Constructors of Tracker.NamespaceManager
 
         constructor(properties?: Partial<NamespaceManager.ConstructorProps>, ...args: any[]);
@@ -217,6 +221,8 @@ export namespace Tracker {
     }
 
     class Notifier extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Notifier>;
+
         // Own properties of Tracker.Notifier
 
         /**
@@ -696,6 +702,8 @@ export namespace Tracker {
      * about a given resource.
      */
     class Resource extends GObject.Object {
+        static $gtype: GObject.GType<Resource>;
+
         // Own properties of Tracker.Resource
 
         /**
@@ -956,6 +964,8 @@ export namespace Tracker {
     }
 
     class SparqlBuilder extends GObject.Object {
+        static $gtype: GObject.GType<SparqlBuilder>;
+
         // Own properties of Tracker.SparqlBuilder
 
         get result(): string;
@@ -1016,6 +1026,8 @@ export namespace Tracker {
     }
 
     abstract class SparqlConnection extends GObject.Object {
+        static $gtype: GObject.GType<SparqlConnection>;
+
         // Constructors of Tracker.SparqlConnection
 
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
@@ -1157,6 +1169,8 @@ export namespace Tracker {
     }
 
     abstract class SparqlCursor extends GObject.Object {
+        static $gtype: GObject.GType<SparqlCursor>;
+
         // Own properties of Tracker.SparqlCursor
 
         get connection(): SparqlConnection;
@@ -1215,6 +1229,8 @@ export namespace Tracker {
     }
 
     abstract class SparqlStatement extends GObject.Object {
+        static $gtype: GObject.GType<SparqlStatement>;
+
         // Own properties of Tracker.SparqlStatement
 
         get sparql(): string;
@@ -1259,6 +1275,8 @@ export namespace Tracker {
     type NamespaceManagerClass = typeof NamespaceManager;
     type NotifierClass = typeof Notifier;
     abstract class NotifierEvent {
+        static $gtype: GObject.GType<NotifierEvent>;
+
         // Constructors of Tracker.NotifierEvent
 
         _init(...args: any[]): void;
@@ -1310,6 +1328,8 @@ export namespace Tracker {
     type ResourceClass = typeof Resource;
     type SparqlBuilderClass = typeof SparqlBuilder;
     abstract class SparqlBuilderPrivate {
+        static $gtype: GObject.GType<SparqlBuilderPrivate>;
+
         // Constructors of Tracker.SparqlBuilderPrivate
 
         _init(...args: any[]): void;
@@ -1317,6 +1337,8 @@ export namespace Tracker {
 
     type SparqlConnectionClass = typeof SparqlConnection;
     abstract class SparqlConnectionPrivate {
+        static $gtype: GObject.GType<SparqlConnectionPrivate>;
+
         // Constructors of Tracker.SparqlConnectionPrivate
 
         _init(...args: any[]): void;
@@ -1324,6 +1346,8 @@ export namespace Tracker {
 
     type SparqlCursorClass = typeof SparqlCursor;
     abstract class SparqlCursorPrivate {
+        static $gtype: GObject.GType<SparqlCursorPrivate>;
+
         // Constructors of Tracker.SparqlCursorPrivate
 
         _init(...args: any[]): void;
@@ -1331,6 +1355,8 @@ export namespace Tracker {
 
     type SparqlStatementClass = typeof SparqlStatement;
     abstract class SparqlStatementPrivate {
+        static $gtype: GObject.GType<SparqlStatementPrivate>;
+
         // Constructors of Tracker.SparqlStatementPrivate
 
         _init(...args: any[]): void;

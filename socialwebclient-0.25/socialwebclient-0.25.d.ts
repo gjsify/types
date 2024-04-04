@@ -47,6 +47,8 @@ export namespace SocialWebClient {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Constructors of SocialWebClient.Client
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
@@ -95,6 +97,8 @@ export namespace SocialWebClient {
     }
 
     class ClientContactView extends GObject.Object {
+        static $gtype: GObject.GType<ClientContactView>;
+
         // Own properties of SocialWebClient.ClientContactView
 
         get object_path(): string;
@@ -153,6 +157,8 @@ export namespace SocialWebClient {
     }
 
     class ClientItemView extends GObject.Object {
+        static $gtype: GObject.GType<ClientItemView>;
+
         // Own properties of SocialWebClient.ClientItemView
 
         get object_path(): string;
@@ -194,6 +200,8 @@ export namespace SocialWebClient {
     }
 
     class ClientLastfm extends GObject.Object {
+        static $gtype: GObject.GType<ClientLastfm>;
+
         // Constructors of SocialWebClient.ClientLastfm
 
         constructor(properties?: Partial<ClientLastfm.ConstructorProps>, ...args: any[]);
@@ -250,6 +258,8 @@ export namespace SocialWebClient {
     }
 
     class ClientService extends GObject.Object {
+        static $gtype: GObject.GType<ClientService>;
+
         // Constructors of SocialWebClient.ClientService
 
         constructor(properties?: Partial<ClientService.ConstructorProps>, ...args: any[]);
@@ -320,6 +330,8 @@ export namespace SocialWebClient {
     type ClientLastfmClass = typeof ClientLastfm;
     type ClientServiceClass = typeof ClientService;
     class Contact {
+        static $gtype: GObject.GType<Contact>;
+
         // Own fields of SocialWebClient.Contact
 
         refcount: number;
@@ -353,6 +365,8 @@ export namespace SocialWebClient {
     }
 
     class Item {
+        static $gtype: GObject.GType<Item>;
+
         // Own fields of SocialWebClient.Item
 
         refcount: number;

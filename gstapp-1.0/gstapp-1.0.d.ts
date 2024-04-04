@@ -155,6 +155,8 @@ export namespace GstApp {
      * to avoid polling.
      */
     class AppSink extends GstBase.BaseSink implements Gst.URIHandler {
+        static $gtype: GObject.GType<AppSink>;
+
         // Own properties of GstApp.AppSink
 
         get buffer_list(): boolean;
@@ -1005,6 +1007,8 @@ export namespace GstApp {
      * occurs or the state of the appsrc has gone through READY.
      */
     class AppSrc extends GstBase.BaseSrc implements Gst.URIHandler {
+        static $gtype: GObject.GType<AppSrc>;
+
         // Own properties of GstApp.AppSrc
 
         /**
@@ -1874,6 +1878,8 @@ export namespace GstApp {
 
     type AppSinkClass = typeof AppSink;
     abstract class AppSinkPrivate {
+        static $gtype: GObject.GType<AppSinkPrivate>;
+
         // Constructors of GstApp.AppSinkPrivate
 
         _init(...args: any[]): void;
@@ -1881,6 +1887,8 @@ export namespace GstApp {
 
     type AppSrcClass = typeof AppSrc;
     abstract class AppSrcPrivate {
+        static $gtype: GObject.GType<AppSrcPrivate>;
+
         // Constructors of GstApp.AppSrcPrivate
 
         _init(...args: any[]): void;

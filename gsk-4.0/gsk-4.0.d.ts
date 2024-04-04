@@ -331,6 +331,8 @@ export namespace Gsk {
      * Errors that can happen during (de)serialization.
      */
     class SerializationError extends GLib.Error {
+        static $gtype: GObject.GType<SerializationError>;
+
         // Static fields of Gsk.SerializationError
 
         /**
@@ -457,6 +459,8 @@ export namespace Gsk {
      * A render node applying a blending function between its two child nodes.
      */
     class BlendNode extends RenderNode {
+        static $gtype: GObject.GType<BlendNode>;
+
         // Constructors of Gsk.BlendNode
 
         _init(...args: any[]): void;
@@ -486,6 +490,8 @@ export namespace Gsk {
      * A render node applying a blur effect to its single child.
      */
     class BlurNode extends RenderNode {
+        static $gtype: GObject.GType<BlurNode>;
+
         // Constructors of Gsk.BlurNode
 
         _init(...args: any[]): void;
@@ -510,6 +516,8 @@ export namespace Gsk {
      * A render node for a border.
      */
     class BorderNode extends RenderNode {
+        static $gtype: GObject.GType<BorderNode>;
+
         // Constructors of Gsk.BorderNode
 
         _init(...args: any[]): void;
@@ -542,6 +550,8 @@ export namespace Gsk {
     }
 
     class BroadwayRenderer extends Renderer {
+        static $gtype: GObject.GType<BroadwayRenderer>;
+
         // Constructors of Gsk.BroadwayRenderer
 
         constructor(properties?: Partial<BroadwayRenderer.ConstructorProps>, ...args: any[]);
@@ -555,6 +565,8 @@ export namespace Gsk {
      * A render node for a Cairo surface.
      */
     class CairoNode extends RenderNode {
+        static $gtype: GObject.GType<CairoNode>;
+
         // Constructors of Gsk.CairoNode
 
         _init(...args: any[]): void;
@@ -592,6 +604,8 @@ export namespace Gsk {
      * 3D transformations.
      */
     class CairoRenderer extends Renderer {
+        static $gtype: GObject.GType<CairoRenderer>;
+
         // Constructors of Gsk.CairoRenderer
 
         constructor(properties?: Partial<CairoRenderer.ConstructorProps>, ...args: any[]);
@@ -605,6 +619,8 @@ export namespace Gsk {
      * A render node applying a rectangular clip to its single child node.
      */
     class ClipNode extends RenderNode {
+        static $gtype: GObject.GType<ClipNode>;
+
         // Constructors of Gsk.ClipNode
 
         _init(...args: any[]): void;
@@ -629,6 +645,8 @@ export namespace Gsk {
      * A render node controlling the color matrix of its single child node.
      */
     class ColorMatrixNode extends RenderNode {
+        static $gtype: GObject.GType<ColorMatrixNode>;
+
         // Constructors of Gsk.ColorMatrixNode
 
         _init(...args: any[]): void;
@@ -658,6 +676,8 @@ export namespace Gsk {
      * A render node for a solid color.
      */
     class ColorNode extends RenderNode {
+        static $gtype: GObject.GType<ColorNode>;
+
         // Constructors of Gsk.ColorNode
 
         _init(...args: any[]): void;
@@ -677,6 +697,8 @@ export namespace Gsk {
      * A render node for a conic gradient.
      */
     class ConicGradientNode extends RenderNode {
+        static $gtype: GObject.GType<ConicGradientNode>;
+
         // Constructors of Gsk.ConicGradientNode
 
         _init(...args: any[]): void;
@@ -726,6 +748,8 @@ export namespace Gsk {
      * A render node that can contain other render nodes.
      */
     class ContainerNode extends RenderNode {
+        static $gtype: GObject.GType<ContainerNode>;
+
         // Constructors of Gsk.ContainerNode
 
         _init(...args: any[]): void;
@@ -751,6 +775,8 @@ export namespace Gsk {
      * A render node cross fading between two child nodes.
      */
     class CrossFadeNode extends RenderNode {
+        static $gtype: GObject.GType<CrossFadeNode>;
+
         // Constructors of Gsk.CrossFadeNode
 
         _init(...args: any[]): void;
@@ -781,6 +807,8 @@ export namespace Gsk {
      * child node.
      */
     class DebugNode extends RenderNode {
+        static $gtype: GObject.GType<DebugNode>;
+
         // Constructors of Gsk.DebugNode
 
         _init(...args: any[]): void;
@@ -808,6 +836,8 @@ export namespace Gsk {
     }
 
     class GLRenderer extends Renderer {
+        static $gtype: GObject.GType<GLRenderer>;
+
         // Constructors of Gsk.GLRenderer
 
         constructor(properties?: Partial<GLRenderer.ConstructorProps>, ...args: any[]);
@@ -942,6 +972,8 @@ export namespace Gsk {
      * ```
      */
     class GLShader extends GObject.Object {
+        static $gtype: GObject.GType<GLShader>;
+
         // Own properties of Gsk.GLShader
 
         /**
@@ -1106,6 +1138,8 @@ export namespace Gsk {
      * A render node using a GL shader when drawing its children nodes.
      */
     class GLShaderNode extends RenderNode {
+        static $gtype: GObject.GType<GLShaderNode>;
+
         // Constructors of Gsk.GLShaderNode
 
         _init(...args: any[]): void;
@@ -1146,6 +1180,8 @@ export namespace Gsk {
      * A render node for an inset shadow.
      */
     class InsetShadowNode extends RenderNode {
+        static $gtype: GObject.GType<InsetShadowNode>;
+
         // Constructors of Gsk.InsetShadowNode
 
         _init(...args: any[]): void;
@@ -1197,6 +1233,8 @@ export namespace Gsk {
      * A render node for a linear gradient.
      */
     class LinearGradientNode extends RenderNode {
+        static $gtype: GObject.GType<LinearGradientNode>;
+
         // Constructors of Gsk.LinearGradientNode
 
         _init(...args: any[]): void;
@@ -1236,6 +1274,8 @@ export namespace Gsk {
      * A render node masking one child node with another.
      */
     class MaskNode extends RenderNode {
+        static $gtype: GObject.GType<MaskNode>;
+
         // Constructors of Gsk.MaskNode
 
         _init(...args: any[]): void;
@@ -1268,6 +1308,8 @@ export namespace Gsk {
     }
 
     class NglRenderer extends Renderer {
+        static $gtype: GObject.GType<NglRenderer>;
+
         // Constructors of Gsk.NglRenderer
 
         constructor(properties?: Partial<NglRenderer.ConstructorProps>, ...args: any[]);
@@ -1281,6 +1323,8 @@ export namespace Gsk {
      * A render node controlling the opacity of its single child node.
      */
     class OpacityNode extends RenderNode {
+        static $gtype: GObject.GType<OpacityNode>;
+
         // Constructors of Gsk.OpacityNode
 
         _init(...args: any[]): void;
@@ -1305,6 +1349,8 @@ export namespace Gsk {
      * A render node for an outset shadow.
      */
     class OutsetShadowNode extends RenderNode {
+        static $gtype: GObject.GType<OutsetShadowNode>;
+
         // Constructors of Gsk.OutsetShadowNode
 
         _init(...args: any[]): void;
@@ -1356,6 +1402,8 @@ export namespace Gsk {
      * A render node for a radial gradient.
      */
     class RadialGradientNode extends RenderNode {
+        static $gtype: GObject.GType<RadialGradientNode>;
+
         // Constructors of Gsk.RadialGradientNode
 
         _init(...args: any[]): void;
@@ -1425,6 +1473,8 @@ export namespace Gsk {
      * properties during construction.
      */
     abstract class RenderNode {
+        static $gtype: GObject.GType<RenderNode>;
+
         // Constructors of Gsk.RenderNode
 
         _init(...args: any[]): void;
@@ -1526,6 +1576,8 @@ export namespace Gsk {
      * to render the scene.
      */
     abstract class Renderer extends GObject.Object {
+        static $gtype: GObject.GType<Renderer>;
+
         // Own properties of Gsk.Renderer
 
         /**
@@ -1613,6 +1665,8 @@ export namespace Gsk {
      * A render node repeating its single child node.
      */
     class RepeatNode extends RenderNode {
+        static $gtype: GObject.GType<RepeatNode>;
+
         // Constructors of Gsk.RepeatNode
 
         _init(...args: any[]): void;
@@ -1637,6 +1691,8 @@ export namespace Gsk {
      * A render node for a repeating linear gradient.
      */
     class RepeatingLinearGradientNode extends RenderNode {
+        static $gtype: GObject.GType<RepeatingLinearGradientNode>;
+
         // Constructors of Gsk.RepeatingLinearGradientNode
 
         _init(...args: any[]): void;
@@ -1653,6 +1709,8 @@ export namespace Gsk {
      * A render node for a repeating radial gradient.
      */
     class RepeatingRadialGradientNode extends RenderNode {
+        static $gtype: GObject.GType<RepeatingRadialGradientNode>;
+
         // Constructors of Gsk.RepeatingRadialGradientNode
 
         _init(...args: any[]): void;
@@ -1672,6 +1730,8 @@ export namespace Gsk {
      * A render node applying a rounded rectangle clip to its single child.
      */
     class RoundedClipNode extends RenderNode {
+        static $gtype: GObject.GType<RoundedClipNode>;
+
         // Constructors of Gsk.RoundedClipNode
 
         _init(...args: any[]): void;
@@ -1696,6 +1756,8 @@ export namespace Gsk {
      * A render node drawing one or more shadows behind its single child node.
      */
     class ShadowNode extends RenderNode {
+        static $gtype: GObject.GType<ShadowNode>;
+
         // Constructors of Gsk.ShadowNode
 
         _init(...args: any[]): void;
@@ -1726,6 +1788,8 @@ export namespace Gsk {
      * A render node drawing a set of glyphs.
      */
     class TextNode extends RenderNode {
+        static $gtype: GObject.GType<TextNode>;
+
         // Constructors of Gsk.TextNode
 
         _init(...args: any[]): void;
@@ -1770,6 +1834,8 @@ export namespace Gsk {
      * A render node for a `GdkTexture`.
      */
     class TextureNode extends RenderNode {
+        static $gtype: GObject.GType<TextureNode>;
+
         // Constructors of Gsk.TextureNode
 
         _init(...args: any[]): void;
@@ -1789,6 +1855,8 @@ export namespace Gsk {
      * A render node for a `GdkTexture`.
      */
     class TextureScaleNode extends RenderNode {
+        static $gtype: GObject.GType<TextureScaleNode>;
+
         // Constructors of Gsk.TextureScaleNode
 
         _init(...args: any[]): void;
@@ -1813,6 +1881,8 @@ export namespace Gsk {
      * A render node applying a `GskTransform` to its single child node.
      */
     class TransformNode extends RenderNode {
+        static $gtype: GObject.GType<TransformNode>;
+
         // Constructors of Gsk.TransformNode
 
         _init(...args: any[]): void;
@@ -1839,6 +1909,8 @@ export namespace Gsk {
      * A color stop in a gradient node.
      */
     class ColorStop {
+        static $gtype: GObject.GType<ColorStop>;
+
         // Own fields of Gsk.ColorStop
 
         offset: number;
@@ -1861,6 +1933,8 @@ export namespace Gsk {
      * A location in a parse buffer.
      */
     class ParseLocation {
+        static $gtype: GObject.GType<ParseLocation>;
+
         // Own fields of Gsk.ParseLocation
 
         bytes: number;
@@ -1900,6 +1974,8 @@ export namespace Gsk {
      * [the CSS specification](https://drafts.csswg.org/css-backgrounds-3/#border-radius).
      */
     class RoundedRect {
+        static $gtype: GObject.GType<RoundedRect>;
+
         // Own fields of Gsk.RoundedRect
 
         bounds: Graphene.Rect;
@@ -2020,6 +2096,8 @@ export namespace Gsk {
      * An object to build the uniforms data for a `GskGLShader`.
      */
     abstract class ShaderArgsBuilder {
+        static $gtype: GObject.GType<ShaderArgsBuilder>;
+
         // Constructors of Gsk.ShaderArgsBuilder
 
         constructor(shader: GLShader, initial_values?: GLib.Bytes | null);
@@ -2117,6 +2195,8 @@ export namespace Gsk {
      * The shadow parameters in a shadow node.
      */
     class Shadow {
+        static $gtype: GObject.GType<Shadow>;
+
         // Own fields of Gsk.Shadow
 
         color: Gdk.RGBA;
@@ -2149,6 +2229,8 @@ export namespace Gsk {
      * having to worry about others changing them.
      */
     abstract class Transform {
+        static $gtype: GObject.GType<Transform>;
+
         // Constructors of Gsk.Transform
 
         constructor(properties?: Partial<{}>);

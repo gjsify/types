@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gepub-0.7.d.ts"],
+    "readme": "./README.md",
+    "name": "Gepub-0.7",
+    "tsconfig": "./tsconfig.json"
+}
+

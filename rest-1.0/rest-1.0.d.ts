@@ -34,6 +34,8 @@ export namespace Rest {
         COPY,
     }
     class OAuth2Error extends GLib.Error {
+        static $gtype: GObject.GType<OAuth2Error>;
+
         // Static fields of Rest.OAuth2Error
 
         static NO_REFRESH_TOKEN: number;
@@ -49,6 +51,8 @@ export namespace Rest {
      * Error domain used when returning errors from #RestProxyCall.
      */
     class ProxyCallError extends GLib.Error {
+        static $gtype: GObject.GType<ProxyCallError>;
+
         // Static fields of Rest.ProxyCallError
 
         /**
@@ -70,6 +74,8 @@ export namespace Rest {
      * Error domain used when returning errors from a #RestProxy.
      */
     class ProxyError extends GLib.Error {
+        static $gtype: GObject.GType<ProxyError>;
+
         // Static fields of Rest.ProxyError
 
         /**
@@ -292,6 +298,8 @@ export namespace Rest {
     }
 
     class OAuth2Proxy extends Proxy {
+        static $gtype: GObject.GType<OAuth2Proxy>;
+
         // Own properties of Rest.OAuth2Proxy
 
         get access_token(): string;
@@ -390,6 +398,8 @@ export namespace Rest {
     }
 
     class OAuth2ProxyCall extends ProxyCall {
+        static $gtype: GObject.GType<OAuth2ProxyCall>;
+
         // Constructors of Rest.OAuth2ProxyCall
 
         constructor(properties?: Partial<OAuth2ProxyCall.ConstructorProps>, ...args: any[]);
@@ -422,6 +432,8 @@ export namespace Rest {
      * #RestProxy has no publicly available members.
      */
     class Proxy extends GObject.Object {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own properties of Rest.Proxy
 
         get binding_required(): boolean;
@@ -515,6 +527,8 @@ export namespace Rest {
      * #RestProxyAuth has no publicly available members.
      */
     class ProxyAuth extends GObject.Object {
+        static $gtype: GObject.GType<ProxyAuth>;
+
         // Constructors of Rest.ProxyAuth
 
         constructor(properties?: Partial<ProxyAuth.ConstructorProps>, ...args: any[]);
@@ -555,6 +569,8 @@ export namespace Rest {
      * #RestProxyCall has no publicly available members.
      */
     class ProxyCall extends GObject.Object {
+        static $gtype: GObject.GType<ProxyCall>;
+
         // Own properties of Rest.ProxyCall
 
         get proxy(): Proxy;
@@ -723,6 +739,8 @@ export namespace Rest {
      * A Xml Parser for Rest Responses
      */
     class XmlParser extends GObject.Object {
+        static $gtype: GObject.GType<XmlParser>;
+
         // Constructors of Rest.XmlParser
 
         constructor(properties?: Partial<XmlParser.ConstructorProps>, ...args: any[]);
@@ -746,6 +764,8 @@ export namespace Rest {
     type OAuth2ProxyCallClass = typeof OAuth2ProxyCall;
     type OAuth2ProxyClass = typeof OAuth2Proxy;
     abstract class Param {
+        static $gtype: GObject.GType<Param>;
+
         // Constructors of Rest.Param
 
         constructor(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename?: string | null);
@@ -817,6 +837,8 @@ export namespace Rest {
     }
 
     class Params {
+        static $gtype: GObject.GType<Params>;
+
         // Constructors of Rest.Params
 
         constructor(properties?: Partial<{}>);
@@ -875,6 +897,8 @@ export namespace Rest {
     }
 
     class ParamsIter {
+        static $gtype: GObject.GType<ParamsIter>;
+
         // Constructors of Rest.ParamsIter
 
         _init(...args: any[]): void;
@@ -913,6 +937,8 @@ export namespace Rest {
      * you need this structure which handles the algorithmic part.
      */
     abstract class PkceCodeChallenge {
+        static $gtype: GObject.GType<PkceCodeChallenge>;
+
         // Constructors of Rest.PkceCodeChallenge
 
         constructor(properties?: Partial<{}>);
@@ -946,6 +972,8 @@ export namespace Rest {
 
     type ProxyAuthClass = typeof ProxyAuth;
     abstract class ProxyAuthPrivate {
+        static $gtype: GObject.GType<ProxyAuthPrivate>;
+
         // Constructors of Rest.ProxyAuthPrivate
 
         _init(...args: any[]): void;
@@ -957,6 +985,8 @@ export namespace Rest {
      * The #RestXmlNode contains a parsed XmlNode for easy consumption
      */
     class XmlNode {
+        static $gtype: GObject.GType<XmlNode>;
+
         // Own fields of Rest.XmlNode
 
         name: string;

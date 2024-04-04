@@ -2117,6 +2117,8 @@ export namespace Atspi {
             Text,
             Value
     {
+        static $gtype: GObject.GType<Accessible>;
+
         // Own fields of Atspi.Accessible
 
         accessible_parent: Accessible;
@@ -3714,6 +3716,8 @@ export namespace Atspi {
     }
 
     class Application extends GObject.Object {
+        static $gtype: GObject.GType<Application>;
+
         // Own fields of Atspi.Application
 
         bus_name: string;
@@ -3738,6 +3742,8 @@ export namespace Atspi {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Constructors of Atspi.Device
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
@@ -3863,6 +3869,8 @@ export namespace Atspi {
     }
 
     class DeviceLegacy extends Device {
+        static $gtype: GObject.GType<DeviceLegacy>;
+
         // Constructors of Atspi.DeviceLegacy
 
         constructor(properties?: Partial<DeviceLegacy.ConstructorProps>, ...args: any[]);
@@ -3879,6 +3887,8 @@ export namespace Atspi {
     }
 
     class DeviceListener extends GObject.Object {
+        static $gtype: GObject.GType<DeviceListener>;
+
         // Own fields of Atspi.DeviceListener
 
         id: number;
@@ -3918,6 +3928,8 @@ export namespace Atspi {
     }
 
     class DeviceX11 extends Device {
+        static $gtype: GObject.GType<DeviceX11>;
+
         // Constructors of Atspi.DeviceX11
 
         constructor(properties?: Partial<DeviceX11.ConstructorProps>, ...args: any[]);
@@ -3934,6 +3946,8 @@ export namespace Atspi {
     }
 
     class EventListener extends GObject.Object {
+        static $gtype: GObject.GType<EventListener>;
+
         // Own fields of Atspi.EventListener
 
         callback: EventListenerCB;
@@ -4090,6 +4104,8 @@ export namespace Atspi {
     }
 
     class Hyperlink extends Object {
+        static $gtype: GObject.GType<Hyperlink>;
+
         // Constructors of Atspi.Hyperlink
 
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
@@ -4151,6 +4167,8 @@ export namespace Atspi {
     }
 
     class MatchRule extends GObject.Object {
+        static $gtype: GObject.GType<MatchRule>;
+
         // Own fields of Atspi.MatchRule
 
         states: StateSet;
@@ -4188,6 +4206,8 @@ export namespace Atspi {
     }
 
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own fields of Atspi.Object
 
         app: Application;
@@ -4207,6 +4227,8 @@ export namespace Atspi {
     }
 
     class Relation extends GObject.Object {
+        static $gtype: GObject.GType<Relation>;
+
         // Own fields of Atspi.Relation
 
         relation_type: RelationType;
@@ -4247,6 +4269,8 @@ export namespace Atspi {
     }
 
     class StateSet extends GObject.Object {
+        static $gtype: GObject.GType<StateSet>;
+
         // Own fields of Atspi.StateSet
 
         accessible: any;
@@ -4315,6 +4339,8 @@ export namespace Atspi {
 
     type AccessibleClass = typeof Accessible;
     abstract class AccessiblePrivate {
+        static $gtype: GObject.GType<AccessiblePrivate>;
+
         // Constructors of Atspi.AccessiblePrivate
 
         _init(...args: any[]): void;
@@ -4323,6 +4349,8 @@ export namespace Atspi {
     type ApplicationClass = typeof Application;
     type DeviceClass = typeof Device;
     class DeviceEvent {
+        static $gtype: GObject.GType<DeviceEvent>;
+
         // Own fields of Atspi.DeviceEvent
 
         type: EventType;
@@ -4342,6 +4370,8 @@ export namespace Atspi {
     type DeviceListenerClass = typeof DeviceListener;
     type DeviceX11Class = typeof DeviceX11;
     class Event {
+        static $gtype: GObject.GType<Event>;
+
         // Own fields of Atspi.Event
 
         type: string;
@@ -4372,6 +4402,8 @@ export namespace Atspi {
 
     type EventListenerClass = typeof EventListener;
     class EventListenerMode {
+        static $gtype: GObject.GType<EventListenerMode>;
+
         // Own fields of Atspi.EventListenerMode
 
         synchronous: boolean;
@@ -4392,6 +4424,8 @@ export namespace Atspi {
 
     type HyperlinkClass = typeof Hyperlink;
     class KeyDefinition {
+        static $gtype: GObject.GType<KeyDefinition>;
+
         // Own fields of Atspi.KeyDefinition
 
         keycode: number;
@@ -4417,6 +4451,8 @@ export namespace Atspi {
      *        keysyms.
      */
     class KeySet {
+        static $gtype: GObject.GType<KeySet>;
+
         // Own fields of Atspi.KeySet
 
         keysyms: number;
@@ -4440,6 +4476,8 @@ export namespace Atspi {
     type MatchRuleClass = typeof MatchRule;
     type ObjectClass = typeof Object;
     class Point {
+        static $gtype: GObject.GType<Point>;
+
         // Own fields of Atspi.Point
 
         x: number;
@@ -4461,6 +4499,8 @@ export namespace Atspi {
     }
 
     class Range {
+        static $gtype: GObject.GType<Range>;
+
         // Own fields of Atspi.Range
 
         start_offset: number;
@@ -4486,6 +4526,8 @@ export namespace Atspi {
     }
 
     class Rect {
+        static $gtype: GObject.GType<Rect>;
+
         // Own fields of Atspi.Rect
 
         x: number;
@@ -4513,6 +4555,8 @@ export namespace Atspi {
     type RelationClass = typeof Relation;
     type StateSetClass = typeof StateSet;
     class TextRange {
+        static $gtype: GObject.GType<TextRange>;
+
         // Own fields of Atspi.TextRange
 
         start_offset: number;

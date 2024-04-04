@@ -295,6 +295,8 @@ export namespace Gdl {
     }
 
     class Dock extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Dock>;
+
         // Own properties of Gdl.Dock
 
         get default_title(): string;
@@ -800,6 +802,8 @@ export namespace Gdl {
     }
 
     class DockBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<DockBar>;
+
         // Own properties of Gdl.DockBar
 
         get dockbar_style(): DockBarStyle;
@@ -1259,6 +1263,8 @@ export namespace Gdl {
     }
 
     class DockItem extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockItem>;
+
         // Own properties of Gdl.DockItem
 
         get behavior(): DockItemBehavior;
@@ -1901,6 +1907,8 @@ export namespace Gdl {
     }
 
     class DockItemButtonImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockItemButtonImage>;
+
         // Own fields of Gdl.DockItemButtonImage
 
         image_type: DockItemButtonImageType;
@@ -2458,6 +2466,8 @@ export namespace Gdl {
     }
 
     class DockItemGrip extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockItemGrip>;
+
         // Own properties of Gdl.DockItemGrip
 
         set item(val: DockItem);
@@ -2868,6 +2878,8 @@ export namespace Gdl {
      * and should not be directly accessed.
      */
     class DockLayout extends GObject.Object {
+        static $gtype: GObject.GType<DockLayout>;
+
         // Own properties of Gdl.DockLayout
 
         get dirty(): boolean;
@@ -2983,6 +2995,8 @@ export namespace Gdl {
     }
 
     class DockMaster extends GObject.Object {
+        static $gtype: GObject.GType<DockMaster>;
+
         // Own properties of Gdl.DockMaster
 
         get default_title(): string;
@@ -3086,6 +3100,8 @@ export namespace Gdl {
     }
 
     class DockNotebook extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockNotebook>;
+
         // Own properties of Gdl.DockNotebook
 
         get page(): number;
@@ -3489,6 +3505,8 @@ export namespace Gdl {
     }
 
     class DockObject extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockObject>;
+
         // Own properties of Gdl.DockObject
 
         /**
@@ -4201,6 +4219,8 @@ export namespace Gdl {
     }
 
     class DockPaned extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockPaned>;
+
         // Own properties of Gdl.DockPaned
 
         get position(): number;
@@ -4579,6 +4599,8 @@ export namespace Gdl {
     }
 
     class DockParam {
+        static $gtype: GObject.GType<DockParam>;
+
         // Constructors of Gdl.DockParam
 
         _init(...args: any[]): void;
@@ -4604,6 +4626,8 @@ export namespace Gdl {
     }
 
     class DockPlaceholder extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockPlaceholder>;
+
         // Own properties of Gdl.DockPlaceholder
 
         get floating(): boolean;
@@ -5016,6 +5040,8 @@ export namespace Gdl {
     }
 
     class DockTablabel extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockTablabel>;
+
         // Own properties of Gdl.DockTablabel
 
         get item(): DockItem;
@@ -5432,6 +5458,8 @@ export namespace Gdl {
      * and should not be directly accessed.
      */
     class PreviewWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreviewWindow>;
+
         // Constructors of Gdl.PreviewWindow
 
         constructor(properties?: Partial<PreviewWindow.ConstructorProps>, ...args: any[]);
@@ -5824,6 +5852,8 @@ export namespace Gdl {
     }
 
     class Switcher extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Switcher>;
+
         // Own properties of Gdl.Switcher
 
         get switcher_style(): SwitcherStyle;
@@ -6235,6 +6265,8 @@ export namespace Gdl {
 
     type DockBarClass = typeof DockBar;
     abstract class DockBarPrivate {
+        static $gtype: GObject.GType<DockBarPrivate>;
+
         // Constructors of Gdl.DockBarPrivate
 
         _init(...args: any[]): void;
@@ -6244,6 +6276,8 @@ export namespace Gdl {
     type DockItemButtonImageClass = typeof DockItemButtonImage;
     type DockItemClass = typeof DockItem;
     abstract class DockItemClassPrivate {
+        static $gtype: GObject.GType<DockItemClassPrivate>;
+
         // Constructors of Gdl.DockItemClassPrivate
 
         _init(...args: any[]): void;
@@ -6251,12 +6285,16 @@ export namespace Gdl {
 
     type DockItemGripClass = typeof DockItemGrip;
     abstract class DockItemGripPrivate {
+        static $gtype: GObject.GType<DockItemGripPrivate>;
+
         // Constructors of Gdl.DockItemGripPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DockItemPrivate {
+        static $gtype: GObject.GType<DockItemPrivate>;
+
         // Constructors of Gdl.DockItemPrivate
 
         _init(...args: any[]): void;
@@ -6264,6 +6302,8 @@ export namespace Gdl {
 
     type DockLayoutClass = typeof DockLayout;
     abstract class DockLayoutPrivate {
+        static $gtype: GObject.GType<DockLayoutPrivate>;
+
         // Constructors of Gdl.DockLayoutPrivate
 
         _init(...args: any[]): void;
@@ -6271,6 +6311,8 @@ export namespace Gdl {
 
     type DockMasterClass = typeof DockMaster;
     abstract class DockMasterPrivate {
+        static $gtype: GObject.GType<DockMasterPrivate>;
+
         // Constructors of Gdl.DockMasterPrivate
 
         _init(...args: any[]): void;
@@ -6278,12 +6320,16 @@ export namespace Gdl {
 
     type DockNotebookClass = typeof DockNotebook;
     abstract class DockNotebookClassPrivate {
+        static $gtype: GObject.GType<DockNotebookClassPrivate>;
+
         // Constructors of Gdl.DockNotebookClassPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DockNotebookPrivate {
+        static $gtype: GObject.GType<DockNotebookPrivate>;
+
         // Constructors of Gdl.DockNotebookPrivate
 
         _init(...args: any[]): void;
@@ -6291,12 +6337,16 @@ export namespace Gdl {
 
     type DockObjectClass = typeof DockObject;
     abstract class DockObjectClassPrivate {
+        static $gtype: GObject.GType<DockObjectClassPrivate>;
+
         // Constructors of Gdl.DockObjectClassPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DockObjectPrivate {
+        static $gtype: GObject.GType<DockObjectPrivate>;
+
         // Constructors of Gdl.DockObjectPrivate
 
         _init(...args: any[]): void;
@@ -6304,6 +6354,8 @@ export namespace Gdl {
 
     type DockPanedClass = typeof DockPaned;
     abstract class DockPanedPrivate {
+        static $gtype: GObject.GType<DockPanedPrivate>;
+
         // Constructors of Gdl.DockPanedPrivate
 
         _init(...args: any[]): void;
@@ -6311,12 +6363,16 @@ export namespace Gdl {
 
     type DockPlaceholderClass = typeof DockPlaceholder;
     abstract class DockPlaceholderPrivate {
+        static $gtype: GObject.GType<DockPlaceholderPrivate>;
+
         // Constructors of Gdl.DockPlaceholderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DockPrivate {
+        static $gtype: GObject.GType<DockPrivate>;
+
         // Constructors of Gdl.DockPrivate
 
         _init(...args: any[]): void;
@@ -6326,6 +6382,8 @@ export namespace Gdl {
      * Full docking information.
      */
     class DockRequest {
+        static $gtype: GObject.GType<DockRequest>;
+
         // Own fields of Gdl.DockRequest
 
         applicant: DockObject;
@@ -6342,12 +6400,16 @@ export namespace Gdl {
     type PreviewWindowClass = typeof PreviewWindow;
     type SwitcherClass = typeof Switcher;
     abstract class SwitcherClassPrivate {
+        static $gtype: GObject.GType<SwitcherClassPrivate>;
+
         // Constructors of Gdl.SwitcherClassPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class SwitcherPrivate {
+        static $gtype: GObject.GType<SwitcherPrivate>;
+
         // Constructors of Gdl.SwitcherPrivate
 
         _init(...args: any[]): void;

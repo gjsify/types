@@ -306,6 +306,8 @@ export namespace GstCodecs {
      * The opaque #GstAV1Decoder data structure.
      */
     abstract class AV1Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<AV1Decoder>;
+
         // Constructors of GstCodecs.AV1Decoder
 
         constructor(properties?: Partial<AV1Decoder.ConstructorProps>, ...args: any[]);
@@ -377,6 +379,8 @@ export namespace GstCodecs {
      * The opaque #GstH264Decoder data structure.
      */
     abstract class H264Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<H264Decoder>;
+
         // Own properties of GstCodecs.H264Decoder
 
         /**
@@ -487,6 +491,8 @@ export namespace GstCodecs {
      * The opaque #GstH265Decoder data structure.
      */
     abstract class H265Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<H265Decoder>;
+
         // Constructors of GstCodecs.H265Decoder
 
         constructor(properties?: Partial<H265Decoder.ConstructorProps>, ...args: any[]);
@@ -567,6 +573,8 @@ export namespace GstCodecs {
      * The opaque #GstMpeg2Decoder data structure.
      */
     abstract class Mpeg2Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<Mpeg2Decoder>;
+
         // Constructors of GstCodecs.Mpeg2Decoder
 
         constructor(properties?: Partial<Mpeg2Decoder.ConstructorProps>, ...args: any[]);
@@ -643,6 +651,8 @@ export namespace GstCodecs {
      * The opaque #GstVp8Decoder data structure.
      */
     abstract class Vp8Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<Vp8Decoder>;
+
         // Constructors of GstCodecs.Vp8Decoder
 
         constructor(properties?: Partial<Vp8Decoder.ConstructorProps>, ...args: any[]);
@@ -673,6 +683,8 @@ export namespace GstCodecs {
      * The opaque #GstVp9Decoder data structure.
      */
     abstract class Vp9Decoder extends GstVideo.VideoDecoder {
+        static $gtype: GObject.GType<Vp9Decoder>;
+
         // Constructors of GstCodecs.Vp9Decoder
 
         constructor(properties?: Partial<Vp9Decoder.ConstructorProps>, ...args: any[]);
@@ -754,12 +766,16 @@ export namespace GstCodecs {
 
     type AV1DecoderClass = typeof AV1Decoder;
     abstract class AV1DecoderPrivate {
+        static $gtype: GObject.GType<AV1DecoderPrivate>;
+
         // Constructors of GstCodecs.AV1DecoderPrivate
 
         _init(...args: any[]): void;
     }
 
     class AV1Dpb {
+        static $gtype: GObject.GType<AV1Dpb>;
+
         // Constructors of GstCodecs.AV1Dpb
 
         _init(...args: any[]): void;
@@ -782,6 +798,8 @@ export namespace GstCodecs {
     }
 
     class AV1Picture {
+        static $gtype: GObject.GType<AV1Picture>;
+
         // Constructors of GstCodecs.AV1Picture
 
         constructor(properties?: Partial<{}>);
@@ -809,6 +827,8 @@ export namespace GstCodecs {
     }
 
     class AV1Tile {
+        static $gtype: GObject.GType<AV1Tile>;
+
         // Constructors of GstCodecs.AV1Tile
 
         constructor(
@@ -822,12 +842,16 @@ export namespace GstCodecs {
 
     type H264DecoderClass = typeof H264Decoder;
     abstract class H264DecoderPrivate {
+        static $gtype: GObject.GType<H264DecoderPrivate>;
+
         // Constructors of GstCodecs.H264DecoderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class H264Dpb {
+        static $gtype: GObject.GType<H264Dpb>;
+
         // Constructors of GstCodecs.H264Dpb
 
         _init(...args: any[]): void;
@@ -918,6 +942,8 @@ export namespace GstCodecs {
     }
 
     class H264Picture {
+        static $gtype: GObject.GType<H264Picture>;
+
         // Constructors of GstCodecs.H264Picture
 
         constructor(properties?: Partial<{}>);
@@ -945,6 +971,8 @@ export namespace GstCodecs {
     }
 
     class H264Slice {
+        static $gtype: GObject.GType<H264Slice>;
+
         // Constructors of GstCodecs.H264Slice
 
         constructor(
@@ -958,12 +986,16 @@ export namespace GstCodecs {
 
     type H265DecoderClass = typeof H265Decoder;
     abstract class H265DecoderPrivate {
+        static $gtype: GObject.GType<H265DecoderPrivate>;
+
         // Constructors of GstCodecs.H265DecoderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class H265Dpb {
+        static $gtype: GObject.GType<H265Dpb>;
+
         // Constructors of GstCodecs.H265Dpb
 
         _init(...args: any[]): void;
@@ -1038,6 +1070,8 @@ export namespace GstCodecs {
     }
 
     class H265Picture {
+        static $gtype: GObject.GType<H265Picture>;
+
         // Constructors of GstCodecs.H265Picture
 
         constructor(properties?: Partial<{}>);
@@ -1065,6 +1099,8 @@ export namespace GstCodecs {
     }
 
     class H265Slice {
+        static $gtype: GObject.GType<H265Slice>;
+
         // Constructors of GstCodecs.H265Slice
 
         constructor(
@@ -1078,12 +1114,16 @@ export namespace GstCodecs {
 
     type Mpeg2DecoderClass = typeof Mpeg2Decoder;
     abstract class Mpeg2DecoderPrivate {
+        static $gtype: GObject.GType<Mpeg2DecoderPrivate>;
+
         // Constructors of GstCodecs.Mpeg2DecoderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class Mpeg2Dpb {
+        static $gtype: GObject.GType<Mpeg2Dpb>;
+
         // Constructors of GstCodecs.Mpeg2Dpb
 
         _init(...args: any[]): void;
@@ -1117,6 +1157,8 @@ export namespace GstCodecs {
     }
 
     class Mpeg2Picture {
+        static $gtype: GObject.GType<Mpeg2Picture>;
+
         // Constructors of GstCodecs.Mpeg2Picture
 
         constructor(properties?: Partial<{}>);
@@ -1144,6 +1186,8 @@ export namespace GstCodecs {
     }
 
     class Mpeg2Slice {
+        static $gtype: GObject.GType<Mpeg2Slice>;
+
         // Constructors of GstCodecs.Mpeg2Slice
 
         constructor(properties?: Partial<{}>);
@@ -1152,12 +1196,16 @@ export namespace GstCodecs {
 
     type Vp8DecoderClass = typeof Vp8Decoder;
     abstract class Vp8DecoderPrivate {
+        static $gtype: GObject.GType<Vp8DecoderPrivate>;
+
         // Constructors of GstCodecs.Vp8DecoderPrivate
 
         _init(...args: any[]): void;
     }
 
     class Vp8Picture {
+        static $gtype: GObject.GType<Vp8Picture>;
+
         // Constructors of GstCodecs.Vp8Picture
 
         constructor(properties?: Partial<{}>);
@@ -1186,6 +1234,8 @@ export namespace GstCodecs {
 
     type Vp9DecoderClass = typeof Vp9Decoder;
     abstract class Vp9DecoderPrivate {
+        static $gtype: GObject.GType<Vp9DecoderPrivate>;
+
         // Constructors of GstCodecs.Vp9DecoderPrivate
 
         _init(...args: any[]): void;
@@ -1196,6 +1246,8 @@ export namespace GstCodecs {
      * and can be used as a binary.
      */
     class Vp9DeltaProbabilities {
+        static $gtype: GObject.GType<Vp9DeltaProbabilities>;
+
         // Constructors of GstCodecs.Vp9DeltaProbabilities
 
         constructor(properties?: Partial<{}>);
@@ -1203,6 +1255,8 @@ export namespace GstCodecs {
     }
 
     class Vp9Dpb {
+        static $gtype: GObject.GType<Vp9Dpb>;
+
         // Constructors of GstCodecs.Vp9Dpb
 
         _init(...args: any[]): void;
@@ -1225,6 +1279,8 @@ export namespace GstCodecs {
     }
 
     class Vp9FrameHeader {
+        static $gtype: GObject.GType<Vp9FrameHeader>;
+
         // Own fields of GstCodecs.Vp9FrameHeader
 
         profile: number;
@@ -1279,6 +1335,8 @@ export namespace GstCodecs {
      * by using previously parsed values.
      */
     class Vp9LoopFilterParams {
+        static $gtype: GObject.GType<Vp9LoopFilterParams>;
+
         // Own fields of GstCodecs.Vp9LoopFilterParams
 
         loop_filter_level: number;
@@ -1312,6 +1370,8 @@ export namespace GstCodecs {
      * and can be used as a binary.
      */
     class Vp9MvDeltaProbs {
+        static $gtype: GObject.GType<Vp9MvDeltaProbs>;
+
         // Constructors of GstCodecs.Vp9MvDeltaProbs
 
         constructor(properties?: Partial<{}>);
@@ -1319,6 +1379,8 @@ export namespace GstCodecs {
     }
 
     class Vp9Picture {
+        static $gtype: GObject.GType<Vp9Picture>;
+
         // Constructors of GstCodecs.Vp9Picture
 
         constructor(properties?: Partial<{}>);
@@ -1346,6 +1408,8 @@ export namespace GstCodecs {
     }
 
     class Vp9QuantizationParams {
+        static $gtype: GObject.GType<Vp9QuantizationParams>;
+
         // Own fields of GstCodecs.Vp9QuantizationParams
 
         base_q_idx: number;
@@ -1373,6 +1437,8 @@ export namespace GstCodecs {
      * using previously parsed values.
      */
     class Vp9SegmentationParams {
+        static $gtype: GObject.GType<Vp9SegmentationParams>;
+
         // Own fields of GstCodecs.Vp9SegmentationParams
 
         segmentation_enabled: number;
@@ -1407,6 +1473,8 @@ export namespace GstCodecs {
      * This object is used to parse VP9 bitstream header.
      */
     class Vp9StatefulParser {
+        static $gtype: GObject.GType<Vp9StatefulParser>;
+
         // Own fields of GstCodecs.Vp9StatefulParser
 
         reference: any[];

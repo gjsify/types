@@ -150,6 +150,8 @@ export namespace PackageKitPlugin {
     }
 
     class Backend extends GObject.Object {
+        static $gtype: GObject.GType<Backend>;
+
         // Constructors of PackageKitPlugin.Backend
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
@@ -294,6 +296,8 @@ export namespace PackageKitPlugin {
     }
 
     class BackendJob extends GObject.Object {
+        static $gtype: GObject.GType<BackendJob>;
+
         // Constructors of PackageKitPlugin.BackendJob
 
         constructor(properties?: Partial<BackendJob.ConstructorProps>, ...args: any[]);
@@ -445,6 +449,8 @@ export namespace PackageKitPlugin {
     }
 
     class Transaction extends GObject.Object {
+        static $gtype: GObject.GType<Transaction>;
+
         // Constructors of PackageKitPlugin.Transaction
 
         constructor(properties?: Partial<Transaction.ConstructorProps>, ...args: any[]);
@@ -527,18 +533,24 @@ export namespace PackageKitPlugin {
     type BackendClass = typeof Backend;
     type BackendJobClass = typeof BackendJob;
     abstract class BackendJobPrivate {
+        static $gtype: GObject.GType<BackendJobPrivate>;
+
         // Constructors of PackageKitPlugin.BackendJobPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BackendPrivate {
+        static $gtype: GObject.GType<BackendPrivate>;
+
         // Constructors of PackageKitPlugin.BackendPrivate
 
         _init(...args: any[]): void;
     }
 
     class Plugin {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own fields of PackageKitPlugin.Plugin
 
         backend: Backend;
@@ -566,6 +578,8 @@ export namespace PackageKitPlugin {
     }
 
     abstract class PluginPrivate {
+        static $gtype: GObject.GType<PluginPrivate>;
+
         // Constructors of PackageKitPlugin.PluginPrivate
 
         _init(...args: any[]): void;
@@ -573,6 +587,8 @@ export namespace PackageKitPlugin {
 
     type TransactionClass = typeof Transaction;
     abstract class TransactionPrivate {
+        static $gtype: GObject.GType<TransactionPrivate>;
+
         // Constructors of PackageKitPlugin.TransactionPrivate
 
         _init(...args: any[]): void;

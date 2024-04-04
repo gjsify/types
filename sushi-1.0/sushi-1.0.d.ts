@@ -62,6 +62,8 @@ export namespace Sushi {
     }
 
     class CoverArtFetcher extends GObject.Object {
+        static $gtype: GObject.GType<CoverArtFetcher>;
+
         // Own properties of Sushi.CoverArtFetcher
 
         get cover(): GdkPixbuf.Pixbuf;
@@ -92,6 +94,8 @@ export namespace Sushi {
     }
 
     class FileLoader extends GObject.Object {
+        static $gtype: GObject.GType<FileLoader>;
+
         // Own properties of Sushi.FileLoader
 
         get content_type(): string;
@@ -140,6 +144,8 @@ export namespace Sushi {
     }
 
     class FontWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<FontWidget>;
+
         // Own properties of Sushi.FontWidget
 
         get uri(): string;
@@ -532,6 +538,8 @@ export namespace Sushi {
     }
 
     class PdfLoader extends GObject.Object {
+        static $gtype: GObject.GType<PdfLoader>;
+
         // Own properties of Sushi.PdfLoader
 
         get document(): EvinceDocument.Document;
@@ -566,6 +574,8 @@ export namespace Sushi {
     }
 
     class SoundPlayer extends GObject.Object {
+        static $gtype: GObject.GType<SoundPlayer>;
+
         // Own properties of Sushi.SoundPlayer
 
         get duration(): number;
@@ -600,6 +610,8 @@ export namespace Sushi {
     }
 
     class TextLoader extends GObject.Object {
+        static $gtype: GObject.GType<TextLoader>;
+
         // Own properties of Sushi.TextLoader
 
         get uri(): string;
@@ -625,6 +637,8 @@ export namespace Sushi {
 
     type CoverArtFetcherClass = typeof CoverArtFetcher;
     abstract class CoverArtFetcherPrivate {
+        static $gtype: GObject.GType<CoverArtFetcherPrivate>;
+
         // Constructors of Sushi.CoverArtFetcherPrivate
 
         _init(...args: any[]): void;
@@ -632,6 +646,8 @@ export namespace Sushi {
 
     type FileLoaderClass = typeof FileLoader;
     abstract class FileLoaderPrivate {
+        static $gtype: GObject.GType<FileLoaderPrivate>;
+
         // Constructors of Sushi.FileLoaderPrivate
 
         _init(...args: any[]): void;
@@ -639,6 +655,8 @@ export namespace Sushi {
 
     type FontWidgetClass = typeof FontWidget;
     abstract class FontWidgetPrivate {
+        static $gtype: GObject.GType<FontWidgetPrivate>;
+
         // Constructors of Sushi.FontWidgetPrivate
 
         _init(...args: any[]): void;
@@ -646,6 +664,8 @@ export namespace Sushi {
 
     type PdfLoaderClass = typeof PdfLoader;
     abstract class PdfLoaderPrivate {
+        static $gtype: GObject.GType<PdfLoaderPrivate>;
+
         // Constructors of Sushi.PdfLoaderPrivate
 
         _init(...args: any[]): void;
@@ -653,6 +673,8 @@ export namespace Sushi {
 
     type SoundPlayerClass = typeof SoundPlayer;
     abstract class SoundPlayerPrivate {
+        static $gtype: GObject.GType<SoundPlayerPrivate>;
+
         // Constructors of Sushi.SoundPlayerPrivate
 
         _init(...args: any[]): void;
@@ -660,6 +682,8 @@ export namespace Sushi {
 
     type TextLoaderClass = typeof TextLoader;
     abstract class TextLoaderPrivate {
+        static $gtype: GObject.GType<TextLoaderPrivate>;
+
         // Constructors of Sushi.TextLoaderPrivate
 
         _init(...args: any[]): void;

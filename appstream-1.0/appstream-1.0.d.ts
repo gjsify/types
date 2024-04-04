@@ -650,6 +650,8 @@ export namespace AppStream {
      * A metadata processing error.
      */
     class MetadataError extends GLib.Error {
+        static $gtype: GObject.GType<MetadataError>;
+
         // Static fields of AppStream.MetadataError
 
         /**
@@ -708,6 +710,8 @@ export namespace AppStream {
      * A metadata pool error.
      */
     class PoolError extends GLib.Error {
+        static $gtype: GObject.GType<PoolError>;
+
         // Static fields of AppStream.PoolError
 
         /**
@@ -835,6 +839,8 @@ export namespace AppStream {
      * The error type.
      */
     class RelationError extends GLib.Error {
+        static $gtype: GObject.GType<RelationError>;
+
         // Static fields of AppStream.RelationError
 
         /**
@@ -1043,6 +1049,8 @@ export namespace AppStream {
      * The error type.
      */
     class SystemInfoError extends GLib.Error {
+        static $gtype: GObject.GType<SystemInfoError>;
+
         // Static fields of AppStream.SystemInfoError
 
         /**
@@ -1155,6 +1163,8 @@ export namespace AppStream {
      * The error type.
      */
     class UtilsError extends GLib.Error {
+        static $gtype: GObject.GType<UtilsError>;
+
         // Static fields of AppStream.UtilsError
 
         /**
@@ -1176,6 +1186,8 @@ export namespace AppStream {
      * The error type.
      */
     class ValidatorError extends GLib.Error {
+        static $gtype: GObject.GType<ValidatorError>;
+
         // Static fields of AppStream.ValidatorError
 
         /**
@@ -2221,6 +2233,8 @@ export namespace AppStream {
     }
 
     class Agreement extends GObject.Object {
+        static $gtype: GObject.GType<Agreement>;
+
         // Constructors of AppStream.Agreement
 
         constructor(properties?: Partial<Agreement.ConstructorProps>, ...args: any[]);
@@ -2271,6 +2285,8 @@ export namespace AppStream {
     }
 
     class AgreementSection extends GObject.Object {
+        static $gtype: GObject.GType<AgreementSection>;
+
         // Constructors of AppStream.AgreementSection
 
         constructor(properties?: Partial<AgreementSection.ConstructorProps>, ...args: any[]);
@@ -2333,6 +2349,8 @@ export namespace AppStream {
     }
 
     class Artifact extends GObject.Object {
+        static $gtype: GObject.GType<Artifact>;
+
         // Constructors of AppStream.Artifact
 
         constructor(properties?: Partial<Artifact.ConstructorProps>, ...args: any[]);
@@ -2431,6 +2449,8 @@ export namespace AppStream {
     }
 
     class Branding extends GObject.Object {
+        static $gtype: GObject.GType<Branding>;
+
         // Constructors of AppStream.Branding
 
         constructor(properties?: Partial<Branding.ConstructorProps>, ...args: any[]);
@@ -2473,6 +2493,8 @@ export namespace AppStream {
     }
 
     class Bundle extends GObject.Object {
+        static $gtype: GObject.GType<Bundle>;
+
         // Constructors of AppStream.Bundle
 
         constructor(properties?: Partial<Bundle.ConstructorProps>, ...args: any[]);
@@ -2518,6 +2540,8 @@ export namespace AppStream {
     }
 
     class Category extends GObject.Object {
+        static $gtype: GObject.GType<Category>;
+
         // Own properties of AppStream.Category
 
         get children(): any;
@@ -2623,6 +2647,8 @@ export namespace AppStream {
     }
 
     class Checksum extends GObject.Object {
+        static $gtype: GObject.GType<Checksum>;
+
         // Constructors of AppStream.Checksum
 
         constructor(properties?: Partial<Checksum.ConstructorProps>, ...args: any[]);
@@ -2682,6 +2708,8 @@ export namespace AppStream {
     }
 
     class Component extends GObject.Object {
+        static $gtype: GObject.GType<Component>;
+
         // Own properties of AppStream.Component
 
         /**
@@ -3525,6 +3553,8 @@ export namespace AppStream {
     }
 
     class ContentRating extends GObject.Object {
+        static $gtype: GObject.GType<ContentRating>;
+
         // Constructors of AppStream.ContentRating
 
         constructor(properties?: Partial<ContentRating.ConstructorProps>, ...args: any[]);
@@ -3631,6 +3661,8 @@ export namespace AppStream {
     }
 
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of AppStream.Context
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
@@ -3694,6 +3726,8 @@ export namespace AppStream {
     }
 
     class Icon extends GObject.Object {
+        static $gtype: GObject.GType<Icon>;
+
         // Constructors of AppStream.Icon
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
@@ -3764,6 +3798,8 @@ export namespace AppStream {
     }
 
     class Image extends GObject.Object {
+        static $gtype: GObject.GType<Image>;
+
         // Constructors of AppStream.Image
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
@@ -3833,6 +3869,8 @@ export namespace AppStream {
     }
 
     class Issue extends GObject.Object {
+        static $gtype: GObject.GType<Issue>;
+
         // Constructors of AppStream.Issue
 
         constructor(properties?: Partial<Issue.ConstructorProps>, ...args: any[]);
@@ -3883,6 +3921,8 @@ export namespace AppStream {
     }
 
     class Launchable extends GObject.Object {
+        static $gtype: GObject.GType<Launchable>;
+
         // Constructors of AppStream.Launchable
 
         constructor(properties?: Partial<Launchable.ConstructorProps>, ...args: any[]);
@@ -3924,6 +3964,8 @@ export namespace AppStream {
     }
 
     class Metadata extends GObject.Object {
+        static $gtype: GObject.GType<Metadata>;
+
         // Constructors of AppStream.Metadata
 
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
@@ -4148,6 +4190,8 @@ export namespace AppStream {
     }
 
     class Pool extends GObject.Object {
+        static $gtype: GObject.GType<Pool>;
+
         // Constructors of AppStream.Pool
 
         constructor(properties?: Partial<Pool.ConstructorProps>, ...args: any[]);
@@ -4380,6 +4424,8 @@ export namespace AppStream {
     }
 
     class Provided extends GObject.Object {
+        static $gtype: GObject.GType<Provided>;
+
         // Constructors of AppStream.Provided
 
         constructor(properties?: Partial<Provided.ConstructorProps>, ...args: any[]);
@@ -4426,6 +4472,8 @@ export namespace AppStream {
     }
 
     class Relation extends GObject.Object {
+        static $gtype: GObject.GType<Relation>;
+
         // Constructors of AppStream.Relation
 
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
@@ -4583,6 +4631,8 @@ export namespace AppStream {
     }
 
     class Release extends GObject.Object {
+        static $gtype: GObject.GType<Release>;
+
         // Constructors of AppStream.Release
 
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
@@ -4755,6 +4805,8 @@ export namespace AppStream {
     }
 
     class Review extends GObject.Object {
+        static $gtype: GObject.GType<Review>;
+
         // Own properties of AppStream.Review
 
         get date(): Review;
@@ -4948,6 +5000,8 @@ export namespace AppStream {
     }
 
     class Screenshot extends GObject.Object {
+        static $gtype: GObject.GType<Screenshot>;
+
         // Constructors of AppStream.Screenshot
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
@@ -5061,6 +5115,8 @@ export namespace AppStream {
     }
 
     class Suggested extends GObject.Object {
+        static $gtype: GObject.GType<Suggested>;
+
         // Constructors of AppStream.Suggested
 
         constructor(properties?: Partial<Suggested.ConstructorProps>, ...args: any[]);
@@ -5106,6 +5162,8 @@ export namespace AppStream {
     }
 
     class SystemInfo extends GObject.Object {
+        static $gtype: GObject.GType<SystemInfo>;
+
         // Constructors of AppStream.SystemInfo
 
         constructor(properties?: Partial<SystemInfo.ConstructorProps>, ...args: any[]);
@@ -5223,6 +5281,8 @@ export namespace AppStream {
     }
 
     class Translation extends GObject.Object {
+        static $gtype: GObject.GType<Translation>;
+
         // Constructors of AppStream.Translation
 
         constructor(properties?: Partial<Translation.ConstructorProps>, ...args: any[]);
@@ -5274,6 +5334,8 @@ export namespace AppStream {
     }
 
     class Validator extends GObject.Object {
+        static $gtype: GObject.GType<Validator>;
+
         // Constructors of AppStream.Validator
 
         constructor(properties?: Partial<Validator.ConstructorProps>, ...args: any[]);
@@ -5404,6 +5466,8 @@ export namespace AppStream {
     }
 
     class ValidatorIssue extends GObject.Object {
+        static $gtype: GObject.GType<ValidatorIssue>;
+
         // Constructors of AppStream.ValidatorIssue
 
         constructor(properties?: Partial<ValidatorIssue.ConstructorProps>, ...args: any[]);
@@ -5500,6 +5564,8 @@ export namespace AppStream {
     }
 
     class Video extends GObject.Object {
+        static $gtype: GObject.GType<Video>;
+
         // Constructors of AppStream.Video
 
         constructor(properties?: Partial<Video.ConstructorProps>, ...args: any[]);
@@ -5583,6 +5649,8 @@ export namespace AppStream {
      * then initialized with as_branding_color_iter_init().
      */
     class BrandingColorIter {
+        static $gtype: GObject.GType<BrandingColorIter>;
+
         // Constructors of AppStream.BrandingColorIter
 
         constructor(properties?: Partial<{}>);

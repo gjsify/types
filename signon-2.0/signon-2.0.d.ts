@@ -20,6 +20,8 @@ export namespace Signon {
      * Possible Signon errors.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Signon.Error
 
         /**
@@ -274,6 +276,8 @@ export namespace Signon {
      * Opaque struct. Use the accessor functions below.
      */
     class AuthService extends GObject.Object {
+        static $gtype: GObject.GType<AuthService>;
+
         // Constructors of Signon.AuthService
 
         constructor(properties?: Partial<AuthService.ConstructorProps>, ...args: any[]);
@@ -346,6 +350,8 @@ export namespace Signon {
      * Opaque struct. Use the accessor functions below.
      */
     class AuthSession extends GObject.Object {
+        static $gtype: GObject.GType<AuthSession>;
+
         // Constructors of Signon.AuthSession
 
         constructor(properties?: Partial<AuthSession.ConstructorProps>, ...args: any[]);
@@ -421,6 +427,8 @@ export namespace Signon {
      * Opaque struct. Use the accessor functions below.
      */
     class Identity extends GObject.Object {
+        static $gtype: GObject.GType<Identity>;
+
         // Own properties of Signon.Identity
 
         get id(): number;
@@ -533,6 +541,8 @@ export namespace Signon {
      * Opaque struct. Use the accessor functions below.
      */
     class IdentityInfo {
+        static $gtype: GObject.GType<IdentityInfo>;
+
         // Constructors of Signon.IdentityInfo
 
         constructor(properties?: Partial<{}>);
@@ -650,6 +660,8 @@ export namespace Signon {
      * Opaque struct. Use the accessor functions below.
      */
     class SecurityContext {
+        static $gtype: GObject.GType<SecurityContext>;
+
         // Constructors of Signon.SecurityContext
 
         constructor(properties?: Partial<{}>);

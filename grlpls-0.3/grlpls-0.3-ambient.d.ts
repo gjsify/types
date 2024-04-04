@@ -1,7 +1,7 @@
 
 declare module 'gi://GrlPls?version=0.3' {
-    import GrlPls03 from '@girs/grlpls-0.3';
-    export default GrlPls03;
+    import GrlPls from '@girs/grlpls-0.3';
+    export default GrlPls;
 }
 
 declare module 'gi://GrlPls' {

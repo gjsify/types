@@ -398,6 +398,8 @@ export namespace Dbusmenu {
      * 	object set of #DbusmenuMenuitem objects.
      */
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Dbusmenu.Client
 
         get dbus_name(): string;
@@ -596,6 +598,8 @@ export namespace Dbusmenu {
      * the bus it can lead to lots of fun complex scenarios.
      */
     class Menuitem extends GObject.Object {
+        static $gtype: GObject.GType<Menuitem>;
+
         // Own properties of Dbusmenu.Menuitem
 
         get id(): number;
@@ -1002,6 +1006,8 @@ export namespace Dbusmenu {
      * Public instance data for a #DbusmenuMenuitemProxy.
      */
     class MenuitemProxy extends Menuitem {
+        static $gtype: GObject.GType<MenuitemProxy>;
+
         // Own properties of Dbusmenu.MenuitemProxy
 
         get menu_item(): Menuitem;
@@ -1063,6 +1069,8 @@ export namespace Dbusmenu {
      * 	#DbusmenuMenuitems across DBus to a #DbusmenuClient.
      */
     class Server extends GObject.Object {
+        static $gtype: GObject.GType<Server>;
+
         // Own properties of Dbusmenu.Server
 
         get dbus_object(): string;
@@ -1164,6 +1172,8 @@ export namespace Dbusmenu {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of Dbusmenu.ClientPrivate
 
         _init(...args: any[]): void;
@@ -1176,6 +1186,8 @@ export namespace Dbusmenu {
      * 	accessor functions, but are protected appropriately.
      */
     abstract class MenuitemPrivate {
+        static $gtype: GObject.GType<MenuitemPrivate>;
+
         // Constructors of Dbusmenu.MenuitemPrivate
 
         _init(...args: any[]): void;
@@ -1183,6 +1195,8 @@ export namespace Dbusmenu {
 
     type MenuitemProxyClass = typeof MenuitemProxy;
     abstract class MenuitemProxyPrivate {
+        static $gtype: GObject.GType<MenuitemProxyPrivate>;
+
         // Constructors of Dbusmenu.MenuitemProxyPrivate
 
         _init(...args: any[]): void;
@@ -1190,6 +1204,8 @@ export namespace Dbusmenu {
 
     type ServerClass = typeof Server;
     abstract class ServerPrivate {
+        static $gtype: GObject.GType<ServerPrivate>;
+
         // Constructors of Dbusmenu.ServerPrivate
 
         _init(...args: any[]): void;

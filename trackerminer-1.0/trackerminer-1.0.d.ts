@@ -170,6 +170,8 @@ export namespace TrackerMiner {
      * data past the basic information such as file name, size, etc.
      */
     abstract class Decorator extends Miner implements Gio.Initable {
+        static $gtype: GObject.GType<Decorator>;
+
         // Own properties of TrackerMiner.Decorator
 
         get class_names(): string[];
@@ -738,6 +740,8 @@ export namespace TrackerMiner {
      * A decorator object.
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
+        static $gtype: GObject.GType<DecoratorFS>;
+
         // Own fields of TrackerMiner.DecoratorFS
 
         priv: any;
@@ -1146,6 +1150,8 @@ export namespace TrackerMiner {
      * Base object used to configure indexing within #TrackerMinerFS items.
      */
     class IndexingTree extends GObject.Object {
+        static $gtype: GObject.GType<IndexingTree>;
+
         // Own properties of TrackerMiner.IndexingTree
 
         get filter_hidden(): boolean;
@@ -1398,6 +1404,8 @@ export namespace TrackerMiner {
      * Abstract miner object.
      */
     abstract class Miner extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Miner>;
+
         // Own properties of TrackerMiner.Miner
 
         get introspection_handler(): any;
@@ -2044,6 +2052,8 @@ export namespace TrackerMiner {
      * Abstract miner implementation to get data from the filesystem.
      */
     abstract class MinerFS extends Miner implements Gio.Initable {
+        static $gtype: GObject.GType<MinerFS>;
+
         // Own properties of TrackerMiner.MinerFS
 
         get data_provider(): DataProvider;
@@ -2956,6 +2966,8 @@ export namespace TrackerMiner {
      * Abstract miner object for data requiring connectivity.
      */
     abstract class MinerOnline extends Miner implements Gio.Initable {
+        static $gtype: GObject.GType<MinerOnline>;
+
         // Own properties of TrackerMiner.MinerOnline
 
         get network_type(): NetworkType;
@@ -3438,6 +3450,8 @@ export namespace TrackerMiner {
     type DecoratorClass = typeof Decorator;
     type DecoratorFSClass = typeof DecoratorFS;
     class DecoratorInfo {
+        static $gtype: GObject.GType<DecoratorInfo>;
+
         // Constructors of TrackerMiner.DecoratorInfo
 
         _init(...args: any[]): void;
@@ -3503,6 +3517,8 @@ export namespace TrackerMiner {
     type MinerClass = typeof Miner;
     type MinerFSClass = typeof MinerFS;
     abstract class MinerFSPrivate {
+        static $gtype: GObject.GType<MinerFSPrivate>;
+
         // Constructors of TrackerMiner.MinerFSPrivate
 
         _init(...args: any[]): void;
@@ -3510,6 +3526,8 @@ export namespace TrackerMiner {
 
     type MinerOnlineClass = typeof MinerOnline;
     abstract class MinerPrivate {
+        static $gtype: GObject.GType<MinerPrivate>;
+
         // Constructors of TrackerMiner.MinerPrivate
 
         _init(...args: any[]): void;

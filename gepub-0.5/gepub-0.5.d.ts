@@ -7,6 +7,8 @@
 
 import './gepub-0.5-ambient.d.ts';
 
+import './gepub-0.5-import.d.ts';
+
 /**
  * Gepub-0.5
  */
@@ -61,6 +63,8 @@ export namespace Gepub {
     }
 
     class Doc extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Doc>;
+
         // Own properties of Gepub.Doc
 
         get file(): Gio.File;
@@ -554,6 +558,8 @@ export namespace Gepub {
     }
 
     class Widget extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Widget>;
+
         // Own properties of Gepub.Widget
 
         get doc(): Doc;

@@ -134,6 +134,8 @@ export namespace Gucharmap {
         extends ChaptersModel
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
+        static $gtype: GObject.GType<BlockChaptersModel>;
+
         // Constructors of Gucharmap.BlockChaptersModel
 
         constructor(properties?: Partial<BlockChaptersModel.ConstructorProps>, ...args: any[]);
@@ -512,6 +514,8 @@ export namespace Gucharmap {
     }
 
     class BlockCodepointList extends CodepointList {
+        static $gtype: GObject.GType<BlockCodepointList>;
+
         // Own properties of Gucharmap.BlockCodepointList
 
         get first_codepoint(): number;
@@ -544,6 +548,8 @@ export namespace Gucharmap {
         extends Gtk.ListStore
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
+        static $gtype: GObject.GType<ChaptersModel>;
+
         // Constructors of Gucharmap.ChaptersModel
 
         constructor(properties?: Partial<ChaptersModel.ConstructorProps>, ...args: any[]);
@@ -1736,6 +1742,8 @@ export namespace Gucharmap {
     }
 
     class ChaptersView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<ChaptersView>;
+
         // Constructors of Gucharmap.ChaptersView
 
         constructor(properties?: Partial<ChaptersView.ConstructorProps>, ...args: any[]);
@@ -2265,6 +2273,8 @@ export namespace Gucharmap {
     }
 
     class Charmap extends Gtk.Paned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Charmap>;
+
         // Own properties of Gucharmap.Charmap
 
         get active_chapter(): string;
@@ -2803,6 +2813,8 @@ export namespace Gucharmap {
     }
 
     class Chartable extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<Chartable>;
+
         // Own properties of Gucharmap.Chartable
 
         get active_character(): number;
@@ -3414,6 +3426,8 @@ export namespace Gucharmap {
             Atk.Value,
             Atk.Window
     {
+        static $gtype: GObject.GType<ChartableAccessible>;
+
         // Constructors of Gucharmap.ChartableAccessible
 
         constructor(properties?: Partial<ChartableAccessible.ConstructorProps>, ...args: any[]);
@@ -5867,6 +5881,8 @@ export namespace Gucharmap {
     }
 
     class ChartableCellAccessible extends Atk.Object implements Atk.Action, Atk.Component {
+        static $gtype: GObject.GType<ChartableCellAccessible>;
+
         // Own fields of Gucharmap.ChartableCellAccessible
 
         widget: Gtk.Widget;
@@ -6642,6 +6658,8 @@ export namespace Gucharmap {
     }
 
     abstract class CodepointList extends GObject.Object {
+        static $gtype: GObject.GType<CodepointList>;
+
         // Constructors of Gucharmap.CodepointList
 
         constructor(properties?: Partial<CodepointList.ConstructorProps>, ...args: any[]);
@@ -6677,6 +6695,8 @@ export namespace Gucharmap {
         extends ChaptersModel
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
+        static $gtype: GObject.GType<ScriptChaptersModel>;
+
         // Constructors of Gucharmap.ScriptChaptersModel
 
         constructor(properties?: Partial<ScriptChaptersModel.ConstructorProps>, ...args: any[]);
@@ -7050,6 +7070,8 @@ export namespace Gucharmap {
     }
 
     class ScriptCodepointList extends CodepointList {
+        static $gtype: GObject.GType<ScriptCodepointList>;
+
         // Constructors of Gucharmap.ScriptCodepointList
 
         constructor(properties?: Partial<ScriptCodepointList.ConstructorProps>, ...args: any[]);
@@ -7083,6 +7105,8 @@ export namespace Gucharmap {
 
     type BlockChaptersModelClass = typeof BlockChaptersModel;
     abstract class BlockChaptersModelPrivate {
+        static $gtype: GObject.GType<BlockChaptersModelPrivate>;
+
         // Constructors of Gucharmap.BlockChaptersModelPrivate
 
         _init(...args: any[]): void;
@@ -7090,6 +7114,8 @@ export namespace Gucharmap {
 
     type BlockCodepointListClass = typeof BlockCodepointList;
     abstract class BlockCodepointListPrivate {
+        static $gtype: GObject.GType<BlockCodepointListPrivate>;
+
         // Constructors of Gucharmap.BlockCodepointListPrivate
 
         _init(...args: any[]): void;
@@ -7097,6 +7123,8 @@ export namespace Gucharmap {
 
     type ChaptersModelClass = typeof ChaptersModel;
     class ChaptersModelPrivate {
+        static $gtype: GObject.GType<ChaptersModelPrivate>;
+
         // Own fields of Gucharmap.ChaptersModelPrivate
 
         book_list: CodepointList;
@@ -7108,6 +7136,8 @@ export namespace Gucharmap {
 
     type ChaptersViewClass = typeof ChaptersView;
     abstract class ChaptersViewPrivate {
+        static $gtype: GObject.GType<ChaptersViewPrivate>;
+
         // Constructors of Gucharmap.ChaptersViewPrivate
 
         _init(...args: any[]): void;
@@ -7115,6 +7145,8 @@ export namespace Gucharmap {
 
     type CharmapClass = typeof Charmap;
     abstract class CharmapPrivate {
+        static $gtype: GObject.GType<CharmapPrivate>;
+
         // Constructors of Gucharmap.CharmapPrivate
 
         _init(...args: any[]): void;
@@ -7124,6 +7156,8 @@ export namespace Gucharmap {
     type ChartableCellAccessibleClass = typeof ChartableCellAccessible;
     type ChartableClass = typeof Chartable;
     class ChartablePrivate {
+        static $gtype: GObject.GType<ChartablePrivate>;
+
         // Own fields of Gucharmap.ChartablePrivate
 
         vadjustment: Gtk.Adjustment;
@@ -7160,6 +7194,8 @@ export namespace Gucharmap {
 
     type CodepointListClass = typeof CodepointList;
     abstract class CodepointListPrivate {
+        static $gtype: GObject.GType<CodepointListPrivate>;
+
         // Constructors of Gucharmap.CodepointListPrivate
 
         _init(...args: any[]): void;
@@ -7167,6 +7203,8 @@ export namespace Gucharmap {
 
     type ScriptChaptersModelClass = typeof ScriptChaptersModel;
     abstract class ScriptChaptersModelPrivate {
+        static $gtype: GObject.GType<ScriptChaptersModelPrivate>;
+
         // Constructors of Gucharmap.ScriptChaptersModelPrivate
 
         _init(...args: any[]): void;
@@ -7174,6 +7212,8 @@ export namespace Gucharmap {
 
     type ScriptCodepointListClass = typeof ScriptCodepointList;
     abstract class ScriptCodepointListPrivate {
+        static $gtype: GObject.GType<ScriptCodepointListPrivate>;
+
         // Constructors of Gucharmap.ScriptCodepointListPrivate
 
         _init(...args: any[]): void;

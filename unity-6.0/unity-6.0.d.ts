@@ -155,6 +155,8 @@ export namespace Unity {
      * <para>To detect when any of the managed AppInfo objects changes, appears, or goes away listen for the &apos;changed&apos; signal.</para>
      */
     class AppInfoManager extends GObject.Object {
+        static $gtype: GObject.GType<AppInfoManager>;
+
         // Constructors of Unity.AppInfoManager
 
         constructor(properties?: Partial<AppInfoManager.ConstructorProps>, ...args: any[]);
@@ -237,6 +239,8 @@ export namespace Unity {
     }
 
     class AnnotatedIcon extends GObject.Object {
+        static $gtype: GObject.GType<AnnotatedIcon>;
+
         // Own properties of Unity.AnnotatedIcon
 
         get icon(): Gio.Icon;
@@ -279,6 +283,8 @@ export namespace Unity {
      * <para>One of the most basic and most useful applications of the inspector is to check if Unity is running or not.</para>
      */
     class Inspector extends GObject.Object {
+        static $gtype: GObject.GType<Inspector>;
+
         // Own properties of Unity.Inspector
 
         /**
@@ -336,6 +342,8 @@ export namespace Unity {
      * <para>Create a LauncherEntry by giving your desktop file id to the constructor &lpar;eg. &quot;myapp.desktop&quot;&rpar;.</para>
      */
     class LauncherEntry extends GObject.Object implements Dee.Serializable {
+        static $gtype: GObject.GType<LauncherEntry>;
+
         // Own properties of Unity.LauncherEntry
 
         get app_uri(): string;
@@ -768,6 +776,8 @@ export namespace Unity {
     }
 
     class LauncherFavorites extends GObject.Object {
+        static $gtype: GObject.GType<LauncherFavorites>;
+
         // Constructors of Unity.LauncherFavorites
 
         constructor(properties?: Partial<LauncherFavorites.ConstructorProps>, ...args: any[]);
@@ -810,6 +820,8 @@ export namespace Unity {
     }
 
     class ActivationResponse extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<ActivationResponse>;
+
         // Own properties of Unity.ActivationResponse
 
         get handled(): HandledType;
@@ -842,6 +854,8 @@ export namespace Unity {
     }
 
     class Category extends GObject.Object {
+        static $gtype: GObject.GType<Category>;
+
         // Own properties of Unity.Category
 
         get name(): string;
@@ -882,6 +896,8 @@ export namespace Unity {
     }
 
     abstract class Filter extends GObject.Object {
+        static $gtype: GObject.GType<Filter>;
+
         // Own properties of Unity.Filter
 
         get id(): string;
@@ -928,6 +944,8 @@ export namespace Unity {
     }
 
     class FilterOption extends GObject.Object {
+        static $gtype: GObject.GType<FilterOption>;
+
         // Own properties of Unity.FilterOption
 
         get id(): string;
@@ -957,6 +975,8 @@ export namespace Unity {
     }
 
     class OptionsFilter extends Filter {
+        static $gtype: GObject.GType<OptionsFilter>;
+
         // Own properties of Unity.OptionsFilter
 
         get sort_type(): OptionsFilterSortType;
@@ -995,6 +1015,8 @@ export namespace Unity {
     }
 
     class RadioOptionFilter extends OptionsFilter {
+        static $gtype: GObject.GType<RadioOptionFilter>;
+
         // Constructors of Unity.RadioOptionFilter
 
         constructor(properties?: Partial<RadioOptionFilter.ConstructorProps>, ...args: any[]);
@@ -1018,6 +1040,8 @@ export namespace Unity {
     }
 
     class CheckOptionFilter extends OptionsFilter {
+        static $gtype: GObject.GType<CheckOptionFilter>;
+
         // Constructors of Unity.CheckOptionFilter
 
         constructor(properties?: Partial<CheckOptionFilter.ConstructorProps>, ...args: any[]);
@@ -1037,6 +1061,8 @@ export namespace Unity {
     }
 
     class CheckOptionFilterCompact extends OptionsFilter {
+        static $gtype: GObject.GType<CheckOptionFilterCompact>;
+
         // Constructors of Unity.CheckOptionFilterCompact
 
         constructor(properties?: Partial<CheckOptionFilterCompact.ConstructorProps>, ...args: any[]);
@@ -1063,6 +1089,8 @@ export namespace Unity {
     }
 
     class RatingsFilter extends Filter {
+        static $gtype: GObject.GType<RatingsFilter>;
+
         // Own properties of Unity.RatingsFilter
 
         get rating(): number;
@@ -1084,6 +1112,8 @@ export namespace Unity {
     }
 
     class MultiRangeFilter extends OptionsFilter {
+        static $gtype: GObject.GType<MultiRangeFilter>;
+
         // Constructors of Unity.MultiRangeFilter
 
         constructor(properties?: Partial<MultiRangeFilter.ConstructorProps>, ...args: any[]);
@@ -1114,6 +1144,8 @@ export namespace Unity {
      * <para>A singleton class that caches different gsettings settings.</para>
      */
     class PreferencesManager extends GObject.Object {
+        static $gtype: GObject.GType<PreferencesManager>;
+
         // Own properties of Unity.PreferencesManager
 
         get remote_content_search(): PreferencesManagerRemoteContent;
@@ -1154,6 +1186,8 @@ export namespace Unity {
     }
 
     class LensSearch extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<LensSearch>;
+
         // Own properties of Unity.LensSearch
 
         get search_string(): string;
@@ -1219,6 +1253,8 @@ export namespace Unity {
     }
 
     class Lens extends GObject.Object {
+        static $gtype: GObject.GType<Lens>;
+
         // Own properties of Unity.Lens
 
         get active(): boolean;
@@ -1296,6 +1332,8 @@ export namespace Unity {
     }
 
     abstract class Preview extends GObject.Object implements Dee.Serializable {
+        static $gtype: GObject.GType<Preview>;
+
         // Own properties of Unity.Preview
 
         get title(): string;
@@ -1741,6 +1779,8 @@ export namespace Unity {
     }
 
     class PreviewAction extends GObject.Object implements Dee.Serializable {
+        static $gtype: GObject.GType<PreviewAction>;
+
         // Own properties of Unity.PreviewAction
 
         get id(): string;
@@ -2178,6 +2218,8 @@ export namespace Unity {
     }
 
     class InfoHint extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<InfoHint>;
+
         // Own properties of Unity.InfoHint
 
         get id(): string;
@@ -2205,6 +2247,8 @@ export namespace Unity {
     }
 
     class GenericPreview extends Preview {
+        static $gtype: GObject.GType<GenericPreview>;
+
         // Constructors of Unity.GenericPreview
 
         constructor(properties?: Partial<GenericPreview.ConstructorProps>, ...args: any[]);
@@ -2228,6 +2272,8 @@ export namespace Unity {
     }
 
     class ApplicationPreview extends Preview {
+        static $gtype: GObject.GType<ApplicationPreview>;
+
         // Own properties of Unity.ApplicationPreview
 
         get app_icon(): Gio.Icon;
@@ -2286,6 +2332,8 @@ export namespace Unity {
     }
 
     class MusicPreview extends Preview {
+        static $gtype: GObject.GType<MusicPreview>;
+
         // Own properties of Unity.MusicPreview
 
         get current_track_uri(): string;
@@ -2335,6 +2383,8 @@ export namespace Unity {
     }
 
     class MoviePreview extends Preview {
+        static $gtype: GObject.GType<MoviePreview>;
+
         // Own properties of Unity.MoviePreview
 
         get year(): string;
@@ -2364,6 +2414,8 @@ export namespace Unity {
     }
 
     class SocialPreview extends Preview {
+        static $gtype: GObject.GType<SocialPreview>;
+
         // Own properties of Unity.SocialPreview
 
         get avatar(): Gio.Icon;
@@ -2398,6 +2450,8 @@ export namespace Unity {
     }
 
     class SocialPreviewComment extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<SocialPreviewComment>;
+
         // Own properties of Unity.SocialPreviewComment
 
         get id(): string;
@@ -2429,6 +2483,8 @@ export namespace Unity {
     }
 
     class AsyncPreview extends Preview {
+        static $gtype: GObject.GType<AsyncPreview>;
+
         // Own properties of Unity.AsyncPreview
 
         get cancellable(): Gio.Cancellable;
@@ -2506,6 +2562,8 @@ export namespace Unity {
     }
 
     class Scope extends GObject.Object {
+        static $gtype: GObject.GType<Scope>;
+
         // Own properties of Unity.Scope
 
         get active(): boolean;
@@ -2621,6 +2679,8 @@ export namespace Unity {
     }
 
     class TrackMetadata extends GObject.Object {
+        static $gtype: GObject.GType<TrackMetadata>;
+
         // Own properties of Unity.TrackMetadata
 
         get uri(): string;
@@ -2681,6 +2741,8 @@ export namespace Unity {
     }
 
     class Playlist extends GObject.Object {
+        static $gtype: GObject.GType<Playlist>;
+
         // Own properties of Unity.Playlist
 
         get id(): string;
@@ -2765,6 +2827,8 @@ export namespace Unity {
     }
 
     class MusicPlayer extends GObject.Object {
+        static $gtype: GObject.GType<MusicPlayer>;
+
         // Own properties of Unity.MusicPlayer
 
         get app_info(): Gio.AppInfo;
@@ -2855,6 +2919,8 @@ export namespace Unity {
 
     type AppInfoManagerClass = typeof AppInfoManager;
     abstract class AppInfoManagerPrivate {
+        static $gtype: GObject.GType<AppInfoManagerPrivate>;
+
         // Constructors of Unity.AppInfoManagerPrivate
 
         _init(...args: any[]): void;
@@ -2862,6 +2928,8 @@ export namespace Unity {
 
     type AnnotatedIconClass = typeof AnnotatedIcon;
     abstract class AnnotatedIconPrivate {
+        static $gtype: GObject.GType<AnnotatedIconPrivate>;
+
         // Constructors of Unity.AnnotatedIconPrivate
 
         _init(...args: any[]): void;
@@ -2869,6 +2937,8 @@ export namespace Unity {
 
     type InspectorClass = typeof Inspector;
     abstract class InspectorPrivate {
+        static $gtype: GObject.GType<InspectorPrivate>;
+
         // Constructors of Unity.InspectorPrivate
 
         _init(...args: any[]): void;
@@ -2876,6 +2946,8 @@ export namespace Unity {
 
     type LauncherEntryClass = typeof LauncherEntry;
     abstract class LauncherEntryPrivate {
+        static $gtype: GObject.GType<LauncherEntryPrivate>;
+
         // Constructors of Unity.LauncherEntryPrivate
 
         _init(...args: any[]): void;
@@ -2883,6 +2955,8 @@ export namespace Unity {
 
     type LauncherFavoritesClass = typeof LauncherFavorites;
     abstract class LauncherFavoritesPrivate {
+        static $gtype: GObject.GType<LauncherFavoritesPrivate>;
+
         // Constructors of Unity.LauncherFavoritesPrivate
 
         _init(...args: any[]): void;
@@ -2890,6 +2964,8 @@ export namespace Unity {
 
     type ActivationResponseClass = typeof ActivationResponse;
     abstract class ActivationResponsePrivate {
+        static $gtype: GObject.GType<ActivationResponsePrivate>;
+
         // Constructors of Unity.ActivationResponsePrivate
 
         _init(...args: any[]): void;
@@ -2897,6 +2973,8 @@ export namespace Unity {
 
     type CategoryClass = typeof Category;
     abstract class CategoryPrivate {
+        static $gtype: GObject.GType<CategoryPrivate>;
+
         // Constructors of Unity.CategoryPrivate
 
         _init(...args: any[]): void;
@@ -2904,6 +2982,8 @@ export namespace Unity {
 
     type FilterClass = typeof Filter;
     abstract class FilterPrivate {
+        static $gtype: GObject.GType<FilterPrivate>;
+
         // Constructors of Unity.FilterPrivate
 
         _init(...args: any[]): void;
@@ -2911,6 +2991,8 @@ export namespace Unity {
 
     type FilterOptionClass = typeof FilterOption;
     abstract class FilterOptionPrivate {
+        static $gtype: GObject.GType<FilterOptionPrivate>;
+
         // Constructors of Unity.FilterOptionPrivate
 
         _init(...args: any[]): void;
@@ -2918,6 +3000,8 @@ export namespace Unity {
 
     type OptionsFilterClass = typeof OptionsFilter;
     abstract class OptionsFilterPrivate {
+        static $gtype: GObject.GType<OptionsFilterPrivate>;
+
         // Constructors of Unity.OptionsFilterPrivate
 
         _init(...args: any[]): void;
@@ -2925,6 +3009,8 @@ export namespace Unity {
 
     type RadioOptionFilterClass = typeof RadioOptionFilter;
     abstract class RadioOptionFilterPrivate {
+        static $gtype: GObject.GType<RadioOptionFilterPrivate>;
+
         // Constructors of Unity.RadioOptionFilterPrivate
 
         _init(...args: any[]): void;
@@ -2932,6 +3018,8 @@ export namespace Unity {
 
     type CheckOptionFilterClass = typeof CheckOptionFilter;
     abstract class CheckOptionFilterPrivate {
+        static $gtype: GObject.GType<CheckOptionFilterPrivate>;
+
         // Constructors of Unity.CheckOptionFilterPrivate
 
         _init(...args: any[]): void;
@@ -2939,6 +3027,8 @@ export namespace Unity {
 
     type CheckOptionFilterCompactClass = typeof CheckOptionFilterCompact;
     abstract class CheckOptionFilterCompactPrivate {
+        static $gtype: GObject.GType<CheckOptionFilterCompactPrivate>;
+
         // Constructors of Unity.CheckOptionFilterCompactPrivate
 
         _init(...args: any[]): void;
@@ -2946,6 +3036,8 @@ export namespace Unity {
 
     type RatingsFilterClass = typeof RatingsFilter;
     abstract class RatingsFilterPrivate {
+        static $gtype: GObject.GType<RatingsFilterPrivate>;
+
         // Constructors of Unity.RatingsFilterPrivate
 
         _init(...args: any[]): void;
@@ -2953,6 +3045,8 @@ export namespace Unity {
 
     type MultiRangeFilterClass = typeof MultiRangeFilter;
     abstract class MultiRangeFilterPrivate {
+        static $gtype: GObject.GType<MultiRangeFilterPrivate>;
+
         // Constructors of Unity.MultiRangeFilterPrivate
 
         _init(...args: any[]): void;
@@ -2960,6 +3054,8 @@ export namespace Unity {
 
     type PreferencesManagerClass = typeof PreferencesManager;
     abstract class PreferencesManagerPrivate {
+        static $gtype: GObject.GType<PreferencesManagerPrivate>;
+
         // Constructors of Unity.PreferencesManagerPrivate
 
         _init(...args: any[]): void;
@@ -2967,6 +3063,8 @@ export namespace Unity {
 
     type LensSearchClass = typeof LensSearch;
     abstract class LensSearchPrivate {
+        static $gtype: GObject.GType<LensSearchPrivate>;
+
         // Constructors of Unity.LensSearchPrivate
 
         _init(...args: any[]): void;
@@ -2974,6 +3072,8 @@ export namespace Unity {
 
     type LensClass = typeof Lens;
     abstract class LensPrivate {
+        static $gtype: GObject.GType<LensPrivate>;
+
         // Constructors of Unity.LensPrivate
 
         _init(...args: any[]): void;
@@ -2981,6 +3081,8 @@ export namespace Unity {
 
     type PreviewClass = typeof Preview;
     abstract class PreviewPrivate {
+        static $gtype: GObject.GType<PreviewPrivate>;
+
         // Constructors of Unity.PreviewPrivate
 
         _init(...args: any[]): void;
@@ -2988,6 +3090,8 @@ export namespace Unity {
 
     type PreviewActionClass = typeof PreviewAction;
     abstract class PreviewActionPrivate {
+        static $gtype: GObject.GType<PreviewActionPrivate>;
+
         // Constructors of Unity.PreviewActionPrivate
 
         _init(...args: any[]): void;
@@ -2995,6 +3099,8 @@ export namespace Unity {
 
     type InfoHintClass = typeof InfoHint;
     abstract class InfoHintPrivate {
+        static $gtype: GObject.GType<InfoHintPrivate>;
+
         // Constructors of Unity.InfoHintPrivate
 
         _init(...args: any[]): void;
@@ -3002,6 +3108,8 @@ export namespace Unity {
 
     type GenericPreviewClass = typeof GenericPreview;
     abstract class GenericPreviewPrivate {
+        static $gtype: GObject.GType<GenericPreviewPrivate>;
+
         // Constructors of Unity.GenericPreviewPrivate
 
         _init(...args: any[]): void;
@@ -3009,6 +3117,8 @@ export namespace Unity {
 
     type ApplicationPreviewClass = typeof ApplicationPreview;
     abstract class ApplicationPreviewPrivate {
+        static $gtype: GObject.GType<ApplicationPreviewPrivate>;
+
         // Constructors of Unity.ApplicationPreviewPrivate
 
         _init(...args: any[]): void;
@@ -3016,6 +3126,8 @@ export namespace Unity {
 
     type MusicPreviewClass = typeof MusicPreview;
     abstract class MusicPreviewPrivate {
+        static $gtype: GObject.GType<MusicPreviewPrivate>;
+
         // Constructors of Unity.MusicPreviewPrivate
 
         _init(...args: any[]): void;
@@ -3023,6 +3135,8 @@ export namespace Unity {
 
     type MoviePreviewClass = typeof MoviePreview;
     abstract class MoviePreviewPrivate {
+        static $gtype: GObject.GType<MoviePreviewPrivate>;
+
         // Constructors of Unity.MoviePreviewPrivate
 
         _init(...args: any[]): void;
@@ -3030,12 +3144,16 @@ export namespace Unity {
 
     type SocialPreviewClass = typeof SocialPreview;
     abstract class SocialPreviewPrivate {
+        static $gtype: GObject.GType<SocialPreviewPrivate>;
+
         // Constructors of Unity.SocialPreviewPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CommentPrivate {
+        static $gtype: GObject.GType<CommentPrivate>;
+
         // Constructors of Unity.CommentPrivate
 
         _init(...args: any[]): void;
@@ -3043,6 +3161,8 @@ export namespace Unity {
 
     type AsyncPreviewClass = typeof AsyncPreview;
     abstract class AsyncPreviewPrivate {
+        static $gtype: GObject.GType<AsyncPreviewPrivate>;
+
         // Constructors of Unity.AsyncPreviewPrivate
 
         _init(...args: any[]): void;
@@ -3050,6 +3170,8 @@ export namespace Unity {
 
     type ScopeClass = typeof Scope;
     abstract class ScopePrivate {
+        static $gtype: GObject.GType<ScopePrivate>;
+
         // Constructors of Unity.ScopePrivate
 
         _init(...args: any[]): void;
@@ -3057,6 +3179,8 @@ export namespace Unity {
 
     type TrackMetadataClass = typeof TrackMetadata;
     abstract class TrackMetadataPrivate {
+        static $gtype: GObject.GType<TrackMetadataPrivate>;
+
         // Constructors of Unity.TrackMetadataPrivate
 
         _init(...args: any[]): void;
@@ -3064,6 +3188,8 @@ export namespace Unity {
 
     type PlaylistClass = typeof Playlist;
     abstract class PlaylistPrivate {
+        static $gtype: GObject.GType<PlaylistPrivate>;
+
         // Constructors of Unity.PlaylistPrivate
 
         _init(...args: any[]): void;
@@ -3071,6 +3197,8 @@ export namespace Unity {
 
     type MusicPlayerClass = typeof MusicPlayer;
     abstract class MusicPlayerPrivate {
+        static $gtype: GObject.GType<MusicPlayerPrivate>;
+
         // Constructors of Unity.MusicPlayerPrivate
 
         _init(...args: any[]): void;
@@ -3078,6 +3206,8 @@ export namespace Unity {
 
     type MergeStrategyIface = typeof MergeStrategy;
     class PlaylistDetails {
+        static $gtype: GObject.GType<PlaylistDetails>;
+
         // Own fields of Unity.PlaylistDetails
 
         id: never;
@@ -3090,6 +3220,8 @@ export namespace Unity {
     }
 
     class ActivePlaylistContainer {
+        static $gtype: GObject.GType<ActivePlaylistContainer>;
+
         // Own fields of Unity.ActivePlaylistContainer
 
         valid: boolean;

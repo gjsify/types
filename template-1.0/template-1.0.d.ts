@@ -17,6 +17,8 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace Template {
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Template.Error
 
         static INVALID_STATE: number;
@@ -145,6 +147,8 @@ export namespace Template {
     }
 
     class Template extends GObject.Object {
+        static $gtype: GObject.GType<Template>;
+
         // Own properties of Template.Template
 
         get locator(): TemplateLocator;
@@ -210,6 +214,8 @@ export namespace Template {
      * See #TmplTemplate:locator for more information.
      */
     class TemplateLocator extends GObject.Object {
+        static $gtype: GObject.GType<TemplateLocator>;
+
         // Constructors of Template.TemplateLocator
 
         constructor(properties?: Partial<TemplateLocator.ConstructorProps>, ...args: any[]);
@@ -246,6 +252,8 @@ export namespace Template {
     }
 
     abstract class Scope {
+        static $gtype: GObject.GType<Scope>;
+
         // Constructors of Template.Scope
 
         constructor(properties?: Partial<{}>);
@@ -362,6 +370,8 @@ export namespace Template {
     }
 
     abstract class Symbol {
+        static $gtype: GObject.GType<Symbol>;
+
         // Constructors of Template.Symbol
 
         constructor(properties?: Partial<{}>);
@@ -404,6 +414,8 @@ export namespace Template {
     type TemplateClass = typeof Template;
     type TemplateLocatorClass = typeof TemplateLocator;
     class Expr {
+        static $gtype: GObject.GType<Expr>;
+
         // Constructors of Template.Expr
 
         constructor(properties?: Partial<{}>);

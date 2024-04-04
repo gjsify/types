@@ -47,6 +47,8 @@ export namespace EpcUi {
      * Public fields of the #EpcPasswordDialog class.
      */
     class PasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PasswordDialog>;
+
         // Own properties of EpcUi.PasswordDialog
 
         get anonymous(): boolean;
@@ -456,6 +458,8 @@ export namespace EpcUi {
      * Public fields of the #EpcProgressWindow class.
      */
     class ProgressWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ProgressWindow>;
+
         // Own properties of EpcUi.ProgressWindow
 
         get message(): string;
@@ -843,6 +847,8 @@ export namespace EpcUi {
 
     type PasswordDialogClass = typeof PasswordDialog;
     abstract class PasswordDialogPrivate {
+        static $gtype: GObject.GType<PasswordDialogPrivate>;
+
         // Constructors of EpcUi.PasswordDialogPrivate
 
         _init(...args: any[]): void;
@@ -850,6 +856,8 @@ export namespace EpcUi {
 
     type ProgressWindowClass = typeof ProgressWindow;
     abstract class ProgressWindowPrivate {
+        static $gtype: GObject.GType<ProgressWindowPrivate>;
+
         // Constructors of EpcUi.ProgressWindowPrivate
 
         _init(...args: any[]): void;

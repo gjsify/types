@@ -98,6 +98,8 @@ export namespace Gio {
      * Error codes for the %G_DBUS_ERROR error domain.
      */
     class DBusError extends GLib.Error {
+        static $gtype: GObject.GType<DBusError>;
+
         // Static fields of Gio.DBusError
 
         /**
@@ -818,6 +820,8 @@ export namespace Gio {
      * %G_IO_ERROR_WOULD_BLOCK to callers without allocating a #GError.
      */
     class IOErrorEnum extends GLib.Error {
+        static $gtype: GObject.GType<IOErrorEnum>;
+
         // Static fields of Gio.IOErrorEnum
 
         /**
@@ -1210,6 +1214,8 @@ export namespace Gio {
      * from a #GResolver routine.
      */
     class ResolverError extends GLib.Error {
+        static $gtype: GObject.GType<ResolverError>;
+
         // Static fields of Gio.ResolverError
 
         /**
@@ -1299,6 +1305,8 @@ export namespace Gio {
      * from a #GResource routine.
      */
     class ResourceError extends GLib.Error {
+        static $gtype: GObject.GType<ResourceError>;
+
         // Static fields of Gio.ResourceError
 
         /**
@@ -1511,6 +1519,8 @@ export namespace Gio {
      * indicate a TLS channel binding retrieval error.
      */
     class TlsChannelBindingError extends GLib.Error {
+        static $gtype: GObject.GType<TlsChannelBindingError>;
+
         // Static fields of Gio.TlsChannelBindingError
 
         /**
@@ -1602,6 +1612,8 @@ export namespace Gio {
      * TLS-related routine.
      */
     class TlsError extends GLib.Error {
+        static $gtype: GObject.GType<TlsError>;
+
         // Static fields of Gio.TlsError
 
         /**
@@ -5838,6 +5850,8 @@ export namespace Gio {
      * rescanning the list on every change is pointless and expensive.
      */
     class AppInfoMonitor extends GObject.Object {
+        static $gtype: GObject.GType<AppInfoMonitor>;
+
         // Constructors of Gio.AppInfoMonitor
 
         constructor(properties?: Partial<AppInfoMonitor.ConstructorProps>, ...args: any[]);
@@ -5899,6 +5913,8 @@ export namespace Gio {
      * on the same screen as the launching window.
      */
     class AppLaunchContext extends GObject.Object {
+        static $gtype: GObject.GType<AppLaunchContext>;
+
         // Constructors of Gio.AppLaunchContext
 
         constructor(properties?: Partial<AppLaunchContext.ConstructorProps>, ...args: any[]);
@@ -6206,6 +6222,8 @@ export namespace Gio {
      * [gapplication-example-dbushooks.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-dbushooks.c).
      */
     class Application extends GObject.Object implements ActionGroup, ActionMap {
+        static $gtype: GObject.GType<Application>;
+
         // Own properties of Gio.Application
 
         set action_group(val: ActionGroup);
@@ -8100,6 +8118,8 @@ export namespace Gio {
      * [gapplication-example-cmdline3.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline3.c)
      */
     class ApplicationCommandLine extends GObject.Object {
+        static $gtype: GObject.GType<ApplicationCommandLine>;
+
         // Own properties of Gio.ApplicationCommandLine
 
         set arguments(val: GLib.Variant);
@@ -8317,6 +8337,8 @@ export namespace Gio {
      * cannot be reduced below the size of the data within the buffer.
      */
     class BufferedInputStream extends FilterInputStream implements Seekable {
+        static $gtype: GObject.GType<BufferedInputStream>;
+
         // Own properties of Gio.BufferedInputStream
 
         get buffer_size(): number;
@@ -8980,6 +9002,8 @@ export namespace Gio {
      * size cannot be reduced below the size of the data within the buffer.
      */
     class BufferedOutputStream extends FilterOutputStream implements Seekable {
+        static $gtype: GObject.GType<BufferedOutputStream>;
+
         // Own properties of Gio.BufferedOutputStream
 
         get auto_grow(): boolean;
@@ -9499,6 +9523,8 @@ export namespace Gio {
      * png) to be used as icon.
      */
     class BytesIcon extends GObject.Object implements Icon, LoadableIcon {
+        static $gtype: GObject.GType<BytesIcon>;
+
         // Own properties of Gio.BytesIcon
 
         /**
@@ -10007,6 +10033,8 @@ export namespace Gio {
      * asynchronous operations.
      */
     class Cancellable extends GObject.Object {
+        static $gtype: GObject.GType<Cancellable>;
+
         // Constructors of Gio.Cancellable
 
         constructor(properties?: Partial<Cancellable.ConstructorProps>, ...args: any[]);
@@ -10226,6 +10254,8 @@ export namespace Gio {
      * GIConv.
      */
     class CharsetConverter extends GObject.Object implements Converter, Initable {
+        static $gtype: GObject.GType<CharsetConverter>;
+
         // Own properties of Gio.CharsetConverter
 
         get from_charset(): string;
@@ -10914,6 +10944,8 @@ export namespace Gio {
      * #GPollableInputStream.
      */
     class ConverterInputStream extends FilterInputStream implements PollableInputStream {
+        static $gtype: GObject.GType<ConverterInputStream>;
+
         // Own properties of Gio.ConverterInputStream
 
         get converter(): Converter;
@@ -11520,6 +11552,8 @@ export namespace Gio {
      * #GPollableOutputStream.
      */
     class ConverterOutputStream extends FilterOutputStream implements PollableOutputStream {
+        static $gtype: GObject.GType<ConverterOutputStream>;
+
         // Own properties of Gio.ConverterOutputStream
 
         get converter(): Converter;
@@ -12513,6 +12547,8 @@ export namespace Gio {
      * process. This corresponds to %G_CREDENTIALS_TYPE_WIN32_PID.
      */
     class Credentials extends GObject.Object {
+        static $gtype: GObject.GType<Credentials>;
+
         // Constructors of Gio.Credentials
 
         constructor(properties?: Partial<Credentials.ConstructorProps>, ...args: any[]);
@@ -12599,6 +12635,8 @@ export namespace Gio {
      * that is exported over D-Bus with g_dbus_connection_export_action_group().
      */
     class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
+        static $gtype: GObject.GType<DBusActionGroup>;
+
         // Constructors of Gio.DBusActionGroup
 
         constructor(properties?: Partial<DBusActionGroup.ConstructorProps>, ...args: any[]);
@@ -13575,6 +13613,8 @@ export namespace Gio {
      *
      */
     class DBusAuthObserver extends GObject.Object {
+        static $gtype: GObject.GType<DBusAuthObserver>;
+
         // Constructors of Gio.DBusAuthObserver
 
         constructor(properties?: Partial<DBusAuthObserver.ConstructorProps>, ...args: any[]);
@@ -13698,6 +13738,8 @@ export namespace Gio {
      * [gdbus-example-export.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-export.c)
      */
     class DBusConnection extends GObject.Object implements AsyncInitable<DBusConnection>, Initable {
+        static $gtype: GObject.GType<DBusConnection>;
+
         // Own properties of Gio.DBusConnection
 
         /**
@@ -15368,6 +15410,8 @@ export namespace Gio {
      * Abstract base class for D-Bus interfaces on the service side.
      */
     abstract class DBusInterfaceSkeleton extends GObject.Object implements DBusInterface {
+        static $gtype: GObject.GType<DBusInterfaceSkeleton>;
+
         // Own properties of Gio.DBusInterfaceSkeleton
 
         /**
@@ -15903,6 +15947,8 @@ export namespace Gio {
      * g_dbus_connection_export_menu_model().
      */
     class DBusMenuModel extends MenuModel {
+        static $gtype: GObject.GType<DBusMenuModel>;
+
         // Constructors of Gio.DBusMenuModel
 
         constructor(properties?: Partial<DBusMenuModel.ConstructorProps>, ...args: any[]);
@@ -15940,6 +15986,8 @@ export namespace Gio {
      * on a #GDBusConnection.
      */
     class DBusMessage extends GObject.Object {
+        static $gtype: GObject.GType<DBusMessage>;
+
         // Own properties of Gio.DBusMessage
 
         get locked(): boolean;
@@ -16285,6 +16333,8 @@ export namespace Gio {
      * #GDBusInterfaceVTable that was passed to g_dbus_connection_register_object().
      */
     class DBusMethodInvocation extends GObject.Object {
+        static $gtype: GObject.GType<DBusMethodInvocation>;
+
         // Constructors of Gio.DBusMethodInvocation
 
         constructor(properties?: Partial<DBusMethodInvocation.ConstructorProps>, ...args: any[]);
@@ -16577,6 +16627,8 @@ export namespace Gio {
         extends GObject.Object
         implements AsyncInitable<DBusObjectManagerClient>, DBusObjectManager, Initable
     {
+        static $gtype: GObject.GType<DBusObjectManagerClient>;
+
         // Own properties of Gio.DBusObjectManagerClient
 
         /**
@@ -17488,6 +17540,8 @@ export namespace Gio {
      * interface.
      */
     class DBusObjectManagerServer extends GObject.Object implements DBusObjectManager {
+        static $gtype: GObject.GType<DBusObjectManagerServer>;
+
         // Own properties of Gio.DBusObjectManagerServer
 
         /**
@@ -17987,6 +18041,8 @@ export namespace Gio {
      * is used to obtain it.
      */
     class DBusObjectProxy extends GObject.Object implements DBusObject {
+        static $gtype: GObject.GType<DBusObjectProxy>;
+
         // Own properties of Gio.DBusObjectProxy
 
         /**
@@ -18435,6 +18491,8 @@ export namespace Gio {
      * This type is intended to be used with #GDBusObjectManager.
      */
     class DBusObjectSkeleton extends GObject.Object implements DBusObject {
+        static $gtype: GObject.GType<DBusObjectSkeleton>;
+
         // Own properties of Gio.DBusObjectSkeleton
 
         /**
@@ -18989,6 +19047,8 @@ export namespace Gio {
      * [gdbus-example-watch-proxy.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-watch-proxy.c)
      */
     class DBusProxy extends GObject.Object implements AsyncInitable<DBusProxy>, DBusInterface, Initable {
+        static $gtype: GObject.GType<DBusProxy>;
+
         [key: string]: any;
 
         // Own properties of Gio.DBusProxy
@@ -20219,6 +20279,8 @@ export namespace Gio {
      * %G_DBUS_SERVER_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER flag to the server.
      */
     class DBusServer extends GObject.Object implements Initable {
+        static $gtype: GObject.GType<DBusServer>;
+
         // Own properties of Gio.DBusServer
 
         /**
@@ -20775,6 +20837,8 @@ export namespace Gio {
      * reading structured data directly from a binary input stream.
      */
     class DataInputStream extends BufferedInputStream implements Seekable {
+        static $gtype: GObject.GType<DataInputStream>;
+
         // Own properties of Gio.DataInputStream
 
         /**
@@ -21551,6 +21615,8 @@ export namespace Gio {
      * writing data directly to an output stream.
      */
     class DataOutputStream extends FilterOutputStream implements Seekable {
+        static $gtype: GObject.GType<DataOutputStream>;
+
         // Own properties of Gio.DataOutputStream
 
         /**
@@ -22230,6 +22296,8 @@ export namespace Gio {
      *
      */
     class DebugControllerDBus extends GObject.Object implements DebugController, Initable {
+        static $gtype: GObject.GType<DebugControllerDBus>;
+
         // Own properties of Gio.DebugControllerDBus
 
         /**
@@ -22770,6 +22838,8 @@ export namespace Gio {
      * file when using it.
      */
     class DesktopAppInfo extends GObject.Object implements AppInfo {
+        static $gtype: GObject.GType<DesktopAppInfo>;
+
         // Own properties of Gio.DesktopAppInfo
 
         /**
@@ -23808,6 +23878,8 @@ export namespace Gio {
      * supported. More may be added in the future.
      */
     class Emblem extends GObject.Object implements Icon {
+        static $gtype: GObject.GType<Emblem>;
+
         // Own properties of Gio.Emblem
 
         get icon(): GObject.Object;
@@ -24272,6 +24344,8 @@ export namespace Gio {
      * of the emblems. See also #GEmblem for more information.
      */
     class EmblemedIcon extends GObject.Object implements Icon {
+        static $gtype: GObject.GType<EmblemedIcon>;
+
         // Own properties of Gio.EmblemedIcon
 
         get gicon(): Icon;
@@ -24762,6 +24836,8 @@ export namespace Gio {
      * on it, and it should be freed with g_object_unref().
      */
     class FileEnumerator extends GObject.Object {
+        static $gtype: GObject.GType<FileEnumerator>;
+
         // Own properties of Gio.FileEnumerator
 
         set container(val: File);
@@ -25163,6 +25239,8 @@ export namespace Gio {
      * on the output stream.
      */
     class FileIOStream extends IOStream implements Seekable {
+        static $gtype: GObject.GType<FileIOStream>;
+
         // Constructors of Gio.FileIOStream
 
         constructor(properties?: Partial<FileIOStream.ConstructorProps>, ...args: any[]);
@@ -25712,6 +25790,8 @@ export namespace Gio {
      * to be used as icon.
      */
     class FileIcon extends GObject.Object implements Icon, LoadableIcon {
+        static $gtype: GObject.GType<FileIcon>;
+
         // Own properties of Gio.FileIcon
 
         /**
@@ -26245,6 +26325,8 @@ export namespace Gio {
      * attributes.
      */
     class FileInfo extends GObject.Object {
+        static $gtype: GObject.GType<FileInfo>;
+
         // Constructors of Gio.FileInfo
 
         constructor(properties?: Partial<FileInfo.ConstructorProps>, ...args: any[]);
@@ -26785,6 +26867,8 @@ export namespace Gio {
      * To position a file input stream, use g_seekable_seek().
      */
     class FileInputStream extends InputStream implements Seekable {
+        static $gtype: GObject.GType<FileInputStream>;
+
         // Constructors of Gio.FileInputStream
 
         constructor(properties?: Partial<FileInputStream.ConstructorProps>, ...args: any[]);
@@ -27339,6 +27423,8 @@ export namespace Gio {
      * context is still running).
      */
     abstract class FileMonitor extends GObject.Object {
+        static $gtype: GObject.GType<FileMonitor>;
+
         // Own properties of Gio.FileMonitor
 
         get cancelled(): boolean;
@@ -27432,6 +27518,8 @@ export namespace Gio {
      * stream, use g_seekable_truncate().
      */
     class FileOutputStream extends OutputStream implements Seekable {
+        static $gtype: GObject.GType<FileOutputStream>;
+
         // Constructors of Gio.FileOutputStream
 
         constructor(properties?: Partial<FileOutputStream.ConstructorProps>, ...args: any[]);
@@ -27983,6 +28071,8 @@ export namespace Gio {
      * completion strings for widget implementations.
      */
     class FilenameCompleter extends GObject.Object {
+        static $gtype: GObject.GType<FilenameCompleter>;
+
         // Constructors of Gio.FilenameCompleter
 
         constructor(properties?: Partial<FilenameCompleter.ConstructorProps>, ...args: any[]);
@@ -28044,6 +28134,8 @@ export namespace Gio {
      * and byte order flipping.
      */
     abstract class FilterInputStream extends InputStream {
+        static $gtype: GObject.GType<FilterInputStream>;
+
         // Own properties of Gio.FilterInputStream
 
         get base_stream(): InputStream;
@@ -28097,6 +28189,8 @@ export namespace Gio {
      * and byte order flipping.
      */
     abstract class FilterOutputStream extends OutputStream {
+        static $gtype: GObject.GType<FilterOutputStream>;
+
         // Own properties of Gio.FilterOutputStream
 
         get base_stream(): OutputStream;
@@ -28142,6 +28236,8 @@ export namespace Gio {
      * be used by others to implement module loading.
      */
     class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
+        static $gtype: GObject.GType<IOModule>;
+
         // Constructors of Gio.IOModule
 
         constructor(properties?: Partial<IOModule.ConstructorProps>, ...args: any[]);
@@ -28640,6 +28736,8 @@ export namespace Gio {
      * stream in (though they are guaranteed not to crash).
      */
     abstract class IOStream extends GObject.Object {
+        static $gtype: GObject.GType<IOStream>;
+
         // Own properties of Gio.IOStream
 
         get closed(): boolean;
@@ -28865,6 +28963,8 @@ export namespace Gio {
      * port number).
      */
     class InetAddress extends GObject.Object {
+        static $gtype: GObject.GType<InetAddress>;
+
         // Own properties of Gio.InetAddress
 
         get bytes(): any;
@@ -29089,6 +29189,8 @@ export namespace Gio {
      * often given in string form. Eg, "10.0.0.0/8", or "fe80::/10".
      */
     class InetAddressMask extends GObject.Object implements Initable {
+        static $gtype: GObject.GType<InetAddressMask>;
+
         // Own properties of Gio.InetAddressMask
 
         get address(): InetAddress;
@@ -29601,6 +29703,8 @@ export namespace Gio {
      * #GInetAddress and a port number.
      */
     class InetSocketAddress extends SocketAddress implements SocketConnectable {
+        static $gtype: GObject.GType<InetSocketAddress>;
+
         // Own properties of Gio.InetSocketAddress
 
         get address(): InetAddress;
@@ -30075,6 +30179,8 @@ export namespace Gio {
      * All of these functions have async variants too.
      */
     abstract class InputStream extends GObject.Object {
+        static $gtype: GObject.GType<InputStream>;
+
         // Constructors of Gio.InputStream
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
@@ -30559,6 +30665,8 @@ export namespace Gio {
      * with a fast path for the common case of iterating the list linearly.
      */
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements ListModel<A> {
+        static $gtype: GObject.GType<ListStore>;
+
         // Own properties of Gio.ListStore
 
         /**
@@ -31172,6 +31280,8 @@ export namespace Gio {
      * #GPollableInputStream.
      */
     class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
+        static $gtype: GObject.GType<MemoryInputStream>;
+
         // Constructors of Gio.MemoryInputStream
 
         constructor(properties?: Partial<MemoryInputStream.ConstructorProps>, ...args: any[]);
@@ -32243,6 +32353,8 @@ export namespace Gio {
      * #GPollableOutputStream: it always polls as ready.
      */
     class MemoryOutputStream extends OutputStream implements PollableOutputStream, Seekable {
+        static $gtype: GObject.GType<MemoryOutputStream>;
+
         // Own properties of Gio.MemoryOutputStream
 
         /**
@@ -33706,6 +33818,8 @@ export namespace Gio {
      * g_menu_insert_submenu().
      */
     class Menu extends MenuModel {
+        static $gtype: GObject.GType<Menu>;
+
         // Constructors of Gio.Menu
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
@@ -33869,6 +33983,8 @@ export namespace Gio {
      * using the functions below.
      */
     abstract class MenuAttributeIter extends GObject.Object {
+        static $gtype: GObject.GType<MenuAttributeIter>;
+
         // Constructors of Gio.MenuAttributeIter
 
         constructor(properties?: Partial<MenuAttributeIter.ConstructorProps>, ...args: any[]);
@@ -33958,6 +34074,8 @@ export namespace Gio {
      * functions below.
      */
     class MenuItem extends GObject.Object {
+        static $gtype: GObject.GType<MenuItem>;
+
         // Constructors of Gio.MenuItem
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
@@ -34145,6 +34263,8 @@ export namespace Gio {
      * the functions below.
      */
     abstract class MenuLinkIter extends GObject.Object {
+        static $gtype: GObject.GType<MenuLinkIter>;
+
         // Constructors of Gio.MenuLinkIter
 
         constructor(properties?: Partial<MenuLinkIter.ConstructorProps>, ...args: any[]);
@@ -34347,6 +34467,8 @@ export namespace Gio {
      * target value of the menu item.
      */
     abstract class MenuModel extends GObject.Object {
+        static $gtype: GObject.GType<MenuModel>;
+
         // Constructors of Gio.MenuModel
 
         constructor(properties?: Partial<MenuModel.ConstructorProps>, ...args: any[]);
@@ -34597,6 +34719,8 @@ export namespace Gio {
      * improvements and auditing fixes.
      */
     class MountOperation extends GObject.Object {
+        static $gtype: GObject.GType<MountOperation>;
+
         // Own properties of Gio.MountOperation
 
         /**
@@ -34886,6 +35010,8 @@ export namespace Gio {
      * A socket address of some unknown native type.
      */
     class NativeSocketAddress extends SocketAddress implements SocketConnectable {
+        static $gtype: GObject.GType<NativeSocketAddress>;
+
         // Constructors of Gio.NativeSocketAddress
 
         constructor(properties?: Partial<NativeSocketAddress.ConstructorProps>, ...args: any[]);
@@ -35309,6 +35435,8 @@ export namespace Gio {
     }
 
     abstract class NativeVolumeMonitor extends VolumeMonitor {
+        static $gtype: GObject.GType<NativeVolumeMonitor>;
+
         // Constructors of Gio.NativeVolumeMonitor
 
         constructor(properties?: Partial<NativeVolumeMonitor.ConstructorProps>, ...args: any[]);
@@ -35339,6 +35467,8 @@ export namespace Gio {
      * interface.
      */
     class NetworkAddress extends GObject.Object implements SocketConnectable {
+        static $gtype: GObject.GType<NetworkAddress>;
+
         // Own properties of Gio.NetworkAddress
 
         get hostname(): string;
@@ -35845,6 +35975,8 @@ export namespace Gio {
      * interface.
      */
     class NetworkService extends GObject.Object implements SocketConnectable {
+        static $gtype: GObject.GType<NetworkService>;
+
         // Own properties of Gio.NetworkService
 
         get domain(): string;
@@ -36355,6 +36487,8 @@ export namespace Gio {
      * A notification can be sent with g_application_send_notification().
      */
     class Notification extends GObject.Object {
+        static $gtype: GObject.GType<Notification>;
+
         // Constructors of Gio.Notification
 
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
@@ -36476,6 +36610,8 @@ export namespace Gio {
      * All of these functions have async variants too.
      */
     abstract class OutputStream extends GObject.Object {
+        static $gtype: GObject.GType<OutputStream>;
+
         // Constructors of Gio.OutputStream
 
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
@@ -37268,6 +37404,8 @@ export namespace Gio {
      * when that button is clicked.
      */
     abstract class Permission extends GObject.Object {
+        static $gtype: GObject.GType<Permission>;
+
         // Own properties of Gio.Permission
 
         /**
@@ -37566,6 +37704,8 @@ export namespace Gio {
      * combine its use with g_settings_bind().
      */
     class PropertyAction extends GObject.Object implements Action {
+        static $gtype: GObject.GType<PropertyAction>;
+
         // Own properties of Gio.PropertyAction
 
         /**
@@ -38215,6 +38355,8 @@ export namespace Gio {
      * Support for proxied #GInetSocketAddress.
      */
     class ProxyAddress extends InetSocketAddress implements SocketConnectable {
+        static $gtype: GObject.GType<ProxyAddress>;
+
         // Own properties of Gio.ProxyAddress
 
         get destination_hostname(): string;
@@ -38684,6 +38826,8 @@ export namespace Gio {
      * with one.
      */
     class ProxyAddressEnumerator extends SocketAddressEnumerator {
+        static $gtype: GObject.GType<ProxyAddressEnumerator>;
+
         // Own properties of Gio.ProxyAddressEnumerator
 
         get connectable(): SocketConnectable;
@@ -38745,6 +38889,8 @@ export namespace Gio {
      * timeouts.
      */
     abstract class Resolver extends GObject.Object {
+        static $gtype: GObject.GType<Resolver>;
+
         // Own properties of Gio.Resolver
 
         /**
@@ -39601,6 +39747,8 @@ export namespace Gio {
      * `EXTRA_DIST`.
      */
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of Gio.Settings
 
         /**
@@ -40318,6 +40466,8 @@ export namespace Gio {
      * `gio/gsettingsbackend.h`.
      */
     abstract class SettingsBackend extends GObject.Object {
+        static $gtype: GObject.GType<SettingsBackend>;
+
         // Constructors of Gio.SettingsBackend
 
         constructor(properties?: Partial<SettingsBackend.ConstructorProps>, ...args: any[]);
@@ -40499,6 +40649,8 @@ export namespace Gio {
      * See also #GtkAction.
      */
     class SimpleAction extends GObject.Object implements Action {
+        static $gtype: GObject.GType<SimpleAction>;
+
         // Own properties of Gio.SimpleAction
 
         /**
@@ -41163,6 +41315,8 @@ export namespace Gio {
      * implementing the #GActionGroup and #GActionMap interfaces.
      */
     class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
+        static $gtype: GObject.GType<SimpleActionGroup>;
+
         // Constructors of Gio.SimpleActionGroup
 
         constructor(properties?: Partial<SimpleActionGroup.ConstructorProps>, ...args: any[]);
@@ -42302,6 +42456,8 @@ export namespace Gio {
      *
      */
     class SimpleAsyncResult extends GObject.Object implements AsyncResult {
+        static $gtype: GObject.GType<SimpleAsyncResult>;
+
         // Constructors of Gio.SimpleAsyncResult
 
         constructor(properties?: Partial<SimpleAsyncResult.ConstructorProps>, ...args: any[]);
@@ -42852,6 +43008,8 @@ export namespace Gio {
      * to take advantage of the methods provided by #GIOStream.
      */
     class SimpleIOStream extends IOStream {
+        static $gtype: GObject.GType<SimpleIOStream>;
+
         // Own properties of Gio.SimpleIOStream
 
         get input_stream(): InputStream;
@@ -42882,6 +43040,8 @@ export namespace Gio {
      * Calling request or release will result in errors.
      */
     class SimplePermission extends Permission {
+        static $gtype: GObject.GType<SimplePermission>;
+
         // Constructors of Gio.SimplePermission
 
         constructor(properties?: Partial<SimplePermission.ConstructorProps>, ...args: any[]);
@@ -42913,6 +43073,8 @@ export namespace Gio {
      * with g_socket_client_set_proxy_resolver().
      */
     class SimpleProxyResolver extends GObject.Object implements ProxyResolver {
+        static $gtype: GObject.GType<SimpleProxyResolver>;
+
         // Own properties of Gio.SimpleProxyResolver
 
         /**
@@ -43596,6 +43758,8 @@ export namespace Gio {
      * locking.
      */
     class Socket extends GObject.Object implements DatagramBased, Initable {
+        static $gtype: GObject.GType<Socket>;
+
         // Own properties of Gio.Socket
 
         get blocking(): boolean;
@@ -45241,6 +45405,8 @@ export namespace Gio {
      * for internet sockets, or #GUnixSocketAddress for UNIX domain sockets.
      */
     abstract class SocketAddress extends GObject.Object implements SocketConnectable {
+        static $gtype: GObject.GType<SocketAddress>;
+
         // Own properties of Gio.SocketAddress
 
         get family(): SocketFamily;
@@ -45735,6 +45901,8 @@ export namespace Gio {
      * be unreffed.
      */
     abstract class SocketAddressEnumerator extends GObject.Object {
+        static $gtype: GObject.GType<SocketAddressEnumerator>;
+
         // Constructors of Gio.SocketAddressEnumerator
 
         constructor(properties?: Partial<SocketAddressEnumerator.ConstructorProps>, ...args: any[]);
@@ -45862,6 +46030,8 @@ export namespace Gio {
      * can just create a new one any time you need one.
      */
     class SocketClient extends GObject.Object {
+        static $gtype: GObject.GType<SocketClient>;
+
         // Own properties of Gio.SocketClient
 
         get enable_proxy(): boolean;
@@ -46399,6 +46569,8 @@ export namespace Gio {
      * #GSocket.
      */
     class SocketConnection extends IOStream {
+        static $gtype: GObject.GType<SocketConnection>;
+
         // Own properties of Gio.SocketConnection
 
         get socket(): Socket;
@@ -46531,6 +46703,8 @@ export namespace Gio {
      * g_socket_receive_message() to read such a message.
      */
     abstract class SocketControlMessage extends GObject.Object {
+        static $gtype: GObject.GType<SocketControlMessage>;
+
         // Constructors of Gio.SocketControlMessage
 
         constructor(properties?: Partial<SocketControlMessage.ConstructorProps>, ...args: any[]);
@@ -46641,6 +46815,8 @@ export namespace Gio {
      * that make this even easier.
      */
     class SocketListener extends GObject.Object {
+        static $gtype: GObject.GType<SocketListener>;
+
         // Own properties of Gio.SocketListener
 
         get listen_backlog(): number;
@@ -46888,6 +47064,8 @@ export namespace Gio {
      * handle incoming clients.
      */
     class SocketService extends SocketListener {
+        static $gtype: GObject.GType<SocketService>;
+
         // Own properties of Gio.SocketService
 
         /**
@@ -47032,6 +47210,8 @@ export namespace Gio {
      * are similar to the familiar WIFEXITED-style POSIX macros).
      */
     class Subprocess extends GObject.Object implements Initable {
+        static $gtype: GObject.GType<Subprocess>;
+
         // Own properties of Gio.Subprocess
 
         set argv(val: string[]);
@@ -47779,6 +47959,8 @@ export namespace Gio {
      * a similar configuration.
      */
     class SubprocessLauncher extends GObject.Object {
+        static $gtype: GObject.GType<SubprocessLauncher>;
+
         // Own properties of Gio.SubprocessLauncher
 
         set flags(val: SubprocessFlags);
@@ -48560,6 +48742,8 @@ export namespace Gio {
      *   context when the task is finalized
      */
     class Task extends GObject.Object implements AsyncResult {
+        static $gtype: GObject.GType<Task>;
+
         // Own properties of Gio.Task
 
         /**
@@ -49364,6 +49548,8 @@ export namespace Gio {
      * for TCP/IP sockets.
      */
     class TcpConnection extends SocketConnection {
+        static $gtype: GObject.GType<TcpConnection>;
+
         // Own properties of Gio.TcpConnection
 
         get graceful_disconnect(): boolean;
@@ -49417,6 +49603,8 @@ export namespace Gio {
      * actually created is not directly a #GSocketConnection.
      */
     class TcpWrapperConnection extends TcpConnection {
+        static $gtype: GObject.GType<TcpWrapperConnection>;
+
         // Own properties of Gio.TcpWrapperConnection
 
         get base_io_stream(): IOStream;
@@ -49528,6 +49716,8 @@ export namespace Gio {
      *
      */
     class TestDBus extends GObject.Object {
+        static $gtype: GObject.GType<TestDBus>;
+
         // Own properties of Gio.TestDBus
 
         /**
@@ -49626,6 +49816,8 @@ export namespace Gio {
      * themes that inherit other themes.
      */
     class ThemedIcon extends GObject.Object implements Icon {
+        static $gtype: GObject.GType<ThemedIcon>;
+
         // Own properties of Gio.ThemedIcon
 
         /**
@@ -50165,6 +50357,8 @@ export namespace Gio {
      * or subclass and override the default handler.
      */
     class ThreadedSocketService extends SocketService {
+        static $gtype: GObject.GType<ThreadedSocketService>;
+
         // Own properties of Gio.ThreadedSocketService
 
         get max_threads(): number;
@@ -50243,6 +50437,8 @@ export namespace Gio {
      * #GTlsServerConnection).
      */
     abstract class TlsCertificate extends GObject.Object {
+        static $gtype: GObject.GType<TlsCertificate>;
+
         // Own properties of Gio.TlsCertificate
 
         /**
@@ -50671,6 +50867,8 @@ export namespace Gio {
      * For DTLS (Datagram TLS) support, see #GDtlsConnection.
      */
     abstract class TlsConnection extends IOStream {
+        static $gtype: GObject.GType<TlsConnection>;
+
         // Own properties of Gio.TlsConnection
 
         /**
@@ -51241,6 +51439,8 @@ export namespace Gio {
      * #GTlsDatabase. It is used internally by #GTlsConnection.
      */
     abstract class TlsDatabase extends GObject.Object {
+        static $gtype: GObject.GType<TlsDatabase>;
+
         // Constructors of Gio.TlsDatabase
 
         constructor(properties?: Partial<TlsDatabase.ConstructorProps>, ...args: any[]);
@@ -51830,6 +52030,8 @@ export namespace Gio {
      * it must also implement the corresponding finish method.
      */
     class TlsInteraction extends GObject.Object {
+        static $gtype: GObject.GType<TlsInteraction>;
+
         // Constructors of Gio.TlsInteraction
 
         constructor(properties?: Partial<TlsInteraction.ConstructorProps>, ...args: any[]);
@@ -52149,6 +52351,8 @@ export namespace Gio {
      * Holds a password used in TLS.
      */
     class TlsPassword extends GObject.Object {
+        static $gtype: GObject.GType<TlsPassword>;
+
         // Own properties of Gio.TlsPassword
 
         get description(): string;
@@ -52285,6 +52489,8 @@ export namespace Gio {
      * using it. This is no longer necessary since GLib 2.72.
      */
     class UnixConnection extends SocketConnection {
+        static $gtype: GObject.GType<UnixConnection>;
+
         // Constructors of Gio.UnixConnection
 
         constructor(properties?: Partial<UnixConnection.ConstructorProps>, ...args: any[]);
@@ -52435,6 +52641,8 @@ export namespace Gio {
      * when using it. This is no longer necessary since GLib 2.72.
      */
     class UnixCredentialsMessage extends SocketControlMessage {
+        static $gtype: GObject.GType<UnixCredentialsMessage>;
+
         // Own properties of Gio.UnixCredentialsMessage
 
         /**
@@ -52489,6 +52697,8 @@ export namespace Gio {
      * Since 2.74, the API is available for Windows.
      */
     class UnixFDList extends GObject.Object {
+        static $gtype: GObject.GType<UnixFDList>;
+
         // Constructors of Gio.UnixFDList
 
         constructor(properties?: Partial<UnixFDList.ConstructorProps>, ...args: any[]);
@@ -52607,6 +52817,8 @@ export namespace Gio {
      * file when using it.
      */
     class UnixFDMessage extends SocketControlMessage {
+        static $gtype: GObject.GType<UnixFDMessage>;
+
         // Own properties of Gio.UnixFDMessage
 
         get fd_list(): UnixFDList;
@@ -52692,6 +52904,8 @@ export namespace Gio {
      * file when using it.
      */
     class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
+        static $gtype: GObject.GType<UnixInputStream>;
+
         // Own properties of Gio.UnixInputStream
 
         /**
@@ -53685,6 +53899,8 @@ export namespace Gio {
      * Watches #GUnixMounts for changes.
      */
     class UnixMountMonitor extends GObject.Object {
+        static $gtype: GObject.GType<UnixMountMonitor>;
+
         // Constructors of Gio.UnixMountMonitor
 
         constructor(properties?: Partial<UnixMountMonitor.ConstructorProps>, ...args: any[]);
@@ -53760,6 +53976,8 @@ export namespace Gio {
      * when using it.
      */
     class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
+        static $gtype: GObject.GType<UnixOutputStream>;
+
         // Own properties of Gio.UnixOutputStream
 
         /**
@@ -55124,6 +55342,8 @@ export namespace Gio {
      * when using it. This is no longer necessary since GLib 2.72.
      */
     class UnixSocketAddress extends SocketAddress implements SocketConnectable {
+        static $gtype: GObject.GType<UnixSocketAddress>;
+
         // Own properties of Gio.UnixSocketAddress
 
         /**
@@ -55603,6 +55823,8 @@ export namespace Gio {
      * Entry point for using GIO functionality.
      */
     class Vfs extends GObject.Object {
+        static $gtype: GObject.GType<Vfs>;
+
         // Constructors of Gio.Vfs
 
         constructor(properties?: Partial<Vfs.ConstructorProps>, ...args: any[]);
@@ -55819,6 +56041,8 @@ export namespace Gio {
      * a main loop must be running.
      */
     class VolumeMonitor extends GObject.Object {
+        static $gtype: GObject.GType<VolumeMonitor>;
+
         // Constructors of Gio.VolumeMonitor
 
         constructor(properties?: Partial<VolumeMonitor.ConstructorProps>, ...args: any[]);
@@ -56008,6 +56232,8 @@ export namespace Gio {
      * compresses data using zlib.
      */
     class ZlibCompressor extends GObject.Object implements Converter {
+        static $gtype: GObject.GType<ZlibCompressor>;
+
         // Own properties of Gio.ZlibCompressor
 
         /**
@@ -56620,6 +56846,8 @@ export namespace Gio {
      * decompresses data compressed with zlib.
      */
     class ZlibDecompressor extends GObject.Object implements Converter {
+        static $gtype: GObject.GType<ZlibDecompressor>;
+
         // Own properties of Gio.ZlibDecompressor
 
         /**
@@ -57221,6 +57449,8 @@ export namespace Gio {
      * See g_action_map_add_action_entries() for an example.
      */
     class ActionEntry {
+        static $gtype: GObject.GType<ActionEntry>;
+
         // Own fields of Gio.ActionEntry
 
         name: string;
@@ -57245,6 +57475,8 @@ export namespace Gio {
     type AppInfoIface = typeof AppInfo;
     type AppLaunchContextClass = typeof AppLaunchContext;
     abstract class AppLaunchContextPrivate {
+        static $gtype: GObject.GType<AppLaunchContextPrivate>;
+
         // Constructors of Gio.AppLaunchContextPrivate
 
         _init(...args: any[]): void;
@@ -57253,12 +57485,16 @@ export namespace Gio {
     type ApplicationClass = typeof Application;
     type ApplicationCommandLineClass = typeof ApplicationCommandLine;
     abstract class ApplicationCommandLinePrivate {
+        static $gtype: GObject.GType<ApplicationCommandLinePrivate>;
+
         // Constructors of Gio.ApplicationCommandLinePrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Gio.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -57268,6 +57504,8 @@ export namespace Gio {
     type AsyncResultIface = typeof AsyncResult;
     type BufferedInputStreamClass = typeof BufferedInputStream;
     abstract class BufferedInputStreamPrivate {
+        static $gtype: GObject.GType<BufferedInputStreamPrivate>;
+
         // Constructors of Gio.BufferedInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57275,6 +57513,8 @@ export namespace Gio {
 
     type BufferedOutputStreamClass = typeof BufferedOutputStream;
     abstract class BufferedOutputStreamPrivate {
+        static $gtype: GObject.GType<BufferedOutputStreamPrivate>;
+
         // Constructors of Gio.BufferedOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57282,6 +57522,8 @@ export namespace Gio {
 
     type CancellableClass = typeof Cancellable;
     abstract class CancellablePrivate {
+        static $gtype: GObject.GType<CancellablePrivate>;
+
         // Constructors of Gio.CancellablePrivate
 
         _init(...args: any[]): void;
@@ -57291,6 +57533,8 @@ export namespace Gio {
     type ConverterIface = typeof Converter;
     type ConverterInputStreamClass = typeof ConverterInputStream;
     abstract class ConverterInputStreamPrivate {
+        static $gtype: GObject.GType<ConverterInputStreamPrivate>;
+
         // Constructors of Gio.ConverterInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57298,6 +57542,8 @@ export namespace Gio {
 
     type ConverterOutputStreamClass = typeof ConverterOutputStream;
     abstract class ConverterOutputStreamPrivate {
+        static $gtype: GObject.GType<ConverterOutputStreamPrivate>;
+
         // Constructors of Gio.ConverterOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57308,6 +57554,8 @@ export namespace Gio {
      * Information about an annotation.
      */
     class DBusAnnotationInfo {
+        static $gtype: GObject.GType<DBusAnnotationInfo>;
+
         // Own fields of Gio.DBusAnnotationInfo
 
         ref_count: number;
@@ -57358,6 +57606,8 @@ export namespace Gio {
      * Information about an argument for a method or a signal.
      */
     class DBusArgInfo {
+        static $gtype: GObject.GType<DBusArgInfo>;
+
         // Own fields of Gio.DBusArgInfo
 
         ref_count: number;
@@ -57397,6 +57647,8 @@ export namespace Gio {
      * Struct used in g_dbus_error_register_error_domain().
      */
     class DBusErrorEntry {
+        static $gtype: GObject.GType<DBusErrorEntry>;
+
         // Own fields of Gio.DBusErrorEntry
 
         error_code: number;
@@ -57418,6 +57670,8 @@ export namespace Gio {
      * Information about a D-Bus interface.
      */
     class DBusInterfaceInfo {
+        static $gtype: GObject.GType<DBusInterfaceInfo>;
+
         // Own fields of Gio.DBusInterfaceInfo
 
         ref_count: number;
@@ -57507,6 +57761,8 @@ export namespace Gio {
 
     type DBusInterfaceSkeletonClass = typeof DBusInterfaceSkeleton;
     abstract class DBusInterfaceSkeletonPrivate {
+        static $gtype: GObject.GType<DBusInterfaceSkeletonPrivate>;
+
         // Constructors of Gio.DBusInterfaceSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -57556,6 +57812,8 @@ export namespace Gio {
      * the call, you must return the value of type %G_VARIANT_TYPE_UNIT.
      */
     class DBusInterfaceVTable {
+        static $gtype: GObject.GType<DBusInterfaceVTable>;
+
         // Own fields of Gio.DBusInterfaceVTable
 
         method_call: DBusInterfaceMethodCallFunc;
@@ -57571,6 +57829,8 @@ export namespace Gio {
      * Information about a method on an D-Bus interface.
      */
     class DBusMethodInfo {
+        static $gtype: GObject.GType<DBusMethodInfo>;
+
         // Own fields of Gio.DBusMethodInfo
 
         ref_count: number;
@@ -57612,6 +57872,8 @@ export namespace Gio {
      * Information about nodes in a remote object hierarchy.
      */
     class DBusNodeInfo {
+        static $gtype: GObject.GType<DBusNodeInfo>;
+
         // Own fields of Gio.DBusNodeInfo
 
         ref_count: number;
@@ -57663,6 +57925,8 @@ export namespace Gio {
     type DBusObjectIface = typeof DBusObject;
     type DBusObjectManagerClientClass = typeof DBusObjectManagerClient;
     abstract class DBusObjectManagerClientPrivate {
+        static $gtype: GObject.GType<DBusObjectManagerClientPrivate>;
+
         // Constructors of Gio.DBusObjectManagerClientPrivate
 
         _init(...args: any[]): void;
@@ -57671,6 +57935,8 @@ export namespace Gio {
     type DBusObjectManagerIface = typeof DBusObjectManager;
     type DBusObjectManagerServerClass = typeof DBusObjectManagerServer;
     abstract class DBusObjectManagerServerPrivate {
+        static $gtype: GObject.GType<DBusObjectManagerServerPrivate>;
+
         // Constructors of Gio.DBusObjectManagerServerPrivate
 
         _init(...args: any[]): void;
@@ -57678,6 +57944,8 @@ export namespace Gio {
 
     type DBusObjectProxyClass = typeof DBusObjectProxy;
     abstract class DBusObjectProxyPrivate {
+        static $gtype: GObject.GType<DBusObjectProxyPrivate>;
+
         // Constructors of Gio.DBusObjectProxyPrivate
 
         _init(...args: any[]): void;
@@ -57685,6 +57953,8 @@ export namespace Gio {
 
     type DBusObjectSkeletonClass = typeof DBusObjectSkeleton;
     abstract class DBusObjectSkeletonPrivate {
+        static $gtype: GObject.GType<DBusObjectSkeletonPrivate>;
+
         // Constructors of Gio.DBusObjectSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -57694,6 +57964,8 @@ export namespace Gio {
      * Information about a D-Bus property on a D-Bus interface.
      */
     class DBusPropertyInfo {
+        static $gtype: GObject.GType<DBusPropertyInfo>;
+
         // Own fields of Gio.DBusPropertyInfo
 
         ref_count: number;
@@ -57724,6 +57996,8 @@ export namespace Gio {
 
     type DBusProxyClass = typeof DBusProxy;
     abstract class DBusProxyPrivate {
+        static $gtype: GObject.GType<DBusProxyPrivate>;
+
         // Constructors of Gio.DBusProxyPrivate
 
         _init(...args: any[]): void;
@@ -57733,6 +58007,8 @@ export namespace Gio {
      * Information about a signal on a D-Bus interface.
      */
     class DBusSignalInfo {
+        static $gtype: GObject.GType<DBusSignalInfo>;
+
         // Own fields of Gio.DBusSignalInfo
 
         ref_count: number;
@@ -57772,6 +58048,8 @@ export namespace Gio {
      * Virtual table for handling subtrees registered with g_dbus_connection_register_subtree().
      */
     class DBusSubtreeVTable {
+        static $gtype: GObject.GType<DBusSubtreeVTable>;
+
         // Own fields of Gio.DBusSubtreeVTable
 
         enumerate: DBusSubtreeEnumerateFunc;
@@ -57785,6 +58063,8 @@ export namespace Gio {
 
     type DataInputStreamClass = typeof DataInputStream;
     abstract class DataInputStreamPrivate {
+        static $gtype: GObject.GType<DataInputStreamPrivate>;
+
         // Constructors of Gio.DataInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57792,6 +58072,8 @@ export namespace Gio {
 
     type DataOutputStreamClass = typeof DataOutputStream;
     abstract class DataOutputStreamPrivate {
+        static $gtype: GObject.GType<DataOutputStreamPrivate>;
+
         // Constructors of Gio.DataOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57809,6 +58091,8 @@ export namespace Gio {
     type EmblemClass = typeof Emblem;
     type EmblemedIconClass = typeof EmblemedIcon;
     abstract class EmblemedIconPrivate {
+        static $gtype: GObject.GType<EmblemedIconPrivate>;
+
         // Constructors of Gio.EmblemedIconPrivate
 
         _init(...args: any[]): void;
@@ -57818,6 +58102,8 @@ export namespace Gio {
      * Information about a specific attribute.
      */
     class FileAttributeInfo {
+        static $gtype: GObject.GType<FileAttributeInfo>;
+
         // Own fields of Gio.FileAttributeInfo
 
         name: string;
@@ -57834,6 +58120,8 @@ export namespace Gio {
      * The registry stores Key-Value pair formats as #GFileAttributeInfos.
      */
     class FileAttributeInfoList {
+        static $gtype: GObject.GType<FileAttributeInfoList>;
+
         // Own fields of Gio.FileAttributeInfoList
 
         n_infos: number;
@@ -57886,6 +58174,8 @@ export namespace Gio {
      * Determines if a string matches a file attribute.
      */
     abstract class FileAttributeMatcher {
+        static $gtype: GObject.GType<FileAttributeMatcher>;
+
         // Constructors of Gio.FileAttributeMatcher
 
         constructor(attributes: string);
@@ -57962,6 +58252,8 @@ export namespace Gio {
     type FileDescriptorBasedIface = typeof FileDescriptorBased;
     type FileEnumeratorClass = typeof FileEnumerator;
     abstract class FileEnumeratorPrivate {
+        static $gtype: GObject.GType<FileEnumeratorPrivate>;
+
         // Constructors of Gio.FileEnumeratorPrivate
 
         _init(...args: any[]): void;
@@ -57969,6 +58261,8 @@ export namespace Gio {
 
     type FileIOStreamClass = typeof FileIOStream;
     abstract class FileIOStreamPrivate {
+        static $gtype: GObject.GType<FileIOStreamPrivate>;
+
         // Constructors of Gio.FileIOStreamPrivate
 
         _init(...args: any[]): void;
@@ -57979,6 +58273,8 @@ export namespace Gio {
     type FileInfoClass = typeof FileInfo;
     type FileInputStreamClass = typeof FileInputStream;
     abstract class FileInputStreamPrivate {
+        static $gtype: GObject.GType<FileInputStreamPrivate>;
+
         // Constructors of Gio.FileInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -57986,6 +58282,8 @@ export namespace Gio {
 
     type FileMonitorClass = typeof FileMonitor;
     abstract class FileMonitorPrivate {
+        static $gtype: GObject.GType<FileMonitorPrivate>;
+
         // Constructors of Gio.FileMonitorPrivate
 
         _init(...args: any[]): void;
@@ -57993,6 +58291,8 @@ export namespace Gio {
 
     type FileOutputStreamClass = typeof FileOutputStream;
     abstract class FileOutputStreamPrivate {
+        static $gtype: GObject.GType<FileOutputStreamPrivate>;
+
         // Constructors of Gio.FileOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -58006,6 +58306,8 @@ export namespace Gio {
      * using the following functions.
      */
     abstract class IOExtension {
+        static $gtype: GObject.GType<IOExtension>;
+
         // Constructors of Gio.IOExtension
 
         _init(...args: any[]): void;
@@ -58037,6 +58339,8 @@ export namespace Gio {
      * using the following functions.
      */
     abstract class IOExtensionPoint {
+        static $gtype: GObject.GType<IOExtensionPoint>;
+
         // Constructors of Gio.IOExtensionPoint
 
         _init(...args: any[]): void;
@@ -58107,6 +58411,8 @@ export namespace Gio {
      * or g_io_modules_scan_all_in_directory_with_scope().
      */
     abstract class IOModuleScope {
+        static $gtype: GObject.GType<IOModuleScope>;
+
         // Constructors of Gio.IOModuleScope
 
         _init(...args: any[]): void;
@@ -58130,6 +58436,8 @@ export namespace Gio {
      * Opaque class for defining and scheduling IO jobs.
      */
     abstract class IOSchedulerJob {
+        static $gtype: GObject.GType<IOSchedulerJob>;
+
         // Constructors of Gio.IOSchedulerJob
 
         _init(...args: any[]): void;
@@ -58162,6 +58470,8 @@ export namespace Gio {
     }
 
     abstract class IOStreamAdapter {
+        static $gtype: GObject.GType<IOStreamAdapter>;
+
         // Constructors of Gio.IOStreamAdapter
 
         _init(...args: any[]): void;
@@ -58169,6 +58479,8 @@ export namespace Gio {
 
     type IOStreamClass = typeof IOStream;
     abstract class IOStreamPrivate {
+        static $gtype: GObject.GType<IOStreamPrivate>;
+
         // Constructors of Gio.IOStreamPrivate
 
         _init(...args: any[]): void;
@@ -58178,12 +58490,16 @@ export namespace Gio {
     type InetAddressClass = typeof InetAddress;
     type InetAddressMaskClass = typeof InetAddressMask;
     abstract class InetAddressMaskPrivate {
+        static $gtype: GObject.GType<InetAddressMaskPrivate>;
+
         // Constructors of Gio.InetAddressMaskPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class InetAddressPrivate {
+        static $gtype: GObject.GType<InetAddressPrivate>;
+
         // Constructors of Gio.InetAddressPrivate
 
         _init(...args: any[]): void;
@@ -58191,6 +58507,8 @@ export namespace Gio {
 
     type InetSocketAddressClass = typeof InetSocketAddress;
     abstract class InetSocketAddressPrivate {
+        static $gtype: GObject.GType<InetSocketAddressPrivate>;
+
         // Constructors of Gio.InetSocketAddressPrivate
 
         _init(...args: any[]): void;
@@ -58219,6 +58537,8 @@ export namespace Gio {
      * `MSG_EOR` or `MSG_TRUNC`.
      */
     class InputMessage {
+        static $gtype: GObject.GType<InputMessage>;
+
         // Own fields of Gio.InputMessage
 
         address: SocketAddress;
@@ -58236,6 +58556,8 @@ export namespace Gio {
 
     type InputStreamClass = typeof InputStream;
     abstract class InputStreamPrivate {
+        static $gtype: GObject.GType<InputStreamPrivate>;
+
         // Constructors of Gio.InputStreamPrivate
 
         _init(...args: any[]): void;
@@ -58248,6 +58570,8 @@ export namespace Gio {
      * first buffer, switching to the next as needed.
      */
     class InputVector {
+        static $gtype: GObject.GType<InputVector>;
+
         // Own fields of Gio.InputVector
 
         buffer: any;
@@ -58269,6 +58593,8 @@ export namespace Gio {
     type LoadableIconIface = typeof LoadableIcon;
     type MemoryInputStreamClass = typeof MemoryInputStream;
     abstract class MemoryInputStreamPrivate {
+        static $gtype: GObject.GType<MemoryInputStreamPrivate>;
+
         // Constructors of Gio.MemoryInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -58277,6 +58603,8 @@ export namespace Gio {
     type MemoryMonitorInterface = typeof MemoryMonitor;
     type MemoryOutputStreamClass = typeof MemoryOutputStream;
     abstract class MemoryOutputStreamPrivate {
+        static $gtype: GObject.GType<MemoryOutputStreamPrivate>;
+
         // Constructors of Gio.MemoryOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -58284,6 +58612,8 @@ export namespace Gio {
 
     type MenuAttributeIterClass = typeof MenuAttributeIter;
     abstract class MenuAttributeIterPrivate {
+        static $gtype: GObject.GType<MenuAttributeIterPrivate>;
+
         // Constructors of Gio.MenuAttributeIterPrivate
 
         _init(...args: any[]): void;
@@ -58291,6 +58621,8 @@ export namespace Gio {
 
     type MenuLinkIterClass = typeof MenuLinkIter;
     abstract class MenuLinkIterPrivate {
+        static $gtype: GObject.GType<MenuLinkIterPrivate>;
+
         // Constructors of Gio.MenuLinkIterPrivate
 
         _init(...args: any[]): void;
@@ -58298,6 +58630,8 @@ export namespace Gio {
 
     type MenuModelClass = typeof MenuModel;
     abstract class MenuModelPrivate {
+        static $gtype: GObject.GType<MenuModelPrivate>;
+
         // Constructors of Gio.MenuModelPrivate
 
         _init(...args: any[]): void;
@@ -58306,6 +58640,8 @@ export namespace Gio {
     type MountIface = typeof Mount;
     type MountOperationClass = typeof MountOperation;
     abstract class MountOperationPrivate {
+        static $gtype: GObject.GType<MountOperationPrivate>;
+
         // Constructors of Gio.MountOperationPrivate
 
         _init(...args: any[]): void;
@@ -58313,6 +58649,8 @@ export namespace Gio {
 
     type NativeSocketAddressClass = typeof NativeSocketAddress;
     abstract class NativeSocketAddressPrivate {
+        static $gtype: GObject.GType<NativeSocketAddressPrivate>;
+
         // Constructors of Gio.NativeSocketAddressPrivate
 
         _init(...args: any[]): void;
@@ -58321,6 +58659,8 @@ export namespace Gio {
     type NativeVolumeMonitorClass = typeof NativeVolumeMonitor;
     type NetworkAddressClass = typeof NetworkAddress;
     abstract class NetworkAddressPrivate {
+        static $gtype: GObject.GType<NetworkAddressPrivate>;
+
         // Constructors of Gio.NetworkAddressPrivate
 
         _init(...args: any[]): void;
@@ -58329,6 +58669,8 @@ export namespace Gio {
     type NetworkMonitorInterface = typeof NetworkMonitor;
     type NetworkServiceClass = typeof NetworkService;
     abstract class NetworkServicePrivate {
+        static $gtype: GObject.GType<NetworkServicePrivate>;
+
         // Constructors of Gio.NetworkServicePrivate
 
         _init(...args: any[]): void;
@@ -58344,6 +58686,8 @@ export namespace Gio {
      * (as previously set by g_socket_connect()).
      */
     class OutputMessage {
+        static $gtype: GObject.GType<OutputMessage>;
+
         // Own fields of Gio.OutputMessage
 
         address: SocketAddress;
@@ -58360,6 +58704,8 @@ export namespace Gio {
 
     type OutputStreamClass = typeof OutputStream;
     abstract class OutputStreamPrivate {
+        static $gtype: GObject.GType<OutputStreamPrivate>;
+
         // Constructors of Gio.OutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -58372,6 +58718,8 @@ export namespace Gio {
      * one buffer.
      */
     class OutputVector {
+        static $gtype: GObject.GType<OutputVector>;
+
         // Own fields of Gio.OutputVector
 
         buffer: any;
@@ -58390,6 +58738,8 @@ export namespace Gio {
 
     type PermissionClass = typeof Permission;
     abstract class PermissionPrivate {
+        static $gtype: GObject.GType<PermissionPrivate>;
+
         // Constructors of Gio.PermissionPrivate
 
         _init(...args: any[]): void;
@@ -58401,12 +58751,16 @@ export namespace Gio {
     type ProxyAddressClass = typeof ProxyAddress;
     type ProxyAddressEnumeratorClass = typeof ProxyAddressEnumerator;
     abstract class ProxyAddressEnumeratorPrivate {
+        static $gtype: GObject.GType<ProxyAddressEnumeratorPrivate>;
+
         // Constructors of Gio.ProxyAddressEnumeratorPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ProxyAddressPrivate {
+        static $gtype: GObject.GType<ProxyAddressPrivate>;
+
         // Constructors of Gio.ProxyAddressPrivate
 
         _init(...args: any[]): void;
@@ -58417,6 +58771,8 @@ export namespace Gio {
     type RemoteActionGroupInterface = typeof RemoteActionGroup;
     type ResolverClass = typeof Resolver;
     abstract class ResolverPrivate {
+        static $gtype: GObject.GType<ResolverPrivate>;
+
         // Constructors of Gio.ResolverPrivate
 
         _init(...args: any[]): void;
@@ -58567,6 +58923,8 @@ export namespace Gio {
      * location of a single resource with an individual file.
      */
     abstract class Resource {
+        static $gtype: GObject.GType<Resource>;
+
         // Constructors of Gio.Resource
 
         constructor(data: GLib.Bytes);
@@ -58675,6 +59033,8 @@ export namespace Gio {
     type SeekableIface = typeof Seekable;
     type SettingsBackendClass = typeof SettingsBackend;
     abstract class SettingsBackendPrivate {
+        static $gtype: GObject.GType<SettingsBackendPrivate>;
+
         // Constructors of Gio.SettingsBackendPrivate
 
         _init(...args: any[]): void;
@@ -58682,6 +59042,8 @@ export namespace Gio {
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
+        static $gtype: GObject.GType<SettingsPrivate>;
+
         // Constructors of Gio.SettingsPrivate
 
         _init(...args: any[]): void;
@@ -58784,6 +59146,8 @@ export namespace Gio {
      * itself before attempting to create the settings source.
      */
     abstract class SettingsSchema {
+        static $gtype: GObject.GType<SettingsSchema>;
+
         // Own fields of Gio.SettingsSchema
 
         _realGetKey: typeof SettingsSchema.prototype.get_key;
@@ -58860,6 +59224,8 @@ export namespace Gio {
      * using the following functions.
      */
     abstract class SettingsSchemaKey {
+        static $gtype: GObject.GType<SettingsSchemaKey>;
+
         // Constructors of Gio.SettingsSchemaKey
 
         _init(...args: any[]): void;
@@ -58984,6 +59350,8 @@ export namespace Gio {
      * This is an opaque structure type.  You may not access it directly.
      */
     abstract class SettingsSchemaSource {
+        static $gtype: GObject.GType<SettingsSchemaSource>;
+
         // Constructors of Gio.SettingsSchemaSource
 
         constructor(directory: string, parent: SettingsSchemaSource | null, trusted: boolean);
@@ -59061,6 +59429,8 @@ export namespace Gio {
 
     type SimpleActionGroupClass = typeof SimpleActionGroup;
     abstract class SimpleActionGroupPrivate {
+        static $gtype: GObject.GType<SimpleActionGroupPrivate>;
+
         // Constructors of Gio.SimpleActionGroupPrivate
 
         _init(...args: any[]): void;
@@ -59069,6 +59439,8 @@ export namespace Gio {
     type SimpleAsyncResultClass = typeof SimpleAsyncResult;
     type SimpleProxyResolverClass = typeof SimpleProxyResolver;
     abstract class SimpleProxyResolverPrivate {
+        static $gtype: GObject.GType<SimpleProxyResolverPrivate>;
+
         // Constructors of Gio.SimpleProxyResolverPrivate
 
         _init(...args: any[]): void;
@@ -59079,6 +59451,8 @@ export namespace Gio {
     type SocketClass = typeof Socket;
     type SocketClientClass = typeof SocketClient;
     abstract class SocketClientPrivate {
+        static $gtype: GObject.GType<SocketClientPrivate>;
+
         // Constructors of Gio.SocketClientPrivate
 
         _init(...args: any[]): void;
@@ -59087,6 +59461,8 @@ export namespace Gio {
     type SocketConnectableIface = typeof SocketConnectable;
     type SocketConnectionClass = typeof SocketConnection;
     abstract class SocketConnectionPrivate {
+        static $gtype: GObject.GType<SocketConnectionPrivate>;
+
         // Constructors of Gio.SocketConnectionPrivate
 
         _init(...args: any[]): void;
@@ -59094,6 +59470,8 @@ export namespace Gio {
 
     type SocketControlMessageClass = typeof SocketControlMessage;
     abstract class SocketControlMessagePrivate {
+        static $gtype: GObject.GType<SocketControlMessagePrivate>;
+
         // Constructors of Gio.SocketControlMessagePrivate
 
         _init(...args: any[]): void;
@@ -59101,12 +59479,16 @@ export namespace Gio {
 
     type SocketListenerClass = typeof SocketListener;
     abstract class SocketListenerPrivate {
+        static $gtype: GObject.GType<SocketListenerPrivate>;
+
         // Constructors of Gio.SocketListenerPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class SocketPrivate {
+        static $gtype: GObject.GType<SocketPrivate>;
+
         // Constructors of Gio.SocketPrivate
 
         _init(...args: any[]): void;
@@ -59114,6 +59496,8 @@ export namespace Gio {
 
     type SocketServiceClass = typeof SocketService;
     abstract class SocketServicePrivate {
+        static $gtype: GObject.GType<SocketServicePrivate>;
+
         // Constructors of Gio.SocketServicePrivate
 
         _init(...args: any[]): void;
@@ -59136,6 +59520,8 @@ export namespace Gio {
      * #GSrvTarget at all.
      */
     abstract class SrvTarget {
+        static $gtype: GObject.GType<SrvTarget>;
+
         // Constructors of Gio.SrvTarget
 
         constructor(hostname: string, port: number, priority: number, weight: number);
@@ -59188,6 +59574,8 @@ export namespace Gio {
      * using the following functions.
      */
     class StaticResource {
+        static $gtype: GObject.GType<StaticResource>;
+
         // Constructors of Gio.StaticResource
 
         _init(...args: any[]): void;
@@ -59225,6 +59613,8 @@ export namespace Gio {
     type TaskClass = typeof Task;
     type TcpConnectionClass = typeof TcpConnection;
     abstract class TcpConnectionPrivate {
+        static $gtype: GObject.GType<TcpConnectionPrivate>;
+
         // Constructors of Gio.TcpConnectionPrivate
 
         _init(...args: any[]): void;
@@ -59232,6 +59622,8 @@ export namespace Gio {
 
     type TcpWrapperConnectionClass = typeof TcpWrapperConnection;
     abstract class TcpWrapperConnectionPrivate {
+        static $gtype: GObject.GType<TcpWrapperConnectionPrivate>;
+
         // Constructors of Gio.TcpWrapperConnectionPrivate
 
         _init(...args: any[]): void;
@@ -59240,6 +59632,8 @@ export namespace Gio {
     type ThemedIconClass = typeof ThemedIcon;
     type ThreadedSocketServiceClass = typeof ThreadedSocketService;
     abstract class ThreadedSocketServicePrivate {
+        static $gtype: GObject.GType<ThreadedSocketServicePrivate>;
+
         // Constructors of Gio.ThreadedSocketServicePrivate
 
         _init(...args: any[]): void;
@@ -59248,6 +59642,8 @@ export namespace Gio {
     type TlsBackendInterface = typeof TlsBackend;
     type TlsCertificateClass = typeof TlsCertificate;
     abstract class TlsCertificatePrivate {
+        static $gtype: GObject.GType<TlsCertificatePrivate>;
+
         // Constructors of Gio.TlsCertificatePrivate
 
         _init(...args: any[]): void;
@@ -59256,6 +59652,8 @@ export namespace Gio {
     type TlsClientConnectionInterface = typeof TlsClientConnection;
     type TlsConnectionClass = typeof TlsConnection;
     abstract class TlsConnectionPrivate {
+        static $gtype: GObject.GType<TlsConnectionPrivate>;
+
         // Constructors of Gio.TlsConnectionPrivate
 
         _init(...args: any[]): void;
@@ -59263,6 +59661,8 @@ export namespace Gio {
 
     type TlsDatabaseClass = typeof TlsDatabase;
     abstract class TlsDatabasePrivate {
+        static $gtype: GObject.GType<TlsDatabasePrivate>;
+
         // Constructors of Gio.TlsDatabasePrivate
 
         _init(...args: any[]): void;
@@ -59271,6 +59671,8 @@ export namespace Gio {
     type TlsFileDatabaseInterface = typeof TlsFileDatabase;
     type TlsInteractionClass = typeof TlsInteraction;
     abstract class TlsInteractionPrivate {
+        static $gtype: GObject.GType<TlsInteractionPrivate>;
+
         // Constructors of Gio.TlsInteractionPrivate
 
         _init(...args: any[]): void;
@@ -59278,6 +59680,8 @@ export namespace Gio {
 
     type TlsPasswordClass = typeof TlsPassword;
     abstract class TlsPasswordPrivate {
+        static $gtype: GObject.GType<TlsPasswordPrivate>;
+
         // Constructors of Gio.TlsPasswordPrivate
 
         _init(...args: any[]): void;
@@ -59286,6 +59690,8 @@ export namespace Gio {
     type TlsServerConnectionInterface = typeof TlsServerConnection;
     type UnixConnectionClass = typeof UnixConnection;
     abstract class UnixConnectionPrivate {
+        static $gtype: GObject.GType<UnixConnectionPrivate>;
+
         // Constructors of Gio.UnixConnectionPrivate
 
         _init(...args: any[]): void;
@@ -59293,6 +59699,8 @@ export namespace Gio {
 
     type UnixCredentialsMessageClass = typeof UnixCredentialsMessage;
     abstract class UnixCredentialsMessagePrivate {
+        static $gtype: GObject.GType<UnixCredentialsMessagePrivate>;
+
         // Constructors of Gio.UnixCredentialsMessagePrivate
 
         _init(...args: any[]): void;
@@ -59300,6 +59708,8 @@ export namespace Gio {
 
     type UnixFDListClass = typeof UnixFDList;
     abstract class UnixFDListPrivate {
+        static $gtype: GObject.GType<UnixFDListPrivate>;
+
         // Constructors of Gio.UnixFDListPrivate
 
         _init(...args: any[]): void;
@@ -59307,6 +59717,8 @@ export namespace Gio {
 
     type UnixFDMessageClass = typeof UnixFDMessage;
     abstract class UnixFDMessagePrivate {
+        static $gtype: GObject.GType<UnixFDMessagePrivate>;
+
         // Constructors of Gio.UnixFDMessagePrivate
 
         _init(...args: any[]): void;
@@ -59314,6 +59726,8 @@ export namespace Gio {
 
     type UnixInputStreamClass = typeof UnixInputStream;
     abstract class UnixInputStreamPrivate {
+        static $gtype: GObject.GType<UnixInputStreamPrivate>;
+
         // Constructors of Gio.UnixInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -59324,6 +59738,8 @@ export namespace Gio {
      * This corresponds roughly to a mtab entry.
      */
     abstract class UnixMountEntry {
+        static $gtype: GObject.GType<UnixMountEntry>;
+
         // Constructors of Gio.UnixMountEntry
 
         _init(...args: any[]): void;
@@ -59335,6 +59751,8 @@ export namespace Gio {
      * This corresponds roughly to a fstab entry.
      */
     abstract class UnixMountPoint {
+        static $gtype: GObject.GType<UnixMountPoint>;
+
         // Constructors of Gio.UnixMountPoint
 
         _init(...args: any[]): void;
@@ -59429,6 +59847,8 @@ export namespace Gio {
 
     type UnixOutputStreamClass = typeof UnixOutputStream;
     abstract class UnixOutputStreamPrivate {
+        static $gtype: GObject.GType<UnixOutputStreamPrivate>;
+
         // Constructors of Gio.UnixOutputStreamPrivate
 
         _init(...args: any[]): void;
@@ -59436,6 +59856,8 @@ export namespace Gio {
 
     type UnixSocketAddressClass = typeof UnixSocketAddress;
     abstract class UnixSocketAddressPrivate {
+        static $gtype: GObject.GType<UnixSocketAddressPrivate>;
+
         // Constructors of Gio.UnixSocketAddressPrivate
 
         _init(...args: any[]): void;
@@ -70064,6 +70486,8 @@ export namespace Gio {
     export const DBus: DBusNamespace;
 
     class DBusExportedObject {
+        static $gtype: GObject.GType<DBusExportedObject>;
+
         // Constructors of Gio.DBusExportedObject
 
         _init(...args: any[]): void;

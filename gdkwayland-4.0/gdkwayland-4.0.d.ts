@@ -43,6 +43,8 @@ export namespace GdkWayland {
      * [method`GdkWayland`.WaylandDevice.get_wl_pointer].
      */
     class WaylandDevice extends Gdk.Device {
+        static $gtype: GObject.GType<WaylandDevice>;
+
         // Constructors of GdkWayland.WaylandDevice
 
         constructor(properties?: Partial<WaylandDevice.ConstructorProps>, ...args: any[]);
@@ -88,6 +90,8 @@ export namespace GdkWayland {
      * with [method`GdkWayland`.WaylandDisplay.query_registry].
      */
     class WaylandDisplay extends Gdk.Display {
+        static $gtype: GObject.GType<WaylandDisplay>;
+
         // Constructors of GdkWayland.WaylandDisplay
 
         constructor(properties?: Partial<WaylandDisplay.ConstructorProps>, ...args: any[]);
@@ -145,6 +149,8 @@ export namespace GdkWayland {
      * The Wayland implementation of `GdkGLContext`.
      */
     class WaylandGLContext extends Gdk.GLContext {
+        static $gtype: GObject.GType<WaylandGLContext>;
+
         // Constructors of GdkWayland.WaylandGLContext
 
         constructor(properties?: Partial<WaylandGLContext.ConstructorProps>, ...args: any[]);
@@ -166,6 +172,8 @@ export namespace GdkWayland {
      * [method`GdkWayland`.WaylandMonitor.get_wl_output].
      */
     class WaylandMonitor extends Gdk.Monitor {
+        static $gtype: GObject.GType<WaylandMonitor>;
+
         // Constructors of GdkWayland.WaylandMonitor
 
         constructor(properties?: Partial<WaylandMonitor.ConstructorProps>, ...args: any[]);
@@ -183,6 +191,8 @@ export namespace GdkWayland {
      * The Wayland implementation of `GdkPopup`.
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
+        static $gtype: GObject.GType<WaylandPopup>;
+
         // Constructors of GdkWayland.WaylandPopup
 
         constructor(properties?: Partial<WaylandPopup.ConstructorProps>, ...args: any[]);
@@ -583,6 +593,8 @@ export namespace GdkWayland {
      * [method`GdkWayland`.WaylandSeat.get_wl_seat].
      */
     class WaylandSeat extends Gdk.Seat {
+        static $gtype: GObject.GType<WaylandSeat>;
+
         // Constructors of GdkWayland.WaylandSeat
 
         constructor(properties?: Partial<WaylandSeat.ConstructorProps>, ...args: any[]);
@@ -604,6 +616,8 @@ export namespace GdkWayland {
      * [method`GdkWayland`.WaylandSurface.get_wl_surface].
      */
     class WaylandSurface extends Gdk.Surface {
+        static $gtype: GObject.GType<WaylandSurface>;
+
         // Constructors of GdkWayland.WaylandSurface
 
         constructor(properties?: Partial<WaylandSurface.ConstructorProps>, ...args: any[]);
@@ -626,6 +640,8 @@ export namespace GdkWayland {
      * [method`GdkWayland`.WaylandToplevel.set_transient_for_exported].
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
+        static $gtype: GObject.GType<WaylandToplevel>;
+
         // Constructors of GdkWayland.WaylandToplevel
 
         constructor(properties?: Partial<WaylandToplevel.ConstructorProps>, ...args: any[]);

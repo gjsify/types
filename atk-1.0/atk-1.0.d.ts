@@ -1661,6 +1661,8 @@ export namespace Atk {
      * an accessible object for GnomeCanvasItem in the GAIL library.
      */
     class GObjectAccessible extends Object {
+        static $gtype: GObject.GType<GObjectAccessible>;
+
         // Constructors of Atk.GObjectAccessible
 
         constructor(properties?: Partial<GObjectAccessible.ConstructorProps>, ...args: any[]);
@@ -1714,6 +1716,8 @@ export namespace Atk {
      * AtkHypertext object.
      */
     class Hyperlink extends GObject.Object implements Action {
+        static $gtype: GObject.GType<Hyperlink>;
+
         // Own properties of Atk.Hyperlink
 
         get end_index(): number;
@@ -2366,6 +2370,8 @@ export namespace Atk {
      * all his related methods are deprecated since 2.12.
      */
     class Misc extends GObject.Object {
+        static $gtype: GObject.GType<Misc>;
+
         // Constructors of Atk.Misc
 
         constructor(properties?: Partial<Misc.ConstructorProps>, ...args: any[]);
@@ -2465,6 +2471,8 @@ export namespace Atk {
             Value,
             Window
     {
+        static $gtype: GObject.GType<NoOpObject>;
+
         // Constructors of Atk.NoOpObject
 
         constructor(properties?: Partial<NoOpObject.ConstructorProps>, ...args: any[]);
@@ -4920,6 +4928,8 @@ export namespace Atk {
      * specified to create an accessible object of a particular type.
      */
     class NoOpObjectFactory extends ObjectFactory {
+        static $gtype: GObject.GType<NoOpObjectFactory>;
+
         // Constructors of Atk.NoOpObjectFactory
 
         constructor(properties?: Partial<NoOpObjectFactory.ConstructorProps>, ...args: any[]);
@@ -5015,6 +5025,8 @@ export namespace Atk {
      * #GtkAccessible).
      */
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Atk.Object
 
         get accessible_component_layer(): number;
@@ -5443,6 +5455,8 @@ export namespace Atk {
      * particular GType.
      */
     class ObjectFactory extends GObject.Object {
+        static $gtype: GObject.GType<ObjectFactory>;
+
         // Constructors of Atk.ObjectFactory
 
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
@@ -5494,6 +5508,8 @@ export namespace Atk {
      * See #AtkSocket
      */
     class Plug extends Object implements Component {
+        static $gtype: GObject.GType<Plug>;
+
         // Constructors of Atk.Plug
 
         constructor(properties?: Partial<Plug.ConstructorProps>, ...args: any[]);
@@ -6140,6 +6156,8 @@ export namespace Atk {
      * for application custom widget classes.
      */
     class Registry extends GObject.Object {
+        static $gtype: GObject.GType<Registry>;
+
         // Constructors of Atk.Registry
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
@@ -6190,6 +6208,8 @@ export namespace Atk {
      * AtkRelations.
      */
     class Relation extends GObject.Object {
+        static $gtype: GObject.GType<Relation>;
+
         // Own properties of Atk.Relation
 
         get relation_type(): RelationType;
@@ -6254,6 +6274,8 @@ export namespace Atk {
      * relationships.
      */
     class RelationSet extends GObject.Object {
+        static $gtype: GObject.GType<RelationSet>;
+
         // Own fields of Atk.RelationSet
 
         relations: any[];
@@ -6359,6 +6381,8 @@ export namespace Atk {
      * functions will be implemented by the IPC layer.
      */
     class Socket extends Object implements Component {
+        static $gtype: GObject.GType<Socket>;
+
         // Constructors of Atk.Socket
 
         constructor(properties?: Partial<Socket.ConstructorProps>, ...args: any[]);
@@ -7009,6 +7033,8 @@ export namespace Atk {
      * modified, but rather created when #atk_object_ref_state_set() is called.
      */
     class StateSet extends GObject.Object {
+        static $gtype: GObject.GType<StateSet>;
+
         // Constructors of Atk.StateSet
 
         constructor(properties?: Partial<StateSet.ConstructorProps>, ...args: any[]);
@@ -7110,6 +7136,8 @@ export namespace Atk {
      * and toolkit version.
      */
     class Util extends GObject.Object {
+        static $gtype: GObject.GType<Util>;
+
         // Constructors of Atk.Util
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
@@ -7132,6 +7160,8 @@ export namespace Atk {
      * A string name/value pair representing a generic attribute.
      */
     class Attribute {
+        static $gtype: GObject.GType<Attribute>;
+
         // Own fields of Atk.Attribute
 
         name: string;
@@ -7166,6 +7196,8 @@ export namespace Atk {
     type HypertextIface = typeof Hypertext;
     type ImageIface = typeof Image;
     abstract class Implementor {
+        static $gtype: GObject.GType<Implementor>;
+
         // Constructors of Atk.Implementor
 
         _init(...args: any[]): void;
@@ -7184,6 +7216,8 @@ export namespace Atk {
      * Encapsulates information about a key event.
      */
     class KeyEventStruct {
+        static $gtype: GObject.GType<KeyEventStruct>;
+
         // Own fields of Atk.KeyEventStruct
 
         type: number;
@@ -7222,6 +7256,8 @@ export namespace Atk {
      * the previous value of the property, but is not used anymore.
      */
     class PropertyValues {
+        static $gtype: GObject.GType<PropertyValues>;
+
         // Own fields of Atk.PropertyValues
 
         property_name: string;
@@ -7239,6 +7275,8 @@ export namespace Atk {
      * details.
      */
     abstract class Range {
+        static $gtype: GObject.GType<Range>;
+
         // Constructors of Atk.Range
 
         constructor(lower_limit: number, upper_limit: number, description: string);
@@ -7279,6 +7317,8 @@ export namespace Atk {
      * relative to the component top-level parent.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Atk.Rectangle
 
         x: number;
@@ -7313,6 +7353,8 @@ export namespace Atk {
      * A structure used to describe a text range.
      */
     class TextRange {
+        static $gtype: GObject.GType<TextRange>;
+
         // Own fields of Atk.TextRange
 
         bounds: TextRectangle;
@@ -7337,6 +7379,8 @@ export namespace Atk {
      * A structure used to store a rectangle used by AtkText.
      */
     class TextRectangle {
+        static $gtype: GObject.GType<TextRectangle>;
+
         // Own fields of Atk.TextRectangle
 
         x: number;

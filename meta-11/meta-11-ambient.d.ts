@@ -1,7 +1,7 @@
 
 declare module 'gi://Meta?version=11' {
-    import Meta11 from '@girs/meta-11';
-    export default Meta11;
+    import Meta from '@girs/meta-11';
+    export default Meta;
 }
 
 

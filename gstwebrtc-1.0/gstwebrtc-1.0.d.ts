@@ -105,6 +105,8 @@ export namespace GstWebRTC {
      * See <https://www.w3.org/TR/webrtc/#dom-rtcerrordetailtype> for more information.
      */
     class WebRTCError extends GLib.Error {
+        static $gtype: GObject.GType<WebRTCError>;
+
         // Static fields of GstWebRTC.WebRTCError
 
         /**
@@ -498,6 +500,8 @@ export namespace GstWebRTC {
     }
 
     class WebRTCDTLSTransport extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCDTLSTransport>;
+
         // Own properties of GstWebRTC.WebRTCDTLSTransport
 
         get certificate(): string;
@@ -580,6 +584,8 @@ export namespace GstWebRTC {
     }
 
     abstract class WebRTCDataChannel extends GObject.Object {
+        static $gtype: GObject.GType<WebRTCDataChannel>;
+
         // Own properties of GstWebRTC.WebRTCDataChannel
 
         get buffered_amount(): number;
@@ -688,6 +694,8 @@ export namespace GstWebRTC {
     }
 
     abstract class WebRTCICE extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCICE>;
+
         // Own properties of GstWebRTC.WebRTCICE
 
         /**
@@ -805,6 +813,8 @@ export namespace GstWebRTC {
     }
 
     abstract class WebRTCICEStream extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCICEStream>;
+
         // Own properties of GstWebRTC.WebRTCICEStream
 
         get stream_id(): number;
@@ -849,6 +859,8 @@ export namespace GstWebRTC {
     }
 
     abstract class WebRTCICETransport extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCICETransport>;
+
         // Own properties of GstWebRTC.WebRTCICETransport
 
         get component(): WebRTCICEComponent;
@@ -906,6 +918,8 @@ export namespace GstWebRTC {
      * Mostly matches the WebRTC RTCRtpReceiver interface.
      */
     class WebRTCRTPReceiver extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCRTPReceiver>;
+
         // Own properties of GstWebRTC.WebRTCRTPReceiver
 
         /**
@@ -935,6 +949,8 @@ export namespace GstWebRTC {
      * Mostly matches the WebRTC RTCRtpSender interface.
      */
     class WebRTCRTPSender extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCRTPSender>;
+
         // Own properties of GstWebRTC.WebRTCRTPSender
 
         /**
@@ -985,6 +1001,8 @@ export namespace GstWebRTC {
      * Mostly matches the WebRTC RTCRtpTransceiver interface.
      */
     abstract class WebRTCRTPTransceiver extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCRTPTransceiver>;
+
         // Own properties of GstWebRTC.WebRTCRTPTransceiver
 
         /**
@@ -1054,6 +1072,8 @@ export namespace GstWebRTC {
     }
 
     abstract class WebRTCSCTPTransport extends Gst.Object {
+        static $gtype: GObject.GType<WebRTCSCTPTransport>;
+
         // Own properties of GstWebRTC.WebRTCSCTPTransport
 
         get max_channels(): number;
@@ -1073,6 +1093,8 @@ export namespace GstWebRTC {
     type WebRTCDTLSTransportClass = typeof WebRTCDTLSTransport;
     type WebRTCDataChannelClass = typeof WebRTCDataChannel;
     class WebRTCICECandidateStats {
+        static $gtype: GObject.GType<WebRTCICECandidateStats>;
+
         // Own fields of GstWebRTC.WebRTCICECandidateStats
 
         ipaddr: string;
@@ -1121,6 +1143,8 @@ export namespace GstWebRTC {
      * See <https://www.w3.org/TR/webrtc/#rtcsessiondescription-class>
      */
     class WebRTCSessionDescription {
+        static $gtype: GObject.GType<WebRTCSessionDescription>;
+
         // Own fields of GstWebRTC.WebRTCSessionDescription
 
         type: WebRTCSDPType;

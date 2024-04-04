@@ -180,6 +180,8 @@ export namespace GnomeDesktop {
     }
 
     class DesktopThumbnailFactory extends GObject.Object {
+        static $gtype: GObject.GType<DesktopThumbnailFactory>;
+
         // Constructors of GnomeDesktop.DesktopThumbnailFactory
 
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
@@ -319,6 +321,8 @@ export namespace GnomeDesktop {
     }
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<IdleMonitor>;
+
         // Constructors of GnomeDesktop.IdleMonitor
 
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
@@ -789,6 +793,8 @@ export namespace GnomeDesktop {
     }
 
     class PnpIds extends GObject.Object {
+        static $gtype: GObject.GType<PnpIds>;
+
         // Constructors of GnomeDesktop.PnpIds
 
         constructor(properties?: Partial<PnpIds.ConstructorProps>, ...args: any[]);
@@ -821,6 +827,8 @@ export namespace GnomeDesktop {
     }
 
     class WallClock extends GObject.Object {
+        static $gtype: GObject.GType<WallClock>;
+
         // Own properties of GnomeDesktop.WallClock
 
         /**
@@ -905,6 +913,8 @@ export namespace GnomeDesktop {
     }
 
     class XkbInfo extends GObject.Object {
+        static $gtype: GObject.GType<XkbInfo>;
+
         // Own fields of GnomeDesktop.XkbInfo
 
         parent_object: GObject.Object;
@@ -987,6 +997,8 @@ export namespace GnomeDesktop {
 
     type DesktopThumbnailFactoryClass = typeof DesktopThumbnailFactory;
     abstract class DesktopThumbnailFactoryPrivate {
+        static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
+
         // Constructors of GnomeDesktop.DesktopThumbnailFactoryPrivate
 
         _init(...args: any[]): void;
@@ -994,6 +1006,8 @@ export namespace GnomeDesktop {
 
     type IdleMonitorClass = typeof IdleMonitor;
     abstract class IdleMonitorPrivate {
+        static $gtype: GObject.GType<IdleMonitorPrivate>;
+
         // Constructors of GnomeDesktop.IdleMonitorPrivate
 
         _init(...args: any[]): void;
@@ -1001,6 +1015,8 @@ export namespace GnomeDesktop {
 
     type PnpIdsClass = typeof PnpIds;
     abstract class PnpIdsPrivate {
+        static $gtype: GObject.GType<PnpIdsPrivate>;
+
         // Constructors of GnomeDesktop.PnpIdsPrivate
 
         _init(...args: any[]): void;
@@ -1008,6 +1024,8 @@ export namespace GnomeDesktop {
 
     type WallClockClass = typeof WallClock;
     abstract class WallClockPrivate {
+        static $gtype: GObject.GType<WallClockPrivate>;
+
         // Constructors of GnomeDesktop.WallClockPrivate
 
         _init(...args: any[]): void;
@@ -1015,6 +1033,8 @@ export namespace GnomeDesktop {
 
     type XkbInfoClass = typeof XkbInfo;
     abstract class XkbInfoPrivate {
+        static $gtype: GObject.GType<XkbInfoPrivate>;
+
         // Constructors of GnomeDesktop.XkbInfoPrivate
 
         _init(...args: any[]): void;

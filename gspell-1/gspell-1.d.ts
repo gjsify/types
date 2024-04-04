@@ -31,6 +31,8 @@ export namespace Gspell {
      * from a spell-checker-related function.
      */
     class CheckerError extends GLib.Error {
+        static $gtype: GObject.GType<CheckerError>;
+
         // Static fields of Gspell.CheckerError
 
         /**
@@ -83,6 +85,8 @@ export namespace Gspell {
     }
 
     class Checker extends GObject.Object {
+        static $gtype: GObject.GType<Checker>;
+
         // Own properties of Gspell.Checker
 
         /**
@@ -190,6 +194,8 @@ export namespace Gspell {
     }
 
     class CheckerDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<CheckerDialog>;
+
         // Own properties of Gspell.CheckerDialog
 
         /**
@@ -584,6 +590,8 @@ export namespace Gspell {
     }
 
     class Entry extends GObject.Object {
+        static $gtype: GObject.GType<Entry>;
+
         // Own properties of Gspell.Entry
 
         /**
@@ -684,6 +692,8 @@ export namespace Gspell {
     }
 
     class EntryBuffer extends GObject.Object {
+        static $gtype: GObject.GType<EntryBuffer>;
+
         // Own properties of Gspell.EntryBuffer
 
         /**
@@ -745,6 +755,8 @@ export namespace Gspell {
         extends Gtk.Button
         implements Atk.ImplementorIface, LanguageChooser, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<LanguageChooserButton>;
+
         // Constructors of Gspell.LanguageChooserButton
 
         constructor(properties?: Partial<LanguageChooserButton.ConstructorProps>, ...args: any[]);
@@ -4921,6 +4933,8 @@ export namespace Gspell {
     }
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, LanguageChooser, Gtk.Buildable {
+        static $gtype: GObject.GType<LanguageChooserDialog>;
+
         // Constructors of Gspell.LanguageChooserDialog
 
         constructor(properties?: Partial<LanguageChooserDialog.ConstructorProps>, ...args: any[]);
@@ -5337,6 +5351,8 @@ export namespace Gspell {
     }
 
     class NavigatorTextView extends GObject.InitiallyUnowned implements Navigator {
+        static $gtype: GObject.GType<NavigatorTextView>;
+
         // Own properties of Gspell.NavigatorTextView
 
         /**
@@ -5426,6 +5442,8 @@ export namespace Gspell {
     }
 
     class TextBuffer extends GObject.Object {
+        static $gtype: GObject.GType<TextBuffer>;
+
         // Own properties of Gspell.TextBuffer
 
         /**
@@ -5484,6 +5502,8 @@ export namespace Gspell {
     }
 
     class TextView extends GObject.Object {
+        static $gtype: GObject.GType<TextView>;
+
         // Own properties of Gspell.TextView
 
         /**
@@ -5594,6 +5614,8 @@ export namespace Gspell {
     type EntryBufferClass = typeof EntryBuffer;
     type EntryClass = typeof Entry;
     abstract class Language {
+        static $gtype: GObject.GType<Language>;
+
         // Constructors of Gspell.Language
 
         _init(...args: any[]): void;

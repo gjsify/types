@@ -74,6 +74,8 @@ export namespace Unique {
      * with the provided functions.
      */
     class App extends GObject.Object {
+        static $gtype: GObject.GType<App>;
+
         // Own properties of Unique.App
 
         /**
@@ -182,6 +184,8 @@ export namespace Unique {
      * be accessed using the provided functions.
      */
     abstract class Backend extends GObject.Object {
+        static $gtype: GObject.GType<Backend>;
+
         // Constructors of Unique.Backend
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
@@ -272,6 +276,8 @@ export namespace Unique {
 
     type AppClass = typeof App;
     abstract class AppPrivate {
+        static $gtype: GObject.GType<AppPrivate>;
+
         // Constructors of Unique.AppPrivate
 
         _init(...args: any[]): void;
@@ -286,6 +292,8 @@ export namespace Unique {
      * id of the instance sending the message.
      */
     class MessageData {
+        static $gtype: GObject.GType<MessageData>;
+
         // Constructors of Unique.MessageData
 
         constructor(properties?: Partial<{}>);

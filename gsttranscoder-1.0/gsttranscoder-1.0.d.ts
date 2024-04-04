@@ -22,6 +22,8 @@ import type GstAudio from '@girs/gstaudio-1.0';
 
 export namespace GstTranscoder {
     class TranscoderError extends GLib.Error {
+        static $gtype: GObject.GType<TranscoderError>;
+
         // Static fields of GstTranscoder.TranscoderError
 
         /**
@@ -156,6 +158,8 @@ export namespace GstTranscoder {
     }
 
     class Transcoder extends Gst.Object {
+        static $gtype: GObject.GType<Transcoder>;
+
         // Own properties of GstTranscoder.Transcoder
 
         /**
@@ -315,6 +319,8 @@ export namespace GstTranscoder {
      * Transforms #GstTranscoder bus messages to signals from the adapter object.
      */
     class TranscoderSignalAdapter extends GObject.Object {
+        static $gtype: GObject.GType<TranscoderSignalAdapter>;
+
         // Own properties of GstTranscoder.TranscoderSignalAdapter
 
         /**

@@ -967,6 +967,8 @@ export namespace Mbim {
      * Common errors that may be reported by libmbim-glib.
      */
     class CoreError extends GLib.Error {
+        static $gtype: GObject.GType<CoreError>;
+
         // Static fields of Mbim.CoreError
 
         /**
@@ -1062,6 +1064,8 @@ export namespace Mbim {
      * DRX cycle settings.
      */
     class DrxCycle {
+        static $gtype: GObject.GType<DrxCycle>;
+
         // Static fields of Mbim.DrxCycle
 
         /**
@@ -1866,6 +1870,8 @@ export namespace Mbim {
      * MBIM protocol errors.
      */
     class ProtocolError extends GLib.Error {
+        static $gtype: GObject.GType<ProtocolError>;
+
         // Static fields of Mbim.ProtocolError
 
         /**
@@ -2399,6 +2405,8 @@ export namespace Mbim {
      * Status of the MBIM request.
      */
     class StatusError extends GLib.Error {
+        static $gtype: GObject.GType<StatusError>;
+
         // Static fields of Mbim.StatusError
 
         /**
@@ -4524,6 +4532,8 @@ export namespace Mbim {
      * Frequency Range.
      */
     class FrequencyRange {
+        static $gtype: GObject.GType<FrequencyRange>;
+
         // Static fields of Mbim.FrequencyRange
 
         /**
@@ -4746,6 +4756,8 @@ export namespace Mbim {
      * using the provided API.
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Mbim.Device
 
         get device_consecutive_timeouts(): number;
@@ -5555,6 +5567,8 @@ export namespace Mbim {
      * using the provided API.
      */
     class Proxy extends GObject.Object {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own properties of Mbim.Proxy
 
         get mbim_proxy_n_clients(): number;
@@ -5575,6 +5589,8 @@ export namespace Mbim {
      * A MbimAtdsProvider element.
      */
     class AtdsProvider {
+        static $gtype: GObject.GType<AtdsProvider>;
+
         // Own fields of Mbim.AtdsProvider
 
         provider_id: string;
@@ -5611,6 +5627,8 @@ export namespace Mbim {
      * A MbimCellInfoCdma element.
      */
     class CellInfoCdma {
+        static $gtype: GObject.GType<CellInfoCdma>;
+
         // Own fields of Mbim.CellInfoCdma
 
         serving_cell_flag: number;
@@ -5653,6 +5671,8 @@ export namespace Mbim {
      * A MbimCellInfoNeighboringGsm element.
      */
     class CellInfoNeighboringGsm {
+        static $gtype: GObject.GType<CellInfoNeighboringGsm>;
+
         // Own fields of Mbim.CellInfoNeighboringGsm
 
         provider_id: string;
@@ -5689,6 +5709,8 @@ export namespace Mbim {
      * A MbimCellInfoNeighboringLte element.
      */
     class CellInfoNeighboringLte {
+        static $gtype: GObject.GType<CellInfoNeighboringLte>;
+
         // Own fields of Mbim.CellInfoNeighboringLte
 
         provider_id: string;
@@ -5727,6 +5749,8 @@ export namespace Mbim {
      * A MbimCellInfoNeighboringNr element.
      */
     class CellInfoNeighboringNr {
+        static $gtype: GObject.GType<CellInfoNeighboringNr>;
+
         // Own fields of Mbim.CellInfoNeighboringNr
 
         system_sub_type: number;
@@ -5767,6 +5791,8 @@ export namespace Mbim {
      * A MbimCellInfoNeighboringTdscdma element.
      */
     class CellInfoNeighboringTdscdma {
+        static $gtype: GObject.GType<CellInfoNeighboringTdscdma>;
+
         // Own fields of Mbim.CellInfoNeighboringTdscdma
 
         provider_id: string;
@@ -5807,6 +5833,8 @@ export namespace Mbim {
      * A MbimCellInfoNeighboringUmts element.
      */
     class CellInfoNeighboringUmts {
+        static $gtype: GObject.GType<CellInfoNeighboringUmts>;
+
         // Own fields of Mbim.CellInfoNeighboringUmts
 
         provider_id: string;
@@ -5847,6 +5875,8 @@ export namespace Mbim {
      * A MbimCellInfoServingGsm element.
      */
     class CellInfoServingGsm {
+        static $gtype: GObject.GType<CellInfoServingGsm>;
+
         // Own fields of Mbim.CellInfoServingGsm
 
         provider_id: string;
@@ -5884,6 +5914,8 @@ export namespace Mbim {
      * A MbimCellInfoServingLte element.
      */
     class CellInfoServingLte {
+        static $gtype: GObject.GType<CellInfoServingLte>;
+
         // Own fields of Mbim.CellInfoServingLte
 
         provider_id: string;
@@ -5923,6 +5955,8 @@ export namespace Mbim {
      * A MbimCellInfoServingNr element.
      */
     class CellInfoServingNr {
+        static $gtype: GObject.GType<CellInfoServingNr>;
+
         // Own fields of Mbim.CellInfoServingNr
 
         provider_id: string;
@@ -5965,6 +5999,8 @@ export namespace Mbim {
      * A MbimCellInfoServingTdscdma element.
      */
     class CellInfoServingTdscdma {
+        static $gtype: GObject.GType<CellInfoServingTdscdma>;
+
         // Own fields of Mbim.CellInfoServingTdscdma
 
         provider_id: string;
@@ -6004,6 +6040,8 @@ export namespace Mbim {
      * A MbimCellInfoServingUmts element.
      */
     class CellInfoServingUmts {
+        static $gtype: GObject.GType<CellInfoServingUmts>;
+
         // Own fields of Mbim.CellInfoServingUmts
 
         provider_id: string;
@@ -6046,6 +6084,8 @@ export namespace Mbim {
     }
 
     class DeprecatedLteAttachStatus {
+        static $gtype: GObject.GType<DeprecatedLteAttachStatus>;
+
         // Own fields of Mbim.DeprecatedLteAttachStatus
 
         lte_attach_state: number;
@@ -6074,6 +6114,8 @@ export namespace Mbim {
 
     type DeviceClass = typeof Device;
     abstract class DevicePrivate {
+        static $gtype: GObject.GType<DevicePrivate>;
+
         // Constructors of Mbim.DevicePrivate
 
         _init(...args: any[]): void;
@@ -6083,6 +6125,8 @@ export namespace Mbim {
      * A MbimDeviceServiceElement element.
      */
     class DeviceServiceElement {
+        static $gtype: GObject.GType<DeviceServiceElement>;
+
         // Own fields of Mbim.DeviceServiceElement
 
         device_service_id: Uuid;
@@ -6117,6 +6161,8 @@ export namespace Mbim {
      * A MbimEventEntry element.
      */
     class EventEntry {
+        static $gtype: GObject.GType<EventEntry>;
+
         // Own fields of Mbim.EventEntry
 
         device_service_id: Uuid;
@@ -6147,6 +6193,8 @@ export namespace Mbim {
      * An IPv4 address.
      */
     class IPv4 {
+        static $gtype: GObject.GType<IPv4>;
+
         // Own fields of Mbim.IPv4
 
         addr: Uint8Array;
@@ -6165,6 +6213,8 @@ export namespace Mbim {
      * A MbimIPv4Element element.
      */
     class IPv4Element {
+        static $gtype: GObject.GType<IPv4Element>;
+
         // Own fields of Mbim.IPv4Element
 
         on_link_prefix_length: number;
@@ -6193,6 +6243,8 @@ export namespace Mbim {
      * An IPv6 address.
      */
     class IPv6 {
+        static $gtype: GObject.GType<IPv6>;
+
         // Own fields of Mbim.IPv6
 
         addr: Uint8Array;
@@ -6211,6 +6263,8 @@ export namespace Mbim {
      * A MbimIPv6Element element.
      */
     class IPv6Element {
+        static $gtype: GObject.GType<IPv6Element>;
+
         // Own fields of Mbim.IPv6Element
 
         on_link_prefix_length: number;
@@ -6239,6 +6293,8 @@ export namespace Mbim {
      * A MbimIntelRfimFrequencyValue element.
      */
     class IntelRfimFrequencyValue {
+        static $gtype: GObject.GType<IntelRfimFrequencyValue>;
+
         // Own fields of Mbim.IntelRfimFrequencyValue
 
         serving_cell_info: number;
@@ -6279,6 +6335,8 @@ export namespace Mbim {
      * A MbimLteAttachConfiguration element.
      */
     class LteAttachConfiguration {
+        static $gtype: GObject.GType<LteAttachConfiguration>;
+
         // Own fields of Mbim.LteAttachConfiguration
 
         ip_type: number;
@@ -6319,6 +6377,8 @@ export namespace Mbim {
      * An opaque type representing a MBIM message.
      */
     abstract class Message {
+        static $gtype: GObject.GType<Message>;
+
         // Constructors of Mbim.Message
 
         constructor(properties?: Partial<{}>);
@@ -8175,6 +8235,8 @@ export namespace Mbim {
      * A MbimPacketFilter element.
      */
     class PacketFilter {
+        static $gtype: GObject.GType<PacketFilter>;
+
         // Own fields of Mbim.PacketFilter
 
         filter_size: number;
@@ -8205,6 +8267,8 @@ export namespace Mbim {
      * A MbimPacketFilterV3 element.
      */
     class PacketFilterV3 {
+        static $gtype: GObject.GType<PacketFilterV3>;
+
         // Own fields of Mbim.PacketFilterV3
 
         filter_size: number;
@@ -8237,6 +8301,8 @@ export namespace Mbim {
      * A MbimPcoValue element.
      */
     class PcoValue {
+        static $gtype: GObject.GType<PcoValue>;
+
         // Own fields of Mbim.PcoValue
 
         session_id: number;
@@ -8268,6 +8334,8 @@ export namespace Mbim {
      * A MbimPhonebookEntry element.
      */
     class PhonebookEntry {
+        static $gtype: GObject.GType<PhonebookEntry>;
+
         // Own fields of Mbim.PhonebookEntry
 
         entry_index: number;
@@ -8298,6 +8366,8 @@ export namespace Mbim {
      * A MbimPinDesc element.
      */
     class PinDesc {
+        static $gtype: GObject.GType<PinDesc>;
+
         // Own fields of Mbim.PinDesc
 
         pin_mode: number;
@@ -8329,6 +8399,8 @@ export namespace Mbim {
      * A MbimProvider element.
      */
     class Provider {
+        static $gtype: GObject.GType<Provider>;
+
         // Own fields of Mbim.Provider
 
         provider_id: string;
@@ -8372,6 +8444,8 @@ export namespace Mbim {
      * A MbimProvisionedContextElement element.
      */
     class ProvisionedContextElement {
+        static $gtype: GObject.GType<ProvisionedContextElement>;
+
         // Own fields of Mbim.ProvisionedContextElement
 
         context_id: number;
@@ -8410,6 +8484,8 @@ export namespace Mbim {
      * A MbimProvisionedContextElementV2 element.
      */
     class ProvisionedContextElementV2 {
+        static $gtype: GObject.GType<ProvisionedContextElementV2>;
+
         // Own fields of Mbim.ProvisionedContextElementV2
 
         context_id: number;
@@ -8456,6 +8532,8 @@ export namespace Mbim {
 
     type ProxyClass = typeof Proxy;
     abstract class ProxyPrivate {
+        static $gtype: GObject.GType<ProxyPrivate>;
+
         // Constructors of Mbim.ProxyPrivate
 
         _init(...args: any[]): void;
@@ -8465,6 +8543,8 @@ export namespace Mbim {
      * A MbimRsrpSnrInfo element.
      */
     class RsrpSnrInfo {
+        static $gtype: GObject.GType<RsrpSnrInfo>;
+
         // Own fields of Mbim.RsrpSnrInfo
 
         rsrp: number;
@@ -8499,6 +8579,8 @@ export namespace Mbim {
      * A MbimSarConfigState element.
      */
     class SarConfigState {
+        static $gtype: GObject.GType<SarConfigState>;
+
         // Own fields of Mbim.SarConfigState
 
         antenna_index: number;
@@ -8527,6 +8609,8 @@ export namespace Mbim {
      * A MbimSlot element.
      */
     class Slot {
+        static $gtype: GObject.GType<Slot>;
+
         // Own fields of Mbim.Slot
 
         slot: number;
@@ -8553,6 +8637,8 @@ export namespace Mbim {
      * A MbimSmsCdmaReadRecord element.
      */
     class SmsCdmaReadRecord {
+        static $gtype: GObject.GType<SmsCdmaReadRecord>;
+
         // Own fields of Mbim.SmsCdmaReadRecord
 
         message_index: number;
@@ -8595,6 +8681,8 @@ export namespace Mbim {
      * A MbimSmsCdmaSendRecord element.
      */
     class SmsCdmaSendRecord {
+        static $gtype: GObject.GType<SmsCdmaSendRecord>;
+
         // Own fields of Mbim.SmsCdmaSendRecord
 
         encoding: number;
@@ -8630,6 +8718,8 @@ export namespace Mbim {
      * A MbimSmsPduReadRecord element.
      */
     class SmsPduReadRecord {
+        static $gtype: GObject.GType<SmsPduReadRecord>;
+
         // Own fields of Mbim.SmsPduReadRecord
 
         message_index: number;
@@ -8662,6 +8752,8 @@ export namespace Mbim {
      * A MbimSmsPduSendRecord element.
      */
     class SmsPduSendRecord {
+        static $gtype: GObject.GType<SmsPduSendRecord>;
+
         // Own fields of Mbim.SmsPduSendRecord
 
         pdu_data_size: number;
@@ -8689,6 +8781,8 @@ export namespace Mbim {
      * A MbimTai element.
      */
     class Tai {
+        static $gtype: GObject.GType<Tai>;
+
         // Own fields of Mbim.Tai
 
         plmn_mcc: number;
@@ -8718,6 +8812,8 @@ export namespace Mbim {
      * A MbimTerminalCapabilityInfo element.
      */
     class TerminalCapabilityInfo {
+        static $gtype: GObject.GType<TerminalCapabilityInfo>;
+
         // Own fields of Mbim.TerminalCapabilityInfo
 
         terminal_capability_data_size: number;
@@ -8746,6 +8842,8 @@ export namespace Mbim {
      * An opaque type representing a MBIM TLV.
      */
     abstract class Tlv {
+        static $gtype: GObject.GType<Tlv>;
+
         // Constructors of Mbim.Tlv
 
         constructor(type: TlvType, data: number, data_length: number);
@@ -8819,6 +8917,8 @@ export namespace Mbim {
      * A MbimUiccApplication element.
      */
     class UiccApplication {
+        static $gtype: GObject.GType<UiccApplication>;
+
         // Own fields of Mbim.UiccApplication
 
         application_type: number;
@@ -8857,6 +8957,8 @@ export namespace Mbim {
      * A UUID as defined in MBIM.
      */
     class Uuid {
+        static $gtype: GObject.GType<Uuid>;
+
         // Own fields of Mbim.Uuid
 
         a: Uint8Array;

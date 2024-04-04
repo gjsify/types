@@ -302,6 +302,8 @@ export namespace LibvirtGConfig {
     }
 
     class Capabilities extends Object {
+        static $gtype: GObject.GType<Capabilities>;
+
         // Constructors of LibvirtGConfig.Capabilities
 
         constructor(properties?: Partial<Capabilities.ConstructorProps>, ...args: any[]);
@@ -336,6 +338,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesCpu extends Object {
+        static $gtype: GObject.GType<CapabilitiesCpu>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpu
 
         constructor(properties?: Partial<CapabilitiesCpu.ConstructorProps>, ...args: any[]);
@@ -386,6 +390,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesCpuFeature extends Object {
+        static $gtype: GObject.GType<CapabilitiesCpuFeature>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuFeature
 
         constructor(properties?: Partial<CapabilitiesCpuFeature.ConstructorProps>, ...args: any[]);
@@ -405,6 +411,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesCpuModel extends Object {
+        static $gtype: GObject.GType<CapabilitiesCpuModel>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuModel
 
         constructor(properties?: Partial<CapabilitiesCpuModel.ConstructorProps>, ...args: any[]);
@@ -431,6 +439,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesCpuTopology extends Object {
+        static $gtype: GObject.GType<CapabilitiesCpuTopology>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuTopology
 
         constructor(properties?: Partial<CapabilitiesCpuTopology.ConstructorProps>, ...args: any[]);
@@ -461,6 +471,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesGuest extends Object {
+        static $gtype: GObject.GType<CapabilitiesGuest>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuest
 
         constructor(properties?: Partial<CapabilitiesGuest.ConstructorProps>, ...args: any[]);
@@ -489,6 +501,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesGuestArch extends Object {
+        static $gtype: GObject.GType<CapabilitiesGuestArch>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestArch
 
         constructor(properties?: Partial<CapabilitiesGuestArch.ConstructorProps>, ...args: any[]);
@@ -513,6 +527,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesGuestDomain extends Object {
+        static $gtype: GObject.GType<CapabilitiesGuestDomain>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestDomain
 
         constructor(properties?: Partial<CapabilitiesGuestDomain.ConstructorProps>, ...args: any[]);
@@ -532,6 +548,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesGuestFeature extends Object {
+        static $gtype: GObject.GType<CapabilitiesGuestFeature>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestFeature
 
         constructor(properties?: Partial<CapabilitiesGuestFeature.ConstructorProps>, ...args: any[]);
@@ -550,6 +568,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesHost extends Object {
+        static $gtype: GObject.GType<CapabilitiesHost>;
+
         // Constructors of LibvirtGConfig.CapabilitiesHost
 
         constructor(properties?: Partial<CapabilitiesHost.ConstructorProps>, ...args: any[]);
@@ -578,6 +598,8 @@ export namespace LibvirtGConfig {
     }
 
     class CapabilitiesHostSecModel extends Object {
+        static $gtype: GObject.GType<CapabilitiesHostSecModel>;
+
         // Constructors of LibvirtGConfig.CapabilitiesHostSecModel
 
         constructor(properties?: Partial<CapabilitiesHostSecModel.ConstructorProps>, ...args: any[]);
@@ -607,6 +629,8 @@ export namespace LibvirtGConfig {
     }
 
     class Domain extends Object {
+        static $gtype: GObject.GType<Domain>;
+
         // Own properties of LibvirtGConfig.Domain
 
         get current_memory(): number;
@@ -722,6 +746,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainAddress extends Object {
+        static $gtype: GObject.GType<DomainAddress>;
+
         // Constructors of LibvirtGConfig.DomainAddress
 
         constructor(properties?: Partial<DomainAddress.ConstructorProps>, ...args: any[]);
@@ -736,6 +762,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainAddressPci extends DomainAddress {
+        static $gtype: GObject.GType<DomainAddressPci>;
+
         // Constructors of LibvirtGConfig.DomainAddressPci
 
         constructor(properties?: Partial<DomainAddressPci.ConstructorProps>, ...args: any[]);
@@ -770,6 +798,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainAddressUsb extends DomainAddress {
+        static $gtype: GObject.GType<DomainAddressUsb>;
+
         // Constructors of LibvirtGConfig.DomainAddressUsb
 
         constructor(properties?: Partial<DomainAddressUsb.ConstructorProps>, ...args: any[]);
@@ -796,6 +826,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainCapabilities extends Object {
+        static $gtype: GObject.GType<DomainCapabilities>;
+
         // Constructors of LibvirtGConfig.DomainCapabilities
 
         constructor(properties?: Partial<DomainCapabilities.ConstructorProps>, ...args: any[]);
@@ -825,6 +857,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainCapabilitiesOs extends Object {
+        static $gtype: GObject.GType<DomainCapabilitiesOs>;
+
         // Constructors of LibvirtGConfig.DomainCapabilitiesOs
 
         constructor(properties?: Partial<DomainCapabilitiesOs.ConstructorProps>, ...args: any[]);
@@ -856,6 +890,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainChannel extends DomainChardev {
+        static $gtype: GObject.GType<DomainChannel>;
+
         // Constructors of LibvirtGConfig.DomainChannel
 
         constructor(properties?: Partial<DomainChannel.ConstructorProps>, ...args: any[]);
@@ -884,6 +920,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainChardev extends DomainDevice {
+        static $gtype: GObject.GType<DomainChardev>;
+
         // Constructors of LibvirtGConfig.DomainChardev
 
         constructor(properties?: Partial<DomainChardev.ConstructorProps>, ...args: any[]);
@@ -907,6 +945,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainChardevSource extends Object {
+        static $gtype: GObject.GType<DomainChardevSource>;
+
         // Constructors of LibvirtGConfig.DomainChardevSource
 
         constructor(properties?: Partial<DomainChardevSource.ConstructorProps>, ...args: any[]);
@@ -921,6 +961,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainChardevSourcePty extends DomainChardevSource {
+        static $gtype: GObject.GType<DomainChardevSourcePty>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourcePty
 
         constructor(properties?: Partial<DomainChardevSourcePty.ConstructorProps>, ...args: any[]);
@@ -947,6 +989,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainChardevSourceSpicePort extends DomainChardevSource {
+        static $gtype: GObject.GType<DomainChardevSourceSpicePort>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceSpicePort
 
         constructor(properties?: Partial<DomainChardevSourceSpicePort.ConstructorProps>, ...args: any[]);
@@ -973,6 +1017,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainChardevSourceSpiceVmc extends DomainChardevSource {
+        static $gtype: GObject.GType<DomainChardevSourceSpiceVmc>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceSpiceVmc
 
         constructor(properties?: Partial<DomainChardevSourceSpiceVmc.ConstructorProps>, ...args: any[]);
@@ -994,6 +1040,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainChardevSourceUnix extends DomainChardevSource {
+        static $gtype: GObject.GType<DomainChardevSourceUnix>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceUnix
 
         constructor(properties?: Partial<DomainChardevSourceUnix.ConstructorProps>, ...args: any[]);
@@ -1015,6 +1063,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainClock extends Object {
+        static $gtype: GObject.GType<DomainClock>;
+
         // Constructors of LibvirtGConfig.DomainClock
 
         constructor(properties?: Partial<DomainClock.ConstructorProps>, ...args: any[]);
@@ -1046,6 +1096,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainConsole extends DomainChardev {
+        static $gtype: GObject.GType<DomainConsole>;
+
         // Constructors of LibvirtGConfig.DomainConsole
 
         constructor(properties?: Partial<DomainConsole.ConstructorProps>, ...args: any[]);
@@ -1071,6 +1123,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainController extends DomainDevice {
+        static $gtype: GObject.GType<DomainController>;
+
         // Constructors of LibvirtGConfig.DomainController
 
         constructor(properties?: Partial<DomainController.ConstructorProps>, ...args: any[]);
@@ -1098,6 +1152,8 @@ export namespace LibvirtGConfig {
      * be accessed via the following functions.
      */
     class DomainControllerUsb extends DomainController {
+        static $gtype: GObject.GType<DomainControllerUsb>;
+
         // Constructors of LibvirtGConfig.DomainControllerUsb
 
         constructor(properties?: Partial<DomainControllerUsb.ConstructorProps>, ...args: any[]);
@@ -1135,6 +1191,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainCpu extends CapabilitiesCpu {
+        static $gtype: GObject.GType<DomainCpu>;
+
         // Constructors of LibvirtGConfig.DomainCpu
 
         constructor(properties?: Partial<DomainCpu.ConstructorProps>, ...args: any[]);
@@ -1164,6 +1222,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainCpuFeature extends CapabilitiesCpuFeature {
+        static $gtype: GObject.GType<DomainCpuFeature>;
+
         // Constructors of LibvirtGConfig.DomainCpuFeature
 
         constructor(properties?: Partial<DomainCpuFeature.ConstructorProps>, ...args: any[]);
@@ -1190,6 +1250,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainCpuModel extends CapabilitiesCpuModel {
+        static $gtype: GObject.GType<DomainCpuModel>;
+
         // Constructors of LibvirtGConfig.DomainCpuModel
 
         constructor(properties?: Partial<DomainCpuModel.ConstructorProps>, ...args: any[]);
@@ -1211,6 +1273,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainDevice extends Object {
+        static $gtype: GObject.GType<DomainDevice>;
+
         // Constructors of LibvirtGConfig.DomainDevice
 
         constructor(properties?: Partial<DomainDevice.ConstructorProps>, ...args: any[]);
@@ -1229,6 +1293,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainDisk extends DomainDevice {
+        static $gtype: GObject.GType<DomainDisk>;
+
         // Constructors of LibvirtGConfig.DomainDisk
 
         constructor(properties?: Partial<DomainDisk.ConstructorProps>, ...args: any[]);
@@ -1286,6 +1352,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainDiskDriver extends Object {
+        static $gtype: GObject.GType<DomainDiskDriver>;
+
         // Constructors of LibvirtGConfig.DomainDiskDriver
 
         constructor(properties?: Partial<DomainDiskDriver.ConstructorProps>, ...args: any[]);
@@ -1324,6 +1392,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainFilesys extends DomainDevice {
+        static $gtype: GObject.GType<DomainFilesys>;
+
         // Constructors of LibvirtGConfig.DomainFilesys
 
         constructor(properties?: Partial<DomainFilesys.ConstructorProps>, ...args: any[]);
@@ -1356,6 +1426,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainGraphics extends DomainDevice {
+        static $gtype: GObject.GType<DomainGraphics>;
+
         // Constructors of LibvirtGConfig.DomainGraphics
 
         constructor(properties?: Partial<DomainGraphics.ConstructorProps>, ...args: any[]);
@@ -1370,6 +1442,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainGraphicsDesktop extends DomainGraphics {
+        static $gtype: GObject.GType<DomainGraphicsDesktop>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsDesktop
 
         constructor(properties?: Partial<DomainGraphicsDesktop.ConstructorProps>, ...args: any[]);
@@ -1398,6 +1472,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainGraphicsRdp extends DomainGraphics {
+        static $gtype: GObject.GType<DomainGraphicsRdp>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsRdp
 
         constructor(properties?: Partial<DomainGraphicsRdp.ConstructorProps>, ...args: any[]);
@@ -1429,6 +1505,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainGraphicsSdl extends DomainGraphics {
+        static $gtype: GObject.GType<DomainGraphicsSdl>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsSdl
 
         constructor(properties?: Partial<DomainGraphicsSdl.ConstructorProps>, ...args: any[]);
@@ -1456,6 +1534,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainGraphicsSpice extends DomainGraphics {
+        static $gtype: GObject.GType<DomainGraphicsSpice>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsSpice
 
         constructor(properties?: Partial<DomainGraphicsSpice.ConstructorProps>, ...args: any[]);
@@ -1488,6 +1568,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainGraphicsVnc extends DomainGraphics {
+        static $gtype: GObject.GType<DomainGraphicsVnc>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsVnc
 
         constructor(properties?: Partial<DomainGraphicsVnc.ConstructorProps>, ...args: any[]);
@@ -1518,6 +1600,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainHostdev extends DomainDevice {
+        static $gtype: GObject.GType<DomainHostdev>;
+
         // Constructors of LibvirtGConfig.DomainHostdev
 
         constructor(properties?: Partial<DomainHostdev.ConstructorProps>, ...args: any[]);
@@ -1554,6 +1638,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainHostdevPci extends DomainHostdev {
+        static $gtype: GObject.GType<DomainHostdevPci>;
+
         // Constructors of LibvirtGConfig.DomainHostdevPci
 
         constructor(properties?: Partial<DomainHostdevPci.ConstructorProps>, ...args: any[]);
@@ -1590,6 +1676,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInput extends DomainDevice {
+        static $gtype: GObject.GType<DomainInput>;
+
         // Constructors of LibvirtGConfig.DomainInput
 
         constructor(properties?: Partial<DomainInput.ConstructorProps>, ...args: any[]);
@@ -1618,6 +1706,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainInterface extends DomainDevice {
+        static $gtype: GObject.GType<DomainInterface>;
+
         // Constructors of LibvirtGConfig.DomainInterface
 
         constructor(properties?: Partial<DomainInterface.ConstructorProps>, ...args: any[]);
@@ -1649,6 +1739,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInterfaceBridge extends DomainInterface {
+        static $gtype: GObject.GType<DomainInterfaceBridge>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceBridge
 
         constructor(properties?: Partial<DomainInterfaceBridge.ConstructorProps>, ...args: any[]);
@@ -1674,6 +1766,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInterfaceFilterref extends Object {
+        static $gtype: GObject.GType<DomainInterfaceFilterref>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceFilterref
 
         constructor(properties?: Partial<DomainInterfaceFilterref.ConstructorProps>, ...args: any[]);
@@ -1708,6 +1802,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInterfaceFilterrefParameter extends Object {
+        static $gtype: GObject.GType<DomainInterfaceFilterrefParameter>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceFilterrefParameter
 
         constructor(properties?: Partial<DomainInterfaceFilterrefParameter.ConstructorProps>, ...args: any[]);
@@ -1736,6 +1832,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInterfaceNetwork extends DomainInterface {
+        static $gtype: GObject.GType<DomainInterfaceNetwork>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceNetwork
 
         constructor(properties?: Partial<DomainInterfaceNetwork.ConstructorProps>, ...args: any[]);
@@ -1761,6 +1859,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainInterfaceUser extends DomainInterface {
+        static $gtype: GObject.GType<DomainInterfaceUser>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceUser
 
         constructor(properties?: Partial<DomainInterfaceUser.ConstructorProps>, ...args: any[]);
@@ -1782,6 +1882,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainMemballoon extends DomainDevice {
+        static $gtype: GObject.GType<DomainMemballoon>;
+
         // Constructors of LibvirtGConfig.DomainMemballoon
 
         constructor(properties?: Partial<DomainMemballoon.ConstructorProps>, ...args: any[]);
@@ -1807,6 +1909,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainOs extends Object {
+        static $gtype: GObject.GType<DomainOs>;
+
         // Constructors of LibvirtGConfig.DomainOs
 
         constructor(properties?: Partial<DomainOs.ConstructorProps>, ...args: any[]);
@@ -1854,6 +1958,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainParallel extends DomainChardev {
+        static $gtype: GObject.GType<DomainParallel>;
+
         // Constructors of LibvirtGConfig.DomainParallel
 
         constructor(properties?: Partial<DomainParallel.ConstructorProps>, ...args: any[]);
@@ -1875,6 +1981,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainPowerManagement extends Object {
+        static $gtype: GObject.GType<DomainPowerManagement>;
+
         // Constructors of LibvirtGConfig.DomainPowerManagement
 
         constructor(properties?: Partial<DomainPowerManagement.ConstructorProps>, ...args: any[]);
@@ -1901,6 +2009,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainRedirdev extends DomainChardev {
+        static $gtype: GObject.GType<DomainRedirdev>;
+
         // Constructors of LibvirtGConfig.DomainRedirdev
 
         constructor(properties?: Partial<DomainRedirdev.ConstructorProps>, ...args: any[]);
@@ -1927,6 +2037,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSeclabel extends Object {
+        static $gtype: GObject.GType<DomainSeclabel>;
+
         // Constructors of LibvirtGConfig.DomainSeclabel
 
         constructor(properties?: Partial<DomainSeclabel.ConstructorProps>, ...args: any[]);
@@ -1955,6 +2067,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSerial extends DomainChardev {
+        static $gtype: GObject.GType<DomainSerial>;
+
         // Constructors of LibvirtGConfig.DomainSerial
 
         constructor(properties?: Partial<DomainSerial.ConstructorProps>, ...args: any[]);
@@ -1976,6 +2090,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainSmartcard extends DomainDevice {
+        static $gtype: GObject.GType<DomainSmartcard>;
+
         // Constructors of LibvirtGConfig.DomainSmartcard
 
         constructor(properties?: Partial<DomainSmartcard.ConstructorProps>, ...args: any[]);
@@ -1994,6 +2110,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSmartcardHost extends DomainSmartcard {
+        static $gtype: GObject.GType<DomainSmartcardHost>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardHost
 
         constructor(properties?: Partial<DomainSmartcardHost.ConstructorProps>, ...args: any[]);
@@ -2015,6 +2133,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSmartcardHostCertificates extends DomainSmartcard {
+        static $gtype: GObject.GType<DomainSmartcardHostCertificates>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardHostCertificates
 
         constructor(properties?: Partial<DomainSmartcardHostCertificates.ConstructorProps>, ...args: any[]);
@@ -2041,6 +2161,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSmartcardPassthrough extends DomainSmartcard {
+        static $gtype: GObject.GType<DomainSmartcardPassthrough>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardPassthrough
 
         constructor(properties?: Partial<DomainSmartcardPassthrough.ConstructorProps>, ...args: any[]);
@@ -2066,6 +2188,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSnapshot extends Object {
+        static $gtype: GObject.GType<DomainSnapshot>;
+
         // Constructors of LibvirtGConfig.DomainSnapshot
 
         constructor(properties?: Partial<DomainSnapshot.ConstructorProps>, ...args: any[]);
@@ -2115,6 +2239,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSnapshotDisk extends Object {
+        static $gtype: GObject.GType<DomainSnapshotDisk>;
+
         // Constructors of LibvirtGConfig.DomainSnapshotDisk
 
         constructor(properties?: Partial<DomainSnapshotDisk.ConstructorProps>, ...args: any[]);
@@ -2147,6 +2273,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainSound extends DomainDevice {
+        static $gtype: GObject.GType<DomainSound>;
+
         // Constructors of LibvirtGConfig.DomainSound
 
         constructor(properties?: Partial<DomainSound.ConstructorProps>, ...args: any[]);
@@ -2172,6 +2300,8 @@ export namespace LibvirtGConfig {
     }
 
     abstract class DomainTimer extends Object {
+        static $gtype: GObject.GType<DomainTimer>;
+
         // Constructors of LibvirtGConfig.DomainTimer
 
         constructor(properties?: Partial<DomainTimer.ConstructorProps>, ...args: any[]);
@@ -2193,6 +2323,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainTimerHpet extends DomainTimer {
+        static $gtype: GObject.GType<DomainTimerHpet>;
+
         // Constructors of LibvirtGConfig.DomainTimerHpet
 
         constructor(properties?: Partial<DomainTimerHpet.ConstructorProps>, ...args: any[]);
@@ -2214,6 +2346,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainTimerPit extends DomainTimer {
+        static $gtype: GObject.GType<DomainTimerPit>;
+
         // Constructors of LibvirtGConfig.DomainTimerPit
 
         constructor(properties?: Partial<DomainTimerPit.ConstructorProps>, ...args: any[]);
@@ -2235,6 +2369,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainTimerRtc extends DomainTimer {
+        static $gtype: GObject.GType<DomainTimerRtc>;
+
         // Constructors of LibvirtGConfig.DomainTimerRtc
 
         constructor(properties?: Partial<DomainTimerRtc.ConstructorProps>, ...args: any[]);
@@ -2256,6 +2392,8 @@ export namespace LibvirtGConfig {
     }
 
     class DomainVideo extends DomainDevice {
+        static $gtype: GObject.GType<DomainVideo>;
+
         // Constructors of LibvirtGConfig.DomainVideo
 
         constructor(properties?: Partial<DomainVideo.ConstructorProps>, ...args: any[]);
@@ -2287,6 +2425,8 @@ export namespace LibvirtGConfig {
     }
 
     class Interface extends Object {
+        static $gtype: GObject.GType<Interface>;
+
         // Constructors of LibvirtGConfig.Interface
 
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
@@ -2308,6 +2448,8 @@ export namespace LibvirtGConfig {
     }
 
     class Network extends Object {
+        static $gtype: GObject.GType<Network>;
+
         // Constructors of LibvirtGConfig.Network
 
         constructor(properties?: Partial<Network.ConstructorProps>, ...args: any[]);
@@ -2329,6 +2471,8 @@ export namespace LibvirtGConfig {
     }
 
     class NetworkFilter extends Object {
+        static $gtype: GObject.GType<NetworkFilter>;
+
         // Constructors of LibvirtGConfig.NetworkFilter
 
         constructor(properties?: Partial<NetworkFilter.ConstructorProps>, ...args: any[]);
@@ -2350,6 +2494,8 @@ export namespace LibvirtGConfig {
     }
 
     class NodeDevice extends Object {
+        static $gtype: GObject.GType<NodeDevice>;
+
         // Constructors of LibvirtGConfig.NodeDevice
 
         constructor(properties?: Partial<NodeDevice.ConstructorProps>, ...args: any[]);
@@ -2374,6 +2520,8 @@ export namespace LibvirtGConfig {
     }
 
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of LibvirtGConfig.Object
 
         get node(): any;
@@ -2407,6 +2555,8 @@ export namespace LibvirtGConfig {
     }
 
     class Secret extends Object {
+        static $gtype: GObject.GType<Secret>;
+
         // Constructors of LibvirtGConfig.Secret
 
         constructor(properties?: Partial<Secret.ConstructorProps>, ...args: any[]);
@@ -2428,6 +2578,8 @@ export namespace LibvirtGConfig {
     }
 
     class StoragePermissions extends Object {
+        static $gtype: GObject.GType<StoragePermissions>;
+
         // Constructors of LibvirtGConfig.StoragePermissions
 
         constructor(properties?: Partial<StoragePermissions.ConstructorProps>, ...args: any[]);
@@ -2476,6 +2628,8 @@ export namespace LibvirtGConfig {
     }
 
     class StoragePool extends Object {
+        static $gtype: GObject.GType<StoragePool>;
+
         // Constructors of LibvirtGConfig.StoragePool
 
         constructor(properties?: Partial<StoragePool.ConstructorProps>, ...args: any[]);
@@ -2548,6 +2702,8 @@ export namespace LibvirtGConfig {
     }
 
     class StoragePoolSource extends Object {
+        static $gtype: GObject.GType<StoragePoolSource>;
+
         // Constructors of LibvirtGConfig.StoragePoolSource
 
         constructor(properties?: Partial<StoragePoolSource.ConstructorProps>, ...args: any[]);
@@ -2625,6 +2781,8 @@ export namespace LibvirtGConfig {
     }
 
     class StoragePoolTarget extends Object {
+        static $gtype: GObject.GType<StoragePoolTarget>;
+
         // Constructors of LibvirtGConfig.StoragePoolTarget
 
         constructor(properties?: Partial<StoragePoolTarget.ConstructorProps>, ...args: any[]);
@@ -2662,6 +2820,8 @@ export namespace LibvirtGConfig {
     }
 
     class StorageVol extends Object {
+        static $gtype: GObject.GType<StorageVol>;
+
         // Constructors of LibvirtGConfig.StorageVol
 
         constructor(properties?: Partial<StorageVol.ConstructorProps>, ...args: any[]);
@@ -2691,6 +2851,8 @@ export namespace LibvirtGConfig {
     }
 
     class StorageVolBackingStore extends Object {
+        static $gtype: GObject.GType<StorageVolBackingStore>;
+
         // Constructors of LibvirtGConfig.StorageVolBackingStore
 
         constructor(properties?: Partial<StorageVolBackingStore.ConstructorProps>, ...args: any[]);
@@ -2717,6 +2879,8 @@ export namespace LibvirtGConfig {
     }
 
     class StorageVolTarget extends Object {
+        static $gtype: GObject.GType<StorageVolTarget>;
+
         // Constructors of LibvirtGConfig.StorageVolTarget
 
         constructor(properties?: Partial<StorageVolTarget.ConstructorProps>, ...args: any[]);
@@ -2742,6 +2906,8 @@ export namespace LibvirtGConfig {
     type CapabilitiesCpuClass = typeof CapabilitiesCpu;
     type CapabilitiesCpuFeatureClass = typeof CapabilitiesCpuFeature;
     abstract class CapabilitiesCpuFeaturePrivate {
+        static $gtype: GObject.GType<CapabilitiesCpuFeaturePrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuFeaturePrivate
 
         _init(...args: any[]): void;
@@ -2749,12 +2915,16 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesCpuModelClass = typeof CapabilitiesCpuModel;
     abstract class CapabilitiesCpuModelPrivate {
+        static $gtype: GObject.GType<CapabilitiesCpuModelPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuModelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesCpuPrivate {
+        static $gtype: GObject.GType<CapabilitiesCpuPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuPrivate
 
         _init(...args: any[]): void;
@@ -2762,6 +2932,8 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesCpuTopologyClass = typeof CapabilitiesCpuTopology;
     abstract class CapabilitiesCpuTopologyPrivate {
+        static $gtype: GObject.GType<CapabilitiesCpuTopologyPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesCpuTopologyPrivate
 
         _init(...args: any[]): void;
@@ -2769,6 +2941,8 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesGuestArchClass = typeof CapabilitiesGuestArch;
     abstract class CapabilitiesGuestArchPrivate {
+        static $gtype: GObject.GType<CapabilitiesGuestArchPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestArchPrivate
 
         _init(...args: any[]): void;
@@ -2777,6 +2951,8 @@ export namespace LibvirtGConfig {
     type CapabilitiesGuestClass = typeof CapabilitiesGuest;
     type CapabilitiesGuestDomainClass = typeof CapabilitiesGuestDomain;
     abstract class CapabilitiesGuestDomainPrivate {
+        static $gtype: GObject.GType<CapabilitiesGuestDomainPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestDomainPrivate
 
         _init(...args: any[]): void;
@@ -2784,12 +2960,16 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesGuestFeatureClass = typeof CapabilitiesGuestFeature;
     abstract class CapabilitiesGuestFeaturePrivate {
+        static $gtype: GObject.GType<CapabilitiesGuestFeaturePrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestFeaturePrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesGuestPrivate {
+        static $gtype: GObject.GType<CapabilitiesGuestPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesGuestPrivate
 
         _init(...args: any[]): void;
@@ -2797,6 +2977,8 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesHostClass = typeof CapabilitiesHost;
     abstract class CapabilitiesHostPrivate {
+        static $gtype: GObject.GType<CapabilitiesHostPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesHostPrivate
 
         _init(...args: any[]): void;
@@ -2804,12 +2986,16 @@ export namespace LibvirtGConfig {
 
     type CapabilitiesHostSecModelClass = typeof CapabilitiesHostSecModel;
     abstract class CapabilitiesHostSecModelPrivate {
+        static $gtype: GObject.GType<CapabilitiesHostSecModelPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesHostSecModelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CapabilitiesPrivate {
+        static $gtype: GObject.GType<CapabilitiesPrivate>;
+
         // Constructors of LibvirtGConfig.CapabilitiesPrivate
 
         _init(...args: any[]): void;
@@ -2818,12 +3004,16 @@ export namespace LibvirtGConfig {
     type DomainAddressClass = typeof DomainAddress;
     type DomainAddressPciClass = typeof DomainAddressPci;
     abstract class DomainAddressPciPrivate {
+        static $gtype: GObject.GType<DomainAddressPciPrivate>;
+
         // Constructors of LibvirtGConfig.DomainAddressPciPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainAddressPrivate {
+        static $gtype: GObject.GType<DomainAddressPrivate>;
+
         // Constructors of LibvirtGConfig.DomainAddressPrivate
 
         _init(...args: any[]): void;
@@ -2831,6 +3021,8 @@ export namespace LibvirtGConfig {
 
     type DomainAddressUsbClass = typeof DomainAddressUsb;
     abstract class DomainAddressUsbPrivate {
+        static $gtype: GObject.GType<DomainAddressUsbPrivate>;
+
         // Constructors of LibvirtGConfig.DomainAddressUsbPrivate
 
         _init(...args: any[]): void;
@@ -2839,12 +3031,16 @@ export namespace LibvirtGConfig {
     type DomainCapabilitiesClass = typeof DomainCapabilities;
     type DomainCapabilitiesOsClass = typeof DomainCapabilitiesOs;
     abstract class DomainCapabilitiesOsPrivate {
+        static $gtype: GObject.GType<DomainCapabilitiesOsPrivate>;
+
         // Constructors of LibvirtGConfig.DomainCapabilitiesOsPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainCapabilitiesPrivate {
+        static $gtype: GObject.GType<DomainCapabilitiesPrivate>;
+
         // Constructors of LibvirtGConfig.DomainCapabilitiesPrivate
 
         _init(...args: any[]): void;
@@ -2852,6 +3048,8 @@ export namespace LibvirtGConfig {
 
     type DomainChannelClass = typeof DomainChannel;
     abstract class DomainChannelPrivate {
+        static $gtype: GObject.GType<DomainChannelPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChannelPrivate
 
         _init(...args: any[]): void;
@@ -2859,6 +3057,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevClass = typeof DomainChardev;
     abstract class DomainChardevPrivate {
+        static $gtype: GObject.GType<DomainChardevPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevPrivate
 
         _init(...args: any[]): void;
@@ -2866,6 +3066,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevSourceClass = typeof DomainChardevSource;
     abstract class DomainChardevSourcePrivate {
+        static $gtype: GObject.GType<DomainChardevSourcePrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourcePrivate
 
         _init(...args: any[]): void;
@@ -2873,6 +3075,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevSourcePtyClass = typeof DomainChardevSourcePty;
     abstract class DomainChardevSourcePtyPrivate {
+        static $gtype: GObject.GType<DomainChardevSourcePtyPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourcePtyPrivate
 
         _init(...args: any[]): void;
@@ -2880,6 +3084,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevSourceSpicePortClass = typeof DomainChardevSourceSpicePort;
     abstract class DomainChardevSourceSpicePortPrivate {
+        static $gtype: GObject.GType<DomainChardevSourceSpicePortPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceSpicePortPrivate
 
         _init(...args: any[]): void;
@@ -2887,6 +3093,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevSourceSpiceVmcClass = typeof DomainChardevSourceSpiceVmc;
     abstract class DomainChardevSourceSpiceVmcPrivate {
+        static $gtype: GObject.GType<DomainChardevSourceSpiceVmcPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceSpiceVmcPrivate
 
         _init(...args: any[]): void;
@@ -2894,6 +3102,8 @@ export namespace LibvirtGConfig {
 
     type DomainChardevSourceUnixClass = typeof DomainChardevSourceUnix;
     abstract class DomainChardevSourceUnixPrivate {
+        static $gtype: GObject.GType<DomainChardevSourceUnixPrivate>;
+
         // Constructors of LibvirtGConfig.DomainChardevSourceUnixPrivate
 
         _init(...args: any[]): void;
@@ -2902,6 +3112,8 @@ export namespace LibvirtGConfig {
     type DomainClass = typeof Domain;
     type DomainClockClass = typeof DomainClock;
     abstract class DomainClockPrivate {
+        static $gtype: GObject.GType<DomainClockPrivate>;
+
         // Constructors of LibvirtGConfig.DomainClockPrivate
 
         _init(...args: any[]): void;
@@ -2909,6 +3121,8 @@ export namespace LibvirtGConfig {
 
     type DomainConsoleClass = typeof DomainConsole;
     abstract class DomainConsolePrivate {
+        static $gtype: GObject.GType<DomainConsolePrivate>;
+
         // Constructors of LibvirtGConfig.DomainConsolePrivate
 
         _init(...args: any[]): void;
@@ -2916,6 +3130,8 @@ export namespace LibvirtGConfig {
 
     type DomainControllerClass = typeof DomainController;
     abstract class DomainControllerPrivate {
+        static $gtype: GObject.GType<DomainControllerPrivate>;
+
         // Constructors of LibvirtGConfig.DomainControllerPrivate
 
         _init(...args: any[]): void;
@@ -2923,6 +3139,8 @@ export namespace LibvirtGConfig {
 
     type DomainControllerUsbClass = typeof DomainControllerUsb;
     abstract class DomainControllerUsbPrivate {
+        static $gtype: GObject.GType<DomainControllerUsbPrivate>;
+
         // Constructors of LibvirtGConfig.DomainControllerUsbPrivate
 
         _init(...args: any[]): void;
@@ -2931,6 +3149,8 @@ export namespace LibvirtGConfig {
     type DomainCpuClass = typeof DomainCpu;
     type DomainCpuFeatureClass = typeof DomainCpuFeature;
     abstract class DomainCpuFeaturePrivate {
+        static $gtype: GObject.GType<DomainCpuFeaturePrivate>;
+
         // Constructors of LibvirtGConfig.DomainCpuFeaturePrivate
 
         _init(...args: any[]): void;
@@ -2938,12 +3158,16 @@ export namespace LibvirtGConfig {
 
     type DomainCpuModelClass = typeof DomainCpuModel;
     abstract class DomainCpuModelPrivate {
+        static $gtype: GObject.GType<DomainCpuModelPrivate>;
+
         // Constructors of LibvirtGConfig.DomainCpuModelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainCpuPrivate {
+        static $gtype: GObject.GType<DomainCpuPrivate>;
+
         // Constructors of LibvirtGConfig.DomainCpuPrivate
 
         _init(...args: any[]): void;
@@ -2951,6 +3175,8 @@ export namespace LibvirtGConfig {
 
     type DomainDeviceClass = typeof DomainDevice;
     abstract class DomainDevicePrivate {
+        static $gtype: GObject.GType<DomainDevicePrivate>;
+
         // Constructors of LibvirtGConfig.DomainDevicePrivate
 
         _init(...args: any[]): void;
@@ -2959,12 +3185,16 @@ export namespace LibvirtGConfig {
     type DomainDiskClass = typeof DomainDisk;
     type DomainDiskDriverClass = typeof DomainDiskDriver;
     abstract class DomainDiskDriverPrivate {
+        static $gtype: GObject.GType<DomainDiskDriverPrivate>;
+
         // Constructors of LibvirtGConfig.DomainDiskDriverPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainDiskPrivate {
+        static $gtype: GObject.GType<DomainDiskPrivate>;
+
         // Constructors of LibvirtGConfig.DomainDiskPrivate
 
         _init(...args: any[]): void;
@@ -2972,6 +3202,8 @@ export namespace LibvirtGConfig {
 
     type DomainFilesysClass = typeof DomainFilesys;
     abstract class DomainFilesysPrivate {
+        static $gtype: GObject.GType<DomainFilesysPrivate>;
+
         // Constructors of LibvirtGConfig.DomainFilesysPrivate
 
         _init(...args: any[]): void;
@@ -2980,12 +3212,16 @@ export namespace LibvirtGConfig {
     type DomainGraphicsClass = typeof DomainGraphics;
     type DomainGraphicsDesktopClass = typeof DomainGraphicsDesktop;
     abstract class DomainGraphicsDesktopPrivate {
+        static $gtype: GObject.GType<DomainGraphicsDesktopPrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsDesktopPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainGraphicsPrivate {
+        static $gtype: GObject.GType<DomainGraphicsPrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsPrivate
 
         _init(...args: any[]): void;
@@ -2993,6 +3229,8 @@ export namespace LibvirtGConfig {
 
     type DomainGraphicsRdpClass = typeof DomainGraphicsRdp;
     abstract class DomainGraphicsRdpPrivate {
+        static $gtype: GObject.GType<DomainGraphicsRdpPrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsRdpPrivate
 
         _init(...args: any[]): void;
@@ -3000,6 +3238,8 @@ export namespace LibvirtGConfig {
 
     type DomainGraphicsSdlClass = typeof DomainGraphicsSdl;
     abstract class DomainGraphicsSdlPrivate {
+        static $gtype: GObject.GType<DomainGraphicsSdlPrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsSdlPrivate
 
         _init(...args: any[]): void;
@@ -3007,6 +3247,8 @@ export namespace LibvirtGConfig {
 
     type DomainGraphicsSpiceClass = typeof DomainGraphicsSpice;
     abstract class DomainGraphicsSpicePrivate {
+        static $gtype: GObject.GType<DomainGraphicsSpicePrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsSpicePrivate
 
         _init(...args: any[]): void;
@@ -3014,6 +3256,8 @@ export namespace LibvirtGConfig {
 
     type DomainGraphicsVncClass = typeof DomainGraphicsVnc;
     abstract class DomainGraphicsVncPrivate {
+        static $gtype: GObject.GType<DomainGraphicsVncPrivate>;
+
         // Constructors of LibvirtGConfig.DomainGraphicsVncPrivate
 
         _init(...args: any[]): void;
@@ -3022,12 +3266,16 @@ export namespace LibvirtGConfig {
     type DomainHostdevClass = typeof DomainHostdev;
     type DomainHostdevPciClass = typeof DomainHostdevPci;
     abstract class DomainHostdevPciPrivate {
+        static $gtype: GObject.GType<DomainHostdevPciPrivate>;
+
         // Constructors of LibvirtGConfig.DomainHostdevPciPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainHostdevPrivate {
+        static $gtype: GObject.GType<DomainHostdevPrivate>;
+
         // Constructors of LibvirtGConfig.DomainHostdevPrivate
 
         _init(...args: any[]): void;
@@ -3035,6 +3283,8 @@ export namespace LibvirtGConfig {
 
     type DomainInputClass = typeof DomainInput;
     abstract class DomainInputPrivate {
+        static $gtype: GObject.GType<DomainInputPrivate>;
+
         // Constructors of LibvirtGConfig.DomainInputPrivate
 
         _init(...args: any[]): void;
@@ -3042,6 +3292,8 @@ export namespace LibvirtGConfig {
 
     type DomainInterfaceBridgeClass = typeof DomainInterfaceBridge;
     abstract class DomainInterfaceBridgePrivate {
+        static $gtype: GObject.GType<DomainInterfaceBridgePrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceBridgePrivate
 
         _init(...args: any[]): void;
@@ -3051,12 +3303,16 @@ export namespace LibvirtGConfig {
     type DomainInterfaceFilterrefClass = typeof DomainInterfaceFilterref;
     type DomainInterfaceFilterrefParameterClass = typeof DomainInterfaceFilterrefParameter;
     abstract class DomainInterfaceFilterrefParameterPrivate {
+        static $gtype: GObject.GType<DomainInterfaceFilterrefParameterPrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceFilterrefParameterPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainInterfaceFilterrefPrivate {
+        static $gtype: GObject.GType<DomainInterfaceFilterrefPrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceFilterrefPrivate
 
         _init(...args: any[]): void;
@@ -3064,12 +3320,16 @@ export namespace LibvirtGConfig {
 
     type DomainInterfaceNetworkClass = typeof DomainInterfaceNetwork;
     abstract class DomainInterfaceNetworkPrivate {
+        static $gtype: GObject.GType<DomainInterfaceNetworkPrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceNetworkPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainInterfacePrivate {
+        static $gtype: GObject.GType<DomainInterfacePrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfacePrivate
 
         _init(...args: any[]): void;
@@ -3077,6 +3337,8 @@ export namespace LibvirtGConfig {
 
     type DomainInterfaceUserClass = typeof DomainInterfaceUser;
     abstract class DomainInterfaceUserPrivate {
+        static $gtype: GObject.GType<DomainInterfaceUserPrivate>;
+
         // Constructors of LibvirtGConfig.DomainInterfaceUserPrivate
 
         _init(...args: any[]): void;
@@ -3084,6 +3346,8 @@ export namespace LibvirtGConfig {
 
     type DomainMemballoonClass = typeof DomainMemballoon;
     abstract class DomainMemballoonPrivate {
+        static $gtype: GObject.GType<DomainMemballoonPrivate>;
+
         // Constructors of LibvirtGConfig.DomainMemballoonPrivate
 
         _init(...args: any[]): void;
@@ -3091,6 +3355,8 @@ export namespace LibvirtGConfig {
 
     type DomainOsClass = typeof DomainOs;
     abstract class DomainOsPrivate {
+        static $gtype: GObject.GType<DomainOsPrivate>;
+
         // Constructors of LibvirtGConfig.DomainOsPrivate
 
         _init(...args: any[]): void;
@@ -3098,6 +3364,8 @@ export namespace LibvirtGConfig {
 
     type DomainParallelClass = typeof DomainParallel;
     abstract class DomainParallelPrivate {
+        static $gtype: GObject.GType<DomainParallelPrivate>;
+
         // Constructors of LibvirtGConfig.DomainParallelPrivate
 
         _init(...args: any[]): void;
@@ -3105,12 +3373,16 @@ export namespace LibvirtGConfig {
 
     type DomainPowerManagementClass = typeof DomainPowerManagement;
     abstract class DomainPowerManagementPrivate {
+        static $gtype: GObject.GType<DomainPowerManagementPrivate>;
+
         // Constructors of LibvirtGConfig.DomainPowerManagementPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainPrivate {
+        static $gtype: GObject.GType<DomainPrivate>;
+
         // Constructors of LibvirtGConfig.DomainPrivate
 
         _init(...args: any[]): void;
@@ -3118,6 +3390,8 @@ export namespace LibvirtGConfig {
 
     type DomainRedirdevClass = typeof DomainRedirdev;
     abstract class DomainRedirdevPrivate {
+        static $gtype: GObject.GType<DomainRedirdevPrivate>;
+
         // Constructors of LibvirtGConfig.DomainRedirdevPrivate
 
         _init(...args: any[]): void;
@@ -3125,6 +3399,8 @@ export namespace LibvirtGConfig {
 
     type DomainSeclabelClass = typeof DomainSeclabel;
     abstract class DomainSeclabelPrivate {
+        static $gtype: GObject.GType<DomainSeclabelPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSeclabelPrivate
 
         _init(...args: any[]): void;
@@ -3132,6 +3408,8 @@ export namespace LibvirtGConfig {
 
     type DomainSerialClass = typeof DomainSerial;
     abstract class DomainSerialPrivate {
+        static $gtype: GObject.GType<DomainSerialPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSerialPrivate
 
         _init(...args: any[]): void;
@@ -3140,6 +3418,8 @@ export namespace LibvirtGConfig {
     type DomainSmartcardClass = typeof DomainSmartcard;
     type DomainSmartcardHostCertificatesClass = typeof DomainSmartcardHostCertificates;
     abstract class DomainSmartcardHostCertificatesPrivate {
+        static $gtype: GObject.GType<DomainSmartcardHostCertificatesPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardHostCertificatesPrivate
 
         _init(...args: any[]): void;
@@ -3147,6 +3427,8 @@ export namespace LibvirtGConfig {
 
     type DomainSmartcardHostClass = typeof DomainSmartcardHost;
     abstract class DomainSmartcardHostPrivate {
+        static $gtype: GObject.GType<DomainSmartcardHostPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardHostPrivate
 
         _init(...args: any[]): void;
@@ -3154,12 +3436,16 @@ export namespace LibvirtGConfig {
 
     type DomainSmartcardPassthroughClass = typeof DomainSmartcardPassthrough;
     abstract class DomainSmartcardPassthroughPrivate {
+        static $gtype: GObject.GType<DomainSmartcardPassthroughPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardPassthroughPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainSmartcardPrivate {
+        static $gtype: GObject.GType<DomainSmartcardPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSmartcardPrivate
 
         _init(...args: any[]): void;
@@ -3168,12 +3454,16 @@ export namespace LibvirtGConfig {
     type DomainSnapshotClass = typeof DomainSnapshot;
     type DomainSnapshotDiskClass = typeof DomainSnapshotDisk;
     abstract class DomainSnapshotDiskPrivate {
+        static $gtype: GObject.GType<DomainSnapshotDiskPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSnapshotDiskPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainSnapshotPrivate {
+        static $gtype: GObject.GType<DomainSnapshotPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSnapshotPrivate
 
         _init(...args: any[]): void;
@@ -3181,6 +3471,8 @@ export namespace LibvirtGConfig {
 
     type DomainSoundClass = typeof DomainSound;
     abstract class DomainSoundPrivate {
+        static $gtype: GObject.GType<DomainSoundPrivate>;
+
         // Constructors of LibvirtGConfig.DomainSoundPrivate
 
         _init(...args: any[]): void;
@@ -3189,6 +3481,8 @@ export namespace LibvirtGConfig {
     type DomainTimerClass = typeof DomainTimer;
     type DomainTimerHpetClass = typeof DomainTimerHpet;
     abstract class DomainTimerHpetPrivate {
+        static $gtype: GObject.GType<DomainTimerHpetPrivate>;
+
         // Constructors of LibvirtGConfig.DomainTimerHpetPrivate
 
         _init(...args: any[]): void;
@@ -3196,12 +3490,16 @@ export namespace LibvirtGConfig {
 
     type DomainTimerPitClass = typeof DomainTimerPit;
     abstract class DomainTimerPitPrivate {
+        static $gtype: GObject.GType<DomainTimerPitPrivate>;
+
         // Constructors of LibvirtGConfig.DomainTimerPitPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DomainTimerPrivate {
+        static $gtype: GObject.GType<DomainTimerPrivate>;
+
         // Constructors of LibvirtGConfig.DomainTimerPrivate
 
         _init(...args: any[]): void;
@@ -3209,6 +3507,8 @@ export namespace LibvirtGConfig {
 
     type DomainTimerRtcClass = typeof DomainTimerRtc;
     abstract class DomainTimerRtcPrivate {
+        static $gtype: GObject.GType<DomainTimerRtcPrivate>;
+
         // Constructors of LibvirtGConfig.DomainTimerRtcPrivate
 
         _init(...args: any[]): void;
@@ -3216,6 +3516,8 @@ export namespace LibvirtGConfig {
 
     type DomainVideoClass = typeof DomainVideo;
     abstract class DomainVideoPrivate {
+        static $gtype: GObject.GType<DomainVideoPrivate>;
+
         // Constructors of LibvirtGConfig.DomainVideoPrivate
 
         _init(...args: any[]): void;
@@ -3223,6 +3525,8 @@ export namespace LibvirtGConfig {
 
     type InterfaceClass = typeof Interface;
     abstract class InterfacePrivate {
+        static $gtype: GObject.GType<InterfacePrivate>;
+
         // Constructors of LibvirtGConfig.InterfacePrivate
 
         _init(...args: any[]): void;
@@ -3231,12 +3535,16 @@ export namespace LibvirtGConfig {
     type NetworkClass = typeof Network;
     type NetworkFilterClass = typeof NetworkFilter;
     abstract class NetworkFilterPrivate {
+        static $gtype: GObject.GType<NetworkFilterPrivate>;
+
         // Constructors of LibvirtGConfig.NetworkFilterPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class NetworkPrivate {
+        static $gtype: GObject.GType<NetworkPrivate>;
+
         // Constructors of LibvirtGConfig.NetworkPrivate
 
         _init(...args: any[]): void;
@@ -3244,6 +3552,8 @@ export namespace LibvirtGConfig {
 
     type NodeDeviceClass = typeof NodeDevice;
     abstract class NodeDevicePrivate {
+        static $gtype: GObject.GType<NodeDevicePrivate>;
+
         // Constructors of LibvirtGConfig.NodeDevicePrivate
 
         _init(...args: any[]): void;
@@ -3251,6 +3561,8 @@ export namespace LibvirtGConfig {
 
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
+        static $gtype: GObject.GType<ObjectPrivate>;
+
         // Constructors of LibvirtGConfig.ObjectPrivate
 
         _init(...args: any[]): void;
@@ -3258,6 +3570,8 @@ export namespace LibvirtGConfig {
 
     type SecretClass = typeof Secret;
     abstract class SecretPrivate {
+        static $gtype: GObject.GType<SecretPrivate>;
+
         // Constructors of LibvirtGConfig.SecretPrivate
 
         _init(...args: any[]): void;
@@ -3265,6 +3579,8 @@ export namespace LibvirtGConfig {
 
     type StoragePermissionsClass = typeof StoragePermissions;
     abstract class StoragePermissionsPrivate {
+        static $gtype: GObject.GType<StoragePermissionsPrivate>;
+
         // Constructors of LibvirtGConfig.StoragePermissionsPrivate
 
         _init(...args: any[]): void;
@@ -3272,6 +3588,8 @@ export namespace LibvirtGConfig {
 
     type StoragePoolClass = typeof StoragePool;
     abstract class StoragePoolPrivate {
+        static $gtype: GObject.GType<StoragePoolPrivate>;
+
         // Constructors of LibvirtGConfig.StoragePoolPrivate
 
         _init(...args: any[]): void;
@@ -3279,6 +3597,8 @@ export namespace LibvirtGConfig {
 
     type StoragePoolSourceClass = typeof StoragePoolSource;
     abstract class StoragePoolSourcePrivate {
+        static $gtype: GObject.GType<StoragePoolSourcePrivate>;
+
         // Constructors of LibvirtGConfig.StoragePoolSourcePrivate
 
         _init(...args: any[]): void;
@@ -3286,6 +3606,8 @@ export namespace LibvirtGConfig {
 
     type StoragePoolTargetClass = typeof StoragePoolTarget;
     abstract class StoragePoolTargetPrivate {
+        static $gtype: GObject.GType<StoragePoolTargetPrivate>;
+
         // Constructors of LibvirtGConfig.StoragePoolTargetPrivate
 
         _init(...args: any[]): void;
@@ -3293,6 +3615,8 @@ export namespace LibvirtGConfig {
 
     type StorageVolBackingStoreClass = typeof StorageVolBackingStore;
     abstract class StorageVolBackingStorePrivate {
+        static $gtype: GObject.GType<StorageVolBackingStorePrivate>;
+
         // Constructors of LibvirtGConfig.StorageVolBackingStorePrivate
 
         _init(...args: any[]): void;
@@ -3300,6 +3624,8 @@ export namespace LibvirtGConfig {
 
     type StorageVolClass = typeof StorageVol;
     abstract class StorageVolPrivate {
+        static $gtype: GObject.GType<StorageVolPrivate>;
+
         // Constructors of LibvirtGConfig.StorageVolPrivate
 
         _init(...args: any[]): void;
@@ -3307,6 +3633,8 @@ export namespace LibvirtGConfig {
 
     type StorageVolTargetClass = typeof StorageVolTarget;
     abstract class StorageVolTargetPrivate {
+        static $gtype: GObject.GType<StorageVolTargetPrivate>;
+
         // Constructors of LibvirtGConfig.StorageVolTargetPrivate
 
         _init(...args: any[]): void;

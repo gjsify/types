@@ -105,6 +105,8 @@ export namespace PangoFc {
      * object implementation.
      */
     abstract class Decoder extends GObject.Object {
+        static $gtype: GObject.GType<Decoder>;
+
         // Constructors of PangoFc.Decoder
 
         constructor(properties?: Partial<Decoder.ConstructorProps>, ...args: any[]);
@@ -183,6 +185,8 @@ export namespace PangoFc {
      * the get_glyph_extents() virtual function from `PangoFont`.
      */
     abstract class Font extends Pango.Font {
+        static $gtype: GObject.GType<Font>;
+
         // Own properties of PangoFc.Font
 
         /**
@@ -296,6 +300,8 @@ export namespace PangoFc {
         extends Pango.FontMap<A>
         implements Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<FontMap>;
+
         // Constructors of PangoFc.FontMap
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
@@ -826,6 +832,8 @@ export namespace PangoFc {
     type FontClass = typeof Font;
     type FontMapClass = typeof FontMap;
     abstract class FontMapPrivate {
+        static $gtype: GObject.GType<FontMapPrivate>;
+
         // Constructors of PangoFc.FontMapPrivate
 
         _init(...args: any[]): void;

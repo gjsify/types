@@ -64,6 +64,8 @@ export namespace Builder {
     }
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
+        static $gtype: GObject.GType<Application>;
+
         // Constructors of Builder.Application
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
@@ -483,6 +485,8 @@ export namespace Builder {
     }
 
     class EditorView extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EditorView>;
+
         // Constructors of Builder.EditorView
 
         constructor(properties?: Partial<EditorView.ConstructorProps>, ...args: any[]);
@@ -864,6 +868,8 @@ export namespace Builder {
     }
 
     class MenuExtension extends GObject.Object {
+        static $gtype: GObject.GType<MenuExtension>;
+
         // Own properties of Builder.MenuExtension
 
         get menu(): Gio.Menu;
@@ -911,6 +917,8 @@ export namespace Builder {
     }
 
     class Tree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<Tree>;
+
         // Own properties of Builder.Tree
 
         get root(): TreeNode;
@@ -1509,6 +1517,8 @@ export namespace Builder {
     }
 
     class TreeBuilder extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<TreeBuilder>;
+
         // Own properties of Builder.TreeBuilder
 
         get tree(): Tree;
@@ -1585,6 +1595,8 @@ export namespace Builder {
     }
 
     class TreeNode extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<TreeNode>;
+
         // Own properties of Builder.TreeNode
 
         /**
@@ -1772,6 +1784,8 @@ export namespace Builder {
     }
 
     class View extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of Builder.View
 
         get can_split(): boolean;
@@ -2242,6 +2256,8 @@ export namespace Builder {
     }
 
     class ViewGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewGrid>;
+
         // Constructors of Builder.ViewGrid
 
         constructor(properties?: Partial<ViewGrid.ConstructorProps>, ...args: any[]);
@@ -2651,6 +2667,8 @@ export namespace Builder {
     }
 
     class ViewStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewStack>;
+
         // Own properties of Builder.ViewStack
 
         get active_view(): View;
@@ -3077,6 +3095,8 @@ export namespace Builder {
         extends Gtk.ApplicationWindow
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
+        static $gtype: GObject.GType<Workbench>;
+
         // Own properties of Builder.Workbench
 
         get active_view(): View;

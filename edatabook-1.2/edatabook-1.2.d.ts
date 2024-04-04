@@ -359,6 +359,8 @@ export namespace EDataBook {
      * functions below.
      */
     class BookBackend extends EBackend.Backend {
+        static $gtype: GObject.GType<BookBackend>;
+
         // Own properties of EDataBook.BookBackend
 
         get cache_dir(): string;
@@ -1217,6 +1219,8 @@ export namespace EDataBook {
      * functions below.
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
+        static $gtype: GObject.GType<BookBackendFactory>;
+
         // Constructors of EDataBook.BookBackendFactory
 
         constructor(properties?: Partial<BookBackendFactory.ConstructorProps>, ...args: any[]);
@@ -1231,6 +1235,8 @@ export namespace EDataBook {
     }
 
     class BookBackendSExp extends GObject.Object {
+        static $gtype: GObject.GType<BookBackendSExp>;
+
         // Constructors of EDataBook.BookBackendSExp
 
         constructor(properties?: Partial<BookBackendSExp.ConstructorProps>, ...args: any[]);
@@ -1295,6 +1301,8 @@ export namespace EDataBook {
      * functions below.
      */
     class BookBackendSync extends BookBackend {
+        static $gtype: GObject.GType<BookBackendSync>;
+
         // Constructors of EDataBook.BookBackendSync
 
         constructor(properties?: Partial<BookBackendSync.ConstructorProps>, ...args: any[]);
@@ -1464,6 +1472,8 @@ export namespace EDataBook {
      * the functions below.
      */
     class BookCache extends EBackend.Cache implements EDataServer.Extensible {
+        static $gtype: GObject.GType<BookCache>;
+
         // Own properties of EDataBook.BookCache
 
         get locale(): string;
@@ -2335,6 +2345,8 @@ export namespace EDataBook {
      * the functions below.
      */
     abstract class BookMetaBackend extends BookBackendSync {
+        static $gtype: GObject.GType<BookMetaBackend>;
+
         // Own properties of EDataBook.BookMetaBackend
 
         /**
@@ -3003,6 +3015,8 @@ export namespace EDataBook {
      * functions below.
      */
     class BookSqlite extends GObject.Object implements EDataServer.Extensible {
+        static $gtype: GObject.GType<BookSqlite>;
+
         // Constructors of EDataBook.BookSqlite
 
         constructor(properties?: Partial<BookSqlite.ConstructorProps>, ...args: any[]);
@@ -3813,6 +3827,8 @@ export namespace EDataBook {
     }
 
     class DataBook extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<DataBook>;
+
         // Own properties of EDataBook.DataBook
 
         get backend(): BookBackend;
@@ -4398,6 +4414,8 @@ export namespace EDataBook {
      * An opaque handle for an addressbook cursor
      */
     abstract class DataBookCursor extends GObject.Object {
+        static $gtype: GObject.GType<DataBookCursor>;
+
         // Own properties of EDataBook.DataBookCursor
 
         get backend(): BookBackend;
@@ -4594,6 +4612,8 @@ export namespace EDataBook {
      * An opaque handle for the #EBookCache cursor instance.
      */
     class DataBookCursorCache extends DataBookCursor {
+        static $gtype: GObject.GType<DataBookCursorCache>;
+
         // Own properties of EDataBook.DataBookCursorCache
 
         set book_cache(val: BookCache);
@@ -4629,6 +4649,8 @@ export namespace EDataBook {
      * An opaque handle for the SQLite cursor instance.
      */
     class DataBookCursorSqlite extends DataBookCursor {
+        static $gtype: GObject.GType<DataBookCursorSqlite>;
+
         // Own properties of EDataBook.DataBookCursorSqlite
 
         set cursor(val: any);
@@ -4658,6 +4680,8 @@ export namespace EDataBook {
     }
 
     class DataBookDirect extends GObject.Object {
+        static $gtype: GObject.GType<DataBookDirect>;
+
         // Constructors of EDataBook.DataBookDirect
 
         constructor(properties?: Partial<DataBookDirect.ConstructorProps>, ...args: any[]);
@@ -4686,6 +4710,8 @@ export namespace EDataBook {
     }
 
     class DataBookFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
+        static $gtype: GObject.GType<DataBookFactory>;
+
         // Constructors of EDataBook.DataBookFactory
 
         constructor(properties?: Partial<DataBookFactory.ConstructorProps>, ...args: any[]);
@@ -5166,6 +5192,8 @@ export namespace EDataBook {
     }
 
     class DataBookView extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<DataBookView>;
+
         // Own properties of EDataBook.DataBookView
 
         get backend(): BookBackend;
@@ -5854,6 +5882,8 @@ export namespace EDataBook {
      * descendants which use #EBookCache to store the contacts.
      */
     class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
+        static $gtype: GObject.GType<DataBookViewWatcherCache>;
+
         // Constructors of EDataBook.DataBookViewWatcherCache
 
         constructor(properties?: Partial<DataBookViewWatcherCache.ConstructorProps>, ...args: any[]);
@@ -5894,6 +5924,8 @@ export namespace EDataBook {
      * handle "manual query" views by the #EBookBackend.
      */
     class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
+        static $gtype: GObject.GType<DataBookViewWatcherMemory>;
+
         // Constructors of EDataBook.DataBookViewWatcherMemory
 
         constructor(properties?: Partial<DataBookViewWatcherMemory.ConstructorProps>, ...args: any[]);
@@ -5940,6 +5972,8 @@ export namespace EDataBook {
      * descendants which use #EBookSqlite to store the contacts.
      */
     class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
+        static $gtype: GObject.GType<DataBookViewWatcherSqlite>;
+
         // Constructors of EDataBook.DataBookViewWatcherSqlite
 
         constructor(properties?: Partial<DataBookViewWatcherSqlite.ConstructorProps>, ...args: any[]);
@@ -5976,6 +6010,8 @@ export namespace EDataBook {
     }
 
     class SubprocessBookFactory extends EBackend.SubprocessFactory implements Gio.Initable {
+        static $gtype: GObject.GType<SubprocessBookFactory>;
+
         // Constructors of EDataBook.SubprocessBookFactory
 
         constructor(properties?: Partial<SubprocessBookFactory.ConstructorProps>, ...args: any[]);
@@ -6439,6 +6475,8 @@ export namespace EDataBook {
      * functions below.
      */
     class SystemLocaleWatcher extends GObject.Object {
+        static $gtype: GObject.GType<SystemLocaleWatcher>;
+
         // Own properties of EDataBook.SystemLocaleWatcher
 
         /**
@@ -6471,12 +6509,16 @@ export namespace EDataBook {
     type BookBackendClass = typeof BookBackend;
     type BookBackendFactoryClass = typeof BookBackendFactory;
     abstract class BookBackendFactoryPrivate {
+        static $gtype: GObject.GType<BookBackendFactoryPrivate>;
+
         // Constructors of EDataBook.BookBackendFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BookBackendPrivate {
+        static $gtype: GObject.GType<BookBackendPrivate>;
+
         // Constructors of EDataBook.BookBackendPrivate
 
         _init(...args: any[]): void;
@@ -6484,6 +6526,8 @@ export namespace EDataBook {
 
     type BookBackendSExpClass = typeof BookBackendSExp;
     abstract class BookBackendSExpPrivate {
+        static $gtype: GObject.GType<BookBackendSExpPrivate>;
+
         // Constructors of EDataBook.BookBackendSExpPrivate
 
         _init(...args: any[]): void;
@@ -6491,6 +6535,8 @@ export namespace EDataBook {
 
     type BookBackendSyncClass = typeof BookBackendSync;
     abstract class BookBackendSyncPrivate {
+        static $gtype: GObject.GType<BookBackendSyncPrivate>;
+
         // Constructors of EDataBook.BookBackendSyncPrivate
 
         _init(...args: any[]): void;
@@ -6501,6 +6547,8 @@ export namespace EDataBook {
      * An opaque cursor pointer
      */
     abstract class BookCacheCursor {
+        static $gtype: GObject.GType<BookCacheCursor>;
+
         // Constructors of EDataBook.BookCacheCursor
 
         constructor(
@@ -6520,6 +6568,8 @@ export namespace EDataBook {
     }
 
     abstract class BookCachePrivate {
+        static $gtype: GObject.GType<BookCachePrivate>;
+
         // Constructors of EDataBook.BookCachePrivate
 
         _init(...args: any[]): void;
@@ -6537,6 +6587,8 @@ export namespace EDataBook {
      * These should be freed with e_book_cache_search_data_free().
      */
     class BookCacheSearchData {
+        static $gtype: GObject.GType<BookCacheSearchData>;
+
         // Own fields of EDataBook.BookCacheSearchData
 
         uid: string;
@@ -6572,6 +6624,8 @@ export namespace EDataBook {
 
     type BookMetaBackendClass = typeof BookMetaBackend;
     class BookMetaBackendInfo {
+        static $gtype: GObject.GType<BookMetaBackendInfo>;
+
         // Own fields of EDataBook.BookMetaBackendInfo
 
         uid: string;
@@ -6613,6 +6667,8 @@ export namespace EDataBook {
     }
 
     abstract class BookMetaBackendPrivate {
+        static $gtype: GObject.GType<BookMetaBackendPrivate>;
+
         // Constructors of EDataBook.BookMetaBackendPrivate
 
         _init(...args: any[]): void;
@@ -6620,6 +6676,8 @@ export namespace EDataBook {
 
     type BookSqliteClass = typeof BookSqlite;
     abstract class BookSqlitePrivate {
+        static $gtype: GObject.GType<BookSqlitePrivate>;
+
         // Constructors of EDataBook.BookSqlitePrivate
 
         _init(...args: any[]): void;
@@ -6628,6 +6686,8 @@ export namespace EDataBook {
     type DataBookClass = typeof DataBook;
     type DataBookCursorCacheClass = typeof DataBookCursorCache;
     abstract class DataBookCursorCachePrivate {
+        static $gtype: GObject.GType<DataBookCursorCachePrivate>;
+
         // Constructors of EDataBook.DataBookCursorCachePrivate
 
         _init(...args: any[]): void;
@@ -6635,6 +6695,8 @@ export namespace EDataBook {
 
     type DataBookCursorClass = typeof DataBookCursor;
     abstract class DataBookCursorPrivate {
+        static $gtype: GObject.GType<DataBookCursorPrivate>;
+
         // Constructors of EDataBook.DataBookCursorPrivate
 
         _init(...args: any[]): void;
@@ -6642,6 +6704,8 @@ export namespace EDataBook {
 
     type DataBookCursorSqliteClass = typeof DataBookCursorSqlite;
     abstract class DataBookCursorSqlitePrivate {
+        static $gtype: GObject.GType<DataBookCursorSqlitePrivate>;
+
         // Constructors of EDataBook.DataBookCursorSqlitePrivate
 
         _init(...args: any[]): void;
@@ -6649,6 +6713,8 @@ export namespace EDataBook {
 
     type DataBookDirectClass = typeof DataBookDirect;
     abstract class DataBookDirectPrivate {
+        static $gtype: GObject.GType<DataBookDirectPrivate>;
+
         // Constructors of EDataBook.DataBookDirectPrivate
 
         _init(...args: any[]): void;
@@ -6656,12 +6722,16 @@ export namespace EDataBook {
 
     type DataBookFactoryClass = typeof DataBookFactory;
     abstract class DataBookFactoryPrivate {
+        static $gtype: GObject.GType<DataBookFactoryPrivate>;
+
         // Constructors of EDataBook.DataBookFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DataBookPrivate {
+        static $gtype: GObject.GType<DataBookPrivate>;
+
         // Constructors of EDataBook.DataBookPrivate
 
         _init(...args: any[]): void;
@@ -6669,6 +6739,8 @@ export namespace EDataBook {
 
     type DataBookViewClass = typeof DataBookView;
     abstract class DataBookViewPrivate {
+        static $gtype: GObject.GType<DataBookViewPrivate>;
+
         // Constructors of EDataBook.DataBookViewPrivate
 
         _init(...args: any[]): void;
@@ -6676,6 +6748,8 @@ export namespace EDataBook {
 
     type DataBookViewWatcherCacheClass = typeof DataBookViewWatcherCache;
     abstract class DataBookViewWatcherCachePrivate {
+        static $gtype: GObject.GType<DataBookViewWatcherCachePrivate>;
+
         // Constructors of EDataBook.DataBookViewWatcherCachePrivate
 
         _init(...args: any[]): void;
@@ -6683,6 +6757,8 @@ export namespace EDataBook {
 
     type DataBookViewWatcherMemoryClass = typeof DataBookViewWatcherMemory;
     abstract class DataBookViewWatcherMemoryPrivate {
+        static $gtype: GObject.GType<DataBookViewWatcherMemoryPrivate>;
+
         // Constructors of EDataBook.DataBookViewWatcherMemoryPrivate
 
         _init(...args: any[]): void;
@@ -6690,6 +6766,8 @@ export namespace EDataBook {
 
     type DataBookViewWatcherSqliteClass = typeof DataBookViewWatcherSqlite;
     abstract class DataBookViewWatcherSqlitePrivate {
+        static $gtype: GObject.GType<DataBookViewWatcherSqlitePrivate>;
+
         // Constructors of EDataBook.DataBookViewWatcherSqlitePrivate
 
         _init(...args: any[]): void;
@@ -6697,6 +6775,8 @@ export namespace EDataBook {
 
     type SubprocessBookFactoryClass = typeof SubprocessBookFactory;
     abstract class SubprocessBookFactoryPrivate {
+        static $gtype: GObject.GType<SubprocessBookFactoryPrivate>;
+
         // Constructors of EDataBook.SubprocessBookFactoryPrivate
 
         _init(...args: any[]): void;
@@ -6704,6 +6784,8 @@ export namespace EDataBook {
 
     type SystemLocaleWatcherClass = typeof SystemLocaleWatcher;
     abstract class SystemLocaleWatcherPrivate {
+        static $gtype: GObject.GType<SystemLocaleWatcherPrivate>;
+
         // Constructors of EDataBook.SystemLocaleWatcherPrivate
 
         _init(...args: any[]): void;
@@ -6713,6 +6795,8 @@ export namespace EDataBook {
      * An opaque cursor pointer
      */
     abstract class bSqlCursor {
+        static $gtype: GObject.GType<bSqlCursor>;
+
         // Constructors of EDataBook.bSqlCursor
 
         _init(...args: any[]): void;
@@ -6729,6 +6813,8 @@ export namespace EDataBook {
      * These should be freed with e_book_sqlite_search_data_free().
      */
     class bSqlSearchData {
+        static $gtype: GObject.GType<bSqlSearchData>;
+
         // Own fields of EDataBook.bSqlSearchData
 
         uid: string;

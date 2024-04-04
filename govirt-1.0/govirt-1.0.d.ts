@@ -19,6 +19,8 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace GoVirt {
     class ProxyError extends GLib.Error {
+        static $gtype: GObject.GType<ProxyError>;
+
         // Static fields of GoVirt.ProxyError
 
         static PARSING_FAILED: number;
@@ -36,6 +38,8 @@ export namespace GoVirt {
     }
 
     class RestCallError extends GLib.Error {
+        static $gtype: GObject.GType<RestCallError>;
+
         // Static fields of GoVirt.RestCallError
 
         static XML: number;
@@ -72,6 +76,8 @@ export namespace GoVirt {
     }
 
     class Proxy extends Rest.Proxy {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own properties of GoVirt.Proxy
 
         get admin(): boolean;
@@ -129,6 +135,8 @@ export namespace GoVirt {
     }
 
     class Vm extends GObject.Object {
+        static $gtype: GObject.GType<Vm>;
+
         // Own properties of GoVirt.Vm
 
         get display(): VmDisplay;
@@ -180,6 +188,8 @@ export namespace GoVirt {
     }
 
     class VmDisplay extends GObject.Object {
+        static $gtype: GObject.GType<VmDisplay>;
+
         // Own properties of GoVirt.VmDisplay
 
         get address(): string;
@@ -212,6 +222,8 @@ export namespace GoVirt {
 
     type ProxyClass = typeof Proxy;
     abstract class ProxyPrivate {
+        static $gtype: GObject.GType<ProxyPrivate>;
+
         // Constructors of GoVirt.ProxyPrivate
 
         _init(...args: any[]): void;
@@ -220,12 +232,16 @@ export namespace GoVirt {
     type VmClass = typeof Vm;
     type VmDisplayClass = typeof VmDisplay;
     abstract class VmDisplayPrivate {
+        static $gtype: GObject.GType<VmDisplayPrivate>;
+
         // Constructors of GoVirt.VmDisplayPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class VmPrivate {
+        static $gtype: GObject.GType<VmPrivate>;
+
         // Constructors of GoVirt.VmPrivate
 
         _init(...args: any[]): void;

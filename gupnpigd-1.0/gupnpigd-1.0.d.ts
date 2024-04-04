@@ -7,6 +7,8 @@
 
 import './gupnpigd-1.0-ambient.d.ts';
 
+import './gupnpigd-1.0-import.d.ts';
+
 /**
  * GUPnPIgd-1.0
  */
@@ -67,6 +69,8 @@ export namespace GUPnPIgd {
      * All members are private, access them using methods and properties
      */
     class SimpleIgd extends GObject.Object {
+        static $gtype: GObject.GType<SimpleIgd>;
+
         // Own properties of GUPnPIgd.SimpleIgd
 
         get main_context(): any;
@@ -229,6 +233,8 @@ export namespace GUPnPIgd {
      * All members are private, access them using methods and properties
      */
     class SimpleIgdThread extends SimpleIgd {
+        static $gtype: GObject.GType<SimpleIgdThread>;
+
         // Constructors of GUPnPIgd.SimpleIgdThread
 
         constructor(properties?: Partial<SimpleIgdThread.ConstructorProps>, ...args: any[]);
@@ -240,6 +246,8 @@ export namespace GUPnPIgd {
 
     type SimpleIgdClass = typeof SimpleIgd;
     abstract class SimpleIgdPrivate {
+        static $gtype: GObject.GType<SimpleIgdPrivate>;
+
         // Constructors of GUPnPIgd.SimpleIgdPrivate
 
         _init(...args: any[]): void;
@@ -247,6 +255,8 @@ export namespace GUPnPIgd {
 
     type SimpleIgdThreadClass = typeof SimpleIgdThread;
     abstract class SimpleIgdThreadPrivate {
+        static $gtype: GObject.GType<SimpleIgdThreadPrivate>;
+
         // Constructors of GUPnPIgd.SimpleIgdThreadPrivate
 
         _init(...args: any[]): void;

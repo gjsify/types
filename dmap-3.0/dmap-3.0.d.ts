@@ -185,6 +185,8 @@ export namespace DMAP {
         CC_CAVC,
     }
     class MdnsBrowserError extends GLib.Error {
+        static $gtype: GObject.GType<MdnsBrowserError>;
+
         // Static fields of DMAP.MdnsBrowserError
 
         static NOT_RUNNING: number;
@@ -214,6 +216,8 @@ export namespace DMAP {
         LAST,
     }
     class MdnsPublisherError extends GLib.Error {
+        static $gtype: GObject.GType<MdnsPublisherError>;
+
         // Static fields of DMAP.MdnsPublisherError
 
         static NOT_RUNNING: number;
@@ -327,6 +331,8 @@ export namespace DMAP {
     }
 
     class Connection extends GObject.Object {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of DMAP.Connection
 
         get base_uri(): any;
@@ -447,6 +453,8 @@ export namespace DMAP {
     }
 
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
+        static $gtype: GObject.GType<GstInputStream>;
+
         // Constructors of DMAP.GstInputStream
 
         constructor(properties?: Partial<GstInputStream.ConstructorProps>, ...args: any[]);
@@ -932,6 +940,8 @@ export namespace DMAP {
     }
 
     class MdnsBrowser extends GObject.Object {
+        static $gtype: GObject.GType<MdnsBrowser>;
+
         // Own fields of DMAP.MdnsBrowser
 
         object: GObject.Object;
@@ -993,6 +1003,8 @@ export namespace DMAP {
     }
 
     class MdnsPublisher extends GObject.Object {
+        static $gtype: GObject.GType<MdnsPublisher>;
+
         // Own fields of DMAP.MdnsPublisher
 
         object: GObject.Object;
@@ -1060,6 +1072,8 @@ export namespace DMAP {
     }
 
     abstract class Share extends GObject.Object {
+        static $gtype: GObject.GType<Share>;
+
         // Own properties of DMAP.Share
 
         get auth_method(): number;
@@ -1168,6 +1182,8 @@ export namespace DMAP {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of DMAP.ConnectionPrivate
 
         _init(...args: any[]): void;
@@ -1176,6 +1192,8 @@ export namespace DMAP {
     type ContainerDbIface = typeof ContainerDb;
     type ContainerRecordIface = typeof ContainerRecord;
     class ContentCodeDefinition {
+        static $gtype: GObject.GType<ContentCodeDefinition>;
+
         // Own fields of DMAP.ContentCodeDefinition
 
         code: ContentCode;
@@ -1190,6 +1208,8 @@ export namespace DMAP {
     }
 
     class DbFilterDefinition {
+        static $gtype: GObject.GType<DbFilterDefinition>;
+
         // Own fields of DMAP.DbFilterDefinition
 
         key: string;
@@ -1211,12 +1231,16 @@ export namespace DMAP {
     type DbIface = typeof Db;
     type GstInputStreamClass = typeof GstInputStream;
     abstract class GstInputStreamPrivate {
+        static $gtype: GObject.GType<GstInputStreamPrivate>;
+
         // Constructors of DMAP.GstInputStreamPrivate
 
         _init(...args: any[]): void;
     }
 
     class HashContext {
+        static $gtype: GObject.GType<HashContext>;
+
         // Own fields of DMAP.HashContext
 
         buf: number[];
@@ -1239,12 +1263,16 @@ export namespace DMAP {
 
     type MdnsBrowserClass = typeof MdnsBrowser;
     abstract class MdnsBrowserPrivate {
+        static $gtype: GObject.GType<MdnsBrowserPrivate>;
+
         // Constructors of DMAP.MdnsBrowserPrivate
 
         _init(...args: any[]): void;
     }
 
     class MdnsBrowserService {
+        static $gtype: GObject.GType<MdnsBrowserService>;
+
         // Own fields of DMAP.MdnsBrowserService
 
         service_name: string;
@@ -1262,12 +1290,16 @@ export namespace DMAP {
 
     type MdnsPublisherClass = typeof MdnsPublisher;
     abstract class MdnsPublisherPrivate {
+        static $gtype: GObject.GType<MdnsPublisherPrivate>;
+
         // Constructors of DMAP.MdnsPublisherPrivate
 
         _init(...args: any[]): void;
     }
 
     class MetaDataMap {
+        static $gtype: GObject.GType<MetaDataMap>;
+
         // Own fields of DMAP.MetaDataMap
 
         tag: string;
@@ -1285,6 +1317,8 @@ export namespace DMAP {
     }
 
     class Playlist {
+        static $gtype: GObject.GType<Playlist>;
+
         // Own fields of DMAP.Playlist
 
         name: string;
@@ -1306,12 +1340,16 @@ export namespace DMAP {
     type RecordIface = typeof Record;
     type ShareClass = typeof Share;
     abstract class SharePrivate {
+        static $gtype: GObject.GType<SharePrivate>;
+
         // Constructors of DMAP.SharePrivate
 
         _init(...args: any[]): void;
     }
 
     class StructureItem {
+        static $gtype: GObject.GType<StructureItem>;
+
         // Own fields of DMAP.StructureItem
 
         content_code: ContentCode;

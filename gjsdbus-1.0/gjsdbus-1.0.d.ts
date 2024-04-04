@@ -42,6 +42,8 @@ export namespace GjsDBus {
     }
 
     class Implementation extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
+        static $gtype: GObject.GType<Implementation>;
+
         // Own properties of GjsDBus.Implementation
 
         set g_interface_info(val: Gio.DBusInterfaceInfo);
@@ -490,6 +492,8 @@ export namespace GjsDBus {
 
     type ImplementationClass = typeof Implementation;
     abstract class ImplementationPrivate {
+        static $gtype: GObject.GType<ImplementationPrivate>;
+
         // Constructors of GjsDBus.ImplementationPrivate
 
         _init(...args: any[]): void;

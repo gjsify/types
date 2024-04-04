@@ -70,6 +70,8 @@ export namespace GUdev {
      * To listen to uevents, connect to the #GUdevClient::uevent signal.
      */
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of GUdev.Client
 
         /**
@@ -198,6 +200,8 @@ export namespace GUdev {
      * #GUdevDevice whenever an event happens.
      */
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Constructors of GUdev.Device
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
@@ -524,6 +528,8 @@ export namespace GUdev {
      * #GUdevEnumerator is used to lookup and sort devices.
      */
     class Enumerator extends GObject.Object {
+        static $gtype: GObject.GType<Enumerator>;
+
         // Own properties of GUdev.Enumerator
 
         /**
@@ -606,6 +612,8 @@ export namespace GUdev {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of GUdev.ClientPrivate
 
         _init(...args: any[]): void;
@@ -613,6 +621,8 @@ export namespace GUdev {
 
     type DeviceClass = typeof Device;
     abstract class DevicePrivate {
+        static $gtype: GObject.GType<DevicePrivate>;
+
         // Constructors of GUdev.DevicePrivate
 
         _init(...args: any[]): void;
@@ -620,6 +630,8 @@ export namespace GUdev {
 
     type EnumeratorClass = typeof Enumerator;
     abstract class EnumeratorPrivate {
+        static $gtype: GObject.GType<EnumeratorPrivate>;
+
         // Constructors of GUdev.EnumeratorPrivate
 
         _init(...args: any[]): void;

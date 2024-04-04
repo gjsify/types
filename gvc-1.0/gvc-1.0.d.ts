@@ -52,6 +52,8 @@ export namespace Gvc {
     }
 
     class ChannelMap extends GObject.Object {
+        static $gtype: GObject.GType<ChannelMap>;
+
         // Constructors of Gvc.ChannelMap
 
         constructor(properties?: Partial<ChannelMap.ConstructorProps>, ...args: any[]);
@@ -100,6 +102,8 @@ export namespace Gvc {
     }
 
     class MixerCard extends GObject.Object {
+        static $gtype: GObject.GType<MixerCard>;
+
         // Own properties of Gvc.MixerCard
 
         get human_profile(): string;
@@ -216,6 +220,8 @@ export namespace Gvc {
     }
 
     class MixerControl extends GObject.Object {
+        static $gtype: GObject.GType<MixerControl>;
+
         // Own properties of Gvc.MixerControl
 
         get name(): string;
@@ -342,6 +348,8 @@ export namespace Gvc {
     }
 
     class MixerEventRole extends MixerStream {
+        static $gtype: GObject.GType<MixerEventRole>;
+
         // Own properties of Gvc.MixerEventRole
 
         get device(): string;
@@ -361,6 +369,8 @@ export namespace Gvc {
     }
 
     class MixerSink extends MixerStream {
+        static $gtype: GObject.GType<MixerSink>;
+
         // Constructors of Gvc.MixerSink
 
         constructor(properties?: Partial<MixerSink.ConstructorProps>, ...args: any[]);
@@ -375,6 +385,8 @@ export namespace Gvc {
     }
 
     class MixerSinkInput extends MixerStream {
+        static $gtype: GObject.GType<MixerSinkInput>;
+
         // Constructors of Gvc.MixerSinkInput
 
         constructor(properties?: Partial<MixerSinkInput.ConstructorProps>, ...args: any[]);
@@ -389,6 +401,8 @@ export namespace Gvc {
     }
 
     class MixerSource extends MixerStream {
+        static $gtype: GObject.GType<MixerSource>;
+
         // Constructors of Gvc.MixerSource
 
         constructor(properties?: Partial<MixerSource.ConstructorProps>, ...args: any[]);
@@ -403,6 +417,8 @@ export namespace Gvc {
     }
 
     class MixerSourceOutput extends MixerStream {
+        static $gtype: GObject.GType<MixerSourceOutput>;
+
         // Constructors of Gvc.MixerSourceOutput
 
         constructor(properties?: Partial<MixerSourceOutput.ConstructorProps>, ...args: any[]);
@@ -448,6 +464,8 @@ export namespace Gvc {
     }
 
     abstract class MixerStream extends GObject.Object {
+        static $gtype: GObject.GType<MixerStream>;
+
         // Own properties of Gvc.MixerStream
 
         get application_id(): string;
@@ -583,6 +601,8 @@ export namespace Gvc {
     }
 
     class MixerUIDevice extends GObject.Object {
+        static $gtype: GObject.GType<MixerUIDevice>;
+
         // Own properties of Gvc.MixerUIDevice
 
         get card(): any;
@@ -663,6 +683,8 @@ export namespace Gvc {
 
     type ChannelMapClass = typeof ChannelMap;
     abstract class ChannelMapPrivate {
+        static $gtype: GObject.GType<ChannelMapPrivate>;
+
         // Constructors of Gvc.ChannelMapPrivate
 
         _init(...args: any[]): void;
@@ -670,6 +692,8 @@ export namespace Gvc {
 
     type MixerCardClass = typeof MixerCard;
     class MixerCardPort {
+        static $gtype: GObject.GType<MixerCardPort>;
+
         // Own fields of Gvc.MixerCardPort
 
         port: string;
@@ -696,12 +720,16 @@ export namespace Gvc {
     }
 
     abstract class MixerCardPrivate {
+        static $gtype: GObject.GType<MixerCardPrivate>;
+
         // Constructors of Gvc.MixerCardPrivate
 
         _init(...args: any[]): void;
     }
 
     class MixerCardProfile {
+        static $gtype: GObject.GType<MixerCardProfile>;
+
         // Own fields of Gvc.MixerCardProfile
 
         profile: string;
@@ -732,6 +760,8 @@ export namespace Gvc {
 
     type MixerControlClass = typeof MixerControl;
     abstract class MixerControlPrivate {
+        static $gtype: GObject.GType<MixerControlPrivate>;
+
         // Constructors of Gvc.MixerControlPrivate
 
         _init(...args: any[]): void;
@@ -739,6 +769,8 @@ export namespace Gvc {
 
     type MixerEventRoleClass = typeof MixerEventRole;
     abstract class MixerEventRolePrivate {
+        static $gtype: GObject.GType<MixerEventRolePrivate>;
+
         // Constructors of Gvc.MixerEventRolePrivate
 
         _init(...args: any[]): void;
@@ -747,12 +779,16 @@ export namespace Gvc {
     type MixerSinkClass = typeof MixerSink;
     type MixerSinkInputClass = typeof MixerSinkInput;
     abstract class MixerSinkInputPrivate {
+        static $gtype: GObject.GType<MixerSinkInputPrivate>;
+
         // Constructors of Gvc.MixerSinkInputPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MixerSinkPrivate {
+        static $gtype: GObject.GType<MixerSinkPrivate>;
+
         // Constructors of Gvc.MixerSinkPrivate
 
         _init(...args: any[]): void;
@@ -761,12 +797,16 @@ export namespace Gvc {
     type MixerSourceClass = typeof MixerSource;
     type MixerSourceOutputClass = typeof MixerSourceOutput;
     abstract class MixerSourceOutputPrivate {
+        static $gtype: GObject.GType<MixerSourceOutputPrivate>;
+
         // Constructors of Gvc.MixerSourceOutputPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MixerSourcePrivate {
+        static $gtype: GObject.GType<MixerSourcePrivate>;
+
         // Constructors of Gvc.MixerSourcePrivate
 
         _init(...args: any[]): void;
@@ -774,6 +814,8 @@ export namespace Gvc {
 
     type MixerStreamClass = typeof MixerStream;
     class MixerStreamPort {
+        static $gtype: GObject.GType<MixerStreamPort>;
+
         // Own fields of Gvc.MixerStreamPort
 
         port: string;
@@ -795,6 +837,8 @@ export namespace Gvc {
     }
 
     abstract class MixerStreamPrivate {
+        static $gtype: GObject.GType<MixerStreamPrivate>;
+
         // Constructors of Gvc.MixerStreamPrivate
 
         _init(...args: any[]): void;
@@ -802,6 +846,8 @@ export namespace Gvc {
 
     type MixerUIDeviceClass = typeof MixerUIDevice;
     abstract class MixerUIDevicePrivate {
+        static $gtype: GObject.GType<MixerUIDevicePrivate>;
+
         // Constructors of Gvc.MixerUIDevicePrivate
 
         _init(...args: any[]): void;

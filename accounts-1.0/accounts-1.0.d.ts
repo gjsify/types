@@ -21,6 +21,8 @@ export namespace Accounts {
      * libaccounts-glib that return a #GError.
      */
     class AccountsError extends GLib.Error {
+        static $gtype: GObject.GType<AccountsError>;
+
         // Static fields of Accounts.AccountsError
 
         /**
@@ -143,6 +145,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class Account extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Account>;
+
         // Own properties of Accounts.Account
 
         /**
@@ -848,6 +852,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class AccountService extends GObject.Object {
+        static $gtype: GObject.GType<AccountService>;
+
         // Own properties of Accounts.AccountService
 
         /**
@@ -1017,6 +1023,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class Manager extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Manager>;
+
         // Own properties of Accounts.Manager
 
         /**
@@ -1719,6 +1727,8 @@ export namespace Accounts {
 
     type AccountClass = typeof Account;
     abstract class AccountPrivate {
+        static $gtype: GObject.GType<AccountPrivate>;
+
         // Constructors of Accounts.AccountPrivate
 
         _init(...args: any[]): void;
@@ -1726,6 +1736,8 @@ export namespace Accounts {
 
     type AccountServiceClass = typeof AccountService;
     abstract class AccountServicePrivate {
+        static $gtype: GObject.GType<AccountServicePrivate>;
+
         // Constructors of Accounts.AccountServicePrivate
 
         _init(...args: any[]): void;
@@ -1735,6 +1747,8 @@ export namespace Accounts {
      * Iterator for account settings.
      */
     class AccountSettingIter {
+        static $gtype: GObject.GType<AccountSettingIter>;
+
         // Own fields of Accounts.AccountSettingIter
 
         account: Account;
@@ -1768,6 +1782,8 @@ export namespace Accounts {
      * ag_account_watch_key().
      */
     abstract class AccountWatch {
+        static $gtype: GObject.GType<AccountWatch>;
+
         // Constructors of Accounts.AccountWatch
 
         _init(...args: any[]): void;
@@ -1777,6 +1793,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class Application {
+        static $gtype: GObject.GType<Application>;
+
         // Constructors of Accounts.Application
 
         _init(...args: any[]): void;
@@ -1826,6 +1844,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class AuthData {
+        static $gtype: GObject.GType<AuthData>;
+
         // Constructors of Accounts.AuthData
 
         _init(...args: any[]): void;
@@ -1879,6 +1899,8 @@ export namespace Accounts {
 
     type ManagerClass = typeof Manager;
     abstract class ManagerPrivate {
+        static $gtype: GObject.GType<ManagerPrivate>;
+
         // Constructors of Accounts.ManagerPrivate
 
         _init(...args: any[]): void;
@@ -1888,6 +1910,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class Provider {
+        static $gtype: GObject.GType<Provider>;
+
         // Constructors of Accounts.Provider
 
         _init(...args: any[]): void;
@@ -1981,6 +2005,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class Service {
+        static $gtype: GObject.GType<Service>;
+
         // Constructors of Accounts.Service
 
         _init(...args: any[]): void;
@@ -2067,6 +2093,8 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      */
     class ServiceType {
+        static $gtype: GObject.GType<ServiceType>;
+
         // Constructors of Accounts.ServiceType
 
         _init(...args: any[]): void;

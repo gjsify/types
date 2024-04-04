@@ -309,6 +309,8 @@ export namespace EBackend {
      * functions below.
      */
     abstract class Backend extends GObject.Object {
+        static $gtype: GObject.GType<Backend>;
+
         // Own properties of EBackend.Backend
 
         get connectable(): Gio.SocketConnectable;
@@ -598,6 +600,8 @@ export namespace EBackend {
      * functions below.
      */
     abstract class BackendFactory extends EDataServer.Extension {
+        static $gtype: GObject.GType<BackendFactory>;
+
         // Constructors of EBackend.BackendFactory
 
         constructor(properties?: Partial<BackendFactory.ConstructorProps>, ...args: any[]);
@@ -684,6 +688,8 @@ export namespace EBackend {
      * functions below.
      */
     abstract class Cache extends GObject.Object {
+        static $gtype: GObject.GType<Cache>;
+
         // Constructors of EBackend.Cache
 
         constructor(properties?: Partial<Cache.ConstructorProps>, ...args: any[]);
@@ -1112,6 +1118,8 @@ export namespace EBackend {
      * functions below.
      */
     class CacheKeys extends GObject.Object {
+        static $gtype: GObject.GType<CacheKeys>;
+
         // Own properties of EBackend.CacheKeys
 
         /**
@@ -1265,6 +1273,8 @@ export namespace EBackend {
     }
 
     class CacheReaper extends EDataServer.Extension implements EDataServer.Extensible {
+        static $gtype: GObject.GType<CacheReaper>;
+
         // Constructors of EBackend.CacheReaper
 
         constructor(properties?: Partial<CacheReaper.ConstructorProps>, ...args: any[]);
@@ -1702,6 +1712,8 @@ export namespace EBackend {
      * functions below.
      */
     class CollectionBackend extends Backend {
+        static $gtype: GObject.GType<CollectionBackend>;
+
         // Own properties of EBackend.CollectionBackend
 
         get proxy_resolver(): Gio.ProxyResolver;
@@ -2130,6 +2142,8 @@ export namespace EBackend {
      * functions below.
      */
     class CollectionBackendFactory extends BackendFactory {
+        static $gtype: GObject.GType<CollectionBackendFactory>;
+
         // Constructors of EBackend.CollectionBackendFactory
 
         constructor(properties?: Partial<CollectionBackendFactory.ConstructorProps>, ...args: any[]);
@@ -2206,6 +2220,8 @@ export namespace EBackend {
      * functions below.
      */
     abstract class DBusServer extends GObject.Object implements EDataServer.Extensible {
+        static $gtype: GObject.GType<DBusServer>;
+
         // Constructors of EBackend.DBusServer
 
         constructor(properties?: Partial<DBusServer.ConstructorProps>, ...args: any[]);
@@ -2698,6 +2714,8 @@ export namespace EBackend {
      * functions below.
      */
     class DataFactory extends DBusServer implements EDataServer.Extensible, Gio.Initable {
+        static $gtype: GObject.GType<DataFactory>;
+
         // Own properties of EBackend.DataFactory
 
         get backend_per_process(): number;
@@ -3289,6 +3307,8 @@ export namespace EBackend {
      * functions below.
      */
     class FileCache extends GObject.Object {
+        static $gtype: GObject.GType<FileCache>;
+
         // Own properties of EBackend.FileCache
 
         /**
@@ -3402,6 +3422,8 @@ export namespace EBackend {
      * functions below.
      */
     class ServerSideSource extends EDataServer.Source implements Gio.Initable, Gio.ProxyResolver {
+        static $gtype: GObject.GType<ServerSideSource>;
+
         // Own properties of EBackend.ServerSideSource
 
         get exported(): boolean;
@@ -4163,6 +4185,8 @@ export namespace EBackend {
         extends EDataServer.SourceCredentialsProvider
         implements EDataServer.Extensible
     {
+        static $gtype: GObject.GType<ServerSideSourceCredentialsProvider>;
+
         // Constructors of EBackend.ServerSideSourceCredentialsProvider
 
         constructor(properties?: Partial<ServerSideSourceCredentialsProvider.ConstructorProps>, ...args: any[]);
@@ -4592,6 +4616,8 @@ export namespace EBackend {
      * functions below.
      */
     class SourceRegistryServer extends DataFactory implements OAuth2Support, EDataServer.Extensible, Gio.Initable {
+        static $gtype: GObject.GType<SourceRegistryServer>;
+
         // Constructors of EBackend.SourceRegistryServer
 
         constructor(properties?: Partial<SourceRegistryServer.ConstructorProps>, ...args: any[]);
@@ -5329,6 +5355,8 @@ export namespace EBackend {
      * functions below.
      */
     class SubprocessFactory extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<SubprocessFactory>;
+
         // Own properties of EBackend.SubprocessFactory
 
         get registry(): EDataServer.SourceRegistry;
@@ -5877,6 +5905,8 @@ export namespace EBackend {
      * functions below.
      */
     class UserPrompter extends GObject.Object {
+        static $gtype: GObject.GType<UserPrompter>;
+
         // Constructors of EBackend.UserPrompter
 
         constructor(properties?: Partial<UserPrompter.ConstructorProps>, ...args: any[]);
@@ -6046,6 +6076,8 @@ export namespace EBackend {
      * functions below.
      */
     class UserPrompterServer extends DBusServer implements EDataServer.Extensible {
+        static $gtype: GObject.GType<UserPrompterServer>;
+
         // Constructors of EBackend.UserPrompterServer
 
         constructor(properties?: Partial<UserPrompterServer.ConstructorProps>, ...args: any[]);
@@ -6515,6 +6547,8 @@ export namespace EBackend {
      * functions below.
      */
     abstract class UserPrompterServerExtension extends EDataServer.Extension {
+        static $gtype: GObject.GType<UserPrompterServerExtension>;
+
         // Constructors of EBackend.UserPrompterServerExtension
 
         constructor(properties?: Partial<UserPrompterServerExtension.ConstructorProps>, ...args: any[]);
@@ -6589,6 +6623,8 @@ export namespace EBackend {
      * functions below.
      */
     class WebDAVCollectionBackend extends CollectionBackend {
+        static $gtype: GObject.GType<WebDAVCollectionBackend>;
+
         // Constructors of EBackend.WebDAVCollectionBackend
 
         constructor(properties?: Partial<WebDAVCollectionBackend.ConstructorProps>, ...args: any[]);
@@ -6645,12 +6681,16 @@ export namespace EBackend {
     type BackendClass = typeof Backend;
     type BackendFactoryClass = typeof BackendFactory;
     abstract class BackendFactoryPrivate {
+        static $gtype: GObject.GType<BackendFactoryPrivate>;
+
         // Constructors of EBackend.BackendFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BackendPrivate {
+        static $gtype: GObject.GType<BackendPrivate>;
+
         // Constructors of EBackend.BackendPrivate
 
         _init(...args: any[]): void;
@@ -6658,6 +6698,8 @@ export namespace EBackend {
 
     type CacheClass = typeof Cache;
     class CacheColumnInfo {
+        static $gtype: GObject.GType<CacheColumnInfo>;
+
         // Own fields of EBackend.CacheColumnInfo
 
         name: string;
@@ -6692,6 +6734,8 @@ export namespace EBackend {
     }
 
     abstract class CacheColumnValues {
+        static $gtype: GObject.GType<CacheColumnValues>;
+
         // Constructors of EBackend.CacheColumnValues
 
         constructor(properties?: Partial<{}>);
@@ -6766,6 +6810,8 @@ export namespace EBackend {
 
     type CacheKeysClass = typeof CacheKeys;
     abstract class CacheKeysPrivate {
+        static $gtype: GObject.GType<CacheKeysPrivate>;
+
         // Constructors of EBackend.CacheKeysPrivate
 
         _init(...args: any[]): void;
@@ -6775,6 +6821,8 @@ export namespace EBackend {
      * Holds the information about offline change for one object.
      */
     class CacheOfflineChange {
+        static $gtype: GObject.GType<CacheOfflineChange>;
+
         // Own fields of EBackend.CacheOfflineChange
 
         uid: string;
@@ -6809,6 +6857,8 @@ export namespace EBackend {
     }
 
     abstract class CachePrivate {
+        static $gtype: GObject.GType<CachePrivate>;
+
         // Constructors of EBackend.CachePrivate
 
         _init(...args: any[]): void;
@@ -6818,12 +6868,16 @@ export namespace EBackend {
     type CollectionBackendClass = typeof CollectionBackend;
     type CollectionBackendFactoryClass = typeof CollectionBackendFactory;
     abstract class CollectionBackendFactoryPrivate {
+        static $gtype: GObject.GType<CollectionBackendFactoryPrivate>;
+
         // Constructors of EBackend.CollectionBackendFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CollectionBackendPrivate {
+        static $gtype: GObject.GType<CollectionBackendPrivate>;
+
         // Constructors of EBackend.CollectionBackendPrivate
 
         _init(...args: any[]): void;
@@ -6831,6 +6885,8 @@ export namespace EBackend {
 
     type DBusServerClass = typeof DBusServer;
     abstract class DBusServerPrivate {
+        static $gtype: GObject.GType<DBusServerPrivate>;
+
         // Constructors of EBackend.DBusServerPrivate
 
         _init(...args: any[]): void;
@@ -6838,6 +6894,8 @@ export namespace EBackend {
 
     type DataFactoryClass = typeof DataFactory;
     abstract class DataFactoryPrivate {
+        static $gtype: GObject.GType<DataFactoryPrivate>;
+
         // Constructors of EBackend.DataFactoryPrivate
 
         _init(...args: any[]): void;
@@ -6845,6 +6903,8 @@ export namespace EBackend {
 
     type FileCacheClass = typeof FileCache;
     abstract class FileCachePrivate {
+        static $gtype: GObject.GType<FileCachePrivate>;
+
         // Constructors of EBackend.FileCachePrivate
 
         _init(...args: any[]): void;
@@ -6854,12 +6914,16 @@ export namespace EBackend {
     type ServerSideSourceClass = typeof ServerSideSource;
     type ServerSideSourceCredentialsProviderClass = typeof ServerSideSourceCredentialsProvider;
     abstract class ServerSideSourceCredentialsProviderPrivate {
+        static $gtype: GObject.GType<ServerSideSourceCredentialsProviderPrivate>;
+
         // Constructors of EBackend.ServerSideSourceCredentialsProviderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ServerSideSourcePrivate {
+        static $gtype: GObject.GType<ServerSideSourcePrivate>;
+
         // Constructors of EBackend.ServerSideSourcePrivate
 
         _init(...args: any[]): void;
@@ -6867,6 +6931,8 @@ export namespace EBackend {
 
     type SourceRegistryServerClass = typeof SourceRegistryServer;
     abstract class SourceRegistryServerPrivate {
+        static $gtype: GObject.GType<SourceRegistryServerPrivate>;
+
         // Constructors of EBackend.SourceRegistryServerPrivate
 
         _init(...args: any[]): void;
@@ -6874,6 +6940,8 @@ export namespace EBackend {
 
     type SubprocessFactoryClass = typeof SubprocessFactory;
     abstract class SubprocessFactoryPrivate {
+        static $gtype: GObject.GType<SubprocessFactoryPrivate>;
+
         // Constructors of EBackend.SubprocessFactoryPrivate
 
         _init(...args: any[]): void;
@@ -6881,6 +6949,8 @@ export namespace EBackend {
 
     type UserPrompterClass = typeof UserPrompter;
     abstract class UserPrompterPrivate {
+        static $gtype: GObject.GType<UserPrompterPrivate>;
+
         // Constructors of EBackend.UserPrompterPrivate
 
         _init(...args: any[]): void;
@@ -6889,12 +6959,16 @@ export namespace EBackend {
     type UserPrompterServerClass = typeof UserPrompterServer;
     type UserPrompterServerExtensionClass = typeof UserPrompterServerExtension;
     abstract class UserPrompterServerExtensionPrivate {
+        static $gtype: GObject.GType<UserPrompterServerExtensionPrivate>;
+
         // Constructors of EBackend.UserPrompterServerExtensionPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class UserPrompterServerPrivate {
+        static $gtype: GObject.GType<UserPrompterServerPrivate>;
+
         // Constructors of EBackend.UserPrompterServerPrivate
 
         _init(...args: any[]): void;
@@ -6902,6 +6976,8 @@ export namespace EBackend {
 
     type WebDAVCollectionBackendClass = typeof WebDAVCollectionBackend;
     abstract class WebDAVCollectionBackendPrivate {
+        static $gtype: GObject.GType<WebDAVCollectionBackendPrivate>;
+
         // Constructors of EBackend.WebDAVCollectionBackendPrivate
 
         _init(...args: any[]): void;

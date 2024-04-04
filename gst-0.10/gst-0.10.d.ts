@@ -1436,6 +1436,8 @@ export namespace Gst {
      * The opaque #GstAdapter data structure.
      */
     class Adapter extends GObject.Object {
+        static $gtype: GObject.GType<Adapter>;
+
         // Own fields of Gst.Adapter
 
         object: GObject.Object;
@@ -1498,6 +1500,8 @@ export namespace Gst {
      * The opaque #GstBaseSink data structure.
      */
     abstract class BaseSink extends Element {
+        static $gtype: GObject.GType<BaseSink>;
+
         // Own properties of Gst.BaseSink
 
         get async(): boolean;
@@ -1622,6 +1626,8 @@ export namespace Gst {
      * The opaque #GstBaseSrc data structure.
      */
     abstract class BaseSrc extends Element {
+        static $gtype: GObject.GType<BaseSrc>;
+
         // Own properties of Gst.BaseSrc
 
         get blocksize(): never;
@@ -1706,6 +1712,8 @@ export namespace Gst {
      * The opaque #GstBaseTransform data structure.
      */
     abstract class BaseTransform extends Element {
+        static $gtype: GObject.GType<BaseTransform>;
+
         // Own properties of Gst.BaseTransform
 
         get qos(): boolean;
@@ -1791,6 +1799,8 @@ export namespace Gst {
      * the LOCK is taken.
      */
     class Bin extends Element implements ChildProxy {
+        static $gtype: GObject.GType<Bin>;
+
         // Own properties of Gst.Bin
 
         get async_handling(): boolean;
@@ -1890,6 +1900,8 @@ export namespace Gst {
      * variables.
      */
     class Buffer extends MiniObject {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own fields of Gst.Buffer
 
         mini_object: MiniObject;
@@ -1930,6 +1942,8 @@ export namespace Gst {
     }
 
     class BufferList extends MiniObject {
+        static $gtype: GObject.GType<BufferList>;
+
         // Constructors of Gst.BufferList
 
         _init(...args: any[]): void;
@@ -1964,6 +1978,8 @@ export namespace Gst {
      * The opaque #GstBus data structure.
      */
     class Bus extends Object {
+        static $gtype: GObject.GType<Bus>;
+
         // Own fields of Gst.Bus
 
         object: Object;
@@ -2035,6 +2051,8 @@ export namespace Gst {
      * protected for subclasses, use the methods to use the #GstClock.
      */
     class Clock extends Object {
+        static $gtype: GObject.GType<Clock>;
+
         // Own properties of Gst.Clock
 
         get stats(): boolean;
@@ -2122,6 +2140,8 @@ export namespace Gst {
      * at all times and should not be used for iterating them.
      */
     class CollectPads extends Object {
+        static $gtype: GObject.GType<CollectPads>;
+
         // Own fields of Gst.CollectPads
 
         object: Object;
@@ -2191,6 +2211,8 @@ export namespace Gst {
      * Opaque #GstDataQueue structure.
      */
     class DataQueue extends GObject.Object {
+        static $gtype: GObject.GType<DataQueue>;
+
         // Own properties of Gst.DataQueue
 
         get current_level_bytes(): number;
@@ -2274,6 +2296,8 @@ export namespace Gst {
      * GStreamer element abstract base class.
      */
     abstract class Element extends Object {
+        static $gtype: GObject.GType<Element>;
+
         // Own fields of Gst.Element
 
         object: Object;
@@ -2431,6 +2455,8 @@ export namespace Gst {
      * The opaque #GstElementFactory data structure.
      */
     class ElementFactory extends PluginFeature {
+        static $gtype: GObject.GType<ElementFactory>;
+
         // Own fields of Gst.ElementFactory
 
         type: GObject.GType;
@@ -2472,6 +2498,8 @@ export namespace Gst {
      * A #GstEvent.
      */
     class Event extends MiniObject {
+        static $gtype: GObject.GType<Event>;
+
         // Own fields of Gst.Event
 
         mini_object: MiniObject;
@@ -2569,6 +2597,8 @@ export namespace Gst {
     }
 
     class GParamSpecMiniObject extends GObject.Object {
+        static $gtype: GObject.GType<GParamSpecMiniObject>;
+
         // Constructors of Gst.GParamSpecMiniObject
 
         constructor(properties?: Partial<GParamSpecMiniObject.ConstructorProps>, ...args: any[]);
@@ -2586,6 +2616,8 @@ export namespace Gst {
      * Opaque #GstGhostPad structure.
      */
     class GhostPad extends ProxyPad {
+        static $gtype: GObject.GType<GhostPad>;
+
         // Own fields of Gst.GhostPad
 
         pad: ProxyPad;
@@ -2635,6 +2667,8 @@ export namespace Gst {
      * Opaque #GstIndex structure.
      */
     class Index extends Object {
+        static $gtype: GObject.GType<Index>;
+
         // Own properties of Gst.Index
 
         get resolver(): IndexResolver;
@@ -2730,6 +2764,8 @@ export namespace Gst {
      * The GstIndexFactory object
      */
     class IndexFactory extends PluginFeature {
+        static $gtype: GObject.GType<IndexFactory>;
+
         // Own fields of Gst.IndexFactory
 
         feature: PluginFeature;
@@ -2759,6 +2795,8 @@ export namespace Gst {
      * A #GstMessage.
      */
     class Message extends MiniObject {
+        static $gtype: GObject.GType<Message>;
+
         // Own fields of Gst.Message
 
         mini_object: MiniObject;
@@ -2892,6 +2930,8 @@ export namespace Gst {
      * Base class for refcounted lightweight objects.
      */
     abstract class MiniObject {
+        static $gtype: GObject.GType<MiniObject>;
+
         // Own fields of Gst.MiniObject
 
         refcount: number;
@@ -2943,6 +2983,8 @@ export namespace Gst {
      * GStreamer base object class.
      */
     abstract class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Gst.Object
 
         get name(): string;
@@ -3052,6 +3094,8 @@ export namespace Gst {
      * The #GstPad structure. Use the functions to update the variables.
      */
     class Pad extends Object {
+        static $gtype: GObject.GType<Pad>;
+
         // Own properties of Gst.Pad
 
         get caps(): Caps;
@@ -3245,6 +3289,8 @@ export namespace Gst {
      * The padtemplate object.
      */
     class PadTemplate extends Object {
+        static $gtype: GObject.GType<PadTemplate>;
+
         // Own properties of Gst.PadTemplate
 
         get caps(): Caps;
@@ -3287,6 +3333,8 @@ export namespace Gst {
     }
 
     class ParamFraction extends GObject.Object {
+        static $gtype: GObject.GType<ParamFraction>;
+
         // Constructors of Gst.ParamFraction
 
         constructor(properties?: Partial<ParamFraction.ConstructorProps>, ...args: any[]);
@@ -3308,6 +3356,8 @@ export namespace Gst {
      * The #GstPipeline structure.
      */
     class Pipeline extends Bin implements ChildProxy {
+        static $gtype: GObject.GType<Pipeline>;
+
         // Own properties of Gst.Pipeline
 
         get auto_flush_bus(): boolean;
@@ -3382,6 +3432,8 @@ export namespace Gst {
      * The plugin object
      */
     class Plugin extends Object {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own fields of Gst.Plugin
 
         object: Object;
@@ -3458,6 +3510,8 @@ export namespace Gst {
      * Opaque #GstPluginFeature structure.
      */
     abstract class PluginFeature extends Object {
+        static $gtype: GObject.GType<PluginFeature>;
+
         // Own fields of Gst.PluginFeature
 
         object: Object;
@@ -3493,6 +3547,8 @@ export namespace Gst {
     }
 
     class ProxyPad extends Pad {
+        static $gtype: GObject.GType<ProxyPad>;
+
         // Own fields of Gst.ProxyPad
 
         pad: Pad;
@@ -3514,6 +3570,8 @@ export namespace Gst {
      * The opaque #GstPushSrc data structure.
      */
     class PushSrc extends BaseSrc {
+        static $gtype: GObject.GType<PushSrc>;
+
         // Constructors of Gst.PushSrc
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
@@ -3530,6 +3588,8 @@ export namespace Gst {
      * The #GstQuery structure.
      */
     class Query extends MiniObject {
+        static $gtype: GObject.GType<Query>;
+
         // Own fields of Gst.Query
 
         mini_object: MiniObject;
@@ -3617,6 +3677,8 @@ export namespace Gst {
      * Opaque #GstRegistry structure.
      */
     class Registry extends Object {
+        static $gtype: GObject.GType<Registry>;
+
         // Own fields of Gst.Registry
 
         object: Object;
@@ -3679,6 +3741,8 @@ export namespace Gst {
      * The default implementation of a #GstClock that uses the system time.
      */
     class SystemClock extends Clock {
+        static $gtype: GObject.GType<SystemClock>;
+
         // Own properties of Gst.SystemClock
 
         get clock_type(): ClockType;
@@ -3712,6 +3776,8 @@ export namespace Gst {
      * The #GstTask object.
      */
     class Task extends Object {
+        static $gtype: GObject.GType<Task>;
+
         // Own fields of Gst.Task
 
         object: Object;
@@ -3757,6 +3823,8 @@ export namespace Gst {
      * The #GstTaskPool object.
      */
     class TaskPool extends Object {
+        static $gtype: GObject.GType<TaskPool>;
+
         // Own fields of Gst.TaskPool
 
         object: Object;
@@ -3794,6 +3862,8 @@ export namespace Gst {
      * Object that stores information about a typefind function.
      */
     class TypeFindFactory extends PluginFeature {
+        static $gtype: GObject.GType<TypeFindFactory>;
+
         // Own fields of Gst.TypeFindFactory
 
         feature: PluginFeature;
@@ -3831,6 +3901,8 @@ export namespace Gst {
      * XML parser object
      */
     class XML extends Object {
+        static $gtype: GObject.GType<XML>;
+
         // Own fields of Gst.XML
 
         object: Object;
@@ -3872,6 +3944,8 @@ export namespace Gst {
 
     type AdapterClass = typeof Adapter;
     class AdapterPrivate {
+        static $gtype: GObject.GType<AdapterPrivate>;
+
         // Constructors of Gst.AdapterPrivate
 
         _init(...args: any[]): void;
@@ -3881,6 +3955,8 @@ export namespace Gst {
      * The main tracing object
      */
     class AllocTrace {
+        static $gtype: GObject.GType<AllocTrace>;
+
         // Own fields of Gst.AllocTrace
 
         name: string;
@@ -3907,6 +3983,8 @@ export namespace Gst {
 
     type BaseSinkClass = typeof BaseSink;
     class BaseSinkPrivate {
+        static $gtype: GObject.GType<BaseSinkPrivate>;
+
         // Constructors of Gst.BaseSinkPrivate
 
         _init(...args: any[]): void;
@@ -3914,6 +3992,8 @@ export namespace Gst {
 
     type BaseSrcClass = typeof BaseSrc;
     class BaseSrcPrivate {
+        static $gtype: GObject.GType<BaseSrcPrivate>;
+
         // Constructors of Gst.BaseSrcPrivate
 
         _init(...args: any[]): void;
@@ -3921,6 +4001,8 @@ export namespace Gst {
 
     type BaseTransformClass = typeof BaseTransform;
     class BaseTransformPrivate {
+        static $gtype: GObject.GType<BaseTransformPrivate>;
+
         // Constructors of Gst.BaseTransformPrivate
 
         _init(...args: any[]): void;
@@ -3928,6 +4010,8 @@ export namespace Gst {
 
     type BinClass = typeof Bin;
     class BinPrivate {
+        static $gtype: GObject.GType<BinPrivate>;
+
         // Constructors of Gst.BinPrivate
 
         _init(...args: any[]): void;
@@ -3937,6 +4021,8 @@ export namespace Gst {
      * A bit reader instance.
      */
     class BitReader {
+        static $gtype: GObject.GType<BitReader>;
+
         // Own fields of Gst.BitReader
 
         data: any;
@@ -3984,6 +4070,8 @@ export namespace Gst {
     type BufferClass = typeof Buffer;
     type BufferListClass = typeof BufferList;
     class BufferListIterator {
+        static $gtype: GObject.GType<BufferListIterator>;
+
         // Constructors of Gst.BufferListIterator
 
         _init(...args: any[]): void;
@@ -4005,6 +4093,8 @@ export namespace Gst {
 
     type BusClass = typeof Bus;
     class BusPrivate {
+        static $gtype: GObject.GType<BusPrivate>;
+
         // Constructors of Gst.BusPrivate
 
         _init(...args: any[]): void;
@@ -4014,6 +4104,8 @@ export namespace Gst {
      * A byte reader instance.
      */
     class ByteReader {
+        static $gtype: GObject.GType<ByteReader>;
+
         // Own fields of Gst.ByteReader
 
         data: any;
@@ -4107,6 +4199,8 @@ export namespace Gst {
      * A byte writer instance.
      */
     class ByteWriter {
+        static $gtype: GObject.GType<ByteWriter>;
+
         // Own fields of Gst.ByteWriter
 
         alloc_size: number;
@@ -4180,6 +4274,8 @@ export namespace Gst {
      * Object describing media types.
      */
     class Caps {
+        static $gtype: GObject.GType<Caps>;
+
         // Own fields of Gst.Caps
 
         type: GObject.GType;
@@ -4247,6 +4343,8 @@ export namespace Gst {
      * not be extended or allocated using a custom allocator.
      */
     class ClockEntry {
+        static $gtype: GObject.GType<ClockEntry>;
+
         // Own fields of Gst.ClockEntry
 
         refcount: number;
@@ -4265,6 +4363,8 @@ export namespace Gst {
     }
 
     class ClockPrivate {
+        static $gtype: GObject.GType<ClockPrivate>;
+
         // Constructors of Gst.ClockPrivate
 
         _init(...args: any[]): void;
@@ -4274,6 +4374,8 @@ export namespace Gst {
      * Structure used by the collect_pads.
      */
     class CollectData {
+        static $gtype: GObject.GType<CollectData>;
+
         // Own fields of Gst.CollectData
 
         collect: CollectPads;
@@ -4288,6 +4390,8 @@ export namespace Gst {
 
     type CollectPadsClass = typeof CollectPads;
     class CollectPadsPrivate {
+        static $gtype: GObject.GType<CollectPadsPrivate>;
+
         // Constructors of Gst.CollectPadsPrivate
 
         _init(...args: any[]): void;
@@ -4299,6 +4403,8 @@ export namespace Gst {
      * long as the top of the structure is identical to this structure.
      */
     class DataQueueItem {
+        static $gtype: GObject.GType<DataQueueItem>;
+
         // Own fields of Gst.DataQueueItem
 
         object: MiniObject;
@@ -4316,6 +4422,8 @@ export namespace Gst {
      * Structure describing the size of a queue.
      */
     class DataQueueSize {
+        static $gtype: GObject.GType<DataQueueSize>;
+
         // Own fields of Gst.DataQueueSize
 
         visible: number;
@@ -4339,6 +4447,8 @@ export namespace Gst {
      * #GST_DEBUG_CATEGORY_INIT, its values can't be changed anymore.
      */
     class DebugCategory {
+        static $gtype: GObject.GType<DebugCategory>;
+
         // Own fields of Gst.DebugCategory
 
         threshold: number;
@@ -4370,6 +4480,8 @@ export namespace Gst {
     }
 
     class DebugMessage {
+        static $gtype: GObject.GType<DebugMessage>;
+
         // Constructors of Gst.DebugMessage
 
         _init(...args: any[]): void;
@@ -4387,6 +4499,8 @@ export namespace Gst {
      * on functionality.
      */
     class ElementDetails {
+        static $gtype: GObject.GType<ElementDetails>;
+
         // Own fields of Gst.ElementDetails
 
         longname: string;
@@ -4414,6 +4528,8 @@ export namespace Gst {
      * A format definition
      */
     class FormatDefinition {
+        static $gtype: GObject.GType<FormatDefinition>;
+
         // Own fields of Gst.FormatDefinition
 
         value: Format;
@@ -4428,6 +4544,8 @@ export namespace Gst {
 
     type GhostPadClass = typeof GhostPad;
     class GhostPadPrivate {
+        static $gtype: GObject.GType<GhostPadPrivate>;
+
         // Constructors of Gst.GhostPadPrivate
 
         _init(...args: any[]): void;
@@ -4438,6 +4556,8 @@ export namespace Gst {
      * An association in an entry.
      */
     class IndexAssociation {
+        static $gtype: GObject.GType<IndexAssociation>;
+
         // Own fields of Gst.IndexAssociation
 
         format: Format;
@@ -4453,6 +4573,8 @@ export namespace Gst {
      * The basic element of an index.
      */
     class IndexEntry {
+        static $gtype: GObject.GType<IndexEntry>;
+
         // Own fields of Gst.IndexEntry
 
         type: IndexEntryType;
@@ -4474,6 +4596,8 @@ export namespace Gst {
      * A group of related entries in an index.
      */
     class IndexGroup {
+        static $gtype: GObject.GType<IndexGroup>;
+
         // Own fields of Gst.IndexGroup
 
         groupnum: number;
@@ -4491,6 +4615,8 @@ export namespace Gst {
      * protected for subclasses, use the methods to use the #GstIterator.
      */
     class Iterator {
+        static $gtype: GObject.GType<Iterator>;
+
         // Own fields of Gst.Iterator
 
         item: IteratorItemFunction;
@@ -4540,6 +4666,8 @@ export namespace Gst {
     type ObjectClass = typeof Object;
     type PadClass = typeof Pad;
     class PadPrivate {
+        static $gtype: GObject.GType<PadPrivate>;
+
         // Constructors of Gst.PadPrivate
 
         _init(...args: any[]): void;
@@ -4551,6 +4679,8 @@ export namespace Gst {
      * properties.
      */
     class ParamSpecFraction {
+        static $gtype: GObject.GType<ParamSpecFraction>;
+
         // Own fields of Gst.ParamSpecFraction
 
         min_num: number;
@@ -4570,6 +4700,8 @@ export namespace Gst {
      * for %GstMiniObject properties.
      */
     class ParamSpecMiniObject {
+        static $gtype: GObject.GType<ParamSpecMiniObject>;
+
         // Constructors of Gst.ParamSpecMiniObject
 
         _init(...args: any[]): void;
@@ -4579,6 +4711,8 @@ export namespace Gst {
      * Opaque structure.
      */
     class ParseContext {
+        static $gtype: GObject.GType<ParseContext>;
+
         // Constructors of Gst.ParseContext
 
         constructor(properties?: Partial<{}>);
@@ -4594,6 +4728,8 @@ export namespace Gst {
 
     type PipelineClass = typeof Pipeline;
     class PipelinePrivate {
+        static $gtype: GObject.GType<PipelinePrivate>;
+
         // Constructors of Gst.PipelinePrivate
 
         _init(...args: any[]): void;
@@ -4606,6 +4742,8 @@ export namespace Gst {
      * BSD, MIT/X11, Proprietary, unknown.
      */
     class PluginDesc {
+        static $gtype: GObject.GType<PluginDesc>;
+
         // Own fields of Gst.PluginDesc
 
         major_version: number;
@@ -4626,6 +4764,8 @@ export namespace Gst {
 
     type PluginFeatureClass = typeof PluginFeature;
     class PluginPrivate {
+        static $gtype: GObject.GType<PluginPrivate>;
+
         // Constructors of Gst.PluginPrivate
 
         _init(...args: any[]): void;
@@ -4635,6 +4775,8 @@ export namespace Gst {
      * A set of file/network descriptors.
      */
     class Poll {
+        static $gtype: GObject.GType<Poll>;
+
         // Constructors of Gst.Poll
 
         constructor(properties?: Partial<{}>);
@@ -4668,6 +4810,8 @@ export namespace Gst {
      * A file descriptor object.
      */
     class PollFD {
+        static $gtype: GObject.GType<PollFD>;
+
         // Own fields of Gst.PollFD
 
         fd: number;
@@ -4690,6 +4834,8 @@ export namespace Gst {
 
     type ProxyPadClass = typeof ProxyPad;
     class ProxyPadPrivate {
+        static $gtype: GObject.GType<ProxyPadPrivate>;
+
         // Constructors of Gst.ProxyPadPrivate
 
         _init(...args: any[]): void;
@@ -4701,6 +4847,8 @@ export namespace Gst {
      * A Query Type definition
      */
     class QueryTypeDefinition {
+        static $gtype: GObject.GType<QueryTypeDefinition>;
+
         // Own fields of Gst.QueryTypeDefinition
 
         value: QueryType;
@@ -4715,6 +4863,8 @@ export namespace Gst {
 
     type RegistryClass = typeof Registry;
     class RegistryPrivate {
+        static $gtype: GObject.GType<RegistryPrivate>;
+
         // Constructors of Gst.RegistryPrivate
 
         _init(...args: any[]): void;
@@ -4725,6 +4875,8 @@ export namespace Gst {
      * interest in a media file.
      */
     class Segment {
+        static $gtype: GObject.GType<Segment>;
+
         // Own fields of Gst.Segment
 
         rate: number;
@@ -4800,6 +4952,8 @@ export namespace Gst {
      * instantiate a #GstCaps.
      */
     class StaticCaps {
+        static $gtype: GObject.GType<StaticCaps>;
+
         // Own fields of Gst.StaticCaps
 
         string: string;
@@ -4814,6 +4968,8 @@ export namespace Gst {
     }
 
     class StaticPadTemplate {
+        static $gtype: GObject.GType<StaticPadTemplate>;
+
         // Own fields of Gst.StaticPadTemplate
 
         name_template: string;
@@ -4834,6 +4990,8 @@ export namespace Gst {
      * The GstStructure object. Most fields are private.
      */
     class Structure {
+        static $gtype: GObject.GType<Structure>;
+
         // Own fields of Gst.Structure
 
         type: GObject.GType;
@@ -4894,6 +5052,8 @@ export namespace Gst {
 
     type SystemClockClass = typeof SystemClock;
     class SystemClockPrivate {
+        static $gtype: GObject.GType<SystemClockPrivate>;
+
         // Constructors of Gst.SystemClockPrivate
 
         _init(...args: any[]): void;
@@ -4903,6 +5063,8 @@ export namespace Gst {
      * #GstTagSetterIFace interface.
      */
     class TagSetterIFace {
+        static $gtype: GObject.GType<TagSetterIFace>;
+
         // Constructors of Gst.TagSetterIFace
 
         _init(...args: any[]): void;
@@ -4911,6 +5073,8 @@ export namespace Gst {
     type TaskClass = typeof Task;
     type TaskPoolClass = typeof TaskPool;
     class TaskPrivate {
+        static $gtype: GObject.GType<TaskPrivate>;
+
         // Constructors of Gst.TaskPrivate
 
         _init(...args: any[]): void;
@@ -4920,6 +5084,8 @@ export namespace Gst {
      * Custom GstTask thread callback functions that can be installed.
      */
     class TaskThreadCallbacks {
+        static $gtype: GObject.GType<TaskThreadCallbacks>;
+
         // Own fields of Gst.TaskThreadCallbacks
 
         enter_thread: any;
@@ -4941,6 +5107,8 @@ export namespace Gst {
      * Opaque #GstTrace structure.
      */
     class Trace {
+        static $gtype: GObject.GType<Trace>;
+
         // Own fields of Gst.Trace
 
         filename: string;
@@ -4972,6 +5140,8 @@ export namespace Gst {
     }
 
     class TraceEntry {
+        static $gtype: GObject.GType<TraceEntry>;
+
         // Own fields of Gst.TraceEntry
 
         timestamp: number;
@@ -4996,6 +5166,8 @@ export namespace Gst {
      * Object that stores typefind callbacks. To use with #GstTypeFindFactory.
      */
     class TypeFind {
+        static $gtype: GObject.GType<TypeFind>;
+
         // Own fields of Gst.TypeFind
 
         data: any;
@@ -5025,6 +5197,8 @@ export namespace Gst {
      * Structure used for filtering based on `name` and `type`.
      */
     class TypeNameData {
+        static $gtype: GObject.GType<TypeNameData>;
+
         // Own fields of Gst.TypeNameData
 
         name: string;
@@ -5040,6 +5214,8 @@ export namespace Gst {
      * VTable for the #GValue `type`.
      */
     class ValueTable {
+        static $gtype: GObject.GType<ValueTable>;
+
         // Own fields of Gst.ValueTable
 
         type: GObject.GType;

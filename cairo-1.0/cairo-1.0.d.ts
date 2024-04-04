@@ -235,66 +235,88 @@ export namespace cairo {
     }
     function image_surface_create(): void;
     class Context {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of cairo.Context
 
         _init(...args: any[]): void;
     }
 
     class Device {
+        static $gtype: GObject.GType<Device>;
+
         // Constructors of cairo.Device
 
         _init(...args: any[]): void;
     }
 
     class Surface {
+        static $gtype: GObject.GType<Surface>;
+
         // Constructors of cairo.Surface
 
         _init(...args: any[]): void;
     }
 
     class Matrix {
+        static $gtype: GObject.GType<Matrix>;
+
         // Constructors of cairo.Matrix
 
         _init(...args: any[]): void;
     }
 
     class Pattern {
+        static $gtype: GObject.GType<Pattern>;
+
         // Constructors of cairo.Pattern
 
         _init(...args: any[]): void;
     }
 
     class Region {
+        static $gtype: GObject.GType<Region>;
+
         // Constructors of cairo.Region
 
         _init(...args: any[]): void;
     }
 
     class FontOptions {
+        static $gtype: GObject.GType<FontOptions>;
+
         // Constructors of cairo.FontOptions
 
         _init(...args: any[]): void;
     }
 
     class FontFace {
+        static $gtype: GObject.GType<FontFace>;
+
         // Constructors of cairo.FontFace
 
         _init(...args: any[]): void;
     }
 
     class ScaledFont {
+        static $gtype: GObject.GType<ScaledFont>;
+
         // Constructors of cairo.ScaledFont
 
         _init(...args: any[]): void;
     }
 
     class Path {
+        static $gtype: GObject.GType<Path>;
+
         // Constructors of cairo.Path
 
         _init(...args: any[]): void;
     }
 
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of cairo.Rectangle
 
         x: number;
@@ -316,6 +338,8 @@ export namespace cairo {
     }
 
     class RectangleInt {
+        static $gtype: GObject.GType<RectangleInt>;
+
         // Own fields of cairo.RectangleInt
 
         x: number;

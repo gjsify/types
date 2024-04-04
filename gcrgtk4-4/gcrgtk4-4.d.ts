@@ -42,6 +42,8 @@ export namespace GcrGtk4 {
     }
 
     class CertificateWidget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<CertificateWidget>;
+
         // Own properties of GcrGtk4.CertificateWidget
 
         get certificate(): Gcr.Certificate;

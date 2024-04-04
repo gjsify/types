@@ -357,6 +357,8 @@ export namespace Retro {
     }
 
     class ControllerIterator extends GObject.Object {
+        static $gtype: GObject.GType<ControllerIterator>;
+
         // Constructors of Retro.ControllerIterator
 
         constructor(properties?: Partial<ControllerIterator.ConstructorProps>, ...args: any[]);
@@ -424,6 +426,8 @@ export namespace Retro {
     }
 
     class Core extends GObject.Object {
+        static $gtype: GObject.GType<Core>;
+
         // Own properties of Retro.Core
 
         /**
@@ -788,6 +792,8 @@ export namespace Retro {
     }
 
     class CoreDescriptor extends GObject.Object {
+        static $gtype: GObject.GType<CoreDescriptor>;
+
         // Constructors of Retro.CoreDescriptor
 
         constructor(properties?: Partial<CoreDescriptor.ConstructorProps>, ...args: any[]);
@@ -934,6 +940,8 @@ export namespace Retro {
     }
 
     class CoreView extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<CoreView>;
+
         // Own properties of Retro.CoreView
 
         get can_grab_pointer(): boolean;
@@ -1657,6 +1665,8 @@ export namespace Retro {
     }
 
     class KeyJoypadMapping extends GObject.Object {
+        static $gtype: GObject.GType<KeyJoypadMapping>;
+
         // Constructors of Retro.KeyJoypadMapping
 
         constructor(properties?: Partial<KeyJoypadMapping.ConstructorProps>, ...args: any[]);
@@ -1690,6 +1700,8 @@ export namespace Retro {
     }
 
     class ModuleIterator extends GObject.Object {
+        static $gtype: GObject.GType<ModuleIterator>;
+
         // Constructors of Retro.ModuleIterator
 
         constructor(properties?: Partial<ModuleIterator.ConstructorProps>, ...args: any[]);
@@ -1720,6 +1732,8 @@ export namespace Retro {
     }
 
     class ModuleQuery extends GObject.Object {
+        static $gtype: GObject.GType<ModuleQuery>;
+
         // Constructors of Retro.ModuleQuery
 
         constructor(properties?: Partial<ModuleQuery.ConstructorProps>, ...args: any[]);
@@ -1750,6 +1764,8 @@ export namespace Retro {
     }
 
     class Option extends GObject.Object {
+        static $gtype: GObject.GType<Option>;
+
         // Constructors of Retro.Option
 
         constructor(properties?: Partial<Option.ConstructorProps>, ...args: any[]);
@@ -1802,6 +1818,8 @@ export namespace Retro {
     }
 
     class OptionIterator extends GObject.Object {
+        static $gtype: GObject.GType<OptionIterator>;
+
         // Constructors of Retro.OptionIterator
 
         constructor(properties?: Partial<OptionIterator.ConstructorProps>, ...args: any[]);
@@ -1828,6 +1846,8 @@ export namespace Retro {
     type OptionClass = typeof Option;
     type OptionIteratorClass = typeof OptionIterator;
     abstract class Pixdata {
+        static $gtype: GObject.GType<Pixdata>;
+
         // Constructors of Retro.Pixdata
 
         _init(...args: any[]): void;
@@ -1874,6 +1894,8 @@ export namespace Retro {
     }
 
     class Input {
+        static $gtype: GObject.GType<Input>;
+
         // Constructors of Retro.Input
 
         constructor(properties?: Partial<{}>);

@@ -76,6 +76,8 @@ export namespace ColorHug {
         SELF_TEST_EEPROM,
     }
     class FreqScale {
+        static $gtype: GObject.GType<FreqScale>;
+
         // Static fields of ColorHug.FreqScale
 
         static '0': number;
@@ -1703,6 +1705,8 @@ export namespace ColorHug {
     }
 
     class DeviceQueue extends GObject.Object {
+        static $gtype: GObject.GType<DeviceQueue>;
+
         // Constructors of ColorHug.DeviceQueue
 
         constructor(properties?: Partial<DeviceQueue.ConstructorProps>, ...args: any[]);
@@ -2292,6 +2296,8 @@ export namespace ColorHug {
 
     type DeviceQueueClass = typeof DeviceQueue;
     class Sha1 {
+        static $gtype: GObject.GType<Sha1>;
+
         // Own fields of ColorHug.Sha1
 
         bytes: Uint8Array;

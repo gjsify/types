@@ -44,6 +44,8 @@ export namespace CoglGst {
      * should be accessed using the provided API.
      */
     class VideoSink extends GstBase.BaseSink {
+        static $gtype: GObject.GType<VideoSink>;
+
         // Own properties of CoglGst.VideoSink
 
         get update_priority(): number;
@@ -259,6 +261,8 @@ export namespace CoglGst {
      * Describes a rectangle that can be used for video output.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of CoglGst.Rectangle
 
         x: number;
@@ -281,6 +285,8 @@ export namespace CoglGst {
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
+        static $gtype: GObject.GType<VideoSinkPrivate>;
+
         // Constructors of CoglGst.VideoSinkPrivate
 
         _init(...args: any[]): void;

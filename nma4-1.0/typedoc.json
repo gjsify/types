@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./nma4-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "NMA4-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

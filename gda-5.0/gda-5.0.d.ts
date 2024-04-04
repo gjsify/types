@@ -188,6 +188,8 @@ export namespace Gda {
         USER_CANCELLED_ERROR,
     }
     class DataModelError extends GLib.Error {
+        static $gtype: GObject.GType<DataModelError>;
+
         // Static fields of Gda.DataModelError
 
         static ROW_OUT_OF_RANGE_ERROR: number;
@@ -568,6 +570,8 @@ export namespace Gda {
         MISUSE_ERROR,
     }
     class SqlError extends GLib.Error {
+        static $gtype: GObject.GType<SqlError>;
+
         // Static fields of Gda.SqlError
 
         static STRUCTURE_CONTENTS_ERROR: number;
@@ -1696,6 +1700,8 @@ export namespace Gda {
     }
 
     class Batch extends GObject.Object {
+        static $gtype: GObject.GType<Batch>;
+
         // Own fields of Gda.Batch
 
         object: GObject.Object;
@@ -1772,6 +1778,8 @@ export namespace Gda {
     }
 
     abstract class BlobOp extends GObject.Object {
+        static $gtype: GObject.GType<BlobOp>;
+
         // Own fields of Gda.BlobOp
 
         object: GObject.Object;
@@ -1865,6 +1873,8 @@ export namespace Gda {
     }
 
     class Column extends GObject.Object {
+        static $gtype: GObject.GType<Column>;
+
         // Own properties of Gda.Column
 
         get id(): string;
@@ -2031,6 +2041,8 @@ export namespace Gda {
     }
 
     class Config extends GObject.Object {
+        static $gtype: GObject.GType<Config>;
+
         // Own properties of Gda.Config
 
         /**
@@ -2242,6 +2254,8 @@ export namespace Gda {
     }
 
     class Connection extends GObject.Object implements Lockable {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of Gda.Connection
 
         get auth_string(): string;
@@ -3488,6 +3502,8 @@ export namespace Gda {
     }
 
     class ConnectionEvent extends GObject.Object {
+        static $gtype: GObject.GType<ConnectionEvent>;
+
         // Own properties of Gda.ConnectionEvent
 
         get type(): number;
@@ -3582,6 +3598,8 @@ export namespace Gda {
     }
 
     class DataAccessWrapper extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataAccessWrapper>;
+
         // Own properties of Gda.DataAccessWrapper
 
         get model(): DataModel;
@@ -4665,6 +4683,8 @@ export namespace Gda {
     }
 
     class DataComparator extends GObject.Object {
+        static $gtype: GObject.GType<DataComparator>;
+
         // Own properties of Gda.DataComparator
 
         get new_model(): DataModel;
@@ -4747,6 +4767,8 @@ export namespace Gda {
     }
 
     class DataModelArray extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataModelArray>;
+
         // Own properties of Gda.DataModelArray
 
         get n_columns(): number;
@@ -5832,6 +5854,8 @@ export namespace Gda {
     }
 
     class DataModelDir extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataModelDir>;
+
         // Own properties of Gda.DataModelDir
 
         get basedir(): string;
@@ -6901,6 +6925,8 @@ export namespace Gda {
     }
 
     class DataModelImport extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataModelImport>;
+
         // Own properties of Gda.DataModelImport
 
         /**
@@ -8054,6 +8080,8 @@ export namespace Gda {
     }
 
     class DataModelIter extends Set {
+        static $gtype: GObject.GType<DataModelIter>;
+
         // Own properties of Gda.DataModelIter
 
         get current_row(): number;
@@ -8228,6 +8256,8 @@ export namespace Gda {
     }
 
     class DataModelLdap extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataModelLdap>;
+
         // Own properties of Gda.DataModelLdap
 
         set attributes(val: string);
@@ -9329,6 +9359,8 @@ export namespace Gda {
     }
 
     class DataPivot extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataPivot>;
+
         // Own properties of Gda.DataPivot
 
         get model(): DataModel;
@@ -10464,6 +10496,8 @@ export namespace Gda {
     }
 
     class DataProxy extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataProxy>;
+
         // Own properties of Gda.DataProxy
 
         /**
@@ -11826,6 +11860,8 @@ export namespace Gda {
     }
 
     abstract class DataSelect extends GObject.Object implements DataModel {
+        static $gtype: GObject.GType<DataSelect>;
+
         // Own properties of Gda.DataSelect
 
         get auto_reset(): boolean;
@@ -13065,6 +13101,8 @@ export namespace Gda {
     }
 
     class HandlerBin extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerBin>;
+
         // Own fields of Gda.HandlerBin
 
         object: GObject.Object;
@@ -13577,6 +13615,8 @@ export namespace Gda {
     }
 
     class HandlerBoolean extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerBoolean>;
+
         // Own fields of Gda.HandlerBoolean
 
         object: GObject.Object;
@@ -14089,6 +14129,8 @@ export namespace Gda {
     }
 
     class HandlerNumerical extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerNumerical>;
+
         // Own fields of Gda.HandlerNumerical
 
         object: GObject.Object;
@@ -14601,6 +14643,8 @@ export namespace Gda {
     }
 
     class HandlerString extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerString>;
+
         // Own fields of Gda.HandlerString
 
         object: GObject.Object;
@@ -15120,6 +15164,8 @@ export namespace Gda {
     }
 
     class HandlerTime extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerTime>;
+
         // Own fields of Gda.HandlerTime
 
         object: GObject.Object;
@@ -15689,6 +15735,8 @@ export namespace Gda {
     }
 
     class HandlerType extends GObject.Object implements DataHandler {
+        static $gtype: GObject.GType<HandlerType>;
+
         // Own fields of Gda.HandlerType
 
         object: GObject.Object;
@@ -16237,6 +16285,8 @@ export namespace Gda {
     }
 
     class Holder extends GObject.Object implements Lockable {
+        static $gtype: GObject.GType<Holder>;
+
         // Own properties of Gda.Holder
 
         get description(): string;
@@ -16996,6 +17046,8 @@ export namespace Gda {
     }
 
     class MetaStore extends GObject.Object {
+        static $gtype: GObject.GType<MetaStore>;
+
         // Own properties of Gda.MetaStore
 
         set catalog(val: string);
@@ -17322,6 +17374,8 @@ export namespace Gda {
     }
 
     class MetaStruct extends GObject.Object {
+        static $gtype: GObject.GType<MetaStruct>;
+
         // Own properties of Gda.MetaStruct
 
         get features(): number;
@@ -17465,6 +17519,8 @@ export namespace Gda {
     }
 
     abstract class PStmt extends GObject.Object {
+        static $gtype: GObject.GType<PStmt>;
+
         // Own fields of Gda.PStmt
 
         object: GObject.Object;
@@ -17511,6 +17567,8 @@ export namespace Gda {
     }
 
     class RepetitiveStatement extends GObject.Object {
+        static $gtype: GObject.GType<RepetitiveStatement>;
+
         // Own properties of Gda.RepetitiveStatement
 
         get statement(): Statement;
@@ -17561,6 +17619,8 @@ export namespace Gda {
     }
 
     class Row extends GObject.Object {
+        static $gtype: GObject.GType<Row>;
+
         // Own properties of Gda.Row
 
         set nb_values(val: number);
@@ -17645,6 +17705,8 @@ export namespace Gda {
     }
 
     class ServerOperation extends GObject.Object {
+        static $gtype: GObject.GType<ServerOperation>;
+
         // Own properties of Gda.ServerOperation
 
         get connection(): Connection;
@@ -17885,6 +17947,8 @@ export namespace Gda {
     }
 
     abstract class ServerProvider extends GObject.Object {
+        static $gtype: GObject.GType<ServerProvider>;
+
         // Own fields of Gda.ServerProvider
 
         object: GObject.Object;
@@ -18242,6 +18306,8 @@ export namespace Gda {
     }
 
     class Set extends GObject.Object {
+        static $gtype: GObject.GType<Set>;
+
         // Own properties of Gda.Set
 
         get description(): string;
@@ -18434,6 +18500,8 @@ export namespace Gda {
     }
 
     class Short {
+        static $gtype: GObject.GType<Short>;
+
         // Constructors of Gda.Short
 
         _init(...args: any[]): void;
@@ -18446,6 +18514,8 @@ export namespace Gda {
     }
 
     class SqlBuilder extends GObject.Object {
+        static $gtype: GObject.GType<SqlBuilder>;
+
         // Own fields of Gda.SqlBuilder
 
         object: GObject.Object;
@@ -18740,6 +18810,8 @@ export namespace Gda {
     }
 
     class SqlParser extends GObject.Object implements Lockable {
+        static $gtype: GObject.GType<SqlParser>;
+
         // Own properties of Gda.SqlParser
 
         get column_error(): number;
@@ -19220,6 +19292,8 @@ export namespace Gda {
     }
 
     class Statement extends GObject.Object {
+        static $gtype: GObject.GType<Statement>;
+
         // Own properties of Gda.Statement
 
         get structure(): any;
@@ -19343,6 +19417,8 @@ export namespace Gda {
     }
 
     class ThreadWrapper extends GObject.Object {
+        static $gtype: GObject.GType<ThreadWrapper>;
+
         // Own fields of Gda.ThreadWrapper
 
         object: GObject.Object;
@@ -19527,6 +19603,8 @@ export namespace Gda {
     }
 
     class TransactionStatus extends GObject.Object {
+        static $gtype: GObject.GType<TransactionStatus>;
+
         // Own fields of Gda.TransactionStatus
 
         object: GObject.Object;
@@ -19583,6 +19661,8 @@ export namespace Gda {
     }
 
     class Tree extends GObject.Object {
+        static $gtype: GObject.GType<Tree>;
+
         // Own properties of Gda.Tree
 
         /**
@@ -19718,6 +19798,8 @@ export namespace Gda {
     }
 
     class TreeManager extends GObject.Object {
+        static $gtype: GObject.GType<TreeManager>;
+
         // Own properties of Gda.TreeManager
 
         /**
@@ -19805,6 +19887,8 @@ export namespace Gda {
     }
 
     class TreeMgrColumns extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrColumns>;
+
         // Own properties of Gda.TreeMgrColumns
 
         /**
@@ -19859,6 +19943,8 @@ export namespace Gda {
     }
 
     class TreeMgrLabel extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrLabel>;
+
         // Own properties of Gda.TreeMgrLabel
 
         set label(val: string);
@@ -19885,6 +19971,8 @@ export namespace Gda {
     }
 
     class TreeMgrLdap extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrLdap>;
+
         // Own properties of Gda.TreeMgrLdap
 
         /**
@@ -19916,6 +20004,8 @@ export namespace Gda {
     }
 
     class TreeMgrSchemas extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrSchemas>;
+
         // Own properties of Gda.TreeMgrSchemas
 
         /**
@@ -19960,6 +20050,8 @@ export namespace Gda {
     }
 
     class TreeMgrSelect extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrSelect>;
+
         // Own properties of Gda.TreeMgrSelect
 
         get connection(): Connection;
@@ -19991,6 +20083,8 @@ export namespace Gda {
     }
 
     class TreeMgrTables extends TreeManager {
+        static $gtype: GObject.GType<TreeMgrTables>;
+
         // Own properties of Gda.TreeMgrTables
 
         /**
@@ -20057,6 +20151,8 @@ export namespace Gda {
     }
 
     class TreeNode extends GObject.Object {
+        static $gtype: GObject.GType<TreeNode>;
+
         // Own properties of Gda.TreeNode
 
         get name(): string;
@@ -20176,6 +20272,8 @@ export namespace Gda {
     }
 
     class UShort {
+        static $gtype: GObject.GType<UShort>;
+
         // Constructors of Gda.UShort
 
         _init(...args: any[]): void;
@@ -20193,6 +20291,8 @@ export namespace Gda {
     }
 
     class XaTransaction extends GObject.Object {
+        static $gtype: GObject.GType<XaTransaction>;
+
         // Own properties of Gda.XaTransaction
 
         get format_id(): number;
@@ -20273,12 +20373,16 @@ export namespace Gda {
 
     type BatchClass = typeof Batch;
     abstract class BatchPrivate {
+        static $gtype: GObject.GType<BatchPrivate>;
+
         // Constructors of Gda.BatchPrivate
 
         _init(...args: any[]): void;
     }
 
     class Binary {
+        static $gtype: GObject.GType<Binary>;
+
         // Own fields of Gda.Binary
 
         data: Uint8Array;
@@ -20333,6 +20437,8 @@ export namespace Gda {
      * a database, but can be modified if needed using gda_blob_set_op().
      */
     class Blob {
+        static $gtype: GObject.GType<Blob>;
+
         // Own fields of Gda.Blob
 
         data: Binary;
@@ -20375,6 +20481,8 @@ export namespace Gda {
     type BlobOpClass = typeof BlobOp;
     type ColumnClass = typeof Column;
     abstract class ColumnPrivate {
+        static $gtype: GObject.GType<ColumnPrivate>;
+
         // Constructors of Gda.ColumnPrivate
 
         _init(...args: any[]): void;
@@ -20382,6 +20490,8 @@ export namespace Gda {
 
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
+        static $gtype: GObject.GType<ConfigPrivate>;
+
         // Constructors of Gda.ConfigPrivate
 
         _init(...args: any[]): void;
@@ -20390,12 +20500,16 @@ export namespace Gda {
     type ConnectionClass = typeof Connection;
     type ConnectionEventClass = typeof ConnectionEvent;
     abstract class ConnectionEventPrivate {
+        static $gtype: GObject.GType<ConnectionEventPrivate>;
+
         // Constructors of Gda.ConnectionEventPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of Gda.ConnectionPrivate
 
         _init(...args: any[]): void;
@@ -20403,6 +20517,8 @@ export namespace Gda {
 
     type DataAccessWrapperClass = typeof DataAccessWrapper;
     abstract class DataAccessWrapperPrivate {
+        static $gtype: GObject.GType<DataAccessWrapperPrivate>;
+
         // Constructors of Gda.DataAccessWrapperPrivate
 
         _init(...args: any[]): void;
@@ -20410,6 +20526,8 @@ export namespace Gda {
 
     type DataComparatorClass = typeof DataComparator;
     abstract class DataComparatorPrivate {
+        static $gtype: GObject.GType<DataComparatorPrivate>;
+
         // Constructors of Gda.DataComparatorPrivate
 
         _init(...args: any[]): void;
@@ -20418,6 +20536,8 @@ export namespace Gda {
     type DataHandlerIface = typeof DataHandler;
     type DataModelArrayClass = typeof DataModelArray;
     abstract class DataModelArrayPrivate {
+        static $gtype: GObject.GType<DataModelArrayPrivate>;
+
         // Constructors of Gda.DataModelArrayPrivate
 
         _init(...args: any[]): void;
@@ -20425,6 +20545,8 @@ export namespace Gda {
 
     type DataModelDirClass = typeof DataModelDir;
     abstract class DataModelDirPrivate {
+        static $gtype: GObject.GType<DataModelDirPrivate>;
+
         // Constructors of Gda.DataModelDirPrivate
 
         _init(...args: any[]): void;
@@ -20433,6 +20555,8 @@ export namespace Gda {
     type DataModelIface = typeof DataModel;
     type DataModelImportClass = typeof DataModelImport;
     abstract class DataModelImportPrivate {
+        static $gtype: GObject.GType<DataModelImportPrivate>;
+
         // Constructors of Gda.DataModelImportPrivate
 
         _init(...args: any[]): void;
@@ -20440,6 +20564,8 @@ export namespace Gda {
 
     type DataModelIterClass = typeof DataModelIter;
     abstract class DataModelIterPrivate {
+        static $gtype: GObject.GType<DataModelIterPrivate>;
+
         // Constructors of Gda.DataModelIterPrivate
 
         _init(...args: any[]): void;
@@ -20447,6 +20573,8 @@ export namespace Gda {
 
     type DataModelLdapClass = typeof DataModelLdap;
     abstract class DataModelLdapPrivate {
+        static $gtype: GObject.GType<DataModelLdapPrivate>;
+
         // Constructors of Gda.DataModelLdapPrivate
 
         _init(...args: any[]): void;
@@ -20454,6 +20582,8 @@ export namespace Gda {
 
     type DataPivotClass = typeof DataPivot;
     abstract class DataPivotPrivate {
+        static $gtype: GObject.GType<DataPivotPrivate>;
+
         // Constructors of Gda.DataPivotPrivate
 
         _init(...args: any[]): void;
@@ -20461,6 +20591,8 @@ export namespace Gda {
 
     type DataProxyClass = typeof DataProxy;
     abstract class DataProxyPrivate {
+        static $gtype: GObject.GType<DataProxyPrivate>;
+
         // Constructors of Gda.DataProxyPrivate
 
         _init(...args: any[]): void;
@@ -20468,12 +20600,16 @@ export namespace Gda {
 
     type DataSelectClass = typeof DataSelect;
     abstract class DataSelectPrivate {
+        static $gtype: GObject.GType<DataSelectPrivate>;
+
         // Constructors of Gda.DataSelectPrivate
 
         _init(...args: any[]): void;
     }
 
     class Diff {
+        static $gtype: GObject.GType<Diff>;
+
         // Own fields of Gda.Diff
 
         type: DiffType;
@@ -20489,6 +20625,8 @@ export namespace Gda {
      * This structure defines the properties of a named data source (DSN).
      */
     class DsnInfo {
+        static $gtype: GObject.GType<DsnInfo>;
+
         // Own fields of Gda.DsnInfo
 
         name: string;
@@ -20528,6 +20666,8 @@ export namespace Gda {
     }
 
     class GeometricPoint {
+        static $gtype: GObject.GType<GeometricPoint>;
+
         // Own fields of Gda.GeometricPoint
 
         x: number;
@@ -20551,6 +20691,8 @@ export namespace Gda {
 
     type HandlerBinClass = typeof HandlerBin;
     abstract class HandlerBinPriv {
+        static $gtype: GObject.GType<HandlerBinPriv>;
+
         // Constructors of Gda.HandlerBinPriv
 
         _init(...args: any[]): void;
@@ -20558,6 +20700,8 @@ export namespace Gda {
 
     type HandlerBooleanClass = typeof HandlerBoolean;
     abstract class HandlerBooleanPriv {
+        static $gtype: GObject.GType<HandlerBooleanPriv>;
+
         // Constructors of Gda.HandlerBooleanPriv
 
         _init(...args: any[]): void;
@@ -20565,6 +20709,8 @@ export namespace Gda {
 
     type HandlerNumericalClass = typeof HandlerNumerical;
     abstract class HandlerNumericalPriv {
+        static $gtype: GObject.GType<HandlerNumericalPriv>;
+
         // Constructors of Gda.HandlerNumericalPriv
 
         _init(...args: any[]): void;
@@ -20572,6 +20718,8 @@ export namespace Gda {
 
     type HandlerStringClass = typeof HandlerString;
     abstract class HandlerStringPriv {
+        static $gtype: GObject.GType<HandlerStringPriv>;
+
         // Constructors of Gda.HandlerStringPriv
 
         _init(...args: any[]): void;
@@ -20579,6 +20727,8 @@ export namespace Gda {
 
     type HandlerTimeClass = typeof HandlerTime;
     abstract class HandlerTimePriv {
+        static $gtype: GObject.GType<HandlerTimePriv>;
+
         // Constructors of Gda.HandlerTimePriv
 
         _init(...args: any[]): void;
@@ -20586,6 +20736,8 @@ export namespace Gda {
 
     type HandlerTypeClass = typeof HandlerType;
     abstract class HandlerTypePriv {
+        static $gtype: GObject.GType<HandlerTypePriv>;
+
         // Constructors of Gda.HandlerTypePriv
 
         _init(...args: any[]): void;
@@ -20593,6 +20745,8 @@ export namespace Gda {
 
     type HolderClass = typeof Holder;
     abstract class HolderPrivate {
+        static $gtype: GObject.GType<HolderPrivate>;
+
         // Constructors of Gda.HolderPrivate
 
         _init(...args: any[]): void;
@@ -20614,6 +20768,8 @@ export namespace Gda {
      * Don't try to use #gda_meta_context_free on a struct that was created manually.
      */
     class MetaContext {
+        static $gtype: GObject.GType<MetaContext>;
+
         // Own fields of Gda.MetaContext
 
         table_name: string;
@@ -20690,6 +20846,8 @@ export namespace Gda {
      * before using in an SQL statement.
      */
     class MetaDbObject {
+        static $gtype: GObject.GType<MetaDbObject>;
+
         // Own fields of Gda.MetaDbObject
 
         obj_type: MetaDbObjectType;
@@ -20707,6 +20865,8 @@ export namespace Gda {
     }
 
     class MetaStoreChange {
+        static $gtype: GObject.GType<MetaStoreChange>;
+
         // Own fields of Gda.MetaStoreChange
 
         c_type: MetaStoreChangeType;
@@ -20719,12 +20879,16 @@ export namespace Gda {
 
     type MetaStoreClass = typeof MetaStore;
     abstract class MetaStoreClassPrivate {
+        static $gtype: GObject.GType<MetaStoreClassPrivate>;
+
         // Constructors of Gda.MetaStoreClassPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MetaStorePrivate {
+        static $gtype: GObject.GType<MetaStorePrivate>;
+
         // Constructors of Gda.MetaStorePrivate
 
         _init(...args: any[]): void;
@@ -20732,6 +20896,8 @@ export namespace Gda {
 
     type MetaStructClass = typeof MetaStruct;
     abstract class MetaStructPrivate {
+        static $gtype: GObject.GType<MetaStructPrivate>;
+
         // Constructors of Gda.MetaStructPrivate
 
         _init(...args: any[]): void;
@@ -20746,6 +20912,8 @@ export namespace Gda {
      * uses a function which is not natively provided by SQLite.
      */
     class MetaTable {
+        static $gtype: GObject.GType<MetaTable>;
+
         // Own fields of Gda.MetaTable
 
         pk_cols_array: number;
@@ -20760,6 +20928,8 @@ export namespace Gda {
      * This structure represents a table of view's column, its contents must not be modified.
      */
     class MetaTableColumn {
+        static $gtype: GObject.GType<MetaTableColumn>;
+
         // Own fields of Gda.MetaTableColumn
 
         column_name: string;
@@ -20808,6 +20978,8 @@ export namespace Gda {
      * This structure represents a foreign key constraint, its contents must not be modified.
      */
     class MetaTableForeignKey {
+        static $gtype: GObject.GType<MetaTableForeignKey>;
+
         // Own fields of Gda.MetaTableForeignKey
 
         cols_nb: number;
@@ -20827,6 +20999,8 @@ export namespace Gda {
      * its contents must not be modified.
      */
     class MetaView {
+        static $gtype: GObject.GType<MetaView>;
+
         // Own fields of Gda.MetaView
 
         view_def: string;
@@ -20844,6 +21018,8 @@ export namespace Gda {
      * accessors added since version 5.0.2.
      */
     class Numeric {
+        static $gtype: GObject.GType<Numeric>;
+
         // Own fields of Gda.Numeric
 
         number: string;
@@ -20914,6 +21090,8 @@ export namespace Gda {
 
     type PStmtClass = typeof PStmt;
     abstract class PStmtPrivate {
+        static $gtype: GObject.GType<PStmtPrivate>;
+
         // Constructors of Gda.PStmtPrivate
 
         _init(...args: any[]): void;
@@ -20923,6 +21101,8 @@ export namespace Gda {
      * This structure holds the information associated to a database provider as discovered by Libgda.
      */
     class ProviderInfo {
+        static $gtype: GObject.GType<ProviderInfo>;
+
         // Own fields of Gda.ProviderInfo
 
         id: string;
@@ -20937,6 +21117,8 @@ export namespace Gda {
     }
 
     class QuarkList {
+        static $gtype: GObject.GType<QuarkList>;
+
         // Constructors of Gda.QuarkList
 
         constructor(properties?: Partial<{}>);
@@ -21006,6 +21188,8 @@ export namespace Gda {
     type RepetitiveStatementClass = typeof RepetitiveStatement;
     type RowClass = typeof Row;
     abstract class RowPrivate {
+        static $gtype: GObject.GType<RowPrivate>;
+
         // Constructors of Gda.RowPrivate
 
         _init(...args: any[]): void;
@@ -21013,6 +21197,8 @@ export namespace Gda {
 
     type ServerOperationClass = typeof ServerOperation;
     class ServerOperationNode {
+        static $gtype: GObject.GType<ServerOperationNode>;
+
         // Own fields of Gda.ServerOperationNode
 
         type: ServerOperationNodeType;
@@ -21029,6 +21215,8 @@ export namespace Gda {
     }
 
     abstract class ServerOperationPrivate {
+        static $gtype: GObject.GType<ServerOperationPrivate>;
+
         // Constructors of Gda.ServerOperationPrivate
 
         _init(...args: any[]): void;
@@ -21036,6 +21224,8 @@ export namespace Gda {
 
     type ServerProviderClass = typeof ServerProvider;
     class ServerProviderHandlerInfo {
+        static $gtype: GObject.GType<ServerProviderHandlerInfo>;
+
         // Own fields of Gda.ServerProviderHandlerInfo
 
         cnc: Connection;
@@ -21048,6 +21238,8 @@ export namespace Gda {
     }
 
     abstract class ServerProviderInfo {
+        static $gtype: GObject.GType<ServerProviderInfo>;
+
         // Constructors of Gda.ServerProviderInfo
 
         _init(...args: any[]): void;
@@ -21059,12 +21251,16 @@ export namespace Gda {
      * for more information.
      */
     class ServerProviderMeta {
+        static $gtype: GObject.GType<ServerProviderMeta>;
+
         // Constructors of Gda.ServerProviderMeta
 
         _init(...args: any[]): void;
     }
 
     class ServerProviderPrivate {
+        static $gtype: GObject.GType<ServerProviderPrivate>;
+
         // Own fields of Gda.ServerProviderPrivate
 
         parser: SqlParser;
@@ -21075,6 +21271,8 @@ export namespace Gda {
     }
 
     class ServerProviderXa {
+        static $gtype: GObject.GType<ServerProviderXa>;
+
         // Constructors of Gda.ServerProviderXa
 
         _init(...args: any[]): void;
@@ -21086,6 +21284,8 @@ export namespace Gda {
      * Don't try to use #gda_set_group_free on a struct that was created manually.
      */
     class SetGroup {
+        static $gtype: GObject.GType<SetGroup>;
+
         // Constructors of Gda.SetGroup
 
         constructor(node: SetNode);
@@ -21126,6 +21326,8 @@ export namespace Gda {
      * Don't try to use #gda_set_node_free on a struct that was created manually.
      */
     class SetNode {
+        static $gtype: GObject.GType<SetNode>;
+
         // Own fields of Gda.SetNode
 
         holder: Holder;
@@ -21174,6 +21376,8 @@ export namespace Gda {
     }
 
     abstract class SetPrivate {
+        static $gtype: GObject.GType<SetPrivate>;
+
         // Constructors of Gda.SetPrivate
 
         _init(...args: any[]): void;
@@ -21184,6 +21388,8 @@ export namespace Gda {
      * Don't try to use #gda_set_source_free on a struct that was created manually.
      */
     class SetSource {
+        static $gtype: GObject.GType<SetSource>;
+
         // Own fields of Gda.SetSource
 
         data_model: DataModel;
@@ -21223,6 +21429,8 @@ export namespace Gda {
 
     type SqlBuilderClass = typeof SqlBuilder;
     abstract class SqlBuilderPrivate {
+        static $gtype: GObject.GType<SqlBuilderPrivate>;
+
         // Constructors of Gda.SqlBuilderPrivate
 
         _init(...args: any[]): void;
@@ -21230,6 +21438,8 @@ export namespace Gda {
 
     type SqlParserClass = typeof SqlParser;
     class SqlParserIface {
+        static $gtype: GObject.GType<SqlParserIface>;
+
         // Own fields of Gda.SqlParserIface
 
         parser: SqlParser;
@@ -21240,6 +21450,8 @@ export namespace Gda {
     }
 
     abstract class SqlParserPrivate {
+        static $gtype: GObject.GType<SqlParserPrivate>;
+
         // Constructors of Gda.SqlParserPrivate
 
         _init(...args: any[]): void;
@@ -21249,6 +21461,8 @@ export namespace Gda {
      * Specifies the context in which a #GdaSqlStatement is being converted to SQL.
      */
     class SqlRenderingContext {
+        static $gtype: GObject.GType<SqlRenderingContext>;
+
         // Own fields of Gda.SqlRenderingContext
 
         flags: StatementSqlFlag;
@@ -21264,6 +21478,8 @@ export namespace Gda {
     }
 
     abstract class SqlStatement {
+        static $gtype: GObject.GType<SqlStatement>;
+
         // Constructors of Gda.SqlStatement
 
         _init(...args: any[]): void;
@@ -21275,36 +21491,48 @@ export namespace Gda {
     }
 
     abstract class SqlStatementDelete {
+        static $gtype: GObject.GType<SqlStatementDelete>;
+
         // Constructors of Gda.SqlStatementDelete
 
         _init(...args: any[]): void;
     }
 
     abstract class SqlStatementInsert {
+        static $gtype: GObject.GType<SqlStatementInsert>;
+
         // Constructors of Gda.SqlStatementInsert
 
         _init(...args: any[]): void;
     }
 
     abstract class SqlStatementSelect {
+        static $gtype: GObject.GType<SqlStatementSelect>;
+
         // Constructors of Gda.SqlStatementSelect
 
         _init(...args: any[]): void;
     }
 
     abstract class SqlStatementTransaction {
+        static $gtype: GObject.GType<SqlStatementTransaction>;
+
         // Constructors of Gda.SqlStatementTransaction
 
         _init(...args: any[]): void;
     }
 
     abstract class SqlStatementUnknown {
+        static $gtype: GObject.GType<SqlStatementUnknown>;
+
         // Constructors of Gda.SqlStatementUnknown
 
         _init(...args: any[]): void;
     }
 
     abstract class SqlStatementUpdate {
+        static $gtype: GObject.GType<SqlStatementUpdate>;
+
         // Constructors of Gda.SqlStatementUpdate
 
         _init(...args: any[]): void;
@@ -21312,6 +21540,8 @@ export namespace Gda {
 
     type StatementClass = typeof Statement;
     abstract class StatementPrivate {
+        static $gtype: GObject.GType<StatementPrivate>;
+
         // Constructors of Gda.StatementPrivate
 
         _init(...args: any[]): void;
@@ -21367,6 +21597,8 @@ export namespace Gda {
      * ]]></programlisting>
      */
     class ThreadNotification {
+        static $gtype: GObject.GType<ThreadNotification>;
+
         // Own fields of Gda.ThreadNotification
 
         type: ThreadNotificationType;
@@ -21379,6 +21611,8 @@ export namespace Gda {
 
     type ThreadWrapperClass = typeof ThreadWrapper;
     abstract class ThreadWrapperPrivate {
+        static $gtype: GObject.GType<ThreadWrapperPrivate>;
+
         // Constructors of Gda.ThreadWrapperPrivate
 
         _init(...args: any[]): void;
@@ -21388,6 +21622,8 @@ export namespace Gda {
      * Represents a time information.
      */
     class Time {
+        static $gtype: GObject.GType<Time>;
+
         // Own fields of Gda.Time
 
         hour: number;
@@ -21432,6 +21668,8 @@ export namespace Gda {
      * Represents an instant (a time stamp)
      */
     class Timestamp {
+        static $gtype: GObject.GType<Timestamp>;
+
         // Own fields of Gda.Timestamp
 
         year: number;
@@ -21478,6 +21716,8 @@ export namespace Gda {
 
     type TransactionStatusClass = typeof TransactionStatus;
     class TransactionStatusEvent {
+        static $gtype: GObject.GType<TransactionStatusEvent>;
+
         // Own fields of Gda.TransactionStatusEvent
 
         trans: TransactionStatus;
@@ -21492,6 +21732,8 @@ export namespace Gda {
     type TreeClass = typeof Tree;
     type TreeManagerClass = typeof TreeManager;
     abstract class TreeManagerPrivate {
+        static $gtype: GObject.GType<TreeManagerPrivate>;
+
         // Constructors of Gda.TreeManagerPrivate
 
         _init(...args: any[]): void;
@@ -21499,6 +21741,8 @@ export namespace Gda {
 
     type TreeMgrColumnsClass = typeof TreeMgrColumns;
     abstract class TreeMgrColumnsPriv {
+        static $gtype: GObject.GType<TreeMgrColumnsPriv>;
+
         // Constructors of Gda.TreeMgrColumnsPriv
 
         _init(...args: any[]): void;
@@ -21506,6 +21750,8 @@ export namespace Gda {
 
     type TreeMgrLabelClass = typeof TreeMgrLabel;
     abstract class TreeMgrLabelPriv {
+        static $gtype: GObject.GType<TreeMgrLabelPriv>;
+
         // Constructors of Gda.TreeMgrLabelPriv
 
         _init(...args: any[]): void;
@@ -21513,6 +21759,8 @@ export namespace Gda {
 
     type TreeMgrLdapClass = typeof TreeMgrLdap;
     abstract class TreeMgrLdapPriv {
+        static $gtype: GObject.GType<TreeMgrLdapPriv>;
+
         // Constructors of Gda.TreeMgrLdapPriv
 
         _init(...args: any[]): void;
@@ -21520,6 +21768,8 @@ export namespace Gda {
 
     type TreeMgrSchemasClass = typeof TreeMgrSchemas;
     abstract class TreeMgrSchemasPriv {
+        static $gtype: GObject.GType<TreeMgrSchemasPriv>;
+
         // Constructors of Gda.TreeMgrSchemasPriv
 
         _init(...args: any[]): void;
@@ -21527,6 +21777,8 @@ export namespace Gda {
 
     type TreeMgrSelectClass = typeof TreeMgrSelect;
     abstract class TreeMgrSelectPriv {
+        static $gtype: GObject.GType<TreeMgrSelectPriv>;
+
         // Constructors of Gda.TreeMgrSelectPriv
 
         _init(...args: any[]): void;
@@ -21534,6 +21786,8 @@ export namespace Gda {
 
     type TreeMgrTablesClass = typeof TreeMgrTables;
     abstract class TreeMgrTablesPriv {
+        static $gtype: GObject.GType<TreeMgrTablesPriv>;
+
         // Constructors of Gda.TreeMgrTablesPriv
 
         _init(...args: any[]): void;
@@ -21541,12 +21795,16 @@ export namespace Gda {
 
     type TreeNodeClass = typeof TreeNode;
     abstract class TreeNodePrivate {
+        static $gtype: GObject.GType<TreeNodePrivate>;
+
         // Constructors of Gda.TreeNodePrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class TreePrivate {
+        static $gtype: GObject.GType<TreePrivate>;
+
         // Constructors of Gda.TreePrivate
 
         _init(...args: any[]): void;
@@ -21554,6 +21812,8 @@ export namespace Gda {
 
     type XaTransactionClass = typeof XaTransaction;
     class XaTransactionId {
+        static $gtype: GObject.GType<XaTransactionId>;
+
         // Own fields of Gda.XaTransactionId
 
         format: number;
@@ -21585,6 +21845,8 @@ export namespace Gda {
     }
 
     abstract class XaTransactionPrivate {
+        static $gtype: GObject.GType<XaTransactionPrivate>;
+
         // Constructors of Gda.XaTransactionPrivate
 
         _init(...args: any[]): void;

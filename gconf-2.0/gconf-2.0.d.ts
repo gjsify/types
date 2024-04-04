@@ -26,6 +26,8 @@ export namespace GConf {
         PRELOAD_RECURSIVE,
     }
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GConf.Error
 
         static SUCCESS: number;
@@ -141,6 +143,8 @@ export namespace GConf {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own fields of GConf.Client
 
         object: GObject.Object;
@@ -259,6 +263,8 @@ export namespace GConf {
     }
 
     class ChangeSet {
+        static $gtype: GObject.GType<ChangeSet>;
+
         // Constructors of GConf.ChangeSet
 
         constructor(properties?: Partial<{}>);
@@ -301,6 +307,8 @@ export namespace GConf {
 
     type ClientClass = typeof Client;
     class Entry {
+        static $gtype: GObject.GType<Entry>;
+
         // Own fields of GConf.Entry
 
         key: string;
@@ -335,6 +343,8 @@ export namespace GConf {
     }
 
     class EnumStringPair {
+        static $gtype: GObject.GType<EnumStringPair>;
+
         // Own fields of GConf.EnumStringPair
 
         enum_value: number;
@@ -352,6 +362,8 @@ export namespace GConf {
     }
 
     class Value {
+        static $gtype: GObject.GType<Value>;
+
         // Own fields of GConf.Value
 
         type: ValueType;

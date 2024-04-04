@@ -52,6 +52,8 @@ export namespace GMenu {
     }
 
     class Tree extends GObject.Object {
+        static $gtype: GObject.GType<Tree>;
+
         // Own properties of GMenu.Tree
 
         /**
@@ -136,6 +138,8 @@ export namespace GMenu {
     }
 
     abstract class TreeAlias {
+        static $gtype: GObject.GType<TreeAlias>;
+
         // Constructors of GMenu.TreeAlias
 
         _init(...args: any[]): void;
@@ -156,6 +160,8 @@ export namespace GMenu {
 
     type TreeClass = typeof Tree;
     abstract class TreeDirectory {
+        static $gtype: GObject.GType<TreeDirectory>;
+
         // Constructors of GMenu.TreeDirectory
 
         _init(...args: any[]): void;
@@ -184,6 +190,8 @@ export namespace GMenu {
     }
 
     abstract class TreeEntry {
+        static $gtype: GObject.GType<TreeEntry>;
+
         // Constructors of GMenu.TreeEntry
 
         _init(...args: any[]): void;
@@ -205,6 +213,8 @@ export namespace GMenu {
     }
 
     abstract class TreeHeader {
+        static $gtype: GObject.GType<TreeHeader>;
+
         // Constructors of GMenu.TreeHeader
 
         _init(...args: any[]): void;
@@ -221,6 +231,8 @@ export namespace GMenu {
     }
 
     abstract class TreeIter {
+        static $gtype: GObject.GType<TreeIter>;
+
         // Constructors of GMenu.TreeIter
 
         _init(...args: any[]): void;
@@ -266,6 +278,8 @@ export namespace GMenu {
     }
 
     abstract class TreeSeparator {
+        static $gtype: GObject.GType<TreeSeparator>;
+
         // Constructors of GMenu.TreeSeparator
 
         _init(...args: any[]): void;

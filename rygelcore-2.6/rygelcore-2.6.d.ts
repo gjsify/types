@@ -49,6 +49,8 @@ export namespace RygelCore {
         ENABLED,
     }
     class ConfigurationError extends GLib.Error {
+        static $gtype: GObject.GType<ConfigurationError>;
+
         // Static fields of RygelCore.ConfigurationError
 
         static NO_VALUE_SET: number;
@@ -61,6 +63,8 @@ export namespace RygelCore {
     }
 
     class CmdlineConfigError extends GLib.Error {
+        static $gtype: GObject.GType<CmdlineConfigError>;
+
         // Static fields of RygelCore.CmdlineConfigError
 
         static VERSION_ONLY: number;
@@ -90,6 +94,8 @@ export namespace RygelCore {
     }
 
     class ConnectionManager extends GUPnP.Service {
+        static $gtype: GObject.GType<ConnectionManager>;
+
         // Own fields of RygelCore.ConnectionManager
 
         sink_protocol_info: string;
@@ -126,6 +132,8 @@ export namespace RygelCore {
     }
 
     class BasicManagement extends GUPnP.Service {
+        static $gtype: GObject.GType<BasicManagement>;
+
         // Own properties of RygelCore.BasicManagement
 
         get max_history_size(): number;
@@ -158,6 +166,8 @@ export namespace RygelCore {
     }
 
     class DescriptionFile extends GObject.Object {
+        static $gtype: GObject.GType<DescriptionFile>;
+
         // Constructors of RygelCore.DescriptionFile
 
         constructor(properties?: Partial<DescriptionFile.ConstructorProps>, ...args: any[]);
@@ -191,6 +201,8 @@ export namespace RygelCore {
     }
 
     class DLNAProfile {
+        static $gtype: GObject.GType<DLNAProfile>;
+
         // Own fields of RygelCore.DLNAProfile
 
         ref_count: number;
@@ -215,6 +227,8 @@ export namespace RygelCore {
     }
 
     class EnergyManagement extends GUPnP.Service {
+        static $gtype: GObject.GType<EnergyManagement>;
+
         // Constructors of RygelCore.EnergyManagement
 
         constructor(properties?: Partial<EnergyManagement.ConstructorProps>, ...args: any[]);
@@ -233,6 +247,8 @@ export namespace RygelCore {
     }
 
     class RootDevice extends GUPnP.RootDevice implements Gio.Initable {
+        static $gtype: GObject.GType<RootDevice>;
+
         // Own properties of RygelCore.RootDevice
 
         get services(): Gee.ArrayList;
@@ -710,6 +726,8 @@ export namespace RygelCore {
     }
 
     class RootDeviceFactory extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<RootDeviceFactory>;
+
         // Own properties of RygelCore.RootDeviceFactory
 
         get context(): GUPnP.Context;
@@ -1176,6 +1194,8 @@ export namespace RygelCore {
     }
 
     class LogHandler extends GObject.Object {
+        static $gtype: GObject.GType<LogHandler>;
+
         // Constructors of RygelCore.LogHandler
 
         constructor(properties?: Partial<LogHandler.ConstructorProps>, ...args: any[]);
@@ -1194,6 +1214,8 @@ export namespace RygelCore {
     }
 
     class MetaConfig extends GObject.Object implements Configuration {
+        static $gtype: GObject.GType<MetaConfig>;
+
         // Constructors of RygelCore.MetaConfig
 
         constructor(properties?: Partial<MetaConfig.ConstructorProps>, ...args: any[]);
@@ -1618,6 +1640,8 @@ export namespace RygelCore {
     }
 
     class PluginLoader extends RecursiveModuleLoader {
+        static $gtype: GObject.GType<PluginLoader>;
+
         // Constructors of RygelCore.PluginLoader
 
         constructor(properties?: Partial<PluginLoader.ConstructorProps>, ...args: any[]);
@@ -1653,6 +1677,8 @@ export namespace RygelCore {
     }
 
     abstract class RecursiveModuleLoader extends GObject.Object {
+        static $gtype: GObject.GType<RecursiveModuleLoader>;
+
         // Own properties of RygelCore.RecursiveModuleLoader
 
         get base_path(): string;
@@ -1702,6 +1728,8 @@ export namespace RygelCore {
     }
 
     class Plugin extends GUPnP.ResourceFactory {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own properties of RygelCore.Plugin
 
         get capabilities(): PluginCapabilities;
@@ -1768,6 +1796,8 @@ export namespace RygelCore {
     }
 
     class ResourceInfo {
+        static $gtype: GObject.GType<ResourceInfo>;
+
         // Own fields of RygelCore.ResourceInfo
 
         ref_count: number;
@@ -1794,6 +1824,8 @@ export namespace RygelCore {
     }
 
     abstract class MediaDevice extends GObject.Object {
+        static $gtype: GObject.GType<MediaDevice>;
+
         // Own properties of RygelCore.MediaDevice
 
         get plugin(): Plugin;
@@ -1825,6 +1857,8 @@ export namespace RygelCore {
     }
 
     class BaseConfiguration extends GObject.Object implements Configuration {
+        static $gtype: GObject.GType<BaseConfiguration>;
+
         // Constructors of RygelCore.BaseConfiguration
 
         constructor(properties?: Partial<BaseConfiguration.ConstructorProps>, ...args: any[]);
@@ -2243,6 +2277,8 @@ export namespace RygelCore {
     }
 
     class CmdlineConfig extends GObject.Object implements Configuration {
+        static $gtype: GObject.GType<CmdlineConfig>;
+
         // Constructors of RygelCore.CmdlineConfig
 
         constructor(properties?: Partial<CmdlineConfig.ConstructorProps>, ...args: any[]);
@@ -2664,6 +2700,8 @@ export namespace RygelCore {
     }
 
     class EnvironmentConfig extends GObject.Object implements Configuration {
+        static $gtype: GObject.GType<EnvironmentConfig>;
+
         // Constructors of RygelCore.EnvironmentConfig
 
         constructor(properties?: Partial<EnvironmentConfig.ConstructorProps>, ...args: any[]);
@@ -3080,6 +3118,8 @@ export namespace RygelCore {
     }
 
     class UserConfig extends GObject.Object implements Configuration {
+        static $gtype: GObject.GType<UserConfig>;
+
         // Own fields of RygelCore.UserConfig
 
         key_file_monitor: Gio.FileMonitor;
@@ -3508,6 +3548,8 @@ export namespace RygelCore {
     }
 
     class V1Hacks extends GObject.Object {
+        static $gtype: GObject.GType<V1Hacks>;
+
         // Own properties of RygelCore.V1Hacks
 
         get device_type(): string;
@@ -3538,6 +3580,8 @@ export namespace RygelCore {
     }
 
     class IconInfo {
+        static $gtype: GObject.GType<IconInfo>;
+
         // Own fields of RygelCore.IconInfo
 
         ref_count: number;
@@ -3557,6 +3601,8 @@ export namespace RygelCore {
     }
 
     class XMLUtils {
+        static $gtype: GObject.GType<XMLUtils>;
+
         // Own fields of RygelCore.XMLUtils
 
         ref_count: number;
@@ -3569,6 +3615,8 @@ export namespace RygelCore {
     }
 
     class XMLUtilsIterator {
+        static $gtype: GObject.GType<XMLUtilsIterator>;
+
         // Own fields of RygelCore.XMLUtilsIterator
 
         ref_count: number;
@@ -3587,6 +3635,8 @@ export namespace RygelCore {
     }
 
     class XMLUtilsChildIterator extends XMLUtilsIterator {
+        static $gtype: GObject.GType<XMLUtilsChildIterator>;
+
         // Constructors of RygelCore.XMLUtilsChildIterator
 
         _init(...args: any[]): void;
@@ -3608,6 +3658,8 @@ export namespace RygelCore {
     }
 
     class PluginInformation extends GObject.Object {
+        static $gtype: GObject.GType<PluginInformation>;
+
         // Own properties of RygelCore.PluginInformation
 
         get module_path(): string;
@@ -3640,6 +3692,8 @@ export namespace RygelCore {
 
     type ConnectionManagerClass = typeof ConnectionManager;
     abstract class ConnectionManagerPrivate {
+        static $gtype: GObject.GType<ConnectionManagerPrivate>;
+
         // Constructors of RygelCore.ConnectionManagerPrivate
 
         _init(...args: any[]): void;
@@ -3647,6 +3701,8 @@ export namespace RygelCore {
 
     type BasicManagementClass = typeof BasicManagement;
     abstract class BasicManagementPrivate {
+        static $gtype: GObject.GType<BasicManagementPrivate>;
+
         // Constructors of RygelCore.BasicManagementPrivate
 
         _init(...args: any[]): void;
@@ -3654,6 +3710,8 @@ export namespace RygelCore {
 
     type DescriptionFileClass = typeof DescriptionFile;
     abstract class DescriptionFilePrivate {
+        static $gtype: GObject.GType<DescriptionFilePrivate>;
+
         // Constructors of RygelCore.DescriptionFilePrivate
 
         _init(...args: any[]): void;
@@ -3661,6 +3719,8 @@ export namespace RygelCore {
 
     type DLNAProfileClass = typeof DLNAProfile;
     abstract class DLNAProfilePrivate {
+        static $gtype: GObject.GType<DLNAProfilePrivate>;
+
         // Constructors of RygelCore.DLNAProfilePrivate
 
         _init(...args: any[]): void;
@@ -3668,6 +3728,8 @@ export namespace RygelCore {
 
     type EnergyManagementClass = typeof EnergyManagement;
     abstract class EnergyManagementPrivate {
+        static $gtype: GObject.GType<EnergyManagementPrivate>;
+
         // Constructors of RygelCore.EnergyManagementPrivate
 
         _init(...args: any[]): void;
@@ -3675,6 +3737,8 @@ export namespace RygelCore {
 
     type RootDeviceClass = typeof RootDevice;
     abstract class RootDevicePrivate {
+        static $gtype: GObject.GType<RootDevicePrivate>;
+
         // Constructors of RygelCore.RootDevicePrivate
 
         _init(...args: any[]): void;
@@ -3682,6 +3746,8 @@ export namespace RygelCore {
 
     type RootDeviceFactoryClass = typeof RootDeviceFactory;
     abstract class RootDeviceFactoryPrivate {
+        static $gtype: GObject.GType<RootDeviceFactoryPrivate>;
+
         // Constructors of RygelCore.RootDeviceFactoryPrivate
 
         _init(...args: any[]): void;
@@ -3689,6 +3755,8 @@ export namespace RygelCore {
 
     type LogHandlerClass = typeof LogHandler;
     abstract class LogHandlerPrivate {
+        static $gtype: GObject.GType<LogHandlerPrivate>;
+
         // Constructors of RygelCore.LogHandlerPrivate
 
         _init(...args: any[]): void;
@@ -3696,6 +3764,8 @@ export namespace RygelCore {
 
     type MetaConfigClass = typeof MetaConfig;
     abstract class MetaConfigPrivate {
+        static $gtype: GObject.GType<MetaConfigPrivate>;
+
         // Constructors of RygelCore.MetaConfigPrivate
 
         _init(...args: any[]): void;
@@ -3703,6 +3773,8 @@ export namespace RygelCore {
 
     type PluginLoaderClass = typeof PluginLoader;
     abstract class PluginLoaderPrivate {
+        static $gtype: GObject.GType<PluginLoaderPrivate>;
+
         // Constructors of RygelCore.PluginLoaderPrivate
 
         _init(...args: any[]): void;
@@ -3710,6 +3782,8 @@ export namespace RygelCore {
 
     type RecursiveModuleLoaderClass = typeof RecursiveModuleLoader;
     abstract class RecursiveModuleLoaderPrivate {
+        static $gtype: GObject.GType<RecursiveModuleLoaderPrivate>;
+
         // Constructors of RygelCore.RecursiveModuleLoaderPrivate
 
         _init(...args: any[]): void;
@@ -3717,6 +3791,8 @@ export namespace RygelCore {
 
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
+        static $gtype: GObject.GType<PluginPrivate>;
+
         // Constructors of RygelCore.PluginPrivate
 
         _init(...args: any[]): void;
@@ -3724,6 +3800,8 @@ export namespace RygelCore {
 
     type ResourceInfoClass = typeof ResourceInfo;
     abstract class ResourceInfoPrivate {
+        static $gtype: GObject.GType<ResourceInfoPrivate>;
+
         // Constructors of RygelCore.ResourceInfoPrivate
 
         _init(...args: any[]): void;
@@ -3731,6 +3809,8 @@ export namespace RygelCore {
 
     type MediaDeviceClass = typeof MediaDevice;
     abstract class MediaDevicePrivate {
+        static $gtype: GObject.GType<MediaDevicePrivate>;
+
         // Constructors of RygelCore.MediaDevicePrivate
 
         _init(...args: any[]): void;
@@ -3738,6 +3818,8 @@ export namespace RygelCore {
 
     type BaseConfigurationClass = typeof BaseConfiguration;
     abstract class BaseConfigurationPrivate {
+        static $gtype: GObject.GType<BaseConfigurationPrivate>;
+
         // Constructors of RygelCore.BaseConfigurationPrivate
 
         _init(...args: any[]): void;
@@ -3745,6 +3827,8 @@ export namespace RygelCore {
 
     type CmdlineConfigClass = typeof CmdlineConfig;
     abstract class CmdlineConfigPrivate {
+        static $gtype: GObject.GType<CmdlineConfigPrivate>;
+
         // Constructors of RygelCore.CmdlineConfigPrivate
 
         _init(...args: any[]): void;
@@ -3752,6 +3836,8 @@ export namespace RygelCore {
 
     type EnvironmentConfigClass = typeof EnvironmentConfig;
     abstract class EnvironmentConfigPrivate {
+        static $gtype: GObject.GType<EnvironmentConfigPrivate>;
+
         // Constructors of RygelCore.EnvironmentConfigPrivate
 
         _init(...args: any[]): void;
@@ -3759,6 +3845,8 @@ export namespace RygelCore {
 
     type UserConfigClass = typeof UserConfig;
     abstract class UserConfigPrivate {
+        static $gtype: GObject.GType<UserConfigPrivate>;
+
         // Constructors of RygelCore.UserConfigPrivate
 
         _init(...args: any[]): void;
@@ -3766,6 +3854,8 @@ export namespace RygelCore {
 
     type V1HacksClass = typeof V1Hacks;
     abstract class V1HacksPrivate {
+        static $gtype: GObject.GType<V1HacksPrivate>;
+
         // Constructors of RygelCore.V1HacksPrivate
 
         _init(...args: any[]): void;
@@ -3773,6 +3863,8 @@ export namespace RygelCore {
 
     type IconInfoClass = typeof IconInfo;
     abstract class IconInfoPrivate {
+        static $gtype: GObject.GType<IconInfoPrivate>;
+
         // Constructors of RygelCore.IconInfoPrivate
 
         _init(...args: any[]): void;
@@ -3780,6 +3872,8 @@ export namespace RygelCore {
 
     type XMLUtilsClass = typeof XMLUtils;
     abstract class XMLUtilsPrivate {
+        static $gtype: GObject.GType<XMLUtilsPrivate>;
+
         // Constructors of RygelCore.XMLUtilsPrivate
 
         _init(...args: any[]): void;
@@ -3787,6 +3881,8 @@ export namespace RygelCore {
 
     type XMLUtilsIteratorClass = typeof XMLUtilsIterator;
     abstract class XMLUtilsIteratorPrivate {
+        static $gtype: GObject.GType<XMLUtilsIteratorPrivate>;
+
         // Constructors of RygelCore.XMLUtilsIteratorPrivate
 
         _init(...args: any[]): void;
@@ -3794,6 +3890,8 @@ export namespace RygelCore {
 
     type XMLUtilsChildIteratorClass = typeof XMLUtilsChildIterator;
     abstract class XMLUtilsChildIteratorPrivate {
+        static $gtype: GObject.GType<XMLUtilsChildIteratorPrivate>;
+
         // Constructors of RygelCore.XMLUtilsChildIteratorPrivate
 
         _init(...args: any[]): void;
@@ -3801,6 +3899,8 @@ export namespace RygelCore {
 
     type PluginInformationClass = typeof PluginInformation;
     abstract class PluginInformationPrivate {
+        static $gtype: GObject.GType<PluginInformationPrivate>;
+
         // Constructors of RygelCore.PluginInformationPrivate
 
         _init(...args: any[]): void;

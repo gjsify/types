@@ -29,6 +29,8 @@ export namespace Vgda {
     }
 
     class GProvider extends GObject.Object implements Vda.Connection {
+        static $gtype: GObject.GType<GProvider>;
+
         // Constructors of Vgda.GProvider
 
         constructor(properties?: Partial<GProvider.ConstructorProps>, ...args: any[]);
@@ -439,6 +441,8 @@ export namespace Vgda {
 
     type GProviderClass = typeof GProvider;
     abstract class GProviderPrivate {
+        static $gtype: GObject.GType<GProviderPrivate>;
+
         // Constructors of Vgda.GProviderPrivate
 
         _init(...args: any[]): void;

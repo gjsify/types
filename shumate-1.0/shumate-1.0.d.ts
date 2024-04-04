@@ -31,6 +31,8 @@ export namespace Shumate {
      * Error codes in the #SHUMATE_FILE_CACHE_ERROR domain.
      */
     class FileCacheError extends GLib.Error {
+        static $gtype: GObject.GType<FileCacheError>;
+
         // Static fields of Shumate.FileCacheError
 
         /**
@@ -86,6 +88,8 @@ export namespace Shumate {
      * Error codes that occurs while parsing the style in [class`VectorRenderer]`.
      */
     class StyleError extends GLib.Error {
+        static $gtype: GObject.GType<StyleError>;
+
         // Static fields of Shumate.StyleError
 
         /**
@@ -127,6 +131,8 @@ export namespace Shumate {
      * Error codes in the #SHUMATE_TILE_DOWNLOADER_ERROR domain.
      */
     class TileDownloaderError extends GLib.Error {
+        static $gtype: GObject.GType<TileDownloaderError>;
+
         // Static fields of Shumate.TileDownloaderError
 
         /**
@@ -292,6 +298,8 @@ export namespace Shumate {
      * image named "map-compass".
      */
     class Compass extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<Compass>;
+
         // Own properties of Shumate.Compass
 
         /**
@@ -924,6 +932,8 @@ export namespace Shumate {
      * A simple object implementing [iface`Location]`.
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
+        static $gtype: GObject.GType<Coordinate>;
+
         // Constructors of Shumate.Coordinate
 
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
@@ -1354,6 +1364,8 @@ export namespace Shumate {
      * The base class used to retrieve tiles as [struct`GLib`.Bytes].
      */
     abstract class DataSource extends GObject.Object {
+        static $gtype: GObject.GType<DataSource>;
+
         // Own properties of Shumate.DataSource
 
         /**
@@ -1540,6 +1552,8 @@ export namespace Shumate {
      * cases.
      */
     class DataSourceRequest extends GObject.Object {
+        static $gtype: GObject.GType<DataSourceRequest>;
+
         // Own properties of Shumate.DataSourceRequest
 
         /**
@@ -1674,6 +1688,8 @@ export namespace Shumate {
      * using the HTTP If-None-Match header).
      */
     class FileCache extends GObject.Object {
+        static $gtype: GObject.GType<FileCache>;
+
         // Own properties of Shumate.FileCache
 
         /**
@@ -1840,6 +1856,8 @@ export namespace Shumate {
      * property at any time to replace the current displayed map.
      */
     abstract class Layer extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<Layer>;
+
         // Own properties of Shumate.Layer
 
         get viewport(): Viewport;
@@ -2469,6 +2487,8 @@ export namespace Shumate {
      * A widget that displays license text.
      */
     class License extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<License>;
+
         // Own properties of Shumate.License
 
         /**
@@ -3160,6 +3180,8 @@ export namespace Shumate {
      * methods.
      */
     class Map extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<Map>;
+
         // Own properties of Shumate.Map
 
         /**
@@ -3967,6 +3989,8 @@ export namespace Shumate {
      * and draws them as a grid.
      */
     class MapLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<MapLayer>;
+
         // Own properties of Shumate.MapLayer
 
         get map_source(): MapSource;
@@ -4374,6 +4398,8 @@ export namespace Shumate {
      * using a [class`TileDownloader]`.
      */
     abstract class MapSource extends GObject.Object {
+        static $gtype: GObject.GType<MapSource>;
+
         // Own properties of Shumate.MapSource
 
         /**
@@ -4646,6 +4672,8 @@ export namespace Shumate {
         extends GObject.Object
         implements Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<MapSourceRegistry>;
+
         // Constructors of Shumate.MapSourceRegistry
 
         constructor(properties?: Partial<MapSourceRegistry.ConstructorProps>, ...args: any[]);
@@ -5158,6 +5186,8 @@ export namespace Shumate {
      * a [class`Gtk`.Popover] with the description of the marker.
      */
     class Marker extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
+        static $gtype: GObject.GType<Marker>;
+
         // Own properties of Shumate.Marker
 
         /**
@@ -5874,6 +5904,8 @@ export namespace Shumate {
      * correctly, marker selections and group marker operations.
      */
     class MarkerLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<MarkerLayer>;
+
         // Own properties of Shumate.MarkerLayer
 
         /**
@@ -6368,6 +6400,8 @@ export namespace Shumate {
      * can be used as well.
      */
     class PathLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<PathLayer>;
+
         // Own properties of Shumate.PathLayer
 
         /**
@@ -6941,6 +6975,8 @@ export namespace Shumate {
      * circle on the map.
      */
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
+        static $gtype: GObject.GType<Point>;
+
         // Constructors of Shumate.Point
 
         constructor(properties?: Partial<Point.ConstructorProps>, ...args: any[]);
@@ -7358,6 +7394,8 @@ export namespace Shumate {
     }
 
     class RasterRenderer extends MapSource {
+        static $gtype: GObject.GType<RasterRenderer>;
+
         // Own properties of Shumate.RasterRenderer
 
         /**
@@ -7435,6 +7473,8 @@ export namespace Shumate {
      * childs different labels.
      */
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<Scale>;
+
         // Own properties of Shumate.Scale
 
         /**
@@ -8126,6 +8166,8 @@ export namespace Shumate {
      * a [class`Shumate`.Scale] and a [class`Shumate`.Compass].
      */
     class SimpleMap extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<SimpleMap>;
+
         // Own properties of Shumate.SimpleMap
 
         get compass(): Compass;
@@ -8838,6 +8880,8 @@ export namespace Shumate {
      * and longitude of the feature that was clicked.
      */
     class SymbolEvent extends GObject.Object implements Location {
+        static $gtype: GObject.GType<SymbolEvent>;
+
         // Own properties of Shumate.SymbolEvent
 
         /**
@@ -9333,6 +9377,8 @@ export namespace Shumate {
      * An object that represents map tiles. Tiles are loaded by a [class`MapSource]`.
      */
     class Tile extends GObject.Object {
+        static $gtype: GObject.GType<Tile>;
+
         // Own properties of Shumate.Tile
 
         /**
@@ -9505,6 +9551,8 @@ export namespace Shumate {
      * It contains an internal [class`FileCache]` to cache the tiles on the system.
      */
     class TileDownloader extends DataSource {
+        static $gtype: GObject.GType<TileDownloader>;
+
         // Own properties of Shumate.TileDownloader
 
         /**
@@ -9552,6 +9600,8 @@ export namespace Shumate {
      * A [class`MapSource]` that renders tiles from a given vector data source.
      */
     class VectorRenderer extends MapSource implements Gio.Initable {
+        static $gtype: GObject.GType<VectorRenderer>;
+
         // Own properties of Shumate.VectorRenderer
 
         /**
@@ -10064,6 +10114,8 @@ export namespace Shumate {
      * accessible via the interface methods.
      */
     class Viewport extends GObject.Object implements Location {
+        static $gtype: GObject.GType<Viewport>;
+
         // Own properties of Shumate.Viewport
 
         /**

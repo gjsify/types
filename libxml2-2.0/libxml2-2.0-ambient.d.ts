@@ -1,7 +1,7 @@
 
 declare module 'gi://libxml2?version=2.0' {
-    import Libxml220 from '@girs/libxml2-2.0';
-    export default Libxml220;
+    import libxml2 from '@girs/libxml2-2.0';
+    export default libxml2;
 }
 
 declare module 'gi://libxml2' {

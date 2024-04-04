@@ -205,6 +205,8 @@ export namespace GdkX11 {
     }
 
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
+        static $gtype: GObject.GType<X11AppLaunchContext>;
+
         // Constructors of GdkX11.X11AppLaunchContext
 
         constructor(properties?: Partial<X11AppLaunchContext.ConstructorProps>, ...args: any[]);
@@ -219,6 +221,8 @@ export namespace GdkX11 {
     }
 
     class X11Cursor extends Gdk.Cursor {
+        static $gtype: GObject.GType<X11Cursor>;
+
         // Constructors of GdkX11.X11Cursor
 
         constructor(properties?: Partial<X11Cursor.ConstructorProps>, ...args: any[]);
@@ -246,6 +250,8 @@ export namespace GdkX11 {
     }
 
     class X11DeviceCore extends Gdk.Device {
+        static $gtype: GObject.GType<X11DeviceCore>;
+
         // Constructors of GdkX11.X11DeviceCore
 
         constructor(properties?: Partial<X11DeviceCore.ConstructorProps>, ...args: any[]);
@@ -260,6 +266,8 @@ export namespace GdkX11 {
     }
 
     class X11DeviceManagerCore extends Gdk.DeviceManager {
+        static $gtype: GObject.GType<X11DeviceManagerCore>;
+
         // Constructors of GdkX11.X11DeviceManagerCore
 
         constructor(properties?: Partial<X11DeviceManagerCore.ConstructorProps>, ...args: any[]);
@@ -278,6 +286,8 @@ export namespace GdkX11 {
     }
 
     class X11DeviceManagerXI2 extends X11DeviceManagerCore {
+        static $gtype: GObject.GType<X11DeviceManagerXI2>;
+
         // Own properties of GdkX11.X11DeviceManagerXI2
 
         get major(): number;
@@ -301,6 +311,8 @@ export namespace GdkX11 {
     }
 
     class X11DeviceXI2 extends Gdk.Device {
+        static $gtype: GObject.GType<X11DeviceXI2>;
+
         // Own properties of GdkX11.X11DeviceXI2
 
         get device_id(): number;
@@ -320,6 +332,8 @@ export namespace GdkX11 {
     }
 
     class X11Display extends Gdk.Display {
+        static $gtype: GObject.GType<X11Display>;
+
         // Constructors of GdkX11.X11Display
 
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
@@ -486,6 +500,8 @@ export namespace GdkX11 {
     }
 
     class X11DisplayManager extends Gdk.DisplayManager {
+        static $gtype: GObject.GType<X11DisplayManager>;
+
         // Constructors of GdkX11.X11DisplayManager
 
         constructor(properties?: Partial<X11DisplayManager.ConstructorProps>, ...args: any[]);
@@ -500,6 +516,8 @@ export namespace GdkX11 {
     }
 
     class X11DragContext extends Gdk.DragContext {
+        static $gtype: GObject.GType<X11DragContext>;
+
         // Constructors of GdkX11.X11DragContext
 
         constructor(properties?: Partial<X11DragContext.ConstructorProps>, ...args: any[]);
@@ -514,6 +532,8 @@ export namespace GdkX11 {
     }
 
     class X11GLContext extends Gdk.GLContext {
+        static $gtype: GObject.GType<X11GLContext>;
+
         // Constructors of GdkX11.X11GLContext
 
         constructor(properties?: Partial<X11GLContext.ConstructorProps>, ...args: any[]);
@@ -528,6 +548,8 @@ export namespace GdkX11 {
     }
 
     class X11Keymap extends Gdk.Keymap {
+        static $gtype: GObject.GType<X11Keymap>;
+
         // Constructors of GdkX11.X11Keymap
 
         constructor(properties?: Partial<X11Keymap.ConstructorProps>, ...args: any[]);
@@ -564,6 +586,8 @@ export namespace GdkX11 {
     }
 
     class X11Monitor extends Gdk.Monitor {
+        static $gtype: GObject.GType<X11Monitor>;
+
         // Constructors of GdkX11.X11Monitor
 
         constructor(properties?: Partial<X11Monitor.ConstructorProps>, ...args: any[]);
@@ -588,6 +612,8 @@ export namespace GdkX11 {
     }
 
     class X11Screen extends Gdk.Screen {
+        static $gtype: GObject.GType<X11Screen>;
+
         // Constructors of GdkX11.X11Screen
 
         constructor(properties?: Partial<X11Screen.ConstructorProps>, ...args: any[]);
@@ -676,6 +702,8 @@ export namespace GdkX11 {
     }
 
     class X11Visual extends Gdk.Visual {
+        static $gtype: GObject.GType<X11Visual>;
+
         // Constructors of GdkX11.X11Visual
 
         constructor(properties?: Partial<X11Visual.ConstructorProps>, ...args: any[]);
@@ -698,6 +726,8 @@ export namespace GdkX11 {
     }
 
     class X11Window extends Gdk.Window {
+        static $gtype: GObject.GType<X11Window>;
+
         // Constructors of GdkX11.X11Window
 
         constructor(properties?: Partial<X11Window.ConstructorProps>, ...args: any[]);

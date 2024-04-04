@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./st-14.d.ts"],
+    "readme": "./README.md",
+    "name": "St-14",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -848,6 +848,8 @@ export namespace GstTag {
      *  128 bytes.
      */
     abstract class TagDemux extends Gst.Element {
+        static $gtype: GObject.GType<TagDemux>;
+
         // Own fields of GstTag.TagDemux
 
         element: Gst.Element;
@@ -888,6 +890,8 @@ export namespace GstTag {
      *    function.
      */
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
+        static $gtype: GObject.GType<TagMux>;
+
         // Own fields of GstTag.TagMux
 
         element: Gst.Element;
@@ -1838,6 +1842,8 @@ export namespace GstTag {
 
     type TagDemuxClass = typeof TagDemux;
     abstract class TagDemuxPrivate {
+        static $gtype: GObject.GType<TagDemuxPrivate>;
+
         // Constructors of GstTag.TagDemuxPrivate
 
         _init(...args: any[]): void;
@@ -1845,6 +1851,8 @@ export namespace GstTag {
 
     type TagMuxClass = typeof TagMux;
     abstract class TagMuxPrivate {
+        static $gtype: GObject.GType<TagMuxPrivate>;
+
         // Constructors of GstTag.TagMuxPrivate
 
         _init(...args: any[]): void;

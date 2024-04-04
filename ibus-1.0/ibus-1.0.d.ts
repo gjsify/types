@@ -87,6 +87,8 @@ export namespace IBus {
         ALREADY_RUNNING,
     }
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of IBus.Error
 
         /**
@@ -4880,6 +4882,8 @@ export namespace IBus {
      * Array of IBusAttribute.
      */
     class AttrList extends Serializable {
+        static $gtype: GObject.GType<AttrList>;
+
         // Own fields of IBus.AttrList
 
         attributes: any[];
@@ -4919,6 +4923,8 @@ export namespace IBus {
      * and background colors.
      */
     class Attribute extends Serializable {
+        static $gtype: GObject.GType<Attribute>;
+
         // Own fields of IBus.Attribute
 
         type: number;
@@ -4995,6 +5001,8 @@ export namespace IBus {
      * An IBusBus connects with IBus daemon.
      */
     class Bus extends Object {
+        static $gtype: GObject.GType<Bus>;
+
         // Own properties of IBus.Bus
 
         /**
@@ -5611,6 +5619,8 @@ export namespace IBus {
      * <ulink url="https://github.com/ibus/ibus/wiki/DevXML">https://github.com/ibus/ibus/wiki/DevXML</ulink>
      */
     class Component extends Serializable {
+        static $gtype: GObject.GType<Component>;
+
         // Own properties of IBus.Component
 
         /**
@@ -5781,6 +5791,8 @@ export namespace IBus {
      * Currently, IBusConfig supports gconf.
      */
     class Config extends Proxy implements Gio.AsyncInitable<Config>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Config>;
+
         // Constructors of IBus.Config
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
@@ -6531,6 +6543,8 @@ export namespace IBus {
      * </itemizedlist>
      */
     class ConfigService extends Service {
+        static $gtype: GObject.GType<ConfigService>;
+
         // Constructors of IBus.ConfigService
 
         constructor(properties?: Partial<ConfigService.ConstructorProps>, ...args: any[]);
@@ -6659,6 +6673,8 @@ export namespace IBus {
      * see_also: #IBusComponent, #IBusEngineDesc
      */
     class Engine extends Service {
+        static $gtype: GObject.GType<Engine>;
+
         // Own properties of IBus.Engine
 
         get engine_name(): string;
@@ -7008,6 +7024,8 @@ export namespace IBus {
      * see_also: #IBusComponent, #IBusEngine
      */
     class EngineDesc extends Serializable {
+        static $gtype: GObject.GType<EngineDesc>;
+
         // Own properties of IBus.EngineDesc
 
         /**
@@ -7222,6 +7240,8 @@ export namespace IBus {
      * see_also: #IBusEngine
      */
     class EngineSimple extends Engine {
+        static $gtype: GObject.GType<EngineSimple>;
+
         // Constructors of IBus.EngineSimple
 
         constructor(properties?: Partial<EngineSimple.ConstructorProps>, ...args: any[]);
@@ -7277,6 +7297,8 @@ export namespace IBus {
      * see_also: #IBusEngine
      */
     class Factory extends Service {
+        static $gtype: GObject.GType<Factory>;
+
         // Constructors of IBus.Factory
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
@@ -7337,6 +7359,8 @@ export namespace IBus {
      * An opaque data type representing an IBusHotkeyProfile.
      */
     class HotkeyProfile extends Serializable {
+        static $gtype: GObject.GType<HotkeyProfile>;
+
         // Constructors of IBus.HotkeyProfile
 
         constructor(properties?: Partial<HotkeyProfile.ConstructorProps>, ...args: any[]);
@@ -7510,6 +7534,8 @@ export namespace IBus {
      * through which invokes IBusEngine.
      */
     class InputContext extends Proxy implements Gio.AsyncInitable<InputContext>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<InputContext>;
+
         // Constructors of IBus.InputContext
 
         constructor(properties?: Partial<InputContext.ConstructorProps>, ...args: any[]);
@@ -8326,6 +8352,8 @@ export namespace IBus {
      * see_also: #IBusComponent, #IBusEngineDesc
      */
     class Keymap extends Object {
+        static $gtype: GObject.GType<Keymap>;
+
         // Own fields of IBus.Keymap
 
         name: string;
@@ -8381,6 +8409,8 @@ export namespace IBus {
      * see_also: #IBusEngine
      */
     class LookupTable extends Serializable {
+        static $gtype: GObject.GType<LookupTable>;
+
         // Own fields of IBus.LookupTable
 
         page_size: number;
@@ -8554,6 +8584,8 @@ export namespace IBus {
      * IBusObject is the base object for all objects in IBus.
      */
     class Object extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<Object>;
+
         // Own fields of IBus.Object
 
         flags: number;
@@ -8611,6 +8643,8 @@ export namespace IBus {
      * such as monitor modification, directory tree traversal.
      */
     class ObservedPath extends Serializable {
+        static $gtype: GObject.GType<ObservedPath>;
+
         // Own fields of IBus.ObservedPath
 
         path: string;
@@ -8769,6 +8803,8 @@ export namespace IBus {
      * Developers can "extend" this class for panel UI development.
      */
     class PanelService extends Service {
+        static $gtype: GObject.GType<PanelService>;
+
         // Constructors of IBus.PanelService
 
         constructor(properties?: Partial<PanelService.ConstructorProps>, ...args: any[]);
@@ -8977,6 +9013,8 @@ export namespace IBus {
      * See_also: #IBusProperty, #IBusEngine
      */
     class PropList extends Serializable {
+        static $gtype: GObject.GType<PropList>;
+
         // Own fields of IBus.PropList
 
         properties: any[];
@@ -9040,6 +9078,8 @@ export namespace IBus {
      * see_also: #IBusPropList, #IBusEngine
      */
     class Property extends Serializable {
+        static $gtype: GObject.GType<Property>;
+
         // Own properties of IBus.Property
 
         get icon(): string;
@@ -9211,6 +9251,8 @@ export namespace IBus {
      * Almost all services have corresponding proxies, except very simple services.
      */
     class Proxy extends Gio.DBusProxy implements Gio.AsyncInitable<Proxy>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own fields of IBus.Proxy
 
         flags: number;
@@ -9864,6 +9906,8 @@ export namespace IBus {
      * see_also: #IBusComponent
      */
     class Registry extends Serializable {
+        static $gtype: GObject.GType<Registry>;
+
         // Constructors of IBus.Registry
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
@@ -9977,6 +10021,8 @@ export namespace IBus {
      * for function prototype.
      */
     class Serializable extends Object {
+        static $gtype: GObject.GType<Serializable>;
+
         // Constructors of IBus.Serializable
 
         constructor(properties?: Partial<Serializable.ConstructorProps>, ...args: any[]);
@@ -10051,6 +10097,8 @@ export namespace IBus {
      * An IBusService is a base class for services.
      */
     class Service extends Object {
+        static $gtype: GObject.GType<Service>;
+
         // Own properties of IBus.Service
 
         /**
@@ -10184,6 +10232,8 @@ export namespace IBus {
      * see_also: #IBusAttribute
      */
     class Text extends Serializable {
+        static $gtype: GObject.GType<Text>;
+
         // Own fields of IBus.Text
 
         is_static: boolean;
@@ -10236,6 +10286,8 @@ export namespace IBus {
     type AttributeClass = typeof Attribute;
     type BusClass = typeof Bus;
     abstract class BusPrivate {
+        static $gtype: GObject.GType<BusPrivate>;
+
         // Constructors of IBus.BusPrivate
 
         _init(...args: any[]): void;
@@ -10243,6 +10295,8 @@ export namespace IBus {
 
     type ComponentClass = typeof Component;
     abstract class ComponentPrivate {
+        static $gtype: GObject.GType<ComponentPrivate>;
+
         // Constructors of IBus.ComponentPrivate
 
         _init(...args: any[]): void;
@@ -10250,6 +10304,8 @@ export namespace IBus {
 
     type ConfigClass = typeof Config;
     abstract class ConfigPrivate {
+        static $gtype: GObject.GType<ConfigPrivate>;
+
         // Constructors of IBus.ConfigPrivate
 
         _init(...args: any[]): void;
@@ -10259,12 +10315,16 @@ export namespace IBus {
     type EngineClass = typeof Engine;
     type EngineDescClass = typeof EngineDesc;
     abstract class EngineDescPrivate {
+        static $gtype: GObject.GType<EngineDescPrivate>;
+
         // Constructors of IBus.EngineDescPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class EnginePrivate {
+        static $gtype: GObject.GType<EnginePrivate>;
+
         // Constructors of IBus.EnginePrivate
 
         _init(...args: any[]): void;
@@ -10272,6 +10332,8 @@ export namespace IBus {
 
     type EngineSimpleClass = typeof EngineSimple;
     abstract class EngineSimplePrivate {
+        static $gtype: GObject.GType<EngineSimplePrivate>;
+
         // Constructors of IBus.EngineSimplePrivate
 
         _init(...args: any[]): void;
@@ -10279,6 +10341,8 @@ export namespace IBus {
 
     type FactoryClass = typeof Factory;
     abstract class FactoryPrivate {
+        static $gtype: GObject.GType<FactoryPrivate>;
+
         // Constructors of IBus.FactoryPrivate
 
         _init(...args: any[]): void;
@@ -10290,6 +10354,8 @@ export namespace IBus {
     type LookupTableClass = typeof LookupTable;
     type ObjectClass = typeof Object;
     abstract class ObjectPrivate {
+        static $gtype: GObject.GType<ObjectPrivate>;
+
         // Constructors of IBus.ObjectPrivate
 
         _init(...args: any[]): void;
@@ -10300,6 +10366,8 @@ export namespace IBus {
     type PropListClass = typeof PropList;
     type PropertyClass = typeof Property;
     abstract class PropertyPrivate {
+        static $gtype: GObject.GType<PropertyPrivate>;
+
         // Constructors of IBus.PropertyPrivate
 
         _init(...args: any[]): void;
@@ -10310,6 +10378,8 @@ export namespace IBus {
      * Rectangle definition.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of IBus.Rectangle
 
         x: number;
@@ -10332,6 +10402,8 @@ export namespace IBus {
 
     type RegistryClass = typeof Registry;
     abstract class RegistryPrivate {
+        static $gtype: GObject.GType<RegistryPrivate>;
+
         // Constructors of IBus.RegistryPrivate
 
         _init(...args: any[]): void;
@@ -10339,6 +10411,8 @@ export namespace IBus {
 
     type SerializableClass = typeof Serializable;
     abstract class SerializablePrivate {
+        static $gtype: GObject.GType<SerializablePrivate>;
+
         // Constructors of IBus.SerializablePrivate
 
         _init(...args: any[]): void;
@@ -10346,6 +10420,8 @@ export namespace IBus {
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
+        static $gtype: GObject.GType<ServicePrivate>;
+
         // Constructors of IBus.ServicePrivate
 
         _init(...args: any[]): void;
@@ -10356,6 +10432,8 @@ export namespace IBus {
      * IBusXML lists data structure and handling function for XML in IBus.
      */
     class XML {
+        static $gtype: GObject.GType<XML>;
+
         // Own fields of IBus.XML
 
         name: string;

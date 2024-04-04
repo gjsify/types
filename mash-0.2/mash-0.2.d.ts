@@ -76,6 +76,8 @@ export namespace Mash {
      * The #MashData structure contains only private data.
      */
     class Data extends GObject.Object {
+        static $gtype: GObject.GType<Data>;
+
         // Constructors of Mash.Data
 
         constructor(properties?: Partial<Data.ConstructorProps>, ...args: any[]);
@@ -132,6 +134,8 @@ export namespace Mash {
      * The #MashDataLoader structure contains only private data.
      */
     abstract class DataLoader extends GObject.Object {
+        static $gtype: GObject.GType<DataLoader>;
+
         // Constructors of Mash.DataLoader
 
         constructor(properties?: Partial<DataLoader.ConstructorProps>, ...args: any[]);
@@ -180,6 +184,8 @@ export namespace Mash {
         extends Light
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<DirectionalLight>;
+
         // Constructors of Mash.DirectionalLight
 
         constructor(properties?: Partial<DirectionalLight.ConstructorProps>, ...args: any[]);
@@ -567,6 +573,8 @@ export namespace Mash {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Light>;
+
         // Own properties of Mash.Light
 
         get ambient(): Clutter.Color;
@@ -1699,6 +1707,8 @@ export namespace Mash {
      * The #MashLightSet structure contains only private data.
      */
     class LightSet extends GObject.Object {
+        static $gtype: GObject.GType<LightSet>;
+
         // Constructors of Mash.LightSet
 
         constructor(properties?: Partial<LightSet.ConstructorProps>, ...args: any[]);
@@ -1747,6 +1757,8 @@ export namespace Mash {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Model>;
+
         // Own properties of Mash.Model
 
         get data(): Data;
@@ -2621,6 +2633,8 @@ export namespace Mash {
     }
 
     class PlyLoader extends Data {
+        static $gtype: GObject.GType<PlyLoader>;
+
         // Constructors of Mash.PlyLoader
 
         constructor(properties?: Partial<PlyLoader.ConstructorProps>, ...args: any[]);
@@ -2653,6 +2667,8 @@ export namespace Mash {
         extends Light
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<PointLight>;
+
         // Own properties of Mash.PointLight
 
         get constant_attenuation(): number;
@@ -3085,6 +3101,8 @@ export namespace Mash {
         extends PointLight
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<SpotLight>;
+
         // Own properties of Mash.SpotLight
 
         get spot_cutoff(): number;
@@ -3487,6 +3505,8 @@ export namespace Mash {
      * The #MashDataLoaderData structure contains the loaded data.
      */
     class DataLoaderData {
+        static $gtype: GObject.GType<DataLoaderData>;
+
         // Own fields of Mash.DataLoaderData
 
         vertices_vbo: Cogl.Handle;
@@ -3514,12 +3534,16 @@ export namespace Mash {
     }
 
     abstract class DataLoaderPrivate {
+        static $gtype: GObject.GType<DataLoaderPrivate>;
+
         // Constructors of Mash.DataLoaderPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DataPrivate {
+        static $gtype: GObject.GType<DataPrivate>;
+
         // Constructors of Mash.DataPrivate
 
         _init(...args: any[]): void;
@@ -3527,6 +3551,8 @@ export namespace Mash {
 
     type DirectionalLightClass = typeof DirectionalLight;
     abstract class DirectionalLightPrivate {
+        static $gtype: GObject.GType<DirectionalLightPrivate>;
+
         // Constructors of Mash.DirectionalLightPrivate
 
         _init(...args: any[]): void;
@@ -3534,6 +3560,8 @@ export namespace Mash {
 
     type LightClass = typeof Light;
     abstract class LightPrivate {
+        static $gtype: GObject.GType<LightPrivate>;
+
         // Constructors of Mash.LightPrivate
 
         _init(...args: any[]): void;
@@ -3541,6 +3569,8 @@ export namespace Mash {
 
     type LightSetClass = typeof LightSet;
     abstract class LightSetPrivate {
+        static $gtype: GObject.GType<LightSetPrivate>;
+
         // Constructors of Mash.LightSetPrivate
 
         _init(...args: any[]): void;
@@ -3548,6 +3578,8 @@ export namespace Mash {
 
     type ModelClass = typeof Model;
     abstract class ModelPrivate {
+        static $gtype: GObject.GType<ModelPrivate>;
+
         // Constructors of Mash.ModelPrivate
 
         _init(...args: any[]): void;
@@ -3555,6 +3587,8 @@ export namespace Mash {
 
     type PlyLoaderClass = typeof PlyLoader;
     abstract class PlyLoaderPrivate {
+        static $gtype: GObject.GType<PlyLoaderPrivate>;
+
         // Constructors of Mash.PlyLoaderPrivate
 
         _init(...args: any[]): void;
@@ -3562,6 +3596,8 @@ export namespace Mash {
 
     type PointLightClass = typeof PointLight;
     abstract class PointLightPrivate {
+        static $gtype: GObject.GType<PointLightPrivate>;
+
         // Constructors of Mash.PointLightPrivate
 
         _init(...args: any[]): void;
@@ -3569,6 +3605,8 @@ export namespace Mash {
 
     type SpotLightClass = typeof SpotLight;
     abstract class SpotLightPrivate {
+        static $gtype: GObject.GType<SpotLightPrivate>;
+
         // Constructors of Mash.SpotLightPrivate
 
         _init(...args: any[]): void;

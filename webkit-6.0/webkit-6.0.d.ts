@@ -375,6 +375,8 @@ export namespace WebKit {
      * Enum values used to denote the various download errors.
      */
     class DownloadError extends GLib.Error {
+        static $gtype: GObject.GType<DownloadError>;
+
         // Static fields of WebKit.DownloadError
 
         /**
@@ -407,6 +409,8 @@ export namespace WebKit {
      * Enum values used to denote the various errors related to the #WebKitFaviconDatabase.
      */
     class FaviconDatabaseError extends GLib.Error {
+        static $gtype: GObject.GType<FaviconDatabaseError>;
+
         // Static fields of WebKit.FaviconDatabaseError
 
         /**
@@ -558,6 +562,8 @@ export namespace WebKit {
      * Enum values used to denote errors happening when executing JavaScript
      */
     class JavascriptError extends GLib.Error {
+        static $gtype: GObject.GType<JavascriptError>;
+
         // Static fields of WebKit.JavascriptError
 
         /**
@@ -637,6 +643,8 @@ export namespace WebKit {
      * Enum values used to denote the various media errors.
      */
     class MediaError extends GLib.Error {
+        static $gtype: GObject.GType<MediaError>;
+
         // Static fields of WebKit.MediaError
 
         /**
@@ -690,6 +698,8 @@ export namespace WebKit {
      * Enum values used to denote the various network errors.
      */
     class NetworkError extends GLib.Error {
+        static $gtype: GObject.GType<NetworkError>;
+
         // Static fields of WebKit.NetworkError
 
         /**
@@ -801,6 +811,8 @@ export namespace WebKit {
      * Enum values used to denote the various policy errors.
      */
     class PolicyError extends GLib.Error {
+        static $gtype: GObject.GType<PolicyError>;
+
         // Static fields of WebKit.PolicyError
 
         /**
@@ -841,6 +853,8 @@ export namespace WebKit {
      * Enum values used to denote the various print errors.
      */
     class PrintError extends GLib.Error {
+        static $gtype: GObject.GType<PrintError>;
+
         // Static fields of WebKit.PrintError
 
         /**
@@ -922,6 +936,8 @@ export namespace WebKit {
      * Enum values used to denote errors happening when creating snapshots of #WebKitWebView
      */
     class SnapshotError extends GLib.Error {
+        static $gtype: GObject.GType<SnapshotError>;
+
         // Static fields of WebKit.SnapshotError
 
         /**
@@ -977,6 +993,8 @@ export namespace WebKit {
      * Errors that can occur while compiling content filters.
      */
     class UserContentFilterError extends GLib.Error {
+        static $gtype: GObject.GType<UserContentFilterError>;
+
         // Static fields of WebKit.UserContentFilterError
 
         /**
@@ -1022,6 +1040,8 @@ export namespace WebKit {
      * Enum values used to denote errors happening when sending user messages.
      */
     class UserMessageError extends GLib.Error {
+        static $gtype: GObject.GType<UserMessageError>;
+
         // Static fields of WebKit.UserMessageError
 
         /**
@@ -1559,6 +1579,8 @@ export namespace WebKit {
      * WebKitAuthenticationRequest object.
      */
     class AuthenticationRequest extends GObject.Object {
+        static $gtype: GObject.GType<AuthenticationRequest>;
+
         // Constructors of WebKit.AuthenticationRequest
 
         constructor(properties?: Partial<AuthenticationRequest.ConstructorProps>, ...args: any[]);
@@ -1710,6 +1732,8 @@ export namespace WebKit {
      * is emitted.
      */
     class AutomationSession extends GObject.Object {
+        static $gtype: GObject.GType<AutomationSession>;
+
         // Own properties of WebKit.AutomationSession
 
         /**
@@ -1790,6 +1814,8 @@ export namespace WebKit {
      * item or items.
      */
     class BackForwardList extends GObject.Object {
+        static $gtype: GObject.GType<BackForwardList>;
+
         // Constructors of WebKit.BackForwardList
 
         constructor(properties?: Partial<BackForwardList.ConstructorProps>, ...args: any[]);
@@ -1876,6 +1902,8 @@ export namespace WebKit {
      * out of a title and a URI.
      */
     class BackForwardListItem extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<BackForwardListItem>;
+
         // Constructors of WebKit.BackForwardListItem
 
         constructor(properties?: Partial<BackForwardListItem.ConstructorProps>, ...args: any[]);
@@ -1924,6 +1952,8 @@ export namespace WebKit {
      * it is denied by default.
      */
     class ClipboardPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<ClipboardPermissionRequest>;
+
         // Constructors of WebKit.ClipboardPermissionRequest
 
         constructor(properties?: Partial<ClipboardPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -2335,6 +2365,8 @@ export namespace WebKit {
      * a regular #GtkColorChooserDialog for the user to interact with.
      */
     class ColorChooserRequest extends GObject.Object {
+        static $gtype: GObject.GType<ColorChooserRequest>;
+
         // Own properties of WebKit.ColorChooserRequest
 
         /**
@@ -2416,6 +2448,8 @@ export namespace WebKit {
      * existing ones with webkit_context_menu_remove_all().
      */
     class ContextMenu extends GObject.Object {
+        static $gtype: GObject.GType<ContextMenu>;
+
         // Constructors of WebKit.ContextMenu
 
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
@@ -2551,6 +2585,8 @@ export namespace WebKit {
      * for the items. You can also create separators and submenus.
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<ContextMenuItem>;
+
         // Constructors of WebKit.ContextMenuItem
 
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
@@ -2626,6 +2662,8 @@ export namespace WebKit {
      * or to set the acceptance policy, with webkit_cookie_manager_get_accept_policy().
      */
     class CookieManager extends GObject.Object {
+        static $gtype: GObject.GType<CookieManager>;
+
         // Constructors of WebKit.CookieManager
 
         constructor(properties?: Partial<CookieManager.ConstructorProps>, ...args: any[]);
@@ -2811,6 +2849,8 @@ export namespace WebKit {
      * it is denied by default.
      */
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
+
         // Constructors of WebKit.DeviceInfoPermissionRequest
 
         constructor(properties?: Partial<DeviceInfoPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -3235,6 +3275,8 @@ export namespace WebKit {
      * and handle the download process itself.
      */
     class Download extends GObject.Object {
+        static $gtype: GObject.GType<Download>;
+
         // Own properties of WebKit.Download
 
         /**
@@ -3428,6 +3470,8 @@ export namespace WebKit {
      * of a #WebKitWebView.
      */
     class EditorState extends GObject.Object {
+        static $gtype: GObject.GType<EditorState>;
+
         // Own properties of WebKit.EditorState
 
         /**
@@ -3512,6 +3556,8 @@ export namespace WebKit {
      * the in-memory cache during the current execution.
      */
     class FaviconDatabase extends GObject.Object {
+        static $gtype: GObject.GType<FaviconDatabase>;
+
         // Constructors of WebKit.FaviconDatabase
 
         constructor(properties?: Partial<FaviconDatabase.ConstructorProps>, ...args: any[]);
@@ -3607,6 +3653,8 @@ export namespace WebKit {
      * a regular #GtkFileChooserDialog for the user to interact with.
      */
     class FileChooserRequest extends GObject.Object {
+        static $gtype: GObject.GType<FileChooserRequest>;
+
         // Own properties of WebKit.FileChooserRequest
 
         /**
@@ -3771,6 +3819,8 @@ export namespace WebKit {
      * #WebKitFindController::counted-matches<!-- -->.
      */
     class FindController extends GObject.Object {
+        static $gtype: GObject.GType<FindController>;
+
         // Own properties of WebKit.FindController
 
         /**
@@ -3941,6 +3991,8 @@ export namespace WebKit {
      * form with webkit_form_submission_request_submit().
      */
     class FormSubmissionRequest extends GObject.Object {
+        static $gtype: GObject.GType<FormSubmissionRequest>;
+
         // Constructors of WebKit.FormSubmissionRequest
 
         constructor(properties?: Partial<FormSubmissionRequest.ConstructorProps>, ...args: any[]);
@@ -3997,6 +4049,8 @@ export namespace WebKit {
      * will be emitted when location updates are no longer needed.
      */
     class GeolocationManager extends GObject.Object {
+        static $gtype: GObject.GType<GeolocationManager>;
+
         // Own properties of WebKit.GeolocationManager
 
         /**
@@ -4082,6 +4136,8 @@ export namespace WebKit {
      * does not match the name of a valid `.desktop` file.
      */
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<GeolocationPermissionRequest>;
+
         // Constructors of WebKit.GeolocationPermissionRequest
 
         constructor(properties?: Partial<GeolocationPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -4502,6 +4558,8 @@ export namespace WebKit {
      * signal is emitted with a #WebKitHitTestResult.
      */
     class HitTestResult extends GObject.Object {
+        static $gtype: GObject.GType<HitTestResult>;
+
         // Own properties of WebKit.HitTestResult
 
         /**
@@ -4682,6 +4740,8 @@ export namespace WebKit {
      * composition states as preedit text.
      */
     abstract class InputMethodContext extends GObject.Object {
+        static $gtype: GObject.GType<InputMethodContext>;
+
         // Own properties of WebKit.InputMethodContext
 
         /**
@@ -4895,6 +4955,8 @@ export namespace WebKit {
      * requested CDM, unless it is already present on the host system.
      */
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
+
         // Constructors of WebKit.MediaKeySystemPermissionRequest
 
         constructor(properties?: Partial<MediaKeySystemPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -5291,6 +5353,8 @@ export namespace WebKit {
      * the navigation was triggered by a mouse event.
      */
     class NavigationPolicyDecision extends PolicyDecision {
+        static $gtype: GObject.GType<NavigationPolicyDecision>;
+
         // Own properties of WebKit.NavigationPolicyDecision
 
         /**
@@ -5340,6 +5404,8 @@ export namespace WebKit {
      * Manages network configuration.
      */
     class NetworkSession extends GObject.Object {
+        static $gtype: GObject.GType<NetworkSession>;
+
         // Own properties of WebKit.NetworkSession
 
         /**
@@ -5545,6 +5611,8 @@ export namespace WebKit {
      * Holds information about a notification that should be shown to the user.
      */
     class Notification extends GObject.Object {
+        static $gtype: GObject.GType<Notification>;
+
         // Own properties of WebKit.Notification
 
         /**
@@ -5634,6 +5702,8 @@ export namespace WebKit {
      * it is denied by default.
      */
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<NotificationPermissionRequest>;
+
         // Constructors of WebKit.NotificationPermissionRequest
 
         constructor(properties?: Partial<NotificationPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -6033,6 +6103,8 @@ export namespace WebKit {
      * #WebKitOptionMenuItem<!-- -->s that should be displayed.
      */
     class OptionMenu extends GObject.Object {
+        static $gtype: GObject.GType<OptionMenu>;
+
         // Constructors of WebKit.OptionMenu
 
         constructor(properties?: Partial<OptionMenu.ConstructorProps>, ...args: any[]);
@@ -6117,6 +6189,8 @@ export namespace WebKit {
      * it is allowed by default.
      */
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<PointerLockPermissionRequest>;
+
         // Constructors of WebKit.PointerLockPermissionRequest
 
         constructor(properties?: Partial<PointerLockPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -6516,6 +6590,8 @@ export namespace WebKit {
      * the reference count of the #WebKitPolicyDecision object.
      */
     abstract class PolicyDecision extends GObject.Object {
+        static $gtype: GObject.GType<PolicyDecision>;
+
         // Constructors of WebKit.PolicyDecision
 
         constructor(properties?: Partial<PolicyDecision.ConstructorProps>, ...args: any[]);
@@ -6586,6 +6662,8 @@ export namespace WebKit {
      * display the print dialog with webkit_print_operation_run_dialog().
      */
     class PrintOperation extends GObject.Object {
+        static $gtype: GObject.GType<PrintOperation>;
+
         // Own properties of WebKit.PrintOperation
 
         /**
@@ -6726,6 +6804,8 @@ export namespace WebKit {
      * normally.
      */
     class ResponsePolicyDecision extends PolicyDecision {
+        static $gtype: GObject.GType<ResponsePolicyDecision>;
+
         // Own properties of WebKit.ResponsePolicyDecision
 
         /**
@@ -6794,6 +6874,8 @@ export namespace WebKit {
      * has it.
      */
     class SecurityManager extends GObject.Object {
+        static $gtype: GObject.GType<SecurityManager>;
+
         // Constructors of WebKit.SecurityManager
 
         constructor(properties?: Partial<SecurityManager.ConstructorProps>, ...args: any[]);
@@ -7033,6 +7115,8 @@ export namespace WebKit {
      * ```
      */
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of WebKit.Settings
 
         /**
@@ -8506,6 +8590,8 @@ export namespace WebKit {
      * existing request with the webkit_uri_request_get_uri() one.
      */
     class URIRequest extends GObject.Object {
+        static $gtype: GObject.GType<URIRequest>;
+
         // Own properties of WebKit.URIRequest
 
         /**
@@ -8572,6 +8658,8 @@ export namespace WebKit {
      * the suggested filename.
      */
     class URIResponse extends GObject.Object {
+        static $gtype: GObject.GType<URIResponse>;
+
         // Own properties of WebKit.URIResponse
 
         /**
@@ -8689,6 +8777,8 @@ export namespace WebKit {
      * webkit_uri_scheme_request_finish().
      */
     class URISchemeRequest extends GObject.Object {
+        static $gtype: GObject.GType<URISchemeRequest>;
+
         // Constructors of WebKit.URISchemeRequest
 
         constructor(properties?: Partial<URISchemeRequest.ConstructorProps>, ...args: any[]);
@@ -8776,6 +8866,8 @@ export namespace WebKit {
      * webkit_uri_request_finish_with_response() with it to return the response.
      */
     class URISchemeResponse extends GObject.Object {
+        static $gtype: GObject.GType<URISchemeResponse>;
+
         // Own properties of WebKit.URISchemeResponse
 
         /**
@@ -8849,6 +8941,8 @@ export namespace WebKit {
      * filter, and removed from the store with webkit_user_content_filter_store_remove().
      */
     class UserContentFilterStore extends GObject.Object {
+        static $gtype: GObject.GType<UserContentFilterStore>;
+
         // Own properties of WebKit.UserContentFilterStore
 
         /**
@@ -9029,6 +9123,8 @@ export namespace WebKit {
      * they will affect the web pages loaded afterwards.
      */
     class UserContentManager extends GObject.Object {
+        static $gtype: GObject.GType<UserContentManager>;
+
         // Constructors of WebKit.UserContentManager
 
         constructor(properties?: Partial<UserContentManager.ConstructorProps>, ...args: any[]);
@@ -9228,6 +9324,8 @@ export namespace WebKit {
      * it is denied by default.
      */
     class UserMediaPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<UserMediaPermissionRequest>;
+
         // Own properties of WebKit.UserMediaPermissionRequest
 
         /**
@@ -9648,6 +9746,8 @@ export namespace WebKit {
      * webkit_user_message_send_reply().
      */
     class UserMessage extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<UserMessage>;
+
         // Own properties of WebKit.UserMessage
 
         /**
@@ -9768,6 +9868,8 @@ export namespace WebKit {
      * not appropriate for Internet applications.
      */
     class WebContext extends GObject.Object {
+        static $gtype: GObject.GType<WebContext>;
+
         // Own properties of WebKit.WebContext
 
         /**
@@ -10139,6 +10241,8 @@ export namespace WebKit {
      * ```
      */
     class WebInspector extends GObject.Object {
+        static $gtype: GObject.GType<WebInspector>;
+
         // Own properties of WebKit.WebInspector
 
         /**
@@ -10301,6 +10405,8 @@ export namespace WebKit {
      * webkit_web_resource_get_data().
      */
     class WebResource extends GObject.Object {
+        static $gtype: GObject.GType<WebResource>;
+
         // Own properties of WebKit.WebResource
 
         /**
@@ -10586,6 +10692,8 @@ export namespace WebKit {
      * you don't need to embed it in a #GtkScrolledWindow.
      */
     class WebView extends WebViewBase implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<WebView>;
+
         // Own properties of WebKit.WebView
 
         /**
@@ -12367,6 +12475,8 @@ export namespace WebKit {
     }
 
     class WebViewBase extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<WebViewBase>;
+
         // Constructors of WebKit.WebViewBase
 
         constructor(properties?: Partial<WebViewBase.ConstructorProps>, ...args: any[]);
@@ -12982,6 +13092,8 @@ export namespace WebKit {
      * it is denied by default.
      */
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
+        static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
+
         // Constructors of WebKit.WebsiteDataAccessPermissionRequest
 
         constructor(properties?: Partial<WebsiteDataAccessPermissionRequest.ConstructorProps>, ...args: any[]);
@@ -13408,6 +13520,8 @@ export namespace WebKit {
      * period of time.
      */
     class WebsiteDataManager extends GObject.Object {
+        static $gtype: GObject.GType<WebsiteDataManager>;
+
         // Own properties of WebKit.WebsiteDataManager
 
         /**
@@ -13614,6 +13728,8 @@ export namespace WebKit {
      * currently only autoplay policies are supported.
      */
     class WebsitePolicies extends GObject.Object {
+        static $gtype: GObject.GType<WebsitePolicies>;
+
         // Own properties of WebKit.WebsitePolicies
 
         /**
@@ -13715,6 +13831,8 @@ export namespace WebKit {
      * ```
      */
     class WindowProperties extends GObject.Object {
+        static $gtype: GObject.GType<WindowProperties>;
+
         // Own properties of WebKit.WindowProperties
 
         /**
@@ -13823,6 +13941,8 @@ export namespace WebKit {
      * Information about an application running in automation mode.
      */
     abstract class ApplicationInfo {
+        static $gtype: GObject.GType<ApplicationInfo>;
+
         // Constructors of WebKit.ApplicationInfo
 
         constructor(properties?: Partial<{}>);
@@ -13896,6 +14016,8 @@ export namespace WebKit {
      * Groups information used for user authentication.
      */
     abstract class Credential {
+        static $gtype: GObject.GType<Credential>;
+
         // Constructors of WebKit.Credential
 
         constructor(username: string, password: string, persistence: CredentialPersistence);
@@ -13988,6 +14110,8 @@ export namespace WebKit {
      * application.
      */
     abstract class Feature {
+        static $gtype: GObject.GType<Feature>;
+
         // Constructors of WebKit.Feature
 
         _init(...args: any[]): void;
@@ -14084,6 +14208,8 @@ export namespace WebKit {
      * [func`Settings`.get_all_features].
      */
     abstract class FeatureList {
+        static $gtype: GObject.GType<FeatureList>;
+
         // Constructors of WebKit.FeatureList
 
         _init(...args: any[]): void;
@@ -14130,6 +14256,8 @@ export namespace WebKit {
      * #WebKitGeolocationManager using webkit_geolocation_manager_update_position().
      */
     abstract class GeolocationPosition {
+        static $gtype: GObject.GType<GeolocationPosition>;
+
         // Constructors of WebKit.GeolocationPosition
 
         constructor(latitude: number, longitude: number, accuracy: number);
@@ -14185,6 +14313,8 @@ export namespace WebKit {
      * Describes a first party origin.
      */
     abstract class ITPFirstParty {
+        static $gtype: GObject.GType<ITPFirstParty>;
+
         // Constructors of WebKit.ITPFirstParty
 
         _init(...args: any[]): void;
@@ -14233,6 +14363,8 @@ export namespace WebKit {
      * Describes a third party origin.
      */
     abstract class ITPThirdParty {
+        static $gtype: GObject.GType<ITPThirdParty>;
+
         // Constructors of WebKit.ITPThirdParty
 
         _init(...args: any[]): void;
@@ -14268,6 +14400,8 @@ export namespace WebKit {
 
     type InputMethodContextClass = typeof InputMethodContext;
     abstract class InputMethodContextPrivate {
+        static $gtype: GObject.GType<InputMethodContextPrivate>;
+
         // Constructors of WebKit.InputMethodContextPrivate
 
         _init(...args: any[]): void;
@@ -14277,6 +14411,8 @@ export namespace WebKit {
      * Range of text in an preedit string to be shown underlined.
      */
     abstract class InputMethodUnderline {
+        static $gtype: GObject.GType<InputMethodUnderline>;
+
         // Constructors of WebKit.InputMethodUnderline
 
         constructor(start_offset: number, end_offset: number);
@@ -14329,6 +14465,8 @@ export namespace WebKit {
      * #WebKitWebsiteDataManager.
      */
     abstract class MemoryPressureSettings {
+        static $gtype: GObject.GType<MemoryPressureSettings>;
+
         // Constructors of WebKit.MemoryPressureSettings
 
         constructor(properties?: Partial<{}>);
@@ -14427,6 +14565,8 @@ export namespace WebKit {
      * Provides details about interaction resulting in a resource load.
      */
     abstract class NavigationAction {
+        static $gtype: GObject.GType<NavigationAction>;
+
         // Constructors of WebKit.NavigationAction
 
         _init(...args: any[]): void;
@@ -14502,6 +14642,8 @@ export namespace WebKit {
      * with %WEBKIT_NETWORK_PROXY_MODE_CUSTOM and a WebKitNetworkProxySettings.
      */
     abstract class NetworkProxySettings {
+        static $gtype: GObject.GType<NetworkProxySettings>;
+
         // Constructors of WebKit.NetworkProxySettings
 
         constructor(default_proxy_uri?: string | null, ignore_hosts?: string[] | null);
@@ -14545,6 +14687,8 @@ export namespace WebKit {
      * own menus.
      */
     abstract class OptionMenuItem {
+        static $gtype: GObject.GType<OptionMenuItem>;
+
         // Constructors of WebKit.OptionMenuItem
 
         _init(...args: any[]): void;
@@ -14606,6 +14750,8 @@ export namespace WebKit {
      * `prompt` the user for the given permission.
      */
     abstract class PermissionStateQuery {
+        static $gtype: GObject.GType<PermissionStateQuery>;
+
         // Constructors of WebKit.PermissionStateQuery
 
         _init(...args: any[]): void;
@@ -14647,6 +14793,8 @@ export namespace WebKit {
     type PointerLockPermissionRequestClass = typeof PointerLockPermissionRequest;
     type PolicyDecisionClass = typeof PolicyDecision;
     abstract class PolicyDecisionPrivate {
+        static $gtype: GObject.GType<PolicyDecisionPrivate>;
+
         // Constructors of WebKit.PolicyDecisionPrivate
 
         _init(...args: any[]): void;
@@ -14658,6 +14806,8 @@ export namespace WebKit {
      * Carries details to be shown in user-facing dialogs.
      */
     abstract class ScriptDialog {
+        static $gtype: GObject.GType<ScriptDialog>;
+
         // Constructors of WebKit.ScriptDialog
 
         _init(...args: any[]): void;
@@ -14740,6 +14890,8 @@ export namespace WebKit {
      * undefined value with be sent.
      */
     abstract class ScriptMessageReply {
+        static $gtype: GObject.GType<ScriptMessageReply>;
+
         // Constructors of WebKit.ScriptMessageReply
 
         _init(...args: any[]): void;
@@ -14787,6 +14939,8 @@ export namespace WebKit {
      * should not be treated as equal.
      */
     abstract class SecurityOrigin {
+        static $gtype: GObject.GType<SecurityOrigin>;
+
         // Constructors of WebKit.SecurityOrigin
 
         constructor(protocol: string, host: string, port: number);
@@ -14857,6 +15011,8 @@ export namespace WebKit {
      * A compiled set of rules which applied to resource loads.
      */
     abstract class UserContentFilter {
+        static $gtype: GObject.GType<UserContentFilter>;
+
         // Constructors of WebKit.UserContentFilter
 
         _init(...args: any[]): void;
@@ -14896,6 +15052,8 @@ export namespace WebKit {
      * A JavaScript snippet which can be injected in loaded pages.
      */
     abstract class UserScript {
+        static $gtype: GObject.GType<UserScript>;
+
         // Constructors of WebKit.UserScript
 
         constructor(
@@ -14947,6 +15105,8 @@ export namespace WebKit {
      * A CSS style sheet which can be injected in loaded pages.
      */
     abstract class UserStyleSheet {
+        static $gtype: GObject.GType<UserStyleSheet>;
+
         // Constructors of WebKit.UserStyleSheet
 
         constructor(
@@ -14999,6 +15159,8 @@ export namespace WebKit {
     type WebResourceClass = typeof WebResource;
     type WebViewBaseClass = typeof WebViewBase;
     abstract class WebViewBasePrivate {
+        static $gtype: GObject.GType<WebViewBasePrivate>;
+
         // Constructors of WebKit.WebViewBasePrivate
 
         _init(...args: any[]): void;
@@ -15006,6 +15168,8 @@ export namespace WebKit {
 
     type WebViewClass = typeof WebView;
     abstract class WebViewPrivate {
+        static $gtype: GObject.GType<WebViewPrivate>;
+
         // Constructors of WebKit.WebViewPrivate
 
         _init(...args: any[]): void;
@@ -15015,6 +15179,8 @@ export namespace WebKit {
      * Handles serialization of a web view's browsing state.
      */
     abstract class WebViewSessionState {
+        static $gtype: GObject.GType<WebViewSessionState>;
+
         // Constructors of WebKit.WebViewSessionState
 
         constructor(data: GLib.Bytes);
@@ -15065,6 +15231,8 @@ export namespace WebKit {
      * for more information.
      */
     abstract class WebsiteData {
+        static $gtype: GObject.GType<WebsiteData>;
+
         // Constructors of WebKit.WebsiteData
 
         _init(...args: any[]): void;

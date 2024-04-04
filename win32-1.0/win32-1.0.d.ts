@@ -15,6 +15,8 @@ import type GObject from '@girs/gobject-2.0';
 
 export namespace win32 {
     class MSG {
+        static $gtype: GObject.GType<MSG>;
+
         // Constructors of win32.MSG
 
         _init(...args: any[]): void;

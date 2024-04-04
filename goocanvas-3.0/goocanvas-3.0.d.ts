@@ -575,6 +575,8 @@ export namespace GooCanvas {
      * </programlisting></informalexample>
      */
     class Canvas extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<Canvas>;
+
         // Own properties of GooCanvas.Canvas
 
         get anchor(): CanvasAnchorType;
@@ -1608,6 +1610,8 @@ export namespace GooCanvas {
     }
 
     class CanvasAccessibleFactory extends Atk.ObjectFactory {
+        static $gtype: GObject.GType<CanvasAccessibleFactory>;
+
         // Constructors of GooCanvas.CanvasAccessibleFactory
 
         constructor(properties?: Partial<CanvasAccessibleFactory.ConstructorProps>, ...args: any[]);
@@ -1654,6 +1658,8 @@ export namespace GooCanvas {
      * "height" properties.
      */
     class CanvasEllipse extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasEllipse>;
+
         // Own properties of GooCanvas.CanvasEllipse
 
         get center_x(): number;
@@ -2757,6 +2763,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasEllipseModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasEllipseModel>;
+
         // Own properties of GooCanvas.CanvasEllipseModel
 
         get center_x(): number;
@@ -3554,6 +3562,8 @@ export namespace GooCanvas {
      * properties, enabling different styles for horizontal and vertical grid lines.
      */
     class CanvasGrid extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasGrid>;
+
         // Own properties of GooCanvas.CanvasGrid
 
         set border_color(val: string);
@@ -4810,6 +4820,8 @@ export namespace GooCanvas {
      * for horizontal and vertical grid lines.
      */
     class CanvasGridModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasGridModel>;
+
         // Own properties of GooCanvas.CanvasGridModel
 
         set border_color(val: string);
@@ -5613,6 +5625,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasGroup extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasGroup>;
+
         // Own properties of GooCanvas.CanvasGroup
 
         get height(): number;
@@ -6694,6 +6708,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasGroupModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasGroupModel>;
+
         // Own properties of GooCanvas.CanvasGroupModel
 
         get height(): number;
@@ -7411,6 +7427,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasImage extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasImage>;
+
         // Own properties of GooCanvas.CanvasImage
 
         get alpha(): number;
@@ -8506,6 +8524,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasImageModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasImageModel>;
+
         // Own properties of GooCanvas.CanvasImageModel
 
         get alpha(): number;
@@ -9201,6 +9221,8 @@ export namespace GooCanvas {
     }
 
     class CanvasItemAccessibleFactory extends Atk.ObjectFactory {
+        static $gtype: GObject.GType<CanvasItemAccessibleFactory>;
+
         // Constructors of GooCanvas.CanvasItemAccessibleFactory
 
         constructor(properties?: Partial<CanvasItemAccessibleFactory.ConstructorProps>, ...args: any[]);
@@ -9276,6 +9298,8 @@ export namespace GooCanvas {
      * the default canvas item to view the item model.
      */
     class CanvasItemModelSimple extends GObject.Object implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasItemModelSimple>;
+
         // Own properties of GooCanvas.CanvasItemModelSimple
 
         get antialias(): CairoAntialias;
@@ -10104,6 +10128,8 @@ export namespace GooCanvas {
      * correctly.)
      */
     class CanvasItemSimple extends GObject.Object implements CanvasItem {
+        static $gtype: GObject.GType<CanvasItemSimple>;
+
         // Own properties of GooCanvas.CanvasItemSimple
 
         get antialias(): CairoAntialias;
@@ -11364,6 +11390,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasPath extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasPath>;
+
         // Own properties of GooCanvas.CanvasPath
 
         /**
@@ -12450,6 +12478,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasPathModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasPathModel>;
+
         // Own properties of GooCanvas.CanvasPathModel
 
         set data(val: string);
@@ -13173,6 +13203,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasPolyline extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasPolyline>;
+
         // Own properties of GooCanvas.CanvasPolyline
 
         get arrow_length(): number;
@@ -14288,6 +14320,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasPolylineModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasPolylineModel>;
+
         // Own properties of GooCanvas.CanvasPolylineModel
 
         get arrow_length(): number;
@@ -15041,6 +15075,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasRect extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasRect>;
+
         // Own properties of GooCanvas.CanvasRect
 
         get height(): number;
@@ -16175,6 +16211,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasRectModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasRectModel>;
+
         // Own properties of GooCanvas.CanvasRectModel
 
         get height(): number;
@@ -16919,6 +16957,8 @@ export namespace GooCanvas {
      * standard style properties to the given cairo_t.
      */
     class CanvasStyle extends GObject.Object {
+        static $gtype: GObject.GType<CanvasStyle>;
+
         // Own fields of GooCanvas.CanvasStyle
 
         properties: any[];
@@ -17037,6 +17077,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasTable extends CanvasGroup implements CanvasItem {
+        static $gtype: GObject.GType<CanvasTable>;
+
         // Own properties of GooCanvas.CanvasTable
 
         get column_spacing(): number;
@@ -17486,6 +17528,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasTableModel extends CanvasGroupModel implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasTableModel>;
+
         // Own properties of GooCanvas.CanvasTableModel
 
         get column_spacing(): number;
@@ -17926,6 +17970,8 @@ export namespace GooCanvas {
      * g_object_get() and g_object_set().
      */
     class CanvasText extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasText>;
+
         // Own properties of GooCanvas.CanvasText
 
         get alignment(): Pango.Alignment;
@@ -19032,6 +19078,8 @@ export namespace GooCanvas {
      * (See goo_canvas_get_item() and #GooCanvas::item-created.)
      */
     class CanvasTextModel extends CanvasItemModelSimple implements CanvasItemModel {
+        static $gtype: GObject.GType<CanvasTextModel>;
+
         // Own properties of GooCanvas.CanvasTextModel
 
         get alignment(): Pango.Alignment;
@@ -19765,6 +19813,8 @@ export namespace GooCanvas {
      * </para></listitem></itemizedlist>
      */
     class CanvasWidget extends CanvasItemSimple implements CanvasItem {
+        static $gtype: GObject.GType<CanvasWidget>;
+
         // Own properties of GooCanvas.CanvasWidget
 
         get anchor(): CanvasAnchorType;
@@ -20819,6 +20869,8 @@ export namespace GooCanvas {
     }
 
     class CanvasWidgetAccessibleFactory extends Atk.ObjectFactory {
+        static $gtype: GObject.GType<CanvasWidgetAccessibleFactory>;
+
         // Constructors of GooCanvas.CanvasWidgetAccessibleFactory
 
         constructor(properties?: Partial<CanvasWidgetAccessibleFactory.ConstructorProps>, ...args: any[]);
@@ -20830,6 +20882,8 @@ export namespace GooCanvas {
      * #GooCanvasBounds represents the bounding box of an item in the canvas.
      */
     class CanvasBounds {
+        static $gtype: GObject.GType<CanvasBounds>;
+
         // Own fields of GooCanvas.CanvasBounds
 
         x1: number;
@@ -20853,6 +20907,8 @@ export namespace GooCanvas {
     type CanvasClass = typeof Canvas;
     type CanvasEllipseClass = typeof CanvasEllipse;
     class CanvasEllipseData {
+        static $gtype: GObject.GType<CanvasEllipseData>;
+
         // Own fields of GooCanvas.CanvasEllipseData
 
         center_x: number;
@@ -20876,6 +20932,8 @@ export namespace GooCanvas {
     type CanvasEllipseModelClass = typeof CanvasEllipseModel;
     type CanvasGridClass = typeof CanvasGrid;
     class CanvasGridData {
+        static $gtype: GObject.GType<CanvasGridData>;
+
         // Own fields of GooCanvas.CanvasGridData
 
         x: number;
@@ -20903,6 +20961,8 @@ export namespace GooCanvas {
     type CanvasGroupModelClass = typeof CanvasGroupModel;
     type CanvasImageClass = typeof CanvasImage;
     class CanvasImageData {
+        static $gtype: GObject.GType<CanvasImageData>;
+
         // Own fields of GooCanvas.CanvasImageData
 
         x: number;
@@ -20924,6 +20984,8 @@ export namespace GooCanvas {
      * This is the data common to both the model and view classes.
      */
     class CanvasItemSimpleData {
+        static $gtype: GObject.GType<CanvasItemSimpleData>;
+
         // Own fields of GooCanvas.CanvasItemSimpleData
 
         style: CanvasStyle;
@@ -20946,6 +21008,8 @@ export namespace GooCanvas {
      * #GooCanvasLineDash specifies a dash pattern to be used when drawing items.
      */
     class CanvasLineDash {
+        static $gtype: GObject.GType<CanvasLineDash>;
+
         // Own fields of GooCanvas.CanvasLineDash
 
         ref_count: number;
@@ -20988,6 +21052,8 @@ export namespace GooCanvas {
 
     type CanvasPathClass = typeof CanvasPath;
     class CanvasPathData {
+        static $gtype: GObject.GType<CanvasPathData>;
+
         // Own fields of GooCanvas.CanvasPathData
 
         path_commands: any[];
@@ -21007,6 +21073,8 @@ export namespace GooCanvas {
      * #GooCairoPoints represents an array of points.
      */
     class CanvasPoints {
+        static $gtype: GObject.GType<CanvasPoints>;
+
         // Own fields of GooCanvas.CanvasPoints
 
         coords: number;
@@ -21053,6 +21121,8 @@ export namespace GooCanvas {
     }
 
     class CanvasPolylineArrowData {
+        static $gtype: GObject.GType<CanvasPolylineArrowData>;
+
         // Own fields of GooCanvas.CanvasPolylineArrowData
 
         arrow_width: number;
@@ -21081,6 +21151,8 @@ export namespace GooCanvas {
 
     type CanvasPolylineClass = typeof CanvasPolyline;
     class CanvasPolylineData {
+        static $gtype: GObject.GType<CanvasPolylineData>;
+
         // Own fields of GooCanvas.CanvasPolylineData
 
         coords: number;
@@ -21109,6 +21181,8 @@ export namespace GooCanvas {
     type CanvasPolylineModelClass = typeof CanvasPolylineModel;
     type CanvasRectClass = typeof CanvasRect;
     class CanvasRectData {
+        static $gtype: GObject.GType<CanvasRectData>;
+
         // Own fields of GooCanvas.CanvasRectData
 
         x: number;
@@ -21155,6 +21229,8 @@ export namespace GooCanvas {
      * #GooCanvasStyleProperty represents a property setting.
      */
     class CanvasStyleProperty {
+        static $gtype: GObject.GType<CanvasStyleProperty>;
+
         // Own fields of GooCanvas.CanvasStyleProperty
 
         id: GLib.Quark;
@@ -21166,6 +21242,8 @@ export namespace GooCanvas {
 
     type CanvasTableClass = typeof CanvasTable;
     class CanvasTableData {
+        static $gtype: GObject.GType<CanvasTableData>;
+
         // Own fields of GooCanvas.CanvasTableData
 
         width: number;
@@ -21180,6 +21258,8 @@ export namespace GooCanvas {
     }
 
     class CanvasTableDimension {
+        static $gtype: GObject.GType<CanvasTableDimension>;
+
         // Own fields of GooCanvas.CanvasTableDimension
 
         size: number;
@@ -21201,6 +21281,8 @@ export namespace GooCanvas {
     }
 
     abstract class CanvasTableLayoutData {
+        static $gtype: GObject.GType<CanvasTableLayoutData>;
+
         // Constructors of GooCanvas.CanvasTableLayoutData
 
         _init(...args: any[]): void;
@@ -21209,6 +21291,8 @@ export namespace GooCanvas {
     type CanvasTableModelClass = typeof CanvasTableModel;
     type CanvasTextClass = typeof CanvasText;
     class CanvasTextData {
+        static $gtype: GObject.GType<CanvasTextData>;
+
         // Own fields of GooCanvas.CanvasTextData
 
         text: string;
@@ -21249,6 +21333,8 @@ export namespace GooCanvas {
      * coordinates.
      */
     class CanvasPathCommand {
+        static $gtype: GObject.GType<CanvasPathCommand>;
+
         // Constructors of GooCanvas.CanvasPathCommand
 
         _init(...args: any[]): void;

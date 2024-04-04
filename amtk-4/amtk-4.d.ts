@@ -217,6 +217,8 @@ export namespace Amtk {
     }
 
     class ActionInfoCentralStore extends GObject.Object {
+        static $gtype: GObject.GType<ActionInfoCentralStore>;
+
         // Constructors of Amtk.ActionInfoCentralStore
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
@@ -239,6 +241,8 @@ export namespace Amtk {
     }
 
     class ActionInfoStore extends GObject.Object {
+        static $gtype: GObject.GType<ActionInfoStore>;
+
         // Constructors of Amtk.ActionInfoStore
 
         constructor(properties?: Partial<ActionInfoStore.ConstructorProps>, ...args: any[]);
@@ -292,6 +296,8 @@ export namespace Amtk {
     }
 
     class ApplicationWindow extends GObject.Object {
+        static $gtype: GObject.GType<ApplicationWindow>;
+
         // Own properties of Amtk.ApplicationWindow
 
         /**
@@ -391,6 +397,8 @@ export namespace Amtk {
     }
 
     class Factory extends GObject.Object {
+        static $gtype: GObject.GType<Factory>;
+
         // Own properties of Amtk.Factory
 
         /**
@@ -525,6 +533,8 @@ export namespace Amtk {
     }
 
     class MenuShell extends GObject.Object {
+        static $gtype: GObject.GType<MenuShell>;
+
         // Own properties of Amtk.MenuShell
 
         /**
@@ -577,6 +587,8 @@ export namespace Amtk {
     }
 
     class ActionInfo {
+        static $gtype: GObject.GType<ActionInfo>;
+
         // Constructors of Amtk.ActionInfo
 
         constructor(properties?: Partial<{}>);
@@ -649,6 +661,8 @@ export namespace Amtk {
 
     type ActionInfoCentralStoreClass = typeof ActionInfoCentralStore;
     abstract class ActionInfoCentralStorePrivate {
+        static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
+
         // Constructors of Amtk.ActionInfoCentralStorePrivate
 
         _init(...args: any[]): void;
@@ -663,6 +677,8 @@ export namespace Amtk {
      * may be added in the future.
      */
     class ActionInfoEntry {
+        static $gtype: GObject.GType<ActionInfoEntry>;
+
         // Own fields of Amtk.ActionInfoEntry
 
         action_name: string;
@@ -687,6 +703,8 @@ export namespace Amtk {
 
     type ActionInfoStoreClass = typeof ActionInfoStore;
     abstract class ActionInfoStorePrivate {
+        static $gtype: GObject.GType<ActionInfoStorePrivate>;
+
         // Constructors of Amtk.ActionInfoStorePrivate
 
         _init(...args: any[]): void;
@@ -694,6 +712,8 @@ export namespace Amtk {
 
     type ApplicationWindowClass = typeof ApplicationWindow;
     abstract class ApplicationWindowPrivate {
+        static $gtype: GObject.GType<ApplicationWindowPrivate>;
+
         // Constructors of Amtk.ApplicationWindowPrivate
 
         _init(...args: any[]): void;
@@ -701,6 +721,8 @@ export namespace Amtk {
 
     type FactoryClass = typeof Factory;
     abstract class FactoryPrivate {
+        static $gtype: GObject.GType<FactoryPrivate>;
+
         // Constructors of Amtk.FactoryPrivate
 
         _init(...args: any[]): void;
@@ -708,6 +730,8 @@ export namespace Amtk {
 
     type MenuShellClass = typeof MenuShell;
     abstract class MenuShellPrivate {
+        static $gtype: GObject.GType<MenuShellPrivate>;
+
         // Constructors of Amtk.MenuShellPrivate
 
         _init(...args: any[]): void;

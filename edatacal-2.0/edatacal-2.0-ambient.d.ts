@@ -1,7 +1,7 @@
 
 declare module 'gi://EDataCal?version=2.0' {
-    import EDataCal20 from '@girs/edatacal-2.0';
-    export default EDataCal20;
+    import EDataCal from '@girs/edatacal-2.0';
+    export default EDataCal;
 }
 
 declare module 'gi://EDataCal' {

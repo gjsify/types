@@ -259,6 +259,8 @@ export namespace Soup {
      * A #SoupSession error.
      */
     class SessionError extends GLib.Error {
+        static $gtype: GObject.GType<SessionError>;
+
         // Static fields of Soup.SessionError
 
         /**
@@ -554,6 +556,8 @@ export namespace Soup {
      * Error codes for %SOUP_TLD_ERROR.
      */
     class TLDError extends GLib.Error {
+        static $gtype: GObject.GType<TLDError>;
+
         // Static fields of Soup.TLDError
 
         /**
@@ -744,6 +748,8 @@ export namespace Soup {
      * WebSocket-related errors.
      */
     class WebsocketError extends GLib.Error {
+        static $gtype: GObject.GType<WebsocketError>;
+
         // Static fields of Soup.WebsocketError
 
         /**
@@ -1574,6 +1580,8 @@ export namespace Soup {
      * of web space. They are created automatically by [class`Session]`.
      */
     abstract class Auth extends GObject.Object {
+        static $gtype: GObject.GType<Auth>;
+
         // Own properties of Soup.Auth
 
         /**
@@ -1795,6 +1803,8 @@ export namespace Soup {
      * passing %SOUP_TYPE_AUTH_BASIC.
      */
     class AuthBasic extends Auth {
+        static $gtype: GObject.GType<AuthBasic>;
+
         // Constructors of Soup.AuthBasic
 
         constructor(properties?: Partial<AuthBasic.ConstructorProps>, ...args: any[]);
@@ -1816,6 +1826,8 @@ export namespace Soup {
      * passing %SOUP_TYPE_AUTH_DIGEST.
      */
     class AuthDigest extends Auth {
+        static $gtype: GObject.GType<AuthDigest>;
+
         // Constructors of Soup.AuthDigest
 
         constructor(properties?: Partial<AuthDigest.ConstructorProps>, ...args: any[]);
@@ -1859,6 +1871,8 @@ export namespace Soup {
      * authentication for those requests that don't need it.
      */
     abstract class AuthDomain extends GObject.Object {
+        static $gtype: GObject.GType<AuthDomain>;
+
         // Own properties of Soup.AuthDomain
 
         /**
@@ -2076,6 +2090,8 @@ export namespace Soup {
      * cleartext password) authentication.
      */
     class AuthDomainBasic extends AuthDomain {
+        static $gtype: GObject.GType<AuthDomainBasic>;
+
         // Own properties of Soup.AuthDomainBasic
 
         /**
@@ -2142,6 +2158,8 @@ export namespace Soup {
      * authentication.
      */
     class AuthDomainDigest extends AuthDomain {
+        static $gtype: GObject.GType<AuthDomainDigest>;
+
         // Own properties of Soup.AuthDomainDigest
 
         /**
@@ -2240,6 +2258,8 @@ export namespace Soup {
      * ("SoupAuthManager")` to get its [alias`GLib`.Type] in earlier releases.)
      */
     class AuthManager extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<AuthManager>;
+
         // Constructors of Soup.AuthManager
 
         constructor(properties?: Partial<AuthManager.ConstructorProps>, ...args: any[]);
@@ -2639,6 +2659,8 @@ export namespace Soup {
      * passing %SOUP_TYPE_AUTH_NTLM.
      */
     class AuthNTLM extends Auth {
+        static $gtype: GObject.GType<AuthNTLM>;
+
         // Constructors of Soup.AuthNTLM
 
         constructor(properties?: Partial<AuthNTLM.ConstructorProps>, ...args: any[]);
@@ -2665,6 +2687,8 @@ export namespace Soup {
      * was.
      */
     class AuthNegotiate extends Auth {
+        static $gtype: GObject.GType<AuthNegotiate>;
+
         // Constructors of Soup.AuthNegotiate
 
         constructor(properties?: Partial<AuthNegotiate.ConstructorProps>, ...args: any[]);
@@ -2698,6 +2722,8 @@ export namespace Soup {
      * File-based cache for HTTP resources.
      */
     class Cache extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<Cache>;
+
         // Own properties of Soup.Cache
 
         /**
@@ -3166,6 +3192,8 @@ export namespace Soup {
      * encoding types to support.)
      */
     class ContentDecoder extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<ContentDecoder>;
+
         // Constructors of Soup.ContentDecoder
 
         constructor(properties?: Partial<ContentDecoder.ConstructorProps>, ...args: any[]);
@@ -3546,6 +3574,8 @@ export namespace Soup {
      * [method`Session`.add_feature_by_type].
      */
     class ContentSniffer extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<ContentSniffer>;
+
         // Constructors of Soup.ContentSniffer
 
         constructor(properties?: Partial<ContentSniffer.ConstructorProps>, ...args: any[]);
@@ -3953,6 +3983,8 @@ export namespace Soup {
      * of long-term cookie persistence.
      */
     class CookieJar extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<CookieJar>;
+
         // Own properties of Soup.CookieJar
 
         /**
@@ -4540,6 +4572,8 @@ export namespace Soup {
      * renamed to avoid conflicting.)
      */
     class CookieJarDB extends CookieJar implements SessionFeature {
+        static $gtype: GObject.GType<CookieJarDB>;
+
         // Own properties of Soup.CookieJarDB
 
         /**
@@ -4930,6 +4964,8 @@ export namespace Soup {
      * them to a text file in format similar to Mozilla's "cookies.txt".
      */
     class CookieJarText extends CookieJar implements SessionFeature {
+        static $gtype: GObject.GType<CookieJarText>;
+
         // Own properties of Soup.CookieJarText
 
         /**
@@ -5342,6 +5378,8 @@ export namespace Soup {
      * enforcer.
      */
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<HSTSEnforcer>;
+
         // Constructors of Soup.HSTSEnforcer
 
         constructor(properties?: Partial<HSTSEnforcer.ConstructorProps>, ...args: any[]);
@@ -5797,6 +5835,8 @@ export namespace Soup {
      * database as a backend for persistency.
      */
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
+        static $gtype: GObject.GType<HSTSEnforcerDB>;
+
         // Own properties of Soup.HSTSEnforcerDB
 
         /**
@@ -6243,6 +6283,8 @@ export namespace Soup {
      * signal.
      */
     class Logger extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<Logger>;
+
         // Own properties of Soup.Logger
 
         /**
@@ -6803,6 +6845,8 @@ export namespace Soup {
      * response.
      */
     class Message extends GObject.Object {
+        static $gtype: GObject.GType<Message>;
+
         // Own properties of Soup.Message
 
         /**
@@ -7409,6 +7453,8 @@ export namespace Soup {
      * if you do.
      */
     class MultipartInputStream extends Gio.FilterInputStream implements Gio.PollableInputStream {
+        static $gtype: GObject.GType<MultipartInputStream>;
+
         // Own properties of Soup.MultipartInputStream
 
         /**
@@ -8167,6 +8213,8 @@ export namespace Soup {
      * [struct`GLib`.MainContext].
      */
     class Server extends GObject.Object {
+        static $gtype: GObject.GType<Server>;
+
         // Own properties of Soup.Server
 
         /**
@@ -8714,6 +8762,8 @@ export namespace Soup {
      * response.
      */
     class ServerMessage extends GObject.Object {
+        static $gtype: GObject.GType<ServerMessage>;
+
         // Own properties of Soup.ServerMessage
 
         /**
@@ -9039,6 +9089,8 @@ export namespace Soup {
      * context at the time of the function call.
      */
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of Soup.Session
 
         /**
@@ -9800,6 +9852,8 @@ export namespace Soup {
      * (#SoupWebsocketConnection currently only supports asynchronous I/O.)
      */
     class WebsocketConnection extends GObject.Object {
+        static $gtype: GObject.GType<WebsocketConnection>;
+
         // Own properties of Soup.WebsocketConnection
 
         /**
@@ -10059,6 +10113,8 @@ export namespace Soup {
      * #SoupWebsocketExtension is the base class for WebSocket extension objects.
      */
     abstract class WebsocketExtension extends GObject.Object {
+        static $gtype: GObject.GType<WebsocketExtension>;
+
         // Constructors of Soup.WebsocketExtension
 
         constructor(properties?: Partial<WebsocketExtension.ConstructorProps>, ...args: any[]);
@@ -10179,6 +10235,8 @@ export namespace Soup {
      * feature is present, and always used by [class`Server]`.
      */
     class WebsocketExtensionDeflate extends WebsocketExtension {
+        static $gtype: GObject.GType<WebsocketExtensionDeflate>;
+
         // Constructors of Soup.WebsocketExtensionDeflate
 
         constructor(properties?: Partial<WebsocketExtensionDeflate.ConstructorProps>, ...args: any[]);
@@ -10203,6 +10261,8 @@ export namespace Soup {
      * individual requests with [method`Message`.disable_feature].
      */
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<WebsocketExtensionManager>;
+
         // Constructors of Soup.WebsocketExtensionManager
 
         constructor(properties?: Partial<WebsocketExtensionManager.ConstructorProps>, ...args: any[]);
@@ -10601,6 +10661,8 @@ export namespace Soup {
      * cross-site scripting attacks.
      */
     abstract class Cookie {
+        static $gtype: GObject.GType<Cookie>;
+
         // Constructors of Soup.Cookie
 
         constructor(name: string, value: string, domain: string, path: string, max_age: number);
@@ -10816,6 +10878,8 @@ export namespace Soup {
      * must also be enforced on subdomains of `domain`.
      */
     abstract class HSTSPolicy {
+        static $gtype: GObject.GType<HSTSPolicy>;
+
         // Constructors of Soup.HSTSPolicy
 
         constructor(domain: string, max_age: number, include_subdomains: boolean);
@@ -10904,6 +10968,8 @@ export namespace Soup {
      * with a `\0` byte (which is not reflected in `length)`.
      */
     class MessageBody {
+        static $gtype: GObject.GType<MessageBody>;
+
         // Own fields of Soup.MessageBody
 
         data: Uint8Array;
@@ -11052,6 +11118,8 @@ export namespace Soup {
      * The HTTP message headers associated with a request or response.
      */
     abstract class MessageHeaders {
+        static $gtype: GObject.GType<MessageHeaders>;
+
         // Constructors of Soup.MessageHeaders
 
         constructor(type: MessageHeadersType);
@@ -11385,6 +11453,8 @@ export namespace Soup {
      * You may not modify the headers while iterating over them.
      */
     class MessageHeadersIter {
+        static $gtype: GObject.GType<MessageHeadersIter>;
+
         // Constructors of Soup.MessageHeadersIter
 
         constructor(properties?: Partial<{}>);
@@ -11429,6 +11499,8 @@ export namespace Soup {
      * final result of every value.
      */
     abstract class MessageMetrics {
+        static $gtype: GObject.GType<MessageMetrics>;
+
         // Constructors of Soup.MessageMetrics
 
         _init(...args: any[]): void;
@@ -11596,6 +11668,8 @@ export namespace Soup {
      * #SoupMultipart for handling real MIME multiparts.
      */
     abstract class Multipart {
+        static $gtype: GObject.GType<Multipart>;
+
         // Constructors of Soup.Multipart
 
         constructor(mime_type: string);
@@ -11680,6 +11754,8 @@ export namespace Soup {
      * (Eg, the last 500 bytes would be `start` = -500 and `end` = -1.)
      */
     class Range {
+        static $gtype: GObject.GType<Range>;
+
         // Own fields of Soup.Range
 
         start: number;

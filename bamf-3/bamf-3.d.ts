@@ -87,6 +87,8 @@ export namespace Bamf {
     }
 
     class Application extends View {
+        static $gtype: GObject.GType<Application>;
+
         // Constructors of Bamf.Application
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
@@ -154,6 +156,8 @@ export namespace Bamf {
     }
 
     class Control extends GObject.Object {
+        static $gtype: GObject.GType<Control>;
+
         // Constructors of Bamf.Control
 
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
@@ -201,6 +205,8 @@ export namespace Bamf {
     }
 
     class Matcher extends GObject.Object {
+        static $gtype: GObject.GType<Matcher>;
+
         // Constructors of Bamf.Matcher
 
         constructor(properties?: Partial<Matcher.ConstructorProps>, ...args: any[]);
@@ -335,6 +341,8 @@ export namespace Bamf {
     }
 
     class Tab extends View {
+        static $gtype: GObject.GType<Tab>;
+
         // Own properties of Bamf.Tab
 
         get desktop_id(): string;
@@ -451,6 +459,8 @@ export namespace Bamf {
     }
 
     class View extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of Bamf.View
 
         get active(): boolean;
@@ -627,6 +637,8 @@ export namespace Bamf {
     }
 
     class Window extends View {
+        static $gtype: GObject.GType<Window>;
+
         // Constructors of Bamf.Window
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
@@ -675,6 +687,8 @@ export namespace Bamf {
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Bamf.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -682,6 +696,8 @@ export namespace Bamf {
 
     type ControlClass = typeof Control;
     abstract class ControlPrivate {
+        static $gtype: GObject.GType<ControlPrivate>;
+
         // Constructors of Bamf.ControlPrivate
 
         _init(...args: any[]): void;
@@ -689,6 +705,8 @@ export namespace Bamf {
 
     type MatcherClass = typeof Matcher;
     abstract class MatcherPrivate {
+        static $gtype: GObject.GType<MatcherPrivate>;
+
         // Constructors of Bamf.MatcherPrivate
 
         _init(...args: any[]): void;
@@ -696,6 +714,8 @@ export namespace Bamf {
 
     type TabClass = typeof Tab;
     abstract class TabPrivate {
+        static $gtype: GObject.GType<TabPrivate>;
+
         // Constructors of Bamf.TabPrivate
 
         _init(...args: any[]): void;
@@ -703,6 +723,8 @@ export namespace Bamf {
 
     type ViewClass = typeof View;
     abstract class ViewPrivate {
+        static $gtype: GObject.GType<ViewPrivate>;
+
         // Constructors of Bamf.ViewPrivate
 
         _init(...args: any[]): void;
@@ -710,6 +732,8 @@ export namespace Bamf {
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of Bamf.WindowPrivate
 
         _init(...args: any[]): void;

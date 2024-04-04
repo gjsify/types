@@ -1,7 +1,7 @@
 
 declare module 'gi://Signon?version=2.0' {
-    import Signon20 from '@girs/signon-2.0';
-    export default Signon20;
+    import Signon from '@girs/signon-2.0';
+    export default Signon;
 }
 
 declare module 'gi://Signon' {

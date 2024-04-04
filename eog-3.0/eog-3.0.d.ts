@@ -27,6 +27,8 @@ import type Atk from '@girs/atk-1.0';
 
 export namespace Eog {
     class ImageError extends GLib.Error {
+        static $gtype: GObject.GType<ImageError>;
+
         // Static fields of Eog.ImageError
 
         static SAVE_NOT_LOCAL: number;
@@ -116,6 +118,8 @@ export namespace Eog {
         COLOR,
     }
     class UCError extends GLib.Error {
+        static $gtype: GObject.GType<UCError>;
+
         // Static fields of Eog.UCError
 
         static INVALID_UNICODE: number;
@@ -270,6 +274,8 @@ export namespace Eog {
     }
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
+        static $gtype: GObject.GType<Application>;
+
         // Own fields of Eog.Application
 
         base_instance: Gtk.Application;
@@ -698,6 +704,8 @@ export namespace Eog {
     }
 
     class ClipboardHandler extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<ClipboardHandler>;
+
         // Own properties of Eog.ClipboardHandler
 
         get pixbuf(): GdkPixbuf.Pixbuf;
@@ -726,6 +734,8 @@ export namespace Eog {
     }
 
     class DetailsDialog extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DetailsDialog>;
+
         // Own fields of Eog.DetailsDialog
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
@@ -1114,6 +1124,8 @@ export namespace Eog {
     }
 
     class FileChooser extends Gtk.FileChooserDialog implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser {
+        static $gtype: GObject.GType<FileChooser>;
+
         // Constructors of Eog.FileChooser
 
         constructor(properties?: Partial<FileChooser.ConstructorProps>, ...args: any[]);
@@ -2181,6 +2193,8 @@ export namespace Eog {
     }
 
     class Image extends GObject.Object {
+        static $gtype: GObject.GType<Image>;
+
         // Constructors of Eog.Image
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
@@ -2325,6 +2339,8 @@ export namespace Eog {
     }
 
     class ImageSaveInfo extends GObject.Object {
+        static $gtype: GObject.GType<ImageSaveInfo>;
+
         // Own fields of Eog.ImageSaveInfo
 
         file: Gio.File;
@@ -2370,6 +2386,8 @@ export namespace Eog {
     }
 
     abstract class Job extends GObject.Object {
+        static $gtype: GObject.GType<Job>;
+
         // Own fields of Eog.Job
 
         cancellable: Gio.Cancellable;
@@ -2429,6 +2447,8 @@ export namespace Eog {
     }
 
     class JobCopy extends Job {
+        static $gtype: GObject.GType<JobCopy>;
+
         // Own fields of Eog.JobCopy
 
         images: any[];
@@ -2451,6 +2471,8 @@ export namespace Eog {
     }
 
     class JobLoad extends Job {
+        static $gtype: GObject.GType<JobLoad>;
+
         // Own fields of Eog.JobLoad
 
         image: Image;
@@ -2472,6 +2494,8 @@ export namespace Eog {
     }
 
     class JobModel extends Job {
+        static $gtype: GObject.GType<JobModel>;
+
         // Own fields of Eog.JobModel
 
         store: ListStore;
@@ -2493,6 +2517,8 @@ export namespace Eog {
     }
 
     class JobSave extends Job {
+        static $gtype: GObject.GType<JobSave>;
+
         // Own fields of Eog.JobSave
 
         images: any[];
@@ -2515,6 +2541,8 @@ export namespace Eog {
     }
 
     class JobSaveAs extends JobSave {
+        static $gtype: GObject.GType<JobSaveAs>;
+
         // Own fields of Eog.JobSaveAs
 
         converter: URIConverter;
@@ -2539,6 +2567,8 @@ export namespace Eog {
     }
 
     class JobThumbnail extends Job {
+        static $gtype: GObject.GType<JobThumbnail>;
+
         // Own fields of Eog.JobThumbnail
 
         image: Image;
@@ -2560,6 +2590,8 @@ export namespace Eog {
     }
 
     class JobTransform extends Job {
+        static $gtype: GObject.GType<JobTransform>;
+
         // Own fields of Eog.JobTransform
 
         images: any[];
@@ -2596,6 +2628,8 @@ export namespace Eog {
         extends Gtk.ListStore
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
+        static $gtype: GObject.GType<ListStore>;
+
         // Constructors of Eog.ListStore
 
         constructor(properties?: Partial<ListStore.ConstructorProps>, ...args: any[]);
@@ -3857,6 +3891,8 @@ export namespace Eog {
     }
 
     class RemotePresenter extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<RemotePresenter>;
+
         // Own properties of Eog.RemotePresenter
 
         get next_action(): string;
@@ -4296,6 +4332,8 @@ export namespace Eog {
     }
 
     class ScrollView extends Gtk.Overlay implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<ScrollView>;
+
         // Own properties of Eog.ScrollView
 
         /**
@@ -4952,6 +4990,8 @@ export namespace Eog {
     }
 
     class Sidebar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Sidebar>;
+
         // Own properties of Eog.Sidebar
 
         get current_page(): Gtk.Widget;
@@ -5383,6 +5423,8 @@ export namespace Eog {
     }
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Statusbar>;
+
         // Constructors of Eog.Statusbar
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
@@ -5769,6 +5811,8 @@ export namespace Eog {
     }
 
     class ThumbNav extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<ThumbNav>;
+
         // Own properties of Eog.ThumbNav
 
         get mode(): number;
@@ -6208,6 +6252,8 @@ export namespace Eog {
         extends Gtk.IconView
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout, Gtk.Orientable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<ThumbView>;
+
         // Own fields of Eog.ThumbView
 
         icon_view: Gtk.IconView;
@@ -6905,6 +6951,8 @@ export namespace Eog {
     }
 
     class Transform extends GObject.Object {
+        static $gtype: GObject.GType<Transform>;
+
         // Constructors of Eog.Transform
 
         constructor(properties?: Partial<Transform.ConstructorProps>, ...args: any[]);
@@ -6957,6 +7005,8 @@ export namespace Eog {
     }
 
     class URIConverter extends GObject.Object {
+        static $gtype: GObject.GType<URIConverter>;
+
         // Own properties of Eog.URIConverter
 
         get convert_spaces(): boolean;
@@ -7034,6 +7084,8 @@ export namespace Eog {
         extends Gtk.ApplicationWindow
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Eog.Window
 
         /**
@@ -8092,6 +8144,8 @@ export namespace Eog {
     type ApplicationActivatableInterface = typeof ApplicationActivatable;
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Eog.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -8099,6 +8153,8 @@ export namespace Eog {
 
     type ClipboardHandlerClass = typeof ClipboardHandler;
     abstract class ClipboardHandlerPrivate {
+        static $gtype: GObject.GType<ClipboardHandlerPrivate>;
+
         // Constructors of Eog.ClipboardHandlerPrivate
 
         _init(...args: any[]): void;
@@ -8106,6 +8162,8 @@ export namespace Eog {
 
     type DetailsDialogClass = typeof DetailsDialog;
     abstract class DetailsDialogPrivate {
+        static $gtype: GObject.GType<DetailsDialogPrivate>;
+
         // Constructors of Eog.DetailsDialogPrivate
 
         _init(...args: any[]): void;
@@ -8113,6 +8171,8 @@ export namespace Eog {
 
     type FileChooserClass = typeof FileChooser;
     abstract class FileChooserPrivate {
+        static $gtype: GObject.GType<FileChooserPrivate>;
+
         // Constructors of Eog.FileChooserPrivate
 
         _init(...args: any[]): void;
@@ -8120,6 +8180,8 @@ export namespace Eog {
 
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
+        static $gtype: GObject.GType<ImagePrivate>;
+
         // Constructors of Eog.ImagePrivate
 
         _init(...args: any[]): void;
@@ -8136,6 +8198,8 @@ export namespace Eog {
     type JobTransformClass = typeof JobTransform;
     type ListStoreClass = typeof ListStore;
     abstract class ListStorePrivate {
+        static $gtype: GObject.GType<ListStorePrivate>;
+
         // Constructors of Eog.ListStorePrivate
 
         _init(...args: any[]): void;
@@ -8143,6 +8207,8 @@ export namespace Eog {
 
     type RemotePresenterClass = typeof RemotePresenter;
     abstract class RemotePresenterPrivate {
+        static $gtype: GObject.GType<RemotePresenterPrivate>;
+
         // Constructors of Eog.RemotePresenterPrivate
 
         _init(...args: any[]): void;
@@ -8150,6 +8216,8 @@ export namespace Eog {
 
     type ScrollViewClass = typeof ScrollView;
     abstract class ScrollViewPrivate {
+        static $gtype: GObject.GType<ScrollViewPrivate>;
+
         // Constructors of Eog.ScrollViewPrivate
 
         _init(...args: any[]): void;
@@ -8157,6 +8225,8 @@ export namespace Eog {
 
     type SidebarClass = typeof Sidebar;
     abstract class SidebarPrivate {
+        static $gtype: GObject.GType<SidebarPrivate>;
+
         // Constructors of Eog.SidebarPrivate
 
         _init(...args: any[]): void;
@@ -8164,6 +8234,8 @@ export namespace Eog {
 
     type StatusbarClass = typeof Statusbar;
     abstract class StatusbarPrivate {
+        static $gtype: GObject.GType<StatusbarPrivate>;
+
         // Constructors of Eog.StatusbarPrivate
 
         _init(...args: any[]): void;
@@ -8171,6 +8243,8 @@ export namespace Eog {
 
     type ThumbNavClass = typeof ThumbNav;
     abstract class ThumbNavPrivate {
+        static $gtype: GObject.GType<ThumbNavPrivate>;
+
         // Constructors of Eog.ThumbNavPrivate
 
         _init(...args: any[]): void;
@@ -8178,6 +8252,8 @@ export namespace Eog {
 
     type ThumbViewClass = typeof ThumbView;
     abstract class ThumbViewPrivate {
+        static $gtype: GObject.GType<ThumbViewPrivate>;
+
         // Constructors of Eog.ThumbViewPrivate
 
         _init(...args: any[]): void;
@@ -8185,12 +8261,16 @@ export namespace Eog {
 
     type TransformClass = typeof Transform;
     abstract class TransformPrivate {
+        static $gtype: GObject.GType<TransformPrivate>;
+
         // Constructors of Eog.TransformPrivate
 
         _init(...args: any[]): void;
     }
 
     class UCInfo {
+        static $gtype: GObject.GType<UCInfo>;
+
         // Own fields of Eog.UCInfo
 
         description: string;
@@ -8211,6 +8291,8 @@ export namespace Eog {
 
     type URIConverterClass = typeof URIConverter;
     abstract class URIConverterPrivate {
+        static $gtype: GObject.GType<URIConverterPrivate>;
+
         // Constructors of Eog.URIConverterPrivate
 
         _init(...args: any[]): void;
@@ -8219,6 +8301,8 @@ export namespace Eog {
     type WindowActivatableInterface = typeof WindowActivatable;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of Eog.WindowPrivate
 
         _init(...args: any[]): void;

@@ -52,6 +52,8 @@ export namespace ColordGtk {
     }
 
     class SampleWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SampleWidget>;
+
         // Own properties of ColordGtk.SampleWidget
 
         get color(): Colord.ColorRGB;
@@ -440,6 +442,8 @@ export namespace ColordGtk {
     }
 
     class SampleWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SampleWindow>;
+
         // Constructors of ColordGtk.SampleWindow
 
         constructor(properties?: Partial<SampleWindow.ConstructorProps>, ...args: any[]);
@@ -833,6 +837,8 @@ export namespace ColordGtk {
     }
 
     class Window extends GObject.Object {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of ColordGtk.Window
 
         get Profile(): string;
@@ -908,6 +914,8 @@ export namespace ColordGtk {
 
     type SampleWidgetClass = typeof SampleWidget;
     abstract class SampleWidgetPrivate {
+        static $gtype: GObject.GType<SampleWidgetPrivate>;
+
         // Constructors of ColordGtk.SampleWidgetPrivate
 
         _init(...args: any[]): void;
@@ -918,6 +926,8 @@ export namespace ColordGtk {
      * Private #CdSampleWindow data
      */
     abstract class SampleWindowPrivate {
+        static $gtype: GObject.GType<SampleWindowPrivate>;
+
         // Constructors of ColordGtk.SampleWindowPrivate
 
         _init(...args: any[]): void;
@@ -928,6 +938,8 @@ export namespace ColordGtk {
      * Private #CdWindow data
      */
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of ColordGtk.WindowPrivate
 
         _init(...args: any[]): void;

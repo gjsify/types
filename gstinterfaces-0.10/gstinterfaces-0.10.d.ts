@@ -384,6 +384,8 @@ export namespace GstInterfaces {
     }
 
     class ColorBalanceChannel extends GObject.Object {
+        static $gtype: GObject.GType<ColorBalanceChannel>;
+
         // Own fields of GstInterfaces.ColorBalanceChannel
 
         label: string;
@@ -413,6 +415,8 @@ export namespace GstInterfaces {
     }
 
     class MixerOptions extends MixerTrack {
+        static $gtype: GObject.GType<MixerOptions>;
+
         // Own fields of GstInterfaces.MixerOptions
 
         values: any[];
@@ -443,6 +447,8 @@ export namespace GstInterfaces {
     }
 
     class MixerTrack extends GObject.Object {
+        static $gtype: GObject.GType<MixerTrack>;
+
         // Own properties of GstInterfaces.MixerTrack
 
         get flags(): number;
@@ -481,6 +487,8 @@ export namespace GstInterfaces {
     }
 
     class TunerChannel extends GObject.Object {
+        static $gtype: GObject.GType<TunerChannel>;
+
         // Own fields of GstInterfaces.TunerChannel
 
         label: string;
@@ -517,6 +525,8 @@ export namespace GstInterfaces {
     }
 
     class TunerNorm extends GObject.Object {
+        static $gtype: GObject.GType<TunerNorm>;
+
         // Own fields of GstInterfaces.TunerNorm
 
         label: string;
@@ -530,6 +540,8 @@ export namespace GstInterfaces {
 
     type ColorBalanceChannelClass = typeof ColorBalanceChannel;
     class ColorBalanceClass {
+        static $gtype: GObject.GType<ColorBalanceClass>;
+
         // Own fields of GstInterfaces.ColorBalanceClass
 
         balance_type: ColorBalanceType;
@@ -540,6 +552,8 @@ export namespace GstInterfaces {
     }
 
     class MixerClass {
+        static $gtype: GObject.GType<MixerClass>;
+
         // Own fields of GstInterfaces.MixerClass
 
         mixer_type: MixerType;
@@ -556,6 +570,8 @@ export namespace GstInterfaces {
     type StreamVolumeInterface = typeof StreamVolume;
     type TunerChannelClass = typeof TunerChannel;
     class TunerClass {
+        static $gtype: GObject.GType<TunerClass>;
+
         // Constructors of GstInterfaces.TunerClass
 
         _init(...args: any[]): void;
@@ -567,6 +583,8 @@ export namespace GstInterfaces {
      * #GstXOverlay interface
      */
     class XOverlayClass {
+        static $gtype: GObject.GType<XOverlayClass>;
+
         // Constructors of GstInterfaces.XOverlayClass
 
         _init(...args: any[]): void;

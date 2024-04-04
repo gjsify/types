@@ -76,6 +76,8 @@ export namespace NetworkManager {
      * Describes errors that may result from operations involving a #NMConnection.
      */
     class ConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<ConnectionError>;
+
         // Static fields of NetworkManager.ConnectionError
 
         /**
@@ -616,6 +618,8 @@ export namespace NetworkManager {
         PATH,
     }
     class Setting8021xError extends GLib.Error {
+        static $gtype: GObject.GType<Setting8021xError>;
+
         // Static fields of NetworkManager.Setting8021xError
 
         /**
@@ -646,6 +650,8 @@ export namespace NetworkManager {
     }
 
     class SettingAdslError extends GLib.Error {
+        static $gtype: GObject.GType<SettingAdslError>;
+
         // Static fields of NetworkManager.SettingAdslError
 
         /**
@@ -676,6 +682,8 @@ export namespace NetworkManager {
     }
 
     class SettingBluetoothError extends GLib.Error {
+        static $gtype: GObject.GType<SettingBluetoothError>;
+
         // Static fields of NetworkManager.SettingBluetoothError
 
         /**
@@ -712,6 +720,8 @@ export namespace NetworkManager {
     }
 
     class SettingBondError extends GLib.Error {
+        static $gtype: GObject.GType<SettingBondError>;
+
         // Static fields of NetworkManager.SettingBondError
 
         /**
@@ -750,6 +760,8 @@ export namespace NetworkManager {
     }
 
     class SettingBridgeError extends GLib.Error {
+        static $gtype: GObject.GType<SettingBridgeError>;
+
         // Static fields of NetworkManager.SettingBridgeError
 
         /**
@@ -780,6 +792,8 @@ export namespace NetworkManager {
     }
 
     class SettingBridgePortError extends GLib.Error {
+        static $gtype: GObject.GType<SettingBridgePortError>;
+
         // Static fields of NetworkManager.SettingBridgePortError
 
         /**
@@ -810,6 +824,8 @@ export namespace NetworkManager {
     }
 
     class SettingCdmaError extends GLib.Error {
+        static $gtype: GObject.GType<SettingCdmaError>;
+
         // Static fields of NetworkManager.SettingCdmaError
 
         /**
@@ -905,6 +921,8 @@ export namespace NetworkManager {
      * #NMSettingConnection.
      */
     class SettingConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<SettingConnectionError>;
+
         // Static fields of NetworkManager.SettingConnectionError
 
         /**
@@ -947,6 +965,8 @@ export namespace NetworkManager {
     }
 
     class SettingDcbError extends GLib.Error {
+        static $gtype: GObject.GType<SettingDcbError>;
+
         // Static fields of NetworkManager.SettingDcbError
 
         /**
@@ -1029,6 +1049,8 @@ export namespace NetworkManager {
      * Describes errors that may result from operations involving a #NMSetting.
      */
     class SettingError extends GLib.Error {
+        static $gtype: GObject.GType<SettingError>;
+
         // Static fields of NetworkManager.SettingError
 
         /**
@@ -1066,6 +1088,8 @@ export namespace NetworkManager {
     }
 
     class SettingGenericError extends GLib.Error {
+        static $gtype: GObject.GType<SettingGenericError>;
+
         // Static fields of NetworkManager.SettingGenericError
 
         /**
@@ -1096,6 +1120,8 @@ export namespace NetworkManager {
     }
 
     class SettingGsmError extends GLib.Error {
+        static $gtype: GObject.GType<SettingGsmError>;
+
         // Static fields of NetworkManager.SettingGsmError
 
         /**
@@ -1255,6 +1281,8 @@ export namespace NetworkManager {
         ONLY_SECRETS,
     }
     class SettingIP4ConfigError extends GLib.Error {
+        static $gtype: GObject.GType<SettingIP4ConfigError>;
+
         // Static fields of NetworkManager.SettingIP4ConfigError
 
         /**
@@ -1290,6 +1318,8 @@ export namespace NetworkManager {
     }
 
     class SettingIP6ConfigError extends GLib.Error {
+        static $gtype: GObject.GType<SettingIP6ConfigError>;
+
         // Static fields of NetworkManager.SettingIP6ConfigError
 
         /**
@@ -1349,6 +1379,8 @@ export namespace NetworkManager {
         PREFER_TEMP_ADDR,
     }
     class SettingInfinibandError extends GLib.Error {
+        static $gtype: GObject.GType<SettingInfinibandError>;
+
         // Static fields of NetworkManager.SettingInfinibandError
 
         /**
@@ -1379,6 +1411,8 @@ export namespace NetworkManager {
     }
 
     class SettingOlpcMeshError extends GLib.Error {
+        static $gtype: GObject.GType<SettingOlpcMeshError>;
+
         // Static fields of NetworkManager.SettingOlpcMeshError
 
         /**
@@ -1406,6 +1440,8 @@ export namespace NetworkManager {
     }
 
     class SettingPPPError extends GLib.Error {
+        static $gtype: GObject.GType<SettingPPPError>;
+
         // Static fields of NetworkManager.SettingPPPError
 
         /**
@@ -1441,6 +1477,8 @@ export namespace NetworkManager {
     }
 
     class SettingPPPOEError extends GLib.Error {
+        static $gtype: GObject.GType<SettingPPPOEError>;
+
         // Static fields of NetworkManager.SettingPPPOEError
 
         /**
@@ -1506,6 +1544,8 @@ export namespace NetworkManager {
         NOT_REQUIRED,
     }
     class SettingSerialError extends GLib.Error {
+        static $gtype: GObject.GType<SettingSerialError>;
+
         // Static fields of NetworkManager.SettingSerialError
 
         /**
@@ -1541,6 +1581,8 @@ export namespace NetworkManager {
     }
 
     class SettingTeamError extends GLib.Error {
+        static $gtype: GObject.GType<SettingTeamError>;
+
         // Static fields of NetworkManager.SettingTeamError
 
         /**
@@ -1571,6 +1613,8 @@ export namespace NetworkManager {
     }
 
     class SettingTeamPortError extends GLib.Error {
+        static $gtype: GObject.GType<SettingTeamPortError>;
+
         // Static fields of NetworkManager.SettingTeamPortError
 
         /**
@@ -1601,6 +1645,8 @@ export namespace NetworkManager {
     }
 
     class SettingVlanError extends GLib.Error {
+        static $gtype: GObject.GType<SettingVlanError>;
+
         // Static fields of NetworkManager.SettingVlanError
 
         /**
@@ -1636,6 +1682,8 @@ export namespace NetworkManager {
     }
 
     class SettingVpnError extends GLib.Error {
+        static $gtype: GObject.GType<SettingVpnError>;
+
         // Static fields of NetworkManager.SettingVpnError
 
         /**
@@ -1666,6 +1714,8 @@ export namespace NetworkManager {
     }
 
     class SettingWimaxError extends GLib.Error {
+        static $gtype: GObject.GType<SettingWimaxError>;
+
         // Static fields of NetworkManager.SettingWimaxError
 
         /**
@@ -1696,6 +1746,8 @@ export namespace NetworkManager {
     }
 
     class SettingWiredError extends GLib.Error {
+        static $gtype: GObject.GType<SettingWiredError>;
+
         // Static fields of NetworkManager.SettingWiredError
 
         /**
@@ -1726,6 +1778,8 @@ export namespace NetworkManager {
     }
 
     class SettingWirelessError extends GLib.Error {
+        static $gtype: GObject.GType<SettingWirelessError>;
+
         // Static fields of NetworkManager.SettingWirelessError
 
         /**
@@ -1766,6 +1820,8 @@ export namespace NetworkManager {
     }
 
     class SettingWirelessSecurityError extends GLib.Error {
+        static $gtype: GObject.GType<SettingWirelessSecurityError>;
+
         // Static fields of NetworkManager.SettingWirelessSecurityError
 
         /**
@@ -3372,6 +3428,8 @@ export namespace NetworkManager {
      * It should only be accessed through the functions described below.
      */
     class Connection extends GObject.Object {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of NetworkManager.Connection
 
         /**
@@ -3778,6 +3836,8 @@ export namespace NetworkManager {
      * It should only be accessed through the functions described below.
      */
     abstract class Setting extends GObject.Object {
+        static $gtype: GObject.GType<Setting>;
+
         // Own properties of NetworkManager.Setting
 
         /**
@@ -3983,6 +4043,8 @@ export namespace NetworkManager {
     }
 
     class Setting8021x extends Setting {
+        static $gtype: GObject.GType<Setting8021x>;
+
         // Own properties of NetworkManager.Setting8021x
 
         /**
@@ -4775,6 +4837,8 @@ export namespace NetworkManager {
     }
 
     class SettingAdsl extends Setting {
+        static $gtype: GObject.GType<SettingAdsl>;
+
         // Own properties of NetworkManager.SettingAdsl
 
         /**
@@ -4846,6 +4910,8 @@ export namespace NetworkManager {
     }
 
     class SettingBluetooth extends Setting {
+        static $gtype: GObject.GType<SettingBluetooth>;
+
         // Own properties of NetworkManager.SettingBluetooth
 
         /**
@@ -4889,6 +4955,8 @@ export namespace NetworkManager {
     }
 
     class SettingBond extends Setting {
+        static $gtype: GObject.GType<SettingBond>;
+
         // Own properties of NetworkManager.SettingBond
 
         /**
@@ -4995,6 +5063,8 @@ export namespace NetworkManager {
     }
 
     class SettingBridge extends Setting {
+        static $gtype: GObject.GType<SettingBridge>;
+
         // Own properties of NetworkManager.SettingBridge
 
         /**
@@ -5093,6 +5163,8 @@ export namespace NetworkManager {
     }
 
     class SettingBridgePort extends Setting {
+        static $gtype: GObject.GType<SettingBridgePort>;
+
         // Own properties of NetworkManager.SettingBridgePort
 
         /**
@@ -5153,6 +5225,8 @@ export namespace NetworkManager {
     }
 
     class SettingCdma extends Setting {
+        static $gtype: GObject.GType<SettingCdma>;
+
         // Own properties of NetworkManager.SettingCdma
 
         /**
@@ -5230,6 +5304,8 @@ export namespace NetworkManager {
      * It should only be accessed through the functions described below.
      */
     class SettingConnection extends Setting {
+        static $gtype: GObject.GType<SettingConnection>;
+
         // Own properties of NetworkManager.SettingConnection
 
         /**
@@ -5522,6 +5598,8 @@ export namespace NetworkManager {
     }
 
     class SettingDcb extends Setting {
+        static $gtype: GObject.GType<SettingDcb>;
+
         // Own properties of NetworkManager.SettingDcb
 
         /**
@@ -5719,6 +5797,8 @@ export namespace NetworkManager {
     }
 
     class SettingGeneric extends Setting {
+        static $gtype: GObject.GType<SettingGeneric>;
+
         // Constructors of NetworkManager.SettingGeneric
 
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
@@ -5753,6 +5833,8 @@ export namespace NetworkManager {
     }
 
     class SettingGsm extends Setting {
+        static $gtype: GObject.GType<SettingGsm>;
+
         // Own properties of NetworkManager.SettingGsm
 
         /**
@@ -5936,6 +6018,8 @@ export namespace NetworkManager {
     }
 
     class SettingIP4Config extends Setting {
+        static $gtype: GObject.GType<SettingIP4Config>;
+
         // Own properties of NetworkManager.SettingIP4Config
 
         /**
@@ -6281,6 +6365,8 @@ export namespace NetworkManager {
     }
 
     class SettingIP6Config extends Setting {
+        static $gtype: GObject.GType<SettingIP6Config>;
+
         // Own properties of NetworkManager.SettingIP6Config
 
         /**
@@ -6585,6 +6671,8 @@ export namespace NetworkManager {
     }
 
     class SettingInfiniband extends Setting {
+        static $gtype: GObject.GType<SettingInfiniband>;
+
         // Own properties of NetworkManager.SettingInfiniband
 
         /**
@@ -6671,6 +6759,8 @@ export namespace NetworkManager {
     }
 
     class SettingOlpcMesh extends Setting {
+        static $gtype: GObject.GType<SettingOlpcMesh>;
+
         // Own properties of NetworkManager.SettingOlpcMesh
 
         /**
@@ -6731,6 +6821,8 @@ export namespace NetworkManager {
     }
 
     class SettingPPP extends Setting {
+        static $gtype: GObject.GType<SettingPPP>;
+
         // Own properties of NetworkManager.SettingPPP
 
         /**
@@ -6955,6 +7047,8 @@ export namespace NetworkManager {
     }
 
     class SettingPPPOE extends Setting {
+        static $gtype: GObject.GType<SettingPPPOE>;
+
         // Own properties of NetworkManager.SettingPPPOE
 
         /**
@@ -7016,6 +7110,8 @@ export namespace NetworkManager {
     }
 
     class SettingSerial extends Setting {
+        static $gtype: GObject.GType<SettingSerial>;
+
         // Own properties of NetworkManager.SettingSerial
 
         /**
@@ -7081,6 +7177,8 @@ export namespace NetworkManager {
     }
 
     class SettingTeam extends Setting {
+        static $gtype: GObject.GType<SettingTeam>;
+
         // Own properties of NetworkManager.SettingTeam
 
         /**
@@ -7125,6 +7223,8 @@ export namespace NetworkManager {
     }
 
     class SettingTeamPort extends Setting {
+        static $gtype: GObject.GType<SettingTeamPort>;
+
         // Own properties of NetworkManager.SettingTeamPort
 
         /**
@@ -7162,6 +7262,8 @@ export namespace NetworkManager {
     }
 
     class SettingVPN extends Setting {
+        static $gtype: GObject.GType<SettingVPN>;
+
         // Own properties of NetworkManager.SettingVPN
 
         /**
@@ -7306,6 +7408,8 @@ export namespace NetworkManager {
     }
 
     class SettingVlan extends Setting {
+        static $gtype: GObject.GType<SettingVlan>;
+
         // Own properties of NetworkManager.SettingVlan
 
         /**
@@ -7452,6 +7556,8 @@ export namespace NetworkManager {
     }
 
     class SettingWimax extends Setting {
+        static $gtype: GObject.GType<SettingWimax>;
+
         // Own properties of NetworkManager.SettingWimax
 
         /**
@@ -7507,6 +7613,8 @@ export namespace NetworkManager {
     }
 
     class SettingWired extends Setting {
+        static $gtype: GObject.GType<SettingWired>;
+
         // Own properties of NetworkManager.SettingWired
 
         /**
@@ -7682,6 +7790,8 @@ export namespace NetworkManager {
     }
 
     class SettingWireless extends Setting {
+        static $gtype: GObject.GType<SettingWireless>;
+
         // Own properties of NetworkManager.SettingWireless
 
         /**
@@ -7878,6 +7988,8 @@ export namespace NetworkManager {
     }
 
     class SettingWirelessSecurity extends Setting {
+        static $gtype: GObject.GType<SettingWirelessSecurity>;
+
         // Own properties of NetworkManager.SettingWirelessSecurity
 
         /**
@@ -8201,6 +8313,8 @@ export namespace NetworkManager {
 
     type ConnectionClass = typeof Connection;
     class IP4Address {
+        static $gtype: GObject.GType<IP4Address>;
+
         // Constructors of NetworkManager.IP4Address
 
         constructor(properties?: Partial<{}>);
@@ -8264,6 +8378,8 @@ export namespace NetworkManager {
     }
 
     class IP4Route {
+        static $gtype: GObject.GType<IP4Route>;
+
         // Constructors of NetworkManager.IP4Route
 
         constructor(properties?: Partial<{}>);
@@ -8338,6 +8454,8 @@ export namespace NetworkManager {
     }
 
     class IP6Address {
+        static $gtype: GObject.GType<IP6Address>;
+
         // Constructors of NetworkManager.IP6Address
 
         constructor(properties?: Partial<{}>);
@@ -8400,6 +8518,8 @@ export namespace NetworkManager {
     }
 
     class IP6Route {
+        static $gtype: GObject.GType<IP6Route>;
+
         // Constructors of NetworkManager.IP6Route
 
         constructor(properties?: Partial<{}>);

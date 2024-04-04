@@ -57,6 +57,8 @@ export namespace PolkitAgent {
      * polkit_agent_listener_register_with_options().
      */
     abstract class Listener extends GObject.Object {
+        static $gtype: GObject.GType<Listener>;
+
         // Constructors of PolkitAgent.Listener
 
         constructor(properties?: Partial<Listener.ConstructorProps>, ...args: any[]);
@@ -263,6 +265,8 @@ export namespace PolkitAgent {
      * be emitted with the `gained_authorization` paramter set to %FALSE.
      */
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of PolkitAgent.Session
 
         /**
@@ -336,6 +340,8 @@ export namespace PolkitAgent {
      * that interacts with the user using a textual interface.
      */
     class TextListener extends Listener implements Gio.Initable {
+        static $gtype: GObject.GType<TextListener>;
+
         // Constructors of PolkitAgent.TextListener
 
         constructor(properties?: Partial<TextListener.ConstructorProps>, ...args: any[]);

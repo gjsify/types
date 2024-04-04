@@ -25,6 +25,8 @@ export namespace Peas {
      * loading a plugin.
      */
     class PluginInfoError extends GLib.Error {
+        static $gtype: GObject.GType<PluginInfoError>;
+
         // Static fields of Peas.PluginInfoError
 
         /**
@@ -85,6 +87,8 @@ export namespace Peas {
      * accessed using the provided API.
      */
     class Engine extends GObject.Object {
+        static $gtype: GObject.GType<Engine>;
+
         // Own properties of Peas.Engine
 
         /**
@@ -367,6 +371,8 @@ export namespace Peas {
      * Base class for C extensions.
      */
     abstract class ExtensionBase extends GObject.Object {
+        static $gtype: GObject.GType<ExtensionBase>;
+
         // Own properties of Peas.ExtensionBase
 
         /**
@@ -444,6 +450,8 @@ export namespace Peas {
      * be accessed using the provided API.
      */
     class ExtensionSet<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<ExtensionSet>;
+
         // Own properties of Peas.ExtensionSet
 
         set construct_properties(val: any);
@@ -979,6 +987,8 @@ export namespace Peas {
      * be accessed using the provided API.
      */
     class ObjectModule extends GObject.TypeModule implements GObject.TypePlugin {
+        static $gtype: GObject.GType<ObjectModule>;
+
         // Own properties of Peas.ObjectModule
 
         /**
@@ -1428,6 +1438,8 @@ export namespace Peas {
     type ActivatableInterface = typeof Activatable;
     type EngineClass = typeof Engine;
     abstract class EnginePrivate {
+        static $gtype: GObject.GType<EnginePrivate>;
+
         // Constructors of Peas.EnginePrivate
 
         _init(...args: any[]): void;
@@ -1435,6 +1447,8 @@ export namespace Peas {
 
     type ExtensionBaseClass = typeof ExtensionBase;
     abstract class ExtensionBasePrivate {
+        static $gtype: GObject.GType<ExtensionBasePrivate>;
+
         // Constructors of Peas.ExtensionBasePrivate
 
         _init(...args: any[]): void;
@@ -1442,6 +1456,8 @@ export namespace Peas {
 
     type ExtensionSetClass = typeof ExtensionSet;
     abstract class ExtensionSetPrivate {
+        static $gtype: GObject.GType<ExtensionSetPrivate>;
+
         // Constructors of Peas.ExtensionSetPrivate
 
         _init(...args: any[]): void;
@@ -1449,6 +1465,8 @@ export namespace Peas {
 
     type ObjectModuleClass = typeof ObjectModule;
     abstract class ObjectModulePrivate {
+        static $gtype: GObject.GType<ObjectModulePrivate>;
+
         // Constructors of Peas.ObjectModulePrivate
 
         _init(...args: any[]): void;
@@ -1459,6 +1477,8 @@ export namespace Peas {
      * be accessed using the provided API.
      */
     abstract class PluginInfo {
+        static $gtype: GObject.GType<PluginInfo>;
+
         // Constructors of Peas.PluginInfo
 
         _init(...args: any[]): void;

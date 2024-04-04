@@ -20,30 +20,40 @@ export namespace DBus {
         STARTER,
     }
     class Connection {
+        static $gtype: GObject.GType<Connection>;
+
         // Constructors of DBus.Connection
 
         _init(...args: any[]): void;
     }
 
     class Error {
+        static $gtype: GObject.GType<Error>;
+
         // Constructors of DBus.Error
 
         _init(...args: any[]): void;
     }
 
     class Message {
+        static $gtype: GObject.GType<Message>;
+
         // Constructors of DBus.Message
 
         _init(...args: any[]): void;
     }
 
     class MessageIter {
+        static $gtype: GObject.GType<MessageIter>;
+
         // Constructors of DBus.MessageIter
 
         _init(...args: any[]): void;
     }
 
     class PendingCall {
+        static $gtype: GObject.GType<PendingCall>;
+
         // Constructors of DBus.PendingCall
 
         _init(...args: any[]): void;

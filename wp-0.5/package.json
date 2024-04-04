@@ -1,0 +1,55 @@
+{
+    "name": "@girs/wp-0.5",
+    "version": "0.5.0-4.0.0",
+    "description": "GJS TypeScript type definitions for Wp-0.5, generated from library version 0.5.0",
+    "type": "module",
+    "module": "wp-0.5.js",
+    "main": "wp-0.5.js",
+    "exports": {
+        "./ambient": {
+            "types": "./wp-0.5-ambient.d.ts",
+            "import": "./wp-0.5-ambient.js",
+            "default": "./wp-0.5-ambient.js"
+        },
+        "./import": {
+            "types": "./wp-0.5-import.d.ts",
+            "import": "./wp-0.5-import.js",
+            "default": "./wp-0.5-import.js"
+        },
+        ".": {
+            "types": "./wp-0.5.d.ts",
+            "import": "./wp-0.5.js",
+            "default": "./wp-0.5.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit wp-0.5.d.ts"
+    },
+    "dependencies": {
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Wp-0.5"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/wp-0.5#readme"
+}

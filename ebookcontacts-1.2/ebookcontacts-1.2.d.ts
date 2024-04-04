@@ -42,6 +42,8 @@ export namespace EBookContacts {
      * Error codes returned by #EBookClient APIs, if an #EClientError was not available.
      */
     class BookClientError extends GLib.Error {
+        static $gtype: GObject.GType<BookClientError>;
+
         // Static fields of EBookContacts.BookClientError
 
         /**
@@ -397,6 +399,8 @@ export namespace EBookContacts {
      * Numeric description of a phone number related error.
      */
     class PhoneNumberError extends GLib.Error {
+        static $gtype: GObject.GType<PhoneNumberError>;
+
         // Static fields of EBookContacts.PhoneNumberError
 
         /**
@@ -547,6 +551,8 @@ export namespace EBookContacts {
         SHORT,
     }
     class VCardFormat {
+        static $gtype: GObject.GType<VCardFormat>;
+
         // Static fields of EBookContacts.VCardFormat
 
         static '21': number;
@@ -986,6 +992,8 @@ export namespace EBookContacts {
      * An abstract object to handle EBookIndices changes.
      */
     abstract class BookIndicesUpdater extends GObject.Object {
+        static $gtype: GObject.GType<BookIndicesUpdater>;
+
         // Constructors of EBookContacts.BookIndicesUpdater
 
         constructor(properties?: Partial<BookIndicesUpdater.ConstructorProps>, ...args: any[]);
@@ -1295,6 +1303,8 @@ export namespace EBookContacts {
     }
 
     class Contact extends VCard {
+        static $gtype: GObject.GType<Contact>;
+
         // Own properties of EBookContacts.Contact
 
         get Rev(): string;
@@ -1926,6 +1936,8 @@ export namespace EBookContacts {
      * functions below.
      */
     class SourceBackendSummarySetup extends EDataServer.SourceExtension {
+        static $gtype: GObject.GType<SourceBackendSummarySetup>;
+
         // Own properties of EBookContacts.SourceBackendSummarySetup
 
         get indexed_fields(): string;
@@ -1998,6 +2010,8 @@ export namespace EBookContacts {
     }
 
     class VCard extends GObject.Object {
+        static $gtype: GObject.GType<VCard>;
+
         // Constructors of EBookContacts.VCard
 
         constructor(properties?: Partial<VCard.ConstructorProps>, ...args: any[]);
@@ -2156,6 +2170,8 @@ export namespace EBookContacts {
      * Western address structure.
      */
     class AddressWestern {
+        static $gtype: GObject.GType<AddressWestern>;
+
         // Own fields of EBookContacts.AddressWestern
 
         po_box: string;
@@ -2207,6 +2223,8 @@ export namespace EBookContacts {
      * This is a part of the deprecated #EBook API.
      */
     class BookChange {
+        static $gtype: GObject.GType<BookChange>;
+
         // Own fields of EBookContacts.BookChange
 
         change_type: BookChangeType;
@@ -2222,6 +2240,8 @@ export namespace EBookContacts {
      * See e_book_client_view_set_sort_fields_sync() for more information.
      */
     class BookClientViewSortFields {
+        static $gtype: GObject.GType<BookClientViewSortFields>;
+
         // Own fields of EBookContacts.BookClientViewSortFields
 
         field: ContactField;
@@ -2237,6 +2257,8 @@ export namespace EBookContacts {
      * See e_book_client_view_dup_indices() for more information.
      */
     class BookIndices {
+        static $gtype: GObject.GType<BookIndices>;
+
         // Own fields of EBookContacts.BookIndices
 
         chr: string;
@@ -2271,12 +2293,16 @@ export namespace EBookContacts {
 
     type BookIndicesUpdaterClass = typeof BookIndicesUpdater;
     abstract class BookIndicesUpdaterPrivate {
+        static $gtype: GObject.GType<BookIndicesUpdaterPrivate>;
+
         // Constructors of EBookContacts.BookIndicesUpdaterPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BookQuery {
+        static $gtype: GObject.GType<BookQuery>;
+
         // Constructors of EBookContacts.BookQuery
 
         _init(...args: any[]): void;
@@ -2364,6 +2390,8 @@ export namespace EBookContacts {
     }
 
     class ContactAddress {
+        static $gtype: GObject.GType<ContactAddress>;
+
         // Own fields of EBookContacts.ContactAddress
 
         address_format: string;
@@ -2402,6 +2430,8 @@ export namespace EBookContacts {
     }
 
     class ContactCert {
+        static $gtype: GObject.GType<ContactCert>;
+
         // Own fields of EBookContacts.ContactCert
 
         length: number;
@@ -2429,6 +2459,8 @@ export namespace EBookContacts {
 
     type ContactClass = typeof Contact;
     class ContactDate {
+        static $gtype: GObject.GType<ContactDate>;
+
         // Own fields of EBookContacts.ContactDate
 
         year: number;
@@ -2477,6 +2509,8 @@ export namespace EBookContacts {
     }
 
     class ContactGeo {
+        static $gtype: GObject.GType<ContactGeo>;
+
         // Own fields of EBookContacts.ContactGeo
 
         latitude: number;
@@ -2503,6 +2537,8 @@ export namespace EBookContacts {
     }
 
     class ContactName {
+        static $gtype: GObject.GType<ContactName>;
+
         // Own fields of EBookContacts.ContactName
 
         family: string;
@@ -2553,6 +2589,8 @@ export namespace EBookContacts {
     }
 
     class ContactPhoto {
+        static $gtype: GObject.GType<ContactPhoto>;
+
         // Own fields of EBookContacts.ContactPhoto
 
         type: ContactPhotoType;
@@ -2612,12 +2650,16 @@ export namespace EBookContacts {
     }
 
     abstract class ContactPrivate {
+        static $gtype: GObject.GType<ContactPrivate>;
+
         // Constructors of EBookContacts.ContactPrivate
 
         _init(...args: any[]): void;
     }
 
     class NameWestern {
+        static $gtype: GObject.GType<NameWestern>;
+
         // Own fields of EBookContacts.NameWestern
 
         prefix: string;
@@ -2670,6 +2712,8 @@ export namespace EBookContacts {
      * e_phone_number_copy(). To release it call e_phone_number_free().
      */
     abstract class PhoneNumber {
+        static $gtype: GObject.GType<PhoneNumber>;
+
         // Constructors of EBookContacts.PhoneNumber
 
         _init(...args: any[]): void;
@@ -2780,12 +2824,16 @@ export namespace EBookContacts {
 
     type SourceBackendSummarySetupClass = typeof SourceBackendSummarySetup;
     abstract class SourceBackendSummarySetupPrivate {
+        static $gtype: GObject.GType<SourceBackendSummarySetupPrivate>;
+
         // Constructors of EBookContacts.SourceBackendSummarySetupPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class VCardAttribute {
+        static $gtype: GObject.GType<VCardAttribute>;
+
         // Constructors of EBookContacts.VCardAttribute
 
         constructor(attr_group: string | null, attr_name: string);
@@ -2974,6 +3022,8 @@ export namespace EBookContacts {
     }
 
     abstract class VCardAttributeParam {
+        static $gtype: GObject.GType<VCardAttributeParam>;
+
         // Constructors of EBookContacts.VCardAttributeParam
 
         constructor(name: string);
@@ -3033,6 +3083,8 @@ export namespace EBookContacts {
 
     type VCardClass = typeof VCard;
     abstract class VCardPrivate {
+        static $gtype: GObject.GType<VCardPrivate>;
+
         // Constructors of EBookContacts.VCardPrivate
 
         _init(...args: any[]): void;

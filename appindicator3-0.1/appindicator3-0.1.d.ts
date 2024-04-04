@@ -166,6 +166,8 @@ export namespace AppIndicator3 {
      *  Private fields
      */
     class Indicator extends GObject.Object {
+        static $gtype: GObject.GType<Indicator>;
+
         // Own properties of AppIndicator3.Indicator
 
         /**
@@ -548,6 +550,8 @@ export namespace AppIndicator3 {
      * Private Fields
      */
     abstract class IndicatorPrivate {
+        static $gtype: GObject.GType<IndicatorPrivate>;
+
         // Constructors of AppIndicator3.IndicatorPrivate
 
         _init(...args: any[]): void;

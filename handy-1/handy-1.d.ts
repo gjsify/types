@@ -336,6 +336,8 @@ export namespace Handy {
      * respectively the title label and subtitle label.
      */
     class ActionRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ActionRow>;
+
         // Own properties of Handy.ActionRow
 
         /**
@@ -4437,6 +4439,8 @@ export namespace Handy {
         extends Gtk.ApplicationWindow
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
+        static $gtype: GObject.GType<ApplicationWindow>;
+
         // Constructors of Handy.ApplicationWindow
 
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
@@ -5405,6 +5409,8 @@ export namespace Handy {
      * `HdyAvatar` has a single CSS node with name `avatar`.
      */
     class Avatar extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Avatar>;
+
         // Own properties of Handy.Avatar
 
         /**
@@ -5976,6 +5982,8 @@ export namespace Handy {
      * `HdyCarousel` has a single CSS node with name `carousel`.
      */
     class Carousel extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Carousel>;
+
         // Own properties of Handy.Carousel
 
         /**
@@ -10253,6 +10261,8 @@ export namespace Handy {
      * `carouselindicatordots`.
      */
     class CarouselIndicatorDots extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<CarouselIndicatorDots>;
+
         // Own properties of Handy.CarouselIndicatorDots
 
         /**
@@ -10686,6 +10696,8 @@ export namespace Handy {
         extends Gtk.DrawingArea
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
     {
+        static $gtype: GObject.GType<CarouselIndicatorLines>;
+
         // Own properties of Handy.CarouselIndicatorLines
 
         /**
@@ -11124,6 +11136,8 @@ export namespace Handy {
      * `.medium` in-between, or none if it didn't compute its size yet.
      */
     class Clamp extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Clamp>;
+
         // Own properties of Handy.Clamp
 
         /**
@@ -11625,6 +11639,8 @@ export namespace Handy {
      * the current item.
      */
     class ComboRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ComboRow>;
+
         // Own properties of Handy.ComboRow
 
         /**
@@ -15692,6 +15708,8 @@ export namespace Handy {
      * `HdyDeck` has a single CSS node with name `deck`.
      */
     class Deck extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Deck>;
+
         // Own properties of Handy.Deck
 
         /**
@@ -19988,6 +20006,8 @@ export namespace Handy {
      * allowing it to be used with [iface`Gio`.ListModel].
      */
     class EnumValueObject extends GObject.Object {
+        static $gtype: GObject.GType<EnumValueObject>;
+
         // Constructors of Handy.EnumValueObject
 
         constructor(properties?: Partial<EnumValueObject.ConstructorProps>, ...args: any[]);
@@ -20066,6 +20086,8 @@ export namespace Handy {
      * and remove it when retracted.
      */
     class ExpanderRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<ExpanderRow>;
+
         // Own properties of Handy.ExpanderRow
 
         /**
@@ -24165,6 +24187,8 @@ export namespace Handy {
      * classes `.folded` when it is folded, and `.unfolded` when it's not.
      */
     class Flap extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Flap>;
+
         // Own properties of Handy.Flap
 
         /**
@@ -28575,6 +28599,8 @@ export namespace Handy {
      * `HdyHeaderBar` has a single CSS node with name `headerbar`.
      */
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<HeaderBar>;
+
         // Own properties of Handy.HeaderBar
 
         /**
@@ -29274,6 +29300,8 @@ export namespace Handy {
      * ```
      */
     class HeaderGroup extends GObject.Object implements Gtk.Buildable {
+        static $gtype: GObject.GType<HeaderGroup>;
+
         // Own properties of Handy.HeaderGroup
 
         /**
@@ -29919,6 +29947,8 @@ export namespace Handy {
      * A child object for [class`HeaderGroup]`.
      */
     class HeaderGroupChild extends GObject.Object {
+        static $gtype: GObject.GType<HeaderGroupChild>;
+
         // Constructors of Handy.HeaderGroupChild
 
         constructor(properties?: Partial<HeaderGroupChild.ConstructorProps>, ...args: any[]);
@@ -29989,6 +30019,8 @@ export namespace Handy {
      * `HdyKeypad` has a single CSS node with name `keypad`.
      */
     class Keypad extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Keypad>;
+
         // Own properties of Handy.Keypad
 
         /**
@@ -30581,6 +30613,8 @@ export namespace Handy {
      * if it didn't compute its fold yet.
      */
     class Leaflet extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
+        static $gtype: GObject.GType<Leaflet>;
+
         // Own properties of Handy.Leaflet
 
         /**
@@ -34962,6 +34996,8 @@ export namespace Handy {
      * `HdyPreferencesGroup` has a single CSS node with name `preferencesgroup`.
      */
     class PreferencesGroup extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesGroup>;
+
         // Own properties of Handy.PreferencesGroup
 
         /**
@@ -35403,6 +35439,8 @@ export namespace Handy {
      * `HdyPreferencesPage` has a single CSS node with name `preferencespage`.
      */
     class PreferencesPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesPage>;
+
         // Own properties of Handy.PreferencesPage
 
         /**
@@ -35835,6 +35873,8 @@ export namespace Handy {
      * compose the inputs of the preference around it.
      */
     class PreferencesRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesRow>;
+
         // Own properties of Handy.PreferencesRow
 
         /**
@@ -39918,6 +39958,8 @@ export namespace Handy {
      * style class `.preferences`.
      */
     class PreferencesWindow extends Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<PreferencesWindow>;
+
         // Own properties of Handy.PreferencesWindow
 
         /**
@@ -40386,6 +40428,8 @@ export namespace Handy {
      * `HdySearchBar` has a single CSS node with name `searchbar`.
      */
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SearchBar>;
+
         // Own properties of Handy.SearchBar
 
         /**
@@ -40893,6 +40937,8 @@ export namespace Handy {
      * `HdySqueezer` has a single CSS node with name `squeezer`.
      */
     class Squeezer extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Squeezer>;
+
         // Own properties of Handy.Squeezer
 
         /**
@@ -41500,6 +41546,8 @@ export namespace Handy {
      * `HdyStatusPage` has a main CSS node with name `statuspage`.
      */
     class StatusPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<StatusPage>;
+
         // Own properties of Handy.StatusPage
 
         /**
@@ -41951,6 +41999,8 @@ export namespace Handy {
      * Color schemes should be used instead.
      */
     class StyleManager extends GObject.Object {
+        static $gtype: GObject.GType<StyleManager>;
+
         // Own properties of Handy.StyleManager
 
         /**
@@ -42181,6 +42231,8 @@ export namespace Handy {
      * header bar, without the need to sync them.
      */
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
+        static $gtype: GObject.GType<SwipeGroup>;
+
         // Constructors of Handy.SwipeGroup
 
         constructor(properties?: Partial<SwipeGroup.ConstructorProps>, ...args: any[]);
@@ -42784,6 +42836,8 @@ export namespace Handy {
      * direction.
      */
     class SwipeTracker extends GObject.Object implements Gtk.Orientable {
+        static $gtype: GObject.GType<SwipeTracker>;
+
         // Own properties of Handy.SwipeTracker
 
         /**
@@ -43355,6 +43409,8 @@ export namespace Handy {
      * `HdyTabBar` has a single CSS node with name `tabbar`.
      */
     class TabBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TabBar>;
+
         // Own properties of Handy.TabBar
 
         /**
@@ -44007,6 +44063,8 @@ export namespace Handy {
      * An auxiliary class used by [class`TabView]`.
      */
     class TabPage extends GObject.Object {
+        static $gtype: GObject.GType<TabPage>;
+
         // Own properties of Handy.TabPage
 
         /**
@@ -44329,6 +44387,8 @@ export namespace Handy {
      * ```
      */
     class TabView extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TabView>;
+
         // Own properties of Handy.TabView
 
         /**
@@ -45211,6 +45271,8 @@ export namespace Handy {
      * `HdyTitleBar` has a single CSS node with name `headerbar`.
      */
     class TitleBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TitleBar>;
+
         // Own properties of Handy.TitleBar
 
         /**
@@ -45617,6 +45679,8 @@ export namespace Handy {
      * to be used with [iface`Gio`.ListModel].
      */
     class ValueObject extends GObject.Object {
+        static $gtype: GObject.GType<ValueObject>;
+
         // Own properties of Handy.ValueObject
 
         /**
@@ -45691,6 +45755,8 @@ export namespace Handy {
      * `HdyViewSwitcher` has a single CSS node with name `viewswitcher`.
      */
     class ViewSwitcher extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewSwitcher>;
+
         // Own properties of Handy.ViewSwitcher
 
         /**
@@ -46192,6 +46258,8 @@ export namespace Handy {
      * `HdyViewSwitcherBar` has a single CSS node with name `viewswitcherbar`.
      */
     class ViewSwitcherBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewSwitcherBar>;
+
         // Own properties of Handy.ViewSwitcherBar
 
         /**
@@ -46681,6 +46749,8 @@ export namespace Handy {
      * `HdyViewSwitcherTitle` has a single CSS node with name `viewswitchertitle`.
      */
     class ViewSwitcherTitle extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ViewSwitcherTitle>;
+
         // Own properties of Handy.ViewSwitcherTitle
 
         /**
@@ -47231,6 +47301,8 @@ export namespace Handy {
      * deck, which contains the child inside the window.
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Window>;
+
         // Constructors of Handy.Window
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
@@ -47622,6 +47694,8 @@ export namespace Handy {
      * `HdyWindowHandle` has a single CSS node with name `windowhandle`.
      */
     class WindowHandle extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<WindowHandle>;
+
         // Constructors of Handy.WindowHandle
 
         constructor(properties?: Partial<WindowHandle.ConstructorProps>, ...args: any[]);

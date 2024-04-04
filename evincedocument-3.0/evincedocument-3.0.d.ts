@@ -68,6 +68,8 @@ export namespace EvinceDocument {
         YES,
     }
     class DocumentError extends GLib.Error {
+        static $gtype: GObject.GType<DocumentError>;
+
         // Static fields of EvinceDocument.DocumentError
 
         static INVALID: number;
@@ -353,6 +355,8 @@ export namespace EvinceDocument {
     }
 
     abstract class Annotation extends GObject.Object {
+        static $gtype: GObject.GType<Annotation>;
+
         // Own properties of EvinceDocument.Annotation
 
         /**
@@ -512,6 +516,8 @@ export namespace EvinceDocument {
     }
 
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
+        static $gtype: GObject.GType<AnnotationAttachment>;
+
         // Own properties of EvinceDocument.AnnotationAttachment
 
         get attachment(): Attachment;
@@ -710,6 +716,8 @@ export namespace EvinceDocument {
     }
 
     class AnnotationText extends Annotation implements AnnotationMarkup {
+        static $gtype: GObject.GType<AnnotationText>;
+
         // Own properties of EvinceDocument.AnnotationText
 
         get icon(): AnnotationTextIcon;
@@ -912,6 +920,8 @@ export namespace EvinceDocument {
     }
 
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
+        static $gtype: GObject.GType<AnnotationTextMarkup>;
+
         // Own properties of EvinceDocument.AnnotationTextMarkup
 
         get type(): AnnotationTextMarkupType;
@@ -1119,6 +1129,8 @@ export namespace EvinceDocument {
     }
 
     class Attachment extends GObject.Object {
+        static $gtype: GObject.GType<Attachment>;
+
         // Own properties of EvinceDocument.Attachment
 
         set ctime(val: number);
@@ -1171,6 +1183,8 @@ export namespace EvinceDocument {
     }
 
     abstract class Document extends GObject.Object {
+        static $gtype: GObject.GType<Document>;
+
         // Own properties of EvinceDocument.Document
 
         get modified(): boolean;
@@ -1538,6 +1552,8 @@ export namespace EvinceDocument {
     }
 
     abstract class FormField extends GObject.Object {
+        static $gtype: GObject.GType<FormField>;
+
         // Own fields of EvinceDocument.FormField
 
         id: number;
@@ -1561,6 +1577,8 @@ export namespace EvinceDocument {
     }
 
     class FormFieldButton extends FormField {
+        static $gtype: GObject.GType<FormFieldButton>;
+
         // Own fields of EvinceDocument.FormFieldButton
 
         type: FormFieldButtonType;
@@ -1582,6 +1600,8 @@ export namespace EvinceDocument {
     }
 
     class FormFieldChoice extends FormField {
+        static $gtype: GObject.GType<FormFieldChoice>;
+
         // Own fields of EvinceDocument.FormFieldChoice
 
         type: FormFieldChoiceType;
@@ -1608,6 +1628,8 @@ export namespace EvinceDocument {
     }
 
     class FormFieldSignature extends FormField {
+        static $gtype: GObject.GType<FormFieldSignature>;
+
         // Constructors of EvinceDocument.FormFieldSignature
 
         constructor(properties?: Partial<FormFieldSignature.ConstructorProps>, ...args: any[]);
@@ -1624,6 +1646,8 @@ export namespace EvinceDocument {
     }
 
     class FormFieldText extends FormField {
+        static $gtype: GObject.GType<FormFieldText>;
+
         // Own fields of EvinceDocument.FormFieldText
 
         type: FormFieldTextType;
@@ -1651,6 +1675,8 @@ export namespace EvinceDocument {
     }
 
     class Image extends GObject.Object {
+        static $gtype: GObject.GType<Image>;
+
         // Own fields of EvinceDocument.Image
 
         base_instance: GObject.Object;
@@ -1681,6 +1707,8 @@ export namespace EvinceDocument {
     }
 
     class Layer extends GObject.Object {
+        static $gtype: GObject.GType<Layer>;
+
         // Own fields of EvinceDocument.Layer
 
         base_instance: GObject.Object;
@@ -1709,6 +1737,8 @@ export namespace EvinceDocument {
     }
 
     class Link extends GObject.Object {
+        static $gtype: GObject.GType<Link>;
+
         // Own properties of EvinceDocument.Link
 
         get action(): LinkAction;
@@ -1752,6 +1782,8 @@ export namespace EvinceDocument {
     }
 
     class LinkAction extends GObject.Object {
+        static $gtype: GObject.GType<LinkAction>;
+
         // Own properties of EvinceDocument.LinkAction
 
         get dest(): LinkDest;
@@ -1831,6 +1863,8 @@ export namespace EvinceDocument {
     }
 
     class LinkDest extends GObject.Object {
+        static $gtype: GObject.GType<LinkDest>;
+
         // Own properties of EvinceDocument.LinkDest
 
         get bottom(): number;
@@ -1901,6 +1935,8 @@ export namespace EvinceDocument {
     }
 
     class Media extends GObject.Object {
+        static $gtype: GObject.GType<Media>;
+
         // Own fields of EvinceDocument.Media
 
         base_instance: GObject.Object;
@@ -1928,6 +1964,8 @@ export namespace EvinceDocument {
     }
 
     class Page extends GObject.Object {
+        static $gtype: GObject.GType<Page>;
+
         // Own fields of EvinceDocument.Page
 
         base_instance: GObject.Object;
@@ -1951,6 +1989,8 @@ export namespace EvinceDocument {
     }
 
     class RenderContext extends GObject.Object {
+        static $gtype: GObject.GType<RenderContext>;
+
         // Own fields of EvinceDocument.RenderContext
 
         page: Page;
@@ -2005,6 +2045,8 @@ export namespace EvinceDocument {
     }
 
     class TransitionEffect extends GObject.Object {
+        static $gtype: GObject.GType<TransitionEffect>;
+
         // Own properties of EvinceDocument.TransitionEffect
 
         get alignment(): TransitionEffectAlignment;
@@ -2043,6 +2085,8 @@ export namespace EvinceDocument {
     type DocumentAnnotationsInterface = typeof DocumentAnnotations;
     type DocumentAttachmentsInterface = typeof DocumentAttachments;
     class DocumentBackendInfo {
+        static $gtype: GObject.GType<DocumentBackendInfo>;
+
         // Own fields of EvinceDocument.DocumentBackendInfo
 
         name: string;
@@ -2065,6 +2109,8 @@ export namespace EvinceDocument {
     type DocumentFormsInterface = typeof DocumentForms;
     type DocumentImagesInterface = typeof DocumentImages;
     class DocumentInfo {
+        static $gtype: GObject.GType<DocumentInfo>;
+
         // Own fields of EvinceDocument.DocumentInfo
 
         title: string;
@@ -2135,6 +2181,8 @@ export namespace EvinceDocument {
 
     type DocumentLayersInterface = typeof DocumentLayers;
     class DocumentLicense {
+        static $gtype: GObject.GType<DocumentLicense>;
+
         // Own fields of EvinceDocument.DocumentLicense
 
         text: string;
@@ -2170,6 +2218,8 @@ export namespace EvinceDocument {
     type DocumentMediaInterface = typeof DocumentMedia;
     type DocumentPrintInterface = typeof DocumentPrint;
     abstract class DocumentPrivate {
+        static $gtype: GObject.GType<DocumentPrivate>;
+
         // Constructors of EvinceDocument.DocumentPrivate
 
         _init(...args: any[]): void;
@@ -2179,6 +2229,8 @@ export namespace EvinceDocument {
     type DocumentTextInterface = typeof DocumentText;
     type DocumentTransitionInterface = typeof DocumentTransition;
     class FileExporterContext {
+        static $gtype: GObject.GType<FileExporterContext>;
+
         // Own fields of EvinceDocument.FileExporterContext
 
         format: FileExporterFormat;
@@ -2197,6 +2249,8 @@ export namespace EvinceDocument {
 
     type FileExporterInterface = typeof FileExporter;
     class FindRectangle {
+        static $gtype: GObject.GType<FindRectangle>;
+
         // Own fields of EvinceDocument.FindRectangle
 
         x1: number;
@@ -2235,6 +2289,8 @@ export namespace EvinceDocument {
     type FormFieldTextClass = typeof FormFieldText;
     type ImageClass = typeof Image;
     abstract class ImagePrivate {
+        static $gtype: GObject.GType<ImagePrivate>;
+
         // Constructors of EvinceDocument.ImagePrivate
 
         _init(...args: any[]): void;
@@ -2242,6 +2298,8 @@ export namespace EvinceDocument {
 
     type LayerClass = typeof Layer;
     abstract class LayerPrivate {
+        static $gtype: GObject.GType<LayerPrivate>;
+
         // Constructors of EvinceDocument.LayerPrivate
 
         _init(...args: any[]): void;
@@ -2249,6 +2307,8 @@ export namespace EvinceDocument {
 
     type LinkActionClass = typeof LinkAction;
     abstract class LinkActionPrivate {
+        static $gtype: GObject.GType<LinkActionPrivate>;
+
         // Constructors of EvinceDocument.LinkActionPrivate
 
         _init(...args: any[]): void;
@@ -2257,18 +2317,24 @@ export namespace EvinceDocument {
     type LinkClass = typeof Link;
     type LinkDestClass = typeof LinkDest;
     abstract class LinkDestPrivate {
+        static $gtype: GObject.GType<LinkDestPrivate>;
+
         // Constructors of EvinceDocument.LinkDestPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class LinkPrivate {
+        static $gtype: GObject.GType<LinkPrivate>;
+
         // Constructors of EvinceDocument.LinkPrivate
 
         _init(...args: any[]): void;
     }
 
     class Mapping {
+        static $gtype: GObject.GType<Mapping>;
+
         // Own fields of EvinceDocument.Mapping
 
         area: Rectangle;
@@ -2286,6 +2352,8 @@ export namespace EvinceDocument {
     }
 
     abstract class MappingList {
+        static $gtype: GObject.GType<MappingList>;
+
         // Constructors of EvinceDocument.MappingList
 
         constructor(page: number, list: Mapping[]);
@@ -2310,6 +2378,8 @@ export namespace EvinceDocument {
 
     type MediaClass = typeof Media;
     abstract class MediaPrivate {
+        static $gtype: GObject.GType<MediaPrivate>;
+
         // Constructors of EvinceDocument.MediaPrivate
 
         _init(...args: any[]): void;
@@ -2317,6 +2387,8 @@ export namespace EvinceDocument {
 
     type PageClass = typeof Page;
     class Point {
+        static $gtype: GObject.GType<Point>;
+
         // Own fields of EvinceDocument.Point
 
         x: number;
@@ -2334,6 +2406,8 @@ export namespace EvinceDocument {
     }
 
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of EvinceDocument.Rectangle
 
         x1: number;
@@ -2364,6 +2438,8 @@ export namespace EvinceDocument {
     type RenderContextClass = typeof RenderContext;
     type SelectionInterface = typeof Selection;
     class SourceLink {
+        static $gtype: GObject.GType<SourceLink>;
+
         // Own fields of EvinceDocument.SourceLink
 
         filename: string;
@@ -2391,6 +2467,8 @@ export namespace EvinceDocument {
 
     type TransitionEffectClass = typeof TransitionEffect;
     class TypeInfo {
+        static $gtype: GObject.GType<TypeInfo>;
+
         // Own fields of EvinceDocument.TypeInfo
 
         desc: string;

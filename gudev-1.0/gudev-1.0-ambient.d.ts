@@ -1,7 +1,7 @@
 
 declare module 'gi://GUdev?version=1.0' {
-    import GUdev10 from '@girs/gudev-1.0';
-    export default GUdev10;
+    import GUdev from '@girs/gudev-1.0';
+    export default GUdev;
 }
 
 declare module 'gi://GUdev' {

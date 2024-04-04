@@ -1,7 +1,7 @@
 
 declare module 'gi://EBackend?version=1.2' {
-    import EBackend12 from '@girs/ebackend-1.2';
-    export default EBackend12;
+    import EBackend from '@girs/ebackend-1.2';
+    export default EBackend;
 }
 
 declare module 'gi://EBackend' {

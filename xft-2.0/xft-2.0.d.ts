@@ -17,24 +17,32 @@ import type GObject from '@girs/gobject-2.0';
 export namespace xft {
     function init(): void;
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Constructors of xft.Color
 
         _init(...args: any[]): void;
     }
 
     class Draw {
+        static $gtype: GObject.GType<Draw>;
+
         // Constructors of xft.Draw
 
         _init(...args: any[]): void;
     }
 
     class Font {
+        static $gtype: GObject.GType<Font>;
+
         // Constructors of xft.Font
 
         _init(...args: any[]): void;
     }
 
     class GlyphSpec {
+        static $gtype: GObject.GType<GlyphSpec>;
+
         // Constructors of xft.GlyphSpec
 
         _init(...args: any[]): void;

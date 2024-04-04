@@ -1,7 +1,7 @@
 
 declare module 'gi://GnomeAutoarGtk?version=0.1' {
-    import GnomeAutoarGtk01 from '@girs/gnomeautoargtk-0.1';
-    export default GnomeAutoarGtk01;
+    import GnomeAutoarGtk from '@girs/gnomeautoargtk-0.1';
+    export default GnomeAutoarGtk;
 }
 
 declare module 'gi://GnomeAutoarGtk' {

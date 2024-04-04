@@ -30,6 +30,8 @@ export namespace GstVulkan {
         TYPE_IMAGE,
     }
     class VulkanError extends GLib.Error {
+        static $gtype: GObject.GType<VulkanError>;
+
         // Static fields of GstVulkan.VulkanError
 
         static FAILED: number;
@@ -77,6 +79,8 @@ export namespace GstVulkan {
         SHADER,
     }
     class VulkanWindowError extends GLib.Error {
+        static $gtype: GObject.GType<VulkanWindowError>;
+
         // Static fields of GstVulkan.VulkanWindowError
 
         static FAILED: number;
@@ -371,6 +375,8 @@ export namespace GstVulkan {
      * Opaque #GstVulkanBufferMemoryAllocator struct
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
+
         // Constructors of GstVulkan.VulkanBufferMemoryAllocator
 
         constructor(properties?: Partial<VulkanBufferMemoryAllocator.ConstructorProps>, ...args: any[]);
@@ -388,6 +394,8 @@ export namespace GstVulkan {
      * Opaque GstVulkanBufferPool struct
      */
     class VulkanBufferPool extends Gst.BufferPool {
+        static $gtype: GObject.GType<VulkanBufferPool>;
+
         // Own fields of GstVulkan.VulkanBufferPool
 
         bufferpool: Gst.BufferPool;
@@ -412,6 +420,8 @@ export namespace GstVulkan {
     }
 
     class VulkanCommandPool extends Gst.Object {
+        static $gtype: GObject.GType<VulkanCommandPool>;
+
         // Own fields of GstVulkan.VulkanCommandPool
 
         queue: VulkanQueue;
@@ -449,6 +459,8 @@ export namespace GstVulkan {
     }
 
     class VulkanDescriptorCache extends VulkanHandlePool {
+        static $gtype: GObject.GType<VulkanDescriptorCache>;
+
         // Own fields of GstVulkan.VulkanDescriptorCache
 
         pool: VulkanDescriptorPool;
@@ -474,6 +486,8 @@ export namespace GstVulkan {
     }
 
     class VulkanDescriptorPool extends Gst.Object {
+        static $gtype: GObject.GType<VulkanDescriptorPool>;
+
         // Own fields of GstVulkan.VulkanDescriptorPool
 
         device: VulkanDevice;
@@ -504,6 +518,8 @@ export namespace GstVulkan {
     }
 
     class VulkanDevice extends Gst.Object {
+        static $gtype: GObject.GType<VulkanDevice>;
+
         // Own properties of GstVulkan.VulkanDevice
 
         get instance(): VulkanInstance;
@@ -573,6 +589,8 @@ export namespace GstVulkan {
      * through the provided API
      */
     class VulkanDisplay extends Gst.Object {
+        static $gtype: GObject.GType<VulkanDisplay>;
+
         // Constructors of GstVulkan.VulkanDisplay
 
         constructor(properties?: Partial<VulkanDisplay.ConstructorProps>, ...args: any[]);
@@ -638,6 +656,8 @@ export namespace GstVulkan {
     }
 
     class VulkanFenceCache extends VulkanHandlePool {
+        static $gtype: GObject.GType<VulkanFenceCache>;
+
         // Constructors of GstVulkan.VulkanFenceCache
 
         constructor(properties?: Partial<VulkanFenceCache.ConstructorProps>, ...args: any[]);
@@ -654,6 +674,8 @@ export namespace GstVulkan {
     }
 
     class VulkanFullScreenQuad extends Gst.Object {
+        static $gtype: GObject.GType<VulkanFullScreenQuad>;
+
         // Own fields of GstVulkan.VulkanFullScreenQuad
 
         queue: VulkanQueue;
@@ -692,6 +714,8 @@ export namespace GstVulkan {
     }
 
     abstract class VulkanHandlePool extends Gst.Object {
+        static $gtype: GObject.GType<VulkanHandlePool>;
+
         // Own fields of GstVulkan.VulkanHandlePool
 
         device: VulkanDevice;
@@ -728,6 +752,8 @@ export namespace GstVulkan {
      * Opaque GstVulkanImageBufferPool struct
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
+        static $gtype: GObject.GType<VulkanImageBufferPool>;
+
         // Own fields of GstVulkan.VulkanImageBufferPool
 
         bufferpool: Gst.BufferPool;
@@ -755,6 +781,8 @@ export namespace GstVulkan {
      * Opaque #GstVulkanImageMemoryAllocator struct
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
+
         // Constructors of GstVulkan.VulkanImageMemoryAllocator
 
         constructor(properties?: Partial<VulkanImageMemoryAllocator.ConstructorProps>, ...args: any[]);
@@ -775,6 +803,8 @@ export namespace GstVulkan {
     }
 
     class VulkanInstance extends Gst.Object {
+        static $gtype: GObject.GType<VulkanInstance>;
+
         // Own fields of GstVulkan.VulkanInstance
 
         n_physical_devices: number;
@@ -838,6 +868,8 @@ export namespace GstVulkan {
      * Opaque #GstVulkanMemoryAllocator struct
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<VulkanMemoryAllocator>;
+
         // Constructors of GstVulkan.VulkanMemoryAllocator
 
         constructor(properties?: Partial<VulkanMemoryAllocator.ConstructorProps>, ...args: any[]);
@@ -857,6 +889,8 @@ export namespace GstVulkan {
     }
 
     class VulkanPhysicalDevice extends Gst.Object {
+        static $gtype: GObject.GType<VulkanPhysicalDevice>;
+
         // Own properties of GstVulkan.VulkanPhysicalDevice
 
         get device_index(): number;
@@ -894,6 +928,8 @@ export namespace GstVulkan {
     }
 
     class VulkanQueue extends Gst.Object {
+        static $gtype: GObject.GType<VulkanQueue>;
+
         // Own fields of GstVulkan.VulkanQueue
 
         device: VulkanDevice;
@@ -956,6 +992,8 @@ export namespace GstVulkan {
     }
 
     class VulkanSwapper extends Gst.Object {
+        static $gtype: GObject.GType<VulkanSwapper>;
+
         // Own properties of GstVulkan.VulkanSwapper
 
         get force_aspect_ratio(): boolean;
@@ -1002,6 +1040,8 @@ export namespace GstVulkan {
     }
 
     class VulkanTrashFenceList extends VulkanTrashList {
+        static $gtype: GObject.GType<VulkanTrashFenceList>;
+
         // Constructors of GstVulkan.VulkanTrashFenceList
 
         constructor(properties?: Partial<VulkanTrashFenceList.ConstructorProps>, ...args: any[]);
@@ -1018,6 +1058,8 @@ export namespace GstVulkan {
     }
 
     class VulkanTrashList extends VulkanHandlePool {
+        static $gtype: GObject.GType<VulkanTrashList>;
+
         // Constructors of GstVulkan.VulkanTrashList
 
         constructor(properties?: Partial<VulkanTrashList.ConstructorProps>, ...args: any[]);
@@ -1046,6 +1088,8 @@ export namespace GstVulkan {
     }
 
     class VulkanVideoFilter extends GstBase.BaseTransform {
+        static $gtype: GObject.GType<VulkanVideoFilter>;
+
         // Own fields of GstVulkan.VulkanVideoFilter
 
         instance: VulkanInstance;
@@ -1094,6 +1138,8 @@ export namespace GstVulkan {
      * provided api.
      */
     abstract class VulkanWindow extends Gst.Object {
+        static $gtype: GObject.GType<VulkanWindow>;
+
         // Own properties of GstVulkan.VulkanWindow
 
         get display(): VulkanDisplay;
@@ -1190,18 +1236,24 @@ export namespace GstVulkan {
     }
 
     class VulkanBarrierBufferInfo {
+        static $gtype: GObject.GType<VulkanBarrierBufferInfo>;
+
         // Constructors of GstVulkan.VulkanBarrierBufferInfo
 
         _init(...args: any[]): void;
     }
 
     class VulkanBarrierImageInfo {
+        static $gtype: GObject.GType<VulkanBarrierImageInfo>;
+
         // Constructors of GstVulkan.VulkanBarrierImageInfo
 
         _init(...args: any[]): void;
     }
 
     class VulkanBarrierMemoryInfo {
+        static $gtype: GObject.GType<VulkanBarrierMemoryInfo>;
+
         // Own fields of GstVulkan.VulkanBarrierMemoryInfo
 
         type: VulkanBarrierType;
@@ -1214,6 +1266,8 @@ export namespace GstVulkan {
     }
 
     class VulkanBufferMemory {
+        static $gtype: GObject.GType<VulkanBufferMemory>;
+
         // Own fields of GstVulkan.VulkanBufferMemory
 
         device: VulkanDevice;
@@ -1250,12 +1304,16 @@ export namespace GstVulkan {
     type VulkanBufferMemoryAllocatorClass = typeof VulkanBufferMemoryAllocator;
     type VulkanBufferPoolClass = typeof VulkanBufferPool;
     abstract class VulkanBufferPoolPrivate {
+        static $gtype: GObject.GType<VulkanBufferPoolPrivate>;
+
         // Constructors of GstVulkan.VulkanBufferPoolPrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanCommandBuffer {
+        static $gtype: GObject.GType<VulkanCommandBuffer>;
+
         // Own fields of GstVulkan.VulkanCommandBuffer
 
         pool: VulkanCommandPool;
@@ -1270,6 +1328,8 @@ export namespace GstVulkan {
 
     type VulkanCommandPoolClass = typeof VulkanCommandPool;
     abstract class VulkanCommandPoolPrivate {
+        static $gtype: GObject.GType<VulkanCommandPoolPrivate>;
+
         // Constructors of GstVulkan.VulkanCommandPoolPrivate
 
         _init(...args: any[]): void;
@@ -1277,6 +1337,8 @@ export namespace GstVulkan {
 
     type VulkanDescriptorCacheClass = typeof VulkanDescriptorCache;
     abstract class VulkanDescriptorCachePrivate {
+        static $gtype: GObject.GType<VulkanDescriptorCachePrivate>;
+
         // Constructors of GstVulkan.VulkanDescriptorCachePrivate
 
         _init(...args: any[]): void;
@@ -1284,12 +1346,16 @@ export namespace GstVulkan {
 
     type VulkanDescriptorPoolClass = typeof VulkanDescriptorPool;
     abstract class VulkanDescriptorPoolPrivate {
+        static $gtype: GObject.GType<VulkanDescriptorPoolPrivate>;
+
         // Constructors of GstVulkan.VulkanDescriptorPoolPrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanDescriptorSet {
+        static $gtype: GObject.GType<VulkanDescriptorSet>;
+
         // Own fields of GstVulkan.VulkanDescriptorSet
 
         pool: VulkanDescriptorPool;
@@ -1310,12 +1376,16 @@ export namespace GstVulkan {
     }
 
     abstract class VulkanDescriptorSetClass {
+        static $gtype: GObject.GType<VulkanDescriptorSetClass>;
+
         // Constructors of GstVulkan.VulkanDescriptorSetClass
 
         _init(...args: any[]): void;
     }
 
     abstract class VulkanDescriptorSetPrivate {
+        static $gtype: GObject.GType<VulkanDescriptorSetPrivate>;
+
         // Constructors of GstVulkan.VulkanDescriptorSetPrivate
 
         _init(...args: any[]): void;
@@ -1323,6 +1393,8 @@ export namespace GstVulkan {
 
     type VulkanDeviceClass = typeof VulkanDevice;
     abstract class VulkanDevicePrivate {
+        static $gtype: GObject.GType<VulkanDevicePrivate>;
+
         // Constructors of GstVulkan.VulkanDevicePrivate
 
         _init(...args: any[]): void;
@@ -1330,12 +1402,16 @@ export namespace GstVulkan {
 
     type VulkanDisplayClass = typeof VulkanDisplay;
     abstract class VulkanDisplayPrivate {
+        static $gtype: GObject.GType<VulkanDisplayPrivate>;
+
         // Constructors of GstVulkan.VulkanDisplayPrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanFence {
+        static $gtype: GObject.GType<VulkanFence>;
+
         // Own fields of GstVulkan.VulkanFence
 
         device: VulkanDevice;
@@ -1358,6 +1434,8 @@ export namespace GstVulkan {
 
     type VulkanFenceCacheClass = typeof VulkanFenceCache;
     class VulkanFormatInfo {
+        static $gtype: GObject.GType<VulkanFormatInfo>;
+
         // Own fields of GstVulkan.VulkanFormatInfo
 
         name: string;
@@ -1381,6 +1459,8 @@ export namespace GstVulkan {
 
     type VulkanFullScreenQuadClass = typeof VulkanFullScreenQuad;
     abstract class VulkanFullScreenQuadPrivate {
+        static $gtype: GObject.GType<VulkanFullScreenQuadPrivate>;
+
         // Constructors of GstVulkan.VulkanFullScreenQuadPrivate
 
         _init(...args: any[]): void;
@@ -1390,6 +1470,8 @@ export namespace GstVulkan {
      * Holds information about a vulkan non dispatchable handle
      */
     class VulkanHandle {
+        static $gtype: GObject.GType<VulkanHandle>;
+
         // Own fields of GstVulkan.VulkanHandle
 
         device: VulkanDevice;
@@ -1482,6 +1564,8 @@ export namespace GstVulkan {
 
     type VulkanHandlePoolClass = typeof VulkanHandlePool;
     abstract class VulkanHandleTypedef {
+        static $gtype: GObject.GType<VulkanHandleTypedef>;
+
         // Constructors of GstVulkan.VulkanHandleTypedef
 
         _init(...args: any[]): void;
@@ -1489,12 +1573,16 @@ export namespace GstVulkan {
 
     type VulkanImageBufferPoolClass = typeof VulkanImageBufferPool;
     abstract class VulkanImageBufferPoolPrivate {
+        static $gtype: GObject.GType<VulkanImageBufferPoolPrivate>;
+
         // Constructors of GstVulkan.VulkanImageBufferPoolPrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanImageMemory {
+        static $gtype: GObject.GType<VulkanImageMemory>;
+
         // Own fields of GstVulkan.VulkanImageMemory
 
         device: VulkanDevice;
@@ -1554,6 +1642,8 @@ export namespace GstVulkan {
 
     type VulkanImageMemoryAllocatorClass = typeof VulkanImageMemoryAllocator;
     class VulkanImageView {
+        static $gtype: GObject.GType<VulkanImageView>;
+
         // Own fields of GstVulkan.VulkanImageView
 
         device: VulkanDevice;
@@ -1568,12 +1658,16 @@ export namespace GstVulkan {
 
     type VulkanInstanceClass = typeof VulkanInstance;
     abstract class VulkanInstancePrivate {
+        static $gtype: GObject.GType<VulkanInstancePrivate>;
+
         // Constructors of GstVulkan.VulkanInstancePrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanMemory {
+        static $gtype: GObject.GType<VulkanMemory>;
+
         // Own fields of GstVulkan.VulkanMemory
 
         device: VulkanDevice;
@@ -1618,6 +1712,8 @@ export namespace GstVulkan {
     type VulkanMemoryAllocatorClass = typeof VulkanMemoryAllocator;
     type VulkanPhysicalDeviceClass = typeof VulkanPhysicalDevice;
     abstract class VulkanPhysicalDevicePrivate {
+        static $gtype: GObject.GType<VulkanPhysicalDevicePrivate>;
+
         // Constructors of GstVulkan.VulkanPhysicalDevicePrivate
 
         _init(...args: any[]): void;
@@ -1625,6 +1721,8 @@ export namespace GstVulkan {
 
     type VulkanQueueClass = typeof VulkanQueue;
     abstract class VulkanQueuePrivate {
+        static $gtype: GObject.GType<VulkanQueuePrivate>;
+
         // Constructors of GstVulkan.VulkanQueuePrivate
 
         _init(...args: any[]): void;
@@ -1632,12 +1730,16 @@ export namespace GstVulkan {
 
     type VulkanSwapperClass = typeof VulkanSwapper;
     abstract class VulkanSwapperPrivate {
+        static $gtype: GObject.GType<VulkanSwapperPrivate>;
+
         // Constructors of GstVulkan.VulkanSwapperPrivate
 
         _init(...args: any[]): void;
     }
 
     class VulkanTrash {
+        static $gtype: GObject.GType<VulkanTrash>;
+
         // Own fields of GstVulkan.VulkanTrash
 
         cache: VulkanTrashList;
@@ -1664,6 +1766,8 @@ export namespace GstVulkan {
     type VulkanVideoFilterClass = typeof VulkanVideoFilter;
     type VulkanWindowClass = typeof VulkanWindow;
     abstract class VulkanWindowPrivate {
+        static $gtype: GObject.GType<VulkanWindowPrivate>;
+
         // Constructors of GstVulkan.VulkanWindowPrivate
 
         _init(...args: any[]): void;

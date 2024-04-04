@@ -101,6 +101,8 @@ export namespace EDataCal {
      * functions below.
      */
     class CalBackend extends EBackend.Backend implements ECal.TimezoneCache {
+        static $gtype: GObject.GType<CalBackend>;
+
         // Own properties of EDataCal.CalBackend
 
         get cache_dir(): string;
@@ -1419,6 +1421,8 @@ export namespace EDataCal {
      * functions below.
      */
     abstract class CalBackendFactory extends EBackend.BackendFactory {
+        static $gtype: GObject.GType<CalBackendFactory>;
+
         // Constructors of EDataCal.CalBackendFactory
 
         constructor(properties?: Partial<CalBackendFactory.ConstructorProps>, ...args: any[]);
@@ -1433,6 +1437,8 @@ export namespace EDataCal {
     }
 
     class CalBackendSExp extends GObject.Object {
+        static $gtype: GObject.GType<CalBackendSExp>;
+
         // Constructors of EDataCal.CalBackendSExp
 
         constructor(properties?: Partial<CalBackendSExp.ConstructorProps>, ...args: any[]);
@@ -1491,6 +1497,8 @@ export namespace EDataCal {
      * functions below.
      */
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
+        static $gtype: GObject.GType<CalBackendSync>;
+
         // Constructors of EDataCal.CalBackendSync
 
         constructor(properties?: Partial<CalBackendSync.ConstructorProps>, ...args: any[]);
@@ -2107,6 +2115,8 @@ export namespace EDataCal {
      * the functions below.
      */
     class CalCache extends EBackend.Cache implements ECal.TimezoneCache, EDataServer.Extensible {
+        static $gtype: GObject.GType<CalCache>;
+
         // Constructors of EDataCal.CalCache
 
         constructor(properties?: Partial<CalCache.ConstructorProps>, ...args: any[]);
@@ -2948,6 +2958,8 @@ export namespace EDataCal {
      * the functions below.
      */
     abstract class CalMetaBackend extends CalBackendSync implements ECal.TimezoneCache {
+        static $gtype: GObject.GType<CalMetaBackend>;
+
         // Own properties of EDataCal.CalMetaBackend
 
         /**
@@ -4005,6 +4017,8 @@ export namespace EDataCal {
     }
 
     class DataCal extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<DataCal>;
+
         // Own properties of EDataCal.DataCal
 
         get backend(): CalBackend;
@@ -4624,6 +4638,8 @@ export namespace EDataCal {
     }
 
     class DataCalFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
+        static $gtype: GObject.GType<DataCalFactory>;
+
         // Constructors of EDataCal.DataCalFactory
 
         constructor(properties?: Partial<DataCalFactory.ConstructorProps>, ...args: any[]);
@@ -5087,6 +5103,8 @@ export namespace EDataCal {
     }
 
     class DataCalView extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<DataCalView>;
+
         // Own properties of EDataCal.DataCalView
 
         get backend(): CalBackend;
@@ -5687,6 +5705,8 @@ export namespace EDataCal {
      * functions below.
      */
     class IntervalTree extends GObject.Object {
+        static $gtype: GObject.GType<IntervalTree>;
+
         // Constructors of EDataCal.IntervalTree
 
         constructor(properties?: Partial<IntervalTree.ConstructorProps>, ...args: any[]);
@@ -5711,6 +5731,8 @@ export namespace EDataCal {
     }
 
     class SubprocessCalFactory extends EBackend.SubprocessFactory implements Gio.Initable {
+        static $gtype: GObject.GType<SubprocessCalFactory>;
+
         // Constructors of EDataCal.SubprocessCalFactory
 
         constructor(properties?: Partial<SubprocessCalFactory.ConstructorProps>, ...args: any[]);
@@ -6164,12 +6186,16 @@ export namespace EDataCal {
     type CalBackendClass = typeof CalBackend;
     type CalBackendFactoryClass = typeof CalBackendFactory;
     abstract class CalBackendFactoryPrivate {
+        static $gtype: GObject.GType<CalBackendFactoryPrivate>;
+
         // Constructors of EDataCal.CalBackendFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CalBackendPrivate {
+        static $gtype: GObject.GType<CalBackendPrivate>;
+
         // Constructors of EDataCal.CalBackendPrivate
 
         _init(...args: any[]): void;
@@ -6177,6 +6203,8 @@ export namespace EDataCal {
 
     type CalBackendSExpClass = typeof CalBackendSExp;
     abstract class CalBackendSExpPrivate {
+        static $gtype: GObject.GType<CalBackendSExpPrivate>;
+
         // Constructors of EDataCal.CalBackendSExpPrivate
 
         _init(...args: any[]): void;
@@ -6184,6 +6212,8 @@ export namespace EDataCal {
 
     type CalBackendSyncClass = typeof CalBackendSync;
     abstract class CalBackendSyncPrivate {
+        static $gtype: GObject.GType<CalBackendSyncPrivate>;
+
         // Constructors of EDataCal.CalBackendSyncPrivate
 
         _init(...args: any[]): void;
@@ -6194,6 +6224,8 @@ export namespace EDataCal {
      * Holds the information about offline change for one component.
      */
     class CalCacheOfflineChange {
+        static $gtype: GObject.GType<CalCacheOfflineChange>;
+
         // Own fields of EDataCal.CalCacheOfflineChange
 
         uid: string;
@@ -6236,6 +6268,8 @@ export namespace EDataCal {
     }
 
     abstract class CalCachePrivate {
+        static $gtype: GObject.GType<CalCachePrivate>;
+
         // Constructors of EDataCal.CalCachePrivate
 
         _init(...args: any[]): void;
@@ -6253,6 +6287,8 @@ export namespace EDataCal {
      * These should be freed with e_cal_cache_search_data_free().
      */
     class CalCacheSearchData {
+        static $gtype: GObject.GType<CalCacheSearchData>;
+
         // Own fields of EDataCal.CalCacheSearchData
 
         uid: string;
@@ -6290,6 +6326,8 @@ export namespace EDataCal {
 
     type CalMetaBackendClass = typeof CalMetaBackend;
     class CalMetaBackendInfo {
+        static $gtype: GObject.GType<CalMetaBackendInfo>;
+
         // Own fields of EDataCal.CalMetaBackendInfo
 
         uid: string;
@@ -6331,6 +6369,8 @@ export namespace EDataCal {
     }
 
     abstract class CalMetaBackendPrivate {
+        static $gtype: GObject.GType<CalMetaBackendPrivate>;
+
         // Constructors of EDataCal.CalMetaBackendPrivate
 
         _init(...args: any[]): void;
@@ -6339,12 +6379,16 @@ export namespace EDataCal {
     type DataCalClass = typeof DataCal;
     type DataCalFactoryClass = typeof DataCalFactory;
     abstract class DataCalFactoryPrivate {
+        static $gtype: GObject.GType<DataCalFactoryPrivate>;
+
         // Constructors of EDataCal.DataCalFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class DataCalPrivate {
+        static $gtype: GObject.GType<DataCalPrivate>;
+
         // Constructors of EDataCal.DataCalPrivate
 
         _init(...args: any[]): void;
@@ -6352,6 +6396,8 @@ export namespace EDataCal {
 
     type DataCalViewClass = typeof DataCalView;
     abstract class DataCalViewPrivate {
+        static $gtype: GObject.GType<DataCalViewPrivate>;
+
         // Constructors of EDataCal.DataCalViewPrivate
 
         _init(...args: any[]): void;
@@ -6359,6 +6405,8 @@ export namespace EDataCal {
 
     type IntervalTreeClass = typeof IntervalTree;
     abstract class IntervalTreePrivate {
+        static $gtype: GObject.GType<IntervalTreePrivate>;
+
         // Constructors of EDataCal.IntervalTreePrivate
 
         _init(...args: any[]): void;
@@ -6366,6 +6414,8 @@ export namespace EDataCal {
 
     type SubprocessCalFactoryClass = typeof SubprocessCalFactory;
     abstract class SubprocessCalFactoryPrivate {
+        static $gtype: GObject.GType<SubprocessCalFactoryPrivate>;
+
         // Constructors of EDataCal.SubprocessCalFactoryPrivate
 
         _init(...args: any[]): void;

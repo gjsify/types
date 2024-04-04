@@ -124,6 +124,8 @@ export namespace GstTag {
      * Opaque #GstTagDemux structure.
      */
     abstract class Demux extends Gst.Element {
+        static $gtype: GObject.GType<Demux>;
+
         // Own fields of GstTag.Demux
 
         element: Gst.Element;
@@ -144,6 +146,8 @@ export namespace GstTag {
 
     type DemuxClass = typeof Demux;
     class DemuxPrivate {
+        static $gtype: GObject.GType<DemuxPrivate>;
+
         // Constructors of GstTag.DemuxPrivate
 
         _init(...args: any[]): void;

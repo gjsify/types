@@ -1,7 +1,7 @@
 
 declare module 'gi://DbusmenuGtk?version=0.4' {
-    import DbusmenuGtk04 from '@girs/dbusmenugtk-0.4';
-    export default DbusmenuGtk04;
+    import DbusmenuGtk from '@girs/dbusmenugtk-0.4';
+    export default DbusmenuGtk;
 }
 
 declare module 'gi://DbusmenuGtk' {

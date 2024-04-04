@@ -1,7 +1,7 @@
 
 declare module 'gi://UPowerGlib?version=1.0' {
-    import UPowerGlib10 from '@girs/upowerglib-1.0';
-    export default UPowerGlib10;
+    import UPowerGlib from '@girs/upowerglib-1.0';
+    export default UPowerGlib;
 }
 
 declare module 'gi://UPowerGlib' {

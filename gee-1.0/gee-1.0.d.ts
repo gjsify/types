@@ -35,6 +35,8 @@ export namespace Gee {
     }
 
     abstract class AbstractCollection extends GObject.Object implements Iterable, Collection {
+        static $gtype: GObject.GType<AbstractCollection>;
+
         // Own properties of Gee.AbstractCollection
 
         get size(): number;
@@ -446,6 +448,8 @@ export namespace Gee {
     }
 
     abstract class AbstractList extends AbstractCollection implements List {
+        static $gtype: GObject.GType<AbstractList>;
+
         // Own properties of Gee.AbstractList
 
         get read_only_view(): List;
@@ -535,6 +539,8 @@ export namespace Gee {
     }
 
     abstract class AbstractMap extends GObject.Object implements Iterable, Map {
+        static $gtype: GObject.GType<AbstractMap>;
+
         // Own properties of Gee.AbstractMap
 
         get size(): number;
@@ -960,6 +966,8 @@ export namespace Gee {
     }
 
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
+        static $gtype: GObject.GType<AbstractMultiMap>;
+
         // Constructors of Gee.AbstractMultiMap
 
         constructor(properties?: Partial<AbstractMultiMap.ConstructorProps>, ...args: any[]);
@@ -1363,6 +1371,8 @@ export namespace Gee {
     }
 
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
+        static $gtype: GObject.GType<AbstractMultiSet>;
+
         // Constructors of Gee.AbstractMultiSet
 
         constructor(properties?: Partial<AbstractMultiSet.ConstructorProps>, ...args: any[]);
@@ -1416,6 +1426,8 @@ export namespace Gee {
     }
 
     abstract class AbstractQueue extends AbstractCollection implements Queue {
+        static $gtype: GObject.GType<AbstractQueue>;
+
         // Own properties of Gee.AbstractQueue
 
         get capacity(): number;
@@ -1486,6 +1498,8 @@ export namespace Gee {
     }
 
     abstract class AbstractSet extends AbstractCollection implements Set {
+        static $gtype: GObject.GType<AbstractSet>;
+
         // Own properties of Gee.AbstractSet
 
         get read_only_view(): Set;
@@ -1537,6 +1551,8 @@ export namespace Gee {
     }
 
     class ArrayList extends AbstractList {
+        static $gtype: GObject.GType<ArrayList>;
+
         // Own properties of Gee.ArrayList
 
         get equal_func(): GLib.EqualFunc;
@@ -1571,6 +1587,8 @@ export namespace Gee {
     }
 
     class HashMap extends AbstractMap {
+        static $gtype: GObject.GType<HashMap>;
+
         // Own properties of Gee.HashMap
 
         get key_hash_func(): GLib.HashFunc;
@@ -1615,6 +1633,8 @@ export namespace Gee {
     }
 
     class HashMultiMap extends AbstractMultiMap {
+        static $gtype: GObject.GType<HashMultiMap>;
+
         // Own properties of Gee.HashMultiMap
 
         get key_hash_func(): GLib.HashFunc;
@@ -1656,6 +1676,8 @@ export namespace Gee {
     }
 
     class HashMultiSet extends AbstractMultiSet {
+        static $gtype: GObject.GType<HashMultiSet>;
+
         // Own properties of Gee.HashMultiSet
 
         get hash_func(): GLib.HashFunc;
@@ -1684,6 +1706,8 @@ export namespace Gee {
     }
 
     class HashSet extends AbstractSet {
+        static $gtype: GObject.GType<HashSet>;
+
         // Own properties of Gee.HashSet
 
         get hash_func(): GLib.HashFunc;
@@ -1719,6 +1743,8 @@ export namespace Gee {
     }
 
     class LinkedList extends AbstractList implements Queue, Deque {
+        static $gtype: GObject.GType<LinkedList>;
+
         // Own properties of Gee.LinkedList
 
         get equal_func(): GLib.EqualFunc;
@@ -1780,6 +1806,8 @@ export namespace Gee {
     }
 
     class PriorityQueue extends AbstractQueue {
+        static $gtype: GObject.GType<PriorityQueue>;
+
         // Own properties of Gee.PriorityQueue
 
         get compare_func(): GLib.CompareFunc;
@@ -1808,6 +1836,8 @@ export namespace Gee {
     }
 
     class TreeMap extends AbstractMap {
+        static $gtype: GObject.GType<TreeMap>;
+
         // Own properties of Gee.TreeMap
 
         get key_compare_func(): GLib.CompareFunc;
@@ -1840,6 +1870,8 @@ export namespace Gee {
     }
 
     class TreeMultiMap extends AbstractMultiMap {
+        static $gtype: GObject.GType<TreeMultiMap>;
+
         // Own properties of Gee.TreeMultiMap
 
         get key_compare_func(): GLib.CompareFunc;
@@ -1868,6 +1900,8 @@ export namespace Gee {
     }
 
     class TreeMultiSet extends AbstractMultiSet {
+        static $gtype: GObject.GType<TreeMultiSet>;
+
         // Own properties of Gee.TreeMultiSet
 
         get compare_func(): GLib.CompareFunc;
@@ -1892,6 +1926,8 @@ export namespace Gee {
     }
 
     class TreeSet extends AbstractSet implements SortedSet {
+        static $gtype: GObject.GType<TreeSet>;
+
         // Own properties of Gee.TreeSet
 
         get compare_func(): GLib.CompareFunc;
@@ -1946,6 +1982,8 @@ export namespace Gee {
     }
 
     abstract class MapEntry extends GObject.Object {
+        static $gtype: GObject.GType<MapEntry>;
+
         // Own properties of Gee.MapEntry
 
         get key(): any;
@@ -1961,6 +1999,8 @@ export namespace Gee {
 
     type AbstractCollectionClass = typeof AbstractCollection;
     abstract class AbstractCollectionPrivate {
+        static $gtype: GObject.GType<AbstractCollectionPrivate>;
+
         // Constructors of Gee.AbstractCollectionPrivate
 
         _init(...args: any[]): void;
@@ -1968,6 +2008,8 @@ export namespace Gee {
 
     type AbstractListClass = typeof AbstractList;
     abstract class AbstractListPrivate {
+        static $gtype: GObject.GType<AbstractListPrivate>;
+
         // Constructors of Gee.AbstractListPrivate
 
         _init(...args: any[]): void;
@@ -1975,6 +2017,8 @@ export namespace Gee {
 
     type AbstractMapClass = typeof AbstractMap;
     abstract class AbstractMapPrivate {
+        static $gtype: GObject.GType<AbstractMapPrivate>;
+
         // Constructors of Gee.AbstractMapPrivate
 
         _init(...args: any[]): void;
@@ -1982,6 +2026,8 @@ export namespace Gee {
 
     type AbstractMultiMapClass = typeof AbstractMultiMap;
     abstract class AbstractMultiMapPrivate {
+        static $gtype: GObject.GType<AbstractMultiMapPrivate>;
+
         // Constructors of Gee.AbstractMultiMapPrivate
 
         _init(...args: any[]): void;
@@ -1989,6 +2035,8 @@ export namespace Gee {
 
     type AbstractMultiSetClass = typeof AbstractMultiSet;
     abstract class AbstractMultiSetPrivate {
+        static $gtype: GObject.GType<AbstractMultiSetPrivate>;
+
         // Constructors of Gee.AbstractMultiSetPrivate
 
         _init(...args: any[]): void;
@@ -1996,6 +2044,8 @@ export namespace Gee {
 
     type AbstractQueueClass = typeof AbstractQueue;
     abstract class AbstractQueuePrivate {
+        static $gtype: GObject.GType<AbstractQueuePrivate>;
+
         // Constructors of Gee.AbstractQueuePrivate
 
         _init(...args: any[]): void;
@@ -2003,6 +2053,8 @@ export namespace Gee {
 
     type AbstractSetClass = typeof AbstractSet;
     abstract class AbstractSetPrivate {
+        static $gtype: GObject.GType<AbstractSetPrivate>;
+
         // Constructors of Gee.AbstractSetPrivate
 
         _init(...args: any[]): void;
@@ -2010,6 +2062,8 @@ export namespace Gee {
 
     type ArrayListClass = typeof ArrayList;
     abstract class ArrayListPrivate {
+        static $gtype: GObject.GType<ArrayListPrivate>;
+
         // Constructors of Gee.ArrayListPrivate
 
         _init(...args: any[]): void;
@@ -2017,6 +2071,8 @@ export namespace Gee {
 
     type HashMapClass = typeof HashMap;
     abstract class HashMapPrivate {
+        static $gtype: GObject.GType<HashMapPrivate>;
+
         // Constructors of Gee.HashMapPrivate
 
         _init(...args: any[]): void;
@@ -2024,6 +2080,8 @@ export namespace Gee {
 
     type HashMultiMapClass = typeof HashMultiMap;
     abstract class HashMultiMapPrivate {
+        static $gtype: GObject.GType<HashMultiMapPrivate>;
+
         // Constructors of Gee.HashMultiMapPrivate
 
         _init(...args: any[]): void;
@@ -2031,6 +2089,8 @@ export namespace Gee {
 
     type HashMultiSetClass = typeof HashMultiSet;
     abstract class HashMultiSetPrivate {
+        static $gtype: GObject.GType<HashMultiSetPrivate>;
+
         // Constructors of Gee.HashMultiSetPrivate
 
         _init(...args: any[]): void;
@@ -2038,6 +2098,8 @@ export namespace Gee {
 
     type HashSetClass = typeof HashSet;
     abstract class HashSetPrivate {
+        static $gtype: GObject.GType<HashSetPrivate>;
+
         // Constructors of Gee.HashSetPrivate
 
         _init(...args: any[]): void;
@@ -2045,6 +2107,8 @@ export namespace Gee {
 
     type LinkedListClass = typeof LinkedList;
     abstract class LinkedListPrivate {
+        static $gtype: GObject.GType<LinkedListPrivate>;
+
         // Constructors of Gee.LinkedListPrivate
 
         _init(...args: any[]): void;
@@ -2052,6 +2116,8 @@ export namespace Gee {
 
     type PriorityQueueClass = typeof PriorityQueue;
     abstract class PriorityQueuePrivate {
+        static $gtype: GObject.GType<PriorityQueuePrivate>;
+
         // Constructors of Gee.PriorityQueuePrivate
 
         _init(...args: any[]): void;
@@ -2059,6 +2125,8 @@ export namespace Gee {
 
     type TreeMapClass = typeof TreeMap;
     abstract class TreeMapPrivate {
+        static $gtype: GObject.GType<TreeMapPrivate>;
+
         // Constructors of Gee.TreeMapPrivate
 
         _init(...args: any[]): void;
@@ -2066,6 +2134,8 @@ export namespace Gee {
 
     type TreeMultiMapClass = typeof TreeMultiMap;
     abstract class TreeMultiMapPrivate {
+        static $gtype: GObject.GType<TreeMultiMapPrivate>;
+
         // Constructors of Gee.TreeMultiMapPrivate
 
         _init(...args: any[]): void;
@@ -2073,6 +2143,8 @@ export namespace Gee {
 
     type TreeMultiSetClass = typeof TreeMultiSet;
     abstract class TreeMultiSetPrivate {
+        static $gtype: GObject.GType<TreeMultiSetPrivate>;
+
         // Constructors of Gee.TreeMultiSetPrivate
 
         _init(...args: any[]): void;
@@ -2080,6 +2152,8 @@ export namespace Gee {
 
     type TreeSetClass = typeof TreeSet;
     abstract class TreeSetPrivate {
+        static $gtype: GObject.GType<TreeSetPrivate>;
+
         // Constructors of Gee.TreeSetPrivate
 
         _init(...args: any[]): void;
@@ -2095,6 +2169,8 @@ export namespace Gee {
     type ListIteratorIface = typeof ListIterator;
     type MapIface = typeof Map;
     abstract class EntryPrivate {
+        static $gtype: GObject.GType<EntryPrivate>;
+
         // Constructors of Gee.EntryPrivate
 
         _init(...args: any[]): void;

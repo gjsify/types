@@ -523,6 +523,8 @@ export namespace Pango {
      * Errors that can be returned by [func`Pango`.Layout.deserialize].
      */
     class LayoutDeserializeError extends GLib.Error {
+        static $gtype: GObject.GType<LayoutDeserializeError>;
+
         // Static fields of Pango.LayoutDeserializeError
 
         /**
@@ -2798,6 +2800,8 @@ export namespace Pango {
      * To obtain a `PangoContext`, use [method`Pango`.FontMap.create_context].
      */
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of Pango.Context
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
@@ -3025,6 +3029,8 @@ export namespace Pango {
      * opaque structure with no public fields.
      */
     class Coverage extends GObject.Object {
+        static $gtype: GObject.GType<Coverage>;
+
         // Constructors of Pango.Coverage
 
         constructor(properties?: Partial<Coverage.ConstructorProps>, ...args: any[]);
@@ -3097,6 +3103,8 @@ export namespace Pango {
      * rendering-system-independent manner.
      */
     abstract class Font extends GObject.Object {
+        static $gtype: GObject.GType<Font>;
+
         // Constructors of Pango.Font
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
@@ -3319,6 +3327,8 @@ export namespace Pango {
      * the same family, slant, weight, and width, but varying sizes.
      */
     abstract class FontFace extends GObject.Object {
+        static $gtype: GObject.GType<FontFace>;
+
         // Constructors of Pango.FontFace
 
         constructor(properties?: Partial<FontFace.ConstructorProps>, ...args: any[]);
@@ -3434,6 +3444,8 @@ export namespace Pango {
         extends GObject.Object
         implements Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<FontFamily>;
+
         // Own properties of Pango.FontFamily
 
         /**
@@ -4044,6 +4056,8 @@ export namespace Pango {
         extends GObject.Object
         implements Gio.ListModel<A>
     {
+        static $gtype: GObject.GType<FontMap>;
+
         // Own properties of Pango.FontMap
 
         /**
@@ -4662,6 +4676,8 @@ export namespace Pango {
      * composite set of metrics for the entire fontset.
      */
     abstract class Fontset extends GObject.Object {
+        static $gtype: GObject.GType<Fontset>;
+
         // Constructors of Pango.Fontset
 
         constructor(properties?: Partial<Fontset.ConstructorProps>, ...args: any[]);
@@ -4728,6 +4744,8 @@ export namespace Pango {
      * the array of fonts that make up the fontset.
      */
     class FontsetSimple extends Fontset {
+        static $gtype: GObject.GType<FontsetSimple>;
+
         // Constructors of Pango.FontsetSimple
 
         constructor(properties?: Partial<FontsetSimple.ConstructorProps>, ...args: any[]);
@@ -4799,6 +4817,8 @@ export namespace Pango {
      * and simply treat the results of a `PangoLayout` as a list of lines.
      */
     class Layout extends GObject.Object {
+        static $gtype: GObject.GType<Layout>;
+
         // Constructors of Pango.Layout
 
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
@@ -5545,6 +5565,8 @@ export namespace Pango {
      * backends and destinations can be created.
      */
     abstract class Renderer extends GObject.Object {
+        static $gtype: GObject.GType<Renderer>;
+
         // Own fields of Pango.Renderer
 
         matrix: Matrix;
@@ -5892,6 +5914,8 @@ export namespace Pango {
      * the properties of a segment of text.
      */
     class Analysis {
+        static $gtype: GObject.GType<Analysis>;
+
         // Own fields of Pango.Analysis
 
         shape_engine: any;
@@ -5916,6 +5940,8 @@ export namespace Pango {
      * one should use the wrapper functions provided for `PangoAttribute`.
      */
     class AttrClass {
+        static $gtype: GObject.GType<AttrClass>;
+
         // Own fields of Pango.AttrClass
 
         type: AttrType;
@@ -5930,6 +5956,8 @@ export namespace Pango {
      * are colors.
      */
     class AttrColor {
+        static $gtype: GObject.GType<AttrColor>;
+
         // Own fields of Pango.AttrColor
 
         color: Color;
@@ -5944,6 +5972,8 @@ export namespace Pango {
      * a float or double value.
      */
     class AttrFloat {
+        static $gtype: GObject.GType<AttrFloat>;
+
         // Own fields of Pango.AttrFloat
 
         value: number;
@@ -5958,6 +5988,8 @@ export namespace Pango {
      * sets all aspects of the font description at once.
      */
     class AttrFontDesc {
+        static $gtype: GObject.GType<AttrFontDesc>;
+
         // Constructors of Pango.AttrFontDesc
 
         _init(...args: any[]): void;
@@ -5979,6 +6011,8 @@ export namespace Pango {
      * font features as an attribute.
      */
     class AttrFontFeatures {
+        static $gtype: GObject.GType<AttrFontFeatures>;
+
         // Own fields of Pango.AttrFontFeatures
 
         features: string;
@@ -6004,6 +6038,8 @@ export namespace Pango {
      * an integer or enumeration value.
      */
     class AttrInt {
+        static $gtype: GObject.GType<AttrInt>;
+
         // Own fields of Pango.AttrInt
 
         value: number;
@@ -6023,6 +6059,8 @@ export namespace Pango {
      * currently in effect can be queried.
      */
     abstract class AttrIterator {
+        static $gtype: GObject.GType<AttrIterator>;
+
         // Constructors of Pango.AttrIterator
 
         _init(...args: any[]): void;
@@ -6082,6 +6120,8 @@ export namespace Pango {
      * are languages.
      */
     class AttrLanguage {
+        static $gtype: GObject.GType<AttrLanguage>;
+
         // Constructors of Pango.AttrLanguage
 
         _init(...args: any[]): void;
@@ -6109,6 +6149,8 @@ export namespace Pango {
      * should not use a single `PangoAttrList` for more than one paragraph of text.
      */
     abstract class AttrList {
+        static $gtype: GObject.GType<AttrList>;
+
         // Constructors of Pango.AttrList
 
         constructor(properties?: Partial<{}>);
@@ -6300,6 +6342,8 @@ export namespace Pango {
      * impose shape restrictions.
      */
     class AttrShape {
+        static $gtype: GObject.GType<AttrShape>;
+
         // Own fields of Pango.AttrShape
 
         ink_rect: Rectangle;
@@ -6351,6 +6395,8 @@ export namespace Pango {
      * set font size.
      */
     class AttrSize {
+        static $gtype: GObject.GType<AttrSize>;
+
         // Own fields of Pango.AttrSize
 
         size: number;
@@ -6379,6 +6425,8 @@ export namespace Pango {
      * a string value.
      */
     class AttrString {
+        static $gtype: GObject.GType<AttrString>;
+
         // Own fields of Pango.AttrString
 
         value: string;
@@ -6399,6 +6447,8 @@ export namespace Pango {
      * will have an all-inclusive range of [0,%G_MAXUINT].
      */
     class Attribute {
+        static $gtype: GObject.GType<Attribute>;
+
         // Own fields of Pango.Attribute
 
         start_index: number;
@@ -6507,6 +6557,8 @@ export namespace Pango {
      * represent a color in an uncalibrated RGB color-space.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Own fields of Pango.Color
 
         red: number;
@@ -6596,6 +6648,8 @@ export namespace Pango {
      * a font to load.
      */
     abstract class FontDescription {
+        static $gtype: GObject.GType<FontDescription>;
+
         // Constructors of Pango.FontDescription
 
         constructor(properties?: Partial<{}>);
@@ -6979,6 +7033,8 @@ export namespace Pango {
      * </picture>
      */
     class FontMetrics {
+        static $gtype: GObject.GType<FontMetrics>;
+
         // Constructors of Pango.FontMetrics
 
         constructor(properties?: Partial<{}>);
@@ -7096,6 +7152,8 @@ export namespace Pango {
      * 4. Render the next glyph
      */
     class GlyphGeometry {
+        static $gtype: GObject.GType<GlyphGeometry>;
+
         // Own fields of Pango.GlyphGeometry
 
         width: GlyphUnit;
@@ -7119,6 +7177,8 @@ export namespace Pango {
      * positioning information and visual attributes.
      */
     class GlyphInfo {
+        static $gtype: GObject.GType<GlyphInfo>;
+
         // Own fields of Pango.GlyphInfo
 
         glyph: Glyph;
@@ -7146,6 +7206,8 @@ export namespace Pango {
      * each of which contains a list of `PangoGlyphItem`.
      */
     class GlyphItem {
+        static $gtype: GObject.GType<GlyphItem>;
+
         // Own fields of Pango.GlyphItem
 
         glyphs: GlyphString;
@@ -7273,6 +7335,8 @@ export namespace Pango {
      * None of the members of a `PangoGlyphItemIter` should be modified manually.
      */
     class GlyphItemIter {
+        static $gtype: GObject.GType<GlyphItemIter>;
+
         // Own fields of Pango.GlyphItemIter
 
         text: string;
@@ -7341,6 +7405,8 @@ export namespace Pango {
      * which simplifies memory management.
      */
     class GlyphString {
+        static $gtype: GObject.GType<GlyphString>;
+
         // Own fields of Pango.GlyphString
 
         num_glyphs: number;
@@ -7493,6 +7559,8 @@ export namespace Pango {
      * base character.
      */
     class GlyphVisAttr {
+        static $gtype: GObject.GType<GlyphVisAttr>;
+
         // Own fields of Pango.GlyphVisAttr
 
         is_cluster_start: number;
@@ -7516,6 +7584,8 @@ export namespace Pango {
      * with [func`itemize]`.
      */
     class Item {
+        static $gtype: GObject.GType<Item>;
+
         // Own fields of Pango.Item
 
         offset: number;
@@ -7590,6 +7660,8 @@ export namespace Pango {
      * copied and compared with each other.
      */
     abstract class Language {
+        static $gtype: GObject.GType<Language>;
+
         // Constructors of Pango.Language
 
         _init(...args: any[]): void;
@@ -7760,6 +7832,8 @@ export namespace Pango {
      * The `PangoLayoutIter` structure is opaque, and has no user-visible fields.
      */
     abstract class LayoutIter {
+        static $gtype: GObject.GType<LayoutIter>;
+
         // Constructors of Pango.LayoutIter
 
         _init(...args: any[]): void;
@@ -7945,6 +8019,8 @@ export namespace Pango {
      * attributes, or settings of the parent `PangoLayout` are modified.
      */
     class LayoutLine {
+        static $gtype: GObject.GType<LayoutLine>;
+
         // Own fields of Pango.LayoutLine
 
         layout: Layout;
@@ -8058,6 +8134,8 @@ export namespace Pango {
      * single character.
      */
     class LogAttr {
+        static $gtype: GObject.GType<LogAttr>;
+
         // Own fields of Pango.LogAttr
 
         is_line_break: number;
@@ -8114,6 +8192,8 @@ export namespace Pango {
      * ```
      */
     class Matrix {
+        static $gtype: GObject.GType<Matrix>;
+
         // Own fields of Pango.Matrix
 
         xx: number;
@@ -8282,6 +8362,8 @@ export namespace Pango {
      * [method`Pango`.Font.get_glyph_extents].)
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Pango.Rectangle
 
         x: number;
@@ -8304,6 +8386,8 @@ export namespace Pango {
 
     type RendererClass = typeof Renderer;
     abstract class RendererPrivate {
+        static $gtype: GObject.GType<RendererPrivate>;
+
         // Constructors of Pango.RendererPrivate
 
         _init(...args: any[]): void;
@@ -8314,6 +8398,8 @@ export namespace Pango {
      * and identify ranges in different scripts.
      */
     abstract class ScriptIter {
+        static $gtype: GObject.GType<ScriptIter>;
+
         // Constructors of Pango.ScriptIter
 
         constructor(text: string, length: number);
@@ -8357,6 +8443,8 @@ export namespace Pango {
      * a character to use as decimal point.
      */
     abstract class TabArray {
+        static $gtype: GObject.GType<TabArray>;
+
         // Constructors of Pango.TabArray
 
         constructor(initial_size: number, positions_in_pixels: boolean);

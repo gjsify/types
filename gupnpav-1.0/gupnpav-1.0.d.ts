@@ -96,6 +96,8 @@ export namespace GUPnPAV {
      * protocol related errors.
      */
     class ProtocolError extends GLib.Error {
+        static $gtype: GObject.GType<ProtocolError>;
+
         // Static fields of GUPnPAV.ProtocolError
 
         /**
@@ -328,6 +330,8 @@ export namespace GUPnPAV {
     }
 
     class CDSLastChangeParser extends GObject.Object {
+        static $gtype: GObject.GType<CDSLastChangeParser>;
+
         // Constructors of GUPnPAV.CDSLastChangeParser
 
         constructor(properties?: Partial<CDSLastChangeParser.ConstructorProps>, ...args: any[]);
@@ -364,6 +368,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteContainer extends DIDLLiteObject {
+        static $gtype: GObject.GType<DIDLLiteContainer>;
+
         // Own properties of GUPnPAV.DIDLLiteContainer
 
         /**
@@ -541,6 +547,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteContributor extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteContributor>;
+
         // Own properties of GUPnPAV.DIDLLiteContributor
 
         /**
@@ -612,6 +620,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteCreateClass extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteCreateClass>;
+
         // Own properties of GUPnPAV.DIDLLiteCreateClass
 
         /**
@@ -709,6 +719,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteDescriptor extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteDescriptor>;
+
         // Own properties of GUPnPAV.DIDLLiteDescriptor
 
         /**
@@ -818,6 +830,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteItem extends DIDLLiteObject {
+        static $gtype: GObject.GType<DIDLLiteItem>;
+
         // Own properties of GUPnPAV.DIDLLiteItem
 
         /**
@@ -900,6 +914,8 @@ export namespace GUPnPAV {
     }
 
     abstract class DIDLLiteObject extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteObject>;
+
         // Own properties of GUPnPAV.DIDLLiteObject
 
         /**
@@ -1443,6 +1459,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteParser extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteParser>;
+
         // Constructors of GUPnPAV.DIDLLiteParser
 
         constructor(properties?: Partial<DIDLLiteParser.ConstructorProps>, ...args: any[]);
@@ -1531,6 +1549,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteResource extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteResource>;
+
         // Own properties of GUPnPAV.DIDLLiteResource
 
         /**
@@ -1954,6 +1974,8 @@ export namespace GUPnPAV {
     }
 
     class DIDLLiteWriter extends GObject.Object {
+        static $gtype: GObject.GType<DIDLLiteWriter>;
+
         // Own properties of GUPnPAV.DIDLLiteWriter
 
         /**
@@ -2032,6 +2054,8 @@ export namespace GUPnPAV {
     }
 
     class Feature extends GObject.Object {
+        static $gtype: GObject.GType<Feature>;
+
         // Own properties of GUPnPAV.Feature
 
         /**
@@ -2083,6 +2107,8 @@ export namespace GUPnPAV {
     }
 
     class FeatureListParser extends GObject.Object {
+        static $gtype: GObject.GType<FeatureListParser>;
+
         // Constructors of GUPnPAV.FeatureListParser
 
         constructor(properties?: Partial<FeatureListParser.ConstructorProps>, ...args: any[]);
@@ -2109,6 +2135,8 @@ export namespace GUPnPAV {
     }
 
     class LastChangeParser extends GObject.Object {
+        static $gtype: GObject.GType<LastChangeParser>;
+
         // Constructors of GUPnPAV.LastChangeParser
 
         constructor(properties?: Partial<LastChangeParser.ConstructorProps>, ...args: any[]);
@@ -2130,6 +2158,8 @@ export namespace GUPnPAV {
     }
 
     class MediaCollection extends GObject.Object {
+        static $gtype: GObject.GType<MediaCollection>;
+
         // Own properties of GUPnPAV.MediaCollection
 
         /**
@@ -2205,6 +2235,8 @@ export namespace GUPnPAV {
     }
 
     class ProtocolInfo extends GObject.Object {
+        static $gtype: GObject.GType<ProtocolInfo>;
+
         // Own properties of GUPnPAV.ProtocolInfo
 
         /**
@@ -2414,6 +2446,8 @@ export namespace GUPnPAV {
     }
 
     class SearchCriteriaParser extends GObject.Object {
+        static $gtype: GObject.GType<SearchCriteriaParser>;
+
         // Constructors of GUPnPAV.SearchCriteriaParser
 
         constructor(properties?: Partial<SearchCriteriaParser.ConstructorProps>, ...args: any[]);
@@ -2488,6 +2522,8 @@ export namespace GUPnPAV {
      * Opaque struct which contains information about the event.
      */
     abstract class CDSLastChangeEntry {
+        static $gtype: GObject.GType<CDSLastChangeEntry>;
+
         // Constructors of GUPnPAV.CDSLastChangeEntry
 
         _init(...args: any[]): void;
@@ -2549,6 +2585,8 @@ export namespace GUPnPAV {
     type DIDLLiteItemClass = typeof DIDLLiteItem;
     type DIDLLiteObjectClass = typeof DIDLLiteObject;
     abstract class DIDLLiteObjectPrivate {
+        static $gtype: GObject.GType<DIDLLiteObjectPrivate>;
+
         // Constructors of GUPnPAV.DIDLLiteObjectPrivate
 
         _init(...args: any[]): void;

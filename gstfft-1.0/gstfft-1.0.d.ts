@@ -78,6 +78,8 @@ export namespace GstFft {
      * the magnitude of the frequency data.
      */
     abstract class FFTF32 {
+        static $gtype: GObject.GType<FFTF32>;
+
         // Constructors of GstFft.FFTF32
 
         _init(...args: any[]): void;
@@ -124,6 +126,8 @@ export namespace GstFft {
      * 32 bit float.
      */
     class FFTF32Complex {
+        static $gtype: GObject.GType<FFTF32Complex>;
+
         // Own fields of GstFft.FFTF32Complex
 
         r: number;
@@ -168,6 +172,8 @@ export namespace GstFft {
      * the magnitude of the frequency data.
      */
     abstract class FFTF64 {
+        static $gtype: GObject.GType<FFTF64>;
+
         // Constructors of GstFft.FFTF64
 
         _init(...args: any[]): void;
@@ -214,6 +220,8 @@ export namespace GstFft {
      * 64 bit float.
      */
     class FFTF64Complex {
+        static $gtype: GObject.GType<FFTF64Complex>;
+
         // Own fields of GstFft.FFTF64Complex
 
         r: number;
@@ -258,6 +266,8 @@ export namespace GstFft {
      * the magnitude of the frequency data.
      */
     abstract class FFTS16 {
+        static $gtype: GObject.GType<FFTS16>;
+
         // Constructors of GstFft.FFTS16
 
         _init(...args: any[]): void;
@@ -304,6 +314,8 @@ export namespace GstFft {
      * signed 16 bit integers.
      */
     class FFTS16Complex {
+        static $gtype: GObject.GType<FFTS16Complex>;
+
         // Own fields of GstFft.FFTS16Complex
 
         r: number;
@@ -348,6 +360,8 @@ export namespace GstFft {
      * the magnitude of the frequency data.
      */
     abstract class FFTS32 {
+        static $gtype: GObject.GType<FFTS32>;
+
         // Constructors of GstFft.FFTS32
 
         _init(...args: any[]): void;
@@ -394,6 +408,8 @@ export namespace GstFft {
      * signed 32 bit integers.
      */
     class FFTS32Complex {
+        static $gtype: GObject.GType<FFTS32Complex>;
+
         // Own fields of GstFft.FFTS32Complex
 
         r: number;

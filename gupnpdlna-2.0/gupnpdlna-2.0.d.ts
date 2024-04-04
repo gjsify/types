@@ -39,6 +39,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class AudioInformation extends GObject.Object {
+        static $gtype: GObject.GType<AudioInformation>;
+
         // Constructors of GUPnPDLNA.AudioInformation
 
         constructor(properties?: Partial<AudioInformation.ConstructorProps>, ...args: any[]);
@@ -53,6 +55,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class ContainerInformation extends GObject.Object {
+        static $gtype: GObject.GType<ContainerInformation>;
+
         // Constructors of GUPnPDLNA.ContainerInformation
 
         constructor(properties?: Partial<ContainerInformation.ConstructorProps>, ...args: any[]);
@@ -67,6 +71,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class ImageInformation extends GObject.Object {
+        static $gtype: GObject.GType<ImageInformation>;
+
         // Constructors of GUPnPDLNA.ImageInformation
 
         constructor(properties?: Partial<ImageInformation.ConstructorProps>, ...args: any[]);
@@ -91,6 +97,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class Information extends GObject.Object {
+        static $gtype: GObject.GType<Information>;
+
         // Own properties of GUPnPDLNA.Information
 
         /**
@@ -203,6 +211,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class MetadataExtractor extends GObject.Object {
+        static $gtype: GObject.GType<MetadataExtractor>;
+
         // Constructors of GUPnPDLNA.MetadataExtractor
 
         constructor(properties?: Partial<MetadataExtractor.ConstructorProps>, ...args: any[]);
@@ -289,6 +299,8 @@ export namespace GUPnPDLNA {
      * DLNA Profiles.
      */
     class Profile extends GObject.Object {
+        static $gtype: GObject.GType<Profile>;
+
         // Own properties of GUPnPDLNA.Profile
 
         get audio_restrictions(): any;
@@ -363,6 +375,8 @@ export namespace GUPnPDLNA {
     }
 
     class ProfileGuesser extends GObject.Object {
+        static $gtype: GObject.GType<ProfileGuesser>;
+
         // Own properties of GUPnPDLNA.ProfileGuesser
 
         /**
@@ -464,6 +478,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class VideoInformation extends GObject.Object {
+        static $gtype: GObject.GType<VideoInformation>;
+
         // Constructors of GUPnPDLNA.VideoInformation
 
         constructor(properties?: Partial<VideoInformation.ConstructorProps>, ...args: any[]);
@@ -476,6 +492,8 @@ export namespace GUPnPDLNA {
      * GUPnP DLNA Value representing a boolean value of some metadata attribute.
      */
     class BoolValue {
+        static $gtype: GObject.GType<BoolValue>;
+
         // Own fields of GUPnPDLNA.BoolValue
 
         value: boolean;
@@ -488,6 +506,8 @@ export namespace GUPnPDLNA {
 
     type ContainerInformationClass = typeof ContainerInformation;
     abstract class Fraction {
+        static $gtype: GObject.GType<Fraction>;
+
         // Constructors of GUPnPDLNA.Fraction
 
         _init(...args: any[]): void;
@@ -504,6 +524,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class FractionRange {
+        static $gtype: GObject.GType<FractionRange>;
+
         // Constructors of GUPnPDLNA.FractionRange
 
         _init(...args: any[]): void;
@@ -523,6 +545,8 @@ export namespace GUPnPDLNA {
      * GUPnP DLNA Value representing a fraction value of some metadata attribute.
      */
     class FractionValue {
+        static $gtype: GObject.GType<FractionValue>;
+
         // Own fields of GUPnPDLNA.FractionValue
 
         numerator: number;
@@ -537,6 +561,8 @@ export namespace GUPnPDLNA {
     type ImageInformationClass = typeof ImageInformation;
     type InformationClass = typeof Information;
     abstract class IntRange {
+        static $gtype: GObject.GType<IntRange>;
+
         // Constructors of GUPnPDLNA.IntRange
 
         _init(...args: any[]): void;
@@ -556,6 +582,8 @@ export namespace GUPnPDLNA {
      * GUPnP DLNA Value representing an integer value of some metadata attribute.
      */
     class IntValue {
+        static $gtype: GObject.GType<IntValue>;
+
         // Own fields of GUPnPDLNA.IntValue
 
         value: number;
@@ -570,6 +598,8 @@ export namespace GUPnPDLNA {
     type ProfileClass = typeof Profile;
     type ProfileGuesserClass = typeof ProfileGuesser;
     abstract class Restriction {
+        static $gtype: GObject.GType<Restriction>;
+
         // Constructors of GUPnPDLNA.Restriction
 
         _init(...args: any[]): void;
@@ -605,6 +635,8 @@ export namespace GUPnPDLNA {
      * attribute.
      */
     class StringValue {
+        static $gtype: GObject.GType<StringValue>;
+
         // Own fields of GUPnPDLNA.StringValue
 
         value: string;
@@ -616,6 +648,8 @@ export namespace GUPnPDLNA {
     }
 
     abstract class ValueList {
+        static $gtype: GObject.GType<ValueList>;
+
         // Constructors of GUPnPDLNA.ValueList
 
         _init(...args: any[]): void;

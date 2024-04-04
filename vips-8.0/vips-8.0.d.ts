@@ -3011,6 +3011,8 @@ export namespace Vips {
     }
 
     abstract class Foreign extends Operation {
+        static $gtype: GObject.GType<Foreign>;
+
         // Own fields of Vips.Foreign
 
         parent_object: Operation;
@@ -3141,6 +3143,8 @@ export namespace Vips {
     }
 
     abstract class ForeignLoad extends Foreign {
+        static $gtype: GObject.GType<ForeignLoad>;
+
         // Own properties of Vips.ForeignLoad
 
         get access(): Access;
@@ -3196,6 +3200,8 @@ export namespace Vips {
     }
 
     abstract class ForeignSave extends Foreign {
+        static $gtype: GObject.GType<ForeignSave>;
+
         // Own properties of Vips.ForeignSave
 
         get background(): ArrayDouble;
@@ -3278,6 +3284,8 @@ export namespace Vips {
      * in memory.
      */
     class Image extends Object {
+        static $gtype: GObject.GType<Image>;
+
         // Own properties of Vips.Image
 
         get bands(): number;
@@ -4143,6 +4151,8 @@ export namespace Vips {
     }
 
     abstract class Interpolate extends Object {
+        static $gtype: GObject.GType<Interpolate>;
+
         // Own fields of Vips.Interpolate
 
         parent_object: Object;
@@ -4222,6 +4232,8 @@ export namespace Vips {
     }
 
     abstract class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Vips.Object
 
         get description(): string;
@@ -4387,6 +4399,8 @@ export namespace Vips {
     }
 
     abstract class Operation extends Object {
+        static $gtype: GObject.GType<Operation>;
+
         // Own fields of Vips.Operation
 
         hash: number;
@@ -4468,6 +4482,8 @@ export namespace Vips {
      * See also: VIPS_REGION_ADDR(), vips_region_new(), vips_region_prepare().
      */
     class Region extends Object {
+        static $gtype: GObject.GType<Region>;
+
         // Own fields of Vips.Region
 
         parent_object: Object;
@@ -4671,6 +4687,8 @@ export namespace Vips {
     }
 
     class Area {
+        static $gtype: GObject.GType<Area>;
+
         // Own fields of Vips.Area
 
         data: any;
@@ -4706,6 +4724,8 @@ export namespace Vips {
     }
 
     class Argument {
+        static $gtype: GObject.GType<Argument>;
+
         // Own fields of Vips.Argument
 
         pspec: GObject.ParamSpec;
@@ -4716,6 +4736,8 @@ export namespace Vips {
     }
 
     class ArgumentClass {
+        static $gtype: GObject.GType<ArgumentClass>;
+
         // Own fields of Vips.ArgumentClass
 
         flags: ArgumentFlags;
@@ -4732,6 +4754,8 @@ export namespace Vips {
     }
 
     class ArgumentInstance {
+        static $gtype: GObject.GType<ArgumentInstance>;
+
         // Own fields of Vips.ArgumentInstance
 
         object: Object;
@@ -4745,6 +4769,8 @@ export namespace Vips {
     }
 
     class ArrayDouble {
+        static $gtype: GObject.GType<ArrayDouble>;
+
         // Constructors of Vips.ArrayDouble
 
         constructor(array: number[]);
@@ -4762,6 +4788,8 @@ export namespace Vips {
     }
 
     class ArrayImage {
+        static $gtype: GObject.GType<ArrayImage>;
+
         // Constructors of Vips.ArrayImage
 
         constructor(
@@ -4798,6 +4826,8 @@ export namespace Vips {
     }
 
     class ArrayInt {
+        static $gtype: GObject.GType<ArrayInt>;
+
         // Constructors of Vips.ArrayInt
 
         constructor(array: number[]);
@@ -4815,6 +4845,8 @@ export namespace Vips {
     }
 
     class Blob {
+        static $gtype: GObject.GType<Blob>;
+
         // Constructors of Vips.Blob
 
         constructor(free_fn: CallbackFn | null, data: Uint8Array);
@@ -4856,6 +4888,8 @@ export namespace Vips {
     }
 
     abstract class Buf {
+        static $gtype: GObject.GType<Buf>;
+
         // Constructors of Vips.Buf
 
         _init(...args: any[]): void;
@@ -4873,6 +4907,8 @@ export namespace Vips {
      * progress. See #VipsImage::eval.
      */
     class Progress {
+        static $gtype: GObject.GType<Progress>;
+
         // Own fields of Vips.Progress
 
         run: number;
@@ -4901,6 +4937,8 @@ export namespace Vips {
      * performing simple rectangle algebra.
      */
     class Rect {
+        static $gtype: GObject.GType<Rect>;
+
         // Own fields of Vips.Rect
 
         left: number;
@@ -4975,6 +5013,8 @@ export namespace Vips {
     }
 
     class RefString {
+        static $gtype: GObject.GType<RefString>;
+
         // Constructors of Vips.RefString
 
         constructor(str: string);
@@ -4996,18 +5036,24 @@ export namespace Vips {
 
     type RegionClass = typeof Region;
     abstract class Source {
+        static $gtype: GObject.GType<Source>;
+
         // Constructors of Vips.Source
 
         _init(...args: any[]): void;
     }
 
     abstract class Target {
+        static $gtype: GObject.GType<Target>;
+
         // Constructors of Vips.Target
 
         _init(...args: any[]): void;
     }
 
     class Thing {
+        static $gtype: GObject.GType<Thing>;
+
         // Own fields of Vips.Thing
 
         i: number;

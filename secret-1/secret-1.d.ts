@@ -614,6 +614,8 @@ export namespace Secret {
      * There may not be any items exposed when the collection is locked.
      */
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Collection>;
+
         // Own properties of Secret.Collection
 
         /**
@@ -1614,6 +1616,8 @@ export namespace Secret {
      * Items can be created with [func`Item`.create] or [method`Service`.store].
      */
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable, Retrievable {
+        static $gtype: GObject.GType<Item>;
+
         // Own properties of Secret.Item
 
         /**
@@ -2687,6 +2691,8 @@ export namespace Secret {
      * methods of the [class`Service]` class.
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Prompt>;
+
         // Constructors of Secret.Prompt
 
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
@@ -3419,6 +3425,8 @@ export namespace Secret {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable, Backend
     {
+        static $gtype: GObject.GType<Service>;
+
         // Constructors of Secret.Service
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
@@ -4846,6 +4854,8 @@ export namespace Secret {
     type BackendInterface = typeof Backend;
     type CollectionClass = typeof Collection;
     abstract class CollectionPrivate {
+        static $gtype: GObject.GType<CollectionPrivate>;
+
         // Constructors of Secret.CollectionPrivate
 
         _init(...args: any[]): void;
@@ -4853,6 +4863,8 @@ export namespace Secret {
 
     type ItemClass = typeof Item;
     abstract class ItemPrivate {
+        static $gtype: GObject.GType<ItemPrivate>;
+
         // Constructors of Secret.ItemPrivate
 
         _init(...args: any[]): void;
@@ -4860,6 +4872,8 @@ export namespace Secret {
 
     type PromptClass = typeof Prompt;
     abstract class PromptPrivate {
+        static $gtype: GObject.GType<PromptPrivate>;
+
         // Constructors of Secret.PromptPrivate
 
         _init(...args: any[]): void;
@@ -4922,6 +4936,8 @@ export namespace Secret {
      * ```
      */
     class Schema {
+        static $gtype: GObject.GType<Schema>;
+
         // Own fields of Secret.Schema
 
         name: string;
@@ -4965,6 +4981,8 @@ export namespace Secret {
      * An attribute in a #SecretSchema.
      */
     class SchemaAttribute {
+        static $gtype: GObject.GType<SchemaAttribute>;
+
         // Own fields of Secret.SchemaAttribute
 
         name: string;
@@ -4977,6 +4995,8 @@ export namespace Secret {
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
+        static $gtype: GObject.GType<ServicePrivate>;
+
         // Constructors of Secret.ServicePrivate
 
         _init(...args: any[]): void;
@@ -4998,6 +5018,8 @@ export namespace Secret {
      * freed when all references have been released via [method`Value`.unref].
      */
     abstract class Value {
+        static $gtype: GObject.GType<Value>;
+
         // Constructors of Secret.Value
 
         constructor(secret: string, length: number, content_type: string);

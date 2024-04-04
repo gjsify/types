@@ -4703,6 +4703,8 @@ export namespace Gdk {
     }
 
     class AppLaunchContext extends Gio.AppLaunchContext {
+        static $gtype: GObject.GType<AppLaunchContext>;
+
         // Constructors of Gdk.AppLaunchContext
 
         constructor(properties?: Partial<AppLaunchContext.ConstructorProps>, ...args: any[]);
@@ -4785,6 +4787,8 @@ export namespace Gdk {
     }
 
     class Colormap extends GObject.Object {
+        static $gtype: GObject.GType<Colormap>;
+
         // Own fields of Gdk.Colormap
 
         size: number;
@@ -4875,6 +4879,8 @@ export namespace Gdk {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own fields of Gdk.Device
 
         name: string;
@@ -4987,6 +4993,8 @@ export namespace Gdk {
     }
 
     class Display extends GObject.Object {
+        static $gtype: GObject.GType<Display>;
+
         // Constructors of Gdk.Display
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
@@ -5247,6 +5255,8 @@ export namespace Gdk {
     }
 
     class DisplayManager extends GObject.Object {
+        static $gtype: GObject.GType<DisplayManager>;
+
         // Own properties of Gdk.DisplayManager
 
         get default_display(): Display;
@@ -5306,6 +5316,8 @@ export namespace Gdk {
     }
 
     class DragContext extends GObject.Object {
+        static $gtype: GObject.GType<DragContext>;
+
         // Own fields of Gdk.DragContext
 
         protocol: DragProtocol;
@@ -5382,6 +5394,8 @@ export namespace Gdk {
     }
 
     abstract class Drawable extends GObject.Object {
+        static $gtype: GObject.GType<Drawable>;
+
         // Constructors of Gdk.Drawable
 
         constructor(properties?: Partial<Drawable.ConstructorProps>, ...args: any[]);
@@ -5551,6 +5565,8 @@ export namespace Gdk {
     }
 
     class GC extends GObject.Object {
+        static $gtype: GObject.GType<GC>;
+
         // Own fields of Gdk.GC
 
         clip_x_origin: number;
@@ -5816,6 +5832,8 @@ export namespace Gdk {
     }
 
     class Image extends GObject.Object {
+        static $gtype: GObject.GType<Image>;
+
         // Own fields of Gdk.Image
 
         type: ImageType;
@@ -5923,6 +5941,8 @@ export namespace Gdk {
     }
 
     class Keymap extends GObject.Object {
+        static $gtype: GObject.GType<Keymap>;
+
         // Own fields of Gdk.Keymap
 
         display: Display;
@@ -6148,6 +6168,8 @@ export namespace Gdk {
      * by overriding 'draw_shape'.
      */
     class PangoRenderer extends Pango.Renderer {
+        static $gtype: GObject.GType<PangoRenderer>;
+
         // Own properties of Gdk.PangoRenderer
 
         get screen(): Screen;
@@ -6204,6 +6226,8 @@ export namespace Gdk {
     }
 
     class Pixmap extends Drawable {
+        static $gtype: GObject.GType<Pixmap>;
+
         // Constructors of Gdk.Pixmap
 
         constructor(properties?: Partial<Pixmap.ConstructorProps>, ...args: any[]);
@@ -6307,6 +6331,8 @@ export namespace Gdk {
     }
 
     class Screen extends GObject.Object {
+        static $gtype: GObject.GType<Screen>;
+
         // Own properties of Gdk.Screen
 
         get font_options(): any;
@@ -6631,6 +6657,8 @@ export namespace Gdk {
     }
 
     class Visual extends GObject.Object {
+        static $gtype: GObject.GType<Visual>;
+
         // Own fields of Gdk.Visual
 
         type: VisualType;
@@ -6781,6 +6809,8 @@ export namespace Gdk {
     }
 
     class Window extends Drawable {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Gdk.Window
 
         /**
@@ -8258,12 +8288,16 @@ export namespace Gdk {
 
     type AppLaunchContextClass = typeof AppLaunchContext;
     abstract class AppLaunchContextPrivate {
+        static $gtype: GObject.GType<AppLaunchContextPrivate>;
+
         // Constructors of Gdk.AppLaunchContextPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class Atom {
+        static $gtype: GObject.GType<Atom>;
+
         // Constructors of Gdk.Atom
 
         _init(...args: any[]): void;
@@ -8274,12 +8308,16 @@ export namespace Gdk {
     }
 
     class Bitmap {
+        static $gtype: GObject.GType<Bitmap>;
+
         // Constructors of Gdk.Bitmap
 
         _init(...args: any[]): void;
     }
 
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Own fields of Gdk.Color
 
         pixel: number;
@@ -8385,6 +8423,8 @@ export namespace Gdk {
 
     type ColormapClass = typeof Colormap;
     class Cursor {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own fields of Gdk.Cursor
 
         type: CursorType;
@@ -8424,6 +8464,8 @@ export namespace Gdk {
     }
 
     class DeviceAxis {
+        static $gtype: GObject.GType<DeviceAxis>;
+
         // Own fields of Gdk.DeviceAxis
 
         use: AxisUse;
@@ -8437,6 +8479,8 @@ export namespace Gdk {
 
     type DeviceClass = typeof Device;
     class DeviceKey {
+        static $gtype: GObject.GType<DeviceKey>;
+
         // Own fields of Gdk.DeviceKey
 
         keyval: number;
@@ -8450,6 +8494,8 @@ export namespace Gdk {
     type DisplayClass = typeof Display;
     type DisplayManagerClass = typeof DisplayManager;
     class DisplayPointerHooks {
+        static $gtype: GObject.GType<DisplayPointerHooks>;
+
         // Constructors of Gdk.DisplayPointerHooks
 
         _init(...args: any[]): void;
@@ -8458,6 +8504,8 @@ export namespace Gdk {
     type DragContextClass = typeof DragContext;
     type DrawableClass = typeof Drawable;
     class EventAny {
+        static $gtype: GObject.GType<EventAny>;
+
         // Own fields of Gdk.EventAny
 
         type: EventType;
@@ -8470,6 +8518,8 @@ export namespace Gdk {
     }
 
     class EventButton {
+        static $gtype: GObject.GType<EventButton>;
+
         // Own fields of Gdk.EventButton
 
         type: EventType;
@@ -8491,6 +8541,8 @@ export namespace Gdk {
     }
 
     class EventClient {
+        static $gtype: GObject.GType<EventClient>;
+
         // Own fields of Gdk.EventClient
 
         type: EventType;
@@ -8504,6 +8556,8 @@ export namespace Gdk {
     }
 
     class EventConfigure {
+        static $gtype: GObject.GType<EventConfigure>;
+
         // Own fields of Gdk.EventConfigure
 
         type: EventType;
@@ -8520,6 +8574,8 @@ export namespace Gdk {
     }
 
     class EventCrossing {
+        static $gtype: GObject.GType<EventCrossing>;
+
         // Own fields of Gdk.EventCrossing
 
         type: EventType;
@@ -8542,6 +8598,8 @@ export namespace Gdk {
     }
 
     class EventDND {
+        static $gtype: GObject.GType<EventDND>;
+
         // Own fields of Gdk.EventDND
 
         type: EventType;
@@ -8558,6 +8616,8 @@ export namespace Gdk {
     }
 
     class EventExpose {
+        static $gtype: GObject.GType<EventExpose>;
+
         // Own fields of Gdk.EventExpose
 
         type: EventType;
@@ -8572,6 +8632,8 @@ export namespace Gdk {
     }
 
     class EventFocus {
+        static $gtype: GObject.GType<EventFocus>;
+
         // Own fields of Gdk.EventFocus
 
         type: EventType;
@@ -8585,6 +8647,8 @@ export namespace Gdk {
     }
 
     class EventGrabBroken {
+        static $gtype: GObject.GType<EventGrabBroken>;
+
         // Own fields of Gdk.EventGrabBroken
 
         type: EventType;
@@ -8600,6 +8664,8 @@ export namespace Gdk {
     }
 
     class EventKey {
+        static $gtype: GObject.GType<EventKey>;
+
         // Own fields of Gdk.EventKey
 
         type: EventType;
@@ -8620,6 +8686,8 @@ export namespace Gdk {
     }
 
     class EventMotion {
+        static $gtype: GObject.GType<EventMotion>;
+
         // Own fields of Gdk.EventMotion
 
         type: EventType;
@@ -8641,6 +8709,8 @@ export namespace Gdk {
     }
 
     class EventNoExpose {
+        static $gtype: GObject.GType<EventNoExpose>;
+
         // Own fields of Gdk.EventNoExpose
 
         type: EventType;
@@ -8653,6 +8723,8 @@ export namespace Gdk {
     }
 
     class EventOwnerChange {
+        static $gtype: GObject.GType<EventOwnerChange>;
+
         // Own fields of Gdk.EventOwnerChange
 
         type: EventType;
@@ -8669,6 +8741,8 @@ export namespace Gdk {
     }
 
     class EventProperty {
+        static $gtype: GObject.GType<EventProperty>;
+
         // Own fields of Gdk.EventProperty
 
         type: EventType;
@@ -8683,6 +8757,8 @@ export namespace Gdk {
     }
 
     class EventProximity {
+        static $gtype: GObject.GType<EventProximity>;
+
         // Own fields of Gdk.EventProximity
 
         type: EventType;
@@ -8697,6 +8773,8 @@ export namespace Gdk {
     }
 
     class EventScroll {
+        static $gtype: GObject.GType<EventScroll>;
+
         // Own fields of Gdk.EventScroll
 
         type: EventType;
@@ -8717,6 +8795,8 @@ export namespace Gdk {
     }
 
     class EventSelection {
+        static $gtype: GObject.GType<EventSelection>;
+
         // Own fields of Gdk.EventSelection
 
         type: EventType;
@@ -8731,6 +8811,8 @@ export namespace Gdk {
     }
 
     class EventSetting {
+        static $gtype: GObject.GType<EventSetting>;
+
         // Own fields of Gdk.EventSetting
 
         type: EventType;
@@ -8745,6 +8827,8 @@ export namespace Gdk {
     }
 
     class EventVisibility {
+        static $gtype: GObject.GType<EventVisibility>;
+
         // Own fields of Gdk.EventVisibility
 
         type: EventType;
@@ -8758,6 +8842,8 @@ export namespace Gdk {
     }
 
     class EventWindowState {
+        static $gtype: GObject.GType<EventWindowState>;
+
         // Own fields of Gdk.EventWindowState
 
         type: EventType;
@@ -8772,6 +8858,8 @@ export namespace Gdk {
     }
 
     class Font {
+        static $gtype: GObject.GType<Font>;
+
         // Own fields of Gdk.Font
 
         type: FontType;
@@ -8822,6 +8910,8 @@ export namespace Gdk {
 
     type GCClass = typeof GC;
     class GCValues {
+        static $gtype: GObject.GType<GCValues>;
+
         // Own fields of Gdk.GCValues
 
         foreground: Color;
@@ -8848,6 +8938,8 @@ export namespace Gdk {
     }
 
     class Geometry {
+        static $gtype: GObject.GType<Geometry>;
+
         // Own fields of Gdk.Geometry
 
         min_width: number;
@@ -8869,6 +8961,8 @@ export namespace Gdk {
 
     type ImageClass = typeof Image;
     class KeyboardGrabInfo {
+        static $gtype: GObject.GType<KeyboardGrabInfo>;
+
         // Own fields of Gdk.KeyboardGrabInfo
 
         window: Window;
@@ -8895,6 +8989,8 @@ export namespace Gdk {
 
     type KeymapClass = typeof Keymap;
     class KeymapKey {
+        static $gtype: GObject.GType<KeymapKey>;
+
         // Own fields of Gdk.KeymapKey
 
         keycode: number;
@@ -8914,6 +9010,8 @@ export namespace Gdk {
     }
 
     class PangoAttrEmbossColor {
+        static $gtype: GObject.GType<PangoAttrEmbossColor>;
+
         // Own fields of Gdk.PangoAttrEmbossColor
 
         color: Pango.Color;
@@ -8932,6 +9030,8 @@ export namespace Gdk {
     }
 
     class PangoAttrEmbossed {
+        static $gtype: GObject.GType<PangoAttrEmbossed>;
+
         // Own fields of Gdk.PangoAttrEmbossed
 
         embossed: boolean;
@@ -8950,6 +9050,8 @@ export namespace Gdk {
     }
 
     class PangoAttrStipple {
+        static $gtype: GObject.GType<PangoAttrStipple>;
+
         // Constructors of Gdk.PangoAttrStipple
 
         _init(...args: any[]): void;
@@ -8966,12 +9068,16 @@ export namespace Gdk {
 
     type PangoRendererClass = typeof PangoRenderer;
     abstract class PangoRendererPrivate {
+        static $gtype: GObject.GType<PangoRendererPrivate>;
+
         // Constructors of Gdk.PangoRendererPrivate
 
         _init(...args: any[]): void;
     }
 
     class PixmapObject {
+        static $gtype: GObject.GType<PixmapObject>;
+
         // Own fields of Gdk.PixmapObject
 
         impl: Drawable;
@@ -8983,12 +9089,16 @@ export namespace Gdk {
     }
 
     class PixmapObjectClass {
+        static $gtype: GObject.GType<PixmapObjectClass>;
+
         // Constructors of Gdk.PixmapObjectClass
 
         _init(...args: any[]): void;
     }
 
     class Point {
+        static $gtype: GObject.GType<Point>;
+
         // Own fields of Gdk.Point
 
         x: number;
@@ -9006,12 +9116,16 @@ export namespace Gdk {
     }
 
     class PointerHooks {
+        static $gtype: GObject.GType<PointerHooks>;
+
         // Constructors of Gdk.PointerHooks
 
         _init(...args: any[]): void;
     }
 
     class PointerWindowInfo {
+        static $gtype: GObject.GType<PointerWindowInfo>;
+
         // Own fields of Gdk.PointerWindowInfo
 
         toplevel_under_pointer: Window;
@@ -9028,6 +9142,8 @@ export namespace Gdk {
     }
 
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Gdk.Rectangle
 
         x: number;
@@ -9071,6 +9187,8 @@ export namespace Gdk {
     }
 
     abstract class Region {
+        static $gtype: GObject.GType<Region>;
+
         // Constructors of Gdk.Region
 
         _init(...args: any[]): void;
@@ -9172,6 +9290,8 @@ export namespace Gdk {
     }
 
     class RgbCmap {
+        static $gtype: GObject.GType<RgbCmap>;
+
         // Own fields of Gdk.RgbCmap
 
         colors: number[];
@@ -9194,6 +9314,8 @@ export namespace Gdk {
 
     type ScreenClass = typeof Screen;
     class Segment {
+        static $gtype: GObject.GType<Segment>;
+
         // Own fields of Gdk.Segment
 
         x1: number;
@@ -9215,6 +9337,8 @@ export namespace Gdk {
     }
 
     class Span {
+        static $gtype: GObject.GType<Span>;
+
         // Own fields of Gdk.Span
 
         x: number;
@@ -9234,6 +9358,8 @@ export namespace Gdk {
     }
 
     class TimeCoord {
+        static $gtype: GObject.GType<TimeCoord>;
+
         // Own fields of Gdk.TimeCoord
 
         time: number;
@@ -9251,6 +9377,8 @@ export namespace Gdk {
     }
 
     class Trapezoid {
+        static $gtype: GObject.GType<Trapezoid>;
+
         // Own fields of Gdk.Trapezoid
 
         y1: number;
@@ -9277,6 +9405,8 @@ export namespace Gdk {
 
     type VisualClass = typeof Visual;
     class WindowAttr {
+        static $gtype: GObject.GType<WindowAttr>;
+
         // Own fields of Gdk.WindowAttr
 
         title: string;
@@ -9300,24 +9430,32 @@ export namespace Gdk {
     }
 
     abstract class WindowObject {
+        static $gtype: GObject.GType<WindowObject>;
+
         // Constructors of Gdk.WindowObject
 
         _init(...args: any[]): void;
     }
 
     class WindowObjectClass {
+        static $gtype: GObject.GType<WindowObjectClass>;
+
         // Constructors of Gdk.WindowObjectClass
 
         _init(...args: any[]): void;
     }
 
     abstract class WindowRedirect {
+        static $gtype: GObject.GType<WindowRedirect>;
+
         // Constructors of Gdk.WindowRedirect
 
         _init(...args: any[]): void;
     }
 
     class Event {
+        static $gtype: GObject.GType<Event>;
+
         // Own fields of Gdk.Event
 
         type: EventType;

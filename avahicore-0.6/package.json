@@ -1,0 +1,53 @@
+{
+    "name": "@girs/avahicore-0.6",
+    "version": "0.6.0-4.0.0",
+    "description": "GJS TypeScript type definitions for AvahiCore-0.6, generated from library version 0.6.0",
+    "type": "module",
+    "module": "avahicore-0.6.js",
+    "main": "avahicore-0.6.js",
+    "exports": {
+        "./ambient": {
+            "types": "./avahicore-0.6-ambient.d.ts",
+            "import": "./avahicore-0.6-ambient.js",
+            "default": "./avahicore-0.6-ambient.js"
+        },
+        "./import": {
+            "types": "./avahicore-0.6-import.d.ts",
+            "import": "./avahicore-0.6-import.js",
+            "default": "./avahicore-0.6-import.js"
+        },
+        ".": {
+            "types": "./avahicore-0.6.d.ts",
+            "import": "./avahicore-0.6.js",
+            "default": "./avahicore-0.6.js"
+        }
+    },
+    "scripts": {
+        "test": "NODE_OPTIONS=--max_old_space_size=9216 tsc --noEmit avahicore-0.6.d.ts"
+    },
+    "dependencies": {
+        "@girs/gjs": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "AvahiCore-0.6"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/avahicore-0.6#readme"
+}

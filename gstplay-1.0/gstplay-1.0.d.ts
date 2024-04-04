@@ -42,6 +42,8 @@ export namespace GstPlay {
         CONTRAST,
     }
     class PlayError extends GLib.Error {
+        static $gtype: GObject.GType<PlayError>;
+
         // Static fields of GstPlay.PlayError
 
         /**
@@ -268,6 +270,8 @@ export namespace GstPlay {
     }
 
     class Play extends Gst.Object {
+        static $gtype: GObject.GType<Play>;
+
         // Own properties of GstPlay.Play
 
         get audio_video_offset(): number;
@@ -608,6 +612,8 @@ export namespace GstPlay {
      * #GstPlayStreamInfo specific to audio streams.
      */
     class PlayAudioInfo extends PlayStreamInfo {
+        static $gtype: GObject.GType<PlayAudioInfo>;
+
         // Constructors of GstPlay.PlayAudioInfo
 
         constructor(properties?: Partial<PlayAudioInfo.ConstructorProps>, ...args: any[]);
@@ -633,6 +639,8 @@ export namespace GstPlay {
      * Structure containing the media information of a URI.
      */
     class PlayMediaInfo extends GObject.Object {
+        static $gtype: GObject.GType<PlayMediaInfo>;
+
         // Constructors of GstPlay.PlayMediaInfo
 
         constructor(properties?: Partial<PlayMediaInfo.ConstructorProps>, ...args: any[]);
@@ -727,6 +735,8 @@ export namespace GstPlay {
     }
 
     class PlaySignalAdapter extends GObject.Object {
+        static $gtype: GObject.GType<PlaySignalAdapter>;
+
         // Own properties of GstPlay.PlaySignalAdapter
 
         get play(): Play;
@@ -823,6 +833,8 @@ export namespace GstPlay {
      * #GstPlayVideoInfo, #GstPlayAudioInfo, #GstPlaySubtitleInfo.
      */
     abstract class PlayStreamInfo extends GObject.Object {
+        static $gtype: GObject.GType<PlayStreamInfo>;
+
         // Constructors of GstPlay.PlayStreamInfo
 
         constructor(properties?: Partial<PlayStreamInfo.ConstructorProps>, ...args: any[]);
@@ -862,6 +874,8 @@ export namespace GstPlay {
      * #GstPlayStreamInfo specific to subtitle streams.
      */
     class PlaySubtitleInfo extends PlayStreamInfo {
+        static $gtype: GObject.GType<PlaySubtitleInfo>;
+
         // Constructors of GstPlay.PlaySubtitleInfo
 
         constructor(properties?: Partial<PlaySubtitleInfo.ConstructorProps>, ...args: any[]);
@@ -883,6 +897,8 @@ export namespace GstPlay {
      * #GstPlayStreamInfo specific to video streams.
      */
     class PlayVideoInfo extends PlayStreamInfo {
+        static $gtype: GObject.GType<PlayVideoInfo>;
+
         // Constructors of GstPlay.PlayVideoInfo
 
         constructor(properties?: Partial<PlayVideoInfo.ConstructorProps>, ...args: any[]);
@@ -914,6 +930,8 @@ export namespace GstPlay {
     }
 
     class PlayVideoOverlayVideoRenderer extends GObject.Object implements PlayVideoRenderer {
+        static $gtype: GObject.GType<PlayVideoOverlayVideoRenderer>;
+
         // Own properties of GstPlay.PlayVideoOverlayVideoRenderer
 
         get video_sink(): Gst.Element;
@@ -1343,6 +1361,8 @@ export namespace GstPlay {
      * A #GstPlayVisualization descriptor.
      */
     class PlayVisualization {
+        static $gtype: GObject.GType<PlayVisualization>;
+
         // Own fields of GstPlay.PlayVisualization
 
         name: string;

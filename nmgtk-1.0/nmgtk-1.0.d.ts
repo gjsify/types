@@ -154,6 +154,8 @@ export namespace NMGtk {
         extends GObject.Object
         implements Gio.AsyncInitable<MobileProvidersDatabase>, Gio.Initable
     {
+        static $gtype: GObject.GType<MobileProvidersDatabase>;
+
         // Own properties of NMGtk.MobileProvidersDatabase
 
         get country_codes(): string;
@@ -759,6 +761,8 @@ export namespace NMGtk {
     }
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<VpnPasswordDialog>;
+
         // Constructors of NMGtk.VpnPasswordDialog
 
         constructor(properties?: Partial<VpnPasswordDialog.ConstructorProps>, ...args: any[]);
@@ -1156,6 +1160,8 @@ export namespace NMGtk {
     }
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<WifiDialog>;
+
         // Constructors of NMGtk.WifiDialog
 
         constructor(properties?: Partial<WifiDialog.ConstructorProps>, ...args: any[]);
@@ -1545,6 +1551,8 @@ export namespace NMGtk {
     }
 
     class CountryInfo {
+        static $gtype: GObject.GType<CountryInfo>;
+
         // Constructors of NMGtk.CountryInfo
 
         _init(...args: any[]): void;
@@ -1559,6 +1567,8 @@ export namespace NMGtk {
     }
 
     class MobileAccessMethod {
+        static $gtype: GObject.GType<MobileAccessMethod>;
+
         // Constructors of NMGtk.MobileAccessMethod
 
         _init(...args: any[]): void;
@@ -1577,6 +1587,8 @@ export namespace NMGtk {
     }
 
     class MobileProvider {
+        static $gtype: GObject.GType<MobileProvider>;
+
         // Constructors of NMGtk.MobileProvider
 
         _init(...args: any[]): void;
@@ -1593,12 +1605,16 @@ export namespace NMGtk {
 
     type MobileProvidersDatabaseClass = typeof MobileProvidersDatabase;
     abstract class MobileProvidersDatabasePrivate {
+        static $gtype: GObject.GType<MobileProvidersDatabasePrivate>;
+
         // Constructors of NMGtk.MobileProvidersDatabasePrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MobileWizard {
+        static $gtype: GObject.GType<MobileWizard>;
+
         // Constructors of NMGtk.MobileWizard
 
         _init(...args: any[]): void;
@@ -1610,6 +1626,8 @@ export namespace NMGtk {
     }
 
     class MobileWizardAccessMethod {
+        static $gtype: GObject.GType<MobileWizardAccessMethod>;
+
         // Own fields of NMGtk.MobileWizardAccessMethod
 
         provider_name: string;

@@ -29,6 +29,8 @@ import type Gee from '@girs/gee-0.8';
 
 export namespace Granite {
     class ServicesContractorError extends GLib.Error {
+        static $gtype: GObject.GType<ServicesContractorError>;
+
         // Static fields of Granite.ServicesContractorError
 
         static SERVICE_NOT_AVAILABLE: number;
@@ -144,6 +146,8 @@ export namespace Granite {
     }
 
     class ServicesContractorProxy extends GObject.Object {
+        static $gtype: GObject.GType<ServicesContractorProxy>;
+
         // Constructors of Granite.ServicesContractorProxy
 
         constructor(properties?: Partial<ServicesContractorProxy.ConstructorProps>, ...args: any[]);
@@ -176,6 +180,8 @@ export namespace Granite {
     }
 
     class ServicesSystem extends GObject.Object {
+        static $gtype: GObject.GType<ServicesSystem>;
+
         // Constructors of Granite.ServicesSystem
 
         constructor(properties?: Partial<ServicesSystem.ConstructorProps>, ...args: any[]);
@@ -207,6 +213,8 @@ export namespace Granite {
     }
 
     abstract class SettingsPage extends Gtk.Box {
+        static $gtype: GObject.GType<SettingsPage>;
+
         // Own properties of Granite.SettingsPage
 
         get status_type(): SettingsPageStatusType;
@@ -265,6 +273,8 @@ export namespace Granite {
     }
 
     abstract class SimpleSettingsPage extends SettingsPage {
+        static $gtype: GObject.GType<SimpleSettingsPage>;
+
         // Own properties of Granite.SimpleSettingsPage
 
         get action_area(): Gtk.Box;
@@ -306,6 +316,8 @@ export namespace Granite {
     }
 
     class AccelLabel extends Gtk.Box {
+        static $gtype: GObject.GType<AccelLabel>;
+
         // Own properties of Granite.AccelLabel
 
         get action_name(): string;
@@ -352,6 +364,8 @@ export namespace Granite {
     }
 
     class DatePicker extends Gtk.Entry implements Gtk.Buildable {
+        static $gtype: GObject.GType<DatePicker>;
+
         // Own properties of Granite.DatePicker
 
         get format(): string;
@@ -738,6 +752,8 @@ export namespace Granite {
     }
 
     class Dialog extends Gtk.Dialog {
+        static $gtype: GObject.GType<Dialog>;
+
         // Constructors of Granite.Dialog
 
         constructor(properties?: Partial<Dialog.ConstructorProps>, ...args: any[]);
@@ -758,6 +774,8 @@ export namespace Granite {
     }
 
     class HeaderLabel extends Gtk.Widget {
+        static $gtype: GObject.GType<HeaderLabel>;
+
         // Own properties of Granite.HeaderLabel
 
         get label(): string;
@@ -790,6 +808,8 @@ export namespace Granite {
     }
 
     class HyperTextView extends Gtk.TextView {
+        static $gtype: GObject.GType<HyperTextView>;
+
         // Constructors of Granite.HyperTextView
 
         constructor(properties?: Partial<HyperTextView.ConstructorProps>, ...args: any[]);
@@ -822,6 +842,8 @@ export namespace Granite {
     }
 
     class MessageDialog extends Dialog {
+        static $gtype: GObject.GType<MessageDialog>;
+
         // Own properties of Granite.MessageDialog
 
         get primary_text(): string;
@@ -908,6 +930,8 @@ export namespace Granite {
     }
 
     class ModeSwitch extends Gtk.Box {
+        static $gtype: GObject.GType<ModeSwitch>;
+
         // Own properties of Granite.ModeSwitch
 
         get active(): boolean;
@@ -979,6 +1003,8 @@ export namespace Granite {
     }
 
     class OverlayBar extends Gtk.Widget {
+        static $gtype: GObject.GType<OverlayBar>;
+
         // Own properties of Granite.OverlayBar
 
         get overlay(): Gtk.Overlay;
@@ -1015,6 +1041,8 @@ export namespace Granite {
     }
 
     class Placeholder extends Gtk.Widget {
+        static $gtype: GObject.GType<Placeholder>;
+
         // Own properties of Granite.Placeholder
 
         get title(): string;
@@ -1054,6 +1082,8 @@ export namespace Granite {
     }
 
     class SettingsSidebar extends Gtk.Widget {
+        static $gtype: GObject.GType<SettingsSidebar>;
+
         // Own properties of Granite.SettingsSidebar
 
         get stack(): Gtk.Stack;
@@ -1087,6 +1117,8 @@ export namespace Granite {
     }
 
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of Granite.Settings
 
         get prefers_color_scheme(): SettingsColorScheme;
@@ -1119,6 +1151,8 @@ export namespace Granite {
     }
 
     class SwitchModelButton extends Gtk.ToggleButton {
+        static $gtype: GObject.GType<SwitchModelButton>;
+
         // Own properties of Granite.SwitchModelButton
 
         get text(): string;
@@ -1164,6 +1198,8 @@ export namespace Granite {
     }
 
     class TimePicker extends Gtk.Entry {
+        static $gtype: GObject.GType<TimePicker>;
+
         // Own properties of Granite.TimePicker
 
         get format_12(): string;
@@ -1219,6 +1255,8 @@ export namespace Granite {
     }
 
     class Toast extends Gtk.Widget {
+        static $gtype: GObject.GType<Toast>;
+
         // Own properties of Granite.Toast
 
         get title(): string;
@@ -1265,6 +1303,8 @@ export namespace Granite {
     }
 
     class ValidatedEntry extends Gtk.Entry {
+        static $gtype: GObject.GType<ValidatedEntry>;
+
         // Own properties of Granite.ValidatedEntry
 
         get is_valid(): boolean;
@@ -1300,6 +1340,8 @@ export namespace Granite {
 
     type ServicesContractorProxyClass = typeof ServicesContractorProxy;
     abstract class ServicesContractorProxyPrivate {
+        static $gtype: GObject.GType<ServicesContractorProxyPrivate>;
+
         // Constructors of Granite.ServicesContractorProxyPrivate
 
         _init(...args: any[]): void;
@@ -1307,6 +1349,8 @@ export namespace Granite {
 
     type ServicesSystemClass = typeof ServicesSystem;
     abstract class ServicesSystemPrivate {
+        static $gtype: GObject.GType<ServicesSystemPrivate>;
+
         // Constructors of Granite.ServicesSystemPrivate
 
         _init(...args: any[]): void;
@@ -1316,6 +1360,8 @@ export namespace Granite {
     type ServicesSettingsSerializableIface = typeof ServicesSettingsSerializable;
     type SettingsPageClass = typeof SettingsPage;
     abstract class SettingsPagePrivate {
+        static $gtype: GObject.GType<SettingsPagePrivate>;
+
         // Constructors of Granite.SettingsPagePrivate
 
         _init(...args: any[]): void;
@@ -1323,6 +1369,8 @@ export namespace Granite {
 
     type SimpleSettingsPageClass = typeof SimpleSettingsPage;
     abstract class SimpleSettingsPagePrivate {
+        static $gtype: GObject.GType<SimpleSettingsPagePrivate>;
+
         // Constructors of Granite.SimpleSettingsPagePrivate
 
         _init(...args: any[]): void;
@@ -1330,6 +1378,8 @@ export namespace Granite {
 
     type AccelLabelClass = typeof AccelLabel;
     abstract class AccelLabelPrivate {
+        static $gtype: GObject.GType<AccelLabelPrivate>;
+
         // Constructors of Granite.AccelLabelPrivate
 
         _init(...args: any[]): void;
@@ -1337,6 +1387,8 @@ export namespace Granite {
 
     type DatePickerClass = typeof DatePicker;
     abstract class DatePickerPrivate {
+        static $gtype: GObject.GType<DatePickerPrivate>;
+
         // Constructors of Granite.DatePickerPrivate
 
         _init(...args: any[]): void;
@@ -1344,6 +1396,8 @@ export namespace Granite {
 
     type DialogClass = typeof Dialog;
     abstract class DialogPrivate {
+        static $gtype: GObject.GType<DialogPrivate>;
+
         // Constructors of Granite.DialogPrivate
 
         _init(...args: any[]): void;
@@ -1351,6 +1405,8 @@ export namespace Granite {
 
     type HeaderLabelClass = typeof HeaderLabel;
     abstract class HeaderLabelPrivate {
+        static $gtype: GObject.GType<HeaderLabelPrivate>;
+
         // Constructors of Granite.HeaderLabelPrivate
 
         _init(...args: any[]): void;
@@ -1358,6 +1414,8 @@ export namespace Granite {
 
     type HyperTextViewClass = typeof HyperTextView;
     abstract class HyperTextViewPrivate {
+        static $gtype: GObject.GType<HyperTextViewPrivate>;
+
         // Constructors of Granite.HyperTextViewPrivate
 
         _init(...args: any[]): void;
@@ -1365,6 +1423,8 @@ export namespace Granite {
 
     type MessageDialogClass = typeof MessageDialog;
     abstract class MessageDialogPrivate {
+        static $gtype: GObject.GType<MessageDialogPrivate>;
+
         // Constructors of Granite.MessageDialogPrivate
 
         _init(...args: any[]): void;
@@ -1372,6 +1432,8 @@ export namespace Granite {
 
     type ModeSwitchClass = typeof ModeSwitch;
     abstract class ModeSwitchPrivate {
+        static $gtype: GObject.GType<ModeSwitchPrivate>;
+
         // Constructors of Granite.ModeSwitchPrivate
 
         _init(...args: any[]): void;
@@ -1379,6 +1441,8 @@ export namespace Granite {
 
     type OverlayBarClass = typeof OverlayBar;
     abstract class OverlayBarPrivate {
+        static $gtype: GObject.GType<OverlayBarPrivate>;
+
         // Constructors of Granite.OverlayBarPrivate
 
         _init(...args: any[]): void;
@@ -1386,6 +1450,8 @@ export namespace Granite {
 
     type PlaceholderClass = typeof Placeholder;
     abstract class PlaceholderPrivate {
+        static $gtype: GObject.GType<PlaceholderPrivate>;
+
         // Constructors of Granite.PlaceholderPrivate
 
         _init(...args: any[]): void;
@@ -1393,6 +1459,8 @@ export namespace Granite {
 
     type SettingsSidebarClass = typeof SettingsSidebar;
     abstract class SettingsSidebarPrivate {
+        static $gtype: GObject.GType<SettingsSidebarPrivate>;
+
         // Constructors of Granite.SettingsSidebarPrivate
 
         _init(...args: any[]): void;
@@ -1400,6 +1468,8 @@ export namespace Granite {
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
+        static $gtype: GObject.GType<SettingsPrivate>;
+
         // Constructors of Granite.SettingsPrivate
 
         _init(...args: any[]): void;
@@ -1407,6 +1477,8 @@ export namespace Granite {
 
     type SwitchModelButtonClass = typeof SwitchModelButton;
     abstract class SwitchModelButtonPrivate {
+        static $gtype: GObject.GType<SwitchModelButtonPrivate>;
+
         // Constructors of Granite.SwitchModelButtonPrivate
 
         _init(...args: any[]): void;
@@ -1414,6 +1486,8 @@ export namespace Granite {
 
     type TimePickerClass = typeof TimePicker;
     abstract class TimePickerPrivate {
+        static $gtype: GObject.GType<TimePickerPrivate>;
+
         // Constructors of Granite.TimePickerPrivate
 
         _init(...args: any[]): void;
@@ -1421,6 +1495,8 @@ export namespace Granite {
 
     type ToastClass = typeof Toast;
     abstract class ToastPrivate {
+        static $gtype: GObject.GType<ToastPrivate>;
+
         // Constructors of Granite.ToastPrivate
 
         _init(...args: any[]): void;
@@ -1428,6 +1504,8 @@ export namespace Granite {
 
     type ValidatedEntryClass = typeof ValidatedEntry;
     abstract class ValidatedEntryPrivate {
+        static $gtype: GObject.GType<ValidatedEntryPrivate>;
+
         // Constructors of Granite.ValidatedEntryPrivate
 
         _init(...args: any[]): void;

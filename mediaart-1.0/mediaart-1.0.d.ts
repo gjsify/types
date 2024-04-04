@@ -23,6 +23,8 @@ export namespace MediaArt {
      * #MediaArtError API.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of MediaArt.Error
 
         /**
@@ -205,6 +207,8 @@ export namespace MediaArt {
      * A class implementation for processing and extracting media art.
      */
     class Process extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Process>;
+
         // Constructors of MediaArt.Process
 
         constructor(properties?: Partial<Process.ConstructorProps>, ...args: any[]);

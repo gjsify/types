@@ -62,6 +62,8 @@ export namespace GstInsertBin {
      * this callback GstInsertBinCallback().
      */
     class InsertBin extends Gst.Bin implements Gst.ChildProxy {
+        static $gtype: GObject.GType<InsertBin>;
+
         // Constructors of GstInsertBin.InsertBin
 
         constructor(properties?: Partial<InsertBin.ConstructorProps>, ...args: any[]);
@@ -661,6 +663,8 @@ export namespace GstInsertBin {
 
     type InsertBinClass = typeof InsertBin;
     abstract class InsertBinPrivate {
+        static $gtype: GObject.GType<InsertBinPrivate>;
+
         // Constructors of GstInsertBin.InsertBinPrivate
 
         _init(...args: any[]): void;

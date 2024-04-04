@@ -7,6 +7,8 @@
 
 import './nautilus-3.0-ambient.d.ts';
 
+import './nautilus-3.0-import.d.ts';
+
 /**
  * Nautilus-3.0
  */
@@ -76,6 +78,8 @@ export namespace Nautilus {
     }
 
     class Column extends GObject.Object {
+        static $gtype: GObject.GType<Column>;
+
         // Own properties of Nautilus.Column
 
         get attribute(): string;
@@ -110,6 +114,8 @@ export namespace Nautilus {
     }
 
     class Menu extends GObject.Object {
+        static $gtype: GObject.GType<Menu>;
+
         // Constructors of Nautilus.Menu
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
@@ -145,6 +151,8 @@ export namespace Nautilus {
     }
 
     class MenuItem extends GObject.Object {
+        static $gtype: GObject.GType<MenuItem>;
+
         // Own properties of Nautilus.MenuItem
 
         get icon(): string;
@@ -213,6 +221,8 @@ export namespace Nautilus {
     }
 
     class PropertyPage extends GObject.Object {
+        static $gtype: GObject.GType<PropertyPage>;
+
         // Own properties of Nautilus.PropertyPage
 
         get label(): Gtk.Widget;
@@ -235,6 +245,8 @@ export namespace Nautilus {
      * Interface for extensions to provide additional list view columns.
      */
     class ColumnProviderInterface {
+        static $gtype: GObject.GType<ColumnProviderInterface>;
+
         // Constructors of Nautilus.ColumnProviderInterface
 
         _init(...args: any[]): void;
@@ -245,6 +257,8 @@ export namespace Nautilus {
      * Interface for extensions to provide additional information about files.
      */
     class InfoProviderInterface {
+        static $gtype: GObject.GType<InfoProviderInterface>;
+
         // Constructors of Nautilus.InfoProviderInterface
 
         _init(...args: any[]): void;
@@ -254,6 +268,8 @@ export namespace Nautilus {
      * Interface for extensions to provide additional location widgets.
      */
     class LocationWidgetProviderInterface {
+        static $gtype: GObject.GType<LocationWidgetProviderInterface>;
+
         // Constructors of Nautilus.LocationWidgetProviderInterface
 
         _init(...args: any[]): void;
@@ -265,6 +281,8 @@ export namespace Nautilus {
      * Interface for extensions to provide additional menu items.
      */
     class MenuProviderInterface {
+        static $gtype: GObject.GType<MenuProviderInterface>;
+
         // Constructors of Nautilus.MenuProviderInterface
 
         _init(...args: any[]): void;
@@ -276,6 +294,8 @@ export namespace Nautilus {
      * that return #NAUTILUS_OPERATION_IN_PROGRESS.
      */
     abstract class OperationHandle {
+        static $gtype: GObject.GType<OperationHandle>;
+
         // Constructors of Nautilus.OperationHandle
 
         _init(...args: any[]): void;
@@ -286,6 +306,8 @@ export namespace Nautilus {
      * Interface for extensions to provide additional property pages.
      */
     class PropertyPageProviderInterface {
+        static $gtype: GObject.GType<PropertyPageProviderInterface>;
+
         // Constructors of Nautilus.PropertyPageProviderInterface
 
         _init(...args: any[]): void;

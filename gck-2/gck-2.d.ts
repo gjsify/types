@@ -37,6 +37,8 @@ export namespace Gck {
      * member of the error then contains the raw PKCS#11 `CK_RV` result value.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Gck.Error
 
         /**
@@ -59,6 +61,8 @@ export namespace Gck {
      * Various error codes used with PKCS#11 URIs
      */
     class UriError extends GLib.Error {
+        static $gtype: GObject.GType<UriError>;
+
         // Static fields of Gck.UriError
 
         /**
@@ -333,6 +337,8 @@ export namespace Gck {
      * [method`Enumerator`.next_async] functions.
      */
     class Enumerator extends GObject.Object {
+        static $gtype: GObject.GType<Enumerator>;
+
         // Own properties of Gck.Enumerator
 
         /**
@@ -460,6 +466,8 @@ export namespace Gck {
      * then you can use [ctor`Module`.new].
      */
     class Module extends GObject.Object {
+        static $gtype: GObject.GType<Module>;
+
         // Own properties of Gck.Module
 
         /**
@@ -571,6 +579,8 @@ export namespace Gck {
      * called session objects.
      */
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Gck.Object
 
         /**
@@ -885,6 +895,8 @@ export namespace Gck {
      * PKCS#11 token or key the password is being requested for.
      */
     class Password extends Gio.TlsPassword {
+        static $gtype: GObject.GType<Password>;
+
         // Own properties of Gck.Password
 
         /**
@@ -961,6 +973,8 @@ export namespace Gck {
      * analogous to an open database handle, or a file handle.
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of Gck.Session
 
         /**
@@ -2337,6 +2351,8 @@ export namespace Gck {
      * driver, often the slot and token are equivalent.
      */
     class Slot extends GObject.Object {
+        static $gtype: GObject.GType<Slot>;
+
         // Own properties of Gck.Slot
 
         /**
@@ -2483,6 +2499,8 @@ export namespace Gck {
      * functions in this library will operate on such an attribute.
      */
     class Attribute {
+        static $gtype: GObject.GType<Attribute>;
+
         // Own fields of Gck.Attribute
 
         type: number;
@@ -2625,6 +2643,8 @@ export namespace Gck {
      * an object.
      */
     abstract class Attributes {
+        static $gtype: GObject.GType<Attributes>;
+
         // Constructors of Gck.Attributes
 
         constructor(properties?: Partial<{}>);
@@ -2732,6 +2752,8 @@ export namespace Gck {
      * The fields of #GckBuilder are private and not to be accessed directly.
      */
     class Builder {
+        static $gtype: GObject.GType<Builder>;
+
         // Constructors of Gck.Builder
 
         constructor(properties?: Partial<{}>);
@@ -3045,6 +3067,8 @@ export namespace Gck {
      * Represents a mechanism used with crypto operations.
      */
     class Mechanism {
+        static $gtype: GObject.GType<Mechanism>;
+
         // Own fields of Gck.Mechanism
 
         type: number;
@@ -3072,6 +3096,8 @@ export namespace Gck {
      * gck_mechanism_info_free().
      */
     class MechanismInfo {
+        static $gtype: GObject.GType<MechanismInfo>;
+
         // Own fields of Gck.MechanismInfo
 
         min_key_size: number;
@@ -3112,6 +3138,8 @@ export namespace Gck {
      * Use gck_module_info_free() to release this structure when done with it.
      */
     class ModuleInfo {
+        static $gtype: GObject.GType<ModuleInfo>;
+
         // Own fields of Gck.ModuleInfo
 
         pkcs11_version_major: number;
@@ -3160,6 +3188,8 @@ export namespace Gck {
      * When done with this structure, release it using gck_session_info_free().
      */
     class SessionInfo {
+        static $gtype: GObject.GType<SessionInfo>;
+
         // Own fields of Gck.SessionInfo
 
         slot_id: number;
@@ -3203,6 +3233,8 @@ export namespace Gck {
      * gck_slot_info_free().
      */
     class SlotInfo {
+        static $gtype: GObject.GType<SlotInfo>;
+
         // Own fields of Gck.SlotInfo
 
         slot_description: string;
@@ -3251,6 +3283,8 @@ export namespace Gck {
      * gck_token_info_free().
      */
     class TokenInfo {
+        static $gtype: GObject.GType<TokenInfo>;
+
         // Own fields of Gck.TokenInfo
 
         label: string;
@@ -3299,6 +3333,8 @@ export namespace Gck {
      * should be treated as not matching anything.
      */
     class UriData {
+        static $gtype: GObject.GType<UriData>;
+
         // Own fields of Gck.UriData
 
         any_unrecognized: boolean;

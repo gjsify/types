@@ -45,6 +45,8 @@ export namespace GData {
      * Error codes for #GDataDocumentsService operations.
      */
     class DocumentsServiceError extends GLib.Error {
+        static $gtype: GObject.GType<DocumentsServiceError>;
+
         // Static fields of GData.DocumentsServiceError
 
         /**
@@ -149,6 +151,8 @@ export namespace GData {
      * Error codes for XML or JSON parsing operations.
      */
     class ParserError extends GLib.Error {
+        static $gtype: GObject.GType<ParserError>;
+
         // Static fields of GData.ParserError
 
         /**
@@ -188,6 +192,8 @@ export namespace GData {
      * Error codes for #GDataService operations.
      */
     class ServiceError extends GLib.Error {
+        static $gtype: GObject.GType<ServiceError>;
+
         // Static fields of GData.ServiceError
 
         /**
@@ -317,6 +323,8 @@ export namespace GData {
      * Error codes for #GDataYouTubeService operations.
      */
     class YouTubeServiceError extends GLib.Error {
+        static $gtype: GObject.GType<YouTubeServiceError>;
+
         // Static fields of GData.YouTubeServiceError
 
         /**
@@ -1361,6 +1369,8 @@ export namespace GData {
      * All the fields in the #GDataAPPCategories structure are private and should never be accessed directly.
      */
     class APPCategories extends Parsable {
+        static $gtype: GObject.GType<APPCategories>;
+
         // Own properties of GData.APPCategories
 
         /**
@@ -1409,6 +1419,8 @@ export namespace GData {
      * All the fields in the #GDataAccessRule structure are private and should never be accessed directly.
      */
     class AccessRule extends Entry {
+        static $gtype: GObject.GType<AccessRule>;
+
         // Own properties of GData.AccessRule
 
         /**
@@ -1527,6 +1539,8 @@ export namespace GData {
      * All the fields in the #GDataAuthor structure are private and should never be accessed directly.
      */
     class Author extends Parsable implements Comparable {
+        static $gtype: GObject.GType<Author>;
+
         // Own properties of GData.Author
 
         /**
@@ -1991,6 +2005,8 @@ export namespace GData {
      * All the fields in the #GDataAuthorizationDomain structure are private and should never be accessed directly.
      */
     class AuthorizationDomain extends GObject.Object {
+        static $gtype: GObject.GType<AuthorizationDomain>;
+
         // Own properties of GData.AuthorizationDomain
 
         /**
@@ -2045,6 +2061,8 @@ export namespace GData {
      * All the fields in the #GDataBatchOperation structure are private and should never be accessed directly.
      */
     class BatchOperation extends GObject.Object {
+        static $gtype: GObject.GType<BatchOperation>;
+
         // Own properties of GData.BatchOperation
 
         /**
@@ -2207,6 +2225,8 @@ export namespace GData {
      * should never be accessed directly.
      */
     class CalendarAccessRule extends AccessRule {
+        static $gtype: GObject.GType<CalendarAccessRule>;
+
         // Constructors of GData.CalendarAccessRule
 
         constructor(properties?: Partial<CalendarAccessRule.ConstructorProps>, ...args: any[]);
@@ -2238,6 +2258,8 @@ export namespace GData {
      * All the fields in the #GDataCalendarCalendar structure are private and should never be accessed directly.
      */
     class CalendarCalendar extends Entry implements AccessHandler {
+        static $gtype: GObject.GType<CalendarCalendar>;
+
         // Own properties of GData.CalendarCalendar
 
         /**
@@ -2652,6 +2674,8 @@ export namespace GData {
      * All the fields in the #GDataCalendarEvent structure are private and should never be accessed directly.
      */
     class CalendarEvent extends Entry {
+        static $gtype: GObject.GType<CalendarEvent>;
+
         // Own properties of GData.CalendarEvent
 
         /**
@@ -3001,6 +3025,8 @@ export namespace GData {
      * All the fields in the #GDataCalendarFeed structure are private and should never be accessed directly.
      */
     class CalendarFeed extends Feed {
+        static $gtype: GObject.GType<CalendarFeed>;
+
         // Constructors of GData.CalendarFeed
 
         constructor(properties?: Partial<CalendarFeed.ConstructorProps>, ...args: any[]);
@@ -3034,6 +3060,8 @@ export namespace GData {
      * All the fields in the #GDataCalendarQuery structure are private and should never be accessed directly.
      */
     class CalendarQuery extends Query {
+        static $gtype: GObject.GType<CalendarQuery>;
+
         // Own properties of GData.CalendarQuery
 
         /**
@@ -3251,6 +3279,8 @@ export namespace GData {
      * All the fields in the #GDataCalendarService structure are private and should never be accessed directly.
      */
     class CalendarService extends Service implements Batchable {
+        static $gtype: GObject.GType<CalendarService>;
+
         // Constructors of GData.CalendarService
 
         constructor(properties?: Partial<CalendarService.ConstructorProps>, ...args: any[]);
@@ -3832,6 +3862,8 @@ export namespace GData {
      * All the fields in the #GDataCategory structure are private and should never be accessed directly.
      */
     class Category extends Parsable implements Comparable {
+        static $gtype: GObject.GType<Category>;
+
         // Own properties of GData.Category
 
         /**
@@ -4287,6 +4319,8 @@ export namespace GData {
      * All the fields in the #GDataComment structure are private and should never be accessed directly.
      */
     abstract class Comment extends Entry {
+        static $gtype: GObject.GType<Comment>;
+
         // Constructors of GData.Comment
 
         constructor(properties?: Partial<Comment.ConstructorProps>, ...args: any[]);
@@ -4305,6 +4339,8 @@ export namespace GData {
      * should never be accessed directly.
      */
     class DocumentsAccessRule extends AccessRule {
+        static $gtype: GObject.GType<DocumentsAccessRule>;
+
         // Constructors of GData.DocumentsAccessRule
 
         constructor(properties?: Partial<DocumentsAccessRule.ConstructorProps>, ...args: any[]);
@@ -4327,6 +4363,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsDocument structure are private and should never be accessed directly.
      */
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsDocument>;
+
         // Constructors of GData.DocumentsDocument
 
         constructor(properties?: Partial<DocumentsDocument.ConstructorProps>, ...args: any[]);
@@ -4725,6 +4763,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsDrawing structure are private and should never be accessed directly.
      */
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsDrawing>;
+
         // Constructors of GData.DocumentsDrawing
 
         constructor(properties?: Partial<DocumentsDrawing.ConstructorProps>, ...args: any[]);
@@ -4968,6 +5008,8 @@ export namespace GData {
     }
 
     class DocumentsDrive extends Entry {
+        static $gtype: GObject.GType<DocumentsDrive>;
+
         // Own properties of GData.DocumentsDrive
 
         /**
@@ -4997,6 +5039,8 @@ export namespace GData {
     }
 
     class DocumentsDriveQuery extends Query {
+        static $gtype: GObject.GType<DocumentsDriveQuery>;
+
         // Constructors of GData.DocumentsDriveQuery
 
         constructor(properties?: Partial<DocumentsDriveQuery.ConstructorProps>, ...args: any[]);
@@ -5035,6 +5079,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsEntry structure are private and should never be accessed directly.
      */
     abstract class DocumentsEntry extends Entry implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsEntry>;
+
         // Own properties of GData.DocumentsEntry
 
         /**
@@ -5527,6 +5573,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsFeed structure are private and should never be accessed directly.
      */
     class DocumentsFeed extends Feed {
+        static $gtype: GObject.GType<DocumentsFeed>;
+
         // Constructors of GData.DocumentsFeed
 
         constructor(properties?: Partial<DocumentsFeed.ConstructorProps>, ...args: any[]);
@@ -5544,6 +5592,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsFolder structure are private and should never be accessed directly.
      */
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsFolder>;
+
         // Constructors of GData.DocumentsFolder
 
         constructor(properties?: Partial<DocumentsFolder.ConstructorProps>, ...args: any[]);
@@ -5856,6 +5906,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsMetadata structure are private and should never be accessed directly.
      */
     class DocumentsMetadata extends Parsable {
+        static $gtype: GObject.GType<DocumentsMetadata>;
+
         // Own properties of GData.DocumentsMetadata
 
         /**
@@ -5905,6 +5957,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsPdf structure are private and should never be accessed directly.
      */
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsPdf>;
+
         // Constructors of GData.DocumentsPdf
 
         constructor(properties?: Partial<DocumentsPdf.ConstructorProps>, ...args: any[]);
@@ -6149,6 +6203,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsPresentation structure are private and should never be accessed directly.
      */
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsPresentation>;
+
         // Constructors of GData.DocumentsPresentation
 
         constructor(properties?: Partial<DocumentsPresentation.ConstructorProps>, ...args: any[]);
@@ -6398,6 +6454,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsProperty structure are private and should never be accessed directly.
      */
     class DocumentsProperty extends Parsable implements Comparable {
+        static $gtype: GObject.GType<DocumentsProperty>;
+
         // Own properties of GData.DocumentsProperty
 
         /**
@@ -6868,6 +6926,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsQuery structure are private and should never be accessed directly.
      */
     class DocumentsQuery extends Query {
+        static $gtype: GObject.GType<DocumentsQuery>;
+
         // Own properties of GData.DocumentsQuery
 
         /**
@@ -7001,6 +7061,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsService structure are private and should never be accessed directly.
      */
     class DocumentsService extends Service implements Batchable {
+        static $gtype: GObject.GType<DocumentsService>;
+
         // Constructors of GData.DocumentsService
 
         constructor(properties?: Partial<DocumentsService.ConstructorProps>, ...args: any[]);
@@ -7808,6 +7870,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsSpreadsheet structure are private and should never be accessed directly.
      */
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsSpreadsheet>;
+
         // Constructors of GData.DocumentsSpreadsheet
 
         constructor(properties?: Partial<DocumentsSpreadsheet.ConstructorProps>, ...args: any[]);
@@ -8070,6 +8134,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsText structure are private and should never be accessed directly.
      */
     class DocumentsText extends DocumentsDocument implements AccessHandler {
+        static $gtype: GObject.GType<DocumentsText>;
+
         // Constructors of GData.DocumentsText
 
         constructor(properties?: Partial<DocumentsText.ConstructorProps>, ...args: any[]);
@@ -8317,6 +8383,8 @@ export namespace GData {
      * All the fields in the #GDataDocumentsUploadQuery structure are private and should never be accessed directly.
      */
     class DocumentsUploadQuery extends GObject.Object {
+        static $gtype: GObject.GType<DocumentsUploadQuery>;
+
         // Own properties of GData.DocumentsUploadQuery
 
         /**
@@ -8400,6 +8468,8 @@ export namespace GData {
      * All the fields in the #GDataDownloadStream structure are private and should never be accessed directly.
      */
     class DownloadStream extends Gio.InputStream implements Gio.Seekable {
+        static $gtype: GObject.GType<DownloadStream>;
+
         // Own properties of GData.DownloadStream
 
         /**
@@ -9001,6 +9071,8 @@ export namespace GData {
      * All the fields in the #GDataEntry structure are private and should never be accessed directly.
      */
     class Entry extends Parsable {
+        static $gtype: GObject.GType<Entry>;
+
         // Own properties of GData.Entry
 
         /**
@@ -9265,6 +9337,8 @@ export namespace GData {
      * All the fields in the #GDataFeed structure are private and should never be accessed directly.
      */
     class Feed extends Parsable {
+        static $gtype: GObject.GType<Feed>;
+
         // Own properties of GData.Feed
 
         /**
@@ -9528,6 +9602,8 @@ export namespace GData {
      * All the fields in the #GDataGContactCalendar structure are private and should never be accessed directly.
      */
     class GContactCalendar extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GContactCalendar>;
+
         // Own properties of GData.GContactCalendar
 
         /**
@@ -10024,6 +10100,8 @@ export namespace GData {
      * All the fields in the #GDataGContactEvent structure are private and should never be accessed directly.
      */
     class GContactEvent extends Parsable {
+        static $gtype: GObject.GType<GContactEvent>;
+
         // Own properties of GData.GContactEvent
 
         /**
@@ -10125,6 +10203,8 @@ export namespace GData {
      * All the fields in the #GDataGContactExternalID structure are private and should never be accessed directly.
      */
     class GContactExternalID extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GContactExternalID>;
+
         // Own properties of GData.GContactExternalID
 
         /**
@@ -10594,6 +10674,8 @@ export namespace GData {
      * All the fields in the #GDataGContactJot structure are private and should never be accessed directly.
      */
     class GContactJot extends Parsable {
+        static $gtype: GObject.GType<GContactJot>;
+
         // Own properties of GData.GContactJot
 
         /**
@@ -10667,6 +10749,8 @@ export namespace GData {
      * All the fields in the #GDataGContactLanguage structure are private and should never be accessed directly.
      */
     class GContactLanguage extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GContactLanguage>;
+
         // Own properties of GData.GContactLanguage
 
         /**
@@ -11108,6 +11192,8 @@ export namespace GData {
      * All the fields in the #GDataGContactRelation structure are private and should never be accessed directly.
      */
     class GContactRelation extends Parsable {
+        static $gtype: GObject.GType<GContactRelation>;
+
         // Own properties of GData.GContactRelation
 
         /**
@@ -11211,6 +11297,8 @@ export namespace GData {
      * All the fields in the #GDataGContactWebsite structure are private and should never be accessed directly.
      */
     class GContactWebsite extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GContactWebsite>;
+
         // Own properties of GData.GContactWebsite
 
         /**
@@ -11707,6 +11795,8 @@ export namespace GData {
      * All the fields in the #GDataGDEmailAddress structure are private and should never be accessed directly.
      */
     class GDEmailAddress extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDEmailAddress>;
+
         // Own properties of GData.GDEmailAddress
 
         /**
@@ -12229,6 +12319,8 @@ export namespace GData {
      * All the fields in the #GDataGDIMAddress structure are private and should never be accessed directly.
      */
     class GDIMAddress extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDIMAddress>;
+
         // Own properties of GData.GDIMAddress
 
         /**
@@ -12745,6 +12837,8 @@ export namespace GData {
      * All the fields in the #GDataGDName structure are private and should never be accessed directly.
      */
     class GDName extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDName>;
+
         // Own properties of GData.GDName
 
         /**
@@ -13294,6 +13388,8 @@ export namespace GData {
      * All the fields in the #GDataGDOrganization structure are private and should never be accessed directly.
      */
     class GDOrganization extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDOrganization>;
+
         // Own properties of GData.GDOrganization
 
         /**
@@ -13900,6 +13996,8 @@ export namespace GData {
      * All the fields in the #GDataGDPhoneNumber structure are private and should never be accessed directly.
      */
     class GDPhoneNumber extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDPhoneNumber>;
+
         // Own properties of GData.GDPhoneNumber
 
         /**
@@ -14431,6 +14529,8 @@ export namespace GData {
      * All the fields in the #GDataGDPostalAddress structure are private and should never be accessed directly.
      */
     class GDPostalAddress extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDPostalAddress>;
+
         // Own properties of GData.GDPostalAddress
 
         /**
@@ -15213,6 +15313,8 @@ export namespace GData {
      * All the fields in the #GDataGDReminder structure are private and should never be accessed directly.
      */
     class GDReminder extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDReminder>;
+
         // Own properties of GData.GDReminder
 
         /**
@@ -15706,6 +15808,8 @@ export namespace GData {
      * All the fields in the #GDataGDWhen structure are private and should never be accessed directly.
      */
     class GDWhen extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDWhen>;
+
         // Own properties of GData.GDWhen
 
         /**
@@ -16225,6 +16329,8 @@ export namespace GData {
      * All the fields in the #GDataGDWhere structure are private and should never be accessed directly.
      */
     class GDWhere extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDWhere>;
+
         // Own properties of GData.GDWhere
 
         /**
@@ -16704,6 +16810,8 @@ export namespace GData {
      * All the fields in the #GDataGDWho structure are private and should never be accessed directly.
      */
     class GDWho extends Parsable implements Comparable {
+        static $gtype: GObject.GType<GDWho>;
+
         // Own properties of GData.GDWho
 
         /**
@@ -17192,6 +17300,8 @@ export namespace GData {
      * All the fields in the #GDataGenerator structure are private and should never be accessed directly.
      */
     class Generator extends Parsable implements Comparable {
+        static $gtype: GObject.GType<Generator>;
+
         // Own properties of GData.Generator
 
         /**
@@ -17626,6 +17736,8 @@ export namespace GData {
      * All the fields in the #GDataGoaAuthorizer structure are private and should never be accessed directly.
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
+        static $gtype: GObject.GType<GoaAuthorizer>;
+
         // Own properties of GData.GoaAuthorizer
 
         /**
@@ -18200,6 +18312,8 @@ export namespace GData {
      * All the fields in the #GDataLink structure are private and should never be accessed directly.
      */
     class Link extends Parsable implements Comparable {
+        static $gtype: GObject.GType<Link>;
+
         // Own properties of GData.Link
 
         /**
@@ -18741,6 +18855,8 @@ export namespace GData {
      * All the fields in the #GDataMediaCategory structure are private and should never be accessed directly.
      */
     class MediaCategory extends Parsable {
+        static $gtype: GObject.GType<MediaCategory>;
+
         // Own properties of GData.MediaCategory
 
         /**
@@ -18833,6 +18949,8 @@ export namespace GData {
      * All the fields in the #GDataMediaContent structure are private and should never be accessed directly.
      */
     class MediaContent extends Parsable {
+        static $gtype: GObject.GType<MediaContent>;
+
         // Own properties of GData.MediaContent
 
         /**
@@ -18982,6 +19100,8 @@ export namespace GData {
      * All the fields in the #GDataMediaCredit structure are private and should never be accessed directly.
      */
     class MediaCredit extends Parsable {
+        static $gtype: GObject.GType<MediaCredit>;
+
         // Own properties of GData.MediaCredit
 
         /**
@@ -19043,6 +19163,8 @@ export namespace GData {
      * All the fields in the #GDataMediaThumbnail structure are private and should never be accessed directly.
      */
     class MediaThumbnail extends Parsable {
+        static $gtype: GObject.GType<MediaThumbnail>;
+
         // Own properties of GData.MediaThumbnail
 
         /**
@@ -19138,6 +19260,8 @@ export namespace GData {
      * All the fields in the #GDataOAuth2Authorizer structure are private and should never be accessed directly.
      */
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
+        static $gtype: GObject.GType<OAuth2Authorizer>;
+
         // Own properties of GData.OAuth2Authorizer
 
         /**
@@ -19999,6 +20123,8 @@ export namespace GData {
      * All the fields in the #GDataParsable structure are private and should never be accessed directly.
      */
     abstract class Parsable extends GObject.Object {
+        static $gtype: GObject.GType<Parsable>;
+
         // Own properties of GData.Parsable
 
         /**
@@ -20085,6 +20211,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebAlbum structure are private and should never be accessed directly.
      */
     class PicasaWebAlbum extends Entry {
+        static $gtype: GObject.GType<PicasaWebAlbum>;
+
         // Own properties of GData.PicasaWebAlbum
 
         /**
@@ -20381,6 +20509,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebComment structure are private and should never be accessed directly.
      */
     class PicasaWebComment extends Comment {
+        static $gtype: GObject.GType<PicasaWebComment>;
+
         // Constructors of GData.PicasaWebComment
 
         constructor(properties?: Partial<PicasaWebComment.ConstructorProps>, ...args: any[]);
@@ -20403,6 +20533,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebFeed structure are private and should never be accessed directly.
      */
     class PicasaWebFeed extends Feed {
+        static $gtype: GObject.GType<PicasaWebFeed>;
+
         // Constructors of GData.PicasaWebFeed
 
         constructor(properties?: Partial<PicasaWebFeed.ConstructorProps>, ...args: any[]);
@@ -20455,6 +20587,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebFile structure are private and should never be accessed directly.
      */
     class PicasaWebFile extends Entry implements Commentable {
+        static $gtype: GObject.GType<PicasaWebFile>;
+
         // Own properties of GData.PicasaWebFile
 
         /**
@@ -21270,6 +21404,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebQuery structure are private and should never be accessed directly.
      */
     class PicasaWebQuery extends Query {
+        static $gtype: GObject.GType<PicasaWebQuery>;
+
         // Own properties of GData.PicasaWebQuery
 
         /**
@@ -21420,6 +21556,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebService structure are private and should never be accessed directly.
      */
     class PicasaWebService extends Service {
+        static $gtype: GObject.GType<PicasaWebService>;
+
         // Constructors of GData.PicasaWebService
 
         constructor(properties?: Partial<PicasaWebService.ConstructorProps>, ...args: any[]);
@@ -21643,6 +21781,8 @@ export namespace GData {
      * All the fields in the #GDataPicasaWebUser structure are private and should never be accessed directly.
      */
     class PicasaWebUser extends Entry {
+        static $gtype: GObject.GType<PicasaWebUser>;
+
         // Own properties of GData.PicasaWebUser
 
         /**
@@ -21783,6 +21923,8 @@ export namespace GData {
      * All the fields in the #GDataQuery structure are private and should never be accessed directly.
      */
     class Query extends GObject.Object {
+        static $gtype: GObject.GType<Query>;
+
         // Own properties of GData.Query
 
         /**
@@ -22113,6 +22255,8 @@ export namespace GData {
      * All the fields in the #GDataService structure are private and should never be accessed directly.
      */
     class Service extends GObject.Object {
+        static $gtype: GObject.GType<Service>;
+
         // Own properties of GData.Service
 
         /**
@@ -22547,6 +22691,8 @@ export namespace GData {
      * All the fields in the #GDataTasksQuery structure are private and should never be accessed directly.
      */
     class TasksQuery extends Query {
+        static $gtype: GObject.GType<TasksQuery>;
+
         // Own properties of GData.TasksQuery
 
         /**
@@ -22732,6 +22878,8 @@ export namespace GData {
      * All the fields in the #GDataTasksService structure are private and should never be accessed directly.
      */
     class TasksService extends Service {
+        static $gtype: GObject.GType<TasksService>;
+
         // Constructors of GData.TasksService
 
         constructor(properties?: Partial<TasksService.ConstructorProps>, ...args: any[]);
@@ -23015,6 +23163,8 @@ export namespace GData {
      * All the fields in the #GDataTasksTask structure are private and should never be accessed directly.
      */
     class TasksTask extends Entry {
+        static $gtype: GObject.GType<TasksTask>;
+
         // Own properties of GData.TasksTask
 
         /**
@@ -23181,6 +23331,8 @@ export namespace GData {
      * All the fields in the #GDataTasksTasklist structure are private and should never be accessed directly.
      */
     class TasksTasklist extends Entry {
+        static $gtype: GObject.GType<TasksTasklist>;
+
         // Constructors of GData.TasksTasklist
 
         constructor(properties?: Partial<TasksTasklist.ConstructorProps>, ...args: any[]);
@@ -23214,6 +23366,8 @@ export namespace GData {
      * All the fields in the #GDataUploadStream structure are private and should never be accessed directly.
      */
     class UploadStream extends Gio.OutputStream {
+        static $gtype: GObject.GType<UploadStream>;
+
         // Own properties of GData.UploadStream
 
         /**
@@ -23396,6 +23550,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeCategory structure are private and should never be accessed directly.
      */
     class YouTubeCategory extends Category implements Comparable {
+        static $gtype: GObject.GType<YouTubeCategory>;
+
         // Own properties of GData.YouTubeCategory
 
         /**
@@ -23814,6 +23970,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeComment structure are private and should never be accessed directly.
      */
     class YouTubeComment extends Comment {
+        static $gtype: GObject.GType<YouTubeComment>;
+
         // Own properties of GData.YouTubeComment
 
         /**
@@ -23873,6 +24031,8 @@ export namespace GData {
      * never be accessed directly.
      */
     class YouTubeFeed extends Feed {
+        static $gtype: GObject.GType<YouTubeFeed>;
+
         // Constructors of GData.YouTubeFeed
 
         constructor(properties?: Partial<YouTubeFeed.ConstructorProps>, ...args: any[]);
@@ -23902,6 +24062,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeQuery structure are private and should never be accessed directly.
      */
     class YouTubeQuery extends Query {
+        static $gtype: GObject.GType<YouTubeQuery>;
+
         // Own properties of GData.YouTubeQuery
 
         /**
@@ -24114,6 +24276,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeService structure are private and should never be accessed directly.
      */
     class YouTubeService extends Service implements Batchable {
+        static $gtype: GObject.GType<YouTubeService>;
+
         // Own properties of GData.YouTubeService
 
         /**
@@ -24761,6 +24925,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeState structure are private and should never be accessed directly.
      */
     class YouTubeState extends Parsable {
+        static $gtype: GObject.GType<YouTubeState>;
+
         // Own properties of GData.YouTubeState
 
         /**
@@ -24877,6 +25043,8 @@ export namespace GData {
      * All the fields in the #GDataYouTubeVideo structure are private and should never be accessed directly.
      */
     class YouTubeVideo extends Entry implements Commentable {
+        static $gtype: GObject.GType<YouTubeVideo>;
+
         // Own properties of GData.YouTubeVideo
 
         /**
@@ -25623,6 +25791,8 @@ export namespace GData {
 
     type APPCategoriesClass = typeof APPCategories;
     abstract class APPCategoriesPrivate {
+        static $gtype: GObject.GType<APPCategoriesPrivate>;
+
         // Constructors of GData.APPCategoriesPrivate
 
         _init(...args: any[]): void;
@@ -25631,6 +25801,8 @@ export namespace GData {
     type AccessHandlerIface = typeof AccessHandler;
     type AccessRuleClass = typeof AccessRule;
     abstract class AccessRulePrivate {
+        static $gtype: GObject.GType<AccessRulePrivate>;
+
         // Constructors of GData.AccessRulePrivate
 
         _init(...args: any[]): void;
@@ -25638,6 +25810,8 @@ export namespace GData {
 
     type AuthorClass = typeof Author;
     abstract class AuthorPrivate {
+        static $gtype: GObject.GType<AuthorPrivate>;
+
         // Constructors of GData.AuthorPrivate
 
         _init(...args: any[]): void;
@@ -25645,6 +25819,8 @@ export namespace GData {
 
     type AuthorizationDomainClass = typeof AuthorizationDomain;
     abstract class AuthorizationDomainPrivate {
+        static $gtype: GObject.GType<AuthorizationDomainPrivate>;
+
         // Constructors of GData.AuthorizationDomainPrivate
 
         _init(...args: any[]): void;
@@ -25653,6 +25829,8 @@ export namespace GData {
     type AuthorizerInterface = typeof Authorizer;
     type BatchOperationClass = typeof BatchOperation;
     abstract class BatchOperationPrivate {
+        static $gtype: GObject.GType<BatchOperationPrivate>;
+
         // Constructors of GData.BatchOperationPrivate
 
         _init(...args: any[]): void;
@@ -25662,6 +25840,8 @@ export namespace GData {
     type CalendarAccessRuleClass = typeof CalendarAccessRule;
     type CalendarCalendarClass = typeof CalendarCalendar;
     abstract class CalendarCalendarPrivate {
+        static $gtype: GObject.GType<CalendarCalendarPrivate>;
+
         // Constructors of GData.CalendarCalendarPrivate
 
         _init(...args: any[]): void;
@@ -25669,6 +25849,8 @@ export namespace GData {
 
     type CalendarEventClass = typeof CalendarEvent;
     abstract class CalendarEventPrivate {
+        static $gtype: GObject.GType<CalendarEventPrivate>;
+
         // Constructors of GData.CalendarEventPrivate
 
         _init(...args: any[]): void;
@@ -25676,6 +25858,8 @@ export namespace GData {
 
     type CalendarFeedClass = typeof CalendarFeed;
     abstract class CalendarFeedPrivate {
+        static $gtype: GObject.GType<CalendarFeedPrivate>;
+
         // Constructors of GData.CalendarFeedPrivate
 
         _init(...args: any[]): void;
@@ -25683,6 +25867,8 @@ export namespace GData {
 
     type CalendarQueryClass = typeof CalendarQuery;
     abstract class CalendarQueryPrivate {
+        static $gtype: GObject.GType<CalendarQueryPrivate>;
+
         // Constructors of GData.CalendarQueryPrivate
 
         _init(...args: any[]): void;
@@ -25690,6 +25876,8 @@ export namespace GData {
 
     type CalendarServiceClass = typeof CalendarService;
     abstract class CalendarServicePrivate {
+        static $gtype: GObject.GType<CalendarServicePrivate>;
+
         // Constructors of GData.CalendarServicePrivate
 
         _init(...args: any[]): void;
@@ -25697,6 +25885,8 @@ export namespace GData {
 
     type CategoryClass = typeof Category;
     abstract class CategoryPrivate {
+        static $gtype: GObject.GType<CategoryPrivate>;
+
         // Constructors of GData.CategoryPrivate
 
         _init(...args: any[]): void;
@@ -25707,6 +25897,8 @@ export namespace GData {
      * differentiate calendars.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Own fields of GData.Color
 
         red: number;
@@ -25749,6 +25941,8 @@ export namespace GData {
 
     type CommentClass = typeof Comment;
     abstract class CommentPrivate {
+        static $gtype: GObject.GType<CommentPrivate>;
+
         // Constructors of GData.CommentPrivate
 
         _init(...args: any[]): void;
@@ -25759,6 +25953,8 @@ export namespace GData {
     type DocumentsAccessRuleClass = typeof DocumentsAccessRule;
     type DocumentsDocumentClass = typeof DocumentsDocument;
     abstract class DocumentsDocumentPrivate {
+        static $gtype: GObject.GType<DocumentsDocumentPrivate>;
+
         // Constructors of GData.DocumentsDocumentPrivate
 
         _init(...args: any[]): void;
@@ -25766,6 +25962,8 @@ export namespace GData {
 
     type DocumentsDrawingClass = typeof DocumentsDrawing;
     abstract class DocumentsDrawingPrivate {
+        static $gtype: GObject.GType<DocumentsDrawingPrivate>;
+
         // Constructors of GData.DocumentsDrawingPrivate
 
         _init(...args: any[]): void;
@@ -25775,6 +25973,8 @@ export namespace GData {
     type DocumentsDriveQueryClass = typeof DocumentsDriveQuery;
     type DocumentsEntryClass = typeof DocumentsEntry;
     abstract class DocumentsEntryPrivate {
+        static $gtype: GObject.GType<DocumentsEntryPrivate>;
+
         // Constructors of GData.DocumentsEntryPrivate
 
         _init(...args: any[]): void;
@@ -25782,6 +25982,8 @@ export namespace GData {
 
     type DocumentsFeedClass = typeof DocumentsFeed;
     abstract class DocumentsFeedPrivate {
+        static $gtype: GObject.GType<DocumentsFeedPrivate>;
+
         // Constructors of GData.DocumentsFeedPrivate
 
         _init(...args: any[]): void;
@@ -25789,6 +25991,8 @@ export namespace GData {
 
     type DocumentsFolderClass = typeof DocumentsFolder;
     abstract class DocumentsFolderPrivate {
+        static $gtype: GObject.GType<DocumentsFolderPrivate>;
+
         // Constructors of GData.DocumentsFolderPrivate
 
         _init(...args: any[]): void;
@@ -25796,6 +26000,8 @@ export namespace GData {
 
     type DocumentsMetadataClass = typeof DocumentsMetadata;
     abstract class DocumentsMetadataPrivate {
+        static $gtype: GObject.GType<DocumentsMetadataPrivate>;
+
         // Constructors of GData.DocumentsMetadataPrivate
 
         _init(...args: any[]): void;
@@ -25803,6 +26009,8 @@ export namespace GData {
 
     type DocumentsPdfClass = typeof DocumentsPdf;
     abstract class DocumentsPdfPrivate {
+        static $gtype: GObject.GType<DocumentsPdfPrivate>;
+
         // Constructors of GData.DocumentsPdfPrivate
 
         _init(...args: any[]): void;
@@ -25810,6 +26018,8 @@ export namespace GData {
 
     type DocumentsPresentationClass = typeof DocumentsPresentation;
     abstract class DocumentsPresentationPrivate {
+        static $gtype: GObject.GType<DocumentsPresentationPrivate>;
+
         // Constructors of GData.DocumentsPresentationPrivate
 
         _init(...args: any[]): void;
@@ -25817,6 +26027,8 @@ export namespace GData {
 
     type DocumentsPropertyClass = typeof DocumentsProperty;
     abstract class DocumentsPropertyPrivate {
+        static $gtype: GObject.GType<DocumentsPropertyPrivate>;
+
         // Constructors of GData.DocumentsPropertyPrivate
 
         _init(...args: any[]): void;
@@ -25824,6 +26036,8 @@ export namespace GData {
 
     type DocumentsQueryClass = typeof DocumentsQuery;
     abstract class DocumentsQueryPrivate {
+        static $gtype: GObject.GType<DocumentsQueryPrivate>;
+
         // Constructors of GData.DocumentsQueryPrivate
 
         _init(...args: any[]): void;
@@ -25831,6 +26045,8 @@ export namespace GData {
 
     type DocumentsServiceClass = typeof DocumentsService;
     abstract class DocumentsServicePrivate {
+        static $gtype: GObject.GType<DocumentsServicePrivate>;
+
         // Constructors of GData.DocumentsServicePrivate
 
         _init(...args: any[]): void;
@@ -25838,6 +26054,8 @@ export namespace GData {
 
     type DocumentsSpreadsheetClass = typeof DocumentsSpreadsheet;
     abstract class DocumentsSpreadsheetPrivate {
+        static $gtype: GObject.GType<DocumentsSpreadsheetPrivate>;
+
         // Constructors of GData.DocumentsSpreadsheetPrivate
 
         _init(...args: any[]): void;
@@ -25845,6 +26063,8 @@ export namespace GData {
 
     type DocumentsTextClass = typeof DocumentsText;
     abstract class DocumentsTextPrivate {
+        static $gtype: GObject.GType<DocumentsTextPrivate>;
+
         // Constructors of GData.DocumentsTextPrivate
 
         _init(...args: any[]): void;
@@ -25852,6 +26072,8 @@ export namespace GData {
 
     type DocumentsUploadQueryClass = typeof DocumentsUploadQuery;
     abstract class DocumentsUploadQueryPrivate {
+        static $gtype: GObject.GType<DocumentsUploadQueryPrivate>;
+
         // Constructors of GData.DocumentsUploadQueryPrivate
 
         _init(...args: any[]): void;
@@ -25859,6 +26081,8 @@ export namespace GData {
 
     type DownloadStreamClass = typeof DownloadStream;
     abstract class DownloadStreamPrivate {
+        static $gtype: GObject.GType<DownloadStreamPrivate>;
+
         // Constructors of GData.DownloadStreamPrivate
 
         _init(...args: any[]): void;
@@ -25866,6 +26090,8 @@ export namespace GData {
 
     type EntryClass = typeof Entry;
     abstract class EntryPrivate {
+        static $gtype: GObject.GType<EntryPrivate>;
+
         // Constructors of GData.EntryPrivate
 
         _init(...args: any[]): void;
@@ -25873,6 +26099,8 @@ export namespace GData {
 
     type FeedClass = typeof Feed;
     abstract class FeedPrivate {
+        static $gtype: GObject.GType<FeedPrivate>;
+
         // Constructors of GData.FeedPrivate
 
         _init(...args: any[]): void;
@@ -25880,6 +26108,8 @@ export namespace GData {
 
     type GContactCalendarClass = typeof GContactCalendar;
     abstract class GContactCalendarPrivate {
+        static $gtype: GObject.GType<GContactCalendarPrivate>;
+
         // Constructors of GData.GContactCalendarPrivate
 
         _init(...args: any[]): void;
@@ -25887,6 +26117,8 @@ export namespace GData {
 
     type GContactEventClass = typeof GContactEvent;
     abstract class GContactEventPrivate {
+        static $gtype: GObject.GType<GContactEventPrivate>;
+
         // Constructors of GData.GContactEventPrivate
 
         _init(...args: any[]): void;
@@ -25894,6 +26126,8 @@ export namespace GData {
 
     type GContactExternalIDClass = typeof GContactExternalID;
     abstract class GContactExternalIDPrivate {
+        static $gtype: GObject.GType<GContactExternalIDPrivate>;
+
         // Constructors of GData.GContactExternalIDPrivate
 
         _init(...args: any[]): void;
@@ -25901,6 +26135,8 @@ export namespace GData {
 
     type GContactJotClass = typeof GContactJot;
     abstract class GContactJotPrivate {
+        static $gtype: GObject.GType<GContactJotPrivate>;
+
         // Constructors of GData.GContactJotPrivate
 
         _init(...args: any[]): void;
@@ -25908,6 +26144,8 @@ export namespace GData {
 
     type GContactLanguageClass = typeof GContactLanguage;
     abstract class GContactLanguagePrivate {
+        static $gtype: GObject.GType<GContactLanguagePrivate>;
+
         // Constructors of GData.GContactLanguagePrivate
 
         _init(...args: any[]): void;
@@ -25915,6 +26153,8 @@ export namespace GData {
 
     type GContactRelationClass = typeof GContactRelation;
     abstract class GContactRelationPrivate {
+        static $gtype: GObject.GType<GContactRelationPrivate>;
+
         // Constructors of GData.GContactRelationPrivate
 
         _init(...args: any[]): void;
@@ -25922,6 +26162,8 @@ export namespace GData {
 
     type GContactWebsiteClass = typeof GContactWebsite;
     abstract class GContactWebsitePrivate {
+        static $gtype: GObject.GType<GContactWebsitePrivate>;
+
         // Constructors of GData.GContactWebsitePrivate
 
         _init(...args: any[]): void;
@@ -25929,6 +26171,8 @@ export namespace GData {
 
     type GDEmailAddressClass = typeof GDEmailAddress;
     abstract class GDEmailAddressPrivate {
+        static $gtype: GObject.GType<GDEmailAddressPrivate>;
+
         // Constructors of GData.GDEmailAddressPrivate
 
         _init(...args: any[]): void;
@@ -25936,6 +26180,8 @@ export namespace GData {
 
     type GDIMAddressClass = typeof GDIMAddress;
     abstract class GDIMAddressPrivate {
+        static $gtype: GObject.GType<GDIMAddressPrivate>;
+
         // Constructors of GData.GDIMAddressPrivate
 
         _init(...args: any[]): void;
@@ -25943,6 +26189,8 @@ export namespace GData {
 
     type GDNameClass = typeof GDName;
     abstract class GDNamePrivate {
+        static $gtype: GObject.GType<GDNamePrivate>;
+
         // Constructors of GData.GDNamePrivate
 
         _init(...args: any[]): void;
@@ -25950,6 +26198,8 @@ export namespace GData {
 
     type GDOrganizationClass = typeof GDOrganization;
     abstract class GDOrganizationPrivate {
+        static $gtype: GObject.GType<GDOrganizationPrivate>;
+
         // Constructors of GData.GDOrganizationPrivate
 
         _init(...args: any[]): void;
@@ -25957,6 +26207,8 @@ export namespace GData {
 
     type GDPhoneNumberClass = typeof GDPhoneNumber;
     abstract class GDPhoneNumberPrivate {
+        static $gtype: GObject.GType<GDPhoneNumberPrivate>;
+
         // Constructors of GData.GDPhoneNumberPrivate
 
         _init(...args: any[]): void;
@@ -25964,6 +26216,8 @@ export namespace GData {
 
     type GDPostalAddressClass = typeof GDPostalAddress;
     abstract class GDPostalAddressPrivate {
+        static $gtype: GObject.GType<GDPostalAddressPrivate>;
+
         // Constructors of GData.GDPostalAddressPrivate
 
         _init(...args: any[]): void;
@@ -25971,6 +26225,8 @@ export namespace GData {
 
     type GDReminderClass = typeof GDReminder;
     abstract class GDReminderPrivate {
+        static $gtype: GObject.GType<GDReminderPrivate>;
+
         // Constructors of GData.GDReminderPrivate
 
         _init(...args: any[]): void;
@@ -25978,6 +26234,8 @@ export namespace GData {
 
     type GDWhenClass = typeof GDWhen;
     abstract class GDWhenPrivate {
+        static $gtype: GObject.GType<GDWhenPrivate>;
+
         // Constructors of GData.GDWhenPrivate
 
         _init(...args: any[]): void;
@@ -25985,6 +26243,8 @@ export namespace GData {
 
     type GDWhereClass = typeof GDWhere;
     abstract class GDWherePrivate {
+        static $gtype: GObject.GType<GDWherePrivate>;
+
         // Constructors of GData.GDWherePrivate
 
         _init(...args: any[]): void;
@@ -25992,6 +26252,8 @@ export namespace GData {
 
     type GDWhoClass = typeof GDWho;
     abstract class GDWhoPrivate {
+        static $gtype: GObject.GType<GDWhoPrivate>;
+
         // Constructors of GData.GDWhoPrivate
 
         _init(...args: any[]): void;
@@ -25999,6 +26261,8 @@ export namespace GData {
 
     type GeneratorClass = typeof Generator;
     abstract class GeneratorPrivate {
+        static $gtype: GObject.GType<GeneratorPrivate>;
+
         // Constructors of GData.GeneratorPrivate
 
         _init(...args: any[]): void;
@@ -26006,6 +26270,8 @@ export namespace GData {
 
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
+        static $gtype: GObject.GType<GoaAuthorizerPrivate>;
+
         // Constructors of GData.GoaAuthorizerPrivate
 
         _init(...args: any[]): void;
@@ -26013,6 +26279,8 @@ export namespace GData {
 
     type LinkClass = typeof Link;
     abstract class LinkPrivate {
+        static $gtype: GObject.GType<LinkPrivate>;
+
         // Constructors of GData.LinkPrivate
 
         _init(...args: any[]): void;
@@ -26020,6 +26288,8 @@ export namespace GData {
 
     type MediaCategoryClass = typeof MediaCategory;
     abstract class MediaCategoryPrivate {
+        static $gtype: GObject.GType<MediaCategoryPrivate>;
+
         // Constructors of GData.MediaCategoryPrivate
 
         _init(...args: any[]): void;
@@ -26027,6 +26297,8 @@ export namespace GData {
 
     type MediaContentClass = typeof MediaContent;
     abstract class MediaContentPrivate {
+        static $gtype: GObject.GType<MediaContentPrivate>;
+
         // Constructors of GData.MediaContentPrivate
 
         _init(...args: any[]): void;
@@ -26034,6 +26306,8 @@ export namespace GData {
 
     type MediaCreditClass = typeof MediaCredit;
     abstract class MediaCreditPrivate {
+        static $gtype: GObject.GType<MediaCreditPrivate>;
+
         // Constructors of GData.MediaCreditPrivate
 
         _init(...args: any[]): void;
@@ -26041,6 +26315,8 @@ export namespace GData {
 
     type MediaThumbnailClass = typeof MediaThumbnail;
     abstract class MediaThumbnailPrivate {
+        static $gtype: GObject.GType<MediaThumbnailPrivate>;
+
         // Constructors of GData.MediaThumbnailPrivate
 
         _init(...args: any[]): void;
@@ -26048,6 +26324,8 @@ export namespace GData {
 
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
     abstract class OAuth2AuthorizerPrivate {
+        static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
+
         // Constructors of GData.OAuth2AuthorizerPrivate
 
         _init(...args: any[]): void;
@@ -26055,6 +26333,8 @@ export namespace GData {
 
     type ParsableClass = typeof Parsable;
     abstract class ParsablePrivate {
+        static $gtype: GObject.GType<ParsablePrivate>;
+
         // Constructors of GData.ParsablePrivate
 
         _init(...args: any[]): void;
@@ -26062,6 +26342,8 @@ export namespace GData {
 
     type PicasaWebAlbumClass = typeof PicasaWebAlbum;
     abstract class PicasaWebAlbumPrivate {
+        static $gtype: GObject.GType<PicasaWebAlbumPrivate>;
+
         // Constructors of GData.PicasaWebAlbumPrivate
 
         _init(...args: any[]): void;
@@ -26069,6 +26351,8 @@ export namespace GData {
 
     type PicasaWebCommentClass = typeof PicasaWebComment;
     abstract class PicasaWebCommentPrivate {
+        static $gtype: GObject.GType<PicasaWebCommentPrivate>;
+
         // Constructors of GData.PicasaWebCommentPrivate
 
         _init(...args: any[]): void;
@@ -26077,6 +26361,8 @@ export namespace GData {
     type PicasaWebFeedClass = typeof PicasaWebFeed;
     type PicasaWebFileClass = typeof PicasaWebFile;
     abstract class PicasaWebFilePrivate {
+        static $gtype: GObject.GType<PicasaWebFilePrivate>;
+
         // Constructors of GData.PicasaWebFilePrivate
 
         _init(...args: any[]): void;
@@ -26084,6 +26370,8 @@ export namespace GData {
 
     type PicasaWebQueryClass = typeof PicasaWebQuery;
     abstract class PicasaWebQueryPrivate {
+        static $gtype: GObject.GType<PicasaWebQueryPrivate>;
+
         // Constructors of GData.PicasaWebQueryPrivate
 
         _init(...args: any[]): void;
@@ -26092,6 +26380,8 @@ export namespace GData {
     type PicasaWebServiceClass = typeof PicasaWebService;
     type PicasaWebUserClass = typeof PicasaWebUser;
     abstract class PicasaWebUserPrivate {
+        static $gtype: GObject.GType<PicasaWebUserPrivate>;
+
         // Constructors of GData.PicasaWebUserPrivate
 
         _init(...args: any[]): void;
@@ -26099,6 +26389,8 @@ export namespace GData {
 
     type QueryClass = typeof Query;
     abstract class QueryPrivate {
+        static $gtype: GObject.GType<QueryPrivate>;
+
         // Constructors of GData.QueryPrivate
 
         _init(...args: any[]): void;
@@ -26106,6 +26398,8 @@ export namespace GData {
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
+        static $gtype: GObject.GType<ServicePrivate>;
+
         // Constructors of GData.ServicePrivate
 
         _init(...args: any[]): void;
@@ -26113,6 +26407,8 @@ export namespace GData {
 
     type TasksQueryClass = typeof TasksQuery;
     abstract class TasksQueryPrivate {
+        static $gtype: GObject.GType<TasksQueryPrivate>;
+
         // Constructors of GData.TasksQueryPrivate
 
         _init(...args: any[]): void;
@@ -26121,6 +26417,8 @@ export namespace GData {
     type TasksServiceClass = typeof TasksService;
     type TasksTaskClass = typeof TasksTask;
     abstract class TasksTaskPrivate {
+        static $gtype: GObject.GType<TasksTaskPrivate>;
+
         // Constructors of GData.TasksTaskPrivate
 
         _init(...args: any[]): void;
@@ -26129,6 +26427,8 @@ export namespace GData {
     type TasksTasklistClass = typeof TasksTasklist;
     type UploadStreamClass = typeof UploadStream;
     abstract class UploadStreamPrivate {
+        static $gtype: GObject.GType<UploadStreamPrivate>;
+
         // Constructors of GData.UploadStreamPrivate
 
         _init(...args: any[]): void;
@@ -26136,6 +26436,8 @@ export namespace GData {
 
     type YouTubeCategoryClass = typeof YouTubeCategory;
     abstract class YouTubeCategoryPrivate {
+        static $gtype: GObject.GType<YouTubeCategoryPrivate>;
+
         // Constructors of GData.YouTubeCategoryPrivate
 
         _init(...args: any[]): void;
@@ -26143,6 +26445,8 @@ export namespace GData {
 
     type YouTubeCommentClass = typeof YouTubeComment;
     abstract class YouTubeCommentPrivate {
+        static $gtype: GObject.GType<YouTubeCommentPrivate>;
+
         // Constructors of GData.YouTubeCommentPrivate
 
         _init(...args: any[]): void;
@@ -26150,6 +26454,8 @@ export namespace GData {
 
     type YouTubeFeedClass = typeof YouTubeFeed;
     abstract class YouTubeFeedPrivate {
+        static $gtype: GObject.GType<YouTubeFeedPrivate>;
+
         // Constructors of GData.YouTubeFeedPrivate
 
         _init(...args: any[]): void;
@@ -26157,6 +26463,8 @@ export namespace GData {
 
     type YouTubeQueryClass = typeof YouTubeQuery;
     abstract class YouTubeQueryPrivate {
+        static $gtype: GObject.GType<YouTubeQueryPrivate>;
+
         // Constructors of GData.YouTubeQueryPrivate
 
         _init(...args: any[]): void;
@@ -26164,6 +26472,8 @@ export namespace GData {
 
     type YouTubeServiceClass = typeof YouTubeService;
     abstract class YouTubeServicePrivate {
+        static $gtype: GObject.GType<YouTubeServicePrivate>;
+
         // Constructors of GData.YouTubeServicePrivate
 
         _init(...args: any[]): void;
@@ -26171,6 +26481,8 @@ export namespace GData {
 
     type YouTubeStateClass = typeof YouTubeState;
     abstract class YouTubeStatePrivate {
+        static $gtype: GObject.GType<YouTubeStatePrivate>;
+
         // Constructors of GData.YouTubeStatePrivate
 
         _init(...args: any[]): void;
@@ -26178,6 +26490,8 @@ export namespace GData {
 
     type YouTubeVideoClass = typeof YouTubeVideo;
     abstract class YouTubeVideoPrivate {
+        static $gtype: GObject.GType<YouTubeVideoPrivate>;
+
         // Constructors of GData.YouTubeVideoPrivate
 
         _init(...args: any[]): void;

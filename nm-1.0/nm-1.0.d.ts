@@ -164,6 +164,8 @@ export namespace NM {
      * errors in the "org.freedesktop.NetworkManager.AgentManager" namespace.
      */
     class AgentManagerError extends GLib.Error {
+        static $gtype: GObject.GType<AgentManagerError>;
+
         // Static fields of NM.AgentManagerError
 
         /**
@@ -234,6 +236,8 @@ export namespace NM {
      * #NMManagerError, #NMSettingsError, #NMAgentManagerError, and #NMConnectionError.
      */
     class ClientError extends GLib.Error {
+        static $gtype: GObject.GType<ClientError>;
+
         // Static fields of NM.ClientError
 
         /**
@@ -396,6 +400,8 @@ export namespace NM {
      * "org.freedesktop.NetworkManager.Settings.Connection" namespace.
      */
     class ConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<ConnectionError>;
+
         // Static fields of NM.ConnectionError
 
         /**
@@ -525,6 +531,8 @@ export namespace NM {
      * and some #NMSetting8021x operations.
      */
     class CryptoError extends GLib.Error {
+        static $gtype: GObject.GType<CryptoError>;
+
         // Static fields of NM.CryptoError
 
         /**
@@ -571,6 +579,8 @@ export namespace NM {
      * "org.freedesktop.NetworkManager.Device" namespace).
      */
     class DeviceError extends GLib.Error {
+        static $gtype: GObject.GType<DeviceError>;
+
         // Static fields of NM.DeviceError
 
         /**
@@ -1222,6 +1232,8 @@ export namespace NM {
      * errors in that namespace.
      */
     class ManagerError extends GLib.Error {
+        static $gtype: GObject.GType<ManagerError>;
+
         // Static fields of NM.ManagerError
 
         /**
@@ -1380,6 +1392,8 @@ export namespace NM {
      * corresponding #NMAgentManagerError codes.
      */
     class SecretAgentError extends GLib.Error {
+        static $gtype: GObject.GType<SecretAgentError>;
+
         // Static fields of NM.SecretAgentError
 
         /**
@@ -1933,6 +1947,8 @@ export namespace NM {
      * D-Bus errors in that namespace.
      */
     class SettingsError extends GLib.Error {
+        static $gtype: GObject.GType<SettingsError>;
+
         // Static fields of NM.SettingsError
 
         /**
@@ -2267,6 +2283,8 @@ export namespace NM {
      * to errors in the "org.freedesktop.NetworkManager.VPN.Error" namespace.
      */
     class VpnPluginError extends GLib.Error {
+        static $gtype: GObject.GType<VpnPluginError>;
+
         // Static fields of NM.VpnPluginError
 
         /**
@@ -5701,6 +5719,8 @@ export namespace NM {
     }
 
     class AccessPoint extends Object {
+        static $gtype: GObject.GType<AccessPoint>;
+
         // Own properties of NM.AccessPoint
 
         /**
@@ -5906,6 +5926,8 @@ export namespace NM {
     }
 
     class ActiveConnection extends Object {
+        static $gtype: GObject.GType<ActiveConnection>;
+
         // Own properties of NM.ActiveConnection
 
         /**
@@ -6139,6 +6161,8 @@ export namespace NM {
     }
 
     class Checkpoint extends Object {
+        static $gtype: GObject.GType<Checkpoint>;
+
         // Own properties of NM.Checkpoint
 
         /**
@@ -6302,6 +6326,8 @@ export namespace NM {
      * emits #GObject signals.
      */
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of NM.Client
 
         /**
@@ -8145,6 +8171,8 @@ export namespace NM {
     }
 
     abstract class Device extends Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of NM.Device
 
         /**
@@ -8775,6 +8803,8 @@ export namespace NM {
     }
 
     class Device6Lowpan extends Device {
+        static $gtype: GObject.GType<Device6Lowpan>;
+
         // Own properties of NM.Device6Lowpan
 
         /**
@@ -8802,6 +8832,8 @@ export namespace NM {
     }
 
     class DeviceAdsl extends Device {
+        static $gtype: GObject.GType<DeviceAdsl>;
+
         // Own properties of NM.DeviceAdsl
 
         /**
@@ -8834,6 +8866,8 @@ export namespace NM {
     }
 
     class DeviceBond extends Device {
+        static $gtype: GObject.GType<DeviceBond>;
+
         // Own properties of NM.DeviceBond
 
         /**
@@ -8875,6 +8909,8 @@ export namespace NM {
     }
 
     class DeviceBridge extends Device {
+        static $gtype: GObject.GType<DeviceBridge>;
+
         // Own properties of NM.DeviceBridge
 
         /**
@@ -8917,6 +8953,8 @@ export namespace NM {
     }
 
     class DeviceBt extends Device {
+        static $gtype: GObject.GType<DeviceBt>;
+
         // Own properties of NM.DeviceBt
 
         /**
@@ -8960,6 +8998,8 @@ export namespace NM {
     }
 
     class DeviceDummy extends Device {
+        static $gtype: GObject.GType<DeviceDummy>;
+
         // Constructors of NM.DeviceDummy
 
         constructor(properties?: Partial<DeviceDummy.ConstructorProps>, ...args: any[]);
@@ -8981,6 +9021,8 @@ export namespace NM {
     }
 
     class DeviceEthernet extends Device {
+        static $gtype: GObject.GType<DeviceEthernet>;
+
         // Own properties of NM.DeviceEthernet
 
         /**
@@ -9050,6 +9092,8 @@ export namespace NM {
     }
 
     class DeviceGeneric extends Device {
+        static $gtype: GObject.GType<DeviceGeneric>;
+
         // Own properties of NM.DeviceGeneric
 
         /**
@@ -9095,6 +9139,8 @@ export namespace NM {
     }
 
     class DeviceIPTunnel extends Device {
+        static $gtype: GObject.GType<DeviceIPTunnel>;
+
         // Own properties of NM.DeviceIPTunnel
 
         /**
@@ -9205,6 +9251,8 @@ export namespace NM {
     }
 
     class DeviceInfiniband extends Device {
+        static $gtype: GObject.GType<DeviceInfiniband>;
+
         // Own properties of NM.DeviceInfiniband
 
         /**
@@ -9234,6 +9282,8 @@ export namespace NM {
     }
 
     class DeviceLoopback extends Device {
+        static $gtype: GObject.GType<DeviceLoopback>;
+
         // Constructors of NM.DeviceLoopback
 
         constructor(properties?: Partial<DeviceLoopback.ConstructorProps>, ...args: any[]);
@@ -9267,6 +9317,8 @@ export namespace NM {
     }
 
     class DeviceMacsec extends Device {
+        static $gtype: GObject.GType<DeviceMacsec>;
+
         // Own properties of NM.DeviceMacsec
 
         /**
@@ -9438,6 +9490,8 @@ export namespace NM {
     }
 
     class DeviceMacvlan extends Device {
+        static $gtype: GObject.GType<DeviceMacvlan>;
+
         // Own properties of NM.DeviceMacvlan
 
         /**
@@ -9504,6 +9558,8 @@ export namespace NM {
     }
 
     class DeviceModem extends Device {
+        static $gtype: GObject.GType<DeviceModem>;
+
         // Own properties of NM.DeviceModem
 
         get apn(): string;
@@ -9588,6 +9644,8 @@ export namespace NM {
     }
 
     class DeviceOlpcMesh extends Device {
+        static $gtype: GObject.GType<DeviceOlpcMesh>;
+
         // Own properties of NM.DeviceOlpcMesh
 
         /**
@@ -9632,6 +9690,8 @@ export namespace NM {
     }
 
     class DeviceOvsBridge extends Device {
+        static $gtype: GObject.GType<DeviceOvsBridge>;
+
         // Own properties of NM.DeviceOvsBridge
 
         /**
@@ -9661,6 +9721,8 @@ export namespace NM {
     }
 
     class DeviceOvsInterface extends Device {
+        static $gtype: GObject.GType<DeviceOvsInterface>;
+
         // Constructors of NM.DeviceOvsInterface
 
         constructor(properties?: Partial<DeviceOvsInterface.ConstructorProps>, ...args: any[]);
@@ -9677,6 +9739,8 @@ export namespace NM {
     }
 
     class DeviceOvsPort extends Device {
+        static $gtype: GObject.GType<DeviceOvsPort>;
+
         // Own properties of NM.DeviceOvsPort
 
         /**
@@ -9706,6 +9770,8 @@ export namespace NM {
     }
 
     class DevicePpp extends Device {
+        static $gtype: GObject.GType<DevicePpp>;
+
         // Constructors of NM.DevicePpp
 
         constructor(properties?: Partial<DevicePpp.ConstructorProps>, ...args: any[]);
@@ -9724,6 +9790,8 @@ export namespace NM {
     }
 
     class DeviceTeam extends Device {
+        static $gtype: GObject.GType<DeviceTeam>;
+
         // Own properties of NM.DeviceTeam
 
         /**
@@ -9781,6 +9849,8 @@ export namespace NM {
     }
 
     class DeviceTun extends Device {
+        static $gtype: GObject.GType<DeviceTun>;
+
         // Own properties of NM.DeviceTun
 
         /**
@@ -9877,6 +9947,8 @@ export namespace NM {
     }
 
     class DeviceVeth extends DeviceEthernet {
+        static $gtype: GObject.GType<DeviceVeth>;
+
         // Own properties of NM.DeviceVeth
 
         /**
@@ -9907,6 +9979,8 @@ export namespace NM {
     }
 
     class DeviceVlan extends Device {
+        static $gtype: GObject.GType<DeviceVlan>;
+
         // Own properties of NM.DeviceVlan
 
         /**
@@ -9952,6 +10026,8 @@ export namespace NM {
     }
 
     class DeviceVrf extends Device {
+        static $gtype: GObject.GType<DeviceVrf>;
+
         // Own properties of NM.DeviceVrf
 
         /**
@@ -9998,6 +10074,8 @@ export namespace NM {
     }
 
     class DeviceVxlan extends Device {
+        static $gtype: GObject.GType<DeviceVxlan>;
+
         // Own properties of NM.DeviceVxlan
 
         /**
@@ -10153,6 +10231,8 @@ export namespace NM {
     }
 
     class DeviceWifi extends Device {
+        static $gtype: GObject.GType<DeviceWifi>;
+
         // Own properties of NM.DeviceWifi
 
         /**
@@ -10350,6 +10430,8 @@ export namespace NM {
     }
 
     class DeviceWifiP2P extends Device {
+        static $gtype: GObject.GType<DeviceWifiP2P>;
+
         // Own properties of NM.DeviceWifiP2P
 
         /**
@@ -10454,6 +10536,8 @@ export namespace NM {
     }
 
     class DeviceWimax extends Device {
+        static $gtype: GObject.GType<DeviceWimax>;
+
         // Own properties of NM.DeviceWimax
 
         /**
@@ -10609,6 +10693,8 @@ export namespace NM {
     }
 
     class DeviceWireGuard extends Device {
+        static $gtype: GObject.GType<DeviceWireGuard>;
+
         // Own properties of NM.DeviceWireGuard
 
         /**
@@ -10670,6 +10756,8 @@ export namespace NM {
     }
 
     class DeviceWpan extends Device {
+        static $gtype: GObject.GType<DeviceWpan>;
+
         // Constructors of NM.DeviceWpan
 
         constructor(properties?: Partial<DeviceWpan.ConstructorProps>, ...args: any[]);
@@ -10687,6 +10775,8 @@ export namespace NM {
     }
 
     abstract class DhcpConfig extends Object {
+        static $gtype: GObject.GType<DhcpConfig>;
+
         // Own properties of NM.DhcpConfig
 
         /**
@@ -10742,6 +10832,8 @@ export namespace NM {
     }
 
     abstract class IPConfig extends Object {
+        static $gtype: GObject.GType<IPConfig>;
+
         // Own properties of NM.IPConfig
 
         /**
@@ -10844,6 +10936,8 @@ export namespace NM {
     }
 
     abstract class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of NM.Object
 
         /**
@@ -10901,6 +10995,8 @@ export namespace NM {
     }
 
     class RemoteConnection extends Object implements Connection {
+        static $gtype: GObject.GType<RemoteConnection>;
+
         // Own properties of NM.RemoteConnection
 
         /**
@@ -11856,6 +11952,8 @@ export namespace NM {
     }
 
     abstract class SecretAgentOld extends GObject.Object implements Gio.AsyncInitable<SecretAgentOld>, Gio.Initable {
+        static $gtype: GObject.GType<SecretAgentOld>;
+
         // Own properties of NM.SecretAgentOld
 
         /**
@@ -12699,6 +12797,8 @@ export namespace NM {
     }
 
     abstract class Setting extends GObject.Object {
+        static $gtype: GObject.GType<Setting>;
+
         // Own properties of NM.Setting
 
         /**
@@ -12864,6 +12964,8 @@ export namespace NM {
      * 6LoWPAN Settings
      */
     class Setting6Lowpan extends Setting {
+        static $gtype: GObject.GType<Setting6Lowpan>;
+
         // Own properties of NM.Setting6Lowpan
 
         /**
@@ -12986,6 +13088,8 @@ export namespace NM {
      * IEEE 802.1x Authentication Settings
      */
     class Setting8021x extends Setting {
+        static $gtype: GObject.GType<Setting8021x>;
+
         // Own properties of NM.Setting8021x
 
         /**
@@ -14470,6 +14574,8 @@ export namespace NM {
      * ADSL Settings
      */
     class SettingAdsl extends Setting {
+        static $gtype: GObject.GType<SettingAdsl>;
+
         // Own properties of NM.SettingAdsl
 
         /**
@@ -14545,6 +14651,8 @@ export namespace NM {
      * Bluetooth Settings
      */
     class SettingBluetooth extends Setting {
+        static $gtype: GObject.GType<SettingBluetooth>;
+
         // Own properties of NM.SettingBluetooth
 
         /**
@@ -14595,6 +14703,8 @@ export namespace NM {
      * Bonding Settings
      */
     class SettingBond extends Setting {
+        static $gtype: GObject.GType<SettingBond>;
+
         // Own properties of NM.SettingBond
 
         /**
@@ -14689,6 +14799,8 @@ export namespace NM {
      * Bond Port Settings
      */
     class SettingBondPort extends Setting {
+        static $gtype: GObject.GType<SettingBondPort>;
+
         // Own properties of NM.SettingBondPort
 
         /**
@@ -14788,6 +14900,8 @@ export namespace NM {
      * Bridging Settings
      */
     class SettingBridge extends Setting {
+        static $gtype: GObject.GType<SettingBridge>;
+
         // Own properties of NM.SettingBridge
 
         /**
@@ -15217,6 +15331,8 @@ export namespace NM {
      * Bridge Port Settings
      */
     class SettingBridgePort extends Setting {
+        static $gtype: GObject.GType<SettingBridgePort>;
+
         // Own properties of NM.SettingBridgePort
 
         /**
@@ -15323,6 +15439,8 @@ export namespace NM {
      * CDMA-based Mobile Broadband Settings
      */
     class SettingCdma extends Setting {
+        static $gtype: GObject.GType<SettingCdma>;
+
         // Own properties of NM.SettingCdma
 
         /**
@@ -15434,6 +15552,8 @@ export namespace NM {
      * General Connection Profile Settings
      */
     class SettingConnection extends Setting {
+        static $gtype: GObject.GType<SettingConnection>;
+
         // Own properties of NM.SettingConnection
 
         /**
@@ -16240,6 +16360,8 @@ export namespace NM {
      * Data Center Bridging Settings
      */
     class SettingDcb extends Setting {
+        static $gtype: GObject.GType<SettingDcb>;
+
         // Own properties of NM.SettingDcb
 
         /**
@@ -16536,6 +16658,8 @@ export namespace NM {
      * Dummy Link Settings
      */
     class SettingDummy extends Setting {
+        static $gtype: GObject.GType<SettingDummy>;
+
         // Constructors of NM.SettingDummy
 
         constructor(properties?: Partial<SettingDummy.ConstructorProps>, ...args: any[]);
@@ -16555,6 +16679,8 @@ export namespace NM {
      * Ethtool Ethernet Settings
      */
     class SettingEthtool extends Setting {
+        static $gtype: GObject.GType<SettingEthtool>;
+
         // Constructors of NM.SettingEthtool
 
         constructor(properties?: Partial<SettingEthtool.ConstructorProps>, ...args: any[]);
@@ -16607,6 +16733,8 @@ export namespace NM {
      * Generic Link Settings
      */
     class SettingGeneric extends Setting {
+        static $gtype: GObject.GType<SettingGeneric>;
+
         // Constructors of NM.SettingGeneric
 
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
@@ -16653,6 +16781,8 @@ export namespace NM {
      * GSM-based Mobile Broadband Settings
      */
     class SettingGsm extends Setting {
+        static $gtype: GObject.GType<SettingGsm>;
+
         // Own properties of NM.SettingGsm
 
         /**
@@ -16886,6 +17016,8 @@ export namespace NM {
      * Hostname settings
      */
     class SettingHostname extends Setting {
+        static $gtype: GObject.GType<SettingHostname>;
+
         // Own properties of NM.SettingHostname
 
         /**
@@ -17033,6 +17165,8 @@ export namespace NM {
      * IPv4 Settings
      */
     class SettingIP4Config extends SettingIPConfig {
+        static $gtype: GObject.GType<SettingIP4Config>;
+
         // Own properties of NM.SettingIP4Config
 
         /**
@@ -17223,6 +17357,8 @@ export namespace NM {
      * IPv6 Settings
      */
     class SettingIP6Config extends SettingIPConfig {
+        static $gtype: GObject.GType<SettingIP6Config>;
+
         // Own properties of NM.SettingIP6Config
 
         /**
@@ -17571,6 +17707,8 @@ export namespace NM {
     }
 
     abstract class SettingIPConfig extends Setting {
+        static $gtype: GObject.GType<SettingIPConfig>;
+
         // Own properties of NM.SettingIPConfig
 
         /**
@@ -18506,6 +18644,8 @@ export namespace NM {
      * IP Tunneling Settings
      */
     class SettingIPTunnel extends Setting {
+        static $gtype: GObject.GType<SettingIPTunnel>;
+
         // Own properties of NM.SettingIPTunnel
 
         /**
@@ -18726,6 +18866,8 @@ export namespace NM {
      * Infiniband Settings
      */
     class SettingInfiniband extends Setting {
+        static $gtype: GObject.GType<SettingInfiniband>;
+
         // Own properties of NM.SettingInfiniband
 
         /**
@@ -18857,6 +18999,8 @@ export namespace NM {
      * Link settings
      */
     class SettingLink extends Setting {
+        static $gtype: GObject.GType<SettingLink>;
+
         // Own properties of NM.SettingLink
 
         /**
@@ -18962,6 +19106,8 @@ export namespace NM {
      * Loopback Link Settings
      */
     class SettingLoopback extends Setting {
+        static $gtype: GObject.GType<SettingLoopback>;
+
         // Own properties of NM.SettingLoopback
 
         /**
@@ -19008,6 +19154,8 @@ export namespace NM {
      * MACSec Settings
      */
     class SettingMacsec extends Setting {
+        static $gtype: GObject.GType<SettingMacsec>;
+
         // Own properties of NM.SettingMacsec
 
         /**
@@ -19126,6 +19274,8 @@ export namespace NM {
      * MAC VLAN Settings
      */
     class SettingMacvlan extends Setting {
+        static $gtype: GObject.GType<SettingMacvlan>;
+
         // Own properties of NM.SettingMacvlan
 
         /**
@@ -19186,6 +19336,8 @@ export namespace NM {
      * Match settings
      */
     class SettingMatch extends Setting {
+        static $gtype: GObject.GType<SettingMatch>;
+
         // Own properties of NM.SettingMatch
 
         /**
@@ -19422,6 +19574,8 @@ export namespace NM {
      * OLPC Wireless Mesh Settings
      */
     class SettingOlpcMesh extends Setting {
+        static $gtype: GObject.GType<SettingOlpcMesh>;
+
         // Own properties of NM.SettingOlpcMesh
 
         /**
@@ -19489,6 +19643,8 @@ export namespace NM {
      * OvsBridge Link Settings
      */
     class SettingOvsBridge extends Setting {
+        static $gtype: GObject.GType<SettingOvsBridge>;
+
         // Own properties of NM.SettingOvsBridge
 
         /**
@@ -19577,6 +19733,8 @@ export namespace NM {
      * OvsDpdk Link Settings
      */
     class SettingOvsDpdk extends Setting {
+        static $gtype: GObject.GType<SettingOvsDpdk>;
+
         // Own properties of NM.SettingOvsDpdk
 
         /**
@@ -19663,6 +19821,8 @@ export namespace NM {
      * OVS External IDs Settings
      */
     class SettingOvsExternalIDs extends Setting {
+        static $gtype: GObject.GType<SettingOvsExternalIDs>;
+
         // Own properties of NM.SettingOvsExternalIDs
 
         /**
@@ -19719,6 +19879,8 @@ export namespace NM {
      * Open vSwitch Interface Settings
      */
     class SettingOvsInterface extends Setting {
+        static $gtype: GObject.GType<SettingOvsInterface>;
+
         // Own properties of NM.SettingOvsInterface
 
         /**
@@ -19771,6 +19933,8 @@ export namespace NM {
      * OVS Other Config Settings
      */
     class SettingOvsOtherConfig extends Setting {
+        static $gtype: GObject.GType<SettingOvsOtherConfig>;
+
         // Own properties of NM.SettingOvsOtherConfig
 
         /**
@@ -19810,6 +19974,8 @@ export namespace NM {
      * OvsPatch Link Settings
      */
     class SettingOvsPatch extends Setting {
+        static $gtype: GObject.GType<SettingOvsPatch>;
+
         // Own properties of NM.SettingOvsPatch
 
         /**
@@ -19854,6 +20020,8 @@ export namespace NM {
      * OvsPort Link Settings
      */
     class SettingOvsPort extends Setting {
+        static $gtype: GObject.GType<SettingOvsPort>;
+
         // Own properties of NM.SettingOvsPort
 
         /**
@@ -20000,6 +20168,8 @@ export namespace NM {
      * Point-to-Point Protocol Settings
      */
     class SettingPpp extends Setting {
+        static $gtype: GObject.GType<SettingPpp>;
+
         // Own properties of NM.SettingPpp
 
         /**
@@ -20228,6 +20398,8 @@ export namespace NM {
      * PPP-over-Ethernet Settings
      */
     class SettingPppoe extends Setting {
+        static $gtype: GObject.GType<SettingPppoe>;
+
         // Own properties of NM.SettingPppoe
 
         /**
@@ -20302,6 +20474,8 @@ export namespace NM {
      * WWW Proxy Settings
      */
     class SettingProxy extends Setting {
+        static $gtype: GObject.GType<SettingProxy>;
+
         // Own properties of NM.SettingProxy
 
         /**
@@ -20381,6 +20555,8 @@ export namespace NM {
      * Serial Link Settings
      */
     class SettingSerial extends Setting {
+        static $gtype: GObject.GType<SettingSerial>;
+
         // Own properties of NM.SettingSerial
 
         /**
@@ -20450,6 +20626,8 @@ export namespace NM {
      * SR-IOV settings
      */
     class SettingSriov extends Setting {
+        static $gtype: GObject.GType<SettingSriov>;
+
         // Own properties of NM.SettingSriov
 
         /**
@@ -20596,6 +20774,8 @@ export namespace NM {
      * Linux Traffic Control Settings
      */
     class SettingTCConfig extends Setting {
+        static $gtype: GObject.GType<SettingTCConfig>;
+
         // Own properties of NM.SettingTCConfig
 
         /**
@@ -20730,6 +20910,8 @@ export namespace NM {
      * Teaming Settings
      */
     class SettingTeam extends Setting {
+        static $gtype: GObject.GType<SettingTeam>;
+
         // Own properties of NM.SettingTeam
 
         /**
@@ -20992,6 +21174,8 @@ export namespace NM {
      * Team Port Settings
      */
     class SettingTeamPort extends Setting {
+        static $gtype: GObject.GType<SettingTeamPort>;
+
         // Own properties of NM.SettingTeamPort
 
         /**
@@ -21129,6 +21313,8 @@ export namespace NM {
      * Tunnel Settings
      */
     class SettingTun extends Setting {
+        static $gtype: GObject.GType<SettingTun>;
+
         // Own properties of NM.SettingTun
 
         /**
@@ -21216,6 +21402,8 @@ export namespace NM {
      * General User Profile Settings
      */
     class SettingUser extends Setting {
+        static $gtype: GObject.GType<SettingUser>;
+
         // Own properties of NM.SettingUser
 
         /**
@@ -21273,6 +21461,8 @@ export namespace NM {
      * Veth Settings
      */
     class SettingVeth extends Setting {
+        static $gtype: GObject.GType<SettingVeth>;
+
         // Own properties of NM.SettingVeth
 
         /**
@@ -21314,6 +21504,8 @@ export namespace NM {
      * VLAN Settings
      */
     class SettingVlan extends Setting {
+        static $gtype: GObject.GType<SettingVlan>;
+
         // Own properties of NM.SettingVlan
 
         /**
@@ -21492,6 +21684,8 @@ export namespace NM {
      * VPN Settings
      */
     class SettingVpn extends Setting {
+        static $gtype: GObject.GType<SettingVpn>;
+
         // Own properties of NM.SettingVpn
 
         /**
@@ -21675,6 +21869,8 @@ export namespace NM {
      * VRF settings
      */
     class SettingVrf extends Setting {
+        static $gtype: GObject.GType<SettingVrf>;
+
         // Own properties of NM.SettingVrf
 
         /**
@@ -21728,6 +21924,8 @@ export namespace NM {
      * VXLAN Settings
      */
     class SettingVxlan extends Setting {
+        static $gtype: GObject.GType<SettingVxlan>;
+
         // Own properties of NM.SettingVxlan
 
         /**
@@ -21891,6 +22089,8 @@ export namespace NM {
      * Wi-Fi P2P Settings
      */
     class SettingWifiP2P extends Setting {
+        static $gtype: GObject.GType<SettingWifiP2P>;
+
         // Own properties of NM.SettingWifiP2P
 
         /**
@@ -21966,6 +22166,8 @@ export namespace NM {
      * WiMax Settings
      */
     class SettingWimax extends Setting {
+        static $gtype: GObject.GType<SettingWimax>;
+
         // Own properties of NM.SettingWimax
 
         /**
@@ -22044,6 +22246,8 @@ export namespace NM {
      * WireGuard Settings
      */
     class SettingWireGuard extends Setting {
+        static $gtype: GObject.GType<SettingWireGuard>;
+
         // Own properties of NM.SettingWireGuard
 
         /**
@@ -22267,6 +22471,8 @@ export namespace NM {
      * Wired Ethernet Settings
      */
     class SettingWired extends Setting {
+        static $gtype: GObject.GType<SettingWired>;
+
         // Own properties of NM.SettingWired
 
         /**
@@ -22747,6 +22953,8 @@ export namespace NM {
      * Wi-Fi Settings
      */
     class SettingWireless extends Setting {
+        static $gtype: GObject.GType<SettingWireless>;
+
         // Own properties of NM.SettingWireless
 
         /**
@@ -23223,6 +23431,8 @@ export namespace NM {
      * Wi-Fi Security Settings
      */
     class SettingWirelessSecurity extends Setting {
+        static $gtype: GObject.GType<SettingWirelessSecurity>;
+
         // Own properties of NM.SettingWirelessSecurity
 
         /**
@@ -23640,6 +23850,8 @@ export namespace NM {
      * IEEE 802.15.4 (WPAN) MAC Settings
      */
     class SettingWpan extends Setting {
+        static $gtype: GObject.GType<SettingWpan>;
+
         // Own properties of NM.SettingWpan
 
         /**
@@ -23711,6 +23923,8 @@ export namespace NM {
     }
 
     class SimpleConnection extends GObject.Object implements Connection {
+        static $gtype: GObject.GType<SimpleConnection>;
+
         // Constructors of NM.SimpleConnection
 
         constructor(properties?: Partial<SimpleConnection.ConstructorProps>, ...args: any[]);
@@ -24514,6 +24728,8 @@ export namespace NM {
     }
 
     class VpnConnection extends ActiveConnection {
+        static $gtype: GObject.GType<VpnConnection>;
+
         // Own properties of NM.VpnConnection
 
         /**
@@ -24572,6 +24788,8 @@ export namespace NM {
     }
 
     class VpnPluginInfo extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<VpnPluginInfo>;
+
         // Own properties of NM.VpnPluginInfo
 
         /**
@@ -25153,6 +25371,8 @@ export namespace NM {
     }
 
     abstract class VpnPluginOld extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<VpnPluginOld>;
+
         // Own properties of NM.VpnPluginOld
 
         /**
@@ -25749,6 +25969,8 @@ export namespace NM {
     }
 
     abstract class VpnServicePlugin extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<VpnServicePlugin>;
+
         // Own properties of NM.VpnServicePlugin
 
         /**
@@ -26337,6 +26559,8 @@ export namespace NM {
     }
 
     class WifiP2PPeer extends Object {
+        static $gtype: GObject.GType<WifiP2PPeer>;
+
         // Own properties of NM.WifiP2PPeer
 
         /**
@@ -26494,6 +26718,8 @@ export namespace NM {
     }
 
     class WimaxNsp extends Object {
+        static $gtype: GObject.GType<WimaxNsp>;
+
         // Own properties of NM.WimaxNsp
 
         /**
@@ -26561,6 +26787,8 @@ export namespace NM {
     type AccessPointClass = typeof AccessPoint;
     type ActiveConnectionClass = typeof ActiveConnection;
     abstract class BridgeVlan {
+        static $gtype: GObject.GType<BridgeVlan>;
+
         // Constructors of NM.BridgeVlan
 
         constructor(vid_start: number, vid_end: number);
@@ -26676,6 +26904,8 @@ export namespace NM {
     type DeviceWpanClass = typeof DeviceWpan;
     type DhcpConfigClass = typeof DhcpConfig;
     abstract class DnsEntry {
+        static $gtype: GObject.GType<DnsEntry>;
+
         // Constructors of NM.DnsEntry
 
         _init(...args: any[]): void;
@@ -26715,6 +26945,8 @@ export namespace NM {
     }
 
     abstract class IPAddress {
+        static $gtype: GObject.GType<IPAddress>;
+
         // Constructors of NM.IPAddress
 
         constructor(family: number, addr: string, prefix: number);
@@ -26808,6 +27040,8 @@ export namespace NM {
 
     type IPConfigClass = typeof IPConfig;
     abstract class IPRoute {
+        static $gtype: GObject.GType<IPRoute>;
+
         // Constructors of NM.IPRoute
 
         constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: number);
@@ -26942,6 +27176,8 @@ export namespace NM {
     }
 
     abstract class IPRoutingRule {
+        static $gtype: GObject.GType<IPRoutingRule>;
+
         // Constructors of NM.IPRoutingRule
 
         constructor(addr_family: number);
@@ -27075,6 +27311,8 @@ export namespace NM {
      * depends on the %NMKeyfileHandlerType.
      */
     abstract class KeyfileHandlerData {
+        static $gtype: GObject.GType<KeyfileHandlerData>;
+
         // Constructors of NM.KeyfileHandlerData
 
         _init(...args: any[]): void;
@@ -27160,6 +27398,8 @@ export namespace NM {
      * - #NM_LLDP_ATTR_SYSTEM_NAME (type: 's')
      */
     abstract class LldpNeighbor {
+        static $gtype: GObject.GType<LldpNeighbor>;
+
         // Constructors of NM.LldpNeighbor
 
         constructor(properties?: Partial<{}>);
@@ -27215,6 +27455,8 @@ export namespace NM {
 
     type ObjectClass = typeof Object;
     abstract class Range {
+        static $gtype: GObject.GType<Range>;
+
         // Constructors of NM.Range
 
         constructor(start: number, end: number);
@@ -27324,6 +27566,8 @@ export namespace NM {
     type SettingWpanClass = typeof SettingWpan;
     type SimpleConnectionClass = typeof SimpleConnection;
     abstract class SriovVF {
+        static $gtype: GObject.GType<SriovVF>;
+
         // Constructors of NM.SriovVF
 
         constructor(index: number);
@@ -27431,6 +27675,8 @@ export namespace NM {
     }
 
     abstract class TCAction {
+        static $gtype: GObject.GType<TCAction>;
+
         // Constructors of NM.TCAction
 
         constructor(kind: string);
@@ -27482,6 +27728,8 @@ export namespace NM {
     }
 
     abstract class TCQdisc {
+        static $gtype: GObject.GType<TCQdisc>;
+
         // Constructors of NM.TCQdisc
 
         constructor(kind: string, parent: number);
@@ -27540,6 +27788,8 @@ export namespace NM {
     }
 
     abstract class TCTfilter {
+        static $gtype: GObject.GType<TCTfilter>;
+
         // Constructors of NM.TCTfilter
 
         constructor(kind: string, parent: number);
@@ -27587,6 +27837,8 @@ export namespace NM {
     }
 
     abstract class TeamLinkWatcher {
+        static $gtype: GObject.GType<TeamLinkWatcher>;
+
         // Constructors of NM.TeamLinkWatcher
 
         constructor(
@@ -27702,6 +27954,8 @@ export namespace NM {
     }
 
     abstract class VariantAttributeSpec {
+        static $gtype: GObject.GType<VariantAttributeSpec>;
+
         // Constructors of NM.VariantAttributeSpec
 
         _init(...args: any[]): void;
@@ -27711,6 +27965,8 @@ export namespace NM {
     type VpnEditorInterface = typeof VpnEditor;
     type VpnEditorPluginInterface = typeof VpnEditorPlugin;
     abstract class VpnEditorPluginVT {
+        static $gtype: GObject.GType<VpnEditorPluginVT>;
+
         // Constructors of NM.VpnEditorPluginVT
 
         _init(...args: any[]): void;
@@ -27725,6 +27981,8 @@ export namespace NM {
      * The settings of one WireGuard peer.
      */
     abstract class WireGuardPeer {
+        static $gtype: GObject.GType<WireGuardPeer>;
+
         // Constructors of NM.WireGuardPeer
 
         constructor(properties?: Partial<{}>);

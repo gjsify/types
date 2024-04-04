@@ -54,6 +54,8 @@ export namespace GtkVnc {
     }
 
     class CairoFramebuffer extends GVnc.BaseFramebuffer implements GVnc.Framebuffer {
+        static $gtype: GObject.GType<CairoFramebuffer>;
+
         // Own properties of GtkVnc.CairoFramebuffer
 
         get surface(): any;
@@ -703,6 +705,8 @@ export namespace GtkVnc {
     }
 
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Display>;
+
         // Own properties of GtkVnc.Display
 
         get allow_resize(): boolean;
@@ -1569,6 +1573,8 @@ export namespace GtkVnc {
 
     type CairoFramebufferClass = typeof CairoFramebuffer;
     abstract class CairoFramebufferPrivate {
+        static $gtype: GObject.GType<CairoFramebufferPrivate>;
+
         // Constructors of GtkVnc.CairoFramebufferPrivate
 
         _init(...args: any[]): void;
@@ -1576,12 +1582,16 @@ export namespace GtkVnc {
 
     type DisplayClass = typeof Display;
     abstract class DisplayPrivate {
+        static $gtype: GObject.GType<DisplayPrivate>;
+
         // Constructors of GtkVnc.DisplayPrivate
 
         _init(...args: any[]): void;
     }
 
     class GrabSequence {
+        static $gtype: GObject.GType<GrabSequence>;
+
         // Own fields of GtkVnc.GrabSequence
 
         nkeysyms: number;

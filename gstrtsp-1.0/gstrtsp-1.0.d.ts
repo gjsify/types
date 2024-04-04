@@ -831,6 +831,8 @@ export namespace GstRtsp {
      * RTSP Authentication credentials
      */
     class RTSPAuthCredential {
+        static $gtype: GObject.GType<RTSPAuthCredential>;
+
         // Own fields of GstRtsp.RTSPAuthCredential
 
         scheme: RTSPAuthMethod;
@@ -846,6 +848,8 @@ export namespace GstRtsp {
      * RTSP Authentication parameter
      */
     class RTSPAuthParam {
+        static $gtype: GObject.GType<RTSPAuthParam>;
+
         // Own fields of GstRtsp.RTSPAuthParam
 
         name: string;
@@ -872,6 +876,8 @@ export namespace GstRtsp {
      * to receive and send bytes and messages.
      */
     abstract class RTSPConnection {
+        static $gtype: GObject.GType<RTSPConnection>;
+
         // Constructors of GstRtsp.RTSPConnection
 
         _init(...args: any[]): void;
@@ -1346,6 +1352,8 @@ export namespace GstRtsp {
      * Provides methods for creating and parsing request, response and data messages.
      */
     class RTSPMessage {
+        static $gtype: GObject.GType<RTSPMessage>;
+
         // Own fields of GstRtsp.RTSPMessage
 
         type: RTSPMsgType;
@@ -1593,6 +1601,8 @@ export namespace GstRtsp {
      * Provides helper functions to deal with time ranges.
      */
     class RTSPRange {
+        static $gtype: GObject.GType<RTSPRange>;
+
         // Own fields of GstRtsp.RTSPRange
 
         min: number;
@@ -1650,6 +1660,8 @@ export namespace GstRtsp {
      * A time indication.
      */
     class RTSPTime {
+        static $gtype: GObject.GType<RTSPTime>;
+
         // Own fields of GstRtsp.RTSPTime
 
         type: RTSPTimeType;
@@ -1664,6 +1676,8 @@ export namespace GstRtsp {
      * Extra fields for a time indication.
      */
     class RTSPTime2 {
+        static $gtype: GObject.GType<RTSPTime2>;
+
         // Own fields of GstRtsp.RTSPTime2
 
         frames: number;
@@ -1688,6 +1702,8 @@ export namespace GstRtsp {
      * A time range.
      */
     class RTSPTimeRange {
+        static $gtype: GObject.GType<RTSPTimeRange>;
+
         // Own fields of GstRtsp.RTSPTimeRange
 
         unit: RTSPRangeUnit;
@@ -1703,6 +1719,8 @@ export namespace GstRtsp {
      * Provides helper functions to deal with RTSP transport strings.
      */
     class RTSPTransport {
+        static $gtype: GObject.GType<RTSPTransport>;
+
         // Own fields of GstRtsp.RTSPTransport
 
         trans: RTSPTransMode;
@@ -1785,6 +1803,8 @@ export namespace GstRtsp {
      * Provides helper functions to handle RTSP urls.
      */
     class RTSPUrl {
+        static $gtype: GObject.GType<RTSPUrl>;
+
         // Own fields of GstRtsp.RTSPUrl
 
         transports: RTSPLowerTrans;
@@ -1865,6 +1885,8 @@ export namespace GstRtsp {
      * operations.
      */
     abstract class RTSPWatch {
+        static $gtype: GObject.GType<RTSPWatch>;
+
         // Constructors of GstRtsp.RTSPWatch
 
         _init(...args: any[]): void;
@@ -1985,6 +2007,8 @@ export namespace GstRtsp {
      * Callback functions from a #GstRTSPWatch.
      */
     class RTSPWatchFuncs {
+        static $gtype: GObject.GType<RTSPWatchFuncs>;
+
         // Constructors of GstRtsp.RTSPWatchFuncs
 
         constructor(properties?: Partial<{}>);

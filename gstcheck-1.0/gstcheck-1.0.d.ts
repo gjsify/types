@@ -468,6 +468,8 @@ export namespace GstCheck {
      * arguments. This will highlight any issues with the unit test code itself.
      */
     class TestClock extends Gst.Clock {
+        static $gtype: GObject.GType<TestClock>;
+
         // Own properties of GstCheck.TestClock
 
         get clock_type(): Gst.ClockType;
@@ -631,6 +633,8 @@ export namespace GstCheck {
     }
 
     class CheckABIStruct {
+        static $gtype: GObject.GType<CheckABIStruct>;
+
         // Own fields of GstCheck.CheckABIStruct
 
         name: string;
@@ -654,6 +658,8 @@ export namespace GstCheck {
      * function.
      */
     abstract class CheckLogFilter {
+        static $gtype: GObject.GType<CheckLogFilter>;
+
         // Constructors of GstCheck.CheckLogFilter
 
         _init(...args: any[]): void;
@@ -760,6 +766,8 @@ export namespace GstCheck {
      *
      */
     class Harness {
+        static $gtype: GObject.GType<Harness>;
+
         // Own fields of GstCheck.Harness
 
         element: Gst.Element;
@@ -1329,6 +1337,8 @@ export namespace GstCheck {
     }
 
     abstract class HarnessPrivate {
+        static $gtype: GObject.GType<HarnessPrivate>;
+
         // Constructors of GstCheck.HarnessPrivate
 
         _init(...args: any[]): void;
@@ -1338,6 +1348,8 @@ export namespace GstCheck {
      * Opaque handle representing a GstHarness stress testing thread.
      */
     abstract class HarnessThread {
+        static $gtype: GObject.GType<HarnessThread>;
+
         // Constructors of GstCheck.HarnessThread
 
         _init(...args: any[]): void;
@@ -1347,6 +1359,8 @@ export namespace GstCheck {
      * Opaque consistency checker handle.
      */
     abstract class StreamConsistency {
+        static $gtype: GObject.GType<StreamConsistency>;
+
         // Constructors of GstCheck.StreamConsistency
 
         _init(...args: any[]): void;
@@ -1354,6 +1368,8 @@ export namespace GstCheck {
 
     type TestClockClass = typeof TestClock;
     abstract class TestClockPrivate {
+        static $gtype: GObject.GType<TestClockPrivate>;
+
         // Constructors of GstCheck.TestClockPrivate
 
         _init(...args: any[]): void;

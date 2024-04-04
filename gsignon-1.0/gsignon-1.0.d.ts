@@ -20,6 +20,8 @@ export namespace gSignon {
      * Possible Signon errors.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of gSignon.Error
 
         /**
@@ -339,6 +341,8 @@ export namespace gSignon {
      * Opaque struct. Use the accessor functions below.
      */
     class AuthService extends GObject.Object {
+        static $gtype: GObject.GType<AuthService>;
+
         // Constructors of gSignon.AuthService
 
         constructor(properties?: Partial<AuthService.ConstructorProps>, ...args: any[]);
@@ -415,6 +419,8 @@ export namespace gSignon {
      * Opaque struct. Use the accessor functions below.
      */
     class AuthSession extends GObject.Object {
+        static $gtype: GObject.GType<AuthSession>;
+
         // Own properties of gSignon.AuthSession
 
         get identity(): Identity;
@@ -527,6 +533,8 @@ export namespace gSignon {
     }
 
     class Identity extends GObject.Object {
+        static $gtype: GObject.GType<Identity>;
+
         // Own properties of gSignon.Identity
 
         get app_ctx(): string;
@@ -666,6 +674,8 @@ export namespace gSignon {
 
     type AuthServiceClass = typeof AuthService;
     abstract class AuthServicePrivate {
+        static $gtype: GObject.GType<AuthServicePrivate>;
+
         // Constructors of gSignon.AuthServicePrivate
 
         _init(...args: any[]): void;
@@ -673,6 +683,8 @@ export namespace gSignon {
 
     type AuthSessionClass = typeof AuthSession;
     abstract class AuthSessionPrivate {
+        static $gtype: GObject.GType<AuthSessionPrivate>;
+
         // Constructors of gSignon.AuthSessionPrivate
 
         _init(...args: any[]): void;
@@ -683,6 +695,8 @@ export namespace gSignon {
      * Opaque struct. Use the accessor functions below.
      */
     class IdentityInfo {
+        static $gtype: GObject.GType<IdentityInfo>;
+
         // Constructors of gSignon.IdentityInfo
 
         constructor(properties?: Partial<{}>);
@@ -822,6 +836,8 @@ export namespace gSignon {
     }
 
     abstract class IdentityPrivate {
+        static $gtype: GObject.GType<IdentityPrivate>;
+
         // Constructors of gSignon.IdentityPrivate
 
         _init(...args: any[]): void;
@@ -831,6 +847,8 @@ export namespace gSignon {
      * Security context descriptor used for access control checks.
      */
     class SecurityContext {
+        static $gtype: GObject.GType<SecurityContext>;
+
         // Own fields of gSignon.SecurityContext
 
         sys_ctx: string;
@@ -913,6 +931,8 @@ export namespace gSignon {
     }
 
     abstract class _AuthSession {
+        static $gtype: GObject.GType<_AuthSession>;
+
         // Constructors of gSignon._AuthSession
 
         _init(...args: any[]): void;

@@ -7,6 +7,8 @@
 
 import './mtk-13-ambient.d.ts';
 
+import './mtk-13-import.d.ts';
+
 /**
  * Mtk-13
  */
@@ -25,6 +27,8 @@ export namespace Mtk {
     function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
     function x11_errors_deinit(): void;
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Mtk.Rectangle
 
         x: number;

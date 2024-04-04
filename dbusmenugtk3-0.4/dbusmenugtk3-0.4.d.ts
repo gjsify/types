@@ -118,6 +118,8 @@ export namespace DbusmenuGtk3 {
      * building GTK items out of the abstract tree.
      */
     class Client extends Dbusmenu.Client {
+        static $gtype: GObject.GType<Client>;
+
         // Constructors of DbusmenuGtk3.Client
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
@@ -187,6 +189,8 @@ export namespace DbusmenuGtk3 {
      * a #DbusmenuGtkClient.
      */
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Menu>;
+
         // Own properties of DbusmenuGtk3.Menu
 
         get dbus_name(): string;
@@ -573,6 +577,8 @@ export namespace DbusmenuGtk3 {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of DbusmenuGtk3.ClientPrivate
 
         _init(...args: any[]): void;
@@ -580,6 +586,8 @@ export namespace DbusmenuGtk3 {
 
     type MenuClass = typeof Menu;
     abstract class MenuPrivate {
+        static $gtype: GObject.GType<MenuPrivate>;
+
         // Constructors of DbusmenuGtk3.MenuPrivate
 
         _init(...args: any[]): void;

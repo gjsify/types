@@ -125,6 +125,8 @@ export namespace Vte {
         HTML,
     }
     class PtyError extends GLib.Error {
+        static $gtype: GObject.GType<PtyError>;
+
         // Static fields of Vte.PtyError
 
         /**
@@ -155,6 +157,8 @@ export namespace Vte {
      * any PCRE2 error values may occur.
      */
     class RegexError extends GLib.Error {
+        static $gtype: GObject.GType<RegexError>;
+
         // Static fields of Vte.RegexError
 
         /**
@@ -400,6 +404,8 @@ export namespace Vte {
     }
 
     class Pty extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Pty>;
+
         // Own properties of Vte.Pty
 
         /**
@@ -1180,6 +1186,8 @@ export namespace Vte {
     }
 
     class Terminal extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<Terminal>;
+
         // Own properties of Vte.Terminal
 
         /**
@@ -3376,6 +3384,8 @@ export namespace Vte {
     }
 
     class CharAttributes {
+        static $gtype: GObject.GType<CharAttributes>;
+
         // Constructors of Vte.CharAttributes
 
         constructor(properties?: Partial<{}>);
@@ -3384,6 +3394,8 @@ export namespace Vte {
 
     type PtyClass = typeof Pty;
     abstract class Regex {
+        static $gtype: GObject.GType<Regex>;
+
         // Constructors of Vte.Regex
 
         constructor(pattern: string, pattern_length: number, flags: number);
@@ -3424,6 +3436,8 @@ export namespace Vte {
 
     type TerminalClass = typeof Terminal;
     abstract class TerminalClassPrivate {
+        static $gtype: GObject.GType<TerminalClassPrivate>;
+
         // Constructors of Vte.TerminalClassPrivate
 
         _init(...args: any[]): void;

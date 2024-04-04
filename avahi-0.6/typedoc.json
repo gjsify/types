@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./avahi-0.6.d.ts"],
+    "readme": "./README.md",
+    "name": "Avahi-0.6",
+    "tsconfig": "./tsconfig.json"
+}
+

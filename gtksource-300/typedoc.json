@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gtksource-300.d.ts"],
+    "readme": "./README.md",
+    "name": "GtkSource-300",
+    "tsconfig": "./tsconfig.json"
+}
+

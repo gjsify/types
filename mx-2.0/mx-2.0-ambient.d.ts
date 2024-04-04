@@ -1,7 +1,7 @@
 
 declare module 'gi://Mx?version=2.0' {
-    import Mx20 from '@girs/mx-2.0';
-    export default Mx20;
+    import Mx from '@girs/mx-2.0';
+    export default Mx;
 }
 
 declare module 'gi://Mx' {

@@ -2752,6 +2752,8 @@ export namespace Cogl {
         NO_ATLAS,
     }
     class AtlasTexture extends Object {
+        static $gtype: GObject.GType<AtlasTexture>;
+
         // Constructors of Cogl.AtlasTexture
 
         _init(...args: any[]): void;
@@ -2773,6 +2775,8 @@ export namespace Cogl {
     }
 
     class Attribute extends Object {
+        static $gtype: GObject.GType<Attribute>;
+
         // Constructors of Cogl.Attribute
 
         _init(...args: any[]): void;
@@ -2844,6 +2848,8 @@ export namespace Cogl {
     }
 
     class AttributeBuffer extends Object {
+        static $gtype: GObject.GType<AttributeBuffer>;
+
         // Constructors of Cogl.AttributeBuffer
 
         _init(...args: any[]): void;
@@ -2852,6 +2858,8 @@ export namespace Cogl {
     }
 
     class Bitmap extends Object {
+        static $gtype: GObject.GType<Bitmap>;
+
         // Constructors of Cogl.Bitmap
 
         _init(...args: any[]): void;
@@ -2897,6 +2905,8 @@ export namespace Cogl {
     }
 
     class Context extends Object {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of Cogl.Context
 
         _init(...args: any[]): void;
@@ -2927,6 +2937,8 @@ export namespace Cogl {
     }
 
     class Display extends Object {
+        static $gtype: GObject.GType<Display>;
+
         // Constructors of Cogl.Display
 
         _init(...args: any[]): void;
@@ -2981,12 +2993,16 @@ export namespace Cogl {
      * Fixed point number using a (16.16) notation.
      */
     class Fixed {
+        static $gtype: GObject.GType<Fixed>;
+
         // Constructors of Cogl.Fixed
 
         _init(...args: any[]): void;
     }
 
     class FrameInfo extends Object {
+        static $gtype: GObject.GType<FrameInfo>;
+
         // Constructors of Cogl.FrameInfo
 
         _init(...args: any[]): void;
@@ -3041,6 +3057,8 @@ export namespace Cogl {
      * who have used OpenGLES 2.0 with EGL before.
      */
     class GLES2Context extends Object {
+        static $gtype: GObject.GType<GLES2Context>;
+
         // Constructors of Cogl.GLES2Context
 
         _init(...args: any[]): void;
@@ -3061,6 +3079,8 @@ export namespace Cogl {
     }
 
     class IndexBuffer extends Object {
+        static $gtype: GObject.GType<IndexBuffer>;
+
         // Constructors of Cogl.IndexBuffer
 
         _init(...args: any[]): void;
@@ -3069,6 +3089,8 @@ export namespace Cogl {
     }
 
     class Indices extends Object {
+        static $gtype: GObject.GType<Indices>;
+
         // Constructors of Cogl.Indices
 
         _init(...args: any[]): void;
@@ -3118,6 +3140,8 @@ export namespace Cogl {
      * immutable transform.
      */
     class MatrixStack extends Object {
+        static $gtype: GObject.GType<MatrixStack>;
+
         // Constructors of Cogl.MatrixStack
 
         _init(...args: any[]): void;
@@ -3280,6 +3304,8 @@ export namespace Cogl {
     }
 
     abstract class Object {
+        static $gtype: GObject.GType<Object>;
+
         // Constructors of Cogl.Object
 
         _init(...args: any[]): void;
@@ -3291,6 +3317,8 @@ export namespace Cogl {
     }
 
     class Onscreen extends Object implements Framebuffer {
+        static $gtype: GObject.GType<Onscreen>;
+
         // Constructors of Cogl.Onscreen
 
         _init(...args: any[]): void;
@@ -4567,6 +4595,8 @@ export namespace Cogl {
     }
 
     class OnscreenTemplate extends Object {
+        static $gtype: GObject.GType<OnscreenTemplate>;
+
         // Constructors of Cogl.OnscreenTemplate
 
         _init(...args: any[]): void;
@@ -4612,6 +4642,8 @@ export namespace Cogl {
     }
 
     class Output extends Object {
+        static $gtype: GObject.GType<Output>;
+
         // Constructors of Cogl.Output
 
         _init(...args: any[]): void;
@@ -4672,6 +4704,8 @@ export namespace Cogl {
     }
 
     class Pipeline extends Object {
+        static $gtype: GObject.GType<Pipeline>;
+
         // Constructors of Cogl.Pipeline
 
         _init(...args: any[]): void;
@@ -5440,6 +5474,8 @@ export namespace Cogl {
     }
 
     class PixelBuffer extends Object {
+        static $gtype: GObject.GType<PixelBuffer>;
+
         // Constructors of Cogl.PixelBuffer
 
         _init(...args: any[]): void;
@@ -5448,6 +5484,8 @@ export namespace Cogl {
     }
 
     class Primitive extends Object {
+        static $gtype: GObject.GType<Primitive>;
+
         // Constructors of Cogl.Primitive
 
         _init(...args: any[]): void;
@@ -5582,6 +5620,8 @@ export namespace Cogl {
     }
 
     class Renderer extends Object {
+        static $gtype: GObject.GType<Renderer>;
+
         // Constructors of Cogl.Renderer
 
         _init(...args: any[]): void;
@@ -5673,6 +5713,8 @@ export namespace Cogl {
     }
 
     class Snippet extends Object {
+        static $gtype: GObject.GType<Snippet>;
+
         // Constructors of Cogl.Snippet
 
         _init(...args: any[]): void;
@@ -5737,6 +5779,8 @@ export namespace Cogl {
     }
 
     class SubTexture extends Object {
+        static $gtype: GObject.GType<SubTexture>;
+
         // Constructors of Cogl.SubTexture
 
         _init(...args: any[]): void;
@@ -5762,6 +5806,8 @@ export namespace Cogl {
     }
 
     class SwapChain extends Object {
+        static $gtype: GObject.GType<SwapChain>;
+
         // Constructors of Cogl.SwapChain
 
         _init(...args: any[]): void;
@@ -5775,6 +5821,8 @@ export namespace Cogl {
     }
 
     class Texture2D extends Object implements Texture {
+        static $gtype: GObject.GType<Texture2D>;
+
         // Constructors of Cogl.Texture2D
 
         _init(...args: any[]): void;
@@ -6033,6 +6081,8 @@ export namespace Cogl {
     }
 
     class Texture2DSliced extends Object implements Texture {
+        static $gtype: GObject.GType<Texture2DSliced>;
+
         // Constructors of Cogl.Texture2DSliced
 
         _init(...args: any[]): void;
@@ -6284,6 +6334,8 @@ export namespace Cogl {
     }
 
     class Texture3D extends Object implements Texture {
+        static $gtype: GObject.GType<Texture3D>;
+
         // Constructors of Cogl.Texture3D
 
         _init(...args: any[]): void;
@@ -6534,6 +6586,8 @@ export namespace Cogl {
     }
 
     class TexturePixmapX11 extends Object {
+        static $gtype: GObject.GType<TexturePixmapX11>;
+
         // Constructors of Cogl.TexturePixmapX11
 
         _init(...args: any[]): void;
@@ -6582,6 +6636,8 @@ export namespace Cogl {
     }
 
     class TextureRectangle extends Object implements Texture {
+        static $gtype: GObject.GType<TextureRectangle>;
+
         // Constructors of Cogl.TextureRectangle
 
         _init(...args: any[]): void;
@@ -6834,6 +6890,8 @@ export namespace Cogl {
      * directly.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Constructors of Cogl.Color
 
         constructor(properties?: Partial<{}>);
@@ -7067,6 +7125,8 @@ export namespace Cogl {
      * cogl_debug_object_foreach_type() is called.
      */
     class DebugObjectTypeInfo {
+        static $gtype: GObject.GType<DebugObjectTypeInfo>;
+
         // Own fields of Cogl.DebugObjectTypeInfo
 
         name: string;
@@ -7084,6 +7144,8 @@ export namespace Cogl {
     }
 
     class DepthState {
+        static $gtype: GObject.GType<DepthState>;
+
         // Constructors of Cogl.DepthState
 
         _init(...args: any[]): void;
@@ -7220,6 +7282,8 @@ export namespace Cogl {
      * you want to do interpolation between 3d rotations.
      */
     class Euler {
+        static $gtype: GObject.GType<Euler>;
+
         // Own fields of Cogl.Euler
 
         heading: number;
@@ -7294,6 +7358,8 @@ export namespace Cogl {
      * about the fence completion.
      */
     abstract class Fence {
+        static $gtype: GObject.GType<Fence>;
+
         // Constructors of Cogl.Fence
 
         _init(...args: any[]): void;
@@ -7304,6 +7370,8 @@ export namespace Cogl {
      * GPU command stream has passed a certain point.
      */
     abstract class FenceClosure {
+        static $gtype: GObject.GType<FenceClosure>;
+
         // Constructors of Cogl.FenceClosure
 
         _init(...args: any[]): void;
@@ -7320,6 +7388,8 @@ export namespace Cogl {
      * callback later using cogl_onscreen_remove_frame_callback().
      */
     abstract class FrameClosure {
+        static $gtype: GObject.GType<FrameClosure>;
+
         // Constructors of Cogl.FrameClosure
 
         _init(...args: any[]): void;
@@ -7331,12 +7401,16 @@ export namespace Cogl {
      * symbols of any system OpenGLES 2.0 api.
      */
     class GLES2Vtable {
+        static $gtype: GObject.GType<GLES2Vtable>;
+
         // Constructors of Cogl.GLES2Vtable
 
         _init(...args: any[]): void;
     }
 
     class GtypeClass {
+        static $gtype: GObject.GType<GtypeClass>;
+
         // Own fields of Cogl.GtypeClass
 
         dummy: number;
@@ -7347,6 +7421,8 @@ export namespace Cogl {
     }
 
     class GtypeObject {
+        static $gtype: GObject.GType<GtypeObject>;
+
         // Own fields of Cogl.GtypeObject
 
         dummy: number;
@@ -7357,6 +7433,8 @@ export namespace Cogl {
     }
 
     class KmsCrtc {
+        static $gtype: GObject.GType<KmsCrtc>;
+
         // Own fields of Cogl.KmsCrtc
 
         id: number;
@@ -7411,6 +7489,8 @@ export namespace Cogl {
      * than the identity matrix you can use cogl_matrix_init_from_array().</note>
      */
     class Matrix {
+        static $gtype: GObject.GType<Matrix>;
+
         // Own fields of Cogl.Matrix
 
         xx: number;
@@ -7893,6 +7973,8 @@ export namespace Cogl {
      * cogl_object_ref() and cogl_object_unref().</note>
      */
     abstract class MatrixEntry {
+        static $gtype: GObject.GType<MatrixEntry>;
+
         // Constructors of Cogl.MatrixEntry
 
         _init(...args: any[]): void;
@@ -7975,6 +8057,8 @@ export namespace Cogl {
      * callback later using cogl_onscreen_remove_dirty_callback().
      */
     class OnscreenDirtyClosure {
+        static $gtype: GObject.GType<OnscreenDirtyClosure>;
+
         // Constructors of Cogl.OnscreenDirtyClosure
 
         _init(...args: any[]): void;
@@ -7986,6 +8070,8 @@ export namespace Cogl {
      * rectangle within the onscreen buffer that should be redrawn.
      */
     class OnscreenDirtyInfo {
+        static $gtype: GObject.GType<OnscreenDirtyInfo>;
+
         // Own fields of Cogl.OnscreenDirtyInfo
 
         x: number;
@@ -8014,6 +8100,8 @@ export namespace Cogl {
      * cogl_onscreen_remove_resize_callback().
      */
     class OnscreenResizeClosure {
+        static $gtype: GObject.GType<OnscreenResizeClosure>;
+
         // Constructors of Cogl.OnscreenResizeClosure
 
         _init(...args: any[]): void;
@@ -8031,6 +8119,8 @@ export namespace Cogl {
      * pollfd on Unix so that it can simply be cast when calling poll.
      */
     class PollFD {
+        static $gtype: GObject.GType<PollFD>;
+
         // Own fields of Cogl.PollFD
 
         fd: number;
@@ -8111,6 +8201,8 @@ export namespace Cogl {
      * </itemizedlist>
      */
     class Quaternion {
+        static $gtype: GObject.GType<Quaternion>;
+
         // Own fields of Cogl.Quaternion
 
         w: number;
@@ -8285,6 +8377,8 @@ export namespace Cogl {
      * Used to specify vertex information when calling cogl_polygon()
      */
     class TextureVertex {
+        static $gtype: GObject.GType<TextureVertex>;
+
         // Own fields of Cogl.TextureVertex
 
         x: number;
@@ -8329,6 +8423,8 @@ export namespace Cogl {
      *
      */
     class UserDataKey {
+        static $gtype: GObject.GType<UserDataKey>;
+
         // Own fields of Cogl.UserDataKey
 
         unused: number;
@@ -8348,6 +8444,8 @@ export namespace Cogl {
      * cogl_primitive_new_p2().
      */
     class VertexP2 {
+        static $gtype: GObject.GType<VertexP2>;
+
         // Own fields of Cogl.VertexP2
 
         x: number;
@@ -8369,6 +8467,8 @@ export namespace Cogl {
      * cogl_primitive_new_p2c4().
      */
     class VertexP2C4 {
+        static $gtype: GObject.GType<VertexP2C4>;
+
         // Own fields of Cogl.VertexP2C4
 
         x: number;
@@ -8398,6 +8498,8 @@ export namespace Cogl {
      * cogl_primitive_new_p2t2().
      */
     class VertexP2T2 {
+        static $gtype: GObject.GType<VertexP2T2>;
+
         // Own fields of Cogl.VertexP2T2
 
         x: number;
@@ -8423,6 +8525,8 @@ export namespace Cogl {
      * cogl_primitive_new_p3t2c4().
      */
     class VertexP2T2C4 {
+        static $gtype: GObject.GType<VertexP2T2C4>;
+
         // Own fields of Cogl.VertexP2T2C4
 
         x: number;
@@ -8456,6 +8560,8 @@ export namespace Cogl {
      * cogl_primitive_new_p3().
      */
     class VertexP3 {
+        static $gtype: GObject.GType<VertexP3>;
+
         // Own fields of Cogl.VertexP3
 
         x: number;
@@ -8479,6 +8585,8 @@ export namespace Cogl {
      * cogl_primitive_new_p3c4().
      */
     class VertexP3C4 {
+        static $gtype: GObject.GType<VertexP3C4>;
+
         // Own fields of Cogl.VertexP3C4
 
         x: number;
@@ -8510,6 +8618,8 @@ export namespace Cogl {
      * cogl_primitive_new_p3t2().
      */
     class VertexP3T2 {
+        static $gtype: GObject.GType<VertexP3T2>;
+
         // Own fields of Cogl.VertexP3T2
 
         x: number;
@@ -8537,6 +8647,8 @@ export namespace Cogl {
      * cogl_primitive_new_p3t2c4().
      */
     class VertexP3T2C4 {
+        static $gtype: GObject.GType<VertexP3T2C4>;
+
         // Own fields of Cogl.VertexP3T2C4
 
         x: number;
@@ -8568,6 +8680,8 @@ export namespace Cogl {
     }
 
     abstract class _ColorSizeCheck {
+        static $gtype: GObject.GType<_ColorSizeCheck>;
+
         // Own fields of Cogl._ColorSizeCheck
 
         compile_time_assert_CoglColor_size: number[];
@@ -8583,6 +8697,8 @@ export namespace Cogl {
     }
 
     abstract class _EulerSizeCheck {
+        static $gtype: GObject.GType<_EulerSizeCheck>;
+
         // Own fields of Cogl._EulerSizeCheck
 
         compile_time_assert_CoglEuler_size: number[];
@@ -8598,6 +8714,8 @@ export namespace Cogl {
     }
 
     abstract class _MatrixSizeCheck {
+        static $gtype: GObject.GType<_MatrixSizeCheck>;
+
         // Own fields of Cogl._MatrixSizeCheck
 
         compile_time_assert_CoglMatrix_size: number[];
@@ -8613,6 +8731,8 @@ export namespace Cogl {
     }
 
     abstract class _QuaternionSizeCheck {
+        static $gtype: GObject.GType<_QuaternionSizeCheck>;
+
         // Own fields of Cogl._QuaternionSizeCheck
 
         compile_time_assert_CoglQuaternion_size: number[];
@@ -8628,6 +8748,8 @@ export namespace Cogl {
     }
 
     abstract class _TextureVertexSizeCheck {
+        static $gtype: GObject.GType<_TextureVertexSizeCheck>;
+
         // Own fields of Cogl._TextureVertexSizeCheck
 
         compile_time_assert_CoglTextureVertex_size: number[];

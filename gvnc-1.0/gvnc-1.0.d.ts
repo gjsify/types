@@ -201,6 +201,8 @@ export namespace GVnc {
     }
 
     class BaseAudio extends GObject.Object implements Audio {
+        static $gtype: GObject.GType<BaseAudio>;
+
         // Constructors of GVnc.BaseAudio
 
         constructor(properties?: Partial<BaseAudio.ConstructorProps>, ...args: any[]);
@@ -627,6 +629,8 @@ export namespace GVnc {
     }
 
     class BaseFramebuffer extends GObject.Object implements Framebuffer {
+        static $gtype: GObject.GType<BaseFramebuffer>;
+
         // Own properties of GVnc.BaseFramebuffer
 
         get buffer(): any;
@@ -1262,6 +1266,8 @@ export namespace GVnc {
     }
 
     class Connection extends GObject.Object {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of GVnc.Connection
 
         get framebuffer(): Framebuffer;
@@ -1682,6 +1688,8 @@ export namespace GVnc {
     }
 
     class Cursor extends GObject.Object {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own properties of GVnc.Cursor
 
         get data(): any;
@@ -1734,6 +1742,8 @@ export namespace GVnc {
     }
 
     class AudioFormat {
+        static $gtype: GObject.GType<AudioFormat>;
+
         // Own fields of GVnc.AudioFormat
 
         format: number;
@@ -1771,6 +1781,8 @@ export namespace GVnc {
 
     type AudioInterface = typeof Audio;
     class AudioSample {
+        static $gtype: GObject.GType<AudioSample>;
+
         // Own fields of GVnc.AudioSample
 
         data: number;
@@ -1810,6 +1822,8 @@ export namespace GVnc {
 
     type BaseAudioClass = typeof BaseAudio;
     abstract class BaseAudioPrivate {
+        static $gtype: GObject.GType<BaseAudioPrivate>;
+
         // Constructors of GVnc.BaseAudioPrivate
 
         _init(...args: any[]): void;
@@ -1817,12 +1831,16 @@ export namespace GVnc {
 
     type BaseFramebufferClass = typeof BaseFramebuffer;
     abstract class BaseFramebufferPrivate {
+        static $gtype: GObject.GType<BaseFramebufferPrivate>;
+
         // Constructors of GVnc.BaseFramebufferPrivate
 
         _init(...args: any[]): void;
     }
 
     class ColorMap {
+        static $gtype: GObject.GType<ColorMap>;
+
         // Own fields of GVnc.ColorMap
 
         offset: number;
@@ -1874,6 +1892,8 @@ export namespace GVnc {
     }
 
     class ColorMapEntry {
+        static $gtype: GObject.GType<ColorMapEntry>;
+
         // Own fields of GVnc.ColorMapEntry
 
         red: number;
@@ -1894,6 +1914,8 @@ export namespace GVnc {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of GVnc.ConnectionPrivate
 
         _init(...args: any[]): void;
@@ -1901,6 +1923,8 @@ export namespace GVnc {
 
     type CursorClass = typeof Cursor;
     abstract class CursorPrivate {
+        static $gtype: GObject.GType<CursorPrivate>;
+
         // Constructors of GVnc.CursorPrivate
 
         _init(...args: any[]): void;
@@ -1908,6 +1932,8 @@ export namespace GVnc {
 
     type FramebufferInterface = typeof Framebuffer;
     class PixelFormat {
+        static $gtype: GObject.GType<PixelFormat>;
+
         // Own fields of GVnc.PixelFormat
 
         bits_per_pixel: number;

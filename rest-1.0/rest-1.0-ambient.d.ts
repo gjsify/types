@@ -1,7 +1,7 @@
 
 declare module 'gi://Rest?version=1.0' {
-    import Rest10 from '@girs/rest-1.0';
-    export default Rest10;
+    import Rest from '@girs/rest-1.0';
+    export default Rest;
 }
 
 declare module 'gi://Rest' {

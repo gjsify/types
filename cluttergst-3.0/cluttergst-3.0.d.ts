@@ -138,6 +138,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class Aspectratio extends Content implements Clutter.Content {
+        static $gtype: GObject.GType<Aspectratio>;
+
         // Own properties of ClutterGst.Aspectratio
 
         /**
@@ -600,6 +602,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class Camera extends GObject.Object implements Player {
+        static $gtype: GObject.GType<Camera>;
+
         // Own properties of ClutterGst.Camera
 
         get device(): CameraDevice;
@@ -1315,6 +1319,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class CameraDevice extends GObject.Object {
+        static $gtype: GObject.GType<CameraDevice>;
+
         // Own properties of ClutterGst.CameraDevice
 
         /**
@@ -1411,6 +1417,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class CameraManager extends GObject.Object {
+        static $gtype: GObject.GType<CameraManager>;
+
         // Constructors of ClutterGst.CameraManager
 
         constructor(properties?: Partial<CameraManager.ConstructorProps>, ...args: any[]);
@@ -1473,6 +1481,8 @@ export namespace ClutterGst {
      * and should be accessed using the provided API
      */
     class Content extends GObject.Object implements Clutter.Content {
+        static $gtype: GObject.GType<Content>;
+
         // Own properties of ClutterGst.Content
 
         get frame(): Frame;
@@ -1944,6 +1954,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class Crop extends Content implements Clutter.Content {
+        static $gtype: GObject.GType<Crop>;
+
         // Own properties of ClutterGst.Crop
 
         /**
@@ -2437,6 +2449,8 @@ export namespace ClutterGst {
      * should not be accessed directly.
      */
     class Playback extends GObject.Object implements Player {
+        static $gtype: GObject.GType<Playback>;
+
         // Own properties of ClutterGst.Playback
 
         /**
@@ -3254,6 +3268,8 @@ export namespace ClutterGst {
      * should be accessed using the provided API.
      */
     class VideoSink extends GstVideo.VideoSink implements GstVideo.ColorBalance, GstVideo.Navigation {
+        static $gtype: GObject.GType<VideoSink>;
+
         // Own properties of ClutterGst.VideoSink
 
         get update_priority(): number;
@@ -3800,6 +3816,8 @@ export namespace ClutterGst {
 
     type AspectratioClass = typeof Aspectratio;
     abstract class AspectratioPrivate {
+        static $gtype: GObject.GType<AspectratioPrivate>;
+
         // Constructors of ClutterGst.AspectratioPrivate
 
         _init(...args: any[]): void;
@@ -3810,6 +3828,8 @@ export namespace ClutterGst {
      * Coordinates are usually expressed in the [0, 1] interval.
      */
     class Box {
+        static $gtype: GObject.GType<Box>;
+
         // Own fields of ClutterGst.Box
 
         x1: number;
@@ -3846,6 +3866,8 @@ export namespace ClutterGst {
     type CameraClass = typeof Camera;
     type CameraDeviceClass = typeof CameraDevice;
     abstract class CameraDevicePrivate {
+        static $gtype: GObject.GType<CameraDevicePrivate>;
+
         // Constructors of ClutterGst.CameraDevicePrivate
 
         _init(...args: any[]): void;
@@ -3853,12 +3875,16 @@ export namespace ClutterGst {
 
     type CameraManagerClass = typeof CameraManager;
     abstract class CameraManagerPrivate {
+        static $gtype: GObject.GType<CameraManagerPrivate>;
+
         // Constructors of ClutterGst.CameraManagerPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CameraPrivate {
+        static $gtype: GObject.GType<CameraPrivate>;
+
         // Constructors of ClutterGst.CameraPrivate
 
         _init(...args: any[]): void;
@@ -3866,6 +3892,8 @@ export namespace ClutterGst {
 
     type ContentClass = typeof Content;
     abstract class ContentPrivate {
+        static $gtype: GObject.GType<ContentPrivate>;
+
         // Constructors of ClutterGst.ContentPrivate
 
         _init(...args: any[]): void;
@@ -3873,6 +3901,8 @@ export namespace ClutterGst {
 
     type CropClass = typeof Crop;
     abstract class CropPrivate {
+        static $gtype: GObject.GType<CropPrivate>;
+
         // Constructors of ClutterGst.CropPrivate
 
         _init(...args: any[]): void;
@@ -3882,6 +3912,8 @@ export namespace ClutterGst {
      * Represents a frame outputted by the #ClutterGstVideoSink.
      */
     class Frame {
+        static $gtype: GObject.GType<Frame>;
+
         // Own fields of ClutterGst.Frame
 
         resolution: VideoResolution;
@@ -3901,6 +3933,8 @@ export namespace ClutterGst {
      * Represents a video overlay outputted by the #ClutterGstVideoSink.
      */
     class Overlay {
+        static $gtype: GObject.GType<Overlay>;
+
         // Own fields of ClutterGst.Overlay
 
         position: Box;
@@ -3917,6 +3951,8 @@ export namespace ClutterGst {
     }
 
     class Overlays {
+        static $gtype: GObject.GType<Overlays>;
+
         // Own fields of ClutterGst.Overlays
 
         overlays: any[];
@@ -3933,6 +3969,8 @@ export namespace ClutterGst {
 
     type PlaybackClass = typeof Playback;
     abstract class PlaybackPrivate {
+        static $gtype: GObject.GType<PlaybackPrivate>;
+
         // Constructors of ClutterGst.PlaybackPrivate
 
         _init(...args: any[]): void;
@@ -3940,6 +3978,8 @@ export namespace ClutterGst {
 
     type PlayerIface = typeof Player;
     abstract class PlayerIfacePrivate {
+        static $gtype: GObject.GType<PlayerIfacePrivate>;
+
         // Constructors of ClutterGst.PlayerIfacePrivate
 
         _init(...args: any[]): void;
@@ -3949,6 +3989,8 @@ export namespace ClutterGst {
      * A video resolution.
      */
     class VideoResolution {
+        static $gtype: GObject.GType<VideoResolution>;
+
         // Own fields of ClutterGst.VideoResolution
 
         width: number;
@@ -3971,6 +4013,8 @@ export namespace ClutterGst {
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
+        static $gtype: GObject.GType<VideoSinkPrivate>;
+
         // Constructors of ClutterGst.VideoSinkPrivate
 
         _init(...args: any[]): void;

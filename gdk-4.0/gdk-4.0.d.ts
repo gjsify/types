@@ -352,6 +352,8 @@ export namespace Gdk {
      * Error enumeration for `GdkGLContext`.
      */
     class GLError extends GLib.Error {
+        static $gtype: GObject.GType<GLError>;
+
         // Static fields of Gdk.GLError
 
         /**
@@ -795,6 +797,8 @@ export namespace Gdk {
      * Possible errors that can be returned by `GdkTexture` constructors.
      */
     class TextureError extends GLib.Error {
+        static $gtype: GObject.GType<TextureError>;
+
         // Static fields of Gdk.TextureError
 
         /**
@@ -874,6 +878,8 @@ export namespace Gdk {
      * Error enumeration for `GdkVulkanContext`.
      */
     class VulkanError extends GLib.Error {
+        static $gtype: GObject.GType<VulkanError>;
+
         // Static fields of Gdk.VulkanError
 
         /**
@@ -4014,6 +4020,8 @@ export namespace Gdk {
      * ```
      */
     class AppLaunchContext extends Gio.AppLaunchContext {
+        static $gtype: GObject.GType<AppLaunchContext>;
+
         // Own properties of Gdk.AppLaunchContext
 
         /**
@@ -4095,6 +4103,8 @@ export namespace Gdk {
      * An event related to a button on a pointer device.
      */
     class ButtonEvent extends Event {
+        static $gtype: GObject.GType<ButtonEvent>;
+
         // Constructors of Gdk.ButtonEvent
 
         _init(...args: any[]): void;
@@ -4123,6 +4133,8 @@ export namespace Gdk {
      * can then be used to draw on that surface.
      */
     abstract class CairoContext extends DrawContext {
+        static $gtype: GObject.GType<CairoContext>;
+
         // Constructors of Gdk.CairoContext
 
         constructor(properties?: Partial<CairoContext.ConstructorProps>, ...args: any[]);
@@ -4182,6 +4194,8 @@ export namespace Gdk {
      * [method`Gdk`.Clipboard.read_async], which provides a `GInputStream` object.
      */
     class Clipboard extends GObject.Object {
+        static $gtype: GObject.GType<Clipboard>;
+
         // Own properties of Gdk.Clipboard
 
         /**
@@ -4423,6 +4437,8 @@ export namespace Gdk {
      * Also see [class`Gdk`.ContentSerializer].
      */
     class ContentDeserializer extends GObject.Object implements Gio.AsyncResult {
+        static $gtype: GObject.GType<ContentDeserializer>;
+
         // Constructors of Gdk.ContentDeserializer
 
         constructor(properties?: Partial<ContentDeserializer.ConstructorProps>, ...args: any[]);
@@ -4921,6 +4937,8 @@ export namespace Gdk {
      * to add support for application-specific data formats.
      */
     class ContentProvider extends GObject.Object {
+        static $gtype: GObject.GType<ContentProvider>;
+
         // Own properties of Gdk.ContentProvider
 
         /**
@@ -5111,6 +5129,8 @@ export namespace Gdk {
      * Also see [class`Gdk`.ContentDeserializer].
      */
     class ContentSerializer extends GObject.Object implements Gio.AsyncResult {
+        static $gtype: GObject.GType<ContentSerializer>;
+
         // Constructors of Gdk.ContentSerializer
 
         constructor(properties?: Partial<ContentSerializer.ConstructorProps>, ...args: any[]);
@@ -5585,6 +5605,8 @@ export namespace Gdk {
      * An event caused by a pointing device moving between surfaces.
      */
     class CrossingEvent extends Event {
+        static $gtype: GObject.GType<CrossingEvent>;
+
         // Constructors of Gdk.CrossingEvent
 
         _init(...args: any[]): void;
@@ -5658,6 +5680,8 @@ export namespace Gdk {
      * the default cursor will be the ultimate fallback.
      */
     class Cursor extends GObject.Object {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own properties of Gdk.Cursor
 
         /**
@@ -5763,6 +5787,8 @@ export namespace Gdk {
      * An event related to drag and drop operations.
      */
     class DNDEvent extends Event {
+        static $gtype: GObject.GType<DNDEvent>;
+
         // Constructors of Gdk.DNDEvent
 
         _init(...args: any[]): void;
@@ -5780,6 +5806,8 @@ export namespace Gdk {
      * An event related to closing a top-level surface.
      */
     class DeleteEvent extends Event {
+        static $gtype: GObject.GType<DeleteEvent>;
+
         // Constructors of Gdk.DeleteEvent
 
         _init(...args: any[]): void;
@@ -5836,6 +5864,8 @@ export namespace Gdk {
      * about the various kinds of devices, and their relationships.
      */
     abstract class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Gdk.Device
 
         /**
@@ -6153,6 +6183,8 @@ export namespace Gdk {
      * A physical tool associated to a `GdkDevice`.
      */
     class DeviceTool extends GObject.Object {
+        static $gtype: GObject.GType<DeviceTool>;
+
         // Own properties of Gdk.DeviceTool
 
         /**
@@ -6273,6 +6305,8 @@ export namespace Gdk {
      * be accessed with [method`Gdk`.Display.get_monitor_at_surface] and similar APIs.
      */
     class Display extends GObject.Object {
+        static $gtype: GObject.GType<Display>;
+
         // Own properties of Gdk.Display
 
         /**
@@ -6668,6 +6702,8 @@ export namespace Gdk {
      * ```
      */
     class DisplayManager extends GObject.Object {
+        static $gtype: GObject.GType<DisplayManager>;
+
         // Own properties of Gdk.DisplayManager
 
         /**
@@ -6778,6 +6814,8 @@ export namespace Gdk {
      * "Drag and Drop" section of the GTK documentation for more information.
      */
     abstract class Drag extends GObject.Object {
+        static $gtype: GObject.GType<Drag>;
+
         // Own properties of Gdk.Drag
 
         /**
@@ -6965,6 +7003,8 @@ export namespace Gdk {
      * A `GdkDrawContext` is always associated with a single toplevel surface.
      */
     abstract class DrawContext extends GObject.Object {
+        static $gtype: GObject.GType<DrawContext>;
+
         // Own properties of Gdk.DrawContext
 
         /**
@@ -7086,6 +7126,8 @@ export namespace Gdk {
      * "Drag and Drop" section of the GTK documentation for more information.
      */
     abstract class Drop extends GObject.Object {
+        static $gtype: GObject.GType<Drop>;
+
         // Own properties of Gdk.Drop
 
         /**
@@ -7262,6 +7304,8 @@ export namespace Gdk {
      * so using `GdkEvent` and its related API is rarely needed.
      */
     abstract class Event {
+        static $gtype: GObject.GType<Event>;
+
         // Constructors of Gdk.Event
 
         _init(...args: any[]): void;
@@ -7431,6 +7475,8 @@ export namespace Gdk {
      * An event related to a keyboard focus change.
      */
     class FocusEvent extends Event {
+        static $gtype: GObject.GType<FocusEvent>;
+
         // Constructors of Gdk.FocusEvent
 
         _init(...args: any[]): void;
@@ -7517,6 +7563,8 @@ export namespace Gdk {
      * they will stay exactly synchronized.
      */
     abstract class FrameClock extends GObject.Object {
+        static $gtype: GObject.GType<FrameClock>;
+
         // Constructors of Gdk.FrameClock
 
         constructor(properties?: Partial<FrameClock.ConstructorProps>, ...args: any[]);
@@ -7711,6 +7759,8 @@ export namespace Gdk {
      * that is currently set by calling [func`Gdk`.GLContext.clear_current].
      */
     abstract class GLContext extends DrawContext {
+        static $gtype: GObject.GType<GLContext>;
+
         // Own properties of Gdk.GLContext
 
         /**
@@ -7958,6 +8008,8 @@ export namespace Gdk {
      * A GdkTexture representing a GL texture object.
      */
     class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<GLTexture>;
+
         // Constructors of Gdk.GLTexture
 
         constructor(properties?: Partial<GLTexture.ConstructorProps>, ...args: any[]);
@@ -8682,6 +8734,8 @@ export namespace Gdk {
      * textures as well as kept around and reused to construct multiple textures.
      */
     class GLTextureBuilder extends GObject.Object {
+        static $gtype: GObject.GType<GLTextureBuilder>;
+
         // Own properties of Gdk.GLTextureBuilder
 
         /**
@@ -8924,6 +8978,8 @@ export namespace Gdk {
      * An event related to a broken windowing system grab.
      */
     class GrabBrokenEvent extends Event {
+        static $gtype: GObject.GType<GrabBrokenEvent>;
+
         // Constructors of Gdk.GrabBrokenEvent
 
         _init(...args: any[]): void;
@@ -8946,6 +9002,8 @@ export namespace Gdk {
      * An event related to a key-based device.
      */
     class KeyEvent extends Event {
+        static $gtype: GObject.GType<KeyEvent>;
+
         // Constructors of Gdk.KeyEvent
 
         _init(...args: any[]): void;
@@ -9020,6 +9078,8 @@ export namespace Gdk {
      * A `GdkTexture` representing image data in memory.
      */
     class MemoryTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<MemoryTexture>;
+
         // Constructors of Gdk.MemoryTexture
 
         constructor(properties?: Partial<MemoryTexture.ConstructorProps>, ...args: any[]);
@@ -9746,6 +9806,8 @@ export namespace Gdk {
      * monitor.
      */
     class Monitor extends GObject.Object {
+        static $gtype: GObject.GType<Monitor>;
+
         // Own properties of Gdk.Monitor
 
         /**
@@ -9931,6 +9993,8 @@ export namespace Gdk {
      * An event related to a pointer or touch device motion.
      */
     class MotionEvent extends Event {
+        static $gtype: GObject.GType<MotionEvent>;
+
         // Constructors of Gdk.MotionEvent
 
         _init(...args: any[]): void;
@@ -9940,6 +10004,8 @@ export namespace Gdk {
      * An event related to a pad-based device.
      */
     class PadEvent extends Event {
+        static $gtype: GObject.GType<PadEvent>;
+
         // Constructors of Gdk.PadEvent
 
         _init(...args: any[]): void;
@@ -9966,6 +10032,8 @@ export namespace Gdk {
      * An event related to the proximity of a tool to a device.
      */
     class ProximityEvent extends Event {
+        static $gtype: GObject.GType<ProximityEvent>;
+
         // Constructors of Gdk.ProximityEvent
 
         _init(...args: any[]): void;
@@ -9975,6 +10043,8 @@ export namespace Gdk {
      * An event related to a scrolling motion.
      */
     class ScrollEvent extends Event {
+        static $gtype: GObject.GType<ScrollEvent>;
+
         // Constructors of Gdk.ScrollEvent
 
         _init(...args: any[]): void;
@@ -10050,6 +10120,8 @@ export namespace Gdk {
      * that belong to a user.
      */
     abstract class Seat extends GObject.Object {
+        static $gtype: GObject.GType<Seat>;
+
         // Own properties of Gdk.Seat
 
         /**
@@ -10128,6 +10200,8 @@ export namespace Gdk {
      * The subclass of `GdkSnapshot` used by GTK is [class`Gtk`.Snapshot].
      */
     abstract class Snapshot extends GObject.Object {
+        static $gtype: GObject.GType<Snapshot>;
+
         // Constructors of Gdk.Snapshot
 
         constructor(properties?: Partial<Snapshot.ConstructorProps>, ...args: any[]);
@@ -10186,6 +10260,8 @@ export namespace Gdk {
      * types exist, but you will rarely interact with them directly.
      */
     abstract class Surface extends GObject.Object {
+        static $gtype: GObject.GType<Surface>;
+
         // Own properties of Gdk.Surface
 
         /**
@@ -10564,6 +10640,8 @@ export namespace Gdk {
      * [method`GObject`.Object.ref], and consequently, it is a thread-safe object.
      */
     abstract class Texture extends GObject.Object implements Paintable, Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<Texture>;
+
         // Own properties of Gdk.Texture
 
         /**
@@ -11374,6 +11452,8 @@ export namespace Gdk {
      * An event related to a touch-based device.
      */
     class TouchEvent extends Event {
+        static $gtype: GObject.GType<TouchEvent>;
+
         // Constructors of Gdk.TouchEvent
 
         _init(...args: any[]): void;
@@ -11396,6 +11476,8 @@ export namespace Gdk {
      * processed by the system, resulting in these events.
      */
     class TouchpadEvent extends Event {
+        static $gtype: GObject.GType<TouchpadEvent>;
+
         // Constructors of Gdk.TouchpadEvent
 
         _init(...args: any[]): void;
@@ -11452,6 +11534,8 @@ export namespace Gdk {
      * can fail, returning %NULL context.
      */
     abstract class VulkanContext extends DrawContext implements Gio.Initable {
+        static $gtype: GObject.GType<VulkanContext>;
+
         // Constructors of Gdk.VulkanContext
 
         constructor(properties?: Partial<VulkanContext.ConstructorProps>, ...args: any[]);
@@ -11944,6 +12028,8 @@ export namespace Gdk {
      * endeavor.
      */
     abstract class ContentFormats {
+        static $gtype: GObject.GType<ContentFormats>;
+
         // Constructors of Gdk.ContentFormats
 
         constructor(mime_types?: string[] | null);
@@ -12089,6 +12175,8 @@ export namespace Gdk {
      * new `GdkContentFormats`, and should not be kept around.
      */
     abstract class ContentFormatsBuilder {
+        static $gtype: GObject.GType<ContentFormatsBuilder>;
+
         // Constructors of Gdk.ContentFormatsBuilder
 
         constructor(properties?: Partial<{}>);
@@ -12147,6 +12235,8 @@ export namespace Gdk {
      * to compute the size of a drag surface.
      */
     abstract class DragSurfaceSize {
+        static $gtype: GObject.GType<DragSurfaceSize>;
+
         // Constructors of Gdk.DragSurfaceSize
 
         _init(...args: any[]): void;
@@ -12166,6 +12256,8 @@ export namespace Gdk {
      * of related touch events.
      */
     abstract class EventSequence {
+        static $gtype: GObject.GType<EventSequence>;
+
         // Constructors of Gdk.EventSequence
 
         _init(...args: any[]): void;
@@ -12175,6 +12267,8 @@ export namespace Gdk {
      * An opaque type representing a list of files.
      */
     abstract class FileList {
+        static $gtype: GObject.GType<FileList>;
+
         // Constructors of Gdk.FileList
 
         constructor(files: Gio.File[]);
@@ -12197,6 +12291,8 @@ export namespace Gdk {
 
     type FrameClockClass = typeof FrameClock;
     abstract class FrameClockPrivate {
+        static $gtype: GObject.GType<FrameClockPrivate>;
+
         // Constructors of Gdk.FrameClockPrivate
 
         _init(...args: any[]): void;
@@ -12213,6 +12309,8 @@ export namespace Gdk {
      * application’s display, such as latency and jitter.
      */
     abstract class FrameTimings {
+        static $gtype: GObject.GType<FrameTimings>;
+
         // Constructors of Gdk.FrameTimings
 
         _init(...args: any[]): void;
@@ -12301,6 +12399,8 @@ export namespace Gdk {
      * A `GdkKeymapKey` is a hardware key that can be mapped to a keyval.
      */
     class KeymapKey {
+        static $gtype: GObject.GType<KeymapKey>;
+
         // Own fields of Gdk.KeymapKey
 
         keycode: number;
@@ -12359,6 +12459,8 @@ export namespace Gdk {
      * has to be presented again.
      */
     abstract class PopupLayout {
+        static $gtype: GObject.GType<PopupLayout>;
+
         // Constructors of Gdk.PopupLayout
 
         constructor(anchor_rect: Rectangle, rect_anchor: Gravity, surface_anchor: Gravity);
@@ -12474,6 +12576,8 @@ export namespace Gdk {
      * be clamped to this range when drawing.
      */
     class RGBA {
+        static $gtype: GObject.GType<RGBA>;
+
         // Own fields of Gdk.RGBA
 
         red: number;
@@ -12595,6 +12699,8 @@ export namespace Gdk {
      * volumes in 2D and 3D.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Gdk.Rectangle
 
         x: number;
@@ -12671,6 +12777,8 @@ export namespace Gdk {
      * different format.
      */
     abstract class TextureDownloader {
+        static $gtype: GObject.GType<TextureDownloader>;
+
         // Constructors of Gdk.TextureDownloader
 
         constructor(texture: Texture);
@@ -12741,6 +12849,8 @@ export namespace Gdk {
      * the [enum`Gdk`.AxisUse] enumerations as indices.
      */
     class TimeCoord {
+        static $gtype: GObject.GType<TimeCoord>;
+
         // Own fields of Gdk.TimeCoord
 
         time: number;
@@ -12765,6 +12875,8 @@ export namespace Gdk {
      * etc).
      */
     abstract class ToplevelLayout {
+        static $gtype: GObject.GType<ToplevelLayout>;
+
         // Constructors of Gdk.ToplevelLayout
 
         constructor(properties?: Partial<{}>);
@@ -12846,6 +12958,8 @@ export namespace Gdk {
      * to compute the size of a toplevel.
      */
     abstract class ToplevelSize {
+        static $gtype: GObject.GType<ToplevelSize>;
+
         // Constructors of Gdk.ToplevelSize
 
         _init(...args: any[]): void;

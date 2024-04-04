@@ -44,6 +44,8 @@ export namespace Parquet {
     }
 
     class ArrowFileReader extends GObject.Object {
+        static $gtype: GObject.GType<ArrowFileReader>;
+
         // Own properties of Parquet.ArrowFileReader
 
         set arrow_file_reader(val: any);
@@ -79,6 +81,8 @@ export namespace Parquet {
     }
 
     class ArrowFileWriter extends GObject.Object {
+        static $gtype: GObject.GType<ArrowFileWriter>;
+
         // Own properties of Parquet.ArrowFileWriter
 
         set arrow_file_writer(val: any);
@@ -115,6 +119,8 @@ export namespace Parquet {
     }
 
     class WriterProperties extends GObject.Object {
+        static $gtype: GObject.GType<WriterProperties>;
+
         // Constructors of Parquet.WriterProperties
 
         constructor(properties?: Partial<WriterProperties.ConstructorProps>, ...args: any[]);

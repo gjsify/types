@@ -268,6 +268,8 @@ export namespace ECalendar {
     }
 
     class Cal extends GObject.Object {
+        static $gtype: GObject.GType<Cal>;
+
         // Own fields of ECalendar.Cal
 
         object: GObject.Object;
@@ -554,6 +556,8 @@ export namespace ECalendar {
      * functions below.
      */
     class CalClient extends EDataServer.Client {
+        static $gtype: GObject.GType<CalClient>;
+
         // Constructors of ECalendar.CalClient
 
         constructor(properties?: Partial<CalClient.ConstructorProps>, ...args: any[]);
@@ -981,6 +985,8 @@ export namespace ECalendar {
      * functions below.
      */
     class CalClientView extends GObject.Object {
+        static $gtype: GObject.GType<CalClientView>;
+
         // Own properties of ECalendar.CalClientView
 
         get client(): CalClient;
@@ -1070,6 +1076,8 @@ export namespace ECalendar {
     }
 
     class CalComponent extends GObject.Object {
+        static $gtype: GObject.GType<CalComponent>;
+
         // Own fields of ECalendar.CalComponent
 
         object: GObject.Object;
@@ -1681,6 +1689,8 @@ export namespace ECalendar {
     }
 
     class CalView extends GObject.Object {
+        static $gtype: GObject.GType<CalView>;
+
         // Own properties of ECalendar.CalView
 
         get client(): Cal;
@@ -1742,6 +1752,8 @@ export namespace ECalendar {
      * FIXME Document me!
      */
     class CalChange {
+        static $gtype: GObject.GType<CalChange>;
+
         // Own fields of ECalendar.CalChange
 
         comp: CalComponent;
@@ -1755,6 +1767,8 @@ export namespace ECalendar {
     type CalClass = typeof Cal;
     type CalClientClass = typeof CalClient;
     abstract class CalClientPrivate {
+        static $gtype: GObject.GType<CalClientPrivate>;
+
         // Constructors of ECalendar.CalClientPrivate
 
         _init(...args: any[]): void;
@@ -1762,12 +1776,16 @@ export namespace ECalendar {
 
     type CalClientViewClass = typeof CalClientView;
     abstract class CalClientViewPrivate {
+        static $gtype: GObject.GType<CalClientViewPrivate>;
+
         // Constructors of ECalendar.CalClientViewPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CalComponentAlarm {
+        static $gtype: GObject.GType<CalComponentAlarm>;
+
         // Constructors of ECalendar.CalComponentAlarm
 
         _init(...args: any[]): void;
@@ -1840,6 +1858,8 @@ export namespace ECalendar {
     }
 
     class CalComponentAlarmInstance {
+        static $gtype: GObject.GType<CalComponentAlarmInstance>;
+
         // Own fields of ECalendar.CalComponentAlarmInstance
 
         auid: string;
@@ -1861,6 +1881,8 @@ export namespace ECalendar {
     }
 
     class CalComponentAlarmRepeat {
+        static $gtype: GObject.GType<CalComponentAlarmRepeat>;
+
         // Own fields of ECalendar.CalComponentAlarmRepeat
 
         repetitions: number;
@@ -1878,6 +1900,8 @@ export namespace ECalendar {
     }
 
     class CalComponentAlarmTrigger {
+        static $gtype: GObject.GType<CalComponentAlarmTrigger>;
+
         // Own fields of ECalendar.CalComponentAlarmTrigger
 
         type: CalComponentAlarmTriggerType;
@@ -1888,6 +1912,8 @@ export namespace ECalendar {
     }
 
     class CalComponentAlarms {
+        static $gtype: GObject.GType<CalComponentAlarms>;
+
         // Own fields of ECalendar.CalComponentAlarms
 
         comp: CalComponent;
@@ -1906,6 +1932,8 @@ export namespace ECalendar {
     }
 
     class CalComponentAttendee {
+        static $gtype: GObject.GType<CalComponentAttendee>;
+
         // Own fields of ECalendar.CalComponentAttendee
 
         value: string;
@@ -1939,6 +1967,8 @@ export namespace ECalendar {
 
     type CalComponentClass = typeof CalComponent;
     class CalComponentDateTime {
+        static $gtype: GObject.GType<CalComponentDateTime>;
+
         // Own fields of ECalendar.CalComponentDateTime
 
         value: any;
@@ -1956,6 +1986,8 @@ export namespace ECalendar {
     }
 
     class CalComponentId {
+        static $gtype: GObject.GType<CalComponentId>;
+
         // Own fields of ECalendar.CalComponentId
 
         uid: string;
@@ -1973,6 +2005,8 @@ export namespace ECalendar {
     }
 
     class CalComponentOrganizer {
+        static $gtype: GObject.GType<CalComponentOrganizer>;
+
         // Own fields of ECalendar.CalComponentOrganizer
 
         value: string;
@@ -1994,6 +2028,8 @@ export namespace ECalendar {
     }
 
     class CalComponentPeriod {
+        static $gtype: GObject.GType<CalComponentPeriod>;
+
         // Own fields of ECalendar.CalComponentPeriod
 
         type: CalComponentPeriodType;
@@ -2005,12 +2041,16 @@ export namespace ECalendar {
     }
 
     abstract class CalComponentPrivate {
+        static $gtype: GObject.GType<CalComponentPrivate>;
+
         // Constructors of ECalendar.CalComponentPrivate
 
         _init(...args: any[]): void;
     }
 
     class CalComponentRange {
+        static $gtype: GObject.GType<CalComponentRange>;
+
         // Own fields of ECalendar.CalComponentRange
 
         type: CalComponentRangeType;
@@ -2022,6 +2062,8 @@ export namespace ECalendar {
     }
 
     class CalComponentText {
+        static $gtype: GObject.GType<CalComponentText>;
+
         // Own fields of ECalendar.CalComponentText
 
         value: string;
@@ -2039,6 +2081,8 @@ export namespace ECalendar {
     }
 
     abstract class CalPrivate {
+        static $gtype: GObject.GType<CalPrivate>;
+
         // Constructors of ECalendar.CalPrivate
 
         _init(...args: any[]): void;
@@ -2046,6 +2090,8 @@ export namespace ECalendar {
 
     type CalViewClass = typeof CalView;
     abstract class CalViewPrivate {
+        static $gtype: GObject.GType<CalViewPrivate>;
+
         // Constructors of ECalendar.CalViewPrivate
 
         _init(...args: any[]): void;

@@ -1,7 +1,7 @@
 
 declare module 'gi://Amtk?version=5' {
-    import Amtk5 from '@girs/amtk-5';
-    export default Amtk5;
+    import Amtk from '@girs/amtk-5';
+    export default Amtk;
 }
 
 declare module 'gi://Amtk' {

@@ -124,6 +124,8 @@ export namespace SecretUnstable {
      * A proxy object representing a collection of secrets in the Secret Service.
      */
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Collection>;
+
         // Own properties of SecretUnstable.Collection
 
         /**
@@ -1175,6 +1177,8 @@ export namespace SecretUnstable {
      * A proxy object representing a secret item in the Secret Service.
      */
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Item>;
+
         // Own properties of SecretUnstable.Item
 
         /**
@@ -2190,6 +2194,8 @@ export namespace SecretUnstable {
      * to the user.
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Prompt>;
+
         // Constructors of SecretUnstable.Prompt
 
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
@@ -2873,6 +2879,8 @@ export namespace SecretUnstable {
      * A proxy object representing the Secret Service.
      */
     class Service extends Gio.DBusProxy implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<Service>;
+
         // Constructors of SecretUnstable.Service
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
@@ -4693,6 +4701,8 @@ export namespace SecretUnstable {
 
     type CollectionClass = typeof Collection;
     abstract class CollectionPrivate {
+        static $gtype: GObject.GType<CollectionPrivate>;
+
         // Constructors of SecretUnstable.CollectionPrivate
 
         _init(...args: any[]): void;
@@ -4700,6 +4710,8 @@ export namespace SecretUnstable {
 
     type ItemClass = typeof Item;
     abstract class ItemPrivate {
+        static $gtype: GObject.GType<ItemPrivate>;
+
         // Constructors of SecretUnstable.ItemPrivate
 
         _init(...args: any[]): void;
@@ -4707,6 +4719,8 @@ export namespace SecretUnstable {
 
     type PromptClass = typeof Prompt;
     abstract class PromptPrivate {
+        static $gtype: GObject.GType<PromptPrivate>;
+
         // Constructors of SecretUnstable.PromptPrivate
 
         _init(...args: any[]): void;
@@ -4714,6 +4728,8 @@ export namespace SecretUnstable {
 
     type ServiceClass = typeof Service;
     abstract class ServicePrivate {
+        static $gtype: GObject.GType<ServicePrivate>;
+
         // Constructors of SecretUnstable.ServicePrivate
 
         _init(...args: any[]): void;
@@ -4723,6 +4739,8 @@ export namespace SecretUnstable {
      * A secret value, like a password or other binary secret.
      */
     class Value {
+        static $gtype: GObject.GType<Value>;
+
         // Constructors of SecretUnstable.Value
 
         constructor(secret: string, length: number, content_type: string);

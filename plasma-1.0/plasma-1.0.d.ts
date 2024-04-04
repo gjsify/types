@@ -27,6 +27,8 @@ export namespace Plasma {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Plasma.Client
 
         set client(val: any);
@@ -57,6 +59,8 @@ export namespace Plasma {
     }
 
     class ClientCreateOptions extends GObject.Object {
+        static $gtype: GObject.GType<ClientCreateOptions>;
+
         // Own properties of Plasma.ClientCreateOptions
 
         get gpu_device(): number;
@@ -88,6 +92,8 @@ export namespace Plasma {
     }
 
     class ClientOptions extends GObject.Object {
+        static $gtype: GObject.GType<ClientOptions>;
+
         // Own properties of Plasma.ClientOptions
 
         get n_retries(): number;
@@ -116,6 +122,8 @@ export namespace Plasma {
     }
 
     class CreatedObject extends Object {
+        static $gtype: GObject.GType<CreatedObject>;
+
         // Constructors of Plasma.CreatedObject
 
         constructor(properties?: Partial<CreatedObject.ConstructorProps>, ...args: any[]);
@@ -156,6 +164,8 @@ export namespace Plasma {
     }
 
     class Object extends GObject.Object {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Plasma.Object
 
         get client(): Client;
@@ -183,6 +193,8 @@ export namespace Plasma {
     }
 
     class ObjectID extends GObject.Object {
+        static $gtype: GObject.GType<ObjectID>;
+
         // Constructors of Plasma.ObjectID
 
         constructor(properties?: Partial<ObjectID.ConstructorProps>, ...args: any[]);
@@ -204,6 +216,8 @@ export namespace Plasma {
     }
 
     class ReferredObject extends Object {
+        static $gtype: GObject.GType<ReferredObject>;
+
         // Constructors of Plasma.ReferredObject
 
         constructor(properties?: Partial<ReferredObject.ConstructorProps>, ...args: any[]);

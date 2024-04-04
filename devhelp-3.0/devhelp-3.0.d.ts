@@ -137,6 +137,8 @@ export namespace Devhelp {
     }
 
     class AssistantView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<AssistantView>;
+
         // Constructors of Devhelp.AssistantView
 
         constructor(properties?: Partial<AssistantView.ConstructorProps>, ...args: any[]);
@@ -543,6 +545,8 @@ export namespace Devhelp {
     }
 
     class Book extends GObject.Object {
+        static $gtype: GObject.GType<Book>;
+
         // Constructors of Devhelp.Book
 
         constructor(properties?: Partial<Book.ConstructorProps>, ...args: any[]);
@@ -617,6 +621,8 @@ export namespace Devhelp {
     }
 
     class BookList extends GObject.Object {
+        static $gtype: GObject.GType<BookList>;
+
         // Constructors of Devhelp.BookList
 
         constructor(properties?: Partial<BookList.ConstructorProps>, ...args: any[]);
@@ -704,6 +710,8 @@ export namespace Devhelp {
     }
 
     class BookListBuilder extends GObject.Object {
+        static $gtype: GObject.GType<BookListBuilder>;
+
         // Constructors of Devhelp.BookListBuilder
 
         constructor(properties?: Partial<BookListBuilder.ConstructorProps>, ...args: any[]);
@@ -784,6 +792,8 @@ export namespace Devhelp {
     }
 
     class BookListDirectory extends BookList {
+        static $gtype: GObject.GType<BookListDirectory>;
+
         // Own properties of Devhelp.BookListDirectory
 
         /**
@@ -814,6 +824,8 @@ export namespace Devhelp {
     }
 
     class BookManager extends GObject.Object {
+        static $gtype: GObject.GType<BookManager>;
+
         // Constructors of Devhelp.BookManager
 
         constructor(properties?: Partial<BookManager.ConstructorProps>, ...args: any[]);
@@ -846,6 +858,8 @@ export namespace Devhelp {
     }
 
     class BookTree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<BookTree>;
+
         // Own properties of Devhelp.BookTree
 
         /**
@@ -1349,6 +1363,8 @@ export namespace Devhelp {
     }
 
     class Completion extends GObject.Object {
+        static $gtype: GObject.GType<Completion>;
+
         // Constructors of Devhelp.Completion
 
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
@@ -1404,6 +1420,8 @@ export namespace Devhelp {
     }
 
     class KeywordModel extends GObject.Object implements Gtk.TreeModel {
+        static $gtype: GObject.GType<KeywordModel>;
+
         // Constructors of Devhelp.KeywordModel
 
         constructor(properties?: Partial<KeywordModel.ConstructorProps>, ...args: any[]);
@@ -2207,6 +2225,8 @@ export namespace Devhelp {
     }
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Notebook>;
+
         // Own properties of Devhelp.Notebook
 
         /**
@@ -2605,6 +2625,8 @@ export namespace Devhelp {
     }
 
     class Profile extends GObject.Object {
+        static $gtype: GObject.GType<Profile>;
+
         // Constructors of Devhelp.Profile
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
@@ -2643,6 +2665,8 @@ export namespace Devhelp {
     }
 
     class ProfileBuilder extends GObject.Object {
+        static $gtype: GObject.GType<ProfileBuilder>;
+
         // Constructors of Devhelp.ProfileBuilder
 
         constructor(properties?: Partial<ProfileBuilder.ConstructorProps>, ...args: any[]);
@@ -2684,6 +2708,8 @@ export namespace Devhelp {
     }
 
     class SearchBar extends Gtk.SearchBar implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<SearchBar>;
+
         // Own properties of Devhelp.SearchBar
 
         /**
@@ -3094,6 +3120,8 @@ export namespace Devhelp {
     }
 
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of Devhelp.Settings
 
         /**
@@ -3275,6 +3303,8 @@ export namespace Devhelp {
     }
 
     class SettingsBuilder extends GObject.Object {
+        static $gtype: GObject.GType<SettingsBuilder>;
+
         // Constructors of Devhelp.SettingsBuilder
 
         constructor(properties?: Partial<SettingsBuilder.ConstructorProps>, ...args: any[]);
@@ -3323,6 +3353,8 @@ export namespace Devhelp {
     }
 
     class Sidebar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Sidebar>;
+
         // Own properties of Devhelp.Sidebar
 
         /**
@@ -3768,6 +3800,8 @@ export namespace Devhelp {
     }
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Tab>;
+
         // Own properties of Devhelp.Tab
 
         /**
@@ -4183,6 +4217,8 @@ export namespace Devhelp {
     }
 
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<TabLabel>;
+
         // Own properties of Devhelp.TabLabel
 
         /**
@@ -4598,6 +4634,8 @@ export namespace Devhelp {
     }
 
     class WebView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<WebView>;
+
         // Own properties of Devhelp.WebView
 
         /**
@@ -5035,6 +5073,8 @@ export namespace Devhelp {
     type BookClass = typeof Book;
     type BookListBuilderClass = typeof BookListBuilder;
     abstract class BookListBuilderPrivate {
+        static $gtype: GObject.GType<BookListBuilderPrivate>;
+
         // Constructors of Devhelp.BookListBuilderPrivate
 
         _init(...args: any[]): void;
@@ -5043,12 +5083,16 @@ export namespace Devhelp {
     type BookListClass = typeof BookList;
     type BookListDirectoryClass = typeof BookListDirectory;
     abstract class BookListDirectoryPrivate {
+        static $gtype: GObject.GType<BookListDirectoryPrivate>;
+
         // Constructors of Devhelp.BookListDirectoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class BookListPrivate {
+        static $gtype: GObject.GType<BookListPrivate>;
+
         // Constructors of Devhelp.BookListPrivate
 
         _init(...args: any[]): void;
@@ -5058,6 +5102,8 @@ export namespace Devhelp {
     type BookTreeClass = typeof BookTree;
     type CompletionClass = typeof Completion;
     abstract class CompletionPrivate {
+        static $gtype: GObject.GType<CompletionPrivate>;
+
         // Constructors of Devhelp.CompletionPrivate
 
         _init(...args: any[]): void;
@@ -5065,6 +5111,8 @@ export namespace Devhelp {
 
     type KeywordModelClass = typeof KeywordModel;
     abstract class Link {
+        static $gtype: GObject.GType<Link>;
+
         // Constructors of Devhelp.Link
 
         constructor(type: LinkType, book_link: Link, name: string, relative_url: string);
@@ -5130,6 +5178,8 @@ export namespace Devhelp {
 
     type NotebookClass = typeof Notebook;
     abstract class NotebookPrivate {
+        static $gtype: GObject.GType<NotebookPrivate>;
+
         // Constructors of Devhelp.NotebookPrivate
 
         _init(...args: any[]): void;
@@ -5137,6 +5187,8 @@ export namespace Devhelp {
 
     type ProfileBuilderClass = typeof ProfileBuilder;
     abstract class ProfileBuilderPrivate {
+        static $gtype: GObject.GType<ProfileBuilderPrivate>;
+
         // Constructors of Devhelp.ProfileBuilderPrivate
 
         _init(...args: any[]): void;
@@ -5144,6 +5196,8 @@ export namespace Devhelp {
 
     type ProfileClass = typeof Profile;
     abstract class ProfilePrivate {
+        static $gtype: GObject.GType<ProfilePrivate>;
+
         // Constructors of Devhelp.ProfilePrivate
 
         _init(...args: any[]): void;
@@ -5151,6 +5205,8 @@ export namespace Devhelp {
 
     type SearchBarClass = typeof SearchBar;
     abstract class SearchBarPrivate {
+        static $gtype: GObject.GType<SearchBarPrivate>;
+
         // Constructors of Devhelp.SearchBarPrivate
 
         _init(...args: any[]): void;
@@ -5158,6 +5214,8 @@ export namespace Devhelp {
 
     type SettingsBuilderClass = typeof SettingsBuilder;
     abstract class SettingsBuilderPrivate {
+        static $gtype: GObject.GType<SettingsBuilderPrivate>;
+
         // Constructors of Devhelp.SettingsBuilderPrivate
 
         _init(...args: any[]): void;
@@ -5165,6 +5223,8 @@ export namespace Devhelp {
 
     type SettingsClass = typeof Settings;
     abstract class SettingsPrivate {
+        static $gtype: GObject.GType<SettingsPrivate>;
+
         // Constructors of Devhelp.SettingsPrivate
 
         _init(...args: any[]): void;
@@ -5174,12 +5234,16 @@ export namespace Devhelp {
     type TabClass = typeof Tab;
     type TabLabelClass = typeof TabLabel;
     abstract class TabLabelPrivate {
+        static $gtype: GObject.GType<TabLabelPrivate>;
+
         // Constructors of Devhelp.TabLabelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class TabPrivate {
+        static $gtype: GObject.GType<TabPrivate>;
+
         // Constructors of Devhelp.TabPrivate
 
         _init(...args: any[]): void;
@@ -5187,6 +5251,8 @@ export namespace Devhelp {
 
     type WebViewClass = typeof WebView;
     abstract class WebViewPrivate {
+        static $gtype: GObject.GType<WebViewPrivate>;
+
         // Constructors of Devhelp.WebViewPrivate
 
         _init(...args: any[]): void;

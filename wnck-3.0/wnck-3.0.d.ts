@@ -500,6 +500,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class ActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<ActionMenu>;
+
         // Own properties of Wnck.ActionMenu
 
         // This accessor conflicts with another accessor's type in a parent class or interface.
@@ -894,6 +896,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Application extends GObject.Object {
+        static $gtype: GObject.GType<Application>;
+
         // Constructors of Wnck.Application
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
@@ -1013,6 +1017,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class ClassGroup extends GObject.Object {
+        static $gtype: GObject.GType<ClassGroup>;
+
         // Constructors of Wnck.ClassGroup
 
         constructor(properties?: Partial<ClassGroup.ConstructorProps>, ...args: any[]);
@@ -1101,6 +1107,8 @@ export namespace Wnck {
     }
 
     class Handle extends GObject.Object {
+        static $gtype: GObject.GType<Handle>;
+
         // Own properties of Wnck.Handle
 
         get client_type(): ClientType;
@@ -1189,6 +1197,8 @@ export namespace Wnck {
         extends Gtk.MenuItem
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<ImageMenuItem>;
+
         // Constructors of Wnck.ImageMenuItem
 
         constructor(properties?: Partial<ImageMenuItem.ConstructorProps>, ...args: any[]);
@@ -5345,6 +5355,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Pager extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Pager>;
+
         // Own properties of Wnck.Pager
 
         get handle(): Handle;
@@ -6039,6 +6051,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Screen extends GObject.Object {
+        static $gtype: GObject.GType<Screen>;
+
         // Constructors of Wnck.Screen
 
         constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
@@ -6343,6 +6357,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Selector extends Gtk.MenuBar implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Selector>;
+
         // Own properties of Wnck.Selector
 
         get handle(): Handle;
@@ -6742,6 +6758,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Tasklist extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Tasklist>;
+
         // Own properties of Wnck.Tasklist
 
         get handle(): Handle;
@@ -7265,6 +7283,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Window extends GObject.Object {
+        static $gtype: GObject.GType<Window>;
+
         // Constructors of Wnck.Window
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
@@ -7895,6 +7915,8 @@ export namespace Wnck {
      * directly accessed.
      */
     class Workspace extends GObject.Object {
+        static $gtype: GObject.GType<Workspace>;
+
         // Constructors of Wnck.Workspace
 
         constructor(properties?: Partial<Workspace.ConstructorProps>, ...args: any[]);
@@ -7999,6 +8021,8 @@ export namespace Wnck {
 
     type ActionMenuClass = typeof ActionMenu;
     abstract class ActionMenuPrivate {
+        static $gtype: GObject.GType<ActionMenuPrivate>;
+
         // Constructors of Wnck.ActionMenuPrivate
 
         _init(...args: any[]): void;
@@ -8006,6 +8030,8 @@ export namespace Wnck {
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Wnck.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -8013,6 +8039,8 @@ export namespace Wnck {
 
     type ClassGroupClass = typeof ClassGroup;
     abstract class ClassGroupPrivate {
+        static $gtype: GObject.GType<ClassGroupPrivate>;
+
         // Constructors of Wnck.ClassGroupPrivate
 
         _init(...args: any[]): void;
@@ -8020,6 +8048,8 @@ export namespace Wnck {
 
     type HandleClass = typeof Handle;
     abstract class IconCache {
+        static $gtype: GObject.GType<IconCache>;
+
         // Constructors of Wnck.IconCache
 
         _init(...args: any[]): void;
@@ -8028,6 +8058,8 @@ export namespace Wnck {
     type ImageMenuItemClass = typeof ImageMenuItem;
     type PagerClass = typeof Pager;
     abstract class PagerPrivate {
+        static $gtype: GObject.GType<PagerPrivate>;
+
         // Constructors of Wnck.PagerPrivate
 
         _init(...args: any[]): void;
@@ -8039,6 +8071,8 @@ export namespace Wnck {
      * resource type.
      */
     class ResourceUsage {
+        static $gtype: GObject.GType<ResourceUsage>;
+
         // Own fields of Wnck.ResourceUsage
 
         total_bytes_estimate: number;
@@ -8077,6 +8111,8 @@ export namespace Wnck {
 
     type ScreenClass = typeof Screen;
     abstract class ScreenPrivate {
+        static $gtype: GObject.GType<ScreenPrivate>;
+
         // Constructors of Wnck.ScreenPrivate
 
         _init(...args: any[]): void;
@@ -8084,6 +8120,8 @@ export namespace Wnck {
 
     type SelectorClass = typeof Selector;
     abstract class SelectorPrivate {
+        static $gtype: GObject.GType<SelectorPrivate>;
+
         // Constructors of Wnck.SelectorPrivate
 
         _init(...args: any[]): void;
@@ -8091,6 +8129,8 @@ export namespace Wnck {
 
     type TasklistClass = typeof Tasklist;
     abstract class TasklistPrivate {
+        static $gtype: GObject.GType<TasklistPrivate>;
+
         // Constructors of Wnck.TasklistPrivate
 
         _init(...args: any[]): void;
@@ -8098,6 +8138,8 @@ export namespace Wnck {
 
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of Wnck.WindowPrivate
 
         _init(...args: any[]): void;
@@ -8110,6 +8152,8 @@ export namespace Wnck {
      * #WnckWorkspace.
      */
     class WorkspaceLayout {
+        static $gtype: GObject.GType<WorkspaceLayout>;
+
         // Own fields of Wnck.WorkspaceLayout
 
         rows: number;
@@ -8135,6 +8179,8 @@ export namespace Wnck {
     }
 
     abstract class WorkspacePrivate {
+        static $gtype: GObject.GType<WorkspacePrivate>;
+
         // Constructors of Wnck.WorkspacePrivate
 
         _init(...args: any[]): void;

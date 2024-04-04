@@ -43,6 +43,8 @@ export namespace Json {
      * This enumeration can be extended at later date
      */
     class ParserError extends GLib.Error {
+        static $gtype: GObject.GType<ParserError>;
+
         // Static fields of Json.ParserError
 
         /**
@@ -94,6 +96,8 @@ export namespace Json {
      * This enumeration can be extended at later date
      */
     class PathError extends GLib.Error {
+        static $gtype: GObject.GType<PathError>;
+
         // Static fields of Json.PathError
 
         /**
@@ -117,6 +121,8 @@ export namespace Json {
      * This enumeration can be extended at later date
      */
     class ReaderError extends GLib.Error {
+        static $gtype: GObject.GType<ReaderError>;
+
         // Static fields of Json.ReaderError
 
         /**
@@ -454,6 +460,8 @@ export namespace Json {
      * ```
      */
     class Builder extends GObject.Object {
+        static $gtype: GObject.GType<Builder>;
+
         // Own properties of Json.Builder
 
         /**
@@ -633,6 +641,8 @@ export namespace Json {
      * or a file.
      */
     class Generator extends GObject.Object {
+        static $gtype: GObject.GType<Generator>;
+
         // Own properties of Json.Generator
 
         /**
@@ -841,6 +851,8 @@ export namespace Json {
      * task itself.
      */
     class Parser extends GObject.Object {
+        static $gtype: GObject.GType<Parser>;
+
         // Own properties of Json.Parser
 
         /**
@@ -1176,6 +1188,8 @@ export namespace Json {
      * ```
      */
     class Path extends GObject.Object {
+        static $gtype: GObject.GType<Path>;
+
         // Constructors of Json.Path
 
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
@@ -1290,6 +1304,8 @@ export namespace Json {
      * ```
      */
     class Reader extends GObject.Object {
+        static $gtype: GObject.GType<Reader>;
+
         // Own properties of Json.Reader
 
         /**
@@ -1555,6 +1571,8 @@ export namespace Json {
      * To retrieve the length of the array, use [method`Json`.Array.get_length].
      */
     abstract class Array {
+        static $gtype: GObject.GType<Array>;
+
         // Constructors of Json.Array
 
         constructor(properties?: Partial<{}>);
@@ -1774,6 +1792,8 @@ export namespace Json {
 
     type BuilderClass = typeof Builder;
     abstract class BuilderPrivate {
+        static $gtype: GObject.GType<BuilderPrivate>;
+
         // Constructors of Json.BuilderPrivate
 
         _init(...args: any[]): void;
@@ -1781,6 +1801,8 @@ export namespace Json {
 
     type GeneratorClass = typeof Generator;
     abstract class GeneratorPrivate {
+        static $gtype: GObject.GType<GeneratorPrivate>;
+
         // Constructors of Json.GeneratorPrivate
 
         _init(...args: any[]): void;
@@ -1822,6 +1844,8 @@ export namespace Json {
      * [method`Json`.Node.copy] and [method`Json`.Node.unref] internally.
      */
     abstract class Node {
+        static $gtype: GObject.GType<Node>;
+
         // Constructors of Json.Node
 
         constructor(properties?: Partial<{}>);
@@ -2233,6 +2257,8 @@ export namespace Json {
      * use [method`Json`.Object.get_size].
      */
     abstract class Object {
+        static $gtype: GObject.GType<Object>;
+
         // Constructors of Json.Object
 
         constructor(properties?: Partial<{}>);
@@ -2551,6 +2577,8 @@ export namespace Json {
      * never be accessed directly.
      */
     class ObjectIter {
+        static $gtype: GObject.GType<ObjectIter>;
+
         // Constructors of Json.ObjectIter
 
         constructor(properties?: Partial<{}>);
@@ -2640,6 +2668,8 @@ export namespace Json {
 
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
+        static $gtype: GObject.GType<ParserPrivate>;
+
         // Constructors of Json.ParserPrivate
 
         _init(...args: any[]): void;
@@ -2648,6 +2678,8 @@ export namespace Json {
     type PathClass = typeof Path;
     type ReaderClass = typeof Reader;
     abstract class ReaderPrivate {
+        static $gtype: GObject.GType<ReaderPrivate>;
+
         // Constructors of Json.ReaderPrivate
 
         _init(...args: any[]): void;

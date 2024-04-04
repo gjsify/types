@@ -1,7 +1,7 @@
 
 declare module 'gi://GstRiff?version=1.0' {
-    import GstRiff10 from '@girs/gstriff-1.0';
-    export default GstRiff10;
+    import GstRiff from '@girs/gstriff-1.0';
+    export default GstRiff;
 }
 
 declare module 'gi://GstRiff' {

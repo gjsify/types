@@ -19,6 +19,8 @@ export namespace GModule {
      * Errors returned by g_module_open_full().
      */
     class ModuleError extends GLib.Error {
+        static $gtype: GObject.GType<ModuleError>;
+
         // Static fields of GModule.ModuleError
 
         /**
@@ -101,6 +103,8 @@ export namespace GModule {
      * It should only be accessed via the following functions.
      */
     abstract class Module {
+        static $gtype: GObject.GType<Module>;
+
         // Constructors of GModule.Module
 
         _init(...args: any[]): void;

@@ -126,6 +126,8 @@ export namespace GstAllocators {
      * Private intance object for #GstDRMDumbAllocator.
      */
     class DRMDumbAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<DRMDumbAllocator>;
+
         // Own properties of GstAllocators.DRMDumbAllocator
 
         get drm_device_path(): string;
@@ -174,6 +176,8 @@ export namespace GstAllocators {
      * Base class for allocators with dmabuf-backed memory
      */
     class DmaBufAllocator extends FdAllocator {
+        static $gtype: GObject.GType<DmaBufAllocator>;
+
         // Constructors of GstAllocators.DmaBufAllocator
 
         constructor(properties?: Partial<DmaBufAllocator.ConstructorProps>, ...args: any[]);
@@ -216,6 +220,8 @@ export namespace GstAllocators {
      * Base class for allocators with fd-backed memory
      */
     class FdAllocator extends Gst.Allocator {
+        static $gtype: GObject.GType<FdAllocator>;
+
         // Constructors of GstAllocators.FdAllocator
 
         constructor(properties?: Partial<FdAllocator.ConstructorProps>, ...args: any[]);

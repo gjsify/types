@@ -54,6 +54,8 @@ export namespace GitgExt {
     }
 
     class CommandLines extends GObject.Object {
+        static $gtype: GObject.GType<CommandLines>;
+
         // Constructors of GitgExt.CommandLines
 
         constructor(properties?: Partial<CommandLines.ConstructorProps>, ...args: any[]);
@@ -90,6 +92,8 @@ export namespace GitgExt {
     }
 
     class MessageBus extends GObject.Object {
+        static $gtype: GObject.GType<MessageBus>;
+
         // Constructors of GitgExt.MessageBus
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
@@ -144,6 +148,8 @@ export namespace GitgExt {
     }
 
     class MessageId extends GObject.Object {
+        static $gtype: GObject.GType<MessageId>;
+
         // Own properties of GitgExt.MessageId
 
         get object_path(): string;
@@ -187,6 +193,8 @@ export namespace GitgExt {
     }
 
     abstract class Message extends GObject.Object {
+        static $gtype: GObject.GType<Message>;
+
         // Own properties of GitgExt.Message
 
         get id(): MessageId;
@@ -211,6 +219,8 @@ export namespace GitgExt {
     }
 
     class UI {
+        static $gtype: GObject.GType<UI>;
+
         // Own fields of GitgExt.UI
 
         ref_count: number;
@@ -229,6 +239,8 @@ export namespace GitgExt {
     }
 
     class UserQueryResponse extends GObject.Object {
+        static $gtype: GObject.GType<UserQueryResponse>;
+
         // Own fields of GitgExt.UserQueryResponse
 
         text: string;
@@ -271,6 +283,8 @@ export namespace GitgExt {
     }
 
     class UserQuery extends GObject.Object {
+        static $gtype: GObject.GType<UserQuery>;
+
         // Own properties of GitgExt.UserQuery
 
         get title(): string;
@@ -337,6 +351,8 @@ export namespace GitgExt {
 
     type CommandLinesClass = typeof CommandLines;
     abstract class CommandLinesPrivate {
+        static $gtype: GObject.GType<CommandLinesPrivate>;
+
         // Constructors of GitgExt.CommandLinesPrivate
 
         _init(...args: any[]): void;
@@ -344,6 +360,8 @@ export namespace GitgExt {
 
     type MessageBusClass = typeof MessageBus;
     abstract class MessageBusPrivate {
+        static $gtype: GObject.GType<MessageBusPrivate>;
+
         // Constructors of GitgExt.MessageBusPrivate
 
         _init(...args: any[]): void;
@@ -351,6 +369,8 @@ export namespace GitgExt {
 
     type MessageIdClass = typeof MessageId;
     abstract class MessageIdPrivate {
+        static $gtype: GObject.GType<MessageIdPrivate>;
+
         // Constructors of GitgExt.MessageIdPrivate
 
         _init(...args: any[]): void;
@@ -358,6 +378,8 @@ export namespace GitgExt {
 
     type MessageClass = typeof Message;
     abstract class MessagePrivate {
+        static $gtype: GObject.GType<MessagePrivate>;
+
         // Constructors of GitgExt.MessagePrivate
 
         _init(...args: any[]): void;
@@ -365,6 +387,8 @@ export namespace GitgExt {
 
     type UIClass = typeof UI;
     abstract class UIPrivate {
+        static $gtype: GObject.GType<UIPrivate>;
+
         // Constructors of GitgExt.UIPrivate
 
         _init(...args: any[]): void;
@@ -372,6 +396,8 @@ export namespace GitgExt {
 
     type UserQueryResponseClass = typeof UserQueryResponse;
     abstract class UserQueryResponsePrivate {
+        static $gtype: GObject.GType<UserQueryResponsePrivate>;
+
         // Constructors of GitgExt.UserQueryResponsePrivate
 
         _init(...args: any[]): void;
@@ -379,6 +405,8 @@ export namespace GitgExt {
 
     type UserQueryClass = typeof UserQuery;
     abstract class UserQueryPrivate {
+        static $gtype: GObject.GType<UserQueryPrivate>;
+
         // Constructors of GitgExt.UserQueryPrivate
 
         _init(...args: any[]): void;

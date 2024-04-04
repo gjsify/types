@@ -41,6 +41,8 @@ export namespace GnomeRR {
         UNKNOWN,
     }
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GnomeRR.Error
 
         static UNKNOWN: number;
@@ -81,6 +83,8 @@ export namespace GnomeRR {
     }
 
     class Config extends GObject.Object {
+        static $gtype: GObject.GType<Config>;
+
         // Own properties of GnomeRR.Config
 
         set screen(val: Screen);
@@ -119,6 +123,8 @@ export namespace GnomeRR {
      * querying and setting display state.
      */
     class OutputInfo extends GObject.Object {
+        static $gtype: GObject.GType<OutputInfo>;
+
         // Constructors of GnomeRR.OutputInfo
 
         constructor(properties?: Partial<OutputInfo.ConstructorProps>, ...args: any[]);
@@ -199,6 +205,8 @@ export namespace GnomeRR {
     }
 
     class Screen extends GObject.Object implements Gio.AsyncInitable<Screen>, Gio.Initable {
+        static $gtype: GObject.GType<Screen>;
+
         // Own properties of GnomeRR.Screen
 
         get dpms_mode(): DpmsModeType;
@@ -867,6 +875,8 @@ export namespace GnomeRR {
     }
 
     class CTM {
+        static $gtype: GObject.GType<CTM>;
+
         // Constructors of GnomeRR.CTM
 
         constructor(properties?: Partial<{}>);
@@ -875,6 +885,8 @@ export namespace GnomeRR {
 
     type ConfigClass = typeof Config;
     abstract class Crtc {
+        static $gtype: GObject.GType<Crtc>;
+
         // Constructors of GnomeRR.Crtc
 
         _init(...args: any[]): void;
@@ -893,6 +905,8 @@ export namespace GnomeRR {
     }
 
     abstract class Mode {
+        static $gtype: GObject.GType<Mode>;
+
         // Constructors of GnomeRR.Mode
 
         _init(...args: any[]): void;
@@ -913,6 +927,8 @@ export namespace GnomeRR {
     }
 
     abstract class Output {
+        static $gtype: GObject.GType<Output>;
+
         // Constructors of GnomeRR.Output
 
         _init(...args: any[]): void;

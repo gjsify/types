@@ -73,6 +73,8 @@ export namespace CloudProviders {
      * #CloudProvidersProvider menus, status and actions.
      */
     class Account extends GObject.Object {
+        static $gtype: GObject.GType<Account>;
+
         // Own properties of CloudProviders.Account
 
         get action_group(): Gio.ActionGroup;
@@ -153,6 +155,8 @@ export namespace CloudProviders {
     }
 
     class AccountExporter extends GObject.Object {
+        static $gtype: GObject.GType<AccountExporter>;
+
         // Own properties of CloudProviders.AccountExporter
 
         get action_group(): Gio.ActionGroup;
@@ -227,6 +231,8 @@ export namespace CloudProviders {
      * status.
      */
     class Collector extends GObject.Object {
+        static $gtype: GObject.GType<Collector>;
+
         // Constructors of CloudProviders.Collector
 
         constructor(properties?: Partial<Collector.ConstructorProps>, ...args: any[]);
@@ -273,6 +279,8 @@ export namespace CloudProviders {
         extends Gio.DBusProxy
         implements DbusAccount, Gio.AsyncInitable<DbusAccountProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<DbusAccountProxy>;
+
         // Constructors of CloudProviders.DbusAccountProxy
 
         constructor(properties?: Partial<DbusAccountProxy.ConstructorProps>, ...args: any[]);
@@ -1003,6 +1011,8 @@ export namespace CloudProviders {
      * The #CloudProvidersDbusAccountSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DbusAccountSkeleton extends Gio.DBusInterfaceSkeleton implements DbusAccount, Gio.DBusInterface {
+        static $gtype: GObject.GType<DbusAccountSkeleton>;
+
         // Constructors of CloudProviders.DbusAccountSkeleton
 
         constructor(properties?: Partial<DbusAccountSkeleton.ConstructorProps>, ...args: any[]);
@@ -1463,6 +1473,8 @@ export namespace CloudProviders {
         extends Gio.DBusObjectManagerClient
         implements Gio.AsyncInitable<DbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
+        static $gtype: GObject.GType<DbusObjectManagerClient>;
+
         // Constructors of CloudProviders.DbusObjectManagerClient
 
         constructor(properties?: Partial<DbusObjectManagerClient.ConstructorProps>, ...args: any[]);
@@ -2176,6 +2188,8 @@ export namespace CloudProviders {
      * The #CloudProvidersDbusObjectProxy structure contains only private data and should only be accessed using the provided API.
      */
     class DbusObjectProxy extends Gio.DBusObjectProxy implements DbusObject, Gio.DBusObject {
+        static $gtype: GObject.GType<DbusObjectProxy>;
+
         // Constructors of CloudProviders.DbusObjectProxy
 
         constructor(properties?: Partial<DbusObjectProxy.ConstructorProps>, ...args: any[]);
@@ -2613,6 +2627,8 @@ export namespace CloudProviders {
      * The #CloudProvidersDbusObjectSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DbusObjectSkeleton extends Gio.DBusObjectSkeleton implements DbusObject, Gio.DBusObject {
+        static $gtype: GObject.GType<DbusObjectSkeleton>;
+
         // Constructors of CloudProviders.DbusObjectSkeleton
 
         constructor(properties?: Partial<DbusObjectSkeleton.ConstructorProps>, ...args: any[]);
@@ -3068,6 +3084,8 @@ export namespace CloudProviders {
         extends Gio.DBusProxy
         implements DbusProvider, Gio.AsyncInitable<DbusProviderProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<DbusProviderProxy>;
+
         // Constructors of CloudProviders.DbusProviderProxy
 
         constructor(properties?: Partial<DbusProviderProxy.ConstructorProps>, ...args: any[]);
@@ -3763,6 +3781,8 @@ export namespace CloudProviders {
      * The #CloudProvidersDbusProviderSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DbusProviderSkeleton extends Gio.DBusInterfaceSkeleton implements DbusProvider, Gio.DBusInterface {
+        static $gtype: GObject.GType<DbusProviderSkeleton>;
+
         // Constructors of CloudProviders.DbusProviderSkeleton
 
         constructor(properties?: Partial<DbusProviderSkeleton.ConstructorProps>, ...args: any[]);
@@ -4195,6 +4215,8 @@ export namespace CloudProviders {
      * associated with it.
      */
     class Provider extends GObject.Object {
+        static $gtype: GObject.GType<Provider>;
+
         // Own properties of CloudProviders.Provider
 
         get name(): string;
@@ -4244,6 +4266,8 @@ export namespace CloudProviders {
      * After adding the initial set of accounts cloud_providers_provider_exporter_export_objects() must be called.
      */
     class ProviderExporter extends GObject.Object {
+        static $gtype: GObject.GType<ProviderExporter>;
+
         // Own properties of CloudProviders.ProviderExporter
 
         get bus(): Gio.DBusConnection;
@@ -4280,6 +4304,8 @@ export namespace CloudProviders {
     type DbusAccountIface = typeof DbusAccount;
     type DbusAccountProxyClass = typeof DbusAccountProxy;
     abstract class DbusAccountProxyPrivate {
+        static $gtype: GObject.GType<DbusAccountProxyPrivate>;
+
         // Constructors of CloudProviders.DbusAccountProxyPrivate
 
         _init(...args: any[]): void;
@@ -4287,6 +4313,8 @@ export namespace CloudProviders {
 
     type DbusAccountSkeletonClass = typeof DbusAccountSkeleton;
     abstract class DbusAccountSkeletonPrivate {
+        static $gtype: GObject.GType<DbusAccountSkeletonPrivate>;
+
         // Constructors of CloudProviders.DbusAccountSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4295,6 +4323,8 @@ export namespace CloudProviders {
     type DbusObjectIface = typeof DbusObject;
     type DbusObjectManagerClientClass = typeof DbusObjectManagerClient;
     abstract class DbusObjectManagerClientPrivate {
+        static $gtype: GObject.GType<DbusObjectManagerClientPrivate>;
+
         // Constructors of CloudProviders.DbusObjectManagerClientPrivate
 
         _init(...args: any[]): void;
@@ -4302,6 +4332,8 @@ export namespace CloudProviders {
 
     type DbusObjectProxyClass = typeof DbusObjectProxy;
     abstract class DbusObjectProxyPrivate {
+        static $gtype: GObject.GType<DbusObjectProxyPrivate>;
+
         // Constructors of CloudProviders.DbusObjectProxyPrivate
 
         _init(...args: any[]): void;
@@ -4309,6 +4341,8 @@ export namespace CloudProviders {
 
     type DbusObjectSkeletonClass = typeof DbusObjectSkeleton;
     abstract class DbusObjectSkeletonPrivate {
+        static $gtype: GObject.GType<DbusObjectSkeletonPrivate>;
+
         // Constructors of CloudProviders.DbusObjectSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4317,6 +4351,8 @@ export namespace CloudProviders {
     type DbusProviderIface = typeof DbusProvider;
     type DbusProviderProxyClass = typeof DbusProviderProxy;
     abstract class DbusProviderProxyPrivate {
+        static $gtype: GObject.GType<DbusProviderProxyPrivate>;
+
         // Constructors of CloudProviders.DbusProviderProxyPrivate
 
         _init(...args: any[]): void;
@@ -4324,6 +4360,8 @@ export namespace CloudProviders {
 
     type DbusProviderSkeletonClass = typeof DbusProviderSkeleton;
     abstract class DbusProviderSkeletonPrivate {
+        static $gtype: GObject.GType<DbusProviderSkeletonPrivate>;
+
         // Constructors of CloudProviders.DbusProviderSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4332,24 +4370,32 @@ export namespace CloudProviders {
     type ProviderClass = typeof Provider;
     type ProviderExporterClass = typeof ProviderExporter;
     abstract class _AccountClass {
+        static $gtype: GObject.GType<_AccountClass>;
+
         // Constructors of CloudProviders._AccountClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _AccountExporterClass {
+        static $gtype: GObject.GType<_AccountExporterClass>;
+
         // Constructors of CloudProviders._AccountExporterClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _CollectorClass {
+        static $gtype: GObject.GType<_CollectorClass>;
+
         // Constructors of CloudProviders._CollectorClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _ProviderExporterClass {
+        static $gtype: GObject.GType<_ProviderExporterClass>;
+
         // Constructors of CloudProviders._ProviderExporterClass
 
         _init(...args: any[]): void;

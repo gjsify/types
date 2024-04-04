@@ -67,6 +67,8 @@ export namespace GnomeMaps {
     }
 
     class Contact extends GObject.Object {
+        static $gtype: GObject.GType<Contact>;
+
         // Own properties of GnomeMaps.Contact
 
         /**
@@ -117,6 +119,8 @@ export namespace GnomeMaps {
     }
 
     class ContactStore extends GObject.Object {
+        static $gtype: GObject.GType<ContactStore>;
+
         // Own properties of GnomeMaps.ContactStore
 
         /**
@@ -160,6 +164,8 @@ export namespace GnomeMaps {
      * and should be accessed using the provided API
      */
     class FileTileSource extends Champlain.TileSource {
+        static $gtype: GObject.GType<FileTileSource>;
+
         // Own properties of GnomeMaps.FileTileSource
 
         /**
@@ -212,6 +218,8 @@ export namespace GnomeMaps {
     }
 
     class OSMChangeset extends GObject.Object {
+        static $gtype: GObject.GType<OSMChangeset>;
+
         // Own properties of GnomeMaps.OSMChangeset
 
         /**
@@ -247,6 +255,8 @@ export namespace GnomeMaps {
     }
 
     class OSMNode extends OSMObject {
+        static $gtype: GObject.GType<OSMNode>;
+
         // Own properties of GnomeMaps.OSMNode
 
         /**
@@ -276,6 +286,8 @@ export namespace GnomeMaps {
     }
 
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
+        static $gtype: GObject.GType<OSMOAuthProxyCall>;
+
         // Constructors of GnomeMaps.OSMOAuthProxyCall
 
         constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
@@ -296,6 +308,8 @@ export namespace GnomeMaps {
     }
 
     abstract class OSMObject extends GObject.Object {
+        static $gtype: GObject.GType<OSMObject>;
+
         // Own properties of GnomeMaps.OSMObject
 
         /**
@@ -335,6 +349,8 @@ export namespace GnomeMaps {
     }
 
     class OSMRelation extends OSMObject {
+        static $gtype: GObject.GType<OSMRelation>;
+
         // Constructors of GnomeMaps.OSMRelation
 
         constructor(properties?: Partial<OSMRelation.ConstructorProps>, ...args: any[]);
@@ -355,6 +371,8 @@ export namespace GnomeMaps {
     }
 
     class OSMWay extends OSMObject {
+        static $gtype: GObject.GType<OSMWay>;
+
         // Constructors of GnomeMaps.OSMWay
 
         constructor(properties?: Partial<OSMWay.ConstructorProps>, ...args: any[]);
@@ -370,6 +388,8 @@ export namespace GnomeMaps {
 
     type ContactClass = typeof Contact;
     abstract class ContactPrivate {
+        static $gtype: GObject.GType<ContactPrivate>;
+
         // Constructors of GnomeMaps.ContactPrivate
 
         _init(...args: any[]): void;
@@ -377,6 +397,8 @@ export namespace GnomeMaps {
 
     type ContactStoreClass = typeof ContactStore;
     abstract class ContactStorePrivate {
+        static $gtype: GObject.GType<ContactStorePrivate>;
+
         // Constructors of GnomeMaps.ContactStorePrivate
 
         _init(...args: any[]): void;
@@ -384,6 +406,8 @@ export namespace GnomeMaps {
 
     type FileTileSourceClass = typeof FileTileSource;
     abstract class FileTileSourcePrivate {
+        static $gtype: GObject.GType<FileTileSourcePrivate>;
+
         // Constructors of GnomeMaps.FileTileSourcePrivate
 
         _init(...args: any[]): void;
@@ -391,6 +415,8 @@ export namespace GnomeMaps {
 
     type OSMChangesetClass = typeof OSMChangeset;
     abstract class OSMChangesetPrivate {
+        static $gtype: GObject.GType<OSMChangesetPrivate>;
+
         // Constructors of GnomeMaps.OSMChangesetPrivate
 
         _init(...args: any[]): void;
@@ -398,6 +424,8 @@ export namespace GnomeMaps {
 
     type OSMNodeClass = typeof OSMNode;
     abstract class OSMNodePrivate {
+        static $gtype: GObject.GType<OSMNodePrivate>;
+
         // Constructors of GnomeMaps.OSMNodePrivate
 
         _init(...args: any[]): void;
@@ -405,6 +433,8 @@ export namespace GnomeMaps {
 
     type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall;
     abstract class OSMOAuthProxyCallPrivate {
+        static $gtype: GObject.GType<OSMOAuthProxyCallPrivate>;
+
         // Constructors of GnomeMaps.OSMOAuthProxyCallPrivate
 
         _init(...args: any[]): void;
@@ -412,6 +442,8 @@ export namespace GnomeMaps {
 
     type OSMObjectClass = typeof OSMObject;
     abstract class OSMObjectPrivate {
+        static $gtype: GObject.GType<OSMObjectPrivate>;
+
         // Constructors of GnomeMaps.OSMObjectPrivate
 
         _init(...args: any[]): void;
@@ -419,6 +451,8 @@ export namespace GnomeMaps {
 
     type OSMRelationClass = typeof OSMRelation;
     abstract class OSMRelationPrivate {
+        static $gtype: GObject.GType<OSMRelationPrivate>;
+
         // Constructors of GnomeMaps.OSMRelationPrivate
 
         _init(...args: any[]): void;
@@ -426,42 +460,56 @@ export namespace GnomeMaps {
 
     type OSMWayClass = typeof OSMWay;
     abstract class OSMWayPrivate {
+        static $gtype: GObject.GType<OSMWayPrivate>;
+
         // Constructors of GnomeMaps.OSMWayPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class _ContactClass {
+        static $gtype: GObject.GType<_ContactClass>;
+
         // Constructors of GnomeMaps._ContactClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _ContactStoreClass {
+        static $gtype: GObject.GType<_ContactStoreClass>;
+
         // Constructors of GnomeMaps._ContactStoreClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _OSMChangesetClass {
+        static $gtype: GObject.GType<_OSMChangesetClass>;
+
         // Constructors of GnomeMaps._OSMChangesetClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _OSMNodeClass {
+        static $gtype: GObject.GType<_OSMNodeClass>;
+
         // Constructors of GnomeMaps._OSMNodeClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _OSMRelationClass {
+        static $gtype: GObject.GType<_OSMRelationClass>;
+
         // Constructors of GnomeMaps._OSMRelationClass
 
         _init(...args: any[]): void;
     }
 
     abstract class _OSMWayClass {
+        static $gtype: GObject.GType<_OSMWayClass>;
+
         // Constructors of GnomeMaps._OSMWayClass
 
         _init(...args: any[]): void;

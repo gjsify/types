@@ -37,6 +37,8 @@ export namespace UnityExtras {
     }
 
     class PreviewPlayer extends GObject.Object {
+        static $gtype: GObject.GType<PreviewPlayer>;
+
         // Constructors of UnityExtras.PreviewPlayer
 
         constructor(properties?: Partial<PreviewPlayer.ConstructorProps>, ...args: any[]);
@@ -80,6 +82,8 @@ export namespace UnityExtras {
 
     type PreviewPlayerClass = typeof PreviewPlayer;
     abstract class PreviewPlayerPrivate {
+        static $gtype: GObject.GType<PreviewPlayerPrivate>;
+
         // Constructors of UnityExtras.PreviewPlayerPrivate
 
         _init(...args: any[]): void;

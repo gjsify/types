@@ -95,6 +95,8 @@ export namespace SpiceClientGtk {
      * The #SpiceDisplay struct is opaque and should not be accessed directly.
      */
     class Display extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Display>;
+
         // Own properties of SpiceClientGtk.Display
 
         /**
@@ -630,6 +632,8 @@ export namespace SpiceClientGtk {
      * The #SpiceGtkSession struct is opaque and should not be accessed directly.
      */
     class GtkSession extends GObject.Object {
+        static $gtype: GObject.GType<GtkSession>;
+
         // Own properties of SpiceClientGtk.GtkSession
 
         /**
@@ -740,6 +744,8 @@ export namespace SpiceClientGtk {
      * The #SpiceUsbDeviceWidget struct is opaque and should not be accessed directly.
      */
     class UsbDeviceWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<UsbDeviceWidget>;
+
         // Own properties of SpiceClientGtk.UsbDeviceWidget
 
         /**
@@ -1162,6 +1168,8 @@ export namespace SpiceClientGtk {
      * An opaque type that represents a grab sequence.
      */
     class GrabSequence {
+        static $gtype: GObject.GType<GrabSequence>;
+
         // Constructors of SpiceClientGtk.GrabSequence
 
         constructor(keysyms: number[]);
@@ -1192,6 +1200,8 @@ export namespace SpiceClientGtk {
     type GtkSessionClass = typeof GtkSession;
     type UsbDeviceWidgetClass = typeof UsbDeviceWidget;
     abstract class UsbDeviceWidgetPrivate {
+        static $gtype: GObject.GType<UsbDeviceWidgetPrivate>;
+
         // Constructors of SpiceClientGtk.UsbDeviceWidgetPrivate
 
         _init(...args: any[]): void;

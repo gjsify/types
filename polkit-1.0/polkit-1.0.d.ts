@@ -20,6 +20,8 @@ export namespace Polkit {
      * Possible error when using PolicyKit.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Polkit.Error
 
         /**
@@ -141,6 +143,8 @@ export namespace Polkit {
      * Object used to encapsulate a registered action.
      */
     class ActionDescription extends GObject.Object {
+        static $gtype: GObject.GType<ActionDescription>;
+
         // Constructors of Polkit.ActionDescription
 
         constructor(properties?: Partial<ActionDescription.ConstructorProps>, ...args: any[]);
@@ -246,6 +250,8 @@ export namespace Polkit {
      * #PolkitAgentListener and #PolkitAgentSession for details.
      */
     class Authority extends GObject.Object implements Gio.AsyncInitable<Authority>, Gio.Initable {
+        static $gtype: GObject.GType<Authority>;
+
         // Own properties of Polkit.Authority
 
         /**
@@ -1334,6 +1340,8 @@ export namespace Polkit {
      * This class represents the result you get when checking for an authorization.
      */
     class AuthorizationResult extends GObject.Object {
+        static $gtype: GObject.GType<AuthorizationResult>;
+
         // Constructors of Polkit.AuthorizationResult
 
         constructor(properties?: Partial<AuthorizationResult.ConstructorProps>, ...args: any[]);
@@ -1414,6 +1422,8 @@ export namespace Polkit {
      * An object used for passing details around.
      */
     class Details extends GObject.Object {
+        static $gtype: GObject.GType<Details>;
+
         // Constructors of Polkit.Details
 
         constructor(properties?: Partial<Details.ConstructorProps>, ...args: any[]);
@@ -1464,6 +1474,8 @@ export namespace Polkit {
      * more information.
      */
     class Permission extends Gio.Permission implements Gio.AsyncInitable<Permission>, Gio.Initable {
+        static $gtype: GObject.GType<Permission>;
+
         // Own properties of Polkit.Permission
 
         /**
@@ -2096,6 +2108,8 @@ export namespace Polkit {
      * An object that represents a process owning a unique name on the system bus.
      */
     class SystemBusName extends GObject.Object implements Subject {
+        static $gtype: GObject.GType<SystemBusName>;
+
         // Own properties of Polkit.SystemBusName
 
         /**
@@ -2605,6 +2619,8 @@ export namespace Polkit {
      * Object used to describe a temporary authorization.
      */
     class TemporaryAuthorization extends GObject.Object {
+        static $gtype: GObject.GType<TemporaryAuthorization>;
+
         // Constructors of Polkit.TemporaryAuthorization
 
         constructor(properties?: Partial<TemporaryAuthorization.ConstructorProps>, ...args: any[]);
@@ -2658,6 +2674,8 @@ export namespace Polkit {
      * An object representing a group identity on a UNIX system.
      */
     class UnixGroup extends GObject.Object implements Identity {
+        static $gtype: GObject.GType<UnixGroup>;
+
         // Own properties of Polkit.UnixGroup
 
         /**
@@ -3103,6 +3121,8 @@ export namespace Polkit {
      * An object representing a netgroup identity on a UNIX system.
      */
     class UnixNetgroup extends GObject.Object implements Identity {
+        static $gtype: GObject.GType<UnixNetgroup>;
+
         // Own properties of Polkit.UnixNetgroup
 
         /**
@@ -3560,6 +3580,8 @@ export namespace Polkit {
      * polkit_unix_process_new_for_owner() with trusted data.
      */
     class UnixProcess extends GObject.Object implements Subject {
+        static $gtype: GObject.GType<UnixProcess>;
+
         // Own properties of Polkit.UnixProcess
 
         /**
@@ -4134,6 +4156,8 @@ export namespace Polkit {
      * The session id is an opaque string obtained from ConsoleKit.
      */
     class UnixSession extends GObject.Object implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject {
+        static $gtype: GObject.GType<UnixSession>;
+
         // Own properties of Polkit.UnixSession
 
         /**
@@ -4874,6 +4898,8 @@ export namespace Polkit {
      * An object representing a user identity on a UNIX system.
      */
     class UnixUser extends GObject.Object implements Identity {
+        static $gtype: GObject.GType<UnixUser>;
+
         // Own properties of Polkit.UnixUser
 
         /**

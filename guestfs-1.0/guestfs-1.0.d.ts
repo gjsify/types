@@ -102,6 +102,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_add_domain.
      */
     class AddDomain extends GObject.Object {
+        static $gtype: GObject.GType<AddDomain>;
+
         // Own properties of Guestfs.AddDomain
 
         /**
@@ -181,6 +183,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_add_drive.
      */
     class AddDrive extends GObject.Object {
+        static $gtype: GObject.GType<AddDrive>;
+
         // Own properties of Guestfs.AddDrive
 
         /**
@@ -261,6 +265,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_add_drive_scratch.
      */
     class AddDriveScratch extends GObject.Object {
+        static $gtype: GObject.GType<AddDriveScratch>;
+
         // Own properties of Guestfs.AddDriveScratch
 
         /**
@@ -301,6 +307,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_add_libvirt_dom.
      */
     class AddLibvirtDom extends GObject.Object {
+        static $gtype: GObject.GType<AddLibvirtDom>;
+
         // Own properties of Guestfs.AddLibvirtDom
 
         /**
@@ -360,6 +368,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_aug_transform.
      */
     class AugTransform extends GObject.Object {
+        static $gtype: GObject.GType<AugTransform>;
+
         // Own properties of Guestfs.AugTransform
 
         /**
@@ -390,6 +400,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_filesystem_defragment.
      */
     class BTRFSFilesystemDefragment extends GObject.Object {
+        static $gtype: GObject.GType<BTRFSFilesystemDefragment>;
+
         // Own properties of Guestfs.BTRFSFilesystemDefragment
 
         /**
@@ -424,6 +436,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_filesystem_resize.
      */
     class BTRFSFilesystemResize extends GObject.Object {
+        static $gtype: GObject.GType<BTRFSFilesystemResize>;
+
         // Own properties of Guestfs.BTRFSFilesystemResize
 
         /**
@@ -453,6 +467,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_image.
      */
     class BTRFSImage extends GObject.Object {
+        static $gtype: GObject.GType<BTRFSImage>;
+
         // Own properties of Guestfs.BTRFSImage
 
         /**
@@ -482,6 +498,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_subvolume_create.
      */
     class BTRFSSubvolumeCreate extends GObject.Object {
+        static $gtype: GObject.GType<BTRFSSubvolumeCreate>;
+
         // Own properties of Guestfs.BTRFSSubvolumeCreate
 
         /**
@@ -512,6 +530,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_subvolume_snapshot.
      */
     class BTRFSSubvolumeSnapshot extends GObject.Object {
+        static $gtype: GObject.GType<BTRFSSubvolumeSnapshot>;
+
         // Own properties of Guestfs.BTRFSSubvolumeSnapshot
 
         /**
@@ -547,6 +567,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_btrfs_fsck.
      */
     class BtrfsFsck extends GObject.Object {
+        static $gtype: GObject.GType<BtrfsFsck>;
+
         // Own properties of Guestfs.BtrfsFsck
 
         /**
@@ -581,6 +603,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_compress_device_out.
      */
     class CompressDeviceOut extends GObject.Object {
+        static $gtype: GObject.GType<CompressDeviceOut>;
+
         // Own properties of Guestfs.CompressDeviceOut
 
         /**
@@ -610,6 +634,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_compress_out.
      */
     class CompressOut extends GObject.Object {
+        static $gtype: GObject.GType<CompressOut>;
+
         // Own properties of Guestfs.CompressOut
 
         /**
@@ -642,6 +668,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_copy_attributes.
      */
     class CopyAttributes extends GObject.Object {
+        static $gtype: GObject.GType<CopyAttributes>;
+
         // Own properties of Guestfs.CopyAttributes
 
         /**
@@ -690,6 +718,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_copy_device_to_device.
      */
     class CopyDeviceToDevice extends GObject.Object {
+        static $gtype: GObject.GType<CopyDeviceToDevice>;
+
         // Own properties of Guestfs.CopyDeviceToDevice
 
         /**
@@ -743,6 +773,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_copy_device_to_file.
      */
     class CopyDeviceToFile extends GObject.Object {
+        static $gtype: GObject.GType<CopyDeviceToFile>;
+
         // Own properties of Guestfs.CopyDeviceToFile
 
         /**
@@ -796,6 +828,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_copy_file_to_device.
      */
     class CopyFileToDevice extends GObject.Object {
+        static $gtype: GObject.GType<CopyFileToDevice>;
+
         // Own properties of Guestfs.CopyFileToDevice
 
         /**
@@ -849,6 +883,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_copy_file_to_file.
      */
     class CopyFileToFile extends GObject.Object {
+        static $gtype: GObject.GType<CopyFileToFile>;
+
         // Own properties of Guestfs.CopyFileToFile
 
         /**
@@ -898,6 +934,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_cpio_out.
      */
     class CpioOut extends GObject.Object {
+        static $gtype: GObject.GType<CpioOut>;
+
         // Own properties of Guestfs.CpioOut
 
         /**
@@ -931,6 +969,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_disk_create.
      */
     class DiskCreate extends GObject.Object {
+        static $gtype: GObject.GType<DiskCreate>;
+
         // Own properties of Guestfs.DiskCreate
 
         /**
@@ -980,6 +1020,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_download_blocks.
      */
     class DownloadBlocks extends GObject.Object {
+        static $gtype: GObject.GType<DownloadBlocks>;
+
         // Own properties of Guestfs.DownloadBlocks
 
         /**
@@ -1010,6 +1052,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_e2fsck.
      */
     class E2fsck extends GObject.Object {
+        static $gtype: GObject.GType<E2fsck>;
+
         // Own properties of Guestfs.E2fsck
 
         /**
@@ -1046,6 +1090,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_fstrim.
      */
     class Fstrim extends GObject.Object {
+        static $gtype: GObject.GType<Fstrim>;
+
         // Own properties of Guestfs.Fstrim
 
         /**
@@ -1085,6 +1131,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_glob_expand.
      */
     class GlobExpand extends GObject.Object {
+        static $gtype: GObject.GType<GlobExpand>;
+
         // Own properties of Guestfs.GlobExpand
 
         /**
@@ -1117,6 +1165,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_grep.
      */
     class Grep extends GObject.Object {
+        static $gtype: GObject.GType<Grep>;
+
         // Own properties of Guestfs.Grep
 
         /**
@@ -1164,6 +1214,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_hivex_open.
      */
     class HivexOpen extends GObject.Object {
+        static $gtype: GObject.GType<HivexOpen>;
+
         // Own properties of Guestfs.HivexOpen
 
         /**
@@ -1209,6 +1261,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_inspect_get_icon.
      */
     class InspectGetIcon extends GObject.Object {
+        static $gtype: GObject.GType<InspectGetIcon>;
+
         // Own properties of Guestfs.InspectGetIcon
 
         /**
@@ -1246,6 +1300,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_internal_test.
      */
     class InternalTest extends GObject.Object {
+        static $gtype: GObject.GType<InternalTest>;
+
         // Own properties of Guestfs.InternalTest
 
         /**
@@ -1352,6 +1408,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_internal_test_63_optargs.
      */
     class InternalTest63Optargs extends GObject.Object {
+        static $gtype: GObject.GType<InternalTest63Optargs>;
+
         // Own properties of Guestfs.InternalTest63Optargs
 
         /**
@@ -1691,6 +1749,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_internal_test_only_optargs.
      */
     class InternalTestOnlyOptargs extends GObject.Object {
+        static $gtype: GObject.GType<InternalTestOnlyOptargs>;
+
         // Own properties of Guestfs.InternalTestOnlyOptargs
 
         /**
@@ -1720,6 +1780,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_blockdev.
      */
     class IsBlockdev extends GObject.Object {
+        static $gtype: GObject.GType<IsBlockdev>;
+
         // Own properties of Guestfs.IsBlockdev
 
         /**
@@ -1749,6 +1811,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_chardev.
      */
     class IsChardev extends GObject.Object {
+        static $gtype: GObject.GType<IsChardev>;
+
         // Own properties of Guestfs.IsChardev
 
         /**
@@ -1778,6 +1842,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_dir.
      */
     class IsDir extends GObject.Object {
+        static $gtype: GObject.GType<IsDir>;
+
         // Own properties of Guestfs.IsDir
 
         /**
@@ -1807,6 +1873,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_fifo.
      */
     class IsFifo extends GObject.Object {
+        static $gtype: GObject.GType<IsFifo>;
+
         // Own properties of Guestfs.IsFifo
 
         /**
@@ -1836,6 +1904,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_file.
      */
     class IsFile extends GObject.Object {
+        static $gtype: GObject.GType<IsFile>;
+
         // Own properties of Guestfs.IsFile
 
         /**
@@ -1865,6 +1935,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_is_socket.
      */
     class IsSocket extends GObject.Object {
+        static $gtype: GObject.GType<IsSocket>;
+
         // Own properties of Guestfs.IsSocket
 
         /**
@@ -1898,6 +1970,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_md_create.
      */
     class MDCreate extends GObject.Object {
+        static $gtype: GObject.GType<MDCreate>;
+
         // Own properties of Guestfs.MDCreate
 
         /**
@@ -1984,6 +2058,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mke2fs.
      */
     class Mke2fs extends GObject.Object {
+        static $gtype: GObject.GType<Mke2fs>;
+
         // Own properties of Guestfs.Mke2fs
 
         /**
@@ -2202,6 +2278,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mkfs.
      */
     class Mkfs extends GObject.Object {
+        static $gtype: GObject.GType<Mkfs>;
+
         // Own properties of Guestfs.Mkfs
 
         /**
@@ -2258,6 +2336,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mkfs_btrfs.
      */
     class MkfsBtrfs extends GObject.Object {
+        static $gtype: GObject.GType<MkfsBtrfs>;
+
         // Own properties of Guestfs.MkfsBtrfs
 
         /**
@@ -2322,6 +2402,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mksquashfs.
      */
     class Mksquashfs extends GObject.Object {
+        static $gtype: GObject.GType<Mksquashfs>;
+
         // Own properties of Guestfs.Mksquashfs
 
         /**
@@ -2352,6 +2434,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mkswap.
      */
     class Mkswap extends GObject.Object {
+        static $gtype: GObject.GType<Mkswap>;
+
         // Own properties of Guestfs.Mkswap
 
         /**
@@ -2386,6 +2470,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mktemp.
      */
     class Mktemp extends GObject.Object {
+        static $gtype: GObject.GType<Mktemp>;
+
         // Own properties of Guestfs.Mktemp
 
         /**
@@ -2415,6 +2501,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mount_9p.
      */
     class Mount9P extends GObject.Object {
+        static $gtype: GObject.GType<Mount9P>;
+
         // Own properties of Guestfs.Mount9P
 
         /**
@@ -2447,6 +2535,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_mount_local.
      */
     class MountLocal extends GObject.Object {
+        static $gtype: GObject.GType<MountLocal>;
+
         // Own properties of Guestfs.MountLocal
 
         /**
@@ -2492,6 +2582,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_ntfsresize.
      */
     class NTFSResizeOpts extends GObject.Object {
+        static $gtype: GObject.GType<NTFSResizeOpts>;
+
         // Own properties of Guestfs.NTFSResizeOpts
 
         /**
@@ -2530,6 +2622,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_ntfsclone_out.
      */
     class NtfscloneOut extends GObject.Object {
+        static $gtype: GObject.GType<NtfscloneOut>;
+
         // Own properties of Guestfs.NtfscloneOut
 
         /**
@@ -2579,6 +2673,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_ntfsfix.
      */
     class Ntfsfix extends GObject.Object {
+        static $gtype: GObject.GType<Ntfsfix>;
+
         // Own properties of Guestfs.Ntfsfix
 
         /**
@@ -2608,6 +2704,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_remount.
      */
     class Remount extends GObject.Object {
+        static $gtype: GObject.GType<Remount>;
+
         // Own properties of Guestfs.Remount
 
         /**
@@ -2638,6 +2736,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_rsync.
      */
     class Rsync extends GObject.Object {
+        static $gtype: GObject.GType<Rsync>;
+
         // Own properties of Guestfs.Rsync
 
         /**
@@ -2673,6 +2773,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_rsync_in.
      */
     class RsyncIn extends GObject.Object {
+        static $gtype: GObject.GType<RsyncIn>;
+
         // Own properties of Guestfs.RsyncIn
 
         /**
@@ -2708,6 +2810,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_rsync_out.
      */
     class RsyncOut extends GObject.Object {
+        static $gtype: GObject.GType<RsyncOut>;
+
         // Own properties of Guestfs.RsyncOut
 
         /**
@@ -2742,6 +2846,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_selinux_relabel.
      */
     class SelinuxRelabel extends GObject.Object {
+        static $gtype: GObject.GType<SelinuxRelabel>;
+
         // Own properties of Guestfs.SelinuxRelabel
 
         /**
@@ -2811,6 +2917,8 @@ export namespace Guestfs {
      * A libguestfs session, encapsulating a single libguestfs handle.
      */
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Constructors of Guestfs.Session
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
@@ -13364,6 +13472,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_set_e2attrs.
      */
     class SetE2attrs extends GObject.Object {
+        static $gtype: GObject.GType<SetE2attrs>;
+
         // Own properties of Guestfs.SetE2attrs
 
         /**
@@ -13393,6 +13503,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_syslinux.
      */
     class Syslinux extends GObject.Object {
+        static $gtype: GObject.GType<Syslinux>;
+
         // Own properties of Guestfs.Syslinux
 
         /**
@@ -13425,6 +13537,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_tar_in.
      */
     class TarIn extends GObject.Object {
+        static $gtype: GObject.GType<TarIn>;
+
         // Own properties of Guestfs.TarIn
 
         /**
@@ -13473,6 +13587,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_tar_out.
      */
     class TarOut extends GObject.Object {
+        static $gtype: GObject.GType<TarOut>;
+
         // Own properties of Guestfs.TarOut
 
         /**
@@ -13531,6 +13647,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_tune2fs.
      */
     class Tune2FS extends GObject.Object {
+        static $gtype: GObject.GType<Tune2FS>;
+
         // Own properties of Guestfs.Tune2FS
 
         /**
@@ -13606,6 +13724,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_umount.
      */
     class Umount extends GObject.Object {
+        static $gtype: GObject.GType<Umount>;
+
         // Own properties of Guestfs.Umount
 
         /**
@@ -13640,6 +13760,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_umount_local.
      */
     class UmountLocal extends GObject.Object {
+        static $gtype: GObject.GType<UmountLocal>;
+
         // Own properties of Guestfs.UmountLocal
 
         /**
@@ -13675,6 +13797,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_xfs_admin.
      */
     class XfsAdmin extends GObject.Object {
+        static $gtype: GObject.GType<XfsAdmin>;
+
         // Own properties of Guestfs.XfsAdmin
 
         /**
@@ -13741,6 +13865,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_xfs_growfs.
      */
     class XfsGrowfs extends GObject.Object {
+        static $gtype: GObject.GType<XfsGrowfs>;
+
         // Own properties of Guestfs.XfsGrowfs
 
         /**
@@ -13814,6 +13940,8 @@ export namespace Guestfs {
      * An object encapsulating optional arguments for guestfs_session_xfs_repair.
      */
     class XfsRepair extends GObject.Object {
+        static $gtype: GObject.GType<XfsRepair>;
+
         // Own properties of Guestfs.XfsRepair
 
         /**
@@ -13878,6 +14006,8 @@ export namespace Guestfs {
 
     type AddDomainClass = typeof AddDomain;
     abstract class AddDomainPrivate {
+        static $gtype: GObject.GType<AddDomainPrivate>;
+
         // Constructors of Guestfs.AddDomainPrivate
 
         _init(...args: any[]): void;
@@ -13885,6 +14015,8 @@ export namespace Guestfs {
 
     type AddDriveClass = typeof AddDrive;
     abstract class AddDrivePrivate {
+        static $gtype: GObject.GType<AddDrivePrivate>;
+
         // Constructors of Guestfs.AddDrivePrivate
 
         _init(...args: any[]): void;
@@ -13892,6 +14024,8 @@ export namespace Guestfs {
 
     type AddDriveScratchClass = typeof AddDriveScratch;
     abstract class AddDriveScratchPrivate {
+        static $gtype: GObject.GType<AddDriveScratchPrivate>;
+
         // Constructors of Guestfs.AddDriveScratchPrivate
 
         _init(...args: any[]): void;
@@ -13899,12 +14033,16 @@ export namespace Guestfs {
 
     type AddLibvirtDomClass = typeof AddLibvirtDom;
     abstract class AddLibvirtDomPrivate {
+        static $gtype: GObject.GType<AddLibvirtDomPrivate>;
+
         // Constructors of Guestfs.AddLibvirtDomPrivate
 
         _init(...args: any[]): void;
     }
 
     class Application {
+        static $gtype: GObject.GType<Application>;
+
         // Own fields of Guestfs.Application
 
         app_name: string;
@@ -13942,6 +14080,8 @@ export namespace Guestfs {
     }
 
     class Application2 {
+        static $gtype: GObject.GType<Application2>;
+
         // Own fields of Guestfs.Application2
 
         app2_name: string;
@@ -13990,12 +14130,16 @@ export namespace Guestfs {
 
     type AugTransformClass = typeof AugTransform;
     abstract class AugTransformPrivate {
+        static $gtype: GObject.GType<AugTransformPrivate>;
+
         // Constructors of Guestfs.AugTransformPrivate
 
         _init(...args: any[]): void;
     }
 
     class BTRFSBalance {
+        static $gtype: GObject.GType<BTRFSBalance>;
+
         // Own fields of Guestfs.BTRFSBalance
 
         btrfsbalance_status: string;
@@ -14020,6 +14164,8 @@ export namespace Guestfs {
 
     type BTRFSFilesystemDefragmentClass = typeof BTRFSFilesystemDefragment;
     abstract class BTRFSFilesystemDefragmentPrivate {
+        static $gtype: GObject.GType<BTRFSFilesystemDefragmentPrivate>;
+
         // Constructors of Guestfs.BTRFSFilesystemDefragmentPrivate
 
         _init(...args: any[]): void;
@@ -14027,6 +14173,8 @@ export namespace Guestfs {
 
     type BTRFSFilesystemResizeClass = typeof BTRFSFilesystemResize;
     abstract class BTRFSFilesystemResizePrivate {
+        static $gtype: GObject.GType<BTRFSFilesystemResizePrivate>;
+
         // Constructors of Guestfs.BTRFSFilesystemResizePrivate
 
         _init(...args: any[]): void;
@@ -14034,12 +14182,16 @@ export namespace Guestfs {
 
     type BTRFSImageClass = typeof BTRFSImage;
     abstract class BTRFSImagePrivate {
+        static $gtype: GObject.GType<BTRFSImagePrivate>;
+
         // Constructors of Guestfs.BTRFSImagePrivate
 
         _init(...args: any[]): void;
     }
 
     class BTRFSQgroup {
+        static $gtype: GObject.GType<BTRFSQgroup>;
+
         // Own fields of Guestfs.BTRFSQgroup
 
         btrfsqgroup_id: string;
@@ -14059,6 +14211,8 @@ export namespace Guestfs {
     }
 
     class BTRFSScrub {
+        static $gtype: GObject.GType<BTRFSScrub>;
+
         // Own fields of Guestfs.BTRFSScrub
 
         btrfsscrub_data_extents_scrubbed: number;
@@ -14102,6 +14256,8 @@ export namespace Guestfs {
     }
 
     class BTRFSSubvolume {
+        static $gtype: GObject.GType<BTRFSSubvolume>;
+
         // Own fields of Guestfs.BTRFSSubvolume
 
         btrfssubvolume_id: number;
@@ -14122,6 +14278,8 @@ export namespace Guestfs {
 
     type BTRFSSubvolumeCreateClass = typeof BTRFSSubvolumeCreate;
     abstract class BTRFSSubvolumeCreatePrivate {
+        static $gtype: GObject.GType<BTRFSSubvolumeCreatePrivate>;
+
         // Constructors of Guestfs.BTRFSSubvolumeCreatePrivate
 
         _init(...args: any[]): void;
@@ -14129,6 +14287,8 @@ export namespace Guestfs {
 
     type BTRFSSubvolumeSnapshotClass = typeof BTRFSSubvolumeSnapshot;
     abstract class BTRFSSubvolumeSnapshotPrivate {
+        static $gtype: GObject.GType<BTRFSSubvolumeSnapshotPrivate>;
+
         // Constructors of Guestfs.BTRFSSubvolumeSnapshotPrivate
 
         _init(...args: any[]): void;
@@ -14136,6 +14296,8 @@ export namespace Guestfs {
 
     type BtrfsFsckClass = typeof BtrfsFsck;
     abstract class BtrfsFsckPrivate {
+        static $gtype: GObject.GType<BtrfsFsckPrivate>;
+
         // Constructors of Guestfs.BtrfsFsckPrivate
 
         _init(...args: any[]): void;
@@ -14143,6 +14305,8 @@ export namespace Guestfs {
 
     type CompressDeviceOutClass = typeof CompressDeviceOut;
     abstract class CompressDeviceOutPrivate {
+        static $gtype: GObject.GType<CompressDeviceOutPrivate>;
+
         // Constructors of Guestfs.CompressDeviceOutPrivate
 
         _init(...args: any[]): void;
@@ -14150,6 +14314,8 @@ export namespace Guestfs {
 
     type CompressOutClass = typeof CompressOut;
     abstract class CompressOutPrivate {
+        static $gtype: GObject.GType<CompressOutPrivate>;
+
         // Constructors of Guestfs.CompressOutPrivate
 
         _init(...args: any[]): void;
@@ -14157,6 +14323,8 @@ export namespace Guestfs {
 
     type CopyAttributesClass = typeof CopyAttributes;
     abstract class CopyAttributesPrivate {
+        static $gtype: GObject.GType<CopyAttributesPrivate>;
+
         // Constructors of Guestfs.CopyAttributesPrivate
 
         _init(...args: any[]): void;
@@ -14164,6 +14332,8 @@ export namespace Guestfs {
 
     type CopyDeviceToDeviceClass = typeof CopyDeviceToDevice;
     abstract class CopyDeviceToDevicePrivate {
+        static $gtype: GObject.GType<CopyDeviceToDevicePrivate>;
+
         // Constructors of Guestfs.CopyDeviceToDevicePrivate
 
         _init(...args: any[]): void;
@@ -14171,6 +14341,8 @@ export namespace Guestfs {
 
     type CopyDeviceToFileClass = typeof CopyDeviceToFile;
     abstract class CopyDeviceToFilePrivate {
+        static $gtype: GObject.GType<CopyDeviceToFilePrivate>;
+
         // Constructors of Guestfs.CopyDeviceToFilePrivate
 
         _init(...args: any[]): void;
@@ -14178,6 +14350,8 @@ export namespace Guestfs {
 
     type CopyFileToDeviceClass = typeof CopyFileToDevice;
     abstract class CopyFileToDevicePrivate {
+        static $gtype: GObject.GType<CopyFileToDevicePrivate>;
+
         // Constructors of Guestfs.CopyFileToDevicePrivate
 
         _init(...args: any[]): void;
@@ -14185,6 +14359,8 @@ export namespace Guestfs {
 
     type CopyFileToFileClass = typeof CopyFileToFile;
     abstract class CopyFileToFilePrivate {
+        static $gtype: GObject.GType<CopyFileToFilePrivate>;
+
         // Constructors of Guestfs.CopyFileToFilePrivate
 
         _init(...args: any[]): void;
@@ -14192,12 +14368,16 @@ export namespace Guestfs {
 
     type CpioOutClass = typeof CpioOut;
     abstract class CpioOutPrivate {
+        static $gtype: GObject.GType<CpioOutPrivate>;
+
         // Constructors of Guestfs.CpioOutPrivate
 
         _init(...args: any[]): void;
     }
 
     class Dirent {
+        static $gtype: GObject.GType<Dirent>;
+
         // Own fields of Guestfs.Dirent
 
         ino: number;
@@ -14218,6 +14398,8 @@ export namespace Guestfs {
 
     type DiskCreateClass = typeof DiskCreate;
     abstract class DiskCreatePrivate {
+        static $gtype: GObject.GType<DiskCreatePrivate>;
+
         // Constructors of Guestfs.DiskCreatePrivate
 
         _init(...args: any[]): void;
@@ -14225,6 +14407,8 @@ export namespace Guestfs {
 
     type DownloadBlocksClass = typeof DownloadBlocks;
     abstract class DownloadBlocksPrivate {
+        static $gtype: GObject.GType<DownloadBlocksPrivate>;
+
         // Constructors of Guestfs.DownloadBlocksPrivate
 
         _init(...args: any[]): void;
@@ -14232,6 +14416,8 @@ export namespace Guestfs {
 
     type E2fsckClass = typeof E2fsck;
     abstract class E2fsckPrivate {
+        static $gtype: GObject.GType<E2fsckPrivate>;
+
         // Constructors of Guestfs.E2fsckPrivate
 
         _init(...args: any[]): void;
@@ -14239,6 +14425,8 @@ export namespace Guestfs {
 
     type FstrimClass = typeof Fstrim;
     abstract class FstrimPrivate {
+        static $gtype: GObject.GType<FstrimPrivate>;
+
         // Constructors of Guestfs.FstrimPrivate
 
         _init(...args: any[]): void;
@@ -14246,6 +14434,8 @@ export namespace Guestfs {
 
     type GlobExpandClass = typeof GlobExpand;
     abstract class GlobExpandPrivate {
+        static $gtype: GObject.GType<GlobExpandPrivate>;
+
         // Constructors of Guestfs.GlobExpandPrivate
 
         _init(...args: any[]): void;
@@ -14253,12 +14443,16 @@ export namespace Guestfs {
 
     type GrepClass = typeof Grep;
     abstract class GrepPrivate {
+        static $gtype: GObject.GType<GrepPrivate>;
+
         // Constructors of Guestfs.GrepPrivate
 
         _init(...args: any[]): void;
     }
 
     class HivexNode {
+        static $gtype: GObject.GType<HivexNode>;
+
         // Own fields of Guestfs.HivexNode
 
         hivex_node_h: number;
@@ -14275,12 +14469,16 @@ export namespace Guestfs {
 
     type HivexOpenClass = typeof HivexOpen;
     abstract class HivexOpenPrivate {
+        static $gtype: GObject.GType<HivexOpenPrivate>;
+
         // Constructors of Guestfs.HivexOpenPrivate
 
         _init(...args: any[]): void;
     }
 
     class HivexValue {
+        static $gtype: GObject.GType<HivexValue>;
+
         // Own fields of Guestfs.HivexValue
 
         hivex_value_h: number;
@@ -14296,6 +14494,8 @@ export namespace Guestfs {
     }
 
     class INotifyEvent {
+        static $gtype: GObject.GType<INotifyEvent>;
+
         // Own fields of Guestfs.INotifyEvent
 
         in_wd: number;
@@ -14317,6 +14517,8 @@ export namespace Guestfs {
     }
 
     class ISOInfo {
+        static $gtype: GObject.GType<ISOInfo>;
+
         // Own fields of Guestfs.ISOInfo
 
         iso_system_id: string;
@@ -14365,12 +14567,16 @@ export namespace Guestfs {
 
     type InspectGetIconClass = typeof InspectGetIcon;
     abstract class InspectGetIconPrivate {
+        static $gtype: GObject.GType<InspectGetIconPrivate>;
+
         // Constructors of Guestfs.InspectGetIconPrivate
 
         _init(...args: any[]): void;
     }
 
     class IntBool {
+        static $gtype: GObject.GType<IntBool>;
+
         // Own fields of Guestfs.IntBool
 
         i: number;
@@ -14389,6 +14595,8 @@ export namespace Guestfs {
 
     type InternalTest63OptargsClass = typeof InternalTest63Optargs;
     abstract class InternalTest63OptargsPrivate {
+        static $gtype: GObject.GType<InternalTest63OptargsPrivate>;
+
         // Constructors of Guestfs.InternalTest63OptargsPrivate
 
         _init(...args: any[]): void;
@@ -14397,12 +14605,16 @@ export namespace Guestfs {
     type InternalTestClass = typeof InternalTest;
     type InternalTestOnlyOptargsClass = typeof InternalTestOnlyOptargs;
     abstract class InternalTestOnlyOptargsPrivate {
+        static $gtype: GObject.GType<InternalTestOnlyOptargsPrivate>;
+
         // Constructors of Guestfs.InternalTestOnlyOptargsPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class InternalTestPrivate {
+        static $gtype: GObject.GType<InternalTestPrivate>;
+
         // Constructors of Guestfs.InternalTestPrivate
 
         _init(...args: any[]): void;
@@ -14410,6 +14622,8 @@ export namespace Guestfs {
 
     type IsBlockdevClass = typeof IsBlockdev;
     abstract class IsBlockdevPrivate {
+        static $gtype: GObject.GType<IsBlockdevPrivate>;
+
         // Constructors of Guestfs.IsBlockdevPrivate
 
         _init(...args: any[]): void;
@@ -14417,6 +14631,8 @@ export namespace Guestfs {
 
     type IsChardevClass = typeof IsChardev;
     abstract class IsChardevPrivate {
+        static $gtype: GObject.GType<IsChardevPrivate>;
+
         // Constructors of Guestfs.IsChardevPrivate
 
         _init(...args: any[]): void;
@@ -14424,6 +14640,8 @@ export namespace Guestfs {
 
     type IsDirClass = typeof IsDir;
     abstract class IsDirPrivate {
+        static $gtype: GObject.GType<IsDirPrivate>;
+
         // Constructors of Guestfs.IsDirPrivate
 
         _init(...args: any[]): void;
@@ -14431,6 +14649,8 @@ export namespace Guestfs {
 
     type IsFifoClass = typeof IsFifo;
     abstract class IsFifoPrivate {
+        static $gtype: GObject.GType<IsFifoPrivate>;
+
         // Constructors of Guestfs.IsFifoPrivate
 
         _init(...args: any[]): void;
@@ -14438,6 +14658,8 @@ export namespace Guestfs {
 
     type IsFileClass = typeof IsFile;
     abstract class IsFilePrivate {
+        static $gtype: GObject.GType<IsFilePrivate>;
+
         // Constructors of Guestfs.IsFilePrivate
 
         _init(...args: any[]): void;
@@ -14445,12 +14667,16 @@ export namespace Guestfs {
 
     type IsSocketClass = typeof IsSocket;
     abstract class IsSocketPrivate {
+        static $gtype: GObject.GType<IsSocketPrivate>;
+
         // Constructors of Guestfs.IsSocketPrivate
 
         _init(...args: any[]): void;
     }
 
     class LV {
+        static $gtype: GObject.GType<LV>;
+
         // Own fields of Guestfs.LV
 
         lv_name: string;
@@ -14497,12 +14723,16 @@ export namespace Guestfs {
 
     type MDCreateClass = typeof MDCreate;
     abstract class MDCreatePrivate {
+        static $gtype: GObject.GType<MDCreatePrivate>;
+
         // Constructors of Guestfs.MDCreatePrivate
 
         _init(...args: any[]): void;
     }
 
     class MDStat {
+        static $gtype: GObject.GType<MDStat>;
+
         // Own fields of Guestfs.MDStat
 
         mdstat_device: string;
@@ -14523,6 +14753,8 @@ export namespace Guestfs {
 
     type Mke2fsClass = typeof Mke2fs;
     abstract class Mke2fsPrivate {
+        static $gtype: GObject.GType<Mke2fsPrivate>;
+
         // Constructors of Guestfs.Mke2fsPrivate
 
         _init(...args: any[]): void;
@@ -14530,6 +14762,8 @@ export namespace Guestfs {
 
     type MkfsBtrfsClass = typeof MkfsBtrfs;
     abstract class MkfsBtrfsPrivate {
+        static $gtype: GObject.GType<MkfsBtrfsPrivate>;
+
         // Constructors of Guestfs.MkfsBtrfsPrivate
 
         _init(...args: any[]): void;
@@ -14537,6 +14771,8 @@ export namespace Guestfs {
 
     type MkfsClass = typeof Mkfs;
     abstract class MkfsPrivate {
+        static $gtype: GObject.GType<MkfsPrivate>;
+
         // Constructors of Guestfs.MkfsPrivate
 
         _init(...args: any[]): void;
@@ -14544,6 +14780,8 @@ export namespace Guestfs {
 
     type MksquashfsClass = typeof Mksquashfs;
     abstract class MksquashfsPrivate {
+        static $gtype: GObject.GType<MksquashfsPrivate>;
+
         // Constructors of Guestfs.MksquashfsPrivate
 
         _init(...args: any[]): void;
@@ -14551,6 +14789,8 @@ export namespace Guestfs {
 
     type MkswapClass = typeof Mkswap;
     abstract class MkswapPrivate {
+        static $gtype: GObject.GType<MkswapPrivate>;
+
         // Constructors of Guestfs.MkswapPrivate
 
         _init(...args: any[]): void;
@@ -14558,6 +14798,8 @@ export namespace Guestfs {
 
     type MktempClass = typeof Mktemp;
     abstract class MktempPrivate {
+        static $gtype: GObject.GType<MktempPrivate>;
+
         // Constructors of Guestfs.MktempPrivate
 
         _init(...args: any[]): void;
@@ -14565,6 +14807,8 @@ export namespace Guestfs {
 
     type Mount9PClass = typeof Mount9P;
     abstract class Mount9PPrivate {
+        static $gtype: GObject.GType<Mount9PPrivate>;
+
         // Constructors of Guestfs.Mount9PPrivate
 
         _init(...args: any[]): void;
@@ -14572,6 +14816,8 @@ export namespace Guestfs {
 
     type MountLocalClass = typeof MountLocal;
     abstract class MountLocalPrivate {
+        static $gtype: GObject.GType<MountLocalPrivate>;
+
         // Constructors of Guestfs.MountLocalPrivate
 
         _init(...args: any[]): void;
@@ -14579,6 +14825,8 @@ export namespace Guestfs {
 
     type NTFSResizeOptsClass = typeof NTFSResizeOpts;
     abstract class NTFSResizeOptsPrivate {
+        static $gtype: GObject.GType<NTFSResizeOptsPrivate>;
+
         // Constructors of Guestfs.NTFSResizeOptsPrivate
 
         _init(...args: any[]): void;
@@ -14586,6 +14834,8 @@ export namespace Guestfs {
 
     type NtfscloneOutClass = typeof NtfscloneOut;
     abstract class NtfscloneOutPrivate {
+        static $gtype: GObject.GType<NtfscloneOutPrivate>;
+
         // Constructors of Guestfs.NtfscloneOutPrivate
 
         _init(...args: any[]): void;
@@ -14593,12 +14843,16 @@ export namespace Guestfs {
 
     type NtfsfixClass = typeof Ntfsfix;
     abstract class NtfsfixPrivate {
+        static $gtype: GObject.GType<NtfsfixPrivate>;
+
         // Constructors of Guestfs.NtfsfixPrivate
 
         _init(...args: any[]): void;
     }
 
     class PV {
+        static $gtype: GObject.GType<PV>;
+
         // Own fields of Guestfs.PV
 
         pv_name: string;
@@ -14640,6 +14894,8 @@ export namespace Guestfs {
     }
 
     class Partition {
+        static $gtype: GObject.GType<Partition>;
+
         // Own fields of Guestfs.Partition
 
         part_num: number;
@@ -14662,6 +14918,8 @@ export namespace Guestfs {
 
     type RemountClass = typeof Remount;
     abstract class RemountPrivate {
+        static $gtype: GObject.GType<RemountPrivate>;
+
         // Constructors of Guestfs.RemountPrivate
 
         _init(...args: any[]): void;
@@ -14670,6 +14928,8 @@ export namespace Guestfs {
     type RsyncClass = typeof Rsync;
     type RsyncInClass = typeof RsyncIn;
     abstract class RsyncInPrivate {
+        static $gtype: GObject.GType<RsyncInPrivate>;
+
         // Constructors of Guestfs.RsyncInPrivate
 
         _init(...args: any[]): void;
@@ -14677,12 +14937,16 @@ export namespace Guestfs {
 
     type RsyncOutClass = typeof RsyncOut;
     abstract class RsyncOutPrivate {
+        static $gtype: GObject.GType<RsyncOutPrivate>;
+
         // Constructors of Guestfs.RsyncOutPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class RsyncPrivate {
+        static $gtype: GObject.GType<RsyncPrivate>;
+
         // Constructors of Guestfs.RsyncPrivate
 
         _init(...args: any[]): void;
@@ -14690,6 +14954,8 @@ export namespace Guestfs {
 
     type SelinuxRelabelClass = typeof SelinuxRelabel;
     abstract class SelinuxRelabelPrivate {
+        static $gtype: GObject.GType<SelinuxRelabelPrivate>;
+
         // Constructors of Guestfs.SelinuxRelabelPrivate
 
         _init(...args: any[]): void;
@@ -14697,6 +14963,8 @@ export namespace Guestfs {
 
     type SessionClass = typeof Session;
     class SessionEventParams {
+        static $gtype: GObject.GType<SessionEventParams>;
+
         // Own fields of Guestfs.SessionEventParams
 
         event: SessionEvent;
@@ -14711,6 +14979,8 @@ export namespace Guestfs {
     }
 
     abstract class SessionPrivate {
+        static $gtype: GObject.GType<SessionPrivate>;
+
         // Constructors of Guestfs.SessionPrivate
 
         _init(...args: any[]): void;
@@ -14718,12 +14988,16 @@ export namespace Guestfs {
 
     type SetE2attrsClass = typeof SetE2attrs;
     abstract class SetE2attrsPrivate {
+        static $gtype: GObject.GType<SetE2attrsPrivate>;
+
         // Constructors of Guestfs.SetE2attrsPrivate
 
         _init(...args: any[]): void;
     }
 
     class Stat {
+        static $gtype: GObject.GType<Stat>;
+
         // Own fields of Guestfs.Stat
 
         dev: number;
@@ -14763,6 +15037,8 @@ export namespace Guestfs {
     }
 
     class StatNS {
+        static $gtype: GObject.GType<StatNS>;
+
         // Own fields of Guestfs.StatNS
 
         st_dev: number;
@@ -14820,6 +15096,8 @@ export namespace Guestfs {
     }
 
     class StatVFS {
+        static $gtype: GObject.GType<StatVFS>;
+
         // Own fields of Guestfs.StatVFS
 
         bsize: number;
@@ -14856,12 +15134,16 @@ export namespace Guestfs {
 
     type SyslinuxClass = typeof Syslinux;
     abstract class SyslinuxPrivate {
+        static $gtype: GObject.GType<SyslinuxPrivate>;
+
         // Constructors of Guestfs.SyslinuxPrivate
 
         _init(...args: any[]): void;
     }
 
     class TSKDirent {
+        static $gtype: GObject.GType<TSKDirent>;
+
         // Own fields of Guestfs.TSKDirent
 
         tsk_inode: number;
@@ -14908,6 +15190,8 @@ export namespace Guestfs {
 
     type TarInClass = typeof TarIn;
     abstract class TarInPrivate {
+        static $gtype: GObject.GType<TarInPrivate>;
+
         // Constructors of Guestfs.TarInPrivate
 
         _init(...args: any[]): void;
@@ -14915,6 +15199,8 @@ export namespace Guestfs {
 
     type TarOutClass = typeof TarOut;
     abstract class TarOutPrivate {
+        static $gtype: GObject.GType<TarOutPrivate>;
+
         // Constructors of Guestfs.TarOutPrivate
 
         _init(...args: any[]): void;
@@ -14922,12 +15208,16 @@ export namespace Guestfs {
 
     type Tune2FSClass = typeof Tune2FS;
     abstract class Tune2FSPrivate {
+        static $gtype: GObject.GType<Tune2FSPrivate>;
+
         // Constructors of Guestfs.Tune2FSPrivate
 
         _init(...args: any[]): void;
     }
 
     class UTSName {
+        static $gtype: GObject.GType<UTSName>;
+
         // Own fields of Guestfs.UTSName
 
         uts_sysname: string;
@@ -14951,18 +15241,24 @@ export namespace Guestfs {
     type UmountClass = typeof Umount;
     type UmountLocalClass = typeof UmountLocal;
     abstract class UmountLocalPrivate {
+        static $gtype: GObject.GType<UmountLocalPrivate>;
+
         // Constructors of Guestfs.UmountLocalPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class UmountPrivate {
+        static $gtype: GObject.GType<UmountPrivate>;
+
         // Constructors of Guestfs.UmountPrivate
 
         _init(...args: any[]): void;
     }
 
     class VG {
+        static $gtype: GObject.GType<VG>;
+
         // Own fields of Guestfs.VG
 
         vg_name: string;
@@ -15014,6 +15310,8 @@ export namespace Guestfs {
     }
 
     class Version {
+        static $gtype: GObject.GType<Version>;
+
         // Own fields of Guestfs.Version
 
         major: number;
@@ -15035,6 +15333,8 @@ export namespace Guestfs {
     }
 
     class XAttr {
+        static $gtype: GObject.GType<XAttr>;
+
         // Own fields of Guestfs.XAttr
 
         attrname: string;
@@ -15052,6 +15352,8 @@ export namespace Guestfs {
     }
 
     class XFSInfo {
+        static $gtype: GObject.GType<XFSInfo>;
+
         // Own fields of Guestfs.XFSInfo
 
         xfs_mntpoint: string;
@@ -15116,6 +15418,8 @@ export namespace Guestfs {
 
     type XfsAdminClass = typeof XfsAdmin;
     abstract class XfsAdminPrivate {
+        static $gtype: GObject.GType<XfsAdminPrivate>;
+
         // Constructors of Guestfs.XfsAdminPrivate
 
         _init(...args: any[]): void;
@@ -15123,6 +15427,8 @@ export namespace Guestfs {
 
     type XfsGrowfsClass = typeof XfsGrowfs;
     abstract class XfsGrowfsPrivate {
+        static $gtype: GObject.GType<XfsGrowfsPrivate>;
+
         // Constructors of Guestfs.XfsGrowfsPrivate
 
         _init(...args: any[]): void;
@@ -15130,12 +15436,16 @@ export namespace Guestfs {
 
     type XfsRepairClass = typeof XfsRepair;
     abstract class XfsRepairPrivate {
+        static $gtype: GObject.GType<XfsRepairPrivate>;
+
         // Constructors of Guestfs.XfsRepairPrivate
 
         _init(...args: any[]): void;
     }
 
     class YaraDetection {
+        static $gtype: GObject.GType<YaraDetection>;
+
         // Own fields of Guestfs.YaraDetection
 
         yara_name: string;

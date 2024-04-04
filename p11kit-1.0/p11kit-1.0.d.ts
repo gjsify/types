@@ -128,6 +128,8 @@ export namespace P11Kit {
      * visible in this structure. Use the various accessor functions.
      */
     abstract class Pin {
+        static $gtype: GObject.GType<Pin>;
+
         // Constructors of P11Kit.Pin
 
         _init(...args: any[]): void;
@@ -162,6 +164,8 @@ export namespace P11Kit {
      * visible in this structure. Use the various accessor functions.
      */
     abstract class Uri {
+        static $gtype: GObject.GType<Uri>;
+
         // Constructors of P11Kit.Uri
 
         _init(...args: any[]): void;

@@ -130,6 +130,8 @@ export namespace AppStreamBuilder {
     }
 
     class App extends AppStreamGlib.App {
+        static $gtype: GObject.GType<App>;
+
         // Constructors of AppStreamBuilder.App
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
@@ -173,6 +175,8 @@ export namespace AppStreamBuilder {
     }
 
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of AppStreamBuilder.Context
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
@@ -330,6 +334,8 @@ export namespace AppStreamBuilder {
     }
 
     class Package extends GObject.Object {
+        static $gtype: GObject.GType<Package>;
+
         // Constructors of AppStreamBuilder.Package
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
@@ -626,6 +632,8 @@ export namespace AppStreamBuilder {
     }
 
     class Task extends GObject.Object {
+        static $gtype: GObject.GType<Task>;
+
         // Constructors of AppStreamBuilder.Task
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);

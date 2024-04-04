@@ -846,6 +846,8 @@ export namespace Gcr {
      * merely the first step towards verifying trust in a certificate.
      */
     class CertificateChain extends GObject.Object {
+        static $gtype: GObject.GType<CertificateChain>;
+
         // Own properties of Gcr.CertificateChain
 
         /**
@@ -1020,6 +1022,8 @@ export namespace Gcr {
     }
 
     class CertificateField extends GObject.Object {
+        static $gtype: GObject.GType<CertificateField>;
+
         // Own properties of Gcr.CertificateField
 
         get label(): string;
@@ -1078,6 +1082,8 @@ export namespace Gcr {
      * with [method`CertificateRequest`.complete_async].
      */
     class CertificateRequest extends GObject.Object {
+        static $gtype: GObject.GType<CertificateRequest>;
+
         // Own properties of Gcr.CertificateRequest
 
         /**
@@ -1196,6 +1202,8 @@ export namespace Gcr {
     }
 
     class CertificateSection extends GObject.Object {
+        static $gtype: GObject.GType<CertificateSection>;
+
         // Own properties of Gcr.CertificateSection
 
         get fields(): Gio.ListModel;
@@ -1266,6 +1274,8 @@ export namespace Gcr {
      * [method`Parser`.get_parsed_attributes] function.
      */
     class Parser extends GObject.Object {
+        static $gtype: GObject.GType<Parser>;
+
         // Own properties of Gcr.Parser
 
         /**
@@ -1473,6 +1483,8 @@ export namespace Gcr {
      * are available via gcr_pkcs11_certificate_get_attributes().
      */
     class Pkcs11Certificate extends Gck.Object implements Certificate {
+        static $gtype: GObject.GType<Pkcs11Certificate>;
+
         // Own properties of Gcr.Pkcs11Certificate
 
         /**
@@ -2171,6 +2183,8 @@ export namespace Gcr {
      * [class`SecretExchange]`.
      */
     class SecretExchange extends GObject.Object {
+        static $gtype: GObject.GType<SecretExchange>;
+
         // Own properties of Gcr.SecretExchange
 
         /**
@@ -2263,6 +2277,8 @@ export namespace Gcr {
      * [ctor`SimpleCertificate`.new_static] functions.
      */
     class SimpleCertificate extends GObject.Object implements Certificate {
+        static $gtype: GObject.GType<SimpleCertificate>;
+
         // Constructors of Gcr.SimpleCertificate
 
         constructor(properties?: Partial<SimpleCertificate.ConstructorProps>, ...args: any[]);
@@ -2847,6 +2863,8 @@ export namespace Gcr {
      * or ssh, this allows callbacks for passwords on the provided interaction.
      */
     class SshAskpass extends GObject.Object {
+        static $gtype: GObject.GType<SshAskpass>;
+
         // Own properties of Gcr.SshAskpass
 
         /**
@@ -2911,6 +2929,8 @@ export namespace Gcr {
      * Use [method`SystemPrompt`.close] to close the prompt when you're done with it.
      */
     class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
+        static $gtype: GObject.GType<SystemPrompt>;
+
         // Own properties of Gcr.SystemPrompt
 
         /**
@@ -4145,6 +4165,8 @@ export namespace Gcr {
      * [ctor`SystemPrompter`.new].
      */
     class SystemPrompter extends GObject.Object {
+        static $gtype: GObject.GType<SystemPrompter>;
+
         // Own properties of Gcr.SystemPrompter
 
         /**
@@ -4224,6 +4246,8 @@ export namespace Gcr {
 
     type CertificateChainClass = typeof CertificateChain;
     abstract class CertificateChainPrivate {
+        static $gtype: GObject.GType<CertificateChainPrivate>;
+
         // Constructors of Gcr.CertificateChainPrivate
 
         _init(...args: any[]): void;
@@ -4239,6 +4263,8 @@ export namespace Gcr {
      * A parsed item parsed by a #GcrParser.
      */
     abstract class Parsed {
+        static $gtype: GObject.GType<Parsed>;
+
         // Constructors of Gcr.Parsed
 
         _init(...args: any[]): void;
@@ -4298,6 +4324,8 @@ export namespace Gcr {
 
     type ParserClass = typeof Parser;
     abstract class ParserPrivate {
+        static $gtype: GObject.GType<ParserPrivate>;
+
         // Constructors of Gcr.ParserPrivate
 
         _init(...args: any[]): void;
@@ -4305,6 +4333,8 @@ export namespace Gcr {
 
     type Pkcs11CertificateClass = typeof Pkcs11Certificate;
     abstract class Pkcs11CertificatePrivate {
+        static $gtype: GObject.GType<Pkcs11CertificatePrivate>;
+
         // Constructors of Gcr.Pkcs11CertificatePrivate
 
         _init(...args: any[]): void;
@@ -4313,6 +4343,8 @@ export namespace Gcr {
     type PromptInterface = typeof Prompt;
     type SecretExchangeClass = typeof SecretExchange;
     abstract class SecretExchangePrivate {
+        static $gtype: GObject.GType<SecretExchangePrivate>;
+
         // Constructors of Gcr.SecretExchangePrivate
 
         _init(...args: any[]): void;
@@ -4320,6 +4352,8 @@ export namespace Gcr {
 
     type SimpleCertificateClass = typeof SimpleCertificate;
     abstract class SimpleCertificatePrivate {
+        static $gtype: GObject.GType<SimpleCertificatePrivate>;
+
         // Constructors of Gcr.SimpleCertificatePrivate
 
         _init(...args: any[]): void;
@@ -4328,6 +4362,8 @@ export namespace Gcr {
     type SshAskpassClass = typeof SshAskpass;
     type SystemPromptClass = typeof SystemPrompt;
     abstract class SystemPromptPrivate {
+        static $gtype: GObject.GType<SystemPromptPrivate>;
+
         // Constructors of Gcr.SystemPromptPrivate
 
         _init(...args: any[]): void;
@@ -4335,6 +4371,8 @@ export namespace Gcr {
 
     type SystemPrompterClass = typeof SystemPrompter;
     abstract class SystemPrompterPrivate {
+        static $gtype: GObject.GType<SystemPrompterPrivate>;
+
         // Constructors of Gcr.SystemPrompterPrivate
 
         _init(...args: any[]): void;

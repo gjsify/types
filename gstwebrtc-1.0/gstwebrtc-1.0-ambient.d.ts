@@ -1,7 +1,7 @@
 
 declare module 'gi://GstWebRTC?version=1.0' {
-    import GstWebRTC10 from '@girs/gstwebrtc-1.0';
-    export default GstWebRTC10;
+    import GstWebRTC from '@girs/gstwebrtc-1.0';
+    export default GstWebRTC;
 }
 
 declare module 'gi://GstWebRTC' {

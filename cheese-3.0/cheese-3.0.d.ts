@@ -110,6 +110,8 @@ export namespace Cheese {
      * Use the accessor functions below.
      */
     class Camera extends GObject.Object {
+        static $gtype: GObject.GType<Camera>;
+
         // Own properties of Cheese.Camera
 
         /**
@@ -305,6 +307,8 @@ export namespace Cheese {
      * Use the accessor functions below.
      */
     class CameraDevice extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<CameraDevice>;
+
         // Own properties of Cheese.CameraDevice
 
         /**
@@ -837,6 +841,8 @@ export namespace Cheese {
      * Use the accessor functions below.
      */
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
+        static $gtype: GObject.GType<CameraDeviceMonitor>;
+
         // Constructors of Cheese.CameraDeviceMonitor
 
         constructor(properties?: Partial<CameraDeviceMonitor.ConstructorProps>, ...args: any[]);
@@ -1462,6 +1468,8 @@ export namespace Cheese {
      * Use the accessor functions below.
      */
     class Effect extends GObject.Object {
+        static $gtype: GObject.GType<Effect>;
+
         // Own properties of Cheese.Effect
 
         /**
@@ -1546,6 +1554,8 @@ export namespace Cheese {
      * Use the accessor functions below.
      */
     class FileUtil extends GObject.Object {
+        static $gtype: GObject.GType<FileUtil>;
+
         // Constructors of Cheese.FileUtil
 
         constructor(properties?: Partial<FileUtil.ConstructorProps>, ...args: any[]);
@@ -1587,12 +1597,16 @@ export namespace Cheese {
     type CameraDeviceClass = typeof CameraDevice;
     type CameraDeviceMonitorClass = typeof CameraDeviceMonitor;
     abstract class CameraDeviceMonitorPrivate {
+        static $gtype: GObject.GType<CameraDeviceMonitorPrivate>;
+
         // Constructors of Cheese.CameraDeviceMonitorPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class CameraPrivate {
+        static $gtype: GObject.GType<CameraPrivate>;
+
         // Constructors of Cheese.CameraPrivate
 
         _init(...args: any[]): void;
@@ -1605,6 +1619,8 @@ export namespace Cheese {
      * #CheeseCameraDevice.
      */
     class VideoFormat {
+        static $gtype: GObject.GType<VideoFormat>;
+
         // Own fields of Cheese.VideoFormat
 
         width: number;

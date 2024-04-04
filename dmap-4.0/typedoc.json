@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./dmap-4.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Dmap-4.0",
+    "tsconfig": "./tsconfig.json"
+}
+

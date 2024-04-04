@@ -70,6 +70,8 @@ export namespace Gd {
     }
 
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<HeaderBar>;
+
         // Own properties of Gd.HeaderBar
 
         get custom_title(): Gtk.Widget;
@@ -514,6 +516,8 @@ export namespace Gd {
         extends Gtk.MenuButton
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<HeaderMenuButton>;
+
         // Constructors of Gd.HeaderMenuButton
 
         constructor(properties?: Partial<HeaderMenuButton.ConstructorProps>, ...args: any[]);
@@ -4649,6 +4653,8 @@ export namespace Gd {
         extends Gtk.RadioButton
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<HeaderRadioButton>;
+
         // Constructors of Gd.HeaderRadioButton
 
         constructor(properties?: Partial<HeaderRadioButton.ConstructorProps>, ...args: any[]);
@@ -8782,6 +8788,8 @@ export namespace Gd {
         extends Gtk.Button
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<HeaderSimpleButton>;
+
         // Constructors of Gd.HeaderSimpleButton
 
         constructor(properties?: Partial<HeaderSimpleButton.ConstructorProps>, ...args: any[]);
@@ -13153,6 +13161,8 @@ export namespace Gd {
         extends Gtk.ToggleButton
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
+        static $gtype: GObject.GType<HeaderToggleButton>;
+
         // Constructors of Gd.HeaderToggleButton
 
         constructor(properties?: Partial<HeaderToggleButton.ConstructorProps>, ...args: any[]);
@@ -17286,6 +17296,8 @@ export namespace Gd {
         extends Gtk.IconView
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.CellLayout, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<MainIconView>;
+
         // Constructors of Gd.MainIconView
 
         constructor(properties?: Partial<MainIconView.ConstructorProps>, ...args: any[]);
@@ -21455,6 +21467,8 @@ export namespace Gd {
         extends Gtk.TreeView
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<MainListView>;
+
         // Constructors of Gd.MainListView
 
         constructor(properties?: Partial<MainListView.ConstructorProps>, ...args: any[]);
@@ -25480,6 +25494,8 @@ export namespace Gd {
         extends Gtk.Toolbar
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Gtk.ToolShell
     {
+        static $gtype: GObject.GType<MainToolbar>;
+
         // Own properties of Gd.MainToolbar
 
         get show_modes(): boolean;
@@ -29541,6 +29557,8 @@ export namespace Gd {
     }
 
     class MainView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<MainView>;
+
         // Own properties of Gd.MainView
 
         get model(): Gtk.TreeModel;
@@ -29971,6 +29989,8 @@ export namespace Gd {
     }
 
     class Revealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Revealer>;
+
         // Own properties of Gd.Revealer
 
         get child_revealed(): boolean;
@@ -30381,6 +30401,8 @@ export namespace Gd {
     }
 
     class Stack extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Stack>;
+
         // Own properties of Gd.Stack
 
         get homogeneous(): boolean;
@@ -30801,6 +30823,8 @@ export namespace Gd {
     }
 
     class StackSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<StackSwitcher>;
+
         // Own properties of Gd.StackSwitcher
 
         get stack(): Stack;
@@ -31213,6 +31237,8 @@ export namespace Gd {
     }
 
     class StyledTextRenderer extends Gtk.CellRendererText {
+        static $gtype: GObject.GType<StyledTextRenderer>;
+
         // Constructors of Gd.StyledTextRenderer
 
         constructor(properties?: Partial<StyledTextRenderer.ConstructorProps>, ...args: any[]);
@@ -31255,6 +31281,8 @@ export namespace Gd {
         extends Gtk.SearchEntry
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
+        static $gtype: GObject.GType<TaggedEntry>;
+
         // Own properties of Gd.TaggedEntry
 
         set tag_close_visible(val: boolean);
@@ -35182,6 +35210,8 @@ export namespace Gd {
     }
 
     class TaggedEntryTag extends GObject.Object {
+        static $gtype: GObject.GType<TaggedEntryTag>;
+
         // Own properties of Gd.TaggedEntryTag
 
         get has_close_button(): boolean;
@@ -35224,6 +35254,8 @@ export namespace Gd {
     }
 
     class TogglePixbufRenderer extends Gtk.CellRendererPixbuf {
+        static $gtype: GObject.GType<TogglePixbufRenderer>;
+
         // Own properties of Gd.TogglePixbufRenderer
 
         get active(): boolean;
@@ -35256,6 +35288,8 @@ export namespace Gd {
     }
 
     class TwoLinesRenderer extends Gtk.CellRendererText {
+        static $gtype: GObject.GType<TwoLinesRenderer>;
+
         // Own properties of Gd.TwoLinesRenderer
 
         get line_two(): string;
@@ -35278,6 +35312,8 @@ export namespace Gd {
 
     type HeaderBarClass = typeof HeaderBar;
     abstract class HeaderBarPrivate {
+        static $gtype: GObject.GType<HeaderBarPrivate>;
+
         // Constructors of Gd.HeaderBarPrivate
 
         _init(...args: any[]): void;
@@ -35285,6 +35321,8 @@ export namespace Gd {
 
     type MainIconViewClass = typeof MainIconView;
     abstract class MainIconViewPrivate {
+        static $gtype: GObject.GType<MainIconViewPrivate>;
+
         // Constructors of Gd.MainIconViewPrivate
 
         _init(...args: any[]): void;
@@ -35292,6 +35330,8 @@ export namespace Gd {
 
     type MainListViewClass = typeof MainListView;
     abstract class MainListViewPrivate {
+        static $gtype: GObject.GType<MainListViewPrivate>;
+
         // Constructors of Gd.MainListViewPrivate
 
         _init(...args: any[]): void;
@@ -35299,6 +35339,8 @@ export namespace Gd {
 
     type MainToolbarClass = typeof MainToolbar;
     abstract class MainToolbarPrivate {
+        static $gtype: GObject.GType<MainToolbarPrivate>;
+
         // Constructors of Gd.MainToolbarPrivate
 
         _init(...args: any[]): void;
@@ -35307,6 +35349,8 @@ export namespace Gd {
     type MainViewClass = typeof MainView;
     type MainViewGenericIface = typeof MainViewGeneric;
     abstract class MainViewPrivate {
+        static $gtype: GObject.GType<MainViewPrivate>;
+
         // Constructors of Gd.MainViewPrivate
 
         _init(...args: any[]): void;
@@ -35314,6 +35358,8 @@ export namespace Gd {
 
     type RevealerClass = typeof Revealer;
     abstract class RevealerPrivate {
+        static $gtype: GObject.GType<RevealerPrivate>;
+
         // Constructors of Gd.RevealerPrivate
 
         _init(...args: any[]): void;
@@ -35321,6 +35367,8 @@ export namespace Gd {
 
     type StackClass = typeof Stack;
     abstract class StackPrivate {
+        static $gtype: GObject.GType<StackPrivate>;
+
         // Constructors of Gd.StackPrivate
 
         _init(...args: any[]): void;
@@ -35328,6 +35376,8 @@ export namespace Gd {
 
     type StackSwitcherClass = typeof StackSwitcher;
     abstract class StackSwitcherPrivate {
+        static $gtype: GObject.GType<StackSwitcherPrivate>;
+
         // Constructors of Gd.StackSwitcherPrivate
 
         _init(...args: any[]): void;
@@ -35335,6 +35385,8 @@ export namespace Gd {
 
     type StyledTextRendererClass = typeof StyledTextRenderer;
     abstract class StyledTextRendererPrivate {
+        static $gtype: GObject.GType<StyledTextRendererPrivate>;
+
         // Constructors of Gd.StyledTextRendererPrivate
 
         _init(...args: any[]): void;
@@ -35342,6 +35394,8 @@ export namespace Gd {
 
     type TaggedEntryClass = typeof TaggedEntry;
     abstract class TaggedEntryPrivate {
+        static $gtype: GObject.GType<TaggedEntryPrivate>;
+
         // Constructors of Gd.TaggedEntryPrivate
 
         _init(...args: any[]): void;
@@ -35349,6 +35403,8 @@ export namespace Gd {
 
     type TaggedEntryTagClass = typeof TaggedEntryTag;
     abstract class TaggedEntryTagPrivate {
+        static $gtype: GObject.GType<TaggedEntryTagPrivate>;
+
         // Constructors of Gd.TaggedEntryTagPrivate
 
         _init(...args: any[]): void;
@@ -35356,6 +35412,8 @@ export namespace Gd {
 
     type TogglePixbufRendererClass = typeof TogglePixbufRenderer;
     abstract class TogglePixbufRendererPrivate {
+        static $gtype: GObject.GType<TogglePixbufRendererPrivate>;
+
         // Constructors of Gd.TogglePixbufRendererPrivate
 
         _init(...args: any[]): void;
@@ -35363,6 +35421,8 @@ export namespace Gd {
 
     type TwoLinesRendererClass = typeof TwoLinesRenderer;
     abstract class TwoLinesRendererPrivate {
+        static $gtype: GObject.GType<TwoLinesRendererPrivate>;
+
         // Constructors of Gd.TwoLinesRendererPrivate
 
         _init(...args: any[]): void;

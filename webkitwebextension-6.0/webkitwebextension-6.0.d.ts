@@ -293,6 +293,8 @@ export namespace WebKitWebExtension {
      * existing ones with webkit_context_menu_remove_all().
      */
     class ContextMenu extends GObject.Object {
+        static $gtype: GObject.GType<ContextMenu>;
+
         // Constructors of WebKitWebExtension.ContextMenu
 
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
@@ -428,6 +430,8 @@ export namespace WebKitWebExtension {
      * for the items. You can also create separators and submenus.
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<ContextMenuItem>;
+
         // Constructors of WebKitWebExtension.ContextMenuItem
 
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
@@ -494,6 +498,8 @@ export namespace WebKitWebExtension {
      * of subframes.
      */
     class Frame extends GObject.Object {
+        static $gtype: GObject.GType<Frame>;
+
         // Constructors of WebKitWebExtension.Frame
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
@@ -574,6 +580,8 @@ export namespace WebKitWebExtension {
      * signal is emitted with a #WebKitHitTestResult.
      */
     class HitTestResult extends GObject.Object {
+        static $gtype: GObject.GType<HitTestResult>;
+
         // Own properties of WebKitWebExtension.HitTestResult
 
         /**
@@ -721,6 +729,8 @@ export namespace WebKitWebExtension {
     }
 
     class ScriptWorld extends GObject.Object {
+        static $gtype: GObject.GType<ScriptWorld>;
+
         // Constructors of WebKitWebExtension.ScriptWorld
 
         constructor(properties?: Partial<ScriptWorld.ConstructorProps>, ...args: any[]);
@@ -781,6 +791,8 @@ export namespace WebKitWebExtension {
      * existing request with the webkit_uri_request_get_uri() one.
      */
     class URIRequest extends GObject.Object {
+        static $gtype: GObject.GType<URIRequest>;
+
         // Own properties of WebKitWebExtension.URIRequest
 
         /**
@@ -847,6 +859,8 @@ export namespace WebKitWebExtension {
      * the suggested filename.
      */
     class URIResponse extends GObject.Object {
+        static $gtype: GObject.GType<URIResponse>;
+
         // Own properties of WebKitWebExtension.URIResponse
 
         /**
@@ -967,6 +981,8 @@ export namespace WebKitWebExtension {
      * webkit_user_message_send_reply().
      */
     class UserMessage extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<UserMessage>;
+
         // Own properties of WebKitWebExtension.UserMessage
 
         /**
@@ -1057,6 +1073,8 @@ export namespace WebKitWebExtension {
      * #WebKitWebPage.
      */
     class WebEditor extends GObject.Object {
+        static $gtype: GObject.GType<WebEditor>;
+
         // Constructors of WebKitWebExtension.WebEditor
 
         constructor(properties?: Partial<WebEditor.ConstructorProps>, ...args: any[]);
@@ -1171,6 +1189,8 @@ export namespace WebKitWebExtension {
      * ```
      */
     class WebExtension extends GObject.Object {
+        static $gtype: GObject.GType<WebExtension>;
+
         // Constructors of WebKitWebExtension.WebExtension
 
         constructor(properties?: Partial<WebExtension.ConstructorProps>, ...args: any[]);
@@ -1244,6 +1264,8 @@ export namespace WebKitWebExtension {
      * Form manager of a #WebKitWebPage in a #WebKitScriptWorld
      */
     class WebFormManager extends GObject.Object {
+        static $gtype: GObject.GType<WebFormManager>;
+
         // Constructors of WebKitWebExtension.WebFormManager
 
         constructor(properties?: Partial<WebFormManager.ConstructorProps>, ...args: any[]);
@@ -1323,6 +1345,8 @@ export namespace WebKitWebExtension {
      * about the #WebKitDOMNode in the coordinates of the Hit Test.
      */
     class WebHitTestResult extends GObject.Object {
+        static $gtype: GObject.GType<WebHitTestResult>;
+
         // Constructors of WebKitWebExtension.WebHitTestResult
 
         constructor(properties?: Partial<WebHitTestResult.ConstructorProps>, ...args: any[]);
@@ -1447,6 +1471,8 @@ export namespace WebKitWebExtension {
      * A loaded web page.
      */
     class WebPage extends GObject.Object {
+        static $gtype: GObject.GType<WebPage>;
+
         // Own properties of WebKitWebExtension.WebPage
 
         /**

@@ -1,7 +1,7 @@
 
 declare module 'gi://Grss?version=0.7' {
-    import Grss07 from '@girs/grss-0.7';
-    export default Grss07;
+    import Grss from '@girs/grss-0.7';
+    export default Grss;
 }
 
 declare module 'gi://Grss' {

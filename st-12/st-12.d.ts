@@ -146,6 +146,8 @@ export namespace St {
      * Error codes for StIconTheme operations.
      */
     class IconThemeError extends GLib.Error {
+        static $gtype: GObject.GType<IconThemeError>;
+
         // Static fields of St.IconThemeError
 
         /**
@@ -344,6 +346,8 @@ export namespace St {
     }
 
     class Adjustment extends GObject.Object implements Clutter.Animatable {
+        static $gtype: GObject.GType<Adjustment>;
+
         // Own properties of St.Adjustment
 
         /**
@@ -961,6 +965,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Bin>;
+
         // Own properties of St.Bin
 
         /**
@@ -1512,6 +1518,8 @@ export namespace St {
     }
 
     class BorderImage extends GObject.Object {
+        static $gtype: GObject.GType<BorderImage>;
+
         // Constructors of St.BorderImage
 
         constructor(properties?: Partial<BorderImage.ConstructorProps>, ...args: any[]);
@@ -1567,6 +1575,8 @@ export namespace St {
         extends Viewport<Clutter.BoxLayout>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable, Scrollable
     {
+        static $gtype: GObject.GType<BoxLayout>;
+
         // Own properties of St.BoxLayout
 
         /**
@@ -2226,6 +2236,8 @@ export namespace St {
         extends Bin<A>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Button>;
+
         // Own properties of St.Button
 
         /**
@@ -2898,6 +2910,8 @@ export namespace St {
      * the provided API.
      */
     class Clipboard extends GObject.Object {
+        static $gtype: GObject.GType<Clipboard>;
+
         // Constructors of St.Clipboard
 
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
@@ -2972,6 +2986,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<DrawingArea>;
+
         // Constructors of St.DrawingArea
 
         constructor(properties?: Partial<DrawingArea.ConstructorProps>, ...args: any[]);
@@ -3587,6 +3603,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Entry>;
+
         // Own properties of St.Entry
 
         /**
@@ -4313,6 +4331,8 @@ export namespace St {
      * The #StFocusManager struct contains only private data
      */
     class FocusManager extends GObject.Object {
+        static $gtype: GObject.GType<FocusManager>;
+
         // Constructors of St.FocusManager
 
         constructor(properties?: Partial<FocusManager.ConstructorProps>, ...args: any[]);
@@ -4392,6 +4412,8 @@ export namespace St {
     }
 
     class GenericAccessible extends WidgetAccessible implements Atk.Action, Atk.Component, Atk.Value {
+        static $gtype: GObject.GType<GenericAccessible>;
+
         // Constructors of St.GenericAccessible
 
         constructor(properties?: Partial<GenericAccessible.ConstructorProps>, ...args: any[]);
@@ -4937,6 +4959,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Icon>;
+
         // Own properties of St.Icon
 
         /**
@@ -5582,6 +5606,8 @@ export namespace St {
     }
 
     class IconInfo extends GObject.Object {
+        static $gtype: GObject.GType<IconInfo>;
+
         // Constructors of St.IconInfo
 
         constructor(properties?: Partial<IconInfo.ConstructorProps>, ...args: any[]);
@@ -5732,6 +5758,8 @@ export namespace St {
      * current theme.
      */
     class IconTheme extends GObject.Object {
+        static $gtype: GObject.GType<IconTheme>;
+
         // Constructors of St.IconTheme
 
         constructor(properties?: Partial<IconTheme.ConstructorProps>, ...args: any[]);
@@ -6003,6 +6031,8 @@ export namespace St {
     }
 
     class ImageContent extends Clutter.Image implements Clutter.Content, Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<ImageContent>;
+
         // Own properties of St.ImageContent
 
         get preferred_height(): number;
@@ -6575,6 +6605,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Label>;
+
         // Own properties of St.Label
 
         /**
@@ -7154,6 +7186,8 @@ export namespace St {
         extends Entry<A>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<PasswordEntry>;
+
         // Own properties of St.PasswordEntry
 
         /**
@@ -7753,6 +7787,8 @@ export namespace St {
         extends Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<ScrollBar>;
+
         // Own properties of St.ScrollBar
 
         /**
@@ -8350,6 +8386,8 @@ export namespace St {
         extends Bin<A>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<ScrollView>;
+
         // Own properties of St.ScrollView
 
         /**
@@ -9017,6 +9055,8 @@ export namespace St {
     }
 
     class ScrollViewFade extends Clutter.ShaderEffect {
+        static $gtype: GObject.GType<ScrollViewFade>;
+
         // Own properties of St.ScrollViewFade
 
         /**
@@ -9085,6 +9125,8 @@ export namespace St {
     }
 
     class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
         // Own properties of St.Settings
 
         /**
@@ -9200,6 +9242,8 @@ export namespace St {
     }
 
     class TextureCache extends GObject.Object {
+        static $gtype: GObject.GType<TextureCache>;
+
         // Constructors of St.TextureCache
 
         constructor(properties?: Partial<TextureCache.ConstructorProps>, ...args: any[]);
@@ -9336,6 +9380,8 @@ export namespace St {
     }
 
     class Theme extends GObject.Object {
+        static $gtype: GObject.GType<Theme>;
+
         // Own properties of St.Theme
 
         /**
@@ -9427,6 +9473,8 @@ export namespace St {
     }
 
     class ThemeContext extends GObject.Object {
+        static $gtype: GObject.GType<ThemeContext>;
+
         // Own properties of St.ThemeContext
 
         /**
@@ -9521,6 +9569,8 @@ export namespace St {
     }
 
     class ThemeNode extends GObject.Object {
+        static $gtype: GObject.GType<ThemeNode>;
+
         // Constructors of St.ThemeNode
 
         constructor(properties?: Partial<ThemeNode.ConstructorProps>, ...args: any[]);
@@ -9992,6 +10042,8 @@ export namespace St {
         extends Widget<A, B>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<C>, Clutter.Scriptable, Scrollable
     {
+        static $gtype: GObject.GType<Viewport>;
+
         // Own properties of St.Viewport
 
         get clip_to_view(): boolean;
@@ -10655,6 +10707,8 @@ export namespace St {
         extends Clutter.Actor<A, B>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<C>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Widget>;
+
         // Own properties of St.Widget
 
         /**
@@ -11772,6 +11826,8 @@ export namespace St {
     }
 
     class WidgetAccessible extends Cally.Actor implements Atk.Action, Atk.Component {
+        static $gtype: GObject.GType<WidgetAccessible>;
+
         // Constructors of St.WidgetAccessible
 
         constructor(properties?: Partial<WidgetAccessible.ConstructorProps>, ...args: any[]);
@@ -12529,6 +12585,8 @@ export namespace St {
     type BorderImageClass = typeof BorderImage;
     type BoxLayoutClass = typeof BoxLayout;
     abstract class BoxLayoutPrivate {
+        static $gtype: GObject.GType<BoxLayoutPrivate>;
+
         // Constructors of St.BoxLayoutPrivate
 
         _init(...args: any[]): void;
@@ -12540,6 +12598,8 @@ export namespace St {
     type EntryClass = typeof Entry;
     type FocusManagerClass = typeof FocusManager;
     abstract class FocusManagerPrivate {
+        static $gtype: GObject.GType<FocusManagerPrivate>;
+
         // Constructors of St.FocusManagerPrivate
 
         _init(...args: any[]): void;
@@ -12547,6 +12607,8 @@ export namespace St {
 
     type GenericAccessibleClass = typeof GenericAccessible;
     abstract class GenericAccessiblePrivate {
+        static $gtype: GObject.GType<GenericAccessiblePrivate>;
+
         // Constructors of St.GenericAccessiblePrivate
 
         _init(...args: any[]): void;
@@ -12558,6 +12620,8 @@ export namespace St {
      * icon.
      */
     class IconColors {
+        static $gtype: GObject.GType<IconColors>;
+
         // Own fields of St.IconColors
 
         foreground: Clutter.Color;
@@ -12609,6 +12673,8 @@ export namespace St {
 
     type IconInfoClass = typeof IconInfo;
     abstract class IconPrivate {
+        static $gtype: GObject.GType<IconPrivate>;
+
         // Constructors of St.IconPrivate
 
         _init(...args: any[]): void;
@@ -12618,6 +12684,8 @@ export namespace St {
     type ImageContentClass = typeof ImageContent;
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
+        static $gtype: GObject.GType<LabelPrivate>;
+
         // Constructors of St.LabelPrivate
 
         _init(...args: any[]): void;
@@ -12628,6 +12696,8 @@ export namespace St {
     type ScrollViewClass = typeof ScrollView;
     type ScrollViewFadeClass = typeof ScrollViewFade;
     abstract class ScrollViewPrivate {
+        static $gtype: GObject.GType<ScrollViewPrivate>;
+
         // Constructors of St.ScrollViewPrivate
 
         _init(...args: any[]): void;
@@ -12639,6 +12709,8 @@ export namespace St {
      * Attributes of the -st-shadow property.
      */
     class Shadow {
+        static $gtype: GObject.GType<Shadow>;
+
         // Own fields of St.Shadow
 
         color: Clutter.Color;
@@ -12702,6 +12774,8 @@ export namespace St {
     }
 
     abstract class ShadowHelper {
+        static $gtype: GObject.GType<ShadowHelper>;
+
         // Constructors of St.ShadowHelper
 
         constructor(shadow: Shadow);
@@ -12733,6 +12807,8 @@ export namespace St {
 
     type TextureCacheClass = typeof TextureCache;
     abstract class TextureCachePrivate {
+        static $gtype: GObject.GType<TextureCachePrivate>;
+
         // Constructors of St.TextureCachePrivate
 
         _init(...args: any[]): void;
@@ -12742,6 +12818,8 @@ export namespace St {
     type ThemeContextClass = typeof ThemeContext;
     type ThemeNodeClass = typeof ThemeNode;
     class ThemeNodePaintState {
+        static $gtype: GObject.GType<ThemeNodePaintState>;
+
         // Own fields of St.ThemeNodePaintState
 
         node: ThemeNode;
@@ -12772,6 +12850,8 @@ export namespace St {
     type ViewportClass = typeof Viewport;
     type WidgetAccessibleClass = typeof WidgetAccessible;
     abstract class WidgetAccessiblePrivate {
+        static $gtype: GObject.GType<WidgetAccessiblePrivate>;
+
         // Constructors of St.WidgetAccessiblePrivate
 
         _init(...args: any[]): void;

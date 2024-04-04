@@ -143,6 +143,8 @@ export namespace UPowerGlib {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of UPowerGlib.Client
 
         /**
@@ -261,6 +263,8 @@ export namespace UPowerGlib {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ClientGlueProxy>, Gio.DBusInterface, Gio.Initable, ClientGlue
     {
+        static $gtype: GObject.GType<ClientGlueProxy>;
+
         // Constructors of UPowerGlib.ClientGlueProxy
 
         constructor(properties?: Partial<ClientGlueProxy.ConstructorProps>, ...args: any[]);
@@ -1125,6 +1129,8 @@ export namespace UPowerGlib {
      * The #UpClientGlueSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
+        static $gtype: GObject.GType<ClientGlueSkeleton>;
+
         // Constructors of UPowerGlib.ClientGlueSkeleton
 
         constructor(properties?: Partial<ClientGlueSkeleton.ConstructorProps>, ...args: any[]);
@@ -1753,6 +1759,8 @@ export namespace UPowerGlib {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of UPowerGlib.Device
 
         /**
@@ -2096,6 +2104,8 @@ export namespace UPowerGlib {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<DeviceGlueProxy>, Gio.DBusInterface, Gio.Initable, DeviceGlue
     {
+        static $gtype: GObject.GType<DeviceGlueProxy>;
+
         // Constructors of UPowerGlib.DeviceGlueProxy
 
         constructor(properties?: Partial<DeviceGlueProxy.ConstructorProps>, ...args: any[]);
@@ -3211,6 +3221,8 @@ export namespace UPowerGlib {
      * The #UpDeviceGlueSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
+        static $gtype: GObject.GType<DeviceGlueSkeleton>;
+
         // Constructors of UPowerGlib.DeviceGlueSkeleton
 
         constructor(properties?: Partial<DeviceGlueSkeleton.ConstructorProps>, ...args: any[]);
@@ -4050,6 +4062,8 @@ export namespace UPowerGlib {
     }
 
     class HistoryItem extends GObject.Object {
+        static $gtype: GObject.GType<HistoryItem>;
+
         // Own properties of UPowerGlib.HistoryItem
 
         get state(): number;
@@ -4121,6 +4135,8 @@ export namespace UPowerGlib {
     }
 
     class StatsItem extends GObject.Object {
+        static $gtype: GObject.GType<StatsItem>;
+
         // Own properties of UPowerGlib.StatsItem
 
         get accuracy(): number;
@@ -4173,6 +4189,8 @@ export namespace UPowerGlib {
     }
 
     class WakeupItem extends GObject.Object {
+        static $gtype: GObject.GType<WakeupItem>;
+
         // Own properties of UPowerGlib.WakeupItem
 
         get cmdline(): string;
@@ -4279,6 +4297,8 @@ export namespace UPowerGlib {
     }
 
     class Wakeups extends GObject.Object {
+        static $gtype: GObject.GType<Wakeups>;
+
         // Constructors of UPowerGlib.Wakeups
 
         constructor(properties?: Partial<Wakeups.ConstructorProps>, ...args: any[]);
@@ -4349,6 +4369,8 @@ export namespace UPowerGlib {
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<WakeupsGlueProxy>, Gio.DBusInterface, Gio.Initable, WakeupsGlue
     {
+        static $gtype: GObject.GType<WakeupsGlueProxy>;
+
         // Constructors of UPowerGlib.WakeupsGlueProxy
 
         constructor(properties?: Partial<WakeupsGlueProxy.ConstructorProps>, ...args: any[]);
@@ -5128,6 +5150,8 @@ export namespace UPowerGlib {
      * The #UpWakeupsGlueSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
+        static $gtype: GObject.GType<WakeupsGlueSkeleton>;
+
         // Constructors of UPowerGlib.WakeupsGlueSkeleton
 
         constructor(properties?: Partial<WakeupsGlueSkeleton.ConstructorProps>, ...args: any[]);
@@ -5624,6 +5648,8 @@ export namespace UPowerGlib {
     type ClientGlueIface = typeof ClientGlue;
     type ClientGlueProxyClass = typeof ClientGlueProxy;
     abstract class ClientGlueProxyPrivate {
+        static $gtype: GObject.GType<ClientGlueProxyPrivate>;
+
         // Constructors of UPowerGlib.ClientGlueProxyPrivate
 
         _init(...args: any[]): void;
@@ -5631,6 +5657,8 @@ export namespace UPowerGlib {
 
     type ClientGlueSkeletonClass = typeof ClientGlueSkeleton;
     abstract class ClientGlueSkeletonPrivate {
+        static $gtype: GObject.GType<ClientGlueSkeletonPrivate>;
+
         // Constructors of UPowerGlib.ClientGlueSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -5640,6 +5668,8 @@ export namespace UPowerGlib {
      * Private #UpClient data
      */
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of UPowerGlib.ClientPrivate
 
         _init(...args: any[]): void;
@@ -5649,6 +5679,8 @@ export namespace UPowerGlib {
     type DeviceGlueIface = typeof DeviceGlue;
     type DeviceGlueProxyClass = typeof DeviceGlueProxy;
     abstract class DeviceGlueProxyPrivate {
+        static $gtype: GObject.GType<DeviceGlueProxyPrivate>;
+
         // Constructors of UPowerGlib.DeviceGlueProxyPrivate
 
         _init(...args: any[]): void;
@@ -5656,6 +5688,8 @@ export namespace UPowerGlib {
 
     type DeviceGlueSkeletonClass = typeof DeviceGlueSkeleton;
     abstract class DeviceGlueSkeletonPrivate {
+        static $gtype: GObject.GType<DeviceGlueSkeletonPrivate>;
+
         // Constructors of UPowerGlib.DeviceGlueSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -5665,6 +5699,8 @@ export namespace UPowerGlib {
      * Private #PkDevice data
      */
     abstract class DevicePrivate {
+        static $gtype: GObject.GType<DevicePrivate>;
+
         // Constructors of UPowerGlib.DevicePrivate
 
         _init(...args: any[]): void;
@@ -5672,6 +5708,8 @@ export namespace UPowerGlib {
 
     type HistoryItemClass = typeof HistoryItem;
     abstract class HistoryItemPrivate {
+        static $gtype: GObject.GType<HistoryItemPrivate>;
+
         // Constructors of UPowerGlib.HistoryItemPrivate
 
         _init(...args: any[]): void;
@@ -5679,6 +5717,8 @@ export namespace UPowerGlib {
 
     type StatsItemClass = typeof StatsItem;
     abstract class StatsItemPrivate {
+        static $gtype: GObject.GType<StatsItemPrivate>;
+
         // Constructors of UPowerGlib.StatsItemPrivate
 
         _init(...args: any[]): void;
@@ -5686,6 +5726,8 @@ export namespace UPowerGlib {
 
     type WakeupItemClass = typeof WakeupItem;
     abstract class WakeupItemPrivate {
+        static $gtype: GObject.GType<WakeupItemPrivate>;
+
         // Constructors of UPowerGlib.WakeupItemPrivate
 
         _init(...args: any[]): void;
@@ -5695,6 +5737,8 @@ export namespace UPowerGlib {
     type WakeupsGlueIface = typeof WakeupsGlue;
     type WakeupsGlueProxyClass = typeof WakeupsGlueProxy;
     abstract class WakeupsGlueProxyPrivate {
+        static $gtype: GObject.GType<WakeupsGlueProxyPrivate>;
+
         // Constructors of UPowerGlib.WakeupsGlueProxyPrivate
 
         _init(...args: any[]): void;
@@ -5702,12 +5746,16 @@ export namespace UPowerGlib {
 
     type WakeupsGlueSkeletonClass = typeof WakeupsGlueSkeleton;
     abstract class WakeupsGlueSkeletonPrivate {
+        static $gtype: GObject.GType<WakeupsGlueSkeletonPrivate>;
+
         // Constructors of UPowerGlib.WakeupsGlueSkeletonPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class WakeupsPrivate {
+        static $gtype: GObject.GType<WakeupsPrivate>;
+
         // Constructors of UPowerGlib.WakeupsPrivate
 
         _init(...args: any[]): void;

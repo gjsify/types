@@ -1,7 +1,7 @@
 
 declare module 'gi://GXml?version=0.20' {
-    import GXml020 from '@girs/gxml-0.20';
-    export default GXml020;
+    import GXml from '@girs/gxml-0.20';
+    export default GXml;
 }
 
 declare module 'gi://GXml' {

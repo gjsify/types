@@ -24,6 +24,8 @@ export namespace GVncPulse {
     }
 
     class AudioPulse extends GVnc.BaseAudio implements GVnc.Audio {
+        static $gtype: GObject.GType<AudioPulse>;
+
         // Constructors of GVncPulse.AudioPulse
 
         constructor(properties?: Partial<AudioPulse.ConstructorProps>, ...args: any[]);
@@ -410,6 +412,8 @@ export namespace GVncPulse {
 
     type AudioPulseClass = typeof AudioPulse;
     abstract class AudioPulsePrivate {
+        static $gtype: GObject.GType<AudioPulsePrivate>;
+
         // Constructors of GVncPulse.AudioPulsePrivate
 
         _init(...args: any[]): void;

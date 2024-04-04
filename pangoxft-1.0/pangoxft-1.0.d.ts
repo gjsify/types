@@ -158,6 +158,8 @@ export namespace PangoXft {
      * library for rendering.  It is used in conjunction with `PangoXftFontMap`.
      */
     class Font extends PangoFc.Font {
+        static $gtype: GObject.GType<Font>;
+
         // Constructors of PangoXft.Font
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
@@ -211,6 +213,8 @@ export namespace PangoXft {
      * type `PangoXftFont`.
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<FontMap>;
+
         // Constructors of PangoXft.FontMap
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
@@ -682,6 +686,8 @@ export namespace PangoXft {
      * elements occurs.
      */
     class Renderer extends Pango.Renderer {
+        static $gtype: GObject.GType<Renderer>;
+
         // Own properties of PangoXft.Renderer
 
         set display(val: any);
@@ -717,6 +723,8 @@ export namespace PangoXft {
 
     type RendererClass = typeof Renderer;
     abstract class RendererPrivate {
+        static $gtype: GObject.GType<RendererPrivate>;
+
         // Constructors of PangoXft.RendererPrivate
 
         _init(...args: any[]): void;

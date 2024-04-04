@@ -834,6 +834,8 @@ export namespace Gladeui {
     }
 
     class AdaptorChooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<AdaptorChooser>;
+
         // Own properties of Gladeui.AdaptorChooser
 
         get project(): Project;
@@ -1247,6 +1249,8 @@ export namespace Gladeui {
     }
 
     class App extends GObject.Object {
+        static $gtype: GObject.GType<App>;
+
         // Constructors of Gladeui.App
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
@@ -1383,6 +1387,8 @@ export namespace Gladeui {
     }
 
     class BaseEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<BaseEditor>;
+
         // Own properties of Gladeui.BaseEditor
 
         // This accessor conflicts with a property or field in a parent class or interface.
@@ -1877,6 +1883,8 @@ export namespace Gladeui {
     }
 
     class CellRendererIcon extends Gtk.CellRendererPixbuf {
+        static $gtype: GObject.GType<CellRendererIcon>;
+
         // Own properties of Gladeui.CellRendererIcon
 
         get activatable(): boolean;
@@ -1924,6 +1932,8 @@ export namespace Gladeui {
     }
 
     class Clipboard extends GObject.Object {
+        static $gtype: GObject.GType<Clipboard>;
+
         // Own properties of Gladeui.Clipboard
 
         get has_selection(): boolean;
@@ -1960,6 +1970,8 @@ export namespace Gladeui {
     }
 
     class Command extends GObject.Object {
+        static $gtype: GObject.GType<Command>;
+
         // Constructors of Gladeui.Command
 
         constructor(properties?: Partial<Command.ConstructorProps>, ...args: any[]);
@@ -2185,6 +2197,8 @@ export namespace Gladeui {
     }
 
     class DesignView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<DesignView>;
+
         // Own properties of Gladeui.DesignView
 
         get project(): Project;
@@ -2594,6 +2608,8 @@ export namespace Gladeui {
     }
 
     class EPropBool extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropBool>;
+
         // Constructors of Gladeui.EPropBool
 
         constructor(properties?: Partial<EPropBool.ConstructorProps>, ...args: any[]);
@@ -6532,6 +6548,8 @@ export namespace Gladeui {
     }
 
     class EPropCheck extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropCheck>;
+
         // Constructors of Gladeui.EPropCheck
 
         constructor(properties?: Partial<EPropCheck.ConstructorProps>, ...args: any[]);
@@ -10470,6 +10488,8 @@ export namespace Gladeui {
     }
 
     class EPropColor extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropColor>;
+
         // Constructors of Gladeui.EPropColor
 
         constructor(properties?: Partial<EPropColor.ConstructorProps>, ...args: any[]);
@@ -14408,6 +14428,8 @@ export namespace Gladeui {
     }
 
     class EPropEnum extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropEnum>;
+
         // Constructors of Gladeui.EPropEnum
 
         constructor(properties?: Partial<EPropEnum.ConstructorProps>, ...args: any[]);
@@ -18346,6 +18368,8 @@ export namespace Gladeui {
     }
 
     class EPropFlags extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropFlags>;
+
         // Constructors of Gladeui.EPropFlags
 
         constructor(properties?: Partial<EPropFlags.ConstructorProps>, ...args: any[]);
@@ -22287,6 +22311,8 @@ export namespace Gladeui {
         extends EditorProperty
         implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable
     {
+        static $gtype: GObject.GType<EPropNamedIcon>;
+
         // Constructors of Gladeui.EPropNamedIcon
 
         constructor(properties?: Partial<EPropNamedIcon.ConstructorProps>, ...args: any[]);
@@ -26225,6 +26251,8 @@ export namespace Gladeui {
     }
 
     class EPropNumeric extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropNumeric>;
+
         // Constructors of Gladeui.EPropNumeric
 
         constructor(properties?: Partial<EPropNumeric.ConstructorProps>, ...args: any[]);
@@ -30163,6 +30191,8 @@ export namespace Gladeui {
     }
 
     class EPropObject extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropObject>;
+
         // Constructors of Gladeui.EPropObject
 
         constructor(properties?: Partial<EPropObject.ConstructorProps>, ...args: any[]);
@@ -34101,6 +34131,8 @@ export namespace Gladeui {
     }
 
     class EPropObjects extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropObjects>;
+
         // Constructors of Gladeui.EPropObjects
 
         constructor(properties?: Partial<EPropObjects.ConstructorProps>, ...args: any[]);
@@ -38039,6 +38071,8 @@ export namespace Gladeui {
     }
 
     class EPropText extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropText>;
+
         // Constructors of Gladeui.EPropText
 
         constructor(properties?: Partial<EPropText.ConstructorProps>, ...args: any[]);
@@ -41977,6 +42011,8 @@ export namespace Gladeui {
     }
 
     class EPropUnichar extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EPropUnichar>;
+
         // Constructors of Gladeui.EPropUnichar
 
         constructor(properties?: Partial<EPropUnichar.ConstructorProps>, ...args: any[]);
@@ -45926,6 +45962,8 @@ export namespace Gladeui {
     }
 
     class Editor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Editor>;
+
         // Own properties of Gladeui.Editor
 
         get class_field(): string;
@@ -46379,6 +46417,8 @@ export namespace Gladeui {
     }
 
     class EditorProperty extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EditorProperty>;
+
         // Own properties of Gladeui.EditorProperty
 
         get custom_text(): string;
@@ -50418,6 +50458,8 @@ export namespace Gladeui {
     }
 
     class EditorSkeleton extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EditorSkeleton>;
+
         // Constructors of Gladeui.EditorSkeleton
 
         constructor(properties?: Partial<EditorSkeleton.ConstructorProps>, ...args: any[]);
@@ -54377,6 +54419,8 @@ export namespace Gladeui {
     }
 
     class EditorTable extends Gtk.Grid implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<EditorTable>;
+
         // Own properties of Gladeui.EditorTable
 
         set page_type(val: EditorPageType);
@@ -58351,6 +58395,8 @@ export namespace Gladeui {
      * The #GladeInspector struct contains private data only, and should be manipulated using the functions below.
      */
     class Inspector extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Inspector>;
+
         // Own properties of Gladeui.Inspector
 
         get project(): Project;
@@ -58796,6 +58842,8 @@ export namespace Gladeui {
     }
 
     class NamedIconChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<NamedIconChooserDialog>;
+
         // Constructors of Gladeui.NamedIconChooserDialog
 
         constructor(properties?: Partial<NamedIconChooserDialog.ConstructorProps>, ...args: any[]);
@@ -59210,6 +59258,8 @@ export namespace Gladeui {
     }
 
     class Palette extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Palette>;
+
         // Own properties of Gladeui.Palette
 
         get item_appearance(): ItemAppearance;
@@ -59657,6 +59707,8 @@ export namespace Gladeui {
     }
 
     class Placeholder extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<Placeholder>;
+
         // Own fields of Gladeui.Placeholder
 
         widget: Gtk.Widget;
@@ -60399,6 +60451,8 @@ export namespace Gladeui {
     }
 
     class Project extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
+        static $gtype: GObject.GType<Project>;
+
         // Own properties of Gladeui.Project
 
         get add_item(): WidgetAdaptor;
@@ -61660,6 +61714,8 @@ export namespace Gladeui {
     }
 
     class Property extends GObject.Object {
+        static $gtype: GObject.GType<Property>;
+
         // Own properties of Gladeui.Property
 
         get class(): any;
@@ -61870,6 +61926,8 @@ export namespace Gladeui {
     }
 
     class PropertyLabel extends Gtk.EventBox implements Atk.ImplementorIface, Editable, Gtk.Buildable {
+        static $gtype: GObject.GType<PropertyLabel>;
+
         // Own properties of Gladeui.PropertyLabel
 
         get append_colon(): boolean;
@@ -65867,6 +65925,8 @@ export namespace Gladeui {
     }
 
     class PropertyShell extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<PropertyShell>;
+
         // Own properties of Gladeui.PropertyShell
 
         get custom_text(): string;
@@ -69871,6 +69931,8 @@ export namespace Gladeui {
     }
 
     class Signal extends GObject.Object {
+        static $gtype: GObject.GType<Signal>;
+
         // Own properties of Gladeui.Signal
 
         get after(): boolean;
@@ -70014,6 +70076,8 @@ export namespace Gladeui {
     }
 
     class SignalEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<SignalEditor>;
+
         // Own properties of Gladeui.SignalEditor
 
         get glade_widget(): Gtk.TreeModel;
@@ -70449,6 +70513,8 @@ export namespace Gladeui {
     }
 
     class SignalModel extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
+        static $gtype: GObject.GType<SignalModel>;
+
         // Own properties of Gladeui.SignalModel
 
         set signals(val: any);
@@ -71341,6 +71407,8 @@ export namespace Gladeui {
     }
 
     class Widget extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<Widget>;
+
         // Own properties of Gladeui.Widget
 
         get adaptor(): WidgetAdaptor;
@@ -71994,6 +72062,8 @@ export namespace Gladeui {
     }
 
     class WidgetAction extends GObject.Object {
+        static $gtype: GObject.GType<WidgetAction>;
+
         // Own properties of Gladeui.WidgetAction
 
         set definition(val: any);
@@ -72043,6 +72113,8 @@ export namespace Gladeui {
     }
 
     class WidgetAdaptor extends GObject.Object {
+        static $gtype: GObject.GType<WidgetAdaptor>;
+
         // Own properties of Gladeui.WidgetAdaptor
 
         get book(): string;
@@ -72668,6 +72740,8 @@ export namespace Gladeui {
     type AppClass = typeof App;
     type BaseEditorClass = typeof BaseEditor;
     abstract class Catalog {
+        static $gtype: GObject.GType<Catalog>;
+
         // Constructors of Gladeui.Catalog
 
         _init(...args: any[]): void;
@@ -72722,6 +72796,8 @@ export namespace Gladeui {
      * their old and new #GValue.
      */
     class CommandSetPropData {
+        static $gtype: GObject.GType<CommandSetPropData>;
+
         // Own fields of Gladeui.CommandSetPropData
 
         property: Property;
@@ -72732,6 +72808,8 @@ export namespace Gladeui {
     }
 
     class Cursor {
+        static $gtype: GObject.GType<Cursor>;
+
         // Own fields of Gladeui.Cursor
 
         selector: Gdk.Cursor;
@@ -72775,6 +72853,8 @@ export namespace Gladeui {
     type EditorSkeletonClass = typeof EditorSkeleton;
     type EditorTableClass = typeof EditorTable;
     abstract class IDAllocator {
+        static $gtype: GObject.GType<IDAllocator>;
+
         // Constructors of Gladeui.IDAllocator
 
         _init(...args: any[]): void;
@@ -72799,6 +72879,8 @@ export namespace Gladeui {
 
     type InspectorClass = typeof Inspector;
     abstract class NameContext {
+        static $gtype: GObject.GType<NameContext>;
+
         // Constructors of Gladeui.NameContext
 
         _init(...args: any[]): void;
@@ -72816,12 +72898,16 @@ export namespace Gladeui {
     type NamedIconChooserDialogClass = typeof NamedIconChooserDialog;
     type PaletteClass = typeof Palette;
     abstract class PalettePrivate {
+        static $gtype: GObject.GType<PalettePrivate>;
+
         // Constructors of Gladeui.PalettePrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ParamSpecObjects {
+        static $gtype: GObject.GType<ParamSpecObjects>;
+
         // Constructors of Gladeui.ParamSpecObjects
 
         _init(...args: any[]): void;
@@ -72834,6 +72920,8 @@ export namespace Gladeui {
 
     type PlaceholderClass = typeof Placeholder;
     abstract class PlaceholderPrivate {
+        static $gtype: GObject.GType<PlaceholderPrivate>;
+
         // Constructors of Gladeui.PlaceholderPrivate
 
         _init(...args: any[]): void;
@@ -72841,6 +72929,8 @@ export namespace Gladeui {
 
     type ProjectClass = typeof Project;
     abstract class ProjectPrivate {
+        static $gtype: GObject.GType<ProjectPrivate>;
+
         // Constructors of Gladeui.ProjectPrivate
 
         _init(...args: any[]): void;
@@ -72848,6 +72938,8 @@ export namespace Gladeui {
 
     type PropertyClass = typeof Property;
     abstract class PropertyDef {
+        static $gtype: GObject.GType<PropertyDef>;
+
         // Constructors of Gladeui.PropertyDef
 
         constructor(adaptor: WidgetAdaptor, id: string);
@@ -72958,12 +73050,16 @@ export namespace Gladeui {
 
     type PropertyLabelClass = typeof PropertyLabel;
     abstract class PropertyLabelPrivate {
+        static $gtype: GObject.GType<PropertyLabelPrivate>;
+
         // Constructors of Gladeui.PropertyLabelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class PropertyPrivate {
+        static $gtype: GObject.GType<PropertyPrivate>;
+
         // Constructors of Gladeui.PropertyPrivate
 
         _init(...args: any[]): void;
@@ -72971,6 +73067,8 @@ export namespace Gladeui {
 
     type PropertyShellClass = typeof PropertyShell;
     abstract class PropertyShellPrivate {
+        static $gtype: GObject.GType<PropertyShellPrivate>;
+
         // Constructors of Gladeui.PropertyShellPrivate
 
         _init(...args: any[]): void;
@@ -72978,6 +73076,8 @@ export namespace Gladeui {
 
     type SignalClass = typeof Signal;
     abstract class SignalDef {
+        static $gtype: GObject.GType<SignalDef>;
+
         // Constructors of Gladeui.SignalDef
 
         constructor(adaptor: WidgetAdaptor, for_type: GObject.GType, signal_id: number);
@@ -73059,18 +73159,24 @@ export namespace Gladeui {
     type SignalEditorClass = typeof SignalEditor;
     type SignalModelClass = typeof SignalModel;
     abstract class SignalModelPrivate {
+        static $gtype: GObject.GType<SignalModelPrivate>;
+
         // Constructors of Gladeui.SignalModelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class SignalPrivate {
+        static $gtype: GObject.GType<SignalPrivate>;
+
         // Constructors of Gladeui.SignalPrivate
 
         _init(...args: any[]): void;
     }
 
     class TargetableVersion {
+        static $gtype: GObject.GType<TargetableVersion>;
+
         // Own fields of Gladeui.TargetableVersion
 
         major: number;
@@ -73089,6 +73195,8 @@ export namespace Gladeui {
 
     type WidgetActionClass = typeof WidgetAction;
     class WidgetActionDef {
+        static $gtype: GObject.GType<WidgetActionDef>;
+
         // Own fields of Gladeui.WidgetActionDef
 
         id: string;
@@ -73126,6 +73234,8 @@ export namespace Gladeui {
     }
 
     abstract class WidgetActionPrivate {
+        static $gtype: GObject.GType<WidgetActionPrivate>;
+
         // Constructors of Gladeui.WidgetActionPrivate
 
         _init(...args: any[]): void;
@@ -73134,6 +73244,8 @@ export namespace Gladeui {
     type WidgetAdaptorClass = typeof WidgetAdaptor;
     type WidgetClass = typeof Widget;
     abstract class WidgetGroup {
+        static $gtype: GObject.GType<WidgetGroup>;
+
         // Constructors of Gladeui.WidgetGroup
 
         _init(...args: any[]): void;
@@ -73147,12 +73259,16 @@ export namespace Gladeui {
     }
 
     abstract class WidgetPrivate {
+        static $gtype: GObject.GType<WidgetPrivate>;
+
         // Constructors of Gladeui.WidgetPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class XmlContext {
+        static $gtype: GObject.GType<XmlContext>;
+
         // Constructors of Gladeui.XmlContext
 
         constructor(doc: XmlDoc, name_space?: string | null);
@@ -73177,6 +73293,8 @@ export namespace Gladeui {
     }
 
     abstract class XmlDoc {
+        static $gtype: GObject.GType<XmlDoc>;
+
         // Constructors of Gladeui.XmlDoc
 
         constructor(properties?: Partial<{}>);
@@ -73202,6 +73320,8 @@ export namespace Gladeui {
     }
 
     abstract class XmlNode {
+        static $gtype: GObject.GType<XmlNode>;
+
         // Constructors of Gladeui.XmlNode
 
         constructor(context: XmlContext, name: string);

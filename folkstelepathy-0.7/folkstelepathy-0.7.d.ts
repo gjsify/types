@@ -28,6 +28,8 @@ export namespace FolksTelepathy {
     }
 
     class PersonaStore extends Folks.PersonaStore {
+        static $gtype: GObject.GType<PersonaStore>;
+
         // Own properties of FolksTelepathy.PersonaStore
 
         get account(): TelepathyGLib.Account;
@@ -89,6 +91,8 @@ export namespace FolksTelepathy {
             Folks.PresenceDetails,
             Folks.UrlDetails
     {
+        static $gtype: GObject.GType<Persona>;
+
         // Own properties of FolksTelepathy.Persona
 
         get is_in_contact_list(): boolean;
@@ -682,6 +686,8 @@ export namespace FolksTelepathy {
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
+        static $gtype: GObject.GType<PersonaStorePrivate>;
+
         // Constructors of FolksTelepathy.PersonaStorePrivate
 
         _init(...args: any[]): void;
@@ -689,6 +695,8 @@ export namespace FolksTelepathy {
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
+        static $gtype: GObject.GType<PersonaPrivate>;
+
         // Constructors of FolksTelepathy.PersonaPrivate
 
         _init(...args: any[]): void;

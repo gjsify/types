@@ -41,6 +41,8 @@ export namespace Gtef {
      * An error code used with the %GTEF_FILE_LOADER_ERROR domain.
      */
     class FileLoaderError extends GLib.Error {
+        static $gtype: GObject.GType<FileLoaderError>;
+
         // Static fields of Gtef.FileLoaderError
 
         /**
@@ -67,6 +69,8 @@ export namespace Gtef {
      * An error code used with the %GTEF_FILE_SAVER_ERROR domain.
      */
     class FileSaverError extends GLib.Error {
+        static $gtype: GObject.GType<FileSaverError>;
+
         // Static fields of Gtef.FileSaverError
 
         /**
@@ -281,6 +285,8 @@ export namespace Gtef {
     }
 
     class ActionInfoCentralStore extends GObject.Object {
+        static $gtype: GObject.GType<ActionInfoCentralStore>;
+
         // Constructors of Gtef.ActionInfoCentralStore
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
@@ -305,6 +311,8 @@ export namespace Gtef {
     }
 
     class ActionInfoStore extends GObject.Object {
+        static $gtype: GObject.GType<ActionInfoStore>;
+
         // Own properties of Gtef.ActionInfoStore
 
         /**
@@ -383,6 +391,8 @@ export namespace Gtef {
     }
 
     class Application extends GObject.Object {
+        static $gtype: GObject.GType<Application>;
+
         // Own properties of Gtef.Application
 
         /**
@@ -440,6 +450,8 @@ export namespace Gtef {
     }
 
     class ApplicationWindow extends GObject.Object {
+        static $gtype: GObject.GType<ApplicationWindow>;
+
         // Own properties of Gtef.ApplicationWindow
 
         /**
@@ -542,6 +554,8 @@ export namespace Gtef {
     }
 
     class Buffer extends GtkSource.Buffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own properties of Gtef.Buffer
 
         /**
@@ -652,6 +666,8 @@ export namespace Gtef {
     }
 
     class File extends GObject.Object {
+        static $gtype: GObject.GType<File>;
+
         // Own properties of Gtef.File
 
         /**
@@ -795,6 +811,8 @@ export namespace Gtef {
     }
 
     class FileLoader extends GObject.Object {
+        static $gtype: GObject.GType<FileLoader>;
+
         // Own properties of Gtef.FileLoader
 
         /**
@@ -904,6 +922,8 @@ export namespace Gtef {
     }
 
     class FileMetadata extends GObject.Object {
+        static $gtype: GObject.GType<FileMetadata>;
+
         // Own properties of Gtef.FileMetadata
 
         /**
@@ -1029,6 +1049,8 @@ export namespace Gtef {
     }
 
     class FileSaver extends GObject.Object {
+        static $gtype: GObject.GType<FileSaver>;
+
         // Own properties of Gtef.FileSaver
 
         /**
@@ -1160,6 +1182,8 @@ export namespace Gtef {
     }
 
     class FoldRegion extends GObject.Object {
+        static $gtype: GObject.GType<FoldRegion>;
+
         // Own properties of Gtef.FoldRegion
 
         /**
@@ -1210,6 +1234,8 @@ export namespace Gtef {
     }
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
+        static $gtype: GObject.GType<GutterRendererFolds>;
+
         // Constructors of Gtef.GutterRendererFolds
 
         constructor(properties?: Partial<GutterRendererFolds.ConstructorProps>, ...args: any[]);
@@ -1241,6 +1267,8 @@ export namespace Gtef {
     }
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<InfoBar>;
+
         // Constructors of Gtef.InfoBar
 
         constructor(properties?: Partial<InfoBar.ConstructorProps>, ...args: any[]);
@@ -1675,6 +1703,8 @@ export namespace Gtef {
     }
 
     class MenuShell extends GObject.Object {
+        static $gtype: GObject.GType<MenuShell>;
+
         // Own properties of Gtef.MenuShell
 
         /**
@@ -1737,6 +1767,8 @@ export namespace Gtef {
     }
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Tab>;
+
         // Constructors of Gtef.Tab
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
@@ -2145,6 +2177,8 @@ export namespace Gtef {
     }
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<View>;
+
         // Constructors of Gtef.View
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
@@ -2564,6 +2598,8 @@ export namespace Gtef {
     }
 
     class ActionInfo {
+        static $gtype: GObject.GType<ActionInfo>;
+
         // Constructors of Gtef.ActionInfo
 
         constructor(properties?: Partial<{}>);
@@ -2617,6 +2653,8 @@ export namespace Gtef {
 
     type ActionInfoCentralStoreClass = typeof ActionInfoCentralStore;
     abstract class ActionInfoCentralStorePrivate {
+        static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
+
         // Constructors of Gtef.ActionInfoCentralStorePrivate
 
         _init(...args: any[]): void;
@@ -2631,6 +2669,8 @@ export namespace Gtef {
      * may be added in the future.
      */
     class ActionInfoEntry {
+        static $gtype: GObject.GType<ActionInfoEntry>;
+
         // Own fields of Gtef.ActionInfoEntry
 
         action_name: string;
@@ -2655,6 +2695,8 @@ export namespace Gtef {
 
     type ActionInfoStoreClass = typeof ActionInfoStore;
     abstract class ActionInfoStorePrivate {
+        static $gtype: GObject.GType<ActionInfoStorePrivate>;
+
         // Constructors of Gtef.ActionInfoStorePrivate
 
         _init(...args: any[]): void;
@@ -2662,6 +2704,8 @@ export namespace Gtef {
 
     type ApplicationClass = typeof Application;
     abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
         // Constructors of Gtef.ApplicationPrivate
 
         _init(...args: any[]): void;
@@ -2669,6 +2713,8 @@ export namespace Gtef {
 
     type ApplicationWindowClass = typeof ApplicationWindow;
     abstract class ApplicationWindowPrivate {
+        static $gtype: GObject.GType<ApplicationWindowPrivate>;
+
         // Constructors of Gtef.ApplicationWindowPrivate
 
         _init(...args: any[]): void;
@@ -2676,6 +2722,8 @@ export namespace Gtef {
 
     type BufferClass = typeof Buffer;
     class Encoding {
+        static $gtype: GObject.GType<Encoding>;
+
         // Constructors of Gtef.Encoding
 
         constructor(properties?: Partial<{}>);
@@ -2732,6 +2780,8 @@ export namespace Gtef {
     type FileMetadataClass = typeof FileMetadata;
     type FileSaverClass = typeof FileSaver;
     abstract class FileSaverPrivate {
+        static $gtype: GObject.GType<FileSaverPrivate>;
+
         // Constructors of Gtef.FileSaverPrivate
 
         _init(...args: any[]): void;
@@ -2742,6 +2792,8 @@ export namespace Gtef {
     type InfoBarClass = typeof InfoBar;
     type MenuShellClass = typeof MenuShell;
     abstract class MenuShellPrivate {
+        static $gtype: GObject.GType<MenuShellPrivate>;
+
         // Constructors of Gtef.MenuShellPrivate
 
         _init(...args: any[]): void;

@@ -97,6 +97,8 @@ export namespace Qrtr {
      * using the provided API.
      */
     class Bus extends GObject.Object implements Gio.AsyncInitable<Bus> {
+        static $gtype: GObject.GType<Bus>;
+
         // Own properties of Qrtr.Bus
 
         get lookup_timeout(): number;
@@ -695,6 +697,8 @@ export namespace Qrtr {
      * using the provided API.
      */
     class Client extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Qrtr.Client
 
         get client_node(): Node;
@@ -1216,6 +1220,8 @@ export namespace Qrtr {
      * using the provided API.
      */
     class Node extends GObject.Object {
+        static $gtype: GObject.GType<Node>;
+
         // Own properties of Qrtr.Node
 
         get bus(): Bus;
@@ -1321,6 +1327,8 @@ export namespace Qrtr {
 
     type BusClass = typeof Bus;
     abstract class BusPrivate {
+        static $gtype: GObject.GType<BusPrivate>;
+
         // Constructors of Qrtr.BusPrivate
 
         _init(...args: any[]): void;
@@ -1328,6 +1336,8 @@ export namespace Qrtr {
 
     type ClientClass = typeof Client;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of Qrtr.ClientPrivate
 
         _init(...args: any[]): void;
@@ -1335,6 +1345,8 @@ export namespace Qrtr {
 
     type NodeClass = typeof Node;
     abstract class NodePrivate {
+        static $gtype: GObject.GType<NodePrivate>;
+
         // Constructors of Qrtr.NodePrivate
 
         _init(...args: any[]): void;
@@ -1344,6 +1356,8 @@ export namespace Qrtr {
      * Information for a service instance in the #QrtrNode.
      */
     abstract class NodeServiceInfo {
+        static $gtype: GObject.GType<NodeServiceInfo>;
+
         // Constructors of Qrtr.NodeServiceInfo
 
         _init(...args: any[]): void;

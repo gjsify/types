@@ -2547,6 +2547,8 @@ export namespace GObject {
      * #GBinding is available since GObject 2.26
      */
     class Binding extends Object {
+        static $gtype: GType<Binding>;
+
         // Own properties of GObject.Binding
 
         /**
@@ -2697,6 +2699,8 @@ export namespace GObject {
      * with g_binding_group_set_source().
      */
     class BindingGroup extends Object {
+        static $gtype: GType<BindingGroup>;
+
         // Own properties of GObject.BindingGroup
 
         /**
@@ -2805,6 +2809,8 @@ export namespace GObject {
      * implementation and should never be accessed directly.
      */
     class InitiallyUnowned extends Object {
+        static $gtype: GType<InitiallyUnowned>;
+
         // Constructors of GObject.InitiallyUnowned
 
         constructor(properties?: Partial<InitiallyUnowned.ConstructorProps>, ...args: any[]);
@@ -2839,6 +2845,8 @@ export namespace GObject {
      * by G_ADD_PRIVATE().
      */
     class Object {
+        static $gtype: GType<Object>;
+
         // Constructors of GObject.Object
 
         _init(...args: any[]): void;
@@ -3298,6 +3306,8 @@ export namespace GObject {
      * efficient, and is the ‘canonical form’. Using `_` is discouraged.
      */
     abstract class ParamSpec<A = unknown> {
+        static $gtype: GType<ParamSpec>;
+
         // Own fields of GObject.ParamSpec
 
         name: string;
@@ -3581,6 +3591,8 @@ export namespace GObject {
      * all of the signals will be transitioned correctly.
      */
     class SignalGroup extends Object {
+        static $gtype: GType<SignalGroup>;
+
         // Own properties of GObject.SignalGroup
 
         /**
@@ -3722,6 +3734,8 @@ export namespace GObject {
      * in #GTypeModuleClass.
      */
     abstract class TypeModule extends Object implements TypePlugin {
+        static $gtype: GType<TypeModule>;
+
         // Own fields of GObject.TypeModule
 
         use_count: number;
@@ -4208,6 +4222,8 @@ export namespace GObject {
      * A #GCClosure is a specialization of #GClosure for C function callbacks.
      */
     class CClosure {
+        static $gtype: GType<CClosure>;
+
         // Own fields of GObject.CClosure
 
         callback: any;
@@ -4641,6 +4657,8 @@ export namespace GObject {
     }
 
     class ClosureNotifyData {
+        static $gtype: GType<ClosureNotifyData>;
+
         // Own fields of GObject.ClosureNotifyData
 
         data: any;
@@ -4656,6 +4674,8 @@ export namespace GObject {
      * possible values.
      */
     class EnumClass {
+        static $gtype: GType<EnumClass>;
+
         // Own fields of GObject.EnumClass
 
         minimum: number;
@@ -4673,6 +4693,8 @@ export namespace GObject {
      * nickname.
      */
     class EnumValue {
+        static $gtype: GType<EnumValue>;
+
         // Own fields of GObject.EnumValue
 
         value: number;
@@ -4696,6 +4718,8 @@ export namespace GObject {
      * possible values.
      */
     class FlagsClass {
+        static $gtype: GType<FlagsClass>;
+
         // Own fields of GObject.FlagsClass
 
         mask: number;
@@ -4712,6 +4736,8 @@ export namespace GObject {
      * nickname.
      */
     class FlagsValue {
+        static $gtype: GType<FlagsValue>;
+
         // Own fields of GObject.FlagsValue
 
         value: number;
@@ -4736,6 +4762,8 @@ export namespace GObject {
      * used specifically for managing interface types.
      */
     class InterfaceInfo {
+        static $gtype: GType<InterfaceInfo>;
+
         // Own fields of GObject.InterfaceInfo
 
         interface_init: InterfaceInitFunc;
@@ -4753,6 +4781,8 @@ export namespace GObject {
      * #GParamSpec/#GValue pairs to the `constructor` of a #GObjectClass.
      */
     class ObjectConstructParam {
+        static $gtype: GType<ObjectConstructParam>;
+
         // Own fields of GObject.ObjectConstructParam
 
         pspec: ParamSpec;
@@ -4771,6 +4801,8 @@ export namespace GObject {
      * store the #GParamSpecs of the properties all object types.
      */
     abstract class ParamSpecPool {
+        static $gtype: GType<ParamSpecPool>;
+
         // Constructors of GObject.ParamSpecPool
 
         _init(...args: any[]): void;
@@ -4823,6 +4855,8 @@ export namespace GObject {
      * g_param_type_register_static().
      */
     class ParamSpecTypeInfo {
+        static $gtype: GType<ParamSpecTypeInfo>;
+
         // Own fields of GObject.ParamSpecTypeInfo
 
         instance_size: number;
@@ -4839,6 +4873,8 @@ export namespace GObject {
      * to hand parameter name/value pairs to g_object_newv().
      */
     class Parameter {
+        static $gtype: GType<Parameter>;
+
         // Own fields of GObject.Parameter
 
         name: string;
@@ -4853,6 +4889,8 @@ export namespace GObject {
      * to callbacks during a signal emission.
      */
     class SignalInvocationHint {
+        static $gtype: GType<SignalInvocationHint>;
+
         // Own fields of GObject.SignalInvocationHint
 
         signal_id: number;
@@ -4870,6 +4908,8 @@ export namespace GObject {
      * See also: g_signal_query()
      */
     class SignalQuery {
+        static $gtype: GType<SignalQuery>;
+
         // Own fields of GObject.SignalQuery
 
         signal_id: number;
@@ -4889,6 +4929,8 @@ export namespace GObject {
      * An opaque structure used as the base of all classes.
      */
     class TypeClass {
+        static $gtype: GType<TypeClass>;
+
         // Constructors of GObject.TypeClass
 
         _init(...args: any[]): void;
@@ -5016,6 +5058,8 @@ export namespace GObject {
      * used specifically for managing fundamental types.
      */
     class TypeFundamentalInfo {
+        static $gtype: GType<TypeFundamentalInfo>;
+
         // Own fields of GObject.TypeFundamentalInfo
 
         type_flags: TypeFundamentalFlags;
@@ -5037,6 +5081,8 @@ export namespace GObject {
      * across invocation of g_type_register_static().
      */
     class TypeInfo {
+        static $gtype: GType<TypeInfo>;
+
         // Own fields of GObject.TypeInfo
 
         class_size: number;
@@ -5058,6 +5104,8 @@ export namespace GObject {
      * An opaque structure used as the base of all type instances.
      */
     class TypeInstance {
+        static $gtype: GType<TypeInstance>;
+
         // Constructors of GObject.TypeInstance
 
         _init(...args: any[]): void;
@@ -5071,6 +5119,8 @@ export namespace GObject {
      * An opaque structure used as the base of all interface types.
      */
     class TypeInterface {
+        static $gtype: GType<TypeInterface>;
+
         // Constructors of GObject.TypeInterface
 
         _init(...args: any[]): void;
@@ -5137,6 +5187,8 @@ export namespace GObject {
      * the lifecycle of dynamically loaded types.
      */
     class TypePluginClass {
+        static $gtype: GType<TypePluginClass>;
+
         // Own fields of GObject.TypePluginClass
 
         use_plugin: TypePluginUse;
@@ -5155,6 +5207,8 @@ export namespace GObject {
      * See also: g_type_query()
      */
     class TypeQuery {
+        static $gtype: GType<TypeQuery>;
+
         // Own fields of GObject.TypeQuery
 
         type: GType;
@@ -5172,6 +5226,8 @@ export namespace GObject {
      * implementation, to serve as a container for values of a type.
      */
     class TypeValueTable {
+        static $gtype: GType<TypeValueTable>;
+
         // Own fields of GObject.TypeValueTable
 
         value_init: TypeValueInitFunc;
@@ -5201,6 +5257,8 @@ export namespace GObject {
      * only be accessed through the G_VALUE_TYPE() macro.
      */
     class Value {
+        static $gtype: GType<Value>;
+
         // Constructors of GObject.Value
 
         _init(...args: any[]): void;
@@ -5603,6 +5661,8 @@ export namespace GObject {
      * A #GValueArray contains an array of #GValue elements.
      */
     class ValueArray {
+        static $gtype: GType<ValueArray>;
+
         // Own fields of GObject.ValueArray
 
         n_values: number;
@@ -5705,18 +5765,24 @@ export namespace GObject {
      * without first having or creating a strong reference to the object.
      */
     class WeakRef {
+        static $gtype: GType<WeakRef>;
+
         // Constructors of GObject.WeakRef
 
         _init(...args: any[]): void;
     }
 
     class TypeCValue {
+        static $gtype: GType<TypeCValue>;
+
         // Constructors of GObject.TypeCValue
 
         _init(...args: any[]): void;
     }
 
     abstract class _Value__data__union {
+        static $gtype: GType<_Value__data__union>;
+
         // Own fields of GObject._Value__data__union
 
         v_int: number;

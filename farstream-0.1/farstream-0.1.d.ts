@@ -51,6 +51,8 @@ export namespace Farstream {
      * http://www.iana.org/assignments/audio-telephone-event-registry
      */
     class DTMFEvent {
+        static $gtype: GObject.GType<DTMFEvent>;
+
         // Static fields of Farstream.DTMFEvent
 
         static '0': number;
@@ -87,6 +89,8 @@ export namespace Farstream {
      * signal, from the Gst Bus or for error in the FS_ERROR domain in GErrors
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Farstream.Error
 
         static CONSTRUCTION: number;
@@ -297,6 +301,8 @@ export namespace Farstream {
      * The #FsConference structure, all the members are private
      */
     class Conference extends Gst.Bin implements Gst.ChildProxy {
+        static $gtype: GObject.GType<Conference>;
+
         // Constructors of Farstream.Conference
 
         constructor(properties?: Partial<Conference.ConstructorProps>, ...args: any[]);
@@ -372,6 +378,8 @@ export namespace Farstream {
      * All members are private
      */
     class ElementAddedNotifier extends GObject.Object {
+        static $gtype: GObject.GType<ElementAddedNotifier>;
+
         // Constructors of Farstream.ElementAddedNotifier
 
         constructor(properties?: Partial<ElementAddedNotifier.ConstructorProps>, ...args: any[]);
@@ -445,6 +453,8 @@ export namespace Farstream {
      * All members are private (access them using the properties)
      */
     abstract class Participant extends Gst.Object {
+        static $gtype: GObject.GType<Participant>;
+
         // Constructors of Farstream.Participant
 
         constructor(properties?: Partial<Participant.ConstructorProps>, ...args: any[]);
@@ -462,6 +472,8 @@ export namespace Farstream {
      * This structure represents a plugin, it is opaque.
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
+        static $gtype: GObject.GType<Plugin>;
+
         // Constructors of Farstream.Plugin
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
@@ -899,6 +911,8 @@ export namespace Farstream {
      * All members are private, access them using methods and properties
      */
     abstract class Session extends Gst.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of Farstream.Session
 
         /**
@@ -1296,6 +1310,8 @@ export namespace Farstream {
      * All members are private, access them using methods and properties
      */
     abstract class Stream extends Gst.Object {
+        static $gtype: GObject.GType<Stream>;
+
         // Own properties of Farstream.Stream
 
         /**
@@ -1607,6 +1623,8 @@ export namespace Farstream {
      * All members are private, access them using methods and properties
      */
     abstract class StreamTransmitter extends Gst.Object {
+        static $gtype: GObject.GType<StreamTransmitter>;
+
         // Own properties of Farstream.StreamTransmitter
 
         /**
@@ -1768,6 +1786,8 @@ export namespace Farstream {
      * All members are private, access them using methods and properties
      */
     abstract class Transmitter extends Gst.Object {
+        static $gtype: GObject.GType<Transmitter>;
+
         // Own properties of Farstream.Transmitter
 
         /**
@@ -1908,6 +1928,8 @@ export namespace Farstream {
      * Struct to hold information about ICE-19 compliant candidates
      */
     class Candidate {
+        static $gtype: GObject.GType<Candidate>;
+
         // Own fields of Farstream.Candidate
 
         foundation: string;
@@ -1958,6 +1980,8 @@ export namespace Farstream {
      * This structure reprensents one codec that can be offered or received
      */
     class Codec {
+        static $gtype: GObject.GType<Codec>;
+
         // Own fields of Farstream.Codec
 
         id: number;
@@ -2047,6 +2071,8 @@ export namespace Farstream {
      * Used to store arbitary parameters for a codec
      */
     class CodecParameter {
+        static $gtype: GObject.GType<CodecParameter>;
+
         // Own fields of Farstream.CodecParameter
 
         name: string;
@@ -2071,6 +2097,8 @@ export namespace Farstream {
     type ConferenceClass = typeof Conference;
     type ElementAddedNotifierClass = typeof ElementAddedNotifier;
     abstract class ElementAddedNotifierPrivate {
+        static $gtype: GObject.GType<ElementAddedNotifierPrivate>;
+
         // Constructors of Farstream.ElementAddedNotifierPrivate
 
         _init(...args: any[]): void;
@@ -2080,6 +2108,8 @@ export namespace Farstream {
      * Use to store feedback parameters
      */
     class FeedbackParameter {
+        static $gtype: GObject.GType<FeedbackParameter>;
+
         // Own fields of Farstream.FeedbackParameter
 
         type: string;
@@ -2105,6 +2135,8 @@ export namespace Farstream {
 
     type ParticipantClass = typeof Participant;
     abstract class ParticipantPrivate {
+        static $gtype: GObject.GType<ParticipantPrivate>;
+
         // Constructors of Farstream.ParticipantPrivate
 
         _init(...args: any[]): void;
@@ -2112,6 +2144,8 @@ export namespace Farstream {
 
     type PluginClass = typeof Plugin;
     abstract class PluginPrivate {
+        static $gtype: GObject.GType<PluginPrivate>;
+
         // Constructors of Farstream.PluginPrivate
 
         _init(...args: any[]): void;
@@ -2119,6 +2153,8 @@ export namespace Farstream {
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
+        static $gtype: GObject.GType<SessionPrivate>;
+
         // Constructors of Farstream.SessionPrivate
 
         _init(...args: any[]): void;
@@ -2126,6 +2162,8 @@ export namespace Farstream {
 
     type StreamClass = typeof Stream;
     abstract class StreamPrivate {
+        static $gtype: GObject.GType<StreamPrivate>;
+
         // Constructors of Farstream.StreamPrivate
 
         _init(...args: any[]): void;
@@ -2133,6 +2171,8 @@ export namespace Farstream {
 
     type StreamTransmitterClass = typeof StreamTransmitter;
     abstract class StreamTransmitterPrivate {
+        static $gtype: GObject.GType<StreamTransmitterPrivate>;
+
         // Constructors of Farstream.StreamTransmitterPrivate
 
         _init(...args: any[]): void;
@@ -2140,12 +2180,16 @@ export namespace Farstream {
 
     type TransmitterClass = typeof Transmitter;
     abstract class TransmitterPrivate {
+        static $gtype: GObject.GType<TransmitterPrivate>;
+
         // Constructors of Farstream.TransmitterPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class _RtpHeaderExtension {
+        static $gtype: GObject.GType<_RtpHeaderExtension>;
+
         // Own fields of Farstream._RtpHeaderExtension
 
         id: number;

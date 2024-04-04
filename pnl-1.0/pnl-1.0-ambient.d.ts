@@ -1,7 +1,7 @@
 
 declare module 'gi://Pnl?version=1.0' {
-    import Pnl10 from '@girs/pnl-1.0';
-    export default Pnl10;
+    import Pnl from '@girs/pnl-1.0';
+    export default Pnl;
 }
 
 declare module 'gi://Pnl' {

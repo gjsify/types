@@ -451,6 +451,8 @@ export namespace GTop {
     function glibtop_internet_addr(host: string): number;
     function glibtop_make_connection(hostarg: string, portarg: number, s: number): number;
     class glibtop {
+        static $gtype: GObject.GType<glibtop>;
+
         // Own fields of GTop.glibtop
 
         flags: number;
@@ -606,6 +608,8 @@ export namespace GTop {
     }
 
     class glibtop_command {
+        static $gtype: GObject.GType<glibtop_command>;
+
         // Own fields of GTop.glibtop_command
 
         command: number;
@@ -627,6 +631,8 @@ export namespace GTop {
     }
 
     class glibtop_cpu {
+        static $gtype: GObject.GType<glibtop_cpu>;
+
         // Own fields of GTop.glibtop_cpu
 
         flags: number;
@@ -678,6 +684,8 @@ export namespace GTop {
     }
 
     class glibtop_disk {
+        static $gtype: GObject.GType<glibtop_disk>;
+
         // Own fields of GTop.glibtop_disk
 
         flags: number;
@@ -703,6 +711,8 @@ export namespace GTop {
     }
 
     class glibtop_entry {
+        static $gtype: GObject.GType<glibtop_entry>;
+
         // Own fields of GTop.glibtop_entry
 
         labels: any[];
@@ -713,6 +723,8 @@ export namespace GTop {
     }
 
     class glibtop_fsusage {
+        static $gtype: GObject.GType<glibtop_fsusage>;
+
         // Own fields of GTop.glibtop_fsusage
 
         flags: number;
@@ -744,6 +756,8 @@ export namespace GTop {
     }
 
     class glibtop_loadavg {
+        static $gtype: GObject.GType<glibtop_loadavg>;
+
         // Own fields of GTop.glibtop_loadavg
 
         flags: number;
@@ -767,12 +781,16 @@ export namespace GTop {
     }
 
     abstract class glibtop_machine {
+        static $gtype: GObject.GType<glibtop_machine>;
+
         // Constructors of GTop.glibtop_machine
 
         _init(...args: any[]): void;
     }
 
     class glibtop_map_entry {
+        static $gtype: GObject.GType<glibtop_map_entry>;
+
         // Own fields of GTop.glibtop_map_entry
 
         flags: number;
@@ -818,6 +836,8 @@ export namespace GTop {
     }
 
     class glibtop_mem {
+        static $gtype: GObject.GType<glibtop_mem>;
+
         // Own fields of GTop.glibtop_mem
 
         flags: number;
@@ -849,6 +869,8 @@ export namespace GTop {
     }
 
     class glibtop_mountentry {
+        static $gtype: GObject.GType<glibtop_mountentry>;
+
         // Own fields of GTop.glibtop_mountentry
 
         dev: number;
@@ -870,6 +892,8 @@ export namespace GTop {
     }
 
     class glibtop_mountlist {
+        static $gtype: GObject.GType<glibtop_mountlist>;
+
         // Own fields of GTop.glibtop_mountlist
 
         flags: number;
@@ -891,6 +915,8 @@ export namespace GTop {
     }
 
     class glibtop_msg_limits {
+        static $gtype: GObject.GType<glibtop_msg_limits>;
+
         // Own fields of GTop.glibtop_msg_limits
 
         flags: number;
@@ -920,6 +946,8 @@ export namespace GTop {
     }
 
     class glibtop_netlist {
+        static $gtype: GObject.GType<glibtop_netlist>;
+
         // Own fields of GTop.glibtop_netlist
 
         flags: number;
@@ -937,6 +965,8 @@ export namespace GTop {
     }
 
     class glibtop_netload {
+        static $gtype: GObject.GType<glibtop_netload>;
+
         // Own fields of GTop.glibtop_netload
 
         flags: number;
@@ -988,6 +1018,8 @@ export namespace GTop {
     }
 
     class glibtop_open_files_entry {
+        static $gtype: GObject.GType<glibtop_open_files_entry>;
+
         // Own fields of GTop.glibtop_open_files_entry
 
         fd: number;
@@ -1005,6 +1037,8 @@ export namespace GTop {
     }
 
     class glibtop_ppp {
+        static $gtype: GObject.GType<glibtop_ppp>;
+
         // Own fields of GTop.glibtop_ppp
 
         flags: number;
@@ -1026,6 +1060,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_affinity {
+        static $gtype: GObject.GType<glibtop_proc_affinity>;
+
         // Own fields of GTop.glibtop_proc_affinity
 
         flags: number;
@@ -1045,6 +1081,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_args {
+        static $gtype: GObject.GType<glibtop_proc_args>;
+
         // Own fields of GTop.glibtop_proc_args
 
         flags: number;
@@ -1065,6 +1103,8 @@ export namespace GTop {
      * Process disk io data filled by glibtop_get_proc_io().
      */
     class glibtop_proc_io {
+        static $gtype: GObject.GType<glibtop_proc_io>;
+
         // Own fields of GTop.glibtop_proc_io
 
         flags: number;
@@ -1090,6 +1130,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_kernel {
+        static $gtype: GObject.GType<glibtop_proc_kernel>;
+
         // Own fields of GTop.glibtop_proc_kernel
 
         flags: number;
@@ -1123,6 +1165,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_map {
+        static $gtype: GObject.GType<glibtop_proc_map>;
+
         // Own fields of GTop.glibtop_proc_map
 
         flags: number;
@@ -1144,6 +1188,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_mem {
+        static $gtype: GObject.GType<glibtop_proc_mem>;
+
         // Own fields of GTop.glibtop_proc_mem
 
         flags: number;
@@ -1171,6 +1217,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_open_files {
+        static $gtype: GObject.GType<glibtop_proc_open_files>;
+
         // Own fields of GTop.glibtop_proc_open_files
 
         flags: number;
@@ -1192,6 +1240,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_segment {
+        static $gtype: GObject.GType<glibtop_proc_segment>;
+
         // Own fields of GTop.glibtop_proc_segment
 
         flags: number;
@@ -1223,6 +1273,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_signal {
+        static $gtype: GObject.GType<glibtop_proc_signal>;
+
         // Own fields of GTop.glibtop_proc_signal
 
         flags: number;
@@ -1246,6 +1298,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_state {
+        static $gtype: GObject.GType<glibtop_proc_state>;
+
         // Own fields of GTop.glibtop_proc_state
 
         flags: number;
@@ -1293,6 +1347,8 @@ export namespace GTop {
      * with your hardware clock. See <command>man hwclock</command>.
      */
     class glibtop_proc_time {
+        static $gtype: GObject.GType<glibtop_proc_time>;
+
         // Own fields of GTop.glibtop_proc_time
 
         start_time: number;
@@ -1328,6 +1384,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_uid {
+        static $gtype: GObject.GType<glibtop_proc_uid>;
+
         // Own fields of GTop.glibtop_proc_uid
 
         flags: number;
@@ -1379,6 +1437,8 @@ export namespace GTop {
     }
 
     class glibtop_proc_wd {
+        static $gtype: GObject.GType<glibtop_proc_wd>;
+
         // Own fields of GTop.glibtop_proc_wd
 
         flags: number;
@@ -1400,6 +1460,8 @@ export namespace GTop {
     }
 
     class glibtop_proclist {
+        static $gtype: GObject.GType<glibtop_proclist>;
+
         // Own fields of GTop.glibtop_proclist
 
         flags: number;
@@ -1421,6 +1483,8 @@ export namespace GTop {
     }
 
     class glibtop_response {
+        static $gtype: GObject.GType<glibtop_response>;
+
         // Own fields of GTop.glibtop_response
 
         offset: number;
@@ -1442,6 +1506,8 @@ export namespace GTop {
     }
 
     class glibtop_sem_limits {
+        static $gtype: GObject.GType<glibtop_sem_limits>;
+
         // Own fields of GTop.glibtop_sem_limits
 
         flags: number;
@@ -1477,6 +1543,8 @@ export namespace GTop {
     }
 
     class glibtop_shm_limits {
+        static $gtype: GObject.GType<glibtop_shm_limits>;
+
         // Own fields of GTop.glibtop_shm_limits
 
         flags: number;
@@ -1502,6 +1570,8 @@ export namespace GTop {
     }
 
     class glibtop_signame {
+        static $gtype: GObject.GType<glibtop_signame>;
+
         // Own fields of GTop.glibtop_signame
 
         number: number;
@@ -1521,6 +1591,8 @@ export namespace GTop {
     }
 
     class glibtop_swap {
+        static $gtype: GObject.GType<glibtop_swap>;
+
         // Own fields of GTop.glibtop_swap
 
         flags: number;
@@ -1546,6 +1618,8 @@ export namespace GTop {
     }
 
     class glibtop_sysdeps {
+        static $gtype: GObject.GType<glibtop_sysdeps>;
+
         // Own fields of GTop.glibtop_sysdeps
 
         flags: number;
@@ -1633,6 +1707,8 @@ export namespace GTop {
     }
 
     class glibtop_sysinfo {
+        static $gtype: GObject.GType<glibtop_sysinfo>;
+
         // Own fields of GTop.glibtop_sysinfo
 
         flags: number;
@@ -1644,6 +1720,8 @@ export namespace GTop {
     }
 
     class glibtop_uptime {
+        static $gtype: GObject.GType<glibtop_uptime>;
+
         // Own fields of GTop.glibtop_uptime
 
         flags: number;
@@ -1665,6 +1743,8 @@ export namespace GTop {
     }
 
     class partition_info {
+        static $gtype: GObject.GType<partition_info>;
+
         // Own fields of GTop.partition_info
 
         name: number[];
@@ -1686,6 +1766,8 @@ export namespace GTop {
     }
 
     class glibtop_response_union {
+        static $gtype: GObject.GType<glibtop_response_union>;
+
         // Own fields of GTop.glibtop_response_union
 
         data: glibtop_union;
@@ -1703,6 +1785,8 @@ export namespace GTop {
     }
 
     class glibtop_union {
+        static $gtype: GObject.GType<glibtop_union>;
+
         // Own fields of GTop.glibtop_union
 
         cpu: glibtop_cpu;

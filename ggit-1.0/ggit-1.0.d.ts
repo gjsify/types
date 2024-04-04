@@ -199,6 +199,8 @@ export namespace Ggit {
      * Error codes for the %GGIT_ERROR error domain.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Ggit.Error
 
         /**
@@ -1057,6 +1059,8 @@ export namespace Ggit {
      * Represents a blame.
      */
     class Blame extends Native {
+        static $gtype: GObject.GType<Blame>;
+
         // Constructors of Ggit.Blame
 
         constructor(properties?: Partial<Blame.ConstructorProps>, ...args: any[]);
@@ -1106,6 +1110,8 @@ export namespace Ggit {
      * Represents a blob object.
      */
     class Blob extends Object {
+        static $gtype: GObject.GType<Blob>;
+
         // Constructors of Ggit.Blob
 
         constructor(properties?: Partial<Blob.ConstructorProps>, ...args: any[]);
@@ -1143,6 +1149,8 @@ export namespace Ggit {
      * Represents a blob stream object.
      */
     class BlobOutputStream extends Gio.OutputStream {
+        static $gtype: GObject.GType<BlobOutputStream>;
+
         // Own properties of Ggit.BlobOutputStream
 
         set repository(val: Repository);
@@ -1174,6 +1182,8 @@ export namespace Ggit {
      * Represents a branch object.
      */
     class Branch extends Ref {
+        static $gtype: GObject.GType<Branch>;
+
         // Constructors of Ggit.Branch
 
         constructor(properties?: Partial<Branch.ConstructorProps>, ...args: any[]);
@@ -1250,6 +1260,8 @@ export namespace Ggit {
      * Represents the options used when doign a checkout.
      */
     class CheckoutOptions extends GObject.Object {
+        static $gtype: GObject.GType<CheckoutOptions>;
+
         // Own properties of Ggit.CheckoutOptions
 
         get ancestor_label(): string;
@@ -1463,6 +1475,8 @@ export namespace Ggit {
      * Represents the options used when doign a cherry-pick.
      */
     class CherryPickOptions extends GObject.Object {
+        static $gtype: GObject.GType<CherryPickOptions>;
+
         // Own properties of Ggit.CherryPickOptions
 
         get checkout_options(): CheckoutOptions;
@@ -1528,6 +1542,8 @@ export namespace Ggit {
      * Represents the options used when cloning.
      */
     class CloneOptions extends GObject.Object {
+        static $gtype: GObject.GType<CloneOptions>;
+
         // Constructors of Ggit.CloneOptions
 
         constructor(properties?: Partial<CloneOptions.ConstructorProps>, ...args: any[]);
@@ -1600,6 +1616,8 @@ export namespace Ggit {
      * Represents a commit object.
      */
     class Commit extends Object {
+        static $gtype: GObject.GType<Commit>;
+
         // Constructors of Ggit.Commit
 
         constructor(properties?: Partial<Commit.ConstructorProps>, ...args: any[]);
@@ -1706,6 +1724,8 @@ export namespace Ggit {
      * Represents the parents of a commit object.
      */
     class CommitParents extends GObject.Object {
+        static $gtype: GObject.GType<CommitParents>;
+
         // Own properties of Ggit.CommitParents
 
         get commit(): Commit;
@@ -1750,6 +1770,8 @@ export namespace Ggit {
      * Represents a git configuration.
      */
     class Config extends Native {
+        static $gtype: GObject.GType<Config>;
+
         // Constructors of Ggit.Config
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
@@ -1909,6 +1931,8 @@ export namespace Ggit {
      * Represents a git credential.
      */
     class Cred extends Native {
+        static $gtype: GObject.GType<Cred>;
+
         // Constructors of Ggit.Cred
 
         constructor(properties?: Partial<Cred.ConstructorProps>, ...args: any[]);
@@ -1929,6 +1953,8 @@ export namespace Ggit {
      * Represents a plain text credential.
      */
     class CredPlaintext extends Cred implements Gio.Initable {
+        static $gtype: GObject.GType<CredPlaintext>;
+
         // Own properties of Ggit.CredPlaintext
 
         get password(): string;
@@ -2401,6 +2427,8 @@ export namespace Ggit {
      * Represents a ssh interactive credential.
      */
     class CredSshInteractive extends Cred implements Gio.Initable {
+        static $gtype: GObject.GType<CredSshInteractive>;
+
         // Own properties of Ggit.CredSshInteractive
 
         get username(): string;
@@ -2875,6 +2903,8 @@ export namespace Ggit {
      * Represents a ssh key agent credential.
      */
     class CredSshKeyFromAgent extends Cred implements Gio.Initable {
+        static $gtype: GObject.GType<CredSshKeyFromAgent>;
+
         // Own properties of Ggit.CredSshKeyFromAgent
 
         get username(): string;
@@ -3349,6 +3379,8 @@ export namespace Ggit {
      * Represents a diff list.
      */
     class Diff extends Native {
+        static $gtype: GObject.GType<Diff>;
+
         // Own properties of Ggit.Diff
 
         get repository(): Repository;
@@ -3521,6 +3553,8 @@ export namespace Ggit {
      * Represents options for finding diff similarity.
      */
     class DiffFindOptions extends GObject.Object {
+        static $gtype: GObject.GType<DiffFindOptions>;
+
         // Own properties of Ggit.DiffFindOptions
 
         get copy_threshold(): number;
@@ -3636,6 +3670,8 @@ export namespace Ggit {
     }
 
     class DiffFormatEmailOptions extends GObject.Object {
+        static $gtype: GObject.GType<DiffFormatEmailOptions>;
+
         // Own properties of Ggit.DiffFormatEmailOptions
 
         get author(): Signature;
@@ -3760,6 +3796,8 @@ export namespace Ggit {
      * Represents the options used when creating a #GgitDiff.
      */
     class DiffOptions extends GObject.Object {
+        static $gtype: GObject.GType<DiffOptions>;
+
         // Own properties of Ggit.DiffOptions
 
         /**
@@ -3870,6 +3908,8 @@ export namespace Ggit {
      * Represents an index object.
      */
     class Index extends Native implements Gio.Initable {
+        static $gtype: GObject.GType<Index>;
+
         // Own properties of Ggit.Index
 
         get file(): Gio.File;
@@ -4431,6 +4471,8 @@ export namespace Ggit {
      * Represents a mailmap.
      */
     class Mailmap extends Native {
+        static $gtype: GObject.GType<Mailmap>;
+
         // Constructors of Ggit.Mailmap
 
         constructor(properties?: Partial<Mailmap.ConstructorProps>, ...args: any[]);
@@ -4488,6 +4530,8 @@ export namespace Ggit {
      * Represents a generic native object.
      */
     abstract class Native extends ObjectFactoryBase {
+        static $gtype: GObject.GType<Native>;
+
         // Own properties of Ggit.Native
 
         set native(val: any);
@@ -4509,6 +4553,8 @@ export namespace Ggit {
      * Represents a generic object in a repository.
      */
     abstract class Object extends Native {
+        static $gtype: GObject.GType<Object>;
+
         // Constructors of Ggit.Object
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
@@ -4539,6 +4585,8 @@ export namespace Ggit {
      * Represents an object factory.
      */
     class ObjectFactory extends GObject.Object {
+        static $gtype: GObject.GType<ObjectFactory>;
+
         // Constructors of Ggit.ObjectFactory
 
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
@@ -4592,6 +4640,8 @@ export namespace Ggit {
      * Represents the base type for objects created by an object factory.
      */
     abstract class ObjectFactoryBase extends GObject.Object {
+        static $gtype: GObject.GType<ObjectFactoryBase>;
+
         // Constructors of Ggit.ObjectFactoryBase
 
         constructor(properties?: Partial<ObjectFactoryBase.ConstructorProps>, ...args: any[]);
@@ -4609,6 +4659,8 @@ export namespace Ggit {
      * Represents a git proxy options.
      */
     class ProxyOptions extends GObject.Object {
+        static $gtype: GObject.GType<ProxyOptions>;
+
         // Constructors of Ggit.ProxyOptions
 
         constructor(properties?: Partial<ProxyOptions.ConstructorProps>, ...args: any[]);
@@ -4631,6 +4683,8 @@ export namespace Ggit {
      * Represents a git push options.
      */
     class PushOptions extends GObject.Object {
+        static $gtype: GObject.GType<PushOptions>;
+
         // Own properties of Ggit.PushOptions
 
         get callbacks(): RemoteCallbacks;
@@ -4684,6 +4738,8 @@ export namespace Ggit {
      * Represents a rebase object.
      */
     class Rebase extends Native {
+        static $gtype: GObject.GType<Rebase>;
+
         // Constructors of Ggit.Rebase
 
         constructor(properties?: Partial<Rebase.ConstructorProps>, ...args: any[]);
@@ -4753,6 +4809,8 @@ export namespace Ggit {
      * Reprensents a git reference.
      */
     class Ref extends Native {
+        static $gtype: GObject.GType<Ref>;
+
         // Constructors of Ggit.Ref
 
         constructor(properties?: Partial<Ref.ConstructorProps>, ...args: any[]);
@@ -4938,6 +4996,8 @@ export namespace Ggit {
      * Represents a git remote.
      */
     class Remote extends Native {
+        static $gtype: GObject.GType<Remote>;
+
         // Constructors of Ggit.Remote
 
         constructor(properties?: Partial<Remote.ConstructorProps>, ...args: any[]);
@@ -5081,6 +5141,8 @@ export namespace Ggit {
      * Represents a git remote callbacks.
      */
     class RemoteCallbacks extends GObject.Object {
+        static $gtype: GObject.GType<RemoteCallbacks>;
+
         // Constructors of Ggit.RemoteCallbacks
 
         constructor(properties?: Partial<RemoteCallbacks.ConstructorProps>, ...args: any[]);
@@ -5138,6 +5200,8 @@ export namespace Ggit {
      * object contents.
      */
     class Repository extends Native implements Gio.Initable {
+        static $gtype: GObject.GType<Repository>;
+
         // Own properties of Ggit.Repository
 
         get clone_options(): CloneOptions;
@@ -6425,6 +6489,8 @@ export namespace Ggit {
      * Represents a revision walker.
      */
     class RevisionWalker extends Native implements Gio.Initable {
+        static $gtype: GObject.GType<RevisionWalker>;
+
         // Own properties of Ggit.RevisionWalker
 
         get repository(): Repository;
@@ -6999,6 +7065,8 @@ export namespace Ggit {
      * Represents an action signature.
      */
     class Signature extends Native {
+        static $gtype: GObject.GType<Signature>;
+
         // Own properties of Ggit.Signature
 
         get encoding(): string;
@@ -7058,6 +7126,8 @@ export namespace Ggit {
      * Represents options for a submodule update.
      */
     class SubmoduleUpdateOptions extends GObject.Object {
+        static $gtype: GObject.GType<SubmoduleUpdateOptions>;
+
         // Own properties of Ggit.SubmoduleUpdateOptions
 
         get checkout_options(): CheckoutOptions;
@@ -7107,6 +7177,8 @@ export namespace Ggit {
      * Represents a tag object.
      */
     class Tag extends Object {
+        static $gtype: GObject.GType<Tag>;
+
         // Constructors of Ggit.Tag
 
         constructor(properties?: Partial<Tag.ConstructorProps>, ...args: any[]);
@@ -7166,6 +7238,8 @@ export namespace Ggit {
      * Represents a tree object.
      */
     class Tree extends Object {
+        static $gtype: GObject.GType<Tree>;
+
         // Constructors of Ggit.Tree
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
@@ -7223,6 +7297,8 @@ export namespace Ggit {
      * Represents a tree object.
      */
     class TreeBuilder extends Native {
+        static $gtype: GObject.GType<TreeBuilder>;
+
         // Constructors of Ggit.TreeBuilder
 
         constructor(properties?: Partial<TreeBuilder.ConstructorProps>, ...args: any[]);
@@ -7270,6 +7346,8 @@ export namespace Ggit {
      * Represents an annotated commit object.
      */
     abstract class AnnotatedCommit {
+        static $gtype: GObject.GType<AnnotatedCommit>;
+
         // Constructors of Ggit.AnnotatedCommit
 
         constructor(repository: Repository, ref: Ref);
@@ -7302,6 +7380,8 @@ export namespace Ggit {
      * Represents a blame hunk.
      */
     abstract class BlameHunk {
+        static $gtype: GObject.GType<BlameHunk>;
+
         // Constructors of Ggit.BlameHunk
 
         _init(...args: any[]): void;
@@ -7376,6 +7456,8 @@ export namespace Ggit {
      * Represents blame options.
      */
     abstract class BlameOptions {
+        static $gtype: GObject.GType<BlameOptions>;
+
         // Constructors of Ggit.BlameOptions
 
         constructor(properties?: Partial<{}>);
@@ -7464,6 +7546,8 @@ export namespace Ggit {
      * Represents a branch enumerator.
      */
     abstract class BranchEnumerator {
+        static $gtype: GObject.GType<BranchEnumerator>;
+
         // Constructors of Ggit.BranchEnumerator
 
         _init(...args: any[]): void;
@@ -7501,6 +7585,8 @@ export namespace Ggit {
      * Represents a git configuration entry.
      */
     abstract class ConfigEntry {
+        static $gtype: GObject.GType<ConfigEntry>;
+
         // Constructors of Ggit.ConfigEntry
 
         _init(...args: any[]): void;
@@ -7542,6 +7628,8 @@ export namespace Ggit {
      * Represents a ssh interactive prompt.
      */
     abstract class CredSshInteractivePrompt {
+        static $gtype: GObject.GType<CredSshInteractivePrompt>;
+
         // Constructors of Ggit.CredSshInteractivePrompt
 
         constructor(name: string, instruction: string, text: string, is_masked: boolean);
@@ -7566,6 +7654,8 @@ export namespace Ggit {
      * Represents a diff binary.
      */
     abstract class DiffBinary {
+        static $gtype: GObject.GType<DiffBinary>;
+
         // Constructors of Ggit.DiffBinary
 
         _init(...args: any[]): void;
@@ -7599,6 +7689,8 @@ export namespace Ggit {
      * Represents a diff binary file.
      */
     abstract class DiffBinaryFile {
+        static $gtype: GObject.GType<DiffBinaryFile>;
+
         // Constructors of Ggit.DiffBinaryFile
 
         _init(...args: any[]): void;
@@ -7639,6 +7731,8 @@ export namespace Ggit {
      * Represents the changes done to one file.
      */
     abstract class DiffDelta {
+        static $gtype: GObject.GType<DiffDelta>;
+
         // Constructors of Ggit.DiffDelta
 
         _init(...args: any[]): void;
@@ -7687,6 +7781,8 @@ export namespace Ggit {
      * Represents a file in a #GgitDiff.
      */
     abstract class DiffFile {
+        static $gtype: GObject.GType<DiffFile>;
+
         // Constructors of Ggit.DiffFile
 
         _init(...args: any[]): void;
@@ -7737,6 +7833,8 @@ export namespace Ggit {
      * Represents the hunk of a diff.
      */
     abstract class DiffHunk {
+        static $gtype: GObject.GType<DiffHunk>;
+
         // Constructors of Ggit.DiffHunk
 
         _init(...args: any[]): void;
@@ -7781,6 +7879,8 @@ export namespace Ggit {
      * Represents the line of a diff.
      */
     abstract class DiffLine {
+        static $gtype: GObject.GType<DiffLine>;
+
         // Constructors of Ggit.DiffLine
 
         _init(...args: any[]): void;
@@ -7835,6 +7935,8 @@ export namespace Ggit {
      * Represents a similarity metric.
      */
     abstract class DiffSimilarityMetric {
+        static $gtype: GObject.GType<DiffSimilarityMetric>;
+
         // Constructors of Ggit.DiffSimilarityMetric
 
         constructor(
@@ -7869,6 +7971,8 @@ export namespace Ggit {
      * Represents a git fetch options.
      */
     abstract class FetchOptions {
+        static $gtype: GObject.GType<FetchOptions>;
+
         // Constructors of Ggit.FetchOptions
 
         constructor(properties?: Partial<{}>);
@@ -7914,6 +8018,8 @@ export namespace Ggit {
      * Represents the entries in an index object.
      */
     abstract class IndexEntries {
+        static $gtype: GObject.GType<IndexEntries>;
+
         // Constructors of Ggit.IndexEntries
 
         _init(...args: any[]): void;
@@ -7978,6 +8084,8 @@ export namespace Ggit {
      * Represents the resolve undo entries in an index object.
      */
     abstract class IndexEntriesResolveUndo {
+        static $gtype: GObject.GType<IndexEntriesResolveUndo>;
+
         // Constructors of Ggit.IndexEntriesResolveUndo
 
         _init(...args: any[]): void;
@@ -8025,6 +8133,8 @@ export namespace Ggit {
      * Represents an index entry object.
      */
     abstract class IndexEntry {
+        static $gtype: GObject.GType<IndexEntry>;
+
         // Constructors of Ggit.IndexEntry
 
         _init(...args: any[]): void;
@@ -8163,6 +8273,8 @@ export namespace Ggit {
      * Represents an resolve undo index entry object.
      */
     abstract class IndexEntryResolveUndo {
+        static $gtype: GObject.GType<IndexEntryResolveUndo>;
+
         // Constructors of Ggit.IndexEntryResolveUndo
 
         _init(...args: any[]): void;
@@ -8205,6 +8317,8 @@ export namespace Ggit {
      * Represents the options used when merging.
      */
     abstract class MergeOptions {
+        static $gtype: GObject.GType<MergeOptions>;
+
         // Constructors of Ggit.MergeOptions
 
         constructor(properties?: Partial<{}>);
@@ -8296,6 +8410,8 @@ export namespace Ggit {
      * Represents a note object.
      */
     abstract class Note {
+        static $gtype: GObject.GType<Note>;
+
         // Constructors of Ggit.Note
 
         _init(...args: any[]): void;
@@ -8329,6 +8445,8 @@ export namespace Ggit {
      * Represents a unique ID of any object.
      */
     abstract class OId {
+        static $gtype: GObject.GType<OId>;
+
         // Constructors of Ggit.OId
 
         constructor(raw: Uint8Array);
@@ -8392,6 +8510,8 @@ export namespace Ggit {
      * Represents a patch object.
      */
     abstract class Patch {
+        static $gtype: GObject.GType<Patch>;
+
         // Constructors of Ggit.Patch
 
         constructor(
@@ -8473,6 +8593,8 @@ export namespace Ggit {
      * Represents a rebase operation.
      */
     abstract class RebaseOperation {
+        static $gtype: GObject.GType<RebaseOperation>;
+
         // Constructors of Ggit.RebaseOperation
 
         _init(...args: any[]): void;
@@ -8513,6 +8635,8 @@ export namespace Ggit {
      * Represents the options used when rebasing.
      */
     abstract class RebaseOptions {
+        static $gtype: GObject.GType<RebaseOptions>;
+
         // Constructors of Ggit.RebaseOptions
 
         constructor(properties?: Partial<{}>);
@@ -8574,6 +8698,8 @@ export namespace Ggit {
      * Reprensents a git reference specification.
      */
     abstract class RefSpec {
+        static $gtype: GObject.GType<RefSpec>;
+
         // Constructors of Ggit.RefSpec
 
         _init(...args: any[]): void;
@@ -8612,6 +8738,8 @@ export namespace Ggit {
      * Represents a reflog.
      */
     abstract class Reflog {
+        static $gtype: GObject.GType<Reflog>;
+
         // Constructors of Ggit.Reflog
 
         _init(...args: any[]): void;
@@ -8664,6 +8792,8 @@ export namespace Ggit {
      * Represents a reflog entry.
      */
     abstract class ReflogEntry {
+        static $gtype: GObject.GType<ReflogEntry>;
+
         // Constructors of Ggit.ReflogEntry
 
         _init(...args: any[]): void;
@@ -8709,6 +8839,8 @@ export namespace Ggit {
      * Represents a git remote head.
      */
     abstract class RemoteHead {
+        static $gtype: GObject.GType<RemoteHead>;
+
         // Constructors of Ggit.RemoteHead
 
         _init(...args: any[]): void;
@@ -8744,6 +8876,8 @@ export namespace Ggit {
      * Represents the options used when reverting.
      */
     abstract class RevertOptions {
+        static $gtype: GObject.GType<RevertOptions>;
+
         // Constructors of Ggit.RevertOptions
 
         constructor(mainline: number, merge_options?: MergeOptions | null, checkout_options?: CheckoutOptions | null);
@@ -8774,6 +8908,8 @@ export namespace Ggit {
      * Represents the options used when creating getting file status.
      */
     abstract class StatusOptions {
+        static $gtype: GObject.GType<StatusOptions>;
+
         // Constructors of Ggit.StatusOptions
 
         constructor(options: StatusOption, show: StatusShow, pathspec?: string[] | null);
@@ -8798,6 +8934,8 @@ export namespace Ggit {
      * Represents a git submodule.
      */
     abstract class Submodule {
+        static $gtype: GObject.GType<Submodule>;
+
         // Constructors of Ggit.Submodule
 
         _init(...args: any[]): void;
@@ -8914,6 +9052,8 @@ export namespace Ggit {
      * Represents transfering progress.
      */
     abstract class TransferProgress {
+        static $gtype: GObject.GType<TransferProgress>;
+
         // Constructors of Ggit.TransferProgress
 
         _init(...args: any[]): void;
@@ -8957,6 +9097,8 @@ export namespace Ggit {
      * Represents an entry in a tree.
      */
     abstract class TreeEntry {
+        static $gtype: GObject.GType<TreeEntry>;
+
         // Constructors of Ggit.TreeEntry
 
         _init(...args: any[]): void;

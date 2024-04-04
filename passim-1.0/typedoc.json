@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./passim-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Passim-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

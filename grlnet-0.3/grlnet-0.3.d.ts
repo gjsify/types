@@ -78,6 +78,8 @@ export namespace GrlNet {
     }
 
     class Wc extends GObject.Object {
+        static $gtype: GObject.GType<Wc>;
+
         // Own properties of GrlNet.Wc
 
         get cache(): boolean;
@@ -183,6 +185,8 @@ export namespace GrlNet {
 
     type WcClass = typeof Wc;
     abstract class WcPrivate {
+        static $gtype: GObject.GType<WcPrivate>;
+
         // Constructors of GrlNet.WcPrivate
 
         _init(...args: any[]): void;

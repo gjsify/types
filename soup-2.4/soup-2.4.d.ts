@@ -376,6 +376,8 @@ export namespace Soup {
      * A #SoupRequest error.
      */
     class RequestError extends GLib.Error {
+        static $gtype: GObject.GType<RequestError>;
+
         // Static fields of Soup.RequestError
 
         /**
@@ -409,6 +411,8 @@ export namespace Soup {
     }
 
     class RequesterError extends GLib.Error {
+        static $gtype: GObject.GType<RequesterError>;
+
         // Static fields of Soup.RequesterError
 
         static BAD_URI: number;
@@ -745,6 +749,8 @@ export namespace Soup {
      * Error codes for %SOUP_TLD_ERROR.
      */
     class TLDError extends GLib.Error {
+        static $gtype: GObject.GType<TLDError>;
+
         // Static fields of Soup.TLDError
 
         /**
@@ -921,6 +927,8 @@ export namespace Soup {
         CLOSED,
     }
     class XMLRPCError extends GLib.Error {
+        static $gtype: GObject.GType<XMLRPCError>;
+
         // Static fields of Soup.XMLRPCError
 
         static ARGUMENTS: number;
@@ -2570,6 +2578,8 @@ export namespace Soup {
     }
 
     class Address extends GObject.Object implements Gio.SocketConnectable {
+        static $gtype: GObject.GType<Address>;
+
         // Own properties of Soup.Address
 
         get family(): AddressFamily;
@@ -3169,6 +3179,8 @@ export namespace Soup {
      * being used.
      */
     abstract class Auth extends GObject.Object {
+        static $gtype: GObject.GType<Auth>;
+
         // Own properties of Soup.Auth
 
         get host(): string;
@@ -3331,6 +3343,8 @@ export namespace Soup {
     }
 
     class AuthBasic extends Auth {
+        static $gtype: GObject.GType<AuthBasic>;
+
         // Constructors of Soup.AuthBasic
 
         constructor(properties?: Partial<AuthBasic.ConstructorProps>, ...args: any[]);
@@ -3345,6 +3359,8 @@ export namespace Soup {
     }
 
     class AuthDigest extends Auth {
+        static $gtype: GObject.GType<AuthDigest>;
+
         // Constructors of Soup.AuthDigest
 
         constructor(properties?: Partial<AuthDigest.ConstructorProps>, ...args: any[]);
@@ -3373,6 +3389,8 @@ export namespace Soup {
     }
 
     abstract class AuthDomain extends GObject.Object {
+        static $gtype: GObject.GType<AuthDomain>;
+
         // Own properties of Soup.AuthDomain
 
         set add_path(val: string);
@@ -3538,6 +3556,8 @@ export namespace Soup {
     }
 
     class AuthDomainBasic extends AuthDomain {
+        static $gtype: GObject.GType<AuthDomainBasic>;
+
         // Own properties of Soup.AuthDomainBasic
 
         /**
@@ -3596,6 +3616,8 @@ export namespace Soup {
     }
 
     class AuthDomainDigest extends AuthDomain {
+        static $gtype: GObject.GType<AuthDomainDigest>;
+
         // Own properties of Soup.AuthDomainDigest
 
         /**
@@ -3677,6 +3699,8 @@ export namespace Soup {
     }
 
     class AuthManager extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<AuthManager>;
+
         // Constructors of Soup.AuthManager
 
         constructor(properties?: Partial<AuthManager.ConstructorProps>, ...args: any[]);
@@ -4137,6 +4161,8 @@ export namespace Soup {
     }
 
     class AuthNTLM extends Auth {
+        static $gtype: GObject.GType<AuthNTLM>;
+
         // Constructors of Soup.AuthNTLM
 
         constructor(properties?: Partial<AuthNTLM.ConstructorProps>, ...args: any[]);
@@ -4151,6 +4177,8 @@ export namespace Soup {
     }
 
     class AuthNegotiate extends Auth {
+        static $gtype: GObject.GType<AuthNegotiate>;
+
         // Constructors of Soup.AuthNegotiate
 
         constructor(properties?: Partial<AuthNegotiate.ConstructorProps>, ...args: any[]);
@@ -4180,6 +4208,8 @@ export namespace Soup {
     }
 
     class Cache extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<Cache>;
+
         // Own properties of Soup.Cache
 
         get cache_dir(): string;
@@ -4652,6 +4682,8 @@ export namespace Soup {
     }
 
     class ContentDecoder extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<ContentDecoder>;
+
         // Constructors of Soup.ContentDecoder
 
         constructor(properties?: Partial<ContentDecoder.ConstructorProps>, ...args: any[]);
@@ -5072,6 +5104,8 @@ export namespace Soup {
     }
 
     class ContentSniffer extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<ContentSniffer>;
+
         // Constructors of Soup.ContentSniffer
 
         constructor(properties?: Partial<ContentSniffer.ConstructorProps>, ...args: any[]);
@@ -5539,6 +5573,8 @@ export namespace Soup {
     }
 
     class CookieJar extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<CookieJar>;
+
         // Own properties of Soup.CookieJar
 
         /**
@@ -6159,6 +6195,8 @@ export namespace Soup {
     }
 
     class CookieJarDB extends CookieJar implements SessionFeature {
+        static $gtype: GObject.GType<CookieJarDB>;
+
         // Own properties of Soup.CookieJarDB
 
         get filename(): string;
@@ -6590,6 +6628,8 @@ export namespace Soup {
     }
 
     class CookieJarText extends CookieJar implements SessionFeature {
+        static $gtype: GObject.GType<CookieJarText>;
+
         // Own properties of Soup.CookieJarText
 
         get filename(): string;
@@ -7029,6 +7069,8 @@ export namespace Soup {
     }
 
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<HSTSEnforcer>;
+
         // Constructors of Soup.HSTSEnforcer
 
         constructor(properties?: Partial<HSTSEnforcer.ConstructorProps>, ...args: any[]);
@@ -7530,6 +7572,8 @@ export namespace Soup {
     }
 
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
+        static $gtype: GObject.GType<HSTSEnforcerDB>;
+
         // Own properties of Soup.HSTSEnforcerDB
 
         /**
@@ -7966,6 +8010,8 @@ export namespace Soup {
     }
 
     class Logger extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<Logger>;
+
         // Own properties of Soup.Logger
 
         /**
@@ -8585,6 +8631,8 @@ export namespace Soup {
      * `request_body` as appropriate, passing %FALSE.
      */
     class Message extends GObject.Object {
+        static $gtype: GObject.GType<Message>;
+
         // Own properties of Soup.Message
 
         /**
@@ -9012,6 +9060,8 @@ export namespace Soup {
     }
 
     class MultipartInputStream extends Gio.FilterInputStream implements Gio.PollableInputStream {
+        static $gtype: GObject.GType<MultipartInputStream>;
+
         // Own properties of Soup.MultipartInputStream
 
         get message(): Message;
@@ -9658,6 +9708,8 @@ export namespace Soup {
     }
 
     class ProxyResolverDefault extends GObject.Object implements ProxyURIResolver, SessionFeature {
+        static $gtype: GObject.GType<ProxyResolverDefault>;
+
         // Own properties of Soup.ProxyResolverDefault
 
         set gproxy_resolver(val: Gio.ProxyResolver);
@@ -10134,6 +10186,8 @@ export namespace Soup {
      * A request to retrieve a particular URI.
      */
     class Request extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Request>;
+
         // Own properties of Soup.Request
 
         /**
@@ -10699,6 +10753,8 @@ export namespace Soup {
     }
 
     class RequestData extends Request implements Gio.Initable {
+        static $gtype: GObject.GType<RequestData>;
+
         // Constructors of Soup.RequestData
 
         constructor(properties?: Partial<RequestData.ConstructorProps>, ...args: any[]);
@@ -11154,6 +11210,8 @@ export namespace Soup {
     }
 
     class RequestFile extends Request implements Gio.Initable {
+        static $gtype: GObject.GType<RequestFile>;
+
         // Constructors of Soup.RequestFile
 
         constructor(properties?: Partial<RequestFile.ConstructorProps>, ...args: any[]);
@@ -11617,6 +11675,8 @@ export namespace Soup {
     }
 
     class RequestHTTP extends Request implements Gio.Initable {
+        static $gtype: GObject.GType<RequestHTTP>;
+
         // Constructors of Soup.RequestHTTP
 
         constructor(properties?: Partial<RequestHTTP.ConstructorProps>, ...args: any[]);
@@ -12080,6 +12140,8 @@ export namespace Soup {
     }
 
     class Requester extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<Requester>;
+
         // Constructors of Soup.Requester
 
         constructor(properties?: Partial<Requester.ConstructorProps>, ...args: any[]);
@@ -12544,6 +12606,8 @@ export namespace Soup {
     }
 
     class Server extends GObject.Object {
+        static $gtype: GObject.GType<Server>;
+
         // Own properties of Soup.Server
 
         /**
@@ -13240,6 +13304,8 @@ export namespace Soup {
     }
 
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of Soup.Session
 
         /**
@@ -14293,6 +14359,8 @@ export namespace Soup {
     }
 
     class SessionAsync extends Session {
+        static $gtype: GObject.GType<SessionAsync>;
+
         // Constructors of Soup.SessionAsync
 
         constructor(properties?: Partial<SessionAsync.ConstructorProps>, ...args: any[]);
@@ -14309,6 +14377,8 @@ export namespace Soup {
     }
 
     class SessionSync extends Session {
+        static $gtype: GObject.GType<SessionSync>;
+
         // Constructors of Soup.SessionSync
 
         constructor(properties?: Partial<SessionSync.ConstructorProps>, ...args: any[]);
@@ -14378,6 +14448,8 @@ export namespace Soup {
     }
 
     class Socket extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Socket>;
+
         // Own properties of Soup.Socket
 
         get async_context(): any;
@@ -15158,6 +15230,8 @@ export namespace Soup {
      * A class representing a WebSocket connection.
      */
     class WebsocketConnection extends GObject.Object {
+        static $gtype: GObject.GType<WebsocketConnection>;
+
         // Own properties of Soup.WebsocketConnection
 
         /**
@@ -15418,6 +15492,8 @@ export namespace Soup {
     }
 
     abstract class WebsocketExtension extends GObject.Object {
+        static $gtype: GObject.GType<WebsocketExtension>;
+
         // Constructors of Soup.WebsocketExtension
 
         constructor(properties?: Partial<WebsocketExtension.ConstructorProps>, ...args: any[]);
@@ -15515,6 +15591,8 @@ export namespace Soup {
     }
 
     class WebsocketExtensionDeflate extends WebsocketExtension {
+        static $gtype: GObject.GType<WebsocketExtensionDeflate>;
+
         // Constructors of Soup.WebsocketExtensionDeflate
 
         constructor(properties?: Partial<WebsocketExtensionDeflate.ConstructorProps>, ...args: any[]);
@@ -15529,6 +15607,8 @@ export namespace Soup {
     }
 
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
+        static $gtype: GObject.GType<WebsocketExtensionManager>;
+
         // Constructors of Soup.WebsocketExtensionManager
 
         constructor(properties?: Partial<WebsocketExtensionManager.ConstructorProps>, ...args: any[]);
@@ -15949,6 +16029,8 @@ export namespace Soup {
     type AuthDomainDigestClass = typeof AuthDomainDigest;
     type AuthManagerClass = typeof AuthManager;
     abstract class AuthManagerPrivate {
+        static $gtype: GObject.GType<AuthManagerPrivate>;
+
         // Constructors of Soup.AuthManagerPrivate
 
         _init(...args: any[]): void;
@@ -15962,6 +16044,8 @@ export namespace Soup {
      * situations you may need to cast it to #guchar or another type.
      */
     class Buffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own fields of Soup.Buffer
 
         data: any;
@@ -16034,6 +16118,8 @@ export namespace Soup {
 
     type CacheClass = typeof Cache;
     abstract class CachePrivate {
+        static $gtype: GObject.GType<CachePrivate>;
+
         // Constructors of Soup.CachePrivate
 
         _init(...args: any[]): void;
@@ -16053,6 +16139,8 @@ export namespace Soup {
      * requests are made on the same connection).
      */
     abstract class ClientContext {
+        static $gtype: GObject.GType<ClientContext>;
+
         // Constructors of Soup.ClientContext
 
         _init(...args: any[]): void;
@@ -16140,6 +16228,8 @@ export namespace Soup {
     }
 
     abstract class Connection {
+        static $gtype: GObject.GType<Connection>;
+
         // Constructors of Soup.Connection
 
         _init(...args: any[]): void;
@@ -16147,6 +16237,8 @@ export namespace Soup {
 
     type ContentDecoderClass = typeof ContentDecoder;
     abstract class ContentDecoderPrivate {
+        static $gtype: GObject.GType<ContentDecoderPrivate>;
+
         // Constructors of Soup.ContentDecoderPrivate
 
         _init(...args: any[]): void;
@@ -16154,6 +16246,8 @@ export namespace Soup {
 
     type ContentSnifferClass = typeof ContentSniffer;
     abstract class ContentSnifferPrivate {
+        static $gtype: GObject.GType<ContentSnifferPrivate>;
+
         // Constructors of Soup.ContentSnifferPrivate
 
         _init(...args: any[]): void;
@@ -16182,6 +16276,8 @@ export namespace Soup {
      * cross-site scripting attacks.
      */
     class Cookie {
+        static $gtype: GObject.GType<Cookie>;
+
         // Own fields of Soup.Cookie
 
         name: string;
@@ -16389,6 +16485,8 @@ export namespace Soup {
      * information.
      */
     class Date {
+        static $gtype: GObject.GType<Date>;
+
         // Own fields of Soup.Date
 
         year: number;
@@ -16504,12 +16602,16 @@ export namespace Soup {
     type HSTSEnforcerClass = typeof HSTSEnforcer;
     type HSTSEnforcerDBClass = typeof HSTSEnforcerDB;
     abstract class HSTSEnforcerDBPrivate {
+        static $gtype: GObject.GType<HSTSEnforcerDBPrivate>;
+
         // Constructors of Soup.HSTSEnforcerDBPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class HSTSEnforcerPrivate {
+        static $gtype: GObject.GType<HSTSEnforcerPrivate>;
+
         // Constructors of Soup.HSTSEnforcerPrivate
 
         _init(...args: any[]): void;
@@ -16534,6 +16636,8 @@ export namespace Soup {
      * must also be enforced on subdomains of `domain`.
      */
     class HSTSPolicy {
+        static $gtype: GObject.GType<HSTSPolicy>;
+
         // Own fields of Soup.HSTSPolicy
 
         domain: string;
@@ -16618,6 +16722,8 @@ export namespace Soup {
      * with a '\0' byte (which is not reflected in `length)`.
      */
     class MessageBody {
+        static $gtype: GObject.GType<MessageBody>;
+
         // Own fields of Soup.MessageBody
 
         data: string;
@@ -16769,6 +16875,8 @@ export namespace Soup {
      * The HTTP message headers associated with a request or response.
      */
     abstract class MessageHeaders {
+        static $gtype: GObject.GType<MessageHeaders>;
+
         // Constructors of Soup.MessageHeaders
 
         constructor(type: MessageHeadersType);
@@ -17097,6 +17205,8 @@ export namespace Soup {
      * You may not modify the headers while iterating over them.
      */
     class MessageHeadersIter {
+        static $gtype: GObject.GType<MessageHeadersIter>;
+
         // Constructors of Soup.MessageHeadersIter
 
         constructor(properties?: Partial<{}>);
@@ -17123,12 +17233,16 @@ export namespace Soup {
     }
 
     abstract class MessageQueue {
+        static $gtype: GObject.GType<MessageQueue>;
+
         // Constructors of Soup.MessageQueue
 
         _init(...args: any[]): void;
     }
 
     abstract class MessageQueueItem {
+        static $gtype: GObject.GType<MessageQueueItem>;
+
         // Constructors of Soup.MessageQueueItem
 
         _init(...args: any[]): void;
@@ -17148,6 +17262,8 @@ export namespace Soup {
      * #SoupMultipart for handling real MIME multiparts.
      */
     abstract class Multipart {
+        static $gtype: GObject.GType<Multipart>;
+
         // Constructors of Soup.Multipart
 
         constructor(mime_type: string);
@@ -17213,6 +17329,8 @@ export namespace Soup {
 
     type MultipartInputStreamClass = typeof MultipartInputStream;
     abstract class MultipartInputStreamPrivate {
+        static $gtype: GObject.GType<MultipartInputStreamPrivate>;
+
         // Constructors of Soup.MultipartInputStreamPrivate
 
         _init(...args: any[]): void;
@@ -17239,6 +17357,8 @@ export namespace Soup {
      * (Eg, the last 500 bytes would be `start` = -500 and `end` = -1.)
      */
     class Range {
+        static $gtype: GObject.GType<Range>;
+
         // Own fields of Soup.Range
 
         start: number;
@@ -17258,6 +17378,8 @@ export namespace Soup {
     type RequestClass = typeof Request;
     type RequestDataClass = typeof RequestData;
     abstract class RequestDataPrivate {
+        static $gtype: GObject.GType<RequestDataPrivate>;
+
         // Constructors of Soup.RequestDataPrivate
 
         _init(...args: any[]): void;
@@ -17265,6 +17387,8 @@ export namespace Soup {
 
     type RequestFileClass = typeof RequestFile;
     abstract class RequestFilePrivate {
+        static $gtype: GObject.GType<RequestFilePrivate>;
+
         // Constructors of Soup.RequestFilePrivate
 
         _init(...args: any[]): void;
@@ -17272,12 +17396,16 @@ export namespace Soup {
 
     type RequestHTTPClass = typeof RequestHTTP;
     abstract class RequestHTTPPrivate {
+        static $gtype: GObject.GType<RequestHTTPPrivate>;
+
         // Constructors of Soup.RequestHTTPPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class RequestPrivate {
+        static $gtype: GObject.GType<RequestPrivate>;
+
         // Constructors of Soup.RequestPrivate
 
         _init(...args: any[]): void;
@@ -17285,6 +17413,8 @@ export namespace Soup {
 
     type RequesterClass = typeof Requester;
     abstract class RequesterPrivate {
+        static $gtype: GObject.GType<RequesterPrivate>;
+
         // Constructors of Soup.RequesterPrivate
 
         _init(...args: any[]): void;
@@ -17340,6 +17470,8 @@ export namespace Soup {
      * as well, but this would be more annoying than useful.)
      */
     class URI {
+        static $gtype: GObject.GType<URI>;
+
         // Own fields of Soup.URI
 
         scheme: string;
@@ -17564,6 +17696,8 @@ export namespace Soup {
 
     type WebsocketConnectionClass = typeof WebsocketConnection;
     abstract class WebsocketConnectionPrivate {
+        static $gtype: GObject.GType<WebsocketConnectionPrivate>;
+
         // Constructors of Soup.WebsocketConnectionPrivate
 
         _init(...args: any[]): void;
@@ -17578,6 +17712,8 @@ export namespace Soup {
      * soup_xmlrpc_params_free().
      */
     abstract class XMLRPCParams {
+        static $gtype: GObject.GType<XMLRPCParams>;
+
         // Constructors of Soup.XMLRPCParams
 
         _init(...args: any[]): void;

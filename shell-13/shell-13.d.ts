@@ -7,6 +7,8 @@
 
 import './shell-13-ambient.d.ts';
 
+import './shell-13-import.d.ts';
+
 /**
  * Shell-13
  */
@@ -300,6 +302,8 @@ export namespace Shell {
     }
 
     class App extends GObject.Object {
+        static $gtype: GObject.GType<App>;
+
         // Own properties of Shell.App
 
         /**
@@ -477,6 +481,8 @@ export namespace Shell {
     }
 
     class AppSystem extends GObject.Object {
+        static $gtype: GObject.GType<AppSystem>;
+
         // Constructors of Shell.AppSystem
 
         constructor(properties?: Partial<AppSystem.ConstructorProps>, ...args: any[]);
@@ -555,6 +561,8 @@ export namespace Shell {
     }
 
     class AppUsage extends GObject.Object {
+        static $gtype: GObject.GType<AppUsage>;
+
         // Constructors of Shell.AppUsage
 
         constructor(properties?: Partial<AppUsage.ConstructorProps>, ...args: any[]);
@@ -588,6 +596,8 @@ export namespace Shell {
     }
 
     class BlurEffect extends Clutter.Effect {
+        static $gtype: GObject.GType<BlurEffect>;
+
         // Own properties of Shell.BlurEffect
 
         get brightness(): number;
@@ -625,6 +635,8 @@ export namespace Shell {
     }
 
     class CameraMonitor extends GObject.Object {
+        static $gtype: GObject.GType<CameraMonitor>;
+
         // Own properties of Shell.CameraMonitor
 
         get cameras_in_use(): boolean;
@@ -644,6 +656,8 @@ export namespace Shell {
     }
 
     class GLSLEffect extends Clutter.OffscreenEffect {
+        static $gtype: GObject.GType<GLSLEffect>;
+
         // Constructors of Shell.GLSLEffect
 
         constructor(properties?: Partial<GLSLEffect.ConstructorProps>, ...args: any[]);
@@ -730,6 +744,8 @@ export namespace Shell {
     }
 
     class Global extends GObject.Object {
+        static $gtype: GObject.GType<Global>;
+
         // Own properties of Shell.Global
 
         get automation_script(): Gio.File;
@@ -939,6 +955,8 @@ export namespace Shell {
     }
 
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
+        static $gtype: GObject.GType<InvertLightnessEffect>;
+
         // Constructors of Shell.InvertLightnessEffect
 
         constructor(properties?: Partial<InvertLightnessEffect.ConstructorProps>, ...args: any[]);
@@ -978,6 +996,8 @@ export namespace Shell {
     }
 
     class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
+        static $gtype: GObject.GType<KeyringPrompt>;
+
         // Own properties of Shell.KeyringPrompt
 
         /**
@@ -1955,6 +1975,8 @@ export namespace Shell {
     }
 
     class MountOperation extends Gio.MountOperation {
+        static $gtype: GObject.GType<MountOperation>;
+
         // Constructors of Shell.MountOperation
 
         constructor(properties?: Partial<MountOperation.ConstructorProps>, ...args: any[]);
@@ -1999,6 +2021,8 @@ export namespace Shell {
     }
 
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
+        static $gtype: GObject.GType<NetworkAgent>;
+
         // Constructors of Shell.NetworkAgent
 
         constructor(properties?: Partial<NetworkAgent.ConstructorProps>, ...args: any[]);
@@ -2592,6 +2616,8 @@ export namespace Shell {
     }
 
     class PerfLog extends GObject.Object {
+        static $gtype: GObject.GType<PerfLog>;
+
         // Constructors of Shell.PerfLog
 
         constructor(properties?: Partial<PerfLog.ConstructorProps>, ...args: any[]);
@@ -2733,6 +2759,8 @@ export namespace Shell {
     }
 
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
+        static $gtype: GObject.GType<PolkitAuthenticationAgent>;
+
         // Constructors of Shell.PolkitAuthenticationAgent
 
         constructor(properties?: Partial<PolkitAuthenticationAgent.ConstructorProps>, ...args: any[]);
@@ -2780,6 +2808,8 @@ export namespace Shell {
     }
 
     class Screenshot extends GObject.Object {
+        static $gtype: GObject.GType<Screenshot>;
+
         // Constructors of Shell.Screenshot
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
@@ -2940,6 +2970,8 @@ export namespace Shell {
     }
 
     class SecureTextBuffer extends Clutter.TextBuffer {
+        static $gtype: GObject.GType<SecureTextBuffer>;
+
         // Constructors of Shell.SecureTextBuffer
 
         constructor(properties?: Partial<SecureTextBuffer.ConstructorProps>, ...args: any[]);
@@ -2964,6 +2996,8 @@ export namespace Shell {
         extends St.Bin<A>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<SquareBin>;
+
         // Constructors of Shell.SquareBin
 
         constructor(properties?: Partial<SquareBin.ConstructorProps>, ...args: any[]);
@@ -3498,6 +3532,8 @@ export namespace Shell {
         extends St.Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Stack>;
+
         // Constructors of Shell.Stack
 
         constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
@@ -4037,6 +4073,8 @@ export namespace Shell {
         extends Clutter.Clone<A>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<TrayIcon>;
+
         // Own properties of Shell.TrayIcon
 
         get pid(): number;
@@ -4595,6 +4633,8 @@ export namespace Shell {
     }
 
     class TrayManager extends GObject.Object {
+        static $gtype: GObject.GType<TrayManager>;
+
         // Own properties of Shell.TrayManager
 
         get bg_color(): Clutter.Color;
@@ -4699,6 +4739,8 @@ export namespace Shell {
     }
 
     class WM extends GObject.Object {
+        static $gtype: GObject.GType<WM>;
+
         // Constructors of Shell.WM
 
         constructor(properties?: Partial<WM.ConstructorProps>, ...args: any[]);
@@ -4874,6 +4916,8 @@ export namespace Shell {
         extends St.Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<WindowPreview>;
+
         // Own properties of Shell.WindowPreview
 
         get window_container(): Clutter.Actor;
@@ -5410,6 +5454,8 @@ export namespace Shell {
     }
 
     class WindowPreviewLayout extends Clutter.LayoutManager {
+        static $gtype: GObject.GType<WindowPreviewLayout>;
+
         // Own properties of Shell.WindowPreviewLayout
 
         get bounding_box(): Clutter.ActorBox;
@@ -5467,6 +5513,8 @@ export namespace Shell {
     }
 
     class WindowTracker extends GObject.Object {
+        static $gtype: GObject.GType<WindowTracker>;
+
         // Own properties of Shell.WindowTracker
 
         get focus_app(): App;
@@ -5532,6 +5580,8 @@ export namespace Shell {
         extends St.Widget
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<WorkspaceBackground>;
+
         // Own properties of Shell.WorkspaceBackground
 
         get monitor_index(): number;
@@ -6070,6 +6120,8 @@ export namespace Shell {
     type InvertLightnessEffectClass = typeof InvertLightnessEffect;
     type KeyringPromptClass = typeof KeyringPrompt;
     class MemoryInfo {
+        static $gtype: GObject.GType<MemoryInfo>;
+
         // Own fields of Shell.MemoryInfo
 
         glibc_uordblks: number;
@@ -6099,6 +6151,8 @@ export namespace Shell {
     type MountOperationClass = typeof MountOperation;
     type NetworkAgentClass = typeof NetworkAgent;
     abstract class NetworkAgentPrivate {
+        static $gtype: GObject.GType<NetworkAgentPrivate>;
+
         // Constructors of Shell.NetworkAgentPrivate
 
         _init(...args: any[]): void;
@@ -6116,6 +6170,8 @@ export namespace Shell {
     type WindowPreviewClass = typeof WindowPreview;
     type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
     abstract class WindowPreviewLayoutPrivate {
+        static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
+
         // Constructors of Shell.WindowPreviewLayoutPrivate
 
         _init(...args: any[]): void;

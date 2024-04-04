@@ -64,6 +64,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<ChooserProxy>;
+
         // Constructors of Gdm.ChooserProxy
 
         constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
@@ -704,6 +706,8 @@ export namespace Gdm {
     }
 
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
+        static $gtype: GObject.GType<ChooserSkeleton>;
+
         // Constructors of Gdm.ChooserSkeleton
 
         constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
@@ -1122,6 +1126,8 @@ export namespace Gdm {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Constructors of Gdm.Client
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
@@ -1281,6 +1287,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<GreeterProxy>;
+
         // Constructors of Gdm.GreeterProxy
 
         constructor(properties?: Partial<GreeterProxy.ConstructorProps>, ...args: any[]);
@@ -1987,6 +1995,8 @@ export namespace Gdm {
     }
 
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
+        static $gtype: GObject.GType<GreeterSkeleton>;
+
         // Constructors of Gdm.GreeterSkeleton
 
         constructor(properties?: Partial<GreeterSkeleton.ConstructorProps>, ...args: any[]);
@@ -2479,6 +2489,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<ManagerProxy>;
+
         // Constructors of Gdm.ManagerProxy
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
@@ -3149,6 +3161,8 @@ export namespace Gdm {
     }
 
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
+        static $gtype: GObject.GType<ManagerSkeleton>;
+
         // Constructors of Gdm.ManagerSkeleton
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
@@ -3605,6 +3619,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<RemoteGreeterProxy>;
+
         // Constructors of Gdm.RemoteGreeterProxy
 
         constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
@@ -4236,6 +4252,8 @@ export namespace Gdm {
     }
 
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
+        static $gtype: GObject.GType<RemoteGreeterSkeleton>;
+
         // Constructors of Gdm.RemoteGreeterSkeleton
 
         constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
@@ -4657,6 +4675,8 @@ export namespace Gdm {
             Gio.DBusInterface,
             Gio.Initable
     {
+        static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
+
         // Constructors of Gdm.UserVerifierChoiceListProxy
 
         constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProps>, ...args: any[]);
@@ -5306,6 +5326,8 @@ export namespace Gdm {
         extends Gio.DBusInterfaceSkeleton
         implements UserVerifierChoiceList, Gio.DBusInterface
     {
+        static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
+
         // Constructors of Gdm.UserVerifierChoiceListSkeleton
 
         constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProps>, ...args: any[]);
@@ -5738,6 +5760,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<UserVerifierProxy>;
+
         // Constructors of Gdm.UserVerifierProxy
 
         constructor(properties?: Partial<UserVerifierProxy.ConstructorProps>, ...args: any[]);
@@ -6445,6 +6469,8 @@ export namespace Gdm {
     }
 
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
+        static $gtype: GObject.GType<UserVerifierSkeleton>;
+
         // Constructors of Gdm.UserVerifierSkeleton
 
         constructor(properties?: Partial<UserVerifierSkeleton.ConstructorProps>, ...args: any[]);
@@ -6938,6 +6964,8 @@ export namespace Gdm {
         extends Gio.DBusProxy
         implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<WorkerManagerProxy>;
+
         // Constructors of Gdm.WorkerManagerProxy
 
         constructor(properties?: Partial<WorkerManagerProxy.ConstructorProps>, ...args: any[]);
@@ -7653,6 +7681,8 @@ export namespace Gdm {
     }
 
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
+        static $gtype: GObject.GType<WorkerManagerSkeleton>;
+
         // Constructors of Gdm.WorkerManagerSkeleton
 
         constructor(properties?: Partial<WorkerManagerSkeleton.ConstructorProps>, ...args: any[]);
@@ -8142,6 +8172,8 @@ export namespace Gdm {
     type ChooserIface = typeof Chooser;
     type ChooserProxyClass = typeof ChooserProxy;
     abstract class ChooserProxyPrivate {
+        static $gtype: GObject.GType<ChooserProxyPrivate>;
+
         // Constructors of Gdm.ChooserProxyPrivate
 
         _init(...args: any[]): void;
@@ -8149,6 +8181,8 @@ export namespace Gdm {
 
     type ChooserSkeletonClass = typeof ChooserSkeleton;
     abstract class ChooserSkeletonPrivate {
+        static $gtype: GObject.GType<ChooserSkeletonPrivate>;
+
         // Constructors of Gdm.ChooserSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8158,6 +8192,8 @@ export namespace Gdm {
     type GreeterIface = typeof Greeter;
     type GreeterProxyClass = typeof GreeterProxy;
     abstract class GreeterProxyPrivate {
+        static $gtype: GObject.GType<GreeterProxyPrivate>;
+
         // Constructors of Gdm.GreeterProxyPrivate
 
         _init(...args: any[]): void;
@@ -8165,6 +8201,8 @@ export namespace Gdm {
 
     type GreeterSkeletonClass = typeof GreeterSkeleton;
     abstract class GreeterSkeletonPrivate {
+        static $gtype: GObject.GType<GreeterSkeletonPrivate>;
+
         // Constructors of Gdm.GreeterSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8173,6 +8211,8 @@ export namespace Gdm {
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
+        static $gtype: GObject.GType<ManagerProxyPrivate>;
+
         // Constructors of Gdm.ManagerProxyPrivate
 
         _init(...args: any[]): void;
@@ -8180,6 +8220,8 @@ export namespace Gdm {
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
+        static $gtype: GObject.GType<ManagerSkeletonPrivate>;
+
         // Constructors of Gdm.ManagerSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8188,6 +8230,8 @@ export namespace Gdm {
     type RemoteGreeterIface = typeof RemoteGreeter;
     type RemoteGreeterProxyClass = typeof RemoteGreeterProxy;
     abstract class RemoteGreeterProxyPrivate {
+        static $gtype: GObject.GType<RemoteGreeterProxyPrivate>;
+
         // Constructors of Gdm.RemoteGreeterProxyPrivate
 
         _init(...args: any[]): void;
@@ -8195,6 +8239,8 @@ export namespace Gdm {
 
     type RemoteGreeterSkeletonClass = typeof RemoteGreeterSkeleton;
     abstract class RemoteGreeterSkeletonPrivate {
+        static $gtype: GObject.GType<RemoteGreeterSkeletonPrivate>;
+
         // Constructors of Gdm.RemoteGreeterSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8203,6 +8249,8 @@ export namespace Gdm {
     type UserVerifierChoiceListIface = typeof UserVerifierChoiceList;
     type UserVerifierChoiceListProxyClass = typeof UserVerifierChoiceListProxy;
     abstract class UserVerifierChoiceListProxyPrivate {
+        static $gtype: GObject.GType<UserVerifierChoiceListProxyPrivate>;
+
         // Constructors of Gdm.UserVerifierChoiceListProxyPrivate
 
         _init(...args: any[]): void;
@@ -8210,6 +8258,8 @@ export namespace Gdm {
 
     type UserVerifierChoiceListSkeletonClass = typeof UserVerifierChoiceListSkeleton;
     abstract class UserVerifierChoiceListSkeletonPrivate {
+        static $gtype: GObject.GType<UserVerifierChoiceListSkeletonPrivate>;
+
         // Constructors of Gdm.UserVerifierChoiceListSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8218,6 +8268,8 @@ export namespace Gdm {
     type UserVerifierIface = typeof UserVerifier;
     type UserVerifierProxyClass = typeof UserVerifierProxy;
     abstract class UserVerifierProxyPrivate {
+        static $gtype: GObject.GType<UserVerifierProxyPrivate>;
+
         // Constructors of Gdm.UserVerifierProxyPrivate
 
         _init(...args: any[]): void;
@@ -8225,6 +8277,8 @@ export namespace Gdm {
 
     type UserVerifierSkeletonClass = typeof UserVerifierSkeleton;
     abstract class UserVerifierSkeletonPrivate {
+        static $gtype: GObject.GType<UserVerifierSkeletonPrivate>;
+
         // Constructors of Gdm.UserVerifierSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -8233,6 +8287,8 @@ export namespace Gdm {
     type WorkerManagerIface = typeof WorkerManager;
     type WorkerManagerProxyClass = typeof WorkerManagerProxy;
     abstract class WorkerManagerProxyPrivate {
+        static $gtype: GObject.GType<WorkerManagerProxyPrivate>;
+
         // Constructors of Gdm.WorkerManagerProxyPrivate
 
         _init(...args: any[]): void;
@@ -8240,6 +8296,8 @@ export namespace Gdm {
 
     type WorkerManagerSkeletonClass = typeof WorkerManagerSkeleton;
     abstract class WorkerManagerSkeletonPrivate {
+        static $gtype: GObject.GType<WorkerManagerSkeletonPrivate>;
+
         // Constructors of Gdm.WorkerManagerSkeletonPrivate
 
         _init(...args: any[]): void;

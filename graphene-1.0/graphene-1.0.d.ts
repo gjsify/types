@@ -400,6 +400,8 @@ export namespace Graphene {
      * a maximum vertices.
      */
     class Box {
+        static $gtype: GObject.GType<Box>;
+
         // Constructors of Graphene.Box
 
         constructor(properties?: Partial<{}>);
@@ -601,6 +603,8 @@ export namespace Graphene {
      * and should never be accessed directly.
      */
     class Euler {
+        static $gtype: GObject.GType<Euler>;
+
         // Constructors of Graphene.Euler
 
         constructor(properties?: Partial<{}>);
@@ -786,6 +790,8 @@ export namespace Graphene {
      * modified directly.
      */
     class Frustum {
+        static $gtype: GObject.GType<Frustum>;
+
         // Constructors of Graphene.Frustum
 
         constructor(properties?: Partial<{}>);
@@ -864,6 +870,8 @@ export namespace Graphene {
      * should never be accessed directly.
      */
     class Matrix {
+        static $gtype: GObject.GType<Matrix>;
+
         // Constructors of Graphene.Matrix
 
         constructor(properties?: Partial<{}>);
@@ -1423,6 +1431,8 @@ export namespace Graphene {
      * modified directly.
      */
     class Plane {
+        static $gtype: GObject.GType<Plane>;
+
         // Constructors of Graphene.Plane
 
         constructor(properties?: Partial<{}>);
@@ -1530,6 +1540,8 @@ export namespace Graphene {
      * A point with two coordinates.
      */
     class Point {
+        static $gtype: GObject.GType<Point>;
+
         // Own fields of Graphene.Point
 
         x: number;
@@ -1630,6 +1642,8 @@ export namespace Graphene {
      * A point with three components: X, Y, and Z.
      */
     class Point3D {
+        static $gtype: GObject.GType<Point3D>;
+
         // Own fields of Graphene.Point3D
 
         x: number;
@@ -1764,6 +1778,8 @@ export namespace Graphene {
      * accessed directly.
      */
     class Quad {
+        static $gtype: GObject.GType<Quad>;
+
         // Constructors of Graphene.Quad
 
         constructor(properties?: Partial<{}>);
@@ -1824,6 +1840,8 @@ export namespace Graphene {
      * and should never be accessed directly.
      */
     class Quaternion {
+        static $gtype: GObject.GType<Quaternion>;
+
         // Constructors of Graphene.Quaternion
 
         constructor(properties?: Partial<{}>);
@@ -1989,6 +2007,8 @@ export namespace Graphene {
      * be modified directly.
      */
     class Ray {
+        static $gtype: GObject.GType<Ray>;
+
         // Constructors of Graphene.Ray
 
         constructor(properties?: Partial<{}>);
@@ -2135,6 +2155,8 @@ export namespace Graphene {
      * #graphene_rect_t will always return a normalized rectangle.
      */
     class Rect {
+        static $gtype: GObject.GType<Rect>;
+
         // Own fields of Graphene.Rect
 
         origin: Point;
@@ -2421,6 +2443,8 @@ export namespace Graphene {
     }
 
     class Simd4F {
+        static $gtype: GObject.GType<Simd4F>;
+
         // Constructors of Graphene.Simd4F
 
         constructor(properties?: Partial<{}>);
@@ -2428,6 +2452,8 @@ export namespace Graphene {
     }
 
     class Simd4X4F {
+        static $gtype: GObject.GType<Simd4X4F>;
+
         // Constructors of Graphene.Simd4X4F
 
         _init(...args: any[]): void;
@@ -2437,6 +2463,8 @@ export namespace Graphene {
      * A size.
      */
     class Size {
+        static $gtype: GObject.GType<Size>;
+
         // Own fields of Graphene.Size
 
         width: number;
@@ -2506,6 +2534,8 @@ export namespace Graphene {
      * A sphere, represented by its center and radius.
      */
     class Sphere {
+        static $gtype: GObject.GType<Sphere>;
+
         // Constructors of Graphene.Sphere
 
         constructor(properties?: Partial<{}>);
@@ -2598,6 +2628,8 @@ export namespace Graphene {
      * A triangle.
      */
     class Triangle {
+        static $gtype: GObject.GType<Triangle>;
+
         // Constructors of Graphene.Triangle
 
         constructor(properties?: Partial<{}>);
@@ -2732,6 +2764,8 @@ export namespace Graphene {
      * never be accessed directly.
      */
     class Vec2 {
+        static $gtype: GObject.GType<Vec2>;
+
         // Constructors of Graphene.Vec2
 
         constructor(properties?: Partial<{}>);
@@ -2890,6 +2924,8 @@ export namespace Graphene {
      * never be accessed directly.
      */
     class Vec3 {
+        static $gtype: GObject.GType<Vec3>;
+
         // Constructors of Graphene.Vec3
 
         constructor(properties?: Partial<{}>);
@@ -3093,6 +3129,8 @@ export namespace Graphene {
      * never be accessed directly.
      */
     class Vec4 {
+        static $gtype: GObject.GType<Vec4>;
+
         // Constructors of Graphene.Vec4
 
         constructor(properties?: Partial<{}>);

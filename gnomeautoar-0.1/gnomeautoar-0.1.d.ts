@@ -327,6 +327,8 @@ export namespace GnomeAutoar {
     }
 
     class Compressor extends GObject.Object {
+        static $gtype: GObject.GType<Compressor>;
+
         // Own properties of GnomeAutoar.Compressor
 
         get completed_files(): number;
@@ -567,6 +569,8 @@ export namespace GnomeAutoar {
     }
 
     class Extractor extends GObject.Object {
+        static $gtype: GObject.GType<Extractor>;
+
         // Own properties of GnomeAutoar.Extractor
 
         get completed_files(): number;

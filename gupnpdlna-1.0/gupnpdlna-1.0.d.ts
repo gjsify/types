@@ -45,6 +45,8 @@ export namespace GUPnPDLNA {
      * The top-level object used to for metadata extraction.
      */
     class Discoverer extends GstPbutils.Discoverer {
+        static $gtype: GObject.GType<Discoverer>;
+
         // Own properties of GUPnPDLNA.Discoverer
 
         get extended_mode(): boolean;
@@ -119,6 +121,8 @@ export namespace GUPnPDLNA {
     }
 
     class Information extends GObject.Object {
+        static $gtype: GObject.GType<Information>;
+
         // Own properties of GUPnPDLNA.Information
 
         get info(): GstPbutils.DiscovererInfo;
@@ -157,6 +161,8 @@ export namespace GUPnPDLNA {
      * Profiles.
      */
     class Profile extends GObject.Object {
+        static $gtype: GObject.GType<Profile>;
+
         // Own properties of GUPnPDLNA.Profile
 
         get encoding_profile(): GstPbutils.EncodingProfile;

@@ -329,6 +329,8 @@ export namespace LibvirtGObject {
     }
 
     class Connection extends GObject.Object {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of LibvirtGObject.Connection
 
         get handle(): ConnectionHandle;
@@ -600,6 +602,8 @@ export namespace LibvirtGObject {
     }
 
     class Domain extends GObject.Object {
+        static $gtype: GObject.GType<Domain>;
+
         // Own properties of LibvirtGObject.Domain
 
         get handle(): DomainHandle;
@@ -872,6 +876,8 @@ export namespace LibvirtGObject {
     }
 
     abstract class DomainDevice extends GObject.Object {
+        static $gtype: GObject.GType<DomainDevice>;
+
         // Own properties of LibvirtGObject.DomainDevice
 
         get config(): LibvirtGConfig.DomainDevice;
@@ -896,6 +902,8 @@ export namespace LibvirtGObject {
     }
 
     class DomainDisk extends DomainDevice {
+        static $gtype: GObject.GType<DomainDisk>;
+
         // Constructors of LibvirtGObject.DomainDisk
 
         constructor(properties?: Partial<DomainDisk.ConstructorProps>, ...args: any[]);
@@ -927,6 +935,8 @@ export namespace LibvirtGObject {
     }
 
     class DomainInterface extends DomainDevice {
+        static $gtype: GObject.GType<DomainInterface>;
+
         // Constructors of LibvirtGObject.DomainInterface
 
         constructor(properties?: Partial<DomainInterface.ConstructorProps>, ...args: any[]);
@@ -953,6 +963,8 @@ export namespace LibvirtGObject {
     }
 
     class DomainSnapshot extends GObject.Object {
+        static $gtype: GObject.GType<DomainSnapshot>;
+
         // Own properties of LibvirtGObject.DomainSnapshot
 
         get handle(): DomainSnapshotHandle;
@@ -1000,6 +1012,8 @@ export namespace LibvirtGObject {
     }
 
     class Interface extends GObject.Object {
+        static $gtype: GObject.GType<Interface>;
+
         // Own properties of LibvirtGObject.Interface
 
         get handle(): InterfaceHandle;
@@ -1034,6 +1048,8 @@ export namespace LibvirtGObject {
     }
 
     class Manager extends GObject.Object {
+        static $gtype: GObject.GType<Manager>;
+
         // Constructors of LibvirtGObject.Manager
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
@@ -1076,6 +1092,8 @@ export namespace LibvirtGObject {
     }
 
     class Network extends GObject.Object {
+        static $gtype: GObject.GType<Network>;
+
         // Own properties of LibvirtGObject.Network
 
         get handle(): NetworkHandle;
@@ -1117,6 +1135,8 @@ export namespace LibvirtGObject {
     }
 
     class NetworkDHCPLease extends GObject.Object {
+        static $gtype: GObject.GType<NetworkDHCPLease>;
+
         // Own properties of LibvirtGObject.NetworkDHCPLease
 
         get handle(): any;
@@ -1149,6 +1169,8 @@ export namespace LibvirtGObject {
     }
 
     class NetworkFilter extends GObject.Object {
+        static $gtype: GObject.GType<NetworkFilter>;
+
         // Own properties of LibvirtGObject.NetworkFilter
 
         get handle(): NetworkFilterHandle;
@@ -1175,6 +1197,8 @@ export namespace LibvirtGObject {
     }
 
     class NodeDevice extends GObject.Object {
+        static $gtype: GObject.GType<NodeDevice>;
+
         // Own properties of LibvirtGObject.NodeDevice
 
         get handle(): NodeDeviceHandle;
@@ -1200,6 +1224,8 @@ export namespace LibvirtGObject {
     }
 
     class Secret extends GObject.Object {
+        static $gtype: GObject.GType<Secret>;
+
         // Own properties of LibvirtGObject.Secret
 
         get handle(): SecretHandle;
@@ -1226,6 +1252,8 @@ export namespace LibvirtGObject {
     }
 
     class StoragePool extends GObject.Object {
+        static $gtype: GObject.GType<StoragePool>;
+
         // Own properties of LibvirtGObject.StoragePool
 
         get handle(): StoragePoolHandle;
@@ -1296,6 +1324,8 @@ export namespace LibvirtGObject {
     }
 
     class StorageVol extends GObject.Object {
+        static $gtype: GObject.GType<StorageVol>;
+
         // Own properties of LibvirtGObject.StorageVol
 
         get handle(): StorageVolHandle;
@@ -1339,6 +1369,8 @@ export namespace LibvirtGObject {
     }
 
     class Stream extends Gio.IOStream {
+        static $gtype: GObject.GType<Stream>;
+
         // Own properties of LibvirtGObject.Stream
 
         get handle(): StreamHandle;
@@ -1412,6 +1444,8 @@ export namespace LibvirtGObject {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of LibvirtGObject.ConnectionPrivate
 
         _init(...args: any[]): void;
@@ -1420,6 +1454,8 @@ export namespace LibvirtGObject {
     type DomainClass = typeof Domain;
     type DomainDeviceClass = typeof DomainDevice;
     abstract class DomainDevicePrivate {
+        static $gtype: GObject.GType<DomainDevicePrivate>;
+
         // Constructors of LibvirtGObject.DomainDevicePrivate
 
         _init(...args: any[]): void;
@@ -1427,12 +1463,16 @@ export namespace LibvirtGObject {
 
     type DomainDiskClass = typeof DomainDisk;
     abstract class DomainDiskPrivate {
+        static $gtype: GObject.GType<DomainDiskPrivate>;
+
         // Constructors of LibvirtGObject.DomainDiskPrivate
 
         _init(...args: any[]): void;
     }
 
     class DomainDiskStats {
+        static $gtype: GObject.GType<DomainDiskStats>;
+
         // Own fields of LibvirtGObject.DomainDiskStats
 
         rd_req: number;
@@ -1456,6 +1496,8 @@ export namespace LibvirtGObject {
     }
 
     class DomainInfo {
+        static $gtype: GObject.GType<DomainInfo>;
+
         // Own fields of LibvirtGObject.DomainInfo
 
         state: DomainState;
@@ -1471,12 +1513,16 @@ export namespace LibvirtGObject {
 
     type DomainInterfaceClass = typeof DomainInterface;
     abstract class DomainInterfacePrivate {
+        static $gtype: GObject.GType<DomainInterfacePrivate>;
+
         // Constructors of LibvirtGObject.DomainInterfacePrivate
 
         _init(...args: any[]): void;
     }
 
     class DomainInterfaceStats {
+        static $gtype: GObject.GType<DomainInterfaceStats>;
+
         // Own fields of LibvirtGObject.DomainInterfaceStats
 
         rx_bytes: number;
@@ -1506,6 +1552,8 @@ export namespace LibvirtGObject {
     }
 
     abstract class DomainPrivate {
+        static $gtype: GObject.GType<DomainPrivate>;
+
         // Constructors of LibvirtGObject.DomainPrivate
 
         _init(...args: any[]): void;
@@ -1513,6 +1561,8 @@ export namespace LibvirtGObject {
 
     type DomainSnapshotClass = typeof DomainSnapshot;
     abstract class DomainSnapshotPrivate {
+        static $gtype: GObject.GType<DomainSnapshotPrivate>;
+
         // Constructors of LibvirtGObject.DomainSnapshotPrivate
 
         _init(...args: any[]): void;
@@ -1520,6 +1570,8 @@ export namespace LibvirtGObject {
 
     type InterfaceClass = typeof Interface;
     abstract class InterfacePrivate {
+        static $gtype: GObject.GType<InterfacePrivate>;
+
         // Constructors of LibvirtGObject.InterfacePrivate
 
         _init(...args: any[]): void;
@@ -1527,6 +1579,8 @@ export namespace LibvirtGObject {
 
     type ManagerClass = typeof Manager;
     abstract class ManagerPrivate {
+        static $gtype: GObject.GType<ManagerPrivate>;
+
         // Constructors of LibvirtGObject.ManagerPrivate
 
         _init(...args: any[]): void;
@@ -1535,6 +1589,8 @@ export namespace LibvirtGObject {
     type NetworkClass = typeof Network;
     type NetworkDHCPLeaseClass = typeof NetworkDHCPLease;
     abstract class NetworkDHCPLeasePrivate {
+        static $gtype: GObject.GType<NetworkDHCPLeasePrivate>;
+
         // Constructors of LibvirtGObject.NetworkDHCPLeasePrivate
 
         _init(...args: any[]): void;
@@ -1542,12 +1598,16 @@ export namespace LibvirtGObject {
 
     type NetworkFilterClass = typeof NetworkFilter;
     abstract class NetworkFilterPrivate {
+        static $gtype: GObject.GType<NetworkFilterPrivate>;
+
         // Constructors of LibvirtGObject.NetworkFilterPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class NetworkPrivate {
+        static $gtype: GObject.GType<NetworkPrivate>;
+
         // Constructors of LibvirtGObject.NetworkPrivate
 
         _init(...args: any[]): void;
@@ -1555,12 +1615,16 @@ export namespace LibvirtGObject {
 
     type NodeDeviceClass = typeof NodeDevice;
     abstract class NodeDevicePrivate {
+        static $gtype: GObject.GType<NodeDevicePrivate>;
+
         // Constructors of LibvirtGObject.NodeDevicePrivate
 
         _init(...args: any[]): void;
     }
 
     class NodeInfo {
+        static $gtype: GObject.GType<NodeInfo>;
+
         // Own fields of LibvirtGObject.NodeInfo
 
         model: number[];
@@ -1591,6 +1655,8 @@ export namespace LibvirtGObject {
 
     type SecretClass = typeof Secret;
     abstract class SecretPrivate {
+        static $gtype: GObject.GType<SecretPrivate>;
+
         // Constructors of LibvirtGObject.SecretPrivate
 
         _init(...args: any[]): void;
@@ -1598,6 +1664,8 @@ export namespace LibvirtGObject {
 
     type StoragePoolClass = typeof StoragePool;
     class StoragePoolInfo {
+        static $gtype: GObject.GType<StoragePoolInfo>;
+
         // Own fields of LibvirtGObject.StoragePoolInfo
 
         state: StoragePoolState;
@@ -1611,6 +1679,8 @@ export namespace LibvirtGObject {
     }
 
     abstract class StoragePoolPrivate {
+        static $gtype: GObject.GType<StoragePoolPrivate>;
+
         // Constructors of LibvirtGObject.StoragePoolPrivate
 
         _init(...args: any[]): void;
@@ -1618,6 +1688,8 @@ export namespace LibvirtGObject {
 
     type StorageVolClass = typeof StorageVol;
     class StorageVolInfo {
+        static $gtype: GObject.GType<StorageVolInfo>;
+
         // Own fields of LibvirtGObject.StorageVolInfo
 
         type: StorageVolType;
@@ -1630,6 +1702,8 @@ export namespace LibvirtGObject {
     }
 
     abstract class StorageVolPrivate {
+        static $gtype: GObject.GType<StorageVolPrivate>;
+
         // Constructors of LibvirtGObject.StorageVolPrivate
 
         _init(...args: any[]): void;
@@ -1637,6 +1711,8 @@ export namespace LibvirtGObject {
 
     type StreamClass = typeof Stream;
     abstract class StreamPrivate {
+        static $gtype: GObject.GType<StreamPrivate>;
+
         // Constructors of LibvirtGObject.StreamPrivate
 
         _init(...args: any[]): void;

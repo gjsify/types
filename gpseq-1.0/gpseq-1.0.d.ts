@@ -18,6 +18,8 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace Gpseq {
     class ChannelError extends GLib.Error {
+        static $gtype: GObject.GType<ChannelError>;
+
         // Static fields of Gpseq.ChannelError
 
         static CLOSED: number;
@@ -31,6 +33,8 @@ export namespace Gpseq {
     }
 
     class MapError extends GLib.Error {
+        static $gtype: GObject.GType<MapError>;
+
         // Static fields of Gpseq.MapError
 
         static DUPLICATE_KEY: number;
@@ -42,6 +46,8 @@ export namespace Gpseq {
     }
 
     class OptionalError extends GLib.Error {
+        static $gtype: GObject.GType<OptionalError>;
+
         // Static fields of Gpseq.OptionalError
 
         static NOT_PRESENT: number;
@@ -312,6 +318,8 @@ export namespace Gpseq {
     }
 
     class ArraySpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<ArraySpliterator>;
+
         // Own properties of Gpseq.ArraySpliterator
 
         get g_type(): GObject.GType;
@@ -739,6 +747,8 @@ export namespace Gpseq {
     }
 
     abstract class ForkJoinTask extends GObject.Object implements Task {
+        static $gtype: GObject.GType<ForkJoinTask>;
+
         // Own properties of Gpseq.ForkJoinTask
 
         get g_type(): GObject.GType;
@@ -1155,6 +1165,8 @@ export namespace Gpseq {
     }
 
     class ForkJoinTaskSharedResult {
+        static $gtype: GObject.GType<ForkJoinTaskSharedResult>;
+
         // Own fields of Gpseq.ForkJoinTaskSharedResult
 
         ref_count: number;
@@ -1189,6 +1201,8 @@ export namespace Gpseq {
     }
 
     class FuncTask extends GObject.Object implements Task {
+        static $gtype: GObject.GType<FuncTask>;
+
         // Own properties of Gpseq.FuncTask
 
         get g_type(): GObject.GType;
@@ -1589,6 +1603,8 @@ export namespace Gpseq {
     }
 
     abstract class Future extends GObject.Object implements Gee.Hashable, Result {
+        static $gtype: GObject.GType<Future>;
+
         // Own properties of Gpseq.Future
 
         get g_type(): GObject.GType;
@@ -2036,6 +2052,8 @@ export namespace Gpseq {
     }
 
     class GenericArraySpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<GenericArraySpliterator>;
+
         // Own properties of Gpseq.GenericArraySpliterator
 
         get g_type(): GObject.GType;
@@ -2449,6 +2467,8 @@ export namespace Gpseq {
     }
 
     class IteratorSpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<IteratorSpliterator>;
+
         // Own properties of Gpseq.IteratorSpliterator
 
         get g_type(): GObject.GType;
@@ -2868,6 +2888,8 @@ export namespace Gpseq {
     }
 
     class ListSpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<ListSpliterator>;
+
         // Own properties of Gpseq.ListSpliterator
 
         get g_type(): GObject.GType;
@@ -3286,6 +3308,8 @@ export namespace Gpseq {
     }
 
     class Optional extends GObject.Object {
+        static $gtype: GObject.GType<Optional>;
+
         // Own properties of Gpseq.Optional
 
         get g_type(): GObject.GType;
@@ -3328,6 +3352,8 @@ export namespace Gpseq {
     }
 
     class Promise {
+        static $gtype: GObject.GType<Promise>;
+
         // Own fields of Gpseq.Promise
 
         ref_count: number;
@@ -3367,6 +3393,8 @@ export namespace Gpseq {
     }
 
     class Seq extends GObject.Object {
+        static $gtype: GObject.GType<Seq>;
+
         // Own properties of Gpseq.Seq
 
         get g_type(): GObject.GType;
@@ -3553,6 +3581,8 @@ export namespace Gpseq {
     }
 
     abstract class SpliteratorTask extends ForkJoinTask {
+        static $gtype: GObject.GType<SpliteratorTask>;
+
         // Own properties of Gpseq.SpliteratorTask
 
         get r_type(): GObject.GType;
@@ -3624,6 +3654,8 @@ export namespace Gpseq {
     }
 
     class SubArray extends GObject.Object implements Gee.Traversable, Gee.Iterable {
+        static $gtype: GObject.GType<SubArray>;
+
         // Own properties of Gpseq.SubArray
 
         get g_type(): GObject.GType;
@@ -4061,6 +4093,8 @@ export namespace Gpseq {
     }
 
     class SubArraySpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<SubArraySpliterator>;
+
         // Own properties of Gpseq.SubArraySpliterator
 
         get g_type(): GObject.GType;
@@ -4474,6 +4508,8 @@ export namespace Gpseq {
     }
 
     class SupplierSpliterator extends GObject.Object implements Spliterator {
+        static $gtype: GObject.GType<SupplierSpliterator>;
+
         // Own properties of Gpseq.SupplierSpliterator
 
         get g_type(): GObject.GType;
@@ -4880,6 +4916,8 @@ export namespace Gpseq {
     }
 
     abstract class TaskEnv extends GObject.Object {
+        static $gtype: GObject.GType<TaskEnv>;
+
         // Own properties of Gpseq.TaskEnv
 
         get executor(): Executor;
@@ -4919,6 +4957,8 @@ export namespace Gpseq {
     }
 
     class WaitGroup extends GObject.Object {
+        static $gtype: GObject.GType<WaitGroup>;
+
         // Constructors of Gpseq.WaitGroup
 
         constructor(properties?: Partial<WaitGroup.ConstructorProps>, ...args: any[]);
@@ -4956,6 +4996,8 @@ export namespace Gpseq {
     }
 
     class WorkerPool extends GObject.Object implements Executor {
+        static $gtype: GObject.GType<WorkerPool>;
+
         // Own properties of Gpseq.WorkerPool
 
         get max_threads(): number;
@@ -5381,6 +5423,8 @@ export namespace Gpseq {
     }
 
     class WorkerThread extends GObject.Object {
+        static $gtype: GObject.GType<WorkerThread>;
+
         // Own properties of Gpseq.WorkerThread
 
         get thread(): GLib.Thread;
@@ -5436,6 +5480,8 @@ export namespace Gpseq {
     }
 
     class Wrapper extends GObject.Object {
+        static $gtype: GObject.GType<Wrapper>;
+
         // Own properties of Gpseq.Wrapper
 
         get g_type(): GObject.GType;
@@ -5464,6 +5510,8 @@ export namespace Gpseq {
 
     type ArraySpliteratorClass = typeof ArraySpliterator;
     abstract class ArraySpliteratorPrivate {
+        static $gtype: GObject.GType<ArraySpliteratorPrivate>;
+
         // Constructors of Gpseq.ArraySpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5471,6 +5519,8 @@ export namespace Gpseq {
 
     type ForkJoinTaskClass = typeof ForkJoinTask;
     abstract class ForkJoinTaskPrivate {
+        static $gtype: GObject.GType<ForkJoinTaskPrivate>;
+
         // Constructors of Gpseq.ForkJoinTaskPrivate
 
         _init(...args: any[]): void;
@@ -5478,6 +5528,8 @@ export namespace Gpseq {
 
     type ForkJoinTaskSharedResultClass = typeof ForkJoinTaskSharedResult;
     abstract class ForkJoinTaskSharedResultPrivate {
+        static $gtype: GObject.GType<ForkJoinTaskSharedResultPrivate>;
+
         // Constructors of Gpseq.ForkJoinTaskSharedResultPrivate
 
         _init(...args: any[]): void;
@@ -5485,6 +5537,8 @@ export namespace Gpseq {
 
     type FuncTaskClass = typeof FuncTask;
     abstract class FuncTaskPrivate {
+        static $gtype: GObject.GType<FuncTaskPrivate>;
+
         // Constructors of Gpseq.FuncTaskPrivate
 
         _init(...args: any[]): void;
@@ -5492,6 +5546,8 @@ export namespace Gpseq {
 
     type FutureClass = typeof Future;
     abstract class FuturePrivate {
+        static $gtype: GObject.GType<FuturePrivate>;
+
         // Constructors of Gpseq.FuturePrivate
 
         _init(...args: any[]): void;
@@ -5499,6 +5555,8 @@ export namespace Gpseq {
 
     type GenericArraySpliteratorClass = typeof GenericArraySpliterator;
     abstract class GenericArraySpliteratorPrivate {
+        static $gtype: GObject.GType<GenericArraySpliteratorPrivate>;
+
         // Constructors of Gpseq.GenericArraySpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5506,6 +5564,8 @@ export namespace Gpseq {
 
     type IteratorSpliteratorClass = typeof IteratorSpliterator;
     abstract class IteratorSpliteratorPrivate {
+        static $gtype: GObject.GType<IteratorSpliteratorPrivate>;
+
         // Constructors of Gpseq.IteratorSpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5513,6 +5573,8 @@ export namespace Gpseq {
 
     type ListSpliteratorClass = typeof ListSpliterator;
     abstract class ListSpliteratorPrivate {
+        static $gtype: GObject.GType<ListSpliteratorPrivate>;
+
         // Constructors of Gpseq.ListSpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5520,6 +5582,8 @@ export namespace Gpseq {
 
     type OptionalClass = typeof Optional;
     abstract class OptionalPrivate {
+        static $gtype: GObject.GType<OptionalPrivate>;
+
         // Constructors of Gpseq.OptionalPrivate
 
         _init(...args: any[]): void;
@@ -5527,6 +5591,8 @@ export namespace Gpseq {
 
     type PromiseClass = typeof Promise;
     abstract class PromisePrivate {
+        static $gtype: GObject.GType<PromisePrivate>;
+
         // Constructors of Gpseq.PromisePrivate
 
         _init(...args: any[]): void;
@@ -5534,6 +5600,8 @@ export namespace Gpseq {
 
     type SeqClass = typeof Seq;
     abstract class SeqPrivate {
+        static $gtype: GObject.GType<SeqPrivate>;
+
         // Constructors of Gpseq.SeqPrivate
 
         _init(...args: any[]): void;
@@ -5541,6 +5609,8 @@ export namespace Gpseq {
 
     type SpliteratorTaskClass = typeof SpliteratorTask;
     abstract class SpliteratorTaskPrivate {
+        static $gtype: GObject.GType<SpliteratorTaskPrivate>;
+
         // Constructors of Gpseq.SpliteratorTaskPrivate
 
         _init(...args: any[]): void;
@@ -5548,6 +5618,8 @@ export namespace Gpseq {
 
     type SubArrayClass = typeof SubArray;
     abstract class SubArrayPrivate {
+        static $gtype: GObject.GType<SubArrayPrivate>;
+
         // Constructors of Gpseq.SubArrayPrivate
 
         _init(...args: any[]): void;
@@ -5555,6 +5627,8 @@ export namespace Gpseq {
 
     type SubArraySpliteratorClass = typeof SubArraySpliterator;
     abstract class SubArraySpliteratorPrivate {
+        static $gtype: GObject.GType<SubArraySpliteratorPrivate>;
+
         // Constructors of Gpseq.SubArraySpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5562,6 +5636,8 @@ export namespace Gpseq {
 
     type SupplierSpliteratorClass = typeof SupplierSpliterator;
     abstract class SupplierSpliteratorPrivate {
+        static $gtype: GObject.GType<SupplierSpliteratorPrivate>;
+
         // Constructors of Gpseq.SupplierSpliteratorPrivate
 
         _init(...args: any[]): void;
@@ -5569,6 +5645,8 @@ export namespace Gpseq {
 
     type TaskEnvClass = typeof TaskEnv;
     abstract class TaskEnvPrivate {
+        static $gtype: GObject.GType<TaskEnvPrivate>;
+
         // Constructors of Gpseq.TaskEnvPrivate
 
         _init(...args: any[]): void;
@@ -5576,6 +5654,8 @@ export namespace Gpseq {
 
     type WaitGroupClass = typeof WaitGroup;
     abstract class WaitGroupPrivate {
+        static $gtype: GObject.GType<WaitGroupPrivate>;
+
         // Constructors of Gpseq.WaitGroupPrivate
 
         _init(...args: any[]): void;
@@ -5583,6 +5663,8 @@ export namespace Gpseq {
 
     type WorkerPoolClass = typeof WorkerPool;
     abstract class WorkerPoolPrivate {
+        static $gtype: GObject.GType<WorkerPoolPrivate>;
+
         // Constructors of Gpseq.WorkerPoolPrivate
 
         _init(...args: any[]): void;
@@ -5590,6 +5672,8 @@ export namespace Gpseq {
 
     type WorkerThreadClass = typeof WorkerThread;
     abstract class WorkerThreadPrivate {
+        static $gtype: GObject.GType<WorkerThreadPrivate>;
+
         // Constructors of Gpseq.WorkerThreadPrivate
 
         _init(...args: any[]): void;
@@ -5597,6 +5681,8 @@ export namespace Gpseq {
 
     type WrapperClass = typeof Wrapper;
     abstract class WrapperPrivate {
+        static $gtype: GObject.GType<WrapperPrivate>;
+
         // Constructors of Gpseq.WrapperPrivate
 
         _init(...args: any[]): void;
@@ -5614,6 +5700,8 @@ export namespace Gpseq {
     type TaskIface = typeof Task;
     type ThreadFactoryIface = typeof ThreadFactory;
     class CacheLinePad {
+        static $gtype: GObject.GType<CacheLinePad>;
+
         // Constructors of Gpseq.CacheLinePad
 
         _init(...args: any[]): void;

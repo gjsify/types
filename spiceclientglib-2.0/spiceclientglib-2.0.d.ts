@@ -64,6 +64,8 @@ export namespace SpiceClientGLib {
      * Error codes returned by spice-client API.
      */
     class ClientError extends GLib.Error {
+        static $gtype: GObject.GType<ClientError>;
+
         // Static fields of SpiceClientGLib.ClientError
 
         /**
@@ -569,6 +571,8 @@ export namespace SpiceClientGLib {
      * The #SpiceAudio struct is opaque and should not be accessed directly.
      */
     abstract class Audio extends GObject.Object {
+        static $gtype: GObject.GType<Audio>;
+
         // Own properties of SpiceClientGLib.Audio
 
         get main_context(): GLib.MainContext;
@@ -657,6 +661,8 @@ export namespace SpiceClientGLib {
      * The #SpiceChannel struct is opaque and should not be accessed directly.
      */
     class Channel extends GObject.Object {
+        static $gtype: GObject.GType<Channel>;
+
         // Own properties of SpiceClientGLib.Channel
 
         get channel_id(): number;
@@ -817,6 +823,8 @@ export namespace SpiceClientGLib {
      * The #SpiceCursorChannel struct is opaque and should not be accessed directly.
      */
     class CursorChannel extends Channel {
+        static $gtype: GObject.GType<CursorChannel>;
+
         // Own properties of SpiceClientGLib.CursorChannel
 
         /**
@@ -916,6 +924,8 @@ export namespace SpiceClientGLib {
      * The #SpiceDisplayChannel struct is opaque and should not be accessed directly.
      */
     class DisplayChannel extends Channel {
+        static $gtype: GObject.GType<DisplayChannel>;
+
         // Own properties of SpiceClientGLib.DisplayChannel
 
         /**
@@ -1065,6 +1075,8 @@ export namespace SpiceClientGLib {
     }
 
     class FileTransferTask extends GObject.Object {
+        static $gtype: GObject.GType<FileTransferTask>;
+
         // Own properties of SpiceClientGLib.FileTransferTask
 
         get cancellable(): Gio.Cancellable;
@@ -1120,6 +1132,8 @@ export namespace SpiceClientGLib {
      * The #SpiceInputsChannel struct is opaque and should not be accessed directly.
      */
     class InputsChannel extends Channel {
+        static $gtype: GObject.GType<InputsChannel>;
+
         // Own properties of SpiceClientGLib.InputsChannel
 
         get key_modifiers(): number;
@@ -1270,6 +1284,8 @@ export namespace SpiceClientGLib {
      * The #SpiceMainChannel struct is opaque and should not be accessed directly.
      */
     class MainChannel extends Channel {
+        static $gtype: GObject.GType<MainChannel>;
+
         // Own properties of SpiceClientGLib.MainChannel
 
         get agent_caps_0(): number;
@@ -1550,6 +1566,8 @@ export namespace SpiceClientGLib {
      * The #SpicePlaybackChannel struct is opaque and should not be accessed directly.
      */
     class PlaybackChannel extends Channel {
+        static $gtype: GObject.GType<PlaybackChannel>;
+
         // Own properties of SpiceClientGLib.PlaybackChannel
 
         get min_latency(): number;
@@ -1628,6 +1646,8 @@ export namespace SpiceClientGLib {
      * The #SpicePortChannel struct is opaque and should not be accessed directly.
      */
     class PortChannel extends Channel {
+        static $gtype: GObject.GType<PortChannel>;
+
         // Own properties of SpiceClientGLib.PortChannel
 
         get port_name(): string;
@@ -1702,6 +1722,8 @@ export namespace SpiceClientGLib {
      * Opaque data structure.
      */
     class QmpPort extends GObject.Object {
+        static $gtype: GObject.GType<QmpPort>;
+
         // Own properties of SpiceClientGLib.QmpPort
 
         get channel(): PortChannel;
@@ -1787,6 +1809,8 @@ export namespace SpiceClientGLib {
      * The #SpiceRecordChannel struct is opaque and should not be accessed directly.
      */
     class RecordChannel extends Channel {
+        static $gtype: GObject.GType<RecordChannel>;
+
         // Own properties of SpiceClientGLib.RecordChannel
 
         get mute(): boolean;
@@ -1915,6 +1939,8 @@ export namespace SpiceClientGLib {
      * The #SpiceSession struct is opaque and should not be accessed directly.
      */
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Own properties of SpiceClientGLib.Session
 
         /**
@@ -2303,6 +2329,8 @@ export namespace SpiceClientGLib {
      * The #SpiceSmartcardChannel struct is opaque and should not be accessed directly.
      */
     class SmartcardChannel extends Channel {
+        static $gtype: GObject.GType<SmartcardChannel>;
+
         // Constructors of SpiceClientGLib.SmartcardChannel
 
         constructor(properties?: Partial<SmartcardChannel.ConstructorProps>, ...args: any[]);
@@ -2338,6 +2366,8 @@ export namespace SpiceClientGLib {
      * The #SpiceSmartcardManager struct is opaque and should not be accessed directly.
      */
     class SmartcardManager extends GObject.Object {
+        static $gtype: GObject.GType<SmartcardManager>;
+
         // Constructors of SpiceClientGLib.SmartcardManager
 
         constructor(properties?: Partial<SmartcardManager.ConstructorProps>, ...args: any[]);
@@ -2420,6 +2450,8 @@ export namespace SpiceClientGLib {
      * The #SpiceURI struct is opaque and cannot be accessed directly.
      */
     class URI extends GObject.Object {
+        static $gtype: GObject.GType<URI>;
+
         // Own properties of SpiceClientGLib.URI
 
         get hostname(): string;
@@ -2492,6 +2524,8 @@ export namespace SpiceClientGLib {
      * The #SpiceUsbDeviceManager struct is opaque and should not be accessed directly.
      */
     class UsbDeviceManager extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<UsbDeviceManager>;
+
         // Own properties of SpiceClientGLib.UsbDeviceManager
 
         /**
@@ -3169,6 +3203,8 @@ export namespace SpiceClientGLib {
      * The #SpiceUsbredirChannel struct is opaque and should not be accessed directly.
      */
     class UsbredirChannel extends Channel {
+        static $gtype: GObject.GType<UsbredirChannel>;
+
         // Constructors of SpiceClientGLib.UsbredirChannel
 
         constructor(properties?: Partial<UsbredirChannel.ConstructorProps>, ...args: any[]);
@@ -3186,6 +3222,8 @@ export namespace SpiceClientGLib {
      * The #SpiceWebdavChannel struct is opaque and should not be accessed directly.
      */
     class WebdavChannel extends PortChannel {
+        static $gtype: GObject.GType<WebdavChannel>;
+
         // Constructors of SpiceClientGLib.WebdavChannel
 
         constructor(properties?: Partial<WebdavChannel.ConstructorProps>, ...args: any[]);
@@ -3195,6 +3233,8 @@ export namespace SpiceClientGLib {
 
     type AudioClass = typeof Audio;
     abstract class AudioPrivate {
+        static $gtype: GObject.GType<AudioPrivate>;
+
         // Constructors of SpiceClientGLib.AudioPrivate
 
         _init(...args: any[]): void;
@@ -3202,12 +3242,16 @@ export namespace SpiceClientGLib {
 
     type ChannelClass = typeof Channel;
     abstract class ChannelClassPrivate {
+        static $gtype: GObject.GType<ChannelClassPrivate>;
+
         // Constructors of SpiceClientGLib.ChannelClassPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class ChannelPrivate {
+        static $gtype: GObject.GType<ChannelPrivate>;
+
         // Constructors of SpiceClientGLib.ChannelPrivate
 
         _init(...args: any[]): void;
@@ -3215,6 +3259,8 @@ export namespace SpiceClientGLib {
 
     type CursorChannelClass = typeof CursorChannel;
     abstract class CursorChannelPrivate {
+        static $gtype: GObject.GType<CursorChannelPrivate>;
+
         // Constructors of SpiceClientGLib.CursorChannelPrivate
 
         _init(...args: any[]): void;
@@ -3224,6 +3270,8 @@ export namespace SpiceClientGLib {
      * The #SpiceCursorShape structure defines the remote cursor's shape.
      */
     class CursorShape {
+        static $gtype: GObject.GType<CursorShape>;
+
         // Own fields of SpiceClientGLib.CursorShape
 
         width: number;
@@ -3249,6 +3297,8 @@ export namespace SpiceClientGLib {
 
     type DisplayChannelClass = typeof DisplayChannel;
     abstract class DisplayChannelPrivate {
+        static $gtype: GObject.GType<DisplayChannelPrivate>;
+
         // Constructors of SpiceClientGLib.DisplayChannelPrivate
 
         _init(...args: any[]): void;
@@ -3258,6 +3308,8 @@ export namespace SpiceClientGLib {
      * Holds a monitor configuration.
      */
     class DisplayMonitorConfig {
+        static $gtype: GObject.GType<DisplayMonitorConfig>;
+
         // Own fields of SpiceClientGLib.DisplayMonitorConfig
 
         id: number;
@@ -3286,6 +3338,8 @@ export namespace SpiceClientGLib {
      * Holds the information necessary to use the primary surface.
      */
     class DisplayPrimary {
+        static $gtype: GObject.GType<DisplayPrimary>;
+
         // Own fields of SpiceClientGLib.DisplayPrimary
 
         format: any;
@@ -3317,6 +3371,8 @@ export namespace SpiceClientGLib {
      * Holds the information necessary for using the GL display scanout.
      */
     class GlScanout {
+        static $gtype: GObject.GType<GlScanout>;
+
         // Own fields of SpiceClientGLib.GlScanout
 
         fd: number;
@@ -3350,6 +3406,8 @@ export namespace SpiceClientGLib {
 
     type InputsChannelClass = typeof InputsChannel;
     abstract class InputsChannelPrivate {
+        static $gtype: GObject.GType<InputsChannelPrivate>;
+
         // Constructors of SpiceClientGLib.InputsChannelPrivate
 
         _init(...args: any[]): void;
@@ -3357,18 +3415,24 @@ export namespace SpiceClientGLib {
 
     type MainChannelClass = typeof MainChannel;
     abstract class MainChannelPrivate {
+        static $gtype: GObject.GType<MainChannelPrivate>;
+
         // Constructors of SpiceClientGLib.MainChannelPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MsgIn {
+        static $gtype: GObject.GType<MsgIn>;
+
         // Constructors of SpiceClientGLib.MsgIn
 
         _init(...args: any[]): void;
     }
 
     abstract class MsgOut {
+        static $gtype: GObject.GType<MsgOut>;
+
         // Constructors of SpiceClientGLib.MsgOut
 
         _init(...args: any[]): void;
@@ -3376,6 +3440,8 @@ export namespace SpiceClientGLib {
 
     type PlaybackChannelClass = typeof PlaybackChannel;
     abstract class PlaybackChannelPrivate {
+        static $gtype: GObject.GType<PlaybackChannelPrivate>;
+
         // Constructors of SpiceClientGLib.PlaybackChannelPrivate
 
         _init(...args: any[]): void;
@@ -3383,6 +3449,8 @@ export namespace SpiceClientGLib {
 
     type PortChannelClass = typeof PortChannel;
     abstract class PortChannelPrivate {
+        static $gtype: GObject.GType<PortChannelPrivate>;
+
         // Constructors of SpiceClientGLib.PortChannelPrivate
 
         _init(...args: any[]): void;
@@ -3393,6 +3461,8 @@ export namespace SpiceClientGLib {
      * Information about VCPU run state.
      */
     class QmpStatus {
+        static $gtype: GObject.GType<QmpStatus>;
+
         // Own fields of SpiceClientGLib.QmpStatus
 
         version: number;
@@ -3427,6 +3497,8 @@ export namespace SpiceClientGLib {
 
     type RecordChannelClass = typeof RecordChannel;
     abstract class RecordChannelPrivate {
+        static $gtype: GObject.GType<RecordChannelPrivate>;
+
         // Constructors of SpiceClientGLib.RecordChannelPrivate
 
         _init(...args: any[]): void;
@@ -3434,6 +3506,8 @@ export namespace SpiceClientGLib {
 
     type SessionClass = typeof Session;
     abstract class SessionPrivate {
+        static $gtype: GObject.GType<SessionPrivate>;
+
         // Constructors of SpiceClientGLib.SessionPrivate
 
         _init(...args: any[]): void;
@@ -3441,6 +3515,8 @@ export namespace SpiceClientGLib {
 
     type SmartcardChannelClass = typeof SmartcardChannel;
     abstract class SmartcardChannelPrivate {
+        static $gtype: GObject.GType<SmartcardChannelPrivate>;
+
         // Constructors of SpiceClientGLib.SmartcardChannelPrivate
 
         _init(...args: any[]): void;
@@ -3448,6 +3524,8 @@ export namespace SpiceClientGLib {
 
     type SmartcardManagerClass = typeof SmartcardManager;
     abstract class SmartcardManagerPrivate {
+        static $gtype: GObject.GType<SmartcardManagerPrivate>;
+
         // Constructors of SpiceClientGLib.SmartcardManagerPrivate
 
         _init(...args: any[]): void;
@@ -3457,6 +3535,8 @@ export namespace SpiceClientGLib {
      * The #SpiceSmartcardReader struct is opaque and cannot be accessed directly.
      */
     abstract class SmartcardReader {
+        static $gtype: GObject.GType<SmartcardReader>;
+
         // Constructors of SpiceClientGLib.SmartcardReader
 
         _init(...args: any[]): void;
@@ -3486,6 +3566,8 @@ export namespace SpiceClientGLib {
 
     type URIClass = typeof URI;
     abstract class URIPrivate {
+        static $gtype: GObject.GType<URIPrivate>;
+
         // Constructors of SpiceClientGLib.URIPrivate
 
         _init(...args: any[]): void;
@@ -3495,6 +3577,8 @@ export namespace SpiceClientGLib {
      * The #SpiceUsbDevice struct is opaque and cannot be accessed directly.
      */
     class UsbDevice {
+        static $gtype: GObject.GType<UsbDevice>;
+
         // Constructors of SpiceClientGLib.UsbDevice
 
         _init(...args: any[]): void;
@@ -3527,6 +3611,8 @@ export namespace SpiceClientGLib {
 
     type UsbDeviceManagerClass = typeof UsbDeviceManager;
     abstract class UsbDeviceManagerPrivate {
+        static $gtype: GObject.GType<UsbDeviceManagerPrivate>;
+
         // Constructors of SpiceClientGLib.UsbDeviceManagerPrivate
 
         _init(...args: any[]): void;
@@ -3534,6 +3620,8 @@ export namespace SpiceClientGLib {
 
     type UsbredirChannelClass = typeof UsbredirChannel;
     abstract class UsbredirChannelPrivate {
+        static $gtype: GObject.GType<UsbredirChannelPrivate>;
+
         // Constructors of SpiceClientGLib.UsbredirChannelPrivate
 
         _init(...args: any[]): void;
@@ -3541,6 +3629,8 @@ export namespace SpiceClientGLib {
 
     type WebdavChannelClass = typeof WebdavChannel;
     abstract class WebdavChannelPrivate {
+        static $gtype: GObject.GType<WebdavChannelPrivate>;
+
         // Constructors of SpiceClientGLib.WebdavChannelPrivate
 
         _init(...args: any[]): void;

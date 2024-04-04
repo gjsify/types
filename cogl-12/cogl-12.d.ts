@@ -427,6 +427,8 @@ export namespace Cogl {
         BAD_CONSTRAINT,
     }
     class ScanoutError extends GLib.Error {
+        static $gtype: GObject.GType<ScanoutError>;
+
         // Static fields of Cogl.ScanoutError
 
         static SCANOUT_ERROR_INHIBITED: number;
@@ -1548,6 +1550,8 @@ export namespace Cogl {
         READ_PIXELS_COLOR_BUFFER,
     }
     class Bitmap extends Object {
+        static $gtype: GObject.GType<Bitmap>;
+
         // Constructors of Cogl.Bitmap
 
         _init(...args: any[]): void;
@@ -1573,6 +1577,8 @@ export namespace Cogl {
     }
 
     class Context extends Object {
+        static $gtype: GObject.GType<Context>;
+
         // Constructors of Cogl.Context
 
         _init(...args: any[]): void;
@@ -1604,6 +1610,8 @@ export namespace Cogl {
      * Frame information.
      */
     class FrameInfo extends Object {
+        static $gtype: GObject.GType<FrameInfo>;
+
         // Constructors of Cogl.FrameInfo
 
         _init(...args: any[]): void;
@@ -1667,6 +1675,8 @@ export namespace Cogl {
     }
 
     abstract class Framebuffer extends GObject.Object {
+        static $gtype: GObject.GType<Framebuffer>;
+
         // Own properties of Cogl.Framebuffer
 
         get driver_config(): any;
@@ -2432,6 +2442,8 @@ export namespace Cogl {
     }
 
     abstract class Object {
+        static $gtype: GObject.GType<Object>;
+
         // Constructors of Cogl.Object
 
         _init(...args: any[]): void;
@@ -2444,6 +2456,8 @@ export namespace Cogl {
     }
 
     class Offscreen extends Framebuffer {
+        static $gtype: GObject.GType<Offscreen>;
+
         // Constructors of Cogl.Offscreen
 
         constructor(properties?: Partial<Offscreen.ConstructorProps>, ...args: any[]);
@@ -2460,6 +2474,8 @@ export namespace Cogl {
     }
 
     class Onscreen extends Framebuffer {
+        static $gtype: GObject.GType<Onscreen>;
+
         // Constructors of Cogl.Onscreen
 
         constructor(properties?: Partial<Onscreen.ConstructorProps>, ...args: any[]);
@@ -2845,6 +2861,8 @@ export namespace Cogl {
     }
 
     class Pipeline extends Object {
+        static $gtype: GObject.GType<Pipeline>;
+
         // Constructors of Cogl.Pipeline
 
         _init(...args: any[]): void;
@@ -3448,6 +3466,8 @@ export namespace Cogl {
     }
 
     class Snippet extends Object {
+        static $gtype: GObject.GType<Snippet>;
+
         // Constructors of Cogl.Snippet
 
         _init(...args: any[]): void;
@@ -3512,6 +3532,8 @@ export namespace Cogl {
     }
 
     class Texture2D extends Object implements Texture {
+        static $gtype: GObject.GType<Texture2D>;
+
         // Constructors of Cogl.Texture2D
 
         _init(...args: any[]): void;
@@ -3754,6 +3776,8 @@ export namespace Cogl {
     }
 
     class Texture2DSliced extends Object implements Texture {
+        static $gtype: GObject.GType<Texture2DSliced>;
+
         // Constructors of Cogl.Texture2DSliced
 
         _init(...args: any[]): void;
@@ -3996,6 +4020,8 @@ export namespace Cogl {
      * directly.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Constructors of Cogl.Color
 
         constructor(properties?: Partial<{}>);
@@ -4213,6 +4239,8 @@ export namespace Cogl {
      * cogl_debug_object_foreach_type() is called.
      */
     class DebugObjectTypeInfo {
+        static $gtype: GObject.GType<DebugObjectTypeInfo>;
+
         // Own fields of Cogl.DebugObjectTypeInfo
 
         name: string;
@@ -4236,6 +4264,8 @@ export namespace Cogl {
      * callback later using cogl_onscreen_remove_frame_callback().
      */
     abstract class FrameClosure {
+        static $gtype: GObject.GType<FrameClosure>;
+
         // Constructors of Cogl.FrameClosure
 
         _init(...args: any[]): void;
@@ -4243,6 +4273,8 @@ export namespace Cogl {
 
     type FramebufferClass = typeof Framebuffer;
     abstract class FramebufferDriverConfig {
+        static $gtype: GObject.GType<FramebufferDriverConfig>;
+
         // Constructors of Cogl.FramebufferDriverConfig
 
         _init(...args: any[]): void;
@@ -4257,6 +4289,8 @@ export namespace Cogl {
      * callback later using cogl_onscreen_remove_dirty_callback().
      */
     class OnscreenDirtyClosure {
+        static $gtype: GObject.GType<OnscreenDirtyClosure>;
+
         // Constructors of Cogl.OnscreenDirtyClosure
 
         _init(...args: any[]): void;
@@ -4268,6 +4302,8 @@ export namespace Cogl {
      * rectangle within the onscreen buffer that should be redrawn.
      */
     class OnscreenDirtyInfo {
+        static $gtype: GObject.GType<OnscreenDirtyInfo>;
+
         // Own fields of Cogl.OnscreenDirtyInfo
 
         x: number;
@@ -4289,6 +4325,8 @@ export namespace Cogl {
     }
 
     abstract class Scanout {
+        static $gtype: GObject.GType<Scanout>;
+
         // Constructors of Cogl.Scanout
 
         _init(...args: any[]): void;
@@ -4302,6 +4340,8 @@ export namespace Cogl {
      * Used to specify vertex information when calling cogl_polygon()
      */
     class TextureVertex {
+        static $gtype: GObject.GType<TextureVertex>;
+
         // Own fields of Cogl.TextureVertex
 
         x: number;
@@ -4316,18 +4356,24 @@ export namespace Cogl {
     }
 
     abstract class TimestampQuery {
+        static $gtype: GObject.GType<TimestampQuery>;
+
         // Constructors of Cogl.TimestampQuery
 
         _init(...args: any[]): void;
     }
 
     abstract class TraceContext {
+        static $gtype: GObject.GType<TraceContext>;
+
         // Constructors of Cogl.TraceContext
 
         _init(...args: any[]): void;
     }
 
     class TraceHead {
+        static $gtype: GObject.GType<TraceHead>;
+
         // Own fields of Cogl.TraceHead
 
         begin_time: number;
@@ -4377,6 +4423,8 @@ export namespace Cogl {
      *
      */
     class UserDataKey {
+        static $gtype: GObject.GType<UserDataKey>;
+
         // Own fields of Cogl.UserDataKey
 
         unused: number;
@@ -4392,6 +4440,8 @@ export namespace Cogl {
     }
 
     abstract class _ColorSizeCheck {
+        static $gtype: GObject.GType<_ColorSizeCheck>;
+
         // Own fields of Cogl._ColorSizeCheck
 
         compile_time_assert_CoglColor_size: number[];
@@ -4407,6 +4457,8 @@ export namespace Cogl {
     }
 
     abstract class _TextureVertexSizeCheck {
+        static $gtype: GObject.GType<_TextureVertexSizeCheck>;
+
         // Own fields of Cogl._TextureVertexSizeCheck
 
         compile_time_assert_CoglTextureVertex_size: number[];

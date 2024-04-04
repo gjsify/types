@@ -1,7 +1,7 @@
 
 declare module 'gi://IBus?version=1.0' {
-    import IBus10 from '@girs/ibus-1.0';
-    export default IBus10;
+    import IBus from '@girs/ibus-1.0';
+    export default IBus;
 }
 
 declare module 'gi://IBus' {

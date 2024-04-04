@@ -15,42 +15,56 @@ import type GObject from '@girs/gobject-2.0';
 
 export namespace xrandr {
     class ScreenSize {
+        static $gtype: GObject.GType<ScreenSize>;
+
         // Constructors of xrandr.ScreenSize
 
         _init(...args: any[]): void;
     }
 
     class ScreenChangeNotifyEvent {
+        static $gtype: GObject.GType<ScreenChangeNotifyEvent>;
+
         // Constructors of xrandr.ScreenChangeNotifyEvent
 
         _init(...args: any[]): void;
     }
 
     class NotifyEvent {
+        static $gtype: GObject.GType<NotifyEvent>;
+
         // Constructors of xrandr.NotifyEvent
 
         _init(...args: any[]): void;
     }
 
     class ScreenResources {
+        static $gtype: GObject.GType<ScreenResources>;
+
         // Constructors of xrandr.ScreenResources
 
         _init(...args: any[]): void;
     }
 
     class OutputChangeNotifyEvent {
+        static $gtype: GObject.GType<OutputChangeNotifyEvent>;
+
         // Constructors of xrandr.OutputChangeNotifyEvent
 
         _init(...args: any[]): void;
     }
 
     class CrtcChangeNotifyEvent {
+        static $gtype: GObject.GType<CrtcChangeNotifyEvent>;
+
         // Constructors of xrandr.CrtcChangeNotifyEvent
 
         _init(...args: any[]): void;
     }
 
     class OutputPropertyNotifyEvent {
+        static $gtype: GObject.GType<OutputPropertyNotifyEvent>;
+
         // Constructors of xrandr.OutputPropertyNotifyEvent
 
         _init(...args: any[]): void;

@@ -88,6 +88,8 @@ export namespace Folks {
         TRUE,
     }
     class ImDetailsError extends GLib.Error {
+        static $gtype: GObject.GType<ImDetailsError>;
+
         // Static fields of Folks.ImDetailsError
 
         static INVALID_IM_ADDRESS: number;
@@ -99,6 +101,8 @@ export namespace Folks {
     }
 
     class IndividualAggregatorError extends GLib.Error {
+        static $gtype: GObject.GType<IndividualAggregatorError>;
+
         // Static fields of Folks.IndividualAggregatorError
 
         static ADD_FAILED: number;
@@ -114,6 +118,8 @@ export namespace Folks {
     }
 
     class PersonaStoreError extends GLib.Error {
+        static $gtype: GObject.GType<PersonaStoreError>;
+
         // Static fields of Folks.PersonaStoreError
 
         static INVALID_ARGUMENT: number;
@@ -132,6 +138,8 @@ export namespace Folks {
     }
 
     class PropertyError extends GLib.Error {
+        static $gtype: GObject.GType<PropertyError>;
+
         // Static fields of Folks.PropertyError
 
         static NOT_WRITEABLE: number;
@@ -178,6 +186,8 @@ export namespace Folks {
     }
 
     abstract class AbstractFieldDetails extends GObject.Object {
+        static $gtype: GObject.GType<AbstractFieldDetails>;
+
         // Own properties of Folks.AbstractFieldDetails
 
         get t_type(): GObject.GType;
@@ -246,6 +256,8 @@ export namespace Folks {
     }
 
     class AvatarCache extends GObject.Object {
+        static $gtype: GObject.GType<AvatarCache>;
+
         // Constructors of Folks.AvatarCache
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
@@ -285,6 +297,8 @@ export namespace Folks {
     }
 
     class BackendStore extends GObject.Object {
+        static $gtype: GObject.GType<BackendStore>;
+
         // Own properties of Folks.BackendStore
 
         get enabled_backends(): Gee.Map;
@@ -361,6 +375,8 @@ export namespace Folks {
     }
 
     abstract class Backend extends GObject.Object {
+        static $gtype: GObject.GType<Backend>;
+
         // Own properties of Folks.Backend
 
         get is_prepared(): boolean;
@@ -436,6 +452,8 @@ export namespace Folks {
     }
 
     class Debug extends GObject.Object {
+        static $gtype: GObject.GType<Debug>;
+
         // Own properties of Folks.Debug
 
         get colour_enabled(): boolean;
@@ -485,6 +503,8 @@ export namespace Folks {
     }
 
     class EmailFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<EmailFieldDetails>;
+
         // Constructors of Folks.EmailFieldDetails
 
         constructor(properties?: Partial<EmailFieldDetails.ConstructorProps>, ...args: any[]);
@@ -501,6 +521,8 @@ export namespace Folks {
     }
 
     class ExtendedFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<ExtendedFieldDetails>;
+
         // Constructors of Folks.ExtendedFieldDetails
 
         constructor(properties?: Partial<ExtendedFieldDetails.ConstructorProps>, ...args: any[]);
@@ -517,6 +539,8 @@ export namespace Folks {
     }
 
     class ImFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<ImFieldDetails>;
+
         // Constructors of Folks.ImFieldDetails
 
         constructor(properties?: Partial<ImFieldDetails.ConstructorProps>, ...args: any[]);
@@ -554,6 +578,8 @@ export namespace Folks {
     }
 
     class IndividualAggregator extends GObject.Object {
+        static $gtype: GObject.GType<IndividualAggregator>;
+
         // Own properties of Folks.IndividualAggregator
 
         get is_prepared(): boolean;
@@ -738,6 +764,8 @@ export namespace Folks {
             UrlDetails,
             WebServiceDetails
     {
+        static $gtype: GObject.GType<Individual>;
+
         // Own properties of Folks.Individual
 
         get trust_level(): TrustLevel;
@@ -1455,6 +1483,8 @@ export namespace Folks {
     }
 
     class Location extends GObject.Object {
+        static $gtype: GObject.GType<Location>;
+
         // Own fields of Folks.Location
 
         latitude: number;
@@ -1490,6 +1520,8 @@ export namespace Folks {
     }
 
     class StructuredName extends GObject.Object {
+        static $gtype: GObject.GType<StructuredName>;
+
         // Own properties of Folks.StructuredName
 
         get family_name(): string;
@@ -1552,6 +1584,8 @@ export namespace Folks {
     }
 
     class NoteFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<NoteFieldDetails>;
+
         // Own properties of Folks.NoteFieldDetails
 
         get uid(): string;
@@ -1588,6 +1622,8 @@ export namespace Folks {
     }
 
     abstract class ObjectCache extends GObject.Object {
+        static $gtype: GObject.GType<ObjectCache>;
+
         // Own properties of Folks.ObjectCache
 
         get t_type(): GObject.GType;
@@ -1675,6 +1711,8 @@ export namespace Folks {
     }
 
     abstract class PersonaStore extends GObject.Object {
+        static $gtype: GObject.GType<PersonaStore>;
+
         // Own properties of Folks.PersonaStore
 
         get type_id(): string;
@@ -1849,6 +1887,8 @@ export namespace Folks {
     }
 
     abstract class Persona extends GObject.Object {
+        static $gtype: GObject.GType<Persona>;
+
         // Own properties of Folks.Persona
 
         get iid(): string;
@@ -1902,6 +1942,8 @@ export namespace Folks {
     }
 
     class PhoneFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<PhoneFieldDetails>;
+
         // Constructors of Folks.PhoneFieldDetails
 
         constructor(properties?: Partial<PhoneFieldDetails.ConstructorProps>, ...args: any[]);
@@ -1935,6 +1977,8 @@ export namespace Folks {
     }
 
     class PostalAddress extends GObject.Object {
+        static $gtype: GObject.GType<PostalAddress>;
+
         // Own properties of Folks.PostalAddress
 
         get po_box(): string;
@@ -2012,6 +2056,8 @@ export namespace Folks {
     }
 
     class PostalAddressFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<PostalAddressFieldDetails>;
+
         // Constructors of Folks.PostalAddressFieldDetails
 
         constructor(properties?: Partial<PostalAddressFieldDetails.ConstructorProps>, ...args: any[]);
@@ -2028,6 +2074,8 @@ export namespace Folks {
     }
 
     class PotentialMatch extends GObject.Object {
+        static $gtype: GObject.GType<PotentialMatch>;
+
         // Own fields of Folks.PotentialMatch
 
         folks_potential_match_known_email_aliases: Gee.Set;
@@ -2055,6 +2103,8 @@ export namespace Folks {
     }
 
     abstract class Query extends GObject.Object {
+        static $gtype: GObject.GType<Query>;
+
         // Own properties of Folks.Query
 
         get match_fields(): string[];
@@ -2090,6 +2140,8 @@ export namespace Folks {
     }
 
     class Role extends GObject.Object {
+        static $gtype: GObject.GType<Role>;
+
         // Own properties of Folks.Role
 
         get organisation_name(): string;
@@ -2137,6 +2189,8 @@ export namespace Folks {
     }
 
     class RoleFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<RoleFieldDetails>;
+
         // Constructors of Folks.RoleFieldDetails
 
         constructor(properties?: Partial<RoleFieldDetails.ConstructorProps>, ...args: any[]);
@@ -2167,6 +2221,8 @@ export namespace Folks {
     }
 
     class SearchView extends GObject.Object {
+        static $gtype: GObject.GType<SearchView>;
+
         // Own properties of Folks.SearchView
 
         get aggregator(): IndividualAggregator;
@@ -2229,6 +2285,8 @@ export namespace Folks {
     }
 
     class SimpleQuery extends Query {
+        static $gtype: GObject.GType<SimpleQuery>;
+
         // Own properties of Folks.SimpleQuery
 
         get query_string(): string;
@@ -2263,6 +2321,8 @@ export namespace Folks {
     }
 
     class UrlFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<UrlFieldDetails>;
+
         // Constructors of Folks.UrlFieldDetails
 
         constructor(properties?: Partial<UrlFieldDetails.ConstructorProps>, ...args: any[]);
@@ -2279,6 +2339,8 @@ export namespace Folks {
     }
 
     class Utils extends GObject.Object {
+        static $gtype: GObject.GType<Utils>;
+
         // Constructors of Folks.Utils
 
         constructor(properties?: Partial<Utils.ConstructorProps>, ...args: any[]);
@@ -2302,6 +2364,8 @@ export namespace Folks {
     }
 
     class WebServiceFieldDetails extends AbstractFieldDetails {
+        static $gtype: GObject.GType<WebServiceFieldDetails>;
+
         // Constructors of Folks.WebServiceFieldDetails
 
         constructor(properties?: Partial<WebServiceFieldDetails.ConstructorProps>, ...args: any[]);
@@ -2313,6 +2377,8 @@ export namespace Folks {
 
     type AbstractFieldDetailsClass = typeof AbstractFieldDetails;
     abstract class AbstractFieldDetailsPrivate {
+        static $gtype: GObject.GType<AbstractFieldDetailsPrivate>;
+
         // Constructors of Folks.AbstractFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2320,6 +2386,8 @@ export namespace Folks {
 
     type AvatarCacheClass = typeof AvatarCache;
     abstract class AvatarCachePrivate {
+        static $gtype: GObject.GType<AvatarCachePrivate>;
+
         // Constructors of Folks.AvatarCachePrivate
 
         _init(...args: any[]): void;
@@ -2327,6 +2395,8 @@ export namespace Folks {
 
     type BackendStoreClass = typeof BackendStore;
     abstract class BackendStorePrivate {
+        static $gtype: GObject.GType<BackendStorePrivate>;
+
         // Constructors of Folks.BackendStorePrivate
 
         _init(...args: any[]): void;
@@ -2334,6 +2404,8 @@ export namespace Folks {
 
     type BackendClass = typeof Backend;
     abstract class BackendPrivate {
+        static $gtype: GObject.GType<BackendPrivate>;
+
         // Constructors of Folks.BackendPrivate
 
         _init(...args: any[]): void;
@@ -2341,6 +2413,8 @@ export namespace Folks {
 
     type DebugClass = typeof Debug;
     abstract class DebugPrivate {
+        static $gtype: GObject.GType<DebugPrivate>;
+
         // Constructors of Folks.DebugPrivate
 
         _init(...args: any[]): void;
@@ -2348,6 +2422,8 @@ export namespace Folks {
 
     type EmailFieldDetailsClass = typeof EmailFieldDetails;
     abstract class EmailFieldDetailsPrivate {
+        static $gtype: GObject.GType<EmailFieldDetailsPrivate>;
+
         // Constructors of Folks.EmailFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2355,6 +2431,8 @@ export namespace Folks {
 
     type ExtendedFieldDetailsClass = typeof ExtendedFieldDetails;
     abstract class ExtendedFieldDetailsPrivate {
+        static $gtype: GObject.GType<ExtendedFieldDetailsPrivate>;
+
         // Constructors of Folks.ExtendedFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2362,6 +2440,8 @@ export namespace Folks {
 
     type ImFieldDetailsClass = typeof ImFieldDetails;
     abstract class ImFieldDetailsPrivate {
+        static $gtype: GObject.GType<ImFieldDetailsPrivate>;
+
         // Constructors of Folks.ImFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2369,6 +2449,8 @@ export namespace Folks {
 
     type IndividualAggregatorClass = typeof IndividualAggregator;
     abstract class IndividualAggregatorPrivate {
+        static $gtype: GObject.GType<IndividualAggregatorPrivate>;
+
         // Constructors of Folks.IndividualAggregatorPrivate
 
         _init(...args: any[]): void;
@@ -2376,6 +2458,8 @@ export namespace Folks {
 
     type IndividualClass = typeof Individual;
     abstract class IndividualPrivate {
+        static $gtype: GObject.GType<IndividualPrivate>;
+
         // Constructors of Folks.IndividualPrivate
 
         _init(...args: any[]): void;
@@ -2383,6 +2467,8 @@ export namespace Folks {
 
     type LocationClass = typeof Location;
     abstract class LocationPrivate {
+        static $gtype: GObject.GType<LocationPrivate>;
+
         // Constructors of Folks.LocationPrivate
 
         _init(...args: any[]): void;
@@ -2390,6 +2476,8 @@ export namespace Folks {
 
     type StructuredNameClass = typeof StructuredName;
     abstract class StructuredNamePrivate {
+        static $gtype: GObject.GType<StructuredNamePrivate>;
+
         // Constructors of Folks.StructuredNamePrivate
 
         _init(...args: any[]): void;
@@ -2397,6 +2485,8 @@ export namespace Folks {
 
     type NoteFieldDetailsClass = typeof NoteFieldDetails;
     abstract class NoteFieldDetailsPrivate {
+        static $gtype: GObject.GType<NoteFieldDetailsPrivate>;
+
         // Constructors of Folks.NoteFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2404,6 +2494,8 @@ export namespace Folks {
 
     type ObjectCacheClass = typeof ObjectCache;
     abstract class ObjectCachePrivate {
+        static $gtype: GObject.GType<ObjectCachePrivate>;
+
         // Constructors of Folks.ObjectCachePrivate
 
         _init(...args: any[]): void;
@@ -2411,6 +2503,8 @@ export namespace Folks {
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
+        static $gtype: GObject.GType<PersonaStorePrivate>;
+
         // Constructors of Folks.PersonaStorePrivate
 
         _init(...args: any[]): void;
@@ -2418,6 +2512,8 @@ export namespace Folks {
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
+        static $gtype: GObject.GType<PersonaPrivate>;
+
         // Constructors of Folks.PersonaPrivate
 
         _init(...args: any[]): void;
@@ -2425,6 +2521,8 @@ export namespace Folks {
 
     type PhoneFieldDetailsClass = typeof PhoneFieldDetails;
     abstract class PhoneFieldDetailsPrivate {
+        static $gtype: GObject.GType<PhoneFieldDetailsPrivate>;
+
         // Constructors of Folks.PhoneFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2432,6 +2530,8 @@ export namespace Folks {
 
     type PostalAddressClass = typeof PostalAddress;
     abstract class PostalAddressPrivate {
+        static $gtype: GObject.GType<PostalAddressPrivate>;
+
         // Constructors of Folks.PostalAddressPrivate
 
         _init(...args: any[]): void;
@@ -2439,6 +2539,8 @@ export namespace Folks {
 
     type PostalAddressFieldDetailsClass = typeof PostalAddressFieldDetails;
     abstract class PostalAddressFieldDetailsPrivate {
+        static $gtype: GObject.GType<PostalAddressFieldDetailsPrivate>;
+
         // Constructors of Folks.PostalAddressFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2446,6 +2548,8 @@ export namespace Folks {
 
     type PotentialMatchClass = typeof PotentialMatch;
     abstract class PotentialMatchPrivate {
+        static $gtype: GObject.GType<PotentialMatchPrivate>;
+
         // Constructors of Folks.PotentialMatchPrivate
 
         _init(...args: any[]): void;
@@ -2453,6 +2557,8 @@ export namespace Folks {
 
     type QueryClass = typeof Query;
     abstract class QueryPrivate {
+        static $gtype: GObject.GType<QueryPrivate>;
+
         // Constructors of Folks.QueryPrivate
 
         _init(...args: any[]): void;
@@ -2460,6 +2566,8 @@ export namespace Folks {
 
     type RoleClass = typeof Role;
     abstract class RolePrivate {
+        static $gtype: GObject.GType<RolePrivate>;
+
         // Constructors of Folks.RolePrivate
 
         _init(...args: any[]): void;
@@ -2467,6 +2575,8 @@ export namespace Folks {
 
     type RoleFieldDetailsClass = typeof RoleFieldDetails;
     abstract class RoleFieldDetailsPrivate {
+        static $gtype: GObject.GType<RoleFieldDetailsPrivate>;
+
         // Constructors of Folks.RoleFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2474,6 +2584,8 @@ export namespace Folks {
 
     type SearchViewClass = typeof SearchView;
     abstract class SearchViewPrivate {
+        static $gtype: GObject.GType<SearchViewPrivate>;
+
         // Constructors of Folks.SearchViewPrivate
 
         _init(...args: any[]): void;
@@ -2481,6 +2593,8 @@ export namespace Folks {
 
     type SimpleQueryClass = typeof SimpleQuery;
     abstract class SimpleQueryPrivate {
+        static $gtype: GObject.GType<SimpleQueryPrivate>;
+
         // Constructors of Folks.SimpleQueryPrivate
 
         _init(...args: any[]): void;
@@ -2488,6 +2602,8 @@ export namespace Folks {
 
     type UrlFieldDetailsClass = typeof UrlFieldDetails;
     abstract class UrlFieldDetailsPrivate {
+        static $gtype: GObject.GType<UrlFieldDetailsPrivate>;
+
         // Constructors of Folks.UrlFieldDetailsPrivate
 
         _init(...args: any[]): void;
@@ -2495,6 +2611,8 @@ export namespace Folks {
 
     type UtilsClass = typeof Utils;
     abstract class UtilsPrivate {
+        static $gtype: GObject.GType<UtilsPrivate>;
+
         // Constructors of Folks.UtilsPrivate
 
         _init(...args: any[]): void;
@@ -2502,6 +2620,8 @@ export namespace Folks {
 
     type WebServiceFieldDetailsClass = typeof WebServiceFieldDetails;
     abstract class WebServiceFieldDetailsPrivate {
+        static $gtype: GObject.GType<WebServiceFieldDetailsPrivate>;
+
         // Constructors of Folks.WebServiceFieldDetailsPrivate
 
         _init(...args: any[]): void;

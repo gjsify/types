@@ -1,7 +1,7 @@
 
 declare module 'gi://Shew?version=0' {
-    import Shew0 from '@girs/shew-0';
-    export default Shew0;
+    import Shew from '@girs/shew-0';
+    export default Shew;
 }
 
 declare module 'gi://Shew' {

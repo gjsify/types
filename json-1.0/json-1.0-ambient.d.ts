@@ -1,7 +1,7 @@
 
 declare module 'gi://Json?version=1.0' {
-    import Json10 from '@girs/json-1.0';
-    export default Json10;
+    import Json from '@girs/json-1.0';
+    export default Json;
 }
 
 declare module 'gi://Json' {

@@ -1,7 +1,7 @@
 
 declare module 'gi://Nice?version=0.1' {
-    import Nice01 from '@girs/nice-0.1';
-    export default Nice01;
+    import Nice from '@girs/nice-0.1';
+    export default Nice;
 }
 
 declare module 'gi://Nice' {

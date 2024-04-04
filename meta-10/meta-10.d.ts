@@ -1700,6 +1700,8 @@ export namespace Meta {
     }
 
     abstract class Backend extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Backend>;
+
         // Own properties of Meta.Backend
 
         get context(): Context;
@@ -2221,6 +2223,8 @@ export namespace Meta {
      * the background that are obscured by other windows.
      */
     class Background extends GObject.Object {
+        static $gtype: GObject.GType<Background>;
+
         // Own properties of Meta.Background
 
         get meta_display(): Display;
@@ -2288,6 +2292,8 @@ export namespace Meta {
         extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<BackgroundActor>;
+
         // Own properties of Meta.BackgroundActor
 
         get meta_display(): Display;
@@ -2989,6 +2995,8 @@ export namespace Meta {
      * the background that are obscured by other windows.
      */
     class BackgroundContent extends GObject.Object implements Clutter.Content {
+        static $gtype: GObject.GType<BackgroundContent>;
+
         // Own properties of Meta.BackgroundContent
 
         get background(): Background;
@@ -3473,6 +3481,8 @@ export namespace Meta {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<BackgroundGroup>;
+
         // Constructors of Meta.BackgroundGroup
 
         constructor(properties?: Partial<BackgroundGroup.ConstructorProps>, ...args: any[]);
@@ -4153,6 +4163,8 @@ export namespace Meta {
      * #MetaBackgroundImage is an object that represents a loaded or loading background image.
      */
     class BackgroundImage extends GObject.Object {
+        static $gtype: GObject.GType<BackgroundImage>;
+
         // Constructors of Meta.BackgroundImage
 
         constructor(properties?: Partial<BackgroundImage.ConstructorProps>, ...args: any[]);
@@ -4193,6 +4205,8 @@ export namespace Meta {
      * large images as typically are used for backgrounds.
      */
     class BackgroundImageCache extends GObject.Object {
+        static $gtype: GObject.GType<BackgroundImageCache>;
+
         // Constructors of Meta.BackgroundImageCache
 
         constructor(properties?: Partial<BackgroundImageCache.ConstructorProps>, ...args: any[]);
@@ -4253,6 +4267,8 @@ export namespace Meta {
      * only private data and should be accessed using the provided API
      */
     class Barrier extends GObject.Object {
+        static $gtype: GObject.GType<Barrier>;
+
         // Own properties of Meta.Barrier
 
         get directions(): BarrierDirection;
@@ -4305,6 +4321,8 @@ export namespace Meta {
     }
 
     class Context extends GObject.Object {
+        static $gtype: GObject.GType<Context>;
+
         // Own properties of Meta.Context
 
         get name(): string;
@@ -4380,6 +4398,8 @@ export namespace Meta {
     }
 
     class CursorTracker extends GObject.Object {
+        static $gtype: GObject.GType<CursorTracker>;
+
         // Own properties of Meta.CursorTracker
 
         get backend(): Backend;
@@ -4558,6 +4578,8 @@ export namespace Meta {
     }
 
     class Display extends GObject.Object {
+        static $gtype: GObject.GType<Display>;
+
         // Own properties of Meta.Display
 
         get compositor_modifiers(): Clutter.ModifierType;
@@ -4960,6 +4982,8 @@ export namespace Meta {
     }
 
     class Dnd extends GObject.Object {
+        static $gtype: GObject.GType<Dnd>;
+
         // Constructors of Meta.Dnd
 
         constructor(properties?: Partial<Dnd.ConstructorProps>, ...args: any[]);
@@ -4994,6 +5018,8 @@ export namespace Meta {
     }
 
     class IdleMonitor extends GObject.Object {
+        static $gtype: GObject.GType<IdleMonitor>;
+
         // Own properties of Meta.IdleMonitor
 
         /**
@@ -5032,6 +5058,8 @@ export namespace Meta {
     }
 
     class LaunchContext extends Gio.AppLaunchContext {
+        static $gtype: GObject.GType<LaunchContext>;
+
         // Own properties of Meta.LaunchContext
 
         get display(): Display;
@@ -5087,6 +5115,8 @@ export namespace Meta {
     }
 
     class MonitorManager extends GObject.Object {
+        static $gtype: GObject.GType<MonitorManager>;
+
         // Own properties of Meta.MonitorManager
 
         get backend(): Backend;
@@ -5156,6 +5186,8 @@ export namespace Meta {
     }
 
     abstract class Plugin extends GObject.Object {
+        static $gtype: GObject.GType<Plugin>;
+
         // Constructors of Meta.Plugin
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
@@ -5275,6 +5307,8 @@ export namespace Meta {
     }
 
     class RemoteAccessController extends GObject.Object {
+        static $gtype: GObject.GType<RemoteAccessController>;
+
         // Constructors of Meta.RemoteAccessController
 
         constructor(properties?: Partial<RemoteAccessController.ConstructorProps>, ...args: any[]);
@@ -5321,6 +5355,8 @@ export namespace Meta {
     }
 
     class RemoteAccessHandle extends GObject.Object {
+        static $gtype: GObject.GType<RemoteAccessHandle>;
+
         // Own properties of Meta.RemoteAccessHandle
 
         get is_recording(): boolean;
@@ -5370,6 +5406,8 @@ export namespace Meta {
     }
 
     class Selection extends GObject.Object {
+        static $gtype: GObject.GType<Selection>;
+
         // Constructors of Meta.Selection
 
         constructor(properties?: Partial<Selection.ConstructorProps>, ...args: any[]);
@@ -5458,6 +5496,8 @@ export namespace Meta {
     }
 
     class SelectionSource extends GObject.Object {
+        static $gtype: GObject.GType<SelectionSource>;
+
         // Constructors of Meta.SelectionSource
 
         constructor(properties?: Partial<SelectionSource.ConstructorProps>, ...args: any[]);
@@ -5527,6 +5567,8 @@ export namespace Meta {
     }
 
     class SelectionSourceMemory extends SelectionSource {
+        static $gtype: GObject.GType<SelectionSourceMemory>;
+
         // Constructors of Meta.SelectionSourceMemory
 
         constructor(properties?: Partial<SelectionSourceMemory.ConstructorProps>, ...args: any[]);
@@ -5554,6 +5596,8 @@ export namespace Meta {
      * share the same MetaShadow.
      */
     class ShadowFactory extends GObject.Object {
+        static $gtype: GObject.GType<ShadowFactory>;
+
         // Constructors of Meta.ShadowFactory
 
         constructor(properties?: Partial<ShadowFactory.ConstructorProps>, ...args: any[]);
@@ -5626,6 +5670,8 @@ export namespace Meta {
     }
 
     class ShapedTexture extends GObject.Object implements Clutter.Content {
+        static $gtype: GObject.GType<ShapedTexture>;
+
         // Constructors of Meta.ShapedTexture
 
         constructor(properties?: Partial<ShapedTexture.ConstructorProps>, ...args: any[]);
@@ -6071,6 +6117,8 @@ export namespace Meta {
     }
 
     class SoundPlayer extends GObject.Object {
+        static $gtype: GObject.GType<SoundPlayer>;
+
         // Constructors of Meta.SoundPlayer
 
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
@@ -6116,6 +6164,8 @@ export namespace Meta {
         extends Clutter.Stage
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Stage>;
+
         // Constructors of Meta.Stage
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
@@ -6507,6 +6557,8 @@ export namespace Meta {
     }
 
     class StartupNotification extends GObject.Object {
+        static $gtype: GObject.GType<StartupNotification>;
+
         // Own properties of Meta.StartupNotification
 
         get display(): Display;
@@ -6567,6 +6619,8 @@ export namespace Meta {
     }
 
     class StartupSequence extends GObject.Object {
+        static $gtype: GObject.GType<StartupSequence>;
+
         // Own properties of Meta.StartupSequence
 
         get application_id(): string;
@@ -6629,6 +6683,8 @@ export namespace Meta {
     }
 
     class WaylandClient extends GObject.Object {
+        static $gtype: GObject.GType<WaylandClient>;
+
         // Constructors of Meta.WaylandClient
 
         constructor(properties?: Partial<WaylandClient.ConstructorProps>, ...args: any[]);
@@ -6748,6 +6804,8 @@ export namespace Meta {
     }
 
     abstract class Window extends GObject.Object {
+        static $gtype: GObject.GType<Window>;
+
         // Own properties of Meta.Window
 
         get above(): boolean;
@@ -7210,6 +7268,8 @@ export namespace Meta {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<WindowActor>;
+
         // Own properties of Meta.WindowActor
 
         get meta_window(): Window;
@@ -7950,6 +8010,8 @@ export namespace Meta {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<WindowGroup>;
+
         // Constructors of Meta.WindowGroup
 
         constructor(properties?: Partial<WindowGroup.ConstructorProps>, ...args: any[]);
@@ -8635,6 +8697,8 @@ export namespace Meta {
     }
 
     class Workspace extends GObject.Object {
+        static $gtype: GObject.GType<Workspace>;
+
         // Own properties of Meta.Workspace
 
         get active(): boolean;
@@ -8760,6 +8824,8 @@ export namespace Meta {
     }
 
     class WorkspaceManager extends GObject.Object {
+        static $gtype: GObject.GType<WorkspaceManager>;
+
         // Own properties of Meta.WorkspaceManager
 
         get layout_columns(): number;
@@ -8861,6 +8927,8 @@ export namespace Meta {
     }
 
     class X11Display extends GObject.Object {
+        static $gtype: GObject.GType<X11Display>;
+
         // Constructors of Meta.X11Display
 
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
@@ -8888,6 +8956,8 @@ export namespace Meta {
     type BackgroundImageClass = typeof BackgroundImage;
     type BarrierClass = typeof Barrier;
     class BarrierEvent {
+        static $gtype: GObject.GType<BarrierEvent>;
+
         // Own fields of Meta.BarrierEvent
 
         event_id: number;
@@ -8919,12 +8989,16 @@ export namespace Meta {
     }
 
     abstract class BarrierPrivate {
+        static $gtype: GObject.GType<BarrierPrivate>;
+
         // Constructors of Meta.BarrierPrivate
 
         _init(...args: any[]): void;
     }
 
     class ButtonLayout {
+        static $gtype: GObject.GType<ButtonLayout>;
+
         // Own fields of Meta.ButtonLayout
 
         left_buttons: ButtonFunction[];
@@ -8943,6 +9017,8 @@ export namespace Meta {
     type DisplayClass = typeof Display;
     type DndClass = typeof Dnd;
     class Edge {
+        static $gtype: GObject.GType<Edge>;
+
         // Own fields of Meta.Edge
 
         rect: Rectangle;
@@ -8955,12 +9031,16 @@ export namespace Meta {
     }
 
     abstract class Frame {
+        static $gtype: GObject.GType<Frame>;
+
         // Constructors of Meta.Frame
 
         _init(...args: any[]): void;
     }
 
     class FrameBorders {
+        static $gtype: GObject.GType<FrameBorders>;
+
         // Own fields of Meta.FrameBorders
 
         visible: Gtk.Border;
@@ -8986,6 +9066,8 @@ export namespace Meta {
     type IdleMonitorClass = typeof IdleMonitor;
     type InhibitShortcutsDialogInterface = typeof InhibitShortcutsDialog;
     class KeyBinding {
+        static $gtype: GObject.GType<KeyBinding>;
+
         // Constructors of Meta.KeyBinding
 
         _init(...args: any[]): void;
@@ -9000,6 +9082,8 @@ export namespace Meta {
     }
 
     abstract class Laters {
+        static $gtype: GObject.GType<Laters>;
+
         // Constructors of Meta.Laters
 
         _init(...args: any[]): void;
@@ -9029,6 +9113,8 @@ export namespace Meta {
     type MonitorManagerClass = typeof MonitorManager;
     type PluginClass = typeof Plugin;
     class PluginInfo {
+        static $gtype: GObject.GType<PluginInfo>;
+
         // Own fields of Meta.PluginInfo
 
         name: string;
@@ -9052,6 +9138,8 @@ export namespace Meta {
     }
 
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Meta.Rectangle
 
         x: number;
@@ -9092,6 +9180,8 @@ export namespace Meta {
     type SelectionSourceClass = typeof SelectionSource;
     type SelectionSourceMemoryClass = typeof SelectionSourceMemory;
     abstract class Settings {
+        static $gtype: GObject.GType<Settings>;
+
         // Constructors of Meta.Settings
 
         _init(...args: any[]): void;
@@ -9108,6 +9198,8 @@ export namespace Meta {
      * unscaled borders are on each side of the shadow texture.)
      */
     class Shadow {
+        static $gtype: GObject.GType<Shadow>;
+
         // Constructors of Meta.Shadow
 
         _init(...args: any[]): void;
@@ -9164,6 +9256,8 @@ export namespace Meta {
      * a particular style of shadow.
      */
     class ShadowParams {
+        static $gtype: GObject.GType<ShadowParams>;
+
         // Own fields of Meta.ShadowParams
 
         radius: number;
@@ -9192,6 +9286,8 @@ export namespace Meta {
     type StartupNotificationClass = typeof StartupNotification;
     type StartupSequenceClass = typeof StartupSequence;
     class Strut {
+        static $gtype: GObject.GType<Strut>;
+
         // Own fields of Meta.Strut
 
         rect: Rectangle;
@@ -9203,6 +9299,8 @@ export namespace Meta {
     }
 
     abstract class Theme {
+        static $gtype: GObject.GType<Theme>;
+
         // Constructors of Meta.Theme
 
         _init(...args: any[]): void;
@@ -9226,6 +9324,8 @@ export namespace Meta {
      * efficient hash and equal functions.
      */
     class WindowShape {
+        static $gtype: GObject.GType<WindowShape>;
+
         // Constructors of Meta.WindowShape
 
         constructor(region: cairo.Region);

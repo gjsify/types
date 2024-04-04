@@ -192,6 +192,8 @@ export namespace Champlain {
      * public API.
      */
     class Adjustment extends GObject.Object {
+        static $gtype: GObject.GType<Adjustment>;
+
         // Own properties of Champlain.Adjustment
 
         get lower(): number;
@@ -248,6 +250,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
+        static $gtype: GObject.GType<Coordinate>;
+
         // Constructors of Champlain.Coordinate
 
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
@@ -677,6 +681,8 @@ export namespace Champlain {
         extends Marker
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<CustomMarker>;
+
         // Constructors of Champlain.CustomMarker
 
         constructor(properties?: Partial<CustomMarker.ConstructorProps>, ...args: any[]);
@@ -1098,6 +1104,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class ErrorTileRenderer extends Renderer {
+        static $gtype: GObject.GType<ErrorTileRenderer>;
+
         // Own properties of Champlain.ErrorTileRenderer
 
         /**
@@ -1149,6 +1157,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class FileCache extends TileCache {
+        static $gtype: GObject.GType<FileCache>;
+
         // Own properties of Champlain.FileCache
 
         /**
@@ -1221,6 +1231,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class FileTileSource extends TileSource {
+        static $gtype: GObject.GType<FileTileSource>;
+
         // Constructors of Champlain.FileTileSource
 
         constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
@@ -1259,6 +1271,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class ImageRenderer extends Renderer {
+        static $gtype: GObject.GType<ImageRenderer>;
+
         // Constructors of Champlain.ImageRenderer
 
         constructor(properties?: Partial<ImageRenderer.ConstructorProps>, ...args: any[]);
@@ -1295,6 +1309,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<KineticScrollView>;
+
         // Own properties of Champlain.KineticScrollView
 
         get decel_rate(): number;
@@ -2166,6 +2182,8 @@ export namespace Champlain {
         extends Marker
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Label>;
+
         // Own properties of Champlain.Label
 
         /**
@@ -2851,6 +2869,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Layer>;
+
         // Constructors of Champlain.Layer
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
@@ -3706,6 +3726,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<License>;
+
         // Own properties of Champlain.License
 
         /**
@@ -4578,6 +4600,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     abstract class MapSource extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<MapSource>;
+
         // Own properties of Champlain.MapSource
 
         /**
@@ -4777,6 +4801,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class MapSourceChain extends MapSource {
+        static $gtype: GObject.GType<MapSourceChain>;
+
         // Constructors of Champlain.MapSourceChain
 
         constructor(properties?: Partial<MapSourceChain.ConstructorProps>, ...args: any[]);
@@ -4825,6 +4851,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class MapSourceDesc extends GObject.Object {
+        static $gtype: GObject.GType<MapSourceDesc>;
+
         // Own properties of Champlain.MapSourceDesc
 
         /**
@@ -4959,6 +4987,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class MapSourceFactory extends GObject.Object {
+        static $gtype: GObject.GType<MapSourceFactory>;
+
         // Constructors of Champlain.MapSourceFactory
 
         constructor(properties?: Partial<MapSourceFactory.ConstructorProps>, ...args: any[]);
@@ -5057,6 +5087,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Marker>;
+
         // Own properties of Champlain.Marker
 
         /**
@@ -6042,6 +6074,8 @@ export namespace Champlain {
         extends Layer
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<MarkerLayer>;
+
         // Own properties of Champlain.MarkerLayer
 
         /**
@@ -6535,6 +6569,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class MemoryCache extends TileCache {
+        static $gtype: GObject.GType<MemoryCache>;
+
         // Own properties of Champlain.MemoryCache
 
         /**
@@ -6593,6 +6629,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class NetworkBboxTileSource extends TileSource {
+        static $gtype: GObject.GType<NetworkBboxTileSource>;
+
         // Own properties of Champlain.NetworkBboxTileSource
 
         /**
@@ -6699,6 +6737,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class NetworkTileSource extends TileSource {
+        static $gtype: GObject.GType<NetworkTileSource>;
+
         // Own properties of Champlain.NetworkTileSource
 
         /**
@@ -6843,6 +6883,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class NullTileSource extends TileSource {
+        static $gtype: GObject.GType<NullTileSource>;
+
         // Constructors of Champlain.NullTileSource
 
         constructor(properties?: Partial<NullTileSource.ConstructorProps>, ...args: any[]);
@@ -6883,6 +6925,8 @@ export namespace Champlain {
         extends Layer
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<PathLayer>;
+
         // Own properties of Champlain.PathLayer
 
         /**
@@ -7471,6 +7515,8 @@ export namespace Champlain {
             Clutter.Container,
             Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Point>;
+
         // Own properties of Champlain.Point
 
         get color(): Clutter.Color;
@@ -7948,6 +7994,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     class Renderer extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<Renderer>;
+
         // Constructors of Champlain.Renderer
 
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
@@ -8011,6 +8059,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Scale>;
+
         // Own properties of Champlain.Scale
 
         /**
@@ -8900,6 +8950,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Tile>;
+
         // Own properties of Champlain.Tile
 
         /**
@@ -9916,6 +9968,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     abstract class TileCache extends MapSource {
+        static $gtype: GObject.GType<TileCache>;
+
         // Constructors of Champlain.TileCache
 
         constructor(properties?: Partial<TileCache.ConstructorProps>, ...args: any[]);
@@ -10000,6 +10054,8 @@ export namespace Champlain {
      * and should be accessed using the provided API
      */
     abstract class TileSource extends MapSource {
+        static $gtype: GObject.GType<TileSource>;
+
         // Own properties of Champlain.TileSource
 
         /**
@@ -10187,6 +10243,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<View>;
+
         // Own properties of Champlain.View
 
         /**
@@ -11482,6 +11540,8 @@ export namespace Champlain {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Viewport>;
+
         // Own properties of Champlain.Viewport
 
         get hadjustment(): Adjustment;
@@ -12320,6 +12380,8 @@ export namespace Champlain {
 
     type AdjustmentClass = typeof Adjustment;
     abstract class AdjustmentPrivate {
+        static $gtype: GObject.GType<AdjustmentPrivate>;
+
         // Constructors of Champlain.AdjustmentPrivate
 
         _init(...args: any[]): void;
@@ -12329,6 +12391,8 @@ export namespace Champlain {
      * Defines the area of a ChamplainMapDataSource that contains data.
      */
     class BoundingBox {
+        static $gtype: GObject.GType<BoundingBox>;
+
         // Own fields of Champlain.BoundingBox
 
         left: number;
@@ -12395,6 +12459,8 @@ export namespace Champlain {
 
     type CoordinateClass = typeof Coordinate;
     abstract class CoordinatePrivate {
+        static $gtype: GObject.GType<CoordinatePrivate>;
+
         // Constructors of Champlain.CoordinatePrivate
 
         _init(...args: any[]): void;
@@ -12402,6 +12468,8 @@ export namespace Champlain {
 
     type CustomMarkerClass = typeof CustomMarker;
     abstract class CustomMarkerPrivate {
+        static $gtype: GObject.GType<CustomMarkerPrivate>;
+
         // Constructors of Champlain.CustomMarkerPrivate
 
         _init(...args: any[]): void;
@@ -12409,6 +12477,8 @@ export namespace Champlain {
 
     type ErrorTileRendererClass = typeof ErrorTileRenderer;
     abstract class ErrorTileRendererPrivate {
+        static $gtype: GObject.GType<ErrorTileRendererPrivate>;
+
         // Constructors of Champlain.ErrorTileRendererPrivate
 
         _init(...args: any[]): void;
@@ -12417,6 +12487,8 @@ export namespace Champlain {
     type ExportableIface = typeof Exportable;
     type FileCacheClass = typeof FileCache;
     abstract class FileCachePrivate {
+        static $gtype: GObject.GType<FileCachePrivate>;
+
         // Constructors of Champlain.FileCachePrivate
 
         _init(...args: any[]): void;
@@ -12424,6 +12496,8 @@ export namespace Champlain {
 
     type FileTileSourceClass = typeof FileTileSource;
     abstract class FileTileSourcePrivate {
+        static $gtype: GObject.GType<FileTileSourcePrivate>;
+
         // Constructors of Champlain.FileTileSourcePrivate
 
         _init(...args: any[]): void;
@@ -12431,6 +12505,8 @@ export namespace Champlain {
 
     type ImageRendererClass = typeof ImageRenderer;
     abstract class ImageRendererPrivate {
+        static $gtype: GObject.GType<ImageRendererPrivate>;
+
         // Constructors of Champlain.ImageRendererPrivate
 
         _init(...args: any[]): void;
@@ -12438,6 +12514,8 @@ export namespace Champlain {
 
     type KineticScrollViewClass = typeof KineticScrollView;
     abstract class KineticScrollViewPrivate {
+        static $gtype: GObject.GType<KineticScrollViewPrivate>;
+
         // Constructors of Champlain.KineticScrollViewPrivate
 
         _init(...args: any[]): void;
@@ -12445,6 +12523,8 @@ export namespace Champlain {
 
     type LabelClass = typeof Label;
     abstract class LabelPrivate {
+        static $gtype: GObject.GType<LabelPrivate>;
+
         // Constructors of Champlain.LabelPrivate
 
         _init(...args: any[]): void;
@@ -12453,6 +12533,8 @@ export namespace Champlain {
     type LayerClass = typeof Layer;
     type LicenseClass = typeof License;
     abstract class LicensePrivate {
+        static $gtype: GObject.GType<LicensePrivate>;
+
         // Constructors of Champlain.LicensePrivate
 
         _init(...args: any[]): void;
@@ -12461,6 +12543,8 @@ export namespace Champlain {
     type LocationIface = typeof Location;
     type MapSourceChainClass = typeof MapSourceChain;
     abstract class MapSourceChainPrivate {
+        static $gtype: GObject.GType<MapSourceChainPrivate>;
+
         // Constructors of Champlain.MapSourceChainPrivate
 
         _init(...args: any[]): void;
@@ -12469,6 +12553,8 @@ export namespace Champlain {
     type MapSourceClass = typeof MapSource;
     type MapSourceDescClass = typeof MapSourceDesc;
     abstract class MapSourceDescPrivate {
+        static $gtype: GObject.GType<MapSourceDescPrivate>;
+
         // Constructors of Champlain.MapSourceDescPrivate
 
         _init(...args: any[]): void;
@@ -12476,12 +12562,16 @@ export namespace Champlain {
 
     type MapSourceFactoryClass = typeof MapSourceFactory;
     abstract class MapSourceFactoryPrivate {
+        static $gtype: GObject.GType<MapSourceFactoryPrivate>;
+
         // Constructors of Champlain.MapSourceFactoryPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MapSourcePrivate {
+        static $gtype: GObject.GType<MapSourcePrivate>;
+
         // Constructors of Champlain.MapSourcePrivate
 
         _init(...args: any[]): void;
@@ -12490,12 +12580,16 @@ export namespace Champlain {
     type MarkerClass = typeof Marker;
     type MarkerLayerClass = typeof MarkerLayer;
     abstract class MarkerLayerPrivate {
+        static $gtype: GObject.GType<MarkerLayerPrivate>;
+
         // Constructors of Champlain.MarkerLayerPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class MarkerPrivate {
+        static $gtype: GObject.GType<MarkerPrivate>;
+
         // Constructors of Champlain.MarkerPrivate
 
         _init(...args: any[]): void;
@@ -12503,6 +12597,8 @@ export namespace Champlain {
 
     type MemoryCacheClass = typeof MemoryCache;
     abstract class MemoryCachePrivate {
+        static $gtype: GObject.GType<MemoryCachePrivate>;
+
         // Constructors of Champlain.MemoryCachePrivate
 
         _init(...args: any[]): void;
@@ -12510,6 +12606,8 @@ export namespace Champlain {
 
     type NetworkBboxTileSourceClass = typeof NetworkBboxTileSource;
     abstract class NetworkBboxTileSourcePrivate {
+        static $gtype: GObject.GType<NetworkBboxTileSourcePrivate>;
+
         // Constructors of Champlain.NetworkBboxTileSourcePrivate
 
         _init(...args: any[]): void;
@@ -12517,6 +12615,8 @@ export namespace Champlain {
 
     type NetworkTileSourceClass = typeof NetworkTileSource;
     abstract class NetworkTileSourcePrivate {
+        static $gtype: GObject.GType<NetworkTileSourcePrivate>;
+
         // Constructors of Champlain.NetworkTileSourcePrivate
 
         _init(...args: any[]): void;
@@ -12524,6 +12624,8 @@ export namespace Champlain {
 
     type NullTileSourceClass = typeof NullTileSource;
     abstract class NullTileSourcePrivate {
+        static $gtype: GObject.GType<NullTileSourcePrivate>;
+
         // Constructors of Champlain.NullTileSourcePrivate
 
         _init(...args: any[]): void;
@@ -12531,6 +12633,8 @@ export namespace Champlain {
 
     type PathLayerClass = typeof PathLayer;
     abstract class PathLayerPrivate {
+        static $gtype: GObject.GType<PathLayerPrivate>;
+
         // Constructors of Champlain.PathLayerPrivate
 
         _init(...args: any[]): void;
@@ -12538,6 +12642,8 @@ export namespace Champlain {
 
     type PointClass = typeof Point;
     abstract class PointPrivate {
+        static $gtype: GObject.GType<PointPrivate>;
+
         // Constructors of Champlain.PointPrivate
 
         _init(...args: any[]): void;
@@ -12546,6 +12652,8 @@ export namespace Champlain {
     type RendererClass = typeof Renderer;
     type ScaleClass = typeof Scale;
     abstract class ScalePrivate {
+        static $gtype: GObject.GType<ScalePrivate>;
+
         // Constructors of Champlain.ScalePrivate
 
         _init(...args: any[]): void;
@@ -12553,6 +12661,8 @@ export namespace Champlain {
 
     type TileCacheClass = typeof TileCache;
     abstract class TileCachePrivate {
+        static $gtype: GObject.GType<TileCachePrivate>;
+
         // Constructors of Champlain.TileCachePrivate
 
         _init(...args: any[]): void;
@@ -12560,6 +12670,8 @@ export namespace Champlain {
 
     type TileClass = typeof Tile;
     abstract class TilePrivate {
+        static $gtype: GObject.GType<TilePrivate>;
+
         // Constructors of Champlain.TilePrivate
 
         _init(...args: any[]): void;
@@ -12567,6 +12679,8 @@ export namespace Champlain {
 
     type TileSourceClass = typeof TileSource;
     abstract class TileSourcePrivate {
+        static $gtype: GObject.GType<TileSourcePrivate>;
+
         // Constructors of Champlain.TileSourcePrivate
 
         _init(...args: any[]): void;
@@ -12574,6 +12688,8 @@ export namespace Champlain {
 
     type ViewClass = typeof View;
     abstract class ViewPrivate {
+        static $gtype: GObject.GType<ViewPrivate>;
+
         // Constructors of Champlain.ViewPrivate
 
         _init(...args: any[]): void;
@@ -12581,6 +12697,8 @@ export namespace Champlain {
 
     type ViewportClass = typeof Viewport;
     abstract class ViewportPrivate {
+        static $gtype: GObject.GType<ViewportPrivate>;
+
         // Constructors of Champlain.ViewportPrivate
 
         _init(...args: any[]): void;

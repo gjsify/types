@@ -15,6 +15,8 @@ import type GObject from '@girs/gobject-2.0';
 
 export namespace xfixes {
     class XserverRegion {
+        static $gtype: GObject.GType<XserverRegion>;
+
         // Constructors of xfixes.XserverRegion
 
         _init(...args: any[]): void;

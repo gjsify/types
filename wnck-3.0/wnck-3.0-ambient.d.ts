@@ -1,7 +1,7 @@
 
 declare module 'gi://Wnck?version=3.0' {
-    import Wnck30 from '@girs/wnck-3.0';
-    export default Wnck30;
+    import Wnck from '@girs/wnck-3.0';
+    export default Wnck;
 }
 
 declare module 'gi://Wnck' {

@@ -1,7 +1,7 @@
 
 declare module 'gi://GMenu?version=3.0' {
-    import GMenu30 from '@girs/gmenu-3.0';
-    export default GMenu30;
+    import GMenu from '@girs/gmenu-3.0';
+    export default GMenu;
 }
 
 declare module 'gi://GMenu' {

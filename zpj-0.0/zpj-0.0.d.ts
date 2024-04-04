@@ -23,6 +23,8 @@ export namespace Zpj {
      * This enumeration can be expanded at a later date.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Zpj.Error
 
         /**
@@ -127,6 +129,8 @@ export namespace Zpj {
     }
 
     class AuthorizationDomain extends GObject.Object {
+        static $gtype: GObject.GType<AuthorizationDomain>;
+
         // Own properties of Zpj.AuthorizationDomain
 
         get scope(): string;
@@ -156,6 +160,8 @@ export namespace Zpj {
      * should only be accessed using the provided API.
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
+        static $gtype: GObject.GType<GoaAuthorizer>;
+
         // Constructors of Zpj.GoaAuthorizer
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
@@ -626,6 +632,8 @@ export namespace Zpj {
      * only be accessed using the provided API.
      */
     class Skydrive extends GObject.Object {
+        static $gtype: GObject.GType<Skydrive>;
+
         // Own properties of Zpj.Skydrive
 
         get authorizer(): Authorizer;
@@ -916,6 +924,8 @@ export namespace Zpj {
      * should only be accessed using the provided API.
      */
     abstract class SkydriveEntry extends GObject.Object {
+        static $gtype: GObject.GType<SkydriveEntry>;
+
         // Own properties of Zpj.SkydriveEntry
 
         get created_time(): GLib.DateTime;
@@ -1026,6 +1036,8 @@ export namespace Zpj {
      * only be accessed using the provided API.
      */
     class SkydriveFile extends SkydriveEntry {
+        static $gtype: GObject.GType<SkydriveFile>;
+
         // Own properties of Zpj.SkydriveFile
 
         get size(): number;
@@ -1060,6 +1072,8 @@ export namespace Zpj {
      * should only be accessed using the provided API.
      */
     class SkydriveFolder extends SkydriveEntry {
+        static $gtype: GObject.GType<SkydriveFolder>;
+
         // Constructors of Zpj.SkydriveFolder
 
         constructor(properties?: Partial<SkydriveFolder.ConstructorProps>, ...args: any[]);
@@ -1080,6 +1094,8 @@ export namespace Zpj {
      * should only be accessed using the provided API.
      */
     class SkydrivePhoto extends SkydriveFile {
+        static $gtype: GObject.GType<SkydrivePhoto>;
+
         // Constructors of Zpj.SkydrivePhoto
 
         constructor(properties?: Partial<SkydrivePhoto.ConstructorProps>, ...args: any[]);
@@ -1105,6 +1121,8 @@ export namespace Zpj {
      * should only be accessed using the provided API.
      */
     class SkydriveVideo extends SkydriveFile {
+        static $gtype: GObject.GType<SkydriveVideo>;
+
         // Own properties of Zpj.SkydriveVideo
 
         get bitrate(): number;
@@ -1156,6 +1174,8 @@ export namespace Zpj {
 
     type AuthorizationDomainClass = typeof AuthorizationDomain;
     abstract class AuthorizationDomainPrivate {
+        static $gtype: GObject.GType<AuthorizationDomainPrivate>;
+
         // Constructors of Zpj.AuthorizationDomainPrivate
 
         _init(...args: any[]): void;
@@ -1164,6 +1184,8 @@ export namespace Zpj {
     type AuthorizerInterface = typeof Authorizer;
     type GoaAuthorizerClass = typeof GoaAuthorizer;
     abstract class GoaAuthorizerPrivate {
+        static $gtype: GObject.GType<GoaAuthorizerPrivate>;
+
         // Constructors of Zpj.GoaAuthorizerPrivate
 
         _init(...args: any[]): void;
@@ -1172,6 +1194,8 @@ export namespace Zpj {
     type SkydriveClass = typeof Skydrive;
     type SkydriveEntryClass = typeof SkydriveEntry;
     abstract class SkydriveEntryPrivate {
+        static $gtype: GObject.GType<SkydriveEntryPrivate>;
+
         // Constructors of Zpj.SkydriveEntryPrivate
 
         _init(...args: any[]): void;
@@ -1179,6 +1203,8 @@ export namespace Zpj {
 
     type SkydriveFileClass = typeof SkydriveFile;
     abstract class SkydriveFilePrivate {
+        static $gtype: GObject.GType<SkydriveFilePrivate>;
+
         // Constructors of Zpj.SkydriveFilePrivate
 
         _init(...args: any[]): void;
@@ -1187,6 +1213,8 @@ export namespace Zpj {
     type SkydriveFolderClass = typeof SkydriveFolder;
     type SkydrivePhotoClass = typeof SkydrivePhoto;
     abstract class SkydrivePrivate {
+        static $gtype: GObject.GType<SkydrivePrivate>;
+
         // Constructors of Zpj.SkydrivePrivate
 
         _init(...args: any[]): void;
@@ -1194,6 +1222,8 @@ export namespace Zpj {
 
     type SkydriveVideoClass = typeof SkydriveVideo;
     abstract class SkydriveVideoPrivate {
+        static $gtype: GObject.GType<SkydriveVideoPrivate>;
+
         // Constructors of Zpj.SkydriveVideoPrivate
 
         _init(...args: any[]): void;

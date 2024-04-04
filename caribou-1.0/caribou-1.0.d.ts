@@ -60,6 +60,8 @@ export namespace Caribou {
     }
 
     abstract class DisplayAdapter extends GObject.Object {
+        static $gtype: GObject.GType<DisplayAdapter>;
+
         // Own properties of Caribou.DisplayAdapter
 
         get display(): Gdk.Display;
@@ -131,6 +133,8 @@ export namespace Caribou {
     }
 
     class NullAdapter extends DisplayAdapter {
+        static $gtype: GObject.GType<NullAdapter>;
+
         // Constructors of Caribou.NullAdapter
 
         constructor(properties?: Partial<NullAdapter.ConstructorProps>, ...args: any[]);
@@ -147,6 +151,8 @@ export namespace Caribou {
     }
 
     class XAdapter extends DisplayAdapter {
+        static $gtype: GObject.GType<XAdapter>;
+
         // Constructors of Caribou.XAdapter
 
         constructor(properties?: Partial<XAdapter.ConstructorProps>, ...args: any[]);
@@ -180,6 +186,8 @@ export namespace Caribou {
     }
 
     class KeyboardModel extends GObject.Object implements IKeyboardObject {
+        static $gtype: GObject.GType<KeyboardModel>;
+
         // Own properties of Caribou.KeyboardModel
 
         get active_group(): string;
@@ -587,6 +595,8 @@ export namespace Caribou {
     }
 
     abstract class KeyboardService extends GObject.Object {
+        static $gtype: GObject.GType<KeyboardService>;
+
         // Constructors of Caribou.KeyboardService
 
         constructor(properties?: Partial<KeyboardService.ConstructorProps>, ...args: any[]);
@@ -621,6 +631,8 @@ export namespace Caribou {
     }
 
     class GroupModel extends GObject.Object implements IKeyboardObject {
+        static $gtype: GObject.GType<GroupModel>;
+
         // Own properties of Caribou.GroupModel
 
         get active_level(): string;
@@ -1027,6 +1039,8 @@ export namespace Caribou {
     }
 
     class LevelModel extends ScannableGroup implements IKeyboardObject {
+        static $gtype: GObject.GType<LevelModel>;
+
         // Own properties of Caribou.LevelModel
 
         get mode(): string;
@@ -1425,6 +1439,8 @@ export namespace Caribou {
     }
 
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
+        static $gtype: GObject.GType<RowModel>;
+
         // Constructors of Caribou.RowModel
 
         constructor(properties?: Partial<RowModel.ConstructorProps>, ...args: any[]);
@@ -1849,6 +1865,8 @@ export namespace Caribou {
     }
 
     class KeyModel extends GObject.Object implements IScannableItem, IKeyboardObject {
+        static $gtype: GObject.GType<KeyModel>;
+
         // Own properties of Caribou.KeyModel
 
         get align(): string;
@@ -2312,6 +2330,8 @@ export namespace Caribou {
     }
 
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
+        static $gtype: GObject.GType<ColumnModel>;
+
         // Constructors of Caribou.ColumnModel
 
         constructor(properties?: Partial<ColumnModel.ConstructorProps>, ...args: any[]);
@@ -2731,6 +2751,8 @@ export namespace Caribou {
     }
 
     class Scanner extends GObject.Object {
+        static $gtype: GObject.GType<Scanner>;
+
         // Own properties of Caribou.Scanner
 
         get bind_settings(): boolean;
@@ -2810,6 +2832,8 @@ export namespace Caribou {
     }
 
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
+        static $gtype: GObject.GType<ScannableGroup>;
+
         // Constructors of Caribou.ScannableGroup
 
         constructor(properties?: Partial<ScannableGroup.ConstructorProps>, ...args: any[]);
@@ -3203,6 +3227,8 @@ export namespace Caribou {
 
     type DisplayAdapterClass = typeof DisplayAdapter;
     abstract class DisplayAdapterPrivate {
+        static $gtype: GObject.GType<DisplayAdapterPrivate>;
+
         // Constructors of Caribou.DisplayAdapterPrivate
 
         _init(...args: any[]): void;
@@ -3210,6 +3236,8 @@ export namespace Caribou {
 
     type NullAdapterClass = typeof NullAdapter;
     abstract class NullAdapterPrivate {
+        static $gtype: GObject.GType<NullAdapterPrivate>;
+
         // Constructors of Caribou.NullAdapterPrivate
 
         _init(...args: any[]): void;
@@ -3217,6 +3245,8 @@ export namespace Caribou {
 
     type XAdapterClass = typeof XAdapter;
     abstract class XAdapterPrivate {
+        static $gtype: GObject.GType<XAdapterPrivate>;
+
         // Constructors of Caribou.XAdapterPrivate
 
         _init(...args: any[]): void;
@@ -3224,6 +3254,8 @@ export namespace Caribou {
 
     type KeyboardModelClass = typeof KeyboardModel;
     abstract class KeyboardModelPrivate {
+        static $gtype: GObject.GType<KeyboardModelPrivate>;
+
         // Constructors of Caribou.KeyboardModelPrivate
 
         _init(...args: any[]): void;
@@ -3231,6 +3263,8 @@ export namespace Caribou {
 
     type KeyboardServiceClass = typeof KeyboardService;
     abstract class KeyboardServicePrivate {
+        static $gtype: GObject.GType<KeyboardServicePrivate>;
+
         // Constructors of Caribou.KeyboardServicePrivate
 
         _init(...args: any[]): void;
@@ -3238,6 +3272,8 @@ export namespace Caribou {
 
     type GroupModelClass = typeof GroupModel;
     abstract class GroupModelPrivate {
+        static $gtype: GObject.GType<GroupModelPrivate>;
+
         // Constructors of Caribou.GroupModelPrivate
 
         _init(...args: any[]): void;
@@ -3245,6 +3281,8 @@ export namespace Caribou {
 
     type LevelModelClass = typeof LevelModel;
     abstract class LevelModelPrivate {
+        static $gtype: GObject.GType<LevelModelPrivate>;
+
         // Constructors of Caribou.LevelModelPrivate
 
         _init(...args: any[]): void;
@@ -3252,6 +3290,8 @@ export namespace Caribou {
 
     type RowModelClass = typeof RowModel;
     abstract class RowModelPrivate {
+        static $gtype: GObject.GType<RowModelPrivate>;
+
         // Constructors of Caribou.RowModelPrivate
 
         _init(...args: any[]): void;
@@ -3259,6 +3299,8 @@ export namespace Caribou {
 
     type KeyModelClass = typeof KeyModel;
     abstract class KeyModelPrivate {
+        static $gtype: GObject.GType<KeyModelPrivate>;
+
         // Constructors of Caribou.KeyModelPrivate
 
         _init(...args: any[]): void;
@@ -3266,6 +3308,8 @@ export namespace Caribou {
 
     type ColumnModelClass = typeof ColumnModel;
     abstract class ColumnModelPrivate {
+        static $gtype: GObject.GType<ColumnModelPrivate>;
+
         // Constructors of Caribou.ColumnModelPrivate
 
         _init(...args: any[]): void;
@@ -3273,6 +3317,8 @@ export namespace Caribou {
 
     type ScannerClass = typeof Scanner;
     abstract class ScannerPrivate {
+        static $gtype: GObject.GType<ScannerPrivate>;
+
         // Constructors of Caribou.ScannerPrivate
 
         _init(...args: any[]): void;
@@ -3280,6 +3326,8 @@ export namespace Caribou {
 
     type ScannableGroupClass = typeof ScannableGroup;
     abstract class ScannableGroupPrivate {
+        static $gtype: GObject.GType<ScannableGroupPrivate>;
+
         // Constructors of Caribou.ScannableGroupPrivate
 
         _init(...args: any[]): void;

@@ -20,6 +20,8 @@ export namespace GSignond {
      * This enum provides a list of errors that plugins and extensions can use.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of GSignond.Error
 
         /**
@@ -402,6 +404,8 @@ export namespace GSignond {
      * Opaque #GSignondAccessControlManager data structure.
      */
     class AccessControlManager extends GObject.Object {
+        static $gtype: GObject.GType<AccessControlManager>;
+
         // Own properties of GSignond.AccessControlManager
 
         get config(): Config;
@@ -565,6 +569,8 @@ export namespace GSignond {
      * Opaque structure for the object.
      */
     class Config extends GObject.Object {
+        static $gtype: GObject.GType<Config>;
+
         // Constructors of GSignond.Config
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
@@ -611,6 +617,8 @@ export namespace GSignond {
      * Opaque #GSignondCredentials data structure.
      */
     class Credentials extends GObject.Object {
+        static $gtype: GObject.GType<Credentials>;
+
         // Constructors of GSignond.Credentials
 
         constructor(properties?: Partial<Credentials.ConstructorProps>, ...args: any[]);
@@ -681,6 +689,8 @@ export namespace GSignond {
      * Opaque #GSignondDictionary data structure.
      */
     class Dictionary extends GObject.Object {
+        static $gtype: GObject.GType<Dictionary>;
+
         // Constructors of GSignond.Dictionary
 
         constructor(properties?: Partial<Dictionary.ConstructorProps>, ...args: any[]);
@@ -842,6 +852,8 @@ export namespace GSignond {
      * Opaque #GSignondExtension data structure.
      */
     class Extension extends GObject.Object {
+        static $gtype: GObject.GType<Extension>;
+
         // Constructors of GSignond.Extension
 
         constructor(properties?: Partial<Extension.ConstructorProps>, ...args: any[]);
@@ -919,6 +931,8 @@ export namespace GSignond {
      * Opaque #GSignondSecretStorage data structure.
      */
     class SecretStorage extends GObject.Object {
+        static $gtype: GObject.GType<SecretStorage>;
+
         // Own properties of GSignond.SecretStorage
 
         get config(): Config;
@@ -1088,6 +1102,8 @@ export namespace GSignond {
      * Opaque #GSignondSessionData data structure.
      */
     class SessionData extends Dictionary {
+        static $gtype: GObject.GType<SessionData>;
+
         // Constructors of GSignond.SessionData
 
         constructor(properties?: Partial<SessionData.ConstructorProps>, ...args: any[]);
@@ -1228,6 +1244,8 @@ export namespace GSignond {
      * gsignond_dictionary_new().
      */
     class SignonuiData extends Dictionary {
+        static $gtype: GObject.GType<SignonuiData>;
+
         // Constructors of GSignond.SignonuiData
 
         constructor(properties?: Partial<SignonuiData.ConstructorProps>, ...args: any[]);
@@ -1468,6 +1486,8 @@ export namespace GSignond {
      * Opaque #GSignondStorageManager data structure.
      */
     class StorageManager extends GObject.Object {
+        static $gtype: GObject.GType<StorageManager>;
+
         // Own properties of GSignond.StorageManager
 
         get config(): Config;
@@ -1561,6 +1581,8 @@ export namespace GSignond {
 
     type AccessControlManagerClass = typeof AccessControlManager;
     abstract class AccessControlManagerPrivate {
+        static $gtype: GObject.GType<AccessControlManagerPrivate>;
+
         // Constructors of GSignond.AccessControlManagerPrivate
 
         _init(...args: any[]): void;
@@ -1573,12 +1595,16 @@ export namespace GSignond {
     type PluginInterface = typeof Plugin;
     type SecretStorageClass = typeof SecretStorage;
     abstract class SecretStoragePrivate {
+        static $gtype: GObject.GType<SecretStoragePrivate>;
+
         // Constructors of GSignond.SecretStoragePrivate
 
         _init(...args: any[]): void;
     }
 
     class SecurityContext {
+        static $gtype: GObject.GType<SecurityContext>;
+
         // Own fields of GSignond.SecurityContext
 
         sys_ctx: string;
@@ -1670,6 +1696,8 @@ export namespace GSignond {
     type SignonuiDataClass = typeof SignonuiData;
     type StorageManagerClass = typeof StorageManager;
     abstract class StorageManagerPrivate {
+        static $gtype: GObject.GType<StorageManagerPrivate>;
+
         // Constructors of GSignond.StorageManagerPrivate
 
         _init(...args: any[]): void;

@@ -41,6 +41,8 @@ export namespace RestExtras {
     }
 
     class FlickrProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<FlickrProxy>;
+
         // Own properties of RestExtras.FlickrProxy
 
         get api_key(): string;
@@ -128,6 +130,8 @@ export namespace RestExtras {
     }
 
     class FlickrProxyCall extends Rest.ProxyCall {
+        static $gtype: GObject.GType<FlickrProxyCall>;
+
         // Own properties of RestExtras.FlickrProxyCall
 
         /**
@@ -157,6 +161,8 @@ export namespace RestExtras {
     }
 
     class LastfmProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<LastfmProxy>;
+
         // Own properties of RestExtras.LastfmProxy
 
         get api_key(): string;
@@ -225,6 +231,8 @@ export namespace RestExtras {
      * #LastfmProxyCall has no publicly available members.
      */
     class LastfmProxyCall extends Rest.ProxyCall {
+        static $gtype: GObject.GType<LastfmProxyCall>;
+
         // Constructors of RestExtras.LastfmProxyCall
 
         constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
@@ -244,6 +252,8 @@ export namespace RestExtras {
     }
 
     class YoutubeProxy extends Rest.Proxy {
+        static $gtype: GObject.GType<YoutubeProxy>;
+
         // Own properties of RestExtras.YoutubeProxy
 
         get developer_key(): string;

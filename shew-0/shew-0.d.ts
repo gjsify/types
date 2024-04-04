@@ -36,6 +36,8 @@ export namespace Shew {
     }
 
     class ExternalWindow extends GObject.Object {
+        static $gtype: GObject.GType<ExternalWindow>;
+
         // Own properties of Shew.ExternalWindow
 
         get display(): Gdk.Display;
@@ -67,6 +69,8 @@ export namespace Shew {
     }
 
     class WindowExporter extends GObject.Object {
+        static $gtype: GObject.GType<WindowExporter>;
+
         // Own properties of Shew.WindowExporter
 
         get window(): Gtk.Window;

@@ -45,6 +45,8 @@ export namespace FolksLibsocialweb {
             Folks.UrlDetails,
             Folks.WebServiceDetails
     {
+        static $gtype: GObject.GType<Persona>;
+
         // Own properties of FolksLibsocialweb.Persona
 
         get lsw_contact(): SocialWebClient.Contact;
@@ -529,6 +531,8 @@ export namespace FolksLibsocialweb {
     }
 
     class PersonaStore extends Folks.PersonaStore {
+        static $gtype: GObject.GType<PersonaStore>;
+
         // Own properties of FolksLibsocialweb.PersonaStore
 
         get service(): SocialWebClient.ClientService;
@@ -548,6 +552,8 @@ export namespace FolksLibsocialweb {
 
     type PersonaClass = typeof Persona;
     abstract class PersonaPrivate {
+        static $gtype: GObject.GType<PersonaPrivate>;
+
         // Constructors of FolksLibsocialweb.PersonaPrivate
 
         _init(...args: any[]): void;
@@ -555,6 +561,8 @@ export namespace FolksLibsocialweb {
 
     type PersonaStoreClass = typeof PersonaStore;
     abstract class PersonaStorePrivate {
+        static $gtype: GObject.GType<PersonaStorePrivate>;
+
         // Constructors of FolksLibsocialweb.PersonaStorePrivate
 
         _init(...args: any[]): void;

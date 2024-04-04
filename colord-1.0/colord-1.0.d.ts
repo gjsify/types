@@ -861,6 +861,8 @@ export namespace Colord {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Colord.Client
 
         /**
@@ -1514,6 +1516,8 @@ export namespace Colord {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Colord.Device
 
         /**
@@ -2111,6 +2115,8 @@ export namespace Colord {
     }
 
     class Edid extends GObject.Object {
+        static $gtype: GObject.GType<Edid>;
+
         // Constructors of Colord.Edid
 
         constructor(properties?: Partial<Edid.ConstructorProps>, ...args: any[]);
@@ -2226,6 +2232,8 @@ export namespace Colord {
     }
 
     class Icc extends GObject.Object {
+        static $gtype: GObject.GType<Icc>;
+
         // Own properties of Colord.Icc
 
         get blue(): ColorXYZ;
@@ -2649,6 +2657,8 @@ export namespace Colord {
     }
 
     class It8 extends GObject.Object {
+        static $gtype: GObject.GType<It8>;
+
         // Own properties of Colord.It8
 
         /**
@@ -2910,6 +2920,8 @@ export namespace Colord {
     }
 
     class Profile extends GObject.Object {
+        static $gtype: GObject.GType<Profile>;
+
         // Own properties of Colord.Profile
 
         /**
@@ -3269,6 +3281,8 @@ export namespace Colord {
     }
 
     class Sensor extends GObject.Object {
+        static $gtype: GObject.GType<Sensor>;
+
         // Own properties of Colord.Sensor
 
         /**
@@ -3647,6 +3661,8 @@ export namespace Colord {
 
     type ClientClass = typeof Client;
     class ColorLab {
+        static $gtype: GObject.GType<ColorLab>;
+
         // Own fields of Colord.ColorLab
 
         L: number;
@@ -3694,6 +3710,8 @@ export namespace Colord {
     }
 
     class ColorRGB {
+        static $gtype: GObject.GType<ColorRGB>;
+
         // Own fields of Colord.ColorRGB
 
         R: number;
@@ -3766,6 +3784,8 @@ export namespace Colord {
     }
 
     class ColorRGB8 {
+        static $gtype: GObject.GType<ColorRGB8>;
+
         // Own fields of Colord.ColorRGB8
 
         R: number;
@@ -3785,6 +3805,8 @@ export namespace Colord {
     }
 
     abstract class ColorSwatch {
+        static $gtype: GObject.GType<ColorSwatch>;
+
         // Constructors of Colord.ColorSwatch
 
         constructor(properties?: Partial<{}>);
@@ -3814,6 +3836,8 @@ export namespace Colord {
     }
 
     class ColorUVW {
+        static $gtype: GObject.GType<ColorUVW>;
+
         // Own fields of Colord.ColorUVW
 
         U: number;
@@ -3866,6 +3890,8 @@ export namespace Colord {
     }
 
     class ColorXYZ {
+        static $gtype: GObject.GType<ColorXYZ>;
+
         // Own fields of Colord.ColorXYZ
 
         X: number;
@@ -3932,6 +3958,8 @@ export namespace Colord {
     }
 
     class ColorYxy {
+        static $gtype: GObject.GType<ColorYxy>;
+
         // Own fields of Colord.ColorYxy
 
         Y: number;
@@ -3987,6 +4015,8 @@ export namespace Colord {
     type IccClass = typeof Icc;
     type It8Class = typeof It8;
     class Mat3x3 {
+        static $gtype: GObject.GType<Mat3x3>;
+
         // Own fields of Colord.Mat3x3
 
         m00: number;
@@ -4020,6 +4050,8 @@ export namespace Colord {
     type ProfileClass = typeof Profile;
     type SensorClass = typeof Sensor;
     abstract class Spectrum {
+        static $gtype: GObject.GType<Spectrum>;
+
         // Constructors of Colord.Spectrum
 
         constructor(properties?: Partial<{}>);
@@ -4237,6 +4269,8 @@ export namespace Colord {
     }
 
     class Vec3 {
+        static $gtype: GObject.GType<Vec3>;
+
         // Own fields of Colord.Vec3
 
         v0: number;

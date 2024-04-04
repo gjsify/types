@@ -1,7 +1,7 @@
 
 declare module 'gi://PackageKitGlib?version=1.0' {
-    import PackageKitGlib10 from '@girs/packagekitglib-1.0';
-    export default PackageKitGlib10;
+    import PackageKitGlib from '@girs/packagekitglib-1.0';
+    export default PackageKitGlib;
 }
 
 declare module 'gi://PackageKitGlib' {

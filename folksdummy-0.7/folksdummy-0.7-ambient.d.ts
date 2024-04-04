@@ -1,7 +1,7 @@
 
 declare module 'gi://FolksDummy?version=0.7' {
-    import FolksDummy07 from '@girs/folksdummy-0.7';
-    export default FolksDummy07;
+    import FolksDummy from '@girs/folksdummy-0.7';
+    export default FolksDummy;
 }
 
 declare module 'gi://FolksDummy' {

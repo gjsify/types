@@ -467,6 +467,8 @@ export namespace Babl {
      * a Babl object.
      */
     class Object {
+        static $gtype: GObject.GType<Object>;
+
         // Constructors of Babl.Object
 
         _init(...args: any[]): void;

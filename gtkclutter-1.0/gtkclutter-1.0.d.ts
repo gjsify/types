@@ -83,6 +83,8 @@ export namespace GtkClutter {
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Actor>;
+
         // Own properties of GtkClutter.Actor
 
         /**
@@ -937,6 +939,8 @@ export namespace GtkClutter {
      * private data and should be accessed using the provided API.
      */
     class Embed extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Embed>;
+
         // Own properties of GtkClutter.Embed
 
         /**
@@ -1367,6 +1371,8 @@ export namespace GtkClutter {
         extends Clutter.Texture
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
+        static $gtype: GObject.GType<Texture>;
+
         // Constructors of GtkClutter.Texture
 
         constructor(properties?: Partial<Texture.ConstructorProps>, ...args: any[]);
@@ -1779,6 +1785,8 @@ export namespace GtkClutter {
      * private data and it should be accessed using the provided API.
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Window>;
+
         // Constructors of GtkClutter.Window
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
@@ -2156,6 +2164,8 @@ export namespace GtkClutter {
 
     type ActorClass = typeof Actor;
     abstract class ActorPrivate {
+        static $gtype: GObject.GType<ActorPrivate>;
+
         // Constructors of GtkClutter.ActorPrivate
 
         _init(...args: any[]): void;
@@ -2163,6 +2173,8 @@ export namespace GtkClutter {
 
     type EmbedClass = typeof Embed;
     abstract class EmbedPrivate {
+        static $gtype: GObject.GType<EmbedPrivate>;
+
         // Constructors of GtkClutter.EmbedPrivate
 
         _init(...args: any[]): void;
@@ -2171,6 +2183,8 @@ export namespace GtkClutter {
     type TextureClass = typeof Texture;
     type WindowClass = typeof Window;
     abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
         // Constructors of GtkClutter.WindowPrivate
 
         _init(...args: any[]): void;

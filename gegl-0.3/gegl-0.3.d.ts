@@ -537,6 +537,8 @@ export namespace Gegl {
     }
 
     class AudioFragment extends GObject.Object {
+        static $gtype: GObject.GType<AudioFragment>;
+
         // Own properties of Gegl.AudioFragment
 
         get string(): string;
@@ -615,6 +617,8 @@ export namespace Gegl {
     }
 
     class Buffer extends TileHandler {
+        static $gtype: GObject.GType<Buffer>;
+
         // Own properties of Gegl.Buffer
 
         get abyss_height(): number;
@@ -837,6 +841,8 @@ export namespace Gegl {
     }
 
     class Color extends GObject.Object {
+        static $gtype: GObject.GType<Color>;
+
         // Own properties of Gegl.Color
 
         get string(): string;
@@ -909,6 +915,8 @@ export namespace Gegl {
     }
 
     class Config extends GObject.Object {
+        static $gtype: GObject.GType<Config>;
+
         // Own properties of Gegl.Config
 
         get application_license(): string;
@@ -960,6 +968,8 @@ export namespace Gegl {
     }
 
     class Curve extends GObject.Object {
+        static $gtype: GObject.GType<Curve>;
+
         // Constructors of Gegl.Curve
 
         constructor(properties?: Partial<Curve.ConstructorProps>, ...args: any[]);
@@ -1047,6 +1057,8 @@ export namespace Gegl {
     }
 
     class Node extends GObject.Object {
+        static $gtype: GObject.GType<Node>;
+
         // Own properties of Gegl.Node
 
         get dont_cache(): boolean;
@@ -1307,6 +1319,8 @@ export namespace Gegl {
     }
 
     class Operation extends GObject.Object {
+        static $gtype: GObject.GType<Operation>;
+
         // Constructors of Gegl.Operation
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
@@ -1339,6 +1353,8 @@ export namespace Gegl {
     }
 
     class Path extends GObject.Object {
+        static $gtype: GObject.GType<Path>;
+
         // Constructors of Gegl.Path
 
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
@@ -1500,6 +1516,8 @@ export namespace Gegl {
     }
 
     class Processor extends GObject.Object {
+        static $gtype: GObject.GType<Processor>;
+
         // Own properties of Gegl.Processor
 
         get chunksize(): number;
@@ -1566,6 +1584,8 @@ export namespace Gegl {
     }
 
     class Stats extends GObject.Object {
+        static $gtype: GObject.GType<Stats>;
+
         // Own properties of Gegl.Stats
 
         get swap_busy(): boolean;
@@ -1613,6 +1633,8 @@ export namespace Gegl {
     }
 
     class TileBackend extends TileSource {
+        static $gtype: GObject.GType<TileBackend>;
+
         // Own properties of Gegl.TileBackend
 
         get flush_on_destroy(): boolean;
@@ -1683,6 +1705,8 @@ export namespace Gegl {
     }
 
     class TileHandler extends TileSource {
+        static $gtype: GObject.GType<TileHandler>;
+
         // Own properties of Gegl.TileHandler
 
         get source(): GObject.Object;
@@ -1707,6 +1731,8 @@ export namespace Gegl {
     }
 
     class TileSource extends GObject.Object {
+        static $gtype: GObject.GType<TileSource>;
+
         // Own fields of Gegl.TileSource
 
         command: TileSourceCommand;
@@ -1721,12 +1747,16 @@ export namespace Gegl {
 
     type AudioFragmentClass = typeof AudioFragment;
     abstract class AudioFragmentPrivate {
+        static $gtype: GObject.GType<AudioFragmentPrivate>;
+
         // Constructors of Gegl.AudioFragmentPrivate
 
         _init(...args: any[]): void;
     }
 
     class BufferIterator {
+        static $gtype: GObject.GType<BufferIterator>;
+
         // Own fields of Gegl.BufferIterator
 
         length: number;
@@ -1739,6 +1769,8 @@ export namespace Gegl {
     }
 
     abstract class BufferIteratorPriv {
+        static $gtype: GObject.GType<BufferIteratorPriv>;
+
         // Constructors of Gegl.BufferIteratorPriv
 
         _init(...args: any[]): void;
@@ -1746,6 +1778,8 @@ export namespace Gegl {
 
     type ColorClass = typeof Color;
     abstract class ColorPrivate {
+        static $gtype: GObject.GType<ColorPrivate>;
+
         // Constructors of Gegl.ColorPrivate
 
         _init(...args: any[]): void;
@@ -1753,6 +1787,8 @@ export namespace Gegl {
 
     type CurveClass = typeof Curve;
     class Lookup {
+        static $gtype: GObject.GType<Lookup>;
+
         // Own fields of Gegl.Lookup
 
         'function': LookupFunction;
@@ -1771,6 +1807,8 @@ export namespace Gegl {
     }
 
     class Matrix2 {
+        static $gtype: GObject.GType<Matrix2>;
+
         // Own fields of Gegl.Matrix2
 
         coeff: number[];
@@ -1791,6 +1829,8 @@ export namespace Gegl {
     }
 
     class Matrix3 {
+        static $gtype: GObject.GType<Matrix3>;
+
         // Own fields of Gegl.Matrix3
 
         coeff: number[];
@@ -1895,12 +1935,16 @@ export namespace Gegl {
     }
 
     abstract class OperationContext {
+        static $gtype: GObject.GType<OperationContext>;
+
         // Constructors of Gegl.OperationContext
 
         _init(...args: any[]): void;
     }
 
     class ParamSpecDouble {
+        static $gtype: GObject.GType<ParamSpecDouble>;
+
         // Own fields of Gegl.ParamSpecDouble
 
         ui_minimum: number;
@@ -1921,6 +1965,8 @@ export namespace Gegl {
     }
 
     class ParamSpecEnum {
+        static $gtype: GObject.GType<ParamSpecEnum>;
+
         // Own fields of Gegl.ParamSpecEnum
 
         excluded_values: any[];
@@ -1935,6 +1981,8 @@ export namespace Gegl {
     }
 
     class ParamSpecFilePath {
+        static $gtype: GObject.GType<ParamSpecFilePath>;
+
         // Own fields of Gegl.ParamSpecFilePath
 
         no_validate: number;
@@ -1946,12 +1994,16 @@ export namespace Gegl {
     }
 
     class ParamSpecFormat {
+        static $gtype: GObject.GType<ParamSpecFormat>;
+
         // Constructors of Gegl.ParamSpecFormat
 
         _init(...args: any[]): void;
     }
 
     class ParamSpecInt {
+        static $gtype: GObject.GType<ParamSpecInt>;
+
         // Own fields of Gegl.ParamSpecInt
 
         ui_minimum: number;
@@ -1970,6 +2022,8 @@ export namespace Gegl {
     }
 
     class ParamSpecSeed {
+        static $gtype: GObject.GType<ParamSpecSeed>;
+
         // Own fields of Gegl.ParamSpecSeed
 
         ui_minimum: number;
@@ -1981,6 +2035,8 @@ export namespace Gegl {
     }
 
     class ParamSpecString {
+        static $gtype: GObject.GType<ParamSpecString>;
+
         // Own fields of Gegl.ParamSpecString
 
         no_validate: number;
@@ -1992,6 +2048,8 @@ export namespace Gegl {
     }
 
     class ParamSpecUri {
+        static $gtype: GObject.GType<ParamSpecUri>;
+
         // Own fields of Gegl.ParamSpecUri
 
         no_validate: number;
@@ -2004,6 +2062,8 @@ export namespace Gegl {
 
     type PathClass = typeof Path;
     class PathItem {
+        static $gtype: GObject.GType<PathItem>;
+
         // Own fields of Gegl.PathItem
 
         type: number;
@@ -2021,6 +2081,8 @@ export namespace Gegl {
     }
 
     class PathList {
+        static $gtype: GObject.GType<PathList>;
+
         // Own fields of Gegl.PathList
 
         next: any;
@@ -2038,6 +2100,8 @@ export namespace Gegl {
     }
 
     class PathPoint {
+        static $gtype: GObject.GType<PathPoint>;
+
         // Own fields of Gegl.PathPoint
 
         x: number;
@@ -2055,6 +2119,8 @@ export namespace Gegl {
     }
 
     class Random {
+        static $gtype: GObject.GType<Random>;
+
         // Constructors of Gegl.Random
 
         constructor(properties?: Partial<{}>);
@@ -2123,6 +2189,8 @@ export namespace Gegl {
     }
 
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Gegl.Rectangle
 
         x: number;
@@ -2248,6 +2316,8 @@ export namespace Gegl {
     }
 
     abstract class Sampler {
+        static $gtype: GObject.GType<Sampler>;
+
         // Constructors of Gegl.Sampler
 
         _init(...args: any[]): void;
@@ -2267,6 +2337,8 @@ export namespace Gegl {
     }
 
     abstract class Tile {
+        static $gtype: GObject.GType<Tile>;
+
         // Constructors of Gegl.Tile
 
         _init(...args: any[]): void;
@@ -2274,6 +2346,8 @@ export namespace Gegl {
 
     type TileBackendClass = typeof TileBackend;
     abstract class TileBackendPrivate {
+        static $gtype: GObject.GType<TileBackendPrivate>;
+
         // Constructors of Gegl.TileBackendPrivate
 
         _init(...args: any[]): void;
@@ -2281,6 +2355,8 @@ export namespace Gegl {
 
     type TileHandlerClass = typeof TileHandler;
     abstract class TileHandlerPrivate {
+        static $gtype: GObject.GType<TileHandlerPrivate>;
+
         // Constructors of Gegl.TileHandlerPrivate
 
         _init(...args: any[]): void;

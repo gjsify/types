@@ -573,6 +573,8 @@ export namespace GWeather {
      * moon phases.
      */
     class Info extends GObject.Object {
+        static $gtype: GObject.GType<Info>;
+
         // Own properties of GWeather.Info
 
         get application_id(): string;
@@ -774,6 +776,8 @@ export namespace GWeather {
         extends Gtk.SearchEntry
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
+        static $gtype: GObject.GType<LocationEntry>;
+
         // Own properties of GWeather.LocationEntry
 
         get location(): Location;
@@ -4729,6 +4733,8 @@ export namespace GWeather {
         extends Gtk.ComboBox
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
+        static $gtype: GObject.GType<TimezoneMenu>;
+
         // Own properties of GWeather.TimezoneMenu
 
         set top(val: Location);
@@ -8859,6 +8865,8 @@ export namespace GWeather {
      * gweather_info_get_symbolic_icon_name().
      */
     class Conditions {
+        static $gtype: GObject.GType<Conditions>;
+
         // Own fields of GWeather.Conditions
 
         significant: boolean;
@@ -8883,6 +8891,8 @@ export namespace GWeather {
      * hierarchy of locations works.
      */
     class Location {
+        static $gtype: GObject.GType<Location>;
+
         // Constructors of GWeather.Location
 
         constructor(name: string, icao: string | null, latitude: number, longitude: number);
@@ -9163,6 +9173,8 @@ export namespace GWeather {
 
     type LocationEntryClass = typeof LocationEntry;
     abstract class LocationEntryPrivate {
+        static $gtype: GObject.GType<LocationEntryPrivate>;
+
         // Constructors of GWeather.LocationEntryPrivate
 
         _init(...args: any[]): void;
@@ -9177,6 +9189,8 @@ export namespace GWeather {
      * or "Europe/London".
      */
     class Timezone {
+        static $gtype: GObject.GType<Timezone>;
+
         // Constructors of GWeather.Timezone
 
         _init(...args: any[]): void;

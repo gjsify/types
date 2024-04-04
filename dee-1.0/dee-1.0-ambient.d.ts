@@ -1,7 +1,7 @@
 
 declare module 'gi://Dee?version=1.0' {
-    import Dee10 from '@girs/dee-1.0';
-    export default Dee10;
+    import Dee from '@girs/dee-1.0';
+    export default Dee;
 }
 
 declare module 'gi://Dee' {

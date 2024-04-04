@@ -120,6 +120,8 @@ export namespace Snapd {
      * Error codes returned by snapd operations.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Snapd.Error
 
         /**
@@ -339,6 +341,8 @@ export namespace Snapd {
      * Version of markdown to parse. Picking a version will ensure only nodes of the expected type are decoded.
      */
     class MarkdownVersion {
+        static $gtype: GObject.GType<MarkdownVersion>;
+
         // Static fields of Snapd.MarkdownVersion
 
         /**
@@ -666,6 +670,8 @@ export namespace Snapd {
      * Aliases are used to provide alternative binary names for Snap apps.
      */
     class Alias extends GObject.Object {
+        static $gtype: GObject.GType<Alias>;
+
         // Own properties of Snapd.Alias
 
         get app_auto(): string;
@@ -748,6 +754,8 @@ export namespace Snapd {
      * Snaps can contain apps which is a single binary executable.
      */
     class App extends GObject.Object {
+        static $gtype: GObject.GType<App>;
+
         // Own properties of Snapd.App
 
         get active(): boolean;
@@ -827,6 +835,8 @@ export namespace Snapd {
      * trust and control features.
      */
     class Assertion extends GObject.Object {
+        static $gtype: GObject.GType<Assertion>;
+
         // Own properties of Snapd.Assertion
 
         get content(): string;
@@ -879,6 +889,8 @@ export namespace Snapd {
      * The authorization data is in the form of a [Macaroon](https://research.google.com/pubs/pub41892.html).
      */
     class AuthData extends GObject.Object {
+        static $gtype: GObject.GType<AuthData>;
+
         // Own properties of Snapd.AuthData
 
         get discharges(): string[];
@@ -930,6 +942,8 @@ export namespace Snapd {
      * #SnapdChange contains information on a current Snap transaction.
      */
     class Change extends GObject.Object {
+        static $gtype: GObject.GType<Change>;
+
         // Own properties of Snapd.Change
 
         get error(): string;
@@ -1019,6 +1033,8 @@ export namespace Snapd {
      * using the provided functions.
      */
     class Channel extends GObject.Object {
+        static $gtype: GObject.GType<Channel>;
+
         // Own properties of Snapd.Channel
 
         get confinement(): Confinement;
@@ -1114,6 +1130,8 @@ export namespace Snapd {
      * #SnapdClient contains connection state with snapd.
      */
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Constructors of Snapd.Client
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
@@ -2895,6 +2913,8 @@ export namespace Snapd {
      * #SnapdConnection contains the state of Snap a interface connection.
      */
     class Connection extends GObject.Object {
+        static $gtype: GObject.GType<Connection>;
+
         // Own properties of Snapd.Connection
 
         get gadget(): boolean;
@@ -3002,6 +3022,8 @@ export namespace Snapd {
      * #SnapdIcon contains icon data.
      */
     class Icon extends GObject.Object {
+        static $gtype: GObject.GType<Icon>;
+
         // Own properties of Snapd.Icon
 
         get data(): GLib.Bytes;
@@ -3046,6 +3068,8 @@ export namespace Snapd {
      * #SnapdInterface contains information about a Snap interface.
      */
     class Interface extends GObject.Object {
+        static $gtype: GObject.GType<Interface>;
+
         // Own properties of Snapd.Interface
 
         get doc_url(): string;
@@ -3108,6 +3132,8 @@ export namespace Snapd {
      * #SnapdMaintenance contains maintenance information.
      */
     class Maintenance extends GObject.Object {
+        static $gtype: GObject.GType<Maintenance>;
+
         // Own properties of Snapd.Maintenance
 
         get kind(): MaintenanceKind;
@@ -3149,6 +3175,8 @@ export namespace Snapd {
      * using the provided functions.
      */
     class MarkdownNode extends GObject.Object {
+        static $gtype: GObject.GType<MarkdownNode>;
+
         // Own properties of Snapd.MarkdownNode
 
         get children(): any[];
@@ -3193,6 +3221,8 @@ export namespace Snapd {
      * using the provided functions.
      */
     class MarkdownParser extends GObject.Object {
+        static $gtype: GObject.GType<MarkdownParser>;
+
         // Constructors of Snapd.MarkdownParser
 
         constructor(properties?: Partial<MarkdownParser.ConstructorProps>, ...args: any[]);
@@ -3239,6 +3269,8 @@ export namespace Snapd {
      * #SnapdMedia contains media information.
      */
     class Media extends GObject.Object {
+        static $gtype: GObject.GType<Media>;
+
         // Own properties of Snapd.Media
 
         get height(): number;
@@ -3293,6 +3325,8 @@ export namespace Snapd {
      * #SnapdPlug contains information about a Snap plug.
      */
     class Plug extends GObject.Object {
+        static $gtype: GObject.GType<Plug>;
+
         // Own properties of Snapd.Plug
 
         get attributes(): GLib.HashTable<any, any>;
@@ -3372,6 +3406,8 @@ export namespace Snapd {
      * #SnapdPlugRef contains the state of Snap a interface plug_ref.
      */
     class PlugRef extends GObject.Object {
+        static $gtype: GObject.GType<PlugRef>;
+
         // Own properties of Snapd.PlugRef
 
         get plug(): string;
@@ -3410,6 +3446,8 @@ export namespace Snapd {
      * #SnapdPrice contains pricing information.
      */
     class Price extends GObject.Object {
+        static $gtype: GObject.GType<Price>;
+
         // Own properties of Snapd.Price
 
         get amount(): number;
@@ -3449,6 +3487,8 @@ export namespace Snapd {
      * #SnapdScreenshot contains screenshot information.
      */
     class Screenshot extends GObject.Object {
+        static $gtype: GObject.GType<Screenshot>;
+
         // Own properties of Snapd.Screenshot
 
         get height(): number;
@@ -3497,6 +3537,8 @@ export namespace Snapd {
      * #SnapdSlot contains information about a Snap slot.
      */
     class Slot extends GObject.Object {
+        static $gtype: GObject.GType<Slot>;
+
         // Own properties of Snapd.Slot
 
         get attributes(): GLib.HashTable<any, any>;
@@ -3576,6 +3618,8 @@ export namespace Snapd {
      * #SnapdSlotRef contains the state of Snap a interface slot_ref.
      */
     class SlotRef extends GObject.Object {
+        static $gtype: GObject.GType<SlotRef>;
+
         // Own properties of Snapd.SlotRef
 
         get slot(): string;
@@ -3661,6 +3705,8 @@ export namespace Snapd {
      * #SnapdSnap contains Snap metadata.
      */
     class Snap extends GObject.Object {
+        static $gtype: GObject.GType<Snap>;
+
         // Own properties of Snapd.Snap
 
         get apps(): any[];
@@ -3969,6 +4015,8 @@ export namespace Snapd {
      * #SnapdSystemInformation contains information about the system snapd is running on.
      */
     class SystemInformation extends GObject.Object {
+        static $gtype: GObject.GType<SystemInformation>;
+
         // Own properties of Snapd.SystemInformation
 
         get binaries_directory(): string;
@@ -4131,6 +4179,8 @@ export namespace Snapd {
      * #SnapdTask contains progress information for a task in a Snap transaction.
      */
     class Task extends GObject.Object {
+        static $gtype: GObject.GType<Task>;
+
         // Own properties of Snapd.Task
 
         get id(): string;
@@ -4228,6 +4278,8 @@ export namespace Snapd {
      * snapd is running on.
      */
     class UserInformation extends GObject.Object {
+        static $gtype: GObject.GType<UserInformation>;
+
         // Own properties of Snapd.UserInformation
 
         get auth_data(): AuthData;

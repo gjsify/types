@@ -2168,6 +2168,8 @@ export namespace Cogl {
         NO_ATLAS,
     }
     class Bitmap {
+        static $gtype: GObject.GType<Bitmap>;
+
         // Constructors of Cogl.Bitmap
 
         _init(...args: any[]): void;
@@ -2188,6 +2190,8 @@ export namespace Cogl {
      * Fixed point number using a (16.16) notation.
      */
     class Fixed {
+        static $gtype: GObject.GType<Fixed>;
+
         // Constructors of Cogl.Fixed
 
         _init(...args: any[]): void;
@@ -2214,6 +2218,8 @@ export namespace Cogl {
     }
 
     class Offscreen {
+        static $gtype: GObject.GType<Offscreen>;
+
         // Constructors of Cogl.Offscreen
 
         _init(...args: any[]): void;
@@ -2243,6 +2249,8 @@ export namespace Cogl {
      * directly.
      */
     class Color {
+        static $gtype: GObject.GType<Color>;
+
         // Constructors of Cogl.Color
 
         constructor(properties?: Partial<{}>);
@@ -2472,12 +2480,16 @@ export namespace Cogl {
     }
 
     abstract class Euler {
+        static $gtype: GObject.GType<Euler>;
+
         // Constructors of Cogl.Euler
 
         _init(...args: any[]): void;
     }
 
     abstract class Material {
+        static $gtype: GObject.GType<Material>;
+
         // Constructors of Cogl.Material
 
         _init(...args: any[]): void;
@@ -2994,6 +3006,8 @@ export namespace Cogl {
     }
 
     abstract class MaterialLayer {
+        static $gtype: GObject.GType<MaterialLayer>;
+
         // Constructors of Cogl.MaterialLayer
 
         _init(...args: any[]): void;
@@ -3078,6 +3092,8 @@ export namespace Cogl {
      * than the identity matrix you can use cogl_matrix_init_from_array().</note>
      */
     class Matrix {
+        static $gtype: GObject.GType<Matrix>;
+
         // Own fields of Cogl.Matrix
 
         xx: number;
@@ -3335,6 +3351,8 @@ export namespace Cogl {
     }
 
     abstract class Quaternion {
+        static $gtype: GObject.GType<Quaternion>;
+
         // Constructors of Cogl.Quaternion
 
         _init(...args: any[]): void;
@@ -3344,6 +3362,8 @@ export namespace Cogl {
      * Used to specify vertex information when calling cogl_polygon()
      */
     class TextureVertex {
+        static $gtype: GObject.GType<TextureVertex>;
+
         // Own fields of Cogl.TextureVertex
 
         x: number;
@@ -3358,6 +3378,8 @@ export namespace Cogl {
     }
 
     abstract class _ColorSizeCheck {
+        static $gtype: GObject.GType<_ColorSizeCheck>;
+
         // Own fields of Cogl._ColorSizeCheck
 
         compile_time_assert_CoglColor_size: number[];
@@ -3373,6 +3395,8 @@ export namespace Cogl {
     }
 
     abstract class _MatrixSizeCheck {
+        static $gtype: GObject.GType<_MatrixSizeCheck>;
+
         // Own fields of Cogl._MatrixSizeCheck
 
         compile_time_assert_CoglMatrix_size: number[];
@@ -3388,6 +3412,8 @@ export namespace Cogl {
     }
 
     abstract class _TextureVertexSizeCheck {
+        static $gtype: GObject.GType<_TextureVertexSizeCheck>;
+
         // Own fields of Cogl._TextureVertexSizeCheck
 
         compile_time_assert_CoglTextureVertex_size: number[];

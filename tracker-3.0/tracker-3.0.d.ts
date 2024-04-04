@@ -82,6 +82,8 @@ export namespace Tracker {
      * domains.
      */
     class SparqlError extends GLib.Error {
+        static $gtype: GObject.GType<SparqlError>;
+
         // Static fields of Tracker.SparqlError
 
         /**
@@ -384,6 +386,8 @@ export namespace Tracker {
      * a batch will resolve to the same resource.
      */
     abstract class Batch extends GObject.Object {
+        static $gtype: GObject.GType<Batch>;
+
         // Own properties of Tracker.Batch
 
         /**
@@ -515,6 +519,8 @@ export namespace Tracker {
      * syntax from their own [class`Tracker`.SparqlConnection]s to expand their data set.
      */
     abstract class Endpoint extends GObject.Object {
+        static $gtype: GObject.GType<Endpoint>;
+
         // Own properties of Tracker.Endpoint
 
         /**
@@ -590,6 +596,8 @@ export namespace Tracker {
      * context from the one that created [class`Tracker`.SparqlConnection].
      */
     class EndpointDBus extends Endpoint implements Gio.Initable {
+        static $gtype: GObject.GType<EndpointDBus>;
+
         // Own properties of Tracker.EndpointDBus
 
         /**
@@ -1123,6 +1131,8 @@ export namespace Tracker {
      * context from the one that created [class`Tracker`.SparqlConnection].
      */
     class EndpointHttp extends Endpoint implements Gio.Initable {
+        static $gtype: GObject.GType<EndpointHttp>;
+
         // Own properties of Tracker.EndpointHttp
 
         /**
@@ -1632,6 +1642,8 @@ export namespace Tracker {
      * contain all prefixes and namespaces that are pre-defined by its ontology.
      */
     class NamespaceManager extends GObject.Object {
+        static $gtype: GObject.GType<NamespaceManager>;
+
         // Constructors of Tracker.NamespaceManager
 
         constructor(properties?: Partial<NamespaceManager.ConstructorProps>, ...args: any[]);
@@ -1757,6 +1769,8 @@ export namespace Tracker {
      * main context of the thread where the `TrackerNotifier` instance was created.
      */
     class Notifier extends GObject.Object {
+        static $gtype: GObject.GType<Notifier>;
+
         // Own properties of Tracker.Notifier
 
         /**
@@ -1861,6 +1875,8 @@ export namespace Tracker {
      * or [method`Tracker`.SparqlConnection.update_resource].
      */
     class Resource extends GObject.Object {
+        static $gtype: GObject.GType<Resource>;
+
         // Own properties of Tracker.Resource
 
         /**
@@ -2343,6 +2359,8 @@ export namespace Tracker {
      * the [func`Tracker`.sparql_escape_uri] family of functions for URIs.
      */
     abstract class SparqlConnection extends GObject.Object {
+        static $gtype: GObject.GType<SparqlConnection>;
+
         // Constructors of Tracker.SparqlConnection
 
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
@@ -2828,6 +2846,8 @@ export namespace Tracker {
      * at any given time.
      */
     abstract class SparqlCursor extends GObject.Object {
+        static $gtype: GObject.GType<SparqlCursor>;
+
         // Own properties of Tracker.SparqlCursor
 
         /**
@@ -3027,6 +3047,8 @@ export namespace Tracker {
      * from the SPARQL source. This will happen transparently.
      */
     abstract class SparqlStatement extends GObject.Object {
+        static $gtype: GObject.GType<SparqlStatement>;
+
         // Own properties of Tracker.SparqlStatement
 
         /**
@@ -3207,6 +3229,8 @@ export namespace Tracker {
      * change event in the stored data.
      */
     abstract class NotifierEvent {
+        static $gtype: GObject.GType<NotifierEvent>;
+
         // Constructors of Tracker.NotifierEvent
 
         _init(...args: any[]): void;

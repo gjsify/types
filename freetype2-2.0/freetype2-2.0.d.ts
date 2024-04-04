@@ -15,18 +15,24 @@ import type GObject from '@girs/gobject-2.0';
 
 export namespace freetype2 {
     class Bitmap {
+        static $gtype: GObject.GType<Bitmap>;
+
         // Constructors of freetype2.Bitmap
 
         _init(...args: any[]): void;
     }
 
     class Face {
+        static $gtype: GObject.GType<Face>;
+
         // Constructors of freetype2.Face
 
         _init(...args: any[]): void;
     }
 
     class Library {
+        static $gtype: GObject.GType<Library>;
+
         // Constructors of freetype2.Library
 
         _init(...args: any[]): void;

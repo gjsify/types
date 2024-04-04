@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./malcontent-0.d.ts"],
+    "readme": "./README.md",
+    "name": "Malcontent-0",
+    "tsconfig": "./tsconfig.json"
+}
+

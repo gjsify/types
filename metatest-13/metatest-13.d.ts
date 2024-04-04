@@ -7,6 +7,8 @@
 
 import './metatest-13-ambient.d.ts';
 
+import './metatest-13-import.d.ts';
+
 /**
  * MetaTest-13
  */
@@ -68,6 +70,8 @@ export namespace MetaTest {
     }
 
     class ContextTest extends Meta.Context {
+        static $gtype: GObject.GType<ContextTest>;
+
         // Constructors of MetaTest.ContextTest
 
         constructor(properties?: Partial<ContextTest.ConstructorProps>, ...args: any[]);
@@ -102,6 +106,8 @@ export namespace MetaTest {
     }
 
     class TestMonitor extends GObject.Object {
+        static $gtype: GObject.GType<TestMonitor>;
+
         // Constructors of MetaTest.TestMonitor
 
         constructor(properties?: Partial<TestMonitor.ConstructorProps>, ...args: any[]);

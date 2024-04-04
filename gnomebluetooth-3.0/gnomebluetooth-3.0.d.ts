@@ -226,6 +226,8 @@ export namespace GnomeBluetooth {
     }
 
     class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of GnomeBluetooth.Client
 
         /**
@@ -384,6 +386,8 @@ export namespace GnomeBluetooth {
     }
 
     class Device extends GObject.Object {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of GnomeBluetooth.Device
 
         get address(): string;

@@ -85,6 +85,8 @@ export namespace Geoclue {
         extends Gio.DBusProxy
         implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<ClientProxy>;
+
         // Constructors of Geoclue.ClientProxy
 
         constructor(properties?: Partial<ClientProxy.ConstructorProps>, ...args: any[]);
@@ -1003,6 +1005,8 @@ export namespace Geoclue {
      * The #GClueClientSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ClientSkeleton extends Gio.DBusInterfaceSkeleton implements Client, Gio.DBusInterface {
+        static $gtype: GObject.GType<ClientSkeleton>;
+
         // Constructors of Geoclue.ClientSkeleton
 
         constructor(properties?: Partial<ClientSkeleton.ConstructorProps>, ...args: any[]);
@@ -1563,6 +1567,8 @@ export namespace Geoclue {
         extends Gio.DBusProxy
         implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<LocationProxy>;
+
         // Constructors of Geoclue.LocationProxy
 
         constructor(properties?: Partial<LocationProxy.ConstructorProps>, ...args: any[]);
@@ -2307,6 +2313,8 @@ export namespace Geoclue {
      * The #GClueLocationSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class LocationSkeleton extends Gio.DBusInterfaceSkeleton implements Location, Gio.DBusInterface {
+        static $gtype: GObject.GType<LocationSkeleton>;
+
         // Constructors of Geoclue.LocationSkeleton
 
         constructor(properties?: Partial<LocationSkeleton.ConstructorProps>, ...args: any[]);
@@ -2782,6 +2790,8 @@ export namespace Geoclue {
         extends Gio.DBusProxy
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
+        static $gtype: GObject.GType<ManagerProxy>;
+
         // Constructors of Geoclue.ManagerProxy
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
@@ -3640,6 +3650,8 @@ export namespace Geoclue {
      * The #GClueManagerSkeleton structure contains only private data and should only be accessed using the provided API.
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
+        static $gtype: GObject.GType<ManagerSkeleton>;
+
         // Constructors of Geoclue.ManagerSkeleton
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
@@ -4229,6 +4241,8 @@ export namespace Geoclue {
     }
 
     class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> {
+        static $gtype: GObject.GType<Simple>;
+
         // Own properties of Geoclue.Simple
 
         /**
@@ -4843,6 +4857,8 @@ export namespace Geoclue {
     type ClientIface = typeof Client;
     type ClientProxyClass = typeof ClientProxy;
     abstract class ClientProxyPrivate {
+        static $gtype: GObject.GType<ClientProxyPrivate>;
+
         // Constructors of Geoclue.ClientProxyPrivate
 
         _init(...args: any[]): void;
@@ -4850,6 +4866,8 @@ export namespace Geoclue {
 
     type ClientSkeletonClass = typeof ClientSkeleton;
     abstract class ClientSkeletonPrivate {
+        static $gtype: GObject.GType<ClientSkeletonPrivate>;
+
         // Constructors of Geoclue.ClientSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4858,6 +4876,8 @@ export namespace Geoclue {
     type LocationIface = typeof Location;
     type LocationProxyClass = typeof LocationProxy;
     abstract class LocationProxyPrivate {
+        static $gtype: GObject.GType<LocationProxyPrivate>;
+
         // Constructors of Geoclue.LocationProxyPrivate
 
         _init(...args: any[]): void;
@@ -4865,6 +4885,8 @@ export namespace Geoclue {
 
     type LocationSkeletonClass = typeof LocationSkeleton;
     abstract class LocationSkeletonPrivate {
+        static $gtype: GObject.GType<LocationSkeletonPrivate>;
+
         // Constructors of Geoclue.LocationSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4873,6 +4895,8 @@ export namespace Geoclue {
     type ManagerIface = typeof Manager;
     type ManagerProxyClass = typeof ManagerProxy;
     abstract class ManagerProxyPrivate {
+        static $gtype: GObject.GType<ManagerProxyPrivate>;
+
         // Constructors of Geoclue.ManagerProxyPrivate
 
         _init(...args: any[]): void;
@@ -4880,6 +4904,8 @@ export namespace Geoclue {
 
     type ManagerSkeletonClass = typeof ManagerSkeleton;
     abstract class ManagerSkeletonPrivate {
+        static $gtype: GObject.GType<ManagerSkeletonPrivate>;
+
         // Constructors of Geoclue.ManagerSkeletonPrivate
 
         _init(...args: any[]): void;
@@ -4887,6 +4913,8 @@ export namespace Geoclue {
 
     type SimpleClass = typeof Simple;
     abstract class SimplePrivate {
+        static $gtype: GObject.GType<SimplePrivate>;
+
         // Constructors of Geoclue.SimplePrivate
 
         _init(...args: any[]): void;

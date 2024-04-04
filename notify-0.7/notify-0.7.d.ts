@@ -168,6 +168,8 @@ export namespace Notify {
      * and this API enforces that.
      */
     class Notification extends GObject.Object {
+        static $gtype: GObject.GType<Notification>;
+
         // Own properties of Notify.Notification
 
         /**
@@ -393,6 +395,8 @@ export namespace Notify {
 
     type NotificationClass = typeof Notification;
     abstract class NotificationPrivate {
+        static $gtype: GObject.GType<NotificationPrivate>;
+
         // Constructors of Notify.NotificationPrivate
 
         _init(...args: any[]): void;

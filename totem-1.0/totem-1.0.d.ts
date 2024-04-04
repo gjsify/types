@@ -332,6 +332,8 @@ export namespace Totem {
      * All the fields in the #TotemObject structure are private and should never be accessed directly.
      */
     class Object extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
+        static $gtype: GObject.GType<Object>;
+
         // Own properties of Totem.Object
 
         /**

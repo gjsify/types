@@ -50,6 +50,8 @@ export namespace Gdaui {
         ENTRIES,
     }
     class DataEntryError extends GLib.Error {
+        static $gtype: GObject.GType<DataEntryError>;
+
         // Static fields of Gdaui.DataEntryError
 
         static FILE_NOT_FOUND_ERROR: number;
@@ -189,6 +191,8 @@ export namespace Gdaui {
     }
 
     class BasicForm extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<BasicForm>;
+
         // Own properties of Gdaui.BasicForm
 
         get can_expand_v(): boolean;
@@ -776,6 +780,8 @@ export namespace Gdaui {
     }
 
     class Cloud extends Gtk.Box implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Cloud>;
+
         // Own properties of Gdaui.Cloud
 
         get label_column(): number;
@@ -1353,6 +1359,8 @@ export namespace Gdaui {
         extends Gtk.ComboBox
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
+        static $gtype: GObject.GType<Combo>;
+
         // Own properties of Gdaui.Combo
 
         get as_list(): boolean;
@@ -5613,6 +5621,8 @@ export namespace Gdaui {
     }
 
     class DataCellRendererBin extends Gtk.CellRendererPixbuf {
+        static $gtype: GObject.GType<DataCellRendererBin>;
+
         // Own properties of Gdaui.DataCellRendererBin
 
         set data_handler(val: Gda.DataHandler);
@@ -5671,6 +5681,8 @@ export namespace Gdaui {
     }
 
     class DataCellRendererBoolean extends Gtk.CellRendererToggle {
+        static $gtype: GObject.GType<DataCellRendererBoolean>;
+
         // Own properties of Gdaui.DataCellRendererBoolean
 
         set data_handler(val: Gda.DataHandler);
@@ -5735,6 +5747,8 @@ export namespace Gdaui {
     }
 
     class DataCellRendererCombo extends Gtk.CellRendererText {
+        static $gtype: GObject.GType<DataCellRendererCombo>;
+
         // Own properties of Gdaui.DataCellRendererCombo
 
         set data_set(val: Set);
@@ -5800,6 +5814,8 @@ export namespace Gdaui {
     }
 
     class DataCellRendererInfo extends Gtk.CellRenderer {
+        static $gtype: GObject.GType<DataCellRendererInfo>;
+
         // Own properties of Gdaui.DataCellRendererInfo
 
         get editable(): boolean;
@@ -5853,6 +5869,8 @@ export namespace Gdaui {
     }
 
     class DataCellRendererTextual extends Gtk.CellRendererText {
+        static $gtype: GObject.GType<DataCellRendererTextual>;
+
         // Own properties of Gdaui.DataCellRendererTextual
 
         set data_handler(val: Gda.DataHandler);
@@ -5902,6 +5920,8 @@ export namespace Gdaui {
     }
 
     class DataFilter extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<DataFilter>;
+
         // Own properties of Gdaui.DataFilter
 
         get data_widget(): DataProxy;
@@ -6314,6 +6334,8 @@ export namespace Gdaui {
     }
 
     class DataProxyInfo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<DataProxyInfo>;
+
         // Own properties of Gdaui.DataProxyInfo
 
         get data_proxy(): DataProxy;
@@ -6732,6 +6754,8 @@ export namespace Gdaui {
     }
 
     class DataStore extends GObject.Object implements Gtk.TreeModel {
+        static $gtype: GObject.GType<DataStore>;
+
         // Own properties of Gdaui.DataStore
 
         get model(): any;
@@ -7576,6 +7600,8 @@ export namespace Gdaui {
     }
 
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
+        static $gtype: GObject.GType<Entry>;
+
         // Own properties of Gdaui.Entry
 
         get prefix(): string;
@@ -11824,6 +11850,8 @@ export namespace Gdaui {
     }
 
     class EntryBin extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryBin>;
+
         // Own fields of Gdaui.EntryBin
 
         object: EntryWrapper;
@@ -15903,6 +15931,8 @@ export namespace Gdaui {
     }
 
     class EntryBoolean extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryBoolean>;
+
         // Own fields of Gdaui.EntryBoolean
 
         object: EntryWrapper;
@@ -19985,6 +20015,8 @@ export namespace Gdaui {
     }
 
     class EntryCombo extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryCombo>;
+
         // Own properties of Gdaui.EntryCombo
 
         get set_default_if_invalid(): boolean;
@@ -24128,6 +24160,8 @@ export namespace Gdaui {
         extends EntryWrapper
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryCommonTime>;
+
         // Own properties of Gdaui.EntryCommonTime
 
         get editing_canceled(): boolean;
@@ -28259,6 +28293,8 @@ export namespace Gdaui {
         extends EntryCommonTime
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryDate>;
+
         // Own fields of Gdaui.EntryDate
 
         object: EntryCommonTime;
@@ -32223,6 +32259,8 @@ export namespace Gdaui {
     }
 
     class EntryNone extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryNone>;
+
         // Own fields of Gdaui.EntryNone
 
         object: EntryWrapper;
@@ -36310,6 +36348,8 @@ export namespace Gdaui {
         extends EntryWrapper
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryNumber>;
+
         // Own properties of Gdaui.EntryNumber
 
         get editing_canceled(): boolean;
@@ -40449,6 +40489,8 @@ export namespace Gdaui {
     }
 
     class EntryShell extends Gtk.Viewport implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryShell>;
+
         // Own properties of Gdaui.EntryShell
 
         get actions(): boolean;
@@ -40974,6 +41016,8 @@ export namespace Gdaui {
         extends EntryWrapper
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryString>;
+
         // Own properties of Gdaui.EntryString
 
         get editing_canceled(): boolean;
@@ -45111,6 +45155,8 @@ export namespace Gdaui {
         extends EntryCommonTime
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryTime>;
+
         // Own fields of Gdaui.EntryTime
 
         object: EntryCommonTime;
@@ -49079,6 +49125,8 @@ export namespace Gdaui {
         extends EntryCommonTime
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<EntryTimestamp>;
+
         // Own fields of Gdaui.EntryTimestamp
 
         object: EntryCommonTime;
@@ -53046,6 +53094,8 @@ export namespace Gdaui {
     }
 
     class EntryWrapper extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
+        static $gtype: GObject.GType<EntryWrapper>;
+
         // Own properties of Gdaui.EntryWrapper
 
         get set_default_if_invalid(): boolean;
@@ -57141,6 +57191,8 @@ export namespace Gdaui {
     }
 
     class Form extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Form>;
+
         // Own properties of Gdaui.Form
 
         get info(): DataProxyInfo;
@@ -57754,6 +57806,8 @@ export namespace Gdaui {
     }
 
     class FormattedEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
+        static $gtype: GObject.GType<FormattedEntry>;
+
         // Own properties of Gdaui.FormattedEntry
 
         get format(): string;
@@ -61692,6 +61746,8 @@ export namespace Gdaui {
     }
 
     class Grid extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Grid>;
+
         // Own properties of Gdaui.Grid
 
         get info(): DataProxyInfo;
@@ -62320,6 +62376,8 @@ export namespace Gdaui {
     }
 
     class Login extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Login>;
+
         // Own properties of Gdaui.Login
 
         get dsn(): string;
@@ -62782,6 +62840,8 @@ export namespace Gdaui {
     }
 
     class NumericEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
+        static $gtype: GObject.GType<NumericEntry>;
+
         // Own properties of Gdaui.NumericEntry
 
         get decimal_sep(): number;
@@ -66716,6 +66776,8 @@ export namespace Gdaui {
         extends Combo
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
+        static $gtype: GObject.GType<ProviderSelector>;
+
         // Constructors of Gdaui.ProviderSelector
 
         constructor(properties?: Partial<ProviderSelector.ConstructorProps>, ...args: any[]);
@@ -70758,6 +70820,8 @@ export namespace Gdaui {
         extends BasicForm
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable
     {
+        static $gtype: GObject.GType<RawForm>;
+
         // Own properties of Gdaui.RawForm
 
         get model(): Gda.DataModel;
@@ -71371,6 +71435,8 @@ export namespace Gdaui {
         extends Gtk.TreeView
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Scrollable
     {
+        static $gtype: GObject.GType<RawGrid>;
+
         // Own properties of Gdaui.RawGrid
 
         get global_actions_visible(): boolean;
@@ -72135,6 +72201,8 @@ export namespace Gdaui {
     }
 
     class RtEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<RtEditor>;
+
         // Own properties of Gdaui.RtEditor
 
         /**
@@ -72614,6 +72682,8 @@ export namespace Gdaui {
     }
 
     class ServerOperation extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<ServerOperation>;
+
         // Own properties of Gdaui.ServerOperation
 
         get hide_single_header(): boolean;
@@ -73038,6 +73108,8 @@ export namespace Gdaui {
     }
 
     class Set extends GObject.Object {
+        static $gtype: GObject.GType<Set>;
+
         // Own properties of Gdaui.Set
 
         // This accessor conflicts with a property or field in a parent class or interface.
@@ -73112,6 +73184,8 @@ export namespace Gdaui {
     }
 
     class TreeStore extends GObject.Object implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel {
+        static $gtype: GObject.GType<TreeStore>;
+
         // Own properties of Gdaui.TreeStore
 
         get tree(): Gda.Tree;
@@ -74047,6 +74121,8 @@ export namespace Gdaui {
 
     type BasicFormClass = typeof BasicForm;
     abstract class BasicFormPriv {
+        static $gtype: GObject.GType<BasicFormPriv>;
+
         // Constructors of Gdaui.BasicFormPriv
 
         _init(...args: any[]): void;
@@ -74054,6 +74130,8 @@ export namespace Gdaui {
 
     type CloudClass = typeof Cloud;
     abstract class CloudPriv {
+        static $gtype: GObject.GType<CloudPriv>;
+
         // Constructors of Gdaui.CloudPriv
 
         _init(...args: any[]): void;
@@ -74061,6 +74139,8 @@ export namespace Gdaui {
 
     type ComboClass = typeof Combo;
     abstract class ComboPrivate {
+        static $gtype: GObject.GType<ComboPrivate>;
+
         // Constructors of Gdaui.ComboPrivate
 
         _init(...args: any[]): void;
@@ -74068,6 +74148,8 @@ export namespace Gdaui {
 
     type DataCellRendererBinClass = typeof DataCellRendererBin;
     abstract class DataCellRendererBinPrivate {
+        static $gtype: GObject.GType<DataCellRendererBinPrivate>;
+
         // Constructors of Gdaui.DataCellRendererBinPrivate
 
         _init(...args: any[]): void;
@@ -74075,6 +74157,8 @@ export namespace Gdaui {
 
     type DataCellRendererBooleanClass = typeof DataCellRendererBoolean;
     abstract class DataCellRendererBooleanPrivate {
+        static $gtype: GObject.GType<DataCellRendererBooleanPrivate>;
+
         // Constructors of Gdaui.DataCellRendererBooleanPrivate
 
         _init(...args: any[]): void;
@@ -74082,6 +74166,8 @@ export namespace Gdaui {
 
     type DataCellRendererComboClass = typeof DataCellRendererCombo;
     abstract class DataCellRendererComboPrivate {
+        static $gtype: GObject.GType<DataCellRendererComboPrivate>;
+
         // Constructors of Gdaui.DataCellRendererComboPrivate
 
         _init(...args: any[]): void;
@@ -74089,6 +74175,8 @@ export namespace Gdaui {
 
     type DataCellRendererInfoClass = typeof DataCellRendererInfo;
     abstract class DataCellRendererInfoPriv {
+        static $gtype: GObject.GType<DataCellRendererInfoPriv>;
+
         // Constructors of Gdaui.DataCellRendererInfoPriv
 
         _init(...args: any[]): void;
@@ -74096,6 +74184,8 @@ export namespace Gdaui {
 
     type DataCellRendererTextualClass = typeof DataCellRendererTextual;
     abstract class DataCellRendererTextualPrivate {
+        static $gtype: GObject.GType<DataCellRendererTextualPrivate>;
+
         // Constructors of Gdaui.DataCellRendererTextualPrivate
 
         _init(...args: any[]): void;
@@ -74104,6 +74194,8 @@ export namespace Gdaui {
     type DataEntryIface = typeof DataEntry;
     type DataFilterClass = typeof DataFilter;
     abstract class DataFilterPriv {
+        static $gtype: GObject.GType<DataFilterPriv>;
+
         // Constructors of Gdaui.DataFilterPriv
 
         _init(...args: any[]): void;
@@ -74112,6 +74204,8 @@ export namespace Gdaui {
     type DataProxyIface = typeof DataProxy;
     type DataProxyInfoClass = typeof DataProxyInfo;
     abstract class DataProxyInfoPriv {
+        static $gtype: GObject.GType<DataProxyInfoPriv>;
+
         // Constructors of Gdaui.DataProxyInfoPriv
 
         _init(...args: any[]): void;
@@ -74120,6 +74214,8 @@ export namespace Gdaui {
     type DataSelectorIface = typeof DataSelector;
     type DataStoreClass = typeof DataStore;
     abstract class DataStorePriv {
+        static $gtype: GObject.GType<DataStorePriv>;
+
         // Constructors of Gdaui.DataStorePriv
 
         _init(...args: any[]): void;
@@ -74127,6 +74223,8 @@ export namespace Gdaui {
 
     type EntryBinClass = typeof EntryBin;
     abstract class EntryBinPrivate {
+        static $gtype: GObject.GType<EntryBinPrivate>;
+
         // Constructors of Gdaui.EntryBinPrivate
 
         _init(...args: any[]): void;
@@ -74134,6 +74232,8 @@ export namespace Gdaui {
 
     type EntryBooleanClass = typeof EntryBoolean;
     abstract class EntryBooleanPrivate {
+        static $gtype: GObject.GType<EntryBooleanPrivate>;
+
         // Constructors of Gdaui.EntryBooleanPrivate
 
         _init(...args: any[]): void;
@@ -74142,6 +74242,8 @@ export namespace Gdaui {
     type EntryClass = typeof Entry;
     type EntryComboClass = typeof EntryCombo;
     abstract class EntryComboPriv {
+        static $gtype: GObject.GType<EntryComboPriv>;
+
         // Constructors of Gdaui.EntryComboPriv
 
         _init(...args: any[]): void;
@@ -74149,6 +74251,8 @@ export namespace Gdaui {
 
     type EntryCommonTimeClass = typeof EntryCommonTime;
     abstract class EntryCommonTimePrivate {
+        static $gtype: GObject.GType<EntryCommonTimePrivate>;
+
         // Constructors of Gdaui.EntryCommonTimePrivate
 
         _init(...args: any[]): void;
@@ -74156,6 +74260,8 @@ export namespace Gdaui {
 
     type EntryDateClass = typeof EntryDate;
     abstract class EntryDatePrivate {
+        static $gtype: GObject.GType<EntryDatePrivate>;
+
         // Constructors of Gdaui.EntryDatePrivate
 
         _init(...args: any[]): void;
@@ -74163,6 +74269,8 @@ export namespace Gdaui {
 
     type EntryNoneClass = typeof EntryNone;
     abstract class EntryNonePrivate {
+        static $gtype: GObject.GType<EntryNonePrivate>;
+
         // Constructors of Gdaui.EntryNonePrivate
 
         _init(...args: any[]): void;
@@ -74170,12 +74278,16 @@ export namespace Gdaui {
 
     type EntryNumberClass = typeof EntryNumber;
     abstract class EntryNumberPrivate {
+        static $gtype: GObject.GType<EntryNumberPrivate>;
+
         // Constructors of Gdaui.EntryNumberPrivate
 
         _init(...args: any[]): void;
     }
 
     abstract class EntryPrivate {
+        static $gtype: GObject.GType<EntryPrivate>;
+
         // Constructors of Gdaui.EntryPrivate
 
         _init(...args: any[]): void;
@@ -74183,6 +74295,8 @@ export namespace Gdaui {
 
     type EntryShellClass = typeof EntryShell;
     abstract class EntryShellPriv {
+        static $gtype: GObject.GType<EntryShellPriv>;
+
         // Constructors of Gdaui.EntryShellPriv
 
         _init(...args: any[]): void;
@@ -74190,6 +74304,8 @@ export namespace Gdaui {
 
     type EntryStringClass = typeof EntryString;
     abstract class EntryStringPrivate {
+        static $gtype: GObject.GType<EntryStringPrivate>;
+
         // Constructors of Gdaui.EntryStringPrivate
 
         _init(...args: any[]): void;
@@ -74197,6 +74313,8 @@ export namespace Gdaui {
 
     type EntryTimeClass = typeof EntryTime;
     abstract class EntryTimePrivate {
+        static $gtype: GObject.GType<EntryTimePrivate>;
+
         // Constructors of Gdaui.EntryTimePrivate
 
         _init(...args: any[]): void;
@@ -74204,6 +74322,8 @@ export namespace Gdaui {
 
     type EntryTimestampClass = typeof EntryTimestamp;
     abstract class EntryTimestampPrivate {
+        static $gtype: GObject.GType<EntryTimestampPrivate>;
+
         // Constructors of Gdaui.EntryTimestampPrivate
 
         _init(...args: any[]): void;
@@ -74211,6 +74331,8 @@ export namespace Gdaui {
 
     type EntryWrapperClass = typeof EntryWrapper;
     abstract class EntryWrapperPriv {
+        static $gtype: GObject.GType<EntryWrapperPriv>;
+
         // Constructors of Gdaui.EntryWrapperPriv
 
         _init(...args: any[]): void;
@@ -74218,6 +74340,8 @@ export namespace Gdaui {
 
     type FormClass = typeof Form;
     abstract class FormPriv {
+        static $gtype: GObject.GType<FormPriv>;
+
         // Constructors of Gdaui.FormPriv
 
         _init(...args: any[]): void;
@@ -74225,6 +74349,8 @@ export namespace Gdaui {
 
     type FormattedEntryClass = typeof FormattedEntry;
     abstract class FormattedEntryPrivate {
+        static $gtype: GObject.GType<FormattedEntryPrivate>;
+
         // Constructors of Gdaui.FormattedEntryPrivate
 
         _init(...args: any[]): void;
@@ -74232,6 +74358,8 @@ export namespace Gdaui {
 
     type GridClass = typeof Grid;
     abstract class GridPriv {
+        static $gtype: GObject.GType<GridPriv>;
+
         // Constructors of Gdaui.GridPriv
 
         _init(...args: any[]): void;
@@ -74239,6 +74367,8 @@ export namespace Gdaui {
 
     type LoginClass = typeof Login;
     abstract class LoginPrivate {
+        static $gtype: GObject.GType<LoginPrivate>;
+
         // Constructors of Gdaui.LoginPrivate
 
         _init(...args: any[]): void;
@@ -74246,6 +74376,8 @@ export namespace Gdaui {
 
     type NumericEntryClass = typeof NumericEntry;
     abstract class NumericEntryPrivate {
+        static $gtype: GObject.GType<NumericEntryPrivate>;
+
         // Constructors of Gdaui.NumericEntryPrivate
 
         _init(...args: any[]): void;
@@ -74257,6 +74389,8 @@ export namespace Gdaui {
      * Note: `entry_create_func` and `cell_create_func` can't be %NULL at the same time
      */
     class Plugin {
+        static $gtype: GObject.GType<Plugin>;
+
         // Own fields of Gdaui.Plugin
 
         plugin_name: string;
@@ -74284,6 +74418,8 @@ export namespace Gdaui {
 
     type ProviderSelectorClass = typeof ProviderSelector;
     abstract class ProviderSelectorPrivate {
+        static $gtype: GObject.GType<ProviderSelectorPrivate>;
+
         // Constructors of Gdaui.ProviderSelectorPrivate
 
         _init(...args: any[]): void;
@@ -74291,6 +74427,8 @@ export namespace Gdaui {
 
     type RawFormClass = typeof RawForm;
     abstract class RawFormPriv {
+        static $gtype: GObject.GType<RawFormPriv>;
+
         // Constructors of Gdaui.RawFormPriv
 
         _init(...args: any[]): void;
@@ -74298,6 +74436,8 @@ export namespace Gdaui {
 
     type RawGridClass = typeof RawGrid;
     abstract class RawGridPriv {
+        static $gtype: GObject.GType<RawGridPriv>;
+
         // Constructors of Gdaui.RawGridPriv
 
         _init(...args: any[]): void;
@@ -74305,6 +74445,8 @@ export namespace Gdaui {
 
     type RtEditorClass = typeof RtEditor;
     abstract class RtEditorPriv {
+        static $gtype: GObject.GType<RtEditorPriv>;
+
         // Constructors of Gdaui.RtEditorPriv
 
         _init(...args: any[]): void;
@@ -74312,6 +74454,8 @@ export namespace Gdaui {
 
     type ServerOperationClass = typeof ServerOperation;
     abstract class ServerOperationPriv {
+        static $gtype: GObject.GType<ServerOperationPriv>;
+
         // Constructors of Gdaui.ServerOperationPriv
 
         _init(...args: any[]): void;
@@ -74329,6 +74473,8 @@ export namespace Gdaui {
      * Don't try to use #gdaui_set_group_free on a struct that was created manually.
      */
     class SetGroup {
+        static $gtype: GObject.GType<SetGroup>;
+
         // Constructors of Gdaui.SetGroup
 
         constructor(group: Gda.SetGroup);
@@ -74370,6 +74516,8 @@ export namespace Gdaui {
     }
 
     abstract class SetPriv {
+        static $gtype: GObject.GType<SetPriv>;
+
         // Constructors of Gdaui.SetPriv
 
         _init(...args: any[]): void;
@@ -74386,6 +74534,8 @@ export namespace Gdaui {
      * Don't try to use #gdaui_set_source_free on a struct that was created manually.
      */
     class SetSource {
+        static $gtype: GObject.GType<SetSource>;
+
         // Own fields of Gdaui.SetSource
 
         shown_n_cols: number;
@@ -74439,6 +74589,8 @@ export namespace Gdaui {
 
     type TreeStoreClass = typeof TreeStore;
     abstract class TreeStorePriv {
+        static $gtype: GObject.GType<TreeStorePriv>;
+
         // Constructors of Gdaui.TreeStorePriv
 
         _init(...args: any[]): void;

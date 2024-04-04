@@ -23,6 +23,8 @@ export namespace Rsvg {
      * An enumeration representing possible errors
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Rsvg.Error
 
         /**
@@ -463,6 +465,8 @@ export namespace Rsvg {
      * the program as if it had a failed assertion.
      */
     class Handle extends GObject.Object {
+        static $gtype: GObject.GType<Handle>;
+
         // Own properties of Rsvg.Handle
 
         /**
@@ -1100,6 +1104,8 @@ export namespace Rsvg {
      * the deprecation documentation for those functions.
      */
     class DimensionData {
+        static $gtype: GObject.GType<DimensionData>;
+
         // Own fields of Rsvg.DimensionData
 
         width: number;
@@ -1135,6 +1141,8 @@ export namespace Rsvg {
      * `RSVG_UNIT_IN` or other physical units.
      */
     class Length {
+        static $gtype: GObject.GType<Length>;
+
         // Own fields of Rsvg.Length
 
         length: number;
@@ -1150,6 +1158,8 @@ export namespace Rsvg {
      * the deprecation documentation for that function.
      */
     class PositionData {
+        static $gtype: GObject.GType<PositionData>;
+
         // Own fields of Rsvg.PositionData
 
         x: number;
@@ -1170,6 +1180,8 @@ export namespace Rsvg {
      * A data structure for holding a rectangle.
      */
     class Rectangle {
+        static $gtype: GObject.GType<Rectangle>;
+
         // Own fields of Rsvg.Rectangle
 
         x: number;

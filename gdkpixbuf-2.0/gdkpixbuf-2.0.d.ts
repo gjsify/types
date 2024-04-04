@@ -110,6 +110,8 @@ export namespace GdkPixbuf {
      * the `G_FILE_ERROR` domain.
      */
     class PixbufError extends GLib.Error {
+        static $gtype: GObject.GType<PixbufError>;
+
         // Static fields of GdkPixbuf.PixbufError
 
         /**
@@ -399,6 +401,8 @@ export namespace GdkPixbuf {
      * to a socket or store it in a database.
      */
     class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<Pixbuf>;
+
         // Own properties of GdkPixbuf.Pixbuf
 
         /**
@@ -1685,6 +1689,8 @@ export namespace GdkPixbuf {
      * be displayed at a given point in time.
      */
     class PixbufAnimation extends GObject.Object {
+        static $gtype: GObject.GType<PixbufAnimation>;
+
         // Constructors of GdkPixbuf.PixbufAnimation
 
         constructor(properties?: Partial<PixbufAnimation.ConstructorProps>, ...args: any[]);
@@ -1874,6 +1880,8 @@ export namespace GdkPixbuf {
      * certain position in an animation.
      */
     class PixbufAnimationIter extends GObject.Object {
+        static $gtype: GObject.GType<PixbufAnimationIter>;
+
         // Constructors of GdkPixbuf.PixbufAnimationIter
 
         constructor(properties?: Partial<PixbufAnimationIter.ConstructorProps>, ...args: any[]);
@@ -2091,6 +2099,8 @@ export namespace GdkPixbuf {
      * desired time stamp.
      */
     class PixbufLoader extends GObject.Object {
+        static $gtype: GObject.GType<PixbufLoader>;
+
         // Constructors of GdkPixbuf.PixbufLoader
 
         constructor(properties?: Partial<PixbufLoader.ConstructorProps>, ...args: any[]);
@@ -2229,6 +2239,8 @@ export namespace GdkPixbuf {
     }
 
     class PixbufNonAnim extends PixbufAnimation {
+        static $gtype: GObject.GType<PixbufNonAnim>;
+
         // Constructors of GdkPixbuf.PixbufNonAnim
 
         constructor(properties?: Partial<PixbufNonAnim.ConstructorProps>, ...args: any[]);
@@ -2250,6 +2262,8 @@ export namespace GdkPixbuf {
      * An opaque struct representing a simple animation.
      */
     class PixbufSimpleAnim extends PixbufAnimation {
+        static $gtype: GObject.GType<PixbufSimpleAnim>;
+
         // Own properties of GdkPixbuf.PixbufSimpleAnim
 
         /**
@@ -2294,6 +2308,8 @@ export namespace GdkPixbuf {
     }
 
     class PixbufSimpleAnimIter extends PixbufAnimationIter {
+        static $gtype: GObject.GType<PixbufSimpleAnimIter>;
+
         // Constructors of GdkPixbuf.PixbufSimpleAnimIter
 
         constructor(properties?: Partial<PixbufSimpleAnimIter.ConstructorProps>, ...args: any[]);
@@ -2311,6 +2327,8 @@ export namespace GdkPixbuf {
      * use the `gdk_pixbuf_format_*` family of functions.
      */
     class PixbufFormat {
+        static $gtype: GObject.GType<PixbufFormat>;
+
         // Own fields of GdkPixbuf.PixbufFormat
 
         name: string;
@@ -2472,6 +2490,8 @@ export namespace GdkPixbuf {
      *    by the environment variable `GDK_PIXBUF_MODULE_FILE`)
      */
     class PixbufModule {
+        static $gtype: GObject.GType<PixbufModule>;
+
         // Own fields of GdkPixbuf.PixbufModule
 
         module_name: string;
@@ -2516,6 +2536,8 @@ export namespace GdkPixbuf {
      * relevance 100, and "blau" with relevance 90.
      */
     class PixbufModulePattern {
+        static $gtype: GObject.GType<PixbufModulePattern>;
+
         // Own fields of GdkPixbuf.PixbufModulePattern
 
         prefix: string;

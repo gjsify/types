@@ -23,6 +23,8 @@ import type libxml2 from '@girs/libxml2-2.0';
 
 export namespace Vsqlite {
     class ConnectionError extends GLib.Error {
+        static $gtype: GObject.GType<ConnectionError>;
+
         // Static fields of Vsqlite.ConnectionError
 
         static INVALID_FILE_ERROR: number;
@@ -40,6 +42,8 @@ export namespace Vsqlite {
     }
 
     class Connection extends GObject.Object implements Vda.Connection {
+        static $gtype: GObject.GType<Connection>;
+
         // Constructors of Vsqlite.Connection
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
@@ -454,6 +458,8 @@ export namespace Vsqlite {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of Vsqlite.ConnectionPrivate
 
         _init(...args: any[]): void;

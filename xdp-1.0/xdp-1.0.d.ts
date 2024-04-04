@@ -489,6 +489,8 @@ export namespace Xdp {
      * object with [ctor`Portal`.new] and use it throughout its lifetime.
      */
     class Portal extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Portal>;
+
         // Constructors of Xdp.Portal
 
         constructor(properties?: Partial<Portal.ConstructorProps>, ...args: any[]);
@@ -2072,6 +2074,8 @@ export namespace Xdp {
      * [method`Session`.start], and ended by calling [method`Session`.close].
      */
     class Session extends GObject.Object {
+        static $gtype: GObject.GType<Session>;
+
         // Constructors of Xdp.Session
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
@@ -2306,6 +2310,8 @@ export namespace Xdp {
      * `xdp_parent_new_gtk()`.
      */
     abstract class Parent {
+        static $gtype: GObject.GType<Parent>;
+
         // Constructors of Xdp.Parent
 
         _init(...args: any[]): void;

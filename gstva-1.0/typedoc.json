@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gstva-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GstVa-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -31,6 +31,8 @@ export namespace GstGLWayland {
      * through the provided API
      */
     class GLDisplayWayland extends GstGL.GLDisplay {
+        static $gtype: GObject.GType<GLDisplayWayland>;
+
         // Own fields of GstGLWayland.GLDisplayWayland
 
         display: any;

@@ -135,6 +135,8 @@ export namespace ClutterGst {
      * not be accessed directly.
      */
     class VideoSink extends GstBase.BaseSink implements GstVideo.Navigation {
+        static $gtype: GObject.GType<VideoSink>;
+
         // Own properties of ClutterGst.VideoSink
 
         /**
@@ -608,6 +610,8 @@ export namespace ClutterGst {
             Clutter.Scriptable,
             Player
     {
+        static $gtype: GObject.GType<VideoTexture>;
+
         // Own properties of ClutterGst.VideoTexture
 
         get pixel_aspect_ratio(): Gst.Fraction;
@@ -1403,6 +1407,8 @@ export namespace ClutterGst {
 
     type PlayerIface = typeof Player;
     abstract class PlayerIfacePrivate {
+        static $gtype: GObject.GType<PlayerIfacePrivate>;
+
         // Constructors of ClutterGst.PlayerIfacePrivate
 
         _init(...args: any[]): void;
@@ -1410,6 +1416,8 @@ export namespace ClutterGst {
 
     type VideoSinkClass = typeof VideoSink;
     abstract class VideoSinkPrivate {
+        static $gtype: GObject.GType<VideoSinkPrivate>;
+
         // Constructors of ClutterGst.VideoSinkPrivate
 
         _init(...args: any[]): void;
@@ -1417,6 +1425,8 @@ export namespace ClutterGst {
 
     type VideoTextureClass = typeof VideoTexture;
     abstract class VideoTexturePrivate {
+        static $gtype: GObject.GType<VideoTexturePrivate>;
+
         // Constructors of ClutterGst.VideoTexturePrivate
 
         _init(...args: any[]): void;

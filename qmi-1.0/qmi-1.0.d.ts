@@ -21,6 +21,8 @@ export namespace Qmi {
      * Common errors that may be reported by libqmi-glib.
      */
     class CoreError extends GLib.Error {
+        static $gtype: GObject.GType<CoreError>;
+
         // Static fields of Qmi.CoreError
 
         /**
@@ -419,6 +421,8 @@ export namespace Qmi {
      * Sierra Wireless USB composition modes.
      */
     class DmsSwiUsbComposition {
+        static $gtype: GObject.GType<DmsSwiUsbComposition>;
+
         // Static fields of Qmi.DmsSwiUsbComposition
 
         /**
@@ -1921,6 +1925,8 @@ export namespace Qmi {
      * DL Bandwidth.
      */
     class NasDLBandwidth {
+        static $gtype: GObject.GType<NasDLBandwidth>;
+
         // Static fields of Qmi.NasDLBandwidth
 
         /**
@@ -2104,6 +2110,8 @@ export namespace Qmi {
      * EV-DO SINR level.
      */
     class NasEvdoSinrLevel {
+        static $gtype: GObject.GType<NasEvdoSinrLevel>;
+
         // Static fields of Qmi.NasEvdoSinrLevel
 
         /**
@@ -3699,6 +3707,8 @@ export namespace Qmi {
      * QMI protocol errors.
      */
     class ProtocolError extends GLib.Error {
+        static $gtype: GObject.GType<ProtocolError>;
+
         // Static fields of Qmi.ProtocolError
 
         /**
@@ -4278,6 +4288,8 @@ export namespace Qmi {
      * SAR RF state. Each RF state corresponds to a TX power, and the mapping between TX power and RF state is dictated by NV items.
      */
     class SarRfState {
+        static $gtype: GObject.GType<SarRfState>;
+
         // Static fields of Qmi.SarRfState
 
         /**
@@ -5268,6 +5280,8 @@ export namespace Qmi {
      * ALS line indicator.
      */
     class VoiceAls {
+        static $gtype: GObject.GType<VoiceAls>;
+
         // Static fields of Qmi.VoiceAls
 
         /**
@@ -9129,6 +9143,8 @@ export namespace Qmi {
      * CDMA service option selection.
      */
     class WmsCdmaServiceOption {
+        static $gtype: GObject.GType<WmsCdmaServiceOption>;
+
         // Static fields of Qmi.WmsCdmaServiceOption
 
         /**
@@ -9366,6 +9382,8 @@ export namespace Qmi {
      * Message class.
      */
     class WmsMessageClass {
+        static $gtype: GObject.GType<WmsMessageClass>;
+
         // Static fields of Qmi.WmsMessageClass
 
         /**
@@ -14441,6 +14459,8 @@ export namespace Qmi {
      * LTE-specific Frequency bands.
      */
     class DmsLteBandCapability {
+        static $gtype: GObject.GType<DmsLteBandCapability>;
+
         // Static fields of Qmi.DmsLteBandCapability
 
         /**
@@ -15478,6 +15498,8 @@ export namespace Qmi {
      * Flags to specify LTE-specific frequency band preferences.
      */
     class NasLteBandPreference {
+        static $gtype: GObject.GType<NasLteBandPreference>;
+
         // Static fields of Qmi.NasLteBandPreference
 
         /**
@@ -16736,6 +16758,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class Client extends GObject.Object {
+        static $gtype: GObject.GType<Client>;
+
         // Own properties of Qmi.Client
 
         get client_cid(): number;
@@ -16846,6 +16870,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientAtr extends Client {
+        static $gtype: GObject.GType<ClientAtr>;
+
         // Constructors of Qmi.ClientAtr
 
         constructor(properties?: Partial<ClientAtr.ConstructorProps>, ...args: any[]);
@@ -16908,6 +16934,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientDms extends Client {
+        static $gtype: GObject.GType<ClientDms>;
+
         // Constructors of Qmi.ClientDms
 
         constructor(properties?: Partial<ClientDms.ConstructorProps>, ...args: any[]);
@@ -18370,6 +18398,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientDpm extends Client {
+        static $gtype: GObject.GType<ClientDpm>;
+
         // Constructors of Qmi.ClientDpm
 
         constructor(properties?: Partial<ClientDpm.ConstructorProps>, ...args: any[]);
@@ -18443,6 +18473,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientDsd extends Client {
+        static $gtype: GObject.GType<ClientDsd>;
+
         // Constructors of Qmi.ClientDsd
 
         constructor(properties?: Partial<ClientDsd.ConstructorProps>, ...args: any[]);
@@ -18571,6 +18603,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientFox extends Client {
+        static $gtype: GObject.GType<ClientFox>;
+
         // Constructors of Qmi.ClientFox
 
         constructor(properties?: Partial<ClientFox.ConstructorProps>, ...args: any[]);
@@ -18615,6 +18649,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientGas extends Client {
+        static $gtype: GObject.GType<ClientGas>;
+
         // Constructors of Qmi.ClientGas
 
         constructor(properties?: Partial<ClientGas.ConstructorProps>, ...args: any[]);
@@ -18728,6 +18764,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientGms extends Client {
+        static $gtype: GObject.GType<ClientGms>;
+
         // Constructors of Qmi.ClientGms
 
         constructor(properties?: Partial<ClientGms.ConstructorProps>, ...args: any[]);
@@ -18865,6 +18903,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientLoc extends Client {
+        static $gtype: GObject.GType<ClientLoc>;
+
         // Constructors of Qmi.ClientLoc
 
         constructor(properties?: Partial<ClientLoc.ConstructorProps>, ...args: any[]);
@@ -19408,6 +19448,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientNas extends Client {
+        static $gtype: GObject.GType<ClientNas>;
+
         // Constructors of Qmi.ClientNas
 
         constructor(properties?: Partial<ClientNas.ConstructorProps>, ...args: any[]);
@@ -20201,6 +20243,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientOma extends Client {
+        static $gtype: GObject.GType<ClientOma>;
+
         // Constructors of Qmi.ClientOma
 
         constructor(properties?: Partial<ClientOma.ConstructorProps>, ...args: any[]);
@@ -20421,6 +20465,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientPbm extends Client {
+        static $gtype: GObject.GType<ClientPbm>;
+
         // Constructors of Qmi.ClientPbm
 
         constructor(properties?: Partial<ClientPbm.ConstructorProps>, ...args: any[]);
@@ -20545,6 +20591,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientPdc extends Client {
+        static $gtype: GObject.GType<ClientPdc>;
+
         // Constructors of Qmi.ClientPdc
 
         constructor(properties?: Partial<ClientPdc.ConstructorProps>, ...args: any[]);
@@ -20947,6 +20995,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientPds extends Client {
+        static $gtype: GObject.GType<ClientPds>;
+
         // Constructors of Qmi.ClientPds
 
         constructor(properties?: Partial<ClientPds.ConstructorProps>, ...args: any[]);
@@ -21226,6 +21276,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientQos extends Client {
+        static $gtype: GObject.GType<ClientQos>;
+
         // Constructors of Qmi.ClientQos
 
         constructor(properties?: Partial<ClientQos.ConstructorProps>, ...args: any[]);
@@ -21363,6 +21415,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientSar extends Client {
+        static $gtype: GObject.GType<ClientSar>;
+
         // Constructors of Qmi.ClientSar
 
         constructor(properties?: Partial<ClientSar.ConstructorProps>, ...args: any[]);
@@ -21444,6 +21498,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientUim extends Client {
+        static $gtype: GObject.GType<ClientUim>;
+
         // Constructors of Qmi.ClientUim
 
         constructor(properties?: Partial<ClientUim.ConstructorProps>, ...args: any[]);
@@ -22020,6 +22076,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientVoice extends Client {
+        static $gtype: GObject.GType<ClientVoice>;
+
         // Constructors of Qmi.ClientVoice
 
         constructor(properties?: Partial<ClientVoice.ConstructorProps>, ...args: any[]);
@@ -22471,6 +22529,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientWda extends Client {
+        static $gtype: GObject.GType<ClientWda>;
+
         // Constructors of Qmi.ClientWda
 
         constructor(properties?: Partial<ClientWda.ConstructorProps>, ...args: any[]);
@@ -22583,6 +22643,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientWds extends Client {
+        static $gtype: GObject.GType<ClientWds>;
+
         // Constructors of Qmi.ClientWds
 
         constructor(properties?: Partial<ClientWds.ConstructorProps>, ...args: any[]);
@@ -23477,6 +23539,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class ClientWms extends Client {
+        static $gtype: GObject.GType<ClientWms>;
+
         // Constructors of Qmi.ClientWms
 
         constructor(properties?: Partial<ClientWms.ConstructorProps>, ...args: any[]);
@@ -23867,6 +23931,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
+        static $gtype: GObject.GType<Device>;
+
         // Own properties of Qmi.Device
 
         get device_consecutive_timeouts(): number;
@@ -24885,6 +24951,8 @@ export namespace Qmi {
      * using the provided API.
      */
     class Proxy extends GObject.Object {
+        static $gtype: GObject.GType<Proxy>;
+
         // Own properties of Qmi.Proxy
 
         get qmi_proxy_n_clients(): number;
@@ -24922,6 +24990,8 @@ export namespace Qmi {
     type ClientPdcClass = typeof ClientPdc;
     type ClientPdsClass = typeof ClientPds;
     abstract class ClientPrivate {
+        static $gtype: GObject.GType<ClientPrivate>;
+
         // Constructors of Qmi.ClientPrivate
 
         _init(...args: any[]): void;
@@ -24936,6 +25006,8 @@ export namespace Qmi {
     type ClientWmsClass = typeof ClientWms;
     type DeviceClass = typeof Device;
     abstract class DevicePrivate {
+        static $gtype: GObject.GType<DevicePrivate>;
+
         // Constructors of Qmi.DevicePrivate
 
         _init(...args: any[]): void;
@@ -24945,6 +25017,8 @@ export namespace Qmi {
      * Version information for a service.
      */
     class DeviceServiceVersionInfo {
+        static $gtype: GObject.GType<DeviceServiceVersionInfo>;
+
         // Own fields of Qmi.DeviceServiceVersionInfo
 
         service: Service;
@@ -24961,6 +25035,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationAtrReceivedOutput {
+        static $gtype: GObject.GType<IndicationAtrReceivedOutput>;
+
         // Constructors of Qmi.IndicationAtrReceivedOutput
 
         _init(...args: any[]): void;
@@ -24989,6 +25065,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationDmsEventReportOutput {
+        static $gtype: GObject.GType<IndicationDmsEventReportOutput>;
+
         // Constructors of Qmi.IndicationDmsEventReportOutput
 
         _init(...args: any[]): void;
@@ -25052,6 +25130,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationDsdSystemStatusOutput {
+        static $gtype: GObject.GType<IndicationDsdSystemStatusOutput>;
+
         // Constructors of Qmi.IndicationDsdSystemStatusOutput
 
         _init(...args: any[]): void;
@@ -25082,6 +25162,8 @@ export namespace Qmi {
      * A QmiIndicationDsdSystemStatusOutputAvailableSystemsSystem struct.
      */
     class IndicationDsdSystemStatusOutputAvailableSystemsSystem {
+        static $gtype: GObject.GType<IndicationDsdSystemStatusOutputAvailableSystemsSystem>;
+
         // Own fields of Qmi.IndicationDsdSystemStatusOutputAvailableSystemsSystem
 
         technology: DsdDataSystemNetworkType;
@@ -25098,6 +25180,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocDeleteAssistanceDataOutput {
+        static $gtype: GObject.GType<IndicationLocDeleteAssistanceDataOutput>;
+
         // Constructors of Qmi.IndicationLocDeleteAssistanceDataOutput
 
         _init(...args: any[]): void;
@@ -25126,6 +25210,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocEngineStateOutput {
+        static $gtype: GObject.GType<IndicationLocEngineStateOutput>;
+
         // Constructors of Qmi.IndicationLocEngineStateOutput
 
         _init(...args: any[]): void;
@@ -25154,6 +25240,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocFixRecurrenceTypeOutput {
+        static $gtype: GObject.GType<IndicationLocFixRecurrenceTypeOutput>;
+
         // Constructors of Qmi.IndicationLocFixRecurrenceTypeOutput
 
         _init(...args: any[]): void;
@@ -25182,6 +25270,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGetEngineLockOutput {
+        static $gtype: GObject.GType<IndicationLocGetEngineLockOutput>;
+
         // Constructors of Qmi.IndicationLocGetEngineLockOutput
 
         _init(...args: any[]): void;
@@ -25215,6 +25305,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGetNmeaTypesOutput {
+        static $gtype: GObject.GType<IndicationLocGetNmeaTypesOutput>;
+
         // Constructors of Qmi.IndicationLocGetNmeaTypesOutput
 
         _init(...args: any[]): void;
@@ -25248,6 +25340,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGetOperationModeOutput {
+        static $gtype: GObject.GType<IndicationLocGetOperationModeOutput>;
+
         // Constructors of Qmi.IndicationLocGetOperationModeOutput
 
         _init(...args: any[]): void;
@@ -25281,6 +25375,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGetPredictedOrbitsDataSourceOutput {
+        static $gtype: GObject.GType<IndicationLocGetPredictedOrbitsDataSourceOutput>;
+
         // Constructors of Qmi.IndicationLocGetPredictedOrbitsDataSourceOutput
 
         _init(...args: any[]): void;
@@ -25319,6 +25415,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGetServerOutput {
+        static $gtype: GObject.GType<IndicationLocGetServerOutput>;
+
         // Constructors of Qmi.IndicationLocGetServerOutput
 
         _init(...args: any[]): void;
@@ -25367,6 +25465,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocGnssSvInfoOutput {
+        static $gtype: GObject.GType<IndicationLocGnssSvInfoOutput>;
+
         // Constructors of Qmi.IndicationLocGnssSvInfoOutput
 
         _init(...args: any[]): void;
@@ -25402,6 +25502,8 @@ export namespace Qmi {
      * A QmiIndicationLocGnssSvInfoOutputListElement struct.
      */
     class IndicationLocGnssSvInfoOutputListElement {
+        static $gtype: GObject.GType<IndicationLocGnssSvInfoOutputListElement>;
+
         // Own fields of Qmi.IndicationLocGnssSvInfoOutputListElement
 
         valid_information: LocSatelliteValidInformation;
@@ -25424,6 +25526,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocInjectPredictedOrbitsDataOutput {
+        static $gtype: GObject.GType<IndicationLocInjectPredictedOrbitsDataOutput>;
+
         // Constructors of Qmi.IndicationLocInjectPredictedOrbitsDataOutput
 
         _init(...args: any[]): void;
@@ -25457,6 +25561,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocInjectXtraDataOutput {
+        static $gtype: GObject.GType<IndicationLocInjectXtraDataOutput>;
+
         // Constructors of Qmi.IndicationLocInjectXtraDataOutput
 
         _init(...args: any[]): void;
@@ -25490,6 +25596,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocNmeaOutput {
+        static $gtype: GObject.GType<IndicationLocNmeaOutput>;
+
         // Constructors of Qmi.IndicationLocNmeaOutput
 
         _init(...args: any[]): void;
@@ -25518,6 +25626,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocPositionReportOutput {
+        static $gtype: GObject.GType<IndicationLocPositionReportOutput>;
+
         // Constructors of Qmi.IndicationLocPositionReportOutput
 
         _init(...args: any[]): void;
@@ -25701,6 +25811,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocSetEngineLockOutput {
+        static $gtype: GObject.GType<IndicationLocSetEngineLockOutput>;
+
         // Constructors of Qmi.IndicationLocSetEngineLockOutput
 
         _init(...args: any[]): void;
@@ -25729,6 +25841,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocSetNmeaTypesOutput {
+        static $gtype: GObject.GType<IndicationLocSetNmeaTypesOutput>;
+
         // Constructors of Qmi.IndicationLocSetNmeaTypesOutput
 
         _init(...args: any[]): void;
@@ -25757,6 +25871,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocSetOperationModeOutput {
+        static $gtype: GObject.GType<IndicationLocSetOperationModeOutput>;
+
         // Constructors of Qmi.IndicationLocSetOperationModeOutput
 
         _init(...args: any[]): void;
@@ -25785,6 +25901,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationLocSetServerOutput {
+        static $gtype: GObject.GType<IndicationLocSetServerOutput>;
+
         // Constructors of Qmi.IndicationLocSetServerOutput
 
         _init(...args: any[]): void;
@@ -25813,6 +25931,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasEventReportOutput {
+        static $gtype: GObject.GType<IndicationNasEventReportOutput>;
+
         // Constructors of Qmi.IndicationNasEventReportOutput
 
         _init(...args: any[]): void;
@@ -25893,6 +26013,8 @@ export namespace Qmi {
      * A QmiIndicationNasEventReportOutputRfBandInformationElement struct.
      */
     class IndicationNasEventReportOutputRfBandInformationElement {
+        static $gtype: GObject.GType<IndicationNasEventReportOutputRfBandInformationElement>;
+
         // Own fields of Qmi.IndicationNasEventReportOutputRfBandInformationElement
 
         radio_interface: NasRadioInterface;
@@ -25909,6 +26031,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasNetworkRejectOutput {
+        static $gtype: GObject.GType<IndicationNasNetworkRejectOutput>;
+
         // Constructors of Qmi.IndicationNasNetworkRejectOutput
 
         _init(...args: any[]): void;
@@ -25957,6 +26081,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasNetworkTimeOutput {
+        static $gtype: GObject.GType<IndicationNasNetworkTimeOutput>;
+
         // Constructors of Qmi.IndicationNasNetworkTimeOutput
 
         _init(...args: any[]): void;
@@ -26000,6 +26126,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasOperatorNameOutput {
+        static $gtype: GObject.GType<IndicationNasOperatorNameOutput>;
+
         // Constructors of Qmi.IndicationNasOperatorNameOutput
 
         _init(...args: any[]): void;
@@ -26061,6 +26189,8 @@ export namespace Qmi {
      * A QmiIndicationNasOperatorNameOutputOperatorPlmnListElement struct.
      */
     class IndicationNasOperatorNameOutputOperatorPlmnListElement {
+        static $gtype: GObject.GType<IndicationNasOperatorNameOutputOperatorPlmnListElement>;
+
         // Own fields of Qmi.IndicationNasOperatorNameOutputOperatorPlmnListElement
 
         mcc: string;
@@ -26087,6 +26217,8 @@ export namespace Qmi {
      * A QmiIndicationNasOperatorNameOutputOperatorPlmnNameElement struct.
      */
     class IndicationNasOperatorNameOutputOperatorPlmnNameElement {
+        static $gtype: GObject.GType<IndicationNasOperatorNameOutputOperatorPlmnNameElement>;
+
         // Own fields of Qmi.IndicationNasOperatorNameOutputOperatorPlmnNameElement
 
         name_encoding: NasPlmnEncodingScheme;
@@ -26106,6 +26238,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasServingSystemOutput {
+        static $gtype: GObject.GType<IndicationNasServingSystemOutput>;
+
         // Constructors of Qmi.IndicationNasServingSystemOutput
 
         _init(...args: any[]): void;
@@ -26294,6 +26428,8 @@ export namespace Qmi {
      * A QmiIndicationNasServingSystemOutputRoamingIndicatorListElement struct.
      */
     class IndicationNasServingSystemOutputRoamingIndicatorListElement {
+        static $gtype: GObject.GType<IndicationNasServingSystemOutputRoamingIndicatorListElement>;
+
         // Own fields of Qmi.IndicationNasServingSystemOutputRoamingIndicatorListElement
 
         radio_interface: NasRadioInterface;
@@ -26309,6 +26445,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasSignalInfoOutput {
+        static $gtype: GObject.GType<IndicationNasSignalInfoOutput>;
+
         // Constructors of Qmi.IndicationNasSignalInfoOutput
 
         _init(...args: any[]): void;
@@ -26377,6 +26515,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationNasSystemInfoOutput {
+        static $gtype: GObject.GType<IndicationNasSystemInfoOutput>;
+
         // Constructors of Qmi.IndicationNasSystemInfoOutput
 
         _init(...args: any[]): void;
@@ -26726,6 +26866,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationOmaEventReportOutput {
+        static $gtype: GObject.GType<IndicationOmaEventReportOutput>;
+
         // Constructors of Qmi.IndicationOmaEventReportOutput
 
         _init(...args: any[]): void;
@@ -26764,6 +26906,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcActivateConfigOutput {
+        static $gtype: GObject.GType<IndicationPdcActivateConfigOutput>;
+
         // Constructors of Qmi.IndicationPdcActivateConfigOutput
 
         _init(...args: any[]): void;
@@ -26797,6 +26941,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcDeactivateConfigOutput {
+        static $gtype: GObject.GType<IndicationPdcDeactivateConfigOutput>;
+
         // Constructors of Qmi.IndicationPdcDeactivateConfigOutput
 
         _init(...args: any[]): void;
@@ -26830,6 +26976,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcGetConfigInfoOutput {
+        static $gtype: GObject.GType<IndicationPdcGetConfigInfoOutput>;
+
         // Constructors of Qmi.IndicationPdcGetConfigInfoOutput
 
         _init(...args: any[]): void;
@@ -26878,6 +27026,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcGetSelectedConfigOutput {
+        static $gtype: GObject.GType<IndicationPdcGetSelectedConfigOutput>;
+
         // Constructors of Qmi.IndicationPdcGetSelectedConfigOutput
 
         _init(...args: any[]): void;
@@ -26921,6 +27071,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcListConfigsOutput {
+        static $gtype: GObject.GType<IndicationPdcListConfigsOutput>;
+
         // Constructors of Qmi.IndicationPdcListConfigsOutput
 
         _init(...args: any[]): void;
@@ -26961,6 +27113,8 @@ export namespace Qmi {
      * A QmiIndicationPdcListConfigsOutputConfigsElement struct.
      */
     class IndicationPdcListConfigsOutputConfigsElement {
+        static $gtype: GObject.GType<IndicationPdcListConfigsOutputConfigsElement>;
+
         // Own fields of Qmi.IndicationPdcListConfigsOutputConfigsElement
 
         config_type: PdcConfigurationType;
@@ -26976,6 +27130,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcLoadConfigOutput {
+        static $gtype: GObject.GType<IndicationPdcLoadConfigOutput>;
+
         // Constructors of Qmi.IndicationPdcLoadConfigOutput
 
         _init(...args: any[]): void;
@@ -27024,6 +27180,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcRefreshOutput {
+        static $gtype: GObject.GType<IndicationPdcRefreshOutput>;
+
         // Constructors of Qmi.IndicationPdcRefreshOutput
 
         _init(...args: any[]): void;
@@ -27062,6 +27220,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdcSetSelectedConfigOutput {
+        static $gtype: GObject.GType<IndicationPdcSetSelectedConfigOutput>;
+
         // Constructors of Qmi.IndicationPdcSetSelectedConfigOutput
 
         _init(...args: any[]): void;
@@ -27095,6 +27255,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationPdsEventReportOutput {
+        static $gtype: GObject.GType<IndicationPdsEventReportOutput>;
+
         // Constructors of Qmi.IndicationPdsEventReportOutput
 
         _init(...args: any[]): void;
@@ -27133,6 +27295,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationQosFlowStatusOutput {
+        static $gtype: GObject.GType<IndicationQosFlowStatusOutput>;
+
         // Constructors of Qmi.IndicationQosFlowStatusOutput
 
         _init(...args: any[]): void;
@@ -27161,6 +27325,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationQosNetworkStatusOutput {
+        static $gtype: GObject.GType<IndicationQosNetworkStatusOutput>;
+
         // Constructors of Qmi.IndicationQosNetworkStatusOutput
 
         _init(...args: any[]): void;
@@ -27189,6 +27355,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationUimCardStatusOutput {
+        static $gtype: GObject.GType<IndicationUimCardStatusOutput>;
+
         // Constructors of Qmi.IndicationUimCardStatusOutput
 
         _init(...args: any[]): void;
@@ -27226,6 +27394,8 @@ export namespace Qmi {
      * A QmiIndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 struct.
      */
     class IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
+        static $gtype: GObject.GType<IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2>;
+
         // Own fields of Qmi.IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
         type: UimCardApplicationType;
@@ -27255,6 +27425,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class IndicationUimCardStatusOutputCardStatusCardsElementGir {
+        static $gtype: GObject.GType<IndicationUimCardStatusOutputCardStatusCardsElementGir>;
+
         // Own fields of Qmi.IndicationUimCardStatusOutputCardStatusCardsElementGir
 
         card_state: UimCardState;
@@ -27273,6 +27445,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationUimRefreshOutput {
+        static $gtype: GObject.GType<IndicationUimRefreshOutput>;
+
         // Constructors of Qmi.IndicationUimRefreshOutput
 
         _init(...args: any[]): void;
@@ -27310,6 +27484,8 @@ export namespace Qmi {
      * A QmiIndicationUimRefreshOutputEventFilesElement struct.
      */
     class IndicationUimRefreshOutputEventFilesElement {
+        static $gtype: GObject.GType<IndicationUimRefreshOutputEventFilesElement>;
+
         // Own fields of Qmi.IndicationUimRefreshOutputEventFilesElement
 
         file_id: number;
@@ -27331,6 +27507,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationUimSlotStatusOutput {
+        static $gtype: GObject.GType<IndicationUimSlotStatusOutput>;
+
         // Constructors of Qmi.IndicationUimSlotStatusOutput
 
         _init(...args: any[]): void;
@@ -27380,6 +27558,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationVoiceAllCallStatusOutput {
+        static $gtype: GObject.GType<IndicationVoiceAllCallStatusOutput>;
+
         // Constructors of Qmi.IndicationVoiceAllCallStatusOutput
 
         _init(...args: any[]): void;
@@ -27418,6 +27598,8 @@ export namespace Qmi {
      * A QmiIndicationVoiceAllCallStatusOutputCallInformationCall struct.
      */
     class IndicationVoiceAllCallStatusOutputCallInformationCall {
+        static $gtype: GObject.GType<IndicationVoiceAllCallStatusOutputCallInformationCall>;
+
         // Own fields of Qmi.IndicationVoiceAllCallStatusOutputCallInformationCall
 
         id: number;
@@ -27437,6 +27619,8 @@ export namespace Qmi {
      * A QmiIndicationVoiceAllCallStatusOutputRemotePartyNumberCall struct.
      */
     class IndicationVoiceAllCallStatusOutputRemotePartyNumberCall {
+        static $gtype: GObject.GType<IndicationVoiceAllCallStatusOutputRemotePartyNumberCall>;
+
         // Own fields of Qmi.IndicationVoiceAllCallStatusOutputRemotePartyNumberCall
 
         id: number;
@@ -27453,6 +27637,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationVoiceOriginateUssdNoWaitOutput {
+        static $gtype: GObject.GType<IndicationVoiceOriginateUssdNoWaitOutput>;
+
         // Constructors of Qmi.IndicationVoiceOriginateUssdNoWaitOutput
 
         _init(...args: any[]): void;
@@ -27501,6 +27687,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationVoiceSupplementaryServiceOutput {
+        static $gtype: GObject.GType<IndicationVoiceSupplementaryServiceOutput>;
+
         // Constructors of Qmi.IndicationVoiceSupplementaryServiceOutput
 
         _init(...args: any[]): void;
@@ -27529,6 +27717,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationVoiceUssdOutput {
+        static $gtype: GObject.GType<IndicationVoiceUssdOutput>;
+
         // Constructors of Qmi.IndicationVoiceUssdOutput
 
         _init(...args: any[]): void;
@@ -27567,6 +27757,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWdsEventReportOutput {
+        static $gtype: GObject.GType<IndicationWdsEventReportOutput>;
+
         // Constructors of Qmi.IndicationWdsEventReportOutput
 
         _init(...args: any[]): void;
@@ -27722,6 +27914,8 @@ export namespace Qmi {
      * A QmiIndicationWdsEventReportOutputDataSystemsNetworksNetwork struct.
      */
     class IndicationWdsEventReportOutputDataSystemsNetworksNetwork {
+        static $gtype: GObject.GType<IndicationWdsEventReportOutputDataSystemsNetworksNetwork>;
+
         // Own fields of Qmi.IndicationWdsEventReportOutputDataSystemsNetworksNetwork
 
         network_type: WdsDataSystemNetworkType;
@@ -27738,6 +27932,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWdsExtendedIpConfigOutput {
+        static $gtype: GObject.GType<IndicationWdsExtendedIpConfigOutput>;
+
         // Constructors of Qmi.IndicationWdsExtendedIpConfigOutput
 
         _init(...args: any[]): void;
@@ -27766,6 +27962,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWdsPacketServiceStatusOutput {
+        static $gtype: GObject.GType<IndicationWdsPacketServiceStatusOutput>;
+
         // Constructors of Qmi.IndicationWdsPacketServiceStatusOutput
 
         _init(...args: any[]): void;
@@ -27814,6 +28012,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWdsProfileChangedOutput {
+        static $gtype: GObject.GType<IndicationWdsProfileChangedOutput>;
+
         // Constructors of Qmi.IndicationWdsProfileChangedOutput
 
         _init(...args: any[]): void;
@@ -27842,6 +28042,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWdsSetLteAttachPdnListOutput {
+        static $gtype: GObject.GType<IndicationWdsSetLteAttachPdnListOutput>;
+
         // Constructors of Qmi.IndicationWdsSetLteAttachPdnListOutput
 
         _init(...args: any[]): void;
@@ -27870,6 +28072,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWmsEventReportOutput {
+        static $gtype: GObject.GType<IndicationWmsEventReportOutput>;
+
         // Constructors of Qmi.IndicationWmsEventReportOutput
 
         _init(...args: any[]): void;
@@ -27934,6 +28138,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class IndicationWmsSmscAddressOutput {
+        static $gtype: GObject.GType<IndicationWmsSmscAddressOutput>;
+
         // Constructors of Qmi.IndicationWmsSmscAddressOutput
 
         _init(...args: any[]): void;
@@ -27962,6 +28168,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageAtrSendInput {
+        static $gtype: GObject.GType<MessageAtrSendInput>;
+
         // Constructors of Qmi.MessageAtrSendInput
 
         constructor(properties?: Partial<{}>);
@@ -27999,6 +28207,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageAtrSendOutput {
+        static $gtype: GObject.GType<MessageAtrSendOutput>;
+
         // Constructors of Qmi.MessageAtrSendOutput
 
         _init(...args: any[]): void;
@@ -28026,6 +28236,8 @@ export namespace Qmi {
      * An opaque type representing a QMI message context.
      */
     abstract class MessageContext {
+        static $gtype: GObject.GType<MessageContext>;
+
         // Constructors of Qmi.MessageContext
 
         constructor(properties?: Partial<{}>);
@@ -28062,6 +28274,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsActivateAutomaticInput {
+        static $gtype: GObject.GType<MessageDmsActivateAutomaticInput>;
+
         // Constructors of Qmi.MessageDmsActivateAutomaticInput
 
         constructor(properties?: Partial<{}>);
@@ -28099,6 +28313,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsActivateAutomaticOutput {
+        static $gtype: GObject.GType<MessageDmsActivateAutomaticOutput>;
+
         // Constructors of Qmi.MessageDmsActivateAutomaticOutput
 
         _init(...args: any[]): void;
@@ -28127,6 +28343,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsActivateManualInput {
+        static $gtype: GObject.GType<MessageDmsActivateManualInput>;
+
         // Constructors of Qmi.MessageDmsActivateManualInput
 
         constructor(properties?: Partial<{}>);
@@ -28211,6 +28429,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsActivateManualOutput {
+        static $gtype: GObject.GType<MessageDmsActivateManualOutput>;
+
         // Constructors of Qmi.MessageDmsActivateManualOutput
 
         _init(...args: any[]): void;
@@ -28239,6 +28459,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsDeleteStoredImageInput {
+        static $gtype: GObject.GType<MessageDmsDeleteStoredImageInput>;
+
         // Constructors of Qmi.MessageDmsDeleteStoredImageInput
 
         constructor(properties?: Partial<{}>);
@@ -28282,6 +28504,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsDeleteStoredImageOutput {
+        static $gtype: GObject.GType<MessageDmsDeleteStoredImageOutput>;
+
         // Constructors of Qmi.MessageDmsDeleteStoredImageOutput
 
         _init(...args: any[]): void;
@@ -28310,6 +28534,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnChangeDeviceModeInput {
+        static $gtype: GObject.GType<MessageDmsFoxconnChangeDeviceModeInput>;
+
         // Constructors of Qmi.MessageDmsFoxconnChangeDeviceModeInput
 
         constructor(properties?: Partial<{}>);
@@ -28347,6 +28573,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnChangeDeviceModeOutput {
+        static $gtype: GObject.GType<MessageDmsFoxconnChangeDeviceModeOutput>;
+
         // Constructors of Qmi.MessageDmsFoxconnChangeDeviceModeOutput
 
         _init(...args: any[]): void;
@@ -28375,6 +28603,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnGetFirmwareVersionInput {
+        static $gtype: GObject.GType<MessageDmsFoxconnGetFirmwareVersionInput>;
+
         // Constructors of Qmi.MessageDmsFoxconnGetFirmwareVersionInput
 
         constructor(properties?: Partial<{}>);
@@ -28412,6 +28642,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnGetFirmwareVersionOutput {
+        static $gtype: GObject.GType<MessageDmsFoxconnGetFirmwareVersionOutput>;
+
         // Constructors of Qmi.MessageDmsFoxconnGetFirmwareVersionOutput
 
         _init(...args: any[]): void;
@@ -28445,6 +28677,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnSetFccAuthenticationInput {
+        static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationInput>;
+
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationInput
 
         constructor(properties?: Partial<{}>);
@@ -28482,6 +28716,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnSetFccAuthenticationOutput {
+        static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationOutput>;
+
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationOutput
 
         _init(...args: any[]): void;
@@ -28510,6 +28746,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnSetFccAuthenticationV2Input {
+        static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationV2Input>;
+
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationV2Input
 
         constructor(properties?: Partial<{}>);
@@ -28558,6 +28796,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsFoxconnSetFccAuthenticationV2Output {
+        static $gtype: GObject.GType<MessageDmsFoxconnSetFccAuthenticationV2Output>;
+
         // Constructors of Qmi.MessageDmsFoxconnSetFccAuthenticationV2Output
 
         _init(...args: any[]): void;
@@ -28586,6 +28826,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetActivationStateOutput {
+        static $gtype: GObject.GType<MessageDmsGetActivationStateOutput>;
+
         // Constructors of Qmi.MessageDmsGetActivationStateOutput
 
         _init(...args: any[]): void;
@@ -28619,6 +28861,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetAltNetConfigOutput {
+        static $gtype: GObject.GType<MessageDmsGetAltNetConfigOutput>;
+
         // Constructors of Qmi.MessageDmsGetAltNetConfigOutput
 
         _init(...args: any[]): void;
@@ -28652,6 +28896,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetBandCapabilitiesOutput {
+        static $gtype: GObject.GType<MessageDmsGetBandCapabilitiesOutput>;
+
         // Constructors of Qmi.MessageDmsGetBandCapabilitiesOutput
 
         _init(...args: any[]): void;
@@ -28700,6 +28946,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetBootImageDownloadModeOutput {
+        static $gtype: GObject.GType<MessageDmsGetBootImageDownloadModeOutput>;
+
         // Constructors of Qmi.MessageDmsGetBootImageDownloadModeOutput
 
         _init(...args: any[]): void;
@@ -28733,6 +28981,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetCapabilitiesOutput {
+        static $gtype: GObject.GType<MessageDmsGetCapabilitiesOutput>;
+
         // Constructors of Qmi.MessageDmsGetCapabilitiesOutput
 
         _init(...args: any[]): void;
@@ -28773,6 +29023,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetFactorySkuOutput {
+        static $gtype: GObject.GType<MessageDmsGetFactorySkuOutput>;
+
         // Constructors of Qmi.MessageDmsGetFactorySkuOutput
 
         _init(...args: any[]): void;
@@ -28806,6 +29058,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetFirmwarePreferenceOutput {
+        static $gtype: GObject.GType<MessageDmsGetFirmwarePreferenceOutput>;
+
         // Constructors of Qmi.MessageDmsGetFirmwarePreferenceOutput
 
         _init(...args: any[]): void;
@@ -28841,6 +29095,8 @@ export namespace Qmi {
      * A QmiMessageDmsGetFirmwarePreferenceOutputListImage struct.
      */
     class MessageDmsGetFirmwarePreferenceOutputListImage {
+        static $gtype: GObject.GType<MessageDmsGetFirmwarePreferenceOutputListImage>;
+
         // Own fields of Qmi.MessageDmsGetFirmwarePreferenceOutputListImage
 
         type: DmsFirmwareImageType;
@@ -28857,6 +29113,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetHardwareRevisionOutput {
+        static $gtype: GObject.GType<MessageDmsGetHardwareRevisionOutput>;
+
         // Constructors of Qmi.MessageDmsGetHardwareRevisionOutput
 
         _init(...args: any[]): void;
@@ -28890,6 +29148,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetIdsOutput {
+        static $gtype: GObject.GType<MessageDmsGetIdsOutput>;
+
         // Constructors of Qmi.MessageDmsGetIdsOutput
 
         _init(...args: any[]): void;
@@ -28938,6 +29198,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetMacAddressInput {
+        static $gtype: GObject.GType<MessageDmsGetMacAddressInput>;
+
         // Constructors of Qmi.MessageDmsGetMacAddressInput
 
         constructor(properties?: Partial<{}>);
@@ -28975,6 +29237,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetMacAddressOutput {
+        static $gtype: GObject.GType<MessageDmsGetMacAddressOutput>;
+
         // Constructors of Qmi.MessageDmsGetMacAddressOutput
 
         _init(...args: any[]): void;
@@ -29008,6 +29272,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetManufacturerOutput {
+        static $gtype: GObject.GType<MessageDmsGetManufacturerOutput>;
+
         // Constructors of Qmi.MessageDmsGetManufacturerOutput
 
         _init(...args: any[]): void;
@@ -29041,6 +29307,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetModelOutput {
+        static $gtype: GObject.GType<MessageDmsGetModelOutput>;
+
         // Constructors of Qmi.MessageDmsGetModelOutput
 
         _init(...args: any[]): void;
@@ -29074,6 +29342,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetMsisdnOutput {
+        static $gtype: GObject.GType<MessageDmsGetMsisdnOutput>;
+
         // Constructors of Qmi.MessageDmsGetMsisdnOutput
 
         _init(...args: any[]): void;
@@ -29107,6 +29377,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetOperatingModeOutput {
+        static $gtype: GObject.GType<MessageDmsGetOperatingModeOutput>;
+
         // Constructors of Qmi.MessageDmsGetOperatingModeOutput
 
         _init(...args: any[]): void;
@@ -29150,6 +29422,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetPowerStateOutput {
+        static $gtype: GObject.GType<MessageDmsGetPowerStateOutput>;
+
         // Constructors of Qmi.MessageDmsGetPowerStateOutput
 
         _init(...args: any[]): void;
@@ -29183,6 +29457,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetPrlVersionOutput {
+        static $gtype: GObject.GType<MessageDmsGetPrlVersionOutput>;
+
         // Constructors of Qmi.MessageDmsGetPrlVersionOutput
 
         _init(...args: any[]): void;
@@ -29221,6 +29497,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetRevisionOutput {
+        static $gtype: GObject.GType<MessageDmsGetRevisionOutput>;
+
         // Constructors of Qmi.MessageDmsGetRevisionOutput
 
         _init(...args: any[]): void;
@@ -29254,6 +29532,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetSoftwareVersionOutput {
+        static $gtype: GObject.GType<MessageDmsGetSoftwareVersionOutput>;
+
         // Constructors of Qmi.MessageDmsGetSoftwareVersionOutput
 
         _init(...args: any[]): void;
@@ -29287,6 +29567,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetStoredImageInfoInput {
+        static $gtype: GObject.GType<MessageDmsGetStoredImageInfoInput>;
+
         // Constructors of Qmi.MessageDmsGetStoredImageInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -29330,6 +29612,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetStoredImageInfoOutput {
+        static $gtype: GObject.GType<MessageDmsGetStoredImageInfoOutput>;
+
         // Constructors of Qmi.MessageDmsGetStoredImageInfoOutput
 
         _init(...args: any[]): void;
@@ -29373,6 +29657,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageDmsGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageDmsGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -29406,6 +29692,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetTimeOutput {
+        static $gtype: GObject.GType<MessageDmsGetTimeOutput>;
+
         // Constructors of Qmi.MessageDmsGetTimeOutput
 
         _init(...args: any[]): void;
@@ -29449,6 +29737,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsGetUserLockStateOutput {
+        static $gtype: GObject.GType<MessageDmsGetUserLockStateOutput>;
+
         // Constructors of Qmi.MessageDmsGetUserLockStateOutput
 
         _init(...args: any[]): void;
@@ -29482,6 +29772,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsHpChangeDeviceModeInput {
+        static $gtype: GObject.GType<MessageDmsHpChangeDeviceModeInput>;
+
         // Constructors of Qmi.MessageDmsHpChangeDeviceModeInput
 
         constructor(properties?: Partial<{}>);
@@ -29519,6 +29811,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsHpChangeDeviceModeOutput {
+        static $gtype: GObject.GType<MessageDmsHpChangeDeviceModeOutput>;
+
         // Constructors of Qmi.MessageDmsHpChangeDeviceModeOutput
 
         _init(...args: any[]): void;
@@ -29547,6 +29841,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsListStoredImagesOutput {
+        static $gtype: GObject.GType<MessageDmsListStoredImagesOutput>;
+
         // Constructors of Qmi.MessageDmsListStoredImagesOutput
 
         _init(...args: any[]): void;
@@ -29585,6 +29881,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageDmsListStoredImagesOutputListImageGir {
+        static $gtype: GObject.GType<MessageDmsListStoredImagesOutputListImageGir>;
+
         // Own fields of Qmi.MessageDmsListStoredImagesOutputListImageGir
 
         type: DmsFirmwareImageType;
@@ -29601,6 +29899,8 @@ export namespace Qmi {
      * A QmiMessageDmsListStoredImagesOutputListImageSublistSublistElement struct.
      */
     class MessageDmsListStoredImagesOutputListImageSublistSublistElement {
+        static $gtype: GObject.GType<MessageDmsListStoredImagesOutputListImageSublistSublistElement>;
+
         // Own fields of Qmi.MessageDmsListStoredImagesOutputListImageSublistSublistElement
 
         storage_index: number;
@@ -29626,6 +29926,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsReadEriFileOutput {
+        static $gtype: GObject.GType<MessageDmsReadEriFileOutput>;
+
         // Constructors of Qmi.MessageDmsReadEriFileOutput
 
         _init(...args: any[]): void;
@@ -29659,6 +29961,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsReadUserDataOutput {
+        static $gtype: GObject.GType<MessageDmsReadUserDataOutput>;
+
         // Constructors of Qmi.MessageDmsReadUserDataOutput
 
         _init(...args: any[]): void;
@@ -29692,6 +29996,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsResetOutput {
+        static $gtype: GObject.GType<MessageDmsResetOutput>;
+
         // Constructors of Qmi.MessageDmsResetOutput
 
         _init(...args: any[]): void;
@@ -29720,6 +30026,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsRestoreFactoryDefaultsInput {
+        static $gtype: GObject.GType<MessageDmsRestoreFactoryDefaultsInput>;
+
         // Constructors of Qmi.MessageDmsRestoreFactoryDefaultsInput
 
         constructor(properties?: Partial<{}>);
@@ -29757,6 +30065,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsRestoreFactoryDefaultsOutput {
+        static $gtype: GObject.GType<MessageDmsRestoreFactoryDefaultsOutput>;
+
         // Constructors of Qmi.MessageDmsRestoreFactoryDefaultsOutput
 
         _init(...args: any[]): void;
@@ -29785,6 +30095,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetAltNetConfigInput {
+        static $gtype: GObject.GType<MessageDmsSetAltNetConfigInput>;
+
         // Constructors of Qmi.MessageDmsSetAltNetConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -29822,6 +30134,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetAltNetConfigOutput {
+        static $gtype: GObject.GType<MessageDmsSetAltNetConfigOutput>;
+
         // Constructors of Qmi.MessageDmsSetAltNetConfigOutput
 
         _init(...args: any[]): void;
@@ -29850,6 +30164,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetBootImageDownloadModeInput {
+        static $gtype: GObject.GType<MessageDmsSetBootImageDownloadModeInput>;
+
         // Constructors of Qmi.MessageDmsSetBootImageDownloadModeInput
 
         constructor(properties?: Partial<{}>);
@@ -29887,6 +30203,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetBootImageDownloadModeOutput {
+        static $gtype: GObject.GType<MessageDmsSetBootImageDownloadModeOutput>;
+
         // Constructors of Qmi.MessageDmsSetBootImageDownloadModeOutput
 
         _init(...args: any[]): void;
@@ -29915,6 +30233,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetEventReportInput {
+        static $gtype: GObject.GType<MessageDmsSetEventReportInput>;
+
         // Constructors of Qmi.MessageDmsSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -30033,6 +30353,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetEventReportOutput {
+        static $gtype: GObject.GType<MessageDmsSetEventReportOutput>;
+
         // Constructors of Qmi.MessageDmsSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -30061,6 +30383,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetFccAuthenticationOutput {
+        static $gtype: GObject.GType<MessageDmsSetFccAuthenticationOutput>;
+
         // Constructors of Qmi.MessageDmsSetFccAuthenticationOutput
 
         _init(...args: any[]): void;
@@ -30089,6 +30413,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetFirmwareIdOutput {
+        static $gtype: GObject.GType<MessageDmsSetFirmwareIdOutput>;
+
         // Constructors of Qmi.MessageDmsSetFirmwareIdOutput
 
         _init(...args: any[]): void;
@@ -30117,6 +30443,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetFirmwarePreferenceInput {
+        static $gtype: GObject.GType<MessageDmsSetFirmwarePreferenceInput>;
+
         // Constructors of Qmi.MessageDmsSetFirmwarePreferenceInput
 
         constructor(properties?: Partial<{}>);
@@ -30178,6 +30506,8 @@ export namespace Qmi {
      * A QmiMessageDmsSetFirmwarePreferenceInputListImage struct.
      */
     class MessageDmsSetFirmwarePreferenceInputListImage {
+        static $gtype: GObject.GType<MessageDmsSetFirmwarePreferenceInputListImage>;
+
         // Own fields of Qmi.MessageDmsSetFirmwarePreferenceInputListImage
 
         type: DmsFirmwareImageType;
@@ -30194,6 +30524,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetFirmwarePreferenceOutput {
+        static $gtype: GObject.GType<MessageDmsSetFirmwarePreferenceOutput>;
+
         // Constructors of Qmi.MessageDmsSetFirmwarePreferenceOutput
 
         _init(...args: any[]): void;
@@ -30227,6 +30559,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetOperatingModeInput {
+        static $gtype: GObject.GType<MessageDmsSetOperatingModeInput>;
+
         // Constructors of Qmi.MessageDmsSetOperatingModeInput
 
         constructor(properties?: Partial<{}>);
@@ -30264,6 +30598,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetOperatingModeOutput {
+        static $gtype: GObject.GType<MessageDmsSetOperatingModeOutput>;
+
         // Constructors of Qmi.MessageDmsSetOperatingModeOutput
 
         _init(...args: any[]): void;
@@ -30292,6 +30628,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetServiceProgrammingCodeInput {
+        static $gtype: GObject.GType<MessageDmsSetServiceProgrammingCodeInput>;
+
         // Constructors of Qmi.MessageDmsSetServiceProgrammingCodeInput
 
         constructor(properties?: Partial<{}>);
@@ -30340,6 +30678,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetServiceProgrammingCodeOutput {
+        static $gtype: GObject.GType<MessageDmsSetServiceProgrammingCodeOutput>;
+
         // Constructors of Qmi.MessageDmsSetServiceProgrammingCodeOutput
 
         _init(...args: any[]): void;
@@ -30368,6 +30708,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetTimeInput {
+        static $gtype: GObject.GType<MessageDmsSetTimeInput>;
+
         // Constructors of Qmi.MessageDmsSetTimeInput
 
         constructor(properties?: Partial<{}>);
@@ -30416,6 +30758,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetTimeOutput {
+        static $gtype: GObject.GType<MessageDmsSetTimeOutput>;
+
         // Constructors of Qmi.MessageDmsSetTimeOutput
 
         _init(...args: any[]): void;
@@ -30444,6 +30788,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetUserLockCodeInput {
+        static $gtype: GObject.GType<MessageDmsSetUserLockCodeInput>;
+
         // Constructors of Qmi.MessageDmsSetUserLockCodeInput
 
         constructor(properties?: Partial<{}>);
@@ -30482,6 +30828,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetUserLockCodeOutput {
+        static $gtype: GObject.GType<MessageDmsSetUserLockCodeOutput>;
+
         // Constructors of Qmi.MessageDmsSetUserLockCodeOutput
 
         _init(...args: any[]): void;
@@ -30510,6 +30858,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetUserLockStateInput {
+        static $gtype: GObject.GType<MessageDmsSetUserLockStateInput>;
+
         // Constructors of Qmi.MessageDmsSetUserLockStateInput
 
         constructor(properties?: Partial<{}>);
@@ -30548,6 +30898,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSetUserLockStateOutput {
+        static $gtype: GObject.GType<MessageDmsSetUserLockStateOutput>;
+
         // Constructors of Qmi.MessageDmsSetUserLockStateOutput
 
         _init(...args: any[]): void;
@@ -30576,6 +30928,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSwiGetCurrentFirmwareOutput {
+        static $gtype: GObject.GType<MessageDmsSwiGetCurrentFirmwareOutput>;
+
         // Constructors of Qmi.MessageDmsSwiGetCurrentFirmwareOutput
 
         _init(...args: any[]): void;
@@ -30649,6 +31003,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSwiGetUsbCompositionOutput {
+        static $gtype: GObject.GType<MessageDmsSwiGetUsbCompositionOutput>;
+
         // Constructors of Qmi.MessageDmsSwiGetUsbCompositionOutput
 
         _init(...args: any[]): void;
@@ -30687,6 +31043,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSwiSetUsbCompositionInput {
+        static $gtype: GObject.GType<MessageDmsSwiSetUsbCompositionInput>;
+
         // Constructors of Qmi.MessageDmsSwiSetUsbCompositionInput
 
         constructor(properties?: Partial<{}>);
@@ -30724,6 +31082,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsSwiSetUsbCompositionOutput {
+        static $gtype: GObject.GType<MessageDmsSwiSetUsbCompositionOutput>;
+
         // Constructors of Qmi.MessageDmsSwiSetUsbCompositionOutput
 
         _init(...args: any[]): void;
@@ -30752,6 +31112,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimChangePinInput {
+        static $gtype: GObject.GType<MessageDmsUimChangePinInput>;
+
         // Constructors of Qmi.MessageDmsUimChangePinInput
 
         constructor(properties?: Partial<{}>);
@@ -30791,6 +31153,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimChangePinOutput {
+        static $gtype: GObject.GType<MessageDmsUimChangePinOutput>;
+
         // Constructors of Qmi.MessageDmsUimChangePinOutput
 
         _init(...args: any[]): void;
@@ -30824,6 +31188,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetCkStatusInput {
+        static $gtype: GObject.GType<MessageDmsUimGetCkStatusInput>;
+
         // Constructors of Qmi.MessageDmsUimGetCkStatusInput
 
         constructor(properties?: Partial<{}>);
@@ -30861,6 +31227,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetCkStatusOutput {
+        static $gtype: GObject.GType<MessageDmsUimGetCkStatusOutput>;
+
         // Constructors of Qmi.MessageDmsUimGetCkStatusOutput
 
         _init(...args: any[]): void;
@@ -30899,6 +31267,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetIccidOutput {
+        static $gtype: GObject.GType<MessageDmsUimGetIccidOutput>;
+
         // Constructors of Qmi.MessageDmsUimGetIccidOutput
 
         _init(...args: any[]): void;
@@ -30932,6 +31302,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetImsiOutput {
+        static $gtype: GObject.GType<MessageDmsUimGetImsiOutput>;
+
         // Constructors of Qmi.MessageDmsUimGetImsiOutput
 
         _init(...args: any[]): void;
@@ -30965,6 +31337,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetPinStatusOutput {
+        static $gtype: GObject.GType<MessageDmsUimGetPinStatusOutput>;
+
         // Constructors of Qmi.MessageDmsUimGetPinStatusOutput
 
         _init(...args: any[]): void;
@@ -31003,6 +31377,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimGetStateOutput {
+        static $gtype: GObject.GType<MessageDmsUimGetStateOutput>;
+
         // Constructors of Qmi.MessageDmsUimGetStateOutput
 
         _init(...args: any[]): void;
@@ -31036,6 +31412,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimSetCkProtectionInput {
+        static $gtype: GObject.GType<MessageDmsUimSetCkProtectionInput>;
+
         // Constructors of Qmi.MessageDmsUimSetCkProtectionInput
 
         constructor(properties?: Partial<{}>);
@@ -31079,6 +31457,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimSetCkProtectionOutput {
+        static $gtype: GObject.GType<MessageDmsUimSetCkProtectionOutput>;
+
         // Constructors of Qmi.MessageDmsUimSetCkProtectionOutput
 
         _init(...args: any[]): void;
@@ -31112,6 +31492,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimSetPinProtectionInput {
+        static $gtype: GObject.GType<MessageDmsUimSetPinProtectionInput>;
+
         // Constructors of Qmi.MessageDmsUimSetPinProtectionInput
 
         constructor(properties?: Partial<{}>);
@@ -31155,6 +31537,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimSetPinProtectionOutput {
+        static $gtype: GObject.GType<MessageDmsUimSetPinProtectionOutput>;
+
         // Constructors of Qmi.MessageDmsUimSetPinProtectionOutput
 
         _init(...args: any[]): void;
@@ -31188,6 +31572,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimUnblockCkInput {
+        static $gtype: GObject.GType<MessageDmsUimUnblockCkInput>;
+
         // Constructors of Qmi.MessageDmsUimUnblockCkInput
 
         constructor(properties?: Partial<{}>);
@@ -31226,6 +31612,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimUnblockCkOutput {
+        static $gtype: GObject.GType<MessageDmsUimUnblockCkOutput>;
+
         // Constructors of Qmi.MessageDmsUimUnblockCkOutput
 
         _init(...args: any[]): void;
@@ -31259,6 +31647,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimUnblockPinInput {
+        static $gtype: GObject.GType<MessageDmsUimUnblockPinInput>;
+
         // Constructors of Qmi.MessageDmsUimUnblockPinInput
 
         constructor(properties?: Partial<{}>);
@@ -31298,6 +31688,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimUnblockPinOutput {
+        static $gtype: GObject.GType<MessageDmsUimUnblockPinOutput>;
+
         // Constructors of Qmi.MessageDmsUimUnblockPinOutput
 
         _init(...args: any[]): void;
@@ -31331,6 +31723,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimVerifyPinInput {
+        static $gtype: GObject.GType<MessageDmsUimVerifyPinInput>;
+
         // Constructors of Qmi.MessageDmsUimVerifyPinInput
 
         constructor(properties?: Partial<{}>);
@@ -31369,6 +31763,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsUimVerifyPinOutput {
+        static $gtype: GObject.GType<MessageDmsUimVerifyPinOutput>;
+
         // Constructors of Qmi.MessageDmsUimVerifyPinOutput
 
         _init(...args: any[]): void;
@@ -31402,6 +31798,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsValidateServiceProgrammingCodeInput {
+        static $gtype: GObject.GType<MessageDmsValidateServiceProgrammingCodeInput>;
+
         // Constructors of Qmi.MessageDmsValidateServiceProgrammingCodeInput
 
         constructor(properties?: Partial<{}>);
@@ -31439,6 +31837,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsValidateServiceProgrammingCodeOutput {
+        static $gtype: GObject.GType<MessageDmsValidateServiceProgrammingCodeOutput>;
+
         // Constructors of Qmi.MessageDmsValidateServiceProgrammingCodeOutput
 
         _init(...args: any[]): void;
@@ -31467,6 +31867,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsWriteUserDataInput {
+        static $gtype: GObject.GType<MessageDmsWriteUserDataInput>;
+
         // Constructors of Qmi.MessageDmsWriteUserDataInput
 
         constructor(properties?: Partial<{}>);
@@ -31504,6 +31906,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDmsWriteUserDataOutput {
+        static $gtype: GObject.GType<MessageDmsWriteUserDataOutput>;
+
         // Constructors of Qmi.MessageDmsWriteUserDataOutput
 
         _init(...args: any[]): void;
@@ -31532,6 +31936,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDpmClosePortOutput {
+        static $gtype: GObject.GType<MessageDpmClosePortOutput>;
+
         // Constructors of Qmi.MessageDpmClosePortOutput
 
         _init(...args: any[]): void;
@@ -31560,6 +31966,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDpmOpenPortInput {
+        static $gtype: GObject.GType<MessageDpmOpenPortInput>;
+
         // Constructors of Qmi.MessageDpmOpenPortInput
 
         constructor(properties?: Partial<{}>);
@@ -31631,6 +32039,8 @@ export namespace Qmi {
      * A QmiMessageDpmOpenPortInputControlPortsElement struct.
      */
     class MessageDpmOpenPortInputControlPortsElement {
+        static $gtype: GObject.GType<MessageDpmOpenPortInputControlPortsElement>;
+
         // Own fields of Qmi.MessageDpmOpenPortInputControlPortsElement
 
         port_name: string;
@@ -31646,6 +32056,8 @@ export namespace Qmi {
      * A QmiMessageDpmOpenPortInputHardwareDataPortsElement struct.
      */
     class MessageDpmOpenPortInputHardwareDataPortsElement {
+        static $gtype: GObject.GType<MessageDpmOpenPortInputHardwareDataPortsElement>;
+
         // Own fields of Qmi.MessageDpmOpenPortInputHardwareDataPortsElement
 
         endpoint_type: DataEndpointType;
@@ -31662,6 +32074,8 @@ export namespace Qmi {
      * A QmiMessageDpmOpenPortInputSoftwareDataPortsElement struct.
      */
     class MessageDpmOpenPortInputSoftwareDataPortsElement {
+        static $gtype: GObject.GType<MessageDpmOpenPortInputSoftwareDataPortsElement>;
+
         // Own fields of Qmi.MessageDpmOpenPortInputSoftwareDataPortsElement
 
         endpoint_type: DataEndpointType;
@@ -31678,6 +32092,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDpmOpenPortOutput {
+        static $gtype: GObject.GType<MessageDpmOpenPortOutput>;
+
         // Constructors of Qmi.MessageDpmOpenPortOutput
 
         _init(...args: any[]): void;
@@ -31706,6 +32122,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdGetApnInfoInput {
+        static $gtype: GObject.GType<MessageDsdGetApnInfoInput>;
+
         // Constructors of Qmi.MessageDsdGetApnInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -31743,6 +32161,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdGetApnInfoOutput {
+        static $gtype: GObject.GType<MessageDsdGetApnInfoOutput>;
+
         // Constructors of Qmi.MessageDsdGetApnInfoOutput
 
         _init(...args: any[]): void;
@@ -31776,6 +32196,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdGetSystemStatusOutput {
+        static $gtype: GObject.GType<MessageDsdGetSystemStatusOutput>;
+
         // Constructors of Qmi.MessageDsdGetSystemStatusOutput
 
         _init(...args: any[]): void;
@@ -31811,6 +32233,8 @@ export namespace Qmi {
      * A QmiMessageDsdGetSystemStatusOutputAvailableSystemsSystem struct.
      */
     class MessageDsdGetSystemStatusOutputAvailableSystemsSystem {
+        static $gtype: GObject.GType<MessageDsdGetSystemStatusOutputAvailableSystemsSystem>;
+
         // Own fields of Qmi.MessageDsdGetSystemStatusOutputAvailableSystemsSystem
 
         technology: DsdDataSystemNetworkType;
@@ -31827,6 +32251,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdSetApnTypeInput {
+        static $gtype: GObject.GType<MessageDsdSetApnTypeInput>;
+
         // Constructors of Qmi.MessageDsdSetApnTypeInput
 
         constructor(properties?: Partial<{}>);
@@ -31876,6 +32302,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdSetApnTypeOutput {
+        static $gtype: GObject.GType<MessageDsdSetApnTypeOutput>;
+
         // Constructors of Qmi.MessageDsdSetApnTypeOutput
 
         _init(...args: any[]): void;
@@ -31904,6 +32332,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdSystemStatusChangeInput {
+        static $gtype: GObject.GType<MessageDsdSystemStatusChangeInput>;
+
         // Constructors of Qmi.MessageDsdSystemStatusChangeInput
 
         constructor(properties?: Partial<{}>);
@@ -31941,6 +32371,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageDsdSystemStatusChangeOutput {
+        static $gtype: GObject.GType<MessageDsdSystemStatusChangeOutput>;
+
         // Constructors of Qmi.MessageDsdSystemStatusChangeOutput
 
         _init(...args: any[]): void;
@@ -31969,6 +32401,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageFoxGetFirmwareVersionInput {
+        static $gtype: GObject.GType<MessageFoxGetFirmwareVersionInput>;
+
         // Constructors of Qmi.MessageFoxGetFirmwareVersionInput
 
         constructor(properties?: Partial<{}>);
@@ -32006,6 +32440,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageFoxGetFirmwareVersionOutput {
+        static $gtype: GObject.GType<MessageFoxGetFirmwareVersionOutput>;
+
         // Constructors of Qmi.MessageFoxGetFirmwareVersionOutput
 
         _init(...args: any[]): void;
@@ -32039,6 +32475,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsGetFirmwareListInput {
+        static $gtype: GObject.GType<MessageGasDmsGetFirmwareListInput>;
+
         // Constructors of Qmi.MessageGasDmsGetFirmwareListInput
 
         constructor(properties?: Partial<{}>);
@@ -32109,6 +32547,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsGetFirmwareListOutput {
+        static $gtype: GObject.GType<MessageGasDmsGetFirmwareListOutput>;
+
         // Constructors of Qmi.MessageGasDmsGetFirmwareListOutput
 
         _init(...args: any[]): void;
@@ -32162,6 +32602,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsGetUsbCompositionOutput {
+        static $gtype: GObject.GType<MessageGasDmsGetUsbCompositionOutput>;
+
         // Constructors of Qmi.MessageGasDmsGetUsbCompositionOutput
 
         _init(...args: any[]): void;
@@ -32215,6 +32657,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsSetActiveFirmwareInput {
+        static $gtype: GObject.GType<MessageGasDmsSetActiveFirmwareInput>;
+
         // Constructors of Qmi.MessageGasDmsSetActiveFirmwareInput
 
         constructor(properties?: Partial<{}>);
@@ -32274,6 +32718,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsSetActiveFirmwareOutput {
+        static $gtype: GObject.GType<MessageGasDmsSetActiveFirmwareOutput>;
+
         // Constructors of Qmi.MessageGasDmsSetActiveFirmwareOutput
 
         _init(...args: any[]): void;
@@ -32302,6 +32748,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsSetUsbCompositionInput {
+        static $gtype: GObject.GType<MessageGasDmsSetUsbCompositionInput>;
+
         // Constructors of Qmi.MessageGasDmsSetUsbCompositionInput
 
         constructor(properties?: Partial<{}>);
@@ -32383,6 +32831,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGasDmsSetUsbCompositionOutput {
+        static $gtype: GObject.GType<MessageGasDmsSetUsbCompositionOutput>;
+
         // Constructors of Qmi.MessageGasDmsSetUsbCompositionOutput
 
         _init(...args: any[]): void;
@@ -32411,6 +32861,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGmsTestGetValueOutput {
+        static $gtype: GObject.GType<MessageGmsTestGetValueOutput>;
+
         // Constructors of Qmi.MessageGmsTestGetValueOutput
 
         _init(...args: any[]): void;
@@ -32449,6 +32901,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGmsTestSetValueInput {
+        static $gtype: GObject.GType<MessageGmsTestSetValueInput>;
+
         // Constructors of Qmi.MessageGmsTestSetValueInput
 
         constructor(properties?: Partial<{}>);
@@ -32497,6 +32951,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageGmsTestSetValueOutput {
+        static $gtype: GObject.GType<MessageGmsTestSetValueOutput>;
+
         // Constructors of Qmi.MessageGmsTestSetValueOutput
 
         _init(...args: any[]): void;
@@ -32525,6 +32981,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocDeleteAssistanceDataInput {
+        static $gtype: GObject.GType<MessageLocDeleteAssistanceDataInput>;
+
         // Constructors of Qmi.MessageLocDeleteAssistanceDataInput
 
         constructor(properties?: Partial<{}>);
@@ -32608,6 +33066,8 @@ export namespace Qmi {
      * A QmiMessageLocDeleteAssistanceDataInputDeleteSvInfoElement struct.
      */
     class MessageLocDeleteAssistanceDataInputDeleteSvInfoElement {
+        static $gtype: GObject.GType<MessageLocDeleteAssistanceDataInputDeleteSvInfoElement>;
+
         // Own fields of Qmi.MessageLocDeleteAssistanceDataInputDeleteSvInfoElement
 
         gnss_sv_id: number;
@@ -32624,6 +33084,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocDeleteAssistanceDataOutput {
+        static $gtype: GObject.GType<MessageLocDeleteAssistanceDataOutput>;
+
         // Constructors of Qmi.MessageLocDeleteAssistanceDataOutput
 
         _init(...args: any[]): void;
@@ -32652,6 +33114,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetEngineLockOutput {
+        static $gtype: GObject.GType<MessageLocGetEngineLockOutput>;
+
         // Constructors of Qmi.MessageLocGetEngineLockOutput
 
         _init(...args: any[]): void;
@@ -32680,6 +33144,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetNmeaTypesOutput {
+        static $gtype: GObject.GType<MessageLocGetNmeaTypesOutput>;
+
         // Constructors of Qmi.MessageLocGetNmeaTypesOutput
 
         _init(...args: any[]): void;
@@ -32708,6 +33174,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetOperationModeOutput {
+        static $gtype: GObject.GType<MessageLocGetOperationModeOutput>;
+
         // Constructors of Qmi.MessageLocGetOperationModeOutput
 
         _init(...args: any[]): void;
@@ -32736,6 +33204,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetPredictedOrbitsDataSourceOutput {
+        static $gtype: GObject.GType<MessageLocGetPredictedOrbitsDataSourceOutput>;
+
         // Constructors of Qmi.MessageLocGetPredictedOrbitsDataSourceOutput
 
         _init(...args: any[]): void;
@@ -32764,6 +33234,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetServerInput {
+        static $gtype: GObject.GType<MessageLocGetServerInput>;
+
         // Constructors of Qmi.MessageLocGetServerInput
 
         constructor(properties?: Partial<{}>);
@@ -32812,6 +33284,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocGetServerOutput {
+        static $gtype: GObject.GType<MessageLocGetServerOutput>;
+
         // Constructors of Qmi.MessageLocGetServerOutput
 
         _init(...args: any[]): void;
@@ -32840,6 +33314,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocInjectPredictedOrbitsDataInput {
+        static $gtype: GObject.GType<MessageLocInjectPredictedOrbitsDataInput>;
+
         // Constructors of Qmi.MessageLocInjectPredictedOrbitsDataInput
 
         constructor(properties?: Partial<{}>);
@@ -32921,6 +33397,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocInjectPredictedOrbitsDataOutput {
+        static $gtype: GObject.GType<MessageLocInjectPredictedOrbitsDataOutput>;
+
         // Constructors of Qmi.MessageLocInjectPredictedOrbitsDataOutput
 
         _init(...args: any[]): void;
@@ -32949,6 +33427,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocInjectXtraDataInput {
+        static $gtype: GObject.GType<MessageLocInjectXtraDataInput>;
+
         // Constructors of Qmi.MessageLocInjectXtraDataInput
 
         constructor(properties?: Partial<{}>);
@@ -33019,6 +33499,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocInjectXtraDataOutput {
+        static $gtype: GObject.GType<MessageLocInjectXtraDataOutput>;
+
         // Constructors of Qmi.MessageLocInjectXtraDataOutput
 
         _init(...args: any[]): void;
@@ -33047,6 +33529,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocRegisterEventsInput {
+        static $gtype: GObject.GType<MessageLocRegisterEventsInput>;
+
         // Constructors of Qmi.MessageLocRegisterEventsInput
 
         constructor(properties?: Partial<{}>);
@@ -33084,6 +33568,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocRegisterEventsOutput {
+        static $gtype: GObject.GType<MessageLocRegisterEventsOutput>;
+
         // Constructors of Qmi.MessageLocRegisterEventsOutput
 
         _init(...args: any[]): void;
@@ -33112,6 +33598,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetEngineLockInput {
+        static $gtype: GObject.GType<MessageLocSetEngineLockInput>;
+
         // Constructors of Qmi.MessageLocSetEngineLockInput
 
         constructor(properties?: Partial<{}>);
@@ -33149,6 +33637,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetEngineLockOutput {
+        static $gtype: GObject.GType<MessageLocSetEngineLockOutput>;
+
         // Constructors of Qmi.MessageLocSetEngineLockOutput
 
         _init(...args: any[]): void;
@@ -33177,6 +33667,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetNmeaTypesInput {
+        static $gtype: GObject.GType<MessageLocSetNmeaTypesInput>;
+
         // Constructors of Qmi.MessageLocSetNmeaTypesInput
 
         constructor(properties?: Partial<{}>);
@@ -33214,6 +33706,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetNmeaTypesOutput {
+        static $gtype: GObject.GType<MessageLocSetNmeaTypesOutput>;
+
         // Constructors of Qmi.MessageLocSetNmeaTypesOutput
 
         _init(...args: any[]): void;
@@ -33242,6 +33736,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetOperationModeInput {
+        static $gtype: GObject.GType<MessageLocSetOperationModeInput>;
+
         // Constructors of Qmi.MessageLocSetOperationModeInput
 
         constructor(properties?: Partial<{}>);
@@ -33279,6 +33775,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetOperationModeOutput {
+        static $gtype: GObject.GType<MessageLocSetOperationModeOutput>;
+
         // Constructors of Qmi.MessageLocSetOperationModeOutput
 
         _init(...args: any[]): void;
@@ -33307,6 +33805,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetServerInput {
+        static $gtype: GObject.GType<MessageLocSetServerInput>;
+
         // Constructors of Qmi.MessageLocSetServerInput
 
         constructor(properties?: Partial<{}>);
@@ -33379,6 +33879,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocSetServerOutput {
+        static $gtype: GObject.GType<MessageLocSetServerOutput>;
+
         // Constructors of Qmi.MessageLocSetServerOutput
 
         _init(...args: any[]): void;
@@ -33407,6 +33909,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocStartInput {
+        static $gtype: GObject.GType<MessageLocStartInput>;
+
         // Constructors of Qmi.MessageLocStartInput
 
         constructor(properties?: Partial<{}>);
@@ -33477,6 +33981,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocStartOutput {
+        static $gtype: GObject.GType<MessageLocStartOutput>;
+
         // Constructors of Qmi.MessageLocStartOutput
 
         _init(...args: any[]): void;
@@ -33505,6 +34011,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocStopInput {
+        static $gtype: GObject.GType<MessageLocStopInput>;
+
         // Constructors of Qmi.MessageLocStopInput
 
         constructor(properties?: Partial<{}>);
@@ -33542,6 +34050,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageLocStopOutput {
+        static $gtype: GObject.GType<MessageLocStopOutput>;
+
         // Constructors of Qmi.MessageLocStopOutput
 
         _init(...args: any[]): void;
@@ -33570,6 +34080,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasAttachDetachInput {
+        static $gtype: GObject.GType<MessageNasAttachDetachInput>;
+
         // Constructors of Qmi.MessageNasAttachDetachInput
 
         constructor(properties?: Partial<{}>);
@@ -33607,6 +34119,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasAttachDetachOutput {
+        static $gtype: GObject.GType<MessageNasAttachDetachOutput>;
+
         // Constructors of Qmi.MessageNasAttachDetachOutput
 
         _init(...args: any[]): void;
@@ -33635,6 +34149,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasConfigSignalInfoInput {
+        static $gtype: GObject.GType<MessageNasConfigSignalInfoInput>;
+
         // Constructors of Qmi.MessageNasConfigSignalInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -33761,6 +34277,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasConfigSignalInfoOutput {
+        static $gtype: GObject.GType<MessageNasConfigSignalInfoOutput>;
+
         // Constructors of Qmi.MessageNasConfigSignalInfoOutput
 
         _init(...args: any[]): void;
@@ -33789,6 +34307,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasConfigSignalInfoV2Input {
+        static $gtype: GObject.GType<MessageNasConfigSignalInfoV2Input>;
+
         // Constructors of Qmi.MessageNasConfigSignalInfoV2Input
 
         constructor(properties?: Partial<{}>);
@@ -34213,6 +34733,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasConfigSignalInfoV2Output {
+        static $gtype: GObject.GType<MessageNasConfigSignalInfoV2Output>;
+
         // Constructors of Qmi.MessageNasConfigSignalInfoV2Output
 
         _init(...args: any[]): void;
@@ -34241,6 +34763,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasForceNetworkSearchOutput {
+        static $gtype: GObject.GType<MessageNasForceNetworkSearchOutput>;
+
         // Constructors of Qmi.MessageNasForceNetworkSearchOutput
 
         _init(...args: any[]): void;
@@ -34269,6 +34793,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetCdmaPositionInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetCdmaPositionInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetCdmaPositionInfoOutput
 
         _init(...args: any[]): void;
@@ -34308,6 +34834,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation struct.
      */
     class MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation {
+        static $gtype: GObject.GType<MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation>;
+
         // Own fields of Qmi.MessageNasGetCdmaPositionInfoOutputCdmaPositionInfoBasestationsBasestation
 
         pilot_type: NasCdmaPilotType;
@@ -34330,6 +34858,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetCellLocationInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetCellLocationInfoOutput
 
         _init(...args: any[]): void;
@@ -34499,6 +35029,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputGeranInfoV2CellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputGeranInfoV2CellElement
 
         cell_id: number;
@@ -34527,6 +35059,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementCellElement
 
         physical_cell_id: number;
@@ -34556,6 +35090,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputInterfrequencyLteInfoFrequencyElementGir
 
         eutra_absolute_rf_channel_number: number;
@@ -34582,6 +35118,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputIntrafrequencyLteInfoV2CellElement
 
         physical_cell_id: number;
@@ -34608,6 +35146,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementCellElement
 
         geran_absolute_rf_channel_number: number;
@@ -34639,6 +35179,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringGsmFrequencyElementGir
 
         cell_reselection_priority: number;
@@ -34665,6 +35207,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementCellElement
 
         primary_scrambling_code: number;
@@ -34692,6 +35236,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputLteInfoNeighboringWcdmaFrequencyElementGir
 
         utra_absolute_rf_channel_number: number;
@@ -34718,6 +35264,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement struct.
      */
     class MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputUmtsInfoNeighboringLteFrequencyElement
 
         eutra_absolute_rf_channel_number: number;
@@ -34746,6 +35294,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement struct.
      */
     class MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputUmtsInfoV2CellElement
 
         utra_absolute_rf_channel_number: number;
@@ -34770,6 +35320,8 @@ export namespace Qmi {
      * A QmiMessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement struct.
      */
     class MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement {
+        static $gtype: GObject.GType<MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement>;
+
         // Own fields of Qmi.MessageNasGetCellLocationInfoOutputUmtsInfoV2NeighboringGeranElement
 
         geran_absolute_rf_channel_number: number;
@@ -34795,6 +35347,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetDrxOutput {
+        static $gtype: GObject.GType<MessageNasGetDrxOutput>;
+
         // Constructors of Qmi.MessageNasGetDrxOutput
 
         _init(...args: any[]): void;
@@ -34828,6 +35382,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetHomeNetworkOutput {
+        static $gtype: GObject.GType<MessageNasGetHomeNetworkOutput>;
+
         // Constructors of Qmi.MessageNasGetHomeNetworkOutput
 
         _init(...args: any[]): void;
@@ -34888,6 +35444,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetLteCphyCaInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetLteCphyCaInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetLteCphyCaInfoOutput
 
         _init(...args: any[]): void;
@@ -34950,6 +35508,8 @@ export namespace Qmi {
      * A QmiMessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc struct.
      */
     class MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc {
+        static $gtype: GObject.GType<MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc>;
+
         // Own fields of Qmi.MessageNasGetLteCphyCaInfoOutputPhyCaAggSecondaryCellsSsc
 
         physical_cell_id: number;
@@ -34969,6 +35529,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetOperatorNameOutput {
+        static $gtype: GObject.GType<MessageNasGetOperatorNameOutput>;
+
         // Constructors of Qmi.MessageNasGetOperatorNameOutput
 
         _init(...args: any[]): void;
@@ -35035,6 +35597,8 @@ export namespace Qmi {
      * A QmiMessageNasGetOperatorNameOutputOperatorPlmnListElement struct.
      */
     class MessageNasGetOperatorNameOutputOperatorPlmnListElement {
+        static $gtype: GObject.GType<MessageNasGetOperatorNameOutputOperatorPlmnListElement>;
+
         // Own fields of Qmi.MessageNasGetOperatorNameOutputOperatorPlmnListElement
 
         mcc: string;
@@ -35061,6 +35625,8 @@ export namespace Qmi {
      * A QmiMessageNasGetOperatorNameOutputOperatorPlmnNameElement struct.
      */
     class MessageNasGetOperatorNameOutputOperatorPlmnNameElement {
+        static $gtype: GObject.GType<MessageNasGetOperatorNameOutputOperatorPlmnNameElement>;
+
         // Own fields of Qmi.MessageNasGetOperatorNameOutputOperatorPlmnNameElement
 
         name_encoding: NasPlmnEncodingScheme;
@@ -35080,6 +35646,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetPlmnNameInput {
+        static $gtype: GObject.GType<MessageNasGetPlmnNameInput>;
+
         // Constructors of Qmi.MessageNasGetPlmnNameInput
 
         constructor(properties?: Partial<{}>);
@@ -35195,6 +35763,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetPlmnNameOutput {
+        static $gtype: GObject.GType<MessageNasGetPlmnNameOutput>;
+
         // Constructors of Qmi.MessageNasGetPlmnNameOutput
 
         _init(...args: any[]): void;
@@ -35267,6 +35837,8 @@ export namespace Qmi {
      * A QmiMessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement struct.
      */
     class MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement {
+        static $gtype: GObject.GType<MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement>;
+
         // Own fields of Qmi.MessageNasGetPlmnNameOutputPlmnNameWithLanguageIdElement
 
         long_name: any[];
@@ -35283,6 +35855,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetPreferredNetworksOutput {
+        static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutput>;
+
         // Constructors of Qmi.MessageNasGetPreferredNetworksOutput
 
         _init(...args: any[]): void;
@@ -35329,6 +35903,8 @@ export namespace Qmi {
      * A QmiMessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement struct.
      */
     class MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement {
+        static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement>;
+
         // Own fields of Qmi.MessageNasGetPreferredNetworksOutputMncPcsDigitIncludeStatusElement
 
         mcc: number;
@@ -35351,6 +35927,8 @@ export namespace Qmi {
      * A QmiMessageNasGetPreferredNetworksOutputPreferredNetworksElement struct.
      */
     class MessageNasGetPreferredNetworksOutputPreferredNetworksElement {
+        static $gtype: GObject.GType<MessageNasGetPreferredNetworksOutputPreferredNetworksElement>;
+
         // Own fields of Qmi.MessageNasGetPreferredNetworksOutputPreferredNetworksElement
 
         mcc: number;
@@ -35367,6 +35945,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetRfBandInformationOutput {
+        static $gtype: GObject.GType<MessageNasGetRfBandInformationOutput>;
+
         // Constructors of Qmi.MessageNasGetRfBandInformationOutput
 
         _init(...args: any[]): void;
@@ -35418,6 +35998,8 @@ export namespace Qmi {
      * A QmiMessageNasGetRfBandInformationOutputBandwidthListElement struct.
      */
     class MessageNasGetRfBandInformationOutputBandwidthListElement {
+        static $gtype: GObject.GType<MessageNasGetRfBandInformationOutputBandwidthListElement>;
+
         // Own fields of Qmi.MessageNasGetRfBandInformationOutputBandwidthListElement
 
         radio_interface: NasRadioInterface;
@@ -35432,6 +36014,8 @@ export namespace Qmi {
      * A QmiMessageNasGetRfBandInformationOutputExtendedListElement struct.
      */
     class MessageNasGetRfBandInformationOutputExtendedListElement {
+        static $gtype: GObject.GType<MessageNasGetRfBandInformationOutputExtendedListElement>;
+
         // Own fields of Qmi.MessageNasGetRfBandInformationOutputExtendedListElement
 
         radio_interface: NasRadioInterface;
@@ -35447,6 +36031,8 @@ export namespace Qmi {
      * A QmiMessageNasGetRfBandInformationOutputListElement struct.
      */
     class MessageNasGetRfBandInformationOutputListElement {
+        static $gtype: GObject.GType<MessageNasGetRfBandInformationOutputListElement>;
+
         // Own fields of Qmi.MessageNasGetRfBandInformationOutputListElement
 
         radio_interface: NasRadioInterface;
@@ -35463,6 +36049,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetServingSystemOutput {
+        static $gtype: GObject.GType<MessageNasGetServingSystemOutput>;
+
         // Constructors of Qmi.MessageNasGetServingSystemOutput
 
         _init(...args: any[]): void;
@@ -35632,6 +36220,8 @@ export namespace Qmi {
      * A QmiMessageNasGetServingSystemOutputRoamingIndicatorListElement struct.
      */
     class MessageNasGetServingSystemOutputRoamingIndicatorListElement {
+        static $gtype: GObject.GType<MessageNasGetServingSystemOutputRoamingIndicatorListElement>;
+
         // Own fields of Qmi.MessageNasGetServingSystemOutputRoamingIndicatorListElement
 
         radio_interface: NasRadioInterface;
@@ -35647,6 +36237,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSignalInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetSignalInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetSignalInfoOutput
 
         _init(...args: any[]): void;
@@ -35725,6 +36317,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSignalStrengthInput {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthInput>;
+
         // Constructors of Qmi.MessageNasGetSignalStrengthInput
 
         constructor(properties?: Partial<{}>);
@@ -35762,6 +36356,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSignalStrengthOutput {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthOutput>;
+
         // Constructors of Qmi.MessageNasGetSignalStrengthOutput
 
         _init(...args: any[]): void;
@@ -35851,6 +36447,8 @@ export namespace Qmi {
      * A QmiMessageNasGetSignalStrengthOutputEcioListElement struct.
      */
     class MessageNasGetSignalStrengthOutputEcioListElement {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthOutputEcioListElement>;
+
         // Own fields of Qmi.MessageNasGetSignalStrengthOutputEcioListElement
 
         ecio: number;
@@ -35865,6 +36463,8 @@ export namespace Qmi {
      * A QmiMessageNasGetSignalStrengthOutputErrorRateListElement struct.
      */
     class MessageNasGetSignalStrengthOutputErrorRateListElement {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthOutputErrorRateListElement>;
+
         // Own fields of Qmi.MessageNasGetSignalStrengthOutputErrorRateListElement
 
         rate: number;
@@ -35879,6 +36479,8 @@ export namespace Qmi {
      * A QmiMessageNasGetSignalStrengthOutputRssiListElement struct.
      */
     class MessageNasGetSignalStrengthOutputRssiListElement {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthOutputRssiListElement>;
+
         // Own fields of Qmi.MessageNasGetSignalStrengthOutputRssiListElement
 
         rssi: number;
@@ -35893,6 +36495,8 @@ export namespace Qmi {
      * A QmiMessageNasGetSignalStrengthOutputStrengthListElement struct.
      */
     class MessageNasGetSignalStrengthOutputStrengthListElement {
+        static $gtype: GObject.GType<MessageNasGetSignalStrengthOutputStrengthListElement>;
+
         // Own fields of Qmi.MessageNasGetSignalStrengthOutputStrengthListElement
 
         strength: number;
@@ -35908,6 +36512,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageNasGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageNasGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -35941,6 +36547,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSystemInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetSystemInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetSystemInfoOutput
 
         _init(...args: any[]): void;
@@ -36340,6 +36948,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetSystemSelectionPreferenceOutput {
+        static $gtype: GObject.GType<MessageNasGetSystemSelectionPreferenceOutput>;
+
         // Constructors of Qmi.MessageNasGetSystemSelectionPreferenceOutput
 
         _init(...args: any[]): void;
@@ -36463,6 +37073,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetTechnologyPreferenceOutput {
+        static $gtype: GObject.GType<MessageNasGetTechnologyPreferenceOutput>;
+
         // Constructors of Qmi.MessageNasGetTechnologyPreferenceOutput
 
         _init(...args: any[]): void;
@@ -36501,6 +37113,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetTxRxInfoInput {
+        static $gtype: GObject.GType<MessageNasGetTxRxInfoInput>;
+
         // Constructors of Qmi.MessageNasGetTxRxInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -36538,6 +37152,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasGetTxRxInfoOutput {
+        static $gtype: GObject.GType<MessageNasGetTxRxInfoOutput>;
+
         // Constructors of Qmi.MessageNasGetTxRxInfoOutput
 
         _init(...args: any[]): void;
@@ -36591,6 +37207,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasInitiateNetworkRegisterInput {
+        static $gtype: GObject.GType<MessageNasInitiateNetworkRegisterInput>;
+
         // Constructors of Qmi.MessageNasInitiateNetworkRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -36667,6 +37285,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasInitiateNetworkRegisterOutput {
+        static $gtype: GObject.GType<MessageNasInitiateNetworkRegisterOutput>;
+
         // Constructors of Qmi.MessageNasInitiateNetworkRegisterOutput
 
         _init(...args: any[]): void;
@@ -36695,6 +37315,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasNetworkScanInput {
+        static $gtype: GObject.GType<MessageNasNetworkScanInput>;
+
         // Constructors of Qmi.MessageNasNetworkScanInput
 
         constructor(properties?: Partial<{}>);
@@ -36732,6 +37354,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasNetworkScanOutput {
+        static $gtype: GObject.GType<MessageNasNetworkScanOutput>;
+
         // Constructors of Qmi.MessageNasNetworkScanOutput
 
         _init(...args: any[]): void;
@@ -36791,6 +37415,8 @@ export namespace Qmi {
      * A QmiMessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement struct.
      */
     class MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement {
+        static $gtype: GObject.GType<MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement>;
+
         // Own fields of Qmi.MessageNasNetworkScanOutputMncPcsDigitIncludeStatusElement
 
         mcc: number;
@@ -36813,6 +37439,8 @@ export namespace Qmi {
      * A QmiMessageNasNetworkScanOutputNetworkInformationElement struct.
      */
     class MessageNasNetworkScanOutputNetworkInformationElement {
+        static $gtype: GObject.GType<MessageNasNetworkScanOutputNetworkInformationElement>;
+
         // Own fields of Qmi.MessageNasNetworkScanOutputNetworkInformationElement
 
         mcc: number;
@@ -36829,6 +37457,8 @@ export namespace Qmi {
      * A QmiMessageNasNetworkScanOutputRadioAccessTechnologyElement struct.
      */
     class MessageNasNetworkScanOutputRadioAccessTechnologyElement {
+        static $gtype: GObject.GType<MessageNasNetworkScanOutputRadioAccessTechnologyElement>;
+
         // Own fields of Qmi.MessageNasNetworkScanOutputRadioAccessTechnologyElement
 
         mcc: number;
@@ -36845,6 +37475,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasRegisterIndicationsInput {
+        static $gtype: GObject.GType<MessageNasRegisterIndicationsInput>;
+
         // Constructors of Qmi.MessageNasRegisterIndicationsInput
 
         constructor(properties?: Partial<{}>);
@@ -37051,6 +37683,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasRegisterIndicationsOutput {
+        static $gtype: GObject.GType<MessageNasRegisterIndicationsOutput>;
+
         // Constructors of Qmi.MessageNasRegisterIndicationsOutput
 
         _init(...args: any[]): void;
@@ -37079,6 +37713,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasResetOutput {
+        static $gtype: GObject.GType<MessageNasResetOutput>;
+
         // Constructors of Qmi.MessageNasResetOutput
 
         _init(...args: any[]): void;
@@ -37107,6 +37743,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetEventReportInput {
+        static $gtype: GObject.GType<MessageNasSetEventReportInput>;
+
         // Constructors of Qmi.MessageNasSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -37277,6 +37915,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetEventReportOutput {
+        static $gtype: GObject.GType<MessageNasSetEventReportOutput>;
+
         // Constructors of Qmi.MessageNasSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -37305,6 +37945,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetPreferredNetworksInput {
+        static $gtype: GObject.GType<MessageNasSetPreferredNetworksInput>;
+
         // Constructors of Qmi.MessageNasSetPreferredNetworksInput
 
         constructor(properties?: Partial<{}>);
@@ -37376,6 +38018,8 @@ export namespace Qmi {
      * A QmiMessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement struct.
      */
     class MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement {
+        static $gtype: GObject.GType<MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement>;
+
         // Own fields of Qmi.MessageNasSetPreferredNetworksInputMncPcsDigitIncludeStatusElement
 
         mcc: number;
@@ -37398,6 +38042,8 @@ export namespace Qmi {
      * A QmiMessageNasSetPreferredNetworksInputPreferredNetworksElement struct.
      */
     class MessageNasSetPreferredNetworksInputPreferredNetworksElement {
+        static $gtype: GObject.GType<MessageNasSetPreferredNetworksInputPreferredNetworksElement>;
+
         // Own fields of Qmi.MessageNasSetPreferredNetworksInputPreferredNetworksElement
 
         mcc: number;
@@ -37414,6 +38060,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetPreferredNetworksOutput {
+        static $gtype: GObject.GType<MessageNasSetPreferredNetworksOutput>;
+
         // Constructors of Qmi.MessageNasSetPreferredNetworksOutput
 
         _init(...args: any[]): void;
@@ -37442,6 +38090,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetSystemSelectionPreferenceInput {
+        static $gtype: GObject.GType<MessageNasSetSystemSelectionPreferenceInput>;
+
         // Constructors of Qmi.MessageNasSetSystemSelectionPreferenceInput
 
         constructor(properties?: Partial<{}>);
@@ -37727,6 +38377,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetSystemSelectionPreferenceOutput {
+        static $gtype: GObject.GType<MessageNasSetSystemSelectionPreferenceOutput>;
+
         // Constructors of Qmi.MessageNasSetSystemSelectionPreferenceOutput
 
         _init(...args: any[]): void;
@@ -37755,6 +38407,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetTechnologyPreferenceInput {
+        static $gtype: GObject.GType<MessageNasSetTechnologyPreferenceInput>;
+
         // Constructors of Qmi.MessageNasSetTechnologyPreferenceInput
 
         constructor(properties?: Partial<{}>);
@@ -37796,6 +38450,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSetTechnologyPreferenceOutput {
+        static $gtype: GObject.GType<MessageNasSetTechnologyPreferenceOutput>;
+
         // Constructors of Qmi.MessageNasSetTechnologyPreferenceOutput
 
         _init(...args: any[]): void;
@@ -37824,6 +38480,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageNasSwiGetStatusOutput {
+        static $gtype: GObject.GType<MessageNasSwiGetStatusOutput>;
+
         // Constructors of Qmi.MessageNasSwiGetStatusOutput
 
         _init(...args: any[]): void;
@@ -37878,6 +38536,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaCancelSessionOutput {
+        static $gtype: GObject.GType<MessageOmaCancelSessionOutput>;
+
         // Constructors of Qmi.MessageOmaCancelSessionOutput
 
         _init(...args: any[]): void;
@@ -37906,6 +38566,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaGetFeatureSettingOutput {
+        static $gtype: GObject.GType<MessageOmaGetFeatureSettingOutput>;
+
         // Constructors of Qmi.MessageOmaGetFeatureSettingOutput
 
         _init(...args: any[]): void;
@@ -37954,6 +38616,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaGetSessionInfoOutput {
+        static $gtype: GObject.GType<MessageOmaGetSessionInfoOutput>;
+
         // Constructors of Qmi.MessageOmaGetSessionInfoOutput
 
         _init(...args: any[]): void;
@@ -38002,6 +38666,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaResetOutput {
+        static $gtype: GObject.GType<MessageOmaResetOutput>;
+
         // Constructors of Qmi.MessageOmaResetOutput
 
         _init(...args: any[]): void;
@@ -38030,6 +38696,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSendSelectionInput {
+        static $gtype: GObject.GType<MessageOmaSendSelectionInput>;
+
         // Constructors of Qmi.MessageOmaSendSelectionInput
 
         constructor(properties?: Partial<{}>);
@@ -38071,6 +38739,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSendSelectionOutput {
+        static $gtype: GObject.GType<MessageOmaSendSelectionOutput>;
+
         // Constructors of Qmi.MessageOmaSendSelectionOutput
 
         _init(...args: any[]): void;
@@ -38099,6 +38769,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSetEventReportInput {
+        static $gtype: GObject.GType<MessageOmaSetEventReportInput>;
+
         // Constructors of Qmi.MessageOmaSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -38147,6 +38819,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSetEventReportOutput {
+        static $gtype: GObject.GType<MessageOmaSetEventReportOutput>;
+
         // Constructors of Qmi.MessageOmaSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -38175,6 +38849,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSetFeatureSettingInput {
+        static $gtype: GObject.GType<MessageOmaSetFeatureSettingInput>;
+
         // Constructors of Qmi.MessageOmaSetFeatureSettingInput
 
         constructor(properties?: Partial<{}>);
@@ -38236,6 +38912,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaSetFeatureSettingOutput {
+        static $gtype: GObject.GType<MessageOmaSetFeatureSettingOutput>;
+
         // Constructors of Qmi.MessageOmaSetFeatureSettingOutput
 
         _init(...args: any[]): void;
@@ -38264,6 +38942,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaStartSessionInput {
+        static $gtype: GObject.GType<MessageOmaStartSessionInput>;
+
         // Constructors of Qmi.MessageOmaStartSessionInput
 
         constructor(properties?: Partial<{}>);
@@ -38301,6 +38981,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageOmaStartSessionOutput {
+        static $gtype: GObject.GType<MessageOmaStartSessionOutput>;
+
         // Constructors of Qmi.MessageOmaStartSessionOutput
 
         _init(...args: any[]): void;
@@ -38329,6 +39011,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePbmGetAllCapabilitiesOutput {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutput>;
+
         // Constructors of Qmi.MessagePbmGetAllCapabilitiesOutput
 
         _init(...args: any[]): void;
@@ -38435,6 +39119,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputAdditionalNumberAlphaStringCapabilityElement
 
         session_type: PbmSessionType;
@@ -38451,6 +39137,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputAdditionalNumberCapabilityElement
 
         session_type: PbmSessionType;
@@ -38470,6 +39158,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementGir
 
         session_type: PbmSessionType;
@@ -38483,6 +39173,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement
 
         phonebook_type: PbmPhonebookType;
@@ -38500,6 +39192,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputEmailCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputEmailCapabilityElement
 
         session_type: PbmSessionType;
@@ -38515,6 +39209,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputGroupCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputGroupCapabilityElement
 
         session_type: PbmSessionType;
@@ -38530,6 +39226,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputGroupingInformationAlphaStringCapabilityElement
 
         session_type: PbmSessionType;
@@ -38546,6 +39244,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputHiddenRecordsCapabilityElement
 
         session_type: PbmSessionType;
@@ -38560,6 +39260,8 @@ export namespace Qmi {
      * A QmiMessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement struct.
      */
     class MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement {
+        static $gtype: GObject.GType<MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement>;
+
         // Own fields of Qmi.MessagePbmGetAllCapabilitiesOutputSecondNameCapabilityElement
 
         session_type: PbmSessionType;
@@ -38575,6 +39277,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePbmGetCapabilitiesInput {
+        static $gtype: GObject.GType<MessagePbmGetCapabilitiesInput>;
+
         // Constructors of Qmi.MessagePbmGetCapabilitiesInput
 
         constructor(properties?: Partial<{}>);
@@ -38616,6 +39320,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePbmGetCapabilitiesOutput {
+        static $gtype: GObject.GType<MessagePbmGetCapabilitiesOutput>;
+
         // Constructors of Qmi.MessagePbmGetCapabilitiesOutput
 
         _init(...args: any[]): void;
@@ -38692,6 +39398,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePbmIndicationRegisterInput {
+        static $gtype: GObject.GType<MessagePbmIndicationRegisterInput>;
+
         // Constructors of Qmi.MessagePbmIndicationRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -38729,6 +39437,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePbmIndicationRegisterOutput {
+        static $gtype: GObject.GType<MessagePbmIndicationRegisterOutput>;
+
         // Constructors of Qmi.MessagePbmIndicationRegisterOutput
 
         _init(...args: any[]): void;
@@ -38762,6 +39472,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcActivateConfigInput {
+        static $gtype: GObject.GType<MessagePdcActivateConfigInput>;
+
         // Constructors of Qmi.MessagePdcActivateConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -38810,6 +39522,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcActivateConfigOutput {
+        static $gtype: GObject.GType<MessagePdcActivateConfigOutput>;
+
         // Constructors of Qmi.MessagePdcActivateConfigOutput
 
         _init(...args: any[]): void;
@@ -38843,6 +39557,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcConfigChangeInput {
+        static $gtype: GObject.GType<MessagePdcConfigChangeInput>;
+
         // Constructors of Qmi.MessagePdcConfigChangeInput
 
         constructor(properties?: Partial<{}>);
@@ -38884,6 +39600,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcConfigChangeOutput {
+        static $gtype: GObject.GType<MessagePdcConfigChangeOutput>;
+
         // Constructors of Qmi.MessagePdcConfigChangeOutput
 
         _init(...args: any[]): void;
@@ -38917,6 +39635,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcDeactivateConfigInput {
+        static $gtype: GObject.GType<MessagePdcDeactivateConfigInput>;
+
         // Constructors of Qmi.MessagePdcDeactivateConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -38965,6 +39685,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcDeactivateConfigOutput {
+        static $gtype: GObject.GType<MessagePdcDeactivateConfigOutput>;
+
         // Constructors of Qmi.MessagePdcDeactivateConfigOutput
 
         _init(...args: any[]): void;
@@ -38998,6 +39720,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcDeleteConfigInput {
+        static $gtype: GObject.GType<MessagePdcDeleteConfigInput>;
+
         // Constructors of Qmi.MessagePdcDeleteConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -39057,6 +39781,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcDeleteConfigOutput {
+        static $gtype: GObject.GType<MessagePdcDeleteConfigOutput>;
+
         // Constructors of Qmi.MessagePdcDeleteConfigOutput
 
         _init(...args: any[]): void;
@@ -39090,6 +39816,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetConfigInfoInput {
+        static $gtype: GObject.GType<MessagePdcGetConfigInfoInput>;
+
         // Constructors of Qmi.MessagePdcGetConfigInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -39142,6 +39870,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetConfigInfoOutput {
+        static $gtype: GObject.GType<MessagePdcGetConfigInfoOutput>;
+
         // Constructors of Qmi.MessagePdcGetConfigInfoOutput
 
         _init(...args: any[]): void;
@@ -39170,6 +39900,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetConfigLimitsInput {
+        static $gtype: GObject.GType<MessagePdcGetConfigLimitsInput>;
+
         // Constructors of Qmi.MessagePdcGetConfigLimitsInput
 
         constructor(properties?: Partial<{}>);
@@ -39218,6 +39950,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetConfigLimitsOutput {
+        static $gtype: GObject.GType<MessagePdcGetConfigLimitsOutput>;
+
         // Constructors of Qmi.MessagePdcGetConfigLimitsOutput
 
         _init(...args: any[]): void;
@@ -39261,6 +39995,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetDefaultConfigInfoInput {
+        static $gtype: GObject.GType<MessagePdcGetDefaultConfigInfoInput>;
+
         // Constructors of Qmi.MessagePdcGetDefaultConfigInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -39309,6 +40045,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetDefaultConfigInfoOutput {
+        static $gtype: GObject.GType<MessagePdcGetDefaultConfigInfoOutput>;
+
         // Constructors of Qmi.MessagePdcGetDefaultConfigInfoOutput
 
         _init(...args: any[]): void;
@@ -39357,6 +40095,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetSelectedConfigInput {
+        static $gtype: GObject.GType<MessagePdcGetSelectedConfigInput>;
+
         // Constructors of Qmi.MessagePdcGetSelectedConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -39405,6 +40145,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcGetSelectedConfigOutput {
+        static $gtype: GObject.GType<MessagePdcGetSelectedConfigOutput>;
+
         // Constructors of Qmi.MessagePdcGetSelectedConfigOutput
 
         _init(...args: any[]): void;
@@ -39438,6 +40180,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcListConfigsInput {
+        static $gtype: GObject.GType<MessagePdcListConfigsInput>;
+
         // Constructors of Qmi.MessagePdcListConfigsInput
 
         constructor(properties?: Partial<{}>);
@@ -39486,6 +40230,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcListConfigsOutput {
+        static $gtype: GObject.GType<MessagePdcListConfigsOutput>;
+
         // Constructors of Qmi.MessagePdcListConfigsOutput
 
         _init(...args: any[]): void;
@@ -39514,6 +40260,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcLoadConfigInput {
+        static $gtype: GObject.GType<MessagePdcLoadConfigInput>;
+
         // Constructors of Qmi.MessagePdcLoadConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -39570,6 +40318,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcLoadConfigOutput {
+        static $gtype: GObject.GType<MessagePdcLoadConfigOutput>;
+
         // Constructors of Qmi.MessagePdcLoadConfigOutput
 
         _init(...args: any[]): void;
@@ -39603,6 +40353,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcRegisterInput {
+        static $gtype: GObject.GType<MessagePdcRegisterInput>;
+
         // Constructors of Qmi.MessagePdcRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -39651,6 +40403,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcRegisterOutput {
+        static $gtype: GObject.GType<MessagePdcRegisterOutput>;
+
         // Constructors of Qmi.MessagePdcRegisterOutput
 
         _init(...args: any[]): void;
@@ -39679,6 +40433,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcResetOutput {
+        static $gtype: GObject.GType<MessagePdcResetOutput>;
+
         // Constructors of Qmi.MessagePdcResetOutput
 
         _init(...args: any[]): void;
@@ -39707,6 +40463,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcSetSelectedConfigInput {
+        static $gtype: GObject.GType<MessagePdcSetSelectedConfigInput>;
+
         // Constructors of Qmi.MessagePdcSetSelectedConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -39759,6 +40517,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdcSetSelectedConfigOutput {
+        static $gtype: GObject.GType<MessagePdcSetSelectedConfigOutput>;
+
         // Constructors of Qmi.MessagePdcSetSelectedConfigOutput
 
         _init(...args: any[]): void;
@@ -39792,6 +40552,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsGetAgpsConfigInput {
+        static $gtype: GObject.GType<MessagePdsGetAgpsConfigInput>;
+
         // Constructors of Qmi.MessagePdsGetAgpsConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -39829,6 +40591,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsGetAgpsConfigOutput {
+        static $gtype: GObject.GType<MessagePdsGetAgpsConfigOutput>;
+
         // Constructors of Qmi.MessagePdsGetAgpsConfigOutput
 
         _init(...args: any[]): void;
@@ -39867,6 +40631,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsGetAutoTrackingStateOutput {
+        static $gtype: GObject.GType<MessagePdsGetAutoTrackingStateOutput>;
+
         // Constructors of Qmi.MessagePdsGetAutoTrackingStateOutput
 
         _init(...args: any[]): void;
@@ -39900,6 +40666,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsGetDefaultTrackingSessionOutput {
+        static $gtype: GObject.GType<MessagePdsGetDefaultTrackingSessionOutput>;
+
         // Constructors of Qmi.MessagePdsGetDefaultTrackingSessionOutput
 
         _init(...args: any[]): void;
@@ -39933,6 +40701,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsGetGpsServiceStateOutput {
+        static $gtype: GObject.GType<MessagePdsGetGpsServiceStateOutput>;
+
         // Constructors of Qmi.MessagePdsGetGpsServiceStateOutput
 
         _init(...args: any[]): void;
@@ -39966,6 +40736,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsResetOutput {
+        static $gtype: GObject.GType<MessagePdsResetOutput>;
+
         // Constructors of Qmi.MessagePdsResetOutput
 
         _init(...args: any[]): void;
@@ -39994,6 +40766,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetAgpsConfigInput {
+        static $gtype: GObject.GType<MessagePdsSetAgpsConfigInput>;
+
         // Constructors of Qmi.MessagePdsSetAgpsConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -40057,6 +40831,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetAgpsConfigOutput {
+        static $gtype: GObject.GType<MessagePdsSetAgpsConfigOutput>;
+
         // Constructors of Qmi.MessagePdsSetAgpsConfigOutput
 
         _init(...args: any[]): void;
@@ -40085,6 +40861,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetAutoTrackingStateInput {
+        static $gtype: GObject.GType<MessagePdsSetAutoTrackingStateInput>;
+
         // Constructors of Qmi.MessagePdsSetAutoTrackingStateInput
 
         constructor(properties?: Partial<{}>);
@@ -40122,6 +40900,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetAutoTrackingStateOutput {
+        static $gtype: GObject.GType<MessagePdsSetAutoTrackingStateOutput>;
+
         // Constructors of Qmi.MessagePdsSetAutoTrackingStateOutput
 
         _init(...args: any[]): void;
@@ -40150,6 +40930,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetDefaultTrackingSessionInput {
+        static $gtype: GObject.GType<MessagePdsSetDefaultTrackingSessionInput>;
+
         // Constructors of Qmi.MessagePdsSetDefaultTrackingSessionInput
 
         constructor(properties?: Partial<{}>);
@@ -40195,6 +40977,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetDefaultTrackingSessionOutput {
+        static $gtype: GObject.GType<MessagePdsSetDefaultTrackingSessionOutput>;
+
         // Constructors of Qmi.MessagePdsSetDefaultTrackingSessionOutput
 
         _init(...args: any[]): void;
@@ -40223,6 +41007,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetEventReportInput {
+        static $gtype: GObject.GType<MessagePdsSetEventReportInput>;
+
         // Constructors of Qmi.MessagePdsSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -40477,6 +41263,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetEventReportOutput {
+        static $gtype: GObject.GType<MessagePdsSetEventReportOutput>;
+
         // Constructors of Qmi.MessagePdsSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -40505,6 +41293,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetGpsServiceStateInput {
+        static $gtype: GObject.GType<MessagePdsSetGpsServiceStateInput>;
+
         // Constructors of Qmi.MessagePdsSetGpsServiceStateInput
 
         constructor(properties?: Partial<{}>);
@@ -40542,6 +41332,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessagePdsSetGpsServiceStateOutput {
+        static $gtype: GObject.GType<MessagePdsSetGpsServiceStateOutput>;
+
         // Constructors of Qmi.MessagePdsSetGpsServiceStateOutput
 
         _init(...args: any[]): void;
@@ -40570,6 +41362,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosGetFlowStatusInput {
+        static $gtype: GObject.GType<MessageQosGetFlowStatusInput>;
+
         // Constructors of Qmi.MessageQosGetFlowStatusInput
 
         constructor(properties?: Partial<{}>);
@@ -40607,6 +41401,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosGetFlowStatusOutput {
+        static $gtype: GObject.GType<MessageQosGetFlowStatusOutput>;
+
         // Constructors of Qmi.MessageQosGetFlowStatusOutput
 
         _init(...args: any[]): void;
@@ -40640,6 +41436,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosGetNetworkStatusOutput {
+        static $gtype: GObject.GType<MessageQosGetNetworkStatusOutput>;
+
         // Constructors of Qmi.MessageQosGetNetworkStatusOutput
 
         _init(...args: any[]): void;
@@ -40673,6 +41471,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosResetOutput {
+        static $gtype: GObject.GType<MessageQosResetOutput>;
+
         // Constructors of Qmi.MessageQosResetOutput
 
         _init(...args: any[]): void;
@@ -40701,6 +41501,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosSwiReadDataStatsInput {
+        static $gtype: GObject.GType<MessageQosSwiReadDataStatsInput>;
+
         // Constructors of Qmi.MessageQosSwiReadDataStatsInput
 
         constructor(properties?: Partial<{}>);
@@ -40738,6 +41540,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageQosSwiReadDataStatsOutput {
+        static $gtype: GObject.GType<MessageQosSwiReadDataStatsOutput>;
+
         // Constructors of Qmi.MessageQosSwiReadDataStatsOutput
 
         _init(...args: any[]): void;
@@ -40778,6 +41582,8 @@ export namespace Qmi {
      * A QmiMessageQosSwiReadDataStatsOutputFlowElement struct.
      */
     class MessageQosSwiReadDataStatsOutputFlowElement {
+        static $gtype: GObject.GType<MessageQosSwiReadDataStatsOutputFlowElement>;
+
         // Own fields of Qmi.MessageQosSwiReadDataStatsOutputFlowElement
 
         bearer_id: number;
@@ -40805,6 +41611,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageSarRfGetStateOutput {
+        static $gtype: GObject.GType<MessageSarRfGetStateOutput>;
+
         // Constructors of Qmi.MessageSarRfGetStateOutput
 
         _init(...args: any[]): void;
@@ -40838,6 +41646,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageSarRfSetStateInput {
+        static $gtype: GObject.GType<MessageSarRfSetStateInput>;
+
         // Constructors of Qmi.MessageSarRfSetStateInput
 
         constructor(properties?: Partial<{}>);
@@ -40875,6 +41685,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageSarRfSetStateOutput {
+        static $gtype: GObject.GType<MessageSarRfSetStateOutput>;
+
         // Constructors of Qmi.MessageSarRfSetStateOutput
 
         _init(...args: any[]): void;
@@ -40903,6 +41715,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimChangePinInput {
+        static $gtype: GObject.GType<MessageUimChangePinInput>;
+
         // Constructors of Qmi.MessageUimChangePinInput
 
         constructor(properties?: Partial<{}>);
@@ -40968,6 +41782,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimChangePinOutput {
+        static $gtype: GObject.GType<MessageUimChangePinOutput>;
+
         // Constructors of Qmi.MessageUimChangePinOutput
 
         _init(...args: any[]): void;
@@ -41011,6 +41827,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimChangeProvisioningSessionInput {
+        static $gtype: GObject.GType<MessageUimChangeProvisioningSessionInput>;
+
         // Constructors of Qmi.MessageUimChangeProvisioningSessionInput
 
         constructor(properties?: Partial<{}>);
@@ -41067,6 +41885,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimChangeProvisioningSessionOutput {
+        static $gtype: GObject.GType<MessageUimChangeProvisioningSessionOutput>;
+
         // Constructors of Qmi.MessageUimChangeProvisioningSessionOutput
 
         _init(...args: any[]): void;
@@ -41095,6 +41915,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimDepersonalizationInput {
+        static $gtype: GObject.GType<MessageUimDepersonalizationInput>;
+
         // Constructors of Qmi.MessageUimDepersonalizationInput
 
         constructor(properties?: Partial<{}>);
@@ -41154,6 +41976,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimDepersonalizationOutput {
+        static $gtype: GObject.GType<MessageUimDepersonalizationOutput>;
+
         // Constructors of Qmi.MessageUimDepersonalizationOutput
 
         _init(...args: any[]): void;
@@ -41187,6 +42011,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetCardStatusOutput {
+        static $gtype: GObject.GType<MessageUimGetCardStatusOutput>;
+
         // Constructors of Qmi.MessageUimGetCardStatusOutput
 
         _init(...args: any[]): void;
@@ -41229,6 +42055,8 @@ export namespace Qmi {
      * A QmiMessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 struct.
      */
     class MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2 {
+        static $gtype: GObject.GType<MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2>;
+
         // Own fields of Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2
 
         type: UimCardApplicationType;
@@ -41258,6 +42086,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageUimGetCardStatusOutputCardStatusCardsElementGir {
+        static $gtype: GObject.GType<MessageUimGetCardStatusOutputCardStatusCardsElementGir>;
+
         // Own fields of Qmi.MessageUimGetCardStatusOutputCardStatusCardsElementGir
 
         card_state: UimCardState;
@@ -41276,6 +42106,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetConfigurationInput {
+        static $gtype: GObject.GType<MessageUimGetConfigurationInput>;
+
         // Constructors of Qmi.MessageUimGetConfigurationInput
 
         constructor(properties?: Partial<{}>);
@@ -41313,6 +42145,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetConfigurationOutput {
+        static $gtype: GObject.GType<MessageUimGetConfigurationOutput>;
+
         // Constructors of Qmi.MessageUimGetConfigurationOutput
 
         _init(...args: any[]): void;
@@ -41371,6 +42205,8 @@ export namespace Qmi {
      * A QmiMessageUimGetConfigurationOutputPersonalizationStatusElement struct.
      */
     class MessageUimGetConfigurationOutputPersonalizationStatusElement {
+        static $gtype: GObject.GType<MessageUimGetConfigurationOutputPersonalizationStatusElement>;
+
         // Own fields of Qmi.MessageUimGetConfigurationOutputPersonalizationStatusElement
 
         feature: UimCardApplicationPersonalizationFeature;
@@ -41389,6 +42225,8 @@ export namespace Qmi {
      * structs instead of arrays of structs, for easier binding in other languages.
      */
     class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir {
+        static $gtype: GObject.GType<MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir>;
+
         // Constructors of Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir
 
         _init(...args: any[]): void;
@@ -41398,6 +42236,8 @@ export namespace Qmi {
      * A QmiMessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement struct.
      */
     class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement {
+        static $gtype: GObject.GType<MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement>;
+
         // Own fields of Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement
 
         feature: UimCardApplicationPersonalizationFeature;
@@ -41414,6 +42254,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetFileAttributesInput {
+        static $gtype: GObject.GType<MessageUimGetFileAttributesInput>;
+
         // Constructors of Qmi.MessageUimGetFileAttributesInput
 
         constructor(properties?: Partial<{}>);
@@ -41478,6 +42320,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetFileAttributesOutput {
+        static $gtype: GObject.GType<MessageUimGetFileAttributesOutput>;
+
         // Constructors of Qmi.MessageUimGetFileAttributesOutput
 
         _init(...args: any[]): void;
@@ -41539,6 +42383,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetSlotStatusOutput {
+        static $gtype: GObject.GType<MessageUimGetSlotStatusOutput>;
+
         // Constructors of Qmi.MessageUimGetSlotStatusOutput
 
         _init(...args: any[]): void;
@@ -41593,6 +42439,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageUimGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageUimGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -41626,6 +42474,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimPowerOffSimInput {
+        static $gtype: GObject.GType<MessageUimPowerOffSimInput>;
+
         // Constructors of Qmi.MessageUimPowerOffSimInput
 
         constructor(properties?: Partial<{}>);
@@ -41663,6 +42513,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimPowerOffSimOutput {
+        static $gtype: GObject.GType<MessageUimPowerOffSimOutput>;
+
         // Constructors of Qmi.MessageUimPowerOffSimOutput
 
         _init(...args: any[]): void;
@@ -41691,6 +42543,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimPowerOnSimInput {
+        static $gtype: GObject.GType<MessageUimPowerOnSimInput>;
+
         // Constructors of Qmi.MessageUimPowerOnSimInput
 
         constructor(properties?: Partial<{}>);
@@ -41728,6 +42582,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimPowerOnSimOutput {
+        static $gtype: GObject.GType<MessageUimPowerOnSimOutput>;
+
         // Constructors of Qmi.MessageUimPowerOnSimOutput
 
         _init(...args: any[]): void;
@@ -41756,6 +42612,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimReadRecordInput {
+        static $gtype: GObject.GType<MessageUimReadRecordInput>;
+
         // Constructors of Qmi.MessageUimReadRecordInput
 
         constructor(properties?: Partial<{}>);
@@ -41843,6 +42701,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimReadRecordOutput {
+        static $gtype: GObject.GType<MessageUimReadRecordOutput>;
+
         // Constructors of Qmi.MessageUimReadRecordOutput
 
         _init(...args: any[]): void;
@@ -41891,6 +42751,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimReadTransparentInput {
+        static $gtype: GObject.GType<MessageUimReadTransparentInput>;
+
         // Constructors of Qmi.MessageUimReadTransparentInput
 
         constructor(properties?: Partial<{}>);
@@ -41978,6 +42840,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimReadTransparentOutput {
+        static $gtype: GObject.GType<MessageUimReadTransparentOutput>;
+
         // Constructors of Qmi.MessageUimReadTransparentOutput
 
         _init(...args: any[]): void;
@@ -42026,6 +42890,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshCompleteInput {
+        static $gtype: GObject.GType<MessageUimRefreshCompleteInput>;
+
         // Constructors of Qmi.MessageUimRefreshCompleteInput
 
         constructor(properties?: Partial<{}>);
@@ -42078,6 +42944,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshCompleteOutput {
+        static $gtype: GObject.GType<MessageUimRefreshCompleteOutput>;
+
         // Constructors of Qmi.MessageUimRefreshCompleteOutput
 
         _init(...args: any[]): void;
@@ -42106,6 +42974,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshRegisterAllInput {
+        static $gtype: GObject.GType<MessageUimRefreshRegisterAllInput>;
+
         // Constructors of Qmi.MessageUimRefreshRegisterAllInput
 
         constructor(properties?: Partial<{}>);
@@ -42158,6 +43028,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshRegisterAllOutput {
+        static $gtype: GObject.GType<MessageUimRefreshRegisterAllOutput>;
+
         // Constructors of Qmi.MessageUimRefreshRegisterAllOutput
 
         _init(...args: any[]): void;
@@ -42186,6 +43058,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshRegisterInput {
+        static $gtype: GObject.GType<MessageUimRefreshRegisterInput>;
+
         // Constructors of Qmi.MessageUimRefreshRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -42246,6 +43120,8 @@ export namespace Qmi {
      * A QmiMessageUimRefreshRegisterInputInfoFilesElement struct.
      */
     class MessageUimRefreshRegisterInputInfoFilesElement {
+        static $gtype: GObject.GType<MessageUimRefreshRegisterInputInfoFilesElement>;
+
         // Own fields of Qmi.MessageUimRefreshRegisterInputInfoFilesElement
 
         file_id: number;
@@ -42267,6 +43143,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRefreshRegisterOutput {
+        static $gtype: GObject.GType<MessageUimRefreshRegisterOutput>;
+
         // Constructors of Qmi.MessageUimRefreshRegisterOutput
 
         _init(...args: any[]): void;
@@ -42295,6 +43173,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRegisterEventsInput {
+        static $gtype: GObject.GType<MessageUimRegisterEventsInput>;
+
         // Constructors of Qmi.MessageUimRegisterEventsInput
 
         constructor(properties?: Partial<{}>);
@@ -42332,6 +43212,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRegisterEventsOutput {
+        static $gtype: GObject.GType<MessageUimRegisterEventsOutput>;
+
         // Constructors of Qmi.MessageUimRegisterEventsOutput
 
         _init(...args: any[]): void;
@@ -42365,6 +43247,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRemoteUnlockInput {
+        static $gtype: GObject.GType<MessageUimRemoteUnlockInput>;
+
         // Constructors of Qmi.MessageUimRemoteUnlockInput
 
         constructor(properties?: Partial<{}>);
@@ -42413,6 +43297,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimRemoteUnlockOutput {
+        static $gtype: GObject.GType<MessageUimRemoteUnlockOutput>;
+
         // Constructors of Qmi.MessageUimRemoteUnlockOutput
 
         _init(...args: any[]): void;
@@ -42441,6 +43327,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimResetOutput {
+        static $gtype: GObject.GType<MessageUimResetOutput>;
+
         // Constructors of Qmi.MessageUimResetOutput
 
         _init(...args: any[]): void;
@@ -42469,6 +43357,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimSetPinProtectionInput {
+        static $gtype: GObject.GType<MessageUimSetPinProtectionInput>;
+
         // Constructors of Qmi.MessageUimSetPinProtectionInput
 
         constructor(properties?: Partial<{}>);
@@ -42534,6 +43424,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimSetPinProtectionOutput {
+        static $gtype: GObject.GType<MessageUimSetPinProtectionOutput>;
+
         // Constructors of Qmi.MessageUimSetPinProtectionOutput
 
         _init(...args: any[]): void;
@@ -42572,6 +43464,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimSwitchSlotInput {
+        static $gtype: GObject.GType<MessageUimSwitchSlotInput>;
+
         // Constructors of Qmi.MessageUimSwitchSlotInput
 
         constructor(properties?: Partial<{}>);
@@ -42620,6 +43514,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimSwitchSlotOutput {
+        static $gtype: GObject.GType<MessageUimSwitchSlotOutput>;
+
         // Constructors of Qmi.MessageUimSwitchSlotOutput
 
         _init(...args: any[]): void;
@@ -42648,6 +43544,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimUnblockPinInput {
+        static $gtype: GObject.GType<MessageUimUnblockPinInput>;
+
         // Constructors of Qmi.MessageUimUnblockPinInput
 
         constructor(properties?: Partial<{}>);
@@ -42713,6 +43611,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimUnblockPinOutput {
+        static $gtype: GObject.GType<MessageUimUnblockPinOutput>;
+
         // Constructors of Qmi.MessageUimUnblockPinOutput
 
         _init(...args: any[]): void;
@@ -42756,6 +43656,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimVerifyPinInput {
+        static $gtype: GObject.GType<MessageUimVerifyPinInput>;
+
         // Constructors of Qmi.MessageUimVerifyPinInput
 
         constructor(properties?: Partial<{}>);
@@ -42820,6 +43722,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageUimVerifyPinOutput {
+        static $gtype: GObject.GType<MessageUimVerifyPinOutput>;
+
         // Constructors of Qmi.MessageUimVerifyPinOutput
 
         _init(...args: any[]): void;
@@ -42863,6 +43767,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceAnswerCallInput {
+        static $gtype: GObject.GType<MessageVoiceAnswerCallInput>;
+
         // Constructors of Qmi.MessageVoiceAnswerCallInput
 
         constructor(properties?: Partial<{}>);
@@ -42900,6 +43806,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceAnswerCallOutput {
+        static $gtype: GObject.GType<MessageVoiceAnswerCallOutput>;
+
         // Constructors of Qmi.MessageVoiceAnswerCallOutput
 
         _init(...args: any[]): void;
@@ -42933,6 +43841,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceAnswerUssdInput {
+        static $gtype: GObject.GType<MessageVoiceAnswerUssdInput>;
+
         // Constructors of Qmi.MessageVoiceAnswerUssdInput
 
         constructor(properties?: Partial<{}>);
@@ -42974,6 +43884,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceAnswerUssdOutput {
+        static $gtype: GObject.GType<MessageVoiceAnswerUssdOutput>;
+
         // Constructors of Qmi.MessageVoiceAnswerUssdOutput
 
         _init(...args: any[]): void;
@@ -43002,6 +43914,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceBurstDtmfInput {
+        static $gtype: GObject.GType<MessageVoiceBurstDtmfInput>;
+
         // Constructors of Qmi.MessageVoiceBurstDtmfInput
 
         constructor(properties?: Partial<{}>);
@@ -43040,6 +43954,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceBurstDtmfOutput {
+        static $gtype: GObject.GType<MessageVoiceBurstDtmfOutput>;
+
         // Constructors of Qmi.MessageVoiceBurstDtmfOutput
 
         _init(...args: any[]): void;
@@ -43073,6 +43989,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceCancelUssdOutput {
+        static $gtype: GObject.GType<MessageVoiceCancelUssdOutput>;
+
         // Constructors of Qmi.MessageVoiceCancelUssdOutput
 
         _init(...args: any[]): void;
@@ -43101,6 +44019,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceDialCallInput {
+        static $gtype: GObject.GType<MessageVoiceDialCallInput>;
+
         // Constructors of Qmi.MessageVoiceDialCallInput
 
         constructor(properties?: Partial<{}>);
@@ -43138,6 +44058,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceDialCallOutput {
+        static $gtype: GObject.GType<MessageVoiceDialCallOutput>;
+
         // Constructors of Qmi.MessageVoiceDialCallOutput
 
         _init(...args: any[]): void;
@@ -43171,6 +44093,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceEndCallInput {
+        static $gtype: GObject.GType<MessageVoiceEndCallInput>;
+
         // Constructors of Qmi.MessageVoiceEndCallInput
 
         constructor(properties?: Partial<{}>);
@@ -43208,6 +44132,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceEndCallOutput {
+        static $gtype: GObject.GType<MessageVoiceEndCallOutput>;
+
         // Constructors of Qmi.MessageVoiceEndCallOutput
 
         _init(...args: any[]): void;
@@ -43241,6 +44167,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetAllCallInfoOutput {
+        static $gtype: GObject.GType<MessageVoiceGetAllCallInfoOutput>;
+
         // Constructors of Qmi.MessageVoiceGetAllCallInfoOutput
 
         _init(...args: any[]): void;
@@ -43284,6 +44212,8 @@ export namespace Qmi {
      * A QmiMessageVoiceGetAllCallInfoOutputCallInformationCall struct.
      */
     class MessageVoiceGetAllCallInfoOutputCallInformationCall {
+        static $gtype: GObject.GType<MessageVoiceGetAllCallInfoOutputCallInformationCall>;
+
         // Own fields of Qmi.MessageVoiceGetAllCallInfoOutputCallInformationCall
 
         id: number;
@@ -43303,6 +44233,8 @@ export namespace Qmi {
      * A QmiMessageVoiceGetAllCallInfoOutputRemotePartyNumberCall struct.
      */
     class MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall {
+        static $gtype: GObject.GType<MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall>;
+
         // Own fields of Qmi.MessageVoiceGetAllCallInfoOutputRemotePartyNumberCall
 
         id: number;
@@ -43319,6 +44251,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetCallWaitingInput {
+        static $gtype: GObject.GType<MessageVoiceGetCallWaitingInput>;
+
         // Constructors of Qmi.MessageVoiceGetCallWaitingInput
 
         constructor(properties?: Partial<{}>);
@@ -43356,6 +44290,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetCallWaitingOutput {
+        static $gtype: GObject.GType<MessageVoiceGetCallWaitingOutput>;
+
         // Constructors of Qmi.MessageVoiceGetCallWaitingOutput
 
         _init(...args: any[]): void;
@@ -43389,6 +44325,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetConfigInput {
+        static $gtype: GObject.GType<MessageVoiceGetConfigInput>;
+
         // Constructors of Qmi.MessageVoiceGetConfigInput
 
         constructor(properties?: Partial<{}>);
@@ -43514,6 +44452,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetConfigOutput {
+        static $gtype: GObject.GType<MessageVoiceGetConfigOutput>;
+
         // Constructors of Qmi.MessageVoiceGetConfigOutput
 
         _init(...args: any[]): void;
@@ -43589,6 +44529,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageVoiceGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageVoiceGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -43622,6 +44564,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceIndicationRegisterInput {
+        static $gtype: GObject.GType<MessageVoiceIndicationRegisterInput>;
+
         // Constructors of Qmi.MessageVoiceIndicationRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -43795,6 +44739,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceIndicationRegisterOutput {
+        static $gtype: GObject.GType<MessageVoiceIndicationRegisterOutput>;
+
         // Constructors of Qmi.MessageVoiceIndicationRegisterOutput
 
         _init(...args: any[]): void;
@@ -43823,6 +44769,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceManageCallsInput {
+        static $gtype: GObject.GType<MessageVoiceManageCallsInput>;
+
         // Constructors of Qmi.MessageVoiceManageCallsInput
 
         constructor(properties?: Partial<{}>);
@@ -43871,6 +44819,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceManageCallsOutput {
+        static $gtype: GObject.GType<MessageVoiceManageCallsOutput>;
+
         // Constructors of Qmi.MessageVoiceManageCallsOutput
 
         _init(...args: any[]): void;
@@ -43899,6 +44849,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceOriginateUssdInput {
+        static $gtype: GObject.GType<MessageVoiceOriginateUssdInput>;
+
         // Constructors of Qmi.MessageVoiceOriginateUssdInput
 
         constructor(properties?: Partial<{}>);
@@ -43940,6 +44892,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceOriginateUssdNoWaitInput {
+        static $gtype: GObject.GType<MessageVoiceOriginateUssdNoWaitInput>;
+
         // Constructors of Qmi.MessageVoiceOriginateUssdNoWaitInput
 
         constructor(properties?: Partial<{}>);
@@ -43981,6 +44935,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceOriginateUssdNoWaitOutput {
+        static $gtype: GObject.GType<MessageVoiceOriginateUssdNoWaitOutput>;
+
         // Constructors of Qmi.MessageVoiceOriginateUssdNoWaitOutput
 
         _init(...args: any[]): void;
@@ -44009,6 +44965,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceOriginateUssdOutput {
+        static $gtype: GObject.GType<MessageVoiceOriginateUssdOutput>;
+
         // Constructors of Qmi.MessageVoiceOriginateUssdOutput
 
         _init(...args: any[]): void;
@@ -44072,6 +45030,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceSetSupplementaryServiceInput {
+        static $gtype: GObject.GType<MessageVoiceSetSupplementaryServiceInput>;
+
         // Constructors of Qmi.MessageVoiceSetSupplementaryServiceInput
 
         constructor(properties?: Partial<{}>);
@@ -44117,6 +45077,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceSetSupplementaryServiceOutput {
+        static $gtype: GObject.GType<MessageVoiceSetSupplementaryServiceOutput>;
+
         // Constructors of Qmi.MessageVoiceSetSupplementaryServiceOutput
 
         _init(...args: any[]): void;
@@ -44150,6 +45112,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceStartContinuousDtmfInput {
+        static $gtype: GObject.GType<MessageVoiceStartContinuousDtmfInput>;
+
         // Constructors of Qmi.MessageVoiceStartContinuousDtmfInput
 
         constructor(properties?: Partial<{}>);
@@ -44188,6 +45152,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceStartContinuousDtmfOutput {
+        static $gtype: GObject.GType<MessageVoiceStartContinuousDtmfOutput>;
+
         // Constructors of Qmi.MessageVoiceStartContinuousDtmfOutput
 
         _init(...args: any[]): void;
@@ -44221,6 +45187,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceStopContinuousDtmfInput {
+        static $gtype: GObject.GType<MessageVoiceStopContinuousDtmfInput>;
+
         // Constructors of Qmi.MessageVoiceStopContinuousDtmfInput
 
         constructor(properties?: Partial<{}>);
@@ -44258,6 +45226,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageVoiceStopContinuousDtmfOutput {
+        static $gtype: GObject.GType<MessageVoiceStopContinuousDtmfOutput>;
+
         // Constructors of Qmi.MessageVoiceStopContinuousDtmfOutput
 
         _init(...args: any[]): void;
@@ -44291,6 +45261,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdaGetDataFormatInput {
+        static $gtype: GObject.GType<MessageWdaGetDataFormatInput>;
+
         // Constructors of Qmi.MessageWdaGetDataFormatInput
 
         constructor(properties?: Partial<{}>);
@@ -44332,6 +45304,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdaGetDataFormatOutput {
+        static $gtype: GObject.GType<MessageWdaGetDataFormatOutput>;
+
         // Constructors of Qmi.MessageWdaGetDataFormatOutput
 
         _init(...args: any[]): void;
@@ -44415,6 +45389,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdaGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageWdaGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageWdaGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -44448,6 +45424,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdaSetDataFormatInput {
+        static $gtype: GObject.GType<MessageWdaSetDataFormatInput>;
+
         // Constructors of Qmi.MessageWdaSetDataFormatInput
 
         constructor(properties?: Partial<{}>);
@@ -44592,6 +45570,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdaSetDataFormatOutput {
+        static $gtype: GObject.GType<MessageWdaSetDataFormatOutput>;
+
         // Constructors of Qmi.MessageWdaSetDataFormatOutput
 
         _init(...args: any[]): void;
@@ -44675,6 +45655,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsBindDataPortInput {
+        static $gtype: GObject.GType<MessageWdsBindDataPortInput>;
+
         // Constructors of Qmi.MessageWdsBindDataPortInput
 
         constructor(properties?: Partial<{}>);
@@ -44712,6 +45694,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsBindDataPortOutput {
+        static $gtype: GObject.GType<MessageWdsBindDataPortOutput>;
+
         // Constructors of Qmi.MessageWdsBindDataPortOutput
 
         _init(...args: any[]): void;
@@ -44740,6 +45724,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsBindMuxDataPortInput {
+        static $gtype: GObject.GType<MessageWdsBindMuxDataPortInput>;
+
         // Constructors of Qmi.MessageWdsBindMuxDataPortInput
 
         constructor(properties?: Partial<{}>);
@@ -44803,6 +45789,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsBindMuxDataPortOutput {
+        static $gtype: GObject.GType<MessageWdsBindMuxDataPortOutput>;
+
         // Constructors of Qmi.MessageWdsBindMuxDataPortOutput
 
         _init(...args: any[]): void;
@@ -44831,6 +45819,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsConfigureProfileEventListInput {
+        static $gtype: GObject.GType<MessageWdsConfigureProfileEventListInput>;
+
         // Constructors of Qmi.MessageWdsConfigureProfileEventListInput
 
         constructor(properties?: Partial<{}>);
@@ -44870,6 +45860,8 @@ export namespace Qmi {
      * A QmiMessageWdsConfigureProfileEventListInputRegisterElement struct.
      */
     class MessageWdsConfigureProfileEventListInputRegisterElement {
+        static $gtype: GObject.GType<MessageWdsConfigureProfileEventListInputRegisterElement>;
+
         // Own fields of Qmi.MessageWdsConfigureProfileEventListInputRegisterElement
 
         profile_type: WdsProfileType;
@@ -44885,6 +45877,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsConfigureProfileEventListOutput {
+        static $gtype: GObject.GType<MessageWdsConfigureProfileEventListOutput>;
+
         // Constructors of Qmi.MessageWdsConfigureProfileEventListOutput
 
         _init(...args: any[]): void;
@@ -44913,6 +45907,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsCreateProfileInput {
+        static $gtype: GObject.GType<MessageWdsCreateProfileInput>;
+
         // Constructors of Qmi.MessageWdsCreateProfileInput
 
         constructor(properties?: Partial<{}>);
@@ -45468,6 +46464,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsCreateProfileOutput {
+        static $gtype: GObject.GType<MessageWdsCreateProfileOutput>;
+
         // Constructors of Qmi.MessageWdsCreateProfileOutput
 
         _init(...args: any[]): void;
@@ -45506,6 +46504,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsDeleteProfileInput {
+        static $gtype: GObject.GType<MessageWdsDeleteProfileInput>;
+
         // Constructors of Qmi.MessageWdsDeleteProfileInput
 
         constructor(properties?: Partial<{}>);
@@ -45547,6 +46547,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsDeleteProfileOutput {
+        static $gtype: GObject.GType<MessageWdsDeleteProfileOutput>;
+
         // Constructors of Qmi.MessageWdsDeleteProfileOutput
 
         _init(...args: any[]): void;
@@ -45580,6 +46582,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetAutoconnectSettingsOutput {
+        static $gtype: GObject.GType<MessageWdsGetAutoconnectSettingsOutput>;
+
         // Constructors of Qmi.MessageWdsGetAutoconnectSettingsOutput
 
         _init(...args: any[]): void;
@@ -45618,6 +46622,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetChannelRatesOutput {
+        static $gtype: GObject.GType<MessageWdsGetChannelRatesOutput>;
+
         // Constructors of Qmi.MessageWdsGetChannelRatesOutput
 
         _init(...args: any[]): void;
@@ -45651,6 +46657,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetCurrentDataBearerTechnologyOutput {
+        static $gtype: GObject.GType<MessageWdsGetCurrentDataBearerTechnologyOutput>;
+
         // Constructors of Qmi.MessageWdsGetCurrentDataBearerTechnologyOutput
 
         _init(...args: any[]): void;
@@ -45689,6 +46697,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetCurrentSettingsInput {
+        static $gtype: GObject.GType<MessageWdsGetCurrentSettingsInput>;
+
         // Constructors of Qmi.MessageWdsGetCurrentSettingsInput
 
         constructor(properties?: Partial<{}>);
@@ -45726,6 +46736,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetCurrentSettingsOutput {
+        static $gtype: GObject.GType<MessageWdsGetCurrentSettingsOutput>;
+
         // Constructors of Qmi.MessageWdsGetCurrentSettingsOutput
 
         _init(...args: any[]): void;
@@ -45898,6 +46910,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDataBearerTechnologyOutput {
+        static $gtype: GObject.GType<MessageWdsGetDataBearerTechnologyOutput>;
+
         // Constructors of Qmi.MessageWdsGetDataBearerTechnologyOutput
 
         _init(...args: any[]): void;
@@ -45936,6 +46950,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDefaultProfileNumberInput {
+        static $gtype: GObject.GType<MessageWdsGetDefaultProfileNumberInput>;
+
         // Constructors of Qmi.MessageWdsGetDefaultProfileNumberInput
 
         constructor(properties?: Partial<{}>);
@@ -45974,6 +46990,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDefaultProfileNumberOutput {
+        static $gtype: GObject.GType<MessageWdsGetDefaultProfileNumberOutput>;
+
         // Constructors of Qmi.MessageWdsGetDefaultProfileNumberOutput
 
         _init(...args: any[]): void;
@@ -46012,6 +47030,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDefaultSettingsInput {
+        static $gtype: GObject.GType<MessageWdsGetDefaultSettingsInput>;
+
         // Constructors of Qmi.MessageWdsGetDefaultSettingsInput
 
         constructor(properties?: Partial<{}>);
@@ -46049,6 +47069,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDefaultSettingsOutput {
+        static $gtype: GObject.GType<MessageWdsGetDefaultSettingsOutput>;
+
         // Constructors of Qmi.MessageWdsGetDefaultSettingsOutput
 
         _init(...args: any[]): void;
@@ -46275,6 +47297,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetDormancyStatusOutput {
+        static $gtype: GObject.GType<MessageWdsGetDormancyStatusOutput>;
+
         // Constructors of Qmi.MessageWdsGetDormancyStatusOutput
 
         _init(...args: any[]): void;
@@ -46308,6 +47332,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetLteAttachParametersOutput {
+        static $gtype: GObject.GType<MessageWdsGetLteAttachParametersOutput>;
+
         // Constructors of Qmi.MessageWdsGetLteAttachParametersOutput
 
         _init(...args: any[]): void;
@@ -46351,6 +47377,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetLteAttachPdnListOutput {
+        static $gtype: GObject.GType<MessageWdsGetLteAttachPdnListOutput>;
+
         // Constructors of Qmi.MessageWdsGetLteAttachPdnListOutput
 
         _init(...args: any[]): void;
@@ -46389,6 +47417,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetMaxLteAttachPdnNumberOutput {
+        static $gtype: GObject.GType<MessageWdsGetMaxLteAttachPdnNumberOutput>;
+
         // Constructors of Qmi.MessageWdsGetMaxLteAttachPdnNumberOutput
 
         _init(...args: any[]): void;
@@ -46422,6 +47452,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetPacketServiceStatusOutput {
+        static $gtype: GObject.GType<MessageWdsGetPacketServiceStatusOutput>;
+
         // Constructors of Qmi.MessageWdsGetPacketServiceStatusOutput
 
         _init(...args: any[]): void;
@@ -46455,6 +47487,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetPacketStatisticsInput {
+        static $gtype: GObject.GType<MessageWdsGetPacketStatisticsInput>;
+
         // Constructors of Qmi.MessageWdsGetPacketStatisticsInput
 
         constructor(properties?: Partial<{}>);
@@ -46492,6 +47526,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetPacketStatisticsOutput {
+        static $gtype: GObject.GType<MessageWdsGetPacketStatisticsOutput>;
+
         // Constructors of Qmi.MessageWdsGetPacketStatisticsOutput
 
         _init(...args: any[]): void;
@@ -46580,6 +47616,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetPdnThrottleInfoInput {
+        static $gtype: GObject.GType<MessageWdsGetPdnThrottleInfoInput>;
+
         // Constructors of Qmi.MessageWdsGetPdnThrottleInfoInput
 
         constructor(properties?: Partial<{}>);
@@ -46617,6 +47655,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetPdnThrottleInfoOutput {
+        static $gtype: GObject.GType<MessageWdsGetPdnThrottleInfoOutput>;
+
         // Constructors of Qmi.MessageWdsGetPdnThrottleInfoOutput
 
         _init(...args: any[]): void;
@@ -46652,6 +47692,8 @@ export namespace Qmi {
      * A QmiMessageWdsGetPdnThrottleInfoOutputInfoElement struct.
      */
     class MessageWdsGetPdnThrottleInfoOutputInfoElement {
+        static $gtype: GObject.GType<MessageWdsGetPdnThrottleInfoOutputInfoElement>;
+
         // Own fields of Qmi.MessageWdsGetPdnThrottleInfoOutputInfoElement
 
         ipv4_throttled: boolean;
@@ -46679,6 +47721,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetProfileListInput {
+        static $gtype: GObject.GType<MessageWdsGetProfileListInput>;
+
         // Constructors of Qmi.MessageWdsGetProfileListInput
 
         constructor(properties?: Partial<{}>);
@@ -46716,6 +47760,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetProfileListOutput {
+        static $gtype: GObject.GType<MessageWdsGetProfileListOutput>;
+
         // Constructors of Qmi.MessageWdsGetProfileListOutput
 
         _init(...args: any[]): void;
@@ -46756,6 +47802,8 @@ export namespace Qmi {
      * A QmiMessageWdsGetProfileListOutputProfileListProfile struct.
      */
     class MessageWdsGetProfileListOutputProfileListProfile {
+        static $gtype: GObject.GType<MessageWdsGetProfileListOutputProfileListProfile>;
+
         // Own fields of Qmi.MessageWdsGetProfileListOutputProfileListProfile
 
         profile_type: WdsProfileType;
@@ -46772,6 +47820,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetProfileSettingsInput {
+        static $gtype: GObject.GType<MessageWdsGetProfileSettingsInput>;
+
         // Constructors of Qmi.MessageWdsGetProfileSettingsInput
 
         constructor(properties?: Partial<{}>);
@@ -46810,6 +47860,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetProfileSettingsOutput {
+        static $gtype: GObject.GType<MessageWdsGetProfileSettingsOutput>;
+
         // Constructors of Qmi.MessageWdsGetProfileSettingsOutput
 
         _init(...args: any[]): void;
@@ -47051,6 +48103,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageWdsGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageWdsGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -47084,6 +48138,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGoActiveOutput {
+        static $gtype: GObject.GType<MessageWdsGoActiveOutput>;
+
         // Constructors of Qmi.MessageWdsGoActiveOutput
 
         _init(...args: any[]): void;
@@ -47112,6 +48168,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsGoDormantOutput {
+        static $gtype: GObject.GType<MessageWdsGoDormantOutput>;
+
         // Constructors of Qmi.MessageWdsGoDormantOutput
 
         _init(...args: any[]): void;
@@ -47140,6 +48198,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsIndicationRegisterInput {
+        static $gtype: GObject.GType<MessageWdsIndicationRegisterInput>;
+
         // Constructors of Qmi.MessageWdsIndicationRegisterInput
 
         constructor(properties?: Partial<{}>);
@@ -47188,6 +48248,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsIndicationRegisterOutput {
+        static $gtype: GObject.GType<MessageWdsIndicationRegisterOutput>;
+
         // Constructors of Qmi.MessageWdsIndicationRegisterOutput
 
         _init(...args: any[]): void;
@@ -47216,6 +48278,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsModifyProfileInput {
+        static $gtype: GObject.GType<MessageWdsModifyProfileInput>;
+
         // Constructors of Qmi.MessageWdsModifyProfileInput
 
         constructor(properties?: Partial<{}>);
@@ -47775,6 +48839,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsModifyProfileOutput {
+        static $gtype: GObject.GType<MessageWdsModifyProfileOutput>;
+
         // Constructors of Qmi.MessageWdsModifyProfileOutput
 
         _init(...args: any[]): void;
@@ -47808,6 +48874,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsResetOutput {
+        static $gtype: GObject.GType<MessageWdsResetOutput>;
+
         // Constructors of Qmi.MessageWdsResetOutput
 
         _init(...args: any[]): void;
@@ -47836,6 +48904,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetAutoconnectSettingsInput {
+        static $gtype: GObject.GType<MessageWdsSetAutoconnectSettingsInput>;
+
         // Constructors of Qmi.MessageWdsSetAutoconnectSettingsInput
 
         constructor(properties?: Partial<{}>);
@@ -47884,6 +48954,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetAutoconnectSettingsOutput {
+        static $gtype: GObject.GType<MessageWdsSetAutoconnectSettingsOutput>;
+
         // Constructors of Qmi.MessageWdsSetAutoconnectSettingsOutput
 
         _init(...args: any[]): void;
@@ -47912,6 +48984,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetDefaultProfileNumberInput {
+        static $gtype: GObject.GType<MessageWdsSetDefaultProfileNumberInput>;
+
         // Constructors of Qmi.MessageWdsSetDefaultProfileNumberInput
 
         constructor(properties?: Partial<{}>);
@@ -47955,6 +49029,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetDefaultProfileNumberOutput {
+        static $gtype: GObject.GType<MessageWdsSetDefaultProfileNumberOutput>;
+
         // Constructors of Qmi.MessageWdsSetDefaultProfileNumberOutput
 
         _init(...args: any[]): void;
@@ -47988,6 +49064,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetEventReportInput {
+        static $gtype: GObject.GType<MessageWdsSetEventReportInput>;
+
         // Constructors of Qmi.MessageWdsSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -48172,6 +49250,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetEventReportOutput {
+        static $gtype: GObject.GType<MessageWdsSetEventReportOutput>;
+
         // Constructors of Qmi.MessageWdsSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -48200,6 +49280,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetIpFamilyInput {
+        static $gtype: GObject.GType<MessageWdsSetIpFamilyInput>;
+
         // Constructors of Qmi.MessageWdsSetIpFamilyInput
 
         constructor(properties?: Partial<{}>);
@@ -48237,6 +49319,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetIpFamilyOutput {
+        static $gtype: GObject.GType<MessageWdsSetIpFamilyOutput>;
+
         // Constructors of Qmi.MessageWdsSetIpFamilyOutput
 
         _init(...args: any[]): void;
@@ -48265,6 +49349,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetLteAttachPdnListInput {
+        static $gtype: GObject.GType<MessageWdsSetLteAttachPdnListInput>;
+
         // Constructors of Qmi.MessageWdsSetLteAttachPdnListInput
 
         constructor(properties?: Partial<{}>);
@@ -48313,6 +49399,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSetLteAttachPdnListOutput {
+        static $gtype: GObject.GType<MessageWdsSetLteAttachPdnListOutput>;
+
         // Constructors of Qmi.MessageWdsSetLteAttachPdnListOutput
 
         _init(...args: any[]): void;
@@ -48341,6 +49429,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsStartNetworkInput {
+        static $gtype: GObject.GType<MessageWdsStartNetworkInput>;
+
         // Constructors of Qmi.MessageWdsStartNetworkInput
 
         constructor(properties?: Partial<{}>);
@@ -48545,6 +49635,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsStartNetworkOutput {
+        static $gtype: GObject.GType<MessageWdsStartNetworkOutput>;
+
         // Constructors of Qmi.MessageWdsStartNetworkOutput
 
         _init(...args: any[]): void;
@@ -48588,6 +49680,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsStopNetworkInput {
+        static $gtype: GObject.GType<MessageWdsStopNetworkInput>;
+
         // Constructors of Qmi.MessageWdsStopNetworkInput
 
         constructor(properties?: Partial<{}>);
@@ -48636,6 +49730,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsStopNetworkOutput {
+        static $gtype: GObject.GType<MessageWdsStopNetworkOutput>;
+
         // Constructors of Qmi.MessageWdsStopNetworkOutput
 
         _init(...args: any[]): void;
@@ -48664,6 +49760,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSwiCreateProfileIndexedInput {
+        static $gtype: GObject.GType<MessageWdsSwiCreateProfileIndexedInput>;
+
         // Constructors of Qmi.MessageWdsSwiCreateProfileIndexedInput
 
         constructor(properties?: Partial<{}>);
@@ -48837,6 +49935,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWdsSwiCreateProfileIndexedOutput {
+        static $gtype: GObject.GType<MessageWdsSwiCreateProfileIndexedOutput>;
+
         // Constructors of Qmi.MessageWdsSwiCreateProfileIndexedOutput
 
         _init(...args: any[]): void;
@@ -48870,6 +49970,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsDeleteInput {
+        static $gtype: GObject.GType<MessageWmsDeleteInput>;
+
         // Constructors of Qmi.MessageWmsDeleteInput
 
         constructor(properties?: Partial<{}>);
@@ -48940,6 +50042,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsDeleteOutput {
+        static $gtype: GObject.GType<MessageWmsDeleteOutput>;
+
         // Constructors of Qmi.MessageWmsDeleteOutput
 
         _init(...args: any[]): void;
@@ -48968,6 +50072,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsGetMessageProtocolOutput {
+        static $gtype: GObject.GType<MessageWmsGetMessageProtocolOutput>;
+
         // Constructors of Qmi.MessageWmsGetMessageProtocolOutput
 
         _init(...args: any[]): void;
@@ -49001,6 +50107,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsGetRoutesOutput {
+        static $gtype: GObject.GType<MessageWmsGetRoutesOutput>;
+
         // Constructors of Qmi.MessageWmsGetRoutesOutput
 
         _init(...args: any[]): void;
@@ -49041,6 +50149,8 @@ export namespace Qmi {
      * A QmiMessageWmsGetRoutesOutputRouteListElement struct.
      */
     class MessageWmsGetRoutesOutputRouteListElement {
+        static $gtype: GObject.GType<MessageWmsGetRoutesOutputRouteListElement>;
+
         // Own fields of Qmi.MessageWmsGetRoutesOutputRouteListElement
 
         message_type: WmsMessageType;
@@ -49058,6 +50168,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsGetSupportedMessagesOutput {
+        static $gtype: GObject.GType<MessageWmsGetSupportedMessagesOutput>;
+
         // Constructors of Qmi.MessageWmsGetSupportedMessagesOutput
 
         _init(...args: any[]): void;
@@ -49091,6 +50203,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsListMessagesInput {
+        static $gtype: GObject.GType<MessageWmsListMessagesInput>;
+
         // Constructors of Qmi.MessageWmsListMessagesInput
 
         constructor(properties?: Partial<{}>);
@@ -49150,6 +50264,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsListMessagesOutput {
+        static $gtype: GObject.GType<MessageWmsListMessagesOutput>;
+
         // Constructors of Qmi.MessageWmsListMessagesOutput
 
         _init(...args: any[]): void;
@@ -49185,6 +50301,8 @@ export namespace Qmi {
      * A QmiMessageWmsListMessagesOutputMessageListElement struct.
      */
     class MessageWmsListMessagesOutputMessageListElement {
+        static $gtype: GObject.GType<MessageWmsListMessagesOutputMessageListElement>;
+
         // Own fields of Qmi.MessageWmsListMessagesOutputMessageListElement
 
         memory_index: number;
@@ -49200,6 +50318,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsModifyTagInput {
+        static $gtype: GObject.GType<MessageWmsModifyTagInput>;
+
         // Constructors of Qmi.MessageWmsModifyTagInput
 
         constructor(properties?: Partial<{}>);
@@ -49254,6 +50374,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsModifyTagOutput {
+        static $gtype: GObject.GType<MessageWmsModifyTagOutput>;
+
         // Constructors of Qmi.MessageWmsModifyTagOutput
 
         _init(...args: any[]): void;
@@ -49282,6 +50404,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawReadInput {
+        static $gtype: GObject.GType<MessageWmsRawReadInput>;
+
         // Constructors of Qmi.MessageWmsRawReadInput
 
         constructor(properties?: Partial<{}>);
@@ -49345,6 +50469,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawReadOutput {
+        static $gtype: GObject.GType<MessageWmsRawReadOutput>;
+
         // Constructors of Qmi.MessageWmsRawReadOutput
 
         _init(...args: any[]): void;
@@ -49378,6 +50504,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawSendInput {
+        static $gtype: GObject.GType<MessageWmsRawSendInput>;
+
         // Constructors of Qmi.MessageWmsRawSendInput
 
         constructor(properties?: Partial<{}>);
@@ -49467,6 +50595,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawSendOutput {
+        static $gtype: GObject.GType<MessageWmsRawSendOutput>;
+
         // Constructors of Qmi.MessageWmsRawSendOutput
 
         _init(...args: any[]): void;
@@ -49520,6 +50650,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawWriteInput {
+        static $gtype: GObject.GType<MessageWmsRawWriteInput>;
+
         // Constructors of Qmi.MessageWmsRawWriteInput
 
         constructor(properties?: Partial<{}>);
@@ -49563,6 +50695,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsRawWriteOutput {
+        static $gtype: GObject.GType<MessageWmsRawWriteOutput>;
+
         // Constructors of Qmi.MessageWmsRawWriteOutput
 
         _init(...args: any[]): void;
@@ -49596,6 +50730,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsResetOutput {
+        static $gtype: GObject.GType<MessageWmsResetOutput>;
+
         // Constructors of Qmi.MessageWmsResetOutput
 
         _init(...args: any[]): void;
@@ -49624,6 +50760,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSendAckInput {
+        static $gtype: GObject.GType<MessageWmsSendAckInput>;
+
         // Constructors of Qmi.MessageWmsSendAckInput
 
         constructor(properties?: Partial<{}>);
@@ -49708,6 +50846,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSendAckOutput {
+        static $gtype: GObject.GType<MessageWmsSendAckOutput>;
+
         // Constructors of Qmi.MessageWmsSendAckOutput
 
         _init(...args: any[]): void;
@@ -49741,6 +50881,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSendFromMemoryStorageInput {
+        static $gtype: GObject.GType<MessageWmsSendFromMemoryStorageInput>;
+
         // Constructors of Qmi.MessageWmsSendFromMemoryStorageInput
 
         constructor(properties?: Partial<{}>);
@@ -49795,6 +50937,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSendFromMemoryStorageOutput {
+        static $gtype: GObject.GType<MessageWmsSendFromMemoryStorageOutput>;
+
         // Constructors of Qmi.MessageWmsSendFromMemoryStorageOutput
 
         _init(...args: any[]): void;
@@ -49848,6 +50992,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSetEventReportInput {
+        static $gtype: GObject.GType<MessageWmsSetEventReportInput>;
+
         // Constructors of Qmi.MessageWmsSetEventReportInput
 
         constructor(properties?: Partial<{}>);
@@ -49885,6 +51031,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSetEventReportOutput {
+        static $gtype: GObject.GType<MessageWmsSetEventReportOutput>;
+
         // Constructors of Qmi.MessageWmsSetEventReportOutput
 
         _init(...args: any[]): void;
@@ -49913,6 +51061,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSetRoutesInput {
+        static $gtype: GObject.GType<MessageWmsSetRoutesInput>;
+
         // Constructors of Qmi.MessageWmsSetRoutesInput
 
         constructor(properties?: Partial<{}>);
@@ -49963,6 +51113,8 @@ export namespace Qmi {
      * A QmiMessageWmsSetRoutesInputRouteListElement struct.
      */
     class MessageWmsSetRoutesInputRouteListElement {
+        static $gtype: GObject.GType<MessageWmsSetRoutesInputRouteListElement>;
+
         // Own fields of Qmi.MessageWmsSetRoutesInputRouteListElement
 
         message_type: WmsMessageType;
@@ -49980,6 +51132,8 @@ export namespace Qmi {
      * using the provided API.
      */
     abstract class MessageWmsSetRoutesOutput {
+        static $gtype: GObject.GType<MessageWmsSetRoutesOutput>;
+
         // Constructors of Qmi.MessageWmsSetRoutesOutput
 
         _init(...args: any[]): void;
@@ -50007,6 +51161,8 @@ export namespace Qmi {
      * A QmiPhysicalSlotInformationSlot struct.
      */
     class PhysicalSlotInformationSlot {
+        static $gtype: GObject.GType<PhysicalSlotInformationSlot>;
+
         // Own fields of Qmi.PhysicalSlotInformationSlot
 
         card_protocol: UimCardProtocol;
@@ -50023,6 +51179,8 @@ export namespace Qmi {
      * A QmiPhysicalSlotStatusSlot struct.
      */
     class PhysicalSlotStatusSlot {
+        static $gtype: GObject.GType<PhysicalSlotStatusSlot>;
+
         // Own fields of Qmi.PhysicalSlotStatusSlot
 
         physical_card_status: UimPhysicalCardState;
@@ -50037,6 +51195,8 @@ export namespace Qmi {
 
     type ProxyClass = typeof Proxy;
     abstract class ProxyPrivate {
+        static $gtype: GObject.GType<ProxyPrivate>;
+
         // Constructors of Qmi.ProxyPrivate
 
         _init(...args: any[]): void;
@@ -50046,6 +51206,8 @@ export namespace Qmi {
      * A QmiSlotEidElement struct.
      */
     class SlotEidElement {
+        static $gtype: GObject.GType<SlotEidElement>;
+
         // Own fields of Qmi.SlotEidElement
 
         eid: any[];

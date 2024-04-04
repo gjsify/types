@@ -480,6 +480,8 @@ export namespace GSystem {
      * number of additional features such as no-echo password reading.
      */
     class Console extends GObject.Object {
+        static $gtype: GObject.GType<Console>;
+
         // Constructors of GSystem.Console
 
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
@@ -557,6 +559,8 @@ export namespace GSystem {
      * without blocking the main loop.
      */
     class Subprocess extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Subprocess>;
+
         // Own properties of GSystem.Subprocess
 
         get context(): SubprocessContext;
@@ -1123,6 +1127,8 @@ export namespace GSystem {
      * a similar configuration.
      */
     class SubprocessContext extends GObject.Object {
+        static $gtype: GObject.GType<SubprocessContext>;
+
         // Own properties of GSystem.SubprocessContext
 
         /**
@@ -1199,6 +1205,8 @@ export namespace GSystem {
     }
 
     class DirFdIterator {
+        static $gtype: GObject.GType<DirFdIterator>;
+
         // Own fields of GSystem.DirFdIterator
 
         initialized: boolean;

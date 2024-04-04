@@ -30,6 +30,8 @@ export namespace Vgsl {
     }
 
     class Connection extends Vgda.GProvider {
+        static $gtype: GObject.GType<Connection>;
+
         // Constructors of Vgsl.Connection
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
@@ -41,6 +43,8 @@ export namespace Vgsl {
 
     type ConnectionClass = typeof Connection;
     abstract class ConnectionPrivate {
+        static $gtype: GObject.GType<ConnectionPrivate>;
+
         // Constructors of Vgsl.ConnectionPrivate
 
         _init(...args: any[]): void;

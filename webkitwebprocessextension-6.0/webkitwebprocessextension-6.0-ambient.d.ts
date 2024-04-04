@@ -1,7 +1,7 @@
 
 declare module 'gi://WebKitWebProcessExtension?version=6.0' {
-    import WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
-    export default WebKitWebProcessExtension60;
+    import WebKitWebProcessExtension from '@girs/webkitwebprocessextension-6.0';
+    export default WebKitWebProcessExtension;
 }
 
 declare module 'gi://WebKitWebProcessExtension' {

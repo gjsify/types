@@ -259,6 +259,8 @@ export namespace GstRtp {
      * Reserved for RTCP conflict avoidance: 72-76
      */
     class RTPPayload {
+        static $gtype: GObject.GType<RTPPayload>;
+
         // Static fields of GstRtp.RTPPayload
 
         /**
@@ -913,6 +915,8 @@ export namespace GstRtp {
      * specific to GstRTPBaseAudioPayload.
      */
     class RTPBaseAudioPayload extends RTPBasePayload {
+        static $gtype: GObject.GType<RTPBaseAudioPayload>;
+
         // Own properties of GstRtp.RTPBaseAudioPayload
 
         get buffer_list(): boolean;
@@ -1023,6 +1027,8 @@ export namespace GstRtp {
      * Provides a base class for RTP depayloaders
      */
     abstract class RTPBaseDepayload extends Gst.Element {
+        static $gtype: GObject.GType<RTPBaseDepayload>;
+
         // Own properties of GstRtp.RTPBaseDepayload
 
         /**
@@ -1211,6 +1217,8 @@ export namespace GstRtp {
      * Provides a base class for RTP payloaders
      */
     abstract class RTPBasePayload extends Gst.Element {
+        static $gtype: GObject.GType<RTPBasePayload>;
+
         // Own properties of GstRtp.RTPBasePayload
 
         /**
@@ -1501,6 +1509,8 @@ export namespace GstRtp {
      * Instance struct for a RTP Audio/Video header extension.
      */
     abstract class RTPHeaderExtension extends Gst.Element {
+        static $gtype: GObject.GType<RTPHeaderExtension>;
+
         // Constructors of GstRtp.RTPHeaderExtension
 
         constructor(properties?: Partial<RTPHeaderExtension.ConstructorProps>, ...args: any[]);
@@ -1707,6 +1717,8 @@ export namespace GstRtp {
      * gst_rtcp_packet_move_to_next().
      */
     class RTCPBuffer {
+        static $gtype: GObject.GType<RTCPBuffer>;
+
         // Constructors of GstRtp.RTCPBuffer
 
         _init(...args: any[]): void;
@@ -1810,6 +1822,8 @@ export namespace GstRtp {
      * The size of the structure is made public to allow stack allocations.
      */
     class RTCPPacket {
+        static $gtype: GObject.GType<RTCPPacket>;
+
         // Own fields of GstRtp.RTCPPacket
 
         offset: number;
@@ -2277,6 +2291,8 @@ export namespace GstRtp {
 
     type RTPBaseAudioPayloadClass = typeof RTPBaseAudioPayload;
     abstract class RTPBaseAudioPayloadPrivate {
+        static $gtype: GObject.GType<RTPBaseAudioPayloadPrivate>;
+
         // Constructors of GstRtp.RTPBaseAudioPayloadPrivate
 
         _init(...args: any[]): void;
@@ -2284,6 +2300,8 @@ export namespace GstRtp {
 
     type RTPBaseDepayloadClass = typeof RTPBaseDepayload;
     abstract class RTPBaseDepayloadPrivate {
+        static $gtype: GObject.GType<RTPBaseDepayloadPrivate>;
+
         // Constructors of GstRtp.RTPBaseDepayloadPrivate
 
         _init(...args: any[]): void;
@@ -2291,6 +2309,8 @@ export namespace GstRtp {
 
     type RTPBasePayloadClass = typeof RTPBasePayload;
     abstract class RTPBasePayloadPrivate {
+        static $gtype: GObject.GType<RTPBasePayloadPrivate>;
+
         // Constructors of GstRtp.RTPBasePayloadPrivate
 
         _init(...args: any[]): void;
@@ -2302,6 +2322,8 @@ export namespace GstRtp {
      * 'application/x-rtp' #GstCaps.
      */
     class RTPBuffer {
+        static $gtype: GObject.GType<RTPBuffer>;
+
         // Own fields of GstRtp.RTPBuffer
 
         state: number;
@@ -2667,6 +2689,8 @@ export namespace GstRtp {
      * Structure holding default payload type information.
      */
     class RTPPayloadInfo {
+        static $gtype: GObject.GType<RTPPayloadInfo>;
+
         // Own fields of GstRtp.RTPPayloadInfo
 
         payload_type: number;
@@ -2715,6 +2739,8 @@ export namespace GstRtp {
      * Meta describing the source(s) of the buffer.
      */
     class RTPSourceMeta {
+        static $gtype: GObject.GType<RTPSourceMeta>;
+
         // Own fields of GstRtp.RTPSourceMeta
 
         ssrc: number;

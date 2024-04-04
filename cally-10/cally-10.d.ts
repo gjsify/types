@@ -61,6 +61,8 @@ export namespace Cally {
      * data and should be accessed using the provided API
      */
     class Actor extends Atk.GObjectAccessible implements Atk.Action, Atk.Component {
+        static $gtype: GObject.GType<Actor>;
+
         // Constructors of Cally.Actor
 
         constructor(properties?: Partial<Actor.ConstructorProps>, ...args: any[]);
@@ -859,6 +861,8 @@ export namespace Cally {
      * data and should be accessed using the provided API
      */
     class Clone extends Actor implements Atk.Action, Atk.Component {
+        static $gtype: GObject.GType<Clone>;
+
         // Constructors of Cally.Clone
 
         constructor(properties?: Partial<Clone.ConstructorProps>, ...args: any[]);
@@ -1624,6 +1628,8 @@ export namespace Cally {
      * data and should be accessed using the provided API
      */
     class Root extends Atk.GObjectAccessible {
+        static $gtype: GObject.GType<Root>;
+
         // Constructors of Cally.Root
 
         constructor(properties?: Partial<Root.ConstructorProps>, ...args: any[]);
@@ -1648,6 +1654,8 @@ export namespace Cally {
      * private data and should be accessed using the provided API
      */
     class Stage extends Actor implements Atk.Action, Atk.Component, Atk.Window {
+        static $gtype: GObject.GType<Stage>;
+
         // Constructors of Cally.Stage
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
@@ -2729,6 +2737,8 @@ export namespace Cally {
      * data and should be accessed using the provided API
      */
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
+        static $gtype: GObject.GType<Text>;
+
         // Constructors of Cally.Text
 
         constructor(properties?: Partial<Text.ConstructorProps>, ...args: any[]);
@@ -4065,6 +4075,8 @@ export namespace Cally {
      * private data and should be accessed using the provided API
      */
     class Util extends Atk.Util {
+        static $gtype: GObject.GType<Util>;
+
         // Constructors of Cally.Util
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
@@ -4074,6 +4086,8 @@ export namespace Cally {
 
     type ActorClass = typeof Actor;
     abstract class ActorPrivate {
+        static $gtype: GObject.GType<ActorPrivate>;
+
         // Constructors of Cally.ActorPrivate
 
         _init(...args: any[]): void;
@@ -4081,6 +4095,8 @@ export namespace Cally {
 
     type CloneClass = typeof Clone;
     abstract class ClonePrivate {
+        static $gtype: GObject.GType<ClonePrivate>;
+
         // Constructors of Cally.ClonePrivate
 
         _init(...args: any[]): void;
@@ -4088,6 +4104,8 @@ export namespace Cally {
 
     type RootClass = typeof Root;
     abstract class RootPrivate {
+        static $gtype: GObject.GType<RootPrivate>;
+
         // Constructors of Cally.RootPrivate
 
         _init(...args: any[]): void;
@@ -4095,6 +4113,8 @@ export namespace Cally {
 
     type StageClass = typeof Stage;
     abstract class StagePrivate {
+        static $gtype: GObject.GType<StagePrivate>;
+
         // Constructors of Cally.StagePrivate
 
         _init(...args: any[]): void;
@@ -4102,6 +4122,8 @@ export namespace Cally {
 
     type TextClass = typeof Text;
     abstract class TextPrivate {
+        static $gtype: GObject.GType<TextPrivate>;
+
         // Constructors of Cally.TextPrivate
 
         _init(...args: any[]): void;
@@ -4109,6 +4131,8 @@ export namespace Cally {
 
     type UtilClass = typeof Util;
     abstract class UtilPrivate {
+        static $gtype: GObject.GType<UtilPrivate>;
+
         // Constructors of Cally.UtilPrivate
 
         _init(...args: any[]): void;

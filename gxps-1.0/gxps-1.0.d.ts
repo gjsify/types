@@ -21,6 +21,8 @@ export namespace Gxps {
      * Error codes returned by GXPS functions.
      */
     class Error extends GLib.Error {
+        static $gtype: GObject.GType<Error>;
+
         // Static fields of Gxps.Error
 
         /**
@@ -101,6 +103,8 @@ export namespace Gxps {
      * only private fields and should not be directly accessed.
      */
     class CoreProperties extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<CoreProperties>;
+
         // Own properties of Gxps.CoreProperties
 
         set source(val: string);
@@ -650,6 +654,8 @@ export namespace Gxps {
      * only private fields and should not be directly accessed.
      */
     class Document extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Document>;
+
         // Own properties of Gxps.Document
 
         set source(val: string);
@@ -1156,6 +1162,8 @@ export namespace Gxps {
      * only private fields and should not be directly accessed.
      */
     class DocumentStructure extends GObject.Object {
+        static $gtype: GObject.GType<DocumentStructure>;
+
         // Own properties of Gxps.DocumentStructure
 
         set source(val: string);
@@ -1222,6 +1230,8 @@ export namespace Gxps {
      * only private fields and should not be directly accessed.
      */
     class File extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<File>;
+
         // Own properties of Gxps.File
 
         set file(val: Gio.File);
@@ -1727,6 +1737,8 @@ export namespace Gxps {
      * only private fields and should not be directly accessed.
      */
     class Page extends GObject.Object implements Gio.Initable {
+        static $gtype: GObject.GType<Page>;
+
         // Own properties of Gxps.Page
 
         set source(val: string);
@@ -2208,6 +2220,8 @@ export namespace Gxps {
 
     type CorePropertiesClass = typeof CoreProperties;
     abstract class CorePropertiesPrivate {
+        static $gtype: GObject.GType<CorePropertiesPrivate>;
+
         // Constructors of Gxps.CorePropertiesPrivate
 
         _init(...args: any[]): void;
@@ -2215,6 +2229,8 @@ export namespace Gxps {
 
     type DocumentClass = typeof Document;
     abstract class DocumentPrivate {
+        static $gtype: GObject.GType<DocumentPrivate>;
+
         // Constructors of Gxps.DocumentPrivate
 
         _init(...args: any[]): void;
@@ -2222,6 +2238,8 @@ export namespace Gxps {
 
     type DocumentStructureClass = typeof DocumentStructure;
     abstract class DocumentStructurePrivate {
+        static $gtype: GObject.GType<DocumentStructurePrivate>;
+
         // Constructors of Gxps.DocumentStructurePrivate
 
         _init(...args: any[]): void;
@@ -2229,6 +2247,8 @@ export namespace Gxps {
 
     type FileClass = typeof File;
     abstract class FilePrivate {
+        static $gtype: GObject.GType<FilePrivate>;
+
         // Constructors of Gxps.FilePrivate
 
         _init(...args: any[]): void;
@@ -2238,6 +2258,8 @@ export namespace Gxps {
      * GXPSLink maps a location in a page to a #GXPSLinkTarget.
      */
     class Link {
+        static $gtype: GObject.GType<Link>;
+
         // Constructors of Gxps.Link
 
         _init(...args: any[]): void;
@@ -2264,6 +2286,8 @@ export namespace Gxps {
      * GXPSLinkTarget represents a hyperlink source.
      */
     class LinkTarget {
+        static $gtype: GObject.GType<LinkTarget>;
+
         // Constructors of Gxps.LinkTarget
 
         _init(...args: any[]): void;
@@ -2305,6 +2329,8 @@ export namespace Gxps {
      * contained in a #GXPSDocumentStructure
      */
     class OutlineIter {
+        static $gtype: GObject.GType<OutlineIter>;
+
         // Constructors of Gxps.OutlineIter
 
         constructor(properties?: Partial<{}>);
@@ -2345,6 +2371,8 @@ export namespace Gxps {
 
     type PageClass = typeof Page;
     abstract class PagePrivate {
+        static $gtype: GObject.GType<PagePrivate>;
+
         // Constructors of Gxps.PagePrivate
 
         _init(...args: any[]): void;

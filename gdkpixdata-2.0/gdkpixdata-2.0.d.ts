@@ -145,6 +145,8 @@ export namespace GdkPixdata {
      * into a `GdkPixbuf`, use `gdk_pixbuf_from_pixdata()`.
      */
     class Pixdata {
+        static $gtype: GObject.GType<Pixdata>;
+
         // Own fields of GdkPixdata.Pixdata
 
         magic: number;

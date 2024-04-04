@@ -44,6 +44,8 @@ export namespace TimezoneMap {
     }
 
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
+        static $gtype: GObject.GType<TimezoneCompletion>;
+
         // Constructors of TimezoneMap.TimezoneCompletion
 
         constructor(properties?: Partial<TimezoneCompletion.ConstructorProps>, ...args: any[]);
@@ -753,6 +755,8 @@ export namespace TimezoneMap {
     }
 
     class TimezoneLocation extends GObject.Object {
+        static $gtype: GObject.GType<TimezoneLocation>;
+
         // Own properties of TimezoneMap.TimezoneLocation
 
         get Comment(): string;
@@ -793,6 +797,8 @@ export namespace TimezoneMap {
     }
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TimezoneMap>;
+
         // Constructors of TimezoneMap.TimezoneMap
 
         constructor(properties?: Partial<TimezoneMap.ConstructorProps>, ...args: any[]);
@@ -1352,6 +1358,8 @@ export namespace TimezoneMap {
 
     type TimezoneCompletionClass = typeof TimezoneCompletion;
     abstract class TimezoneCompletionPrivate {
+        static $gtype: GObject.GType<TimezoneCompletionPrivate>;
+
         // Constructors of TimezoneMap.TimezoneCompletionPrivate
 
         _init(...args: any[]): void;
@@ -1359,6 +1367,8 @@ export namespace TimezoneMap {
 
     type TimezoneLocationClass = typeof TimezoneLocation;
     abstract class TimezoneLocationPrivate {
+        static $gtype: GObject.GType<TimezoneLocationPrivate>;
+
         // Constructors of TimezoneMap.TimezoneLocationPrivate
 
         _init(...args: any[]): void;
@@ -1366,6 +1376,8 @@ export namespace TimezoneMap {
 
     type TimezoneMapClass = typeof TimezoneMap;
     abstract class TimezoneMapPrivate {
+        static $gtype: GObject.GType<TimezoneMapPrivate>;
+
         // Constructors of TimezoneMap.TimezoneMapPrivate
 
         _init(...args: any[]): void;

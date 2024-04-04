@@ -165,6 +165,8 @@ export namespace GstNet {
      * statistics about clock accuracy and network traffic.
      */
     class NetClientClock extends Gst.SystemClock {
+        static $gtype: GObject.GType<NetClientClock>;
+
         // Own properties of GstNet.NetClientClock
 
         get address(): string;
@@ -233,6 +235,8 @@ export namespace GstNet {
      * The #GstNetTimeProvider typically wraps the clock used by a #GstPipeline.
      */
     class NetTimeProvider extends Gst.Object implements Gio.Initable {
+        static $gtype: GObject.GType<NetTimeProvider>;
+
         // Own properties of GstNet.NetTimeProvider
 
         get active(): boolean;
@@ -703,6 +707,8 @@ export namespace GstNet {
     }
 
     class NtpClock extends NetClientClock {
+        static $gtype: GObject.GType<NtpClock>;
+
         // Own fields of GstNet.NtpClock
 
         clock: Gst.SystemClock;
@@ -759,6 +765,8 @@ export namespace GstNet {
      * synchronization.
      */
     class PtpClock extends Gst.SystemClock {
+        static $gtype: GObject.GType<PtpClock>;
+
         // Own properties of GstNet.PtpClock
 
         get domain(): number;
@@ -788,6 +796,8 @@ export namespace GstNet {
      * of the buffer.
      */
     class NetAddressMeta {
+        static $gtype: GObject.GType<NetAddressMeta>;
+
         // Own fields of GstNet.NetAddressMeta
 
         addr: Gio.SocketAddress;
@@ -803,6 +813,8 @@ export namespace GstNet {
 
     type NetClientClockClass = typeof NetClientClock;
     abstract class NetClientClockPrivate {
+        static $gtype: GObject.GType<NetClientClockPrivate>;
+
         // Constructors of GstNet.NetClientClockPrivate
 
         _init(...args: any[]): void;
@@ -816,6 +828,8 @@ export namespace GstNet {
      * #GUnixCredentialsMessage) and Unix file descriptions (See #GUnixFDMessage).
      */
     class NetControlMessageMeta {
+        static $gtype: GObject.GType<NetControlMessageMeta>;
+
         // Own fields of GstNet.NetControlMessageMeta
 
         message: Gio.SocketControlMessage;
@@ -834,6 +848,8 @@ export namespace GstNet {
      * structures.
      */
     class NetTimePacket {
+        static $gtype: GObject.GType<NetTimePacket>;
+
         // Own fields of GstNet.NetTimePacket
 
         local_time: Gst.ClockTime;
@@ -894,6 +910,8 @@ export namespace GstNet {
 
     type NetTimeProviderClass = typeof NetTimeProvider;
     abstract class NetTimeProviderPrivate {
+        static $gtype: GObject.GType<NetTimeProviderPrivate>;
+
         // Constructors of GstNet.NetTimeProviderPrivate
 
         _init(...args: any[]): void;
@@ -902,6 +920,8 @@ export namespace GstNet {
     type NtpClockClass = typeof NtpClock;
     type PtpClockClass = typeof PtpClock;
     abstract class PtpClockPrivate {
+        static $gtype: GObject.GType<PtpClockPrivate>;
+
         // Constructors of GstNet.PtpClockPrivate
 
         _init(...args: any[]): void;

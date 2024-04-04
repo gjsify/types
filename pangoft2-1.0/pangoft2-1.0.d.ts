@@ -150,6 +150,8 @@ export namespace PangoFT2 {
      * The `PangoFT2FontMap` is the `PangoFontMap` implementation for FreeType fonts.
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<FontMap>;
+
         // Constructors of PangoFT2.FontMap
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);

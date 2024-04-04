@@ -120,6 +120,8 @@ export namespace PangoOT {
     }
 
     class Info extends GObject.Object {
+        static $gtype: GObject.GType<Info>;
+
         // Constructors of PangoOT.Info
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
@@ -237,6 +239,8 @@ export namespace PangoOT {
      * [method`PangoOT`.Ruleset.position].
      */
     class Ruleset extends GObject.Object {
+        static $gtype: GObject.GType<Ruleset>;
+
         // Constructors of PangoOT.Ruleset
 
         constructor(properties?: Partial<Ruleset.ConstructorProps>, ...args: any[]);
@@ -320,6 +324,8 @@ export namespace PangoOT {
     }
 
     abstract class Buffer {
+        static $gtype: GObject.GType<Buffer>;
+
         // Constructors of PangoOT.Buffer
 
         constructor(font: PangoFc.Font);
@@ -388,6 +394,8 @@ export namespace PangoOT {
      * represented as a char array instead of a `PangoOTTag` for convenience.
      */
     class FeatureMap {
+        static $gtype: GObject.GType<FeatureMap>;
+
         // Own fields of PangoOT.FeatureMap
 
         feature_name: number[];
@@ -410,6 +418,8 @@ export namespace PangoOT {
      * It contains the following fields.
      */
     class Glyph {
+        static $gtype: GObject.GType<Glyph>;
+
         // Own fields of PangoOT.Glyph
 
         glyph: number;
@@ -443,6 +453,8 @@ export namespace PangoOT {
      * or create a new one using pango_ot_ruleset_new_from_description().
      */
     class RulesetDescription {
+        static $gtype: GObject.GType<RulesetDescription>;
+
         // Own fields of PangoOT.RulesetDescription
 
         script: Pango.Script;

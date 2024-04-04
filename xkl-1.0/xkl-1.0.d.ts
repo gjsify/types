@@ -119,6 +119,8 @@ export namespace Xkl {
     }
 
     class ConfigItem extends GObject.Object {
+        static $gtype: GObject.GType<ConfigItem>;
+
         // Own fields of Xkl.ConfigItem
 
         name: number[];
@@ -165,6 +167,8 @@ export namespace Xkl {
     }
 
     class ConfigRec extends GObject.Object {
+        static $gtype: GObject.GType<ConfigRec>;
+
         // Own fields of Xkl.ConfigRec
 
         model: string;
@@ -281,6 +285,8 @@ export namespace Xkl {
     }
 
     class ConfigRegistry extends GObject.Object {
+        static $gtype: GObject.GType<ConfigRegistry>;
+
         // Own properties of Xkl.ConfigRegistry
 
         get engine(): Engine;
@@ -447,6 +453,8 @@ export namespace Xkl {
     }
 
     class Engine extends GObject.Object {
+        static $gtype: GObject.GType<Engine>;
+
         // Own properties of Xkl.Engine
 
         get backendName(): string;
@@ -687,6 +695,8 @@ export namespace Xkl {
     type ConfigRecClass = typeof ConfigRec;
     type ConfigRegistryClass = typeof ConfigRegistry;
     abstract class ConfigRegistryPrivate {
+        static $gtype: GObject.GType<ConfigRegistryPrivate>;
+
         // Constructors of Xkl.ConfigRegistryPrivate
 
         _init(...args: any[]): void;
@@ -694,12 +704,16 @@ export namespace Xkl {
 
     type EngineClass = typeof Engine;
     abstract class EnginePrivate {
+        static $gtype: GObject.GType<EnginePrivate>;
+
         // Constructors of Xkl.EnginePrivate
 
         _init(...args: any[]): void;
     }
 
     class State {
+        static $gtype: GObject.GType<State>;
+
         // Own fields of Xkl.State
 
         group: number;

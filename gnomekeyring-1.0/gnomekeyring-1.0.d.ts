@@ -639,6 +639,8 @@ export namespace GnomeKeyring {
      * A structure which contains access control information.
      */
     class AccessControl {
+        static $gtype: GObject.GType<AccessControl>;
+
         // Constructors of GnomeKeyring.AccessControl
 
         constructor(application: ApplicationRef, types_allowed: AccessType);
@@ -660,6 +662,8 @@ export namespace GnomeKeyring {
     }
 
     class ApplicationRef {
+        static $gtype: GObject.GType<ApplicationRef>;
+
         // Constructors of GnomeKeyring.ApplicationRef
 
         constructor(properties?: Partial<{}>);
@@ -686,6 +690,8 @@ export namespace GnomeKeyring {
      * %GNOME_KEYRING_ATTRIBUTE_TYPE_UINT32
      */
     class Attribute {
+        static $gtype: GObject.GType<Attribute>;
+
         // Own fields of GnomeKeyring.Attribute
 
         name: string;
@@ -759,6 +765,8 @@ export namespace GnomeKeyring {
      * to free a list of these structures.
      */
     class Found {
+        static $gtype: GObject.GType<Found>;
+
         // Own fields of GnomeKeyring.Found
 
         keyring: string;
@@ -802,6 +810,8 @@ export namespace GnomeKeyring {
     }
 
     class Info {
+        static $gtype: GObject.GType<Info>;
+
         // Constructors of GnomeKeyring.Info
 
         _init(...args: any[]): void;
@@ -864,6 +874,8 @@ export namespace GnomeKeyring {
     }
 
     class ItemInfo {
+        static $gtype: GObject.GType<ItemInfo>;
+
         // Constructors of GnomeKeyring.ItemInfo
 
         constructor(properties?: Partial<{}>);
@@ -930,6 +942,8 @@ export namespace GnomeKeyring {
      * Network password info.
      */
     class NetworkPasswordData {
+        static $gtype: GObject.GType<NetworkPasswordData>;
+
         // Own fields of GnomeKeyring.NetworkPasswordData
 
         keyring: string;
@@ -982,6 +996,8 @@ export namespace GnomeKeyring {
      * </para>
      */
     class PasswordSchema {
+        static $gtype: GObject.GType<PasswordSchema>;
+
         // Own fields of GnomeKeyring.PasswordSchema
 
         item_type: ItemType;
@@ -995,6 +1011,8 @@ export namespace GnomeKeyring {
      * One attribute of a #GnomeKeyringPasswordSchema.
      */
     class PasswordSchemaAttribute {
+        static $gtype: GObject.GType<PasswordSchemaAttribute>;
+
         // Own fields of GnomeKeyring.PasswordSchemaAttribute
 
         name: string;

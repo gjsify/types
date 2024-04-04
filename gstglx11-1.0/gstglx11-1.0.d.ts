@@ -31,6 +31,8 @@ export namespace GstGLX11 {
      * through the provided API
      */
     class GLDisplayX11 extends GstGL.GLDisplay {
+        static $gtype: GObject.GType<GLDisplayX11>;
+
         // Constructors of GstGLX11.GLDisplayX11
 
         constructor(properties?: Partial<GLDisplayX11.ConstructorProps>, ...args: any[]);

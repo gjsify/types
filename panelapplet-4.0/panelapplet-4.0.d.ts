@@ -92,6 +92,8 @@ export namespace PanelApplet {
     }
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<Applet>;
+
         // Own properties of PanelApplet.Applet
 
         /**
@@ -785,6 +787,8 @@ export namespace PanelApplet {
 
     type AppletClass = typeof Applet;
     abstract class AppletPrivate {
+        static $gtype: GObject.GType<AppletPrivate>;
+
         // Constructors of PanelApplet.AppletPrivate
 
         _init(...args: any[]): void;

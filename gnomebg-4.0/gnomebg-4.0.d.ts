@@ -43,6 +43,8 @@ export namespace GnomeBG {
     }
 
     class BG extends GObject.Object {
+        static $gtype: GObject.GType<BG>;
+
         // Constructors of GnomeBG.BG
 
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
@@ -133,6 +135,8 @@ export namespace GnomeBG {
     }
 
     class BGSlideShow extends GObject.Object {
+        static $gtype: GObject.GType<BGSlideShow>;
+
         // Own properties of GnomeBG.BGSlideShow
 
         get file(): Gio.File;
@@ -210,6 +214,8 @@ export namespace GnomeBG {
     type BGClass = typeof BG;
     type BGSlideShowClass = typeof BGSlideShow;
     abstract class BGSlideShowPrivate {
+        static $gtype: GObject.GType<BGSlideShowPrivate>;
+
         // Constructors of GnomeBG.BGSlideShowPrivate
 
         _init(...args: any[]): void;

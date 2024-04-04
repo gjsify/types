@@ -16,60 +16,80 @@ import type GObject from '@girs/gobject-2.0';
 export namespace xlib {
     function open_display(): void;
     class Display {
+        static $gtype: GObject.GType<Display>;
+
         // Constructors of xlib.Display
 
         _init(...args: any[]): void;
     }
 
     class Screen {
+        static $gtype: GObject.GType<Screen>;
+
         // Constructors of xlib.Screen
 
         _init(...args: any[]): void;
     }
 
     class Visual {
+        static $gtype: GObject.GType<Visual>;
+
         // Constructors of xlib.Visual
 
         _init(...args: any[]): void;
     }
 
     class XConfigureEvent {
+        static $gtype: GObject.GType<XConfigureEvent>;
+
         // Constructors of xlib.XConfigureEvent
 
         _init(...args: any[]): void;
     }
 
     class XImage {
+        static $gtype: GObject.GType<XImage>;
+
         // Constructors of xlib.XImage
 
         _init(...args: any[]): void;
     }
 
     class XFontStruct {
+        static $gtype: GObject.GType<XFontStruct>;
+
         // Constructors of xlib.XFontStruct
 
         _init(...args: any[]): void;
     }
 
     class XTrapezoid {
+        static $gtype: GObject.GType<XTrapezoid>;
+
         // Constructors of xlib.XTrapezoid
 
         _init(...args: any[]): void;
     }
 
     class XVisualInfo {
+        static $gtype: GObject.GType<XVisualInfo>;
+
         // Constructors of xlib.XVisualInfo
 
         _init(...args: any[]): void;
     }
 
     class XWindowAttributes {
+        static $gtype: GObject.GType<XWindowAttributes>;
+
         // Constructors of xlib.XWindowAttributes
 
         _init(...args: any[]): void;
     }
 
     class XEvent {
+        static $gtype: GObject.GType<XEvent>;
+
         // Constructors of xlib.XEvent
 
         _init(...args: any[]): void;

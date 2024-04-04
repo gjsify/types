@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./ayatanaido3-0.4.d.ts"],
+    "readme": "./README.md",
+    "name": "AyatanaIdo3-0.4",
+    "tsconfig": "./tsconfig.json"
+}
+

@@ -82,6 +82,8 @@ export namespace GstPbutils {
      * API to set details on it.
      */
     class GstInstallPluginsContext {
+        static $gtype: GObject.GType<GstInstallPluginsContext>;
+
         // Constructors of GstPbutils.GstInstallPluginsContext
 
         constructor(properties?: Partial<{}>);

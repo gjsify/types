@@ -90,6 +90,8 @@ export namespace Pnl {
     }
 
     class Animation extends GObject.InitiallyUnowned {
+        static $gtype: GObject.GType<Animation>;
+
         // Own properties of Pnl.Animation
 
         /**
@@ -169,6 +171,8 @@ export namespace Pnl {
     }
 
     class DockBin extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
+        static $gtype: GObject.GType<DockBin>;
+
         // Constructors of Pnl.DockBin
 
         constructor(properties?: Partial<DockBin.ConstructorProps>, ...args: any[]);
@@ -4438,6 +4442,8 @@ export namespace Pnl {
     }
 
     class DockBinEdge extends DockRevealer implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
+        static $gtype: GObject.GType<DockBinEdge>;
+
         // Own properties of Pnl.DockBinEdge
 
         get edge(): Gtk.PositionType;
@@ -8373,6 +8379,8 @@ export namespace Pnl {
     }
 
     class DockManager extends GObject.Object {
+        static $gtype: GObject.GType<DockManager>;
+
         // Constructors of Pnl.DockManager
 
         constructor(properties?: Partial<DockManager.ConstructorProps>, ...args: any[]);
@@ -8422,6 +8430,8 @@ export namespace Pnl {
     }
 
     class DockOverlay extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
+        static $gtype: GObject.GType<DockOverlay>;
+
         // Constructors of Pnl.DockOverlay
 
         constructor(properties?: Partial<DockOverlay.ConstructorProps>, ...args: any[]);
@@ -12692,6 +12702,8 @@ export namespace Pnl {
     }
 
     class DockOverlayEdge extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
+        static $gtype: GObject.GType<DockOverlayEdge>;
+
         // Own properties of Pnl.DockOverlayEdge
 
         get edge(): Gtk.PositionType;
@@ -16613,6 +16625,8 @@ export namespace Pnl {
     }
 
     class DockPaned extends MultiPaned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
+        static $gtype: GObject.GType<DockPaned>;
+
         // Constructors of Pnl.DockPaned
 
         constructor(properties?: Partial<DockPaned.ConstructorProps>, ...args: any[]);
@@ -20560,6 +20574,8 @@ export namespace Pnl {
      * animating into and out of view.
      */
     class DockRevealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<DockRevealer>;
+
         // Own properties of Pnl.DockRevealer
 
         get child_revealed(): boolean;
@@ -20977,6 +20993,8 @@ export namespace Pnl {
     }
 
     class DockStack extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
+        static $gtype: GObject.GType<DockStack>;
+
         // Own properties of Pnl.DockStack
 
         get edge(): Gtk.PositionType;
@@ -24910,6 +24928,8 @@ export namespace Pnl {
     }
 
     class DockTabStrip extends TabStrip implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<DockTabStrip>;
+
         // Constructors of Pnl.DockTabStrip
 
         constructor(properties?: Partial<DockTabStrip.ConstructorProps>, ...args: any[]);
@@ -25284,6 +25304,8 @@ export namespace Pnl {
     }
 
     class DockTransientGrab extends GObject.Object {
+        static $gtype: GObject.GType<DockTransientGrab>;
+
         // Own properties of Pnl.DockTransientGrab
 
         get timeout(): number;
@@ -25324,6 +25346,8 @@ export namespace Pnl {
     }
 
     class DockWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
+        static $gtype: GObject.GType<DockWidget>;
+
         // Own properties of Pnl.DockWidget
 
         get manager(): DockManager;
@@ -29245,6 +29269,8 @@ export namespace Pnl {
     }
 
     class DockWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
+        static $gtype: GObject.GType<DockWindow>;
+
         // Constructors of Pnl.DockWindow
 
         constructor(properties?: Partial<DockWindow.ConstructorProps>, ...args: any[]);
@@ -33512,6 +33538,8 @@ export namespace Pnl {
      * #PnlMultiPaned, an additional resize grip is added.
      */
     class MultiPaned extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<MultiPaned>;
+
         // Own properties of Pnl.MultiPaned
 
         get orientation(): Gtk.Orientation;
@@ -33929,6 +33957,8 @@ export namespace Pnl {
     }
 
     class Tab extends Gtk.ToggleButton implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
+        static $gtype: GObject.GType<Tab>;
+
         // Own properties of Pnl.Tab
 
         get edge(): Gtk.PositionType;
@@ -37850,6 +37880,8 @@ export namespace Pnl {
     }
 
     class TabStrip extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<TabStrip>;
+
         // Own properties of Pnl.TabStrip
 
         get edge(): Gtk.PositionType;
